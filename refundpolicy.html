@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      !(function () {
+        var analytics = (window.analytics = window.analytics || []);
+        if (!analytics.initialize)
+          if (analytics.invoked)
+            window.console &&
+              console.error &&
+              console.error("Segment snippet included twice.");
+          else {
+            analytics.invoked = !0;
+            analytics.methods = [
+              "trackSubmit",
+              "trackClick",
+              "trackLink",
+              "trackForm",
+              "pageview",
+              "identify",
+              "reset",
+              "group",
+              "track",
+              "ready",
+              "alias",
+              "debug",
+              "page",
+              "once",
+              "off",
+              "on",
+              "addSourceMiddleware",
+              "addIntegrationMiddleware",
+              "setAnonymousId",
+              "addDestinationMiddleware",
+            ];
+            analytics.factory = function (e) {
+              return function () {
+                if (window.analytics.initialized)
+                  return window.analytics[e].apply(window.analytics, arguments);
+                var i = Array.prototype.slice.call(arguments);
+                i.unshift(e);
+                analytics.push(i);
+                return analytics;
+              };
+            };
+            for (var i = 0; i < analytics.methods.length; i++) {
+              var key = analytics.methods[i];
+              analytics[key] = analytics.factory(key);
+            }
+            analytics.load = function (key, i) {
+              var t = document.createElement("script");
+              t.type = "text/javascript";
+              t.async = !0;
+              t.src =
+                "https://cdn.segment.com/analytics.js/v1/" +
+                key +
+                "/analytics.min.js";
+              var n = document.getElementsByTagName("script")[0];
+              n.parentNode.insertBefore(t, n);
+              analytics._loadOptions = i;
+            };
+            analytics._writeKey = "cXnuOprj3pLlcD6Nl4uA6z2LH0irbQ6Q";
+            analytics.SNIPPET_VERSION = "4.16.1";
+            analytics.load("cXnuOprj3pLlcD6Nl4uA6z2LH0irbQ6Q");
+            analytics.page();
+          }
+      })();
+    </script>
+    <title>Wugweb - Creative UX Design Agency</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'"
+    />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/images/site.webmanifest" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/slick-theme.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/newstyles.css" />
+
+    <!-- Hotjar Tracking Code for https://wugweb.com/ -->
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 3239820, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3J56PJ6VS4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-3J56PJ6VS4");
+    </script>
+  </head>
+
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container" id="home">
+      <header class="header" style="background: #191919">
+        <div class="logo">
+          <a href="/index.html"
+            ><img src="images/wugweb-logo.png" alt="wugweb"
+          /></a>
+        </div>
+      </header>
+      <nav class="navigation">
+        <div class="menu-btn">
+          <div class="menu-logo">
+            <img src="images/menu-logo.png" alt="wugweb" />
+          </div>
+          <div class="burger-icon">
+            <button
+              class="menu-icon"
+              onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))"
+              aria-label="Main Menu"
+            >
+              <svg width="30" height="30" viewBox="0 0 100 100">
+                <path
+                  class="line line1"
+                  d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"
+                />
+                <path class="line line2" d="M 20,50 H 80" />
+                <path
+                  class="line line3"
+                  d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#showcase">Showcase</a></li>
+            <li><a href="#thoughts">Thoughts</a></li>
+            <li><a href="#contact" class="active">Contact</a></li>
+            <li>
+              <a href="#home"
+                ><img src="images/arrow-up-line.png" alt="" class="nav-arrow"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="about" id="about">
+        <div class="container mx-auto p-10 border-b border-yellow-50">
+          <div class="flex p-5 py-5">
+            <div class="w-2-4 h-screen sticky top-10">
+              <div class="">
+                <!-- Left sidebar content -->
+                <h1 class="text-6xl font-bold mb-4 line-h">Refund Policy</h1>
+                <p>Updated on November 04, 2023</p>
+              </div>
+            </div>
+            <div class="w-2-4 overflow-y-auto">
+            
+            
+            
+              <!-- Right content -->
+              <div className="px-1  border-b border-yellow-50/30">
+                <h1 class="text-4xl font-bold mb-4">Introduction and Overview</h1>
+                <p>
+                 At our store, we believe in providing our customers with the best shopping experience possible. As part of our commitment to transparency and customer satisfaction, we want to take a moment to explain our refund policy.
+                </p>
+              
+              </div>
+            
+              <div className="px-1  border-b border-yellow-50/30">
+                <h1 class="text-4xl font-bold mb-4">No Refund Policy</h1>
+                <p>
+               It is important to note that we do not offer refunds on any purchases made at our store. We understand that this may be different from what you may be accustomed to, but we have carefully considered this decision to ensure the best possible service for our customers.
+                </p>
+             </div>
+               
+              <div className="px-1  border-b border-yellow-50/30">
+                <h1 class="text-4xl font-bold mb-4">Why No Refunds?</h1>
+                <p>
+                 While many businesses offer refunds as a standard practice, we have chosen to adopt a no refund policy for several reasons:
+
+
+
+
+                </p>
+                <p>
+               Quality Assurance: We take great pride in the quality of our products. By not accepting refunds, we can ensure that every item we sell meets our high standards. This allows us to maintain the integrity of our brand and provide our customers with products they can trust.
+                </p>
+                  <p>
+              Affordability: By eliminating the need for refunds, we are able to keep our prices as low as possible. This means that you, as our valued customer, can enjoy the latest fashion trends and innovative gadgets at affordable prices.
+                </p>
+                  <p>
+          Efficiency: Without the need to process refunds, we can focus on providing exceptional customer service and fast shipping. This allows us to streamline our operations and deliver your orders promptly.
+                </p>
+              </div>
+              <div className="px-1  border-b border-yellow-50/30">
+                <h1 class="text-4xl font-bold mb-4">Our Commitment to Customer Satisfaction</h1>
+                <p>
+             While we do not offer refunds, we are committed to ensuring your satisfaction with every purchase. If you have any concerns or issues with your order, please don't hesitate to reach out to our customer support team. We will do our best to address any problems and find a suitable solution.
+
+
+                </p>
+              </div>
+              
+              <div className="px-1  border-b border-yellow-50/30">
+                <h1 class="text-4xl font-bold mb-4">Final Thoughts</h1>
+                <p>
+              We understand that our no refund policy may be different from what you are accustomed to, but we believe it is the best approach for our store and our customers. By maintaining our commitment to quality, affordability, and efficiency, we strive to provide you with an exceptional shopping experience.
+
+Thank you for choosing our store. We appreciate your understanding and support.
+                </p>
+              </div>
+             
+        
+          
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="wrapper d-flex">
+          <div class="left">
+            Copyright 2020-2024 © Wugweb | All Rights Reserved
+          </div>
+          <div class="right">
+            <ul class="footer-new-nav">
+              <li><a href="/contactus.html">Contact Us</a></li>
+              <li><a href="#">Sitemap</a></li>
+              <li><a href="/privacypolicy.html">Privacy Policy</a></li>
+              <li><a href="/termsandcondition.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
