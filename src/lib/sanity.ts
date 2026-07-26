@@ -11,8 +11,10 @@ import imageUrlBuilder from '@sanity/image-url';
 // (e.g. draft-mode with a per-request token), build one inline in the
 // page/API route using locals.runtime.env instead of this module.
 
+const projectId = import.meta.env.SANITY_PROJECT_ID || 'splvhmk1';
+
 export const sanityClient = createClient({
-  projectId: import.meta.env.SANITY_PROJECT_ID,
+  projectId,
   dataset: import.meta.env.SANITY_DATASET ?? 'production',
   apiVersion: '2026-01-01',
   useCdn: true,

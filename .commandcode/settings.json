@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site && git add wrangler.jsonc && git commit -F - <<'EOF' Fix Pages project name: \"website\" not \"wugweb\" Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF git push origin main)"
+      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site && git add wrangler.jsonc && git commit -F - <<'EOF' Fix Pages project name: \"website\" not \"wugweb\" Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF git push origin main)",
+      "Shell(git:*)"
     ],
     "deny": [],
     "defaultMode": "default"
