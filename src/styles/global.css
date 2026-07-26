@@ -9,7 +9,7 @@
 
   --font-display: 'Inter Tight', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Fragment Mono', ui-monospace, monospace;
+  --font-mono: 'Inter', ui-monospace, monospace;
 }
 
 * {
