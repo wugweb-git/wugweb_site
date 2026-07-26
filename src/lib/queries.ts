@@ -39,6 +39,6 @@ export const postBySlugQuery = `
 
 export const singletonPageQuery = `
   *[_type == "singletonPage" && pageId == $pageId][0] {
-    title, seoDescription, body
+    title, seoDescription, body, items
   }
 `;

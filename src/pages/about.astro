@@ -1,6 +1,17 @@
 ---
 export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+// Hero title/intro now Sanity-editable. Stats/values/culture/team stay
+// hardcoded on purpose — more structural than day-to-day editorial copy,
+// and migrating the team roster into this generic items shape would lose
+// the photo field. Falls back to the known real copy if Sanity is empty.
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'about' }).catch(() => null);
+const heroText =
+  page?.body?.[0]?.children?.[0]?.text ??
+  "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & production.";
 
 // Stats show as "0+" / "0%" on the live site — genuinely placeholder
 // there too, not something I'm inventing numbers for.
@@ -50,8 +61,7 @@ const team = [
     <div class="wrap about-hero-content">
       <p class="eyebrow" data-reveal>About Us</p>
       <h1 data-reveal>
-        Wugweb is evolving in the digital landscape and has rapidly moved forward, with our
-        services expanding to digital marketing, emerging tech innovation & production.
+        {heroText}
       </h1>
     </div>
   </section>

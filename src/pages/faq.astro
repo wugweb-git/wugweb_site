@@ -1,33 +1,23 @@
 ---
 export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
 
-// Real questions from the live site. Answers are genuinely empty there
-// too (confirmed dummy, per your note) — not inventing content here.
-const faqs = [
-  "What's included in your Brand & Strategy service?",
-  "What's the timeline for a Brand & Strategy project?",
-  "What's the investment for a Brand & Strategy project?",
-  'Who do you partner with?',
-  'Do you design logos?',
-  'Do you develop brand guidelines and design systems?',
-  'How do you ensure brand consistency?',
-  'Can you address unique branding needs?',
-  'Do you incorporate motion and sound?',
-  'Do you manage brand activation?',
-];
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'faq' }).catch(() => null);
+const faqs: { title: string; text: string }[] = page?.items ?? [];
 ---
 
 <BaseLayout title="FAQs" description="Frequently asked questions about working with Wugweb.">
   <section class="wrap faq">
     <p class="eyebrow">FAQs</p>
-    <h1>Frequently Asked Questions</h1>
+    <h1>{page?.title ?? 'Frequently Asked Questions'}</h1>
 
     <div class="faq-list">
-      {faqs.map((q) => (
+      {faqs.map((f) => (
         <details class="faq-item">
-          <summary>{q}</summary>
-          <p>Answer coming soon.</p>
+          <summary>{f.title}</summary>
+          <p>{f.text?.trim() ? f.text : 'Answer coming soon.'}</p>
         </details>
       ))}
     </div>

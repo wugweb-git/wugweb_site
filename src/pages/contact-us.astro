@@ -1,6 +1,16 @@
 ---
 // Dynamic — this is where the form POST will land.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+// Title/intro Sanity-editable now; contact details and form field
+// definitions stay hardcoded (config, not editorial copy).
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'contact' }).catch(() => null);
+const heroTitle = page?.title ?? 'Are you ready to build something that matters?';
+const heroText =
+  page?.body?.[0]?.children?.[0]?.text ??
+  "We're always looking for passionate clients and talented professionals to join us in creating impactful work. Whether you have a bold vision you want to bring to life or expertise to contribute, let's collaborate and make something great together.";
 
 const interests = ['Branding', 'Design', 'Software', 'Product', 'Marketing'];
 const budgets = ['<$3K', '<$6K', '<$15K', '<$25K'];
@@ -9,11 +19,9 @@ const budgets = ['<$3K', '<$6K', '<$15K', '<$25K'];
 <BaseLayout title="Contact Us" description="Have a project in mind? Get in touch with Wugweb for UI/UX design and digital solutions.">
   <section class="wrap contact">
     <div class="contact-intro">
-      <h1>Are you ready to build something that matters?</h1>
+      <h1>{heroTitle}</h1>
       <p>
-        We're always looking for passionate clients and talented professionals to join us in
-        creating impactful work. Whether you have a bold vision you want to bring to life or
-        expertise to contribute, let's collaborate and make something great together.
+        {heroText}
       </p>
     </div>
 

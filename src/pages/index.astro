@@ -4,9 +4,22 @@
 // (would fight the actual brand thesis statement below).
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { sanityClient } from '../lib/sanity';
-import { servicesListQuery } from '../lib/queries';
+import { servicesListQuery, singletonPageQuery } from '../lib/queries';
 
 const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
+
+// Hero headline + intro copy now Sanity-editable, same pattern as
+// about/faq/contact-us. Falls back to the known real copy if empty.
+const homePage = await sanityClient.fetch(singletonPageQuery, { pageId: 'home' }).catch(() => null);
+const headlineText = homePage?.title ?? 'Where Vision Meets Velocity';
+const introParas: string[] = (homePage?.body ?? [])
+  .map((b: any) => b?.children?.[0]?.text)
+  .filter(Boolean);
+const fallbackIntro = [
+  'Wugweb is a digital experience agency where design meets engineering to shape what is next. We deliver tailored UX design services, rooted in user-centered design and driven by a clear user experience strategy.',
+  'Our experience design services and custom UX solutions help businesses craft impactful digital product design with precision. As a UI/UX-focused agency, we create digital experiences that not only look great but also perform with purpose.',
+];
+const intro = introParas.length ? introParas : fallbackIntro;
 
 // Homepage services teaser is a curated, ordered subset — matches the
 // live site's homepage (4 of the 7 total services), not a live Sanity
@@ -97,7 +110,7 @@ const industries = [
 
     <div class="wrap hero-content">
       <p class="eyebrow" data-reveal>A world-class digital experience agency</p>
-      <h1 class="hero-headline" data-headline>Where Vision Meets Velocity</h1>
+      <h1 class="hero-headline" data-headline>{headlineText}</h1>
       <div class="hero-ctas" data-reveal>
         <a href="#services-content" class="btn btn-ghost">Explore Wugweb</a>
         <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
@@ -112,16 +125,7 @@ const industries = [
     <h2 data-reveal>Wugweb is a tight team of thoughtful creatives, engineers, and strategists</h2>
     <div class="intro-body">
       <div class="intro-copy" data-reveal>
-        <p>
-          Wugweb is a digital experience agency where design meets engineering to shape what is
-          next. We deliver tailored UX design services, rooted in user-centered design and driven
-          by a clear user experience strategy.
-        </p>
-        <p>
-          Our experience design services and custom UX solutions help businesses craft impactful
-          digital product design with precision. As a UI/UX-focused agency, we create digital
-          experiences that not only look great but also perform with purpose.
-        </p>
+        {intro.map((p) => <p>{p}</p>)}
       </div>
       <ul class="intro-tags" data-reveal aria-hidden="true">
         <li>strategy</li>
