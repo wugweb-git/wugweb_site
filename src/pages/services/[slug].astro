@@ -2,46 +2,271 @@
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const slugToTitle: Record<string, { title: string; body: string; tags: string[] }> = {
+const services: Record<string, {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  body: string;
+  heroText: string;
+  capabilities: { n: string; title: string }[];
+  approach: { n: string; title: string; body: string }[];
+  faqs: { q: string; a: string }[];
+  why: { title: string; body: string }[];
+}> = {
   'brand-strategy': {
     title: 'Brand & Strategy',
+    subtitle: 'From Brand Story to Market Impact',
     tags: ['Identity Systems', 'Positioning & Strategy', 'Voice & Tone', 'Narrative'],
-    body: 'As a brand strategy consulting agency, we craft transformative brand experiences that build emotional connection, inspire loyalty, and drive long-term growth. Our core services include brand identity design, brand narrative development, and comprehensive brand positioning and strategy.',
+    heroText: "In today's dynamic landscape, a powerful brand is more than a visual identity. It is a strategic asset. As a brand strategy agency, Wugweb crafts and evolves authentic brand experiences that build emotional resonance, foster loyalty, and fuel long term growth.",
+    body: 'As a brand strategy consulting agency, we help organizations define personality and purpose. Our strategists and designers combine deep insight into human behavior with real data to craft brand narratives that resonate and unlock long term potential.',
+    capabilities: [
+      { n: '01', title: 'Brand Narrative Architecture' },
+      { n: '02', title: 'Brand Identity Systems' },
+      { n: '03', title: 'Brand Positioning & Strategy' },
+      { n: '04', title: 'Naming & Nomenclature' },
+      { n: '05', title: 'Voice & Tone Development' },
+      { n: '06', title: 'Brand Experience Design' },
+      { n: '07', title: 'Brand Audits & Analysis' },
+      { n: '08', title: 'Brand Evolution & Management' },
+      { n: '09', title: 'Brand Activation & Launch' },
+    ],
+    approach: [
+      { n: '01', title: 'Discovery & Insight', body: 'Understand your audience at the core. We immerse ourselves in your market to uncover the insights that inform every decision.' },
+      { n: '02', title: 'Ideation & Strategy Alignment', body: 'Shape meaningful ideas guided by strategic frameworks. We align creative exploration with the goals of a forward-thinking brand strategy agency.' },
+      { n: '03', title: 'Collaborative Execution', body: 'Bridge strategy and design through open collaboration, ensuring every element of the brand is purposeful and cohesive.' },
+      { n: '04', title: 'Validation and Refinement', body: 'Validate ideas through data and feedback. We refine brand direction based on real-world performance and stakeholder alignment.' },
+      { n: '05', title: 'Long-Term Brand Stewardship', body: 'Monitor brand performance post-launch to drive evolution, consistency, and long-term relevance in a changing landscape.' },
+    ],
+    faqs: [
+      { q: "What's included in your Brand & Strategy service?", a: 'Our Brand & Strategy service covers brand narrative architecture, identity systems, positioning, naming, voice & tone development, brand experience design, audits, and activation.' },
+      { q: "What's the timeline for a Brand & Strategy project?", a: 'Timelines vary based on scope. A typical brand strategy engagement runs 4-8 weeks from discovery to delivery.' },
+      { q: 'Do you design logos?', a: 'Yes. Logo design is part of our Brand Identity Systems capability, delivered alongside a full visual identity system.' },
+      { q: 'Do you develop brand guidelines and design systems?', a: 'Absolutely. We create comprehensive brand guidelines and design systems to ensure consistency across all touchpoints.' },
+      { q: 'How do you ensure brand consistency?', a: 'Through comprehensive brand guidelines, design systems, and brand stewardship that keeps the brand cohesive across every channel.' },
+    ],
+    why: [
+      { title: 'Strategic Brand Vision', body: 'Brands are built on clarity and creativity. We define foundations that drive measurable business impact.' },
+      { title: 'Holistic Brand Experience Design', body: 'Every touchpoint matters. Our work ensures consistent and immersive brand presence from start to scale.' },
+      { title: 'Authentic Brand Storytelling', body: 'We uncover the core of your brand to craft stories that resonate, connect, and inspire loyalty.' },
+      { title: 'Data-Driven Brand Evolution', body: 'We use analytics to shape decisions, optimize brand value, and evolve with purpose.' },
+    ],
   },
   'experience-design': {
     title: 'Experience Design',
+    subtitle: 'Engineering Seamless User Experience Design Services',
     tags: ['Interface', 'Journey', 'Design Systems', 'User Intelligence'],
-    body: 'We create intuitive, engaging, and seamless digital experiences that captivate users and drive business growth. Our experience design services are rooted in user-centered design services, combining human-centered design, product design services, and digital product design with strategic focus on customer experience design, experience architecture, and end-to-end user journey design.',
+    heroText: "In the experience economy, exceptional customer experience design is paramount. Wugweb designs and engineers intuitive, engaging, and seamless digital experiences that not only captivate users but also drive brand loyalty, increase conversions, and fuel sustainable business growth.",
+    body: 'Your brand deserves best in class UX design services. We achieve human-centered design that is purpose-driven and appeals to your target demographic. Our experts keep up with the most recent developments in the industry by studying the market and establishing a feedback loop for emotional design solutions.',
+    capabilities: [
+      { n: '01', title: 'Experience Design' },
+      { n: '02', title: 'UX Strategy' },
+      { n: '03', title: 'User Research' },
+      { n: '04', title: 'Information Architecture' },
+      { n: '05', title: 'Interaction Design' },
+      { n: '06', title: 'Visual Design' },
+      { n: '07', title: 'Usability Testing' },
+      { n: '08', title: 'Design Systems' },
+      { n: '09', title: 'Accessibility' },
+    ],
+    approach: [
+      { n: '01', title: 'Immersive User Discovery', body: 'Illuminate design possibilities through deep dives into behavioural insights and needs.' },
+      { n: '02', title: 'Data-Driven Validation & Optimization', body: 'Validate designs and drive continuous improvement with rigorous testing and data analysis.' },
+      { n: '03', title: 'Integrated Design & Development', body: 'Ensure cohesive, functional experiences through seamless design and development collaboration.' },
+      { n: '04', title: 'Post-Launch Experience Refinement', body: 'Meet evolving user needs through continuous monitoring and data-driven iteration.' },
+    ],
+    faqs: [
+      { q: 'What is Experience Design?', a: 'Experience design is the practice of designing products and services with a focus on the quality of the user experience across every touchpoint.' },
+      { q: 'Why is Customer Experience Design important?', a: 'Exceptional customer experience drives loyalty, increases conversions, and creates competitive advantage in the experience economy.' },
+      { q: 'What services do you offer?', a: 'We offer UX strategy, user research, information architecture, interaction design, visual design, usability testing, design systems, and accessibility.' },
+      { q: "What's your design approach?", a: 'Our approach is human-centered, data-informed, and collaborative. We start with deep user research and iterate through testing and refinement.' },
+      { q: 'How do you ensure user needs are met?', a: 'Through continuous user research, usability testing, and data-driven validation at every stage of the design process.' },
+    ],
+    why: [
+      { title: 'Empathy-Driven Design', body: 'User needs and behavioral insights that define design decisions, ensuring authentic connections.' },
+      { title: 'Collaborative Design Partnership', body: 'Alignment and co-creation define the client relationship, leading to exceptional results.' },
+      { title: 'Optimized Journey Mapping', body: 'Boundaries are pushed through journey mapping to create unique, memorable experiences.' },
+      { title: 'Data-Informed Innovation', body: 'Insights from data and analytics illuminate design pathways, optimizing performance and satisfaction.' },
+    ],
   },
   'martech-genai': {
-    title: 'Martech & Gen AI',
+    title: 'MarTech & Gen AI',
+    subtitle: 'Automation That Fits Your Tools and Your Goals',
     tags: ['Insights', 'Automation', 'Generative AI', 'Analytics'],
-    body: 'Growth is driven by strategic MarTech consulting and AI-powered marketing solutions, enabling businesses to personalize experiences, optimize performance, and scale with precision. Our services span digital transformation strategy, building robust MarTech ecosystems, and delivering impactful AI-powered content experiences.',
+    heroText: "Marketing success today is powered by smart systems and sharper insights. At Wugweb, we help businesses unlock data-driven marketing through AI marketing integration, marketing automation solutions, and generative AI consulting.",
+    body: 'We help unlock marketing potential through MarTech consulting that connects data, automates workflows, and creates tailored experiences. Our approach to funnel flow is holistic — we test, adapt, and optimize continuously using AI-powered marketing strategies and generative AI in marketing.',
+    capabilities: [
+      { n: '01', title: 'MarTech Strategy' },
+      { n: '02', title: 'Marketing Automation' },
+      { n: '03', title: 'AI & ML Integration' },
+      { n: '04', title: 'Data Analytics' },
+      { n: '05', title: 'CRM & CDP Implementation' },
+      { n: '06', title: 'Content Personalization' },
+      { n: '07', title: 'Campaign Optimization' },
+      { n: '08', title: 'Marketing Stack Audit' },
+      { n: '09', title: 'Generative AI Solutions' },
+    ],
+    approach: [
+      { n: '01', title: 'Discovery & Insight', body: 'We start with a comprehensive MarTech audit, diving deep into your business goals, audience behavior, and competitive landscape.' },
+      { n: '02', title: 'Implementation & Integration', body: 'We activate strategy through seamless MarTech stack integration, building intuitive experiences with AI-powered campaign testing.' },
+      { n: '03', title: 'Optimization & Analysis', body: 'We continuously refine using real-time performance analytics across the full marketing automation lifecycle.' },
+      { n: '04', title: 'Strategic Deployment & Evolution', body: 'Launch with precision, monitor post-release behavior, and continuously evolve for long-term success.' },
+    ],
+    faqs: [
+      { q: 'What is MarTech and how can it help my business?', a: 'MarTech combines marketing and technology to automate, measure, and optimize marketing efforts for better ROI and customer experiences.' },
+      { q: 'How does Wugweb use Generative AI in marketing?', a: 'We leverage generative AI for content creation, personalization, predictive analytics, and automated campaign optimization.' },
+      { q: 'Do you offer managed MarTech services?', a: 'Yes. We provide managed MarTech services including ongoing platform management, optimization, and support.' },
+      { q: 'What tools do you work with?', a: 'We work with leading MarTech platforms including HubSpot, Salesforce, Marketo, and custom AI/ML solutions.' },
+      { q: 'How do you ensure ethical AI use in marketing?', a: 'We implement transparent automation built on trust, ensuring every AI-driven solution upholds responsible AI principles.' },
+    ],
+    why: [
+      { title: 'Integrated Innovation', body: 'Experience the synergy of MarTech and AI integration, delivering bespoke strategies that unlock intelligent targeting.' },
+      { title: 'Strategic Growth Partnership', body: 'We go beyond execution with managed MarTech services focused on long-term impact.' },
+      { title: 'Data-Driven Mastery', body: 'Harness the full potential of marketing analytics, predictive insights, and conversion optimization.' },
+      { title: 'Ethical AI Leadership', body: 'We implement transparent automation built on trust with responsible AI principles.' },
+    ],
   },
   'web-app-development': {
-    title: 'Web Development',
+    title: 'Web & App Development',
+    subtitle: 'Robust Web Solutions Built for Scale',
     tags: ['Front-End', 'Back-End', 'DevOps & Cloud', 'Native Application'],
-    body: 'We build precision-engineered web and app development services that deliver exceptional performance and measurable business results. Our capabilities include responsive website development, ecommerce development, and advanced front-end engineering for seamless user experiences across devices.',
+    heroText: 'As a leading web and app development company, we build secure applications and performance-driven apps that translate your vision into scalable, user-focused experiences. Our work combines precision, speed, and strategy to deliver real business outcomes.',
+    body: 'It takes just 50 milliseconds for users to form an opinion about your website. We specialize in building scalable web solutions and custom digital solutions across marketing, eCommerce, and enterprise platforms. Our agile development process ensures speed, flexibility, and transparency from planning to deployment.',
+    capabilities: [
+      { n: '01', title: 'Front-End Development' },
+      { n: '02', title: 'Back-End Development' },
+      { n: '03', title: 'Full-Stack Development' },
+      { n: '04', title: 'E-Commerce Solutions' },
+      { n: '05', title: 'Mobile App Development' },
+      { n: '06', title: 'CMS Integration' },
+      { n: '07', title: 'API Development' },
+      { n: '08', title: 'Cloud Infrastructure' },
+      { n: '09', title: 'DevOps & CI/CD' },
+    ],
+    approach: [
+      { n: '01', title: 'Vision Ignition & Strategic Blueprinting', body: 'Define core objectives through immersive discovery sessions that align goals and uncover opportunities.' },
+      { n: '02', title: 'Experience Engineering & Rapid Validation', body: 'Design intuitive user journeys and validate early concepts through prototypes.' },
+      { n: '03', title: 'Development Mastery & Ecosystem Orchestration', body: 'Build high-performance ecosystems using agile development practices and best-in-class tools.' },
+      { n: '04', title: 'Precision Testing & Performance Elevation', body: 'Ensure stability, speed, and security through CI/CD pipelines and rigorous testing.' },
+      { n: '05', title: 'Strategic Deployment & Adaptive Evolution', body: 'Launch with precision, monitor post-release behavior, and continuously evolve.' },
+    ],
+    faqs: [
+      { q: 'What web development solutions do you provide?', a: 'We provide front-end, back-end, full-stack development, e-commerce solutions, mobile apps, CMS integration, and cloud infrastructure.' },
+      { q: 'Do you specialize in e-commerce?', a: 'Yes. We build custom e-commerce platforms and integrate with leading solutions like Shopify and WooCommerce.' },
+      { q: 'Can you develop native mobile applications?', a: 'Yes. We develop native mobile apps for iOS and Android using Swift, Kotlin, and cross-platform frameworks.' },
+      { q: "What is your development process?", a: 'We follow an agile development process with discovery, validation, development, testing, and deployment phases.' },
+      { q: 'Do you provide ongoing support?', a: 'Yes. We offer post-launch support, maintenance, and continuous improvement services.' },
+    ],
+    why: [
+      { title: 'Strategic Brand Vision', body: 'Resonant foundations architected through strategic insight and creative brilliance.' },
+      { title: 'Data-Driven Evolution', body: 'Data and analytics inform strategy, optimizing performance and fueling sustainable growth.' },
+      { title: 'Authentic Brand Storytelling', body: "Core essence unearthed, crafting narratives that forge emotional connections." },
+      { title: 'Holistic Brand Experience', body: 'Cohesive experiences engineered across all touchpoints ensuring consistency and impact.' },
+    ],
   },
   'qa-testing': {
     title: 'QA & Testing',
+    subtitle: 'Delivering Confidence Through Software QA Services',
     tags: ['Smoke', 'Critical', 'Regression', 'Feature'],
-    body: 'Our QA and testing services safeguard digital products through rigorous functional testing, seamless usability testing, and high-performance performance testing. We ensure every experience meets the highest standards of quality, reliability, and user satisfaction.',
+    heroText: "In a fast-paced digital world, quality assurance is critical to product success. Wugweb's QA and software testing services ensure your applications are reliable, high-performing, and user-ready.",
+    body: 'We build quality into every stage of the digital lifecycle. Our QA and software testing services align with your business goals and reduce risk. Through smart planning, advanced tools, and a focus on software reliability, we help you deliver trusted digital products.',
+    capabilities: [
+      { n: '01', title: 'Functional Testing' },
+      { n: '02', title: 'Performance Testing' },
+      { n: '03', title: 'Security Testing' },
+      { n: '04', title: 'Usability Testing' },
+      { n: '05', title: 'Accessibility Testing' },
+      { n: '06', title: 'Test Automation' },
+      { n: '07', title: 'Mobile Testing' },
+      { n: '08', title: 'API Testing' },
+    ],
+    approach: [
+      { n: '01', title: 'Strategic Planning', body: 'We align our testing strategy with your business goals and project requirements.' },
+      { n: '02', title: 'Proactive Execution', body: 'We embed QA throughout the development lifecycle, ensuring early and continuous testing.' },
+      { n: '03', title: 'Comprehensive Coverage', body: 'We provide a full spectrum of testing services to ensure every aspect is flawless.' },
+      { n: '04', title: 'Continuous Improvement', body: 'We are committed to ongoing optimization and refinement of our testing processes.' },
+    ],
+    faqs: [
+      { q: 'Why is QA & Testing crucial for digital success?', a: 'QA ensures reliability, performance, and user satisfaction — directly impacting brand reputation and business outcomes.' },
+      { q: 'What distinguishes Wugweb QA & Testing approach?', a: 'We embed QA throughout the development lifecycle, not just at the end, ensuring quality is engineered in.' },
+      { q: 'What testing services do you offer?', a: 'Functional, performance, security, usability, accessibility, automation, mobile, and API testing.' },
+      { q: 'Do you offer both manual and automated testing?', a: 'Yes. We provide both manual and automated testing services tailored to your project needs.' },
+      { q: 'How does QA impact brand reputation?', a: 'Reliable, bug-free experiences build user trust and strengthen brand credibility.' },
+    ],
+    why: [
+      { title: 'Build User Trust', body: 'We deliver seamless, error-free experiences through rigorous manual and automated QA services.' },
+      { title: 'Optimize Performance & ROI', body: 'By embedding test planning early, we reduce rework and boost development efficiency.' },
+      { title: 'Safeguard Brand Integrity', body: 'Our quality assurance reduces costly bugs and failures, ensuring your brand is known for reliability.' },
+      { title: 'Support Confident Innovation', body: 'Robust test automation frameworks give you the confidence to innovate without compromising quality.' },
+    ],
   },
   'no-code-solutions': {
     title: 'No-Code Development',
+    subtitle: 'The Engine of Hypergrowth',
     tags: ['Outsystems', 'Webflow', 'Mendix', 'Appian'],
-    body: 'As a no-code development agency, we empower businesses to launch digital products faster through strategic no-code solutions, expert Webflow and Bubble development, and rapid MVP development. Our approach accelerates time to market without compromising on performance or flexibility.',
+    heroText: 'No code app development helps teams move faster and build smarter. With no code development platforms, businesses create and scale digital products quickly, involving both technical and non-technical teams.',
+    body: 'Our approach to no code application development focuses on speed, precision, and scalable outcomes. We evaluate your business needs, define high-impact use cases, and deliver using top-tier no-code and low-code platforms.',
+    capabilities: [
+      { n: '01', title: 'Webflow Development' },
+      { n: '02', title: 'Bubble Applications' },
+      { n: '03', title: 'Outsystems Solutions' },
+      { n: '04', title: 'Mendix Development' },
+      { n: '05', title: 'FlutterFlow Apps' },
+      { n: '06', title: 'Shopify Stores' },
+      { n: '07', title: 'Zapier Automations' },
+      { n: '08', title: 'MVP Development' },
+    ],
+    approach: [
+      { n: '01', title: 'Strategic Assessment', body: 'Evaluate business needs to define high-impact no code use cases including platform selection and integration planning.' },
+      { n: '02', title: 'Rapid Prototyping & Development', body: 'Using visual app builders and workflow automation tools, we rapidly prototype and iterate with feedback.' },
+      { n: '03', title: 'Deployment & Optimization', body: 'We launch, track, and refine to ensure your no code solution delivers lasting value.' },
+    ],
+    faqs: [
+      { q: 'What is No-Code Development?', a: 'No-code development enables building applications visually without writing code, using drag-and-drop platforms.' },
+      { q: 'What can you build with No-Code?', a: 'Websites, web apps, mobile apps, automation workflows, e-commerce stores, and internal tools.' },
+      { q: 'What No-Code platforms do you use?', a: 'Webflow, Bubble, FlutterFlow, Outsystems, Mendix, Shopify, WordPress, and more.' },
+      { q: 'Can No-Code solutions scale?', a: 'Yes. Modern no-code platforms like Outsystems and Mendix are built for enterprise scale.' },
+      { q: 'Is No-Code secure?', a: 'Leading no-code platforms provide enterprise-grade security, compliance, and data protection.' },
+    ],
+    why: [
+      { title: 'Brand-First Digital Experiences', body: 'Bring brand strategy, design, and audience insights into the product without waiting on developers.' },
+      { title: 'Smaller Teams, Bigger Results', body: 'Build more with fewer resources while staying fast and focused.' },
+      { title: 'Launch with Unmatched Speed', body: 'With drag-and-drop app builders, products go live faster — from idea to execution with agility.' },
+      { title: 'Higher ROI with Lower Costs', body: 'Eliminate dependency on traditional developers and free your team to focus on strategy and growth.' },
+    ],
   },
   'lead-generation': {
     title: 'Lead Generation',
+    subtitle: 'Drive Qualified Leads with Data-Driven Strategies',
     tags: ['Strategy', 'Automation', 'Analytics'],
-    body: 'We help businesses generate qualified leads through strategic digital marketing, automation, and data-driven campaigns that drive measurable growth.',
+    heroText: 'We help businesses generate qualified leads through strategic digital marketing, automation, and data-driven campaigns that drive measurable growth.',
+    body: 'Our lead generation services combine strategic planning, marketing automation, and analytics to build a pipeline of qualified prospects for your business.',
+    capabilities: [
+      { n: '01', title: 'Lead Generation Strategy' },
+      { n: '02', title: 'Campaign Management' },
+      { n: '03', title: 'Conversion Optimization' },
+      { n: '04', title: 'Marketing Automation' },
+      { n: '05', title: 'Analytics & Reporting' },
+    ],
+    approach: [
+      { n: '01', title: 'Strategy Development', body: 'Define target audience, channels, and messaging strategy aligned with business goals.' },
+      { n: '02', title: 'Campaign Execution', body: 'Launch multi-channel campaigns with automated workflows and tracking.' },
+      { n: '03', title: 'Optimization & Scale', body: 'Continuously optimize based on performance data to maximize ROI.' },
+    ],
+    faqs: [
+      { q: 'What is lead generation?', a: 'Lead generation is the process of attracting and converting prospects into interested leads for your business.' },
+      { q: 'How do you generate leads?', a: 'Through multi-channel strategies including content marketing, paid ads, SEO, email campaigns, and automation.' },
+      { q: 'How do you measure success?', a: 'We track key metrics including conversion rates, cost per lead, ROI, and pipeline value.' },
+    ],
+    why: [
+      { title: 'Data-Driven Strategy', body: 'Every campaign is informed by data and optimized for performance.' },
+      { title: 'Multi-Channel Approach', body: 'We reach your audience where they are across all relevant channels.' },
+      { title: 'Measurable Results', body: 'Clear KPIs and reporting ensure you see exactly what works.' },
+    ],
   },
 };
 
 const { slug } = Astro.params;
-const service = slugToTitle[slug];
+const service = services[slug];
 
 if (!service) {
   return Astro.redirect('/404');
@@ -49,24 +274,132 @@ if (!service) {
 ---
 
 <BaseLayout title={service.title} description={service.body.slice(0, 160)}>
-  <section class="wrap service-detail">
-    <p class="eyebrow"><a href="/services">Services</a> / {service.title}</p>
-    <h1>{service.title}</h1>
-    <ul class="service-tags">
-      {service.tags.map((t) => <li>{t}</li>)}
-    </ul>
-    <p class="service-body">{service.body}</p>
-    <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
+  <!-- HERO -->
+  <section class="detail-hero">
+    <div class="wrap detail-hero-content">
+      <p class="eyebrow"><a href="/services">Services</a></p>
+      <h1 data-reveal>{service.title}</h1>
+      <p class="hero-sub" data-reveal>{service.subtitle}</p>
+      <p class="hero-text" data-reveal>{service.heroText}</p>
+      <ul class="service-tags" data-reveal>
+        {service.tags.map((t) => <li>{t}</li>)}
+      </ul>
+      <a href="/contact-us" class="btn btn-solid" data-reveal>Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <section class="wrap detail-body">
+    <p data-reveal>{service.body}</p>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="wrap capabilities-section">
+    <p class="eyebrow" data-reveal>What we can do</p>
+    <div class="caps-grid">
+      {service.capabilities.map((c) => (
+        <div class="cap-item" data-reveal>
+          <span class="cap-n">{c.n}</span>
+          <p>{c.title}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="wrap why-section">
+    <p class="eyebrow" data-reveal>Why us?</p>
+    <h2 data-reveal>Built to deliver lasting impact.</h2>
+    <div class="why-grid">
+      {service.why.map((w) => (
+        <div class="why-item" data-reveal>
+          <h3>{w.title}</h3>
+          <p>{w.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="wrap approach-section">
+    <p class="eyebrow" data-reveal>Our Approach</p>
+    <h2 data-reveal>A collaborative process rooted in strategic clarity.</h2>
+    <div class="approach-steps">
+      {service.approach.map((a) => (
+        <div class="approach-step" data-reveal>
+          <span class="step-n">{a.n}</span>
+          <h3>{a.title}</h3>
+          <p>{a.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="wrap detail-faq">
+    <h2 data-reveal>Frequently asked questions</h2>
+    <div class="faq-list" data-reveal>
+      {service.faqs.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="wrap detail-cta">
+    <h2 data-reveal>Let's create something remarkable together.</h2>
+    <a href="/contact-us" class="btn btn-solid" data-reveal>Contact Wugweb</a>
   </section>
 </BaseLayout>
 
 <style>
-  .service-detail { padding-block: 8rem; }
-  .service-detail .eyebrow a { color: var(--fg-muted); text-decoration: none; }
-  .service-detail .eyebrow a:hover { color: var(--fg); }
-  .service-detail h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; max-width: 16ch; }
+  .detail-hero { padding-block: 8rem 4rem; }
+  .detail-hero .eyebrow a { color: var(--fg-muted); text-decoration: none; }
+  .detail-hero .eyebrow a:hover { color: var(--fg); }
+  .detail-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; max-width: 16ch; }
+  .hero-sub { font-size: 1.3rem; color: var(--fg); margin-top: 0.5rem; }
+  .hero-text { margin-top: 1.5rem; max-width: 55ch; font-size: 1.1rem; line-height: 1.7; }
   .service-tags { list-style: none; margin: 1.5rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .service-tags li { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.35rem 0.85rem; border: 1px solid var(--line); border-radius: 999px; color: var(--fg-muted); }
-  .service-body { margin-top: 1.5rem; max-width: 55ch; font-size: 1.1rem; line-height: 1.7; }
-  .service-detail .btn { margin-top: 2rem; display: inline-flex; }
+  .detail-hero .btn { margin-top: 1rem; display: inline-flex; }
+
+  .detail-body { padding-block: 4rem 6rem; border-top: 1px solid var(--line); }
+  .detail-body p { max-width: 65ch; font-size: 1.1rem; line-height: 1.7; }
+
+  .capabilities-section { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .caps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 2rem; }
+  @media (min-width: 640px) { .caps-grid { grid-template-columns: repeat(3, 1fr); } }
+  .cap-item { background: var(--bg); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .cap-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: 0.8rem; }
+  .cap-item p { font-family: var(--font-display); font-size: 1rem; }
+
+  .why-section { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .why-section h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); margin-top: 0.75rem; max-width: 20ch; }
+  .why-grid { display: grid; gap: 2rem; margin-top: 3rem; }
+  @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  .why-item { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .why-item h3 { font-size: 1.15rem; font-weight: 500; }
+  .why-item p { margin-top: 0.5rem; }
+
+  .approach-section { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .approach-section h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); margin-top: 0.75rem; max-width: 22ch; }
+  .approach-steps { display: grid; gap: 2rem; margin-top: 3rem; }
+  .approach-step { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .step-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: 0.85rem; }
+  .approach-step h3 { font-size: 1.25rem; font-weight: 500; margin-top: 0.5rem; }
+  .approach-step p { margin-top: 0.5rem; max-width: 50ch; }
+
+  .detail-faq { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .detail-faq h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .faq-list { margin-top: 3rem; border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); padding-block: 1.25rem; }
+  .faq-item summary { font-family: var(--font-display); font-size: 1.1rem; cursor: pointer; }
+  .faq-item p { margin-top: 0.75rem; }
+
+  .detail-cta { padding-block: 6rem; text-align: center; border-top: 1px solid var(--line); }
+  .detail-cta h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); max-width: 18ch; margin-inline: auto; }
+  .detail-cta .btn { margin-top: 2rem; display: inline-flex; }
 </style>
