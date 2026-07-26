@@ -9,7 +9,7 @@
     "dev": "wrangler types && astro dev",
     "build": "astro build",
     "preview": "npm run build && wrangler pages dev ./dist",
-    "deploy": "npm run build"
+    "deploy": "npm run build && npx wrangler pages deploy dist"
   },
   "dependencies": {
     "astro": "^5.0.0",
