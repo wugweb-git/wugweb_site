@@ -1,0 +1,2 @@
+- Prefers the assistant to directly edit files, commit, and push changes rather than just providing instructions. Confidence: 1.0
+- Firm about project/resource names — will correct the assistant if it uses the wrong name, and expects the assistant to update config to match the actual name rather than suggesting changes. Confidence: 1.0
