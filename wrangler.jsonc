@@ -4,24 +4,10 @@
   "compatibility_date": "2026-07-01",
   "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "./dist",
-  "observability": {
-    "enabled": false,
-    "head_sampling_rate": 1,
-    "logs": {
-      "enabled": true,
-      "head_sampling_rate": 1,
-      "persist": true,
-      "invocation_logs": true
-    },
-    "traces": {
-      "enabled": true,
-      "persist": true,
-      "head_sampling_rate": 1
-    }
-  },
   // Hyperdrive still removed — placeholder id was the first suspected
   // failure point. Add back once real Neon URI + `wrangler hyperdrive
   // create` are done.
+  // Note: "observability" is Workers-only — Pages rejects it at deploy.
   "vars": {
     "SANITY_PROJECT_ID": "splvhmk1",
     "SANITY_DATASET": "production"
