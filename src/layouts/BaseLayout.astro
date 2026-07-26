@@ -11,12 +11,29 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · wugweb</title>
     {description && <meta name="description" content={description} />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title + ' · wugweb'} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:image" content="https://framerusercontent.com/assets/HGyE1GVVipOJ7v9BLJTPI7UW8.jpg" />
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title + ' · wugweb'} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content="https://framerusercontent.com/assets/HGyE1GVVipOJ7v9BLJTPI7UW8.jpg" />
+
+    <!-- Favicon -->
+    <link href="https://framerusercontent.com/images/yJuYg2lrJmWntF3zHlL9zyg8sdM.png" rel="icon" />
+    <link rel="apple-touch-icon" href="https://framerusercontent.com/images/eyKzVpdm2A4IB87tYf4LkVIM9mM.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

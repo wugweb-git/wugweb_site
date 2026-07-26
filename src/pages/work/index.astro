@@ -2,11 +2,17 @@
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+const categories = ['All', 'Design', 'Tech', 'AI', 'Martech', 'Strategy'];
+
 const workItems = [
   { client: 'Axis Bank', category: 'Strategy, UX Design', title: 'The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform', slug: 'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform', video: 'https://wugweb.online/assets/work/Axis%20Bank/axis_thumb.mp4' },
   { client: 'Philip Morris International', category: 'UX Design', title: 'Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future', slug: 'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future', video: 'https://wugweb.online/assets/work/Inkompass/inkompass_thumb.mp4' },
   { client: 'METCRED', category: 'UX Design, Strategy', title: 'The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience', slug: 'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience', video: 'https://wugweb.online/assets/work/Metcred/metcred_thumb.mp4' },
   { client: 'Airtel', category: 'UX Design', title: 'Airtel Xsafe – Securing Homes with Intuitive Digital Experiences', slug: 'airtel-xsafe-securing-homes-with-intuitive-digital-experiences', video: 'https://wugweb.online/assets/work/Airtel%20Xsafe/Xsafe_thumb.mp4' },
+  { client: 'Aditya Birla Capital', category: 'UX Design', title: "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool", slug: 'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool', video: 'https://wugweb.online/assets/work/Inkompass/inkompass_thumb.mp4' },
+  { client: 'VisiONE', category: 'UX Design', title: 'VisiONE – Empowering Workforce Development with Competency-Based Assessments', slug: 'visione-empowering-workforce-development-with-competency-based-assessments', video: 'https://wugweb.online/assets/work/VisiOne/visiOne_thumb.mp4' },
+  { client: 'IndusInd Bank', category: 'UX Design', title: 'IndusNinja – Your AI-Powered Financial Ninja', slug: 'indusninja-your-ai-powered-financial-ninja', video: 'https://wugweb.online/assets/work/Indusninja/Indusninja_thumb.mp4' },
+  { client: 'Sadhan', category: 'UX Design, Strategy', title: 'Sadhan – Streamlining Driver Onboarding & Lead Management', slug: 'sadhan-streamlining-driver-onboarding-lead-management', video: 'https://wugweb.online/assets/work/Sadhan/sadhan_thumb.mp4' },
 ];
 ---
 
@@ -18,10 +24,16 @@ const workItems = [
     </div>
   </section>
 
+  <section class="wrap work-filters" data-reveal>
+    {categories.map((c) => (
+      <button class="filter-chip" data-category={c}>{c}</button>
+    ))}
+  </section>
+
   <section class="wrap work-grid-section">
     <ul class="work-grid">
       {workItems.map((w) => (
-        <li data-reveal>
+        <li data-reveal data-categories={w.category}>
           <a href={`/work/${w.slug}`}>
             <video autoplay muted loop playsinline src={w.video}></video>
             <p class="work-client">{w.client} — {w.category}</p>
@@ -30,6 +42,26 @@ const workItems = [
         </li>
       ))}
     </ul>
+  </section>
+
+  <!-- BLOG TEASER -->
+  <section class="wrap blog-teaser">
+    <div class="teaser-head">
+      <h2 data-reveal>Some of our recent thoughts</h2>
+      <a href="/blog" class="btn btn-ghost">Visit our Blog</a>
+    </div>
+    <ul>
+      <li data-reveal><span class="eyebrow">Tech</span><a href="/blog/is-augmented-reality-the-future-of-ux">Is Augmented Reality the future of UX?</a></li>
+      <li data-reveal><span class="eyebrow">Martech</span><a href="/blog/6-strategies-that-got-my-side-project-its-first-1-000-users">6 Strategies That Got My Side Project Its First 1,000 Users</a></li>
+      <li data-reveal><span class="eyebrow">Design</span><a href="/blog/10-a-hole-design-patterns">10 A**hole Design Patterns</a></li>
+    </ul>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="wrap closing-cta">
+    <h2 data-reveal>We speak your Industry's language.</h2>
+    <p data-reveal>Partner with Wugweb for domain-driven design and development that delivers.</p>
+    <a href="/contact-us" class="btn btn-solid">Request Quote</a>
   </section>
 </BaseLayout>
 

@@ -1,10 +1,11 @@
 :root {
-  --bg: #191919;
-  --bg-elevated: #222;
-  --fg: #f4f4f4;
-  --fg-muted: #a3a3a3;
-  --accent: #2368d7;
-  --accent-warm: #ffbe1a;
+  --bg: #050505;
+  --bg-elevated: rgb(43, 43, 43);
+  --fg: #ffffff;
+  --fg-muted: rgb(155, 161, 165);
+  --accent: #FFBE1A;
+  --accent-warm: #FFBE1A;
+  --accent-lime: #ACF80B;
   --line: rgba(255, 255, 255, 0.08);
 
   --font-display: 'Inter Tight', system-ui, sans-serif;
@@ -62,7 +63,7 @@ a {
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-warm);
+  color: var(--accent);
 }
 
 .btn {
@@ -88,14 +89,14 @@ a {
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--accent-warm);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
 .btn-solid {
   background: var(--accent);
   border-color: var(--accent);
-  color: var(--fg);
+  color: #050505;
 }
 
 .btn-solid:hover {

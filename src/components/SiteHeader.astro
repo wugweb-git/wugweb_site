@@ -24,9 +24,28 @@ const navLinks = [
 </header>
 
 <style>
-  .site-header { position: relative; z-index: 10; }
-  .site-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: 1.5rem; }
-  .site-logo { font-family: var(--font-display); font-weight: 700; text-decoration: none; font-size: 1.1rem; color: var(--fg); }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    background: rgb(43, 43, 43);
+  }
+  .site-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.25rem;
+  }
+  .site-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: var(--fg);
+  }
   .site-links { display: none; gap: 2rem; font-family: var(--font-mono); font-size: 0.85rem; }
   .site-links a { text-decoration: none; color: var(--fg); }
   .desktop-cta { display: none; }
