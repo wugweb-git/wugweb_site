@@ -271,6 +271,18 @@ const service = services[slug];
 if (!service) {
   return Astro.redirect('/404');
 }
+
+export async function getStaticPaths() {
+  return [
+    'brand-strategy',
+    'experience-design',
+    'martech-genai',
+    'web-app-development',
+    'qa-testing',
+    'no-code-solutions',
+    'lead-generation',
+  ].map(s => ({ params: { slug: s } }));
+}
 ---
 
 <BaseLayout title={service.title} description={service.body.slice(0, 160)}>

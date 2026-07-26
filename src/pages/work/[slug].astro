@@ -207,6 +207,19 @@ if (!work) {
   return Astro.redirect('/404');
 }
 
+export async function getStaticPaths() {
+  return [
+    'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform',
+    'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future',
+    'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience',
+    'airtel-xsafe-securing-homes-with-intuitive-digital-experiences',
+    'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool',
+    'visione-empowering-workforce-development-with-competency-based-assessments',
+    'indusninja-your-ai-powered-financial-ninja',
+    'sadhan-streamlining-driver-onboarding-lead-management',
+  ].map(s => ({ params: { slug: s } }));
+}
+
 const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice(0, 2);
 ---
 

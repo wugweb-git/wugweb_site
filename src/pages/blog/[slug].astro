@@ -57,7 +57,7 @@ const posts: Record<string, {
     intro: 'Getting your first 1,000 users is the hardest milestone for any side project. Here are six strategies that actually worked.',
     sections: [
       { h: '1. Build in public', body: 'Share your progress, struggles, and lessons on social media. Transparency builds an audience before you launch.' },
-      { h: '2. Find your niche communities', body: 'Instead of casting a wide net, go deep into specific communities (Reddit, Discord, niche forums) where your target users already gather.' },
+      { h: '2. Find your niche communities', body: 'Instead of casting a wide net, go deep into specific communities where your target users already gather.' },
       { h: '3. Offer value before asking', body: 'Create free tools, guides, or templates related to your product. Give first, ask for signups second.' },
       { h: '4. Leverage existing platforms', body: 'Product Hunt, Hacker News, and Indie Hackers can drive significant traffic if you launch thoughtfully.' },
       { h: '5. Personal outreach', body: 'Manually reach out to potential users with personalized messages. It does not scale, but those first users become your biggest advocates.' },
@@ -87,7 +87,7 @@ const posts: Record<string, {
     date: '20 Feb 2021',
     readTime: '5 mins read',
     tags: ['Material Design', 'Design'],
-    intro: "Google's Material Design guidelines offer a comprehensive framework for building cohesive digital experiences. Here are the key takeaways.",
+    intro: "Google's Material Design guidelines offer a comprehensive framework for building cohesive digital experiences.",
     sections: [
       { h: '1. Material is the metaphor', body: 'Material design is inspired by the physical world — surfaces, edges, and realistic lighting create familiar interfaces.' },
       { h: '2. Bold, graphic, intentional', body: 'Use typography, color, and imagery to create hierarchy and meaning.' },
@@ -105,10 +105,10 @@ const posts: Record<string, {
     tags: ['Typography', 'UI Design'],
     intro: 'Typography is the backbone of UI design. These principles will help you create readable, accessible, and beautiful interfaces.',
     sections: [
-      { h: '1. Establish a type scale', body: 'Use a modular scale (like 1.25 or 1.333) to create consistent sizing across headings and body text.' },
+      { h: '1. Establish a type scale', body: 'Use a modular scale to create consistent sizing across headings and body text.' },
       { h: '2. Limit typefaces', body: 'Stick to two typefaces maximum — one for headings, one for body text.' },
-      { h: '3. Mind your line-height', body: 'Body text should have a line-height of 1.5–1.6 for optimal readability.' },
-      { h: '4. Measure matters', body: 'Keep line length between 45–75 characters for comfortable reading.' },
+      { h: '3. Mind your line-height', body: 'Body text should have a line-height of 1.5-1.6 for optimal readability.' },
+      { h: '4. Measure matters', body: 'Keep line length between 45-75 characters for comfortable reading.' },
       { h: '5. Hierarchy is key', body: 'Use weight, size, and color to establish clear visual hierarchy.' },
     ],
   },
@@ -125,7 +125,7 @@ const posts: Record<string, {
       { h: '2. Radix UI', body: 'An open-source component library with unstyled primitives for complete design control.' },
       { h: '3. Shadcn/UI', body: 'A collection of beautifully designed components that you copy and paste into your apps.' },
       { h: '4. Polaris', body: 'Shopifys design system for building commerce experiences at scale.' },
-      { h: '5. Spectrum', body: 'Adobe\'s design system that powers their entire product ecosystem.' },
+      { h: '5. Spectrum', body: "Adobe's design system that powers their entire product ecosystem." },
     ],
   },
   '10-rules-of-thumb-in-ui-design': {
@@ -158,7 +158,7 @@ const posts: Record<string, {
     tags: ['Career', 'Design'],
     intro: 'The role of a UI/UX designer has evolved dramatically. Here are the essential skills you need to stay relevant.',
     sections: [
-      { h: '1. User Research', body: 'Understanding user needs through interviews, surveys, and usability testing is foundational.' },
+      { h: '1. User Research', body: 'Understanding user needs through interviews, surveys, and usability testing.' },
       { h: '2. Visual Design', body: 'Master typography, color theory, layout, and visual hierarchy.' },
       { h: '3. Interaction Design', body: 'Design meaningful micro-interactions, transitions, and animations.' },
       { h: '4. Prototyping', body: 'Rapidly create interactive prototypes to test and validate ideas.' },
@@ -230,6 +230,24 @@ const posts: Record<string, {
     ],
   },
 };
+
+export async function getStaticPaths() {
+  return [
+    'is-augmented-reality-the-future-of-ux',
+    '10-a-hole-design-patterns',
+    '6-strategies-that-got-my-side-project-its-first-1-000-users',
+    '10-hacks-for-illustrating-and-drawing-in-figma',
+    '10-key-takeaways-from-googles-material-design-guidelines',
+    '10-principles-for-typography-in-ui-design',
+    'top-10-design-systems-for-uxui-in-2026',
+    '10-rules-of-thumb-in-ui-design',
+    '10-essential-skills-for-the-modern-ui-ux-designer',
+    '10-figma-tricks-i-wish-i-knew-earlier',
+    '10-ways-to-design-more-inclusive-products',
+    '10-confessions-of-a-product-designer',
+    'when-ux-meets-cx-designing-seamless-experiences',
+  ].map(slug => ({ params: { slug } }));
+}
 
 const { slug } = Astro.params;
 const post = posts[slug];
