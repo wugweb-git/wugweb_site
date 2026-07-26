@@ -1,11 +1,11 @@
 :root {
-  --bg: #0a0a0c;
-  --bg-elevated: #131316;
-  --fg: #f3f1ea;
-  --fg-muted: #8b8980;
-  --accent: #4b4ffa;
-  --accent-warm: #ffb84d;
-  --line: rgba(243, 241, 234, 0.12);
+  --bg: #191919;
+  --bg-elevated: #222;
+  --fg: #f4f4f4;
+  --fg-muted: #a3a3a3;
+  --accent: #2368d7;
+  --accent-warm: #ffbe1a;
+  --line: rgba(255, 255, 255, 0.08);
 
   --font-display: 'Inter Tight', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
