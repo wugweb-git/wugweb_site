@@ -75,12 +75,47 @@ const workItems = [
   .work-grid video { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; }
   .work-client { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); margin-top: 1rem; }
   .work-grid h3 { font-size: 1.15rem; font-weight: 500; margin-top: 0.4rem; }
+  .work-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; padding-block: 2rem; border-top: 1px solid var(--line); }
+  .filter-chip { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.5rem 1rem; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
+  .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 190, 26, 0.1); }
+  .work-grid li.hidden { display: none; }
+  .blog-teaser { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .teaser-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .teaser-head h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); max-width: 18ch; }
+  .blog-teaser ul { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; gap: 1.5rem; }
+  @media (min-width: 768px) { .blog-teaser ul { grid-template-columns: repeat(3, 1fr); } }
+  .blog-teaser li { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .blog-teaser .eyebrow { display: block; margin-bottom: 0.5rem; }
+  .blog-teaser a { text-decoration: none; color: var(--fg); font-size: 1.1rem; }
+  .closing-cta { padding-block: 6rem; border-top: 1px solid var(--line); text-align: center; }
+  .closing-cta h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
+  .closing-cta p { margin-top: 1rem; }
+  .closing-cta .btn { margin-top: 2rem; }
 </style>
 
 <script>
   import { animate, inView } from 'motion';
   animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.work-grid li', (el) => {
+  inView('.work-grid li, .blog-teaser li', (el) => {
     animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, easing: 'ease-out' });
   });
+
+  // Filter chips
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const cat = chip.dataset.category;
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      document.querySelectorAll('.work-grid li').forEach(item => {
+        if (cat === 'All' || item.dataset.categories?.includes(cat)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+  // Activate first chip
+  document.querySelector('.filter-chip')?.classList.add('active');
 </script>
