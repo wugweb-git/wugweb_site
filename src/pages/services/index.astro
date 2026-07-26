@@ -1,0 +1,20 @@
+---
+export const prerender = true; // static — rebuild on content change, no per-request work needed
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { servicesListQuery } from '../../lib/queries';
+
+const services = await sanityClient.fetch(servicesListQuery);
+---
+
+<BaseLayout title="Services">
+  <ul>
+    {services.map((s: any) => (
+      <li>
+        <a href={`/services/${s.slug}`}>{s.title}</a>
+        {s.summary && <p>{s.summary}</p>}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

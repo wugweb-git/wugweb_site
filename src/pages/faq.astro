@@ -1,0 +1,16 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'faq' });
+---
+
+<BaseLayout title="FAQ" description={page?.seoDescription}>
+  <h1>{page?.title ?? 'FAQ'}</h1>
+  {/* the singletonPage schema is a generic body right now — if FAQ needs
+      real Q&A pairs (it probably does), give it its own schema with an
+      array of {question, answer} objects instead of reusing this one */}
+</BaseLayout>

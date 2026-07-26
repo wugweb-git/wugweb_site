@@ -1,0 +1,13 @@
+---
+// Not prerendered — this is where a contact-form submit handler will live.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'contact' });
+---
+
+<BaseLayout title="Contact" description={page?.seoDescription}>
+  <h1>{page?.title ?? 'Contact us'}</h1>
+  {/* form + its POST target (e.g. src/pages/api/contact.ts) not built yet */}
+</BaseLayout>

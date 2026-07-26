@@ -1,0 +1,17 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { postsListQuery } from '../../lib/queries';
+
+const posts = await sanityClient.fetch(postsListQuery);
+---
+
+<BaseLayout title="Blog">
+  <ul>
+    {posts.map((p: any) => (
+      <li><a href={`/blog/${p.slug}`}>{p.title}</a></li>
+    ))}
+  </ul>
+</BaseLayout>

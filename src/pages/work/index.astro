@@ -1,0 +1,20 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { caseStudiesListQuery } from '../../lib/queries';
+
+const caseStudies = await sanityClient.fetch(caseStudiesListQuery);
+---
+
+<BaseLayout title="Work">
+  <ul>
+    {caseStudies.map((c: any) => (
+      <li>
+        <a href={`/work/${c.slug}`}>{c.title}</a>
+        {c.client && <span> — {c.client}</span>}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

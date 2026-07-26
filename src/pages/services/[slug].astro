@@ -1,0 +1,27 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { servicesListQuery, serviceBySlugQuery } from '../../lib/queries';
+
+// Prerendered dynamic routes need getStaticPaths — this is what turns
+// the 7 services in the current sitemap into 7 build-time pages.
+export async function getStaticPaths() {
+  const services = await sanityClient.fetch(servicesListQuery);
+  return services.map((s: any) => ({ params: { slug: s.slug } }));
+}
+
+const { slug } = Astro.params;
+const service = await sanityClient.fetch(serviceBySlugQuery, { slug });
+
+if (!service) {
+  return Astro.redirect('/404');
+}
+---
+
+<BaseLayout title={service.title} description={service.summary}>
+  <h1>{service.title}</h1>
+  <p>{service.summary}</p>
+  {/* body is Portable Text — render with @portabletext/react or similar once you wire up rich content */}
+</BaseLayout>

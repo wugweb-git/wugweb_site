@@ -1,0 +1,35 @@
+---
+// No `prerender` export -> dynamic (default under output: 'server'),
+// since the Hero island reads a per-visitor cookie/profile.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.tsx';
+import { sanityClient } from '../lib/sanity';
+import { servicesListQuery, caseStudiesListQuery } from '../lib/queries';
+
+const [services, caseStudies] = await Promise.all([
+  sanityClient.fetch(servicesListQuery),
+  sanityClient.fetch(caseStudiesListQuery),
+]);
+---
+
+<BaseLayout title="Home">
+  <Hero client:load />
+
+  <section>
+    <h2>Services</h2>
+    <ul>
+      {services.map((s: any) => (
+        <li><a href={`/services/${s.slug}`}>{s.title}</a></li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Work</h2>
+    <ul>
+      {caseStudies.map((c: any) => (
+        <li><a href={`/work/${c.slug}`}>{c.title}</a></li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

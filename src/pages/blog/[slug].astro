@@ -1,0 +1,24 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { postsListQuery, postBySlugQuery } from '../../lib/queries';
+
+export async function getStaticPaths() {
+  const posts = await sanityClient.fetch(postsListQuery);
+  return posts.map((p: any) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const post = await sanityClient.fetch(postBySlugQuery, { slug });
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<BaseLayout title={post.title} description={post.excerpt}>
+  <h1>{post.title}</h1>
+  <p>{post.excerpt}</p>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'about' });
+---
+
+<BaseLayout title="About" description={page?.seoDescription}>
+  <h1>{page?.title ?? 'About'}</h1>
+</BaseLayout>

@@ -1,0 +1,16 @@
+name = "wugweb-site"
+compatibility_date = "2026-07-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "./dist"
+
+# Created via: wrangler hyperdrive create wugweb-neon --connection-string="<your neon connection string>"
+# That command prints the id to put below.
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "REPLACE_WITH_HYPERDRIVE_CONFIG_ID"
+
+# Sanity project id/dataset are not secret — fine as plain vars.
+# Real secrets (if any) go via: wrangler pages secret put <NAME>
+[vars]
+SANITY_PROJECT_ID = "REPLACE_ME"
+SANITY_DATASET = "production"

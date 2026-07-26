@@ -1,0 +1,25 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { caseStudiesListQuery, caseStudyBySlugQuery } from '../../lib/queries';
+
+export async function getStaticPaths() {
+  const caseStudies = await sanityClient.fetch(caseStudiesListQuery);
+  return caseStudies.map((c: any) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const caseStudy = await sanityClient.fetch(caseStudyBySlugQuery, { slug });
+
+if (!caseStudy) {
+  return Astro.redirect('/404');
+}
+---
+
+<BaseLayout title={caseStudy.title} description={caseStudy.summary}>
+  <h1>{caseStudy.title}</h1>
+  {caseStudy.client && <p>Client: {caseStudy.client}</p>}
+  <p>{caseStudy.summary}</p>
+</BaseLayout>
