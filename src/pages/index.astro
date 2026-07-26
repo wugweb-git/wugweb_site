@@ -37,6 +37,49 @@ const teaserServices = [
     video: 'https://wugweb.online/assets/more/home/Web%20%26%20App%20Development.mp4',
   },
 ];
+
+// Curated homepage case-study picks — same treatment as services above:
+// a fixed, ordered homepage teaser rather than a live Sanity query.
+// Full list lives at /work, Sanity-driven once you add caseStudy docs.
+// NOTE: two entries below share the same "Inkompass" thumbnail on the
+// live site (Aditya Birla Capital + Philip Morris) — looks like a
+// mismatched-asset bug there, not something I introduced. Flagging
+// rather than silently fixing, since I don't know the intended thumb.
+const workItems = [
+  { client: 'Aditya Birla Capital', category: 'UX Design', title: "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool", slug: 'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool', video: 'https://wugweb.online/assets/work/Inkompass/inkompass_thumb.mp4' },
+  { client: 'Axis Bank', category: 'Strategy, UX Design', title: 'The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform', slug: 'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform', video: 'https://wugweb.online/assets/work/Axis%20Bank/axis_thumb.mp4' },
+  { client: 'METCRED', category: 'UX Design, Strategy', title: 'The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience', slug: 'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience', video: 'https://wugweb.online/assets/work/Metcred/metcred_thumb.mp4' },
+  { client: 'Philip Morris International', category: 'UX Design', title: 'Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future', slug: 'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future', video: 'https://wugweb.online/assets/work/Inkompass/inkompass_thumb.mp4' },
+  { client: 'Airtel', category: 'UX Design', title: 'Airtel Xsafe – Securing Homes with Intuitive Digital Experiences', slug: 'airtel-xsafe-securing-homes-with-intuitive-digital-experiences', video: 'https://wugweb.online/assets/work/Airtel%20Xsafe/Xsafe_thumb.mp4' },
+  { client: 'VisiONE', category: 'UX Design', title: 'VisiONE – Empowering Workforce Development with Competency-Based Assessments', slug: 'visione-empowering-workforce-development-with-competency-based-assessments', video: 'https://wugweb.online/assets/work/VisiOne/visiOne_thumb.mp4' },
+  { client: 'IndusInd Bank', category: 'UX Design', title: 'IndusNinja – Your AI-Powered Financial Ninja', slug: 'indusninja-your-ai-powered-financial-ninja', video: 'https://wugweb.online/assets/work/Indusninja/Indusninja_thumb.mp4' },
+  { client: 'Sadhan', category: 'UX Design, Strategy', title: 'Sadhan – Streamlining Driver Onboarding & Lead Management', slug: 'sadhan-streamlining-driver-onboarding-lead-management', video: 'https://wugweb.online/assets/work/Sadhan/sadhan_thumb.mp4' },
+];
+
+// Client logos — still on Framer's CDN (framerusercontent.com), not
+// migrated. These will break whenever Framer stops serving them. Real
+// follow-up: re-upload as Sanity assets or drop into R2, then swap
+// these src values. Using directly for now to get the section working.
+const clientLogos = [
+  { name: 'Adtech', src: 'https://framerusercontent.com/images/nc5UeWDPtjs9Ymj2mqK3OsFE.png' },
+  { name: 'Acko', src: 'https://framerusercontent.com/images/7ZWZTC1heH7oAj2UEPk5WdmqgE.png' },
+  { name: 'Tanishq', src: 'https://framerusercontent.com/images/RMGYiWyKTtfr6KxxFAgEP6B0s.png' },
+  { name: 'ITC', src: 'https://framerusercontent.com/images/MNcVx0PTQNUOilSjr6j5zgy51u4.png' },
+  { name: 'Airtel', src: 'https://framerusercontent.com/images/gYvQx01uxXUY8MKGB3kwJmqAQ.png' },
+  { name: 'Amazon Ads', src: 'https://framerusercontent.com/images/vEyEWvs1Yb10Zww15nV4Db3E.png' },
+  { name: 'Aditya Birla Capital', src: 'https://framerusercontent.com/images/F3H5mFd6YHEScmNRUFoy0ootKmQ.png' },
+  { name: 'NTUC', src: 'https://framerusercontent.com/images/Xl4UZzHZx3eaDLzAtv1eQuxMac.png' },
+  { name: 'LinkedIn Ads', src: 'https://framerusercontent.com/images/rhwTBbwxdPvvu180QCe16R0Ec.png' },
+  { name: 'U Income', src: 'https://framerusercontent.com/images/9qQKBgCdUhU3Kv9lvj444xJXR4.png' },
+  { name: 'SpiceJet', src: 'https://framerusercontent.com/images/iuPX9c0k6RRUKQwrtJlHCt4ymA.png' },
+  { name: 'Cartier', src: 'https://framerusercontent.com/images/v3NYQBsmFqqlpLiBPnTSQgmgm9Q.png' },
+  { name: 'IndusInd Bank', src: 'https://framerusercontent.com/images/OAJmygOGcSwLJKPhchwfcg95vg.png' },
+];
+
+const industries = [
+  'Government', 'Insurtech', 'Travel', 'Logistics', 'Automotive',
+  'Fintech', 'Edtech', 'Sports', 'E-commerce', 'Media', 'Energy', 'NGOs',
+];
 ---
 
 <BaseLayout title="Home" description="Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.">
@@ -116,10 +159,73 @@ const teaserServices = [
     <a href="/services" class="btn btn-ghost">View Services</a>
   </section>
 
-  <!-- Sections still to build: work grid, client-logo strip, industries,
-       blog teaser, closing CTA banner. Scoped out of this pass. -->
+  <!-- WORK -->
+  <section class="wrap work">
+    <div class="work-head">
+      <h2 data-reveal>Work that Leads with Clarity and Delivers with Impact</h2>
+      <a href="/work" class="btn btn-ghost">View case studies</a>
+    </div>
+
+    <ul class="work-grid">
+      {workItems.map((w) => (
+        <li data-reveal>
+          <a href={`/work/${w.slug}`}>
+            <video autoplay muted loop playsinline src={w.video}></video>
+            <p class="work-client">{w.client} — {w.category}</p>
+            <h3>{w.title}</h3>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- CLIENT LOGOS -->
+  <section class="wrap logos">
+    <p class="eyebrow" data-reveal>Trusted by leading brands</p>
+    <ul class="logo-grid" data-reveal>
+      {clientLogos.map((l) => (
+        <li><img src={l.src} alt={l.name} loading="lazy" /></li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="wrap industries">
+    <h2 data-reveal>Industries We Empower</h2>
+    <p data-reveal>
+      From local businesses to international corporations, our clients all share one common
+      understanding when it comes to building authentic brands: the power of research, strategy,
+      creativity, and design.
+    </p>
+    <a href="/about" class="btn btn-ghost">More about us</a>
+
+    <ul class="industry-grid">
+      {industries.map((i) => <li data-reveal>{i}</li>)}
+    </ul>
+  </section>
+
+  <!-- BLOG TEASER -->
+  <section class="wrap blog-teaser">
+    <div class="work-head">
+      <h2 data-reveal>Some of our recent thoughts</h2>
+      <a href="/blog" class="btn btn-ghost">Visit our Blog</a>
+    </div>
+    <ul>
+      <li data-reveal><span class="eyebrow">Tech</span><a href="/blog/is-augmented-reality-the-future-of-ux">Is Augmented Reality the future of UX?</a></li>
+      <li data-reveal><span class="eyebrow">Martech</span><a href="/blog/6-strategies-that-got-my-side-project-its-first-1-000-users">6 Strategies That Got My Side Project Its First 1,000 Users</a></li>
+      <li data-reveal><span class="eyebrow">Design</span><a href="/blog/10-a-hole-design-patterns">10 A**hole Design Patterns</a></li>
+    </ul>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="wrap closing-cta">
+    <h2 data-reveal>We speak your Industry's language.</h2>
+    <p data-reveal>Partner with Wugweb for domain-driven design and development that delivers.</p>
+    <a href="/contact-us" class="btn btn-solid">Request Quote</a>
+  </section>
+
   <p class="wrap" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); padding-block: 3rem;">
-    {services.length} services in Sanity · full homepage sections below the fold not yet built
+    {services.length} services in Sanity
   </p>
 </BaseLayout>
 
@@ -299,6 +405,181 @@ const teaserServices = [
       display: block;
     }
   }
+
+  .work {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .work-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .work-head h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    max-width: 22ch;
+  }
+
+  .work-grid {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .work-grid a {
+    text-decoration: none;
+    display: block;
+  }
+
+  .work-grid video {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .work-client {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    margin-top: 1rem;
+  }
+
+  .work-grid h3 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-top: 0.4rem;
+  }
+
+  .logos {
+    padding-block: 4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .logo-grid {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .logo-grid img {
+    height: 32px;
+    width: auto;
+    filter: grayscale(1) brightness(1.6);
+    opacity: 0.7;
+  }
+
+  .industries {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .industries h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    max-width: 18ch;
+  }
+
+  .industries p {
+    margin-top: 1.25rem;
+    max-width: 55ch;
+  }
+
+  .industries .btn {
+    margin-top: 1.5rem;
+  }
+
+  .industry-grid {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  @media (min-width: 640px) {
+    .industry-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .industry-grid li {
+    background: var(--bg);
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .blog-teaser {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .blog-teaser ul {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .blog-teaser ul {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .blog-teaser li {
+    border-top: 1px solid var(--line);
+    padding-top: 1.25rem;
+  }
+
+  .blog-teaser .eyebrow {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-teaser a {
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 1.1rem;
+  }
+
+  .closing-cta {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+
+  .closing-cta h2 {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+  }
+
+  .closing-cta p {
+    margin-top: 1rem;
+  }
+
+  .closing-cta .btn {
+    margin-top: 2rem;
+  }
 </style>
 
 <script>
@@ -324,7 +605,7 @@ const teaserServices = [
 
   animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.4 });
 
-  inView('.service-row', (el) => {
+  inView('.service-row, .work-grid li, .industry-grid li, .blog-teaser li', (el) => {
     animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
   });
 </script>

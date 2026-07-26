@@ -1,13 +1,327 @@
 ---
 export const prerender = true;
-
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { sanityClient } from '../lib/sanity';
-import { singletonPageQuery } from '../lib/queries';
 
-const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'about' });
+// Stats show as "0+" / "0%" on the live site — genuinely placeholder
+// there too, not something I'm inventing numbers for.
+const stats = [
+  { n: '01', label: 'Years of experience', copy: 'Expertise that drives meaningful results.' },
+  { n: '02', label: 'Projects delivered', copy: 'Creative solutions built with purpose.' },
+  { n: '03', label: 'Client Retention Rate', copy: 'Long-term partnerships built on real results.' },
+  { n: '04', label: 'Brands transformed', copy: 'From strategy to standout visuals.' },
+];
+
+const values = [
+  { n: '01', title: 'Bold', copy: 'We balance distinctive expression with measurable results.' },
+  { n: '02', title: 'Adaptive', copy: 'We build flexible solutions without sacrificing creative vision.' },
+  { n: '03', title: 'Distinct', copy: 'We reject sameness, crafting experiences with unique identities.' },
+  { n: '04', title: 'Start Smart, Start Small', copy: '' }, // no description on the live page either
+];
+
+const culture = [
+  'We Create Trust', 'We listen closely', 'We define your value', 'We pivot',
+  'We hustle', 'We form connections', 'We get cosy', 'We get our hands dirty',
+];
+
+// Real team, real roles — one flagged anomaly noted in chat, not silently
+// fixed: the "Legal Head" entry's displayed name on the live site is
+// "Product", which isn't a name. Kept as-is rather than guessing.
+const team = [
+  { name: 'Vedanshu Srivastava', role: 'Founder', photo: 'https://framerusercontent.com/images/BgQ15qJouVb8OyXweOeBmrm2KA.jpeg' },
+  { name: 'Product', role: 'Legal Head', photo: 'https://framerusercontent.com/images/8ev8ygLeu2ojG6tRryEb6t8qwI.jpeg' },
+  { name: 'Praneet Verma', role: 'Business', photo: 'https://framerusercontent.com/images/2aHoqbNbSXp1qV0XuLVNvhtZ5I.jpeg' },
+  { name: 'Vaibhav Shukla', role: 'System Architect', photo: 'https://framerusercontent.com/images/Z2OizAAaP2HGW4fDIo1Saciw90.jpeg' },
+  { name: 'Shreya Khot', role: 'MarTech', photo: 'https://framerusercontent.com/images/8LsgwgmI0RS1Xns2zst8UT7iYM.jpeg' },
+  { name: 'Satish Kumar', role: 'UI Engineer', photo: 'https://framerusercontent.com/images/0wjWTAp6HbNf1u8pHJqtAXgpGXU.jpeg' },
+  { name: 'Kartik Chaturvedi', role: 'Business Operations', photo: 'https://framerusercontent.com/images/FpvDZYy1Fjdd0KJbr0Swb0qbfg.jpeg' },
+  { name: 'Swarndeep Singh', role: 'Business Operations', photo: 'https://framerusercontent.com/images/lZQoeLMysDMreHVIrEWrlsKFl4.jpg' },
+  { name: 'Sunil Thapa', role: 'Design', photo: 'https://framerusercontent.com/images/HThPZqxWcvwjUAN0LOXob521FBU.jpg' },
+  { name: 'Divyanshu Pundir', role: 'UX/UI', photo: 'https://framerusercontent.com/images/M40J606Z8by806Gb2rXEuikUE.jpeg' },
+  { name: 'Ojaswa Verma', role: 'Project Manager', photo: 'https://framerusercontent.com/images/7wKMAd2vIQBzsCkPiApcF7lxeo.png' },
+];
 ---
 
-<BaseLayout title="About" description={page?.seoDescription}>
-  <h1>{page?.title ?? 'About'}</h1>
+<BaseLayout title="About" description="Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.">
+  <!-- HERO -->
+  <section class="about-hero">
+    <video class="about-hero-video" autoplay muted loop playsinline
+      src="https://wugweb.online/assets/more/about/about_message.mp4"></video>
+    <div class="about-hero-overlay"></div>
+    <div class="wrap about-hero-content">
+      <p class="eyebrow" data-reveal>About Us</p>
+      <h1 data-reveal>
+        Wugweb is evolving in the digital landscape and has rapidly moved forward, with our
+        services expanding to digital marketing, emerging tech innovation & production.
+      </h1>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="wrap stats">
+    <ul>
+      {stats.map((s) => (
+        <li data-reveal>
+          <span class="stat-n">{s.n}</span>
+          <p class="stat-label">{s.label}</p>
+          <p class="stat-copy">{s.copy}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- VALUES -->
+  <section class="wrap values">
+    <p class="eyebrow" data-reveal>Bringing intuitive and beautiful innovations to life.</p>
+    <p class="values-lede" data-reveal>
+      Creating projects at the nexus of design and technology, bringing the future into the
+      present. We develop comprehensive strategies, looking from a hybrid and more coherent
+      perspective. Then we give it a life of its own by equipping it with cutting-edge systems
+      that allow it to adapt to and live in the wild, ever-evolving environment.
+    </p>
+    <ol class="values-list">
+      {values.map((v) => (
+        <li data-reveal>
+          <span class="stat-n">{v.n}</span>
+          <h3>{v.title}</h3>
+          {v.copy && <p>{v.copy}</p>}
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- CULTURE -->
+  <section class="wrap culture">
+    <h2 data-reveal>Culture Reigns Supreme</h2>
+    <p data-reveal>
+      Establishing a robust foundational culture within our organisation is vital to Wugweb's
+      long-term vision, growth, and success. We are driven by four core values: intimacy,
+      transparency, urgency, and pivoting.
+    </p>
+    <ul class="culture-grid">
+      {culture.map((c) => <li data-reveal>{c}</li>)}
+    </ul>
+  </section>
+
+  <!-- TEAM -->
+  <section class="wrap team">
+    <h2 data-reveal>Meet our team</h2>
+    <ul class="team-grid">
+      {team.map((t) => (
+        <li data-reveal>
+          <img src={t.photo} alt={t.name} loading="lazy" />
+          <p class="team-role">{t.role}</p>
+          <h3>{t.name}</h3>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="wrap closing-cta">
+    <p class="eyebrow" data-reveal>Booking New Partnerships</p>
+    <h2 data-reveal>Let's Build What's Next, Together</h2>
+    <p data-reveal>
+      We partner with ambitious teams to design, engineer, and scale digital products that
+      actually move the business forward. If you're building something meaningful, we'd love to
+      be part of the journey.
+    </p>
+    <a href="/contact-us" class="btn btn-solid">Start a Conversation</a>
+  </section>
 </BaseLayout>
+
+<style>
+  .about-hero {
+    position: relative;
+    min-height: 70svh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .about-hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0.7) 0%, rgba(10, 10, 12, 0.55) 45%, var(--bg) 100%);
+    z-index: 1;
+  }
+  .about-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-block: 5rem;
+  }
+  .about-hero-content h1 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 500;
+    max-width: 26ch;
+    margin-top: 1rem;
+  }
+
+  .stats {
+    padding-block: 5rem;
+    border-top: 1px solid var(--line);
+  }
+  .stats ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .stats ul {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stats li {
+    border-top: 1px solid var(--line);
+    padding-top: 1.25rem;
+  }
+  .stat-n {
+    font-family: var(--font-mono);
+    color: var(--accent-warm);
+  }
+  .stat-label {
+    color: var(--fg);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+  .stat-copy {
+    margin-top: 0.4rem;
+  }
+
+  .values {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+  }
+  .values-lede {
+    margin-top: 1.25rem;
+    max-width: 65ch;
+  }
+  .values-list {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .values-list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .values-list li {
+    border-top: 1px solid var(--line);
+    padding-top: 1.25rem;
+  }
+  .values-list h3 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+  .values-list p {
+    margin-top: 0.5rem;
+  }
+
+  .culture {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+  }
+  .culture h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  }
+  .culture p {
+    margin-top: 1.25rem;
+    max-width: 60ch;
+  }
+  .culture-grid {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (min-width: 640px) {
+    .culture-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .culture-grid li {
+    background: var(--bg);
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  .team {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+  }
+  .team h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  }
+  .team-grid {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  @media (min-width: 640px) {
+    .team-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .team-grid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .team-role {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    margin-top: 0.75rem;
+  }
+  .team-grid h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 0.3rem;
+  }
+
+  .closing-cta {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .closing-cta h2 {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    margin-top: 0.75rem;
+  }
+  .closing-cta p {
+    margin: 1rem auto 0;
+    max-width: 50ch;
+  }
+  .closing-cta .btn {
+    margin-top: 2rem;
+  }
+</style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
+  inView('.stats li, .values-list li, .culture-grid li, .team-grid li', (el) => {
+    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+</script>
