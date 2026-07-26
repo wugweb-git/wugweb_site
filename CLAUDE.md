@@ -62,6 +62,18 @@ Consequences:
   never hit as an actual runtime error yet. If it appears:
   `wrangler kv namespace create SESSION`, then add the binding to
   `wrangler.jsonc`.
+- **The build's API token is named `Website`** in the project's Settings
+  → Build configuration → API token field — not the account-level token
+  named `wugweb`. These are different tokens, and the account-level one
+  didn't appear in that project's token picker at all (only
+  `Create new token`, `Website`, and `wugweb build token` ever showed
+  up there) — that dropdown appears to only surface tokens created via
+  its own guided flow, not every token that exists in the account. If
+  auth errors return, use **"Create new token" from inside that same
+  dropdown** rather than hand-picking permissions on a manually created
+  token — the guided flow scopes it correctly for Pages automatically
+  and doesn't expose a permissions editor because there's nothing to
+  configure.
 
 ## Commands
 
