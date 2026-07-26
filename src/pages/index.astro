@@ -1,35 +1,372 @@
 ---
-// No `prerender` export -> dynamic (default under output: 'server'),
-// since the Hero island reads a per-visitor cookie/profile.
+// Dynamic (default under output: 'server') — the personalization hook
+// stays available for later, just not driving the primary headline
+// (would fight the actual brand thesis statement below).
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.tsx';
 import { sanityClient } from '../lib/sanity';
-import { servicesListQuery, caseStudiesListQuery } from '../lib/queries';
+import { servicesListQuery } from '../lib/queries';
 
-const [services, caseStudies] = await Promise.all([
-  sanityClient.fetch(servicesListQuery),
-  sanityClient.fetch(caseStudiesListQuery),
-]);
+const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
+
+// Homepage services teaser is a curated, ordered subset — matches the
+// live site's homepage (4 of the 7 total services), not a live Sanity
+// query. The full list still lives at /services, Sanity-driven.
+const teaserServices = [
+  {
+    n: '01',
+    title: 'Brand & Strategy',
+    copy: 'From brand strategy and naming to logo design, guidelines, campaigns, and messaging, we create meaningful brands that connect with the right audience.',
+    video: 'https://wugweb.online/assets/more/home/Brand%20%26%20Strategy.mp4',
+  },
+  {
+    n: '02',
+    title: 'Experience Design',
+    copy: 'Our approach integrates UX strategy, UX process, and consistent UX execution supported by flexible product design systems to deliver scalable and brand-led solutions.',
+    video: 'https://wugweb.online/assets/more/home/Experience%20Design.mp4',
+  },
+  {
+    n: '03',
+    title: 'Martech & Gen AI',
+    copy: 'We blend digital experience strategy with AI-powered marketing and generative AI in marketing, helping brands automate, personalize, and optimize user journeys across channels.',
+    video: 'https://wugweb.online/assets/more/home/Martech%20%26%20GenAi.mp4',
+  },
+  {
+    n: '04',
+    title: 'Web Development',
+    copy: 'From static websites to fully customized platforms, we use full-stack development, CMS integration, and mobile-first design to build secure, high-performance websites and scalable web applications.',
+    video: 'https://wugweb.online/assets/more/home/Web%20%26%20App%20Development.mp4',
+  },
+];
 ---
 
-<BaseLayout title="Home">
-  <Hero client:load />
+<BaseLayout title="Home" description="Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.">
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline
+      src="https://wugweb.online/assets/more/home/Home.mp4"></video>
+    <div class="hero-overlay"></div>
 
-  <section>
-    <h2>Services</h2>
-    <ul>
-      {services.map((s: any) => (
-        <li><a href={`/services/${s.slug}`}>{s.title}</a></li>
-      ))}
-    </ul>
+    <nav class="wrap hero-nav">
+      <a href="/" class="hero-logo">wugweb</a>
+      <div class="hero-links">
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/work">Work</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <a href="/contact-us" class="btn btn-solid">Let's talk</a>
+    </nav>
+
+    <div class="wrap hero-content">
+      <p class="eyebrow" data-reveal>A world-class digital experience agency</p>
+      <h1 class="hero-headline" data-headline>Where Vision Meets Velocity</h1>
+      <div class="hero-ctas" data-reveal>
+        <a href="#services-content" class="btn btn-ghost">Explore Wugweb</a>
+        <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="scroll-cue" data-reveal aria-hidden="true"></div>
   </section>
 
-  <section>
-    <h2>Work</h2>
-    <ul>
-      {caseStudies.map((c: any) => (
-        <li><a href={`/work/${c.slug}`}>{c.title}</a></li>
-      ))}
-    </ul>
+  <!-- INTRO -->
+  <section class="wrap intro">
+    <h2 data-reveal>Wugweb is a tight team of thoughtful creatives, engineers, and strategists</h2>
+    <div class="intro-body">
+      <div class="intro-copy" data-reveal>
+        <p>
+          Wugweb is a digital experience agency where design meets engineering to shape what is
+          next. We deliver tailored UX design services, rooted in user-centered design and driven
+          by a clear user experience strategy.
+        </p>
+        <p>
+          Our experience design services and custom UX solutions help businesses craft impactful
+          digital product design with precision. As a UI/UX-focused agency, we create digital
+          experiences that not only look great but also perform with purpose.
+        </p>
+      </div>
+      <ul class="intro-tags" data-reveal aria-hidden="true">
+        <li>strategy</li>
+        <li>technology</li>
+        <li>design</li>
+        <li>we are here</li>
+      </ul>
+    </div>
   </section>
+
+  <!-- SERVICES TEASER -->
+  <section class="wrap services" id="services-content">
+    <p class="eyebrow" data-reveal>What we do</p>
+    <h2 data-reveal>Crafting UI, UX, and Brand Systems that drive meaning</h2>
+    <p class="services-lede" data-reveal>
+      In a world where the unexpected is becoming the norm, we build custom digital solutions
+      through user experience design, delivering UX design services that are prepared for what is
+      possible and what is probable. As a UI UX design agency, we craft experiences that adapt,
+      evolve, and perform.
+    </p>
+
+    <ol class="service-rows">
+      {teaserServices.map((s) => (
+        <li class="service-row" data-reveal>
+          <span class="service-n">{s.n}</span>
+          <div class="service-text">
+            <h3>{s.title}</h3>
+            <p>{s.copy}</p>
+          </div>
+          <video class="service-video" autoplay muted loop playsinline src={s.video}></video>
+        </li>
+      ))}
+    </ol>
+
+    <a href="/services" class="btn btn-ghost">View Services</a>
+  </section>
+
+  <!-- Sections still to build: work grid, client-logo strip, industries,
+       blog teaser, closing CTA banner, footer. Scoped out of this pass —
+       see chat for why. services.length below is unused for now (the
+       full Sanity-driven list renders on /services, not here) but kept
+       to confirm the fetch works end-to-end. -->
+  <p class="wrap" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); padding-block: 3rem;">
+    {services.length} services in Sanity · full homepage sections below the fold not yet built
+  </p>
 </BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0.75) 0%, rgba(10, 10, 12, 0.5) 45%, var(--bg) 100%);
+    z-index: 1;
+  }
+
+  .hero-nav {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.5rem;
+  }
+
+  .hero-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+
+  .hero-links {
+    display: none;
+    gap: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .hero-links a {
+    text-decoration: none;
+  }
+
+  @media (min-width: 768px) {
+    .hero-links {
+      display: flex;
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+    padding-bottom: 5rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.75rem, 8vw, 6.5rem);
+    font-weight: 700;
+    margin-block: 1rem 2rem;
+    max-width: 16ch;
+  }
+
+  .hero-headline .word {
+    display: inline-block;
+    filter: blur(0px);
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    z-index: 2;
+    width: 1px;
+    height: 3rem;
+    background: var(--line);
+    transform: translateX(-50%);
+  }
+
+  .intro {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .intro h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    max-width: 20ch;
+  }
+
+  .intro-body {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .intro-body {
+      grid-template-columns: 1.3fr 1fr;
+    }
+  }
+
+  .intro-copy p + p {
+    margin-top: 1rem;
+  }
+
+  .intro-tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-content: flex-start;
+  }
+
+  .intro-tags li {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    height: fit-content;
+    color: var(--fg-muted);
+  }
+
+  .services {
+    padding-block: 6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .services h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    max-width: 18ch;
+    margin-top: 0.75rem;
+  }
+
+  .services-lede {
+    max-width: 55ch;
+    margin-top: 1.25rem;
+  }
+
+  .service-rows {
+    list-style: none;
+    margin: 3rem 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    padding-block: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (min-width: 768px) {
+    .service-row {
+      grid-template-columns: auto 1fr auto;
+    }
+  }
+
+  .service-n {
+    font-family: var(--font-mono);
+    color: var(--accent-warm);
+    font-size: 1rem;
+  }
+
+  .service-text h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .service-text p {
+    margin-top: 0.5rem;
+    max-width: 50ch;
+  }
+
+  .service-video {
+    display: none;
+    width: 140px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .service-video {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  import { animate, stagger, inView } from 'motion';
+
+  // Hero headline: split into words, reveal with a velocity-style
+  // blur + upward drift — the one deliberate "signature" moment,
+  // everything else below uses a quieter shared reveal.
+  const headline = document.querySelector('[data-headline]');
+  if (headline) {
+    const text = headline.textContent ?? '';
+    headline.innerHTML = text
+      .split(' ')
+      .map((w) => `<span class="word">${w}</span>`)
+      .join(' ');
+
+    animate(
+      headline.querySelectorAll('.word'),
+      { opacity: [0, 1], y: [24, 0], filter: ['blur(10px)', 'blur(0px)'] },
+      { duration: 0.8, delay: stagger(0.08), easing: [0.16, 1, 0.3, 1] }
+    );
+  }
+
+  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.4 });
+
+  inView('.service-row', (el) => {
+    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+</script>
