@@ -1,0 +1,67 @@
+---
+const navLinks = [
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/work', label: 'Work' },
+  { href: '/blog', label: 'Blog' },
+];
+---
+
+<header class="site-header">
+  <nav class="wrap site-header-inner">
+    <a href="/" class="site-logo">wugweb</a>
+    <div class="site-links">
+      {navLinks.map((l) => (
+        <a href={l.href}>{l.label}</a>
+      ))}
+    </div>
+    <a href="/contact-us" class="btn btn-solid">Let's talk</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* On the homepage the hero renders its own video/overlay behind this;
+     everywhere else it just sits on the page background. Either way
+     the header itself is transparent — same dark bg throughout the site. */
+  .site-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.5rem;
+  }
+
+  .site-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: var(--fg);
+  }
+
+  .site-links {
+    display: none;
+    gap: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .site-links a {
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  @media (min-width: 768px) {
+    .site-links {
+      display: flex;
+    }
+  }
+
+  /* No mobile menu yet — links just disappear under 768px for now.
+     Real gap, not a silent omission: needs a hamburger/drawer before ship. */
+</style>

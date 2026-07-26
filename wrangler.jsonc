@@ -1,22 +1,27 @@
 // wrangler.jsonc
 {
-  "name": "wugweb-site",
+  "name": "wugweb",
   "compatibility_date": "2026-07-01",
   "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "./dist",
   "observability": {
-    "enabled": true,
-    "head_sampling_rate": 1
-  },
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      // Created via: wrangler hyperdrive create wugweb-neon --connection-string="<neon uri>"
-      // No tool available to me creates this — you'll need to run that command
-      // yourself once you have the Neon URI, then paste the returned id here.
-      "id": "REPLACE_WITH_HYPERDRIVE_CONFIG_ID"
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true,
+      "persist": true,
+      "head_sampling_rate": 1
     }
-  ],
+  },
+  // Hyperdrive still removed — placeholder id was the first suspected
+  // failure point. Add back once real Neon URI + `wrangler hyperdrive
+  // create` are done.
   "vars": {
     "SANITY_PROJECT_ID": "splvhmk1",
     "SANITY_DATASET": "production"

@@ -1,0 +1,22 @@
+---
+export const prerender = true;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Subscription">
+  <section class="wrap stub">
+    <p class="eyebrow">Newsletter</p>
+    <h1>Subscription</h1>
+    <p>Content coming soon.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .stub {
+    padding-block: 8rem;
+  }
+  .stub h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-block: 0.75rem;
+  }
+</style>

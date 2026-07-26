@@ -46,16 +46,11 @@ const teaserServices = [
       src="https://wugweb.online/assets/more/home/Home.mp4"></video>
     <div class="hero-overlay"></div>
 
-    <nav class="wrap hero-nav">
-      <a href="/" class="hero-logo">wugweb</a>
-      <div class="hero-links">
-        <a href="/about">About</a>
-        <a href="/services">Services</a>
-        <a href="/work">Work</a>
-        <a href="/blog">Blog</a>
-      </div>
-      <a href="/contact-us" class="btn btn-solid">Let's talk</a>
-    </nav>
+    <!-- Nav comes from the shared SiteHeader in BaseLayout, rendered in
+         normal flow above this section — not overlaid transparently on
+         the video like the original. Deliberate simplification: safer
+         than absolute-positioning it with no way for me to visually
+         verify the result. Worth revisiting once you can see it live. -->
 
     <div class="wrap hero-content">
       <p class="eyebrow" data-reveal>A world-class digital experience agency</p>
@@ -122,10 +117,7 @@ const teaserServices = [
   </section>
 
   <!-- Sections still to build: work grid, client-logo strip, industries,
-       blog teaser, closing CTA banner, footer. Scoped out of this pass —
-       see chat for why. services.length below is unused for now (the
-       full Sanity-driven list renders on /services, not here) but kept
-       to confirm the fetch works end-to-end. -->
+       blog teaser, closing CTA banner. Scoped out of this pass. -->
   <p class="wrap" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); padding-block: 3rem;">
     {services.length} services in Sanity · full homepage sections below the fold not yet built
   </p>
@@ -154,40 +146,6 @@ const teaserServices = [
     inset: 0;
     background: linear-gradient(180deg, rgba(10, 10, 12, 0.75) 0%, rgba(10, 10, 12, 0.5) 45%, var(--bg) 100%);
     z-index: 1;
-  }
-
-  .hero-nav {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding-block: 1.5rem;
-  }
-
-  .hero-logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.1rem;
-  }
-
-  .hero-links {
-    display: none;
-    gap: 2rem;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-  }
-
-  .hero-links a {
-    text-decoration: none;
-  }
-
-  @media (min-width: 768px) {
-    .hero-links {
-      display: flex;
-    }
   }
 
   .hero-content {

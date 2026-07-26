@@ -1,0 +1,58 @@
+---
+const footerLinks = [
+  { href: '/faq', label: 'FAQs' },
+  { href: '/footer/impact', label: 'Impact' },
+  { href: '/footer/subscription', label: 'Subscription' },
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/termsofuse', label: 'Terms of Use' },
+  { href: '/refund-policy', label: 'Refund Policy' },
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap site-footer-inner">
+    <p>© 2020–2026 Wugweb. All rights reserved.</p>
+    <div class="footer-links">
+      {footerLinks.map((l) => (
+        <a href={l.href}>{l.label}</a>
+      ))}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+  }
+
+  .site-footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .site-footer-inner p {
+    color: var(--fg-muted);
+    margin: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    color: var(--fg-muted);
+  }
+
+  .footer-links a:hover {
+    color: var(--fg);
+  }
+</style>

@@ -1,13 +1,190 @@
 ---
-// Not prerendered — this is where a contact-form submit handler will live.
+// Dynamic — this is where the form POST will land.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { sanityClient } from '../lib/sanity';
-import { singletonPageQuery } from '../lib/queries';
 
-const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'contact' });
+const interests = ['Branding', 'Design', 'Software', 'Product', 'Marketing'];
+const budgets = ['<$3K', '<$6K', '<$15K', '<$25K'];
 ---
 
-<BaseLayout title="Contact" description={page?.seoDescription}>
-  <h1>{page?.title ?? 'Contact us'}</h1>
-  {/* form + its POST target (e.g. src/pages/api/contact.ts) not built yet */}
+<BaseLayout title="Contact Us" description="Have a project in mind? Get in touch with Wugweb for UI/UX design and digital solutions.">
+  <section class="wrap contact">
+    <div class="contact-intro">
+      <h1>Are you ready to build something that matters?</h1>
+      <p>
+        We're always looking for passionate clients and talented professionals to join us in
+        creating impactful work. Whether you have a bold vision you want to bring to life or
+        expertise to contribute, let's collaborate and make something great together.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-details">
+        <div>
+          <p class="eyebrow">Email</p>
+          <p class="detail-value"><a href="mailto:hello@wugweb.com">hello@wugweb.com</a></p>
+        </div>
+        <div>
+          <p class="eyebrow">Phone</p>
+          <p class="detail-value">
+            <a href="tel:+918802139220">+91 88021 39220</a><br />
+            <a href="tel:+971504647672">+971 50 464 7672</a>
+          </p>
+        </div>
+        <div>
+          <p class="eyebrow">Address</p>
+          <p class="detail-value">
+            Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP, India - 201301
+          </p>
+        </div>
+      </div>
+
+      <!-- Submits to /api/contact — see that file for what's actually
+           wired up vs. still stubbed. -->
+      <form class="contact-form" method="POST" action="/api/contact">
+        <label>
+          Hi, my name is
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          and I'm from
+          <input type="text" name="company" placeholder="Company / location" />
+        </label>
+
+        <fieldset>
+          <legend>I'm interested in</legend>
+          {interests.map((i) => (
+            <label class="checkbox">
+              <input type="checkbox" name="interests" value={i} />
+              {i}
+            </label>
+          ))}
+        </fieldset>
+
+        <label>
+          on the topic
+          <textarea name="topic" rows="3" placeholder="Tell us about the project"></textarea>
+        </label>
+
+        <fieldset>
+          <legend>My budget for this project is</legend>
+          {budgets.map((b) => (
+            <label class="radio">
+              <input type="radio" name="budget" value={b} />
+              {b}
+            </label>
+          ))}
+        </fieldset>
+
+        <label>
+          I can contact via
+          <select name="contactMethod">
+            <option>Email</option>
+            <option>Phone</option>
+          </select>
+        </label>
+
+        <label class="checkbox">
+          <input type="checkbox" name="newsletter" value="yes" />
+          I would like to receive newsletters by email. Read our <a href="/privacy-policy">Privacy Policy</a>.
+        </label>
+
+        <button type="submit" class="btn btn-solid">Submit</button>
+      </form>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .contact {
+    padding-block: 8rem;
+  }
+  .contact-intro h1 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    max-width: 18ch;
+  }
+  .contact-intro p {
+    margin-top: 1.25rem;
+    max-width: 55ch;
+  }
+  .contact-grid {
+    margin-top: 4rem;
+    display: grid;
+    gap: 3rem;
+  }
+  @media (min-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1.6fr;
+    }
+  }
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .detail-value {
+    margin-top: 0.4rem;
+    color: var(--fg);
+  }
+  .detail-value a {
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+  .contact-form input[type='text'],
+  .contact-form textarea,
+  .contact-form select {
+    background: var(--bg-elevated);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+  .contact-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .contact-form legend {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    padding: 0;
+    margin-bottom: 0.25rem;
+  }
+  .contact-form .checkbox,
+  .contact-form .radio {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+  }
+  .contact-form a {
+    color: var(--accent-warm);
+  }
+  .contact-form button {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+</style>

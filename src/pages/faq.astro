@@ -1,16 +1,61 @@
 ---
 export const prerender = true;
-
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { sanityClient } from '../lib/sanity';
-import { singletonPageQuery } from '../lib/queries';
 
-const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'faq' });
+// Real questions from the live site. Answers are genuinely empty there
+// too (confirmed dummy, per your note) — not inventing content here.
+const faqs = [
+  "What's included in your Brand & Strategy service?",
+  "What's the timeline for a Brand & Strategy project?",
+  "What's the investment for a Brand & Strategy project?",
+  'Who do you partner with?',
+  'Do you design logos?',
+  'Do you develop brand guidelines and design systems?',
+  'How do you ensure brand consistency?',
+  'Can you address unique branding needs?',
+  'Do you incorporate motion and sound?',
+  'Do you manage brand activation?',
+];
 ---
 
-<BaseLayout title="FAQ" description={page?.seoDescription}>
-  <h1>{page?.title ?? 'FAQ'}</h1>
-  {/* the singletonPage schema is a generic body right now — if FAQ needs
-      real Q&A pairs (it probably does), give it its own schema with an
-      array of {question, answer} objects instead of reusing this one */}
+<BaseLayout title="FAQs" description="Frequently asked questions about working with Wugweb.">
+  <section class="wrap faq">
+    <p class="eyebrow">FAQs</p>
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-list">
+      {faqs.map((q) => (
+        <details class="faq-item">
+          <summary>{q}</summary>
+          <p>Answer coming soon.</p>
+        </details>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .faq {
+    padding-block: 8rem;
+  }
+  .faq h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-block: 0.75rem 3rem;
+    max-width: 20ch;
+  }
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding-block: 1.25rem;
+  }
+  .faq-item summary {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .faq-item p {
+    margin-top: 0.75rem;
+  }
+</style>

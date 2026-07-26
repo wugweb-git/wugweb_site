@@ -2,6 +2,9 @@
   "name": "wugweb-site",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "wrangler types && astro dev",
     "build": "astro build",
