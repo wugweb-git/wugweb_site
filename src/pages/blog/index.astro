@@ -1,17 +1,64 @@
 ---
 export const prerender = true;
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sanityClient } from '../../lib/sanity';
-import { postsListQuery } from '../../lib/queries';
 
-const posts = await sanityClient.fetch(postsListQuery);
+const categories = ['Design', 'Tech', 'AI', 'Martech', 'Strategy'];
+
+const posts = [
+  { title: 'When UX Meets CX: Designing Seamless Experiences', slug: 'when-ux-meets-cx-designing-seamless-experiences', category: 'Design' },
+  { title: '10 Hacks for Illustrating and Drawing in Figma', slug: '10-hacks-for-illustrating-and-drawing-in-figma', category: 'Design' },
+  { title: "10 Key Takeaways from Google's Material Design Guidelines", slug: '10-key-takeaways-from-googles-material-design-guidelines', category: 'Design' },
+  { title: '10 Principles for Typography in UI Design', slug: '10-principles-for-typography-in-ui-design', category: 'Design' },
+  { title: 'Top 10 Design Systems for UX/UI in 2026', slug: 'top-10-design-systems-for-uxui-in-2026', category: 'Design' },
+  { title: '10 Rules of Thumb in UI Design', slug: '10-rules-of-thumb-in-ui-design', category: 'Design' },
+  { title: '10 Essential Skills for the Modern UI & UX Designer', slug: '10-essential-skills-for-the-modern-ui-ux-designer', category: 'Design' },
+  { title: '10 Figma Tricks I Wish I Knew Earlier', slug: '10-figma-tricks-i-wish-i-knew-earlier', category: 'Design' },
+  { title: '10 A**hole Design Patterns', slug: '10-a-hole-design-patterns', category: 'Design' },
+  { title: '10 Ways to Design More Inclusive Products', slug: '10-ways-to-design-more-inclusive-products', category: 'Design' },
+  { title: '10 Confessions of a Product Designer', slug: '10-confessions-of-a-product-designer', category: 'Design' },
+  { title: '6 Strategies That Got My Side Project Its First 1,000 Users', slug: '6-strategies-that-got-my-side-project-its-first-1-000-users', category: 'Martech' },
+  { title: 'Is Augmented Reality the future of UX?', slug: 'is-augmented-reality-the-future-of-ux', category: 'Tech' },
+];
 ---
 
-<BaseLayout title="Blog">
-  <ul>
-    {posts.map((p: any) => (
-      <li><a href={`/blog/${p.slug}`}>{p.title}</a></li>
+<BaseLayout title="Blog" description="Wugweb | Insights on UI/UX Design & Digital Strategy">
+  <section class="blog-hero">
+    <div class="wrap blog-hero-content">
+      <p class="eyebrow" data-reveal>Articles</p>
+      <h1 data-reveal>We create digital solutions that are as functional as they are beautiful. From intuitive interfaces and strong brand systems to enterprise platforms, every project is designed to solve real problems and deliver real impact.</h1>
+    </div>
+  </section>
+
+  <section class="wrap blog-filters" data-reveal>
+    {categories.map((c) => (
+      <button class="filter-chip" data-category={c}>{c}</button>
     ))}
-  </ul>
+  </section>
+
+  <section class="wrap blog-grid-section">
+    <ul class="blog-grid">
+      {posts.map((p) => (
+        <li data-reveal>
+          <a href={`/blog/${p.slug}`}>
+            <span class="post-category">{p.category}</span>
+            <h3>{p.title}</h3>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
 </BaseLayout>
+
+<style>
+  .blog-hero { padding-block: 8rem 4rem; }
+  .blog-hero-content h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 500; max-width: 28ch; margin-top: 1rem; }
+  .blog-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; padding-bottom: 2rem; }
+  .filter-chip { font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
+  .blog-grid-section { border-top: 1px solid var(--line); padding-block: 4rem 6rem; }
+  .blog-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; }
+  @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
+  .blog-grid a { text-decoration: none; display: block; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .post-category { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); text-transform: uppercase; }
+  .blog-grid h3 { font-size: 1.1rem; font-weight: 500; margin-top: 0.5rem; }
+</style>

@@ -1,20 +1,46 @@
 ---
 export const prerender = true;
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sanityClient } from '../../lib/sanity';
-import { caseStudiesListQuery } from '../../lib/queries';
 
-const caseStudies = await sanityClient.fetch(caseStudiesListQuery);
+const workItems = [
+  { client: 'Axis Bank', category: 'Strategy, UX Design', title: 'The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform', slug: 'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform', video: 'https://wugweb.online/assets/work/Axis%20Bank/axis_thumb.mp4' },
+  { client: 'Philip Morris International', category: 'UX Design', title: 'Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future', slug: 'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future', video: 'https://wugweb.online/assets/work/Inkompass/inkompass_thumb.mp4' },
+  { client: 'METCRED', category: 'UX Design, Strategy', title: 'The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience', slug: 'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience', video: 'https://wugweb.online/assets/work/Metcred/metcred_thumb.mp4' },
+  { client: 'Airtel', category: 'UX Design', title: 'Airtel Xsafe – Securing Homes with Intuitive Digital Experiences', slug: 'airtel-xsafe-securing-homes-with-intuitive-digital-experiences', video: 'https://wugweb.online/assets/work/Airtel%20Xsafe/Xsafe_thumb.mp4' },
+];
 ---
 
-<BaseLayout title="Work">
-  <ul>
-    {caseStudies.map((c: any) => (
-      <li>
-        <a href={`/work/${c.slug}`}>{c.title}</a>
-        {c.client && <span> — {c.client}</span>}
-      </li>
-    ))}
-  </ul>
+<BaseLayout title="Work" description="Clients – Wugweb | Trusted by Innovative Brands">
+  <section class="work-hero">
+    <div class="wrap work-hero-content">
+      <p class="eyebrow" data-reveal>What We've Built</p>
+      <h1 data-reveal>We create digital solutions that are as functional as they are beautiful. From intuitive interfaces and strong brand systems to enterprise platforms, every project is designed to solve real problems and deliver real impact.</h1>
+    </div>
+  </section>
+
+  <section class="wrap work-grid-section">
+    <ul class="work-grid">
+      {workItems.map((w) => (
+        <li data-reveal>
+          <a href={`/work/${w.slug}`}>
+            <video autoplay muted loop playsinline src={w.video}></video>
+            <p class="work-client">{w.client} — {w.category}</p>
+            <h3>{w.title}</h3>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
 </BaseLayout>
+
+<style>
+  .work-hero { padding-block: 8rem 4rem; }
+  .work-hero-content h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 500; max-width: 28ch; margin-top: 1rem; }
+  .work-grid-section { padding-block: 4rem 6rem; border-top: 1px solid var(--line); }
+  .work-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
+  @media (min-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+  .work-grid a { text-decoration: none; display: block; }
+  .work-grid video { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; }
+  .work-client { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); margin-top: 1rem; }
+  .work-grid h3 { font-size: 1.15rem; font-weight: 500; margin-top: 0.4rem; }
+</style>

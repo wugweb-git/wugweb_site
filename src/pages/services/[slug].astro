@@ -1,27 +1,72 @@
 ---
 export const prerender = true;
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sanityClient } from '../../lib/sanity';
-import { servicesListQuery, serviceBySlugQuery } from '../../lib/queries';
 
-// Prerendered dynamic routes need getStaticPaths — this is what turns
-// the 7 services in the current sitemap into 7 build-time pages.
-export async function getStaticPaths() {
-  const services = await sanityClient.fetch(servicesListQuery);
-  return services.map((s: any) => ({ params: { slug: s.slug } }));
-}
+const slugToTitle: Record<string, { title: string; body: string; tags: string[] }> = {
+  'brand-strategy': {
+    title: 'Brand & Strategy',
+    tags: ['Identity Systems', 'Positioning & Strategy', 'Voice & Tone', 'Narrative'],
+    body: 'As a brand strategy consulting agency, we craft transformative brand experiences that build emotional connection, inspire loyalty, and drive long-term growth. Our core services include brand identity design, brand narrative development, and comprehensive brand positioning and strategy.',
+  },
+  'experience-design': {
+    title: 'Experience Design',
+    tags: ['Interface', 'Journey', 'Design Systems', 'User Intelligence'],
+    body: 'We create intuitive, engaging, and seamless digital experiences that captivate users and drive business growth. Our experience design services are rooted in user-centered design services, combining human-centered design, product design services, and digital product design with strategic focus on customer experience design, experience architecture, and end-to-end user journey design.',
+  },
+  'martech-genai': {
+    title: 'Martech & Gen AI',
+    tags: ['Insights', 'Automation', 'Generative AI', 'Analytics'],
+    body: 'Growth is driven by strategic MarTech consulting and AI-powered marketing solutions, enabling businesses to personalize experiences, optimize performance, and scale with precision. Our services span digital transformation strategy, building robust MarTech ecosystems, and delivering impactful AI-powered content experiences.',
+  },
+  'web-app-development': {
+    title: 'Web Development',
+    tags: ['Front-End', 'Back-End', 'DevOps & Cloud', 'Native Application'],
+    body: 'We build precision-engineered web and app development services that deliver exceptional performance and measurable business results. Our capabilities include responsive website development, ecommerce development, and advanced front-end engineering for seamless user experiences across devices.',
+  },
+  'qa-testing': {
+    title: 'QA & Testing',
+    tags: ['Smoke', 'Critical', 'Regression', 'Feature'],
+    body: 'Our QA and testing services safeguard digital products through rigorous functional testing, seamless usability testing, and high-performance performance testing. We ensure every experience meets the highest standards of quality, reliability, and user satisfaction.',
+  },
+  'no-code-solutions': {
+    title: 'No-Code Development',
+    tags: ['Outsystems', 'Webflow', 'Mendix', 'Appian'],
+    body: 'As a no-code development agency, we empower businesses to launch digital products faster through strategic no-code solutions, expert Webflow and Bubble development, and rapid MVP development. Our approach accelerates time to market without compromising on performance or flexibility.',
+  },
+  'lead-generation': {
+    title: 'Lead Generation',
+    tags: ['Strategy', 'Automation', 'Analytics'],
+    body: 'We help businesses generate qualified leads through strategic digital marketing, automation, and data-driven campaigns that drive measurable growth.',
+  },
+};
 
 const { slug } = Astro.params;
-const service = await sanityClient.fetch(serviceBySlugQuery, { slug });
+const service = slugToTitle[slug];
 
 if (!service) {
   return Astro.redirect('/404');
 }
 ---
 
-<BaseLayout title={service.title} description={service.summary}>
-  <h1>{service.title}</h1>
-  <p>{service.summary}</p>
-  {/* body is Portable Text — render with @portabletext/react or similar once you wire up rich content */}
+<BaseLayout title={service.title} description={service.body.slice(0, 160)}>
+  <section class="wrap service-detail">
+    <p class="eyebrow"><a href="/services">Services</a> / {service.title}</p>
+    <h1>{service.title}</h1>
+    <ul class="service-tags">
+      {service.tags.map((t) => <li>{t}</li>)}
+    </ul>
+    <p class="service-body">{service.body}</p>
+    <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
+  </section>
 </BaseLayout>
+
+<style>
+  .service-detail { padding-block: 8rem; }
+  .service-detail .eyebrow a { color: var(--fg-muted); text-decoration: none; }
+  .service-detail .eyebrow a:hover { color: var(--fg); }
+  .service-detail h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; max-width: 16ch; }
+  .service-tags { list-style: none; margin: 1.5rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .service-tags li { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.35rem 0.85rem; border: 1px solid var(--line); border-radius: 999px; color: var(--fg-muted); }
+  .service-body { margin-top: 1.5rem; max-width: 55ch; font-size: 1.1rem; line-height: 1.7; }
+  .service-detail .btn { margin-top: 2rem; display: inline-flex; }
+</style>

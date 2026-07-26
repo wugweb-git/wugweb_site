@@ -1,20 +1,191 @@
 ---
-export const prerender = true; // static — rebuild on content change, no per-request work needed
-
+export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sanityClient } from '../../lib/sanity';
-import { servicesListQuery } from '../../lib/queries';
 
-const services = await sanityClient.fetch(servicesListQuery);
+const services = [
+  {
+    n: '01', title: 'Brand & Strategy',
+    tags: ['Identity Systems', 'Positioning & Strategy', 'Voice & Tone', 'Narrative'],
+    body: 'As a brand strategy consulting agency, we craft transformative brand experiences that build emotional connection, inspire loyalty, and drive long-term growth. Our core services include brand identity design, brand narrative development, and comprehensive brand positioning and strategy.',
+    video: 'https://wugweb.online/assets/more/services/services_brand-mp4.mp4',
+  },
+  {
+    n: '02', title: 'Experience Design',
+    tags: ['Interface', 'Journey', 'Design Systems', 'User Intelligence'],
+    body: 'We create intuitive, engaging, and seamless digital experiences that captivate users and drive business growth. Our experience design services are rooted in user-centered design services, combining human-centered design, product design services, and digital product design with strategic focus on customer experience design, experience architecture, and end-to-end user journey design.',
+    video: 'https://wugweb.online/assets/more/services/services_uxdesign-mp4.mp4',
+  },
+  {
+    n: '03', title: 'Martech & Gen AI',
+    tags: ['Insights', 'Automation', 'Generative AI', 'Analytics'],
+    body: 'Growth is driven by strategic MarTech consulting and AI-powered marketing solutions, enabling businesses to personalize experiences, optimize performance, and scale with precision. Our services span digital transformation strategy, building robust MarTech ecosystems, and delivering impactful AI-powered content experiences.',
+    video: 'https://wugweb.online/assets/more/services/services_martech-mp4.mp4',
+  },
+  {
+    n: '04', title: 'Web Development',
+    tags: ['Front-End', 'Back-End', 'DevOps & Cloud', 'Native Application'],
+    body: 'We build precision-engineered web and app development services that deliver exceptional performance and measurable business results. Our capabilities include responsive website development, ecommerce development, and advanced front-end engineering for seamless user experiences across devices.',
+    video: 'https://wugweb.online/assets/more/services/services_webdevelopment-mp4.mp4',
+  },
+  {
+    n: '05', title: 'QA & Testing',
+    tags: ['Smoke', 'Critical', 'Regression', 'Feature'],
+    body: 'Our QA and testing services safeguard digital products through rigorous functional testing, seamless usability testing, and high-performance performance testing. We ensure every experience meets the highest standards of quality, reliability, and user satisfaction.',
+    video: 'https://wugweb.online/assets/more/services/services_qa-mp4.mp4',
+  },
+  {
+    n: '06', title: 'No-Code Development',
+    tags: ['Outsystems', 'Webflow', 'Mendix', 'Appian'],
+    body: 'As a no-code development agency, we empower businesses to launch digital products faster through strategic no-code solutions, expert Webflow and Bubble development, and rapid MVP development. Our approach accelerates time to market without compromising on performance or flexibility.',
+    video: 'https://wugweb.online/assets/more/services/services_nocode-mp4.mp4',
+  },
+];
+
+const stats = [
+  { n: '01', label: 'Years of experience', copy: 'Expertise that drives meaningful results.' },
+  { n: '02', label: 'Projects delivered', copy: 'Creative solutions built with purpose.' },
+  { n: '03', label: 'Client Retention Rate', copy: 'Long-term partnerships built on real results.' },
+  { n: '04', label: 'Start Smart, Start Small', copy: '' },
+];
 ---
 
-<BaseLayout title="Services">
-  <ul>
-    {services.map((s: any) => (
-      <li>
-        <a href={`/services/${s.slug}`}>{s.title}</a>
-        {s.summary && <p>{s.summary}</p>}
+<BaseLayout title="Services" description="Digital Experience Services — Wugweb">
+  <!-- HERO -->
+  <section class="services-hero">
+    <div class="wrap services-hero-content">
+      <p class="eyebrow" data-reveal>Services</p>
+      <h1 data-reveal>At Wugweb, we design with function driving aesthetics—crafting scalable, human-centered systems across brand, UI/UX, web, apps, martech, AI, QA, and no-code.</h1>
+      <p class="services-hero-sub" data-reveal>As a UX design agency and development partner, we blend creativity with technical precision to deliver impactful, multi-platform experiences.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="wrap stats">
+    <ul>
+      {stats.map((s) => (
+        <li data-reveal>
+          <span class="stat-n">{s.n}</span>
+          <p class="stat-label">{s.label}</p>
+          {s.copy && <p class="stat-copy">{s.copy}</p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- INTRO -->
+  <section class="wrap services-intro">
+    <h2 data-reveal>Bringing intuitive and beautiful innovations to life.</h2>
+    <p data-reveal>
+      We create at the intersection of design and technology, combining UX design services with innovative systems to bring the future into the present. Our UI UX design agency develops comprehensive strategies through a human-centered design lens, then brings them to life with adaptable, scalable platforms. With our experience design services and technical expertise, every solution is built to thrive in today's fast-changing digital environment.
+    </p>
+  </section>
+
+  <!-- SERVICE LIST -->
+  <ol class="service-list">
+    {services.map((s) => (
+      <li class="service-row" id={s.title.toLowerCase().replace(/\s+/g, '-')} data-reveal>
+        <div class="wrap service-row-inner">
+          <div class="service-row-text">
+            <span class="service-n">{s.n}</span>
+            <h2>{s.title}</h2>
+            <ul class="service-tags">
+              {s.tags.map((t) => <li>{t}</li>)}
+            </ul>
+            <p>{s.body}</p>
+            <div class="service-ctas">
+              <a href={`/services/${s.title.toLowerCase().replace(/[\s&]+/g, '-').replace(/--+/g, '-')}`} class="btn btn-ghost">Learn More</a>
+              <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
+            </div>
+          </div>
+          <video class="service-video" autoplay muted loop playsinline src={s.video}></video>
+        </div>
       </li>
     ))}
-  </ul>
+  </ol>
+
+  <!-- WHY WUGWEB -->
+  <section class="wrap why-section">
+    <p class="eyebrow" data-reveal>Why Wugweb?</p>
+    <h2 data-reveal>In a world clamoring for attention, your brand deserves more than fleeting visibility.</h2>
+    <p data-reveal>It requires a strategic partner that architects compelling narratives, cultivates authentic connections, and engineers brand experiences designed to stand the test of time.</p>
+    <ul class="why-grid">
+      <li data-reveal>
+        <h3>Strategic Brand Vision</h3>
+        <p>Resonant brand foundations are architected through the synthesis of strategic insight and creative brilliance, driving measurable business growth.</p>
+      </li>
+      <li data-reveal>
+        <h3>Data-Driven Brand Evolution</h3>
+        <p>Data and analytics inform brand strategy, optimizing brand performance and fueling sustainable brand evolution.</p>
+      </li>
+      <li data-reveal>
+        <h3>Authentic Brand Storytelling</h3>
+        <p>Brand's core essence is unearthed, crafting authentic narratives that forge emotional connections and inspire unwavering loyalty.</p>
+      </li>
+      <li data-reveal>
+        <h3>Holistic Brand Experience Design</h3>
+        <p>Cohesive brand experiences are engineered across all touchpoints, ensuring consistency, impact, and a seamless customer journey.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section class="wrap services-faq">
+    <h2 data-reveal>Frequently asked questions</h2>
+    <p data-reveal>To help you get the information you need quickly, we've compiled a list of frequently asked questions. If you don't find the answer you're looking for, please feel free to contact us directly.</p>
+    <div class="faq-list">
+      <details class="faq-item"><summary>What services does Wugweb offer?</summary><p>Wugweb offers a comprehensive range of services including Brand & Strategy, Experience Design, Martech & Gen AI, Web Development, QA & Testing, and No-Code Development.</p></details>
+      <details class="faq-item"><summary>What makes your UI/UX design services stand out?</summary><p>Our UI/UX design services are rooted in user-centered design, combining human-centered design principles with strategic focus on customer experience and end-to-end user journey design.</p></details>
+      <details class="faq-item"><summary>Do you provide custom brand identity design and positioning?</summary><p>Yes, as a brand strategy consulting agency, we craft transformative brand experiences including brand identity design, brand narrative development, and comprehensive brand positioning and strategy.</p></details>
+      <details class="faq-item"><summary>What kind of platforms do you develop under web and app development?</summary><p>We build responsive websites, ecommerce platforms, and custom web applications using full-stack development, CMS integration, and mobile-first design.</p></details>
+      <details class="faq-item"><summary>How do you integrate MarTech and AI into your services?</summary><p>We blend digital experience strategy with AI-powered marketing and generative AI, helping brands automate, personalize, and optimize user journeys across channels.</p></details>
+      <details class="faq-item"><summary>Do you offer no-code development for fast launch?</summary><p>Yes, we empower businesses to launch digital products faster through no-code solutions including Webflow, Bubble, Outsystems, and Mendix development.</p></details>
+      <details class="faq-item"><summary>How do your QA and testing services ensure product quality?</summary><p>Our QA services safeguard digital products through rigorous functional testing, usability testing, and performance testing to ensure the highest standards of quality and reliability.</p></details>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .services-hero { padding-block: 8rem 4rem; }
+  .services-hero-content h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 500; max-width: 28ch; margin-top: 1rem; }
+  .services-hero-sub { margin-top: 1.25rem; max-width: 55ch; }
+  .stats { padding-block: 5rem; border-top: 1px solid var(--line); }
+  .stats ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
+  @media (min-width: 768px) { .stats ul { grid-template-columns: repeat(4, 1fr); } }
+  .stats li { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .stat-n { font-family: var(--font-mono); color: var(--accent-warm); }
+  .stat-label { color: var(--fg); font-size: 1.1rem; margin-top: 0.5rem; }
+  .stat-copy { margin-top: 0.4rem; }
+
+  .services-intro { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .services-intro h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); max-width: 20ch; }
+  .services-intro p { margin-top: 1.25rem; max-width: 65ch; }
+
+  .service-list { list-style: none; margin: 0; padding: 0; }
+  .service-row { border-top: 1px solid var(--line); }
+  .service-row-inner { display: grid; gap: 2rem; padding-block: 4rem; align-items: center; }
+  @media (min-width: 768px) { .service-row-inner { grid-template-columns: 1fr 1fr; } }
+  .service-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: 0.85rem; }
+  .service-row-text h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-top: 0.5rem; }
+  .service-tags { list-style: none; margin: 1rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .service-tags li { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.35rem 0.85rem; border: 1px solid var(--line); border-radius: 999px; color: var(--fg-muted); }
+  .service-row-text p { margin-top: 1rem; max-width: 55ch; }
+  .service-ctas { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  .service-video { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; }
+
+  .why-section { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .why-section h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); margin-top: 0.75rem; max-width: 22ch; }
+  .why-section > p { margin-top: 1.25rem; max-width: 55ch; }
+  .why-grid { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; gap: 2rem; }
+  @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  .why-grid li { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .why-grid h3 { font-size: 1.15rem; font-weight: 500; }
+  .why-grid p { margin-top: 0.5rem; }
+
+  .services-faq { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .services-faq h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .services-faq > p { margin-top: 1rem; max-width: 55ch; }
+  .faq-list { margin-top: 3rem; border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); padding-block: 1.25rem; }
+  .faq-item summary { font-family: var(--font-display); font-size: 1.1rem; cursor: pointer; }
+  .faq-item p { margin-top: 0.75rem; }
+</style>
