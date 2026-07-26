@@ -44,3 +44,11 @@ const workItems = [
   .work-client { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); margin-top: 1rem; }
   .work-grid h3 { font-size: 1.15rem; font-weight: 500; margin-top: 0.4rem; }
 </style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
+  inView('.work-grid li', (el) => {
+    animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, easing: 'ease-out' });
+  });
+</script>

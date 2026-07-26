@@ -62,3 +62,11 @@ const posts = [
   .post-category { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); text-transform: uppercase; }
   .blog-grid h3 { font-size: 1.1rem; font-weight: 500; margin-top: 0.5rem; }
 </style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
+  inView('.blog-grid li', (el) => {
+    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+</script>

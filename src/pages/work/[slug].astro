@@ -318,3 +318,11 @@ const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice
   .closing-cta h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); max-width: 18ch; margin-inline: auto; }
   .closing-cta .btn { margin-top: 2rem; display: inline-flex; }
 </style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
+  inView('.card, .more-card, .section', (el) => {
+    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+</script>

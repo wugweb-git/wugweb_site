@@ -187,5 +187,12 @@ const stats = [
   .faq-list { margin-top: 3rem; border-top: 1px solid var(--line); }
   .faq-item { border-bottom: 1px solid var(--line); padding-block: 1.25rem; }
   .faq-item summary { font-family: var(--font-display); font-size: 1.1rem; cursor: pointer; }
-  .faq-item p { margin-top: 0.75rem; }
 </style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
+  inView('.stats li, .service-row, .why-grid li, .faq-item, .service-tags li, .services-faq .faq-item', (el) => {
+    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+</script>

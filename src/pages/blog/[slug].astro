@@ -300,3 +300,11 @@ if (!post) {
   .article-tags { display: flex; gap: 0.5rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line); }
   .tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.35rem 0.85rem; border: 1px solid var(--line); border-radius: 999px; color: var(--fg-muted); }
 </style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
+  inView('.article-body h2, .article-body p', (el) => {
+    animate(el, { opacity: [0, 1], y: [12, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+</script>
