@@ -21,12 +21,8 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -81,7 +77,19 @@ a {
   padding: 0.9rem 1.6rem;
   border-radius: 999px;
   border: 1px solid var(--line);
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 3px;
 }
 
 .btn-solid {
@@ -94,10 +102,12 @@ a {
   background: var(--fg);
   border-color: var(--fg);
   color: var(--bg);
+  transform: translateY(-1px);
 }
 
 .btn-ghost:hover {
   border-color: var(--fg);
+  transform: translateY(-1px);
 }
 
 .wrap {

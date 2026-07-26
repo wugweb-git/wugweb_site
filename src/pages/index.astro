@@ -589,9 +589,7 @@ const industries = [
 <script>
   import { animate, stagger, inView } from 'motion';
 
-  // Hero headline: split into words, reveal with a velocity-style
-  // blur + upward drift — the one deliberate "signature" moment,
-  // everything else below uses a quieter shared reveal.
+  // Hero headline: split into words, reveal with blur + upward drift
   const headline = document.querySelector('[data-headline]');
   if (headline) {
     const text = headline.textContent ?? '';
@@ -607,9 +605,44 @@ const industries = [
     );
   }
 
-  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.4 });
+  // Hero eyebrow + CTA reveal
+  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.3, easing: 'ease-out' });
 
-  inView('.service-row, .work-grid li, .industry-grid li, .blog-teaser li', (el) => {
+  // Scroll-triggered reveals with stagger
+  inView('.service-row', (el) => {
+    animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] });
+  });
+
+  inView('.work-grid li', (el) => {
+    animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: stagger(0.08), easing: 'ease-out' });
+  });
+
+  inView('.industry-grid li, .blog-teaser li, .logo-grid li, .culture-grid li, .team-grid li, .why-grid li, .caps-grid .cap-item, .approach-step', (el) => {
     animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+
+  // Service row hover: play video on hover
+  document.querySelectorAll('.service-row').forEach(row => {
+    const video = row.querySelector('video');
+    if (!video) return;
+    row.addEventListener('mouseenter', () => video.play());
+    row.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+  });
+
+  // Work card tilt effect
+  document.querySelectorAll('.work-grid a').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
   });
 </script>
