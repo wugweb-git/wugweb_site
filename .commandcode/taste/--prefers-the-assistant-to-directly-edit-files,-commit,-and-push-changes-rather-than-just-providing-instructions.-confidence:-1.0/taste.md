@@ -1,0 +1,10 @@
+# - Prefers the assistant to directly edit files, commit, and push changes rather than just providing instructions. Confidence: 1.0
+- Prefers the assistant to directly edit files, commit, and push changes rather than just providing instructions. Confidence: 1.0
+- Prefers the assistant to fully troubleshoot and fix issues programmatically — dig into configs, logs, and code to find the root cause rather than suggesting manual user steps (e.g., "create this in the dashboard"). Confidence: 1.0
+- Firm about project/resource names — will correct the assistant if it uses the wrong name, and expects the assistant to update config to match the actual name rather than suggesting changes. Confidence: 1.0
+- Expects thorough, honest completion status reporting — will call out the assistant if work claims seem too fast or incomplete, and values the assistant admitting what's still unfinished rather than glossing over gaps. Confidence: 1.0
+- Values visual parity with the original/reference site — expects animations, fonts, and design details to be faithfully reproduced, not just content structure. Confidence: 1.0
+- Prefers to proactively provide reference/downloaded materials (actual HTML pages from the live site) into the repo as ground truth for the assistant to audit and replicate, rather than relying on verbal descriptions or the assistant's assumptions. Confidence: 1.0
+- Prefers to share reference materials and source documents by providing absolute local file paths for the assistant to read directly, rather than copying/pasting content or describing verbally — expects the assistant to understand a bare file path means "read and use this file." Confidence: 0.9
+- Cares about responsiveness across all breakpoints — expects thorough mobile, tablet, and desktop support to be explicitly covered and will flag if missing. Confidence: 1.0
+- Expects exhaustive scope confirmation — will list every item/page explicitly and expects the assistant to confirm completeness on each one, not gloss over gaps with vague summaries. Confidence: 0.9
