@@ -1,51 +1,56 @@
 ---
 export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { sanityClient } from '../lib/sanity';
-import { singletonPageQuery } from '../lib/queries';
 
-const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'faq' }).catch(() => null);
-const faqs: { title: string; text: string }[] = page?.items ?? [];
+const faqs = [
+  { q: "What services does Wugweb offer?", a: "Wugweb offers a comprehensive range of services including Brand & Strategy, Experience Design, Martech & Gen AI, Web Development, QA & Testing, and No-Code Development." },
+  { q: "What makes your UI/UX design services stand out?", a: "Our UI/UX design services are rooted in user-centered design, combining human-centered design principles with strategic focus on customer experience and end-to-end user journey design." },
+  { q: "Do you provide custom brand identity design and positioning?", a: "Yes, as a brand strategy consulting agency, we craft transformative brand experiences including brand identity design, brand narrative development, and comprehensive brand positioning and strategy." },
+  { q: "What kind of platforms do you develop under web and app development?", a: "We build responsive websites, ecommerce platforms, and custom web applications using full-stack development, CMS integration, and mobile-first design." },
+  { q: "How do you integrate MarTech and AI into your services?", a: "We blend digital experience strategy with AI-powered marketing and generative AI, helping brands automate, personalize, and optimize user journeys across channels." },
+  { q: "Do you offer no-code development for fast launch?", a: "Yes, we empower businesses to launch digital products faster through no-code solutions including Webflow, Bubble, Outsystems, and Mendix development." },
+  { q: "How do your QA and testing services ensure product quality?", a: "Our QA services safeguard digital products through rigorous functional testing, usability testing, and performance testing to ensure the highest standards of quality and reliability." },
+  { q: "What is the typical timeline for a project?", a: "Timelines vary by scope. A typical brand strategy engagement runs 4-8 weeks, while web development projects range from 8-16 weeks depending on complexity." },
+  { q: "How do you charge for your services?", a: "We offer project-based pricing for defined scopes and retainer-based partnerships for ongoing work. Contact us for a custom proposal tailored to your needs." },
+  { q: "Do you work with startups?", a: "Yes, we work with companies of all sizes — from early-stage startups to enterprise organizations. Our Start Smart, Start Small approach is designed for growing businesses." },
+];
 ---
 
 <BaseLayout title="FAQs" description="Frequently asked questions about working with Wugweb.">
   <section class="wrap faq">
     <p class="eyebrow">FAQs</p>
-    <h1>{page?.title ?? 'Frequently Asked Questions'}</h1>
+    <h1>Frequently Asked Questions</h1>
+    <p class="faq-lede">To help you get the information you need quickly, we've compiled a list of frequently asked questions. If you don't find the answer you're looking for, please feel free to contact us directly.</p>
+    <p class="faq-updated">Updated on November 04, 2025</p>
 
     <div class="faq-list">
       {faqs.map((f) => (
         <details class="faq-item">
-          <summary>{f.title}</summary>
-          <p>{f.text?.trim() ? f.text : 'Answer coming soon.'}</p>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
         </details>
       ))}
+    </div>
+
+    <div class="faq-cta">
+      <h2>Still have questions?</h2>
+      <p>We're here to help. Reach out and we'll get back to you promptly.</p>
+      <a href="/contact-us" class="btn btn-solid">Contact Us</a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .faq {
-    padding-block: 8rem;
-  }
-  .faq h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-block: 0.75rem 3rem;
-    max-width: 20ch;
-  }
-  .faq-list {
-    border-top: 1px solid var(--line);
-  }
-  .faq-item {
-    border-bottom: 1px solid var(--line);
-    padding-block: 1.25rem;
-  }
-  .faq-item summary {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    cursor: pointer;
-  }
-  .faq-item p {
-    margin-top: 0.75rem;
-  }
+  .faq { padding-block: 8rem; max-width: 800px; }
+  .faq h1 { font-size: clamp(2rem, 4vw, 3rem); margin-block: 0.75rem 1rem; max-width: 20ch; }
+  .faq-lede { max-width: 55ch; line-height: 1.6; }
+  .faq-updated { font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); margin-top: 0.5rem; }
+  .faq-list { margin-top: 3rem; border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); padding-block: 1.25rem; }
+  .faq-item summary { font-family: var(--font-display); font-size: 1.1rem; cursor: pointer; color: var(--fg); }
+  .faq-item p { margin-top: 0.75rem; line-height: 1.6; color: var(--fg-muted); }
+  .faq-cta { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--line); text-align: center; }
+  .faq-cta h2 { font-size: 1.75rem; }
+  .faq-cta p { margin-top: 0.75rem; }
+  .faq-cta .btn { margin-top: 1.5rem; display: inline-flex; }
 </style>

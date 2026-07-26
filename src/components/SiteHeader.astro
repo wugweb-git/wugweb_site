@@ -10,58 +10,59 @@ const navLinks = [
 <header class="site-header">
   <nav class="wrap site-header-inner">
     <a href="/" class="site-logo">wugweb</a>
-    <div class="site-links">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="site-links" id="nav-menu">
       {navLinks.map((l) => (
-        <a href={l.href}>{l.label}</a>
+        <a href={l.href} class="nav-link">{l.label}</a>
       ))}
+      <a href="/contact-us" class="btn btn-solid mobile-cta">Let's talk</a>
     </div>
-    <a href="/contact-us" class="btn btn-solid">Let's talk</a>
+    <a href="/contact-us" class="btn btn-solid desktop-cta">Let's talk</a>
   </nav>
 </header>
 
 <style>
-  .site-header {
-    position: relative;
-    z-index: 10;
-  }
+  .site-header { position: relative; z-index: 10; }
+  .site-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: 1.5rem; }
+  .site-logo { font-family: var(--font-display); font-weight: 700; text-decoration: none; font-size: 1.1rem; color: var(--fg); }
+  .site-links { display: none; gap: 2rem; font-family: var(--font-mono); font-size: 0.85rem; }
+  .site-links a { text-decoration: none; color: var(--fg); }
+  .desktop-cta { display: none; }
+  .mobile-cta { display: none; }
 
-  /* On the homepage the hero renders its own video/overlay behind this;
-     everywhere else it just sits on the page background. Either way
-     the header itself is transparent — same dark bg throughout the site. */
-  .site-header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding-block: 1.5rem;
-  }
+  .hamburger { display: flex; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 20; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--fg); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-  .site-logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.1rem;
-    color: var(--fg);
-  }
-
-  .site-links {
-    display: none;
-    gap: 2rem;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-  }
-
-  .site-links a {
-    text-decoration: none;
-    color: var(--fg);
-  }
+  .site-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: var(--bg); padding: 6rem 2rem 2rem; gap: 1.5rem; font-size: 1.2rem; align-items: center; justify-content: center; z-index: 15; }
+  .site-links.open .mobile-cta { display: inline-flex; margin-top: 1rem; }
 
   @media (min-width: 768px) {
-    .site-links {
-      display: flex;
-    }
+    .hamburger { display: none; }
+    .site-links { display: flex; }
+    .desktop-cta { display: inline-flex; }
+    .site-links.open { position: static; flex-direction: row; padding: 0; gap: 2rem; font-size: 0.85rem; background: none; }
+    .site-links.open .mobile-cta { display: none; }
   }
-
-  /* No mobile menu yet — links just disappear under 768px for now.
-     Real gap, not a silent omission: needs a hamburger/drawer before ship. */
 </style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('nav-menu');
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>

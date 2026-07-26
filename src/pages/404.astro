@@ -4,22 +4,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Page not found">
-  <section class="wrap stub">
+  <section class="wrap not-found">
     <p class="eyebrow">404</p>
-    <h1>Page not found</h1>
-    <p>The page you're looking for doesn't exist. <a href="/">Back to home</a>.</p>
+    <h1>Seems this page is not available.</h1>
+    <p>Would like to play a game with us till then?</p>
+    <div class="game" id="game">
+      <span class="cell" data-cell></span><span class="cell" data-cell></span><span class="cell" data-cell></span>
+      <span class="cell" data-cell></span><span class="cell" data-cell></span><span class="cell" data-cell></span>
+      <span class="cell" data-cell></span><span class="cell" data-cell></span><span class="cell" data-cell></span>
+    </div>
+    <a href="/" class="btn btn-solid">Back to Home</a>
   </section>
 </BaseLayout>
 
 <style>
-  .stub {
-    padding-block: 8rem;
-  }
-  .stub h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-block: 0.75rem;
-  }
-  .stub a {
-    color: var(--accent-warm);
-  }
+  .not-found { padding-block: 8rem; text-align: center; }
+  .not-found h1 { font-size: clamp(2rem, 4vw, 3rem); margin-block: 0.75rem; }
+  .not-found p { margin-bottom: 2rem; }
+  .game { display: grid; grid-template-columns: repeat(3, 80px); gap: 4px; justify-content: center; margin-bottom: 3rem; }
+  .cell { width: 80px; height: 80px; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; font-family: var(--font-display); transition: background 0.2s; }
+  .cell:hover { background: var(--line); }
 </style>
+
+<script>
+  const cells = document.querySelectorAll('[data-cell]');
+  let turn = 'X';
+  let board = Array(9).fill(null);
+
+  function checkWinner() {
+    const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    for (const [a,b,c] of wins) {
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) return board[a];
+    }
+    return board.every(Boolean) ? 'draw' : null;
+  }
+
+  cells.forEach((cell, i) => {
+    cell.addEventListener('click', () => {
+      if (board[i] || checkWinner()) return;
+      board[i] = turn;
+      cell.textContent = turn;
+      const winner = checkWinner();
+      if (winner) {
+        setTimeout(() => alert(winner === 'draw' ? "It's a draw!" : `${winner} wins!`), 50);
+      }
+      turn = turn === 'X' ? 'O' : 'X';
+    });
+  });
+</script>
