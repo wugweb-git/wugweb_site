@@ -29,8 +29,19 @@ main pages, to keep shipped JS minimal.
   POST handler to Neon), faq, footer/impact, footer/subscription (stub —
   needs a real payment-gateway scoping conversation, not attempted),
   privacy-policy, termsofuse, refund-policy, 404.
-- Not built: `footer/sitemap`, mobile nav menu, contact-form confirmation
-  page (redirects to `/?submitted=1` with nothing reading that param).
+- Not built: `footer/sitemap`, contact-form confirmation page (redirects
+  to `/?submitted=1` with nothing reading that param).
+- Mobile nav menu **is** built (hamburger + full-screen panel +
+  close-on-navigate, in `SiteHeader.astro`) — an earlier note here said
+  otherwise and was wrong.
+- Brand assets live in `public/brand/`. The W mark was recovered from the
+  live favicon and un-composited off its baked black background, so it is
+  white+yellow on transparent — it only reads on dark surfaces. Favicon
+  and apple-touch icon are served from there rather than hotlinking
+  Framer's CDN, which dies when the old Framer project goes away.
+- Colour tokens in `global.css` are the live site's own design tokens
+  (text `#f4f4f4`, muted `#bababa`, surfaces `#191919`/`#2b2b2b`). Don't
+  "fix" the text back to pure white — it's deliberate.
 
 ## Deploy gotchas (read before editing wrangler.jsonc)
 
