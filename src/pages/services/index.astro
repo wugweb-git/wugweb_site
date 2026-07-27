@@ -2,42 +2,75 @@
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+// Work-thumbnail pool reused for the per-service galleries (same sources as /work).
+const W = {
+  axis:      { v: 'https://wugweb.online/assets/work/Axis%20Bank/axis_thumb.mp4',        label: 'Axis Bank',    slug: 'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform' },
+  inkompass: { v: 'https://wugweb.online/assets/work/Inkompass/inkompass_thumb.mp4',     label: 'Inkompass',    slug: 'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future' },
+  metcred:   { v: 'https://wugweb.online/assets/work/Metcred/metcred_thumb.mp4',         label: 'METCRED',      slug: 'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience' },
+  xsafe:     { v: 'https://wugweb.online/assets/work/Airtel%20Xsafe/Xsafe_thumb.mp4',    label: 'Airtel Xsafe', slug: 'airtel-xsafe-securing-homes-with-intuitive-digital-experiences' },
+  visione:   { v: 'https://wugweb.online/assets/work/VisiOne/visiOne_thumb.mp4',         label: 'VisiONE',      slug: 'visione-empowering-workforce-development-with-competency-based-assessments' },
+  indus:     { v: 'https://wugweb.online/assets/work/Indusninja/Indusninja_thumb.mp4',   label: 'IndusNinja',   slug: 'indusninja-your-ai-powered-financial-ninja' },
+  sadhan:    { v: 'https://wugweb.online/assets/work/Sadhan/sadhan_thumb.mp4',           label: 'Sadhan',       slug: 'sadhan-streamlining-driver-onboarding-lead-management' },
+};
+
+// KNOWN GAP: `price` values are placeholders. Wugweb has not published rate cards for these
+// engagement tiers — swap "On Request" for real figures here (single source of truth) when
+// commercial sign-off exists. The `label` values (Fixed Scope / Starting From) are the
+// engagement-model framing and are safe to keep either way.
 const services = [
   {
-    n: '01', title: 'Strategy',
-    tags: ['Brand Strategy', 'Market Positioning', 'Digital Strategy', 'Growth Roadmaps'],
-    body: 'We help organisations define their north star. From brand positioning and market strategy to digital transformation roadmaps, our strategists combine deep research with creative thinking to chart a clear path forward. We don\'t just plan — we build strategies that translate into measurable outcomes.',
-    video: 'https://wugweb.online/assets/more/services/services_brand-mp4.mp4',
+    n: '01', slug: 'strategy', title: 'Strategy',
+    bg: '#363732', fg: '#FAE0B7', accent: '#F1BD75',
+    tiers: [
+      { id: 'sprint', name: 'Sprint', body: 'A focused strategy sprint to sharpen positioning, pressure-test the opportunity and turn complex thinking into a direction your teams and your audiences can actually act on.', label: 'Fixed Scope', price: 'On Request' },
+      { id: 'partnership', name: 'Partnership', body: 'An embedded strategy partnership for the bigger bets — transformation programmes, new market entry, and roadmaps that need dedicated thinking over quarters, not weeks.', label: 'Starting From', price: 'On Request' },
+    ],
+    gallery: [W.axis, W.metcred, W.sadhan, W.indus],
   },
   {
-    n: '02', title: 'Brand',
-    tags: ['Identity Systems', 'Naming', 'Visual Identity', 'Brand Guidelines'],
-    body: 'Your brand is more than a logo — it\'s the sum of every interaction people have with you. We craft distinct brand identities, from naming and visual systems to tone of voice and comprehensive guidelines, ensuring your brand stands out and stays consistent across every touchpoint.',
-    video: 'https://wugweb.online/assets/more/services/services_brand-mp4.mp4',
+    n: '02', slug: 'brand', title: 'Brand',
+    bg: '#1E2D53', fg: '#E8F4F0', accent: '#A8C5E0',
+    tiers: [
+      { id: 'foundations', name: 'Foundations', body: 'A complete brand foundation built to hold its own alongside organisations ten times your size — from visual identity to voice, delivered as a system your team can actually run with.', label: 'Fixed Scope', price: 'On Request' },
+      { id: 'partnership', name: 'Partnership', body: 'A bespoke brand partnership with dedicated creative resource for the work that needs more room: a full rebrand, a campaign identity, or something nobody has done before.', label: 'Starting From', price: 'On Request' },
+    ],
+    gallery: [W.inkompass, W.visione, W.sadhan, W.axis],
   },
   {
-    n: '03', title: 'Experience',
-    tags: ['UX Design', 'UI Design', 'Design Systems', 'User Research'],
-    body: 'We design digital experiences that people love to use. Rooted in human-centered design and rigorous user research, our UX/UI services cover everything from journey mapping and wireframing to polished visual design and scalable design systems — all focused on creating intuitive, engaging products.',
-    video: 'https://wugweb.online/assets/more/services/services_uxdesign-mp4.mp4',
+    n: '03', slug: 'experience', title: 'Experience',
+    bg: '#C84525', fg: '#FDF1EA', accent: '#FFD9C2',
+    tiers: [
+      { id: 'foundations', name: 'Foundations', body: 'A research-led UX and UI build designed to convert, communicate and hold up under scrutiny — journeys, interfaces and a design system that ships with the product.', label: 'Fixed Scope', price: 'On Request' },
+      { id: 'partnership', name: 'Partnership', body: 'An ongoing experience partnership for multi-product estates: continuous research, a governed design system, and a design team that stays with the roadmap.', label: 'Starting From', price: 'On Request' },
+    ],
+    gallery: [W.xsafe, W.inkompass, W.metcred, W.visione],
   },
   {
-    n: '04', title: 'Growth',
-    tags: ['MarTech', 'AI & Automation', 'Lead Generation', 'Analytics'],
-    body: 'Growth is driven by smart systems and sharper insights. We help businesses unlock data-driven marketing through MarTech consulting, marketing automation, AI integration, and lead generation strategies — turning your marketing into a measurable, scalable engine for acquisition and retention.',
-    video: 'https://wugweb.online/assets/more/services/services_martech-mp4.mp4',
+    n: '04', slug: 'growth', title: 'Growth',
+    bg: '#3B2140', fg: '#F6E6C9', accent: '#E0B0D6',
+    tiers: [
+      { id: 'foundations', name: 'Foundations', body: 'A martech and analytics foundation that turns scattered tooling into one measurable acquisition engine — tracking, automation and reporting you can trust.', label: 'Fixed Scope', price: 'On Request' },
+      { id: 'partnership', name: 'Partnership', body: 'A retained growth partnership running lifecycle automation, AI-assisted campaigns and experimentation against targets we agree upfront and report on monthly.', label: 'Starting From', price: 'On Request' },
+    ],
+    gallery: [W.indus, W.sadhan, W.axis, W.xsafe],
   },
   {
-    n: '05', title: 'Engineering',
-    tags: ['Web Development', 'App Development', 'Cloud & DevOps', 'Full-Stack'],
-    body: 'We build robust, performant digital products using modern engineering practices. From responsive websites and e-commerce platforms to native mobile apps and cloud-native architectures, our engineering team delivers scalable solutions that are secure, fast, and built to last.',
-    video: 'https://wugweb.online/assets/more/services/services_webdevelopment-mp4.mp4',
+    n: '05', slug: 'engineering', title: 'Engineering',
+    bg: '#14322B', fg: '#DCEFE8', accent: '#9FD8C4',
+    tiers: [
+      { id: 'build', name: 'Build', body: 'A production-grade web or app build on modern foundations — performant, accessible, secure by default, and handed over with the documentation to keep it that way.', label: 'Fixed Scope', price: 'On Request' },
+      { id: 'partnership', name: 'Partnership', body: 'A long-run engineering partnership: a dedicated squad on your roadmap, covering platform work, integrations, cloud and the reliability that comes after launch.', label: 'Starting From', price: 'On Request' },
+    ],
+    gallery: [W.metcred, W.indus, W.xsafe, W.visione],
   },
   {
-    n: '06', title: 'Operations',
-    tags: ['QA & Testing', 'No-Code Solutions', 'Process Automation', 'SRE'],
-    body: 'Great products need great operations behind them. We provide QA and testing services, no-code development for rapid delivery, workflow automation, and site reliability engineering — ensuring your digital products run smoothly, ship faster, and scale without friction.',
-    video: 'https://wugweb.online/assets/more/services/services_nocode-mp4.mp4',
+    n: '06', slug: 'operations', title: 'Operations',
+    bg: '#1B1C18', fg: '#ECF3D9', accent: '#ACF80B',
+    tiers: [
+      { id: 'essentials', name: 'Essentials', body: 'A QA, no-code and automation pass that removes the manual work slowing delivery down — test coverage, workflow automation and the tooling to keep releases boring.', label: 'Fixed Scope', price: 'On Request' },
+      { id: 'partnership', name: 'Partnership', body: 'An embedded operations partnership covering continuous QA, release engineering and site reliability so your products ship faster and scale without friction.', label: 'Starting From', price: 'On Request' },
+    ],
+    gallery: [W.visione, W.sadhan, W.inkompass, W.indus],
   },
 ];
 
@@ -80,26 +113,69 @@ const stats = [
     </p>
   </section>
 
-  <!-- SERVICE CARDS -->
-  <div class="service-cards">
-    {services.map((s, i) => (
-      <section class="service-card" id={s.title.toLowerCase()} data-service={i}>
-        <div class="service-card-sticky">
-          <div class="service-card-content">
-            <video class="service-card-video" autoplay muted loop playsinline src={s.video}></video>
-            <div class="service-card-overlay"></div>
-            <div class="service-card-info">
-              <span class="service-card-n">{s.n}</span>
-              <h2 class="service-card-title">{s.title}</h2>
-              <ul class="service-card-tags">
-                {s.tags.map((t) => <li>{t}</li>)}
-              </ul>
-              <p class="service-card-body">{s.body}</p>
-              <div class="service-card-ctas">
-                <a href={`/services/${s.title.toLowerCase()}`} class="btn btn-ghost">Learn More</a>
-                <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
-              </div>
+  <!-- SERVICE CARDS — full-bleed colour panels, sticky-stacked -->
+  <div class="svc-stack">
+    {services.map((s) => (
+      <section
+        class="svc-panel"
+        id={s.slug}
+        data-service={s.slug}
+        style={`--svc-bg:${s.bg};--svc-fg:${s.fg};--svc-accent:${s.accent}`}
+      >
+        <div class="wrap svc-inner">
+          <div class="svc-copy">
+            <span class="svc-num">{s.n}</span>
+            <h2 class="svc-title">{s.title}</h2>
+
+            <div class="svc-tabs" role="tablist" aria-label={`${s.title} engagement tiers`}>
+              {s.tiers.map((t, ti) => (
+                <button
+                  type="button"
+                  role="tab"
+                  class:list={['svc-tab', { active: ti === 0 }]}
+                  data-tier-btn={t.id}
+                  id={`tab-${s.slug}-${t.id}`}
+                  aria-selected={ti === 0 ? 'true' : 'false'}
+                  aria-controls={`panel-${s.slug}-${t.id}`}
+                >{t.name}</button>
+              ))}
             </div>
+
+            {s.tiers.map((t, ti) => (
+              <div
+                class="svc-tier"
+                role="tabpanel"
+                data-tier-panel={t.id}
+                id={`panel-${s.slug}-${t.id}`}
+                aria-labelledby={`tab-${s.slug}-${t.id}`}
+                hidden={ti !== 0}
+              >
+                <p class="svc-desc">{t.body}</p>
+                <div class="svc-price">
+                  <span class="svc-price-label">{t.label}</span>
+                  <span class="svc-price-val">{t.price}</span>
+                </div>
+                <div class="svc-btns">
+                  {ti === 0 ? (
+                    <>
+                      <a href={`/services/${s.slug}`} class="btn svc-btn">Learn More</a>
+                      <a href="/contact-us" class="btn svc-btn">Get in Touch</a>
+                    </>
+                  ) : (
+                    <a href="/contact-us" class="btn svc-btn">Contact Us</a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="svc-gallery">
+            {s.gallery.map((g) => (
+              <a href={`/work/${g.slug}`} aria-label={`${g.label} — case study`}>
+                <video muted loop playsinline preload="none" src={g.v}></video>
+                <span class="svc-gallery-label">{g.label}</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -163,59 +239,107 @@ const stats = [
   .services-intro h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); max-width: 20ch; }
   .services-intro p { margin-top: 1.25rem; max-width: 65ch; }
 
-  /* Service cards — full-viewport, scroll-transform */
-  .service-cards { position: relative; }
-  .service-card {
-    height: 100vh; max-height: 1080px;
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
+  /* Service panels — full-bleed colour, sticky-stacked card reveal */
+  .svc-stack { position: relative; }
+  .svc-panel {
+    position: sticky;
+    top: 0;
+    /* Locked to the viewport: a sticky panel taller than the screen would park
+       its gallery permanently below the fold. Type/media scale off vh to fit. */
+    height: 100vh;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    background: var(--svc-bg);
+    color: var(--svc-fg);
+    padding-block: 6rem 3rem;
+    border-radius: 32px 32px 0 0;
+    box-shadow: 0 -30px 70px rgba(0, 0, 0, 0.45);
   }
-  .service-card-sticky {
-    position: sticky; top: 0;
-    height: 100vh; max-height: 1080px;
+  .svc-inner {
     width: 100%;
-    display: flex; align-items: center; justify-content: center;
-    transform-origin: center center;
+    transform-origin: center top;
     will-change: transform, opacity;
   }
-  .service-card-content {
-    position: relative;
-    width: 92%; max-width: 1200px;
-    height: 85vh; max-height: 880px;
-    border-radius: 24px;
-    overflow: hidden;
-    display: flex; align-items: flex-end;
+  .svc-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    opacity: 0.65;
   }
-  .service-card-video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
+  .svc-title {
+    font-size: clamp(2.5rem, min(8.5vw, 11vh), 6.5rem);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+    color: var(--svc-fg);
+    margin-top: 0.4rem;
   }
-  .service-card-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 50%, rgba(0,0,0,.05) 100%);
-    z-index: 1;
-  }
-  .service-card-info {
-    position: relative; z-index: 2;
-    padding: 3rem 3.5rem;
-    max-width: 640px;
-  }
-  .service-card-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: 0.8rem; }
-  .service-card-title { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 600; letter-spacing: -0.02em; margin-top: 0.35rem; }
-  .service-card-tags { list-style: none; margin: 0.75rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .service-card-tags li { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.7rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; color: rgba(255,255,255,.7); }
-  .service-card-body { margin-top: 0.75rem; font-size: 0.95rem; line-height: 1.65; color: rgba(255,255,255,.75); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
-  .service-card-ctas { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
-  .service-card-ctas .btn-ghost { border-color: rgba(255,255,255,.3); color: #fff; }
-  .service-card-ctas .btn-ghost:hover { border-color: rgba(255,255,255,.7); }
-  .service-card-ctas .btn-solid { background: var(--accent-warm); color: #000; }
-  .service-card-ctas .btn-solid:hover { background: #ffd44d; }
 
-  @media (max-width: 767px) {
-    .service-card-info { padding: 2rem 1.5rem; }
-    .service-card-content { height: 90vh; border-radius: 16px; width: 96%; }
-    .service-card-body { -webkit-line-clamp: 3; }
+  .svc-tabs { display: flex; gap: 0; margin-top: clamp(0.85rem, 2vh, 1.75rem); padding: 0.3rem; border-radius: 999px; background: rgba(255,255,255,.08); width: fit-content; }
+  .svc-tab {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    opacity: 0.55;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+  }
+  .svc-tab:hover { opacity: 0.85; }
+  .svc-tab.active { background: rgba(255,255,255,.14); opacity: 1; }
+  .svc-tab:focus-visible { outline: 2px solid var(--svc-accent); outline-offset: 2px; }
+
+  .svc-tier[hidden] { display: none; }
+  .svc-desc { margin-top: clamp(0.85rem, 2vh, 1.5rem); max-width: 52ch; font-size: clamp(0.92rem, 1.7vh, 1.05rem); line-height: 1.6; color: color-mix(in srgb, var(--svc-fg) 88%, transparent); }
+  .svc-price { display: flex; align-items: baseline; gap: 0.85rem; margin-top: clamp(0.85rem, 2vh, 1.5rem); }
+  .svc-price-label { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.6; }
+  .svc-price-val { font-size: 1.2rem; font-weight: 600; color: var(--svc-fg); }
+  .svc-price-val::before { content: ''; display: inline-block; width: 1px; height: 1em; margin-right: 0.85rem; background: currentColor; opacity: 0.25; vertical-align: -0.12em; }
+  .svc-btns { display: flex; gap: 0.75rem; margin-top: clamp(1rem, 2.5vh, 2rem); flex-wrap: wrap; }
+  .svc-btn { background: #fff; border-color: #fff; color: #111; font-size: 0.8rem; padding: 0.75rem 1.35rem; }
+  .svc-btn:hover { background: var(--svc-accent); border-color: var(--svc-accent); color: #111; transform: translateY(-1px); }
+  .svc-btn:focus-visible { outline-color: var(--svc-accent); }
+
+  .svc-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: clamp(1.5rem, 4vh, 3.5rem); }
+  .svc-gallery a {
+    position: relative;
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    height: clamp(110px, 22vh, 230px);
+    background: rgba(0,0,0,.2);
+    text-decoration: none;
+  }
+  .svc-gallery video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .svc-gallery a:hover video { transform: scale(1.04); }
+  .svc-gallery-label {
+    position: absolute; inset-inline: 0; bottom: 0;
+    padding: 1.75rem 1rem 0.75rem;
+    font-family: var(--font-mono); font-size: 0.75rem; color: #fff;
+    background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .svc-gallery a:hover .svc-gallery-label,
+  .svc-gallery a:focus-visible .svc-gallery-label { opacity: 1; }
+
+  /* Below 900px the panels are plain stacked sections — sticky stacking needs a
+     viewport-fitted card, and this content doesn't fit a phone screen. */
+  @media (max-width: 900px) {
+    .svc-panel { position: relative; height: auto; min-height: 0; padding-block: 4rem 3rem; border-radius: 24px 24px 0 0; }
+    .svc-inner { transform: none !important; opacity: 1 !important; }
+    .svc-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+    .svc-gallery { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 2.5rem; }
+    .svc-gallery a { height: clamp(130px, 30vw, 200px); }
+    .svc-desc { font-size: 0.98rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .svc-panel { position: relative; height: auto; min-height: 0; }
   }
 
   .why-section { padding-block: 6rem; border-top: 1px solid var(--line); }
@@ -236,39 +360,81 @@ const stats = [
 </style>
 
 <script>
-  import { animate, inView, scroll, timeline } from 'motion';
+  import { animate, inView } from 'motion';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Entrance reveal for hero and static sections
   animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.stats li, .why-grid li, .faq-item, .services-faq .faq-item', (el) => {
+  inView('.stats li, .why-grid li, .faq-item', (el) => {
     animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
   });
 
-  // Scroll-driven card transforms
-  const cards = document.querySelectorAll('.service-card');
-  const cardHeight = window.innerHeight;
-  const total = cards.length;
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('.svc-panel'));
 
-  cards.forEach((card, i) => {
-    const sticky = card.querySelector('.service-card-sticky');
-    const content = card.querySelector('.service-card-content');
-
-    // Stagger entrance — card fades in from bottom as it enters viewport
-    inView(card, () => {
-      animate(sticky, { opacity: [0, 1], y: [80, 0] }, { duration: 0.8, easing: [0.16, 1, 0.3, 1] });
-    }, { amount: 0.2 });
-
-    // Scroll-driven scale — card shrinks as it scrolls up and out
-    scroll(animate(sticky, {
-      transform: [
-        'scale(1) translateY(0)',
-        'scale(0.92) translateY(0)',
-        'scale(0.85) translateY(-60px)',
-      ],
-      opacity: [1, 1, 0],
-    }), {
-      target: card,
-      axis: 'y',
+  // Tier tabs — one active panel per service
+  panels.forEach((panel) => {
+    const btns = Array.from(panel.querySelectorAll<HTMLButtonElement>('[data-tier-btn]'));
+    const tiers = Array.from(panel.querySelectorAll<HTMLElement>('[data-tier-panel]'));
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tier = btn.dataset.tierBtn;
+        btns.forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', String(on));
+        });
+        tiers.forEach((t) => { t.hidden = t.dataset.tierPanel !== tier; });
+      });
     });
   });
+
+  // Only play gallery videos for the panel currently on screen — 24 looping
+  // videos playing at once is what tanked this page before.
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const vids = entry.target.querySelectorAll<HTMLVideoElement>('.svc-gallery video');
+      vids.forEach((v) => {
+        if (entry.isIntersecting) {
+          if (v.preload === 'none') v.preload = 'auto';
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+        }
+      });
+    });
+  }, { rootMargin: '10% 0px' });
+  panels.forEach((p) => videoObserver.observe(p));
+
+  if (!reduceMotion) {
+    // Card-stack reveal: each panel's content recedes as the next panel slides over it.
+    // Driven manually rather than via motion's scroll() — the panels are `position: sticky`,
+    // so their measured scroll range collapses once stuck and the offsets read wrong.
+    const inners = panels.map((p) => p.querySelector<HTMLElement>('.svc-inner'));
+    let queued = false;
+
+    const update = () => {
+      queued = false;
+      const vh = window.innerHeight;
+      for (let i = 0; i < panels.length - 1; i++) {
+        const inner = inners[i];
+        if (!inner) continue;
+        // 0 while the next panel is still below the fold, 1 once it has fully covered this one.
+        const nextTop = panels[i + 1].getBoundingClientRect().top;
+        const p = Math.min(1, Math.max(0, (vh - nextTop) / vh));
+        inner.style.transform = `scale(${(1 - 0.06 * p).toFixed(4)})`;
+        inner.style.opacity = (1 - 0.7 * p).toFixed(3);
+      }
+    };
+
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
 </script>
