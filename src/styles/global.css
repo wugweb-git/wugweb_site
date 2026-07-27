@@ -14,9 +14,47 @@
   --line: rgba(255, 255, 255, 0.05);
   --line-strong: rgba(255, 255, 255, 0.12);
 
+  /* The live site sets Inter Tight on *everything*, headings and body alike.
+     Inter was only ever a fallback. */
   --font-display: 'Inter Tight', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Inter', ui-monospace, monospace;
+  --font-body: 'Inter Tight', system-ui, sans-serif;
+  --font-mono: 'Inter Tight', system-ui, sans-serif;
+
+  /* Type scale, from the live style presets. Each step interpolates between
+     its mobile (≤767px) and desktop (≥1200px) value.
+     Weight is 400 at every size — including the 80px hero. */
+  --t-display: clamp(3rem, 2.3rem + 3vw, 5rem);          /* 48 → 80 */
+  --t-h2: clamp(2.25rem, 1.99rem + 1.13vw, 3rem);        /* 36 → 48 */
+  --t-h3: clamp(1.875rem, 1.74rem + 0.56vw, 2.25rem);    /* 30 → 36 */
+  --t-h4: clamp(1.3125rem, 1.24rem + 0.28vw, 1.5rem);    /* 21 → 24 */
+  --t-lead: clamp(1.125rem, 1.08rem + 0.19vw, 1.25rem);  /* 18 → 20 */
+  --t-body: clamp(0.875rem, 0.83rem + 0.19vw, 1rem);     /* 14 → 16 */
+  --t-sm: clamp(0.8125rem, 0.79rem + 0.09vw, 0.875rem);  /* 13 → 14 */
+  --t-micro: clamp(0.75rem, 0.71rem + 0.19vw, 0.875rem); /* 12 → 14 */
+
+  --lh-tight: 1.2;    /* display + headings */
+  --lh-snug: 1.375;   /* sub-headings, leads */
+  --lh-body: 1.5;
+
+  /* Radius scale — the live site is overwhelmingly 8px, with 12/16/24 for
+     progressively larger surfaces. It is not a pill-heavy design. */
+  --r-sm: 4px;
+  --r: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 100px;
+
+  --shadow: rgba(0, 0, 0, 0.25) 0 1.07px 5px 0;
+  --shadow-lg: rgba(0, 0, 0, 0.25) 0 5px 10px 0;
+
+  /* Spacing rhythm: gaps on the live site cluster on 8/12/16/24/32/36 */
+  --gap-xs: 0.5rem;
+  --gap-sm: 0.75rem;
+  --gap: 1rem;
+  --gap-md: 1.5rem;
+  --gap-lg: 2rem;
+  --gap-xl: 2.25rem;
 }
 
 * {
@@ -42,22 +80,35 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
-  line-height: 1.5;
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
 }
 
+/* Regular weight and zero tracking are deliberate — that's the real
+   typographic tone. Don't reintroduce bold, tightly-tracked headings. */
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: var(--font-display);
   margin: 0;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
 }
+
+h1 { font-size: var(--t-display); }
+/* Live site runs 1.375 on its 36px heading and 1.2 on the 80px display —
+   h2 sits in the 36px band, so it takes the looser leading. */
+h2 { font-size: var(--t-h2); line-height: var(--lh-snug); }
+h3 { font-size: var(--t-h4); }
+h4 { font-size: var(--t-lead); line-height: var(--lh-snug); }
 
 p {
   margin: 0;
   color: var(--fg-muted);
+  line-height: var(--lh-body);
 }
 
 a {
@@ -65,29 +116,33 @@ a {
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
+  font-size: var(--t-micro);
+  line-height: var(--lh-tight);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
+/* Buttons on the live site are 8px-radius rectangles with regular-weight
+   sentence-case labels on #444 — not uppercase mono pills. */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  letter-spacing: 0;
   text-decoration: none;
-  padding: 0.9rem 1.6rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
+  padding: 0.7rem 1.15rem;
+  border-radius: var(--r);
+  border: 1px solid transparent;
+  background: #444;
+  color: var(--fg);
   transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.15s ease;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
 }
 
 .btn:active {
@@ -112,9 +167,18 @@ a {
   transform: translateY(-1px);
 }
 
+.btn:hover {
+  background: #555;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+}
+
 .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
   border-color: var(--fg);
-  transform: translateY(-1px);
 }
 
 .wrap {

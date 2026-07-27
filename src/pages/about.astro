@@ -239,8 +239,8 @@ const team = [
     padding-block: 5rem;
   }
   .about-hero-content h1 {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 500;
+    font-size: var(--t-h2);
+    font-weight: 400;
     max-width: 26ch;
     margin-top: 1rem;
   }
@@ -304,7 +304,7 @@ const team = [
   }
   .values-list h3 {
     font-size: 1.15rem;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 0.5rem;
   }
   .values-list p {
@@ -316,7 +316,7 @@ const team = [
     border-top: 1px solid var(--line);
   }
   .culture h2 {
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-size: var(--t-h3);
   }
   .culture p {
     margin-top: 1.25rem;
@@ -349,7 +349,7 @@ const team = [
     border-top: 1px solid var(--line);
   }
   .team h2 {
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-size: var(--t-h3);
   }
   .team-grid {
     list-style: none;
@@ -368,7 +368,7 @@ const team = [
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: var(--r);
   }
   .team-role {
     font-family: var(--font-mono);
@@ -378,7 +378,7 @@ const team = [
   }
   .team-grid h3 {
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 0.3rem;
   }
 
@@ -388,7 +388,7 @@ const team = [
      Those source assets weren't provided, so the tiles are built structurally
      with the real copy — drop images into the tiles when the assets land. */
   .why-bento { padding-block: 6rem; border-top: 1px solid var(--line); }
-  .why-bento h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
+  .why-bento h2 { font-size: var(--t-h2); }
   .why-bento-lede { margin-top: 1.25rem; max-width: 75ch; }
 
   .bento { display: grid; gap: 1rem; margin-top: 3rem; grid-template-columns: 1fr; }
@@ -406,14 +406,14 @@ const team = [
   .bento-tile {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 20px;
+    border-radius: var(--r-lg);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     min-height: 180px;
   }
-  .bento-tile h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+  .bento-tile h3 { font-size: var(--t-h4); font-weight: 400; line-height: var(--lh-tight); }
   .bento-tile p { margin-top: 0.65rem; font-size: 0.95rem; line-height: 1.6; }
 
   /* The one light tile, mirroring the live layout's contrast anchor */
@@ -445,7 +445,7 @@ const team = [
     font-size: 0.78rem;
     padding: 0.45rem 0.9rem;
     border: 1px solid var(--line-strong);
-    border-radius: 999px;
+    border-radius: var(--r-pill);
     color: var(--fg-muted);
   }
 
@@ -455,7 +455,7 @@ const team = [
     text-align: center;
   }
   .closing-cta h2 {
-    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-size: var(--t-h2);
     margin-top: 0.75rem;
   }
   .closing-cta p {
@@ -467,11 +467,11 @@ const team = [
   }
 
   .reviews { padding-block: 6rem; }
-  .reviews h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); max-width: 20ch; }
+  .reviews h2 { font-size: var(--t-h3); max-width: 20ch; }
   .reviews-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 2rem; }
   @media (min-width: 640px) { .reviews-grid { grid-template-columns: repeat(4, 1fr); } }
   .review-card { background: var(--bg); padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
-  .review-score { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+  .review-score { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; }
   .review-source { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); }
 </style>
 

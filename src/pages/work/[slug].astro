@@ -298,24 +298,24 @@ const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice
 <style>
   .work-detail-hero { padding-block: 8rem 4rem; border-bottom: 1px solid var(--line); }
   .work-detail-hero .eyebrow a { color: var(--fg-muted); text-decoration: none; }
-  .work-detail-hero h1 { font-size: clamp(2rem, 4vw, 3.5rem); margin-top: 1rem; max-width: 20ch; }
+  .work-detail-hero h1 { font-size: var(--t-h2); margin-top: 1rem; max-width: 20ch; }
   .work-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; max-width: 600px; }
   .meta-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); text-transform: uppercase; margin-bottom: 0.25rem; }
   .section { padding-block: 4rem; border-bottom: 1px solid var(--line); }
-  .section h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: 1.5rem; }
+  .section h2 { font-size: var(--t-h3); margin-bottom: 1.5rem; }
   .section p { max-width: 60ch; line-height: 1.7; color: var(--fg-muted); }
   .grid { display: grid; gap: 1.5rem; margin-top: 1rem; }
   @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
   .card { border-top: 1px solid var(--line); padding-top: 1rem; }
-  .card h3 { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.5rem; }
+  .card h3 { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
   .card p { font-size: 0.95rem; }
   .more-grid { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
   @media (min-width: 768px) { .more-grid { grid-template-columns: repeat(2, 1fr); } }
   .more-card { text-decoration: none; border-top: 1px solid var(--line); padding-top: 1rem; display: block; }
-  .more-card h3 { font-size: 1.1rem; font-weight: 500; color: var(--fg); }
+  .more-card h3 { font-size: 1.1rem; font-weight: 400; color: var(--fg); }
   .more-card p { color: var(--fg-muted); margin-top: 0.25rem; font-size: 0.85rem; }
   .closing-cta { padding-block: 6rem; text-align: center; }
-  .closing-cta h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); max-width: 18ch; margin-inline: auto; }
+  .closing-cta h2 { font-size: var(--t-h2); max-width: 18ch; margin-inline: auto; }
   .closing-cta .btn { margin-top: 2rem; display: inline-flex; }
 </style>
 
