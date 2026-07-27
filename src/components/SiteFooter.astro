@@ -1,4 +1,6 @@
 ---
+interface Props { copyright?: string; companyEmail?: string; }
+const { copyright, companyEmail } = Astro.props;
 const footerLinks = [
   { href: '/faq', label: 'FAQs' },
   { href: '/footer/impact', label: 'Impact' },
@@ -14,10 +16,10 @@ const footerLinks = [
     <div class="footer-brand">
       <p class="footer-tagline">Let's Build Great Experiences Together</p>
       <p class="footer-email">
-        <a href="mailto:hello@wugweb.com">hello@wugweb.com</a>
+        <a href={`mailto:${companyEmail || 'hello@wugweb.com'}`}>{companyEmail || 'hello@wugweb.com'}</a>
       </p>
     </div>
-    <p class="footer-copy">© 2020–2026 Wugweb. All rights reserved.</p>
+    <p class="footer-copy">{copyright || '© 2020–2026 Wugweb. All rights reserved.'}</p>
     <div class="footer-links">
       {footerLinks.map((l) => (
         <a href={l.href}>{l.label}</a>

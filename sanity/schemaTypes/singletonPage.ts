@@ -1,37 +1,46 @@
 import { defineType, defineField } from 'sanity';
 
-// One doc per pageId. Enforce "singleton" behavior in the desk structure
-// (deskStructure.ts) — filter to these 4 fixed pageIds and hide "create new".
 export default defineType({
   name: 'singletonPage',
   title: 'Page',
   type: 'document',
   fields: [
     defineField({
-      name: 'pageId',
-      type: 'string',
-      readOnly: true,
-      options: { list: ['home', 'about', 'faq', 'contact'] },
+      name: 'pageId', type: 'string', readOnly: true,
+      options: {
+        list: [
+          { title: 'Home', value: 'home' },
+          { title: 'About', value: 'about' },
+          { title: 'FAQ', value: 'faq' },
+          { title: 'Contact', value: 'contact' },
+          { title: 'Privacy Policy', value: 'privacy-policy' },
+          { title: 'Terms of Use', value: 'terms-of-use' },
+          { title: 'Refund Policy', value: 'refund-policy' },
+          { title: 'Impact', value: 'impact' },
+          { title: 'Subscription', value: 'subscription' },
+          { title: 'Sitemap', value: 'sitemap' },
+          { title: 'Services', value: 'services' },
+          { title: 'Work', value: 'work' },
+          { title: 'Blog', value: 'blog' },
+        ],
+      },
       validation: (r) => r.required(),
     }),
-    defineField({ name: 'title', type: 'string' }),
-    defineField({ name: 'seoDescription', type: 'text' }),
-    defineField({ name: 'body', type: 'array', of: [{ type: 'block' }, { type: 'image' }] }),
-    // Simple reusable array for repeated small items — FAQ question/answer
-    // pairs and the Impact page's CSR activities both use this shape
-    // rather than each getting a bespoke schema.
+    defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US', 'fr', 'de', 'es'] }, initialValue: 'en-GB' }),
+    defineField({ name: 'title', type: 'string', description: 'Page heading (H1)' }),
+    defineField({ name: 'subtitle', type: 'string', description: 'Subtitle or tagline' }),
+    defineField({ name: 'heroImage', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'seoTitle', type: 'string', description: 'Override <title> tag' }),
+    defineField({ name: 'seoDescription', type: 'text', rows: 2 }),
+    defineField({ name: 'ogImage', type: 'image' }),
+    defineField({ name: 'body', type: 'blockContent' }),
     defineField({
-      name: 'items',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            { name: 'title', type: 'string' },
-            { name: 'text', type: 'text' },
-          ],
-        },
-      ],
+      name: 'items', type: 'array',
+      of: [{ type: 'object', fields: [
+        { name: 'title', type: 'string' },
+        { name: 'text', type: 'text', rows: 3 },
+        { name: 'image', type: 'image', options: { hotspot: true } },
+      ]}],
     }),
   ],
   preview: { select: { title: 'title', subtitle: 'pageId' } },

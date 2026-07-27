@@ -5,4 +5,5 @@ export default defineCliConfig({
     projectId: 'splvhmk1',
     dataset: 'production',
   },
+  studioHost: 'wugweb',
 })
