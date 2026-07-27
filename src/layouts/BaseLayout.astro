@@ -21,12 +21,14 @@ const defaultDesc = settings?.seoDescription || 'Wugweb is a digital experience 
 const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
   : 'https://framerusercontent.com/assets/HGyE1GVVipOJ7v9BLJTPI7UW8.jpg';
+// Self-hosted from /public/brand — these used to hotlink Framer's CDN, which
+// dies the moment the old Framer project is deleted.
 const defaultFavicon = settings?.favicon
   ? urlFor(settings.favicon).width(32).url()
-  : 'https://framerusercontent.com/images/yJuYg2lrJmWntF3zHlL9zyg8sdM.png';
+  : '/brand/favicon-64.png';
 const defaultAppleTouch = settings?.favicon
   ? urlFor(settings.favicon).width(180).url()
-  : 'https://framerusercontent.com/images/eyKzVpdm2A4IB87tYf4LkVIM9mM.png';
+  : '/brand/favicon-64.png';
 const copyrightText = settings?.copyright || '© 2020–2026 Wugweb. All rights reserved.';
 const siteEmail = settings?.contactEmail || 'hello@wugweb.com';
 

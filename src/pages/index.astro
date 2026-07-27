@@ -51,6 +51,18 @@ const teaserServices = [
   },
 ];
 
+// The six service pillars, each framed as the question it answers. Media are
+// the client's own hosted clips; the active one also drives the section's
+// blurred backdrop, so these double as thumbnail and background.
+const pillars = [
+  { n: '01', title: 'Strategy',    q: 'What should we build?',                     video: 'https://wugweb.online/assets/services/Martech%20%26%20GenAi/Digital%20Transformation%20Strategy/Digital%20Transformation%20Roadmaps.mp4' },
+  { n: '02', title: 'Brand',       q: 'How should we be perceived?',               video: 'https://wugweb.online/assets/more/home/Brand%20%26%20Strategy.mp4' },
+  { n: '03', title: 'Experience',  q: 'How should people interact with us?',       video: 'https://wugweb.online/assets/more/home/Experience%20Design.mp4' },
+  { n: '04', title: 'Growth',      q: 'How do we acquire and retain customers?',   video: 'https://wugweb.online/assets/more/home/Martech%20%26%20GenAi.mp4' },
+  { n: '05', title: 'Engineering', q: 'How do we build and scale it?',             video: 'https://wugweb.online/assets/more/home/Web%20%26%20App%20Development.mp4' },
+  { n: '06', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: 'https://wugweb.online/assets/services/Martech%20%26%20GenAi/MarTech%20Ecosystems/seamless%20platform%20integration.mp4' },
+];
+
 // Curated homepage case-study picks — same treatment as services above:
 // a fixed, ordered homepage teaser rather than a live Sanity query.
 // Full list lives at /work, Sanity-driven once you add caseStudy docs.
@@ -147,15 +159,35 @@ const industries = [
       evolve, and perform.
     </p>
 
-    <ol class="service-rows">
+    <ol class="service-cards">
       {teaserServices.map((s) => (
-        <li class="service-row" data-reveal>
-          <span class="service-n">{s.n}</span>
-          <div class="service-text">
+        <li class="service-card" data-reveal>
+          <div class="service-card-media">
+            <video muted loop playsinline preload="none" src={s.video}></video>
+          </div>
+          <div class="service-card-foot">
+            <div class="service-card-heads">
+              <span class="service-n">{s.n}</span>
+              <h3>{s.title}</h3>
+            </div>
+          </div>
+          <!-- Sits outside the footer: the footer is hidden while open, and
+               the toggle has to stay reachable to close the card again. -->
+          <button
+            type="button"
+            class="service-card-toggle"
+            aria-expanded="false"
+            aria-label={`Read more about ${s.title}`}
+          >
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M8 1.5v13M1.5 8h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="service-card-back" hidden>
+            <span class="service-n">{s.n}</span>
             <h3>{s.title}</h3>
             <p>{s.copy}</p>
           </div>
-          <video class="service-video" autoplay muted loop playsinline src={s.video}></video>
         </li>
       ))}
     </ol>
@@ -181,6 +213,43 @@ const industries = [
         </li>
       ))}
     </ul>
+  </section>
+
+  <!-- PILLARS — glass showcase -->
+  <section class="pillars" id="pillars">
+    <div class="pillars-backdrop" aria-hidden="true">
+      {pillars.map((p, i) => (
+        <video
+          class:list={['pillars-bg', { 'is-active': i === 0 }]}
+          data-bg={i}
+          muted loop playsinline preload="none"
+          src={p.video}
+        ></video>
+      ))}
+      <div class="pillars-scrim"></div>
+    </div>
+
+    <div class="wrap pillars-inner">
+      <p class="eyebrow" data-reveal>How we think</p>
+      <h2 data-reveal>Six pillars. Six questions worth answering properly.</h2>
+
+      <ul class="glass-panel">
+        {pillars.map((p, i) => (
+          <li class:list={['pillar', { 'is-active': i === 0 }]} data-pillar={i}>
+            <button type="button" class="pillar-hit" aria-expanded={i === 0 ? 'true' : 'false'}>
+              <span class="pillar-thumb">
+                <video muted loop playsinline preload="none" src={p.video}></video>
+              </span>
+              <span class="pillar-copy">
+                <span class="pillar-title">{p.title}</span>
+                <span class="pillar-q">{p.q}</span>
+              </span>
+              <span class="pillar-index">{p.n} / 06</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 
   <!-- CLIENT LOGOS -->
@@ -358,56 +427,200 @@ const industries = [
     margin-top: 1.25rem;
   }
 
-  .service-rows {
+  /* Polaroid-style service cards — light frames that flip to a dark
+     detail face when opened, matching the live site's block. */
+  .service-cards {
     list-style: none;
     margin: 3rem 0;
     padding: 0;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) { .service-cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .service-cards { grid-template-columns: repeat(4, 1fr); } }
+
+  .service-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #f4f4f4;
+    border-radius: 20px;
+    padding: 0.75rem 0.75rem 0.25rem;
+    min-height: 420px;
+    transition: background 0.35s ease, transform 0.35s ease;
+  }
+  .service-card:hover { transform: translateY(-4px); }
+  .service-card.is-open { background: var(--surface-2); }
+
+  .service-card-media {
+    flex: 1;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #e4e4e4;
+    transition: opacity 0.3s ease;
+  }
+  .service-card-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .service-card.is-open .service-card-media { display: none; }
+
+  .service-card-foot {
+    display: flex;
+    align-items: center;
+    /* room for the absolutely-positioned toggle */
+    padding: 1rem 3.25rem 1rem 0.5rem;
+  }
+  .service-card.is-open .service-card-foot { display: none; }
+  .service-card-heads .service-n { font-family: var(--font-mono); font-size: 0.85rem; color: #6b6b6b; }
+  .service-card-heads h3 { font-size: 1.25rem; font-weight: 700; color: #191919; margin-top: 0.35rem; letter-spacing: -0.02em; }
+
+  .service-card-toggle {
+    position: absolute;
+    bottom: 1.35rem;
+    right: 1.15rem;
+    width: 2.25rem; height: 2.25rem;
+    display: grid; place-items: center;
+    border-radius: 999px;
+    border: 0;
+    background: rgba(0, 0, 0, 0.07);
+    color: #191919;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.25s ease;
+  }
+  .service-card-toggle svg { width: 0.9rem; height: 0.9rem; fill: none; }
+  .service-card-toggle:hover { background: rgba(0, 0, 0, 0.14); }
+  .service-card-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .service-card.is-open .service-card-toggle {
+    top: 1.25rem; bottom: auto; right: 1.25rem;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--fg);
+    transform: rotate(45deg);
+  }
+  .service-card.is-open .service-card-toggle:hover { background: rgba(255, 255, 255, 0.2); }
+
+  .service-card-back { padding: 1.5rem 1.25rem 1.75rem; }
+  .service-card-back[hidden] { display: none; }
+  .service-card-back .service-n { font-family: var(--font-mono); font-size: 0.85rem; color: var(--fg-subtle); }
+  .service-card-back h3 { font-size: 1.35rem; font-weight: 700; color: var(--fg); margin-top: 0.35rem; letter-spacing: -0.02em; }
+  .service-card-back p { margin-top: 1rem; font-size: 0.95rem; line-height: 1.6; color: var(--fg-muted); }
+
+  /* ── Glass showcase: rows on a frosted panel, floating over a heavily
+     blurred blow-up of whichever pillar is active. Hovering a row expands
+     it into a light card with its question and index. ───────────────── */
+  .pillars {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: 6rem;
     border-top: 1px solid var(--line);
   }
-
-  .service-row {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    align-items: center;
-    padding-block: 2rem;
-    border-bottom: 1px solid var(--line);
-  }
-
-  @media (min-width: 768px) {
-    .service-row {
-      grid-template-columns: auto 1fr auto;
-    }
-  }
-
-  .service-n {
-    font-family: var(--font-mono);
-    color: var(--accent-warm);
-    font-size: 1rem;
-  }
-
-  .service-text h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
-
-  .service-text p {
-    margin-top: 0.5rem;
-    max-width: 50ch;
-  }
-
-  .service-video {
-    display: none;
-    width: 140px;
-    height: 90px;
+  .pillars-backdrop { position: absolute; inset: 0; z-index: -1; }
+  .pillars-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    /* Scaled up so the blur has no soft edge at the section bounds */
+    transform: scale(1.2);
+    filter: blur(64px) saturate(1.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease;
+  }
+  .pillars-bg.is-active { opacity: 0.85; visibility: visible; }
+  .pillars-scrim { position: absolute; inset: 0; background: rgba(5, 5, 5, 0.5); }
+
+  .pillars-inner h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); margin-top: 0.75rem; max-width: 22ch; }
+
+  .glass-panel {
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-radius: 28px;
+    background: rgba(15, 15, 15, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(26px) saturate(1.3);
+    -webkit-backdrop-filter: blur(26px) saturate(1.3);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
   }
 
-  @media (min-width: 768px) {
-    .service-video {
-      display: block;
-    }
+  .pillar-hit {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.65rem;
+    border: 0;
+    border-radius: 18px;
+    background: transparent;
+    color: var(--fg);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.45s ease;
+  }
+  .pillar-hit:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .pillar-thumb {
+    flex-shrink: 0;
+    width: 88px;
+    height: 88px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .pillar-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .pillar-copy { display: block; min-width: 0; }
+  .pillar-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .pillar-q {
+    display: block;
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: #4a4a4a;
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, margin-top 0.5s ease;
+  }
+  .pillar-index {
+    position: absolute;
+    top: 1rem;
+    right: 1.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: #6b6b6b;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .pillar.is-active .pillar-hit { background: #f4f4f4; color: #191919; }
+  .pillar.is-active .pillar-q { max-height: 6rem; margin-top: 0.4rem; opacity: 1; }
+  .pillar.is-active .pillar-index { opacity: 1; }
+  .pillar:not(.is-active) .pillar-hit:hover { background: rgba(255, 255, 255, 0.07); }
+
+  @media (max-width: 700px) {
+    .pillars { padding-block: 4rem; }
+    .glass-panel { border-radius: 22px; }
+    .pillar-thumb { width: 62px; height: 62px; border-radius: 11px; }
+    .pillar-hit { gap: 0.9rem; }
+    .pillar-index { display: none; }
+    .pillar-q { font-size: 0.9rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pillar-hit, .pillar-q, .pillar-index, .pillars-bg { transition: none; }
   }
 
   .work {
@@ -609,7 +822,7 @@ const industries = [
   animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.3, easing: 'ease-out' });
 
   // Scroll-triggered reveals with stagger
-  inView('.service-row', (el) => {
+  inView('.service-card', (el) => {
     animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] });
   });
 
@@ -621,13 +834,85 @@ const industries = [
     animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
   });
 
-  // Service row hover: play video on hover
-  document.querySelectorAll('.service-row').forEach(row => {
-    const video = row.querySelector('video');
-    if (!video) return;
-    row.addEventListener('mouseenter', () => video.play());
-    row.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+  // Service cards: hover plays the clip, the +/× button flips to the detail face
+  document.querySelectorAll<HTMLLIElement>('.service-card').forEach((card) => {
+    const video = card.querySelector('video');
+    const toggle = card.querySelector<HTMLButtonElement>('.service-card-toggle');
+    const back = card.querySelector<HTMLElement>('.service-card-back');
+
+    if (video) {
+      card.addEventListener('mouseenter', () => {
+        if (card.classList.contains('is-open')) return;
+        if (video.preload === 'none') video.preload = 'auto';
+        video.play().catch(() => {});
+      });
+      card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    }
+
+    if (toggle && back) {
+      toggle.addEventListener('click', () => {
+        const open = card.classList.toggle('is-open');
+        back.hidden = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', `${open ? 'Close' : 'Read more about'} ${card.querySelector('h3')?.textContent ?? ''}`.trim());
+        if (open && video) { video.pause(); video.currentTime = 0; }
+      });
+    }
   });
+
+  // Glass showcase: hovering (or focusing/tapping) a pillar makes it the
+  // active row and swaps the blurred backdrop. Only the active clips play.
+  {
+    const rows = Array.from(document.querySelectorAll<HTMLLIElement>('.pillar'));
+    const bgs = Array.from(document.querySelectorAll<HTMLVideoElement>('.pillars-bg'));
+    let active = 0;
+
+    const setActive = (i: number) => {
+      if (i === active || !rows[i]) return;
+      active = i;
+      rows.forEach((row, n) => {
+        const on = n === i;
+        row.classList.toggle('is-active', on);
+        row.querySelector('.pillar-hit')?.setAttribute('aria-expanded', String(on));
+        const thumb = row.querySelector('video');
+        if (thumb) {
+          if (on) { if (thumb.preload === 'none') thumb.preload = 'auto'; thumb.play().catch(() => {}); }
+          else { thumb.pause(); }
+        }
+      });
+      bgs.forEach((bg, n) => {
+        const on = n === i;
+        bg.classList.toggle('is-active', on);
+        if (on) { if (bg.preload === 'none') bg.preload = 'auto'; bg.play().catch(() => {}); }
+        else { bg.pause(); }
+      });
+    };
+
+    rows.forEach((row, i) => {
+      const hit = row.querySelector<HTMLButtonElement>('.pillar-hit');
+      if (!hit) return;
+      hit.addEventListener('mouseenter', () => setActive(i));
+      hit.addEventListener('focus', () => setActive(i));
+      hit.addEventListener('click', () => setActive(i));
+    });
+
+    // Don't start any playback until the section is actually on screen.
+    const section = document.querySelector('.pillars');
+    if (section) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          const idx = active;
+          const play = e.isIntersecting;
+          [bgs[idx], rows[idx]?.querySelector('video')].forEach((v) => {
+            if (!v) return;
+            if (play) { if (v.preload === 'none') v.preload = 'auto'; v.play().catch(() => {}); }
+            else { v.pause(); }
+          });
+        });
+      }, { rootMargin: '10% 0px' });
+      io.observe(section);
+    }
+  }
 
   // Work card tilt effect
   document.querySelectorAll('.work-grid a').forEach(card => {

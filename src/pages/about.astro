@@ -147,6 +147,57 @@ const team = [
     </div>
   </section>
 
+  <!-- WHY WUGWEB — bento -->
+  <section class="wrap why-bento">
+    <h2 data-reveal>Why Wugweb?</h2>
+    <p class="why-bento-lede" data-reveal>
+      In a world clamoring for attention, your brand deserves more than fleeting visibility. It
+      requires a strategic partner that architects compelling narratives, cultivates authentic
+      connections, and engineers brand experiences designed to stand the test of time.
+    </p>
+
+    <div class="bento">
+      <article class="bento-tile tile-vision" data-reveal>
+        <div class="bento-body">
+          <h3>Strategic Brand Vision</h3>
+          <p>Resonant brand foundations are architected through the synthesis of strategic insight and creative brilliance, driving measurable business growth.</p>
+        </div>
+      </article>
+
+      <a href="/contact-us" class="bento-tile tile-cta" data-reveal>
+        <img src="/brand/wugweb-mark.png" alt="" width="388" height="295" />
+        <span>Let's talk</span>
+      </a>
+
+      <article class="bento-tile tile-data" data-reveal>
+        <div class="bento-body">
+          <h3>Data-Driven Brand Evolution</h3>
+          <p>Data and analytics inform brand strategy, optimizing brand performance and fueling sustainable brand evolution.</p>
+        </div>
+      </article>
+
+      <article class="bento-tile tile-story" data-reveal>
+        <div class="bento-body">
+          <h3>Authentic Brand Storytelling</h3>
+          <p>Brand's core essence is unearthed, crafting authentic narratives that forge emotional connections and inspire unwavering loyalty.</p>
+        </div>
+      </article>
+
+      <article class="bento-tile tile-stack" data-reveal>
+        <ul class="bento-stack">
+          {['Figma', 'Notion', 'Slack', 'Webflow', 'Zapier', 'HubSpot'].map((t) => <li>{t}</li>)}
+        </ul>
+      </article>
+
+      <article class="bento-tile tile-holistic" data-reveal>
+        <div class="bento-body">
+          <h3>Holistic Brand Experience Design</h3>
+          <p>Cohesive brand experiences are engineered across all touchpoints, ensuring consistency, impact, and a seamless customer journey.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- CLOSING CTA -->
   <section class="wrap closing-cta">
     <p class="eyebrow" data-reveal>Booking New Partnerships</p>
@@ -331,6 +382,73 @@ const team = [
     margin-top: 0.3rem;
   }
 
+  /* Why Wugweb — bento grid.
+     NOTE: the live site's tiles carry decorative mockup imagery (phone chat,
+     notification card, tool logos, stairwell photo) hosted on Framer's CDN.
+     Those source assets weren't provided, so the tiles are built structurally
+     with the real copy — drop images into the tiles when the assets land. */
+  .why-bento { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .why-bento h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
+  .why-bento-lede { margin-top: 1.25rem; max-width: 75ch; }
+
+  .bento { display: grid; gap: 1rem; margin-top: 3rem; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .bento { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) {
+    .bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(180px, auto); }
+    .tile-vision   { grid-column: 1; grid-row: 1 / span 2; }
+    .tile-cta      { grid-column: 1; grid-row: 3; }
+    .tile-data     { grid-column: 2; grid-row: 1; }
+    .tile-story    { grid-column: 2; grid-row: 2 / span 2; }
+    .tile-stack    { grid-column: 3; grid-row: 1; }
+    .tile-holistic { grid-column: 3; grid-row: 2 / span 2; }
+  }
+
+  .bento-tile {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 180px;
+  }
+  .bento-tile h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+  .bento-tile p { margin-top: 0.65rem; font-size: 0.95rem; line-height: 1.6; }
+
+  /* The one light tile, mirroring the live layout's contrast anchor */
+  .tile-vision { background: #f4f4f4; border-color: transparent; }
+  .tile-vision h3 { color: #191919; }
+  .tile-vision p { color: #4a4a4a; }
+
+  .tile-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.85rem;
+    min-height: 0;
+    text-decoration: none;
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .tile-cta:hover { background: var(--surface-2); border-color: var(--line-strong); }
+  .tile-cta img { height: 1.75rem; width: auto; }
+
+  .tile-stack { justify-content: center; }
+  .bento-stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .bento-stack li {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--fg-muted);
+  }
+
   .closing-cta {
     padding-block: 6rem;
     border-top: 1px solid var(--line);
@@ -360,7 +478,7 @@ const team = [
 <script>
   import { animate, inView } from 'motion';
   animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.stats li, .values-list li, .culture-grid li, .team-grid li', (el) => {
+  inView('.stats li, .values-list li, .culture-grid li, .team-grid li, .bento-tile', (el) => {
     animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
   });
 </script>

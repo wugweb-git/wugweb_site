@@ -11,7 +11,10 @@ const navLinks = [
 
 <header class="site-header">
   <nav class="wrap site-header-inner">
-    <a href="/" class="site-logo">wugweb</a>
+    <a href="/" class="site-logo" aria-label="wugweb — home">
+      <img src="/brand/wugweb-mark.png" alt="" width="388" height="295" class="site-logo-mark" />
+      <span>wugweb</span>
+    </a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -42,12 +45,18 @@ const navLinks = [
     padding-block: 1.25rem;
   }
   .site-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     font-family: var(--font-display);
     font-weight: 700;
     text-decoration: none;
     font-size: 1.1rem;
+    letter-spacing: -0.01em;
     color: var(--fg);
   }
+  /* Mark is white + yellow on transparent — dark surfaces only. */
+  .site-logo-mark { height: 1.35rem; width: auto; display: block; }
   .site-links { display: none; gap: 2rem; font-family: var(--font-mono); font-size: 0.85rem; }
   .site-links a { text-decoration: none; color: var(--fg); }
   .desktop-cta { display: none; }

@@ -1,12 +1,18 @@
+/* Palette lifted from the live site's own design tokens (see reference/).
+   Text is #f4f4f4, not pure white — the whole page reads harsher at #fff. */
 :root {
   --bg: #050505;
-  --bg-elevated: rgb(43, 43, 43);
-  --fg: #ffffff;
-  --fg-muted: rgb(155, 161, 165);
+  --surface: #191919;
+  --surface-2: #2b2b2b;
+  --bg-elevated: #2b2b2b;
+  --fg: #f4f4f4;
+  --fg-muted: #bababa;
+  --fg-subtle: #a3a3a3;
   --accent: #FFBE1A;
   --accent-warm: #FFBE1A;
   --accent-lime: #ACF80B;
-  --line: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.05);
+  --line-strong: rgba(255, 255, 255, 0.12);
 
   --font-display: 'Inter Tight', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
