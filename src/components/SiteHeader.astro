@@ -1,10 +1,14 @@
 ---
 interface Props { companyEmail?: string; }
-const {} = Astro.props;
+const { companyEmail } = Astro.props;
+const email = companyEmail || 'hello@wugweb.com';
+const phone = '+91 88021 39220';
+// Labels match the real nav exactly — note "Works", plural. The route stays
+// /work; only the label was wrong. See design.md C-15.
 const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
-  { href: '/work', label: 'Work' },
+  { href: '/work', label: 'Works' },
   { href: '/blog', label: 'Blog' },
 ];
 ---
@@ -12,8 +16,7 @@ const navLinks = [
 <header class="site-header">
   <nav class="wrap site-header-inner">
     <a href="/" class="site-logo" aria-label="wugweb — home">
-      <img src="/brand/wugweb-mark.png" alt="" width="388" height="295" class="site-logo-mark" />
-      <span>wugweb</span>
+      <span class="site-logo-wug">wug</span><span class="site-logo-web">web</span>
     </a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -22,9 +25,27 @@ const navLinks = [
       {navLinks.map((l) => (
         <a href={l.href} class="nav-link">{l.label}</a>
       ))}
-      <a href="/contact-us" class="btn btn-solid mobile-cta">Let's talk</a>
+      <a href="/contact-us" class="btn btn-solid mobile-cta">Let's Talk</a>
+
+      <!-- Contact + legal block, mobile panel only. Matches the real
+           expanded nav — see design.md §2.3. -->
+      <div class="menu-meta">
+        <a class="menu-contact" href={`mailto:${email}`}>
+          <span class="menu-contact-label">Get in touch</span>
+          <span class="menu-contact-value">{email}</span>
+        </a>
+        <a class="menu-contact" href={`tel:${phone.replace(/\s/g, '')}`}>
+          <span class="menu-contact-label">Call us at</span>
+          <span class="menu-contact-value">{phone}</span>
+        </a>
+        <div class="menu-legal">
+          <a href="/termsofuse">Terms of Service</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+        </div>
+        <p class="menu-copyright">Copyright 2020-2025 © Wugweb®</p>
+      </div>
     </div>
-    <a href="/contact-us" class="btn btn-solid desktop-cta">Let's talk</a>
+    <a href="/contact-us" class="btn btn-solid desktop-cta">Let's Talk</a>
   </nav>
 </header>
 
@@ -53,19 +74,24 @@ const navLinks = [
     background: var(--surface-2);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
+    /* Present on every nav variant in the Framer export — design.md §2.1 */
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
   }
+  /* Two-tone wordmark: "wug" white, "web" in /Primary/Grey #c9c9c9.
+     This is the real lockup — not the W icon, which is a separate 54×54
+     asset used where only a mark fits. See design.md §2.5. */
   .site-logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     text-decoration: none;
-    font-size: 1.1rem;
-    color: var(--fg);
+    font-size: 1.375rem;
+    line-height: 1;
   }
-  /* Mark is white + yellow on transparent — dark surfaces only. */
-  .site-logo-mark { height: 1.35rem; width: auto; display: block; }
+  .site-logo-wug { color: #ffffff; }
+  .site-logo-web { color: #c9c9c9; }
   /* Nav links are the same 8px/#444 buttons the live site uses. */
   .site-links { display: none; gap: 0.5rem; font-size: var(--t-micro); }
   .site-links .nav-link {
@@ -101,6 +127,24 @@ const navLinks = [
   }
   .site-links.open .nav-link { text-align: center; padding: 1rem; }
   .site-links.open .mobile-cta { display: inline-flex; justify-content: center; margin-top: 0.5rem; }
+  .site-links.open .menu-meta { display: flex; }
+
+  .menu-meta { display: none; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
+  .menu-contact {
+    display: flex; flex-direction: column; gap: 0.2rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--r);
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .menu-contact:hover { background: rgba(255, 255, 255, 0.09); }
+  .menu-contact-label { font-size: var(--t-micro); color: var(--fg-subtle); }
+  .menu-contact-value { font-size: var(--t-body); }
+  .menu-legal { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.75rem; }
+  .menu-legal a { font-size: var(--t-sm); color: var(--fg-muted); text-decoration: none; }
+  .menu-legal a:hover { color: var(--fg); }
+  .menu-copyright { margin-top: 0.75rem; text-align: center; font-size: var(--t-micro); color: var(--fg-subtle); }
 
   /* 768px and 1200px are the live site's own breakpoints. */
   @media (min-width: 768px) {
@@ -115,6 +159,7 @@ const navLinks = [
     }
     .site-links.open .nav-link { padding: 0.625rem 1rem; }
     .site-links.open .mobile-cta { display: none; }
+    .site-links.open .menu-meta { display: none; }
   }
   @media (min-width: 1200px) {
     .site-header { padding-inline: 3rem; }
