@@ -1,2 +1,6 @@
-2.DS_Store
-node_modules
+node_modules/
+dist/
+.astro/
+.DS_Store
+sanity/dist/
+sanity/node_modules/
