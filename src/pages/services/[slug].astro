@@ -10,6 +10,8 @@ const services: Record<string, {
   heroText: string;
   capabilities: { n: string; title: string; items: string[] }[];
   approach: { n: string; title: string; body: string }[];
+  process?: { phase: string; steps: string[] }[];
+  tools?: { category: string; items: string[] }[];
   faqs: { q: string; a: string }[];
   why: { title: string; body: string }[];
 }> = {
@@ -90,11 +92,30 @@ const services: Record<string, {
       { n: '03', title: 'Testing & Validation', body: 'We validate designs through usability testing and data analysis, driving continuous improvement.' },
       { n: '04', title: 'Design & Development Handoff', body: 'We ensure seamless translation from design to development with detailed specs and design system components.' },
     ],
+    process: [
+      { phase: 'Discovery', steps: ['Kick-off meeting', 'Competitor analysis', 'User interview', 'Brain storming'] },
+      { phase: 'Ideation', steps: ['User journey', 'Sitemap', 'Wireframes & prototyping', 'Usability testing'] },
+      { phase: 'Prototyping & Testing', steps: ['Analysing results', 'Look and feel drafts', 'Design concept', 'Final UI design'] },
+      { phase: 'UI Design', steps: ['Final UI design', 'Handover meeting'] },
+    ],
+    tools: [
+      { category: 'User Research & Testing', items: ['Maze', 'Dovetail', 'Lyssna', 'Remesh', 'UserZoom', 'UserLytics', 'Reflect', 'Trymata'] },
+      { category: 'Collaboration & Workflow', items: ['Notion', 'Zeroheight', 'Supernova', 'UiInspector', 'Keep'] },
+      { category: 'Designing & Prototyping', items: ['Plasmic', 'Sketch', 'Figma', 'Vercel', 'RIVE', 'Webflow', 'penpot', 'Framer', 'Canva'] },
+      { category: 'Organization & Productivity', items: ['Mem', 'Opal', 'ValidatorAI', 'Perplexity', 'Obsidian', 'Any.do', 'BeeDone', 'Tavus'] },
+      { category: 'AI-Powered Design Tools', items: ['Uizard', 'Lummi', 'GalileoAI', 'Stockimg.ai', 'Khroma', 'Midjourney', 'OpenArt', 'Jitter', 'Illustroke'] },
+    ],
     faqs: [
-      { q: 'What is the difference between UX and UI design?', a: 'UX design focuses on the overall experience and usability of a product, while UI design focuses on the visual and interactive elements. We do both, ensuring a seamless connection between how a product works and how it looks.' },
-      { q: 'Do you conduct user research?', a: 'Yes. User research is the foundation of our process. We conduct interviews, surveys, usability testing, and analytics analysis to inform every design decision.' },
-      { q: 'What is a design system?', a: 'A design system is a collection of reusable components, patterns, and guidelines that ensures consistency and efficiency across digital products.' },
-      { q: 'How do you measure design success?', a: 'We measure success through usability metrics, user satisfaction scores, conversion rates, and business KPIs aligned with your goals.' },
+      { q: 'What is Experience Design?', a: 'Experience design is the practice of designing products and services with a focus on the quality of the user experience across every touchpoint.' },
+      { q: 'Why is Customer Experience Design important?', a: 'Exceptional customer experience drives loyalty, increases conversions, and creates competitive advantage in the experience economy.' },
+      { q: 'What services do you offer?', a: 'We offer UX strategy, user research, information architecture, interaction design, visual design, usability testing, design systems, and accessibility.' },
+      { q: 'What\'s your design approach?', a: 'Our approach is human-centered, data-informed, and collaborative. We start with deep user research and iterate through testing and refinement.' },
+      { q: 'How do you ensure user needs are met?', a: 'Through continuous user research, usability testing, and data-driven validation at every stage of the design process.' },
+      { q: 'How do you measure design effectiveness?', a: 'We measure effectiveness through usability metrics, user satisfaction scores, conversion rates, and business KPIs aligned with your goals.' },
+      { q: 'How do you approach collaboration?', a: 'We collaborate closely with your team throughout the process — from discovery workshops to design reviews to development handoff.' },
+      { q: 'Can you help with new product design?', a: 'Absolutely. We specialise in taking products from concept to launch, including MVP design, full product design, and redesigns.' },
+      { q: 'Do you design for accessibility?', a: 'Yes. Accessibility is built into our process from day one, following WCAG guidelines to ensure inclusive experiences.' },
+      { q: 'What\'s the final deliverable?', a: 'Deliverables include design files, interactive prototypes, design system documentation, asset exports, and developer handoff specs.' },
     ],
     why: [
       { title: 'Human-Centered Process', body: 'Every design decision is grounded in real user needs and behavioural insights — not assumptions.' },
@@ -279,6 +300,42 @@ export async function getStaticPaths() {
     </div>
   </section>
 
+  {service.process && (
+  <!-- PROCESS FLOW -->
+  <section class="wrap process-section">
+    <p class="eyebrow" data-reveal>How we do it</p>
+    <h2 data-reveal>The process model that we follow gives us the most important advantage — the product that works.</h2>
+    <div class="process-flow">
+      {service.process.map((p) => (
+        <div class="process-phase" data-reveal>
+          <h3 class="process-phase-title">{p.phase}</h3>
+          <ul class="process-steps">
+            {p.steps.map((s) => <li>{s}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+  )}
+
+  {service.tools && (
+  <!-- TOOLKIT -->
+  <section class="wrap toolkit-section">
+    <p class="eyebrow" data-reveal>Our Design Toolkit</p>
+    <h2 data-reveal>Wugweb leverages a diverse toolkit of industry-leading technologies to craft exceptional user experiences.</h2>
+    <div class="toolkit-grid">
+      {service.tools.map((t) => (
+        <div class="toolkit-category" data-reveal>
+          <div class="toolkit-category-header">{t.category}</div>
+          <ul class="toolkit-items">
+            {t.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+  )}
+
   <!-- FAQ -->
   <section class="wrap detail-faq">
     <h2 data-reveal>Frequently asked questions</h2>
@@ -351,6 +408,27 @@ export async function getStaticPaths() {
   .detail-cta { padding-block: 6rem; text-align: center; border-top: 1px solid var(--line); }
   .detail-cta h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); max-width: 18ch; margin-inline: auto; }
   .detail-cta .btn { margin-top: 2rem; display: inline-flex; }
+
+  .process-section { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .process-section h2 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); margin-top: 0.75rem; max-width: 45ch; font-weight: 400; }
+  .process-flow { display: grid; gap: 0; margin-top: 3rem; border-top: 1px solid var(--line); }
+  @media (min-width: 768px) { .process-flow { grid-template-columns: repeat(4, 1fr); } }
+  .process-phase { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 2rem; }
+  @media (min-width: 768px) { .process-phase { border-bottom: none; } }
+  .process-phase:last-child { border-right: none; }
+  .process-phase-title { font-size: 1rem; font-weight: 500; color: var(--accent-warm); margin-bottom: 1rem; }
+  .process-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .process-steps li { font-size: 0.9rem; color: var(--fg-muted); position: relative; padding-left: 1rem; }
+  .process-steps li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); }
+
+  .toolkit-section { padding-block: 6rem; border-top: 1px solid var(--line); }
+  .toolkit-section h2 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); margin-top: 0.75rem; max-width: 50ch; font-weight: 400; }
+  .toolkit-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 2rem; }
+  @media (min-width: 640px) { .toolkit-grid { grid-template-columns: repeat(3, 1fr); } }
+  .toolkit-category { background: var(--bg); padding: 1.5rem; }
+  .toolkit-category-header { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .toolkit-items { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .toolkit-items li { font-size: 0.85rem; padding: 0.3rem 0.65rem; border: 1px solid var(--line); border-radius: 6px; color: var(--fg-muted); }
 </style>
 
 <script>
