@@ -85,7 +85,17 @@ const budgets = ['<$3K', '<$6K', '<$15K', '<$25K'];
         </fieldset>
 
         <label>
-          I can contact via
+          You can reach me at
+          <input type="email" name="email" required placeholder="you@company.com" />
+        </label>
+
+        <label>
+          or call me on
+          <input type="tel" name="phone" placeholder="Optional" />
+        </label>
+
+        <label>
+          I'd prefer to be contacted by
           <select name="contactMethod">
             <option>Email</option>
             <option>Phone</option>

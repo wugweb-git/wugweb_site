@@ -49,6 +49,20 @@ onto `--t-h2` instead of a hardcoded clamp.
 The homepage rendered `{services.length} services in Sanity` as visible body text at
 the bottom of the page. Removed.
 
+### D-13 — Contact form collected no email or phone · **critical** · `/contact-us`
+The form asked "I can contact via Email/Phone" but had **no email field and no phone
+field**. The API handler didn't read them and the `contact_submissions` table had no
+column for them. Every lead would have arrived with no way to reply to it.
+
+Found by diffing against live, which has both (`email:email`, `tel:phone`).
+
+**Fix:** added a required `email` and optional `phone` to the form, wired both through
+`api/contact.ts`, and added the columns to `neon/schema.sql` with `ALTER TABLE … ADD
+COLUMN IF NOT EXISTS` so an already-created table picks them up.
+
+Verified: browser-native validation rejects an empty form and a malformed address,
+accepts a valid one, at 375px.
+
 ---
 
 ## 🔍 Needs a decision — surfaced, not silently changed
@@ -106,9 +120,12 @@ Spacing, stroke, shadow, radius and colour comparisons per component not yet don
 only page-level block inventory so far.
 
 ### D-12 — Pages not yet diffed
-`/contact-us`, `/faq`, `/footer/subscription`, legal pages, `/404`, work detail, blog
-detail. Ours are notably thin: `/contact-us` and `/footer/subscription` have only an
-H1 plus the globals.
+`/footer/subscription`, legal pages, `/404`, work detail, blog detail.
+
+Done since: **`/contact-us`** (see D-13; form structure otherwise matches live —
+ours uses multi-select checkboxes for interests where live uses a single-select radio,
+kept as an improvement) and **`/faq`** (10 items each; live's are all Brand & Strategy
+questions, ours span every service — kept as an improvement).
 
 ---
 

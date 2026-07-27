@@ -16,6 +16,9 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
   const interests = form.getAll('interests').map(String);
   const topic = form.get('topic')?.toString() ?? '';
   const budget = form.get('budget')?.toString() ?? '';
+  // Without these the form captured a lead with no way to reply to it.
+  const email = form.get('email')?.toString() ?? '';
+  const phone = form.get('phone')?.toString() ?? '';
   const contactMethod = form.get('contactMethod')?.toString() ?? '';
   const newsletter = form.get('newsletter') === 'yes';
 
@@ -24,9 +27,9 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
   try {
     await client.query(
       `insert into contact_submissions
-         (name, company, interests, topic, budget, contact_method, newsletter_opt_in)
-       values ($1, $2, $3, $4, $5, $6, $7)`,
-      [name, company, interests, topic, budget, contactMethod, newsletter]
+         (name, company, interests, topic, budget, email, phone, contact_method, newsletter_opt_in)
+       values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+      [name, company, interests, topic, budget, email, phone, contactMethod, newsletter]
     );
   } finally {
     await client.end();

@@ -16,10 +16,18 @@ create table if not exists contact_submissions (
   interests         text[] not null default '{}',
   topic             text,
   budget            text,
+  email             text not null,
+  phone             text,
   contact_method    text,
   newsletter_opt_in boolean not null default false,
   created_at        timestamptz not null default now()
 );
+
+-- If the table was created before email/phone existed, run these too.
+-- (email is nullable here rather than `not null` so the ALTER succeeds on
+-- a table that already holds rows; the form enforces it on the way in.)
+alter table contact_submissions add column if not exists email text;
+alter table contact_submissions add column if not exists phone text;
 
 -- If "adaptive UX" later means logging raw behavior events (page views,
 -- clicks, scroll depth) rather than just a profile snapshot: don't write
