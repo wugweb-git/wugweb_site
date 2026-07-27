@@ -29,25 +29,25 @@ const teaserServices = [
     n: '01',
     title: 'Brand & Strategy',
     copy: 'From brand strategy and naming to logo design, guidelines, campaigns, and messaging, we create meaningful brands that connect with the right audience.',
-    video: 'https://wugweb.online/assets/more/home/Brand%20%26%20Strategy.mp4',
+    video: '/assets/more/home/brand-strategy.mp4',
   },
   {
     n: '02',
     title: 'Experience Design',
     copy: 'Our approach integrates UX strategy, UX process, and consistent UX execution supported by flexible product design systems to deliver scalable and brand-led solutions.',
-    video: 'https://wugweb.online/assets/more/home/Experience%20Design.mp4',
+    video: '/assets/more/home/experience-design.mp4',
   },
   {
     n: '03',
     title: 'Martech & Gen AI',
     copy: 'We blend digital experience strategy with AI-powered marketing and generative AI in marketing, helping brands automate, personalize, and optimize user journeys across channels.',
-    video: 'https://wugweb.online/assets/more/home/Martech%20%26%20GenAi.mp4',
+    video: '/assets/more/home/martech-genai.mp4',
   },
   {
     n: '04',
     title: 'Web Development',
     copy: 'From static websites to fully customized platforms, we use full-stack development, CMS integration, and mobile-first design to build secure, high-performance websites and scalable web applications.',
-    video: 'https://wugweb.online/assets/more/home/Web%20%26%20App%20Development.mp4',
+    video: '/assets/more/home/web-app-development.mp4',
   },
 ];
 
@@ -55,30 +55,28 @@ const teaserServices = [
 // the client's own hosted clips; the active one also drives the section's
 // blurred backdrop, so these double as thumbnail and background.
 const pillars = [
-  { n: '01', title: 'Strategy',    q: 'What should we build?',                     video: 'https://wugweb.online/assets/services/Martech%20%26%20GenAi/Digital%20Transformation%20Strategy/Digital%20Transformation%20Roadmaps.mp4' },
-  { n: '02', title: 'Brand',       q: 'How should we be perceived?',               video: 'https://wugweb.online/assets/more/home/Brand%20%26%20Strategy.mp4' },
-  { n: '03', title: 'Experience',  q: 'How should people interact with us?',       video: 'https://wugweb.online/assets/more/home/Experience%20Design.mp4' },
-  { n: '04', title: 'Growth',      q: 'How do we acquire and retain customers?',   video: 'https://wugweb.online/assets/more/home/Martech%20%26%20GenAi.mp4' },
-  { n: '05', title: 'Engineering', q: 'How do we build and scale it?',             video: 'https://wugweb.online/assets/more/home/Web%20%26%20App%20Development.mp4' },
-  { n: '06', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: 'https://wugweb.online/assets/services/Martech%20%26%20GenAi/MarTech%20Ecosystems/seamless%20platform%20integration.mp4' },
+  { n: '01', title: 'Strategy',    q: 'What should we build?',                     video: '/assets/services/martech-genai/digital-transformation-roadmaps.mp4' },
+  { n: '02', title: 'Brand',       q: 'How should we be perceived?',               video: '/assets/more/home/brand-strategy.mp4' },
+  { n: '03', title: 'Experience',  q: 'How should people interact with us?',       video: '/assets/more/home/experience-design.mp4' },
+  { n: '04', title: 'Growth',      q: 'How do we acquire and retain customers?',   video: '/assets/more/home/martech-genai.mp4' },
+  { n: '05', title: 'Engineering', q: 'How do we build and scale it?',             video: '/assets/more/home/web-app-development.mp4' },
+  { n: '06', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: '/assets/services/martech-genai/seamless-platform-integration.mp4' },
 ];
 
 // Curated homepage case-study picks — same treatment as services above:
 // a fixed, ordered homepage teaser rather than a live Sanity query.
 // Full list lives at /work, Sanity-driven once you add caseStudy docs.
-// NOTE: two entries below share the same "Inkompass" thumbnail on the
-// live site (Aditya Birla Capital + Philip Morris) — looks like a
-// mismatched-asset bug there, not something I introduced. Flagging
-// rather than silently fixing, since I don't know the intended thumb.
+// Aditya Birla Capital previously reused the Inkompass clip; the Notion
+// asset sheet has the real one (abc_thumb.mp4), now used.
 const workItems = [
-  { client: 'Aditya Birla Capital', category: 'UX Design', title: "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool", slug: 'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool', video: 'https://wugweb.online/assets/work/Inkompass/inkompass_thumb.mp4' },
-  { client: 'Axis Bank', category: 'Strategy, UX Design', title: 'The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform', slug: 'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform', video: 'https://wugweb.online/assets/work/Axis%20Bank/axis_thumb.mp4' },
-  { client: 'METCRED', category: 'UX Design, Strategy', title: 'The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience', slug: 'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience', video: 'https://wugweb.online/assets/work/Metcred/metcred_thumb.mp4' },
-  { client: 'Philip Morris International', category: 'UX Design', title: 'Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future', slug: 'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future', video: 'https://wugweb.online/assets/work/Inkompass/inkompass_thumb.mp4' },
-  { client: 'Airtel', category: 'UX Design', title: 'Airtel Xsafe – Securing Homes with Intuitive Digital Experiences', slug: 'airtel-xsafe-securing-homes-with-intuitive-digital-experiences', video: 'https://wugweb.online/assets/work/Airtel%20Xsafe/Xsafe_thumb.mp4' },
-  { client: 'VisiONE', category: 'UX Design', title: 'VisiONE – Empowering Workforce Development with Competency-Based Assessments', slug: 'visione-empowering-workforce-development-with-competency-based-assessments', video: 'https://wugweb.online/assets/work/VisiOne/visiOne_thumb.mp4' },
-  { client: 'IndusInd Bank', category: 'UX Design', title: 'IndusNinja – Your AI-Powered Financial Ninja', slug: 'indusninja-your-ai-powered-financial-ninja', video: 'https://wugweb.online/assets/work/Indusninja/Indusninja_thumb.mp4' },
-  { client: 'Sadhan', category: 'UX Design, Strategy', title: 'Sadhan – Streamlining Driver Onboarding & Lead Management', slug: 'sadhan-streamlining-driver-onboarding-lead-management', video: 'https://wugweb.online/assets/work/Sadhan/sadhan_thumb.mp4' },
+  { client: 'Aditya Birla Capital', category: 'UX Design', title: "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool", slug: 'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool', video: '/assets/work/aditya-birla-capital/abc-thumb.mp4' },
+  { client: 'Axis Bank', category: 'Strategy, UX Design', title: 'The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform', slug: 'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform', video: '/assets/work/axis-bank/axis-thumb.mp4' },
+  { client: 'METCRED', category: 'UX Design, Strategy', title: 'The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience', slug: 'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience', video: '/assets/work/metcred/metcred-thumb.mp4' },
+  { client: 'Philip Morris International', category: 'UX Design', title: 'Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future', slug: 'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future', video: '/assets/work/inkompass/inkompass-thumb.mp4' },
+  { client: 'Airtel', category: 'UX Design', title: 'Airtel Xsafe – Securing Homes with Intuitive Digital Experiences', slug: 'airtel-xsafe-securing-homes-with-intuitive-digital-experiences', video: '/assets/work/airtel-xsafe/xsafe-thumb.mp4' },
+  { client: 'VisiONE', category: 'UX Design', title: 'VisiONE – Empowering Workforce Development with Competency-Based Assessments', slug: 'visione-empowering-workforce-development-with-competency-based-assessments', video: '/assets/work/visione/visione-thumb.mp4' },
+  { client: 'IndusInd Bank', category: 'UX Design', title: 'IndusNinja – Your AI-Powered Financial Ninja', slug: 'indusninja-your-ai-powered-financial-ninja', video: '/assets/work/indusind-bank/indusninja-thumb.mp4' },
+  { client: 'Sadhan', category: 'UX Design, Strategy', title: 'Sadhan – Streamlining Driver Onboarding & Lead Management', slug: 'sadhan-streamlining-driver-onboarding-lead-management', video: '/assets/work/sadhan/sadhan-thumb.mp4' },
 ];
 
 // Client logos — still on Framer's CDN (framerusercontent.com), not
@@ -111,7 +109,7 @@ const industries = [
   <!-- HERO -->
   <section class="hero">
     <video class="hero-video" autoplay muted loop playsinline
-      src="https://wugweb.online/assets/more/home/Home.mp4"></video>
+      src="/assets/more/home/home.mp4"></video>
     <div class="hero-overlay"></div>
 
     <!-- Nav comes from the shared SiteHeader in BaseLayout, rendered in

@@ -63,6 +63,34 @@ COLUMN IF NOT EXISTS` so an already-created table picks them up.
 Verified: browser-native validation rejects an empty form and a malformed address,
 accepts a valid one, at 375px.
 
+### D-14 — Three work videos were 404ing in production · **critical**
+`work/Airtel%20Xsafe/…`, `work/Axis%20Bank/…` and `work/Indusninja/…` all returned
+**404** from `wugweb.online`. Those clips appear on the homepage work grid, `/work`,
+and the services galleries — three broken videos on the live site.
+
+Cause: the asset host is mid-reorganisation. The Notion **Asset - Sheet** (128 rows)
+and the local `wugweb-assets/` bundle both use canonical lowercase-hyphenated folders
+(`work/airtel-xsafe/`, `work/axis-bank/`, `work/indusind-bank/`), but the deployed host
+still serves the old capitalised names — and has dropped those three entirely.
+
+**Fix:** stopped hotlinking `wugweb.online` altogether. All 16 referenced assets are now
+self-hosted from `public/assets/` (~32MB, largest file 5.5MB — well inside Pages
+limits), taken from the local bundle, which matches the Notion manifest.
+
+### D-15 — Filenames containing `&` don't serve · **major**
+`Brand & Strategy.mp4`, `Martech & GenAi.mp4`, `Web & App Development.mp4` and the two
+`services/Martech & GenAi/…` paths all 404'd even once self-hosted — `&` terminates the
+path and starts a query string. Spaces survive; ampersands do not.
+
+**Fix:** renamed every asset to URL-safe kebab-case on copy (`martech-genai.mp4`,
+`web-app-development.mp4`, `xsafe-thumb.mp4`, …). Verified all 16 return 200 and all 8
+work videos decode in-browser (`videoWidth > 0`).
+
+### D-16 — Aditya Birla Capital was showing the Inkompass clip · **minor**
+Two work entries shared the Inkompass thumbnail. I'd previously flagged this as an
+upstream bug and left it. The Notion sheet has the real asset — `abc_thumb.mp4` — so
+it's now fixed rather than flagged.
+
 ---
 
 ## 🔍 Needs a decision — surfaced, not silently changed
