@@ -1,0 +1,1 @@
+import{a,i}from"./index.cluv2SZF.js";a("[data-reveal]",{opacity:[0,1],y:[12,0]},{duration:.6,delay:.2,easing:"ease-out"});i(".cap-group, .why-item, .approach-step, .faq-item",e=>{a(e,{opacity:[0,1],y:[16,0]},{duration:.5,easing:"ease-out"})});

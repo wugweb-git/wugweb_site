@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "include": [
+    "/",
+    "/_server-islands/*",
+    "/_image",
+    "/api/*",
+    "/contact-us"
+  ],
+  "exclude": [
+    "/_astro/*",
+    "/.assetsignore",
+    "/ai-context.txt",
+    "/brand-system.txt",
+    "/llms.txt",
+    "/robots.txt",
+    "/404",
+    "/about",
+    "/blog/*",
+    "/faq",
+    "/footer/*",
+    "/privacy-policy",
+    "/refund-policy",
+    "/services/*",
+    "/termsofuse",
+    "/work/*"
+  ]
+}

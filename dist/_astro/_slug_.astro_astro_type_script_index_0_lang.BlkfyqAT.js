@@ -1,0 +1,1 @@
+import{a,i as e}from"./index.cluv2SZF.js";a("[data-reveal]",{opacity:[0,1]},{duration:.6,delay:.2});e(".article-body h2, .article-body p",i=>{a(i,{opacity:[0,1],y:[12,0]},{duration:.5,easing:"ease-out"})});

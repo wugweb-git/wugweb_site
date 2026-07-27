@@ -1,0 +1,1 @@
+import{a,i as o}from"./index.cluv2SZF.js";a("[data-reveal]",{opacity:[0,1]},{duration:.6,delay:.2});o(".contact-details div, .contact-form label, .contact-form fieldset, .contact-form button",t=>{a(t,{opacity:[0,1],y:[16,0]},{duration:.5,easing:"ease-out"})});
