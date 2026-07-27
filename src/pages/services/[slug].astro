@@ -8,26 +8,21 @@ const services: Record<string, {
   tags: string[];
   body: string;
   heroText: string;
-  capabilities: { n: string; title: string }[];
+  capabilities: { n: string; title: string; items: string[] }[];
   approach: { n: string; title: string; body: string }[];
   faqs: { q: string; a: string }[];
   why: { title: string; body: string }[];
 }> = {
   'strategy': {
     title: 'Strategy',
-    subtitle: 'Charting the Path to Impact',
-    tags: ['Brand Strategy', 'Market Positioning', 'Digital Strategy', 'Growth Roadmaps'],
+    subtitle: 'Define the future before building it.',
+    tags: ['Business Strategy', 'Product Strategy', 'AI Strategy', 'Transformation'],
     heroText: "Every great digital experience starts with a clear strategy. We help organisations define their north star, uncover market opportunities, and build actionable roadmaps that align vision with execution. From brand positioning to digital transformation, our strategic work sets the foundation for everything that follows.",
     body: 'We don\'t just plan — we build strategies that translate into measurable outcomes. Our strategists combine deep research, market intelligence, and creative thinking to chart a clear path forward. Whether you\'re launching a new brand, entering a new market, or reimagining your digital presence, we provide the strategic clarity you need to move with confidence.',
     capabilities: [
-      { n: '01', title: 'Brand Strategy & Positioning' },
-      { n: '02', title: 'Market Research & Analysis' },
-      { n: '03', title: 'Digital Transformation Strategy' },
-      { n: '04', title: 'Growth Roadmapping' },
-      { n: '05', title: 'Customer Journey Strategy' },
-      { n: '06', title: 'Competitive Analysis' },
-      { n: '07', title: 'Go-to-Market Planning' },
-      { n: '08', title: 'Product Strategy' },
+      { n: '01', title: 'Business', items: ['Business Strategy', 'Digital Transformation', 'Innovation', 'Market Research'] },
+      { n: '02', title: 'Product', items: ['Product Strategy', 'Product Discovery', 'Roadmapping', 'MVP Planning'] },
+      { n: '03', title: 'AI', items: ['AI Strategy', 'AI Readiness', 'AI Opportunity Mapping', 'Transformation Workshops'] },
     ],
     approach: [
       { n: '01', title: 'Discovery & Research', body: 'We immerse ourselves in your business, market, and audience to uncover the insights that inform every decision.' },
@@ -50,18 +45,14 @@ const services: Record<string, {
   },
   'brand': {
     title: 'Brand',
-    subtitle: 'Crafting Identities That Resonate',
-    tags: ['Identity Systems', 'Naming', 'Visual Identity', 'Brand Guidelines'],
+    subtitle: 'Create brands people remember.',
+    tags: ['Brand Strategy', 'Identity Systems', 'Naming', 'Brand Guidelines'],
     heroText: "Your brand is more than a logo — it's the sum of every interaction people have with you. We craft distinct brand identities that build emotional connection, inspire loyalty, and drive long-term growth. From naming and visual systems to voice and comprehensive guidelines, we ensure your brand stands out and stays consistent.",
     body: 'A strong brand is a strategic asset. We help organisations define who they are, what they stand for, and how they show up in the world. Our brand process combines strategic thinking with creative excellence — resulting in identities that are not only beautiful but strategically grounded and built to last.',
     capabilities: [
-      { n: '01', title: 'Brand Identity Design' },
-      { n: '02', title: 'Naming & Nomenclature' },
-      { n: '03', title: 'Visual Identity Systems' },
-      { n: '04', title: 'Brand Guidelines' },
-      { n: '05', title: 'Tone of Voice Development' },
-      { n: '06', title: 'Brand Narrative & Storytelling' },
-      { n: '07', title: 'Brand Audits & Analysis' },
+      { n: '01', title: 'Brand Strategy', items: ['Positioning', 'Narrative', 'Naming', 'Messaging'] },
+      { n: '02', title: 'Identity', items: ['Identity Systems', 'Voice & Tone', 'Employer Brand', 'Brand Guidelines'] },
+      { n: '03', title: 'Activation', items: ['Brand Activation', 'Campaigns', 'Brand Audits', 'Brand Evolution'] },
     ],
     approach: [
       { n: '01', title: 'Discovery & Brand Audit', body: 'We dive deep into your brand\'s current state, market position, and aspirations to identify opportunities.' },
@@ -84,19 +75,14 @@ const services: Record<string, {
   },
   'experience': {
     title: 'Experience',
-    subtitle: 'Designing Products People Love',
+    subtitle: 'Design products people love using.',
     tags: ['UX Design', 'UI Design', 'Design Systems', 'User Research'],
     heroText: "We design digital experiences that people love to use. Rooted in human-centered design and rigorous user research, our UX/UI services cover everything from journey mapping and wireframing to polished visual design and scalable design systems — all focused on creating intuitive, engaging products that drive business results.",
     body: 'In the experience economy, exceptional design is a competitive advantage. We design and engineer intuitive, engaging digital experiences that captivate users, build brand loyalty, and fuel sustainable growth. Our process is collaborative, data-informed, and relentlessly focused on delivering value to both users and businesses.',
     capabilities: [
-      { n: '01', title: 'UX Strategy' },
-      { n: '02', title: 'User Research' },
-      { n: '03', title: 'Information Architecture' },
-      { n: '04', title: 'Interaction Design' },
-      { n: '05', title: 'Visual Design' },
-      { n: '06', title: 'Design Systems' },
-      { n: '07', title: 'Usability Testing' },
-      { n: '08', title: 'Accessibility' },
+      { n: '01', title: 'Research', items: ['UX Research', 'Service Design', 'Information Architecture', 'Journey Mapping'] },
+      { n: '02', title: 'Design', items: ['UX Design', 'UI Design', 'Design Systems', 'Prototyping'] },
+      { n: '03', title: 'Testing & Accessibility', items: ['User Testing', 'Accessibility', 'Usability Testing', 'Design Critique'] },
     ],
     approach: [
       { n: '01', title: 'User Discovery', body: 'We illuminate design possibilities through deep dives into user behaviour, needs, and pain points.' },
@@ -119,19 +105,14 @@ const services: Record<string, {
   },
   'growth': {
     title: 'Growth',
-    subtitle: 'Data-Driven Marketing That Scales',
-    tags: ['MarTech', 'AI & Automation', 'Lead Generation', 'Analytics'],
+    subtitle: 'Turn products into businesses.',
+    tags: ['Marketing', 'MarTech', 'Analytics', 'AI Marketing'],
     heroText: "Growth is driven by smart systems and sharper insights. We help businesses unlock data-driven marketing through MarTech consulting, marketing automation, AI integration, and lead generation strategies — turning your marketing into a measurable, scalable engine for acquisition and retention.",
     body: 'Marketing success today is powered by smart systems and sharper insights. We help unlock your marketing potential through MarTech consulting that connects data, automates workflows, and creates tailored experiences. Our approach is holistic — we test, adapt, and optimise continuously using AI-powered marketing strategies to drive measurable growth.',
     capabilities: [
-      { n: '01', title: 'MarTech Strategy & Audit' },
-      { n: '02', title: 'Marketing Automation' },
-      { n: '03', title: 'AI & ML Integration' },
-      { n: '04', title: 'Lead Generation' },
-      { n: '05', title: 'Data Analytics & Reporting' },
-      { n: '06', title: 'CRM & CDP Implementation' },
-      { n: '07', title: 'Content Personalisation' },
-      { n: '08', title: 'Campaign Optimisation' },
+      { n: '01', title: 'Marketing', items: ['SEO', 'Performance Marketing', 'Content Strategy', 'Social', 'Campaigns'] },
+      { n: '02', title: 'MarTech', items: ['CRM', 'Marketing Automation', 'Email Automation', 'Customer Journeys', 'Personalization'] },
+      { n: '03', title: 'Intelligence', items: ['Analytics', 'Attribution', 'CRO', 'Experimentation', 'AI Marketing', 'Customer Insights'] },
     ],
     approach: [
       { n: '01', title: 'Audit & Strategy', body: 'We start with a comprehensive audit of your current marketing stack, data flows, and growth opportunities.' },
@@ -154,19 +135,14 @@ const services: Record<string, {
   },
   'engineering': {
     title: 'Engineering',
-    subtitle: 'Building Digital Products That Perform',
-    tags: ['Web Development', 'App Development', 'Cloud & DevOps', 'Full-Stack'],
+    subtitle: 'Engineer products built to scale.',
+    tags: ['Web Development', 'App Development', 'Infrastructure', 'AI'],
     heroText: 'We build robust, performant digital products using modern engineering practices. From responsive websites and e-commerce platforms to native mobile apps and cloud-native architectures, our engineering team delivers scalable solutions that are secure, fast, and built to last.',
     body: 'It takes just 50 milliseconds for users to form an opinion about your website. We specialise in building scalable web solutions and custom digital products across marketing, eCommerce, and enterprise platforms. Our agile development process ensures speed, flexibility, and transparency from planning to deployment.',
     capabilities: [
-      { n: '01', title: 'Front-End Development' },
-      { n: '02', title: 'Back-End Development' },
-      { n: '03', title: 'Full-Stack Development' },
-      { n: '04', title: 'Mobile App Development' },
-      { n: '05', title: 'E-Commerce Solutions' },
-      { n: '06', title: 'CMS Integration' },
-      { n: '07', title: 'API Development & Integration' },
-      { n: '08', title: 'Cloud Infrastructure & DevOps' },
+      { n: '01', title: 'Applications', items: ['Websites', 'Web Apps', 'Mobile Apps', 'SaaS', 'Ecommerce', 'Platforms'] },
+      { n: '02', title: 'Infrastructure', items: ['CMS', 'APIs', 'Integrations', 'Databases', 'Authentication', 'Cloud', 'DevOps', 'CI/CD', 'Performance', 'Security'] },
+      { n: '03', title: 'Modern Development', items: ['AI Applications', 'AI Agents', 'No-Code', 'Low-Code', 'Internal Tools'] },
     ],
     approach: [
       { n: '01', title: 'Discovery & Architecture', body: 'We define core objectives and system architecture through collaborative discovery sessions.' },
@@ -189,19 +165,14 @@ const services: Record<string, {
   },
   'operations': {
     title: 'Operations',
-    subtitle: 'Ensuring Quality, Speed & Reliability',
-    tags: ['QA & Testing', 'No-Code Solutions', 'Process Automation', 'SRE'],
+    subtitle: 'Keep everything running and improving.',
+    tags: ['QA', 'Reliability', 'Support', 'Continuous Improvement'],
     heroText: 'Great products need great operations behind them. We provide QA and testing services, no-code development for rapid delivery, workflow automation, and site reliability engineering — ensuring your digital products run smoothly, ship faster, and scale without friction.',
     body: 'We build quality into every stage of the digital lifecycle. Our operations services ensure your products are reliable, high-performing, and ready for growth. From rigorous QA and testing to rapid no-code development and process automation, we provide the operational backbone that lets your team move fast with confidence.',
     capabilities: [
-      { n: '01', title: 'QA Strategy & Planning' },
-      { n: '02', title: 'Functional & Performance Testing' },
-      { n: '03', title: 'Test Automation' },
-      { n: '04', title: 'No-Code Development' },
-      { n: '05', title: 'Workflow Automation' },
-      { n: '06', title: 'Site Reliability Engineering' },
-      { n: '07', title: 'Security & Accessibility Testing' },
-      { n: '08', title: 'Monitoring & Incident Response' },
+      { n: '01', title: 'Reliability', items: ['QA', 'Test Automation', 'Performance Testing', 'Security Testing', 'Accessibility Audits'] },
+      { n: '02', title: 'Support', items: ['Maintenance', 'Monitoring', 'Release Management', 'SLA Support', 'Incident Response'] },
+      { n: '03', title: 'Continuous Improvement', items: ['Product Optimization', 'UX Audits', 'Technical Audits', 'Feature Evolution', 'Performance Optimization'] },
     ],
     approach: [
       { n: '01', title: 'Assessment & Planning', body: 'We evaluate your current operations, identify bottlenecks, and define a plan for improvement.' },
@@ -266,11 +237,14 @@ export async function getStaticPaths() {
   <!-- CAPABILITIES -->
   <section class="wrap capabilities-section">
     <p class="eyebrow" data-reveal>What we can do</p>
-    <div class="caps-grid">
+    <div class="caps-grouped">
       {service.capabilities.map((c) => (
-        <div class="cap-item" data-reveal>
-          <span class="cap-n">{c.n}</span>
-          <p>{c.title}</p>
+        <div class="cap-group" data-reveal>
+          <span class="cap-group-n">{c.n}</span>
+          <h3 class="cap-group-title">{c.title}</h3>
+          <ul class="cap-group-items">
+            {c.items.map((item) => <li>{item}</li>)}
+          </ul>
         </div>
       ))}
     </div>
@@ -340,11 +314,16 @@ export async function getStaticPaths() {
   .detail-body p { max-width: 65ch; font-size: 1.1rem; line-height: 1.7; }
 
   .capabilities-section { padding-block: 6rem; border-top: 1px solid var(--line); }
-  .caps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 2rem; }
-  @media (min-width: 640px) { .caps-grid { grid-template-columns: repeat(3, 1fr); } }
-  .cap-item { background: var(--bg); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .cap-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: 0.8rem; }
-  .cap-item p { font-family: var(--font-display); font-size: 1rem; }
+  .caps-grouped { display: grid; gap: 0; margin-top: 2rem; border-top: 1px solid var(--line); }
+  @media (min-width: 768px) { .caps-grouped { grid-template-columns: repeat(3, 1fr); } }
+  .cap-group { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 2rem; }
+  @media (min-width: 768px) { .cap-group { border-bottom: none; } }
+  .cap-group:last-child { border-right: none; }
+  .cap-group-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: 0.8rem; }
+  .cap-group-title { font-size: 1.25rem; font-weight: 500; margin-top: 0.35rem; }
+  .cap-group-items { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .cap-group-items li { font-size: 0.9rem; color: var(--fg-muted); position: relative; padding-left: 1rem; }
+  .cap-group-items li::before { content: '—'; position: absolute; left: 0; color: var(--accent-warm); }
 
   .why-section { padding-block: 6rem; border-top: 1px solid var(--line); }
   .why-section h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); margin-top: 0.75rem; max-width: 20ch; }
@@ -377,7 +356,7 @@ export async function getStaticPaths() {
 <script>
   import { animate, inView } from 'motion';
   animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2, easing: 'ease-out' });
-  inView('.cap-item, .why-item, .approach-step, .faq-item', (el) => {
+  inView('.cap-group, .why-item, .approach-step, .faq-item', (el) => {
     animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
   });
 </script>

@@ -80,28 +80,31 @@ const stats = [
     </p>
   </section>
 
-  <!-- SERVICE LIST -->
-  <ol class="service-list">
-    {services.map((s) => (
-      <li class="service-row" id={s.title.toLowerCase().replace(/\s+/g, '-')} data-reveal>
-        <div class="wrap service-row-inner">
-          <div class="service-row-text">
-            <span class="service-n">{s.n}</span>
-            <h2>{s.title}</h2>
-            <ul class="service-tags">
-              {s.tags.map((t) => <li>{t}</li>)}
-            </ul>
-            <p>{s.body}</p>
-            <div class="service-ctas">
-              <a href={`/services/${s.title.toLowerCase()}`} class="btn btn-ghost">Learn More</a>
-              <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
+  <!-- SERVICE CARDS -->
+  <div class="service-cards">
+    {services.map((s, i) => (
+      <section class="service-card" id={s.title.toLowerCase()} data-service={i}>
+        <div class="service-card-sticky">
+          <div class="service-card-content">
+            <video class="service-card-video" autoplay muted loop playsinline src={s.video}></video>
+            <div class="service-card-overlay"></div>
+            <div class="service-card-info">
+              <span class="service-card-n">{s.n}</span>
+              <h2 class="service-card-title">{s.title}</h2>
+              <ul class="service-card-tags">
+                {s.tags.map((t) => <li>{t}</li>)}
+              </ul>
+              <p class="service-card-body">{s.body}</p>
+              <div class="service-card-ctas">
+                <a href={`/services/${s.title.toLowerCase()}`} class="btn btn-ghost">Learn More</a>
+                <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
+              </div>
             </div>
           </div>
-          <video class="service-video" autoplay muted loop playsinline src={s.video}></video>
         </div>
-      </li>
+      </section>
     ))}
-  </ol>
+  </div>
 
   <!-- WHY WUGWEB -->
   <section class="wrap why-section">
@@ -160,17 +163,60 @@ const stats = [
   .services-intro h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); max-width: 20ch; }
   .services-intro p { margin-top: 1.25rem; max-width: 65ch; }
 
-  .service-list { list-style: none; margin: 0; padding: 0; }
-  .service-row { border-top: 1px solid var(--line); }
-  .service-row-inner { display: grid; gap: 2rem; padding-block: 4rem; align-items: center; }
-  @media (min-width: 768px) { .service-row-inner { grid-template-columns: 1fr 1fr; } }
-  .service-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: 0.85rem; }
-  .service-row-text h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-top: 0.5rem; }
-  .service-tags { list-style: none; margin: 1rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .service-tags li { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.35rem 0.85rem; border: 1px solid var(--line); border-radius: 999px; color: var(--fg-muted); }
-  .service-row-text p { margin-top: 1rem; max-width: 55ch; }
-  .service-ctas { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
-  .service-video { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; }
+  /* Service cards — full-viewport, scroll-transform */
+  .service-cards { position: relative; }
+  .service-card {
+    height: 100vh; max-height: 1080px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-card-sticky {
+    position: sticky; top: 0;
+    height: 100vh; max-height: 1080px;
+    width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+  .service-card-content {
+    position: relative;
+    width: 92%; max-width: 1200px;
+    height: 85vh; max-height: 880px;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .service-card-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .service-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 50%, rgba(0,0,0,.05) 100%);
+    z-index: 1;
+  }
+  .service-card-info {
+    position: relative; z-index: 2;
+    padding: 3rem 3.5rem;
+    max-width: 640px;
+  }
+  .service-card-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: 0.8rem; }
+  .service-card-title { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 600; letter-spacing: -0.02em; margin-top: 0.35rem; }
+  .service-card-tags { list-style: none; margin: 0.75rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .service-card-tags li { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.7rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; color: rgba(255,255,255,.7); }
+  .service-card-body { margin-top: 0.75rem; font-size: 0.95rem; line-height: 1.65; color: rgba(255,255,255,.75); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .service-card-ctas { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .service-card-ctas .btn-ghost { border-color: rgba(255,255,255,.3); color: #fff; }
+  .service-card-ctas .btn-ghost:hover { border-color: rgba(255,255,255,.7); }
+  .service-card-ctas .btn-solid { background: var(--accent-warm); color: #000; }
+  .service-card-ctas .btn-solid:hover { background: #ffd44d; }
+
+  @media (max-width: 767px) {
+    .service-card-info { padding: 2rem 1.5rem; }
+    .service-card-content { height: 90vh; border-radius: 16px; width: 96%; }
+    .service-card-body { -webkit-line-clamp: 3; }
+  }
 
   .why-section { padding-block: 6rem; border-top: 1px solid var(--line); }
   .why-section h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); margin-top: 0.75rem; max-width: 22ch; }
@@ -190,9 +236,39 @@ const stats = [
 </style>
 
 <script>
-  import { animate, inView } from 'motion';
+  import { animate, inView, scroll, timeline } from 'motion';
+
+  // Entrance reveal for hero and static sections
   animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.stats li, .service-row, .why-grid li, .faq-item, .service-tags li, .services-faq .faq-item', (el) => {
+  inView('.stats li, .why-grid li, .faq-item, .services-faq .faq-item', (el) => {
     animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+
+  // Scroll-driven card transforms
+  const cards = document.querySelectorAll('.service-card');
+  const cardHeight = window.innerHeight;
+  const total = cards.length;
+
+  cards.forEach((card, i) => {
+    const sticky = card.querySelector('.service-card-sticky');
+    const content = card.querySelector('.service-card-content');
+
+    // Stagger entrance — card fades in from bottom as it enters viewport
+    inView(card, () => {
+      animate(sticky, { opacity: [0, 1], y: [80, 0] }, { duration: 0.8, easing: [0.16, 1, 0.3, 1] });
+    }, { amount: 0.2 });
+
+    // Scroll-driven scale — card shrinks as it scrolls up and out
+    scroll(animate(sticky, {
+      transform: [
+        'scale(1) translateY(0)',
+        'scale(0.92) translateY(0)',
+        'scale(0.85) translateY(-60px)',
+      ],
+      opacity: [1, 1, 0],
+    }), {
+      target: card,
+      axis: 'y',
+    });
   });
 </script>
