@@ -4,39 +4,39 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const services = [
   {
-    n: '01', title: 'Brand & Strategy',
-    tags: ['Identity Systems', 'Positioning & Strategy', 'Voice & Tone', 'Narrative'],
-    body: 'As a brand strategy consulting agency, we craft transformative brand experiences that build emotional connection, inspire loyalty, and drive long-term growth. Our core services include brand identity design, brand narrative development, and comprehensive brand positioning and strategy.',
+    n: '01', title: 'Strategy',
+    tags: ['Brand Strategy', 'Market Positioning', 'Digital Strategy', 'Growth Roadmaps'],
+    body: 'We help organisations define their north star. From brand positioning and market strategy to digital transformation roadmaps, our strategists combine deep research with creative thinking to chart a clear path forward. We don\'t just plan — we build strategies that translate into measurable outcomes.',
     video: 'https://wugweb.online/assets/more/services/services_brand-mp4.mp4',
   },
   {
-    n: '02', title: 'Experience Design',
-    tags: ['Interface', 'Journey', 'Design Systems', 'User Intelligence'],
-    body: 'We create intuitive, engaging, and seamless digital experiences that captivate users and drive business growth. Our experience design services are rooted in user-centered design services, combining human-centered design, product design services, and digital product design with strategic focus on customer experience design, experience architecture, and end-to-end user journey design.',
+    n: '02', title: 'Brand',
+    tags: ['Identity Systems', 'Naming', 'Visual Identity', 'Brand Guidelines'],
+    body: 'Your brand is more than a logo — it\'s the sum of every interaction people have with you. We craft distinct brand identities, from naming and visual systems to tone of voice and comprehensive guidelines, ensuring your brand stands out and stays consistent across every touchpoint.',
+    video: 'https://wugweb.online/assets/more/services/services_brand-mp4.mp4',
+  },
+  {
+    n: '03', title: 'Experience',
+    tags: ['UX Design', 'UI Design', 'Design Systems', 'User Research'],
+    body: 'We design digital experiences that people love to use. Rooted in human-centered design and rigorous user research, our UX/UI services cover everything from journey mapping and wireframing to polished visual design and scalable design systems — all focused on creating intuitive, engaging products.',
     video: 'https://wugweb.online/assets/more/services/services_uxdesign-mp4.mp4',
   },
   {
-    n: '03', title: 'Martech & Gen AI',
-    tags: ['Insights', 'Automation', 'Generative AI', 'Analytics'],
-    body: 'Growth is driven by strategic MarTech consulting and AI-powered marketing solutions, enabling businesses to personalize experiences, optimize performance, and scale with precision. Our services span digital transformation strategy, building robust MarTech ecosystems, and delivering impactful AI-powered content experiences.',
+    n: '04', title: 'Growth',
+    tags: ['MarTech', 'AI & Automation', 'Lead Generation', 'Analytics'],
+    body: 'Growth is driven by smart systems and sharper insights. We help businesses unlock data-driven marketing through MarTech consulting, marketing automation, AI integration, and lead generation strategies — turning your marketing into a measurable, scalable engine for acquisition and retention.',
     video: 'https://wugweb.online/assets/more/services/services_martech-mp4.mp4',
   },
   {
-    n: '04', title: 'Web Development',
-    tags: ['Front-End', 'Back-End', 'DevOps & Cloud', 'Native Application'],
-    body: 'We build precision-engineered web and app development services that deliver exceptional performance and measurable business results. Our capabilities include responsive website development, ecommerce development, and advanced front-end engineering for seamless user experiences across devices.',
+    n: '05', title: 'Engineering',
+    tags: ['Web Development', 'App Development', 'Cloud & DevOps', 'Full-Stack'],
+    body: 'We build robust, performant digital products using modern engineering practices. From responsive websites and e-commerce platforms to native mobile apps and cloud-native architectures, our engineering team delivers scalable solutions that are secure, fast, and built to last.',
     video: 'https://wugweb.online/assets/more/services/services_webdevelopment-mp4.mp4',
   },
   {
-    n: '05', title: 'QA & Testing',
-    tags: ['Smoke', 'Critical', 'Regression', 'Feature'],
-    body: 'Our QA and testing services safeguard digital products through rigorous functional testing, seamless usability testing, and high-performance performance testing. We ensure every experience meets the highest standards of quality, reliability, and user satisfaction.',
-    video: 'https://wugweb.online/assets/more/services/services_qa-mp4.mp4',
-  },
-  {
-    n: '06', title: 'No-Code Development',
-    tags: ['Outsystems', 'Webflow', 'Mendix', 'Appian'],
-    body: 'As a no-code development agency, we empower businesses to launch digital products faster through strategic no-code solutions, expert Webflow and Bubble development, and rapid MVP development. Our approach accelerates time to market without compromising on performance or flexibility.',
+    n: '06', title: 'Operations',
+    tags: ['QA & Testing', 'No-Code Solutions', 'Process Automation', 'SRE'],
+    body: 'Great products need great operations behind them. We provide QA and testing services, no-code development for rapid delivery, workflow automation, and site reliability engineering — ensuring your digital products run smoothly, ship faster, and scale without friction.',
     video: 'https://wugweb.online/assets/more/services/services_nocode-mp4.mp4',
   },
 ];
@@ -93,7 +93,7 @@ const stats = [
             </ul>
             <p>{s.body}</p>
             <div class="service-ctas">
-              <a href={`/services/${s.title.toLowerCase().replace(/[\s&]+/g, '-').replace(/--+/g, '-')}`} class="btn btn-ghost">Learn More</a>
+              <a href={`/services/${s.title.toLowerCase()}`} class="btn btn-ghost">Learn More</a>
               <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
             </div>
           </div>
@@ -133,13 +133,13 @@ const stats = [
     <h2 data-reveal>Frequently asked questions</h2>
     <p data-reveal>To help you get the information you need quickly, we've compiled a list of frequently asked questions. If you don't find the answer you're looking for, please feel free to contact us directly.</p>
     <div class="faq-list">
-      <details class="faq-item"><summary>What services does Wugweb offer?</summary><p>Wugweb offers a comprehensive range of services including Brand & Strategy, Experience Design, Martech & Gen AI, Web Development, QA & Testing, and No-Code Development.</p></details>
-      <details class="faq-item"><summary>What makes your UI/UX design services stand out?</summary><p>Our UI/UX design services are rooted in user-centered design, combining human-centered design principles with strategic focus on customer experience and end-to-end user journey design.</p></details>
-      <details class="faq-item"><summary>Do you provide custom brand identity design and positioning?</summary><p>Yes, as a brand strategy consulting agency, we craft transformative brand experiences including brand identity design, brand narrative development, and comprehensive brand positioning and strategy.</p></details>
-      <details class="faq-item"><summary>What kind of platforms do you develop under web and app development?</summary><p>We build responsive websites, ecommerce platforms, and custom web applications using full-stack development, CMS integration, and mobile-first design.</p></details>
-      <details class="faq-item"><summary>How do you integrate MarTech and AI into your services?</summary><p>We blend digital experience strategy with AI-powered marketing and generative AI, helping brands automate, personalize, and optimize user journeys across channels.</p></details>
-      <details class="faq-item"><summary>Do you offer no-code development for fast launch?</summary><p>Yes, we empower businesses to launch digital products faster through no-code solutions including Webflow, Bubble, Outsystems, and Mendix development.</p></details>
-      <details class="faq-item"><summary>How do your QA and testing services ensure product quality?</summary><p>Our QA services safeguard digital products through rigorous functional testing, usability testing, and performance testing to ensure the highest standards of quality and reliability.</p></details>
+      <details class="faq-item"><summary>What services does Wugweb offer?</summary><p>Wugweb offers six core service areas: Strategy, Brand, Experience, Growth, Engineering, and Operations — covering everything from brand positioning and UX design to development, marketing, QA, and automation.</p></details>
+      <details class="faq-item"><summary>What is the difference between Strategy and Brand services?</summary><p>Strategy focuses on market positioning, research, and roadmapping — defining where you need to go. Brand brings that strategy to life through visual identity, naming, and guidelines — defining who you are.</p></details>
+      <details class="faq-item"><summary>What does the Experience service cover?</summary><p>Experience covers UX/UI design — user research, journey mapping, wireframing, visual design, design systems, and usability testing. It's about creating digital products people love to use.</p></details>
+      <details class="faq-item"><summary>How do Growth and Engineering differ?</summary><p>Growth focuses on marketing technology, AI automation, lead generation, and analytics — driving acquisition and retention. Engineering builds the actual digital products — websites, apps, APIs, and cloud infrastructure.</p></details>
+      <details class="faq-item"><summary>What's included in Operations?</summary><p>Operations covers QA & testing, no-code development, workflow automation, and site reliability — ensuring your digital products run smoothly, ship faster, and scale without friction.</p></details>
+      <details class="faq-item"><summary>Do you offer both design and development?</summary><p>Yes. Our Experience and Brand services cover design, while Engineering handles development. We often combine them for end-to-end projects — from strategy through design to build and launch.</p></details>
+      <details class="faq-item"><summary>Can I get a custom package combining multiple services?</summary><p>Absolutely. Most of our engagements combine multiple service areas. We'll work with you to define a scope that fits your specific goals and budget.</p></details>
     </div>
   </section>
 </BaseLayout>
