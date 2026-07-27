@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { Client } from 'pg';
+import { connect } from '../../lib/db';
 
 // Same Hyperdrive + pg pattern as /api/personalize.ts. Stores leads in
 // Neon so they're queryable later (this is the "basic admin feature"
@@ -9,7 +9,6 @@ import { Client } from 'pg';
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request, locals, redirect }) => {
-  const { HYPERDRIVE } = locals.runtime.env;
   const form = await request.formData();
 
   const name = form.get('name')?.toString() ?? '';
@@ -20,8 +19,7 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
   const contactMethod = form.get('contactMethod')?.toString() ?? '';
   const newsletter = form.get('newsletter') === 'yes';
 
-  const client = new Client({ connectionString: HYPERDRIVE.connectionString });
-  await client.connect();
+  const client = await connect(locals.runtime.env);
 
   try {
     await client.query(

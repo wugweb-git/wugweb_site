@@ -1,18 +1,17 @@
 import type { APIRoute } from 'astro';
-import { Client } from 'pg';
+import { connect } from '../../lib/db';
 
 // Cloudflare + Neon officially recommend Hyperdrive + a normal Postgres
 // driver (this uses `pg`) over Neon's own HTTP/WebSocket driver — it
 // gives you connection pooling at the edge and normal SQL/ORM tooling.
 // One connection per request; always close it, even on error, or you
 // leak connections against the free tier's 100K queries/day.
+// Connection resolution (Hyperdrive, else DATABASE_URL) lives in lib/db.
 
 export const GET: APIRoute = async ({ locals }) => {
-  const { HYPERDRIVE } = locals.runtime.env;
   const visitorId = locals.visitorId;
 
-  const client = new Client({ connectionString: HYPERDRIVE.connectionString });
-  await client.connect();
+  const client = await connect(locals.runtime.env);
 
   try {
     const { rows } = await client.query(
@@ -28,12 +27,10 @@ export const GET: APIRoute = async ({ locals }) => {
 };
 
 export const POST: APIRoute = async ({ request, locals }) => {
-  const { HYPERDRIVE } = locals.runtime.env;
   const visitorId = locals.visitorId;
   const body = await request.json().catch(() => ({}));
 
-  const client = new Client({ connectionString: HYPERDRIVE.connectionString });
-  await client.connect();
+  const client = await connect(locals.runtime.env);
 
   try {
     await client.query(
