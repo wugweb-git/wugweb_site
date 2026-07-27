@@ -69,6 +69,37 @@ const metaOgImage = ogImage || defaultOgImage;
   <body>
     <SiteHeader companyEmail={siteEmail} />
     <slot />
+
+    <!-- PARTNERS -->
+    <section class="wrap global-partners">
+      <p class="eyebrow">Our Partners in Experience Innovation</p>
+      <a href="/contact-us" class="btn btn-solid btn-partners-cta">Let's Talk</a>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="wrap global-industries">
+      <h2>Industries We Empower</h2>
+      <p>From local businesses to international corporations, our clients all share one common understanding when it comes to building authentic brands: the power of research, strategy, creativity, and design.</p>
+      <ul class="industry-tags">
+        {['Government','Insurtech','Travel','Logistics','Automotive','Fintech','Edtech','Sports','E-commerce','Media','Energy','NGOs'].map((i) => <li>{i}</li>)}
+      </ul>
+      <a href="/about" class="btn btn-ghost">More about us</a>
+    </section>
+
+    <!-- BLOG TEASER -->
+    <section class="wrap global-blog-teaser">
+      <p class="eyebrow">Some of our recent thoughts</p>
+      <a href="/blog" class="btn btn-ghost">Visit our Blog</a>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="global-final-cta">
+      <div class="wrap final-cta-inner">
+        <h2>We speak your Industry's language. Partner with Wugweb for domain-driven design and development that delivers.</h2>
+        <a href="/contact-us" class="btn btn-solid">Request Quote</a>
+      </div>
+    </section>
+
     <SiteFooter copyright={copyrightText} companyEmail={siteEmail} />
   </body>
 </html>
