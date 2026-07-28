@@ -11,6 +11,13 @@ What's still needed on the wugweb.com redesign.
 
 ## Content (Sanity)
 
+### Schema Status
+- [x] **Case study schema enriched** — added `about`, `disciplines`, `industry`, `timeline`, `team`, `challenges[]`, `solutions[]`, `impact[]` fields with editor tabs
+- [x] **Service schema enriched** — added `subtitle`, `tags`, `heroText`, `capabilities[]`, `approach[]`, `process[]`, `tools[]`, `why[]` fields with editor tabs
+- [x] **Contact Submission document type** created — read-only document in Sanity Studio so admins can view leads without querying Neon directly
+- [x] **GROQ queries updated** to reflect all new fields
+- [x] **@sanity/vision** plugin activated in studio config
+- [x] **Desk structure** updated with Contact Submissions section
 - [ ] No case studies entered in Sanity (work pages render empty)
 - [ ] No blog posts entered (blog pages render empty)
 - [x] **Service content hardcoded** — Strategy, Brand, Experience, Growth, Engineering, Operations pages are fully built with inline content (no Sanity dependency for services)

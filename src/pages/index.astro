@@ -397,8 +397,10 @@ const industries = [
     gap: 1.25rem;
     grid-template-columns: 1fr;
   }
-  @media (min-width: 640px) { .service-cards { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .service-cards { grid-template-columns: repeat(4, 1fr); } }
+  /* 768 and 1200 are the design system's real breakpoints. Going 4-across at
+     1024 left 217px-wide cards against a 420px min-height — too skinny. */
+  @media (min-width: 768px) { .service-cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1200px) { .service-cards { grid-template-columns: repeat(4, 1fr); } }
 
   .service-card {
     position: relative;
@@ -407,7 +409,9 @@ const industries = [
     background: #f4f4f4;
     border-radius: var(--r-lg);
     padding: 0.75rem 0.75rem 0.25rem;
-    min-height: 420px;
+    /* Framer card spec is 300×350 (design.md §2.4); 420 made these read as
+       tall slivers once four sit side by side. */
+    min-height: 350px;
     transition: background 0.35s ease, transform 0.35s ease;
   }
   .service-card:hover { transform: translateY(-4px); }

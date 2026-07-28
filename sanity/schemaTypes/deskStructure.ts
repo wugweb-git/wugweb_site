@@ -42,6 +42,8 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
       S.documentTypeListItem('post').title('Blog Posts').icon(() => '✍️'),
       S.documentTypeListItem('service').title('Services').icon(() => '🛠️'),
       S.documentTypeListItem('person').title('Team').icon(() => '👥'),
+      S.divider(),
+      S.documentTypeListItem('contactSubmission').title('Contact Submissions').icon(() => '📬'),
     ]);
 
 function singletonPageItem(S: StructureBuilder, label: string, pageId: string, icon: string) {
