@@ -9,6 +9,7 @@ const caseStudies: Record<string, {
   team: string[];
   industry: string;
   timeline: string;
+  video: string;
   about: string;
   challenges: { title: string; body: string }[];
   solutions: { title: string; body: string }[];
@@ -21,6 +22,7 @@ const caseStudies: Record<string, {
     team: ['Axis Bank', 'Wugweb'],
     industry: 'Fintech',
     timeline: '2022',
+    video: '/assets/work/axis-bank/axis-about.mp4',
     about: 'Axis Bank partnered with Wugweb to redesign their savings account platform, transforming the traditional banking experience into a modern, intuitive digital journey that drives customer loyalty and acquisition.',
     challenges: [
       { title: 'Complex Financial Ecosystem', body: 'The platform needed to integrate multiple account types, interest structures, and banking regulations into a seamless user experience.' },
@@ -45,6 +47,7 @@ const caseStudies: Record<string, {
     team: ['PMI', 'Wugweb'],
     industry: 'Enterprise',
     timeline: '2022',
+    video: '/assets/work/inkompass/inkompass-about.mp4',
     about: 'Philip Morris International partnered with Wugweb to redesign Inkompass, their global talent management platform, creating an intuitive experience that supports their vision of a smoke-free future through empowered employees.',
     challenges: [
       { title: 'Global Scale', body: 'The platform needed to serve thousands of employees across multiple countries with diverse cultural contexts and languages.' },
@@ -69,6 +72,7 @@ const caseStudies: Record<string, {
     team: ['METCRED', 'Wugweb'],
     industry: 'Fintech',
     timeline: '2022',
+    video: '/assets/work/metcred/metcred-about.mp4',
     about: 'METCRED, a pioneering neobank, partnered with Wugweb to design their zero-fee mobile banking experience — creating an avant-garde financial platform that challenges traditional banking conventions.',
     challenges: [
       { title: 'Zero-Fee Value Proposition', body: 'Communicating the value of a fee-free banking model while ensuring sustainable revenue through premium features.' },
@@ -93,6 +97,7 @@ const caseStudies: Record<string, {
     team: ['Airtel', 'Wugweb'],
     industry: 'Telecommunications',
     timeline: '2022',
+    video: '/assets/work/airtel-xsafe/xsafe-about.mp4',
     about: 'Airtel partnered with Wugweb to design Xsafe, a smart home security platform that makes protecting your home as intuitive as it is effective — combining IoT technology with human-centered design.',
     challenges: [
       { title: 'IoT Complexity', body: 'Connecting multiple device types (cameras, sensors, alarms) into a single cohesive experience required careful information architecture.' },
@@ -117,6 +122,7 @@ const caseStudies: Record<string, {
     team: ['Aditya Birla Capital', 'Experian', 'Wugweb'],
     industry: 'Fintech',
     timeline: '2022',
+    video: '/assets/work/aditya-birla-capital/abc-about.mp4',
     about: 'Aditya Birla Capital, in partnership with Experian, undertook a project to develop a consumer-facing digital tool for instant credit score checking and comprehensive financial literacy. The platform was designed to transform the traditionally complex process of credit reporting into an accessible, confidence-inspiring consumer journey.',
     challenges: [
       { title: 'Trust and Transparency', body: 'The UX needed to establish immediate credibility, given the high-stakes nature and sensitivity of personal credit scores and financial data.' },
@@ -142,6 +148,7 @@ const caseStudies: Record<string, {
     team: ['VisiONE', 'Wugweb'],
     industry: 'Enterprise',
     timeline: '2023',
+    video: '/assets/work/visione/visione-about.mp4',
     about: 'VisiONE partnered with Wugweb to build a comprehensive workforce development platform that uses competency-based assessments to help organizations identify, develop, and retain top talent.',
     challenges: [
       { title: 'Complex Assessment Logic', body: 'Building a sophisticated assessment engine that could handle varied competency frameworks and scoring models.' },
@@ -163,6 +170,7 @@ const caseStudies: Record<string, {
     team: ['IndusInd Bank', 'Wugweb'],
     industry: 'Fintech',
     timeline: '2023',
+    video: '/assets/work/indusind-bank/indusninja-about.mp4',
     about: 'IndusInd Bank partnered with Wugweb to create IndusNinja, an AI-powered financial assistant that helps users manage their finances with intelligence, speed, and precision — like having a financial ninja in your pocket.',
     challenges: [
       { title: 'AI Integration', body: 'Seamlessly integrating AI capabilities into a banking app while maintaining reliability and user trust.' },
@@ -184,6 +192,7 @@ const caseStudies: Record<string, {
     team: ['Sadhan', 'Wugweb'],
     industry: 'Logistics',
     timeline: '2023',
+    video: '/assets/work/sadhan/sadhan-about.mp4',
     about: 'Sadhan partnered with Wugweb to streamline their driver onboarding and lead management processes, creating a digital platform that reduces friction and accelerates time-to-productivity for new drivers.',
     challenges: [
       { title: 'Paper-Based Processes', body: 'Legacy onboarding relied on manual paperwork, causing delays and errors in driver verification.' },
@@ -235,6 +244,10 @@ const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice
         <div><span class="meta-label">Timeline</span><span>{work.timeline}</span></div>
       </div>
     </div>
+  </section>
+
+  <section class="wrap work-detail-media">
+    <video autoplay muted loop playsinline src={work.video}></video>
   </section>
 
   <section class="wrap section">
@@ -297,6 +310,20 @@ const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice
   .work-detail-hero h1 { font-size: var(--t-h2); margin-top: 1rem; max-width: 20ch; }
   .work-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; max-width: 600px; }
   .meta-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); text-transform: uppercase; margin-bottom: 0.25rem; }
+
+  /* Case studies had zero imagery — pure text — until this. Real "about"
+     footage per client, sourced from the Notion asset sheet / local bundle,
+     not a placeholder. */
+  .work-detail-media { padding-bottom: 4rem; }
+  .work-detail-media video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--r-lg);
+    display: block;
+    background: var(--surface);
+  }
+
   .section { padding-block: 4rem; border-bottom: 1px solid var(--line); }
   .section h2 { font-size: var(--t-h3); margin-bottom: 1.5rem; }
   .section p { max-width: 60ch; line-height: 1.7; color: var(--fg-muted); }

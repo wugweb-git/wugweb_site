@@ -152,8 +152,50 @@ only page-level block inventory so far.
 
 Done since: **`/contact-us`** (see D-13; form structure otherwise matches live —
 ours uses multi-select checkboxes for interests where live uses a single-select radio,
-kept as an improvement) and **`/faq`** (10 items each; live's are all Brand & Strategy
-questions, ours span every service — kept as an improvement).
+kept as an improvement), **`/faq`** (10 items each; live's are all Brand & Strategy
+questions, ours span every service — kept as an improvement), **`/footer/subscription`**
+(confirmed genuine stub, matches `CLAUDE.md`'s own note — deliberate, not a bug),
+**`/404`** (working tic-tac-toe easter egg, functional, no fix needed), **legal pages**
+(footer link labels verified verbatim against the saved capture: "Terms of Use" not
+"Terms of Service", "Refund Policy" — ours match exactly), and **work detail** (see
+D-17). Blog detail still open.
+
+## ⚠️ Live site unreachable mid-audit
+
+**wugweb.com's TLS certificate expired 2026-06-21** — confirmed independently via
+`openssl s_client` and `curl`, not a tool glitch. The site is still serving HTTP 200
+behind it, but every browser and every fetch tool refuses the connection with a hard
+security error. This blocked live-browser diffing for the remainder of this pass;
+the rest of Phase 1 fell back to the saved `reference/*.html` captures and the Notion
+taxonomy where those covered the page in question. **This is a live production issue,
+unrelated to the rebuild — flagged directly to the client outside this doc; needs
+renewing independent of everything else here.** Resume live-browser diffing once
+fixed (remaining: 1280px pass on already-diffed pages, blog detail at all widths).
+
+---
+
+## ✅ Fixed (continued)
+
+### D-17 — Case study detail pages had zero imagery · **major** · `/work/[slug]`
+All 8 case study pages were pure text — About/Challenges/Solutions/Impact prose, no
+hero media at all (`videos: 0, imgs: 0` at 1280px). A case study with no visual proof
+of the work reads as thin, especially next to a homepage/work-index that's
+video-heavy.
+
+The Notion Asset Sheet had the fix already sitting there: every client folder has an
+`_about.mp4` (`Usage: "About"`) alongside its `_thumb.mp4`, present locally in
+`wugweb-assets/` for all 8 clients we have detail pages for. Not a placeholder — the
+client's own footage, just never wired in.
+
+**Fix:** copied all 8 `_about.mp4` files into `public/assets/work/<client>/`
+(URL-safe names, ~39MB total, largest 3.2MB), added a `video` field to each case
+study's data object, and rendered it as a 16:9 hero clip between the meta block and
+the About section.
+
+Verified: all 8 slugs return 200 with the correct `<video src>`, decode in-browser
+(`videoWidth`/`videoHeight` populated, e.g. Axis 1080×600, Sadhan 1600×1000), render
+at 1104×621 (1280px) and 327×184 (375px) with 16px radius, zero horizontal overflow
+at either width.
 
 ---
 
