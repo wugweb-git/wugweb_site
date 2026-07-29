@@ -1,0 +1,3150 @@
+[
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "",
+    "Brand Name": "Adneto",
+    "Entity Type": "Organization",
+    "Year First Worked": null,
+    "Engagement": "Direct",
+    "Slug": "",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-81b0-83b9-f40db77bc513",
+      "395bb710-b9ab-81b6-9710-c596ee26ec2a"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Added 2026-07-21: CMS listed \"Adento\"/\"Adneto\" as Client on Gratify and Adneto Website Showcase case studies; no matching record existed. Created as distinct from Bankco (separate client) per explicit confirmation.",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Legacy / Completed",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": false,
+    "Client ID": "CLI-0105"
+  },
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "",
+    "Brand Name": "Niprotech",
+    "Entity Type": "Organization",
+    "Year First Worked": null,
+    "Engagement": "Direct",
+    "Slug": "",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Found via Dubai 2026 Deliverables (SIM activation, active ops).",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": null,
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": false,
+    "Client ID": "CLI-NIPROTECH"
+  },
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "",
+    "Brand Name": "Vishwasar Network",
+    "Entity Type": "Organization",
+    "Year First Worked": null,
+    "Engagement": "Partner",
+    "Slug": "",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Partnership/opportunity discussions (multiple brands incl. a large coffee brand) — per Dubai 2026 Deliverables, ongoing, not yet converted.",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": null,
+    "Status": "Prospect",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": false,
+    "Client ID": "CLI-VISHWASAR"
+  },
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "",
+    "Brand Name": "Vedanshu Srivastava",
+    "Entity Type": "Individual",
+    "Year First Worked": null,
+    "Engagement": "Direct",
+    "Slug": "",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Wugweb owner/founder — also tracked as an individual client for personal brand, consulting, and independent work outside Wugweb. Treated as both client and internal owner.",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": null,
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": false,
+    "Client ID": "CLI-VEDANSHU"
+  },
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "",
+    "Brand Name": "Emerald",
+    "Entity Type": "Brand",
+    "Year First Worked": null,
+    "Engagement": "Direct",
+    "Slug": "",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Sales pipeline / pre-conversion prospect (per Emerald — Client Status Update page, archived). Not yet an active delivery client — do not push into execution-heavy workflows until converted.",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": null,
+    "Status": "Prospect",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": false,
+    "Client ID": "CLI-EMERALD"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8137-a80a-f0725c4fd521"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "",
+    "Brand Name": "Tanishq",
+    "Entity Type": "Brand",
+    "Year First Worked": null,
+    "Engagement": "Direct",
+    "Slug": "tanishq-legacy",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Legacy client, imported from Asana. Design/product work completed. See archived mapping docs for history.",
+    "Industry (legacy select)": "Jewellery",
+    "Blocked by": [],
+    "Portfolio Visibility": null,
+    "Status": "Legacy / Completed",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "Tanishq"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-814c-a298-e53d535d2fff"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "",
+    "Brand Name": "Inkompass",
+    "Entity Type": "Brand",
+    "Year First Worked": null,
+    "Engagement": "Direct",
+    "Slug": "inkompass-legacy",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Legacy client, imported from Asana. Product/UX work completed. See archived mapping docs for history.",
+    "Industry (legacy select)": "Internship Program",
+    "Blocked by": [],
+    "Portfolio Visibility": null,
+    "Status": "Legacy / Completed",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "Inkompass"
+  },
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "",
+    "Brand Name": "",
+    "Entity Type": null,
+    "Year First Worked": null,
+    "Engagement": null,
+    "Slug": "",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": null,
+    "Status": null,
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": false,
+    "Client ID": "Clients"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a7-b66c-cf62f090ded6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "Google",
+    "Brand Name": "YouTube Ads",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "youtube-ads",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Platform",
+    "Industry (legacy select)": "Advertising",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0103"
+  },
+  {
+    "Industry": [
+      "33cbb710-b9ab-80b4-b154-c70964ed2a8a"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Witty Vegan",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "witty-vegan",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Food & Beverage",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0102"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8151-9e5f-d28f99c38456"
+    ],
+    "Country": [],
+    "Parent Client": "—",
+    "Brand Name": "Wave",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Direct",
+    "Slug": "wave",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Demo / Pitch",
+    "Industry (legacy select)": "Technology",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0101"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8119-b103-dd21fcf779e9"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Vishwas Khot",
+    "Entity Type": "Individual",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "vishwas-khot",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Individual",
+    "Industry (legacy select)": "Consulting",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0100"
+  },
+  {
+    "Industry": [
+      "33cbb710-b9ab-809e-b352-d375083a17d5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "UniquePe",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "uniquepe",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "FinTech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0099"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8190-9e08-fc7f609217c7"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Tyroo",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "tyroo",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Advertising Technology",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0098"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8154-a218-c1c36a8def4d"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "TravoTales",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "travotales",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Travel",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0097"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81ed-b9be-f384b4453802"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-81c3-8160-d1f417852951"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "TOT",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "tot",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-8136-9859-ce9ec9d81e3d"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Telecommunications",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Thailand",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0095"
+  },
+  {
+    "Industry": [
+      "33cbb710-b9ab-80b4-b154-c70964ed2a8a"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "The Tipplers",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "the-tipplers",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Food & Beverage",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0094"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d7-9cb1-c2df6a716014"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Leo Burnett",
+    "Brand Name": "Tata Sonnets",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "tata-sonnets",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Hospitality",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0093"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8112-9e0e-ce82df247aa5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Suzlon",
+    "Entity Type": "Brand",
+    "Year First Worked": 2026,
+    "Engagement": "Direct",
+    "Slug": "suzlon",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Renewable Energy",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0092"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81b2-9245-d82e6e8653f6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Stayweb",
+    "Entity Type": "Internal Product",
+    "Year First Worked": 2025,
+    "Engagement": "Wugweb X",
+    "Slug": "stayweb",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Internal",
+    "Industry (legacy select)": "Hospitality Tech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0091"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8155-a26b-c32256bb556e"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "SpiceJet",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "spicejet",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Aviation",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0090"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8195-9e47-c980b43d3187"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Solar Group",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "solar-group",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Energy",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0089"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d9-939d-ea8565b9fff6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-811a-919d-e7f671b65c4a"
+    ],
+    "Parent Client": "RAK Chambers",
+    "Brand Name": "RAK SME",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "rak-sme",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Government",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "UAE",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0088"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-816b-a349-c8b5b7e934cd"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-81e1-8f71-f6c65c1eb185"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Philip Morris International",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "philip-morris-international",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-81b3-b883-ce35d4147d6d"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Tobacco",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Switzerland",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0087"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81c7-b896-fc10f4b86ebc"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8123-9205-d1795006c543"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "PharmaDropper",
+    "Entity Type": "Internal Product",
+    "Year First Worked": 2025,
+    "Engagement": "Wugweb X",
+    "Slug": "pharmadropper",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Internal",
+    "Industry (legacy select)": "Healthcare",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Canada",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0086"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81c6-a1d7-faf86a65ce6d"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Paragon",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "paragon",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Retail",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0085"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8123-890d-fcd16729dfe8"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "NSL Petrochem",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "nsl-petrochem",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Manufacturing",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0084"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81c7-b896-fc10f4b86ebc"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-81ce-8ba4-c804d1c7e667"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Nipro",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "nipro",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Healthcare",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Japan",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0083"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8169-bc42-d6e134759cd5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "Keppel Land",
+    "Brand Name": "Marina Bay Atlantis",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Partner",
+    "Slug": "marina-bay-atlantis",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Real Estate",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0082"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a7-b66c-cf62f090ded6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "LinkedIn",
+    "Brand Name": "LinkedIn Ads",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "linkedin-ads",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Platform",
+    "Industry (legacy select)": "Advertising",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0081"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8123-890d-fcd16729dfe8"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-81fc-97f6-f97ea783ea06"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Koung Sheen",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "koung-sheen",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Manufacturing",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Taiwan",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0080"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8161-9d12-c9ceed134822"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Kits by Wugweb",
+    "Entity Type": "Internal Product",
+    "Year First Worked": 2026,
+    "Engagement": "Wugweb X",
+    "Slug": "kits-by-wugweb",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Internal",
+    "Industry (legacy select)": "Design System",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0079"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d6-afda-fd11b54fb9a4"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-811a-919d-e7f671b65c4a"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Kitopi",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "kitopi",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "FoodTech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "UAE",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0078"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a5-9757-f40ed3a2b326"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-817d-a6a4-cb18c5e1d420"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Kia",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "kia",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-81a1-9278-cc877c097067"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Automotive",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "South Korea",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0077"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-816f-b82e-c9291be6c2f1"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "ITC",
+    "Brand Name": "ITC Sunfeast",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "itc-sunfeast",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "FMCG",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0076"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8153-807d-ff67d0f16b74"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "IndusInd Bank",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "indusind-bank",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-81cf-8dbc-de8fba7604dc"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Banking",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0075"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-810c-a797-f9e01867cee6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "iKan",
+    "Entity Type": "Internal Product",
+    "Year First Worked": 2025,
+    "Engagement": "Wugweb X",
+    "Slug": "ikan",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Internal",
+    "Industry (legacy select)": "Mental Health",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0074"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81c6-a1d7-faf86a65ce6d"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-81c8-8d6b-d8e231a2d5cc"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Hammacher Schlemmer",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "hammacher-schlemmer",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Retail",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "United States",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0073"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81e9-8983-cec3edb42b7b"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Gratifi",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "gratifi",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Loyalty",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0072"
+  },
+  {
+    "Industry": [
+      "33cbb710-b9ab-809e-b352-d375083a17d5"
+    ],
+    "Country": [],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Global Trade Finance",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "global-trade-finance",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "FinTech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0071"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8104-9ba6-eab7304a218c"
+    ],
+    "Country": [],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Fuel Media",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "fuel-media",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Media",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0070"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d0-824d-cbde29dba65f"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Faballey",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "faballey",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Fashion",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0069"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81c6-a1d7-faf86a65ce6d"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "FabIndia",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "fabindia",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Retail",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0068"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a7-b66c-cf62f090ded6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Digitas",
+    "Entity Type": "Organization",
+    "Year First Worked": 0,
+    "Engagement": "Partner",
+    "Slug": "digitas",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Advertising",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0067"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8173-93b6-f096c60b126f"
+    ],
+    "Country": [],
+    "Parent Client": "—",
+    "Brand Name": "Cricket",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "cricket",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Sports",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0066"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-817b-aacf-ed0695ce8892"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "ComfortDelGro",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "comfortdelgro",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Transportation",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0065"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d6-afda-fd11b54fb9a4"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Chuckle Chew Byte",
+    "Entity Type": "Internal Product",
+    "Year First Worked": 0,
+    "Engagement": "Wugweb X",
+    "Slug": "chuckle-chew-byte",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Internal",
+    "Industry (legacy select)": "FoodTech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0064"
+  },
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Bridgeway",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "bridgeway",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0063"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8153-807d-ff67d0f16b74"
+    ],
+    "Country": [],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Bankco",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "bankco",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-8167-93c0-d3530b2ba627"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Banking",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0062"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8153-807d-ff67d0f16b74"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Axis Bank",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "axis-bank",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-8191-bed1-fff14c9ca158"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Banking",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0061"
+  },
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Apex",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "apex",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0060"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a7-b66c-cf62f090ded6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "Amazon",
+    "Brand Name": "Amazon Ads",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "amazon-ads",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Platform",
+    "Industry (legacy select)": "Advertising",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0059"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8114-8334-e39847ba2170"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Aditya Birla Capital",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "aditya-birla-capital",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-818e-aba8-c80254592dfd"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Financial Services",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0057"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81f0-a86d-c22b1225de30"
+    ],
+    "Country": [],
+    "Parent Client": "—",
+    "Brand Name": "Labelly",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "labelly",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "SaaS",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0056"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81e0-a0b3-dae65cf8b39e"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-810d-9ec3-cbc85224fda0"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "MPG Talent Solutions",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "mpg-talent-solutions",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "HR Tech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "United Kingdom",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0055"
+  },
+  {
+    "Industry": [
+      "33cbb710-b9ab-8094-b839-ebe260b1a076"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "ST Logistics",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "st-logistics",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Logistics",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0054"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81c7-b896-fc10f4b86ebc"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "EekenLife",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "eekenlife",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Healthcare",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0053"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81f0-a86d-c22b1225de30"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-81c8-8d6b-d8e231a2d5cc"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Prodley",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "prodley",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "SaaS",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "United States",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0052"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d7-9cb1-c2df6a716014"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "ITC Citadel",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "itc-citadel",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Hospitality",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0051"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-817b-aacf-ed0695ce8892"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "SBS Transit",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "sbs-transit",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Transportation",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0050"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81e0-a0b3-dae65cf8b39e"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "VisiOne",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "visione",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-81c1-bfd9-fa3996c69312"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "HR Tech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0049"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8155-a26b-c32256bb556e"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Scoot Crew App",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "scoot-crew-app",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Aviation",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0048"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-817b-aacf-ed0695ce8892"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "SMRT",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "smrt",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Transportation",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0047"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d9-939d-ea8565b9fff6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-811a-919d-e7f671b65c4a"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "RAK Chambers",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "rak-chambers",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Government",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "UAE",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0046"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8153-807d-ff67d0f16b74"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Ing Vysya",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "ing-vysya",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Banking",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0045"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-811f-b549-f0430c16c69b"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Income.SG",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "income-sg",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Insurance",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0044"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81c6-a1d7-faf86a65ce6d"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "NTUC",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "ntuc",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-8111-b179-dc2513768863"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Retail",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0043"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8123-890d-fcd16729dfe8"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "NSL Oil Chem",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "nsl-oil-chem",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Manufacturing",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0042"
+  },
+  {
+    "Industry": [],
+    "Country": [],
+    "Parent Client": "—",
+    "Brand Name": "Sadhan",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "sadhan",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-8181-b540-f195c2043800"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": null,
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0041"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8169-b6ac-d090fd9b200a"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Plufo",
+    "Entity Type": "Internal Product",
+    "Year First Worked": 0,
+    "Engagement": "Wugweb X",
+    "Slug": "plufo",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-81a8-8b7d-de793953f5a9"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Internal",
+    "Industry (legacy select)": "EdTech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0040"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81e0-a0b3-dae65cf8b39e"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Valyu.ai",
+    "Entity Type": "Brand",
+    "Year First Worked": 2021,
+    "Engagement": "Direct",
+    "Slug": "valyu-ai",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-8105-b0bb-ede058c363a7"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "HR Tech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0039"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8109-b26a-f2904f1db16d"
+    ],
+    "Country": [],
+    "Parent Client": "Wugweb",
+    "Brand Name": "ABCD",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "abcd",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Placeholder",
+    "Industry (legacy select)": "Confidential",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0038"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8153-807d-ff67d0f16b74"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Kotak",
+    "Entity Type": "Brand",
+    "Year First Worked": 0,
+    "Engagement": "Direct",
+    "Slug": "kotak",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Banking",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0037"
+  },
+  {
+    "Industry": [
+      "33cbb710-b9ab-809e-b352-d375083a17d5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-811a-919d-e7f671b65c4a"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Finomenal",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Direct",
+    "Slug": "finomenal",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "FinTech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "UAE",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0036"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81ed-b9be-f384b4453802"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Airtel XSafe",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Direct",
+    "Slug": "airtel-xsafe",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-811b-835f-dec004549142"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Telecom",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0035"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8169-bc42-d6e134759cd5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "iCube",
+    "Brand Name": "Raheja Atlantis",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "raheja-atlantis",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Real Estate",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0034"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8169-bc42-d6e134759cd5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "iCube",
+    "Brand Name": "Keppel Land",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "keppel-land",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Real Estate",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0033"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d9-939d-ea8565b9fff6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "iCube",
+    "Brand Name": "SingPass",
+    "Entity Type": "Brand",
+    "Year First Worked": 2023,
+    "Engagement": "Partner",
+    "Slug": "singpass",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Government",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0032"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81ed-b9be-f384b4453802"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Airtel Xstream",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Direct",
+    "Slug": "airtel-xstream",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-81ce-b1ed-d097ea4a5795"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Telecom",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0031"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81ed-b9be-f384b4453802"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-813a-a2b0-c2acb155ce7b"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Tecnotree",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Direct",
+    "Slug": "tecnotree",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Telecom",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Finland",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0030"
+  },
+  {
+    "Industry": [
+      "33cbb710-b9ab-809e-b352-d375083a17d5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Publicis",
+    "Brand Name": "IndusNinja",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "indusninja",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "FinTech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0029"
+  },
+  {
+    "Industry": [
+      "33cbb710-b9ab-809e-b352-d375083a17d5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Metcred",
+    "Entity Type": "Brand",
+    "Year First Worked": 2023,
+    "Engagement": "Direct",
+    "Slug": "metcred",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-817f-827b-e237f0af33aa"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "FinTech",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0028"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81c0-b0eb-ed7fccc36464"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-811a-919d-e7f671b65c4a"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "RideEV",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Direct",
+    "Slug": "rideev",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-8108-a46d-c2b8d7460f91"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Mobility",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "UAE",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0027"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a7-b66c-cf62f090ded6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-811a-919d-e7f671b65c4a"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "Adtech",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Direct",
+    "Slug": "adtech",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Advertising",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "UAE",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0026"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81aa-bfa3-fd4ce35c55b3"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-811a-919d-e7f671b65c4a"
+    ],
+    "Parent Client": "Wugweb",
+    "Brand Name": "FMI",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Direct",
+    "Slug": "fmi",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Education",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "UAE",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0025"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8137-a80a-f0725c4fd521"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "Dentsu Webchutney",
+    "Brand Name": "Tanishq",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "tanishq",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Jewellery",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0024"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-815b-824d-eff381b9e405"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "LeoBurnett",
+    "Brand Name": "WoodKraft",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "woodkraft",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Furniture",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0023"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-811f-b549-f0430c16c69b"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "LeoBurnett",
+    "Brand Name": "Acko",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "acko",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Insurance",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0022"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-813d-9c3a-e23ac14fa9f7"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "LeoBurnett",
+    "Brand Name": "Cartier",
+    "Entity Type": "Brand",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "cartier",
+    "Projects": [],
+    "Live Case Studies": [
+      "395bb710-b9ab-81aa-be0c-c2af7ffe41f6"
+    ],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Luxury",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0021"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8121-943d-cedf57017f21"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "BlueHorse",
+    "Brand Name": "Unfactory",
+    "Entity Type": "Brand",
+    "Year First Worked": 2018,
+    "Engagement": "Partner",
+    "Slug": "unfactory",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Interior Design",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0020"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d7-9cb1-c2df6a716014"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "Fern Hotels",
+    "Entity Type": "Brand",
+    "Year First Worked": 2018,
+    "Engagement": "Full-time",
+    "Slug": "fern-hotels",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Hospitality",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0019"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8137-a80a-f0725c4fd521"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "Bluestone",
+    "Entity Type": "Brand",
+    "Year First Worked": 2017,
+    "Engagement": "Full-time",
+    "Slug": "bluestone",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Jewellery",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0018"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8154-a218-c1c36a8def4d"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "Yatra",
+    "Entity Type": "Brand",
+    "Year First Worked": 2017,
+    "Engagement": "Full-time",
+    "Slug": "yatra",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Travel",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0017"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d7-9cb1-c2df6a716014"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "Hyatt",
+    "Entity Type": "Brand",
+    "Year First Worked": 2017,
+    "Engagement": "Full-time",
+    "Slug": "hyatt",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Hospitality",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0016"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8103-be7e-f1c582ca8a09"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "Sellebrate",
+    "Entity Type": "Brand",
+    "Year First Worked": 2017,
+    "Engagement": "Full-time",
+    "Slug": "sellebrate",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Gift Cards",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0015"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-814c-a298-e53d535d2fff"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8156-ac6d-dffabc22a79e"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "Inkompass",
+    "Entity Type": "Brand",
+    "Year First Worked": 2018,
+    "Engagement": "Full-time",
+    "Slug": "inkompass",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "PMI",
+    "Industry (legacy select)": "Internship Program",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Global",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0014"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8156-ab21-c6505c76465b"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "Bata",
+    "Entity Type": "Brand",
+    "Year First Worked": 2017,
+    "Engagement": "Full-time",
+    "Slug": "bata",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Footwear",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0013"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8158-8254-f3c005496ff6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "PVR Cinemas",
+    "Entity Type": "Brand",
+    "Year First Worked": 2017,
+    "Engagement": "Full-time",
+    "Slug": "pvr-cinemas",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Entertainment",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0012"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81ee-8b0e-fc4c6b3da972"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "EasyRewardz",
+    "Brand Name": "Bodyshop",
+    "Entity Type": "Brand",
+    "Year First Worked": 2017,
+    "Engagement": "Full-time",
+    "Slug": "bodyshop",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Retail / Beauty",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0011"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-816a-91e9-cfd311507559"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "RedTones",
+    "Entity Type": "Organization",
+    "Year First Worked": 2023,
+    "Engagement": "Partner",
+    "Slug": "redtones",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Creative Agency",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0010"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8119-a6d9-c165a00f4c1e"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-81e6-844d-d93509b35db2"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Comexposium",
+    "Entity Type": "Organization",
+    "Year First Worked": 0,
+    "Engagement": "Partner",
+    "Slug": "comexposium",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Events",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "France",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0009"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8184-97fd-f156bbf30170"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "BlueHorse",
+    "Entity Type": "Organization",
+    "Year First Worked": 2018,
+    "Engagement": "Partner",
+    "Slug": "bluehorse",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Digital Agency",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0008"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8151-9e5f-d28f99c38456"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Emporiom",
+    "Entity Type": "Organization",
+    "Year First Worked": 2023,
+    "Engagement": "Partner",
+    "Slug": "emporiom",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Technology",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0007"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8184-97fd-f156bbf30170"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-8196-8d05-f8fab5d954c4"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "iCube",
+    "Entity Type": "Organization",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "icube",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Digital Agency",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "Singapore",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0006"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a7-b66c-cf62f090ded6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Dentsu Webchutney",
+    "Entity Type": "Organization",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "dentsu-webchutney",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Advertising",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0005"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a7-b66c-cf62f090ded6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Publicis",
+    "Entity Type": "Organization",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "publicis",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Advertising",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0004"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81a7-b66c-cf62f090ded6"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "LeoBurnett",
+    "Entity Type": "Organization",
+    "Year First Worked": 2022,
+    "Engagement": "Partner",
+    "Slug": "leo-burnett",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "",
+    "Industry (legacy select)": "Advertising",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0003"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-8137-85fb-dc07c66ec1a5"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-811a-919d-e7f671b65c4a"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "Wugweb",
+    "Entity Type": "Organization",
+    "Year First Worked": 2021,
+    "Engagement": "Direct",
+    "Slug": "wugweb",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Company",
+    "Industry (legacy select)": "Design & Technology",
+    "Blocked by": [],
+    "Portfolio Visibility": "Both",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "UAE",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0002"
+  },
+  {
+    "Industry": [
+      "3a4bb710-b9ab-81d9-b195-d89e2eff081f"
+    ],
+    "Country": [
+      "3a4bb710-b9ab-814c-8757-f8d629e8e692"
+    ],
+    "Parent Client": "—",
+    "Brand Name": "EasyRewardz",
+    "Entity Type": "Organization",
+    "Year First Worked": 2017,
+    "Engagement": "Full-time",
+    "Slug": "easyrewardz",
+    "Projects": [],
+    "Live Case Studies": [],
+    "Case Studies": [],
+    "Website": "",
+    "Notes": "Employer",
+    "Industry (legacy select)": "Loyalty / SaaS",
+    "Blocked by": [],
+    "Portfolio Visibility": "Vedanshu",
+    "Status": "Active",
+    "Blocking": [],
+    "Country (legacy text)": "India",
+    "Logo": "",
+    "Date": null,
+    "NDA": true,
+    "Client ID": "CLI-0001"
+  }
+]

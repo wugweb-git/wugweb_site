@@ -4,7 +4,26 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
   S.list()
     .title('Content')
     .items([
-      // Singleton pages — each is a single document
+      // ── Dashboard ──
+      S.listItem()
+        .title('Dashboard')
+        .icon(() => '📊')
+        .child(
+          S.list()
+            .title('Dashboard')
+            .items([
+              S.listItem()
+                .title('Sync Status')
+                .icon(() => '🔄')
+                .child(
+                  S.documentList()
+                    .title('Sync Status')
+                    .schemaType('syncStatus')
+                    .filter('_type == "syncStatus"')
+                ),
+            ])
+        ),
+
       S.listItem()
         .title('Site Settings')
         .icon(() => '⚙️')
@@ -13,6 +32,7 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
         ),
       S.divider(),
 
+      // ── Pages ──
       S.listItem()
         .title('Pages')
         .icon(() => '📄')
@@ -37,13 +57,44 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
         ),
       S.divider(),
 
-      // Collections
+      // ── Content Collections ──
       S.documentTypeListItem('caseStudy').title('Case Studies').icon(() => '💼'),
       S.documentTypeListItem('post').title('Blog Posts').icon(() => '✍️'),
       S.documentTypeListItem('service').title('Services').icon(() => '🛠️'),
-      S.documentTypeListItem('person').title('Team').icon(() => '👥'),
+      S.divider(),
+
+      // ── Taxonomy ──
+      S.listItem()
+        .title('Taxonomy')
+        .icon(() => '🏷️')
+        .child(
+          S.list()
+            .title('Taxonomy')
+            .items([
+              S.documentTypeListItem('industry').title('Industries').icon(() => '🏭'),
+              S.documentTypeListItem('taxonomy').title('Taxonomy Terms').icon(() => '📋'),
+            ])
+        ),
+
+      // ── CRM ──
+      S.listItem()
+        .title('CRM')
+        .icon(() => '🤝')
+        .child(
+          S.list()
+            .title('CRM')
+            .items([
+              S.documentTypeListItem('client').title('Clients').icon(() => '🏢'),
+              S.documentTypeListItem('engagement').title('Engagements').icon(() => '📋'),
+              S.documentTypeListItem('person').title('Team / People').icon(() => '👥'),
+            ])
+        ),
+
       S.divider(),
       S.documentTypeListItem('contactSubmission').title('Contact Submissions').icon(() => '📬'),
+
+      // ── Assets ──
+      S.documentTypeListItem('asset').title('Assets').icon(() => '🖼️'),
     ]);
 
 function singletonPageItem(S: StructureBuilder, label: string, pageId: string, icon: string) {
@@ -54,6 +105,6 @@ function singletonPageItem(S: StructureBuilder, label: string, pageId: string, i
       S.document()
         .schemaType('singletonPage')
         .documentId(pageId)
-        .documentTitle(label),
+        .title(label),
     );
 }

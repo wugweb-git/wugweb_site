@@ -22,6 +22,10 @@ export default defineType({
     }),
     defineField({ name: 'contactEmail', title: 'Contact Email', type: 'string' }),
     defineField({ name: 'companyName', title: 'Company Name', type: 'string' }),
+
+    // ── Sync (hidden, auto-managed) ──
+    defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
+    defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
   preview: { select: { title: 'siteTitle' } },
 });

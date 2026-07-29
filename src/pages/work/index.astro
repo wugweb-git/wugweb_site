@@ -1,26 +1,27 @@
 ---
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { caseStudiesListQuery } from '../../lib/queries';
 
-const categories = ['All', 'Design', 'Tech', 'AI', 'Martech', 'Strategy'];
+const caseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+const categories = ['All', ...new Set(caseStudies.flatMap((cs: any) => cs.disciplines || []).filter(Boolean))];
+if (categories.length <= 1) categories.push('Design', 'UX Design', 'Strategy', 'Development');
 
-const workItems = [
-  { client: 'Axis Bank', category: 'Strategy, UX Design', title: 'The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform', slug: 'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform', video: '/assets/work/axis-bank/axis-thumb.mp4' },
-  { client: 'Philip Morris International', category: 'UX Design', title: 'Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future', slug: 'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future', video: '/assets/work/inkompass/inkompass-thumb.mp4' },
-  { client: 'METCRED', category: 'UX Design, Strategy', title: 'The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience', slug: 'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience', video: '/assets/work/metcred/metcred-thumb.mp4' },
-  { client: 'Airtel', category: 'UX Design', title: 'Airtel Xsafe – Securing Homes with Intuitive Digital Experiences', slug: 'airtel-xsafe-securing-homes-with-intuitive-digital-experiences', video: '/assets/work/airtel-xsafe/xsafe-thumb.mp4' },
-  { client: 'Aditya Birla Capital', category: 'UX Design', title: "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool", slug: 'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool', video: '/assets/work/aditya-birla-capital/abc-thumb.mp4' },
-  { client: 'VisiONE', category: 'UX Design', title: 'VisiONE – Empowering Workforce Development with Competency-Based Assessments', slug: 'visione-empowering-workforce-development-with-competency-based-assessments', video: '/assets/work/visione/visione-thumb.mp4' },
-  { client: 'IndusInd Bank', category: 'UX Design', title: 'IndusNinja – Your AI-Powered Financial Ninja', slug: 'indusninja-your-ai-powered-financial-ninja', video: '/assets/work/indusind-bank/indusninja-thumb.mp4' },
-  { client: 'Sadhan', category: 'UX Design, Strategy', title: 'Sadhan – Streamlining Driver Onboarding & Lead Management', slug: 'sadhan-streamlining-driver-onboarding-lead-management', video: '/assets/work/sadhan/sadhan-thumb.mp4' },
-];
+const workItems = caseStudies.map((cs: any) => ({
+  client: cs.client || '',
+  category: (cs.disciplines || []).join(', ') || 'UX Design',
+  title: cs.title,
+  slug: cs.slug,
+  video: `/assets/work/${cs.slug?.replace(/^.*?(\w+)/, '$1') || ''}-thumb.mp4`,
+}));
 ---
 
 <BaseLayout title="Work" description="Clients – Wugweb | Trusted by Innovative Brands">
   <section class="work-hero">
     <div class="wrap work-hero-content">
       <p class="eyebrow" data-reveal>What We've Built</p>
-      <h1 data-reveal>We create digital solutions that are as functional as they are beautiful. From intuitive interfaces and strong brand systems to enterprise platforms, every project is designed to solve real problems and deliver real impact.</h1>
+      <h1 data-reveal>We create digital solutions that are as functional as they are beautiful.</h1>
     </div>
   </section>
 
@@ -35,7 +36,7 @@ const workItems = [
       {workItems.map((w) => (
         <li data-reveal data-categories={w.category}>
           <a href={`/work/${w.slug}`}>
-            <video autoplay muted loop playsinline src={w.video}></video>
+            <div class="work-placeholder" style="width:100%;aspect-ratio:16/10;background:var(--surface-2);border-radius:var(--r-2);display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-family:var(--font-mono);font-size:0.75rem;">{w.client}</div>
             <p class="work-client">{w.client} — {w.category}</p>
             <h3>{w.title}</h3>
           </a>
@@ -43,46 +44,31 @@ const workItems = [
       ))}
     </ul>
   </section>
-
 </BaseLayout>
 
 <style>
   .work-hero { padding-block: 8rem 4rem; }
   .work-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-top: 1rem; }
   .work-grid-section { padding-block: 4rem 6rem; border-top: 1px solid var(--line); }
-  .work-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; }
+  .work-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
   .work-grid a { text-decoration: none; display: block; }
-  .work-grid video { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r); }
-  .work-client { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); margin-top: 1rem; }
+  .work-client { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); margin-top: var(--gap-4); }
   .work-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: 0.4rem; }
-  .work-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; padding-block: 2rem; border-top: 1px solid var(--line); }
+  .work-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
   .filter-chip { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.5rem 1rem; border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
   .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 190, 26, 0.1); }
   .work-grid li.hidden { display: none; }
-  .blog-teaser { padding-block: 6rem; border-top: 1px solid var(--line); }
-  .teaser-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; }
-  .teaser-head h2 { font-size: var(--t-h3); max-width: 18ch; }
-  .blog-teaser ul { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; gap: 1.5rem; }
-  @media (min-width: 768px) { .blog-teaser ul { grid-template-columns: repeat(3, 1fr); } }
-  .blog-teaser li { border-top: 1px solid var(--line); padding-top: 1.25rem; }
-  .blog-teaser .eyebrow { display: block; margin-bottom: 0.5rem; }
-  .blog-teaser a { text-decoration: none; color: var(--fg); font-size: 1.1rem; }
-  .closing-cta { padding-block: 6rem; border-top: 1px solid var(--line); text-align: center; }
-  .closing-cta h2 { font-size: var(--t-h2); }
-  .closing-cta p { margin-top: 1rem; }
-  .closing-cta .btn { margin-top: 2rem; }
 </style>
 
 <script>
   import { animate, inView } from 'motion';
   animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.work-grid li, .blog-teaser li', (el) => {
+  inView('.work-grid li', (el) => {
     animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, easing: 'ease-out' });
   });
 
-  // Filter chips
   document.querySelectorAll('.filter-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       const cat = chip.dataset.category;
@@ -97,6 +83,5 @@ const workItems = [
       });
     });
   });
-  // Activate first chip
   document.querySelector('.filter-chip')?.classList.add('active');
 </script>

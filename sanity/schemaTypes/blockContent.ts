@@ -85,6 +85,15 @@ export const video = defineType({
   preview: { select: { title: 'caption', subtitle: 'url' } },
 });
 
+export const codeBlock = defineType({
+  name: 'code', title: 'Code Block', type: 'object',
+  fields: [
+    { name: 'language', type: 'string', options: { list: ['JavaScript', 'TypeScript', 'Python', 'CSS', 'HTML', 'SQL', 'Bash', 'JSON', 'Other'] } },
+    { name: 'code', type: 'text', rows: 8, title: 'Code' },
+  ],
+  preview: { select: { title: 'language', subtitle: 'code' } },
+});
+
 export const twoColumns = defineType({
   name: 'twoColumns', title: 'Two Columns', type: 'object',
   fields: [

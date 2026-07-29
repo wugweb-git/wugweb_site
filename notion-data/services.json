@@ -1,0 +1,175 @@
+[
+  {
+    "Status": "Active",
+    "Slug": "digital-transformation",
+    "Icon": "transform",
+    "Description": "Digital transformation strategy, innovation consulting and enterprise modernization.",
+    "Case Studies": [],
+    "Sub Services": [
+      "395bb710-b9ab-8190-865d-f1f4377d1e71",
+      "395bb710-b9ab-81f3-af26-ea0aa6c7043d",
+      "395bb710-b9ab-8182-9726-e883fea7ea0d",
+      "395bb710-b9ab-8185-976f-f0ce898568dc",
+      "395bb710-b9ab-81d3-a718-c8971da76295"
+    ],
+    "Name": "Digital Transformation",
+    "Parent Service ID": "PS-008"
+  },
+  {
+    "Status": "Active",
+    "Slug": "cloud-infrastructure",
+    "Icon": "cloud",
+    "Description": "Cloud architecture, DevOps, hosting, deployment, security and platform reliability.",
+    "Case Studies": [],
+    "Sub Services": [
+      "395bb710-b9ab-810c-9b2f-c972c59da4a5",
+      "395bb710-b9ab-81e2-b48f-cd4ef343e37c",
+      "395bb710-b9ab-8163-8da6-e458eee68171",
+      "395bb710-b9ab-8159-9656-d07b64718f5f",
+      "395bb710-b9ab-819e-aed9-e3a35b9ddf9d"
+    ],
+    "Name": "Cloud & Infrastructure",
+    "Parent Service ID": "PS-007"
+  },
+  {
+    "Status": "Active",
+    "Slug": "data-analytics",
+    "Icon": "chart",
+    "Description": "Analytics, business intelligence, reporting, dashboards and data engineering.",
+    "Case Studies": [],
+    "Sub Services": [
+      "395bb710-b9ab-81ea-945e-d302add1c15e",
+      "395bb710-b9ab-812a-8adf-fbec7df71378",
+      "395bb710-b9ab-81cb-9381-e9585c61e233",
+      "395bb710-b9ab-815c-b35f-ec4ea78c64a9",
+      "395bb710-b9ab-81e0-ad4d-cb0956e6b89d"
+    ],
+    "Name": "Data & Analytics",
+    "Parent Service ID": "PS-006"
+  },
+  {
+    "Status": "Active",
+    "Slug": "ai-intelligent-systems",
+    "Icon": "sparkles",
+    "Description": "AI strategy, AI agents, workflow automation, LLM solutions and intelligent products.",
+    "Case Studies": [],
+    "Sub Services": [
+      "395bb710-b9ab-81f7-8a73-f501a07f0db9",
+      "395bb710-b9ab-8197-be94-de6b1056314b",
+      "395bb710-b9ab-81f6-9d00-e5344c3f75bb",
+      "395bb710-b9ab-81b9-ba0b-da2547400034",
+      "395bb710-b9ab-81e4-a49a-d88146eb05e0",
+      "395bb710-b9ab-8153-ad05-cf39e86e0a46"
+    ],
+    "Name": "AI & Intelligent Systems",
+    "Parent Service ID": "PS-005"
+  },
+  {
+    "Status": "Active",
+    "Slug": "web-app-development",
+    "Icon": "code",
+    "Description": "Websites, web applications, mobile apps, APIs and custom software engineering.",
+    "Case Studies": [
+      "395bb710-b9ab-8136-9859-ce9ec9d81e3d",
+      "395bb710-b9ab-81b0-83b9-f40db77bc513"
+    ],
+    "Sub Services": [
+      "395bb710-b9ab-8190-ac0b-f7dcdd88eecc",
+      "395bb710-b9ab-818b-bf50-ded3476f126e",
+      "395bb710-b9ab-8137-9bdf-d977c1e01e46",
+      "395bb710-b9ab-81b2-8fc0-f7b11cbc7a64",
+      "395bb710-b9ab-81a3-8b19-db79f367105b",
+      "395bb710-b9ab-81ef-8c6d-dcd1b970ccc4",
+      "395bb710-b9ab-8177-a784-ce497c843912",
+      "395bb710-b9ab-8172-9971-d5dd2ac280be",
+      "395bb710-b9ab-8116-903d-e1ff9dff253d",
+      "395bb710-b9ab-8188-b89b-cd02b9514ab9",
+      "395bb710-b9ab-8155-8cfa-d38a5094df2f",
+      "395bb710-b9ab-8119-a1e0-d4b9a14cc841"
+    ],
+    "Name": "Web & App Development",
+    "Parent Service ID": "PS-004"
+  },
+  {
+    "Status": "Active",
+    "Slug": "growth-marketing",
+    "Icon": "growth",
+    "Description": "SEO, performance marketing, content marketing, CRO and customer acquisition.",
+    "Case Studies": [],
+    "Sub Services": [
+      "395bb710-b9ab-8130-9c4f-c733dcd6b8f1",
+      "395bb710-b9ab-81da-b1c5-f4cb04e4c02a",
+      "395bb710-b9ab-8180-91e8-d958d7634ab0",
+      "395bb710-b9ab-81ad-be1a-db4b2800bafc",
+      "395bb710-b9ab-8143-b2f2-e114d80583c0",
+      "395bb710-b9ab-819d-9abd-f8a5969b210a"
+    ],
+    "Name": "Growth Marketing",
+    "Parent Service ID": "PS-003"
+  },
+  {
+    "Status": "Active",
+    "Slug": "experience-design",
+    "Icon": "experience",
+    "Description": "User experience, interface design, research, design systems and digital product design.",
+    "Case Studies": [
+      "395bb710-b9ab-8105-b0bb-ede058c363a7",
+      "395bb710-b9ab-8108-a46d-c2b8d7460f91",
+      "395bb710-b9ab-8111-b179-dc2513768863",
+      "395bb710-b9ab-811b-835f-dec004549142",
+      "395bb710-b9ab-8136-9859-ce9ec9d81e3d",
+      "395bb710-b9ab-8167-93c0-d3530b2ba627",
+      "395bb710-b9ab-817f-827b-e237f0af33aa",
+      "395bb710-b9ab-8181-b540-f195c2043800",
+      "395bb710-b9ab-818e-aba8-c80254592dfd",
+      "395bb710-b9ab-8191-bed1-fff14c9ca158",
+      "395bb710-b9ab-81a1-9278-cc877c097067",
+      "395bb710-b9ab-81a8-8b7d-de793953f5a9",
+      "395bb710-b9ab-81b0-83b9-f40db77bc513",
+      "395bb710-b9ab-81aa-be0c-c2af7ffe41f6",
+      "395bb710-b9ab-81b3-b883-ce35d4147d6d",
+      "395bb710-b9ab-81b6-9710-c596ee26ec2a",
+      "395bb710-b9ab-81c1-bfd9-fa3996c69312",
+      "395bb710-b9ab-81ce-b1ed-d097ea4a5795",
+      "395bb710-b9ab-81cf-8dbc-de8fba7604dc"
+    ],
+    "Sub Services": [
+      "395bb710-b9ab-81a5-bd97-f552d5efcbdb",
+      "395bb710-b9ab-81b7-8960-ee7c6babf4d0",
+      "395bb710-b9ab-810f-a3e9-ec08cad36913",
+      "395bb710-b9ab-8110-affd-d9a6f0a94a6f",
+      "395bb710-b9ab-8169-8f6d-c21da4dc4625",
+      "395bb710-b9ab-81d6-b96c-dd82f74d1f72",
+      "395bb710-b9ab-8193-9446-e28c2cdb7355",
+      "395bb710-b9ab-815b-aff6-dfb3bb3d4895",
+      "395bb710-b9ab-813c-9616-c4439070fb54"
+    ],
+    "Name": "Experience Design",
+    "Parent Service ID": "PS-002"
+  },
+  {
+    "Status": "Active",
+    "Slug": "brand-strategy",
+    "Icon": "brand",
+    "Description": "Brand positioning, identity systems, messaging, naming and strategic consulting.",
+    "Case Studies": [
+      "395bb710-b9ab-817f-827b-e237f0af33aa",
+      "395bb710-b9ab-8191-bed1-fff14c9ca158",
+      "395bb710-b9ab-81aa-be0c-c2af7ffe41f6",
+      "395bb710-b9ab-81ce-b1ed-d097ea4a5795"
+    ],
+    "Sub Services": [
+      "395bb710-b9ab-81ca-84fb-c27c132388f7",
+      "395bb710-b9ab-81f4-86f5-d2fe4c8c091e",
+      "395bb710-b9ab-81ac-a55d-edb4775562d0",
+      "395bb710-b9ab-81a1-803d-c4619df3433a",
+      "395bb710-b9ab-81cd-ad77-ee139246b99f",
+      "395bb710-b9ab-81db-83f9-ce392a6da040",
+      "395bb710-b9ab-81f6-860b-f900c96b1896",
+      "395bb710-b9ab-8132-8813-febba61dc290",
+      "395bb710-b9ab-8100-ae59-ff8f4fdb3868"
+    ],
+    "Name": "Brand & Strategy",
+    "Parent Service ID": "PS-001"
+  }
+]

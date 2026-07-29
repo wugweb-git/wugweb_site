@@ -1,287 +1,77 @@
 ---
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { caseStudyBySlugQuery, caseStudiesListQuery } from '../../lib/queries';
 
-const caseStudies: Record<string, {
-  title: string;
-  client: string;
-  disciplines: string[];
-  team: string[];
-  industry: string;
-  timeline: string;
-  video: string;
-  about: string;
-  challenges: { title: string; body: string }[];
-  solutions: { title: string; body: string }[];
-  impact: { title: string; body: string }[];
-}> = {
-  'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform': {
-    title: 'The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform',
-    client: 'Axis Bank',
-    disciplines: ['Strategy', 'UX Design'],
-    team: ['Axis Bank', 'Wugweb'],
-    industry: 'Fintech',
-    timeline: '2022',
-    video: '/assets/work/axis-bank/axis-about.mp4',
-    about: 'Axis Bank partnered with Wugweb to redesign their savings account platform, transforming the traditional banking experience into a modern, intuitive digital journey that drives customer loyalty and acquisition.',
-    challenges: [
-      { title: 'Complex Financial Ecosystem', body: 'The platform needed to integrate multiple account types, interest structures, and banking regulations into a seamless user experience.' },
-      { title: 'User Trust in Digital Banking', body: 'Building confidence in fully digital account opening and management required transparent design and clear security signals.' },
-      { title: 'Competitive Differentiation', body: 'Standing out in a crowded fintech market required a unique value proposition and memorable brand experience.' },
-    ],
-    solutions: [
-      { title: 'Human-Centered Information Architecture', body: 'We restructured the platform navigation around user goals rather than banking products, making complex financial concepts accessible.' },
-      { title: 'Trust-Building Visual Design', body: 'Clean typography, consistent security badges, and transparent progress indicators established confidence at every step.' },
-      { title: 'Streamlined Onboarding Flow', body: 'A multi-step guided journey reduced cognitive load while collecting all necessary information, with clear progress indicators and smart defaults.' },
-    ],
-    impact: [
-      { title: 'Increased Account Openings', body: 'The streamlined digital onboarding process led to a significant increase in completed account applications.' },
-      { title: 'Improved User Trust', body: 'Post-launch surveys showed higher confidence in digital banking services among users of the new platform.' },
-      { title: 'Brand Differentiation', body: 'The modern design language set Axis Bank apart from traditional competitors in the digital banking space.' },
-    ],
-  },
-  'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future': {
-    title: 'Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future',
-    client: 'Philip Morris International',
-    disciplines: ['UX Design'],
-    team: ['PMI', 'Wugweb'],
-    industry: 'Enterprise',
-    timeline: '2022',
-    video: '/assets/work/inkompass/inkompass-about.mp4',
-    about: 'Philip Morris International partnered with Wugweb to redesign Inkompass, their global talent management platform, creating an intuitive experience that supports their vision of a smoke-free future through empowered employees.',
-    challenges: [
-      { title: 'Global Scale', body: 'The platform needed to serve thousands of employees across multiple countries with diverse cultural contexts and languages.' },
-      { title: 'Complex Talent Workflows', body: 'Managing performance reviews, career development, and succession planning required a sophisticated yet intuitive interface.' },
-      { title: 'Change Management', body: 'Transitioning from legacy systems to a modern platform required careful UX to ensure user adoption across all levels.' },
-    ],
-    solutions: [
-      { title: 'Unified Dashboard Experience', body: 'A personalized dashboard gave employees and managers at-a-glance access to their most important tasks and metrics.' },
-      { title: 'Simplified Performance Reviews', body: 'We redesigned the review process with guided steps, smart templates, and real-time feedback to reduce administrative burden.' },
-      { title: 'Career Development Pathways', body: 'Visual career mapping tools helped employees understand growth opportunities and the skills needed to advance.' },
-    ],
-    impact: [
-      { title: 'Higher Engagement', body: 'User adoption rates increased significantly post-launch, with employees spending more time on development activities.' },
-      { title: 'Reduced Admin Time', body: 'Managers reported spending less time on administrative tasks and more on meaningful development conversations.' },
-      { title: 'Global Standardization', body: 'The unified platform ensured consistent talent processes across all regions while allowing for local flexibility.' },
-    ],
-  },
-  'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience': {
-    title: 'The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience',
-    client: 'METCRED',
-    disciplines: ['UX Design', 'Strategy'],
-    team: ['METCRED', 'Wugweb'],
-    industry: 'Fintech',
-    timeline: '2022',
-    video: '/assets/work/metcred/metcred-about.mp4',
-    about: 'METCRED, a pioneering neobank, partnered with Wugweb to design their zero-fee mobile banking experience — creating an avant-garde financial platform that challenges traditional banking conventions.',
-    challenges: [
-      { title: 'Zero-Fee Value Proposition', body: 'Communicating the value of a fee-free banking model while ensuring sustainable revenue through premium features.' },
-      { title: 'First-Time Banking Users', body: 'The platform needed to serve users new to digital banking with an intuitive, educational onboarding experience.' },
-      { title: 'Regulatory Compliance', body: 'Navigating financial regulations while maintaining a sleek, modern user experience required careful design decisions.' },
-    ],
-    solutions: [
-      { title: 'Conversational Onboarding', body: 'A chat-like onboarding flow guided users through account setup with natural language and contextual help.' },
-      { title: 'Transparent Fee Dashboard', body: 'A real-time dashboard showed users exactly what they were saving compared to traditional banks, reinforcing the value proposition.' },
-      { title: 'Smart Spending Insights', body: 'AI-powered spending categorization and personalized financial insights helped users make better money decisions.' },
-    ],
-    impact: [
-      { title: 'Rapid User Growth', body: 'The intuitive onboarding and compelling value proposition drove rapid user acquisition in the competitive neobank market.' },
-      { title: 'High Retention Rates', body: 'Users cited the transparent fee structure and smart insights as key reasons for staying with METCRED.' },
-      { title: 'Industry Recognition', body: 'The innovative design approach earned METCRED recognition as a disruptor in digital banking.' },
-    ],
-  },
-  'airtel-xsafe-securing-homes-with-intuitive-digital-experiences': {
-    title: 'Airtel Xsafe – Securing Homes with Intuitive Digital Experiences',
-    client: 'Airtel',
-    disciplines: ['UX Design'],
-    team: ['Airtel', 'Wugweb'],
-    industry: 'Telecommunications',
-    timeline: '2022',
-    video: '/assets/work/airtel-xsafe/xsafe-about.mp4',
-    about: 'Airtel partnered with Wugweb to design Xsafe, a smart home security platform that makes protecting your home as intuitive as it is effective — combining IoT technology with human-centered design.',
-    challenges: [
-      { title: 'IoT Complexity', body: 'Connecting multiple device types (cameras, sensors, alarms) into a single cohesive experience required careful information architecture.' },
-      { title: 'Real-Time Reliability', body: 'The platform needed to deliver real-time notifications and live video streams with minimal latency, demanding performance-optimized design.' },
-      { title: 'User Trust and Privacy', body: 'Home security involves sensitive data — earning user trust through transparent privacy controls was essential.' },
-    ],
-    solutions: [
-      { title: 'Unified Device Hub', body: 'A single dashboard managed all connected devices with intuitive controls for arming, monitoring, and configuring the security system.' },
-      { title: 'Smart Alert System', body: 'Contextual notifications with video previews helped users quickly assess and respond to events without opening the app.' },
-      { title: 'Privacy-First Design', body: 'Granular privacy settings and clear camera indicators ensured users always knew when and what was being recorded.' },
-    ],
-    impact: [
-      { title: 'Market Leadership', body: 'Xsafe quickly became one of the leading smart home security solutions in the Indian market.' },
-      { title: 'High User Satisfaction', body: 'The intuitive interface and reliable performance earned high ratings and positive user reviews.' },
-      { title: 'Reduced Support Calls', body: 'The self-explanatory design significantly reduced customer support inquiries related to setup and daily use.' },
-    ],
-  },
-  'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool': {
-    title: 'Demystifying Finance: Crafting the UX for Aditya Birla Capital Credit Score Tool',
-    client: 'Aditya Birla Capital',
-    disciplines: ['UX Design'],
-    team: ['Aditya Birla Capital', 'Experian', 'Wugweb'],
-    industry: 'Fintech',
-    timeline: '2022',
-    video: '/assets/work/aditya-birla-capital/abc-about.mp4',
-    about: 'Aditya Birla Capital, in partnership with Experian, undertook a project to develop a consumer-facing digital tool for instant credit score checking and comprehensive financial literacy. The platform was designed to transform the traditionally complex process of credit reporting into an accessible, confidence-inspiring consumer journey.',
-    challenges: [
-      { title: 'Trust and Transparency', body: 'The UX needed to establish immediate credibility, given the high-stakes nature and sensitivity of personal credit scores and financial data.' },
-      { title: 'Translating Technical Complexity', body: 'The primary hurdle was simplifying the intricate logic of a credit report (score factors, debt loads) into easily digestible, actionable language for the average user.' },
-      { title: 'Seamless Integration', body: 'Ensuring that the design seamlessly integrated the complex, raw technical data provided by Experian into a clean, easy-to-understand consumer format.' },
-    ],
-    solutions: [
-      { title: 'Intuitive Multi-Step Guided Flow', body: 'Designed a clear, multi-screen input process for data submission to minimize user confusion and drop-off, complete with best-in-class error handling.' },
-      { title: 'Visual Trustworthy Score Presentation', body: 'The final credit score was prominently displayed with a clean, high-trust visual hierarchy, providing users with their key information immediately upon completion.' },
-      { title: 'Layered Credit Literacy', body: 'Implemented an expandable Card View system where complex credit factors were summarized first, allowing users to drill down for educational context only when they chose to.' },
-      { title: 'Actionable Insights', body: 'The result screens moved beyond reporting data by focusing on clear, personalized recommendations for next steps, enhancing the tool value as a true financial guide.' },
-    ],
-    impact: [
-      { title: 'Increased Consumer Trust', body: 'The clear, guided flow and visual presentation of sensitive data fostered immediate trust, leading to higher rates of data submission and journey completion.' },
-      { title: 'Improved Financial Literacy', body: 'The Progressive Disclosure model successfully delivered complex educational content in a palatable format, empowering consumers to understand and improve their scores.' },
-      { title: 'High Value Utility Positioning', body: 'The tool was established as a continuous financial guidance utility, increasing repeat engagement with the Aditya Birla Capital brand.' },
-    ],
-  },
-  'visione-empowering-workforce-development-with-competency-based-assessments': {
-    title: 'VisiONE – Empowering Workforce Development with Competency-Based Assessments',
-    client: 'VisiONE',
-    disciplines: ['UX Design', 'Development'],
-    team: ['VisiONE', 'Wugweb'],
-    industry: 'Enterprise',
-    timeline: '2023',
-    video: '/assets/work/visione/visione-about.mp4',
-    about: 'VisiONE partnered with Wugweb to build a comprehensive workforce development platform that uses competency-based assessments to help organizations identify, develop, and retain top talent.',
-    challenges: [
-      { title: 'Complex Assessment Logic', body: 'Building a sophisticated assessment engine that could handle varied competency frameworks and scoring models.' },
-      { title: 'Multi-Stakeholder Experience', body: 'The platform needed to serve HR administrators, managers, and employees with tailored interfaces for each role.' },
-    ],
-    solutions: [
-      { title: 'Modular Assessment Builder', body: 'A drag-and-drop assessment builder gave HR teams the flexibility to create custom competency evaluations.' },
-      { title: 'Role-Based Dashboards', body: 'Each stakeholder type received a personalized dashboard with relevant metrics and actions.' },
-    ],
-    impact: [
-      { title: 'Streamlined Assessments', body: 'Organizations reported significant time savings in conducting and scoring competency assessments.' },
-      { title: 'Better Talent Insights', body: 'Data-rich reports helped HR teams make informed decisions about training and development investments.' },
-    ],
-  },
-  'indusninja-your-ai-powered-financial-ninja': {
-    title: 'IndusNinja – Your AI-Powered Financial Ninja',
-    client: 'IndusInd Bank',
-    disciplines: ['UX Design'],
-    team: ['IndusInd Bank', 'Wugweb'],
-    industry: 'Fintech',
-    timeline: '2023',
-    video: '/assets/work/indusind-bank/indusninja-about.mp4',
-    about: 'IndusInd Bank partnered with Wugweb to create IndusNinja, an AI-powered financial assistant that helps users manage their finances with intelligence, speed, and precision — like having a financial ninja in your pocket.',
-    challenges: [
-      { title: 'AI Integration', body: 'Seamlessly integrating AI capabilities into a banking app while maintaining reliability and user trust.' },
-      { title: 'Conversational UX', body: 'Designing natural language interactions that feel helpful rather than gimmicky.' },
-    ],
-    solutions: [
-      { title: 'Conversational Finance Assistant', body: 'A chat-based interface that understands natural language queries about balances, transactions, and financial goals.' },
-      { title: 'Predictive Insights', body: 'AI-powered spending predictions and savings recommendations personalized to each users financial patterns.' },
-    ],
-    impact: [
-      { title: 'Increased Engagement', body: 'Users interacted with IndusNinja significantly more than traditional banking interfaces.' },
-      { title: 'Improved Financial Wellness', body: 'Users reported better understanding of their spending habits and achieved savings goals faster.' },
-    ],
-  },
-  'sadhan-streamlining-driver-onboarding-lead-management': {
-    title: 'Sadhan – Streamlining Driver Onboarding & Lead Management',
-    client: 'Sadhan',
-    disciplines: ['UX Design', 'Strategy'],
-    team: ['Sadhan', 'Wugweb'],
-    industry: 'Logistics',
-    timeline: '2023',
-    video: '/assets/work/sadhan/sadhan-about.mp4',
-    about: 'Sadhan partnered with Wugweb to streamline their driver onboarding and lead management processes, creating a digital platform that reduces friction and accelerates time-to-productivity for new drivers.',
-    challenges: [
-      { title: 'Paper-Based Processes', body: 'Legacy onboarding relied on manual paperwork, causing delays and errors in driver verification.' },
-      { title: 'Lead Tracking Fragmentation', body: 'Multiple disconnected systems made it difficult to track leads through the pipeline.' },
-    ],
-    solutions: [
-      { title: 'Digital Onboarding Portal', body: 'A self-service portal where drivers could upload documents, complete training modules, and track their onboarding status.' },
-      { title: 'Unified Lead Management', body: 'A centralized CRM-style dashboard gave the sales team full visibility into lead status and follow-up actions.' },
-    ],
-    impact: [
-      { title: 'Faster Onboarding', body: 'Driver onboarding time was reduced significantly with digital document submission and automated verification.' },
-      { title: 'Improved Lead Conversion', body: 'The unified lead management system helped the sales team prioritize and convert leads more effectively.' },
-    ],
-  },
-};
+export async function getStaticPaths() {
+  const list = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+  return list.map((cs: any) => ({ params: { slug: cs.slug } }));
+}
 
 const { slug } = Astro.params;
-const work = caseStudies[slug];
+const work = await sanityClient.fetch(caseStudyBySlugQuery, { slug }).catch(() => null);
 
 if (!work) {
   return Astro.redirect('/404');
 }
 
-export async function getStaticPaths() {
-  return [
-    'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform',
-    'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future',
-    'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience',
-    'airtel-xsafe-securing-homes-with-intuitive-digital-experiences',
-    'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool',
-    'visione-empowering-workforce-development-with-competency-based-assessments',
-    'indusninja-your-ai-powered-financial-ninja',
-    'sadhan-streamlining-driver-onboarding-lead-management',
-  ].map(s => ({ params: { slug: s } }));
-}
-
-const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice(0, 2);
+// Fetch 2 random other case studies for "More" section
+const allSlugs = await sanityClient.fetch(`*[_type == "caseStudy"]{"slug": slug.current}`).catch(() => []);
+const others = allSlugs.filter((s: any) => s.slug !== slug).slice(0, 2);
+const otherCases = await Promise.all(others.map((s: any) =>
+  sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug][0]{ title, client, disciplines }`, { slug: s.slug }).catch(() => null)
+)).then(r => r.filter(Boolean));
 ---
 
-<BaseLayout title={`${work.title} — Wugweb Work`} description={work.about.slice(0, 160)}>
+<BaseLayout title={`${work.title} — Wugweb Work`} description={(work.about || work.summary || '').slice(0, 160)}>
   <section class="work-detail-hero">
     <div class="wrap">
       <p class="eyebrow"><a href="/work">Work</a></p>
       <h1>{work.title}</h1>
       <div class="work-meta">
         <div><span class="meta-label">Client</span><span>{work.client}</span></div>
-        <div><span class="meta-label">Disciplines</span><span>{work.disciplines.join(', ')}</span></div>
-        <div><span class="meta-label">Industry</span><span>{work.industry}</span></div>
-        <div><span class="meta-label">Timeline</span><span>{work.timeline}</span></div>
+        {work.disciplines?.length > 0 && <div><span class="meta-label">Disciplines</span><span>{work.disciplines.join(', ')}</span></div>}
+        {work.industry && <div><span class="meta-label">Industry</span><span>{work.industry}</span></div>}
+        {work.timeline && <div><span class="meta-label">Timeline</span><span>{work.timeline}</span></div>}
       </div>
     </div>
   </section>
 
-  <section class="wrap work-detail-media">
-    <video autoplay muted loop playsinline src={work.video}></video>
-  </section>
+  {(work.about || work.summary) && (
+    <section class="wrap section">
+      <h2>About</h2>
+      <p>{work.about || work.summary}</p>
+    </section>
+  )}
 
-  <section class="wrap section">
-    <h2>About</h2>
-    <p>{work.about}</p>
-  </section>
-
-  {work.challenges.length > 0 && (
+  {work.challenges?.length > 0 && (
     <section class="wrap section">
       <h2>Challenges</h2>
       <div class="grid">
-        {work.challenges.map((c) => (
+        {work.challenges.map((c: any) => (
           <div class="card"><h3>{c.title}</h3><p>{c.body}</p></div>
         ))}
       </div>
     </section>
   )}
 
-  {work.solutions.length > 0 && (
+  {work.solutions?.length > 0 && (
     <section class="wrap section">
       <h2>Solutions</h2>
       <div class="grid">
-        {work.solutions.map((s) => (
+        {work.solutions.map((s: any) => (
           <div class="card"><h3>{s.title}</h3><p>{s.body}</p></div>
         ))}
       </div>
     </section>
   )}
 
-  {work.impact.length > 0 && (
+  {work.impact?.length > 0 && (
     <section class="wrap section">
       <h2>Impact</h2>
       <div class="grid">
-        {work.impact.map((i) => (
+        {work.impact.map((i: any) => (
           <div class="card"><h3>{i.title}</h3><p>{i.body}</p></div>
         ))}
       </div>
@@ -292,16 +82,15 @@ const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice
     <section class="wrap section">
       <h2>More Case Studies</h2>
       <div class="more-grid">
-        {otherCases.map(([s, c]) => (
-          <a href={`/work/${s}`} class="more-card">
+        {otherCases.map((c: any) => (
+          <a href={`/work/${c.slug || ''}`} class="more-card">
             <h3>{c.title}</h3>
-            <p>{c.client} — {c.disciplines.join(', ')}</p>
+            <p>{c.client}{c.disciplines?.length > 0 ? ` — ${c.disciplines.join(', ')}` : ''}</p>
           </a>
         ))}
       </div>
     </section>
   )}
-
 </BaseLayout>
 
 <style>
@@ -310,20 +99,6 @@ const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice
   .work-detail-hero h1 { font-size: var(--t-h2); margin-top: 1rem; max-width: 20ch; }
   .work-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; max-width: 600px; }
   .meta-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); text-transform: uppercase; margin-bottom: 0.25rem; }
-
-  /* Case studies had zero imagery — pure text — until this. Real "about"
-     footage per client, sourced from the Notion asset sheet / local bundle,
-     not a placeholder. */
-  .work-detail-media { padding-bottom: 4rem; }
-  .work-detail-media video {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: var(--r-lg);
-    display: block;
-    background: var(--surface);
-  }
-
   .section { padding-block: 4rem; border-bottom: 1px solid var(--line); }
   .section h2 { font-size: var(--t-h3); margin-bottom: 1.5rem; }
   .section p { max-width: 60ch; line-height: 1.7; color: var(--fg-muted); }
@@ -337,9 +112,6 @@ const otherCases = Object.entries(caseStudies).filter(([s]) => s !== slug).slice
   .more-card { text-decoration: none; border-top: 1px solid var(--line); padding-top: 1rem; display: block; }
   .more-card h3 { font-size: 1.1rem; font-weight: 400; color: var(--fg); }
   .more-card p { color: var(--fg-muted); margin-top: 0.25rem; font-size: 0.85rem; }
-  .closing-cta { padding-block: 6rem; text-align: center; }
-  .closing-cta h2 { font-size: var(--t-h2); max-width: 18ch; margin-inline: auto; }
-  .closing-cta .btn { margin-top: 2rem; display: inline-flex; }
 </style>
 
 <script>

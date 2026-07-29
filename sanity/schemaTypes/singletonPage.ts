@@ -42,6 +42,10 @@ export default defineType({
         { name: 'image', type: 'image', options: { hotspot: true } },
       ]}],
     }),
+
+    // ── Sync (hidden, auto-managed) ──
+    defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
+    defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
   preview: { select: { title: 'title', subtitle: 'pageId' } },
 });

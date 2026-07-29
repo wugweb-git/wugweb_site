@@ -66,3 +66,33 @@ export const teamListQuery = `
     name, "slug": slug.current, photo, role, bio, socialLinks
   }
 `;
+
+// ══════════════════════════════════════════════════════════════════
+// NEON SQL QUERIES — for Phase 2 migration
+// Replace Sanity GROQ queries above with these when frontend reads
+// from Neon instead of Sanity.
+// ══════════════════════════════════════════════════════════════════
+
+export const NEON = {
+  siteSettings: `select data from content_items where content_type = 'siteSettings' and status = 'published' limit 1`,
+  servicesList: `select id, data from content_items where content_type = 'service' and status = 'published' order by data->>'order' asc nulls last`,
+  serviceBySlug: (slug: string) => ({
+    text: `select data from content_items where content_type = 'service' and id = $1 and status = 'published' limit 1`,
+    values: [slug],
+  }),
+  caseStudiesList: `select id, data from content_items where content_type = 'caseStudy' and status = 'published' order by data->>'publishedAt' desc nulls last`,
+  caseStudyBySlug: (slug: string) => ({
+    text: `select data from content_items where content_type = 'caseStudy' and id = $1 and status = 'published' limit 1`,
+    values: [slug],
+  }),
+  postsList: `select id, data from content_items where content_type = 'post' and status = 'published' order by data->>'publishedAt' desc nulls last`,
+  postBySlug: (slug: string) => ({
+    text: `select data from content_items where content_type = 'post' and id = $1 and status = 'published' limit 1`,
+    values: [slug],
+  }),
+  singletonPage: (pageId: string) => ({
+    text: `select data from content_items where content_type = 'page' and id = $1 and status = 'published' limit 1`,
+    values: [pageId],
+  }),
+  teamList: `select id, data from content_items where content_type = 'person' and status = 'published' order by data->>'order' asc nulls last`,
+};

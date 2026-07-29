@@ -1,0 +1,30 @@
+[
+  {
+    "Notes": "Named explicitly by user",
+    "Name": "HR"
+  },
+  {
+    "Notes": "Named explicitly by user",
+    "Name": "Operations"
+  },
+  {
+    "Notes": "Inferred from existing Legal & Finance DB",
+    "Name": "Finance"
+  },
+  {
+    "Notes": "Named explicitly by user; matches existing Legal & Finance DB",
+    "Name": "Legal"
+  },
+  {
+    "Notes": "Inferred from Wugweb Design author/team",
+    "Name": "Design"
+  },
+  {
+    "Notes": "Inferred from Team Capability Matrix / Tech Stack",
+    "Name": "Technology / Engineering"
+  },
+  {
+    "Notes": "Inferred from Wugweb service lines",
+    "Name": "Marketing"
+  }
+]

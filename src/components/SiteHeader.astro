@@ -61,21 +61,21 @@ const navLinks = [
     padding: 1rem 1rem 0;
     background: transparent;
   }
+  .site-header nav { position: relative; }
   .site-header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--gap-4);
     max-width: 1280px;
     margin-inline: auto;
     min-height: 78px;
-    padding-inline: 1rem;
-    border-radius: var(--r-md);
+    padding-inline: var(--gap-4);
+    border-radius: var(--r-3);
     background: var(--surface-2);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
-    /* Present on every nav variant in the Framer export — design.md §2.1 */
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-nav);
   }
   /* Two-tone wordmark: "wug" white, "web" in /Primary/Grey #c9c9c9.
      This is the real lockup — not the W icon, which is a separate 54×54
@@ -115,14 +115,17 @@ const navLinks = [
   .site-links.open {
     display: flex;
     flex-direction: column;
-    position: fixed;
-    inset: 0;
-    background: var(--bg);
-    padding: 6rem 2rem 2rem;
-    gap: 0.75rem;
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 0;
+    right: 0;
+    background: var(--surface-2);
+    border-radius: var(--r-3);
+    padding: var(--p-8) var(--p-6);
+    gap: var(--gap-3);
     font-size: var(--t-lead);
     align-items: stretch;
-    justify-content: center;
+    box-shadow: var(--shadow-nav);
     z-index: 15;
   }
   .site-links.open .nav-link { text-align: center; padding: 1rem; }

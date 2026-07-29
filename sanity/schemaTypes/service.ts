@@ -89,6 +89,10 @@ export default defineType({
     defineField({ name: 'seoTitle', type: 'string', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', group: 'seo' }),
+
+    // ── Sync (hidden, auto-managed) ──
+    defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
+    defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
   preview: { select: { title: 'title', subtitle: 'summary', media: 'icon' } },
 });

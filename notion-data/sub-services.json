@@ -1,0 +1,629 @@
+[
+  {
+    "Parent Service (legacy text)": "Digital Transformation",
+    "Description": "Growth strategies powered by analytics, AI and optimization.",
+    "Name": "Data-Driven Growth",
+    "Parent Service": [
+      "395bb710-b9ab-81fb-815f-c5bf74f6195b"
+    ],
+    "Slug": "data-driven-growth",
+    "Status": "Active",
+    "ID": "DT-005"
+  },
+  {
+    "Parent Service (legacy text)": "Digital Transformation",
+    "Description": "Marketing technology stack architecture and integrations.",
+    "Name": "MarTech Ecosystems",
+    "Parent Service": [
+      "395bb710-b9ab-81fb-815f-c5bf74f6195b"
+    ],
+    "Slug": "martech-ecosystems",
+    "Status": "Active",
+    "ID": "DT-004"
+  },
+  {
+    "Parent Service (legacy text)": "Digital Transformation",
+    "Description": "Innovation, ideation and strategic workshops.",
+    "Name": "Innovation & Design Thinking Workshops",
+    "Parent Service": [
+      "395bb710-b9ab-81fb-815f-c5bf74f6195b"
+    ],
+    "Slug": "innovation-design-thinking-workshops",
+    "Status": "Active",
+    "ID": "DT-003"
+  },
+  {
+    "Parent Service (legacy text)": "Digital Transformation",
+    "Description": "Market intelligence and future trend analysis.",
+    "Name": "Future-forward Market Insights",
+    "Parent Service": [
+      "395bb710-b9ab-81fb-815f-c5bf74f6195b"
+    ],
+    "Slug": "future-forward-market-insights",
+    "Status": "Active",
+    "ID": "DT-002"
+  },
+  {
+    "Parent Service (legacy text)": "Digital Transformation",
+    "Description": "Enterprise digital transformation strategy and execution.",
+    "Name": "Digital Transformation Strategy",
+    "Parent Service": [
+      "395bb710-b9ab-81fb-815f-c5bf74f6195b"
+    ],
+    "Slug": "digital-transformation-strategy",
+    "Status": "Active",
+    "ID": "DT-001"
+  },
+  {
+    "Parent Service (legacy text)": "Cloud & Infrastructure",
+    "Description": "Continuous maintenance and technical support.",
+    "Name": "Maintenance & Support",
+    "Parent Service": [
+      "395bb710-b9ab-81bd-99d6-d8a0d48e2dc4"
+    ],
+    "Slug": "maintenance-support",
+    "Status": "Active",
+    "ID": "CI-005"
+  },
+  {
+    "Parent Service (legacy text)": "Cloud & Infrastructure",
+    "Description": "Security audits, hardening and compliance.",
+    "Name": "Security & Compliance",
+    "Parent Service": [
+      "395bb710-b9ab-81bd-99d6-d8a0d48e2dc4"
+    ],
+    "Slug": "security-compliance",
+    "Status": "Active",
+    "ID": "CI-004"
+  },
+  {
+    "Parent Service (legacy text)": "Cloud & Infrastructure",
+    "Description": "Hosting, platform operations and maintenance.",
+    "Name": "Hosting & Platform Management",
+    "Parent Service": [
+      "395bb710-b9ab-81bd-99d6-d8a0d48e2dc4"
+    ],
+    "Slug": "hosting-platform-management",
+    "Status": "Active",
+    "ID": "CI-003"
+  },
+  {
+    "Parent Service (legacy text)": "Cloud & Infrastructure",
+    "Description": "Continuous integration, deployment and DevOps.",
+    "Name": "DevOps",
+    "Parent Service": [
+      "395bb710-b9ab-81bd-99d6-d8a0d48e2dc4"
+    ],
+    "Slug": "devops",
+    "Status": "Active",
+    "ID": "CI-002"
+  },
+  {
+    "Parent Service (legacy text)": "Cloud & Infrastructure",
+    "Description": "Cloud architecture and infrastructure management.",
+    "Name": "Cloud Infrastructure",
+    "Parent Service": [
+      "395bb710-b9ab-81bd-99d6-d8a0d48e2dc4"
+    ],
+    "Slug": "cloud-infrastructure",
+    "Status": "Active",
+    "ID": "CI-001"
+  },
+  {
+    "Parent Service (legacy text)": "Data & Analytics",
+    "Description": "Predictive analytics and attribution modelling.",
+    "Name": "Predictive Analytics & Attribution",
+    "Parent Service": [
+      "395bb710-b9ab-817b-bcff-edd7ae7edb52"
+    ],
+    "Slug": "predictive-analytics-attribution",
+    "Status": "Active",
+    "ID": "DA-005"
+  },
+  {
+    "Parent Service (legacy text)": "Data & Analytics",
+    "Description": "Customer journey analysis and behavioral insights.",
+    "Name": "Customer Journey Analytics",
+    "Parent Service": [
+      "395bb710-b9ab-817b-bcff-edd7ae7edb52"
+    ],
+    "Slug": "customer-journey-analytics",
+    "Status": "Active",
+    "ID": "DA-004"
+  },
+  {
+    "Parent Service (legacy text)": "Data & Analytics",
+    "Description": "Data pipelines, warehousing and architecture.",
+    "Name": "Data Engineering",
+    "Parent Service": [
+      "395bb710-b9ab-817b-bcff-edd7ae7edb52"
+    ],
+    "Slug": "data-engineering",
+    "Status": "Active",
+    "ID": "DA-003"
+  },
+  {
+    "Parent Service (legacy text)": "Data & Analytics",
+    "Description": "Analytics implementation and reporting.",
+    "Name": "Analytics & Reporting",
+    "Parent Service": [
+      "395bb710-b9ab-817b-bcff-edd7ae7edb52"
+    ],
+    "Slug": "analytics-reporting",
+    "Status": "Active",
+    "ID": "DA-002"
+  },
+  {
+    "Parent Service (legacy text)": "Data & Analytics",
+    "Description": "Executive dashboards and business intelligence.",
+    "Name": "Business Intelligence",
+    "Parent Service": [
+      "395bb710-b9ab-817b-bcff-edd7ae7edb52"
+    ],
+    "Slug": "business-intelligence",
+    "Status": "Active",
+    "ID": "DA-001"
+  },
+  {
+    "Parent Service (legacy text)": "AI & Intelligent Systems",
+    "Description": "AI-driven content strategy and personalization.",
+    "Name": "AI-Powered Content Experiences",
+    "Parent Service": [
+      "395bb710-b9ab-81fe-8e5f-ec581a75bd2b"
+    ],
+    "Slug": "ai-powered-content-experiences",
+    "Status": "Active",
+    "ID": "AI-006"
+  },
+  {
+    "Parent Service (legacy text)": "AI & Intelligent Systems",
+    "Description": "GEO, AEO, LLMO and AI search optimization.",
+    "Name": "AI Search Optimization",
+    "Parent Service": [
+      "395bb710-b9ab-81fe-8e5f-ec581a75bd2b"
+    ],
+    "Slug": "ai-search-optimization",
+    "Status": "Active",
+    "ID": "AI-005"
+  },
+  {
+    "Parent Service (legacy text)": "AI & Intelligent Systems",
+    "Description": "ChatGPT, Claude, Gemini and enterprise LLM implementations.",
+    "Name": "LLM Solutions",
+    "Parent Service": [
+      "395bb710-b9ab-81fe-8e5f-ec581a75bd2b"
+    ],
+    "Slug": "llm-solutions",
+    "Status": "Active",
+    "ID": "AI-004"
+  },
+  {
+    "Parent Service (legacy text)": "AI & Intelligent Systems",
+    "Description": "Business process automation using AI and no-code platforms.",
+    "Name": "Workflow Automation",
+    "Parent Service": [
+      "395bb710-b9ab-81fe-8e5f-ec581a75bd2b"
+    ],
+    "Slug": "workflow-automation",
+    "Status": "Active",
+    "ID": "AI-003"
+  },
+  {
+    "Parent Service (legacy text)": "AI & Intelligent Systems",
+    "Description": "Intelligent agents and autonomous workflows.",
+    "Name": "AI Agents",
+    "Parent Service": [
+      "395bb710-b9ab-81fe-8e5f-ec581a75bd2b"
+    ],
+    "Slug": "ai-agents",
+    "Status": "Active",
+    "ID": "AI-002"
+  },
+  {
+    "Parent Service (legacy text)": "AI & Intelligent Systems",
+    "Description": "AI readiness, roadmap and advisory.",
+    "Name": "AI Strategy",
+    "Parent Service": [
+      "395bb710-b9ab-81fe-8e5f-ec581a75bd2b"
+    ],
+    "Slug": "ai-strategy",
+    "Status": "Active",
+    "ID": "AI-001"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Maintenance, monitoring and optimization.",
+    "Name": "Ongoing Support & Optimization",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "ongoing-support-optimization",
+    "Status": "Active",
+    "ID": "WD-012"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Infrastructure, CI/CD and cloud deployment.",
+    "Name": "DevOps & Cloud Implementation",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "devops-cloud-implementation",
+    "Status": "Active",
+    "ID": "WD-011"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Custom software and enterprise applications.",
+    "Name": "Bespoke Digital Solutions",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "bespoke-digital-solutions",
+    "Status": "Active",
+    "ID": "WD-010"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Shopify, WooCommerce and enterprise commerce.",
+    "Name": "Ecommerce Solutions",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "ecommerce-solutions",
+    "Status": "Active",
+    "ID": "WD-009"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Flutter, React Native and hybrid applications.",
+    "Name": "Cross-Platform & Hybrid Mobile Solutions",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "cross-platform-hybrid-mobile-solutions",
+    "Status": "Active",
+    "ID": "WD-008"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Native iOS and Android applications.",
+    "Name": "Native Mobile Application Development",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "native-mobile-application-development",
+    "Status": "Active",
+    "ID": "WD-007"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Progressive web application development.",
+    "Name": "Progressive Web Applications (PWAs)",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "progressive-web-applications",
+    "Status": "Active",
+    "ID": "WD-006"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Database architecture and optimization.",
+    "Name": "Database Design & Optimization",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "database-design-optimization",
+    "Status": "Active",
+    "ID": "WD-005"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "APIs, middleware and third-party integrations.",
+    "Name": "API Development & Integration",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "api-development-integration",
+    "Status": "Active",
+    "ID": "WD-004"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Backend engineering and business logic.",
+    "Name": "Back-End Development",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "back-end-development",
+    "Status": "Active",
+    "ID": "WD-003"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Modern frontend engineering and implementation.",
+    "Name": "Front-End Engineering",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "front-end-engineering",
+    "Status": "Active",
+    "ID": "WD-002"
+  },
+  {
+    "Parent Service (legacy text)": "Web & App Development",
+    "Description": "Technical architecture and platform planning.",
+    "Name": "Digital Platform Architecture",
+    "Parent Service": [
+      "395bb710-b9ab-81a7-8aab-c0c94e1cbd8c"
+    ],
+    "Slug": "digital-platform-architecture",
+    "Status": "Active",
+    "ID": "WD-001"
+  },
+  {
+    "Parent Service (legacy text)": "Growth Marketing",
+    "Description": "Dashboards, attribution and marketing reporting.",
+    "Name": "Marketing Analytics",
+    "Parent Service": [
+      "395bb710-b9ab-81df-a3d5-e194afcb42c8"
+    ],
+    "Slug": "marketing-analytics",
+    "Status": "Active",
+    "ID": "GM-006"
+  },
+  {
+    "Parent Service (legacy text)": "Growth Marketing",
+    "Description": "Email campaigns, lifecycle marketing and automation.",
+    "Name": "Email Marketing & Automation",
+    "Parent Service": [
+      "395bb710-b9ab-81df-a3d5-e194afcb42c8"
+    ],
+    "Slug": "email-marketing-automation",
+    "Status": "Active",
+    "ID": "GM-005"
+  },
+  {
+    "Parent Service (legacy text)": "Growth Marketing",
+    "Description": "Funnel optimization and experimentation.",
+    "Name": "Conversion Rate Optimization",
+    "Parent Service": [
+      "395bb710-b9ab-81df-a3d5-e194afcb42c8"
+    ],
+    "Slug": "conversion-rate-optimization",
+    "Status": "Active",
+    "ID": "GM-004"
+  },
+  {
+    "Parent Service (legacy text)": "Growth Marketing",
+    "Description": "Content strategy, SEO content and copywriting.",
+    "Name": "Content Marketing",
+    "Parent Service": [
+      "395bb710-b9ab-81df-a3d5-e194afcb42c8"
+    ],
+    "Slug": "content-marketing",
+    "Status": "Active",
+    "ID": "GM-003"
+  },
+  {
+    "Parent Service (legacy text)": "Growth Marketing",
+    "Description": "Paid media, attribution and campaign optimization.",
+    "Name": "Performance Marketing",
+    "Parent Service": [
+      "395bb710-b9ab-81df-a3d5-e194afcb42c8"
+    ],
+    "Slug": "performance-marketing",
+    "Status": "Active",
+    "ID": "GM-002"
+  },
+  {
+    "Parent Service (legacy text)": "Growth Marketing",
+    "Description": "Search engine optimization services.",
+    "Name": "SEO",
+    "Parent Service": [
+      "395bb710-b9ab-81df-a3d5-e194afcb42c8"
+    ],
+    "Slug": "seo",
+    "Status": "Active",
+    "ID": "GM-001"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "Native and cross-platform mobile experiences.",
+    "Name": "Mobile Ecosystems",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "mobile-ecosystems",
+    "Status": "Active",
+    "ID": "XD-009"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "Responsive and adaptive digital experiences.",
+    "Name": "Adaptive Platforms",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "adaptive-platforms",
+    "Status": "Active",
+    "ID": "XD-008"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "UX optimization through analytics and testing.",
+    "Name": "Performance Optimization",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "performance-optimization",
+    "Status": "Active",
+    "ID": "XD-007"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "Wireframes, prototypes and concept validation.",
+    "Name": "Rapid Concepting",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "rapid-concepting",
+    "Status": "Active",
+    "ID": "XD-006"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "Design systems, design tokens and reusable components.",
+    "Name": "Design Systems",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "design-systems",
+    "Status": "Active",
+    "ID": "XD-005"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "Customer journey mapping and information architecture.",
+    "Name": "Journey Architecture",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "journey-architecture",
+    "Status": "Active",
+    "ID": "XD-004"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "User research, behavioral insights and validation.",
+    "Name": "User Intelligence",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "user-intelligence",
+    "Status": "Active",
+    "ID": "XD-003"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "Modern interface design and visual systems.",
+    "Name": "Interface Mastery (UI)",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "interface-mastery-ui",
+    "Status": "Active",
+    "ID": "XD-002"
+  },
+  {
+    "Parent Service (legacy text)": "Experience Design",
+    "Description": "User experience strategy and interaction design.",
+    "Name": "Experience Design (UX)",
+    "Parent Service": [
+      "395bb710-b9ab-8179-9794-f4003a25d1d4"
+    ],
+    "Slug": "experience-design-ux",
+    "Status": "Active",
+    "ID": "XD-001"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Ongoing brand governance and management.",
+    "Name": "Brand Evolution & Management",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "brand-evolution-management",
+    "Status": "Active",
+    "ID": "BS-009"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Brand launch planning and activation campaigns.",
+    "Name": "Brand Activation & Launch",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "brand-activation-launch",
+    "Status": "Active",
+    "ID": "BS-008"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Brand health, competitor and perception analysis.",
+    "Name": "Brand Audits & Analysis",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "brand-audits-analysis",
+    "Status": "Active",
+    "ID": "BS-007"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Brand, product and service naming systems.",
+    "Name": "Naming & Nomenclature",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "naming-nomenclature",
+    "Status": "Active",
+    "ID": "BS-006"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Brand voice, messaging and communication guidelines.",
+    "Name": "Voice & Tone Development",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "voice-tone-development",
+    "Status": "Active",
+    "ID": "BS-005"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Messaging frameworks, storytelling and communication strategy.",
+    "Name": "Brand Narrative Architecture",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "brand-narrative-architecture",
+    "Status": "Active",
+    "ID": "BS-004"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Omnichannel brand experiences and customer touchpoints.",
+    "Name": "Brand Experience Design",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "brand-experience-design",
+    "Status": "Active",
+    "ID": "BS-003"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Visual identity systems, logos and brand guidelines.",
+    "Name": "Brand Identity Systems",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "brand-identity-systems",
+    "Status": "Active",
+    "ID": "BS-002"
+  },
+  {
+    "Parent Service (legacy text)": "Brand & Strategy",
+    "Description": "Strategic brand positioning, differentiation and market strategy.",
+    "Name": "Brand Strategy & Positioning",
+    "Parent Service": [
+      "395bb710-b9ab-8151-9654-cf198a2eb158"
+    ],
+    "Slug": "brand-strategy-positioning",
+    "Status": "Active",
+    "ID": "BS-001"
+  }
+]

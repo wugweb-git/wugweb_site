@@ -16,6 +16,10 @@ export default defineType({
       { name: 'url', type: 'url' },
     ]}]}),
     defineField({ name: 'order', type: 'number' }),
+
+    // ── Sync (hidden, auto-managed) ──
+    defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
+    defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
   preview: { select: { title: 'name', subtitle: 'role', media: 'photo' } },
 });

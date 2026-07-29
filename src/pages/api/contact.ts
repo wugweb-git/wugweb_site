@@ -35,7 +35,5 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
     await client.end();
   }
 
-  // No confirmation page built yet — redirects home. A real "thanks,
-  // we'll be in touch" page is a quick follow-up, not built here.
-  return redirect('/?submitted=1');
+  return redirect('/thank-you');
 };

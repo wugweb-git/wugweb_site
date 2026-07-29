@@ -1,0 +1,81 @@
+---
+export const prerender = true;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { servicesListQuery, caseStudiesListQuery, postsListQuery } from '../../lib/queries';
+
+const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
+const caseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
+---
+
+<BaseLayout title="Sitemap — Wugweb" seoTitle="Sitemap" description="Complete sitemap for wugweb.com — all pages, case studies, blog posts, and services.">
+  <section class="wrap sitemap">
+    <p class="eyebrow">Sitemap</p>
+    <h1>Sitemap</h1>
+
+    <div class="sitemap-grid">
+      <div class="sitemap-col">
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/work">Work</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact-us">Contact</a></li>
+          <li><a href="/thank-you">Thank You</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms-of-use">Terms of Use</a></li>
+          <li><a href="/refund-policy">Refund Policy</a></li>
+          <li><a href="/footer/impact">Impact</a></li>
+          <li><a href="/footer/subscription">Subscription</a></li>
+          <li><a href="/footer/sitemap">Sitemap</a></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-col">
+        <h2>Services</h2>
+        <ul>
+          {services.map((s: any) => (
+            <li><a href={`/services/${s.slug}`}>{s.title}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="sitemap-col">
+        <h2>Case Studies ({caseStudies.length})</h2>
+        <ul>
+          {caseStudies.slice(0, 20).map((cs: any) => (
+            <li><a href={`/work/${cs.slug}`}>{cs.title}</a></li>
+          ))}
+          {caseStudies.length > 20 && <li><a href="/work">… and {caseStudies.length - 20} more</a></li>}
+        </ul>
+      </div>
+
+      <div class="sitemap-col">
+        <h2>Blog Posts ({posts.length})</h2>
+        <ul>
+          {posts.slice(0, 20).map((p: any) => (
+            <li><a href={`/blog/${p.slug}`}>{p.title}</a></li>
+          ))}
+          {posts.length > 20 && <li><a href="/blog">… and {posts.length - 20} more</a></li>}
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sitemap { padding-block: 6rem; }
+  .sitemap h1 { font-size: var(--t-h2); margin-top: 1rem; margin-bottom: 3rem; }
+  .sitemap-grid { display: grid; gap: 2.5rem; }
+  @media (min-width: 640px) { .sitemap-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .sitemap-grid { grid-template-columns: repeat(4, 1fr); } }
+  .sitemap-col h2 { font-size: var(--t-h4); font-weight: 400; border-bottom: 1px solid var(--line); padding-bottom: 0.75rem; margin-bottom: 1rem; }
+  .sitemap-col ul { list-style: none; margin: 0; padding: 0; }
+  .sitemap-col li { margin-bottom: 0.4rem; }
+  .sitemap-col a { color: var(--fg-muted); text-decoration: none; font-size: 0.9rem; }
+  .sitemap-col a:hover { color: var(--accent); }
+</style>

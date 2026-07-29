@@ -1,288 +1,54 @@
 ---
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const posts: Record<string, {
-  title: string;
-  category: string;
-  author: string;
-  date: string;
-  readTime: string;
-  tags: string[];
-  intro: string;
-  sections: { h?: string; body: string }[];
-}> = {
-  'is-augmented-reality-the-future-of-ux': {
-    title: 'Is Augmented Reality the future of UX?',
-    category: 'Tech',
-    author: 'Anastasia Solovyova',
-    date: '17 Jul 2019',
-    readTime: '8 mins read',
-    tags: ['AR', 'UX'],
-    intro: "I'm paying close attention to AR and the benefits of immersive experiences. Augmented reality has a more immediate application than VR since it only requires a smartphone, letting virtual objects be viewed within the real world.",
-    sections: [
-      { h: 'AR in retail', body: 'AR lets customers try before they buy, reducing churn and enhancing physical and online shopping alike. Retailers like IKEA and Home Depot already use it to preview furniture and paint in real spaces.' },
-      { h: 'AR for utility', body: 'Beyond retail, AR apps like measuring tools and location-aware guides have broad utility use cases. Tools Lens Studio and ARKit are two accessible starting points for building AR experiences.' },
-      { h: 'The bottom line', body: 'AR should stay in service of the customer journeys that matter, not novelty for its own sake. When applied thoughtfully, it transforms how users interact with digital content in physical spaces.' },
-    ],
-  },
-  '10-a-hole-design-patterns': {
-    title: '10 A**hole Design Patterns',
-    category: 'Design',
-    author: 'Anastasia Solovyova',
-    date: '6 Apr 2020',
-    readTime: '5 mins read',
-    tags: ['Design'],
-    intro: 'I recently wrote about the 10 dark patterns that companies use to persuade their users to make decisions that favor the interest of the company rather than the individual. Asshole design takes dark patterns a step further.',
-    sections: [
-      { h: '1. Shrinkflation', body: 'Companies use this tactic to discreetly sell less of a product at the same price that it was before.' },
-      { h: '2. Planned Obsolescence', body: 'Products designed to be used for a finite amount of time, and then they are useless.' },
-      { h: '3. Lethal Enforcers', body: 'Lethal enforcers require the user to take the action that the company wants before they can do what they intend to do.' },
-      { h: '4. Loaded Question', body: 'Loaded questions take advantage of our good nature.' },
-      { h: '5. Bait and Switch', body: 'Luring someone in with the intent of receiving one thing and then when they get it, it is actually cheap junk.' },
-      { h: '6. Throttling', body: 'Throttling is when a company intentionally downgrades the service or product with the hopes that the customer upgrades.' },
-      { h: '7. Guilt Tripping', body: 'Guilt-tripping is the act of playing on ones emotions to invoke them to take a particular action.' },
-      { h: '8. Monopoly', body: 'Companies create a monopoly when they force someone to buy a currency or product that can only be used there and not transferred.' },
-      { h: '9. Free Real Estate', body: 'When every square inch of space that meets a pair of eyeballs is turned into a display ad.' },
-      { h: '10. Decoy', body: 'Companies change the terminology used to describe a word with a negative connotation.' },
-    ],
-  },
-  '6-strategies-that-got-my-side-project-its-first-1-000-users': {
-    title: '6 Strategies That Got My Side Project Its First 1,000 Users',
-    category: 'Martech',
-    author: 'Anastasia Solovyova',
-    date: '10 Mar 2020',
-    readTime: '6 mins read',
-    tags: ['Marketing', 'Growth'],
-    intro: 'Getting your first 1,000 users is the hardest milestone for any side project. Here are six strategies that actually worked.',
-    sections: [
-      { h: '1. Build in public', body: 'Share your progress, struggles, and lessons on social media. Transparency builds an audience before you launch.' },
-      { h: '2. Find your niche communities', body: 'Instead of casting a wide net, go deep into specific communities where your target users already gather.' },
-      { h: '3. Offer value before asking', body: 'Create free tools, guides, or templates related to your product. Give first, ask for signups second.' },
-      { h: '4. Leverage existing platforms', body: 'Product Hunt, Hacker News, and Indie Hackers can drive significant traffic if you launch thoughtfully.' },
-      { h: '5. Personal outreach', body: 'Manually reach out to potential users with personalized messages. It does not scale, but those first users become your biggest advocates.' },
-      { h: '6. Iterate on feedback', body: 'Your first 100 users will tell you what is broken. Fix it fast, and those fixes will attract the next 900.' },
-    ],
-  },
-  '10-hacks-for-illustrating-and-drawing-in-figma': {
-    title: '10 Hacks for Illustrating and Drawing in Figma',
-    category: 'Design',
-    author: 'Wugweb',
-    date: '15 Jan 2021',
-    readTime: '4 mins read',
-    tags: ['Figma', 'Design'],
-    intro: 'Figma is a powerful tool for illustration, not just UI design. Here are 10 hacks to level up your illustration workflow.',
-    sections: [
-      { h: '1. Use the pen tool like a pro', body: 'Master vector networks and the bend tool to create smooth curves with fewer points.' },
-      { h: '2. Boolean operations for complex shapes', body: 'Combine basic shapes with Union, Subtract, Intersect, and Exclude to build complex illustrations.' },
-      { h: '3. Auto-layout for illustrations', body: 'Use auto-layout to maintain spacing consistency across illustration elements.' },
-      { h: '4. Components for reusable elements', body: 'Turn frequently used illustration elements into components for consistency and quick iteration.' },
-      { h: '5. Plugins save hours', body: 'Plugins like Vector Path and Remove Background can speed up your illustration workflow dramatically.' },
-    ],
-  },
-  '10-key-takeaways-from-googles-material-design-guidelines': {
-    title: "10 Key Takeaways from Google's Material Design Guidelines",
-    category: 'Design',
-    author: 'Wugweb',
-    date: '20 Feb 2021',
-    readTime: '5 mins read',
-    tags: ['Material Design', 'Design'],
-    intro: "Google's Material Design guidelines offer a comprehensive framework for building cohesive digital experiences.",
-    sections: [
-      { h: '1. Material is the metaphor', body: 'Material design is inspired by the physical world — surfaces, edges, and realistic lighting create familiar interfaces.' },
-      { h: '2. Bold, graphic, intentional', body: 'Use typography, color, and imagery to create hierarchy and meaning.' },
-      { h: '3. Motion provides meaning', body: 'Motion should be responsive, natural, and help users understand spatial relationships.' },
-      { h: '4. Adaptive design', body: 'Design for all screen sizes with responsive grids, breakpoints, and reflowable layouts.' },
-      { h: '5. Depth and elevation', body: 'Use shadows and elevation to create visual hierarchy and indicate interactivity.' },
-    ],
-  },
-  '10-principles-for-typography-in-ui-design': {
-    title: '10 Principles for Typography in UI Design',
-    category: 'Design',
-    author: 'Wugweb',
-    date: '5 Mar 2021',
-    readTime: '4 mins read',
-    tags: ['Typography', 'UI Design'],
-    intro: 'Typography is the backbone of UI design. These principles will help you create readable, accessible, and beautiful interfaces.',
-    sections: [
-      { h: '1. Establish a type scale', body: 'Use a modular scale to create consistent sizing across headings and body text.' },
-      { h: '2. Limit typefaces', body: 'Stick to two typefaces maximum — one for headings, one for body text.' },
-      { h: '3. Mind your line-height', body: 'Body text should have a line-height of 1.5-1.6 for optimal readability.' },
-      { h: '4. Measure matters', body: 'Keep line length between 45-75 characters for comfortable reading.' },
-      { h: '5. Hierarchy is key', body: 'Use weight, size, and color to establish clear visual hierarchy.' },
-    ],
-  },
-  'top-10-design-systems-for-uxui-in-2026': {
-    title: 'Top 10 Design Systems for UX/UI in 2026',
-    category: 'Design',
-    author: 'Wugweb',
-    date: '1 Jan 2026',
-    readTime: '7 mins read',
-    tags: ['Design Systems', 'UI Design'],
-    intro: 'Design systems have become essential for scaling consistent user experiences. Here are the top 10 to watch in 2026.',
-    sections: [
-      { h: '1. Material Design 3', body: 'Googles latest evolution with dynamic color, adaptive layouts, and accessibility built in.' },
-      { h: '2. Radix UI', body: 'An open-source component library with unstyled primitives for complete design control.' },
-      { h: '3. Shadcn/UI', body: 'A collection of beautifully designed components that you copy and paste into your apps.' },
-      { h: '4. Polaris', body: 'Shopifys design system for building commerce experiences at scale.' },
-      { h: '5. Spectrum', body: "Adobe's design system that powers their entire product ecosystem." },
-    ],
-  },
-  '10-rules-of-thumb-in-ui-design': {
-    title: '10 Rules of Thumb in UI Design',
-    category: 'Design',
-    author: 'Anastasia Solovyova',
-    date: '2 Feb 2019',
-    readTime: '8 mins read',
-    tags: ['UI Design'],
-    intro: 'When in doubt, here is a list of standard practices to follow in UI design. None of these are set in stone.',
-    sections: [
-      { h: '1. Design for density, not pixels', body: 'Design for the pixel density of the device, not raw pixels.' },
-      { h: '2. Use 8dp increments', body: 'Spacing in increments of 8 creates consistency across devices.' },
-      { h: '3. Remove lines and boxes', body: 'Boxes and lines dividing content could often be replaced with margin.' },
-      { h: '4. Pay attention to contrast', body: 'Contrast draws the users eye and improves accessibility.' },
-      { h: '5. Familiarity is good', body: 'Be creative only within the confines of current design norms.' },
-      { h: '6. Use color weight to establish hierarchy', body: 'Assign different levels of importance to elements using color weight.' },
-      { h: '7. Avoid using more than two typefaces', body: 'Two typefaces (with families) is usually enough.' },
-      { h: '8. Recognition, not recall', body: 'Minimize the users memory load by making objects and actions visible.' },
-      { h: "9. Don't slow me down", body: 'Be purposeful with animations; do not add unnecessary delay.' },
-      { h: '10. Less is more', body: 'Every added element competes with the relevant information on a page.' },
-    ],
-  },
-  '10-essential-skills-for-the-modern-ui-ux-designer': {
-    title: '10 Essential Skills for the Modern UI & UX Designer',
-    category: 'Design',
-    author: 'Wugweb',
-    date: '15 Apr 2021',
-    readTime: '6 mins read',
-    tags: ['Career', 'Design'],
-    intro: 'The role of a UI/UX designer has evolved dramatically. Here are the essential skills you need to stay relevant.',
-    sections: [
-      { h: '1. User Research', body: 'Understanding user needs through interviews, surveys, and usability testing.' },
-      { h: '2. Visual Design', body: 'Master typography, color theory, layout, and visual hierarchy.' },
-      { h: '3. Interaction Design', body: 'Design meaningful micro-interactions, transitions, and animations.' },
-      { h: '4. Prototyping', body: 'Rapidly create interactive prototypes to test and validate ideas.' },
-      { h: '5. Design Systems', body: 'Build and maintain scalable design systems for consistency across products.' },
-      { h: '6. Accessibility', body: 'Design inclusively for users of all abilities following WCAG guidelines.' },
-      { h: '7. Collaboration', body: 'Work effectively with developers, product managers, and stakeholders.' },
-      { h: '8. Business Thinking', body: 'Understand business goals and how design drives measurable outcomes.' },
-    ],
-  },
-  '10-figma-tricks-i-wish-i-knew-earlier': {
-    title: '10 Figma Tricks I Wish I Knew Earlier',
-    category: 'Design',
-    author: 'Wugweb',
-    date: '10 May 2021',
-    readTime: '4 mins read',
-    tags: ['Figma', 'Design'],
-    intro: 'After years of using Figma, here are the tricks I wish someone had shown me on day one.',
-    sections: [
-      { h: '1. Use auto-layout for everything', body: 'Auto-layout makes responsive design effortless — use it for buttons, cards, lists, and entire pages.' },
-      { h: '2. Component variants', body: 'Organize button states, input variations, and icon sizes using component variant sets.' },
-      { h: '3. Interactive components', body: 'Create clickable prototypes directly within component sets without extra wiring.' },
-      { h: '4. Plugins for speed', body: 'Plugins like Autoflow, Content Reel, and Remove BG save hours of repetitive work.' },
-    ],
-  },
-  '10-ways-to-design-more-inclusive-products': {
-    title: '10 Ways to Design More Inclusive Products',
-    category: 'Design',
-    author: 'Wugweb',
-    date: '20 Jun 2021',
-    readTime: '5 mins read',
-    tags: ['Accessibility', 'Inclusive Design'],
-    intro: 'Inclusive design is not just about accessibility — it is about creating products that work for everyone.',
-    sections: [
-      { h: '1. Use clear language', body: 'Write at a reading level accessible to the widest possible audience.' },
-      { h: '2. Provide alt text', body: 'Every meaningful image needs descriptive alt text for screen readers.' },
-      { h: '3. Color is not the only indicator', body: 'Never rely solely on color to convey information — use icons and labels too.' },
-      { h: '4. Support keyboard navigation', body: 'Ensure all functionality is accessible via keyboard alone.' },
-      { h: '5. Test with real users', body: 'Include people with diverse abilities in your user testing sessions.' },
-    ],
-  },
-  '10-confessions-of-a-product-designer': {
-    title: '10 Confessions of a Product Designer',
-    category: 'Design',
-    author: 'Wugweb',
-    date: '5 Jul 2021',
-    readTime: '4 mins read',
-    tags: ['Product Design', 'Career'],
-    intro: 'Honest confessions from a product designer about the realities of the craft, the industry, and ourselves.',
-    sections: [
-      { h: '1. We do not have all the answers', body: 'Good design is iterative. We learn what works by testing, failing, and refining.' },
-      { h: '2. Imposter syndrome is real', body: 'Every designer feels it sometimes. The key is to keep learning and growing.' },
-      { h: '3. Perfect is the enemy of shipped', body: 'Done is better than perfect. Ship, measure, iterate.' },
-      { h: '4. Design is not just making things pretty', body: 'It is about solving problems, communicating ideas, and driving business outcomes.' },
-      { h: '5. Feedback is a gift', body: 'Even when it stings, honest feedback makes you and your work better.' },
-    ],
-  },
-  'when-ux-meets-cx-designing-seamless-experiences': {
-    title: 'When UX Meets CX: Designing Seamless Experiences',
-    category: 'Design',
-    author: 'Wugweb',
-    date: '15 Aug 2021',
-    readTime: '6 mins read',
-    tags: ['UX', 'CX', 'Strategy'],
-    intro: 'The line between user experience (UX) and customer experience (CX) is blurring. Heres how to design for both.',
-    sections: [
-      { h: 'Understanding the difference', body: 'UX focuses on the interaction with a specific product or interface. CX encompasses the entire journey with a brand across all touchpoints.' },
-      { h: 'Why they must converge', body: 'A great product UX means little if the overall brand experience is fragmented. Aligning UX and CX creates cohesive, memorable experiences.' },
-      { h: 'How to bridge the gap', body: 'Map the full customer journey, identify handoff points, and ensure consistency across marketing, sales, product, and support.' },
-    ],
-  },
-};
+import { sanityClient } from '../../lib/sanity';
+import { postBySlugQuery, postsListQuery } from '../../lib/queries';
 
 export async function getStaticPaths() {
-  return [
-    'is-augmented-reality-the-future-of-ux',
-    '10-a-hole-design-patterns',
-    '6-strategies-that-got-my-side-project-its-first-1-000-users',
-    '10-hacks-for-illustrating-and-drawing-in-figma',
-    '10-key-takeaways-from-googles-material-design-guidelines',
-    '10-principles-for-typography-in-ui-design',
-    'top-10-design-systems-for-uxui-in-2026',
-    '10-rules-of-thumb-in-ui-design',
-    '10-essential-skills-for-the-modern-ui-ux-designer',
-    '10-figma-tricks-i-wish-i-knew-earlier',
-    '10-ways-to-design-more-inclusive-products',
-    '10-confessions-of-a-product-designer',
-    'when-ux-meets-cx-designing-seamless-experiences',
-  ].map(slug => ({ params: { slug } }));
+  const list = await sanityClient.fetch(postsListQuery).catch(() => []);
+  return list.map((p: any) => ({ params: { slug: p.slug } }));
 }
 
 const { slug } = Astro.params;
-const post = posts[slug];
+const post = await sanityClient.fetch(postBySlugQuery, { slug }).catch(() => null);
 
 if (!post) {
   return Astro.redirect('/404');
 }
+
+const readTime = post.readingTime ? `${post.readingTime} min read` : '';
+const authorName = post.author?.name || '';
+const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
 ---
 
-<BaseLayout title={`${post.title} — Wugweb Insights`} description={post.intro.slice(0, 160)}>
+<BaseLayout title={`${post.title} — Wugweb Insights`} description={(post.excerpt || '').slice(0, 160)}>
   <section class="wrap article">
     <p class="eyebrow"><a href="/blog">Blog</a></p>
     <h1>{post.title}</h1>
     <div class="article-meta">
-      <span class="article-category">{post.category}</span>
-      <span>{post.author}</span>
-      <span>{post.readTime}</span>
-      <span>{post.date}</span>
+      {post.category && <span class="article-category">{post.category}</span>}
+      {authorName && <span>{authorName}</span>}
+      {readTime && <span>{readTime}</span>}
+      {pubDate && <span>{pubDate}</span>}
     </div>
-    <p class="article-intro">{post.intro}</p>
+    {post.excerpt && <p class="article-intro">{post.excerpt}</p>}
 
-    <div class="article-body">
-      {post.sections.map((s) => (
-        <>
-          {s.h && <h2>{s.h}</h2>}
-          <p>{s.body}</p>
-        </>
-      ))}
-    </div>
+    {post.body && post.body.length > 0 && (
+      <div class="article-body" set:html={post.body.map((block: any) => {
+        const text = block.children?.map((c: any) => c.text).join('') || '';
+        if (block.style === 'h2') return `<h2>${text}</h2>`;
+        return `<p>${text}</p>`;
+      }).filter(Boolean).join('')}>
+      </div>
+    )}
 
-    <div class="article-tags">
-      {post.tags.map((t) => (
-        <span class="tag">{t}</span>
-      ))}
-    </div>
+    {post.tags && post.tags.length > 0 && (
+      <div class="article-tags">
+        {post.tags.map((t: string) => (
+          <span class="tag">{t}</span>
+        ))}
+      </div>
+    )}
   </section>
 </BaseLayout>
 

@@ -13,6 +13,7 @@ export default defineType({
   fields: [
     // ── Overview ──
     defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'overview' }),
+    defineField({ name: 'subtitle', type: 'string', description: 'Short tagline for card', group: 'overview' }),
     defineField({ name: 'slug', type: 'slug', options: { source: 'title' }, validation: (r) => r.required(), group: 'overview' }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US', 'fr', 'de', 'es'] }, initialValue: 'en-GB', group: 'overview' }),
     defineField({ name: 'client', type: 'string', group: 'overview' }),
@@ -24,6 +25,7 @@ export default defineType({
     defineField({ name: 'timeline', type: 'string', description: 'e.g. "2022" or "Q3 2023"', group: 'overview' }),
     defineField({ name: 'team', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, description: 'Partner organisations or team names', group: 'overview' }),
     defineField({ name: 'services', title: 'Related Services', type: 'array', of: [{ type: 'reference', to: [{ type: 'service' }] }], group: 'overview' }),
+    defineField({ name: 'partner', type: 'string', description: 'Partner agency or organisation', group: 'overview' }),
 
     // ── Content ──
     defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, group: 'content' }),
@@ -42,6 +44,9 @@ export default defineType({
         { name: 'title', type: 'string' },
         { name: 'body', type: 'text', rows: 3 },
       ]}], group: 'content',
+    }),
+    defineField({
+      name: 'designPhilosophy', type: 'text', rows: 5, description: 'Strategic insights and design philosophy', group: 'content',
     }),
     defineField({ name: 'body', type: 'blockContent', title: 'Full Body Content', group: 'content' }),
 
@@ -63,6 +68,10 @@ export default defineType({
     defineField({ name: 'seoTitle', type: 'string', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', group: 'seo' }),
+
+    // ── Sync (hidden, auto-managed) ──
+    defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
+    defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
   orderings: [{ name: 'publishedAtDesc', title: 'Publish date', by: [{ field: 'publishedAt', direction: 'desc' }] }],
   preview: { select: { title: 'title', subtitle: 'client', media: 'coverImage' } },

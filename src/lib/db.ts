@@ -1,18 +1,18 @@
-import { Client } from 'pg';
+import { Pool } from '@neondatabase/serverless';
 
 /**
- * Resolves a Postgres connection for the API routes.
+ * Resolves a Postgres connection string for the API routes.
  *
- * Hyperdrive is the preferred path — it pools connections at the edge, which
- * matters on a per-request runtime where every invocation would otherwise open
- * a fresh connection to Neon. But the Hyperdrive binding is not provisioned
- * yet (see wrangler.jsonc), and the routes used to read `HYPERDRIVE.connectionString`
- * unconditionally, so every call threw a TypeError and returned a 500.
+ * Uses @neondatabase/serverless — WebSocket-based driver that works
+ * natively on Cloudflare Workers (pg uses raw TCP which is blocked).
  *
- * So: use Hyperdrive when it's bound, otherwise fall back to the plain
- * DATABASE_URL that is already set on the Pages project. Once Hyperdrive is
- * provisioned this picks it up with no code change.
+ * Priority:
+ * 1. env.HYPERDRIVE.connectionString
+ * 2. env.DATABASE_URL
+ * 3. throw Error
  */
+let cachedPool: Pool | null = null;
+
 export function connectionStringFrom(env: Record<string, unknown>): string {
   const hyperdrive = env.HYPERDRIVE as { connectionString?: string } | undefined;
   if (hyperdrive?.connectionString) return hyperdrive.connectionString;
@@ -25,9 +25,16 @@ export function connectionStringFrom(env: Record<string, unknown>): string {
   );
 }
 
-/** Opens a connected client. Callers must `end()` it, even on error. */
-export async function connect(env: Record<string, unknown>): Promise<Client> {
-  const client = new Client({ connectionString: connectionStringFrom(env) });
-  await client.connect();
-  return client;
+/** Returns a singleton pool for the request. */
+export function getPool(env: Record<string, unknown>): Pool {
+  if (!cachedPool) {
+    cachedPool = new Pool({ connectionString: connectionStringFrom(env) });
+  }
+  return cachedPool;
+}
+
+/** Opens a connected client from the pool. Callers must release it. */
+export async function connect(env: Record<string, unknown>) {
+  const pool = getPool(env);
+  return pool.connect();
 }

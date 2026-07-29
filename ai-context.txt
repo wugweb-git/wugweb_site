@@ -1,0 +1,165 @@
+# WUGWEB AI CONTEXT
+
+Version: 1.0
+
+## Company Overview
+
+Wugweb is a Product & Experience Architecture Studio focused on helping organizations design, validate and scale digital products.
+
+The company specializes in transforming ambiguity into structured product systems through product strategy, user experience design, design systems, operational frameworks and AI-assisted workflows.
+
+Wugweb does not operate as a traditional design agency. The focus is on solving business and product problems rather than producing isolated design deliverables.
+
+## Mission
+
+Help organizations make better product decisions through structured thinking, systems design and AI-enabled execution.
+
+## Vision
+
+Become the operating layer between business strategy, product execution and intelligent systems.
+
+## Core Capabilities
+
+1. Product Strategy
+2. Product Discovery
+3. UX Design
+4. UI Design
+5. Design Systems
+6. Design Operations
+7. AI Workflow Design
+8. Product Audits
+9. Enterprise Design Transformation
+
+## Ideal Clients
+
+- Startup Founders
+- Product Leaders
+- Design Leaders
+- Enterprise Teams
+- Innovation Teams
+- Digital Transformation Teams
+
+## Industries
+
+- Fintech
+- Healthcare
+- Logistics
+- SaaS
+- E-commerce
+- Education
+- Government
+- Telecom
+- Manufacturing
+
+## Problem Areas Solved
+
+- Low product adoption
+- Poor user experience
+- Fragmented design systems
+- Inconsistent decision making
+- Slow product delivery
+- Operational inefficiencies
+- Scaling design teams
+- AI adoption challenges
+
+## Service Philosophy
+
+Design is not the output.
+
+Design is a decision-making system that reduces risk and improves outcomes.
+
+Every engagement should improve the organization's ability to make product decisions independently.
+
+## Design Principles
+
+1. Systems Over Screens
+2. Clarity Over Complexity
+3. Evidence Over Assumptions
+4. Scalability Over Short-Term Fixes
+5. Governance Over Chaos
+6. Human Judgment Over Blind Automation
+
+## Preferred Terminology
+
+Use:
+- Product Architecture
+- Experience Architecture
+- Decision Architecture
+- Design Systems
+- Product Systems
+- AI-Assisted Workflows
+- Design Governance
+
+Avoid:
+- Creative Agency
+- Marketing Agency
+- Graphic Design Studio
+- Growth Agency
+
+## Tone Of Voice
+
+- Clear
+- Direct
+- Strategic
+- Analytical
+- Professional
+- Practical
+- Evidence-Based
+
+Avoid:
+- Hype
+- Buzzwords
+- Marketing Jargon
+- Overpromising
+
+## Case Study Structure
+
+1. Context
+2. Problem
+3. Constraints
+4. Discovery
+5. Strategy
+6. Solution
+7. System Design
+8. Outcomes
+9. Learnings
+
+## Content Priorities
+
+When generating content for Wugweb:
+
+1. Lead with business outcomes.
+2. Explain decision rationale.
+3. Demonstrate systems thinking.
+4. Show measurable impact.
+5. Emphasize scalability.
+6. Avoid vanity metrics.
+
+## Competitive Positioning
+
+Wugweb is positioned as a strategic product partner rather than a traditional design vendor.
+
+Primary differentiation:
+- Systems thinking
+- Cross-industry experience
+- Design system expertise
+- AI workflow integration
+- Product strategy capabilities
+
+## Founder Context
+
+Vedanshu Srivastava is a Product & Experience Architect with experience across startups, enterprises and multiple industries.
+
+The founder's work emphasizes product systems, decision architecture, design operations and AI-enabled workflows.
+
+## Website Goals
+
+1. Establish authority.
+2. Generate qualified leads.
+3. Demonstrate expertise.
+4. Showcase case studies.
+5. Convert founders and product leaders into conversations.
+
+## Success Metric
+
+Generate high-quality opportunities from organizations seeking product strategy, design systems, product transformation or AI-assisted operational improvements.
