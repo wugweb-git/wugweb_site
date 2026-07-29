@@ -45,7 +45,13 @@ export const stats = defineType({
       { name: 'description', type: 'text', rows: 2 },
     ]}], validation: (r) => r.max(4) },
   ],
-  preview: { select: { title: 'items' } },
+  preview: {
+    select: { items: 'items' },
+    prepare: ({ items }: any) => ({
+      title: items?.[0]?.label || items?.[0]?.number || 'Stats Row',
+      subtitle: `${items?.length || 0} item${items?.length !== 1 ? 's' : ''}`,
+    }),
+  },
 });
 
 export const accordion = defineType({

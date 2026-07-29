@@ -22,5 +22,5 @@ export default defineType({
     defineField({ name: 'submittedAt', type: 'datetime', initialValue: () => new Date().toISOString(), group: 'details' }),
   ],
   orderings: [{ name: 'submittedAtDesc', title: 'Latest first', by: [{ field: 'submittedAt', direction: 'desc' }] }],
-  preview: { select: { title: 'name', subtitle: 'company', media: 'email' } },
+  preview: { select: { title: 'name', subtitle: 'company' } },
 });

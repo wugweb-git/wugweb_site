@@ -5,10 +5,10 @@ export default defineType({
   title: 'Service',
   type: 'document',
   groups: [
-    { name: 'overview', title: 'Overview' },
-    { name: 'content', title: 'Content' },
+    { name: 'overview', title: 'Overview', default: true },
     { name: 'capabilities', title: 'Capabilities' },
     { name: 'approach', title: 'Approach' },
+    { name: 'content', title: 'Content' },
     { name: 'faq', title: 'FAQ' },
     { name: 'seo', title: 'SEO' },
   ],
@@ -16,19 +16,19 @@ export default defineType({
     // ── Overview ──
     defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'overview' }),
     defineField({ name: 'slug', type: 'slug', options: { source: 'title' }, validation: (r) => r.required(), group: 'overview' }),
-    defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US', 'fr', 'de', 'es'] }, initialValue: 'en-GB', group: 'overview' }),
-    defineField({ name: 'subtitle', type: 'string', description: 'Short tagline shown in hero', group: 'overview' }),
+    defineField({ name: 'subtitle', type: 'string', description: 'Short tagline shown in hero section', group: 'overview' }),
+    defineField({ name: 'heroText', type: 'text', rows: 3, description: 'Main hero body text', group: 'overview' }),
+    defineField({ name: 'summary', type: 'text', rows: 2, description: 'Card description for service listings', group: 'overview' }),
+    defineField({ name: 'fullDescription', type: 'text', rows: 4, description: 'Detailed description for the service page', group: 'overview' }),
     defineField({ name: 'tags', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'overview' }),
-    defineField({ name: 'summary', type: 'text', rows: 2, description: 'Card description', group: 'overview' }),
-    defineField({ name: 'heroText', type: 'text', rows: 3, description: 'Hero section body text', group: 'overview' }),
-    defineField({ name: 'fullDescription', title: 'Full Description', type: 'text', rows: 3, group: 'overview' }),
-    defineField({ name: 'icon', type: 'image', description: 'Service icon or symbol', group: 'overview' }),
+    defineField({ name: 'icon', type: 'image', description: 'Service icon', group: 'overview' }),
     defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, group: 'overview' }),
-    defineField({ name: 'order', type: 'number', group: 'overview' }),
+    defineField({ name: 'order', type: 'number', hidden: true, group: 'overview' }),
+    defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US'] }, initialValue: 'en-GB', group: 'overview' }),
 
     // ── Capabilities ──
     defineField({
-      name: 'capabilities', type: 'array', group: 'capabilities',
+      name: 'capabilities', type: 'array', group: 'capabilities', description: 'Capability groups shown on the service page',
       of: [{ type: 'object', fields: [
         { name: 'n', type: 'string', title: 'Number (e.g. "01")' },
         { name: 'title', type: 'string' },
@@ -45,8 +45,6 @@ export default defineType({
         { name: 'body', type: 'text', rows: 3 },
       ]}],
     }),
-
-    // ── Process (optional phase-based) ──
     defineField({
       name: 'process', type: 'array', group: 'approach',
       of: [{ type: 'object', fields: [
@@ -55,16 +53,14 @@ export default defineType({
       ]}],
     }),
 
-    // ── Tools ──
+    // ── Content ──
     defineField({
-      name: 'tools', type: 'array', group: 'approach',
+      name: 'tools', type: 'array', group: 'content',
       of: [{ type: 'object', fields: [
         { name: 'category', type: 'string' },
         { name: 'items', type: 'array', of: [{ type: 'string' }] },
       ]}],
     }),
-
-    // ── Why Us ──
     defineField({
       name: 'why', title: 'Why Wugweb', type: 'array', group: 'content',
       of: [{ type: 'object', fields: [
@@ -72,7 +68,6 @@ export default defineType({
         { name: 'body', type: 'text', rows: 3 },
       ]}],
     }),
-
     defineField({ name: 'body', type: 'blockContent', title: 'Additional Content', group: 'content' }),
     defineField({ name: 'caseStudies', title: 'Related Case Studies', type: 'array', of: [{ type: 'reference', to: [{ type: 'caseStudy' }] }], group: 'content' }),
 
@@ -81,7 +76,7 @@ export default defineType({
       name: 'faqs', type: 'array', group: 'faq',
       of: [{ type: 'object', fields: [
         { name: 'q', type: 'string', title: 'Question' },
-        { name: 'a', type: 'text', rows: 3, title: 'Answer' },
+        { name: 'a', type: 'text', rows: 4, title: 'Answer' },
       ]}],
     }),
 
@@ -90,9 +85,13 @@ export default defineType({
     defineField({ name: 'seoDescription', type: 'text', rows: 2, group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', group: 'seo' }),
 
-    // ── Sync (hidden, auto-managed) ──
+    // ── Sync ──
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
     defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
+  ],
+  orderings: [
+    { name: 'orderAsc', title: 'Display order', by: [{ field: 'order', direction: 'asc' }] },
+    { name: 'titleAsc', title: 'Title A-Z', by: [{ field: 'title', direction: 'asc' }] },
   ],
   preview: { select: { title: 'title', subtitle: 'summary', media: 'icon' } },
 });

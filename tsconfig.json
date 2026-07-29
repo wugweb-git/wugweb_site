@@ -3,7 +3,6 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist", "sanity"],
   "compilerOptions": {
-    "types": ["@cloudflare/workers-types"],
     "jsx": "react-jsx"
   }
 }

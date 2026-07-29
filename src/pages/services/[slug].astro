@@ -206,12 +206,18 @@ const hardcodedServices: Record<string, any> = {
   },
 };
 
-const { slug } = Astro.params;
+const slug = Astro.params.slug || '';
 const fromSanity = await sanityClient.fetch(serviceBySlugQuery, { slug }).catch(() => null);
-const fallback = hardcodedServices[slug];
-const service = { ...(fallback || {}), ...(fromSanity || {}) };
+const fallback = hardcodedServices[slug] || null;
+// Use fallback for template rendering, enriched by Sanity where available
+const service = fallback || fromSanity;
 
-if (!fallback) {
+// Helper to safely access array fields
+function safeArr(arr: any[] | null | undefined, fallbackArr: any[]) {
+  return Array.isArray(arr) && arr.length > 0 ? arr : fallbackArr;
+}
+
+if (!service) {
   return Astro.redirect('/404');
 }
 
@@ -229,7 +235,7 @@ export async function getStaticPaths() {
       <p class="hero-sub" data-reveal>{service.subtitle}</p>
       <p class="hero-text" data-reveal>{service.heroText}</p>
       <ul class="service-tags" data-reveal>
-        {service.tags.map((t) => <li>{t}</li>)}
+        {(safeArr(service.tags, [])).map((t: string) => <li>{t}</li>)}
       </ul>
       <a href="/contact-us" class="btn btn-solid" data-reveal>Get in Touch</a>
     </div>
@@ -237,14 +243,14 @@ export async function getStaticPaths() {
 
   <!-- BODY -->
   <section class="wrap detail-body">
-    <p data-reveal>{service.body}</p>
+    <p data-reveal>{typeof service.body === 'string' ? service.body : (service.fullDescription || service.summary || '')}</p>
   </section>
 
   <!-- CAPABILITIES -->
   <section class="wrap capabilities-section">
     <p class="eyebrow" data-reveal>What we can do</p>
     <div class="caps-grouped">
-      {service.capabilities.map((c) => (
+      {(safeArr(service.capabilities, [])).map((c: any) => (
         <div class="cap-group" data-reveal>
           <span class="cap-group-n">{c.n}</span>
           <h3 class="cap-group-title">{c.title}</h3>
@@ -261,7 +267,7 @@ export async function getStaticPaths() {
     <p class="eyebrow" data-reveal>Why us?</p>
     <h2 data-reveal>Built to deliver lasting impact.</h2>
     <div class="why-grid">
-      {service.why.map((w) => (
+      {(safeArr(service.why, [])).map((w: any) => (
         <div class="why-item" data-reveal>
           <h3>{w.title}</h3>
           <p>{w.body}</p>
@@ -275,7 +281,7 @@ export async function getStaticPaths() {
     <p class="eyebrow" data-reveal>Our Approach</p>
     <h2 data-reveal>A collaborative process rooted in strategic clarity.</h2>
     <div class="approach-steps">
-      {service.approach.map((a) => (
+      {(safeArr(service.approach, [])).map((a: any) => (
         <div class="approach-step" data-reveal>
           <span class="step-n">{a.n}</span>
           <h3>{a.title}</h3>
@@ -285,7 +291,7 @@ export async function getStaticPaths() {
     </div>
   </section>
 
-  {service.process && (
+  {safeArr(service.process, null) && (
   <!-- PROCESS FLOW -->
   <section class="wrap process-section">
     <p class="eyebrow" data-reveal>How we do it</p>
@@ -303,7 +309,7 @@ export async function getStaticPaths() {
   </section>
   )}
 
-  {service.tools && (
+      {(safeArr(service.tools, null)) && (
   <!-- TOOLKIT -->
   <section class="wrap toolkit-section">
     <p class="eyebrow" data-reveal>Our Design Toolkit</p>
@@ -325,7 +331,7 @@ export async function getStaticPaths() {
   <section class="wrap detail-faq">
     <h2 data-reveal>Frequently asked questions</h2>
     <div class="faq-list" data-reveal>
-      {service.faqs.map((f) => (
+      {(safeArr(service.faqs, [])).map((f: any) => (
         <details class="faq-item">
           <summary>{f.q}</summary>
           <p>{f.a}</p>

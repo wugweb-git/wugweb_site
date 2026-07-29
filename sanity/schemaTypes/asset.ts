@@ -24,7 +24,7 @@ export default defineType({
     defineField({ name: 'extension', type: 'string', group: 'path' }),
     defineField({ name: 'ownerType', type: 'string', options: { list: ['Client', 'Internal', 'Partner'] }, group: 'details' }),
     defineField({ name: 'ownerId', type: 'string', description: 'Reference to client or project', group: 'details' }),
-    defineField({ name: 'localExists', type: 'boolean', readOnly: true, description: 'Whether file exists in public/assets/', group: 'path' }),
+    defineField({ name: 'localExists', type: 'boolean', readOnly: true, description: 'Whether file exists in public/assets/' }),
   ],
   orderings: [
     { name: 'nameAsc', title: 'Name A-Z', by: [{ field: 'name', direction: 'asc' }] },

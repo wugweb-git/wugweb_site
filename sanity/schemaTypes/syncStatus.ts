@@ -16,6 +16,6 @@ export default defineType({
     defineField({ name: 'notes', type: 'text', rows: 2 }),
   ],
   preview: {
-    select: { title: 'source', subtitle: 'status', media: 'target' },
+    select: { title: 'source', subtitle: 'status' },
   },
 });
