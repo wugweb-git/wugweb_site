@@ -1,0 +1,25 @@
+---
+interface Props {
+  items: { slug: string; client: string; title: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="related-grid">
+  {items.map((cs: any) => (
+    <a href={`/work/${cs.slug || ''}`} class="related-card">
+      <h3>{cs.title}</h3>
+      <p>{cs.client}</p>
+    </a>
+  ))}
+</div>
+
+<style>
+  .related-grid { display: grid; gap: var(--gap-6); }
+  @media (min-width: 768px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
+  .related-card { text-decoration: none; border-top: 1px solid var(--line); padding-top: var(--gap-4); display: block; }
+  .related-card h3 { font-size: 1.05rem; font-weight: 400; color: var(--fg); }
+  .related-card p { margin-top: .25rem; font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); }
+  .related-card:hover h3 { color: var(--accent); }
+</style>

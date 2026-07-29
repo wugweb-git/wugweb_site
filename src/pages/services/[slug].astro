@@ -2,7 +2,7 @@
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
-import { serviceBySlugQuery } from '../../lib/queries';
+import { serviceBySlugQuery, caseStudiesListQuery, postsListQuery } from '../../lib/queries';
 
 const hardcodedServices: Record<string, any> = {
   'strategy': {
@@ -209,8 +209,22 @@ const hardcodedServices: Record<string, any> = {
 const slug = Astro.params.slug || '';
 const fromSanity = await sanityClient.fetch(serviceBySlugQuery, { slug }).catch(() => null);
 const fallback = hardcodedServices[slug] || null;
-// Use fallback for template rendering, enriched by Sanity where available
 const service = fallback || fromSanity;
+
+// Fetch related work + blog posts for this service
+const allCaseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+const allPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const relatedWork = allCaseStudies.filter((cs: any) => {
+  const d = (cs.disciplines || []).map((x: string) => x.toLowerCase());
+  const t = (cs.tags || []).map((x: string) => x.toLowerCase());
+  const slugLower = slug.toLowerCase();
+  return d.includes(slugLower) || t.includes(slugLower) || (cs.industry || '').toLowerCase().includes(slugLower);
+}).slice(0, 4);
+const relatedPosts = allPosts.filter((p: any) => {
+  const cat = (p.category || '').toLowerCase();
+  const slugLower = slug.toLowerCase();
+  return cat.includes(slugLower) || (slugLower === 'strategy' && cat === 'strategy');
+}).slice(0, 3);
 
 // Helper to safely access array fields
 function safeArr(arr: any[] | null | undefined, fallbackArr: any[]) {

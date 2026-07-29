@@ -4,12 +4,15 @@
 // (would fight the actual brand thesis statement below).
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { sanityClient } from '../lib/sanity';
-import { servicesListQuery, singletonPageQuery } from '../lib/queries';
+import { servicesListQuery, caseStudiesListQuery, postsListQuery, singletonPageQuery } from '../lib/queries';
 
 const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
 
-// Hero headline + intro copy now Sanity-editable, same pattern as
-// about/faq/contact-us. Falls back to the known real copy if empty.
+// Fetch Sanity data for homepage sections
+const sanityCaseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+const sanityPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+
+// Hero headline + intro
 const homePage = await sanityClient.fetch(singletonPageQuery, { pageId: 'home' }).catch(() => null);
 const headlineText = homePage?.title ?? 'Where Vision Meets Velocity';
 const introParas: string[] = (homePage?.body ?? [])
@@ -63,21 +66,28 @@ const pillars = [
   { n: '06', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: '/assets/services/martech-genai/seamless-platform-integration.mp4' },
 ];
 
-// Curated homepage case-study picks — same treatment as services above:
-// a fixed, ordered homepage teaser rather than a live Sanity query.
-// Full list lives at /work, Sanity-driven once you add caseStudy docs.
-// Aditya Birla Capital previously reused the Inkompass clip; the Notion
-// asset sheet has the real one (abc_thumb.mp4), now used.
-const workItems = [
-  { client: 'Aditya Birla Capital', category: 'UX Design', title: "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool", slug: 'demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool', video: '/assets/work/aditya-birla-capital/abc-thumb.mp4' },
-  { client: 'Axis Bank', category: 'Strategy, UX Design', title: 'The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform', slug: 'the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform', video: '/assets/work/axis-bank/axis-thumb.mp4' },
-  { client: 'METCRED', category: 'UX Design, Strategy', title: 'The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience', slug: 'the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience', video: '/assets/work/metcred/metcred-thumb.mp4' },
-  { client: 'Philip Morris International', category: 'UX Design', title: 'Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future', slug: 'redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future', video: '/assets/work/inkompass/inkompass-thumb.mp4' },
-  { client: 'Airtel', category: 'UX Design', title: 'Airtel Xsafe – Securing Homes with Intuitive Digital Experiences', slug: 'airtel-xsafe-securing-homes-with-intuitive-digital-experiences', video: '/assets/work/airtel-xsafe/xsafe-thumb.mp4' },
-  { client: 'VisiONE', category: 'UX Design', title: 'VisiONE – Empowering Workforce Development with Competency-Based Assessments', slug: 'visione-empowering-workforce-development-with-competency-based-assessments', video: '/assets/work/visione/visione-thumb.mp4' },
-  { client: 'IndusInd Bank', category: 'UX Design', title: 'IndusNinja – Your AI-Powered Financial Ninja', slug: 'indusninja-your-ai-powered-financial-ninja', video: '/assets/work/indusind-bank/indusninja-thumb.mp4' },
-  { client: 'Sadhan', category: 'UX Design, Strategy', title: 'Sadhan – Streamlining Driver Onboarding & Lead Management', slug: 'sadhan-streamlining-driver-onboarding-lead-management', video: '/assets/work/sadhan/sadhan-thumb.mp4' },
-];
+// Curated homepage case-study picks — top 8 featured from Sanity
+const thumbAssets = await sanityClient.fetch(
+  '*[_type == "asset" && usage == "Thumbnail"]{relativePath, name}'
+).catch(() => []);
+
+function findThumb(slug: string) {
+  const norm = slug?.toLowerCase().replace(/[^a-z0-9]/g, '') || '';
+  for (const a of thumbAssets) {
+    const p = (a.relativePath || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const n = (a.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (p.includes(norm) || n.includes(norm)) return '/assets/' + a.relativePath;
+  }
+  return '';
+}
+
+const workItems = (sanityCaseStudies || []).slice(0, 8).map((cs: any) => ({
+  client: cs.client || '',
+  category: (cs.disciplines || []).join(', ') || '',
+  title: cs.title,
+  slug: cs.slug,
+  video: findThumb(cs.slug),
+}));
 
 // Client logos — still on Framer's CDN (framerusercontent.com), not
 // migrated. These will break whenever Framer stops serving them. Real

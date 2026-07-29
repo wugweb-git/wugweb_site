@@ -1,0 +1,26 @@
+---
+interface Props {
+  items: { n: string; label: string; copy?: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="stats-grid">
+  {items.map((s) => (
+    <li class="stats-item">
+      <span class="stats-n">{s.n}</span>
+      <p class="stats-label">{s.label}</p>
+      {s.copy && <p class="stats-copy">{s.copy}</p>}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .stats-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); }
+  @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+  .stats-item { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
+  .stats-n { font-family: var(--font-mono); color: var(--accent-warm); }
+  .stats-label { color: var(--fg); font-size: 1.1rem; margin-top: var(--gap-2); }
+  .stats-copy { margin-top: var(--gap-1); color: var(--fg-muted); }
+</style>

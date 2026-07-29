@@ -5,15 +5,47 @@ import { sanityClient } from '../../lib/sanity';
 import { caseStudiesListQuery } from '../../lib/queries';
 
 const caseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
-const categories = ['All', ...new Set(caseStudies.flatMap((cs: any) => cs.disciplines || []).filter(Boolean))];
-if (categories.length <= 1) categories.push('Design', 'UX Design', 'Strategy', 'Development');
+const allCategories = [...new Set(caseStudies.flatMap((cs: any) => cs.disciplines || []).filter(Boolean))];
+const categories = ['All', ...allCategories];
+
+// Fetch all thumbnail asset paths from Sanity
+const thumbAssets = await sanityClient.fetch(
+  '*[_type == "asset" && usage == "Thumbnail"]{relativePath, name, ownerId}'
+).catch(() => []);
+
+// Normalize slug/client name for matching
+function normalize(str: string) {
+  return str.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function findThumb(slug: string, client: string) {
+  // Check if the Notion slug or slug-derived path exists
+  // Try matching by normalized slug, then by client name
+  const slugNorm = normalize(slug);
+  const clientNorm = normalize(client);
+  
+  for (const asset of thumbAssets) {
+    const pathNorm = normalize(asset.relativePath || '');
+    const nameNorm = normalize(asset.name || '');
+    if (pathNorm.includes(slugNorm) || nameNorm.includes(slugNorm)) {
+      return '/assets/' + asset.relativePath;
+    }
+    if (pathNorm.includes(clientNorm) || nameNorm.includes(clientNorm)) {
+      return '/assets/' + asset.relativePath;
+    }
+  }
+  
+  // Fallback: construct local file path using kebab-case convention
+  const localSlug = client.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return `/assets/work/${localSlug}/${localSlug}-thumb.mp4`;
+}
 
 const workItems = caseStudies.map((cs: any) => ({
   client: cs.client || '',
   category: (cs.disciplines || []).join(', ') || 'UX Design',
   title: cs.title,
   slug: cs.slug,
-  video: `/assets/work/${cs.slug?.replace(/^.*?(\w+)/, '$1') || ''}-thumb.mp4`,
+  video: findThumb(cs.slug, cs.client),
 }));
 ---
 
@@ -36,7 +68,7 @@ const workItems = caseStudies.map((cs: any) => ({
       {workItems.map((w) => (
         <li data-reveal data-categories={w.category}>
           <a href={`/work/${w.slug}`}>
-            <div class="work-placeholder" style="width:100%;aspect-ratio:16/10;background:var(--surface-2);border-radius:var(--r-2);display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-family:var(--font-mono);font-size:0.75rem;">{w.client}</div>
+            {w.video ? <video autoplay muted loop playsinline src={w.video}></video> : <div class="work-placeholder" style="width:100%;aspect-ratio:16/10;background:var(--surface-2);border-radius:var(--r-2);display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-family:var(--font-mono);font-size:0.75rem;">{w.client}</div>}
             <p class="work-client">{w.client} — {w.category}</p>
             <h3>{w.title}</h3>
           </a>
@@ -47,18 +79,19 @@ const workItems = caseStudies.map((cs: any) => ({
 </BaseLayout>
 
 <style>
-  .work-hero { padding-block: 8rem 4rem; }
-  .work-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-top: 1rem; }
-  .work-grid-section { padding-block: 4rem 6rem; border-top: 1px solid var(--line); }
+  .work-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
+  .work-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-top: var(--gap-4); }
+  .work-grid-section { padding-block: var(--space-section-md) var(--space-section-xl); border-top: 1px solid var(--line); }
   .work-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
   .work-grid a { text-decoration: none; display: block; }
-  .work-client { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); margin-top: var(--gap-4); }
-  .work-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: 0.4rem; }
+  .work-grid video { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); }
+  .work-client { font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); margin-top: var(--gap-4); }
+  .work-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-1); }
   .work-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
-  .filter-chip { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.5rem 1rem; border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .filter-chip { font-family: var(--font-mono); font-size: .75rem; padding: .5rem 1rem; border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
-  .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 190, 26, 0.1); }
+  .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255,190,26,.1); }
   .work-grid li.hidden { display: none; }
 </style>
 
@@ -68,18 +101,14 @@ const workItems = caseStudies.map((cs: any) => ({
   inView('.work-grid li', (el) => {
     animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, easing: 'ease-out' });
   });
-
   document.querySelectorAll('.filter-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       const cat = chip.dataset.category;
       document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       document.querySelectorAll('.work-grid li').forEach(item => {
-        if (cat === 'All' || item.dataset.categories?.includes(cat)) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
+        if (cat === 'All' || item.dataset.categories?.includes(cat)) item.classList.remove('hidden');
+        else item.classList.add('hidden');
       });
     });
   });
