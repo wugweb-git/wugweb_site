@@ -213,7 +213,14 @@
       "Shell(for url in \"/\" \"/work\" \"/blog\" \"/services\" \"/services/strategy\" \"/services/brand\" \"/services/experience\" \"/services/engineering\" \"/services/growth\" \"/services/operations\" \"/about\" \"/contact-us\" \"/faq\" \"/thank-you\" \"/footer/sitemap\" \"/footer/impact\" \"/404\" \"/robots.txt\" \"/llms.txt\" \"/ai-context.txt\" \"/brand-system.txt\" \"/security.txt\"; do status=$(curl -sL -o /dev/null -w \"%{http_code}\" \"https://e9694c79.wugweb.pages.dev$url\" 2>/dev/null) if [ \"$status\" != \"200\" ]; then echo \"⚠️ $status $url\"; fi done && echo \"✅ All 200\")",
       "Shell(curl -sL -o /dev/null -w %{http_code} https://wugweb.pages.dev/services/strategy)",
       "Shell(curl -sL -o /dev/null -w %{http_code} https://c1ce800e.wugweb.pages.dev/ 2 > /dev/null)",
-      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site && git add -A && git commit -F - <<'EOF' Fix tsconfig, admindesign.md, deploy fixes - Remove empty \"types\": [] from tsconfig (caused IDE error) - Create docs/admindesign.md — Sanity Studio admin design reference - Fix Cloudflare deploy by removing nested .git from assets/ - Build passes, deploy active Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF)"
+      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site && git add -A && git commit -F - <<'EOF' Fix tsconfig, admindesign.md, deploy fixes - Remove empty \"types\": [] from tsconfig (caused IDE error) - Create docs/admindesign.md — Sanity Studio admin design reference - Fix Cloudflare deploy by removing nested .git from assets/ - Build passes, deploy active Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF)",
+      "Shell(curl -sL -o /dev/null -w %{http_code} https://d40d87ff.wugweb.pages.dev/)",
+      "Shell(curl -sL -o /dev/null -w %{http_code} https://d40d87ff.wugweb.pages.dev/work)",
+      "Shell(curl -sL -o /dev/null -w %{http_code} https://d40d87ff.wugweb.pages.dev/services/strategy)",
+      "Shell(curl -sL -o /dev/null -w %{http_code} https://d4f6dd05.wugweb.pages.dev/)",
+      "Shell(curl -sL -o /dev/null -w %{http_code} https://d4f6dd05.wugweb.pages.dev/work)",
+      "Shell(curl -sL -o /dev/null -w %{http_code} https://d4f6dd05.wugweb.pages.dev/services/strategy)",
+      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site && git add -A && git commit -F - <<'EOF' Sanity Studio redesign: admin nav, dashboard, preview fixes, emoji sections - New desk structure: Dashboard → ✍ Content → 💼 Business → 🎨 Brand → 🧠 Knowledge → ⚙ System - Dashboard with Recently Edited (7 days), All Drafts, Sync Status, Site Settings - All previews use prepare() with & → 'and' sanitization (fixes DOM crash) - Post, caseStudy, service previews sanitized and formatted - Studio deployed, frontend deployed, all routes 200 Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF)"
     ],
     "deny": [],
     "defaultMode": "default"

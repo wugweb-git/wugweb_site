@@ -52,7 +52,7 @@ export default defineType({
     select: { title: 'title', subtitle: 'category', media: 'coverImage', date: 'publishedAt' },
     prepare: ({ title, subtitle, media, date }: any) => ({
       title: title || 'Untitled',
-      subtitle: subtitle ? `${subtitle}${date ? ` · ${new Date(date).toLocaleDateString()}` : ''}` : date ? new Date(date).toLocaleDateString() : '',
+      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : date ? new Date(date).toLocaleDateString() : '',
       media,
     }),
   },

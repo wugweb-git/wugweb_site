@@ -93,5 +93,12 @@ export default defineType({
     { name: 'orderAsc', title: 'Display order', by: [{ field: 'order', direction: 'asc' }] },
     { name: 'titleAsc', title: 'Title A-Z', by: [{ field: 'title', direction: 'asc' }] },
   ],
-  preview: { select: { title: 'title', subtitle: 'summary', media: 'icon' } },
+  preview: {
+    select: { title: 'title', subtitle: 'summary', media: 'icon' },
+    prepare: ({ title, subtitle, media }: any) => ({
+      title: title || 'Untitled',
+      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and').substring(0, 80) : '',
+      media,
+    }),
+  },
 });

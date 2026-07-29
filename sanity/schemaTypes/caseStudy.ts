@@ -81,7 +81,7 @@ export default defineType({
     select: { title: 'title', subtitle: 'client', media: 'coverImage', featured: 'featured' },
     prepare: ({ title, subtitle, media, featured }: any) => ({
       title: title || 'Untitled',
-      subtitle: `${subtitle || ''}${featured ? ' ⭐ Featured' : ''}`.trim(),
+      subtitle: `${subtitle || ''}${featured ? ' ⭐' : ''}`.trim(),
       media,
     }),
   },
