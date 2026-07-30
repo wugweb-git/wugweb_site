@@ -1,0 +1,31 @@
+# LOCAL.md
+
+This is a template for local-only notes, secrets, and environment configuration.
+Copy this file to `LOCAL.md` and fill in your own values. `LOCAL.md` is gitignored — never commit it.
+
+## Development shortcuts
+
+- Local Astro dev server: http://localhost:4321
+- Local Sanity Studio: http://localhost:3333
+- Cloudflare Pages preview: https://wugweb.pages.dev
+
+## Secrets (never commit)
+
+```bash
+# .env (also gitignored)
+SANITY_PROJECT_ID=splvhmk1
+SANITY_DATASET=production
+SANITY_TOKEN=sk...                 # Editor token for migrations
+SANITY_SYNC_TOKEN=...              # Auth token for /api/sync
+DATABASE_URL=postgresql://...      # Neon connection string
+CLOUDFLARE_API_TOKEN=...           # For wrangler deploys
+```
+
+## Personal notes
+
+- ...
+- ...
+
+## Scratchpad
+
+- ...

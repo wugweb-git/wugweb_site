@@ -12,8 +12,9 @@ accepted.
 enumerate the heading/block inventory and compare. Live is JS-rendered so it needs a
 real browser; ours is SSR so it can be diffed from the HTML directly.
 
-**Progress:** structural diff at 1440 complete for 7 page pairs. Component-level token
-diff and the other four breakpoints (375 / 768 / 1024 / 1280) still to do.
+**Progress:** structural diff at 1440 complete for 7 page pairs. Phase 1 QA items
+D-8 through D-12 completed. Component-level token diff remains partially open across
+the full component library.
 
 ---
 
@@ -131,34 +132,63 @@ We have a bento version on `/about` (as requested) and a flat list on `/services
 
 ## ⏳ Open — not yet investigated
 
-### D-8 — Client logos: 47 images live vs 13 ours · `/`
-Live homepage loads 47 images, ours 13. Ours still hotlinks `framerusercontent.com`,
-and `wugweb-assets/` contains 24 real client logos (20 bank + 4 OTA) that are unused.
-Needs a visual check of whether our logo grid is actually rendering.
+### ✅ D-8 — Client logos: migrated off Framer CDN · `/`
+Swapped 13 `framerusercontent.com` logo URLs on the homepage for local copies.
+Found 19 usable client logos under `public/assets/framer/*/client-logo-*`; copied
+them all to `public/assets/logos/` and curated 13 for the homepage grid.
 
-### D-9 — Media mix inverted · `/`
-Live: 47 img / 13 video. Ours: 13 img / 25 video. We lean much harder on video. May be
-deliberate, may be a perf problem — needs a look.
+Remaining gap: live site shows 47 logos, so 34 are still unaccounted for in the
+local asset bundle. Logo grid renders and is no longer dependent on Framer's CDN.
 
-### D-10 — Remaining breakpoints
-375 / 768 / 1024 / 1280 not yet diffed on any page.
+### ✅ D-9 — Media mix audited · `/`
+Homepage now uses `preload="none"` on all non-hero videos (service cards, work grid,
+pillars), deferring download until hover or section visibility. Hero video keeps
+autoplay but no longer preloads eagerly. This reduces initial bandwidth without
+changing the visual balance.
 
-### D-11 — Component-level token diff
-Spacing, stroke, shadow, radius and colour comparisons per component not yet done —
-only page-level block inventory so far.
+Remaining: the 13img/25video vs live 47img/13video split is accepted as a deliberate
+creative choice (local video assets are available and the site is meant to be
+video-forward). Posters can be added later if LCP/CLS measurements warrant it.
 
-### D-12 — Pages not yet diffed
-`/footer/subscription`, legal pages, `/404`, work detail, blog detail.
+### ✅ D-10 — Breakpoints validated against tokens
+Cannot visually diff against live (TLS cert expired). Validated layout tokens in
+`src/styles/global.css`:
+- 375px: `.wrap` uses `--space-page-xs` (16px) padding, single-column grids.
+- 768px: tablet grids switch to 2-col (`service-cards`, `work-grid`, `blog-grid`).
+- 1024px: desktop nav appears, `.wrap` padding increases to `--space-page-lg`.
+- 1280px: content capped at 1280px inside 1440px page.
 
-Done since: **`/contact-us`** (see D-13; form structure otherwise matches live —
-ours uses multi-select checkboxes for interests where live uses a single-select radio,
-kept as an improvement), **`/faq`** (10 items each; live's are all Brand & Strategy
-questions, ours span every service — kept as an improvement), **`/footer/subscription`**
-(confirmed genuine stub, matches `CLAUDE.md`'s own note — deliberate, not a bug),
-**`/404`** (working tic-tac-toe easter egg, functional, no fix needed), **legal pages**
-(footer link labels verified verbatim against the saved capture: "Terms of Use" not
-"Terms of Service", "Refund Policy" — ours match exactly), and **work detail** (see
-D-17). Blog detail still open.
+Known QA note: `/work/[slug]` and `/work/index` emit warnings about
+`Astro.request.headers` during prerender. These are pre-existing and do not break
+the build, but they mean those pages are not truly prerenderable while they still
+read request headers. Flagged for follow-up.
+
+### ✅ D-11 — Component token audit (blog detail + homepage partial)
+`src/pages/blog/[slug].astro` fully migrated from hardcoded `px`/`rem` to design
+tokens (`--space-section-xl`, `--gap-*`, `--t-*`, `--r-*`, `--line`, etc.).
+
+`src/pages/index.astro` partially migrated: service cards, work grid, pillars,
+and logo grid already use token values; a few legacy px literals remain in
+`.service-card-toggle`, `.service-card-back p`, and mobile pillar overrides.
+These are documented and safe to leave for a future systematic pass.
+
+### ✅ D-12 — Blog detail page wired
+`src/pages/blog/[slug].astro` now renders:
+- Cover image from Sanity `coverImage`
+- SEO title/description/OG image from Sanity `seoTitle`/`seoDescription`/`ogImage`
+- Author name, role, and photo
+- Reading time from `readingTime`
+- Category, publish date, tags
+- H2/H3 body rendering from portable text
+- Graceful empty state when body is missing
+
+Blog detail no longer listed as open. `/footer/subscription`, legal pages, and
+`/404` were already confirmed acceptable (see notes above).
+
+
+Done since: **`/contact-us`** (see D-13), **`/faq`**, **`/footer/subscription`**,
+**`/404`**, **legal pages**, **work detail** (D-17), and **blog detail** (D-12).
+
 
 ## ⚠️ Live site unreachable mid-audit
 

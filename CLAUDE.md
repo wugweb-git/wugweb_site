@@ -1,191 +1,216 @@
 # CLAUDE.md
 
-Context for AI agents (or humans) working in this repo. Read this before
-touching `wrangler.jsonc` or deploy config — several things here were
-learned through actual failed builds, not guessed.
+Canonical AI memory for the wugweb.com repo. Read this before any session.
 
-## What this is
+## Project Overview
 
-wugweb.com redesign: Astro (SSR via `@astrojs/cloudflare`) deployed to
-Cloudflare Pages, content in Sanity + Neon (Neon is SSOT). Migrating off
-Framer. Motion (formerly framer-motion) for interactions, via its vanilla
-API — no React islands used on the main pages, to keep shipped JS minimal.
+wugweb.com is a marketing website for Wugweb, a product & experience architecture studio.
+It is built as an **Astro 5** site with **server-side rendering** on **Cloudflare Pages**, content managed in **Sanity**, and structured content synced to **Neon Postgres**. The project is migrating off a Framer-hosted predecessor; assets are being moved from `framerusercontent.com` to local `public/assets/`.
 
-## Current status (update this section as things change)
+## Architecture
 
-- **Build:** `npm run build` passes clean. Deploy at `wugweb.pages.dev` is live.
-- **Sanity:** project `splvhmk1`, dataset `production`, Studio at
-  `https://wugweb.sanity.studio/` and `http://localhost:3333`.
-  **Content populated via migration scripts** — 82/37 case studies (82 after dedup, 37 unique), 65 blog posts (15 with body, 50 with SEO metadata), 12 people (11 team + Wugweb Design author), site
-  settings, 13 singleton pages.
-  `blockContent` is registered in schema types (was missing — don't
-  remove it from the array).
-- **Sanity schema types:** service, caseStudy, post, person,
-  singletonPage, siteSettings, contactSubmission, syncStatus, client,
-  industry, engagement, taxonomy + block content objects (cta, stats,
-  accordion, logoCloud, video, twoColumns).
-- **Neon is connected.** Schema at `neon/schema.sql` applied with tables:
-  entities, content_items (JSONB data column), content_relations,
-  sync_log (plus existing visitor_profiles, contact_submissions).
-- **Ownership model:** every row has an `owner` column referencing the `entities` table.
-  Two primary entities seeded: `vedanshu` (person) and `wugweb` (company). Each content
-  item can be owned by any entity — the schema is flexible. No hardcoded owner assumption.
-- **Neon is SSOT** for all structured content. 355 documents synced. Media (images, videos,
-  files) goes to Cloudflare R2 — NOT stored in Neon.
-- **Cloudflare Pages secrets set:** `DATABASE_URL` (Neon connection
-  string) and `SANITY_SYNC_TOKEN` (for sync API auth).
-  Hyperdrive binding NOT wired — falls back to DATABASE_URL.
-- **Sync API** at `src/pages/api/sync.ts` — POST Sanity docs to upsert
-  into Neon `content_items`. Auth'd via `X-Sync-Token` header.
-- **Content query helpers** at `src/lib/content.ts` (`getByType`,
-  `getAllByType`, `getBySlug`, `getSyncSummary`) + `NEON` SQL constants
-  in `src/lib/queries.ts` — ready to swap frontend pages from Sanity CDN
-  to Neon queries.
-- **Pages built:** home, about, services (+6 hardcoded slugs), work (+82
-  dynamic Sanity-driven slugs), blog (+65 dynamic Sanity-driven slugs), contact-us (POST handler
-  → Neon → /thank-you), faq, footer/impact, footer/subscription (stub),
-  privacy-policy, termsofuse, refund-policy, 404, thank-you.
-- **Not built:** `footer/sitemap` (excluded intentionally).
-- **Mobile nav:** absolute dropdown panel (not full-screen) with
-  contact/legal block, matches design.md §2.3.
-- **Design tokens Phase 2 complete** in `src/styles/global.css`:
-  `--font-weight-*` (4-step), `--core-line-height-*` (6-step, spec names),
-  `r-*`/`radius-*` (incl. 20/32px steps), `s-*`/`p-*`/`gap-*` numeric
-  ramp (0-12), `--space-section-*`/`--space-page-*`, 6 breakpoint
-  constants, motion duration/easing tokens, semantic colours
-  (`/Feedback/*`, `/Accent/Blue`, `/Secondary/*`), neutral scale 0-10
-  (Framer numbering). All legacy aliases preserved for backward compat.
-- **Brand assets** in `public/brand/`. Favicon/apple-touch-icon served
-  locally (not Framer CDN).
-- **Colour tokens** are the live site's own values (text `#f4f4f4`,
-  muted `#bababa`, surfaces `#191919`/`#2b2b2b`). Don't "fix" text to
-  pure white — deliberate.
+- **Framework**: Astro 5 (`output: 'server'`)
+- **SSR adapter**: `@astrojs/cloudflare` v12
+- **UI islands**: React 18 via `@astrojs/react` (used sparingly; `Hero.tsx` is the only `.tsx` component)
+- **Animations**: `motion` v12 (vanilla API), client-side only
+- **CMS**: Sanity (`splvhmk1` / `production`) — admin panel
+- **Database**: Neon Postgres via `@neondatabase/serverless` — structured content SSOT
+- **Media**: local `public/assets/` for now; R2 intended but not set up
+- **Deployment**: Cloudflare Pages (`wugweb.pages.dev`), Git-connected
 
-## Deploy gotchas (read before editing wrangler.jsonc)
+## Technology Stack
 
-This project is a genuine classic **Pages** project, despite some
-Cloudflare dashboard UI copy calling it a "Worker" — confirmed directly
-by Wrangler's own CLI warning during a failed deploy ("you have run
-`wrangler deploy` on a Pages project, `wrangler pages deploy` should be
-used instead"). That's more authoritative than dashboard label text.
+Key dependencies (from `package.json`):
 
-Consequences:
-- `wrangler.jsonc` should use `"pages_build_output_dir": "./dist"`, NOT
-  `"main"` / `"assets"` (those are Workers-deploy-style fields and were
-  tried and reverted — real fix was elsewhere).
-- The actual fix that mattered was the dashboard's **Deploy command**
-  setting (Settings → Build configuration), which needs to be
-  `npx wrangler pages deploy dist`, not the default `npx wrangler deploy`.
-- **Node version matters a lot**: Wrangler 4.x requires Node ≥22.
-  `.node-version` in this repo is pinned to `22` — a previous pin to
-  `20` (an earlier, unconfirmed guess at a different problem) caused a
-  real regression and a wasted debug round. Don't lower this without a
-  specific reason.
-- `public/.assetsignore` contains `_worker.js` and `_routes.json` —
-  without it, Cloudflare's asset uploader can treat the compiled
-  server-side Worker code as a public static asset, which is both wrong
-  and a warning at minimum.
-- Watch for `Invalid binding "SESSION"` at runtime even after a
-  successful deploy — `@astrojs/cloudflare` auto-enables session support
-  requiring a `SESSION` KV binding, noticed as a build-log warning but
-  never hit as an actual runtime error yet. If it appears:
-  `wrangler kv namespace create SESSION`, then add the binding to
-  `wrangler.jsonc`.
-- **The build's API token is named `Website`** in the project's Settings
-  → Build configuration → API token field — not the account-level token
-  named `wugweb`. These are different tokens, and the account-level one
-  didn't appear in that project's token picker at all (only
-  `Create new token`, `Website`, and `wugweb build token` ever showed
-  up there) — that dropdown appears to only surface tokens created via
-  its own guided flow, not every token that exists in the account. If
-  auth errors return, use **"Create new token" from inside that same
-  dropdown** rather than hand-picking permissions on a manually created
-  token — the guided flow scopes it correctly for Pages automatically
-  and doesn't expose a permissions editor because there's nothing to
-  configure.
+- `astro` ^5.0.0
+- `@astrojs/cloudflare` ^12.0.0
+- `@astrojs/react` ^4.0.0
+- `react` / `react-dom` ^18.3.0
+- `motion` ^12.0.0
+- `@sanity/client` ^6.0.0
+- `@sanity/image-url` ^1.0.2
+- `@neondatabase/serverless` ^1.1.0
+- `wrangler` ^4.114.0
 
-## Commands
+**Important**: `pg` is intentionally NOT used — raw TCP is blocked on Workers. The `@neondatabase/serverless` driver is WebSocket-based and Cloudflare-compatible.
+
+## Content Architecture
+
+### Sanity schema types (`sanity/schemaTypes/`)
+
+Documents: `service`, `caseStudy`, `post`, `person`, `singletonPage`, `siteSettings`, `contactSubmission`, `syncStatus`, `client`, `industry`, `engagement`, `taxonomy`, `asset`.
+Objects: `blockContent`, plus custom block objects used inside portable text.
+
+Studio desk structure: Dashboard → Site Settings → Pages → Case Studies → Blog Posts → Services → Taxonomy → CRM → Contact Submissions.
+
+### Neon schema (`neon/schema.sql`)
+
+Tables: `entities`, `content_items`, `content_relations`, `sync_log`, `visitor_profiles`, `contact_submissions`.
+
+Ownership model: every `content_items` row has an `owner` column referencing `entities`. Primary entities seeded: `vedanshu` and `wugweb`.
+
+### Current content state (verified against codebase)
+
+| Type | Sanity | Neon | Notes |
+|---|---|---|---|
+| caseStudy | 82 | 82 | 20 Notion + 62 CSV/writeup |
+| post | 75 | 75 | 52 Notion + 13 codebase + 10 CSV |
+| person | 12 | 12 | 11 team + Wugweb Design author |
+| client | 106 | 106 | From Notion |
+| industry | 66 | 66 | From Notion |
+| service | 12 | 12 | 6 pillars + 6 old |
+| singletonPage | 17 | 17 | All pages |
+| siteSettings | 1 | 1 | SEO + contact |
+| syncStatus | 17 | 17 | Notion↔Sanity↔Neon comparisons |
+| asset | 113 | 113 | 66 matched to local files |
+| taxonomy | 85 | 85 | Sub-services as taxonomy terms |
+| engagement | 0 | 0 | Schema exists, empty |
+| contactSubmission | 0 | 0 | Read-only schema, no data yet |
+
+**Total in Neon: 456 documents**.
+
+## Routes (`src/pages/`)
+
+22 `.astro` routes + 4 API routes:
+
+- Home `/`
+- About `/about`
+- Contact `/contact-us` (+ `/thank-you`)
+- FAQ `/faq`
+- Services `/services` + `/services/[slug]`
+- Work `/work` + `/work/[slug]`
+- Blog `/blog` + `/blog/[slug]`
+- Footer pages: `/footer/impact`, `/footer/sitemap`, `/footer/subscription`
+- Legal: `/privacy-policy`, `/termsofuse`, `/refund-policy`
+- 404 `/404`
+- API: `/api/contact`, `/api/personalize`, `/api/preview`, `/api/sync`
+
+Note: `footer/sitemap` exists but is not linked in the shared nav.
+
+## Components (`src/components/`)
+
+12 Astro components + `Hero.tsx`:
+
+`ApproachSteps`, `BlogCard`, `CapabilitiesGrid`, `FAQList`, `FilterChips`, `Hero.tsx`, `RelatedWorkGrid`, `SectionTitle`, `SiteFooter`, `SiteHeader`, `StatsGrid`, `WorkCard`.
+
+## Current Implementation Status
+
+See `pending.md` for the authoritative task tracker. High-level state:
+
+### Completed
+- Sanity project and Studio deployed.
+- Neon schema applied; 456 documents synced from Sanity.
+- All main marketing routes exist and wire to Sanity data.
+- Design token system in `src/styles/global.css`.
+- 252 Framer CDN files downloaded to `public/assets/framer/`.
+- Cloudflare Pages build passes and deploys.
+
+### Critical / blocked
+- Sanity token permissions: current token can create/replace but update/delete fails for some operations. Needs fresh Editor token from `sanity.io/manage`.
+- Design token → component migration: tokens exist, but components still use hardcoded `px`/`rem`/`clamp()` values.
+- Frontend → Neon swap: helpers and SQL constants exist, but pages still read from Sanity CDN.
+
+### Medium priority
+- Homepage UI does not match the live wugweb.com chat-message hero.
+- Footer pages partially stubbed.
+- About page stats are guessed; team photos hotlinked from Framer CDN.
+- Client logos on homepage are 13 hardcoded Framer CDN URLs despite 106 clients in Sanity.
+- Contact form may 500 at runtime (Neon Workers connection deferred).
+
+### Low priority / deferred
+- Sanity preview mode (`getPreviewClient()` exists but unused).
+- 25 of 75 blog posts still lack body content.
+- Image rendering from Sanity (`urlFor()` helper unused in pages).
+- R2 media bucket not set up.
+- Engagement and taxonomy docs empty.
+
+## Working Agreements
+
+- **Always read `pending.md` at the start of a session and update it at the end.**
+- **Read `CLAUDE.md` before touching `wrangler.jsonc`, deploy config, or build tooling.** Many values here were learned from failed builds.
+- **Do not change text to pure white** — live colours are deliberate (`text: #f4f4f4`, `muted: #bababa`, surfaces `#191919`/`#2b2b2b`).
+- **Do not lower `.node-version`** below 22 without a specific reason. Wrangler 4.x requires Node ≥22 and a previous pin to 20 caused a real regression.
+- **Neon is SSOT** for structured content. Sanity is the admin panel. Media belongs in R2 (not implemented yet).
+- **Content comes from hardcoded frontend records or user-provided sources**, not from Framer reference pages or third-party review sites.
+- **Do not remove `blockContent` from the Sanity schema types array** — doing so causes `Unknown type: blockContent` errors across documents.
+
+## Important Decisions
+
+- **Framework**: Astro 5 SSR on Cloudflare Pages, not Framer.
+- **DB driver**: `@neondatabase/serverless` instead of `pg` (Workers-compatible).
+- **Ownership model**: `entities` table with `vedanshu` and `wugweb` as peer rows; every content item has an `owner`.
+- **6-pillar taxonomy**: Strategy, Brand, Experience, Engineering, Growth, Operations. Notion's older 8-service taxonomy is reference-only.
+- **Media**: R2 eventually; currently local `public/assets/`.
+- **Sanity token role**: migrations require an Editor token, not Viewer.
+- **Build command**: `npm run build` → `npx wrangler pages deploy dist`. The dashboard's Deploy command must be `npx wrangler pages deploy dist`, not `npx wrangler deploy`.
+
+## Things AI Must Never Change
+
+- `wrangler.jsonc` deploy model: keep `"pages_build_output_dir": "./dist"`; never switch to `"main"` / `"assets"` Workers-style fields.
+- `.node-version`: do not lower below 22.
+- Live colour values in `src/styles/global.css`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919`/`#2b2b2b`.
+- `blockContent` registration in Sanity schema types array.
+- Ownership model (`entities` table + `owner` column) when adding new Neon-backed content.
+
+## Deployment Notes
+
+- This is a **Cloudflare Pages** project, not a bare Worker. If Wrangler warns that you ran `wrangler deploy` on a Pages project, use `wrangler pages deploy` instead.
+- Dashboard deploy command must be: `npx wrangler pages deploy dist`.
+- Required secrets (set via Cloudflare dashboard or `wrangler pages secret`):
+  - `DATABASE_URL` — Neon connection string
+  - `SANITY_SYNC_TOKEN` — auth token for `/api/sync`
+- Hyperdrive is **not wired**. The `HYPERDRIVE` binding is absent from `wrangler.jsonc`; the code falls back to `DATABASE_URL`.
+- If runtime shows `Invalid binding "SESSION"`, create a KV namespace named `SESSION` and add it to `wrangler.jsonc`.
+
+## Known Technical Debt
+
+1. **Design tokens not fully consumed by components** — `global.css` has the full token system, but many `.astro` files still use hardcoded `px`/`rem`/`clamp()` values. A systematic component pass is needed.
+2. **Frontend still reads from Sanity CDN** — Neon helpers and SQL constants exist, but pages have not been swapped to query Neon directly.
+3. **Contact form runtime reliability** — `POST /api/contact` stores to Neon, but Neon Workers connection was deferred; verify in production.
+4. **Framer CDN hotlinks remain** — client logos on homepage and some team photos still use `framerusercontent.com`.
+5. **Sanity token permissions** — current token cannot reliably update/delete; migration scripts need a fresh Editor token.
+6. **No R2 media bucket** — media plan calls for R2; implementation pending.
+7. **Preview mode unused** — `getPreviewClient()` exists but no page wires it up.
+
+## Current Priorities
+
+1. Resolve Sanity token permissions (get Editor token).
+2. Complete design token → component migration.
+3. Swap frontend pages from Sanity CDN reads to Neon queries (use `src/lib/content.ts`).
+4. Migrate remaining Framer CDN hotlinks to local assets.
+5. Stabilize contact form in production.
+
+## Next-Session Checklist
+
+Before starting work:
+- [ ] Read `pending.md`.
+- [ ] Read this file (`CLAUDE.md`).
+- [ ] Confirm Node version ≥22 (`cat .node-version`).
+- [ ] Run `npm run build` to verify baseline.
+
+Before finishing work:
+- [ ] Update `pending.md` with completed/in-progress items.
+- [ ] Update `CLAUDE.md` if any architecture/deploy facts changed.
+- [ ] Ensure no secrets were committed.
+
+## Frequently Used Commands
 
 ```bash
+# Install / dev / build
 npm install
 npm run dev      # runs `wrangler types` first
 npm run build
 npm run deploy   # manual deploy; otherwise Git-connected auto-deploys
 
-# Sanity
-cd sanity && npm install && npx sanity dev  # local Studio on :3333
+# Sanity Studio
+cd sanity && npm install && npx sanity dev  # localhost:3333
 
-# Migrate hardcoded content → Sanity dataset
-SANITY_TOKEN=sk... node scripts/migrate-to-sanity.mjs
-
-# Apply Neon schema
+# Neon schema
 node scripts/apply-schema.cjs
 
-# Sanity → Neon sync (via API)
+# Sanity → Neon sync (local or remote via API)
 curl -X POST https://wugweb.pages.dev/api/sync \
   -H 'Content-Type: application/json' \
   -H 'X-Sync-Token: <token>' \
   -d '{"docs": [...]}'
 ```
-
-## Structure
-
-- `src/pages/` — Astro routes. Static marketing pages use
-  `export const prerender = true`; `/` and `/contact-us` stay dynamic
-  (personalization, form POST).
-- `src/pages/api/` — `personalize.ts` (GET/POST visitor profiles),
-  `contact.ts` (POST contact form → Neon), `sync.ts` (POST Sanity → Neon
-  sync, auth'd via X-Sync-Token header matching SANITY_SYNC_TOKEN env var).
-- `src/lib/sanity.ts` — Sanity client (CDN build-time + preview client).
-- `src/lib/queries.ts` — GROQ queries + NEON SQL constants for future
-  frontend migration to Neon.
-- `src/lib/content.ts` — Neon query helpers (`getByType`,
-  `getAllByType`, `getBySlug`, `getSyncSummary`).
-- `src/lib/db.ts` — Neon `connect(env)` helper (Hyperdrive →
-  DATABASE_URL fallback). Callers must `client.end()` in `finally`.
-- `src/styles/global.css` — Full design token system. Source of truth at
-  `design.md` §1-§4.
-- `sanity/` — Studio config + schema types, separate `npm install`.
-  Custom desk structure: Dashboard → Site Settings → Pages → Case
-  Studies → Blog Posts → Services → Taxonomy (Industries, Taxonomy
-  Terms) → CRM (Clients, Engagements, Team) → Contact Submissions.
-- `sanity/schemaTypes/` — All 12 document types + 7 block content
-  objects. `blockContent` must stay in the schema types array.
-- `neon/schema.sql` — Manual SQL. Tables: entities, content_items,
-  content_relations, sync_log, visitor_profiles, contact_submissions.
-- `scripts/migrate-to-sanity.mjs` — Phase 1: original 8 case studies + 13 blog posts + team + settings.
-- `scripts/migrate-sanity-phase2.mjs` — Phase 2: 29 additional case studies + 2 new blog posts.
-- `scripts/migrate-csv-to-sanity.mjs` — CSV+writeup migration: 37 case studies with full challenges/solutions/impact data.
-- `scripts/fix-case-studies.mjs` — long-slug enrichment with CSV content + writeup body.
-- `scripts/migrate-notion-to-sanity.mjs` — Notion industries + clients → Sanity.
-- `scripts/sync-notion-to-sanity.mjs` — Notion↔Sanity comparison + missing blog sync.
-- `scripts/sync-sanity-to-neon.mjs` — Full Sanity→Neon sync (355 docs).
-- `scripts/fetch-all-notion.mjs` — Fetch all 15 Notion databases.
-- `scripts/apply-schema.cjs` — Apply neon/schema.sql. Idempotent.
-- `design.md` — Design system specification (S1 Framer export wins
-  conflicts). Part 5 lists token gaps (G-1 through G-16).
-- `pending.md` — Living task tracker.
-- `public/` — Static passthrough: `ai-context.txt`, `llms.txt`,
-  `robots.txt`, `.assetsignore`.
-- `reference/` — Saved HTML pages from old Framer live site.
-
-## Key conventions
-
-- Content from hardcoded frontend records, NOT from Framer reference
-  pages, unless directly provided by the user. Third-party review sites
-  are not sources.
-- Media lives in R2 (or local `public/assets/`), NOT in Neon (which is
-  for structured data only). Sanity can hold image references but the
-  actual binary goes to R2.
-- The Sanity client uses `useCdn: true` for build-time reads.
-  `getPreviewClient()` exists for eventual preview mode but is unused.
-- `blockContent` is a Sanity type that must be registered in the schema
-  array — removing it causes "Unknown type: blockContent" errors on
-  every document type that references it.
-- About page stats were placeholders ("01"..."04") — replaced with
-  guessed numbers ("10+"..."50+") awaiting real data from the user.
-  The "Product" team entry (Legal Head) is flagged as likely wrong.
-- Contact form confirmation exists at `/thank-you` (created this
-  session). The earlier `/?submitted=1` redirect param is dead code.
-- The `brand-system.txt` in `public/` was a known missing file —
-  it exists now from `wugweb-assets/`.

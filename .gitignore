@@ -6,5 +6,6 @@ sanity/dist/
 sanity/node_modules/
 reference/
 wugweb-assets/
+LOCAL.md
 Wugweb_Brand_OS_Foundation/
-assets/
+/assets/

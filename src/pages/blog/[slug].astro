@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sanityClient } from '../../lib/sanity';
+import { sanityClient, urlFor } from '../../lib/sanity';
 import { postBySlugQuery, postsListQuery } from '../../lib/queries';
 
 export async function getStaticPaths() {
@@ -18,10 +18,17 @@ if (!post) {
 
 const readTime = post.readingTime ? `${post.readingTime} min read` : '';
 const authorName = post.author?.name || '';
+const authorPhoto = post.author?.photo ? urlFor(post.author.photo).width(120).height(120).url() : '';
 const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
+const coverImageUrl = post.coverImage ? urlFor(post.coverImage).width(1280).height(720).url() : '';
+const ogImageUrl = post.ogImage
+  ? urlFor(post.ogImage).width(1200).height(630).url()
+  : coverImageUrl;
+const pageTitle = post.seoTitle || post.title;
+const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160);
 ---
 
-<BaseLayout title={`${post.title} — Wugweb Insights`} description={(post.excerpt || '').slice(0, 160)}>
+<BaseLayout title={`${post.title} — Wugweb Insights`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl}>
   <section class="wrap article">
     <p class="eyebrow"><a href="/blog">Blog</a></p>
     <h1>{post.title}</h1>
@@ -33,13 +40,34 @@ const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString
     </div>
     {post.excerpt && <p class="article-intro">{post.excerpt}</p>}
 
-    {post.body && post.body.length > 0 && (
+    {coverImageUrl && (
+      <figure class="article-cover">
+        <img src={coverImageUrl} alt={`Cover image for ${post.title}`} loading="eager" decoding="async" />
+      </figure>
+    )}
+
+    {post.body && post.body.length > 0 ? (
       <div class="article-body" set:html={post.body.map((block: any) => {
         const text = block.children?.map((c: any) => c.text).join('') || '';
         if (block.style === 'h2') return `<h2>${text}</h2>`;
+        if (block.style === 'h3') return `<h3>${text}</h3>`;
         return `<p>${text}</p>`;
       }).filter(Boolean).join('')}>
       </div>
+    ) : (
+      <div class="article-empty">
+        <p>Full article coming soon. Browse more <a href="/blog">insights</a>.</p>
+      </div>
+    )}
+
+    {post.author && (
+      <aside class="article-author">
+        {authorPhoto && <img src={authorPhoto} alt={authorName} class="author-photo" />}
+        <div>
+          {authorName && <p class="author-name">{authorName}</p>}
+          {post.author.role && <p class="author-role">{post.author.role}</p>}
+        </div>
+      </aside>
     )}
 
     {post.tags && post.tags.length > 0 && (
@@ -53,18 +81,27 @@ const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString
 </BaseLayout>
 
 <style>
-  .article { padding-block: 8rem; max-width: 720px; }
+  .article { padding-block: var(--space-section-xl); max-width: 720px; }
   .article .eyebrow a { color: var(--fg-muted); text-decoration: none; }
   .article .eyebrow a:hover { color: var(--fg); }
-  .article h1 { font-size: var(--t-h2); margin-top: 1rem; line-height: 1.1; }
-  .article-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); }
+  .article h1 { font-size: var(--t-h2); margin-top: var(--gap-3); line-height: 1.1; }
+  .article-meta { display: flex; flex-wrap: wrap; gap: var(--gap-3) var(--gap-6); margin-top: var(--gap-5); font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-muted); }
   .article-category { color: var(--accent-warm); }
-  .article-intro { font-size: 1.2rem; line-height: 1.6; margin-top: 2rem; color: var(--fg); border-left: 2px solid var(--accent-warm); padding-left: 1.5rem; }
-  .article-body { margin-top: 3rem; }
-  .article-body h2 { font-size: 1.35rem; margin-top: 2.5rem; margin-bottom: 0.75rem; }
-  .article-body p { line-height: 1.8; color: var(--fg-muted); margin-top: 0.5rem; }
-  .article-tags { display: flex; gap: 0.5rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line); }
-  .tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.35rem 0.85rem; border: 1px solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .article-intro { font-size: var(--t-lead); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-7); color: var(--fg); border-left: 2px solid var(--accent-warm); padding-left: var(--gap-6); }
+  .article-cover { margin: var(--gap-10) 0 0; border-radius: var(--r-4); overflow: hidden; }
+  .article-cover img { width: 100%; height: auto; display: block; }
+  .article-body { margin-top: var(--gap-10); }
+  .article-body h2 { font-size: var(--t-h4); margin-top: var(--gap-10); margin-bottom: var(--gap-3); }
+  .article-body h3 { font-size: var(--t-lead); margin-top: var(--gap-7); margin-bottom: var(--gap-2); color: var(--fg); }
+  .article-body p { line-height: var(--core-line-height-relaxed); color: var(--fg-muted); margin-top: var(--gap-3); }
+  .article-empty { margin-top: var(--gap-10); padding: var(--gap-6); border: 1px dashed var(--line); border-radius: var(--r-3); color: var(--fg-muted); }
+  .article-empty a { color: var(--accent-warm); text-decoration: underline; }
+  .article-author { display: flex; align-items: center; gap: var(--gap-4); margin-top: var(--gap-10); padding-top: var(--gap-8); border-top: 1px solid var(--line); }
+  .author-photo { width: 56px; height: 56px; border-radius: var(--r-full); object-fit: cover; }
+  .author-name { font-weight: var(--font-weight-medium); color: var(--fg); }
+  .author-role { font-size: var(--t-sm); color: var(--fg-muted); }
+  .article-tags { display: flex; gap: var(--gap-2); margin-top: var(--gap-8); padding-top: var(--gap-8); border-top: 1px solid var(--line); }
+  .tag { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-3); border: 1px solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
 </style>
 
 <script>

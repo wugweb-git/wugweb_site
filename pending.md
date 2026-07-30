@@ -109,7 +109,7 @@ Keep this file synced. Before any new session, read this first. After significan
 18. **About page** — stats are guessed numbers, "Product" team entry flagged, bento has no decorative imagery, values/culture hardcoded
 19. **FAQ page** — still hardcoded. Could wire to singletonPage
 20. **Contact form** — form works at UI level, API stores to Neon. Submission may 500 at runtime (Neon Workers connection deferred per instruction)
-21. **Client logos** — 106 clients in Sanity, but frontend still shows 13 hardcoded Framer CDN URLs on homepage
+21. ✅ **Client logos** — 13 Framer CDN logos on homepage replaced with local copies from `public/assets/logos/`
 
 ---
 
@@ -117,7 +117,7 @@ Keep this file synced. Before any new session, read this first. After significan
 
 22. **Sanity draft/preview mode** — `getPreviewClient()` exists, unused. Need preview URL config
 23. **Blog body content** — 50 of 75 posts have body from Notion/blog CSVs. Remaining 25 need content entered via Studio
-24. **Image rendering** — `urlFor()` exists, no page renders `coverImage`/`gallery` from Sanity
+24. ✅ **Image rendering** — blog detail now renders `coverImage` and author photo via `urlFor()`
 25. **Team photos** — 11 still hotlinked from Framer CDN
 26. **Engagement + taxonomy docs** — schema exists, empty
 27. **Contact submissions** — stored in Neon, not sync'd back to Sanity `contactSubmission` docs

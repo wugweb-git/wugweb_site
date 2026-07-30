@@ -89,24 +89,22 @@ const workItems = (sanityCaseStudies || []).slice(0, 8).map((cs: any) => ({
   video: findThumb(cs.slug),
 }));
 
-// Client logos — still on Framer's CDN (framerusercontent.com), not
-// migrated. These will break whenever Framer stops serving them. Real
-// follow-up: re-upload as Sanity assets or drop into R2, then swap
-// these src values. Using directly for now to get the section working.
+// Local client logos copied from public/assets/framer/*/client-logo-*.
+// Verified 19 available; 13 curated for the homepage grid.
 const clientLogos = [
-  { name: 'Adtech', src: 'https://framerusercontent.com/images/nc5UeWDPtjs9Ymj2mqK3OsFE.png' },
-  { name: 'Acko', src: 'https://framerusercontent.com/images/7ZWZTC1heH7oAj2UEPk5WdmqgE.png' },
-  { name: 'Tanishq', src: 'https://framerusercontent.com/images/RMGYiWyKTtfr6KxxFAgEP6B0s.png' },
-  { name: 'ITC', src: 'https://framerusercontent.com/images/MNcVx0PTQNUOilSjr6j5zgy51u4.png' },
-  { name: 'Airtel', src: 'https://framerusercontent.com/images/gYvQx01uxXUY8MKGB3kwJmqAQ.png' },
-  { name: 'Amazon Ads', src: 'https://framerusercontent.com/images/vEyEWvs1Yb10Zww15nV4Db3E.png' },
-  { name: 'Aditya Birla Capital', src: 'https://framerusercontent.com/images/F3H5mFd6YHEScmNRUFoy0ootKmQ.png' },
-  { name: 'NTUC', src: 'https://framerusercontent.com/images/Xl4UZzHZx3eaDLzAtv1eQuxMac.png' },
-  { name: 'LinkedIn Ads', src: 'https://framerusercontent.com/images/rhwTBbwxdPvvu180QCe16R0Ec.png' },
-  { name: 'U Income', src: 'https://framerusercontent.com/images/9qQKBgCdUhU3Kv9lvj444xJXR4.png' },
-  { name: 'SpiceJet', src: 'https://framerusercontent.com/images/iuPX9c0k6RRUKQwrtJlHCt4ymA.png' },
-  { name: 'Cartier', src: 'https://framerusercontent.com/images/v3NYQBsmFqqlpLiBPnTSQgmgm9Q.png' },
-  { name: 'IndusInd Bank', src: 'https://framerusercontent.com/images/OAJmygOGcSwLJKPhchwfcg95vg.png' },
+  { name: 'Aditya Birla Capital', src: '/assets/logos/client-logo-te1y.png' },
+  { name: 'Airtel', src: '/assets/logos/client-logo-c6rj.png' },
+  { name: 'Axis Bank', src: '/assets/logos/client-logo-d64b.png' },
+  { name: 'Bankco', src: '/assets/logos/client-logo-qhmv.png' },
+  { name: 'Cartier', src: '/assets/logos/client-logo-jrot.png' },
+  { name: 'Gratifi', src: '/assets/logos/client-logo-5nzb.png' },
+  { name: 'IndusInd Bank', src: '/assets/logos/client-logo-k5hy.png' },
+  { name: 'Inkompass', src: '/assets/logos/client-logo-9fd5.png' },
+  { name: 'Kia', src: '/assets/logos/client-logo-5nkj.png' },
+  { name: 'NTUC', src: '/assets/logos/client-logo-grfk.png' },
+  { name: 'Plufo', src: '/assets/logos/client-logo-6djh.png' },
+  { name: 'RideEV', src: '/assets/logos/client-logo-1gbn.png' },
+  { name: 'Valyu', src: '/assets/logos/client-logo-jj6k.png' },
 ];
 
 const industries = [
@@ -118,7 +116,7 @@ const industries = [
 <BaseLayout title="Home" description="Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.">
   <!-- HERO -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline
+    <video class="hero-video" autoplay muted loop playsinline preload="none"
       src="/assets/more/home/home.mp4"></video>
     <div class="hero-overlay"></div>
 
@@ -171,7 +169,9 @@ const industries = [
       {teaserServices.map((s) => (
         <li class="service-card" data-reveal>
           <div class="service-card-media">
-            <video muted loop playsinline preload="none" src={s.video}></video>
+            <video muted loop playsinline preload="none" src={s.video}>
+              <source src={s.video} type="video/mp4" />
+            </video>
           </div>
           <div class="service-card-foot">
             <div class="service-card-heads">
@@ -214,7 +214,7 @@ const industries = [
       {workItems.map((w) => (
         <li data-reveal>
           <a href={`/work/${w.slug}`}>
-            <video autoplay muted loop playsinline src={w.video}></video>
+            <video autoplay muted loop playsinline preload="none" src={w.video}></video>
             <p class="work-client">{w.client} — {w.category}</p>
             <h3>{w.title}</h3>
           </a>
@@ -227,11 +227,12 @@ const industries = [
   <section class="pillars" id="pillars">
     <div class="pillars-backdrop" aria-hidden="true">
       {pillars.map((p, i) => (
-        <video
+          <video
           class:list={['pillars-bg', { 'is-active': i === 0 }]}
           data-bg={i}
           muted loop playsinline preload="none"
           src={p.video}
+          aria-hidden="true"
         ></video>
       ))}
       <div class="pillars-scrim"></div>
@@ -246,7 +247,7 @@ const industries = [
           <li class:list={['pillar', { 'is-active': i === 0 }]} data-pillar={i}>
             <button type="button" class="pillar-hit" aria-expanded={i === 0 ? 'true' : 'false'}>
               <span class="pillar-thumb">
-                <video muted loop playsinline preload="none" src={p.video}></video>
+                <video muted loop playsinline preload="none" src={p.video} aria-hidden="true"></video>
               </span>
               <span class="pillar-copy">
                 <span class="pillar-title">{p.title}</span>

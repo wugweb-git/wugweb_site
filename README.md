@@ -1,72 +1,89 @@
-# wugweb.com redesign
+# wugweb.com
 
-Astro (SSR via `@astrojs/cloudflare`) on Cloudflare Pages + Sanity (content) +
-Neon via Hyperdrive (personalization, contact-form leads). Migrating off
-Framer. Motion for interactions.
+Marketing site for Wugweb — a product & experience architecture studio.
 
-For deploy gotchas, current build/deploy status, and repo structure, see
-**[CLAUDE.md](./CLAUDE.md)** — that file is kept up to date with what's
-actually been learned from real failed builds; this README is the shorter
-human-facing version.
+Built with **Astro 5** (SSR) on **Cloudflare Pages**, content managed in **Sanity**, structured data synced to **Neon Postgres**. The site is migrating off a Framer-hosted predecessor; assets are being moved from `framerusercontent.com` to local `public/assets/`.
 
-## Setup, in order
+> **For deploy gotchas, current status, and repo conventions, read [CLAUDE.md](./CLAUDE.md).**  
+> **For the living task tracker, read [pending.md](./pending.md).**
 
-1. **Sanity**: already a real project (`splvhmk1`, dataset `production`),
-   schema deployed, hosted Studio at https://wugweb.sanity.studio/. Log in
-   with the account that already has access. `cd sanity && npm install && npm run dev`
-   for local Studio if you want it instead of the hosted one.
+## Stack
 
-2. **Neon**: create a project, run `neon/schema.sql` against it (SQL editor
-   or psql) — creates `visitor_profiles` and `contact_submissions`.
+- **Framework:** Astro 5 (`output: 'server'`)
+- **SSR adapter:** `@astrojs/cloudflare`
+- **UI islands:** React 18 (used sparingly)
+- **Animations:** `motion` (vanilla API, client-side only)
+- **CMS:** Sanity (`splvhmk1` / `production`)
+- **Database:** Neon Postgres via `@neondatabase/serverless`
+- **Deployment:** Cloudflare Pages (`wugweb.pages.dev`)
 
-3. **Hyperdrive**: not connected yet.
-   `wrangler hyperdrive create wugweb-neon --connection-string="<neon uri>"`,
-   then put the returned id into `wrangler.jsonc`'s `"hyperdrive"` block
-   (currently absent — see CLAUDE.md for why, and the exact re-add steps).
+## Setup
 
-4. **Root site**: `npm install`, fill in `.env` (see `.env.example`), then
-   `npm run dev`.
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-5. **Deploy**: Git-connected Cloudflare Pages project, already set up.
-   Push to `main` to trigger a build. If a build fails, check the dashboard's
-   Build log first — CLAUDE.md documents the specific issues already hit
-   and fixed (deploy command, Node version, asset config) so you're not
-   re-debugging the same ones.
+2. **Configure environment**
+   Copy `.env.example` (if present) to `.env` and fill in:
+   - `SANITY_PROJECT_ID`
+   - `SANITY_DATASET`
+   - `DATABASE_URL` (Neon)
+   - `SANITY_SYNC_TOKEN` (for `/api/sync`)
 
-## Pages
+3. **Run locally**
+   ```bash
+   npm run dev   # also runs `wrangler types`
+   ```
 
-All of home, about, services (+7 sub-slugs), work, blog, contact, FAQ, the
-legal pages (privacy/terms/refund), and the footer stub pages exist and are
-linked from the shared nav (`src/components/SiteHeader.astro` /
-`SiteFooter.astro`). Content for services/work/blog is Sanity-driven but
-**no actual documents have been entered yet** — those pages will render
-empty lists until you add content in Studio.
+4. **Build**
+   ```bash
+   npm run build
+   ```
 
-## Static files
+5. **Deploy**
+   Git-connected Cloudflare Pages auto-deploys on push to `main`.  
+   Manual deploy:
+   ```bash
+   npm run deploy
+   ```
 
-`public/` also serves `ai-context.txt`, `llms.txt`, and `robots.txt` as-is
-at the site root. `llms.txt` references `brand-system.txt`, which doesn't
-exist yet — known dead link until that content is provided.
+## Sanity Studio
 
-## Honest gaps — not built yet
+The Studio lives in the `sanity/` directory. Run it locally:
 
-- **No visual QA.** None of this has been seen rendered by either me or you
-  as of this file's last edit — no browser access on my end. Expect layout
-  fixes once you actually look at it.
-- **No mobile nav menu** — links just disappear under 768px.
-- **Contact form has a backend** (`/api/contact.ts` → Neon via Hyperdrive)
-  but **no confirmation page** — successful submit redirects to
-  `/?submitted=1` with nothing reading that param yet.
-- **`footer/subscription`** is a stub on purpose — the real page (buy a
-  fixed-model subscription, payment gateway) needs its own scoping
-  conversation before building; not something to improvise.
-- **No draft-mode/preview** for editors to see unpublished Sanity content —
-  `useCdn: true` in `sanity.ts` means published content only, cached.
-- **No image rendering wired up** — `urlFor()` helper exists in `sanity.ts`
-  but no page actually renders `coverImage`/`gallery` yet.
-- **Client logos and team photos** are still hotlinked from Framer's CDN
-  (`framerusercontent.com`) — will break whenever Framer stops serving them.
-  Need migrating to Sanity assets or R2.
-- **`footer/sitemap`** (from the site's sitemap.xml) isn't built — it also
-  wasn't in the live site's actual rendered footer nav, so it's excluded
-  consistently, not accidentally missed.
+```bash
+cd sanity
+npm install
+npx sanity dev   # http://localhost:3333
+```
+
+Hosted Studio: https://wugweb.sanity.studio/
+
+## Key folders
+
+- `src/pages/` — Astro routes (22 `.astro` routes + 4 API routes)
+- `src/components/` — 12 Astro components + `Hero.tsx`
+- `src/lib/` — Sanity client, GROQ queries, Neon helpers
+- `src/styles/global.css` — Design token system
+- `sanity/schemaTypes/` — Sanity schema
+- `neon/schema.sql` — Neon schema
+- `scripts/` — Migration and sync scripts
+- `public/assets/` — Downloaded Framer/local assets
+
+## Current state
+
+All core marketing routes exist and pull content from Sanity. 456 documents have been synced from Sanity to Neon. The frontend still reads from Sanity CDN; a Neon-backed read path is planned.
+
+See [pending.md](./pending.md) for open tasks and blockers.
+
+## Documentation
+
+- [CLAUDE.md](./CLAUDE.md) — Canonical AI memory and deploy gotchas
+- [pending.md](./pending.md) — Living task tracker
+- [credentials.md](./credentials.md) — Security-sensitive notes (token rotation pending)
+- [design.md](./design.md) — Design system specification
+- [brand_guidelines/](./brand_guidelines/) — Complete brand OS
+- [docs/site-diff.md](./docs/site-diff.md) — Gap analysis vs live site
+- [docs/admindesign.md](./docs/admindesign.md) — Sanity Studio redesign brief
+- [LOCAL.md.example](./LOCAL.md.example) — Template for local-only notes/secrets
