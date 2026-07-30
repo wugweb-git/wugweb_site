@@ -2,53 +2,56 @@
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// Built from what you described (3 CSR activities + contact banner), NOT
-// from the live /footer/impact page — that page is currently broken on
-// the Framer site (duplicated homepage sections, all stats show
-// placeholder "0+"/"0%"). Activity copy below is a placeholder — send
-// the real 3 activities and I'll swap it in.
-// Impact/CSR activities — the live site currently shows generic brand
-// content here (not actual impact data). When you have real CSR activity
-// details, replace these entries.
 const activities = [
   { title: 'Community Upskilling', copy: 'Empowering local communities through digital skills training and mentorship programs, bridging the technology gap for underrepresented groups.' },
   { title: 'Sustainable Design', copy: 'Promoting environmentally conscious design practices and reducing digital waste through efficient, sustainable development methodologies.' },
-  { title: 'Social impact partnerships', copy: 'Collaborating with non-profits and social enterprises to provide pro-bono design and technology consulting for mission-driven organizations.' },
+  { title: 'Social Impact Partnerships', copy: 'Collaborating with non-profits and social enterprises to provide pro-bono design and technology consulting for mission-driven organizations.' },
 ];
 ---
 
-<BaseLayout title="Impact">
+<BaseLayout title="Impact" description="Wugweb's commitment to social impact and community empowerment.">
   <section class="wrap impact">
-    <p class="eyebrow">Impact</p>
-    <h1>What we've done for society</h1>
+    <p class="eyebrow" data-reveal>Impact</p>
+    <h1 data-reveal>What we've done for society</h1>
+    <p class="impact-sub" data-reveal>At Wugweb, we believe in using our expertise to create positive change in the communities we serve.</p>
 
     <ul class="activities">
       {activities.map((a, i) => (
-        <li>
+        <li data-reveal>
           <span class="activity-n">0{i + 1}</span>
           <h2>{a.title}</h2>
           <p>{a.copy}</p>
         </li>
       ))}
     </ul>
+
+    <section class="cta-banner" data-reveal>
+      <h2>Want to make an impact together?</h2>
+      <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
+    </section>
   </section>
 </BaseLayout>
 
 <style>
   .impact {
-    padding-block: 8rem;
+    padding-block: var(--space-section-xl);
   }
   .impact h1 {
     font-size: var(--t-h2);
-    margin-block: 0.75rem 3rem;
+    margin-block: var(--gap-3) var(--gap-8);
     max-width: 20ch;
+  }
+  .impact-sub {
+    max-width: 55ch;
+    color: var(--fg-muted);
+    margin-bottom: var(--gap-12);
   }
   .activities {
     list-style: none;
-    margin: 0 0 5rem;
+    margin: 0 0 var(--gap-12);
     padding: 0;
     display: grid;
-    gap: 2rem;
+    gap: var(--gap-8);
   }
   @media (min-width: 768px) {
     .activities {
@@ -57,7 +60,7 @@ const activities = [
   }
   .activities li {
     border-top: 1px solid var(--line);
-    padding-top: 1.5rem;
+    padding-top: var(--gap-5);
   }
   .activity-n {
     font-family: var(--font-mono);
@@ -65,23 +68,31 @@ const activities = [
   }
   .activities h2 {
     font-size: 1.25rem;
-    margin-top: 0.75rem;
+    margin-top: var(--gap-3);
     font-weight: 400;
   }
   .activities p {
-    margin-top: 0.5rem;
+    margin-top: var(--gap-2);
   }
   .cta-banner {
     border-top: 1px solid var(--line);
-    padding-top: 3rem;
+    padding-top: var(--gap-8);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: var(--gap-6);
   }
   .cta-banner h2 {
     font-size: 1.75rem;
     max-width: 20ch;
   }
 </style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2 });
+  inView('.activities li', (el) => {
+    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+</script>
