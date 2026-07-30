@@ -41,10 +41,17 @@ export default defineType({
     { name: 'statusAsc', title: 'By status', by: [{ field: 'status', direction: 'asc' }] },
   ],
   preview: {
-    select: { title: 'name', subtitle: 'engagementType', status: 'status' },
-    prepare: ({ title, subtitle, status }: any) => ({
-      title: title || 'Unnamed Engagement',
-      subtitle: `${String(subtitle || '').replace(/&/g, 'and')}${status ? ` — ${status}` : ''}`,
-    }),
+    select: { title: 'name', subtitle: 'engagementType', status: 'status', client: 'client', services: 'services' },
+    prepare: ({ title, subtitle, status, client, services }: any) => {
+      const parts = [];
+      if (subtitle) parts.push(String(subtitle).replace(/&/g, 'and'));
+      if (client && client.name) parts.push(client.name);
+      if (services && services.length) parts.push(`${services.length} services`);
+      const statusIcon = status === 'completed' ? '✅' : status === 'active' ? '🟢' : status === 'planned' ? '📋' : '⏸️';
+      return {
+        title: title || 'Unnamed Engagement',
+        subtitle: parts.join(' · ') || statusIcon,
+      };
+    },
   },
 });

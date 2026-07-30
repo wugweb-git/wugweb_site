@@ -94,11 +94,18 @@ export default defineType({
     { name: 'titleAsc', title: 'Title A-Z', by: [{ field: 'title', direction: 'asc' }] },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'summary', media: 'icon' },
-    prepare: ({ title, subtitle, media }: any) => ({
-      title: title || 'Untitled',
-      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and').substring(0, 80) : '',
-      media,
-    }),
+    select: { title: 'title', subtitle: 'subtitle', media: 'icon', tags: 'tags', seoDesc: 'seoDescription' },
+    prepare: ({ title, subtitle, media, tags, seoDesc }: any) => {
+      const parts = [];
+      if (subtitle) parts.push(String(subtitle).replace(/&/g, 'and').substring(0, 60));
+      if (tags && tags.length) parts.push(tags.slice(0, 2).join(', '));
+      let health = '✅';
+      if (!seoDesc) health = '⚠️ SEO';
+      return {
+        title: title || 'Untitled',
+        subtitle: parts.join(' · ') || health,
+        media,
+      };
+    },
   },
 });

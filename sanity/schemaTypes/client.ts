@@ -32,11 +32,17 @@ export default defineType({
     { name: 'createdAtDesc', title: 'Recently added', by: [{ field: '_createdAt', direction: 'desc' }] },
   ],
   preview: {
-    select: { title: 'name', subtitle: 'engagementType', media: 'logo' },
-    prepare: ({ title, subtitle, media }: any) => ({
-      title: title || 'Unnamed Client',
-      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
-      media,
-    }),
+    select: { title: 'name', subtitle: 'engagementType', media: 'logo', industry: 'industry', caseStudies: 'caseStudies' },
+    prepare: ({ title, subtitle, media, industry, caseStudies }: any) => {
+      const parts = [];
+      if (subtitle) parts.push(String(subtitle).replace(/&/g, 'and'));
+      if (industry && industry.name) parts.push(industry.name);
+      if (caseStudies && caseStudies.length) parts.push(`${caseStudies.length} case studies`);
+      return {
+        title: title || 'Unnamed Client',
+        subtitle: parts.join(' · ') || 'No engagement type',
+        media,
+      };
+    },
   },
 });
