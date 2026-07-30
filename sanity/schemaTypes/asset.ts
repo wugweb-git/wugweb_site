@@ -31,10 +31,18 @@ export default defineType({
     { name: 'groupAsc', title: 'Group + Name', by: [{ field: 'assetGroup', direction: 'asc' }, { field: 'name', direction: 'asc' }] },
   ],
   preview: {
-    select: { title: 'displayName', subtitle: 'assetGroup', localExists: 'localExists' },
-    prepare: ({ title, subtitle, localExists }: any) => ({
-      title: title || 'Unnamed Asset',
-      subtitle: `${String(subtitle || '').replace(/&/g, 'and')}${localExists ? ' 💾' : ''}`,
-    }),
+    select: { title: 'displayName', subtitle: 'assetGroup', localExists: 'localExists', mediaType: 'mediaType', status: 'status', assetType: 'assetType', relativePath: 'relativePath' },
+    prepare: ({ title, subtitle, localExists, mediaType, status, assetType, relativePath }: any) => {
+      const parts = [];
+      if (subtitle) parts.push(String(subtitle).replace(/&/g, 'and'));
+      if (mediaType) parts.push(mediaType);
+      if (status) parts.push(status);
+      const healthIcon = localExists ? '💾' : '☁️';
+      const statusBadge = status === 'Active' ? '✅' : status === 'Archived' ? '📦' : '⚪';
+      return {
+        title: `${healthIcon} ${title || 'Unnamed Asset'}`,
+        subtitle: parts.join(' · ') || 'No metadata',
+      };
+    },
   },
 });

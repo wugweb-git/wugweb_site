@@ -78,11 +78,21 @@ export default defineType({
     { name: 'titleAsc', title: 'Title A-Z', by: [{ field: 'title', direction: 'asc' }] },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'client', media: 'coverImage', featured: 'featured' },
-    prepare: ({ title, subtitle, media, featured }: any) => ({
-      title: title || 'Untitled',
-      subtitle: `${subtitle || ''}${featured ? ' ⭐' : ''}`.trim(),
-      media,
-    }),
+    select: { title: 'title', subtitle: 'client', media: 'coverImage', featured: 'featured', industry: 'industry', disciplines: 'disciplines', seoDesc: 'seoDescription' },
+    prepare: ({ title, subtitle, media, featured, industry, disciplines, seoDesc }: any) => {
+      const badge = featured ? ' ⭐' : '';
+      const parts = [];
+      if (subtitle) parts.push(subtitle);
+      if (industry) parts.push(industry);
+      if (disciplines && disciplines.length) parts.push(disciplines.slice(0, 2).join(', '));
+      let health = '✅';
+      if (!media) health = '❌ Cover';
+      else if (!seoDesc) health = '⚠️ SEO';
+      return {
+        title: title || 'Untitled' + badge,
+        subtitle: parts.join(' · ') || health,
+        media,
+      };
+    },
   },
 });

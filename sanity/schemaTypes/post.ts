@@ -49,11 +49,23 @@ export default defineType({
     { name: 'createdAtDesc', title: 'Recently created', by: [{ field: '_createdAt', direction: 'desc' }] },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'category', media: 'coverImage', date: 'publishedAt' },
-    prepare: ({ title, subtitle, media, date }: any) => ({
-      title: title || 'Untitled',
-      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : date ? new Date(date).toLocaleDateString() : '',
-      media,
-    }),
+    select: { title: 'title', subtitle: 'category', media: 'coverImage', date: 'publishedAt', featured: 'featured', author: 'author.name', readingTime: 'readingTime', seoDesc: 'seoDescription', ogImage: 'ogImage' },
+    prepare: ({ title, subtitle, media, date, featured, author, readingTime, seoDesc, ogImage }: any) => {
+      const badge = featured ? ' ⭐' : '';
+      const dateStr = date ? new Date(date).toLocaleDateString() : '';
+      const parts = [];
+      if (subtitle) parts.push(String(subtitle).replace(/&/g, 'and'));
+      if (author) parts.push(author);
+      if (readingTime) parts.push(`${readingTime} min`);
+      if (dateStr) parts.push(dateStr);
+      let health = '✅';
+      if (!seoDesc && !ogImage) health = '⚠️ SEO';
+      else if (!ogImage) health = '⚠️ OG';
+      return {
+        title: title || 'Untitled' + badge,
+        subtitle: parts.join(' · ') || health,
+        media,
+      };
+    },
   },
 });
