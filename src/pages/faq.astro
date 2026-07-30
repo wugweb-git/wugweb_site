@@ -26,12 +26,12 @@ const pageBody = page?.body?.[0]?.children?.[0]?.text || 'To help you get the in
 
 <BaseLayout title={pageTitle} description="Frequently asked questions about working with Wugweb.">
   <section class="wrap faq">
-    <p class="eyebrow">FAQs</p>
-    <h1>{pageTitle}</h1>
-    <p class="faq-lede">{pageBody}</p>
-    <p class="faq-updated">Updated on November 04, 2025</p>
+    <p class="eyebrow" data-reveal>FAQs</p>
+    <h1 data-reveal>{pageTitle}</h1>
+    <p class="faq-lede" data-reveal>{pageBody}</p>
+    <p class="faq-updated" data-reveal>Updated on November 04, 2025</p>
 
-    <div class="faq-list">
+    <div class="faq-list" data-reveal>
       {faqItems.map((f: any) => (
         <details class="faq-item">
           <summary>{f.q}</summary>
@@ -40,7 +40,7 @@ const pageBody = page?.body?.[0]?.children?.[0]?.text || 'To help you get the in
       ))}
     </div>
 
-    <div class="faq-cta">
+    <div class="faq-cta" data-reveal>
       <h2>Still have questions?</h2>
       <p>We're here to help. Reach out and we'll get back to you promptly.</p>
       <a href="/contact-us" class="btn btn-solid">Contact Us</a>
@@ -49,16 +49,24 @@ const pageBody = page?.body?.[0]?.children?.[0]?.text || 'To help you get the in
 </BaseLayout>
 
 <style>
-  .faq { padding-block: 8rem; max-width: 800px; }
-  .faq h1 { font-size: var(--t-h2); margin-block: 0.75rem 1rem; max-width: 20ch; }
+  .faq { padding-block: var(--space-section-xl); max-width: 800px; }
+  .faq h1 { font-size: var(--t-h2); margin-block: var(--gap-3) var(--gap-4); max-width: 20ch; }
   .faq-lede { max-width: 55ch; line-height: 1.6; }
-  .faq-updated { font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); margin-top: 0.5rem; }
-  .faq-list { margin-top: 3rem; border-top: 1px solid var(--line); }
-  .faq-item { border-bottom: 1px solid var(--line); padding-block: 1.25rem; }
+  .faq-updated { font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); margin-top: var(--gap-2); }
+  .faq-list { margin-top: var(--gap-10); border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); padding-block: var(--gap-5); }
   .faq-item summary { font-family: var(--font-display); font-size: 1.1rem; cursor: pointer; color: var(--fg); }
-  .faq-item p { margin-top: 0.75rem; line-height: 1.6; color: var(--fg-muted); }
-  .faq-cta { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--line); text-align: center; }
+  .faq-item p { margin-top: var(--gap-3); line-height: 1.6; color: var(--fg-muted); }
+  .faq-cta { margin-top: var(--gap-12); padding-top: var(--gap-8); border-top: 1px solid var(--line); text-align: center; }
   .faq-cta h2 { font-size: 1.75rem; }
-  .faq-cta p { margin-top: 0.75rem; }
-  .faq-cta .btn { margin-top: 1.5rem; display: inline-flex; }
+  .faq-cta p { margin-top: var(--gap-3); }
+  .faq-cta .btn { margin-top: var(--gap-6); display: inline-flex; }
 </style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2 });
+  inView('.faq-item', (el) => {
+    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
+  });
+</script>
