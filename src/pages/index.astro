@@ -372,9 +372,9 @@ const industries = [
 
   .intro-tags li {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--t-caption);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: var(--ls-wide);
     border: 1px solid var(--line);
     border-radius: var(--r-pill);
     padding: var(--gap-2) var(--gap-4);
@@ -509,10 +509,10 @@ const industries = [
   @media (max-width: 700px) {
     .pillars { padding-block: 4rem; }
     .glass-panel { border-radius: var(--r-lg); }
-    .pillar-thumb { width: 62px; height: 62px; border-radius: var(--r); }
+    .pillar-thumb { width: 62px; height:62px; border-radius: var(--r); }
     .pillar-hit { gap: 0.9rem; }
     .pillar-index { display: none; }
-    .pillar-q { font-size: 0.9rem; }
+    .pillar-q { font-size: var(--t-s); }
   }
   @media (prefers-reduced-motion: reduce) {
     .pillar-hit, .pillar-q, .pillar-index, .pillars-bg { transition: none; }
