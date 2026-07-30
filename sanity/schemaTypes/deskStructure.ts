@@ -76,7 +76,7 @@ function dashboardItem(S: StructureBuilder) {
           S.divider(),
           quickStat(S, '🕐', 'Recently Edited (7d)', '_type in $editableTypes && _updatedAt > now() - 7', '_updatedAt desc', { editableTypes }),
           quickStat(S, '📝', 'All Drafts', '_type in $editableTypes && _id match "drafts.*"', '_updatedAt desc', { editableTypes }),
-          quickStat(S, '📅', 'Publishing Queue', '_type in ["post", "caseStudy"] && defined(publishedAt) && publishedAt > now() - 14', 'publishedAt desc', { editableTypes: ['post', 'caseStudy'] }),
+          quickStat(S, '📅', 'Publishing Queue', '_type in $editableTypes && _updatedAt > now() - 14', 'publishedAt desc', { editableTypes: ['post', 'caseStudy'] }),
 
           S.divider(),
 
@@ -91,9 +91,9 @@ function dashboardItem(S: StructureBuilder) {
                   healthList(S, '🔍 Missing SEO', 'post', '!defined(seoDescription)', 'Posts missing SEO'),
                   healthList(S, '🔍 Missing SEO', 'caseStudy', '!defined(seoDescription)', 'Case Studies missing SEO'),
                   healthList(S, '🖼️ Missing Cover', 'post', '!defined(coverImage)', 'Posts missing cover image'),
-                  healthList(S, '🏷️ Missing Taxonomy', 'post', '(!defined(tags) || count(tags) == 0)', 'Untagged posts'),
+                  healthList(S, '🏷️ Missing Taxonomy', 'post', 'count(tags) == 0', 'Untagged posts'),
                   healthList(S, '📝 Missing Alt Text', 'post', 'defined(coverImage) && !defined(coverImage.alt)', 'Posts with missing alt text'),
-                  healthList(S, '🔗 Orphaned Content', 'post', '(!defined(author) || count(tags) == 0)', 'Potentially orphaned posts'),
+                  healthList(S, '🔗 Orphaned Content', 'post', '!defined(author)', 'Potentially orphaned posts'),
                 ])
             ),
 
@@ -107,9 +107,9 @@ function dashboardItem(S: StructureBuilder) {
               S.list()
                 .title('Filtered Views')
                 .items([
-                  filteredList(S, '⭐ Featured', 'caseStudy', 'featured == true'),
-                  filteredList(S, '⭐ Featured Posts', 'post', 'featured == true'),
-                  filteredList(S, '📌 Services', 'service', ''),
+                  filteredList(S, '⭐ Featured', 'caseStudy', 'featured'),
+                  filteredList(S, '⭐ Featured Posts', 'post', 'featured'),
+                  filteredList(S, '📌 Services', 'service', null),
                 ])
             ),
 
