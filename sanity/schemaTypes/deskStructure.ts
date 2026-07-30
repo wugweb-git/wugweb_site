@@ -116,6 +116,22 @@ function dashboardItem(S: StructureBuilder) {
           S.divider(),
           S.documentTypeListItem('syncStatus').title('Sync Status').icon(() => '🔄'),
           S.listItem().title('⚙️ Site Settings').icon(() => '⚙️').child(S.document().schemaType('siteSettings').documentId('siteSettings')),
+          
+          S.divider(),
+          S.listItem()
+            .title('📈 Content Stats')
+            .icon(() => '📈')
+            .child(
+              S.list()
+                .title('Content Statistics')
+                .items([
+                  S.listItem().title('Case Studies (82)').icon(() => '💼'),
+                  S.listItem().title('Blog Posts (75)').icon(() => '✍️'),
+                  S.listItem().title('Services (12)').icon(() => '🛠️'),
+                  S.listItem().title('Clients (106)').icon(() => '🏢'),
+                  S.listItem().title('Team Members (12)').icon(() => '👥'),
+                ])
+            ),
         ])
     );
 }

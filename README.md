@@ -60,6 +60,15 @@ npx sanity dev   # http://localhost:3333
 
 Hosted Studio: https://wugweb.sanity.studio/
 
+### Studio Features
+
+- **Dashboard** with content overview widget showing live stats
+- **Organized navigation** with sections for Content, Business, Brand & Media, Knowledge, and System
+- **Content health checks** - identifies missing SEO, cover images, alt text, and taxonomy
+- **Quick filters** - Featured content, publishing queue, recently edited items
+- **Orderable documents** for Services, Team, and Industries
+- **Vision tool** for testing GROQ queries
+
 ## Key folders
 
 - `src/pages/` — Astro routes (22 `.astro` routes + 4 API routes)

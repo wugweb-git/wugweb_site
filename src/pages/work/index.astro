@@ -52,8 +52,8 @@ const workItems = caseStudies.map((cs: any) => ({
 <BaseLayout title="Work" description="Clients – Wugweb | Trusted by Innovative Brands">
   <section class="work-hero">
     <div class="wrap work-hero-content">
-      <p class="eyebrow" data-reveal>What We've Built</p>
-      <h1 data-reveal>We create digital solutions that are as functional as they are beautiful.</h1>
+      <h1 data-reveal>What We've Built</h1>
+      <p data-reveal>We create digital solutions that are as functional as they are beautiful.</p>
     </div>
   </section>
 
@@ -80,7 +80,8 @@ const workItems = caseStudies.map((cs: any) => ({
 
 <style>
   .work-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
-  .work-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-top: var(--gap-4); }
+  .work-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-bottom: var(--gap-4); }
+  .work-hero-content p { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
   .work-grid-section { padding-block: var(--space-section-md) var(--space-section-xl); border-top: 1px solid var(--line); }
   .work-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }

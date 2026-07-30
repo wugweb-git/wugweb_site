@@ -15,91 +15,39 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Font families — matching Framer Style Manager export */
+  /* Legacy font aliases */
   --font-display: 'Inter Tight', system-ui, sans-serif;
   --font-body: 'Inter Tight', system-ui, sans-serif;
-  --font-mono: 'Fragment Mono', 'Inter Tight', monospace;
-  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Inter Tight', system-ui, sans-serif;
 
-  /* ═════════════════════════════════════════════════════════════════
-     TYPOGRAPHY SCALE — Exact match to Framer Style Manager
-     Base (≤767px) → Tablet (≥768px) → Desktop (≥1200px)
-     ═════════════════════════════════════════════════════════════════ */
-
-  /* Display / H1 — 80px → 64px → 48px, line-height 1.2 */
-  --t-display: 80px;
-  @media (min-width: 768px) { --t-display: 64px; }
-  @media (min-width: 1200px) { --t-display: 48px; }
-
-  /* H1 — 48px → 40px → 36px, line-height 1.2 */
-  --t-h1: 48px;
-  @media (min-width: 768px) { --t-h1: 40px; }
-  @media (min-width: 1200px) { --t-h1: 36px; }
-
-  /* H2 — 36px → 30px → 32px, line-height 1.375 */
-  --t-h2: 36px;
-  @media (min-width: 768px) { --t-h2: 30px; }
-  @media (min-width: 1200px) { --t-h2: 32px; }
-
-  /* H3 — 30px → 26px → 28px, line-height 1.2 */
-  --t-h3: 30px;
-  @media (min-width: 768px) { --t-h3: 26px; }
-  @media (min-width: 1200px) { --t-h3: 28px; }
-
-  /* H4 (Inter Tight) — 24px → 22px → 21px, line-height 1.2 */
-  --t-h4: 24px;
-  @media (min-width: 768px) { --t-h4: 22px; }
-  @media (min-width: 1200px) { --t-h4: 21px; }
-
-  /* H5 (Inter Tight) — 20px → 18px → 19px, line-height 1.375 */
-  --t-h5: 20px;
-  @media (min-width: 768px) { --t-h5: 18px; }
-  @media (min-width: 1200px) { --t-h5: 19px; }
-
-  /* H6 (Inter Tight) — 16px → 16px → 16px, line-height 1.375 */
-  --t-h6: 16px;
-  @media (min-width: 768px) { --t-h6: 16px; }
-  @media (min-width: 1200px) { --t-h6: 16px; }
-
-  /* H4/H5 Legacy (Inter 700) — 22px/18px, line-height 1.4, letter-spacing -0.04em */
-  --t-h4-legacy: 22px;
-  --t-h5-legacy: 18px;
-
-  /* Paragraph XL — 20px → 16px → 19px, line-height 1.5 */
-  --t-xl: 20px;
-  @media (min-width: 768px) { --t-xl: 16px; }
-  @media (min-width: 1200px) { --t-xl: 19px; }
-
-  /* Paragraph L — 18px → 16px → 17px, line-height 1.5 */
-  --t-l: 18px;
-  @media (min-width: 768px) { --t-l: 16px; }
-  @media (min-width: 1200px) { --t-l: 17px; }
-
-  /* Paragraph M — 16px → 14px → 15px, line-height 1.5 */
-  --t-m: 16px;
-  @media (min-width: 768px) { --t-m: 14px; }
-  @media (min-width: 1200px) { --t-m: 15px; }
-
-  /* Paragraph S — 14px → 13px → 13px, line-height 1.5 */
-  --t-s: 14px;
-  @media (min-width: 768px) { --t-s: 13px; }
-  @media (min-width: 1200px) { --t-s: 13px; }
-
-  /* Paragraph M (tight) — 14px → 12px → 13px, line-height 1.2 */
-  --t-m-tight: 14px;
-  @media (min-width: 768px) { --t-m-tight: 12px; }
-  @media (min-width: 1200px) { --t-m-tight: 13px; }
-
-  /* Caption — 12px → 10px → 11px, line-height 1.2 */
-  --t-caption: 12px;
-  @media (min-width: 768px) { --t-caption: 10px; }
-  @media (min-width: 1200px) { --t-caption: 11px; }
-
-  /* Legacy aliases (keep until migration complete) */
-  --t-body: var(--t-m);
-  --t-lead: var(--t-l);
-  --t-sm: var(--t-s);
-  --t-micro: var(--t-caption);
+  /* Typography scale — matches S1 Framer Style Manager tiers exactly.
+     Three fixed tiers: ≥1440, 1200-1439, 768-1199, <768 inherits 768 value.
+     Weight 400 at every size. Inter Tight variable font. (§1.1) */
+  
+  /* Display / H1 */
+  --t-display: 80px;  /* ≥1440 */
+  --t-h1: 48px;        /* ≥1440 */
+  
+  /* H2 */
+  --t-h2: 36px;        /* ≥1440 */
+  
+  /* H3 */
+  --t-h3: 30px;        /* ≥1440 */
+  
+  /* H4 */
+  --t-h4: 24px;        /* ≥1440 */
+  
+  /* H5 */
+  --t-h5: 20px;        /* ≥1440 */
+  
+  /* H6 */
+  --t-h6: 16px;        /* ≥1440 */
+  
+  /* Body sizes */
+  --t-lead: 20px;      /* ≥1440 */
+  --t-body: 16px;      /* ≥1440 */
+  --t-sm: 14px;        /* ≥1440 */
+  --t-micro: 12px;     /* ≥1440 */
 
   /* G-7: Line height scale (§3.3) */
   --core-line-height-none: 1;
@@ -113,14 +61,6 @@
   --lh-tight: var(--core-line-height-tight);
   --lh-snug: var(--core-line-height-snug);
   --lh-body: var(--core-line-height-normal);
-
-  /* ═════════════════════════════════════════════════════════════════
-     LETTER SPACING — matching Framer export
-     ═════════════════════════════════════════════════════════════════ */
-  --ls-none: 0px;
-  --ls-tight: -0.04em;
-  --ls-normal: 0px;
-  --ls-wide: 0.08em;
 
 
   /* ═════════════════════════════════════════════════════════════════
@@ -327,11 +267,9 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
-  font-size: var(--t-m);
+  font-size: var(--t-body);
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 
@@ -344,21 +282,33 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: var(--font-weight-regular);
   line-height: var(--lh-tight);
-  letter-spacing: var(--ls-none);
+  letter-spacing: 0;
 }
 
-h1 { font-size: var(--t-h1); }
+h1 { font-size: var(--t-display); }
 h2 { font-size: var(--t-h2); line-height: var(--lh-snug); }
-h3 { font-size: var(--t-h3); }
-h4 { font-size: var(--t-h4); }
+h3 { font-size: var(--t-h3); line-height: var(--lh-tight); }
+h4 { font-size: var(--t-h4); line-height: var(--lh-tight); }
 h5 { font-size: var(--t-h5); line-height: var(--lh-snug); }
 h6 { font-size: var(--t-h6); line-height: var(--lh-snug); }
 
-/* Legacy heading styles using Inter font */
-h4.legacy, h5.legacy {
-  font-family: var(--font-inter);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--ls-tight);
+/* Responsive typography tiers — matches Framer export exactly (§1.1) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  h1 { font-size: 64px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 28px; }
+  h4 { font-size: 21px; }
+  h5 { font-size: 19px; }
+  h6 { font-size: 16px; }
+}
+
+@media (max-width: 1199px) {
+  h1 { font-size: 48px; }
+  h2 { font-size: 30px; }
+  h3 { font-size: 26px; }
+  h4 { font-size: 22px; }
+  h5 { font-size: 18px; }
+  h6 { font-size: 16px; }
 }
 
 p {
@@ -370,10 +320,9 @@ p {
 a { color: inherit; }
 
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--t-caption);
+  font-size: var(--t-micro);
   line-height: var(--lh-tight);
-  letter-spacing: var(--ls-wide);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
 }

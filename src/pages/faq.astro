@@ -1,8 +1,12 @@
 ---
 export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
 
-const faqs = [
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'faq' }).catch(() => null);
+
+const fallbackFaqs = [
   { q: "What services does Wugweb offer?", a: "Wugweb offers a comprehensive range of services including Brand & Strategy, Experience Design, Martech & Gen AI, Web Development, QA & Testing, and No-Code Development." },
   { q: "What makes your UI/UX design services stand out?", a: "Our UI/UX design services are rooted in user-centered design, combining human-centered design principles with strategic focus on customer experience and end-to-end user journey design." },
   { q: "Do you provide custom brand identity design and positioning?", a: "Yes, as a brand strategy consulting agency, we craft transformative brand experiences including brand identity design, brand narrative development, and comprehensive brand positioning and strategy." },
@@ -14,17 +18,21 @@ const faqs = [
   { q: "How do you charge for your services?", a: "We offer project-based pricing for defined scopes and retainer-based partnerships for ongoing work. Contact us for a custom proposal tailored to your needs." },
   { q: "Do you work with startups?", a: "Yes, we work with companies of all sizes — from early-stage startups to enterprise organizations. Our Start Smart, Start Small approach is designed for growing businesses." },
 ];
+
+const faqItems = page?.items || fallbackFaqs;
+const pageTitle = page?.title || 'Frequently Asked Questions';
+const pageBody = page?.body?.[0]?.children?.[0]?.text || 'To help you get the information you need quickly, we\'ve compiled a list of frequently asked questions. If you don\'t find the answer you\'re looking for, please feel free to contact us directly.';
 ---
 
-<BaseLayout title="FAQs" description="Frequently asked questions about working with Wugweb.">
+<BaseLayout title={pageTitle} description="Frequently asked questions about working with Wugweb.">
   <section class="wrap faq">
     <p class="eyebrow">FAQs</p>
-    <h1>Frequently Asked Questions</h1>
-    <p class="faq-lede">To help you get the information you need quickly, we've compiled a list of frequently asked questions. If you don't find the answer you're looking for, please feel free to contact us directly.</p>
+    <h1>{pageTitle}</h1>
+    <p class="faq-lede">{pageBody}</p>
     <p class="faq-updated">Updated on November 04, 2025</p>
 
     <div class="faq-list">
-      {faqs.map((f) => (
+      {faqItems.map((f: any) => (
         <details class="faq-item">
           <summary>{f.q}</summary>
           <p>{f.a}</p>
@@ -41,16 +49,16 @@ const faqs = [
 </BaseLayout>
 
 <style>
-  .faq { padding-block: var(--space-section-xl); max-width: 800px; }
+  .faq { padding-block: 8rem; max-width: 800px; }
   .faq h1 { font-size: var(--t-h2); margin-block: 0.75rem 1rem; max-width: 20ch; }
-  .faq-lede { max-width: 55ch; line-height: var(--lh-body); }
-  .faq-updated { font-family: var(--font-mono); font-size: var(--t-s); color: var(--fg-muted); margin-top: 0.5rem; }
-  .faq-list { margin-top: var(--gap-12); border-top: 1px solid var(--line); }
-  .faq-item { border-bottom: 1px solid var(--line); padding-block: var(--gap-5); }
-  .faq-item summary { font-family: var(--font-display); font-size: var(--t-l); cursor: pointer; color: var(--fg); }
-  .faq-item p { margin-top: var(--gap-3); line-height: var(--lh-body); color: var(--fg-muted); }
-  .faq-cta { margin-top: var(--gap-12); padding-top: var(--gap-12); border-top: 1px solid var(--line); text-align: center; }
-  .faq-cta h2 { font-size: var(--t-h3); }
-  .faq-cta p { margin-top: var(--gap-3); }
-  .faq-cta .btn { margin-top: var(--gap-6); display: inline-flex; }
+  .faq-lede { max-width: 55ch; line-height: 1.6; }
+  .faq-updated { font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); margin-top: 0.5rem; }
+  .faq-list { margin-top: 3rem; border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); padding-block: 1.25rem; }
+  .faq-item summary { font-family: var(--font-display); font-size: 1.1rem; cursor: pointer; color: var(--fg); }
+  .faq-item p { margin-top: 0.75rem; line-height: 1.6; color: var(--fg-muted); }
+  .faq-cta { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--line); text-align: center; }
+  .faq-cta h2 { font-size: 1.75rem; }
+  .faq-cta p { margin-top: 0.75rem; }
+  .faq-cta .btn { margin-top: 1.5rem; display: inline-flex; }
 </style>

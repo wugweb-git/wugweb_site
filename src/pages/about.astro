@@ -13,12 +13,11 @@ const heroText =
   page?.body?.[0]?.children?.[0]?.text ??
   "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & production.";
 
-// Stats show as "0+" / "0%" on the live site — genuinely placeholder
 const stats = [
-  { n: '10+', label: 'Years of experience', copy: 'Expertise that drives meaningful results.' },
-  { n: '100+', label: 'Projects delivered', copy: 'Creative solutions built with purpose.' },
-  { n: '98%', label: 'Client Retention Rate', copy: 'Long-term partnerships built on real results.' },
-  { n: '50+', label: 'Brands transformed', copy: 'From strategy to standout visuals.' },
+  { n: '0+', label: 'Years of experience', copy: 'Expertise that drives meaningful results.' },
+  { n: '0+', label: 'Projects delivered', copy: 'Creative solutions built with purpose.' },
+  { n: '0%', label: 'Client Retention Rate', copy: 'Long-term partnerships built on real results.' },
+  { n: '0+', label: 'Brands transformed', copy: 'From strategy to standout visuals.' },
 ];
 
 const values = [
@@ -41,10 +40,10 @@ const culture = [
       src="/assets/more/about/about-message.mp4"></video>
     <div class="about-hero-overlay"></div>
     <div class="wrap about-hero-content">
-      <p class="eyebrow" data-reveal>About Us</p>
-      <h1 data-reveal>
+      <h1 data-reveal>About Us</h1>
+      <p data-reveal>
         {heroText}
-      </h1>
+      </p>
     </div>
   </section>
 
@@ -98,15 +97,9 @@ const culture = [
   <section class="wrap team">
     <h2 data-reveal>Meet our team</h2>
     <ul class="team-grid">
-      {sanityTeam.length > 0 ? sanityTeam.map((t: any) => (
+      {sanityTeam.map((t: any) => (
         <li data-reveal>
           {t.photo ? <img src={t.photo} alt={t.name} loading="lazy" /> : <div class="team-placeholder" style="width:100%;aspect-ratio:1;background:var(--surface-2);border-radius:var(--r-2);"></div>}
-          <p class="team-role">{t.role} at wugweb</p>
-          <h3>{t.name}</h3>
-        </li>
-      )) : team.filter(t => t.name !== 'Product').map((t) => (
-        <li data-reveal>
-          <img src={t.photo} alt={t.name} loading="lazy" />
           <p class="team-role">{t.role} at wugweb</p>
           <h3>{t.name}</h3>
         </li>
@@ -219,7 +212,12 @@ const culture = [
     font-size: var(--t-h2);
     font-weight: 400;
     max-width: 26ch;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .about-hero-content p {
+    font-size: var(--t-body);
+    color: var(--fg-muted);
+    max-width: 50ch;
   }
 
   .stats {
@@ -236,7 +234,7 @@ const culture = [
   @media (min-width: 768px) { .stats ul { grid-template-columns: repeat(4, 1fr); } }
   .stats li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
   .stat-n { font-family: var(--font-mono); color: var(--accent-warm); }
-  .stat-label { color: var(--fg); font-size: var(--t-l); margin-top: var(--gap-2); }
+  .stat-label { color: var(--fg); font-size: 1.1rem; margin-top: var(--gap-2); }
   .stat-copy { margin-top: var(--gap-1); }
 
   .values {
@@ -247,7 +245,7 @@ const culture = [
   .values-list { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .values-list { grid-template-columns: repeat(4, 1fr); } }
   .values-list li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
-  .values-list h3 { font-size: var(--t-h5); font-weight: 400; margin-top: var(--gap-2); }
+  .values-list h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-2); }
   .values-list p { margin-top: var(--gap-2); }
 
   .culture { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
@@ -255,15 +253,15 @@ const culture = [
   .culture p { margin-top: var(--gap-5); max-width: 60ch; }
   .culture-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   @media (min-width: 640px) { .culture-grid { grid-template-columns: repeat(4, 1fr); } }
-  .culture-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: var(--t-s); }
+  .culture-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: .8rem; }
 
   .team { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
   .team h2 { font-size: var(--t-h3); }
   .team-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-8); }
   @media (min-width: 640px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
   .team-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-2); }
-  .team-role { font-family: var(--font-mono); font-size: var(--t-caption); color: var(--fg-muted); margin-top: var(--gap-3); }
-  .team-grid h3 { font-size: var(--t-m); font-weight: 400; margin-top: var(--gap-1); }
+  .team-role { font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); margin-top: var(--gap-3); }
+  .team-grid h3 { font-size: 1rem; font-weight: 400; margin-top: var(--gap-1); }
 
   .why-bento { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
   .why-bento h2 { font-size: var(--t-h2); }
@@ -277,12 +275,12 @@ const culture = [
   .tile-vision { background: var(--neutral-1); border-color: transparent; }
   .tile-vision h3 { color: var(--color-ash); }
   .tile-vision p { color: var(--fg); opacity: .7; }
-  .tile-cta { flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--gap-2); min-height: 0; text-decoration: none; color: var(--fg); font-family: var(--font-mono); font-size: var(--t-s); letter-spacing: var(--ls-wide); text-transform: uppercase; transition: border-color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
+  .tile-cta { flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--gap-2); min-height: 0; text-decoration: none; color: var(--fg); font-family: var(--font-mono); font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; transition: border-color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .tile-cta:hover { background: var(--surface-2); border-color: var(--line-strong); }
   .tile-cta img { height: 1.75rem; width: auto; }
   .tile-stack { justify-content: center; }
   .bento-stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
-  .bento-stack li { font-family: var(--font-mono); font-size: var(--t-caption); padding: .45rem .9rem; border: 1px solid var(--line-strong); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .bento-stack li { font-family: var(--font-mono); font-size: .78rem; padding: .45rem .9rem; border: 1px solid var(--line-strong); border-radius: var(--r-pill); color: var(--fg-muted); }
 
   .closing-cta {
     padding-block: 6rem;
@@ -306,8 +304,8 @@ const culture = [
   .reviews-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 2rem; }
   @media (min-width: 640px) { .reviews-grid { grid-template-columns: repeat(4, 1fr); } }
   .review-card { background: var(--bg); padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
-  .review-score { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 400; }
-  .review-source { font-family: var(--font-mono); font-size: var(--t-caption); color: var(--fg-muted); }
+  .review-score { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; }
+  .review-source { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); }
 </style>
 
 <script>

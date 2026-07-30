@@ -87,6 +87,26 @@ Keep this file synced. Before any new session, read this first. After significan
 - [x] **Case study schema** — editor tabs (Overview/Content/Results/SEO), `subtitle`, `partner`, `designPhilosophy` fields
 - [x] **Service schema** — editor tabs (Overview/Content/Capabilities/Approach/FAQ/SEO)
 - [x] **Sync Status dashboard** — 9 docs showing Notion/Sanity/Neon sync state with mismatch details
+- [x] **Enhanced Studio navigation** — Organized into sections: Content, Business, Brand & Media, Knowledge, System
+- [x] **Dashboard widget** — Live content stats showing case studies, blog posts, services, clients, team count
+- [x] **Content health checks** — Filters for missing SEO, cover images, alt text, taxonomy
+- [x] **Quick filters** — Recently edited, drafts, publishing queue, featured content
+- [x] **Studio build verified** — `npx sanity build` completes successfully, output in `sanity/dist/`
+
+### Typography System (Matched to Framer Export)
+- [x] **Inter Tight variable font** — Loaded 400-900 weight range from Google Fonts
+- [x] **3-tier responsive typography** — ≥1440px, 1200-1439px, <1200px (matches Framer export exactly)
+- [x] **Font sizes** — Display 80px → H1 48px → H2 36px → H3 30px → H4 24px → H5 20px → H6 16px
+- [x] **Line heights** — Tight 1.2 (H1-H4), Snug 1.375 (H2, H5-H6), Normal 1.5 (body)
+- [x] **Font weight** — All headings weight 400 (no bold, matches live site)
+- [x] **Letter spacing** — 0px on all headings (matches Framer export)
+- [x] **Design tokens** — Complete scale in `global.css` with responsive media queries
+
+### Blog Content Import
+- [x] **21 blog posts imported** from CSV to Sanity with full HTML content
+- [x] **Author references** — All posts linked to Vedanshu Srivastava (person-vedanshu-srivastava)
+- [x] **Post metadata** — excerpts, tags, categories, reading time, publish dates
+- [x] **Import script** — `scripts/import-blog-csv.mjs` with CSV parsing
 
 ---
 
