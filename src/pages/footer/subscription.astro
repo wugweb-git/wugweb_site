@@ -3,20 +3,65 @@ export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Subscription">
-  <section class="wrap stub">
-    <p class="eyebrow">Newsletter</p>
-    <h1>Subscription</h1>
-    <p>Content coming soon.</p>
+<BaseLayout title="Subscription" description="Subscribe to Wugweb newsletter for insights on design, product, and digital strategy.">
+  <section class="wrap subscription">
+    <p class="eyebrow" data-reveal>Newsletter</p>
+    <h1 data-reveal>Stay in the loop</h1>
+    <p class="sub-hero" data-reveal>Get insights on design, product, and digital strategy delivered to your inbox. No spam, just thoughtful content.</p>
+
+    <form class="sub-form" data-reveal>
+      <div class="form-row">
+        <input type="email" placeholder="Enter your email" class="sub-input" required />
+        <button type="submit" class="btn btn-solid">Subscribe</button>
+      </div>
+      <p class="sub-note">We respect your privacy. Unsubscribe anytime.</p>
+    </form>
   </section>
 </BaseLayout>
 
 <style>
-  .stub {
-    padding-block: 8rem;
+  .subscription {
+    padding-block: var(--space-section-xl);
   }
-  .stub h1 {
+  .subscription h1 {
     font-size: var(--t-h2);
-    margin-block: 0.75rem;
+    margin-block: var(--gap-3) var(--gap-4);
+    max-width: 20ch;
+  }
+  .sub-hero {
+    max-width: 55ch;
+    color: var(--fg-muted);
+    margin-bottom: var(--gap-10);
+  }
+  .sub-form {
+    max-width: 500px;
+  }
+  .form-row {
+    display: flex;
+    gap: var(--gap-3);
+  }
+  .sub-input {
+    flex: 1;
+    padding: var(--gap-3) var(--gap-4);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-2);
+    background: var(--bg);
+    color: var(--fg);
+  }
+  .sub-input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .sub-note {
+    margin-top: var(--gap-3);
+    font-size: 0.8rem;
+    color: var(--fg-muted);
   }
 </style>
+
+<script>
+  import { animate } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2 });
+</script>
