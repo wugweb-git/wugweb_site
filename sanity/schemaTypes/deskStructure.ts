@@ -55,6 +55,7 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
       S.divider(),
       sectionItem(S, '🧠 Knowledge', '📚', [
         S.documentTypeListItem('taxonomy').title('Taxonomy Terms').icon(() => '🏷️'),
+        S.documentTypeListItem('platformProfile').title('Platform Profiles').icon(() => '🔗'),
       ]),
       S.divider(),
       sectionItem(S, '⚙ System', '🔧', [

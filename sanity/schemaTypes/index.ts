@@ -11,6 +11,7 @@ import industry from './industry';
 import engagement from './engagement';
 import taxonomy from './taxonomy';
 import asset from './asset';
+import platformProfile from './platformProfile';
 import { blockContent, cta, stats, accordion, logoCloud, video, codeBlock, twoColumns } from './blockContent';
 
 export const schemaTypes = [
@@ -27,6 +28,7 @@ export const schemaTypes = [
   engagement,
   taxonomy,
   asset,
+  platformProfile,
   blockContent,
   cta,
   stats,
