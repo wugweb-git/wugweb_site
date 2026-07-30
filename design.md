@@ -77,12 +77,14 @@ Notes recorded exactly as exported:
 | Ash | `/Primary/Ash` | rgb(25, 25, 25) | same | `#191919` |
 
 ### Secondary
-| Name | Path | Light | Hex |
-|---|---|---|---|
-| Peach | `/Secondary/Peach` | rgb(229, 79, 48) | `#E54F30` |
-| Green | `/Secondary/Green` | rgb(62, 210, 25) | `#3ED219` |
-| Blue | `/Secondary/Blue` | rgb(35, 104, 215) | `#2368D7` |
-| Aqua | `/Secondary/Aqua` | rgb(9, 226, 192) | `#09E2C0` |
+| Name | Path | Light | Hex | Usage |
+|---|---|---|---|---|
+| Aqua | `/Secondary/Aqua` | rgb(9, 226, 192) | `#09E2C0` | Service 1 - Experience Design |
+| Blue | `/Secondary/Blue` | rgb(35, 104, 215) | `#2368D7` | Service 2 - Engineering |
+| Magenta | `/Secondary/Magenta` | rgb(237, 33, 153) | `#ED219A` | Service 3 - Strategy |
+| Pink | `/Secondary/Pink` | rgb(230, 48, 159) | `#E6309F` | Service 4 - Growth |
+| Purple | `/Secondary/Purple` | rgb(122, 77, 255) | `#7A4DFF` | Service 5 - Brand |
+| Orange | `/Secondary/Orange` | rgb(250, 65, 8) | `#FA4108` | Service 6 - Operations |
 
 ### Background
 | Name | Path | Light | Dark | Hex |
