@@ -52,6 +52,7 @@ const workItems = caseStudies.map((cs: any) => ({
 <BaseLayout title="Work" description="Clients – Wugweb | Trusted by Innovative Brands">
   <section class="work-hero">
     <div class="wrap work-hero-content">
+      <p class="eyebrow" data-reveal>Case Studies</p>
       <h1 data-reveal>What We've Built</h1>
       <p data-reveal>We create digital solutions that are as functional as they are beautiful.</p>
     </div>
@@ -69,8 +70,11 @@ const workItems = caseStudies.map((cs: any) => ({
         <li data-reveal data-categories={w.category}>
           <a href={`/work/${w.slug}`}>
             {w.video ? <video autoplay muted loop playsinline src={w.video}></video> : <div class="work-placeholder" style="width:100%;aspect-ratio:16/10;background:var(--surface-2);border-radius:var(--r-2);display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-family:var(--font-mono);font-size:0.75rem;">{w.client}</div>}
-            <p class="work-client">{w.client} — {w.category}</p>
-            <h3>{w.title}</h3>
+            <div class="work-content">
+              <p class="work-client">{w.client}</p>
+              <h3>{w.title}</h3>
+              <span class="work-category">{w.category}</span>
+            </div>
           </a>
         </li>
       ))}
@@ -87,8 +91,10 @@ const workItems = caseStudies.map((cs: any) => ({
   @media (min-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
   .work-grid a { text-decoration: none; display: block; }
   .work-grid video { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); }
-  .work-client { font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); margin-top: var(--gap-4); }
-  .work-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-1); }
+  .work-content { margin-top: var(--gap-4); }
+  .work-client { font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); }
+  .work-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-1); line-height: 1.4; }
+  .work-category { font-family: var(--font-mono); font-size: .7rem; color: var(--accent-warm); display: inline-block; margin-top: var(--gap-2); padding: .2rem .5rem; border: 1px solid var(--line); border-radius: var(--r-pill); }
   .work-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
   .filter-chip { font-family: var(--font-mono); font-size: .75rem; padding: .5rem 1rem; border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }

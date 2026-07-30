@@ -12,6 +12,7 @@ const categories = ['All', ...allCategories];
 <BaseLayout title="Blog" description="Wugweb | Insights on UI/UX Design & Digital Strategy">
   <section class="blog-hero">
     <div class="wrap blog-hero-content">
+      <p class="eyebrow" data-reveal>Insights</p>
       <h1 data-reveal>Articles</h1>
       <p data-reveal>Insights on design, product, and digital strategy from the Wugweb team.</p>
     </div>
@@ -28,9 +29,16 @@ const categories = ['All', ...allCategories];
       {posts.map((p: any) => (
         <li data-reveal data-category={p.category || ''}>
           <a href={`/blog/${p.slug}`}>
-            <span class="post-category">{p.category}</span>
-            <h3>{p.title}</h3>
-            {p.author?.name && <p class="blog-author">{p.author.name}</p>}
+            {p.coverImage ? <img src={p.coverImage} alt={p.title} loading="lazy" class="post-thumb" /> : <div class="post-thumb-placeholder"></div>}
+            <div class="post-content">
+              <span class="post-category">{p.category}</span>
+              <h3>{p.title}</h3>
+              <p class="post-excerpt">{p.excerpt}</p>
+              <div class="post-meta">
+                {p.author?.name && <span class="blog-author">{p.author.name}</span>}
+                {p.readingTime && <span class="reading-time">{p.readingTime} min read</span>}
+              </div>
+            </div>
           </a>
         </li>
       ))}
@@ -39,20 +47,25 @@ const categories = ['All', ...allCategories];
 </BaseLayout>
 
 <style>
-  .blog-hero { padding-block: 8rem 4rem; }
-  .blog-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-bottom: 1rem; }
+  .blog-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
+  .blog-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-bottom: var(--gap-4); }
   .blog-hero-content p { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
-  .blog-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; padding-bottom: 2rem; }
+  .blog-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
   .filter-chip { font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
   .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 190, 26, 0.1); }
-  .blog-grid-section { border-top: 1px solid var(--line); padding-block: 4rem 6rem; }
-  .blog-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; }
+  .blog-grid-section { border-top: 1px solid var(--line); padding-block: var(--space-section-md) var(--space-section-xl); }
+  .blog-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-6); }
   @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
-  .blog-grid a { text-decoration: none; display: block; border-top: 1px solid var(--line); padding-top: 1.25rem; }
-  .post-category { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); text-transform: uppercase; }
-  .blog-grid h3 { font-size: 1.1rem; font-weight: 400; margin-top: 0.5rem; }
-  .blog-author { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); margin-top: 0.25rem; }
+  .blog-grid a { text-decoration: none; display: block; border-top: 1px solid var(--line); padding-top: var(--gap-4); }
+  .post-thumb { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); margin-bottom: var(--gap-4); }
+  .post-thumb-placeholder { width: 100%; aspect-ratio: 16/10; background: var(--surface-2); border-radius: var(--r-2); margin-bottom: var(--gap-4); }
+  .post-category { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); }
+  .blog-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-1); line-height: 1.4; }
+  .post-excerpt { font-size: 0.9rem; color: var(--fg-muted); margin-top: var(--gap-2); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .post-meta { display: flex; gap: var(--gap-4); margin-top: var(--gap-3); }
+  .blog-author { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); }
+  .reading-time { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); }
   .blog-grid li.hidden { display: none; }
 </style>
 
