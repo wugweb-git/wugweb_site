@@ -151,31 +151,36 @@ Every field has:
 - Workspace model for navigation
 - Descriptions and validation on fields
 
-### Phase 2 — Relations Tab (Future)
-- Add Relations tab to post, caseStudy, service, asset, client
-- Show incoming/outgoing references
-- Lightweight approach using `preview.select`
+### Phase 2 — Relations Tab ✅ COMPLETE
+- Post: `relatedPosts` reference field
+- Case Study: `relatedCaseStudies` + `relatedPosts` reference fields
+- Service: `relatedPosts` + `relatedServices` reference fields
+- Client: Added SEO tab with title/description fields
 
-### Phase 3 — Dashboard (Future)
-- Simple dashboard with document type links
-- Static content counts
-- Recently edited items (shallow query)
+### Phase 3 — Dashboard ⚠️ DEFERRED
+- Dashboard section causes Studio crash
+- Removed for stability
+- Editors navigate via workspace sections instead
 
-### Phase 4 — Asset UX (Future)
-- Image preview in asset list
-- Usage count
-- Dimensions display
-- Local/external indicator
+### Phase 4 — Asset UX ✅ PARTIAL
+- Local/external indicator (💾/☁️) in preview
+- Media type and status in preview
+- Group badge in preview
 
-### Phase 5 — Content Health (Future)
-- Health indicators in previews
-- Missing SEO, missing images, broken refs
-- Simple status badges
+### Phase 5 — Content Health ✅ COMPLETE
+- Post: ⚠️ SEO/OG indicators
+- Case Study: ❌ Cover / ⚠️ SEO indicators
+- Asset: 💾 local / ☁️ external indicator
+- Service: ⚠️ SEO indicator
+- Client: ⚠️ SEO indicator
+- Person: ⚠️ Photo indicator
+- Engagement: Status icons (🟢✅📋⏸️)
+- Platform Profile: Status icons (🟢🟡🔴⚪)
 
-### Phase 6 — Documentation (Future)
-- Expand admindesign.md with full PRD
-- Document all implementation decisions
-- Track remaining work
+### Phase 6 — Documentation ✅ COMPLETE
+- admindesign.md updated with implementation log
+- All decisions documented
+- Performance and free-tier impact tracked
 
 ---
 

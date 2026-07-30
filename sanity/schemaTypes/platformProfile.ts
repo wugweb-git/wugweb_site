@@ -26,10 +26,16 @@ export default defineType({
     { name: 'statusAsc', title: 'By Status', by: [{ field: 'profileStatus', direction: 'asc' }] },
   ],
   preview: {
-    select: { title: 'platform', subtitle: 'profileId', media: 'profileUrl' },
-    prepare: ({ title, subtitle }: any) => ({
-      title: title || 'Unknown Platform',
-      subtitle: subtitle || '',
-    }),
+    select: { title: 'platform', subtitle: 'profileId', status: 'profileStatus', category: 'category', profileUrl: 'profileUrl' },
+    prepare: ({ title, subtitle, status, category, profileUrl }: any) => {
+      const parts = [];
+      if (subtitle) parts.push(subtitle);
+      if (category) parts.push(category);
+      const statusIcon = status === 'Live' ? '🟢' : status === 'Pending' ? '🟡' : status === 'Inactive' ? '🔴' : '⚪';
+      return {
+        title: `${statusIcon} ${title || 'Unknown Platform'}`,
+        subtitle: parts.join(' · ') || 'No metadata',
+      };
+    },
   },
 });
