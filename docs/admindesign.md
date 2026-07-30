@@ -1,73 +1,301 @@
-# Sanity Studio Admin Design — Wugweb
+# Wugweb Sanity Studio — Product Requirements Document
 
-Use this as a master prompt for Claude Code, Cursor, Gemini CLI, or ChatGPT.
-It is written as a product design brief rather than a coding prompt.
-
----
-
-## Status Quo (Current Implementation)
-
-Current Studio has been improved from default:
-
-- **14 document types** with editor tabs, descriptions, sort orders, fixed previews
-- **Desk structure**: Dashboard → Content → Library → Data
-- **179 taxonomy terms** imported from Notion (tags, tech stack, publishing platforms, sub-services, departments, asset types, content types, countries)
-- **113 asset docs** with local file mapping
-- **70 client engagements** imported
-- **19 sync status docs** tracking Notion ↔ Sanity ↔ Neon
-- `codeBlock` type defined, preview `media` fields fixed (no more DOM errors)
-- All previews use `prepare()` functions to avoid `&` → HTML tag crashes
-
-**Still rough:**
-- Desk structure is basic nested lists, not a proper admin panel
-- No dashboard with drafts/recent/publishing queue
-- No relationship visualization
-- No command palette or global search enhancements
-- Document editor shows all fields in flat tab groups
-- No quick-create, no templates, no favorites
+**Status:** Master PRD for Wugweb's Sanity Studio  
+**Last Updated:** 2026-07-31  
+**Owner:** Vedanshu Srivastava / Wugweb  
 
 ---
 
-## Design Principles
+## Table of Contents
 
-1. **Information Architecture first** — structure before colors
-2. **Progressive Disclosure** — show what matters now, hide the rest
-3. **Contextual Editing** — fields grouped by task, not by schema
-4. **Task-based Navigation** — "I want to publish a case study" not "find the case study doc type"
-5. **Minimal Cognitive Load** — 2 clicks to anything important
-6. **Workflow-first** — drafts → review → publish → analyze, not just CRUD
+1. [Vision](#1-vision)
+2. [Architecture](#2-architecture)
+3. [Current Status](#3-current-status)
+4. [Design Principles](#4-design-principles)
+5. [Workspace Architecture](#5-workspace-architecture)
+6. [Information Architecture](#6-information-architecture)
+7. [Schema Capability Matrix](#7-schema-capability-matrix)
+8. [Dashboard Design](#8-dashboard-design)
+9. [Document Experience](#9-document-experience)
+10. [Content Health Engine](#10-content-health-engine)
+11. [Relationship Intelligence](#11-relationship-intelligence)
+12. [Asset Intelligence](#12-asset-intelligence)
+13. [Operations Center](#13-operations-center)
+14. [Editorial Productivity](#14-editorial-productivity)
+15. [Performance Budget](#15-performance-budget)
+16. [Extension Architecture](#16-extension-architecture)
+17. [Implementation Roadmap](#17-implementation-roadmap)
+18. [Code Patterns](#18-code-patterns)
+19. [Decision Log](#19-decision-log)
+20. [Known Limitations](#20-known-limitations)
 
 ---
 
-## Target Studio Structure
+## 1. Vision
+
+### This is NOT a CMS.
+
+This is the **internal operating system for Wugweb**.
+
+The Studio will be used daily by founders, designers, developers, marketers, SEO specialists, content editors, AI agents, and operations teams.
+
+Think of this as building a product comparable to:
+
+- Linear
+- Notion
+- Airtable
+- Framer
+- Vercel
+- Stripe Dashboard
+- Shopify Admin
+- Raycast
+
+**NOT** WordPress.  
+**NOT** a CRUD application.  
+**NOT** a database UI.
+
+This is a **premium enterprise content operating system**.
+
+---
+
+## 2. Architecture
 
 ```
-🏠 Home (default landing)
+Neon PostgreSQL ← Single Source of Truth
+    ↓
+Sanity Studio ← Editorial & Management Layer
+    ↓
+Astro Website ← Presentation Layer
+    ↓
+Future systems (Memory OS, Knowledge Graph, Digital Twin, AI Agents, Internal Search)
+```
 
+**Key Rule:** Sanity is NOT the source of truth. It is the editorial interface.
+
+---
+
+## 3. Current Status
+
+### Already Implemented
+
+- ✅ 14+ production schemas
+- ✅ Desk Structure with sections
+- ✅ Editor Tabs on all document types
+- ✅ Validation rules
+- ✅ Schema descriptions
+- ✅ Fixed previews (no DOM errors)
+- ✅ Sync Status tracking
+- ✅ Taxonomy (179 terms)
+- ✅ Asset Library (113 docs)
+- ✅ Engagements (70 docs)
+- ✅ Dashboard foundation
+- ✅ Structure Builder with dashboard widgets
+- ✅ TypeScript clean
+- ✅ Production build successful
+- ✅ Studio deployed to https://wugweb.sanity.studio/
+
+### Current Data State
+
+| Type | Count | In Neon |
+|------|-------|---------|
+| caseStudy | 82 | ✅ |
+| post | 75 | ✅ |
+| person | 12 | ✅ |
+| client | 106 | ✅ |
+| industry | 66 | ✅ |
+| service | 12 | ✅ |
+| singletonPage | 17 | ✅ |
+| siteSettings | 1 | ✅ |
+| syncStatus | 19 | ✅ |
+| asset | 113 | ✅ |
+| taxonomy | 179 | ✅ |
+| engagement | 70 | ✅ |
+| contactSubmission | 0 | Schema exists |
+
+**Total: 562 documents**
+
+---
+
+## 4. Design Principles
+
+Everything must optimize for:
+
+- **Information Architecture** — structure before colors
+- **Editorial Productivity** — workflow-first, not CRUD-first
+- **Content Operations** — batch actions, bulk operations
+- **Scalability** — from dozens to 500+ schemas
+- **Discoverability** — important work surfaces automatically
+- **Workflow** — drafts → review → publish → analyze
+- **Low Cognitive Load** — 2 clicks to anything important
+- **High Information Density** — see everything at a glance
+- **Beautiful UX** — premium, not generic
+- **Premium UI** — Linear/Notion quality
+- **Keyboard-first usage** — Cmd+K, shortcuts everywhere
+- **Performance** — lazy load, minimize API calls
+- **Maintainability** — extend, don't replace
+
+### DO NOT
+
+- Redesign the public website
+- Change information architecture unnecessarily
+- Change schemas without reason
+- Duplicate logic
+- Create unnecessary plugins
+- Exceed Sanity free-tier limits
+- Introduce expensive GROQ queries
+- Create heavy React components
+- Create unnecessary API requests
+
+---
+
+## 5. Workspace Architecture
+
+Replace one giant tree with role-based workspaces.
+
+### Workspace Model
+
+```
+🏠 Home
 📊 Dashboard
+✍ Editorial
+🎨 Brand
+💼 Business
+🚀 Marketing
+🧠 Knowledge
+📦 Platform
+⚙ Operations
+🔧 System
+```
+
+Each workspace exposes only the relevant schemas.
+
+### Editorial Workspace
+
+```
+Pages (16 singletons)
+├── Home · About · Services · Work · Blog · FAQ · Contact
+└── Privacy · Terms · Refund · Impact · Subscription · Sitemap
+Case Studies (82)
+Blog Posts (75)
+Services (12)
+Resources
+```
+
+### Brand Workspace
+
+```
+Assets (113)
+├── Work (55)
+├── Services (42)
+└── More (16)
+Client Logos
+Brand Guidelines
+Typography
+Color Palette
+```
+
+### Business Workspace
+
+```
+Clients (106)
+Engagements (70)
+Industries (66)
+Services (12)
+Pricing / Packages
+Testimonials
+```
+
+### Marketing Workspace
+
+```
+SEO Settings
+Campaigns
+CTAs
+Redirects
+Social Media
+Email Templates
+Analytics
+```
+
+### Knowledge Workspace
+
+```
+Taxonomy (179 terms)
+├── Tags (36)
+├── Tech Stack (21)
+├── Sub-Services (85)
+├── Publishing Platforms (10)
+├── Team Departments (6)
+├── Asset Types (5)
+├── Content Types (2)
+└── Countries (14)
+Technologies
+Capabilities
+Glossary
+Prompt Library (AI)
+```
+
+### Operations Workspace
+
+```
+Sync Status (19 docs)
+Contact Submissions
+Content Relationships (55)
+Import Queue
+Export Queue
+Diagnostics
+Data Integrity
+Media Audit
+```
+
+### System Workspace
+
+```
+Site Settings
+Navigation
+Integrations
+Users / Permissions
+Webhooks
+API Status
+Environment
+Studio Health
+```
+
+---
+
+## 6. Information Architecture
+
+### Navigation Rules
+
+1. **Two-click rule** — anything important reachable in 2 clicks from dashboard
+2. **Task-based navigation** — "I want to publish a case study" not "find the case study doc type"
+3. **Progressive disclosure** — show what matters now, hide the rest
+4. **Contextual** — surface related content when editing
+5. **Search-first** — Cmd+K as primary navigation for power users
+
+### Target Desk Structure
+
+```
+📊 Dashboard
+├── Overview
+├── Quick Create
 ├── Recently Edited
 ├── Drafts
 ├── Scheduled
 ├── Publishing Queue
-├── Broken References
-├── Missing SEO / Images
 ├── Content Health
-├── Quick Create (+)
+└── Quick Actions
 
-✍ Content
-├── Pages (16 singletons)
+✍ Editorial
+├── Pages
 │   ├── Home · About · Services · Work · Blog · FAQ · Contact
 │   └── Privacy · Terms · Refund · Impact · Subscription · Sitemap
 ├── Case Studies (82)
 ├── Blog Posts (75)
-├── Services (12)
-└── Resources / Documentation
+└── Services (12)
 
-🎨 Brand & Media
+🎨 Brand
 ├── Assets (113)
-│   ├── Work (55)
-│   ├── Services (42)
-│   └── More (16)
 ├── Client Logos
 └── Brand Guidelines
 
@@ -75,42 +303,68 @@ Current Studio has been improved from default:
 ├── Clients (106)
 ├── Engagements (70)
 ├── Industries (66)
-├── Pricing / Packages
-└── Testimonials
+└── Services (12)
+
+🚀 Marketing
+├── SEO Settings
+├── Campaigns
+└── Social Media
 
 🧠 Knowledge
-├── Taxonomy (179 terms)
-│   ├── Tags (36)
-│   ├── Tech Stack (21)
-│   ├── Sub-Services (85)
-│   ├── Publishing Platforms (10)
-│   ├── Team Departments (6)
-│   ├── Asset Types (5)
-│   ├── Content Types (2)
-│   └── Countries (14)
+├── Taxonomy (179)
 ├── Technologies
-├── Capabilities
-├── Glossary
-└── Prompt Library (AI)
+└── Prompt Library
 
-⚙ System
+📦 Platform
+├── Assets
+├── Taxonomy
+└── Capabilities
+
+⚙ Operations
+├── Sync Status (19)
+├── Contact Submissions
+├── Content Relationships
+├── Import/Export
+└── Diagnostics
+
+🔧 System
 ├── Site Settings
 ├── Navigation
 ├── Integrations
 ├── Users / Permissions
-└── Sync Status (19 docs)
-
-🔄 Data
-├── Contact Submissions
-├── Sync Log
-└── Content Relationships (55)
+└── Studio Health
 ```
 
 ---
 
-## Dashboard Design
+## 7. Schema Capability Matrix
 
-Replace the default document list landing with a proper dashboard:
+Document every schema with:
+
+| Schema | Purpose | Editable | Singleton | Relationships | Health Checks |
+|--------|---------|----------|-----------|---------------|---------------|
+| post | Blog content | ✓ | | author, service, taxonomy, asset | SEO, image, slug |
+| caseStudy | Portfolio piece | ✓ | | client, industry, asset | cover, relationships |
+| service | Core service | ✓ | | taxonomy, technology | icon, slug |
+| person | Team member | ✓ | | asset (photo) | photo, role |
+| client | Business client | ✓ | | industry, engagement | logo, description |
+| engagement | Client project | ✓ | | client, service | dates, status |
+| industry | Industry vertical | ✓ | | client, caseStudy | name, slug |
+| asset | Shared media | ✓ | | all | path, alt, usage |
+| taxonomy | Classification | ✓ | | all | duplicates |
+| singletonPage | Page content | ✓ | ✓ | asset, navigation | SEO |
+| siteSettings | Global config | ✓ | ✓ | asset (logo, favicon) | complete |
+| syncStatus | Monitoring | System | | Neon | stale |
+| contactSubmission | Form data | System | | | status |
+| blockContent | Rich text | ✓ | | asset | complete |
+
+---
+
+## 8. Dashboard Design
+
+Replace default document list with operational dashboard.
+
+### Dashboard Sections
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -136,53 +390,26 @@ Replace the default document list landing with a proper dashboard:
 └─────────────────────────────────────────────────────────────┘
 ```
 
----
+### Dashboard Widgets
 
-## Navigation Improvements
-
-### Replace default nav with:
-
-```ts
-// Custom desk structure pattern:
-S.list()
-  .title('Wugweb Admin')
-  .items([
-    // Dashboard — always first
-    dashboardItem(S),
-
-    // Content — most-used
-    collapsibleSection(S, '✍ Content', [
-      pagesItem(S),
-      documentTypeListItem('caseStudy').title('Case Studies'),
-      documentTypeListItem('post').title('Blog Posts'),
-    ]),
-
-    // Business
-    collapsibleSection(S, '💼 Business', [
-      documentTypeListItem('client').title('Clients'),
-      documentTypeListItem('engagement').title('Engagements'),
-      documentTypeListItem('service').title('Services'),
-    ]),
-
-    // etc.
-  ])
-```
-
-### Custom pane for collapsible sections:
-
-```ts
-function collapsibleSection(S, title, items) {
-  return S.listItem()
-    .title(title)
-    .child(S.list().title(title).items(items))
-}
-```
+| Widget | Data Source | Priority |
+|--------|-------------|----------|
+| Content Stats | `count(*[])` per type | 🔴 Now |
+| Recently Edited | `_updatedAt > now() - 7` | 🔴 Now |
+| Drafts | `_id match "drafts.*"` | 🔴 Now |
+| Publishing Queue | `publishedAt > now() - 14` | 🟡 Soon |
+| Content Health | Custom queries | 🟡 Soon |
+| SEO Health | `!defined(seoDescription)` | 🟡 Soon |
+| Media Health | `!defined(coverImage)` | 🟡 Soon |
+| Relationship Health | Custom queries | 🔵 Future |
 
 ---
 
-## Document Editor Layout
+## 9. Document Experience
 
-Every document type should have this pattern:
+Every document type should support:
+
+### Editor Tabs
 
 ```
 ┌──────────────────────────────────────────────┐
@@ -198,56 +425,181 @@ Every document type should have this pattern:
 └──────────────┴───────────────────────────────┘
 ```
 
-Tabbed left sidebar, content + metadata on right.
+### Tab Groups by Schema
+
+**Case Study:**
+- Overview (title, slug, subtitle, client, industry, featured)
+- Content (body, challenges, solutions, impact)
+- Results (metrics, outcomes)
+- SEO (seoTitle, seoDescription, ogImage)
+- Media (coverImage, gallery)
+- Relations (services, technologies, tags)
+
+**Blog Post:**
+- Overview (title, slug, excerpt, featured)
+- Content (body, author, readingTime)
+- Meta (category, tags, publishedAt)
+- SEO (seoTitle, seoDescription, ogImage)
+- Media (coverImage)
+
+**Service:**
+- Overview (title, slug, subtitle, tags)
+- Content (heroText, body, capabilities, approach, process, tools)
+- FAQ (faqs array)
+- Why (why array)
+- SEO (seoTitle, seoDescription)
 
 ---
 
-## List View Improvements
+## 10. Content Health Engine
 
-Default document lists should support:
+Every document receives health scores.
 
-- **Sortable columns** — click to sort by title, date, status
-- **Inline preview** — show cover image, excerpt, status badge
-- **Batch actions** — select multiple → publish, archive, delete
-- **Quick filters** — by status, category, date range
-- **Saved views** — "My Drafts", "Needs Review", "Published This Month"
+### Health Rules
 
----
+**SEO:**
+- Title present and optimal length
+- Description present and optimal length
+- OG image present
+- Slug present and valid
+- Schema markup complete
+- Indexability configured
 
-## Relationship Visualization
+**Content:**
+- Hero/featured image present
+- Body content present and adequate length
+- Category assigned
+- Author assigned
+- Tags assigned
+- Reading time calculated
 
-For document types with relations (caseStudy → service, post → author, etc.):
+**Relationships:**
+- Service linked
+- Industry linked
+- Technology linked
+- Assets linked
+- Client linked (case studies)
 
-```ts
-// Custom pane showing related documents
-S.view.component(RelationshipGraph).title('Relations')
+**Publishing:**
+- Status defined
+- Publish date set
+- Draft/published state correct
+
+### Health Score Calculation
+
+```
+Content Score = (fields_present / total_fields) * 100
+SEO Score = (seo_fields_present / seo_fields_total) * 100
+Relationship Score = (relations_linked / relations_possible) * 100
+Overall Health = (Content + SEO + Relationship) / 3
 ```
 
-The graph shows:
-- Incoming references (what links to this doc)
-- Outgoing references (what this doc links to)
-- Missing references (broken refs)
-- Depth control (1 level, 2 levels, all)
+---
+
+## 11. Relationship Intelligence
+
+Every document displays:
+
+### Incoming References
+What links TO this document.
+
+### Outgoing References
+What this document links TO.
+
+### Shared Assets
+Images and media used by multiple documents.
+
+### Dependencies
+What must exist for this document to work.
+
+### Impact if Deleted
+What would break if this document is removed.
+
+### Missing Relationships
+What SHOULD be linked but isn't.
+
+### Broken Relationships
+References to non-existent documents.
 
 ---
 
-## Smart Features to Add
+## 12. Asset Intelligence
 
-### Command Palette
-```ts
-// Custom Studio plugin — Cmd+K / Ctrl+K
-// Search all document types, actions, recently viewed
-```
+Assets (113 docs) need special treatment.
 
-### Global Search Enhancements
-- Search across all document types simultaneously
-- Filter by type, status, date range
-- Save frequent searches
+### Asset Health Metrics
+
+- **Usage Count** — how many documents reference this asset
+- **Referenced By** — list of documents using this asset
+- **Unused Assets** — assets with zero references
+- **Duplicate Assets** — assets with same name/path
+- **External URLs** — assets still pointing to Framer CDN
+- **Local Files** — assets mapped to `public/assets/`
+- **Missing Alt** — assets without alt text
+- **Missing Metadata** — assets without description/tags
+- **Missing Categories** — assets without asset type
+- **Wrong Dimensions** — images that don't meet requirements
+- **Oversized Files** — files over size limit
+- **Broken Files** — files that don't exist at path
+
+---
+
+## 13. Operations Center
+
+### Diagnostics
+
+- Studio Health — plugin status, bundle size
+- Dataset Health — document counts, type distribution
+- Sync Status — Neon ↔ Sanity comparison
+- Import Queue — pending imports
+- Export Queue — pending exports
+- Data Validation — schema compliance
+- Broken References — orphaned documents
+- Media Audit — asset health
+- Relationship Audit — connection health
+- Performance — query times, API calls
+
+### Environment
+
+- Sanity project ID
+- Dataset
+- API version
+- Neon connection status
+- Webhook status
+- Plugin versions
+
+---
+
+## 14. Editorial Productivity
 
 ### Quick Create
 - Floating action button on every list view
-- "+ New Case Study" pre-fills common fields
-- Templates for recurring content types
+- Templates for common content types
+- Pre-filled fields based on context
+
+### Templates
+- Case Study template
+- Blog Post template
+- Service template
+- Client template
+
+### Favorites
+- Pin frequently accessed documents
+- Quick access from dashboard
+
+### Saved Views
+- "My Drafts"
+- "Needs Review"
+- "Published This Month"
+- "Missing SEO"
+- "Unlinked Content"
+
+### Bulk Operations
+- Bulk Publish
+- Bulk Archive
+- Bulk Delete
+- Bulk Tag
+- Bulk Category
 
 ### Keyboard Shortcuts
 - `Cmd+K` — Command palette
@@ -256,72 +608,169 @@ The graph shows:
 - `Cmd+Shift+F` — Global search
 - `Escape` — Close panel / back to list
 
----
-
-## Custom Components Worth Building
-
-| Component | Purpose |
-|---|---|
-| `DashboardWidget` | Stat card (counts, health, queues) |
-| `RelationshipGraph` | Interactive graph of document relationships |
-| `CommandPalette` | Cmd+K search across all types |
-| `QuickCreate` | Floating FAB for new documents |
-| `ContentHealth` | Missing fields, broken refs, SEO gaps |
-| `BreadcrumbNav` | Context-aware breadcrumbs |
-| `SavedViewSelector` | Named, filterable list views |
-| `InlineReferenceEditor` | Edit referenced docs without leaving current |
-| `RevisionTimeline` | Visual diff of document versions |
-| `TemplatePicker` | Pre-filled document templates |
+### Search
+- Global search across all document types
+- Filter by type, status, date range
+- Save frequent searches
+- Command palette for power users
 
 ---
 
-## Plugins to Use
+## 15. Performance Budget
 
-| Plugin | Purpose |
-|---|---|
-| `@sanity/vision` | ✅ Already installed — GROQ query playground |
-| `@sanity/orderable` | Drag-to-reorder lists (services, team, industries) |
-| `sanity-plugin-dashboard` | Custom dashboard widgets |
-| `sanity-plugin-media` | Enhanced media browser |
-| `sanity-plugin-markdown` | Markdown editing for blog bodies |
-| `sanity-plugin-mux-input` | Video upload via Mux |
-| `sanity-plugin-note-field` | Read-only annotation fields |
-| `sanity-plugin-tabs` | Better tabbed editing |
-| `sanity-plugin-iframe-pane` | Preview pane for frontend |
+### Sanity Free Tier Constraints
+
+- 50,000 documents max
+- 500 API requests/minute
+- 500KB response size limit
+- 10 seconds query timeout
+
+### Performance Rules
+
+1. **Never exceed Sanity Free Tier**
+2. **Avoid unnecessary GROQ queries** — use projections
+3. **Avoid duplicate document lists** — cache results
+4. **Reuse query fragments** — DRY GROQ
+5. **Lazy-load heavy panes** — don't load everything at once
+6. **No live subscriptions unless required** — use `fetch` over `listen`
+7. **No expensive graph traversals** — keep relationship queries shallow
+8. **Keep dashboard widgets lightweight** — use `count()` over full fetches
+9. **Minimize API requests** — batch where possible
+10. **Use projections** — only fetch fields you need
+
+### Bundle Budget
+
+- Core Sanity: ~300KB
+- Custom plugins: <50KB total
+- Dashboard widgets: <10KB each
+- Total JS: <400KB gzipped
 
 ---
 
-## Implementation Priority
+## 16. Extension Architecture
 
-### Phase 1 (Now — already done)
-- ✅ Editor tabs on all document types
-- ✅ Field descriptions and validation
-- ✅ Default sort orders
-- ✅ Fixed previews (no DOM errors)
-- ✅ Custom desk structure with sections
-- ✅ Sync status tracking
+### Plugin Classification
 
-### Phase 2 (Next)
-- [ ] Dashboard with custom widgets
-- [ ] Collapsible navigation sections
-- [ ] Relationship graph view
-- [ ] Quick-create menu
-- [ ] Content health panel
-- [ ] Enhanced list views (sortable, filterable)
+| Category | Plugins | Purpose |
+|----------|---------|---------|
+| Core | `structureTool`, `visionTool` | Essential Studio |
+| Editorial | `dashboardTool`, `orderable` | Content management |
+| Media | `@sanity/media` | Asset management |
+| Search | — | Global search (future) |
+| Preview | `iframe-pane` | Live preview |
+| Workflow | — | Draft/publish workflow |
+| AI | — | Content suggestions |
+| Developer | `visionTool` | GROQ testing |
+| Diagnostics | — | Health monitoring |
+| Operations | — | Sync, import, export |
 
-### Phase 3 (Future)
-- [ ] Command palette (Cmd+K)
+### Extension Requirements
+
+Each extension must document:
+- Purpose
+- Dependencies
+- Performance impact
+- Free-tier compatibility
+- Maintenance cost
+
+---
+
+## 17. Implementation Roadmap
+
+### Phase 1 — Foundation ✅ COMPLETE
+
+- ✅ Desk Structure
+- ✅ Schema Groups
+- ✅ Preview Fixes
+- ✅ Validation
+- ✅ Editor Tabs
+- ✅ Sync Status
+- ✅ Dashboard Foundation
+- ✅ Build + Deploy
+
+### Phase 2 — Workspace Architecture 🔴 NEXT
+
+- [ ] Restructure desk into workspaces
+- [ ] Add workspace icons and descriptions
+- [ ] Implement collapsible sections
+- [ ] Add quick-create floating button
+- [ ] Fix filter syntax errors
+- [ ] Deploy updated Studio
+
+### Phase 3 — Dashboard 🔴 NEXT
+
+- [ ] Real operational dashboard
+- [ ] Content stats widget
+- [ ] Recently edited widget
+- [ ] Drafts widget
+- [ ] Publishing queue widget
+- [ ] Content health widget
+- [ ] Quick create widget
+
+### Phase 4 — Editorial 🟡 SOON
+
+- [ ] Saved views
+- [ ] Bulk operations
+- [ ] Templates
+- [ ] Favorites
+- [ ] Command palette
 - [ ] Keyboard shortcuts
-- [ ] Templates for content types
-- [ ] Revision timeline
-- [ ] AI-assisted editing (content suggestions, SEO scoring)
-- [ ] Saved views and smart folders
+
+### Phase 5 — Relationships 🟡 SOON
+
+- [ ] Relationship explorer
+- [ ] Incoming/outgoing references
+- [ ] Dependency analysis
+- [ ] Impact analysis
+- [ ] Broken reference detection
+
+### Phase 6 — Asset Intelligence 🔵 FUTURE
+
+- [ ] Usage tracking
+- [ ] Duplicate detection
+- [ ] Health scoring
+- [ ] Missing metadata detection
+- [ ] External URL detection
+
+### Phase 7 — Content Health 🔵 FUTURE
+
+- [ ] Health scoring engine
+- [ ] SEO scoring
+- [ ] Accessibility scoring
+- [ ] Metadata scoring
+- [ ] Publishing scoring
+- [ ] Actionable fix suggestions
+
+### Phase 8 — Operations 🔵 FUTURE
+
+- [ ] Diagnostics dashboard
+- [ ] Data integrity reports
+- [ ] Performance monitoring
+- [ ] Environment status
+- [ ] Webhook monitoring
+
+### Phase 9 — AI Integration 🔵 FUTURE
+
+- [ ] Content assistant
+- [ ] SEO assistant
+- [ ] Relationship suggestions
+- [ ] Metadata suggestions
+- [ ] Content quality scoring
+
+### Phase 10 — Advanced 🔵 FUTURE
+
+- [ ] Kanban views
+- [ ] Calendar views
+- [ ] Timeline views
+- [ ] Advanced search
+- [ ] Custom dashboards
+- [ ] Role-based access
 
 ---
 
-## Code Patterns
+## 18. Code Patterns
 
-### Custom Desk Structure with Sections
+### Custom Desk Structure with Workspaces
 
 ```ts
 // sanity/schemaTypes/deskStructure.ts
@@ -333,69 +782,31 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
     .items([
       dashboardItem(S),
       S.divider(),
-      contentSection(S),
+      workspaceItem(S, '✍ Editorial', '📝', [
+        pagesItem(S),
+        S.documentTypeListItem('caseStudy').title('Case Studies'),
+        S.documentTypeListItem('post').title('Blog Posts'),
+        S.documentTypeListItem('service').title('Services'),
+      ]),
       S.divider(),
-      businessSection(S),
+      workspaceItem(S, '💼 Business', '🏢', [
+        S.documentTypeListItem('client').title('Clients'),
+        S.documentTypeListItem('engagement').title('Engagements'),
+        S.documentTypeListItem('industry').title('Industries'),
+        S.documentTypeListItem('person').title('Team'),
+      ]),
       S.divider(),
-      systemSection(S),
+      workspaceItem(S, '⚙ Operations', '🔧', [
+        S.documentTypeListItem('syncStatus').title('Sync Status'),
+        S.documentTypeListItem('contactSubmission').title('Contact Submissions'),
+      ]),
     ]);
 
-function dashboardItem(S: StructureBuilder) {
+function workspaceItem(S: StructureBuilder, title: string, icon: string, items: any[]) {
   return S.listItem()
-    .title('Dashboard')
-    .icon(() => '📊')
-    .child(
-      S.list()
-        .title('Dashboard')
-        .items([
-          S.listItem().title('Recently Edited').child(S.documentList().title('Recent').filter('_updatedAt > now() - 7').order([{field: '_updatedAt', direction: 'desc'}])),
-          S.listItem().title('Drafts').child(S.documentList().title('Drafts').filter('_originalId in path("*drafts*")')),
-        ])
-    );
-}
-
-function contentSection(S: StructureBuilder) {
-  return S.listItem()
-    .title('✍ Content')
-    .icon(() => '📝')
-    .child(
-      S.list()
-        .title('Content')
-        .items([
-          S.documentTypeListItem('caseStudy').title('Case Studies'),
-          S.documentTypeListItem('post').title('Blog Posts'),
-          S.documentTypeListItem('service').title('Services'),
-        ])
-    );
-}
-
-function businessSection(S: StructureBuilder) {
-  return S.listItem()
-    .title('💼 Business')
-    .icon(() => '🏢')
-    .child(
-      S.list()
-        .title('Business')
-        .items([
-          S.documentTypeListItem('client').title('Clients'),
-          S.documentTypeListItem('engagement').title('Engagements'),
-          S.documentTypeListItem('industry').title('Industries'),
-        ])
-    );
-}
-
-function systemSection(S: StructureBuilder) {
-  return S.listItem()
-    .title('⚙ System')
-    .icon(() => '🔧')
-    .child(
-      S.list()
-        .title('System')
-        .items([
-          S.documentTypeListItem('siteSettings').title('Site Settings'),
-          S.documentTypeListItem('syncStatus').title('Sync Status'),
-        ])
-    );
+    .title(title)
+    .icon(() => icon)
+    .child(S.list().title(title).items(items));
 }
 ```
 
@@ -429,1011 +840,103 @@ fields: [
 ]
 ```
 
----
-
-## Key Takeaways
-
-1. **Sanity is the UI layer** — Neon is SSOT. Studio writes to Sanity, syncs to Neon.
-2. **Every field needs a description** — editors shouldn't guess what goes where.
-3. **Every list needs a default sort** — newest first always.
-4. **Every preview needs prepare()** — prevent `&` → DOM crash.
-5. **Tab groups reduce overwhelm** — 3-5 tabs max per document type.
-6. **Dashboard replaces the blank slate** — first thing editors see should be actionable.
-7. **2-click rule** — anything important reachable in 2 clicks from dashboard.
-8. **Collapsible nav sections** — prevent scroll fatigue with 10+ items.
-9. **Relationships should be visible** — editors need to know what connects to what.
-10. **Sync status should be visible** — editors need to know when content was last synced to Neon.
-
----
-
-## Quick Reference: Current Sanity State
-
-| Type | Count | In Neon |
-|---|---|---|
-| caseStudy | 82 | ✅ |
-| post | 75 | ✅ |
-| person | 12 | ✅ |
-| client | 106 | ✅ |
-| industry | 66 | ✅ |
-| service | 12 | ✅ |
-| singletonPage | 17 | ✅ |
-| siteSettings | 1 | ✅ |
-| syncStatus | 19 | ✅ |
-| asset | 113 | ✅ |
-| taxonomy | 179 | ✅ |
-| engagement | 70 | ✅ |
-| contactSubmission | 0 | Schema exists, no data |
-
-
-
-Glad it helped. If you're planning to heavily customize Sanity Studio, I'd push it even further. Instead of asking the AI to "improve the UI," ask it to **design a next-generation CMS**.
-
-Here's an even stronger prompt that typically produces much better concepts.
-
----
-
-# Design Challenge
-
-Forget what Sanity Studio looks like today.
-
-Imagine you are the Design Director at Linear, Framer, Apple, and Stripe. Your task is to redesign Sanity Studio from first principles.
-
-The goal is **not** to create another CMS.
-
-The goal is to create the **best content operating system ever built.**
-
-This product will be used 8–10 hours every day by designers, marketers, developers, founders, writers, SEO specialists, and content managers.
-
-Every design decision should optimize for:
-
-* Speed
-* Confidence
-* Flow State
-* Information Density
-* Discoverability
-* Beauty
-* Scalability
-* Reduced Cognitive Load
-
-The interface should feel like a premium desktop application—not a web form.
-
----
-
-# Current Experience
-
-The existing Sanity Studio feels:
-
-* Like a database
-* Like a CRUD application
-* Generic
-* Form-heavy
-* Developer-centric
-* Visually flat
-* Low information density
-* Poorly prioritized
-* Endless scrolling
-* Weak navigation
-* Weak hierarchy
-* Weak content previews
-* Weak editing experience
-
-It is functional but uninspiring.
-
-I want something radically better.
-
----
-
-# The Experience I Want
-
-When users open the Studio, they should immediately think:
-
-> "This is the most beautiful admin platform I've ever used."
-
-The experience should feel like:
-
-* Linear
-* Framer
-* Notion
-* Vercel
-* Arc Browser
-* Stripe Dashboard
-* Raycast
-* Airtable
-* Apple Pro Apps
-
-Elegant.
-
-Fast.
-
-Opinionated.
-
-Premium.
-
----
-
-# Visual Language
-
-Design a modern enterprise interface using:
-
-* Large visual hierarchy
-* High-quality typography
-* Beautiful spacing
-* Soft elevation
-* Glass where appropriate
-* Rich cards
-* Premium shadows
-* Purposeful color
-* Strong iconography
-* Beautiful empty states
-* Smooth micro-interactions
-* Motion with restraint
-
-No Bootstrap aesthetics.
-
-No Material Design feel.
-
-No default CMS look.
-
----
-
-# Navigation
-
-Redesign navigation completely.
-
-Question whether a left sidebar is even the best solution.
-
-Explore alternatives like:
-
-* Workspace navigation
-* Dock navigation
-* Floating navigation
-* Adaptive navigation
-* Command-first navigation
-* Search-first navigation
-* Context-aware navigation
-* Collapsible workspaces
-* Split-pane navigation
-
-Navigation should feel intelligent.
-
----
-
-# Dashboard
-
-Design a homepage that acts as a mission control center.
-
-It should immediately surface:
-
-* What needs attention
-* What changed today
-* What's ready to publish
-* What's blocked
-* Content health
-* SEO health
-* AI suggestions
-* Recent activity
-* Favorites
-* Pinned workspaces
-* Publishing queue
-* Team activity
-* Scheduled content
-
-Everything should be actionable.
-
----
-
-# List Experience
-
-Lists should become visual browsers instead of text lists.
-
-Each item should include:
-
-* Hero image
-* Title
-* Subtitle
-* Status
-* Owner
-* Last edited
-* Reading time
-* SEO score
-* Completion progress
-* AI quality score
-* Content type badge
-* Quick actions
-* Hover preview
-
-Support multiple views:
-
-* Cards
-* Compact
-* Gallery
-* Masonry
-* Table
-* Timeline
-* Kanban
-* Calendar
-
-Users should switch instantly between them.
-
----
-
-# Editing Experience
-
-Completely rethink editing.
-
-The editor should resemble a professional design tool.
-
-Not a form.
-
-Use:
-
-* Split panes
-* Dockable panels
-* Inspector sidebar
-* Floating properties
-* Sticky actions
-* Live preview
-* Responsive preview
-* Relationship graph
-* AI sidekick
-* Comments
-* Version comparison
-* Keyboard-first workflow
-
----
-
-# Content Layout
-
-Instead of one endless page of inputs, organize content into modular workspaces.
-
-For example:
-
-## Overview
-
-Content health
-
-Publishing status
-
-SEO score
-
-Owner
-
-Timeline
-
-Quick actions
-
----
-
-## Content
-
-Hero
-
-Sections
-
-Rich Text
-
-Blocks
-
-Call-to-actions
-
----
-
-## Media
-
-Gallery
-
-Videos
-
-Downloads
-
-Alt text
-
-Optimization
-
----
-
-## Relationships
-
-Connected services
-
-Connected technologies
-
-Related blogs
-
-Clients
-
-Industries
-
-Collections
-
-Visual graph
-
----
-
-## SEO
-
-Title
-
-Description
-
-Keywords
-
-Schema
-
-Social previews
-
-Live Google snippet
-
----
-
-## Publishing
-
-Workflow
-
-Approvals
-
-Scheduling
-
-Localization
-
-Revision history
-
----
-
-# Components
-
-Redesign every component.
-
-Think beyond standard UI.
-
-Create premium versions of:
-
-* Buttons
-* Inputs
-* Toggles
-* Selects
-* Chips
-* Cards
-* Lists
-* Tables
-* Drawers
-* Tabs
-* Accordions
-* Dialogs
-* Menus
-* Context menus
-* Search
-* Filters
-* Side panels
-* Toasts
-* Notifications
-
-Every component should feel custom-designed.
-
----
-
-# Motion
-
-Use subtle animations to communicate state.
-
-Examples:
-
-* Hover elevation
-* Page transitions
-* Animated navigation
-* Expanding cards
-* Contextual drawers
-* Progressive disclosure
-* Smooth filtering
-* Intelligent loading skeletons
-
-Motion should improve usability, never distract.
-
----
-
-# AI Integration
-
-The interface should make AI feel native.
-
-Examples:
-
-* Rewrite content
-* Improve SEO
-* Generate summaries
-* Suggest relationships
-* Recommend tags
-* Detect missing information
-* Improve readability
-* Suggest metadata
-* Content quality score
-* AI copilots inside every document
-
-AI should be embedded naturally, not bolted on.
-
----
-
-# UX Principles
-
-Challenge every assumption.
-
-Ask:
-
-* Why is this a form?
-* Why is this a sidebar?
-* Why is this a list?
-* Why does editing require scrolling?
-* Why can't multiple documents be open simultaneously?
-* Why can't relationships be visual?
-* Why can't search be the primary navigation?
-* Why can't users customize their workspace?
-
-Don't imitate existing CMS products.
-
-Invent a better one.
-
----
-
-# Deliverables
-
-Produce a complete redesign including:
-
-* Information architecture
-* Navigation concepts
-* Dashboard wireframes
-* List view redesign
-* Editor redesign
-* Component library
-* Design system
-* Typography scale
-* Color palette
-* Spacing system
-* Interaction patterns
-* Motion guidelines
-* AI-assisted workflows
-* Accessibility considerations
-* Responsive behavior
-* Plugin recommendations
-* Custom component ideas
-* Sanity Studio customization strategy
-
-The final result should feel like a premium enterprise application that teams genuinely enjoy using every day, setting a new benchmark for content management platforms rather than iterating on existing CMS patterns.
-
-Use this as a master prompt for Claude Code, Cursor, Gemini CLI, or ChatGPT. It is written as a product design brief rather than a coding prompt, so the AI focuses on solving the information architecture instead of just changing colors.
-
----
-
-# Prompt
-
-You are a Senior Product Designer, UX Architect, and Sanity Studio expert.
-
-I am building a **large-scale knowledge management system** inside Sanity, not a simple CMS.
-
-The current Studio UX feels like a generic CMS and is becoming impossible to manage as the number of schemas grows.
-
-I want you to redesign the entire content management experience.
-
-## Current Problems
-
-The current UI is document-centric instead of workflow-centric.
-
-Problems include:
-
-* Hundreds of document types
-* Everything appears in one long list
-* Difficult to know what should be edited first
-* Content and configuration are mixed together
-* Schema relationships are hidden
-* No logical navigation
-* No dashboard
-* No shortcuts
-* Poor discoverability
-* Difficult for editors
-* Difficult for administrators
-* Difficult to onboard new team members
-
-The current experience feels like editing a database rather than operating a digital business.
-
----
-
-## My Goal
-
-I want Sanity Studio to feel like:
-
-* Notion
-* Linear
-* Airtable
-* Framer CMS
-* Shopify Admin
-* Stripe Dashboard
-
-Meaning:
-
-Clean.
-
-Structured.
-
-Fast.
-
-Opinionated.
-
-Workflow-first.
-
----
-
-## Design Principles
-
-Prioritize:
-
-* Information Architecture
-* Progressive Disclosure
-* Contextual Editing
-* Task-based Navigation
-* Clear Hierarchy
-* Minimal Cognitive Load
-* Beautiful UI
-* Premium Experience
-* Fast Navigation
-* Keyboard-first Workflow
-
----
-
-## This is NOT a CMS.
-
-It is an Operating System for managing:
-
-* Website
-* Services
-* Portfolio
-* Case Studies
-* Blog
-* Technologies
-* Clients
-* Industries
-* Categories
-* Authors
-* Media
-* SEO
-* Redirects
-* Global Settings
-* Navigation
-* Pricing
-* Internal Documentation
-* AI Content
-* Brand Assets
-
-Everything is connected.
-
----
-
-## I want a completely different Studio structure.
-
-Instead of:
-
-```
-Content
-    Pages
-    Blog
-    Services
-    Case Studies
-```
-
-I want something like:
-
-```
-🏠 Home
-
-📊 Dashboard
-Recent Changes
-Drafts
-Publishing Queue
-Recently Updated
-Analytics
-
-✍ Content
-
-Pages
-Blog
-Case Studies
-Resources
-Documentation
-
-🎨 Brand
-
-Assets
-Media
-Icons
-Logos
-Illustrations
-
-💼 Business
-
-Services
-Packages
-Pricing
-Industries
-Clients
-Testimonials
-
-🚀 Marketing
-
-Landing Pages
-SEO
-Redirects
-Campaigns
-CTAs
-
-🧠 Knowledge
-
-Technologies
-Capabilities
-Glossary
-Research
-Prompt Library
-
-⚙ System
-
-Navigation
-Menus
-Global Settings
-Integrations
-Users
-Permissions
-
-🤖 AI
-
-AI Content
-AI Prompts
-Embeddings
-Generated Drafts
-
-🗂 Taxonomies
-
-Categories
-Tags
-Authors
-Collections
+### Dashboard Widget Pattern
+
+```ts
+// Lightweight dashboard widget using count()
+S.listItem()
+  .title('📊 Dashboard')
+  .icon(() => '📊')
+  .child(
+    S.list()
+      .title('Dashboard')
+      .items([
+        quickStat(S, '📝', 'Drafts', '_id match "drafts.*"', '_updatedAt desc'),
+        quickStat(S, '🕐', 'Recently Edited', '_updatedAt > now() - 7', '_updatedAt desc'),
+      ])
+  );
 ```
 
 ---
 
-## Every section should have:
+## 19. Decision Log
 
-* custom icon
-* custom description
-* grouped navigation
-* collapsible sections
-* pinned items
-* recently edited
-* favorites
-* search
-* quick create
-* templates
+| Date | Decision | Reason |
+|------|----------|--------|
+| 2026-07-29 | Neon is SSOT | Sanity is editorial, Neon is source of truth |
+| 2026-07-29 | Sanity syncs to Neon | Structured content flows one way |
+| 2026-07-29 | Media goes to R2 | Not Neon or Sanity |
+| 2026-07-29 | 6-pillar taxonomy | Strategy, Brand, Experience, Engineering, Growth, Operations |
+| 2026-07-29 | Vedanshu owns everything | `owner: 'vedanshu'` on every content row |
+| 2026-07-30 | Dashboard replaces blank slate | First thing editors see should be actionable |
+| 2026-07-30 | Two-click rule | Anything important reachable in 2 clicks |
+| 2026-07-30 | Workspace model over flat tree | Role-based navigation for different teams |
 
 ---
 
-## Every document should have:
+## 20. Known Limitations
 
-A proper overview screen.
+| Limitation | Status | Mitigation |
+|------------|--------|------------|
+| Sanity free-tier document limit | 50,000 max | Monitor usage, archive old content |
+| No live preview | Not configured | Use iframe-pane for frontend preview |
+| No draft/publish workflow | Schema exists | Implement in Phase 4 |
+| No bulk operations | Not built | Implement in Phase 4 |
+| No command palette | Not built | Implement in Phase 4 |
+| No relationship explorer | Not built | Implement in Phase 5 |
+| No health scoring | Not built | Implement in Phase 7 |
+| No AI integration | Not built | Implement in Phase 9 |
 
-Instead of showing 50 fields at once.
+---
 
-For example:
+## Appendix A: Quick Reference
+
+### Sanity Studio URLs
+
+- Local: http://localhost:3333
+- Production: https://wugweb.sanity.studio/
+- Project: https://www.sanity.io/manage/project/splvhmk1
+
+### Key Commands
+
+```bash
+# Start Studio locally
+cd sanity && npx sanity dev
+
+# Build Studio
+cd sanity && npx sanity build
+
+# Deploy Studio
+cd sanity && npx sanity deploy
+
+# Test GROQ queries
+cd sanity && npx sanity vision
+```
+
+### Important Files
 
 ```
-Overview
-
-Status
-Owner
-Last Updated
-SEO Score
-Reading Time
-Publish Date
-Related Content
-
-------------
-
-Content
-
-Hero
-
-Sections
-
-Body
-
-Gallery
-
-------------
-
-Media
-
-Images
-
-Videos
-
-Downloads
-
-------------
-
-SEO
-
-Title
-
-Description
-
-OpenGraph
-
-Twitter
-
-Structured Data
-
-------------
-
-Relationships
-
-Related Services
-
-Related Technologies
-
-Related Blogs
-
-Related Case Studies
-
-------------
-
-Metadata
-
-Created By
-
-Updated By
-
-Revision History
+sanity/
+├── sanity.config.ts          # Studio configuration
+├── schemaTypes/
+│   ├── index.ts              # Schema registry
+│   ├── deskStructure.ts      # Navigation structure
+│   ├── post.ts               # Blog post schema
+│   ├── caseStudy.ts          # Case study schema
+│   ├── service.ts            # Service schema
+│   ├── client.ts             # Client schema
+│   ├── engagement.ts         # Engagement schema
+│   ├── industry.ts           # Industry schema
+│   ├── person.ts             # Team member schema
+│   ├── asset.ts              # Media asset schema
+│   ├── taxonomy.ts           # Taxonomy term schema
+│   ├── singletonPage.ts      # Page content schema
+│   ├── siteSettings.ts       # Global settings schema
+│   └── blockContent.ts       # Rich text blocks
+└── structure/
+    └── dashboardWidget.tsx   # Dashboard widget component
 ```
 
 ---
 
-## Dashboard
-
-Design a proper dashboard.
-
-Include:
-
-Recently edited
-
-Drafts
-
-Scheduled
-
-Publishing Queue
-
-Broken References
-
-Missing SEO
-
-Missing Images
-
-Unpublished Content
-
-Content Health
-
-Recently Created
-
-Pinned Documents
-
-Favorite Collections
-
-Quick Create
-
-Quick Links
-
----
-
-## Navigation
-
-Replace the default Sanity navigation with something that feels like an admin platform.
-
-Allow:
-
-Workspace switching
-
-Pinned collections
-
-Favorites
-
-Smart folders
-
-Dynamic filters
-
-Saved views
-
-Recently viewed
-
-Breadcrumbs
-
-Context-aware navigation
-
----
-
-## List Views
-
-Improve list views.
-
-Support:
-
-Table
-
-Grid
-
-Kanban
-
-Compact
-
-Gallery
-
-Tree
-
-Grouped
-
-Calendar
-
-Timeline
-
----
-
-## Content Editing
-
-Improve editing experience.
-
-Support:
-
-Tabbed editing
-
-Split view
-
-Live preview
-
-Relationship graph
-
-Referenced documents
-
-Quick actions
-
-Duplicate
-
-Clone
-
-Archive
-
-Version compare
-
-Preview
-
-Validation panel
-
-AI assistant
-
----
-
-## Relationship Management
-
-I want to visualize relationships.
-
-Example:
-
-Case Study
-
-↓
-
-Client
-
-↓
-
-Industry
-
-↓
-
-Technology
-
-↓
-
-Services
-
-↓
-
-Blog Posts
-
-↓
-
-Resources
-
-Graph view.
-
-Dependency map.
-
-Impact analysis.
-
----
-
-## Smart Features
-
-Add:
-
-Command Palette
-
-Global Search
-
-Keyboard shortcuts
-
-Spotlight search
-
-Quick open
-
-Jump to document
-
-Create anywhere
-
----
-
-## Productivity
-
-Reduce clicks.
-
-Reduce scrolling.
-
-Reduce context switching.
-
-Everything important should be reachable within 2 clicks.
-
----
-
-## Design
-
-Use modern admin UI patterns.
-
-Inspired by:
-
-Linear
-
-Notion
-
-Framer
-
-Vercel
-
-Stripe
-
-Raycast
-
-Airtable
-
-Arc Browser
-
-Avoid generic CMS aesthetics.
-
----
-
-## Deliverables
-
-Design a complete Sanity Studio architecture including:
-
-1. Workspace architecture
-2. Navigation hierarchy
-3. Desk Structure
-4. Custom panes
-5. Dashboard layout
-6. Document editor layout
-7. List view improvements
-8. Relationship visualization
-9. Custom components
-10. Plugins to use
-11. Custom plugins worth building
-12. Studio UX improvements
-13. AI-assisted editing workflow
-14. Information architecture
-15. Folder and schema organization
-16. Best practices for managing 100+ schemas
-17. Recommended Sanity APIs and extension points
-18. Example code for implementing the custom Desk Structure and dashboard.
-
-The final solution should feel like a premium internal product platform rather than a default CMS. It should scale comfortably to 100–500 schemas and thousands of interconnected documents while remaining intuitive for both content editors and administrators.
-
-rule - never cross sanity free tier
+*This document is the single source of truth for the Wugweb Sanity Studio. Update it after significant changes.*
