@@ -47,5 +47,14 @@ export default defineType({
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
     defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
-  preview: { select: { title: 'title', subtitle: 'pageId' } },
+  orderings: [
+    { name: 'pageIdAsc', title: 'Page ID', by: [{ field: 'pageId', direction: 'asc' }] },
+  ],
+  preview: {
+    select: { title: 'title', subtitle: 'pageId' },
+    prepare: ({ title, subtitle }: any) => ({
+      title: title || 'Untitled Page',
+      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
+    }),
+  },
 });

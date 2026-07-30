@@ -21,6 +21,15 @@ export default defineType({
     defineField({ name: 'newsletterOptIn', type: 'boolean', group: 'preferences' }),
     defineField({ name: 'submittedAt', type: 'datetime', initialValue: () => new Date().toISOString(), group: 'details' }),
   ],
-  orderings: [{ name: 'submittedAtDesc', title: 'Latest first', by: [{ field: 'submittedAt', direction: 'desc' }] }],
-  preview: { select: { title: 'name', subtitle: 'company' } },
+  orderings: [
+    { name: 'submittedAtDesc', title: 'Latest first', by: [{ field: 'submittedAt', direction: 'desc' }] },
+    { name: 'nameAsc', title: 'Name A-Z', by: [{ field: 'name', direction: 'asc' }] },
+  ],
+  preview: {
+    select: { title: 'name', subtitle: 'company', email: 'email' },
+    prepare: ({ title, subtitle, email }: any) => ({
+      title: title || 'Anonymous',
+      subtitle: `${subtitle || ''}${email ? ` — ${String(email).replace(/&/g, 'and')}` : ''}`.trim(),
+    }),
+  },
 });

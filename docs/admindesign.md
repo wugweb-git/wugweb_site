@@ -463,3 +463,977 @@ fields: [
 | taxonomy | 179 | ✅ |
 | engagement | 70 | ✅ |
 | contactSubmission | 0 | Schema exists, no data |
+
+
+
+Glad it helped. If you're planning to heavily customize Sanity Studio, I'd push it even further. Instead of asking the AI to "improve the UI," ask it to **design a next-generation CMS**.
+
+Here's an even stronger prompt that typically produces much better concepts.
+
+---
+
+# Design Challenge
+
+Forget what Sanity Studio looks like today.
+
+Imagine you are the Design Director at Linear, Framer, Apple, and Stripe. Your task is to redesign Sanity Studio from first principles.
+
+The goal is **not** to create another CMS.
+
+The goal is to create the **best content operating system ever built.**
+
+This product will be used 8–10 hours every day by designers, marketers, developers, founders, writers, SEO specialists, and content managers.
+
+Every design decision should optimize for:
+
+* Speed
+* Confidence
+* Flow State
+* Information Density
+* Discoverability
+* Beauty
+* Scalability
+* Reduced Cognitive Load
+
+The interface should feel like a premium desktop application—not a web form.
+
+---
+
+# Current Experience
+
+The existing Sanity Studio feels:
+
+* Like a database
+* Like a CRUD application
+* Generic
+* Form-heavy
+* Developer-centric
+* Visually flat
+* Low information density
+* Poorly prioritized
+* Endless scrolling
+* Weak navigation
+* Weak hierarchy
+* Weak content previews
+* Weak editing experience
+
+It is functional but uninspiring.
+
+I want something radically better.
+
+---
+
+# The Experience I Want
+
+When users open the Studio, they should immediately think:
+
+> "This is the most beautiful admin platform I've ever used."
+
+The experience should feel like:
+
+* Linear
+* Framer
+* Notion
+* Vercel
+* Arc Browser
+* Stripe Dashboard
+* Raycast
+* Airtable
+* Apple Pro Apps
+
+Elegant.
+
+Fast.
+
+Opinionated.
+
+Premium.
+
+---
+
+# Visual Language
+
+Design a modern enterprise interface using:
+
+* Large visual hierarchy
+* High-quality typography
+* Beautiful spacing
+* Soft elevation
+* Glass where appropriate
+* Rich cards
+* Premium shadows
+* Purposeful color
+* Strong iconography
+* Beautiful empty states
+* Smooth micro-interactions
+* Motion with restraint
+
+No Bootstrap aesthetics.
+
+No Material Design feel.
+
+No default CMS look.
+
+---
+
+# Navigation
+
+Redesign navigation completely.
+
+Question whether a left sidebar is even the best solution.
+
+Explore alternatives like:
+
+* Workspace navigation
+* Dock navigation
+* Floating navigation
+* Adaptive navigation
+* Command-first navigation
+* Search-first navigation
+* Context-aware navigation
+* Collapsible workspaces
+* Split-pane navigation
+
+Navigation should feel intelligent.
+
+---
+
+# Dashboard
+
+Design a homepage that acts as a mission control center.
+
+It should immediately surface:
+
+* What needs attention
+* What changed today
+* What's ready to publish
+* What's blocked
+* Content health
+* SEO health
+* AI suggestions
+* Recent activity
+* Favorites
+* Pinned workspaces
+* Publishing queue
+* Team activity
+* Scheduled content
+
+Everything should be actionable.
+
+---
+
+# List Experience
+
+Lists should become visual browsers instead of text lists.
+
+Each item should include:
+
+* Hero image
+* Title
+* Subtitle
+* Status
+* Owner
+* Last edited
+* Reading time
+* SEO score
+* Completion progress
+* AI quality score
+* Content type badge
+* Quick actions
+* Hover preview
+
+Support multiple views:
+
+* Cards
+* Compact
+* Gallery
+* Masonry
+* Table
+* Timeline
+* Kanban
+* Calendar
+
+Users should switch instantly between them.
+
+---
+
+# Editing Experience
+
+Completely rethink editing.
+
+The editor should resemble a professional design tool.
+
+Not a form.
+
+Use:
+
+* Split panes
+* Dockable panels
+* Inspector sidebar
+* Floating properties
+* Sticky actions
+* Live preview
+* Responsive preview
+* Relationship graph
+* AI sidekick
+* Comments
+* Version comparison
+* Keyboard-first workflow
+
+---
+
+# Content Layout
+
+Instead of one endless page of inputs, organize content into modular workspaces.
+
+For example:
+
+## Overview
+
+Content health
+
+Publishing status
+
+SEO score
+
+Owner
+
+Timeline
+
+Quick actions
+
+---
+
+## Content
+
+Hero
+
+Sections
+
+Rich Text
+
+Blocks
+
+Call-to-actions
+
+---
+
+## Media
+
+Gallery
+
+Videos
+
+Downloads
+
+Alt text
+
+Optimization
+
+---
+
+## Relationships
+
+Connected services
+
+Connected technologies
+
+Related blogs
+
+Clients
+
+Industries
+
+Collections
+
+Visual graph
+
+---
+
+## SEO
+
+Title
+
+Description
+
+Keywords
+
+Schema
+
+Social previews
+
+Live Google snippet
+
+---
+
+## Publishing
+
+Workflow
+
+Approvals
+
+Scheduling
+
+Localization
+
+Revision history
+
+---
+
+# Components
+
+Redesign every component.
+
+Think beyond standard UI.
+
+Create premium versions of:
+
+* Buttons
+* Inputs
+* Toggles
+* Selects
+* Chips
+* Cards
+* Lists
+* Tables
+* Drawers
+* Tabs
+* Accordions
+* Dialogs
+* Menus
+* Context menus
+* Search
+* Filters
+* Side panels
+* Toasts
+* Notifications
+
+Every component should feel custom-designed.
+
+---
+
+# Motion
+
+Use subtle animations to communicate state.
+
+Examples:
+
+* Hover elevation
+* Page transitions
+* Animated navigation
+* Expanding cards
+* Contextual drawers
+* Progressive disclosure
+* Smooth filtering
+* Intelligent loading skeletons
+
+Motion should improve usability, never distract.
+
+---
+
+# AI Integration
+
+The interface should make AI feel native.
+
+Examples:
+
+* Rewrite content
+* Improve SEO
+* Generate summaries
+* Suggest relationships
+* Recommend tags
+* Detect missing information
+* Improve readability
+* Suggest metadata
+* Content quality score
+* AI copilots inside every document
+
+AI should be embedded naturally, not bolted on.
+
+---
+
+# UX Principles
+
+Challenge every assumption.
+
+Ask:
+
+* Why is this a form?
+* Why is this a sidebar?
+* Why is this a list?
+* Why does editing require scrolling?
+* Why can't multiple documents be open simultaneously?
+* Why can't relationships be visual?
+* Why can't search be the primary navigation?
+* Why can't users customize their workspace?
+
+Don't imitate existing CMS products.
+
+Invent a better one.
+
+---
+
+# Deliverables
+
+Produce a complete redesign including:
+
+* Information architecture
+* Navigation concepts
+* Dashboard wireframes
+* List view redesign
+* Editor redesign
+* Component library
+* Design system
+* Typography scale
+* Color palette
+* Spacing system
+* Interaction patterns
+* Motion guidelines
+* AI-assisted workflows
+* Accessibility considerations
+* Responsive behavior
+* Plugin recommendations
+* Custom component ideas
+* Sanity Studio customization strategy
+
+The final result should feel like a premium enterprise application that teams genuinely enjoy using every day, setting a new benchmark for content management platforms rather than iterating on existing CMS patterns.
+
+Use this as a master prompt for Claude Code, Cursor, Gemini CLI, or ChatGPT. It is written as a product design brief rather than a coding prompt, so the AI focuses on solving the information architecture instead of just changing colors.
+
+---
+
+# Prompt
+
+You are a Senior Product Designer, UX Architect, and Sanity Studio expert.
+
+I am building a **large-scale knowledge management system** inside Sanity, not a simple CMS.
+
+The current Studio UX feels like a generic CMS and is becoming impossible to manage as the number of schemas grows.
+
+I want you to redesign the entire content management experience.
+
+## Current Problems
+
+The current UI is document-centric instead of workflow-centric.
+
+Problems include:
+
+* Hundreds of document types
+* Everything appears in one long list
+* Difficult to know what should be edited first
+* Content and configuration are mixed together
+* Schema relationships are hidden
+* No logical navigation
+* No dashboard
+* No shortcuts
+* Poor discoverability
+* Difficult for editors
+* Difficult for administrators
+* Difficult to onboard new team members
+
+The current experience feels like editing a database rather than operating a digital business.
+
+---
+
+## My Goal
+
+I want Sanity Studio to feel like:
+
+* Notion
+* Linear
+* Airtable
+* Framer CMS
+* Shopify Admin
+* Stripe Dashboard
+
+Meaning:
+
+Clean.
+
+Structured.
+
+Fast.
+
+Opinionated.
+
+Workflow-first.
+
+---
+
+## Design Principles
+
+Prioritize:
+
+* Information Architecture
+* Progressive Disclosure
+* Contextual Editing
+* Task-based Navigation
+* Clear Hierarchy
+* Minimal Cognitive Load
+* Beautiful UI
+* Premium Experience
+* Fast Navigation
+* Keyboard-first Workflow
+
+---
+
+## This is NOT a CMS.
+
+It is an Operating System for managing:
+
+* Website
+* Services
+* Portfolio
+* Case Studies
+* Blog
+* Technologies
+* Clients
+* Industries
+* Categories
+* Authors
+* Media
+* SEO
+* Redirects
+* Global Settings
+* Navigation
+* Pricing
+* Internal Documentation
+* AI Content
+* Brand Assets
+
+Everything is connected.
+
+---
+
+## I want a completely different Studio structure.
+
+Instead of:
+
+```
+Content
+    Pages
+    Blog
+    Services
+    Case Studies
+```
+
+I want something like:
+
+```
+🏠 Home
+
+📊 Dashboard
+Recent Changes
+Drafts
+Publishing Queue
+Recently Updated
+Analytics
+
+✍ Content
+
+Pages
+Blog
+Case Studies
+Resources
+Documentation
+
+🎨 Brand
+
+Assets
+Media
+Icons
+Logos
+Illustrations
+
+💼 Business
+
+Services
+Packages
+Pricing
+Industries
+Clients
+Testimonials
+
+🚀 Marketing
+
+Landing Pages
+SEO
+Redirects
+Campaigns
+CTAs
+
+🧠 Knowledge
+
+Technologies
+Capabilities
+Glossary
+Research
+Prompt Library
+
+⚙ System
+
+Navigation
+Menus
+Global Settings
+Integrations
+Users
+Permissions
+
+🤖 AI
+
+AI Content
+AI Prompts
+Embeddings
+Generated Drafts
+
+🗂 Taxonomies
+
+Categories
+Tags
+Authors
+Collections
+```
+
+---
+
+## Every section should have:
+
+* custom icon
+* custom description
+* grouped navigation
+* collapsible sections
+* pinned items
+* recently edited
+* favorites
+* search
+* quick create
+* templates
+
+---
+
+## Every document should have:
+
+A proper overview screen.
+
+Instead of showing 50 fields at once.
+
+For example:
+
+```
+Overview
+
+Status
+Owner
+Last Updated
+SEO Score
+Reading Time
+Publish Date
+Related Content
+
+------------
+
+Content
+
+Hero
+
+Sections
+
+Body
+
+Gallery
+
+------------
+
+Media
+
+Images
+
+Videos
+
+Downloads
+
+------------
+
+SEO
+
+Title
+
+Description
+
+OpenGraph
+
+Twitter
+
+Structured Data
+
+------------
+
+Relationships
+
+Related Services
+
+Related Technologies
+
+Related Blogs
+
+Related Case Studies
+
+------------
+
+Metadata
+
+Created By
+
+Updated By
+
+Revision History
+```
+
+---
+
+## Dashboard
+
+Design a proper dashboard.
+
+Include:
+
+Recently edited
+
+Drafts
+
+Scheduled
+
+Publishing Queue
+
+Broken References
+
+Missing SEO
+
+Missing Images
+
+Unpublished Content
+
+Content Health
+
+Recently Created
+
+Pinned Documents
+
+Favorite Collections
+
+Quick Create
+
+Quick Links
+
+---
+
+## Navigation
+
+Replace the default Sanity navigation with something that feels like an admin platform.
+
+Allow:
+
+Workspace switching
+
+Pinned collections
+
+Favorites
+
+Smart folders
+
+Dynamic filters
+
+Saved views
+
+Recently viewed
+
+Breadcrumbs
+
+Context-aware navigation
+
+---
+
+## List Views
+
+Improve list views.
+
+Support:
+
+Table
+
+Grid
+
+Kanban
+
+Compact
+
+Gallery
+
+Tree
+
+Grouped
+
+Calendar
+
+Timeline
+
+---
+
+## Content Editing
+
+Improve editing experience.
+
+Support:
+
+Tabbed editing
+
+Split view
+
+Live preview
+
+Relationship graph
+
+Referenced documents
+
+Quick actions
+
+Duplicate
+
+Clone
+
+Archive
+
+Version compare
+
+Preview
+
+Validation panel
+
+AI assistant
+
+---
+
+## Relationship Management
+
+I want to visualize relationships.
+
+Example:
+
+Case Study
+
+↓
+
+Client
+
+↓
+
+Industry
+
+↓
+
+Technology
+
+↓
+
+Services
+
+↓
+
+Blog Posts
+
+↓
+
+Resources
+
+Graph view.
+
+Dependency map.
+
+Impact analysis.
+
+---
+
+## Smart Features
+
+Add:
+
+Command Palette
+
+Global Search
+
+Keyboard shortcuts
+
+Spotlight search
+
+Quick open
+
+Jump to document
+
+Create anywhere
+
+---
+
+## Productivity
+
+Reduce clicks.
+
+Reduce scrolling.
+
+Reduce context switching.
+
+Everything important should be reachable within 2 clicks.
+
+---
+
+## Design
+
+Use modern admin UI patterns.
+
+Inspired by:
+
+Linear
+
+Notion
+
+Framer
+
+Vercel
+
+Stripe
+
+Raycast
+
+Airtable
+
+Arc Browser
+
+Avoid generic CMS aesthetics.
+
+---
+
+## Deliverables
+
+Design a complete Sanity Studio architecture including:
+
+1. Workspace architecture
+2. Navigation hierarchy
+3. Desk Structure
+4. Custom panes
+5. Dashboard layout
+6. Document editor layout
+7. List view improvements
+8. Relationship visualization
+9. Custom components
+10. Plugins to use
+11. Custom plugins worth building
+12. Studio UX improvements
+13. AI-assisted editing workflow
+14. Information architecture
+15. Folder and schema organization
+16. Best practices for managing 100+ schemas
+17. Recommended Sanity APIs and extension points
+18. Example code for implementing the custom Desk Structure and dashboard.
+
+The final solution should feel like a premium internal product platform rather than a default CMS. It should scale comfortably to 100–500 schemas and thousands of interconnected documents while remaining intuitive for both content editors and administrators.
+
+rule - never cross sanity free tier

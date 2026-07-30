@@ -24,6 +24,13 @@ export default defineType({
   ],
   orderings: [
     { name: 'vocabOrder', title: 'Vocabulary + Order', by: [{ field: 'vocabulary', direction: 'asc' }, { field: 'order', direction: 'asc' }] },
+    { name: 'nameAsc', title: 'Name A-Z', by: [{ field: 'name', direction: 'asc' }] },
   ],
-  preview: { select: { title: 'name', subtitle: 'vocabulary' } },
+  preview: {
+    select: { title: 'name', subtitle: 'vocabulary', icon: 'icon' },
+    prepare: ({ title, subtitle, icon }: any) => ({
+      title: title || 'Unnamed Term',
+      subtitle: `${icon || ''} ${String(subtitle || '').replace(/&/g, 'and')}`.trim(),
+    }),
+  },
 });

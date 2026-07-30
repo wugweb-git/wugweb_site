@@ -105,8 +105,8 @@ const otherCases = await Promise.all(others.map((s: any) =>
   .grid { display: grid; gap: 1.5rem; margin-top: 1rem; }
   @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
   .card { border-top: 1px solid var(--line); padding-top: 1rem; }
-  .card h3 { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
-  .card p { font-size: 0.95rem; }
+  .card h3 { font-size: var(--t-h5); font-weight: 400; margin-bottom: var(--gap-2); }
+  .card p { font-size: var(--t-m); }
   .more-grid { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
   @media (min-width: 768px) { .more-grid { grid-template-columns: repeat(2, 1fr); } }
   .more-card { text-decoration: none; border-top: 1px solid var(--line); padding-top: 1rem; display: block; }

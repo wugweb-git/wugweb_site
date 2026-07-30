@@ -12,5 +12,8 @@
     "react-is": "^19.2.8",
     "sanity": "^3.0.0",
     "styled-components": "^6.4.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
   }
 }

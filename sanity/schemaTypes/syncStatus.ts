@@ -15,7 +15,14 @@ export default defineType({
     defineField({ name: 'errorMessage', type: 'text', rows: 2 }),
     defineField({ name: 'notes', type: 'text', rows: 2 }),
   ],
+  orderings: [
+    { name: 'createdAtDesc', title: 'Latest first', by: [{ field: '_createdAt', direction: 'desc' }] },
+  ],
   preview: {
-    select: { title: 'source', subtitle: 'status' },
+    select: { title: 'source', subtitle: 'status', entityType: 'entityType' },
+    prepare: ({ title, subtitle, entityType }: any) => ({
+      title: `${title || 'Unknown'} → ${entityType || '?'}`,
+      subtitle: subtitle || '',
+    }),
   },
 });

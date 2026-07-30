@@ -30,5 +30,11 @@ export default defineType({
     { name: 'nameAsc', title: 'Name A-Z', by: [{ field: 'name', direction: 'asc' }] },
     { name: 'groupAsc', title: 'Group + Name', by: [{ field: 'assetGroup', direction: 'asc' }, { field: 'name', direction: 'asc' }] },
   ],
-  preview: { select: { title: 'displayName', subtitle: 'assetGroup', media: 'name' } },
+  preview: {
+    select: { title: 'displayName', subtitle: 'assetGroup', localExists: 'localExists' },
+    prepare: ({ title, subtitle, localExists }: any) => ({
+      title: title || 'Unnamed Asset',
+      subtitle: `${String(subtitle || '').replace(/&/g, 'and')}${localExists ? ' 💾' : ''}`,
+    }),
+  },
 });

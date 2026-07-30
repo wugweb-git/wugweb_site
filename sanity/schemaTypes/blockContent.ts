@@ -33,7 +33,13 @@ export const cta = defineType({
     { name: 'buttonText', type: 'string', initialValue: 'Get in Touch' },
     { name: 'buttonUrl', type: 'string', initialValue: '/contact-us' },
   ],
-  preview: { select: { title: 'heading', subtitle: 'buttonText' } },
+  preview: {
+    select: { title: 'heading', subtitle: 'buttonText' },
+    prepare: ({ title, subtitle }: any) => ({
+      title: title || 'Call to Action',
+      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
+    }),
+  },
 });
 
 export const stats = defineType({
@@ -63,7 +69,13 @@ export const accordion = defineType({
       { name: 'answer', type: 'text', rows: 3 },
     ]}]},
   ],
-  preview: { select: { title: 'title' } },
+  preview: {
+    select: { title: 'title', items: 'items' },
+    prepare: ({ title, items }: any) => ({
+      title: title || 'Accordion / FAQ',
+      subtitle: `${items?.length || 0} item${items?.length !== 1 ? 's' : ''}`,
+    }),
+  },
 });
 
 export const logoCloud = defineType({
@@ -75,7 +87,13 @@ export const logoCloud = defineType({
       { name: 'link', type: 'url' },
     ]}]},
   ],
-  preview: { select: { title: 'title' } },
+  preview: {
+    select: { title: 'title', logos: 'logos' },
+    prepare: ({ title, logos }: any) => ({
+      title: title || 'Logo Cloud',
+      subtitle: `${logos?.length || 0} logo${logos?.length !== 1 ? 's' : ''}`,
+    }),
+  },
 });
 
 export const video = defineType({
@@ -88,7 +106,13 @@ export const video = defineType({
     { name: 'muted', type: 'boolean', initialValue: true },
     { name: 'loop', type: 'boolean', initialValue: false },
   ],
-  preview: { select: { title: 'caption', subtitle: 'url' } },
+  preview: {
+    select: { title: 'caption', subtitle: 'url' },
+    prepare: ({ title, subtitle }: any) => ({
+      title: title || 'Video',
+      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
+    }),
+  },
 });
 
 export const codeBlock = defineType({
@@ -97,7 +121,13 @@ export const codeBlock = defineType({
     { name: 'language', type: 'string', options: { list: ['JavaScript', 'TypeScript', 'Python', 'CSS', 'HTML', 'SQL', 'Bash', 'JSON', 'Other'] } },
     { name: 'code', type: 'text', rows: 8, title: 'Code' },
   ],
-  preview: { select: { title: 'language', subtitle: 'code' } },
+  preview: {
+    select: { title: 'language', subtitle: 'code' },
+    prepare: ({ title, subtitle }: any) => ({
+      title: title || 'Code Block',
+      subtitle: subtitle ? String(subtitle).substring(0, 60) : '',
+    }),
+  },
 });
 
 export const twoColumns = defineType({
@@ -107,5 +137,11 @@ export const twoColumns = defineType({
     { name: 'right', type: 'blockContent', title: 'Right Column' },
     { name: 'layout', type: 'string', options: { list: ['50/50', '60/40', '40/60'] }, initialValue: '50/50' },
   ],
-  preview: { select: { title: 'layout' } },
+  preview: {
+    select: { title: 'layout' },
+    prepare: ({ title }: any) => ({
+      title: title || 'Two Columns',
+      subtitle: '50/50',
+    }),
+  },
 });

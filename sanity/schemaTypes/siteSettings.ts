@@ -27,5 +27,11 @@ export default defineType({
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
     defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
-  preview: { select: { title: 'siteTitle' } },
+  preview: {
+    select: { title: 'siteTitle', subtitle: 'companyName' },
+    prepare: ({ title, subtitle }: any) => ({
+      title: title || 'Site Settings',
+      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
+    }),
+  },
 });

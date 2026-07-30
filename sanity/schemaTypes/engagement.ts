@@ -36,5 +36,15 @@ export default defineType({
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
     defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
-  preview: { select: { title: 'name', subtitle: 'engagementType' } },
+  orderings: [
+    { name: 'nameAsc', title: 'Name A-Z', by: [{ field: 'name', direction: 'asc' }] },
+    { name: 'statusAsc', title: 'By status', by: [{ field: 'status', direction: 'asc' }] },
+  ],
+  preview: {
+    select: { title: 'name', subtitle: 'engagementType', status: 'status' },
+    prepare: ({ title, subtitle, status }: any) => ({
+      title: title || 'Unnamed Engagement',
+      subtitle: `${String(subtitle || '').replace(/&/g, 'and')}${status ? ` — ${status}` : ''}`,
+    }),
+  },
 });

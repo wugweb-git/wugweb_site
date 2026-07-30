@@ -27,5 +27,16 @@ export default defineType({
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
     defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
-  preview: { select: { title: 'name', subtitle: 'industry', media: 'logo' } },
+  orderings: [
+    { name: 'nameAsc', title: 'Name A-Z', by: [{ field: 'name', direction: 'asc' }] },
+    { name: 'createdAtDesc', title: 'Recently added', by: [{ field: '_createdAt', direction: 'desc' }] },
+  ],
+  preview: {
+    select: { title: 'name', subtitle: 'engagementType', media: 'logo' },
+    prepare: ({ title, subtitle, media }: any) => ({
+      title: title || 'Unnamed Client',
+      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
+      media,
+    }),
+  },
 });
