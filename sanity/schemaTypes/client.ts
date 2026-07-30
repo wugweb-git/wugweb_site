@@ -8,6 +8,7 @@ export default defineType({
     { name: 'details', title: 'Details' },
     { name: 'branding', title: 'Branding' },
     { name: 'relations', title: 'Relations' },
+    { name: 'seo', title: 'SEO' },
   ],
   fields: [
     defineField({ name: 'name', type: 'string', validation: (r) => r.required(), group: 'details' }),
@@ -23,6 +24,10 @@ export default defineType({
     defineField({ name: 'tags', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'details' }),
     defineField({ name: 'order', type: 'number', group: 'details' }),
 
+    // ── SEO ──
+    defineField({ name: 'seoTitle', type: 'string', description: 'Client page title for SEO', group: 'seo' }),
+    defineField({ name: 'seoDescription', type: 'text', rows: 2, description: 'Meta description for client page', group: 'seo' }),
+
     // ── Sync (hidden, auto-managed) ──
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
     defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
@@ -33,14 +38,16 @@ export default defineType({
   ],
   preview: {
     select: { title: 'name', subtitle: 'engagementType', media: 'logo', industry: 'industry', caseStudies: 'caseStudies' },
-    prepare: ({ title, subtitle, media, industry, caseStudies }: any) => {
+    prepare: ({ title, subtitle, media, industry, caseStudies, seoDesc }: any) => {
       const parts = [];
       if (subtitle) parts.push(String(subtitle).replace(/&/g, 'and'));
       if (industry && industry.name) parts.push(industry.name);
       if (caseStudies && caseStudies.length) parts.push(`${caseStudies.length} case studies`);
+      let health = '✅';
+      if (!seoDesc) health = '⚠️ SEO';
       return {
         title: title || 'Unnamed Client',
-        subtitle: parts.join(' · ') || 'No engagement type',
+        subtitle: parts.join(' · ') || health,
         media,
       };
     },

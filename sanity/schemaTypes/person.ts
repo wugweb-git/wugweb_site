@@ -27,10 +27,13 @@ export default defineType({
   ],
   preview: {
     select: { title: 'name', subtitle: 'role', media: 'photo' },
-    prepare: ({ title, subtitle, media }: any) => ({
-      title: title || 'Unnamed Person',
-      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
-      media,
-    }),
+    prepare: ({ title, subtitle, media }: any) => {
+      const health = media ? '✅' : '⚠️ Photo';
+      return {
+        title: title || 'Unnamed',
+        subtitle: subtitle || health,
+        media,
+      };
+    },
   },
 });

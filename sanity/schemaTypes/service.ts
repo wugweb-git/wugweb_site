@@ -11,6 +11,7 @@ export default defineType({
     { name: 'content', title: 'Content' },
     { name: 'faq', title: 'FAQ' },
     { name: 'seo', title: 'SEO' },
+    { name: 'relations', title: 'Relations' },
   ],
   fields: [
     // ── Overview ──
@@ -84,6 +85,10 @@ export default defineType({
     defineField({ name: 'seoTitle', type: 'string', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', group: 'seo' }),
+
+    // ── Relations ──
+    defineField({ name: 'relatedPosts', type: 'array', of: [{ type: 'reference', to: [{ type: 'post' }] }], description: 'Blog posts about this service', group: 'relations' }),
+    defineField({ name: 'relatedServices', type: 'array', of: [{ type: 'reference', to: [{ type: 'service' }] }], description: 'Other services to explore', group: 'relations' }),
 
     // ── Sync ──
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),

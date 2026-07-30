@@ -8,6 +8,7 @@ export default defineType({
     { name: 'content', title: 'Content', default: true },
     { name: 'meta', title: 'Meta' },
     { name: 'seo', title: 'SEO' },
+    { name: 'relations', title: 'Relations' },
   ],
   fields: [
     // ── Content ──
@@ -38,6 +39,9 @@ export default defineType({
     defineField({ name: 'seoTitle', type: 'string', description: 'Overrides the <title> tag. Defaults to the post title.', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, description: 'Meta description for search results. 150-160 characters recommended.', group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', description: 'Social sharing image (1200×630px recommended)', group: 'seo' }),
+
+    // ── Relations ──
+    defineField({ name: 'relatedPosts', type: 'array', of: [{ type: 'reference', to: [{ type: 'post' }] }], description: 'Other posts readers should see', group: 'relations' }),
 
     // ── Sync ──
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),

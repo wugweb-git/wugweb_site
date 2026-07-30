@@ -9,6 +9,7 @@ export default defineType({
     { name: 'content', title: 'Content' },
     { name: 'results', title: 'Results' },
     { name: 'seo', title: 'SEO' },
+    { name: 'relations', title: 'Relations' },
   ],
   fields: [
     // ── Overview ──
@@ -68,6 +69,10 @@ export default defineType({
     defineField({ name: 'seoTitle', type: 'string', description: 'Overrides the <title> tag', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', description: 'Social sharing preview image', group: 'seo' }),
+
+    // ── Relations ──
+    defineField({ name: 'relatedCaseStudies', type: 'array', of: [{ type: 'reference', to: [{ type: 'caseStudy' }] }], description: 'Other case studies readers should see', group: 'relations' }),
+    defineField({ name: 'relatedPosts', type: 'array', of: [{ type: 'reference', to: [{ type: 'post' }] }], description: 'Blog posts related to this case study', group: 'relations' }),
 
     // ── Sync ──
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
