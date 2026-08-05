@@ -1,6 +1,6 @@
 {
   "bucket": "wugweb-assets",
-  "uploadedAt": "2026-08-05T01:21:08.050Z",
+  "uploadedAt": "2026-08-05T02:04:28.798Z",
   "keyPrefix": "assets",
   "pathMapping": {
     "local": "public/assets/<path>",
@@ -12,14 +12,150 @@
     "classA": 1000000,
     "usedStorageBytes": 539174150,
     "lastDeltaPuts": 85,
-    "usedClassAPuts": 512
+    "usedClassAPuts": 529
   },
   "counts": {
-    "attempted": 512,
-    "ok": 512,
+    "attempted": 529,
+    "ok": 529,
     "fail": 0
   },
   "objects": [
+    {
+      "localPath": "public/assets/about/about-7.mp4",
+      "sitePath": "/assets/about/about-7.mp4",
+      "r2Key": "assets/about/about-7.mp4",
+      "bytes": 4938844,
+      "contentType": "video/mp4",
+      "sha256": "56649d92ec77bd39f269c456c60d1dc0ab79f5e07cb729155ee555dfb99a4fb2"
+    },
+    {
+      "localPath": "public/assets/about/about-image-1.webp",
+      "sitePath": "/assets/about/about-image-1.webp",
+      "r2Key": "assets/about/about-image-1.webp",
+      "bytes": 31066,
+      "contentType": "image/webp",
+      "sha256": "d85d835b30d849dd348b96db0d6878691dd557fa0543c4e212cf3c76c116ed48"
+    },
+    {
+      "localPath": "public/assets/about/about-image-2.webp",
+      "sitePath": "/assets/about/about-image-2.webp",
+      "r2Key": "assets/about/about-image-2.webp",
+      "bytes": 28086,
+      "contentType": "image/webp",
+      "sha256": "6fbee59d32b8cdddb30750b021da7e1d14c2b3c5012d29ef8d58ba0a95fa93c0"
+    },
+    {
+      "localPath": "public/assets/about/about-image-3.webp",
+      "sitePath": "/assets/about/about-image-3.webp",
+      "r2Key": "assets/about/about-image-3.webp",
+      "bytes": 13174,
+      "contentType": "image/webp",
+      "sha256": "ddda6bac875c97e066d333e55ca4b505b831bac15ec9d5995c047f035051bff9"
+    },
+    {
+      "localPath": "public/assets/about/about-message.mp4",
+      "sitePath": "/assets/about/about-message.mp4",
+      "r2Key": "assets/about/about-message.mp4",
+      "bytes": 921716,
+      "contentType": "video/mp4",
+      "sha256": "7170c9b4730a02d08ec253e8cbadaecedaf3efbf8a4f4bb91259665750576eb9"
+    },
+    {
+      "localPath": "public/assets/about/about-section-2.jpg",
+      "sitePath": "/assets/about/about-section-2.jpg",
+      "r2Key": "assets/about/about-section-2.jpg",
+      "bytes": 363406,
+      "contentType": "image/jpeg",
+      "sha256": "2f6af30a65f1782a5b5a132687d647bc2bdc36a3cfbf2b04908697f48ceffd7a"
+    },
+    {
+      "localPath": "public/assets/about/about-section.jpg",
+      "sitePath": "/assets/about/about-section.jpg",
+      "r2Key": "assets/about/about-section.jpg",
+      "bytes": 430321,
+      "contentType": "image/jpeg",
+      "sha256": "ef3923134f1a35ea852bb270ecfdac99cb72e2cb8a3540e21db483969d263927"
+    },
+    {
+      "localPath": "public/assets/about/team-divyanshu-pundir.jpg",
+      "sitePath": "/assets/about/team-divyanshu-pundir.jpg",
+      "r2Key": "assets/about/team-divyanshu-pundir.jpg",
+      "bytes": 22257,
+      "contentType": "image/jpeg",
+      "sha256": "61bc2d22f26d38be93c8da1ad19f24c37c5a19dcc319f8f525ca9eacfbd266c6"
+    },
+    {
+      "localPath": "public/assets/about/team-kartik-chaturvedi.jpg",
+      "sitePath": "/assets/about/team-kartik-chaturvedi.jpg",
+      "r2Key": "assets/about/team-kartik-chaturvedi.jpg",
+      "bytes": 122325,
+      "contentType": "image/jpeg",
+      "sha256": "2b4d606a10aaffe77e491d4b48f2c732bc399725ba8603ed036d074e59f530aa"
+    },
+    {
+      "localPath": "public/assets/about/team-ojaswa-verma.png",
+      "sitePath": "/assets/about/team-ojaswa-verma.png",
+      "r2Key": "assets/about/team-ojaswa-verma.png",
+      "bytes": 122047,
+      "contentType": "image/png",
+      "sha256": "7359c631628a6783048e4e8dbfb3d6ee42eaff56e4191cc16529ebb40d270c47"
+    },
+    {
+      "localPath": "public/assets/about/team-praneet-verma.jpg",
+      "sitePath": "/assets/about/team-praneet-verma.jpg",
+      "r2Key": "assets/about/team-praneet-verma.jpg",
+      "bytes": 30826,
+      "contentType": "image/jpeg",
+      "sha256": "0653700e5f3476fad0ac9be214c8108eabf0b19c542fad5aca6ca75cc6d83d08"
+    },
+    {
+      "localPath": "public/assets/about/team-satish-kumar.jpg",
+      "sitePath": "/assets/about/team-satish-kumar.jpg",
+      "r2Key": "assets/about/team-satish-kumar.jpg",
+      "bytes": 87488,
+      "contentType": "image/jpeg",
+      "sha256": "a792a7940cf50d9d289d5bfb8f7ef291888322e9f9ab1c1130a75021e1ec99b1"
+    },
+    {
+      "localPath": "public/assets/about/team-shreya-khot.jpg",
+      "sitePath": "/assets/about/team-shreya-khot.jpg",
+      "r2Key": "assets/about/team-shreya-khot.jpg",
+      "bytes": 26494,
+      "contentType": "image/jpeg",
+      "sha256": "311e51350029418929c8ec54ababe8ca83fbfccb1b8e259836319d57929251d6"
+    },
+    {
+      "localPath": "public/assets/about/team-sunil-thapa.jpg",
+      "sitePath": "/assets/about/team-sunil-thapa.jpg",
+      "r2Key": "assets/about/team-sunil-thapa.jpg",
+      "bytes": 63729,
+      "contentType": "image/jpeg",
+      "sha256": "e45d0ddea134435372f5a1a422a4945fdaf08d1dae10baea1617a1d8278d8620"
+    },
+    {
+      "localPath": "public/assets/about/team-swarndeep-singh.jpg",
+      "sitePath": "/assets/about/team-swarndeep-singh.jpg",
+      "r2Key": "assets/about/team-swarndeep-singh.jpg",
+      "bytes": 91533,
+      "contentType": "image/jpeg",
+      "sha256": "df45a50d4bcd2f369cc92dbc81915e48c5950155e10385732717074a42849758"
+    },
+    {
+      "localPath": "public/assets/about/team-vaibhav-shukla.jpg",
+      "sitePath": "/assets/about/team-vaibhav-shukla.jpg",
+      "r2Key": "assets/about/team-vaibhav-shukla.jpg",
+      "bytes": 33656,
+      "contentType": "image/jpeg",
+      "sha256": "4d3e2fe09b466a956176f39c7d61be6abdd0111fb7c8850e1a0aa914ed9e0b45"
+    },
+    {
+      "localPath": "public/assets/about/team-vedanshu-srivastava.jpg",
+      "sitePath": "/assets/about/team-vedanshu-srivastava.jpg",
+      "r2Key": "assets/about/team-vedanshu-srivastava.jpg",
+      "bytes": 428297,
+      "contentType": "image/jpeg",
+      "sha256": "0b7c7d0fd69cad8cd499082942f32b0cbd8ba052c76dcdc14e6d0ef59146c463"
+    },
     {
       "localPath": "public/assets/blog/10-a-hole-design-patterns.webp",
       "sitePath": "/assets/blog/10-a-hole-design-patterns.webp",
