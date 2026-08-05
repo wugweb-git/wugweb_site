@@ -45,7 +45,7 @@ Studio desk structure: Dashboard → Editorial → Business → Brand & Media �
 
 **Industry:** Global Settings holds the master (`industry` docs from Wugweb taxonomy). Content maps via `caseStudy.industryRef` and `client.industry`. See `governance.md` §3.
 
-**`reference/` + `component/`:** `component/` is **consumed** (nav → SiteHeader, style JSON → tokens) — safe to delete. `reference/` keep for remaining service-media extraction (see `docs/framer-full-audit.md` + pending #42). Extract by identity only — **not** a full Framer dump and **not** visual/animation parity. Do not delete `reference/` until service-media extraction done.
+**`reference/` + `component/`:** `component/` was **consumed and deleted** (nav → SiteHeader, style JSON → tokens). `reference/` is an offline Framer HTML archive — all content extracted (WP DBs mined, case-study media, testimonials); kept for reference only, no further extraction needed.
 
 ### Neon schema (`neon/schema.sql`)
 

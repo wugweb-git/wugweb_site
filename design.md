@@ -76,15 +76,15 @@ Notes recorded exactly as exported:
 | Grey | `/Primary/Grey` | rgb(201, 201, 201) | same | `#C9C9C9` |
 | Ash | `/Primary/Ash` | rgb(25, 25, 25) | same | `#191919` |
 
-### Secondary
-| Name | Path | Light | Hex | Usage |
-|---|---|---|---|---|
-| Aqua | `/Secondary/Aqua` | rgb(9, 226, 192) | `#09E2C0` | Service 1 — Strategy |
-| Blue | `/Secondary/Blue` | rgb(35, 104, 215) | `#2368D7` | Service 2 — Brand |
-| Magenta | `/Secondary/Magenta` | rgb(237, 33, 153) | `#ED219A` | Service 3 — Experience |
-| Pink | `/Secondary/Pink` | rgb(230, 48, 159) | `#E6309F` | Service 4 — Growth |
-| Purple | `/Secondary/Purple` | rgb(122, 77, 255) | `#7A4DFF` | Service 5 — Engineering |
-| Orange | `/Secondary/Orange` | rgb(250, 65, 8) | `#FA4108` | Service 6 — Operations |
+### Secondary (final — user-confirmed 2026-08-05)
+| Hex | Service | Color Name | Role |
+|---|---|---|---|
+| `#09E2C0` | Experience | Digital Teal | Digital systems, interaction, UX, technology |
+| `#2167E9` | Engineering | Royal Blue | Structure, engineering, trust, platforms |
+| `#3ED219` | Growth | Growth Green | Growth, success, optimization, momentum |
+| `#E6309F` | Brand | Vibrant Magenta | Brand, creativity, human connection, storytelling |
+| `#7A4DFF` | Operations | Intelligence Purple | Intelligence, automation, operations, AI |
+| `#FA4108` | Strategy | Signal Orange | Strategy, leadership, action, transformation |
 
 ### Background
 | Name | Path | Light | Dark | Hex |
@@ -124,7 +124,7 @@ These are the tokens to actually build with.
 | Muted | `/Text/Muted` | rgb(125, 125, 125) | `#7D7D7D` | Neutral 6 |
 | Subtle | `/Border/Subtle` | rgb(43, 43, 43) | `#2B2B2B` | Neutral 8 |
 | Primary | `/Accent/Primary` | rgb(255, 190, 26) | `#FFBE1A` | Yellow |
-| Blue | `/Accent/Blue` | rgb(35, 104, 215) | `#2368D7` | Secondary Blue |
+| Blue | `/Accent/Blue` | rgb(33, 103, 233) | `#2167E9` | Engineering / Royal Blue |
 | Success | `/Feedback/Success` | rgb(62, 210, 25) | `#3ED219` | Secondary Green |
 | Error | `/Feedback/Error` | rgb(229, 79, 48) | `#E54F30` | Secondary Peach |
 | Heading White | `/Heading White` | rgb(255, 255, 255) | `#FFFFFF` | *(root-level, no folder)* |

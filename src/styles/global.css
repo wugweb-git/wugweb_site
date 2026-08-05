@@ -138,30 +138,32 @@
   --color-feedback-success: #3ED219;
   --color-feedback-error: #E54F30;
 
-  /* Service panel accents (final — user-confirmed 6 shades).
+  /* Service panel accents (final — user-confirmed mapping):
+     Strategy Signal Orange, Brand Vibrant Magenta, Experience Digital Teal,
+     Engineering Royal Blue, Growth Green, Operations Intelligence Purple.
      Base hues + darkened (panel bg) + light (fg accents) variants. */
-  --svc-strategy: #09E2C0;
-  --svc-brand: #2167E9;
-  --svc-experience: #ED219A;
-  --svc-growth: #E6309F;
-  --svc-engineering: #7A4DFF;
-  --svc-operations: #FA4108;
+  --svc-strategy: #FA4108;
+  --svc-brand: #E6309F;
+  --svc-experience: #09E2C0;
+  --svc-engineering: #2167E9;
+  --svc-growth: #3ED219;
+  --svc-operations: #7A4DFF;
 
   /* Darkened panel backgrounds */
-  --svc-strategy-dark: #05927C;
-  --svc-brand-dark: #143F8F;
-  --svc-experience-dark: #9A1564;
-  --svc-growth-dark: #951F67;
-  --svc-engineering-dark: #4F32A5;
-  --svc-operations-dark: #A22A05;
+  --svc-strategy-dark: #A22A05;
+  --svc-brand-dark: #951F67;
+  --svc-experience-dark: #05927C;
+  --svc-engineering-dark: #143F8F;
+  --svc-growth-dark: #21870F;
+  --svc-operations-dark: #4F32A5;
 
   /* Light foreground accents */
-  --svc-strategy-light: #6EF0DC;
-  --svc-brand-light: #7FA8F3;
-  --svc-experience-light: #F56FC3;
-  --svc-growth-light: #F17CC3;
-  --svc-engineering-light: #B49CFF;
-  --svc-operations-light: #FF8F66;
+  --svc-strategy-light: #FF8F66;
+  --svc-brand-light: #F17CC3;
+  --svc-experience-light: #6EF0DC;
+  --svc-engineering-light: #7FA8F3;
+  --svc-growth-light: #9BE97F;
+  --svc-operations-light: #B49CFF;
 
 
   /* Legacy colour aliases (keep until migration is complete) */
