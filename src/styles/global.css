@@ -138,13 +138,30 @@
   --color-feedback-success: #3ED219;
   --color-feedback-error: #E54F30;
 
-  /* Service panel accents (from Framer services index / component cues) */
+  /* Service panel accents (final — user-confirmed 6 shades).
+     Base hues + darkened (panel bg) + light (fg accents) variants. */
   --svc-strategy: #09E2C0;
-  --svc-brand: #2368D7;
+  --svc-brand: #2167E9;
   --svc-experience: #ED219A;
   --svc-growth: #E6309F;
   --svc-engineering: #7A4DFF;
   --svc-operations: #FA4108;
+
+  /* Darkened panel backgrounds */
+  --svc-strategy-dark: #05927C;
+  --svc-brand-dark: #143F8F;
+  --svc-experience-dark: #9A1564;
+  --svc-growth-dark: #951F67;
+  --svc-engineering-dark: #4F32A5;
+  --svc-operations-dark: #A22A05;
+
+  /* Light foreground accents */
+  --svc-strategy-light: #6EF0DC;
+  --svc-brand-light: #7FA8F3;
+  --svc-experience-light: #F56FC3;
+  --svc-growth-light: #F17CC3;
+  --svc-engineering-light: #B49CFF;
+  --svc-operations-light: #FF8F66;
 
 
   /* Legacy colour aliases (keep until migration is complete) */
