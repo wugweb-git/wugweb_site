@@ -1,5 +1,10 @@
 # Full Audit & Remaining Work — 2026-07-29
 
+> **ARCHIVED / SUPERSEDED** — this snapshot is from 2026-07-29 and predates the 2026-08-05 arc.
+> Current tracker: [`pending.md`](../../pending.md). Most items below are now resolved
+> (case-study duplicates cleaned, blog bodies filled, pages Sanity-wired, assets mapped, R2 cutover live).
+> Kept for historical reference only.
+
 ## Data State
 
 ### Sanity Document Counts

@@ -2,6 +2,10 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+.env
+.env.*
+!.env.example
+credentials.md
 sanity/dist/
 sanity/node_modules/
 reference/

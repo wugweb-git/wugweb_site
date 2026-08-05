@@ -2,9 +2,10 @@
 
 Marketing site for Wugweb — a product & experience architecture studio.
 
-Built with **Astro 5** (SSR) on **Cloudflare Pages**, content managed in **Sanity**, structured data synced to **Neon Postgres**. The site is migrating off a Framer-hosted predecessor; assets are being moved from `framerusercontent.com` to local `public/assets/`.
+Built with **Astro 5** (SSR) on **Cloudflare Pages**, content managed in **Sanity**, structured data synced to **Neon Postgres**. Migrated off a Framer-hosted predecessor; media is self-hosted on **R2** (`wugweb-assets`) and dual-served from `public/assets/`.
 
 > **For deploy gotchas, current status, and repo conventions, read [CLAUDE.md](./CLAUDE.md).**  
+> **For ownership / free-tier Rule 1+2 / Notion-as-seed, read [governance.md](./governance.md).**  
 > **For the living task tracker, read [pending.md](./pending.md).**
 
 ## Stack
@@ -15,6 +16,7 @@ Built with **Astro 5** (SSR) on **Cloudflare Pages**, content managed in **Sanit
 - **Animations:** `motion` (vanilla API, client-side only)
 - **CMS:** Sanity (`splvhmk1` / `production`)
 - **Database:** Neon Postgres via `@neondatabase/serverless`
+- **Media:** R2 bucket `wugweb-assets` (path-mapped `assets/<path>`)
 - **Deployment:** Cloudflare Pages (`wugweb.pages.dev`)
 
 ## Setup
@@ -30,6 +32,8 @@ Built with **Astro 5** (SSR) on **Cloudflare Pages**, content managed in **Sanit
    - `SANITY_DATASET`
    - `DATABASE_URL` (Neon)
    - `SANITY_SYNC_TOKEN` (for `/api/sync`)
+
+   > `.env` and `credentials.md` are gitignored. Never commit tokens.
 
 3. **Run locally**
    ```bash
@@ -62,10 +66,11 @@ Hosted Studio: https://wugweb.sanity.studio/
 
 ### Studio Features
 
-- **Dashboard** with content overview widget showing live stats
-- **Organized navigation** with sections for Content, Business, Brand & Media, Knowledge, and System
-- **Content health checks** - identifies missing SEO, cover images, alt text, and taxonomy
-- **Quick filters** - Featured content, publishing queue, recently edited items
+- **Organized navigation** with sections for Editorial, Business, Brand & Media, Global Settings, and System
+- **Tables tool** — all document types as spreadsheet views (one-shot GROQ, free-tier safe)
+- **Content health** — missing SEO, cover images, alt text, taxonomy flags
+- **Industry master** under Global Settings; content maps via `industryRef` / `client.industry`
+- **Presence** (`platformProfile`) rows with credentials (Studio-only)
 - **Orderable documents** for Services, Team, and Industries
 - **Vision tool** for testing GROQ queries
 
@@ -73,16 +78,24 @@ Hosted Studio: https://wugweb.sanity.studio/
 
 - `src/pages/` — Astro routes (22 `.astro` routes + 4 API routes)
 - `src/components/` — 12 Astro components + `Hero.tsx`
-- `src/lib/` — Sanity client, GROQ queries, Neon helpers
-- `src/styles/global.css` — Design token system
+- `src/lib/` — Sanity client, GROQ queries, asset URL helpers, Neon helpers
+- `src/styles/global.css` — Design token system (`--t-*`, `--gap-*`, `--space-*`)
 - `sanity/schemaTypes/` — Sanity schema
 - `neon/schema.sql` — Neon schema
-- `scripts/` — Migration and sync scripts
-- `public/assets/` — Downloaded Framer/local assets
+- `scripts/` — Migration and sync scripts (incl. Framer audit/extract/toolkit salvage)
+- `public/assets/` — Local media (525 files), all R2-mapped
+- `component/` — Nav screenshots + Framer style JSON (**consumed; safe to delete**)
+- `reference/` — Offline Framer HTML + `_files` (**keep; service-media extraction pending**)
 
 ## Current state
 
-All core marketing routes exist and pull content from Sanity. 456 documents have been synced from Sanity to Neon. The frontend still reads from Sanity CDN; a Neon-backed read path is planned.
+All core marketing routes pull content from Sanity; media is served from **R2** (`PUBLIC_USE_R2_ASSETS=1`). Ownership backfill is live (vedanshu | wugweb | both). Contact submissions mirror to Sanity; blog preview mode is wired.
+
+**Framer migration (honest):** services SEO / Why Us / approach / toolkits + **89** tool icons salvaged into Sanity + `public/assets/tools`. About page team portraits + section imagery extracted and wired. This is **not** full Framer visual parity (no component UI port, no animation/code-component dump). Full stats: [docs/framer-full-audit.md](./docs/framer-full-audit.md).
+
+**Keep** `reference/` (offline HTML/media, ~129MB) until service-page media extraction is done — then it can be deleted. `component/` is fully consumed and safe to delete.
+
+Deploy: Cloudflare Pages only (`wugweb.pages.dev`). Coolify is out of scope.
 
 See [pending.md](./pending.md) for open tasks and blockers.
 
@@ -90,9 +103,12 @@ See [pending.md](./pending.md) for open tasks and blockers.
 
 - [CLAUDE.md](./CLAUDE.md) — Canonical AI memory and deploy gotchas
 - [pending.md](./pending.md) — Living task tracker
+- [governance.md](./governance.md) — Ownership, Rule 1/2, Notion seed
+- [docs/framer-full-audit.md](./docs/framer-full-audit.md) — Framer vs reference vs Astro vs pages.dev
+- [docs/content-assets.md](./docs/content-assets.md) — Media path map
+- [docs/r2-assets.md](./docs/r2-assets.md) — R2 upload + free-tier rules
 - [credentials.md](./credentials.md) — Security-sensitive notes (token rotation pending)
 - [design.md](./design.md) — Design system specification
-- [brand_guidelines/](./brand_guidelines/) — Complete brand OS
 - [docs/site-diff.md](./docs/site-diff.md) — Gap analysis vs live site
 - [docs/admindesign.md](./docs/admindesign.md) — Sanity Studio redesign brief
 - [LOCAL.md.example](./LOCAL.md.example) — Template for local-only notes/secrets
