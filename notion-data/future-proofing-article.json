@@ -1,0 +1,234 @@
+[
+  {
+    "type": "p",
+    "text": "Future-Proofing Your Designs: The Top 10 Design Systems for UX/UI Designers in 2023"
+  },
+  {
+    "type": "p",
+    "text": "Boost Your Design Workflow with These Top 10 Design Systems for Improved User Experience"
+  },
+  {
+    "type": "p",
+    "text": "Design systems are all the rage and most articles talk about what they are and best practices for creating them. Aside from implementing design systems into your workflow, design systems are a tremendous untapped resource for learning how to create better user experiences and interfaces just by studying them!  What better way to understand how to design an e-commerce user flow than from Shopify or an iOS mobile app than from Apple?! These are what we call Design Patterns and great product designers know how to use these to inform the decisions they make with their own designs. No need to reinvent the UX wheel when the best companies in the world have already paved the way, tested them with actual users and published their UI/UX and product design methodologies online!"
+  },
+  {
+    "type": "p",
+    "text": "\u201cSometimes I think everything I draw is just a combination of all of the millions and millions of drawings I\u2019ve seen.\u201d"
+  },
+  {
+    "type": "p",
+    "text": "Try Design System Manager for yourself."
+  },
+  {
+    "type": "p",
+    "text": "\u201cDesign systems provide a convenient, centralized, and evolving map of a brand\u2019s known product territories with directional pointers to help you explore new regions.\u201d"
+  },
+  {
+    "type": "p",
+    "text": "\u2014Chris Messina, tech evangelist and former developer experience lead at Uber"
+  },
+  {
+    "type": "p",
+    "text": "The scale and speed of interface design have grown tremendously over the past few years. There are millions of mobile and web apps, and these apps can have hundreds or thousands of screens. We need design systems for large-scale design management and process optimisation. As companies worldwide continue to invest in digital transformation, they are finding that they need to reduce the time it takes to create new products. A design system is one resource that helps make this happen efficiently.  Many organizations have what they consider to be a design system, but these collections typically amount to no more than a group of elements and code snippets. While a style guide or pattern library can be a starting point for a design system, they are not the only components. Let\u2019s dig into the fundamentals of design systems, plan how you can build and implement one in your organization, and explore several examples of organizations that are using design systems to drive success!"
+  },
+  {
+    "type": "p",
+    "text": "Let\u2019s first revise what the Design Systems are."
+  },
+  {
+    "type": "p",
+    "text": "While working on this article, I searched the Internet for a precise and straightforward definition but found only a few vague concepts. It all depends on who you ask."
+  },
+  {
+    "type": "p",
+    "text": "But saying that,"
+  },
+  {
+    "type": "p",
+    "text": "To summarise, a design system refers to guidelines that help manage large-scale designs by minimising repetition and ensuring uniformity."
+  },
+  {
+    "type": "p",
+    "text": "So getting to the point here are the few Design Systems Every Designer Should Know:"
+  },
+  {
+    "type": "p",
+    "text": "Google \u2014 Material Design System"
+  },
+  {
+    "type": "p",
+    "text": "Material Design is a comprehensive design system developed by Google. Google developed a treasure trove of simple, elegant design templates and style guides. Material is an adaptable design system \u2014 backed by open-source code \u2014 that helps teams quickly build high-quality digital experiences. It provides guidelines, components, and tools to create visually appealing and consistent user interfaces across different platforms."
+  },
+  {
+    "type": "p",
+    "text": "Languages: Android, iOS, Other"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: Dark Mode, Design Tokens"
+  },
+  {
+    "type": "p",
+    "text": "Atlassian Design System"
+  },
+  {
+    "type": "p",
+    "text": "Use Atlassian\u2019s end-to-end design language to create simple, intuitive and beautiful experiences. Atlassian Design System is a comprehensive design system developed by Atlassian. It provides design guidelines, components, and resources for building consistent and user-friendly products within the Atlassian ecosystem."
+  },
+  {
+    "type": "p",
+    "text": "Languages: React"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: N/A"
+  },
+  {
+    "type": "p",
+    "text": "Microsoft \u2014 Fluent Design System"
+  },
+  {
+    "type": "p",
+    "text": "Fluent, an open-source, cross-platform design system, helps designers and developers create engaging product experiences with accessibility, internationalization, and performance. Microsoft's Fluent Design System emphasizes immersive, intuitive, and responsive user experiences. Depth, motion, and transparency dominate. Microsoft's Fluent UI principles, components, and tools. It provides a consistent and adaptable user interface across web, mobile, and desktop platforms."
+  },
+  {
+    "type": "p",
+    "text": "Languages: React, TypeScript"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: Dark Mode, Design Tokens"
+  },
+  {
+    "type": "p",
+    "text": "Shopify \u2014 Polaris Design System"
+  },
+  {
+    "type": "p",
+    "text": "Polaris by Shopify. It combines the workflow of a designer and a developer\u2014reusable elements and styles, packaged through code, for building admin interfaces.Polaris is Shopify's design system that provides guidelines, components, and resources for creating consistent and delightful user experiences across Shopify's platform. It focuses on simplicity, accessibility, and extensibility."
+  },
+  {
+    "type": "p",
+    "text": "Languages: React, TypeScript"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: N/A"
+  },
+  {
+    "type": "p",
+    "text": "Ant Design System"
+  },
+  {
+    "type": "p",
+    "text": "Help designers/developers build beautiful products that are more flexible and work with happiness. Ant Design is a design system created by the Ant Design Team at Alibaba. It offers a wide range of reusable components, icons, and patterns for building high-quality, enterprise-level applications."
+  },
+  {
+    "type": "p",
+    "text": "Languages: React, TypeScript"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: Dark Mode, Design Tokens"
+  },
+  {
+    "type": "p",
+    "text": "IBM \u2014 Carbon Design System"
+  },
+  {
+    "type": "p",
+    "text": "Carbon is IBM\u2019s open-source design system for products and digital experiences. The Carbon Design System by IBM offers a set of design guidelines, UI components, and code patterns for creating enterprise-level applications. It emphasizes modularity, accessibility, and scalability."
+  },
+  {
+    "type": "p",
+    "text": "Languages: Angular, React, Vue"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: Dark Mode"
+  },
+  {
+    "type": "p",
+    "text": "AWS Amplify"
+  },
+  {
+    "type": "p",
+    "text": "Official design system from Amazon Web Services. Amplify UI is an open-source design system with cloud-connected components and primitives that simplify building accessible, responsive, and beautiful applications. It is a complete solution that lets frontend web and mobile developers easily build, ship, and host full-stack applications on AWS, with the flexibility to leverage the breadth of AWS services as use cases evolve. No cloud expertise needed."
+  },
+  {
+    "type": "p",
+    "text": "Languages: iOS, Android, Web, Flutter, and React Native apps"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: Dark Mode, Design Tokens"
+  },
+  {
+    "type": "p",
+    "text": "Mailchimp"
+  },
+  {
+    "type": "p",
+    "text": "Having recently updated their branding and identity system, Mailchimp has been a long-time leader in user-friendly email marketing and has grown beyond email into an all-in-one marketing platform for small businesses. Mailchimp empowers businesses to grow while staying true to themselves. Their brand embodies what's important to the Mailchimp team \u2014 a devotion to craft, a love of creative expression, and an obsession with quality."
+  },
+  {
+    "type": "p",
+    "text": "Languages:"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: Dark Mode, Design Tokens"
+  },
+  {
+    "type": "p",
+    "text": "Lightning Design System (Salesforce)"
+  },
+  {
+    "type": "p",
+    "text": "Lightning Design System is Salesforce's design system that provides a set of guidelines and components for building web and mobile applications within the Salesforce ecosystem. It promotes a consistent and efficient user experience.  Salesforce  pioneered cloud-based CRM software and has helped 150,000+ companies run more effectively. They deliver personalized experiences to your customers through integrated CRM that enhances marketing, sales, commerce, service, IT, and more."
+  },
+  {
+    "type": "p",
+    "text": "Languages: React, TypeScript"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: Dark Mode, Design Tokens"
+  },
+  {
+    "type": "p",
+    "text": "Audi Design System"
+  },
+  {
+    "type": "p",
+    "text": "Audi user interfaces are as varied as their uses \u2014 from inspiring websites to applications for a particular service. The aim is to create varied solutions and a well-balanced, system-wide user experience \u2014 from the app to the vehicle. Joint standard components, modules and animations provide the basis for this."
+  },
+  {
+    "type": "p",
+    "text": "Languages: N/A"
+  },
+  {
+    "type": "p",
+    "text": "Theming Support: Dark, light"
+  },
+  {
+    "type": "p",
+    "text": "Conclusion:"
+  },
+  {
+    "type": "p",
+    "text": "In conclusion, design systems have become a crucial tool for UX/UI designers in 2023. Companies like Airbnb, Uber, and IBM have paved the way by implementing their own design systems, revolutionizing the creation and innovation process within their teams. Design systems offer more than just a collection of elements and code snippets; they provide a centralized and evolving map of a brand's product territories, enabling efficient design management and process optimization."
+  },
+  {
+    "type": "p",
+    "text": "By studying design systems created by leading companies like Google, Atlassian, Microsoft, Shopify, Ant Design, IBM, AWS Amplify, Mailchimp, Salesforce, and Audi, designers can gain valuable insights and learn from established design patterns and best practices. These design systems offer guidelines, components, and resources for building visually appealing, consistent, and user-friendly interfaces across various platforms."
+  },
+  {
+    "type": "p",
+    "text": "Design systems are particularly important in the current landscape of millions of mobile and web apps, each with numerous screens. As organizations worldwide invest in digital transformation, reducing the time it takes to create new products becomes essential, and design systems play a significant role in achieving this efficiency."
+  },
+  {
+    "type": "p",
+    "text": "As the design industry continues to evolve, keeping up with the top design systems and incorporating them into the workflow can significantly enhance the user experience and streamline the design process. By leveraging these design systems, designers can benefit from the tested methodologies and expertise of the world's leading companies, ultimately improving their own design practices and creating better user experiences."
+  }
+]

@@ -1,0 +1,226 @@
+[
+  {
+    "type": "h",
+    "text": "Guarding Against Disposable Design"
+  },
+  {
+    "type": "p",
+    "text": "Longevity takes a different form online, but its value is immeasurable. There is a balance to find. Quick, constant change is given to the web. It is often one of its greatest strengths."
+  },
+  {
+    "type": "p",
+    "text": "Disposability is a tricky term to handle in the digital world. So many things are changing so quickly \u2014 programming languages, frameworks, and design trends, to name but a few \u2014 that it often feels inevitable that the things we make will be outdated almost as soon as we finish making them. This is exciting and positive in many ways, but it can also cause long-term thinking to be drowned out by short-term priorities."
+  },
+  {
+    "type": "p",
+    "text": "This piece is about disposable web design and longevity, with steps to find the sweet spot between reinventing the wheel and twiddling thumbs. Evolution and improvement are promising. We are cutting corners and putting the cart before the horse is not."
+  },
+  {
+    "type": "p",
+    "text": "Let\u2019s dive into the dos and don\u2019ts of disposable design."
+  },
+  {
+    "type": "h",
+    "text": "What Is Disposable Design?"
+  },
+  {
+    "type": "p",
+    "text": "Most of us understand what disposable design means in a general sense: good and evil. Disposable design is single-use plastics, which crumbled well before their time. It can be savvy and conscientious, like biodegradable tent pegs at a music festival or scale models. At its worst, it\u2019s short-term thinking and long-term headaches."
+  },
+  {
+    "type": "p",
+    "text": "In this web design context, we\u2019ll focus mainly on the \u2018at its worst\u2019 aspects, with similar nods to times when it can be (and is) very useful. Longevity is a more slippery concept online, but we tend to recognise the sins when we see them. Here is a handful:"
+  },
+  {
+    "type": "p",
+    "text": "1. Unpleasant UX. We\u2019ve all stumbled across websites warped out of shape due to a lack of future-proofing. Elements out of place, buttons not working, and the site gently croaking \u2018kill me\u2019 are just a few of the things we notice in the seconds before clicking away, never to return. 2. Following design fads rather than shaping design around content. Do you remember parallax scrolling? There are good reasons for any feature in the proper context; being cool is not cool. Fads are worse when they clash with the rest. 3. Broken links, internal and external. One of the Web\u2019s greatest gifts is links. Dead links rob users of context, destroy the browsing flow, and, perhaps worst of all, waste people\u2019s time. 4. Ever-growing navigation drawers with no apparent pattern or logic. Headers are supposed to make navigating the site more accessible, not more complicated. 5. Quick fixes. This runs the gauntlet from obvious hotfixes never followed up on to hardcoded snippets with uncanny knacks for breaking everything else on the site."
+  },
+  {
+    "type": "p",
+    "text": "As well as being frustrating daily, these issues stem from the approach that leaves sites needing replacing or redesigning far sooner than they should. There comes the point where such projects become a resource drain. Sometimes only a new website will do, but every year?"
+  },
+  {
+    "type": "h",
+    "text": "The Causes"
+  },
+  {
+    "type": "p",
+    "text": "In a way, disposable design is the tip of a lousy practice iceberg. There are a lot of potential factors that lead to it, which can wreak havoc elsewhere: some I\u2019ve witnessed (and frankly been guilty of) myself, others from afar."
+  },
+  {
+    "type": "h",
+    "text": "POOR PLANNING"
+  },
+  {
+    "type": "p",
+    "text": "Fail to prepare, prepare to fail. The maxim rings true in the world of web development. Whether you\u2019re building a portfolio, an e-commerce store, a magazine, a hotel booking site, or whatever else, flimsy planning will lead to unsafe design. If you don\u2019t know what you need, the odds of landing on the correct answer by chance are slim."
+  },
+  {
+    "type": "p",
+    "text": "Design goes hand in hand with purpose. You wouldn\u2019t build an aeroplane without a blueprint, would you? We need to know the meaning before steaming into making things. I touched on this in What Vitruvius Can Teach Us About Web Design, and there is a near-endless supply of great material on the topic."
+  },
+  {
+    "type": "p",
+    "text": "As ever, there is a balance to be struck. Things like accessibility, navigation, and information architecture have to be baked into a website early on, while the styling of your hyperlinks can afford to evolve as the site settles. If you set yourself up with a working compass, you don\u2019t necessarily need to know the exact path. You can\u2019t account for everything, but you can undoubtedly point yourself in the right direction and give the project a decent shot at success."
+  },
+  {
+    "type": "h",
+    "text": "FOLLOWING FADS"
+  },
+  {
+    "type": "p",
+    "text": "The Web evolves much faster than the natural world. Every day brings with it new ideas, new standards, new frameworks, and new possibilities. All that is gold does not glitter, though. There is a fine line between progress and fads, but again we tend to recognise the difference when we see it intuitively."
+  },
+  {
+    "type": "p",
+    "text": "Parallax scrolling may look snazzy, and that full-page video loop on the home page may have a particular wow factor, but are those things serving the site and its users? Sometimes the answer is yes, and that\u2019s fine, but sometimes they feel overcompensated for lack of substance."
+  },
+  {
+    "type": "p",
+    "text": "In short, make choices based on what\u2019s suitable for the project, not on what everyone else is doing in a given week."
+  },
+  {
+    "type": "h",
+    "text": "POOR DOCUMENTATION"
+  },
+  {
+    "type": "p",
+    "text": "Good documentation is so necessary. It forces you to clarify your thinking and give others a fighting chance to understand what you\u2019ve done on earth. Would anyone know how the site works if you fled the country tomorrow? Can the client use it? Are they able to post blog entries themselves and update key content? Usage and handover documentation keep projects alive and growing."
+  },
+  {
+    "type": "p",
+    "text": "Knowledge hoarding might be good for you, but it\u2019s terrible for the project. Not only does it obscure the inner workings, but it also denies them the outside scrutiny that would likely make them better. Everyone is on the same page about the fundamentals allows you to focus on the more inspiring stuff. (This also is a crucial benefit of using proven frameworks. People may come and go, but at least there\u2019s continuity in the tech, which requires less personalised explanation.)"
+  },
+  {
+    "type": "p",
+    "text": "In fairness, some people have no interest in knowing how certain things work. I don\u2019t like that as an excuse to skip documentation altogether. Anything worth doing is worth doing well for its own sake. Even documentation can be beautiful and inspiring. A friend worked on Stripe integration and linked me to their documentation. I was somewhat floored by how well done it is:"
+  },
+  {
+    "type": "p",
+    "text": "As you scroll through [the documentation](https://stripe.com/docs/payments/integration-builder), a preview of the example code highlights the sections you\u2019re reading. We don\u2019t all have to go this far, by why aim for less than excellence?"
+  },
+  {
+    "type": "h",
+    "text": "OUTSOURCING"
+  },
+  {
+    "type": "p",
+    "text": "It\u2019s tempting to embed third-party platforms on websites. It\u2019s easy and spares you the hassle of building something yourself. Why make an image gallery when I can just slap it on my Instagram feed instead? Why maintain a blog when I can just show my Twitter feed? Hell, why build a site at all? Squarespace templates are pretty cool, and it\u2019s not my money anyway. The answer to most of these questions is that you don\u2019t own content, not on your website. You\u2019re a guest playing by someone else\u2019s rules and usually pay more for the privilege. A website is the beating heart of your web presence. It won't age well if you outsource your content to third-party platforms."
+  },
+  {
+    "type": "h",
+    "text": "SHORT-TERMISM"
+  },
+  {
+    "type": "p",
+    "text": "I\u2019ve developed a nervous tick regarding the phrase \u2018quick wins.\u2019 This boiled down to short-term thinking and rushed (or nonexistent) preparation. They can be helpful but easily corrupted. Too many quick wins create a disposable design and a race to the bottom. There is no question that time passes faster online, but that doesn\u2019t mean longevity isn\u2019t a worthy goal. If anything, it\u2019s all the more critical. What, then, does that look like?"
+  },
+  {
+    "type": "h",
+    "text": "Building To Last"
+  },
+  {
+    "type": "p",
+    "text": "In many ways, the ease with which sites can be chopped and changed is one of the web\u2019s greatest strengths. In the real world, junk genuinely impacts the planet \u2014 landfills of obsolete tech, abandoned buildings, and beaches piled high with plastics. Not so online. When something is outdated, you press delete and poof\\! It\u2019s gone. No beaches are piled high with discarded websites; it\u2019s just code. (That said, [the](https://www.websitecarbon.com/) web's carbon footprint is growing and not to be dismissed.)"
+  },
+  {
+    "type": "p",
+    "text": "What exactly is the benefit of longevity online? And how can it be sustainable given the relentless change we all have to deal with? Jeremy Keith\u2019s presentation [\u2018The Long Web\u2019](https://adactio.com/articles/1522) gets to the roots of those questions just as well today as when he delivered it in 2008\\. For me, it boils down to the direction. If you understand what a site is for, where it\u2019s going, and how it\u2019s likely to change, you can separate what should be constant and what should be flexible. In some areas, consistency is essential. For example:"
+  },
+  {
+    "type": "p",
+    "text": "1. URL structure. Playing fast and loose with page slugs is generally a bad idea. It\u2019s terrible for SEO, dreadful for UX, and a real pain to tidy up. 2. Branding. Familiarity breeds\u2026 familiarity. Let\u2019s say you run an online store and make wholesale changes to the layout and navigation every few months. Eventually, customers are going to get tired of the constant reinventions. 3. Content strategy and tone of voice. What we write and how we write it significantly impact a site\u2019s character. Whether a magazine or a weather forecast web app, unclear, inconsistent writing comes across as amateurish. Conversely, a reliable voice connects the past, present, and future. 4. Design best practice. The fundamentals change much more slowly for all the graphic design and UX trends. A site that embraces the basics of typography, colour palettes, grid systems, and navigation is setting itself up to last. 5. Accessibility. You can\u2019t retrofit fit website accessibility. Not well, anyway. As Joy Heron writes in her recent piece on \u2018Responsible Web Applications,\u2019 failure to do so is frankly irresponsible (and I note that as someone guilty of it myself in the past)."
+  },
+  {
+    "type": "p",
+    "text": "In many ways, disposable design makes change more complicated. It forces you to start from scratch when history tells us it\u2019s generally better to iterate. Sometimes you have to go back to the drawing board \u2014 no doubt \u2014 but there comes the point where more is to be gained on nailing down a core offering."
+  },
+  {
+    "type": "h",
+    "text": "SUSTAINABLE WEB DESIGN"
+  },
+  {
+    "type": "p",
+    "text": "Longevity is different online than it is in infrastructure or housing. If a pair of shoes lasts thirty years, what do you have? A good pair of shoes. What do you have if a building stands for centuries and remains structurally sound and helpful? A good building. What do you have if a website is the same as it was thirty years ago? Well, [the Space Jam promo site](https://www.spacejam.com/). Iconic, but hardly the cutting edge of web design."
+  },
+  {
+    "type": "p",
+    "text": "The International Space Station has been operating since 1998\\. It\u2019s almost a quarter of a century old. Modular design and long-term thinking. Hear me out."
+  },
+  {
+    "type": "p",
+    "text": "Would the total be as cutting edge as a new one from scratch? Not by a long shot, but that is also a testament to its longevity. It\u2019s already the most expensive thing ever built (over $100 billion, baby), so it best makes it last. And yes, one day, there will have to be a successor to the ISS \u2014 a rebuild, if you will. They\u2019re already preparing for it. [New modules will be done to detach as part of a separate station.](https://www.forbes.com/sites/jonathanocallaghan/2020/01/28/the-iss-is-getting-an-extensionwhich-might-detach-and-form-its-own-commercial-space-station/) Neat, huh?"
+  },
+  {
+    "type": "p",
+    "text": "Changeability is part of the design. It is modular rather than a monolith, changing organically over time. For a similar example in the natural world, look no further than your body, which replaces its cells over time. Breaking up projects into different sections or repositories frees you up to innovate without rebuilding the whole thing. Amendments are smoother than rewrites."
+  },
+  {
+    "type": "h",
+    "text": "RESILIENCE"
+  },
+  {
+    "type": "p",
+    "text": "Making a website\u2019s design last in this way means solving current problems and future issues. Some things are impossible to predict, but others aren\u2019t. Asking the right questions can make a huge difference to longevity. While discussing this topic with Vitaly Friedman, he summarised the process in three simple words: What happens if\u2026? Some examples of raising your blood pressure a few notches:"
+  },
+  {
+    "type": "p",
+    "text": "* What happens if\u2026 we have 50 items in the navbar rather than 5? * What happens if\u2026 we hit 100 blog posts or 1,000? * What happens if\u2026 we have a very dense table with 15 columns on this page? * What happens if\u2026 we include a third-party widget that loads 10 external resources? * What happens if\u2026 our heaviest page is viewed on the worst possible mobile device with a poor 3G connection? * What happens if\u2026 we want to flesh out our [Progressive Web App](https://web.dev/progressive-web-apps/) functionality? * What happens if\u2026 we wish to translate our UI to other languages? * What happens if\u2026 the text on a button is lengthy? * What happens if\u2026 someone can only navigate the site with a screen reader?"
+  },
+  {
+    "type": "p",
+    "text": "That simple prompt can lead to all sorts of good follow-up questions that you, as a designer, will need to answer. Of all things, I\u2019m reminded of one of [Kurt Vonnegut\u2019s rules for writing fiction](https://newyorkwritersintensive.com/kurt-vonneguts-8-rules-for-writing/):"
+  },
+  {
+    "type": "p",
+    "text": "\u201cBe a sadist. No matter how sweet and innocent your leading characters, make awful things happen to them so the reader may see what they are made of.\u201d Give your websites the same treatment. Subject them to the kinds of (hypothetical) strains and mishaps you wouldn\u2019t wish on your worst enemy. Only then can you see what it is made of and what you must do to make it resilient. From architecture to manufacturing to space exploration, the value of that inner sadist is immeasurable. Do you think the brains behind the International Space Station haven\u2019t considered every possible way things could go wrong? They probably have a plan for an alien invasion, just in case."
+  },
+  {
+    "type": "h",
+    "text": "LONGEVITY SUCCESS STORIES"
+  },
+  {
+    "type": "p",
+    "text": "If a space station can function for 20 years without becoming obsolete, websites can too. Indeed, many have. For me, Wikipedia [hit that same benchmark in January](https://www.bbc.com/news/technology-55667711). Despite being one of the most visited, edited sites on the Web, its core offering is now the same as in the early 2000s. If it is not broken\u2026"
+  },
+  {
+    "type": "p",
+    "text": "David Bowie\u2019s Wikipedia page in 2005\\. ([Large preview](https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/6db5dc61-4dc9-4ddf-9fce-f45f14112bd6/2-guarding-against-disposable-design.png))"
+  },
+  {
+    "type": "p",
+    "text": "David Bowie\u2019s Wikipedia page in 2021\\. ([Large preview](https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/899c9710-4ce1-4159-b055-50f0110e32ff/8-guarding-against-disposable-design.png)) At the same time, few would argue the Wikimedia Foundation has been static or behind the times. For example, its Wikidata and Abstract Wiki initiatives serve as nodes, bringing new qualities to the table while enriching the project. Wikipedia and its \u2018modules\u2019 endure because they are shaped around a clear purpose and a long-term outlook. The museum[\u2019s history](https://www.versionmuseum.com/history-of/amazon-website) is fascinating. Today\u2019s Amazon is wildly different from 1994, but there\u2019s a smooth sense of evolution. It\u2019s hard to look past Amazon."
+  },
+  {
+    "type": "p",
+    "text": "Baby Amazon, 1997\\. Source: [eBaum\u2019s World](https://gaming.ebaumsworld.com/articles/this-is-what-amazon-used-to-look-like/85526037). ([Large preview](https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/d1559c33-1392-4cb7-b498-75179ba96b0c/5-guarding-against-disposable-design.png)) On a less colossal scale, I have nothing but respect and admiration for [Jeffrey Zeldman\u2019s preservation of content from 1995](https://www.zeldman.com/about/). (See the \u2018Pardon My Archives\u2019 section at the bottom.) A solid 26 years of content. Now there\u2019s a website built to last."
+  },
+  {
+    "type": "p",
+    "text": "Coming to live in 1996, [The Fifteen Minutes project](https://www.zeldman.com/15/). ([Large preview](https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/bcfe5282-140e-4d43-a462-34fa9b54573e/7-guarding-against-disposable-design.png))"
+  },
+  {
+    "type": "p",
+    "text": "Meanwhile, under the hood, examples run across a spectrum. Frameworks like [React](https://reactjs.org/) and [Vue](https://vuejs.org/) have modular designs baked in via components. With them, a site is not a monolith but a series of bite-sized parts which can be chopped and changed without breaking everything. Further along the scale, you\u2019ll find the likes of The Guardian, [which publishes its source code on GitHub](https://github.com/guardian). From front-end website code to apps to in-house tools, there are tens of hundreds of repositories and modules that, when pieced together, result in an [award-winning](https://www.newsawards.co.uk/winners/) digital news product. Most of us don\u2019t need thousands of repositories, but the ethos is the same. There is no one-size-fits-all approach for sustainable web design, but there are recurring principles of purpose, evolution, and long-term thinking. Those qualities allow sites to weather the constant disruptions of the Web."
+  },
+  {
+    "type": "h",
+    "text": "Sustainability Online"
+  },
+  {
+    "type": "p",
+    "text": "There is nothing wrong with redesigns, migrations, and exploring mysterious new online worlds. There is plenty wrong with doing those things for the wrong reasons, and it will catch up with you eventually. Jeff Huang\u2019s [Manifesto for Preserving Content on the Web](https://jeffhuang.com/designed_to_last/) lays out the basics in a way I like very much."
+  },
+  {
+    "type": "p",
+    "text": "Below are just a few ways to start thinking about the long term:"
+  },
+  {
+    "type": "p",
+    "text": "1. Don\u2019t just think about next year. What could it look like in two years or five? Or 20?\\! What can you do to meet that future gracefully? 2. Design for accessibility. Not only is this right for its own sake, but it helps make the content clearer, machine-readable, and better equipped to adapt to evolving technologies. 3. Think modular. As is often the case, breaking big projects into smaller pieces makes them more manageable and flexible. Channel your inner International Space Station."
+  },
+  {
+    "type": "p",
+    "text": "Everyone\u2019s needs are a little different, but the ethos holds. By laying solid foundations, you allow yourself, your peers, and your successors to focus on improvement rather than fixes. It gets us closer to a Web where dead links, by-the-numbers design, and third-party domination are exceptions rather than the norm."
+  }
+]
