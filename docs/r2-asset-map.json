@@ -1,6 +1,6 @@
 {
   "bucket": "wugweb-assets",
-  "uploadedAt": "2026-08-05T02:04:28.798Z",
+  "uploadedAt": "2026-08-05T03:28:18.930Z",
   "keyPrefix": "assets",
   "pathMapping": {
     "local": "public/assets/<path>",
@@ -12,11 +12,11 @@
     "classA": 1000000,
     "usedStorageBytes": 539174150,
     "lastDeltaPuts": 85,
-    "usedClassAPuts": 529
+    "usedClassAPuts": 750
   },
   "counts": {
-    "attempted": 529,
-    "ok": 529,
+    "attempted": 750,
+    "ok": 750,
     "fail": 0
   },
   "objects": [
@@ -75,6 +75,14 @@
       "bytes": 430321,
       "contentType": "image/jpeg",
       "sha256": "ef3923134f1a35ea852bb270ecfdac99cb72e2cb8a3540e21db483969d263927"
+    },
+    {
+      "localPath": "public/assets/about/avatar-generic.svg",
+      "sitePath": "/assets/about/avatar-generic.svg",
+      "r2Key": "assets/about/avatar-generic.svg",
+      "bytes": 297,
+      "contentType": "image/svg+xml",
+      "sha256": "7eec39f1053162544f9633ae0c4b362b6cdefaf85ae022bbb622ce59c011280f"
     },
     {
       "localPath": "public/assets/about/team-divyanshu-pundir.jpg",
@@ -155,6 +163,14 @@
       "bytes": 428297,
       "contentType": "image/jpeg",
       "sha256": "0b7c7d0fd69cad8cd499082942f32b0cbd8ba052c76dcdc14e6d0ef59146c463"
+    },
+    {
+      "localPath": "public/assets/about/team-wugweb-design.png",
+      "sitePath": "/assets/about/team-wugweb-design.png",
+      "r2Key": "assets/about/team-wugweb-design.png",
+      "bytes": 7890,
+      "contentType": "image/png",
+      "sha256": "367c26a307c974c4c07ac223ef2913625868edf8aad361756771666a9852981a"
     },
     {
       "localPath": "public/assets/blog/10-a-hole-design-patterns.webp",
@@ -323,6 +339,390 @@
       "bytes": 113861,
       "contentType": "image/png",
       "sha256": "8055a2564991542dac151202f613013a454498eb1aa72f5b63187a50d36d4e8d"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__01_Future-Proofing-Your-Designs_-The-Top-10-Design-Systems-for-UX_UI-Designers-in-2023-1024x1024.png",
+      "sitePath": "/assets/blog/wp/2023__07__01_Future-Proofing-Your-Designs_-The-Top-10-Design-Systems-for-UX_UI-Designers-in-2023-1024x1024.png",
+      "r2Key": "assets/blog/wp/2023__07__01_Future-Proofing-Your-Designs_-The-Top-10-Design-Systems-for-UX_UI-Designers-in-2023-1024x1024.png",
+      "bytes": 299738,
+      "contentType": "image/png",
+      "sha256": "c074bbcaa6ed261b7293cbe94591186d91f37dc8aded00b7bbfb7d70360b0cc5"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__02_2-1-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__02_2-1-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__02_2-1-1024x512.png",
+      "bytes": 241951,
+      "contentType": "image/png",
+      "sha256": "0f0d953c10ba9790123e47261bbc66b9555a471e0bd797f6abe63ea01f924f7a"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__02_3-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__02_3-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__02_3-1024x512.png",
+      "bytes": 144280,
+      "contentType": "image/png",
+      "sha256": "892cb79963cdb4d4e1986e75a0b206b8006bf2171277e99a2671fa257106c40f"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__02_4-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__02_4-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__02_4-1024x512.png",
+      "bytes": 94490,
+      "contentType": "image/png",
+      "sha256": "c4c772f81609b08b78ae5015f8212a0eeffb6621c2728a95defbeb3b11683a75"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__02_5-1-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__02_5-1-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__02_5-1-1024x512.png",
+      "bytes": 178006,
+      "contentType": "image/png",
+      "sha256": "2bf83cdf44938adfffe48a31c825d1dc485ddb66a565e584e55298cd0b117b5d"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__10_How-to-strike-a-Balance-Between-User-Needs-and-Your-Business-Goals-1024x1024.png",
+      "sitePath": "/assets/blog/wp/2023__07__10_How-to-strike-a-Balance-Between-User-Needs-and-Your-Business-Goals-1024x1024.png",
+      "r2Key": "assets/blog/wp/2023__07__10_How-to-strike-a-Balance-Between-User-Needs-and-Your-Business-Goals-1024x1024.png",
+      "bytes": 292376,
+      "contentType": "image/png",
+      "sha256": "0496c792ccafd84a76ef8ce33e234d87c6ecb56eb13672caa68411f85f5ca89e"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__11_Decoding-UX-Jargon_-A-Simplified-Guide-to-Understanding-UX-Terms-1024x1024.png",
+      "sitePath": "/assets/blog/wp/2023__07__11_Decoding-UX-Jargon_-A-Simplified-Guide-to-Understanding-UX-Terms-1024x1024.png",
+      "r2Key": "assets/blog/wp/2023__07__11_Decoding-UX-Jargon_-A-Simplified-Guide-to-Understanding-UX-Terms-1024x1024.png",
+      "bytes": 443185,
+      "contentType": "image/png",
+      "sha256": "2b488f8e287b3356c174fb6d172d5d68243959b465a8e6eb0f7a337d741c49ba"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__antdesign-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__antdesign-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__antdesign-1024x512.png",
+      "bytes": 119634,
+      "contentType": "image/png",
+      "sha256": "06ff77985892ed8e5c814666183c2d6552e0e3c6e5a1bad7bf535dcb28ddbf2c"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__atlassiadesign-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__atlassiadesign-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__atlassiadesign-1024x512.png",
+      "bytes": 119360,
+      "contentType": "image/png",
+      "sha256": "887ce3ceee5af66b4020072951921acd2b82814b59ab40d1c76e9350a0a9c266"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__audidesign-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__audidesign-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__audidesign-1024x512.png",
+      "bytes": 213692,
+      "contentType": "image/png",
+      "sha256": "efd866434a1a147d0acac9936378e1009df125bd61d3f316a7d0fbc680f85234"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__awsamplifydesign-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__awsamplifydesign-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__awsamplifydesign-1024x512.png",
+      "bytes": 96894,
+      "contentType": "image/png",
+      "sha256": "566f3a9d81125233116d67577fd88bac631c313dfeea9e8fa0daa8a382ea67f6"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-13-1024x519.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-13-1024x519.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-13-1024x519.png",
+      "bytes": 551792,
+      "contentType": "image/png",
+      "sha256": "196f5a2a81a363922ccc2d9cfbadf998da95a9e6a37bbce4eb99989e9abffe48"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-16-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-16-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-16-1024x512.png",
+      "bytes": 331706,
+      "contentType": "image/png",
+      "sha256": "5931ed3a1c34d80c83729fc45ab03e635f141e6cb1c5a24f5a1818090390a474"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-17-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-17-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-17-1024x512.png",
+      "bytes": 587849,
+      "contentType": "image/png",
+      "sha256": "d49205055b54a546a429f11692c91f9435d62fff89e9c4212dc43ba96f0ab4af"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-19-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-19-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-19-1024x512.png",
+      "bytes": 88290,
+      "contentType": "image/png",
+      "sha256": "db35f4f6e2ab11371388cb7091275cbfdff615052e46e94946875eaac4f8d7d7"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-22-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-22-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-22-1024x512.png",
+      "bytes": 26871,
+      "contentType": "image/png",
+      "sha256": "46ab687c21416c23d7ce8ec509d309a89fe9db306e113271eaa2f7f98002c563"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-23-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-23-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-23-1024x512.png",
+      "bytes": 149350,
+      "contentType": "image/png",
+      "sha256": "17e43ab55fa70efce596d5b7f589be8841c590ec1e3bbdd0b17ca5553bbcf2df"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-24-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-24-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-24-1024x512.png",
+      "bytes": 145745,
+      "contentType": "image/png",
+      "sha256": "476a2061af635b2c1c2afc19f547e9529f0d6f9d167ed052990d6fdd1e1a9667"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-25-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-25-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-25-1024x512.png",
+      "bytes": 130216,
+      "contentType": "image/png",
+      "sha256": "16fdbdeadf0f27e954c13aacfa6dbd84e5cacbcb8321fc4dd682c20ce1876e99"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-27-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-27-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-27-1024x512.png",
+      "bytes": 89140,
+      "contentType": "image/png",
+      "sha256": "17e80b029295a44a3531750029b96bc1c8740be8f0fb19eb0b9e3dcf2f8e0730"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-28-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-28-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-28-1024x512.png",
+      "bytes": 114768,
+      "contentType": "image/png",
+      "sha256": "fa8daa15bbe1c15941109e376a952e2a04e5bbbd3a35f80896ee6ae3eb2a7328"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-29-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-29-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-29-1024x512.png",
+      "bytes": 216093,
+      "contentType": "image/png",
+      "sha256": "ba729b492e06cf875067bb80bf3a5823a44478ef625c6f7ea96b10e5d6a9419a"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-30-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-30-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-30-1024x512.png",
+      "bytes": 184489,
+      "contentType": "image/png",
+      "sha256": "9c1462d089dc4ab45b0886a5e45450697e39cfb4b60c4864d8e6640eff986ae2"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-32-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-32-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-32-1024x512.png",
+      "bytes": 138171,
+      "contentType": "image/png",
+      "sha256": "ed8aac3701cf9d1b6fba95dd6c424509b12388dde2592425928381e7fc7e15de"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-33-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-33-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-33-1024x512.png",
+      "bytes": 32194,
+      "contentType": "image/png",
+      "sha256": "fd52b0455e0b6425300ea42bd06ca9fb23eff60b6da0a7a162c30f4b99d88e48"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-34-1024x511.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-34-1024x511.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-34-1024x511.png",
+      "bytes": 44237,
+      "contentType": "image/png",
+      "sha256": "b42b38bb8ea416a890caa832b020f18f1a60e6dcd7c4a686dc4ded7a7264f933"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-35-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-35-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-35-1024x512.png",
+      "bytes": 202047,
+      "contentType": "image/png",
+      "sha256": "cb81683a582ba4b24870d0ecd8a49c2d63d91d052cb23b94207ab2607cad1de8"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-36-1024x511.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-36-1024x511.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-36-1024x511.png",
+      "bytes": 43468,
+      "contentType": "image/png",
+      "sha256": "6ebdde8e28b1f94e31bade26a74741f82b7243b2959bb5e51ae452dda5651cc9"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-7-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-7-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-7-1024x512.png",
+      "bytes": 132831,
+      "contentType": "image/png",
+      "sha256": "3950607d39369b34ec4d377f4250fe7efd102ade40d716cdf821d30a76b1de1d"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-8-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-8-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-8-1024x512.png",
+      "bytes": 551179,
+      "contentType": "image/png",
+      "sha256": "3d7b3317b26a613a5d7f892c62163460e927832cc5244d73e19e314494ff8594"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Frame-9-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Frame-9-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Frame-9-1024x512.png",
+      "bytes": 674397,
+      "contentType": "image/png",
+      "sha256": "a1a8974308b589163274f453df0413f9f71439cab7b34f41d42187cc002a6402"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__googlematerial-1-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__googlematerial-1-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__googlematerial-1-1024x512.png",
+      "bytes": 478189,
+      "contentType": "image/png",
+      "sha256": "544b1e705486e018ef9f83c9ee93d340a7ee5f4c31fc962b89dc92fa56130213"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Group-15-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Group-15-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Group-15-1024x512.png",
+      "bytes": 467514,
+      "contentType": "image/png",
+      "sha256": "6d90ed6339a82c183c55a2822427ce88f4c2a3d169d148ae4a1ceff7a87093a0"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__ibmdesign-1-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__ibmdesign-1-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__ibmdesign-1-1024x512.png",
+      "bytes": 60274,
+      "contentType": "image/png",
+      "sha256": "72a90d0fb712bf82425b8e90e98361a16f8d0e64cc785c4c38b3eeed1d91da38"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__Layer-36-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__Layer-36-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__Layer-36-1024x512.png",
+      "bytes": 634343,
+      "contentType": "image/png",
+      "sha256": "e4b11e422fad60f804edca54f5bbbea850b993d21b270436edf4200374b5a6ed"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__mailchimpdesign-1-1024x529.png",
+      "sitePath": "/assets/blog/wp/2023__07__mailchimpdesign-1-1024x529.png",
+      "r2Key": "assets/blog/wp/2023__07__mailchimpdesign-1-1024x529.png",
+      "bytes": 211840,
+      "contentType": "image/png",
+      "sha256": "2bf17ab9d7bc7b0d1ae3881d3bcf207d9d3e91e9d4b8f834ccff262b9a8441cf"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__microsoftfluentdesign-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__microsoftfluentdesign-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__microsoftfluentdesign-1024x512.png",
+      "bytes": 241404,
+      "contentType": "image/png",
+      "sha256": "cc640526c821413845051aacd163cfb92f96b37845c874a32b39a7f6b45bbcce"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__salesforcedesign2-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__salesforcedesign2-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__salesforcedesign2-1024x512.png",
+      "bytes": 202199,
+      "contentType": "image/png",
+      "sha256": "d22209c2000775fa4d0f6cc876dfd018f58976a8bf25e574211d7e37327ec800"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023__07__shopifydesign-1024x512.png",
+      "sitePath": "/assets/blog/wp/2023__07__shopifydesign-1024x512.png",
+      "r2Key": "assets/blog/wp/2023__07__shopifydesign-1024x512.png",
+      "bytes": 260050,
+      "contentType": "image/png",
+      "sha256": "c741df670ecb027ce322a26b0f0005bf312b223fdcbe074ce4d527d4ebea98b4"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--03-Embracing-the-Design-Journey--Remote-Working-Culture-The-Challenges.png",
+      "sitePath": "/assets/blog/wp/2023--07--03-Embracing-the-Design-Journey--Remote-Working-Culture-The-Challenges.png",
+      "r2Key": "assets/blog/wp/2023--07--03-Embracing-the-Design-Journey--Remote-Working-Culture-The-Challenges.png",
+      "bytes": 920246,
+      "contentType": "image/png",
+      "sha256": "0966b3474380cc528d94cd51aa9d52fbd1947d6df80ba592493dc0a400abcec8"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--04-When-UX-Meets-CX--Creating-Seamless-Experiences-for-Users-and-Custo.png",
+      "sitePath": "/assets/blog/wp/2023--07--04-When-UX-Meets-CX--Creating-Seamless-Experiences-for-Users-and-Custo.png",
+      "r2Key": "assets/blog/wp/2023--07--04-When-UX-Meets-CX--Creating-Seamless-Experiences-for-Users-and-Custo.png",
+      "bytes": 169820,
+      "contentType": "image/png",
+      "sha256": "ed7ce1985ae00ad9f858f013cdbbe944d5098beb7e1ea2f23f8e1fd38464ef35"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--05-Agile-Working-in-UX--Unleashing-Creativity-Collaboration-and-Flexib.png",
+      "sitePath": "/assets/blog/wp/2023--07--05-Agile-Working-in-UX--Unleashing-Creativity-Collaboration-and-Flexib.png",
+      "r2Key": "assets/blog/wp/2023--07--05-Agile-Working-in-UX--Unleashing-Creativity-Collaboration-and-Flexib.png",
+      "bytes": 685754,
+      "contentType": "image/png",
+      "sha256": "319841f224a73314c4fa62d4c50a1d820a80a6d91b3eaaf32aac023cc91edcda"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--06-Unlocking-the-Design-Puzzle--Decoding-the-Concentration-of-Work-in-.png",
+      "sitePath": "/assets/blog/wp/2023--07--06-Unlocking-the-Design-Puzzle--Decoding-the-Concentration-of-Work-in-.png",
+      "r2Key": "assets/blog/wp/2023--07--06-Unlocking-the-Design-Puzzle--Decoding-the-Concentration-of-Work-in-.png",
+      "bytes": 765993,
+      "contentType": "image/png",
+      "sha256": "6981ba9a7d758cbb6dda75f12702b850124c358cfb8e8e8d0096c2d2018d22f3"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--07-When-and-How-to-Use-HTML-Sitemaps-for-SEO-and-UX--Unleashing-the-Po.png",
+      "sitePath": "/assets/blog/wp/2023--07--07-When-and-How-to-Use-HTML-Sitemaps-for-SEO-and-UX--Unleashing-the-Po.png",
+      "r2Key": "assets/blog/wp/2023--07--07-When-and-How-to-Use-HTML-Sitemaps-for-SEO-and-UX--Unleashing-the-Po.png",
+      "bytes": 652055,
+      "contentType": "image/png",
+      "sha256": "9e1743c2443e022f3e1bc46191f9f1fa57bf947a725dd7b0d7b8e79861971b31"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--08-Supercharge-Your-Designs--15-Must-Know-Figma-Updates-from-Config-20.png",
+      "sitePath": "/assets/blog/wp/2023--07--08-Supercharge-Your-Designs--15-Must-Know-Figma-Updates-from-Config-20.png",
+      "r2Key": "assets/blog/wp/2023--07--08-Supercharge-Your-Designs--15-Must-Know-Figma-Updates-from-Config-20.png",
+      "bytes": 541387,
+      "contentType": "image/png",
+      "sha256": "2bdfe4f7a6b30c5f8a1cc97dec944c8be8a0c5eeb2be0145a5d215038e26f101"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--09-The-Future-of-UX-Design--Enhancing-User-Experiences-with-AI.png",
+      "sitePath": "/assets/blog/wp/2023--07--09-The-Future-of-UX-Design--Enhancing-User-Experiences-with-AI.png",
+      "r2Key": "assets/blog/wp/2023--07--09-The-Future-of-UX-Design--Enhancing-User-Experiences-with-AI.png",
+      "bytes": 201295,
+      "contentType": "image/png",
+      "sha256": "c3e9debbd5266e09bf7325b04ff0b6a594ce8d540fb62cea125458cd34da7741"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--11-Decoding-UX-Jargon--A-Simplified-Guide-to-Understanding-UX-Terms.pn.png",
+      "sitePath": "/assets/blog/wp/2023--07--11-Decoding-UX-Jargon--A-Simplified-Guide-to-Understanding-UX-Terms.pn.png",
+      "r2Key": "assets/blog/wp/2023--07--11-Decoding-UX-Jargon--A-Simplified-Guide-to-Understanding-UX-Terms.pn.png",
+      "bytes": 491708,
+      "contentType": "image/png",
+      "sha256": "afc435320c0c0acdd00ebec563f5423041f6a214fde35342608dc04aeba3322b"
+    },
+    {
+      "localPath": "public/assets/blog/wp/2023--07--Adobe-XD--Pioneering-Design-Evolving-Trends-and-the-Future-Amidst-Figm.png",
+      "sitePath": "/assets/blog/wp/2023--07--Adobe-XD--Pioneering-Design-Evolving-Trends-and-the-Future-Amidst-Figm.png",
+      "r2Key": "assets/blog/wp/2023--07--Adobe-XD--Pioneering-Design-Evolving-Trends-and-the-Future-Amidst-Figm.png",
+      "bytes": 484063,
+      "contentType": "image/png",
+      "sha256": "7ca11fecf381a909bb121f8f18a6c9e25c716f0ce2bbd15afdade590b6cb161b"
     },
     {
       "localPath": "public/assets/framer/adneto-digital-showcase-ai-powered-loyalty-platform/challenges-image-h4hs.png",
@@ -2909,6 +3309,222 @@
       "sha256": "b7c60dc91cd9c0a80b376d56b42926b3675f9977ee59bd41f688858eb23ed3d2"
     },
     {
+      "localPath": "public/assets/services/reference/brand-hero.jpg",
+      "sitePath": "/assets/services/reference/brand-hero.jpg",
+      "r2Key": "assets/services/reference/brand-hero.jpg",
+      "bytes": 304734,
+      "contentType": "image/jpeg",
+      "sha256": "0d6b8e9d3f2c82c4df3b602271f42e3a7bdc0bed0c1c3653cbbc8cd04d770970"
+    },
+    {
+      "localPath": "public/assets/services/reference/brand-img-2.jpg",
+      "sitePath": "/assets/services/reference/brand-img-2.jpg",
+      "r2Key": "assets/services/reference/brand-img-2.jpg",
+      "bytes": 79809,
+      "contentType": "image/jpeg",
+      "sha256": "a1e2ea455a7483ad8e6de1a1ed096b1974fe29c96c5a69fb74252cbb50979b55"
+    },
+    {
+      "localPath": "public/assets/services/reference/brand-strategy-icon.png",
+      "sitePath": "/assets/services/reference/brand-strategy-icon.png",
+      "r2Key": "assets/services/reference/brand-strategy-icon.png",
+      "bytes": 87223,
+      "contentType": "image/png",
+      "sha256": "7b4b24375b854e5872120ad2816c26116fc18ec4766e1949359c1c66cd97e0f4"
+    },
+    {
+      "localPath": "public/assets/services/reference/experience-hero.jpg",
+      "sitePath": "/assets/services/reference/experience-hero.jpg",
+      "r2Key": "assets/services/reference/experience-hero.jpg",
+      "bytes": 7049,
+      "contentType": "image/jpeg",
+      "sha256": "bcd1aeb9445a4c3348e9a0eead1319c31be478bec3ae0a456300a306c28c19d6"
+    },
+    {
+      "localPath": "public/assets/services/reference/experience-icon-2.svg",
+      "sitePath": "/assets/services/reference/experience-icon-2.svg",
+      "r2Key": "assets/services/reference/experience-icon-2.svg",
+      "bytes": 5021,
+      "contentType": "image/svg+xml",
+      "sha256": "5f623e6abee7ef13e9e8dcb0ce838860da49ebf494796bd31745d0b01f2a03a5"
+    },
+    {
+      "localPath": "public/assets/services/reference/experience-icon-3.svg",
+      "sitePath": "/assets/services/reference/experience-icon-3.svg",
+      "r2Key": "assets/services/reference/experience-icon-3.svg",
+      "bytes": 638,
+      "contentType": "image/svg+xml",
+      "sha256": "8bc0860a44cbb21fe85c7b0961a9fbcf08f5c73fc23b1ccb58f1f09a05bd1aad"
+    },
+    {
+      "localPath": "public/assets/services/reference/experience-icon-4.svg",
+      "sitePath": "/assets/services/reference/experience-icon-4.svg",
+      "r2Key": "assets/services/reference/experience-icon-4.svg",
+      "bytes": 1159,
+      "contentType": "image/svg+xml",
+      "sha256": "0f1cfc74aa978fd77fa99912b7a90b4af98af841ff97c1e4216ea02ba9c5e13d"
+    },
+    {
+      "localPath": "public/assets/services/reference/experience-icon.png",
+      "sitePath": "/assets/services/reference/experience-icon.png",
+      "r2Key": "assets/services/reference/experience-icon.png",
+      "bytes": 9212,
+      "contentType": "image/png",
+      "sha256": "c88345c7e73c51be4f84a42802eec3d276911f9a989a033a021874efa3236181"
+    },
+    {
+      "localPath": "public/assets/services/reference/experience-img-2.png",
+      "sitePath": "/assets/services/reference/experience-img-2.png",
+      "r2Key": "assets/services/reference/experience-img-2.png",
+      "bytes": 6783,
+      "contentType": "image/png",
+      "sha256": "090aa58b8a7de98a87b96998bdeb5aae9598d68fc8f86e44ce8354da9ab3875f"
+    },
+    {
+      "localPath": "public/assets/services/reference/nocode-icon-2.svg",
+      "sitePath": "/assets/services/reference/nocode-icon-2.svg",
+      "r2Key": "assets/services/reference/nocode-icon-2.svg",
+      "bytes": 1203,
+      "contentType": "image/svg+xml",
+      "sha256": "3b20b7bc406904c2af1652384121468eca7ac580f7359dee400c955e2c8b41e3"
+    },
+    {
+      "localPath": "public/assets/services/reference/nocode-icon-3.svg",
+      "sitePath": "/assets/services/reference/nocode-icon-3.svg",
+      "r2Key": "assets/services/reference/nocode-icon-3.svg",
+      "bytes": 1971,
+      "contentType": "image/svg+xml",
+      "sha256": "819b5c58df84aeb966568492d16a5728f0482f0f5fca643eedd313b0a7bafadb"
+    },
+    {
+      "localPath": "public/assets/services/reference/nocode-icon-4.svg",
+      "sitePath": "/assets/services/reference/nocode-icon-4.svg",
+      "r2Key": "assets/services/reference/nocode-icon-4.svg",
+      "bytes": 557,
+      "contentType": "image/svg+xml",
+      "sha256": "fdfc9df3123c54d1a312485d6e4432bcd62ec748c2f1438be7f794a102d3b2ff"
+    },
+    {
+      "localPath": "public/assets/services/reference/nocode-icon-5.svg",
+      "sitePath": "/assets/services/reference/nocode-icon-5.svg",
+      "r2Key": "assets/services/reference/nocode-icon-5.svg",
+      "bytes": 3965,
+      "contentType": "image/svg+xml",
+      "sha256": "90e991b72b760e7f4330f5c968492d767efaf2b5f0aa136f992d7fff26d7f1da"
+    },
+    {
+      "localPath": "public/assets/services/reference/nocode-icon.svg",
+      "sitePath": "/assets/services/reference/nocode-icon.svg",
+      "r2Key": "assets/services/reference/nocode-icon.svg",
+      "bytes": 2078,
+      "contentType": "image/svg+xml",
+      "sha256": "e95e208905518e93d7d857fbd490a71527c1229504057dc0615581fb6f7d0278"
+    },
+    {
+      "localPath": "public/assets/services/reference/nocode-img-1.png",
+      "sitePath": "/assets/services/reference/nocode-img-1.png",
+      "r2Key": "assets/services/reference/nocode-img-1.png",
+      "bytes": 12715,
+      "contentType": "image/png",
+      "sha256": "0bb3cea1223f16d8093c7f9dfc6a82d0fbe882551ee1f7a12b3388b8aa3582c0"
+    },
+    {
+      "localPath": "public/assets/services/reference/qa-anim.gif",
+      "sitePath": "/assets/services/reference/qa-anim.gif",
+      "r2Key": "assets/services/reference/qa-anim.gif",
+      "bytes": 297444,
+      "contentType": "image/gif",
+      "sha256": "dd26a3b3bcd5df29baa0f7d3d61b6c55cd78e02f63931a038b3f0e04852bac93"
+    },
+    {
+      "localPath": "public/assets/services/reference/qa-icon.svg",
+      "sitePath": "/assets/services/reference/qa-icon.svg",
+      "r2Key": "assets/services/reference/qa-icon.svg",
+      "bytes": 679,
+      "contentType": "image/svg+xml",
+      "sha256": "697ce78da2ac1b021d336d516b944836c11867132dd383955f44a42bb4705b31"
+    },
+    {
+      "localPath": "public/assets/services/reference/qa-img-1.webp",
+      "sitePath": "/assets/services/reference/qa-img-1.webp",
+      "r2Key": "assets/services/reference/qa-img-1.webp",
+      "bytes": 31066,
+      "contentType": "image/webp",
+      "sha256": "d85d835b30d849dd348b96db0d6878691dd557fa0543c4e212cf3c76c116ed48"
+    },
+    {
+      "localPath": "public/assets/services/reference/qa-img-2.webp",
+      "sitePath": "/assets/services/reference/qa-img-2.webp",
+      "r2Key": "assets/services/reference/qa-img-2.webp",
+      "bytes": 28086,
+      "contentType": "image/webp",
+      "sha256": "6fbee59d32b8cdddb30750b021da7e1d14c2b3c5012d29ef8d58ba0a95fa93c0"
+    },
+    {
+      "localPath": "public/assets/services/reference/qa-img-3.jpg",
+      "sitePath": "/assets/services/reference/qa-img-3.jpg",
+      "r2Key": "assets/services/reference/qa-img-3.jpg",
+      "bytes": 1090667,
+      "contentType": "image/jpeg",
+      "sha256": "4b8676d46f6be885b4e43a01d69cd067c79f04634e4bfb5689b9528d91497dd3"
+    },
+    {
+      "localPath": "public/assets/services/reference/qa-img-4.jpg",
+      "sitePath": "/assets/services/reference/qa-img-4.jpg",
+      "r2Key": "assets/services/reference/qa-img-4.jpg",
+      "bytes": 1053303,
+      "contentType": "image/jpeg",
+      "sha256": "4eb85179c6c2d78601dde39c5014bbd4c844e16e1c2a99ba6ae27916b62d3dd9"
+    },
+    {
+      "localPath": "public/assets/services/reference/qa-img-5.jpg",
+      "sitePath": "/assets/services/reference/qa-img-5.jpg",
+      "r2Key": "assets/services/reference/qa-img-5.jpg",
+      "bytes": 8912315,
+      "contentType": "image/jpeg",
+      "sha256": "53299d2e0259ae5e4f1804974ed9b81b5a219a97fa754b6e4d318022e4c3b18c"
+    },
+    {
+      "localPath": "public/assets/services/reference/qa-img-6.jpg",
+      "sitePath": "/assets/services/reference/qa-img-6.jpg",
+      "r2Key": "assets/services/reference/qa-img-6.jpg",
+      "bytes": 1867336,
+      "contentType": "image/jpeg",
+      "sha256": "91e75df7d71d4386c5d0842ce1fa49562768da9eecf69ef93a5108a3345d7d0c"
+    },
+    {
+      "localPath": "public/assets/services/reference/services-hero.jpg",
+      "sitePath": "/assets/services/reference/services-hero.jpg",
+      "r2Key": "assets/services/reference/services-hero.jpg",
+      "bytes": 114828,
+      "contentType": "image/jpeg",
+      "sha256": "84137c444237848ab9aecd07b80c2f2791f932375652305b45ca2abf0c9fd5be"
+    },
+    {
+      "localPath": "public/assets/services/reference/services-img-2.png",
+      "sitePath": "/assets/services/reference/services-img-2.png",
+      "r2Key": "assets/services/reference/services-img-2.png",
+      "bytes": 101500,
+      "contentType": "image/png",
+      "sha256": "a0b093038e1933ce2675df7b3c7c3fcd0a107620bce0bf263d085b3a7dd324db"
+    },
+    {
+      "localPath": "public/assets/services/reference/webapp-icon.png",
+      "sitePath": "/assets/services/reference/webapp-icon.png",
+      "r2Key": "assets/services/reference/webapp-icon.png",
+      "bytes": 44310,
+      "contentType": "image/png",
+      "sha256": "70a30c4b98c4906a20a95b9098cac6e38b50cb265f491513821d0e71959e2c80"
+    },
+    {
+      "localPath": "public/assets/services/reference/webapp-img-1.webp",
+      "sitePath": "/assets/services/reference/webapp-img-1.webp",
+      "r2Key": "assets/services/reference/webapp-img-1.webp",
+      "bytes": 174942,
+      "contentType": "image/webp",
+      "sha256": "87db42062833fb8a32d63b54fb27c9fe1948339d0fb227e7f7e6536778edd7db"
+    },
+    {
       "localPath": "public/assets/services/Web & App Development/API.mp4",
       "sitePath": "/assets/services/Web & App Development/API.mp4",
       "r2Key": "assets/services/Web & App Development/API.mp4",
@@ -3715,6 +4331,1158 @@
       "bytes": 597,
       "contentType": "image/svg+xml",
       "sha256": "f3efae472804edd0150e070cc176843999fa7a1dc437e603fcee6cbbf21a22d0"
+    },
+    {
+      "localPath": "public/assets/uncode/blog/the-80-20-path-to-innovation-lessons-from-gandhi/att/image.webp",
+      "sitePath": "/assets/uncode/blog/the-80-20-path-to-innovation-lessons-from-gandhi/att/image.webp",
+      "r2Key": "assets/uncode/blog/the-80-20-path-to-innovation-lessons-from-gandhi/att/image.webp",
+      "bytes": 26038,
+      "contentType": "image/webp",
+      "sha256": "961aa3a77dc771b87d9fa9e66d7bb11800b41b2659861e53f33d4c54586a7126"
+    },
+    {
+      "localPath": "public/assets/uncode/blog/the-future-of-ai-search-what-openais-research-tells-us/att/ai-data-17.webp",
+      "sitePath": "/assets/uncode/blog/the-future-of-ai-search-what-openais-research-tells-us/att/ai-data-17.webp",
+      "r2Key": "assets/uncode/blog/the-future-of-ai-search-what-openais-research-tells-us/att/ai-data-17.webp",
+      "bytes": 122100,
+      "contentType": "image/webp",
+      "sha256": "04cb44ee42c2cb7d298247c888a779a656fdf706f14ae3d0d2a38525a41e3864"
+    },
+    {
+      "localPath": "public/assets/uncode/case/accelerating-loyalty-designing-kia-s-intuitive-customer-dashboard/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/accelerating-loyalty-designing-kia-s-intuitive-customer-dashboard/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/accelerating-loyalty-designing-kia-s-intuitive-customer-dashboard/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/01-2.png",
+      "sitePath": "/assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/01-2.png",
+      "r2Key": "assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/01-2.png",
+      "bytes": 914158,
+      "contentType": "image/png",
+      "sha256": "002fed6a2d050f81fb840e21ce33945e4c15d2f2614b4baa29b93763c7fecd45"
+    },
+    {
+      "localPath": "public/assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/Airtel-Xsafe-1-–-6.jpg",
+      "sitePath": "/assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/Airtel-Xsafe-1-–-6.jpg",
+      "r2Key": "assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/Airtel-Xsafe-1-–-6.jpg",
+      "bytes": 537445,
+      "contentType": "image/jpeg",
+      "sha256": "a8cb527abed4433c178f05486cbdc520bda773f28806db68a2a7bfd3b19d72af"
+    },
+    {
+      "localPath": "public/assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/airtel-xstream-play-showcasing-india-s-unified-digital-entertainment/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/airtel-xstream-play-showcasing-india-s-unified-digital-entertainment/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/airtel-xstream-play-showcasing-india-s-unified-digital-entertainment/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/bankco-revolutionizing-financial-engagement-with-a-super-app/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/bankco-revolutionizing-financial-engagement-with-a-super-app/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/bankco-revolutionizing-financial-engagement-with-a-super-app/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/gratify-the-intelligent-rewards-feedback-platform/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/gratify-the-intelligent-rewards-feedback-platform/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/gratify-the-intelligent-rewards-feedback-platform/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56960.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56960.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56960.png",
+      "bytes": 108944,
+      "contentType": "image/png",
+      "sha256": "59baaa3c2ea6eae062af2ab07bf150a8dec2e6ae5ff07f045cde2bfa0e9b95b4"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56961.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56961.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56961.png",
+      "bytes": 108072,
+      "contentType": "image/png",
+      "sha256": "cf88e852d35381a6afe2dba0d465fee7fbb18273de9d40a573125991d0a70cb3"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56962.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56962.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56962.png",
+      "bytes": 92301,
+      "contentType": "image/png",
+      "sha256": "bd264fb9267c742d9a0d982d96f82902c4e4bfeafb877dee6c8e01830a644111"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56963.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56963.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56963.png",
+      "bytes": 93244,
+      "contentType": "image/png",
+      "sha256": "0f214f73c2df37d0648dac122b4d3db467ac8aa12477baa0adbc51b11d238ac4"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56964.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56964.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56964.png",
+      "bytes": 90767,
+      "contentType": "image/png",
+      "sha256": "7a97238f43699a46c8c965a9592ed379bf957d3b9d159cf75c0a93f9ce7fb216"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56965.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56965.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56965.png",
+      "bytes": 161639,
+      "contentType": "image/png",
+      "sha256": "a336e8f5758120db124fe65106e30ba95659a1445f5b587739280921afad01ba"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56970.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56970.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56970.png",
+      "bytes": 396228,
+      "contentType": "image/png",
+      "sha256": "918c969cbb8c1ee8c047b064567a91a6dd53be8ed3aa8dfa68d692f95b289aa3"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56971.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56971.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56971.png",
+      "bytes": 227280,
+      "contentType": "image/png",
+      "sha256": "5226dc7c19b4f05d7e1d59051a7a7e70a9d6f9abd57e2816573572e7af84c69b"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56972.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56972.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56972.png",
+      "bytes": 279198,
+      "contentType": "image/png",
+      "sha256": "67d1ed14189db14b09652816b9bafde164089c8abf712a453bcd6575dc442404"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56973.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56973.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56973.png",
+      "bytes": 396228,
+      "contentType": "image/png",
+      "sha256": "918c969cbb8c1ee8c047b064567a91a6dd53be8ed3aa8dfa68d692f95b289aa3"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56974.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56974.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56974.png",
+      "bytes": 221896,
+      "contentType": "image/png",
+      "sha256": "b53c601715747ecc75386723f3511d0f55d528a46d115e7f44f053b7ff7a5e0e"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56975.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56975.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56975.png",
+      "bytes": 242539,
+      "contentType": "image/png",
+      "sha256": "93fe86ae42bf811c9b554a3a3880b3e1f4289e8eab187a92295d897b8c03e2ec"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56976.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56976.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56976.png",
+      "bytes": 264047,
+      "contentType": "image/png",
+      "sha256": "92d02102aeb5596a592b39789d4a4768eacc18833af64eb503329b5b914f9c19"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-12.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-12.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-12.png",
+      "bytes": 713101,
+      "contentType": "image/png",
+      "sha256": "8d5b7a2d50f0f034b3c210fd9b0d669499c1be06471d76df3ae0cd076f6778f1"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-14.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-14.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-14.png",
+      "bytes": 1012888,
+      "contentType": "image/png",
+      "sha256": "7997f77b948636d7455a4a42404086ecfef2d865fdd26c1fced047692105bd39"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-15.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-15.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-15.png",
+      "bytes": 720519,
+      "contentType": "image/png",
+      "sha256": "d56c543e7177cad1c8c8d14a1e643e870f507a763581dfc4f033979e105f07e1"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-16.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-16.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-16.png",
+      "bytes": 247400,
+      "contentType": "image/png",
+      "sha256": "510542c9b571d5d53682c7f8b366af7e461de3de7ea25014248f1cfa45a7a7ac"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-17.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-17.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-17.png",
+      "bytes": 237876,
+      "contentType": "image/png",
+      "sha256": "02205af764e690f591bd7aed15e89959339ecabfaf0525d94d2d575c25e20822"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-19.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-19.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-19.png",
+      "bytes": 267175,
+      "contentType": "image/png",
+      "sha256": "27cdaf2741c275d804a428158417724ac476e6b67bb6d2fa65303a6f09f824a7"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-20.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-20.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-20.png",
+      "bytes": 274246,
+      "contentType": "image/png",
+      "sha256": "bf6427cc2d17fd8482f45cd2c4d89fcfa6d8b91fef72892e8f49b2dc89a1865e"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-23.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-23.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-23.png",
+      "bytes": 760428,
+      "contentType": "image/png",
+      "sha256": "06a3d0dac585aec7efb158a3d3c9c061724ede802ff7a33c813c319f23856caf"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-24.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-24.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-24.png",
+      "bytes": 259201,
+      "contentType": "image/png",
+      "sha256": "f75c937e64c537b6b464b492d6d70b474302c9942793059d74d4504f199c99e1"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo.png",
+      "bytes": 12475,
+      "contentType": "image/png",
+      "sha256": "bfa1253181161708580e3d08c807b11b09ce56aeded42c1427439dcd33a2c359"
+    },
+    {
+      "localPath": "public/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Style-board.png",
+      "sitePath": "/assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Style-board.png",
+      "r2Key": "assets/uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Style-board.png",
+      "bytes": 1287524,
+      "contentType": "image/png",
+      "sha256": "93bba4d6cd8814a355ddc3d82e7c4077818f579ffe42b6e41bbf5c7e2c047fbb"
+    },
+    {
+      "localPath": "public/assets/uncode/case/portfolio/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/portfolio/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/portfolio/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/portfolio/Design-Systems.mp4",
+      "sitePath": "/assets/uncode/case/portfolio/Design-Systems.mp4",
+      "r2Key": "assets/uncode/case/portfolio/Design-Systems.mp4",
+      "bytes": 264491,
+      "contentType": "video/mp4",
+      "sha256": "6877f38dcd6173957f6dcccf1e99208475474152524cd4a49762f4a89f397f64"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15664.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15664.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15664.png",
+      "bytes": 833801,
+      "contentType": "image/png",
+      "sha256": "fc553e1e7d6902581a243d386f7e464c2e858c54014f5a32feac07a83651d03e"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15665.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15665.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15665.png",
+      "bytes": 633755,
+      "contentType": "image/png",
+      "sha256": "d78b17eabb55b6c0d8141cf81169201471a240f43e1d4be7e10fe2d65025953e"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15666.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15666.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15666.png",
+      "bytes": 708741,
+      "contentType": "image/png",
+      "sha256": "8d6297a48d5546a03b9fb7797cd3d3ff7111655646680f66950e524c2340ed96"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15667.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15667.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15667.png",
+      "bytes": 563282,
+      "contentType": "image/png",
+      "sha256": "6188d997fca50750c1f1d3d4500ce54e52c80b75d15e5162cce48c069aea01b4"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15668.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15668.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15668.png",
+      "bytes": 532888,
+      "contentType": "image/png",
+      "sha256": "a85ad285bb8493584cc4865e694c1974fbb3e88c3ef93379d6dd6a356c89e409"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15669.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15669.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15669.png",
+      "bytes": 940291,
+      "contentType": "image/png",
+      "sha256": "7742308b02abee80bfae673ae289745615e8a263327bdbbc66ae62815e0847f3"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15670.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15670.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15670.png",
+      "bytes": 864409,
+      "contentType": "image/png",
+      "sha256": "5e9bd228ed1048abf7ed94e74ef4f3e6d068295518eb3b9d1ee10a6b15b0acac"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15671.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15671.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15671.png",
+      "bytes": 788785,
+      "contentType": "image/png",
+      "sha256": "bb9b17a29f0f158785629ca3d598c83c2017fd1bd079e00888382a0cdffc76f8"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15672-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15672-1.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15672-1.png",
+      "bytes": 960672,
+      "contentType": "image/png",
+      "sha256": "06285905677292b4b6a3b2b9f66295eea5e89d47f58612a2b2fbe633f46bc8dd"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15672.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15672.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15672.png",
+      "bytes": 960672,
+      "contentType": "image/png",
+      "sha256": "06285905677292b4b6a3b2b9f66295eea5e89d47f58612a2b2fbe633f46bc8dd"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15674.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15674.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15674.png",
+      "bytes": 634573,
+      "contentType": "image/png",
+      "sha256": "a72fd27174b5d4f6d0841c11673b8ff5313a316c047e8a0ed63b04e8e88e5133"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15675.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15675.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15675.png",
+      "bytes": 527721,
+      "contentType": "image/png",
+      "sha256": "22818ae8227904d232608e80648ed828f1101d747701661bb7954c3f6733ff1c"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15676.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15676.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15676.png",
+      "bytes": 1129374,
+      "contentType": "image/png",
+      "sha256": "a8b616459f2fd51b38874a43c0aa08d4491378f27ec35361b74531b2243092a0"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15677.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15677.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15677.png",
+      "bytes": 682410,
+      "contentType": "image/png",
+      "sha256": "490619daa922725fd15098a1d7ac5286a8430438ccb6250bec6c19c505322e4b"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15678.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15678.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15678.png",
+      "bytes": 772325,
+      "contentType": "image/png",
+      "sha256": "af1a8134b8634f5cacba39f93937cec84f3fef379d14bd7279e2c777e0813a87"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15679.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15679.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15679.png",
+      "bytes": 483384,
+      "contentType": "image/png",
+      "sha256": "79e391177412e65211100b9c37a84e5700a794327508c424f43f603ad023c569"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15680.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15680.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15680.png",
+      "bytes": 1251754,
+      "contentType": "image/png",
+      "sha256": "a65b027d8919a83ed9fd35bc64e863662a01ceef2602b1bc68e6a5e82ff4e575"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15681.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15681.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15681.png",
+      "bytes": 786230,
+      "contentType": "image/png",
+      "sha256": "4440582203b57e8dad67c33e6767476646f3e90587e6c6b5e01fae5e80aeeb81"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15682.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15682.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15682.png",
+      "bytes": 631999,
+      "contentType": "image/png",
+      "sha256": "ae0ff1a56e0990ba8acb20e6efe94b26995b630de6728fa079bb58cb60449623"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15683.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15683.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15683.png",
+      "bytes": 263721,
+      "contentType": "image/png",
+      "sha256": "e4ba0c2b1d22d56a0c3eb32952b85dcc7ce38425996c30004588bb49414eabdc"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15684.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15684.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15684.png",
+      "bytes": 591183,
+      "contentType": "image/png",
+      "sha256": "42a41f6676697f8fd828b29bb0aea551fa08c2d3029586bae1bc0ff111f9c425"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15685.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15685.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15685.png",
+      "bytes": 1079696,
+      "contentType": "image/png",
+      "sha256": "8d6a5ef69f44115c6363b0570e878681571a29ae62f2a8836a049c2f67521e6b"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17581.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17581.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17581.png",
+      "bytes": 1941134,
+      "contentType": "image/png",
+      "sha256": "cf94e6d637bf55d3de40f9154a011cb3da71b464ee462398561dfa7c4e02e2e2"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17582.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17582.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17582.png",
+      "bytes": 1449824,
+      "contentType": "image/png",
+      "sha256": "1c303acb0da57fd67440c9f8f40bee4436384f65099e11d50fffbcfbd1011f7e"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17583.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17583.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17583.png",
+      "bytes": 1601663,
+      "contentType": "image/png",
+      "sha256": "a803992eacdb9e363b519d84b298b82bf9c2e71e69ddc501731dca55dde54082"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17584.png",
+      "sitePath": "/assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17584.png",
+      "r2Key": "assets/uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17584.png",
+      "bytes": 2074765,
+      "contentType": "image/png",
+      "sha256": "bbc54d5e7a26f7924d7f89f099b4b54dc3fe94953c099ecf9581694dfa35052f"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/01_Home-copy.jpg",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/01_Home-copy.jpg",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/01_Home-copy.jpg",
+      "bytes": 1952158,
+      "contentType": "image/jpeg",
+      "sha256": "7d71de3af4c2fb9d140858de06bfb416bb072e429312ca879bdfefbfa8695c91"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/01-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/01-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/01-1.png",
+      "bytes": 661032,
+      "contentType": "image/png",
+      "sha256": "10a66d45bc1fa02041809e90fdee56a6e0c08dc301ba796b4ec4f420dae74069"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02_Program-Details-copy-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02_Program-Details-copy-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02_Program-Details-copy-1.png",
+      "bytes": 4165990,
+      "contentType": "image/png",
+      "sha256": "ea2d0582dd4c18449d77e4964f14de2a377fb3dbbf301e827dba7fae531a44be"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02_Program-Details-copy.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02_Program-Details-copy.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02_Program-Details-copy.png",
+      "bytes": 4165990,
+      "contentType": "image/png",
+      "sha256": "ea2d0582dd4c18449d77e4964f14de2a377fb3dbbf301e827dba7fae531a44be"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02-1.png",
+      "bytes": 535626,
+      "contentType": "image/png",
+      "sha256": "8c2a5da2dd72b2b3db7f95a1c97c24286cb81a9567bfd6b3765bc5e6df1318c1"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/03_Discover-PMI-copy.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/03_Discover-PMI-copy.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/03_Discover-PMI-copy.png",
+      "bytes": 3801571,
+      "contentType": "image/png",
+      "sha256": "72a74b8c1456ebc8e9fa889b345c00deaf52b4fe9e41fc36a463e7bd78143721"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/03-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/03-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/03-1.png",
+      "bytes": 517398,
+      "contentType": "image/png",
+      "sha256": "272434310c495daeb36a984b6e40ae85b8d674c347b48f75c29cef273a91f802"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/04-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/04-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/04-1.png",
+      "bytes": 664681,
+      "contentType": "image/png",
+      "sha256": "4333579e8e098579b80f01da3d49a8f548a6ae36440f7a332203faa08bdbad01"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/05_01.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/05_01.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/05_01.png",
+      "bytes": 738363,
+      "contentType": "image/png",
+      "sha256": "54f649655f199e1989e804aea3f57b25bba56d68625a19c9b5d639bc05b9bafc"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/06-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/06-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/06-1.png",
+      "bytes": 634423,
+      "contentType": "image/png",
+      "sha256": "2f09d4439ac4ebead9a6deb8790d110a3be41fb268cc7ad064f3147f0ad78066"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/4_04.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/4_04.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/4_04.png",
+      "bytes": 459977,
+      "contentType": "image/png",
+      "sha256": "fafd2e96a50858a4a77e36f10c00fbb4962db5e2f77a01bd99ed789eef277a04"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_02.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_02.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_02.png",
+      "bytes": 579316,
+      "contentType": "image/png",
+      "sha256": "5b59a17daa86c71a7dc49c0b8d0a2591b7fcde58d4c5c130cc4a78e6b13cee8f"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_03.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_03.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_03.png",
+      "bytes": 587634,
+      "contentType": "image/png",
+      "sha256": "bbb1481fbdfbdb3cab016e6addcb0f5dcaf7f8ae3f0305517312189089869797"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_04.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_04.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_04.png",
+      "bytes": 269676,
+      "contentType": "image/png",
+      "sha256": "5562a91957b4b1ce679935e74dfbece2da7bd256b43db3a4baeb4c14ed16b641"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/7-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/7-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/7-1.png",
+      "bytes": 515575,
+      "contentType": "image/png",
+      "sha256": "a73fdaebe74c6c2f8a344ea0eb3046fbc3584038862d9e34ec83ecfc73dede93"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/8-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/8-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/8-1.png",
+      "bytes": 668480,
+      "contentType": "image/png",
+      "sha256": "9fa176914801bb643eb596db1083e4fc4b9f29dcefb7c43bd7061313a8d52805"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-1.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-1.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-1.png",
+      "bytes": 210798,
+      "contentType": "image/png",
+      "sha256": "7a939a86717fc0575261dec9a90c1400448c535afed7712c47e8dcba897b5dcf"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-2.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-2.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-2.png",
+      "bytes": 106164,
+      "contentType": "image/png",
+      "sha256": "296710b14b2608cb499e3983acbf3fe4c584e18ff5ddd8f278edd81ba7670f2c"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-5.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-5.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-5.png",
+      "bytes": 1294637,
+      "contentType": "image/png",
+      "sha256": "e51dc3b79ace2056e8850eaa7d289668fd12d2a337dc78f1e7f04ffe3b94547a"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-6.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-6.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-6.png",
+      "bytes": 749475,
+      "contentType": "image/png",
+      "sha256": "757b09cf5e9e75873b33ad2f467175595a2c38bd67f90cc46dcbe8d82e24c941"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-7.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-7.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-7.png",
+      "bytes": 869232,
+      "contentType": "image/png",
+      "sha256": "efbd34be9fc1c8fadd47c1bb9996529aeded3c8070e0ac3674bae48f79e7eefc"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-8.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-8.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-8.png",
+      "bytes": 560364,
+      "contentType": "image/png",
+      "sha256": "16b6244d8f5cb1c1a0bab98f578784340945874e393115451533a3e904d28282"
+    },
+    {
+      "localPath": "public/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-9.png",
+      "sitePath": "/assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-9.png",
+      "r2Key": "assets/uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-9.png",
+      "bytes": 1021828,
+      "contentType": "image/png",
+      "sha256": "e757b89ad1f8e71d353cb573cfff5b72a03bcd8ce39c1c75b0f0c04a7de024fd"
+    },
+    {
+      "localPath": "public/assets/uncode/case/rideev-powering-the-phygital-ev-revolution-in-india/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/rideev-powering-the-phygital-ev-revolution-in-india/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/rideev-powering-the-phygital-ev-revolution-in-india/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1036.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1036.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1036.png",
+      "bytes": 516573,
+      "contentType": "image/png",
+      "sha256": "6ddc38be935ef34ac565afff601bc24a14a74d8e96d021bec37aed20e2413437"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1037.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1037.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1037.png",
+      "bytes": 460713,
+      "contentType": "image/png",
+      "sha256": "3bc2912fb43d2ccbb97b771e61871c055ad346ed4a5f214f7a2b149446ce4781"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1038.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1038.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1038.png",
+      "bytes": 415009,
+      "contentType": "image/png",
+      "sha256": "13e14061a926792e159086dbba4d85c67e4999898994532b4fef28778400fc80"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1039.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1039.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1039.png",
+      "bytes": 436060,
+      "contentType": "image/png",
+      "sha256": "5ad0733022503f963051b553ba82025327c37290cb3e3b3ba8ebbfde610f4753"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1040.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1040.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1040.png",
+      "bytes": 425610,
+      "contentType": "image/png",
+      "sha256": "8240a7df6497a3a4a719af338efb5e4d57b4c6b5c9e70c91294ddd6fccfd6212"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1041.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1041.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1041.png",
+      "bytes": 434831,
+      "contentType": "image/png",
+      "sha256": "0855507d1c6291416975c652cba1aedf539ca7a97123b9742e9cdc0b1f49fd01"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1042.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1042.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1042.png",
+      "bytes": 441290,
+      "contentType": "image/png",
+      "sha256": "c3b5df43d7fe61dcbd4fb6badc662623d5c4bd0aba2b5d60021e47728bf10f9a"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1044.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1044.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1044.png",
+      "bytes": 49560,
+      "contentType": "image/png",
+      "sha256": "bbf4f2c38875b58671c4bdc1860fc4c001e717801e5824dea0ca4878fcbdf39f"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1045.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1045.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1045.png",
+      "bytes": 72907,
+      "contentType": "image/png",
+      "sha256": "3daf2642e7b5a5c7bb9119507f4c8eda0b10f13c616a1478b0714bccd710ce17"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1046.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1046.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1046.png",
+      "bytes": 60996,
+      "contentType": "image/png",
+      "sha256": "b0ea180deb0c9a82ce144e16f8cc3c830da04f805aaefd04884c1106fd6f956f"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1051.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1051.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1051.png",
+      "bytes": 628709,
+      "contentType": "image/png",
+      "sha256": "ff1ad2ec878323bb85746c33a55ea654c68fcb6834ab6c51fadcc6e001ea97de"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1052.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1052.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1052.png",
+      "bytes": 654677,
+      "contentType": "image/png",
+      "sha256": "6e3c849c9b9ae7ba346f338d2dd0c8e725e5e481d6de9a0eef1e4b7ae1ff80e7"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1053.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1053.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1053.png",
+      "bytes": 624167,
+      "contentType": "image/png",
+      "sha256": "06ab76a9c16a9de1448f84af2e574c4fc0f689f70d8a9f324505e3d5ea9cb249"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1054.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1054.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1054.png",
+      "bytes": 541792,
+      "contentType": "image/png",
+      "sha256": "129ba55b341c9d7dba1ad212fc2d1f6ebef257b568b31479650160d29d313139"
+    },
+    {
+      "localPath": "public/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Sadhan.png",
+      "sitePath": "/assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Sadhan.png",
+      "r2Key": "assets/uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Sadhan.png",
+      "bytes": 8764,
+      "contentType": "image/png",
+      "sha256": "88545eba26b535d0d9771cfba1a64768685f01e0b83027014791bf0f7bda924f"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/1.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/1.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/1.png",
+      "bytes": 666465,
+      "contentType": "image/png",
+      "sha256": "e2f507bf7ee43712d37fffd7bf65696c0881c16dab4ec3aa806cc5017a88dda6"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/2.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/2.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/2.png",
+      "bytes": 232688,
+      "contentType": "image/png",
+      "sha256": "cefab8ad468f3673ccd33b5f65f5e6a1de124e5bd957ea1a8abc6f520b57a6fd"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/3.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/3.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/3.png",
+      "bytes": 231295,
+      "contentType": "image/png",
+      "sha256": "1e58824edfba4f0411a98ac7ea6e630f0d58e65f04e9e5d7e395e62f70e51ba1"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/4.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/4.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/4.png",
+      "bytes": 308700,
+      "contentType": "image/png",
+      "sha256": "78e539e6e21928072f509ad57b6876367772294e11f2a3056fe35556d990bd94"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/5.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/5.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/5.png",
+      "bytes": 166587,
+      "contentType": "image/png",
+      "sha256": "7c376c14d6ab10429599f79049d3003134b602c6095370a2778bbc9c91822c13"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/6.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/6.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/6.png",
+      "bytes": 144426,
+      "contentType": "image/png",
+      "sha256": "502035a7519bf7be60a2727f38b4291d8a7d60d892826022e77924be0e8a0554"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/7.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/7.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/7.png",
+      "bytes": 417850,
+      "contentType": "image/png",
+      "sha256": "a915fbf105ba45e67fbeac96108f5fc7c19174e45cf669aa2e752e9f09387264"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/8.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/8.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/8.png",
+      "bytes": 274756,
+      "contentType": "image/png",
+      "sha256": "d885e152bd242e8955cb456a0a9d84dee88709d25ff4004617388758307fda57"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/9.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/9.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/9.png",
+      "bytes": 215897,
+      "contentType": "image/png",
+      "sha256": "1e55812a86fe246cd429586e87d600f10fd5e2bbe5978ba1b976d8bd7beb7cc5"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/banner.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/banner.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/banner.png",
+      "bytes": 1257113,
+      "contentType": "image/png",
+      "sha256": "55d46550ff31b78e256fbeea28dfe039b0b2916cebf7fb20f42935bea256cb04"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Company-missing.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Company-missing.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Company-missing.png",
+      "bytes": 225111,
+      "contentType": "image/png",
+      "sha256": "f1973df78394ef1382869fc75e74dafae3cbcada4016010f6c1c5c97ce8a3a40"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15118.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15118.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15118.png",
+      "bytes": 355704,
+      "contentType": "image/png",
+      "sha256": "844971cc5e6d0e4103ac8b9318ec32264b3a8935a697ab95ba0d04eda0645755"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15119.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15119.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15119.png",
+      "bytes": 459110,
+      "contentType": "image/png",
+      "sha256": "de2c8bdae674116a3707fa3873b1fb376b455598d0e3198316d6b9ae79efa90c"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15120.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15120.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15120.png",
+      "bytes": 368834,
+      "contentType": "image/png",
+      "sha256": "c84c6c02ead0056092e33d3c2f3c2c1f9fe2055b39c0dc99354c090e9b95f14a"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15121.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15121.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15121.png",
+      "bytes": 526710,
+      "contentType": "image/png",
+      "sha256": "4ac8e565e657be1b2c6baf5376fee29bd633284a68829cc76607f8d6b9bfcf2d"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15122.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15122.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Group-15122.png",
+      "bytes": 1462346,
+      "contentType": "image/png",
+      "sha256": "806d013bd40e6eb00479310e43d78059ef478dd33880cf8136c205fde38a2bfb"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Landing-page-–-1.jpg",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Landing-page-–-1.jpg",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Landing-page-–-1.jpg",
+      "bytes": 518987,
+      "contentType": "image/jpeg",
+      "sha256": "99ecc6eec4f5658619053b7c794619a3d910fd93bc1ef4a66dea9fa09127086d"
+    },
+    {
+      "localPath": "public/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Valyu.png",
+      "sitePath": "/assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Valyu.png",
+      "r2Key": "assets/uncode/case/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/Valyu.png",
+      "bytes": 8352,
+      "contentType": "image/png",
+      "sha256": "710b373a6fdf185eb014fb0feae9b8ac040ed003359b13657cbfee4da9add4b4"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/01.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/01.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/01.png",
+      "bytes": 213909,
+      "contentType": "image/png",
+      "sha256": "073c7dd5aa9095736ee6a50274583970312a21f7fde52c97c80e789ecfdc303e"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/02.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/02.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/02.png",
+      "bytes": 215523,
+      "contentType": "image/png",
+      "sha256": "e7a22d3795007e45d7a83a1659f1d84f9812e662cc8b6d409a6276c5226943a5"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/03.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/03.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/03.png",
+      "bytes": 244403,
+      "contentType": "image/png",
+      "sha256": "700f2b24b7c16f489894c6141e76ecadc94017ee8ebd0e113c2b60a87910a183"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/04.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/04.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/04.png",
+      "bytes": 186909,
+      "contentType": "image/png",
+      "sha256": "b8f913e3c3ec7b85fb174260817f9b909bf73685c52bed29f2ccb93d051e969a"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/05.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/05.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/05.png",
+      "bytes": 151012,
+      "contentType": "image/png",
+      "sha256": "87ecb311ac5caa1b431bfa5c3e5f77d6c38aeefff90d4b85407007562d0d51ab"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/06.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/06.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/06.png",
+      "bytes": 185258,
+      "contentType": "image/png",
+      "sha256": "b9a25c61992ea652c5dcc717cdecaaab9b2795153e0f4ea84c9077124c31b2f1"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/07.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/07.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/07.png",
+      "bytes": 178100,
+      "contentType": "image/png",
+      "sha256": "f684b94f6c5a3661da12bccbf47b66bc88d60e0085ce9070e33379ec74f1511b"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/08.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/08.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/08.png",
+      "bytes": 175907,
+      "contentType": "image/png",
+      "sha256": "58ac96532a976f48328eb206f22b3b8dcc6e11c35433c088842604c9c3770392"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/09.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/09.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/09.png",
+      "bytes": 147375,
+      "contentType": "image/png",
+      "sha256": "fb433ad4283090d231520f74646d41b274d5ce89d21fe7fbef936aaba68a3a3f"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/10.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/10.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/10.png",
+      "bytes": 163046,
+      "contentType": "image/png",
+      "sha256": "52f74901ec396236e6d6ffabd1117a644adb3987f75034b01c1c27b3ffc1696f"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/11.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/11.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/11.png",
+      "bytes": 169637,
+      "contentType": "image/png",
+      "sha256": "57e17acf722ea128eb6a7d5f5fda816dc0341cab89d480ea9a3834dacfe41549"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/12.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/12.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/12.png",
+      "bytes": 148830,
+      "contentType": "image/png",
+      "sha256": "2ec4bad5c981e7b318d0cae427ff9950c5e3565941b7e8f790997abe4784f6d0"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/13.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/13.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/13.png",
+      "bytes": 175576,
+      "contentType": "image/png",
+      "sha256": "0b20d3588b5954361fa41019c7adbab16e3d255fdc9bc97afe20a05806bcb394"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/att/image-placeholder-6.jpg",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/att/image-placeholder-6.jpg",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/att/image-placeholder-6.jpg",
+      "bytes": 41573,
+      "contentType": "image/jpeg",
+      "sha256": "6c5ad60ea9b0474ce4c8a42e42f25109911bf35dadea8a64eb4808539635a512"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2286.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2286.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2286.png",
+      "bytes": 1043190,
+      "contentType": "image/png",
+      "sha256": "ceda546d9eff9c2c52740f727996c5351d86424c3d4b77c2feead2765486f5cb"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2287.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2287.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2287.png",
+      "bytes": 989720,
+      "contentType": "image/png",
+      "sha256": "836215e626e1c0ac19ae9c4dea0f54721a713284de2405a769a7c298238fccad"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2288.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2288.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2288.png",
+      "bytes": 958527,
+      "contentType": "image/png",
+      "sha256": "b28dfed3925027c2a0de6579f920911a7b6d2c0393cf2d4b8aaac6da9b18ab2e"
+    },
+    {
+      "localPath": "public/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2289.png",
+      "sitePath": "/assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2289.png",
+      "r2Key": "assets/uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2289.png",
+      "bytes": 916563,
+      "contentType": "image/png",
+      "sha256": "15eaf8a15f54be1e589b311a2e9d1379735cb7c463c1cbbee83b36d47d0bfa39"
+    },
+    {
+      "localPath": "public/assets/vedanshu-personal/portfolio-06.webp",
+      "sitePath": "/assets/vedanshu-personal/portfolio-06.webp",
+      "r2Key": "assets/vedanshu-personal/portfolio-06.webp",
+      "bytes": 614732,
+      "contentType": "image/webp",
+      "sha256": "95e7d9e968d2f6b7e7ca08e4566ef43cea519c28aa9666f58b09eef873b2ed9c"
+    },
+    {
+      "localPath": "public/assets/vedanshu-personal/scene-02.jpg",
+      "sitePath": "/assets/vedanshu-personal/scene-02.jpg",
+      "r2Key": "assets/vedanshu-personal/scene-02.jpg",
+      "bytes": 1512518,
+      "contentType": "image/jpeg",
+      "sha256": "31873b1070376d4174904f6597cb9bccffeff10caf46375fa8778b0113322cbd"
+    },
+    {
+      "localPath": "public/assets/vedanshu-personal/signature-dark.png",
+      "sitePath": "/assets/vedanshu-personal/signature-dark.png",
+      "r2Key": "assets/vedanshu-personal/signature-dark.png",
+      "bytes": 61998,
+      "contentType": "image/png",
+      "sha256": "b550091b289b24e5098cc5b2707f30e8322c60c0bc11aabdd45c7ecf0eba8fd0"
+    },
+    {
+      "localPath": "public/assets/vedanshu-personal/signature-light.png",
+      "sitePath": "/assets/vedanshu-personal/signature-light.png",
+      "r2Key": "assets/vedanshu-personal/signature-light.png",
+      "bytes": 97628,
+      "contentType": "image/png",
+      "sha256": "0f1cec11cc43bae27518abd59a81ba50e74ad6ae186d0f2ec87cd9e40ac870e6"
     },
     {
       "localPath": "public/assets/work/aditya-birla-capital/abc-about.mp4",

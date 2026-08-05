@@ -12,6 +12,7 @@ import engagement from './engagement';
 import taxonomy from './taxonomy';
 import asset from './asset';
 import platformProfile from './platformProfile';
+import testimonial from './testimonial';
 import { blockContent, cta, stats, accordion, logoCloud, video, codeBlock, twoColumns } from './blockContent';
 
 export const schemaTypes = [
@@ -29,6 +30,7 @@ export const schemaTypes = [
   taxonomy,
   asset,
   platformProfile,
+  testimonial,
   blockContent,
   cta,
   stats,

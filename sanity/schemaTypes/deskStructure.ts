@@ -4,6 +4,55 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
   S.list()
     .title('Wugweb')
     .items([
+      // ── Safe dashboard: static navigation hub only (no live widgets / filters) ──
+      S.listItem()
+        .title('Dashboard')
+        .icon(() => '⌂')
+        .child(
+          S.list()
+            .title('Start here')
+            .items([
+              S.listItem()
+                .title('Editorial')
+                .icon(() => '✍')
+                .child(
+                  S.list()
+                    .title('Editorial')
+                    .items([
+                      S.documentTypeListItem('post').title('Blog Posts'),
+                      S.documentTypeListItem('caseStudy').title('Case Studies'),
+                      S.documentTypeListItem('service').title('Services'),
+                      S.documentTypeListItem('singletonPage').title('Pages'),
+                    ])
+                ),
+              S.listItem()
+                .title('Business')
+                .icon(() => '💼')
+                .child(
+                  S.list()
+                    .title('Business')
+                    .items([
+                      S.documentTypeListItem('client').title('Clients'),
+                      S.documentTypeListItem('engagement').title('Engagements'),
+                      S.documentTypeListItem('person').title('Team'),
+                    ])
+                ),
+              S.documentTypeListItem('asset').title('Assets'),
+              S.listItem()
+                .title('Site Settings')
+                .icon(() => '⚙')
+                .child(
+                  S.document()
+                    .schemaType('siteSettings')
+                    .documentId('siteSettings')
+                    .title('Site Settings')
+                ),
+              S.documentTypeListItem('syncStatus').title('Sync Status'),
+            ])
+        ),
+
+      S.divider(),
+
       // ── Editorial ──
       sectionItem(S, '✍ Editorial', '📝', [
         S.documentTypeListItem('post').title('Blog Posts').icon(() => '✍️'),
@@ -33,8 +82,8 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
       sectionItem(S, '💼 Business', '🏢', [
         S.documentTypeListItem('client').title('Clients').icon(() => '🏢'),
         S.documentTypeListItem('engagement').title('Engagements').icon(() => '🤝'),
-        S.documentTypeListItem('industry').title('Industries').icon(() => '🏭'),
         S.documentTypeListItem('person').title('Team / People').icon(() => '👥'),
+        S.documentTypeListItem('testimonial').title('Testimonials').icon(() => '💬'),
       ]),
 
       S.divider(),
@@ -49,9 +98,16 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
       // ── Global Settings (master/reference data) ──
       sectionItem(S, '⚙ Global Settings', '🌍', [
         S.listItem().title('Site Settings').icon(() => '⚙️').child(S.document().schemaType('siteSettings').documentId('siteSettings').title('Site Settings')),
-        S.documentTypeListItem('taxonomy').title('Taxonomy Terms').icon(() => '🏷️'),
-        S.documentTypeListItem('platformProfile').title('Platform Profiles').icon(() => '🔗'),
-        S.documentTypeListItem('industry').title('Industries').icon(() => '🏭'),
+        vocabList(S, 'Platforms', 'platform', '📡'),
+        vocabList(S, 'Tools / Tech stack', 'tech-stack', '🛠️'),
+        vocabList(S, 'Tags', 'tag', '🏷️'),
+        vocabList(S, 'Asset types', 'asset-type', '🧩'),
+        vocabList(S, 'Content types', 'content-type', '📄'),
+        vocabList(S, 'Departments', 'team-department', '👥'),
+        vocabList(S, 'Countries', 'country', '🌐'),
+        S.documentTypeListItem('industry').title('Industry master').icon(() => '🏭'),
+        S.documentTypeListItem('platformProfile').title('Presence').icon(() => '🔗'),
+        S.documentTypeListItem('taxonomy').title('All taxonomy').icon(() => '📚'),
       ]),
 
       S.divider(),
@@ -83,4 +139,17 @@ function singletonPageItem(S: StructureBuilder, label: string, pageId: string, i
     .title(label)
     .icon(() => icon)
     .child(S.document().schemaType('singletonPage').documentId(pageId).title(label));
+}
+
+function vocabList(S: StructureBuilder, title: string, vocabulary: string, icon: string) {
+  return S.listItem()
+    .title(title)
+    .icon(() => icon)
+    .child(
+      S.documentList()
+        .title(title)
+        .filter('_type == "taxonomy" && vocabulary == $vocabulary')
+        .params({ vocabulary })
+        .defaultOrdering([{ field: 'order', direction: 'asc' }, { field: 'name', direction: 'asc' }])
+    );
 }

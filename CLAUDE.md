@@ -38,7 +38,7 @@ Key dependencies (from `package.json`):
 
 ### Sanity schema types (`sanity/schemaTypes/`)
 
-Documents: `service`, `caseStudy`, `post`, `person`, `singletonPage`, `siteSettings`, `contactSubmission`, `syncStatus`, `client`, `industry`, `engagement`, `taxonomy`, `asset`, `platformProfile` (Studio: Presence).
+Documents: `service`, `caseStudy`, `post`, `person`, `singletonPage`, `siteSettings`, `contactSubmission`, `syncStatus`, `client`, `industry`, `engagement`, `taxonomy`, `asset`, `platformProfile` (Studio: Presence), `testimonial` (LinkedIn recs for Vedanshu).
 Objects: `blockContent`, plus custom block objects used inside portable text.
 
 Studio desk structure: Dashboard → Editorial → Business → Brand & Media → Global Settings (Platforms, Tools, Tags, types, **Industry master**, Presence, …) → System.
@@ -60,8 +60,9 @@ Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Con
 | Type | Sanity | Neon | Notes |
 |---|---|---|---|
 | caseStudy | 82 | 90 (8 stale) | owner: 82 wugweb |
-| post | 96 | 96 | owner: 96 wugweb; body ~75; coverPath 43 |
+| post | 124 | 124 | owner: 96 wugweb + 28 WP imports; body all filled; coverPath 53 |
 | person | 12 | 12 | Author byline ≠ Owner |
+| testimonial | 14 | — | LinkedIn recs for Vedanshu (source=linkedin) |
 | client | 110 | 110 | owner: 104 wugweb / 1 both / 1 vedanshu; +4 new (TheBizGift, MusicLinkd, Spark Logistics, Eastman Auto & Power) |
 | industry | 66 | 66 | **Master** (Global Settings); content refs map here |
 | service | 19 | 19 | |
@@ -109,7 +110,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - Neon schema applied; owner-aware sync 2026-08-05 (1430 docs: assets, taxonomy, platformProfile, syncStatus included).
 - Main marketing routes wire to Sanity; path-mapped media served from **R2 (cutover done 2026-08-05)**, no longer dual-serve.
 - Design tokens in `global.css` (component migration incomplete).
-- Asset registry 553 Sanity docs / **529 local files — all R2-mapped and live**.
+- Asset registry 588 Sanity docs / **525 local files — all R2-mapped, 0 unreferenced**.
 - Governance: Rule 1 + Rule 2 + shared ownership + Notion seed (`governance.md`).
 - Ownership backfill (#40): client/caseStudy/post/asset all have `owner`.
 - Team photos (#25): 10 portraits wired via `person.photoPath` + About page.
