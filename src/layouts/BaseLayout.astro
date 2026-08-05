@@ -151,10 +151,14 @@ const globalIndustries = (sanityIndustries as string[]).length
       <TrustBadges />
     </section>
 
-    <!-- FINAL CTA -->
-    <section class="global-final-cta">
-      <div class="wrap final-cta-inner">
-        <div>
+    <!-- FINAL CTA — device backdrop banner -->
+    <section class="wrap global-final-cta">
+      <div class="cta-backdrop" aria-hidden="true">
+        <img class="cta-device cta-laptop" src="/brand/cta/laptop.png" alt="" width="1140" height="350" loading="lazy" />
+        <img class="cta-device cta-mobile" src="/brand/cta/mobile.png" alt="" width="350" height="500" loading="lazy" />
+      </div>
+      <div class="final-cta-inner" data-reveal>
+        <div class="final-cta-copy">
           <h2>We speak your Industry's language.</h2>
           <p>Partner with Wugweb for domain-driven design and development that delivers.</p>
         </div>
