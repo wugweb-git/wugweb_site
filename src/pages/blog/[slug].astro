@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sanityClient, urlFor } from '../../lib/sanity';
+import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { postBySlugQuery, postsListQuery } from '../../lib/queries';
 
 export async function getStaticPaths() {
@@ -10,7 +10,12 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const post = await sanityClient.fetch(postBySlugQuery, { slug }).catch(() => null);
+
+// Preview mode: when the /api/preview cookie is set, fetch draft content
+// with the request-scoped token so Sanity Studio preview links work.
+const previewToken = (Astro.locals as any)?.previewToken as string | undefined;
+const client = previewToken ? getPreviewClient(previewToken) : sanityClient;
+const post = await client.fetch(postBySlugQuery, { slug }).catch(() => null);
 
 if (!post) {
   return Astro.redirect('/404');
@@ -20,7 +25,9 @@ const readTime = post.readingTime ? `${post.readingTime} min read` : '';
 const authorName = post.author?.name || '';
 const authorPhoto = post.author?.photo ? urlFor(post.author.photo).width(120).height(120).url() : '';
 const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
-const coverImageUrl = post.coverImage ? urlFor(post.coverImage).width(1280).height(720).url() : '';
+const coverImageUrl = post.coverPath
+  ? (post.coverPath.startsWith('/') || post.coverPath.startsWith('http') ? post.coverPath : `/${post.coverPath}`)
+  : (post.coverImage ? urlFor(post.coverImage).width(1280).height(720).url() : '');
 const ogImageUrl = post.ogImage
   ? urlFor(post.ogImage).width(1200).height(630).url()
   : coverImageUrl;
@@ -84,7 +91,7 @@ const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160
   .article { padding-block: var(--space-section-xl); max-width: 720px; }
   .article .eyebrow a { color: var(--fg-muted); text-decoration: none; }
   .article .eyebrow a:hover { color: var(--fg); }
-  .article h1 { font-size: var(--t-h2); margin-top: var(--gap-3); line-height: 1.1; }
+  .article h1 { font-size: var(--t-h2); margin-top: var(--gap-3); line-height: var(--core-line-height-tight); }
   .article-meta { display: flex; flex-wrap: wrap; gap: var(--gap-3) var(--gap-6); margin-top: var(--gap-5); font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-muted); }
   .article-category { color: var(--accent-warm); }
   .article-intro { font-size: var(--t-lead); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-7); color: var(--fg); border-left: 2px solid var(--accent-warm); padding-left: var(--gap-6); }
