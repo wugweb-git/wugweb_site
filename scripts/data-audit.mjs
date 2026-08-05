@@ -2,16 +2,22 @@ import { createClient } from '@sanity/client';
 import pg from 'pg';
 import { readdir, stat } from 'fs/promises';
 import { join, relative } from 'path';
+import { fileURLToPath } from 'url';
 
 const { Client } = pg;
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CONFIGURATION
 // ─────────────────────────────────────────────────────────────────────────────
-const NEON_URL = 'postgresql://neondb_owner:npg_ZOYC0QvHs3rp@ep-fancy-darkness-anw1klbu-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require';
-const SANITY_TOKEN = 'sk0ArwboLQ0iGTvUfmmAPitJVHBIw0vErssdCOwc92Xm4NRz6N9ZrVFK3olAr81Djqux1jJV1upPwslk250r7BrQbUFDxfYguJLO9l0X1GIpU2g1rEARYq6J2R6iqYWdn0eIsSFWMnxRZMeryHKi7akyvEEdv4u8YAVMQWJg5EBwAzFs1lTr';
-const ASSETS_DIR = '/Users/abcom/Documents/GitHub/wugweb_site/public/assets';
-const REPORT_PATH = '/Users/abcom/Documents/GitHub/wugweb_site/scripts/AUDIT_REPORT.md';
+const NEON_URL = process.env.DATABASE_URL;
+const SANITY_TOKEN = process.env.SANITY_TOKEN || process.env.SANITY_API_TOKEN;
+if (!NEON_URL || !SANITY_TOKEN) {
+  console.error('Missing DATABASE_URL or SANITY_TOKEN/SANITY_API_TOKEN in environment');
+  process.exit(1);
+}
+const ASSETS_DIR = join(__dirname, '../public/assets');
+const REPORT_PATH = join(__dirname, 'AUDIT_REPORT.md');
 
 const sanity = createClient({
   projectId: 'splvhmk1',
@@ -21,7 +27,7 @@ const sanity = createClient({
   useCdn: false,
 });
 
-const pgClient = new Client({ connectionString: NEON_URL, connectionTimeoutMillis: 10000, query_timeout: 10000 });
+const pgClient = new Client({ connectionString: NEON_URL, connectionTimeoutMillis: 15000, query_timeout: 60000 });
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HELPERS
@@ -365,14 +371,14 @@ async function auditRelationships() {
   const totalRelsRes = await pgClient.query(`SELECT COUNT(*)::int AS count FROM content_relations`);
   report.totalNeonRelations = totalRelsRes.rows[0].count;
 
-  // Sanity references
-  const sanityRefDocs = await sanity.fetch(`*[] { _id, _type, "refs": [ ...//_ref ] }`);
-  report.totalSanityReferencePaths = sanityRefDocs.reduce((sum, d) => sum + (d.refs?.length || 0), 0);
+  // Sanity references — total reference edges via the built-in count
+  const refCount = await sanity.fetch(`count(*[count(*[references(^._id)]) > 0])`).catch(() => 0);
+  report.totalSanityReferencePaths = refCount;
 
   // Assets referenced by each type
   const typeRefCounts = {};
   for (const type of ['caseStudy', 'post', 'service', 'client', 'industry', 'person', 'engagement', 'singletonPage']) {
-    const count = await sanity.fetch(`count(*[_type == $type && references(*[_type == "asset"]._id)])`, { type });
+    const count = await sanity.fetch(`count(*[_type == $type && references(*[_type == "asset"]._id)])`, { type }).catch(() => 0);
     typeRefCounts[type] = count;
   }
   report.assetsReferencedByType = typeRefCounts;
@@ -476,7 +482,7 @@ async function auditSSOT() {
       neonCount: neonIds.size,
       sanityCount: sanityIds.size,
       match: neonIds.size === sanityIds.size && onlyNeon.length === 0 && onlySanity.length === 0,
-      inBoth: inBoth.length,
+      inBoth,
       onlyNeon,
       onlySanity,
     });
