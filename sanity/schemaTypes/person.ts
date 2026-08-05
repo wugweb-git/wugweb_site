@@ -8,6 +8,7 @@ export default defineType({
     defineField({ name: 'name', type: 'string', validation: (r) => r.required() }),
     defineField({ name: 'slug', type: 'slug', options: { source: 'name' } }),
     defineField({ name: 'photo', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'photoPath', type: 'string', description: 'R2/local photo path e.g. /assets/about/team-vedanshu-srivastava.jpg' }),
     defineField({ name: 'role', type: 'string' }),
     defineField({ name: 'bio', type: 'text', rows: 3 }),
     defineField({ name: 'email', type: 'string' }),

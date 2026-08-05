@@ -1,31 +1,110 @@
 ---
 export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { sanityClient } from '../lib/sanity';
+import { sanityClient, urlFor } from '../lib/sanity';
 import { singletonPageQuery, teamListQuery } from '../lib/queries';
+import { assetUrl } from '../lib/assets';
 
 // Hero title/intro now Sanity-editable. 
 const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'about' }).catch(() => null);
 
 // Team fetched from Sanity (person docs)
 const sanityTeam = await sanityClient.fetch(teamListQuery).catch(() => []);
+
+const featuredToolNames = [
+  'Figma',
+  'Notion',
+  'Slack',
+  'Webflow',
+  'Framer',
+  'Shopify',
+  'Zapier',
+  'HubSpot',
+];
+const techTools = await sanityClient
+  .fetch(`*[_type=="taxonomy" && vocabulary=="tech-stack"]{name, iconPath}`)
+  .catch(() => []);
+const toolByName = new Map((techTools || []).map((t) => [String(t.name).toLowerCase(), t]));
+const stackTools = featuredToolNames.map((name) => {
+  const hit = toolByName.get(name.toLowerCase());
+  return { name, iconPath: hit?.iconPath ? assetUrl(hit.iconPath) : null };
+});
+
 const heroText =
-  page?.body?.[0]?.children?.[0]?.text ??
+  (typeof page?.title === 'string' && page.title.length > 40 ? page.title : null) ||
+  page?.body?.[0]?.children?.[0]?.text ||
   "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & production.";
 
-const stats = [
-  { n: '0+', label: 'Years of experience', copy: 'Expertise that drives meaningful results.' },
-  { n: '0+', label: 'Projects delivered', copy: 'Creative solutions built with purpose.' },
-  { n: '0%', label: 'Client Retention Rate', copy: 'Long-term partnerships built on real results.' },
-  { n: '0+', label: 'Brands transformed', copy: 'From strategy to standout visuals.' },
+const pageTitle = page?.seoTitle || 'About Wugweb - UI/UX Design & Digital Experience Experts';
+const pageDescription =
+  page?.seoDescription ||
+  'Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.';
+
+const [caseCount, clientCount] = await Promise.all([
+  sanityClient.fetch(`count(*[_type == "caseStudy"])`).catch(() => 0),
+  sanityClient.fetch(`count(*[_type == "client"])`).catch(() => 0),
+]);
+
+const fromSanityStats = (page?.items || [])
+  .map((it: any) => ({
+    n: it.title || it.n,
+    label: it.text || it.label,
+    copy: it.copy || '',
+  }))
+  .filter((s: any) => s.n && s.label);
+
+const fallbackStats = [
+  {
+    n: fromSanityStats[0]?.n || '—',
+    label: 'Years of experience',
+    copy: 'Expertise that drives meaningful results.',
+  },
+  {
+    n: caseCount ? `${caseCount}+` : '—',
+    label: 'Projects delivered',
+    copy: 'Creative solutions built with purpose.',
+  },
+  {
+    n: fromSanityStats[2]?.n || '—',
+    label: 'Client Retention Rate',
+    copy: 'Long-term partnerships built on real results.',
+  },
+  {
+    n: clientCount ? `${clientCount}+` : '—',
+    label: 'Brands transformed',
+    copy: 'From strategy to standout visuals.',
+  },
 ];
 
-const values = [
+const stats =
+  fromSanityStats.length >= 4
+    ? fromSanityStats.slice(0, 4).map((s: any, i: number) => ({
+        ...fallbackStats[i],
+        n: s.n,
+        label: s.label,
+        copy: s.copy || fallbackStats[i].copy,
+      }))
+    : fallbackStats;
+
+const defaultValues = [
   { n: '01', title: 'Bold', copy: 'We balance distinctive expression with measurable results.' },
   { n: '02', title: 'Adaptive', copy: 'We build flexible solutions without sacrificing creative vision.' },
   { n: '03', title: 'Distinct', copy: 'We reject sameness, crafting experiences with unique identities.' },
-  { n: '04', title: 'Start Smart, Start Small', copy: '' },
+  { n: '04', title: 'Start Smart, Start Small', copy: 'We start focused, prove value early, and scale what works.' },
 ];
+
+// Prefer values listed in Sanity subtitle (Bold · Adaptive · …) when present
+const subtitleTitles = String(page?.subtitle || '')
+  .split(/\s*·\s*/)
+  .map((s) => s.trim())
+  .filter(Boolean);
+const values =
+  subtitleTitles.length >= 3
+    ? subtitleTitles.map((title, i) => {
+        const hit = defaultValues.find((v) => v.title.toLowerCase() === title.toLowerCase());
+        return { n: String(i + 1).padStart(2, '0'), title, copy: hit?.copy || '' };
+      })
+    : defaultValues;
 
 const culture = [
   'We Create Trust', 'We listen closely', 'We define your value', 'We pivot',
@@ -33,7 +112,7 @@ const culture = [
 ];
 ---
 
-<BaseLayout title="About" description="Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.">
+<BaseLayout title={pageTitle} description={pageDescription}>
   <!-- HERO -->
   <section class="about-hero">
     <video class="about-hero-video" autoplay muted loop playsinline
@@ -99,7 +178,7 @@ const culture = [
     <ul class="team-grid">
       {sanityTeam.map((t: any) => (
         <li data-reveal>
-          {t.photo ? <img src={t.photo} alt={t.name} loading="lazy" /> : <div class="team-placeholder" style="width:100%;aspect-ratio:1;background:var(--surface-2);border-radius:var(--r-2);"></div>}
+          {t.photoPath ? <img src={assetUrl(t.photoPath)} alt={t.name} loading="lazy" /> : (t.photo ? <img src={urlFor(t.photo).width(400).height(400).url()} alt={t.name} loading="lazy" /> : <div class="team-placeholder" style="width:100%;aspect-ratio:1;background:var(--surface-2);border-radius:var(--r-2);"></div>)}
           <p class="team-role">{t.role} at wugweb</p>
           <h3>{t.name}</h3>
         </li>
@@ -166,7 +245,12 @@ const culture = [
 
       <article class="bento-tile tile-stack" data-reveal>
         <ul class="bento-stack">
-          {['Figma', 'Notion', 'Slack', 'Webflow', 'Zapier', 'HubSpot'].map((t) => <li>{t}</li>)}
+          {stackTools.map((t) => (
+            <li>
+              {t.iconPath ? <img src={t.iconPath} alt="" width="18" height="18" loading="lazy" /> : null}
+              {t.name}
+            </li>
+          ))}
         </ul>
       </article>
 
@@ -206,13 +290,13 @@ const culture = [
   .about-hero-content {
     position: relative;
     z-index: 2;
-    padding-block: 5rem;
+    padding-block: var(--space-section-lg);
   }
   .about-hero-content h1 {
     font-size: var(--t-h2);
-    font-weight: 400;
+    font-weight: var(--font-weight-semibold);
     max-width: 26ch;
-    margin-bottom: 1rem;
+    margin-bottom: var(--gap-4);
   }
   .about-hero-content p {
     font-size: var(--t-body);
@@ -233,8 +317,8 @@ const culture = [
   }
   @media (min-width: 768px) { .stats ul { grid-template-columns: repeat(4, 1fr); } }
   .stats li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
-  .stat-n { font-family: var(--font-mono); color: var(--accent-warm); }
-  .stat-label { color: var(--fg); font-size: 1.1rem; margin-top: var(--gap-2); }
+  .stat-n { font-family: var(--font-mono); font-size: var(--fluid-h3); font-weight: var(--font-weight-bold); color: var(--accent-warm); }
+  .stat-label { color: var(--fg); font-size: var(--fluid-body-lg); font-weight: var(--font-weight-medium); margin-top: var(--gap-2); }
   .stat-copy { margin-top: var(--gap-1); }
 
   .values {
@@ -245,7 +329,7 @@ const culture = [
   .values-list { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .values-list { grid-template-columns: repeat(4, 1fr); } }
   .values-list li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
-  .values-list h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-2); }
+  .values-list h3 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); margin-top: var(--gap-2); }
   .values-list p { margin-top: var(--gap-2); }
 
   .culture { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
@@ -253,15 +337,15 @@ const culture = [
   .culture p { margin-top: var(--gap-5); max-width: 60ch; }
   .culture-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   @media (min-width: 640px) { .culture-grid { grid-template-columns: repeat(4, 1fr); } }
-  .culture-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: .8rem; }
+  .culture-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: var(--fluid-label); }
 
   .team { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
   .team h2 { font-size: var(--t-h3); }
   .team-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-8); }
   @media (min-width: 640px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
   .team-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-2); }
-  .team-role { font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); margin-top: var(--gap-3); }
-  .team-grid h3 { font-size: 1rem; font-weight: 400; margin-top: var(--gap-1); }
+  .team-role { font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--fg-muted); margin-top: var(--gap-3); }
+  .team-grid h3 { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
 
   .why-bento { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
   .why-bento h2 { font-size: var(--t-h2); }
@@ -270,42 +354,43 @@ const culture = [
   @media (min-width: 700px) { .bento { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) { .bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(180px, auto); } }
   .bento-tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-4); padding: var(--gap-6); display: flex; flex-direction: column; justify-content: flex-end; min-height: 180px; }
-  .bento-tile h3 { font-size: var(--t-h4); font-weight: 400; line-height: var(--lh-tight); }
-  .bento-tile p { margin-top: var(--gap-2); font-size: .95rem; line-height: 1.6; }
+  .bento-tile h3 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); line-height: var(--lh-tight); }
+  .bento-tile p { margin-top: var(--gap-2); font-size: var(--fluid-body-sm); line-height: var(--core-line-height-relaxed); }
   .tile-vision { background: var(--neutral-1); border-color: transparent; }
   .tile-vision h3 { color: var(--color-ash); }
   .tile-vision p { color: var(--fg); opacity: .7; }
-  .tile-cta { flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--gap-2); min-height: 0; text-decoration: none; color: var(--fg); font-family: var(--font-mono); font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; transition: border-color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
+  .tile-cta { flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--gap-2); min-height: 0; text-decoration: none; color: var(--fg); font-family: var(--font-mono); font-size: var(--fluid-label); letter-spacing: .04em; text-transform: uppercase; transition: border-color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .tile-cta:hover { background: var(--surface-2); border-color: var(--line-strong); }
   .tile-cta img { height: 1.75rem; width: auto; }
   .tile-stack { justify-content: center; }
   .bento-stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
-  .bento-stack li { font-family: var(--font-mono); font-size: .78rem; padding: .45rem .9rem; border: 1px solid var(--line-strong); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .bento-stack li { font-family: var(--font-mono); font-size: var(--fluid-caption); padding: var(--gap-2) var(--gap-3); border: 1px solid var(--line-strong); border-radius: var(--r-pill); color: var(--fg-muted); display: inline-flex; align-items: center; gap: var(--gap-2); }
+  .bento-stack li img { width: 18px; height: 18px; object-fit: contain; flex-shrink: 0; }
 
   .closing-cta {
-    padding-block: 6rem;
+    padding-block: var(--space-section-lg);
     border-top: 1px solid var(--line);
     text-align: center;
   }
   .closing-cta h2 {
     font-size: var(--t-h2);
-    margin-top: 0.75rem;
+    margin-top: var(--gap-3);
   }
   .closing-cta p {
-    margin: 1rem auto 0;
+    margin: var(--gap-4) auto 0;
     max-width: 50ch;
   }
   .closing-cta .btn {
-    margin-top: 2rem;
+    margin-top: var(--gap-8);
   }
 
-  .reviews { padding-block: 6rem; }
+  .reviews { padding-block: var(--space-section-lg); }
   .reviews h2 { font-size: var(--t-h3); max-width: 20ch; }
-  .reviews-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 2rem; }
+  .reviews-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: var(--gap-8); }
   @media (min-width: 640px) { .reviews-grid { grid-template-columns: repeat(4, 1fr); } }
-  .review-card { background: var(--bg); padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
-  .review-score { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; }
-  .review-source { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); }
+  .review-card { background: var(--bg); padding: var(--gap-8) var(--gap-6); display: flex; flex-direction: column; gap: var(--gap-1); }
+  .review-score { font-family: var(--font-display); font-size: var(--fluid-h3); font-weight: var(--font-weight-bold); }
+  .review-source { font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--fg-muted); }
 </style>
 
 <script>

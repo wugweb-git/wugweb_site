@@ -10,23 +10,23 @@ export const siteSettingsQuery = `
 
 export const servicesListQuery = `
   *[_type == "service"] | order(order asc) {
-    title, "slug": slug.current, subtitle, summary, icon, coverImage, tags
+    title, "slug": slug.current, subtitle, summary, icon, coverImage, coverPath, galleryPaths, tags
   }
 `;
 
 export const serviceBySlugQuery = `
-  *[_type == "service" && slug.current == $slug][0] {
-    title, subtitle, tags, summary, heroText, fullDescription, icon, coverImage,
+  *[_type == "service" && slug.current == $slug && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
+    title, subtitle, tags, summary, heroText, fullDescription, icon, coverImage, coverPath, galleryPaths,
     capabilities, approach, process, tools, why, body,
     seoTitle, seoDescription, ogImage,
-    "caseStudies": caseStudies[]->{ title, "slug": slug.current, client, summary, coverImage, tags },
+    "caseStudies": caseStudies[]->{ title, "slug": slug.current, client, summary, coverImage, coverPath, thumbnailPath, tags },
     faqs
   }
 `;
 
 export const caseStudiesListQuery = `
   *[_type == "caseStudy"] | order(featured desc, publishedAt desc) {
-    title, "slug": slug.current, client, summary, about, coverImage, tags,
+    title, "slug": slug.current, client, summary, about, coverImage, coverPath, thumbnailPath, galleryPaths, tags,
     disciplines, industry, timeline, publishedAt, featured
   }
 `;
@@ -34,7 +34,7 @@ export const caseStudiesListQuery = `
 export const caseStudyBySlugQuery = `
   *[_type == "caseStudy" && slug.current == $slug][0] {
     title, client, summary, about, tags, disciplines, industry, timeline, team,
-    coverImage, gallery, challenges, solutions, impact, results, body,
+    coverImage, coverPath, thumbnailPath, galleryPaths, gallery, challenges, solutions, impact, results, body,
     seoTitle, seoDescription, ogImage, publishedAt, featured,
     "services": services[]->{ title, "slug": slug.current }
   }
@@ -42,14 +42,14 @@ export const caseStudyBySlugQuery = `
 
 export const postsListQuery = `
   *[_type == "post"] | order(featured desc, publishedAt desc) {
-    title, "slug": slug.current, excerpt, coverImage, publishedAt, tags, category, readingTime, featured,
+    title, "slug": slug.current, excerpt, coverImage, coverPath, publishedAt, tags, category, readingTime, featured,
     "author": author->{ name, photo, role }
   }
 `;
 
 export const postBySlugQuery = `
   *[_type == "post" && slug.current == $slug][0] {
-    title, excerpt, coverImage, body, publishedAt, tags, category, readingTime,
+    title, excerpt, coverImage, coverPath, body, publishedAt, tags, category, readingTime,
     seoTitle, seoDescription, ogImage,
     "author": author->{ name, photo, role, bio, socialLinks }
   }
@@ -57,13 +57,13 @@ export const postBySlugQuery = `
 
 export const singletonPageQuery = `
   *[_type == "singletonPage" && pageId == $pageId][0] {
-    title, subtitle, seoTitle, seoDescription, ogImage, heroImage, language, body, items
+    title, subtitle, seoTitle, seoDescription, ogImage, heroImage, heroPath, mediaPaths, language, body, items
   }
 `;
 
 export const teamListQuery = `
   *[_type == "person"] | order(order asc) {
-    name, "slug": slug.current, photo, role, bio, socialLinks
+    name, "slug": slug.current, photo, photoPath, role, bio, socialLinks
   }
 `;
 

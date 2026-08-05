@@ -1,43 +1,53 @@
 ---
 export const prerender = true;
+import fs from 'node:fs';
+import path from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
-import { caseStudiesListQuery } from '../../lib/queries';
+import { caseStudiesListQuery, singletonPageQuery } from '../../lib/queries';
+import { assetUrl } from '../../lib/assets';
 
+const workPage = await sanityClient.fetch(singletonPageQuery, { pageId: 'work' }).catch(() => null);
 const caseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+const workTitle = workPage?.seoTitle || 'Clients – Wugweb | Trusted by Innovative Brands';
+const workDescription =
+  workPage?.seoDescription ||
+  'Explore the diverse brands and businesses that trust Wugweb for UI/UX design, web development, and digital experience solutions.';
 const allCategories = [...new Set(caseStudies.flatMap((cs: any) => cs.disciplines || []).filter(Boolean))];
 const categories = ['All', ...allCategories];
 
-// Fetch all thumbnail asset paths from Sanity
+// Fallback when caseStudy.thumbnailPath is empty
 const thumbAssets = await sanityClient.fetch(
-  '*[_type == "asset" && usage == "Thumbnail"]{relativePath, name, ownerId}'
+  '*[_type == "asset" && usage == "Thumbnail"]{relativePath, sitePath, name, ownerId}'
 ).catch(() => []);
 
-// Normalize slug/client name for matching
 function normalize(str: string) {
   return str.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
-function findThumb(slug: string, client: string) {
-  // Check if the Notion slug or slug-derived path exists
-  // Try matching by normalized slug, then by client name
+function findThumbFallback(slug: string, client: string) {
   const slugNorm = normalize(slug);
   const clientNorm = normalize(client);
-  
+
   for (const asset of thumbAssets) {
-    const pathNorm = normalize(asset.relativePath || '');
+    const pathNorm = normalize(asset.relativePath || asset.sitePath || '');
     const nameNorm = normalize(asset.name || '');
     if (pathNorm.includes(slugNorm) || nameNorm.includes(slugNorm)) {
-      return '/assets/' + asset.relativePath;
+      return asset.sitePath || '/assets/' + asset.relativePath;
     }
     if (pathNorm.includes(clientNorm) || nameNorm.includes(clientNorm)) {
-      return '/assets/' + asset.relativePath;
+      return asset.sitePath || '/assets/' + asset.relativePath;
     }
   }
-  
-  // Fallback: construct local file path using kebab-case convention
+
+  // Only return the guessed local path if the file actually exists —
+  // otherwise the <video> renders a broken/blank tile.
   const localSlug = client.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  return `/assets/work/${localSlug}/${localSlug}-thumb.mp4`;
+  const guessed = path.join(process.cwd(), 'public', 'assets', 'work', localSlug, `${localSlug}-thumb.mp4`);
+  if (fs.existsSync(guessed)) {
+    return `/assets/work/${localSlug}/${localSlug}-thumb.mp4`;
+  }
+  return '';
 }
 
 const workItems = caseStudies.map((cs: any) => ({
@@ -45,11 +55,12 @@ const workItems = caseStudies.map((cs: any) => ({
   category: (cs.disciplines || []).join(', ') || 'UX Design',
   title: cs.title,
   slug: cs.slug,
-  video: findThumb(cs.slug, cs.client),
+  video: assetUrl(cs.thumbnailPath || findThumbFallback(cs.slug, cs.client || '')),
+  initials: (cs.client || 'Ww').replace(/[^a-zA-Z0-9\s]/g, '').trim().split(/\s+/).slice(0, 2).map((w: string) => w[0]?.toUpperCase() || '').join(''),
 }));
 ---
 
-<BaseLayout title="Work" description="Clients – Wugweb | Trusted by Innovative Brands">
+<BaseLayout title={workTitle} description={workDescription}>
   <section class="work-hero">
     <div class="wrap work-hero-content">
       <p class="eyebrow" data-reveal>Case Studies</p>
@@ -69,7 +80,7 @@ const workItems = caseStudies.map((cs: any) => ({
       {workItems.map((w) => (
         <li data-reveal data-categories={w.category}>
           <a href={`/work/${w.slug}`}>
-            {w.video ? <video autoplay muted loop playsinline src={w.video}></video> : <div class="work-placeholder" style="width:100%;aspect-ratio:16/10;background:var(--surface-2);border-radius:var(--r-2);display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-family:var(--font-mono);font-size:0.75rem;">{w.client}</div>}
+            {w.video ? <video autoplay muted loop playsinline src={w.video}></video> : <div class="work-placeholder"><span class="work-placeholder-initials" aria-hidden="true">{w.initials}</span><span class="work-placeholder-cat">{w.category}</span></div>}
             <div class="work-content">
               <p class="work-client">{w.client}</p>
               <h3>{w.title}</h3>
@@ -84,19 +95,34 @@ const workItems = caseStudies.map((cs: any) => ({
 
 <style>
   .work-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
-  .work-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-bottom: var(--gap-4); }
+  .work-hero-content h1 { font-size: var(--t-h2); font-weight: var(--font-weight-bold); max-width: 28ch; margin-bottom: var(--gap-4); }
   .work-hero-content p { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
   .work-grid-section { padding-block: var(--space-section-md) var(--space-section-xl); border-top: 1px solid var(--line); }
   .work-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
   .work-grid a { text-decoration: none; display: block; }
   .work-grid video { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); }
+  .work-placeholder {
+    width: 100%;
+    aspect-ratio: 16/10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--gap-5);
+    border-radius: var(--r-2);
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(255, 190, 26, 0.22), transparent 55%),
+      linear-gradient(160deg, #191919 0%, #050505 100%);
+    border: 1px solid var(--line);
+  }
+  .work-placeholder-initials { font-family: var(--font-display); font-size: var(--t-h2); font-weight: var(--font-weight-extrabold); line-height: 1; color: var(--fg); opacity: 0.92; }
+  .work-placeholder-cat { font-family: var(--font-mono); font-size: var(--t-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-muted); }
   .work-content { margin-top: var(--gap-4); }
-  .work-client { font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); }
-  .work-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-1); line-height: 1.4; }
-  .work-category { font-family: var(--font-mono); font-size: .7rem; color: var(--accent-warm); display: inline-block; margin-top: var(--gap-2); padding: .2rem .5rem; border: 1px solid var(--line); border-radius: var(--r-pill); }
+  .work-client { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
+  .work-grid h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); line-height: var(--lh-h5); }
+  .work-category { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); display: inline-block; margin-top: var(--gap-2); padding: var(--gap-1) var(--gap-2); border: 1px solid var(--line); border-radius: var(--r-pill); }
   .work-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
-  .filter-chip { font-family: var(--font-mono); font-size: .75rem; padding: .5rem 1rem; border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
+  .filter-chip { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-2) var(--gap-4); border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
   .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255,190,26,.1); }
   .work-grid li.hidden { display: none; }
