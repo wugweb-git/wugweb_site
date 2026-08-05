@@ -3,6 +3,7 @@ export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
 import { caseStudyBySlugQuery, caseStudiesListQuery } from '../../lib/queries';
+import { assetUrl } from '../../lib/assets';
 
 export async function getStaticPaths() {
   const list = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
@@ -16,11 +17,13 @@ if (!work) {
   return Astro.redirect('/404');
 }
 
-// Fetch 2 random other case studies for "More" section
+const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
+const gallery = (work.galleryPaths || []).map((p: string) => assetUrl(p));
+
 const allSlugs = await sanityClient.fetch(`*[_type == "caseStudy"]{"slug": slug.current}`).catch(() => []);
 const others = allSlugs.filter((s: any) => s.slug !== slug).slice(0, 2);
 const otherCases = await Promise.all(others.map((s: any) =>
-  sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug][0]{ title, client, disciplines }`, { slug: s.slug }).catch(() => null)
+  sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug][0]{ title, "slug": slug.current, client, disciplines }`, { slug: s.slug }).catch(() => null)
 )).then(r => r.filter(Boolean));
 ---
 
@@ -37,6 +40,12 @@ const otherCases = await Promise.all(others.map((s: any) =>
       </div>
     </div>
   </section>
+
+  {coverSrc && (
+    <section class="wrap section work-cover">
+      <img src={coverSrc} alt="" loading="eager" decoding="async" />
+    </section>
+  )}
 
   {(work.about || work.summary) && (
     <section class="wrap section">
@@ -62,6 +71,19 @@ const otherCases = await Promise.all(others.map((s: any) =>
       <div class="grid">
         {work.solutions.map((s: any) => (
           <div class="card"><h3>{s.title}</h3><p>{s.body}</p></div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {gallery.length > 0 && (
+    <section class="wrap section">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        {gallery.map((src: string) => (
+          src.endsWith('.mp4') || src.endsWith('.webm')
+            ? <video src={src} muted loop playsinline controls preload="none"></video>
+            : <img src={src} alt="" loading="lazy" decoding="async" />
         ))}
       </div>
     </section>
@@ -94,24 +116,28 @@ const otherCases = await Promise.all(others.map((s: any) =>
 </BaseLayout>
 
 <style>
-  .work-detail-hero { padding-block: 8rem 4rem; border-bottom: 1px solid var(--line); }
+  .work-detail-hero { padding-block: var(--space-section-xl) var(--space-section-md); border-bottom: 1px solid var(--line); }
   .work-detail-hero .eyebrow a { color: var(--fg-muted); text-decoration: none; }
-  .work-detail-hero h1 { font-size: var(--t-h2); margin-top: 1rem; max-width: 20ch; }
-  .work-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; max-width: 600px; }
-  .meta-label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); text-transform: uppercase; margin-bottom: 0.25rem; }
-  .section { padding-block: 4rem; border-bottom: 1px solid var(--line); }
-  .section h2 { font-size: var(--t-h3); margin-bottom: 1.5rem; }
-  .section p { max-width: 60ch; line-height: 1.7; color: var(--fg-muted); }
-  .grid { display: grid; gap: 1.5rem; margin-top: 1rem; }
+  .work-detail-hero h1 { font-size: var(--t-h2); margin-top: var(--gap-4); max-width: 20ch; }
+  .work-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-6); margin-top: var(--gap-12); max-width: 600px; }
+  .meta-label { display: block; font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--accent-warm); text-transform: uppercase; margin-bottom: var(--gap-1); }
+  .section { padding-block: var(--space-section-md); border-bottom: 1px solid var(--line); }
+  .section h2 { font-size: var(--t-h3); margin-bottom: var(--gap-6); }
+  .section p { max-width: 60ch; line-height: var(--core-line-height-relaxed); color: var(--fg-muted); }
+  .work-cover img { width: 100%; height: auto; border-radius: var(--r-2); display: block; }
+  .gallery-grid { display: grid; gap: var(--gap-4); margin-top: var(--gap-4); }
+  @media (min-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  .gallery-grid img, .gallery-grid video { width: 100%; height: auto; border-radius: var(--r-2); display: block; background: var(--surface-2); }
+  .grid { display: grid; gap: var(--gap-6); margin-top: var(--gap-4); }
   @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-  .card { border-top: 1px solid var(--line); padding-top: 1rem; }
-  .card h3 { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
-  .card p { font-size: 0.95rem; }
-  .more-grid { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
+  .card { border-top: 1px solid var(--line); padding-top: var(--gap-4); }
+  .card h3 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); margin-bottom: var(--gap-2); }
+  .card p { font-size: var(--fluid-body-sm); }
+  .more-grid { display: grid; gap: var(--gap-6); margin-top: var(--gap-6); }
   @media (min-width: 768px) { .more-grid { grid-template-columns: repeat(2, 1fr); } }
-  .more-card { text-decoration: none; border-top: 1px solid var(--line); padding-top: 1rem; display: block; }
-  .more-card h3 { font-size: 1.1rem; font-weight: 400; color: var(--fg); }
-  .more-card p { color: var(--fg-muted); margin-top: 0.25rem; font-size: 0.85rem; }
+  .more-card { text-decoration: none; border-top: 1px solid var(--line); padding-top: var(--gap-4); display: block; }
+  .more-card h3 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); color: var(--fg); }
+  .more-card p { color: var(--fg-muted); margin-top: var(--gap-1); font-size: var(--fluid-label); }
 </style>
 
 <script>

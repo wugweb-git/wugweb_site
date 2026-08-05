@@ -116,7 +116,7 @@ const culture = [
   <!-- HERO -->
   <section class="about-hero">
     <video class="about-hero-video" autoplay muted loop playsinline
-      src="/assets/more/about/about-message.mp4"></video>
+      src="/assets/more/about/about-message.mp4" poster="/assets/about/about-section.jpg"></video>
     <div class="about-hero-overlay"></div>
     <div class="wrap about-hero-content">
       <h1 data-reveal>About Us</h1>
@@ -161,12 +161,17 @@ const culture = [
 
   <!-- CULTURE -->
   <section class="wrap culture">
-    <h2 data-reveal>Culture Reigns Supreme</h2>
-    <p data-reveal>
-      Establishing a robust foundational culture within our organisation is vital to Wugweb's
-      long-term vision, growth, and success. We are driven by four core values: intimacy,
-      transparency, urgency, and pivoting.
-    </p>
+    <div class="culture-head">
+      <div>
+        <h2 data-reveal>Culture Reigns Supreme</h2>
+        <p data-reveal>
+          Establishing a robust foundational culture within our organisation is vital to Wugweb's
+          long-term vision, growth, and success. We are driven by four core values: intimacy,
+          transparency, urgency, and pivoting.
+        </p>
+      </div>
+      <img class="culture-visual" src="/assets/about/about-section-2.jpg" alt="Wugweb team culture" loading="lazy" />
+    </div>
     <ul class="culture-grid">
       {culture.map((c) => <li data-reveal>{c}</li>)}
     </ul>
@@ -333,8 +338,10 @@ const culture = [
   .values-list p { margin-top: var(--gap-2); }
 
   .culture { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
-  .culture h2 { font-size: var(--t-h3); }
-  .culture p { margin-top: var(--gap-5); max-width: 60ch; }
+  .culture-head { display: flex; gap: var(--gap-8); align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+  .culture-head h2 { font-size: var(--t-h3); }
+  .culture-head p { margin-top: var(--gap-5); max-width: 60ch; }
+  .culture-visual { width: min(380px, 100%); aspect-ratio: 1/1.1; object-fit: cover; border-radius: var(--r-3); border: 1px solid var(--line); }
   .culture-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   @media (min-width: 640px) { .culture-grid { grid-template-columns: repeat(4, 1fr); } }
   .culture-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: var(--fluid-label); }

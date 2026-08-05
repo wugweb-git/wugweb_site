@@ -2,7 +2,8 @@
 /**
  * Full Notion data fetch: asset-sheet + remaining DBs
  */
-const token = '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';
+const token = process.env.NOTION_TOKEN;
+if (!token) { console.error('Missing NOTION_TOKEN env var'); process.exit(1); }
 import fs from 'fs';
 
 async function queryAll(dbId, label) {

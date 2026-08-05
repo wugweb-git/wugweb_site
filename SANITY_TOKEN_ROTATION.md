@@ -18,12 +18,11 @@ The current Sanity API token (`sk0ArwboL...`) has been exposed in conversation t
 
 ### 2. Update Local Environment
 ```bash
-# In your .env file, replace the old token:
-SANITY_API_TOKEN=sk0ArwboLQ0iGTvUfmmAPitJVHBIw0vErssdCOwc92Xm4NRz6N9ZrVFK3olAr81Djqux1jJV1upPwslk250r7BrQbUFDxfYguJLO9l0X1GIpU2g1rEARYq6J2R6iqYWdn0eIsSFWMnxRZMeryHKi7akyvEEdv4u8YAVMQWJg5EBwAzFs1lTr
+# In your `.env` file, set:
+SANITY_TOKEN=<new-editor-token>
+SANITY_API_TOKEN=<new-editor-token>
 
-# With the new token:
-SANITY_API_TOKEN=<new-token-here>
-```
+# Do not paste tokens into docs, scripts, or git-tracked files.```
 
 ### 3. Update Cloudflare Secrets
 ```bash

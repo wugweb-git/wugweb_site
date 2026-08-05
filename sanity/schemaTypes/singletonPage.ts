@@ -30,6 +30,8 @@ export default defineType({
     defineField({ name: 'title', type: 'string', description: 'Page heading (H1)' }),
     defineField({ name: 'subtitle', type: 'string', description: 'Subtitle or tagline' }),
     defineField({ name: 'heroImage', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'heroPath', type: 'string', description: 'R2/local hero media path e.g. /assets/more/home/home.mp4' }),
+    defineField({ name: 'mediaPaths', type: 'array', of: [{ type: 'string' }], description: 'Additional page media under /assets/…' }),
     defineField({ name: 'seoTitle', type: 'string', description: 'Override <title> tag' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2 }),
     defineField({ name: 'ogImage', type: 'image' }),
@@ -40,6 +42,7 @@ export default defineType({
         { name: 'title', type: 'string' },
         { name: 'text', type: 'text', rows: 3 },
         { name: 'image', type: 'image', options: { hotspot: true } },
+        { name: 'imagePath', type: 'string', description: 'R2/local path alternative to Sanity image' },
       ]}],
     }),
 

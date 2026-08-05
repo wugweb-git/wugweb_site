@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { ownerField } from './ownerField';
 
 export default defineType({
   name: 'client',
@@ -13,11 +14,13 @@ export default defineType({
   fields: [
     defineField({ name: 'name', type: 'string', validation: (r) => r.required(), group: 'details' }),
     defineField({ name: 'slug', type: 'slug', options: { source: 'name' }, validation: (r) => r.required(), group: 'details' }),
+    { ...ownerField, group: 'details' },
     defineField({ name: 'industry', type: 'reference', to: [{ type: 'industry' }], group: 'details' }),
     defineField({ name: 'website', type: 'url', group: 'details' }),
     defineField({ name: 'description', type: 'text', rows: 3, group: 'details' }),
     defineField({ name: 'logo', type: 'image', options: { hotspot: true }, group: 'branding' }),
     defineField({ name: 'logoLight', type: 'image', title: 'Logo (light background variant)', options: { hotspot: true }, group: 'branding' }),
+    defineField({ name: 'logoPath', type: 'string', description: 'R2/local logo path e.g. /assets/logos/client-logo-….png', group: 'branding' }),
     defineField({ name: 'engagementType', type: 'string', options: { list: ['ongoing', 'project', 'consultancy', 'retainer'] }, group: 'relations' }),
     defineField({ name: 'engagements', type: 'array', of: [{ type: 'reference', to: [{ type: 'engagement' }] }], group: 'relations' }),
     defineField({ name: 'caseStudies', type: 'array', of: [{ type: 'reference', to: [{ type: 'caseStudy' }] }], group: 'relations' }),

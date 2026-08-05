@@ -19,6 +19,7 @@ SANITY_TOKEN=sk...                 # Editor token for migrations
 SANITY_SYNC_TOKEN=...              # Auth token for /api/sync
 DATABASE_URL=postgresql://...      # Neon connection string
 CLOUDFLARE_API_TOKEN=...           # For wrangler deploys
+FRAMER_API_KEY=fr_...              # Framer API (optional; design/asset pulls)
 ```
 
 ## Personal notes

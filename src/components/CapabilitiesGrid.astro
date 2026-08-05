@@ -23,9 +23,9 @@ const { sections } = Astro.props;
   .caps-grid { display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .caps-grid { grid-template-columns: repeat(3, 1fr); } }
   .cap-card { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
-  .cap-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: .8rem; }
-  .cap-card h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-1); }
+  .cap-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: var(--t-sm); }
+  .cap-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
   .cap-card p { margin-top: var(--gap-2); color: var(--fg-muted); }
   .cap-items { list-style: none; margin: var(--gap-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-1); }
-  .cap-items li { font-family: var(--font-mono); font-size: .78rem; padding: .3rem .65rem; background: var(--surface); border-radius: var(--r-1); }
+  .cap-items li { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-1) var(--gap-2); background: var(--surface); border-radius: var(--r-1); }
 </style>

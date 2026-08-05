@@ -79,12 +79,12 @@ Notes recorded exactly as exported:
 ### Secondary
 | Name | Path | Light | Hex | Usage |
 |---|---|---|---|---|
-| Aqua | `/Secondary/Aqua` | rgb(9, 226, 192) | `#09E2C0` | Service 1 - Experience Design |
-| Blue | `/Secondary/Blue` | rgb(35, 104, 215) | `#2368D7` | Service 2 - Engineering |
-| Magenta | `/Secondary/Magenta` | rgb(237, 33, 153) | `#ED219A` | Service 3 - Strategy |
-| Pink | `/Secondary/Pink` | rgb(230, 48, 159) | `#E6309F` | Service 4 - Growth |
-| Purple | `/Secondary/Purple` | rgb(122, 77, 255) | `#7A4DFF` | Service 5 - Brand |
-| Orange | `/Secondary/Orange` | rgb(250, 65, 8) | `#FA4108` | Service 6 - Operations |
+| Aqua | `/Secondary/Aqua` | rgb(9, 226, 192) | `#09E2C0` | Service 1 — Strategy |
+| Blue | `/Secondary/Blue` | rgb(35, 104, 215) | `#2368D7` | Service 2 — Brand |
+| Magenta | `/Secondary/Magenta` | rgb(237, 33, 153) | `#ED219A` | Service 3 — Experience |
+| Pink | `/Secondary/Pink` | rgb(230, 48, 159) | `#E6309F` | Service 4 — Growth |
+| Purple | `/Secondary/Purple` | rgb(122, 77, 255) | `#7A4DFF` | Service 5 — Engineering |
+| Orange | `/Secondary/Orange` | rgb(250, 65, 8) | `#FA4108` | Service 6 — Operations |
 
 ### Background
 | Name | Path | Light | Dark | Hex |
@@ -473,20 +473,22 @@ medium 300–400ms · large 400–500ms. *Easing:* entering `ease-out` · exitin
 Nothing below has been resolved unilaterally except where marked **RESOLVED**, and
 those are resolved by direct evidence, not preference.
 
-### C-6 — Heading weight: 400 or 600/700/800? ✅ **RESOLVED → 400**
-**Was the biggest open question.** Now settled by three independent sources agreeing
-against one:
+### C-6 — Heading weight: 400 or 600/700/800? ⚠️ **SUPERSEDED (2026-08-04)**
 
-| Source | Verdict |
+Historically S1/S3 agreed on **weight 400 everywhere** and Kits (S4) was demoted.
+**User direction (2026-08-04):** implement the **Kits type hierarchy + weight ladder** on the marketing frontend:
+
+| Role | Weight token |
 |---|---|
-| **S1** Framer Style Manager export | Every Inter Tight style is `fontWeight: 400`. No 600/700/800 style exists except two deprecated *Inter* legacy styles. |
-| **S3** Live `wugweb.com` computed styles | Hero 80px/400, H2 36px/400, card title 24px/400. Only bold on the page is one 10px label. |
-| **S5** Saved page CSS | Only `Inter Tight Variable Regular` is loaded — no bold variant is even fetched. |
-| S4 Kits doc | Claims Display 700–800, H2/H3/H4 600. |
+| Display (marketing) | `--font-weight-extrabold` (800) |
+| H1 | `--font-weight-bold` (700) |
+| H2 / H3 / H4 / card titles | `--font-weight-semibold` (600) |
+| Body | `--font-weight-regular` (400) |
+| Labels / eyebrows / buttons | `--font-weight-medium` (500) |
 
-**Conclusion:** the shipped system is **weight 400 with zero letter-spacing at every
-size**. The Kits weight ladder describes a different (or aspirational) product.
-**This repo is already implemented correctly.** No change needed.
+Tokens `--ts-*`, `--fluid-*`, `--core-font-family-*` are now in `global.css`.
+Framer S1 remains authoritative for **colours** and locked live values.
+**Colours still win from S1; type roles/weights follow Kits S4.**
 
 ### C-9 — Framer breakpoint tiers read backwards *(interpretation applied)*
 The export gives `base: {minWidth: 0}` with the **largest** value, then overrides at
@@ -628,11 +630,13 @@ Where `src/styles/global.css` and the components stand against Part 1 / Part 2.
 
 | # | Gap | Fix |
 |---|---|---|
-| G-1 | Nav bar missing `box-shadow: 0 5px 10px rgba(0,0,0,0.25)` — present on **every** S2 nav variant | add to `.site-header-inner` |
-| G-2 | Logo renders W-icon + plain "wugweb" text. Real lockup is the **two-tone wordmark**: "wug" white, "web" `#C9C9C9` | rebuild lockup |
-| G-3 | Nav label "Work" should be **"Works"** (C-15) | one-word change |
-| G-4 | Mobile expanded menu missing the contact/legal block: `hello@wugweb.com`, `+91 88021 39220`, Terms of Service, Privacy Policy, `Copyright 2020-2025 © Wugweb®` | build out panel |
-| G-5 | Mobile expanded nav should be a **698px panel**, not a full-screen overlay | restructure |
+| G-1 | Nav bar missing `box-shadow: 0 5px 10px rgba(0,0,0,0.25)` — present on **every** S2 nav variant | ✅ `--shadow-nav` on `.site-header-inner` |
+| G-2 | Logo renders W-icon + plain "wugweb" text. Real lockup is the **two-tone wordmark**: "wug" white, "web" `#C9C9C9` | ✅ |
+| G-3 | Nav label "Work" should be **"Works"** (C-15) | ✅ |
+| G-4 | Mobile expanded menu missing the contact/legal block | ✅ |
+| G-5 | Mobile expanded nav should be a **698px panel**, not a full-screen overlay | ✅ expands same bar to `min-height: 698px` |
+| G-nav-cta | Yellow `Let's Talk` CTA | ✅ `--color-yellow` chip |
+| G-nav-toggle | Light hamburger chip + staggered bars / × close | ✅ |
 | G-6 | No `--font-weight-*` tokens (weights are hardcoded 400) | add tokens |
 | G-7 | Line-height tokens are 3 of 6, under different names (`--lh-tight/snug/body`) | extend + rename to `--core-line-height-*` |
 | G-8 | Radius tokens named `--r-*`, missing 20px and 32px steps | rename to `r-0…r-8`, add missing |

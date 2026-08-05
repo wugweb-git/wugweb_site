@@ -24,6 +24,8 @@ export default defineType({
     defineField({ name: 'tags', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'overview' }),
     defineField({ name: 'icon', type: 'image', description: 'Service icon', group: 'overview' }),
     defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, group: 'overview' }),
+    defineField({ name: 'coverPath', type: 'string', description: 'R2/local cover path e.g. /assets/services/…', group: 'overview' }),
+    defineField({ name: 'galleryPaths', type: 'array', of: [{ type: 'string' }], description: 'Service gallery media under /assets/…', group: 'content' }),
     defineField({ name: 'order', type: 'number', hidden: true, group: 'overview' }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US'] }, initialValue: 'en-GB', group: 'overview' }),
 

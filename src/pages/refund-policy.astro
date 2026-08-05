@@ -1,6 +1,22 @@
 ---
 export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+// Legal content is CMS-driven (Sanity singletonPage body, portable text).
+// Falls back to the hardcoded section below if Sanity body is empty.
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'refund-policy' }).catch(() => null);
+const blocks: any[] = Array.isArray(page?.body) && page.body.length ? page.body : [];
+
+function renderBlock(block: any) {
+  const text = block.children?.map((c: any) => c.text || '').join('') || '';
+  if (block.style === 'h2') return `<h2>${text}</h2>`;
+  if (block.listItem === 'bullet') return `<li>${text}</li>`;
+  return `<p>${text}</p>`;
+}
+const bodyHtml = blocks.map(renderBlock).join('');
+const hasCms = bodyHtml.length > 0;
 ---
 
 <BaseLayout title="Refund Policy" description="Refund Policy — Wugweb">
@@ -9,6 +25,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h1 data-reveal>Refund Policy</h1>
     <p class="legal-updated" data-reveal>Updated on November 04, 2025</p>
 
+    {hasCms ? (
+      <div class="legal-body" data-reveal set:html={bodyHtml} />
+    ) : (
+    <>
     <h2 data-reveal>Overview</h2>
     <p data-reveal>At Wugweb, we are committed to delivering high-quality digital experience services. This Refund Policy outlines the terms under which refunds may be issued for services rendered.</p>
 
@@ -29,15 +49,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <h2 data-reveal>Contact Us</h2>
     <p data-reveal>For any questions about this Refund Policy, please contact us at <a href="mailto:hello@wugweb.com">hello@wugweb.com</a>.</p>
+    </>
+    )}
   </section>
 </BaseLayout>
 
 <style>
   .legal { padding-block: var(--space-section-xl); max-width: 800px; }
   .legal h1 { font-size: var(--t-h2); margin-block: var(--gap-3) var(--gap-2); }
-  .legal-updated { font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); margin-bottom: var(--gap-8); }
-  .legal h2 { font-size: 1.35rem; margin-top: var(--gap-10); margin-bottom: var(--gap-4); color: var(--fg); }
-  .legal p { margin-top: var(--gap-3); max-width: 68ch; line-height: 1.7; color: var(--fg-muted); }
+  .legal-updated { font-family: var(--font-mono); font-size: var(--fluid-label); color: var(--fg-muted); margin-bottom: var(--gap-8); }
+  .legal h2 { font-size: var(--fluid-h3); margin-top: var(--gap-10); margin-bottom: var(--gap-4); color: var(--fg); }
+  .legal p { margin-top: var(--gap-3); max-width: 68ch; line-height: var(--core-line-height-relaxed); color: var(--fg-muted); }
   .legal a { color: var(--accent-warm); }
 </style>
 

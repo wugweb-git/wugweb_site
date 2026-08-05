@@ -19,8 +19,8 @@ const { title, slug, category, excerpt } = Astro.props;
 
 <style>
   .blog-card { text-decoration: none; display: block; border-top: 1px solid var(--line); padding-top: var(--gap-5); }
-  .blog-card-category { font-family: var(--font-mono); font-size: .7rem; color: var(--accent); text-transform: uppercase; display: block; margin-bottom: var(--gap-1); }
-  .blog-card-title { font-size: 1.1rem; font-weight: 400; line-height: 1.4; color: var(--fg); }
-  .blog-card-excerpt { margin-top: var(--gap-2); font-size: .85rem; color: var(--fg-muted); line-height: 1.5; }
+  .blog-card-category { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent); text-transform: uppercase; display: block; margin-bottom: var(--gap-1); }
+  .blog-card-title { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); line-height: var(--lh-h5); color: var(--fg); }
+  .blog-card-excerpt { margin-top: var(--gap-2); font-size: var(--fluid-label); color: var(--fg-muted); line-height: var(--core-line-height-normal); }
   .blog-card:hover .blog-card-title { color: var(--accent); }
 </style>

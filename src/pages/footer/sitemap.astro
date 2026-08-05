@@ -68,14 +68,14 @@ const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
 </BaseLayout>
 
 <style>
-  .sitemap { padding-block: 6rem; }
-  .sitemap h1 { font-size: var(--t-h2); margin-top: 1rem; margin-bottom: 3rem; }
-  .sitemap-grid { display: grid; gap: 2.5rem; }
+  .sitemap { padding-block: var(--space-section-lg); }
+  .sitemap h1 { font-size: var(--t-h2); margin-top: var(--gap-4); margin-bottom: var(--gap-12); }
+  .sitemap-grid { display: grid; gap: var(--gap-10); }
   @media (min-width: 640px) { .sitemap-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) { .sitemap-grid { grid-template-columns: repeat(4, 1fr); } }
-  .sitemap-col h2 { font-size: var(--t-h4); font-weight: 400; border-bottom: 1px solid var(--line); padding-bottom: 0.75rem; margin-bottom: 1rem; }
+  .sitemap-col h2 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); border-bottom: 1px solid var(--line); padding-bottom: var(--gap-3); margin-bottom: var(--gap-4); }
   .sitemap-col ul { list-style: none; margin: 0; padding: 0; }
-  .sitemap-col li { margin-bottom: 0.4rem; }
-  .sitemap-col a { color: var(--fg-muted); text-decoration: none; font-size: 0.9rem; }
+  .sitemap-col li { margin-bottom: var(--gap-2); }
+  .sitemap-col a { color: var(--fg-muted); text-decoration: none; font-size: var(--fluid-body-sm); }
   .sitemap-col a:hover { color: var(--accent); }
 </style>

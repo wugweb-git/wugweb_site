@@ -1,6 +1,22 @@
 ---
 export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+// Legal content is CMS-driven (Sanity singletonPage body, portable text).
+// Falls back to the hardcoded section below if Sanity body is empty.
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'terms-of-use' }).catch(() => null);
+const blocks: any[] = Array.isArray(page?.body) && page.body.length ? page.body : [];
+
+function renderBlock(block: any) {
+  const text = block.children?.map((c: any) => c.text || '').join('') || '';
+  if (block.style === 'h2') return `<h2>${text}</h2>`;
+  if (block.listItem === 'bullet') return `<li>${text}</li>`;
+  return `<p>${text}</p>`;
+}
+const bodyHtml = blocks.map(renderBlock).join('');
+const hasCms = bodyHtml.length > 0;
 ---
 
 <BaseLayout title="Terms of Use" description="Read Wugweb's terms of use for website access, service information, and visitor responsibilities.">
@@ -9,6 +25,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h1>Terms of Use</h1>
     <p class="updated">Updated on November 04, 2025</p>
 
+    {hasCms ? (
+      <div class="legal-body" set:html={bodyHtml} />
+    ) : (
     <div class="legal-body">
       <h2>Introduction and Overview</h2>
       <p>
@@ -480,6 +499,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="/privacy-policy">Privacy Policy</a>.
       </p>
     </div>
+    )}
   </section>
 </BaseLayout>
 
@@ -494,14 +514,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .updated {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: var(--fluid-label);
     color: var(--fg-muted);
   }
   .legal-body {
     margin-top: var(--gap-10);
   }
   .legal-body h2 {
-    font-size: 1.35rem;
+    font-size: var(--fluid-h3);
     margin-top: var(--gap-10);
     margin-bottom: var(--gap-4);
     color: var(--fg);
@@ -510,7 +530,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .legal-body li {
     margin-top: var(--gap-3);
     max-width: 68ch;
-    line-height: 1.7;
+    line-height: var(--core-line-height-relaxed);
   }
   .legal-body a {
     color: var(--accent-warm);

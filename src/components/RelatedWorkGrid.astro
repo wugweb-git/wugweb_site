@@ -19,7 +19,7 @@ const { items } = Astro.props;
   .related-grid { display: grid; gap: var(--gap-6); }
   @media (min-width: 768px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
   .related-card { text-decoration: none; border-top: 1px solid var(--line); padding-top: var(--gap-4); display: block; }
-  .related-card h3 { font-size: 1.05rem; font-weight: 400; color: var(--fg); }
-  .related-card p { margin-top: .25rem; font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); }
+  .related-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); }
+  .related-card p { margin-top: .25rem; font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
   .related-card:hover h3 { color: var(--accent); }
 </style>

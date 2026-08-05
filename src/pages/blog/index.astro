@@ -1,15 +1,65 @@
 ---
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sanityClient } from '../../lib/sanity';
-import { postsListQuery } from '../../lib/queries';
+import { sanityClient, urlFor } from '../../lib/sanity';
+import { postsListQuery, singletonPageQuery } from '../../lib/queries';
 
-const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const blogPage = await sanityClient.fetch(singletonPageQuery, { pageId: 'blog' }).catch(() => null);
+const blogTitle = blogPage?.seoTitle || 'Wugweb | Insights on UI/UX Design & Digital Strategy';
+const blogDescription =
+  blogPage?.seoDescription ||
+  'Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, and digital product strategy.';
+
+const CATEGORY_COLORS: Record<string, string> = {
+  'Experience Design': '#ED219A',
+  'Brand & Strategy': '#2368D7',
+  'MarTech': '#E6309F',
+  'AI & Automation': '#7A4DFF',
+  'Web & App Development': '#7A4DFF',
+  'Digital Transformation': '#09E2C0',
+  'Data & Analytics': '#09E2C0',
+  'Performance Marketing': '#E6309F',
+  'SEO': '#FA4108',
+  'Content': '#2368D7',
+  'Consulting': '#09E2C0',
+  'Operations': '#FA4108',
+  'Infrastructure & DevOps': '#FA4108',
+  'Development / Server': '#7A4DFF',
+  Misc: '#2B2B2B',
+};
+
+function coverUrl(coverImage: any, coverPath?: string): string {
+  if (coverPath) return coverPath.startsWith('/') || coverPath.startsWith('http') ? coverPath : `/${coverPath}`;
+  if (!coverImage) return '';
+  try {
+    if (typeof coverImage === 'string') return coverImage;
+    if (coverImage.asset || coverImage._ref || coverImage._type === 'image') {
+      return urlFor(coverImage).width(800).height(500).url();
+    }
+  } catch {
+    return '';
+  }
+  return '';
+}
+
+function initials(title: string): string {
+  const words = (title || '').replace(/[^\w\s]/g, '').trim().split(/\s+/).filter(Boolean);
+  if (!words.length) return 'Ww';
+  return words.slice(0, 2).map((w) => w[0]?.toUpperCase() || '').join('');
+}
+
+const rawPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const posts = (rawPosts || []).map((p: any) => ({
+  ...p,
+  coverUrl: coverUrl(p.coverImage, p.coverPath),
+  accent: CATEGORY_COLORS[p.category] || '#2B2B2B',
+  initials: initials(p.title),
+}));
 const allCategories = [...new Set(posts.map((p: any) => p.category).filter(Boolean))];
 const categories = ['All', ...allCategories];
 ---
 
-<BaseLayout title="Blog" description="Wugweb | Insights on UI/UX Design & Digital Strategy">
+<BaseLayout title={blogTitle} description={blogDescription}>
   <section class="blog-hero">
     <div class="wrap blog-hero-content">
       <p class="eyebrow" data-reveal>Insights</p>
@@ -29,7 +79,14 @@ const categories = ['All', ...allCategories];
       {posts.map((p: any) => (
         <li data-reveal data-category={p.category || ''}>
           <a href={`/blog/${p.slug}`}>
-            {p.coverImage ? <img src={p.coverImage} alt={p.title} loading="lazy" class="post-thumb" /> : <div class="post-thumb-placeholder"></div>}
+            {p.coverUrl ? (
+              <img src={p.coverUrl} alt={p.title} loading="lazy" class="post-thumb" />
+            ) : (
+              <div class="post-thumb post-thumb-fallback" style={`--cover-accent: ${p.accent}`}>
+                <span class="post-thumb-initials" aria-hidden="true">{p.initials}</span>
+                <span class="post-thumb-cat">{p.category || 'Insight'}</span>
+              </div>
+            )}
             <div class="post-content">
               <span class="post-category">{p.category}</span>
               <h3>{p.title}</h3>
@@ -48,10 +105,10 @@ const categories = ['All', ...allCategories];
 
 <style>
   .blog-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
-  .blog-hero-content h1 { font-size: var(--t-h2); font-weight: 400; max-width: 28ch; margin-bottom: var(--gap-4); }
+  .blog-hero-content h1 { font-size: var(--t-h2); font-weight: var(--font-weight-bold); max-width: 28ch; margin-bottom: var(--gap-4); }
   .blog-hero-content p { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
   .blog-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
-  .filter-chip { font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .filter-chip { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-4); border: 1px solid var(--line); border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
   .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 190, 26, 0.1); }
   .blog-grid-section { border-top: 1px solid var(--line); padding-block: var(--space-section-md) var(--space-section-xl); }
@@ -59,13 +116,37 @@ const categories = ['All', ...allCategories];
   @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
   .blog-grid a { text-decoration: none; display: block; border-top: 1px solid var(--line); padding-top: var(--gap-4); }
   .post-thumb { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); margin-bottom: var(--gap-4); }
-  .post-thumb-placeholder { width: 100%; aspect-ratio: 16/10; background: var(--surface-2); border-radius: var(--r-2); margin-bottom: var(--gap-4); }
-  .post-category { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-warm); }
-  .blog-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-1); line-height: 1.4; }
-  .post-excerpt { font-size: 0.9rem; color: var(--fg-muted); margin-top: var(--gap-2); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .post-thumb-fallback {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--gap-5);
+    background:
+      radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--cover-accent) 55%, transparent), transparent 55%),
+      linear-gradient(160deg, #191919 0%, #050505 100%);
+    border: 1px solid var(--line);
+  }
+  .post-thumb-initials {
+    font-family: var(--font-display);
+    font-size: var(--t-display);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--core-line-height-none);
+    color: var(--fg);
+    opacity: 0.92;
+  }
+  .post-thumb-cat {
+    font-family: var(--font-mono);
+    font-size: var(--t-micro);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--cover-accent) 80%, #f4f4f4);
+  }
+  .post-category { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); }
+  .blog-grid h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); line-height: var(--lh-h5); }
+  .post-excerpt { font-size: var(--t-sm); color: var(--fg-muted); margin-top: var(--gap-2); line-height: var(--lh-s); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .post-meta { display: flex; gap: var(--gap-4); margin-top: var(--gap-3); }
-  .blog-author { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); }
-  .reading-time { font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-muted); }
+  .blog-author { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
+  .reading-time { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
   .blog-grid li.hidden { display: none; }
 </style>
 

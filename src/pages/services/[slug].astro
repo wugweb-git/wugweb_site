@@ -3,6 +3,32 @@ export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
 import { serviceBySlugQuery, caseStudiesListQuery, postsListQuery } from '../../lib/queries';
+import { assetUrl } from '../../lib/assets';
+
+/** Framer marketing slugs → 6-pillar keys used in related-work filters + hardcoded fallbacks */
+const FRAMER_TO_PILLAR: Record<string, string> = {
+  'brand-strategy': 'brand',
+  'experience-design': 'experience',
+  'martech-genai': 'growth',
+  'web-app-development': 'engineering',
+  'qa-testing': 'operations',
+  'no-code-solutions': 'engineering',
+  'lead-generation': 'growth',
+};
+
+export async function getStaticPaths() {
+  const pillar = ['strategy', 'brand', 'experience', 'growth', 'engineering', 'operations'];
+  const framer = [
+    'brand-strategy',
+    'experience-design',
+    'martech-genai',
+    'web-app-development',
+    'qa-testing',
+    'no-code-solutions',
+    'lead-generation',
+  ];
+  return [...pillar, ...framer].map((s) => ({ params: { slug: s } }));
+}
 
 const hardcodedServices: Record<string, any> = {
   'strategy': {
@@ -39,35 +65,6 @@ const hardcodedServices: Record<string, any> = {
       { title: 'Cross-Disciplinary Thinking', body: 'Our strategists draw on brand, design, engineering, and growth perspectives for holistic solutions.' },
       { title: 'Measurable Outcomes', body: 'We define success metrics upfront and build strategy around achieving tangible business results.' },
     ],
-    approach: [
-      { n: '01', title: 'Discover', body: 'Understand the business, customers, market, and challenges.' },
-      { n: '02', title: 'Analyze', body: 'Identify opportunities, validate assumptions, and prioritize initiatives.' },
-      { n: '03', title: 'Define', body: 'Develop strategic direction, success metrics, and execution priorities.' },
-      { n: '04', title: 'Align', body: 'Build consensus across stakeholders and create a shared roadmap.' },
-      { n: '05', title: 'Evolve', body: 'Measure progress, adapt to change, and continuously refine strategy.' },
-    ],
-    faqs: [
-      { q: 'What types of strategy services do you provide?', a: 'We help organizations with business strategy, product strategy, product discovery, market research, digital transformation, innovation planning, AI strategy, customer research, and execution roadmaps.' },
-      { q: 'When should we engage a strategy partner?', a: 'The best time is before major investments or product decisions. Strategic planning helps reduce uncertainty, validate opportunities, and align stakeholders before execution begins.' },
-      { q: 'Do you work with startups and enterprises?', a: 'Yes. Our approach is tailored to organizations at different stages of growth, from early-stage startups defining their first product to enterprises leading digital transformation initiatives.' },
-      { q: 'Can you work with our internal teams?', a: 'Absolutely. We regularly collaborate with leadership, product, design, engineering, and marketing teams as an extension of their organization.' },
-      { q: 'Do strategy engagements include implementation?', a: 'Yes. We can support both strategic planning and the design, engineering, AI, and growth initiatives required to bring that strategy to life.' },
-      { q: 'How long does a strategy engagement take?', a: 'Depending on scope, engagements typically range from a few weeks for focused discovery to several months for comprehensive transformation programs.' },
-      { q: 'How do you measure success?', a: 'Success is measured against business objectives, customer outcomes, product performance, and the strategic goals established at the beginning of each engagement.' },
-      { q: 'What deliverables can we expect?', a: 'Depending on the engagement, deliverables may include research findings, strategic recommendations, opportunity assessments, roadmaps, product strategies, AI readiness plans, transformation frameworks, and implementation plans.' },
-    ],
-    why: [
-      { title: 'Business-First Thinking', body: 'Every recommendation is grounded in measurable business objectives and long-term value.' },
-      { title: 'Research-Led Decisions', body: 'Customer insights, market intelligence, and data shape every strategic recommendation.' },
-      { title: 'Connected Thinking', body: 'Business strategy, product, experience, engineering, AI, and growth are considered together—not in isolation.' },
-      { title: 'Practical Execution', body: 'Every strategy is designed to be implemented, measured, and continuously improved.' },
-    ],
-    why: [
-      { title: 'Research-Backed Clarity', body: 'Every recommendation is grounded in real market data and user research, not assumptions.' },
-      { title: 'Actionable Roadmaps', body: 'We don\'t just deliver decks — we provide execution-ready plans with clear ownership and timelines.' },
-      { title: 'Cross-Disciplinary Thinking', body: 'Our strategists draw on brand, design, engineering, and growth perspectives for holistic solutions.' },
-      { title: 'Measurable Outcomes', body: 'We define success metrics upfront and build strategy around achieving tangible business results.' },
-    ],
   },
   'brand': {
     title: 'Brand',
@@ -91,6 +88,10 @@ const hardcodedServices: Record<string, any> = {
       { q: 'Do you design logos only?', a: 'Logo design is part of our offering, but we always deliver it as part of a full visual identity system — not in isolation.' },
       { q: 'How long does a brand project take?', a: 'A typical brand identity project runs 4-8 weeks from discovery to final deliverables, depending on scope.' },
       { q: 'Do you create brand guidelines?', a: 'Absolutely. We create comprehensive brand guidelines that ensure consistency across all channels and touchpoints.' },
+      { q: 'Can you refresh an existing brand without a full rebrand?', a: 'Yes. We often evolve existing identities — tightening systems, modernising assets, and clarifying voice while protecting equity you have already built.' },
+      { q: 'Do you handle naming and verbal identity?', a: 'Yes. Naming, messaging architecture, and tone of voice are part of our brand practice when the engagement calls for them.' },
+      { q: 'Will our internal teams be able to use the system day to day?', a: 'That is the goal. Deliverables include practical guidelines, templates, and handoff sessions so design, marketing, and product can apply the brand consistently.' },
+      { q: 'Do brand projects connect to digital product design?', a: 'Yes. We design brand systems that hold up in product UI, marketing sites, and campaigns — not just static brand books.' },
     ],
     why: [
       { title: 'Strategic Foundation', body: 'Every brand we create is built on a clear strategic foundation — not just aesthetics.' },
@@ -115,6 +116,7 @@ const hardcodedServices: Record<string, any> = {
       { n: '02', title: 'Design & Prototyping', body: 'We rapidly explore solutions through wireframes, prototypes, and iterative design cycles.' },
       { n: '03', title: 'Testing & Validation', body: 'We validate designs through usability testing and data analysis, driving continuous improvement.' },
       { n: '04', title: 'Design & Development Handoff', body: 'We ensure seamless translation from design to development with detailed specs and design system components.' },
+      { n: '05', title: 'System & Evolve', body: 'We leave you with a governed design system and a cadence for iterating as the product roadmap moves.' },
     ],
     process: [
       { phase: 'Discovery', steps: ['Kick-off meeting', 'Competitor analysis', 'User interview', 'Brain storming'] },
@@ -164,12 +166,17 @@ const hardcodedServices: Record<string, any> = {
       { n: '02', title: 'Implementation & Integration', body: 'We activate strategy through seamless MarTech stack integration and AI-powered campaign setup.' },
       { n: '03', title: 'Optimisation & Analysis', body: 'We continuously refine using real-time performance analytics across the full marketing lifecycle.' },
       { n: '04', title: 'Scale & Evolve', body: 'We evolve your growth systems over time, adapting to new channels, data insights, and market changes.' },
+      { n: '05', title: 'Govern & Report', body: 'We put measurement, attribution, and reporting cadence in place so growth decisions stay accountable.' },
     ],
     faqs: [
       { q: 'What is MarTech and how can it help my business?', a: 'MarTech combines marketing and technology to automate, measure, and optimize marketing efforts for better ROI and customer experiences.' },
       { q: 'How do you use AI in marketing?', a: 'We leverage AI for content personalisation, predictive analytics, campaign optimisation, and automated customer segmentation.' },
       { q: 'Do you offer lead generation services?', a: 'Yes. We design and execute multi-channel lead generation strategies including paid media, content marketing, email campaigns, and marketing automation.' },
       { q: 'How do you measure growth?', a: 'We track key metrics including customer acquisition cost, conversion rates, ROI, pipeline value, and lifetime value.' },
+      { q: 'Can you work with our existing CRM and ad stack?', a: 'Yes. We usually start by auditing what you already run, then integrate, clean, and extend rather than forcing a rip-and-replace.' },
+      { q: 'Do you support lifecycle and retention programmes?', a: 'Yes. Acquisition is only half the system — we design journeys for onboarding, activation, retention, and expansion.' },
+      { q: 'How quickly can a growth engagement show results?', a: 'Focused sprints can surface instrumentation and channel wins in weeks; compounding growth systems typically mature over a quarter.' },
+      { q: 'Will you train our marketing team?', a: 'Yes. Hand-over includes playbooks, dashboards, and working sessions so your team can operate the system after launch.' },
     ],
     why: [
       { title: 'Integrated Innovation', body: 'We combine MarTech strategy with AI integration to deliver intelligent targeting and personalised experiences.' },
@@ -194,6 +201,7 @@ const hardcodedServices: Record<string, any> = {
       { n: '02', title: 'Agile Development', body: 'We build iteratively using agile practices, delivering working software in regular cycles.' },
       { n: '03', title: 'Testing & Quality Assurance', body: 'We ensure stability, security, and performance through CI/CD, code reviews, and rigorous testing.' },
       { n: '04', title: 'Launch & Evolution', body: 'We launch with precision, monitor post-release behaviour, and continuously evolve your product.' },
+      { n: '05', title: 'Operate & Improve', body: 'Post-launch we monitor reliability, performance, and backlog priorities so the product keeps getting stronger.' },
     ],
     faqs: [
       { q: 'What technologies do you work with?', a: 'We work with modern stacks including React, Next.js, Astro, Node.js, Python, TypeScript, cloud platforms (AWS, Cloudflare), and more.' },
@@ -224,6 +232,7 @@ const hardcodedServices: Record<string, any> = {
       { n: '02', title: 'Implementation', body: 'We deploy testing frameworks, automation workflows, and no-code solutions to streamline your operations.' },
       { n: '03', title: 'Monitoring & Optimisation', body: 'We continuously monitor performance, reliability, and quality metrics to drive ongoing improvement.' },
       { n: '04', title: 'Scale & Sustain', body: 'We build operational systems that scale with your business and sustain quality over time.' },
+      { n: '05', title: 'Review & Raise the Bar', body: 'We run recurring quality and reliability reviews so standards rise with every release cycle.' },
     ],
     faqs: [
       { q: 'What QA services do you offer?', a: 'We offer functional, performance, security, usability, accessibility, and automation testing — covering the full quality spectrum.' },
@@ -241,9 +250,51 @@ const hardcodedServices: Record<string, any> = {
 };
 
 const slug = Astro.params.slug || '';
+
+const pillarSlug = FRAMER_TO_PILLAR[slug] || slug;
 const fromSanity = await sanityClient.fetch(serviceBySlugQuery, { slug }).catch(() => null);
-const fallback = hardcodedServices[slug] || null;
-const service = fallback || fromSanity;
+const fallback = hardcodedServices[slug] || hardcodedServices[pillarSlug] || null;
+
+function preferArr<T>(primary: T[] | null | undefined, secondary: T[] | null | undefined): T[] {
+  return Array.isArray(primary) && primary.length > 0 ? primary : Array.isArray(secondary) ? secondary : [];
+}
+
+function preferStr(primary: unknown, secondary: unknown): string {
+  const a = typeof primary === 'string' ? primary.trim() : '';
+  const b = typeof secondary === 'string' ? secondary.trim() : '';
+  return a || b;
+}
+
+const service = !fallback && !fromSanity
+  ? null
+  : {
+      ...(fallback || {}),
+      ...(fromSanity || {}),
+      title: preferStr(fromSanity?.title, fallback?.title),
+      subtitle: preferStr(fromSanity?.subtitle, fallback?.subtitle),
+      heroText: preferStr(fromSanity?.heroText, fallback?.heroText),
+      body: preferStr(
+        typeof fromSanity?.body === 'string' ? fromSanity.body : fromSanity?.fullDescription || fromSanity?.summary,
+        fallback?.body
+      ),
+      tags: preferArr(fromSanity?.tags, fallback?.tags),
+      capabilities: preferArr(fromSanity?.capabilities, fallback?.capabilities),
+      why: preferArr(fromSanity?.why, fallback?.why),
+      approach: preferArr(fromSanity?.approach, fallback?.approach),
+      process: preferArr(fromSanity?.process, fallback?.process),
+      tools: preferArr(fromSanity?.tools, fallback?.tools),
+      faqs: preferArr(fromSanity?.faqs, fallback?.faqs),
+      seoTitle: preferStr(fromSanity?.seoTitle, fallback?.title),
+      seoDescription: preferStr(fromSanity?.seoDescription, typeof fallback?.body === 'string' ? fallback.body : ''),
+    };
+
+// Tech-stack icons for toolkit chips
+const techTools = await sanityClient
+  .fetch(`*[_type=="taxonomy" && vocabulary=="tech-stack"]{name, iconPath}`)
+  .catch(() => []);
+const toolIconByName = new Map(
+  (techTools || []).map((t: any) => [String(t.name).toLowerCase(), t.iconPath ? assetUrl(t.iconPath) : null])
+);
 
 // Fetch related work + blog posts for this service
 const allCaseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
@@ -251,12 +302,12 @@ const allPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
 const relatedWork = allCaseStudies.filter((cs: any) => {
   const d = (cs.disciplines || []).map((x: string) => x.toLowerCase());
   const t = (cs.tags || []).map((x: string) => x.toLowerCase());
-  const slugLower = slug.toLowerCase();
+  const slugLower = pillarSlug.toLowerCase();
   return d.includes(slugLower) || t.includes(slugLower) || (cs.industry || '').toLowerCase().includes(slugLower);
 }).slice(0, 4);
 const relatedPosts = allPosts.filter((p: any) => {
   const cat = (p.category || '').toLowerCase();
-  const slugLower = slug.toLowerCase();
+  const slugLower = pillarSlug.toLowerCase();
   return cat.includes(slugLower) || (slugLower === 'strategy' && cat === 'strategy');
 }).slice(0, 3);
 
@@ -268,18 +319,17 @@ function safeArr(arr: any[] | null | undefined, fallbackArr: any[]) {
 if (!service) {
   return Astro.redirect('/404');
 }
-
-export async function getStaticPaths() {
-  return ['strategy', 'brand', 'experience', 'growth', 'engineering', 'operations'].map(s => ({ params: { slug: s } }));
-}
 ---
 
-<BaseLayout title={service.title} description={(typeof service.body === 'string' ? service.body : service.summary || service.subtitle || '').slice(0, 160)}>
+<BaseLayout
+  title={service.seoTitle || service.title}
+  description={(service.seoDescription || (typeof service.body === 'string' ? service.body : service.summary || service.subtitle || '')).slice(0, 160)}
+>
   <!-- HERO -->
   <section class="detail-hero">
     <div class="wrap detail-hero-content">
       <p class="eyebrow"><a href="/services">Services</a></p>
-      <h1 data-reveal>{service.title}</h1>
+      <h1 class="t-display" data-reveal>{service.title}</h1>
       <p class="hero-sub" data-reveal>{service.subtitle}</p>
       <p class="hero-text" data-reveal>{service.heroText}</p>
       <ul class="service-tags" data-reveal>
@@ -367,7 +417,15 @@ export async function getStaticPaths() {
         <div class="toolkit-category" data-reveal>
           <div class="toolkit-category-header">{t.category}</div>
           <ul class="toolkit-items">
-            {t.items.map((item) => <li>{item}</li>)}
+            {t.items.map((item) => {
+              const icon = toolIconByName.get(String(item).toLowerCase());
+              return (
+                <li>
+                  {icon ? <img src={icon} alt="" width="16" height="16" loading="lazy" /> : null}
+                  <span>{item}</span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}
@@ -395,15 +453,15 @@ export async function getStaticPaths() {
   .detail-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
   .detail-hero .eyebrow a { color: var(--fg-muted); text-decoration: none; }
   .detail-hero .eyebrow a:hover { color: var(--fg); }
-  .detail-hero h1 { font-size: var(--t-display); margin-top: var(--gap-4); max-width: 16ch; }
-  .hero-sub { font-size: 1.3rem; color: var(--fg); margin-top: var(--gap-2); }
-  .hero-text { margin-top: var(--gap-6); max-width: 55ch; font-size: 1.1rem; line-height: 1.7; }
+  .detail-hero h1 { margin-top: var(--gap-4); max-width: 16ch; }
+  .hero-sub { font-size: var(--t-xl); color: var(--fg); margin-top: var(--gap-2); line-height: var(--lh-xl); }
+  .hero-text { margin-top: var(--gap-6); max-width: 55ch; font-size: var(--t-l); line-height: var(--lh-l); }
   .service-tags { list-style: none; margin: var(--gap-6) 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
-  .service-tags li { font-family: var(--font-mono); font-size: .75rem; padding: .35rem .85rem; border: 1px solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .service-tags li { font-family: var(--font-mono); font-size: var(--t-micro); padding: .35rem .85rem; border: 1px solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
   .detail-hero .btn { margin-top: var(--gap-4); display: inline-flex; }
 
   .detail-body { padding-block: var(--space-section-md) var(--space-section-xl); border-top: 1px solid var(--line); }
-  .detail-body p { max-width: 65ch; font-size: 1.1rem; line-height: 1.7; }
+  .detail-body p { max-width: 65ch; font-size: var(--t-l); line-height: var(--lh-l); }
 
   .capabilities-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
   .caps-grouped { display: grid; gap: 0; margin-top: var(--gap-8); border-top: 1px solid var(--line); }
@@ -411,10 +469,10 @@ export async function getStaticPaths() {
   .cap-group { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: var(--gap-8); }
   @media (min-width: 768px) { .cap-group { border-bottom: none; } }
   .cap-group:last-child { border-right: none; }
-  .cap-group-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: .8rem; }
-  .cap-group-title { font-size: 1.25rem; font-weight: 400; margin-top: var(--gap-1); }
+  .cap-group-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: var(--t-sm); }
+  .cap-group-title { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
   .cap-group-items { list-style: none; margin: var(--gap-4) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-1); }
-  .cap-group-items li { font-size: .9rem; color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
+  .cap-group-items li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
   .cap-group-items li::before { content: '—'; position: absolute; left: 0; color: var(--accent-warm); }
 
   .why-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
@@ -422,22 +480,22 @@ export async function getStaticPaths() {
   .why-grid { display: grid; gap: var(--gap-8); margin-top: var(--gap-12); }
   @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
   .why-item { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
-  .why-item h3 { font-size: 1.15rem; font-weight: 400; }
+  .why-item h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); }
   .why-item p { margin-top: var(--gap-2); }
 
   .approach-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
   .approach-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 22ch; }
   .approach-steps { display: grid; gap: var(--gap-8); margin-top: var(--gap-12); }
   .approach-step { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
-  .step-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: .85rem; }
-  .approach-step h3 { font-size: 1.25rem; font-weight: 400; margin-top: var(--gap-2); }
+  .step-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: var(--t-sm); }
+  .approach-step h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-2); }
   .approach-step p { margin-top: var(--gap-2); max-width: 50ch; }
 
   .detail-faq { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
   .detail-faq h2 { font-size: var(--t-h3); }
   .faq-list { margin-top: var(--gap-12); border-top: 1px solid var(--line); }
   .faq-item { border-bottom: 1px solid var(--line); padding-block: var(--gap-5); }
-  .faq-item summary { font-family: var(--font-display); font-size: 1.1rem; cursor: pointer; }
+  .faq-item summary { font-family: var(--font-display); font-size: var(--t-l); cursor: pointer; }
   .faq-item p { margin-top: var(--gap-3); }
 
   .detail-cta { padding-block: var(--space-section-xl); text-align: center; border-top: 1px solid var(--line); }
@@ -445,25 +503,26 @@ export async function getStaticPaths() {
   .detail-cta .btn { margin-top: var(--gap-8); display: inline-flex; }
 
   .process-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
-  .process-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 45ch; font-weight: 400; }
+  .process-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 45ch; font-weight: var(--font-weight-semibold); }
   .process-flow { display: grid; gap: 0; margin-top: var(--gap-12); border-top: 1px solid var(--line); }
   @media (min-width: 768px) { .process-flow { grid-template-columns: repeat(4, 1fr); } }
   .process-phase { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: var(--gap-8); }
   @media (min-width: 768px) { .process-phase { border-bottom: none; } }
   .process-phase:last-child { border-right: none; }
-  .process-phase-title { font-size: 1rem; font-weight: 400; color: var(--accent-warm); margin-bottom: var(--gap-4); }
+  .process-phase-title { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--accent-warm); margin-bottom: var(--gap-4); }
   .process-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
-  .process-steps li { font-size: .9rem; color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
+  .process-steps li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
   .process-steps li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); }
 
   .toolkit-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
-  .toolkit-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 50ch; font-weight: 400; }
+  .toolkit-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 50ch; font-weight: var(--font-weight-semibold); }
   .toolkit-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: var(--gap-8); }
   @media (min-width: 640px) { .toolkit-grid { grid-template-columns: repeat(3, 1fr); } }
   .toolkit-category { background: var(--bg); padding: var(--gap-6); }
-  .toolkit-category-header { font-family: var(--font-mono); font-size: .75rem; color: var(--accent-warm); margin-bottom: var(--gap-3); text-transform: uppercase; letter-spacing: .05em; }
+  .toolkit-category-header { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); margin-bottom: var(--gap-3); text-transform: uppercase; letter-spacing: .05em; }
   .toolkit-items { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-1); }
-  .toolkit-items li { font-size: .85rem; padding: .3rem .65rem; border: 1px solid var(--line); border-radius: var(--r-1); color: var(--fg-muted); }
+  .toolkit-items li { display: inline-flex; align-items: center; gap: var(--gap-2); font-size: var(--fluid-label); padding: var(--gap-1) var(--gap-2); border: 1px solid var(--line); border-radius: var(--r-1); color: var(--fg-muted); }
+  .toolkit-items li img { flex-shrink: 0; opacity: .9; }
 </style>
 
 <script>

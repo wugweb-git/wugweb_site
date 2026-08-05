@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { ownerField } from './ownerField';
 
 export default defineType({
   name: 'post',
@@ -14,9 +15,11 @@ export default defineType({
     // ── Content ──
     defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'content' }),
     defineField({ name: 'slug', type: 'slug', options: { source: 'title' }, validation: (r) => r.required(), group: 'content' }),
-    defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Featured image for blog listing cards', group: 'content' }),
+    defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Featured image (Sanity CDN — prefer coverPath for R2)', group: 'content' }),
+    defineField({ name: 'coverPath', type: 'string', description: 'R2/local path e.g. /assets/… when cover is not in Sanity CDN', group: 'content' }),
     defineField({ name: 'excerpt', type: 'text', rows: 2, description: 'Short summary shown in blog listings. Keep under 160 characters for SEO.', group: 'content' }),
     defineField({ name: 'author', type: 'reference', to: [{ type: 'person' }], group: 'content' }),
+    { ...ownerField, group: 'meta' },
     defineField({ name: 'body', type: 'blockContent', title: 'Content', description: 'Main blog post body. Use headings (H2/H3) to structure sections.', group: 'content' }),
 
     // ── Meta ──

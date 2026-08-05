@@ -50,14 +50,19 @@ function findThumbFallback(slug: string, client: string) {
   return '';
 }
 
-const workItems = caseStudies.map((cs: any) => ({
-  client: cs.client || '',
-  category: (cs.disciplines || []).join(', ') || 'UX Design',
-  title: cs.title,
-  slug: cs.slug,
-  video: assetUrl(cs.thumbnailPath || findThumbFallback(cs.slug, cs.client || '')),
-  initials: (cs.client || 'Ww').replace(/[^a-zA-Z0-9\s]/g, '').trim().split(/\s+/).slice(0, 2).map((w: string) => w[0]?.toUpperCase() || '').join(''),
-}));
+const workItems = caseStudies.map((cs: any) => {
+  // Resolve the raw thumb path first; only pass non-empty values to
+  // assetUrl (which maps '' → '/assets/' and would render a broken video).
+  const rawThumb = cs.thumbnailPath || findThumbFallback(cs.slug, cs.client || '');
+  return {
+    client: cs.client || '',
+    category: (cs.disciplines || []).join(', ') || 'UX Design',
+    title: cs.title,
+    slug: cs.slug,
+    video: rawThumb ? assetUrl(rawThumb) : '',
+    initials: (cs.client || 'Ww').replace(/[^a-zA-Z0-9\s]/g, '').trim().split(/\s+/).slice(0, 2).map((w: string) => w[0]?.toUpperCase() || '').join(''),
+  };
+});
 ---
 
 <BaseLayout title={workTitle} description={workDescription}>

@@ -5,7 +5,8 @@
  * - 1 master platform list
  * - 1 master tech stack list
  */
-const token = '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';
+const token = process.env.NOTION_TOKEN;
+if (!token) { console.error('Missing NOTION_TOKEN env var'); process.exit(1); }
 import fs from 'fs';
 
 async function queryAll(dbId, label) {
@@ -41,6 +42,7 @@ function simplify(props) {
       case 'relation': out[key] = val.relation?.map(r => r.id) || []; break;
       case 'files': out[key] = val.files?.map(f => f.name || f.url) || []; break;
       case 'phone_number': out[key] = val.phone_number || ''; break;
+      case 'unique_id': out[key] = (val.unique_id?.prefix ? val.unique_id.prefix + '-' : '') + (val.unique_id?.number ?? ''); break;
       default: break;
     }
   }
@@ -58,6 +60,11 @@ const dbs = [
   ['digital-presence-4', '395bb710-b9ab-80d8-9f76-d3bfd41e8cd6'],
   ['master-platform-list', 'd415ac43-7f90-4ae4-b0b9-f88d39af510e'],
   ['master-tech-stack', 'fc314d4b-40d3-4180-9943-ca1c5e699f92'],
+  ['asset-type', '91318e27-d1e9-40ee-89a2-d12ce29d617b'],
+  ['content-type', '272d0c5e-00e6-4372-a786-1ee4b879341a'],
+  ['team-department', '61902d18-75da-4a4b-803f-ab9d0ba8bf73'],
+  ['tags', 'a99eca78-b0b5-439e-9868-b67f12ec8e42'],
+  ['country', 'c9455be6-04e8-4e27-a7f3-b2985dad2ea5'],
 ];
 
 async function main() {

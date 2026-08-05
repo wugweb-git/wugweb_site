@@ -15,7 +15,7 @@ const { tags } = Astro.props;
 
 <style>
   .filter-chips { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
-  .filter-chip { font-family: var(--font-mono); font-size: .75rem; padding: .5rem 1rem; border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
+  .filter-chip { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-2) var(--gap-4); border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
   .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255,190,26,.1); }
 </style>

@@ -157,10 +157,10 @@ Every field has:
 - Service: `relatedPosts` + `relatedServices` reference fields
 - Client: Added SEO tab with title/description fields
 
-### Phase 3 — Dashboard ⚠️ DEFERRED
-- Dashboard section causes Studio crash
-- Removed for stability
-- Editors navigate via workspace sections instead
+### Phase 3 — Dashboard ✅ SAFE HUB
+- Live widgets / filtered lists deferred (previous attempts crashed Studio)
+- Static **Dashboard → Start here** navigation hub restored in `deskStructure.ts`
+- Editors still use workspace sections for day-to-day work
 
 ### Phase 4 — Asset UX ✅ PARTIAL
 - Local/external indicator (💾/☁️) in preview
@@ -189,13 +189,24 @@ Every field has:
 | Date | Decision | Reason |
 |------|----------|--------|
 | 2026-07-31 | Remove @sanity/dashboard plugin | Was causing Studio crash |
-| 2026-07-31 | Simplified desk structure | Removed dashboard section to avoid crash |
+| 2026-07-31 | Simplified desk structure | Removed live dashboard widgets to avoid crash |
+| 2026-08-04 | Restore static Dashboard hub | Navigation-only Start here list — no filters/widgets |
 | 2026-07-31 | Rich previews on all schemas | Highest visual improvement with zero risk |
 | 2026-07-31 | Workspace model for navigation | Clean separation of concerns |
 | 2026-07-31 | No custom React components | Protects free-tier, avoids bundle bloat |
+| 2026-08-04 | Custom Tables Studio tool | Structure panes are not spreadsheets; free-tier one-shot table UI in Studio top nav |
+| 2026-08-04 | App SDK / app-quickstart deferred | Free to use, but live hooks can burn API quota; Studio+Client CDN is safer default |
 | 2026-07-31 | No expensive GROQ queries | Protects free-tier limits |
 
 ---
+
+## Free-tier note — APIs & App SDK (2026-08-04)
+
+- **Free includes** Content Lake APIs, `@sanity/client`, Studio hosting, and **App SDK** custom apps (`npx sanity@latest init --template app-quickstart`). The SDK is not a paid product.
+- **Free hard caps** (no overages): documents 10k, API 250k/mo, API CDN 1m/mo, plus bandwidth/assets. At 100%, features block until reset/upgrade.
+- **Current usage:** ~857 documents — comfortable vs 10k.
+- **Best free path:** Studio schema/structure + site via CDN client. Use App SDK later only for a tiny, non-realtime ops UI if Studio truly cannot do it.
+- See canvas `sanity-free-tier-audit` for the full matrix.
 
 ## Next Steps
 
