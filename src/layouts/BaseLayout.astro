@@ -21,7 +21,7 @@ const siteName = settings?.siteTitle || 'wugweb — Digital Experience Agency';
 const defaultDesc = settings?.seoDescription || 'Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.';
 const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
-  : 'https://framerusercontent.com/assets/HGyE1GVVipOJ7v9BLJTPI7UW8.jpg';
+  : '/brand/wugweb-mark.png';
 // Self-hosted from /public/brand — these used to hotlink Framer's CDN, which
 // dies the moment the old Framer project is deleted.
 const defaultFavicon = settings?.favicon
@@ -45,6 +45,18 @@ const teaserCovers = teaserPosts.map((p: any) => {
     : (p.coverImage ? urlFor(p.coverImage).width(640).height(400).url() : '');
   return cover;
 });
+
+// Industries section — sourced from the Sanity industry master.
+const curatedIndustries = [
+  'Government', 'Insurtech', 'Travel', 'Logistics', 'Automotive',
+  'Fintech', 'Edtech', 'Sports', 'E-commerce', 'Media', 'Energy', 'NGOs',
+];
+const sanityIndustries = (await sanityClient
+  .fetch('*[_type == "industry"] | order(order asc) { name }[0..23]')
+  .catch(() => [])).map((i: any) => i.name);
+const globalIndustries = (sanityIndustries as string[]).length
+  ? (sanityIndustries as string[])
+  : curatedIndustries;
 ---
 
 <!doctype html>
@@ -93,7 +105,7 @@ const teaserCovers = teaserPosts.map((p: any) => {
       <h2>Industries We Empower</h2>
       <p>From local businesses to international corporations, our clients all share one common understanding when it comes to building authentic brands: the power of research, strategy, creativity, and design.</p>
       <ul class="industry-tags">
-        {['Government','Insurtech','Travel','Logistics','Automotive','Fintech','Edtech','Sports','E-commerce','Media','Energy','NGOs'].map((i) => <li>{i}</li>)}
+        {globalIndustries.map((i) => <li>{i}</li>)}
       </ul>
       <a href="/about" class="btn btn-ghost">More about us</a>
     </section>

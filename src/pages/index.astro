@@ -23,6 +23,10 @@ const fallbackIntro = [
   'Our experience design services and custom UX solutions help businesses craft impactful digital product design with precision. As a UI/UX-focused agency, we create digital experiences that not only look great but also perform with purpose.',
 ];
 const intro = introParas.length ? introParas : fallbackIntro;
+const homeTitle = homePage?.seoTitle || 'Wugweb — Digital Experience Agency';
+const homeDescription =
+  homePage?.seoDescription ||
+  'Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.';
 
 // Homepage services teaser is a curated, ordered subset — matches the
 // live site's homepage (4 of the 7 total services), not a live Sanity
@@ -66,17 +70,18 @@ const pillars = [
   { n: '06', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: '/assets/services/martech-genai/seamless-platform-integration.mp4' },
 ];
 
-// Curated homepage case-study picks — top 8 featured from Sanity
+// Curated homepage case-study picks — prefer mapped thumbnailPath
 const thumbAssets = await sanityClient.fetch(
-  '*[_type == "asset" && usage == "Thumbnail"]{relativePath, name}'
+  '*[_type == "asset" && usage == "Thumbnail"]{relativePath, sitePath, name}'
 ).catch(() => []);
 
-function findThumb(slug: string) {
+function findThumb(slug: string, thumbnailPath?: string) {
+  if (thumbnailPath) return thumbnailPath.startsWith('/') ? thumbnailPath : `/${thumbnailPath}`;
   const norm = slug?.toLowerCase().replace(/[^a-z0-9]/g, '') || '';
   for (const a of thumbAssets) {
-    const p = (a.relativePath || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const p = (a.relativePath || a.sitePath || '').toLowerCase().replace(/[^a-z0-9]/g, '');
     const n = (a.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-    if (p.includes(norm) || n.includes(norm)) return '/assets/' + a.relativePath;
+    if (p.includes(norm) || n.includes(norm)) return a.sitePath || '/assets/' + a.relativePath;
   }
   return '';
 }
@@ -86,12 +91,13 @@ const workItems = (sanityCaseStudies || []).slice(0, 8).map((cs: any) => ({
   category: (cs.disciplines || []).join(', ') || '',
   title: cs.title,
   slug: cs.slug,
-  video: findThumb(cs.slug),
+  video: findThumb(cs.slug, cs.thumbnailPath),
 }));
 
 // Local client logos copied from public/assets/framer/*/client-logo-*.
-// Verified 19 available; 13 curated for the homepage grid.
-const clientLogos = [
+// Verified 19 available; 13 curated for the homepage grid. Now sourced
+// from Sanity client.logoPath (fallback to the curated set if empty).
+const curatedLogos = [
   { name: 'Aditya Birla Capital', src: '/assets/logos/client-logo-te1y.png' },
   { name: 'Airtel', src: '/assets/logos/client-logo-c6rj.png' },
   { name: 'Axis Bank', src: '/assets/logos/client-logo-d64b.png' },
@@ -106,29 +112,37 @@ const clientLogos = [
   { name: 'RideEV', src: '/assets/logos/client-logo-1gbn.png' },
   { name: 'Valyu', src: '/assets/logos/client-logo-jj6k.png' },
 ];
+const sanityLogos = await sanityClient
+  .fetch('*[_type == "client" && defined(logoPath)]{name, logoPath} | order(name asc)')
+  .catch(() => []);
+const clientLogos = (sanityLogos as any[]).length
+  ? (sanityLogos as any[]).map((c: any) => ({ name: c.name, src: c.logoPath }))
+  : curatedLogos;
 
-const industries = [
+// Industries — sourced from the Sanity industry master (Global Settings);
+// fallback to the curated grid if the query comes back empty.
+const curatedIndustries = [
   'Government', 'Insurtech', 'Travel', 'Logistics', 'Automotive',
   'Fintech', 'Edtech', 'Sports', 'E-commerce', 'Media', 'Energy', 'NGOs',
 ];
+const sanityIndustries = (await sanityClient
+  .fetch('*[_type == "industry"] | order(order asc) { name }[0..23]')
+  .catch(() => [])).map((i: any) => i.name);
+const industries = (sanityIndustries as string[]).length
+  ? (sanityIndustries as string[])
+  : curatedIndustries;
 ---
 
-<BaseLayout title="Home" description="Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.">
+<BaseLayout title={homeTitle} description={homeDescription}>
   <!-- HERO -->
   <section class="hero">
     <video class="hero-video" autoplay muted loop playsinline preload="none"
       src="/assets/more/home/home.mp4"></video>
     <div class="hero-overlay"></div>
 
-    <!-- Nav comes from the shared SiteHeader in BaseLayout, rendered in
-         normal flow above this section — not overlaid transparently on
-         the video like the original. Deliberate simplification: safer
-         than absolute-positioning it with no way for me to visually
-         verify the result. Worth revisiting once you can see it live. -->
-
     <div class="wrap hero-content">
       <p class="eyebrow" data-reveal>A world-class digital experience agency</p>
-      <h1 class="hero-headline" data-headline>{headlineText}</h1>
+      <h1 class="hero-headline t-display" data-headline>{headlineText}</h1>
       <div class="hero-ctas" data-reveal>
         <a href="#services-content" class="btn btn-ghost">Explore Wugweb</a>
         <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
@@ -306,8 +320,7 @@ const industries = [
   }
 
   .hero-headline {
-    font-size: var(--t-display);
-    font-weight: 400;
+    font-weight: var(--font-weight-extrabold);
     margin-block: 1rem 2rem;
     max-width: 16ch;
   }
@@ -357,7 +370,7 @@ const industries = [
   }
 
   .intro-copy p + p {
-    margin-top: 1rem;
+    margin-top: var(--gap-4);
   }
 
   .intro-tags {
@@ -372,7 +385,7 @@ const industries = [
 
   .intro-tags li {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--t-micro);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     border: 1px solid var(--line);
@@ -440,13 +453,13 @@ const industries = [
     padding: var(--gap-4) var(--gap-8) var(--gap-4) var(--gap-2);
   }
   .service-card.is-open .service-card-foot { display: none; }
-  .service-card-heads .service-n { font-family: var(--font-mono); font-size: .85rem; color: var(--fg-subtle); }
-  .service-card-heads h3 { font-size: var(--t-h4); font-weight: 400; line-height: var(--lh-tight); color: var(--color-ash); margin-top: var(--gap-1); }
+  .service-card-heads .service-n { font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-subtle); }
+  .service-card-heads h3 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); line-height: var(--lh-tight); color: var(--color-ash); margin-top: var(--gap-1); }
 
   .service-card-toggle {
     position: absolute;
-    bottom: 1.35rem;
-    right: 1.15rem;
+    bottom: var(--gap-5);
+    right: var(--gap-5);
     width: var(--gap-9); height: var(--gap-9);
     display: grid; place-items: center;
     border-radius: var(--r-pill);
@@ -469,9 +482,9 @@ const industries = [
 
   .service-card-back { padding: var(--gap-6) var(--gap-5) var(--gap-7); }
   .service-card-back[hidden] { display: none; }
-  .service-card-back .service-n { font-family: var(--font-mono); font-size: .85rem; color: var(--fg-subtle); }
-  .service-card-back h3 { font-size: var(--t-h4); font-weight: 400; line-height: var(--lh-tight); color: var(--fg); margin-top: var(--gap-1); }
-  .service-card-back p { margin-top: var(--gap-4); font-size: .95rem; line-height: 1.6; color: var(--fg-muted); }
+  .service-card-back .service-n { font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-subtle); }
+  .service-card-back h3 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); line-height: var(--lh-tight); color: var(--fg); margin-top: var(--gap-1); }
+  .service-card-back p { margin-top: var(--gap-4); font-size: var(--t-sm); line-height: var(--lh-s); color: var(--fg-muted); }
 
   .pillars {
     position: relative;
@@ -498,21 +511,21 @@ const industries = [
   .pillar-thumb { flex-shrink: 0; width: 88px; height: 88px; border-radius: var(--r-3); overflow: hidden; background: rgba(255,255,255,.06); }
   .pillar-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .pillar-copy { display: block; min-width: 0; }
-  .pillar-title { display: block; font-family: var(--font-display); font-size: var(--t-h4); font-weight: 400; line-height: var(--lh-tight); }
-  .pillar-q { display: block; max-height: 0; margin-top: 0; opacity: 0; overflow: hidden; font-size: .98rem; line-height: 1.55; color: var(--fg-subtle); transition: max-height var(--duration-slow) var(--easing-in-out), opacity var(--duration-normal) var(--easing-out), margin-top var(--duration-slow) var(--easing-out); }
-  .pillar-index { position: absolute; top: var(--gap-4); right: 1.15rem; font-family: var(--font-mono); font-size: .78rem; letter-spacing: .04em; color: var(--fg-subtle); opacity: 0; transition: opacity var(--duration-normal) var(--easing-out); }
+  .pillar-title { display: block; font-family: var(--font-display); font-size: var(--t-h4); font-weight: var(--font-weight-semibold); line-height: var(--lh-tight); }
+  .pillar-q { display: block; max-height: 0; margin-top: 0; opacity: 0; overflow: hidden; font-size: var(--fluid-body-md); line-height: var(--core-line-height-normal); color: var(--fg-subtle); transition: max-height var(--duration-slow) var(--easing-in-out), opacity var(--duration-normal) var(--easing-out), margin-top var(--duration-slow) var(--easing-out); }
+  .pillar-index { position: absolute; top: var(--gap-4); right: var(--gap-5); font-family: var(--font-mono); font-size: var(--t-micro); letter-spacing: .04em; color: var(--fg-subtle); opacity: 0; transition: opacity var(--duration-normal) var(--easing-out); }
   .pillar.is-active .pillar-hit { background: var(--neutral-1); color: var(--color-ash); }
   .pillar.is-active .pillar-q { max-height: 6rem; margin-top: var(--gap-1); opacity: 1; }
   .pillar.is-active .pillar-index { opacity: 1; }
   .pillar:not(.is-active) .pillar-hit:hover { background: rgba(255,255,255,.07); }
 
   @media (max-width: 700px) {
-    .pillars { padding-block: 4rem; }
+    .pillars { padding-block: var(--space-section-md); }
     .glass-panel { border-radius: var(--r-lg); }
     .pillar-thumb { width: 62px; height: 62px; border-radius: var(--r); }
-    .pillar-hit { gap: 0.9rem; }
+    .pillar-hit { gap: var(--gap-4); }
     .pillar-index { display: none; }
-    .pillar-q { font-size: 0.9rem; }
+    .pillar-q { font-size: var(--fluid-body-sm); }
   }
   @media (prefers-reduced-motion: reduce) {
     .pillar-hit, .pillar-q, .pillar-index, .pillars-bg { transition: none; }
@@ -547,8 +560,8 @@ const industries = [
   @media (min-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
   .work-grid a { text-decoration: none; display: block; }
   .work-grid video { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); }
-  .work-client { font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); margin-top: var(--gap-4); }
-  .work-grid h3 { font-size: 1.15rem; font-weight: 400; margin-top: var(--gap-1); }
+  .work-client { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); margin-top: var(--gap-4); }
+  .work-grid h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
 
   .logos { padding-block: var(--space-section-md); border-top: 1px solid var(--line); }
   .logo-grid { list-style: none; margin: var(--gap-8) 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-10); }
@@ -560,14 +573,14 @@ const industries = [
   .industries .btn { margin-top: var(--gap-6); }
   .industry-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   @media (min-width: 640px) { .industry-grid { grid-template-columns: repeat(4, 1fr); } }
-  .industry-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: .85rem; }
+  .industry-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: var(--t-sm); }
 
   .blog-teaser { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
   .blog-teaser ul { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-6); }
   @media (min-width: 768px) { .blog-teaser ul { grid-template-columns: repeat(3, 1fr); } }
   .blog-teaser li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
   .blog-teaser .eyebrow { display: block; margin-bottom: var(--gap-2); }
-  .blog-teaser a { text-decoration: none; color: var(--fg); font-size: 1.1rem; }
+  .blog-teaser a { text-decoration: none; color: var(--fg); font-size: var(--t-l); }
 
   .closing-cta { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); text-align: center; }
   .closing-cta h2 { font-size: var(--t-h2); }
