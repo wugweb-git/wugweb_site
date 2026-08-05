@@ -1,0 +1,60 @@
+---
+export const prerender = true;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { singletonPageQuery } from '../../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'industries' }).catch(() => null);
+const industries = await sanityClient
+  .fetch(`*[_type=="industry"] | order(name asc) { name, "slug": slug.current, summary }`)
+  .catch(() => []);
+
+const title = page?.seoTitle || page?.title || 'Industries — Wugweb';
+const description =
+  page?.seoDescription ||
+  'Industries we empower with product, brand, and digital experience work.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="wrap industries-hero">
+    <p class="eyebrow" data-reveal>Industries</p>
+    <h1 data-reveal>Industries We Empower</h1>
+    <p data-reveal>
+      {description}
+    </p>
+  </section>
+
+  <section class="wrap industries-list">
+    <ul>
+      {(industries || []).map((ind: any) => (
+        <li data-reveal>
+          <h2>{ind.name}</h2>
+          {ind.summary ? <p>{ind.summary}</p> : null}
+        </li>
+      ))}
+    </ul>
+    {(!industries || industries.length === 0) && (
+      <p data-reveal>Industry master is available in Studio. Content will appear here once published.</p>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .industries-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
+  .industries-hero h1 { font-size: var(--t-h2); margin-top: var(--gap-3); max-width: 18ch; }
+  .industries-hero p { margin-top: var(--gap-5); max-width: 60ch; }
+  .industries-list { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .industries-list ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-6); }
+  @media (min-width: 768px) { .industries-list ul { grid-template-columns: repeat(2, 1fr); } }
+  .industries-list li { border-top: 1px solid var(--line); padding-top: var(--gap-4); }
+  .industries-list h2 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); }
+  .industries-list p { margin-top: var(--gap-2); color: var(--fg-muted); }
+</style>
+
+<script>
+  import { animate, inView } from 'motion';
+  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.55, delay: 0.15, easing: 'ease-out' });
+  inView('.industries-list li', (el) => {
+    animate(el, { opacity: [0, 1], y: [14, 0] }, { duration: 0.45, easing: 'ease-out' });
+  });
+</script>

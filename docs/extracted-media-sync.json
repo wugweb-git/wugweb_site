@@ -1,0 +1,1426 @@
+{
+  "generatedAt": "2026-08-04T11:43:28.789Z",
+  "dryRun": false,
+  "clientMedia": {
+    "copied": [
+      "work/aditya-birla-capital/abc-dp.mp4",
+      "work/adneto/adneto-about.mp4",
+      "work/adneto/adneto-thumb.mp4",
+      "work/adtech/adtech-about.mp4",
+      "work/adtech/adtech-thumb.mp4",
+      "work/airtel-xsafe/Xsafe-dp.mp4",
+      "work/airtel-xstream/Xstream-about.mp4",
+      "work/airtel-xstream/Xstream-dp.mp4",
+      "work/airtel-xstream/Xstream-thumb.mp4",
+      "work/axis-bank/axis-dp.mp4",
+      "work/axis-bank/impact.webp",
+      "work/bankco/bankco-about.mp4",
+      "work/bankco/bankco-thumb.mp4",
+      "work/cartier/cartier-about.mp4",
+      "work/cartier/cartier-dp.mp4",
+      "work/cartier/cartier-solution.mp4",
+      "work/cartier/cartier-thumb.mp4",
+      "work/gratifi/gratifi-about.mp4",
+      "work/gratifi/gratifi-dp.mp4",
+      "work/gratifi/gratifi-thumb.mp4",
+      "work/indusind-bank/Indusninja-dp.mp4",
+      "work/indusind-bank/Solution.jpg",
+      "work/inkompass/filler.webp",
+      "work/inkompass/inkompass-dp.mp4",
+      "work/itc-citadel/citadel-about.mp4",
+      "work/itc-citadel/citadel-thumb.mp4",
+      "work/kia/kia-about.mp4",
+      "work/kia/kia-thumb.mp4",
+      "work/kits-by-wugweb/bankco-about.mp4",
+      "work/metcred/challenges",
+      "work/metcred/metcred-dp.mp4",
+      "work/metcred/metcred-landing.mp4",
+      "work/ntuc/ntuc-about.mp4",
+      "work/ntuc/ntuc-dp.mp4",
+      "work/ntuc/ntuc-solution.mp4",
+      "work/ntuc/ntuc-thumb.mp4",
+      "work/others/Linkedin.mp4",
+      "work/plufo/plufo-about.mp4",
+      "work/plufo/plufo-dp.mp4",
+      "work/plufo/plufo-thumb.mp4",
+      "work/rideev/RideEV-about.mp4",
+      "work/rideev/RideEV-dp.mp4",
+      "work/rideev/RideEV-thumb.mp4",
+      "work/sadhan/sadhan-dp.mp4",
+      "work/sbs-transit/sbs-about.mp4",
+      "work/sbs-transit/sbs-thumb.mp4",
+      "work/tot/tot-about.mp4",
+      "work/tot/tot-dp.mp4",
+      "work/tot/tot-thumb.mp4",
+      "work/valyu/Valyu-about.mp4",
+      "work/valyu/Valyu-thumb.mp4"
+    ],
+    "skipped": [
+      "aditya-birla-capital/abc-about.mp4",
+      "aditya-birla-capital/abc-thumb.mp4",
+      "airtel-xsafe/Xsafe-about.mp4",
+      "airtel-xsafe/Xsafe-thumb.mp4",
+      "axis-bank/axis-about.mp4",
+      "axis-bank/axis-thumb.mp4",
+      "indusind-bank/Indusninja-about.mp4",
+      "indusind-bank/Indusninja-thumb.mp4",
+      "inkompass/inkompass-about.mp4",
+      "inkompass/inkompass-thumb.mp4",
+      "metcred/metcred-about.mp4",
+      "metcred/metcred-thumb.mp4",
+      "sadhan/sadhan-about.mp4",
+      "sadhan/sadhan-thumb.mp4",
+      "visione/visiOne-about.mp4",
+      "visione/visiOne-thumb.mp4"
+    ]
+  },
+  "blog": {
+    "discovered": [
+      {
+        "slug": "ux-meets-cx-seamless-experiences",
+        "url": "https://framerusercontent.com/images/nXSl3qgHBSrqWRWCD4mehYPE.png",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-hacks-for-illustrating-and-drawing-in-figma",
+        "url": "https://framerusercontent.com/images/qAcaz7TCX3uyXYJQTlTGrkWJmM.png",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-key-takeaways-from-google-s-material-design-guidelines",
+        "url": "https://framerusercontent.com/images/ccD81WAyDJXW4EdVlitB0q4X3A.webp",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-principles-for-typography-in-ui-design",
+        "url": "https://framerusercontent.com/images/UOn3O7wPLiy3m9Oo25yrW3p4qo.webp",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "top-10-design-systems-ux-ui-2026",
+        "url": "https://framerusercontent.com/images/t3hqYRkjHHbbWZUHkHZ4VCeQH4.jpg",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-rules-of-thumb-in-ui-design",
+        "url": "https://framerusercontent.com/images/okYptTa2ytSzqoLCC7LoqAPCVPM.webp",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-essential-skills-for-the-modern-ui-ux-designer",
+        "url": "https://framerusercontent.com/images/w9t7YgkHQWkTmHAbENLZxbZKnU.webp",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-figma-tricks-i-wish-i-knew-earlier",
+        "url": "https://framerusercontent.com/images/wiUlrnOOtZT8UKbqtqHItzX6g.png",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-a-hole-design-patterns",
+        "url": "https://framerusercontent.com/images/JkO2LKQXZkolHrgwjZX8sLg1NNI.webp",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-ways-to-design-more-inclusive-products",
+        "url": "https://framerusercontent.com/images/uGVjvMKjSxMZ8bhcDvuZkQGLs.webp",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "10-confessions-of-a-product-designer",
+        "url": "https://framerusercontent.com/images/s39mg8UHdww0OLpnz3Q4bMn8s.webp",
+        "source": "framer-listing"
+      },
+      {
+        "slug": "design-work-concentration",
+        "url": "https://framerusercontent.com/images/JdoibQCd0qh6WhdytOOFPYDI.png",
+        "source": "sanity-body"
+      },
+      {
+        "slug": "balancing-user-needs-and-business-goals",
+        "url": "https://framerusercontent.com/images/hudOgPAcrjI2NrRPPEXhhMQ8Y.png",
+        "source": "sanity-body"
+      },
+      {
+        "slug": "agile-working-in-ux",
+        "url": "https://framerusercontent.com/images/68TPHsVClAsBEMmbjJ3UrvA9G0.png",
+        "source": "sanity-body"
+      },
+      {
+        "slug": "remote-design-work-pros-cons",
+        "url": "https://framerusercontent.com/images/J5nvOfTfwXok8SiEIrS6tY6wyo.png",
+        "source": "sanity-body"
+      },
+      {
+        "slug": "the-ai-powered-cx-singularity",
+        "url": "https://framerusercontent.com/images/oVbgxMd8q25PHkxy7thEztzf4.png",
+        "source": "sanity-body"
+      },
+      {
+        "slug": "ai-in-ux-design",
+        "url": "https://framerusercontent.com/images/GNSDhhZl94zld22rr0B9Adhjwk.png",
+        "source": "sanity-body"
+      },
+      {
+        "slug": "html-sitemaps-for-seo-ux",
+        "url": "https://framerusercontent.com/images/x7JSfpUmcCRQmKKVPzjbSfj23QU.png",
+        "source": "sanity-body"
+      },
+      {
+        "slug": "6-strategies-that-got-my-side-project-its-first-1-000-users",
+        "url": "https://framerusercontent.com/images/xLduEyZbJUKDaMpBzoLGUig8Qtc.png",
+        "source": "framer-page"
+      },
+      {
+        "slug": "is-augmented-reality-the-future-of-ux",
+        "url": "https://framerusercontent.com/images/xLduEyZbJUKDaMpBzoLGUig8Qtc.png",
+        "source": "framer-page"
+      },
+      {
+        "slug": "10-features-i-m-loving-in-framer-right-now",
+        "url": "https://framerusercontent.com/images/xLduEyZbJUKDaMpBzoLGUig8Qtc.png",
+        "source": "framer-page"
+      }
+    ],
+    "downloaded": [
+      "blog/ux-meets-cx-seamless-experiences.png",
+      "blog/10-hacks-for-illustrating-and-drawing-in-figma.png",
+      "blog/10-key-takeaways-from-google-s-material-design-guidelines.webp",
+      "blog/10-principles-for-typography-in-ui-design.webp",
+      "blog/top-10-design-systems-ux-ui-2026.jpg",
+      "blog/10-rules-of-thumb-in-ui-design.webp",
+      "blog/10-essential-skills-for-the-modern-ui-ux-designer.webp",
+      "blog/10-figma-tricks-i-wish-i-knew-earlier.png",
+      "blog/10-a-hole-design-patterns.webp",
+      "blog/10-ways-to-design-more-inclusive-products.webp",
+      "blog/10-confessions-of-a-product-designer.webp",
+      "blog/design-work-concentration.png",
+      "blog/balancing-user-needs-and-business-goals.png",
+      "blog/agile-working-in-ux.png",
+      "blog/remote-design-work-pros-cons.png",
+      "blog/the-ai-powered-cx-singularity.png",
+      "blog/ai-in-ux-design.png",
+      "blog/html-sitemaps-for-seo-ux.png",
+      "blog/6-strategies-that-got-my-side-project-its-first-1-000-users.png",
+      "blog/is-augmented-reality-the-future-of-ux.png",
+      "blog/10-features-i-m-loving-in-framer-right-now.png"
+    ],
+    "skipped": [],
+    "patched": [
+      {
+        "id": "post-ux-meets-cx-seamless-experiences",
+        "slug": "ux-meets-cx-seamless-experiences",
+        "coverPath": "/assets/blog/ux-meets-cx-seamless-experiences.png"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSDUa",
+        "slug": "ux-meets-cx-seamless-experiences",
+        "coverPath": "/assets/blog/ux-meets-cx-seamless-experiences.png"
+      },
+      {
+        "id": "post-10-hacks-for-illustrating-and-drawing-in-figma",
+        "slug": "10-hacks-for-illustrating-and-drawing-in-figma",
+        "coverPath": "/assets/blog/10-hacks-for-illustrating-and-drawing-in-figma.png"
+      },
+      {
+        "id": "tiq3HCZvfjiLTvLIciRCM3",
+        "slug": "10-hacks-for-illustrating-and-drawing-in-figma",
+        "coverPath": "/assets/blog/10-hacks-for-illustrating-and-drawing-in-figma.png"
+      },
+      {
+        "id": "post-10-key-takeaways-from-google-s-material-design-guidelines",
+        "slug": "10-key-takeaways-from-google-s-material-design-guidelines",
+        "coverPath": "/assets/blog/10-key-takeaways-from-google-s-material-design-guidelines.webp"
+      },
+      {
+        "id": "post-10-key-takeaways-from-googles-material-design-guidelines",
+        "slug": "10-key-takeaways-from-googles-material-design-guidelines",
+        "coverPath": "/assets/blog/10-key-takeaways-from-google-s-material-design-guidelines.webp"
+      },
+      {
+        "id": "tiq3HCZvfjiLTvLIciRJvV",
+        "slug": "10-key-takeaways-from-google-s-material-design-guidelines",
+        "coverPath": "/assets/blog/10-key-takeaways-from-google-s-material-design-guidelines.webp"
+      },
+      {
+        "id": "post-10-principles-for-typography-in-ui-design",
+        "slug": "10-principles-for-typography-in-ui-design",
+        "coverPath": "/assets/blog/10-principles-for-typography-in-ui-design.webp"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSEJD",
+        "slug": "10-principles-for-typography-in-ui-design",
+        "coverPath": "/assets/blog/10-principles-for-typography-in-ui-design.webp"
+      },
+      {
+        "id": "post-top-10-design-systems-ux-ui-2026",
+        "slug": "top-10-design-systems-ux-ui-2026",
+        "coverPath": "/assets/blog/top-10-design-systems-ux-ui-2026.jpg"
+      },
+      {
+        "id": "tiq3HCZvfjiLTvLIciRBwl",
+        "slug": "top-10-design-systems-ux-ui-2026",
+        "coverPath": "/assets/blog/top-10-design-systems-ux-ui-2026.jpg"
+      },
+      {
+        "id": "post-10-rules-of-thumb-in-ui-design",
+        "slug": "10-rules-of-thumb-in-ui-design",
+        "coverPath": "/assets/blog/10-rules-of-thumb-in-ui-design.webp"
+      },
+      {
+        "id": "tiq3HCZvfjiLTvLIciRCX7",
+        "slug": "10-rules-of-thumb-in-ui-design",
+        "coverPath": "/assets/blog/10-rules-of-thumb-in-ui-design.webp"
+      },
+      {
+        "id": "post-10-essential-skills-for-the-modern-ui-ux-designer",
+        "slug": "10-essential-skills-for-the-modern-ui-ux-designer",
+        "coverPath": "/assets/blog/10-essential-skills-for-the-modern-ui-ux-designer.webp"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSEAC",
+        "slug": "10-essential-skills-for-the-modern-ui-ux-designer",
+        "coverPath": "/assets/blog/10-essential-skills-for-the-modern-ui-ux-designer.webp"
+      },
+      {
+        "id": "post-10-figma-tricks-i-wish-i-knew-earlier",
+        "slug": "10-figma-tricks-i-wish-i-knew-earlier",
+        "coverPath": "/assets/blog/10-figma-tricks-i-wish-i-knew-earlier.png"
+      },
+      {
+        "id": "sBGz9jasVeWZXQwGrvdhzS",
+        "slug": "10-figma-tricks-i-wish-i-knew-earlier",
+        "coverPath": "/assets/blog/10-figma-tricks-i-wish-i-knew-earlier.png"
+      },
+      {
+        "id": "post-10-a-hole-design-patterns",
+        "slug": "10-a-hole-design-patterns",
+        "coverPath": "/assets/blog/10-a-hole-design-patterns.webp"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSDlE",
+        "slug": "10-a-hole-design-patterns",
+        "coverPath": "/assets/blog/10-a-hole-design-patterns.webp"
+      },
+      {
+        "id": "post-10-ways-to-design-more-inclusive-products",
+        "slug": "10-ways-to-design-more-inclusive-products",
+        "coverPath": "/assets/blog/10-ways-to-design-more-inclusive-products.webp"
+      },
+      {
+        "id": "tiq3HCZvfjiLTvLIciRJir",
+        "slug": "10-ways-to-design-more-inclusive-products",
+        "coverPath": "/assets/blog/10-ways-to-design-more-inclusive-products.webp"
+      },
+      {
+        "id": "post-10-confessions-of-a-product-designer",
+        "slug": "10-confessions-of-a-product-designer",
+        "coverPath": "/assets/blog/10-confessions-of-a-product-designer.webp"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSEDf",
+        "slug": "10-confessions-of-a-product-designer",
+        "coverPath": "/assets/blog/10-confessions-of-a-product-designer.webp"
+      },
+      {
+        "id": "post-design-work-concentration",
+        "slug": "design-work-concentration",
+        "coverPath": "/assets/blog/design-work-concentration.png"
+      },
+      {
+        "id": "sBGz9jasVeWZXQwGrvdcy5",
+        "slug": "design-work-concentration",
+        "coverPath": "/assets/blog/design-work-concentration.png"
+      },
+      {
+        "id": "post-balancing-user-needs-and-business-goals",
+        "slug": "balancing-user-needs-and-business-goals",
+        "coverPath": "/assets/blog/balancing-user-needs-and-business-goals.png"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSCbn",
+        "slug": "balancing-user-needs-and-business-goals",
+        "coverPath": "/assets/blog/balancing-user-needs-and-business-goals.png"
+      },
+      {
+        "id": "post-agile-working-in-ux",
+        "slug": "agile-working-in-ux",
+        "coverPath": "/assets/blog/agile-working-in-ux.png"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSCpf",
+        "slug": "agile-working-in-ux",
+        "coverPath": "/assets/blog/agile-working-in-ux.png"
+      },
+      {
+        "id": "post-remote-design-work-pros-cons",
+        "slug": "remote-design-work-pros-cons",
+        "coverPath": "/assets/blog/remote-design-work-pros-cons.png"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSDa8",
+        "slug": "remote-design-work-pros-cons",
+        "coverPath": "/assets/blog/remote-design-work-pros-cons.png"
+      },
+      {
+        "id": "post-the-ai-powered-cx-singularity",
+        "slug": "the-ai-powered-cx-singularity",
+        "coverPath": "/assets/blog/the-ai-powered-cx-singularity.png"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSDdb",
+        "slug": "the-ai-powered-cx-singularity",
+        "coverPath": "/assets/blog/the-ai-powered-cx-singularity.png"
+      },
+      {
+        "id": "post-ai-in-ux-design",
+        "slug": "ai-in-ux-design",
+        "coverPath": "/assets/blog/ai-in-ux-design.png"
+      },
+      {
+        "id": "tiq3HCZvfjiLTvLIciRAyh",
+        "slug": "ai-in-ux-design",
+        "coverPath": "/assets/blog/ai-in-ux-design.png"
+      },
+      {
+        "id": "post-html-sitemaps-for-seo-ux",
+        "slug": "html-sitemaps-for-seo-ux",
+        "coverPath": "/assets/blog/html-sitemaps-for-seo-ux.png"
+      },
+      {
+        "id": "tiq3HCZvfjiLTvLIciRB9l",
+        "slug": "html-sitemaps-for-seo-ux",
+        "coverPath": "/assets/blog/html-sitemaps-for-seo-ux.png"
+      },
+      {
+        "id": "post-6-strategies-that-got-my-side-project-its-first-1-000-users",
+        "slug": "6-strategies-that-got-my-side-project-its-first-1-000-users",
+        "coverPath": "/assets/blog/6-strategies-that-got-my-side-project-its-first-1-000-users.png"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSDvd",
+        "slug": "6-strategies-that-got-my-side-project-its-first-1-000-users",
+        "coverPath": "/assets/blog/6-strategies-that-got-my-side-project-its-first-1-000-users.png"
+      },
+      {
+        "id": "post-is-augmented-reality-the-future-of-ux",
+        "slug": "is-augmented-reality-the-future-of-ux",
+        "coverPath": "/assets/blog/is-augmented-reality-the-future-of-ux.png"
+      },
+      {
+        "id": "sHwgBSKVSbbtAB6hpiSDzn",
+        "slug": "is-augmented-reality-the-future-of-ux",
+        "coverPath": "/assets/blog/is-augmented-reality-the-future-of-ux.png"
+      },
+      {
+        "id": "post-10-features-i-m-loving-in-framer-right-now",
+        "slug": "10-features-i-m-loving-in-framer-right-now",
+        "coverPath": "/assets/blog/10-features-i-m-loving-in-framer-right-now.png"
+      },
+      {
+        "id": "tiq3HCZvfjiLTvLIciRJPt",
+        "slug": "10-features-i-m-loving-in-framer-right-now",
+        "coverPath": "/assets/blog/10-features-i-m-loving-in-framer-right-now.png"
+      }
+    ]
+  },
+  "caseStudies": {
+    "patched": [
+      {
+        "id": "caseStudy-accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+        "slug": "accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+        "thumbnailPath": "/assets/work/kia/kia-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/kia/kia-about.mp4"
+        ],
+        "workFolder": "kia",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-aditya-birla-credit-score",
+        "slug": "aditya-birla-credit-score",
+        "thumbnailPath": "/assets/work/aditya-birla-capital/abc-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/aditya-birla-capital/abc-about.mp4",
+          "/assets/work/aditya-birla-capital/abc-dp.mp4"
+        ],
+        "workFolder": "aditya-birla-capital",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-adneto-merchant-platform",
+        "slug": "adneto-merchant-platform",
+        "thumbnailPath": "/assets/work/adneto/adneto-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/adneto/adneto-about.mp4"
+        ],
+        "workFolder": "adneto",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+        "slug": "adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+        "thumbnailPath": "/assets/work/adtech/adtech-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/adtech/adtech-about.mp4"
+        ],
+        "workFolder": "adtech",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-adtech-imedia",
+        "slug": "adtech-imedia",
+        "thumbnailPath": "/assets/work/adtech/adtech-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/adtech/adtech-about.mp4"
+        ],
+        "workFolder": "adtech",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-airtel-xsafe",
+        "slug": "airtel-xsafe",
+        "thumbnailPath": "/assets/work/airtel-xsafe/xsafe-thumb.mp4",
+        "coverPath": "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/cover-image-y42i.jpg",
+        "galleryPaths": [
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/cover-image-y42i.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/challenge-image-1-bddw.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/challenge-image-2-0ldr.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/challenges-image-la0i.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/conclusion-image-1-bgxm.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/conclusion-image-2-08ud.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/design-philosophy-image-1-25mz.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/filler-image-2-bo7u.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/filler-image-pt4q.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/solution-image-1-9qu2.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/solution-image-2-6es9.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/solution-image-3-5685.jpg",
+          "/assets/work/airtel-xsafe/Xsafe-dp.mp4",
+          "/assets/work/airtel-xsafe/xsafe-about.mp4"
+        ],
+        "workFolder": "airtel-xsafe",
+        "framerFolder": "airtel-xsafe-securing-homes-with-intuitive-digital-experiences"
+      },
+      {
+        "id": "caseStudy-airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+        "slug": "airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+        "thumbnailPath": "/assets/work/airtel-xsafe/xsafe-thumb.mp4",
+        "coverPath": "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/cover-image-y42i.jpg",
+        "galleryPaths": [
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/cover-image-y42i.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/challenge-image-1-bddw.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/challenge-image-2-0ldr.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/challenges-image-la0i.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/conclusion-image-1-bgxm.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/conclusion-image-2-08ud.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/design-philosophy-image-1-25mz.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/filler-image-2-bo7u.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/filler-image-pt4q.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/solution-image-1-9qu2.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/solution-image-2-6es9.jpg",
+          "/assets/framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/solution-image-3-5685.jpg",
+          "/assets/work/airtel-xsafe/Xsafe-dp.mp4",
+          "/assets/work/airtel-xsafe/xsafe-about.mp4"
+        ],
+        "workFolder": "airtel-xsafe",
+        "framerFolder": "airtel-xsafe-securing-homes-with-intuitive-digital-experiences"
+      },
+      {
+        "id": "caseStudy-airtel-xstream-play",
+        "slug": "airtel-xstream-play",
+        "thumbnailPath": "/assets/work/airtel-xstream/Xstream-thumb.mp4",
+        "coverPath": "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/cover-image-3pm9.jpg",
+        "galleryPaths": [
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/cover-image-3pm9.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/challenge-image-1-qyrc.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/challenge-image-2-jr4r.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/challenges-image-25bd.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/conclusion-image-1-bcir.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/conclusion-image-2-j5c9.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/design-philosophy-image-1-1g5e.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/design-philosophy-image-2-nx78.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/design-philosophy-image-3-drqq.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/filler-image-2-lra4.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/filler-image-uwg8.png",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/solution-image-1-wolf.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/solution-image-2-wdl4.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/styles-image-1-ctd5.png",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/styles-image-2-2lht.png",
+          "/assets/work/airtel-xstream/Xstream-about.mp4",
+          "/assets/work/airtel-xstream/Xstream-dp.mp4"
+        ],
+        "workFolder": "airtel-xstream",
+        "framerFolder": "airtel-xstream-play-digital-entertainment-ux-web-design"
+      },
+      {
+        "id": "caseStudy-airtel-xstream-play-showcasing-indias-unified-digital-entertainment",
+        "slug": "airtel-xstream-play-showcasing-indias-unified-digital-entertainment",
+        "thumbnailPath": "/assets/work/airtel-xstream/Xstream-thumb.mp4",
+        "coverPath": "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/cover-image-3pm9.jpg",
+        "galleryPaths": [
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/cover-image-3pm9.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/challenge-image-1-qyrc.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/challenge-image-2-jr4r.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/challenges-image-25bd.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/conclusion-image-1-bcir.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/conclusion-image-2-j5c9.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/design-philosophy-image-1-1g5e.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/design-philosophy-image-2-nx78.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/design-philosophy-image-3-drqq.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/filler-image-2-lra4.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/filler-image-uwg8.png",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/solution-image-1-wolf.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/solution-image-2-wdl4.jpg",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/styles-image-1-ctd5.png",
+          "/assets/framer/airtel-xstream-play-digital-entertainment-ux-web-design/styles-image-2-2lht.png",
+          "/assets/work/airtel-xstream/Xstream-about.mp4",
+          "/assets/work/airtel-xstream/Xstream-dp.mp4"
+        ],
+        "workFolder": "airtel-xstream",
+        "framerFolder": "airtel-xstream-play-digital-entertainment-ux-web-design"
+      },
+      {
+        "id": "caseStudy-axis-bank-savings",
+        "slug": "axis-bank-savings",
+        "thumbnailPath": "/assets/work/axis-bank/axis-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/axis-bank/axis-about.mp4",
+          "/assets/work/axis-bank/axis-dp.mp4",
+          "/assets/work/axis-bank/impact.webp"
+        ],
+        "workFolder": "axis-bank",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-bankco",
+        "slug": "bankco",
+        "thumbnailPath": "/assets/work/bankco/bankco-thumb.mp4",
+        "coverPath": "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/cover-image-objk.jpg",
+        "galleryPaths": [
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/cover-image-objk.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/challenge-image-1-ms9n.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/challenges-image-3aqk.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/conclusion-image-1-nm8l.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/conclusion-image-2-zs1h.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/design-philosophy-image-1-bh4r.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/design-philosophy-image-gbfe.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/filler-image-2-sxw7.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/filler-image-4jlc.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/solution-image-1-0pg8.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/solution-image-2-lm0f.png",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/solution-image-3-hc3o.jpg",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/styles-image-1-b8d5.png",
+          "/assets/framer/bankco-super-app-digital-banking-loyalty-commerce/styles-image-2-mhab.png",
+          "/assets/work/bankco/bankco-about.mp4"
+        ],
+        "workFolder": "bankco",
+        "framerFolder": "bankco-super-app-digital-banking-loyalty-commerce"
+      },
+      {
+        "id": "caseStudy-bankco-engineering-the-ultimate-banking-super-app-ecosystem",
+        "slug": "bankco-engineering-the-ultimate-banking-super-app-ecosystem",
+        "thumbnailPath": "/assets/work/bankco/bankco-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/bankco/bankco-about.mp4"
+        ],
+        "workFolder": "bankco",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-cartier-careers",
+        "slug": "cartier-careers",
+        "thumbnailPath": "/assets/work/cartier/cartier-thumb.mp4",
+        "coverPath": "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/cover-image-qrw0.jpg",
+        "galleryPaths": [
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/cover-image-qrw0.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/challenge-image-1-xrsy.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/challenge-image-2-p3bq.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/challenges-image-0ykf.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/conclusion-image-1-ztuy.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/conclusion-image-2-sx4c.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/design-philosophy-image-1-s2ry.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/design-philosophy-image-2-aa9g.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/design-philosophy-image-3-x1qg.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/filler-image-2-3hnm.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/filler-image-ildp.png",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/solution-image-1-xrct.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/solution-image-2-52kw.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/solution-image-3-56my.jpg",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/styles-image-1-5rfo.png",
+          "/assets/framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/styles-image-2-8h8t.png",
+          "/assets/work/cartier/cartier-about.mp4",
+          "/assets/work/cartier/cartier-dp.mp4",
+          "/assets/work/cartier/cartier-solution.mp4"
+        ],
+        "workFolder": "cartier",
+        "framerFolder": "cartier-career-site-redesign-luxury-ux-ui-talent-branding"
+      },
+      {
+        "id": "caseStudy-crafting-digital-authority-the-adneto-website-showcase",
+        "slug": "crafting-digital-authority-the-adneto-website-showcase",
+        "thumbnailPath": "/assets/work/adneto/adneto-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/adneto/adneto-about.mp4"
+        ],
+        "workFolder": "adneto",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+        "slug": "demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+        "thumbnailPath": "/assets/work/aditya-birla-capital/abc-thumb.mp4",
+        "coverPath": "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/cover-image-kd09.jpg",
+        "galleryPaths": [
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/cover-image-kd09.jpg",
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/challenges-image-9iey.jpg",
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/filler-image-2-h6aw.jpg",
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/filler-image-poxk.jpg",
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/solution-image-1-nu8a.jpg",
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/solution-image-2-ke5v.jpg",
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/solution-image-3-n915.jpg",
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/styles-image-1-4or8.png",
+          "/assets/framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/styles-image-2-upmv.png",
+          "/assets/work/aditya-birla-capital/abc-about.mp4",
+          "/assets/work/aditya-birla-capital/abc-dp.mp4"
+        ],
+        "workFolder": "aditya-birla-capital",
+        "framerFolder": "demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool"
+      },
+      {
+        "id": "caseStudy-indusninja",
+        "slug": "indusninja",
+        "thumbnailPath": "/assets/work/indusind-bank/indusninja-thumb.mp4",
+        "coverPath": "/assets/framer/indusninja-your-ai-powered-financial-ninja/cover-image-h328.jpg",
+        "galleryPaths": [
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/cover-image-h328.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/challenges-image-p8w9.gif",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/conclusion-image-2-p79c.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/filler-image-2-cy7g.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/filler-image-uifh.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/solution-image-1-vv8d.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/solution-image-2-z6rs.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/solution-image-3-xvth.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/styles-image-1-6a3m.png",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/styles-image-2-twfa.png",
+          "/assets/work/indusind-bank/Indusninja-dp.mp4",
+          "/assets/work/indusind-bank/Solution.jpg",
+          "/assets/work/indusind-bank/indusninja-about.mp4"
+        ],
+        "workFolder": "indusind-bank",
+        "framerFolder": "indusninja-your-ai-powered-financial-ninja"
+      },
+      {
+        "id": "caseStudy-indusninja-your-ai-powered-financial-ninja",
+        "slug": "indusninja-your-ai-powered-financial-ninja",
+        "thumbnailPath": "/assets/work/indusind-bank/indusninja-thumb.mp4",
+        "coverPath": "/assets/framer/indusninja-your-ai-powered-financial-ninja/cover-image-h328.jpg",
+        "galleryPaths": [
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/cover-image-h328.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/challenges-image-p8w9.gif",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/conclusion-image-2-p79c.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/filler-image-2-cy7g.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/filler-image-uifh.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/solution-image-1-vv8d.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/solution-image-2-z6rs.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/solution-image-3-xvth.jpg",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/styles-image-1-6a3m.png",
+          "/assets/framer/indusninja-your-ai-powered-financial-ninja/styles-image-2-twfa.png",
+          "/assets/work/indusind-bank/Indusninja-dp.mp4",
+          "/assets/work/indusind-bank/Solution.jpg",
+          "/assets/work/indusind-bank/indusninja-about.mp4"
+        ],
+        "workFolder": "indusind-bank",
+        "framerFolder": "indusninja-your-ai-powered-financial-ninja"
+      },
+      {
+        "id": "caseStudy-inkompass",
+        "slug": "inkompass",
+        "thumbnailPath": "/assets/work/inkompass/inkompass-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/inkompass/filler.webp",
+          "/assets/work/inkompass/inkompass-about.mp4",
+          "/assets/work/inkompass/inkompass-dp.mp4"
+        ],
+        "workFolder": "inkompass",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-kia-loyalty-dashboard",
+        "slug": "kia-loyalty-dashboard",
+        "thumbnailPath": "/assets/work/kia/kia-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/kia/kia-about.mp4"
+        ],
+        "workFolder": "kia",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-metcred",
+        "slug": "metcred",
+        "thumbnailPath": "/assets/work/metcred/metcred-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/metcred/challenges",
+          "/assets/work/metcred/metcred-about.mp4",
+          "/assets/work/metcred/metcred-dp.mp4",
+          "/assets/work/metcred/metcred-landing.mp4"
+        ],
+        "workFolder": "metcred",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-ntuc-u-care",
+        "slug": "ntuc-u-care",
+        "coverPath": "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/cover-image-kd0f.jpg",
+        "galleryPaths": [
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/cover-image-kd0f.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/challenges-image-9uky.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/filler-image-2-dg4t.png",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/filler-image-cpra.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/solution-image-1-s3p2.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/solution-image-2-azzj.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/solution-image-3-2e83.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/styles-image-1-vocm.png",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/styles-image-2-0a6g.png"
+        ],
+        "workFolder": null,
+        "framerFolder": "ntuc-u-care-fund-digital-transformation-for-enhanced-member-support"
+      },
+      {
+        "id": "caseStudy-ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+        "slug": "ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+        "coverPath": "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/cover-image-kd0f.jpg",
+        "galleryPaths": [
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/cover-image-kd0f.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/challenges-image-9uky.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/filler-image-2-dg4t.png",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/filler-image-cpra.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/solution-image-1-s3p2.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/solution-image-2-azzj.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/solution-image-3-2e83.jpg",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/styles-image-1-vocm.png",
+          "/assets/framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/styles-image-2-0a6g.png"
+        ],
+        "workFolder": null,
+        "framerFolder": "ntuc-u-care-fund-digital-transformation-for-enhanced-member-support"
+      },
+      {
+        "id": "caseStudy-plufo",
+        "slug": "plufo",
+        "thumbnailPath": "/assets/work/plufo/plufo-thumb.mp4",
+        "coverPath": "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/cover-image-8z0d.jpg",
+        "galleryPaths": [
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/cover-image-8z0d.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/challenge-image-1-0nbl.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/challenge-image-2-fvqv.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/challenges-image-pw4b.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/conclusion-image-1-8iav.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/design-philosophy-image-1-jtfz.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/design-philosophy-image-2-g4e2.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/design-philosophy-image-3-hqoi.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/filler-image-2-1qsw.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/filler-image-4240.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/solution-image-1-t7mx.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/solution-image-2-rpon.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/solution-image-3-5ovt.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/styles-image-1-3a6k.png",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/styles-image-2-zpxh.png",
+          "/assets/work/plufo/plufo-about.mp4",
+          "/assets/work/plufo/plufo-dp.mp4"
+        ],
+        "workFolder": "plufo",
+        "framerFolder": "plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners"
+      },
+      {
+        "id": "caseStudy-plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+        "slug": "plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+        "thumbnailPath": "/assets/work/plufo/plufo-thumb.mp4",
+        "coverPath": "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/cover-image-8z0d.jpg",
+        "galleryPaths": [
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/cover-image-8z0d.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/challenge-image-1-0nbl.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/challenge-image-2-fvqv.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/challenges-image-pw4b.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/conclusion-image-1-8iav.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/design-philosophy-image-1-jtfz.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/design-philosophy-image-2-g4e2.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/design-philosophy-image-3-hqoi.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/filler-image-2-1qsw.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/filler-image-4240.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/solution-image-1-t7mx.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/solution-image-2-rpon.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/solution-image-3-5ovt.jpg",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/styles-image-1-3a6k.png",
+          "/assets/framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/styles-image-2-zpxh.png",
+          "/assets/work/plufo/plufo-about.mp4",
+          "/assets/work/plufo/plufo-dp.mp4"
+        ],
+        "workFolder": "plufo",
+        "framerFolder": "plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners"
+      },
+      {
+        "id": "caseStudy-redesigning-cartiers-career-website-where-passion-meets-excellence",
+        "slug": "redesigning-cartiers-career-website-where-passion-meets-excellence",
+        "thumbnailPath": "/assets/work/cartier/cartier-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/cartier/cartier-about.mp4",
+          "/assets/work/cartier/cartier-dp.mp4",
+          "/assets/work/cartier/cartier-solution.mp4"
+        ],
+        "workFolder": "cartier",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future",
+        "slug": "redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future",
+        "thumbnailPath": "/assets/work/inkompass/inkompass-thumb.mp4",
+        "coverPath": "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/cover-image-now0.jpg",
+        "galleryPaths": [
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/cover-image-now0.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/challenge-image-1-m9pk.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/challenge-image-2-w1b3.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/challenges-image-x70k.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/filler-image-2-szxa.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/filler-image-xcjn.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/solution-image-1-whjr.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/solution-image-2-4pa3.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/solution-image-3-ls4o.jpg",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/styles-image-1-48n3.png",
+          "/assets/framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/styles-image-2-3v8v.png",
+          "/assets/work/inkompass/filler.webp",
+          "/assets/work/inkompass/inkompass-about.mp4",
+          "/assets/work/inkompass/inkompass-dp.mp4"
+        ],
+        "workFolder": "inkompass",
+        "framerFolder": "redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future"
+      },
+      {
+        "id": "caseStudy-rideev",
+        "slug": "rideev",
+        "thumbnailPath": "/assets/work/rideev/RideEV-thumb.mp4",
+        "coverPath": "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/cover-image-uopf.jpg",
+        "galleryPaths": [
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/cover-image-uopf.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/challenges-image-610k.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/design-philosophy-image-1-y3de.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/filler-image-2-4g25.png",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/filler-image-xidj.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/solution-image-1-6d5j.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/solution-image-2-ntpg.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/solution-image-3-vf6q.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/styles-image-1-vbu4.png",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/styles-image-2-mss3.png",
+          "/assets/work/rideev/RideEV-about.mp4",
+          "/assets/work/rideev/RideEV-dp.mp4"
+        ],
+        "workFolder": "rideev",
+        "framerFolder": "rideev-powering-the-phygital-ev-revolution-in-india"
+      },
+      {
+        "id": "caseStudy-rideev-powering-the-phygital-ev-revolution-in-india",
+        "slug": "rideev-powering-the-phygital-ev-revolution-in-india",
+        "thumbnailPath": "/assets/work/rideev/RideEV-thumb.mp4",
+        "coverPath": "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/cover-image-uopf.jpg",
+        "galleryPaths": [
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/cover-image-uopf.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/challenges-image-610k.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/design-philosophy-image-1-y3de.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/filler-image-2-4g25.png",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/filler-image-xidj.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/solution-image-1-6d5j.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/solution-image-2-ntpg.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/solution-image-3-vf6q.jpg",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/styles-image-1-vbu4.png",
+          "/assets/framer/rideev-powering-the-phygital-ev-revolution-in-india/styles-image-2-mss3.png",
+          "/assets/work/rideev/RideEV-about.mp4",
+          "/assets/work/rideev/RideEV-dp.mp4"
+        ],
+        "workFolder": "rideev",
+        "framerFolder": "rideev-powering-the-phygital-ev-revolution-in-india"
+      },
+      {
+        "id": "caseStudy-sadhan",
+        "slug": "sadhan",
+        "thumbnailPath": "/assets/work/sadhan/sadhan-thumb.mp4",
+        "coverPath": "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/cover-image-is0u.jpg",
+        "galleryPaths": [
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/cover-image-is0u.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/challenge-image-2-fh3y.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/challenges-image-x4x0.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/conclusion-image-2-2uwv.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/design-philosophy-image-1-1d0n.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/design-philosophy-image-3-4qyn.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/design-philosophy-image-z5r6.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/filler-image-2-5beq.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/filler-image-yiag.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/solution-image-1-ckwm.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/solution-image-2-47s4.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/solution-image-3-5vi2.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/styles-image-1-az6o.png",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/styles-image-2-1wd4.png",
+          "/assets/work/sadhan/sadhan-about.mp4",
+          "/assets/work/sadhan/sadhan-dp.mp4"
+        ],
+        "workFolder": "sadhan",
+        "framerFolder": "sadhan-streamlining-driver-onboarding-lead-management"
+      },
+      {
+        "id": "caseStudy-sadhan-streamlining-driver-onboarding-lead-management",
+        "slug": "sadhan-streamlining-driver-onboarding-lead-management",
+        "thumbnailPath": "/assets/work/sadhan/sadhan-thumb.mp4",
+        "coverPath": "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/cover-image-is0u.jpg",
+        "galleryPaths": [
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/cover-image-is0u.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/challenge-image-2-fh3y.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/challenges-image-x4x0.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/conclusion-image-2-2uwv.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/design-philosophy-image-1-1d0n.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/design-philosophy-image-3-4qyn.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/design-philosophy-image-z5r6.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/filler-image-2-5beq.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/filler-image-yiag.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/solution-image-1-ckwm.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/solution-image-2-47s4.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/solution-image-3-5vi2.jpg",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/styles-image-1-az6o.png",
+          "/assets/framer/sadhan-streamlining-driver-onboarding-lead-management/styles-image-2-1wd4.png",
+          "/assets/work/sadhan/sadhan-about.mp4",
+          "/assets/work/sadhan/sadhan-dp.mp4"
+        ],
+        "workFolder": "sadhan",
+        "framerFolder": "sadhan-streamlining-driver-onboarding-lead-management"
+      },
+      {
+        "id": "caseStudy-sbs-transit-engineering-the-future-of-multimodal-urban-mobility",
+        "slug": "sbs-transit-engineering-the-future-of-multimodal-urban-mobility",
+        "thumbnailPath": "/assets/work/sbs-transit/sbs-thumb.mp4",
+        "galleryPaths": [
+          "/assets/work/sbs-transit/sbs-about.mp4"
+        ],
+        "workFolder": "sbs-transit",
+        "framerFolder": null
+      },
+      {
+        "id": "caseStudy-the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+        "slug": "the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+        "thumbnailPath": "/assets/work/axis-bank/axis-thumb.mp4",
+        "coverPath": "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/cover-image-3zok.jpg",
+        "galleryPaths": [
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/cover-image-3zok.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/challenges-image-9j7q.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/conclusion-image-1-j6v6.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/conclusion-image-2-jexq.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/design-philosophy-image-1-l13k.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/design-philosophy-image-2-2vd9.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/filler-image-2-67bo.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/filler-image-w848.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/solution-image-1-7dex.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/solution-image-2-r03f.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/solution-image-3-3hm8.jpg",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/styles-image-1-jybn.png",
+          "/assets/framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/styles-image-2-v9e5.png",
+          "/assets/work/axis-bank/axis-about.mp4",
+          "/assets/work/axis-bank/axis-dp.mp4",
+          "/assets/work/axis-bank/impact.webp"
+        ],
+        "workFolder": "axis-bank",
+        "framerFolder": "the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform"
+      },
+      {
+        "id": "caseStudy-the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience",
+        "slug": "the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience",
+        "thumbnailPath": "/assets/work/metcred/metcred-thumb.mp4",
+        "coverPath": "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/cover-image-t778.jpg",
+        "galleryPaths": [
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/cover-image-t778.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/challenge-image-1-pbhm.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/challenges-image-ustx.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/design-philosophy-image-2-3a81.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/filler-image-2-a4gb.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/filler-image-y6e3.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/solution-image-1-oz35.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/solution-image-2-qzay.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/solution-image-3-115q.jpg",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/styles-image-1-b3ag.png",
+          "/assets/framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/styles-image-2-emn1.png",
+          "/assets/work/metcred/challenges",
+          "/assets/work/metcred/metcred-about.mp4",
+          "/assets/work/metcred/metcred-dp.mp4",
+          "/assets/work/metcred/metcred-landing.mp4"
+        ],
+        "workFolder": "metcred",
+        "framerFolder": "the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience"
+      },
+      {
+        "id": "caseStudy-tot-bridal",
+        "slug": "tot-bridal",
+        "coverPath": "/assets/framer/tot-bridal-launch-branding-ux-design/cover-image-u17r.jpg",
+        "galleryPaths": [
+          "/assets/framer/tot-bridal-launch-branding-ux-design/cover-image-u17r.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/challenge-image-1-duwn.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/challenges-image-br9l.png",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/design-philosophy-image-1-ohd3.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/design-philosophy-image-2-e1ky.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/design-philosophy-image-3-v7v9.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/filler-image-2-tho8.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/filler-image-kxat.png",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/solution-image-1-7i4z.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/solution-image-2-z7vg.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/solution-image-3-i2m5.jpg",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/styles-image-1-p7wt.png",
+          "/assets/framer/tot-bridal-launch-branding-ux-design/styles-image-2-0y40.png"
+        ],
+        "workFolder": null,
+        "framerFolder": "tot-bridal-launch-branding-ux-design"
+      },
+      {
+        "id": "caseStudy-valyu-ai",
+        "slug": "valyu-ai",
+        "thumbnailPath": "/assets/work/valyu/Valyu-thumb.mp4",
+        "coverPath": "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/cover-image-1j71.jpg",
+        "galleryPaths": [
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/cover-image-1j71.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/about-image-q0qv.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/challenges-image-7r1u.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/filler-image-2-3lgx.png",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/filler-image-cvbf.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/solution-image-1-aq6q.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/solution-image-2-hdd0.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/solution-image-3-ik4q.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/styles-image-1-il79.png",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/styles-image-2-8b0f.png",
+          "/assets/work/valyu/Valyu-about.mp4"
+        ],
+        "workFolder": "valyu",
+        "framerFolder": "valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages"
+      },
+      {
+        "id": "caseStudy-valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+        "slug": "valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+        "thumbnailPath": "/assets/work/valyu/Valyu-thumb.mp4",
+        "coverPath": "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/cover-image-1j71.jpg",
+        "galleryPaths": [
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/cover-image-1j71.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/about-image-q0qv.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/challenges-image-7r1u.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/filler-image-2-3lgx.png",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/filler-image-cvbf.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/solution-image-1-aq6q.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/solution-image-2-hdd0.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/solution-image-3-ik4q.jpg",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/styles-image-1-il79.png",
+          "/assets/framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/styles-image-2-8b0f.png",
+          "/assets/work/valyu/Valyu-about.mp4"
+        ],
+        "workFolder": "valyu",
+        "framerFolder": "valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages"
+      },
+      {
+        "id": "caseStudy-visione",
+        "slug": "visione",
+        "thumbnailPath": "/assets/work/visione/visione-thumb.mp4",
+        "coverPath": "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/cover-image-so53.jpg",
+        "galleryPaths": [
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/cover-image-so53.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/challenge-image-2-u61d.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/challenges-image-zn5h.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/design-philosophy-image-1-malo.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/design-philosophy-image-3-nv7h.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/design-philosophy-image-jk15.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/filler-image-0nda.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/filler-image-2-vs27.png",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/solution-image-1-15jr.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/solution-image-2-j570.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/solution-image-3-ryyv.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/styles-image-1-biwo.png",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/styles-image-2-40oc.png",
+          "/assets/work/visione/visione-about.mp4"
+        ],
+        "workFolder": "visione",
+        "framerFolder": "visione-empowering-workforce-development-with-competency-based-assessments"
+      },
+      {
+        "id": "caseStudy-visione-empowering-workforce-development-with-competency-based-assessments",
+        "slug": "visione-empowering-workforce-development-with-competency-based-assessments",
+        "thumbnailPath": "/assets/work/visione/visione-thumb.mp4",
+        "coverPath": "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/cover-image-so53.jpg",
+        "galleryPaths": [
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/cover-image-so53.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/challenge-image-2-u61d.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/challenges-image-zn5h.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/design-philosophy-image-1-malo.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/design-philosophy-image-3-nv7h.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/design-philosophy-image-jk15.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/filler-image-0nda.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/filler-image-2-vs27.png",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/solution-image-1-15jr.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/solution-image-2-j570.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/solution-image-3-ryyv.jpg",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/styles-image-1-biwo.png",
+          "/assets/framer/visione-empowering-workforce-development-with-competency-based-assessments/styles-image-2-40oc.png",
+          "/assets/work/visione/visione-about.mp4"
+        ],
+        "workFolder": "visione",
+        "framerFolder": "visione-empowering-workforce-development-with-competency-based-assessments"
+      }
+    ],
+    "unchanged": [],
+    "unmapped": [
+      {
+        "slug": "None",
+        "client": "Modernizing a manufacturing leader through enterprise digital transformation."
+      },
+      {
+        "slug": "audiofolio",
+        "client": "Internal Product"
+      },
+      {
+        "slug": "audiofolio-reinventing-audio-discovery-through-ai",
+        "client": "Internal Product"
+      },
+      {
+        "slug": "bodyshop",
+        "client": "Bodyshop"
+      },
+      {
+        "slug": "bodyshop-building-a-premium-wellness-commerce-experience",
+        "client": "Bodyshop"
+      },
+      {
+        "slug": "crafting-digital-elegance-the-tot-bridal-launch-story",
+        "client": "TOT Bridal (Touch of Trend)"
+      },
+      {
+        "slug": "eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+        "client": "Modernizing a manufacturing leader through enterprise digital transformation."
+      },
+      {
+        "slug": "eekenlife-redefining-footwear-e-commerce-for-the-next-generation",
+        "client": "Paragon Footwear"
+      },
+      {
+        "slug": "global-trade-finance-engineering-an-authority-first-lead-generation-engine",
+        "client": "Global Trade Finance"
+      },
+      {
+        "slug": "gratify-the-intelligent-rewards-and-feedback-platform",
+        "client": "Gratify"
+      },
+      {
+        "slug": "greenko",
+        "client": "Greenko"
+      },
+      {
+        "slug": "greenko-designing-digital-infrastructure-for-the-energy-transition",
+        "client": "Greenko"
+      },
+      {
+        "slug": "hyatt-restaurants",
+        "client": "Hyatt Restaurants"
+      },
+      {
+        "slug": "hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+        "client": "Hyatt Restaurants"
+      },
+      {
+        "slug": "ikan-the-next-generation-corporate-mental-healthcare-platform",
+        "client": "iKan"
+      },
+      {
+        "slug": "itc-dark-fantasy-x-citadel-personalizing-the-spy-experience",
+        "client": "ITC"
+      },
+      {
+        "slug": "labelly",
+        "client": "Labelly"
+      },
+      {
+        "slug": "labelly-immutable-product-verification-via-blockchain-integration",
+        "client": "Labelly"
+      },
+      {
+        "slug": "linkedin-sales-navigator",
+        "client": "LinkedIn"
+      },
+      {
+        "slug": "linkedin-sales-navigator-optimizing-the-social-selling-interface",
+        "client": "LinkedIn"
+      },
+      {
+        "slug": "nsl-oilchem",
+        "client": "NSL OilChem Waste Management"
+      },
+      {
+        "slug": "nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+        "client": "NSL OilChem Waste Management"
+      },
+      {
+        "slug": "pharmadropper",
+        "client": "PharmaDropper"
+      },
+      {
+        "slug": "pharmadropper-designing-cross-border-digital-healthcare-commerce",
+        "client": "PharmaDropper"
+      },
+      {
+        "slug": "rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah-business-ecosystem",
+        "client": "Ras Al Khaimah Government"
+      },
+      {
+        "slug": "spark-logistics",
+        "client": "Spark Logistics"
+      },
+      {
+        "slug": "spark-logistics-building-a-unified-logistics-intelligence-platform",
+        "client": "Spark Logistics"
+      },
+      {
+        "slug": "stayweb-pms",
+        "client": "Stayweb"
+      },
+      {
+        "slug": "stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+        "client": "Stayweb"
+      },
+      {
+        "slug": "suzlon",
+        "client": "Suzlon"
+      },
+      {
+        "slug": "suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+        "client": "Suzlon"
+      },
+      {
+        "slug": "thebizgift",
+        "client": "TheBizGift"
+      },
+      {
+        "slug": "thebizgift-reimagining-corporate-gifting-through-intelligent-commerce",
+        "client": "TheBizGift"
+      },
+      {
+        "slug": "unified-hrms-redefining-the-employee-lifecycle-through-automation",
+        "client": "Wugweb (Internal)"
+      },
+      {
+        "slug": "wave-group",
+        "client": "Wave Group"
+      },
+      {
+        "slug": "wave-group-crafting-a-multi-conglomerate-interactive-experience",
+        "client": "Wave Group"
+      },
+      {
+        "slug": "witty-vegan",
+        "client": "Witty Vegan"
+      },
+      {
+        "slug": "witty-vegan-democratizing-plant-based-diversity-through-culture",
+        "client": "Witty Vegan"
+      },
+      {
+        "slug": "woodkraft-elevating-indias-largest-corporate-fit-out-legacy",
+        "client": "Woodkraft"
+      },
+      {
+        "slug": "wugweb-hrms",
+        "client": "Wugweb (Internal)"
+      },
+      {
+        "slug": "wugweb-kits",
+        "client": "Internal Product / Wugweb Ecosystem"
+      },
+      {
+        "slug": "wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+        "client": "Internal Product / Wugweb Ecosystem"
+      },
+      {
+        "slug": "wugweb-revamp",
+        "client": "Wugweb (Internal)"
+      },
+      {
+        "slug": "wugweb-revamp-the-living-manifesto-of-digital-perfection",
+        "client": "Wugweb (Internal)"
+      }
+    ]
+  },
+  "newFiles": [
+    "public/assets/work/aditya-birla-capital/abc-dp.mp4",
+    "public/assets/work/adneto/adneto-about.mp4",
+    "public/assets/work/adneto/adneto-thumb.mp4",
+    "public/assets/work/adtech/adtech-about.mp4",
+    "public/assets/work/adtech/adtech-thumb.mp4",
+    "public/assets/work/airtel-xsafe/Xsafe-dp.mp4",
+    "public/assets/work/airtel-xstream/Xstream-about.mp4",
+    "public/assets/work/airtel-xstream/Xstream-dp.mp4",
+    "public/assets/work/airtel-xstream/Xstream-thumb.mp4",
+    "public/assets/work/axis-bank/axis-dp.mp4",
+    "public/assets/work/axis-bank/impact.webp",
+    "public/assets/work/bankco/bankco-about.mp4",
+    "public/assets/work/bankco/bankco-thumb.mp4",
+    "public/assets/work/cartier/cartier-about.mp4",
+    "public/assets/work/cartier/cartier-dp.mp4",
+    "public/assets/work/cartier/cartier-solution.mp4",
+    "public/assets/work/cartier/cartier-thumb.mp4",
+    "public/assets/work/gratifi/gratifi-about.mp4",
+    "public/assets/work/gratifi/gratifi-dp.mp4",
+    "public/assets/work/gratifi/gratifi-thumb.mp4",
+    "public/assets/work/indusind-bank/Indusninja-dp.mp4",
+    "public/assets/work/indusind-bank/Solution.jpg",
+    "public/assets/work/inkompass/filler.webp",
+    "public/assets/work/inkompass/inkompass-dp.mp4",
+    "public/assets/work/itc-citadel/citadel-about.mp4",
+    "public/assets/work/itc-citadel/citadel-thumb.mp4",
+    "public/assets/work/kia/kia-about.mp4",
+    "public/assets/work/kia/kia-thumb.mp4",
+    "public/assets/work/kits-by-wugweb/bankco-about.mp4",
+    "public/assets/work/metcred/challenges",
+    "public/assets/work/metcred/metcred-dp.mp4",
+    "public/assets/work/metcred/metcred-landing.mp4",
+    "public/assets/work/ntuc/ntuc-about.mp4",
+    "public/assets/work/ntuc/ntuc-dp.mp4",
+    "public/assets/work/ntuc/ntuc-solution.mp4",
+    "public/assets/work/ntuc/ntuc-thumb.mp4",
+    "public/assets/work/others/Linkedin.mp4",
+    "public/assets/work/plufo/plufo-about.mp4",
+    "public/assets/work/plufo/plufo-dp.mp4",
+    "public/assets/work/plufo/plufo-thumb.mp4",
+    "public/assets/work/rideev/RideEV-about.mp4",
+    "public/assets/work/rideev/RideEV-dp.mp4",
+    "public/assets/work/rideev/RideEV-thumb.mp4",
+    "public/assets/work/sadhan/sadhan-dp.mp4",
+    "public/assets/work/sbs-transit/sbs-about.mp4",
+    "public/assets/work/sbs-transit/sbs-thumb.mp4",
+    "public/assets/work/tot/tot-about.mp4",
+    "public/assets/work/tot/tot-dp.mp4",
+    "public/assets/work/tot/tot-thumb.mp4",
+    "public/assets/work/valyu/Valyu-about.mp4",
+    "public/assets/work/valyu/Valyu-thumb.mp4",
+    "public/assets/blog/ux-meets-cx-seamless-experiences.png",
+    "public/assets/blog/10-hacks-for-illustrating-and-drawing-in-figma.png",
+    "public/assets/blog/10-key-takeaways-from-google-s-material-design-guidelines.webp",
+    "public/assets/blog/10-principles-for-typography-in-ui-design.webp",
+    "public/assets/blog/top-10-design-systems-ux-ui-2026.jpg",
+    "public/assets/blog/10-rules-of-thumb-in-ui-design.webp",
+    "public/assets/blog/10-essential-skills-for-the-modern-ui-ux-designer.webp",
+    "public/assets/blog/10-figma-tricks-i-wish-i-knew-earlier.png",
+    "public/assets/blog/10-a-hole-design-patterns.webp",
+    "public/assets/blog/10-ways-to-design-more-inclusive-products.webp",
+    "public/assets/blog/10-confessions-of-a-product-designer.webp",
+    "public/assets/blog/design-work-concentration.png",
+    "public/assets/blog/balancing-user-needs-and-business-goals.png",
+    "public/assets/blog/agile-working-in-ux.png",
+    "public/assets/blog/remote-design-work-pros-cons.png",
+    "public/assets/blog/the-ai-powered-cx-singularity.png",
+    "public/assets/blog/ai-in-ux-design.png",
+    "public/assets/blog/html-sitemaps-for-seo-ux.png",
+    "public/assets/blog/6-strategies-that-got-my-side-project-its-first-1-000-users.png",
+    "public/assets/blog/is-augmented-reality-the-future-of-ux.png",
+    "public/assets/blog/10-features-i-m-loving-in-framer-right-now.png"
+  ],
+  "gaps": [],
+  "r2": {
+    "files": 72,
+    "bytes": 147493069,
+    "uploaded": 72
+  }
+}

@@ -1,0 +1,26 @@
+---
+description: Governance — Rule 1/2 free-tier, ownership, Notion seed, shared Neon
+alwaysApply: true
+---
+
+# Governance (always)
+
+Follow `governance.md` for full text. Hard rules:
+
+## Rule 1 — Never exceed any free-tier limit (incl. Sanity credits)
+
+Sanity, Cloudflare, Neon, Notion, GitHub, etc. Prefer free-tier-safe patterns. No paid plugins, live Studio widgets, or credit-burning polling unless the user explicitly asks. Detail: `.cursor/rules/free-tier-limits.mdc`.
+
+## Rule 2 — R2 MUST NOT EXCEED FREE TIER
+
+Bucket `wugweb-assets`, Standard only. Soft abort >9.5 GiB. Path map: `public/assets/<path>` ↔ `/assets/<path>` ↔ R2 `assets/<path>`. No Infrequent Access, no extra buckets, no full-tree re-uploads.
+
+## Ownership / data
+
+1. **Owner ≠ Author.** Owner = `vedanshu` | `wugweb` | `both`. Author = `person` reference (byline only).
+2. **Neon is shared** between Vedanshu and Wugweb. Do not treat all rows as `owner: vedanshu`.
+3. Vedanshu owns Wugweb, has personal work outside Wugweb, and can be a **client** under Wugweb for agency work.
+4. **Notion is seed only.** Sanity already has more content. Never reset Sanity/Neon to Notion.
+5. Upsert Notion by stable id for gap-fill only; prefer existing Sanity + local assets + R2.
+6. **Industry master** lives in Global Settings (`industry` docs). Content maps via `caseStudy.industryRef` / `client.industry` — do not invent parallel free-text industries.
+7. Enrich masters from `reference/` / `component/` by identity (alts, writeups, section context) — never blind-dump ~1.7k hashed Framer files.

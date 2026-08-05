@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-08-04T12:44:58.831Z",
+  "local": 431,
+  "sanityAssets": 472,
+  "r2Synced": 465,
+  "r2ManifestKeys": 431,
+  "presence": 59,
+  "platform": 68,
+  "tech": 26,
+  "note": "85 objects uploaded in delta run; manifest rebuilt to include all local keys assumed on R2 after successful puts.",
+  "r2UsedMiB": 514.2,
+  "deltaAddedToManifest": 85
+}

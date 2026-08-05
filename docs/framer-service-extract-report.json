@@ -1,0 +1,248 @@
+{
+  "generatedAt": "2026-08-04T15:43:59.818Z",
+  "services": [
+    {
+      "slug": "services",
+      "seo": {
+        "title": "Digital Experience Services — Wugweb",
+        "description": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+        "ogTitle": "Wugweb — Digital Experience Agency",
+        "ogDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams."
+      },
+      "whyCount": 3
+    },
+    {
+      "slug": "brand-strategy",
+      "serviceId": "service-brand-strategy",
+      "pillar": "brand",
+      "why": 4,
+      "tools": 28,
+      "approach": 5,
+      "seo": {
+        "title": "Brand Strategy Services — Wugweb",
+        "description": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+        "ogTitle": "Wugweb — Digital Experience Agency",
+        "ogDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams."
+      },
+      "gaps": []
+    },
+    {
+      "slug": "experience-design",
+      "serviceId": "service-experience-design",
+      "pillar": "experience",
+      "why": 4,
+      "tools": 39,
+      "approach": 4,
+      "seo": {
+        "title": "Experience Design Services — Wugweb",
+        "description": "Create intuitive product and website experiences with Wugweb’s UX strategy, interface design, and scalable design systems.",
+        "ogTitle": "Experience Design Services — Wugweb",
+        "ogDescription": "Create intuitive product and website experiences with Wugweb’s UX strategy, interface design, and scalable design systems."
+      },
+      "gaps": []
+    },
+    {
+      "slug": "martech-genai",
+      "serviceId": "service-martech-genai",
+      "pillar": "growth",
+      "why": 4,
+      "tools": 28,
+      "approach": 5,
+      "seo": {
+        "title": "Martech and GenAI Services — Wugweb",
+        "description": "Connect marketing technology, automation, and generative AI into smarter customer journeys with Wugweb.",
+        "ogTitle": "Martech and GenAI Services — Wugweb",
+        "ogDescription": "Connect marketing technology, automation, and generative AI into smarter customer journeys with Wugweb."
+      },
+      "gaps": []
+    },
+    {
+      "slug": "web-app-development",
+      "serviceId": "service-web-app-development",
+      "pillar": "engineering",
+      "why": 4,
+      "tools": 29,
+      "approach": 5,
+      "seo": {
+        "title": "Web and App Development Services — Wugweb",
+        "description": "Design and build secure, scalable websites and applications with Wugweb’s full-stack development and CMS expertise.",
+        "ogTitle": "Web and App Development Services — Wugweb",
+        "ogDescription": "Design and build secure, scalable websites and applications with Wugweb’s full-stack development and CMS expertise."
+      },
+      "gaps": []
+    },
+    {
+      "slug": "qa-testing",
+      "serviceId": "service-qa-testing",
+      "pillar": "operations",
+      "why": 4,
+      "tools": 28,
+      "approach": 4,
+      "seo": {
+        "title": "QA and Testing Services — Wugweb",
+        "description": "Improve product quality with Wugweb’s QA and testing support across usability, functionality, performance, and launch readiness.",
+        "ogTitle": "QA and Testing Services — Wugweb",
+        "ogDescription": "Improve product quality with Wugweb’s QA and testing support across usability, functionality, performance, and launch readiness."
+      },
+      "gaps": []
+    },
+    {
+      "slug": "no-code-solutions",
+      "serviceId": "service-no-code-solutions",
+      "pillar": "engineering",
+      "why": 0,
+      "tools": 8,
+      "approach": 3,
+      "seo": {
+        "title": "No-Code Solutions — Wugweb",
+        "description": "Launch scalable no-code websites, workflows, and digital systems with Wugweb’s strategy, design, and implementation expertise.",
+        "ogTitle": "No-Code Solutions — Wugweb",
+        "ogDescription": "Launch scalable no-code websites, workflows, and digital systems with Wugweb’s strategy, design, and implementation expertise."
+      },
+      "gaps": [
+        "why_us_empty"
+      ]
+    }
+  ],
+  "toolsCopied": [
+    {
+      "tool": "Webflow",
+      "sitePath": "/assets/tools/webflow.svg",
+      "rel": "tools/webflow.svg",
+      "assetId": "asset-tools-webflow-svg",
+      "techId": "tech-webflow",
+      "bytes": 457,
+      "from": "No-Code Solutions — Wugweb_files/LEj7gbO7hYEiaLovKfR81ZyIFFE.svg"
+    },
+    {
+      "tool": "Framer",
+      "sitePath": "/assets/tools/framer.svg",
+      "rel": "tools/framer.svg",
+      "assetId": "asset-tools-framer-svg",
+      "techId": "tech-framer",
+      "bytes": 453,
+      "from": "No-Code Solutions — Wugweb_files/msTR8wSgmLy1HQNMcbTlcirN8.svg"
+    },
+    {
+      "tool": "Webflow",
+      "sitePath": "/assets/tools/webflow.svg",
+      "rel": "tools/webflow.svg",
+      "assetId": "asset-tools-webflow-svg",
+      "techId": "tech-webflow",
+      "bytes": 457,
+      "from": "No-Code Solutions — Wugweb_files/LEj7gbO7hYEiaLovKfR81ZyIFFE.svg"
+    },
+    {
+      "tool": "Framer",
+      "sitePath": "/assets/tools/framer.svg",
+      "rel": "tools/framer.svg",
+      "assetId": "asset-tools-framer-svg",
+      "techId": "tech-framer",
+      "bytes": 453,
+      "from": "No-Code Solutions — Wugweb_files/msTR8wSgmLy1HQNMcbTlcirN8.svg"
+    },
+    {
+      "tool": "Wix",
+      "sitePath": "/assets/tools/wix.svg",
+      "rel": "tools/wix.svg",
+      "assetId": "asset-tools-wix-svg",
+      "techId": "tech-wix",
+      "bytes": 1402,
+      "from": "No-Code Solutions — Wugweb_files/nZgvHAClEIqmU38O8MQ8Sg1MpU.svg"
+    },
+    {
+      "tool": "Shopify",
+      "sitePath": "/assets/tools/shopify.svg",
+      "rel": "tools/shopify.svg",
+      "assetId": "asset-tools-shopify-svg",
+      "techId": "tech-shopify",
+      "bytes": 1607,
+      "from": "No-Code Solutions — Wugweb_files/6nhWjKixlvWCmDdjcXywzuJ8U.svg"
+    },
+    {
+      "tool": "Appsheet",
+      "sitePath": "/assets/tools/appsheet.svg",
+      "rel": "tools/appsheet.svg",
+      "assetId": "asset-tools-appsheet-svg",
+      "techId": "tech-appsheet",
+      "bytes": 491,
+      "from": "No-Code Solutions — Wugweb_files/x5evjyGHUbG1jVcJpep7qn9Nk.svg"
+    },
+    {
+      "tool": "WordPress",
+      "sitePath": "/assets/tools/wordpress.svg",
+      "rel": "tools/wordpress.svg",
+      "assetId": "asset-tools-wordpress-svg",
+      "techId": "tech-wordpress",
+      "bytes": 1352,
+      "from": "No-Code Solutions — Wugweb_files/DbtQHsJPydTWp9dmEjoSZQAFs.svg"
+    },
+    {
+      "tool": "Bubble",
+      "sitePath": "/assets/tools/bubble.svg",
+      "rel": "tools/bubble.svg",
+      "assetId": "asset-tools-bubble-svg",
+      "techId": "tech-bubble",
+      "bytes": 1719,
+      "from": "No-Code Solutions — Wugweb_files/WHo73K9g07juirjKGO3SpBVZn4.svg"
+    },
+    {
+      "tool": "FlutterFlow",
+      "sitePath": "/assets/tools/flutterflow.svg",
+      "rel": "tools/flutterflow.svg",
+      "assetId": "asset-tools-flutterflow-svg",
+      "techId": "tech-flutterflow",
+      "bytes": 1471,
+      "from": "No-Code Solutions — Wugweb_files/Asl4JN9BJC9o2YhF16hQZZUiCAU.svg"
+    }
+  ],
+  "about": {
+    "seo": {
+      "title": "About Wugweb - UI/UX Design & Digital Experience Experts",
+      "description": "Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.",
+      "ogTitle": "About Wugweb - UI/UX Design &amp; Digital Experience Experts",
+      "ogDescription": "Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands."
+    },
+    "values": [
+      {
+        "title": "Bold",
+        "body": "We balance distinctive expression with measurable results."
+      },
+      {
+        "title": "Adaptive",
+        "body": "We build flexible solutions without sacrificing creative vision."
+      },
+      {
+        "title": "Distinct",
+        "body": "We reject sameness, crafting experiences with unique identities."
+      },
+      {
+        "title": "Start Smart, Start Small",
+        "body": "Bringing intuitive and beautiful innovations to life. Creating projects at the nexus of design and technology, bringing the future into the present. We develop comprehensive strategies, looking from a"
+      }
+    ],
+    "hero": "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & producti"
+  },
+  "r2Uploaded": [],
+  "notes": {
+    "htmlParser": "Why Us / approach / toolkit prefer Framer h2+h6+p HTML sections (plain-text heuristics were mangling titles).",
+    "r2": "8 no-code tool SVGs already present in R2 (assets/tools/*); extract ran with SKIP_R2=1; asset docs marked r2Synced.",
+    "pillarsEnriched": [
+      "brand",
+      "experience",
+      "growth",
+      "engineering",
+      "operations"
+    ],
+    "framerServiceIds": [
+      "service-brand-strategy",
+      "service-experience-design",
+      "service-martech-genai",
+      "service-web-app-development",
+      "service-qa-testing",
+      "service-no-code-solutions"
+    ],
+    "aboutDownloaded": "reference/About Wugweb — Wugweb.html",
+    "ui": "Astro services/[slug] Sanity-first merge for why/tools/approach; toolkit icons via tech-stack iconPath; Framer slugs in getStaticPaths; about/services SEO from singletons."
+  }
+}

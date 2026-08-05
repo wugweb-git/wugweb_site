@@ -1,0 +1,1167 @@
+{
+  "generatedAt": "2026-08-04T16:05:26.646Z",
+  "pages": {
+    "brand-strategy": {
+      "cardsFound": 28,
+      "withSrc": 28,
+      "names": [
+        "Redux",
+        "Next.js",
+        "React",
+        "Vue.js",
+        "Kotlin",
+        "Swift",
+        "Javascript",
+        "ES6",
+        "Typescript",
+        "C#",
+        "PHP",
+        "GraphQL",
+        "Laravel",
+        "Nest.js",
+        "Asp.Net",
+        "Swagger",
+        "Node.js",
+        "RestAPI",
+        "MongoDB",
+        "Postgres",
+        "SQL",
+        "DigitalOcean",
+        "Serverless",
+        "AWS",
+        "Bitbucket",
+        "Heroku",
+        "Azure",
+        "GitHub"
+      ],
+      "toolsCategories": [
+        {
+          "category": "Frontend",
+          "count": 4
+        },
+        {
+          "category": "Mobile",
+          "count": 3
+        },
+        {
+          "category": "Languages",
+          "count": 4
+        },
+        {
+          "category": "Backend",
+          "count": 8
+        },
+        {
+          "category": "Database",
+          "count": 3
+        },
+        {
+          "category": "Infrastructure",
+          "count": 7
+        }
+      ]
+    },
+    "experience-design": {
+      "cardsFound": 39,
+      "withSrc": 39,
+      "names": [
+        "Maze",
+        "Dovetail",
+        "Lyssna",
+        "Remesh",
+        "UserZoom",
+        "UserLytics",
+        "Reflect",
+        "Trymata",
+        "Notion",
+        "Zeroheight",
+        "Supernova",
+        "UiInspector",
+        "Keep",
+        "Plasmic",
+        "Sketch",
+        "Figma",
+        "Vercel",
+        "RIVE",
+        "Webflow",
+        "penpot",
+        "Framer",
+        "Canva",
+        "Mem",
+        "Opal",
+        "ValidatorAI",
+        "Perplexity",
+        "Obsidian",
+        "Any.do",
+        "BeeDone",
+        "Tavus",
+        "Uizard",
+        "Lummi",
+        "GalileoAI",
+        "Stockimg.ai",
+        "Khroma",
+        "Midjourney",
+        "OpenArt",
+        "Jitter",
+        "Illustroke"
+      ],
+      "toolsCategories": [
+        {
+          "category": "User Research & Testing",
+          "count": 8
+        },
+        {
+          "category": "Collaboration & Workflow",
+          "count": 5
+        },
+        {
+          "category": "Designing & Prototyping",
+          "count": 9
+        },
+        {
+          "category": "Organization & Productivity",
+          "count": 8
+        },
+        {
+          "category": "AI-Powered Design Tools",
+          "count": 9
+        }
+      ]
+    },
+    "martech-genai": {
+      "cardsFound": 28,
+      "withSrc": 28,
+      "names": [
+        "Redux",
+        "Next.js",
+        "React",
+        "Vue.js",
+        "Kotlin",
+        "Swift",
+        "Javascript",
+        "ES6",
+        "Typescript",
+        "C#",
+        "PHP",
+        "GraphQL",
+        "Laravel",
+        "Nest.js",
+        "Asp.Net",
+        "Swagger",
+        "Node.js",
+        "RestAPI",
+        "MongoDB",
+        "Postgres",
+        "SQL",
+        "DigitalOcean",
+        "Serverless",
+        "AWS",
+        "Bitbucket",
+        "Heroku",
+        "Azure",
+        "GitHub"
+      ],
+      "toolsCategories": [
+        {
+          "category": "Frontend",
+          "count": 4
+        },
+        {
+          "category": "Mobile",
+          "count": 3
+        },
+        {
+          "category": "Languages",
+          "count": 4
+        },
+        {
+          "category": "Backend",
+          "count": 8
+        },
+        {
+          "category": "Database",
+          "count": 3
+        },
+        {
+          "category": "Infrastructure",
+          "count": 7
+        }
+      ]
+    },
+    "web-app-development": {
+      "cardsFound": 28,
+      "withSrc": 28,
+      "names": [
+        "Redux",
+        "Next.js",
+        "React",
+        "Vue.js",
+        "Kotlin",
+        "Swift",
+        "Javascript",
+        "ES6",
+        "Typescript",
+        "C#",
+        "PHP",
+        "GraphQL",
+        "Laravel",
+        "Nest.js",
+        "Asp.Net",
+        "Swagger",
+        "Node.js",
+        "RestAPI",
+        "MongoDB",
+        "Postgres",
+        "SQL",
+        "DigitalOcean",
+        "Serverless",
+        "AWS",
+        "Bitbucket",
+        "Heroku",
+        "Azure",
+        "GitHub"
+      ],
+      "toolsCategories": [
+        {
+          "category": "Frontend",
+          "count": 4
+        },
+        {
+          "category": "Mobile",
+          "count": 3
+        },
+        {
+          "category": "Languages",
+          "count": 4
+        },
+        {
+          "category": "Backend",
+          "count": 8
+        },
+        {
+          "category": "Database",
+          "count": 3
+        },
+        {
+          "category": "Infrastructure",
+          "count": 7
+        }
+      ]
+    },
+    "qa-testing": {
+      "cardsFound": 28,
+      "withSrc": 28,
+      "names": [
+        "Redux",
+        "Next.js",
+        "React",
+        "Vue.js",
+        "Kotlin",
+        "Swift",
+        "Javascript",
+        "ES6",
+        "Typescript",
+        "C#",
+        "PHP",
+        "GraphQL",
+        "Laravel",
+        "Nest.js",
+        "Asp.Net",
+        "Swagger",
+        "Node.js",
+        "RestAPI",
+        "MongoDB",
+        "Postgres",
+        "SQL",
+        "DigitalOcean",
+        "Serverless",
+        "AWS",
+        "Bitbucket",
+        "Heroku",
+        "Azure",
+        "GitHub"
+      ],
+      "toolsCategories": [
+        {
+          "category": "Frontend",
+          "count": 4
+        },
+        {
+          "category": "Mobile",
+          "count": 3
+        },
+        {
+          "category": "Languages",
+          "count": 4
+        },
+        {
+          "category": "Backend",
+          "count": 8
+        },
+        {
+          "category": "Database",
+          "count": 3
+        },
+        {
+          "category": "Infrastructure",
+          "count": 7
+        }
+      ]
+    },
+    "no-code-solutions": {
+      "cardsFound": 24,
+      "withSrc": 24,
+      "names": [
+        "Webflow",
+        "Framer",
+        "Wix",
+        "Shopify",
+        "Appsheet",
+        "WordPress",
+        "Bubble",
+        "FlutterFlow",
+        "Bildr",
+        "Adalo",
+        "Softr.io",
+        "Xano",
+        "Appian",
+        "Outsystems",
+        "Mendix",
+        "Creatio",
+        "UIPath",
+        "Mulesoft",
+        "Zapier",
+        "Make",
+        "Coda",
+        "Datadog",
+        "n8n",
+        "Cloudwatch"
+      ],
+      "toolsCategories": [
+        {
+          "category": "Website & Experience Platforms",
+          "count": 6
+        },
+        {
+          "category": "Application Development",
+          "count": 6
+        },
+        {
+          "category": "Low-Code Platforms",
+          "count": 6
+        },
+        {
+          "category": "Workflow & Automation",
+          "count": 6
+        }
+      ]
+    }
+  },
+  "toolsCopied": [
+    {
+      "name": "Redux",
+      "sitePath": "/assets/tools/redux.svg",
+      "rel": "tools/redux.svg",
+      "assetId": "asset-tools-redux-svg",
+      "techId": "tech-redux",
+      "bytes": 1621,
+      "from": "Brand Strategy Services — Wugweb_files/G6ERpMvDfRYVL8O0NonCxqGqSvk.svg"
+    },
+    {
+      "name": "Next.js",
+      "sitePath": "/assets/tools/next-js.svg",
+      "rel": "tools/next-js.svg",
+      "assetId": "asset-tools-next-js-svg",
+      "techId": "tech-next-js",
+      "bytes": 713,
+      "from": "Brand Strategy Services — Wugweb_files/nxLiytczWzznoIqXToytBmEzzQI.svg"
+    },
+    {
+      "name": "React",
+      "sitePath": "/assets/tools/react.svg",
+      "rel": "tools/react.svg",
+      "assetId": "asset-tools-react-svg",
+      "techId": "tech-react",
+      "bytes": 766,
+      "from": "Brand Strategy Services — Wugweb_files/x6sInVAEYrd5kegFLDKPWlM.svg"
+    },
+    {
+      "name": "Vue.js",
+      "sitePath": "/assets/tools/vue-js.svg",
+      "rel": "tools/vue-js.svg",
+      "assetId": "asset-tools-vue-js-svg",
+      "techId": "tech-vue-js",
+      "bytes": 284,
+      "from": "Brand Strategy Services — Wugweb_files/m85R9tbPiBSm7VTCpMLjyj11kKk.svg"
+    },
+    {
+      "name": "Kotlin",
+      "sitePath": "/assets/tools/kotlin.svg",
+      "rel": "tools/kotlin.svg",
+      "assetId": "asset-tools-kotlin-svg",
+      "techId": "tech-kotlin",
+      "bytes": 425,
+      "from": "Brand Strategy Services — Wugweb_files/709WFNIxn28KW2mwD9zdm88q5E.svg"
+    },
+    {
+      "name": "Swift",
+      "sitePath": "/assets/tools/swift.svg",
+      "rel": "tools/swift.svg",
+      "assetId": "asset-tools-swift-svg",
+      "techId": "tech-swift",
+      "bytes": 2003,
+      "from": "Brand Strategy Services — Wugweb_files/S4hw4tCVfWhuBim0vUwTAPp2Y.svg"
+    },
+    {
+      "name": "Javascript",
+      "sitePath": "/assets/tools/javascript.svg",
+      "rel": "tools/javascript.svg",
+      "assetId": "asset-tools-javascript-svg",
+      "techId": "tech-javascript",
+      "bytes": 679,
+      "from": "Brand Strategy Services — Wugweb_files/4IK0oSE4JheTxRJOkPQspQemI.svg"
+    },
+    {
+      "name": "ES6",
+      "sitePath": "/assets/tools/es6.png",
+      "rel": "tools/es6.png",
+      "assetId": "asset-tools-es6-png",
+      "techId": "tech-es6",
+      "bytes": 3378,
+      "from": "Brand Strategy Services — Wugweb_files/GWa3mmMmd24LK3gfjwP9xUOtYgk.png"
+    },
+    {
+      "name": "Typescript",
+      "sitePath": "/assets/tools/typescript.svg",
+      "rel": "tools/typescript.svg",
+      "assetId": "asset-tools-typescript-svg",
+      "techId": "tech-typescript",
+      "bytes": 1497,
+      "from": "Brand Strategy Services — Wugweb_files/YPjP43g6CyroHfJw0grSFCJPw.svg"
+    },
+    {
+      "name": "C#",
+      "sitePath": "/assets/tools/c.svg",
+      "rel": "tools/c.svg",
+      "assetId": "asset-tools-c-svg",
+      "techId": "tech-c",
+      "bytes": 1841,
+      "from": "Brand Strategy Services — Wugweb_files/tSQbNTwdkmCWYdfD5BhN2o7cGw.svg"
+    },
+    {
+      "name": "PHP",
+      "sitePath": "/assets/tools/php.svg",
+      "rel": "tools/php.svg",
+      "assetId": "asset-tools-php-svg",
+      "techId": "tech-php",
+      "bytes": 2376,
+      "from": "Brand Strategy Services — Wugweb_files/2wIUyN1etuHNOdq1BX4mqJW54hs.svg"
+    },
+    {
+      "name": "GraphQL",
+      "sitePath": "/assets/tools/graphql.svg",
+      "rel": "tools/graphql.svg",
+      "assetId": "asset-tools-graphql-svg",
+      "techId": "tech-graphql",
+      "bytes": 1432,
+      "from": "Brand Strategy Services — Wugweb_files/Duc8YF0v0VyUINZ87bsofS9qqog.svg"
+    },
+    {
+      "name": "Laravel",
+      "sitePath": "/assets/tools/laravel.svg",
+      "rel": "tools/laravel.svg",
+      "assetId": "asset-tools-laravel-svg",
+      "techId": "tech-laravel",
+      "bytes": 2006,
+      "from": "Brand Strategy Services — Wugweb_files/j6nIcywbWRTNuSCZrj1RsZcyro.svg"
+    },
+    {
+      "name": "Nest.js",
+      "sitePath": "/assets/tools/nest-js.svg",
+      "rel": "tools/nest-js.svg",
+      "assetId": "asset-tools-nest-js-svg",
+      "techId": "tech-nest-js",
+      "bytes": 6645,
+      "from": "Brand Strategy Services — Wugweb_files/TSy5O2Xxk80JI2PAjlayKRZQ90.svg"
+    },
+    {
+      "name": "Asp.Net",
+      "sitePath": "/assets/tools/asp-net.svg",
+      "rel": "tools/asp-net.svg",
+      "assetId": "asset-tools-asp-net-svg",
+      "techId": "tech-asp-net",
+      "bytes": 1893,
+      "from": "Brand Strategy Services — Wugweb_files/cj7vjseCJhGIXlr6kjJEetIrXo8.svg"
+    },
+    {
+      "name": "Swagger",
+      "sitePath": "/assets/tools/swagger.svg",
+      "rel": "tools/swagger.svg",
+      "assetId": "asset-tools-swagger-svg",
+      "techId": "tech-swagger",
+      "bytes": 2225,
+      "from": "Brand Strategy Services — Wugweb_files/TGBSeA1fDLFo5HXxyvsgM2i2Y64.svg"
+    },
+    {
+      "name": "Node.js",
+      "sitePath": "/assets/tools/node-js.png",
+      "rel": "tools/node-js.png",
+      "assetId": "asset-tools-node-js-png",
+      "techId": "tech-node-js",
+      "bytes": 924,
+      "from": "Brand Strategy Services — Wugweb_files/y6fmKfEF9Oj4rSaBv0DuavtJ6mA.png"
+    },
+    {
+      "name": "RestAPI",
+      "sitePath": "/assets/tools/restapi.svg",
+      "rel": "tools/restapi.svg",
+      "assetId": "asset-tools-restapi-svg",
+      "techId": "tech-restapi",
+      "bytes": 4933,
+      "from": "Brand Strategy Services — Wugweb_files/D5HDSgXLojEDKRnw5bYFqH8BRQ.svg"
+    },
+    {
+      "name": "MongoDB",
+      "sitePath": "/assets/tools/mongodb.svg",
+      "rel": "tools/mongodb.svg",
+      "assetId": "asset-tools-mongodb-svg",
+      "techId": "tech-mongodb",
+      "bytes": 1259,
+      "from": "Brand Strategy Services — Wugweb_files/KQZbavdoFMa6orxUVBYLrRmDEf4.svg"
+    },
+    {
+      "name": "Postgres",
+      "sitePath": "/assets/tools/postgres.svg",
+      "rel": "tools/postgres.svg",
+      "assetId": "asset-tools-postgres-svg",
+      "techId": "tech-postgres",
+      "bytes": 6011,
+      "from": "Brand Strategy Services — Wugweb_files/uKcz9zICZyppzy8aqvHh307pE.svg"
+    },
+    {
+      "name": "SQL",
+      "sitePath": "/assets/tools/sql.svg",
+      "rel": "tools/sql.svg",
+      "assetId": "asset-tools-sql-svg",
+      "techId": "tech-sql",
+      "bytes": 4797,
+      "from": "Brand Strategy Services — Wugweb_files/Hd1ZFuMPPbLpSFkIrTQhNHvw.svg"
+    },
+    {
+      "name": "DigitalOcean",
+      "sitePath": "/assets/tools/digitalocean.svg",
+      "rel": "tools/digitalocean.svg",
+      "assetId": "asset-tools-digitalocean-svg",
+      "techId": "tech-digitalocean",
+      "bytes": 524,
+      "from": "Brand Strategy Services — Wugweb_files/rKIOwb0sZRyCBTwm1Dhb6nV9pg.svg"
+    },
+    {
+      "name": "Serverless",
+      "sitePath": "/assets/tools/serverless.svg",
+      "rel": "tools/serverless.svg",
+      "assetId": "asset-tools-serverless-svg",
+      "techId": "tech-serverless",
+      "bytes": 321,
+      "from": "Brand Strategy Services — Wugweb_files/lBz3Lkyvx3YsVdveNIXVsUcREps.svg"
+    },
+    {
+      "name": "AWS",
+      "sitePath": "/assets/tools/aws.svg",
+      "rel": "tools/aws.svg",
+      "assetId": "asset-tools-aws-svg",
+      "techId": "tech-aws",
+      "bytes": 3494,
+      "from": "Brand Strategy Services — Wugweb_files/iSE9FWyMeNXR9lYlpXNh0liF7I.svg"
+    },
+    {
+      "name": "Bitbucket",
+      "sitePath": "/assets/tools/bitbucket.svg",
+      "rel": "tools/bitbucket.svg",
+      "assetId": "asset-tools-bitbucket-svg",
+      "techId": "tech-bitbucket",
+      "bytes": 681,
+      "from": "Brand Strategy Services — Wugweb_files/sclXRG3NGSwI9Gg9oYKDD2Z3IOE.svg"
+    },
+    {
+      "name": "Heroku",
+      "sitePath": "/assets/tools/heroku.svg",
+      "rel": "tools/heroku.svg",
+      "assetId": "asset-tools-heroku-svg",
+      "techId": "tech-heroku",
+      "bytes": 519,
+      "from": "Brand Strategy Services — Wugweb_files/5juxIbJE0Sx5edEsbBCU8IYhjg.svg"
+    },
+    {
+      "name": "Azure",
+      "sitePath": "/assets/tools/azure.svg",
+      "rel": "tools/azure.svg",
+      "assetId": "asset-tools-azure-svg",
+      "techId": "tech-azure",
+      "bytes": 1678,
+      "from": "Brand Strategy Services — Wugweb_files/p1akFt1EBIMCc4fKFGgqPzlBQRc.svg"
+    },
+    {
+      "name": "GitHub",
+      "sitePath": "/assets/tools/github.svg",
+      "rel": "tools/github.svg",
+      "assetId": "asset-tools-github-svg",
+      "techId": "tech-github",
+      "bytes": 1808,
+      "from": "Brand Strategy Services — Wugweb_files/Phalr82MLynDoGSLpYRMlGCoJc.svg"
+    },
+    {
+      "name": "Maze",
+      "sitePath": "/assets/tools/maze.svg",
+      "rel": "tools/maze.svg",
+      "assetId": "asset-tools-maze-svg",
+      "techId": "tech-maze",
+      "bytes": 937,
+      "from": "Experience Design Services — Wugweb_files/JO7R2GMFz8QheyEs9Vdle2MRv6c.svg"
+    },
+    {
+      "name": "Dovetail",
+      "sitePath": "/assets/tools/dovetail.svg",
+      "rel": "tools/dovetail.svg",
+      "assetId": "asset-tools-dovetail-svg",
+      "techId": "tech-dovetail",
+      "bytes": 313,
+      "from": "Experience Design Services — Wugweb_files/Bmj3nGyyU7URFHWGLe1GNi72Q.svg"
+    },
+    {
+      "name": "Lyssna",
+      "sitePath": "/assets/tools/lyssna.svg",
+      "rel": "tools/lyssna.svg",
+      "assetId": "asset-tools-lyssna-svg",
+      "techId": "tech-lyssna",
+      "bytes": 4637,
+      "from": "Experience Design Services — Wugweb_files/TElooQk7LGqLWsUe9iWvBhmXSOM.svg"
+    },
+    {
+      "name": "Remesh",
+      "sitePath": "/assets/tools/remesh.svg",
+      "rel": "tools/remesh.svg",
+      "assetId": "asset-tools-remesh-svg",
+      "techId": "tech-remesh",
+      "bytes": 420,
+      "from": "Experience Design Services — Wugweb_files/tCaaYmXJXxjeAcxnRwY6t7SovE.svg"
+    },
+    {
+      "name": "UserZoom",
+      "sitePath": "/assets/tools/userzoom.svg",
+      "rel": "tools/userzoom.svg",
+      "assetId": "asset-tools-userzoom-svg",
+      "techId": "tech-userzoom",
+      "bytes": 754,
+      "from": "Experience Design Services — Wugweb_files/Q6vyxwFfuSQr5aHEBaQdAMXPq8U.svg"
+    },
+    {
+      "name": "UserLytics",
+      "sitePath": "/assets/tools/userlytics.png",
+      "rel": "tools/userlytics.png",
+      "assetId": "asset-tools-userlytics-png",
+      "techId": "tech-userlytics",
+      "bytes": 1044,
+      "from": "Experience Design Services — Wugweb_files/uZ1NmwGlmne3ANOeLrjW3dscCXk.png"
+    },
+    {
+      "name": "Reflect",
+      "sitePath": "/assets/tools/reflect.png",
+      "rel": "tools/reflect.png",
+      "assetId": "asset-tools-reflect-png",
+      "techId": "tech-reflect",
+      "bytes": 1726,
+      "from": "Experience Design Services — Wugweb_files/QS2JY7KJJ9oAI9eIEzOmGEpYsIM.png"
+    },
+    {
+      "name": "Trymata",
+      "sitePath": "/assets/tools/trymata.png",
+      "rel": "tools/trymata.png",
+      "assetId": "asset-tools-trymata-png",
+      "techId": "tech-trymata",
+      "bytes": 7459,
+      "from": "Experience Design Services — Wugweb_files/ijtwy3Rd76jkyGFRoCNBSQETtVM.png"
+    },
+    {
+      "name": "Notion",
+      "sitePath": "/assets/tools/notion.svg",
+      "rel": "tools/notion.svg",
+      "assetId": "asset-tools-notion-svg",
+      "techId": "tech-notion",
+      "bytes": 1406,
+      "from": "Experience Design Services — Wugweb_files/Kzi0OWsYKSWRMUcAIVOkZqcY1Y.svg"
+    },
+    {
+      "name": "Zeroheight",
+      "sitePath": "/assets/tools/zeroheight.svg",
+      "rel": "tools/zeroheight.svg",
+      "assetId": "asset-tools-zeroheight-svg",
+      "techId": "tech-zeroheight",
+      "bytes": 597,
+      "from": "Experience Design Services — Wugweb_files/sO9yJZ0DrlnITf0TvrCU0Ujv73k.svg"
+    },
+    {
+      "name": "Supernova",
+      "sitePath": "/assets/tools/supernova.png",
+      "rel": "tools/supernova.png",
+      "assetId": "asset-tools-supernova-png",
+      "techId": "tech-supernova",
+      "bytes": 9212,
+      "from": "Experience Design Services — Wugweb_files/YDY2g7gsauP6DcmqYrrAuyZKl8.png"
+    },
+    {
+      "name": "UiInspector",
+      "sitePath": "/assets/tools/uiinspector.svg",
+      "rel": "tools/uiinspector.svg",
+      "assetId": "asset-tools-uiinspector-svg",
+      "techId": "tech-uiinspector",
+      "bytes": 367,
+      "from": "Experience Design Services — Wugweb_files/7XKkV2pj9S3aAOGT9KsPABJFuw.svg"
+    },
+    {
+      "name": "Keep",
+      "sitePath": "/assets/tools/keep.svg",
+      "rel": "tools/keep.svg",
+      "assetId": "asset-tools-keep-svg",
+      "techId": "tech-keep",
+      "bytes": 5021,
+      "from": "Experience Design Services — Wugweb_files/kH9q3yLCgAYms9THfGIUcMa66o.svg"
+    },
+    {
+      "name": "Plasmic",
+      "sitePath": "/assets/tools/plasmic.svg",
+      "rel": "tools/plasmic.svg",
+      "assetId": "asset-tools-plasmic-svg",
+      "techId": "tech-plasmic",
+      "bytes": 887,
+      "from": "Experience Design Services — Wugweb_files/va0h7dytb8KgkEJ0k3JtFG6nx8.svg"
+    },
+    {
+      "name": "Sketch",
+      "sitePath": "/assets/tools/sketch.svg",
+      "rel": "tools/sketch.svg",
+      "assetId": "asset-tools-sketch-svg",
+      "techId": "tech-sketch",
+      "bytes": 535,
+      "from": "Experience Design Services — Wugweb_files/v5lqzWTy4SKxZl8SwupsoUPpx7s.svg"
+    },
+    {
+      "name": "Figma",
+      "sitePath": "/assets/tools/figma.svg",
+      "rel": "tools/figma.svg",
+      "assetId": "asset-tools-figma-svg",
+      "techId": "tech-figma",
+      "bytes": 714,
+      "from": "Experience Design Services — Wugweb_files/vUAr9BSPsAM6W21EoGsSLmkUg.svg"
+    },
+    {
+      "name": "Vercel",
+      "sitePath": "/assets/tools/vercel.svg",
+      "rel": "tools/vercel.svg",
+      "assetId": "asset-tools-vercel-svg",
+      "techId": "tech-vercel",
+      "bytes": 174,
+      "from": "Experience Design Services — Wugweb_files/SZ3gDuB2vyHgsL6ICYYsrOosolg.svg"
+    },
+    {
+      "name": "RIVE",
+      "sitePath": "/assets/tools/rive.svg",
+      "rel": "tools/rive.svg",
+      "assetId": "asset-tools-rive-svg",
+      "techId": "tech-rive",
+      "bytes": 740,
+      "from": "Experience Design Services — Wugweb_files/PhqOGzMLAYjP8M1AOcSVNIYr0.svg"
+    },
+    {
+      "name": "Webflow",
+      "sitePath": "/assets/tools/webflow.svg",
+      "rel": "tools/webflow.svg",
+      "assetId": "asset-tools-webflow-svg",
+      "techId": "tech-webflow",
+      "bytes": 457,
+      "from": "Experience Design Services — Wugweb_files/LEj7gbO7hYEiaLovKfR81ZyIFFE.svg"
+    },
+    {
+      "name": "penpot",
+      "sitePath": "/assets/tools/penpot.svg",
+      "rel": "tools/penpot.svg",
+      "assetId": "asset-tools-penpot-svg",
+      "techId": "tech-penpot",
+      "bytes": 1159,
+      "from": "Experience Design Services — Wugweb_files/v6eqsfM5WfPMuzkOxweMKIW7eJw.svg"
+    },
+    {
+      "name": "Framer",
+      "sitePath": "/assets/tools/framer.svg",
+      "rel": "tools/framer.svg",
+      "assetId": "asset-tools-framer-svg",
+      "techId": "tech-framer",
+      "bytes": 427,
+      "from": "Experience Design Services — Wugweb_files/h6n8ypY51rI4WS1kIizwyCCH00.svg"
+    },
+    {
+      "name": "Canva",
+      "sitePath": "/assets/tools/canva.svg",
+      "rel": "tools/canva.svg",
+      "assetId": "asset-tools-canva-svg",
+      "techId": "tech-canva",
+      "bytes": 2125,
+      "from": "Experience Design Services — Wugweb_files/LPD74nbl0UXNSH0iiTLKgdWYPck.svg"
+    },
+    {
+      "name": "Mem",
+      "sitePath": "/assets/tools/mem.jpg",
+      "rel": "tools/mem.jpg",
+      "assetId": "asset-tools-mem-jpg",
+      "techId": "tech-mem",
+      "bytes": 4074,
+      "from": "Experience Design Services — Wugweb_files/YZLWncsyQQgafpTBYWLYHhBgdrw.jpg"
+    },
+    {
+      "name": "Opal",
+      "sitePath": "/assets/tools/opal.svg",
+      "rel": "tools/opal.svg",
+      "assetId": "asset-tools-opal-svg",
+      "techId": "tech-opal",
+      "bytes": 638,
+      "from": "Experience Design Services — Wugweb_files/sGeBkSlCRvE2zaC9OAuP3jpvXng.svg"
+    },
+    {
+      "name": "ValidatorAI",
+      "sitePath": "/assets/tools/validatorai.png",
+      "rel": "tools/validatorai.png",
+      "assetId": "asset-tools-validatorai-png",
+      "techId": "tech-validatorai",
+      "bytes": 19699,
+      "from": "Experience Design Services — Wugweb_files/4c6tWUXFONBuf70gjHFyWZ7VHU.png"
+    },
+    {
+      "name": "Perplexity",
+      "sitePath": "/assets/tools/perplexity.png",
+      "rel": "tools/perplexity.png",
+      "assetId": "asset-tools-perplexity-png",
+      "techId": "tech-perplexity",
+      "bytes": 6783,
+      "from": "Experience Design Services — Wugweb_files/a9gajmRCkmwqmt90jrAOhOQLs.png"
+    },
+    {
+      "name": "Obsidian",
+      "sitePath": "/assets/tools/obsidian.svg",
+      "rel": "tools/obsidian.svg",
+      "assetId": "asset-tools-obsidian-svg",
+      "techId": "tech-obsidian",
+      "bytes": 4431,
+      "from": "Experience Design Services — Wugweb_files/FHHI6kkzaB9Ls6JjgikM6cGAak0.svg"
+    },
+    {
+      "name": "Any.do",
+      "sitePath": "/assets/tools/any-do.png",
+      "rel": "tools/any-do.png",
+      "assetId": "asset-tools-any-do-png",
+      "techId": "tech-any-do",
+      "bytes": 4982,
+      "from": "Experience Design Services — Wugweb_files/KIyYhUw5ez8TEVPVO1C5XvM8.png"
+    },
+    {
+      "name": "BeeDone",
+      "sitePath": "/assets/tools/beedone.png",
+      "rel": "tools/beedone.png",
+      "assetId": "asset-tools-beedone-png",
+      "techId": "tech-beedone",
+      "bytes": 3285,
+      "from": "Experience Design Services — Wugweb_files/07moel4sroeKcraDtC3k0nwrQmo.png"
+    },
+    {
+      "name": "Tavus",
+      "sitePath": "/assets/tools/tavus.jpg",
+      "rel": "tools/tavus.jpg",
+      "assetId": "asset-tools-tavus-jpg",
+      "techId": "tech-tavus",
+      "bytes": 5072,
+      "from": "Experience Design Services — Wugweb_files/xPJui6ThFm4ZbOA4mM8HHuGtoo.jpg"
+    },
+    {
+      "name": "Uizard",
+      "sitePath": "/assets/tools/uizard.jpeg",
+      "rel": "tools/uizard.jpeg",
+      "assetId": "asset-tools-uizard-jpeg",
+      "techId": "tech-uizard",
+      "bytes": 5369,
+      "from": "Experience Design Services — Wugweb_files/KP2D06Ra5rihSK5Uyd3gPIfyYs.jpeg"
+    },
+    {
+      "name": "Lummi",
+      "sitePath": "/assets/tools/lummi.webp",
+      "rel": "tools/lummi.webp",
+      "assetId": "asset-tools-lummi-webp",
+      "techId": "tech-lummi",
+      "bytes": 1988,
+      "from": "Experience Design Services — Wugweb_files/fvl2wNz71FCyq3HEExkoSSDPJ4c.webp"
+    },
+    {
+      "name": "GalileoAI",
+      "sitePath": "/assets/tools/galileoai.jpg",
+      "rel": "tools/galileoai.jpg",
+      "assetId": "asset-tools-galileoai-jpg",
+      "techId": "tech-galileoai",
+      "bytes": 9478,
+      "from": "Experience Design Services — Wugweb_files/dET5cxbKbIBD90zvxLEJ1HYof4.jpg"
+    },
+    {
+      "name": "Stockimg.ai",
+      "sitePath": "/assets/tools/stockimg-ai.png",
+      "rel": "tools/stockimg-ai.png",
+      "assetId": "asset-tools-stockimg-ai-png",
+      "techId": "tech-stockimg-ai",
+      "bytes": 23125,
+      "from": "Experience Design Services — Wugweb_files/Rr52Ogv2zpgecFkm9ZBoeMSXb60.png"
+    },
+    {
+      "name": "Khroma",
+      "sitePath": "/assets/tools/khroma.jpg",
+      "rel": "tools/khroma.jpg",
+      "assetId": "asset-tools-khroma-jpg",
+      "techId": "tech-khroma",
+      "bytes": 7049,
+      "from": "Experience Design Services — Wugweb_files/OoWdEwvhiFC0B88vMaJ0lTs2UxE.jpg"
+    },
+    {
+      "name": "Midjourney",
+      "sitePath": "/assets/tools/midjourney.svg",
+      "rel": "tools/midjourney.svg",
+      "assetId": "asset-tools-midjourney-svg",
+      "techId": "tech-midjourney",
+      "bytes": 4127,
+      "from": "Experience Design Services — Wugweb_files/bvozPqS1oj6ZDkIe9inq6AcMuY.svg"
+    },
+    {
+      "name": "OpenArt",
+      "sitePath": "/assets/tools/openart.jpg",
+      "rel": "tools/openart.jpg",
+      "assetId": "asset-tools-openart-jpg",
+      "techId": "tech-openart",
+      "bytes": 5677,
+      "from": "Experience Design Services — Wugweb_files/wfW5wlL6hcjExTASwgECwVVTHI.jpg"
+    },
+    {
+      "name": "Jitter",
+      "sitePath": "/assets/tools/jitter.png",
+      "rel": "tools/jitter.png",
+      "assetId": "asset-tools-jitter-png",
+      "techId": "tech-jitter",
+      "bytes": 1270,
+      "from": "Experience Design Services — Wugweb_files/Pk1iSrOQU8CUBOGoBgQK5BBTrQ.png"
+    },
+    {
+      "name": "Illustroke",
+      "sitePath": "/assets/tools/illustroke.png",
+      "rel": "tools/illustroke.png",
+      "assetId": "asset-tools-illustroke-png",
+      "techId": "tech-illustroke",
+      "bytes": 3228,
+      "from": "Experience Design Services — Wugweb_files/kTaYwsFRUURaxyJFgH5RMVHM.png"
+    },
+    {
+      "name": "Wix",
+      "sitePath": "/assets/tools/wix.svg",
+      "rel": "tools/wix.svg",
+      "assetId": "asset-tools-wix-svg",
+      "techId": "tech-wix",
+      "bytes": 1402,
+      "from": "No-Code Solutions — Wugweb_files/nZgvHAClEIqmU38O8MQ8Sg1MpU.svg"
+    },
+    {
+      "name": "Shopify",
+      "sitePath": "/assets/tools/shopify.svg",
+      "rel": "tools/shopify.svg",
+      "assetId": "asset-tools-shopify-svg",
+      "techId": "tech-shopify",
+      "bytes": 1607,
+      "from": "No-Code Solutions — Wugweb_files/6nhWjKixlvWCmDdjcXywzuJ8U.svg"
+    },
+    {
+      "name": "Appsheet",
+      "sitePath": "/assets/tools/appsheet.svg",
+      "rel": "tools/appsheet.svg",
+      "assetId": "asset-tools-appsheet-svg",
+      "techId": "tech-appsheet",
+      "bytes": 491,
+      "from": "No-Code Solutions — Wugweb_files/x5evjyGHUbG1jVcJpep7qn9Nk.svg"
+    },
+    {
+      "name": "WordPress",
+      "sitePath": "/assets/tools/wordpress.svg",
+      "rel": "tools/wordpress.svg",
+      "assetId": "asset-tools-wordpress-svg",
+      "techId": "tech-wordpress",
+      "bytes": 1352,
+      "from": "No-Code Solutions — Wugweb_files/DbtQHsJPydTWp9dmEjoSZQAFs.svg"
+    },
+    {
+      "name": "Bubble",
+      "sitePath": "/assets/tools/bubble.svg",
+      "rel": "tools/bubble.svg",
+      "assetId": "asset-tools-bubble-svg",
+      "techId": "tech-bubble",
+      "bytes": 1719,
+      "from": "No-Code Solutions — Wugweb_files/WHo73K9g07juirjKGO3SpBVZn4.svg"
+    },
+    {
+      "name": "FlutterFlow",
+      "sitePath": "/assets/tools/flutterflow.svg",
+      "rel": "tools/flutterflow.svg",
+      "assetId": "asset-tools-flutterflow-svg",
+      "techId": "tech-flutterflow",
+      "bytes": 1471,
+      "from": "No-Code Solutions — Wugweb_files/Asl4JN9BJC9o2YhF16hQZZUiCAU.svg"
+    },
+    {
+      "name": "Bildr",
+      "sitePath": "/assets/tools/bildr.svg",
+      "rel": "tools/bildr.svg",
+      "assetId": "asset-tools-bildr-svg",
+      "techId": "tech-bildr",
+      "bytes": 1188,
+      "from": "No-Code Solutions — Wugweb_files/qk4YBRiyCxiiYGKhpBqexSxWWQ.svg"
+    },
+    {
+      "name": "Adalo",
+      "sitePath": "/assets/tools/adalo.svg",
+      "rel": "tools/adalo.svg",
+      "assetId": "asset-tools-adalo-svg",
+      "techId": "tech-adalo",
+      "bytes": 1887,
+      "from": "No-Code Solutions — Wugweb_files/ZKliTlVQIw7N3CdorI7jkOItQc.svg"
+    },
+    {
+      "name": "Softr.io",
+      "sitePath": "/assets/tools/softr-io.svg",
+      "rel": "tools/softr-io.svg",
+      "assetId": "asset-tools-softr-io-svg",
+      "techId": "tech-softr-io",
+      "bytes": 611,
+      "from": "No-Code Solutions — Wugweb_files/f3Nb9HQKlyckk3tW5qgZDkZnjy0.svg"
+    },
+    {
+      "name": "Xano",
+      "sitePath": "/assets/tools/xano.svg",
+      "rel": "tools/xano.svg",
+      "assetId": "asset-tools-xano-svg",
+      "techId": "tech-xano",
+      "bytes": 426,
+      "from": "No-Code Solutions — Wugweb_files/1SidyjoRto3EtCgciy21i4YKw.svg"
+    },
+    {
+      "name": "Appian",
+      "sitePath": "/assets/tools/appian.svg",
+      "rel": "tools/appian.svg",
+      "assetId": "asset-tools-appian-svg",
+      "techId": "tech-appian",
+      "bytes": 1971,
+      "from": "No-Code Solutions — Wugweb_files/S1f5Vllsjk2u7BF4MrjTkmeOMG0.svg"
+    },
+    {
+      "name": "Outsystems",
+      "sitePath": "/assets/tools/outsystems.svg",
+      "rel": "tools/outsystems.svg",
+      "assetId": "asset-tools-outsystems-svg",
+      "techId": "tech-outsystems",
+      "bytes": 406,
+      "from": "No-Code Solutions — Wugweb_files/Z1TihOnmsYS8TpkrMrXZKUg.svg"
+    },
+    {
+      "name": "Mendix",
+      "sitePath": "/assets/tools/mendix.svg",
+      "rel": "tools/mendix.svg",
+      "assetId": "asset-tools-mendix-svg",
+      "techId": "tech-mendix",
+      "bytes": 988,
+      "from": "No-Code Solutions — Wugweb_files/mgrQdOLdEVKVyewFpdShyqcifY.svg"
+    },
+    {
+      "name": "Creatio",
+      "sitePath": "/assets/tools/creatio.svg",
+      "rel": "tools/creatio.svg",
+      "assetId": "asset-tools-creatio-svg",
+      "techId": "tech-creatio",
+      "bytes": 2078,
+      "from": "No-Code Solutions — Wugweb_files/EaAkPp9g3TCENz9upeze15MGpk.svg"
+    },
+    {
+      "name": "UIPath",
+      "sitePath": "/assets/tools/uipath.svg",
+      "rel": "tools/uipath.svg",
+      "assetId": "asset-tools-uipath-svg",
+      "techId": "tech-uipath",
+      "bytes": 557,
+      "from": "No-Code Solutions — Wugweb_files/deKtMY7Ykor5jUJRM1LuPTysEoE.svg"
+    },
+    {
+      "name": "Mulesoft",
+      "sitePath": "/assets/tools/mulesoft.svg",
+      "rel": "tools/mulesoft.svg",
+      "assetId": "asset-tools-mulesoft-svg",
+      "techId": "tech-mulesoft",
+      "bytes": 837,
+      "from": "No-Code Solutions — Wugweb_files/4hOLapbmvYSqEdZGEOKFkp3GhVI.svg"
+    },
+    {
+      "name": "Zapier",
+      "sitePath": "/assets/tools/zapier.svg",
+      "rel": "tools/zapier.svg",
+      "assetId": "asset-tools-zapier-svg",
+      "techId": "tech-zapier",
+      "bytes": 1203,
+      "from": "No-Code Solutions — Wugweb_files/NTwzrCxWffbE0l1dDDJ0q5GbdLY.svg"
+    },
+    {
+      "name": "Make",
+      "sitePath": "/assets/tools/make.svg",
+      "rel": "tools/make.svg",
+      "assetId": "asset-tools-make-svg",
+      "techId": "tech-make",
+      "bytes": 1718,
+      "from": "No-Code Solutions — Wugweb_files/YWxUJ3eUR6qSorOY0zQKvn4s58.svg"
+    },
+    {
+      "name": "Coda",
+      "sitePath": "/assets/tools/coda.svg",
+      "rel": "tools/coda.svg",
+      "assetId": "asset-tools-coda-svg",
+      "techId": "tech-coda",
+      "bytes": 1796,
+      "from": "No-Code Solutions — Wugweb_files/AziINZGonKT4mnmiJcdS9A6VU.svg"
+    },
+    {
+      "name": "Datadog",
+      "sitePath": "/assets/tools/datadog.svg",
+      "rel": "tools/datadog.svg",
+      "assetId": "asset-tools-datadog-svg",
+      "techId": "tech-datadog",
+      "bytes": 3965,
+      "from": "No-Code Solutions — Wugweb_files/dw6Tcffnlv8aAfV4H9CF0v2LSuc.svg"
+    },
+    {
+      "name": "n8n",
+      "sitePath": "/assets/tools/n8n.svg",
+      "rel": "tools/n8n.svg",
+      "assetId": "asset-tools-n8n-svg",
+      "techId": "tech-n8n",
+      "bytes": 683,
+      "from": "No-Code Solutions — Wugweb_files/9dJplMXD66yoF8UVycpW2p7Lg.svg"
+    },
+    {
+      "name": "Cloudwatch",
+      "sitePath": "/assets/tools/cloudwatch.png",
+      "rel": "tools/cloudwatch.png",
+      "assetId": "asset-tools-cloudwatch-png",
+      "techId": "tech-cloudwatch",
+      "bytes": 12715,
+      "from": "No-Code Solutions — Wugweb_files/eWKwpUywIZdEAuC1EJ5H8Kg8Ok.png"
+    }
+  ],
+  "junkRemoved": [
+    "tech-with-your-business"
+  ],
+  "r2Uploaded": []
+}

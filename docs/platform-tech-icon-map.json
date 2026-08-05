@@ -1,0 +1,540 @@
+{
+  "generatedAt": "2026-08-04T12:22:18.181Z",
+  "matched": [
+    {
+      "name": "framer",
+      "vocabulary": "platform",
+      "slug": "framer",
+      "iconPath": "/assets/platforms/framer.svg",
+      "source": "reference:No-Code Solutions — Wugweb.html",
+      "sha256": "42072d120477765a2ec1d3e303ae871e95f1596d868a355c3fc5ab68f93aed7d"
+    },
+    {
+      "name": "shopify",
+      "vocabulary": "platform",
+      "slug": "shopify",
+      "iconPath": "/assets/platforms/shopify.svg",
+      "source": "reference:No-Code Solutions — Wugweb.html",
+      "sha256": "05a84c4e0d43c442e7a3a5152d570a58e014aabcd1b906987f589829ebb16a72"
+    },
+    {
+      "name": "webflow",
+      "vocabulary": "platform",
+      "slug": "webflow",
+      "iconPath": "/assets/platforms/webflow.svg",
+      "source": "reference:No-Code Solutions — Wugweb.html",
+      "sha256": "3455ca4a1b66d319afa0a96d8db64d7a307444785e9d809b3eea10de0eed4d39"
+    },
+    {
+      "name": "wix",
+      "vocabulary": "platform",
+      "slug": "wix",
+      "iconPath": "/assets/platforms/wix.svg",
+      "source": "reference:No-Code Solutions — Wugweb.html",
+      "sha256": "0375be636ac4a6a73efec86ee12f2d70bac52fa07f480f22303f316ba3e93dff"
+    },
+    {
+      "name": "wordpress",
+      "vocabulary": "platform",
+      "slug": "wordpress",
+      "iconPath": "/assets/platforms/wordpress.svg",
+      "source": "reference:No-Code Solutions — Wugweb.html",
+      "sha256": "7a030a7c70f2a0593cabd65cb9ca5a6ba565ffde6a93bd5af8d5e2119b4338b8"
+    },
+    {
+      "name": "Framer",
+      "vocabulary": "tech-stack",
+      "slug": "framer",
+      "iconPath": "/assets/platforms/framer.svg",
+      "source": "existing-local",
+      "sha256": "42072d120477765a2ec1d3e303ae871e95f1596d868a355c3fc5ab68f93aed7d"
+    },
+    {
+      "name": "Webflow",
+      "vocabulary": "tech-stack",
+      "slug": "webflow",
+      "iconPath": "/assets/platforms/webflow.svg",
+      "source": "existing-local",
+      "sha256": "3455ca4a1b66d319afa0a96d8db64d7a307444785e9d809b3eea10de0eed4d39"
+    },
+    {
+      "name": "WordPress",
+      "vocabulary": "tech-stack",
+      "slug": "wordpress",
+      "iconPath": "/assets/platforms/wordpress.svg",
+      "source": "existing-local",
+      "sha256": "7a030a7c70f2a0593cabd65cb9ca5a6ba565ffde6a93bd5af8d5e2119b4338b8"
+    },
+    {
+      "name": "Webflow",
+      "vocabulary": "tech-stack",
+      "slug": "webflow",
+      "iconPath": "/assets/tools/webflow.svg",
+      "source": "reference:No-Code Solutions",
+      "sha256": "3455ca4a1b66d319afa0a96d8db64d7a307444785e9d809b3eea10de0eed4d39"
+    },
+    {
+      "name": "Framer",
+      "vocabulary": "tech-stack",
+      "slug": "framer",
+      "iconPath": "/assets/tools/framer.svg",
+      "source": "reference:No-Code Solutions",
+      "sha256": "42072d120477765a2ec1d3e303ae871e95f1596d868a355c3fc5ab68f93aed7d"
+    },
+    {
+      "name": "Wix",
+      "vocabulary": "tech-stack",
+      "slug": "wix",
+      "iconPath": "/assets/tools/wix.svg",
+      "source": "reference:No-Code Solutions",
+      "sha256": "0375be636ac4a6a73efec86ee12f2d70bac52fa07f480f22303f316ba3e93dff"
+    },
+    {
+      "name": "Shopify",
+      "vocabulary": "tech-stack",
+      "slug": "shopify",
+      "iconPath": "/assets/tools/shopify.svg",
+      "source": "reference:No-Code Solutions",
+      "sha256": "05a84c4e0d43c442e7a3a5152d570a58e014aabcd1b906987f589829ebb16a72"
+    },
+    {
+      "name": "Appsheet",
+      "vocabulary": "tech-stack",
+      "slug": "appsheet",
+      "iconPath": "/assets/tools/appsheet.svg",
+      "source": "reference:No-Code Solutions",
+      "sha256": "1d9d923332d52a4fbebac5cc2b33ac41af1da8eb619d4f7bda8adf4f4141b529"
+    },
+    {
+      "name": "WordPress",
+      "vocabulary": "tech-stack",
+      "slug": "wordpress",
+      "iconPath": "/assets/tools/wordpress.svg",
+      "source": "reference:No-Code Solutions",
+      "sha256": "7a030a7c70f2a0593cabd65cb9ca5a6ba565ffde6a93bd5af8d5e2119b4338b8"
+    },
+    {
+      "name": "Bubble",
+      "vocabulary": "tech-stack",
+      "slug": "bubble",
+      "iconPath": "/assets/tools/bubble.svg",
+      "source": "reference:No-Code Solutions",
+      "sha256": "5ec9252f7952cfe6f1ebda53cd94b31a1aa752043afde1e3092cbb30d972de25"
+    },
+    {
+      "name": "FlutterFlow",
+      "vocabulary": "tech-stack",
+      "slug": "flutterflow",
+      "iconPath": "/assets/tools/flutterflow.svg",
+      "source": "reference:No-Code Solutions",
+      "sha256": "399dd4adb5879e897627cc396d3c28289630f32f13af46262ddc829e45748cc7"
+    }
+  ],
+  "missing": [
+    {
+      "name": "aFaqs",
+      "vocabulary": "platform",
+      "slug": "afaqs"
+    },
+    {
+      "name": "Agency Spotter",
+      "vocabulary": "platform",
+      "slug": "agency-spotter"
+    },
+    {
+      "name": "Agency Vista",
+      "vocabulary": "platform",
+      "slug": "agency-vista"
+    },
+    {
+      "name": "AmbitionBox",
+      "vocabulary": "platform",
+      "slug": "ambitionbox"
+    },
+    {
+      "name": "Awwwards",
+      "vocabulary": "platform",
+      "slug": "awwwards"
+    },
+    {
+      "name": "behance",
+      "vocabulary": "platform",
+      "slug": "behance"
+    },
+    {
+      "name": "clutch",
+      "vocabulary": "platform",
+      "slug": "clutch"
+    },
+    {
+      "name": "CrowdReviews",
+      "vocabulary": "platform",
+      "slug": "crowdreviews"
+    },
+    {
+      "name": "crunchbase",
+      "vocabulary": "platform",
+      "slug": "crunchbase"
+    },
+    {
+      "name": "DesignerListings",
+      "vocabulary": "platform",
+      "slug": "designerlistings"
+    },
+    {
+      "name": "DesignRush",
+      "vocabulary": "platform",
+      "slug": "designrush"
+    },
+    {
+      "name": "Dev.to",
+      "vocabulary": "platform",
+      "slug": "dev-to"
+    },
+    {
+      "name": "Digital Uncovered",
+      "vocabulary": "platform",
+      "slug": "digital-uncovered"
+    },
+    {
+      "name": "dribbble",
+      "vocabulary": "platform",
+      "slug": "dribbble"
+    },
+    {
+      "name": "EasyLeadz",
+      "vocabulary": "platform",
+      "slug": "easyleadz"
+    },
+    {
+      "name": "Enterprise League",
+      "vocabulary": "platform",
+      "slug": "enterprise-league"
+    },
+    {
+      "name": "facebook",
+      "vocabulary": "platform",
+      "slug": "facebook"
+    },
+    {
+      "name": "figma",
+      "vocabulary": "platform",
+      "slug": "figma"
+    },
+    {
+      "name": "fiverr",
+      "vocabulary": "platform",
+      "slug": "fiverr"
+    },
+    {
+      "name": "Fiverr Pro",
+      "vocabulary": "platform",
+      "slug": "fiverr-pro"
+    },
+    {
+      "name": "Framer CMS",
+      "vocabulary": "platform",
+      "slug": "framer-cms"
+    },
+    {
+      "name": "G2",
+      "vocabulary": "platform",
+      "slug": "g2"
+    },
+    {
+      "name": "gem",
+      "vocabulary": "platform",
+      "slug": "gem"
+    },
+    {
+      "name": "GitHub",
+      "vocabulary": "platform",
+      "slug": "github"
+    },
+    {
+      "name": "Glassdoor",
+      "vocabulary": "platform",
+      "slug": "glassdoor"
+    },
+    {
+      "name": "goodfirms",
+      "vocabulary": "platform",
+      "slug": "goodfirms"
+    },
+    {
+      "name": "GoodTroopers",
+      "vocabulary": "platform",
+      "slug": "goodtroopers"
+    },
+    {
+      "name": "Google Business Profile",
+      "vocabulary": "platform",
+      "slug": "google-business-profile"
+    },
+    {
+      "name": "Great Place To Work",
+      "vocabulary": "platform",
+      "slug": "great-place-to-work"
+    },
+    {
+      "name": "Gumroad",
+      "vocabulary": "platform",
+      "slug": "gumroad"
+    },
+    {
+      "name": "Hashnode",
+      "vocabulary": "platform",
+      "slug": "hashnode"
+    },
+    {
+      "name": "Influencer Marketing Hub",
+      "vocabulary": "platform",
+      "slug": "influencer-marketing-hub"
+    },
+    {
+      "name": "instagram",
+      "vocabulary": "platform",
+      "slug": "instagram"
+    },
+    {
+      "name": "Instahyre",
+      "vocabulary": "platform",
+      "slug": "instahyre"
+    },
+    {
+      "name": "linkedin",
+      "vocabulary": "platform",
+      "slug": "linkedin"
+    },
+    {
+      "name": "MAARG Mentorship",
+      "vocabulary": "platform",
+      "slug": "maarg-mentorship"
+    },
+    {
+      "name": "Mailchimp",
+      "vocabulary": "platform",
+      "slug": "mailchimp"
+    },
+    {
+      "name": "Manifest",
+      "vocabulary": "platform",
+      "slug": "manifest"
+    },
+    {
+      "name": "Medium",
+      "vocabulary": "platform",
+      "slug": "medium"
+    },
+    {
+      "name": "pinterest",
+      "vocabulary": "platform",
+      "slug": "pinterest"
+    },
+    {
+      "name": "Podium",
+      "vocabulary": "platform",
+      "slug": "podium"
+    },
+    {
+      "name": "PowerReviews",
+      "vocabulary": "platform",
+      "slug": "powerreviews"
+    },
+    {
+      "name": "Quora",
+      "vocabulary": "platform",
+      "slug": "quora"
+    },
+    {
+      "name": "Reddit",
+      "vocabulary": "platform",
+      "slug": "reddit"
+    },
+    {
+      "name": "ReputedFirms",
+      "vocabulary": "platform",
+      "slug": "reputedfirms"
+    },
+    {
+      "name": "SignalHire",
+      "vocabulary": "platform",
+      "slug": "signalhire"
+    },
+    {
+      "name": "Skill India",
+      "vocabulary": "platform",
+      "slug": "skill-india"
+    },
+    {
+      "name": "Sortlist",
+      "vocabulary": "platform",
+      "slug": "sortlist"
+    },
+    {
+      "name": "startup-india",
+      "vocabulary": "platform",
+      "slug": "startup-india"
+    },
+    {
+      "name": "Substack",
+      "vocabulary": "platform",
+      "slug": "substack"
+    },
+    {
+      "name": "Sur.ly",
+      "vocabulary": "platform",
+      "slug": "sur-ly"
+    },
+    {
+      "name": "TheCompanyCheck",
+      "vocabulary": "platform",
+      "slug": "thecompanycheck"
+    },
+    {
+      "name": "threads",
+      "vocabulary": "platform",
+      "slug": "threads"
+    },
+    {
+      "name": "Tofler",
+      "vocabulary": "platform",
+      "slug": "tofler"
+    },
+    {
+      "name": "tracxn",
+      "vocabulary": "platform",
+      "slug": "tracxn"
+    },
+    {
+      "name": "trustpilot",
+      "vocabulary": "platform",
+      "slug": "trustpilot"
+    },
+    {
+      "name": "UpCity",
+      "vocabulary": "platform",
+      "slug": "upcity"
+    },
+    {
+      "name": "upwork",
+      "vocabulary": "platform",
+      "slug": "upwork"
+    },
+    {
+      "name": "Website",
+      "vocabulary": "platform",
+      "slug": "website"
+    },
+    {
+      "name": "Wix Partner",
+      "vocabulary": "platform",
+      "slug": "wix-partner"
+    },
+    {
+      "name": "x",
+      "vocabulary": "platform",
+      "slug": "x"
+    },
+    {
+      "name": "youtube",
+      "vocabulary": "platform",
+      "slug": "youtube"
+    },
+    {
+      "name": "zoominfo",
+      "vocabulary": "platform",
+      "slug": "zoominfo"
+    },
+    {
+      "name": "Adobe",
+      "vocabulary": "tech-stack",
+      "slug": "adobe"
+    },
+    {
+      "name": "AWS",
+      "vocabulary": "tech-stack",
+      "slug": "aws"
+    },
+    {
+      "name": "Figma",
+      "vocabulary": "tech-stack",
+      "slug": "figma"
+    },
+    {
+      "name": "GitHub",
+      "vocabulary": "tech-stack",
+      "slug": "github"
+    },
+    {
+      "name": "Google Analytics",
+      "vocabulary": "tech-stack",
+      "slug": "google-analytics"
+    },
+    {
+      "name": "GTag",
+      "vocabulary": "tech-stack",
+      "slug": "gtag"
+    },
+    {
+      "name": "MongoDB",
+      "vocabulary": "tech-stack",
+      "slug": "mongodb"
+    },
+    {
+      "name": "n8n",
+      "vocabulary": "tech-stack",
+      "slug": "n8n"
+    },
+    {
+      "name": "Netlify",
+      "vocabulary": "tech-stack",
+      "slug": "netlify"
+    },
+    {
+      "name": "Node.js",
+      "vocabulary": "tech-stack",
+      "slug": "node-js"
+    },
+    {
+      "name": "OutSystems",
+      "vocabulary": "tech-stack",
+      "slug": "outsystems"
+    },
+    {
+      "name": "React",
+      "vocabulary": "tech-stack",
+      "slug": "react"
+    },
+    {
+      "name": "Redis",
+      "vocabulary": "tech-stack",
+      "slug": "redis"
+    },
+    {
+      "name": "Strapi",
+      "vocabulary": "tech-stack",
+      "slug": "strapi"
+    },
+    {
+      "name": "Supabase",
+      "vocabulary": "tech-stack",
+      "slug": "supabase"
+    },
+    {
+      "name": "TypeScript",
+      "vocabulary": "tech-stack",
+      "slug": "typescript"
+    },
+    {
+      "name": "Vercel",
+      "vocabulary": "tech-stack",
+      "slug": "vercel"
+    },
+    {
+      "name": "Zapier",
+      "vocabulary": "tech-stack",
+      "slug": "zapier"
+    }
+  ]
+}

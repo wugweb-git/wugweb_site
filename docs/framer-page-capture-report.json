@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-08-04T16:47:19.508Z",
+  "base": "https://lucky-subtasks-379995.framer.app",
+  "report": [
+    {
+      "path": "/",
+      "title": "Home — Wugweb",
+      "assets": 120,
+      "saved": 117,
+      "htmlPath": "/Users/abcom/Documents/GitHub/wugweb_site/reference/Home — Wugweb.html",
+      "ok": true
+    },
+    {
+      "path": "/faq",
+      "title": "FAQ — Wugweb",
+      "assets": 69,
+      "saved": 69,
+      "htmlPath": "/Users/abcom/Documents/GitHub/wugweb_site/reference/FAQ — Wugweb.html",
+      "ok": true
+    },
+    {
+      "path": "/work",
+      "title": "Work — Wugweb",
+      "assets": 96,
+      "saved": 88,
+      "htmlPath": "/Users/abcom/Documents/GitHub/wugweb_site/reference/Work — Wugweb.html",
+      "ok": true
+    },
+    {
+      "path": "/blog",
+      "title": "Blog — Wugweb",
+      "assets": 114,
+      "saved": 92,
+      "htmlPath": "/Users/abcom/Documents/GitHub/wugweb_site/reference/Blog — Wugweb.html",
+      "ok": true
+    },
+    {
+      "path": "/services/lead-generation",
+      "title": "Lead Generation Services — Wugweb",
+      "assets": 69,
+      "saved": 69,
+      "htmlPath": "/Users/abcom/Documents/GitHub/wugweb_site/reference/Lead Generation Services — Wugweb.html",
+      "ok": true
+    },
+    {
+      "path": "/footer/industries",
+      "title": "Industries — Wugweb",
+      "assets": 69,
+      "saved": 69,
+      "htmlPath": "/Users/abcom/Documents/GitHub/wugweb_site/reference/Industries — Wugweb.html",
+      "ok": true
+    },
+    {
+      "path": "/footer/subscription",
+      "title": "Subscription — Wugweb",
+      "assets": 120,
+      "saved": 118,
+      "htmlPath": "/Users/abcom/Documents/GitHub/wugweb_site/reference/Subscription — Wugweb.html",
+      "ok": true
+    }
+  ]
+}

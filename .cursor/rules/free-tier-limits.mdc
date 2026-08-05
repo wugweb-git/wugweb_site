@@ -1,0 +1,56 @@
+---
+description: Never exceed free-tier limits for any vendor used by this project
+alwaysApply: true
+---
+
+# Free-tier hard limits
+
+## Rule 1 — Never exceed any free-tier limit
+
+Never exceed any free-tier quota, plan, or feature ceiling for services used by this repo.
+
+### Applies to
+
+Sanity, Cloudflare Pages/Workers/R2/KV, Neon, Notion, GitHub, and any other third-party tool.
+
+### Do
+
+- Prefer static schema/UI patterns over live Studio widgets, expensive GROQ, custom plugins, or realtime subscriptions
+- Prefer CDN/local assets and existing bindings over new paid add-ons
+- Check plan limits before adding plugins, cron jobs, high-frequency sync, large media uploads, or new cloud products
+- If a feature would push past free tier, stop and propose a free-tier-safe alternative
+
+### Do not
+
+- Install paid-only plugins or force upgrades
+- Add dashboard live queries, graph traversals, or polling that risks API rate limits
+- Provision Hyperdrive, extra KV, or other billable bindings unless explicitly requested
+- Assume “temporary” free-tier overages are acceptable
+
+## Rule 2 — R2 MUST NOT EXCEED FREE TIER
+
+Hard stop for Cloudflare R2. Media lives in bucket `wugweb-assets` (Standard class only).
+
+| Metric | Free | Repo soft ceiling |
+|---|---|---|
+| Storage | 10 GB | Abort uploads above **9.5 GiB** planned usage |
+| Class A (writes) | 1M / mo | Soft-abort bulk jobs above **100k** puts |
+| Class B (reads) | 10M / mo | No listing storms; prefer cache |
+| Egress | Free | — |
+
+### Path map (do not invent new prefixes)
+
+- Local: `public/assets/<path>`
+- Site: `/assets/<path>`
+- R2 key: `assets/<path>`
+- Public: `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/<path>`
+
+Details: `docs/r2-assets.md`. Upload: `scripts/upload-assets-to-r2.mjs`. Content map: `scripts/map-assets-to-content.mjs` / `docs/content-assets.md`.
+
+### Do not
+
+- Use Infrequent Access (no free tier)
+- Create extra R2 buckets without an explicit user request + free-tier check
+- Re-upload the full tree repeatedly
+- Delete `public/assets` before R2 cutover is verified
+- Assume overages or “temporary” paid R2 usage are OK
