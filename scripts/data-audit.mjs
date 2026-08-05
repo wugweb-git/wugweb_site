@@ -339,6 +339,9 @@ async function auditAssets() {
 
   const notOnDisk = [];
   for (const a of sanityAssets) {
+    // Assets marked localExists:false are intentionally not on disk
+    // (e.g. generated-inline SVG badges) — skip them.
+    if (a.localExists === false) continue;
     if (a.relativePath && !diskFiles.includes(a.relativePath)) {
       notOnDisk.push({ id: a._id, path: a.relativePath });
     }
