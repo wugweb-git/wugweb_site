@@ -30,7 +30,16 @@ const TYPE_MAP = {
   person: 'person', siteSettings: 'siteSettings', singletonPage: 'page',
   client: 'client', industry: 'industry', engagement: 'engagement',
   taxonomy: 'taxonomy', contactSubmission: 'contactSubmission',
+  asset: 'asset', platformProfile: 'platformProfile', syncStatus: 'syncStatus',
 };
+
+// Governance: owner is a field on the Sanity doc (vedanshu|wugweb|both).
+// Fall back to `wugweb` (agency default) — never assume vedanshu.
+function docOwner(doc) {
+  const o = String(doc.owner || '').toLowerCase();
+  if (o === 'vedanshu' || o === 'wugweb' || o === 'both') return o;
+  return 'wugweb';
+}
 
 async function main() {
   const pg = new Client({ connectionString: DATABASE_URL });
@@ -50,7 +59,7 @@ async function main() {
     for (const doc of docs) {
       const { _id, _type, _rev, _createdAt, _updatedAt, ...cleanData } = doc;
       const id = _id;
-      const owner = 'vedanshu';
+      const owner = docOwner(doc);
 
       try {
         await pg.query(

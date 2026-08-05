@@ -38,9 +38,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
   const client = await connect(locals.runtime.env);
 
   try {
-    // Map Sanity content type → Neon content_type
-    // We derive the owner from the lookup table: vedanshu owns everything by default
-    const owner = 'vedanshu';
+    // Map Sanity content type → Neon content_type.
+    // Governance: owner comes from the doc (vedanshu|wugweb|both);
+    // fall back to `wugweb` (agency default) — never assume vedanshu.
+    const docOwner = (d: Record<string, unknown>): string => {
+      const o = String(d.owner || '').toLowerCase();
+      if (o === 'vedanshu' || o === 'wugweb' || o === 'both') return o;
+      return 'wugweb';
+    };
 
     // Start sync log entry
     const logResult = await client.query(
@@ -71,8 +76,12 @@ export const POST: APIRoute = async ({ request, locals }) => {
           engagement: 'engagement',
           taxonomy: 'taxonomy',
           contactSubmission: 'contactSubmission',
+          asset: 'asset',
+          platformProfile: 'platformProfile',
+          syncStatus: 'syncStatus',
         };
         const contentType = typeMap[type] || type;
+        const owner = docOwner(doc);
 
         // Media fields (images) — store as references, not raw data.
         // Actual files stay in Sanity CDN or get copied to R2 separately.
