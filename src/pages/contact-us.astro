@@ -49,6 +49,11 @@ const budgets = ['<$3K', '<$6K', '<$15K', '<$25K'];
       <!-- Submits to /api/contact — see that file for what's actually
            wired up vs. still stubbed. -->
       <form class="contact-form" method="POST" action="/api/contact">
+        <!-- Honeypot — hidden from humans, bots fill it. Ignored server-side. -->
+        <label class="hp-field" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+
         <label>
           Hi, my name is
           <input type="text" name="name" required />
@@ -124,18 +129,11 @@ const budgets = ['<$3K', '<$6K', '<$15K', '<$25K'];
   .detail-value a { text-decoration: none; color: var(--fg); }
   .contact-form { display: flex; flex-direction: column; gap: var(--gap-6); }
   .contact-form label { display: flex; flex-direction: column; gap: var(--gap-2); font-family: var(--font-mono); font-size: var(--fluid-label); color: var(--fg-muted); }
-  .contact-form input[type='text'], .contact-form textarea, .contact-form select { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-1); padding: var(--gap-3) var(--gap-4); color: var(--fg); font-family: var(--font-body); font-size: var(--fluid-body-md); }
+  .contact-form input[type='text'], .contact-form textarea, .contact-form select { background: var(--surface-2); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-1); padding: var(--gap-3) var(--gap-4); color: var(--fg); font-family: var(--font-body); font-size: var(--fluid-body-md); }
   .contact-form fieldset { border: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
   .contact-form legend { font-family: var(--font-mono); font-size: var(--fluid-label); color: var(--fg-muted); padding: 0; margin-bottom: var(--s-1); }
   .contact-form .checkbox, .contact-form .radio { flex-direction: row; align-items: center; gap: var(--gap-2); color: var(--fg); }
   .contact-form a { color: var(--accent-warm); }
   .contact-form button { align-self: flex-start; border: none; cursor: pointer; margin-top: var(--gap-2); }
+  .hp-field { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
 </style>
-
-<script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.contact-details div, .contact-form label, .contact-form fieldset, .contact-form button', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
-</script>

@@ -116,12 +116,13 @@ const otherCases = await Promise.all(others.map((s: any) =>
 </BaseLayout>
 
 <style>
-  .work-detail-hero { padding-block: var(--space-section-xl) var(--space-section-md); border-bottom: 1px solid var(--line); }
+  .work-detail-hero { padding-block: var(--space-section-xl) var(--space-section-md); border-bottom: var(--stroke-thin) solid var(--line); }
   .work-detail-hero .eyebrow a { color: var(--fg-muted); text-decoration: none; }
   .work-detail-hero h1 { font-size: var(--t-h2); margin-top: var(--gap-4); max-width: 20ch; }
-  .work-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-6); margin-top: var(--gap-12); max-width: 600px; }
+  .work-meta { display: grid; grid-template-columns: 1fr; gap: var(--gap-5) var(--gap-6); margin-top: var(--gap-12); max-width: 600px; }
+  @media (min-width: 640px) { .work-meta { grid-template-columns: repeat(2, 1fr); } }
   .meta-label { display: block; font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--accent-warm); text-transform: uppercase; margin-bottom: var(--gap-1); }
-  .section { padding-block: var(--space-section-md); border-bottom: 1px solid var(--line); }
+  .section { padding-block: var(--space-section-md); border-bottom: var(--stroke-thin) solid var(--line); }
   .section h2 { font-size: var(--t-h3); margin-bottom: var(--gap-6); }
   .section p { max-width: 60ch; line-height: var(--core-line-height-relaxed); color: var(--fg-muted); }
   .work-cover img { width: 100%; height: auto; border-radius: var(--r-2); display: block; }
@@ -130,20 +131,13 @@ const otherCases = await Promise.all(others.map((s: any) =>
   .gallery-grid img, .gallery-grid video { width: 100%; height: auto; border-radius: var(--r-2); display: block; background: var(--surface-2); }
   .grid { display: grid; gap: var(--gap-6); margin-top: var(--gap-4); }
   @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-  .card { border-top: 1px solid var(--line); padding-top: var(--gap-4); }
+  .card { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
   .card h3 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); margin-bottom: var(--gap-2); }
   .card p { font-size: var(--fluid-body-sm); }
   .more-grid { display: grid; gap: var(--gap-6); margin-top: var(--gap-6); }
   @media (min-width: 768px) { .more-grid { grid-template-columns: repeat(2, 1fr); } }
-  .more-card { text-decoration: none; border-top: 1px solid var(--line); padding-top: var(--gap-4); display: block; }
+  .more-card { text-decoration: none; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); display: block; }
   .more-card h3 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); color: var(--fg); }
   .more-card p { color: var(--fg-muted); margin-top: var(--gap-1); font-size: var(--fluid-label); }
 </style>
 
-<script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.card, .more-card, .section', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
-</script>

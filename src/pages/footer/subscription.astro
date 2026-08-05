@@ -9,12 +9,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <h1 data-reveal>Stay in the loop</h1>
     <p class="sub-hero" data-reveal>Get insights on design, product, and digital strategy delivered to your inbox. No spam, just thoughtful content.</p>
 
-    <form class="sub-form" data-reveal>
+    <form class="sub-form" method="POST" action="/api/subscribe" data-reveal>
       <div class="form-row">
-        <input type="email" placeholder="Enter your email" class="sub-input" required />
+        <input type="email" name="email" placeholder="Enter your email" class="sub-input" required autocomplete="email" />
         <button type="submit" class="btn btn-solid">Subscribe</button>
       </div>
       <p class="sub-note">We respect your privacy. Unsubscribe anytime.</p>
+      {(Astro.url.searchParams.get('subscribed') === '1') && <p class="sub-success" role="status">Thanks — you're on the list. Talk soon.</p>}
     </form>
   </section>
 </BaseLayout>
@@ -45,7 +46,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     padding: var(--gap-3) var(--gap-4);
     font-family: var(--font-body);
     font-size: var(--fluid-body-md);
-    border: 1px solid var(--line);
+    border: var(--stroke-thin) solid var(--line);
     border-radius: var(--r-2);
     background: var(--bg);
     color: var(--fg);
@@ -59,9 +60,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     font-size: var(--fluid-label);
     color: var(--fg-muted);
   }
+  .sub-success {
+    margin-top: var(--gap-4);
+    color: var(--color-feedback-success);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+  }
 </style>
 
-<script>
-  import { animate } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2 });
-</script>

@@ -112,12 +112,12 @@ export default defineType({
     { name: 'titleAsc', title: 'Title A-Z', by: [{ field: 'title', direction: 'asc' }] },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'client', media: 'coverImage', featured: 'featured', industry: 'industry', disciplines: 'disciplines', seoDesc: 'seoDescription' },
-    prepare: ({ title, subtitle, media, featured, industry, disciplines, seoDesc }: any) => {
+    select: { title: 'title', subtitle: 'client', media: 'coverImage', featured: 'featured', industry: 'industry', disciplines: 'disciplines', seoDesc: 'seoDescription', clientRef: 'clientRef->name', industryRef: 'industryRef->name' },
+    prepare: ({ title, subtitle, media, featured, industry, disciplines, seoDesc, clientRef, industryRef }: any) => {
       const badge = featured ? ' ⭐' : '';
       const parts = [];
-      if (subtitle) parts.push(subtitle);
-      if (industry) parts.push(industry);
+      if (clientRef || subtitle) parts.push(clientRef || subtitle);
+      if (industryRef || industry) parts.push(industryRef || industry);
       if (disciplines && disciplines.length) parts.push(disciplines.slice(0, 2).join(', '));
       let health = '✅';
       if (!media) health = '❌ Cover';

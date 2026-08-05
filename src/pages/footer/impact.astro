@@ -59,7 +59,7 @@ const activities = [
     }
   }
   .activities li {
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
     padding-top: var(--gap-5);
   }
   .activity-n {
@@ -75,7 +75,7 @@ const activities = [
     margin-top: var(--gap-2);
   }
   .cta-banner {
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
     padding-top: var(--gap-8);
     display: flex;
     flex-wrap: wrap;
@@ -89,10 +89,3 @@ const activities = [
   }
 </style>
 
-<script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2 });
-  inView('.activities li', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
-</script>

@@ -1,0 +1,52 @@
+---
+// Trust & recognition strip — sourced from the Wugweb digital presence
+// registry (notion-data/digital-presence-*.json), not guessed URLs:
+//   Clutch      https://clutch.co/profile/wugweb        (Pending Verification)
+//   DesignRush  https://www.designrush.com/agency/profile/wugweb  (Pending Verification)
+//   GoodFirms   https://www.goodfirms.co/company/wugweb (Live)
+// Official logos self-hosted at /brand/trust/*.svg (dark-background friendly).
+const badges = [
+  { name: 'Clutch', href: 'https://clutch.co/profile/wugweb', logo: '/brand/trust/clutch.svg' },
+  { name: 'DesignRush', href: 'https://www.designrush.com/agency/profile/wugweb', logo: '/brand/trust/designrush.svg' },
+  { name: 'GoodFirms', href: 'https://www.goodfirms.co/company/wugweb', logo: '/brand/trust/goodfirms.svg' },
+];
+---
+
+<div class="trust-badges" aria-label="Awards and recognitions">
+  {badges.map((b) => (
+    <a href={b.href} target="_blank" rel="noopener noreferrer" class="trust-badge" aria-label={`${b.name} — opens in new tab`}>
+      <img src={b.logo} alt={b.name} width="120" height="26" loading="lazy" class="trust-badge-logo" />
+    </a>
+  ))}
+</div>
+
+<style>
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-5) var(--gap-8);
+    padding-block: var(--gap-6);
+    border-top: var(--stroke-thin) solid var(--line);
+    border-bottom: var(--stroke-thin) solid var(--line);
+    margin-block: var(--gap-8);
+  }
+  .trust-badge {
+    display: inline-flex;
+    align-items: center;
+    color: var(--fg-muted);
+    text-decoration: none;
+    opacity: var(--opacity-soft);
+    transition: opacity var(--duration-fast) var(--easing-out);
+  }
+  .trust-badge:hover { opacity: var(--opacity-100); }
+  .trust-badge-logo {
+    height: 26px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+    filter: brightness(0.9);
+  }
+  .trust-badge:hover .trust-badge-logo { filter: brightness(1); }
+</style>

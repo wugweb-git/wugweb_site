@@ -10,12 +10,12 @@ const caseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => [
 const servicesPage = await sanityClient.fetch(singletonPageQuery, { pageId: 'services' }).catch(() => null);
 
 const template = [
-  { n:'01', slug:'strategy',     bg:'var(--svc-strategy-dark)', fg:'#050505', accent:'#050505', tiers:[{id:'sprint',name:'Sprint',body:'A focused strategy sprint to sharpen positioning, pressure-test the opportunity and turn complex thinking into a direction your teams and your audiences can actually act on.'},{id:'partnership',name:'Partnership',body:'An embedded strategy partnership for the bigger bets — transformation programmes, new market entry, and roadmaps that need dedicated thinking over quarters, not weeks.'}],gallery:['axis-bank','metcred','sadhan','indusninja']},
-  { n:'02', slug:'brand',         bg:'var(--svc-brand-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'foundations',name:'Foundations',body:'A complete brand foundation built to hold its own alongside organisations ten times your size — from visual identity to voice, delivered as a system your team can actually run with.'},{id:'partnership',name:'Partnership',body:'A bespoke brand partnership with dedicated creative resource for the work that needs more room: a full rebrand, a campaign identity, or something nobody has done before.'}],gallery:['inkompass','visione','sadhan','axis-bank']},
-  { n:'03', slug:'experience',    bg:'var(--svc-experience-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'foundations',name:'Foundations',body:'A research-led UX and UI build designed to convert, communicate and hold up under scrutiny — journeys, interfaces and a design system that ships with the product.'},{id:'partnership',name:'Partnership',body:'An ongoing experience partnership for multi-product estates: continuous research, a governed design system, and a design team that stays with the roadmap.'}],gallery:['airtel-xsafe','inkompass','metcred','visione']},
-  { n:'04', slug:'growth',        bg:'var(--svc-growth-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'foundations',name:'Foundations',body:'A martech and analytics foundation that turns scattered tooling into one measurable acquisition engine — tracking, automation and reporting you can trust.'},{id:'partnership',name:'Partnership',body:'A retained growth partnership running lifecycle automation, AI-assisted campaigns and experimentation against targets we agree upfront and report on monthly.'}],gallery:['indusninja','sadhan','axis-bank','airtel-xsafe']},
-  { n:'05', slug:'engineering',   bg:'var(--svc-engineering-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'build',name:'Build',body:'A production-grade web or app build on modern foundations — performant, accessible, secure by default, and handed over with the documentation to keep it that way.'},{id:'partnership',name:'Partnership',body:'A long-run engineering partnership: a dedicated squad on your roadmap, covering platform work, integrations, cloud and the reliability that comes after launch.'}],gallery:['metcred','indusninja','airtel-xsafe','visione']},
-  { n:'06', slug:'operations',    bg:'var(--svc-operations-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'essentials',name:'Essentials',body:'A QA, no-code and automation pass that removes the manual work slowing delivery down — test coverage, workflow automation and the tooling to keep releases boring.'},{id:'partnership',name:'Partnership',body:'An embedded operations partnership covering continuous QA, release engineering and site reliability so your products ship faster and scale without friction.'}],gallery:['visione','sadhan','inkompass','indusninja']},
+  { n:'01', slug:'strategy',     sub:'Define the future before building it.', bg:'var(--svc-strategy-dark)', fg:'#050505', accent:'#050505', tiers:[{id:'sprint',name:'Sprint',body:'A focused strategy sprint to sharpen positioning, pressure-test the opportunity and turn complex thinking into a direction your teams and your audiences can actually act on.'},{id:'partnership',name:'Partnership',body:'An embedded strategy partnership for the bigger bets — transformation programmes, new market entry, and roadmaps that need dedicated thinking over quarters, not weeks.'}],gallery:['axis-bank','metcred','sadhan','indusninja']},
+  { n:'02', slug:'engineering',  sub:'Engineer products built to scale.', bg:'var(--svc-engineering-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'build',name:'Build',body:'A production-grade web or app build on modern foundations — performant, accessible, secure by default, and handed over with the documentation to keep it that way.'},{id:'partnership',name:'Partnership',body:'A long-run engineering partnership: a dedicated squad on your roadmap, covering platform work, integrations, cloud and the reliability that comes after launch.'}],gallery:['metcred','indusninja','airtel-xsafe','visione']},
+  { n:'03', slug:'brand',         sub:'Create brands people remember.', bg:'var(--svc-brand-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'foundations',name:'Foundations',body:'A complete brand foundation built to hold its own alongside organisations ten times your size — from visual identity to voice, delivered as a system your team can actually run with.'},{id:'partnership',name:'Partnership',body:'A bespoke brand partnership with dedicated creative resource for the work that needs more room: a full rebrand, a campaign identity, or something nobody has done before.'}],gallery:['inkompass','visione','sadhan','axis-bank']},
+  { n:'04', slug:'growth',        sub:'Turn products into businesses.', bg:'var(--svc-growth-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'foundations',name:'Foundations',body:'A martech and analytics foundation that turns scattered tooling into one measurable acquisition engine — tracking, automation and reporting you can trust.'},{id:'partnership',name:'Partnership',body:'A retained growth partnership running lifecycle automation, AI-assisted campaigns and experimentation against targets we agree upfront and report on monthly.'}],gallery:['indusninja','sadhan','axis-bank','airtel-xsafe']},
+  { n:'05', slug:'operations',    sub:'Keep everything running and improving.', bg:'var(--svc-operations-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'essentials',name:'Essentials',body:'A QA, no-code and automation pass that removes the manual work slowing delivery down — test coverage, workflow automation and the tooling to keep releases boring.'},{id:'partnership',name:'Partnership',body:'An embedded operations partnership covering continuous QA, release engineering and site reliability so your products ship faster and scale without friction.'}],gallery:['visione','sadhan','inkompass','indusninja']},
+  { n:'06', slug:'experience',    sub:'Design products people love using.', bg:'var(--svc-experience-dark)', fg:'#FFFFFF', accent:'#FFFFFF', tiers:[{id:'foundations',name:'Foundations',body:'A research-led UX and UI build designed to convert, communicate and hold up under scrutiny — journeys, interfaces and a design system that ships with the product.'},{id:'partnership',name:'Partnership',body:'An ongoing experience partnership for multi-product estates: continuous research, a governed design system, and a design team that stays with the roadmap.'}],gallery:['airtel-xsafe','inkompass','metcred','visione']},
 ];
 
 function norm(s: string) {
@@ -76,8 +76,6 @@ const whyIntro =
     <p data-reveal>We create at the intersection of design and technology, combining UX design services with innovative systems to bring the future into the present. Our UI UX design agency develops comprehensive strategies through a human-centered design lens, then brings them to life with adaptable, scalable platforms.</p>
   </section>
 
-  </section>
-
   <!-- WHY WUGWEB -->
   <section class="wrap why-wugweb">
     <h2 data-reveal>Why Wugweb?</h2>
@@ -90,6 +88,7 @@ const whyIntro =
         <div class="svc-copy">
           <span class="svc-num">{s.n}</span>
           <h2 class="svc-title">{s.title}</h2>
+          {s.sub && <p class="svc-sub">{s.sub}</p>}
           <div class="svc-tabs" role="tablist">{s.tiers.map((t, ti) => (
             <button type="button" role="tab" class:list={['svc-tab',{active:ti===0}]} data-tier-btn={t.id} aria-selected={ti===0?'true':'false'}>{t.name}</button>
           ))}</div>
@@ -116,34 +115,35 @@ const whyIntro =
   .services-hero-content h1 { font-size: var(--t-h2); font-weight: var(--font-weight-bold); max-width: 28ch; margin-bottom: var(--gap-4); }
   .services-hero-content p:not(.services-hero-sub) { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
   .services-hero-sub { margin-top: var(--gap-5); max-width: 55ch; }
-  .stats { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .stats { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .stats ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .stats ul { grid-template-columns: repeat(4, 1fr); } }
-  .stats li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
+  .stats li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
   .stat-n { font-family: var(--font-mono); font-size: var(--fluid-h3); font-weight: var(--font-weight-bold); color: var(--accent-warm); }
   .stat-label { color: var(--fg); font-size: var(--fluid-body-lg); font-weight: var(--font-weight-medium); margin-top: var(--gap-2); }
   .stat-copy { margin-top: var(--gap-1); }
-  .services-intro { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .services-intro { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .services-intro h2 { font-size: var(--t-h3); max-width: 20ch; }
   .services-intro p { margin-top: var(--gap-5); max-width: 65ch; }
   .svc-stack { position: relative; }
-  .svc-panel { position: sticky; top: 0; height: 100vh; min-height: 620px; display: flex; align-items: center; background: var(--svc-bg); color: var(--svc-fg); padding-block: var(--space-section-xl) var(--gap-12); border-radius: var(--r-6) var(--r-6) 0 0; box-shadow: 0 -30px 70px rgba(0,0,0,.45); }
+  .svc-panel { position: sticky; top: 0; height: 100vh; min-height: var(--svc-panel-min); display: flex; align-items: center; background: var(--svc-bg); color: var(--svc-fg); padding-block: var(--space-section-xl) var(--gap-12); border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; box-shadow: var(--shadow-xl); }
   .svc-inner { width: 100%; transform-origin: center top; will-change: transform, opacity; }
-  .svc-num { font-family: var(--font-mono); font-size: var(--t-sm); letter-spacing: .08em; opacity: .65; }
+  .svc-num { font-family: var(--font-mono); font-size: var(--t-sm); letter-spacing: .08em; opacity: var(--opacity-muted); }
   .svc-title { font-size: var(--t-display); font-weight: var(--font-weight-extrabold); line-height: .92; color: var(--svc-fg); margin-top: var(--gap-1); }
-  .svc-tabs { display: flex; gap: 0; margin-top: var(--gap-6); padding: var(--gap-1); border-radius: var(--r-pill); background: rgba(255,255,255,.08); width: fit-content; }
-  .svc-tab { font-family: var(--font-mono); font-size: var(--t-sm); letter-spacing: .02em; padding: var(--gap-2) var(--gap-5); border-radius: var(--r-pill); border: 0; background: transparent; color: inherit; opacity: .55; cursor: pointer; }
-  .svc-tab:hover { opacity: .85; }
-  .svc-tab.active { background: rgba(255,255,255,.14); opacity: 1; }
+  .svc-sub { margin-top: var(--gap-3); font-size: var(--t-l); line-height: var(--lh-l); color: color-mix(in srgb, var(--svc-fg) 88%, transparent); max-width: 42ch; }
+  .svc-tabs { display: flex; gap: 0; margin-top: var(--gap-6); padding: var(--gap-1); border-radius: var(--radius-full); background: color-mix(in srgb, var(--neutral-0) 8%, transparent); width: fit-content; }
+  .svc-tab { font-family: var(--font-mono); font-size: var(--t-sm); letter-spacing: .02em; padding: var(--gap-2) var(--gap-5); border-radius: var(--radius-full); border: 0; background: transparent; color: inherit; opacity: var(--opacity-subtle); cursor: pointer; }
+  .svc-tab:hover { opacity: var(--opacity-hover); }
+  .svc-tab.active { background: color-mix(in srgb, var(--neutral-0) 14%, transparent); opacity: var(--opacity-active); }
   .svc-tier[hidden] { display: none; }
-  .svc-desc { margin-top: var(--gap-5); max-width: 52ch; font-size: var(--t-l); line-height: var(--lh-l); color: color-mix(in srgb,var(--svc-fg) 88%,transparent); }
+  .svc-desc { margin-top: var(--gap-5); max-width: 52ch; font-size: var(--t-l); line-height: var(--lh-l); color: color-mix(in srgb, var(--svc-fg) 88%, transparent); }
   .svc-btns { display: flex; gap: var(--gap-3); margin-top: var(--gap-8); flex-wrap: wrap; }
-  .svc-btn { background: var(--neutral-0); border-color: var(--neutral-0); color: var(--color-ash); font-size: var(--fluid-label); padding: var(--gap-3) 1.35rem; }
+  .svc-btn { background: var(--neutral-0); border-color: var(--neutral-0); color: var(--color-ash); font-size: var(--fluid-label); padding: var(--gap-3) var(--gap-5); border-radius: var(--radius-sm); }
   .svc-btn:hover { background: var(--svc-accent); border-color: var(--svc-accent); color: var(--color-ash); }
   .svc-gallery { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--gap-4); margin-top: var(--space-section-sm); }
-  .svc-gallery a { position: relative; display: block; border-radius: var(--r-4); overflow: hidden; height: clamp(110px,22vh,230px); background: rgba(0,0,0,.2); text-decoration: none; }
+  .svc-gallery a { position: relative; display: block; border-radius: var(--radius-lg); overflow: hidden; height: clamp(var(--svc-gallery-min), 22vh, var(--svc-gallery-max)); background: color-mix(in srgb, var(--neutral-10) 20%, transparent); text-decoration: none; }
   .svc-gallery video { width: 100%; height: 100%; object-fit: cover; }
-  .svc-gallery-label { position: absolute; inset-inline: 0; bottom: 0; padding: 1.75rem var(--gap-4) var(--gap-3); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--neutral-0); background: linear-gradient(to top,rgba(0,0,0,.7),transparent); opacity: 0; }
+  .svc-gallery-label { position: absolute; inset-inline: 0; bottom: 0; padding: var(--gap-7) var(--gap-4) var(--gap-3); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--neutral-0); background: linear-gradient(to top, color-mix(in srgb, var(--neutral-10) 70%, transparent), transparent); opacity: 0; }
   .svc-gallery a:hover .svc-gallery-label { opacity: 1; }
   @media (max-width: 900px) {
     .svc-panel { position: relative; height: auto; min-height: 0; padding-block: var(--space-section-md) var(--gap-12); }
@@ -152,16 +152,12 @@ const whyIntro =
   }
   @media (prefers-reduced-motion: reduce) { .svc-panel { position: relative; height: auto; min-height: 0; } }
 
-  .why-wugweb { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .why-wugweb { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .why-wugweb h2 { font-size: var(--t-h2); margin-bottom: var(--gap-4); }
   .why-wugweb p { max-width: 65ch; }
 </style>
 
 <script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.stats li', (el) => { animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' }); });
-
   const panels = Array.from(document.querySelectorAll('.svc-panel'));
   panels.forEach((panel) => {
     const btns = Array.from(panel.querySelectorAll('[data-tier-btn]'));

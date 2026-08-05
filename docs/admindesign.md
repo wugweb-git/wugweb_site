@@ -1,218 +1,82 @@
 # Wugweb Sanity Studio — Implementation Log
 
-**Last Updated:** 2026-07-31  
-**Status:** Phase 1 Complete — Rich Previews + Workspace Model
+**Last Updated:** 2026-08-05  
+**Status:** Phase 7 Complete — Enterprise Operational Layer (DataTable, Dashboard, SEO, Media, Search, new structure)
 
 ---
 
-## What Was Implemented
+## What Was Implemented (2026-08-05)
 
-### 1. Workspace Model (Phase 1)
+### 1. Reusable DataTable (`sanity/components/DataTable.tsx`)
+Built on **TanStack Table v9** (`@tanstack/react-table`) + `@sanity/ui`, MIT/free-tier safe:
+- Sticky header, column **resize** (drag), column **visibility**, per-table persistence
+- **Multi-column sorting**, **quick filters**, **saved views** (localStorage)
+- Global **search** (⌘K), **row selection** + bulk bar, **bulk actions** (duplicate/publish/delete)
+- **Hover quick actions**, **row context menu** (open/copy ID/copy slug/pin/export row)
+- **Pagination** (25/50 by density), **density toggle** (comfortable/compact)
+- **Dark mode** via Sanity UI CSS vars, **empty/loading/error states**, CSV export
+- **Favorites/pin** per table (localStorage), **draft/published badge**, **SEO score badge**
 
-Replaced flat navigation with 5 workspaces:
+### 2. Per-type table configs (`sanity/lib/tableConfigs.tsx`)
+GROQ + column defs for all 15 doc types (post, caseStudy, service, client, engagement, person, testimonial, asset, taxonomy, platformProfile, industry, singletonPage, contactSubmission, syncStatus, **redirect**). Draft-aware merge via `lib/groq.ts`.
 
-```
-✍ Editorial
-├── Blog Posts
-├── Case Studies
-├── Services
-└── Pages (12 singletons)
+### 3. Document list panes (`sanity/components/DocumentListPane.tsx`)
+Custom `S.component` panes wired into Structure Builder — Blog/Case Studies/Services/Clients/Engagements/Team/Testimonials/Media/Industries/Presence/Taxonomy now render the DataTable instead of the native list. Row click → editor pane via `navigateIntent`.
 
-💼 Business
-├── Clients (106)
-├── Engagements (70)
-├── Industries (66)
-└── Team / People (12)
+### 4. Tools (`sanity/tools/`)
+- **Dashboard** — website health (totals, drafts, missing SEO/cover, sync errors, media issues), content-by-type audit, quick actions, system status
+- **Tables** — all doc types as data grids (rebuilt on DataTable)
+- **SEO Manager** — per-doc score 0–100, meta/OG/schema checkmarks, **Generate** (prefills seoTitle/seoDescription from title + body)
+- **Media** — grid/list toggle, filters (unused, missing alt, duplicates, oversized, archived), group filter, search, thumbnails
+- **Search** — field-scoped query builder (`title:` `slug:` `category:` `client:` `status:` `author:` `updated:` `type:`), saved + recent searches
 
-🎨 Brand & Media
-└── Assets (113)
+### 5. New structure (Overview / Content / Marketing / Media / Business / Settings)
+- **Overview**: Start here (Sync Status, Contact Submissions), Site Settings
+- **Content**: Blog, Case Studies, Services, Pages
+- **Marketing**: Landing Pages, SEO, Redirects
+- **Media**: Media Library
+- **Business**: Clients, Engagements, Team, Testimonials
+- **Settings**: Site Settings, Platforms, Tools, Tags, Asset/Content types, Departments, Countries, Industry master, Presence, All taxonomy
 
-⚙ Global Settings
-├── Site Settings
-├── Taxonomy Terms (179)
-├── Platform Profiles (60)
-└── Industries (66)
+### 6. New schema: `redirect` (source, destination, statusCode 301/302, enabled, note, hits, lastUsedAt)
 
-🔧 System
-├── Sync Status (19)
-└── Contact Submissions
-```
+### 7. Schema UX fixes
+- `client.ts` preview: added missing `seoDesc` to `select` (was false "⚠️ SEO" on every client)
+- `caseStudy.ts` preview: prefer `clientRef->name` / `industryRef->name`
+- `twoColumns` preview: shows actual layout, not hardcoded "50/50"
+- Removed dead `structure/dashboardWidget.tsx` (unused, referenced removed plugin)
 
-**Why this works:** Each section is a logical group. Content editors see Content first. Business users see Business. Technical users see System. No one is exposed to all 14 schemas at once.
+### 8. Deps added
+`@tanstack/react-table` (v9), `@tanstack/react-virtual` — both MIT, free-tier compatible.
 
-### 2. Rich Previews (Phase 1)
-
-Every schema now shows a rich preview with metadata:
-
-| Schema | Preview Shows | Health Indicator |
-|--------|--------------|------------------|
-| **Post** | Cover image, featured ⭐, author, category, reading time, published date | ✅ / ⚠️ SEO / ⚠️ OG |
-| **Case Study** | Cover image, featured ⭐, client, industry, disciplines | ✅ / ❌ Cover / ⚠️ SEO |
-| **Asset** | 💾/☁️ local indicator, name, media type, status, group | ✅ Active / 📦 Archived / ⚪ Reserved |
-| **Service** | Icon, subtitle, tags, health | ✅ / ⚠️ SEO |
-| **Client** | Logo, name, engagement type, industry, case studies count | — |
-| **Engagement** | Status icon (🟢✅📋⏸️), name, type, client, services count | — |
-| **Person** | Photo, name, role | — |
-| **Platform Profile** | Platform name, category, status | — |
-| **Taxonomy** | Icon, name, vocabulary | — |
-
-**What editors see at a glance:**
-- What this document is
-- Whether it has a cover image
-- Whether SEO is complete
-- Whether it's featured
-- How many related documents it has
-
-### 3. Document Editor Tabs (Phase 1)
-
-Every schema has grouped tabs:
-
-| Schema | Tabs |
-|--------|------|
-| Post | Content, Meta, SEO |
-| Case Study | Overview, Content, Results, SEO |
-| Service | Overview, Capabilities, Approach, Content, FAQ, SEO |
-| Asset | Details, Path |
-| Client | Details, Branding, Relations |
-| Engagement | Overview, Scope & Pricing |
-| Person | (no tabs — simple schema) |
-| Platform Profile | (no tabs — simple schema) |
-| Taxonomy | Details, Hierarchy |
-
-### 4. Descriptions and Validation (Phase 1)
-
-Every field has:
-- ✅ Clear label
-- ✅ Helper text description
-- ✅ Validation where needed
-- ✅ Proper type options
+## Free-tier / performance notes
+- All fetches are **one-shot GROQ + manual Refresh** — no `listen()` subscriptions (protects API quota)
+- Aggregate dashboard queries batched via `Promise.all`
+- All UI uses `@sanity/ui` primitives + CSS vars → native dark mode
+- TanStack adds ~55 KB gzipped to the Studio bundle (one-time)
 
 ---
 
-## Files Changed
+## Prior Phases (summary)
 
-| File | Change | Lines |
-|------|--------|-------|
-| `sanity/schemaTypes/deskStructure.ts` | Workspace model, simplified structure | 86 |
-| `sanity/schemaTypes/post.ts` | Rich preview with author, category, health | 59 → 70 |
-| `sanity/schemaTypes/caseStudy.ts` | Rich preview with client, industry, health | 88 → 95 |
-| `sanity/schemaTypes/asset.ts` | Rich preview with local/external, media type | 40 → 50 |
-| `sanity/schemaTypes/service.ts` | Rich preview with subtitle, tags, health | 80 → 90 |
-| `sanity/schemaTypes/client.ts` | Rich preview with logo, industry, case studies | 45 → 55 |
-| `sanity/schemaTypes/engagement.ts` | Rich preview with status icon, client, services | 50 → 60 |
-| `sanity/schemaTypes/person.ts` | Rich preview with photo, role | 30 → 32 |
-| `sanity/schemaTypes/platformProfile.ts` | Rich preview with platform, category, status | 34 → 36 |
-| `sanity/schemaTypes/taxonomy.ts` | Rich preview with vocabulary, icon | 30 → 32 |
+### Phase 1-6 (2026-07-31 → 2026-08-04)
+Workspace model, rich previews, field groups/descriptions, Relations tab, static Dashboard hub, asset local/external indicators, content health previews, custom Tables tool (first version), free-tier audit.
 
 ---
 
-## Performance Impact
+## Files Changed (Phase 7)
 
-| Change | Query Cost | Bundle Impact | Risk |
-|--------|-----------|---------------|------|
-| All preview changes | None (uses `select`) | None | None |
-| Workspace model | None | None | None |
-| Desk structure | None | None | None |
-
-**Total risk: None.** No custom React components, no expensive queries, no live subscriptions.
-
----
-
-## Free-Tier Impact
-
-| Constraint | Current | Limit | Status |
-|------------|---------|-------|--------|
-| Documents | 562 | 50,000 | ✅ Safe |
-| API requests | — | 500/min | ✅ No live queries |
-| Bundle size | — | — | ✅ No new plugins |
-| Response size | — | 500KB | ✅ Using projections |
-
----
-
-## What Was NOT Implemented (and Why)
-
-| Feature | Why Not |
-|---------|---------|
-| **Dashboard widgets** | Previous attempts caused Studio crash. Safe dashboard with static links added instead. |
-| **Relations tab** | Requires custom React components or expensive GROQ queries. |
-| **Content health dashboard** | Requires complex queries that risk free-tier limits. |
-| **Kanban views** | Requires custom plugin. |
-| **Custom table views** | Requires custom React components. |
-| **Command palette** | Requires custom React component. |
-| **Favorites/Pinned** | Requires custom React component. |
-| **Asset gallery** | Requires custom React component. |
-
----
-
-## Implementation Phases
-
-### Phase 1 — Rich Previews ✅ COMPLETE
-- Richer previews on all 9 schemas
-- Workspace model for navigation
-- Descriptions and validation on fields
-
-### Phase 2 — Relations Tab ✅ COMPLETE
-- Post: `relatedPosts` reference field
-- Case Study: `relatedCaseStudies` + `relatedPosts` reference fields
-- Service: `relatedPosts` + `relatedServices` reference fields
-- Client: Added SEO tab with title/description fields
-
-### Phase 3 — Dashboard ✅ SAFE HUB
-- Live widgets / filtered lists deferred (previous attempts crashed Studio)
-- Static **Dashboard → Start here** navigation hub restored in `deskStructure.ts`
-- Editors still use workspace sections for day-to-day work
-
-### Phase 4 — Asset UX ✅ PARTIAL
-- Local/external indicator (💾/☁️) in preview
-- Media type and status in preview
-- Group badge in preview
-
-### Phase 5 — Content Health ✅ COMPLETE
-- Post: ⚠️ SEO/OG indicators
-- Case Study: ❌ Cover / ⚠️ SEO indicators
-- Asset: 💾 local / ☁️ external indicator
-- Service: ⚠️ SEO indicator
-- Client: ⚠️ SEO indicator
-- Person: ⚠️ Photo indicator
-- Engagement: Status icons (🟢✅📋⏸️)
-- Platform Profile: Status icons (🟢🟡🔴⚪)
-
-### Phase 6 — Documentation ✅ COMPLETE
-- admindesign.md updated with implementation log
-- All decisions documented
-- Performance and free-tier impact tracked
-
----
-
-## Decision Log
-
-| Date | Decision | Reason |
-|------|----------|--------|
-| 2026-07-31 | Remove @sanity/dashboard plugin | Was causing Studio crash |
-| 2026-07-31 | Simplified desk structure | Removed live dashboard widgets to avoid crash |
-| 2026-08-04 | Restore static Dashboard hub | Navigation-only Start here list — no filters/widgets |
-| 2026-07-31 | Rich previews on all schemas | Highest visual improvement with zero risk |
-| 2026-07-31 | Workspace model for navigation | Clean separation of concerns |
-| 2026-07-31 | No custom React components | Protects free-tier, avoids bundle bloat |
-| 2026-08-04 | Custom Tables Studio tool | Structure panes are not spreadsheets; free-tier one-shot table UI in Studio top nav |
-| 2026-08-04 | App SDK / app-quickstart deferred | Free to use, but live hooks can burn API quota; Studio+Client CDN is safer default |
-| 2026-07-31 | No expensive GROQ queries | Protects free-tier limits |
-
----
-
-## Free-tier note — APIs & App SDK (2026-08-04)
-
-- **Free includes** Content Lake APIs, `@sanity/client`, Studio hosting, and **App SDK** custom apps (`npx sanity@latest init --template app-quickstart`). The SDK is not a paid product.
-- **Free hard caps** (no overages): documents 10k, API 250k/mo, API CDN 1m/mo, plus bandwidth/assets. At 100%, features block until reset/upgrade.
-- **Current usage:** ~857 documents — comfortable vs 10k.
-- **Best free path:** Studio schema/structure + site via CDN client. Use App SDK later only for a tiny, non-realtime ops UI if Studio truly cannot do it.
-- See canvas `sanity-free-tier-audit` for the full matrix.
-
-## Next Steps
-
-1. **Verify Studio** — Hard refresh (Cmd+Shift+R) at https://wugweb.sanity.studio/
-2. **Rotate Sanity token** — See SANITY_TOKEN_ROTATION.md
-3. **Phase 2-6** — Implement remaining features as needed
+| File | Change |
+|------|--------|
+| `sanity/lib/types.ts`, `groq.ts`, `format.ts`, `localState.ts`, `health.ts`, `csv.ts`, `docActions.ts`, `tableConfigs.tsx` | New shared lib |
+| `sanity/components/DataTable.tsx`, `DocumentListPane.tsx`, `ui.tsx` | New components |
+| `sanity/tools/DashboardTool.tsx`, `SeoTool.tsx`, `MediaTool.tsx`, `SearchTool.tsx`, `TablesTool.tsx` | New/rewritten tools |
+| `sanity/schemaTypes/deskStructure.ts` | New Overview/Content/Marketing/Media/Business/Settings structure |
+| `sanity/schemaTypes/redirect.ts`, `index.ts` | New redirect schema + registration |
+| `sanity/schemaTypes/client.ts`, `caseStudy.ts`, `blockContent.ts` | Preview fixes |
+| `sanity/sanity.config.ts` | Registered 5 tools |
+| `sanity/package.json` | Added @tanstack/react-table, @tanstack/react-virtual |
+| `sanity/structure/dashboardWidget.tsx` | Deleted (dead) |
 
 ---
 

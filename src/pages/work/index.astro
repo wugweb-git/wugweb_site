@@ -13,8 +13,18 @@ const workTitle = workPage?.seoTitle || 'Clients – Wugweb | Trusted by Innovat
 const workDescription =
   workPage?.seoDescription ||
   'Explore the diverse brands and businesses that trust Wugweb for UI/UX design, web development, and digital experience solutions.';
-const allCategories = [...new Set(caseStudies.flatMap((cs: any) => cs.disciplines || []).filter(Boolean))];
-const categories = ['All', ...allCategories];
+
+// Top-level filters map to the six service pillars — never a large tag system.
+const PILLARS = ['Strategy', 'Brand', 'Experience', 'Engineering', 'Growth', 'Operations'];
+const PILLAR_KEYWORDS: Record<string, string[]> = {
+  'Strategy': ['strategy', 'consulting', 'research', 'branding-strategy'],
+  'Brand': ['brand', 'identity', 'naming'],
+  'Experience': ['ux', 'ui', 'design', 'experience', 'product'],
+  'Engineering': ['development', 'engineering', 'web', 'app', 'tech', 'saas', 'platform'],
+  'Growth': ['marketing', 'growth', 'seo', 'martech', 'lead'],
+  'Operations': ['operations', 'qa', 'automation', 'devops', 'support'],
+};
+const categories = ['All', ...PILLARS];
 
 // Fallback when caseStudy.thumbnailPath is empty
 const thumbAssets = await sanityClient.fetch(
@@ -50,6 +60,20 @@ function findThumbFallback(slug: string, client: string) {
   return '';
 }
 
+function mapToPillar(cs: any): string {
+  const haystack = [
+    ...(cs.disciplines || []),
+    ...(cs.tags || []),
+    cs.industry || '',
+    cs.client || '',
+  ].join(' ').toLowerCase();
+  for (const p of PILLARS) {
+    if (PILLAR_KEYWORDS[p].some((k) => haystack.includes(k))) return p;
+  }
+  // Default: design/experience work
+  return 'Experience';
+}
+
 const workItems = caseStudies.map((cs: any) => {
   // Resolve the raw thumb path first; only pass non-empty values to
   // assetUrl (which maps '' → '/assets/' and would render a broken video).
@@ -57,6 +81,7 @@ const workItems = caseStudies.map((cs: any) => {
   return {
     client: cs.client || '',
     category: (cs.disciplines || []).join(', ') || 'UX Design',
+    pillar: mapToPillar(cs),
     title: cs.title,
     slug: cs.slug,
     video: rawThumb ? assetUrl(rawThumb) : '',
@@ -83,9 +108,9 @@ const workItems = caseStudies.map((cs: any) => {
   <section class="wrap work-grid-section">
     <ul class="work-grid">
       {workItems.map((w) => (
-        <li data-reveal data-categories={w.category}>
+        <li data-reveal data-categories={w.pillar}>
           <a href={`/work/${w.slug}`}>
-            {w.video ? <video autoplay muted loop playsinline src={w.video}></video> : <div class="work-placeholder"><span class="work-placeholder-initials" aria-hidden="true">{w.initials}</span><span class="work-placeholder-cat">{w.category}</span></div>}
+            {w.video ? <video autoplay muted loop playsinline src={w.video}></video> : <div class="work-placeholder"><span class="work-placeholder-initials" aria-hidden="true">{w.initials}</span><span class="work-placeholder-cat">{w.pillar}</span></div>}
             <div class="work-content">
               <p class="work-client">{w.client}</p>
               <h3>{w.title}</h3>
@@ -102,7 +127,7 @@ const workItems = caseStudies.map((cs: any) => {
   .work-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
   .work-hero-content h1 { font-size: var(--t-h2); font-weight: var(--font-weight-bold); max-width: 28ch; margin-bottom: var(--gap-4); }
   .work-hero-content p { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
-  .work-grid-section { padding-block: var(--space-section-md) var(--space-section-xl); border-top: 1px solid var(--line); }
+  .work-grid-section { padding-block: var(--space-section-md) var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .work-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
   .work-grid a { text-decoration: none; display: block; }
@@ -114,31 +139,26 @@ const workItems = caseStudies.map((cs: any) => {
     flex-direction: column;
     justify-content: space-between;
     padding: var(--gap-5);
-    border-radius: var(--r-2);
+    border-radius: var(--radius-sm);
     background:
-      radial-gradient(120% 80% at 100% 0%, rgba(255, 190, 26, 0.22), transparent 55%),
-      linear-gradient(160deg, #191919 0%, #050505 100%);
-    border: 1px solid var(--line);
+      radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--color-yellow) 22%, transparent), transparent 55%),
+      linear-gradient(160deg, var(--color-surface-elevated) 0%, var(--color-surface-page) 100%);
+    border: var(--stroke-thin) solid var(--line);
   }
-  .work-placeholder-initials { font-family: var(--font-display); font-size: var(--t-h2); font-weight: var(--font-weight-extrabold); line-height: 1; color: var(--fg); opacity: 0.92; }
+  .work-placeholder-initials { font-family: var(--font-display); font-size: var(--t-h2); font-weight: var(--font-weight-extrabold); line-height: var(--core-line-height-none); color: var(--fg); opacity: var(--opacity-strong); }
   .work-placeholder-cat { font-family: var(--font-mono); font-size: var(--t-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-muted); }
   .work-content { margin-top: var(--gap-4); }
   .work-client { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
   .work-grid h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); line-height: var(--lh-h5); }
-  .work-category { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); display: inline-block; margin-top: var(--gap-2); padding: var(--gap-1) var(--gap-2); border: 1px solid var(--line); border-radius: var(--r-pill); }
-  .work-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
-  .filter-chip { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-2) var(--gap-4); border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
+  .work-category { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); display: inline-block; margin-top: var(--gap-2); padding: var(--gap-1) var(--gap-2); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); }
+  .work-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
+  .filter-chip { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-2) var(--gap-4); border-radius: var(--r-pill); border: var(--stroke-thin) solid var(--line); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
-  .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255,190,26,.1); }
+  .filter-chip.active { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--color-yellow) 10%, transparent); }
   .work-grid li.hidden { display: none; }
 </style>
 
 <script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.work-grid li', (el) => {
-    animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, easing: 'ease-out' });
-  });
   document.querySelectorAll('.filter-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       const cat = chip.dataset.category;

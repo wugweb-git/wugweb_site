@@ -141,7 +141,7 @@ export const twoColumns = defineType({
     select: { title: 'layout' },
     prepare: ({ title }: any) => ({
       title: title || 'Two Columns',
-      subtitle: '50/50',
+      subtitle: title || '50/50',
     }),
   },
 });

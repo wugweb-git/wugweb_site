@@ -13,6 +13,11 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request, locals, redirect }) => {
   const form = await request.formData();
 
+  // Honeypot: silently drop bot submissions that fill the hidden field.
+  if (form.get('website')?.toString()) {
+    return redirect('/thank-you');
+  }
+
   const name = form.get('name')?.toString() ?? '';
   const company = form.get('company')?.toString() ?? '';
   const interests = form.getAll('interests').map(String);
@@ -45,17 +50,23 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
     console.error('contact: Sanity mirror failed', e);
   }
 
-  const client = await connect(locals.runtime.env);
+  // Best-effort Neon write. A DB hiccup must not 500 the visitor — the
+  // redirect to /thank-you is the contract; the lead can be re-captured.
+  const client = await connect(locals.runtime.env).catch(() => null);
 
-  try {
-    await client.query(
-      `insert into contact_submissions
-         (name, company, interests, topic, budget, email, phone, contact_method, newsletter_opt_in)
-       values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-      [name, company, interests, topic, budget, email, phone, contactMethod, newsletter]
-    );
-  } finally {
-    await client.end();
+  if (client) {
+    try {
+      await client.query(
+        `insert into contact_submissions
+           (name, company, interests, topic, budget, email, phone, contact_method, newsletter_opt_in)
+         values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+        [name, company, interests, topic, budget, email, phone, contactMethod, newsletter]
+      );
+    } catch (e) {
+      console.error('contact: Neon write failed', e);
+    } finally {
+      await client.end().catch(() => {});
+    }
   }
 
   return redirect('/thank-you');

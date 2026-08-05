@@ -11,8 +11,9 @@ It is built as an **Astro 5** site with **server-side rendering** on **Cloudflar
 
 - **Framework**: Astro 5 (`output: 'server'`)
 - **SSR adapter**: `@astrojs/cloudflare` v12
-- **UI islands**: React 18 via `@astrojs/react` (used sparingly; `Hero.tsx` is the only `.tsx` component)
-- **Animations**: `motion` v12 (vanilla API), client-side only
+- **UI islands**: React 18 via `@astrojs/react` (used sparingly; no `.tsx` components currently)
+- **Animations**: **GSAP** (`gsap` + `ScrollTrigger`) via `src/lib/scroll-animations.ts` — `[data-reveal]` / `[data-scroll]` / `data-reveal-delay`. `motion` dependency removed (2026-08-05).
+- **PWA**: `public/manifest.webmanifest` + `sw.js` (network-first, offline shell) + `pwa-192/512.png` icons; SW registers only on non-localhost.
 - **CMS**: Sanity (`splvhmk1` / `production`) — admin panel
 - **Database**: Neon Postgres via `@neondatabase/serverless` — structured content SSOT
 - **Media**: R2 bucket `wugweb-assets` (Standard); keys `assets/<path>` ↔ site `/assets/<path>`; dual-serve from `public/assets/` until cutover. Content links via path fields (`thumbnailPath`, `coverPath`, `logoPath`, …) — see `docs/content-assets.md`. Docs: `docs/r2-assets.md`
@@ -97,9 +98,20 @@ Note: `footer/sitemap` is linked from `SiteFooter` (Sitemap).
 
 ## Components (`src/components/`)
 
-12 Astro components + `Hero.tsx`:
+3 Astro components (only used ones — dead components were deleted 2026-08-05):
 
-`ApproachSteps`, `BlogCard`, `CapabilitiesGrid`, `FAQList`, `FilterChips`, `Hero.tsx`, `RelatedWorkGrid`, `SectionTitle`, `SiteFooter`, `SiteHeader`, `StatsGrid`, `WorkCard`.
+`SiteHeader` (nav, WhatsApp CTA, mobile menu), `SiteFooter`, `TrustBadges`
+(Clutch/DesignRush/GoodFirms/TopDevelopers strip). Page-specific blocks live
+inline in `src/pages/`. Full component→token map: `kits_design_system/docs/components.md`.
+
+## Design system (single source of truth)
+
+`kits_design_system/` — `docs/design.md` (sources S1–S5, rules, decisions, conflicts) +
+`docs/tokens/` (22 token docs mirroring `src/styles/global.css`). Root `design.md` is a
+slim pointer. Key rules: tokens only (no hardcoded color/spacing/radius/opacity/shadow/
+blur/z-index); buttons `--radius-sm` · chips `--radius-full`; yellow ≤10% (accent only);
+GSAP for all animation; service panel order alternates warm/cool (Strategy→Engineering→
+Brand→Growth→Operations→Experience). Brand assets: `assets/brand/` (SVG logos) → `public/brand/`.
 
 ## Current Implementation Status
 
@@ -109,7 +121,11 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - Sanity project and Studio deployed (Global Settings masters, Presence, Industry master).
 - Neon schema applied; owner-aware sync 2026-08-05 (1430 docs: assets, taxonomy, platformProfile, syncStatus included).
 - Main marketing routes wire to Sanity; path-mapped media served from **R2 (cutover done 2026-08-05)**, no longer dual-serve.
-- Design tokens in `global.css` (component migration incomplete).
+- **Design tokens fully consumed (Phase 1, 2026-08-05)** — full effects token system in `global.css` (opacity/radius/stroke/blur/shadow/elevation/glass/noise/gradient/motion/z-index); zero hardcoded colors/opacity/blur/shadow in pages/components. Kits consolidated to single source of truth at `kits_design_system/`.
+- **Brand SVG logos wired** — `public/brand/logo-large.svg` + `logo-small.svg` (from `assets/brand/`), favicons, og-default.
+- **WhatsApp nav CTA** (`wa.me/919205996219`, nav only) + yellow-≤10% rule + consistent button radius (`--radius-sm`).
+- **GSAP everywhere** — `[data-reveal]`/`[data-scroll]`/`data-reveal-delay` via `scroll-animations.ts`; `motion` imports removed from all pages and dependency removed.
+- **Phase 2 completion (2026-08-05)** — PWA (manifest + SW + icons), blog detail enrichment (ToC/Last Updated/Share/Newsletter/Prev-Next/Related), trust badges (site-wide), work+blog filters capped to six pillars, service-detail work/insights teasers + dual CTAs.
 - Asset registry 588 Sanity docs / **525 local files — all R2-mapped, 0 unreferenced**.
 - Governance: Rule 1 + Rule 2 + shared ownership + Notion seed (`governance.md`).
 - Ownership backfill (#40): client/caseStudy/post/asset all have `owner`.
@@ -121,11 +137,10 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - Preview mode wired: `/api/preview` cookie → `getPreviewClient` on `/blog/[slug]` (#22).
 
 ### Critical / open
-- Design token → component migration (hardcoded px/rem in many `.astro` files).
 - Frontend → Neon swap deferred until UI/brand mapping done. **Neon sync user-controlled — don't run unless asked.**
-- Reference/component identity enrichment (tools/platforms/industries/page media).
-- Contact form production harden deferred to end (Neon write still unverified in prod).
+- Contact form production harden deferred to end (Neon write still unverified in prod; local dev 500 = no DATABASE_URL binding).
 - Sanity token: do not rotate unless user asks.
+- **Remaining backlog** (pending.md): contact page redesign (driftime — needs reference screenshot), deep service-copy pass, trust-badge logo assets, prod verify of `/api/contact` + `/api/subscribe`.
 
 ### Medium / low (see pending.md)
 - About stats/imagery; service detail schema vs hardcoded tools; blog covers (53/96 missing — user will supply); team photos done (Anastasia/Wugweb Design no portrait); legal pages; 8 stale Neon caseStudy rows + `content_relations` empty; ~22 unreferenced disk files under framer/ + more/.
@@ -182,23 +197,19 @@ See `pending.md` for the authoritative task tracker. High-level state:
 
 ## Known Technical Debt
 
-1. **Design tokens not fully consumed by components** — `global.css` has the full token system, but many `.astro` files still use hardcoded `px`/`rem`/`clamp()` values. A systematic component pass is needed.
-2. **Frontend still reads from Sanity CDN** — Neon helpers and SQL constants exist, but pages have not been swapped to query Neon directly.
-3. **Contact form runtime reliability** — `POST /api/contact` stores to Neon, but Neon Workers connection was deferred; verify in production.
-4. **Framer CDN hotlinks remain** — client logos on homepage and some team photos still use `framerusercontent.com`.
-5. **Sanity token permissions** — current token cannot reliably update/delete; migration scripts need a fresh Editor token.
-6. **R2 cutover pending** — objects uploaded to `wugweb-assets`; site still dual-serves `public/assets` until `PUBLIC_USE_R2_ASSETS=1`.
-7. **Preview mode unused** — `getPreviewClient()` exists but no page wires it up.
+1. **Frontend still reads from Sanity CDN** — Neon helpers and SQL constants exist, but pages have not been swapped to query Neon directly.
+2. **Contact form runtime reliability** — `POST /api/contact` + `/api/subscribe` store to Neon, but Neon Workers connection was deferred; verify in production.
+3. **Framer CDN hotlinks remain** — client logos on homepage and some team photos still use `framerusercontent.com`.
+4. **Sanity token permissions** — current token cannot reliably update/delete; migration scripts need a fresh Editor token.
+5. **Service panel `fg`/`accent` data values** — the `/services` template carries `#FFFFFF`/`#050505` inline values (data, not CSS) — intentional.
 
 ## Current Priorities
 
 1. Deploy / keep pages.dev in sync with local (Framer service slugs must not 404).
-2. Ownership backfill + Neon `both` entity (`governance.md`).
-3. Reference/component identity enrichment → masters + assets (pending #42; see `docs/framer-full-audit.md`).
-4. Design token → component migration (Framer style board not 1:1 applied).
-5. Frontend → Neon swap (after UI/brand mapping).
-6. Blog/media gaps, team photos, R2 cutover, Neon re-sync of new types.
-7. Contact form production harden (end). **Do not rotate Sanity token unless asked.**
+2. **Remaining backlog** (pending.md): contact redesign (needs reference), deep service-copy pass, trust-badge logos, prod verify of contact/subscribe APIs.
+3. Frontend → Neon swap (after UI/brand mapping).
+4. Blog/media gaps, team photos, Neon audit leftovers (8 stale rows, `[object Object]` slugs, empty `content_relations`).
+5. Contact form production harden (end). **Do not rotate Sanity token unless asked.**
 
 ## Next-Session Checklist
 

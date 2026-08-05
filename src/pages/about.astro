@@ -1,8 +1,9 @@
 ---
 export const prerender = true;
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBadges from '../components/TrustBadges.astro';
 import { sanityClient, urlFor } from '../lib/sanity';
-import { singletonPageQuery, teamListQuery } from '../lib/queries';
+import { singletonPageQuery, teamListQuery, siteSettingsQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
 
 // Hero title/intro now Sanity-editable. 
@@ -40,10 +41,18 @@ const pageDescription =
   page?.seoDescription ||
   'Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.';
 
-const [caseCount, clientCount] = await Promise.all([
+const [caseCount, clientCount, settings] = await Promise.all([
   sanityClient.fetch(`count(*[_type == "caseStudy"])`).catch(() => 0),
   sanityClient.fetch(`count(*[_type == "client"])`).catch(() => 0),
+  sanityClient.fetch(siteSettingsQuery).catch(() => null),
 ]);
+
+// Real founding year from the copyright line ("© 2020–2026 Wugweb").
+// Years of experience = current year − founding year (no invented figures).
+const copyright = typeof settings?.copyright === 'string' ? settings.copyright : '';
+const foundedMatch = copyright.match(/(?:©|&copy;)\s*(\d{4})/);
+const foundedYear = foundedMatch ? Number(foundedMatch[1]) : 2020;
+const yearsOfExperience = Math.max(0, new Date().getFullYear() - foundedYear);
 
 const fromSanityStats = (page?.items || [])
   .map((it: any) => ({
@@ -55,7 +64,7 @@ const fromSanityStats = (page?.items || [])
 
 const fallbackStats = [
   {
-    n: fromSanityStats[0]?.n || '—',
+    n: fromSanityStats[0]?.n || (yearsOfExperience ? `${yearsOfExperience}+` : '—'),
     label: 'Years of experience',
     copy: 'Expertise that drives meaningful results.',
   },
@@ -65,6 +74,8 @@ const fallbackStats = [
     copy: 'Creative solutions built with purpose.',
   },
   {
+    // No invented figures: retention is editor-provided via Studio `items`,
+    // or falls back to a neutral placeholder rather than a fake number.
     n: fromSanityStats[2]?.n || '—',
     label: 'Client Retention Rate',
     copy: 'Long-term partnerships built on real results.',
@@ -137,6 +148,11 @@ const culture = [
         </li>
       ))}
     </ul>
+  </section>
+
+  <!-- TRUST & RECOGNITION -->
+  <section class="wrap" data-scroll="rise">
+    <TrustBadges />
   </section>
 
   <!-- VALUES -->
@@ -230,7 +246,7 @@ const culture = [
       </article>
 
       <a href="/contact-us" class="bento-tile tile-cta" data-reveal>
-        <img src="/brand/wugweb-mark.png" alt="" width="388" height="295" />
+        <img src="/brand/logo-large.svg" alt="wugweb" width="149" height="54" />
         <span>Let's talk</span>
       </a>
 
@@ -289,12 +305,12 @@ const culture = [
   .about-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10, 10, 12, 0.7) 0%, rgba(10, 10, 12, 0.55) 45%, var(--bg) 100%);
-    z-index: 1;
+    background: linear-gradient(180deg, var(--hero-overlay) 0%, var(--hero-overlay-mid) 45%, var(--bg) 100%);
+    z-index: var(--z-overlay);
   }
   .about-hero-content {
     position: relative;
-    z-index: 2;
+    z-index: var(--z-overlay);
     padding-block: var(--space-section-lg);
   }
   .about-hero-content h1 {
@@ -311,7 +327,7 @@ const culture = [
 
   .stats {
     padding-block: var(--space-section-xl);
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
   }
   .stats ul {
     list-style: none;
@@ -321,32 +337,32 @@ const culture = [
     gap: var(--gap-8);
   }
   @media (min-width: 768px) { .stats ul { grid-template-columns: repeat(4, 1fr); } }
-  .stats li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
+  .stats li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
   .stat-n { font-family: var(--font-mono); font-size: var(--fluid-h3); font-weight: var(--font-weight-bold); color: var(--accent-warm); }
   .stat-label { color: var(--fg); font-size: var(--fluid-body-lg); font-weight: var(--font-weight-medium); margin-top: var(--gap-2); }
   .stat-copy { margin-top: var(--gap-1); }
 
   .values {
     padding-block: var(--space-section-xl);
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
   }
   .values-lede { margin-top: var(--gap-5); max-width: 65ch; }
   .values-list { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .values-list { grid-template-columns: repeat(4, 1fr); } }
-  .values-list li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
+  .values-list li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
   .values-list h3 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); margin-top: var(--gap-2); }
   .values-list p { margin-top: var(--gap-2); }
 
-  .culture { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .culture { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .culture-head { display: flex; gap: var(--gap-8); align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
   .culture-head h2 { font-size: var(--t-h3); }
   .culture-head p { margin-top: var(--gap-5); max-width: 60ch; }
-  .culture-visual { width: min(380px, 100%); aspect-ratio: 1/1.1; object-fit: cover; border-radius: var(--r-3); border: 1px solid var(--line); }
-  .culture-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .culture-visual { width: min(var(--culture-visual), 100%); aspect-ratio: 1/1.1; object-fit: cover; border-radius: var(--r-3); border: var(--stroke-thin) solid var(--line); }
+  .culture-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: var(--stroke-thin) solid var(--line); }
   @media (min-width: 640px) { .culture-grid { grid-template-columns: repeat(4, 1fr); } }
   .culture-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: var(--fluid-label); }
 
-  .team { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .team { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .team h2 { font-size: var(--t-h3); }
   .team-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-8); }
   @media (min-width: 640px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -354,29 +370,29 @@ const culture = [
   .team-role { font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--fg-muted); margin-top: var(--gap-3); }
   .team-grid h3 { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
 
-  .why-bento { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .why-bento { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .why-bento h2 { font-size: var(--t-h2); }
   .why-bento-lede { margin-top: var(--gap-5); max-width: 75ch; }
   .bento { display: grid; gap: var(--gap-4); margin-top: var(--gap-12); grid-template-columns: 1fr; }
   @media (min-width: 700px) { .bento { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) { .bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(180px, auto); } }
-  .bento-tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-4); padding: var(--gap-6); display: flex; flex-direction: column; justify-content: flex-end; min-height: 180px; }
+  .bento-tile { background: var(--surface); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-lg); padding: var(--gap-6); display: flex; flex-direction: column; justify-content: flex-end; min-height: var(--bento-min); }
   .bento-tile h3 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); line-height: var(--lh-tight); }
   .bento-tile p { margin-top: var(--gap-2); font-size: var(--fluid-body-sm); line-height: var(--core-line-height-relaxed); }
   .tile-vision { background: var(--neutral-1); border-color: transparent; }
   .tile-vision h3 { color: var(--color-ash); }
-  .tile-vision p { color: var(--fg); opacity: .7; }
+  .tile-vision p { color: var(--fg); opacity: var(--opacity-soft); }
   .tile-cta { flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--gap-2); min-height: 0; text-decoration: none; color: var(--fg); font-family: var(--font-mono); font-size: var(--fluid-label); letter-spacing: .04em; text-transform: uppercase; transition: border-color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .tile-cta:hover { background: var(--surface-2); border-color: var(--line-strong); }
-  .tile-cta img { height: 1.75rem; width: auto; }
+  .tile-cta img { height: var(--gap-8); width: auto; }
   .tile-stack { justify-content: center; }
   .bento-stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
-  .bento-stack li { font-family: var(--font-mono); font-size: var(--fluid-caption); padding: var(--gap-2) var(--gap-3); border: 1px solid var(--line-strong); border-radius: var(--r-pill); color: var(--fg-muted); display: inline-flex; align-items: center; gap: var(--gap-2); }
-  .bento-stack li img { width: 18px; height: 18px; object-fit: contain; flex-shrink: 0; }
+  .bento-stack li { font-family: var(--font-mono); font-size: var(--fluid-caption); padding: var(--gap-2) var(--gap-3); border: var(--stroke-thin) solid var(--line-strong); border-radius: var(--r-pill); color: var(--fg-muted); display: inline-flex; align-items: center; gap: var(--gap-2); }
+  .bento-stack li img { width: var(--gap-5); height: var(--gap-5); object-fit: contain; flex-shrink: 0; }
 
   .closing-cta {
     padding-block: var(--space-section-lg);
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
     text-align: center;
   }
   .closing-cta h2 {
@@ -393,17 +409,10 @@ const culture = [
 
   .reviews { padding-block: var(--space-section-lg); }
   .reviews h2 { font-size: var(--t-h3); max-width: 20ch; }
-  .reviews-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: var(--gap-8); }
+  .reviews-grid { display: grid; gap: 1px; background: var(--line); border: var(--stroke-thin) solid var(--line); margin-top: var(--gap-8); }
   @media (min-width: 640px) { .reviews-grid { grid-template-columns: repeat(4, 1fr); } }
   .review-card { background: var(--bg); padding: var(--gap-8) var(--gap-6); display: flex; flex-direction: column; gap: var(--gap-1); }
   .review-score { font-family: var(--font-display); font-size: var(--fluid-h3); font-weight: var(--font-weight-bold); }
   .review-source { font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--fg-muted); }
 </style>
 
-<script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.stats li, .values-list li, .culture-grid li, .team-grid li, .bento-tile', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
-</script>

@@ -49,6 +49,7 @@ export const postsListQuery = `
 
 export const postBySlugQuery = `
   *[_type == "post" && slug.current == $slug][0] {
+    _id, _updatedAt,
     title, excerpt, coverImage, coverPath, body, publishedAt, tags, category, readingTime,
     seoTitle, seoDescription, ogImage,
     "author": author->{ name, photo, role, bio, socialLinks }

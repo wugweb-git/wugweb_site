@@ -75,6 +75,9 @@
   --core-line-height-relaxed: 1.625;
   --core-line-height-loose: 2;
 
+  /* Letter-spacing tokens — for eyebrow/label uppercase treatments */
+  --tracking-label: 0.08em;
+
   --lh-display: var(--core-line-height-tight);
   --lh-h1: var(--core-line-height-tight);
   --lh-h2: var(--core-line-height-snug);
@@ -298,9 +301,220 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1440px;
+
+
+  /* ═════════════════════════════════════════════════════════════════
+     EFFECTS — opacity / blur / shadow / glass / noise / gradient
+     (Wugweb Kits token architecture; see kits_design_system/docs/tokens/)
+     ═════════════════════════════════════════════════════════════════ */
+
+  /* Opacity scale — never hardcode opacity */
+  --opacity-0: 0;
+  --opacity-5: 0.05;
+  --opacity-10: 0.10;
+  --opacity-20: 0.20;
+  --opacity-30: 0.30;
+  --opacity-40: 0.40;
+  --opacity-50: 0.50;
+  --opacity-60: 0.60;
+  --opacity-70: 0.70;
+  --opacity-80: 0.80;
+  --opacity-90: 0.90;
+  --opacity-100: 1;
+
+  /* Opacity — semantic */
+  --opacity-disabled: var(--opacity-40);
+  --opacity-overlay: var(--opacity-70);
+  --opacity-scrim: var(--opacity-50);
+  --opacity-hover: var(--opacity-90);
+  --opacity-active: var(--opacity-100);
+  --opacity-loading: var(--opacity-60);
+  --opacity-drag: var(--opacity-80);
+  --opacity-backdrop: var(--opacity-50);
+
+  /* Radius aliases (--radius-* → existing --r-*) */
+  --radius-none: var(--r-0);
+  --radius-xs: var(--r-1);
+  --radius-sm: var(--r-2);
+  --radius-md: var(--r-3);
+  --radius-lg: var(--r-4);
+  --radius-xl: var(--r-5);
+  --radius-2xl: var(--r-6);
+  --radius-3xl: var(--r-8);
+  --radius-full: var(--r-full);
+
+  /* Stroke / border width */
+  --stroke-hairline: 0.5px;
+  --stroke-thin: 1px;
+  --stroke-regular: 2px;
+  --stroke-medium: 3px;
+  --stroke-thick: 4px;
+  --stroke-heavy: 6px;
+
+  --stroke-card: var(--stroke-thin);
+  --stroke-button: var(--stroke-thin);
+  --stroke-input: var(--stroke-thin);
+  --stroke-focus: var(--stroke-regular);
+  --stroke-divider: var(--stroke-thin);
+  --stroke-hero: var(--stroke-thin);
+
+  --color-border-strong: var(--neutral-5);
+
+  /* Blur */
+  --blur-none: 0;
+  --blur-xs: 4px;
+  --blur-sm: 8px;
+  --blur-md: 16px;
+  --blur-lg: 24px;
+  --blur-xl: 40px;
+  --blur-glass: 60px;
+  --blur-extreme: 100px;
+
+  /* Shadows — scale */
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.10);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.16);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.20);
+  --shadow-2xl: 0 32px 80px rgba(0, 0, 0, 0.24);
+  --shadow-inner: inset 0 1px 4px rgba(0, 0, 0, 0.12);
+
+  /* Shadows — glows */
+  --shadow-glow-blue: 0 0 40px rgba(33, 103, 233, 0.35);
+  --shadow-glow-pink: 0 0 40px rgba(230, 48, 159, 0.35);
+  --shadow-glow-teal: 0 0 40px rgba(9, 226, 192, 0.35);
+
+  /* Legacy shadow aliases */
+  --shadow: var(--shadow-sm);
+  --shadow-lg: var(--shadow-md);
+  --shadow-nav: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+
+  /* Elevation — each bundles shadow + z */
+  --elevation-0: none;
+  --elevation-1: var(--shadow-xs);
+  --elevation-2: var(--shadow-sm);
+  --elevation-3: var(--shadow-md);
+  --elevation-4: var(--shadow-lg);
+  --elevation-5: var(--shadow-xl);
+
+  /* Glass — blur + border + tint + opacity */
+  --glass-light: blur(var(--blur-md)) saturate(1.2);
+  --glass-medium: blur(var(--blur-lg)) saturate(1.3);
+  --glass-heavy: blur(var(--blur-xl)) saturate(1.4);
+  --glass-dark: blur(var(--blur-lg)) saturate(1.2);
+
+  /* Noise — inline SVG grain data-URIs ("Very Wugweb") */
+  --noise-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  --noise-medium: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  --noise-heavy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+  --noise-editorial: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+
+  /* Gradients — per service + brand */
+  --gradient-brand: linear-gradient(135deg, #FFBE1A, #E54F30);
+  --gradient-strategy: linear-gradient(135deg, #FA4108, #FF8F66);
+  --gradient-experience: linear-gradient(135deg, #09E2C0, #6EF0DC);
+  --gradient-engineering: linear-gradient(135deg, #2167E9, #7FA8F3);
+  --gradient-growth: linear-gradient(135deg, #3ED219, #9BE97F);
+  --gradient-operations: linear-gradient(135deg, #7A4DFF, #B49CFF);
+
+  /* Motion — extended durations + easings */
+  --duration-ms-150: 150ms;
+  --duration-ms-500: 500ms;
+  --duration-ms-700: 700ms;
+  --duration-ms-1000: 1000ms;
+
+  --easing-standard: var(--easing-in-out);
+  --easing-accelerate: var(--easing-in);
+  --easing-decelerate: var(--easing-out);
+  --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --easing-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --transition-page: opacity var(--duration-normal) var(--easing-smooth),
+                     transform var(--duration-normal) var(--easing-smooth);
+  --transition-overlay: opacity var(--duration-slow) var(--easing-smooth);
+
+  /* Hover presets */
+  --hover-button: scale 1.02, var(--shadow-xs);
+  --hover-card: translateY(-4px), var(--shadow-md);
+  --hover-image: scale(1.03);
+  --hover-link: var(--color-accent-primary);
+  --hover-icon: var(--opacity-100);
+  --hover-input: var(--fg);
+
+  /* Focus */
+  --focus-primary: 2px solid var(--color-accent-primary);
+  --focus-secondary: 2px solid var(--color-accent-blue);
+  --focus-brand: 2px solid var(--color-accent-primary);
+  --focus-input: 2px solid var(--color-accent-blue);
+  --focus-button: 2px solid var(--color-accent-primary);
+
+  /* Selection */
+  --selection-brand: var(--color-accent-primary);
+  --selection-inverse: var(--neutral-10);
+  --selection-dark: var(--neutral-8);
+  --selection-light: var(--neutral-1);
+
+  /* Cursor */
+  --cursor-pointer: pointer;
+  --cursor-grab: grab;
+  --cursor-dragging: grabbing;
+  --cursor-disabled: not-allowed;
+  --cursor-loading: progress;
+
+  /* Z-index / layers */
+  --z-base: 0;
+  --z-overlay: 1;
+  --z-sticky: 50;
+  --z-modal: 100;
+  --z-toast: 200;
+
+  --layer-background: 0;
+  --layer-base: 1;
+  --layer-card: 10;
+  --layer-popover: 50;
+  --layer-dropdown: 60;
+  --layer-modal: 100;
+  --layer-toast: 120;
+  --layer-tooltip: 130;
+  --layer-overlay: 140;
+  --layer-cursor: 9999;
+
+  /* Semantic hero overlay (shared home + about) */
+  --hero-overlay: rgba(10, 10, 12, 0.75);
+  --hero-overlay-mid: rgba(10, 10, 12, 0.5);
+
+  /* Shared hover surface (nav links + buttons) */
+  --color-surface-hover: #555;
+
+  /* Focus ring offset */
+  --focus-offset: 2px;
+
+  /* Component sizes (documented in kits sizing.md) */
+  --nav-height: 78px;
+  --control-size: 44px;
+  --pillar-thumb: 88px;
+  --pillar-thumb-sm: 62px;
+  --thumb-min: 180px;
+  --svc-panel-min: 620px;
+  --svc-gallery-min: 110px;
+  --svc-gallery-max: 230px;
+  --logo-grid-h: 32px;
+  --author-photo: 56px;
+  --share-btn: 40px;
+  --bento-min: 180px;
+  --culture-visual: 380px;
 }
 
 /* Fluid tokens already clamp — no Framer step-down media queries needed for type */
+
+/* Brand selection color (Kits selection.brand) */
+::selection {
+  background: var(--selection-brand);
+  color: var(--color-ash);
+}
 
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -436,7 +650,7 @@ a { color: inherit; }
   font-size: var(--fluid-caption);
   font-weight: var(--font-weight-medium);
   line-height: var(--core-line-height-normal);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -457,9 +671,9 @@ a { color: inherit; }
   letter-spacing: 0;
   text-decoration: none;
   padding: 0.7rem 1.15rem;
-  border-radius: var(--r-2);
-  border: 1px solid transparent;
-  background: #444;
+  border-radius: var(--radius-sm);
+  border: var(--stroke-thin) solid transparent;
+  background: var(--neutral-6);
   color: var(--fg);
   transition: border-color var(--duration-fast) var(--easing-out),
               background var(--duration-fast) var(--easing-out),
@@ -483,14 +697,14 @@ a { color: inherit; }
   color: var(--bg);
   transform: translateY(-1px);
 }
-.btn:hover { background: #555; }
+.btn:hover { background: var(--color-surface-hover); }
 
 .btn-ghost {
   background: transparent;
   border-color: var(--line-strong);
 }
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: color-mix(in srgb, var(--neutral-0) 6%, transparent);
   border-color: var(--fg);
 }
 
@@ -550,7 +764,7 @@ a { color: inherit; }
 }
 .btn-partners-cta {
   background: var(--accent);
-  color: #000;
+  color: var(--neutral-10);
   border-color: var(--accent);
   display: inline-flex;
 }
@@ -558,7 +772,7 @@ a { color: inherit; }
 
 .global-industries {
   padding-block: var(--space-section-md);
-  border-top: 1px solid var(--line);
+  border-top: var(--stroke-thin) solid var(--line);
 }
 .global-industries h2 { font-size: var(--t-h2); line-height: var(--lh-h2); }
 .global-industries > p { margin-top: var(--gap-4); max-width: 55ch; font-size: var(--t-xl); line-height: var(--lh-xl); }
@@ -574,14 +788,14 @@ a { color: inherit; }
   font-family: var(--font-mono);
   font-size: var(--t-sm);
   padding: var(--gap-2) var(--gap-4);
-  border: 1px solid var(--line);
+  border: var(--stroke-thin) solid var(--line);
   border-radius: var(--r-full);
 }
 .global-industries .btn { margin-top: var(--gap-2); }
 
 .global-blog-teaser {
   padding-block: var(--space-section-md);
-  border-top: 1px solid var(--line);
+  border-top: var(--stroke-thin) solid var(--line);
 }
 .global-blog-head {
   display: flex;
@@ -600,7 +814,7 @@ a { color: inherit; }
 @media (min-width: 768px) {
   .global-blog-list { grid-template-columns: repeat(3, 1fr); gap: var(--gap-6); }
 }
-.global-blog-list li { border-top: 1px solid var(--line); padding-top: var(--gap-4); }
+.global-blog-list li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
 .blog-teaser-media { display: block; margin: 0 0 var(--gap-3); }
 .blog-teaser-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); }
 .global-blog-list .eyebrow { display: block; margin-bottom: var(--gap-1); }
@@ -608,8 +822,8 @@ a { color: inherit; }
 .global-blog-list a:hover { color: var(--accent); }
 
 .global-final-cta {
-  background: var(--accent-warm);
-  color: #000;
+  background: var(--color-surface-elevated);
+  border-top: var(--stroke-thin) solid var(--line);
   padding-block: var(--space-section-md);
 }
 .final-cta-inner {
@@ -622,9 +836,14 @@ a { color: inherit; }
 .global-final-cta h2 {
   font-size: var(--t-h2);
   max-width: 20ch;
-  color: #000;
+  color: var(--fg);
   font-weight: var(--font-weight-regular);
 }
-.global-final-cta p { margin-top: var(--gap-3); max-width: 45ch; color: rgba(0, 0, 0, 0.72); }
-.global-final-cta .btn { background: #000; border-color: #000; color: #fff; }
+.global-final-cta p { margin-top: var(--gap-3); max-width: 45ch; color: var(--fg-muted); }
+.global-final-cta .btn {
+  background: var(--color-yellow);
+  border-color: var(--color-yellow);
+  color: var(--neutral-10);
+  border-radius: var(--radius-sm);
+}
 .global-final-cta .btn:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }

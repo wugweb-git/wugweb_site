@@ -32,7 +32,7 @@ const footerLinks = [
 
 <style>
   .site-footer {
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
   }
 
   .site-footer-inner {
@@ -49,7 +49,7 @@ const footerLinks = [
   .footer-brand {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: var(--gap-1);
   }
 
   .footer-tagline {
@@ -74,7 +74,7 @@ const footerLinks = [
   .footer-links {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--gap-4) 1.5rem;
+    gap: var(--gap-4) var(--gap-6);
   }
 
   .footer-links a {

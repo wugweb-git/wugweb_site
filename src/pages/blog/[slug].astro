@@ -25,6 +25,8 @@ const readTime = post.readingTime ? `${post.readingTime} min read` : '';
 const authorName = post.author?.name || '';
 const authorPhoto = post.author?.photo ? urlFor(post.author.photo).width(120).height(120).url() : '';
 const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
+const updatedAt = post._updatedAt ? new Date(post._updatedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
+const isUpdated = updatedAt && updatedAt !== pubDate;
 const coverImageUrl = post.coverPath
   ? (post.coverPath.startsWith('/') || post.coverPath.startsWith('http') ? post.coverPath : `/${post.coverPath}`)
   : (post.coverImage ? urlFor(post.coverImage).width(1280).height(720).url() : '');
@@ -33,6 +35,43 @@ const ogImageUrl = post.ogImage
   : coverImageUrl;
 const pageTitle = post.seoTitle || post.title;
 const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160);
+
+// Table of contents — derived from the body's h2/h3 blocks.
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+const toc = (post.body || [])
+  .map((b: any) => ({ style: b.style, text: b.children?.map((c: any) => c.text).join('') || '' }))
+  .filter((b: any) => (b.style === 'h2' || b.style === 'h3') && b.text);
+
+// Related articles — same category first, then fill with recent.
+const allPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const related = (allPosts as any[])
+  .filter((p: any) => p.slug !== slug)
+  .sort((a: any, b: any) => {
+    const aMatch = a.category === post.category ? 1 : 0;
+    const bMatch = b.category === post.category ? 1 : 0;
+    return bMatch - aMatch || new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime();
+  })
+  .slice(0, 3);
+
+// Prev / next by publishedAt.
+const sorted = [...(allPosts as any[])]
+  .filter((p: any) => p.publishedAt)
+  .sort((a: any, b: any) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime());
+const idx = sorted.findIndex((p: any) => p.slug === slug);
+const prevPost = idx > 0 ? sorted[idx - 1] : null;
+const nextPost = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
+
+// Share links (absolute URL for social cards).
+const shareUrl = new URL(`/blog/${slug}`, Astro.site || 'https://wugweb.com').toString();
+const shareText = encodeURIComponent(post.title || '');
+const shareLinks = [
+  { label: 'Share on X', href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${shareText}`, icon: 'X' },
+  { label: 'Share on LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, icon: 'Li' },
+  { label: 'Share on WhatsApp', href: `https://wa.me/?text=${shareText}%20${encodeURIComponent(shareUrl)}`, icon: 'Wa' },
+  { label: 'Copy link', href: shareUrl, icon: '#' },
+];
 ---
 
 <BaseLayout title={`${post.title} — Wugweb Insights`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl}>
@@ -44,6 +83,7 @@ const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160
       {authorName && <span>{authorName}</span>}
       {readTime && <span>{readTime}</span>}
       {pubDate && <span>{pubDate}</span>}
+      {isUpdated && <span class="article-updated">Updated {updatedAt}</span>}
     </div>
     {post.excerpt && <p class="article-intro">{post.excerpt}</p>}
 
@@ -53,11 +93,24 @@ const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160
       </figure>
     )}
 
+    {toc.length > 0 && (
+      <nav class="article-toc" aria-label="Table of contents">
+        <p class="toc-title">In this article</p>
+        <ol>
+          {toc.map((t: any) => (
+            <li class:list={['toc-item', { 'toc-h3': t.style === 'h3' }]}>
+              <a href={`#${slugify(t.text)}`}>{t.text}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+
     {post.body && post.body.length > 0 ? (
       <div class="article-body" set:html={post.body.map((block: any) => {
         const text = block.children?.map((c: any) => c.text).join('') || '';
-        if (block.style === 'h2') return `<h2>${text}</h2>`;
-        if (block.style === 'h3') return `<h3>${text}</h3>`;
+        if (block.style === 'h2') return `<h2 id="${slugify(text)}">${text}</h2>`;
+        if (block.style === 'h3') return `<h3 id="${slugify(text)}">${text}</h3>`;
         return `<p>${text}</p>`;
       }).filter(Boolean).join('')}>
       </div>
@@ -73,6 +126,7 @@ const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160
         <div>
           {authorName && <p class="author-name">{authorName}</p>}
           {post.author.role && <p class="author-role">{post.author.role}</p>}
+          {post.author.bio && <p class="author-bio">{post.author.bio}</p>}
         </div>
       </aside>
     )}
@@ -83,6 +137,56 @@ const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160
           <span class="tag">{t}</span>
         ))}
       </div>
+    )}
+
+    <div class="article-share">
+      <span class="share-label">Share</span>
+      <div class="share-links">
+        {shareLinks.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer" class="share-link" aria-label={s.label} data-copy={s.icon === '#' ? shareUrl : undefined}>{s.icon}</a>
+        ))}
+      </div>
+    </div>
+
+    <aside class="article-newsletter">
+      <p class="eyebrow">Newsletter</p>
+      <h2>Get insights like this in your inbox</h2>
+      <p>Design, product, and digital strategy — no spam, just thoughtful content.</p>
+      <form class="nl-form" method="POST" action="/api/subscribe">
+        <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" class="nl-input" />
+        <button type="submit" class="btn btn-solid">Subscribe</button>
+      </form>
+    </aside>
+
+    {(prevPost || nextPost) && (
+      <nav class="article-prevnext" aria-label="More articles">
+        {prevPost ? (
+          <a href={`/blog/${prevPost.slug}`} class="pn-link pn-prev">
+            <span class="pn-dir">← Previous</span>
+            <span class="pn-title">{prevPost.title}</span>
+          </a>
+        ) : <span class="pn-link pn-placeholder"></span>}
+        {nextPost ? (
+          <a href={`/blog/${nextPost.slug}`} class="pn-link pn-next">
+            <span class="pn-dir">Next →</span>
+            <span class="pn-title">{nextPost.title}</span>
+          </a>
+        ) : <span class="pn-link pn-placeholder"></span>}
+      </nav>
+    )}
+
+    {related.length > 0 && (
+      <section class="article-related">
+        <h2>Related articles</h2>
+        <div class="related-grid">
+          {related.map((r: any) => (
+            <a href={`/blog/${r.slug}`} class="related-card">
+              <h3>{r.title}</h3>
+              {r.category && <p>{r.category}</p>}
+            </a>
+          ))}
+        </div>
+      </section>
     )}
   </section>
 </BaseLayout>
@@ -103,18 +207,65 @@ const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160
   .article-body p { line-height: var(--core-line-height-relaxed); color: var(--fg-muted); margin-top: var(--gap-3); }
   .article-empty { margin-top: var(--gap-10); padding: var(--gap-6); border: 1px dashed var(--line); border-radius: var(--r-3); color: var(--fg-muted); }
   .article-empty a { color: var(--accent-warm); text-decoration: underline; }
-  .article-author { display: flex; align-items: center; gap: var(--gap-4); margin-top: var(--gap-10); padding-top: var(--gap-8); border-top: 1px solid var(--line); }
-  .author-photo { width: 56px; height: 56px; border-radius: var(--r-full); object-fit: cover; }
+  .article-author { display: flex; align-items: center; gap: var(--gap-4); margin-top: var(--gap-10); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
+  .author-photo { width: var(--author-photo); height: var(--author-photo); border-radius: var(--radius-full); object-fit: cover; }
   .author-name { font-weight: var(--font-weight-medium); color: var(--fg); }
   .author-role { font-size: var(--t-sm); color: var(--fg-muted); }
-  .article-tags { display: flex; gap: var(--gap-2); margin-top: var(--gap-8); padding-top: var(--gap-8); border-top: 1px solid var(--line); }
-  .tag { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-3); border: 1px solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .article-tags { display: flex; gap: var(--gap-2); margin-top: var(--gap-8); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
+  .tag { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-3); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .article-updated { opacity: var(--opacity-soft); }
+
+  .article-toc { margin-top: var(--gap-10); padding: var(--gap-6); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+  .toc-title { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .06em; color: var(--accent-warm); margin-bottom: var(--gap-4); }
+  .article-toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
+  .toc-item a { color: var(--fg-muted); text-decoration: none; font-size: var(--fluid-body-sm); line-height: var(--core-line-height-normal); }
+  .toc-item a:hover { color: var(--accent); }
+  .toc-h3 { padding-left: var(--gap-4); }
+  .toc-h3 a { font-size: var(--fluid-body-sm); }
+
+  .article-share { display: flex; align-items: center; gap: var(--gap-4); margin-top: var(--gap-10); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
+  .share-label { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .06em; color: var(--fg-muted); }
+  .share-links { display: flex; gap: var(--gap-2); }
+  .share-link { display: inline-flex; align-items: center; justify-content: center; width: var(--share-btn); height: var(--share-btn); border-radius: var(--radius-full); border: var(--stroke-thin) solid var(--line); color: var(--fg-muted); text-decoration: none; font-family: var(--font-mono); font-size: var(--t-sm); transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
+  .share-link:hover { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--color-yellow) 10%, transparent); }
+
+  .article-newsletter { margin-top: var(--gap-10); padding: var(--gap-8); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-lg); background: var(--surface); text-align: center; }
+  .article-newsletter .eyebrow { display: block; margin-bottom: var(--gap-3); }
+  .article-newsletter h2 { font-size: var(--t-h4); max-width: 24ch; margin-inline: auto; }
+  .article-newsletter p:not(.eyebrow) { margin-top: var(--gap-2); color: var(--fg-muted); }
+  .nl-form { display: flex; gap: var(--gap-3); margin-top: var(--gap-6); max-width: 420px; margin-inline: auto; }
+  .nl-input { flex: 1; padding: var(--gap-3) var(--gap-4); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-sm); background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--fluid-body-md); }
+  .nl-input:focus { outline: var(--focus-input); outline-offset: 2px; }
+
+  .article-prevnext { display: grid; gap: var(--gap-4); margin-top: var(--gap-10); grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .article-prevnext { grid-template-columns: 1fr 1fr; } }
+  .pn-link { display: flex; flex-direction: column; gap: var(--gap-1); padding: var(--gap-5); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-md); text-decoration: none; transition: border-color var(--duration-fast) var(--easing-out); }
+  .pn-link:hover { border-color: var(--accent); }
+  .pn-next { text-align: right; }
+  .pn-dir { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); }
+  .pn-title { color: var(--fg); font-weight: var(--font-weight-medium); font-size: var(--fluid-body-md); line-height: var(--core-line-height-normal); }
+  .pn-placeholder { visibility: hidden; }
+
+  .article-related { margin-top: var(--gap-12); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
+  .article-related h2 { font-size: var(--t-h3); margin-bottom: var(--gap-6); }
+  .related-grid { display: grid; gap: var(--gap-4); grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
+  .related-card { text-decoration: none; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
+  .related-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); }
+  .related-card p { margin-top: var(--gap-1); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
+  .related-card:hover h3 { color: var(--accent); }
 </style>
 
 <script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.article-body h2, .article-body p', (el) => {
-    animate(el, { opacity: [0, 1], y: [12, 0] }, { duration: 0.5, easing: 'ease-out' });
+  // Copy-link share button.
+  document.querySelectorAll('[data-copy]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const url = el.getAttribute('data-copy') || '';
+      navigator.clipboard?.writeText(url).then(() => {
+        el.textContent = '✓';
+        setTimeout(() => { el.textContent = '#'; }, 1200);
+      }).catch(() => {});
+    });
   });
 </script>

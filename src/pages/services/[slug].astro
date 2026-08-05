@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
 import { serviceBySlugQuery, caseStudiesListQuery, postsListQuery } from '../../lib/queries';
 import { assetUrl } from '../../lib/assets';
+import { hardcodedServices } from '../../lib/services-data';
 
 /** Framer marketing slugs → 6-pillar keys used in related-work filters + hardcoded fallbacks */
 const FRAMER_TO_PILLAR: Record<string, string> = {
@@ -29,225 +30,6 @@ export async function getStaticPaths() {
   ];
   return [...pillar, ...framer].map((s) => ({ params: { slug: s } }));
 }
-
-const hardcodedServices: Record<string, any> = {
-  'strategy': {
-    title: 'Strategy',
-    subtitle: 'Turn vision into direction. Direction into results.',
-    tags: ['Business Strategy', 'Product Strategy', 'AI Strategy', 'Transformation', 'Digital Transformation', 'Market Research', 'Product Discovery', 'Roadmapping', 'Innovation Strategy'],
-    heroText: "Every successful business begins with the right strategy. Whether you're defining a new product, entering a market, adopting AI, or transforming existing operations, strategic decisions shape everything that follows. At Wugweb, we help organizations make those decisions with confidence. Through research, business insight, product thinking, and technology planning, we create practical strategies that reduce uncertainty, align stakeholders, and establish a clear path from ambition to execution.",
-    body: 'Around 70% of large-scale transformation initiatives fail to achieve their intended outcomes—often due to unclear strategy, poor alignment, or ineffective execution. The difference isn\'t ambition; it\'s having the right foundation before building. Our strategy practice helps organizations validate opportunities, prioritize investments, align stakeholders, and create practical roadmaps that guide confident decision-making from discovery through delivery.',
-    capabilities: [
-      { n: '01', title: 'Business Strategy', items: ['Business Strategy', 'Digital Transformation', 'Innovation', 'Market Research', 'Customer & User Research'] },
-      { n: '02', title: 'Product Strategy', items: ['Product Strategy', 'Product Discovery', 'Roadmapping', 'MVP Planning', 'Innovation Strategy'] },
-      { n: '03', title: 'AI & Technology', items: ['AI Strategy & Readiness', 'AI Opportunity Mapping', 'Transformation Workshops', 'Digital Transformation'] },
-    ],
-    approach: [
-      { n: '01', title: 'Discover', body: 'Understand the business, customers, market, and challenges.' },
-      { n: '02', title: 'Analyze', body: 'Identify opportunities, validate assumptions, and prioritize initiatives.' },
-      { n: '03', title: 'Define', body: 'Develop strategic direction, success metrics, and execution priorities.' },
-      { n: '04', title: 'Align', body: 'Build consensus across stakeholders and create a shared roadmap.' },
-      { n: '05', title: 'Evolve', body: 'Measure progress, adapt to change, and continuously refine strategy.' },
-    ],
-    faqs: [
-      { q: 'What types of strategy services do you provide?', a: 'We help organizations with business strategy, product strategy, product discovery, market research, digital transformation, innovation planning, AI strategy, customer research, and execution roadmaps.' },
-      { q: 'When should we engage a strategy partner?', a: 'The best time is before major investments or product decisions. Strategic planning helps reduce uncertainty, validate opportunities, and align stakeholders before execution begins.' },
-      { q: 'Do you work with startups and enterprises?', a: 'Yes. Our approach is tailored to organizations at different stages of growth, from early-stage startups defining their first product to enterprises leading digital transformation initiatives.' },
-      { q: 'Can you work with our internal teams?', a: 'Absolutely. We regularly collaborate with leadership, product, design, engineering, and marketing teams as an extension of their organization.' },
-      { q: 'Do strategy engagements include implementation?', a: 'Yes. We can support both strategic planning and the design, engineering, AI, and growth initiatives required to bring that strategy to life.' },
-      { q: 'How long does a strategy engagement take?', a: 'Depending on scope, engagements typically range from a few weeks for focused discovery to several months for comprehensive transformation programs.' },
-      { q: 'How do you measure success?', a: 'Success is measured against business objectives, customer outcomes, product performance, and the strategic goals established at the beginning of each engagement.' },
-      { q: 'What deliverables can we expect?', a: 'Depending on the engagement, deliverables may include research findings, strategic recommendations, opportunity assessments, roadmaps, product strategies, AI readiness plans, transformation frameworks, and implementation plans.' },
-    ],
-    why: [
-      { title: 'Research-Backed Clarity', body: 'Every recommendation is grounded in real market data and user research, not assumptions.' },
-      { title: 'Actionable Roadmaps', body: 'We don\'t just deliver decks — we provide execution-ready plans with clear ownership and timelines.' },
-      { title: 'Cross-Disciplinary Thinking', body: 'Our strategists draw on brand, design, engineering, and growth perspectives for holistic solutions.' },
-      { title: 'Measurable Outcomes', body: 'We define success metrics upfront and build strategy around achieving tangible business results.' },
-    ],
-  },
-  'brand': {
-    title: 'Brand',
-    subtitle: 'Create brands people remember.',
-    tags: ['Brand Strategy', 'Identity Systems', 'Naming', 'Brand Guidelines'],
-    heroText: "Your brand is more than a logo — it's the sum of every interaction people have with you. We craft distinct brand identities that build emotional connection, inspire loyalty, and drive long-term growth. From naming and visual systems to voice and comprehensive guidelines, we ensure your brand stands out and stays consistent.",
-    body: 'A strong brand is a strategic asset. We help organisations define who they are, what they stand for, and how they show up in the world. Our brand process combines strategic thinking with creative excellence — resulting in identities that are not only beautiful but strategically grounded and built to last.',
-    capabilities: [
-      { n: '01', title: 'Brand Strategy', items: ['Positioning', 'Narrative', 'Naming', 'Messaging'] },
-      { n: '02', title: 'Identity', items: ['Identity Systems', 'Voice & Tone', 'Employer Brand', 'Brand Guidelines'] },
-      { n: '03', title: 'Activation', items: ['Brand Activation', 'Campaigns', 'Brand Audits', 'Brand Evolution'] },
-    ],
-    approach: [
-      { n: '01', title: 'Discovery & Brand Audit', body: 'We dive deep into your brand\'s current state, market position, and aspirations to identify opportunities.' },
-      { n: '02', title: 'Strategic Positioning', body: 'We define your brand\'s purpose, personality, and positioning — the strategic foundation for all creative work.' },
-      { n: '03', title: 'Visual & Verbal Identity', body: 'We craft the visual system — logo, colour, typography, imagery — and the verbal identity that brings your brand to life.' },
-      { n: '04', title: 'Guidelines & Activation', body: 'We deliver comprehensive brand guidelines that empower your team to apply the identity consistently across every touchpoint.' },
-    ],
-    faqs: [
-      { q: 'What\'s included in a full brand identity project?', a: 'A full brand identity includes brand strategy, naming (if needed), logo design, visual identity system, typography, colour palette, tone of voice, and comprehensive brand guidelines.' },
-      { q: 'Do you design logos only?', a: 'Logo design is part of our offering, but we always deliver it as part of a full visual identity system — not in isolation.' },
-      { q: 'How long does a brand project take?', a: 'A typical brand identity project runs 4-8 weeks from discovery to final deliverables, depending on scope.' },
-      { q: 'Do you create brand guidelines?', a: 'Absolutely. We create comprehensive brand guidelines that ensure consistency across all channels and touchpoints.' },
-      { q: 'Can you refresh an existing brand without a full rebrand?', a: 'Yes. We often evolve existing identities — tightening systems, modernising assets, and clarifying voice while protecting equity you have already built.' },
-      { q: 'Do you handle naming and verbal identity?', a: 'Yes. Naming, messaging architecture, and tone of voice are part of our brand practice when the engagement calls for them.' },
-      { q: 'Will our internal teams be able to use the system day to day?', a: 'That is the goal. Deliverables include practical guidelines, templates, and handoff sessions so design, marketing, and product can apply the brand consistently.' },
-      { q: 'Do brand projects connect to digital product design?', a: 'Yes. We design brand systems that hold up in product UI, marketing sites, and campaigns — not just static brand books.' },
-    ],
-    why: [
-      { title: 'Strategic Foundation', body: 'Every brand we create is built on a clear strategic foundation — not just aesthetics.' },
-      { title: 'Holistic Identity Systems', body: 'We design cohesive systems that work across digital, print, environmental, and every other touchpoint.' },
-      { title: 'Authentic Storytelling', body: 'We uncover the core of your brand to craft narratives that resonate, connect, and inspire loyalty.' },
-      { title: 'Practical Guidelines', body: 'Our guidelines are designed to be used — clear, actionable, and easy for your team to implement.' },
-    ],
-  },
-  'experience': {
-    title: 'Experience',
-    subtitle: 'Design products people love using.',
-    tags: ['UX Design', 'UI Design', 'Design Systems', 'User Research'],
-    heroText: "We design digital experiences that people love to use. Rooted in human-centered design and rigorous user research, our UX/UI services cover everything from journey mapping and wireframing to polished visual design and scalable design systems — all focused on creating intuitive, engaging products that drive business results.",
-    body: 'In the experience economy, exceptional design is a competitive advantage. We design and engineer intuitive, engaging digital experiences that captivate users, build brand loyalty, and fuel sustainable growth. Our process is collaborative, data-informed, and relentlessly focused on delivering value to both users and businesses.',
-    capabilities: [
-      { n: '01', title: 'Research', items: ['UX Research', 'Service Design', 'Information Architecture', 'Journey Mapping'] },
-      { n: '02', title: 'Design', items: ['UX Design', 'UI Design', 'Design Systems', 'Prototyping'] },
-      { n: '03', title: 'Testing & Accessibility', items: ['User Testing', 'Accessibility', 'Usability Testing', 'Design Critique'] },
-    ],
-    approach: [
-      { n: '01', title: 'User Discovery', body: 'We illuminate design possibilities through deep dives into user behaviour, needs, and pain points.' },
-      { n: '02', title: 'Design & Prototyping', body: 'We rapidly explore solutions through wireframes, prototypes, and iterative design cycles.' },
-      { n: '03', title: 'Testing & Validation', body: 'We validate designs through usability testing and data analysis, driving continuous improvement.' },
-      { n: '04', title: 'Design & Development Handoff', body: 'We ensure seamless translation from design to development with detailed specs and design system components.' },
-      { n: '05', title: 'System & Evolve', body: 'We leave you with a governed design system and a cadence for iterating as the product roadmap moves.' },
-    ],
-    process: [
-      { phase: 'Discovery', steps: ['Kick-off meeting', 'Competitor analysis', 'User interview', 'Brain storming'] },
-      { phase: 'Ideation', steps: ['User journey', 'Sitemap', 'Wireframes & prototyping', 'Usability testing'] },
-      { phase: 'Prototyping & Testing', steps: ['Analysing results', 'Look and feel drafts', 'Design concept', 'Final UI design'] },
-      { phase: 'UI Design', steps: ['Final UI design', 'Handover meeting'] },
-    ],
-    tools: [
-      { category: 'User Research & Testing', items: ['Maze', 'Dovetail', 'Lyssna', 'Remesh', 'UserZoom', 'UserLytics', 'Reflect', 'Trymata'] },
-      { category: 'Collaboration & Workflow', items: ['Notion', 'Zeroheight', 'Supernova', 'UiInspector', 'Keep'] },
-      { category: 'Designing & Prototyping', items: ['Plasmic', 'Sketch', 'Figma', 'Vercel', 'RIVE', 'Webflow', 'penpot', 'Framer', 'Canva'] },
-      { category: 'Organization & Productivity', items: ['Mem', 'Opal', 'ValidatorAI', 'Perplexity', 'Obsidian', 'Any.do', 'BeeDone', 'Tavus'] },
-      { category: 'AI-Powered Design Tools', items: ['Uizard', 'Lummi', 'GalileoAI', 'Stockimg.ai', 'Khroma', 'Midjourney', 'OpenArt', 'Jitter', 'Illustroke'] },
-    ],
-    faqs: [
-      { q: 'What is Experience Design?', a: 'Experience design is the practice of designing products and services with a focus on the quality of the user experience across every touchpoint.' },
-      { q: 'Why is Customer Experience Design important?', a: 'Exceptional customer experience drives loyalty, increases conversions, and creates competitive advantage in the experience economy.' },
-      { q: 'What services do you offer?', a: 'We offer UX strategy, user research, information architecture, interaction design, visual design, usability testing, design systems, and accessibility.' },
-      { q: 'What\'s your design approach?', a: 'Our approach is human-centered, data-informed, and collaborative. We start with deep user research and iterate through testing and refinement.' },
-      { q: 'How do you ensure user needs are met?', a: 'Through continuous user research, usability testing, and data-driven validation at every stage of the design process.' },
-      { q: 'How do you measure design effectiveness?', a: 'We measure effectiveness through usability metrics, user satisfaction scores, conversion rates, and business KPIs aligned with your goals.' },
-      { q: 'How do you approach collaboration?', a: 'We collaborate closely with your team throughout the process — from discovery workshops to design reviews to development handoff.' },
-      { q: 'Can you help with new product design?', a: 'Absolutely. We specialise in taking products from concept to launch, including MVP design, full product design, and redesigns.' },
-      { q: 'Do you design for accessibility?', a: 'Yes. Accessibility is built into our process from day one, following WCAG guidelines to ensure inclusive experiences.' },
-      { q: 'What\'s the final deliverable?', a: 'Deliverables include design files, interactive prototypes, design system documentation, asset exports, and developer handoff specs.' },
-    ],
-    why: [
-      { title: 'Human-Centered Process', body: 'Every design decision is grounded in real user needs and behavioural insights — not assumptions.' },
-      { title: 'Rapid Iteration', body: 'We move fast through prototypes and testing cycles, validating ideas before investing in development.' },
-      { title: 'Scalable Design Systems', body: 'We build design systems that grow with your product, ensuring consistency across every feature and platform.' },
-      { title: 'Accessibility First', body: 'We design for everyone, following WCAG guidelines to ensure your product is usable by all.' },
-    ],
-  },
-  'growth': {
-    title: 'Growth',
-    subtitle: 'Turn products into businesses.',
-    tags: ['Marketing', 'MarTech', 'Analytics', 'AI Marketing'],
-    heroText: "Growth is driven by smart systems and sharper insights. We help businesses unlock data-driven marketing through MarTech consulting, marketing automation, AI integration, and lead generation strategies — turning your marketing into a measurable, scalable engine for acquisition and retention.",
-    body: 'Marketing success today is powered by smart systems and sharper insights. We help unlock your marketing potential through MarTech consulting that connects data, automates workflows, and creates tailored experiences. Our approach is holistic — we test, adapt, and optimise continuously using AI-powered marketing strategies to drive measurable growth.',
-    capabilities: [
-      { n: '01', title: 'Marketing', items: ['SEO', 'Performance Marketing', 'Content Strategy', 'Social', 'Campaigns'] },
-      { n: '02', title: 'MarTech', items: ['CRM', 'Marketing Automation', 'Email Automation', 'Customer Journeys', 'Personalization'] },
-      { n: '03', title: 'Intelligence', items: ['Analytics', 'Attribution', 'CRO', 'Experimentation', 'AI Marketing', 'Customer Insights'] },
-    ],
-    approach: [
-      { n: '01', title: 'Audit & Strategy', body: 'We start with a comprehensive audit of your current marketing stack, data flows, and growth opportunities.' },
-      { n: '02', title: 'Implementation & Integration', body: 'We activate strategy through seamless MarTech stack integration and AI-powered campaign setup.' },
-      { n: '03', title: 'Optimisation & Analysis', body: 'We continuously refine using real-time performance analytics across the full marketing lifecycle.' },
-      { n: '04', title: 'Scale & Evolve', body: 'We evolve your growth systems over time, adapting to new channels, data insights, and market changes.' },
-      { n: '05', title: 'Govern & Report', body: 'We put measurement, attribution, and reporting cadence in place so growth decisions stay accountable.' },
-    ],
-    faqs: [
-      { q: 'What is MarTech and how can it help my business?', a: 'MarTech combines marketing and technology to automate, measure, and optimize marketing efforts for better ROI and customer experiences.' },
-      { q: 'How do you use AI in marketing?', a: 'We leverage AI for content personalisation, predictive analytics, campaign optimisation, and automated customer segmentation.' },
-      { q: 'Do you offer lead generation services?', a: 'Yes. We design and execute multi-channel lead generation strategies including paid media, content marketing, email campaigns, and marketing automation.' },
-      { q: 'How do you measure growth?', a: 'We track key metrics including customer acquisition cost, conversion rates, ROI, pipeline value, and lifetime value.' },
-      { q: 'Can you work with our existing CRM and ad stack?', a: 'Yes. We usually start by auditing what you already run, then integrate, clean, and extend rather than forcing a rip-and-replace.' },
-      { q: 'Do you support lifecycle and retention programmes?', a: 'Yes. Acquisition is only half the system — we design journeys for onboarding, activation, retention, and expansion.' },
-      { q: 'How quickly can a growth engagement show results?', a: 'Focused sprints can surface instrumentation and channel wins in weeks; compounding growth systems typically mature over a quarter.' },
-      { q: 'Will you train our marketing team?', a: 'Yes. Hand-over includes playbooks, dashboards, and working sessions so your team can operate the system after launch.' },
-    ],
-    why: [
-      { title: 'Integrated Innovation', body: 'We combine MarTech strategy with AI integration to deliver intelligent targeting and personalised experiences.' },
-      { title: 'Data-Driven Decisions', body: 'Every campaign is informed by data and continuously optimised for performance.' },
-      { title: 'Full-Funnel Approach', body: 'We build growth systems that cover the entire customer journey — from awareness to retention.' },
-      { title: 'Scalable Systems', body: 'We design marketing stacks and processes that grow with your business, not against it.' },
-    ],
-  },
-  'engineering': {
-    title: 'Engineering',
-    subtitle: 'Engineer products built to scale.',
-    tags: ['Web Development', 'App Development', 'Infrastructure', 'AI'],
-    heroText: 'We build robust, performant digital products using modern engineering practices. From responsive websites and e-commerce platforms to native mobile apps and cloud-native architectures, our engineering team delivers scalable solutions that are secure, fast, and built to last.',
-    body: 'It takes just 50 milliseconds for users to form an opinion about your website. We specialise in building scalable web solutions and custom digital products across marketing, eCommerce, and enterprise platforms. Our agile development process ensures speed, flexibility, and transparency from planning to deployment.',
-    capabilities: [
-      { n: '01', title: 'Applications', items: ['Websites', 'Web Apps', 'Mobile Apps', 'SaaS', 'Ecommerce', 'Platforms'] },
-      { n: '02', title: 'Infrastructure', items: ['CMS', 'APIs', 'Integrations', 'Databases', 'Authentication', 'Cloud', 'DevOps', 'CI/CD', 'Performance', 'Security'] },
-      { n: '03', title: 'Modern Development', items: ['AI Applications', 'AI Agents', 'No-Code', 'Low-Code', 'Internal Tools'] },
-    ],
-    approach: [
-      { n: '01', title: 'Discovery & Architecture', body: 'We define core objectives and system architecture through collaborative discovery sessions.' },
-      { n: '02', title: 'Agile Development', body: 'We build iteratively using agile practices, delivering working software in regular cycles.' },
-      { n: '03', title: 'Testing & Quality Assurance', body: 'We ensure stability, security, and performance through CI/CD, code reviews, and rigorous testing.' },
-      { n: '04', title: 'Launch & Evolution', body: 'We launch with precision, monitor post-release behaviour, and continuously evolve your product.' },
-      { n: '05', title: 'Operate & Improve', body: 'Post-launch we monitor reliability, performance, and backlog priorities so the product keeps getting stronger.' },
-    ],
-    faqs: [
-      { q: 'What technologies do you work with?', a: 'We work with modern stacks including React, Next.js, Astro, Node.js, Python, TypeScript, cloud platforms (AWS, Cloudflare), and more.' },
-      { q: 'Do you build mobile apps?', a: 'Yes. We develop native mobile apps for iOS and Android as well as cross-platform solutions.' },
-      { q: 'What is your development process?', a: 'We follow an agile process with discovery, architecture, development, testing, and deployment phases — with regular client check-ins throughout.' },
-      { q: 'Do you provide ongoing support after launch?', a: 'Yes. We offer post-launch support, maintenance, and continuous improvement services.' },
-    ],
-    why: [
-      { title: 'Modern Tech Stack', body: 'We use current, well-supported technologies that scale — not outdated frameworks that create technical debt.' },
-      { title: 'Performance Obsession', body: 'We optimise for speed, accessibility, and Core Web Vitals from day one — not as an afterthought.' },
-      { title: 'Security First', body: 'Security is built into our development process, not bolted on at the end.' },
-      { title: 'Long-Term Partnership', body: 'We build maintainable systems and document everything, ensuring your product thrives long after launch.' },
-    ],
-  },
-  'operations': {
-    title: 'Operations',
-    subtitle: 'Keep everything running and improving.',
-    tags: ['QA', 'Reliability', 'Support', 'Continuous Improvement'],
-    heroText: 'Great products need great operations behind them. We provide QA and testing services, no-code development for rapid delivery, workflow automation, and site reliability engineering — ensuring your digital products run smoothly, ship faster, and scale without friction.',
-    body: 'We build quality into every stage of the digital lifecycle. Our operations services ensure your products are reliable, high-performing, and ready for growth. From rigorous QA and testing to rapid no-code development and process automation, we provide the operational backbone that lets your team move fast with confidence.',
-    capabilities: [
-      { n: '01', title: 'Reliability', items: ['QA', 'Test Automation', 'Performance Testing', 'Security Testing', 'Accessibility Audits'] },
-      { n: '02', title: 'Support', items: ['Maintenance', 'Monitoring', 'Release Management', 'SLA Support', 'Incident Response'] },
-      { n: '03', title: 'Continuous Improvement', items: ['Product Optimization', 'UX Audits', 'Technical Audits', 'Feature Evolution', 'Performance Optimization'] },
-    ],
-    approach: [
-      { n: '01', title: 'Assessment & Planning', body: 'We evaluate your current operations, identify bottlenecks, and define a plan for improvement.' },
-      { n: '02', title: 'Implementation', body: 'We deploy testing frameworks, automation workflows, and no-code solutions to streamline your operations.' },
-      { n: '03', title: 'Monitoring & Optimisation', body: 'We continuously monitor performance, reliability, and quality metrics to drive ongoing improvement.' },
-      { n: '04', title: 'Scale & Sustain', body: 'We build operational systems that scale with your business and sustain quality over time.' },
-      { n: '05', title: 'Review & Raise the Bar', body: 'We run recurring quality and reliability reviews so standards rise with every release cycle.' },
-    ],
-    faqs: [
-      { q: 'What QA services do you offer?', a: 'We offer functional, performance, security, usability, accessibility, and automation testing — covering the full quality spectrum.' },
-      { q: 'What is no-code development?', a: 'No-code development enables building applications visually without writing code, using platforms like Webflow, Bubble, and FlutterFlow for rapid delivery.' },
-      { q: 'How do you approach workflow automation?', a: 'We identify repetitive tasks and manual processes, then design automated workflows using tools like Zapier, Make, and custom integrations.' },
-      { q: 'What is Site Reliability Engineering?', a: 'SRE applies software engineering principles to operations — ensuring your systems are reliable, scalable, and observable.' },
-    ],
-    why: [
-      { title: 'Quality Built In', body: 'We embed quality throughout the development lifecycle, not just at the end.' },
-      { title: 'Speed Without Sacrifice', body: 'We use no-code and automation to accelerate delivery without compromising quality or reliability.' },
-      { title: 'End-to-End Coverage', body: 'From testing to deployment to ongoing monitoring, we cover every aspect of digital operations.' },
-      { title: 'Continuous Improvement', body: 'We\'re committed to ongoing optimisation and refinement of your operational systems.' },
-    ],
-  },
-};
 
 const slug = Astro.params.slug || '';
 
@@ -284,6 +66,8 @@ const service = !fallback && !fromSanity
       process: preferArr(fromSanity?.process, fallback?.process),
       tools: preferArr(fromSanity?.tools, fallback?.tools),
       faqs: preferArr(fromSanity?.faqs, fallback?.faqs),
+      stats: preferArr(fromSanity?.stats, fallback?.stats),
+      framework: preferArr(fromSanity?.framework, fallback?.framework),
       seoTitle: preferStr(fromSanity?.seoTitle, fallback?.title),
       seoDescription: preferStr(fromSanity?.seoDescription, typeof fallback?.body === 'string' ? fallback.body : ''),
     };
@@ -344,6 +128,20 @@ if (!service) {
     <p data-reveal>{typeof service.body === 'string' ? service.body : (service.fullDescription || service.summary || '')}</p>
   </section>
 
+  <!-- STATS -->
+  {(service.stats?.length > 0) && (
+    <section class="wrap svc-stats" data-scroll="rise">
+      <ul>
+        {service.stats.map((s: any) => (
+          <li data-reveal>
+            <span class="svc-stat-n">{s.n}</span>
+            <p class="svc-stat-label">{s.label}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
   <!-- CAPABILITIES -->
   <section class="wrap capabilities-section">
     <p class="eyebrow" data-reveal>What we can do</p>
@@ -388,6 +186,27 @@ if (!service) {
       ))}
     </div>
   </section>
+
+  <!-- FRAMEWORK (How we work) -->
+  {(service.framework?.length > 0) && (
+    <section class="wrap framework-section">
+      <p class="eyebrow" data-reveal>How we work</p>
+      <h2 data-reveal>Our {service.title} Framework</h2>
+      <div class="framework-flow">
+        {service.framework.map((f: any) => (
+          <div class="framework-phase" data-reveal>
+            <h3 class="framework-phase-title">{f.phase}</h3>
+            <p class="framework-outcome">{f.outcome}</p>
+            {f.includes?.length > 0 && (
+              <ul class="framework-includes">
+                {f.includes.map((i: string) => <li>{i}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
 
   {safeArr(service.process, null) && (
   <!-- PROCESS FLOW -->
@@ -447,6 +266,56 @@ if (!service) {
     </div>
   </section>
 
+  <!-- RELATED WORK -->
+  {relatedWork.length > 0 && (
+    <section class="wrap svc-work">
+      <div class="svc-work-head">
+        <h2 data-reveal>Work that leads with clarity and delivers with impact</h2>
+        <a href="/work" class="btn btn-ghost" data-reveal>View all case studies</a>
+      </div>
+      <ul class="svc-work-grid">
+        {relatedWork.map((cs: any) => (
+          <li data-reveal>
+            <a href={`/work/${cs.slug}`} class="svc-work-card">
+              <h3>{cs.title}</h3>
+              <p>{cs.client}{cs.disciplines?.length ? ` — ${cs.disciplines.join(', ')}` : ''}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <!-- RELATED INSIGHTS -->
+  {relatedPosts.length > 0 && (
+    <section class="wrap svc-insights">
+      <div class="svc-work-head">
+        <h2 data-reveal>Fresh takes from the team</h2>
+        <a href="/blog" class="btn btn-ghost" data-reveal>Visit our Blog</a>
+      </div>
+      <ul class="svc-insights-list">
+        {relatedPosts.map((p: any) => (
+          <li data-reveal>
+            <a href={`/blog/${p.slug}`} class="svc-insight-card">
+              {p.category && <span class="eyebrow">{p.category}</span>}
+              <h3>{p.title}</h3>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <!-- DUAL CTA -->
+  <section class="wrap detail-cta">
+    <h2 data-reveal>Ready to talk {service.title}?</h2>
+    <p data-reveal>Let's discuss your project and how we can work together.</p>
+    <div class="detail-cta-btns" data-reveal>
+      <a href="/contact-us" class="btn btn-solid">Let's Talk</a>
+      <a href="/work" class="btn btn-ghost">View Our Work</a>
+    </div>
+  </section>
+
 </BaseLayout>
 
 <style>
@@ -457,16 +326,16 @@ if (!service) {
   .hero-sub { font-size: var(--t-xl); color: var(--fg); margin-top: var(--gap-2); line-height: var(--lh-xl); }
   .hero-text { margin-top: var(--gap-6); max-width: 55ch; font-size: var(--t-l); line-height: var(--lh-l); }
   .service-tags { list-style: none; margin: var(--gap-6) 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
-  .service-tags li { font-family: var(--font-mono); font-size: var(--t-micro); padding: .35rem .85rem; border: 1px solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .service-tags li { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-1) var(--gap-3); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
   .detail-hero .btn { margin-top: var(--gap-4); display: inline-flex; }
 
-  .detail-body { padding-block: var(--space-section-md) var(--space-section-xl); border-top: 1px solid var(--line); }
+  .detail-body { padding-block: var(--space-section-md) var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .detail-body p { max-width: 65ch; font-size: var(--t-l); line-height: var(--lh-l); }
 
-  .capabilities-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
-  .caps-grouped { display: grid; gap: 0; margin-top: var(--gap-8); border-top: 1px solid var(--line); }
+  .capabilities-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
+  .caps-grouped { display: grid; gap: 0; margin-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
   @media (min-width: 768px) { .caps-grouped { grid-template-columns: repeat(3, 1fr); } }
-  .cap-group { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: var(--gap-8); }
+  .cap-group { border-right: var(--stroke-thin) solid var(--line); border-bottom: var(--stroke-thin) solid var(--line); padding: var(--gap-8); }
   @media (min-width: 768px) { .cap-group { border-bottom: none; } }
   .cap-group:last-child { border-right: none; }
   .cap-group-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: var(--t-sm); }
@@ -475,38 +344,38 @@ if (!service) {
   .cap-group-items li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
   .cap-group-items li::before { content: '—'; position: absolute; left: 0; color: var(--accent-warm); }
 
-  .why-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .why-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .why-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 20ch; }
   .why-grid { display: grid; gap: var(--gap-8); margin-top: var(--gap-12); }
   @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
-  .why-item { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
+  .why-item { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
   .why-item h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); }
   .why-item p { margin-top: var(--gap-2); }
 
-  .approach-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .approach-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .approach-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 22ch; }
   .approach-steps { display: grid; gap: var(--gap-8); margin-top: var(--gap-12); }
-  .approach-step { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
+  .approach-step { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
   .step-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: var(--t-sm); }
   .approach-step h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-2); }
   .approach-step p { margin-top: var(--gap-2); max-width: 50ch; }
 
-  .detail-faq { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .detail-faq { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .detail-faq h2 { font-size: var(--t-h3); }
-  .faq-list { margin-top: var(--gap-12); border-top: 1px solid var(--line); }
-  .faq-item { border-bottom: 1px solid var(--line); padding-block: var(--gap-5); }
+  .faq-list { margin-top: var(--gap-12); border-top: var(--stroke-thin) solid var(--line); }
+  .faq-item { border-bottom: var(--stroke-thin) solid var(--line); padding-block: var(--gap-5); }
   .faq-item summary { font-family: var(--font-display); font-size: var(--t-l); cursor: pointer; }
   .faq-item p { margin-top: var(--gap-3); }
 
-  .detail-cta { padding-block: var(--space-section-xl); text-align: center; border-top: 1px solid var(--line); }
+  .detail-cta { padding-block: var(--space-section-xl); text-align: center; border-top: var(--stroke-thin) solid var(--line); }
   .detail-cta h2 { font-size: var(--t-h2); max-width: 18ch; margin-inline: auto; }
   .detail-cta .btn { margin-top: var(--gap-8); display: inline-flex; }
 
-  .process-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .process-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .process-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 45ch; font-weight: var(--font-weight-semibold); }
-  .process-flow { display: grid; gap: 0; margin-top: var(--gap-12); border-top: 1px solid var(--line); }
+  .process-flow { display: grid; gap: 0; margin-top: var(--gap-12); border-top: var(--stroke-thin) solid var(--line); }
   @media (min-width: 768px) { .process-flow { grid-template-columns: repeat(4, 1fr); } }
-  .process-phase { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: var(--gap-8); }
+  .process-phase { border-right: var(--stroke-thin) solid var(--line); border-bottom: var(--stroke-thin) solid var(--line); padding: var(--gap-8); }
   @media (min-width: 768px) { .process-phase { border-bottom: none; } }
   .process-phase:last-child { border-right: none; }
   .process-phase-title { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--accent-warm); margin-bottom: var(--gap-4); }
@@ -514,21 +383,55 @@ if (!service) {
   .process-steps li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
   .process-steps li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); }
 
-  .toolkit-section { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .toolkit-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .toolkit-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 50ch; font-weight: var(--font-weight-semibold); }
-  .toolkit-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: var(--gap-8); }
+  .toolkit-grid { display: grid; gap: var(--stroke-thin); background: var(--line); border: var(--stroke-thin) solid var(--line); margin-top: var(--gap-8); }
   @media (min-width: 640px) { .toolkit-grid { grid-template-columns: repeat(3, 1fr); } }
   .toolkit-category { background: var(--bg); padding: var(--gap-6); }
-  .toolkit-category-header { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); margin-bottom: var(--gap-3); text-transform: uppercase; letter-spacing: .05em; }
+  .toolkit-category-header { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); margin-bottom: var(--gap-3); text-transform: uppercase; letter-spacing: var(--tracking-label); }
   .toolkit-items { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-1); }
-  .toolkit-items li { display: inline-flex; align-items: center; gap: var(--gap-2); font-size: var(--fluid-label); padding: var(--gap-1) var(--gap-2); border: 1px solid var(--line); border-radius: var(--r-1); color: var(--fg-muted); }
+  .toolkit-items li { display: inline-flex; align-items: center; gap: var(--gap-2); font-size: var(--fluid-label); padding: var(--gap-1) var(--gap-2); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-1); color: var(--fg-muted); }
   .toolkit-items li img { flex-shrink: 0; opacity: .9; }
+
+  .svc-work { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
+  .svc-work-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gap-6); }
+  .svc-work-head h2 { font-size: var(--t-h3); max-width: 22ch; }
+  .svc-work-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .svc-work-grid { grid-template-columns: repeat(2, 1fr); } }
+  .svc-work-card { text-decoration: none; display: block; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
+  .svc-work-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); }
+  .svc-work-card p { margin-top: var(--gap-1); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
+  .svc-work-card:hover h3 { color: var(--accent); }
+
+  .svc-insights { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
+  .svc-insights-list { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .svc-insights-list { grid-template-columns: repeat(3, 1fr); } }
+  .svc-insight-card { text-decoration: none; display: block; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
+  .svc-insight-card .eyebrow { display: block; margin-bottom: var(--gap-2); }
+  .svc-insight-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); }
+  .svc-insight-card:hover h3 { color: var(--accent); }
+
+  .svc-stats { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
+  .svc-stats ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .svc-stats ul { grid-template-columns: repeat(3, 1fr); } }
+  .svc-stats li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
+  .svc-stat-n { display: block; font-family: var(--font-display); font-size: var(--fluid-h2); font-weight: var(--font-weight-extrabold); line-height: var(--core-line-height-tight); color: var(--accent-warm); }
+  .svc-stat-label { margin-top: var(--gap-2); color: var(--fg-muted); }
+
+  .framework-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
+  .framework-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 30ch; }
+  .framework-flow { display: grid; gap: 0; margin-top: var(--gap-12); border-top: var(--stroke-thin) solid var(--line); }
+  @media (min-width: 768px) { .framework-flow { grid-template-columns: repeat(3, 1fr); } }
+  .framework-phase { border-right: var(--stroke-thin) solid var(--line); border-bottom: var(--stroke-thin) solid var(--line); padding: var(--gap-8); }
+  @media (min-width: 768px) { .framework-phase { border-bottom: none; } }
+  .framework-phase:nth-child(3n) { border-right: none; }
+  .framework-phase-title { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--accent-warm); margin-bottom: var(--gap-3); }
+  .framework-outcome { color: var(--fg); font-size: var(--fluid-body-sm); line-height: var(--core-line-height-normal); }
+  .framework-includes { list-style: none; margin: var(--gap-4) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
+  .framework-includes li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
+  .framework-includes li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); }
 </style>
 
 <script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2, easing: 'ease-out' });
-  inView('.cap-group, .why-item, .approach-step, .faq-item', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
+  // [data-reveal] entrances handled globally by GSAP in BaseLayout
 </script>

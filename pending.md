@@ -4,9 +4,9 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-**Last verified:** 2026-08-05 (final wrap-up: WP DBs mined, testimonials imported, legal CMS-driven, component/ deleted, R2 cutover live).
+**Last verified:** 2026-08-05 (Phase 1 tokens + Phase 2 completion: PWA, blog enrichment, trust badges, 6-pillar filters, service detail teasers, #5 service copy pass, contact/subscribe resilience, **Studio Phase 7: enterprise operational layer**).
 
-Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-full-audit.md). Kits type roles: [`design.md`](design.md) §3 (+ C-6 superseded).
+Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-full-audit.md). Kits type roles: [`design.md`](design.md) §3 (+ C-6 superseded). Design system (single source of truth): [`kits_design_system/`](kits_design_system/) — `docs/design.md` + `docs/tokens/`.
 
 ---
 
@@ -22,10 +22,10 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 
 | Item | Status | Notes |
 |---|---|---|
-| Design token → component migration | Partial | **Type + spacing rem sweeps done.** Residual: one-off layout px / gallery vh clamps. |
+| Design token → component migration | **Done 2026-08-05 (Phase 1)** | Full token system (opacity/radius/stroke/blur/shadow/elevation/glass/noise/gradient/motion/z-index) consumed everywhere; residual `#555`/`rgba()`/`opacity:`/`blur()` removed from pages/components (only `CATEGORY_COLORS` data map + service-panel `fg`/`accent` data remain). |
 | Frontend → Neon swap | Deferred | Helpers ready (`content.ts`, `NEON` queries); wait until UI/brand mapping done. **User: do not run Neon sync unless asked.** |
 | Sanity token permissions | Soft | create/replace OK; some update/delete flaky. **Do not rotate unless user asks** |
-| Contact form production reliability | Deferred to end | UI + Neon write path exist; Workers/Neon 500 risk deferred |
+| Contact form production reliability | **Deferred to end** — UI + Neon write path exist. **2026-08-05:** `/api/contact` + `/api/subscribe` hardened — Neon write is now best-effort (try/catch + `finally` client release), so a DB/Neon hiccup can no longer 500 the visitor; always redirects to thank-you. Prod verify still pending (local 500 = no DATABASE_URL binding, same as before) |
 
 ---
 
@@ -33,11 +33,22 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 
 | # | Item | Notes |
 |---|---|---|
-| 16 | Design token → component pass | **Type done** + **spacing rem sweep** (padding/margin/gap → `--gap-*` / `--space-section-*`). Gallery vh clamps kept where layout needs them. Residual: a few one-off layout px. |
+| 16 | Design token → component pass | **Type done** + **spacing rem sweep** (padding/margin/gap → `--gap-*` / `--space-section-*`). Gallery vh clamps kept where layout needs them. **2026-08-05:** service detail borders → `--stroke-thin`, label tracking → new `--tracking-label` token; residual one-off px cleared on service pages |
 | 43 | **Typography / fonts** | **Done — Kits hierarchy** — Display 800 / H1 700 / H2–H4 600 / labels 500 / body 400; `--ts-*` / `--fluid-*`. |
 | 17 | Service detail rich sections | **Done (Framer extract)** — Why Us / toolkit(+icons) / approach from Sanity; Framer slugs routable |
 | 18 | About page | SEO + values from Sanity; stats: **projects** = caseStudy count, **brands** = client count; years/retention need Studio `items` (no invented figures). Stack chips use tech `iconPath`. |
 | 20 | Contact form | Deferred production harden (see critical) |
+
+---
+
+## 🔵 Open — Phase 2 backlog (documented, not started)
+
+| Item | Notes |
+|---|---|
+| Contact page redesign (#12) | Adapt driftime.com layout/hierarchy/trust/enquiry — **needs reference screenshot from user**; `/api/contact` + Neon stays |
+| Full service-page content pass (#5) | **Done 2026-08-05** — 6-pillar copy enriched per `urgent/Wugweb_Services 2026.md` via new `src/lib/services-data.ts`: growth 8 capability groups, engineering 11, operations 10 (doc-accurate), fuller approach/FAQ/why sets; `[slug].astro` now imports shared data (removed inline 290-line block) |
+| Trust badge logos | Text badges live site-wide; official Clutch/DesignRush/GoodFirms/TopDevelopers logo assets pending from user |
+| Contact form prod verify | Neon write path unverified in production (local 500 = no DATABASE_URL binding) |
 
 ---
 
@@ -78,6 +89,32 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 
 ## ✅ Recently completed (this arc)
 
+- [x] **Studio Phase 7 — Enterprise operational layer (2026-08-05)** — reusable `DataTable` (TanStack v9 + `@sanity/ui`, MIT) with sticky header/resize/visibility/multi-sort/saved views/filters/search/selection/bulk/keyboard/context menu/pagination/density/dark mode; 15 per-type table configs (incl. new `redirect` schema); custom `DocumentListPane` panes replace native lists for major types; new structure Overview/Content/Marketing/Media/Business/Settings; tools: Dashboard (website health + audit + queue), SEO Manager (score + generate meta), Media Library (unused/dup/missing-alt/oversized filters), Advanced Search (field-scoped); schema preview fixes (client false ⚠️ SEO, caseStudy refs, twoColumns layout); removed dead `dashboardWidget`. Build ✅ (`sanity build`).
+- [x] **#5 Service-page content pass (2026-08-05)** — 6-pillar copy enriched from `urgent/Wugweb_Services 2026.md` into a new shared module `src/lib/services-data.ts` (typed `ServiceData`): growth now 8 capability groups (Growth Strategy → AI-Powered Growth), engineering 11 (Product Engineering → Platform Modernization), operations 10 (Managed Application Support → Continuous Improvement), plus the doc's fuller approach/FAQ/why sets and toolkits; `[slug].astro` imports it (removed ~290-line inline block), still prefers Sanity where a doc exists.
+- [x] **Contact + subscribe API resilience (2026-08-05)** — `/api/contact` + `/api/subscribe` Neon write is now best-effort (try/catch + `finally` release); a DB/Neon/Sanity hiccup can no longer 500 the visitor — always redirects to thank-you. Prod verify still pending.
+- [x] **#16 residual token sweep on service pages (2026-08-05)** — all `1px` borders → `--stroke-thin`; `.05em` label tracking → new `--tracking-label: 0.08em` token (global.css, also applied to `.eyebrow`).
+
+- [x] **Phase 2 — Site completion (2026-08-05)**:
+  - **`motion` dependency removed** from `package.json` (zero imports remain; GSAP is the single animation system).
+  - **PWA**: `public/manifest.webmanifest` + `pwa-192/512.png` + `apple-touch-icon.png` (brand lockup on dark canvas, generated via sharp) + `sw.js` (network-first, cache fallback offline shell); `theme-color`, apple meta, SW registration in BaseLayout.
+  - **Blog detail enrichment**: ToC (anchored h2/h3), Last Updated, author bio, share actions (X/LinkedIn/WhatsApp/copy-link), newsletter CTA (→ `/api/subscribe`), Prev/Next, Related articles (category-first).
+  - **Trust badges**: `TrustBadges.astro` (Clutch/DesignRush/GoodFirms/TopDevelopers text strip, monochrome) rendered site-wide in BaseLayout + About.
+  - **Filters capped to 6 pillars**: work (discipline/tag→pillar map) + blog (category→pillar map) filters now show exactly All + Strategy/Brand/Experience/Engineering/Growth/Operations.
+  - **Service detail rebuild**: related work grid + insights teasers (queries existed but were never rendered — now live), dual CTA (Let's Talk + View Our Work). Capability-grouped toolkits + framework already present from Framer extract.
+  - **Mobile-first audit**: `.work-meta` single-column on mobile (was 2-col at 320px); verified all grids are `1fr`-base + expand; no horizontal overflow.
+- [x] **Phase 1 — Design tokens + site polish (2026-08-05)**:
+  - **Effects token system** added to `global.css`: `--opacity-*` (scale + semantic), `--radius-*` aliases, `--stroke-*`, `--blur-*`, `--shadow-*` (scale + glows), `--elevation-*`, `--glass-*`, `--noise-*` (SVG grain), `--gradient-*` (per-service), extended `--duration-*`/`--easing-*` (spring/smooth/editorial), `--transition-*`, hover/focus/selection/cursor presets, `--z-*`/`--layer-*`, `--hero-overlay*`, `--color-surface-hover`.
+  - **All residual hardcoded values tokenized** across pages/components — `rgba()`/hex/`blur()`/`opacity:` removed (grep gate clean; only `CATEGORY_COLORS` data map + service-panel `fg`/`accent` data remain).
+  - **Kits consolidated** → single source of truth at `kits_design_system/`: `docs/design.md`, `docs/components.md`, `docs/tokens/` (22 token docs incl. colors/typography/spacing/sizing/radius/borders/opacity/shadows/blur/elevation/gradients/glass/noise/motion/transitions/z-index/icons/layout/breakpoints/interaction/accessibility/service-colors). Root `design.md` slimmed to a pointer.
+  - **Brand SVG wired**: `assets/brand/` → `public/brand/` (logo-large.svg lockup, logo-small.svg mark, favicon-16/32, og-default.png) — SiteHeader + bento CTA use the SVG lockup, favicon/og updated.
+  - **Yellow ≤10% rule**: `.global-final-cta` restyled from full yellow band → ash (`--color-surface-elevated`) with yellow accent button.
+  - **Consistent radius**: buttons = `--radius-sm` (8px), chips/tags/pills = `--radius-full`.
+  - **Service color sequence rebalanced** (no similar colors adjacent): Strategy → Engineering → Brand → Growth → Operations → Experience (services panels + homepage pillars). Added `.svc-sub` one-line summaries.
+  - **GSAP everywhere**: `scroll-animations.ts` now drives `[data-reveal]` + `[data-scroll]` + `data-reveal-delay` stagger; all `motion` imports removed from 16 pages (zero `motion` bundles in dist; `motion` dep kept, drop in Phase 2).
+  - **Dead code deleted**: 9 unused `.astro` components + `Hero.tsx`; `src/components/README.md` trimmed.
+  - **WhatsApp nav CTA** (nav only): `wa.me/919205996219` + icon, desktop + mobile; `/contact-us` unchanged.
+  - **Mobile menu**: capped at `100dvh` with single scroll container (replaces hardcoded 698px).
+  - **Contact honeypot** + **`/api/subscribe`** wiring (subscription form → `contact_submissions.newsletter_opt_in`, Sanity mirror).
 - [x] **WordPress content extraction (2026-08-05)** — mined 3 WP DBs before deletion:
   - **wugweb.design**: 26 blog posts imported (incl. 13 full bodies), 49 media files
   - **vedanshu.design (Uncode)**: 3 new blogs (Video Commerce 211 blk, AI Search 175 blk, Gandhi 57 blk), **126 case-study media files** (Plufo 24, Cartier 26, Inkompass 23, VALYU 18, VisiONE 17, Sadhan 15, Airtel Xsafe 2) wired into `galleryPaths`, **14 LinkedIn testimonials** (new `testimonial` schema, source=linkedin, subject=vedanshu), personal assets (signature, scene-02, portfolio-06)

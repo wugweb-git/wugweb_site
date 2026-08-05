@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import TrustBadges from '../components/TrustBadges.astro';
 import { sanityClient, urlFor } from '../lib/sanity';
 import { siteSettingsQuery, postsListQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
@@ -21,15 +22,15 @@ const siteName = settings?.siteTitle || 'wugweb — Digital Experience Agency';
 const defaultDesc = settings?.seoDescription || 'Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.';
 const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
-  : '/brand/wugweb-mark.png';
+  : '/brand/og-default.png';
 // Self-hosted from /public/brand — these used to hotlink Framer's CDN, which
 // dies the moment the old Framer project is deleted.
 const defaultFavicon = settings?.favicon
   ? urlFor(settings.favicon).width(32).url()
-  : '/brand/favicon-64.png';
+  : '/brand/favicon-32.png';
 const defaultAppleTouch = settings?.favicon
   ? urlFor(settings.favicon).width(180).url()
-  : '/brand/favicon-64.png';
+  : '/brand/logo-small.svg';
 const copyrightText = settings?.copyright || '© 2020–2026 Wugweb. All rights reserved.';
 const siteEmail = settings?.contactEmail || 'hello@wugweb.com';
 
@@ -83,6 +84,20 @@ const globalIndustries = (sanityIndustries as string[]).length
     <link href={defaultFavicon} rel="icon" />
     <link rel="apple-touch-icon" href={defaultAppleTouch} />
 
+    <!-- PWA -->
+    <meta name="theme-color" content="#050505" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="wugweb" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <script is:inline>
+      if ('serviceWorker' in navigator && !location.hostname.startsWith('localhost')) {
+        window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -129,6 +144,11 @@ const globalIndustries = (sanityIndustries as string[]).length
           </li>
         ))}
       </ul>
+    </section>
+
+    <!-- TRUST & RECOGNITION -->
+    <section class="wrap">
+      <TrustBadges />
     </section>
 
     <!-- FINAL CTA -->

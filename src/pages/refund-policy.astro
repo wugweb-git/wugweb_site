@@ -63,10 +63,3 @@ const hasCms = bodyHtml.length > 0;
   .legal a { color: var(--accent-warm); }
 </style>
 
-<script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2 });
-  inView('.legal h2', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
-</script>

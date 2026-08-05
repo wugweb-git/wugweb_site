@@ -40,7 +40,7 @@ export default defineType({
     { name: 'createdAtDesc', title: 'Recently added', by: [{ field: '_createdAt', direction: 'desc' }] },
   ],
   preview: {
-    select: { title: 'name', subtitle: 'engagementType', media: 'logo', industry: 'industry', caseStudies: 'caseStudies' },
+    select: { title: 'name', subtitle: 'engagementType', media: 'logo', industry: 'industry', caseStudies: 'caseStudies', seoDesc: 'seoDescription' },
     prepare: ({ title, subtitle, media, industry, caseStudies, seoDesc }: any) => {
       const parts = [];
       if (subtitle) parts.push(String(subtitle).replace(/&/g, 'and'));

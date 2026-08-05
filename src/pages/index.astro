@@ -63,11 +63,11 @@ const teaserServices = [
 // blurred backdrop, so these double as thumbnail and background.
 const pillars = [
   { n: '01', title: 'Strategy',    q: 'What should we build?',                     video: '/assets/services/martech-genai/digital-transformation-roadmaps.mp4' },
-  { n: '02', title: 'Brand',       q: 'How should we be perceived?',               video: '/assets/more/home/brand-strategy.mp4' },
-  { n: '03', title: 'Experience',  q: 'How should people interact with us?',       video: '/assets/more/home/experience-design.mp4' },
+  { n: '02', title: 'Engineering', q: 'How do we build and scale it?',             video: '/assets/more/home/web-app-development.mp4' },
+  { n: '03', title: 'Brand',       q: 'How should we be perceived?',               video: '/assets/more/home/brand-strategy.mp4' },
   { n: '04', title: 'Growth',      q: 'How do we acquire and retain customers?',   video: '/assets/more/home/martech-genai.mp4' },
-  { n: '05', title: 'Engineering', q: 'How do we build and scale it?',             video: '/assets/more/home/web-app-development.mp4' },
-  { n: '06', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: '/assets/services/martech-genai/seamless-platform-integration.mp4' },
+  { n: '05', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: '/assets/services/martech-genai/seamless-platform-integration.mp4' },
+  { n: '06', title: 'Experience',  q: 'How should people interact with us?',       video: '/assets/more/home/experience-design.mp4' },
 ];
 
 // Curated homepage case-study picks — prefer mapped thumbnailPath
@@ -308,8 +308,8 @@ const industries = (sanityIndustries as string[]).length
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10, 10, 12, 0.75) 0%, rgba(10, 10, 12, 0.5) 45%, var(--bg) 100%);
-    z-index: 1;
+    background: linear-gradient(180deg, var(--hero-overlay) 0%, var(--hero-overlay-mid) 45%, var(--bg) 100%);
+    z-index: var(--z-overlay);
   }
 
   .hero-content {
@@ -321,7 +321,7 @@ const industries = (sanityIndustries as string[]).length
 
   .hero-headline {
     font-weight: var(--font-weight-extrabold);
-    margin-block: 1rem 2rem;
+    margin-block: var(--gap-4) var(--gap-8);
     max-width: 16ch;
   }
 
@@ -340,7 +340,7 @@ const industries = (sanityIndustries as string[]).length
     position: absolute;
     left: 50%;
     bottom: var(--gap-8);
-    z-index: 2;
+    z-index: var(--z-overlay);
     width: 1px;
     height: var(--space-section-lg);
     background: var(--line);
@@ -349,7 +349,7 @@ const industries = (sanityIndustries as string[]).length
 
   .intro {
     padding-block: var(--space-section-xl);
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
   }
 
   .intro h2 {
@@ -388,7 +388,7 @@ const industries = (sanityIndustries as string[]).length
     font-size: var(--t-micro);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    border: 1px solid var(--line);
+    border: var(--stroke-thin) solid var(--line);
     border-radius: var(--r-pill);
     padding: var(--gap-2) var(--gap-4);
     height: fit-content;
@@ -397,7 +397,7 @@ const industries = (sanityIndustries as string[]).length
 
   .services {
     padding-block: var(--space-section-xl);
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
   }
 
   .services h2 {
@@ -429,9 +429,9 @@ const industries = (sanityIndustries as string[]).length
     display: flex;
     flex-direction: column;
     background: var(--neutral-1);
-    border-radius: var(--r-4);
+    border-radius: var(--radius-lg);
     padding: var(--gap-3) var(--gap-3) var(--s-1);
-    min-height: 350px;
+    min-height: var(--thumb-min);
     transition: background var(--duration-normal) var(--easing-out), transform var(--duration-normal) var(--easing-out);
   }
   .service-card:hover { transform: translateY(-4px); }
@@ -462,23 +462,23 @@ const industries = (sanityIndustries as string[]).length
     right: var(--gap-5);
     width: var(--gap-9); height: var(--gap-9);
     display: grid; place-items: center;
-    border-radius: var(--r-pill);
+    border-radius: var(--radius-full);
     border: 0;
-    background: rgba(0, 0, 0, 0.07);
+    background: color-mix(in srgb, var(--neutral-10) 7%, transparent);
     color: var(--color-ash);
     cursor: pointer;
     transition: background var(--duration-fast) var(--easing-out), transform var(--duration-fast) var(--easing-out);
   }
-  .service-card-toggle svg { width: .9rem; height: .9rem; fill: none; }
-  .service-card-toggle:hover { background: rgba(0, 0, 0, 0.14); }
-  .service-card-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .service-card-toggle svg { width: var(--gap-3); height: var(--gap-3); fill: none; }
+  .service-card-toggle:hover { background: color-mix(in srgb, var(--neutral-10) 14%, transparent); }
+  .service-card-toggle:focus-visible { outline: var(--focus-primary); outline-offset: var(--focus-offset); }
   .service-card.is-open .service-card-toggle {
     top: var(--gap-5); bottom: auto; right: var(--gap-5);
-    background: rgba(255, 255, 255, 0.12);
+    background: color-mix(in srgb, var(--neutral-0) 12%, transparent);
     color: var(--fg);
     transform: rotate(45deg);
   }
-  .service-card.is-open .service-card-toggle:hover { background: rgba(255, 255, 255, 0.2); }
+  .service-card.is-open .service-card-toggle:hover { background: color-mix(in srgb, var(--neutral-0) 20%, transparent); }
 
   .service-card-back { padding: var(--gap-6) var(--gap-5) var(--gap-7); }
   .service-card-back[hidden] { display: none; }
@@ -491,24 +491,24 @@ const industries = (sanityIndustries as string[]).length
     isolation: isolate;
     overflow: hidden;
     padding-block: var(--space-section-xl);
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
   }
   .pillars-backdrop { position: absolute; inset: 0; z-index: -1; }
   .pillars-bg {
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
     transform: scale(1.2);
-    filter: blur(64px) saturate(1.35);
+    filter: blur(var(--blur-extreme)) saturate(1.35);
     opacity: 0; visibility: hidden;
     transition: opacity var(--duration-slow) var(--easing-in-out);
   }
-  .pillars-bg.is-active { opacity: .85; visibility: visible; }
-  .pillars-scrim { position: absolute; inset: 0; background: rgba(5,5,5,.5); }
+  .pillars-bg.is-active { opacity: var(--opacity-90); visibility: visible; }
+  .pillars-scrim { position: absolute; inset: 0; background: color-mix(in srgb, var(--neutral-9) 50%, transparent); }
   .pillars-inner h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 22ch; }
-  .glass-panel { list-style: none; margin: var(--gap-10) 0 0; padding: var(--gap-2); display: flex; flex-direction: column; gap: var(--gap-1); border-radius: var(--r-6); background: rgba(15,15,15,.42); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(26px) saturate(1.3); -webkit-backdrop-filter: blur(26px) saturate(1.3); box-shadow: 0 30px 70px rgba(0,0,0,.35); }
+  .glass-panel { list-style: none; margin: var(--gap-10) 0 0; padding: var(--gap-2); display: flex; flex-direction: column; gap: var(--gap-1); border-radius: var(--radius-2xl); background: color-mix(in srgb, var(--neutral-8) 42%, transparent); border: var(--stroke-thin) solid color-mix(in srgb, var(--neutral-0) 12%, transparent); backdrop-filter: var(--glass-medium); -webkit-backdrop-filter: var(--glass-medium); box-shadow: var(--shadow-xl); }
 
-  .pillar-hit { position: relative; width: 100%; display: flex; align-items: center; gap: var(--gap-5); padding: var(--gap-2); border: 0; border-radius: var(--r-3); background: transparent; color: var(--fg); text-align: left; font: inherit; cursor: pointer; transition: background var(--duration-normal) var(--easing-in-out), color var(--duration-normal) var(--easing-out); }
-  .pillar-hit:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .pillar-thumb { flex-shrink: 0; width: 88px; height: 88px; border-radius: var(--r-3); overflow: hidden; background: rgba(255,255,255,.06); }
+  .pillar-hit { position: relative; width: 100%; display: flex; align-items: center; gap: var(--gap-5); padding: var(--gap-2); border: 0; border-radius: var(--radius-md); background: transparent; color: var(--fg); text-align: left; font: inherit; cursor: pointer; transition: background var(--duration-normal) var(--easing-in-out), color var(--duration-normal) var(--easing-out); }
+  .pillar-hit:focus-visible { outline: var(--focus-primary); outline-offset: var(--focus-offset); }
+  .pillar-thumb { flex-shrink: 0; width: var(--pillar-thumb); height: var(--pillar-thumb); border-radius: var(--radius-md); overflow: hidden; background: color-mix(in srgb, var(--neutral-0) 6%, transparent); }
   .pillar-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .pillar-copy { display: block; min-width: 0; }
   .pillar-title { display: block; font-family: var(--font-display); font-size: var(--t-h4); font-weight: var(--font-weight-semibold); line-height: var(--lh-tight); }
@@ -517,12 +517,12 @@ const industries = (sanityIndustries as string[]).length
   .pillar.is-active .pillar-hit { background: var(--neutral-1); color: var(--color-ash); }
   .pillar.is-active .pillar-q { max-height: 6rem; margin-top: var(--gap-1); opacity: 1; }
   .pillar.is-active .pillar-index { opacity: 1; }
-  .pillar:not(.is-active) .pillar-hit:hover { background: rgba(255,255,255,.07); }
+  .pillar:not(.is-active) .pillar-hit:hover { background: color-mix(in srgb, var(--neutral-0) 7%, transparent); }
 
   @media (max-width: 700px) {
     .pillars { padding-block: var(--space-section-md); }
-    .glass-panel { border-radius: var(--r-lg); }
-    .pillar-thumb { width: 62px; height: 62px; border-radius: var(--r); }
+    .glass-panel { border-radius: var(--radius-lg); }
+    .pillar-thumb { width: var(--pillar-thumb-sm); height: var(--pillar-thumb-sm); border-radius: var(--radius-sm); }
     .pillar-hit { gap: var(--gap-4); }
     .pillar-index { display: none; }
     .pillar-q { font-size: var(--fluid-body-sm); }
@@ -533,7 +533,7 @@ const industries = (sanityIndustries as string[]).length
 
   .work {
     padding-block: var(--space-section-xl);
-    border-top: 1px solid var(--line);
+    border-top: var(--stroke-thin) solid var(--line);
   }
 
   .work-head {
@@ -563,65 +563,49 @@ const industries = (sanityIndustries as string[]).length
   .work-client { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); margin-top: var(--gap-4); }
   .work-grid h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
 
-  .logos { padding-block: var(--space-section-md); border-top: 1px solid var(--line); }
+  .logos { padding-block: var(--space-section-md); border-top: var(--stroke-thin) solid var(--line); }
   .logo-grid { list-style: none; margin: var(--gap-8) 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-10); }
-  .logo-grid img { height: 32px; width: auto; filter: grayscale(1) brightness(1.6); opacity: .7; }
+  .logo-grid img { height: var(--logo-grid-h); width: auto; filter: grayscale(1) brightness(1.6); opacity: var(--opacity-soft); }
 
-  .industries { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .industries { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .industries h2 { font-size: var(--t-h3); max-width: 18ch; }
   .industries p { margin-top: var(--gap-5); max-width: 55ch; }
   .industries .btn { margin-top: var(--gap-6); }
-  .industry-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .industry-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: var(--stroke-thin) solid var(--line); }
   @media (min-width: 640px) { .industry-grid { grid-template-columns: repeat(4, 1fr); } }
   .industry-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: var(--t-sm); }
 
-  .blog-teaser { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); }
+  .blog-teaser { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .blog-teaser ul { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-6); }
   @media (min-width: 768px) { .blog-teaser ul { grid-template-columns: repeat(3, 1fr); } }
-  .blog-teaser li { border-top: 1px solid var(--line); padding-top: var(--gap-5); }
+  .blog-teaser li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
   .blog-teaser .eyebrow { display: block; margin-bottom: var(--gap-2); }
   .blog-teaser a { text-decoration: none; color: var(--fg); font-size: var(--t-l); }
 
-  .closing-cta { padding-block: var(--space-section-xl); border-top: 1px solid var(--line); text-align: center; }
+  .closing-cta { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); text-align: center; }
   .closing-cta h2 { font-size: var(--t-h2); }
   .closing-cta p { margin-top: var(--gap-4); }
   .closing-cta .btn { margin-top: var(--gap-8); }
 </style>
 
 <script>
-  import { animate, stagger, inView } from 'motion';
+  import gsap from 'gsap';
 
   // Hero headline: split into words, reveal with blur + upward drift
   const headline = document.querySelector('[data-headline]');
-  if (headline) {
+  if (headline && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const text = headline.textContent ?? '';
     headline.innerHTML = text
       .split(' ')
       .map((w) => `<span class="word">${w}</span>`)
       .join(' ');
 
-    animate(
+    gsap.fromTo(
       headline.querySelectorAll('.word'),
-      { opacity: [0, 1], y: [24, 0], filter: ['blur(10px)', 'blur(0px)'] },
-      { duration: 0.8, delay: stagger(0.08), easing: [0.16, 1, 0.3, 1] }
+      { opacity: 0, y: 24, filter: 'blur(10px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.08, ease: 'power3.out' }
     );
   }
-
-  // Hero eyebrow + CTA reveal
-  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.3, easing: 'ease-out' });
-
-  // Scroll-triggered reveals with stagger
-  inView('.service-card', (el) => {
-    animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] });
-  });
-
-  inView('.work-grid li', (el) => {
-    animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: stagger(0.08), easing: 'ease-out' });
-  });
-
-  inView('.industry-grid li, .blog-teaser li, .logo-grid li, .culture-grid li, .team-grid li, .why-grid li, .caps-grid .cap-item, .approach-step', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
 
   // Service cards: hover plays the clip, the +/× button flips to the detail face
   document.querySelectorAll<HTMLLIElement>('.service-card').forEach((card) => {

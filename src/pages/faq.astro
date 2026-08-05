@@ -63,20 +63,13 @@ const displayH1 = page?.title?.replace(/\s*—\s*Wugweb$/i, '') || 'Frequently A
   .faq h1 { font-size: var(--t-h2); margin-block: var(--gap-3) var(--gap-4); max-width: 20ch; }
   .faq-lede { max-width: 55ch; line-height: var(--core-line-height-relaxed); }
   .faq-updated { font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-muted); margin-top: var(--gap-2); }
-  .faq-list { margin-top: var(--gap-10); border-top: 1px solid var(--line); }
-  .faq-item { border-bottom: 1px solid var(--line); padding-block: var(--gap-5); }
+  .faq-list { margin-top: var(--gap-10); border-top: var(--stroke-thin) solid var(--line); }
+  .faq-item { border-bottom: var(--stroke-thin) solid var(--line); padding-block: var(--gap-5); }
   .faq-item summary { font-family: var(--font-display); font-size: var(--t-l); cursor: pointer; color: var(--fg); }
   .faq-item p { margin-top: var(--gap-3); line-height: var(--core-line-height-relaxed); color: var(--fg-muted); }
-  .faq-cta { margin-top: var(--gap-12); padding-top: var(--gap-8); border-top: 1px solid var(--line); text-align: center; }
+  .faq-cta { margin-top: var(--gap-12); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); text-align: center; }
   .faq-cta h2 { font-size: var(--t-h2); }
   .faq-cta p { margin-top: var(--gap-3); }
   .faq-cta .btn { margin-top: var(--gap-6); display: inline-flex; }
 </style>
 
-<script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.2 });
-  inView('.faq-item', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
-</script>

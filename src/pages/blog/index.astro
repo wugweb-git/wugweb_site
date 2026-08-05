@@ -49,14 +49,31 @@ function initials(title: string): string {
 }
 
 const rawPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+
+// Top-level filters map to the six service pillars — never a large tag system.
+const PILLARS = ['Strategy', 'Brand', 'Experience', 'Engineering', 'Growth', 'Operations'];
+const CATEGORY_PILLAR: Record<string, string> = {
+  'Strategy': 'Strategy', 'Business Strategy': 'Strategy', 'Consulting': 'Strategy',
+  'Brand & Strategy': 'Brand', 'Brand': 'Brand', 'Content': 'Brand',
+  'Experience Design': 'Experience', 'UX Design': 'Experience', 'UI Design': 'Experience',
+  'Web & App Development': 'Engineering', 'Development / Server': 'Engineering',
+  'Infrastructure & DevOps': 'Engineering',
+  'MarTech': 'Growth', 'Performance Marketing': 'Growth', 'SEO': 'Growth',
+  'AI & Automation': 'Growth', 'Data & Analytics': 'Growth',
+  'Operations': 'Operations', 'Digital Transformation': 'Operations',
+};
+function postPillar(category: string): string {
+  return CATEGORY_PILLAR[category] || PILLARS.find((p) => (category || '').toLowerCase().includes(p.toLowerCase())) || 'Experience';
+}
+
 const posts = (rawPosts || []).map((p: any) => ({
   ...p,
   coverUrl: coverUrl(p.coverImage, p.coverPath),
   accent: CATEGORY_COLORS[p.category] || '#2B2B2B',
+  pillar: postPillar(p.category),
   initials: initials(p.title),
 }));
-const allCategories = [...new Set(posts.map((p: any) => p.category).filter(Boolean))];
-const categories = ['All', ...allCategories];
+const categories = ['All', ...PILLARS];
 ---
 
 <BaseLayout title={blogTitle} description={blogDescription}>
@@ -77,7 +94,7 @@ const categories = ['All', ...allCategories];
   <section class="wrap blog-grid-section">
     <ul class="blog-grid">
       {posts.map((p: any) => (
-        <li data-reveal data-category={p.category || ''}>
+        <li data-reveal data-category={p.pillar}>
           <a href={`/blog/${p.slug}`}>
             {p.coverUrl ? (
               <img src={p.coverUrl} alt={p.title} loading="lazy" class="post-thumb" />
@@ -112,28 +129,28 @@ const categories = ['All', ...allCategories];
   .blog-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
   .blog-hero-content h1 { font-size: var(--t-h2); font-weight: var(--font-weight-bold); max-width: 28ch; margin-bottom: var(--gap-4); }
   .blog-hero-content p { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
-  .blog-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: 1px solid var(--line); }
-  .filter-chip { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-4); border: 1px solid var(--line); border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .blog-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
+  .filter-chip { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-4); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out); }
   .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
-  .filter-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(255, 190, 26, 0.1); }
-  .blog-grid-section { border-top: 1px solid var(--line); padding-block: var(--space-section-md) var(--space-section-xl); }
+  .filter-chip.active { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--color-yellow) 10%, transparent); }
+  .blog-grid-section { border-top: var(--stroke-thin) solid var(--line); padding-block: var(--space-section-md) var(--space-section-xl); }
   .blog-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-6); }
   @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
-  .blog-grid a { text-decoration: none; display: block; border-top: 1px solid var(--line); padding-top: var(--gap-4); }
-  .post-thumb { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); margin-bottom: var(--gap-4); }
+  .blog-grid a { text-decoration: none; display: block; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
+  .post-thumb { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: var(--gap-4); }
   .post-thumb-fallback {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: var(--gap-5);
-    min-height: 180px;
+    min-height: var(--thumb-min);
     overflow: hidden;
     background:
       radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--cover-accent) 45%, transparent), transparent 55%),
       radial-gradient(80% 60% at 0% 100%, color-mix(in srgb, var(--cover-accent) 18%, transparent), transparent 60%),
-      linear-gradient(160deg, #191919 0%, #050505 100%);
-    border: 1px solid var(--line);
+      linear-gradient(160deg, var(--color-surface-elevated) 0%, var(--color-surface-page) 100%);
+    border: var(--stroke-thin) solid var(--line);
     transition: border-color var(--duration-fast) var(--easing-out);
   }
   .blog-grid a:hover .post-thumb-fallback { border-color: color-mix(in srgb, var(--cover-accent) 40%, var(--line)); }
@@ -144,17 +161,17 @@ const categories = ['All', ...allCategories];
       linear-gradient(color-mix(in srgb, var(--cover-accent) 8%, transparent) 1px, transparent 1px),
       linear-gradient(90deg, color-mix(in srgb, var(--cover-accent) 8%, transparent) 1px, transparent 1px);
     background-size: 24px 24px;
-    opacity: 0.5;
+    opacity: var(--opacity-50);
     pointer-events: none;
   }
-  .post-thumb-fallback > *:not(.post-thumb-grid) { position: relative; z-index: 1; }
+  .post-thumb-fallback > *:not(.post-thumb-grid) { position: relative; z-index: var(--z-overlay); }
   .post-thumb-initials {
     font-family: var(--font-display);
     font-size: var(--t-h2);
     font-weight: var(--font-weight-extrabold);
     line-height: var(--core-line-height-none);
     color: var(--fg);
-    opacity: 0.92;
+    opacity: var(--opacity-strong);
     margin-top: auto;
   }
   .post-thumb-cat {
@@ -164,9 +181,9 @@ const categories = ['All', ...allCategories];
     letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: var(--gap-1) var(--gap-2);
-    border: 1px solid color-mix(in srgb, var(--cover-accent) 35%, var(--line));
-    border-radius: var(--r-pill);
-    color: color-mix(in srgb, var(--cover-accent) 80%, #f4f4f4);
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--cover-accent) 35%, var(--line));
+    border-radius: var(--radius-full);
+    color: color-mix(in srgb, var(--cover-accent) 80%, var(--neutral-1));
   }
   .post-thumb-foot {
     display: flex;
@@ -195,11 +212,6 @@ const categories = ['All', ...allCategories];
 </style>
 
 <script>
-  import { animate, inView } from 'motion';
-  animate('[data-reveal]', { opacity: [0, 1] }, { duration: 0.6, delay: 0.2 });
-  inView('.blog-grid li', (el) => {
-    animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.5, easing: 'ease-out' });
-  });
   document.querySelectorAll('.filter-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       const cat = chip.dataset.category;

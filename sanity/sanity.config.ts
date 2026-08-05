@@ -4,6 +4,10 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemaTypes';
 import { deskStructure } from './schemaTypes/deskStructure';
 import { TablesTool } from './tools/TablesTool';
+import { DashboardTool } from './tools/DashboardTool';
+import { SeoTool } from './tools/SeoTool';
+import { MediaTool } from './tools/MediaTool';
+import { SearchTool } from './tools/SearchTool';
 
 export default defineConfig({
   name: 'wugweb',
@@ -14,10 +18,34 @@ export default defineConfig({
   plugins: [structureTool({ structure: deskStructure }), visionTool()],
   tools: (prev) => [
     {
+      name: 'dashboard',
+      title: 'Dashboard',
+      icon: () => '◈',
+      component: DashboardTool,
+    },
+    {
       name: 'tables',
       title: 'Tables',
       icon: () => '▦',
       component: TablesTool,
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+      icon: () => '🔎',
+      component: SeoTool,
+    },
+    {
+      name: 'media',
+      title: 'Media',
+      icon: () => '▦',
+      component: MediaTool,
+    },
+    {
+      name: 'search',
+      title: 'Search',
+      icon: () => '⌕',
+      component: SearchTool,
     },
     ...prev,
   ],

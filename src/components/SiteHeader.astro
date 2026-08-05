@@ -23,7 +23,7 @@ function isActive(href: string) {
   <nav class="site-header-inner" id="site-nav" data-open="false" aria-label="Primary">
     <div class="nav-top">
       <a href="/" class="site-logo" aria-label="wugweb — home">
-        <span class="site-logo-wug">wug</span><span class="site-logo-web">web</span>
+        <img src="/brand/logo-large.svg" alt="wugweb" width="149" height="54" class="site-logo-img" />
       </a>
 
       <div class="site-links" id="nav-menu">
@@ -34,10 +34,16 @@ function isActive(href: string) {
             aria-current={isActive(l.href) ? 'page' : undefined}
           >{l.label}</a>
         ))}
-        <a href="/contact-us" class="nav-cta mobile-cta">Let's Talk</a>
+        <a href="https://wa.me/919205996219" class="nav-cta mobile-cta" aria-label="Chat with Wugweb on WhatsApp">
+          <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Let's Talk
+        </a>
       </div>
 
-      <a href="/contact-us" class="nav-cta desktop-cta">Let's Talk</a>
+      <a href="https://wa.me/919205996219" class="nav-cta desktop-cta" aria-label="Chat with Wugweb on WhatsApp">
+        <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Let's Talk
+      </a>
 
       <button
         class="nav-toggle"
@@ -92,10 +98,10 @@ function isActive(href: string) {
   .site-header-inner {
     max-width: 1280px;
     margin-inline: auto;
-    border-radius: var(--r-3);
+    border-radius: var(--radius-md);
     background: var(--neutral-7);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: var(--glass-medium);
+    -webkit-backdrop-filter: var(--glass-medium);
     box-shadow: var(--shadow-nav);
     overflow: hidden;
     transition: min-height var(--duration-normal) var(--easing-out);
@@ -106,7 +112,7 @@ function isActive(href: string) {
     align-items: center;
     justify-content: space-between;
     gap: var(--gap-4);
-    min-height: 78px;
+    min-height: var(--nav-height);
     padding-inline: var(--gap-4);
   }
 
@@ -114,15 +120,18 @@ function isActive(href: string) {
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;
-    font-family: var(--core-font-family-base);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: -0.02em;
     text-decoration: none;
-    font-size: var(--ts-h4-size);
     line-height: var(--core-line-height-none);
   }
-  .site-logo-wug { color: var(--neutral-0); }
-  .site-logo-web { color: var(--color-grey); }
+  .site-logo-img {
+    display: block;
+    height: 34px;
+    width: auto;
+    max-width: 160px;
+  }
+  @media (min-width: 768px) {
+    .site-logo-img { height: 40px; }
+  }
 
   .site-links {
     display: none;
@@ -135,15 +144,15 @@ function isActive(href: string) {
   .nav-link {
     text-decoration: none;
     color: var(--fg);
-    padding: 0.625rem 1rem;
-    border-radius: var(--r-2);
+    padding: var(--gap-2) var(--gap-4);
+    border-radius: var(--radius-sm);
     background: var(--neutral-6);
     transition: background var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out);
   }
-  .nav-link:hover { background: #555; }
+  .nav-link:hover { background: var(--color-surface-hover); }
   .nav-link.is-active {
     font-weight: var(--font-weight-semibold);
-    background: #555;
+    background: var(--color-surface-hover);
   }
 
   /* Yellow CTA — only yellow in the bar (design.md §2.3) */
@@ -151,19 +160,21 @@ function isActive(href: string) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--gap-2);
     text-decoration: none;
     font-family: var(--core-font-family-base);
     font-size: var(--fluid-label);
     font-weight: var(--font-weight-medium);
     line-height: var(--core-line-height-normal);
-    padding: 0.625rem 1.25rem;
-    border-radius: var(--r-full);
+    padding: var(--gap-2) var(--gap-5);
+    border-radius: var(--radius-sm);
     background: var(--color-yellow);
     color: var(--color-ash);
     border: 0;
     cursor: pointer;
     transition: filter var(--duration-fast) var(--easing-out), transform var(--duration-instant) var(--easing-out);
   }
+  .wa-icon { width: 16px; height: 16px; flex-shrink: 0; }
   .nav-cta:hover { filter: brightness(1.05); }
   .nav-cta:active { transform: scale(0.97); }
 
@@ -173,14 +184,14 @@ function isActive(href: string) {
   /* Light chip toggle — staggered bars (Nav Bar 04X.png) */
   .nav-toggle {
     position: relative;
-    width: 44px;
-    height: 44px;
+    width: var(--control-size);
+    height: var(--control-size);
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border: 0;
-    border-radius: var(--r-2);
+    border-radius: var(--radius-sm);
     background: var(--neutral-3);
     cursor: pointer;
     padding: 0;
@@ -211,12 +222,14 @@ function isActive(href: string) {
 
   .menu-meta { display: none; }
 
-  /* Mobile expanded = same bar grows (~698px panel), not a separate overlay */
+  /* Mobile expanded = same bar grows to fit the viewport (~698px on a
+     375×812 phone), never taller. One scroll container, no nested scroll. */
   .site-header-inner[data-open='true'] {
-    min-height: 698px;
+    max-height: 100dvh;
     display: flex;
     flex-direction: column;
     padding-bottom: var(--gap-6);
+    overflow-y: auto;
   }
   .site-header-inner[data-open='true'] .nav-toggle-bars { display: none; }
   .site-header-inner[data-open='true'] .nav-toggle-close { display: block; }
@@ -262,13 +275,13 @@ function isActive(href: string) {
     display: flex;
     flex-direction: column;
     gap: var(--gap-1);
-    padding: 0.85rem 1rem;
-    border-radius: var(--r-2);
-    background: rgba(255, 255, 255, 0.05);
+    padding: var(--gap-3) var(--gap-4);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--neutral-0) 5%, transparent);
     text-decoration: none;
     color: var(--fg);
   }
-  .menu-contact:hover { background: rgba(255, 255, 255, 0.09); }
+  .menu-contact:hover { background: color-mix(in srgb, var(--neutral-0) 9%, transparent); }
   .menu-contact-label {
     font-size: var(--fluid-caption);
     font-weight: var(--font-weight-medium);
@@ -281,7 +294,7 @@ function isActive(href: string) {
     font-size: var(--fluid-body-md);
     font-weight: var(--font-weight-medium);
   }
-  .menu-icon { opacity: 0.7; }
+  .menu-icon { opacity: var(--opacity-soft); }
   .menu-legal {
     display: flex;
     justify-content: space-between;
@@ -315,7 +328,9 @@ function isActive(href: string) {
     .mobile-cta { display: none !important; }
 
     .site-header-inner[data-open='true'] {
-      min-height: 78px;
+      min-height: var(--nav-height);
+      max-height: none;
+      overflow: visible;
       padding-bottom: 0;
     }
     .site-header-inner[data-open='true'] .site-links {
@@ -328,7 +343,7 @@ function isActive(href: string) {
       font-size: var(--fluid-label);
     }
     .site-header-inner[data-open='true'] .nav-link {
-      padding: 0.625rem 1rem;
+      padding: var(--gap-2) var(--gap-4);
       font-weight: var(--font-weight-medium);
       text-align: left;
     }

@@ -78,15 +78,15 @@ const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
   .sitemap { padding-block: var(--space-section-lg); }
   .static-head h1 { font-size: var(--t-h2); margin-top: var(--gap-4); max-width: 18ch; }
   .static-lede { margin-top: var(--gap-5); max-width: 55ch; color: var(--fg-muted); font-size: var(--t-l); line-height: var(--lh-l); }
-  .sitemap-grid { display: grid; gap: var(--gap-8); margin-top: var(--space-section-lg); border-top: 1px solid var(--line); padding-top: var(--space-section-md); }
+  .sitemap-grid { display: grid; gap: var(--gap-8); margin-top: var(--space-section-lg); border-top: var(--stroke-thin) solid var(--line); padding-top: var(--space-section-md); }
   @media (min-width: 640px) { .sitemap-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) { .sitemap-grid { grid-template-columns: repeat(3, 1fr); } }
-  .sitemap-col-head { display: flex; align-items: baseline; gap: var(--gap-3); border-bottom: 1px solid var(--line); padding-bottom: var(--gap-3); margin-bottom: var(--gap-4); }
+  .sitemap-col-head { display: flex; align-items: baseline; gap: var(--gap-3); border-bottom: var(--stroke-thin) solid var(--line); padding-bottom: var(--gap-3); margin-bottom: var(--gap-4); }
   .sitemap-n { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); letter-spacing: 0.06em; }
   .sitemap-col h2 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); }
   .sitemap-col ul { list-style: none; margin: 0; padding: 0; }
   .sitemap-col li { margin-bottom: var(--gap-2); position: relative; padding-left: var(--gap-4); }
-  .sitemap-col li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); opacity: 0.5; font-size: var(--t-sm); }
+  .sitemap-col li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); opacity: var(--opacity-50); font-size: var(--t-sm); }
   .sitemap-col a { color: var(--fg-muted); text-decoration: none; font-size: var(--fluid-body-sm); transition: color var(--duration-fast) var(--easing-out); }
   .sitemap-col a:hover { color: var(--accent); }
   .sitemap-more { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); }
