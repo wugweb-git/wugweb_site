@@ -45,13 +45,13 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 
 | # | Item | Notes |
 |---|---|---|
-| 42 | **Reference/component enrichment** | **Partial** — nav UI from `component/Nav Bar *.png` + design.md §2 wired (yellow CTA, Works label, 698px mobile panel, contact/legal, staggered hamburger). Still open: Framer motion/code components, full layout parity, FAQ body answers. **Keep `reference/` + `component/`.** |
-| 23 | Blog body gaps | ~75/96 posts have body; ~21 still need Studio content |
+| 42 | **Reference/component enrichment** | **Partial** — nav UI from `component/Nav Bar *.png` + design.md §2 wired. **Component audit done 2026-08-05: `component/` fully consumed (nav screenshots → SiteHeader; style JSON → tokens) — safe to delete.** `reference/` still holds ~96 unextracted assets (service-page media) + About page already extracted. |
+| 23 | Blog body gaps | **Done** — 0/96 posts missing body (was ~21) |
 | 30/covers | Blog covers | 43/96 have `coverPath` (21 unique images, all on disk + R2) |
-| 25 | Team photos | Verify on deploy; historically Framer CDN hotlinks |
+| 25 | Team photos | **Done 2026-08-05** — 10 portraits extracted (hash-verified vs live Framer About) → `public/assets/about/` + Sanity `person.photoPath` + About page. Anastasia/Wugweb Design have no portrait on live page. |
 | 32 | Legal / SEO pages | privacy, terms, refund — hardcoded, not Sanity |
-| 33 | R2 cutover | **Done 2026-08-05** — all 512 local files mapped + live (81 tools gap uploaded); `PUBLIC_USE_R2_ASSETS=1` set in `wrangler.jsonc`. |
-| 34 | Case studies without media | CSV-only clients (Bodyshop, Paragon, etc.) |
+| 33 | R2 cutover | **Done 2026-08-05** — all 529 local files mapped + live (81 tools gap + 17 about assets uploaded); `PUBLIC_USE_R2_ASSETS=1` set in `wrangler.jsonc`. |
+| 34 | Case studies without media | 43 lack `thumbnailPath` — **work grid now renders styled initials placeholder** instead of broken `<video>` (was broken tiles). Actual media fill deferred to user. |
 | — | Neon re-sync | **Ran 2026-08-05** — 1430 docs owner-aware (asset 553, taxonomy 327, platformProfile 59, syncStatus 21). **Do not re-run unless asked.** Neon audit findings: 8 stale caseStudy rows, `[object Object]` slug bug in older rows, empty `content_relations`. |
 | 22 | Preview mode | **Done** — middleware reads `__sanity_preview` cookie → `locals.previewToken`; `/blog/[slug]` uses `getPreviewClient(token)` for draft content. Other pages can opt in the same way. |
 | 27 | Contact → Sanity | **Done** — `/api/contact` mirrors each submission into a `contactSubmission` doc (best-effort) so leads show in Studio; Neon write unchanged. |
@@ -76,6 +76,11 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 
 ## ✅ Recently completed (this arc)
 
+- [x] **Client linkage fixes (2026-08-05)** — created client docs: **TheBizGift**, **MusicLinkd** (AudioFolio), **Spark Logistics** (distinct from ST Logistics), **Eastman Auto & Power** (fixed broken `caseStudy-None` client text). Linked: Gratify→Adneto, RAK SME→RAK Chambers (per user: "RAK Chamber of Commerce"), AudioFolio×2→MusicLinkd, Spark×2→Spark Logistics, TheBizGift×2, Eastman×2. Only **Greenko** remains unlinked (user unknown — deferred).
+- [x] **#25 Team photos** — 10 portraits hash-verified vs live Framer About page → `public/assets/about/team-*.jpg` + `person.photoPath` + About page renders via `assetUrl`.
+- [x] **Work grid empty-thumbnail fix** — `findThumbFallback` no longer returns guessed paths for missing files; 43 media-less case studies render styled initials placeholder (was broken `<video>`).
+- [x] **#23 Blog body gaps** — verified 0/96 posts missing body (was ~21).
+- [x] **component/ audit** — nav screenshots → SiteHeader (yellow CTA, Works, 698px panel); style JSON → tokens. **Safe to delete.**
 - [x] **#40 Ownership backfill** — client 106 (104 wugweb/1 both/1 vedanshu), caseStudy 82 (wugweb), post 96 (wugweb), asset 553 (187 wugweb/366 both). Script: `backfill-owner.mjs` (was dry-run only).
 - [x] **#41 Neon `both` entity** — seeded; `entities` now vedanshu + wugweb + both.
 - [x] **Neon re-sync** — `sync-sanity-to-neon.mjs` owner-aware (falls back to `wugweb`, not vedanshu); added asset/platformProfile/syncStatus to type map; 1430 docs synced 2026-08-05.
@@ -118,7 +123,7 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 | caseStudy | 82 | 90 (8 stale) | owner: 82 wugweb |
 | post | 96 | 96 | owner: 96 wugweb; body ~75; coverPath 43 |
 | person | 12 | 12 | Author byline ≠ owner |
-| client | 106 | 106 | owner: 104 wugweb / 1 both / 1 vedanshu |
+| client | 110 | 110 | owner: 104 wugweb / 1 both / 1 vedanshu; +4 new (TheBizGift, MusicLinkd, Spark Logistics, Eastman Auto & Power) |
 | industry | 66 | 66 | **Master** (Global Settings) |
 | service | 19 | 19 | |
 | singletonPage | 18 | 18 | |
@@ -130,9 +135,9 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 | engagement | 70 | 70 | |
 | contactSubmission | 0 | 0 | #27 wired: `/api/contact` mirrors to Sanity |
 
-**Local media:** `public/assets` (512 files) · R2 map **512 (0 missing)** · **cutover live** (`PUBLIC_USE_R2_ASSETS=1`).  
+**Local media:** `public/assets` (529 files incl. 17 `about/`) · R2 map **529 (0 missing)** · **cutover live** (`PUBLIC_USE_R2_ASSETS=1`).  
 **Notion = seed only.** Do not reset Sanity to Notion.  
-**Folders:** keep `reference/` + `component/` (see `docs/framer-full-audit.md`).  
+**Folders:** `component/` **safe to delete** (consumed); `reference/` keep until service-media extraction done (see #42).  
 **Neon sync:** user-controlled — do not run `sync-sanity-to-neon.mjs` or `/api/sync` unless asked.
 
 ---

@@ -45,7 +45,7 @@ Studio desk structure: Dashboard → Editorial → Business → Brand & Media �
 
 **Industry:** Global Settings holds the master (`industry` docs from Wugweb taxonomy). Content maps via `caseStudy.industryRef` and `client.industry`. See `governance.md` §3.
 
-**`reference/` + `component/`:** keep both. Design/content capture for enriching masters (tools, platforms, industries, page media). Key marketing HTML now captured (home/faq/work/blog/lead-gen/industries/subscription) plus service pages. Extract by identity only — **not** a full Framer dump and **not** visual/animation parity. Full matrix: `docs/framer-full-audit.md`. Do not delete.
+**`reference/` + `component/`:** `component/` is **consumed** (nav → SiteHeader, style JSON → tokens) — safe to delete. `reference/` keep for remaining service-media extraction (see `docs/framer-full-audit.md` + pending #42). Extract by identity only — **not** a full Framer dump and **not** visual/animation parity. Do not delete `reference/` until service-media extraction done.
 
 ### Neon schema (`neon/schema.sql`)
 
@@ -62,7 +62,7 @@ Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Con
 | caseStudy | 82 | 90 (8 stale) | owner: 82 wugweb |
 | post | 96 | 96 | owner: 96 wugweb; body ~75; coverPath 43 |
 | person | 12 | 12 | Author byline ≠ Owner |
-| client | 106 | 106 | owner: 104 wugweb / 1 both / 1 vedanshu |
+| client | 110 | 110 | owner: 104 wugweb / 1 both / 1 vedanshu; +4 new (TheBizGift, MusicLinkd, Spark Logistics, Eastman Auto & Power) |
 | industry | 66 | 66 | **Master** (Global Settings); content refs map here |
 | service | 19 | 19 | |
 | singletonPage | 18 | 18 | |
@@ -109,9 +109,12 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - Neon schema applied; owner-aware sync 2026-08-05 (1430 docs: assets, taxonomy, platformProfile, syncStatus included).
 - Main marketing routes wire to Sanity; path-mapped media served from **R2 (cutover done 2026-08-05)**, no longer dual-serve.
 - Design tokens in `global.css` (component migration incomplete).
-- Asset registry 553 Sanity docs / 512 local files — **all R2-mapped and live**.
+- Asset registry 553 Sanity docs / **529 local files — all R2-mapped and live**.
 - Governance: Rule 1 + Rule 2 + shared ownership + Notion seed (`governance.md`).
 - Ownership backfill (#40): client/caseStudy/post/asset all have `owner`.
+- Team photos (#25): 10 portraits wired via `person.photoPath` + About page.
+- Client linkage: created TheBizGift/MusicLinkd/Spark Logistics/Eastman clients; linked Gratify→Adneto, RAK SME→RAK Chambers; only Greenko unlinked (deferred).
+- Work grid: media-less case studies render styled placeholders (no broken video).
 - Blog teaser on every page now Sanity-driven with cover thumbnails.
 - Contact form mirrors submissions to Sanity `contactSubmission` docs (#27).
 - Preview mode wired: `/api/preview` cookie → `getPreviewClient` on `/blog/[slug]` (#22).
@@ -124,7 +127,8 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - Sanity token: do not rotate unless user asks.
 
 ### Medium / low (see pending.md)
-- About stats/imagery; service detail schema vs hardcoded tools; blog body (~21 posts need Studio content); team photos off Framer CDN; legal pages; 8 stale Neon caseStudy rows + `content_relations` empty; ~22 unreferenced disk files under framer/ + more/.
+- About stats/imagery; service detail schema vs hardcoded tools; blog covers (53/96 missing — user will supply); team photos done (Anastasia/Wugweb Design no portrait); legal pages; 8 stale Neon caseStudy rows + `content_relations` empty; ~22 unreferenced disk files under framer/ + more/.
+- Greenko case study has no client doc (user unknown — deferred). `component/` safe to delete; `reference/` keep until service-media extraction done.
 - Homepage chat hero cancelled (keep video hero). Client logos already local.
 
 ## Working Agreements
