@@ -10,13 +10,16 @@ const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
 ---
 
 <BaseLayout title="Sitemap — Wugweb" seoTitle="Sitemap" description="Complete sitemap for wugweb.com — all pages, case studies, blog posts, and services.">
-  <section class="wrap sitemap">
-    <p class="eyebrow">Sitemap</p>
-    <h1>Sitemap</h1>
+  <section class="wrap static-page sitemap">
+    <header class="static-head">
+      <p class="eyebrow" data-reveal>Sitemap</p>
+      <h1 data-reveal>Explore the Site</h1>
+      <p class="static-lede" data-reveal>Everything on wugweb.com, organised. Jump to any page, service, case study, or article.</p>
+    </header>
 
-    <div class="sitemap-grid">
+    <div class="sitemap-grid" data-reveal>
       <div class="sitemap-col">
-        <h2>Pages</h2>
+        <div class="sitemap-col-head"><span class="sitemap-n">01</span><h2>Pages</h2></div>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
@@ -25,18 +28,13 @@ const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
           <li><a href="/blog">Blog</a></li>
           <li><a href="/faq">FAQ</a></li>
           <li><a href="/contact-us">Contact</a></li>
-          <li><a href="/thank-you">Thank You</a></li>
-          <li><a href="/privacy-policy">Privacy Policy</a></li>
-          <li><a href="/terms-of-use">Terms of Use</a></li>
-          <li><a href="/refund-policy">Refund Policy</a></li>
           <li><a href="/footer/impact">Impact</a></li>
           <li><a href="/footer/subscription">Subscription</a></li>
-          <li><a href="/footer/sitemap">Sitemap</a></li>
         </ul>
       </div>
 
       <div class="sitemap-col">
-        <h2>Services</h2>
+        <div class="sitemap-col-head"><span class="sitemap-n">02</span><h2>Services ({services.length})</h2></div>
         <ul>
           {services.map((s: any) => (
             <li><a href={`/services/${s.slug}`}>{s.title}</a></li>
@@ -45,22 +43,31 @@ const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
       </div>
 
       <div class="sitemap-col">
-        <h2>Case Studies ({caseStudies.length})</h2>
+        <div class="sitemap-col-head"><span class="sitemap-n">03</span><h2>Case Studies ({caseStudies.length})</h2></div>
         <ul>
-          {caseStudies.slice(0, 20).map((cs: any) => (
+          {caseStudies.slice(0, 24).map((cs: any) => (
             <li><a href={`/work/${cs.slug}`}>{cs.title}</a></li>
           ))}
-          {caseStudies.length > 20 && <li><a href="/work">… and {caseStudies.length - 20} more</a></li>}
+          {caseStudies.length > 24 && <li><a href="/work" class="sitemap-more">… and {caseStudies.length - 24} more</a></li>}
         </ul>
       </div>
 
       <div class="sitemap-col">
-        <h2>Blog Posts ({posts.length})</h2>
+        <div class="sitemap-col-head"><span class="sitemap-n">04</span><h2>Blog Posts ({posts.length})</h2></div>
         <ul>
-          {posts.slice(0, 20).map((p: any) => (
+          {posts.slice(0, 24).map((p: any) => (
             <li><a href={`/blog/${p.slug}`}>{p.title}</a></li>
           ))}
-          {posts.length > 20 && <li><a href="/blog">… and {posts.length - 20} more</a></li>}
+          {posts.length > 24 && <li><a href="/blog" class="sitemap-more">… and {posts.length - 24} more</a></li>}
+        </ul>
+      </div>
+
+      <div class="sitemap-col">
+        <div class="sitemap-col-head"><span class="sitemap-n">05</span><h2>Legal</h2></div>
+        <ul>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/termsofuse">Terms of Use</a></li>
+          <li><a href="/refund-policy">Refund Policy</a></li>
         </ul>
       </div>
     </div>
@@ -69,13 +76,18 @@ const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
 
 <style>
   .sitemap { padding-block: var(--space-section-lg); }
-  .sitemap h1 { font-size: var(--t-h2); margin-top: var(--gap-4); margin-bottom: var(--gap-12); }
-  .sitemap-grid { display: grid; gap: var(--gap-10); }
+  .static-head h1 { font-size: var(--t-h2); margin-top: var(--gap-4); max-width: 18ch; }
+  .static-lede { margin-top: var(--gap-5); max-width: 55ch; color: var(--fg-muted); font-size: var(--t-l); line-height: var(--lh-l); }
+  .sitemap-grid { display: grid; gap: var(--gap-8); margin-top: var(--space-section-lg); border-top: 1px solid var(--line); padding-top: var(--space-section-md); }
   @media (min-width: 640px) { .sitemap-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .sitemap-grid { grid-template-columns: repeat(4, 1fr); } }
-  .sitemap-col h2 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); border-bottom: 1px solid var(--line); padding-bottom: var(--gap-3); margin-bottom: var(--gap-4); }
+  @media (min-width: 1024px) { .sitemap-grid { grid-template-columns: repeat(3, 1fr); } }
+  .sitemap-col-head { display: flex; align-items: baseline; gap: var(--gap-3); border-bottom: 1px solid var(--line); padding-bottom: var(--gap-3); margin-bottom: var(--gap-4); }
+  .sitemap-n { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); letter-spacing: 0.06em; }
+  .sitemap-col h2 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); }
   .sitemap-col ul { list-style: none; margin: 0; padding: 0; }
-  .sitemap-col li { margin-bottom: var(--gap-2); }
-  .sitemap-col a { color: var(--fg-muted); text-decoration: none; font-size: var(--fluid-body-sm); }
+  .sitemap-col li { margin-bottom: var(--gap-2); position: relative; padding-left: var(--gap-4); }
+  .sitemap-col li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); opacity: 0.5; font-size: var(--t-sm); }
+  .sitemap-col a { color: var(--fg-muted); text-decoration: none; font-size: var(--fluid-body-sm); transition: color var(--duration-fast) var(--easing-out); }
   .sitemap-col a:hover { color: var(--accent); }
+  .sitemap-more { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); }
 </style>

@@ -153,7 +153,7 @@ const industries = (sanityIndustries as string[]).length
   </section>
 
   <!-- INTRO -->
-  <section class="wrap intro">
+  <section class="wrap intro" data-scroll="rise">
     <h2 data-reveal>Wugweb is a tight team of thoughtful creatives, engineers, and strategists</h2>
     <div class="intro-body">
       <div class="intro-copy" data-reveal>
@@ -169,7 +169,7 @@ const industries = (sanityIndustries as string[]).length
   </section>
 
   <!-- SERVICES TEASER -->
-  <section class="wrap services" id="services-content">
+  <section class="wrap services" id="services-content" data-scroll="rise">
     <p class="eyebrow" data-reveal>What we do</p>
     <h2 data-reveal>Crafting UI, UX, and Brand Systems that drive meaning</h2>
     <p class="services-lede" data-reveal>
@@ -218,7 +218,7 @@ const industries = (sanityIndustries as string[]).length
   </section>
 
   <!-- WORK -->
-  <section class="wrap work">
+  <section class="wrap work" data-scroll="rise">
     <div class="work-head">
       <h2 data-reveal>Work that Leads with Clarity and Delivers with Impact</h2>
       <a href="/work" class="btn btn-ghost">View case studies</a>
@@ -238,7 +238,7 @@ const industries = (sanityIndustries as string[]).length
   </section>
 
   <!-- PILLARS — glass showcase -->
-  <section class="pillars" id="pillars">
+  <section class="pillars" id="pillars" data-scroll="scale">
     <div class="pillars-backdrop" aria-hidden="true">
       {pillars.map((p, i) => (
           <video
@@ -276,7 +276,7 @@ const industries = (sanityIndustries as string[]).length
   </section>
 
   <!-- CLIENT LOGOS -->
-  <section class="wrap logos">
+  <section class="wrap logos" data-scroll="fade-up">
     <p class="eyebrow" data-reveal>Trusted by leading brands</p>
     <ul class="logo-grid" data-reveal>
       {clientLogos.map((l) => (

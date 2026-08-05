@@ -145,3 +145,9 @@ const globalIndustries = (sanityIndustries as string[]).length
     <SiteFooter copyright={copyrightText} companyEmail={siteEmail} />
   </body>
 </html>
+
+<script>
+  // GSAP scroll-transform animations for [data-scroll] elements on every page.
+  import { initScrollAnimations } from '../lib/scroll-animations';
+  initScrollAnimations();
+</script>

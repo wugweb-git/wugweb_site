@@ -21,9 +21,12 @@ const hasCms = bodyHtml.length > 0;
 ---
 
 <BaseLayout title="Privacy Policy" description="Privacy Policy — Wugweb">
-  <section class="wrap legal">
-    <p class="eyebrow" data-reveal>Privacy Policy</p>
-    <p class="legal-updated" data-reveal>Updated on November 04, 2025</p>
+  <section class="wrap static-page legal">
+    <header class="static-head">
+      <p class="eyebrow" data-reveal>Privacy Policy</p>
+      <h1 data-reveal>Privacy Policy</h1>
+      <p class="legal-updated" data-reveal>Updated on November 04, 2025</p>
+    </header>
 
     {hasCms ? (
       <div class="legal-body" data-reveal set:html={bodyHtml} />
@@ -73,7 +76,9 @@ const hasCms = bodyHtml.length > 0;
 </BaseLayout>
 
 <style>
-  .legal { padding-block: var(--space-section-xl); max-width: 800px; }
+  .static-page { padding-block: var(--space-section-xl); }
+  .static-head h1 { font-size: var(--t-h2); margin-top: var(--gap-4); max-width: 18ch; }
+  .legal { max-width: 800px; }
   .legal-updated { color: var(--fg-muted); margin-top: var(--gap-2); font-family: var(--font-mono); font-size: var(--fluid-label); }
   .legal h2 { font-size: var(--t-h4); margin-top: var(--gap-10); }
   .legal p, .legal li { color: var(--fg-muted); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-4); }
