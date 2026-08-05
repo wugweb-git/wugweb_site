@@ -3,7 +3,8 @@ import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { sanityClient, urlFor } from '../lib/sanity';
-import { siteSettingsQuery } from '../lib/queries';
+import { siteSettingsQuery, postsListQuery } from '../lib/queries';
+import { assetUrl } from '../lib/assets';
 
 interface Props {
   title: string;
@@ -35,6 +36,15 @@ const siteEmail = settings?.contactEmail || 'hello@wugweb.com';
 const pageTitle = seoTitle || title;
 const metaDesc = description || defaultDesc;
 const metaOgImage = ogImage || defaultOgImage;
+
+// Global blog teaser — latest 3 posts, Sanity-driven with cover thumbnails.
+const teaserPosts = (await sanityClient.fetch(postsListQuery).catch(() => [])).slice(0, 3);
+const teaserCovers = teaserPosts.map((p: any) => {
+  const cover = p.coverPath
+    ? assetUrl(p.coverPath)
+    : (p.coverImage ? urlFor(p.coverImage).width(640).height(400).url() : '');
+  return cover;
+});
 ---
 
 <!doctype html>
@@ -64,7 +74,7 @@ const metaOgImage = ogImage || defaultOgImage;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..900;1,400..900&family=Fragment+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fragment+Mono:wght@400&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -95,9 +105,17 @@ const metaOgImage = ogImage || defaultOgImage;
         <a href="/blog" class="btn btn-ghost">Visit our Blog</a>
       </div>
       <ul class="global-blog-list">
-        <li><span class="eyebrow">Tech</span><a href="/blog/is-augmented-reality-the-future-of-ux">Is Augmented Reality the future of UX?</a></li>
-        <li><span class="eyebrow">Martech</span><a href="/blog/6-strategies-that-got-my-side-project-its-first-1-000-users">6 Strategies That Got My Side Project Its First 1,000 Users</a></li>
-        <li><span class="eyebrow">Design</span><a href="/blog/10-a-hole-design-patterns">10 A**hole Design Patterns</a></li>
+        {teaserPosts.map((p: any, i: number) => (
+          <li>
+            {teaserCovers[i] ? (
+              <a href={`/blog/${p.slug}`} class="blog-teaser-media">
+                <img src={teaserCovers[i]} alt={p.title} loading="lazy" />
+              </a>
+            ) : null}
+            {p.category && <span class="eyebrow">{p.category}</span>}
+            <a href={`/blog/${p.slug}`}>{p.title}</a>
+          </li>
+        ))}
       </ul>
     </section>
 

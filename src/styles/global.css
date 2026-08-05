@@ -1,55 +1,73 @@
 /* ─────────────────────────────────────────────────────────────────────
    DESIGN SYSTEM — wugweb.com
-   Source of truth: design.md §1–§4 (S1 Framer export wins conflicts)
-   Last updated: 2026-07-28
+   Colours: Framer S1 + locked live values (do not change text to pure white).
+   Typography: Wugweb Kits (S4) type hierarchy — weights + --ts-* / --fluid-*
+   (User-directed 2026-08-04; supersedes Framer-all-400 for marketing frontend.)
+   Last updated: 2026-08-04
    ───────────────────────────────────────────────────────────────────── */
 
 :root {
   /* ═════════════════════════════════════════════════════════════════
-     TYPOGRAPHY
+     TYPOGRAPHY — Wugweb Kits type hierarchy (design.md §3.1–3.5)
+     Inter Tight only · weights via tokens · fluid clamp for viewport scale
      ═════════════════════════════════════════════════════════════════ */
 
-  /* G-6: Font weight scale (§3.2) */
+  --core-font-family-base: 'Inter Tight', system-ui, sans-serif;
+  --core-font-family-mono: 'Fragment Mono', ui-monospace, monospace;
+
+  --font-display: var(--core-font-family-base);
+  --font-body: var(--core-font-family-base);
+  --font-mono: var(--core-font-family-mono);
+
+  /* Font weight scale — always use tokens, never raw numbers in new CSS */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-extrabold: 800; /* Display marketing axis — was wrongly aliased to bold */
 
-  /* Legacy font aliases */
-  --font-display: 'Inter Tight', system-ui, sans-serif;
-  --font-body: 'Inter Tight', system-ui, sans-serif;
-  --font-mono: 'Inter Tight', system-ui, sans-serif;
+  /* Static type roles (Kits §3.1) */
+  --ts-display-size: 4rem;       /* 64px */
+  --ts-h1-size: 3rem;            /* 48px */
+  --ts-h2-size: 2.25rem;         /* 36px */
+  --ts-h3-size: 1.5rem;          /* 24px */
+  --ts-h4-size: 1.25rem;         /* 20px */
+  --ts-body-lg-size: 1.25rem;    /* 20px */
+  --ts-body-md-size: 1rem;       /* 16px */
+  --ts-body-sm-size: 0.875rem;   /* 14px */
+  --ts-label-md-size: 0.875rem;  /* 14px */
+  --ts-label-sm-size: 0.75rem;   /* 12px */
+  --ts-caption-size: 0.75rem;    /* 12px */
+  --ts-code-size: 0.875rem;      /* 14px */
 
-  /* Typography scale — matches S1 Framer Style Manager tiers exactly.
-     Three fixed tiers: ≥1440, 1200-1439, 768-1199, <768 inherits 768 value.
-     Weight 400 at every size. Inter Tight variable font. (§1.1) */
-  
-  /* Display / H1 */
-  --t-display: 80px;  /* ≥1440 */
-  --t-h1: 48px;        /* ≥1440 */
-  
-  /* H2 */
-  --t-h2: 36px;        /* ≥1440 */
-  
-  /* H3 */
-  --t-h3: 30px;        /* ≥1440 */
-  
-  /* H4 */
-  --t-h4: 24px;        /* ≥1440 */
-  
-  /* H5 */
-  --t-h5: 20px;        /* ≥1440 */
-  
-  /* H6 */
-  --t-h6: 16px;        /* ≥1440 */
-  
-  /* Body sizes */
-  --t-lead: 20px;      /* ≥1440 */
-  --t-body: 16px;      /* ≥1440 */
-  --t-sm: 14px;        /* ≥1440 */
-  --t-micro: 12px;     /* ≥1440 */
+  /* Fluid type scale (Kits §3.5) — primary sizes for marketing pages */
+  --fluid-display: clamp(2.5rem, 5.5vw + 0.5rem, 5rem);       /* ~40→80 · weight 800 */
+  --fluid-h1: clamp(2rem, 4vw + 0.5rem, 3rem);                /* ~32→48 · 700 */
+  --fluid-h2: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);         /* ~24→36 · 600 */
+  --fluid-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);        /* ~20→28 · 600 */
+  --fluid-h4: clamp(1.06rem, 1vw + 0.5rem, 1.375rem);         /* ~17→22 · 600 */
+  --fluid-body-lg: clamp(1rem, 0.5vw + 0.875rem, 1.25rem);    /* ~16→20 · 400 */
+  --fluid-body-md: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem); /* 15→16 · 400 */
+  --fluid-body-sm: clamp(0.8125rem, 0.1vw + 0.8rem, 0.875rem);/* 13→14 · 400 */
+  --fluid-label: clamp(0.75rem, 0.1vw + 0.73rem, 0.875rem);   /* 12→14 · 500 */
+  --fluid-caption: clamp(0.625rem, 0.05vw + 0.62rem, 0.75rem);/* 10→12 · 400 */
 
-  /* G-7: Line height scale (§3.3) */
+  /* Legacy aliases used across pages (point at Kits fluid / static) */
+  --t-display: var(--fluid-display);
+  --t-h1: var(--fluid-h1);
+  --t-h2: var(--fluid-h2);
+  --t-h3: var(--fluid-h3);
+  --t-h4: var(--fluid-h4);
+  --t-h5: var(--ts-h4-size); /* Kits has no H5; map to H4 static 20px */
+  --t-h6: var(--ts-body-sm-size);
+  --t-xl: var(--fluid-body-lg);
+  --t-l: var(--fluid-body-lg);
+  --t-lead: var(--fluid-body-lg);
+  --t-body: var(--fluid-body-md);
+  --t-sm: var(--fluid-body-sm);
+  --t-micro: var(--fluid-caption);
+
+  /* Line height scale (Kits §3.3) */
   --core-line-height-none: 1;
   --core-line-height-tight: 1.2;
   --core-line-height-snug: 1.375;
@@ -57,7 +75,18 @@
   --core-line-height-relaxed: 1.625;
   --core-line-height-loose: 2;
 
-  /* Legacy line-height aliases (keep until all components migrate) */
+  --lh-display: var(--core-line-height-tight);
+  --lh-h1: var(--core-line-height-tight);
+  --lh-h2: var(--core-line-height-snug);
+  --lh-h3: var(--core-line-height-snug);
+  --lh-h4: var(--core-line-height-normal);
+  --lh-h5: var(--core-line-height-snug);
+  --lh-h6: var(--core-line-height-normal);
+  --lh-xl: var(--core-line-height-relaxed);
+  --lh-l: var(--core-line-height-relaxed);
+  --lh-m: var(--core-line-height-normal);
+  --lh-s: var(--core-line-height-normal);
+  --lh-caption: var(--core-line-height-normal);
   --lh-tight: var(--core-line-height-tight);
   --lh-snug: var(--core-line-height-snug);
   --lh-body: var(--core-line-height-normal);
@@ -108,6 +137,15 @@
 
   --color-feedback-success: #3ED219;
   --color-feedback-error: #E54F30;
+
+  /* Service panel accents (from Framer services index / component cues) */
+  --svc-strategy: #09E2C0;
+  --svc-brand: #2368D7;
+  --svc-experience: #ED219A;
+  --svc-growth: #E6309F;
+  --svc-engineering: #7A4DFF;
+  --svc-operations: #FA4108;
+
 
   /* Legacy colour aliases (keep until migration is complete) */
   --bg: var(--color-surface-page);
@@ -243,6 +281,8 @@
   --breakpoint-2xl: 1440px;
 }
 
+/* Fluid tokens already clamp — no Framer step-down media queries needed for type */
+
 
 /* ═══════════════════════════════════════════════════════════════════
    BASE RESET
@@ -266,62 +306,117 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-body);
-  font-size: var(--t-body);
-  line-height: var(--lh-body);
+  font-family: var(--core-font-family-base);
+  font-size: var(--fluid-body-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--core-line-height-normal);
   -webkit-font-smoothing: antialiased;
 }
 
 
 /* ═══════════════════════════════════════════════════════════════════
-   TYPOGRAPHY — headings + common
+   TYPOGRAPHY — Kits roles + weight hierarchy (wired on frontend)
+   Display 800 · H1 700 · H2–H4 600 · body 400 · labels 500
    ═══════════════════════════════════════════════════════════════════ */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
+  font-family: var(--core-font-family-base);
   margin: 0;
-  font-weight: var(--font-weight-regular);
-  line-height: var(--lh-tight);
   letter-spacing: 0;
 }
 
-h1 { font-size: var(--t-display); }
-h2 { font-size: var(--t-h2); line-height: var(--lh-snug); }
-h3 { font-size: var(--t-h3); line-height: var(--lh-tight); }
-h4 { font-size: var(--t-h4); line-height: var(--lh-tight); }
-h5 { font-size: var(--t-h5); line-height: var(--lh-snug); }
-h6 { font-size: var(--t-h6); line-height: var(--lh-snug); }
-
-/* Responsive typography tiers — matches Framer export exactly (§1.1) */
-@media (min-width: 1200px) and (max-width: 1439px) {
-  h1 { font-size: 64px; }
-  h2 { font-size: 32px; }
-  h3 { font-size: 28px; }
-  h4 { font-size: 21px; }
-  h5 { font-size: 19px; }
-  h6 { font-size: 16px; }
+h1 {
+  font-size: var(--fluid-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--core-line-height-tight);
+}
+h2 {
+  font-size: var(--fluid-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--core-line-height-snug);
+}
+h3 {
+  font-size: var(--fluid-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--core-line-height-snug);
+}
+h4 {
+  font-size: var(--fluid-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--core-line-height-normal);
+}
+h5 {
+  font-size: var(--ts-h4-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--core-line-height-snug);
+}
+h6 {
+  font-size: var(--ts-body-sm-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--core-line-height-normal);
 }
 
-@media (max-width: 1199px) {
-  h1 { font-size: 48px; }
-  h2 { font-size: 30px; }
-  h3 { font-size: 26px; }
-  h4 { font-size: 22px; }
-  h5 { font-size: 18px; }
-  h6 { font-size: 16px; }
+/* Display — marketing only, extrabold */
+.t-display,
+.type-display {
+  font-family: var(--core-font-family-base);
+  font-size: var(--fluid-display);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--core-line-height-tight);
+  letter-spacing: 0;
+}
+
+.type-h1 { font-size: var(--fluid-h1); font-weight: var(--font-weight-bold); line-height: var(--core-line-height-tight); }
+.type-h2 { font-size: var(--fluid-h2); font-weight: var(--font-weight-semibold); line-height: var(--core-line-height-snug); }
+.type-h3 { font-size: var(--fluid-h3); font-weight: var(--font-weight-semibold); line-height: var(--core-line-height-snug); }
+.type-h4 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); line-height: var(--core-line-height-normal); }
+.type-body-lg, .t-xl, .t-l {
+  font-size: var(--fluid-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--core-line-height-relaxed);
+}
+.type-body-md, .t-m {
+  font-size: var(--fluid-body-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--core-line-height-normal);
+}
+.type-body-sm, .t-s {
+  font-size: var(--fluid-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--core-line-height-normal);
+}
+.type-label, .t-label {
+  font-size: var(--fluid-label);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--core-line-height-normal);
+}
+.type-caption, .t-caption {
+  font-size: var(--fluid-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--core-line-height-normal);
+}
+.type-code, .t-mono {
+  font-family: var(--core-font-family-mono);
+  font-size: var(--ts-code-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--core-line-height-relaxed);
 }
 
 p {
   margin: 0;
   color: var(--fg-muted);
-  line-height: var(--lh-body);
+  font-size: var(--fluid-body-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--core-line-height-normal);
 }
 
 a { color: inherit; }
 
 .eyebrow {
-  font-size: var(--t-micro);
-  line-height: var(--lh-tight);
+  font-family: var(--core-font-family-mono);
+  font-size: var(--fluid-caption);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--core-line-height-normal);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
@@ -336,10 +431,10 @@ a { color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: var(--gap-2);
-  font-family: var(--font-body);
-  font-size: var(--t-body);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--lh-body);
+  font-family: var(--core-font-family-base);
+  font-size: var(--fluid-body-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--core-line-height-normal);
   letter-spacing: 0;
   text-decoration: none;
   padding: 0.7rem 1.15rem;
@@ -446,8 +541,8 @@ a { color: inherit; }
   padding-block: var(--space-section-md);
   border-top: 1px solid var(--line);
 }
-.global-industries h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
-.global-industries > p { margin-top: var(--gap-4); max-width: 55ch; }
+.global-industries h2 { font-size: var(--t-h2); line-height: var(--lh-h2); }
+.global-industries > p { margin-top: var(--gap-4); max-width: 55ch; font-size: var(--t-xl); line-height: var(--lh-xl); }
 .industry-tags {
   list-style: none;
   margin: var(--gap-6) 0;
@@ -458,7 +553,7 @@ a { color: inherit; }
 }
 .industry-tags li {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--t-sm);
   padding: var(--gap-2) var(--gap-4);
   border: 1px solid var(--line);
   border-radius: var(--r-full);
@@ -487,6 +582,9 @@ a { color: inherit; }
   .global-blog-list { grid-template-columns: repeat(3, 1fr); gap: var(--gap-6); }
 }
 .global-blog-list li { border-top: 1px solid var(--line); padding-top: var(--gap-4); }
+.blog-teaser-media { display: block; margin: 0 0 var(--gap-3); }
+.blog-teaser-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); }
+.global-blog-list .eyebrow { display: block; margin-bottom: var(--gap-1); }
 .global-blog-list a { display: block; margin-top: var(--gap-2); text-decoration: none; color: var(--fg); }
 .global-blog-list a:hover { color: var(--accent); }
 
@@ -508,6 +606,6 @@ a { color: inherit; }
   color: #000;
   font-weight: var(--font-weight-regular);
 }
-.global-final-cta p { margin-top: 0.75rem; max-width: 45ch; color: rgba(0, 0, 0, 0.72); }
+.global-final-cta p { margin-top: var(--gap-3); max-width: 45ch; color: rgba(0, 0, 0, 0.72); }
 .global-final-cta .btn { background: #000; border-color: #000; color: #fff; }
 .global-final-cta .btn:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
