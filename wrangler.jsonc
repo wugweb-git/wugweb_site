@@ -10,6 +10,19 @@
   // Note: "observability" is Workers-only — Pages rejects it at deploy.
   "vars": {
     "SANITY_PROJECT_ID": "splvhmk1",
-    "SANITY_DATASET": "production"
-  }
+    "SANITY_DATASET": "production",
+    // Public R2 base for /assets/* (path-mapped keys assets/<path>).
+    // Cutover verified 2026-08-05: all 512 local files mapped + live.
+    "PUBLIC_R2_ASSETS_BASE": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev",
+    // Serve /assets/* from R2 instead of public/assets (dual-serve off).
+    "PUBLIC_USE_R2_ASSETS": "1"
+  },
+  // Worker/Pages binding for server-side R2 reads/writes. Do not add
+  // Infrequent Access or extra buckets without checking free-tier Rule 2.
+  "r2_buckets": [
+    {
+      "binding": "ASSETS_BUCKET",
+      "bucket_name": "wugweb-assets"
+    }
+  ]
 }
