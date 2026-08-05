@@ -55,7 +55,8 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 | — | Neon re-sync | **Ran 2026-08-05** — 1430 docs owner-aware (asset 553, taxonomy 327, platformProfile 59, syncStatus 21). **Do not re-run unless asked.** Neon audit findings: 8 stale caseStudy rows, `[object Object]` slug bug in older rows, empty `content_relations`. |
 | 22 | Preview mode | **Done** — middleware reads `__sanity_preview` cookie → `locals.previewToken`; `/blog/[slug]` uses `getPreviewClient(token)` for draft content. Other pages can opt in the same way. |
 | 27 | Contact → Sanity | **Done** — `/api/contact` mirrors each submission into a `contactSubmission` doc (best-effort) so leads show in Studio; Neon write unchanged. |
-| — | Audit residuals | 13 assets were missing-on-disk → **6 path-fixed in Sanity**; 7 remain (5 Generated SVG + `more/home/Home.mp4` case). 22 disk files unreferenced in Sanity (framer case-study images + more/ videos). |
+| — | Hardcoded content audit | **Done 2026-08-05** — homepage client logos + industries and global industries now Sanity-driven (fallback curated). **Kept hardcoded by design** (not in Sanity schema): homepage service teaser/pillars copy, services/index pricing tiers + stats, contact interests/budgets, legal pages. |
+| — | Audit residuals | 13 assets were missing-on-disk → **6 path-fixed in Sanity** + 6 Generated-SVG badges marked `localExists:false` (excluded from audit) + `home-overview` case fixed. 22 disk files unreferenced in Sanity (framer case-study images + more/ videos). |
 
 ---
 
