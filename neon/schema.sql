@@ -1,8 +1,8 @@
--- Run this once against your Neon database.
--- Phase 2: Content Store + Ownership model
--- Vedanshu's central database: owns everything personally.
--- Wugweb data is owned by Vedanshu (he owns the company).
--- Other entities can be added via owner_type + owner_id.
+-- Shared central database for Vedanshu Srivastava + Wugweb.
+-- See governance.md: owner ∈ {vedanshu, wugweb, both}; Author ≠ Owner.
+-- Notion exports are seed only — do not treat Notion as SSOT.
+-- Entities vedanshu (person) and wugweb (company) are peers; Vedanshu owns the
+-- company but also has personal work outside Wugweb.
 
 -- ══════════════════════════════════════════════════════════════════
 -- EXISTING TABLES (Phase 1)
@@ -40,14 +40,14 @@ alter table contact_submissions add column if not exists phone text;
 create table if not exists entities (
   id          text primary key,            -- short slug: 'vedanshu', 'wugweb'
   name        text not null,
-  entity_type text not null default 'person', -- 'person', 'company', 'team'
+  entity_type text not null default 'person', -- 'person', 'company', 'team', 'shared'
   email       text,
   data        jsonb not null default '{}',    -- flexible profile fields
   created_at  timestamptz not null default now(),
   updated_at  timestamptz not null default now()
 );
 
--- Insert the two primary entities
+-- Insert primary entities (+ shared token for dual ownership)
 insert into entities (id, name, entity_type, email, data) values
   ('vedanshu', 'Vedanshu Srivastava', 'person', 'vedanshu.srivastava@gmail.com', '{}')
 on conflict (id) do nothing;
@@ -56,15 +56,21 @@ insert into entities (id, name, entity_type, data) values
   ('wugweb', 'Wugweb', 'company', '{"description": "Digital Experience Agency"}')
 on conflict (id) do nothing;
 
+-- Synthetic owner for content that belongs to both brands (not a real person/company)
+insert into entities (id, name, entity_type, data) values
+  ('both', 'Vedanshu + Wugweb (shared)', 'shared', '{"description": "Dual-brand / shared ownership token"}')
+on conflict (id) do nothing;
+
 -- Content items — every piece of content, owned by an entity
+-- owner ∈ {vedanshu, wugweb, both} — set explicitly; do not assume all rows are vedanshu
 create table if not exists content_items (
   id            text primary key,          -- slug or Sanity document ID
   content_type  text not null,             -- 'service', 'caseStudy', 'post', 'person', 'siteSettings',
                                            -- 'client', 'industry', 'engagement', 'page', 'taxonomy',
-                                           -- 'contactSubmission'
+                                           -- 'contactSubmission', 'asset', 'platformProfile'
   status        text not null default 'draft', -- 'draft', 'published', 'archived'
-  owner         text not null default 'vedanshu' references entities(id),
-  data          jsonb not null default '{}',    -- all content fields as JSON
+  owner         text not null default 'wugweb' references entities(id),
+  data          jsonb not null default '{}',    -- all content fields as JSON (incl. author person id when editorial)
   created_at    timestamptz not null default now(),
   updated_at    timestamptz not null default now()
 );
@@ -80,7 +86,8 @@ create table if not exists content_relations (
   target_id     text not null references content_items(id),
   relation_type text not null,             -- 'service→caseStudy', 'post→author', 'caseStudy→service',
                                            -- 'client→engagement', 'client→caseStudy'
-  owner         text not null default 'vedanshu' references entities(id),
+  -- Author is a relation_type (post→author), not the owner column.
+  owner         text not null default 'wugweb' references entities(id),
   created_at    timestamptz not null default now(),
   unique(source_id, target_id, relation_type)
 );
