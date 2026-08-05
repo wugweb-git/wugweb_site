@@ -2,194 +2,145 @@
 
 Keep this file synced. Before any new session, read this first. After significant work, update it.
 
----
+Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-## ✅ Completed
+**Last verified:** 2026-08-05 (deep audit run; blog teaser thumbnails; asset path fixes; owner backfill live).
 
-### Data Infrastructure
-- [x] **Sanity project splvhmk1** — dataset `production`, Studio at `wugweb.sanity.studio` and `localhost:3333`. Deployed with latest schema.
-- [x] **Neon database connected** — schema applied: entities, content_items, content_relations, sync_log, visitor_profiles, contact_submissions
-- [x] **Ownership model** — `entities` table supports any entity type. `vedanshu` (person) and `wugweb` (company) are independent peer rows.
-- [x] **Neon is SSOT** for structured content. Media → R2 (not set up yet)
-- [x] **`@neondatabase/serverless`** installed — replaces `pg` (which uses raw TCP, blocked on Workers)
-- [x] **Cloudflare Pages secrets set** — `DATABASE_URL`, `SANITY_SYNC_TOKEN`
-- [x] **Deployed to Cloudflare** — build passes, all routes returning 200
-
-### Sanity Content (migrated from codebase + Notion + CSV)
-- [x] **82 case studies** — 20 from Notion, rest from CSV+writeup markdown. Full challenges/solutions/impact/disciplines
-- [x] **75 blog posts** — 52 from Notion (10 new with body content), 13 from codebase, 10 new from blog CSV
-- [x] **12 people** — 11 team members + Wugweb Design author
-- [x] **106 clients** — from Notion Clients DB
-- [x] **66 industries** — from Notion Industry DB with market sectors
-- [x] **12 services** — 6-pillar framework + 85 sub-services as taxonomy terms
-- [x] **17 singleton pages** — all pages with basic titles
-- [x] **17 sync status docs** — Notion↔Sanity↔Neon comparisons
-- [x] **113 asset docs** — imported from Notion Asset Sheet, 66 matched to local files
-- [x] **Site settings** — SEO meta, contact info, social links
-- [x] **`codeBlock` type** registered — fixes Studio "Unknown type: code" error
-
-### Frontend Pages Wired to Sanity
-- [x] **work/index.astro** — 82 case studies from Sanity, category filters
-- [x] **work/[slug].astro** — dynamic paths from Sanity slugs, challenges/solutions/impact rendering
-- [x] **blog/index.astro** — 75 posts from Sanity with category filters
-- [x] **blog/[slug].astro** — dynamic paths, block content rendering from WordPress/Notion HTML body
-- [x] **services/index.astro** — 6 pillars with color themes, pricing tiers, case study galleries
-- [x] **services/[slug].astro** — enriched with Sanity data, fallback to hardcoded for rich content
-- [x] **about.astro** — team section from Sanity person docs
-- [x] **footer/sitemap.astro** — created with all pages, services, case studies, blog posts
-
-### Neon Sync
-- [x] **355+ documents synced** from Sanity → Neon via `sync-sanity-to-neon.mjs`
-- [x] **Sync API** at `/api/sync` — POST with X-Sync-Token auth
-- [x] **Content query helpers** in `src/lib/content.ts` — `getByType()`, `getAllByType()`, `getBySlug()`
-- [x] **NEON SQL constants** in `src/lib/queries.ts` — ready for frontend swap
-
-### Design Tokens (Phase 2 — all G-items from design.md §5.2)
-- [x] `--font-weight-*` (4-step), `--core-line-height-*` (6-step)
-- [x] `r-*`/`radius-*` (incl. 20/32px), `s-*`/`p-*`/`gap-*` ramp (0-12)
-- [x] `--space-section-*`/`--space-page-*`, 6 breakpoint constants, motion duration/easing tokens
-- [x] Semantic colours (Feedback, Accent/Blue, Secondary), neutral scale 0-10 (Framer numbering)
-- [x] `.wrap` → 1280px, `.page` → 1440px, `.grid` 12-column utility
-- [x] Nav: shadow, two-tone logo, "Works" label, mobile contact/legal block, absolute dropdown
-- [x] All legacy aliases preserved for backward compat
-- [x] Tokens defined in `global.css` — components still use some hardcoded px values (migration not complete)
-
-### Assets Downloaded
-- [x] **252 Framer CDN files** downloaded (250MB) into `public/assets/framer/`
-- [x] **51 wugweb.online files** downloaded — 75 total in `public/assets/` (was 24)
-- [x] All wugweb.online assets now local. No external dependency for core work videos
-
-### Notion Data Fetched (15 databases)
-- [x] Asset Sheet (128), case-studies (20), blog-master (52), clients (109), content-relationships (55)
-- [x] industry (66), services (8), sub-services (57), services-atomic (90), service-sub-group (23)
-- [x] tags (36), authors (2), tech-stack (21), content-type (2), country (14)
-
-### Scripts
-- [x] `scripts/migrate-to-sanity.mjs` — Phase 1: 8 CS + 13 blogs + team
-- [x] `scripts/migrate-sanity-phase2.mjs` — Phase 2: 29 CS + 2 blogs
-- [x] `scripts/migrate-csv-to-sanity.mjs` — CSV+writeup: 37 CS with full challenges/solutions/impact
-- [x] `scripts/fix-case-studies.mjs` — Long-slug enrichment with CSV content
-- [x] `scripts/migrate-notion-to-sanity.mjs` — Notion industries + clients
-- [x] `scripts/sync-notion-to-sanity.mjs` — Notion↔Sanity comparison + missing blog sync (52 blogs)
-- [x] `scripts/sync-sanity-to-neon.mjs` — Full Sanity→Neon sync
-- [x] `scripts/fetch-all-notion.mjs` — Fetch all 15 Notion databases
-- [x] `scripts/fetch-services.mjs` — Fetch Service + Sub-Service databases
-- [x] `scripts/migrate-csv-bodies.mjs` — Extract blog body content from Notion CSV exports
-- [x] `scripts/import-assets-to-sanity.mjs` — Import 113 asset docs from Notion Asset Sheet
-- [x] `scripts/update-services-and-assets.mjs` — Update 6-pillar framework + sub-services
-- [x] `scripts/apply-schema.cjs` — Apply neon/schema.sql
-- [x] `scripts/download-framer-assets.mjs` — Download 252 Framer CDN files
-- [x] `scripts/import-assets.mjs` — Check asset file existence
-
-### Sanity Admin UX
-- [x] **Desk structure** — Dashboard → Site Settings → Pages → Case Studies → Blog Posts → Services → Taxonomy → CRM → Contact Submissions
-- [x] **Post schema** — editor tabs (Content/Meta/SEO), updated category list (8 options), orderings
-- [x] **Case study schema** — editor tabs (Overview/Content/Results/SEO), `subtitle`, `partner`, `designPhilosophy` fields
-- [x] **Service schema** — editor tabs (Overview/Content/Capabilities/Approach/FAQ/SEO)
-- [x] **Sync Status dashboard** — 9 docs showing Notion/Sanity/Neon sync state with mismatch details
-- [x] **Enhanced Studio navigation** — Organized into sections: Content, Business, Brand & Media, Knowledge, System
-- [x] **Dashboard widget** — Live content stats showing case studies, blog posts, services, clients, team count
-- [x] **Content health checks** — Filters for missing SEO, cover images, alt text, taxonomy
-- [x] **Quick filters** — Recently edited, drafts, publishing queue, featured content
-- [x] **Studio build verified** — `npx sanity build` completes successfully, output in `sanity/dist/`
-
-### Typography System (Matched to Framer Export)
-- [x] **Inter Tight variable font** — Loaded 400-900 weight range from Google Fonts
-- [x] **3-tier responsive typography** — ≥1440px, 1200-1439px, <1200px (matches Framer export exactly)
-- [x] **Font sizes** — Display 80px → H1 48px → H2 36px → H3 30px → H4 24px → H5 20px → H6 16px
-- [x] **Line heights** — Tight 1.2 (H1-H4), Snug 1.375 (H2, H5-H6), Normal 1.5 (body)
-- [x] **Font weight** — All headings weight 400 (no bold, matches live site)
-- [x] **Letter spacing** — 0px on all headings (matches Framer export)
-- [x] **Design tokens** — Complete scale in `global.css` with responsive media queries
-
-### Blog Content Import
-- [x] **21 blog posts imported** from CSV to Sanity with full HTML content
-- [x] **Author references** — All posts linked to Vedanshu Srivastava (person-vedanshu-srivastava)
-- [x] **Post metadata** — excerpts, tags, categories, reading time, publish dates
-- [x] **Import script** — `scripts/import-blog-csv.mjs` with CSV parsing
+Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-full-audit.md). Kits type roles: [`design.md`](design.md) §3 (+ C-6 superseded).
 
 ---
 
-## 🔴 Critical (Blocked)
+## ✅ Completed (high level)
 
-| Item | Reason |
-|---|---|
-| Sanity token permissions | Current token (`sk0ArwboL...`) can create+replace but `update`/`delete` fail on some operations. Generated another — same issue. May need fresh Editor token from sanity.io/manage |
-| Design token → component migration | Tokens in `global.css`. Components still use hardcoded `px`/`rem`/`clamp()` values. ~20 files, ~200+ values to replace. Systematic pass needed |
-| Frontend → Neon swap | Deferred until UI/components/brand mapping from prev version is complete. Helpers/SQL at `src/lib/content.ts` + `NEON` constants ready when needed. |
+Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--ts-*` / `--fluid-*` + weight hierarchy**; colours from Framer S1), **#16 typography rem/clamp sweep** (pages + components → fluid/ts tokens), Framer→local assets, R2, content↔asset paths, Global Settings, Presence, asset registry, governance, Industry master, service Framer extract + **89** toolkit icons, footer Sitemap + Industries, page capture + SEO salvage, industries route, lead-gen routing. **2026-08-05 arc:** owner backfill (#40), Neon `both` entity (#41), Neon re-sync (owner-aware), blog teaser thumbnails, asset path case fixes, audit script repairs.
+
+Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-platform-tech-icons.mjs`, `map-assets-to-content.mjs`, `audit-framer-service-pages.mjs`, `extract-framer-service-pages.mjs`, `salvage-framer-toolkits.mjs`, `sync-framer-tokens.mjs`, `capture-framer-pages.mjs`, `salvage-framer-seo-pages.mjs`, `backfill-owner.mjs`, `sync-sanity-to-neon.mjs`.
 
 ---
 
-## 🟡 Medium Priority
+## 🔴 Open — Critical / blocked
 
-14. **Wire homepage to match live wugweb.com UI** — chat hero, showcase grid, expertise layout, conversational form. Current homepage has video hero + cards. Live site has distinctive chat-message hero with GIFs
-15. **Wire footer pages** — `/footer/sitemap` created but not linked in nav. `footer/subscription` stub. `footer/impact` placeholder CSR activities
-16. **Design token → component pass** — replace all hardcoded `px`/`rem` values across 20+ `.astro` files with `var(--r-*)`, `var(--gap-*)`, `var(--p-*)`, `var(--s-*)`, `var(--space-section-*)`, `--duration-*`, `--easing-*`
-17. **Service detail pages** — tools/process sections exceed Sanity schema. Hardcoded fallback. Options: add fields to schema or leave hardcoded
-18. **About page** — stats are guessed numbers, "Product" team entry flagged, bento has no decorative imagery, values/culture hardcoded
-19. **FAQ page** — still hardcoded. Could wire to singletonPage
-20. **Contact form** — form works at UI level, API stores to Neon. Submission may 500 at runtime (Neon Workers connection deferred per instruction)
-21. ✅ **Client logos** — 13 Framer CDN logos on homepage replaced with local copies from `public/assets/logos/`
+| Item | Status | Notes |
+|---|---|---|
+| Design token → component migration | Partial | **Type + spacing rem sweeps done.** Residual: one-off layout px / gallery vh clamps. |
+| Frontend → Neon swap | Deferred | Helpers ready (`content.ts`, `NEON` queries); wait until UI/brand mapping done. **User: do not run Neon sync unless asked.** |
+| Sanity token permissions | Soft | create/replace OK; some update/delete flaky. **Do not rotate unless user asks** |
+| Contact form production reliability | Deferred to end | UI + Neon write path exist; Workers/Neon 500 risk deferred |
 
 ---
 
-## 🔵 Low / Nice-to-Have
+## 🟡 Open — Medium
 
-22. **Sanity draft/preview mode** — `getPreviewClient()` exists, unused. Need preview URL config
-23. **Blog body content** — 50 of 75 posts have body from Notion/blog CSVs. Remaining 25 need content entered via Studio
-24. ✅ **Image rendering** — blog detail now renders `coverImage` and author photo via `urlFor()`
-25. **Team photos** — 11 still hotlinked from Framer CDN
-26. **Engagement + taxonomy docs** — schema exists, empty
-27. **Contact submissions** — stored in Neon, not sync'd back to Sanity `contactSubmission` docs
-28. **R2 media bucket** — not set up. Media should go to R2 per instruction
-29. **SEO pages** — legal pages (privacy, terms, refund) have basic hardcoded content, no Sanity data
+| # | Item | Notes |
+|---|---|---|
+| 16 | Design token → component pass | **Type done** + **spacing rem sweep** (padding/margin/gap → `--gap-*` / `--space-section-*`). Gallery vh clamps kept where layout needs them. Residual: a few one-off layout px. |
+| 43 | **Typography / fonts** | **Done — Kits hierarchy** — Display 800 / H1 700 / H2–H4 600 / labels 500 / body 400; `--ts-*` / `--fluid-*`. |
+| 17 | Service detail rich sections | **Done (Framer extract)** — Why Us / toolkit(+icons) / approach from Sanity; Framer slugs routable |
+| 18 | About page | SEO + values from Sanity; stats: **projects** = caseStudy count, **brands** = client count; years/retention need Studio `items` (no invented figures). Stack chips use tech `iconPath`. |
+| 20 | Contact form | Deferred production harden (see critical) |
 
 ---
 
-## ❌ Blocked / Deferred / Cancelled
+## 🔵 Open — Near-term content / data
+
+| # | Item | Notes |
+|---|---|---|
+| 42 | **Reference/component enrichment** | **Partial** — nav UI from `component/Nav Bar *.png` + design.md §2 wired (yellow CTA, Works label, 698px mobile panel, contact/legal, staggered hamburger). Still open: Framer motion/code components, full layout parity, FAQ body answers. **Keep `reference/` + `component/`.** |
+| 23 | Blog body gaps | ~75/96 posts have body; ~21 still need Studio content |
+| 30/covers | Blog covers | 43/96 have `coverPath` (21 unique images, all on disk + R2) |
+| 25 | Team photos | Verify on deploy; historically Framer CDN hotlinks |
+| 32 | Legal / SEO pages | privacy, terms, refund — hardcoded, not Sanity |
+| 33 | R2 cutover | **81 `tools/*` icons still missing from R2 map** (0.23 MiB) — upload via `scripts/upload-tools-gap-to-r2.mjs` before setting `PUBLIC_USE_R2_ASSETS=1`. Work media verified live. |
+| 34 | Case studies without media | CSV-only clients (Bodyshop, Paragon, etc.) |
+| — | Neon re-sync | **Ran 2026-08-05** — 1430 docs owner-aware (asset 553, taxonomy 327, platformProfile 59, syncStatus 21). **Do not re-run unless asked.** Neon audit findings: 8 stale caseStudy rows, `[object Object]` slug bug in older rows, empty `content_relations`. |
+| 22 | Preview mode | `getPreviewClient()` unused |
+| 27 | Contact → Sanity | Neon stores submissions; not mirrored to `contactSubmission` docs |
+| — | Audit residuals | 13 assets were missing-on-disk → **6 path-fixed in Sanity**; 7 remain (5 Generated SVG + `more/home/Home.mp4` case). 22 disk files unreferenced in Sanity (framer case-study images + more/ videos). |
+
+---
+
+## ❌ Cancelled / deferred / out of scope
 
 | Item | Status | Reason |
 |---|---|---|
-| DNS cutover to wugweb.com | ❌ Not my concern | User explicitly excluded this |
-| Contact form 500 | ❌ Deferred | Resolve at very end |
-| Hyperdrive binding | ❌ Deferred | Falls back to DATABASE_URL currently |
-| SESSION KV binding | ❌ Deferred | Only needed if runtime error appears |
-| footer/subscription | ❌ Deferred | Needs payment-gateway scoping |
-| footer/sitemap | ✅ Done | Created this session |
-| about page bento imagery | ❌ No source assets | User hasn't provided Framer imagery |
-| Credential rotation | ❌ Needs action | Neon pw `npg_ZOYC...`, CF token `cfat_cEzy...`, Sanity token all exposed in transcript |
+| Homepage chat hero | ❌ Cancelled | Keep video hero |
+| DNS cutover | ❌ Out of scope | User excluded |
+| Hyperdrive / SESSION KV | ❌ Deferred | Only if runtime needs |
+| footer/subscription | ❌ Deferred | Payment gateway scoping |
+| Live Studio dashboard widgets | ❌ Deferred | Structure filters crashed Studio |
+| Credential rotation | ❌ Not needed | Unless user asks |
+| about bento imagery | ❌ Blocked | No source assets provided |
 
 ---
 
-## Data State Summary
+## ✅ Recently completed (this arc)
+
+- [x] **#40 Ownership backfill** — client 106 (104 wugweb/1 both/1 vedanshu), caseStudy 82 (wugweb), post 96 (wugweb), asset 553 (187 wugweb/366 both). Script: `backfill-owner.mjs` (was dry-run only).
+- [x] **#41 Neon `both` entity** — seeded; `entities` now vedanshu + wugweb + both.
+- [x] **Neon re-sync** — `sync-sanity-to-neon.mjs` owner-aware (falls back to `wugweb`, not vedanshu); added asset/platformProfile/syncStatus to type map; 1430 docs synced 2026-08-05.
+- [x] **`/api/sync` owner fix** — same doc.owner logic; no longer hardcodes vedanshu.
+- [x] **Blog teaser thumbnails** — BaseLayout blog block now Sanity-driven (latest 3 posts) with cover thumbnails; was hardcoded text-only links with a stale post.
+- [x] **Asset path case fixes** — 6 Sanity asset records with wrong-case paths (`Xsafe_about.mp4` → `xsafe-about.mp4`, etc.) patched; case studies already used correct lowercase paths.
+- [x] **Audit script repairs** — `data-audit.mjs` GROQ parse error + `inBoth` iterable bug + 10s query timeout all fixed; full audit now completes.
+- [x] R2 `wugweb-assets` + path map + Rule 2 · dual-serve until cutover
+- [x] Content ↔ asset mapping (caseStudy/client/page/service/post paths)
+- [x] Blog covers from Framer (43/96) · case-study media from `assets/assets/client`
+- [x] Global Settings masters: platform, tech-stack, tag, asset-type, content-type, dept, country
+- [x] Presence 59 rows + DP2 credentials · Behance → vedanshu
+- [x] Asset registry ~431 local files / ~472 Sanity assets · 85 R2 delta · ~514 MiB
+- [x] 8 tool/platform icons from reference No-Code page
+- [x] Framer services + about extraction: audit → Sanity why/tools/approach/SEO → Astro Sanity-first wire (+ Framer slugs)
+- [x] Toolkit salvage (empty-alt icons): 89 tools copied; no-code 24 + experience 39 + shared eng stack
+- [x] Full Framer/build audit doc (`docs/framer-full-audit.md`) — not full visual parity; keep reference/ + component/
+- [x] **#43 Typography** — Kits weight hierarchy + `--ts-*`/`--fluid-*` on frontend (supersedes Framer-all-400); Display 800 / H1 700 / H2–H4 600 / labels 500 / body 400
+- [x] **#16 type sweep** — remaining hardcoded rem/px/clamp font-sizes + line-heights → Kits tokens
+- [x] **#16 spacing sweep** — padding/margin/gap rem → `--gap-*` / `--space-section-*`
+- [x] **#18 About stats** — projects/brands from Sanity counts; years/retention Studio-ready via `items`
+- [x] **Nav UI (§2 / component screenshots)** — yellow Let's Talk, Works label, expanding 698px mobile panel, contact/legal, light chip hamburger/×, active link state; FAQ remains in footer
+- [x] Fast salvage pass: Framer **colour** token check + `--svc-*`, capture home/faq/work/blog/lead-gen/industries/subscription, SEO → Sanity, `/footer/industries`, lead-gen routing, home/work/blog SEO wire
+- [x] Deploy to Cloudflare Pages — Framer service slugs live on wugweb.pages.dev
+- [x] GitHub repo meta: description, homepage, topics (astro, cloudflare-pages, sanity, neon)
+- [x] Governance: Rule 1 + Rule 2 + shared Neon + Author ≠ Owner + Notion seed + industry master model
+- [x] Studio: Industry master under Global Settings; content uses `industryRef` / `client.industry`
+- [x] Sitemap linked in footer
+- [x] Industries linked in footer
+
+---
+
+## Data state (Sanity live, 2026-08-05)
 
 | Type | Sanity | Neon | Notes |
-|---|---|---|---|---|
-| caseStudy | 82 | ✅ 82 | 20 from Notion + 62 from CSV/writeup |
-| post | 75 | ✅ 75 | 52 from Notion + 13 codebase + 10 from CSV |
-| person | 12 | ✅ 12 | 11 team + Wugweb Design author |
-| client | 106 | ✅ 106 | From Notion |
-| industry | 66 | ✅ 66 | From Notion |
-| service | 12 | ✅ 12 | 6 pillars + 6 old |
-| singletonPage | 17 | ✅ 17 | All pages |
-| siteSettings | 1 | ✅ 1 | SEO + contact |
-| syncStatus | 17 | ✅ 17 | All comparisons synced |
-| asset | 113 | ✅ 113 | Imported, 66 with local files |
-| taxonomy | 85 | ✅ 85 | Sub-services as taxonomy terms |
-| engagement | 0 | 0 | Schema exists |
-| contactSubmission | 0 | 0 | Read-only, no data needed |
+|---|---|---|---|
+| caseStudy | 82 | 90 (8 stale) | owner: 82 wugweb |
+| post | 96 | 96 | owner: 96 wugweb; body ~75; coverPath 43 |
+| person | 12 | 12 | Author byline ≠ owner |
+| client | 106 | 106 | owner: 104 wugweb / 1 both / 1 vedanshu |
+| industry | 66 | 66 | **Master** (Global Settings) |
+| service | 19 | 19 | |
+| singletonPage | 18 | 18 | |
+| siteSettings | 1 | 1 | |
+| syncStatus | 21 | 21 | |
+| asset | 553 | 553 | owner: 187 wugweb / 366 both; 6 paths fixed |
+| taxonomy | 327 | 327 | tech-stack ~96 terms / **89** with iconPath; platform, tag, types, dept, country |
+| platformProfile | 59 | 59 | Presence + credentials |
+| engagement | 70 | 70 | |
+| contactSubmission | 0 | 0 | #27 open |
 
-**Total in Neon: 456 documents**
+**Local media:** `public/assets` (512 files) · R2 map 431 + **81 tools gap pending upload** · dual-serve until cutover.  
+**Notion = seed only.** Do not reset Sanity to Notion.  
+**Folders:** keep `reference/` + `component/` (see `docs/framer-full-audit.md`).  
+**Neon sync:** user-controlled — do not run `sync-sanity-to-neon.mjs` or `/api/sync` unless asked.
 
 ---
 
-## Key Design Decisions (taste)
+## Key decisions (pointer)
 
-- **Neon is SSOT** — all structured content. Sanity is admin panel. Frontend should read from Neon eventually
-- **Media goes to R2**, not Neon or Sanity
-- **Vedanshu owns everything** — `owner: 'vedanshu'` on every content row. Wugweb is a sub-entity
-- **6-pillar taxonomy** — Strategy, Brand, Experience, Engineering, Growth, Operations. Notion has 8 old-taxonomy services (reference only)
-- **Notion data pulled on 2026-07-29** — stale after that date. Re-run `fetch-all-notion.mjs` for fresh data
-- **Sanity token needs Editor role** for create/update/delete. Viewer-only tokens fail on migration scripts
-- **CLAUDE.md** is the agent context file. Update it after significant sessions
-- **This file** (`pending.md`) is the living task tracker. Keep synced
+Full rules: [`governance.md`](governance.md).
+
+- Neon shared SSOT (vedanshu + wugweb + `both`)
+- Owner ≠ Author
+- Industry master (Global Settings) ← content refs
+- `reference/` / `component/` enrich by identity — **keep both; do not delete**
+- Rule 1 free-tier (incl. Sanity) · Rule 2 R2 ceiling
+- Media path map: `public/assets/<path>` ↔ `/assets/<path>` ↔ R2 `assets/<path>`
+- Full audit: [`docs/framer-full-audit.md`](docs/framer-full-audit.md)
