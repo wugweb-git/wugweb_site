@@ -4,7 +4,7 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-**Last verified:** 2026-08-05 (deep audit run; blog teaser thumbnails; asset path fixes; owner backfill live).
+**Last verified:** 2026-08-05 (deep audit run; blog teaser thumbnails; asset path fixes; owner backfill live; R2 cutover; contact mirror; preview mode).
 
 Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-full-audit.md). Kits type roles: [`design.md`](design.md) §3 (+ C-6 superseded).
 
@@ -50,11 +50,11 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 | 30/covers | Blog covers | 43/96 have `coverPath` (21 unique images, all on disk + R2) |
 | 25 | Team photos | Verify on deploy; historically Framer CDN hotlinks |
 | 32 | Legal / SEO pages | privacy, terms, refund — hardcoded, not Sanity |
-| 33 | R2 cutover | **81 `tools/*` icons still missing from R2 map** (0.23 MiB) — upload via `scripts/upload-tools-gap-to-r2.mjs` before setting `PUBLIC_USE_R2_ASSETS=1`. Work media verified live. |
+| 33 | R2 cutover | **Done 2026-08-05** — all 512 local files mapped + live (81 tools gap uploaded); `PUBLIC_USE_R2_ASSETS=1` set in `wrangler.jsonc`. |
 | 34 | Case studies without media | CSV-only clients (Bodyshop, Paragon, etc.) |
 | — | Neon re-sync | **Ran 2026-08-05** — 1430 docs owner-aware (asset 553, taxonomy 327, platformProfile 59, syncStatus 21). **Do not re-run unless asked.** Neon audit findings: 8 stale caseStudy rows, `[object Object]` slug bug in older rows, empty `content_relations`. |
-| 22 | Preview mode | `getPreviewClient()` unused |
-| 27 | Contact → Sanity | Neon stores submissions; not mirrored to `contactSubmission` docs |
+| 22 | Preview mode | **Done** — middleware reads `__sanity_preview` cookie → `locals.previewToken`; `/blog/[slug]` uses `getPreviewClient(token)` for draft content. Other pages can opt in the same way. |
+| 27 | Contact → Sanity | **Done** — `/api/contact` mirrors each submission into a `contactSubmission` doc (best-effort) so leads show in Studio; Neon write unchanged. |
 | — | Audit residuals | 13 assets were missing-on-disk → **6 path-fixed in Sanity**; 7 remain (5 Generated SVG + `more/home/Home.mp4` case). 22 disk files unreferenced in Sanity (framer case-study images + more/ videos). |
 
 ---
@@ -82,6 +82,9 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 - [x] **Blog teaser thumbnails** — BaseLayout blog block now Sanity-driven (latest 3 posts) with cover thumbnails; was hardcoded text-only links with a stale post.
 - [x] **Asset path case fixes** — 6 Sanity asset records with wrong-case paths (`Xsafe_about.mp4` → `xsafe-about.mp4`, etc.) patched; case studies already used correct lowercase paths.
 - [x] **Audit script repairs** — `data-audit.mjs` GROQ parse error + `inBoth` iterable bug + 10s query timeout all fixed; full audit now completes.
+- [x] **#33 R2 cutover** — `upload-tools-gap-to-r2.mjs` (parallel) filled the 81-file `tools/*` gap; map now covers all 512 local files, 0 missing; `PUBLIC_USE_R2_ASSETS=1` in `wrangler.jsonc`.
+- [x] **#27 Contact → Sanity** — `/api/contact` creates a `contactSubmission` doc per lead (best-effort) so submissions are visible in Studio.
+- [x] **#22 Preview mode** — middleware exposes `__sanity_preview` cookie as `locals.previewToken`; `/blog/[slug]` uses `getPreviewClient(token)` to load drafts.
 - [x] R2 `wugweb-assets` + path map + Rule 2 · dual-serve until cutover
 - [x] Content ↔ asset mapping (caseStudy/client/page/service/post paths)
 - [x] Blog covers from Framer (43/96) · case-study media from `assets/assets/client`
@@ -124,9 +127,9 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 | taxonomy | 327 | 327 | tech-stack ~96 terms / **89** with iconPath; platform, tag, types, dept, country |
 | platformProfile | 59 | 59 | Presence + credentials |
 | engagement | 70 | 70 | |
-| contactSubmission | 0 | 0 | #27 open |
+| contactSubmission | 0 | 0 | #27 wired: `/api/contact` mirrors to Sanity |
 
-**Local media:** `public/assets` (512 files) · R2 map 431 + **81 tools gap pending upload** · dual-serve until cutover.  
+**Local media:** `public/assets` (512 files) · R2 map **512 (0 missing)** · **cutover live** (`PUBLIC_USE_R2_ASSETS=1`).  
 **Notion = seed only.** Do not reset Sanity to Notion.  
 **Folders:** keep `reference/` + `component/` (see `docs/framer-full-audit.md`).  
 **Neon sync:** user-controlled — do not run `sync-sanity-to-neon.mjs` or `/api/sync` unless asked.

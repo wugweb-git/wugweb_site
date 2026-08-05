@@ -5,7 +5,7 @@ Canonical AI memory for the wugweb.com repo. Read this before any session.
 ## Project Overview
 
 wugweb.com is a marketing website for Wugweb, a product & experience architecture studio.
-It is built as an **Astro 5** site with **server-side rendering** on **Cloudflare Pages**, content managed in **Sanity**, and structured content synced to **Neon Postgres**. The project is migrating off a Framer-hosted predecessor; assets are being moved from `framerusercontent.com` to local `public/assets/`.
+It is built as an **Astro 5** site with **server-side rendering** on **Cloudflare Pages**, content managed in **Sanity**, and structured content synced to **Neon Postgres**. The project is migrating off a Framer-hosted predecessor; media lives in R2 (`wugweb-assets`) with path-mapped keys, dual-served from `public/assets/` until cutover.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ It is built as an **Astro 5** site with **server-side rendering** on **Cloudflar
 - **Animations**: `motion` v12 (vanilla API), client-side only
 - **CMS**: Sanity (`splvhmk1` / `production`) — admin panel
 - **Database**: Neon Postgres via `@neondatabase/serverless` — structured content SSOT
-- **Media**: local `public/assets/` for now; R2 intended but not set up
+- **Media**: R2 bucket `wugweb-assets` (Standard); keys `assets/<path>` ↔ site `/assets/<path>`; dual-serve from `public/assets/` until cutover. Content links via path fields (`thumbnailPath`, `coverPath`, `logoPath`, …) — see `docs/content-assets.md`. Docs: `docs/r2-assets.md`
 - **Deployment**: Cloudflare Pages (`wugweb.pages.dev`), Git-connected
 
 ## Technology Stack
@@ -38,36 +38,43 @@ Key dependencies (from `package.json`):
 
 ### Sanity schema types (`sanity/schemaTypes/`)
 
-Documents: `service`, `caseStudy`, `post`, `person`, `singletonPage`, `siteSettings`, `contactSubmission`, `syncStatus`, `client`, `industry`, `engagement`, `taxonomy`, `asset`.
+Documents: `service`, `caseStudy`, `post`, `person`, `singletonPage`, `siteSettings`, `contactSubmission`, `syncStatus`, `client`, `industry`, `engagement`, `taxonomy`, `asset`, `platformProfile` (Studio: Presence).
 Objects: `blockContent`, plus custom block objects used inside portable text.
 
-Studio desk structure: Dashboard → Site Settings → Pages → Case Studies → Blog Posts → Services → Taxonomy → CRM → Contact Submissions.
+Studio desk structure: Dashboard → Editorial → Business → Brand & Media → Global Settings (Platforms, Tools, Tags, types, **Industry master**, Presence, …) → System.
+
+**Industry:** Global Settings holds the master (`industry` docs from Wugweb taxonomy). Content maps via `caseStudy.industryRef` and `client.industry`. See `governance.md` §3.
+
+**`reference/` + `component/`:** keep both. Design/content capture for enriching masters (tools, platforms, industries, page media). Key marketing HTML now captured (home/faq/work/blog/lead-gen/industries/subscription) plus service pages. Extract by identity only — **not** a full Framer dump and **not** visual/animation parity. Full matrix: `docs/framer-full-audit.md`. Do not delete.
 
 ### Neon schema (`neon/schema.sql`)
 
 Tables: `entities`, `content_items`, `content_relations`, `sync_log`, `visitor_profiles`, `contact_submissions`.
 
-Ownership model: every `content_items` row has an `owner` column referencing `entities`. Primary entities seeded: `vedanshu` and `wugweb`.
+Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Content `owner` ∈ {`vedanshu`, `wugweb`, `both`}. **Author ≠ Owner** — author is a `person` byline ref; owner is governance. See [`governance.md`](governance.md).
 
-### Current content state (verified against codebase)
+**Notion is seed only.** Sanity already exceeds Notion exports (e.g. ~82 case studies vs ~20 Notion CS, ~96 posts vs ~52, ~472 assets vs ~128 sheet rows). Never reset to Notion.
+
+### Current content state (verified 2026-08-05 against Sanity)
 
 | Type | Sanity | Neon | Notes |
 |---|---|---|---|
-| caseStudy | 82 | 82 | 20 Notion + 62 CSV/writeup |
-| post | 75 | 75 | 52 Notion + 13 codebase + 10 CSV |
-| person | 12 | 12 | 11 team + Wugweb Design author |
-| client | 106 | 106 | From Notion |
-| industry | 66 | 66 | From Notion |
-| service | 12 | 12 | 6 pillars + 6 old |
-| singletonPage | 17 | 17 | All pages |
-| siteSettings | 1 | 1 | SEO + contact |
-| syncStatus | 17 | 17 | Notion↔Sanity↔Neon comparisons |
-| asset | 113 | 113 | 66 matched to local files |
-| taxonomy | 85 | 85 | Sub-services as taxonomy terms |
-| engagement | 0 | 0 | Schema exists, empty |
-| contactSubmission | 0 | 0 | Read-only schema, no data yet |
+| caseStudy | 82 | 90 (8 stale) | owner: 82 wugweb |
+| post | 96 | 96 | owner: 96 wugweb; body ~75; coverPath 43 |
+| person | 12 | 12 | Author byline ≠ Owner |
+| client | 106 | 106 | owner: 104 wugweb / 1 both / 1 vedanshu |
+| industry | 66 | 66 | **Master** (Global Settings); content refs map here |
+| service | 19 | 19 | |
+| singletonPage | 18 | 18 | |
+| siteSettings | 1 | 1 | |
+| syncStatus | 21 | 21 | Incl. global-config |
+| asset | 553 | 553 | owner: 187 wugweb / 366 both; 512 on disk, all R2-mapped |
+| taxonomy | 327 | 327 | platform, tech-stack, tag, types, dept, country; 89 tool iconPath |
+| platformProfile | 59 | 59 | Presence + credentials |
+| engagement | 70 | 70 | |
+| contactSubmission | 0 | 0 | #27 wired: /api/contact mirrors to Sanity |
 
-**Total in Neon: 456 documents**.
+**Neon:** last full sync 2026-08-05 (1430 docs, owner-aware). **Neon sync is user-controlled — do not run unless asked.** Neon audit notes: 8 stale caseStudy rows, `[object Object]` slug bug in old rows, `content_relations` empty.
 
 ## Routes (`src/pages/`)
 
@@ -85,7 +92,7 @@ Ownership model: every `content_items` row has an `owner` column referencing `en
 - 404 `/404`
 - API: `/api/contact`, `/api/personalize`, `/api/preview`, `/api/sync`
 
-Note: `footer/sitemap` exists but is not linked in the shared nav.
+Note: `footer/sitemap` is linked from `SiteFooter` (Sitemap).
 
 ## Components (`src/components/`)
 
@@ -98,49 +105,51 @@ Note: `footer/sitemap` exists but is not linked in the shared nav.
 See `pending.md` for the authoritative task tracker. High-level state:
 
 ### Completed
-- Sanity project and Studio deployed.
-- Neon schema applied; 456 documents synced from Sanity.
-- All main marketing routes exist and wire to Sanity data.
-- Design token system in `src/styles/global.css`.
-- 252 Framer CDN files downloaded to `public/assets/framer/`.
-- Cloudflare Pages build passes and deploys.
+- Sanity project and Studio deployed (Global Settings masters, Presence, Industry master).
+- Neon schema applied; owner-aware sync 2026-08-05 (1430 docs: assets, taxonomy, platformProfile, syncStatus included).
+- Main marketing routes wire to Sanity; path-mapped media served from **R2 (cutover done 2026-08-05)**, no longer dual-serve.
+- Design tokens in `global.css` (component migration incomplete).
+- Asset registry 553 Sanity docs / 512 local files — **all R2-mapped and live**.
+- Governance: Rule 1 + Rule 2 + shared ownership + Notion seed (`governance.md`).
+- Ownership backfill (#40): client/caseStudy/post/asset all have `owner`.
+- Blog teaser on every page now Sanity-driven with cover thumbnails.
+- Contact form mirrors submissions to Sanity `contactSubmission` docs (#27).
+- Preview mode wired: `/api/preview` cookie → `getPreviewClient` on `/blog/[slug]` (#22).
 
-### Critical / blocked
-- Sanity token permissions: current token can create/replace but update/delete fails for some operations. Needs fresh Editor token from `sanity.io/manage`.
-- Design token → component migration: tokens exist, but components still use hardcoded `px`/`rem`/`clamp()` values.
-- Frontend → Neon swap: helpers and SQL constants exist, but pages still read from Sanity CDN.
+### Critical / open
+- Design token → component migration (hardcoded px/rem in many `.astro` files).
+- Frontend → Neon swap deferred until UI/brand mapping done. **Neon sync user-controlled — don't run unless asked.**
+- Reference/component identity enrichment (tools/platforms/industries/page media).
+- Contact form production harden deferred to end (Neon write still unverified in prod).
+- Sanity token: do not rotate unless user asks.
 
-### Medium priority
-- Homepage UI does not match the live wugweb.com chat-message hero.
-- Footer pages partially stubbed.
-- About page stats are guessed; team photos hotlinked from Framer CDN.
-- Client logos on homepage are 13 hardcoded Framer CDN URLs despite 106 clients in Sanity.
-- Contact form may 500 at runtime (Neon Workers connection deferred).
-
-### Low priority / deferred
-- Sanity preview mode (`getPreviewClient()` exists but unused).
-- 25 of 75 blog posts still lack body content.
-- Image rendering from Sanity (`urlFor()` helper unused in pages).
-- R2 media bucket not set up.
-- Engagement and taxonomy docs empty.
+### Medium / low (see pending.md)
+- About stats/imagery; service detail schema vs hardcoded tools; blog body (~21 posts need Studio content); team photos off Framer CDN; legal pages; 8 stale Neon caseStudy rows + `content_relations` empty; ~22 unreferenced disk files under framer/ + more/.
+- Homepage chat hero cancelled (keep video hero). Client logos already local.
 
 ## Working Agreements
 
-- **Always read `pending.md` at the start of a session and update it at the end.**
+- **Always read `pending.md` and `governance.md` at the start of a session; update them at the end.**
 - **Read `CLAUDE.md` before touching `wrangler.jsonc`, deploy config, or build tooling.** Many values here were learned from failed builds.
 - **Do not change text to pure white** — live colours are deliberate (`text: #f4f4f4`, `muted: #bababa`, surfaces `#191919`/`#2b2b2b`).
 - **Do not lower `.node-version`** below 22 without a specific reason. Wrangler 4.x requires Node ≥22 and a previous pin to 20 caused a real regression.
-- **Neon is SSOT** for structured content. Sanity is the admin panel. Media belongs in R2 (not implemented yet).
+- **Neon is shared SSOT** for structured content (Vedanshu + Wugweb). Sanity is the admin panel. Media belongs in R2 (`wugweb-assets`).
+- **Owner ≠ Author** — owner is `vedanshu` \| `wugweb` \| `both`; author is a `person` byline. See `governance.md`.
+- **Notion is seed only** — do not reset Sanity/Neon to Notion; Sanity already has more content.
 - **Content comes from hardcoded frontend records or user-provided sources**, not from Framer reference pages or third-party review sites.
+- **Service page copy (loose reference):** `/Users/abcom/Documents/VS/wugweb artworks/Wugweb_Services 2026.md` — use for inspiration on `/services` and `/services/[slug]` when helpful. Not a tight requirement; do not force 1:1 parity.
 - **Do not remove `blockContent` from the Sanity schema types array** — doing so causes `Unknown type: blockContent` errors across documents.
+- **Rule 1 — Never exceed any free-tier limit** (Sanity, Cloudflare, Neon, Notion, GitHub, etc.). Prefer free-tier-safe alternatives; do not force plan upgrades.
+- **Rule 2 — R2 MUST NOT EXCEED FREE TIER** (10 GB storage / 1M Class A / 10M Class B; Standard only). Soft ceiling 9.5 GiB. One bucket `wugweb-assets`. Path map: `public/assets/<path>` ↔ `/assets/<path>` ↔ R2 key `assets/<path>`. See `.cursor/rules/free-tier-limits.mdc` and `docs/r2-assets.md`.
 
 ## Important Decisions
 
 - **Framework**: Astro 5 SSR on Cloudflare Pages, not Framer.
 - **DB driver**: `@neondatabase/serverless` instead of `pg` (Workers-compatible).
-- **Ownership model**: `entities` table with `vedanshu` and `wugweb` as peer rows; every content item has an `owner`.
+- **Ownership**: Neon shared by Vedanshu + Wugweb. Entities `vedanshu`, `wugweb`, and token `both`. Content owner ∈ {vedanshu, wugweb, both}. Vedanshu owns the company but also has personal (non-Wugweb) work; he can also be a Wugweb client. Full rules: `governance.md`.
+- **Author ≠ Owner**: posts use `author` → `person`; ownership is a separate field.
 - **6-pillar taxonomy**: Strategy, Brand, Experience, Engineering, Growth, Operations. Notion's older 8-service taxonomy is reference-only.
-- **Media**: R2 eventually; currently local `public/assets/`.
+- **Media**: R2 `wugweb-assets` with path-mapped keys; local `public/assets` dual-serve until `PUBLIC_USE_R2_ASSETS=1`.
 - **Sanity token role**: migrations require an Editor token, not Viewer.
 - **Build command**: `npm run build` → `npx wrangler pages deploy dist`. The dashboard's Deploy command must be `npx wrangler pages deploy dist`, not `npx wrangler deploy`.
 
@@ -150,7 +159,10 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - `.node-version`: do not lower below 22.
 - Live colour values in `src/styles/global.css`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919`/`#2b2b2b`.
 - `blockContent` registration in Sanity schema types array.
-- Ownership model (`entities` table + `owner` column) when adding new Neon-backed content.
+- Ownership model: keep `entities` + `owner` column; allow `vedanshu` \| `wugweb` \| `both`; do not collapse everything to a single owner; do not merge Author into Owner.
+- Free-tier ceilings for any vendor — never implement features that require paid plans unless the user explicitly asks.
+- R2 Rule 2: never exceed free R2; never use Infrequent Access; never invent non-`assets/` key prefixes without an explicit migration.
+- Notion-as-seed: never wipe Sanity/Neon to match Notion volume.
 
 ## Deployment Notes
 
@@ -160,6 +172,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
   - `DATABASE_URL` — Neon connection string
   - `SANITY_SYNC_TOKEN` — auth token for `/api/sync`
 - Hyperdrive is **not wired**. The `HYPERDRIVE` binding is absent from `wrangler.jsonc`; the code falls back to `DATABASE_URL`.
+- R2 binding `ASSETS_BUCKET` → bucket `wugweb-assets`. Public base var: `PUBLIC_R2_ASSETS_BASE`. Upload: `node scripts/upload-assets-to-r2.mjs`.
 - If runtime shows `Invalid binding "SESSION"`, create a KV namespace named `SESSION` and add it to `wrangler.jsonc`.
 
 ## Known Technical Debt
@@ -169,27 +182,31 @@ See `pending.md` for the authoritative task tracker. High-level state:
 3. **Contact form runtime reliability** — `POST /api/contact` stores to Neon, but Neon Workers connection was deferred; verify in production.
 4. **Framer CDN hotlinks remain** — client logos on homepage and some team photos still use `framerusercontent.com`.
 5. **Sanity token permissions** — current token cannot reliably update/delete; migration scripts need a fresh Editor token.
-6. **No R2 media bucket** — media plan calls for R2; implementation pending.
+6. **R2 cutover pending** — objects uploaded to `wugweb-assets`; site still dual-serves `public/assets` until `PUBLIC_USE_R2_ASSETS=1`.
 7. **Preview mode unused** — `getPreviewClient()` exists but no page wires it up.
 
 ## Current Priorities
 
-1. Resolve Sanity token permissions (get Editor token).
-2. Complete design token → component migration.
-3. Swap frontend pages from Sanity CDN reads to Neon queries (use `src/lib/content.ts`).
-4. Migrate remaining Framer CDN hotlinks to local assets.
-5. Stabilize contact form in production.
+1. Deploy / keep pages.dev in sync with local (Framer service slugs must not 404).
+2. Ownership backfill + Neon `both` entity (`governance.md`).
+3. Reference/component identity enrichment → masters + assets (pending #42; see `docs/framer-full-audit.md`).
+4. Design token → component migration (Framer style board not 1:1 applied).
+5. Frontend → Neon swap (after UI/brand mapping).
+6. Blog/media gaps, team photos, R2 cutover, Neon re-sync of new types.
+7. Contact form production harden (end). **Do not rotate Sanity token unless asked.**
 
 ## Next-Session Checklist
 
 Before starting work:
-- [ ] Read `pending.md`.
+- [ ] Read `pending.md` (open work).
+- [ ] Read `governance.md` (Rule 1/2, ownership, industry master, Notion seed).
 - [ ] Read this file (`CLAUDE.md`).
-- [ ] Confirm Node version ≥22 (`cat .node-version`).
-- [ ] Run `npm run build` to verify baseline.
+- [ ] Skim `docs/framer-full-audit.md` if touching Framer/reference/component.
+- [ ] Confirm Node ≥22 (`cat .node-version`). Prefer `npm run build` before large deploys.
 
 Before finishing work:
 - [ ] Update `pending.md` with completed/in-progress items.
+- [ ] Update `governance.md` if ownership / source-of-truth / free-tier rules changed.
 - [ ] Update `CLAUDE.md` if any architecture/deploy facts changed.
 - [ ] Ensure no secrets were committed.
 
@@ -200,13 +217,27 @@ Before finishing work:
 npm install
 npm run dev      # runs `wrangler types` first
 npm run build
-npm run deploy   # manual deploy; otherwise Git-connected auto-deploys
+npm run deploy   # npm run build && wrangler pages deploy dist
+
+# Framer audit / extract / toolkit salvage (identity only; not visual parity)
+# See docs/framer-full-audit.md — keep reference/ + component/
+node scripts/audit-framer-service-pages.mjs
+node scripts/extract-framer-service-pages.mjs
+node scripts/salvage-framer-toolkits.mjs
 
 # Sanity Studio
 cd sanity && npm install && npx sanity dev  # localhost:3333
 
 # Neon schema
 node scripts/apply-schema.cjs
+
+# R2 media upload (path-mapped assets/<path>; free-tier guarded)
+DRY_RUN=1 node scripts/upload-assets-to-r2.mjs
+node scripts/upload-assets-to-r2.mjs
+
+# Map R2/local assets → Sanity content path fields
+DRY_RUN=1 node scripts/map-assets-to-content.mjs
+node scripts/map-assets-to-content.mjs
 
 # Sanity → Neon sync (local or remote via API)
 curl -X POST https://wugweb.pages.dev/api/sync \
