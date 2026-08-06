@@ -73,17 +73,17 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 
 ---
 
-## ❌ Cancelled / deferred / out of scope
+## ⏸️ Deferred
 
 | Item | Status | Reason |
 |---|---|---|
-| Homepage chat hero | ❌ Cancelled | Keep video hero |
-| DNS cutover | ❌ Out of scope | User excluded |
-| Hyperdrive / SESSION KV | ❌ Deferred | Only if runtime needs |
-| footer/subscription | ❌ Deferred | Payment gateway scoping |
-| Live Studio dashboard widgets | ❌ Deferred | Structure filters crashed Studio |
-| Credential rotation | ❌ Not needed | Unless user asks |
-| about bento imagery | ❌ Blocked | No source assets provided |
+| Homepage chat hero | ⏸️ Deferred | Keep video hero |
+| DNS cutover | ⏸️ Deferred | User excluded; out of scope unless asked |
+| Hyperdrive / SESSION KV | ⏸️ Deferred | Only if runtime needs |
+| footer/subscription | ⏸️ Deferred | Payment gateway scoping |
+| Live Studio dashboard widgets | ⏸️ Deferred | Governed by Rule 1 (free-tier credits) — no live widgets per governance.md §Rule 1 + line 209; early experiment crashed Studio, rule now prevents repeat |
+| Credential rotation | ⏸️ Deferred | Unless user asks |
+| about bento imagery | ⏸️ Deferred | Blocked on source assets from user |
 
 ---
 
