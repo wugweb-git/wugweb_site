@@ -1,13 +1,9 @@
 ---
-export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { postBySlugQuery, postsListQuery } from '../../lib/queries';
 
-export async function getStaticPaths() {
-  const list = await sanityClient.fetch(postsListQuery).catch(() => []);
-  return list.map((p: any) => ({ params: { slug: p.slug } }));
-}
+
 
 const { slug } = Astro.params;
 

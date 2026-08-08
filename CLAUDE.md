@@ -118,6 +118,8 @@ Brand→Growth→Operations→Experience). Brand assets: `assets/brand/` (SVG lo
 See `pending.md` for the authoritative task tracker. High-level state:
 
 ### Completed
+- **Service Pages UI/UX Revamp (2026-08-07)** — Upgraded `[slug].astro` to a premium glassmorphic layout mirroring the Framer reference, with dynamic theming injected via page-level css variables.
+- **Audits completed and archived** — All tracking docs, brand guidelines, and scratchpads have been successfully resolved.
 - Sanity project and Studio deployed (Global Settings masters, Presence, Industry master).
 - Neon schema applied; owner-aware sync 2026-08-05 (1430 docs: assets, taxonomy, platformProfile, syncStatus included).
 - Main marketing routes wire to Sanity; path-mapped media served from **R2 (cutover done 2026-08-05)**, no longer dual-serve.
@@ -140,7 +142,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - Frontend → Neon swap deferred until UI/brand mapping done. **Neon sync user-controlled — don't run unless asked.**
 - Contact form production harden deferred to end (Neon write still unverified in prod; local dev 500 = no DATABASE_URL binding).
 - Sanity token: do not rotate unless user asks.
-- **Remaining backlog** (pending.md): contact page redesign (driftime — needs reference screenshot), deep service-copy pass, trust-badge logo assets, prod verify of `/api/contact` + `/api/subscribe`.
+- **Remaining backlog** (pending.md): contact page redesign (driftime — needs reference screenshot), trust-badge logo assets, prod verify of `/api/contact` + `/api/subscribe`.
 
 ### Medium / low (see pending.md)
 - About stats/imagery; service detail schema vs hardcoded tools; blog covers (53/96 missing — user will supply); team photos done (Anastasia/Wugweb Design no portrait); legal pages; 8 stale Neon caseStudy rows + `content_relations` empty; ~22 unreferenced disk files under framer/ + more/.

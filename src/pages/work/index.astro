@@ -1,7 +1,4 @@
 ---
-export const prerender = true;
-import fs from 'node:fs';
-import path from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
 import { caseStudiesListQuery, singletonPageQuery } from '../../lib/queries';
@@ -50,13 +47,6 @@ function findThumbFallback(slug: string, client: string) {
     }
   }
 
-  // Only return the guessed local path if the file actually exists —
-  // otherwise the <video> renders a broken/blank tile.
-  const localSlug = client.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  const guessed = path.join(process.cwd(), 'public', 'assets', 'work', localSlug, `${localSlug}-thumb.mp4`);
-  if (fs.existsSync(guessed)) {
-    return `/assets/work/${localSlug}/${localSlug}-thumb.mp4`;
-  }
   return '';
 }
 

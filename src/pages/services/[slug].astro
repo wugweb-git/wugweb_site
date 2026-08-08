@@ -1,5 +1,4 @@
 ---
-export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
 import { serviceBySlugQuery, caseStudiesListQuery, postsListQuery } from '../../lib/queries';
@@ -17,19 +16,7 @@ const FRAMER_TO_PILLAR: Record<string, string> = {
   'lead-generation': 'growth',
 };
 
-export async function getStaticPaths() {
-  const pillar = ['strategy', 'brand', 'experience', 'growth', 'engineering', 'operations'];
-  const framer = [
-    'brand-strategy',
-    'experience-design',
-    'martech-genai',
-    'web-app-development',
-    'qa-testing',
-    'no-code-solutions',
-    'lead-generation',
-  ];
-  return [...pillar, ...framer].map((s) => ({ params: { slug: s } }));
-}
+
 
 const slug = Astro.params.slug || '';
 
@@ -109,327 +96,461 @@ if (!service) {
   title={service.seoTitle || service.title}
   description={(service.seoDescription || (typeof service.body === 'string' ? service.body : service.summary || service.subtitle || '')).slice(0, 160)}
 >
-  <!-- HERO -->
-  <section class="detail-hero">
-    <div class="wrap detail-hero-content">
-      <p class="eyebrow"><a href="/services">Services</a></p>
-      <h1 class="t-display" data-reveal>{service.title}</h1>
-      <p class="hero-sub" data-reveal>{service.subtitle}</p>
-      <p class="hero-text" data-reveal>{service.heroText}</p>
-      <ul class="service-tags" data-reveal>
-        {(safeArr(service.tags, [])).map((t: string) => <li>{t}</li>)}
-      </ul>
-      <a href="/contact-us" class="btn btn-solid" data-reveal>Get in Touch</a>
-    </div>
-  </section>
-
-  <!-- BODY -->
-  <section class="wrap detail-body">
-    <p data-reveal>{typeof service.body === 'string' ? service.body : (service.fullDescription || service.summary || '')}</p>
-  </section>
-
-  <!-- STATS -->
-  {(service.stats?.length > 0) && (
-    <section class="wrap svc-stats" data-scroll="rise">
-      <ul>
-        {service.stats.map((s: any) => (
-          <li data-reveal>
-            <span class="svc-stat-n">{s.n}</span>
-            <p class="svc-stat-label">{s.label}</p>
-          </li>
-        ))}
-      </ul>
+  <div class="service-page-wrapper" style={`--theme-base: var(--svc-${pillarSlug}, var(--color-accent-primary)); --theme-dark: var(--svc-${pillarSlug}-dark, var(--color-ash)); --theme-light: var(--svc-${pillarSlug}-light, var(--color-surface-inverse)); --theme-gradient: var(--gradient-${pillarSlug}, var(--gradient-brand));`}>
+    
+    <!-- HERO -->
+    <section class="detail-hero">
+      <div class="hero-glow" data-reveal></div>
+      <div class="wrap detail-hero-content">
+        <p class="eyebrow"><a href="/services">Services</a></p>
+        <h1 class="t-display" data-reveal>{service.title}</h1>
+        <p class="hero-sub" data-reveal>{service.subtitle}</p>
+        <p class="hero-text" data-reveal>{service.heroText}</p>
+        <ul class="service-tags" data-reveal>
+          {(safeArr(service.tags, [])).map((t) => <li>{t}</li>)}
+        </ul>
+        <a href="/contact-us" class="btn btn-solid" data-reveal>Get in Touch</a>
+      </div>
     </section>
-  )}
 
-  <!-- CAPABILITIES -->
-  <section class="wrap capabilities-section">
-    <p class="eyebrow" data-reveal>What we can do</p>
-    <div class="caps-grouped">
-      {(safeArr(service.capabilities, [])).map((c: any) => (
-        <div class="cap-group" data-reveal>
-          <span class="cap-group-n">{c.n}</span>
-          <h3 class="cap-group-title">{c.title}</h3>
-          <ul class="cap-group-items">
-            {c.items.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
+    <!-- BODY -->
+    <section class="wrap detail-body">
+      <div class="glass-panel body-glass" data-reveal>
+        <p>{typeof service.body === 'string' ? service.body : (service.fullDescription || service.summary || '')}</p>
+      </div>
+    </section>
 
-  <!-- WHY -->
-  <section class="wrap why-section">
-    <p class="eyebrow" data-reveal>Why us?</p>
-    <h2 data-reveal>Built to deliver lasting impact.</h2>
-    <div class="why-grid">
-      {(safeArr(service.why, [])).map((w: any) => (
-        <div class="why-item" data-reveal>
-          <h3>{w.title}</h3>
-          <p>{w.body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
+    <!-- STATS -->
+    {(service.stats?.length > 0) && (
+      <section class="wrap svc-stats" data-scroll="rise">
+        <ul>
+          {service.stats.map((s) => (
+            <li class="glass-panel stat-card" data-reveal>
+              <span class="svc-stat-n">{s.n}</span>
+              <p class="svc-stat-label">{s.label}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
-  <!-- APPROACH -->
-  <section class="wrap approach-section">
-    <p class="eyebrow" data-reveal>Our Approach</p>
-    <h2 data-reveal>A collaborative process rooted in strategic clarity.</h2>
-    <div class="approach-steps">
-      {(safeArr(service.approach, [])).map((a: any) => (
-        <div class="approach-step" data-reveal>
-          <span class="step-n">{a.n}</span>
-          <h3>{a.title}</h3>
-          <p>{a.body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- FRAMEWORK (How we work) -->
-  {(service.framework?.length > 0) && (
-    <section class="wrap framework-section">
-      <p class="eyebrow" data-reveal>How we work</p>
-      <h2 data-reveal>Our {service.title} Framework</h2>
-      <div class="framework-flow">
-        {service.framework.map((f: any) => (
-          <div class="framework-phase" data-reveal>
-            <h3 class="framework-phase-title">{f.phase}</h3>
-            <p class="framework-outcome">{f.outcome}</p>
-            {f.includes?.length > 0 && (
-              <ul class="framework-includes">
-                {f.includes.map((i: string) => <li>{i}</li>)}
-              </ul>
-            )}
+    <!-- CAPABILITIES -->
+    <section class="wrap capabilities-section">
+      <p class="eyebrow" data-reveal>What we can do</p>
+      <div class="caps-grouped">
+        {(safeArr(service.capabilities, [])).map((c) => (
+          <div class="glass-panel cap-group" data-reveal>
+            <span class="cap-group-n">{c.n}</span>
+            <h3 class="cap-group-title">{c.title}</h3>
+            <ul class="cap-group-items">
+              {c.items.map((item) => <li>{item}</li>)}
+            </ul>
           </div>
         ))}
       </div>
     </section>
-  )}
 
-  {safeArr(service.process, null) && (
-  <!-- PROCESS FLOW -->
-  <section class="wrap process-section">
-    <p class="eyebrow" data-reveal>How we do it</p>
-    <h2 data-reveal>The process model that we follow gives us the most important advantage — the product that works.</h2>
-    <div class="process-flow">
-      {service.process.map((p) => (
-        <div class="process-phase" data-reveal>
-          <h3 class="process-phase-title">{p.phase}</h3>
-          <ul class="process-steps">
-            {p.steps.map((s) => <li>{s}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
-  )}
-
-  {(safeArr(service.tools, null)) && (
-  <!-- TOOLKIT -->
-  <section class="wrap toolkit-section">
-    <p class="eyebrow" data-reveal>Our Design Toolkit</p>
-    <h2 data-reveal>Wugweb leverages a diverse toolkit of industry-leading technologies to craft exceptional user experiences.</h2>
-    <div class="toolkit-grid">
-      {service.tools.map((t) => (
-        <div class="toolkit-category" data-reveal>
-          <div class="toolkit-category-header">{t.category}</div>
-          <ul class="toolkit-items">
-            {t.items.map((item) => {
-              const icon = toolIconByName.get(String(item).toLowerCase());
-              return (
-                <li>
-                  {icon ? <img src={icon} alt="" width="16" height="16" loading="lazy" /> : null}
-                  <span>{item}</span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
-  )}
-
-    
-  <!-- FAQ -->
-  <section class="wrap detail-faq">
-    <h2 data-reveal>Frequently asked questions</h2>
-    <div class="faq-list" data-reveal>
-      {(safeArr(service.faqs, [])).map((f: any) => (
-        <details class="faq-item">
-          <summary>{f.q}</summary>
-          <p>{f.a}</p>
-        </details>
-      ))}
-    </div>
-  </section>
-
-  <!-- RELATED WORK -->
-  {relatedWork.length > 0 && (
-    <section class="wrap svc-work">
-      <div class="svc-work-head">
-        <h2 data-reveal>Work that leads with clarity and delivers with impact</h2>
-        <a href="/work" class="btn btn-ghost" data-reveal>View all case studies</a>
-      </div>
-      <ul class="svc-work-grid">
-        {relatedWork.map((cs: any) => (
-          <li data-reveal>
-            <a href={`/work/${cs.slug}`} class="svc-work-card">
-              <h3>{cs.title}</h3>
-              <p>{cs.client}{cs.disciplines?.length ? ` — ${cs.disciplines.join(', ')}` : ''}</p>
-            </a>
-          </li>
+    <!-- WHY -->
+    <section class="wrap why-section">
+      <p class="eyebrow" data-reveal>Why us?</p>
+      <h2 data-reveal>Built to deliver lasting impact.</h2>
+      <div class="why-grid">
+        {(safeArr(service.why, [])).map((w) => (
+          <div class="glass-panel why-item" data-reveal>
+            <div class="why-icon-glow"></div>
+            <h3>{w.title}</h3>
+            <p>{w.body}</p>
+          </div>
         ))}
-      </ul>
-    </section>
-  )}
-
-  <!-- RELATED INSIGHTS -->
-  {relatedPosts.length > 0 && (
-    <section class="wrap svc-insights">
-      <div class="svc-work-head">
-        <h2 data-reveal>Fresh takes from the team</h2>
-        <a href="/blog" class="btn btn-ghost" data-reveal>Visit our Blog</a>
       </div>
-      <ul class="svc-insights-list">
-        {relatedPosts.map((p: any) => (
-          <li data-reveal>
-            <a href={`/blog/${p.slug}`} class="svc-insight-card">
-              {p.category && <span class="eyebrow">{p.category}</span>}
-              <h3>{p.title}</h3>
-            </a>
-          </li>
-        ))}
-      </ul>
     </section>
-  )}
 
-  <!-- DUAL CTA -->
-  <section class="wrap detail-cta">
-    <h2 data-reveal>Ready to talk {service.title}?</h2>
-    <p data-reveal>Let's discuss your project and how we can work together.</p>
-    <div class="detail-cta-btns" data-reveal>
-      <a href="/contact-us" class="btn btn-solid">Let's Talk</a>
-      <a href="/work" class="btn btn-ghost">View Our Work</a>
-    </div>
-  </section>
+    <!-- APPROACH -->
+    <section class="wrap approach-section">
+      <p class="eyebrow" data-reveal>Our Approach</p>
+      <h2 data-reveal>A collaborative process rooted in strategic clarity.</h2>
+      <div class="approach-steps">
+        {(safeArr(service.approach, [])).map((a) => (
+          <div class="approach-step" data-reveal>
+            <div class="step-indicator">
+              <span class="step-n">{a.n}</span>
+              <div class="step-line"></div>
+            </div>
+            <div class="glass-panel step-content">
+              <h3>{a.title}</h3>
+              <p>{a.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
+    <!-- FRAMEWORK (How we work) -->
+    {(service.framework?.length > 0) && (
+      <section class="wrap framework-section">
+        <p class="eyebrow" data-reveal>How we work</p>
+        <h2 data-reveal>Our {service.title} Framework</h2>
+        <div class="framework-flow">
+          {service.framework.map((f) => (
+            <div class="glass-panel framework-phase" data-reveal>
+              <h3 class="framework-phase-title">{f.phase}</h3>
+              <p class="framework-outcome">{f.outcome}</p>
+              {f.includes?.length > 0 && (
+                <ul class="framework-includes">
+                  {f.includes.map((i) => <li>{i}</li>)}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {safeArr(service.process, null) && (
+    <!-- PROCESS FLOW -->
+    <section class="wrap process-section">
+      <p class="eyebrow" data-reveal>How we do it</p>
+      <h2 data-reveal>The process model that we follow gives us the most important advantage — the product that works.</h2>
+      <div class="process-flow">
+        {service.process.map((p) => (
+          <div class="glass-panel process-phase" data-reveal>
+            <h3 class="process-phase-title">{p.phase}</h3>
+            <ul class="process-steps">
+              {p.steps.map((s) => <li>{s}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+    )}
+
+    {(safeArr(service.tools, null)) && (
+    <!-- TOOLKIT -->
+    <section class="wrap toolkit-section">
+      <p class="eyebrow" data-reveal>Our Design Toolkit</p>
+      <h2 data-reveal>Wugweb leverages a diverse toolkit of industry-leading technologies to craft exceptional user experiences.</h2>
+      <div class="toolkit-grid">
+        {service.tools.map((t) => (
+          <div class="glass-panel toolkit-category" data-reveal>
+            <div class="toolkit-category-header">{t.category}</div>
+            <ul class="toolkit-items">
+              {t.items.map((item) => {
+                const icon = toolIconByName.get(String(item).toLowerCase());
+                return (
+                  <li>
+                    {icon ? <img src={icon} alt="" width="16" height="16" loading="lazy" /> : null}
+                    <span>{item}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+    )}
+
+    <!-- FAQ -->
+    <section class="wrap detail-faq">
+      <h2 data-reveal>Frequently asked questions</h2>
+      <div class="glass-panel faq-list" data-reveal>
+        {(safeArr(service.faqs, [])).map((f) => (
+          <details class="faq-item">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- RELATED WORK -->
+    {relatedWork.length > 0 && (
+      <section class="wrap svc-work">
+        <div class="svc-work-head">
+          <h2 data-reveal>Work that leads with clarity and delivers with impact</h2>
+          <a href="/work" class="btn btn-ghost" data-reveal>View all case studies</a>
+        </div>
+        <ul class="svc-work-grid">
+          {relatedWork.map((cs) => (
+            <li data-reveal>
+              <a href={`/work/${cs.slug}`} class="glass-panel svc-work-card">
+                <div class="card-glow"></div>
+                <h3>{cs.title}</h3>
+                <p>{cs.client}{cs.disciplines?.length ? ` — ${cs.disciplines.join(', ')}` : ''}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- RELATED INSIGHTS -->
+    {relatedPosts.length > 0 && (
+      <section class="wrap svc-insights">
+        <div class="svc-work-head">
+          <h2 data-reveal>Fresh takes from the team</h2>
+          <a href="/blog" class="btn btn-ghost" data-reveal>Visit our Blog</a>
+        </div>
+        <ul class="svc-insights-list">
+          {relatedPosts.map((p) => (
+            <li data-reveal>
+              <a href={`/blog/${p.slug}`} class="glass-panel svc-insight-card">
+                <div class="card-glow"></div>
+                {p.category && <span class="eyebrow">{p.category}</span>}
+                <h3>{p.title}</h3>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- DUAL CTA -->
+    <section class="wrap detail-cta">
+      <div class="glass-panel cta-panel" data-reveal>
+        <div class="cta-glow"></div>
+        <h2>Ready to talk {service.title}?</h2>
+        <p>Let's discuss your project and how we can work together.</p>
+        <div class="detail-cta-btns">
+          <a href="/contact-us" class="btn btn-solid">Let's Talk</a>
+          <a href="/work" class="btn btn-ghost">View Our Work</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </BaseLayout>
 
 <style>
-  .detail-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
+  /* Base Glass Panel Utilities */
+  .glass-panel {
+    background: color-mix(in srgb, var(--neutral-8) 60%, transparent);
+    border: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent);
+    backdrop-filter: var(--glass-medium);
+    -webkit-backdrop-filter: var(--glass-medium);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .glass-panel:hover {
+    border-color: color-mix(in srgb, var(--theme-base) 30%, transparent);
+  }
+
+  /* Typography Enhancements */
+  .detail-hero { 
+    padding-block: var(--space-section-xl) var(--space-section-md); 
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-glow {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 80vh;
+    background: radial-gradient(circle, color-mix(in srgb, var(--theme-base) 15%, transparent) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
   .detail-hero .eyebrow a { color: var(--fg-muted); text-decoration: none; }
   .detail-hero .eyebrow a:hover { color: var(--fg); }
-  .detail-hero h1 { margin-top: var(--gap-4); max-width: 16ch; }
+  .detail-hero h1 { 
+    margin-top: var(--gap-4); 
+    max-width: 16ch; 
+    background: var(--theme-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding-bottom: 0.1em;
+  }
+  
   .hero-sub { font-size: var(--t-xl); color: var(--fg); margin-top: var(--gap-2); line-height: var(--lh-xl); }
   .hero-text { margin-top: var(--gap-6); max-width: 55ch; font-size: var(--t-l); line-height: var(--lh-l); }
+  
   .service-tags { list-style: none; margin: var(--gap-6) 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
-  .service-tags li { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-1) var(--gap-3); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .service-tags li { 
+    font-family: var(--font-mono); 
+    font-size: var(--t-micro); 
+    padding: var(--gap-2) var(--gap-4); 
+    border: 1px solid color-mix(in srgb, var(--theme-base) 30%, transparent); 
+    border-radius: var(--r-pill); 
+    color: var(--fg);
+    background: color-mix(in srgb, var(--theme-base) 10%, transparent);
+    backdrop-filter: var(--glass-light);
+    -webkit-backdrop-filter: var(--glass-light);
+  }
+  
   .detail-hero .btn { margin-top: var(--gap-4); display: inline-flex; }
 
-  .detail-body { padding-block: var(--space-section-md) var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .detail-body p { max-width: 65ch; font-size: var(--t-l); line-height: var(--lh-l); }
+  /* Body Panel */
+  .detail-body { padding-block: var(--space-section-md) var(--space-section-lg); }
+  .body-glass { padding: var(--gap-8); }
+  .detail-body p { max-width: 75ch; font-size: var(--t-l); line-height: var(--lh-l); margin: 0 auto; text-align: center;}
 
-  .capabilities-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .caps-grouped { display: grid; gap: 0; margin-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
-  @media (min-width: 768px) { .caps-grouped { grid-template-columns: repeat(3, 1fr); } }
-  .cap-group { border-right: var(--stroke-thin) solid var(--line); border-bottom: var(--stroke-thin) solid var(--line); padding: var(--gap-8); }
-  @media (min-width: 768px) { .cap-group { border-bottom: none; } }
-  .cap-group:last-child { border-right: none; }
-  .cap-group-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: var(--t-sm); }
-  .cap-group-title { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
-  .cap-group-items { list-style: none; margin: var(--gap-4) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-1); }
-  .cap-group-items li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
-  .cap-group-items li::before { content: '—'; position: absolute; left: 0; color: var(--accent-warm); }
-
-  .why-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .why-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 20ch; }
-  .why-grid { display: grid; gap: var(--gap-8); margin-top: var(--gap-12); }
-  @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
-  .why-item { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
-  .why-item h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); }
-  .why-item p { margin-top: var(--gap-2); }
-
-  .approach-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .approach-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 22ch; }
-  .approach-steps { display: grid; gap: var(--gap-8); margin-top: var(--gap-12); }
-  .approach-step { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
-  .step-n { font-family: var(--font-mono); color: var(--accent-warm); font-size: var(--t-sm); }
-  .approach-step h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-2); }
-  .approach-step p { margin-top: var(--gap-2); max-width: 50ch; }
-
-  .detail-faq { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .detail-faq h2 { font-size: var(--t-h3); }
-  .faq-list { margin-top: var(--gap-12); border-top: var(--stroke-thin) solid var(--line); }
-  .faq-item { border-bottom: var(--stroke-thin) solid var(--line); padding-block: var(--gap-5); }
-  .faq-item summary { font-family: var(--font-display); font-size: var(--t-l); cursor: pointer; }
-  .faq-item p { margin-top: var(--gap-3); }
-
-  .detail-cta { padding-block: var(--space-section-xl); text-align: center; border-top: var(--stroke-thin) solid var(--line); }
-  .detail-cta h2 { font-size: var(--t-h2); max-width: 18ch; margin-inline: auto; }
-  .detail-cta .btn { margin-top: var(--gap-8); display: inline-flex; }
-
-  .process-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .process-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 45ch; font-weight: var(--font-weight-semibold); }
-  .process-flow { display: grid; gap: 0; margin-top: var(--gap-12); border-top: var(--stroke-thin) solid var(--line); }
-  @media (min-width: 768px) { .process-flow { grid-template-columns: repeat(4, 1fr); } }
-  .process-phase { border-right: var(--stroke-thin) solid var(--line); border-bottom: var(--stroke-thin) solid var(--line); padding: var(--gap-8); }
-  @media (min-width: 768px) { .process-phase { border-bottom: none; } }
-  .process-phase:last-child { border-right: none; }
-  .process-phase-title { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--accent-warm); margin-bottom: var(--gap-4); }
-  .process-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
-  .process-steps li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
-  .process-steps li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); }
-
-  .toolkit-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .toolkit-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 50ch; font-weight: var(--font-weight-semibold); }
-  .toolkit-grid { display: grid; gap: var(--stroke-thin); background: var(--line); border: var(--stroke-thin) solid var(--line); margin-top: var(--gap-8); }
-  @media (min-width: 640px) { .toolkit-grid { grid-template-columns: repeat(3, 1fr); } }
-  .toolkit-category { background: var(--bg); padding: var(--gap-6); }
-  .toolkit-category-header { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); margin-bottom: var(--gap-3); text-transform: uppercase; letter-spacing: var(--tracking-label); }
-  .toolkit-items { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-1); }
-  .toolkit-items li { display: inline-flex; align-items: center; gap: var(--gap-2); font-size: var(--fluid-label); padding: var(--gap-1) var(--gap-2); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-1); color: var(--fg-muted); }
-  .toolkit-items li img { flex-shrink: 0; opacity: .9; }
-
-  .svc-work { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .svc-work-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gap-6); }
-  .svc-work-head h2 { font-size: var(--t-h3); max-width: 22ch; }
-  .svc-work-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .svc-work-grid { grid-template-columns: repeat(2, 1fr); } }
-  .svc-work-card { text-decoration: none; display: block; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
-  .svc-work-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); }
-  .svc-work-card p { margin-top: var(--gap-1); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
-  .svc-work-card:hover h3 { color: var(--accent); }
-
-  .svc-insights { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .svc-insights-list { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .svc-insights-list { grid-template-columns: repeat(3, 1fr); } }
-  .svc-insight-card { text-decoration: none; display: block; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
-  .svc-insight-card .eyebrow { display: block; margin-bottom: var(--gap-2); }
-  .svc-insight-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); }
-  .svc-insight-card:hover h3 { color: var(--accent); }
-
-  .svc-stats { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .svc-stats ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); grid-template-columns: 1fr; }
+  /* Stats */
+  .svc-stats { padding-block: var(--space-section-lg); }
+  .svc-stats ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
   @media (min-width: 768px) { .svc-stats ul { grid-template-columns: repeat(3, 1fr); } }
-  .svc-stats li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
-  .svc-stat-n { display: block; font-family: var(--font-display); font-size: var(--fluid-h2); font-weight: var(--font-weight-extrabold); line-height: var(--core-line-height-tight); color: var(--accent-warm); }
+  .stat-card { padding: var(--gap-8); text-align: center; display: flex; flex-direction: column; justify-content: center;}
+  .svc-stat-n { display: block; font-family: var(--font-display); font-size: var(--fluid-h2); font-weight: var(--font-weight-extrabold); line-height: var(--core-line-height-tight); color: var(--theme-base); }
   .svc-stat-label { margin-top: var(--gap-2); color: var(--fg-muted); }
 
-  .framework-section { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
+  /* Capabilities Bento */
+  .capabilities-section { padding-block: var(--space-section-xl); }
+  .caps-grouped { display: grid; gap: var(--gap-6); margin-top: var(--gap-8); }
+  @media (min-width: 768px) { .caps-grouped { grid-template-columns: repeat(3, 1fr); } }
+  .cap-group { padding: var(--gap-8); }
+  .cap-group:hover { transform: translateY(-4px); }
+  .cap-group-n { font-family: var(--font-mono); color: var(--theme-base); font-size: var(--t-sm); display: block; margin-bottom: var(--gap-4);}
+  .cap-group-title { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
+  .cap-group-items { list-style: none; margin: var(--gap-4) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
+  .cap-group-items li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
+  .cap-group-items li::before { content: '—'; position: absolute; left: 0; color: var(--theme-base); }
+
+  /* Why Grid */
+  .why-section { padding-block: var(--space-section-xl); }
+  .why-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 20ch; }
+  .why-grid { display: grid; gap: var(--gap-6); margin-top: var(--gap-10); }
+  @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  .why-item { padding: var(--gap-8); position: relative; }
+  .why-icon-glow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--theme-gradient);
+    opacity: 0.15;
+    position: absolute;
+    top: var(--gap-8);
+    left: var(--gap-8);
+    filter: blur(8px);
+  }
+  .why-item h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); position: relative; z-index: 1;}
+  .why-item p { margin-top: var(--gap-4); color: var(--fg-muted); position: relative; z-index: 1;}
+
+  /* Approach Stepper */
+  .approach-section { padding-block: var(--space-section-xl); }
+  .approach-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 22ch; }
+  .approach-steps { display: grid; gap: var(--gap-6); margin-top: var(--gap-10); }
+  @media (min-width: 768px) { .approach-steps { grid-template-columns: repeat(1, 1fr); gap: var(--gap-8); } }
+  .approach-step { display: flex; gap: var(--gap-6); }
+  .step-indicator { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
+  .step-n { 
+    width: 40px; height: 40px; border-radius: 50%; 
+    background: color-mix(in srgb, var(--theme-base) 15%, transparent);
+    color: var(--theme-base);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: var(--t-sm);
+    border: 1px solid color-mix(in srgb, var(--theme-base) 30%, transparent);
+  }
+  .step-line { flex: 1; width: 1px; background: color-mix(in srgb, var(--neutral-0) 12%, transparent); margin-top: var(--gap-2); }
+  .step-content { padding: var(--gap-8); flex: 1; margin-bottom: var(--gap-4);}
+  .step-content h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); }
+  .step-content p { margin-top: var(--gap-2); color: var(--fg-muted); }
+
+  /* Framework */
+  .framework-section { padding-block: var(--space-section-xl); }
   .framework-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 30ch; }
-  .framework-flow { display: grid; gap: 0; margin-top: var(--gap-12); border-top: var(--stroke-thin) solid var(--line); }
+  .framework-flow { display: grid; gap: var(--gap-6); margin-top: var(--gap-10); }
   @media (min-width: 768px) { .framework-flow { grid-template-columns: repeat(3, 1fr); } }
-  .framework-phase { border-right: var(--stroke-thin) solid var(--line); border-bottom: var(--stroke-thin) solid var(--line); padding: var(--gap-8); }
-  @media (min-width: 768px) { .framework-phase { border-bottom: none; } }
-  .framework-phase:nth-child(3n) { border-right: none; }
-  .framework-phase-title { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--accent-warm); margin-bottom: var(--gap-3); }
+  .framework-phase { padding: var(--gap-8); }
+  .framework-phase-title { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--theme-base); margin-bottom: var(--gap-4); }
   .framework-outcome { color: var(--fg); font-size: var(--fluid-body-sm); line-height: var(--core-line-height-normal); }
-  .framework-includes { list-style: none; margin: var(--gap-4) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
+  .framework-includes { list-style: none; margin: var(--gap-6) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); border-top: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent); padding-top: var(--gap-4);}
   .framework-includes li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
-  .framework-includes li::before { content: '→'; position: absolute; left: 0; color: var(--accent-warm); }
+  .framework-includes li::before { content: '→'; position: absolute; left: 0; color: var(--theme-base); }
+
+  /* Process */
+  .process-section { padding-block: var(--space-section-xl); }
+  .process-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 45ch; font-weight: var(--font-weight-semibold); }
+  .process-flow { display: grid; gap: var(--gap-6); margin-top: var(--gap-10); }
+  @media (min-width: 768px) { .process-flow { grid-template-columns: repeat(4, 1fr); } }
+  .process-phase { padding: var(--gap-8); }
+  .process-phase-title { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--theme-base); margin-bottom: var(--gap-4); }
+  .process-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
+  .process-steps li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
+  .process-steps li::before { content: '→'; position: absolute; left: 0; color: var(--theme-base); }
+
+  /* Toolkit */
+  .toolkit-section { padding-block: var(--space-section-xl); }
+  .toolkit-section h2 { font-size: var(--t-h4); margin-top: var(--gap-3); max-width: 50ch; font-weight: var(--font-weight-semibold); }
+  .toolkit-grid { display: grid; gap: var(--gap-6); margin-top: var(--gap-10); }
+  @media (min-width: 640px) { .toolkit-grid { grid-template-columns: repeat(3, 1fr); } }
+  .toolkit-category { padding: var(--gap-8); }
+  .toolkit-category:hover { transform: translateY(-4px); }
+  .toolkit-category-header { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--theme-base); margin-bottom: var(--gap-4); text-transform: uppercase; letter-spacing: var(--tracking-label); }
+  .toolkit-items { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
+  .toolkit-items li { display: inline-flex; align-items: center; gap: var(--gap-2); font-size: var(--fluid-label); padding: var(--gap-1) var(--gap-3); border: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent); border-radius: var(--r-pill); color: var(--fg-muted); background: color-mix(in srgb, var(--neutral-8) 40%, transparent);}
+  .toolkit-items li img { flex-shrink: 0; opacity: .9; }
+
+  /* FAQ */
+  .detail-faq { padding-block: var(--space-section-xl); }
+  .detail-faq h2 { font-size: var(--t-h3); text-align: center; }
+  .faq-list { margin-top: var(--gap-10); padding: var(--gap-4) var(--gap-8); }
+  .faq-item { border-bottom: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent); padding-block: var(--gap-6); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item summary { font-family: var(--font-display); font-size: var(--t-l); cursor: pointer; color: var(--fg); transition: color 0.2s;}
+  .faq-item summary:hover { color: var(--theme-base); }
+  .faq-item p { margin-top: var(--gap-4); color: var(--fg-muted); line-height: var(--lh-l);}
+
+  /* Related Work & Insights */
+  .svc-work, .svc-insights { padding-block: var(--space-section-xl); }
+  .svc-work-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gap-6); margin-bottom: var(--gap-10);}
+  .svc-work-head h2 { font-size: var(--t-h3); max-width: 22ch; }
+  .svc-work-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .svc-work-grid { grid-template-columns: repeat(2, 1fr); } }
+  .svc-insights-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .svc-insights-list { grid-template-columns: repeat(3, 1fr); } }
+  
+  .svc-work-card, .svc-insight-card { 
+    text-decoration: none; display: block; padding: var(--gap-8); height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  
+  .card-glow {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: var(--theme-gradient);
+    opacity: 0;
+    border-radius: 50%;
+    filter: blur(40px);
+    transition: opacity 0.4s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .svc-work-card:hover .card-glow, .svc-insight-card:hover .card-glow { opacity: 0.15; }
+  .svc-work-card:hover { transform: translateY(-4px); }
+  .svc-insight-card:hover { transform: translateY(-4px); }
+
+  .svc-work-card h3, .svc-insight-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); position: relative; z-index: 1;}
+  .svc-work-card p { margin-top: var(--gap-2); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); position: relative; z-index: 1;}
+  .svc-insight-card .eyebrow { display: block; margin-bottom: var(--gap-3); color: var(--theme-base); position: relative; z-index: 1;}
+
+  /* CTA Panel */
+  .detail-cta { padding-block: var(--space-section-xl); }
+  .cta-panel { padding: var(--gap-12); text-align: center; }
+  .cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--theme-base) 10%, transparent) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .cta-panel h2 { font-size: var(--t-h2); max-width: 18ch; margin-inline: auto; position: relative; z-index: 1;}
+  .cta-panel p { margin-top: var(--gap-4); color: var(--fg-muted); position: relative; z-index: 1;}
+  .detail-cta-btns { margin-top: var(--gap-8); display: flex; justify-content: center; gap: var(--gap-4); flex-wrap: wrap; position: relative; z-index: 1;}
 </style>
 
 <script>

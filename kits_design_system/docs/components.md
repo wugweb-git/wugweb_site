@@ -28,6 +28,8 @@
 | Work grid | `work/index.astro` | `--radius-sm` media, placeholder gradient `--color-surface-elevated → page`, `color-mix(yellow)` |
 | Blog grid | `blog/index.astro` | `--radius-sm` thumbs, `--radius-full` chips, `color-mix` placeholder, `--opacity-*` |
 | Services panels | `services/index.astro` | `--svc-*` per panel, `--radius-2xl`, `--shadow-xl`, `--opacity-*` tabs, `.svc-sub` |
+| Contact V2 | `contact-v2.astro` | Driftime-inspired layout, 6-pillar multi-select grid, `--surface-elevated` form card, SLA chip |
+| Service Media | `public/assets/services/` | Standardized kebab-case pillar subfolders (`strategy/`, `brand/`, `experience/`, `growth/`, `engineering/`, `operations/`) |
 | Stats | `about.astro` | `--font-weight-bold` numbers, `--t-h2`, `--hero-overlay` |
 | Bento | `about.astro` | `--radius-lg`, `--gap-*`, `logo-large.svg` CTA, `--opacity-soft` |
 | Legal | `privacy-policy.astro` | `--t-h4` headings, `--core-line-height-relaxed` |

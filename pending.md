@@ -4,7 +4,7 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-**Last verified:** 2026-08-05 (Phase 1 tokens + Phase 2 completion: PWA, blog enrichment, trust badges, 6-pillar filters, service detail teasers, #5 service copy pass, contact/subscribe resilience, **Studio Phase 7: enterprise operational layer**).
+**Last verified:** 2026-08-09 (**Contact V2 created at `/contact-v2`**, Service media normalized to 6-pillar directories, `CHANGELOG.md` created & Governance Rule 11 added, Work detail UI polished).
 
 Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-full-audit.md). Kits type roles: [`design.md`](design.md) §3 (+ C-6 superseded). Design system (single source of truth): [`kits_design_system/`](kits_design_system/) — `docs/design.md` + `docs/tokens/`.
 
@@ -12,7 +12,7 @@ Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-ful
 
 ## ✅ Completed (high level)
 
-Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--ts-*` / `--fluid-*` + weight hierarchy**; colours from Framer S1), **#16 typography rem/clamp sweep** (pages + components → fluid/ts tokens), Framer→local assets, R2, content↔asset paths, Global Settings, Presence, asset registry, governance, Industry master, service Framer extract + **89** toolkit icons, footer Sitemap + Industries, page capture + SEO salvage, industries route, lead-gen routing. **2026-08-05 arc:** owner backfill (#40), Neon `both` entity (#41), Neon re-sync (owner-aware), blog teaser thumbnails, asset path case fixes, audit script repairs.
+Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--ts-*` / `--fluid-*` + weight hierarchy**; colours from Framer S1), **#16 typography rem/clamp sweep** (pages + components → fluid/ts tokens), Framer→local assets, R2, content↔asset paths, Global Settings, Presence, asset registry, governance, Industry master, service Framer extract + **89** toolkit icons, footer Sitemap + Industries, page capture + SEO salvage, industries route, lead-gen routing. **Contact V2 layout (`contact-v2.astro`)**, Service media folder normalization (`strategy/`, `brand/`, `experience/`, `growth/`, `engineering/`, `operations/`), `CHANGELOG.md` integration.
 
 Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-platform-tech-icons.mjs`, `map-assets-to-content.mjs`, `audit-framer-service-pages.mjs`, `extract-framer-service-pages.mjs`, `salvage-framer-toolkits.mjs`, `sync-framer-tokens.mjs`, `capture-framer-pages.mjs`, `salvage-framer-seo-pages.mjs`, `backfill-owner.mjs`, `sync-sanity-to-neon.mjs`.
 
@@ -88,6 +88,9 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 ---
 
 ## ✅ Recently completed (this arc)
+
+- [x] **Service Pages UI/UX Revamp (2026-08-07)** — Completely refactored `src/pages/services/[slug].astro` to feature a premium dynamic UI with glowing background gradients, glassmorphic bento grids, micro-animations, and dynamic color injection based on the specific service pillar (`--theme-base`).
+- [x] **Audit Scratchpads Archived (2026-08-07)** — Marked all pending audit files and brand guideline readmes as completed and archived.
 
 - [x] **Studio Phase 7 — Enterprise operational layer (2026-08-05)** — reusable `DataTable` (TanStack v9 + `@sanity/ui`, MIT) with sticky header/resize/visibility/multi-sort/saved views/filters/search/selection/bulk/keyboard/context menu/pagination/density/dark mode; 15 per-type table configs (incl. new `redirect` schema); custom `DocumentListPane` panes replace native lists for major types; new structure Overview/Content/Marketing/Media/Business/Settings; tools: Dashboard (website health + audit + queue), SEO Manager (score + generate meta), Media Library (unused/dup/missing-alt/oversized filters), Advanced Search (field-scoped); schema preview fixes (client false ⚠️ SEO, caseStudy refs, twoColumns layout); removed dead `dashboardWidget`. Build ✅ (`sanity build`).
 - [x] **#5 Service-page content pass (2026-08-05)** — 6-pillar copy enriched from `urgent/Wugweb_Services 2026.md` into a new shared module `src/lib/services-data.ts` (typed `ServiceData`): growth now 8 capability groups (Growth Strategy → AI-Powered Growth), engineering 11 (Product Engineering → Platform Modernization), operations 10 (Managed Application Support → Continuous Improvement), plus the doc's fuller approach/FAQ/why sets and toolkits; `[slug].astro` imports it (removed ~290-line inline block), still prefers Sanity where a doc exists.

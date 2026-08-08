@@ -1,0 +1,532 @@
+---
+// Contact V2 — Driftime-inspired layout & hierarchy
+// Version 2 (kept alongside contact-us.astro V1 internally)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'contact' }).catch(() => null);
+const heroTitle = page?.title ?? "Let's shape what comes next.";
+const heroText =
+  page?.body?.[0]?.children?.[0]?.text ??
+  "Whether you have a clear vision or need a strategic partner to map the path, we bring domain expertise, design rigor, and engineering excellence to every collaboration.";
+
+// 6-pillar aligned interests
+const servicePillars = [
+  { name: 'Strategy', desc: 'Product, Brand & Growth Architecture' },
+  { name: 'Brand', desc: 'Identity Systems & Narrative Design' },
+  { name: 'Experience', desc: 'UI/UX, Platforms & Design Systems' },
+  { name: 'Engineering', desc: 'Web, App & Platform Modernization' },
+  { name: 'Growth', desc: 'Martech, CRO & Performance' },
+  { name: 'Operations', desc: 'Managed Support & Maintenance' }
+];
+
+const budgetRanges = ['<$5K', '$5K - $15K', '$15K - $35K', '$35K+'];
+const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Exploring / Planning'];
+---
+
+<BaseLayout title="Contact Us V2 | Wugweb" description="Partner with Wugweb for domain-driven design, engineering, and digital transformation. Start a conversation today.">
+  <div class="contact-v2-container wrap">
+    <!-- Header Hero -->
+    <header class="contact-v2-hero">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>Accepting Select Projects for Q3/Q4</span>
+      </div>
+      <h1 class="hero-headline">{heroTitle}</h1>
+      <p class="hero-subtext">{heroText}</p>
+      
+      <div class="hero-quick-actions">
+        <a href="mailto:hello@wugweb.com" class="quick-chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          hello@wugweb.com
+        </a>
+        <a href="https://wa.me/919205996219" target="_blank" rel="noopener noreferrer" class="quick-chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          WhatsApp Us
+        </a>
+        <span class="quick-sla">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Guaranteed 24h Response
+        </span>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <div class="contact-v2-grid">
+      <!-- Enquiry Form -->
+      <main class="form-card">
+        <form class="contact-form-v2" method="POST" action="/api/contact">
+          <label class="hp-field" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </label>
+
+          <div class="form-section">
+            <h2 class="section-title">01. What pillar are you focusing on?</h2>
+            <div class="pillar-grid">
+              {servicePillars.map((p) => (
+                <label class="pillar-selector">
+                  <input type="checkbox" name="interests" value={p.name} />
+                  <div class="selector-content">
+                    <span class="pillar-name">{p.name}</span>
+                    <span class="pillar-desc">{p.desc}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="section-title">02. Tell us about yourself</h2>
+            <div class="inputs-row">
+              <div class="field-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Vedanshu Srivastava" />
+              </div>
+              <div class="field-group">
+                <label for="company">Company / Organization</label>
+                <input type="text" id="company" name="company" placeholder="e.g. Acme Corp" />
+              </div>
+            </div>
+            <div class="inputs-row">
+              <div class="field-group">
+                <label for="email">Work Email *</label>
+                <input type="email" id="email" name="email" required placeholder="name@company.com" />
+              </div>
+              <div class="field-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="section-title">03. Project Details & Goals</h2>
+            <div class="field-group">
+              <label for="topic">Scope & Objectives</label>
+              <textarea id="topic" name="topic" rows="4" placeholder="Briefly describe your goals, challenge, or vision..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="section-title">04. Investment & Timeline</h2>
+            <div class="range-group">
+              <p class="group-label">Estimated Budget</p>
+              <div class="chips-row">
+                {budgetRanges.map((b) => (
+                  <label class="radio-chip">
+                    <input type="radio" name="budget" value={b} />
+                    <span>{b}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="range-group" style="margin-top: var(--gap-6);">
+              <p class="group-label">Target Timeline</p>
+              <div class="chips-row">
+                {timelines.map((t) => (
+                  <label class="radio-chip">
+                    <input type="radio" name="timeline" value={t} />
+                    <span>{t}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <label class="checkbox-optin">
+              <input type="checkbox" name="newsletter" value="yes" />
+              <span>Subscribe to Wugweb insights & editorial updates. Read our <a href="/privacy-policy">Privacy Policy</a>.</span>
+            </label>
+            <button type="submit" class="submit-btn">
+              <span>Send Enquiry</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </form>
+      </main>
+
+      <!-- Sidebar Reach-Out & Info -->
+      <aside class="sidebar-cards">
+        <div class="info-card glass-panel">
+          <h3 class="card-title">Direct Channels</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <span class="item-label">Inquiries & Proposals</span>
+              <a href="mailto:hello@wugweb.com" class="item-value">hello@wugweb.com</a>
+            </div>
+            <div class="info-item">
+              <span class="item-label">India Office</span>
+              <p class="item-value">Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP - 201301</p>
+            </div>
+            <div class="info-item">
+              <span class="item-label">UAE Presence</span>
+              <p class="item-value">Dubai Silicon Oasis, DTEC Campus, Dubai, UAE</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card glass-panel">
+          <h3 class="card-title">How We Collaborate</h3>
+          <ul class="collab-steps">
+            <li>
+              <span class="step-num">01</span>
+              <div>
+                <strong>Discovery & Alignment</strong>
+                <p>We review your enquiry within 24h and schedule a 30-min strategy call.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">02</span>
+              <div>
+                <strong>Tailored Proposal</strong>
+                <p>Transparent scope, deliverables, timeline, and value-based pricing.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">03</span>
+              <div>
+                <strong>Agile Execution</strong>
+                <p>Dedicated squad, bi-weekly sprints, and direct slack communication.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .contact-v2-container {
+    padding-block: var(--space-section-xl);
+  }
+  .contact-v2-hero {
+    max-width: 800px;
+    margin-bottom: var(--space-section-md);
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-2);
+    padding: var(--gap-1) var(--gap-3);
+    border-radius: var(--radius-full);
+    background: var(--surface-elevated);
+    border: var(--stroke-thin) solid var(--line);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    color: var(--fg-muted);
+    margin-bottom: var(--gap-4);
+  }
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+  }
+  .hero-headline {
+    font-size: var(--t-display);
+    line-height: var(--lh-tight);
+    color: var(--fg);
+    letter-spacing: -0.02em;
+  }
+  .hero-subtext {
+    margin-top: var(--gap-4);
+    font-size: var(--fluid-body-md);
+    color: var(--fg-muted);
+    max-width: 65ch;
+  }
+  .hero-quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gap-3);
+    margin-top: var(--gap-6);
+  }
+  .quick-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-2);
+    padding: var(--gap-2) var(--gap-4);
+    border-radius: var(--radius-full);
+    background: var(--surface-2);
+    border: var(--stroke-thin) solid var(--line);
+    color: var(--fg);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    transition: var(--transition-fast);
+  }
+  .quick-chip:hover {
+    border-color: var(--accent-warm);
+    color: var(--accent-warm);
+  }
+  .quick-sla {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-1);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    color: var(--fg-muted);
+  }
+
+  /* Grid Layout */
+  .contact-v2-grid {
+    display: grid;
+    gap: var(--gap-10);
+  }
+  @media (min-width: 1024px) {
+    .contact-v2-grid {
+      grid-template-columns: 1.8fr 1fr;
+    }
+  }
+
+  /* Form Card */
+  .form-card {
+    background: var(--surface-elevated);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--r-2);
+    padding: var(--gap-8);
+  }
+  .contact-form-v2 {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-8);
+  }
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+  }
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  
+  /* Pillar grid selector */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--gap-3);
+  }
+  .pillar-selector {
+    position: relative;
+    cursor: pointer;
+  }
+  .pillar-selector input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .selector-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+    padding: var(--gap-3) var(--gap-4);
+    border-radius: var(--r-1);
+    background: var(--surface-2);
+    border: var(--stroke-thin) solid var(--line);
+    transition: var(--transition-fast);
+  }
+  .pillar-selector input:checked + .selector-content {
+    background: var(--surface-hover);
+    border-color: var(--accent-warm);
+    box-shadow: 0 0 12px rgba(255, 180, 0, 0.15);
+  }
+  .pillar-name {
+    font-weight: 600;
+    color: var(--fg);
+  }
+  .pillar-desc {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+
+  /* Inputs */
+  .inputs-row {
+    display: grid;
+    gap: var(--gap-4);
+  }
+  @media (min-width: 640px) {
+    .inputs-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+  }
+  .field-group label {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    color: var(--fg-muted);
+  }
+  .field-group input,
+  .field-group textarea {
+    background: var(--surface-2);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--r-1);
+    padding: var(--gap-3) var(--gap-4);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: var(--fluid-body-md);
+    transition: var(--transition-fast);
+  }
+  .field-group input:focus,
+  .field-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-warm);
+    background: var(--surface-hover);
+  }
+
+  /* Chips */
+  .chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-2);
+  }
+  .radio-chip {
+    cursor: pointer;
+    position: relative;
+  }
+  .radio-chip input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .radio-chip span {
+    display: inline-block;
+    padding: var(--gap-2) var(--gap-4);
+    border-radius: var(--radius-full);
+    background: var(--surface-2);
+    border: var(--stroke-thin) solid var(--line);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    color: var(--fg-muted);
+    transition: var(--transition-fast);
+  }
+  .radio-chip input:checked + span {
+    border-color: var(--accent-warm);
+    color: var(--accent-warm);
+    background: var(--surface-hover);
+  }
+
+  /* Form footer */
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+    margin-top: var(--gap-4);
+  }
+  @media (min-width: 640px) {
+    .form-footer {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .checkbox-optin {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-2);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    max-width: 45ch;
+  }
+  .checkbox-optin a {
+    color: var(--accent-warm);
+  }
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-2);
+    padding: var(--gap-3) var(--gap-6);
+    border-radius: var(--radius-sm);
+    background: var(--accent-warm);
+    color: #000;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(255, 180, 0, 0.3);
+  }
+
+  /* Sidebar */
+  .sidebar-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+  }
+  .glass-panel {
+    background: var(--surface-elevated);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--r-2);
+    padding: var(--gap-6);
+  }
+  .card-title {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--gap-4);
+  }
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+  }
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+  }
+  .item-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+  }
+  .item-value {
+    color: var(--fg);
+    text-decoration: none;
+    line-height: var(--lh-snug);
+  }
+  .collab-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+  }
+  .collab-steps li {
+    display: flex;
+    gap: var(--gap-3);
+  }
+  .step-num {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--accent-warm);
+  }
+  .collab-steps strong {
+    display: block;
+    color: var(--fg);
+    font-size: 0.95rem;
+  }
+  .collab-steps p {
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    margin-top: var(--gap-1);
+  }
+  .hp-field { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+</style>

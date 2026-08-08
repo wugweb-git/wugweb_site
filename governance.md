@@ -225,12 +225,14 @@ These live primarily in [`CLAUDE.md`](CLAUDE.md) “Things AI Must Never Change�
 8. Enrich masters from `reference/` / `component/` by identity — never blind-dump hashed files.
 9. Update `pending.md` after significant work; update this file when governance facts change.
 10. Never commit secrets (`.env`, tokens, Presence passwords).
+11. **Maintain `CHANGELOG.md`**: Every commit MUST update [`CHANGELOG.md`](CHANGELOG.md) to document additions, modifications, and fixes.
 
 ---
 
 ## 10. Related files
 
 - Tracker: [`pending.md`](pending.md)
+- Changelog: [`CHANGELOG.md`](CHANGELOG.md)
 - Architecture memory: [`CLAUDE.md`](CLAUDE.md)
 - Neon DDL: [`neon/schema.sql`](neon/schema.sql)
 - Assets: [`docs/content-assets.md`](docs/content-assets.md), [`docs/r2-assets.md`](docs/r2-assets.md)

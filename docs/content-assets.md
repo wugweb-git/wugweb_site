@@ -1,3 +1,6 @@
+> **✅ COMPLETED AND ARCHIVED (2026-08-07)**
+> All tasks and findings in this document have been fully resolved in Phase 2 (Service UI/UX Revamp).
+
 # Content ↔ asset mapping
 
 Media stays in R2 / `public/assets` (Rule 2). Sanity stores **path fields**, not Sanity CDN uploads.

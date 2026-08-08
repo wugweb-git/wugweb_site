@@ -160,3 +160,29 @@ The Sanity Studio has been significantly enhanced with:
 **All changes are ready to commit and push to GitHub.**
 
 The only blocking issue is the Sanity token rotation, which requires your action at https://sanity.io/manage
+
+fix the issue where when i asked add in schema abotu ownershop , it can be me or wugweb or both  or none :P
+
+
+{
+  "error": {
+    "stack": "TypeError: Oe.column.getCanSort is not a function\n    at https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:5351:11557\n    at Array.map (<anonymous>)\n    at https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:5351:11499\n    at Array.map (<anonymous>)\n    at $Ke (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:5351:11214)\n    at D$ (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:75:18060)\n    at V$ (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:77:3239)\n    at Kse (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:77:46765)\n    at Use (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:77:41449)\n    at EYe (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:77:41373)",
+    "message": "Oe.column.getCanSort is not a function"
+  }
+}GROQ query parse error: > 1 | *[_type in ["post","caseStudy","service","client","person","asset","engagement","testimonial","taxonomy"]] | group by _type { _type, count } | ^^^^^ object or function expected Tag: sanity.studio (traceId: 606e309f74294bf3b901fd7aaecb946a)
+
+{
+  "error": {
+    "stack": "TypeError: Oe.column.getCanSort is not a function\n    at https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:5351:11557\n    at Array.map (<anonymous>)\n    at https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:5351:11499\n    at Array.map (<anonymous>)\n    at $Ke (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:5351:11214)\n    at D$ (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:75:18060)\n    at V$ (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:77:3239)\n    at Kse (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:77:46765)\n    at Use (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:77:41449)\n    at EYe (https://wugweb.sanity.studio/static/sanity-B0W5jx1J.js:77:41373)",
+    "message": "Oe.column.getCanSort is not a function"
+  }
+}
+
+i  seriously do not know wwhat wrogn with you , you could have use dmy schema instead you decided to ignore it. fair enough it will come back to you. you ar enot neon
+
+
+the sanity ui i stil 20,000 days back. oh god. cnnot be just simple like nnotion.
+
+
+
+why sanity never extraxted full data base with scehmaa d ful coent from notion via link sharing?

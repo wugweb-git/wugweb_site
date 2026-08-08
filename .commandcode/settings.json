@@ -631,7 +631,21 @@
       "Shell(curl -s -o /dev/null -w personalize: %{http_code}\\n https://wugweb.pages.dev/api/personalize)",
       "Shell(curl -s -o /dev/null -w preview: %{http_code}\\n https://wugweb.pages.dev/api/preview)",
       "Shell(curl -s -o /dev/null -w contact POST: %{http_code}\\n -X POST https://wugweb.pages.dev/api/contact -d name=x&email=x@x.com)",
-      "Shell(curl -s -o /dev/null -w logo: %{http_code}\\n https://wugweb.pages.dev/brand/trust/clutch.svg)"
+      "Shell(curl -s -o /dev/null -w logo: %{http_code}\\n https://wugweb.pages.dev/brand/trust/clutch.svg)",
+      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site && git commit -F - <<'EOF' feat: enterprise Sanity Studio + token sweep, trust logos, About stats, services copy Sanity Studio (Phase 7): - Reusable DataTable (TanStack v9 + @sanity/ui) with sort/resize/visibility/ saved views/filters/selection/bulk/keyboard/context menu/pagination/density/dark mode - 15 per-type table configs incl. new redirect schema - Custom DocumentListPane panes replace native lists; new structure Overview/Content/Marketing/Media/Business/Settings - Tools: Dashboard (health + audit + queue), SEO Manager (score + generate), Media Library (unused/dup/missing-alt filters), Advanced Search (field-scoped) - Schema preview fixes (client false SEO warn, caseStudy refs, twoColumns) - Removed dead dashboardWidget Site: - #16 token sweep: 76 residual 1px borders -> --stroke-thin across 17 files - About stats: years derive from copyright, retention via Studio items (no invented figures) - Trust badges: official Clutch/DesignRush/GoodFirms logos + presence-registry URLs - Contact/subscribe API resilience (best-effort Neon write) - #5 services copy pass (growth 8 / engineering 11 / operations 10 capability groups) Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF echo \"=== committed ===\"; git log -1 --stat --oneline | head -3)",
+      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site && git add NSL.png && git commit -F - <<'EOF' chore: remove stray root NSL.png (superseded by copy in mapped assets/) The NSL Oil Chem case-study image was duplicated at repo root; the canonical copy lives under \"mapped assets/\" (working scratch). No site references it. Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF git push origin main 2>&1 | tail -3)",
+      "Shell(while:*)",
+      "Shell(curl -sL https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Ve1PsomytKzK-zw69UOt9Tz7Ri5y8MASLWTcVMKlpcxWSS20yViNPiM&s=10 -o /tmp/cta-ref.png)",
+      "Shell(curl -sL https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuiaREh9HwVmsRLMMXRqdTJFt2mxyUzBuLqyOlsMuU24YCofiG0oSmYszh&s=10 -o ref2.png)",
+      "Shell(curl -sL https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRiJ2ElCo428Hz5URm946_mENkAeSS5cDC76lpVFyIIjkWv8Ne0xzszUQ&s=10 -o ref3.png)",
+      "Shell(curl -sL https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkAoX1ocrQmAU1-cu1hTk5-_ay1nDKXvMWCtRt9F3YJQ&s=10 -o ref4.png)",
+      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site/sanity && echo \"=== sanity.cli.ts ===\"; cat sanity.cli.ts 2>/dev/null; echo \"=== is studio deployed? ===\"; npx sanity deploy --help 2>&1 | head -8)",
+      "Shell(curl -s -o /dev/null -w %{http_code}\\n https://wugweb.sanity.studio/)",
+      "Shell(curl -s https://wugweb.sanity.studio/)",
+      "Shell(cd /Users/abcom/Documents/GitHub/wugweb_site && git commit -F - <<'EOF' feat: rebuild footer CTA as device-backdrop banner with tokens + GSAP - Laptop + mobile device graphics (assets/brand → public/brand/cta/) positioned as a layered backdrop behind the copy (text over device) - Rounded elevated panel, width fits content, token-driven styling (--radius-2xl, --shadow-xl, --opacity-soft, --color-surface-elevated) - [data-reveal] entrance handled by the global GSAP scroll system - Responsive: laptop scales, mobile hides on small screens Co-authored-by: CommandCodeBot <noreply@commandcode.ai> EOF git push origin main 2>&1 | tail -3)",
+      "Shell(curl -s -L https://wugweb.pages.dev/)",
+      "Shell(curl -s -o /dev/null -w laptop: %{http_code} %{content_type}\\n https://wugweb.pages.dev/brand/cta/laptop.png)",
+      "Shell(curl -s -o /dev/null -w mobile: %{http_code} %{content_type}\\n https://wugweb.pages.dev/brand/cta/mobile.png)"
     ],
     "deny": [],
     "defaultMode": "default"
