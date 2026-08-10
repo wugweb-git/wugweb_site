@@ -8,7 +8,7 @@ and this project adheres to Semantic Versioning.
 ## [Unreleased]
 
 ### Added
-- **Contact V2 Page (`src/pages/contact-v2.astro`)**: Introduced Driftime.com-inspired layout with interactive project enquiry flow, service pillar selector, direct reach-out sidebar, and response SLA card. Kept alongside `/contact-us` V1 internally.
+- **Contact Page Redesign (`src/pages/contact-us.astro`)**: Rolled out Driftime.com-inspired V2 layout & hierarchy directly to `/contact-us` (6-pillar selector grid, timeline & budget chips, responsive layout, SLA badge, direct channels). Set `/contact-v2` to 301 redirect to `/contact-us`. Enriched `/api/contact` with `timeline` handling.
 - **`CHANGELOG.md`**: Initialized project changelog and updated `governance.md` with Rule 11 mandating `CHANGELOG.md` maintenance on every commit.
 - **`kits_design_system/` Sync**: Mapped component specs and token updates for Contact V2, Service Media, and Blog/Work UI polish.
 

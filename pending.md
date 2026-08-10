@@ -45,7 +45,7 @@ Scripts of note: `sync-global-config.mjs`, `sync-asset-registry.mjs`, `link-plat
 
 | Item | Notes |
 |---|---|
-| Contact page redesign (#12) | Adapt driftime.com layout/hierarchy/trust/enquiry — **needs reference screenshot from user**; `/api/contact` + Neon stays |
+| Contact page redesign (#12) | **Done 2026-08-10** — Rolled out Driftime-inspired V2 layout & hierarchy to `/contact-us` (6-pillar selector grid, timeline & budget chips, responsive layout, SLA badge, direct channels). `/api/contact` enriched with `timeline` handling; `/contact-v2` redirects to `/contact-us`. |
 | Full service-page content pass (#5) | **Done 2026-08-05** — 6-pillar copy enriched per `urgent/Wugweb_Services 2026.md` via new `src/lib/services-data.ts`: growth 8 capability groups, engineering 11, operations 10 (doc-accurate), fuller approach/FAQ/why sets; `[slug].astro` now imports shared data (removed inline 290-line block) |
 | Trust badge logos | Text badges live site-wide; official Clutch/DesignRush/GoodFirms/TopDevelopers logo assets pending from user |
 | Contact form prod verify | Neon write path unverified in production (local 500 = no DATABASE_URL binding) |

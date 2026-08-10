@@ -23,6 +23,7 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
   const interests = form.getAll('interests').map(String);
   const topic = form.get('topic')?.toString() ?? '';
   const budget = form.get('budget')?.toString() ?? '';
+  const timeline = form.get('timeline')?.toString() ?? '';
   // Without these the form captured a lead with no way to reply to it.
   const email = form.get('email')?.toString() ?? '';
   const phone = form.get('phone')?.toString() ?? '';
@@ -39,6 +40,7 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
     phone,
     topic,
     budget,
+    timeline,
     interests,
     contactMethod,
     newsletterOptIn: newsletter,
