@@ -53,115 +53,139 @@ function generateMeta(row: SeoRow): { seoTitle: string; seoDescription: string }
   return { seoTitle, seoDescription };
 }
 
-export function SeoTool() {
+function SeoToolContent() {
   const client = useClient({ apiVersion: '2024-01-01' });
   const [activeType, setActiveType] = useState('post');
   const [rows, setRows] = useState<SeoRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [q, setQ] = useState('');
-  const [busy, setBusy] = useState<Set<string>>(new Set());
-
-  const config = TYPES.find((t) => t.type === activeType)!;
+  const [onlyMissing, setOnlyMissing] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchDocs(client, config.query);
-      setRows(data as SeoRow[]);
+      const spec = TYPES.find((t) => t.type === activeType) || TYPES[0];
+      const data = await client.fetch<SeoRow[]>(spec.query);
+      setRows(data || []);
     } catch (e: any) {
-      setError(e?.message || 'Failed to load');
-      setRows([]);
+      setError(e?.message || 'Failed to fetch SEO metadata.');
     } finally {
       setLoading(false);
     }
-  }, [client, config]);
+  }, [client, activeType]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    load();
+  }, [load]);
 
   const generate = async (row: SeoRow) => {
-    setBusy((s) => new Set(s).add(row._id));
+    const { seoTitle, seoDescription } = generateMeta(row);
     try {
-      const meta = generateMeta(row);
-      await client.patch(row._id).set(meta).commit();
-      await load();
+      await client.patch(row._id).set({ seoTitle, seoDescription }).commit();
+      setRows((arr) =>
+        arr.map((r) => (r._id === row._id ? { ...r, seoTitle, seoDescription } : r))
+      );
     } catch (e: any) {
-      alert(`Failed to generate: ${e?.message || 'unknown'}`);
-    } finally {
-      setBusy((s) => { const n = new Set(s); n.delete(row._id); return n; });
+      alert(`Auto-generate failed: ${e?.message || 'Unknown error'}`);
     }
   };
 
   const filtered = rows.filter((r) => {
-    const needle = q.trim().toLowerCase();
-    if (!needle) return true;
-    return [r.title, r.pageId, r.slug, r.seoDescription].some((f) => String(f ?? '').toLowerCase().includes(needle));
+    if (onlyMissing && r.seoDescription && r.seoDescription.length > 20) return false;
+    if (q.trim()) {
+      const needle = q.toLowerCase();
+      const title = String(r.title || '').toLowerCase();
+      const desc = String(r.seoDescription || '').toLowerCase();
+      return title.includes(needle) || desc.includes(needle);
+    }
+    return true;
   });
 
   return (
     <Card tone="default" padding={[2, 3]} style={{ minHeight: '100%' }}>
-      <Flex align="center" gap={2} paddingBottom={3} wrap="wrap">
-        <Box flex={1}>
-          <Text size={3} weight="semibold">SEO Manager</Text>
-          <Text size={1} muted>Per-document SEO health · one-screen review · generate meta</Text>
-        </Box>
-        <TextInput icon={SearchIcon} placeholder="Search title/slug/desc…" value={q} onChange={(e) => setQ(e.currentTarget.value)} style={{ maxWidth: 240 }} />
-        <Flex gap={1}>
-          {TYPES.map((t) => (
-            <Button key={t.type} text={t.label} mode={activeType === t.type ? 'default' : 'ghost'} onClick={() => setActiveType(t.type)} />
-          ))}
-        </Flex>
+      <Flex align="center" justify="space-between" paddingBottom={4}>
+        <Stack space={1}>
+          <Text size={3} weight="bold">SEO & Social Metadata Manager</Text>
+          <Text size={1} muted>Audit metadata quality across all content types</Text>
+        </Stack>
+        <Button text="Refresh" mode="ghost" onClick={load} />
+      </Flex>
+
+      <Flex gap={2} marginBottom={3}>
+        {TYPES.map((t) => (
+          <Button
+            key={t.type}
+            text={t.label}
+            mode={activeType === t.type ? 'default' : 'ghost'}
+            onClick={() => setActiveType(t.type)}
+          />
+        ))}
+      </Flex>
+
+      <Flex gap={2} align="center" marginBottom={3}>
+        <TextInput
+          icon={SearchIcon}
+          placeholder="Filter documents…"
+          value={q}
+          onChange={(e) => setQ(e.currentTarget.value)}
+          style={{ maxWidth: 280 }}
+        />
+        <Button
+          text={onlyMissing ? 'Showing: Missing SEO only' : 'Filter: Missing SEO'}
+          tone={onlyMissing ? 'caution' : 'default'}
+          mode={onlyMissing ? 'default' : 'ghost'}
+          onClick={() => setOnlyMissing(!onlyMissing)}
+        />
       </Flex>
 
       {loading ? (
-        <RowSkeleton cols={6} />
+        <RowSkeleton cols={4} />
       ) : error ? (
-        <Box padding={4}><Text style={{ color: '#e54f30' }}>{error}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ marginTop: 8 }} /></Box>
+        <Card padding={4} tone="critical" radius={2}>
+          <Text size={1}>{error}</Text>
+        </Card>
       ) : filtered.length === 0 ? (
-        <EmptyState title="No documents" />
+        <EmptyState title="No documents found" body="Try adjusting search query or filters." />
       ) : (
         <Card border radius={2} overflow="hidden">
-          <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 200px)' }}>
+          <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 260px)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'Inter, system-ui, sans-serif' }}>
               <thead>
-                <tr style={{ background: 'var(--card-muted-bg-color, #f1f3f5)', position: 'sticky', top: 0 }}>
-                  {['Document', 'Score', 'Meta title', 'Meta desc', 'OG', 'Schema', 'Actions'].map((h) => (
-                    <th key={h} style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #e1e3e6)', fontWeight: 600, whiteSpace: 'nowrap' }}>{h}</th>
-                  ))}
+                <tr style={{ background: 'var(--card-muted-bg-color, #f1f3f5)', position: 'sticky', top: 0, zIndex: 2 }}>
+                  <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #e1e3e6)' }}>Document Title</th>
+                  <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #e1e3e6)' }}>SEO Description</th>
+                  <th style={{ padding: '8px 12px', textAlign: 'center', borderBottom: '1px solid var(--card-border-color, #e1e3e6)', width: 100 }}>Score</th>
+                  <th style={{ padding: '8px 12px', textAlign: 'right', borderBottom: '1px solid var(--card-border-color, #e1e3e6)', width: 140 }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((row) => {
-                  const score = seoScore(row);
-                  const { label, severity } = seoLevel(score);
-                  const hasDesc = Boolean(row.seoDescription);
-                  const hasOg = Boolean(row.ogImage);
-                  const hasSchema = Boolean(row.seoTitle);
-                  const tone = severity === 'good' ? 'positive' : severity === 'warn' ? 'caution' : 'critical';
+                  const score = seoScore(row as any);
+                  const level = seoLevel(score);
                   return (
-                    <tr key={row._id} style={{ borderBottom: '1px solid var(--card-border-color, #eee)' }}>
-                      <td style={{ padding: '8px 12px' }}>
-                        <Text size={1} weight="semibold">{String(row.title ?? row.pageId ?? row._id)}</Text>
-                        <Text size={0} muted>@{String(row.slug ?? row.pageId ?? '')}</Text>
+                    <tr key={row._id} style={{ borderBottom: '1px solid var(--card-border-color, #f1f3f5)' }}>
+                      <td style={{ padding: '10px 12px' }}>
+                        <Text size={1} weight="semibold">{String(row.title || row._id)}</Text>
+                        {row.slug && <Text size={0} muted>@{row.slug}</Text>}
                       </td>
-                      <td style={{ padding: '8px 12px' }}>
-                        <Tooltip content={`${label}`} placement="top">
-                          <Badge tone={tone}>{score}</Badge>
-                        </Tooltip>
+                      <td style={{ padding: '10px 12px', color: row.seoDescription ? 'inherit' : 'var(--card-muted-fg-color, #888)' }}>
+                        {row.seoDescription || '— Missing SEO description —'}
                       </td>
-                      <td style={{ padding: '8px 12px' }}>{hasSchema ? <Badge tone="positive">✓</Badge> : <Badge tone="critical">✕</Badge>}</td>
-                      <td style={{ padding: '8px 12px' }}>{hasDesc ? <Badge tone="positive">✓</Badge> : <Badge tone="critical">✕</Badge>}</td>
-                      <td style={{ padding: '8px 12px' }}>{hasOg ? <Badge tone="positive">✓</Badge> : <Badge tone="caution">⚠</Badge>}</td>
-                      <td style={{ padding: '8px 12px' }}>{hasSchema ? <Badge tone="positive">✓</Badge> : <Badge tone="caution">—</Badge>}</td>
-                      <td style={{ padding: '8px 12px', whiteSpace: 'nowrap' }}>
-                        <Flex gap={1}>
-                          <Button mode="ghost" text="Edit" icon={ComposeIcon} onClick={() => { window.location.hash = `#/structure/intent/edit/id=${row._id};type=${row._type}`; }} />
+                      <td style={{ padding: '10px 12px', textAlign: 'center' }}>
+                        <Badge tone={level === 'good' ? 'positive' : level === 'warn' ? 'caution' : 'critical'}>
+                          {score}/100
+                        </Badge>
+                      </td>
+                      <td style={{ padding: '10px 12px', textAlign: 'right' }}>
+                        <Flex gap={1} justify="flex-end">
                           <Button
-                            mode="ghost"
-                            text="Generate"
                             icon={SparklesIcon}
-                            disabled={busy.has(row._id)}
+                            text="Auto Meta"
+                            mode="ghost"
+                            fontSize={1}
+                            padding={2}
                             onClick={() => generate(row)}
                           />
                         </Flex>
@@ -175,6 +199,14 @@ export function SeoTool() {
         </Card>
       )}
     </Card>
+  );
+}
+
+export function SeoTool() {
+  return (
+    <StudioErrorBoundary toolTitle="SEO Manager">
+      <SeoToolContent />
+    </StudioErrorBoundary>
   );
 }
 

@@ -85,7 +85,7 @@ function StatCard({ label, value, tone = 'default', onClick }: { label: string; 
   );
 }
 
-export function DashboardTool() {
+function DashboardToolContent() {
   const client = useClient({ apiVersion: '2024-01-01' });
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -97,7 +97,7 @@ export function DashboardTool() {
     try {
       setData(await loadDashboard(client));
     } catch (e: any) {
-      setError(e?.message || 'Failed to load dashboard');
+      setError(e?.message || 'Failed to load dashboard statistics.');
     } finally {
       setLoading(false);
     }
@@ -106,48 +106,43 @@ export function DashboardTool() {
   useEffect(() => { load(); }, [load]);
 
   if (loading) {
-    return <Box padding={4}><Text muted>Loading dashboard…</Text></Box>;
+    return <Card padding={5} style={{ textAlign: 'center' }}><Text size={2} muted>Loading Studio Dashboard…</Text></Card>;
   }
   if (error || !data) {
-    return <Box padding={4}><Text style={{ color: '#e54f30' }}>{error}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ marginTop: 8 }} /></Box>;
+    return <Card padding={4} tone="critical" radius={2} margin={4}><Stack space={3}><Text size={2} weight="bold">Dashboard Error</Text><Text size={1}>{error || 'No data available.'}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ alignSelf: 'flex-start' }} /></Stack></Card>;
   }
 
-  const totalDocs = Object.values(data.counts).reduce((a, b) => a + b, 0);
-  const missingSeoPct = totalDocs ? Math.round((data.missingSeo / totalDocs) * 100) : 0;
-
+  const navIntent = (type: string) => { window.location.hash = `#/structure/${type}`; };
   const quickActions = [
-    { label: 'New Blog Post', icon: ComposeIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=post;template=post'; } },
-    { label: 'New Case Study', icon: AddIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=caseStudy;template=caseStudy'; } },
-    { label: 'New Client', icon: AddIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=client;template=client'; } },
-    { label: 'Open Tables', icon: SearchIcon, onClick: () => { window.location.hash = '#/tables'; } },
+    { label: 'New Post', icon: ComposeIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=post'; } },
+    { label: 'New Case Study', icon: ComposeIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=caseStudy'; } },
+    { label: 'Upload Asset', icon: UploadIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=brandAsset'; } },
+    { label: 'SEO Manager', icon: SearchIcon, onClick: () => { window.location.hash = '#/seo'; } },
   ];
 
   return (
-    <Card tone="default" padding={[2, 3]} style={{ minHeight: '100%' }}>
-      <Flex align="center" gap={3} paddingBottom={4}>
-        <Box flex={1}>
-          <Text size={3} weight="semibold">Operations Dashboard</Text>
-          <Text size={1} muted>Website health · content audit · publishing queue</Text>
-        </Box>
+    <Card padding={[3, 4, 5]} tone="default">
+      <Flex align="center" justify="space-between" marginBottom={4}>
+        <Stack space={1}>
+          <Text size={3} weight="bold">Website Back-Office Dashboard</Text>
+          <Text size={1} muted>Health audit, content volume & operational metrics</Text>
+        </Stack>
         <Button text="Refresh" mode="ghost" onClick={load} />
       </Flex>
 
-      {/* Website Health */}
-      <Text size={2} weight="semibold" muted style={{ margin: '16px 0 8px' }}>Website Health</Text>
-      <Grid columns={[2, 3, 5]} gap={2}>
-        <StatCard label="Total documents" value={totalDocs} tone="primary" />
-        <StatCard label="Drafts" value={data.drafts} tone="caution" />
-        <StatCard label="Missing SEO" value={data.missingSeo} tone={missingSeoPct > 20 ? 'critical' : 'caution'} />
-        <StatCard label="Missing cover" value={data.missingCover} tone="caution" />
-        <StatCard label="Sync errors" value={data.syncErrors} tone={data.syncErrors > 0 ? 'critical' : 'positive'} />
-        <StatCard label="Media (missing path)" value={data.mediaMissingPath} tone="caution" />
-        <StatCard label="Media (archived)" value={data.mediaArchived} tone="default" />
+      <Grid columns={[2, 3, 4]} gap={3}>
+        <StatCard label="Total Posts" value={data.counts.post || 0} onClick={() => navIntent('post')} />
+        <StatCard label="Case Studies" value={data.counts.caseStudy || 0} onClick={() => navIntent('caseStudy')} />
+        <StatCard label="Clients" value={data.counts.client || 0} onClick={() => navIntent('client')} />
+        <StatCard label="Assets" value={data.counts.asset || 0} onClick={() => navIntent('brandAsset')} />
+        <StatCard label="Drafts (Unpublished)" value={data.drafts} tone="caution" onClick={() => navIntent('post')} />
+        <StatCard label="Missing SEO Meta" value={data.missingSeo} tone={data.missingSeo > 0 ? 'caution' : 'positive'} onClick={() => { window.location.hash = '#/seo'; }} />
+        <StatCard label="Missing Covers" value={data.missingCover} tone={data.missingCover > 0 ? 'caution' : 'positive'} />
         <StatCard label="Published today" value={data.publishedToday} tone="positive" />
         <StatCard label="Scheduled posts" value={data.scheduled} tone="caution" />
         <StatCard label="Updated (7d)" value={data.updatedRecent} tone="default" />
       </Grid>
 
-      {/* Content Audit */}
       <Text size={2} weight="semibold" muted style={{ margin: '24px 0 8px' }}>Content by type</Text>
       <Grid columns={[2, 3, 4]} gap={2}>
         {data.contentTypes.map((c) => (
@@ -160,7 +155,6 @@ export function DashboardTool() {
         ))}
       </Grid>
 
-      {/* Quick Actions */}
       <Text size={2} weight="semibold" muted style={{ margin: '24px 0 8px' }}>Quick actions</Text>
       <Flex gap={2} wrap="wrap">
         {quickActions.map((a) => (
@@ -168,13 +162,20 @@ export function DashboardTool() {
         ))}
       </Flex>
 
-      {/* Sync status strip */}
       <Text size={2} weight="semibold" muted style={{ margin: '24px 0 8px' }}>System status</Text>
       <Flex gap={2} wrap="wrap">
         <Badge tone={data.syncErrors > 0 ? 'critical' : 'positive'}>{data.syncErrors > 0 ? `${data.syncErrors} sync error(s)` : 'All syncs healthy'}</Badge>
         <Badge tone={data.scheduled > 0 ? 'caution' : 'default'}>{data.scheduled > 0 ? `${data.scheduled} scheduled` : 'No scheduled posts'}</Badge>
       </Flex>
     </Card>
+  );
+}
+
+export function DashboardTool() {
+  return (
+    <StudioErrorBoundary toolTitle="Dashboard">
+      <DashboardToolContent />
+    </StudioErrorBoundary>
   );
 }
 

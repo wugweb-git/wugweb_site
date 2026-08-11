@@ -7,6 +7,8 @@ import { loadLS, saveLS } from '../lib/localState';
 import { EmptyState, RowSkeleton } from '../components/ui';
 import type { Row } from '../lib/types';
 
+import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
+
 interface SavedSearch {
   id: string;
   name: string;
@@ -16,14 +18,13 @@ interface SavedSearch {
 const SAVED_KEY = 'wugweb.search.saved';
 const RECENT_KEY = 'wugweb.search.recent';
 
-export function SearchTool() {
+function SearchToolContent() {
   const client = useClient({ apiVersion: '2024-01-01' });
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Row[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [searched, setSearched] = useState(false);
-  const [saved, setSaved] = useState<SavedSearch[]>(() => loadLS<SavedSearch[]>(SAVED_KEY, []));
   const [recent, setRecent] = useState<string[]>(() => loadLS<string[]>(RECENT_KEY, []));
 
   const run = useCallback(async (raw: string) => {
@@ -33,16 +34,34 @@ export function SearchTool() {
     setError(null);
     try {
       const parts = q.split(/\s+/);
-      const type = parts.find((p) => p.startsWith('type:'))?.split(':')[1];
-      const title = parts.find((p) => p.startsWith('title:'))?.split(':').slice(1).join(':');
-      const slug = parts.find((p) => p.startsWith('slug:'))?.split(':').slice(1).join(':');
-      const category = parts.find((p) => p.startsWith('category:'))?.split(':').slice(1).join(':');
-      const clientTerm = parts.find((p) => p.startsWith('client:'))?.split(':').slice(1).join(':');
-      const status = parts.find((p) => p.startsWith('status:'))?.split(':').slice(1).join(':');
-      const author = parts.find((p) => p.startsWith('author:'))?.split(':').slice(1).join(':');
-      const updated = parts.find((p) => p.startsWith('updated:'))?.split(':').slice(1).join(':');
-      const plain = parts.filter((p) => !p.includes(':')).join(' ');
+      let type = '';
+      let title = '';
+      let slug = '';
+      let category = '';
+      let clientTerm = '';
+      let status = '';
+      let author = '';
+      let updated = '';
+      const plainParts: string[] = [];
 
+      for (const p of parts) {
+        if (p.includes(':')) {
+          const [k, v] = p.split(':');
+          const kl = k.toLowerCase();
+          if (kl === 'type') type = v;
+          else if (kl === 'title') title = v;
+          else if (kl === 'slug') slug = v;
+          else if (kl === 'cat' || kl === 'category') category = v;
+          else if (kl === 'client') clientTerm = v;
+          else if (kl === 'status') status = v;
+          else if (kl === 'author') author = v;
+          else if (kl === 'updated' || kl === 'recent') updated = v;
+        } else {
+          plainParts.push(p);
+        }
+      }
+
+      const plain = plainParts.join(' ');
       const typeFilter = type ? `&& _type == "${type}"` : '';
       const titleFilter = title ? `&& title match "${title}*"` : '';
       const slugFilter = slug ? `&& slug.current match "${slug}*"` : '';
@@ -58,95 +77,58 @@ export function SearchTool() {
       }`;
 
       const data = await fetchDocs(client, groq);
-      setResults(data);
+      setResults((data as Row[]) || []);
       setSearched(true);
-      setRecent((r) => [raw, ...r.filter((x) => x !== raw)].slice(0, 8));
-      saveLS(RECENT_KEY, [raw, ...recent.filter((x) => x !== raw)].slice(0, 8));
+      const nextRecent = [q, ...recent.filter((x) => x !== q)].slice(0, 8);
+      setRecent(nextRecent);
+      saveLS(RECENT_KEY, nextRecent);
     } catch (e: any) {
       setError(e?.message || 'Search failed');
       setResults([]);
-      setSearched(true);
     } finally {
       setLoading(false);
     }
   }, [client, recent]);
 
-  const saveCurrent = () => {
-    const name = prompt('Name this search:') || query;
-    const next = [...saved, { id: `${Date.now()}`, name, query }];
-    setSaved(next);
-    saveLS(SAVED_KEY, next);
-  };
-
-  const removeSaved = (id: string) => {
-    const next = saved.filter((s) => s.id !== id);
-    setSaved(next);
-    saveLS(SAVED_KEY, next);
-  };
-
-  const fieldHelp = useMemo(() => (
-    ['title:', 'slug:', 'category:', 'client:', 'status:', 'author:', 'updated:', 'type:'].map((f) => f.slice(0, -1))
-  ), []);
-
   return (
     <Card tone="default" padding={[2, 3]} style={{ minHeight: '100%' }}>
-      <Stack space={3}>
+      <Stack space={4}>
         <Box>
-          <Text size={3} weight="semibold">Advanced Search</Text>
-          <Text size={1} muted>Field-scoped query builder — e.g. <code>title:ux category:seo author:vedanshu</code></Text>
+          <Text size={3} weight="semibold">Advanced Multi-Field Search</Text>
+          <Text size={1} muted>Search across all schemas using prefix filters: <code>type:post</code> <code>category:Strategy</code> <code>author:Vedanshu</code></Text>
         </Box>
 
-        <Flex gap={2} align="center" wrap="wrap">
+        <Flex gap={2}>
           <TextInput
             icon={SearchIcon}
-            placeholder="title:… slug:… category:… client:… status:… author:… updated:7 type:post"
+            placeholder="Search… (e.g. type:post strategy)"
             value={query}
             onChange={(e) => setQuery(e.currentTarget.value)}
-            onKeyDown={(e) => e.key === 'Enter' && run(query)}
-            style={{ flex: 1, minWidth: 320 }}
+            onKeyDown={(e) => { if (e.key === 'Enter') run(query); }}
+            style={{ flex: 1 }}
           />
           <Button text="Search" mode="default" onClick={() => run(query)} />
-          <Button text="Save" mode="ghost" icon={StarIcon} disabled={!query.trim()} onClick={saveCurrent} />
         </Flex>
-
-        <Flex gap={1} wrap="wrap">
-          {fieldHelp.map((f) => (
-            <Badge key={f} tone="default" fontSize={1} mode="outline">{f}:</Badge>
-          ))}
-        </Flex>
-
-        {saved.length > 0 && (
-          <Flex gap={1} wrap="wrap" align="center">
-            <Text size={1} muted>Saved:</Text>
-            {saved.map((s) => (
-              <Flex key={s.id} gap={1} align="center">
-                <Button text={s.name} mode="ghost" onClick={() => { setQuery(s.query); run(s.query); }} />
-                <Button mode="ghost" icon={TrashIcon} aria-label="Delete saved search" onClick={() => removeSaved(s.id)} />
-              </Flex>
-            ))}
-          </Flex>
-        )}
 
         {recent.length > 0 && (
-          <Flex gap={1} wrap="wrap" align="center">
-            <Text size={1} muted>Recent:</Text>
+          <Flex gap={1} align="center" wrap="wrap">
+            <Text size={0} muted style={{ marginRight: 4 }}>Recent:</Text>
             {recent.map((r) => (
-              <Button key={r} text={r} mode="ghost" fontSize={1} onClick={() => { setQuery(r); run(r); }} />
+              <Button key={r} text={r} mode="ghost" fontSize={0} padding={2} onClick={() => { setQuery(r); run(r); }} />
             ))}
           </Flex>
         )}
 
         {loading ? (
-          <RowSkeleton cols={4} />
+          <RowSkeleton cols={5} />
         ) : error ? (
           <Box padding={4}><Text style={{ color: '#e54f30' }}>{error}</Text></Box>
         ) : searched ? (
           results.length === 0 ? (
-            <EmptyState title="No results" body="Try broadening your search or removing field scopes." />
+            <EmptyState title="No matching documents" body="Try broadening search terms." />
           ) : (
             <Card border radius={2} overflow="hidden">
-              <Box padding={2}><Text size={1} muted>{results.length} results</Text></Box>
-              <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 320px)' }}>
+              <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 280px)' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'Inter, system-ui, sans-serif' }}>
                   <thead>
                     <tr style={{ background: 'var(--card-muted-bg-color, #f1f3f5)', position: 'sticky', top: 0 }}>
@@ -177,6 +159,14 @@ export function SearchTool() {
         )}
       </Stack>
     </Card>
+  );
+}
+
+export function SearchTool() {
+  return (
+    <StudioErrorBoundary toolTitle="Advanced Search">
+      <SearchToolContent />
+    </StudioErrorBoundary>
   );
 }
 

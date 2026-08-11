@@ -19,6 +19,43 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
               ])
           ),
         quickDoc(S, 'Site Settings', 'siteSettings', 'siteSettings', '⚙'),
+        S.divider(),
+        S.listItem()
+          .title('🔴 Drafts Needing Review')
+          .icon(() => '✍')
+          .child(
+            S.documentList()
+              .title('Draft Documents')
+              .filter('_id in path("drafts.**")')
+              .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
+          ),
+        S.listItem()
+          .title('⚠️ Missing SEO Meta')
+          .icon(() => '🔎')
+          .child(
+            S.documentList()
+              .title('Missing SEO Description')
+              .filter('(_type in ["post", "caseStudy", "service", "singletonPage"]) && !defined(seoDescription)')
+              .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
+          ),
+        S.listItem()
+          .title('🖼️ Missing Cover Images')
+          .icon(() => '🖼')
+          .child(
+            S.documentList()
+              .title('Missing Cover Media')
+              .filter('(_type in ["post", "caseStudy"]) && !defined(coverImage) && !defined(coverPath)')
+              .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
+          ),
+        S.listItem()
+          .title('🕒 Scheduled Content')
+          .icon(() => '🕒')
+          .child(
+            S.documentList()
+              .title('Future Scheduled Posts')
+              .filter('_type == "post" && dateTime(publishedAt) > dateTime(now())')
+              .defaultOrdering([{ field: 'publishedAt', direction: 'asc' }])
+          ),
       ]),
 
       S.divider(),
