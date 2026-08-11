@@ -457,8 +457,8 @@ export function DataTable({
                     </th>
                     {hg.headers.map((header: any) => {
                       const c = columns.find((x) => x.key === header.id);
-                      const canSort = header.column.getCanSort();
-                      const sorted = header.column.getIsSorted();
+                      const canSort = header.column && typeof header.column.getCanSort === 'function' ? header.column.getCanSort() : Boolean(c?.sortable !== false);
+                      const sorted = header.column && typeof header.column.getIsSorted === 'function' ? header.column.getIsSorted() : false;
                       return (
                         <th
                           key={header.id}
@@ -473,7 +473,17 @@ export function DataTable({
                             userSelect: 'none',
                             cursor: canSort ? 'pointer' : 'default',
                           }}
-                          onClick={() => canSort && header.column.toggleSorting()}
+                          onClick={() => {
+                            if (!canSort) return;
+                            if (header.column && typeof header.column.toggleSorting === 'function') {
+                              header.column.toggleSorting();
+                            } else {
+                              setSorting((old) => {
+                                const isDesc = old.find((x) => x.id === header.id)?.desc;
+                                return [{ id: header.id, desc: !isDesc }];
+                              });
+                            }
+                          }}
                         >
                           <Flex align="center" gap={1}>
                             <span>{flexRender(header.column.columnDef.header, header.getContext())}</span>

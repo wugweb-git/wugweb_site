@@ -44,7 +44,17 @@ async function loadDashboard(client: any): Promise<DashboardData> {
       client.fetch(`count(*[_type=="syncStatus" && status=="error"])`),
       client.fetch(`count(*[_type=="asset" && !defined(relativePath) && !defined(sitePath) && !defined(r2Key)])`),
       client.fetch(`count(*[_type=="asset" && status=="Archived"])`),
-      client.fetch(`*[_type in ["post","caseStudy","service","client","person","asset","engagement","testimonial","taxonomy"]] | group by _type { _type, count }`),
+      client.fetch(`{
+        "post": count(*[_type=="post"]),
+        "caseStudy": count(*[_type=="caseStudy"]),
+        "service": count(*[_type=="service"]),
+        "client": count(*[_type=="client"]),
+        "person": count(*[_type=="person"]),
+        "asset": count(*[_type=="asset"]),
+        "engagement": count(*[_type=="engagement"]),
+        "testimonial": count(*[_type=="testimonial"]),
+        "taxonomy": count(*[_type=="taxonomy"])
+      }`).then((res) => Object.entries(res || {}).map(([_type, count]) => ({ _type, count }))),
     ]);
   return {
     counts: counts ?? {},
