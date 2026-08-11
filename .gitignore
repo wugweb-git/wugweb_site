@@ -13,3 +13,6 @@ wugweb-assets/
 LOCAL.md
 Wugweb_Brand_OS_Foundation/
 /assets/
+.wrangler/
+assets used previously/
+mapped assets/

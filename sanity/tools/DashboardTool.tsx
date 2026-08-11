@@ -106,10 +106,10 @@ export function DashboardTool() {
   const missingSeoPct = totalDocs ? Math.round((data.missingSeo / totalDocs) * 100) : 0;
 
   const quickActions = [
-    { label: 'New Blog Post', icon: ComposeIcon, onClick: () => window.open(`/intent/create/template=post;type=post`, '_blank') },
-    { label: 'New Case Study', icon: AddIcon, onClick: () => window.open(`/intent/create/template=caseStudy;type=caseStudy`, '_blank') },
-    { label: 'New Client', icon: AddIcon, onClick: () => window.open(`/intent/create/template=client;type=client`, '_blank') },
-    { label: 'Open Tables', icon: SearchIcon, onClick: () => window.open(`/tables`, '_blank') },
+    { label: 'New Blog Post', icon: ComposeIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=post;template=post'; } },
+    { label: 'New Case Study', icon: AddIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=caseStudy;template=caseStudy'; } },
+    { label: 'New Client', icon: AddIcon, onClick: () => { window.location.hash = '#/structure/intent/create/type=client;template=client'; } },
+    { label: 'Open Tables', icon: SearchIcon, onClick: () => { window.location.hash = '#/tables'; } },
   ];
 
   return (

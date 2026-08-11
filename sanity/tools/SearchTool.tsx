@@ -158,7 +158,7 @@ export function SearchTool() {
                   <tbody>
                     {results.map((r) => (
                       <tr key={r._id} style={{ borderBottom: '1px solid var(--card-border-color, #eee)', cursor: 'pointer' }}
-                        onClick={() => window.open(`/intent/edit/id=${r._id};type=${r._type}`, '_blank')}>
+                        onClick={() => { window.location.hash = `#/structure/intent/edit/id=${r._id};type=${r._type}`; }}>
                         <td style={{ padding: '8px 12px' }}><Text size={1} weight="semibold">{String(r.title || r.name || r._id)}</Text></td>
                         <td style={{ padding: '8px 12px' }}><Badge tone="primary" mode="outline" fontSize={1}>{r._type}</Badge></td>
                         <td style={{ padding: '8px 12px' }}><Text size={1} muted>@{String(r.slug ?? '')}</Text></td>

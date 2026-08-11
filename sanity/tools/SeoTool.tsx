@@ -156,7 +156,7 @@ export function SeoTool() {
                       <td style={{ padding: '8px 12px' }}>{hasSchema ? <Badge tone="positive">✓</Badge> : <Badge tone="caution">—</Badge>}</td>
                       <td style={{ padding: '8px 12px', whiteSpace: 'nowrap' }}>
                         <Flex gap={1}>
-                          <Button mode="ghost" text="Edit" icon={ComposeIcon} onClick={() => window.open(`/intent/edit/id=${row._id};type=${row._type}`, '_blank')} />
+                          <Button mode="ghost" text="Edit" icon={ComposeIcon} onClick={() => { window.location.hash = `#/structure/intent/edit/id=${row._id};type=${row._type}`; }} />
                           <Button
                             mode="ghost"
                             text="Generate"

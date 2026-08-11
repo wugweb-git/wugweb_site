@@ -33,12 +33,44 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
 
       S.divider(),
 
-      // ── Marketing ──
-      sectionItem(S, 'Marketing', '◈', [
-        pane(S, 'landingPages', 'Landing Pages', 'Landing Pages', '✈', 'singletonPage'),
-        // SEO reports live under Sync Status + Tables; SEO docs = singletonPage (seo group)
+      // ── Navigation & Menus ──
+      sectionItem(S, 'Navigation & Menus', '🗺', [
+        pane(S, 'navigationMenu', 'Navigation Menus', 'All Menus', '🗺', 'navigationMenu'),
         S.listItem()
-          .title('SEO')
+          .title('Header Main Menu')
+          .icon(() => '⚡')
+          .child(
+            S.documentList()
+              .title('Header Main Menu')
+              .filter('_type == "navigationMenu" && menuId == "header-main"')
+          ),
+        S.listItem()
+          .title('Footer Links')
+          .icon(() => '🦶')
+          .child(
+            S.documentList()
+              .title('Footer Links')
+              .filter('_type == "navigationMenu" && (menuId == "footer-services" || menuId == "footer-sitemap" || menuId == "footer-legal")')
+          ),
+        pane(S, 'platformProfile', 'Presence & Social Links', 'Presence', '🔗', 'platformProfile'),
+      ]),
+
+      S.divider(),
+
+      // ── Brand & Assets ──
+      sectionItem(S, 'Brand & Assets', '🎨', [
+        pane(S, 'brandAsset', 'Brand Assets & Logos', 'Brand & Icons', '🎨', 'brandAsset'),
+        pane(S, 'asset', 'Media Library', 'Media Library', '▦', 'asset'),
+      ]),
+
+      S.divider(),
+
+      // ── Integrations & Code ──
+      sectionItem(S, 'Integrations & Code', '💻', [
+        pane(S, 'siteScript', 'Tracking & Custom Scripts', 'Scripts & Code', '💻', 'siteScript'),
+        pane(S, 'redirect', 'Redirects', 'Redirects', '↪', 'redirect'),
+        S.listItem()
+          .title('SEO Audit')
           .icon(() => '🔎')
           .child(
             S.documentList()
@@ -46,18 +78,12 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
               .filter('_type == "singletonPage" && !defined(seoDescription)')
               .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
           ),
-        pane(S, 'redirect', 'Redirects', 'Redirects', '↪', 'redirect'),
       ]),
 
       S.divider(),
 
-      // ── Media ──
-      sectionItem(S, 'Media', '▦', [pane(S, 'asset', 'Media Library', 'Media Library', '▦', 'asset')]),
-
-      S.divider(),
-
       // ── Business ──
-      sectionItem(S, 'Business', '◈', [
+      sectionItem(S, 'Business', '🏢', [
         pane(S, 'client', 'Clients', 'Clients', '🏢', 'client'),
         pane(S, 'engagement', 'Engagements', 'Engagements', '🤝', 'engagement'),
         pane(S, 'person', 'Team', 'Team / People', '👥', 'person'),
@@ -77,7 +103,6 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
         vocabList(S, 'Departments', 'team-department', '👥'),
         vocabList(S, 'Countries', 'country', '🌐'),
         pane(S, 'industry', 'Industries', 'Industry master', '🏭', 'industry'),
-        pane(S, 'platformProfile', 'Presence', 'Presence', '🔗', 'platformProfile'),
         pane(S, 'taxonomy', 'All taxonomy', 'All taxonomy', '📚', 'taxonomy'),
       ]),
     ]);
@@ -88,7 +113,6 @@ function sectionItem(S: StructureBuilder, title: string, icon: string, items: an
   return S.listItem().title(title).icon(() => icon).child(S.list().title(title).items(items));
 }
 
-/** A single document singleton. */
 function quickDoc(
   S: StructureBuilder,
   title: string,
@@ -102,7 +126,6 @@ function quickDoc(
     .child(S.document().schemaType(schemaType).documentId(documentId).title(title));
 }
 
-/** A rich list pane using our custom DataTable-powered DocumentListPane. */
 function pane(
   S: StructureBuilder,
   key: string,
@@ -122,7 +145,6 @@ function pane(
     );
 }
 
-/** Pages singleton list (Content → Pages). */
 function singletonPages(S: StructureBuilder) {
   const pages = [
     ['Home', 'home', '🏠'],

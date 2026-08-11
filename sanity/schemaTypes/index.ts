@@ -14,6 +14,9 @@ import asset from './asset';
 import platformProfile from './platformProfile';
 import testimonial from './testimonial';
 import redirect from './redirect';
+import brandAsset from './brandAsset';
+import siteScript from './siteScript';
+import navigationMenu from './navigationMenu';
 import { blockContent, cta, stats, accordion, logoCloud, video, codeBlock, twoColumns } from './blockContent';
 
 export const schemaTypes = [
@@ -33,6 +36,9 @@ export const schemaTypes = [
   platformProfile,
   testimonial,
   redirect,
+  brandAsset,
+  siteScript,
+  navigationMenu,
   blockContent,
   cta,
   stats,

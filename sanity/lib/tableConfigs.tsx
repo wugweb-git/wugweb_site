@@ -349,23 +349,61 @@ export const TABLE_CONFIGS: TableConfig[] = [
     getSubtitle: (row) => String(row.phone || ''),
   },
   {
-    key: 'syncStatus',
-    type: 'syncStatus',
-    title: 'Sync Status',
-    query: `*[_type=="syncStatus"][0...500] | order(entityType asc) {
-      _id, _type, _updatedAt, source, target, status, entityType, entityCount, lastSyncedAt, errorMessage, notes
+    key: 'brandAsset',
+    type: 'brandAsset',
+    title: 'Brand Assets & Icons',
+    query: `*[_type=="brandAsset"][0...1000] | order(category asc, name asc) {
+      _id, _type, _updatedAt, name, "slug": slug.current, category, variant, dimensions, path, status,
+      "imageUrl": image.asset->url
     }`,
     columns: [
-      { key: 'entityType', label: 'Entity', width: 160, pinned: true },
-      { key: 'source', label: 'Source', width: 110, render: (row) => <Badge tone="default" fontSize={1}>{String(row.source || '—')}</Badge> },
-      { key: 'target', label: 'Target', width: 110, render: (row) => <Badge tone="default" fontSize={1}>{String(row.target || '—')}</Badge> },
-      { key: 'status', label: 'Status', width: 110, render: (row) => <StatusBadge value={String(row.status ?? '')} /> },
-      { key: 'entityCount', label: 'Count', width: 80, render: (row) => <Text size={1} muted>{String(row.entityCount ?? '—')}</Text> },
-      { key: 'lastSyncedAt', label: 'Last sync', width: 130, render: (row) => <UpdatedTime iso={String(row.lastSyncedAt ?? row._updatedAt ?? '')} /> },
+      TITLE,
+      { key: 'category', label: 'Category', width: 140, render: (row) => <Badge tone="primary" mode="outline" fontSize={1}>{String(row.category || '—')}</Badge> },
+      { key: 'variant', label: 'Variant', width: 110, render: (row) => <Badge tone="default" fontSize={1}>{String(row.variant || 'default')}</Badge> },
+      { key: 'status', label: 'Status', width: 100, render: (row) => <StatusBadge value={String(row.status ?? '')} /> },
+      { key: 'dimensions', label: 'Dimensions', width: 100, render: (row) => <Text size={1} muted>{String(row.dimensions || '—')}</Text> },
+      { key: 'path', label: 'Path', width: 220, render: (row) => <Text size={1} muted>{String(row.path || '—')}</Text> },
+      UPDATED,
     ],
-    titleField: 'entityType',
-    getTitle: (row) => String(row.entityType || row._id),
-    getSubtitle: (row) => String(row.errorMessage || ''),
+    titleField: 'name',
+    getThumb: (row) => (row.imageUrl ? String(row.imageUrl) : row.path ? String(row.path) : null),
+    getSubtitle: (row) => `@${String(row.slug ?? '')}`,
+  },
+  {
+    key: 'siteScript',
+    type: 'siteScript',
+    title: 'Scripts & Integrations',
+    query: `*[_type=="siteScript"][0...500] | order(priority asc, name asc) {
+      _id, _type, _updatedAt, name, "slug": slug.current, scriptType, placement, enabled, environment, priority, trackingId, src
+    }`,
+    columns: [
+      TITLE,
+      { key: 'scriptType', label: 'Type', width: 150, render: (row) => <Badge tone="primary" mode="outline" fontSize={1}>{String(row.scriptType || '—')}</Badge> },
+      { key: 'placement', label: 'Placement', width: 110, render: (row) => <Badge tone="default" fontSize={1}>{String(row.placement || 'head')}</Badge> },
+      { key: 'enabled', label: 'Active', width: 90, render: (row) => (row.enabled ? <Badge tone="positive">🟢 Active</Badge> : <Badge tone="critical">⚪ Off</Badge>) },
+      { key: 'environment', label: 'Env', width: 110, render: (row) => <Text size={1} muted>{String(row.environment || 'all')}</Text> },
+      { key: 'trackingId', label: 'Tracking ID', width: 140, render: (row) => <Text size={1} muted>{String(row.trackingId || '—')}</Text> },
+      UPDATED,
+    ],
+    titleField: 'name',
+    getSubtitle: (row) => `@${String(row.slug ?? '')}`,
+  },
+  {
+    key: 'navigationMenu',
+    type: 'navigationMenu',
+    title: 'Navigation Menus',
+    query: `*[_type=="navigationMenu"][0...500] | order(menuId asc, title asc) {
+      _id, _type, _updatedAt, title, menuId, description, "itemCount": count(items)
+    }`,
+    columns: [
+      TITLE,
+      { key: 'menuId', label: 'Menu ID', width: 160, render: (row) => <Badge tone="primary" fontSize={1}>{String(row.menuId || '—')}</Badge> },
+      { key: 'itemCount', label: 'Items', width: 80, render: (row) => <Text size={1} muted>{String(row.itemCount ?? 0)} links</Text> },
+      { key: 'description', label: 'Description', width: 260, render: (row) => <Text size={1} muted>{String(row.description || '—')}</Text> },
+      UPDATED,
+    ],
+    titleField: 'title',
+    getSubtitle: (row) => `@${String(row.menuId ?? '')}`,
   },
 ];
 

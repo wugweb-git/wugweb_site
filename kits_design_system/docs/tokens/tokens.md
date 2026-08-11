@@ -1,39 +1,39 @@
 # Tokens — Index
 
-> **Source of truth:** `src/styles/global.css` `:root`. Tokens are the only way to
-> style — never hardcode values. This directory mirrors every token and value.
+> **Source of truth:** `src/styles/global.css` `:root`. Tokens are the only way to style — never hardcode values. This directory mirrors every token and value.
 
-## Token Categories
+---
 
-| Category | File | Key tokens |
+## Token Categories & References
+
+| Category | Documentation File | Key Tokens & Scope |
 |---|---|---|
-| Colors | [colors.md](colors.md) | `--neutral-*`, `--color-*`, `--hero-overlay*`, yellow rule |
-| Typography | [typography.md](typography.md) | `--ts-*`, `--fluid-*`, `--t-*`, `--core-line-height-*`, `--lh-*`, weights |
-| Spacing | [spacing.md](spacing.md) | `--s-*`, `--p-*`, `--gap-*`, `--space-section-*`, `--space-page-*` |
-| Sizing | [sizing.md](sizing.md) | Component sizes, icon sizes |
-| Radius | [radius.md](radius.md) | `--r-*`, `--radius-*` (buttons = `--radius-sm`, chips = `--radius-full`) |
-| Borders | [borders.md](borders.md) | `--stroke-*`, `--line`, `--line-strong`, border colors |
-| Opacity | [opacity.md](opacity.md) | `--opacity-*` scale + semantic |
-| Shadows | [shadows.md](shadows.md) | `--shadow-*` scale + glows |
-| Blur | [blur.md](blur.md) | `--blur-*` scale |
-| Elevation | [elevation.md](elevation.md) | `--elevation-0..5`, `--layer-*`, `--z-*` |
-| Gradients | [gradients.md](gradients.md) | `--gradient-*` per service + brand |
-| Glass | [glass.md](glass.md) | `--glass-*` (blur + tint + border combos) |
-| Noise | [noise.md](noise.md) | `--noise-*` SVG grain data-URIs |
-| Motion | [motion.md](motion.md) | `--duration-*`, `--easing-*`, GSAP system, hover/focus/selection/cursor |
-| Transitions | [transitions.md](transitions.md) | `--transition-page`, `--transition-overlay` |
-| Z-index | [z-index.md](z-index.md) | `--z-*`, `--layer-*` |
-| Icons | [icons.md](icons.md) | Brand assets, 89 toolkit icons |
-| Layout | [layout.md](layout.md) | `.wrap` 1280, `.page` 1440, `.grid`, gutters |
-| Breakpoints | [breakpoints.md](breakpoints.md) | Documentation-only — use literals in `@media` |
-| Interaction | [interaction.md](interaction.md) | Hover, focus, selection, cursor presets |
-| Accessibility | [accessibility.md](accessibility.md) | Focus rings, reduced-motion, contrast, touch targets |
-| Service colors | [service-colors.md](service-colors.md) | `--svc-*` final user-confirmed mapping + panel order |
+| **Colors** | [colors.md](colors.md) | `--neutral-*` (0..10 scale), `--color-*` (surface, text, border, feedback), yellow rule |
+| **Service Colors** | [service-colors.md](service-colors.md) | `--svc-*` (Strategy, Engineering, Brand, Growth, Operations, Experience base, dark & light variants) |
+| **Typography** | [typography.md](typography.md) | Weights (400, 500, 600, 700, 800), `--ts-*` static scale, `--fluid-*` responsive clamp scale |
+| **Spacing** | [spacing.md](spacing.md) | Ramp `--s-*`, `--p-*`, `--gap-*` (0..12), `--space-section-*` (xs..xl), `--space-page-*` |
+| **Sizing** | [sizing.md](sizing.md) | `--nav-height`, `--control-size`, `--pillar-thumb`, `--bento-min`, `--culture-visual` |
+| **Radius** | [radius.md](radius.md) | Scale `--r-*` (0..8, full), `--radius-*` (buttons = `--radius-sm`, chips = `--radius-full`) |
+| **Borders & Strokes** | [borders.md](borders.md) | Stroke width `--stroke-*` (hairline..heavy), `--line`, `--line-strong`, border colors |
+| **Opacity** | [opacity.md](opacity.md) | Ramp `--opacity-0..100`, semantic `--opacity-overlay`, `--opacity-disabled`, `--opacity-hover` |
+| **Shadows** | [shadows.md](shadows.md) | Scale `--shadow-xs..2xl`, glows `--shadow-glow-*`, `--shadow-nav`, `--shadow-inner` |
+| **Blur** | [blur.md](blur.md) | Scale `--blur-xs..extreme` (4px to 100px), backdrop filter scale |
+| **Elevation & Layers** | [elevation.md](elevation.md) & [z-index.md](z-index.md) | `--elevation-0..5`, layer order `--layer-background..cursor` (0 to 9999) |
+| **Gradients** | [gradients.md](gradients.md) | Brand `--gradient-brand`, per-service pillar linear gradients `--gradient-*` |
+| **Glass** | [glass.md](glass.md) | Combos `--glass-light..dark` (blur + saturate backdrop filter effects) |
+| **Noise** | [noise.md](noise.md) | Texture `--noise-light..heavy`, `--noise-editorial` SVG grain data-URIs |
+| **Motion & Easings** | [motion.md](motion.md) & [transitions.md](transitions.md) | Durations `--duration-*`, easings `--easing-*` (smooth, editorial, spring), GSAP triggers |
+| **Interaction** | [interaction.md](interaction.md) | Hover presets (`--hover-button`, `--hover-card`), focus ring (`--focus-primary`), selection, cursor |
+| **Breakpoints** | [breakpoints.md](breakpoints.md) | Documentation constants (`--breakpoint-xs..2xl`) — use pixel literals in `@media` |
+| **Accessibility** | [accessibility.md](accessibility.md) | Contrast compliance, reduced motion overrides, focus indicators, minimum touch targets |
+| **Icons & Assets** | [icons.md](icons.md) | Brand lockups, 89 official service toolkit brand/tech SVG icons |
 
-## Rules
+---
 
-1. Always use tokens — never hardcode color/font/spacing/radius/opacity/shadow/blur/z-index.
-2. Breakpoints: use literal pixel values in `@media` (tokens are documentation-only).
-3. Buttons = `--radius-sm` · chips/tags/pills = `--radius-full`.
-4. Yellow = brand accent ≤10% per page; interface stays grey/ash/black.
-5. Animations go through GSAP (`src/lib/scroll-animations.ts`).
+## Mandated Token Rules
+
+1. **Always Use Tokens**: Never hardcode hex values, pixel font sizes, or rem paddings in new CSS.
+2. **Breakpoints in Media Queries**: Custom CSS properties cannot be used in `@media` queries; use literal pixel constants (`768px`, `1024px`, `1280px`).
+3. **Radius Consistency**: Buttons = `--radius-sm` (8px), Chips = `--radius-full` (9999px), Cards = `--radius-lg` (16px), Hero panels = `--radius-2xl` (24px).
+4. **Yellow Capping**: Yellow (`--color-yellow`) is reserved for primary CTAs and active focus indicators (≤10% per page).
+5. **GSAP Motion Engine**: Animations run through GSAP (`src/lib/scroll-animations.ts`) using `[data-reveal]` and `[data-scroll]` attributes.

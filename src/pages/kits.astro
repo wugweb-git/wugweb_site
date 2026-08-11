@@ -1,0 +1,1475 @@
+---
+// Kits Design System Master Showcase Page (/kits)
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Exact Brand & Secondary Colors (§1.2 in Kits Token System)
+const secondaryColors = [
+  { name: 'Peach (Error / Action)', hex: '#E54F30', token: '--color-peach' },
+  { name: 'Green (Success / Growth)', hex: '#3ED219', token: '--color-green' },
+  { name: 'Blue (Accent / Engineering)', hex: '#2368D7', token: '--color-blue' },
+  { name: 'Aqua (Experience / Vibrant)', hex: '#09E2C0', token: '--color-aqua' },
+  { name: 'Primary Yellow (Brand Accent ≤10%)', hex: '#FFBE1A', token: '--color-yellow' },
+  { name: 'Grey (Subtle Text)', hex: '#C9C9C9', token: '--color-grey' },
+  { name: 'Ash (Surface Elevated)', hex: '#191919', token: '--color-ash' },
+];
+
+const neutrals = [
+  { name: 'Neutral 0 (Pure White)', hex: '#FFFFFF', token: '--neutral-0' },
+  { name: 'Neutral 1 (Soft White)', hex: '#F4F4F4', token: '--neutral-1' },
+  { name: 'Neutral 2 (Light Grey)', hex: '#DFDFDF', token: '--neutral-2' },
+  { name: 'Neutral 3 (Muted Text)', hex: '#BABABA', token: '--neutral-3' },
+  { name: 'Neutral 4 (Subtle Text)', hex: '#A3A3A3', token: '--neutral-4' },
+  { name: 'Neutral 5 (Border Strong)', hex: '#7D7D7D', token: '--neutral-5' },
+  { name: 'Neutral 6 (Medium Surface)', hex: '#444444', token: '--neutral-6' },
+  { name: 'Neutral 7 (Elevated Surface)', hex: '#2B2B2B', token: '--neutral-7' },
+  { name: 'Neutral 8 (Dark Surface)', hex: '#1A1A1A', token: '--neutral-8' },
+  { name: 'Neutral 9 (Page Background)', hex: '#050505', token: '--neutral-9' },
+  { name: 'Neutral 10 (Pure Black)', hex: '#000000', token: '--neutral-10' },
+];
+
+const pillars = [
+  { id: 'strategy', name: 'Strategy', baseHex: '#FA4108', darkHex: '#A22A05', lightHex: '#FF8F66', gradient: 'linear-gradient(135deg, #FA4108 0%, #FF8F66 100%)', desc: 'Product, Brand & Growth Architecture' },
+  { id: 'brand', name: 'Brand', baseHex: '#E6309F', darkHex: '#951F67', lightHex: '#F17CC3', gradient: 'linear-gradient(135deg, #E6309F 0%, #F17CC3 100%)', desc: 'Identity Systems & Narrative Design' },
+  { id: 'experience', name: 'Experience', baseHex: '#09E2C0', darkHex: '#05927C', lightHex: '#6EF0DC', gradient: 'linear-gradient(135deg, #09E2C0 0%, #6EF0DC 100%)', desc: 'UI/UX, Digital Platforms & Design Systems' },
+  { id: 'engineering', name: 'Engineering', baseHex: '#2167E9', darkHex: '#143F8F', lightHex: '#7FA8F3', gradient: 'linear-gradient(135deg, #2167E9 0%, #7FA8F3 100%)', desc: 'Web, Mobile App & Platform Modernization' },
+  { id: 'growth', name: 'Growth', baseHex: '#3ED219', darkHex: '#21870F', lightHex: '#9BE97F', gradient: 'linear-gradient(135deg, #3ED219 0%, #9BE97F 100%)', desc: 'Martech, CRO & Performance Engineering' },
+  { id: 'operations', name: 'Operations', baseHex: '#7A4DFF', darkHex: '#4F32A5', lightHex: '#B49CFF', gradient: 'linear-gradient(135deg, #7A4DFF 0%, #B49CFF 100%)', desc: 'Managed Application Support & Reliability' },
+];
+
+const typographySpecimens = [
+  { token: '--fluid-display', weight: '800', role: 'Display Hero', sample: 'Digital Experience & Platform Engineering', px: '~40px → 80px', line: '1.2' },
+  { token: '--fluid-h1', weight: '700', role: 'Heading 1', sample: 'Architecting High-Performance Digital Systems', px: '~32px → 48px', line: '1.2' },
+  { token: '--fluid-h2', weight: '600', role: 'Heading 2', sample: 'Modular Design Tokens & Enterprise Architecture', px: '~24px → 36px', line: '1.375' },
+  { token: '--fluid-h3', weight: '600', role: 'Heading 3', sample: 'Fluid Clamp Typography & Surface System', px: '~20px → 28px', line: '1.375' },
+  { token: '--fluid-h4', weight: '600', role: 'Heading 4', sample: 'Accessible Viewport Scaling & Dynamic Layouts', px: '~17px → 22px', line: '1.5' },
+  { token: '--fluid-body-lg', weight: '400', role: 'Body Large', sample: 'Every token is carefully calibrated for responsive viewports using native CSS clamp expressions.', px: '~16px → 20px', line: '1.625' },
+  { token: '--fluid-body-md', weight: '400', role: 'Body Medium', sample: 'Standard body copy font size used across marketing, blog, and service documentation.', px: '15px → 16px', line: '1.5' },
+  { token: '--fluid-body-sm', weight: '400', role: 'Body Small', sample: 'Secondary metadata, captions, and supplementary micro-copy details.', px: '13px → 14px', line: '1.5' },
+  { token: '--fluid-label', weight: '500', role: 'Label / Eyebrow', sample: 'DESIGN SYSTEM TOKENS & PRIMITIVES', px: '12px → 14px', tracking: '0.08em', line: '1.2' },
+  { token: '--fluid-caption', weight: '400', role: 'Caption / Micro', sample: 'Updated: Kits Design System v4.2 · Single Source of Truth', px: '10px → 12px', line: '1.5' },
+];
+
+const spacingRamp = [
+  { token: '--s-1', px: '4px' },
+  { token: '--s-2', px: '8px' },
+  { token: '--s-3', px: '12px' },
+  { token: '--s-4', px: '16px' },
+  { token: '--s-6', px: '24px' },
+  { token: '--s-8', px: '32px' },
+  { token: '--s-10', px: '40px' },
+  { token: '--s-12', px: '48px' },
+];
+
+const radiusRamp = [
+  { token: '--r-0 / --radius-none', val: '0px' },
+  { token: '--r-1 / --radius-xs', val: '4px' },
+  { token: '--r-2 / --radius-sm', val: '8px' },
+  { token: '--r-3 / --radius-md', val: '12px' },
+  { token: '--r-4 / --radius-lg', val: '16px' },
+  { token: '--r-6 / --radius-2xl', val: '24px' },
+  { token: '--r-full / --radius-full', val: '9999px' },
+];
+
+const opacityRamp = [
+  { token: '--opacity-10', val: '10%' },
+  { token: '--opacity-20', val: '20%' },
+  { token: '--opacity-40 (disabled)', val: '40%' },
+  { token: '--opacity-60', val: '60%' },
+  { token: '--opacity-80', val: '80%' },
+  { token: '--opacity-100', val: '100%' },
+];
+
+const motionEasings = [
+  { name: 'Standard (in-out)', token: '--easing-standard', cubic: 'cubic-bezier(0.4, 0, 0.2, 1)' },
+  { name: 'Spring', token: '--easing-spring', cubic: 'cubic-bezier(0.34, 1.56, 0.64, 1)' },
+  { name: 'Smooth', token: '--easing-smooth', cubic: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+  { name: 'Editorial', token: '--easing-editorial', cubic: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+];
+
+const faqs = [
+  { q: 'What is the Kits Design System?', a: 'Kits is Wugweb’s single source of truth design token & component framework. It enforces fluid clamp typography, strict weight hierarchies, surface elevation tiers, and 6-pillar color systems across all digital properties.' },
+  { q: 'How does fluid typography work in Kits?', a: 'Fluid typography uses CSS clamp() functions (e.g. clamp(2.5rem, 5.5vw + 0.5rem, 5rem)) to seamlessly scale font size between mobile devices and ultra-wide desktop displays without jarring breakpoint jumps.' },
+  { q: 'What are the 6 service pillar themes?', a: 'The 6 service pillars are Strategy, Brand, Experience, Engineering, Growth, and Operations. Each pillar owns a distinct color accent, theme gradient, and capability matrix.' },
+  { q: 'How are design tokens integrated into Astro & Sanity?', a: 'Tokens are defined in global.css as native CSS custom properties. Sanity Studio models manage content, while Astro components consume variables directly for 100% theme consistency.' },
+];
+---
+
+<BaseLayout title="Kits Design System & Component Library | Wugweb" description="Complete specification of Wugweb's Kits Design System — primitives, tokens, secondary colors, UI controls, blocks, widgets, and animation effects." hideGlobalSections={true}>
+  <div class="kits-page wrap">
+
+    <!-- ── Hero Header ── -->
+    <header class="kits-hero" data-reveal>
+      <div class="kits-hero-pill">
+        <span class="pulse-dot"></span>
+        <span class="eyebrow">SINGLE SOURCE OF TRUTH</span>
+      </div>
+      <h1 class="kits-hero-title">Kits Design System</h1>
+      <p class="kits-hero-lead">
+        Primitives, tokens, color matrices, UI controls, structural blocks, interactive widgets, and motion effects powering Wugweb’s digital engineering.
+      </p>
+
+      <div class="kits-nav-strip">
+        <a href="#primitives" class="nav-chip">Primitives & Tokens</a>
+        <a href="#colors" class="nav-chip">Colors & Pillars</a>
+        <a href="#typography" class="nav-chip">Typography</a>
+        <a href="#components" class="nav-chip">UI Controls</a>
+        <a href="#blocks" class="nav-chip">Blocks & Cards</a>
+        <a href="#widgets" class="nav-chip">Widgets</a>
+        <a href="#motion" class="nav-chip">Motion & Effects</a>
+      </div>
+
+      <div class="kits-stats-grid">
+        <div class="stat-card"><span class="stat-val">22</span><span class="stat-lbl">Token Specs</span></div>
+        <div class="stat-card"><span class="stat-val">10</span><span class="stat-lbl">Fluid Clamps</span></div>
+        <div class="stat-card"><span class="stat-val">7</span><span class="stat-lbl">Secondary Colors</span></div>
+        <div class="stat-card"><span class="stat-val">6</span><span class="stat-lbl">Service Pillars</span></div>
+        <div class="stat-card"><span class="stat-val">5</span><span class="stat-lbl">Motion Easings</span></div>
+      </div>
+    </header>
+
+    <!-- ── Interactive Pillar Theme Switcher Engine ── -->
+    <section class="kits-section theme-switcher-bar" data-reveal>
+      <div class="section-hdr">
+        <span class="eyebrow">INTERACTIVE THEME ENGINE</span>
+        <h2>Dynamic Service Pillar Switcher</h2>
+        <p>Click a service pillar to inspect its base hue, darkened background, light foreground accent, and gradient spectrum.</p>
+      </div>
+
+      <div class="pillar-tabs" id="pillarTabs">
+        {pillars.map((p, idx) => (
+          <button
+            class={`pillar-tab ${idx === 0 ? 'active' : ''}`}
+            data-pillar={p.id}
+            data-base={p.baseHex}
+            data-dark={p.darkHex}
+            data-light={p.lightHex}
+            data-gradient={p.gradient}
+          >
+            <span class="tab-dot" style={`background: ${p.baseHex}`}></span>
+            <span class="tab-name">{p.name}</span>
+          </button>
+        ))}
+      </div>
+
+      <div class="active-pillar-banner" id="pillarBanner" style={`background: ${pillars[0].gradient}; border-color: ${pillars[0].baseHex}`}>
+        <div class="banner-content">
+          <span class="banner-title" id="bannerTitle">{pillars[0].name} Pillar</span>
+          <span class="banner-desc" id="bannerDesc">{pillars[0].desc}</span>
+        </div>
+        <div class="banner-codes">
+          <code id="codeBase">--svc-base: {pillars[0].baseHex}</code>
+          <code id="codeLight">--svc-light: {pillars[0].lightHex}</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 1: Primitives & Tokens (Colors, Typography, Spacing, Radius, Opacity) ── -->
+    <section class="kits-section" id="primitives" data-reveal>
+      <div class="section-hdr">
+        <span class="eyebrow">PRIMITIVES & TOKENS</span>
+        <h2>Color Swatches, Scale Ramps & Tokens</h2>
+        <p>The foundational variables and static scales defining background, text, borders, and interactive feedback.</p>
+      </div>
+
+      <!-- Color Palette: Secondary & Neutrals -->
+      <div class="color-groups-grid" id="colors">
+        <div class="color-group-card">
+          <h3>Secondary Colors (§1.2)</h3>
+          <div class="swatch-list">
+            {secondaryColors.map((c) => (
+              <div class="swatch-item">
+                <div class="swatch-box" style={`background: ${c.hex}; border: 1px solid rgba(255,255,255,0.15);`}></div>
+                <div class="swatch-info">
+                  <span class="swatch-name">{c.name}</span>
+                  <code>{c.token} ({c.hex})</code>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="color-group-card">
+          <h3>Neutral Scale (--neutral-0 to --neutral-10)</h3>
+          <div class="swatch-list">
+            {neutrals.slice(0, 6).map((c) => (
+              <div class="swatch-item">
+                <div class="swatch-box" style={`background: ${c.hex}; border: 1px solid rgba(255,255,255,0.15);`}></div>
+                <div class="swatch-info">
+                  <span class="swatch-name">{c.name}</span>
+                  <code>{c.token} ({c.hex})</code>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="color-group-card full-width">
+          <h3>6 Service Pillar Color Spectrum</h3>
+          <div class="pillars-swatch-grid">
+            {pillars.map((p) => (
+              <div class="pillar-swatch-card" style={`background: ${p.gradient}`}>
+                <div class="swatch-hdr">
+                  <span class="pillar-dot" style={`background: ${p.baseHex}`}></span>
+                  <span class="pillar-title">{p.name}</span>
+                </div>
+                <span class="pillar-desc-sm">{p.desc}</span>
+                <div class="swatch-hex-stack">
+                  <code>Base: {p.baseHex}</code>
+                  <code>Light: {p.lightHex}</code>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Spacing, Radius & Opacity Ramps -->
+      <div class="ramps-grid">
+        <div class="ramp-card">
+          <h3>Spacing Ramp (--s-0 to --s-12)</h3>
+          <div class="ramp-items">
+            {spacingRamp.map((s) => (
+              <div class="ramp-row">
+                <span class="ramp-lbl">{s.token}</span>
+                <div class="ramp-bar" style={`width: ${s.px}; background: var(--color-yellow, #FFBE1A); height: 8px; border-radius: 4px;`}></div>
+                <span class="ramp-val">{s.px}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ramp-card">
+          <h3>Border Radius Ramp</h3>
+          <div class="ramp-items">
+            {radiusRamp.map((r) => (
+              <div class="ramp-row">
+                <span class="ramp-lbl">{r.token}</span>
+                <div class="radius-box" style={`border-radius: ${r.val}; border: 2px solid var(--color-yellow, #FFBE1A); width: 32px; height: 32px;`}></div>
+                <span class="ramp-val">{r.val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ramp-card">
+          <h3>Opacity Scale</h3>
+          <div class="ramp-items">
+            {opacityRamp.map((o) => (
+              <div class="ramp-row">
+                <span class="ramp-lbl">{o.token}</span>
+                <div class="opacity-box" style={`background: #FFBE1A; opacity: ${o.val}; width: 40px; height: 16px; border-radius: 4px;`}></div>
+                <span class="ramp-val">{o.val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 2: Fluid Typography Specimen Stack ── -->
+    <section class="kits-section" id="typography" data-reveal>
+      <div class="section-hdr">
+        <span class="eyebrow">TYPOGRAPHY ARCHITECTURE</span>
+        <h2>Fluid Clamp & Font Weight Hierarchy</h2>
+        <p>Single font family (Inter Tight) with strict weight hierarchy: Display 800, H1 700, H2–H4 600, Labels 500, Body 400.</p>
+      </div>
+
+      <div class="type-specimen-stack">
+        {typographySpecimens.map((spec) => (
+          <div class="specimen-card" data-token={spec.token}>
+            <div class="specimen-meta">
+              <span class="token-name">{spec.token}</span>
+              <span class="specimen-tag">{spec.role} · Weight {spec.weight}</span>
+              <span class="specimen-px">{spec.px}</span>
+              <button class="copy-btn" data-copy={spec.token}>Copy Token</button>
+            </div>
+            <div
+              class="specimen-sample"
+              style={`font-size: var(${spec.token}); font-weight: ${spec.weight}; line-height: ${spec.line}; ${spec.tracking ? `letter-spacing: ${spec.tracking};` : ''}`}
+            >
+              {spec.sample}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── Section 3: UI Controls & Component System ── -->
+    <section class="kits-section" id="components" data-reveal>
+      <div class="section-hdr">
+        <span class="eyebrow">UI CONTROLS & COMPONENTS</span>
+        <h2>Buttons, Form Controls, Badges & Tabs</h2>
+        <p>Accessible, high-contrast interactive components powering marketing and application interfaces.</p>
+      </div>
+
+      <div class="widgets-demo-grid">
+        <!-- Buttons Showcase -->
+        <div class="widget-box">
+          <div class="widget-hdr"><span class="widget-title">Button System</span></div>
+          <div class="button-stack">
+            <button class="btn-primary-yellow">Primary Action (#FFBE1A)</button>
+            <button class="btn-ghost">Secondary Action (Ghost)</button>
+            <button class="btn-outline">Outline Action</button>
+            <button class="btn-cta-special">
+              <span>Special CTA Action</span>
+              <span class="cta-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Controls -->
+        <div class="widget-box">
+          <div class="widget-hdr"><span class="widget-title">Form Inputs & Controls</span></div>
+          <div class="form-demo-stack">
+            <div class="input-field-group">
+              <label class="input-lbl">Work Email Address</label>
+              <input type="email" class="demo-input" placeholder="name@company.com" value="vedanshu@wugweb.com" />
+            </div>
+            <div class="input-field-group">
+              <label class="input-lbl">Select Engagement Type</label>
+              <select class="demo-select">
+                <option>Strategy & Digital Transformation</option>
+                <option>Platform Engineering & Web App</option>
+                <option>Brand Identity System</option>
+              </select>
+            </div>
+            <div class="toggle-row">
+              <span class="toggle-lbl">Newsletter Opt-In</span>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges & Status Chips -->
+        <div class="widget-box full-width">
+          <div class="widget-hdr"><span class="widget-title">Badges, Tags & SLA Indicators</span></div>
+          <div class="badges-flex">
+            <span class="badge-tag tag-primary">Engineering</span>
+            <span class="badge-tag tag-peach">Peach Accent (#E54F30)</span>
+            <span class="badge-tag tag-green">Green Accent (#3ED219)</span>
+            <span class="badge-tag tag-blue">Blue Accent (#2368D7)</span>
+            <span class="badge-tag tag-aqua">Aqua Accent (#09E2C0)</span>
+            <span class="badge-tag tag-yellow">Primary Yellow (#FFBE1A)</span>
+            <span class="badge-sla">⚡ 24h Response SLA Guaranteed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 4: Blocks & Layout Patterns ── -->
+    <section class="kits-section" id="blocks" data-reveal>
+      <div class="section-hdr">
+        <span class="eyebrow">BLOCKS & LAYOUT PATTERNS</span>
+        <h2>Bento Grids & Structural Containers</h2>
+        <p>Modular block layouts used for services, case studies, and feature highlights.</p>
+      </div>
+
+      <div class="bento-demo-grid">
+        <div class="bento-card bento-wide">
+          <span class="bento-tag">BENTO BLOCK 01</span>
+          <h3>Domain-Driven Architecture</h3>
+          <p>Decoupled content modeling in Sanity Studio feeding dynamic Astro server endpoints.</p>
+        </div>
+
+        <div class="bento-card">
+          <span class="bento-tag">BENTO BLOCK 02</span>
+          <h3>Fluid Clamp Engine</h3>
+          <p>Viewport-aware typography and gap scaling.</p>
+        </div>
+
+        <div class="bento-card">
+          <span class="bento-tag">BENTO BLOCK 03</span>
+          <h3>6-Pillar Theme Integration</h3>
+          <p>Custom theme accents for every service capability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 5: Interactive Widgets ── -->
+    <section class="kits-section" id="widgets" data-reveal>
+      <div class="section-hdr">
+        <span class="eyebrow">INTERACTIVE WIDGETS</span>
+        <h2>Scope Selector, Accordion & Token Inspector</h2>
+        <p>Live functional widgets powering lead generation and developer documentation.</p>
+      </div>
+
+      <div class="widgets-demo-grid">
+        <!-- 6-Pillar Scope Selector Widget -->
+        <div class="widget-box full-width">
+          <div class="widget-hdr">
+            <span class="widget-title">Interactive 6-Pillar Scope Selector Widget</span>
+            <span class="widget-badge" id="selectedCount">0 Pillars Selected</span>
+          </div>
+          <div class="scope-grid-demo" id="scopeGrid">
+            {pillars.map((p) => (
+              <div class="scope-chip-card" data-scope={p.name}>
+                <div class="chip-top">
+                  <span class="chip-dot" style={`background: ${p.baseHex}`}></span>
+                  <span class="chip-name">{p.name}</span>
+                  <span class="chip-check">✓</span>
+                </div>
+                <span class="chip-desc">{p.desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Accordion FAQ Widget -->
+        <div class="widget-box full-width">
+          <div class="widget-hdr"><span class="widget-title">Interactive Accordion FAQ Widget</span></div>
+          <div class="kits-accordion">
+            {faqs.map((f, i) => (
+              <details class="accordion-item" open={i === 0}>
+                <summary class="accordion-q">
+                  <span>{f.q}</span>
+                  <span class="acc-icon">+</span>
+                </summary>
+                <div class="accordion-a">
+                  <p>{f.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <!-- Live Code Token Inspector Widget -->
+        <div class="widget-box full-width code-inspector">
+          <div class="widget-hdr">
+            <span class="widget-title">Live Token Inspector & CSS Exporter</span>
+            <button class="btn-ghost-sm" id="copyAllTokens">Copy All CSS Variables</button>
+          </div>
+          <pre class="code-block"><code>{`:root {
+  --color-yellow: #FFBE1A;
+  --color-peach: #E54F30;
+  --color-green: #3ED219;
+  --color-blue: #2368D7;
+  --color-aqua: #09E2C0;
+  --svc-strategy: #FA4108;
+  --svc-brand: #E6309F;
+  --svc-experience: #09E2C0;
+  --svc-engineering: #2167E9;
+  --svc-growth: #3ED219;
+  --svc-operations: #7A4DFF;
+  --fluid-display: clamp(2.5rem, 5.5vw + 0.5rem, 5rem);
+  --fluid-h1: clamp(2rem, 4vw + 0.5rem, 3rem);
+}`}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 6: Animations, Motion & Effects ── -->
+    <section class="kits-section" id="motion" data-reveal>
+      <div class="section-hdr">
+        <span class="eyebrow">ANIMATIONS, MOTION & EFFECTS</span>
+        <h2>Easings, Durations, Glows & Noise</h2>
+        <p>GSAP reveal triggers, cubic-bezier spring curves, glassmorphism, and grain data-URIs.</p>
+      </div>
+
+      <div class="motion-grid">
+        <div class="motion-card">
+          <h3>Motion Easing Curves</h3>
+          <div class="easing-stack">
+            {motionEasings.map((m) => (
+              <div class="easing-row">
+                <div class="easing-meta">
+                  <span class="easing-name">{m.name}</span>
+                  <code>{m.token}</code>
+                </div>
+                <div class="easing-demo-track">
+                  <div class="easing-ball" style={`animation: moveBall 2s infinite ${m.cubic}`}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="motion-card">
+          <h3>Ambient Glow Shadows</h3>
+          <div class="glow-stack">
+            <div class="glow-box glow-blue">--shadow-glow-blue</div>
+            <div class="glow-box glow-pink">--shadow-glow-pink</div>
+            <div class="glow-box glow-teal">--shadow-glow-teal</div>
+          </div>
+        </div>
+
+        <div class="motion-card">
+          <h3>Noise Overlay Textures</h3>
+          <div class="noise-stack">
+            <div class="noise-box noise-light">Noise Light (4%)</div>
+            <div class="noise-box noise-medium">Noise Medium (7%)</div>
+            <div class="noise-box noise-heavy">Noise Heavy (12%)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast-box" id="toastBox">Token copied to clipboard!</div>
+</BaseLayout>
+
+<style>
+  .kits-page {
+    padding-top: calc(var(--space-section-lg, 80px) + 20px);
+    padding-bottom: var(--space-section-lg, 80px);
+    color: var(--color-text-primary, #F4F4F4);
+  }
+
+  /* Header */
+  .kits-hero {
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto 50px;
+  }
+
+  .kits-hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 20px;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FFBE1A;
+    box-shadow: 0 0 10px #FFBE1A;
+    animation: pulseGlow 2s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+
+  .kits-hero-title {
+    font-size: var(--fluid-display);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #BABABA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .kits-hero-lead {
+    font-size: var(--fluid-body-lg);
+    line-height: 1.6;
+    color: #BABABA;
+    margin-bottom: 30px;
+  }
+
+  .kits-nav-strip {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+
+  .nav-chip {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #BABABA;
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px 14px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .nav-chip:hover {
+    color: #FFBE1A;
+    border-color: #FFBE1A;
+    background: #242429;
+  }
+
+  .kits-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+  }
+
+  .stat-card {
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-val {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #FFBE1A;
+  }
+
+  .stat-lbl {
+    font-size: 0.75rem;
+    color: #7D7D7D;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Section Styles */
+  .kits-section {
+    margin-bottom: 80px;
+    scroll-margin-top: 100px;
+  }
+
+  .section-hdr {
+    margin-bottom: 32px;
+  }
+
+  .section-hdr h2 {
+    font-size: var(--fluid-h2);
+    font-weight: 700;
+    margin: 8px 0;
+  }
+
+  .section-hdr p {
+    font-size: var(--fluid-body-md);
+    color: #BABABA;
+  }
+
+  /* Theme Switcher */
+  .pillar-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .pillar-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 9999px;
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #DFDFDF;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .pillar-tab.active, .pillar-tab:hover {
+    background: #242429;
+    border-color: #FFBE1A;
+    color: #FFFFFF;
+  }
+
+  .tab-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .active-pillar-banner {
+    padding: 24px 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .banner-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    display: block;
+  }
+
+  .banner-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .banner-codes {
+    display: flex;
+    gap: 8px;
+  }
+
+  .banner-codes code {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #FFBE1A;
+  }
+
+  /* Colors */
+  .color-groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .color-group-card {
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .color-group-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .color-group-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .swatch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .swatch-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .swatch-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .swatch-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .swatch-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .swatch-info code {
+    font-size: 0.75rem;
+    color: #7D7D7D;
+    font-family: var(--font-mono);
+  }
+
+  .pillars-swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .pillar-swatch-card {
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .swatch-hdr {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pillar-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .pillar-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .pillar-desc-sm {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .swatch-hex-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: auto;
+  }
+
+  .swatch-hex-stack code {
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Ramps */
+  .ramps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .ramp-card {
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .ramp-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .ramp-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ramp-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .ramp-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: #BABABA;
+  }
+
+  .ramp-val {
+    font-size: 0.78rem;
+    color: #7D7D7D;
+  }
+
+  /* Specimen */
+  .type-specimen-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .specimen-card {
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .specimen-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .token-name {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: #FFBE1A;
+    background: rgba(255, 190, 26, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+
+  .specimen-tag {
+    font-size: 0.8rem;
+    color: #BABABA;
+  }
+
+  .specimen-px {
+    font-size: 0.75rem;
+    color: #7D7D7D;
+    margin-left: auto;
+  }
+
+  .copy-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #F4F4F4;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background: #FFBE1A;
+    color: #191919;
+    border-color: #FFBE1A;
+  }
+
+  .specimen-sample {
+    color: #FFFFFF;
+    word-break: break-word;
+  }
+
+  /* Widgets */
+  .widgets-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .widget-box {
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .widget-box.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .widget-hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .widget-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .widget-badge {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: #FFBE1A;
+    background: rgba(255, 190, 26, 0.1);
+    padding: 4px 10px;
+    border-radius: 9999px;
+  }
+
+  /* Buttons */
+  .button-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary-yellow {
+    background: #FFBE1A;
+    color: #191919;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-primary-yellow:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #FFBE1A;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid #FFBE1A;
+    cursor: pointer;
+  }
+
+  .btn-cta-special {
+    background: linear-gradient(135deg, #191919 0%, #2B2B2B 100%);
+    border: 1px solid rgba(255, 190, 26, 0.4);
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  /* Form controls */
+  .form-demo-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .input-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .input-lbl {
+    font-size: 0.85rem;
+    color: #BABABA;
+  }
+
+  .demo-input, .demo-select {
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #FFFFFF;
+    font-size: 0.9rem;
+  }
+
+  .toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .toggle-lbl {
+    font-size: 0.9rem;
+    color: #DFDFDF;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+  }
+
+  .switch input { opacity: 0; width: 0; height: 0; }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #2B2B2B;
+    transition: .4s;
+    border-radius: 24px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider { background-color: #FFBE1A; }
+  input:checked + .slider:before { transform: translateX(20px); background-color: #191919; }
+
+  /* Badges */
+  .badges-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .badge-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 9999px;
+  }
+
+  .tag-primary { background: rgba(255, 255, 255, 0.1); color: #FFFFFF; }
+  .tag-peach { background: rgba(229, 79, 48, 0.15); color: #E54F30; }
+  .tag-green { background: rgba(62, 210, 25, 0.15); color: #3ED219; }
+  .tag-blue { background: rgba(35, 104, 215, 0.15); color: #2368D7; }
+  .tag-aqua { background: rgba(9, 226, 192, 0.15); color: #09E2C0; }
+  .tag-yellow { background: rgba(255, 190, 26, 0.15); color: #FFBE1A; border: 1px solid rgba(255, 190, 26, 0.4); }
+
+  .badge-sla {
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(255, 190, 26, 0.1);
+    color: #FFBE1A;
+    border: 1px dashed #FFBE1A;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+
+  /* Bento Grid */
+  .bento-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .bento-card {
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .bento-card.bento-wide {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #191919 0%, #2B2B2B 100%);
+  }
+
+  .bento-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #FFBE1A;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .bento-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .bento-card p {
+    font-size: 0.9rem;
+    color: #BABABA;
+  }
+
+  /* Scope Selector */
+  .scope-grid-demo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .scope-chip-card {
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .scope-chip-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .scope-chip-card.selected {
+    border-color: #FFBE1A;
+    background: rgba(255, 190, 26, 0.08);
+  }
+
+  .chip-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .chip-name { font-weight: 700; font-size: 0.95rem; }
+  .chip-check { margin-left: auto; color: #FFBE1A; opacity: 0; }
+  .scope-chip-card.selected .chip-check { opacity: 1; }
+  .chip-desc { font-size: 0.8rem; color: #7D7D7D; }
+
+  /* Accordion */
+  .kits-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .accordion-item {
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+
+  .accordion-q {
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+
+  .accordion-q::-webkit-details-marker { display: none; }
+  .acc-icon { font-size: 1.2rem; color: #FFBE1A; }
+
+  .accordion-a {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #BABABA;
+  }
+
+  /* Code Inspector */
+  .code-inspector { background: #0b0b0d; }
+  .btn-ghost-sm {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .btn-ghost-sm:hover { background: #FFBE1A; color: #191919; }
+
+  .code-block {
+    margin: 0;
+    padding: 16px;
+    background: #141417;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: #F4F4F4;
+  }
+
+  /* Motion & Effects */
+  .motion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .motion-card {
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .motion-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .easing-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .easing-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .easing-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+
+  .easing-meta code { color: #FFBE1A; font-family: var(--font-mono); }
+
+  .easing-demo-track {
+    background: #050505;
+    border-radius: 9999px;
+    height: 12px;
+    padding: 2px;
+    overflow: hidden;
+  }
+
+  .easing-ball {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FFBE1A;
+  }
+
+  @keyframes moveBall {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(200px); }
+  }
+
+  .glow-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .glow-box {
+    padding: 14px;
+    border-radius: 8px;
+    background: #050505;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .glow-blue { box-shadow: 0 0 30px rgba(35, 104, 215, 0.4); border: 1px solid rgba(35, 104, 215, 0.5); }
+  .glow-pink { box-shadow: 0 0 30px rgba(230, 48, 159, 0.4); border: 1px solid rgba(230, 48, 159, 0.5); }
+  .glow-teal { box-shadow: 0 0 30px rgba(9, 226, 192, 0.4); border: 1px solid rgba(9, 226, 192, 0.5); }
+
+  .noise-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .noise-box {
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #191919;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .noise-light { background-image: var(--noise-light, none); }
+  .noise-medium { background-image: var(--noise-medium, none); }
+  .noise-heavy { background-image: var(--noise-heavy, none); }
+
+  /* Toast Notification */
+  .toast-box {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #FFBE1A;
+    color: #191919;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .toast-box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // 1. Dynamic Pillar Theme Switcher Script
+  const pillarTabs = document.querySelectorAll('.pillar-tab');
+  const bannerTitle = document.getElementById('bannerTitle');
+  const bannerDesc = document.getElementById('bannerDesc');
+  const codeBase = document.getElementById('codeBase');
+  const codeLight = document.getElementById('codeLight');
+  const pillarBanner = document.getElementById('pillarBanner');
+
+  const pillarsData = {
+    strategy: { name: 'Strategy Pillar', desc: 'Product, Brand & Growth Architecture', base: '#FA4108', light: '#FF8F66', gradient: 'linear-gradient(135deg, #FA4108 0%, #FF8F66 100%)' },
+    brand: { name: 'Brand Pillar', desc: 'Identity Systems & Narrative Design', base: '#E6309F', light: '#F17CC3', gradient: 'linear-gradient(135deg, #E6309F 0%, #F17CC3 100%)' },
+    experience: { name: 'Experience Pillar', desc: 'UI/UX, Digital Platforms & Design Systems', base: '#09E2C0', light: '#6EF0DC', gradient: 'linear-gradient(135deg, #09E2C0 0%, #6EF0DC 100%)' },
+    engineering: { name: 'Engineering Pillar', desc: 'Web, Mobile App & Platform Modernization', base: '#2167E9', light: '#7FA8F3', gradient: 'linear-gradient(135deg, #2167E9 0%, #7FA8F3 100%)' },
+    growth: { name: 'Growth Pillar', desc: 'Martech, CRO & Performance Engineering', base: '#3ED219', light: '#9BE97F', gradient: 'linear-gradient(135deg, #3ED219 0%, #9BE97F 100%)' },
+    operations: { name: 'Operations Pillar', desc: 'Managed Application Support & Reliability', base: '#7A4DFF', light: '#B49CFF', gradient: 'linear-gradient(135deg, #7A4DFF 0%, #B49CFF 100%)' },
+  };
+
+  pillarTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      pillarTabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+      const pillarKey = tab.getAttribute('data-pillar');
+      const data = pillarsData[pillarKey];
+      if (data) {
+        if (bannerTitle) bannerTitle.textContent = data.name;
+        if (bannerDesc) bannerDesc.textContent = data.desc;
+        if (codeBase) codeBase.textContent = `--svc-base: ${data.base}`;
+        if (codeLight) codeLight.textContent = `--svc-light: ${data.light}`;
+        if (pillarBanner) {
+          (pillarBanner as HTMLElement).style.background = data.gradient;
+          (pillarBanner as HTMLElement).style.borderColor = data.base;
+        }
+      }
+    });
+  });
+
+  // 2. Scope Selector Demo Script
+  const scopeChips = document.querySelectorAll('.scope-chip-card');
+  const selectedCount = document.getElementById('selectedCount');
+  let selectedSet = new Set<string>();
+
+  scopeChips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const scopeName = chip.getAttribute('data-scope');
+      if (selectedSet.has(scopeName)) {
+        selectedSet.delete(scopeName);
+        chip.classList.remove('selected');
+      } else {
+        selectedSet.add(scopeName);
+        chip.classList.add('selected');
+      }
+      if (selectedCount) {
+        selectedCount.textContent = `${selectedSet.size} Pillar${selectedSet.size === 1 ? '' : 's'} Selected`;
+      }
+    });
+  });
+
+  // 3. Toast & Copy to Clipboard
+  const toastBox = document.getElementById('toastBox');
+  function showToast(msg: string) {
+    if (!toastBox) return;
+    toastBox.textContent = msg;
+    toastBox.classList.add('show');
+    setTimeout(() => toastBox.classList.remove('show'), 2200);
+  }
+
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const token = btn.getAttribute('data-copy');
+      if (token) {
+        navigator.clipboard.writeText(`var(${token})`);
+        showToast(`Copied var(${token}) to clipboard!`);
+      }
+    });
+  });
+
+  const copyAllBtn = document.getElementById('copyAllTokens');
+  if (copyAllBtn) {
+    copyAllBtn.addEventListener('click', () => {
+      const allTokens = `:root {\n  --color-yellow: #FFBE1A;\n  --color-peach: #E54F30;\n  --color-green: #3ED219;\n  --color-blue: #2368D7;\n  --color-aqua: #09E2C0;\n  --svc-strategy: #FA4108;\n  --svc-brand: #E6309F;\n  --svc-experience: #09E2C0;\n  --svc-engineering: #2167E9;\n  --svc-growth: #3ED219;\n  --svc-operations: #7A4DFF;\n  --fluid-display: clamp(2.5rem, 5.5vw + 0.5rem, 5rem);\n  --fluid-h1: clamp(2rem, 4vw + 0.5rem, 3rem);\n}`;
+      navigator.clipboard.writeText(allTokens);
+      showToast('All CSS variables copied to clipboard!');
+    });
+  }
+</script>

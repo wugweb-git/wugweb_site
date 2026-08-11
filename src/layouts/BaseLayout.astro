@@ -13,8 +13,10 @@ interface Props {
   seoTitle?: string;
   ogImage?: string;
   language?: string;
+  hideGlobalSections?: boolean;
 }
 const { title, description, seoTitle, ogImage, language } = Astro.props;
+const hideGlobalSections = Boolean(Astro.props.hideGlobalSections);
 
 const settings = await sanityClient.fetch(siteSettingsQuery).catch(() => null);
 const defaultLang = language || settings?.language || 'en-GB';
@@ -23,8 +25,6 @@ const defaultDesc = settings?.seoDescription || 'Wugweb is a digital experience 
 const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
   : '/brand/og-default.png';
-// Self-hosted from /public/brand — these used to hotlink Framer's CDN, which
-// dies the moment the old Framer project is deleted.
 const defaultFavicon = settings?.favicon
   ? urlFor(settings.favicon).width(32).url()
   : '/brand/favicon-32.png';
@@ -39,7 +39,9 @@ const metaDesc = description || defaultDesc;
 const metaOgImage = ogImage || defaultOgImage;
 
 // Global blog teaser — latest 3 posts, Sanity-driven with cover thumbnails.
-const teaserPosts = (await sanityClient.fetch(postsListQuery).catch(() => [])).slice(0, 3);
+const teaserPosts = !hideGlobalSections
+  ? (await sanityClient.fetch(postsListQuery).catch(() => [])).slice(0, 3)
+  : [];
 const teaserCovers = teaserPosts.map((p: any) => {
   const cover = p.coverPath
     ? assetUrl(p.coverPath)
@@ -52,9 +54,9 @@ const curatedIndustries = [
   'Government', 'Insurtech', 'Travel', 'Logistics', 'Automotive',
   'Fintech', 'Edtech', 'Sports', 'E-commerce', 'Media', 'Energy', 'NGOs',
 ];
-const sanityIndustries = (await sanityClient
-  .fetch('*[_type == "industry"] | order(order asc) { name }[0..23]')
-  .catch(() => [])).map((i: any) => i.name);
+const sanityIndustries = !hideGlobalSections
+  ? (await sanityClient.fetch('*[_type == "industry"] | order(order asc) { name }[0..23]').catch(() => [])).map((i: any) => i.name)
+  : [];
 const globalIndustries = (sanityIndustries as string[]).length
   ? (sanityIndustries as string[])
   : curatedIndustries;
@@ -109,69 +111,72 @@ const globalIndustries = (sanityIndustries as string[]).length
     <SiteHeader companyEmail={siteEmail} />
     <slot />
 
-    <!-- PARTNERS -->
-    <section class="wrap global-partners">
-      <p class="eyebrow">Our Partners in Experience Innovation</p>
-      <a href="/contact-us" class="btn btn-solid btn-partners-cta">Let's Talk</a>
-    </section>
+    {!hideGlobalSections && (
+      <>
+        <!-- PARTNERS -->
+        <section class="wrap global-partners">
+          <p class="eyebrow">Our Partners in Experience Innovation</p>
+          <a href="/contact-us" class="btn btn-solid btn-partners-cta">Let's Talk</a>
+        </section>
 
-    <!-- INDUSTRIES -->
-    <section class="wrap global-industries">
-      <h2>Industries We Empower</h2>
-      <p>From local businesses to international corporations, our clients all share one common understanding when it comes to building authentic brands: the power of research, strategy, creativity, and design.</p>
-      <ul class="industry-tags">
-        {globalIndustries.map((i) => <li>{i}</li>)}
-      </ul>
-      <a href="/about" class="btn btn-ghost">More about us</a>
-    </section>
+        <!-- INDUSTRIES -->
+        <section class="wrap global-industries">
+          <h2>Industries We Empower</h2>
+          <p>From local businesses to international corporations, our clients all share one common understanding when it comes to building authentic brands: the power of research, strategy, creativity, and design.</p>
+          <ul class="industry-tags">
+            {globalIndustries.map((i) => <li>{i}</li>)}
+          </ul>
+          <a href="/about" class="btn btn-ghost">More about us</a>
+        </section>
 
-    <!-- BLOG TEASER -->
-    <section class="wrap global-blog-teaser">
-      <div class="global-blog-head">
-        <h2>Some of our recent thoughts</h2>
-        <a href="/blog" class="btn btn-ghost">Visit our Blog</a>
-      </div>
-      <ul class="global-blog-list">
-        {teaserPosts.map((p: any, i: number) => (
-          <li>
-            {teaserCovers[i] ? (
-              <a href={`/blog/${p.slug}`} class="blog-teaser-media">
-                <img src={teaserCovers[i]} alt={p.title} loading="lazy" />
-              </a>
-            ) : null}
-            {p.category && <span class="eyebrow">{p.category}</span>}
-            <a href={`/blog/${p.slug}`}>{p.title}</a>
-          </li>
-        ))}
-      </ul>
-    </section>
+        <!-- BLOG TEASER -->
+        <section class="wrap global-blog-teaser">
+          <div class="global-blog-head">
+            <h2>Some of our recent thoughts</h2>
+            <a href="/blog" class="btn btn-ghost">Visit our Blog</a>
+          </div>
+          <ul class="global-blog-list">
+            {teaserPosts.map((p: any, i: number) => (
+              <li>
+                {teaserCovers[i] ? (
+                  <a href={`/blog/${p.slug}`} class="blog-teaser-media">
+                    <img src={teaserCovers[i]} alt={p.title} loading="lazy" />
+                  </a>
+                ) : null}
+                {p.category && <span class="eyebrow">{p.category}</span>}
+                <a href={`/blog/${p.slug}`}>{p.title}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-    <!-- TRUST & RECOGNITION -->
-    <section class="wrap">
-      <TrustBadges />
-    </section>
+        <!-- TRUST & RECOGNITION -->
+        <section class="wrap">
+          <TrustBadges />
+        </section>
 
-    <!-- FINAL CTA — device backdrop banner -->
-    <section class="wrap global-final-cta">
-      <div class="cta-backdrop" aria-hidden="true">
-        <img class="cta-device cta-laptop" src="/brand/cta/laptop.png" alt="" width="1140" height="350" loading="lazy" />
-        <img class="cta-device cta-mobile" src="/brand/cta/mobile.png" alt="" width="350" height="500" loading="lazy" />
-      </div>
-      <div class="final-cta-inner" data-reveal>
-        <div class="final-cta-copy">
-          <h2>We speak your Industry's language.</h2>
-          <p>Partner with Wugweb for domain-driven design and development that delivers.</p>
-        </div>
-        <a href="/contact-us" class="btn btn-solid">Request Quote</a>
-      </div>
-    </section>
+        <!-- FINAL CTA — device backdrop banner -->
+        <section class="wrap global-final-cta">
+          <div class="cta-backdrop" aria-hidden="true">
+            <img class="cta-device cta-laptop" src="/brand/cta/laptop.png" alt="" width="1140" height="350" loading="lazy" />
+            <img class="cta-device cta-mobile" src="/brand/cta/mobile.png" alt="" width="350" height="500" loading="lazy" />
+          </div>
+          <div class="final-cta-inner" data-reveal>
+            <div class="final-cta-copy">
+              <h2>We speak your Industry's language.</h2>
+              <p>Partner with Wugweb for domain-driven design and development that delivers.</p>
+            </div>
+            <a href="/contact-us" class="btn btn-solid">Request Quote</a>
+          </div>
+        </section>
+      </>
+    )}
 
     <SiteFooter copyright={copyrightText} companyEmail={siteEmail} />
   </body>
 </html>
 
 <script>
-  // GSAP scroll-transform animations for [data-scroll] elements on every page.
   import { initScrollAnimations } from '../lib/scroll-animations';
   initScrollAnimations();
 </script>
