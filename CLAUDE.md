@@ -52,7 +52,7 @@ Studio desk structure: Dashboard → Editorial → Business → Brand & Media �
 
 Tables: `entities`, `content_items`, `content_relations`, `sync_log`, `visitor_profiles`, `contact_submissions`.
 
-Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Content `owner` ∈ {`vedanshu`, `wugweb`, `both`}. **Author ≠ Owner** — author is a `person` byline ref; owner is governance. See [`governance.md`](governance.md).
+Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Content `owner` ∈ {`vedanshu`, `wugweb`, `both`, `none`}. **Author ≠ Owner** — author is a `person` byline ref; owner is governance. See [`governance.md`](governance.md).
 
 **Notion is seed only.** Sanity already exceeds Notion exports (e.g. ~82 case studies vs ~20 Notion CS, ~96 posts vs ~52, ~472 assets vs ~128 sheet rows). Never reset to Notion.
 
@@ -156,7 +156,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - **Do not change text to pure white** — live colours are deliberate (`text: #f4f4f4`, `muted: #bababa`, surfaces `#191919`/`#2b2b2b`).
 - **Do not lower `.node-version`** below 22 without a specific reason. Wrangler 4.x requires Node ≥22 and a previous pin to 20 caused a real regression.
 - **Neon is shared SSOT** for structured content (Vedanshu + Wugweb). Sanity is the admin panel. Media belongs in R2 (`wugweb-assets`).
-- **Owner ≠ Author** — owner is `vedanshu` \| `wugweb` \| `both`; author is a `person` byline. See `governance.md`.
+- **Owner ≠ Author** — owner is `vedanshu` \| `wugweb` \| `both` \| `none`; author is a `person` byline. See `governance.md`.
 - **Notion is seed only** — do not reset Sanity/Neon to Notion; Sanity already has more content.
 - **Content comes from hardcoded frontend records or user-provided sources**, not from Framer reference pages or third-party review sites.
 - **Service page copy (loose reference):** `/Users/abcom/Documents/VS/wugweb artworks/Wugweb_Services 2026.md` — use for inspiration on `/services` and `/services/[slug]` when helpful. Not a tight requirement; do not force 1:1 parity.
@@ -168,7 +168,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 
 - **Framework**: Astro 5 SSR on Cloudflare Pages, not Framer.
 - **DB driver**: `@neondatabase/serverless` instead of `pg` (Workers-compatible).
-- **Ownership**: Neon shared by Vedanshu + Wugweb. Entities `vedanshu`, `wugweb`, and token `both`. Content owner ∈ {vedanshu, wugweb, both}. Vedanshu owns the company but also has personal (non-Wugweb) work; he can also be a Wugweb client. Full rules: `governance.md`.
+- **Ownership**: Neon shared by Vedanshu + Wugweb. Entities `vedanshu`, `wugweb`, and tokens `both`/`none`. Content owner ∈ {vedanshu, wugweb, both, none}. Vedanshu owns the company but also has personal (non-Wugweb) work; he can also be a Wugweb client. Full rules: `governance.md`.
 - **Author ≠ Owner**: posts use `author` → `person`; ownership is a separate field.
 - **6-pillar taxonomy**: Strategy, Brand, Experience, Engineering, Growth, Operations. Notion's older 8-service taxonomy is reference-only.
 - **Media**: R2 `wugweb-assets` with path-mapped keys; local `public/assets` dual-serve until `PUBLIC_USE_R2_ASSETS=1`.
@@ -181,7 +181,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - `.node-version`: do not lower below 22.
 - Live colour values in `src/styles/global.css`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919`/`#2b2b2b`.
 - `blockContent` registration in Sanity schema types array.
-- Ownership model: keep `entities` + `owner` column; allow `vedanshu` \| `wugweb` \| `both`; do not collapse everything to a single owner; do not merge Author into Owner.
+- Ownership model: keep `entities` + `owner` column; allow `vedanshu` \| `wugweb` \| `both` \| `none`; do not collapse everything to a single owner; do not merge Author into Owner.
 - Free-tier ceilings for any vendor — never implement features that require paid plans unless the user explicitly asks.
 - R2 Rule 2: never exceed free R2; never use Infrequent Access; never invent non-`assets/` key prefixes without an explicit migration.
 - Notion-as-seed: never wipe Sanity/Neon to match Notion volume.

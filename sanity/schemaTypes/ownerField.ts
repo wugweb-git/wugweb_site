@@ -11,6 +11,7 @@ export const ownerField = defineField({
       { title: 'Vedanshu (personal)', value: 'vedanshu' },
       { title: 'Wugweb (agency)', value: 'wugweb' },
       { title: 'Both (shared)', value: 'both' },
+      { title: 'None (unassigned)', value: 'none' },
     ],
   },
   initialValue: 'wugweb',

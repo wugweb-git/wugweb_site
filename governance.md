@@ -86,7 +86,7 @@ Details: [`docs/r2-assets.md`](docs/r2-assets.md). Upload: `scripts/upload-asset
 
 | Concept | Schema / field | Meaning |
 |---|---|---|
-| **Owner** | Governance field: `owner` (Sanity string / Neon `content_items.owner`) | Who **owns** the content for IP, filtering, and multi-brand surfaces: `vedanshu` \| `wugweb` \| `both` |
+| **Owner** | Governance field: `owner` (Sanity string / Neon `content_items.owner`) | Who **owns** the content for IP, filtering, and multi-brand surfaces: `vedanshu` \| `wugweb` \| `both` \| `none` |
 | **Author** | Editorial field: `author` → reference to `person` | Who **wrote / bylined** the piece (blog post, etc.) |
 
 Rules:
@@ -179,7 +179,7 @@ Frontend today may still read Sanity CDN; intended end state is Neon reads with 
 ## 7. Presence & platforms
 
 - **Platform** = Global Settings master (`taxonomy` vocabulary `platform`).
-- **Presence** = owned URL row (`platformProfile`) with `owner` ∈ {vedanshu, wugweb, both}.
+- **Presence** = owned URL row (`platformProfile`) with `owner` ∈ {vedanshu, wugweb, both, none}.
 - Credentials (DP2) may live on Presence in Studio — never on the public site API.
 
 Canonical examples:
@@ -200,7 +200,7 @@ These live primarily in [`CLAUDE.md`](CLAUDE.md) “Things AI Must Never Change�
 | Do not remove `blockContent` from Sanity schema types array | CLAUDE.md |
 | Keep Cloudflare **Pages** deploy model (`pages_build_output_dir: ./dist`); never switch to Workers-style `main`/`assets` | CLAUDE.md / wrangler |
 | Deploy command: `npx wrangler pages deploy dist` (not bare `wrangler deploy`) | CLAUDE.md |
-| Keep ownership model (`entities` + `owner`; allow `vedanshu` \| `wugweb` \| `both`) | CLAUDE.md + this file |
+| Keep ownership model (`entities` + `owner`; allow `vedanshu` \| `wugweb` \| `both` \| `none`) | CLAUDE.md + this file |
 | Content from hardcoded frontend / user sources — not scraped Framer reference or third-party review sites as SSOT | CLAUDE.md |
 | No Hyperdrive / SESSION KV / paid bindings unless user asks | free-tier + deferred list |
 | DNS cutover to wugweb.com — out of scope unless asked | pending.md |
@@ -221,7 +221,7 @@ These live primarily in [`CLAUDE.md`](CLAUDE.md) “Things AI Must Never Change�
 4. Do not lower `.node-version` below 22.
 5. Do not import Notion as a full replace of richer Sanity data.
 6. When adding Neon-backed content, set `owner` explicitly — defaulting everything to `vedanshu` is **wrong**.
-7. Keep Author (`person` ref) and Owner (`vedanshu` \| `wugweb` \| `both`) separate.
+7. Keep Author (`person` ref) and Owner (`vedanshu` \| `wugweb` \| `both` \| `none`) separate.
 8. Enrich masters from `reference/` / `component/` by identity — never blind-dump hashed files.
 9. Update `pending.md` after significant work; update this file when governance facts change.
 10. Never commit secrets (`.env`, tokens, Presence passwords).
