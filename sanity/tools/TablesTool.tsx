@@ -4,7 +4,7 @@ import { useClient } from 'sanity';
 import { DataTable } from '../components/DataTable';
 import { TABLE_CONFIGS, TABLE_MAP } from '../lib/tableConfigs';
 import { fetchDocs } from '../lib/groq';
-import { duplicateDocs, publishDocs, deleteDocs } from '../lib/docActions';
+import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs } from '../lib/docActions';
 import type { Row } from '../lib/types';
 
 const TABLE_KEYS = TABLE_CONFIGS.map((t) => t.key);
@@ -72,6 +72,8 @@ export function TablesTool() {
         bulkActions={[
           { id: 'duplicate', label: 'Duplicate', run: (ids) => duplicateDocs(client, ids) },
           { id: 'publish', label: 'Publish', run: (ids) => publishDocs(client, ids) },
+          { id: 'unpublish', label: 'Unpublish', run: (ids) => unpublishDocs(client, ids) },
+          { id: 'archive', label: 'Archive', run: (ids) => archiveDocs(client, ids) },
           { id: 'delete', label: 'Delete', danger: true, confirm: 'Delete selected documents?', run: (ids) => deleteDocs(client, ids) },
         ]}
         client={client}

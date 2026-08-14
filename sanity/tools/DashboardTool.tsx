@@ -5,6 +5,7 @@ import { useClient } from 'sanity';
 import { seoScore, seoLevel } from '../lib/health';
 import { relativeTime, plural } from '../lib/format';
 import { EmptyState } from '../components/ui';
+import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
 
 interface DashboardData {
   counts: Record<string, number>;
@@ -54,7 +55,7 @@ async function loadDashboard(client: any): Promise<DashboardData> {
         "engagement": count(*[_type=="engagement"]),
         "testimonial": count(*[_type=="testimonial"]),
         "taxonomy": count(*[_type=="taxonomy"])
-      }`).then((res) => Object.entries(res || {}).map(([_type, count]) => ({ _type, count }))),
+      }`).then((res: Record<string, number>) => Object.entries(res || {}).map(([_type, count]) => ({ _type, count }))),
     ]);
   return {
     counts: counts ?? {},

@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed
 - **Owner field**: Added `none` option to `sanity/schemaTypes/ownerField.ts` (owner ∈ {vedanshu, wugweb, both, none}); reflected in `governance.md` and `CLAUDE.md`.
+- **Studio crash: Dashboard + SEO Manager tools**: Both rendered `<StudioErrorBoundary>` without importing it, throwing `ReferenceError` on open (Dashboard is the first tool in the nav). Added the missing imports in `tools/DashboardTool.tsx` and `tools/SeoTool.tsx`.
+- **SEO Manager badges always red**: `SeoTool.tsx` compared the `seoLevel()` return object directly to string literals (`level === 'good'`), which is always false — badges never reflected real score. Fixed to compare `level.severity`.
+- **Unpublish/Archive unreachable from UI**: `docActions.ts` had working `unpublishDocs`/`archiveDocs` functions never wired to any bulk-action bar (contrary to the "verified live" note in `pending.md`). Wired into both `DocumentListPane.tsx` and `TablesTool.tsx`.
+- **Tables/Media icon collision**: both Studio tools used the identical `▦` glyph; Media now uses `🖼`.
 
 ### Added
 - **Contact Page Redesign (`src/pages/contact-us.astro`)**: Rolled out Driftime.com-inspired V2 layout & hierarchy directly to `/contact-us` (6-pillar selector grid, timeline & budget chips, responsive layout, SLA badge, direct channels). Set `/contact-v2` to 301 redirect to `/contact-us`. Enriched `/api/contact` with `timeline` handling.

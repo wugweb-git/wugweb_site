@@ -5,6 +5,7 @@ import { useClient } from 'sanity';
 import { seoScore, seoLevel } from '../lib/health';
 import { EmptyState, RowSkeleton } from '../components/ui';
 import { fetchDocs } from '../lib/groq';
+import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
 import type { Row } from '../lib/types';
 
 interface SeoRow extends Row {
@@ -168,13 +169,13 @@ function SeoToolContent() {
                     <tr key={row._id} style={{ borderBottom: '1px solid var(--card-border-color, #f1f3f5)' }}>
                       <td style={{ padding: '10px 12px' }}>
                         <Text size={1} weight="semibold">{String(row.title || row._id)}</Text>
-                        {row.slug && <Text size={0} muted>@{row.slug}</Text>}
+                        {row.slug ? <Text size={0} muted>@{String(row.slug)}</Text> : null}
                       </td>
                       <td style={{ padding: '10px 12px', color: row.seoDescription ? 'inherit' : 'var(--card-muted-fg-color, #888)' }}>
                         {row.seoDescription || '— Missing SEO description —'}
                       </td>
                       <td style={{ padding: '10px 12px', textAlign: 'center' }}>
-                        <Badge tone={level === 'good' ? 'positive' : level === 'warn' ? 'caution' : 'critical'}>
+                        <Badge tone={level.severity === 'good' ? 'positive' : level.severity === 'warn' ? 'caution' : 'critical'}>
                           {score}/100
                         </Badge>
                       </td>

@@ -38,7 +38,7 @@ export default defineConfig({
     {
       name: 'media',
       title: 'Media',
-      icon: () => '▦',
+      icon: () => '🖼',
       component: MediaTool,
     },
     {
