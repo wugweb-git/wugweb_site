@@ -24,6 +24,7 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 
 | Item | Status | Notes |
 |---|---|---|
+| **Sanity Studio fixes not live** | **Blocked on user** | `getCanSort` crash + GROQ `group by` parse error were fixed in code (`ca6f915c`, 2026-08-11) but sat in 6 unpushed local commits — never reached GitHub, and `npx sanity deploy` (separate from git/Cloudflare) was never re-run since the fix. Live `wugweb.sanity.studio` is almost certainly still the broken build. Added `none` to `ownerField.ts` (commit `7fe31bcb`) per user's original request. Agent sandbox has no GitHub or Sanity CLI credentials — **user must run** `git push origin main` then `cd sanity && npx sanity deploy` from their own machine to ship this. |
 | Design token → component migration | **Done 2026-08-05 (Phase 1)** | Full token system (opacity/radius/stroke/blur/shadow/elevation/glass/noise/gradient/motion/z-index) consumed everywhere; residual `#555`/`rgba()`/`opacity:`/`blur()` removed from pages/components (only `CATEGORY_COLORS` data map + service-panel `fg`/`accent` data remain). |
 | Sanity Studio CRUD Verification | **Done 2026-08-11** | All CRUD actions (`create`, `duplicateDocs`, `publishDocs`, `unpublishDocs`, `archiveDocs`, `deleteDocs`) tested and verified live with 0 HTTP revision errors or schema validation bugs. |
 | Frontend → Neon swap | Deferred | Helpers ready (`content.ts`, `NEON` queries); wait until UI/brand mapping done. **User: do not run Neon sync unless asked.** |

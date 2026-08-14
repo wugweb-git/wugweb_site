@@ -7,6 +7,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed
+- **Owner field**: Added `none` option to `sanity/schemaTypes/ownerField.ts` (owner ∈ {vedanshu, wugweb, both, none}); reflected in `governance.md` and `CLAUDE.md`.
+
 ### Added
 - **Contact Page Redesign (`src/pages/contact-us.astro`)**: Rolled out Driftime.com-inspired V2 layout & hierarchy directly to `/contact-us` (6-pillar selector grid, timeline & budget chips, responsive layout, SLA badge, direct channels). Set `/contact-v2` to 301 redirect to `/contact-us`. Enriched `/api/contact` with `timeline` handling.
 - **`CHANGELOG.md`**: Initialized project changelog and updated `governance.md` with Rule 11 mandating `CHANGELOG.md` maintenance on every commit.
