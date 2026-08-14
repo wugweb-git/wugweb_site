@@ -273,8 +273,14 @@ export function DataTable({
 
   return (
     <Card tone="default" padding={[2, 3]}>
+      <style>{`
+        .wugweb-dt-focusable:focus-visible {
+          outline: 2px solid var(--card-focus-ring-color, #4c9aff);
+          outline-offset: -2px;
+        }
+      `}</style>
       {toast && (
-        <Box style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 100 }}>
+        <Box style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 100 }} role="status" aria-live="polite">
           <Card tone="primary" padding={3} radius={2} shadow={2}>
             <Text size={1}>{toast}</Text>
           </Card>
@@ -290,6 +296,7 @@ export function DataTable({
         )}
         <TextInput
           id={`dt-search-${tableKey}`}
+          aria-label="Search table"
           icon={SearchIcon}
           placeholder="Search… (⌘K)"
           value={q}
@@ -324,6 +331,7 @@ export function DataTable({
         </Popover>
 
         <Select
+          aria-label="Row density"
           value={density}
           onChange={(e) => { setDensity(e.currentTarget.value as any); saveLS(DENSITY_KEY, e.currentTarget.value); }}
         >
@@ -453,16 +461,31 @@ export function DataTable({
                 {table.getHeaderGroups().map((hg: any) => (
                   <tr key={hg.id} style={{ background: 'var(--card-muted-bg-color, #f1f3f5)', position: 'sticky', top: 0, zIndex: 2 }}>
                     <th style={{ width: 36, padding: '8px 12px', borderBottom: '1px solid var(--card-border-color, #e1e3e6)' }}>
-                      <Checkbox checked={allOnPageSelected} onChange={toggleAll} />
+                      <Checkbox aria-label="Select all rows on this page" checked={allOnPageSelected} onChange={toggleAll} />
                     </th>
                     {hg.headers.map((header: any) => {
                       const c = columns.find((x) => x.key === header.id);
                       const canSort = header.column && typeof header.column.getCanSort === 'function' ? header.column.getCanSort() : Boolean(c?.sortable !== false);
                       const sorted = header.column && typeof header.column.getIsSorted === 'function' ? header.column.getIsSorted() : false;
+                      const doSort = () => {
+                        if (!canSort) return;
+                        if (header.column && typeof header.column.toggleSorting === 'function') {
+                          header.column.toggleSorting();
+                        } else {
+                          setSorting((old) => {
+                            const isDesc = old.find((x) => x.id === header.id)?.desc;
+                            return [{ id: header.id, desc: !isDesc }];
+                          });
+                        }
+                      };
                       return (
                         <th
                           key={header.id}
                           id={`dt-th-${tableKey}-${header.id}`}
+                          className={canSort ? 'wugweb-dt-focusable' : undefined}
+                          role={canSort ? 'button' : undefined}
+                          tabIndex={canSort ? 0 : undefined}
+                          aria-sort={sorted === 'asc' ? 'ascending' : sorted === 'desc' ? 'descending' : canSort ? 'none' : undefined}
                           style={{
                             width: colWidths.current[header.id] ?? c?.width ?? 160,
                             padding: '8px 12px',
@@ -473,15 +496,12 @@ export function DataTable({
                             userSelect: 'none',
                             cursor: canSort ? 'pointer' : 'default',
                           }}
-                          onClick={() => {
+                          onClick={doSort}
+                          onKeyDown={(e) => {
                             if (!canSort) return;
-                            if (header.column && typeof header.column.toggleSorting === 'function') {
-                              header.column.toggleSorting();
-                            } else {
-                              setSorting((old) => {
-                                const isDesc = old.find((x) => x.id === header.id)?.desc;
-                                return [{ id: header.id, desc: !isDesc }];
-                              });
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              doSort();
                             }
                           }}
                         >
@@ -509,10 +529,21 @@ export function DataTable({
                   const thumb = getRowThumb?.(row);
                   const isSelected = selected.has(row._id);
                   const isFav = favs.includes(row._id);
+                  const activateRow = () => (onRowClick ? onRowClick(row) : toggleRow(row._id));
                   return (
                     <tr
                       key={row._id}
-                      onClick={() => (onRowClick ? onRowClick(row) : toggleRow(row._id))}
+                      className="wugweb-dt-focusable"
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`Open ${title}`}
+                      onClick={activateRow}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          activateRow();
+                        }
+                      }}
                       style={{
                         borderBottom: '1px solid var(--card-border-color, #eee)',
                         background: isSelected ? 'var(--card-selected-bg-color, #e8f4ff)' : 'transparent',
@@ -523,7 +554,7 @@ export function DataTable({
                       onMouseLeave={(e) => { if (!isSelected) (e.currentTarget as HTMLTableRowElement).style.background = 'transparent'; }}
                     >
                       <td style={{ padding: '8px 12px' }} onClick={(e) => e.stopPropagation()}>
-                        <Checkbox checked={isSelected} onChange={() => toggleRow(row._id)} onClick={(e) => e.stopPropagation()} />
+                        <Checkbox aria-label={`Select ${title}`} checked={isSelected} onChange={() => toggleRow(row._id)} onClick={(e) => e.stopPropagation()} />
                       </td>
 
                       {/* Title cell: thumb + title + subtitle */}
@@ -602,8 +633,8 @@ export function DataTable({
             {filtered.length} rows · page {page + 1} of {totalPages}
           </Text>
           <Flex gap={1}>
-            <Button mode="ghost" icon={ChevronLeftIcon} disabled={page === 0} onClick={() => setPage((p) => Math.max(0, p - 1))} />
-            <Button mode="ghost" icon={ChevronRightIcon} disabled={page >= totalPages - 1} onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))} />
+            <Button mode="ghost" icon={ChevronLeftIcon} aria-label="Previous page" disabled={page === 0} onClick={() => setPage((p) => Math.max(0, p - 1))} />
+            <Button mode="ghost" icon={ChevronRightIcon} aria-label="Next page" disabled={page >= totalPages - 1} onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))} />
           </Flex>
         </Flex>
       )}

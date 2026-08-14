@@ -7,6 +7,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Enhanced
+- **Sanity Studio accessibility (Web Interface Guidelines audit)**: table rows and sortable headers in `DataTable.tsx` and `SearchTool.tsx` were `onClick`-only (unreachable by keyboard) — added `role="button"`, `tabIndex`, `onKeyDown` (Enter/Space), `aria-label`, and a shared `:focus-visible` ring style. Added `aria-label` to previously unlabeled controls: search inputs, select-all/row checkboxes, pagination prev/next, density select, table-type select. Toast notifications now announce via `role="status" aria-live="polite"`. Fixed a GROQ injection risk in `SearchTool.tsx` where raw search terms were interpolated unescaped into query string literals — added `escapeGroq()` and restricted the `updated:` filter to digits only.
+
 ### Fixed
 - **Owner field**: Added `none` option to `sanity/schemaTypes/ownerField.ts` (owner ∈ {vedanshu, wugweb, both, none}); reflected in `governance.md` and `CLAUDE.md`.
 - **Studio crash: Dashboard + SEO Manager tools**: Both rendered `<StudioErrorBoundary>` without importing it, throwing `ReferenceError` on open (Dashboard is the first tool in the nav). Added the missing imports in `tools/DashboardTool.tsx` and `tools/SeoTool.tsx`.

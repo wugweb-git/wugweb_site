@@ -18,6 +18,11 @@ interface SavedSearch {
 const SAVED_KEY = 'wugweb.search.saved';
 const RECENT_KEY = 'wugweb.search.recent';
 
+/** Escape a value for safe interpolation inside a GROQ string literal. */
+function escapeGroq(v: string): string {
+  return v.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+
 function SearchToolContent() {
   const client = useClient({ apiVersion: '2024-01-01' });
   const [query, setQuery] = useState('');
@@ -62,15 +67,16 @@ function SearchToolContent() {
       }
 
       const plain = plainParts.join(' ');
-      const typeFilter = type ? `&& _type == "${type}"` : '';
-      const titleFilter = title ? `&& title match "${title}*"` : '';
-      const slugFilter = slug ? `&& slug.current match "${slug}*"` : '';
-      const categoryFilter = category ? `&& category match "${category}*"` : '';
-      const clientFilter = clientTerm ? `&& client match "${clientTerm}*"` : '';
-      const statusFilter = status ? `&& status == "${status}"` : '';
-      const authorFilter = author ? `&& author->name match "${author}*"` : '';
-      const updatedFilter = updated ? `&& _updatedAt >= dateTime(now() - ${updated}*86400000)` : '';
-      const plainFilter = plain ? `&& (title match "${plain}*" || name match "${plain}*" || _type match "${plain}*")` : '';
+      const updatedNum = updated.replace(/[^0-9]/g, ''); // numeric only — used unquoted in arithmetic
+      const typeFilter = type ? `&& _type == "${escapeGroq(type)}"` : '';
+      const titleFilter = title ? `&& title match "${escapeGroq(title)}*"` : '';
+      const slugFilter = slug ? `&& slug.current match "${escapeGroq(slug)}*"` : '';
+      const categoryFilter = category ? `&& category match "${escapeGroq(category)}*"` : '';
+      const clientFilter = clientTerm ? `&& client match "${escapeGroq(clientTerm)}*"` : '';
+      const statusFilter = status ? `&& status == "${escapeGroq(status)}"` : '';
+      const authorFilter = author ? `&& author->name match "${escapeGroq(author)}*"` : '';
+      const updatedFilter = updatedNum ? `&& _updatedAt >= dateTime(now() - ${updatedNum}*86400000)` : '';
+      const plainFilter = plain ? `&& (title match "${escapeGroq(plain)}*" || name match "${escapeGroq(plain)}*" || _type match "${escapeGroq(plain)}*")` : '';
 
       const groq = `*[_type in ["post","caseStudy","service","client","person","asset","engagement","testimonial","taxonomy","platformProfile","industry"] ${typeFilter}${titleFilter}${slugFilter}${categoryFilter}${clientFilter}${statusFilter}${authorFilter}${updatedFilter}${plainFilter}][0...200] {
         _id, _type, _updatedAt, title, name, "slug": slug.current, category, status, client, author->name, publishedAt
@@ -92,6 +98,12 @@ function SearchToolContent() {
 
   return (
     <Card tone="default" padding={[2, 3]} style={{ minHeight: '100%' }}>
+      <style>{`
+        .wugweb-dt-focusable:focus-visible {
+          outline: 2px solid var(--card-focus-ring-color, #4c9aff);
+          outline-offset: -2px;
+        }
+      `}</style>
       <Stack space={4}>
         <Box>
           <Text size={3} weight="semibold">Advanced Multi-Field Search</Text>
@@ -100,6 +112,7 @@ function SearchToolContent() {
 
         <Flex gap={2}>
           <TextInput
+            aria-label="Search all content"
             icon={SearchIcon}
             placeholder="Search… (e.g. type:post strategy)"
             value={query}
@@ -138,17 +151,23 @@ function SearchToolContent() {
                     </tr>
                   </thead>
                   <tbody>
-                    {results.map((r) => (
-                      <tr key={r._id} style={{ borderBottom: '1px solid var(--card-border-color, #eee)', cursor: 'pointer' }}
-                        onClick={() => { window.location.hash = `#/structure/intent/edit/id=${r._id};type=${r._type}`; }}>
-                        <td style={{ padding: '8px 12px' }}><Text size={1} weight="semibold">{String(r.title || r.name || r._id)}</Text></td>
+                    {results.map((r) => {
+                      const openRow = () => { window.location.hash = `#/structure/intent/edit/id=${r._id};type=${r._type}`; };
+                      const rowTitle = String(r.title || r.name || r._id);
+                      return (
+                      <tr key={r._id} className="wugweb-dt-focusable" role="button" tabIndex={0} aria-label={`Open ${rowTitle}`}
+                        style={{ borderBottom: '1px solid var(--card-border-color, #eee)', cursor: 'pointer' }}
+                        onClick={openRow}
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openRow(); } }}>
+                        <td style={{ padding: '8px 12px' }}><Text size={1} weight="semibold">{rowTitle}</Text></td>
                         <td style={{ padding: '8px 12px' }}><Badge tone="primary" mode="outline" fontSize={1}>{r._type}</Badge></td>
                         <td style={{ padding: '8px 12px' }}><Text size={1} muted>@{String(r.slug ?? '')}</Text></td>
                         <td style={{ padding: '8px 12px' }}><Text size={1} muted>{String(r.category ?? '—')}</Text></td>
                         <td style={{ padding: '8px 12px' }}><Text size={1} muted>{String(r.status ?? '—')}</Text></td>
                         <td style={{ padding: '8px 12px' }}><Text size={1} muted>{String(r._updatedAt ?? '—').slice(0, 10)}</Text></td>
                       </tr>
-                    ))}
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

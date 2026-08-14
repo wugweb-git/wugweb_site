@@ -51,7 +51,7 @@ export function TablesTool() {
           <Text size={1} muted>All document types as data grids. One-shot load (free-tier safe).</Text>
         </Box>
         <Box flex={1} />
-        <Select value={active} onChange={(e) => setActive(e.currentTarget.value)} style={{ minWidth: 220 }}>
+        <Select aria-label="Choose document type" value={active} onChange={(e) => setActive(e.currentTarget.value)} style={{ minWidth: 220 }}>
           {TABLE_CONFIGS.map((t) => (
             <option key={t.key} value={t.key}>{t.title}</option>
           ))}
