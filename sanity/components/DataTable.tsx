@@ -543,14 +543,15 @@ export function DataTable({
                         </Flex>
                       </td>
 
-                      {/* Remaining columns */}
+                      {/* Remaining columns — rendered directly from column config rather than
+                          table.getRow(id).getVisibleCells(), which is unreliable across
+                          @tanstack/react-table versions in this setup. */}
                       {(() => {
-                        const cells: any[] = table.getRow(row._id)?.getVisibleCells() ?? [];
-                        return cells
-                          .filter((cell) => cell.column.id !== 'title')
-                          .map((cell) => (
-                            <td key={cell.id} style={{ padding: density === 'compact' ? '6px 12px' : '10px 12px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 200 }}>
-                              {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        return columns
+                          .filter((c) => c.key !== 'title' && visible[c.key] !== false)
+                          .map((c) => (
+                            <td key={c.key} style={{ padding: density === 'compact' ? '6px 12px' : '10px 12px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 200 }}>
+                              {c.render ? c.render(row) : <Text size={1} muted>{truncate(String((row as any)[c.key] ?? '—'))}</Text>}
                             </td>
                           ));
                       })()}
