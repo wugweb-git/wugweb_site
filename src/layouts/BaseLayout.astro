@@ -27,7 +27,7 @@ const defaultOgImage = settings?.ogImage
   : '/brand/og-default.png';
 const defaultFavicon = settings?.favicon
   ? urlFor(settings.favicon).width(32).url()
-  : '/brand/favicon-32.png';
+  : '/brand/logo-small.svg';
 const defaultAppleTouch = settings?.favicon
   ? urlFor(settings.favicon).width(180).url()
   : '/brand/logo-small.svg';
@@ -83,7 +83,7 @@ const globalIndustries = (sanityIndustries as string[]).length
     <meta name="twitter:image" content={metaOgImage} />
 
     <!-- Favicon -->
-    <link href={defaultFavicon} rel="icon" />
+    <link href={defaultFavicon} rel="icon" type="image/svg+xml" />
     <link rel="apple-touch-icon" href={defaultAppleTouch} />
 
     <!-- PWA -->
