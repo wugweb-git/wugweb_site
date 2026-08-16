@@ -131,18 +131,29 @@ const whyIntro =
   .svc-title { font-size: var(--t-display); font-weight: var(--font-weight-extrabold); line-height: .92; color: var(--svc-fg); margin-top: var(--gap-1); }
   .svc-sub { margin-top: var(--gap-3); font-size: var(--t-l); line-height: var(--lh-l); color: color-mix(in srgb, var(--svc-fg) 88%, transparent); max-width: 42ch; }
   .svc-tabs { display: flex; gap: 0; margin-top: var(--gap-6); padding: var(--gap-1); border-radius: var(--radius-full); background: color-mix(in srgb, var(--neutral-0) 8%, transparent); width: fit-content; }
-  .svc-tab { font-family: var(--font-mono); font-size: var(--t-sm); letter-spacing: .02em; padding: var(--gap-2) var(--gap-5); border-radius: var(--radius-full); border: 0; background: transparent; color: inherit; opacity: var(--opacity-subtle); cursor: pointer; }
+  .svc-tab { font-family: var(--font-mono); font-size: var(--t-sm); letter-spacing: .02em; padding: var(--gap-2) var(--gap-5); border-radius: var(--radius-full); border: 0; background: transparent; color: inherit; opacity: var(--opacity-subtle); cursor: pointer; transition: background 0.3s ease, opacity 0.3s ease; }
   .svc-tab:hover { opacity: var(--opacity-hover); }
   .svc-tab.active { background: color-mix(in srgb, var(--neutral-0) 14%, transparent); opacity: var(--opacity-active); }
-  .svc-tier[hidden] { display: none; }
-  .svc-desc { margin-top: var(--gap-5); max-width: 52ch; font-size: var(--t-l); line-height: var(--lh-l); color: color-mix(in srgb, var(--svc-fg) 88%, transparent); }
+  
+  .svc-tier { 
+    margin-top: var(--gap-5);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .svc-tier[hidden] { display: none !important; opacity: 0; transform: translateY(8px); }
+  
+  .svc-desc { max-width: 52ch; font-size: var(--t-l); line-height: var(--lh-l); color: color-mix(in srgb, var(--svc-fg) 88%, transparent); }
   .svc-btns { display: flex; gap: var(--gap-3); margin-top: var(--gap-8); flex-wrap: wrap; }
-  .svc-btn { background: var(--neutral-0); border-color: var(--neutral-0); color: var(--color-ash); font-size: var(--fluid-label); padding: var(--gap-3) var(--gap-5); border-radius: var(--radius-sm); }
-  .svc-btn:hover { background: var(--svc-accent); border-color: var(--svc-accent); color: var(--color-ash); }
+  .svc-btn { background: var(--neutral-0); border-color: var(--neutral-0); color: var(--color-ash); font-size: var(--fluid-label); padding: var(--gap-3) var(--gap-5); border-radius: var(--radius-sm); transition: transform 0.2s ease, background-color 0.2s ease; }
+  .svc-btn:hover { background: var(--svc-accent); border-color: var(--svc-accent); color: var(--color-ash); transform: translateY(-2px); }
+  
   .svc-gallery { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--gap-4); margin-top: var(--space-section-sm); }
-  .svc-gallery a { position: relative; display: block; border-radius: var(--radius-lg); overflow: hidden; height: clamp(var(--svc-gallery-min), 22vh, var(--svc-gallery-max)); background: color-mix(in srgb, var(--neutral-10) 20%, transparent); text-decoration: none; }
-  .svc-gallery video { width: 100%; height: 100%; object-fit: cover; }
-  .svc-gallery-label { position: absolute; inset-inline: 0; bottom: 0; padding: var(--gap-7) var(--gap-4) var(--gap-3); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--neutral-0); background: linear-gradient(to top, color-mix(in srgb, var(--neutral-10) 70%, transparent), transparent); opacity: 0; }
+  .svc-gallery a { position: relative; display: block; border-radius: var(--radius-lg); overflow: hidden; height: clamp(var(--svc-gallery-min), 22vh, var(--svc-gallery-max)); background: color-mix(in srgb, var(--neutral-10) 20%, transparent); text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.08); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease; }
+  .svc-gallery a:hover { transform: scale(1.03) translateY(-4px); border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); }
+  .svc-gallery video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .svc-gallery a:hover video { transform: scale(1.08); }
+  .svc-gallery-label { position: absolute; inset-inline: 0; bottom: 0; padding: var(--gap-7) var(--gap-4) var(--gap-3); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--neutral-0); background: linear-gradient(to top, color-mix(in srgb, var(--neutral-10) 70%, transparent), transparent); opacity: 0; transition: opacity 0.3s ease; }
   .svc-gallery a:hover .svc-gallery-label { opacity: 1; }
   @media (max-width: 900px) {
     .svc-panel { position: relative; height: auto; min-height: 0; padding-block: var(--space-section-md) var(--gap-12); }
@@ -160,12 +171,28 @@ const whyIntro =
   const panels = Array.from(document.querySelectorAll('.svc-panel'));
   panels.forEach((panel) => {
     const btns = Array.from(panel.querySelectorAll('[data-tier-btn]'));
-    const tiers = Array.from(panel.querySelectorAll('[data-tier-panel]'));
+    const tiers = Array.from(panel.querySelectorAll('[data-tier-panel]')) as HTMLElement[];
     btns.forEach((btn) => {
       btn.addEventListener('click', () => {
         const tier = btn.dataset.tierBtn;
-        btns.forEach((b) => { b.classList.toggle('active', b === btn); b.setAttribute('aria-selected', String(b === btn)); });
-        tiers.forEach((t) => { t.hidden = t.dataset.tierPanel !== tier; });
+        btns.forEach((b) => { 
+          b.classList.toggle('active', b === btn); 
+          b.setAttribute('aria-selected', String(b === btn)); 
+        });
+        
+        tiers.forEach((t) => { 
+          if (t.dataset.tierPanel === tier) {
+            t.removeAttribute('hidden');
+            t.style.opacity = '0';
+            t.style.transform = 'translateY(6px)';
+            // force browser layout calculation to restart transition
+            t.offsetHeight;
+            t.style.opacity = '1';
+            t.style.transform = 'translateY(0)';
+          } else {
+            t.setAttribute('hidden', '');
+          }
+        });
       });
     });
   });

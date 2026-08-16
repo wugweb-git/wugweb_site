@@ -513,22 +513,20 @@ if (!service) {
   
   .card-glow {
     position: absolute;
-    bottom: -50px;
-    right: -50px;
-    width: 150px;
-    height: 150px;
-    background: var(--theme-gradient);
+    inset: 0;
+    background: radial-gradient(circle 250px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--theme-base) 10%, transparent) 0%, transparent 85%);
     opacity: 0;
-    border-radius: 50%;
-    filter: blur(40px);
     transition: opacity 0.4s ease;
     z-index: 0;
     pointer-events: none;
   }
   
-  .svc-work-card:hover .card-glow, .svc-insight-card:hover .card-glow { opacity: 0.15; }
-  .svc-work-card:hover { transform: translateY(-4px); }
-  .svc-insight-card:hover { transform: translateY(-4px); }
+  .svc-work-card:hover .card-glow, .svc-insight-card:hover .card-glow { opacity: 1; }
+  .svc-work-card, .svc-insight-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .svc-work-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--theme-base) 35%, transparent); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+  .svc-insight-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--theme-base) 35%, transparent); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
 
   .svc-work-card h3, .svc-insight-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); position: relative; z-index: 1;}
   .svc-work-card p { margin-top: var(--gap-2); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); position: relative; z-index: 1;}
@@ -536,23 +534,43 @@ if (!service) {
 
   /* CTA Panel */
   .detail-cta { padding-block: var(--space-section-xl); }
-  .cta-panel { padding: var(--gap-12); text-align: center; }
+  .cta-panel { padding: var(--gap-12); text-align: center; transition: border-color 0.4s ease; }
+  .cta-panel:hover { border-color: color-mix(in srgb, var(--theme-base) 40%, transparent); }
   .cta-glow {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, color-mix(in srgb, var(--theme-base) 10%, transparent) 0%, transparent 60%);
+    inset: 0;
+    background: radial-gradient(circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--theme-base) 14%, transparent) 0%, transparent 80%);
     z-index: 0;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
+  .cta-panel:hover .cta-glow { opacity: 1; }
   .cta-panel h2 { font-size: var(--t-h2); max-width: 18ch; margin-inline: auto; position: relative; z-index: 1;}
   .cta-panel p { margin-top: var(--gap-4); color: var(--fg-muted); position: relative; z-index: 1;}
   .detail-cta-btns { margin-top: var(--gap-8); display: flex; justify-content: center; gap: var(--gap-4); flex-wrap: wrap; position: relative; z-index: 1;}
 </style>
 
 <script>
-  // [data-reveal] entrances handled globally by GSAP in BaseLayout
+  // Mouse cursor hover tracking glow effect for glass cards
+  const initGlows = () => {
+    const cards = document.querySelectorAll('.glass-panel');
+    cards.forEach((card) => {
+      const glow = card.querySelector('.card-glow, .cta-glow') as HTMLElement | null;
+      if (!glow) return;
+      
+      card.addEventListener('mousemove', (e: Event) => {
+        const me = e as MouseEvent;
+        const rect = card.getBoundingClientRect();
+        const x = me.clientX - rect.left;
+        const y = me.clientY - rect.top;
+        glow.style.setProperty('--mouse-x', `${x}px`);
+        glow.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  };
+
+  // Run on load and after dynamic content shifts
+  initGlows();
+  document.addEventListener('astro:page-load', initGlows);
 </script>
