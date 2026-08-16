@@ -173,10 +173,398 @@ const globalIndustries = (sanityIndustries as string[]).length
     )}
 
     <SiteFooter copyright={copyrightText} companyEmail={siteEmail} />
+
+    <!-- Cookie Consent Banner -->
+    <div id="wugweb-cookie-banner" class="cookie-banner-wrap">
+      <div class="cookie-banner-inner">
+        <div class="cookie-banner-text">
+          <h4>We use cookies</h4>
+          <p>We use necessary cookies to operate Wugweb and optional cookies to understand how our website is used and improve your experience.</p>
+        </div>
+        <div class="cookie-banner-actions">
+          <button id="cookie-btn-accept-all" class="btn btn-solid btn-sm-cookie">Accept all</button>
+          <button id="cookie-btn-reject-optional" class="btn btn-ghost btn-sm-cookie">Reject optional</button>
+          <button id="cookie-btn-manage" class="btn btn-ghost btn-sm-cookie">Manage preferences</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookie Preferences Modal -->
+    <div id="wugweb-cookie-modal" class="cookie-modal-overlay">
+      <div class="cookie-modal-box">
+        <button id="cookie-modal-close" class="cookie-modal-close-btn" aria-label="Close preferences">&times;</button>
+        <h3>Cookie Settings</h3>
+        <p class="cookie-modal-intro">Choose which optional cookies and similar technologies you allow. Necessary technologies remain active because they are required for the website to function.</p>
+        
+        <div class="cookie-options-list">
+          <div class="cookie-opt-row">
+            <div class="opt-desc">
+              <h4>Strictly Necessary</h4>
+              <p>Required for core website functionality, security, consent management and other essential functions.</p>
+            </div>
+            <div class="opt-control">
+              <span class="active-badge">Always active</span>
+            </div>
+          </div>
+
+          <div class="cookie-opt-row">
+            <div class="opt-desc">
+              <h4>Functional</h4>
+              <p>Helps remember preferences and provide enhanced functionality.</p>
+            </div>
+            <div class="opt-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="cookie-toggle-functional" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="cookie-opt-row">
+            <div class="opt-desc">
+              <h4>Analytics</h4>
+              <p>Helps us understand how visitors use Wugweb and improve website performance and experience.</p>
+            </div>
+            <div class="opt-control">
+              <label class="toggle-switch">
+                <input type="checkbox" id="cookie-toggle-analytics" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="cookie-modal-actions">
+          <button id="cookie-modal-reject" class="btn btn-ghost">Reject optional</button>
+          <button id="cookie-modal-save" class="btn btn-solid">Save preferences</button>
+          <button id="cookie-modal-accept" class="btn btn-solid">Accept all</button>
+        </div>
+      </div>
+    </div>
+
+    <style is:global>
+      /* Global Cookie styles integrated with Wugweb tokens */
+      .cookie-banner-wrap {
+        position: fixed;
+        bottom: var(--space-page-xs);
+        left: var(--space-page-xs);
+        right: var(--space-page-xs);
+        background-color: var(--neutral-8);
+        border: 1px solid var(--color-border-subtle);
+        padding: var(--p-5);
+        border-radius: var(--radius-4);
+        z-index: 9999;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        display: none;
+        animation: cookieSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes cookieSlideUp {
+        from { transform: translateY(120%); }
+        to { transform: translateY(0); }
+      }
+
+      @media (min-width: 768px) {
+        .cookie-banner-wrap {
+          left: auto;
+          right: var(--space-page-md);
+          max-width: 480px;
+          bottom: var(--space-page-md);
+        }
+      }
+
+      .cookie-banner-inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-4);
+      }
+
+      .cookie-banner-text h4 {
+        font-family: var(--font-body);
+        font-size: var(--fluid-body-lg);
+        font-weight: var(--font-weight-semibold);
+        margin-bottom: var(--gap-1);
+        color: var(--color-text-primary);
+      }
+
+      .cookie-banner-text p {
+        font-size: var(--fluid-body-sm);
+        color: var(--color-text-secondary);
+        line-height: var(--lh-body);
+      }
+
+      .cookie-banner-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap-2);
+      }
+
+      .btn-sm-cookie {
+        padding: var(--p-2) var(--p-4) !important;
+        font-size: var(--fluid-caption) !important;
+      }
+
+      .cookie-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.85);
+        z-index: 10000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: var(--p-4);
+      }
+
+      .cookie-modal-box {
+        background-color: var(--neutral-9);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-5);
+        width: 100%;
+        max-width: 500px;
+        padding: var(--p-8);
+        position: relative;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+      }
+
+      .cookie-modal-close-btn {
+        position: absolute;
+        top: var(--p-6);
+        right: var(--p-6);
+        background: none;
+        border: none;
+        color: var(--color-text-secondary);
+        font-size: 1.75rem;
+        cursor: pointer;
+        line-height: 1;
+      }
+
+      .cookie-modal-box h3 {
+        font-size: var(--fluid-h3);
+        font-weight: var(--font-weight-bold);
+        margin-bottom: var(--gap-3);
+        color: var(--color-text-primary);
+      }
+
+      .cookie-modal-intro {
+        font-size: var(--fluid-body-sm);
+        color: var(--color-text-secondary);
+        line-height: var(--lh-body);
+        margin-bottom: var(--gap-6);
+      }
+
+      .cookie-options-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-4);
+        margin-bottom: var(--gap-8);
+      }
+
+      .cookie-opt-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--color-border-subtle);
+        padding-bottom: var(--p-4);
+      }
+
+      .cookie-opt-row:last-child {
+        border-bottom: none;
+      }
+
+      .opt-desc h4 {
+        font-size: var(--fluid-body-md);
+        font-weight: var(--font-weight-semibold);
+        margin-bottom: var(--gap-1);
+        color: var(--color-text-primary);
+      }
+
+      .opt-desc p {
+        font-size: var(--fluid-caption);
+        color: var(--color-text-muted);
+        line-height: var(--lh-caption);
+        max-width: 38ch;
+      }
+
+      .active-badge {
+        font-family: var(--font-mono);
+        font-size: var(--fluid-caption);
+        color: var(--color-text-muted);
+      }
+
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        inset: 0;
+        background-color: var(--neutral-6);
+        transition: .3s;
+        border-radius: var(--r-full);
+      }
+
+      .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: var(--color-text-primary);
+        transition: .3s;
+        border-radius: 50%;
+      }
+
+      .toggle-switch input:checked + .toggle-slider {
+        background-color: var(--color-accent-primary);
+      }
+
+      .toggle-switch input:checked + .toggle-slider:before {
+        transform: translateX(20px);
+        background-color: var(--neutral-10);
+      }
+
+      .cookie-modal-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap-2);
+        justify-content: space-between;
+      }
+    </style>
   </body>
 </html>
 
 <script>
   import { initScrollAnimations } from '../lib/scroll-animations';
   initScrollAnimations();
+
+  // COOKIE CONSENT STATE MANAGER
+  const banner = document.getElementById('wugweb-cookie-banner');
+  const modal = document.getElementById('wugweb-cookie-modal');
+  const btnAcceptAll = document.getElementById('cookie-btn-accept-all');
+  const btnRejectOptional = document.getElementById('cookie-btn-reject-optional');
+  const btnManage = document.getElementById('cookie-btn-manage');
+  
+  const toggleFunctional = document.getElementById('cookie-toggle-functional') as HTMLInputElement | null;
+  const toggleAnalytics = document.getElementById('cookie-toggle-analytics') as HTMLInputElement | null;
+  
+  const btnModalClose = document.getElementById('cookie-modal-close');
+  const btnModalReject = document.getElementById('cookie-modal-reject');
+  const btnModalSave = document.getElementById('cookie-modal-save');
+  const btnModalAccept = document.getElementById('cookie-modal-accept');
+  
+  const btnFooterSettings = document.getElementById('btn-footer-cookie-settings');
+
+  const CONSENT_KEY = 'wugweb_cookie_consent_v1';
+
+  const defaultConsent = {
+    necessary: true,
+    functional: false,
+    analytics: false
+  };
+
+  const getSavedConsent = () => {
+    try {
+      const saved = localStorage.getItem(CONSENT_KEY);
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const saveConsent = (consent: any) => {
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+      applyScripts(consent);
+    } catch {}
+  };
+
+  const applyScripts = (consent: any) => {
+    if (consent.analytics) {
+      console.log('[Consent] Analytics allowed. Initializing tracking script layers.');
+      window.dispatchEvent(new CustomEvent('wugweb-analytics-allowed'));
+    }
+  };
+
+  if (banner && modal) {
+    const saved = getSavedConsent();
+    if (!saved) {
+      banner.style.display = 'block';
+    } else {
+      applyScripts(saved);
+    }
+
+    const openSettings = () => {
+      const current = getSavedConsent() || defaultConsent;
+      if (toggleFunctional) toggleFunctional.checked = current.functional;
+      if (toggleAnalytics) toggleAnalytics.checked = current.analytics;
+      modal.style.display = 'flex';
+    };
+
+    // Export globally for footer click triggers
+    (window as any).openWugwebCookieSettings = openSettings;
+
+    if (btnFooterSettings) {
+      btnFooterSettings.addEventListener('click', (e) => {
+        e.preventDefault();
+        openSettings();
+      });
+    }
+
+    if (btnManage) {
+      btnManage.addEventListener('click', openSettings);
+    }
+
+    const closeSettings = () => {
+      modal.style.display = 'none';
+    };
+
+    if (btnModalClose) btnModalClose.addEventListener('click', closeSettings);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeSettings();
+    });
+
+    const acceptAll = () => {
+      const consent = { necessary: true, functional: true, analytics: true };
+      saveConsent(consent);
+      banner.style.display = 'none';
+      closeSettings();
+    };
+
+    if (btnAcceptAll) btnAcceptAll.addEventListener('click', acceptAll);
+    if (btnModalAccept) btnModalAccept.addEventListener('click', acceptAll);
+
+    const rejectOptional = () => {
+      const consent = { necessary: true, functional: false, analytics: false };
+      saveConsent(consent);
+      banner.style.display = 'none';
+      closeSettings();
+    };
+
+    if (btnRejectOptional) btnRejectOptional.addEventListener('click', rejectOptional);
+    if (btnModalReject) btnModalReject.addEventListener('click', rejectOptional);
+
+    if (btnModalSave) {
+      btnModalSave.addEventListener('click', () => {
+        const consent = {
+          necessary: true,
+          functional: toggleFunctional ? toggleFunctional.checked : false,
+          analytics: toggleAnalytics ? toggleAnalytics.checked : false
+        };
+        saveConsent(consent);
+        banner.style.display = 'none';
+        closeSettings();
+      });
+    }
+  }
 </script>

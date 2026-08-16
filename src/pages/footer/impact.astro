@@ -1,90 +1,951 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const activities = [
-  { title: 'Community Upskilling', copy: 'Empowering local communities through digital skills training and mentorship programs, bridging the technology gap for underrepresented groups.' },
-  { title: 'Sustainable Design', copy: 'Promoting environmentally conscious design practices and reducing digital waste through efficient, sustainable development methodologies.' },
-  { title: 'Social Impact Partnerships', copy: 'Collaborating with non-profits and social enterprises to provide pro-bono design and technology consulting for mission-driven organizations.' },
-];
 ---
 
-<BaseLayout title="Impact" description="Wugweb's commitment to social impact and community empowerment.">
-  <section class="wrap impact">
-    <p class="eyebrow" data-reveal>Impact</p>
-    <h1 data-reveal>What we've done for society</h1>
-    <p class="impact-sub" data-reveal>At Wugweb, we believe in using our expertise to create positive change in the communities we serve.</p>
-
-    <ul class="activities">
-      {activities.map((a, i) => (
-        <li data-reveal>
-          <span class="activity-n">0{i + 1}</span>
-          <h2>{a.title}</h2>
-          <p>{a.copy}</p>
-        </li>
-      ))}
-    </ul>
-
-    <section class="cta-banner" data-reveal>
-      <h2>Want to make an impact together?</h2>
-      <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
+<BaseLayout 
+  title="Purpose & Impact" 
+  description="Wugweb gives capability, not just support. We contribute technology, design, strategy, digital support, and mentorship to meaningful work."
+  hideGlobalSections={true}
+>
+  <div class="impact-page">
+    
+    <!-- 01 — HERO -->
+    <section class="hero-section wrap">
+      <div class="hero-content">
+        <span class="eyebrow" data-reveal>PURPOSE & IMPACT</span>
+        <h1 data-reveal>Supporting meaningful work.</h1>
+        <p class="hero-lead" data-reveal>
+          Support for meaningful work has never mattered more. We believe organisations, campaigns and people working towards positive change should have access to the expertise and capabilities they need to move their work forward.
+        </p>
+        <p class="hero-body" data-reveal>
+          That is where we can help. Wugweb contributes through technology, design, digital support, mentorship and partnerships—using what we know to support work that matters.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a href="/contact-us" class="btn btn-solid">Request support</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual-slot" data-reveal>
+        <div class="visual-container ratio-16-9">
+          <div class="placeholder-graphic">
+            <span class="placeholder-tag">PRIMARY HERO VISUAL</span>
+            <span class="placeholder-desc">16:9 Editorial illustration / campaign imagery / capability artwork</span>
+          </div>
+        </div>
+      </div>
     </section>
-  </section>
+
+    <!-- 02 — OUR APPROACH -->
+    <section class="approach-section wrap">
+      <div class="section-header">
+        <span class="eyebrow" data-reveal>OUR APPROACH</span>
+        <h2 data-reveal>We give capability, not just support.</h2>
+      </div>
+      
+      <div class="approach-grid">
+        <div class="approach-copy" data-reveal>
+          <p>
+            Sometimes it means building technology for a campaign. Sometimes it means supporting an organisation's digital presence. Sometimes it means sharing design expertise, mentoring emerging talent or helping solve a difficult problem.
+          </p>
+          <p>
+            We support work where our capabilities can make a meaningful difference.
+          </p>
+        </div>
+        
+        <div class="approach-visual" data-reveal>
+          <div class="capability-sequence">
+            <div class="capability-node">
+              <span class="node-n">01</span>
+              <h3>Design</h3>
+              <p>Visual expression & UX</p>
+            </div>
+            <div class="capability-arrow" aria-hidden="true">→</div>
+            <div class="capability-node">
+              <span class="node-n">02</span>
+              <h3>Technology</h3>
+              <p>Engineering & scale</p>
+            </div>
+            <div class="capability-arrow" aria-hidden="true">→</div>
+            <div class="capability-node">
+              <span class="node-n">03</span>
+              <h3>Strategy</h3>
+              <p>Positioning & launch</p>
+            </div>
+            <div class="capability-arrow" aria-hidden="true">→</div>
+            <div class="capability-node">
+              <span class="node-n">04</span>
+              <h3>Mentorship</h3>
+              <p>Sharing & guidance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — REQUEST SUPPORT -->
+    <section class="request-banner-section wrap" data-reveal>
+      <div class="banner-inner">
+        <div class="banner-content">
+          <h2>Working on something that matters?</h2>
+          <p>
+            If you're a purpose-driven organisation, campaign or initiative and need help with design, technology or digital support, tell us what you're working on.
+          </p>
+          <a href="/contact-us" class="btn btn-solid btn-light">Request support &rarr;</a>
+        </div>
+        <div class="banner-visual-slot">
+          <div class="visual-container ratio-4-3">
+            <div class="placeholder-graphic light-lines">
+              <span class="placeholder-tag">CAPABILITY DIAGRAM</span>
+              <span class="placeholder-desc">Abstract geometric mapping of resource & skills distribution</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — ADVOCACY & GIVING -->
+    <section class="advocacy-section wrap">
+      <div class="section-header">
+        <span class="eyebrow" data-reveal>ADVOCACY & GIVING</span>
+        <h2 data-reveal>Where we've put our capabilities to work.</h2>
+      </div>
+
+      <!-- FEATURED STORY -->
+      <div class="featured-story" data-reveal>
+        <div class="featured-visual-matrix">
+          <div class="primary-visual">
+            <div class="visual-container ratio-3-2">
+              <div class="placeholder-graphic">
+                <span class="placeholder-tag">ANIMAL WRITES · PRIMARY</span>
+                <span class="placeholder-desc">Digital platform & campaign screenshot (3:2)</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="secondary-visuals">
+            <div class="visual-container ratio-1-1">
+              <div class="placeholder-graphic">
+                <span class="placeholder-tag">AW · MOBILE UI</span>
+                <span class="placeholder-desc">Platform mobile view (1:1)</span>
+              </div>
+            </div>
+            <div class="visual-container ratio-1-1">
+              <div class="placeholder-graphic">
+                <span class="placeholder-tag">AW · CAMPAIGN ART</span>
+                <span class="placeholder-desc">Social & advocacy artwork (1:1)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-content">
+          <span class="meta-label">Campaign · Digital platform · Advocacy</span>
+          <h3>ANIMAL WRITES</h3>
+          <p>
+            We helped create and run the digital platform behind Animal Writes, supporting its campaign and helping it build momentum across India.
+          </p>
+          <a href="https://animalwrites.in/" target="_blank" rel="noopener noreferrer" class="link-cta">
+            Visit Animal Writes &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — OTHER CONTRIBUTIONS -->
+    <section class="other-contributions-section wrap">
+      <div class="section-header">
+        <span class="eyebrow" data-reveal>OTHER CONTRIBUTIONS</span>
+      </div>
+
+      <div class="contributions-list">
+        <!-- Contribution Row 1 -->
+        <div class="contribution-row" data-reveal>
+          <div class="row-main-content">
+            <span class="meta-label">Digital sponsorship · Animal welfare</span>
+            <h3>Nawabi Tails Rescue</h3>
+            <p>
+              We provide digital sponsorship and support to an organisation working in animal rescue and welfare.
+            </p>
+            <a href="https://nawabitailsrescue.org/" target="_blank" rel="noopener noreferrer" class="link-cta">
+              Visit &rarr;
+            </a>
+          </div>
+          
+          <div class="row-visuals">
+            <div class="visual-container ratio-4-3">
+              <div class="placeholder-graphic">
+                <span class="placeholder-tag">NAWABI TAILS THUMBNAIL</span>
+                <span class="placeholder-desc">Rescue photography / logo (4:3)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contribution Row 2 -->
+        <div class="contribution-row" data-reveal>
+          <div class="row-main-content">
+            <span class="meta-label">#ExtendedGuestList · Technology Partner</span>
+            <h3>Robin Hood Army</h3>
+            <p>
+              Wugweb provided technology support for the 2022 campaign with Dentsu Creative and Robin Hood Army.
+            </p>
+            <a href="https://bestmediainfo.com/2022/12/why-did-dentsu-creative-bring-robin-hood-army-to-actor-hansika-motwani-s-wedding" target="_blank" rel="noopener noreferrer" class="link-cta">
+              Read about the campaign &rarr;
+            </a>
+          </div>
+          
+          <div class="row-visuals">
+            <div class="visual-container ratio-4-3">
+              <div class="placeholder-graphic">
+                <span class="placeholder-tag">ROBIN HOOD ARMY THUMBNAIL</span>
+                <span class="placeholder-desc">Campaign artwork / press clip (4:3)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 — MENTORSHIP & KNOWLEDGE -->
+    <section class="mentorship-section wrap">
+      <div class="mentorship-grid">
+        <div class="mentorship-content" data-reveal>
+          <span class="eyebrow">MENTORSHIP & KNOWLEDGE</span>
+          <h2>Expertise should be shared.</h2>
+          <p>
+            Through design mentorship, professional guidance and knowledge sharing, we support emerging designers, founders and professionals as they develop their ideas, products and careers.
+          </p>
+          <p>
+            We also participate in India's startup ecosystem through Startup India and its mentorship initiatives.
+          </p>
+          <a href="/contact-us" class="btn btn-ghost">Learn more &rarr;</a>
+        </div>
+        
+        <div class="mentorship-visual-slot" data-reveal>
+          <div class="visual-container ratio-3-2">
+            <div class="placeholder-graphic">
+              <span class="placeholder-tag">MENTORSHIP & DESIGN ARTEFACTS</span>
+              <span class="placeholder-desc">Workshop session photo / design guidelines (3:2)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — SUPPORT THE WORK -->
+    <section class="support-work-section wrap">
+      <div class="section-header text-center">
+        <span class="eyebrow" data-reveal>SUPPORT THE WORK</span>
+        <h2 data-reveal>You can help too.</h2>
+        <p class="section-lede" data-reveal>
+          You don't have to work with us to contribute. If the work of organisations we support matters to you, you can help them directly.
+        </p>
+      </div>
+
+      <div class="action-cards-grid">
+        <!-- Card 1 -->
+        <div class="action-card" data-reveal>
+          <div class="card-visual-slot">
+            <div class="visual-container ratio-16-9">
+              <div class="placeholder-graphic">
+                <span class="placeholder-tag">ANIMAL WRITES</span>
+                <span class="placeholder-desc">Campaign thumbnail / advocacy art</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Animal Writes</h3>
+            <p>Support animal-welfare advocacy and help the campaign continue its work.</p>
+            <a href="https://animalwrites.in/" target="_blank" rel="noopener noreferrer" class="btn btn-solid card-btn">
+              Support Animal Writes &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="action-card" data-reveal>
+          <div class="card-visual-slot">
+            <div class="visual-container ratio-16-9">
+              <div class="placeholder-graphic">
+                <span class="placeholder-tag">NAWABI TAILS RESCUE</span>
+                <span class="placeholder-desc">Rescue photography / organization image</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>Nawabi Tails Rescue</h3>
+            <p>Support rescue, rehabilitation and animal welfare.</p>
+            <a href="https://nawabitailsrescue.org/" target="_blank" rel="noopener noreferrer" class="btn btn-solid card-btn">
+              Support Nawabi Tails &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 — RECOGNISED -->
+    <section class="recognised-section wrap" data-reveal>
+      <div class="recognised-inner">
+        <div class="recognised-content">
+          <span class="eyebrow">RECOGNISED</span>
+          <h2>DPIIT Recognised Startup</h2>
+          <p>
+            Wugweb is recognised under India's Startup India ecosystem through the Department for Promotion of Industry and Internal Trade (DPIIT).
+          </p>
+          <a href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost text-left">
+            Startup India &rarr;
+          </a>
+        </div>
+        
+        <div class="recognised-visual">
+          <div class="visual-container ratio-4-3">
+            <div class="placeholder-graphic">
+              <span class="placeholder-tag">GOVERNMENT CREDENTIAL</span>
+              <span class="placeholder-desc">DPIIT recognition certificate thumbnail (4:3)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 — FINAL CTA -->
+    <section class="final-cta-section wrap" data-reveal>
+      <div class="final-cta-inner-impact">
+        <h2>Have meaningful work that needs support?</h2>
+        <p>
+          Tell us what you're working on, who you're helping, and where Wugweb could contribute.
+        </p>
+        <a href="/contact-us" class="btn btn-solid">Request support &rarr;</a>
+      </div>
+    </section>
+
+  </div>
 </BaseLayout>
 
 <style>
-  .impact {
-    padding-block: var(--space-section-xl);
+  /* ─────────────────────────────────────────────────────────────────────
+     LAYOUT & THEME INTEGRATION
+     ───────────────────────────────────────────────────────────────────── */
+  
+  .impact-page {
+    padding-bottom: var(--space-section-xl);
+    background-color: var(--color-surface-page);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
   }
-  .impact h1 {
-    font-size: var(--t-h2);
-    margin-block: var(--gap-3) var(--gap-8);
-    max-width: 20ch;
+
+  /* Shared Typography & Spacing */
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-accent-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--gap-4);
   }
-  .impact-sub {
-    max-width: 55ch;
-    color: var(--fg-muted);
+
+  .section-header {
     margin-bottom: var(--gap-12);
   }
-  .activities {
-    list-style: none;
-    margin: 0 0 var(--gap-12);
-    padding: 0;
+
+  .section-header h2 {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.02em;
+    max-width: 25ch;
+    line-height: var(--lh-h2);
+  }
+
+  /* Reusable Visual Slot / Placeholder Containers */
+  .visual-container {
+    position: relative;
+    width: 100%;
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-4);
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .visual-container.ratio-16-9 { aspect-ratio: 16 / 9; }
+  .visual-container.ratio-3-2 { aspect-ratio: 3 / 2; }
+  .visual-container.ratio-4-3 { aspect-ratio: 4 / 3; }
+  .visual-container.ratio-1-1 { aspect-ratio: 1 / 1; }
+
+  .placeholder-graphic {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--p-6);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, transparent 80%);
+    text-align: center;
+  }
+
+  .placeholder-tag {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    letter-spacing: var(--tracking-label);
+    margin-bottom: var(--gap-2);
+  }
+
+  .placeholder-desc {
+    font-size: var(--fluid-caption);
+    color: var(--color-text-muted);
+    max-width: 28ch;
+    line-height: var(--lh-caption);
+  }
+
+  /* Light Theme / Inverse lines for banner diagram */
+  .placeholder-graphic.light-lines .placeholder-tag {
+    color: var(--neutral-9);
+  }
+  .placeholder-graphic.light-lines .placeholder-desc {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  /* Hover states for slots */
+  .visual-container:hover {
+    border-color: rgba(255, 190, 26, 0.3);
+    transform: scale(1.01);
+  }
+
+  /* CTA Links */
+  .link-cta {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: var(--fluid-body-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    margin-top: var(--gap-4);
+  }
+
+  .link-cta:hover {
+    opacity: 0.85;
+    transform: translateX(3px);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 1 — HERO
+     ───────────────────────────────────────────────────────────────────── */
+  .hero-section {
+    padding-top: calc(var(--space-section-xl) * 1.5);
+    padding-bottom: var(--space-section-lg);
+    display: grid;
+    gap: var(--gap-8);
+    align-items: center;
+  }
+
+  @media (min-width: 992px) {
+    .hero-section {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--gap-12);
+    }
+  }
+
+  .hero-content h1 {
+    font-size: var(--fluid-display);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--lh-display);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--gap-6);
+  }
+
+  .hero-lead {
+    font-size: var(--fluid-body-lg);
+    line-height: var(--lh-xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--gap-4);
+    max-width: 45ch;
+  }
+
+  .hero-body {
+    font-size: var(--fluid-body-md);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-8);
+    max-width: 50ch;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 2 — OUR APPROACH
+     ───────────────────────────────────────────────────────────────────── */
+  .approach-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .approach-grid {
     display: grid;
     gap: var(--gap-8);
   }
-  @media (min-width: 768px) {
-    .activities {
-      grid-template-columns: repeat(3, 1fr);
+
+  @media (min-width: 992px) {
+    .approach-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-12);
+      align-items: start;
     }
   }
-  .activities li {
-    border-top: var(--stroke-thin) solid var(--line);
-    padding-top: var(--gap-5);
-  }
-  .activity-n {
-    font-family: var(--font-mono);
-    color: var(--accent-warm);
-  }
-  .activities h2 {
+
+  .approach-copy p {
     font-size: var(--fluid-body-lg);
-    margin-top: var(--gap-3);
+    line-height: var(--lh-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-6);
+    max-width: 45ch;
+  }
+
+  /* Typographic connection diagram */
+  .capability-sequence {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-4);
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--p-8);
+    border-radius: var(--radius-4);
+  }
+
+  @media (min-width: 640px) {
+    .capability-sequence {
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: var(--gap-2);
+      padding: var(--p-6);
+    }
+  }
+
+  .capability-node {
+    text-align: left;
+  }
+
+  @media (min-width: 640px) {
+    .capability-node {
+      text-align: center;
+    }
+  }
+
+  .node-n {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-accent-primary);
+  }
+
+  .capability-node h3 {
+    font-size: var(--fluid-body-md);
     font-weight: var(--font-weight-semibold);
+    margin-top: var(--gap-1);
+    margin-bottom: 2px;
   }
-  .activities p {
-    margin-top: var(--gap-2);
+
+  .capability-node p {
+    font-size: var(--fluid-caption);
+    color: var(--color-text-muted);
   }
-  .cta-banner {
-    border-top: var(--stroke-thin) solid var(--line);
-    padding-top: var(--gap-8);
-    display: flex;
-    flex-wrap: wrap;
+
+  .capability-arrow {
+    font-size: var(--fluid-body-lg);
+    color: var(--color-text-muted);
+    text-align: center;
+    padding-block: var(--p-2);
+  }
+
+  @media (min-width: 640px) {
+    .capability-arrow {
+      padding-block: 0;
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 3 — REQUEST SUPPORT (Banner)
+     ───────────────────────────────────────────────────────────────────── */
+  .request-banner-section {
+    padding-block: var(--space-section-md);
+  }
+
+  .banner-inner {
+    background-color: var(--neutral-0);
+    color: var(--neutral-10);
+    border-radius: var(--radius-5);
+    padding: var(--p-8);
+    display: grid;
+    gap: var(--gap-8);
     align-items: center;
-    justify-content: space-between;
-    gap: var(--gap-6);
   }
-  .cta-banner h2 {
+
+  @media (min-width: 992px) {
+    .banner-inner {
+      grid-template-columns: 1.2fr 0.8fr;
+      padding: var(--p-12);
+      gap: var(--gap-12);
+    }
+  }
+
+  .banner-content h2 {
     font-size: var(--fluid-h2);
-    max-width: 20ch;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--gap-4);
+  }
+
+  .banner-content p {
+    font-size: var(--fluid-body-lg);
+    line-height: var(--lh-xl);
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: var(--gap-8);
+    max-width: 48ch;
+  }
+
+  .btn.btn-light {
+    background-color: var(--neutral-10);
+    color: var(--neutral-0);
+    border-color: var(--neutral-10);
+  }
+
+  .btn.btn-light:hover {
+    background-color: #2b2b2b;
+    border-color: #2b2b2b;
+  }
+
+  .banner-visual-slot .visual-container {
+    background-color: var(--neutral-1);
+    border-color: var(--neutral-2);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 4 — ADVOCACY & GIVING (Featured)
+     ───────────────────────────────────────────────────────────────────── */
+  .advocacy-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .featured-story {
+    display: grid;
+    gap: var(--gap-8);
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-5);
+    padding: var(--p-6);
+  }
+
+  @media (min-width: 992px) {
+    .featured-story {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--gap-12);
+      padding: var(--p-10);
+      align-items: center;
+    }
+  }
+
+  .featured-visual-matrix {
+    display: grid;
+    gap: var(--gap-4);
+  }
+
+  .secondary-visuals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-4);
+  }
+
+  .featured-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .meta-label {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--gap-3);
+  }
+
+  .featured-content h3 {
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.01em;
+    margin-bottom: var(--gap-4);
+  }
+
+  .featured-content p {
+    font-size: var(--fluid-body-md);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-6);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 5 — OTHER CONTRIBUTIONS (List)
+     ───────────────────────────────────────────────────────────────────── */
+  .other-contributions-section {
+    padding-bottom: var(--space-section-xl);
+  }
+
+  .contributions-list {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .contribution-row {
+    display: grid;
+    gap: var(--gap-6);
+    padding-block: var(--p-8);
+    border-bottom: 1px solid var(--color-border-subtle);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .contribution-row {
+      grid-template-columns: 1fr 280px;
+      gap: var(--gap-10);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .contribution-row {
+      grid-template-columns: 1fr 340px;
+    }
+  }
+
+  .row-main-content h3 {
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--gap-2);
+  }
+
+  .row-main-content p {
+    font-size: var(--fluid-body-md);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+    max-width: 60ch;
+    margin-bottom: var(--gap-4);
+  }
+
+  .row-visuals {
+    width: 100%;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 6 — MENTORSHIP
+     ───────────────────────────────────────────────────────────────────── */
+  .mentorship-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .mentorship-grid {
+    display: grid;
+    gap: var(--gap-8);
+    align-items: center;
+  }
+
+  @media (min-width: 992px) {
+    .mentorship-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-12);
+    }
+  }
+
+  .mentorship-content h2 {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.02em;
+    margin-block: var(--gap-4);
+  }
+
+  .mentorship-content p {
+    font-size: var(--fluid-body-md);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-6);
+    max-width: 48ch;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 7 — SUPPORT THE WORK (Action Cards)
+     ───────────────────────────────────────────────────────────────────── */
+  .support-work-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .support-work-section .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  .section-lede {
+    font-size: var(--fluid-body-lg);
+    line-height: var(--lh-xl);
+    color: var(--color-text-secondary);
+    margin-top: var(--gap-4);
+  }
+
+  .action-cards-grid {
+    display: grid;
+    gap: var(--gap-8);
+    margin-top: var(--gap-8);
+  }
+
+  @media (min-width: 768px) {
+    .action-cards-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .action-card {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-4);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .action-card:hover {
+    border-color: var(--color-accent-primary);
+    transform: translateY(-4px);
+  }
+
+  .card-content {
+    padding: var(--p-6);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-content h3 {
+    font-size: var(--fluid-h4);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--gap-2);
+  }
+
+  .card-content p {
+    font-size: var(--fluid-body-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-6);
+    line-height: var(--lh-body);
+  }
+
+  .card-btn {
+    align-self: flex-start;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 8 — RECOGNISED (Quiet Credential)
+     ───────────────────────────────────────────────────────────────────── */
+  .recognised-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .recognised-inner {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-5);
+    padding: var(--p-8);
+    display: grid;
+    gap: var(--gap-8);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .recognised-inner {
+      grid-template-columns: 1fr 240px;
+      gap: var(--gap-10);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .recognised-inner {
+      grid-template-columns: 1.2fr 0.8fr;
+      padding: var(--p-12);
+      gap: var(--gap-12);
+    }
+  }
+
+  .recognised-content h2 {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.02em;
+    margin-top: var(--gap-4);
+    margin-bottom: var(--gap-4);
+  }
+
+  .recognised-content p {
+    font-size: var(--fluid-body-md);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-6);
+    max-width: 48ch;
+  }
+
+  .text-left {
+    align-self: flex-start;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 9 — FINAL CTA
+     ───────────────────────────────────────────────────────────────────── */
+  .final-cta-section {
+    padding-top: var(--space-section-xl);
+    padding-bottom: var(--space-section-md);
+  }
+
+  .final-cta-inner-impact {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-5);
+    padding: var(--p-8) var(--p-6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .final-cta-inner-impact {
+      padding: var(--p-12);
+    }
+  }
+
+  .final-cta-inner-impact h2 {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--gap-4);
+    max-width: 25ch;
+  }
+
+  .final-cta-inner-impact p {
+    font-size: var(--fluid-body-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-8);
+    max-width: 45ch;
+    line-height: var(--lh-xl);
   }
 </style>
-

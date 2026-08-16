@@ -1,0 +1,400 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Cookie Policy" 
+  description="Wugweb Cookie Policy — details on how we use cookies, tracking technologies, and how to manage your choices."
+  hideGlobalSections={true}
+>
+  <section class="wrap legal">
+    <header class="static-head">
+      <p class="eyebrow" data-reveal>LEGAL & PRIVACY</p>
+      <h1 data-reveal>Cookie Policy</h1>
+      <p class="legal-updated" data-reveal>Last updated: August 16, 2026</p>
+      
+      <div class="legal-quick-links" data-reveal>
+        <a href="/privacy-policy">Privacy Policy &rarr;</a>
+        <a href="/termsofuse">Terms of Use &rarr;</a>
+      </div>
+    </header>
+
+    <div class="legal-body">
+      <p data-reveal>
+        This Cookie Policy explains how Wugweb uses cookies and similar technologies when you visit our websites and use our digital services. It explains what these technologies are, why we use them, what information they may collect, and how you can manage your preferences.
+      </p>
+
+      <!-- 01 -->
+      <h2 data-reveal>01 — What are cookies?</h2>
+      <p data-reveal>
+        Cookies are small files or pieces of information stored on your device when you visit a website. They help websites function, remember preferences, understand how visitors use them and, where enabled, support analytics or other services.
+      </p>
+      <p data-reveal>
+        Wugweb may also use other tracking technologies that perform similar functions, including:
+      </p>
+      <ul data-reveal>
+        <li>Local storage (storing preference configurations on your browser)</li>
+        <li>Pixels & web beacons (small image files triggering server scripts)</li>
+        <li>Tags, scripts, and software development kits (SDKs)</li>
+      </ul>
+      <p data-reveal>
+        This policy covers all such technologies where applicable.
+      </p>
+
+      <!-- 02 -->
+      <h2 data-reveal>02 — How we use cookies</h2>
+      <p data-reveal>
+        We use cookies and similar technologies across the following categories:
+      </p>
+      <ul data-reveal>
+        <li>
+          <strong>Strictly Necessary:</strong> Essential for the website to function, secure session authentication, manage cookie preferences, and process subscription checkouts (via payment gateways). These cannot be disabled.
+        </li>
+        <li>
+          <strong>Functional:</strong> Used to remember your dashboard choices, preferences, and workspace settings.
+        </li>
+        <li>
+          <strong>Analytics:</strong> Used to monitor traffic, load times, page performance, and general error monitoring to help improve Wugweb.
+        </li>
+      </ul>
+
+      <!-- 03 -->
+      <h2 data-reveal>03 — What information may be collected?</h2>
+      <p data-reveal>
+        Depending on your choices and consent settings, cookies may record the following details:
+      </p>
+      <ul data-reveal>
+        <li>Your IP address, approximate geographical region, and browser information.</li>
+        <li>Device types, operating systems, and page navigation duration/paths.</li>
+        <li>Referral sources and interaction counts (clicks, active inputs).</li>
+      </ul>
+      <p data-reveal>
+        This is kept consistent with our <a href="/privacy-policy">Privacy Policy</a>, which details our data safety principles.
+      </p>
+
+      <!-- 04 -->
+      <h2 data-reveal>04 — Third-party technologies</h2>
+      <p data-reveal>
+        Some cookies or similar technologies are managed by third-party services that help us run, secure, or analyze Wugweb.
+      </p>
+      
+      <div class="table-container" data-reveal>
+        <table>
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Technology</th>
+              <th>Purpose</th>
+              <th>Category</th>
+              <th>Duration</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google Tag Manager</td>
+              <td>Script Loader</td>
+              <td>Loads necessary triggers and tracking logic</td>
+              <td>Necessary / Configurable</td>
+              <td>Session / Persistent</td>
+              <td>Third party</td>
+            </tr>
+            <tr>
+              <td>Google Analytics</td>
+              <td>Analytics cookies</td>
+              <td>Understand website usage and metrics</td>
+              <td>Analytics</td>
+              <td>2 years</td>
+              <td>Third party</td>
+            </tr>
+            <tr>
+              <td>Razorpay</td>
+              <td>Checkout APIs</td>
+              <td>Subscription processing & billing confirmation</td>
+              <td>Necessary</td>
+              <td>Varies</td>
+              <td>Third party</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 05 -->
+      <h2 data-reveal>05 — Cookies used by Wugweb</h2>
+      <p data-reveal>
+        Below is our active cookie registry. You can use search to filter specific cookies.
+      </p>
+      
+      <div class="cookie-register-box" data-reveal>
+        <input type="text" id="cookie-search-input" placeholder="Search cookies used..." class="cookie-search" />
+        
+        <div class="table-container">
+          <table id="cookie-register-table">
+            <thead>
+              <tr>
+                <th>Cookie / Identifier</th>
+                <th>Provider</th>
+                <th>Purpose</th>
+                <th>Category</th>
+                <th>Duration</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-search="wugweb_cookie_consent consent choice">
+                <td><code>wugweb_cookie_consent</code></td>
+                <td>Wugweb</td>
+                <td>Stores your cookie consent settings and preferences</td>
+                <td>Necessary</td>
+                <td>1 year</td>
+                <td>First party</td>
+              </tr>
+              <tr data-search="_ga google analytics client ID">
+                <td><code>_ga</code></td>
+                <td>Google Analytics</td>
+                <td>Distinguishes unique users for analytics metrics</td>
+                <td>Analytics</td>
+                <td>2 years</td>
+                <td>Third party</td>
+              </tr>
+              <tr data-search="_gid google analytics user identity">
+                <td><code>_gid</code></td>
+                <td>Google Analytics</td>
+                <td>Distinguishes users on a daily basis</td>
+                <td>Analytics</td>
+                <td>24 hours</td>
+                <td>Third party</td>
+              </tr>
+              <tr data-search="rzp_device_id razorpay checkout security">
+                <td><code>rzp_device_id</code></td>
+                <td>Razorpay</td>
+                <td>Secures checkout transactions and prevents fraud</td>
+                <td>Necessary</td>
+                <td>Persistent</td>
+                <td>Third party</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <h2 data-reveal>06 — Your choices</h2>
+      <p data-reveal>
+        Where consent is required, we will ask for your permission before placing or using non-essential cookies and similar technologies. You can accept or reject optional categories and change your preferences at any time.
+      </p>
+      <div class="cta-block" data-reveal>
+        <button class="btn btn-solid" onclick="if(window.openWugwebCookieSettings) { window.openWugwebCookieSettings(); } else { alert('Cookie consent settings not loaded yet.'); }">
+          Manage Cookie Settings &rarr;
+        </button>
+      </div>
+
+      <!-- 07 -->
+      <h2 data-reveal>07 — Change your preferences</h2>
+      <p data-reveal>
+        You can review or change your choices at any time by selecting the **Cookie Settings** link in the website footer or by clicking the toggle options panel button below.
+      </p>
+      <div class="cta-block" data-reveal>
+        <button class="btn btn-ghost" onclick="if(window.openWugwebCookieSettings) window.openWugwebCookieSettings();">
+          Open Cookie Settings
+        </button>
+      </div>
+
+      <!-- 08 -->
+      <h2 data-reveal>08 — Browser controls</h2>
+      <p data-reveal>
+        You can also block, limit, or delete cookies directly inside your browser settings (Chrome, Safari, Firefox, etc.). Note that disabling essential cookies may impact checkout and interactive queue functions.
+      </p>
+
+      <!-- 09 -->
+      <h2 data-reveal>09 — Changes to this Cookie Policy</h2>
+      <p data-reveal>
+        We may update this Cookie Policy from time to time to reflect changes to our website, technologies, services or legal requirements. Updated versions are marked by the modified date at the top.
+      </p>
+
+      <!-- 10 -->
+      <h2 data-reveal>10 — Questions about cookies?</h2>
+      <p data-reveal>
+        If you have questions about this Cookie Policy or how Wugweb uses cookies and similar technologies, contact us at:
+      </p>
+      <p data-reveal>
+        <a href="mailto:hello@wugweb.com" class="accent-email">hello@wugweb.com</a>
+      </p>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    padding-block: var(--space-section-xl);
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  .static-head {
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--p-6);
+    margin-bottom: var(--gap-10);
+  }
+
+  .legal h1 {
+    font-size: var(--t-h1);
+    margin-block: var(--gap-3) var(--gap-2);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+
+  .legal-updated {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    color: var(--color-text-muted);
+  }
+
+  .legal-quick-links {
+    margin-top: var(--gap-4);
+    display: flex;
+    gap: var(--gap-6);
+  }
+
+  .legal-quick-links a {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-accent-primary);
+    text-decoration: none;
+  }
+
+  .legal-quick-links a:hover {
+    text-decoration: underline;
+  }
+
+  .legal-body h2 {
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-semibold);
+    margin-top: var(--gap-12);
+    margin-bottom: var(--gap-4);
+    color: var(--color-text-primary);
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--p-6);
+  }
+
+  .legal-body p, .legal-body li {
+    font-size: var(--fluid-body-md);
+    line-height: var(--core-line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-4);
+    max-width: 70ch;
+  }
+
+  .legal-body ul {
+    margin-bottom: var(--gap-6);
+    padding-left: var(--p-5);
+  }
+
+  .legal-body li {
+    margin-bottom: var(--gap-2);
+  }
+
+  .legal-body a {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+  }
+
+  .legal-body a:hover {
+    text-decoration: underline;
+  }
+
+  .accent-email {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-body-md);
+    color: var(--color-accent-primary) !important;
+  }
+
+  /* Table styling */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-3);
+    margin-block: var(--gap-6);
+    background-color: var(--neutral-8);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: var(--fluid-body-sm);
+  }
+
+  th, td {
+    padding: var(--p-4) var(--p-5);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  th {
+    background-color: rgba(255, 255, 255, 0.02);
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-muted);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  td code {
+    font-family: var(--font-mono);
+    background-color: var(--color-surface-page);
+    padding: 2px 6px;
+    border-radius: var(--r-1);
+    color: var(--color-text-primary);
+  }
+
+  .cookie-search {
+    width: 100%;
+    padding: var(--p-3) var(--p-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-2);
+    background-color: var(--neutral-8);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--fluid-body-sm);
+    margin-bottom: var(--gap-4);
+  }
+
+  .cookie-search:focus {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+  }
+
+  .cta-block {
+    margin-block: var(--gap-6);
+  }
+</style>
+
+<script>
+  // Simple client-side cookie registry search
+  const cookieSearch = document.getElementById('cookie-search-input') as HTMLInputElement | null;
+  const cookieTable = document.getElementById('cookie-register-table');
+  if (cookieSearch && cookieTable) {
+    const rows = cookieTable.querySelectorAll('tbody tr');
+    cookieSearch.addEventListener('input', () => {
+      const q = cookieSearch.value.toLowerCase().trim();
+      rows.forEach(row => {
+        const rowElement = row as HTMLTableRowElement;
+        const searchTags = rowElement.getAttribute('data-search') || '';
+        if (q === '' || searchTags.toLowerCase().includes(q)) {
+          rowElement.style.display = 'table-row';
+        } else {
+          rowElement.style.display = 'none';
+        }
+      });
+    });
+  }
+</script>

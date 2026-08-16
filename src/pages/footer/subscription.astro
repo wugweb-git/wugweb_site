@@ -2,68 +2,2786 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Subscription" description="Subscribe to Wugweb newsletter for insights on design, product, and digital strategy.">
-  <section class="wrap subscription">
-    <p class="eyebrow" data-reveal>Newsletter</p>
-    <h1 data-reveal>Stay in the loop</h1>
-    <p class="sub-hero" data-reveal>Get insights on design, product, and digital strategy delivered to your inbox. No spam, just thoughtful content.</p>
+<BaseLayout 
+  title="Subscription" 
+  description="Your digital team, on subscription. Strategy, brand, experience, engineering, growth, and operations support."
+  hideGlobalSections={true}
+>
+  <div class="sub-page">
 
-    <form class="sub-form" method="POST" action="/api/subscribe" data-reveal>
-      <div class="form-row">
-        <input type="email" name="email" placeholder="Enter your email" class="sub-input" required autocomplete="email" />
-        <button type="submit" class="btn btn-solid">Subscribe</button>
+    <!-- 01 — HERO -->
+    <section class="hero-section wrap">
+      <div class="hero-content">
+        <span class="eyebrow" data-reveal>SUBSCRIPTION</span>
+        <h1 data-reveal>Your digital team, on subscription.</h1>
+        <p class="hero-lead" data-reveal>
+          Design, technology, strategy and growth support — continuously, without the overhead of hiring another team.
+        </p>
+        
+        <div class="hero-price-box" data-reveal>
+          <div class="price-row">
+            <span class="price-val">₹95,000</span>
+            <span class="price-period">/ month</span>
+          </div>
+          <p class="price-support">
+            One active request · Unlimited queue · Pause anytime · No long-term contract
+          </p>
+        </div>
+
+        <div class="hero-actions" data-reveal>
+          <button class="btn btn-solid trigger-checkout">Start subscription</button>
+          <a href="/contact-us" class="btn btn-ghost">Talk to us</a>
+        </div>
       </div>
-      <p class="sub-note">We respect your privacy. Unsubscribe anytime.</p>
-      {(Astro.url.searchParams.get('subscribed') === '1') && <p class="sub-success" role="status">Thanks — you're on the list. Talk soon.</p>}
-    </form>
-  </section>
+
+      <div class="hero-visual" data-reveal>
+        <div class="queue-panel">
+          <div class="panel-header">
+            <div class="dot-indicators">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="panel-title">REQUEST QUEUE</span>
+          </div>
+          <div class="queue-list" id="hero-queue">
+            <div class="queue-item active" data-index="0">
+              <span class="item-n">01</span>
+              <span class="item-title">Landing page redesign</span>
+              <span class="item-status status-active">● ACTIVE</span>
+            </div>
+            <div class="queue-item" data-index="1">
+              <span class="item-n">02</span>
+              <span class="item-title">Product UX improvements</span>
+              <span class="item-status status-queued">○ QUEUED</span>
+            </div>
+            <div class="queue-item" data-index="2">
+              <span class="item-n">03</span>
+              <span class="item-title">SEO audit</span>
+              <span class="item-status status-queued">○ QUEUED</span>
+            </div>
+            <div class="queue-item" data-index="3">
+              <span class="item-n">04</span>
+              <span class="item-title">CMS improvements</span>
+              <span class="item-status status-queued">○ QUEUED</span>
+            </div>
+            <div class="queue-item" data-index="4">
+              <span class="item-n">05</span>
+              <span class="item-title">Campaign landing page</span>
+              <span class="item-status status-queued">○ QUEUED</span>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <span class="panel-footer-text">Auto-processing simulated workspace</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — HOW IT WORKS -->
+    <section class="how-it-works wrap">
+      <div class="section-header">
+        <span class="eyebrow" data-reveal>HOW IT WORKS</span>
+        <h2 data-reveal>Simple by design.</h2>
+      </div>
+
+      <div class="steps-container">
+        <!-- Step 1 -->
+        <div class="step-card" data-reveal data-step="0">
+          <div class="step-header">
+            <span class="step-num">01</span>
+            <div class="step-icon">
+              <!-- plus/inbox -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <h3>REQUEST</h3>
+          <p class="step-desc">Add as many requests as you need.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card" data-reveal data-step="1">
+          <div class="step-header">
+            <span class="step-num">02</span>
+            <div class="step-icon">
+              <!-- sort/priority -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+          </div>
+          <h3>PRIORITISE</h3>
+          <p class="step-desc">Decide what matters most.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card" data-reveal data-step="2">
+          <div class="step-header">
+            <span class="step-num">03</span>
+            <div class="step-icon">
+              <!-- cursor/tools -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+          </div>
+          <h3>WORK</h3>
+          <p class="step-desc">We work on one active request at a time.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card" data-reveal data-step="3">
+          <div class="step-header">
+            <span class="step-num">04</span>
+            <div class="step-icon">
+              <!-- check/arrow -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+          </div>
+          <h3>DELIVER</h3>
+          <p class="step-desc">Review, refine and move to the next.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — THE CORE RULE -->
+    <section class="core-rule-section wrap">
+      <div class="core-rule-grid">
+        <div class="core-rule-copy" data-reveal>
+          <h2>Unlimited requests.<br>One active request.</h2>
+          <div class="oversized-text">
+            <div class="word-group">
+              <span class="huge-word text-accent">Unlimited</span>
+              <span class="sub-word">requests.</span>
+            </div>
+            <div class="word-group">
+              <span class="huge-word">One</span>
+              <span class="sub-word">active request.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="core-rule-visual" data-reveal>
+          <div class="queue-interactive-panel">
+            <div class="interactive-panel-header">
+              <span>WORK PIPELINE INTERACTIVE DEMO</span>
+              <button class="btn-demo-trigger" id="btn-next-demo">Simulate Next Deliverable</button>
+            </div>
+            <div class="interactive-queue-box" id="interactive-queue-box">
+              <div class="iq-row completed">
+                <span class="iq-status">✓</span>
+                <span class="iq-title">Homepage Launch</span>
+                <span class="iq-tag">COMPLETED</span>
+              </div>
+              <div class="iq-row active" id="iq-active-row">
+                <span class="iq-status">●</span>
+                <span class="iq-title" id="iq-active-title">Product UX Overhaul</span>
+                <span class="iq-tag">ACTIVE</span>
+              </div>
+              <div class="iq-row queued" data-queue-idx="0">
+                <span class="iq-status">○</span>
+                <span class="iq-title">SEO Optimization Audit</span>
+                <span class="iq-tag">QUEUED</span>
+              </div>
+              <div class="iq-row queued" data-queue-idx="1">
+                <span class="iq-status">○</span>
+                <span class="iq-title">Campaign Landing Page</span>
+                <span class="iq-tag">QUEUED</span>
+              </div>
+              <div class="iq-row queued" data-queue-idx="2">
+                <span class="iq-status">○</span>
+                <span class="iq-title">Sanity CMS Integration</span>
+                <span class="iq-tag">QUEUED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — WHAT YOU GET -->
+    <section class="capabilities-section wrap">
+      <div class="section-header">
+        <span class="eyebrow" data-reveal>WHAT YOU GET</span>
+        <h2 data-reveal>One team. Six capabilities.</h2>
+      </div>
+
+      <div class="capabilities-interactive">
+        <div class="capabilities-selector" id="cap-selector" data-reveal>
+          <button class="selector-btn active" data-cap="strategy">STRATEGY</button>
+          <button class="selector-btn" data-cap="brand">BRAND</button>
+          <button class="selector-btn" data-cap="experience">EXPERIENCE</button>
+          <button class="selector-btn" data-cap="engineering">ENGINEERING</button>
+          <button class="selector-btn" data-cap="growth">GROWTH</button>
+          <button class="selector-btn" data-cap="operations">OPERATIONS</button>
+        </div>
+
+        <div class="capabilities-viewport" id="cap-viewport" data-reveal>
+          <div class="cap-content-pane active" id="cap-pane-strategy">
+            <div class="pane-copy">
+              <h3>Strategy Support</h3>
+              <p>Product thinking, audits, roadmaps, research synthesis and strategic problem solving.</p>
+            </div>
+            <div class="pane-visual">
+              <div class="visual-container ratio-4-3">
+                <div class="placeholder-graphic">
+                  <span class="placeholder-tag">STRATEGY FRAMEWORK</span>
+                  <span class="placeholder-desc">Roadmap roadmap outlines, user journey mappings & discovery notes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cap-content-pane" id="cap-pane-brand">
+            <div class="pane-copy">
+              <h3>Brand Support</h3>
+              <p>Brand applications, campaigns, messaging, identity extensions and creative production.</p>
+            </div>
+            <div class="pane-visual">
+              <div class="visual-container ratio-4-3">
+                <div class="placeholder-graphic">
+                  <span class="placeholder-tag">BRAND IDENTITY SYSTEM</span>
+                  <span class="placeholder-desc">Campaign styleguides, vector artwork assets & typography palettes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cap-content-pane" id="cap-pane-experience">
+            <div class="pane-copy">
+              <h3>Experience Support</h3>
+              <p>UX, UI, design systems, prototypes and experience improvements.</p>
+            </div>
+            <div class="pane-visual">
+              <div class="visual-container ratio-4-3">
+                <div class="placeholder-graphic">
+                  <span class="placeholder-tag">INTERFACE WORKSPACE</span>
+                  <span class="placeholder-desc">Figma canvas details, UX components & prototype interactive flows</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cap-content-pane" id="cap-pane-engineering">
+            <div class="pane-copy">
+              <h3>Engineering Support</h3>
+              <p>Web development, CMS, frontend work, integrations and ongoing improvements.</p>
+            </div>
+            <div class="pane-visual">
+              <div class="visual-container ratio-4-3">
+                <div class="placeholder-graphic">
+                  <span class="placeholder-tag">CODEBASE ENVIRONMENT</span>
+                  <span class="placeholder-desc">Vite building streams, API endpoints structure & CSS system styles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cap-content-pane" id="cap-pane-growth">
+            <div class="pane-copy">
+              <h3>Growth Support</h3>
+              <p>SEO, CRO, analytics, landing pages and growth experimentation.</p>
+            </div>
+            <div class="pane-visual">
+              <div class="visual-container ratio-4-3">
+                <div class="placeholder-graphic">
+                  <span class="placeholder-tag">ANALYTICS ENGINE</span>
+                  <span class="placeholder-desc">Conversion metrics funnels, SEO rankings logs & A/B testing stats</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cap-content-pane" id="cap-pane-operations">
+            <div class="pane-copy">
+              <h3>Operations Support</h3>
+              <p>QA, optimisation, maintenance, monitoring and continuous improvement.</p>
+            </div>
+            <div class="pane-visual">
+              <div class="visual-container ratio-4-3">
+                <div class="placeholder-graphic">
+                  <span class="placeholder-tag">WORKFLOW MONITORING</span>
+                  <span class="placeholder-desc">Continuous deployment status pipelines & site health logs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — REQUEST EXPLORER -->
+    <section class="explorer-section wrap">
+      <div class="section-header">
+        <span class="eyebrow" data-reveal>WHAT CAN I REQUEST?</span>
+        <h2 data-reveal>If it moves your digital work forward, it can probably go in the queue.</h2>
+      </div>
+
+      <div class="explorer-container">
+        <!-- Filter Selector -->
+        <div class="explorer-filters" id="explorer-filters" data-reveal>
+          <button class="filter-btn active" data-filter="all">ALL</button>
+          <button class="filter-btn" data-filter="design">DESIGN</button>
+          <button class="filter-btn" data-filter="technology">TECHNOLOGY</button>
+          <button class="filter-btn" data-filter="growth">GROWTH</button>
+          <button class="filter-btn" data-filter="strategy">STRATEGY</button>
+        </div>
+
+        <!-- Requests Grid -->
+        <div class="explorer-grid" id="explorer-grid" data-reveal>
+          <button class="explorer-item" data-category="design" data-id="landing-page">
+            <span>Landing page</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="design" data-id="website-page">
+            <span>Website page</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="design" data-id="ux-improvement">
+            <span>UX improvement</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="design" data-id="ui-screen">
+            <span>UI screen</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="design" data-id="ds-component">
+            <span>Design system component</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="design" data-id="prototype">
+            <span>Prototype</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="technology" data-id="cms-update">
+            <span>CMS update</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="technology" data-id="frontend-feature">
+            <span>Frontend feature</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="technology" data-id="integration">
+            <span>Integration</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="growth" data-id="seo-improvement">
+            <span>SEO improvement</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="growth" data-id="analytics-setup">
+            <span>Analytics setup</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="growth" data-id="campaign-asset">
+            <span>Campaign asset</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="strategy" data-id="product-audit">
+            <span>Product audit</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+          <button class="explorer-item" data-category="growth" data-id="conversion-improvement">
+            <span>Conversion improvement</span>
+            <span class="item-arrow">&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Detail Slide-out Drawer Overlay -->
+      <div class="explorer-drawer-overlay" id="explorer-drawer-overlay">
+        <div class="explorer-drawer" id="explorer-drawer">
+          <div class="drawer-header">
+            <h3 id="drawer-title">Request Type</h3>
+            <button class="btn-close-drawer" id="btn-close-drawer">&times;</button>
+          </div>
+          <div class="drawer-body">
+            <p id="drawer-desc" class="drawer-desc">Description of work goes here.</p>
+            
+            <div class="drawer-meta-section">
+              <h4>Typical output</h4>
+              <p id="drawer-output">UX + UI + responsive design + handoff</p>
+            </div>
+            
+            <div class="drawer-meta-section">
+              <h4>Typical turnaround</h4>
+              <p id="drawer-turnaround">1–3 business days*</p>
+            </div>
+
+            <p class="drawer-disclaimer">*Turnaround depends on complexity and request scope.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 — SPEED -->
+    <section class="speed-section wrap">
+      <div class="speed-inner" data-reveal>
+        <span class="eyebrow">SPEED</span>
+        <h2>Fast by default. Thoughtful when it matters.</h2>
+        
+        <p class="speed-lede">
+          <strong>Most standard requests are delivered within 1–3 business days.</strong>
+        </p>
+        <p class="speed-body">
+          Small, clearly defined requests move quickly. Larger pieces of work are broken into manageable deliverables and progressed sequentially.
+        </p>
+
+        <div class="timeline-visual">
+          <div class="timeline-node">
+            <span class="node-bullet"></span>
+            <h4>REQUEST</h4>
+          </div>
+          <div class="timeline-line"></div>
+          <div class="timeline-node">
+            <span class="node-bullet"></span>
+            <h4>UNDERSTAND</h4>
+          </div>
+          <div class="timeline-line"></div>
+          <div class="timeline-node">
+            <span class="node-bullet"></span>
+            <h4>CREATE</h4>
+          </div>
+          <div class="timeline-line"></div>
+          <div class="timeline-node">
+            <span class="node-bullet"></span>
+            <h4>DELIVER / REVIEW</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — INCLUDED -->
+    <section class="included-section wrap">
+      <div class="included-grid">
+        <div class="included-header" data-reveal>
+          <span class="eyebrow">INCLUDED</span>
+          <h2>Everything you need to keep moving.</h2>
+          <p class="included-lede">
+            One subscription. Multiple capabilities. No need to assemble a different team for every task.
+          </p>
+        </div>
+
+        <div class="included-checklist" data-reveal>
+          <ul>
+            <li><span class="check-mark">✓</span> One active request</li>
+            <li><span class="check-mark">✓</span> Unlimited request queue</li>
+            <li><span class="check-mark">✓</span> Senior Wugweb team</li>
+            <li><span class="check-mark">✓</span> Strategy + Brand + Experience</li>
+            <li><span class="check-mark">✓</span> Engineering + Growth + Operations</li>
+            <li><span class="check-mark">✓</span> Revisions included</li>
+            <li><span class="check-mark">✓</span> Async collaboration</li>
+            <li><span class="check-mark">✓</span> Priority workflow</li>
+            <li><span class="check-mark">✓</span> Pause anytime</li>
+            <li><span class="check-mark">✓</span> No long-term contract</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 — NOT INCLUDED (Boundaries) -->
+    <section class="boundaries-section wrap">
+      <div class="section-header">
+        <span class="eyebrow" data-reveal>THE BOUNDARIES</span>
+        <h2 data-reveal>Some work deserves its own project.</h2>
+      </div>
+
+      <div class="boundaries-accordion" id="boundaries-accordion" data-reveal>
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Large standalone transformations</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Complex visual audits or complete business restructuring fall outside the quick iterative scope of our monthly queue, and are handled as standalone scoped projects.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Complete enterprise platforms</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>High-security portal systems or global database systems requiring custom compliance certification are sized as fixed-scope architectures.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Large mobile applications</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Native Swift/Kotlin application pipelines with specific app store submissions are best served by focused project timelines.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Major migrations</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Migrating multi-tenant databases or millions of system profiles require dedicated sandbox testing environments outside regular subscription iterations.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Full-scale rebrands</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Full rebrand assignments involving global signage, packaging, and guideline releases are scoped as enterprise project work.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Large campaign productions</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>High-end multimedia video shoots or large external advertising layouts with strict deadlines fit project pricing architectures.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Dedicated full-time staffing</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Dedicated developer seats or full-time, 40-hours-a-week standup attendance require traditional client staffing agreements.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Third-party software / production costs</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Subscriptions to CMS systems, web hosting platforms, fonts, assets, and APIs are billed directly to your billing account.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Advertising or media spend</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Payments for Google Ads, Facebook Ads, or LinkedIn sponsored campaigns are funded directly by your campaign balance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="boundaries-footer" data-reveal>
+        <p>These aren't necessarily things we can't do. If something falls outside the subscription model, we'll scope it separately.</p>
+      </div>
+    </section>
+
+    <!-- 09 — PRICING -->
+    <section class="pricing-section wrap">
+      <div class="pricing-card" data-reveal>
+        <span class="pricing-eyebrow">WUGWEB SUBSCRIPTION</span>
+        <div class="pricing-row-main">
+          <span class="price-val">₹95,000</span>
+          <span class="price-period">/ month</span>
+        </div>
+        
+        <ul class="pricing-benefits">
+          <li>One active request</li>
+          <li>Unlimited queue</li>
+          <li>Senior multidisciplinary team</li>
+          <li>Six Wugweb capabilities</li>
+          <li>1–3 business-day target for standard requests</li>
+          <li>Revisions included</li>
+          <li>Pause anytime</li>
+          <li>No long-term contract</li>
+        </ul>
+
+        <div class="pricing-cta-box">
+          <button class="btn btn-solid trigger-checkout">Start subscription</button>
+          <a href="/contact-us" class="btn btn-ghost">Talk to us</a>
+        </div>
+
+        <div class="pricing-footer-link">
+          <span>Need something larger or more specialised?</span>
+          <a href="/contact-us">Talk to us &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 — PAUSE / CANCEL STATUS CONTROLS -->
+    <section class="pause-cancel-section wrap" data-reveal>
+      <div class="pc-inner">
+        <div class="pc-header">
+          <h3>Manage Subscription State</h3>
+          <p>Test the workspace pause and cancellation flow interface directly.</p>
+        </div>
+        <div class="pc-status-display">
+          <span>Current active status: </span>
+          <span class="status-badge" id="workspace-status-badge">ACTIVE</span>
+        </div>
+        <div class="pc-actions">
+          <button class="btn btn-ghost" id="btn-pc-pause">Pause subscription</button>
+          <button class="btn btn-ghost" id="btn-pc-resume" style="display:none;">Resume subscription</button>
+          <button class="btn btn-ghost" id="btn-pc-cancel">Cancel subscription</button>
+        </div>
+        <p class="pc-notice">
+          Your subscription is designed around your workload. Pause when things slow down and resume when you're ready.
+        </p>
+      </div>
+    </section>
+
+    <!-- 14 — FAQ -->
+    <section class="faq-section wrap">
+      <div class="section-header">
+        <span class="eyebrow" data-reveal>FAQ</span>
+        <h2 data-reveal>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-accordion" id="faq-accordion" data-reveal>
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>How does one request at a time work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>You can add as many requests as you need. We work on the highest-priority active request before moving to the next.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Can I submit unlimited requests?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>Yes. Your queue can contain as many requests as you need.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>How quickly will my request be completed?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>Most standard requests are delivered within 1–3 business days. Larger work takes longer and is broken into sequential deliverables.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Can I request development?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>Yes. Engineering is part of the Wugweb subscription.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Can I request strategy?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>Yes, where the work is appropriate for the subscription model.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Are revisions included?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>Yes, within the scope of the active request.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Can I pause?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>Yes. You can pause your subscription at the end of the billing period and resume anytime.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Can I cancel?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>Yes. There is no long-term contract.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>How do we submit requests?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>Through your Wugweb workspace/client portal.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Who works on my requests?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>A senior Wugweb team, with the appropriate specialists involved based on the request.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>What happens with large projects?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>We determine whether the work can be broken into subscription requests. If not, we'll scope it separately.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Can I subscribe from outside India?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-panel">
+            <p>International subscriptions can be supported where payment and billing requirements allow. Keep this answer configurable based on Wugweb's actual payment setup.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 — FINAL CTA -->
+    <section class="final-cta wrap" data-reveal>
+      <div class="final-inner">
+        <h2>Keep your digital work moving.</h2>
+        <p>A senior team across strategy, design, technology and growth — available when you need it.</p>
+        <div class="final-actions">
+          <button class="btn btn-solid trigger-checkout">Start subscription</button>
+          <a href="/contact-us" class="btn btn-ghost">Talk to us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 — PAYMENT GATEWAY MODAL -->
+    <div class="checkout-modal-overlay" id="checkout-modal-overlay">
+      <div class="checkout-modal">
+        <button class="btn-close-modal" id="btn-close-checkout">&times;</button>
+        
+        <!-- STEP A: PLAN CONFIRMATION -->
+        <div class="checkout-step active" id="checkout-step-confirm">
+          <h3>Confirm Subscription Plan</h3>
+          <div class="checkout-plan-summary">
+            <span class="plan-name">WUGWEB SUBSCRIPTION</span>
+            <span class="plan-price">₹95,000 / month</span>
+            <span class="plan-terms">Monthly · Cancel anytime</span>
+          </div>
+          <button class="btn btn-solid w-full" id="btn-confirm-to-billing">Continue to payment</button>
+        </div>
+
+        <!-- STEP B: BILLING DETAILS -->
+        <div class="checkout-step" id="checkout-step-billing">
+          <h3>Billing Information</h3>
+          <form id="billing-form" class="checkout-form">
+            <div class="form-group">
+              <label for="bill-name">Full Name</label>
+              <input type="text" id="bill-name" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="bill-company">Company</label>
+              <input type="text" id="bill-company" required placeholder="Acme Corp">
+            </div>
+            <div class="form-group">
+              <label for="bill-email">Email Address</label>
+              <input type="email" id="bill-email" required placeholder="john@company.com">
+            </div>
+            <div class="form-group">
+              <label for="bill-gst">GSTIN (Optional)</label>
+              <input type="text" id="bill-gst" placeholder="22AAAAA0000A1Z5">
+            </div>
+            <button type="submit" class="btn btn-solid w-full">Proceed to payment</button>
+          </form>
+        </div>
+
+        <!-- STEP C: RAZORPAY PORTAL GATEWAY MOCK -->
+        <div class="checkout-step" id="checkout-step-gateway">
+          <div class="gateway-header">
+            <span class="gateway-logo">Razorpay</span>
+            <span class="gateway-badge">Subscription Gateway</span>
+          </div>
+          <div class="gateway-body">
+            <p>Processing secure payment for Wugweb Subscription.</p>
+            <div class="gateway-amount">₹95,000.00</div>
+            
+            <div class="gateway-methods">
+              <div class="method-row">
+                <input type="radio" name="payment-method" id="pay-upi" checked>
+                <label for="pay-upi">UPI AutoPay (Recommended)</label>
+              </div>
+              <div class="method-row">
+                <input type="radio" name="payment-method" id="pay-card">
+                <label for="pay-card">Saved eMandate Credit / Debit Card</label>
+              </div>
+            </div>
+
+            <button class="btn btn-solid w-full" id="btn-trigger-payment-mock">Authorize AutoPay</button>
+          </div>
+        </div>
+
+        <!-- STEP D: PAYMENT SUCCESS -->
+        <div class="checkout-step" id="checkout-step-success">
+          <div class="success-icon">✓</div>
+          <h2>You're in.</h2>
+          <p>Your Wugweb subscription is active.</p>
+          <div class="success-actions">
+            <div class="success-bullets">
+              <span>✓ Complete onboarding</span>
+              <span>✓ Set up your workspace</span>
+              <span>✓ Add your first request</span>
+            </div>
+            <button class="btn btn-solid w-full" id="btn-start-onboarding">Start onboarding &rarr;</button>
+          </div>
+        </div>
+
+        <!-- STEP E: ONBOARDING WIZARD -->
+        <div class="checkout-step" id="checkout-step-onboarding">
+          <div class="onboarding-header">
+            <h3>Tell us where to start.</h3>
+            <span class="onboarding-progress" id="ob-progress-indicator">Step 1 of 4</span>
+          </div>
+          
+          <div class="onboarding-flow-container">
+            <!-- Onboarding Step 1: Capabilities -->
+            <div class="ob-step active" data-ob-step="1">
+              <p class="ob-question">What do you need help with?</p>
+              <div class="ob-options-grid">
+                <label class="ob-opt"><input type="checkbox" name="ob-cap" value="Design"> Design</label>
+                <label class="ob-opt"><input type="checkbox" name="ob-cap" value="Technology"> Technology</label>
+                <label class="ob-opt"><input type="checkbox" name="ob-cap" value="Strategy"> Strategy</label>
+                <label class="ob-opt"><input type="checkbox" name="ob-cap" value="Growth"> Growth</label>
+                <label class="ob-opt"><input type="checkbox" name="ob-cap" value="Brand"> Brand</label>
+                <label class="ob-opt"><input type="checkbox" name="ob-cap" value="Operations"> Operations</label>
+              </div>
+              <button class="btn btn-solid w-full ob-next-btn">Next Step</button>
+            </div>
+
+            <!-- Onboarding Step 2: First Request -->
+            <div class="ob-step" data-ob-step="2">
+              <p class="ob-question">What's your first request?</p>
+              <textarea class="ob-textarea" id="ob-first-request" placeholder="Describe the request in detail (e.g. Design a high-converting pricing page for our SaaS software)."></textarea>
+              <button class="btn btn-solid w-full ob-next-btn">Next Step</button>
+            </div>
+
+            <!-- Onboarding Step 3: Source contexts -->
+            <div class="ob-step" data-ob-step="3">
+              <p class="ob-question">Where does the work live?</p>
+              <div class="ob-options-grid">
+                <label class="ob-opt"><input type="radio" name="ob-source" value="Website" checked> Website</label>
+                <label class="ob-opt"><input type="radio" name="ob-source" value="Figma"> Figma</label>
+                <label class="ob-opt"><input type="radio" name="ob-source" value="GitHub"> GitHub</label>
+                <label class="ob-opt"><input type="radio" name="ob-source" value="CMS"> CMS</label>
+                <label class="ob-opt"><input type="radio" name="ob-source" value="Other"> Other</label>
+              </div>
+              <button class="btn btn-solid w-full ob-next-btn">Next Step</button>
+            </div>
+
+            <!-- Onboarding Step 4: Who to work with -->
+            <div class="ob-step" data-ob-step="4">
+              <p class="ob-question">Who should we work with?</p>
+              <div class="form-group">
+                <label for="ob-contact-name">Point of Contact Name</label>
+                <input type="text" id="ob-contact-name" required placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label for="ob-contact-email">Point of Contact Email</label>
+                <input type="email" id="ob-contact-email" required placeholder="john@company.com">
+              </div>
+              <button class="btn btn-solid w-full" id="btn-finish-onboarding">Create my workspace &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </BaseLayout>
 
 <style>
-  .subscription {
-    padding-block: var(--space-section-xl);
+  /* ─────────────────────────────────────────────────────────────────────
+     LAYOUT & THEME INTEGRATION
+     ───────────────────────────────────────────────────────────────────── */
+  .sub-page {
+    padding-bottom: var(--space-section-xl);
+    background-color: var(--color-surface-page);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
   }
-  .subscription h1 {
-    font-size: var(--t-h2);
-    margin-block: var(--gap-3) var(--gap-4);
-    max-width: 20ch;
+
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-accent-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--gap-4);
   }
-  .sub-hero {
-    max-width: 55ch;
-    color: var(--fg-muted);
-    margin-bottom: var(--gap-10);
+
+  .section-header {
+    margin-bottom: var(--gap-12);
   }
-  .sub-form {
+
+  .section-header h2 {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.02em;
+    max-width: 25ch;
+    line-height: var(--lh-h2);
+  }
+
+  .w-full {
+    width: 100% !important;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 1 — HERO & QUEUE
+     ───────────────────────────────────────────────────────────────────── */
+  .hero-section {
+    padding-top: calc(var(--space-section-xl) * 1.5);
+    padding-bottom: var(--space-section-lg);
+    display: grid;
+    gap: var(--gap-8);
+    align-items: center;
+  }
+
+  @media (min-width: 992px) {
+    .hero-section {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--gap-12);
+    }
+  }
+
+  .hero-content h1 {
+    font-size: var(--fluid-display);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--lh-display);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--gap-6);
+  }
+
+  .hero-lead {
+    font-size: var(--fluid-body-lg);
+    line-height: var(--lh-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-8);
+    max-width: 48ch;
+  }
+
+  .hero-price-box {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--p-6);
+    border-radius: var(--radius-4);
+    margin-bottom: var(--gap-8);
     max-width: 500px;
   }
-  .form-row {
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--gap-2);
+    margin-bottom: var(--gap-2);
+  }
+
+  .price-val {
+    font-size: var(--fluid-h1);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+
+  .price-period {
+    font-size: var(--fluid-body-md);
+    color: var(--color-text-muted);
+  }
+
+  .price-support {
+    font-size: var(--fluid-caption);
+    color: var(--color-text-secondary);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--gap-4);
+  }
+
+  /* Request Queue UI Panel */
+  .queue-panel {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-5);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .panel-header {
+    background-color: rgba(255, 255, 255, 0.02);
+    padding: var(--p-4) var(--p-6);
+    border-bottom: 1px solid var(--color-border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dot-indicators {
+    display: flex;
+    gap: var(--gap-1);
+  }
+
+  .dot-indicators span {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-border-subtle);
+    border-radius: var(--r-full);
+  }
+
+  .panel-title {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-text-secondary);
+    letter-spacing: var(--tracking-label);
+  }
+
+  .queue-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .queue-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--p-5) var(--p-6);
+    border-bottom: 1px solid var(--color-border-subtle);
+    transition: background-color 0.3s ease;
+  }
+
+  .queue-item:last-child {
+    border-bottom: none;
+  }
+
+  .item-n {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-text-muted);
+    width: 3ch;
+  }
+
+  .item-title {
+    flex-grow: 1;
+    font-size: var(--fluid-body-md);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .item-status {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    letter-spacing: var(--tracking-label);
+  }
+
+  .status-active {
+    color: var(--color-accent-primary);
+  }
+
+  .status-queued {
+    color: var(--color-text-muted);
+  }
+
+  .queue-item.active {
+    background-color: rgba(255, 190, 26, 0.04);
+  }
+
+  .queue-item.active .item-title {
+    color: var(--color-text-primary);
+  }
+
+  .panel-footer {
+    padding: var(--p-3) var(--p-6);
+    background-color: rgba(255, 255, 255, 0.01);
+    border-top: 1px solid var(--color-border-subtle);
+    text-align: center;
+  }
+
+  .panel-footer-text {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-text-muted);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 2 — HOW IT WORKS
+     ───────────────────────────────────────────────────────────────────── */
+  .how-it-works {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .steps-container {
+    display: grid;
+    gap: var(--gap-4);
+  }
+
+  @media (min-width: 768px) {
+    .steps-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .steps-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .step-card {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-4);
+    padding: var(--p-6);
+    transition: border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+  }
+
+  .step-card:hover {
+    border-color: var(--color-accent-primary);
+    transform: translateY(-2px);
+  }
+
+  .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--gap-6);
+  }
+
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+  }
+
+  .step-icon {
+    color: var(--color-accent-primary);
+  }
+
+  .step-card h3 {
+    font-size: var(--fluid-h4);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--gap-2);
+    letter-spacing: 0.05em;
+  }
+
+  .step-desc {
+    font-size: var(--fluid-body-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--lh-body);
+    transition: opacity 0.3s ease;
+  }
+
+  /* Fade others during interaction */
+  .steps-container.has-focus .step-card:not(.focused) {
+    opacity: 0.4;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 3 — CORE RULE & PIPELINE
+     ───────────────────────────────────────────────────────────────────── */
+  .core-rule-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .core-rule-grid {
+    display: grid;
+    gap: var(--gap-8);
+    align-items: center;
+  }
+
+  @media (min-width: 992px) {
+    .core-rule-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-12);
+    }
+  }
+
+  .core-rule-copy h2 {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--gap-8);
+  }
+
+  .oversized-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+  }
+
+  .word-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .huge-word {
+    font-size: clamp(2.5rem, 6.5vw + 0.5rem, 5.5rem);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+
+  .text-accent {
+    color: var(--color-accent-primary);
+  }
+
+  .sub-word {
+    font-size: var(--fluid-body-lg);
+    color: var(--color-text-secondary);
+    margin-top: var(--gap-1);
+  }
+
+  /* Interactive queue simulation visual */
+  .queue-interactive-panel {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-5);
+    padding: var(--p-6);
+  }
+
+  .interactive-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--p-4);
+    margin-bottom: var(--p-4);
+  }
+
+  .interactive-panel-header span {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-text-muted);
+  }
+
+  .btn-demo-trigger {
+    background-color: transparent;
+    border: 1px solid var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    padding: var(--p-1) var(--p-3);
+    font-family: var(--font-body);
+    font-size: var(--fluid-caption);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-2);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .btn-demo-trigger:hover {
+    background-color: var(--color-accent-primary);
+    color: var(--neutral-10);
+  }
+
+  .interactive-queue-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+  }
+
+  .iq-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--p-3) var(--p-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-2);
+    background-color: var(--color-surface-page);
+    transition: all 0.3s ease;
+  }
+
+  .iq-status {
+    width: 2ch;
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .iq-title {
+    flex-grow: 1;
+    font-size: var(--fluid-body-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .iq-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 2px 6px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.02);
+    color: var(--color-text-muted);
+  }
+
+  .iq-row.completed {
+    border-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.01);
+  }
+  .iq-row.completed .iq-status { color: var(--color-text-muted); }
+  .iq-row.completed .iq-title { color: var(--color-text-muted); text-decoration: line-through; }
+
+  .iq-row.active {
+    border-color: var(--color-accent-primary);
+    background-color: rgba(255, 190, 26, 0.02);
+  }
+  .iq-row.active .iq-status { color: var(--color-accent-primary); }
+  .iq-row.active .iq-title { color: var(--color-text-primary); font-weight: var(--font-weight-medium); }
+  .iq-row.active .iq-tag { background-color: var(--color-accent-primary); color: var(--neutral-10); }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 4 — CAPABILITIES SELECTOR
+     ───────────────────────────────────────────────────────────────────── */
+  .capabilities-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .capabilities-interactive {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-8);
+  }
+
+  .capabilities-selector {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--p-3);
+    gap: var(--gap-6);
+    scrollbar-width: none; /* Hide scrollbar for clean UI */
+  }
+
+  .capabilities-selector::-webkit-scrollbar {
+    display: none;
+  }
+
+  .selector-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--tracking-label);
+    cursor: pointer;
+    padding-bottom: var(--p-2);
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.3s;
+  }
+
+  .selector-btn:hover {
+    color: var(--color-text-secondary);
+  }
+
+  .selector-btn.active {
+    color: var(--color-accent-primary);
+  }
+
+  .selector-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent-primary);
+  }
+
+  .capabilities-viewport {
+    position: relative;
+  }
+
+  .cap-content-pane {
+    display: none;
+    grid-template-columns: 1fr;
+    gap: var(--gap-8);
+    align-items: center;
+  }
+
+  .cap-content-pane.active {
+    display: grid;
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  @media (min-width: 992px) {
+    .cap-content-pane {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-12);
+    }
+  }
+
+  .pane-copy h3 {
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--gap-4);
+  }
+
+  .pane-copy p {
+    font-size: var(--fluid-body-lg);
+    line-height: var(--lh-xl);
+    color: var(--color-text-secondary);
+    max-width: 45ch;
+  }
+
+  .pane-visual .visual-container {
+    background-color: var(--neutral-8);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 5 — REQUEST EXPLORER
+     ───────────────────────────────────────────────────────────────────── */
+  .explorer-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .explorer-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-3);
+    margin-bottom: var(--gap-8);
+  }
+
+  .filter-btn {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+    padding: var(--p-3) var(--p-5);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    border-radius: var(--radius-2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-text-secondary);
+  }
+
+  .filter-btn.active {
+    background-color: var(--color-accent-primary);
+    color: var(--neutral-10);
+    border-color: var(--color-accent-primary);
+  }
+
+  .explorer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-3);
+  }
+
+  @media (min-width: 640px) {
+    .explorer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .explorer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .explorer-item {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--p-5) var(--p-6);
+    border-radius: var(--radius-3);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--fluid-body-md);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .explorer-item:hover {
+    border-color: var(--color-accent-primary);
+    transform: translateY(-2px);
+  }
+
+  .item-arrow {
+    color: var(--color-text-muted);
+    transition: transform 0.2s;
+  }
+
+  .explorer-item:hover .item-arrow {
+    transform: translateX(4px);
+    color: var(--color-accent-primary);
+  }
+
+  /* Drawer CSS */
+  .explorer-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+    justify-content: flex-end;
+  }
+
+  .explorer-drawer-overlay.active {
+    display: flex;
+  }
+
+  .explorer-drawer {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--neutral-9);
+    border-left: 1px solid var(--color-border-subtle);
+    padding: var(--p-8);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--p-5);
+    margin-bottom: var(--p-6);
+  }
+
+  .drawer-header h3 {
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .btn-close-drawer {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .drawer-desc {
+    font-size: var(--fluid-body-lg);
+    line-height: var(--lh-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-8);
+  }
+
+  .drawer-meta-section {
+    margin-bottom: var(--gap-6);
+  }
+
+  .drawer-meta-section h4 {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-accent-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--gap-2);
+  }
+
+  .drawer-meta-section p {
+    font-size: var(--fluid-body-md);
+    color: var(--color-text-primary);
+  }
+
+  .drawer-disclaimer {
+    font-size: var(--fluid-caption);
+    color: var(--color-text-muted);
+    margin-top: auto;
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--p-4);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 6 — SPEED TIMELINE
+     ───────────────────────────────────────────────────────────────────── */
+  .speed-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .speed-inner {
+    max-width: 800px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .speed-lede {
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--gap-4);
+  }
+
+  .speed-body {
+    font-size: var(--fluid-body-md);
+    color: var(--color-text-secondary);
+    line-height: var(--lh-body);
+    margin-bottom: var(--gap-10);
+  }
+
+  .timeline-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-4);
+    margin-top: var(--gap-8);
+  }
+
+  @media (min-width: 768px) {
+    .timeline-visual {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+    }
+  }
+
+  .timeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-2);
+    z-index: 2;
+  }
+
+  .node-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-accent-primary);
+    border-radius: var(--r-full);
+  }
+
+  .timeline-node h4 {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-text-secondary);
+  }
+
+  .timeline-line {
+    width: 2px;
+    height: 24px;
+    background-color: var(--color-border-subtle);
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .timeline-line {
+      width: 100%;
+      height: 2px;
+      flex-grow: 1;
+      margin-inline: -10px;
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 7 — INCLUDED & CHECKLIST
+     ───────────────────────────────────────────────────────────────────── */
+  .included-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .included-grid {
+    display: grid;
+    gap: var(--gap-8);
+  }
+
+  @media (min-width: 992px) {
+    .included-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-12);
+      align-items: center;
+    }
+  }
+
+  .included-header h2 {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-semibold);
+    margin-top: var(--gap-4);
+    margin-bottom: var(--gap-6);
+  }
+
+  .included-lede {
+    font-size: var(--fluid-body-lg);
+    line-height: var(--lh-xl);
+    color: var(--color-text-secondary);
+    max-width: 42ch;
+  }
+
+  .included-checklist ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--gap-4);
+  }
+
+  @media (min-width: 640px) {
+    .included-checklist ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .included-checklist li {
+    font-size: var(--fluid-body-md);
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+  }
+
+  .check-mark {
+    color: var(--color-accent-primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 8 — BOUNDARIES ACCORDION
+     ───────────────────────────────────────────────────────────────────── */
+  .boundaries-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .boundaries-accordion, .faq-accordion {
+    max-width: 800px;
+    margin-inline: auto;
+    margin-bottom: var(--gap-8);
+  }
+
+  .accordion-item, .faq-item {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .accordion-header, .faq-header {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--p-5) 0;
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--fluid-body-lg);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .accordion-header:hover, .faq-header:hover {
+    color: var(--color-accent-primary);
+  }
+
+  .accordion-icon, .faq-icon {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    transition: transform 0.3s;
+  }
+
+  .accordion-panel, .faq-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+  }
+
+  .accordion-panel p, .faq-panel p {
+    padding-bottom: var(--p-5);
+    font-size: var(--fluid-body-md);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+    max-width: 70ch;
+  }
+
+  .accordion-item.active .accordion-panel, .faq-item.active .faq-panel {
+    max-height: 1000px;
+    transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+  }
+
+  .accordion-item.active .accordion-icon, .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    color: var(--color-accent-primary);
+  }
+
+  .boundaries-footer {
+    text-align: center;
+    font-size: var(--fluid-body-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--gap-6);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 9 — PRICING
+     ───────────────────────────────────────────────────────────────────── */
+  .pricing-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .pricing-card {
+    background-color: var(--neutral-8);
+    border: 2px solid var(--color-border-subtle);
+    border-radius: var(--radius-5);
+    padding: var(--p-8);
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: border-color 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    border-color: var(--color-accent-primary);
+  }
+
+  .pricing-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-accent-primary);
+  }
+
+  .pricing-row-main {
+    margin-block: var(--gap-4) var(--gap-8);
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: var(--gap-1);
+  }
+
+  .pricing-card .price-val {
+    font-size: clamp(3rem, 5vw + 1rem, 5rem);
+    font-weight: var(--font-weight-extrabold);
+    letter-spacing: -0.02em;
+  }
+
+  .pricing-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--gap-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-3);
+    text-align: left;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .pricing-benefits li {
+    font-size: var(--fluid-body-md);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+  }
+
+  .pricing-benefits li::before {
+    content: '✓';
+    color: var(--color-accent-primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .pricing-cta-box {
+    display: flex;
+    justify-content: center;
+    gap: var(--gap-4);
+    margin-bottom: var(--gap-6);
+  }
+
+  .pricing-footer-link {
+    font-size: var(--fluid-body-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .pricing-footer-link a {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 13 — PAUSE / CANCEL CONTROLS
+     ───────────────────────────────────────────────────────────────────── */
+  .pause-cancel-section {
+    padding-block: var(--space-section-md);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .pc-inner {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-4);
+    padding: var(--p-6) var(--p-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .pc-inner {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      flex-wrap: wrap;
+    }
+  }
+
+  .pc-header h3 {
+    font-size: var(--fluid-h4);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--gap-1);
+  }
+
+  .pc-header p {
+    font-size: var(--fluid-body-sm);
+    color: var(--color-text-muted);
+  }
+
+  .pc-status-display {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-2);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-body-sm);
+  }
+
+  .status-badge {
+    background-color: var(--color-accent-primary);
+    color: var(--neutral-10);
+    padding: 3px 8px;
+    border-radius: var(--r-1);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.05em;
+  }
+
+  .pc-actions {
     display: flex;
     gap: var(--gap-3);
   }
-  .sub-input {
-    flex: 1;
-    padding: var(--gap-3) var(--gap-4);
+
+  .pc-notice {
+    width: 100%;
+    font-size: var(--fluid-caption);
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--p-3);
+    margin-top: var(--gap-1);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 14 — FAQ (ACCORDION)
+     ───────────────────────────────────────────────────────────────────── */
+  .faq-section {
+    padding-block: var(--space-section-xl);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     SECTION 15 — FINAL CTA
+     ───────────────────────────────────────────────────────────────────── */
+  .final-cta {
+    padding-top: var(--space-section-xl);
+    padding-bottom: var(--space-section-md);
+  }
+
+  .final-inner {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-5);
+    padding: var(--p-8) var(--p-6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .final-inner {
+      padding: var(--p-12);
+    }
+  }
+
+  .final-inner h2 {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--gap-4);
+    max-width: 25ch;
+  }
+
+  .final-inner p {
+    font-size: var(--fluid-body-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-8);
+    max-width: 45ch;
+    line-height: var(--lh-xl);
+  }
+
+  .final-actions {
+    display: flex;
+    gap: var(--gap-4);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     PAYMENT GATEWAY / CHECKOUT & ONBOARDING MODAL
+     ───────────────────────────────────────────────────────────────────── */
+  .checkout-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: var(--p-4);
+  }
+
+  .checkout-modal-overlay.active {
+    display: flex;
+  }
+
+  .checkout-modal {
+    background-color: var(--neutral-9);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-5);
+    width: 100%;
+    max-width: 520px;
+    padding: var(--p-8);
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .btn-close-modal {
+    position: absolute;
+    top: var(--p-6);
+    right: var(--p-6);
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 1.75rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+  }
+
+  .checkout-step {
+    display: none;
+  }
+
+  .checkout-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .checkout-step h3 {
+    font-size: var(--fluid-h4);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--gap-6);
+  }
+
+  .checkout-plan-summary {
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--p-6);
+    border-radius: var(--radius-3);
+    margin-bottom: var(--gap-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+  }
+
+  .plan-name {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-accent-primary);
+  }
+
+  .plan-price {
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-extrabold);
+  }
+
+  .plan-terms {
+    font-size: var(--fluid-body-sm);
+    color: var(--color-text-secondary);
+  }
+
+  /* Form layouts */
+  .checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+    margin-bottom: var(--gap-6);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+  }
+
+  .form-group label {
+    font-family: var(--font-body);
+    font-size: var(--fluid-body-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+  }
+
+  .form-group input, .ob-textarea {
+    padding: var(--p-3) var(--p-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-2);
+    background-color: var(--neutral-8);
+    color: var(--color-text-primary);
     font-family: var(--font-body);
     font-size: var(--fluid-body-md);
-    border: var(--stroke-thin) solid var(--line);
-    border-radius: var(--r-2);
-    background: var(--bg);
-    color: var(--fg);
   }
-  .sub-input:focus {
-    outline: 2px solid var(--accent);
+
+  .form-group input:focus, .ob-textarea:focus {
+    outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
   }
-  .sub-note {
-    margin-top: var(--gap-3);
-    font-size: var(--fluid-label);
-    color: var(--fg-muted);
+
+  /* Gateway simulated box */
+  .gateway-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--p-4);
+    margin-bottom: var(--p-6);
   }
-  .sub-success {
-    margin-top: var(--gap-4);
-    color: var(--color-feedback-success);
+
+  .gateway-logo {
+    font-weight: var(--font-weight-bold);
+    color: #2b70f0;
+    font-size: 1.25rem;
+  }
+
+  .gateway-badge {
     font-family: var(--font-mono);
-    font-size: var(--fluid-label);
+    font-size: 10px;
+    background-color: rgba(43, 112, 240, 0.1);
+    color: #2b70f0;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .gateway-amount {
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-bold);
+    margin-block: var(--gap-4);
+    color: var(--color-text-primary);
+  }
+
+  .gateway-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-3);
+    margin-bottom: var(--gap-6);
+  }
+
+  .method-row {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+    padding: var(--p-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-2);
+    cursor: pointer;
+  }
+
+  .method-row label {
+    font-size: var(--fluid-body-md);
+    cursor: pointer;
+  }
+
+  /* Success Screen */
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-feedback-success);
+    color: var(--neutral-10);
+    border-radius: var(--r-full);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    margin-inline: auto;
+    margin-bottom: var(--gap-6);
+  }
+
+  #checkout-step-success h2 {
+    text-align: center;
+    font-size: var(--fluid-h2);
+    margin-bottom: var(--gap-2);
+  }
+
+  #checkout-step-success p {
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--gap-6);
+  }
+
+  .success-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--p-4);
+    border-radius: var(--radius-2);
+    margin-bottom: var(--gap-6);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-body-sm);
+  }
+
+  /* Onboarding wizard */
+  .onboarding-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--p-4);
+    margin-bottom: var(--p-6);
+  }
+
+  .onboarding-progress {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    color: var(--color-accent-primary);
+  }
+
+  .ob-step {
+    display: none;
+    flex-direction: column;
+    gap: var(--gap-6);
+  }
+
+  .ob-step.active {
+    display: flex;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .ob-question {
+    font-size: var(--fluid-body-lg);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .ob-options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-3);
+  }
+
+  @media (min-width: 480px) {
+    .ob-options-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .ob-opt {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+    padding: var(--p-4);
+    background-color: var(--neutral-8);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-2);
+    cursor: pointer;
+    font-size: var(--fluid-body-md);
+  }
+
+  .ob-textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
   }
 </style>
 
+<script>
+  // ─────────────────────────────────────────────────────────────────────
+  // CLIENT PORTAL INTERACTIONS & STEP CONTROLS
+  // ─────────────────────────────────────────────────────────────────────
+  
+  // 1. HERO QUEUE CYCLE ANIMATION
+  const queueElement = document.getElementById('hero-queue');
+  if (queueElement) {
+    const items = queueElement.querySelectorAll('.queue-item');
+    let currentIndex = 0;
+
+    setInterval(() => {
+      // Deactivate current active
+      const currentItem = items[currentIndex];
+      currentItem.classList.remove('active');
+      const currentStatus = currentItem.querySelector('.item-status');
+      if (currentStatus) {
+        currentStatus.textContent = '○ COMPLETED';
+        currentStatus.className = 'item-status status-queued';
+      }
+
+      // Promote next
+      currentIndex = (currentIndex + 1) % items.length;
+      const nextItem = items[currentIndex];
+      nextItem.classList.add('active');
+      const nextStatus = nextItem.querySelector('.item-status');
+      if (nextStatus) {
+        nextStatus.textContent = '● ACTIVE';
+        nextStatus.className = 'item-status status-active';
+      }
+    }, 4500);
+  }
+
+  // 2. HOW IT WORKS CARD FOCUS FADING
+  const stepCards = document.querySelectorAll('.step-card');
+  const stepsContainer = document.querySelector('.steps-container');
+  if (stepsContainer && stepCards.length) {
+    stepCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        stepsContainer.classList.add('has-focus');
+        card.classList.add('focused');
+      });
+      card.addEventListener('mouseleave', () => {
+        stepsContainer.classList.remove('has-focus');
+        card.classList.remove('focused');
+      });
+    });
+  }
+
+  // 3. CORE RULE INTERACTIVE DEMO PIPELINE
+  const btnNextDemo = document.getElementById('btn-next-demo');
+  const iqActiveTitle = document.getElementById('iq-active-title');
+  const iqActiveRow = document.getElementById('iq-active-row');
+  const interactiveQueueBox = document.getElementById('interactive-queue-box');
+  
+  const upcomingDemoTasks = [
+    'Sanity CMS Integration',
+    'Figma Guidelines Exports',
+    'Google Analytics Setup',
+    'CRO Landing Testing',
+    'Operations Monitoring Setup'
+  ];
+  let demoIdx = 0;
+
+  if (btnNextDemo && iqActiveTitle && iqActiveRow && interactiveQueueBox) {
+    btnNextDemo.addEventListener('click', () => {
+      // 1. Convert current active row to completed row
+      const oldTitle = iqActiveTitle.textContent;
+      
+      const completedRow = document.createElement('div');
+      completedRow.className = 'iq-row completed';
+      completedRow.innerHTML = `
+        <span class="iq-status">✓</span>
+        <span class="iq-title">${oldTitle}</span>
+        <span class="iq-tag">COMPLETED</span>
+      `;
+      interactiveQueueBox.insertBefore(completedRow, iqActiveRow);
+
+      // 2. Shift next queued row to active
+      const nextQueuedRow = interactiveQueueBox.querySelector('.iq-row.queued');
+      if (nextQueuedRow) {
+        const nextTitle = nextQueuedRow.querySelector('.iq-title').textContent;
+        iqActiveTitle.textContent = nextTitle;
+        nextQueuedRow.remove();
+      } else {
+        iqActiveTitle.textContent = upcomingDemoTasks[demoIdx % upcomingDemoTasks.length];
+        demoIdx++;
+      }
+
+      // 3. Add a new item to the bottom of the queue
+      const newQueuedRow = document.createElement('div');
+      newQueuedRow.className = 'iq-row queued';
+      newQueuedRow.innerHTML = `
+        <span class="iq-status">○</span>
+        <span class="iq-title">${upcomingDemoTasks[(demoIdx + 2) % upcomingDemoTasks.length]}</span>
+        <span class="iq-tag">QUEUED</span>
+      `;
+      interactiveQueueBox.appendChild(newQueuedRow);
+    });
+  }
+
+  // 4. WHAT YOU GET - CAPABILITY SELECTION
+  const capSelector = document.getElementById('cap-selector');
+  const capPanes = document.querySelectorAll('.cap-content-pane');
+  if (capSelector && capPanes.length) {
+    const buttons = capSelector.querySelectorAll('.selector-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const targetCap = btn.getAttribute('data-cap');
+        capPanes.forEach(pane => {
+          pane.classList.remove('active');
+          if (pane.id === `cap-pane-${targetCap}`) {
+            pane.classList.add('active');
+          }
+        });
+      });
+    });
+  }
+
+  // 5. REQUEST EXPLORER FILTERS & DRAWERS
+  const explorerFilters = document.getElementById('explorer-filters');
+  const explorerGrid = document.getElementById('explorer-grid');
+  if (explorerFilters && explorerGrid) {
+    const filterButtons = explorerFilters.querySelectorAll('.filter-btn');
+    const items = explorerGrid.querySelectorAll('.explorer-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterVal = btn.getAttribute('data-filter');
+        items.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (filterVal === 'all' || category === filterVal) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Request descriptions master config
+  const requestDetails = {
+    'landing-page': {
+      title: 'Landing page redesign',
+      desc: 'Design or improve a high-converting campaign, product or marketing landing page to maximize leads.',
+      output: 'UX + UI wireframe + responsive design mockup + Figma handover files'
+    },
+    'website-page': {
+      title: 'Website page design',
+      desc: 'Add brand new subpages, services pages or features descriptions pages inline with your website stylesheet.',
+      output: 'Responsive page designs + Figma system tokens link + developer notes'
+    },
+    'ux-improvement': {
+      title: 'UX improvement integration',
+      desc: 'Conduct localized UX reviews and modify user journeys, sign-up forms, and onboarding flows.',
+      output: 'Detailed UX critique report + interactive prototypes + flow diagrams'
+    },
+    'ui-screen': {
+      title: 'UI screen layout',
+      desc: 'Complete dashboard interfaces or software views designed matching clean dark/light themes.',
+      output: 'High fidelity UI screens outputs + design specifications notes'
+    },
+    'ds-component': {
+      title: 'Design system component',
+      desc: 'Create, update or modularize button components, form inputs, sliders or layout grids inside Figma.',
+      output: 'Figma component library link + variants system configured'
+    },
+    'prototype': {
+      title: 'Interactive prototype',
+      desc: 'Build functional Figma flow prototypes to pitch features or execute usability reviews.',
+      output: 'Figma clickable prototype link + transition flows mapping'
+    },
+    'cms-update': {
+      title: 'CMS schema update',
+      desc: 'Modify Sanity schemas, configure content blocks, add landing structures or build custom sections fields.',
+      output: 'Sanity Studio schemas push + database migration script'
+    },
+    'frontend-feature': {
+      title: 'Frontend web feature',
+      desc: 'Implement responsive React/Astro views, write CSS layouts, or build custom animation wrappers.',
+      output: 'Tested, production-ready code pull request'
+    },
+    'integration': {
+      title: 'API / Platform Integration',
+      desc: 'Connect databases, email platforms, webhooks or payment processors into your backend systems.',
+      output: 'API logic implementation + webhook handler scripts + tests'
+    },
+    'seo-improvement': {
+      title: 'SEO audit and fix',
+      desc: 'Optimize meta tags, configure structured JSON-LD schemas, increase speed metrics and verify sitemap.',
+      output: 'Google Search Console review + fixes deployment'
+    },
+    'analytics-setup': {
+      title: 'Analytics tracking setup',
+      desc: 'Configure Google Tag Manager events, setup GA4 conversion funnels or connect posthog tracking.',
+      output: 'Tags and triggers implementation audit + dashboard custom reports'
+    },
+    'campaign-asset': {
+      title: 'Digital campaign asset',
+      desc: 'Produce social media layouts, marketing banners, or custom campaign assets.',
+      output: 'Optimized SVG/PNG outputs + creative sources Figma links'
+    },
+    'product-audit': {
+      title: 'Digital product audit',
+      desc: 'Verify design compliance, check console bugs, inspect speed load benchmarks and outline fixes.',
+      output: 'Comprehensive digital performance and design review PDF'
+    },
+    'conversion-improvement': {
+      title: 'Conversion CRO review',
+      desc: 'Implement localized A/B testing variations, streamline checkout gates, and optimize CTA weights.',
+      output: 'CRO fixes recommendations + alternative UI assets'
+    }
+  };
+
+  const drawerOverlay = document.getElementById('explorer-drawer-overlay');
+  const drawerTitle = document.getElementById('drawer-title');
+  const drawerDesc = document.getElementById('drawer-desc');
+  const drawerOutput = document.getElementById('drawer-output');
+  const btnCloseDrawer = document.getElementById('btn-close-drawer');
+
+  if (explorerGrid && drawerOverlay && drawerTitle && drawerDesc && drawerOutput && btnCloseDrawer) {
+    const items = explorerGrid.querySelectorAll('.explorer-item');
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const id = item.getAttribute('data-id');
+        const detail = requestDetails[id];
+        if (detail) {
+          drawerTitle.textContent = detail.title;
+          drawerDesc.textContent = detail.desc;
+          drawerOutput.textContent = detail.output;
+          drawerOverlay.classList.add('active');
+        }
+      });
+    });
+
+    const closeDrawer = () => {
+      drawerOverlay.classList.remove('active');
+    };
+
+    btnCloseDrawer.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', (e) => {
+      if (e.target === drawerOverlay) closeDrawer();
+    });
+  }
+
+  // 6. ACCORDION PANELS (Boundaries & FAQ)
+  const setupAccordion = (containerId) => {
+    const container = document.getElementById(containerId);
+    if (container) {
+      const items = container.querySelectorAll('.accordion-item, .faq-item');
+      items.forEach(item => {
+        const header = item.querySelector('.accordion-header, .faq-header');
+        if (header) {
+          header.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            // Close all
+            items.forEach(i => i.classList.remove('active'));
+            // Toggle clicked
+            if (!isActive) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+  };
+  setupAccordion('boundaries-accordion');
+  setupAccordion('faq-accordion');
+
+  // 7. CHECKOUT & ONBOARDING MODAL FLOW SYSTEM
+  const checkoutOverlay = document.getElementById('checkout-modal-overlay');
+  const triggerButtons = document.querySelectorAll('.trigger-checkout');
+  const btnCloseCheckout = document.getElementById('btn-close-checkout');
+
+  // Steps
+  const stepConfirm = document.getElementById('checkout-step-confirm');
+  const stepBilling = document.getElementById('checkout-step-billing');
+  const stepGateway = document.getElementById('checkout-step-gateway');
+  const stepSuccess = document.getElementById('checkout-step-success');
+  const stepOnboarding = document.getElementById('checkout-step-onboarding');
+
+  const showStep = (targetStep) => {
+    const steps = [stepConfirm, stepBilling, stepGateway, stepSuccess, stepOnboarding];
+    steps.forEach(step => {
+      if (step) step.classList.remove('active');
+    });
+    if (targetStep) targetStep.classList.add('active');
+  };
+
+  if (checkoutOverlay && triggerButtons.length && btnCloseCheckout) {
+    triggerButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        checkoutOverlay.classList.add('active');
+        showStep(stepConfirm);
+      });
+    });
+
+    const closeModal = () => {
+      checkoutOverlay.classList.remove('active');
+    };
+
+    btnCloseCheckout.addEventListener('click', closeModal);
+    checkoutOverlay.addEventListener('click', (e) => {
+      if (e.target === checkoutOverlay) closeModal();
+    });
+
+    // Plan Confirm &rarr; Billing Form
+    const btnConfirmToBilling = document.getElementById('btn-confirm-to-billing');
+    if (btnConfirmToBilling && stepBilling) {
+      btnConfirmToBilling.addEventListener('click', () => {
+        showStep(stepBilling);
+      });
+    }
+
+    // Billing Form Submit &rarr; Razorpay Gateway
+    const billingForm = document.getElementById('billing-form');
+    if (billingForm && stepGateway) {
+      billingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showStep(stepGateway);
+      });
+    }
+
+    // Razorpay Authorization &rarr; Success Screen
+    const btnPaymentMock = document.getElementById('btn-trigger-payment-mock');
+    if (btnPaymentMock && stepSuccess) {
+      btnPaymentMock.addEventListener('click', () => {
+        showStep(stepSuccess);
+        
+        // Mark subscription status as active
+        const statusBadge = document.getElementById('workspace-status-badge');
+        if (statusBadge) {
+          statusBadge.textContent = 'ACTIVE';
+          statusBadge.style.backgroundColor = 'var(--color-accent-primary)';
+          statusBadge.style.color = 'var(--neutral-10)';
+        }
+      });
+    }
+
+    // Success Screen &rarr; Onboarding Wizard
+    const btnStartOnboarding = document.getElementById('btn-start-onboarding');
+    if (btnStartOnboarding && stepOnboarding) {
+      btnStartOnboarding.addEventListener('click', () => {
+        showStep(stepOnboarding);
+        showObStep(1);
+      });
+    }
+  }
+
+  // 8. ONBOARDING WIZARD STEPS
+  const onboardingContainer = document.getElementById('checkout-step-onboarding');
+  const obSteps = onboardingContainer ? onboardingContainer.querySelectorAll('.ob-step') : [];
+  const progressIndicator = document.getElementById('ob-progress-indicator');
+
+  const showObStep = (stepNum) => {
+    obSteps.forEach(step => {
+      step.classList.remove('active');
+      if (Number(step.getAttribute('data-ob-step')) === stepNum) {
+        step.classList.add('active');
+      }
+    });
+    if (progressIndicator) {
+      progressIndicator.textContent = `Step ${stepNum} of 4`;
+    }
+  };
+
+  if (onboardingContainer && obSteps.length) {
+    // Next buttons logic for step 1, 2, 3
+    const nextButtons = onboardingContainer.querySelectorAll('.ob-next-btn');
+    nextButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const currentActiveStep = onboardingContainer.querySelector('.ob-step.active');
+        if (currentActiveStep) {
+          const currentNum = Number(currentActiveStep.getAttribute('data-ob-step'));
+          if (currentNum < 4) {
+            showObStep(currentNum + 1);
+          }
+        }
+      });
+    });
+
+    // Finish step 4 onboarding &rarr; Close and notification
+    const btnFinishOnboarding = document.getElementById('btn-finish-onboarding');
+    if (btnFinishOnboarding) {
+      btnFinishOnboarding.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Workspace created successfully! We will contact you at your registered email address shortly.');
+        checkoutOverlay.classList.remove('active');
+      });
+    }
+  }
+
+  // 9. PAUSE & CANCEL SETTINGS MANAGEMENT INTERFACE
+  const btnPause = document.getElementById('btn-pc-pause');
+  const btnResume = document.getElementById('btn-pc-resume');
+  const btnCancel = document.getElementById('btn-pc-cancel');
+  const statusBadge = document.getElementById('workspace-status-badge');
+
+  if (btnPause && btnResume && btnCancel && statusBadge) {
+    btnPause.addEventListener('click', () => {
+      statusBadge.textContent = 'PAUSED';
+      statusBadge.style.backgroundColor = 'var(--neutral-6)';
+      statusBadge.style.color = 'var(--color-text-secondary)';
+      btnPause.style.display = 'none';
+      btnResume.style.display = 'inline-block';
+      alert('Subscription paused successfully.');
+    });
+
+    btnResume.addEventListener('click', () => {
+      statusBadge.textContent = 'ACTIVE';
+      statusBadge.style.backgroundColor = 'var(--color-accent-primary)';
+      statusBadge.style.color = 'var(--neutral-10)';
+      btnResume.style.display = 'none';
+      btnPause.style.display = 'inline-block';
+      alert('Subscription active.');
+    });
+
+    btnCancel.addEventListener('click', () => {
+      if (confirm('Are you sure you want to cancel your subscription?')) {
+        statusBadge.textContent = 'CANCELLED';
+        statusBadge.style.backgroundColor = 'var(--color-feedback-error)';
+        statusBadge.style.color = 'var(--color-surface-inverse)';
+        btnPause.style.display = 'none';
+        btnResume.style.display = 'inline-block';
+        alert('Subscription scheduled for cancellation.');
+      }
+    });
+  }
+</script>

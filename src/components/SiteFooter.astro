@@ -8,8 +8,10 @@ const footerLinks = [
   { href: '/footer/subscription', label: 'Subscription' },
   { href: '/footer/sitemap', label: 'Sitemap' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/footer/cookie-policy', label: 'Cookie Policy' },
   { href: '/termsofuse', label: 'Terms of Use' },
-  { href: '/refund-policy', label: 'Refund Policy' },
+  { href: '/footer/refund-policy', label: 'Refund Policy' },
+  { href: '#', label: 'Cookie Settings', isAction: true },
 ];
 ---
 
@@ -24,7 +26,11 @@ const footerLinks = [
     <p class="footer-copy">{copyright || '© 2020–2026 Wugweb. All rights reserved.'}</p>
     <div class="footer-links">
       {footerLinks.map((l) => (
-        <a href={l.href}>{l.label}</a>
+        l.isAction ? (
+          <button class="footer-action-btn" id="btn-footer-cookie-settings">{l.label}</button>
+        ) : (
+          <a href={l.href}>{l.label}</a>
+        )
       ))}
     </div>
   </div>
@@ -77,12 +83,19 @@ const footerLinks = [
     gap: var(--gap-4) var(--gap-6);
   }
 
-  .footer-links a {
+  .footer-links a, .footer-action-btn {
     text-decoration: none;
     color: var(--fg-muted);
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    transition: color 0.2s ease;
   }
 
-  .footer-links a:hover {
+  .footer-links a:hover, .footer-action-btn:hover {
     color: var(--fg);
   }
 </style>
