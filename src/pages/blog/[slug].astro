@@ -40,16 +40,10 @@ const toc = (post.body || [])
   .map((b: any) => ({ style: b.style, text: b.children?.map((c: any) => c.text).join('') || '' }))
   .filter((b: any) => (b.style === 'h2' || b.style === 'h3') && b.text);
 
-// Related articles — same category first, then fill with recent.
+// Fetch featured case studies for recommendations instead of more post blocks.
+const caseStudies = await sanityClient.fetch(`*[_type == "caseStudy"]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`).catch(() => []);
+const featuredCases = caseStudies.slice(0, 2);
 const allPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
-const related = (allPosts as any[])
-  .filter((p: any) => p.slug !== slug)
-  .sort((a: any, b: any) => {
-    const aMatch = a.category === post.category ? 1 : 0;
-    const bMatch = b.category === post.category ? 1 : 0;
-    return bMatch - aMatch || new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime();
-  })
-  .slice(0, 3);
 
 // Prev / next by publishedAt.
 const sorted = [...(allPosts as any[])]
@@ -175,17 +169,37 @@ const shareLinks = [
       </nav>
     )}
 
-    {related.length > 0 && (
+    {featuredCases.length > 0 && (
       <section class="article-related">
-        <h2>Related articles</h2>
-        <div class="related-grid">
-          {related.map((r: any) => (
-            <a href={`/blog/${r.slug}`} class="glass-panel related-card">
-              <div class="card-glow"></div>
-              <h3>{r.title}</h3>
-              {r.category && <p>{r.category}</p>}
-            </a>
-          ))}
+        <div class="related-cases-head">
+          <h2>Featured Case Studies</h2>
+          <a href="/work" class="btn btn-ghost">View all work</a>
+        </div>
+        <div class="related-cases-grid">
+          {featuredCases.map((c: any) => {
+            const assetUrl = (path: string) => {
+              if (!path) return '';
+              return path.startsWith('/') || path.startsWith('http') ? path : `/${path}`;
+            };
+            const cCover = c.coverPath ? assetUrl(c.coverPath) : (c.thumbnailPath ? assetUrl(c.thumbnailPath) : '');
+            return (
+              <a href={`/work/${c.slug || ''}`} class="glass-panel related-case-card">
+                <div class="card-glow"></div>
+                {cCover && (
+                  <div class="related-case-visual">
+                    {cCover.endsWith('.mp4') || cCover.endsWith('.webm')
+                      ? <video src={cCover} muted loop playsinline autoplay preload="none"></video>
+                      : <img src={cCover} alt="" loading="lazy" />}
+                  </div>
+                )}
+                <div class="related-case-content">
+                  <span class="related-case-client">{c.client}</span>
+                  <h3>{c.title}</h3>
+                  {c.disciplines?.length > 0 && <span class="related-case-discipline">{c.disciplines.join(', ')}</span>}
+                </div>
+              </a>
+            );
+          })}
         </div>
       </section>
     )}
@@ -287,14 +301,19 @@ const shareLinks = [
   .pn-placeholder { visibility: hidden; }
 
   .article-related { margin-top: var(--gap-12); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
-  .article-related h2 { font-size: var(--t-h3); margin-bottom: var(--gap-6); color: var(--fg); }
-  .related-grid { display: grid; gap: var(--gap-4); grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
-  .related-card { text-decoration: none; padding: var(--gap-5); display: block; }
-  .related-card * { position: relative; z-index: 1; }
-  .related-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); }
-  .related-card p { margin-top: var(--gap-2); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
-  .related-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); }
+  .related-cases-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--gap-6); }
+  .related-cases-head h2 { font-size: var(--t-h3); margin: 0; color: var(--fg); }
+  .related-cases-grid { display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .related-cases-grid { grid-template-columns: repeat(2, 1fr); } }
+  .related-case-card { text-decoration: none; display: flex; flex-direction: column; height: 100%; border-radius: var(--radius-xl); overflow: hidden; }
+  .related-case-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); }
+  .related-case-visual { width: 100%; height: 200px; overflow: hidden; position: relative; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--neutral-10) 20%, transparent); }
+  .related-case-visual img, .related-case-visual video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .related-case-card:hover .related-case-visual img, .related-case-card:hover .related-case-visual video { transform: scale(1.04); }
+  .related-case-content { padding: var(--gap-5) var(--gap-6) var(--gap-6); display: flex; flex-direction: column; gap: var(--gap-2); position: relative; z-index: 1; }
+  .related-case-client { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent-primary); }
+  .related-case-card h3 { font-size: var(--t-h4); font-weight: var(--font-weight-bold); color: var(--fg); margin: 0; line-height: var(--core-line-height-tight); }
+  .related-case-discipline { font-size: var(--fluid-body-sm); color: var(--fg-muted); margin-top: var(--gap-1); }
 </style>
 
 <script>
