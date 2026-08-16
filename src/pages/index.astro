@@ -182,6 +182,7 @@ const industries = (sanityIndustries as string[]).length
     <ol class="service-cards">
       {teaserServices.map((s) => (
         <li class="service-card" data-reveal>
+          <div class="card-glow"></div>
           <div class="service-card-media">
             <video muted loop playsinline preload="none" src={s.video}>
               <source src={s.video} type="video/mp4" />
@@ -432,7 +433,20 @@ const industries = (sanityIndustries as string[]).length
     border-radius: var(--radius-lg);
     padding: var(--gap-3) var(--gap-3) var(--s-1);
     min-height: var(--thumb-min);
+    overflow: hidden;
     transition: background var(--duration-normal) var(--easing-out), transform var(--duration-normal) var(--easing-out);
+  }
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 220px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--color-accent-primary) 10%, transparent) 0%, transparent 85%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .service-card:hover .card-glow {
+    opacity: 1;
   }
   .service-card:hover { transform: translateY(-4px); }
   .service-card.is-open { background: var(--surface-2); }
@@ -703,4 +717,25 @@ const industries = (sanityIndustries as string[]).length
       card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
     });
   });
+
+  // Mouse tracking card glow animation for service cards on homepage
+  const initServiceGlows = () => {
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach((card) => {
+      const glow = card.querySelector('.card-glow') as HTMLElement | null;
+      if (!glow) return;
+      
+      card.addEventListener('mousemove', (e: Event) => {
+        const me = e as MouseEvent;
+        const rect = card.getBoundingClientRect();
+        const x = me.clientX - rect.left;
+        const y = me.clientY - rect.top;
+        glow.style.setProperty('--mouse-x', `${x}px`);
+        glow.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  };
+
+  initServiceGlows();
+  document.addEventListener('astro:page-load', initServiceGlows);
 </script>
