@@ -69,11 +69,36 @@ const shareLinks = [
     <p class="eyebrow"><a href="/blog">Blog</a></p>
     <h1>{post.title}</h1>
     <div class="article-meta">
-      {post.category && <span class="article-category">{post.category}</span>}
-      {authorName && <span>{authorName}</span>}
-      {readTime && <span>{readTime}</span>}
-      {pubDate && <span>{pubDate}</span>}
-      {isUpdated && <span class="article-updated">Updated {updatedAt}</span>}
+      {post.category && (
+        <span class="article-meta-item article-category">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+          {post.category}
+        </span>
+      )}
+      {authorName && (
+        <span class="article-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          {authorName}
+        </span>
+      )}
+      {readTime && (
+        <span class="article-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          {readTime}
+        </span>
+      )}
+      {pubDate && (
+        <span class="article-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          {pubDate}
+        </span>
+      )}
+      {isUpdated && (
+        <span class="article-meta-item article-updated">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+          Updated {updatedAt}
+        </span>
+      )}
     </div>
     {post.excerpt && <p class="article-intro">{post.excerpt}</p>}
 
@@ -241,7 +266,10 @@ const shareLinks = [
   .article .eyebrow a:hover { color: var(--fg); }
   .article h1 { font-size: var(--t-h2); margin-top: var(--gap-3); line-height: var(--core-line-height-tight); color: var(--fg); }
   .article-meta { display: flex; flex-wrap: wrap; gap: var(--gap-3) var(--gap-6); margin-top: var(--gap-5); font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-muted); }
+  .article-meta-item { display: inline-flex; align-items: center; gap: var(--gap-2); }
+  .meta-icon { color: var(--fg-muted); opacity: 0.6; flex-shrink: 0; }
   .article-category { color: var(--color-accent-primary); }
+  .article-category .meta-icon { color: var(--color-accent-primary); opacity: 1; }
   .article-intro { font-size: var(--t-lead); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-7); color: var(--fg); border-left: 2px solid var(--color-accent-primary); padding-left: var(--gap-6); }
   
   .article-cover { margin: var(--gap-10) 0 0; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--line); transition: transform 0.4s ease; }
