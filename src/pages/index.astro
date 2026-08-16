@@ -303,6 +303,73 @@ const industries = (sanityIndustries as string[]).length
     </ul>
   </section>
 
+  <!-- INDUSTRIES WE EMPOWER -->
+  <section class="industries-section" data-scroll="rise">
+    <div class="wrap industries-head">
+      <p class="eyebrow" data-reveal>Industries We Empower</p>
+      <h2 data-reveal>We understand the context behind the product.</h2>
+      <p data-reveal>From regulated sectors to fast-moving consumer markets, our experience spans industries that demand precision and creativity in equal measure.</p>
+    </div>
+    <div class="industries-marquee-wrap" aria-hidden="true">
+      <div class="industries-marquee">
+        {[...industries, ...industries].map((ind) => (
+          <span class="ind-pill">{ind}</span>
+        ))}
+      </div>
+    </div>
+    <div class="wrap">
+      <a href="/footer/industries" class="btn btn-ghost" data-reveal>Explore All Industries</a>
+    </div>
+  </section>
+
+  <!-- BLOG TEASER -->
+  {sanityPosts.length > 0 && (
+    <section class="wrap blog-teaser" data-scroll="rise">
+      <div class="blog-teaser-head">
+        <div>
+          <p class="eyebrow" data-reveal>Insights</p>
+          <h2 data-reveal>Thoughts on design, product, and strategy</h2>
+        </div>
+        <a href="/blog" class="btn btn-ghost" data-reveal>View all articles</a>
+      </div>
+      <div class="blog-teaser-grid">
+        {sanityPosts.slice(0, 3).map((p: any, i: number) => {
+          const coverSrc = p.coverPath
+            ? (p.coverPath.startsWith('/') || p.coverPath.startsWith('http') ? p.coverPath : `/${p.coverPath}`)
+            : '';
+          return (
+            <a href={`/blog/${p.slug}`} class:list={['blog-teaser-card', { 'blog-teaser-card--featured': i === 0 }]} data-reveal>
+              {coverSrc && (
+                <div class="btc-media">
+                  <img src={coverSrc} alt={p.title} loading="lazy" />
+                </div>
+              )}
+              <div class="btc-content">
+                {p.category && <span class="btc-cat">{p.category}</span>}
+                <h3>{p.title}</h3>
+                {p.excerpt && <p class="btc-excerpt">{p.excerpt}</p>}
+                <div class="btc-meta">
+                  {p.author?.name && <span>{p.author.name}</span>}
+                  {p.readingTime && <span>{p.readingTime} min read</span>}
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+  <!-- CLOSING CTA -->
+  <section class="wrap closing-cta" data-scroll="rise">
+    <p class="eyebrow" data-reveal>Ready to build?</p>
+    <h2 data-reveal>Let's create something extraordinary together.</h2>
+    <p data-reveal>We partner with ambitious brands to create experiences that move people and move markets.</p>
+    <div data-reveal>
+      <a href="/contact-us" class="btn btn-solid">Start a Project</a>
+    </div>
+  </section>
+
 </BaseLayout>
 
 <style>
@@ -598,25 +665,188 @@ const industries = (sanityIndustries as string[]).length
   .logo-grid { list-style: none; margin: var(--gap-8) 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-10); }
   .logo-grid img { height: var(--logo-grid-h); width: auto; filter: grayscale(1) brightness(1.6); opacity: var(--opacity-soft); }
 
-  .industries { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .industries h2 { font-size: var(--t-h3); max-width: 18ch; }
-  .industries p { margin-top: var(--gap-5); max-width: 55ch; }
-  .industries .btn { margin-top: var(--gap-6); }
-  .industry-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: var(--stroke-thin) solid var(--line); }
-  @media (min-width: 640px) { .industry-grid { grid-template-columns: repeat(4, 1fr); } }
-  .industry-grid li { background: var(--bg); padding: var(--gap-6); font-family: var(--font-mono); font-size: var(--t-sm); }
+  /* ── Industries We Empower ── */
+  .industries-section {
+    padding-block: var(--space-section-xl);
+    border-top: var(--stroke-thin) solid var(--line);
+    overflow: hidden;
+  }
+  .industries-head {
+    margin-bottom: var(--gap-12);
+  }
+  .industries-head h2 { font-size: var(--t-h3); max-width: 20ch; margin-top: var(--gap-4); }
+  .industries-head p { margin-top: var(--gap-5); max-width: 55ch; color: var(--fg-muted); }
+  .industries-head .btn { margin-top: var(--gap-6); }
 
-  .blog-teaser { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .blog-teaser ul { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-6); }
-  @media (min-width: 768px) { .blog-teaser ul { grid-template-columns: repeat(3, 1fr); } }
-  .blog-teaser li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
-  .blog-teaser .eyebrow { display: block; margin-bottom: var(--gap-2); }
-  .blog-teaser a { text-decoration: none; color: var(--fg); font-size: var(--t-l); }
+  .industries-marquee-wrap {
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--gap-6);
+    margin-bottom: var(--gap-10);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
 
+  .industries-marquee {
+    display: flex;
+    gap: var(--gap-4);
+    width: max-content;
+    animation: marquee-scroll 30s linear infinite;
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .industries-marquee { animation: none; flex-wrap: wrap; width: auto; }
+  }
+
+  .ind-pill {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: var(--gap-3) var(--gap-6);
+    border-radius: var(--r-pill);
+    border: var(--stroke-thin) solid var(--line);
+    font-family: var(--font-mono);
+    font-size: var(--t-sm);
+    color: var(--fg-muted);
+    background: var(--neutral-1);
+    transition: border-color 0.3s ease, color 0.3s ease;
+    cursor: default;
+  }
+
+  .ind-pill:hover {
+    border-color: var(--color-accent-primary);
+    color: var(--fg);
+  }
+
+  /* ── Blog Teaser ── */
+  .blog-teaser {
+    padding-block: var(--space-section-xl);
+    border-top: var(--stroke-thin) solid var(--line);
+  }
+
+  .blog-teaser-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--gap-6);
+    flex-wrap: wrap;
+    margin-bottom: var(--gap-10);
+  }
+
+  .blog-teaser-head h2 { font-size: var(--t-h3); max-width: 22ch; margin-top: var(--gap-4); }
+
+  .blog-teaser-grid {
+    display: grid;
+    gap: var(--gap-6);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .blog-teaser-grid {
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: auto auto;
+    }
+    .blog-teaser-card--featured {
+      grid-row: 1 / 3;
+    }
+  }
+
+  .blog-teaser-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--fg);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--neutral-1);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .blog-teaser-card:hover {
+    border-color: color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  }
+
+  .btc-media {
+    overflow: hidden;
+    flex-shrink: 0;
+    aspect-ratio: 16/9;
+  }
+
+  .blog-teaser-card--featured .btc-media {
+    aspect-ratio: 4/3;
+  }
+
+  .btc-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .blog-teaser-card:hover .btc-media img { transform: scale(1.04); }
+
+  .btc-content {
+    padding: var(--gap-5) var(--gap-6) var(--gap-6);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .btc-cat {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--t-micro);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-accent-primary);
+    margin-bottom: var(--gap-3);
+  }
+
+  .btc-content h3 {
+    font-size: var(--t-h5);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-tight);
+    color: var(--fg);
+  }
+
+  .blog-teaser-card--featured .btc-content h3 { font-size: var(--t-h4); }
+
+  .btc-excerpt {
+    margin-top: var(--gap-2);
+    font-size: var(--fluid-body-sm);
+    color: var(--fg-muted);
+    line-height: var(--core-line-height-relaxed);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .btc-meta {
+    display: flex;
+    gap: var(--gap-4);
+    margin-top: auto;
+    padding-top: var(--gap-4);
+    font-family: var(--font-mono);
+    font-size: var(--t-micro);
+    color: var(--fg-muted);
+  }
+
+  /* ── Closing CTA ── */
   .closing-cta { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); text-align: center; }
-  .closing-cta h2 { font-size: var(--t-h2); }
-  .closing-cta p { margin-top: var(--gap-4); }
-  .closing-cta .btn { margin-top: var(--gap-8); }
+  .closing-cta h2 { font-size: var(--t-h2); margin-top: var(--gap-4); }
+  .closing-cta p { margin-top: var(--gap-4); max-width: 52ch; margin-inline: auto; color: var(--fg-muted); }
+  .closing-cta div { margin-top: var(--gap-8); }
+
 </style>
 
 <script>

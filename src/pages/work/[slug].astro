@@ -256,7 +256,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
   /* Single-column adaptive UX content */
   .case-body-content {
-    max-width: 800px;
+    max-width: 960px;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
@@ -309,10 +309,14 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
   .portable-text p {
     font-size: var(--fluid-body-md);
-    line-height: var(--core-line-height-relaxed);
+    line-height: 1.8;
     color: var(--fg-muted);
-    margin-bottom: var(--gap-4);
+    margin-bottom: var(--gap-5);
   }
+  .portable-text h2 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); color: var(--fg); margin-top: var(--gap-10); margin-bottom: var(--gap-4); }
+  .portable-text h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); margin-top: var(--gap-7); margin-bottom: var(--gap-3); }
+  .portable-text ul, .portable-text ol { margin-top: var(--gap-4); padding-left: var(--gap-6); color: var(--fg-muted); line-height: 1.75; }
+  .portable-text li { margin-top: var(--gap-2); }
 
   /* Media fills layout width */
   .media-full-width {
@@ -394,10 +398,14 @@ const otherCases = await Promise.all(others.map((s: any) =>
     height: 100%;
     border-radius: var(--radius-xl);
     overflow: hidden;
+    border: var(--stroke-thin) solid var(--line);
+    background: var(--neutral-1);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
   .more-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    border-color: color-mix(in srgb, var(--color-accent-primary) 50%, transparent);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25);
   }
   .more-card-visual {
     width: 100%;

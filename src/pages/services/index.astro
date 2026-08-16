@@ -68,7 +68,7 @@ const whyIntro =
     <p class="services-hero-sub" data-reveal>As a UX design agency and development partner, we blend creativity with technical precision to deliver impactful, multi-platform experiences.</p>
   </div></section>
 
-  <section class="wrap stats"><ul>{stats.map(s => <li data-reveal><span class="stat-n">{s.n}</span><p class="stat-label">{s.label}</p>{s.copy && <p class="stat-copy">{s.copy}</p>}</li>)}</ul></section>
+  <section class="wrap stats"><ul>{stats.map(s => <li data-reveal><div class="stat-card-wrap"><span class="stat-n">{s.n}</span><p class="stat-label">{s.label}</p>{s.copy && <p class="stat-copy">{s.copy}</p>}</div></li>)}</ul></section>
 
   <section class="wrap services-intro">
     <h2 data-reveal>Bringing intuitive and beautiful innovations to life.</h2>
@@ -117,10 +117,19 @@ const whyIntro =
   .stats { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .stats ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-8); }
   @media (min-width: 768px) { .stats ul { grid-template-columns: repeat(4, 1fr); } }
-  .stats li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-5); }
-  .stat-n { font-family: var(--font-mono); font-size: var(--fluid-h3); font-weight: var(--font-weight-bold); color: var(--accent-warm); }
-  .stat-label { color: var(--fg); font-size: var(--fluid-body-lg); font-weight: var(--font-weight-medium); margin-top: var(--gap-2); }
-  .stat-copy { margin-top: var(--gap-1); }
+  .stats li { list-style: none; }
+  .stat-card-wrap {
+    background: var(--neutral-1);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--gap-8);
+    height: 100%;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .stat-card-wrap:hover { border-color: var(--color-accent-primary); transform: translateY(-2px); }
+  .stat-n { font-family: var(--font-mono); font-size: var(--fluid-h2); font-weight: var(--font-weight-bold); color: var(--accent-warm); display: block; }
+  .stat-label { color: var(--fg); font-size: var(--fluid-body-md); font-weight: var(--font-weight-medium); margin-top: var(--gap-3); display: block; }
+  .stat-copy { margin-top: var(--gap-2); font-size: var(--fluid-body-sm); color: var(--fg-muted); line-height: var(--core-line-height-relaxed); }
   .services-intro { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .services-intro h2 { font-size: var(--t-h3); max-width: 20ch; }
   .services-intro p { margin-top: var(--gap-5); max-width: 65ch; }

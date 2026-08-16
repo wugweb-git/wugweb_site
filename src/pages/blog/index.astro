@@ -103,19 +103,21 @@ const categories = ['All', ...PILLARS];
       {posts.map((p: any) => (
         <li data-reveal data-category={p.pillar}>
           <a href={`/blog/${p.slug}`}>
-            {p.coverUrl ? (
-              <img src={p.coverUrl} alt={p.title} loading="lazy" class="post-thumb" />
-            ) : (
-              <div class="post-thumb post-thumb-fallback" style={`--cover-accent: ${p.accent}`}>
-                <span class="post-thumb-grid" aria-hidden="true"></span>
-                <span class="post-thumb-cat">{p.category || 'Insight'}</span>
-                <span class="post-thumb-initials" aria-hidden="true">{p.initials}</span>
-                <span class="post-thumb-foot">
-                  <span class="post-thumb-read">{p.readingTime ? `${p.readingTime} min read` : 'Wugweb Insight'}</span>
-                  <span class="post-thumb-arrow" aria-hidden="true">→</span>
-                </span>
-              </div>
-            )}
+            <div class="post-thumb-wrap">
+              {p.coverUrl ? (
+                <img src={p.coverUrl} alt={p.title} loading="lazy" class="post-thumb" />
+              ) : (
+                <div class="post-thumb post-thumb-fallback" style={`--cover-accent: ${p.accent}`}>
+                  <span class="post-thumb-grid" aria-hidden="true"></span>
+                  <span class="post-thumb-cat">{p.category || 'Insight'}</span>
+                  <span class="post-thumb-initials" aria-hidden="true">{p.initials}</span>
+                  <span class="post-thumb-foot">
+                    <span class="post-thumb-read">{p.readingTime ? `${p.readingTime} min read` : 'Wugweb Insight'}</span>
+                    <span class="post-thumb-arrow" aria-hidden="true">→</span>
+                  </span>
+                </div>
+              )}
+            </div>
             <div class="post-content">
               <span class="post-category">{p.category}</span>
               <h3>{p.title}</h3>
@@ -130,6 +132,7 @@ const categories = ['All', ...PILLARS];
       ))}
     </ul>
   </section>
+
 </BaseLayout>
 
 <style>
@@ -143,8 +146,26 @@ const categories = ['All', ...PILLARS];
   .blog-grid-section { border-top: var(--stroke-thin) solid var(--line); padding-block: var(--space-section-md) var(--space-section-xl); }
   .blog-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-6); }
   @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
-  .blog-grid a { text-decoration: none; display: block; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
-  .post-thumb { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: var(--gap-4); }
+  .blog-grid a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    background: var(--neutral-1);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .blog-grid a:hover {
+    border-color: color-mix(in srgb, var(--color-accent-primary) 45%, transparent);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+  }
+  .post-thumb-wrap { overflow: hidden; aspect-ratio: 16/10; flex-shrink: 0; }
+  .post-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .blog-grid a:hover .post-thumb { transform: scale(1.05); }
+  .post-content { padding: var(--gap-5) var(--gap-6) var(--gap-6); display: flex; flex-direction: column; flex: 1; }
+
   .post-thumb-fallback {
     position: relative;
     display: flex;
