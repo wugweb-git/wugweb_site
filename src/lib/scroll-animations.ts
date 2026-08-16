@@ -46,18 +46,29 @@ export function initScrollAnimations(): () => void {
     const kind = (el as HTMLElement).dataset.scroll || 'fade-up';
     const delay = Number((el as HTMLElement).dataset.scrollDelay || 0);
 
-    // Start hidden (prevent FOUC)
-    gsap.set(el, { opacity: 0 });
+    let fromVars: gsap.TweenVars = { opacity: 0 };
+    let toVars: gsap.TweenVars = { 
+      opacity: 1, 
+      duration: 0.85, 
+      ease: 'power3.out', 
+      delay,
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+      }
+    };
 
-    let vars: gsap.TweenVars = { opacity: 1, duration: 0.9, ease: 'power2.out', delay };
     if (kind === 'rise') {
-      vars = { ...vars, y: 80 };
+      fromVars = { ...fromVars, y: 50 };
+      toVars = { ...toVars, y: 0 };
     } else if (kind === 'scale') {
-      vars = { ...vars, scale: 0.92, transformOrigin: 'center center' };
+      fromVars = { ...fromVars, scale: 0.95 };
+      toVars = { ...toVars, scale: 1 };
     } else if (kind === 'fade-up') {
-      vars = { ...vars, y: 40 };
+      fromVars = { ...fromVars, y: 30 };
+      toVars = { ...toVars, y: 0 };
     } else if (kind === 'parallax') {
-      // Parallax: element moves at a different rate than the scroll
       const tween = gsap.to(el, {
         yPercent: -12,
         ease: 'none',
@@ -72,14 +83,11 @@ export function initScrollAnimations(): () => void {
       return;
     }
 
-    const tween = gsap.to(el, {
-      ...vars,
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        once: true,
-      },
-    });
+    // Set starting state
+    gsap.set(el, fromVars);
+
+    // Animate to base state
+    const tween = gsap.to(el, toVars);
     cleanups.push(() => tween.scrollTrigger?.kill());
   });
 
