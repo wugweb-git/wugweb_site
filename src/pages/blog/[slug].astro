@@ -117,9 +117,10 @@ const shareLinks = [
     )}
 
     {post.author && (
-      <aside class="article-author">
+      <aside class="glass-panel article-author">
+        <div class="card-glow"></div>
         {authorPhoto && <img src={authorPhoto} alt={authorName} class="author-photo" />}
-        <div>
+        <div class="author-info">
           {authorName && <p class="author-name">{authorName}</p>}
           {post.author.role && <p class="author-role">{post.author.role}</p>}
           {post.author.bio && <p class="author-bio">{post.author.bio}</p>}
@@ -144,7 +145,8 @@ const shareLinks = [
       </div>
     </div>
 
-    <aside class="article-newsletter">
+    <aside class="glass-panel article-newsletter">
+      <div class="card-glow"></div>
       <p class="eyebrow">Newsletter</p>
       <h2>Get insights like this in your inbox</h2>
       <p>Design, product, and digital strategy — no spam, just thoughtful content.</p>
@@ -157,13 +159,15 @@ const shareLinks = [
     {(prevPost || nextPost) && (
       <nav class="article-prevnext" aria-label="More articles">
         {prevPost ? (
-          <a href={`/blog/${prevPost.slug}`} class="pn-link pn-prev">
+          <a href={`/blog/${prevPost.slug}`} class="glass-panel pn-link pn-prev">
+            <div class="card-glow"></div>
             <span class="pn-dir">← Previous</span>
             <span class="pn-title">{prevPost.title}</span>
           </a>
         ) : <span class="pn-link pn-placeholder"></span>}
         {nextPost ? (
-          <a href={`/blog/${nextPost.slug}`} class="pn-link pn-next">
+          <a href={`/blog/${nextPost.slug}`} class="glass-panel pn-link pn-next">
+            <div class="card-glow"></div>
             <span class="pn-dir">Next →</span>
             <span class="pn-title">{nextPost.title}</span>
           </a>
@@ -176,7 +180,8 @@ const shareLinks = [
         <h2>Related articles</h2>
         <div class="related-grid">
           {related.map((r: any) => (
-            <a href={`/blog/${r.slug}`} class="related-card">
+            <a href={`/blog/${r.slug}`} class="glass-panel related-card">
+              <div class="card-glow"></div>
               <h3>{r.title}</h3>
               {r.category && <p>{r.category}</p>}
             </a>
@@ -188,34 +193,71 @@ const shareLinks = [
 </BaseLayout>
 
 <style>
+  /* Glass panels and effects */
+  .glass-panel {
+    background: color-mix(in srgb, var(--neutral-8) 60%, transparent);
+    border: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent);
+    backdrop-filter: var(--glass-medium);
+    -webkit-backdrop-filter: var(--glass-medium);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  }
+
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--color-accent-primary) 8%, transparent) 0%, transparent 85%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .glass-panel:hover {
+    border-color: color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
+  }
+  .glass-panel:hover .card-glow {
+    opacity: 1;
+  }
+
   .article { padding-block: var(--space-section-xl); max-width: 720px; }
   .article .eyebrow a { color: var(--fg-muted); text-decoration: none; }
   .article .eyebrow a:hover { color: var(--fg); }
-  .article h1 { font-size: var(--t-h2); margin-top: var(--gap-3); line-height: var(--core-line-height-tight); }
+  .article h1 { font-size: var(--t-h2); margin-top: var(--gap-3); line-height: var(--core-line-height-tight); color: var(--fg); }
   .article-meta { display: flex; flex-wrap: wrap; gap: var(--gap-3) var(--gap-6); margin-top: var(--gap-5); font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-muted); }
-  .article-category { color: var(--accent-warm); }
-  .article-intro { font-size: var(--t-lead); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-7); color: var(--fg); border-left: 2px solid var(--accent-warm); padding-left: var(--gap-6); }
-  .article-cover { margin: var(--gap-10) 0 0; border-radius: var(--r-4); overflow: hidden; }
-  .article-cover img { width: 100%; height: auto; display: block; }
+  .article-category { color: var(--color-accent-primary); }
+  .article-intro { font-size: var(--t-lead); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-7); color: var(--fg); border-left: 2px solid var(--color-accent-primary); padding-left: var(--gap-6); }
+  
+  .article-cover { margin: var(--gap-10) 0 0; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--line); transition: transform 0.4s ease; }
+  .article-cover:hover { transform: scale(1.01); }
+  .article-cover img { width: 100%; height: auto; display: block; transition: transform 0.6s ease; }
+  .article-cover:hover img { transform: scale(1.03); }
+
   .article-body { margin-top: var(--gap-10); }
-  .article-body h2 { font-size: var(--t-h4); margin-top: var(--gap-10); margin-bottom: var(--gap-3); }
+  .article-body h2 { font-size: var(--t-h4); margin-top: var(--gap-10); margin-bottom: var(--gap-3); color: var(--fg); border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-6); }
   .article-body h3 { font-size: var(--t-lead); margin-top: var(--gap-7); margin-bottom: var(--gap-2); color: var(--fg); }
-  .article-body p { line-height: var(--core-line-height-relaxed); color: var(--fg-muted); margin-top: var(--gap-3); }
+  .article-body p { line-height: var(--core-line-height-relaxed); color: var(--fg-muted); margin-top: var(--gap-3); font-size: var(--fluid-body-md); }
   .article-empty { margin-top: var(--gap-10); padding: var(--gap-6); border: 1px dashed var(--line); border-radius: var(--r-3); color: var(--fg-muted); }
-  .article-empty a { color: var(--accent-warm); text-decoration: underline; }
-  .article-author { display: flex; align-items: center; gap: var(--gap-4); margin-top: var(--gap-10); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
-  .author-photo { width: var(--author-photo); height: var(--author-photo); border-radius: var(--radius-full); object-fit: cover; }
-  .author-name { font-weight: var(--font-weight-medium); color: var(--fg); }
+  .article-empty a { color: var(--color-accent-primary); text-decoration: underline; }
+  
+  .article-author { display: flex; align-items: center; gap: var(--gap-6); margin-top: var(--gap-10); padding: var(--gap-6); }
+  .author-photo { width: 80px; height: 80px; border-radius: var(--radius-full); object-fit: cover; border: 1px solid var(--line); z-index: 1; position: relative; }
+  .author-info { z-index: 1; position: relative; }
+  .author-name { font-weight: var(--font-weight-medium); color: var(--fg); font-size: var(--fluid-body-lg); }
   .author-role { font-size: var(--t-sm); color: var(--fg-muted); }
-  .article-tags { display: flex; gap: var(--gap-2); margin-top: var(--gap-8); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
-  .tag { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-3); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
+  .author-bio { font-size: var(--fluid-body-sm); color: var(--fg-muted); margin-top: var(--gap-2); line-height: var(--lh-body); }
+  
+  .article-tags { display: flex; flex-wrap: wrap; gap: var(--gap-2); margin-top: var(--gap-8); }
+  .tag { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-1) var(--gap-3); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
   .article-updated { opacity: var(--opacity-soft); }
 
   .article-toc { margin-top: var(--gap-10); padding: var(--gap-6); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
-  .toc-title { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .06em; color: var(--accent-warm); margin-bottom: var(--gap-4); }
+  .toc-title { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .06em; color: var(--color-accent-primary); margin-bottom: var(--gap-4); }
   .article-toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
   .toc-item a { color: var(--fg-muted); text-decoration: none; font-size: var(--fluid-body-sm); line-height: var(--core-line-height-normal); }
-  .toc-item a:hover { color: var(--accent); }
+  .toc-item a:hover { color: var(--color-accent-primary); }
   .toc-h3 { padding-left: var(--gap-4); }
   .toc-h3 a { font-size: var(--fluid-body-sm); }
 
@@ -223,33 +265,36 @@ const shareLinks = [
   .share-label { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .06em; color: var(--fg-muted); }
   .share-links { display: flex; gap: var(--gap-2); }
   .share-link { display: inline-flex; align-items: center; justify-content: center; width: var(--share-btn); height: var(--share-btn); border-radius: var(--radius-full); border: var(--stroke-thin) solid var(--line); color: var(--fg-muted); text-decoration: none; font-family: var(--font-mono); font-size: var(--t-sm); transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
-  .share-link:hover { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--color-yellow) 10%, transparent); }
+  .share-link:hover { border-color: var(--color-accent-primary); color: var(--color-accent-primary); background: color-mix(in srgb, var(--color-accent-primary) 8%, transparent); }
 
-  .article-newsletter { margin-top: var(--gap-10); padding: var(--gap-8); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-lg); background: var(--surface); text-align: center; }
+  .article-newsletter { margin-top: var(--gap-10); padding: var(--gap-8); text-align: center; }
+  .article-newsletter * { position: relative; z-index: 1; }
   .article-newsletter .eyebrow { display: block; margin-bottom: var(--gap-3); }
-  .article-newsletter h2 { font-size: var(--t-h4); max-width: 24ch; margin-inline: auto; }
+  .article-newsletter h2 { font-size: var(--t-h4); max-width: 24ch; margin-inline: auto; color: var(--fg); }
   .article-newsletter p:not(.eyebrow) { margin-top: var(--gap-2); color: var(--fg-muted); }
   .nl-form { display: flex; gap: var(--gap-3); margin-top: var(--gap-6); max-width: 420px; margin-inline: auto; }
-  .nl-input { flex: 1; padding: var(--gap-3) var(--gap-4); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-sm); background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--fluid-body-md); }
-  .nl-input:focus { outline: var(--focus-input); outline-offset: 2px; }
+  .nl-input { flex: 1; padding: var(--gap-3) var(--gap-4); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-sm); background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--fluid-body-md); transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+  .nl-input:focus { border-color: var(--color-accent-primary); outline: none; box-shadow: 0 0 10px color-mix(in srgb, var(--color-accent-primary) 20%, transparent); }
 
   .article-prevnext { display: grid; gap: var(--gap-4); margin-top: var(--gap-10); grid-template-columns: 1fr; }
   @media (min-width: 640px) { .article-prevnext { grid-template-columns: 1fr 1fr; } }
-  .pn-link { display: flex; flex-direction: column; gap: var(--gap-1); padding: var(--gap-5); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-md); text-decoration: none; transition: border-color var(--duration-fast) var(--easing-out); }
-  .pn-link:hover { border-color: var(--accent); }
+  .pn-link { display: flex; flex-direction: column; gap: var(--gap-1); padding: var(--gap-5); text-decoration: none; }
+  .pn-link * { position: relative; z-index: 1; }
+  .pn-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
   .pn-next { text-align: right; }
-  .pn-dir { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--accent-warm); }
+  .pn-dir { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--color-accent-primary); }
   .pn-title { color: var(--fg); font-weight: var(--font-weight-medium); font-size: var(--fluid-body-md); line-height: var(--core-line-height-normal); }
   .pn-placeholder { visibility: hidden; }
 
   .article-related { margin-top: var(--gap-12); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
-  .article-related h2 { font-size: var(--t-h3); margin-bottom: var(--gap-6); }
+  .article-related h2 { font-size: var(--t-h3); margin-bottom: var(--gap-6); color: var(--fg); }
   .related-grid { display: grid; gap: var(--gap-4); grid-template-columns: 1fr; }
   @media (min-width: 640px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
-  .related-card { text-decoration: none; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
+  .related-card { text-decoration: none; padding: var(--gap-5); display: block; }
+  .related-card * { position: relative; z-index: 1; }
   .related-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); }
-  .related-card p { margin-top: var(--gap-1); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
-  .related-card:hover h3 { color: var(--accent); }
+  .related-card p { margin-top: var(--gap-2); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); }
+  .related-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); }
 </style>
 
 <script>
@@ -264,4 +309,25 @@ const shareLinks = [
       }).catch(() => {});
     });
   });
+
+  // Mouse tracking card glow animation
+  const initGlows = () => {
+    const cards = document.querySelectorAll('.glass-panel');
+    cards.forEach((card) => {
+      const glow = card.querySelector('.card-glow') as HTMLElement | null;
+      if (!glow) return;
+      
+      card.addEventListener('mousemove', (e: Event) => {
+        const me = e as MouseEvent;
+        const rect = card.getBoundingClientRect();
+        const x = me.clientX - rect.left;
+        const y = me.clientY - rect.top;
+        glow.style.setProperty('--mouse-x', `${x}px`);
+        glow.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  };
+
+  initGlows();
+  document.addEventListener('astro:page-load', initGlows);
 </script>

@@ -43,18 +43,27 @@ const otherCases = await Promise.all(others.map((s: any) =>
   )}
 
   {(work.about || work.summary) && (
-    <section class="wrap section">
-      <h2>About</h2>
-      <p>{work.about || work.summary}</p>
+    <section class="wrap section work-about-section">
+      <div class="glass-panel about-panel">
+        <h2>About the Project</h2>
+        <p>{work.about || work.summary}</p>
+      </div>
     </section>
   )}
 
   {work.challenges?.length > 0 && (
     <section class="wrap section">
-      <h2>Challenges</h2>
+      <div class="section-header">
+        <span class="section-n">01</span>
+        <h2>Challenges</h2>
+      </div>
       <div class="grid">
         {work.challenges.map((c: any) => (
-          <div class="card"><h3>{c.title}</h3><p>{c.body}</p></div>
+          <div class="glass-panel card">
+            <div class="card-glow"></div>
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+          </div>
         ))}
       </div>
     </section>
@@ -62,10 +71,17 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
   {work.solutions?.length > 0 && (
     <section class="wrap section">
-      <h2>Solutions</h2>
+      <div class="section-header">
+        <span class="section-n">02</span>
+        <h2>Solutions</h2>
+      </div>
       <div class="grid">
         {work.solutions.map((s: any) => (
-          <div class="card"><h3>{s.title}</h3><p>{s.body}</p></div>
+          <div class="glass-panel card">
+            <div class="card-glow"></div>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </div>
         ))}
       </div>
     </section>
@@ -73,12 +89,17 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
   {gallery.length > 0 && (
     <section class="wrap section">
-      <h2>Gallery</h2>
+      <div class="section-header">
+        <span class="section-n">03</span>
+        <h2>Gallery</h2>
+      </div>
       <div class="gallery-grid">
         {gallery.map((src: string) => (
-          src.endsWith('.mp4') || src.endsWith('.webm')
-            ? <video src={src} muted loop playsinline controls preload="none"></video>
-            : <img src={src} alt="" loading="lazy" decoding="async" />
+          <div class="gallery-item">
+            {src.endsWith('.mp4') || src.endsWith('.webm')
+              ? <video src={src} muted loop playsinline controls preload="none"></video>
+              : <img src={src} alt="" loading="lazy" decoding="async" />}
+          </div>
         ))}
       </div>
     </section>
@@ -86,21 +107,29 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
   {work.impact?.length > 0 && (
     <section class="wrap section">
-      <h2>Impact</h2>
+      <div class="section-header">
+        <span class="section-n">04</span>
+        <h2>Impact</h2>
+      </div>
       <div class="grid">
         {work.impact.map((i: any) => (
-          <div class="card"><h3>{i.title}</h3><p>{i.body}</p></div>
+          <div class="glass-panel card">
+            <div class="card-glow"></div>
+            <h3>{i.title}</h3>
+            <p>{i.body}</p>
+          </div>
         ))}
       </div>
     </section>
   )}
 
   {otherCases.length > 0 && (
-    <section class="wrap section">
+    <section class="wrap section more-cases-section">
       <h2>More Case Studies</h2>
       <div class="more-grid">
         {otherCases.map((c: any) => (
-          <a href={`/work/${c.slug || ''}`} class="more-card">
+          <a href={`/work/${c.slug || ''}`} class="glass-panel more-card">
+            <div class="card-glow"></div>
             <h3>{c.title}</h3>
             <p>{c.client}{c.disciplines?.length > 0 ? ` — ${c.disciplines.join(', ')}` : ''}</p>
           </a>
@@ -111,10 +140,266 @@ const otherCases = await Promise.all(others.map((s: any) =>
 </BaseLayout>
 
 <style>
+  /* Glass panels and animations */
+  .glass-panel {
+    background: color-mix(in srgb, var(--neutral-8) 60%, transparent);
+    border: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent);
+    backdrop-filter: var(--glass-medium);
+    -webkit-backdrop-filter: var(--glass-medium);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  }
+
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 220px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--color-accent-primary) 10%, transparent) 0%, transparent 85%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .glass-panel:hover {
+    border-color: color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
+  }
+  .glass-panel:hover .card-glow {
+    opacity: 1;
+  }
+
+  /* Hero design */
   .work-detail-hero {
     padding-top: var(--space-section-xl);
     padding-bottom: var(--space-section-md);
+    position: relative;
   }
   .work-detail-hero .eyebrow a { color: var(--fg-muted); text-decoration: none; }
+  .work-detail-hero .eyebrow a:hover { color: var(--fg); }
+  .work-detail-hero h1 {
+    font-size: var(--t-display);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--core-line-height-tight);
+    margin-top: var(--gap-4);
+    color: var(--fg);
+    max-width: 20ch;
+  }
+
+  .work-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-4) var(--gap-8);
+    margin-top: var(--gap-10);
+    border-top: var(--stroke-thin) solid var(--line);
+    padding-top: var(--gap-6);
+  }
+  @media (min-width: 768px) {
+    .work-meta {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .work-meta > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+  }
+  .meta-label {
+    font-family: var(--font-mono);
+    font-size: var(--t-micro);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--fg-muted);
+  }
+  .work-meta span:not(.meta-label) {
+    font-size: var(--fluid-body-md);
+    color: var(--fg);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .work-cover {
+    padding-block: var(--space-section-sm);
+  }
+  .work-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--line);
+    display: block;
+  }
+
+  /* About layout */
+  .about-panel {
+    padding: var(--gap-10);
+  }
+  .about-panel h2 {
+    font-size: var(--t-h4);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--gap-4);
+    color: var(--fg);
+  }
+  .about-panel p {
+    font-size: var(--t-l);
+    line-height: var(--lh-l);
+    color: var(--fg-muted);
+    max-width: 75ch;
+  }
+
+  /* Section header numerals */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-4);
+    margin-bottom: var(--gap-8);
+  }
+  .section-n {
+    font-family: var(--font-mono);
+    font-size: var(--t-sm);
+    color: var(--color-accent-primary);
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
+    padding: var(--gap-1) var(--gap-3);
+    border-radius: var(--r-pill);
+    background: color-mix(in srgb, var(--color-accent-primary) 8%, transparent);
+  }
+  .section-header h2 {
+    font-size: var(--t-h3);
+    font-weight: var(--font-weight-bold);
+    color: var(--fg);
+    margin: 0;
+  }
+
+  /* Grids and Cards */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-6);
+  }
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .card {
+    padding: var(--gap-8);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+  .card h3 {
+    font-size: var(--t-h5);
+    font-weight: var(--font-weight-semibold);
+    color: var(--fg);
+    margin-bottom: var(--gap-3);
+    position: relative;
+    z-index: 1;
+  }
+  .card p {
+    font-size: var(--fluid-body-sm);
+    line-height: var(--core-line-height-relaxed);
+    color: var(--fg-muted);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Gallery Styling */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-6);
+  }
+  @media (min-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .gallery-item {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--neutral-10) 20%, transparent);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  }
+  .gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  }
+  .gallery-item img, .gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .gallery-item:hover img, .gallery-item:hover video {
+    transform: scale(1.05);
+  }
+
+  /* More cases */
+  .more-cases-section {
+    border-top: var(--stroke-thin) solid var(--line);
+    padding-top: var(--space-section-lg);
+  }
+  .more-cases-section h2 {
+    font-size: var(--t-h3);
+    margin-bottom: var(--gap-8);
+  }
+  .more-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-6);
+  }
+  @media (min-width: 768px) {
+    .more-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .more-card {
+    padding: var(--gap-8);
+    text-decoration: none;
+    display: block;
+  }
+  .more-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  .more-card h3 {
+    font-size: var(--t-h5);
+    font-weight: var(--font-weight-semibold);
+    color: var(--fg);
+    margin-bottom: var(--gap-2);
+    position: relative;
+    z-index: 1;
+  }
+  .more-card p {
+    font-family: var(--font-mono);
+    font-size: var(--t-micro);
+    color: var(--fg-muted);
+    position: relative;
+    z-index: 1;
+  }
 </style>
+
+<script>
+  // Mouse tracking card glow animation
+  const initGlows = () => {
+    const cards = document.querySelectorAll('.glass-panel');
+    cards.forEach((card) => {
+      const glow = card.querySelector('.card-glow') as HTMLElement | null;
+      if (!glow) return;
+      
+      card.addEventListener('mousemove', (e: Event) => {
+        const me = e as MouseEvent;
+        const rect = card.getBoundingClientRect();
+        const x = me.clientX - rect.left;
+        const y = me.clientY - rect.top;
+        glow.style.setProperty('--mouse-x', `${x}px`);
+        glow.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  };
+
+  initGlows();
+  document.addEventListener('astro:page-load', initGlows);
+</script>
 
