@@ -85,12 +85,30 @@ export async function archiveDocs(client: SanityClient, ids: string[]): Promise<
 
 /** Hard delete with pre-confirm handled by caller. */
 export async function deleteDocs(client: SanityClient, ids: string[]): Promise<boolean> {
+  const failures: string[] = [];
+
   for (const id of ids) {
-    await client.delete(id).catch(() => {});
+    try {
+      await client.delete(id);
+    } catch (error: any) {
+      const message = error?.message || `Failed to delete ${id}`;
+      failures.push(message);
+      continue;
+    }
+
     if (!id.startsWith('drafts.')) {
-      await client.delete(`drafts.${id}`).catch(() => {});
+      try {
+        await client.delete(`drafts.${id}`);
+      } catch {
+        // Ignore missing draft counterparts after successful published delete.
+      }
     }
   }
+
+  if (failures.length > 0) {
+    throw new Error(failures[0]);
+  }
+
   return true;
 }
 

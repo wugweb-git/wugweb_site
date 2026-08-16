@@ -1,0 +1,390 @@
+{
+  "mode": "applied",
+  "generatedAt": "2026-08-16T09:23:30.989Z",
+  "stats": {
+    "caseStudies": 23,
+    "posts": 0,
+    "total": 23
+  },
+  "referencedSkipped": [
+    {
+      "_id": "caseStudy-airtel-xsafe",
+      "title": "Airtel Xsafe – Securing Homes with Intuitive Digital Experiences",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-airtel-xstream-play",
+      "title": "Airtel Xstream Play – Showcasing India's Unified Digital Entertainment on the Web",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-audiofolio",
+      "title": "AudioFolio – Reinventing Audio Discovery Through AI",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-bankco",
+      "title": "Bankco – Engineering the Ultimate Banking Super App Ecosystem",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-cartier-careers",
+      "title": "Redesigning Cartier's Career Website – Where Passion Meets Excellence",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-inkompass",
+      "title": "Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-metcred",
+      "title": "The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-plufo",
+      "title": "Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-rideev",
+      "title": "RideEV – Powering the Phygital EV Revolution in India",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-sadhan",
+      "title": "Sadhan – Streamlining Driver Onboarding & Lead Management",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-spark-logistics",
+      "title": "Spark Logistics – Building a Unified Logistics Intelligence Platform",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-thebizgift",
+      "title": "TheBizGift – Reimagining Corporate Gifting Through Intelligent Commerce",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "caseStudy-visione",
+      "title": "VisiONE – Empowering Workforce Development with Competency-Based Assessments",
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDlE",
+      "title": "10 A**hole Design Patterns",
+      "reason": "duplicate empty hash ID (kept: post-10-a-hole-design-patterns)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSEDf",
+      "title": "10 Confessions of a Product Designer",
+      "reason": "duplicate empty hash ID (kept: post-10-confessions-of-a-product-designer)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSEAC",
+      "title": "10 Essential Skills for the Modern UI & UX Designer",
+      "reason": "duplicate empty hash ID (kept: post-10-essential-skills-for-the-modern-ui-ux-designer)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRJPt",
+      "title": "10 Features I'm Loving in Framer Right Now",
+      "reason": "duplicate empty hash ID (kept: post-10-features-i-m-loving-in-framer-right-now)"
+    },
+    {
+      "_id": "sBGz9jasVeWZXQwGrvdhzS",
+      "title": "10 Figma Tricks I Wish I Knew Earlier",
+      "reason": "duplicate empty hash ID (kept: post-10-figma-tricks-i-wish-i-knew-earlier)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRCM3",
+      "title": "10 Hacks for Illustrating and Drawing in Figma",
+      "reason": "duplicate empty hash ID (kept: post-10-hacks-for-illustrating-and-drawing-in-figma)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRJvV",
+      "title": "10 Key Takeaways from Google's Material Design Guidelines",
+      "reason": "duplicate empty hash ID (kept: post-10-key-takeaways-from-google-s-material-design-guidelines)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSEJD",
+      "title": "10 Principles for Typography in UI Design",
+      "reason": "duplicate empty hash ID (kept: post-10-principles-for-typography-in-ui-design)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRCX7",
+      "title": "10 Rules of Thumb in UI Design",
+      "reason": "duplicate empty hash ID (kept: post-10-rules-of-thumb-in-ui-design)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRJir",
+      "title": "10 Ways to Design More Inclusive Products",
+      "reason": "duplicate empty hash ID (kept: post-10-ways-to-design-more-inclusive-products)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDvd",
+      "title": "6 Strategies That Got My Side Project Its First 1,000 Users",
+      "reason": "duplicate empty hash ID (kept: post-6-strategies-that-got-my-side-project-its-first-1-000-users)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSCpf",
+      "title": "Agile UX: Creativity, Collaboration & Flexibility",
+      "reason": "duplicate empty hash ID (kept: post-agile-working-in-ux)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRAyh",
+      "title": "How AI Is Changing UX Design",
+      "reason": "duplicate empty hash ID (kept: post-ai-in-ux-design)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSCbn",
+      "title": "Balancing User Needs and Business Goals",
+      "reason": "duplicate empty hash ID (kept: post-balancing-user-needs-and-business-goals)"
+    },
+    {
+      "_id": "sBGz9jasVeWZXQwGrvdcy5",
+      "title": "The Reality of Work Concentration in Design",
+      "reason": "duplicate empty hash ID (kept: post-design-work-concentration)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRB9l",
+      "title": "When (and Why) to Use HTML Sitemaps",
+      "reason": "duplicate empty hash ID (kept: post-html-sitemaps-for-seo-ux)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDzn",
+      "title": "Is Augmented Reality the future of UX?",
+      "reason": "duplicate empty hash ID (kept: post-is-augmented-reality-the-future-of-ux)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDa8",
+      "title": "The Reality of Remote Work for Designers",
+      "reason": "duplicate empty hash ID (kept: post-remote-design-work-pros-cons)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDdb",
+      "title": "The AI-Powered CX Singularity",
+      "reason": "duplicate empty hash ID (kept: post-the-ai-powered-cx-singularity)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRBwl",
+      "title": "Top 10 Design Systems for UX/UI in 2026",
+      "reason": "duplicate empty hash ID (kept: post-top-10-design-systems-ux-ui-2026)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDUa",
+      "title": "When UX Meets CX: Designing Seamless Experiences",
+      "reason": "duplicate empty hash ID (kept: post-ux-meets-cx-seamless-experiences)"
+    }
+  ],
+  "deletions": [
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-None",
+      "title": "Eastman Auto & Power – Modernizing Enterprise Manufacturing Experiences",
+      "slug": "None",
+      "keeper": "caseStudy-eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+      "words": 0,
+      "reason": "malformed slug (None)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-kia-loyalty-dashboard",
+      "title": "Accelerating Loyalty: Designing Kia's Intuitive Customer Dashboard",
+      "slug": "kia-loyalty-dashboard",
+      "keeper": "caseStudy-accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-aditya-birla-credit-score",
+      "title": "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool",
+      "slug": "aditya-birla-credit-score",
+      "keeper": "caseStudy-demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-adneto-merchant-platform",
+      "title": "Reimagining Loyalty Commerce: Building the Adneto Merchant Ecosystem",
+      "slug": "adneto-merchant-platform",
+      "keeper": "caseStudy-crafting-digital-authority-the-adneto-website-showcase",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-adtech-imedia",
+      "title": "ad:tech & iMedia: Sculpting the Visual Identity of Global MarTech Summits",
+      "slug": "adtech-imedia",
+      "keeper": "caseStudy-adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-axis-bank-savings",
+      "title": "The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform",
+      "slug": "axis-bank-savings",
+      "keeper": "caseStudy-the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-bodyshop",
+      "title": "Bodyshop – Building a Premium Wellness Commerce Experience",
+      "slug": "bodyshop",
+      "keeper": "caseStudy-bodyshop-building-a-premium-wellness-commerce-experience",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-tot-bridal",
+      "title": "Crafting Digital Elegance: The TOT Bridal Launch Story",
+      "slug": "tot-bridal",
+      "keeper": "caseStudy-crafting-digital-elegance-the-tot-bridal-launch-story",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-hyatt-restaurants",
+      "title": "Hyatt Restaurants – Elevating Culinary Discovery Through Digital Experiences",
+      "slug": "hyatt-restaurants",
+      "keeper": "caseStudy-hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-indusninja",
+      "title": "IndusNinja – Your AI-Powered Financial Ninja",
+      "slug": "indusninja",
+      "keeper": "caseStudy-indusninja-your-ai-powered-financial-ninja",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-labelly",
+      "title": "Labelly: Immutable Product Verification via Blockchain Integration",
+      "slug": "labelly",
+      "keeper": "caseStudy-labelly-immutable-product-verification-via-blockchain-integration",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-linkedin-sales-navigator",
+      "title": "LinkedIn Sales Navigator: Optimizing the Social Selling Interface",
+      "slug": "linkedin-sales-navigator",
+      "keeper": "caseStudy-linkedin-sales-navigator-optimizing-the-social-selling-interface",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-nsl-oilchem",
+      "title": "NSL OilChem: Digitizing the Lifecycle of Industrial Waste Management",
+      "slug": "nsl-oilchem",
+      "keeper": "caseStudy-nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-ntuc-u-care",
+      "title": "NTUC U Care – Digital Transformation for Enhanced Member Support",
+      "slug": "ntuc-u-care",
+      "keeper": "caseStudy-ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-pharmadropper",
+      "title": "PharmaDropper – Designing Cross-Border Digital Healthcare Commerce",
+      "slug": "pharmadropper",
+      "keeper": "caseStudy-pharmadropper-designing-cross-border-digital-healthcare-commerce",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-stayweb-pms",
+      "title": "Stayweb PMS: A Next-Gen Hospitality Engine Powered by AI and Design Systems",
+      "slug": "stayweb-pms",
+      "keeper": "caseStudy-stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-suzlon",
+      "title": "Suzlon – Designing the Digital Future of Renewable Energy",
+      "slug": "suzlon",
+      "keeper": "caseStudy-suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-wugweb-hrms",
+      "title": "Wugweb HRMS: AI-Powered Human Resource Management Platform",
+      "slug": "wugweb-hrms",
+      "keeper": "caseStudy-unified-hrms-redefining-the-employee-lifecycle-through-automation",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-valyu-ai",
+      "title": "VALYU.ai – Empowering India's Workforce with On-Demand Earned Wages",
+      "slug": "valyu-ai",
+      "keeper": "caseStudy-valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-wave-group",
+      "title": "Wave Group: Crafting a Multi-Conglomerate Interactive Experience",
+      "slug": "wave-group",
+      "keeper": "caseStudy-wave-group-crafting-a-multi-conglomerate-interactive-experience",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-witty-vegan",
+      "title": "Witty Vegan: Democratizing Plant-Based Diversity Through Culture",
+      "slug": "witty-vegan",
+      "keeper": "caseStudy-witty-vegan-democratizing-plant-based-diversity-through-culture",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-wugweb-kits",
+      "title": "Wugweb Kits: The Full-Stack Infrastructure for Multi-Platform Design",
+      "slug": "wugweb-kits",
+      "keeper": "caseStudy-wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    },
+    {
+      "_type": "caseStudy",
+      "_id": "caseStudy-wugweb-revamp",
+      "title": "Wugweb Revamp: The Living Manifesto of Digital Perfection",
+      "slug": "wugweb-revamp",
+      "keeper": "caseStudy-wugweb-revamp-the-living-manifesto-of-digital-perfection",
+      "words": 0,
+      "reason": "duplicate short-slug (canonical keeps bodyContent)"
+    }
+  ]
+}

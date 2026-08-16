@@ -1,0 +1,3296 @@
+{
+  "generatedAt": "2026-08-16T09:17:55.287Z",
+  "counts": {
+    "caseStudy": {
+      "total": 80,
+      "published": 80
+    },
+    "post": {
+      "total": 125,
+      "published": 125
+    }
+  },
+  "findings": {
+    "caseStudy": {
+      "duplicates": [
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Eastman Auto & Power – Modernizing Enterprise Manufacturing Experiences",
+          "docs": [
+            {
+              "_id": "caseStudy-None",
+              "slug": "None",
+              "createdAt": "2026-07-29T00:11:15Z"
+            },
+            {
+              "_id": "caseStudy-eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+              "slug": "eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+              "createdAt": "2026-07-29T00:30:38Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Accelerating Loyalty: Designing Kia's Intuitive Customer Dashboard",
+          "docs": [
+            {
+              "_id": "caseStudy-accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+              "slug": "accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+              "createdAt": "2026-07-28T23:25:42Z"
+            },
+            {
+              "_id": "caseStudy-kia-loyalty-dashboard",
+              "slug": "kia-loyalty-dashboard",
+              "createdAt": "2026-07-29T00:10:57Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool",
+          "docs": [
+            {
+              "_id": "caseStudy-aditya-birla-credit-score",
+              "slug": "aditya-birla-credit-score",
+              "createdAt": "2026-07-29T00:11:04Z"
+            },
+            {
+              "_id": "caseStudy-demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+              "slug": "demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+              "createdAt": "2026-07-28T23:15:39Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Reimagining Loyalty Commerce: Building the Adneto Merchant Ecosystem",
+          "docs": [
+            {
+              "_id": "caseStudy-adneto-merchant-platform",
+              "slug": "adneto-merchant-platform",
+              "createdAt": "2026-07-29T00:11:01Z"
+            },
+            {
+              "_id": "caseStudy-crafting-digital-authority-the-adneto-website-showcase",
+              "slug": "crafting-digital-authority-the-adneto-website-showcase",
+              "createdAt": "2026-07-28T23:25:45Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "ad:tech & iMedia: Sculpting the Visual Identity of Global MarTech Summits",
+          "docs": [
+            {
+              "_id": "caseStudy-adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+              "slug": "adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+              "createdAt": "2026-07-28T23:26:00Z"
+            },
+            {
+              "_id": "caseStudy-adtech-imedia",
+              "slug": "adtech-imedia",
+              "createdAt": "2026-07-29T00:11:20Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Airtel Xsafe – Securing Homes with Intuitive Digital Experiences",
+          "docs": [
+            {
+              "_id": "caseStudy-airtel-xsafe",
+              "slug": "airtel-xsafe",
+              "createdAt": "2026-07-29T00:10:52Z"
+            },
+            {
+              "_id": "caseStudy-airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+              "slug": "airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+              "createdAt": "2026-07-28T23:15:37Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Airtel Xstream Play – Showcasing India's Unified Digital Entertainment on the Web",
+          "docs": [
+            {
+              "_id": "caseStudy-airtel-xstream-play",
+              "slug": "airtel-xstream-play",
+              "createdAt": "2026-07-29T00:10:53Z"
+            },
+            {
+              "_id": "caseStudy-airtel-xstream-play-showcasing-indias-unified-digital-entertainment",
+              "slug": "airtel-xstream-play-showcasing-indias-unified-digital-entertainment",
+              "createdAt": "2026-07-28T23:25:40Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "AudioFolio – Reinventing Audio Discovery Through AI",
+          "docs": [
+            {
+              "_id": "caseStudy-audiofolio",
+              "slug": "audiofolio",
+              "createdAt": "2026-07-29T00:11:13Z"
+            },
+            {
+              "_id": "caseStudy-audiofolio-reinventing-audio-discovery-through-ai",
+              "slug": "audiofolio-reinventing-audio-discovery-through-ai",
+              "createdAt": "2026-07-29T00:30:37Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform",
+          "docs": [
+            {
+              "_id": "caseStudy-axis-bank-savings",
+              "slug": "axis-bank-savings",
+              "createdAt": "2026-07-29T00:11:05Z"
+            },
+            {
+              "_id": "caseStudy-the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+              "slug": "the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+              "createdAt": "2026-07-28T23:15:20Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Bankco – Engineering the Ultimate Banking Super App Ecosystem",
+          "docs": [
+            {
+              "_id": "caseStudy-bankco",
+              "slug": "bankco",
+              "createdAt": "2026-07-29T00:11:02Z"
+            },
+            {
+              "_id": "caseStudy-bankco-engineering-the-ultimate-banking-super-app-ecosystem",
+              "slug": "bankco-engineering-the-ultimate-banking-super-app-ecosystem",
+              "createdAt": "2026-07-28T23:25:47Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Bodyshop – Building a Premium Wellness Commerce Experience",
+          "docs": [
+            {
+              "_id": "caseStudy-bodyshop",
+              "slug": "bodyshop",
+              "createdAt": "2026-07-29T00:11:17Z"
+            },
+            {
+              "_id": "caseStudy-bodyshop-building-a-premium-wellness-commerce-experience",
+              "slug": "bodyshop-building-a-premium-wellness-commerce-experience",
+              "createdAt": "2026-07-29T00:30:40Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Redesigning Cartier's Career Website – Where Passion Meets Excellence",
+          "docs": [
+            {
+              "_id": "caseStudy-cartier-careers",
+              "slug": "cartier-careers",
+              "createdAt": "2026-07-29T00:10:55Z"
+            },
+            {
+              "_id": "caseStudy-redesigning-cartiers-career-website-where-passion-meets-excellence",
+              "slug": "redesigning-cartiers-career-website-where-passion-meets-excellence",
+              "createdAt": "2026-07-28T23:25:41Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Crafting Digital Elegance: The TOT Bridal Launch Story",
+          "docs": [
+            {
+              "_id": "caseStudy-crafting-digital-elegance-the-tot-bridal-launch-story",
+              "slug": "crafting-digital-elegance-the-tot-bridal-launch-story",
+              "createdAt": "2026-07-28T23:25:43Z"
+            },
+            {
+              "_id": "caseStudy-tot-bridal",
+              "slug": "tot-bridal",
+              "createdAt": "2026-07-29T00:10:58Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Hyatt Restaurants – Elevating Culinary Discovery Through Digital Experiences",
+          "docs": [
+            {
+              "_id": "caseStudy-hyatt-restaurants",
+              "slug": "hyatt-restaurants",
+              "createdAt": "2026-07-29T00:11:00Z"
+            },
+            {
+              "_id": "caseStudy-hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+              "slug": "hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+              "createdAt": "2026-07-29T00:30:22Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "IndusNinja – Your AI-Powered Financial Ninja",
+          "docs": [
+            {
+              "_id": "caseStudy-indusninja",
+              "slug": "indusninja",
+              "createdAt": "2026-07-29T00:10:49Z"
+            },
+            {
+              "_id": "caseStudy-indusninja-your-ai-powered-financial-ninja",
+              "slug": "indusninja-your-ai-powered-financial-ninja",
+              "createdAt": "2026-07-28T23:15:44Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future",
+          "docs": [
+            {
+              "_id": "caseStudy-inkompass",
+              "slug": "inkompass",
+              "createdAt": "2026-07-29T00:10:56Z"
+            },
+            {
+              "_id": "caseStudy-redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future",
+              "slug": "redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future",
+              "createdAt": "2026-07-28T23:15:23Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Labelly: Immutable Product Verification via Blockchain Integration",
+          "docs": [
+            {
+              "_id": "caseStudy-labelly",
+              "slug": "labelly",
+              "createdAt": "2026-07-29T00:11:24Z"
+            },
+            {
+              "_id": "caseStudy-labelly-immutable-product-verification-via-blockchain-integration",
+              "slug": "labelly-immutable-product-verification-via-blockchain-integration",
+              "createdAt": "2026-07-28T23:26:04Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "LinkedIn Sales Navigator: Optimizing the Social Selling Interface",
+          "docs": [
+            {
+              "_id": "caseStudy-linkedin-sales-navigator",
+              "slug": "linkedin-sales-navigator",
+              "createdAt": "2026-07-29T00:11:21Z"
+            },
+            {
+              "_id": "caseStudy-linkedin-sales-navigator-optimizing-the-social-selling-interface",
+              "slug": "linkedin-sales-navigator-optimizing-the-social-selling-interface",
+              "createdAt": "2026-07-28T23:26:01Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience",
+          "docs": [
+            {
+              "_id": "caseStudy-metcred",
+              "slug": "metcred",
+              "createdAt": "2026-07-29T00:11:06Z"
+            },
+            {
+              "_id": "caseStudy-the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience",
+              "slug": "the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience",
+              "createdAt": "2026-07-28T23:15:29Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "NSL OilChem: Digitizing the Lifecycle of Industrial Waste Management",
+          "docs": [
+            {
+              "_id": "caseStudy-nsl-oilchem",
+              "slug": "nsl-oilchem",
+              "createdAt": "2026-07-29T00:11:23Z"
+            },
+            {
+              "_id": "caseStudy-nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+              "slug": "nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+              "createdAt": "2026-07-28T23:26:02Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "NTUC U Care – Digital Transformation for Enhanced Member Support",
+          "docs": [
+            {
+              "_id": "caseStudy-ntuc-u-care",
+              "slug": "ntuc-u-care",
+              "createdAt": "2026-07-29T00:10:41Z"
+            },
+            {
+              "_id": "caseStudy-ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+              "slug": "ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+              "createdAt": "2026-07-28T23:26:09Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "PharmaDropper – Designing Cross-Border Digital Healthcare Commerce",
+          "docs": [
+            {
+              "_id": "caseStudy-pharmadropper",
+              "slug": "pharmadropper",
+              "createdAt": "2026-07-29T00:11:11Z"
+            },
+            {
+              "_id": "caseStudy-pharmadropper-designing-cross-border-digital-healthcare-commerce",
+              "slug": "pharmadropper-designing-cross-border-digital-healthcare-commerce",
+              "createdAt": "2026-07-29T00:30:36Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners",
+          "docs": [
+            {
+              "_id": "caseStudy-plufo",
+              "slug": "plufo",
+              "createdAt": "2026-07-29T00:10:44Z"
+            },
+            {
+              "_id": "caseStudy-plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+              "slug": "plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+              "createdAt": "2026-07-28T23:26:11Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "RideEV – Powering the Phygital EV Revolution in India",
+          "docs": [
+            {
+              "_id": "caseStudy-rideev",
+              "slug": "rideev",
+              "createdAt": "2026-07-29T00:10:43Z"
+            },
+            {
+              "_id": "caseStudy-rideev-powering-the-phygital-ev-revolution-in-india",
+              "slug": "rideev-powering-the-phygital-ev-revolution-in-india",
+              "createdAt": "2026-07-28T23:26:10Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Sadhan – Streamlining Driver Onboarding & Lead Management",
+          "docs": [
+            {
+              "_id": "caseStudy-sadhan",
+              "slug": "sadhan",
+              "createdAt": "2026-07-29T00:10:47Z"
+            },
+            {
+              "_id": "caseStudy-sadhan-streamlining-driver-onboarding-lead-management",
+              "slug": "sadhan-streamlining-driver-onboarding-lead-management",
+              "createdAt": "2026-07-28T23:15:46Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Spark Logistics – Building a Unified Logistics Intelligence Platform",
+          "docs": [
+            {
+              "_id": "caseStudy-spark-logistics",
+              "slug": "spark-logistics",
+              "createdAt": "2026-07-29T00:11:10Z"
+            },
+            {
+              "_id": "caseStudy-spark-logistics-building-a-unified-logistics-intelligence-platform",
+              "slug": "spark-logistics-building-a-unified-logistics-intelligence-platform",
+              "createdAt": "2026-07-29T00:30:35Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Stayweb PMS: A Next-Gen Hospitality Engine Powered by AI and Design Systems",
+          "docs": [
+            {
+              "_id": "caseStudy-stayweb-pms",
+              "slug": "stayweb-pms",
+              "createdAt": "2026-07-29T00:11:26Z"
+            },
+            {
+              "_id": "caseStudy-stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+              "slug": "stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+              "createdAt": "2026-07-28T23:26:06Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Suzlon – Designing the Digital Future of Renewable Energy",
+          "docs": [
+            {
+              "_id": "caseStudy-suzlon",
+              "slug": "suzlon",
+              "createdAt": "2026-07-29T00:11:16Z"
+            },
+            {
+              "_id": "caseStudy-suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+              "slug": "suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+              "createdAt": "2026-07-28T23:25:57Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "TheBizGift – Reimagining Corporate Gifting Through Intelligent Commerce",
+          "docs": [
+            {
+              "_id": "caseStudy-thebizgift",
+              "slug": "thebizgift",
+              "createdAt": "2026-07-29T00:11:09Z"
+            },
+            {
+              "_id": "caseStudy-thebizgift-reimagining-corporate-gifting-through-intelligent-commerce",
+              "slug": "thebizgift-reimagining-corporate-gifting-through-intelligent-commerce",
+              "createdAt": "2026-07-29T00:30:34Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Wugweb HRMS: AI-Powered Human Resource Management Platform",
+          "docs": [
+            {
+              "_id": "caseStudy-unified-hrms-redefining-the-employee-lifecycle-through-automation",
+              "slug": "unified-hrms-redefining-the-employee-lifecycle-through-automation",
+              "createdAt": "2026-07-28T23:26:07Z"
+            },
+            {
+              "_id": "caseStudy-wugweb-hrms",
+              "slug": "wugweb-hrms",
+              "createdAt": "2026-07-29T00:11:27Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "VALYU.ai – Empowering India's Workforce with On-Demand Earned Wages",
+          "docs": [
+            {
+              "_id": "caseStudy-valyu-ai",
+              "slug": "valyu-ai",
+              "createdAt": "2026-07-29T00:10:46Z"
+            },
+            {
+              "_id": "caseStudy-valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+              "slug": "valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+              "createdAt": "2026-07-28T23:26:12Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "VisiONE – Empowering Workforce Development with Competency-Based Assessments",
+          "docs": [
+            {
+              "_id": "caseStudy-visione",
+              "slug": "visione",
+              "createdAt": "2026-07-29T00:10:50Z"
+            },
+            {
+              "_id": "caseStudy-visione-empowering-workforce-development-with-competency-based-assessments",
+              "slug": "visione-empowering-workforce-development-with-competency-based-assessments",
+              "createdAt": "2026-07-28T23:15:41Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Wave Group: Crafting a Multi-Conglomerate Interactive Experience",
+          "docs": [
+            {
+              "_id": "caseStudy-wave-group",
+              "slug": "wave-group",
+              "createdAt": "2026-07-29T00:11:19Z"
+            },
+            {
+              "_id": "caseStudy-wave-group-crafting-a-multi-conglomerate-interactive-experience",
+              "slug": "wave-group-crafting-a-multi-conglomerate-interactive-experience",
+              "createdAt": "2026-07-28T23:25:59Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Witty Vegan: Democratizing Plant-Based Diversity Through Culture",
+          "docs": [
+            {
+              "_id": "caseStudy-witty-vegan",
+              "slug": "witty-vegan",
+              "createdAt": "2026-07-29T00:11:25Z"
+            },
+            {
+              "_id": "caseStudy-witty-vegan-democratizing-plant-based-diversity-through-culture",
+              "slug": "witty-vegan-democratizing-plant-based-diversity-through-culture",
+              "createdAt": "2026-07-28T23:26:05Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Wugweb Kits: The Full-Stack Infrastructure for Multi-Platform Design",
+          "docs": [
+            {
+              "_id": "caseStudy-wugweb-kits",
+              "slug": "wugweb-kits",
+              "createdAt": "2026-07-29T00:11:07Z"
+            },
+            {
+              "_id": "caseStudy-wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+              "slug": "wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+              "createdAt": "2026-07-28T23:25:48Z"
+            }
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "kind": "duplicate-title",
+          "title": "Wugweb Revamp: The Living Manifesto of Digital Perfection",
+          "docs": [
+            {
+              "_id": "caseStudy-wugweb-revamp",
+              "slug": "wugweb-revamp",
+              "createdAt": "2026-07-29T00:11:28Z"
+            },
+            {
+              "_id": "caseStudy-wugweb-revamp-the-living-manifesto-of-digital-perfection",
+              "slug": "wugweb-revamp-the-living-manifesto-of-digital-perfection",
+              "createdAt": "2026-07-28T23:26:08Z"
+            }
+          ]
+        }
+      ],
+      "drafts": [],
+      "stubs": [
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-None",
+          "title": "Eastman Auto & Power – Modernizing Enterprise Manufacturing Experiences",
+          "slug": "None",
+          "createdAt": "2026-07-29T00:11:15Z",
+          "updatedAt": "2026-08-05T02:02:21Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+          "title": "Accelerating Loyalty: Designing Kia's Intuitive Customer Dashboard",
+          "slug": "accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+          "createdAt": "2026-07-28T23:25:42Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-aditya-birla-credit-score",
+          "title": "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool",
+          "slug": "aditya-birla-credit-score",
+          "createdAt": "2026-07-29T00:11:04Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-adneto-merchant-platform",
+          "title": "Reimagining Loyalty Commerce: Building the Adneto Merchant Ecosystem",
+          "slug": "adneto-merchant-platform",
+          "createdAt": "2026-07-29T00:11:01Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+          "title": "ad:tech & iMedia: Sculpting the Visual Identity of Global MarTech Summits",
+          "slug": "adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+          "createdAt": "2026-07-28T23:26:00Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-adtech-imedia",
+          "title": "ad:tech & iMedia: Sculpting the Visual Identity of Global MarTech Summits",
+          "slug": "adtech-imedia",
+          "createdAt": "2026-07-29T00:11:20Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-airtel-xsafe",
+          "title": "Airtel Xsafe – Securing Homes with Intuitive Digital Experiences",
+          "slug": "airtel-xsafe",
+          "createdAt": "2026-07-29T00:10:52Z",
+          "updatedAt": "2026-08-05T03:16:29Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+          "title": "Airtel Xsafe – Securing Homes with Intuitive Digital Experiences",
+          "slug": "airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+          "createdAt": "2026-07-28T23:15:37Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-airtel-xstream-play",
+          "title": "Airtel Xstream Play – Showcasing India's Unified Digital Entertainment on the Web",
+          "slug": "airtel-xstream-play",
+          "createdAt": "2026-07-29T00:10:53Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-airtel-xstream-play-showcasing-indias-unified-digital-entertainment",
+          "title": "Airtel Xstream Play – Showcasing India's Unified Digital Entertainment on the Web",
+          "slug": "airtel-xstream-play-showcasing-indias-unified-digital-entertainment",
+          "createdAt": "2026-07-28T23:25:40Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-audiofolio",
+          "title": "AudioFolio – Reinventing Audio Discovery Through AI",
+          "slug": "audiofolio",
+          "createdAt": "2026-07-29T00:11:13Z",
+          "updatedAt": "2026-08-05T02:02:54Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-audiofolio-reinventing-audio-discovery-through-ai",
+          "title": "AudioFolio – Reinventing Audio Discovery Through AI",
+          "slug": "audiofolio-reinventing-audio-discovery-through-ai",
+          "createdAt": "2026-07-29T00:30:37Z",
+          "updatedAt": "2026-08-05T02:02:54Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-axis-bank-savings",
+          "title": "The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform",
+          "slug": "axis-bank-savings",
+          "createdAt": "2026-07-29T00:11:05Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-bankco",
+          "title": "Bankco – Engineering the Ultimate Banking Super App Ecosystem",
+          "slug": "bankco",
+          "createdAt": "2026-07-29T00:11:02Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-bankco-engineering-the-ultimate-banking-super-app-ecosystem",
+          "title": "Bankco – Engineering the Ultimate Banking Super App Ecosystem",
+          "slug": "bankco-engineering-the-ultimate-banking-super-app-ecosystem",
+          "createdAt": "2026-07-28T23:25:47Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-bodyshop",
+          "title": "Bodyshop – Building a Premium Wellness Commerce Experience",
+          "slug": "bodyshop",
+          "createdAt": "2026-07-29T00:11:17Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-bodyshop-building-a-premium-wellness-commerce-experience",
+          "title": "Bodyshop – Building a Premium Wellness Commerce Experience",
+          "slug": "bodyshop-building-a-premium-wellness-commerce-experience",
+          "createdAt": "2026-07-29T00:30:40Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-cartier-careers",
+          "title": "Redesigning Cartier's Career Website – Where Passion Meets Excellence",
+          "slug": "cartier-careers",
+          "createdAt": "2026-07-29T00:10:55Z",
+          "updatedAt": "2026-08-05T03:16:31Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-crafting-digital-authority-the-adneto-website-showcase",
+          "title": "Reimagining Loyalty Commerce: Building the Adneto Merchant Ecosystem",
+          "slug": "crafting-digital-authority-the-adneto-website-showcase",
+          "createdAt": "2026-07-28T23:25:45Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-crafting-digital-elegance-the-tot-bridal-launch-story",
+          "title": "Crafting Digital Elegance: The TOT Bridal Launch Story",
+          "slug": "crafting-digital-elegance-the-tot-bridal-launch-story",
+          "createdAt": "2026-07-28T23:25:43Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+          "title": "Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool",
+          "slug": "demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+          "createdAt": "2026-07-28T23:15:39Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+          "title": "Eastman Auto & Power – Modernizing Enterprise Manufacturing Experiences",
+          "slug": "eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+          "createdAt": "2026-07-29T00:30:38Z",
+          "updatedAt": "2026-08-05T02:02:54Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-eekenlife-redefining-footwear-e-commerce-for-the-next-generation",
+          "title": "Eekenlife: Redefining Footwear E-commerce for the Next Generation",
+          "slug": "eekenlife-redefining-footwear-e-commerce-for-the-next-generation",
+          "createdAt": "2026-07-28T23:25:53Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-global-trade-finance-engineering-an-authority-first-lead-generation-engine",
+          "title": "Global Trade Finance: Engineering an Authority-First Lead Generation Engine",
+          "slug": "global-trade-finance-engineering-an-authority-first-lead-generation-engine",
+          "createdAt": "2026-07-28T23:25:56Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-gratify-the-intelligent-rewards-and-feedback-platform",
+          "title": "Gratify – The Intelligent Rewards & Feedback Platform",
+          "slug": "gratify-the-intelligent-rewards-and-feedback-platform",
+          "createdAt": "2026-07-28T23:25:46Z",
+          "updatedAt": "2026-08-05T02:02:17Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-hyatt-restaurants",
+          "title": "Hyatt Restaurants – Elevating Culinary Discovery Through Digital Experiences",
+          "slug": "hyatt-restaurants",
+          "createdAt": "2026-07-29T00:11:00Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+          "title": "Hyatt Restaurants – Elevating Culinary Discovery Through Digital Experiences",
+          "slug": "hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+          "createdAt": "2026-07-29T00:30:22Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-ikan-the-next-generation-corporate-mental-healthcare-platform",
+          "title": "iKan: The Next-Generation Corporate Mental Healthcare Platform",
+          "slug": "ikan-the-next-generation-corporate-mental-healthcare-platform",
+          "createdAt": "2026-07-28T23:25:55Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-indusninja",
+          "title": "IndusNinja – Your AI-Powered Financial Ninja",
+          "slug": "indusninja",
+          "createdAt": "2026-07-29T00:10:49Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-indusninja-your-ai-powered-financial-ninja",
+          "title": "IndusNinja – Your AI-Powered Financial Ninja",
+          "slug": "indusninja-your-ai-powered-financial-ninja",
+          "createdAt": "2026-07-28T23:15:44Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-inkompass",
+          "title": "Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future",
+          "slug": "inkompass",
+          "createdAt": "2026-07-29T00:10:56Z",
+          "updatedAt": "2026-08-05T03:16:32Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-itc-dark-fantasy-x-citadel-personalizing-the-spy-experience",
+          "title": "ITC Dark Fantasy x Citadel: Personalizing the Spy Experience",
+          "slug": "itc-dark-fantasy-x-citadel-personalizing-the-spy-experience",
+          "createdAt": "2026-07-28T23:25:51Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-kia-loyalty-dashboard",
+          "title": "Accelerating Loyalty: Designing Kia's Intuitive Customer Dashboard",
+          "slug": "kia-loyalty-dashboard",
+          "createdAt": "2026-07-29T00:10:57Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-labelly",
+          "title": "Labelly: Immutable Product Verification via Blockchain Integration",
+          "slug": "labelly",
+          "createdAt": "2026-07-29T00:11:24Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-labelly-immutable-product-verification-via-blockchain-integration",
+          "title": "Labelly: Immutable Product Verification via Blockchain Integration",
+          "slug": "labelly-immutable-product-verification-via-blockchain-integration",
+          "createdAt": "2026-07-28T23:26:04Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-linkedin-sales-navigator",
+          "title": "LinkedIn Sales Navigator: Optimizing the Social Selling Interface",
+          "slug": "linkedin-sales-navigator",
+          "createdAt": "2026-07-29T00:11:21Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-linkedin-sales-navigator-optimizing-the-social-selling-interface",
+          "title": "LinkedIn Sales Navigator: Optimizing the Social Selling Interface",
+          "slug": "linkedin-sales-navigator-optimizing-the-social-selling-interface",
+          "createdAt": "2026-07-28T23:26:01Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-metcred",
+          "title": "The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience",
+          "slug": "metcred",
+          "createdAt": "2026-07-29T00:11:06Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-nsl-oilchem",
+          "title": "NSL OilChem: Digitizing the Lifecycle of Industrial Waste Management",
+          "slug": "nsl-oilchem",
+          "createdAt": "2026-07-29T00:11:23Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+          "title": "NSL OilChem: Digitizing the Lifecycle of Industrial Waste Management",
+          "slug": "nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+          "createdAt": "2026-07-28T23:26:02Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-ntuc-u-care",
+          "title": "NTUC U Care – Digital Transformation for Enhanced Member Support",
+          "slug": "ntuc-u-care",
+          "createdAt": "2026-07-29T00:10:41Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+          "title": "NTUC U Care – Digital Transformation for Enhanced Member Support",
+          "slug": "ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+          "createdAt": "2026-07-28T23:26:09Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-pharmadropper",
+          "title": "PharmaDropper – Designing Cross-Border Digital Healthcare Commerce",
+          "slug": "pharmadropper",
+          "createdAt": "2026-07-29T00:11:11Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-pharmadropper-designing-cross-border-digital-healthcare-commerce",
+          "title": "PharmaDropper – Designing Cross-Border Digital Healthcare Commerce",
+          "slug": "pharmadropper-designing-cross-border-digital-healthcare-commerce",
+          "createdAt": "2026-07-29T00:30:36Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-plufo",
+          "title": "Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners",
+          "slug": "plufo",
+          "createdAt": "2026-07-29T00:10:44Z",
+          "updatedAt": "2026-08-05T03:16:24Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+          "title": "Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners",
+          "slug": "plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+          "createdAt": "2026-07-28T23:26:11Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah-business-ecosystem",
+          "title": "RAK SME: Scaling the Tech Infrastructure for Ras Al Khaimah's Business Ecosystem",
+          "slug": "rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah-business-ecosystem",
+          "createdAt": "2026-07-28T23:25:52Z",
+          "updatedAt": "2026-08-05T02:02:18Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-redesigning-cartiers-career-website-where-passion-meets-excellence",
+          "title": "Redesigning Cartier's Career Website – Where Passion Meets Excellence",
+          "slug": "redesigning-cartiers-career-website-where-passion-meets-excellence",
+          "createdAt": "2026-07-28T23:25:41Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future",
+          "title": "Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future",
+          "slug": "redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future",
+          "createdAt": "2026-07-28T23:15:23Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-rideev",
+          "title": "RideEV – Powering the Phygital EV Revolution in India",
+          "slug": "rideev",
+          "createdAt": "2026-07-29T00:10:43Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-rideev-powering-the-phygital-ev-revolution-in-india",
+          "title": "RideEV – Powering the Phygital EV Revolution in India",
+          "slug": "rideev-powering-the-phygital-ev-revolution-in-india",
+          "createdAt": "2026-07-28T23:26:10Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-sadhan",
+          "title": "Sadhan – Streamlining Driver Onboarding & Lead Management",
+          "slug": "sadhan",
+          "createdAt": "2026-07-29T00:10:47Z",
+          "updatedAt": "2026-08-05T03:16:27Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-sadhan-streamlining-driver-onboarding-lead-management",
+          "title": "Sadhan – Streamlining Driver Onboarding & Lead Management",
+          "slug": "sadhan-streamlining-driver-onboarding-lead-management",
+          "createdAt": "2026-07-28T23:15:46Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-sbs-transit-engineering-the-future-of-multimodal-urban-mobility",
+          "title": "SBS Transit: Engineering the Future of Multimodal Urban Mobility",
+          "slug": "sbs-transit-engineering-the-future-of-multimodal-urban-mobility",
+          "createdAt": "2026-07-28T23:25:49Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-spark-logistics",
+          "title": "Spark Logistics – Building a Unified Logistics Intelligence Platform",
+          "slug": "spark-logistics",
+          "createdAt": "2026-07-29T00:11:10Z",
+          "updatedAt": "2026-08-05T02:02:54Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-spark-logistics-building-a-unified-logistics-intelligence-platform",
+          "title": "Spark Logistics – Building a Unified Logistics Intelligence Platform",
+          "slug": "spark-logistics-building-a-unified-logistics-intelligence-platform",
+          "createdAt": "2026-07-29T00:30:35Z",
+          "updatedAt": "2026-08-05T02:02:54Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-stayweb-pms",
+          "title": "Stayweb PMS: A Next-Gen Hospitality Engine Powered by AI and Design Systems",
+          "slug": "stayweb-pms",
+          "createdAt": "2026-07-29T00:11:26Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+          "title": "Stayweb PMS: A Next-Gen Hospitality Engine Powered by AI and Design Systems",
+          "slug": "stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+          "createdAt": "2026-07-28T23:26:06Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-suzlon",
+          "title": "Suzlon – Designing the Digital Future of Renewable Energy",
+          "slug": "suzlon",
+          "createdAt": "2026-07-29T00:11:16Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+          "title": "Suzlon – Designing the Digital Future of Renewable Energy",
+          "slug": "suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+          "createdAt": "2026-07-28T23:25:57Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+          "title": "The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform",
+          "slug": "the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+          "createdAt": "2026-07-28T23:15:20Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience",
+          "title": "The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience",
+          "slug": "the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience",
+          "createdAt": "2026-07-28T23:15:29Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-thebizgift",
+          "title": "TheBizGift – Reimagining Corporate Gifting Through Intelligent Commerce",
+          "slug": "thebizgift",
+          "createdAt": "2026-07-29T00:11:09Z",
+          "updatedAt": "2026-08-05T02:02:54Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-thebizgift-reimagining-corporate-gifting-through-intelligent-commerce",
+          "title": "TheBizGift – Reimagining Corporate Gifting Through Intelligent Commerce",
+          "slug": "thebizgift-reimagining-corporate-gifting-through-intelligent-commerce",
+          "createdAt": "2026-07-29T00:30:34Z",
+          "updatedAt": "2026-08-05T02:02:54Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-tot-bridal",
+          "title": "Crafting Digital Elegance: The TOT Bridal Launch Story",
+          "slug": "tot-bridal",
+          "createdAt": "2026-07-29T00:10:58Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-unified-hrms-redefining-the-employee-lifecycle-through-automation",
+          "title": "Wugweb HRMS: AI-Powered Human Resource Management Platform",
+          "slug": "unified-hrms-redefining-the-employee-lifecycle-through-automation",
+          "createdAt": "2026-07-28T23:26:07Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-valyu-ai",
+          "title": "VALYU.ai – Empowering India's Workforce with On-Demand Earned Wages",
+          "slug": "valyu-ai",
+          "createdAt": "2026-07-29T00:10:46Z",
+          "updatedAt": "2026-08-05T03:16:25Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+          "title": "VALYU.ai – Empowering India's Workforce with On-Demand Earned Wages",
+          "slug": "valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+          "createdAt": "2026-07-28T23:26:12Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-visione",
+          "title": "VisiONE – Empowering Workforce Development with Competency-Based Assessments",
+          "slug": "visione",
+          "createdAt": "2026-07-29T00:10:50Z",
+          "updatedAt": "2026-08-05T03:16:28Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-visione-empowering-workforce-development-with-competency-based-assessments",
+          "title": "VisiONE – Empowering Workforce Development with Competency-Based Assessments",
+          "slug": "visione-empowering-workforce-development-with-competency-based-assessments",
+          "createdAt": "2026-07-28T23:15:41Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-wave-group",
+          "title": "Wave Group: Crafting a Multi-Conglomerate Interactive Experience",
+          "slug": "wave-group",
+          "createdAt": "2026-07-29T00:11:19Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-wave-group-crafting-a-multi-conglomerate-interactive-experience",
+          "title": "Wave Group: Crafting a Multi-Conglomerate Interactive Experience",
+          "slug": "wave-group-crafting-a-multi-conglomerate-interactive-experience",
+          "createdAt": "2026-07-28T23:25:59Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-witty-vegan",
+          "title": "Witty Vegan: Democratizing Plant-Based Diversity Through Culture",
+          "slug": "witty-vegan",
+          "createdAt": "2026-07-29T00:11:25Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-witty-vegan-democratizing-plant-based-diversity-through-culture",
+          "title": "Witty Vegan: Democratizing Plant-Based Diversity Through Culture",
+          "slug": "witty-vegan-democratizing-plant-based-diversity-through-culture",
+          "createdAt": "2026-07-28T23:26:05Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-woodkraft-elevating-indias-largest-corporate-fit-out-legacy",
+          "title": "Woodkraft: Elevating India's Largest Corporate Fit-Out Legacy",
+          "slug": "woodkraft-elevating-indias-largest-corporate-fit-out-legacy",
+          "createdAt": "2026-07-28T23:25:54Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-wugweb-hrms",
+          "title": "Wugweb HRMS: AI-Powered Human Resource Management Platform",
+          "slug": "wugweb-hrms",
+          "createdAt": "2026-07-29T00:11:27Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-wugweb-kits",
+          "title": "Wugweb Kits: The Full-Stack Infrastructure for Multi-Platform Design",
+          "slug": "wugweb-kits",
+          "createdAt": "2026-07-29T00:11:07Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+          "title": "Wugweb Kits: The Full-Stack Infrastructure for Multi-Platform Design",
+          "slug": "wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+          "createdAt": "2026-07-28T23:25:48Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-wugweb-revamp",
+          "title": "Wugweb Revamp: The Living Manifesto of Digital Perfection",
+          "slug": "wugweb-revamp",
+          "createdAt": "2026-07-29T00:11:28Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "caseStudy",
+          "_id": "caseStudy-wugweb-revamp-the-living-manifesto-of-digital-perfection",
+          "title": "Wugweb Revamp: The Living Manifesto of Digital Perfection",
+          "slug": "wugweb-revamp-the-living-manifesto-of-digital-perfection",
+          "createdAt": "2026-07-28T23:26:08Z",
+          "updatedAt": "2026-08-05T00:45:10Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body",
+            "no-cover"
+          ]
+        }
+      ]
+    },
+    "post": {
+      "duplicates": [
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10aholedesignpatterns",
+          "docs": [
+            {
+              "_id": "post-10-a-hole-design-patterns",
+              "title": "10 A**hole Design Patterns\r",
+              "createdAt": "2026-07-28T23:18:58Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSDlE",
+              "title": "10 A**hole Design Patterns",
+              "createdAt": "2026-07-30T19:42:40Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10confessionsofaproductdesigner",
+          "docs": [
+            {
+              "_id": "post-10-confessions-of-a-product-designer",
+              "title": "10 Confessions of a Product Designer\r",
+              "createdAt": "2026-07-28T23:15:56Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSEDf",
+              "title": "10 Confessions of a Product Designer",
+              "createdAt": "2026-07-30T19:42:49Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10essentialskillsforthemodernuiuxdesigner",
+          "docs": [
+            {
+              "_id": "post-10-essential-skills-for-the-modern-ui-ux-designer",
+              "title": "10 Essential Skills for the Modern UI & UX Designer\r",
+              "createdAt": "2026-07-28T23:15:52Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSEAC",
+              "title": "10 Essential Skills for the Modern UI & UX Designer",
+              "createdAt": "2026-07-30T19:42:48Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10featuresimlovinginframerrightnow",
+          "docs": [
+            {
+              "_id": "post-10-features-i-m-loving-in-framer-right-now",
+              "title": "10 Features I'm Loving in Framer Right Now\r",
+              "createdAt": "2026-07-29T01:39:48Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRJPt",
+              "title": "10 Features I'm Loving in Framer Right Now",
+              "createdAt": "2026-07-30T19:42:43Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10figmatricksiwishiknewearlier",
+          "docs": [
+            {
+              "_id": "post-10-figma-tricks-i-wish-i-knew-earlier",
+              "title": "10 Figma Tricks I Wish I Knew Earlier",
+              "createdAt": "2026-07-28T23:15:53Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sBGz9jasVeWZXQwGrvdhzS",
+              "title": "10 Figma Tricks I Wish I Knew Earlier",
+              "createdAt": "2026-07-30T19:42:51Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10hacksforillustratinganddrawinginfigma",
+          "docs": [
+            {
+              "_id": "post-10-hacks-for-illustrating-and-drawing-in-figma",
+              "title": "10 Hacks for Illustrating and Drawing in Figma\r",
+              "createdAt": "2026-07-28T23:15:48Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRCM3",
+              "title": "10 Hacks for Illustrating and Drawing in Figma",
+              "createdAt": "2026-07-30T19:42:41Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10keytakeawaysfromgooglesmaterialdesignguidelines",
+          "docs": [
+            {
+              "_id": "post-10-key-takeaways-from-google-s-material-design-guidelines",
+              "title": "10 Key Takeaways from Google's Material Design Guidelines\r",
+              "createdAt": "2026-07-29T01:39:54Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "post-10-key-takeaways-from-googles-material-design-guidelines",
+              "title": "10 Key Takeaways from Google's Material Design Guidelines",
+              "createdAt": "2026-07-28T23:15:49Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRJvV",
+              "title": "10 Key Takeaways from Google's Material Design Guidelines",
+              "createdAt": "2026-07-30T19:42:47Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10principlesfortypographyinuidesign",
+          "docs": [
+            {
+              "_id": "post-10-principles-for-typography-in-ui-design",
+              "title": "10 Principles for Typography in UI Design\r",
+              "createdAt": "2026-07-28T23:15:50Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSEJD",
+              "title": "10 Principles for Typography in UI Design",
+              "createdAt": "2026-07-30T19:42:50Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10rulesofthumbinuidesign",
+          "docs": [
+            {
+              "_id": "post-10-rules-of-thumb-in-ui-design",
+              "title": "10 Rules of Thumb in UI Design\r",
+              "createdAt": "2026-07-28T23:18:55Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRCX7",
+              "title": "10 Rules of Thumb in UI Design",
+              "createdAt": "2026-07-30T19:42:42Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "10waystodesignmoreinclusiveproducts",
+          "docs": [
+            {
+              "_id": "post-10-ways-to-design-more-inclusive-products",
+              "title": "10 Ways to Design More Inclusive Products\r",
+              "createdAt": "2026-07-28T23:15:55Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRJir",
+              "title": "10 Ways to Design More Inclusive Products",
+              "createdAt": "2026-07-30T19:42:46Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "6strategiesthatgotmysideprojectitsfirst1000users",
+          "docs": [
+            {
+              "_id": "post-6-strategies-that-got-my-side-project-its-first-1-000-users",
+              "title": "6 Strategies That Got My Side Project Its First 1,000 Users\r",
+              "createdAt": "2026-07-28T23:19:01Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSDvd",
+              "title": "6 Strategies That Got My Side Project Its First 1,000 Users",
+              "createdAt": "2026-07-30T19:42:44Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "agileworkinginux",
+          "docs": [
+            {
+              "_id": "post-agile-working-in-ux",
+              "title": "Agile UX: Creativity, Collaboration & Flexibility\r",
+              "createdAt": "2026-07-29T01:39:35Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSCpf",
+              "title": "Agile UX: Creativity, Collaboration & Flexibility",
+              "createdAt": "2026-07-30T19:42:34Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "aiinuxdesign",
+          "docs": [
+            {
+              "_id": "post-ai-in-ux-design",
+              "title": "How AI Is Changing UX Design\r",
+              "createdAt": "2026-07-29T01:39:31Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRAyh",
+              "title": "How AI Is Changing UX Design",
+              "createdAt": "2026-07-30T19:42:30Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "balancinguserneedsandbusinessgoals",
+          "docs": [
+            {
+              "_id": "post-balancing-user-needs-and-business-goals",
+              "title": "Balancing User Needs and Business Goals\r",
+              "createdAt": "2026-07-29T01:39:29Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSCbn",
+              "title": "Balancing User Needs and Business Goals",
+              "createdAt": "2026-07-30T19:42:29Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "designworkconcentration",
+          "docs": [
+            {
+              "_id": "post-design-work-concentration",
+              "title": "The Reality of Work Concentration in Design\r",
+              "createdAt": "2026-07-29T01:39:34Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sBGz9jasVeWZXQwGrvdcy5",
+              "title": "The Reality of Work Concentration in Design",
+              "createdAt": "2026-07-30T19:42:32Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "htmlsitemapsforseoux",
+          "docs": [
+            {
+              "_id": "post-html-sitemaps-for-seo-ux",
+              "title": "When (and Why) to Use HTML Sitemaps\r",
+              "createdAt": "2026-07-29T01:39:32Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRB9l",
+              "title": "When (and Why) to Use HTML Sitemaps",
+              "createdAt": "2026-07-30T19:42:31Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "isaugmentedrealitythefutureofux",
+          "docs": [
+            {
+              "_id": "post-is-augmented-reality-the-future-of-ux",
+              "title": "Is Augmented Reality the future of UX?\r",
+              "createdAt": "2026-07-28T23:19:02Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSDzn",
+              "title": "Is Augmented Reality the future of UX?",
+              "createdAt": "2026-07-30T19:42:45Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "remotedesignworkproscons",
+          "docs": [
+            {
+              "_id": "post-remote-design-work-pros-cons",
+              "title": "The Reality of Remote Work for Designers\r",
+              "createdAt": "2026-07-29T00:17:08Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSDa8",
+              "title": "The Reality of Remote Work for Designers",
+              "createdAt": "2026-07-30T19:42:36Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "theaipoweredcxsingularity",
+          "docs": [
+            {
+              "_id": "post-the-ai-powered-cx-singularity",
+              "title": "The AI-Powered CX Singularity\r",
+              "createdAt": "2026-07-29T01:39:40Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSDdb",
+              "title": "The AI-Powered CX Singularity",
+              "createdAt": "2026-07-30T19:42:38Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "top10designsystemsuxui2026",
+          "docs": [
+            {
+              "_id": "post-top-10-design-systems-ux-ui-2026",
+              "title": "Top 10 Design Systems for UX/UI in 2026\r",
+              "createdAt": "2026-07-29T01:39:42Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRBwl",
+              "title": "Top 10 Design Systems for UX/UI in 2026",
+              "createdAt": "2026-07-30T19:42:39Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-slug",
+          "slug": "uxmeetscxseamlessexperiences",
+          "docs": [
+            {
+              "_id": "post-ux-meets-cx-seamless-experiences",
+              "title": "When UX Meets CX: Designing Seamless Experiences\r",
+              "createdAt": "2026-07-29T01:39:37Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSDUa",
+              "title": "When UX Meets CX: Designing Seamless Experiences",
+              "createdAt": "2026-07-30T19:42:35Z",
+              "rev": "hEzuHHk6Tg1XoYfrKuf0nw"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-title",
+          "title": "Stop using Dribbble & Behance to find practical design inspiration",
+          "docs": [
+            {
+              "_id": "1ldNh76NU0J0b4so5ExUN9",
+              "slug": "stop-using-dribbble-behance-to-find-practical-design-inspiration",
+              "createdAt": "2026-08-05T02:45:40Z"
+            },
+            {
+              "_id": "post-stop-using-dribbble-behance",
+              "slug": "stop-using-dribbble-behance",
+              "createdAt": "2026-07-29T00:17:07Z"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-title",
+          "title": "Top 10 Design Systems for UX/UI in 2026",
+          "docs": [
+            {
+              "_id": "post-top-10-design-systems-for-uxui-in-2026",
+              "slug": "top-10-design-systems-for-uxui-in-2026",
+              "createdAt": "2026-07-28T23:15:51Z"
+            },
+            {
+              "_id": "post-top-10-design-systems-ux-ui-2026",
+              "slug": "top-10-design-systems-ux-ui-2026",
+              "createdAt": "2026-07-29T01:39:42Z"
+            },
+            {
+              "_id": "tiq3HCZvfjiLTvLIciRBwl",
+              "slug": "top-10-design-systems-ux-ui-2026",
+              "createdAt": "2026-07-30T19:42:39Z"
+            }
+          ]
+        },
+        {
+          "type": "post",
+          "kind": "duplicate-title",
+          "title": "When UX Meets CX: Designing Seamless Experiences\r",
+          "docs": [
+            {
+              "_id": "post-ux-meets-cx-seamless-experiences",
+              "slug": "ux-meets-cx-seamless-experiences",
+              "createdAt": "2026-07-29T01:39:37Z"
+            },
+            {
+              "_id": "post-when-ux-meets-cx-designing-seamless-experiences",
+              "slug": "when-ux-meets-cx-designing-seamless-experiences",
+              "createdAt": "2026-07-28T23:15:47Z"
+            },
+            {
+              "_id": "sHwgBSKVSbbtAB6hpiSDUa",
+              "slug": "ux-meets-cx-seamless-experiences",
+              "createdAt": "2026-07-30T19:42:35Z"
+            }
+          ]
+        }
+      ],
+      "drafts": [],
+      "stubs": [
+        {
+          "type": "post",
+          "_id": "0P2zz4yUt080ih2mMTh1We",
+          "title": "Top 10 Design Tools That Will Simplify Your Design Process",
+          "slug": "top-10-design-tools-that-will-simplify-your-design-process",
+          "createdAt": "2026-08-05T02:45:35Z",
+          "updatedAt": "2026-08-05T02:53:08Z",
+          "bodyWords": 1101,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "0P2zz4yUt080ih2mMTh1lc",
+          "title": "Use this easy checklist to ensure a smooth design handoff",
+          "slug": "use-this-easy-checklist-to-ensure-a-smooth-design-handoff",
+          "createdAt": "2026-08-05T02:45:38Z",
+          "updatedAt": "2026-08-05T02:53:12Z",
+          "bodyWords": 2119,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "0P2zz4yUt080ih2mMTh2Se",
+          "title": "How Visual Design Contributes to an Engaging UX",
+          "slug": "how-visual-design-contributes-to-an-engaging-ux-2",
+          "createdAt": "2026-08-05T02:45:41Z",
+          "updatedAt": "2026-08-05T02:53:17Z",
+          "bodyWords": 1348,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "0P2zz4yUt080ih2mMTh2qy",
+          "title": "Is the ability to code essential to succeed as a designer?",
+          "slug": "is-the-ability-to-code-essential-to-succeed-as-a-designer",
+          "createdAt": "2026-08-05T02:45:43Z",
+          "updatedAt": "2026-08-05T02:53:20Z",
+          "bodyWords": 2737,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "0P2zz4yUt080ih2mMThD8y",
+          "title": "5 Burning Questions You Need to Ask to Get Your Brand on Top",
+          "slug": "5-burning-questions-you-need-to-ask-to-get-your-brand-on-top",
+          "createdAt": "2026-08-05T02:45:58Z",
+          "updatedAt": "2026-08-05T02:45:58Z",
+          "bodyWords": 536,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "0P2zz4yUt080ih2mMThDGS",
+          "title": "Navigating through branding fantasies - upcoming trends and tools to up your game",
+          "slug": "navigating-through-branding-fantasies-upcoming-trends-and-tools-to-up-your-game",
+          "createdAt": "2026-08-05T02:45:59Z",
+          "updatedAt": "2026-08-05T02:45:59Z",
+          "bodyWords": 548,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "0P2zz4yUt080ih2mMTnJpk",
+          "title": "How is video commerce a powerful tool for shopping?",
+          "slug": "how-is-video-commerce-a-powerful-tool-for-shopping",
+          "createdAt": "2026-08-05T03:13:44Z",
+          "updatedAt": "2026-08-05T03:13:44Z",
+          "bodyWords": 2587,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "0P2zz4yUt080ih2mMUkmqa",
+          "title": "Future-Proofing Your Designs: The Top 10 Design Systems for UX/UI Designers in 2023",
+          "slug": "future-proofing-your-designs-the-top-10-design-systems-for-ux-ui-designers-in-2023",
+          "createdAt": "2026-08-05T06:53:53Z",
+          "updatedAt": "2026-08-05T06:53:53Z",
+          "bodyWords": 1334,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "1ldNh76NU0J0b4so5ExTkl",
+          "title": "The incredible power of Zero-UI technology",
+          "slug": "the-incredible-power-of-zero-ui-technology",
+          "createdAt": "2026-08-05T02:45:36Z",
+          "updatedAt": "2026-08-05T02:53:10Z",
+          "bodyWords": 1550,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "1ldNh76NU0J0b4so5ExUCB",
+          "title": "A Guide to Evaluating Design Projects",
+          "slug": "a-guide-to-evaluating-design-projects",
+          "createdAt": "2026-08-05T02:45:39Z",
+          "updatedAt": "2026-08-05T02:53:14Z",
+          "bodyWords": 1857,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "1ldNh76NU0J0b4so5ExUN9",
+          "title": "Stop using Dribbble & Behance to find practical design inspiration",
+          "slug": "stop-using-dribbble-behance-to-find-practical-design-inspiration",
+          "createdAt": "2026-08-05T02:45:40Z",
+          "updatedAt": "2026-08-05T02:53:15Z",
+          "bodyWords": 1062,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "1ldNh76NU0J0b4so5ExZ9H",
+          "title": "User-Centric Design: Why User Research Should Drive Your Product Strategy",
+          "slug": "user-centric-design-why-user-research-should-drive-your-product-strategy",
+          "createdAt": "2026-08-05T02:45:57Z",
+          "updatedAt": "2026-08-05T02:45:57Z",
+          "bodyWords": 563,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "1ldNh76NU0J0b4so5ExZr9",
+          "title": "Color Symbolism in UX Design: Communicating Messages through Color",
+          "slug": "color-symbolism-in-ux-design-communicating-messages-through-color",
+          "createdAt": "2026-08-05T02:46:01Z",
+          "updatedAt": "2026-08-05T02:46:01Z",
+          "bodyWords": 527,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "hEzuHHk6Tg1XoYfrKvBwcJ",
+          "title": "How exactly do product manager and UX designer collaborate?",
+          "slug": "how-exactly-do-product-manager-and-ux-designer-collaborate",
+          "createdAt": "2026-08-05T02:45:42Z",
+          "updatedAt": "2026-08-05T02:53:18Z",
+          "bodyWords": 857,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "hEzuHHk6Tg1XoYfrKvBzv9",
+          "title": "Designing Chatbot Personalities and Flows 101: Creating Engaging Conversational Experiences",
+          "slug": "designing-chatbot-personalities-and-flows-101-creating-engaging-conversational-experiences",
+          "createdAt": "2026-08-05T02:46:02Z",
+          "updatedAt": "2026-08-05T02:46:02Z",
+          "bodyWords": 561,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "hEzuHHk6Tg1XoYfrKvC09U",
+          "title": "UI Design Trends to Watch Out for in 2023 and Resurfacing Comeback Trend",
+          "slug": "ui-design-trends-to-watch-out-for-in-2023-and-resurfacing-comeback-trend",
+          "createdAt": "2026-08-05T02:46:04Z",
+          "updatedAt": "2026-08-05T02:46:04Z",
+          "bodyWords": 926,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "hEzuHHk6Tg1XoYfrKvC0Ps",
+          "title": "Leveraging Data and Google Analytics for UX Design Success",
+          "slug": "leveraging-data-and-google-analytics-for-ux-design-success",
+          "createdAt": "2026-08-05T02:46:05Z",
+          "updatedAt": "2026-08-05T02:46:05Z",
+          "bodyWords": 650,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-10-confessions-of-a-product-designer",
+          "title": "10 Confessions of a Product Designer\r",
+          "slug": "10-confessions-of-a-product-designer",
+          "createdAt": "2026-07-28T23:15:56Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 45,
+          "issues": [
+            "tiny-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-10-figma-tricks-i-wish-i-knew-earlier",
+          "title": "10 Figma Tricks I Wish I Knew Earlier",
+          "slug": "10-figma-tricks-i-wish-i-knew-earlier",
+          "createdAt": "2026-07-28T23:15:53Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 36,
+          "issues": [
+            "tiny-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-10-principles-for-typography-in-ui-design",
+          "title": "10 Principles for Typography in UI Design\r",
+          "slug": "10-principles-for-typography-in-ui-design",
+          "createdAt": "2026-07-28T23:15:50Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 39,
+          "issues": [
+            "tiny-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-accessibility-first",
+          "title": "Designing for Accessibility First",
+          "slug": "accessibility-first",
+          "createdAt": "2026-07-29T00:16:34Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-accessibility-good-product-design",
+          "title": "Accessibility is Good Product Design",
+          "slug": "accessibility-good-product-design",
+          "createdAt": "2026-07-29T00:16:46Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ai-assisted-wireframing",
+          "title": "AI-Assisted Wireframing",
+          "slug": "ai-assisted-wireframing",
+          "createdAt": "2026-07-29T00:16:30Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ai-changing-product-design",
+          "title": "AI is Changing Product Design",
+          "slug": "ai-changing-product-design",
+          "createdAt": "2026-07-29T00:17:02Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 9,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ai-design-systems",
+          "title": "AI Meets Design Systems",
+          "slug": "ai-design-systems",
+          "createdAt": "2026-07-29T00:16:21Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ai-powered-ux-research",
+          "title": "AI-Powered UX Research",
+          "slug": "ai-powered-ux-research",
+          "createdAt": "2026-07-29T00:16:48Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ai-will-not-replace-designers",
+          "title": "AI Will Not Replace Designers",
+          "slug": "ai-will-not-replace-designers",
+          "createdAt": "2026-07-29T00:16:37Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-better-onboarding-experiences",
+          "title": "Building Better Onboarding Experiences",
+          "slug": "better-onboarding-experiences",
+          "createdAt": "2026-07-29T00:16:35Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-building-better-design-portfolios",
+          "title": "Building Better Design Portfolios",
+          "slug": "building-better-design-portfolios",
+          "createdAt": "2026-07-29T00:16:51Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-building-better-product-teams",
+          "title": "Building Better Product Teams",
+          "slug": "building-better-product-teams",
+          "createdAt": "2026-07-29T00:16:20Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-building-products-people-love",
+          "title": "Building Products People Love",
+          "slug": "building-products-people-love",
+          "createdAt": "2026-07-29T00:16:42Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-business-value-of-good-ux",
+          "title": "The Business Value of Good UX",
+          "slug": "business-value-of-good-ux",
+          "createdAt": "2026-07-29T00:16:47Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-customer-journey-mapping",
+          "title": "Customer Journey Mapping Explained",
+          "slug": "customer-journey-mapping",
+          "createdAt": "2026-07-29T00:16:57Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-design-systems-beyond-ui-kits",
+          "title": "Design Systems Beyond UI Kits",
+          "slug": "design-systems-beyond-ui-kits",
+          "createdAt": "2026-07-29T00:17:05Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-design-thinking-vs-product-thinking",
+          "title": "Design Thinking vs Product Thinking",
+          "slug": "design-thinking-vs-product-thinking",
+          "createdAt": "2026-07-29T00:16:36Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-designer-developer-collaboration",
+          "title": "Collaboration Between Designers and Developers",
+          "slug": "designer-developer-collaboration",
+          "createdAt": "2026-07-29T00:16:59Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-designing-ai-workflows",
+          "title": "Designing AI Workflows",
+          "slug": "designing-ai-workflows",
+          "createdAt": "2026-07-29T00:16:18Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-designing-better-saas-products",
+          "title": "Designing Better SaaS Products",
+          "slug": "designing-better-saas-products",
+          "createdAt": "2026-07-29T00:16:56Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-designing-for-trust",
+          "title": "Designing for Trust in Digital Products",
+          "slug": "designing-for-trust",
+          "createdAt": "2026-07-29T00:16:41Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-designing-products-that-scale",
+          "title": "Designing Products That Scale",
+          "slug": "designing-products-that-scale",
+          "createdAt": "2026-07-29T00:16:16Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-designing-with-data",
+          "title": "Designing with Data",
+          "slug": "designing-with-data",
+          "createdAt": "2026-07-29T00:16:23Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-emotional-design-digital-products",
+          "title": "Emotional Design in Digital Products",
+          "slug": "emotional-design-digital-products",
+          "createdAt": "2026-07-29T00:16:53Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-evolution-of-ux-strategy",
+          "title": "The Evolution of UX Strategy",
+          "slug": "evolution-of-ux-strategy",
+          "createdAt": "2026-07-29T00:16:43Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-from-wireframes-to-product-strategy",
+          "title": "From Wireframes to Product Strategy",
+          "slug": "from-wireframes-to-product-strategy",
+          "createdAt": "2026-07-29T00:17:01Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-future-product-design-careers",
+          "title": "The Future of Product Design Careers",
+          "slug": "future-product-design-careers",
+          "createdAt": "2026-07-29T00:16:50Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-future-proofing-design-careers",
+          "title": "Future-Proofing Design Careers",
+          "slug": "future-proofing-design-careers",
+          "createdAt": "2026-07-29T00:16:22Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-guarding-against-disposable-design",
+          "title": "Guarding Against Disposable Design",
+          "slug": "guarding-against-disposable-design",
+          "createdAt": "2026-07-28T23:27:50Z",
+          "updatedAt": "2026-08-05T06:50:42Z",
+          "bodyWords": 2853,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-human-centered-ai-products",
+          "title": "Human-Centered AI Products",
+          "slug": "human-centered-ai-products",
+          "createdAt": "2026-07-29T00:17:00Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-measuring-ux-success",
+          "title": "Measuring UX Success",
+          "slug": "measuring-ux-success",
+          "createdAt": "2026-07-29T00:16:58Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-mvp-to-product-market-fit",
+          "title": "From MVP to Product-Market Fit",
+          "slug": "mvp-to-product-market-fit",
+          "createdAt": "2026-07-29T00:16:26Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 3,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-next-generation-product-designers",
+          "title": "The Next Generation of Product Designers",
+          "slug": "next-generation-product-designers",
+          "createdAt": "2026-07-29T00:16:17Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-product-discovery-done-right",
+          "title": "Product Discovery Done Right",
+          "slug": "product-discovery-done-right",
+          "createdAt": "2026-07-29T00:16:38Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-product-metrics-designers",
+          "title": "Product Metrics Every Designer Should Track",
+          "slug": "product-metrics-designers",
+          "createdAt": "2026-07-29T00:16:33Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-product-roadmaps-designers",
+          "title": "Product Roadmaps Designers Should Understand",
+          "slug": "product-roadmaps-designers",
+          "createdAt": "2026-07-29T00:16:27Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-product-thinking-vs-feature-thinking",
+          "title": "Product Thinking vs Feature Thinking",
+          "slug": "product-thinking-vs-feature-thinking",
+          "createdAt": "2026-07-29T00:17:06Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-psychology-great-products",
+          "title": "The Psychology Behind Great Products",
+          "slug": "psychology-great-products",
+          "createdAt": "2026-07-29T00:16:28Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-research-never-ends",
+          "title": "Why Research Never Ends",
+          "slug": "research-never-ends",
+          "createdAt": "2026-07-29T00:16:25Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-responsible-ai-design",
+          "title": "Responsible AI Design Principles",
+          "slug": "responsible-ai-design",
+          "createdAt": "2026-07-29T00:16:49Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-scaling-ux-enterprise",
+          "title": "Scaling UX in Enterprise Organizations",
+          "slug": "scaling-ux-enterprise",
+          "createdAt": "2026-07-29T00:16:52Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-startups-need-design-system",
+          "title": "Why Every Startup Needs a Design System",
+          "slug": "startups-need-design-system",
+          "createdAt": "2026-07-29T00:16:32Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-stop-using-dribbble-behance",
+          "title": "Stop Using Dribbble & Behance to Find Practical Design Inspiration",
+          "slug": "stop-using-dribbble-behance",
+          "createdAt": "2026-07-29T00:17:07Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 9,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-technology-stack-for-product-designers",
+          "title": "The Technology Stack Every Product Designer Should Know",
+          "slug": "technology-stack-for-product-designers",
+          "createdAt": "2026-07-29T00:17:03Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-the-end-of-screen-based-interfaces",
+          "title": "The End of Screen-Based Interfaces",
+          "slug": "the-end-of-screen-based-interfaces",
+          "createdAt": "2026-07-28T23:27:49Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 280,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-top-10-design-systems-for-uxui-in-2026",
+          "title": "Top 10 Design Systems for UX/UI in 2026",
+          "slug": "top-10-design-systems-for-uxui-in-2026",
+          "createdAt": "2026-07-28T23:15:51Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 87,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ux-debt-is-real",
+          "title": "UX Debt is Real",
+          "slug": "ux-debt-is-real",
+          "createdAt": "2026-07-29T00:16:39Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ux-maturity-model",
+          "title": "The UX Maturity Model Explained",
+          "slug": "ux-maturity-model",
+          "createdAt": "2026-07-29T00:16:31Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ux-research-repository",
+          "title": "UX Research Repository Essentials",
+          "slug": "ux-research-repository",
+          "createdAt": "2026-07-29T00:16:19Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 5,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ux-research-without-large-budgets",
+          "title": "UX Research Without Large Budgets",
+          "slug": "ux-research-without-large-budgets",
+          "createdAt": "2026-07-29T00:16:55Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 7,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-ux-vs-cx-best-products",
+          "title": "UX vs CX: Why the Best Products Win at Both",
+          "slug": "ux-vs-cx-best-products",
+          "createdAt": "2026-07-29T00:17:09Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 12,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-when-ux-meets-cx-designing-seamless-experiences",
+          "title": "When UX Meets CX: Designing Seamless Experiences",
+          "slug": "when-ux-meets-cx-designing-seamless-experiences",
+          "createdAt": "2026-07-28T23:15:47Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 90,
+          "issues": [
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-why-designers-should-understand-apis",
+          "title": "Why Every Designer Should Understand APIs",
+          "slug": "why-designers-should-understand-apis",
+          "createdAt": "2026-07-29T00:17:04Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 8,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-why-simplicity-wins",
+          "title": "Why Simplicity Wins",
+          "slug": "why-simplicity-wins",
+          "createdAt": "2026-07-29T00:16:40Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 6,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "post-writing-better-ux-copy",
+          "title": "Writing Better UX Copy",
+          "slug": "writing-better-ux-copy",
+          "createdAt": "2026-07-29T00:16:29Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 4,
+          "issues": [
+            "tiny-body",
+            "no-cover"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sBGz9jasVeWZXQwGrvdcy5",
+          "title": "The Reality of Work Concentration in Design",
+          "slug": "design-work-concentration",
+          "createdAt": "2026-07-30T19:42:32Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sBGz9jasVeWZXQwGrvdhzS",
+          "title": "10 Figma Tricks I Wish I Knew Earlier",
+          "slug": "10-figma-tricks-i-wish-i-knew-earlier",
+          "createdAt": "2026-07-30T19:42:51Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSCbn",
+          "title": "Balancing User Needs and Business Goals",
+          "slug": "balancing-user-needs-and-business-goals",
+          "createdAt": "2026-07-30T19:42:29Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSCpf",
+          "title": "Agile UX: Creativity, Collaboration & Flexibility",
+          "slug": "agile-working-in-ux",
+          "createdAt": "2026-07-30T19:42:34Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSDUa",
+          "title": "When UX Meets CX: Designing Seamless Experiences",
+          "slug": "ux-meets-cx-seamless-experiences",
+          "createdAt": "2026-07-30T19:42:35Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSDa8",
+          "title": "The Reality of Remote Work for Designers",
+          "slug": "remote-design-work-pros-cons",
+          "createdAt": "2026-07-30T19:42:36Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSDdb",
+          "title": "The AI-Powered CX Singularity",
+          "slug": "the-ai-powered-cx-singularity",
+          "createdAt": "2026-07-30T19:42:38Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSDlE",
+          "title": "10 A**hole Design Patterns",
+          "slug": "10-a-hole-design-patterns",
+          "createdAt": "2026-07-30T19:42:40Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSDvd",
+          "title": "6 Strategies That Got My Side Project Its First 1,000 Users",
+          "slug": "6-strategies-that-got-my-side-project-its-first-1-000-users",
+          "createdAt": "2026-07-30T19:42:44Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSDzn",
+          "title": "Is Augmented Reality the future of UX?",
+          "slug": "is-augmented-reality-the-future-of-ux",
+          "createdAt": "2026-07-30T19:42:45Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSEAC",
+          "title": "10 Essential Skills for the Modern UI & UX Designer",
+          "slug": "10-essential-skills-for-the-modern-ui-ux-designer",
+          "createdAt": "2026-07-30T19:42:48Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSEDf",
+          "title": "10 Confessions of a Product Designer",
+          "slug": "10-confessions-of-a-product-designer",
+          "createdAt": "2026-07-30T19:42:49Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "sHwgBSKVSbbtAB6hpiSEJD",
+          "title": "10 Principles for Typography in UI Design",
+          "slug": "10-principles-for-typography-in-ui-design",
+          "createdAt": "2026-07-30T19:42:50Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "tiq3HCZvfjiLTvLIciRAyh",
+          "title": "How AI Is Changing UX Design",
+          "slug": "ai-in-ux-design",
+          "createdAt": "2026-07-30T19:42:30Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "tiq3HCZvfjiLTvLIciRB9l",
+          "title": "When (and Why) to Use HTML Sitemaps",
+          "slug": "html-sitemaps-for-seo-ux",
+          "createdAt": "2026-07-30T19:42:31Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "tiq3HCZvfjiLTvLIciRBwl",
+          "title": "Top 10 Design Systems for UX/UI in 2026",
+          "slug": "top-10-design-systems-ux-ui-2026",
+          "createdAt": "2026-07-30T19:42:39Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "tiq3HCZvfjiLTvLIciRCM3",
+          "title": "10 Hacks for Illustrating and Drawing in Figma",
+          "slug": "10-hacks-for-illustrating-and-drawing-in-figma",
+          "createdAt": "2026-07-30T19:42:41Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "tiq3HCZvfjiLTvLIciRCX7",
+          "title": "10 Rules of Thumb in UI Design",
+          "slug": "10-rules-of-thumb-in-ui-design",
+          "createdAt": "2026-07-30T19:42:42Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "tiq3HCZvfjiLTvLIciRJPt",
+          "title": "10 Features I'm Loving in Framer Right Now",
+          "slug": "10-features-i-m-loving-in-framer-right-now",
+          "createdAt": "2026-07-30T19:42:43Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "tiq3HCZvfjiLTvLIciRJir",
+          "title": "10 Ways to Design More Inclusive Products",
+          "slug": "10-ways-to-design-more-inclusive-products",
+          "createdAt": "2026-07-30T19:42:46Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        },
+        {
+          "type": "post",
+          "_id": "tiq3HCZvfjiLTvLIciRJvV",
+          "title": "10 Key Takeaways from Google's Material Design Guidelines",
+          "slug": "10-key-takeaways-from-google-s-material-design-guidelines",
+          "createdAt": "2026-07-30T19:42:47Z",
+          "updatedAt": "2026-08-05T00:45:12Z",
+          "bodyWords": 0,
+          "issues": [
+            "empty-body"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -26,15 +26,15 @@ export const serviceBySlugQuery = `
 
 export const caseStudiesListQuery = `
   *[_type == "caseStudy"] | order(featured desc, publishedAt desc) {
-    title, "slug": slug.current, client, summary, about, coverImage, coverPath, thumbnailPath, galleryPaths, tags,
+    title, "slug": slug.current, client, summary, bodyContent, coverImage, coverPath, thumbnailPath, tags,
     disciplines, industry, timeline, publishedAt, featured
   }
 `;
 
 export const caseStudyBySlugQuery = `
   *[_type == "caseStudy" && slug.current == $slug][0] {
-    title, client, summary, about, tags, disciplines, industry, timeline, team,
-    coverImage, coverPath, thumbnailPath, galleryPaths, gallery, challenges, solutions, impact, results, body,
+    title, client, summary, bodyContent, tags, disciplines, industry, timeline, team,
+    coverImage, coverPath, thumbnailPath, results,
     seoTitle, seoDescription, ogImage, publishedAt, featured,
     "services": services[]->{ title, "slug": slug.current }
   }

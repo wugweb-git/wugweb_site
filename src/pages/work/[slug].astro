@@ -13,7 +13,55 @@ if (!work) {
 }
 
 const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
-const gallery = (work.galleryPaths || []).map((p: string) => assetUrl(p));
+const bodyContent = Array.isArray(work.bodyContent) ? work.bodyContent : [];
+
+const escapeHtml = (value: string = '') => value
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;');
+
+const getSpanText = (children: any[] = []) => children
+  .map((child) => escapeHtml(child?.text || ''))
+  .join('');
+
+const normalizeMediaSrc = (value?: string) => {
+  if (!value) return '';
+  return /^https?:\/\//.test(value) ? value : assetUrl(value);
+};
+
+const bodyContentHtml = bodyContent.map((block: any) => {
+  if (!block?._type) return '';
+
+  if (block._type === 'block') {
+    const text = getSpanText(block.children || []);
+    if (!text) return '';
+    if (block.style === 'h2') return `<h2>${text}</h2>`;
+    if (block.style === 'h3') return `<h3>${text}</h3>`;
+    if (block.style === 'blockquote') return `<blockquote>${text}</blockquote>`;
+    return `<p>${text}</p>`;
+  }
+
+  if (block._type === 'mediaUrl') {
+    const src = normalizeMediaSrc(block.url);
+    if (!src) return '';
+    const alt = escapeHtml(block.alt || block.caption || '');
+    const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : '';
+    const media = src.endsWith('.mp4') || src.endsWith('.webm')
+      ? `<video src="${src}" muted loop playsinline controls preload="none"></video>`
+      : `<img src="${src}" alt="${alt}" loading="lazy" decoding="async" />`;
+    return `<figure class="portable-media">${media}${caption}</figure>`;
+  }
+
+  if (block._type === 'video') {
+    const src = normalizeMediaSrc(block.url);
+    if (!src) return '';
+    const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : '';
+    return `<figure class="portable-media"><video src="${src}" ${block.autoplay ? 'autoplay ' : ''}${block.muted === false ? '' : 'muted '} ${block.loop ? 'loop ' : ''}playsinline controls preload="none"></video>${caption}</figure>`;
+  }
+
+  return '';
+}).filter(Boolean).join('');
 
 const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy"]{"slug": slug.current}`).catch(() => []);
 const seenSlugs = new Set();
@@ -30,7 +78,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 )).then(r => r.filter(Boolean));
 ---
 
-<BaseLayout title={`${work.title} — Wugweb Work`} description={(work.about || work.summary || '').slice(0, 160)}>
+<BaseLayout title={`${work.title} — Wugweb Work`} description={(work.summary || '').slice(0, 160)}>
   <section class="work-detail-hero">
     <div class="wrap">
       <p class="eyebrow"><a href="/work">Work</a></p>
@@ -53,81 +101,17 @@ const otherCases = await Promise.all(others.map((s: any) =>
   <!-- SINGLE-COLUMN ADAPTIVE UX BODY CONTENT -->
   <div class="wrap case-body-content">
     
-    <!-- About Section -->
-    {(work.about || work.summary) && (
+    {work.summary && (
       <article class="case-section text-block" data-reveal>
-        <h2>About the Project</h2>
-        <p class="lead-text">{work.about || work.summary}</p>
-      </article>
-    )}
-
-    <!-- Challenges Section -->
-    {work.challenges?.length > 0 && (
-      <article class="case-section text-block" data-reveal>
-        <h2>Challenges</h2>
-        <div class="flat-list">
-          {work.challenges.map((c: any) => (
-            <div class="flat-item">
-              <h3>{c.title}</h3>
-              <p>{c.body}</p>
-            </div>
-          ))}
-        </div>
-      </article>
-    )}
-
-    <!-- Solutions Section -->
-    {work.solutions?.length > 0 && (
-      <article class="case-section text-block" data-reveal>
-        <h2>Solutions</h2>
-        <div class="flat-list">
-          {work.solutions.map((s: any) => (
-            <div class="flat-item">
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </div>
-          ))}
-        </div>
+        <p class="lead-text">{work.summary}</p>
       </article>
     )}
 
     <!-- Full Body Content (Sanity blocks) -->
-    {work.body && work.body.length > 0 && (
+    {bodyContentHtml && (
       <article class="case-section text-block" data-reveal>
         <h2>Project Narrative</h2>
-        <div class="portable-text" set:html={work.body.map((block: any) => {
-          const text = block.children?.map((c: any) => c.text).join('') || '';
-          if (block.style === 'h3') return `<h3>${text}</h3>`;
-          return `<p>${text}</p>`;
-        }).filter(Boolean).join('')}></div>
-      </article>
-    )}
-
-    <!-- Immersive Gallery (Media expands to fill width) -->
-    {gallery.length > 0 && (
-      <div class="case-section media-full-width" data-reveal>
-        {gallery.map((src: string) => (
-          <div class="media-container">
-            {src.endsWith('.mp4') || src.endsWith('.webm')
-              ? <video src={src} muted loop playsinline controls preload="none"></video>
-              : <img src={src} alt="" loading="lazy" decoding="async" />}
-          </div>
-        ))}
-      </div>
-    )}
-
-    <!-- Impact Section -->
-    {work.impact?.length > 0 && (
-      <article class="case-section text-block" data-reveal>
-        <h2>Impact</h2>
-        <div class="flat-list impact-list">
-          {work.impact.map((i: any) => (
-            <div class="flat-item metric-item">
-              <span class="metric-val">{i.title}</span>
-              <p>{i.body}</p>
-            </div>
-          ))}
-        </div>
+        <div class="portable-text" set:html={bodyContentHtml}></div>
       </article>
     )}
 
@@ -283,30 +267,6 @@ const otherCases = await Promise.all(others.map((s: any) =>
     color: var(--fg-muted);
   }
 
-  .flat-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-8);
-  }
-
-  .flat-item {
-    border-left: 2px solid var(--color-accent-primary);
-    padding-left: var(--gap-6);
-  }
-
-  .flat-item h3 {
-    font-size: var(--t-h4);
-    font-weight: var(--font-weight-semibold);
-    color: var(--fg);
-    margin-bottom: var(--gap-2);
-  }
-
-  .flat-item p {
-    font-size: var(--fluid-body-md);
-    line-height: var(--core-line-height-relaxed);
-    color: var(--fg-muted);
-  }
-
   .portable-text p {
     font-size: var(--fluid-body-md);
     line-height: 1.8;
@@ -315,55 +275,26 @@ const otherCases = await Promise.all(others.map((s: any) =>
   }
   .portable-text h2 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); color: var(--fg); margin-top: var(--gap-10); margin-bottom: var(--gap-4); }
   .portable-text h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); margin-top: var(--gap-7); margin-bottom: var(--gap-3); }
+  .portable-text blockquote { margin: var(--gap-8) 0; padding-left: var(--gap-6); border-left: 2px solid var(--color-accent-primary); color: var(--fg); }
   .portable-text ul, .portable-text ol { margin-top: var(--gap-4); padding-left: var(--gap-6); color: var(--fg-muted); line-height: 1.75; }
   .portable-text li { margin-top: var(--gap-2); }
 
-  /* Media fills layout width */
-  .media-full-width {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-8);
-  }
-
-  .media-container {
+  .portable-media {
+    margin: var(--space-section-sm) 0;
     width: 100%;
     border-radius: var(--radius-xl);
     overflow: hidden;
     border: 1px solid var(--line);
     background: color-mix(in srgb, var(--neutral-10) 20%, transparent);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-
-  .media-container:hover {
-    transform: scale(1.015);
-  }
-
-  .media-container img, .media-container video {
+  .portable-media img, .portable-media video {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
   }
-
-  /* Impact outcome statistics formatting */
-  .impact-list {
-    gap: var(--gap-6);
-  }
-
-  .metric-item {
-    border-left: 2px solid var(--color-accent-primary);
-    padding-left: var(--gap-6);
-  }
-
-  .metric-val {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: var(--t-h2);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-accent-primary);
-    margin-bottom: var(--gap-1);
-  }
+  .portable-media figcaption { padding: var(--gap-4) var(--gap-5); color: var(--fg-muted); font-size: var(--fluid-body-sm); }
 
   /* More cases Redesign */
   .more-cases-section {

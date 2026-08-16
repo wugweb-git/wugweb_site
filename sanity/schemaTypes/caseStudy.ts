@@ -21,7 +21,6 @@ export default defineType({
     defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Hero image for the case study detail page (Sanity CDN — prefer coverPath for R2)', group: 'overview' }),
     defineField({ name: 'thumbnailPath', type: 'string', description: 'R2/local path for listing thumb e.g. /assets/work/.../…-thumb.mp4', group: 'overview' }),
     defineField({ name: 'coverPath', type: 'string', description: 'R2/local path for detail cover e.g. /assets/framer/.../cover-image-….jpg', group: 'overview' }),
-    defineField({ name: 'galleryPaths', type: 'array', of: [{ type: 'string' }], description: 'Ordered gallery paths under /assets/…', group: 'content' }),
     defineField({ name: 'client', type: 'string', description: 'Display name (legacy text). Prefer Client ref below for relationships.', group: 'overview' }),
     defineField({
       name: 'clientRef',
@@ -48,7 +47,6 @@ export default defineType({
       group: 'relations',
     }),
     defineField({ name: 'summary', type: 'text', rows: 2, description: 'Short description for work listing cards. 1-2 sentences.', group: 'overview' }),
-    defineField({ name: 'about', type: 'text', rows: 4, description: 'Longer context section shown on the detail page', group: 'overview' }),
     defineField({ name: 'disciplines', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, description: 'e.g. UX Design, Strategy, Development', group: 'overview' }),
     defineField({ name: 'industry', type: 'string', description: 'Legacy text industry — prefer Industry ref', group: 'overview' }),
     defineField({ name: 'timeline', type: 'string', description: 'e.g. "2022" or "Q3 2023"', group: 'overview' }),
@@ -58,34 +56,15 @@ export default defineType({
     defineField({ name: 'services', title: 'Related Services', type: 'array', of: [{ type: 'reference', to: [{ type: 'service' }] }], group: 'overview' }),
 
     // ── Content ──
-    defineField({ name: 'gallery', type: 'array', of: [{ type: 'image', options: { hotspot: true }, fields: [
-      { name: 'alt', type: 'string' },
-      { name: 'caption', type: 'string' },
-    ]}], group: 'content' }),
     defineField({
-      name: 'challenges', type: 'array', of: [{ type: 'object', fields: [
-        { name: 'title', type: 'string', description: 'Short challenge name' },
-        { name: 'body', type: 'text', rows: 3 },
-      ]}], group: 'content',
+      name: 'bodyContent',
+      title: 'Body Content',
+      type: 'blockContent',
+      description: 'Merged narrative: About, Challenges, Solutions, Design Philosophy, Impact, and embedded gallery media.',
+      group: 'content',
     }),
-    defineField({
-      name: 'solutions', type: 'array', of: [{ type: 'object', fields: [
-        { name: 'title', type: 'string', description: 'Short solution name' },
-        { name: 'body', type: 'text', rows: 3 },
-      ]}], group: 'content',
-    }),
-    defineField({
-      name: 'designPhilosophy', type: 'text', rows: 5, description: 'Strategic insights and design philosophy — what made this project unique', group: 'content',
-    }),
-    defineField({ name: 'body', type: 'blockContent', title: 'Full Body Content', description: 'Rich text body with images, CTAs, stats, etc.', group: 'content' }),
 
     // ── Results ──
-    defineField({
-      name: 'impact', type: 'array', of: [{ type: 'object', fields: [
-        { name: 'title', type: 'string', description: 'Short impact headline' },
-        { name: 'body', type: 'text', rows: 3 },
-      ]}], group: 'results',
-    }),
     defineField({ name: 'results', type: 'array', of: [{ type: 'object', fields: [
       { name: 'metric', type: 'string', description: 'e.g. "150%"' },
       { name: 'label', type: 'string', description: 'e.g. "Increase in conversions"' },

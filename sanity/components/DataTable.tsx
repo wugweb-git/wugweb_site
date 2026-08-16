@@ -213,6 +213,22 @@ export function DataTable({
     }
   };
 
+  const runSingleAction = async (action: BulkAction, row: Row) => {
+    if (action.confirm && !window.confirm(action.confirm)) return;
+    try {
+      const didReload = await action.run([row._id], client);
+      if (didReload && onReload) onReload();
+      notify(`${action.label}: 1`);
+      setSelected((current) => {
+        const next = new Set(current);
+        next.delete(row._id);
+        return next;
+      });
+    } catch (e: any) {
+      notify(`Action failed: ${e?.message || 'unknown error'}`);
+    }
+  };
+
   // ── Column resize ──
   const startResize = (e: React.MouseEvent, key: string) => {
     e.preventDefault();
@@ -603,6 +619,16 @@ export function DataTable({
                                   <MenuItem text="Copy ID" icon={CopyIcon} onClick={() => copy(row._id, 'ID')} />
                                   <MenuItem text="Copy slug" icon={CopyIcon} onClick={() => copy(String(row.slug ?? ''), 'slug')} />
                                   <MenuItem text={isFav ? 'Unpin' : 'Pin'} icon={PinIcon} onClick={() => toggleFav(row._id)} />
+                                  <MenuDivider />
+                                  {bulkActions?.filter((a) => ['delete', 'duplicate', 'publish', 'unpublish', 'archive'].includes(a.id)).map((a) => (
+                                    <MenuItem
+                                      key={a.id}
+                                      text={a.label}
+                                      tone={a.danger ? 'critical' : 'default'}
+                                      icon={a.icon}
+                                      onClick={() => runSingleAction(a, row)}
+                                    />
+                                  ))}
                                   <MenuDivider />
                                   <MenuItem text="Export row" icon={DownloadIcon} onClick={() => {
                                     const cols = columns.filter((c) => visible[c.key] !== false);

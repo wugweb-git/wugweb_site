@@ -16,6 +16,7 @@ export const blockContent = defineType({
       { name: 'caption', type: 'string', title: 'Caption' },
     ]},
     { type: 'video', title: 'Video' },
+    { type: 'mediaUrl', title: 'Media URL' },
     { type: 'cta', title: 'Call to Action' },
     { type: 'stats', title: 'Stats Row' },
     { type: 'accordion', title: 'Accordion / FAQ' },
@@ -92,6 +93,22 @@ export const logoCloud = defineType({
     prepare: ({ title, logos }: any) => ({
       title: title || 'Logo Cloud',
       subtitle: `${logos?.length || 0} logo${logos?.length !== 1 ? 's' : ''}`,
+    }),
+  },
+});
+
+export const mediaUrl = defineType({
+  name: 'mediaUrl', title: 'Media URL', type: 'object',
+  fields: [
+    { name: 'url', type: 'url', title: 'Media URL', description: 'Image or video URL (R2/local path or full URL)' },
+    { name: 'caption', type: 'string', title: 'Caption' },
+    { name: 'alt', type: 'string', title: 'Alt text' },
+  ],
+  preview: {
+    select: { title: 'caption', subtitle: 'url' },
+    prepare: ({ title, subtitle }: any) => ({
+      title: title || 'Media',
+      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
     }),
   },
 });

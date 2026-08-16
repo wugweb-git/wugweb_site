@@ -1,0 +1,266 @@
+{
+  "mode": "dry-run",
+  "generatedAt": "2026-08-16T09:26:55.852Z",
+  "stats": {
+    "hashDupDeletes": 21,
+    "placeholderDeletes": 0,
+    "totalDeletes": 21,
+    "repointedAssets": 21
+  },
+  "repoint": [
+    {
+      "assetId": "asset-blog-10-a-hole-design-patterns-webp",
+      "from": "sHwgBSKVSbbtAB6hpiSDlE",
+      "to": "post-10-a-hole-design-patterns",
+      "fileName": "10-a-hole-design-patterns.webp"
+    },
+    {
+      "assetId": "asset-blog-10-confessions-of-a-product-designer-webp",
+      "from": "sHwgBSKVSbbtAB6hpiSEDf",
+      "to": "post-10-confessions-of-a-product-designer",
+      "fileName": "10-confessions-of-a-product-designer.webp"
+    },
+    {
+      "assetId": "asset-blog-10-essential-skills-for-the-modern-ui-ux-designer-webp",
+      "from": "sHwgBSKVSbbtAB6hpiSEAC",
+      "to": "post-10-essential-skills-for-the-modern-ui-ux-designer",
+      "fileName": "10-essential-skills-for-the-modern-ui-ux-designer.webp"
+    },
+    {
+      "assetId": "asset-blog-10-features-i-m-loving-in-framer-right-now-png",
+      "from": "tiq3HCZvfjiLTvLIciRJPt",
+      "to": "post-10-features-i-m-loving-in-framer-right-now",
+      "fileName": "10-features-i-m-loving-in-framer-right-now.png"
+    },
+    {
+      "assetId": "asset-blog-10-figma-tricks-i-wish-i-knew-earlier-png",
+      "from": "sBGz9jasVeWZXQwGrvdhzS",
+      "to": "post-10-figma-tricks-i-wish-i-knew-earlier",
+      "fileName": "10-figma-tricks-i-wish-i-knew-earlier.png"
+    },
+    {
+      "assetId": "asset-blog-10-hacks-for-illustrating-and-drawing-in-figma-png",
+      "from": "tiq3HCZvfjiLTvLIciRCM3",
+      "to": "post-10-hacks-for-illustrating-and-drawing-in-figma",
+      "fileName": "10-hacks-for-illustrating-and-drawing-in-figma.png"
+    },
+    {
+      "assetId": "asset-blog-10-key-takeaways-from-google-s-material-design-guidelines-webp",
+      "from": "tiq3HCZvfjiLTvLIciRJvV",
+      "to": "post-10-key-takeaways-from-google-s-material-design-guidelines",
+      "fileName": "10-key-takeaways-from-google-s-material-design-guidelines.webp"
+    },
+    {
+      "assetId": "asset-blog-10-principles-for-typography-in-ui-design-webp",
+      "from": "sHwgBSKVSbbtAB6hpiSEJD",
+      "to": "post-10-principles-for-typography-in-ui-design",
+      "fileName": "10-principles-for-typography-in-ui-design.webp"
+    },
+    {
+      "assetId": "asset-blog-10-rules-of-thumb-in-ui-design-webp",
+      "from": "tiq3HCZvfjiLTvLIciRCX7",
+      "to": "post-10-rules-of-thumb-in-ui-design",
+      "fileName": "10-rules-of-thumb-in-ui-design.webp"
+    },
+    {
+      "assetId": "asset-blog-10-ways-to-design-more-inclusive-products-webp",
+      "from": "tiq3HCZvfjiLTvLIciRJir",
+      "to": "post-10-ways-to-design-more-inclusive-products",
+      "fileName": "10-ways-to-design-more-inclusive-products.webp"
+    },
+    {
+      "assetId": "asset-blog-6-strategies-that-got-my-side-project-its-first-1-000-users-png",
+      "from": "sHwgBSKVSbbtAB6hpiSDvd",
+      "to": "post-6-strategies-that-got-my-side-project-its-first-1-000-users",
+      "fileName": "6-strategies-that-got-my-side-project-its-first-1-000-users.png"
+    },
+    {
+      "assetId": "asset-blog-agile-working-in-ux-png",
+      "from": "sHwgBSKVSbbtAB6hpiSCpf",
+      "to": "post-agile-working-in-ux",
+      "fileName": "agile-working-in-ux.png"
+    },
+    {
+      "assetId": "asset-blog-ai-in-ux-design-png",
+      "from": "tiq3HCZvfjiLTvLIciRAyh",
+      "to": "post-ai-in-ux-design",
+      "fileName": "ai-in-ux-design.png"
+    },
+    {
+      "assetId": "asset-blog-balancing-user-needs-and-business-goals-png",
+      "from": "sHwgBSKVSbbtAB6hpiSCbn",
+      "to": "post-balancing-user-needs-and-business-goals",
+      "fileName": "balancing-user-needs-and-business-goals.png"
+    },
+    {
+      "assetId": "asset-blog-design-work-concentration-png",
+      "from": "sBGz9jasVeWZXQwGrvdcy5",
+      "to": "post-design-work-concentration",
+      "fileName": "design-work-concentration.png"
+    },
+    {
+      "assetId": "asset-blog-html-sitemaps-for-seo-ux-png",
+      "from": "tiq3HCZvfjiLTvLIciRB9l",
+      "to": "post-html-sitemaps-for-seo-ux",
+      "fileName": "html-sitemaps-for-seo-ux.png"
+    },
+    {
+      "assetId": "asset-blog-is-augmented-reality-the-future-of-ux-png",
+      "from": "sHwgBSKVSbbtAB6hpiSDzn",
+      "to": "post-is-augmented-reality-the-future-of-ux",
+      "fileName": "is-augmented-reality-the-future-of-ux.png"
+    },
+    {
+      "assetId": "asset-blog-remote-design-work-pros-cons-png",
+      "from": "sHwgBSKVSbbtAB6hpiSDa8",
+      "to": "post-remote-design-work-pros-cons",
+      "fileName": "remote-design-work-pros-cons.png"
+    },
+    {
+      "assetId": "asset-blog-the-ai-powered-cx-singularity-png",
+      "from": "sHwgBSKVSbbtAB6hpiSDdb",
+      "to": "post-the-ai-powered-cx-singularity",
+      "fileName": "the-ai-powered-cx-singularity.png"
+    },
+    {
+      "assetId": "asset-blog-top-10-design-systems-ux-ui-2026-jpg",
+      "from": "tiq3HCZvfjiLTvLIciRBwl",
+      "to": "post-top-10-design-systems-ux-ui-2026",
+      "fileName": "top-10-design-systems-ux-ui-2026.jpg"
+    },
+    {
+      "assetId": "asset-blog-ux-meets-cx-seamless-experiences-png",
+      "from": "sHwgBSKVSbbtAB6hpiSDUa",
+      "to": "post-ux-meets-cx-seamless-experiences",
+      "fileName": "ux-meets-cx-seamless-experiences.png"
+    }
+  ],
+  "deletions": [
+    {
+      "_id": "sBGz9jasVeWZXQwGrvdcy5",
+      "title": "The Reality of Work Concentration in Design",
+      "slug": "design-work-concentration",
+      "reason": "empty hash duplicate (keeper: post-design-work-concentration)"
+    },
+    {
+      "_id": "sBGz9jasVeWZXQwGrvdhzS",
+      "title": "10 Figma Tricks I Wish I Knew Earlier",
+      "slug": "10-figma-tricks-i-wish-i-knew-earlier",
+      "reason": "empty hash duplicate (keeper: post-10-figma-tricks-i-wish-i-knew-earlier)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSCbn",
+      "title": "Balancing User Needs and Business Goals",
+      "slug": "balancing-user-needs-and-business-goals",
+      "reason": "empty hash duplicate (keeper: post-balancing-user-needs-and-business-goals)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSCpf",
+      "title": "Agile UX: Creativity, Collaboration & Flexibility",
+      "slug": "agile-working-in-ux",
+      "reason": "empty hash duplicate (keeper: post-agile-working-in-ux)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDUa",
+      "title": "When UX Meets CX: Designing Seamless Experiences",
+      "slug": "ux-meets-cx-seamless-experiences",
+      "reason": "empty hash duplicate (keeper: post-ux-meets-cx-seamless-experiences)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDa8",
+      "title": "The Reality of Remote Work for Designers",
+      "slug": "remote-design-work-pros-cons",
+      "reason": "empty hash duplicate (keeper: post-remote-design-work-pros-cons)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDdb",
+      "title": "The AI-Powered CX Singularity",
+      "slug": "the-ai-powered-cx-singularity",
+      "reason": "empty hash duplicate (keeper: post-the-ai-powered-cx-singularity)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDlE",
+      "title": "10 A**hole Design Patterns",
+      "slug": "10-a-hole-design-patterns",
+      "reason": "empty hash duplicate (keeper: post-10-a-hole-design-patterns)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDvd",
+      "title": "6 Strategies That Got My Side Project Its First 1,000 Users",
+      "slug": "6-strategies-that-got-my-side-project-its-first-1-000-users",
+      "reason": "empty hash duplicate (keeper: post-6-strategies-that-got-my-side-project-its-first-1-000-users)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSDzn",
+      "title": "Is Augmented Reality the future of UX?",
+      "slug": "is-augmented-reality-the-future-of-ux",
+      "reason": "empty hash duplicate (keeper: post-is-augmented-reality-the-future-of-ux)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSEAC",
+      "title": "10 Essential Skills for the Modern UI & UX Designer",
+      "slug": "10-essential-skills-for-the-modern-ui-ux-designer",
+      "reason": "empty hash duplicate (keeper: post-10-essential-skills-for-the-modern-ui-ux-designer)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSEDf",
+      "title": "10 Confessions of a Product Designer",
+      "slug": "10-confessions-of-a-product-designer",
+      "reason": "empty hash duplicate (keeper: post-10-confessions-of-a-product-designer)"
+    },
+    {
+      "_id": "sHwgBSKVSbbtAB6hpiSEJD",
+      "title": "10 Principles for Typography in UI Design",
+      "slug": "10-principles-for-typography-in-ui-design",
+      "reason": "empty hash duplicate (keeper: post-10-principles-for-typography-in-ui-design)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRAyh",
+      "title": "How AI Is Changing UX Design",
+      "slug": "ai-in-ux-design",
+      "reason": "empty hash duplicate (keeper: post-ai-in-ux-design)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRB9l",
+      "title": "When (and Why) to Use HTML Sitemaps",
+      "slug": "html-sitemaps-for-seo-ux",
+      "reason": "empty hash duplicate (keeper: post-html-sitemaps-for-seo-ux)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRBwl",
+      "title": "Top 10 Design Systems for UX/UI in 2026",
+      "slug": "top-10-design-systems-ux-ui-2026",
+      "reason": "empty hash duplicate (keeper: post-top-10-design-systems-ux-ui-2026)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRCM3",
+      "title": "10 Hacks for Illustrating and Drawing in Figma",
+      "slug": "10-hacks-for-illustrating-and-drawing-in-figma",
+      "reason": "empty hash duplicate (keeper: post-10-hacks-for-illustrating-and-drawing-in-figma)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRCX7",
+      "title": "10 Rules of Thumb in UI Design",
+      "slug": "10-rules-of-thumb-in-ui-design",
+      "reason": "empty hash duplicate (keeper: post-10-rules-of-thumb-in-ui-design)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRJPt",
+      "title": "10 Features I'm Loving in Framer Right Now",
+      "slug": "10-features-i-m-loving-in-framer-right-now",
+      "reason": "empty hash duplicate (keeper: post-10-features-i-m-loving-in-framer-right-now)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRJir",
+      "title": "10 Ways to Design More Inclusive Products",
+      "slug": "10-ways-to-design-more-inclusive-products",
+      "reason": "empty hash duplicate (keeper: post-10-ways-to-design-more-inclusive-products)"
+    },
+    {
+      "_id": "tiq3HCZvfjiLTvLIciRJvV",
+      "title": "10 Key Takeaways from Google's Material Design Guidelines",
+      "slug": "10-key-takeaways-from-google-s-material-design-guidelines",
+      "reason": "empty hash duplicate (keeper: post-10-key-takeaways-from-google-s-material-design-guidelines)"
+    }
+  ]
+}
