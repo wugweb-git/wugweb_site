@@ -47,7 +47,15 @@ function initials(title: string): string {
   return words.slice(0, 2).map((w) => w[0]?.toUpperCase() || '').join('');
 }
 
-const rawPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const queryPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const seenPostSlugs = new Set();
+const rawPosts = [];
+for (const p of (queryPosts || [])) {
+  if (p && p.slug && !seenPostSlugs.has(p.slug)) {
+    seenPostSlugs.add(p.slug);
+    rawPosts.push(p);
+  }
+}
 
 // Top-level filters map to the six service pillars — never a large tag system.
 const PILLARS = ['Strategy', 'Brand', 'Experience', 'Engineering', 'Growth', 'Operations'];

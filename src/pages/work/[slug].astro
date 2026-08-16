@@ -15,7 +15,15 @@ if (!work) {
 const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
 const gallery = (work.galleryPaths || []).map((p: string) => assetUrl(p));
 
-const allSlugs = await sanityClient.fetch(`*[_type == "caseStudy"]{"slug": slug.current}`).catch(() => []);
+const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy"]{"slug": slug.current}`).catch(() => []);
+const seenSlugs = new Set();
+const allSlugs = [];
+for (const s of (allSlugsRaw || [])) {
+  if (s && s.slug && !seenSlugs.has(s.slug)) {
+    seenSlugs.add(s.slug);
+    allSlugs.push(s);
+  }
+}
 const others = allSlugs.filter((s: any) => s.slug !== slug).slice(0, 2);
 const otherCases = await Promise.all(others.map((s: any) =>
   sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug][0]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`, { slug: s.slug }).catch(() => null)

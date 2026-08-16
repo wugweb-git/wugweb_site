@@ -5,7 +5,15 @@ import { caseStudiesListQuery, singletonPageQuery } from '../../lib/queries';
 import { assetUrl } from '../../lib/assets';
 
 const workPage = await sanityClient.fetch(singletonPageQuery, { pageId: 'work' }).catch(() => null);
-const caseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+const rawCaseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+const seenCases = new Set();
+const caseStudies = [];
+for (const cs of (rawCaseStudies || [])) {
+  if (cs && cs.slug && !seenCases.has(cs.slug)) {
+    seenCases.add(cs.slug);
+    caseStudies.push(cs);
+  }
+}
 const workTitle = workPage?.seoTitle || 'Clients – Wugweb | Trusted by Innovative Brands';
 const workDescription =
   workPage?.seoDescription ||

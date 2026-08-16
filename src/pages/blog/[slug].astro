@@ -41,9 +41,26 @@ const toc = (post.body || [])
   .filter((b: any) => (b.style === 'h2' || b.style === 'h3') && b.text);
 
 // Fetch featured case studies for recommendations instead of more post blocks.
-const caseStudies = await sanityClient.fetch(`*[_type == "caseStudy"]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`).catch(() => []);
+const rawCaseStudies = await sanityClient.fetch(`*[_type == "caseStudy"]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`).catch(() => []);
+const seenCases = new Set();
+const caseStudies = [];
+for (const cs of (rawCaseStudies || [])) {
+  if (cs && cs.slug && !seenCases.has(cs.slug)) {
+    seenCases.add(cs.slug);
+    caseStudies.push(cs);
+  }
+}
 const featuredCases = caseStudies.slice(0, 2);
-const allPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+
+const rawAllPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const seenAllPosts = new Set();
+const allPosts = [];
+for (const p of (rawAllPosts || [])) {
+  if (p && p.slug && !seenAllPosts.has(p.slug)) {
+    seenAllPosts.add(p.slug);
+    allPosts.push(p);
+  }
+}
 
 // Prev / next by publishedAt.
 const sorted = [...(allPosts as any[])]

@@ -9,8 +9,25 @@ import { servicesListQuery, caseStudiesListQuery, postsListQuery, singletonPageQ
 const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
 
 // Fetch Sanity data for homepage sections
-const sanityCaseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
-const sanityPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const rawHomeCases = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
+const seenHomeCases = new Set();
+const sanityCaseStudies = [];
+for (const cs of (rawHomeCases || [])) {
+  if (cs && cs.slug && !seenHomeCases.has(cs.slug)) {
+    seenHomeCases.add(cs.slug);
+    sanityCaseStudies.push(cs);
+  }
+}
+
+const rawHomePosts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const seenHomePosts = new Set();
+const sanityPosts = [];
+for (const p of (rawHomePosts || [])) {
+  if (p && p.slug && !seenHomePosts.has(p.slug)) {
+    seenHomePosts.add(p.slug);
+    sanityPosts.push(p);
+  }
+}
 
 // Hero headline + intro
 const homePage = await sanityClient.fetch(singletonPageQuery, { pageId: 'home' }).catch(() => null);
