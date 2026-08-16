@@ -42,86 +42,88 @@ const otherCases = await Promise.all(others.map((s: any) =>
     </section>
   )}
 
-  {(work.about || work.summary) && (
-    <section class="wrap section work-about-section">
-      <div class="glass-panel about-panel">
+  <!-- SINGLE-COLUMN ADAPTIVE UX BODY CONTENT -->
+  <div class="wrap case-body-content">
+    
+    <!-- About Section -->
+    {(work.about || work.summary) && (
+      <article class="case-section text-block" data-reveal>
         <h2>About the Project</h2>
-        <p>{work.about || work.summary}</p>
-      </div>
-    </section>
-  )}
+        <p class="lead-text">{work.about || work.summary}</p>
+      </article>
+    )}
 
-  {work.challenges?.length > 0 && (
-    <section class="wrap section">
-      <div class="section-header">
-        <span class="section-n">01</span>
+    <!-- Challenges Section -->
+    {work.challenges?.length > 0 && (
+      <article class="case-section text-block" data-reveal>
         <h2>Challenges</h2>
-      </div>
-      <div class="grid">
-        {work.challenges.map((c: any) => (
-          <div class="glass-panel card">
-            <div class="card-glow"></div>
-            <h3>{c.title}</h3>
-            <p>{c.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
+        <div class="flat-list">
+          {work.challenges.map((c: any) => (
+            <div class="flat-item">
+              <h3>{c.title}</h3>
+              <p>{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    )}
 
-  {work.solutions?.length > 0 && (
-    <section class="wrap section">
-      <div class="section-header">
-        <span class="section-n">02</span>
+    <!-- Solutions Section -->
+    {work.solutions?.length > 0 && (
+      <article class="case-section text-block" data-reveal>
         <h2>Solutions</h2>
-      </div>
-      <div class="grid">
-        {work.solutions.map((s: any) => (
-          <div class="glass-panel card">
-            <div class="card-glow"></div>
-            <h3>{s.title}</h3>
-            <p>{s.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
+        <div class="flat-list">
+          {work.solutions.map((s: any) => (
+            <div class="flat-item">
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    )}
 
-  {gallery.length > 0 && (
-    <section class="wrap section">
-      <div class="section-header">
-        <span class="section-n">03</span>
-        <h2>Gallery</h2>
-      </div>
-      <div class="gallery-grid">
+    <!-- Full Body Content (Sanity blocks) -->
+    {work.body && work.body.length > 0 && (
+      <article class="case-section text-block" data-reveal>
+        <h2>Project Narrative</h2>
+        <div class="portable-text" set:html={work.body.map((block: any) => {
+          const text = block.children?.map((c: any) => c.text).join('') || '';
+          if (block.style === 'h3') return `<h3>${text}</h3>`;
+          return `<p>${text}</p>`;
+        }).filter(Boolean).join('')}></div>
+      </article>
+    )}
+
+    <!-- Immersive Gallery (Media expands to fill width) -->
+    {gallery.length > 0 && (
+      <div class="case-section media-full-width" data-reveal>
         {gallery.map((src: string) => (
-          <div class="gallery-item">
+          <div class="media-container">
             {src.endsWith('.mp4') || src.endsWith('.webm')
               ? <video src={src} muted loop playsinline controls preload="none"></video>
               : <img src={src} alt="" loading="lazy" decoding="async" />}
           </div>
         ))}
       </div>
-    </section>
-  )}
+    )}
 
-  {work.impact?.length > 0 && (
-    <section class="wrap section">
-      <div class="section-header">
-        <span class="section-n">04</span>
+    <!-- Impact Section -->
+    {work.impact?.length > 0 && (
+      <article class="case-section text-block" data-reveal>
         <h2>Impact</h2>
-      </div>
-      <div class="grid">
-        {work.impact.map((i: any) => (
-          <div class="glass-panel card">
-            <div class="card-glow"></div>
-            <h3>{i.title}</h3>
-            <p>{i.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
+        <div class="flat-list impact-list">
+          {work.impact.map((i: any) => (
+            <div class="flat-item metric-item">
+              <span class="metric-val">{i.title}</span>
+              <p>{i.body}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    )}
+
+  </div>
 
   {otherCases.length > 0 && (
     <section class="wrap section more-cases-section">
@@ -244,111 +246,111 @@ const otherCases = await Promise.all(others.map((s: any) =>
     display: block;
   }
 
-  /* About layout */
-  .about-panel {
-    padding: var(--gap-10);
-  }
-  .about-panel h2 {
-    font-size: var(--t-h4);
-    font-weight: var(--font-weight-bold);
-    margin-bottom: var(--gap-4);
-    color: var(--fg);
-  }
-  .about-panel p {
-    font-size: var(--t-l);
-    line-height: var(--lh-l);
-    color: var(--fg-muted);
-    max-width: 75ch;
+  /* Single-column adaptive UX content */
+  .case-body-content {
+    max-width: 800px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-section-md);
+    padding-block: var(--space-section-md) var(--space-section-lg);
   }
 
-  /* Section header numerals */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: var(--gap-4);
-    margin-bottom: var(--gap-8);
+  .case-section {
+    width: 100%;
   }
-  .section-n {
-    font-family: var(--font-mono);
-    font-size: var(--t-sm);
-    color: var(--color-accent-primary);
-    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
-    padding: var(--gap-1) var(--gap-3);
-    border-radius: var(--r-pill);
-    background: color-mix(in srgb, var(--color-accent-primary) 8%, transparent);
-  }
-  .section-header h2 {
+
+  .text-block h2 {
     font-size: var(--t-h3);
     font-weight: var(--font-weight-bold);
     color: var(--fg);
-    margin: 0;
+    margin-bottom: var(--gap-6);
+    border-bottom: var(--stroke-thin) solid var(--line);
+    padding-bottom: var(--gap-3);
   }
 
-  /* Grids and Cards */
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--gap-6);
+  .lead-text {
+    font-size: var(--t-l);
+    line-height: var(--lh-l);
+    color: var(--fg-muted);
   }
-  @media (min-width: 768px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+
+  .flat-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-8);
   }
-  .card {
-    padding: var(--gap-8);
+
+  .flat-item {
+    border-left: 2px solid var(--color-accent-primary);
+    padding-left: var(--gap-6);
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  }
-  .card h3 {
-    font-size: var(--t-h5);
+
+  .flat-item h3 {
+    font-size: var(--t-h4);
     font-weight: var(--font-weight-semibold);
     color: var(--fg);
-    margin-bottom: var(--gap-3);
-    position: relative;
-    z-index: 1;
-  }
-  .card p {
-    font-size: var(--fluid-body-sm);
-    line-height: var(--core-line-height-relaxed);
-    color: var(--fg-muted);
-    position: relative;
-    z-index: 1;
+    margin-bottom: var(--gap-2);
   }
 
-  /* Gallery Styling */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--gap-6);
+  .flat-item p {
+    font-size: var(--fluid-body-md);
+    line-height: var(--core-line-height-relaxed);
+    color: var(--fg-muted);
   }
-  @media (min-width: 768px) {
-    .gallery-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+
+  .portable-text p {
+    font-size: var(--fluid-body-md);
+    line-height: var(--core-line-height-relaxed);
+    color: var(--fg-muted);
+    margin-bottom: var(--gap-4);
   }
-  .gallery-item {
-    border-radius: var(--radius-lg);
+
+  /* Media fills layout width */
+  .media-full-width {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-8);
+  }
+
+  .media-container {
+    width: 100%;
+    border-radius: var(--radius-xl);
     overflow: hidden;
     border: 1px solid var(--line);
     background: color-mix(in srgb, var(--neutral-10) 20%, transparent);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-  }
-  .gallery-item:hover {
-    transform: scale(1.02);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .gallery-item img, .gallery-item video {
+
+  .media-container:hover {
+    transform: scale(1.015);
+  }
+
+  .media-container img, .media-container video {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    object-fit: cover;
   }
-  .gallery-item:hover img, .gallery-item:hover video {
-    transform: scale(1.05);
+
+  /* Impact outcome statistics formatting */
+  .impact-list {
+    gap: var(--gap-6);
+  }
+
+  .metric-item {
+    border-left: 2px solid var(--color-accent-primary);
+    padding-left: var(--gap-6);
+  }
+
+  .metric-val {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--t-h2);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-primary);
+    margin-bottom: var(--gap-1);
   }
 
   /* More cases Redesign */
