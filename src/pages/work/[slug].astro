@@ -18,7 +18,7 @@ const gallery = (work.galleryPaths || []).map((p: string) => assetUrl(p));
 const allSlugs = await sanityClient.fetch(`*[_type == "caseStudy"]{"slug": slug.current}`).catch(() => []);
 const others = allSlugs.filter((s: any) => s.slug !== slug).slice(0, 2);
 const otherCases = await Promise.all(others.map((s: any) =>
-  sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug][0]{ title, "slug": slug.current, client, disciplines }`, { slug: s.slug }).catch(() => null)
+  sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug][0]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`, { slug: s.slug }).catch(() => null)
 )).then(r => r.filter(Boolean));
 ---
 
@@ -125,15 +125,31 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
   {otherCases.length > 0 && (
     <section class="wrap section more-cases-section">
-      <h2>More Case Studies</h2>
+      <div class="more-cases-head">
+        <h2>More Case Studies</h2>
+        <a href="/work" class="btn btn-ghost">View all work</a>
+      </div>
       <div class="more-grid">
-        {otherCases.map((c: any) => (
-          <a href={`/work/${c.slug || ''}`} class="glass-panel more-card">
-            <div class="card-glow"></div>
-            <h3>{c.title}</h3>
-            <p>{c.client}{c.disciplines?.length > 0 ? ` — ${c.disciplines.join(', ')}` : ''}</p>
-          </a>
-        ))}
+        {otherCases.map((c: any) => {
+          const cCover = c.coverPath ? assetUrl(c.coverPath) : (c.thumbnailPath ? assetUrl(c.thumbnailPath) : '');
+          return (
+            <a href={`/work/${c.slug || ''}`} class="glass-panel more-card">
+              <div class="card-glow"></div>
+              {cCover && (
+                <div class="more-card-visual">
+                  {cCover.endsWith('.mp4') || cCover.endsWith('.webm')
+                    ? <video src={cCover} muted loop playsinline autoplay preload="none"></video>
+                    : <img src={cCover} alt="" loading="lazy" />}
+                </div>
+              )}
+              <div class="more-card-content">
+                <span class="more-card-client">{c.client}</span>
+                <h3>{c.title}</h3>
+                {c.disciplines?.length > 0 && <span class="more-card-discipline">{c.disciplines.join(', ')}</span>}
+              </div>
+            </a>
+          );
+        })}
       </div>
     </section>
   )}
@@ -335,19 +351,26 @@ const otherCases = await Promise.all(others.map((s: any) =>
     transform: scale(1.05);
   }
 
-  /* More cases */
+  /* More cases Redesign */
   .more-cases-section {
     border-top: var(--stroke-thin) solid var(--line);
     padding-top: var(--space-section-lg);
   }
-  .more-cases-section h2 {
-    font-size: var(--t-h3);
+  .more-cases-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: var(--gap-8);
+  }
+  .more-cases-head h2 {
+    font-size: var(--t-h3);
+    margin: 0;
+    color: var(--fg);
   }
   .more-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--gap-6);
+    gap: var(--gap-8);
   }
   @media (min-width: 768px) {
     .more-grid {
@@ -355,28 +378,61 @@ const otherCases = await Promise.all(others.map((s: any) =>
     }
   }
   .more-card {
-    padding: var(--gap-8);
     text-decoration: none;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
   }
   .more-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   }
-  .more-card h3 {
-    font-size: var(--t-h5);
-    font-weight: var(--font-weight-semibold);
-    color: var(--fg);
-    margin-bottom: var(--gap-2);
+  .more-card-visual {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--neutral-10) 20%, transparent);
+  }
+  .more-card-visual img, .more-card-visual video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .more-card:hover .more-card-visual img, .more-card:hover .more-card-visual video {
+    transform: scale(1.04);
+  }
+  .more-card-content {
+    padding: var(--gap-6) var(--gap-8) var(--gap-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
     position: relative;
     z-index: 1;
   }
-  .more-card p {
+  .more-card-client {
     font-family: var(--font-mono);
     font-size: var(--t-micro);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent-primary);
+  }
+  .more-card h3 {
+    font-size: var(--t-h4);
+    font-weight: var(--font-weight-bold);
+    color: var(--fg);
+    margin: 0;
+    line-height: var(--core-line-height-tight);
+  }
+  .more-card-discipline {
+    font-size: var(--fluid-body-sm);
     color: var(--fg-muted);
-    position: relative;
-    z-index: 1;
+    margin-top: var(--gap-1);
   }
 </style>
 
