@@ -4,7 +4,7 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-**Last verified:** 2026-08-30 (**Sanity Studio & Frontend Contract Full Remediation (Phases 1–5)** — Project ID & `apiVersion: 2026-01-01` unified; deterministic GROQ `[0]` selection against draft pollution; 11-query Dashboard collapsed into 1 batched GROQ projection; `useRouter` adopted; pagination added to `SeoTool`/`MediaTool`; slug & singleton uniqueness validation in schemas; `@sanity/icons` native system upgrade + full editorial desk restructure; `PortableTextRenderer.astro` created with support for all 9 custom blocks replacing unsafe `set:html`; Sanity health suite 16/16 ✅; Astro & Studio builds ✅).
+**Last verified:** 2026-08-30 (**Sanity Studio & Frontend Full Remediation & Enhancements** — Project ID & `apiVersion: 2026-01-01` unified; deterministic GROQ `[0]` selection against draft pollution; 11-query Dashboard collapsed into 1 batched GROQ projection; `useRouter` adopted; pagination added to `SeoTool`/`MediaTool`; slug & singleton uniqueness validation in schemas; `@sanity/icons` native system upgrade + full editorial desk restructure; `PortableTextRenderer.astro` created with support for all 9 custom blocks replacing unsafe `set:html`; all 6 footer sub-pages synced to `singletonPage`; custom visual block previews in Studio; R2 asset search/autocomplete input component created; `/api/contact` live-tested in production; blog deduplication audit identifying 21 duplicate HTML string docs; Sanity health suite 16/16 ✅; Astro & Studio builds ✅).
 
 Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-full-audit.md). Kits type roles: [`design.md`](design.md) §3 (+ C-6 superseded). Design system (single source of truth): [`kits_design_system/`](kits_design_system/) — `docs/design.md` + `docs/tokens/`.
 
@@ -14,7 +14,7 @@ Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-ful
 
 Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--ts-*` / `--fluid-*` + weight hierarchy**; colours from Framer S1), **#16 typography rem/clamp sweep** (pages + components → fluid/ts tokens), Framer→local assets, R2, content↔asset paths, Global Settings, Presence, asset registry, governance, Industry master, service Framer extract + **89** toolkit icons, footer Sitemap + Industries, page capture + SEO salvage, industries route, lead-gen routing. **Contact V2 layout (`contact-us.astro`)**, Service media folder normalization (`strategy/`, `brand/`, `experience/`, `growth/`, `engineering/`, `operations/`), `CHANGELOG.md` integration.
 
-**Enterprise Sanity Studio Overhaul & Bug Resolution (2026-08-11)**: Full CRUD schemas for Brand Assets & Icons (`brandAsset`), Tracking & Custom Scripts (`siteScript`), Navigation Menus (`navigationMenu`). Reorganized Studio desk into operational departments (Overview, Content, Navigation & Menus, Brand & Assets, Integrations & Code, Business, Settings) + spreadsheet data grid presets. Fixed HTTP 409 revision conflicts, duplication of non-title docs, intent edit routes, publish/unpublish/archive actions.
+**Enterprise Sanity Studio Overhaul & Bug Resolution (2026-08-11 & 2026-08-30)**: Full CRUD schemas for Brand Assets & Icons (`brandAsset`), Tracking & Custom Scripts (`siteScript`), Navigation Menus (`navigationMenu`). Reorganized Studio desk into operational departments (Content, Brand & Assets, Marketing, Business, Settings, System) + spreadsheet data grid presets. Fixed HTTP 409 revision conflicts, duplication of non-title docs, intent edit routes, publish/unpublish/archive actions. Added R2 Asset Autocomplete picker and rich visual block previews for Portable Text.
 
 **Kits Showcase Landing Page (`/kits`) (2026-08-11)**: Masterclass living design system laboratory showcasing 100% accurate secondary colors (`#E54F30`, `#3ED219`, `#2368D7`, `#09E2C0`), 6 service pillar tokens (`#FA4108`, `#E6309F`, `#09E2C0`, `#2167E9`, `#3ED219`, `#7A4DFF`), fluid typography clamps, primitives, UI controls, bento blocks, interactive 6-pillar scope selector, motion easings, ambient glows, noise overlays, and live token exporter. Unlinked from top header nav per user directive. Build ✅ & Deployed live to Cloudflare Pages (`https://wugweb.pages.dev/kits`).
 
@@ -26,8 +26,8 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 |---|---|---|
 | Design token → component migration | **Done 2026-08-05 (Phase 1)** | Full token system (opacity/radius/stroke/blur/shadow/elevation/glass/noise/gradient/motion/z-index) consumed everywhere; residual `#555`/`rgba()`/`opacity:`/`blur()` removed from pages/components (only `CATEGORY_COLORS` data map + service-panel `fg`/`accent` data remain). |
 | Sanity Studio CRUD Verification | **Done 2026-08-11** | All CRUD actions (`create`, `duplicateDocs`, `publishDocs`, `unpublishDocs`, `archiveDocs`, `deleteDocs`) tested and verified live with 0 HTTP revision errors or schema validation bugs. |
+| Contact Form Production Verification | **Done 2026-08-30** | Tested `/api/contact` live in production. Verified CSRF origin security, 302 redirect to `/thank-you`, and authenticated Sanity write client. |
 | Frontend → Neon swap | Deferred | Helpers ready (`content.ts`, `NEON` queries); wait until UI/brand mapping done. **User: do not run Neon sync unless asked.** |
-| Contact form production reliability | **Deferred to end** — UI + Neon write path exist. `/api/contact` + `/api/subscribe` hardened — Neon write is best-effort (try/catch + `finally` release), redirects to thank-you. |
 
 ---
 
@@ -35,9 +35,9 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 
 | # | Item | Priority | Notes |
 |---|---|---|---|
-| 1 | **Brand Vector Asset Ingestion** | Medium | Upload official vector SVG logo graphics for Clutch, DesignRush, GoodFirms, TopDevelopers into the new **Brand Assets & Icons** (`brandAsset`) section in Sanity Studio. |
-| 2 | **Blog & Case Study Thumbnail Population** | Medium | Populate missing blog covers (69 posts) and case study thumbnails (43 items) via Sanity Studio `brandAsset` / `coverImage` fields. |
-| 3 | **Contact Form Production Verification** | Low | Perform live test submission of `/api/contact` in production environment. |
+| 1 | **Blog 21 Duplicate Stubs Cleanup** | Medium | Clean up the 21 duplicate raw HTML string documents identified in the audit so only the 104 rich Portable Text posts remain. |
+| 2 | **Brand Vector Asset Ingestion** | Medium | Upload official vector SVG logo graphics for Clutch, DesignRush, GoodFirms, TopDevelopers into the **Brand Assets & Icons** (`brandAsset`) section in Sanity Studio. |
+| 3 | **Blog & Case Study Thumbnail Population** | Medium | Populate missing blog covers (70 legacy posts) and case study thumbnails via Sanity Studio using the new R2 Asset Autocomplete picker. |
 
 ---
 
