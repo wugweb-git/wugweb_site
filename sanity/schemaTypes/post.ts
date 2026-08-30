@@ -1,5 +1,6 @@
 import { defineType, defineField } from 'sanity';
 import { ownerField } from './ownerField';
+import { R2AssetInput } from '../components/R2AssetInput';
 
 export default defineType({
   name: 'post',
@@ -30,7 +31,13 @@ export default defineType({
     defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Featured image (Sanity CDN — prefer coverPath for R2)', group: 'content',
       validation: (r) => r.warning('Recommended — shown as hero and in post listings'),
     }),
-    defineField({ name: 'coverPath', type: 'string', description: 'R2/local path e.g. /assets/… when cover is not in Sanity CDN', group: 'content' }),
+    defineField({
+      name: 'coverPath',
+      type: 'string',
+      description: 'R2/local path e.g. /assets/… when cover is not in Sanity CDN',
+      components: { input: R2AssetInput },
+      group: 'content',
+    }),
     defineField({ name: 'excerpt', type: 'text', rows: 2, description: 'Short summary shown in blog listings. Keep under 160 characters for SEO.', group: 'content',
       validation: (r) => r.warning('Recommended — shown in blog listing cards and social previews'),
     }),

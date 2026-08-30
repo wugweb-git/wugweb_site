@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { singletonPageQuery } from '../../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'industries' }).catch(() => null);
+const title = page?.seoTitle || page?.title || 'Industries';
+const description = page?.seoDescription || 'Wugweb brings deep industry context across financial services, healthcare, consumer commerce, technology, mobility, education, and purpose-driven sectors.';
 ---
 
 <BaseLayout 
-  title="Industries" 
-  description="Wugweb brings deep industry context across financial services, healthcare, consumer commerce, technology, mobility, education, and purpose-driven sectors."
+  title={title} 
+  description={description}
   hideGlobalSections={true}
 >
   <div class="industries-page">

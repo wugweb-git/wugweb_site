@@ -179,19 +179,22 @@ function pane(
 
 function singletonPages(S: StructureBuilder) {
   const pages: [string, string, any][] = [
-    ['Home',         'home',           HomeIcon],
-    ['About',        'about',          InfoOutlineIcon],
-    ['Services',     'services',       RocketIcon],
-    ['Work',         'work',           CaseIcon],
-    ['Blog',         'blog',           ComposeIcon],
-    ['FAQ',          'faq',            CommentIcon],
-    ['Contact',      'contact',        EnvelopeIcon],
-    ['Privacy',      'privacy-policy', LockIcon],
-    ['Terms',        'terms-of-use',   DocumentTextIcon],
-    ['Refund',       'refund-policy',  BillIcon],
-    ['Impact',       'impact',         HeartIcon],
-    ['Subscription', 'subscription',   EnvelopeIcon],
-    ['Sitemap',      'sitemap',        SortIcon],
+    ['Home',           'home',           HomeIcon],
+    ['About',          'about',          InfoOutlineIcon],
+    ['Services',       'services',       RocketIcon],
+    ['Work',           'work',           CaseIcon],
+    ['Blog',           'blog',           ComposeIcon],
+    ['FAQ',            'faq',            CommentIcon],
+    ['Contact',        'contact',        EnvelopeIcon],
+    ['Privacy Policy', 'privacy-policy', LockIcon],
+    ['Terms of Use',   'terms-of-use',   DocumentTextIcon],
+    ['Refund Policy',  'refund-policy',  BillIcon],
+    ['Cookie Policy',  'cookie-policy',  DocumentTextIcon],
+    ['Impact',         'impact',         HeartIcon],
+    ['Industries',     'industries',     EarthAmericasIcon],
+    ['Subscription',   'subscription',   EnvelopeIcon],
+    ['Sitemap',        'sitemap',        SortIcon],
+    ['Kits Showcase',  'kits',           ControlsIcon],
   ];
   return S.listItem()
     .title('Pages')

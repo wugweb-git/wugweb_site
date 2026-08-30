@@ -1,16 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
+import { sanityClient } from '../../lib/sanity';
+import { singletonPageQuery } from '../../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'cookie-policy' }).catch(() => null);
+const blocks: any[] = Array.isArray(page?.body) && page.body.length ? page.body : [];
+const hasCms = blocks.length > 0;
+const pageTitle = page?.title || page?.seoTitle || 'Cookie Policy';
+const pageDesc = page?.seoDescription || 'Wugweb Cookie Policy — details on how we use cookies, tracking technologies, and how to manage your choices.';
 ---
 
 <BaseLayout 
-  title="Cookie Policy" 
-  description="Wugweb Cookie Policy — details on how we use cookies, tracking technologies, and how to manage your choices."
+  title={pageTitle} 
+  description={pageDesc}
   hideGlobalSections={true}
 >
   <section class="wrap legal">
     <header class="static-head">
       <p class="eyebrow" data-reveal>LEGAL & PRIVACY</p>
-      <h1 data-reveal>Cookie Policy</h1>
+      <h1 data-reveal>{pageTitle}</h1>
       <p class="legal-updated" data-reveal>Last updated: August 16, 2026</p>
       
       <div class="legal-quick-links" data-reveal>
@@ -19,6 +28,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
     </header>
 
+    {hasCms ? (
+      <div class="legal-body" data-reveal>
+        <PortableTextRenderer value={blocks} />
+      </div>
+    ) : (
     <div class="legal-body">
       <p data-reveal>
         This Cookie Policy explains how Wugweb uses cookies and similar technologies when you visit our websites and use our digital services. It explains what these technologies are, why we use them, what information they may collect, and how you can manage your preferences.
@@ -222,6 +236,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
 
     </div>
+    )}
   </section>
 </BaseLayout>
 

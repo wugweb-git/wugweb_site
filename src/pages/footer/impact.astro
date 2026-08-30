@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { singletonPageQuery } from '../../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'impact' }).catch(() => null);
+const title = page?.seoTitle || page?.title || 'Purpose & Impact';
+const description = page?.seoDescription || 'Wugweb gives capability, not just support. We contribute technology, design, strategy, digital support, and mentorship to meaningful work.';
 ---
 
 <BaseLayout 
-  title="Purpose & Impact" 
-  description="Wugweb gives capability, not just support. We contribute technology, design, strategy, digital support, and mentorship to meaningful work."
+  title={title} 
+  description={description}
   hideGlobalSections={true}
 >
   <div class="impact-page">

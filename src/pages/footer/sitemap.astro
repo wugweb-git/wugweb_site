@@ -1,14 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
-import { servicesListQuery, caseStudiesListQuery, postsListQuery } from '../../lib/queries';
+import { servicesListQuery, caseStudiesListQuery, postsListQuery, singletonPageQuery } from '../../lib/queries';
 
-const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
-const caseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
-const posts = await sanityClient.fetch(postsListQuery).catch(() => []);
+const [services, caseStudies, posts, page] = await Promise.all([
+  sanityClient.fetch(servicesListQuery).catch(() => []),
+  sanityClient.fetch(caseStudiesListQuery).catch(() => []),
+  sanityClient.fetch(postsListQuery).catch(() => []),
+  sanityClient.fetch(singletonPageQuery, { pageId: 'sitemap' }).catch(() => null),
+]);
+
+const title = page?.seoTitle || page?.title || 'Sitemap — Wugweb';
+const description = page?.seoDescription || 'Complete sitemap for wugweb.com — all pages, case studies, blog posts, and services.';
 ---
 
-<BaseLayout title="Sitemap — Wugweb" seoTitle="Sitemap" description="Complete sitemap for wugweb.com — all pages, case studies, blog posts, and services.">
+<BaseLayout title={title} description={description}>
   <section class="wrap static-page sitemap">
     <header class="static-head">
       <p class="eyebrow" data-reveal>Sitemap</p>

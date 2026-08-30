@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { singletonPageQuery } from '../../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'subscription' }).catch(() => null);
+const title = page?.seoTitle || page?.title || 'Subscription';
+const description = page?.seoDescription || 'Your digital team, on subscription. Strategy, brand, experience, engineering, growth, and operations support.';
 ---
 
 <BaseLayout 
-  title="Subscription" 
-  description="Your digital team, on subscription. Strategy, brand, experience, engineering, growth, and operations support."
+  title={title} 
+  description={description}
   hideGlobalSections={true}
 >
   <div class="sub-page">

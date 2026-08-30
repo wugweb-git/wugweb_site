@@ -1,5 +1,6 @@
 import { defineType, defineField } from 'sanity';
 import { ownerField } from './ownerField';
+import { R2AssetInput } from '../components/R2AssetInput';
 
 export default defineType({
   name: 'caseStudy',
@@ -31,8 +32,20 @@ export default defineType({
     }),
     { ...ownerField, group: 'overview' },
     defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Hero image for the case study detail page (Sanity CDN — prefer coverPath for R2)', group: 'overview' }),
-    defineField({ name: 'thumbnailPath', type: 'string', description: 'R2/local path for listing thumb e.g. /assets/work/.../…-thumb.mp4', group: 'overview' }),
-    defineField({ name: 'coverPath', type: 'string', description: 'R2/local path for detail cover e.g. /assets/framer/.../cover-image-….jpg', group: 'overview' }),
+    defineField({
+      name: 'thumbnailPath',
+      type: 'string',
+      description: 'R2/local path for listing thumb e.g. /assets/work/.../…-thumb.mp4',
+      components: { input: R2AssetInput },
+      group: 'overview',
+    }),
+    defineField({
+      name: 'coverPath',
+      type: 'string',
+      description: 'R2/local path for detail cover e.g. /assets/framer/.../cover-image-….jpg',
+      components: { input: R2AssetInput },
+      group: 'overview',
+    }),
     defineField({ name: 'client', type: 'string', description: 'Display name (legacy text). Prefer Client ref below for relationships.', group: 'overview' }),
     defineField({
       name: 'clientRef',

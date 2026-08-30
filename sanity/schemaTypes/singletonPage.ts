@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { R2AssetInput } from '../components/R2AssetInput';
 
 export default defineType({
   name: 'singletonPage',
@@ -16,12 +17,15 @@ export default defineType({
           { title: 'Privacy Policy', value: 'privacy-policy' },
           { title: 'Terms of Use', value: 'terms-of-use' },
           { title: 'Refund Policy', value: 'refund-policy' },
+          { title: 'Cookie Policy', value: 'cookie-policy' },
           { title: 'Impact', value: 'impact' },
+          { title: 'Industries', value: 'industries' },
           { title: 'Subscription', value: 'subscription' },
           { title: 'Sitemap', value: 'sitemap' },
           { title: 'Services', value: 'services' },
           { title: 'Work', value: 'work' },
           { title: 'Blog', value: 'blog' },
+          { title: 'Kits', value: 'kits' },
         ],
       },
       validation: (r) => r.required().custom(async (value: any, ctx: any) => {
@@ -37,9 +41,13 @@ export default defineType({
     }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US', 'fr', 'de', 'es'] }, initialValue: 'en-GB' }),
     defineField({ name: 'title', type: 'string', description: 'Page heading (H1)' }),
-    defineField({ name: 'subtitle', type: 'string', description: 'Subtitle or tagline' }),
     defineField({ name: 'heroImage', type: 'image', options: { hotspot: true } }),
-    defineField({ name: 'heroPath', type: 'string', description: 'R2/local hero media path e.g. /assets/more/home/home.mp4' }),
+    defineField({
+      name: 'heroPath',
+      type: 'string',
+      description: 'R2/local hero media path e.g. /assets/more/home/home.mp4',
+      components: { input: R2AssetInput },
+    }),
     defineField({ name: 'mediaPaths', type: 'array', of: [{ type: 'string' }], description: 'Additional page media under /assets/…' }),
     defineField({ name: 'seoTitle', type: 'string', description: 'Override <title> tag' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2 }),
