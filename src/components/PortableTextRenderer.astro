@@ -286,7 +286,12 @@ if (currentList) {
     if (b._type === 'code') {
       return (
         <div class="pt-code-wrapper glass-panel" data-reveal>
-          {b.language && <span class="pt-code-lang">{b.language}</span>}
+          <div class="pt-code-header">
+            {b.language && <span class="pt-code-lang">{b.language}</span>}
+            <button class="pt-code-copy-btn" type="button" aria-label="Copy code to clipboard">
+              <span class="copy-text">Copy</span>
+            </button>
+          </div>
           <pre class="pt-code-block"><code>{b.code || ''}</code></pre>
         </div>
       );
@@ -651,10 +656,16 @@ if (currentList) {
     width: 100%;
   }
 
+  .pt-code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
   .pt-code-lang {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.875rem;
     font-size: 0.7rem;
     color: var(--color-accent-primary, #ffd000);
     text-transform: uppercase;
@@ -665,10 +676,34 @@ if (currentList) {
     border: 1px solid rgba(255, 208, 0, 0.2);
   }
 
+  .pt-code-copy-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xs, 4px);
+    color: var(--color-text-secondary, #bababa);
+    font-size: 0.7rem;
+    font-family: var(--core-font-family-mono, monospace);
+    padding: 2px 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .pt-code-copy-btn:hover {
+    background: rgba(255, 208, 0, 0.15);
+    color: var(--color-accent-primary, #ffd000);
+    border-color: rgba(255, 208, 0, 0.3);
+  }
+
+  .pt-code-copy-btn.copied {
+    background: rgba(46, 213, 115, 0.15);
+    color: #2ed573;
+    border-color: rgba(46, 213, 115, 0.4);
+  }
+
   .pt-code-block {
     margin: 0;
     overflow-x: auto;
-    padding-top: 0.5rem;
+    padding-top: 0.25rem;
   }
 
   .pt-code-block code {
@@ -699,3 +734,31 @@ if (currentList) {
     .pt-two-cols.layout-40-60 { grid-template-columns: 2fr 3fr; }
   }
 </style>
+
+<script>
+  function initCodeCopy() {
+    document.querySelectorAll('.pt-code-wrapper').forEach((wrapper) => {
+      const btn = wrapper.querySelector('.pt-code-copy-btn') as HTMLButtonElement | null;
+      const codeEl = wrapper.querySelector('code');
+      if (!btn || !codeEl) return;
+
+      btn.addEventListener('click', async () => {
+        const text = codeEl.innerText || codeEl.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.classList.add('copied');
+          btn.textContent = 'Copied! ✓';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = 'Copy';
+          }, 1500);
+        } catch {
+          // Fallback
+        }
+      });
+    });
+  }
+
+  initCodeCopy();
+  document.addEventListener('astro:page-load', initCodeCopy);
+</script>

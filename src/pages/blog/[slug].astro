@@ -83,6 +83,9 @@ const shareLinks = [
 ---
 
 <BaseLayout title={`${post.title} — Wugweb Insights`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl}>
+  <!-- Scroll Progress Indicator -->
+  <div id="reading-progress" class="reading-progress-bar" aria-hidden="true"></div>
+
   <section class="wrap article">
     <p class="eyebrow"><a href="/blog">Blog</a></p>
     <h1>{post.title}</h1>
@@ -370,6 +373,19 @@ const shareLinks = [
   .related-case-client { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent-primary); }
   .related-case-card h3 { font-size: var(--t-h4); font-weight: var(--font-weight-bold); color: var(--fg); margin: 0; line-height: var(--core-line-height-tight); }
   .related-case-discipline { font-size: var(--fluid-body-sm); color: var(--fg-muted); margin-top: var(--gap-1); }
+
+  /* Reading progress bar pinned to top */
+  .reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-primary, #ffd000), #fff);
+    z-index: 9999;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
 </style>
 
 <script>
@@ -384,6 +400,20 @@ const shareLinks = [
       }).catch(() => {});
     });
   });
+
+  // Reading progress tracker
+  const progressBar = document.getElementById('reading-progress');
+  if (progressBar) {
+    const updateProgress = () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const scrolled = (window.scrollY / docHeight) * 100;
+        progressBar.style.width = `${Math.min(100, Math.max(0, scrolled))}%`;
+      }
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
 
   // Mouse tracking card glow animation
   const initGlows = () => {

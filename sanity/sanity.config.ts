@@ -16,6 +16,8 @@ import { SeoTool } from './tools/SeoTool';
 import { MediaTool } from './tools/MediaTool';
 import { SearchTool } from './tools/SearchTool';
 
+import { SeoHealthBadge, ReadingTimeBadge, MediaStatusBadge } from './badges/documentBadges';
+
 export default defineConfig({
   name: 'wugweb',
   title: 'wugweb',
@@ -23,6 +25,14 @@ export default defineConfig({
   dataset: 'production',
   apiVersion: '2026-01-01',
   plugins: [structureTool({ structure: deskStructure }), visionTool()],
+  document: {
+    badges: (prev, context) => [
+      SeoHealthBadge,
+      ReadingTimeBadge,
+      MediaStatusBadge,
+      ...prev,
+    ],
+  },
   tools: (prev) => [
     {
       name: 'dashboard',

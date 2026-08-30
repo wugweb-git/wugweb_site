@@ -2840,6 +2840,12 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     drawerOverlay.addEventListener('click', (e) => {
       if (e.target === drawerOverlay) closeDrawer();
     });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawerOverlay.classList.contains('active')) {
+        closeDrawer();
+      }
+    });
   }
 
   // 6. ACCORDION PANELS (Boundaries & FAQ)
@@ -2901,6 +2907,12 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     btnCloseCheckout.addEventListener('click', closeModal);
     checkoutOverlay.addEventListener('click', (e) => {
       if (e.target === checkoutOverlay) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && checkoutOverlay.classList.contains('active')) {
+        closeModal();
+      }
     });
 
     // Plan Confirm &rarr; Billing Form
