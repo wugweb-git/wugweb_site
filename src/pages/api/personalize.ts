@@ -22,13 +22,13 @@ export const GET: APIRoute = async ({ locals }) => {
       headers: { 'content-type': 'application/json' },
     });
   } finally {
-    await client.end();
+    client.release();
   }
 };
 
 export const POST: APIRoute = async ({ request, locals }) => {
   const visitorId = locals.visitorId;
-  const body = await request.json().catch(() => ({}));
+  const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
 
   const client = await connect(locals.runtime.env);
 
@@ -45,6 +45,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
     return new Response(null, { status: 204 });
   } finally {
-    await client.end();
+    client.release();
   }
 };

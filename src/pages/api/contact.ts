@@ -67,7 +67,7 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
     } catch (e) {
       console.error('contact: Neon write failed', e);
     } finally {
-      await client.end().catch(() => {});
+      client.release();
     }
   }
 

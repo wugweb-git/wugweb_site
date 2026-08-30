@@ -141,6 +141,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
       errors: errorMessage || null,
     }), { status: 200 });
   } finally {
-    await client.end();
+    client.release();
   }
 };

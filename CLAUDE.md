@@ -218,14 +218,14 @@ See `pending.md` for the authoritative task tracker. High-level state:
 Before starting work:
 - [ ] Read `pending.md` (open work).
 - [ ] Read `governance.md` (Rule 1/2, ownership, industry master, Notion seed).
-- [ ] Read this file (`CLAUDE.md`).
+- [ ] Read this file (`AGENTS.md`).
 - [ ] Skim `docs/framer-full-audit.md` if touching Framer/reference/component.
 - [ ] Confirm Node ≥22 (`cat .node-version`). Prefer `npm run build` before large deploys.
 
 Before finishing work:
 - [ ] Update `pending.md` with completed/in-progress items.
 - [ ] Update `governance.md` if ownership / source-of-truth / free-tier rules changed.
-- [ ] Update `CLAUDE.md` if any architecture/deploy facts changed.
+- [ ] Update `AGENTS.md` if any architecture/deploy facts changed.
 - [ ] Ensure no secrets were committed.
 
 ## Frequently Used Commands

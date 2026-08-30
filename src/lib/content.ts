@@ -12,7 +12,7 @@ import { connect } from './db';
  *   import { connect } from '../lib/db';
  *   const client = connect(locals.runtime.env);
  *   const settings = await getSiteSettings(client);
- *   await client.end();
+ *   client.release();
  */
 
 interface NeonClient {
@@ -25,7 +25,7 @@ export async function getByType(client: NeonClient, contentType: string): Promis
     `select data from content_items where content_type = $1 and status = 'published' limit 1`,
     [contentType]
   );
-  return (res.rows[0]?.data as Record<string, unknown>) ?? null;
+  return ((res.rows[0] as { data?: Record<string, unknown> })?.data) ?? null;
 }
 
 /** Fetch all content items of a type, ordered by data->>'order' */
@@ -47,7 +47,7 @@ export async function getBySlug(client: NeonClient, contentType: string, slug: s
      limit 1`,
     [contentType, slug]
   );
-  return (res.rows[0]?.data as Record<string, unknown>) ?? null;
+  return ((res.rows[0] as { data?: Record<string, unknown> })?.data) ?? null;
 }
 
 /** Get sync log summary (latest entry per entity type) */
@@ -57,5 +57,5 @@ export async function getSyncSummary(client: NeonClient): Promise<Record<string,
      from sync_log
      order by entity_type, completed_at desc nulls last`
   );
-  return res.rows;
+  return res.rows as Record<string, unknown>[];
 }
