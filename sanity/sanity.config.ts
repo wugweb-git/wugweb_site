@@ -1,6 +1,13 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
+import {
+  DashboardIcon,
+  ThListIcon,
+  SearchIcon,
+  ImagesIcon,
+  MasterDetailIcon,
+} from '@sanity/icons';
 import { schemaTypes } from './schemaTypes';
 import { deskStructure } from './schemaTypes/deskStructure';
 import { TablesTool } from './tools/TablesTool';
@@ -20,31 +27,31 @@ export default defineConfig({
     {
       name: 'dashboard',
       title: 'Dashboard',
-      icon: () => '◈',
+      icon: DashboardIcon,
       component: DashboardTool,
     },
     {
       name: 'tables',
       title: 'Tables',
-      icon: () => '▦',
+      icon: ThListIcon,
       component: TablesTool,
     },
     {
       name: 'seo',
       title: 'SEO',
-      icon: () => '🔎',
+      icon: SearchIcon,
       component: SeoTool,
     },
     {
       name: 'media',
       title: 'Media',
-      icon: () => '🖼',
+      icon: ImagesIcon,
       component: MediaTool,
     },
     {
       name: 'search',
       title: 'Search',
-      icon: () => '⌕',
+      icon: MasterDetailIcon,
       component: SearchTool,
     },
     ...prev,

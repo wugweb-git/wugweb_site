@@ -1,81 +1,52 @@
 import { type StructureBuilder, type StructureResolver } from 'sanity/structure';
+import {
+  // Section/nav icons
+  DashboardIcon, ThListIcon, SearchIcon, ImageIcon, ImagesIcon,
+  // Content types
+  ComposeIcon, CaseIcon, RocketIcon, DocumentsIcon, DocumentIcon, DocumentTextIcon, EditIcon,
+  // Business
+  UsersIcon, UserIcon, LeaveIcon, StarIcon, CommentIcon,
+  // Navigation & Settings
+  MenuIcon, LinkIcon, EarthAmericasIcon, PlugIcon, ArchiveIcon,
+  // System / health
+  BellIcon, WarningFilledIcon, ClockIcon, CalendarIcon, LaunchIcon,
+  // Brand & Media
+  TagIcon, OlistIcon,
+  // Industry & Taxonomy
+  PackageIcon, PinIcon, BookIcon, CogIcon, ControlsIcon,
+  // Singleton pages
+  HomeIcon, InfoOutlineIcon, EnvelopeIcon, LockIcon, BillIcon, HeartIcon, SortIcon,
+} from '@sanity/icons';
 import { DocumentListPane } from '../components/DocumentListPane';
 
 export const deskStructure: StructureResolver = (S: StructureBuilder) =>
   S.list()
-    .title('Wugweb')
+    .title('Wugweb Studio')
     .items([
-      // ── Overview ──
-      sectionItem(S, 'Overview', '◈', [
-        S.listItem()
-          .title('Start here')
-          .icon(() => '⌂')
-          .child(
-            S.list()
-              .title('Start here')
-              .items([
-                S.documentTypeListItem('syncStatus').title('Sync Status'),
-                S.documentTypeListItem('contactSubmission').title('Contact Submissions'),
-              ])
-          ),
-        quickDoc(S, 'Site Settings', 'siteSettings', 'siteSettings', '⚙'),
-        S.divider(),
-        S.listItem()
-          .title('🔴 Drafts Needing Review')
-          .icon(() => '✍')
-          .child(
-            S.documentList()
-              .title('Draft Documents')
-              .filter('_id in path("drafts.**")')
-              .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
-          ),
-        S.listItem()
-          .title('⚠️ Missing SEO Meta')
-          .icon(() => '🔎')
-          .child(
-            S.documentList()
-              .title('Missing SEO Description')
-              .filter('(_type in ["post", "caseStudy", "service", "singletonPage"]) && !defined(seoDescription)')
-              .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
-          ),
-        S.listItem()
-          .title('🖼️ Missing Cover Images')
-          .icon(() => '🖼')
-          .child(
-            S.documentList()
-              .title('Missing Cover Media')
-              .filter('(_type in ["post", "caseStudy"]) && !defined(coverImage) && !defined(coverPath)')
-              .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
-          ),
-        S.listItem()
-          .title('🕒 Scheduled Content')
-          .icon(() => '🕒')
-          .child(
-            S.documentList()
-              .title('Future Scheduled Posts')
-              .filter('_type == "post" && dateTime(publishedAt) > dateTime(now())')
-              .defaultOrdering([{ field: 'publishedAt', direction: 'asc' }])
-          ),
-      ]),
 
-      S.divider(),
-
-      // ── Content ──
-      sectionItem(S, 'Content', '✎', [
-        pane(S, 'post', 'Blog', 'Blog Posts', '✍', 'post'),
-        pane(S, 'caseStudy', 'Case Studies', 'Case Studies', '💼', 'caseStudy'),
-        pane(S, 'service', 'Services', 'Services', '🛠', 'service'),
+      // ── ✎ Content ────────────────────────────────────────────────
+      sectionItem(S, 'Content', ComposeIcon, [
+        pane(S, 'post',      'Blog Posts',   'Blog Posts',   ComposeIcon, 'post'),
+        pane(S, 'caseStudy', 'Case Studies', 'Case Studies', CaseIcon,    'caseStudy'),
+        pane(S, 'service',   'Services',     'Services',     RocketIcon,  'service'),
         singletonPages(S),
       ]),
 
       S.divider(),
 
-      // ── Navigation & Menus ──
-      sectionItem(S, 'Navigation & Menus', '🗺', [
-        pane(S, 'navigationMenu', 'Navigation Menus', 'All Menus', '🗺', 'navigationMenu'),
+      // ── 🎨 Brand & Assets ─────────────────────────────────────────
+      sectionItem(S, 'Brand & Assets', ImagesIcon, [
+        pane(S, 'asset', 'Media Library', 'Media Library', ImageIcon, 'asset'),
+      ]),
+
+      S.divider(),
+
+      // ── ⚡ Marketing ──────────────────────────────────────────────
+      sectionItem(S, 'Marketing', LaunchIcon, [
+        pane(S, 'navigationMenu', 'Navigation Menus', 'All Menus', MenuIcon, 'navigationMenu'),
         S.listItem()
           .title('Header Main Menu')
-          .icon(() => '⚡')
+          .icon(MenuIcon)
           .child(
             S.documentList()
               .title('Header Main Menu')
@@ -83,71 +54,95 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
           ),
         S.listItem()
           .title('Footer Links')
-          .icon(() => '🦶')
+          .icon(LinkIcon)
           .child(
             S.documentList()
               .title('Footer Links')
               .filter('_type == "navigationMenu" && (menuId == "footer-services" || menuId == "footer-sitemap" || menuId == "footer-legal")')
           ),
-        pane(S, 'platformProfile', 'Presence & Social Links', 'Presence', '🔗', 'platformProfile'),
+        pane(S, 'redirect', 'Redirects', 'Redirects', LinkIcon, 'redirect'),
       ]),
 
       S.divider(),
 
-      // ── Brand & Assets ──
-      sectionItem(S, 'Brand & Assets', '🎨', [
-        pane(S, 'brandAsset', 'Brand Assets & Logos', 'Brand & Icons', '🎨', 'brandAsset'),
-        pane(S, 'asset', 'Media Library', 'Media Library', '▦', 'asset'),
+      // ── 🏢 Business ────────────────────────────────────────────────
+      sectionItem(S, 'Business', UsersIcon, [
+        pane(S, 'client',      'Clients',      'Clients',          EarthAmericasIcon, 'client'),
+        pane(S, 'engagement',  'Engagements',  'Engagements',       ArchiveIcon,       'engagement'),
+        pane(S, 'person',      'Team',          'Team / People',    UserIcon,          'person'),
+        pane(S, 'testimonial', 'Testimonials', 'Testimonials',     StarIcon,          'testimonial'),
+        pane(S, 'platformProfile', 'Presence & Social', 'Presence', PlugIcon,         'platformProfile'),
       ]),
 
       S.divider(),
 
-      // ── Integrations & Code ──
-      sectionItem(S, 'Integrations & Code', '💻', [
-        pane(S, 'siteScript', 'Tracking & Custom Scripts', 'Scripts & Code', '💻', 'siteScript'),
-        pane(S, 'redirect', 'Redirects', 'Redirects', '↪', 'redirect'),
+      // ── ⚙ Settings ────────────────────────────────────────────────
+      sectionItem(S, 'Settings', CogIcon, [
+        quickDoc(S, 'Site Settings', 'siteSettings', 'siteSettings', ControlsIcon),
+        pane(S, 'siteScript', 'Tracking & Scripts', 'Scripts & Code', PlugIcon, 'siteScript'),
+        S.divider(),
+        vocabList(S, 'Platforms',        'platform',        PlugIcon),
+        vocabList(S, 'Tools / Tech',     'tech-stack',      OlistIcon),
+        vocabList(S, 'Tags',             'tag',             TagIcon),
+        vocabList(S, 'Asset types',      'asset-type',      PackageIcon),
+        vocabList(S, 'Content types',    'content-type',    DocumentsIcon),
+        vocabList(S, 'Departments',      'team-department', UsersIcon),
+        vocabList(S, 'Countries',        'country',         EarthAmericasIcon),
+        pane(S, 'industry', 'Industries', 'Industry master',  PinIcon,  'industry'),
+        pane(S, 'taxonomy', 'All taxonomy', 'All taxonomy',   BookIcon, 'taxonomy'),
+      ]),
+
+      S.divider(),
+
+      // ── 🔴 System (health / ops — for admins) ─────────────────────
+      sectionItem(S, 'System', BellIcon, [
         S.listItem()
-          .title('SEO Audit')
-          .icon(() => '🔎')
+          .title('Drafts Needing Review')
+          .icon(EditIcon)
           .child(
             S.documentList()
-              .title('SEO — Pages needing attention')
-              .filter('_type == "singletonPage" && !defined(seoDescription)')
+              .title('Draft Documents')
+              .filter('_id in path("drafts.**")')
               .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
           ),
+        S.listItem()
+          .title('Missing SEO Meta')
+          .icon(WarningFilledIcon)
+          .child(
+            S.documentList()
+              .title('Missing SEO Description')
+              .filter('(_type in ["post", "caseStudy", "service", "singletonPage"]) && !defined(seoDescription)')
+              .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
+          ),
+        S.listItem()
+          .title('Missing Cover Images')
+          .icon(ImageIcon)
+          .child(
+            S.documentList()
+              .title('Missing Cover Media')
+              .filter('(_type in ["post", "caseStudy"]) && !defined(coverImage) && !defined(coverPath)')
+              .defaultOrdering([{ field: '_updatedAt', direction: 'desc' }])
+          ),
+        S.listItem()
+          .title('Scheduled Content')
+          .icon(ClockIcon)
+          .child(
+            S.documentList()
+              .title('Future Scheduled Posts')
+              .filter('_type == "post" && dateTime(publishedAt) > dateTime(now())')
+              .defaultOrdering([{ field: 'publishedAt', direction: 'asc' }])
+          ),
+        S.divider(),
+        pane(S, 'syncStatus',        'Sync Status',          'Sync Status',        CalendarIcon, 'syncStatus'),
+        pane(S, 'contactSubmission', 'Contact Submissions',  'Contact Submissions', EnvelopeIcon, 'contactSubmission'),
       ]),
 
-      S.divider(),
-
-      // ── Business ──
-      sectionItem(S, 'Business', '🏢', [
-        pane(S, 'client', 'Clients', 'Clients', '🏢', 'client'),
-        pane(S, 'engagement', 'Engagements', 'Engagements', '🤝', 'engagement'),
-        pane(S, 'person', 'Team', 'Team / People', '👥', 'person'),
-        pane(S, 'testimonial', 'Testimonials', 'Testimonials', '💬', 'testimonial'),
-      ]),
-
-      S.divider(),
-
-      // ── Settings ──
-      sectionItem(S, 'Settings', '⚙', [
-        quickDoc(S, 'Site Settings', 'siteSettings', 'siteSettings', '⚙'),
-        vocabList(S, 'Platforms', 'platform', '📡'),
-        vocabList(S, 'Tools / Tech stack', 'tech-stack', '🛠'),
-        vocabList(S, 'Tags', 'tag', '🏷'),
-        vocabList(S, 'Asset types', 'asset-type', '🧩'),
-        vocabList(S, 'Content types', 'content-type', '📄'),
-        vocabList(S, 'Departments', 'team-department', '👥'),
-        vocabList(S, 'Countries', 'country', '🌐'),
-        pane(S, 'industry', 'Industries', 'Industry master', '🏭', 'industry'),
-        pane(S, 'taxonomy', 'All taxonomy', 'All taxonomy', '📚', 'taxonomy'),
-      ]),
     ]);
 
-// ── Helpers ──
+// ── Helpers ─────────────────────────────────────────────────────────────────
 
-function sectionItem(S: StructureBuilder, title: string, icon: string, items: any[]) {
-  return S.listItem().title(title).icon(() => icon).child(S.list().title(title).items(items));
+function sectionItem(S: StructureBuilder, title: string, icon: any, items: any[]) {
+  return S.listItem().title(title).icon(icon).child(S.list().title(title).items(items));
 }
 
 function quickDoc(
@@ -155,11 +150,11 @@ function quickDoc(
   title: string,
   schemaType: string,
   documentId: string,
-  icon: string
+  icon: any
 ) {
   return S.listItem()
     .title(title)
-    .icon(() => icon)
+    .icon(icon)
     .child(S.document().schemaType(schemaType).documentId(documentId).title(title));
 }
 
@@ -168,12 +163,12 @@ function pane(
   key: string,
   title: string,
   label: string,
-  icon: string,
+  icon: any,
   schemaType: string
 ) {
   return S.listItem()
     .title(title)
-    .icon(() => icon)
+    .icon(icon)
     .child(
       S.component(DocumentListPane)
         .id(key)
@@ -183,29 +178,29 @@ function pane(
 }
 
 function singletonPages(S: StructureBuilder) {
-  const pages = [
-    ['Home', 'home', '🏠'],
-    ['About', 'about', '👋'],
-    ['Services', 'services', '🛠'],
-    ['Work', 'work', '💼'],
-    ['Blog', 'blog', '✍'],
-    ['FAQ', 'faq', '❓'],
-    ['Contact', 'contact', '📬'],
-    ['Privacy', 'privacy-policy', '🔒'],
-    ['Terms', 'terms-of-use', '📋'],
-    ['Refund', 'refund-policy', '💰'],
-    ['Impact', 'impact', '🌍'],
-    ['Subscription', 'subscription', '📨'],
-    ['Sitemap', 'sitemap', '🗺'],
-  ] as const;
+  const pages: [string, string, any][] = [
+    ['Home',         'home',           HomeIcon],
+    ['About',        'about',          InfoOutlineIcon],
+    ['Services',     'services',       RocketIcon],
+    ['Work',         'work',           CaseIcon],
+    ['Blog',         'blog',           ComposeIcon],
+    ['FAQ',          'faq',            CommentIcon],
+    ['Contact',      'contact',        EnvelopeIcon],
+    ['Privacy',      'privacy-policy', LockIcon],
+    ['Terms',        'terms-of-use',   DocumentTextIcon],
+    ['Refund',       'refund-policy',  BillIcon],
+    ['Impact',       'impact',         HeartIcon],
+    ['Subscription', 'subscription',   EnvelopeIcon],
+    ['Sitemap',      'sitemap',        SortIcon],
+  ];
   return S.listItem()
     .title('Pages')
-    .icon(() => '📄')
+    .icon(DocumentsIcon)
     .child(
       S.list()
         .title('Pages')
         .items([
-          pane(S, 'pages', 'All Pages', 'All Pages', '📄', 'singletonPage'),
+          pane(S, 'pages', 'All Pages', 'All Pages', DocumentsIcon, 'singletonPage'),
           S.divider(),
           ...pages.map(([label, pageId, icon]) =>
             quickDoc(S, label, 'singletonPage', pageId, icon)
@@ -214,10 +209,10 @@ function singletonPages(S: StructureBuilder) {
     );
 }
 
-function vocabList(S: StructureBuilder, title: string, vocabulary: string, icon: string) {
+function vocabList(S: StructureBuilder, title: string, vocabulary: string, icon: any) {
   return S.listItem()
     .title(title)
-    .icon(() => icon)
+    .icon(icon)
     .child(
       S.documentList()
         .title(title)
