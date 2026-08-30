@@ -36,9 +36,11 @@ export const caseStudiesListQuery = `
 
 export const caseStudyBySlugQuery = `
   *[_type == "caseStudy" && slug.current == $slug && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
-    title, client, summary, bodyContent, tags, disciplines, industry, timeline, team,
+    title, subtitle, client, summary, about, challenges, solutions, designPhilosophy, impact, galleryPaths,
+    bodyContent, tags, disciplines, industry, timeline, team, partner,
     coverImage, coverPath, thumbnailPath, results,
     seoTitle, seoDescription, ogImage, publishedAt, featured,
+    "clientRef": clientRef->{ name, logo, website },
     "services": services[]->{ title, "slug": slug.current }
   }
 `;

@@ -2,9 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
 import { sanityClient } from '../../lib/sanity';
-import { caseStudyBySlugQuery, caseStudiesListQuery } from '../../lib/queries';
+import { caseStudyBySlugQuery } from '../../lib/queries';
 import { assetUrl } from '../../lib/assets';
-
 
 const { slug } = Astro.params;
 const work = await sanityClient.fetch(caseStudyBySlugQuery, { slug }).catch(() => null);
@@ -15,8 +14,13 @@ if (!work) {
 
 const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
 const bodyContent = Array.isArray(work.bodyContent) ? work.bodyContent : [];
+const challenges = Array.isArray(work.challenges) ? work.challenges : [];
+const solutions = Array.isArray(work.solutions) ? work.solutions : [];
+const impactItems = Array.isArray(work.impact) ? work.impact : [];
+const galleryPaths = Array.isArray(work.galleryPaths) ? work.galleryPaths : [];
+const results = Array.isArray(work.results) ? work.results : [];
 
-const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy"]{"slug": slug.current}`).catch(() => []);
+const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy" && !(_id in path("drafts.**"))]{"slug": slug.current}`).catch(() => []);
 const seenSlugs = new Set();
 const allSlugs = [];
 for (const s of (allSlugsRaw || [])) {
@@ -27,17 +31,18 @@ for (const s of (allSlugsRaw || [])) {
 }
 const others = allSlugs.filter((s: any) => s.slug !== slug).slice(0, 2);
 const otherCases = await Promise.all(others.map((s: any) =>
-  sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug][0]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`, { slug: s.slug }).catch(() => null)
+  sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug && !(_id in path("drafts.**"))][0]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`, { slug: s.slug }).catch(() => null)
 )).then(r => r.filter(Boolean));
 ---
 
-<BaseLayout title={`${work.title} — Wugweb Work`} description={(work.summary || '').slice(0, 160)}>
+<BaseLayout title={`${work.title} — Wugweb Work`} description={(work.summary || work.about || '').slice(0, 160)}>
   <section class="work-detail-hero">
     <div class="wrap">
       <p class="eyebrow"><a href="/work">Work</a></p>
       <h1>{work.title}</h1>
+      {work.subtitle && <p class="work-subtitle">{work.subtitle}</p>}
       <div class="work-meta">
-        <div><span class="meta-label">Client</span><span>{work.client}</span></div>
+        <div><span class="meta-label">Client</span><span>{work.clientRef?.name || work.client || '—'}</span></div>
         {work.disciplines?.length > 0 && <div><span class="meta-label">Disciplines</span><span>{work.disciplines.join(', ')}</span></div>}
         {work.industry && <div><span class="meta-label">Industry</span><span>{work.industry}</span></div>}
         {work.timeline && <div><span class="meta-label">Timeline</span><span>{work.timeline}</span></div>}
@@ -46,21 +51,130 @@ const otherCases = await Promise.all(others.map((s: any) =>
   </section>
 
   {coverSrc && (
-    <section class="wrap section work-cover">
-      <img src={coverSrc} alt="" loading="eager" decoding="async" />
+    <section class="wrap section work-cover" data-reveal>
+      {coverSrc.endsWith('.mp4') || coverSrc.endsWith('.webm') ? (
+        <video src={coverSrc} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
+      ) : (
+        <img src={coverSrc} alt={work.title} loading="eager" decoding="async" class="work-cover-media" />
+      )}
     </section>
   )}
 
-  <!-- SINGLE-COLUMN ADAPTIVE UX BODY CONTENT -->
   <div class="wrap case-body-content">
-    
-    {work.summary && (
+    {/* 1. About / Overview */}
+    {(work.about || work.summary) && (
       <article class="case-section text-block" data-reveal>
-        <p class="lead-text">{work.summary}</p>
+        <h2>About the Project</h2>
+        <p class="lead-text">{work.about || work.summary}</p>
       </article>
     )}
 
-    <!-- Full Body Content (Sanity blocks) -->
+    {/* 2. Challenges & Strategic Solutions Grid */}
+    {(challenges.length > 0 || solutions.length > 0) && (
+      <section class="case-bento-grid" data-reveal>
+        {challenges.length > 0 && (
+          <div class="bento-col glass-panel challenge-panel">
+            <div class="card-glow"></div>
+            <div class="panel-header">
+              <span class="badge-pill badge-challenge">CHALLENGES</span>
+              <h3>The Problem Space</h3>
+            </div>
+            <ul class="item-list">
+              {challenges.map((ch: any) => (
+                <li class="item-card">
+                  <strong>{ch.title}</strong>
+                  {ch.body && <p>{ch.body}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {solutions.length > 0 && (
+          <div class="bento-col glass-panel solution-panel">
+            <div class="card-glow"></div>
+            <div class="panel-header">
+              <span class="badge-pill badge-solution">SOLUTIONS</span>
+              <h3>Strategic Execution</h3>
+            </div>
+            <ul class="item-list">
+              {solutions.map((sol: any) => (
+                <li class="item-card">
+                  <strong>{sol.title}</strong>
+                  {sol.body && <p>{sol.body}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </section>
+    )}
+
+    {/* 3. Design Philosophy */}
+    {work.designPhilosophy && (
+      <aside class="philosophy-card glass-panel" data-reveal>
+        <div class="card-glow"></div>
+        <span class="badge-pill badge-gold">CORE PHILOSOPHY</span>
+        <blockquote class="philosophy-quote">
+          {work.designPhilosophy.split('\n').map((line: string) => (
+            <p>{line}</p>
+          ))}
+        </blockquote>
+      </aside>
+    )}
+
+    {/* 4. Business Impact & Outcomes */}
+    {impactItems.length > 0 && (
+      <section class="case-section text-block" data-reveal>
+        <h2>Business Impact & Outcomes</h2>
+        <div class="impact-grid">
+          {impactItems.map((imp: any) => (
+            <div class="impact-card glass-panel">
+              <div class="card-glow"></div>
+              <strong class="impact-title">{imp.title}</strong>
+              {imp.body && <p class="impact-desc">{imp.body}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {/* 5. Results & Metrics */}
+    {results.length > 0 && (
+      <section class="results-grid" data-reveal>
+        {results.map((res: any) => (
+          <div class="result-card glass-panel">
+            <div class="card-glow"></div>
+            <span class="result-metric">{res.metric}</span>
+            {res.label && <span class="result-label">{res.label}</span>}
+          </div>
+        ))}
+      </section>
+    )}
+
+    {/* 6. Gallery Paths */}
+    {galleryPaths.length > 0 && (
+      <section class="gallery-section" data-reveal>
+        <h2>Visual Narrative & Artifacts</h2>
+        <div class="gallery-grid">
+          {galleryPaths.map((path: string) => {
+            const src = assetUrl(path);
+            const isVideo = path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov');
+            return (
+              <figure class="gallery-item glass-panel">
+                {isVideo ? (
+                  <video src={src} muted loop playsinline autoplay preload="metadata" class="gallery-media" />
+                ) : (
+                  <img src={src} alt={work.title} loading="lazy" class="gallery-media" />
+                )}
+              </figure>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    {/* 7. Modular Portable Text Content */}
     {bodyContent && bodyContent.length > 0 && (
       <article class="case-section text-block" data-reveal>
         <PortableTextRenderer value={bodyContent} />
@@ -101,7 +215,6 @@ const otherCases = await Promise.all(others.map((s: any) =>
 </BaseLayout>
 
 <style>
-  /* Glass panels and animations */
   .glass-panel {
     background: color-mix(in srgb, var(--neutral-8) 60%, transparent);
     border: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent);
@@ -116,7 +229,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
   .card-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle 220px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--color-accent-primary) 10%, transparent) 0%, transparent 85%);
+    background: radial-gradient(circle 240px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--color-accent-primary) 10%, transparent) 0%, transparent 85%);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 0;
@@ -144,7 +257,13 @@ const otherCases = await Promise.all(others.map((s: any) =>
     line-height: var(--core-line-height-tight);
     margin-top: var(--gap-4);
     color: var(--fg);
-    max-width: 20ch;
+    max-width: 22ch;
+  }
+  .work-subtitle {
+    font-size: var(--fluid-body-lg);
+    color: var(--fg-muted);
+    margin-top: var(--gap-3);
+    max-width: 60ch;
   }
 
   .work-meta {
@@ -181,9 +300,11 @@ const otherCases = await Promise.all(others.map((s: any) =>
   .work-cover {
     padding-block: var(--space-section-sm);
   }
-  .work-cover img {
+  .work-cover-media {
     width: 100%;
     height: auto;
+    max-height: 720px;
+    object-fit: cover;
     border-radius: var(--radius-xl);
     border: 1px solid var(--line);
     display: block;
@@ -195,7 +316,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
     margin-inline: auto;
     display: flex;
     flex-direction: column;
-    gap: var(--space-section-md);
+    gap: var(--space-section-lg);
     padding-block: var(--space-section-md) var(--space-section-lg);
   }
 
@@ -213,39 +334,171 @@ const otherCases = await Promise.all(others.map((s: any) =>
   }
 
   .lead-text {
-    font-size: var(--t-l);
-    line-height: var(--lh-l);
-    color: var(--fg-muted);
+    font-size: var(--fluid-body-lg);
+    line-height: var(--core-line-height-relaxed);
+    color: var(--color-text-secondary, #bababa);
   }
 
-  .portable-text p {
+  /* Bento Comparison Grid */
+  .case-bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-6);
+  }
+  @media (min-width: 768px) {
+    .case-bento-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-8);
+    }
+  }
+
+  .bento-col {
+    padding: var(--space-5, 1.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-5);
+  }
+  .panel-header h3 {
+    font-size: var(--t-h4);
+    color: var(--fg);
+    margin: var(--gap-2) 0 0 0;
+  }
+
+  .badge-pill {
+    font-family: var(--core-font-family-mono, monospace);
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold, 700);
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: var(--radius-xs, 4px);
+    display: inline-block;
+  }
+  .badge-challenge { background: rgba(250, 65, 8, 0.15); color: #fa4108; border: 1px solid rgba(250, 65, 8, 0.3); }
+  .badge-solution { background: rgba(62, 210, 25, 0.15); color: #3ed219; border: 1px solid rgba(62, 210, 25, 0.3); }
+  .badge-gold { background: rgba(255, 208, 0, 0.15); color: #ffd000; border: 1px solid rgba(255, 208, 0, 0.3); }
+
+  .item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+  }
+  .item-card {
+    padding: var(--space-3, 0.875rem) var(--space-4, 1rem);
+    border-radius: var(--radius-sm, 6px);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .item-card strong {
+    color: var(--fg);
     font-size: var(--fluid-body-md);
-    line-height: 1.8;
-    color: var(--fg-muted);
-    margin-bottom: var(--gap-5);
+    display: block;
+    margin-bottom: 4px;
   }
-  .portable-text h2 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); color: var(--fg); margin-top: var(--gap-10); margin-bottom: var(--gap-4); }
-  .portable-text h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); margin-top: var(--gap-7); margin-bottom: var(--gap-3); }
-  .portable-text blockquote { margin: var(--gap-8) 0; padding-left: var(--gap-6); border-left: 2px solid var(--color-accent-primary); color: var(--fg); }
-  .portable-text ul, .portable-text ol { margin-top: var(--gap-4); padding-left: var(--gap-6); color: var(--fg-muted); line-height: 1.75; }
-  .portable-text li { margin-top: var(--gap-2); }
+  .item-card p {
+    margin: 0;
+    color: var(--fg-muted);
+    font-size: var(--fluid-body-sm);
+    line-height: 1.55;
+  }
 
-  .portable-media {
-    margin: var(--space-section-sm) 0;
-    width: 100%;
+  /* Philosophy Card */
+  .philosophy-card {
+    padding: var(--space-6, 2rem);
+    border-left: 4px solid var(--color-accent-primary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+  }
+  .philosophy-quote {
+    margin: 0;
+    padding: 0;
+    font-size: var(--fluid-h3, 1.375rem);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.5;
+    color: var(--fg);
+  }
+  .philosophy-quote p {
+    margin: 0;
+  }
+
+  /* Impact Grid */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-4);
+  }
+  @media (min-width: 640px) {
+    .impact-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--gap-6);
+    }
+  }
+  .impact-card {
+    padding: var(--space-5, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+  }
+  .impact-title {
+    font-size: var(--fluid-body-lg);
+    color: var(--color-accent-primary, #ffd000);
+  }
+  .impact-desc {
+    margin: 0;
+    font-size: var(--fluid-body-md);
+    color: var(--fg-muted);
+    line-height: 1.6;
+  }
+
+  /* Results / Stats */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--gap-4);
+  }
+  .result-card {
+    padding: var(--space-5, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+  .result-metric {
+    font-size: var(--fluid-h2, 2.25rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-primary, #ffd000);
+  }
+  .result-label {
+    font-size: var(--fluid-body-sm);
+    color: var(--fg-muted);
+  }
+
+  /* Gallery Grid */
+  .gallery-section h2 {
+    font-size: var(--t-h3);
+    color: var(--fg);
+    margin-bottom: var(--gap-6);
+    border-bottom: var(--stroke-thin) solid var(--line);
+    padding-bottom: var(--gap-3);
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-6);
+  }
+  .gallery-item {
     border-radius: var(--radius-xl);
     overflow: hidden;
-    border: 1px solid var(--line);
-    background: color-mix(in srgb, var(--neutral-10) 20%, transparent);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
   }
-  .portable-media img, .portable-media video {
+  .gallery-media {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
   }
-  .portable-media figcaption { padding: var(--gap-4) var(--gap-5); color: var(--fg-muted); font-size: var(--fluid-body-sm); }
 
   /* More cases Redesign */
   .more-cases-section {
@@ -337,7 +590,6 @@ const otherCases = await Promise.all(others.map((s: any) =>
 </style>
 
 <script>
-  // Mouse tracking card glow animation
   const initGlows = () => {
     const cards = document.querySelectorAll('.glass-panel');
     cards.forEach((card) => {
@@ -358,4 +610,3 @@ const otherCases = await Promise.all(others.map((s: any) =>
   initGlows();
   document.addEventListener('astro:page-load', initGlows);
 </script>
-

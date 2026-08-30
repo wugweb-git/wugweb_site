@@ -44,12 +44,24 @@ function renderChildren(children: any[] = [], markDefs: any[] = []): string {
         else if (mark === 'code') text = `<code class="pt-inline-code">${text}</code>`;
         else if (mark === 'underline') text = `<u>${text}</u>`;
         else if (mark === 'strike-through') text = `<s>${text}</s>`;
+        else if (mark === 'highlight') text = `<mark class="pt-highlight">${text}</mark>`;
         else {
           const def = markDefs.find((d: any) => d?._key === mark);
           if (def && def._type === 'link') {
             const href = escapeHtml(def.href || '#');
             const target = def.blank ? ' target="_blank" rel="noopener noreferrer"' : '';
             text = `<a href="${href}" class="pt-link"${target}>${text}</a>`;
+          } else if (def && def._type === 'internalLink') {
+            const ref = def.reference;
+            let href = '#';
+            if (ref?.slug?.current) {
+              if (ref._type === 'post') href = `/blog/${ref.slug.current}`;
+              else if (ref._type === 'caseStudy') href = `/work/${ref.slug.current}`;
+              else if (ref._type === 'service') href = `/services/${ref.slug.current}`;
+            } else if (ref?.pageId) {
+              href = ref.pageId === 'home' ? '/' : `/${ref.pageId}`;
+            }
+            text = `<a href="${escapeHtml(href)}" class="pt-link pt-internal-link">${text}</a>`;
           }
         }
       }
@@ -306,6 +318,113 @@ if (currentList) {
           </div>
           <div class="pt-col-right">
             <Astro.self value={b.right} />
+          </div>
+        </div>
+      );
+    }
+
+    // ── 11. Callout / Alert Box ──
+    if (b._type === 'callout') {
+      const type = b.type || 'info';
+      return (
+        <div class:list={['pt-callout', `callout-${type}`, 'glass-panel']} data-reveal>
+          <div class="card-glow"></div>
+          <div class="pt-callout-header">
+            <span class="pt-callout-badge">{type.toUpperCase()}</span>
+            {b.title && <strong class="pt-callout-title">{b.title}</strong>}
+          </div>
+          {b.text && <p class="pt-callout-body">{b.text}</p>}
+        </div>
+      );
+    }
+
+    // ── 12. Quote / Testimonial Block ──
+    if (b._type === 'quoteBlock') {
+      const avatarSrc = resolveMediaSrc(b.avatar);
+      return (
+        <figure class="pt-quote-block glass-panel" data-reveal>
+          <div class="card-glow"></div>
+          <blockquote class="pt-quote-text">
+            <p>"{b.quote || ''}"</p>
+          </blockquote>
+          {(b.author || b.role || b.company || avatarSrc) && (
+            <figcaption class="pt-quote-author">
+              {avatarSrc && <img src={avatarSrc} alt={b.author || ''} class="pt-quote-avatar" loading="lazy" />}
+              <div class="pt-quote-meta">
+                {b.author && <strong class="pt-quote-name">{b.author}</strong>}
+                {(b.role || b.company) && (
+                  <span class="pt-quote-role">
+                    {b.role}{b.role && b.company ? ' @ ' : ''}{b.company}
+                  </span>
+                )}
+              </div>
+            </figcaption>
+          )}
+        </figure>
+      );
+    }
+
+    // ── 13. Comparison / Key-Value Table ──
+    if (b._type === 'comparisonTable') {
+      const columns: string[] = Array.isArray(b.columns) ? b.columns : [];
+      const rows: any[] = Array.isArray(b.rows) ? b.rows : [];
+      return (
+        <div class="pt-comparison-wrapper glass-panel" data-reveal>
+          {b.title && <h4 class="pt-comparison-title">{b.title}</h4>}
+          <div class="pt-table-scroll">
+            <table class="pt-comparison-table">
+              {columns.length > 0 && (
+                <thead>
+                  <tr>
+                    {columns.map((col: string) => (
+                      <th>{col}</th>
+                    ))}
+                  </tr>
+                </thead>
+              )}
+              <tbody>
+                {rows.map((row: any) => (
+                  <tr>
+                    <td><strong>{row.feature || '—'}</strong></td>
+                    {columns.length > 1 && <td>{row.col1 || '—'}</td>}
+                    {columns.length > 2 && <td>{row.col2 || '—'}</td>}
+                    {columns.length > 3 && <td>{row.col3 || '—'}</td>}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    }
+
+    // ── 14. Standard Table (@sanity/table) ──
+    if (b._type === 'table' && Array.isArray(b.rows) && b.rows.length > 0) {
+      const headerRow = b.rows[0];
+      const bodyRows = b.rows.slice(1);
+      return (
+        <div class="pt-comparison-wrapper glass-panel" data-reveal>
+          <div class="pt-table-scroll">
+            <table class="pt-comparison-table">
+              {headerRow && Array.isArray(headerRow.cells) && (
+                <thead>
+                  <tr>
+                    {headerRow.cells.map((cell: string) => (
+                      <th>{cell}</th>
+                    ))}
+                  </tr>
+                </thead>
+              )}
+              <tbody>
+                {bodyRows.map((row: any) => (
+                  <tr>
+                    {Array.isArray(row.cells) && row.cells.map((cell: string) => (
+                      <td>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       );
@@ -732,6 +851,192 @@ if (currentList) {
     .pt-two-cols.layout-50-50 { grid-template-columns: 1fr 1fr; }
     .pt-two-cols.layout-60-40 { grid-template-columns: 3fr 2fr; }
     .pt-two-cols.layout-40-60 { grid-template-columns: 2fr 3fr; }
+  }
+
+  /* Highlights & Internal Links */
+  .portable-text-content :global(mark.pt-highlight) {
+    background: rgba(255, 208, 0, 0.2);
+    color: #ffd000;
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-xs, 4px);
+    font-weight: var(--font-weight-medium, 500);
+  }
+
+  .portable-text-content :global(a.pt-internal-link) {
+    border-bottom: 1px dashed var(--color-accent-primary, #ffd000);
+    text-decoration: none;
+  }
+
+  .portable-text-content :global(a.pt-internal-link:hover) {
+    border-bottom-style: solid;
+  }
+
+  /* Callout / Alert Box */
+  .pt-callout {
+    position: relative;
+    padding: var(--space-4, 1.25rem) var(--space-5, 1.5rem);
+    border-radius: var(--radius-md, 10px);
+    margin: var(--space-4, 1.5rem) 0;
+    border-left: 4px solid var(--color-accent-primary, #ffd000);
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pt-callout.callout-info {
+    border-left-color: #2167e9;
+    background: rgba(33, 103, 233, 0.04);
+  }
+  .pt-callout.callout-tip,
+  .pt-callout.callout-success {
+    border-left-color: #3ed219;
+    background: rgba(62, 210, 25, 0.04);
+  }
+  .pt-callout.callout-warning {
+    border-left-color: #fa4108;
+    background: rgba(250, 65, 8, 0.04);
+  }
+  .pt-callout.callout-quote {
+    border-left-color: #ffd000;
+    background: rgba(255, 208, 0, 0.04);
+  }
+
+  .pt-callout-header {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .pt-callout-badge {
+    font-size: 0.65rem;
+    font-weight: var(--font-weight-bold, 700);
+    letter-spacing: 0.06em;
+    font-family: var(--core-font-family-mono, monospace);
+    padding: 2px 6px;
+    border-radius: var(--radius-xs, 4px);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-text-primary, #f4f4f4);
+  }
+
+  .callout-info .pt-callout-badge { color: #60a5fa; background: rgba(33, 103, 233, 0.2); }
+  .callout-tip .pt-callout-badge,
+  .callout-success .pt-callout-badge { color: #4ade80; background: rgba(62, 210, 25, 0.2); }
+  .callout-warning .pt-callout-badge { color: #f87171; background: rgba(250, 65, 8, 0.2); }
+  .callout-quote .pt-callout-badge { color: #ffd000; background: rgba(255, 208, 0, 0.2); }
+
+  .pt-callout-title {
+    color: var(--color-text-primary, #f4f4f4);
+    font-size: var(--fluid-body-md, 1rem);
+  }
+
+  .pt-callout-body {
+    margin: 0;
+    color: var(--color-text-secondary, #bababa);
+    font-size: var(--fluid-body-sm, 0.875rem);
+    line-height: 1.6;
+  }
+
+  /* Quote / Testimonial Block */
+  .pt-quote-block {
+    position: relative;
+    padding: var(--space-5, 1.75rem);
+    border-radius: var(--radius-lg, 12px);
+    margin: var(--space-5, 2rem) 0;
+    border-left: 3px solid var(--color-accent-primary, #ffd000);
+    background: rgba(255, 208, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pt-quote-text {
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    color: var(--color-text-primary, #f4f4f4);
+    font-size: var(--fluid-body-lg, 1.125rem);
+    line-height: 1.6;
+  }
+
+  .pt-quote-text p {
+    margin: 0;
+  }
+
+  .pt-quote-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .pt-quote-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full, 9999px);
+    object-fit: cover;
+    border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.15));
+  }
+
+  .pt-quote-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .pt-quote-name {
+    color: var(--color-text-primary, #f4f4f4);
+    font-size: var(--fluid-body-sm, 0.875rem);
+  }
+
+  .pt-quote-role {
+    color: var(--color-text-muted, #888);
+    font-size: var(--fluid-caption, 0.75rem);
+  }
+
+  /* Comparison Table */
+  .pt-comparison-wrapper {
+    position: relative;
+    padding: var(--space-4, 1.25rem);
+    border-radius: var(--radius-md, 10px);
+    margin: var(--space-5, 2rem) 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .pt-comparison-title {
+    color: var(--color-text-primary, #f4f4f4);
+    font-size: var(--fluid-h4, 1.125rem);
+    margin: 0 0 1rem 0;
+  }
+
+  .pt-table-scroll {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .pt-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fluid-body-sm, 0.875rem);
+    color: var(--color-text-secondary, #bababa);
+  }
+
+  .pt-comparison-table th {
+    padding: 10px 14px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--color-text-primary, #f4f4f4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-weight: var(--font-weight-semibold, 600);
+  }
+
+  .pt-comparison-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .pt-comparison-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
   }
 </style>
 

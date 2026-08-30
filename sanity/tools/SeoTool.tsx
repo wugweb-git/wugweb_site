@@ -177,11 +177,11 @@ function SeoToolContent() {
           <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 260px)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'Inter, system-ui, sans-serif' }}>
               <thead>
-                <tr style={{ background: 'var(--card-muted-bg-color, #f1f3f5)', position: 'sticky', top: 0, zIndex: 2 }}>
-                  <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #e1e3e6)' }}>Document Title</th>
-                  <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #e1e3e6)' }}>SEO Description</th>
-                  <th style={{ padding: '8px 12px', textAlign: 'center', borderBottom: '1px solid var(--card-border-color, #e1e3e6)', width: 100 }}>Score</th>
-                  <th style={{ padding: '8px 12px', textAlign: 'right', borderBottom: '1px solid var(--card-border-color, #e1e3e6)', width: 140 }}>Actions</th>
+                <tr style={{ background: 'var(--card-muted-bg-color, #191919)', position: 'sticky', top: 0, zIndex: 2 }}>
+                  <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #2b2b2b)' }}>Document Title</th>
+                  <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #2b2b2b)' }}>SEO Description</th>
+                  <th style={{ padding: '8px 12px', textAlign: 'center', borderBottom: '1px solid var(--card-border-color, #2b2b2b)', width: 100 }}>Score</th>
+                  <th style={{ padding: '8px 12px', textAlign: 'right', borderBottom: '1px solid var(--card-border-color, #2b2b2b)', width: 140 }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -189,7 +189,7 @@ function SeoToolContent() {
                   const score = seoScore(row as any);
                   const level = seoLevel(score);
                   return (
-                    <tr key={row._id} style={{ borderBottom: '1px solid var(--card-border-color, #f1f3f5)' }}>
+                    <tr key={row._id} style={{ borderBottom: '1px solid var(--card-border-color, #222)' }}>
                       <td style={{ padding: '10px 12px' }}>
                         <Text size={1} weight="semibold">{String(row.title || row._id)}</Text>
                         {row.slug ? <Text size={0} muted>@{String(row.slug)}</Text> : null}

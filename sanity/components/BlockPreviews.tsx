@@ -164,3 +164,74 @@ export function LogoCloudPreview(props: any) {
     </Card>
   );
 }
+
+// ── Callout Preview Component ──
+export function CalloutPreview(props: any) {
+  const { type = 'info', title, text } = props || {};
+  const toneMap: Record<string, 'primary' | 'positive' | 'caution' | 'critical' | 'default'> = {
+    info: 'primary',
+    tip: 'positive',
+    warning: 'caution',
+    success: 'positive',
+    quote: 'default',
+  };
+  const tone = toneMap[type] || 'default';
+
+  return (
+    <Card padding={3} radius={2} tone={tone} border style={{ background: 'rgba(255, 208, 0, 0.03)' }}>
+      <Stack space={2}>
+        <Flex align="center" gap={2}>
+          <Badge tone={tone} fontSize={0} mode="outline">
+            {type.toUpperCase()}
+          </Badge>
+          <Text weight="bold" size={1}>{title || 'Notice / Callout'}</Text>
+        </Flex>
+        {text && <Text size={0} muted>{text}</Text>}
+      </Stack>
+    </Card>
+  );
+}
+
+// ── Quote Block Preview Component ──
+export function QuoteBlockPreview(props: any) {
+  const { quote, author, role, company } = props || {};
+  return (
+    <Card padding={3} radius={2} tone="default" border style={{ borderLeft: '3px solid #ffd000' }}>
+      <Stack space={2}>
+        <Text size={1} style={{ fontStyle: 'italic' }}>
+          "{quote || 'Quote text…'}"
+        </Text>
+        {(author || role || company) && (
+          <Text size={0} muted>
+            — <strong>{author || 'Anonymous'}</strong>
+            {role ? `, ${role}` : ''}
+            {company ? ` @ ${company}` : ''}
+          </Text>
+        )}
+      </Stack>
+    </Card>
+  );
+}
+
+// ── Comparison Table Preview Component ──
+export function ComparisonTablePreview(props: any) {
+  const { title, columns = [], rows = [] } = props || {};
+  return (
+    <Card padding={3} radius={2} tone="default" border>
+      <Stack space={2}>
+        <Flex align="center" justify="space-between">
+          <Text weight="bold" size={1}>{title || 'Comparison Table'}</Text>
+          <Badge tone="default" fontSize={0}>{rows.length} Rows</Badge>
+        </Flex>
+        {columns.length > 0 && (
+          <Flex gap={2} wrap="wrap">
+            {columns.map((c: string, idx: number) => (
+              <Badge key={idx} tone="primary" mode="outline" fontSize={0}>{c}</Badge>
+            ))}
+          </Flex>
+        )}
+      </Stack>
+    </Card>
+  );
+}
+

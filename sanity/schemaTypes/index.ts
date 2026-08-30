@@ -17,7 +17,20 @@ import redirect from './redirect';
 import brandAsset from './brandAsset';
 import siteScript from './siteScript';
 import navigationMenu from './navigationMenu';
-import { blockContent, cta, stats, accordion, logoCloud, video, mediaUrl, codeBlock, twoColumns } from './blockContent';
+import {
+  blockContent,
+  cta,
+  stats,
+  accordion,
+  logoCloud,
+  video,
+  mediaUrl,
+  codeBlock,
+  twoColumns,
+  callout,
+  quoteBlock,
+  comparisonTable,
+} from './blockContent';
 
 export const schemaTypes = [
   service,
@@ -48,4 +61,7 @@ export const schemaTypes = [
   mediaUrl,
   codeBlock,
   twoColumns,
+  callout,
+  quoteBlock,
+  comparisonTable,
 ];

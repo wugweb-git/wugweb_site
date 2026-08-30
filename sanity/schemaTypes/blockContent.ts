@@ -7,6 +7,9 @@ import {
   CodePreview,
   TwoColumnsPreview,
   LogoCloudPreview,
+  CalloutPreview,
+  QuoteBlockPreview,
+  ComparisonTablePreview,
 } from '../components/BlockPreviews';
 import {
   LaunchIcon,
@@ -17,6 +20,11 @@ import {
   CodeBlockIcon,
   SplitHorizontalIcon,
   ImagesIcon,
+  InfoOutlineIcon,
+  StarIcon,
+  ThListIcon,
+  LinkIcon,
+  DocumentIcon,
 } from '@sanity/icons';
 
 // Modular content blocks — same flexibility as Framer CMS
@@ -32,6 +40,7 @@ export const blockContent = defineType({
         { title: 'Normal', value: 'normal' },
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
+        { title: 'H4', value: 'h4' },
         { title: 'Quote', value: 'blockquote' },
       ],
       marks: {
@@ -39,14 +48,42 @@ export const blockContent = defineType({
           { title: 'Bold', value: 'strong' },
           { title: 'Italic', value: 'em' },
           { title: 'Code', value: 'code' },
+          { title: 'Underline', value: 'underline' },
+          { title: 'Strike', value: 'strike-through' },
+          {
+            title: 'Highlight',
+            value: 'highlight',
+            icon: () => '🟡',
+          },
         ],
         annotations: [
           {
             name: 'link',
+            title: 'External Link',
             type: 'object',
+            icon: LinkIcon,
             fields: [
-              { name: 'href', type: 'url' },
-              { name: 'blank', type: 'boolean', title: 'Open in new tab' },
+              { name: 'href', type: 'url', title: 'URL' },
+              { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: true },
+            ],
+          },
+          {
+            name: 'internalLink',
+            title: 'Internal Document Link',
+            type: 'object',
+            icon: DocumentIcon,
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference Document',
+                to: [
+                  { type: 'post' },
+                  { type: 'caseStudy' },
+                  { type: 'service' },
+                  { type: 'singletonPage' },
+                ],
+              },
             ],
           },
         ],
@@ -62,6 +99,10 @@ export const blockContent = defineType({
         { name: 'caption', type: 'string', title: 'Caption' },
       ],
     },
+    { type: 'callout', title: 'Callout / Alert', icon: InfoOutlineIcon },
+    { type: 'quoteBlock', title: 'Quote / Testimonial', icon: StarIcon },
+    { type: 'comparisonTable', title: 'Comparison Table', icon: ThListIcon },
+    { type: 'table', title: 'Data Table', icon: ThListIcon },
     { type: 'video', title: 'Video', icon: PlayIcon },
     { type: 'mediaUrl', title: 'Media URL', icon: ImageIcon },
     { type: 'cta', title: 'Call to Action', icon: LaunchIcon },
@@ -71,6 +112,98 @@ export const blockContent = defineType({
     { type: 'code', title: 'Code Block', icon: CodeBlockIcon },
     { type: 'twoColumns', title: 'Two Columns', icon: SplitHorizontalIcon },
   ],
+});
+
+export const callout = defineType({
+  name: 'callout',
+  title: 'Callout / Alert',
+  type: 'object',
+  icon: InfoOutlineIcon,
+  components: {
+    preview: CalloutPreview,
+  },
+  fields: [
+    {
+      name: 'type',
+      title: 'Callout Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Info (Blue)', value: 'info' },
+          { title: 'Tip (Green)', value: 'tip' },
+          { title: 'Warning (Orange)', value: 'warning' },
+          { title: 'Success (Green)', value: 'success' },
+          { title: 'Quote (Gold)', value: 'quote' },
+        ],
+      },
+      initialValue: 'info',
+    },
+    { name: 'title', title: 'Title / Heading', type: 'string' },
+    { name: 'text', title: 'Callout Body Text', type: 'text', rows: 3 },
+  ],
+  preview: {
+    select: { type: 'type', title: 'title', text: 'text' },
+  },
+});
+
+export const quoteBlock = defineType({
+  name: 'quoteBlock',
+  title: 'Quote / Testimonial',
+  type: 'object',
+  icon: StarIcon,
+  components: {
+    preview: QuoteBlockPreview,
+  },
+  fields: [
+    { name: 'quote', title: 'Quote Text', type: 'text', rows: 3, validation: (r) => r.required() },
+    { name: 'author', title: 'Author Name', type: 'string' },
+    { name: 'role', title: 'Author Role / Title', type: 'string' },
+    { name: 'company', title: 'Company / Organization', type: 'string' },
+    { name: 'avatar', title: 'Author Avatar', type: 'image', options: { hotspot: true } },
+  ],
+  preview: {
+    select: { title: 'quote', subtitle: 'author', media: 'avatar' },
+  },
+});
+
+export const comparisonTable = defineType({
+  name: 'comparisonTable',
+  title: 'Comparison / Key-Value Table',
+  type: 'object',
+  icon: ThListIcon,
+  components: {
+    preview: ComparisonTablePreview,
+  },
+  fields: [
+    { name: 'title', title: 'Table Title', type: 'string' },
+    {
+      name: 'columns',
+      title: 'Column Headers',
+      type: 'array',
+      of: [{ type: 'string' }],
+      initialValue: ['Feature', 'Standard', 'Advanced'],
+      validation: (r) => r.min(2).max(4),
+    },
+    {
+      name: 'rows',
+      title: 'Table Rows',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'feature', type: 'string', title: 'Row Item / Feature' },
+            { name: 'col1', type: 'string', title: 'Column 1 Value' },
+            { name: 'col2', type: 'string', title: 'Column 2 Value' },
+            { name: 'col3', type: 'string', title: 'Column 3 Value' },
+          ],
+        },
+      ],
+    },
+  ],
+  preview: {
+    select: { title: 'title', columns: 'columns', rows: 'rows' },
+  },
 });
 
 export const cta = defineType({

@@ -158,8 +158,8 @@ export function MediaTool() {
             const isImg = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext);
             const url = String(r.publicUrl || (r.sitePath ? `https://wugweb.pages.dev${r.sitePath}` : ''));
             return (
-              <Card key={r._id} border radius={2} overflow="hidden" style={{ cursor: 'pointer' }} onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--card-focus-ring-color, #4c9aff)'; }} onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = ''; }}>
-                <Box style={{ height: 90, background: 'var(--card-muted-bg-color, #f1f3f5)', display: 'grid', placeItems: 'center' }}>
+              <Card key={r._id} border radius={2} overflow="hidden" style={{ cursor: 'pointer' }} onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--card-focus-ring-color, #ffd000)'; }} onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = ''; }}>
+                <Box style={{ height: 90, background: 'var(--card-muted-bg-color, #111)', display: 'grid', placeItems: 'center' }}>
                   {isImg && url ? (
                     <img src={url} alt={String((r.name ?? '') as any)} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
@@ -182,15 +182,15 @@ export function MediaTool() {
           <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 220px)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'Inter, system-ui, sans-serif' }}>
               <thead>
-                <tr style={{ background: 'var(--card-muted-bg-color, #f1f3f5)', position: 'sticky', top: 0 }}>
+                <tr style={{ background: 'var(--card-muted-bg-color, #191919)', position: 'sticky', top: 0 }}>
                   {['Name', 'Group', 'Type', 'Status', 'Usage', 'Path', 'Links'].map((h) => (
-                    <th key={h} style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #e1e3e6)', fontWeight: 600, whiteSpace: 'nowrap' }}>{h}</th>
+                    <th key={h} style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #2b2b2b)', fontWeight: 600, whiteSpace: 'nowrap' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((r) => (
-                  <tr key={r._id} style={{ borderBottom: '1px solid var(--card-border-color, #eee)' }}>
+                  <tr key={r._id} style={{ borderBottom: '1px solid var(--card-border-color, #222)' }}>
                     <td style={{ padding: '8px 12px' }}><Text size={1} weight="semibold">{r.displayName || r.name}</Text></td>
                     <td style={{ padding: '8px 12px' }}><Text size={1} muted>{r.assetGroup || '—'}</Text></td>
                     <td style={{ padding: '8px 12px' }}><Text size={1} muted>{r.mediaType || '—'}</Text></td>

@@ -8,8 +8,10 @@ export default defineType({
   type: 'document',
   groups: [
     { name: 'overview', title: 'Overview', default: true },
-    { name: 'content', title: 'Content' },
-    { name: 'results', title: 'Results' },
+    { name: 'narrative', title: 'Narrative (Structured)' },
+    { name: 'media', title: 'Media & Gallery' },
+    { name: 'customBlocks', title: 'Custom Blocks' },
+    { name: 'results', title: 'Results & Impact' },
     { name: 'seo', title: 'SEO' },
     { name: 'relations', title: 'Relations' },
   ],
@@ -31,7 +33,9 @@ export default defineType({
       }),
     }),
     { ...ownerField, group: 'overview' },
-    defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Hero image for the case study detail page (Sanity CDN — prefer coverPath for R2)', group: 'overview' }),
+    defineField({ name: 'summary', type: 'text', rows: 2, description: 'Short description for work listing cards. 1-2 sentences.', group: 'overview',
+      validation: (r) => r.warning('Recommended — shown on the work listing page'),
+    }),
     defineField({
       name: 'thumbnailPath',
       type: 'string',
@@ -42,60 +46,129 @@ export default defineType({
     defineField({
       name: 'coverPath',
       type: 'string',
-      description: 'R2/local path for detail cover e.g. /assets/framer/.../cover-image-….jpg',
+      description: 'R2/local path for detail cover e.g. /assets/work/.../cover.jpg',
       components: { input: R2AssetInput },
       group: 'overview',
     }),
+    defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Hero image (Sanity CDN — prefer coverPath for R2)', group: 'overview' }),
     defineField({ name: 'client', type: 'string', description: 'Display name (legacy text). Prefer Client ref below for relationships.', group: 'overview' }),
-    defineField({
-      name: 'clientRef',
-      title: 'Client',
-      type: 'reference',
-      to: [{ type: 'client' }],
-      description: 'Linked client document — enables relationship queries and Tables joins',
-      group: 'relations',
-    }),
-    defineField({
-      name: 'industryRef',
-      title: 'Industry',
-      type: 'reference',
-      to: [{ type: 'industry' }],
-      description: 'Linked industry document (preferred over plain industry string)',
-      group: 'relations',
-    }),
-    defineField({
-      name: 'assets',
-      title: 'Assets',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'asset' }] }],
-      description: 'Optional explicit asset links (assets also link back via linkedCaseStudy)',
-      group: 'relations',
-    }),
-    defineField({ name: 'summary', type: 'text', rows: 2, description: 'Short description for work listing cards. 1-2 sentences.', group: 'overview',
-      validation: (r) => r.warning('Recommended — shown on the work listing page'),
-    }),
     defineField({ name: 'disciplines', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, description: 'e.g. UX Design, Strategy, Development', group: 'overview' }),
     defineField({ name: 'industry', type: 'string', description: 'Legacy text industry — prefer Industry ref', group: 'overview' }),
     defineField({ name: 'timeline', type: 'string', description: 'e.g. "2022" or "Q3 2023"', group: 'overview' }),
     defineField({ name: 'partner', type: 'string', description: 'Partner agency or organisation (if any)', group: 'overview' }),
     defineField({ name: 'team', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, description: 'People or organisations involved', group: 'overview' }),
     defineField({ name: 'tags', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'overview' }),
-    defineField({ name: 'services', title: 'Related Services', type: 'array', of: [{ type: 'reference', to: [{ type: 'service' }] }], group: 'overview' }),
 
-    // ── Content ──
+    // ── Structured Narrative ──
     defineField({
-      name: 'bodyContent',
-      title: 'Body Content',
-      type: 'blockContent',
-      description: 'Merged narrative: About, Challenges, Solutions, Design Philosophy, Impact, and embedded gallery media.',
-      group: 'content',
+      name: 'about',
+      title: 'About / Project Overview',
+      type: 'text',
+      rows: 4,
+      description: 'Background, client mission, and studio engagement context.',
+      group: 'narrative',
+    }),
+    defineField({
+      name: 'challenges',
+      title: 'Key Challenges',
+      type: 'array',
+      group: 'narrative',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', type: 'string', title: 'Challenge Title' },
+            { name: 'body', type: 'text', rows: 2, title: 'Description' },
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'body' },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'solutions',
+      title: 'Strategic Solutions & Execution',
+      type: 'array',
+      group: 'narrative',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', type: 'string', title: 'Solution Title' },
+            { name: 'body', type: 'text', rows: 2, title: 'Description' },
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'body' },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'designPhilosophy',
+      title: 'Design Philosophy / Core Principles',
+      type: 'text',
+      rows: 3,
+      description: 'Design principles applied during the project (e.g. line-separated or narrative).',
+      group: 'narrative',
+    }),
+    defineField({
+      name: 'impact',
+      title: 'Business Impact & Outcomes',
+      type: 'array',
+      group: 'narrative',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', type: 'string', title: 'Impact Area' },
+            { name: 'body', type: 'text', rows: 2, title: 'Outcome / Result' },
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'body' },
+          },
+        },
+      ],
     }),
 
-    // ── Results ──
-    defineField({ name: 'results', type: 'array', of: [{ type: 'object', fields: [
-      { name: 'metric', type: 'string', description: 'e.g. "150%"' },
-      { name: 'label', type: 'string', description: 'e.g. "Increase in conversions"' },
-    ]}]}),
+    // ── Media & Gallery ──
+    defineField({
+      name: 'galleryPaths',
+      title: 'Gallery Media Paths (R2 / Local)',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'List of R2/local image or video asset paths e.g. /assets/work/…/preview.mp4',
+      group: 'media',
+    }),
+
+    // ── Custom Blocks (Modular) ──
+    defineField({
+      name: 'bodyContent',
+      title: 'Custom Modular Blocks',
+      type: 'blockContent',
+      description: 'Optional modular rich blocks (CTAs, stats, code, accordions, two-column layouts).',
+      group: 'customBlocks',
+    }),
+
+    // ── Results & Metrics ──
+    defineField({
+      name: 'results',
+      title: 'Metrics & KPIs',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'metric', type: 'string', title: 'Metric / Number (e.g. "+150%")', validation: (r) => r.required() },
+            { name: 'label', type: 'string', title: 'Label / Description (e.g. "Conversion Rate Increase")' },
+          ],
+          preview: {
+            select: { title: 'metric', subtitle: 'label' },
+          },
+        },
+      ],
+      group: 'results',
+    }),
     defineField({ name: 'publishedAt', type: 'datetime', group: 'results' }),
     defineField({ name: 'featured', type: 'boolean', initialValue: false, description: 'Featured case studies appear first in listings', group: 'results' }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US'] }, initialValue: 'en-GB', group: 'overview' }),
@@ -106,6 +179,37 @@ export default defineType({
     defineField({ name: 'ogImage', type: 'image', description: 'Social sharing preview image', group: 'seo' }),
 
     // ── Relations ──
+    defineField({
+      name: 'clientRef',
+      title: 'Client Document',
+      type: 'reference',
+      to: [{ type: 'client' }],
+      description: 'Linked client document — enables relationship queries and Tables joins',
+      group: 'relations',
+    }),
+    defineField({
+      name: 'industryRef',
+      title: 'Industry Document',
+      type: 'reference',
+      to: [{ type: 'industry' }],
+      description: 'Linked industry document (preferred over plain industry string)',
+      group: 'relations',
+    }),
+    defineField({
+      name: 'services',
+      title: 'Related Services',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'service' }] }],
+      group: 'relations',
+    }),
+    defineField({
+      name: 'assets',
+      title: 'Assets',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'asset' }] }],
+      description: 'Optional explicit asset links',
+      group: 'relations',
+    }),
     defineField({ name: 'relatedCaseStudies', type: 'array', of: [{ type: 'reference', to: [{ type: 'caseStudy' }] }], description: 'Other case studies readers should see', group: 'relations' }),
     defineField({ name: 'relatedPosts', type: 'array', of: [{ type: 'reference', to: [{ type: 'post' }] }], description: 'Blog posts related to this case study', group: 'relations' }),
 
@@ -118,7 +222,17 @@ export default defineType({
     { name: 'titleAsc', title: 'Title A-Z', by: [{ field: 'title', direction: 'asc' }] },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'client', media: 'coverImage', featured: 'featured', industry: 'industry', disciplines: 'disciplines', seoDesc: 'seoDescription', clientRef: 'clientRef->name', industryRef: 'industryRef->name' },
+    select: {
+      title: 'title',
+      subtitle: 'client',
+      media: 'coverImage',
+      featured: 'featured',
+      industry: 'industry',
+      disciplines: 'disciplines',
+      seoDesc: 'seoDescription',
+      clientRef: 'clientRef->name',
+      industryRef: 'industryRef->name',
+    },
     prepare: ({ title, subtitle, media, featured, industry, disciplines, seoDesc, clientRef, industryRef }: any) => {
       const badge = featured ? ' ⭐' : '';
       const parts = [];
