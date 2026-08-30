@@ -6,4 +6,11 @@ export default defineCliConfig({
     dataset: 'production',
   },
   studioHost: 'wugweb',
+  typegen: {
+    enabled: true,
+    path: '../src/**/*.{ts,tsx,js,jsx,astro}',
+    schema: './schema.json',
+    generates: '../sanity.types.ts',
+    overloadClientMethods: true,
+  },
 })
