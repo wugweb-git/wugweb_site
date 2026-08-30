@@ -10,10 +10,15 @@ and this project adheres to Semantic Versioning.
 ## [Unreleased]
 
 ### Added
+- **Brand Vector Asset Ingestion** (`scripts/ingest-brand-assets.mjs`) — Ingested 9 official vector SVGs and brand assets (Clutch, DesignRush, GoodFirms, TopDevelopers, Wugweb Large/Small logo lockups, OG Image, and Apple/PWA icons) into the Sanity `brandAsset` collection with inline SVG markup, usage specs, and variant tags.
 - **Sanity Custom Document Badges** (`sanity/badges/documentBadges.ts`) — Real-time badge indicators in Studio for SEO Health (`SEO Ready`, `Short SEO Desc`, `Needs SEO`), Reading Time / Word Count calculation for posts, and R2 Media Asset status mapping (`R2 Media`, `Sanity CDN Media`, `No Cover Media`).
 - **Interactive Code Block Copy & Language Badge** (`src/components/PortableTextRenderer.astro`) — Added copy-to-clipboard functionality with visual confirmation feedback and formatted code headers.
 - **Reading Progress Bar** (`src/pages/blog/[slug].astro`) — Smooth scroll progress indicator pinned to top of articles with accent gradient.
 - **Modal & Drawer Keyboard Accessibility** (`src/pages/footer/subscription.astro`) — Added `Escape` key listeners to dismiss drawer overlays and checkout modals.
+
+### Fixed
+- **Sanity Document Deduplication & Reference Integrity** (`scripts/merge-duplicate-records.mjs`) — Unpublished 21 duplicate raw HTML blog stubs, 6 duplicate service pillar documents, and 4 duplicate singleton pages while safely re-pointing all inbound asset references (`linkedPost._ref`) to canonical rich Portable Text records. Sanity health suite now passes 19/19 checks with 0 duplicate slugs or singletons.
+
 
 
 ---

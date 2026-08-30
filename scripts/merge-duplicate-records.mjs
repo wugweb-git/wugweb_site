@@ -109,6 +109,20 @@ for (const [slug, group] of Object.entries(postBySlug)) {
   const nonCanonical = group.filter((d) => d._id !== canonical._id);
   console.log(`\nslug="${slug}" — keeping ${canonical._id}`);
   for (const doc of nonCanonical) {
+    // Check for any referencing asset documents and re-point them to canonical
+    const referencingAssets = await client.fetch(
+      `*[_type == "asset" && linkedPost._ref == $docId]{ _id }`,
+      { docId: doc._id }
+    );
+    for (const a of referencingAssets) {
+      console.log(`  → re-pointing asset ${a._id} linkedPost to ${canonical._id}`);
+      if (!DRY_RUN) {
+        await client.patch(a._id).set({
+          linkedPost: { _type: 'reference', _ref: canonical._id }
+        }).commit();
+      }
+    }
+
     await unpublishDoc(doc._id, `duplicate of ${canonical._id}`);
   }
 }

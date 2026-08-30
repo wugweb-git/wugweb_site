@@ -35,9 +35,10 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 
 | # | Item | Priority | Notes |
 |---|---|---|---|
-| 1 | **Blog 21 Duplicate Stubs Cleanup** | Medium | Clean up the 21 duplicate raw HTML string documents identified in the audit so only the 104 rich Portable Text posts remain. |
-| 2 | **Brand Vector Asset Ingestion** | Medium | Upload official vector SVG logo graphics for Clutch, DesignRush, GoodFirms, TopDevelopers into the **Brand Assets & Icons** (`brandAsset`) section in Sanity Studio. |
+| 1 | **Blog 21 Duplicate Stubs Cleanup** | **Done 2026-08-30** | Unpublished all 21 duplicate raw HTML posts, 6 duplicate service pillars, and 4 duplicate singleton pages while re-pointing asset references to canonical records. Sanity health 19/19 ✅ with 0 duplicate slugs or singletons. |
+| 2 | **Brand Vector Asset Ingestion** | **Done 2026-08-30** | Ingested official vector SVGs for Clutch, DesignRush, GoodFirms, TopDevelopers, Wugweb Large/Small logo lockups, and social OG/favicon assets into the `brandAsset` schema via `scripts/ingest-brand-assets.mjs`. |
 | 3 | **Blog & Case Study Thumbnail Population** | Medium | Populate missing blog covers (70 legacy posts) and case study thumbnails via Sanity Studio using the new R2 Asset Autocomplete picker. |
+
 
 ---
 
