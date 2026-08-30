@@ -129,7 +129,7 @@ function SeoToolContent() {
           <Text size={3} weight="bold">SEO & Social Metadata Manager</Text>
           <Text size={1} muted>Audit metadata quality across all content types</Text>
         </Stack>
-        <Button text="Refresh" mode="ghost" onClick={load} />
+        <Button text="Refresh" mode="ghost" onClick={() => load(page)} />
       </Flex>
 
       <Flex gap={2} marginBottom={3}>
