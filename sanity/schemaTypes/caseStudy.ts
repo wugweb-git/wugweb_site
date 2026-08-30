@@ -16,7 +16,19 @@ export default defineType({
     // ── Overview ──
     defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'overview' }),
     defineField({ name: 'subtitle', type: 'string', description: 'Short tagline shown on case study cards', group: 'overview' }),
-    defineField({ name: 'slug', type: 'slug', options: { source: 'title', maxLength: 120 }, validation: (r) => r.required(), group: 'overview' }),
+    defineField({
+      name: 'slug', type: 'slug', options: { source: 'title', maxLength: 120 }, group: 'overview',
+      validation: (r) => r.required().custom(async (value: any, ctx: any) => {
+        if (!value?.current) return true;
+        const client = ctx.getClient({ apiVersion: '2026-01-01' });
+        const id = ctx.document?._id?.replace('drafts.', '') ?? '';
+        const count = await client.fetch(
+          `count(*[_type == $type && slug.current == $slug && _id != $id && !(_id in path("drafts.**"))])`,
+          { type: ctx.document?._type, slug: value.current, id },
+        );
+        return count === 0 || `Slug "${value.current}" is already used by another published case study`;
+      }),
+    }),
     { ...ownerField, group: 'overview' },
     defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Hero image for the case study detail page (Sanity CDN — prefer coverPath for R2)', group: 'overview' }),
     defineField({ name: 'thumbnailPath', type: 'string', description: 'R2/local path for listing thumb e.g. /assets/work/.../…-thumb.mp4', group: 'overview' }),
@@ -46,7 +58,9 @@ export default defineType({
       description: 'Optional explicit asset links (assets also link back via linkedCaseStudy)',
       group: 'relations',
     }),
-    defineField({ name: 'summary', type: 'text', rows: 2, description: 'Short description for work listing cards. 1-2 sentences.', group: 'overview' }),
+    defineField({ name: 'summary', type: 'text', rows: 2, description: 'Short description for work listing cards. 1-2 sentences.', group: 'overview',
+      validation: (r) => r.warning('Recommended — shown on the work listing page'),
+    }),
     defineField({ name: 'disciplines', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, description: 'e.g. UX Design, Strategy, Development', group: 'overview' }),
     defineField({ name: 'industry', type: 'string', description: 'Legacy text industry — prefer Industry ref', group: 'overview' }),
     defineField({ name: 'timeline', type: 'string', description: 'e.g. "2022" or "Q3 2023"', group: 'overview' }),

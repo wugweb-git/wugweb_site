@@ -16,10 +16,26 @@ export default defineType({
   fields: [
     // ── Overview ──
     defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'overview' }),
-    defineField({ name: 'slug', type: 'slug', options: { source: 'title' }, validation: (r) => r.required(), group: 'overview' }),
-    defineField({ name: 'subtitle', type: 'string', description: 'Short tagline shown in hero section', group: 'overview' }),
+    defineField({
+      name: 'slug', type: 'slug', options: { source: 'title' }, group: 'overview',
+      validation: (r) => r.required().custom(async (value: any, ctx: any) => {
+        if (!value?.current) return true;
+        const client = ctx.getClient({ apiVersion: '2026-01-01' });
+        const id = ctx.document?._id?.replace('drafts.', '') ?? '';
+        const count = await client.fetch(
+          `count(*[_type == $type && slug.current == $slug && _id != $id && !(_id in path("drafts.**"))])`,
+          { type: ctx.document?._type, slug: value.current, id },
+        );
+        return count === 0 || `Slug "${value.current}" is already used by another published service`;
+      }),
+    }),
+    defineField({ name: 'subtitle', type: 'string', description: 'Short tagline shown in hero section', group: 'overview',
+      validation: (r) => r.warning('Recommended — shown in the hero section'),
+    }),
     defineField({ name: 'heroText', type: 'text', rows: 3, description: 'Main hero body text', group: 'overview' }),
-    defineField({ name: 'summary', type: 'text', rows: 2, description: 'Card description for service listings', group: 'overview' }),
+    defineField({ name: 'summary', type: 'text', rows: 2, description: 'Card description for service listings', group: 'overview',
+      validation: (r) => r.warning('Recommended — shown on the services listing page'),
+    }),
     defineField({ name: 'fullDescription', type: 'text', rows: 4, description: 'Detailed description for the service page', group: 'overview' }),
     defineField({ name: 'tags', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'overview' }),
     defineField({ name: 'icon', type: 'image', description: 'Service icon', group: 'overview' }),

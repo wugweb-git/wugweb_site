@@ -24,7 +24,16 @@ export default defineType({
           { title: 'Blog', value: 'blog' },
         ],
       },
-      validation: (r) => r.required(),
+      validation: (r) => r.required().custom(async (value: any, ctx: any) => {
+        if (!value) return true;
+        const client = ctx.getClient({ apiVersion: '2026-01-01' });
+        const id = ctx.document?._id?.replace('drafts.', '') ?? '';
+        const count = await client.fetch(
+          `count(*[_type == "singletonPage" && pageId == $pageId && _id != $id && !(_id in path("drafts.**"))])`,
+          { pageId: value, id },
+        );
+        return count === 0 || `A published page with pageId "${value}" already exists. Edit the existing document instead.`;
+      }),
     }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US', 'fr', 'de', 'es'] }, initialValue: 'en-GB' }),
     defineField({ name: 'title', type: 'string', description: 'Page heading (H1)' }),

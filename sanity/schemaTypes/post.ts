@@ -14,11 +14,29 @@ export default defineType({
   fields: [
     // ── Content ──
     defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'content' }),
-    defineField({ name: 'slug', type: 'slug', options: { source: 'title' }, validation: (r) => r.required(), group: 'content' }),
-    defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Featured image (Sanity CDN — prefer coverPath for R2)', group: 'content' }),
+    defineField({
+      name: 'slug', type: 'slug', options: { source: 'title' }, group: 'content',
+      validation: (r) => r.required().custom(async (value: any, ctx: any) => {
+        if (!value?.current) return true;
+        const client = ctx.getClient({ apiVersion: '2026-01-01' });
+        const id = ctx.document?._id?.replace('drafts.', '') ?? '';
+        const count = await client.fetch(
+          `count(*[_type == $type && slug.current == $slug && _id != $id && !(_id in path("drafts.**"))])`,
+          { type: ctx.document?._type, slug: value.current, id },
+        );
+        return count === 0 || `Slug "${value.current}" is already used by another published post`;
+      }),
+    }),
+    defineField({ name: 'coverImage', type: 'image', options: { hotspot: true }, description: 'Featured image (Sanity CDN — prefer coverPath for R2)', group: 'content',
+      validation: (r) => r.warning('Recommended — shown as hero and in post listings'),
+    }),
     defineField({ name: 'coverPath', type: 'string', description: 'R2/local path e.g. /assets/… when cover is not in Sanity CDN', group: 'content' }),
-    defineField({ name: 'excerpt', type: 'text', rows: 2, description: 'Short summary shown in blog listings. Keep under 160 characters for SEO.', group: 'content' }),
-    defineField({ name: 'author', type: 'reference', to: [{ type: 'person' }], group: 'content' }),
+    defineField({ name: 'excerpt', type: 'text', rows: 2, description: 'Short summary shown in blog listings. Keep under 160 characters for SEO.', group: 'content',
+      validation: (r) => r.warning('Recommended — shown in blog listing cards and social previews'),
+    }),
+    defineField({ name: 'author', type: 'reference', to: [{ type: 'person' }], group: 'content',
+      validation: (r) => r.warning('Recommended — author byline shown on post page'),
+    }),
     { ...ownerField, group: 'meta' },
     defineField({ name: 'body', type: 'blockContent', title: 'Content', description: 'Main blog post body. Use headings (H2/H3) to structure sections.', group: 'content' }),
 
