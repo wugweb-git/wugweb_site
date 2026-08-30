@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
 import { sanityClient } from '../../lib/sanity';
 import { caseStudyBySlugQuery, caseStudiesListQuery } from '../../lib/queries';
 import { assetUrl } from '../../lib/assets';
@@ -14,54 +15,6 @@ if (!work) {
 
 const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
 const bodyContent = Array.isArray(work.bodyContent) ? work.bodyContent : [];
-
-const escapeHtml = (value: string = '') => value
-  .replaceAll('&', '&amp;')
-  .replaceAll('<', '&lt;')
-  .replaceAll('>', '&gt;')
-  .replaceAll('"', '&quot;');
-
-const getSpanText = (children: any[] = []) => children
-  .map((child) => escapeHtml(child?.text || ''))
-  .join('');
-
-const normalizeMediaSrc = (value?: string) => {
-  if (!value) return '';
-  return /^https?:\/\//.test(value) ? value : assetUrl(value);
-};
-
-const bodyContentHtml = bodyContent.map((block: any) => {
-  if (!block?._type) return '';
-
-  if (block._type === 'block') {
-    const text = getSpanText(block.children || []);
-    if (!text) return '';
-    if (block.style === 'h2') return `<h2>${text}</h2>`;
-    if (block.style === 'h3') return `<h3>${text}</h3>`;
-    if (block.style === 'blockquote') return `<blockquote>${text}</blockquote>`;
-    return `<p>${text}</p>`;
-  }
-
-  if (block._type === 'mediaUrl') {
-    const src = normalizeMediaSrc(block.url);
-    if (!src) return '';
-    const alt = escapeHtml(block.alt || block.caption || '');
-    const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : '';
-    const media = src.endsWith('.mp4') || src.endsWith('.webm')
-      ? `<video src="${src}" muted loop playsinline controls preload="none"></video>`
-      : `<img src="${src}" alt="${alt}" loading="lazy" decoding="async" />`;
-    return `<figure class="portable-media">${media}${caption}</figure>`;
-  }
-
-  if (block._type === 'video') {
-    const src = normalizeMediaSrc(block.url);
-    if (!src) return '';
-    const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : '';
-    return `<figure class="portable-media"><video src="${src}" ${block.autoplay ? 'autoplay ' : ''}${block.muted === false ? '' : 'muted '} ${block.loop ? 'loop ' : ''}playsinline controls preload="none"></video>${caption}</figure>`;
-  }
-
-  return '';
-}).filter(Boolean).join('');
 
 const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy"]{"slug": slug.current}`).catch(() => []);
 const seenSlugs = new Set();
@@ -108,10 +61,10 @@ const otherCases = await Promise.all(others.map((s: any) =>
     )}
 
     <!-- Full Body Content (Sanity blocks) -->
-    {bodyContentHtml && (
+    {bodyContent && bodyContent.length > 0 && (
       <article class="case-section text-block" data-reveal>
         <h2>Project Narrative</h2>
-        <div class="portable-text" set:html={bodyContentHtml}></div>
+        <PortableTextRenderer value={bodyContent} />
       </article>
     )}
 

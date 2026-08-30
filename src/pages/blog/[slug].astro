@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
 import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { postBySlugQuery, postsListQuery } from '../../lib/queries';
 
@@ -139,13 +140,7 @@ const shareLinks = [
     )}
 
     {post.body && post.body.length > 0 ? (
-      <div class="article-body" set:html={post.body.map((block: any) => {
-        const text = block.children?.map((c: any) => c.text).join('') || '';
-        if (block.style === 'h2') return `<h2 id="${slugify(text)}">${text}</h2>`;
-        if (block.style === 'h3') return `<h3 id="${slugify(text)}">${text}</h3>`;
-        return `<p>${text}</p>`;
-      }).filter(Boolean).join('')}>
-      </div>
+      <PortableTextRenderer value={post.body} class="article-body" />
     ) : (
       <div class="article-empty">
         <p>Full article coming soon. Browse more <a href="/blog">insights</a>.</p>

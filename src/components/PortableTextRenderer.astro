@@ -1,0 +1,543 @@
+---
+import { urlFor } from '../lib/sanity';
+import { assetUrl } from '../lib/assets';
+
+export interface Props {
+  value?: any[] | null;
+  class?: string;
+}
+
+const { value = [], class: className = '' } = Astro.props;
+const blocks = Array.isArray(value) ? value : [];
+
+function slugify(text: string = '') {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function escapeHtml(str: string = '') {
+  return str
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function renderChildren(children: any[] = [], markDefs: any[] = []): string {
+  if (!Array.isArray(children)) return '';
+  return children
+    .map((child) => {
+      if (!child) return '';
+      let text = escapeHtml(child.text || '');
+      if (!child.marks || !Array.isArray(child.marks) || child.marks.length === 0) {
+        return text;
+      }
+
+      for (const mark of child.marks) {
+        if (mark === 'strong') text = `<strong>${text}</strong>`;
+        else if (mark === 'em') text = `<em>${text}</em>`;
+        else if (mark === 'code') text = `<code>${text}</code>`;
+        else if (mark === 'underline') text = `<u>${text}</u>`;
+        else if (mark === 'strike-through') text = `<s>${text}</s>`;
+        else {
+          const def = markDefs.find((d: any) => d?._key === mark);
+          if (def && def._type === 'link') {
+            const href = escapeHtml(def.href || '#');
+            const target = def.blank ? ' target="_blank" rel="noopener noreferrer"' : '';
+            text = `<a href="${href}"${target}>${text}</a>`;
+          }
+        }
+      }
+      return text;
+    })
+    .join('');
+}
+
+function resolveMediaSrc(urlOrPath?: string | any): string {
+  if (!urlOrPath) return '';
+  if (typeof urlOrPath === 'string') {
+    return /^https?:\/\//.test(urlOrPath) ? urlOrPath : assetUrl(urlOrPath);
+  }
+  if (urlOrPath.asset || urlOrPath._ref) {
+    try {
+      return urlFor(urlOrPath).url();
+    } catch {
+      return '';
+    }
+  }
+  return '';
+}
+
+// Group contiguous list items into single <ul> or <ol> containers
+interface GroupedBlock {
+  type: 'single' | 'list';
+  listItem?: 'bullet' | 'number';
+  items?: any[];
+  block?: any;
+}
+
+const groupedBlocks: GroupedBlock[] = [];
+let currentList: { type: 'bullet' | 'number'; items: any[] } | null = null;
+
+for (const b of blocks) {
+  if (!b) continue;
+  if (b._type === 'block' && b.listItem) {
+    const listType = b.listItem === 'number' ? 'number' : 'bullet';
+    if (currentList && currentList.type === listType) {
+      currentList.items.push(b);
+    } else {
+      if (currentList) {
+        groupedBlocks.push({ type: 'list', listItem: currentList.type, items: currentList.items });
+      }
+      currentList = { type: listType, items: [b] };
+    }
+  } else {
+    if (currentList) {
+      groupedBlocks.push({ type: 'list', listItem: currentList.type, items: currentList.items });
+      currentList = null;
+    }
+    groupedBlocks.push({ type: 'single', block: b });
+  }
+}
+if (currentList) {
+  groupedBlocks.push({ type: 'list', listItem: currentList.type, items: currentList.items });
+}
+---
+
+<div class:list={['portable-text-content', className]}>
+  {groupedBlocks.map((group) => {
+    if (group.type === 'list') {
+      const ListTag = group.listItem === 'number' ? 'ol' : 'ul';
+      return (
+        <ListTag class="pt-list">
+          {group.items?.map((item) => (
+            <li set:html={renderChildren(item.children, item.markDefs)} />
+          ))}
+        </ListTag>
+      );
+    }
+
+    const b = group.block;
+    if (!b || !b._type) return null;
+
+    // ── 1. Standard text block ──
+    if (b._type === 'block') {
+      const plainText = b.children?.map((c: any) => c.text || '').join('') || '';
+      const html = renderChildren(b.children, b.markDefs);
+      if (!html.trim()) return null;
+
+      const headingId = slugify(plainText);
+
+      switch (b.style) {
+        case 'h1':
+          return <h1 id={headingId} class="pt-heading pt-h1" set:html={html} />;
+        case 'h2':
+          return <h2 id={headingId} class="pt-heading pt-h2" set:html={html} />;
+        case 'h3':
+          return <h3 id={headingId} class="pt-heading pt-h3" set:html={html} />;
+        case 'h4':
+          return <h4 id={headingId} class="pt-heading pt-h4" set:html={html} />;
+        case 'blockquote':
+          return <blockquote class="pt-blockquote" set:html={html} />;
+        default:
+          return <p class="pt-paragraph" set:html={html} />;
+      }
+    }
+
+    // ── 2. Image block ──
+    if (b._type === 'image') {
+      const src = resolveMediaSrc(b);
+      if (!src) return null;
+      return (
+        <figure class="pt-media pt-image-figure">
+          <img src={src} alt={b.alt || ''} loading="lazy" decoding="async" class="pt-image" />
+          {b.caption && <figcaption class="pt-caption">{b.caption}</figcaption>}
+        </figure>
+      );
+    }
+
+    // ── 3. Video block ──
+    if (b._type === 'video') {
+      const src = resolveMediaSrc(b.url);
+      const poster = b.poster ? resolveMediaSrc(b.poster) : undefined;
+      if (!src) return null;
+      return (
+        <figure class="pt-media pt-video-figure">
+          <video
+            src={src}
+            poster={poster}
+            autoplay={Boolean(b.autoplay)}
+            muted={b.muted !== false}
+            loop={Boolean(b.loop)}
+            playsinline
+            controls
+            preload="none"
+            class="pt-video"
+          />
+          {b.caption && <figcaption class="pt-caption">{b.caption}</figcaption>}
+        </figure>
+      );
+    }
+
+    // ── 4. Media URL block ──
+    if (b._type === 'mediaUrl') {
+      const src = resolveMediaSrc(b.url);
+      if (!src) return null;
+      const isVideo = src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.mov');
+      return (
+        <figure class="pt-media">
+          {isVideo ? (
+            <video src={src} muted loop playsinline controls preload="none" class="pt-video" />
+          ) : (
+            <img src={src} alt={b.alt || b.caption || ''} loading="lazy" decoding="async" class="pt-image" />
+          )}
+          {b.caption && <figcaption class="pt-caption">{b.caption}</figcaption>}
+        </figure>
+      );
+    }
+
+    // ── 5. Call To Action (CTA) ──
+    if (b._type === 'cta') {
+      return (
+        <div class="pt-cta glass-panel">
+          <div class="card-glow"></div>
+          {b.heading && <h3 class="pt-cta-heading">{b.heading}</h3>}
+          {b.body && <p class="pt-cta-body">{b.body}</p>}
+          {b.buttonText && (
+            <a href={b.buttonUrl || '/contact-us'} class="btn btn-primary pt-cta-btn">
+              {b.buttonText}
+            </a>
+          )}
+        </div>
+      );
+    }
+
+    // ── 6. Stats Row ──
+    if (b._type === 'stats' && Array.isArray(b.items)) {
+      return (
+        <div class="pt-stats-grid">
+          {b.items.map((stat: any) => (
+            <div class="pt-stat-item glass-panel">
+              <div class="card-glow"></div>
+              <span class="pt-stat-number">{stat.number}</span>
+              {stat.label && <span class="pt-stat-label">{stat.label}</span>}
+              {stat.description && <p class="pt-stat-desc">{stat.description}</p>}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // ── 7. Accordion / FAQ ──
+    if (b._type === 'accordion') {
+      return (
+        <div class="pt-accordion">
+          {b.title && <h3 class="pt-accordion-title">{b.title}</h3>}
+          {Array.isArray(b.items) && b.items.map((item: any) => (
+            <details class="pt-accordion-item glass-panel">
+              <summary class="pt-accordion-question">
+                <span>{item.question}</span>
+                <span class="pt-accordion-icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="pt-accordion-answer">
+                <p>{item.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      );
+    }
+
+    // ── 8. Logo Cloud ──
+    if (b._type === 'logoCloud') {
+      return (
+        <div class="pt-logo-cloud">
+          {b.title && <p class="pt-logo-cloud-title">{b.title}</p>}
+          <div class="pt-logo-grid">
+            {Array.isArray(b.logos) && b.logos.map((logo: any) => {
+              const src = resolveMediaSrc(logo);
+              if (!src) return null;
+              const img = <img src={src} alt={logo.alt || 'Client logo'} loading="lazy" class="pt-logo-img" />;
+              return logo.link ? (
+                <a href={logo.link} target="_blank" rel="noopener noreferrer" class="pt-logo-item">
+                  {img}
+                </a>
+              ) : (
+                <div class="pt-logo-item">{img}</div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
+    // ── 9. Code Block ──
+    if (b._type === 'code') {
+      return (
+        <div class="pt-code-wrapper glass-panel">
+          {b.language && <span class="pt-code-lang">{b.language}</span>}
+          <pre class="pt-code-block"><code>{b.code || ''}</code></pre>
+        </div>
+      );
+    }
+
+    // ── 10. Two Columns ──
+    if (b._type === 'twoColumns') {
+      return (
+        <div class:list={['pt-two-cols', `layout-${(b.layout || '50-50').replace('/', '-')}`]}>
+          <div class="pt-col-left">
+            <Astro.self value={b.left} />
+          </div>
+          <div class="pt-col-right">
+            <Astro.self value={b.right} />
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  })}
+</div>
+
+<style>
+  .portable-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 1.5rem);
+    color: var(--color-text-muted, #bababa);
+    line-height: var(--core-line-height-relaxed, 1.625);
+    font-size: var(--fluid-body-md, 1rem);
+  }
+
+  .portable-text-content :global(p.pt-paragraph) {
+    margin: 0;
+    color: var(--color-text-base, #f4f4f4);
+  }
+
+  .portable-text-content :global(.pt-heading) {
+    color: var(--color-text-base, #f4f4f4);
+    font-weight: var(--font-weight-semibold, 600);
+    margin-top: var(--space-4, 1.5rem);
+    margin-bottom: 0;
+    scroll-margin-top: 5rem;
+  }
+
+  .portable-text-content :global(.pt-h1) { font-size: var(--fluid-h1, 2.25rem); }
+  .portable-text-content :global(.pt-h2) { font-size: var(--fluid-h2, 1.75rem); }
+  .portable-text-content :global(.pt-h3) { font-size: var(--fluid-h3, 1.375rem); }
+  .portable-text-content :global(.pt-h4) { font-size: var(--fluid-h4, 1.125rem); }
+
+  .portable-text-content :global(.pt-blockquote) {
+    margin: var(--space-3, 1rem) 0;
+    padding-left: var(--space-4, 1.25rem);
+    border-left: 3px solid var(--color-accent, #ffd000);
+    font-style: italic;
+    color: var(--color-text-base, #f4f4f4);
+  }
+
+  .portable-text-content :global(.pt-list) {
+    margin: 0;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--color-text-base, #f4f4f4);
+  }
+
+  .portable-text-content :global(a) {
+    color: var(--color-accent, #ffd000);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .portable-text-content :global(a:hover) {
+    opacity: 0.85;
+  }
+
+  .portable-text-content :global(code) {
+    font-family: var(--core-font-family-mono, monospace);
+    background: var(--surface-2, rgba(255, 255, 255, 0.08));
+    padding: 0.15em 0.4em;
+    border-radius: var(--radius-xs, 4px);
+    font-size: 0.9em;
+  }
+
+  /* Media */
+  .pt-media {
+    margin: var(--space-3, 1rem) 0;
+    border-radius: var(--radius-md, 8px);
+    overflow: hidden;
+  }
+
+  .pt-image, .pt-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-md, 8px);
+  }
+
+  .pt-caption {
+    font-size: var(--ts-caption-size, 0.75rem);
+    color: var(--color-text-subtle, #888888);
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  /* CTA */
+  .pt-cta {
+    padding: var(--space-6, 2rem);
+    border-radius: var(--radius-lg, 12px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3, 1rem);
+    margin: var(--space-4, 1.5rem) 0;
+  }
+
+  .pt-cta-heading {
+    color: var(--color-text-base, #f4f4f4);
+    font-size: var(--fluid-h3, 1.5rem);
+    margin: 0;
+  }
+
+  .pt-cta-body {
+    margin: 0;
+    max-width: 540px;
+  }
+
+  .pt-cta-btn {
+    border-radius: var(--radius-sm, 6px);
+  }
+
+  /* Stats */
+  .pt-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-3, 1rem);
+    margin: var(--space-3, 1rem) 0;
+  }
+
+  .pt-stat-item {
+    padding: var(--space-4, 1.25rem);
+    border-radius: var(--radius-md, 8px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .pt-stat-number {
+    font-size: var(--fluid-h2, 2rem);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-accent, #ffd000);
+  }
+
+  .pt-stat-label {
+    font-size: var(--ts-body-sm-size, 0.875rem);
+    color: var(--color-text-base, #f4f4f4);
+    font-weight: var(--font-weight-medium, 500);
+  }
+
+  .pt-stat-desc {
+    margin: 0;
+    font-size: var(--ts-caption-size, 0.75rem);
+    color: var(--color-text-muted, #bababa);
+  }
+
+  /* Accordion */
+  .pt-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: var(--space-3, 1rem) 0;
+  }
+
+  .pt-accordion-title {
+    color: var(--color-text-base, #f4f4f4);
+    margin-bottom: 0.5rem;
+  }
+
+  .pt-accordion-item {
+    border-radius: var(--radius-md, 8px);
+    overflow: hidden;
+    padding: var(--space-3, 1rem) var(--space-4, 1.25rem);
+  }
+
+  .pt-accordion-question {
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-text-base, #f4f4f4);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+
+  .pt-accordion-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .pt-accordion-icon {
+    font-size: 1.25rem;
+    transition: transform 0.2s ease;
+  }
+
+  details[open] .pt-accordion-icon {
+    transform: rotate(45deg);
+  }
+
+  .pt-accordion-answer {
+    margin-top: 0.75rem;
+    color: var(--color-text-muted, #bababa);
+    font-size: var(--ts-body-sm-size, 0.875rem);
+  }
+
+  /* Code */
+  .pt-code-wrapper {
+    position: relative;
+    border-radius: var(--radius-md, 8px);
+    padding: var(--space-4, 1.25rem);
+    overflow: hidden;
+    margin: var(--space-3, 1rem) 0;
+  }
+
+  .pt-code-lang {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: var(--ts-caption-size, 0.75rem);
+    color: var(--color-text-subtle, #888);
+    text-transform: uppercase;
+    font-family: var(--core-font-family-mono, monospace);
+  }
+
+  .pt-code-block {
+    margin: 0;
+    overflow-x: auto;
+  }
+
+  .pt-code-block code {
+    background: none;
+    padding: 0;
+    font-size: var(--ts-code-size, 0.875rem);
+    line-height: 1.5;
+  }
+
+  /* Two columns */
+  .pt-two-cols {
+    display: grid;
+    gap: var(--space-6, 2rem);
+    margin: var(--space-4, 1.5rem) 0;
+  }
+
+  @media (min-width: 768px) {
+    .pt-two-cols.layout-50-50 { grid-template-columns: 1fr 1fr; }
+    .pt-two-cols.layout-60-40 { grid-template-columns: 3fr 2fr; }
+    .pt-two-cols.layout-40-60 { grid-template-columns: 2fr 3fr; }
+  }
+</style>

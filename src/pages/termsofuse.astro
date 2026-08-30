@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PortableTextRenderer from '../components/PortableTextRenderer.astro';
 import { sanityClient } from '../lib/sanity';
 import { singletonPageQuery } from '../lib/queries';
 
@@ -7,15 +8,7 @@ import { singletonPageQuery } from '../lib/queries';
 // Falls back to the hardcoded section below if Sanity body is empty.
 const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'terms-of-use' }).catch(() => null);
 const blocks: any[] = Array.isArray(page?.body) && page.body.length ? page.body : [];
-
-function renderBlock(block: any) {
-  const text = block.children?.map((c: any) => c.text || '').join('') || '';
-  if (block.style === 'h2') return `<h2>${text}</h2>`;
-  if (block.listItem === 'bullet') return `<li>${text}</li>`;
-  return `<p>${text}</p>`;
-}
-const bodyHtml = blocks.map(renderBlock).join('');
-const hasCms = bodyHtml.length > 0;
+const hasCms = blocks.length > 0;
 ---
 
 <BaseLayout title="Terms of Use" description="Read Wugweb's terms of use for website access, service information, and visitor responsibilities.">
@@ -25,7 +18,9 @@ const hasCms = bodyHtml.length > 0;
     <p class="updated">Updated on November 04, 2025</p>
 
     {hasCms ? (
-      <div class="legal-body" set:html={bodyHtml} />
+      <div class="legal-body">
+        <PortableTextRenderer value={blocks} />
+      </div>
     ) : (
     <div class="legal-body">
       <h2>Introduction and Overview</h2>

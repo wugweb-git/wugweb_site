@@ -67,14 +67,6 @@ async function run() {
   // ── 3. Duplicate slug detection ──────────────────────────────────
   console.log('\n3. Duplicate slug detection');
   for (const type of ['post', 'caseStudy', 'service']) {
-    const dups = await client.fetch(
-      `*[_type == $type && !(_id in path("drafts.**"))] { "slug": slug.current }
-       | group by "slug"
-       `,
-      // GROQ group-by not supported in all versions — use JS:
-      { type }
-    );
-    // Fallback: fetch slugs and group in JS
     const slugs = await client.fetch(
       `*[_type == $type && !(_id in path("drafts.**"))] { "slug": slug.current }`,
       { type }
