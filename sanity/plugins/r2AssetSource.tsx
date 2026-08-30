@@ -53,9 +53,9 @@ export function R2AssetSourceComponent(props: AssetSourceComponentProps) {
       setError(null);
       try {
         const data = await client.fetch<AssetDoc[]>(
-          `*[_type == "asset" && defined(sitePath)] {
+          `*[_type == "asset"] | order(sitePath asc) [0...600] {
             _id, displayName, name, sitePath, relativePath, publicUrl, r2Key, extension, mediaType, assetGroup
-          } | order(sitePath asc) [0...600]`
+          }`
         );
         if (isMounted) setAssets(data || []);
       } catch (err: any) {
