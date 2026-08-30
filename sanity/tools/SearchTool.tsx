@@ -135,7 +135,7 @@ function SearchToolContent() {
         {loading ? (
           <RowSkeleton cols={5} />
         ) : error ? (
-          <Box padding={4}><Text style={{ color: '#e54f30' }}>{error}</Text></Box>
+          <Card padding={4} tone="critical" border radius={2}><Text weight="medium">{error}</Text></Card>
         ) : searched ? (
           results.length === 0 ? (
             <EmptyState title="No matching documents" body="Try broadening search terms." />

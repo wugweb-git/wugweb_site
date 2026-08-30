@@ -148,7 +148,7 @@ export function MediaTool() {
       {loading ? (
         <RowSkeleton cols={4} />
       ) : error ? (
-        <Box padding={4}><Text style={{ color: 'var(--card-bad-fg-color, #e54f30)' }}>{error}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ marginTop: 8 }} /></Box>
+        <Card padding={4} tone="critical"><Text weight="medium">{error}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ marginTop: 8 }} /></Card>
       ) : filtered.length === 0 ? (
         <EmptyState title="No assets match" />
       ) : view === 'grid' ? (

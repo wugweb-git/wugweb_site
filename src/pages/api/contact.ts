@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { connect } from '../../lib/db';
-import { sanityClient } from '../../lib/sanity';
+import { sanityClient, getPreviewClient } from '../../lib/sanity';
 
 // Same Hyperdrive + pg pattern as /api/personalize.ts. Stores leads in
 // Neon so they're queryable later, and mirrors each submission into a
@@ -47,7 +47,11 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
     submittedAt: new Date().toISOString(),
   };
   try {
-    await sanityClient.create(submissionDoc);
+    const token = locals.runtime?.env?.SANITY_SYNC_TOKEN || locals.runtime?.env?.SANITY_TOKEN || (import.meta.env as any)?.SANITY_TOKEN;
+    if (token) {
+      const writeClient = getPreviewClient(token);
+      await writeClient.create(submissionDoc);
+    }
   } catch (e) {
     console.error('contact: Sanity mirror failed', e);
   }

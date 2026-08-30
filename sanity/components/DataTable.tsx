@@ -464,10 +464,10 @@ export function DataTable({
         {loading ? (
           <RowSkeleton cols={columns.length} />
         ) : error ? (
-          <Box padding={4}>
-            <Text size={1} style={{ color: 'var(--card-bad-fg-color, #e54f30)' }}>{error}</Text>
+          <Card padding={4} tone="critical">
+            <Text size={1} weight="medium">{error}</Text>
             <Button text="Retry" mode="ghost" onClick={onReload} style={{ marginTop: 8 }} />
-          </Box>
+          </Card>
         ) : filtered.length === 0 ? (
           <EmptyState title={emptyTitle} body={emptyBody} />
         ) : (
