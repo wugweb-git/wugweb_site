@@ -63,11 +63,9 @@ const otherCases = await Promise.all(others.map((s: any) =>
     <!-- Full Body Content (Sanity blocks) -->
     {bodyContent && bodyContent.length > 0 && (
       <article class="case-section text-block" data-reveal>
-        <h2>Project Narrative</h2>
         <PortableTextRenderer value={bodyContent} />
       </article>
     )}
-
   </div>
 
   {otherCases.length > 0 && (
