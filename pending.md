@@ -4,7 +4,7 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-**Last verified:** 2026-08-15 (**Sanity Studio deep audit + deploy fixed and live** — Dashboard/SEO Manager crash, SEO badge logic, DataTable row crash, Unpublish/Archive wiring; **Kits Showcase Page live at `/kits`**, Sanity Studio Enterprise Overhaul + CRUD fixes, Contact V2 rollout, Service UI/UX revamp, Cloudflare Pages live).
+**Last verified:** 2026-08-30 (**Audit + critical bug fix session** — `client.end()` → `client.release()` in all 4 Neon API routes (contact, personalize, subscribe, sync); TypeScript errors cleared to 0; SESSION KV binding added to `wrangler.jsonc`; `.DS_Store` untracked; `CLAUDE.md` synced with `AGENTS.md`; 2 unpushed commits pushed to origin; build ✅ tsc ✅).
 
 Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-full-audit.md). Kits type roles: [`design.md`](design.md) §3 (+ C-6 superseded). Design system (single source of truth): [`kits_design_system/`](kits_design_system/) — `docs/design.md` + `docs/tokens/`.
 
