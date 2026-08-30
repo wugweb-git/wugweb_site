@@ -9,6 +9,13 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+- **Sanity Custom Document Badges** (`sanity/badges/documentBadges.ts`) — Real-time badge indicators in Studio for SEO Health (`SEO Ready`, `Short SEO Desc`, `Needs SEO`), Reading Time / Word Count calculation for posts, and R2 Media Asset status mapping (`R2 Media`, `Sanity CDN Media`, `No Cover Media`).
+- **Interactive Code Block Copy & Language Badge** (`src/components/PortableTextRenderer.astro`) — Added copy-to-clipboard functionality with visual confirmation feedback and formatted code headers.
+- **Reading Progress Bar** (`src/pages/blog/[slug].astro`) — Smooth scroll progress indicator pinned to top of articles with accent gradient.
+- **Modal & Drawer Keyboard Accessibility** (`src/pages/footer/subscription.astro`) — Added `Escape` key listeners to dismiss drawer overlays and checkout modals.
+
+
 ---
 
 ## [2026-08-30] — Audit & Critical Bug Fix Session
