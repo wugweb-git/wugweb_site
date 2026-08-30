@@ -31,7 +31,7 @@ export function DocumentListPane(props: DocumentListPaneProps) {
   const { options } = props;
   const schemaType = typeof options?.schemaType === 'string' ? options.schemaType : undefined;
   const tableKey = typeof options?.tableKey === 'string' ? options.tableKey : undefined;
-  const client = useClient({ apiVersion: '2024-01-01' });
+  const client = useClient({ apiVersion: '2026-01-01' });
   const paneRouter = usePaneRouter();
   const config = TABLE_MAP[tableKey ?? schemaType ?? ''];
 

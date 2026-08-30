@@ -24,7 +24,7 @@ function escapeGroq(v: string): string {
 }
 
 function SearchToolContent() {
-  const client = useClient({ apiVersion: '2024-01-01' });
+  const client = useClient({ apiVersion: '2026-01-01' });
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Row[]>([]);
   const [loading, setLoading] = useState(false);

@@ -15,7 +15,7 @@ const TABLE_KEYS = TABLE_CONFIGS.map((t) => t.key);
  * (free-tier safe, no live subscriptions).
  */
 export function TablesTool() {
-  const client = useClient({ apiVersion: '2024-01-01' });
+  const client = useClient({ apiVersion: '2026-01-01' });
   const [active, setActive] = useState<string>('post');
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);

@@ -27,16 +27,20 @@ interface AssetRow extends Row {
   linkedPost?: string;
 }
 
-const QUERY = `*[_type=="asset"][0...3000] {
-  _id, _type, _updatedAt, name, displayName, "slug": slug.current, assetType, mediaType, assetGroup,
-  usage, status, folder, relativePath, sitePath, r2Key, publicUrl, fileName, extension,
-  localExists, r2Synced, "linkedCaseStudy": linkedCaseStudy->title, "linkedClient": linkedClient->name,
-  "linkedService": linkedService->title, "linkedPost": linkedPost->title, linkedPageId
+const QUERY = `{
+  "assets": *[_type=="asset"][0...240] {
+    _id, _type, _updatedAt, name, displayName, "slug": slug.current, assetType, mediaType, assetGroup,
+    usage, status, folder, relativePath, sitePath, r2Key, publicUrl, fileName, extension,
+    localExists, r2Synced, "linkedCaseStudy": linkedCaseStudy->title, "linkedClient": linkedClient->name,
+    "linkedService": linkedService->title, "linkedPost": linkedPost->title, linkedPageId
+  },
+  "total": count(*[_type=="asset"])
 }`;
 
 export function MediaTool() {
-  const client = useClient({ apiVersion: '2024-01-01' });
+  const client = useClient({ apiVersion: '2026-01-01' });
   const [rows, setRows] = useState<AssetRow[]>([]);
+  const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState<'grid' | 'list'>('grid');
@@ -48,8 +52,9 @@ export function MediaTool() {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchDocs(client, QUERY);
-      setRows(data as AssetRow[]);
+      const data = await fetchDocs(client, QUERY) as any;
+      setRows(data?.assets ?? []);
+      setTotal(data?.total ?? 0);
     } catch (e: any) {
       setError(e?.message || 'Failed to load');
       setRows([]);
@@ -109,7 +114,12 @@ export function MediaTool() {
       <Flex align="center" gap={2} paddingBottom={3} wrap="wrap">
         <Box flex={1}>
           <Text size={3} weight="semibold">Media Library</Text>
-          <Text size={1} muted>{plural(stats.total, 'asset')} · filters for unused, duplicates, missing alt</Text>
+          <Text size={1} muted>
+            {rows.length < total
+              ? `Showing ${rows.length} of ${total} assets · use filters to narrow`
+              : `${total} assets`}
+            {' · filters for unused, duplicates, missing alt'}
+          </Text>
         </Box>
         <TextInput icon={SearchIcon} placeholder="Search name/path…" value={q} onChange={(e) => setQ(e.currentTarget.value)} style={{ maxWidth: 240 }} />
         <Select value={group} onChange={(e) => setGroup(e.currentTarget.value as any)} style={{ maxWidth: 140 }}>
@@ -138,7 +148,7 @@ export function MediaTool() {
       {loading ? (
         <RowSkeleton cols={4} />
       ) : error ? (
-        <Box padding={4}><Text style={{ color: '#e54f30' }}>{error}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ marginTop: 8 }} /></Box>
+        <Box padding={4}><Text style={{ color: 'var(--card-bad-fg-color, #e54f30)' }}>{error}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ marginTop: 8 }} /></Box>
       ) : filtered.length === 0 ? (
         <EmptyState title="No assets match" />
       ) : view === 'grid' ? (
@@ -151,7 +161,7 @@ export function MediaTool() {
               <Card key={r._id} border radius={2} overflow="hidden" style={{ cursor: 'pointer' }} onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--card-focus-ring-color, #4c9aff)'; }} onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = ''; }}>
                 <Box style={{ height: 90, background: 'var(--card-muted-bg-color, #f1f3f5)', display: 'grid', placeItems: 'center' }}>
                   {isImg && url ? (
-                    <img src={url} alt={String((r.name ?? '') as any)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={url} alt={String((r.name ?? '') as any)} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
                     <Text size={2} muted>{ext || '📄'}</Text>
                   )}

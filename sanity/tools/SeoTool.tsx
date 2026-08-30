@@ -16,26 +16,32 @@ interface SeoRow extends Row {
   summary?: string;
 }
 
-const TYPES: { type: string; label: string; query: string }[] = [
+const PAGE_SIZE = 100;
+
+const TYPES: { type: string; label: string; query: string; totalQuery: string }[] = [
   {
     type: 'post',
     label: 'Blog Posts',
-    query: `*[_type=="post"][0...1000] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, excerpt, body }`,
+    query: `*[_type=="post" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, excerpt, body }`,
+    totalQuery: `count(*[_type=="post" && !(_id in path("drafts.**"))])`,
   },
   {
     type: 'caseStudy',
     label: 'Case Studies',
-    query: `*[_type=="caseStudy"][0...1000] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, summary, body }`,
+    query: `*[_type=="caseStudy" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, summary, body }`,
+    totalQuery: `count(*[_type=="caseStudy" && !(_id in path("drafts.**"))])`,
   },
   {
     type: 'service',
     label: 'Services',
-    query: `*[_type=="service"][0...1000] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, summary, heroText, body }`,
+    query: `*[_type=="service" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, summary, heroText, body }`,
+    totalQuery: `count(*[_type=="service" && !(_id in path("drafts.**"))])`,
   },
   {
     type: 'singletonPage',
     label: 'Pages',
-    query: `*[_type=="singletonPage"][0...500] { _id, _type, title, pageId, seoTitle, seoDescription, ogImage, body }`,
+    query: `*[_type=="singletonPage" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, pageId, seoTitle, seoDescription, ogImage, body }`,
+    totalQuery: `count(*[_type=="singletonPage" && !(_id in path("drafts.**"))])`,
   },
 ];
 
@@ -55,31 +61,41 @@ function generateMeta(row: SeoRow): { seoTitle: string; seoDescription: string }
 }
 
 function SeoToolContent() {
-  const client = useClient({ apiVersion: '2024-01-01' });
+  const client = useClient({ apiVersion: '2026-01-01' });
   const [activeType, setActiveType] = useState('post');
   const [rows, setRows] = useState<SeoRow[]>([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [q, setQ] = useState('');
   const [onlyMissing, setOnlyMissing] = useState(false);
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (pg = page) => {
     setLoading(true);
     setError(null);
     try {
       const spec = TYPES.find((t) => t.type === activeType) || TYPES[0];
-      const data = await client.fetch<SeoRow[]>(spec.query);
+      const from = pg * PAGE_SIZE;
+      const to   = from + PAGE_SIZE;
+      const [data, count] = await Promise.all([
+        client.fetch<SeoRow[]>(spec.query, { from, to }),
+        client.fetch<number>(spec.totalQuery),
+      ]);
       setRows(data || []);
+      setTotal(count || 0);
     } catch (e: any) {
       setError(e?.message || 'Failed to fetch SEO metadata.');
     } finally {
       setLoading(false);
     }
-  }, [client, activeType]);
+  }, [client, activeType, page]);
 
   useEffect(() => {
-    load();
-  }, [load]);
+    setPage(0);
+    load(0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeType]);
 
   const generate = async (row: SeoRow) => {
     const { seoTitle, seoDescription } = generateMeta(row);
@@ -104,6 +120,8 @@ function SeoToolContent() {
     return true;
   });
 
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
   return (
     <Card tone="default" padding={[2, 3]} style={{ minHeight: '100%' }}>
       <Flex align="center" justify="space-between" paddingBottom={4}>
@@ -125,21 +143,26 @@ function SeoToolContent() {
         ))}
       </Flex>
 
-      <Flex gap={2} align="center" marginBottom={3}>
-        <TextInput
-          icon={SearchIcon}
-          placeholder="Filter documents…"
-          value={q}
-          onChange={(e) => setQ(e.currentTarget.value)}
-          style={{ maxWidth: 280 }}
-        />
-        <Button
-          text={onlyMissing ? 'Showing: Missing SEO only' : 'Filter: Missing SEO'}
-          tone={onlyMissing ? 'caution' : 'default'}
-          mode={onlyMissing ? 'default' : 'ghost'}
-          onClick={() => setOnlyMissing(!onlyMissing)}
-        />
-      </Flex>
+        <Flex gap={2} align="center" marginBottom={3}>
+          <TextInput
+            icon={SearchIcon}
+            placeholder="Filter documents…"
+            aria-label="Filter documents"
+            value={q}
+            onChange={(e) => setQ(e.currentTarget.value)}
+            style={{ maxWidth: 280 }}
+          />
+          <Button
+            text={onlyMissing ? 'Showing: Missing SEO only' : 'Filter: Missing SEO'}
+            tone={onlyMissing ? 'caution' : 'default'}
+            mode={onlyMissing ? 'default' : 'ghost'}
+            onClick={() => setOnlyMissing(!onlyMissing)}
+          />
+          <Box flex={1} />
+          <Text size={1} muted>
+            Showing {rows.length} of {total} · page {page + 1}/{totalPages}
+          </Text>
+        </Flex>
 
       {loading ? (
         <RowSkeleton cols={4} />
@@ -198,6 +221,17 @@ function SeoToolContent() {
             </table>
           </div>
         </Card>
+      )}
+
+      {/* Pagination */}
+      {total > PAGE_SIZE && (
+        <Flex align="center" justify="space-between" paddingTop={3}>
+          <Text size={1} muted>{total} total · page {page + 1} of {totalPages}</Text>
+          <Flex gap={1}>
+            <Button mode="ghost" text="← Prev" aria-label="Previous page" disabled={page === 0} onClick={() => { const p = page - 1; setPage(p); load(p); }} />
+            <Button mode="ghost" text="Next →" aria-label="Next page" disabled={page >= totalPages - 1} onClick={() => { const p = page + 1; setPage(p); load(p); }} />
+          </Flex>
+        </Flex>
       )}
     </Card>
   );

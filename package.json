@@ -9,7 +9,11 @@
     "dev": "wrangler types && astro dev",
     "build": "astro build",
     "preview": "npm run build && wrangler pages dev ./dist",
-    "deploy": "npm run build && npx wrangler pages deploy dist"
+    "deploy": "npm run build && npx wrangler pages deploy dist",
+    "sanity:dev": "cd sanity && npm run dev",
+    "sanity:build": "cd sanity && npm run build",
+    "sanity:deploy": "cd sanity && npm run deploy",
+    "sanity:health": "node sanity/test_sanity.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.0.0",
