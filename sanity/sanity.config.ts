@@ -14,7 +14,7 @@ export default defineConfig({
   title: 'wugweb',
   projectId: 'splvhmk1',
   dataset: 'production',
-  apiVersion: '2024-01-01',
+  apiVersion: '2026-01-01',
   plugins: [structureTool({ structure: deskStructure }), visionTool()],
   tools: (prev) => [
     {
