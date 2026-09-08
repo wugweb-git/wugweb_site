@@ -2,12 +2,11 @@
 // (the 6-pillar service copy). Used by /services/[slug] when Sanity has no
 // document for a slug, and kept out of the page so the copy stays reusable.
 // Shape mirrors the Sanity `service` schema: capabilities[{n,title,items}],
-// approach[{n,title,body}], process[{phase,steps}], tools[{category,items}],
+// approach[{n,title,body}], tools[{category,items}],
 // why[{title,body}], faqs[{q,a}], plus page-only extras stats/framework.
 
 export interface ServiceCapability { n: string; title: string; items: string[] }
 export interface ServiceApproach { n: string; title: string; body: string }
-export interface ServiceProcess { phase: string; steps: string[] }
 export interface ServiceTools { category: string; items: string[] }
 export interface ServiceWhy { title: string; body: string }
 export interface ServiceFaq { q: string; a: string }
@@ -24,7 +23,6 @@ export interface ServiceData {
   framework: ServiceFrameworkPhase[];
   capabilities: ServiceCapability[];
   approach: ServiceApproach[];
-  process?: ServiceProcess[];
   tools?: ServiceTools[];
   faqs: ServiceFaq[];
   why: ServiceWhy[];
@@ -42,11 +40,11 @@ const strategy: ServiceData = {
     { n: '1', label: 'shared roadmap from ambition to execution' },
   ],
   framework: [
-    { phase: 'Discovery', outcome: 'A shared understanding of the current state and future opportunities.', includes: ['Stakeholder workshops', 'Market research', 'Customer research', 'Competitive analysis', 'Business assessment'] },
-    { phase: 'Strategic Direction', outcome: 'A practical strategic roadmap.', includes: ['Business objectives', 'Product vision', 'Opportunity mapping', 'Prioritization', 'Success metrics'] },
-    { phase: 'Planning', outcome: 'An actionable implementation plan.', includes: ['Roadmaps', 'Capability planning', 'Technology recommendations', 'Resource planning', 'Risk assessment'] },
-    { phase: 'Execution Support', outcome: 'Faster execution with greater confidence.', includes: ['Cross-functional alignment', 'Decision support', 'Product guidance', 'Workshop facilitation'] },
-    { phase: 'Continuous Improvement', outcome: 'Long-term strategic resilience.', includes: ['Performance reviews', 'KPI monitoring', 'Opportunity reassessment', 'Roadmap refinement'] },
+    { phase: 'Discovery', outcome: 'A shared understanding of the current state and future opportunities.', includes: ['Stakeholder workshops', 'Market research', 'Competitive analysis'] },
+    { phase: 'Direction', outcome: 'A practical strategic roadmap.', includes: ['Product vision', 'Opportunity mapping', 'Success metrics'] },
+    { phase: 'Planning', outcome: 'An actionable implementation plan.', includes: ['Roadmaps', 'Capability planning', 'Risk assessment'] },
+    { phase: 'Execution', outcome: 'Faster execution with greater confidence.', includes: ['Cross-functional alignment', 'Decision support', 'Workshop facilitation'] },
+    { phase: 'Improvement', outcome: 'Long-term strategic resilience.', includes: ['Performance reviews', 'KPI monitoring', 'Roadmap refinement'] },
   ],
   capabilities: [
     { n: '01', title: 'Business Strategy', items: ['Business Strategy', 'Digital Transformation', 'Innovation', 'Market Research', 'Customer & User Research'] },
@@ -91,11 +89,11 @@ const brand: ServiceData = {
     { n: '4-8', label: 'weeks for a full identity engagement' },
   ],
   framework: [
-    { phase: 'Discovery', outcome: 'A clear understanding of your brand today and its future opportunity.', includes: ['Stakeholder workshops', 'Brand audits', 'Market research', 'Audience insights', 'Competitive analysis'] },
-    { phase: 'Strategy', outcome: 'A strategic foundation for long-term differentiation.', includes: ['Purpose & vision', 'Positioning', 'Brand values', 'Messaging', 'Brand architecture'] },
-    { phase: 'Identity', outcome: 'A cohesive identity that communicates with clarity and consistency.', includes: ['Logo systems', 'Typography', 'Color systems', 'Visual language', 'Voice & tone', 'Brand guidelines'] },
-    { phase: 'Activation', outcome: 'A consistent brand experience across every touchpoint.', includes: ['Marketing assets', 'Digital experiences', 'Product branding', 'Campaign support', 'Launch planning'] },
-    { phase: 'Evolution', outcome: 'A brand that remains relevant as your business evolves.', includes: ['Brand governance', 'Performance reviews', 'Identity refinements', 'New applications', 'Ongoing consultation'] },
+    { phase: 'Discovery', outcome: 'A clear understanding of your brand today and its future opportunity.', includes: ['Brand audits', 'Audience insights', 'Competitive analysis'] },
+    { phase: 'Strategy', outcome: 'A strategic foundation for long-term differentiation.', includes: ['Positioning', 'Messaging', 'Brand architecture'] },
+    { phase: 'Identity', outcome: 'A cohesive identity that communicates with clarity and consistency.', includes: ['Logo systems', 'Visual language', 'Brand guidelines'] },
+    { phase: 'Activation', outcome: 'A consistent brand experience across every touchpoint.', includes: ['Marketing assets', 'Digital experiences', 'Launch planning'] },
+    { phase: 'Evolution', outcome: 'A brand that remains relevant as your business evolves.', includes: ['Brand governance', 'Performance reviews', 'Identity refinements'] },
   ],
   capabilities: [
     { n: '01', title: 'Brand Strategy', items: ['Positioning', 'Narrative', 'Naming', 'Messaging'] },
@@ -138,11 +136,11 @@ const experience: ServiceData = {
     { n: 'WCAG', label: 'accessible by default, not an afterthought' },
   ],
   framework: [
-    { phase: 'Research', outcome: 'Validated insights that guide every design decision.', includes: ['User interviews', 'Usability reviews', 'Competitive analysis', 'Journey mapping', 'Persona development'] },
-    { phase: 'Experience Strategy', outcome: 'A clear blueprint for intuitive interactions.', includes: ['Information architecture', 'User flows', 'Experience principles', 'Content structure'] },
-    { phase: 'Design', outcome: 'Experiences that are usable, scalable, and visually engaging.', includes: ['Wireframes', 'UI Design', 'Interactive prototypes', 'Design systems', 'Accessibility'] },
-    { phase: 'Validation', outcome: 'Greater confidence before development.', includes: ['Usability testing', 'Accessibility testing', 'Prototype validation', 'Design QA'] },
-    { phase: 'Optimization', outcome: 'Experiences that evolve alongside users.', includes: ['Analytics reviews', 'Behaviour analysis', 'UX audits', 'Iterative improvements'] },
+    { phase: 'Research', outcome: 'Validated insights that guide every design decision.', includes: ['User interviews', 'Competitive analysis', 'Journey mapping'] },
+    { phase: 'Strategy', outcome: 'A clear blueprint for intuitive interactions.', includes: ['Information architecture', 'User flows', 'Content structure'] },
+    { phase: 'Design', outcome: 'Experiences that are usable, scalable, and visually engaging.', includes: ['Wireframes', 'UI Design', 'Design systems'] },
+    { phase: 'Validation', outcome: 'Greater confidence before development.', includes: ['Usability testing', 'Accessibility testing', 'Design QA'] },
+    { phase: 'Optimization', outcome: 'Experiences that evolve alongside users.', includes: ['Analytics reviews', 'UX audits', 'Iterative improvements'] },
   ],
   capabilities: [
     { n: '01', title: 'Research', items: ['UX Research', 'Service Design', 'Information Architecture', 'Journey Mapping'] },
@@ -155,12 +153,6 @@ const experience: ServiceData = {
     { n: '03', title: 'Testing & Validation', body: 'We validate designs through usability testing and data analysis, driving continuous improvement.' },
     { n: '04', title: 'Design & Development Handoff', body: 'We ensure seamless translation from design to development with detailed specs and design system components.' },
     { n: '05', title: 'System & Evolve', body: 'We leave you with a governed design system and a cadence for iterating as the product roadmap moves.' },
-  ],
-  process: [
-    { phase: 'Discovery', steps: ['Kick-off meeting', 'Competitor analysis', 'User interview', 'Brain storming'] },
-    { phase: 'Ideation', steps: ['User journey', 'Sitemap', 'Wireframes & prototyping', 'Usability testing'] },
-    { phase: 'Prototyping & Testing', steps: ['Analysing results', 'Look and feel drafts', 'Design concept', 'Final UI design'] },
-    { phase: 'UI Design', steps: ['Final UI design', 'Handover meeting'] },
   ],
   tools: [
     { category: 'User Research & Testing', items: ['Maze', 'Dovetail', 'Lyssna', 'Remesh', 'UserZoom', 'UserLytics', 'Reflect', 'Trymata'] },
@@ -201,11 +193,11 @@ const growth: ServiceData = {
     { n: '6', label: 'connected growth disciplines in one engine' },
   ],
   framework: [
-    { phase: 'Business Discovery', outcome: 'Alignment on objectives, customers, and the challenges that matter most.', includes: ['Business objectives', 'Customer understanding', 'Marketing review', 'Challenge identification'] },
-    { phase: 'Market & Customer Research', outcome: 'Opportunities for acquisition, retention, and expansion.', includes: ['Competitor analysis', 'Customer behaviour', 'Market trends', 'Performance data'] },
-    { phase: 'Growth Architecture', outcome: 'A complete growth ecosystem — journeys, CRM, automation, and measurement.', includes: ['Customer journeys', 'CRM & automation', 'Content strategy', 'Channel mix', 'Measurement frameworks'] },
-    { phase: 'Build & Integrate', outcome: 'Marketing technology, automation, AI, and analytics in place.', includes: ['MarTech implementation', 'AI capabilities', 'Analytics', 'CRM integrations'] },
-    { phase: 'Launch, Measure & Scale', outcome: 'Sustainable growth through continuous optimization.', includes: ['Campaign launch', 'Performance monitoring', 'Experimentation', 'Automation & AI scaling'] },
+    { phase: 'Discovery', outcome: 'Alignment on objectives, customers, and the challenges that matter most.', includes: ['Business objectives', 'Customer understanding', 'Marketing review'] },
+    { phase: 'Research', outcome: 'Opportunities for acquisition, retention, and expansion.', includes: ['Competitor analysis', 'Customer behaviour', 'Performance data'] },
+    { phase: 'Architecture', outcome: 'A complete growth ecosystem — journeys, CRM, automation, and measurement.', includes: ['Customer journeys', 'CRM & automation', 'Measurement frameworks'] },
+    { phase: 'Build', outcome: 'Marketing technology, automation, AI, and analytics in place.', includes: ['MarTech implementation', 'AI capabilities', 'Analytics'] },
+    { phase: 'Scale', outcome: 'Sustainable growth through continuous optimization.', includes: ['Campaign launch', 'Experimentation', 'Automation & AI scaling'] },
   ],
   capabilities: [
     { n: '01', title: 'Growth Strategy', items: ['Growth strategy & planning', 'Go-to-market strategy', 'Customer acquisition planning', 'Market expansion strategy', 'Growth opportunity assessment'] },
@@ -256,11 +248,11 @@ const engineering: ServiceData = {
     { n: '24/7', label: 'monitoring and reliability after launch' },
   ],
   framework: [
-    { phase: 'Discovery', outcome: 'A validated technical roadmap.', includes: ['Technical workshops', 'Requirements gathering', 'Architecture review', 'Solution planning', 'Technology selection'] },
-    { phase: 'Architecture', outcome: 'A scalable engineering foundation.', includes: ['System architecture', 'Database design', 'API planning', 'Infrastructure planning', 'Security planning'] },
-    { phase: 'Development', outcome: 'Reliable digital products ready for deployment.', includes: ['Frontend development', 'Backend development', 'Mobile development', 'Integrations', 'No-code implementations'] },
-    { phase: 'Quality Assurance', outcome: 'Higher confidence with every deployment.', includes: ['Functional testing', 'Performance testing', 'Security validation', 'Accessibility testing', 'Release QA'] },
-    { phase: 'Operations', outcome: 'Products that continue to improve over time.', includes: ['Monitoring', 'Maintenance', 'Feature enhancements', 'Cloud optimization', 'Performance improvements'] },
+    { phase: 'Discovery', outcome: 'A validated technical roadmap.', includes: ['Technical workshops', 'Requirements gathering', 'Technology selection'] },
+    { phase: 'Architecture', outcome: 'A scalable engineering foundation.', includes: ['System architecture', 'API planning', 'Security planning'] },
+    { phase: 'Development', outcome: 'Reliable digital products ready for deployment.', includes: ['Frontend development', 'Backend development', 'Integrations'] },
+    { phase: 'Assurance', outcome: 'Higher confidence with every deployment.', includes: ['Functional testing', 'Accessibility testing', 'Release QA'] },
+    { phase: 'Operations', outcome: 'Products that continue to improve over time.', includes: ['Monitoring', 'Maintenance', 'Performance improvements'] },
   ],
   capabilities: [
     { n: '01', title: 'Product Engineering', items: ['Product concept to launch', 'Product thinking', 'Scalable architecture', 'Web & app engineering'] },
@@ -311,9 +303,9 @@ const operations: ServiceData = {
     { n: '24/7', label: 'support, monitoring, and incident response' },
   ],
   framework: [
-    { phase: 'Assess', outcome: 'Operational baseline and improvement roadmap.', includes: ['System review', 'Infrastructure review', 'Operational maturity', 'Risk assessment'] },
+    { phase: 'Assess', outcome: 'Operational baseline and improvement roadmap.', includes: ['System review', 'Operational maturity', 'Risk assessment'] },
     { phase: 'Stabilize', outcome: 'Stable and dependable production environments.', includes: ['Critical issue resolution', 'Reliability improvements', 'Monitoring setup'] },
-    { phase: 'Operate', outcome: 'Reliable day-to-day operations.', includes: ['Ongoing maintenance', 'Support', 'Deployments', 'Infrastructure management'] },
+    { phase: 'Operate', outcome: 'Reliable day-to-day operations.', includes: ['Ongoing maintenance', 'Deployments', 'Infrastructure management'] },
     { phase: 'Improve', outcome: 'Higher efficiency and lower operational risk.', includes: ['Performance optimization', 'Task automation', 'Security hardening'] },
     { phase: 'Scale', outcome: 'Technology that grows with the business.', includes: ['System preparation', 'Team preparation', 'Infrastructure planning for growth'] },
   ],

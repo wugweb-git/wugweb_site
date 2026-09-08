@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
 import { servicesListQuery, caseStudiesListQuery, singletonPageQuery } from '../../lib/queries';
+import BentoBlock, { type BentoTile } from '../../components/BentoBlock.astro';
 import { assetUrl } from '../../lib/assets';
 
 const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
@@ -57,13 +58,51 @@ const pageTitle = servicesPage?.seoTitle || 'Digital Experience Services — Wug
 const pageDescription =
   servicesPage?.seoDescription ||
   'Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.';
+/**
+ * "Why Wugweb?" bento.
+ *
+ * Every claim here is one the site already proves — the six pillars are the
+ * nav, and the figures come from the same counts the About page derives
+ * (57 case studies, 44 distinct industries across them). Nothing invented.
+ *
+ * Layout is a seventh arrangement, distinct from the six on the service detail
+ * pages: media opens the left column and the weight falls to the middle.
+ */
+const whyBentoReasons = [
+  {
+    title: 'Six disciplines, one team',
+    body: 'Strategy, brand, experience, engineering, growth and operations sit under one roof — so nothing is handed across a gap between agencies.',
+  },
+  {
+    title: 'Proven across sectors',
+    body: 'Forty-four industries and counting, from fintech and logistics to luxury and OTT. Sector fluency built case by case, not claimed.',
+  },
+  {
+    title: 'Systems, not one-offs',
+    body: 'Design systems, platforms and documentation you own and can run without us. The handover is the deliverable, not an afterthought.',
+  },
+  {
+    title: 'Start smart, start small',
+    body: 'We scope the smallest piece that proves the idea, ship it, and scale what works. No twelve-month reveal.',
+  },
+];
+
+const whyBentoTiles: BentoTile[] = [
+  { col: 0, span: 'slim', kind: 'media', image: assetUrl('more/service/service_benefit_6.webp'), fit: 'cover' },
+  { col: 0, span: 'tall', ...whyBentoReasons[0], tone: 'light' },
+  { col: 1, span: 'tall', ...whyBentoReasons[1] },
+  { col: 1, span: 'strip', kind: 'cta', href: '/contact-us', linkLabel: 'Start a project' },
+  { col: 2, span: 'mid', ...whyBentoReasons[2] },
+  { col: 2, span: 'short', ...whyBentoReasons[3] },
+];
+
 const whyIntro =
   servicesPage?.subtitle ||
   'In a world clamoring for attention, your brand deserves more than fleeting visibility. It requires a strategic partner that architects compelling narratives, cultivates authentic connections, and engineers brand experiences designed to stand the test of time.';
 ---
 <BaseLayout title={pageTitle} description={pageDescription}>
   <section class="services-hero"><div class="wrap services-hero-content">
-    <h1 data-reveal>Services</h1>
+    <h1 class="page-title" data-reveal>Services</h1>
     <p data-reveal>At Wugweb, we design with function driving aesthetics—crafting scalable, human-centered systems across brand, UI/UX, web, apps, martech, AI, QA, and no-code.</p>
     <p class="services-hero-sub" data-reveal>As a UX design agency and development partner, we blend creativity with technical precision to deliver impactful, multi-platform experiences.</p>
   </div></section>
@@ -80,6 +119,7 @@ const whyIntro =
     <h2 data-reveal>Why Wugweb?</h2>
     <p data-reveal>{whyIntro}</p>
   </section>
+  <BentoBlock tiles={whyBentoTiles} showNumbers={false} />
 
   <div class="svc-stack">{serviceList.map((s) => (
     <section class="svc-panel" id={s.slug} style={`--svc-bg:${s.bg};--svc-fg:${s.fg};--svc-accent:${s.accent}`}>
@@ -110,8 +150,8 @@ const whyIntro =
 </BaseLayout>
 
 <style>
-  .services-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
-  .services-hero-content h1 { font-size: var(--t-h2); font-weight: var(--font-weight-bold); max-width: 28ch; margin-bottom: var(--gap-4); }
+  .services-hero { padding-block: var(--space-page-head) var(--space-section-md); }
+  .services-hero-content h1 { max-width: 18ch; margin-bottom: var(--gap-5); }
   .services-hero-content p:not(.services-hero-sub) { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
   .services-hero-sub { margin-top: var(--gap-5); max-width: 55ch; }
   .stats { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }

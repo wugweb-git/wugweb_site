@@ -217,6 +217,22 @@
   --space-section-md: 48px;
   --space-section-lg: 64px;
   --space-section-xl: 80px;
+  /* Clear space above a page title.
+     Measured: our six pages ran 64→126px below the header, and the difference
+     was only whether the page happened to carry an eyebrow — not a decision.
+     The Framer reference gives its title 284px below a 56px nav; ours is 98px,
+     so the same feel needs less. 160px at desktop lands the title in the same
+     place on the fold without pushing it under it. */
+  --space-page-head: clamp(4rem, 12vw, 11rem);
+
+  /* ── Index + affordance pair ──────────────────────────────────────────
+     The round `+` chip and the index label that sits opposite it share one
+     box height across the whole site, so a card header row is the same height
+     whether it carries a number, a +, or both. Before this the chip was 2.25rem
+     on the FAQ, 2.25–2.75rem on the tag field and the index was a bare inline
+     span, so no two headers lined up. */
+  --chip-size: 2.25rem;
+  --chip-glyph: 1rem;
 
   --space-page-xs: 16px;
   --space-page-sm: 20px;
@@ -331,6 +347,14 @@
   --opacity-loading: var(--opacity-60);
   --opacity-drag: var(--opacity-80);
   --opacity-backdrop: var(--opacity-50);
+  /* De-emphasis pair. Both were referenced across the site (and documented in
+     src/components/README.md as `--opacity-soft: .7`) but never defined, so
+     every `opacity: var(--opacity-soft)` was invalid at computed-value time and
+     silently rendered at full opacity. Used by: TrustBadges, SiteHeader menu
+     icon, about tile copy, homepage client logos, blog "last updated",
+     blog index, work-grid placeholder initials. */
+  --opacity-soft: var(--opacity-70);
+  --opacity-strong: var(--opacity-90);
 
   /* Radius aliases (--radius-* → existing --r-*) */
   --radius-none: var(--r-0);
@@ -600,6 +624,67 @@ h6 {
 }
 
 .type-h1 { font-size: var(--fluid-h1); font-weight: var(--font-weight-bold); line-height: var(--core-line-height-tight); }
+
+/* ── Page title ──────────────────────────────────────────────────────────
+   One treatment for the <h1> of every top-level page.
+
+   Before this, the six pages carried three tracking values, two weights and
+   two sizes more than 2x apart: About and Contact at 80px, Work / Blog / FAQ /
+   Services at 36px with `normal` tracking — set like body copy, which is why
+   they read as section headings rather than page titles.
+
+   Display type wants tighter tracking and a line-height nearer 1 as it grows;
+   `--lh-display` is 1.2, which is a body value, so this sets 0.96 directly.
+   Sized from `--t-display` (40→80px), our own scale. The Framer reference this
+   was measured against runs its titles at 148px — nearly twice our largest
+   token — which would mean a heading bigger than anything else on the site.
+   Its proportions are kept, its size is not. */
+/* RULE: the index box and the + box are the same SIZE — same height, same
+   minimum width — so a card header keeps its height whichever it carries and
+   the two sit level. Size only. The index is bare text in that box; it does
+   not take the chip's surface, radius or border. Giving it one turned a plain
+   number into a second button and read as two controls. */
+.u-index {
+  display: inline-flex;
+  align-items: center;
+  height: var(--chip-size);
+  min-width: var(--chip-size);
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  letter-spacing: var(--tracking-label);
+  color: var(--fg-muted);
+}
+
+/* Round + affordance. Rotates 45° to a cross when its `.is-open` state is set
+   on an ancestor — the same chip used by the FAQ, the Service Tag Field and
+   the approach cards. */
+.u-chip {
+  flex: 0 0 auto;
+  width: var(--chip-size);
+  height: var(--chip-size);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--neutral-0) 9%, transparent);
+  color: var(--fg);
+  transition: background var(--duration-fast) var(--easing-out),
+              transform var(--duration-normal) var(--easing-out);
+}
+.u-chip svg { width: var(--chip-glyph); height: var(--chip-glyph); fill: none; display: block; }
+.u-chip:hover { background: color-mix(in srgb, var(--neutral-0) 16%, transparent); }
+.u-chip:focus-visible { outline: var(--focus-primary); outline-offset: 2px; }
+
+.page-title {
+  font-size: var(--t-display);
+  font-weight: var(--font-weight-semibold);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
 .type-h2 { font-size: var(--fluid-h2); font-weight: var(--font-weight-semibold); line-height: var(--core-line-height-snug); }
 .type-h3 { font-size: var(--fluid-h3); font-weight: var(--font-weight-semibold); line-height: var(--core-line-height-snug); }
 .type-h4 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); line-height: var(--core-line-height-normal); }
@@ -685,6 +770,20 @@ a { color: inherit; }
 
 .btn:active { transform: scale(0.97); }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Site-wide keyboard focus.
+   Only .btn, .u-chip and .cta-ball carried a focus ring, so every card link —
+   work cards, insight cards, capability groups, toolkit chips — was invisible
+   to a keyboard user. This is the default; components with their own
+   :focus-visible rule still win on specificity. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+summary:focus-visible {
+  outline: var(--focus-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
 
 .btn-solid {
   background: var(--accent);
@@ -821,82 +920,205 @@ a { color: inherit; }
 .global-blog-list a { display: block; margin-top: var(--gap-2); text-decoration: none; color: var(--fg); }
 .global-blog-list a:hover { color: var(--accent); }
 
+/* ── Final CTA banner ───────────────────────────────────────────────────
+   A yellow panel, measured off the reference: 1200x350 at 1380px wide,
+   #FFBE1A, radius 24, padding 40. Heading top-left, supporting line and the
+   button on a row at the foot.
+
+   This is the one place the brand yellow is allowed to fill a surface. The
+   ≤10% rule caps yellow as an *accent* precisely so a moment like this reads
+   as the page's single loudest note — one banner, at the foot, after the
+   argument is made. It was previously a dark panel with a 92% black gradient
+   over the device art, which made it the quietest block on the page instead
+   of the last word. */
 .global-final-cta {
   position: relative;
   overflow: hidden;
-  background: var(--color-surface-elevated, #191919);
-  border: var(--stroke-thin) solid var(--line);
+  background: var(--color-yellow);
+  border: var(--stroke-thin) solid transparent;
   border-radius: var(--radius-2xl, 24px);
   margin-block: var(--space-section-xl);
   padding: var(--space-section-lg) var(--space-page-lg);
-  min-height: 280px;
+  /* Taller than the reference's 350px: the disc field takes the bottom 62%,
+     so the copy needs room above it that the discs never drift into. */
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--gap-10);
 }
-/* Device backdrop — laptop left, mobile right, layered softly behind copy */
-.cta-backdrop {
+/* The laptop/mobile device art is not drawn here. It was designed to sit
+   behind a 92% black gradient on the old dark panel; on yellow, at any opacity
+   that keeps the type legible, the PNGs read as two flat dark slabs rather
+   than devices. The reference banner carries no imagery either — a single flat
+   colour is the point of it. The markup is left in place so the art can return
+   if the panel ever goes dark again. */
+.cta-backdrop { display: none; }
+
+/* ── Banner motion ───────────────────────────────────────────────────────
+   Entry/exit and the scroll drift are GSAP (`data-scroll="banner"`), which
+   owns `transform` and `opacity` on the panel and the sheen. Hover therefore
+   uses neither — it is `filter` and `box-shadow` only. Two owners on one
+   property is the bug that froze the Process Map. */
+.global-final-cta {
+  transition: box-shadow var(--duration-slow) var(--easing-smooth),
+              filter var(--duration-normal) var(--easing-smooth);
+  will-change: transform;
+}
+.global-final-cta:hover {
+  box-shadow: 0 24px 70px color-mix(in srgb, var(--color-yellow) 22%, transparent);
+  filter: brightness(1.04);
+}
+
+/* A wide, soft band of light. It drifts across the panel as the page scrolls
+   (scrubbed), and lifts in opacity under the pointer. Sits above the flat
+   yellow and below the copy. */
+.cta-sheen {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
+  top: -40%;
+  left: -30%;
+  width: 60%;
+  height: 180%;
   z-index: 0;
-}
-.cta-device {
-  position: absolute;
-  object-fit: contain;
-  opacity: 0.18;
-  filter: drop-shadow(var(--shadow-xl));
-}
-.cta-laptop {
-  left: -2%;
-  bottom: -15%;
-  width: min(520px, 55%);
-  height: auto;
-}
-.cta-mobile {
-  right: 2%;
-  bottom: -10%;
-  width: min(150px, 20%);
-  height: auto;
-}
-/* Dark gradient overlay keeping copy 100% legible */
-.global-final-cta::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+  pointer-events: none;
+  opacity: 0.45;
   background: linear-gradient(
-    95deg,
-    rgba(5, 5, 5, 0.92) 0%,
-    rgba(5, 5, 5, 0.80) 50%,
-    rgba(5, 5, 5, 0.40) 100%
+    100deg,
+    transparent 0%,
+    color-mix(in srgb, var(--neutral-0) 42%, transparent) 45%,
+    color-mix(in srgb, var(--neutral-0) 42%, transparent) 55%,
+    transparent 100%
   );
+  filter: blur(28px);
+  transition: opacity var(--duration-slow) var(--easing-smooth);
 }
+.global-final-cta:hover .cta-sheen { opacity: 0.75; }
+
+.global-final-cta .final-cta-inner { position: relative; z-index: var(--layer-card); }
+
+/* ── Social discs ────────────────────────────────────────────────────────
+   Positioned by `src/lib/ball-field.ts`, which owns `transform` on each disc.
+   Nothing here may animate transform: the squash keyframes below are the one
+   exception and they run on `scale` only, a separate property, so they compose
+   with the solver's translate instead of overwriting it. */
+/* A band along the foot, not the whole panel. The discs are meant to sit in
+   the bottom of the box and be cropped by its edge — roaming the full height
+   put them over the heading and the supporting line. Extending past the bottom
+   is what produces the cropped look; the panel's own `overflow: hidden` cuts
+   them. `z-index: 0` keeps the whole field behind the copy, which sits at
+   --layer-base and above. */
+.cta-balls {
+  position: absolute;
+  left: 0; right: 0; bottom: -14%;
+  height: 62%;
+  z-index: var(--layer-background);
+  touch-action: none;
+}
+.cta-ball {
+  position: absolute;
+  top: 0; left: 0;
+  width: clamp(3.5rem, 7vw, 6.5rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--neutral-0);
+  color: var(--neutral-10);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--neutral-10) 22%, transparent);
+  cursor: grab;
+  will-change: transform;
+  transition: box-shadow var(--duration-normal) var(--easing-out),
+              scale var(--duration-fast) var(--easing-out);
+}
+.cta-ball svg { width: 42%; height: 42%; fill: currentColor; display: block; }
+.cta-ball:hover {
+  scale: 1.08;
+  box-shadow: 0 14px 36px color-mix(in srgb, var(--neutral-10) 34%, transparent);
+}
+.cta-ball:focus-visible { outline: var(--focus-primary); outline-offset: 3px; }
+.cta-ball.is-held {
+  cursor: grabbing;
+  scale: 1.14;
+  box-shadow: 0 20px 48px color-mix(in srgb, var(--neutral-10) 42%, transparent);
+  z-index: var(--layer-popover);
+}
+/* Impact squash — perpendicular to the wall that was hit. */
+.cta-ball.is-squash-x { animation: ball-squash-x 220ms var(--easing-out); }
+.cta-ball.is-squash-y { animation: ball-squash-y 220ms var(--easing-out); }
+@keyframes ball-squash-x {
+  0%   { scale: 1 1; }
+  35%  { scale: 0.82 1.16; }
+  100% { scale: 1 1; }
+}
+@keyframes ball-squash-y {
+  0%   { scale: 1 1; }
+  35%  { scale: 1.16 0.82; }
+  100% { scale: 1 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-ball { transition: none; animation: none !important; }
+}
+
+/* Visually hidden, still read out. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-final-cta, .cta-sheen { transition: none; }
+  .cta-sheen { display: none; }
+}
+
 .final-cta-inner {
   position: relative;
-  z-index: 2;
+  z-index: var(--layer-base);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--gap-6);
+  margin-top: auto;
 }
-.final-cta-copy {
-  max-width: 52ch;
-}
+.final-cta-copy { max-width: 60ch; }
+/* The heading leads the panel; the supporting line sits with the button. */
 .global-final-cta h2 {
-  font-size: var(--t-h2);
+  position: relative;
+  z-index: var(--layer-card);
+  font-size: var(--fluid-h2);
   max-width: 20ch;
-  color: var(--fg);
-  font-weight: var(--font-weight-regular);
-}
-.global-final-cta p { margin-top: var(--gap-3); max-width: 45ch; color: var(--fg-muted); }
-.global-final-cta .btn {
-  background: var(--color-yellow);
-  border-color: var(--color-yellow);
   color: var(--neutral-10);
-  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--core-line-height-tight);
+  letter-spacing: -0.02em;
 }
-.global-final-cta .btn:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.global-final-cta p {
+  margin: 0;
+  max-width: 52ch;
+  font-size: var(--fluid-body-md);
+  color: color-mix(in srgb, var(--neutral-10) 78%, transparent);
+}
+/* Inverted against the panel: dark button on yellow, not yellow on dark. */
+.global-final-cta .btn {
+  background: var(--neutral-10);
+  border-color: var(--neutral-10);
+  color: var(--neutral-1);
+  border-radius: var(--radius-sm);
+  flex: 0 0 auto;
+  transition: background var(--duration-normal) var(--easing-out),
+              color var(--duration-normal) var(--easing-out);
+}
+.global-final-cta .btn:hover {
+  background: transparent;
+  border-color: var(--neutral-10);
+  color: var(--neutral-10);
+}
+@media (min-width: 1024px) {
+  .global-final-cta { min-height: 560px; }
+}
 @media (max-width: 700px) {
-  .global-final-cta { min-height: 260px; padding-block: var(--space-section-md); }
+  .global-final-cta { min-height: 400px; padding-block: var(--space-section-md); gap: var(--gap-8); }
   .cta-laptop { bottom: -20%; width: 80%; }
   .cta-mobile { display: none; }
 }

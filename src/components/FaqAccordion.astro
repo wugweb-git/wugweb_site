@@ -1,0 +1,278 @@
+---
+/**
+ * FaqAccordion — one card per question, one open at a time.
+ *
+ * Structure and rhythm follow the Fabrica reference: a card per item that
+ * clips its own answer, question and `+` on one row, and an exclusive
+ * accordion with the first item open on load.
+ *
+ * The `+` is ours, not theirs — the same round chip that rotates 45° to a
+ * cross used by the Service Tag Field and the About stat cards. The reference
+ * spins its glyph a full 360° and lands back on a `+`; ours resolves to an ×,
+ * which says "this closes" rather than just moving.
+ *
+ * Buttons rather than <details>: the height has to animate and only one panel
+ * may be open, and both are fights against the native element.
+ */
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  items: FaqItem[];
+  /** Omit both heading and lede to render the bare list, for a page that
+   *  already has its own header above it. */
+  heading?: string;
+  lede?: string;
+  /** Index open on load. `-1` starts fully closed. */
+  openFirst?: number;
+}
+
+const { items, heading, lede, openFirst = 0 } = Astro.props;
+const framed = Boolean(heading || lede);
+const uid = `faq-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+{items.length > 0 && (
+  <div class:list={[framed && 'wrap', framed && 'faq-block']}>
+    {framed && (
+      <div class="faq-head">
+        {heading && <h2 data-reveal>{heading}</h2>}
+        {lede && <p class="faq-lede" data-reveal>{lede}</p>}
+      </div>
+    )}
+
+    <ul class:list={['faq-list', !framed && 'is-bare']} data-faq>
+      {items.map((f, i) => (
+        <li class="faq-card" data-reveal data-reveal-delay={String(i * 0.04)}>
+          <h3 class="faq-q">
+            <button
+              type="button"
+              class="faq-trigger"
+              aria-expanded={i === openFirst ? 'true' : 'false'}
+              aria-controls={`${uid}-p${i}`}
+              id={`${uid}-t${i}`}
+            >
+              <span class="faq-q-text">{f.q}</span>
+              <span class="u-chip faq-toggle" aria-hidden="true">
+                <svg viewBox="0 0 16 16" focusable="false">
+                  <path d="M8 1.5v13M1.5 8h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div
+            class="faq-panel"
+            id={`${uid}-p${i}`}
+            role="region"
+            aria-labelledby={`${uid}-t${i}`}
+            hidden={i !== openFirst}
+          >
+            <p>{f.a}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<style>
+  .faq-block { padding-block: var(--space-section-xl); }
+  .faq-head h2 { font-size: var(--t-h3); max-width: 22ch; }
+  .faq-lede {
+    margin-top: var(--gap-3); max-width: 46ch;
+    color: var(--fg-muted); font-size: var(--fluid-body-md);
+    line-height: var(--core-line-height-relaxed);
+  }
+
+  .faq-list {
+    list-style: none; margin: var(--gap-10) 0 0; padding: 0;
+    display: grid; gap: var(--gap-3);
+    max-width: 52rem;
+  }
+  /* Bare mode: the host page supplies the heading and the wrapper. */
+  .faq-list.is-bare { margin-top: 0; max-width: none; }
+
+  .faq-card {
+    position: relative;
+    z-index: var(--layer-base);
+    background: color-mix(in srgb, var(--neutral-8) 55%, transparent);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-lg);
+    /* The panel is clipped by the card, which is what lets the height animate
+       without the answer spilling past the rounded corner. */
+    overflow: hidden;
+    /* No `opacity` and no `transform` here on purpose. `data-reveal` is a GSAP
+       tween on this element and it leaves both as inline styles once it
+       finishes, so a CSS rule on either would simply never apply — the same
+       two-owners bug the BentoBlock and the ProcessMap both hit. Dimming is
+       `filter`; the lift is shadow and border. */
+    transition: border-color var(--duration-normal) var(--easing-smooth),
+                background-color var(--duration-normal) var(--easing-smooth),
+                box-shadow var(--duration-normal) var(--easing-smooth),
+                filter var(--duration-normal) var(--easing-smooth);
+  }
+
+  /* Hovering the list pushes every card back and keeps only the one under the
+     pointer — and the open one — forward. Same interaction-as-hierarchy rule
+     the Bento Block and Process Map use. */
+  .faq-list:hover .faq-card { filter: brightness(0.72); }
+  .faq-list:hover .faq-card:hover,
+  .faq-list:hover .faq-card.is-open { filter: none; }
+
+  .faq-card:hover {
+    border-color: color-mix(in srgb, var(--neutral-0) 22%, transparent);
+    box-shadow: var(--shadow-md);
+    z-index: var(--layer-card);
+  }
+  .faq-card.is-open {
+    background: color-mix(in srgb, var(--neutral-8) 80%, transparent);
+    border-color: color-mix(in srgb, var(--neutral-0) 16%, transparent);
+    box-shadow: var(--shadow-xl);
+    z-index: var(--layer-card);
+  }
+  /* The card actually under the pointer wins over a merely-open one. */
+  .faq-card:hover { z-index: var(--layer-popover); }
+
+  .faq-q { margin: 0; }
+  .faq-trigger {
+    width: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--gap-4);
+    padding: var(--gap-5) var(--gap-6);
+    background: none; border: 0; cursor: pointer; text-align: left;
+    color: var(--fg);
+    font-family: inherit;
+    font-size: var(--fluid-body-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--core-line-height-tight);
+  }
+  .faq-trigger:focus-visible { outline: var(--focus-primary); outline-offset: -2px; }
+  .faq-q-text { min-width: 0; text-wrap: balance; }
+
+  /* Box, background and glyph size all come from the site-wide `.u-chip`.
+     Only the open state is local. */
+  .faq-trigger:hover .faq-toggle { background: color-mix(in srgb, var(--neutral-0) 16%, transparent); }
+  /* Open state steps up the neutral ramp rather than introducing a hue —
+     a light grey chip with dark ink, which reads as "active" without spending
+     the brand yellow on every FAQ row. */
+  .faq-card.is-open .faq-toggle {
+    transform: rotate(45deg);
+    background: var(--neutral-2);
+    color: var(--neutral-10);
+  }
+
+  .faq-panel { padding: 0 var(--gap-6) var(--gap-5); }
+  /* The answer rises in *behind* the height rather than being revealed by it,
+     so opening reads as the card making room for something arriving. On the
+     way out it leaves quickly — a fade that lingers looks like a stall.
+     Safe to animate opacity/transform here: GSAP touches the card, not this. */
+  .faq-panel p {
+    margin: 0; max-width: 62ch;
+    color: var(--fg-muted);
+    font-size: var(--fluid-body-sm);
+    line-height: var(--core-line-height-relaxed);
+    opacity: var(--opacity-0);
+    transform: translateY(6px);
+    transition: opacity 120ms var(--easing-out), transform 120ms var(--easing-out);
+  }
+  .faq-card.is-open .faq-panel p {
+    opacity: var(--opacity-100);
+    transform: none;
+    transition: opacity 260ms var(--easing-out) 80ms, transform 300ms var(--easing-out) 80ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-card, .faq-toggle, .faq-panel p { transition: none; }
+    .faq-panel p { opacity: var(--opacity-100); transform: none; }
+  }
+
+  @media (min-width: 900px) {
+    .faq-list { gap: var(--gap-4); }
+    .faq-trigger { padding: var(--gap-6); }
+    .faq-panel { padding: 0 var(--gap-6) var(--gap-6); }
+  }
+</style>
+
+<script>
+  /**
+   * Exclusive accordion with an animated height.
+   *
+   * `height: auto` cannot be transitioned, so each open measures its panel's
+   * scrollHeight, animates to that, then releases back to `auto` on
+   * transitionend — otherwise a panel whose text reflows (resize, font swap)
+   * would stay stuck at its first measured height.
+   *
+   * `hidden` is toggled around the animation, not during it: a hidden element
+   * has no height to measure, and leaving it off would let a closed answer take
+   * focus and be read out.
+   */
+  function initFaq() {
+    document.querySelectorAll<HTMLElement>('[data-faq]').forEach((list) => {
+      if (list.dataset.faqBound === '1') return;
+      list.dataset.faqBound = '1';
+
+      const cards = Array.from(list.querySelectorAll<HTMLElement>('.faq-card'));
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const close = (card: HTMLElement, animate: boolean) => {
+        const panel = card.querySelector<HTMLElement>('.faq-panel');
+        const btn = card.querySelector<HTMLButtonElement>('.faq-trigger');
+        if (!panel || !btn || !card.classList.contains('is-open')) return;
+        card.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        if (!animate) { panel.hidden = true; panel.style.height = ''; return; }
+        panel.style.height = `${panel.scrollHeight}px`;
+        // Force a frame so the browser has a start value to animate from.
+        void panel.offsetHeight;
+        panel.style.height = '0px';
+        panel.addEventListener('transitionend', function done() {
+          panel.removeEventListener('transitionend', done);
+          panel.hidden = true;
+          panel.style.height = '';
+        }, { once: true });
+      };
+
+      const open = (card: HTMLElement, animate: boolean) => {
+        const panel = card.querySelector<HTMLElement>('.faq-panel');
+        const btn = card.querySelector<HTMLButtonElement>('.faq-trigger');
+        if (!panel || !btn) return;
+        card.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+        if (!animate) { panel.style.height = ''; return; }
+        panel.style.height = '0px';
+        void panel.offsetHeight;
+        panel.style.height = `${panel.scrollHeight}px`;
+        panel.addEventListener('transitionend', function done() {
+          panel.removeEventListener('transitionend', done);
+          // Release to auto so reflowing text stays correct.
+          panel.style.height = '';
+        }, { once: true });
+      };
+
+      cards.forEach((card) => {
+        const panel = card.querySelector<HTMLElement>('.faq-panel');
+        const btn = card.querySelector<HTMLButtonElement>('.faq-trigger');
+        if (!panel || !btn) return;
+
+        if (!reduced) {
+          panel.style.overflow = 'hidden';
+          panel.style.transition = 'height 240ms cubic-bezier(0.16, 1, 0.3, 1)';
+        }
+        if (btn.getAttribute('aria-expanded') === 'true') card.classList.add('is-open');
+
+        btn.addEventListener('click', () => {
+          const isOpen = card.classList.contains('is-open');
+          // Exclusive: opening one closes the rest.
+          cards.forEach((c) => c !== card && close(c, !reduced));
+          if (isOpen) close(card, !reduced);
+          else open(card, !reduced);
+        });
+      });
+    });
+  }
+
+  initFaq();
+  document.addEventListener('astro:page-load', initFaq);
+</script>

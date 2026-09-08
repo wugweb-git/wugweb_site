@@ -30,7 +30,8 @@ export const serviceBySlugQuery = `
 export const caseStudiesListQuery = `
   *[_type == "caseStudy" && !(_id in path("drafts.**"))] | order(featured desc, publishedAt desc) {
     title, "slug": slug.current, client, summary, coverImage, coverPath, thumbnailPath, tags,
-    disciplines, industry, timeline, publishedAt, featured
+    disciplines, industry, timeline, publishedAt, featured,
+    "services": services[]->{ "slug": slug.current }
   }
 `;
 

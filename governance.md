@@ -196,6 +196,7 @@ These live primarily in [`CLAUDE.md`](CLAUDE.md) â€œThings AI Must Never Changeâ
 | Rule | Source |
 |---|---|
 | Do not change live colours to pure white (`#f4f4f4` / `#bababa` / `#191919` / `#2b2b2b`) | CLAUDE.md |
+| **Never change the aspect ratio of any media.** Images, video and thumbnails scale proportionally only. Never stretch, squash, or grow one axis on hover/expand; if a container must change size, reserve the space and keep `aspect-ratio` fixed. Applies to `object-fit`, hover/expand states, and responsive breakpoints alike. | user, 2026-09-04 |
 | Do not lower `.node-version` below 22 | CLAUDE.md |
 | Do not remove `blockContent` from Sanity schema types array | CLAUDE.md |
 | Keep Cloudflare **Pages** deploy model (`pages_build_output_dir: ./dist`); never switch to Workers-style `main`/`assets` | CLAUDE.md / wrangler |

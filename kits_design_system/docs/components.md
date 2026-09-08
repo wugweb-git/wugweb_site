@@ -49,7 +49,7 @@
 - **Tokens & Dynamic Engine**:
   - Pillar Theme Variables: `--theme-base`, `--theme-dark`, `--theme-light`, `--theme-glow` dynamically injected per service slug
   - Dynamic Hero: Glowing radial gradient background (`var(--theme-glow)`), 16:9 poster preview
-  - Capability Bento Tiles: Glass tiles (`.bento-card`) with `--stroke-thin` border, `--radius-lg` corners, hover translation
+  - ~~Capability Bento Tiles~~ — **superseded on `/services/brand` by the Service Spotlight Panel (block 7)**. Still live on the other five pillars as `.caps-grouped` / `.cap-group`.
   - Toolkit Icon Grid: 89 official brand/tech SVG icons (`/assets/tools/*.svg`), `--radius-full` container, `--ts-label-sm` labels
 
 ### 3. Footer Device Backdrop Banner — `src/components/FooterCTA.astro`
@@ -76,6 +76,48 @@
 ### 6. Trust Badges Strip — `src/components/TrustBadges.astro`
 - **Purpose**: Client and industry trust recognition strip.
 - **Tokens**: Monochrome logos (Clutch, DesignRush, GoodFirms, TopDevelopers), `--opacity-70`, `--gap-8` flex layout.
+
+### 7. Service Spotlight Panel — `src/pages/services/[slug].astro` (brand only)
+- **Purpose**: Vertical list in one glass panel where exactly one row is spotlit at a time — by hover, by scroll position on touch, or by an idle auto-advance. The spotlit row inverts to a light surface, reveals a supporting line, grows its thumbnail, plays its clip, and washes the section's full-bleed backdrop with its own poster.
+- **Animated block** — include in the animated-block lint set.
+- **Full spec, token inventory and motion inventory**: [`blocks/service-spotlight-panel.md`](blocks/service-spotlight-panel.md)
+- **Status**: awaiting sign-off; gated by `showcaseEnabled`. The other five pillars still render block 2's grouped panels.
+- **Headline tokens**: `--theme-base` (accent), `--neutral-1` / `--neutral-9` (the inverted active row — an explicit light pair, never `--neutral-1` inheriting `--fg`), `--fluid-h3` / `--fluid-body-md` / `--fluid-label` (type), `--duration-slow` + `--easing-editorial` (expansion), `--radius-2xl` (panel) / `--radius-lg` (rows). 45 tokens, 0 hardcoded colours.
+
+### 8. Client Assembly Grid — `src/pages/index.astro` (homepage)
+- **Purpose**: Full-viewport band of uniform logo tiles that scatter, converge into the grid, hold, then scatter back out on scroll. The section title occupies **two cells inside the grid** at exactly one tile's height — two logos either side — so the block reads as one grid rather than a heading above a logo strip.
+- **Animated block** — include in the animated-block lint set. Uses `data-scroll="assemble"`.
+- **Full spec, token inventory and motion inventory**: [`blocks/client-assembly-grid.md`](blocks/client-assembly-grid.md)
+- **Status**: awaiting sign-off; mockup logo padding still on (19 distinct images in repo vs 28 on the live section).
+- **Headline tokens**: `--fg` / `--fg-muted` (two-tone title, mirroring the wugweb lockup), `--line` + `--stroke-thin` (tile border), `--neutral-8` (tile surface via `color-mix`), `--fluid-h2` at `--font-weight-regular`, `--radius-lg`, `--opacity-soft` → `--opacity-100` on hover, `--duration-normal` + `--easing-smooth`. 19 tokens, 0 hardcoded colours.
+- **Two rules it demonstrates**: tile `aspect-ratio: 16/9` fixed across every breakpoint (width from the column count, height follows), and one `gap` driving both axes — never `align-content: space-evenly`, which overrides the row gap.
+
+### 9. Service Tag Field — `src/pages/index.astro` ("What we do")
+- **Purpose**: Six pastel pill tags, one per service pillar, scattered across a field. They fly in from outside on scroll, drag freely with momentum and a fading trail, rise to the front when touched, and expand in place to media → title → copy → link. "Learn more" grows the card to fill the viewport, then navigates.
+- **Animated block** — include in the animated-block lint set.
+- **Full spec, reference parity, token and motion inventory**: [`blocks/service-tag-field.md`](blocks/service-tag-field.md)
+- **Behaviour**: `src/lib/draggable-tags.ts` — GSAP **Draggable + InertiaPlugin + Flip + ScrollTrigger**, all already in `gsap` 3.15. No new dependency, no React.
+- **Status**: awaiting sign-off. Clips have no posters yet; composition never visually reviewed (pane screenshots failed all session).
+- **Headline tokens**: `--tag-hue` (per tag, set from `--svc-*`), `--neutral-9` label ink at 82%, `--fluid-h1` lowercase bold label, `--r-pill` collapsed → `--radius-2xl` open, elevation `--shadow-md` → `--shadow-xl` → `--shadow-2xl`, `--cursor-grab` / `--cursor-dragging` / `--cursor-loading`. 45 tokens, 0 hardcoded colours.
+- **Two rules it demonstrates**: the card must set `overflow: hidden` so children clip to the *current* radius (a square-cornered media otherwise breaks a rounded card), and a ScrollTrigger `end` must stay inside the viewport when the trigger is shorter than the screen — at `bottom 15%` the range is already passed on entry and the intro reverses immediately.
+
+### 10. Bento Block — `src/components/BentoBlock.astro`
+- **Purpose**: Three columns of tiles at unequal heights, each free to differ in weight, content kind, tone, media type and media treatment. Tiles rise in a column-aware stagger on scroll and reverse on exit; hovering the block dims every tile but the one under the pointer. **The only one of the four new blocks that is a real component** — the other three are still inline in a page.
+- **Animated block** — include in the animated-block lint set. Uses `data-scroll="bento"`.
+- **Full spec, layout table, token and motion inventory**: [`blocks/bento-block.md`](blocks/bento-block.md)
+- **Used by**: `/about` ("Why Wugweb?") and all six `/services/[slug]` pages ("Why us?"), each with a **different arrangement of the same six slots** — `BENTO_LAYOUTS` in `[slug].astro`, one row per slot as `[column, weight, role]`. A variation is a reordered array, never a CSS edit.
+- **Status**: awaiting sign-off. Composition never visually reviewed (pane screenshots failed all session); `stat` / `checklist` / `stack` / `chips` kinds are built but unused on any live page.
+- **Headline tokens**: `--radius-2xl` (tiles), bevel from two inset hairlines built on `--neutral-0` / `--neutral-10` via `color-mix` plus `--shadow-md`, type stepping `--t-h5` → `--fluid-h4` (mid) → `--fluid-h3` (tall), padding stepping `--gap-5` → `--gap-6` → `--gap-8` with weight, `--easing-smooth`, `--layer-base`. 0 hardcoded colours.
+- **Three rules it demonstrates**: **(1)** a bento must never resolve into an even grid, and that is enforced at render — one guard rejects a single repeated weight, a second rejects identical column signatures, which line the seams into rows even when the weights differ. **(2)** `flex-basis: auto` + weighted `flex-grow` + `flex-shrink: 0` is the overflow-proof sizing contract: a tile takes the height its content needs and only the leftover is shared by weight, so weights are a target, not a guarantee — heavy content wins rather than clips. **(3)** GSAP owns `opacity` here, so the hover dimming uses `filter`; never give a property two owners, and never CSS-transition one GSAP animates.
+
+### 11. Process Map — `src/components/ProcessMap.astro`
+- **Purpose**: Full-viewport orbital process diagram in one block. Each phase is a hub; its steps orbit it as labelled satellites; the hub chain carries the sequence left to right. Replaces the five-card `.framework-flow` glass grid in the "How we work" section.
+- **Animated block** — include in the animated-block lint set. Owns all of its own motion (see below); `data-scroll="processmap"` is deliberately a no-op.
+- **Full spec, geometry, spring maths and token inventory**: [`blocks/process-map.md`](blocks/process-map.md)
+- **Live on**: `/services/experience` only. `processMapEnabled` in `[slug].astro` gates it; the other five pillars keep the card grid, the same way the Service Spotlight Panel is gated to Brand. The gate is **load-bearing** — the component throws above three steps per phase and only Experience's data is trimmed.
+- **Status**: awaiting sign-off. No imagery (the service clip library is third-party showreel footage — pending #6); `approach-section` still precedes it, so the page states its method twice. The `process-section` ("How we do it") was removed 2026-09-09 — it lived on Experience alone and restated this same framework.
+- **Headline tokens**: brand ink for the whole field (`--fg`, `--fg-muted`, `--line`, `--neutral-0/8/10`) with `--accent` spent on exactly two things — the return loop and the lit phase's edges. **No `--theme-base`**: painting the structure in the pillar accent (`--svc-experience` is `#09E2C0`) broke the yellow-≤10% rule and read as cyan. Layering uses `--layer-base` → `--layer-card` → `--layer-popover`.
+- **Three rules it demonstrates**: **(1)** collision control belongs in geometry, not hand-tuning — fans alternate up/down per hub so adjacent hubs never share a half-plane, and radii alternate within a fan; verified by pairwise chip-rect comparison, which is also how the three-step cap was set (at four, fans collide whatever the fan width). **(2)** Spring damping must be expressed relative to critical damping `2√k` — a flat 0–1 coefficient made every value overdamped at `k = 0.1`, so the curve never wobbled. **(3)** *Never give one property two owners* — an entrance timeline, an ambient drift and the phase-focus all reached for `opacity`/`transform` on the same elements and froze the map at 18% progress; the tween was removed rather than patched.
 
 ---
 

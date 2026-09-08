@@ -1,0 +1,836 @@
+---
+/**
+ * ProcessMap — an orbital process diagram, held in a panel.
+ *
+ * Each phase is a hub; its steps orbit it as labelled satellites. Hubs chain
+ * left to right so the sequence stays unmistakable — that is the one thing a
+ * force-directed graph cannot tell you, and a process is nothing without it.
+ * The richness sits in the orbits instead.
+ *
+ * Collision control is geometric, not hand-tuned: fans alternate up/down per
+ * hub, so adjacent hubs never share a half-plane, and radii alternate within a
+ * fan, so neighbouring satellites are staggered outward as well as around.
+ * That holds for any realistic phase/step count without redrawing anything.
+ *
+ * All geometry is solved here at build time. Hub, satellite and edge
+ * coordinates come out of the same functions, so nothing can drift apart.
+ *
+ * Layering: SVG paints the field (edges, rings, hubs, spokes); satellites are
+ * real HTML blocks positioned over it in percentage coordinates, so each can
+ * carry an icon, hover, and take focus like any other component.
+ */
+export interface ProcessPhase {
+  name: string;
+  /** What the phase produces. Shown on the phase card under its name. */
+  outcome?: string;
+  steps: string[];
+  /**
+   * Imagery for the phase card. Pass only footage that actually depicts the
+   * phase — a card with no media renders without the frame rather than showing
+   * a placeholder, the same rule the capability showcase follows.
+   */
+  media?: { video?: string; poster?: string; image?: string };
+}
+
+/**
+ * Hub-row profiles. Each returns a vertical offset per hub, so the chain's
+ * silhouette says something true about how that discipline runs — and so the
+ * six service pages don't all render the same picture.
+ */
+export type MapShape = 'wave' | 'arc' | 'ascending' | 'descending' | 'line' | 'zigzag';
+
+const SHAPES: Record<MapShape, (i: number, n: number) => number> = {
+  /** Rises and falls — exploration answered by consolidation. */
+  wave: (i, n) => -Math.sin((i / Math.max(1, n - 1)) * Math.PI * 1.5) * 46,
+  /** One crest in the middle: a long exploration that resolves. */
+  arc: (i, n) => -Math.sin((i / Math.max(1, n - 1)) * Math.PI) * 52,
+  /** Climbs: each phase builds on the last. */
+  ascending: (i, n) => 44 - (i / Math.max(1, n - 1)) * 88,
+  /** Settles: opens broad, narrows to operations. */
+  descending: (i, n) => -44 + (i / Math.max(1, n - 1)) * 88,
+  /** Flat — a pipeline, not an exploration. */
+  line: () => 0,
+  /** Alternating: discrete, self-contained stages. */
+  zigzag: (i) => (i % 2 === 0 ? -34 : 34),
+};
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  lede?: string;
+  phases: ProcessPhase[];
+  /** Hub-row profile. Vary it per service — that is the point of the prop. */
+  shape?: MapShape;
+  /** Draws a return edge from the last hub back to this phase index. */
+  loopTo?: number;
+  loopLabel?: string;
+  note?: string;
+
+  /* ---- connecting-line controls ----
+     Colour is deliberately not a prop: the line takes brand ink at rest and
+     the accent when its phase is lit, which is a token decision, not a
+     per-instance one. The other four are per-instance because the right feel
+     depends on how wide the chain is. */
+  /** Line thickness in field units, 0.5–8. */
+  lineWidth?: number;
+  /** How far the curve bends toward the pointer. 0 disables the reaction. */
+  sensitivity?: number;
+  /** How hard the spring pulls back to rest. Higher settles sooner. */
+  returnSpeed?: number;
+  /** Wobble as it returns. 0 is dead-stop, 1 rings for a long time. */
+  oscillation?: number;
+  /** Hide the pointer over the map for a cleaner read. */
+  hideCursor?: boolean;
+}
+
+const {
+  eyebrow,
+  heading,
+  lede,
+  phases,
+  shape = 'wave',
+  loopTo,
+  loopLabel = 'Iterate',
+  note,
+  lineWidth = 1.25,
+  sensitivity = 0.55,
+  returnSpeed = 0.1,
+  oscillation = 0.78,
+  hideCursor = false,
+} = Astro.props;
+
+const lineW = Math.min(8, Math.max(0.5, lineWidth));
+
+/* ---------------- field ---------------- */
+const W = 1280;
+const H = 720;
+/** Wide enough that the end hubs' outermost chips still land inside the field. */
+const PAD = 190;
+const MID = 356;
+const HUB_R = 30;
+/** Staggered orbit radii — the second half of the anti-collision scheme. */
+const ORBIT = [112, 152];
+/** Fan width in degrees, centred on the vertical. */
+const FAN = 110;
+/**
+ * Satellites per hub. Three is what the field holds at readable type —
+ * measured by chip rects, not judged by eye: at four the fans start colliding
+ * with each other whatever the fan width and radii, and at five they collide
+ * with the neighbouring hub's as well.
+ *
+ * This is a ceiling, not a trimmer. The phase data is authored to three so the
+ * map shows every step; anything beyond the cap would be silently dropped, so
+ * the guard below refuses to build instead.
+ */
+const LABEL_CAP = 3;
+
+const n = phases.length;
+/**
+ * The map is the only place the steps appear, so a phase carrying more than
+ * the field can label would lose content silently. Fail the render instead —
+ * same contract as the BentoBlock's even-grid guards.
+ */
+const overfull = phases.filter((p) => p.steps.length > LABEL_CAP);
+if (overfull.length > 0) {
+  throw new Error(
+    `ProcessMap: ${overfull.map((p) => `"${p.name}" has ${p.steps.length}`).join(', ')} steps, ` +
+      `but only ${LABEL_CAP} fit legibly per phase. Trim the phase data — do not raise the cap ` +
+      `without re-measuring chip collisions.`
+  );
+}
+const usable = W - PAD * 2;
+const hubX = (i: number) => (n === 1 ? W / 2 : PAD + (usable / (n - 1)) * i);
+const profile = SHAPES[shape] || SHAPES.wave;
+const hubY = (i: number) => MID + profile(i, n);
+
+const hubs = phases.map((p, i) => ({ ...p, i, x: hubX(i), y: hubY(i), up: i % 2 === 0 }));
+
+/* ---------------- icons ---------------- */
+/**
+ * A small stroked set matched on the step's own wording — self-contained, no
+ * icon dependency and no new assets. First match wins, so order matters.
+ */
+const ICONS: [RegExp, string][] = [
+  [/kick.?off|handover|handoff|meeting|workshop|stakeholder|collabor/i, 'M3 13a4 4 0 0 1 8 0M7 5.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4M11.5 13a3.2 3.2 0 0 1 4.5-2.9'],
+  [/interview|conversation|voice|survey|feedback/i, 'M2.5 4.5h11v7h-6l-3 2.5v-2.5h-2z'],
+  [/competitor|benchmark|market|audit|analys|analyz|result|measur|metric|report|analytic|data/i, 'M2.5 13.5h11M4.5 11V7M8 11V3.5M11.5 11V8.5'],
+  [/brain|storm|ideat|concept|idea|hypoth|principl/i, 'M8 2.2a4 4 0 0 1 2.4 7.2v1.6h-4.8V9.4A4 4 0 0 1 8 2.2ZM6.4 13.2h3.2'],
+  [/journey|flow|route|roadmap|path|mapping/i, 'M3 12.5c3 0 2-8 5-8s2 5 5 5M3 12.5h.01M13 9.5h.01'],
+  [/sitemap|architect|structure|taxonom|hierarch|design system|system/i, 'M8 2.5v3M4 13.5v-3M12 13.5v-3M4 10.5h8v-2H4zM6.5 5.5h3v3h-3z'],
+  [/wireframe|prototyp|layout|frame|draft|sketch/i, 'M2.5 3.5h11v9h-11zM2.5 6.5h11M6 6.5v6'],
+  [/usability|user test|testing|validat|qa|quality|review/i, 'M6.5 2.5h3v2h-3zM4 4.5h8v9H4zM6.2 9l1.3 1.3 2.4-2.6'],
+  [/accessib|inclusive|wcag/i, 'M8 2.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2M4 6.4h8M8 6.4v3.2M8 9.6l-1.8 3.8M8 9.6l1.8 3.8'],
+  [/look and feel|visual|ui design|palette|identity|craft|art direction/i, 'M8 2.5a5.5 5.5 0 1 0 0 11c.9 0 1.2-.7.7-1.3-.5-.7-.2-1.7.8-1.7h1a3 3 0 0 0 3-3c0-2.8-2.5-5-5.5-5M5.5 7.5h.01M8 5.5h.01M10.5 7.5h.01'],
+  [/research|discover|explore|insight|persona|study/i, 'M7.2 2.6a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2M10.6 10.6 13.5 13.5'],
+  [/build|develop|engineer|code|implement|integrat|automat/i, 'M6 5.5 3 8l3 2.5M10 5.5 13 8l-3 2.5'],
+  [/launch|ship|deploy|go.?live|scale|optimi|growth|iterat/i, 'M8 2.5c2.4 1.6 3.4 4 3.4 6.4L8 12l-3.4-3.1c0-2.4 1-4.8 3.4-6.4ZM6.6 12.2 5.4 14M9.4 12.2l1.2 1.8'],
+  [/content|copy|narrative|messag|document|spec|guideline/i, 'M4 2.5h8v11H4zM6 5.5h4M6 8h4M6 10.5h2.5'],
+  [/govern|operat|process|training|enable|support|maintain/i, 'M8 5.9a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2M8 2.5v1.6M8 11.9v1.6M13.5 8h-1.6M4.1 8H2.5M11.9 4.1l-1.1 1.1M5.2 10.8l-1.1 1.1M11.9 11.9l-1.1-1.1M5.2 5.2 4.1 4.1'],
+];
+const iconFor = (s: string) => ICONS.find(([re]) => re.test(s))?.[1] ?? 'M8 4.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7';
+
+/* ---------------- satellites ---------------- */
+let seq = -1;
+const sats = hubs.flatMap((h) => {
+  const m = h.steps.length;
+  const base = h.up ? -90 : 90;
+  return h.steps.map((label, j) => {
+    const labelled = j < LABEL_CAP;
+    if (labelled) seq += 1;
+    // Labelled satellites spread across the fan; the remainder tuck onto the
+    // inner ring at the fan's edges, where there is room for a point but not
+    // for a block.
+    const slots = Math.min(m, LABEL_CAP);
+    const spread = labelled
+      ? slots === 1
+        ? 0
+        : FAN * (j / (slots - 1) - 0.5)
+      : (FAN / 2 + 16) * (j % 2 === 0 ? 1 : -1);
+    const a = ((base + spread) * Math.PI) / 180;
+    const r = labelled ? ORBIT[j % 2] : ORBIT[0];
+    const x = h.x + Math.cos(a) * r;
+    const y = h.y + Math.sin(a) * r;
+    return {
+      label,
+      labelled,
+      icon: iconFor(label),
+      phase: h.name,
+      phaseIndex: h.i,
+      order: labelled ? seq : -1,
+      up: h.up,
+      // ring entry point, so the spoke starts at the hub's edge not its centre
+      sx: h.x + Math.cos(a) * (HUB_R + 4),
+      sy: h.y + Math.sin(a) * (HUB_R + 4),
+      x,
+      y,
+      xPct: (x / W) * 100,
+      yPct: (y / H) * 100,
+    };
+  });
+});
+const chipSats = sats.filter((s) => s.labelled);
+
+/* ---------------- edges ---------------- */
+/**
+ * Hub → hub, bowed away from the satellites so the chain reads under them.
+ *
+ * Each edge is a single quadratic, and the endpoints and the *rest* control
+ * point are emitted as data so the script can rebuild `d` per frame: the
+ * control point is the only thing that moves, which is what makes the curve
+ * elastic without touching layout.
+ */
+const edges = hubs.slice(0, -1).map((h, i) => {
+  const b = hubs[i + 1];
+  const bow = h.up ? 34 : -34;
+  const x1 = h.x + HUB_R;
+  const y1 = h.y;
+  const x2 = b.x - HUB_R;
+  const y2 = b.y;
+  const cx = (h.x + b.x) / 2;
+  const cy = (h.y + b.y) / 2 + bow;
+  return { i, x1, y1, x2, y2, cx, cy, d: `M ${x1} ${y1} Q ${cx} ${cy}, ${x2} ${y2}` };
+});
+
+const hasLoop = typeof loopTo === 'number' && loopTo >= 0 && loopTo < n - 1;
+const last = hubs[n - 1];
+const back = hubs[loopTo ?? 0];
+const loopY = H - 42;
+const loopPath = hasLoop
+  ? `M ${last.x} ${last.y + HUB_R} C ${last.x + 70} ${loopY}, ${back.x - 70} ${loopY}, ${back.x} ${back.y + HUB_R}`
+  : '';
+
+const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<section class="process-map-section" data-scroll="processmap">
+  <!-- One block filling the viewport: the title and the map are inside the
+       same panel, so the section reads as a single object rather than a
+       heading with a picture under it. -->
+  <figure class="pm-panel" data-process-map>
+    <header class="pm-title">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      {heading && <h2>{heading}</h2>}
+      {lede && <p class="pm-lede">{lede}</p>}
+    </header>
+
+    <div class="pm-scroll">
+     <div
+       class:list={['pm-figure', hideCursor && 'hide-cursor']}
+       data-pm-sensitivity={sensitivity}
+       data-pm-return={returnSpeed}
+       data-pm-oscillation={oscillation}
+       style={`--pm-line-w:${lineW}`}
+     >
+      <svg viewBox={`0 0 ${W} ${H}`} class="pm-svg" role="img" aria-labelledby={`${uid}-t`}>
+        <title id={`${uid}-t`}>
+          {heading || 'Process map'} — {phases.map((p) => `${p.name}: ${p.steps.join(', ')}`).join('; ')}
+        </title>
+
+        <g aria-hidden="true">
+          <!-- orbit rings -->
+          {hubs.map((h) => (
+            <>
+              <circle cx={h.x} cy={h.y} r={ORBIT[0]} class="pm-ring" data-pm-phase={h.i} />
+              <circle cx={h.x} cy={h.y} r={ORBIT[1]} class="pm-ring is-outer" data-pm-phase={h.i} />
+            </>
+          ))}
+
+          <!-- sequence chain -->
+          {edges.map((e) => (
+            <path d={e.d} class="pm-edge" data-pm-edge data-pm-order={e.i}
+                  data-x1={e.x1} data-y1={e.y1} data-x2={e.x2} data-y2={e.y2}
+                  data-cx={e.cx} data-cy={e.cy} />
+          ))}
+
+          <!-- spokes -->
+          {chipSats.map((s) => (
+            <line x1={s.sx} y1={s.sy} x2={s.x} y2={s.y}
+                  class="pm-spoke" data-pm-spoke data-pm-order={s.order}
+                  data-pm-phase={s.phaseIndex} />
+          ))}
+
+          <!-- hubs. The number is the join to the card below. -->
+          {hubs.map((h) => (
+            <g class="pm-hub" data-pm-hub data-pm-order={h.i} data-pm-phase={h.i}
+               tabindex="0" role="button"
+               aria-label={`${h.name} — ${h.steps.join(', ')}`}>
+              <circle cx={h.x} cy={h.y} r={HUB_R + 7} class="pm-hub-halo" />
+              <circle cx={h.x} cy={h.y} r={HUB_R} class="pm-hub-disc" />
+              <text x={h.x} y={h.y} class="pm-hub-n" text-anchor="middle" dominant-baseline="central">
+                {String(h.i + 1).padStart(2, '0')}
+              </text>
+              <text x={h.x} y={h.up ? h.y + HUB_R + 26 : h.y - HUB_R - 15}
+                    class="pm-hub-name" text-anchor="middle">{h.name}</text>
+            </g>
+          ))}
+
+          <!-- satellite points. Unlabelled ones still show, so the picture
+               never claims a phase holds less than it does. -->
+          {sats.map((s) => (
+            <circle cx={s.x} cy={s.y} r={s.labelled ? 3.5 : 2.5}
+                    class:list={['pm-dot', !s.labelled && 'is-quiet']}
+                    data-pm-dot={s.labelled ? '' : undefined} data-pm-order={s.order}
+                    data-pm-phase={s.phaseIndex}>
+              {!s.labelled && <title>{s.label}</title>}
+            </circle>
+          ))}
+
+          {hasLoop && (
+            <>
+              <defs>
+                <marker id={`${uid}-arrow`} viewBox="0 0 10 10" refX="8" refY="5"
+                        markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" class="pm-arrow" />
+                </marker>
+              </defs>
+              <path d={loopPath} class="pm-loop-path" data-pm-loop marker-end={`url(#${uid}-arrow)`} />
+              <text x={(last.x + back.x) / 2} y={loopY - 12} class="pm-loop-label" text-anchor="middle">
+                {loopLabel}
+              </text>
+            </>
+          )}
+        </g>
+      </svg>
+
+      <!-- Step blocks over the field, in percentage coordinates. -->
+      <ul class="pm-sats">
+        {chipSats.map((s) => (
+          <li
+            class:list={['pm-sat', s.up ? 'is-up' : 'is-down']}
+            data-pm-sat
+            data-pm-order={s.order}
+            data-pm-phase={s.phaseIndex}
+            style={`left:${s.xPct}%; top:${s.yPct}%`}
+          >
+            <span class="pm-chip">
+              <svg viewBox="0 0 16 16" class="pm-icon" aria-hidden="true"><path d={s.icon} /></svg>
+              <span class="pm-chip-text">{s.label}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+     </div>
+    </div>
+
+    <!-- Narrow screens get the map as a vertical run, not the wide canvas
+         squeezed into a scroll window. A 704px diagram in a 277px viewport
+         shows a fragment with the chips cut mid-word, and asking someone to
+         scroll a *diagram* sideways to read it is the wrong trade. Same
+         content, same hubs, same icons — turned through 90°. -->
+    <ol class="pm-run">
+      {hubs.map((h) => (
+        <li class="pm-run-phase">
+          <span class="pm-run-node" aria-hidden="true">{String(h.i + 1).padStart(2, '0')}</span>
+          <div class="pm-run-body">
+            <h3>{h.name}</h3>
+            <ul class="pm-run-steps">
+              {h.steps.map((st) => (
+                <li>
+                  <svg viewBox="0 0 16 16" class="pm-icon" aria-hidden="true"><path d={iconFor(st)} /></svg>
+                  <span>{st}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+      {hasLoop && (
+        <li class="pm-run-loop">
+          <span class="pm-run-loop-mark" aria-hidden="true"></span>
+          <p>{loopLabel} — {last.name} feeds back into {back.name}.</p>
+        </li>
+      )}
+    </ol>
+
+    {note && <figcaption class="pm-note">{note}</figcaption>}
+  </figure>
+</section>
+
+<style>
+  /* ---- full-bleed stage ----
+     The section is its own viewport: 100vw wide, 100vh tall, with the block
+     filling it. The 100vw bleed needs `overflow: clip` on an ancestor and
+     breaks inside any ancestor carrying transform / filter / contain — the
+     same constraint the Ambient Backdrop Layer documents. */
+  .process-map-section {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    /* 100vh minus the sticky header, so a stage scrolled to the top of the
+       viewport still shows its own eyebrow instead of parking it under the
+       nav. `--site-header-h` is measured once at runtime; the fallback is the
+       header's current height. */
+    min-height: calc(100vh - var(--site-header-h, 6.125rem));
+    padding: var(--gap-6);
+    display: flex;
+  }
+  @media (min-width: 900px) { .process-map-section { padding: var(--gap-8); } }
+
+  /* ---- the block ---- */
+  .pm-panel {
+    margin: 0;
+    flex: 1 1 auto;
+    /* The panel is itself a flex item of the section, so it needs the same
+       min-width:0 as .pm-scroll — otherwise the 44rem figure inside pushes the
+       whole chain wide and the page scrolls sideways on a phone. Both are
+       required; fixing only the inner one does nothing. */
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: var(--gap-6);
+    background: color-mix(in srgb, var(--neutral-8) 42%, transparent);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-2xl);
+    /* Same bevel as the Bento tile: two inset hairlines under one light
+       source, rather than a heavier border. */
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--neutral-0) 8%, transparent),
+      inset 0 -1px 0 color-mix(in srgb, var(--neutral-10) 40%, transparent),
+      var(--shadow-md);
+  }
+  @media (min-width: 900px) { .pm-panel { padding: var(--gap-8); } }
+
+  .pm-title { max-width: 46ch; }
+  .pm-title h2 { font-size: var(--t-h3); margin-top: var(--gap-3); }
+  .pm-lede {
+    margin-top: var(--gap-4); color: var(--fg-muted);
+    font-size: var(--fluid-body-md); line-height: var(--core-line-height-relaxed);
+  }
+
+  /* ---- map ---- */
+  /* The map is the whole section now, so it can never be hidden. It grows to
+     take whatever the block has left after the title, and below the width it
+     needs it scrolls inside its own container — the page body still must not
+     scroll sideways. */
+  .pm-scroll {
+    /* The wide canvas is desktop-only; below 900px the vertical run replaces
+       it. `display` is set once, here and in the media query below — declaring
+       it again further down silently overrode the `none`. */
+    display: none;
+    margin-top: var(--gap-5);
+    flex: 1 1 auto;
+    /* min-width:0 is load-bearing, the same way min-height:0 is below. A flex
+       item will not shrink past its content, so without this the 44rem
+       min-width on .pm-figure pushed the scroll container — and the whole
+       panel — to 754px inside a 375px viewport, and `overflow-x` never got a
+       chance to scroll. */
+    min-width: 0;
+    /* min-height:0 is load-bearing: without it a flex item refuses to shrink
+       below its content, and the map overflows the 100vh stage instead of
+       fitting inside it. */
+    min-height: 0;
+    align-items: center; justify-content: center;
+    overflow-x: auto; overscroll-behavior-x: contain;
+  }
+  @media (min-width: 900px) { .pm-scroll { display: flex; } }
+  /* Fit-box: take the height the stage has left, derive width from the field's
+     own ratio, and clamp back by width on narrow screens. The ratio must stay
+     exact — the chips are positioned in percentages of this element, so any
+     letterboxing between it and the SVG would desync every label. */
+  .pm-figure {
+    position: relative;
+    aspect-ratio: 1280 / 720;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    min-width: 44rem;
+    margin-inline: auto;
+  }
+  .pm-svg { display: block; width: 100%; height: 100%; }
+
+  /* Palette: greys only, no hue anywhere.
+     Hierarchy is carried by brightness — the field sits low on the neutral
+     ramp, the loop and the lit phase step up it. Yellow was here first and was
+     wrong twice over: the pillar accent (--svc-experience is #09E2C0) read as
+     cyan across the whole section, and swapping it for the brand yellow just
+     moved the same problem to a colour capped at 10% of the page. A diagram
+     this dense does not need hue to separate its layers. */
+  .pm-ring {
+    fill: none;
+    stroke: color-mix(in srgb, var(--fg-muted) 15%, transparent);
+    stroke-width: 1; stroke-dasharray: 3 7;
+  }
+  .pm-ring.is-outer { stroke: color-mix(in srgb, var(--fg-muted) 9%, transparent); }
+  .pm-edge {
+    fill: none;
+    stroke: color-mix(in srgb, var(--fg-muted) 48%, transparent);
+    stroke-width: var(--pm-line-w, 1.25);
+    transition: stroke var(--duration-normal) var(--easing-smooth);
+  }
+  /* An edge belongs to the two phases it joins, so it lights for either. */
+  .pm-figure.is-focused .pm-edge { stroke: color-mix(in srgb, var(--fg-muted) 22%, transparent); }
+  .pm-figure.is-focused .pm-edge.is-lit { stroke: var(--neutral-2); }
+  .pm-figure.hide-cursor { cursor: none; }
+  .pm-spoke { stroke: color-mix(in srgb, var(--fg-muted) 30%, transparent); stroke-width: 1; }
+
+  .pm-hub-halo { fill: color-mix(in srgb, var(--neutral-0) 8%, transparent); }
+  .pm-hub-disc { fill: var(--fg); }
+  .pm-hub-n {
+    font-family: var(--font-mono); font-size: 15px;
+    font-weight: var(--font-weight-semibold); fill: var(--neutral-10);
+  }
+  .pm-hub-name { font-size: 15px; font-weight: var(--font-weight-semibold); fill: var(--fg); }
+
+  .pm-dot { fill: var(--fg); stroke: var(--bg); stroke-width: 2.5; }
+  .pm-dot.is-quiet { fill: var(--fg-muted); stroke-width: 2; }
+
+  /* the return loop — brighter grey, not a colour */
+  .pm-loop-path { fill: none; stroke: var(--neutral-3); stroke-width: 1.25; stroke-dasharray: 4 5; }
+  .pm-arrow { fill: var(--neutral-3); }
+  .pm-loop-label { font-size: 11px; font-weight: var(--font-weight-semibold); fill: var(--neutral-3); }
+
+  /* ---- satellites ---- */
+  .pm-sats { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; }
+  .pm-sat { position: absolute; width: 8.4%; margin-left: -4.2%; }
+  /* Sit clear of the dot: fans that point up hang above it, fans that point
+     down hang below. */
+  .pm-sat.is-up { transform: translateY(calc(-100% - 12px)); }
+  .pm-sat.is-down { transform: translateY(12px); }
+  .pm-chip {
+    display: flex; align-items: center; gap: var(--gap-2);
+    padding: var(--gap-2) var(--gap-3);
+    background: color-mix(in srgb, var(--neutral-8) 92%, transparent);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--neutral-0) 7%, transparent), var(--shadow-md);
+    font-size: var(--fluid-label);
+    line-height: var(--core-line-height-tight);
+    color: var(--fg);
+    text-wrap: balance;
+  }
+  .pm-icon {
+    flex: 0 0 auto; width: 15px; height: 15px; fill: none;
+    stroke: var(--fg-muted); stroke-width: 1.4;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .pm-chip-text { min-width: 0; }
+
+  /* ---- phase focus ----
+     Hovering or scrolling to a phase lights that hub, its rings, spokes, dots
+     and chips, and pushes everything else back. `filter`, not `opacity` — GSAP
+     owns opacity here for the draw-on sequence, and two owners on one property
+     is the bug that cost a day on the BentoBlock.
+
+     z-index is the other half, on the documented scale: chips rest at
+     --layer-base, the lit phase's rise to --layer-card so an overlapping label
+     can never be read half-under a neighbour's, and the chip actually under
+     the pointer rises again to --layer-popover over its own siblings. */
+  .pm-sat, .pm-hub, .pm-ring, .pm-spoke, .pm-dot {
+    transition: filter var(--duration-normal) var(--easing-smooth),
+                opacity var(--duration-normal) var(--easing-smooth);
+  }
+  .pm-sat { z-index: var(--layer-base); }
+
+  .pm-figure.is-focused .pm-sat { filter: brightness(0.62); }
+  .pm-figure.is-focused .pm-ring,
+  .pm-figure.is-focused .pm-spoke,
+  .pm-figure.is-focused .pm-dot { opacity: 0.42; }
+  .pm-figure.is-focused .pm-hub { filter: brightness(0.6); }
+
+  .pm-figure.is-focused .pm-sat.is-lit { filter: none; z-index: var(--layer-card); }
+  .pm-figure.is-focused .pm-ring.is-lit,
+  .pm-figure.is-focused .pm-spoke.is-lit,
+  .pm-figure.is-focused .pm-dot.is-lit { opacity: 1; }
+  .pm-figure.is-focused .pm-hub.is-lit { filter: none; }
+  .pm-figure.is-focused .pm-ring.is-lit { stroke: color-mix(in srgb, var(--neutral-2) 34%, transparent); }
+  .pm-figure.is-focused .pm-sat.is-lit .pm-chip {
+    border-color: color-mix(in srgb, var(--neutral-2) 40%, transparent);
+  }
+
+  /* The pointer's own target wins over the rest of its phase. */
+  .pm-figure .pm-sat:hover { filter: none !important; z-index: var(--layer-popover); }
+  .pm-figure .pm-sat:hover .pm-chip { border-color: color-mix(in srgb, var(--neutral-2) 65%, transparent); }
+  .pm-figure .pm-sat:hover .pm-icon { stroke: var(--neutral-2); }
+
+  .pm-hub { cursor: pointer; }
+  .pm-hub:focus-visible { outline: var(--focus-primary); outline-offset: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pm-sat, .pm-hub, .pm-ring, .pm-spoke, .pm-dot { transition: none; }
+  }
+
+  /* ---- narrow-screen run ----
+     The same map, turned through 90°. A vertical rail carries the numbered
+     hubs; each phase's steps sit beside it as the same chips the wide canvas
+     uses, so nothing has to be learned twice. */
+  .pm-run { list-style: none; margin: var(--gap-6) 0 0; padding: 0; display: grid; gap: 0; }
+  @media (min-width: 900px) { .pm-run { display: none; } }
+
+  .pm-run-phase {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: var(--gap-4);
+    padding-bottom: var(--gap-6);
+  }
+  /* The rail. Drawn per item and stopped on the last, so it never runs past
+     the final phase into empty space. */
+  .pm-run-phase::before {
+    content: '';
+    position: absolute;
+    left: calc(2.25rem / 2 - 0.5px);
+    top: 2.25rem; bottom: 0;
+    width: 1px;
+    background: color-mix(in srgb, var(--fg-muted) 30%, transparent);
+  }
+  .pm-run-phase:last-of-type { padding-bottom: 0; }
+  .pm-run-phase:last-of-type::before { display: none; }
+
+  .pm-run-node {
+    width: 2.25rem; height: 2.25rem;
+    display: grid; place-items: center;
+    border-radius: var(--radius-full);
+    background: var(--fg);
+    color: var(--neutral-10);
+    font-family: var(--font-mono);
+    font-size: var(--t-micro);
+    font-weight: var(--font-weight-semibold);
+  }
+  .pm-run-body { min-width: 0; padding-top: var(--gap-1); }
+  .pm-run-body h3 {
+    font-size: var(--fluid-body-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--fg);
+    line-height: var(--core-line-height-tight);
+  }
+  .pm-run-steps { list-style: none; margin: var(--gap-3) 0 0; padding: 0; display: grid; gap: var(--gap-2); }
+  .pm-run-steps li {
+    display: flex; align-items: center; gap: var(--gap-2);
+    padding: var(--gap-2) var(--gap-3);
+    background: color-mix(in srgb, var(--neutral-8) 70%, transparent);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-lg);
+    font-size: var(--fluid-label);
+    line-height: var(--core-line-height-tight);
+    color: var(--fg);
+  }
+  .pm-run-loop {
+    display: flex; align-items: center; gap: var(--gap-3);
+    margin-top: var(--gap-5);
+    padding-top: var(--gap-5);
+    border-top: var(--stroke-thin) solid color-mix(in srgb, var(--line) 70%, transparent);
+  }
+  .pm-run-loop-mark {
+    width: 1.75rem; flex: 0 0 auto;
+    border-top: 1.5px dashed var(--neutral-3);
+  }
+  .pm-run-loop p { margin: 0; font-size: var(--fluid-label); color: var(--fg-muted); }
+
+  .pm-note { margin: var(--gap-4) 0 0; font-size: var(--fluid-label); color: var(--fg-muted); max-width: 70ch; }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  /**
+   * Phase focus, driven from two places that must not fight each other:
+   *
+   *  - the pointer (or keyboard focus) on a hub or a chip, which wins while it
+   *    is engaged;
+   *  - scroll position through the section, which walks the phases in order so
+   *    the map reads itself to someone who never touches it.
+   *
+   * The pointer takes precedence and scroll resumes on leave, so the two never
+   * argue over the same frame.
+   */
+  function initProcessMapFocus() {
+    document.querySelectorAll<HTMLElement>('[data-process-map]').forEach((panel) => {
+      const fig = panel.querySelector<HTMLElement>('.pm-figure');
+      if (!fig || fig.dataset.pmBound === '1') return;
+      fig.dataset.pmBound = '1';
+
+      const marked = Array.from(fig.querySelectorAll<HTMLElement>('[data-pm-phase]'));
+      const phaseCount = new Set(marked.map((el) => el.dataset.pmPhase)).size;
+      if (phaseCount === 0) return;
+
+      let scrollPhase = -1;
+      let hoverPhase = -1;
+
+      const paint = () => {
+        const active = hoverPhase >= 0 ? hoverPhase : scrollPhase;
+        fig.classList.toggle('is-focused', active >= 0);
+        marked.forEach((el) => {
+          el.classList.toggle('is-lit', Number(el.dataset.pmPhase) === active);
+        });
+        // An edge joins two hubs, so it lights for either of them.
+        fig.querySelectorAll<SVGPathElement>('[data-pm-edge]').forEach((el) => {
+          const i = Number((el as unknown as HTMLElement).dataset.pmOrder);
+          el.classList.toggle('is-lit', active >= 0 && (i === active || i + 1 === active));
+        });
+      };
+
+      const setHover = (p: number) => {
+        if (hoverPhase === p) return;
+        hoverPhase = p;
+        paint();
+      };
+
+      marked.forEach((el) => {
+        const p = Number(el.dataset.pmPhase);
+        el.addEventListener('pointerenter', () => setHover(p));
+        el.addEventListener('focusin', () => setHover(p));
+      });
+      fig.addEventListener('pointerleave', () => setHover(-1));
+      fig.addEventListener('focusout', (e) => {
+        if (!fig.contains(e.relatedTarget as Node)) setHover(-1);
+      });
+
+      /* ---- elastic connecting lines ----
+       * Each edge is one quadratic; only its control point moves, so a frame
+       * costs one string write per edge and no layout at all.
+       *
+       * The control point is a damped harmonic oscillator:
+       *     a = (target - x) * k  -  v * c
+       * `returnSpeed` is k (how hard it is pulled home) and `oscillation` maps
+       * to c (how much it rings on the way). Integrated on rAF rather than
+       * tweened, because the target changes every time the pointer moves and
+       * a tween would have to be rebuilt each frame.
+       *
+       * The target is the pointer's vertical offset from the edge's resting
+       * midpoint, falling off with horizontal distance, so a curve reacts to a
+       * pointer passing over it and ignores one at the far end of the chain.
+       */
+      const edgeEls = Array.from(fig.querySelectorAll<SVGPathElement>('[data-pm-edge]'));
+      const sensitivity = Number(fig.dataset.pmSensitivity ?? 0.55);
+      const k = Number(fig.dataset.pmReturn ?? 0.1);
+      /*
+       * Damping is expressed relative to *critical* damping, 2·√k — the value
+       * at which the spring returns in the shortest time without overshooting.
+       * `oscillation: 0` sits exactly there (a clean settle) and 1 approaches
+       * undamped (rings for a long time). A flat 0..1 coefficient does not
+       * work here: at k = 0.1, critical is 0.63, so anything above that never
+       * wobbles at all — which is what the first cut of this did.
+       */
+      const critical = 2 * Math.sqrt(k);
+      const c = critical * (1 - Math.min(0.97, Math.max(0, Number(fig.dataset.pmOscillation ?? 0.78))) * 0.9);
+
+      if (edgeEls.length > 0 && sensitivity > 0) {
+        const svg = fig.querySelector('svg')!;
+        const num = (el: Element, k2: string) => Number((el as HTMLElement).dataset[k2]);
+        const springs = edgeEls.map((el) => ({
+          el,
+          x1: num(el, 'x1'), y1: num(el, 'y1'),
+          x2: num(el, 'x2'), y2: num(el, 'y2'),
+          cx: num(el, 'cx'), cy: num(el, 'cy'),
+          offset: 0, vel: 0, target: 0,
+        }));
+        /** Falloff radius in field units — roughly one hub gap. */
+        const REACH = 260;
+
+        let pointerIn = false;
+        let raf = 0;
+        let idleFrames = 0;
+
+        const toField = (e: PointerEvent) => {
+          const r = svg.getBoundingClientRect();
+          const vb = svg.viewBox.baseVal;
+          return {
+            x: ((e.clientX - r.left) / r.width) * vb.width,
+            y: ((e.clientY - r.top) / r.height) * vb.height,
+          };
+        };
+
+        const tick = () => {
+          let moving = false;
+          for (const sp of springs) {
+            const a = (sp.target - sp.offset) * k - sp.vel * c;
+            sp.vel += a;
+            sp.offset += sp.vel;
+            if (Math.abs(sp.vel) > 0.02 || Math.abs(sp.target - sp.offset) > 0.02) moving = true;
+            sp.el.setAttribute(
+              'd',
+              `M ${sp.x1} ${sp.y1} Q ${sp.cx} ${(sp.cy + sp.offset).toFixed(2)}, ${sp.x2} ${sp.y2}`
+            );
+          }
+          // Stop the loop once everything has settled and the pointer is gone,
+          // so an off-screen map costs nothing.
+          idleFrames = moving || pointerIn ? 0 : idleFrames + 1;
+          if (idleFrames > 30) { raf = 0; return; }
+          raf = requestAnimationFrame(tick);
+        };
+        const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+
+        fig.addEventListener('pointermove', (e) => {
+          pointerIn = true;
+          const p = toField(e as PointerEvent);
+          for (const sp of springs) {
+            const mx = (sp.x1 + sp.x2) / 2;
+            const falloff = Math.max(0, 1 - Math.abs(p.x - mx) / REACH);
+            sp.target = (p.y - sp.cy) * sensitivity * falloff * falloff;
+          }
+          kick();
+        });
+        fig.addEventListener('pointerleave', () => {
+          pointerIn = false;
+          for (const sp of springs) sp.target = 0;
+          kick();
+        });
+      }
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      // Scroll walks the phases while the section holds the viewport. The
+      // range is the section's own travel, so a taller section simply reads
+      // more slowly rather than needing different numbers.
+      const st = ScrollTrigger.create({
+        trigger: panel,
+        start: 'top 60%',
+        end: 'bottom 40%',
+        onUpdate: (self) => {
+          const p = Math.min(phaseCount - 1, Math.floor(self.progress * phaseCount));
+          if (p !== scrollPhase) {
+            scrollPhase = p;
+            paint();
+          }
+        },
+        onLeave: () => { scrollPhase = -1; paint(); },
+        onLeaveBack: () => { scrollPhase = -1; paint(); },
+      });
+      fig.addEventListener('pm:destroy', () => st.kill());
+    });
+  }
+
+  initProcessMapFocus();
+  document.addEventListener('astro:page-load', initProcessMapFocus);
+</script>

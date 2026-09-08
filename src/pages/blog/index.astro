@@ -87,7 +87,7 @@ const categories = ['All', ...PILLARS];
   <section class="blog-hero">
     <div class="wrap blog-hero-content">
       <p class="eyebrow" data-reveal>Insights</p>
-      <h1 data-reveal>Articles</h1>
+      <h1 class="page-title" data-reveal>Articles</h1>
       <p data-reveal>Insights on design, product, and digital strategy from the Wugweb team.</p>
     </div>
   </section>
@@ -136,8 +136,8 @@ const categories = ['All', ...PILLARS];
 </BaseLayout>
 
 <style>
-  .blog-hero { padding-block: var(--space-section-xl) var(--space-section-md); }
-  .blog-hero-content h1 { font-size: var(--t-h2); font-weight: var(--font-weight-bold); max-width: 28ch; margin-bottom: var(--gap-4); }
+  .blog-hero { padding-block: var(--space-page-head) var(--space-section-md); }
+  .blog-hero-content h1 { max-width: 18ch; margin-bottom: var(--gap-5); }
   .blog-hero-content p { font-size: var(--t-body); color: var(--fg-muted); max-width: 50ch; }
   .blog-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
   .filter-chip { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-4); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out); }

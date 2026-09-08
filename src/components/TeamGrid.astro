@@ -1,0 +1,197 @@
+---
+/**
+ * TeamGrid — portrait cards with the name set over the photo.
+ *
+ * Follows the Fabrica reference: one photo per card filling it edge to edge,
+ * radius on the card rather than the image, name / role / suffix overlaid in
+ * white at the foot over a scrim, and the row staggered vertically so it reads
+ * as a set of people rather than a table of headshots.
+ *
+ * **The one deliberate departure is the ratio.** The reference cards are
+ * 213×371 — 4:7, very tall. Seven of our eleven portraits are square (1.00),
+ * two are ~0.74 and one is 0.56; cropping a square to 4:7 discards 43% of its
+ * width and takes the top of the head with it. These cards are 3:4, which every
+ * portrait we hold survives. Ratio is fixed and never animated (governance §8);
+ * hover scales the image uniformly inside the card, so it cannot skew.
+ */
+export interface TeamMember {
+  name: string;
+  role?: string;
+  photo?: string;
+  slug?: string;
+}
+
+interface Props {
+  members: TeamMember[];
+  eyebrow?: string;
+  /** Split in two tones — the first `headingLead` words take full ink. */
+  heading?: string;
+  headingLead?: number;
+  /** Suffix under each role, e.g. "at wugweb". */
+  suffix?: string;
+}
+
+const {
+  members,
+  eyebrow,
+  heading = 'The faces behind the work.',
+  headingLead = 2,
+  suffix = 'at wugweb',
+} = Astro.props;
+
+const words = heading.split(' ');
+const lead = words.slice(0, headingLead).join(' ');
+const rest = words.slice(headingLead).join(' ');
+---
+
+{members.length > 0 && (
+  <section class="wrap team-block">
+    {eyebrow && <p class="eyebrow" data-reveal>{eyebrow}</p>}
+    <h2 class="team-heading" data-reveal>
+      <span class="team-heading-lead">{lead}</span>{' '}
+      <span class="team-heading-rest">{rest}</span>
+    </h2>
+
+    <ul class="team-cards" data-team>
+      {members.map((m, i) => (
+        <li
+          class="team-card"
+          data-reveal
+          data-reveal-delay={String(i * 0.05)}
+          style={`--stagger:${i % 2 === 0 ? 0 : 1}`}
+        >
+          <div class="team-photo">
+            {m.photo ? (
+              <img src={m.photo} alt={m.name} loading="lazy" decoding="async" />
+            ) : (
+              <span class="team-initials" aria-hidden="true">
+                {m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
+              </span>
+            )}
+          </div>
+          <div class="team-meta">
+            <p class="team-name">{m.name}</p>
+            {m.role && <p class="team-role">{m.role}</p>}
+            <p class="team-suffix">{suffix}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .team-block { padding-block: var(--space-section-xl); }
+
+  /* Two-tone heading — the same split the homepage logo grid title uses, which
+     in turn mirrors the wugweb lockup. */
+  .team-heading {
+    margin-top: var(--gap-3);
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--core-line-height-tight);
+    letter-spacing: -0.02em;
+    max-width: 18ch;
+  }
+  .team-heading-lead { color: var(--fg); }
+  .team-heading-rest { color: var(--fg-muted); }
+
+  .team-cards {
+    list-style: none; margin: var(--gap-12) 0 0; padding: 0;
+    display: grid; gap: var(--gap-5);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 700px)  { .team-cards { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .team-cards { grid-template-columns: repeat(5, 1fr); gap: var(--gap-4); } }
+
+  .team-card {
+    position: relative;
+    z-index: var(--layer-base);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    /* The stagger: every other card drops by a fixed amount, so the row reads
+       as people rather than a table. Margin, not transform — `data-reveal` is a
+       GSAP tween on this element and owns `transform` and `opacity` outright. */
+    margin-top: calc(var(--stagger, 0) * var(--gap-8));
+    transition: box-shadow var(--duration-normal) var(--easing-smooth),
+                filter var(--duration-normal) var(--easing-smooth);
+  }
+  @media (min-width: 1024px) { .team-card { margin-top: calc(var(--stagger, 0) * var(--gap-10)); } }
+
+  /* Ratio fixed at every breakpoint; only the image scales inside it, and
+     uniformly, so nothing is ever skewed (governance §8). */
+  .team-photo {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    background: color-mix(in srgb, var(--neutral-8) 70%, transparent);
+    display: grid; place-items: center;
+    overflow: hidden;
+  }
+  .team-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.01);
+    transition: transform 0.5s var(--easing-smooth), filter var(--duration-normal) var(--easing-smooth);
+    filter: grayscale(1);
+  }
+  .team-initials {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-h4);
+    color: var(--fg-subtle);
+  }
+
+  /* Scrim only where the type sits, so the photo stays a photo. */
+  .team-photo::after {
+    content: '';
+    position: absolute; inset: auto 0 0 0; height: 62%;
+    background: linear-gradient(to top,
+      color-mix(in srgb, var(--neutral-10) 88%, transparent),
+      transparent);
+    pointer-events: none;
+  }
+
+  .team-meta {
+    position: absolute; inset: auto 0 0 0;
+    z-index: var(--layer-base);
+    padding: var(--gap-4);
+  }
+  .team-name {
+    margin: 0;
+    color: var(--neutral-0);
+    font-size: var(--fluid-body-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--core-line-height-tight);
+    text-wrap: balance;
+  }
+  .team-role {
+    margin: var(--gap-1) 0 0;
+    color: color-mix(in srgb, var(--neutral-0) 78%, transparent);
+    font-size: var(--fluid-label);
+    font-weight: var(--font-weight-semibold);
+  }
+  .team-suffix {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--t-micro);
+    color: color-mix(in srgb, var(--neutral-0) 52%, transparent);
+  }
+
+  /* Interaction as hierarchy, same language as the FAQ and the Bento: hovering
+     the set pushes everything back and brings one card forward, in colour. */
+  .team-cards:hover .team-card { filter: brightness(0.62); }
+  .team-cards:hover .team-card:hover { filter: none; }
+  .team-card:hover {
+    z-index: var(--layer-card);
+    box-shadow: var(--shadow-xl);
+  }
+  .team-card:hover .team-photo img { transform: scale(1.06); filter: grayscale(0); }
+
+  @media (hover: none) {
+    .team-photo img { filter: none; }
+    .team-cards:hover .team-card { filter: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .team-card, .team-photo img { transition: none; }
+  }
+</style>

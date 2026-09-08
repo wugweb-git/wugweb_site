@@ -31,44 +31,33 @@ const pageDescription =
   'Frequently asked questions about working with Wugweb.';
 const pageBody = page?.body?.[0]?.children?.[0]?.text || 'To help you get the information you need quickly, we\'ve compiled a list of frequently asked questions. If you don\'t find the answer you\'re looking for, please feel free to contact us directly.';
 const displayH1 = page?.title?.replace(/\s*—\s*Wugweb$/i, '') || 'Frequently Asked Questions';
+import FaqAccordion from '../components/FaqAccordion.astro';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <section class="wrap faq">
     <p class="eyebrow" data-reveal>FAQs</p>
-    <h1 data-reveal>{displayH1}</h1>
+    <h1 class="page-title" data-reveal>{displayH1}</h1>
     <p class="faq-lede" data-reveal>{pageBody}</p>
     <p class="faq-updated" data-reveal>Updated on November 04, 2025</p>
 
-    <div class="faq-list" data-reveal>
-      {faqItems.map((f: any) => (
-        <details class="faq-item">
-          <summary>{f.q}</summary>
-          <p>{f.a}</p>
-        </details>
-      ))}
+    <div class="faq-accordion-wrap" data-reveal>
+      <FaqAccordion items={faqItems} />
     </div>
 
-    <div class="faq-cta" data-reveal>
-      <h2>Still have questions?</h2>
-      <p>We're here to help. Reach out and we'll get back to you promptly.</p>
-      <a href="/contact-us" class="btn btn-solid">Contact Us</a>
-    </div>
   </section>
 </BaseLayout>
 
 <style>
-  .faq { padding-block: var(--space-section-xl); max-width: 800px; }
-  .faq h1 { font-size: var(--t-h2); margin-block: var(--gap-3) var(--gap-4); max-width: 20ch; }
-  .faq-lede { max-width: 55ch; line-height: var(--core-line-height-relaxed); }
+  /* The 800px cap was on the section, so this page's title started 240px
+     further in than every other page's. Measure belongs on the reading column,
+     not on the whole page. */
+  .faq { padding-block: var(--space-page-head) var(--space-section-xl); }
+  .faq-lede, .faq-updated { max-width: 55ch; }
+  .faq-accordion-wrap { max-width: 52rem; }
+  .faq h1 { margin-block: var(--gap-3) var(--gap-5); max-width: 16ch; }
+  .faq-lede { line-height: var(--core-line-height-relaxed); }
   .faq-updated { font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-muted); margin-top: var(--gap-2); }
-  .faq-list { margin-top: var(--gap-10); border-top: var(--stroke-thin) solid var(--line); }
-  .faq-item { border-bottom: var(--stroke-thin) solid var(--line); padding-block: var(--gap-5); }
-  .faq-item summary { font-family: var(--font-display); font-size: var(--t-l); cursor: pointer; color: var(--fg); }
-  .faq-item p { margin-top: var(--gap-3); line-height: var(--core-line-height-relaxed); color: var(--fg-muted); }
-  .faq-cta { margin-top: var(--gap-12); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); text-align: center; }
-  .faq-cta h2 { font-size: var(--t-h2); }
-  .faq-cta p { margin-top: var(--gap-3); }
-  .faq-cta .btn { margin-top: var(--gap-6); display: inline-flex; }
+  .faq-accordion-wrap { margin-top: var(--gap-10); max-width: 52rem; }
 </style>
 

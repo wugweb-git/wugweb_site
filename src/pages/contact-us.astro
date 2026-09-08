@@ -24,7 +24,7 @@ const budgetRanges = ['<$5K', '$5K - $15K', '$15K - $35K', '$35K+'];
 const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Exploring / Planning'];
 ---
 
-<BaseLayout title="Contact Us | Wugweb" description="Partner with Wugweb for domain-driven design, engineering, and digital transformation. Start a conversation today." hideGlobalSections={true}>
+<BaseLayout title="Contact Us | Wugweb" description="Partner with Wugweb for domain-driven design, engineering, and digital transformation. Start a conversation today.">
   <div class="contact-v2-container wrap">
     <!-- Header Hero -->
     <header class="contact-v2-hero">
@@ -32,7 +32,11 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
         <span class="pulse-dot"></span>
         <span>Accepting Select Projects for Q3/Q4</span>
       </div>
-      <h1 class="hero-headline">{heroTitle}</h1>
+      <h1 class="page-title">Contact</h1>
+      <!-- The sentence Sanity supplies as `title` is a statement, not a page
+           name. It reads as the lede; the <h1> stays a noun so this page's
+           title matches every other page's. -->
+      <p class="hero-statement">{heroTitle}</p>
       <p class="hero-subtext">{heroText}</p>
       
       <div class="hero-quick-actions">
@@ -199,8 +203,12 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
 </BaseLayout>
 
 <style>
+  /* The container already opened with --space-section-xl; adding the page-head
+     space to the hero on top of it stacked two offsets and pushed this title
+     80px lower than every other page's. The head space belongs to the
+     container, once. */
   .contact-v2-container {
-    padding-block: var(--space-section-xl);
+    padding-block: var(--space-page-head) var(--space-section-xl);
   }
   .contact-v2-hero {
     max-width: 800px;
@@ -226,11 +234,14 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     background: #10b981;
     box-shadow: 0 0 8px #10b981;
   }
-  .hero-headline {
-    font-size: var(--t-display);
-    line-height: var(--lh-tight);
-    color: var(--fg);
+  .hero-statement {
+    margin-top: var(--gap-5);
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--core-line-height-tight);
     letter-spacing: -0.02em;
+    color: var(--fg);
+    max-width: 24ch;
   }
   .hero-subtext {
     margin-top: var(--gap-4);

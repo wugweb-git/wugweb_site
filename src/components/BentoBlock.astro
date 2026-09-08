@@ -1,0 +1,644 @@
+---
+/**
+ * BentoBlock — three columns of tiles whose every axis is data.
+ *
+ * A variation is a reordered `tiles` array, never a CSS edit. Per tile you can
+ * change: column, order, weight (`span`), content `kind`, `tone`, media type
+ * (image / video) and how that media sits (`fit: cover | inset`), plus an
+ * optional `href` to make the whole tile a link.
+ *
+ * Sizing contract — this is what keeps a block from ever overflowing:
+ * tiles use `flex-basis: auto` with a weighted `flex-grow`, so each tile first
+ * takes the height its own content needs and only the *leftover* space is
+ * shared out by weight. A tile can never be shorter than its contents, and the
+ * grid stretches all columns to the tallest, so the bottoms always sit level.
+ * The cost is that weights are a target, not a guarantee — heavy content wins.
+ */
+export interface BentoTile {
+  /** 0 · 1 · 2 — which column the tile belongs to */
+  col: number;
+  /** Height weight. tall 519 · mid 343 · short 250 · slim 172 · strip 90 */
+  span: 'tall' | 'mid' | 'short' | 'slim' | 'strip';
+  kind?: 'reason' | 'stat' | 'cta' | 'stack' | 'media' | 'checklist';
+  tone?: 'dark' | 'light' | 'accent';
+
+  title?: string;
+  body?: string;
+  /** Small label pinned to the tile's top-left. */
+  eyebrow?: string;
+  /** `+` glyph pinned to the top-right. */
+  mark?: boolean;
+  /** Render the title at display size, for an editorial media tile. */
+  headline?: boolean;
+  /** Where the copy sits in the tile. Default `end`. */
+  align?: 'start' | 'end';
+  /** kind: 'checklist' */
+  list?: string[];
+  /** Floating chips over cover media — `{ value, label }`. */
+  chips?: { value: string; label?: string }[];
+
+  /** kind: 'stat' */
+  value?: string;
+  label?: string;
+
+  /** Media. `cover` sits full-bleed behind the copy; `inset` is a contained
+   *  block with the copy beneath it. */
+  image?: string;
+  video?: string;
+  fit?: 'cover' | 'inset';
+  /** Poster for a video — required for `cover`, else the tile paints empty. */
+  poster?: string;
+
+  /** kind: 'stack' */
+  items?: { name: string; iconPath?: string | null }[];
+
+  /** Small caption held under the copy, revealed on hover. */
+  caption?: string;
+
+  /** Makes the whole tile a link. */
+  href?: string;
+  linkLabel?: string;
+}
+
+interface Props {
+  heading?: string;
+  lede?: string;
+  tiles: BentoTile[];
+  /** Columns to lay out; the grid collapses to 2 then 1 on smaller screens. */
+  columns?: number;
+  /** Index markers. Off where the tiles are parallel claims rather than steps. */
+  showNumbers?: boolean;
+}
+
+const { heading, lede, tiles, columns = 3, showNumbers = true } = Astro.props;
+const cols = Array.from({ length: columns }, (_, i) => i);
+
+/**
+ * A bento must never read as an even grid — that is the whole point of the
+ * form. Two ways it can go flat, both caught at build time rather than left
+ * for someone to notice in a screenshot:
+ *   1. every tile carries the same weight;
+ *   2. every column has an identical weight sequence, which lines the seams up
+ *      into rows even when the weights themselves differ.
+ */
+/** 01–06, numbered by position in the array so a reshuffle renumbers itself. */
+const numbered = tiles.map((t, i) => ({ ...t, num: String(i + 1).padStart(2, '0') }));
+
+const weights = tiles.map((t) => t.span);
+if (new Set(weights).size < 2) {
+  throw new Error(
+    `BentoBlock: all ${tiles.length} tiles use span "${weights[0]}", which renders as an even grid. Vary the weights.`
+  );
+}
+const columnSignatures = cols.map((c) =>
+  tiles.filter((t) => t.col === c).map((t) => t.span).join('>')
+);
+if (columnSignatures.length > 1 && new Set(columnSignatures).size === 1) {
+  throw new Error(
+    `BentoBlock: every column is "${columnSignatures[0]}", so the tile seams line up into rows. Stagger the columns.`
+  );
+}
+---
+
+<section class="wrap bento-block">
+  {heading && <h2 data-reveal>{heading}</h2>}
+  {lede && <p class="bento-lede" data-reveal>{lede}</p>}
+
+  <span class="bento-cursor" data-bento-cursor aria-hidden="true"></span>
+  <div class="bento" data-bento data-scroll="bento">
+    {cols.map((col) => (
+      <div class="bento-col">
+        {numbered.filter((t) => t.col === col).map((t) => {
+          const Tag = t.href ? 'a' : 'article';
+          const media = t.video || t.image;
+          const fit = t.fit || 'cover';
+          return (
+            <Tag
+              {...(t.href ? { href: t.href } : {})}
+              class:list={[
+                'bento-tile',
+                `is-${t.span}`,
+                `kind-${t.kind || 'reason'}`,
+                {
+                  'is-light': t.tone === 'light',
+                  'is-accent': t.tone === 'accent',
+                  'is-link': !!t.href,
+                  'align-start': t.align === 'start',
+                  'has-headline': !!t.headline,
+                },
+                media ? `media-${fit}` : null,
+              ]}
+            >
+              {t.eyebrow && <span class="bento-eyebrow">{t.eyebrow}</span>}
+              {t.mark && (
+                <span class="bento-mark" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" focusable="false">
+                    <path d="M8 1.5v13M1.5 8h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                </span>
+              )}
+              {media && (
+                <span class:list={['bento-media', `is-${fit}`]}>
+                  {t.video ? (
+                    <video
+                      data-bento-video
+                      src={t.video}
+                      poster={t.poster}
+                      preload="none"
+                      muted
+                      loop
+                      playsinline
+                      tabindex="-1"
+                      aria-hidden="true"
+                    ></video>
+                  ) : (
+                    <img src={t.image} alt="" loading="lazy" decoding="async" />
+                  )}
+                  {fit === 'cover' && t.chips && (
+                    <span class="bento-chips">
+                      {t.chips.map((c) => (
+                        <span class="bento-chip">
+                          <strong>{c.value}</strong>
+                          {c.label && <em>{c.label}</em>}
+                        </span>
+                      ))}
+                    </span>
+                  )}
+                </span>
+              )}
+
+              <div class="bento-body">
+                {t.kind === 'stat' ? (
+                  <>
+                    <span class="bento-stat">{t.value}</span>
+                    {t.label && <span class="bento-stat-label">{t.label}</span>}
+                  </>
+                ) : t.kind === 'stack' ? (
+                  <ul class="bento-stack">
+                    {(t.items || []).map((s) => (
+                      <li>
+                        {s.iconPath ? <img src={s.iconPath} alt="" width="18" height="18" loading="lazy" /> : null}
+                        {s.name}
+                      </li>
+                    ))}
+                  </ul>
+                ) : t.kind === 'cta' ? (
+                  <span class="bento-cta">
+                    <img src="/brand/logo-large.svg" alt="wugweb" width="149" height="54" />
+                    <span>{t.linkLabel || "Let's talk"}</span>
+                  </span>
+                ) : t.kind === 'checklist' ? (
+                  <>
+                    {t.title && <h3>{t.title}</h3>}
+                    {t.body && <p>{t.body}</p>}
+                    <ul class="bento-list">
+                      {(t.list || []).map((li) => (
+                        <li>
+                          <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                            <path d="M2 7.5l3.2 3.2L12 4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          {li}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    {showNumbers && t.title && <span class="bento-n">{t.num}</span>}
+                    {t.title && <h3>{t.title}</h3>}
+                    {t.body && <p>{t.body}</p>}
+                    {t.caption && <span class="bento-caption">{t.caption}</span>}
+                  </>
+                )}
+              </div>
+            </Tag>
+          );
+        })}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .bento-block { position: relative; padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
+
+  /* Cursor invert — the block's one bold moment. A disc that follows the
+     pointer and inverts whatever it crosses via `difference`, so type and
+     imagery flip rather than being covered by an overlay. Pointer-devices only;
+     it is decoration, so it never replaces the real cursor's affordance. */
+  .bento-cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6rem;
+    height: 6rem;
+    margin: -3rem 0 0 -3rem;
+    border-radius: var(--r-pill);
+    background: var(--neutral-0);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.4);
+    transition:
+      opacity var(--duration-normal) var(--easing-smooth),
+      transform 0.45s var(--easing-smooth);
+    will-change: transform;
+    z-index: var(--layer-popover);
+  }
+  .bento-block.cursor-live .bento-cursor { opacity: 1; transform: scale(1); }
+
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .bento-cursor { display: none; }
+  }
+  .bento-block h2 { font-size: var(--t-h2); }
+  .bento-lede { margin-top: var(--gap-5); max-width: 75ch; color: var(--fg-muted); }
+
+  .bento { display: grid; gap: var(--gap-4); margin-top: var(--gap-12); grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .bento { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .bento { grid-template-columns: repeat(3, 1fr); } }
+
+  .bento-col { display: flex; flex-direction: column; gap: var(--gap-4); }
+
+  /* One padding value per tile, published as a variable so the pinned eyebrow
+     and mark sit on the same inset as the copy. They were hardcoded to gap-5 /
+     gap-6 before, which drifted out of line on tall and slim tiles. */
+  .bento-tile {
+    --bento-pad: var(--gap-6);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--bento-pad);
+    overflow: hidden;
+    background: var(--surface);
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-2xl);
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  /* Floors when stacked; the tile grows past them if its content needs it. */
+  .bento-tile.is-tall  { min-height: 17rem; }
+  .bento-tile.is-mid   { min-height: 15rem; }
+  .bento-tile.is-short { min-height: 13rem; }
+  .bento-tile.is-slim  { min-height: 10rem; }
+  .bento-tile.is-strip { min-height: 5.6rem; padding: var(--gap-5) var(--gap-6); }
+
+  /* Three-column layout: drop the floors and let the weights set proportions,
+     so no single tall floor pushes its column past the others. */
+  @media (min-width: 1024px) {
+    .bento-col { min-height: 39rem; }
+    /* shrink 0 is load-bearing: an explicit min-height overrides the automatic
+       flex minimum, so with shrink:1 a tile can compress below its own content
+       and clip. Grow still shares the leftover space by weight. */
+    .bento-tile { flex: 0 0 auto; }
+    .bento-tile.is-tall  { min-height: 15rem; flex-grow: 519; }
+    .bento-tile.is-mid   { min-height: 12rem; flex-grow: 343; }
+    .bento-tile.is-short { min-height: 10rem; flex-grow: 250; }
+    .bento-tile.is-slim  { min-height: 7rem;  flex-grow: 172; }
+    .bento-tile.is-strip { min-height: 5rem;  flex-grow: 90; }
+
+  /* Note for anyone auditing this block with `scrollHeight - clientHeight`:
+     that reads a few px on media and scrim tiles even when nothing is clipped.
+     The media is deliberately over-scaled (1.015) so the hover zoom has room,
+     and the scrim is a pseudo-element — both inflate the scroll overflow area,
+     both are contained by `overflow: hidden`. Measure real elements instead. */
+  }
+
+  .bento-body { position: relative; z-index: var(--layer-base); min-width: 0; }
+
+  /* Type and inset scale with the tile's weight. Without this every tile shouts
+     at the same volume and the block reads flat however uneven the boxes are. */
+  /* `text-wrap: balance` stays — measured, it reduces the tile's content height
+     (removing it took the worst scrollHeight excess from 4px to 14px). */
+  .bento-tile h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); line-height: var(--lh-tight); text-wrap: balance; }
+  .bento-tile.is-mid h3  { font-size: var(--fluid-h4); }
+  .bento-tile.is-tall h3 { font-size: var(--fluid-h3); }
+  .bento-tile p { margin-top: var(--gap-3); font-size: var(--fluid-body-sm); line-height: var(--core-line-height-relaxed); color: var(--fg-muted); max-width: 46ch; }
+  .bento-tile.is-tall { --bento-pad: var(--gap-8); }
+  .bento-tile.is-slim, .bento-tile.is-short { --bento-pad: var(--gap-5); }
+
+  /* Index, in the same mono numbering the rest of the site uses. */
+  .bento-n {
+    display: block;
+    margin-bottom: var(--gap-3);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    letter-spacing: var(--tracking-label);
+    color: var(--fg-subtle, var(--fg-muted));
+  }
+  .bento-tile.is-light .bento-n { color: color-mix(in srgb, var(--color-ash) 55%, transparent); }
+  .bento-tile.is-accent .bento-n { color: var(--neutral-10); opacity: var(--opacity-soft); }
+
+  /* A whisper of grain so flat tiles are not dead rectangles. */
+  .bento-tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: var(--layer-background);
+    background-image: var(--noise-light);
+    opacity: var(--opacity-40);
+    pointer-events: none;
+  }
+  .bento-tile.media-cover::before { display: none; }
+
+  /* ── media ── */
+  .bento-media.is-cover { position: absolute; inset: 0; z-index: var(--layer-background); }
+  .bento-media.is-cover img,
+  .bento-media.is-cover video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* Strong enough that copy reads over any photograph, not just dark ones —
+     a 55% mid-stop was leaving titles fighting the image. */
+  .bento-media.is-cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      var(--surface) 0%,
+      color-mix(in srgb, var(--surface) 88%, transparent) 32%,
+      color-mix(in srgb, var(--surface) 40%, transparent) 62%,
+      transparent 100%
+    );
+  }
+  /* Media rests fractionally scaled so no edge gap can show, then pushes in on
+     hover. Timing matches the reference: 0.45s on an ease-out-quint curve
+     (theirs is cubic-bezier(.23,1,.32,1); --easing-smooth is .22,1,.36,1,
+     identical within rounding). */
+  .bento-media.is-cover img,
+  .bento-media.is-cover video,
+  .bento-media.is-inset img,
+  .bento-media.is-inset video {
+    transform: scale(1.015);
+    transition: transform 0.45s var(--easing-smooth);
+  }
+  .bento-tile:hover .bento-media img,
+  .bento-tile:hover .bento-media video { transform: scale(1.06); }
+
+  /* Caption: held under the tile's own copy, rising in on hover. */
+  .bento-caption {
+    display: block;
+    margin-top: var(--gap-3);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    letter-spacing: var(--tracking-label);
+    color: var(--fg-muted);
+    opacity: var(--opacity-0);
+    transform: translateY(8px);
+    transition:
+      opacity var(--duration-normal) var(--easing-smooth),
+      transform 0.45s var(--easing-smooth);
+  }
+  .bento-tile:hover .bento-caption { opacity: var(--opacity-100); transform: translateY(0); }
+  .bento-tile.is-light .bento-caption { color: color-mix(in srgb, var(--color-ash) 65%, transparent); }
+
+  /* Contained: sits above the copy, in flow, so the tile grows to fit both. */
+  .bento-media.is-inset {
+    display: block;
+    margin-bottom: var(--gap-5);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    flex: 0 0 auto;
+  }
+  .bento-media.is-inset img,
+  .bento-media.is-inset video { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+  .media-inset { justify-content: flex-start; }
+
+  /* ── tones ── */
+  /* Explicit dark ink on the light tile — never --fg inheriting onto a near-white
+     surface, which is a 1:1 contrast ratio. */
+  .bento-tile.is-light { background: var(--neutral-1); border-color: transparent; color: var(--color-ash); }
+  .bento-tile.is-light h3 { color: var(--color-ash); }
+  .bento-tile.is-light p { color: color-mix(in srgb, var(--color-ash) 72%, transparent); }
+  .bento-tile.is-light .bento-media.is-cover::after {
+    background: linear-gradient(
+      to top,
+      var(--neutral-1) 0%,
+      color-mix(in srgb, var(--neutral-1) 88%, transparent) 32%,
+      color-mix(in srgb, var(--neutral-1) 40%, transparent) 62%,
+      transparent 100%
+    );
+  }
+  .bento-tile.is-accent { background: var(--color-accent-primary); border-color: transparent; color: var(--neutral-10); }
+  .bento-tile.is-accent h3, .bento-tile.is-accent p { color: var(--neutral-10); }
+  .bento-tile.is-accent p { opacity: var(--opacity-soft); }
+
+  /* ── kinds ── */
+  .bento-stat { display: block; font-family: var(--font-display); font-size: var(--fluid-display); font-weight: var(--font-weight-extrabold); line-height: var(--core-line-height-none); }
+  .bento-stat-label { display: block; margin-top: var(--gap-3); font-size: var(--fluid-body-md); color: var(--fg-muted); }
+  .bento-tile.is-accent .bento-stat-label { color: var(--neutral-10); opacity: var(--opacity-soft); }
+
+  .bento-stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
+  .bento-stack li { font-family: var(--font-mono); font-size: var(--fluid-caption); padding: var(--gap-2) var(--gap-3); border: var(--stroke-thin) solid var(--line-strong); border-radius: var(--r-pill); color: var(--fg-muted); display: inline-flex; align-items: center; gap: var(--gap-2); }
+  .bento-stack li img { width: var(--gap-5); height: var(--gap-5); object-fit: contain; flex-shrink: 0; }
+  /* A slim tile is 172 units tall by weight; unbounded chips were pushing it to
+     249 and flattening the column's rhythm. Clip the overflow row instead. */
+  .bento-tile.is-slim .bento-stack { max-height: 6.5rem; overflow: hidden; }
+
+  .bento-cta { display: flex; align-items: center; gap: var(--gap-3); font-family: var(--font-mono); font-size: var(--fluid-label); letter-spacing: .04em; text-transform: uppercase; }
+  .bento-cta img { height: var(--gap-8); width: auto; }
+
+  /* Copy at the top instead of the bottom. */
+  .bento-tile.align-start { justify-content: flex-start; }
+
+  /* Editorial: the title carries the tile, over the media. */
+  .bento-tile.has-headline h3 {
+    font-size: var(--fluid-h1);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--core-line-height-tight);
+    text-wrap: balance;
+  }
+
+  /* Corner marks — pinned, so they sit clear of the copy at either alignment. */
+  .bento-eyebrow {
+    position: absolute;
+    top: var(--bento-pad);
+    left: var(--bento-pad);
+    z-index: var(--layer-base);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .bento-tile.is-light .bento-eyebrow { color: color-mix(in srgb, var(--color-ash) 65%, transparent); }
+  .bento-tile.is-accent .bento-eyebrow { color: var(--neutral-10); opacity: var(--opacity-soft); }
+
+  .bento-mark {
+    position: absolute;
+    top: var(--bento-pad);
+    right: var(--bento-pad);
+    z-index: var(--layer-base);
+    display: grid;
+    place-items: center;
+    width: var(--gap-6);
+    height: var(--gap-6);
+    color: currentColor;
+    opacity: var(--opacity-soft);
+  }
+  .bento-mark svg { width: 100%; height: 100%; fill: none; display: block; }
+
+  /* Checklist */
+  .bento-list { list-style: none; margin: var(--gap-5) 0 0; padding: 0; display: flex; flex-direction: column; }
+  .bento-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+    padding-block: var(--gap-3);
+    border-top: var(--stroke-thin) solid var(--line);
+    font-size: var(--fluid-body-sm);
+  }
+  .bento-list li:first-child { border-top: 0; }
+  .bento-list svg { width: var(--gap-4); height: var(--gap-4); flex-shrink: 0; opacity: var(--opacity-soft); }
+  .bento-tile.is-light .bento-list li { border-color: color-mix(in srgb, var(--color-ash) 14%, transparent); }
+
+  /* Floating chips over cover media */
+  .bento-chips {
+    position: absolute;
+    inset: var(--gap-5);
+    z-index: var(--layer-base);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: var(--gap-3);
+    pointer-events: none;
+  }
+  .bento-chip {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+    padding: var(--gap-3) var(--gap-4);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    backdrop-filter: var(--glass-light);
+    -webkit-backdrop-filter: var(--glass-light);
+    box-shadow: var(--shadow-md);
+  }
+  .bento-chip strong { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--fg); }
+  .bento-chip em { font-style: normal; font-size: var(--fluid-caption); color: var(--fg-muted); }
+
+  /* ── interaction ──
+     Every tile responds, not just the linked one: the border lifts and the
+     surface warms. Linked tiles add a rise on top so they read as clickable. */
+  /* `transform` is deliberately NOT transitioned here: GSAP owns the tile's
+     transform for the enter/exit, and a CSS transition on the same property
+     makes GSAP capture a mid-transition value as its baseline — the tiles then
+     settle at the from-state instead of their natural one. The lift comes from
+     elevation and the media zoom (on a child) instead. */
+  .bento-tile {
+    transition:
+      border-color var(--duration-normal) var(--easing-smooth),
+      background-color var(--duration-normal) var(--easing-smooth),
+      box-shadow var(--duration-normal) var(--easing-smooth);
+  }
+  /* Bevel: a lit top edge and a shadowed bottom edge inside the border, over a
+     cast shadow outside it. Both insets are hairlines — at any more it reads as
+     a 2008 button rather than a milled edge. */
+  .bento-tile {
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--neutral-0) 9%, transparent),
+      inset 0 -1px 0 color-mix(in srgb, var(--neutral-10) 45%, transparent),
+      var(--shadow-md);
+  }
+  .bento-tile:hover {
+    border-color: var(--line-strong);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--neutral-0) 16%, transparent),
+      inset 0 -1px 0 color-mix(in srgb, var(--neutral-10) 55%, transparent),
+      var(--shadow-xl);
+  }
+  .bento-tile.is-light {
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--neutral-0) 70%, transparent),
+      inset 0 -1px 0 color-mix(in srgb, var(--color-ash) 18%, transparent),
+      var(--shadow-md);
+  }
+  .bento-tile.is-link:hover { background: var(--surface-2); }
+  .bento-tile.is-link:focus-visible { outline: var(--focus-primary); outline-offset: var(--focus-offset); }
+  /* The number and mark pick up the accent as the tile wakes. */
+  .bento-tile:hover .bento-n,
+  .bento-tile:hover .bento-mark { color: var(--color-accent-primary); opacity: var(--opacity-100); }
+
+  /* Interaction as hierarchy: while the pointer is in the block, the tiles you
+     are not exploring recede and the one you are stays fully lit. No extra
+     chrome — the movement does the directing.
+     `filter` deliberately, not `opacity`: GSAP owns opacity for the enter/exit
+     and writes it inline, which CSS could not override. */
+  .bento-tile { transition-property: border-color, background-color, box-shadow, filter; }
+  .bento:hover .bento-tile { filter: brightness(0.66) saturate(0.8); }
+  .bento .bento-tile:hover { filter: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* The recede is a state change, not motion, so it stays — but instantly. */
+    .bento-tile,
+    .bento-caption,
+    .bento-media img,
+    .bento-media video { transition: none; }
+    .bento-tile.is-link:hover { transform: none; }
+    .bento-tile:hover .bento-media img,
+    .bento-tile:hover .bento-media video { transform: scale(1.015); }
+    /* The caption is content, not decoration — show it rather than hide it. */
+    .bento-caption { opacity: var(--opacity-100); transform: none; }
+  }
+</style>
+
+<script>
+  /* Clips ship preload="none"; they only fetch once their tile is on screen,
+     and pause again when it leaves. Never on page load. */
+  const initBentoVideo = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const videos = document.querySelectorAll<HTMLVideoElement>('[data-bento-video]');
+    if (!videos.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          const v = e.target as HTMLVideoElement;
+          if (e.isIntersecting) v.play().catch(() => {});
+          else v.pause();
+        });
+      },
+      { rootMargin: '10% 0px', threshold: 0.15 }
+    );
+    videos.forEach((v) => io.observe(v));
+  };
+
+  /* Cursor invert. Position is written on rAF so we never lay out per
+     pointermove, and it only arms on devices that actually have a pointer. */
+  const initBentoCursor = () => {
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    document.querySelectorAll<HTMLElement>('.bento-block').forEach((block) => {
+      const dot = block.querySelector<HTMLElement>('[data-bento-cursor]');
+      if (!dot) return;
+
+      let x = 0;
+      let y = 0;
+      let queued = false;
+
+      const paint = () => {
+        queued = false;
+        dot.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1)`;
+      };
+
+      block.addEventListener('pointermove', (e) => {
+        const r = block.getBoundingClientRect();
+        x = e.clientX - r.left;
+        y = e.clientY - r.top;
+        if (!queued) {
+          queued = true;
+          requestAnimationFrame(paint);
+        }
+      });
+      block.addEventListener('pointerenter', () => block.classList.add('cursor-live'));
+      block.addEventListener('pointerleave', () => block.classList.remove('cursor-live'));
+    });
+  };
+
+  initBentoVideo();
+  initBentoCursor();
+  document.addEventListener('astro:page-load', () => {
+    initBentoVideo();
+    initBentoCursor();
+  });
+</script>

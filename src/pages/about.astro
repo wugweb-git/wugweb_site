@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBadges from '../components/TrustBadges.astro';
+import BentoBlock, { type BentoTile } from '../components/BentoBlock.astro';
 import { sanityClient, urlFor } from '../lib/sanity';
 import { singletonPageQuery, teamListQuery, siteSettingsQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
@@ -10,6 +11,16 @@ const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'about' }).c
 
 // Team fetched from Sanity (person docs)
 const sanityTeam = await sanityClient.fetch(teamListQuery).catch(() => []);
+
+/**
+ * Only people with an actual photograph appear in the grid — a card whose photo
+ * is a placeholder reads as a gap in the team, not a member of it. Wugweb
+ * Design is the house account, not a person, and shows the logo mark. Drop a
+ * real portrait in and it returns on its own.
+ */
+const PORTRAIT_STAND_INS = ['avatar-generic.svg', 'team-wugweb-design.png'];
+const hasRealPortrait = (t: any) =>
+  Boolean(t?.photoPath) && !PORTRAIT_STAND_INS.some((f) => String(t.photoPath).endsWith(f));
 
 const featuredToolNames = [
   'Figma',
@@ -30,6 +41,47 @@ const stackTools = featuredToolNames.map((name) => {
   return { name, iconPath: hit?.iconPath ? assetUrl(hit.iconPath) : null };
 });
 
+/**
+ * BentoBlock — "Why Wugweb?".
+ *
+ * Six tiles across three columns of two. Four always carry a reason; the other
+ * two are flexible slots (CTA, toolkit) that a variation can swap for media or
+ * another reason. Column, size and tone are data, so reshuffling the block does
+ * not touch the CSS.
+ *
+ * Sizes mirror the live section's proportions at a 1196px container:
+ *   tall 519 · mid 343 · short 250 · slim 172 · strip 90
+ */
+const whyReasons = [
+  {
+    title: 'Strategic Brand Vision',
+    body: 'Resonant brand foundations are architected through the synthesis of strategic insight and creative brilliance, driving measurable business growth.',
+  },
+  {
+    title: 'Data-Driven Brand Evolution',
+    body: 'Data and analytics inform brand strategy, optimizing brand performance and fueling sustainable brand evolution.',
+  },
+  {
+    title: 'Authentic Brand Storytelling',
+    body: "Brand's core essence is unearthed, crafting authentic narratives that forge emotional connections and inspire unwavering loyalty.",
+  },
+  {
+    title: 'Holistic Brand Experience Design',
+    body: 'Cohesive brand experiences are engineered across all touchpoints, ensuring consistency, impact, and a seamless customer journey.',
+  },
+];
+
+// Media goes through assetUrl() so it resolves to R2 in production instead of
+// hardcoding /assets/… — the same bypass that still exists on the homepage.
+const bentoTiles: BentoTile[] = [
+  { col: 0, span: 'tall',  ...whyReasons[0], tone: 'light', image: assetUrl('more/service/service_benefit_6.webp'), fit: 'cover' },
+  { col: 0, span: 'strip', kind: 'cta', href: '/contact-us', linkLabel: "Let's talk" },
+  { col: 1, span: 'short', ...whyReasons[1] },
+  { col: 1, span: 'mid',   ...whyReasons[2], video: assetUrl('more/about/about_7.mp4'), fit: 'inset' },
+  { col: 2, span: 'slim',  kind: 'stack', items: stackTools },
+  { col: 2, span: 'tall',  ...whyReasons[3], image: assetUrl('more/about/about_5.webp'), fit: 'cover' },
+];
+
 const heroText =
   (typeof page?.title === 'string' && page.title.length > 40 ? page.title : null) ||
   page?.body?.[0]?.children?.[0]?.text ||
@@ -40,9 +92,14 @@ const pageDescription =
   page?.seoDescription ||
   'Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.';
 
-const [caseCount, clientCount, settings] = await Promise.all([
+const [caseCount, clientCount, industryCount, settings] = await Promise.all([
   sanityClient.fetch(`count(*[_type == "caseStudy"])`).catch(() => 0),
   sanityClient.fetch(`count(*[_type == "client"])`).catch(() => 0),
+  // Distinct industries the work actually touches, not the size of the industry
+  // master (66 rows) — that would count sectors we have never shipped into.
+  sanityClient
+    .fetch(`count(array::unique(*[_type == "caseStudy" && defined(industry)].industry))`)
+    .catch(() => 0),
   sanityClient.fetch(siteSettingsQuery).catch(() => null),
 ]);
 
@@ -73,11 +130,14 @@ const fallbackStats = [
     copy: 'Creative solutions built with purpose.',
   },
   {
-    // No invented figures: retention is editor-provided via Studio `items`,
-    // or falls back to a neutral placeholder rather than a fake number.
-    n: fromSanityStats[2]?.n || '—',
-    label: 'Client Retention Rate',
-    copy: 'Long-term partnerships built on real results.',
+    // Was "Client Retention Rate", which had no source and rendered as an em
+    // dash — a blank card in a row of counters. A retention rate is a claim
+    // about the business that only the business can supply, so rather than
+    // invent one this slot now carries a figure the content itself proves.
+    // An editor can still override it from Studio `items`.
+    n: fromSanityStats[2]?.n || (industryCount ? `${industryCount}+` : '—'),
+    label: 'Industries served',
+    copy: 'Sector fluency built case by case.',
   },
   {
     n: clientCount ? `${clientCount}+` : '—',
@@ -120,34 +180,66 @@ const culture = [
   'We Create Trust', 'We listen closely', 'We define your value', 'We pivot',
   'We hustle', 'We form connections', 'We get cosy', 'We get our hands dirty',
 ];
+import TeamGrid from '../components/TeamGrid.astro';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <!-- HERO -->
   <section class="about-hero">
-    <video class="about-hero-video" autoplay muted loop playsinline
-      src="/assets/more/about/about-message.mp4" poster="/assets/about/about-section.jpg"></video>
-    <div class="about-hero-overlay"></div>
     <div class="wrap about-hero-content">
-      <h1 data-reveal>About Us</h1>
-      <p data-reveal>
-        {heroText}
+      <h1 class="page-title" data-reveal>About Us</h1>
+      <!-- PLACEHOLDER COPY — replace before launch. Sits under the page title
+           and is not sourced from Sanity yet. -->
+      <p class="about-hero-lede" data-reveal>
+        A product and experience architecture studio. We work across strategy,
+        brand, experience, engineering, growth and operations — one team, six
+        disciplines, and a single view of the thing being built.
       </p>
+    </div>
+    <!-- The film is still its own block rather than a page backdrop. The two
+         statements sit on it in `difference` blend, so each inverts against
+         whatever frame is behind it and stays legible without dimming the
+         footage. -->
+    <div class="wrap about-hero-media" data-reveal>
+      <div class="about-hero-frame">
+        <video autoplay muted loop playsinline
+          src="/assets/more/about/about-message.mp4"
+          poster="/assets/about/about-section.jpg"></video>
+        <p class="about-hero-statement is-lead">{heroText}</p>
+        <!-- PLACEHOLDER COPY — replace before launch. -->
+        <p class="about-hero-statement is-sub">
+          Built in Delhi and Dubai, shipping worldwide since {foundedYear}.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- STATS -->
   <section class="wrap stats" data-scroll="rise">
-    <ul>
-      {stats.map((s) => (
-        <li data-reveal>
-          <div class="stat-card">
-            <span class="stat-n">{s.n}</span>
-            <p class="stat-label">{s.label}</p>
-            <p class="stat-copy">{s.copy}</p>
-          </div>
-        </li>
-      ))}
+    <ul data-counters>
+      {stats.map((s) => {
+        // Split "57+" into the number to count and whatever trails it, so the
+        // suffix is never animated and a non-numeric value ("—") is left alone.
+        const m = String(s.n).match(/^(\d[\d,.]*)(.*)$/);
+        return (
+          <li data-reveal>
+            <div class="stat-card">
+              <span class="stat-n">
+                {m ? (
+                  <>
+                    <span class="stat-num" data-count-to={m[1].replace(/,/g, '')}>{m[1]}</span>
+                    <span class="stat-suffix">{m[2]}</span>
+                  </>
+                ) : (
+                  <span class="stat-num is-blank">{s.n}</span>
+                )}
+              </span>
+              <p class="stat-label">{s.label}</p>
+              <p class="stat-copy">{s.copy}</p>
+            </div>
+          </li>
+        );
+      })}
     </ul>
   </section>
 
@@ -197,32 +289,19 @@ const culture = [
   </section>
 
   <!-- TEAM -->
-  <section class="wrap team" data-scroll="rise">
-    <p class="eyebrow" data-reveal>The people behind the work</p>
-    <h2 data-reveal>Meet our team</h2>
-    <ul class="team-grid">
-      {sanityTeam.map((t: any) => (
-        <li data-reveal class="team-member">
-          <div class="team-media">
-            {t.photoPath
-              ? <img src={assetUrl(t.photoPath)} alt={t.name} loading="lazy" />
-              : (t.photo
-                ? <img src={urlFor(t.photo).width(400).height(400).url()} alt={t.name} loading="lazy" />
-                : <div class="team-placeholder"></div>)
-            }
-            <div class="team-overlay">
-              <p class="team-role">{t.role}</p>
-              <h3>{t.name}</h3>
-            </div>
-          </div>
-          <div class="team-info">
-            <h3>{t.name}</h3>
-            <p class="team-role">{t.role} at wugweb</p>
-          </div>
-        </li>
-      ))}
-    </ul>
-  </section>
+  <TeamGrid
+    members={sanityTeam.filter(hasRealPortrait).map((t: any) => ({
+      name: t.name,
+      role: t.role,
+      slug: t.slug,
+      photo: t.photoPath
+        ? assetUrl(t.photoPath)
+        : (t.photo ? urlFor(t.photo).width(600).height(800).url() : undefined),
+    }))}
+    eyebrow="The people behind the work"
+    heading="The faces behind the work."
+    headingLead={2}
+  />
 
   <!-- REVIEWS -->
   <section class="wrap reviews">
@@ -245,101 +324,111 @@ const culture = [
     </div>
   </section>
 
-  <!-- WHY WUGWEB — bento -->
-  <section class="wrap why-bento">
-    <h2 data-reveal>Why Wugweb?</h2>
-    <p class="why-bento-lede" data-reveal>
-      In a world clamoring for attention, your brand deserves more than fleeting visibility. It
-      requires a strategic partner that architects compelling narratives, cultivates authentic
-      connections, and engineers brand experiences designed to stand the test of time.
-    </p>
-
-    <div class="bento">
-      <article class="bento-tile tile-vision" data-reveal>
-        <div class="bento-body">
-          <h3>Strategic Brand Vision</h3>
-          <p>Resonant brand foundations are architected through the synthesis of strategic insight and creative brilliance, driving measurable business growth.</p>
-        </div>
-      </article>
-
-      <a href="/contact-us" class="bento-tile tile-cta" data-reveal>
-        <img src="/brand/logo-large.svg" alt="wugweb" width="149" height="54" />
-        <span>Let's talk</span>
-      </a>
-
-      <article class="bento-tile tile-data" data-reveal>
-        <div class="bento-body">
-          <h3>Data-Driven Brand Evolution</h3>
-          <p>Data and analytics inform brand strategy, optimizing brand performance and fueling sustainable brand evolution.</p>
-        </div>
-      </article>
-
-      <article class="bento-tile tile-story" data-reveal>
-        <div class="bento-body">
-          <h3>Authentic Brand Storytelling</h3>
-          <p>Brand's core essence is unearthed, crafting authentic narratives that forge emotional connections and inspire unwavering loyalty.</p>
-        </div>
-      </article>
-
-      <article class="bento-tile tile-stack" data-reveal>
-        <ul class="bento-stack">
-          {stackTools.map((t) => (
-            <li>
-              {t.iconPath ? <img src={t.iconPath} alt="" width="18" height="18" loading="lazy" /> : null}
-              {t.name}
-            </li>
-          ))}
-        </ul>
-      </article>
-
-      <article class="bento-tile tile-holistic" data-reveal>
-        <div class="bento-body">
-          <h3>Holistic Brand Experience Design</h3>
-          <p>Cohesive brand experiences are engineered across all touchpoints, ensuring consistency, impact, and a seamless customer journey.</p>
-        </div>
-      </article>
-    </div>
-  </section>
+  {/* BentoBlock — every axis (column, order, weight, kind, tone, media, fit,
+      interaction) is data, so a variation is a reordered array. The component
+      refuses to build if the weights are all equal or the columns match,
+      because a bento must never read as an even grid. */}
+  <BentoBlock
+    heading="Why Wugweb?"
+    lede="In a world clamoring for attention, your brand deserves more than fleeting visibility. It requires a strategic partner that architects compelling narratives, cultivates authentic connections, and engineers brand experiences designed to stand the test of time."
+    tiles={bentoTiles}
+  />
 
 </BaseLayout>
 
 <style>
-  .about-hero {
+  /* Display type from our own scale — `--t-display` (40→80px), the largest
+     size the system has. The reference sets its page title at 148px, which is
+     nearly twice that; matching it would have meant a bespoke clamp on one
+     page and a heading larger than anything else on the site. The reference's
+     *proportions* are kept instead: line-height just under 1, and a tight
+     optical tracking, both of which a display size needs and the body scale
+     does not. */
+  .about-hero { padding-block: var(--space-page-head) 0; }
+  .about-hero-content h1 { max-width: 16ch; }
+
+  /* The reference leaves ~347px between the title block and the film at
+     1380px — a quarter of the viewport. Held as a vw clamp so the interval
+     scales with the type rather than being a fixed gap that reads tight on a
+     large screen and enormous on a small one. */
+  /* --gap-12 is 48px, so the previous clamp's max sat below its own preferred
+     value and collapsed the interval to 48. Section spacing is the right scale
+     here: this is the break between the title block and the film, not a gap
+     between two elements. */
+  .about-hero-media { margin-top: var(--space-section-lg); }
+  @media (min-width: 1024px) { .about-hero-media { margin-top: var(--space-section-xl); } }
+  /* Ratio fixed at every breakpoint — the film is cropped to fit, never
+     stretched (governance §8). 2:1 matches the reference's 2.08. */
+  .about-hero-frame {
     position: relative;
-    min-height: 70svh;
-    display: flex;
-    align-items: flex-end;
+    border-radius: var(--radius-2xl);
     overflow: hidden;
   }
-  .about-hero-video {
-    position: absolute;
-    inset: 0;
+  .about-hero-media video {
+    display: block;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 2 / 1;
     object-fit: cover;
-    z-index: 0;
+    background: color-mix(in srgb, var(--neutral-8) 60%, transparent);
   }
-  .about-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, var(--hero-overlay) 0%, var(--hero-overlay-mid) 45%, var(--bg) 100%);
-    z-index: var(--z-overlay);
+  /* A light scrim still runs under the foot of the frame. It is not doing the
+     legibility work — `difference` handles that — it steadies the base so the
+     two statements do not flicker between light and dark as the film cuts. */
+  .about-hero-frame::after {
+    content: '';
+    position: absolute; inset: auto 0 0 0; height: 58%;
+    background: linear-gradient(to top,
+      color-mix(in srgb, var(--neutral-10) 55%, transparent) 8%,
+      transparent);
+    pointer-events: none;
   }
-  .about-hero-content {
-    position: relative;
-    z-index: var(--z-overlay);
-    padding-block: var(--space-section-lg);
+  /* `difference` inverts each line against whatever frame is behind it, so it
+     reads on a bright cut and a black one alike without dimming the footage.
+     It must stay white to invert cleanly — any other colour tints the result —
+     and the frame must not set `isolation`, or the blend has nothing to mix
+     against. */
+  .about-hero-statement {
+    position: absolute; left: 0; right: 0;
+    z-index: var(--layer-base);
+    margin: 0;
+    padding-inline: var(--gap-6);
+    color: var(--neutral-0);
+    mix-blend-mode: difference;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    pointer-events: none;
   }
-  .about-hero-content h1 {
-    font-size: var(--t-h2);
-    font-weight: var(--font-weight-semibold);
-    max-width: 26ch;
-    margin-bottom: var(--gap-4);
+  /* 2×: the clamp's floor, slope and cap are all doubled, so it scales the
+     same way it did — 34px on a phone up to 56px, from 17/27.
+     Measure drops with it: 34ch was set for 27px type and would run to roughly
+     the full frame at 56px, so it tightens to 22ch and keeps a readable line. */
+  .about-hero-statement.is-lead {
+    bottom: calc(var(--gap-6) + 3rem);
+    font-size: clamp(2.125rem, 2.2vw + 1.5rem, 3.5rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    max-width: 22ch;
   }
-  .about-hero-content p {
-    font-size: var(--t-body);
+  .about-hero-statement.is-sub {
+    bottom: var(--gap-6);
+    font-family: var(--font-mono);
+    font-size: clamp(0.9375rem, 0.2vw + 0.875rem, 1.125rem);
+    font-weight: var(--font-weight-medium);
+    opacity: var(--opacity-70);
+  }
+  @media (min-width: 768px) {
+    .about-hero-statement { padding-inline: var(--gap-8); }
+    .about-hero-statement.is-lead { bottom: calc(var(--gap-8) + 3.25rem); }
+    .about-hero-statement.is-sub { bottom: var(--gap-8); }
+  }
+
+  .about-hero-lede {
+    margin-top: var(--gap-6);
+    max-width: 52ch;
+    font-size: clamp(1rem, 0.45vw + 0.9rem, 1.25rem);
+    line-height: var(--core-line-height-relaxed);
     color: var(--fg-muted);
-    max-width: 50ch;
   }
 
   /* Stats */
@@ -353,16 +442,55 @@ const culture = [
   }
   @media (min-width: 768px) { .stats ul { grid-template-columns: repeat(4, 1fr); } }
   .stats li { list-style: none; }
+  /* Counters sit on the page's own dark surface. They were a light
+     #F4F4F4 card inheriting --fg (#f4f4f4) for its text — the label and copy
+     were white on white at 1.00 contrast and had never been readable. Same bug
+     the insights cards had. */
   .stat-card {
-    background: var(--neutral-1);
+    position: relative;
+    z-index: var(--layer-base);
+    height: 100%;
+    display: flex; flex-direction: column;
+    background: color-mix(in srgb, var(--neutral-8) 55%, transparent);
     border: var(--stroke-thin) solid var(--line);
     border-radius: var(--radius-lg);
-    padding: var(--gap-8);
-    transition: border-color 0.3s ease, transform 0.3s ease;
+    padding: var(--gap-6);
+    /* No transform: `data-reveal` is a GSAP tween on the <li> and owns it. */
+    transition: border-color var(--duration-normal) var(--easing-smooth),
+                background-color var(--duration-normal) var(--easing-smooth),
+                box-shadow var(--duration-normal) var(--easing-smooth),
+                filter var(--duration-normal) var(--easing-smooth);
   }
-  .stat-card:hover { border-color: var(--color-accent-primary); transform: translateY(-2px); }
-  .stat-n { font-family: var(--font-mono); font-size: var(--fluid-h2); font-weight: var(--font-weight-bold); color: var(--accent-warm); display: block; }
-  .stat-label { color: var(--fg); font-size: var(--fluid-body-md); font-weight: var(--font-weight-medium); margin-top: var(--gap-3); display: block; }
+  .stats ul:hover .stat-card { filter: brightness(0.7); }
+  .stats ul:hover .stat-card:hover { filter: none; }
+  .stat-card:hover {
+    border-color: color-mix(in srgb, var(--neutral-0) 22%, transparent);
+    background: color-mix(in srgb, var(--neutral-8) 80%, transparent);
+    box-shadow: var(--shadow-md);
+    z-index: var(--layer-card);
+  }
+  .stat-n {
+    display: flex; align-items: baseline; gap: 0.02em;
+    font-family: var(--font-mono);
+    font-size: var(--fluid-h1);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--fg);
+    /* Tabular figures so the number does not jitter horizontally while it
+       counts — the whole reason a counter can look cheap. */
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-suffix { color: var(--fg-muted); font-size: 0.55em; font-weight: var(--font-weight-semibold); }
+  .stat-num.is-blank { color: var(--fg-subtle); }
+  .stat-label {
+    margin-top: var(--gap-4);
+    padding-top: var(--gap-4);
+    border-top: var(--stroke-thin) solid color-mix(in srgb, var(--line) 80%, transparent);
+    color: var(--fg);
+    font-size: var(--fluid-body-md);
+    font-weight: var(--font-weight-semibold);
+  }
   .stat-copy { margin-top: var(--gap-2); font-size: var(--fluid-body-sm); color: var(--fg-muted); line-height: var(--core-line-height-relaxed); }
 
   /* Values */
@@ -371,16 +499,32 @@ const culture = [
   .values-list { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; gap: var(--gap-6); }
   @media (min-width: 768px) { .values-list { grid-template-columns: repeat(4, 1fr); } }
   .values-list li { list-style: none; }
+  /* Same fix as the counters: this was a light #F4F4F4 card whose h3
+     inherited --fg (#f4f4f4), so every value title — Bold, Adaptive, Distinct,
+     Start Smart — sat white on white at 1.00 contrast and had never once been
+     visible on the page. */
   .value-card {
-    background: var(--neutral-1);
+    position: relative;
+    z-index: var(--layer-base);
+    background: color-mix(in srgb, var(--neutral-8) 55%, transparent);
     border: var(--stroke-thin) solid var(--line);
     border-radius: var(--radius-lg);
-    padding: var(--gap-8);
+    padding: var(--gap-6);
     height: 100%;
-    transition: border-color 0.3s ease, transform 0.3s ease;
+    transition: border-color var(--duration-normal) var(--easing-smooth),
+                background-color var(--duration-normal) var(--easing-smooth),
+                box-shadow var(--duration-normal) var(--easing-smooth),
+                filter var(--duration-normal) var(--easing-smooth);
   }
-  .value-card:hover { border-color: color-mix(in srgb, var(--color-accent-primary) 40%, transparent); }
-  .value-n { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--color-accent-primary); display: block; margin-bottom: var(--gap-4); letter-spacing: 0.06em; }
+  .values-list:hover .value-card { filter: brightness(0.7); }
+  .values-list:hover .value-card:hover { filter: none; }
+  .value-card:hover {
+    border-color: color-mix(in srgb, var(--neutral-0) 22%, transparent);
+    background: color-mix(in srgb, var(--neutral-8) 80%, transparent);
+    box-shadow: var(--shadow-md);
+    z-index: var(--layer-card);
+  }
+  .value-n { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); display: block; margin-bottom: var(--gap-4); letter-spacing: 0.06em; }
   .value-card h3 { font-size: var(--fluid-h4); font-weight: var(--font-weight-semibold); color: var(--fg); }
   .value-card p { margin-top: var(--gap-3); font-size: var(--fluid-body-sm); color: var(--fg-muted); line-height: var(--core-line-height-relaxed); }
 
@@ -404,74 +548,6 @@ const culture = [
   .culture-grid li:hover { border-color: var(--color-accent-primary); color: var(--fg); }
 
   /* Team */
-  .team { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .team h2 { font-size: var(--t-h3); margin-top: var(--gap-4); }
-  .team-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-6); }
-  @media (min-width: 640px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
-  .team-member { list-style: none; }
-  .team-media {
-    position: relative;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    aspect-ratio: 3/4;
-  }
-  .team-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-  .team-member:hover .team-media img { transform: scale(1.06); }
-  .team-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: var(--gap-5);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .team-member:hover .team-overlay { opacity: 1; }
-  .team-overlay h3 { color: #fff; font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); }
-  .team-overlay .team-role { color: rgba(255,255,255,0.75); margin-top: var(--gap-1); }
-  .team-info { margin-top: var(--gap-4); }
-  .team-info h3 { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); }
-  .team-role { font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--fg-muted); margin-top: var(--gap-1); display: block; }
-  .team-placeholder { width: 100%; aspect-ratio: 3/4; background: var(--neutral-2); border-radius: var(--radius-lg); }
-
-  .why-bento { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
-  .why-bento h2 { font-size: var(--t-h2); }
-  .why-bento-lede { margin-top: var(--gap-5); max-width: 75ch; }
-  .bento { display: grid; gap: var(--gap-4); margin-top: var(--gap-12); grid-template-columns: 1fr; }
-  @media (min-width: 700px) { .bento { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(180px, auto); } }
-  .bento-tile { background: var(--surface); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-lg); padding: var(--gap-6); display: flex; flex-direction: column; justify-content: flex-end; min-height: var(--bento-min); }
-  .bento-tile h3 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); line-height: var(--lh-tight); }
-  .bento-tile p { margin-top: var(--gap-2); font-size: var(--fluid-body-sm); line-height: var(--core-line-height-relaxed); }
-  .tile-vision { background: var(--neutral-1); border-color: transparent; }
-  .tile-vision h3 { color: var(--color-ash); }
-  .tile-vision p { color: var(--fg); opacity: var(--opacity-soft); }
-  .tile-cta { flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--gap-2); min-height: 0; text-decoration: none; color: var(--fg); font-family: var(--font-mono); font-size: var(--fluid-label); letter-spacing: .04em; text-transform: uppercase; transition: border-color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
-  .tile-cta:hover { background: var(--surface-2); border-color: var(--line-strong); }
-  .tile-cta img { height: var(--gap-8); width: auto; }
-  .tile-stack { justify-content: center; }
-  .bento-stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
-  .bento-stack li { font-family: var(--font-mono); font-size: var(--fluid-caption); padding: var(--gap-2) var(--gap-3); border: var(--stroke-thin) solid var(--line-strong); border-radius: var(--r-pill); color: var(--fg-muted); display: inline-flex; align-items: center; gap: var(--gap-2); }
-  .bento-stack li img { width: var(--gap-5); height: var(--gap-5); object-fit: contain; flex-shrink: 0; }
-
-  .closing-cta {
-    padding-block: var(--space-section-lg);
-    border-top: var(--stroke-thin) solid var(--line);
-    text-align: center;
-  }
-  .closing-cta h2 {
-    font-size: var(--t-h2);
-    margin-top: var(--gap-3);
-  }
-  .closing-cta p {
-    margin: var(--gap-4) auto 0;
-    max-width: 50ch;
-  }
-  .closing-cta .btn {
-    margin-top: var(--gap-8);
-  }
 
   .reviews { padding-block: var(--space-section-lg); }
   .reviews h2 { font-size: var(--t-h3); max-width: 20ch; }
@@ -482,3 +558,56 @@ const culture = [
   .review-source { font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--fg-muted); }
 </style>
 
+<script>
+  /**
+   * Counters. Each number counts from zero to its own value once its list
+   * scrolls in, then never again — a figure that re-rolls every time you pass
+   * it reads as decoration rather than a fact.
+   *
+   * Only the digits animate; any suffix ("+", "%") is a separate span, and a
+   * non-numeric value is left exactly as authored. `tabular-nums` on the parent
+   * keeps the width steady so nothing jitters while it runs.
+   */
+  function initCounters() {
+    const groups = document.querySelectorAll<HTMLElement>('[data-counters]');
+    if (groups.length === 0) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const run = (el: HTMLElement) => {
+      const target = Number(el.dataset.countTo);
+      if (!Number.isFinite(target)) return;
+      if (reduced) { el.textContent = String(target); return; }
+      const dur = 1100;
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / dur);
+        // ease-out cubic: fast off the mark, settles onto the figure
+        const v = Math.round(target * (1 - Math.pow(1 - t, 3)));
+        el.textContent = String(v);
+        if (t < 1) requestAnimationFrame(step);
+        else el.textContent = String(target);
+      };
+      requestAnimationFrame(step);
+    };
+
+    groups.forEach((group) => {
+      if (group.dataset.countBound === '1') return;
+      group.dataset.countBound = '1';
+      const nums = Array.from(group.querySelectorAll<HTMLElement>('[data-count-to]'));
+      if (nums.length === 0) return;
+      nums.forEach((n) => { if (!reduced) n.textContent = '0'; });
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          io.disconnect();
+          nums.forEach((n, i) => setTimeout(() => run(n), i * 90));
+        });
+      }, { threshold: 0.4 });
+      io.observe(group);
+    });
+  }
+
+  initCounters();
+  document.addEventListener('astro:page-load', initCounters);
+</script>

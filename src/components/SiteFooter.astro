@@ -96,6 +96,7 @@ const footerLinks = [
   }
 
   .footer-links a, .footer-action-btn {
+    position: relative;
     text-decoration: none;
     color: var(--fg-muted);
     background: none;
@@ -104,10 +105,39 @@ const footerLinks = [
     font-family: inherit;
     font-size: inherit;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: color var(--duration-normal) var(--easing-out);
   }
 
-  .footer-links a:hover, .footer-action-btn:hover {
-    color: var(--fg);
+  /* Rule wipes in from the left on hover and leaves to the right, so the
+     direction tells you whether you are arriving or going. `transform` on a
+     pseudo-element, so nothing reflows and the link's own box never moves —
+     an animated `text-decoration` or a height change would nudge its
+     neighbours on a wrapped row. */
+  .footer-links a::after, .footer-action-btn::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -0.25em;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform var(--duration-normal) var(--easing-out);
+  }
+  .footer-links a:hover, .footer-action-btn:hover,
+  .footer-links a:focus-visible, .footer-action-btn:focus-visible { color: var(--fg); }
+  .footer-links a:hover::after, .footer-action-btn:hover::after,
+  .footer-links a:focus-visible::after, .footer-action-btn:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  /* Hovering the row pushes the rest back, the same interaction-as-hierarchy
+     rule the FAQ, Bento and Process Map use. */
+  .footer-links:hover a, .footer-links:hover .footer-action-btn { color: var(--fg-subtle); }
+  .footer-links:hover a:hover, .footer-links:hover .footer-action-btn:hover { color: var(--fg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-links a, .footer-action-btn,
+    .footer-links a::after, .footer-action-btn::after { transition: none; }
   }
 </style>

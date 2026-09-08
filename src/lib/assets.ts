@@ -14,7 +14,10 @@
 const R2_BASE =
   (typeof import.meta !== 'undefined' &&
     (import.meta as ImportMeta & { env?: Record<string, string> }).env?.PUBLIC_R2_ASSETS_BASE) ||
-  'https://pub-39ad1d03baec440faf48303be95c3782.r2.dev';
+  // Custom domain on the same bucket. The r2.dev subdomain
+  // (https://pub-39ad1d03baec440faf48303be95c3782.r2.dev) still serves the same
+  // keys and remains the fallback if the domain is ever unbound.
+  'https://wugweb.online';
 
 function normalizeAssetPath(input: string): string {
   const trimmed = input.trim();
