@@ -1,0 +1,211 @@
+---
+/**
+ * TokenGallery — swatch/spec reference for the Kits design tokens, built for
+ * Storybook so the token map lives next to the components that consume it.
+ *
+ * Data comes from `src/lib/design-tokens.ts`, the same module `/kits` (the
+ * production-facing showcase page) reads from — one source, two audiences.
+ * This component renders nothing on the live site; it exists for Storybook
+ * only (see `TokenGallery.stories.ts`).
+ */
+import {
+  secondaryColors,
+  neutrals,
+  pillars,
+  typographySpecimens,
+  spacingRamp,
+  radiusRamp,
+  opacityRamp,
+  motionEasings,
+} from '../lib/design-tokens';
+
+export type TokenSection = 'colors' | 'typography' | 'spacing' | 'radius' | 'opacity' | 'motion';
+
+interface Props {
+  sections?: TokenSection[];
+}
+
+const ALL: TokenSection[] = ['colors', 'typography', 'spacing', 'radius', 'opacity', 'motion'];
+const { sections = ALL } = Astro.props;
+const show = (s: TokenSection) => sections.includes(s);
+---
+
+<div class="token-gallery">
+  {show('colors') && (
+    <section class="tg-section">
+      <h2>Colors</h2>
+
+      <h3>Service pillars</h3>
+      <div class="tg-grid tg-grid-pillars">
+        {pillars.map((p) => (
+          <div class="tg-swatch" style={`background:${p.gradient};`}>
+            <span class="tg-swatch-name">{p.name}</span>
+            <span class="tg-swatch-meta">{p.baseHex} · {p.desc}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3>Secondary / accent</h3>
+      <div class="tg-grid">
+        {secondaryColors.map((c) => (
+          <div class="tg-swatch" style={`background:${c.hex};`}>
+            <span class="tg-swatch-name" style={c.hex === '#FFBE1A' || c.hex === '#C9C9C9' ? 'color:#000' : ''}>{c.name}</span>
+            <span class="tg-swatch-meta" style={c.hex === '#FFBE1A' || c.hex === '#C9C9C9' ? 'color:#000' : ''}>{c.hex} · {c.token}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3>Neutrals</h3>
+      <div class="tg-grid tg-grid-neutrals">
+        {neutrals.map((n) => (
+          <div class="tg-swatch tg-swatch-sm" style={`background:${n.hex};`}>
+            <span class="tg-swatch-meta" style={parseInt(n.hex.slice(1), 16) > 0x808080 ? 'color:#000' : ''}>{n.token}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {show('typography') && (
+    <section class="tg-section">
+      <h2>Typography</h2>
+      <div class="tg-type-list">
+        {typographySpecimens.map((t) => (
+          <div class="tg-type-row">
+            <div class="tg-type-meta">
+              <code>{t.token}</code>
+              <span>{t.role} · {t.weight} · {t.px} · lh {t.line}</span>
+            </div>
+            <p class="tg-type-sample" style={`font-size:var(${t.token}); font-weight:${t.weight}; line-height:${t.line};`}>
+              {t.sample}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {show('spacing') && (
+    <section class="tg-section">
+      <h2>Spacing</h2>
+      <div class="tg-spacing-list">
+        {spacingRamp.map((s) => (
+          <div class="tg-spacing-row">
+            <code>{s.token}</code>
+            <span class="tg-spacing-bar" style={`width:var(${s.token});`}></span>
+            <span>{s.px}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {show('radius') && (
+    <section class="tg-section">
+      <h2>Radius</h2>
+      <div class="tg-grid tg-grid-radius">
+        {radiusRamp.map((r) => (
+          <div class="tg-radius-tile" style={`border-radius:${r.val};`}>
+            <code>{r.token}</code>
+            <span>{r.val}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {show('opacity') && (
+    <section class="tg-section">
+      <h2>Opacity</h2>
+      <div class="tg-grid tg-grid-opacity">
+        {opacityRamp.map((o) => (
+          <div class="tg-opacity-tile">
+            <span class="tg-opacity-fill" style={`opacity:${o.val.replace('%', '')}%;`}></span>
+            <code>{o.token}</code>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {show('motion') && (
+    <section class="tg-section">
+      <h2>Motion easings</h2>
+      <div class="tg-motion-list">
+        {motionEasings.map((m) => (
+          <div class="tg-motion-row">
+            <code>{m.token}</code>
+            <span>{m.name}</span>
+            <span class="tg-motion-cubic">{m.cubic}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+</div>
+
+<style>
+  .token-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-12, 3rem);
+    padding: var(--p-8, 2rem);
+    background: var(--neutral-9, #050505);
+    color: var(--color-text-primary, #f4f4f4);
+  }
+  .tg-section h2 {
+    font-size: var(--fluid-h3, 1.5rem);
+    margin-bottom: var(--gap-4, 1rem);
+  }
+  .tg-section h3 {
+    font-size: var(--fluid-body-md, 1rem);
+    color: var(--color-text-secondary, #bababa);
+    margin: var(--gap-6, 1.5rem) 0 var(--gap-2, 0.5rem);
+  }
+  .tg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--gap-3, 0.75rem);
+  }
+  .tg-grid-pillars { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .tg-grid-neutrals { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+  .tg-grid-radius { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .tg-grid-opacity { grid-template-columns: repeat(6, 1fr); }
+
+  .tg-swatch {
+    border-radius: var(--radius-sm, 8px);
+    padding: var(--gap-4, 1rem);
+    min-height: 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .tg-swatch-sm { min-height: 56px; justify-content: center; align-items: center; }
+  .tg-swatch-name { font-weight: 600; font-size: 0.8rem; }
+  .tg-swatch-meta { font-size: 0.7rem; opacity: 0.85; font-family: var(--font-mono, monospace); }
+
+  .tg-type-row { padding: var(--gap-3, 0.75rem) 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .tg-type-meta { display: flex; gap: 0.75rem; font-size: 0.75rem; color: var(--color-text-secondary, #bababa); margin-bottom: 0.35rem; }
+  .tg-type-meta code { color: var(--color-yellow, #ffbe1a); }
+  .tg-type-sample { margin: 0; }
+
+  .tg-spacing-row { display: flex; align-items: center; gap: var(--gap-3, 0.75rem); padding: 0.35rem 0; font-size: 0.8rem; }
+  .tg-spacing-row code { width: 6rem; color: var(--color-yellow, #ffbe1a); }
+  .tg-spacing-bar { height: 10px; background: var(--color-aqua, #09e2c0); border-radius: 2px; display: inline-block; }
+
+  .tg-radius-tile {
+    background: var(--neutral-7, #2b2b2b);
+    padding: var(--gap-4, 1rem);
+    display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.75rem;
+  }
+  .tg-radius-tile code { color: var(--color-yellow, #ffbe1a); }
+
+  .tg-opacity-tile { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; font-size: 0.65rem; text-align: center; }
+  .tg-opacity-fill { width: 100%; height: 48px; background: var(--color-aqua, #09e2c0); border-radius: var(--radius-xs, 4px); }
+
+  .tg-motion-row { display: flex; gap: 1rem; padding: 0.4rem 0; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .tg-motion-row code { color: var(--color-yellow, #ffbe1a); width: 10rem; }
+  .tg-motion-cubic { color: var(--color-text-secondary, #bababa); font-family: var(--font-mono, monospace); font-size: 0.7rem; }
+</style>

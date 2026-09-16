@@ -16,3 +16,6 @@ Wugweb_Brand_OS_Foundation/
 .wrangler/
 assets used previously/
 mapped assets/
+
+# Storybook build output (dev-only tooling, not deployed)
+storybook-static/

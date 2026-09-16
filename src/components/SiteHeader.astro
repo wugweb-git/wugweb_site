@@ -356,26 +356,8 @@ function isActive(href: string) {
 </style>
 
 <script>
-  const nav = document.getElementById('site-nav');
-  const toggle = document.getElementById('nav-toggle');
-  if (nav && toggle) {
-    const setOpen = (open) => {
-      nav.dataset.open = open ? 'true' : 'false';
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      document.body.style.overflow = open && window.matchMedia('(max-width: 767px)').matches ? 'hidden' : '';
-    };
-
-    toggle.addEventListener('click', () => {
-      setOpen(nav.dataset.open !== 'true');
-    });
-
-    nav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setOpen(false));
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.matchMedia('(min-width: 768px)').matches) setOpen(false);
-    });
-  }
+  // Behaviour lives in src/lib/site-header.ts so Storybook can run it too.
+  import { initSiteHeader } from '../lib/site-header';
+  initSiteHeader();
+  document.addEventListener('astro:page-load', initSiteHeader);
 </script>

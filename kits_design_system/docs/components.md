@@ -52,12 +52,15 @@
   - ~~Capability Bento Tiles~~ — **superseded on `/services/brand` by the Service Spotlight Panel (block 7)**. Still live on the other five pillars as `.caps-grouped` / `.cap-group`.
   - Toolkit Icon Grid: 89 official brand/tech SVG icons (`/assets/tools/*.svg`), `--radius-full` container, `--ts-label-sm` labels
 
-### 3. Footer Device Backdrop Banner — `src/components/FooterCTA.astro`
-- **Purpose**: High-impact CTA banner positioned above the footer links.
+### 3. Footer CTA Banner — `src/components/FooterCTA.astro`
+- **Purpose**: The yellow device-backdrop CTA banner above the footer, on every page that doesn't opt out via `hideGlobalSections`. Extracted out of `BaseLayout.astro` into its own component 2026-09-16 — this doc named the file before it existed as one.
+- **Storybook**: `Blocks/Footer CTA` — Default, No social discs, Custom copy.
 - **Tokens & Graphics**:
-  - Container: Elevated ash panel (`--color-surface-elevated`), `--radius-2xl` (24px), `--shadow-xl`
-  - Backdrop Graphics: Layered laptop (`public/brand/cta/laptop-mockup.png`) and mobile phone mockups positioned behind text
-  - Button: Yellow accent button (`--color-yellow`), `#000` text, `--radius-sm` (8px), hover translateY(-2px)
+  - Container: Flat brand yellow (`--color-yellow`), `--radius-2xl` (24px) — the one place the yellow-≤10% rule is allowed to fill a surface, since it's the page's single loudest note, once, at the foot.
+  - Backdrop device art (`public/brand/cta/laptop.png` + `mobile.png`) is present in markup but `display: none` — on yellow, at any opacity that keeps text legible, the PNGs read as flat dark slabs rather than devices. Left in place so the art can return if the panel ever goes dark again.
+  - Social discs: draggable, physics-driven (`src/lib/ball-field.ts`) — bounce off the panel edges, squash on impact, react to device tilt on mobile. Live platforms only (`socialDiscs` prop, filtered upstream to profiles with a real `profileUrl`).
+  - Button: dark button on yellow (`--neutral-10` bg), `--radius-sm`, inverted from the site-wide `.btn-solid`.
+  - Motion: entry/exit + scroll drift via `data-scroll="banner"` (`scroll-animations.ts`); hover uses `filter`/`box-shadow` only — never `opacity`/`transform`, which the banner's own GSAP timeline owns.
 
 ### 4. Work Portfolio Grid — `src/pages/work/index.astro`
 - **Purpose**: Case study showcase with discipline/pillar filter bar and media cards.

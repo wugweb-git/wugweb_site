@@ -583,62 +583,8 @@ if (columnSignatures.length > 1 && new Set(columnSignatures).size === 1) {
 </style>
 
 <script>
-  /* Clips ship preload="none"; they only fetch once their tile is on screen,
-     and pause again when it leaves. Never on page load. */
-  const initBentoVideo = () => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const videos = document.querySelectorAll<HTMLVideoElement>('[data-bento-video]');
-    if (!videos.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          const v = e.target as HTMLVideoElement;
-          if (e.isIntersecting) v.play().catch(() => {});
-          else v.pause();
-        });
-      },
-      { rootMargin: '10% 0px', threshold: 0.15 }
-    );
-    videos.forEach((v) => io.observe(v));
-  };
-
-  /* Cursor invert. Position is written on rAF so we never lay out per
-     pointermove, and it only arms on devices that actually have a pointer. */
-  const initBentoCursor = () => {
-    if (!window.matchMedia('(hover: hover)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    document.querySelectorAll<HTMLElement>('.bento-block').forEach((block) => {
-      const dot = block.querySelector<HTMLElement>('[data-bento-cursor]');
-      if (!dot) return;
-
-      let x = 0;
-      let y = 0;
-      let queued = false;
-
-      const paint = () => {
-        queued = false;
-        dot.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1)`;
-      };
-
-      block.addEventListener('pointermove', (e) => {
-        const r = block.getBoundingClientRect();
-        x = e.clientX - r.left;
-        y = e.clientY - r.top;
-        if (!queued) {
-          queued = true;
-          requestAnimationFrame(paint);
-        }
-      });
-      block.addEventListener('pointerenter', () => block.classList.add('cursor-live'));
-      block.addEventListener('pointerleave', () => block.classList.remove('cursor-live'));
-    });
-  };
-
-  initBentoVideo();
-  initBentoCursor();
-  document.addEventListener('astro:page-load', () => {
-    initBentoVideo();
-    initBentoCursor();
-  });
+  // Behaviour lives in src/lib/bento-block.ts so Storybook can run it too.
+  import { initBentoBlock } from '../lib/bento-block';
+  initBentoBlock();
+  document.addEventListener('astro:page-load', initBentoBlock);
 </script>

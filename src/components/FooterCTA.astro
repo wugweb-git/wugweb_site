@@ -1,0 +1,264 @@
+---
+/**
+ * FooterCTA — the yellow device-backdrop banner above the footer, on every
+ * page that doesn't opt out via `hideGlobalSections`.
+ *
+ * Extracted out of `BaseLayout.astro` (2026-09-16) to match what
+ * `kits_design_system/docs/components.md` already documented — the doc named
+ * this file before it existed as one. Behaviour: entry/exit + scroll drift is
+ * GSAP (`data-scroll="banner"`, owned by `src/lib/scroll-animations.ts`);
+ * the draggable social discs are `src/lib/ball-field.ts`. Full spec:
+ * `kits_design_system/docs/blocks/` (device-art note below).
+ *
+ * The laptop/mobile device art is not drawn — it was designed to sit behind
+ * a 92% black gradient on an earlier dark panel; on yellow, at any opacity
+ * that keeps the type legible, the PNGs read as two flat dark slabs rather
+ * than devices. The markup stays in `cta-backdrop` (display: none) so the art
+ * can return if the panel ever goes dark again.
+ */
+export interface SocialDisc {
+  platform: string;
+  profileUrl: string;
+}
+
+interface Props {
+  socialDiscs?: SocialDisc[];
+  heading?: string;
+  copy?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  socialDiscs = [],
+  heading = "We speak your Industry's language.",
+  copy = 'Partner with Wugweb for domain-driven design and development that delivers.',
+  ctaLabel = 'Request Quote',
+  ctaHref = '/contact-us',
+} = Astro.props;
+
+/** Inline glyphs — no icon dependency and no new assets. */
+const SOCIAL_GLYPH: Record<string, string> = {
+  facebook: 'M13.5 8.5h-2v7h-2.5v-7H7.5V6.4h1.5V5.1c0-1.6.7-2.6 2.6-2.6h1.6v2.1h-1c-.7 0-.8.3-.8.8v1h1.8l-.7 2.1Z',
+  instagram: 'M5.8 2.5h6.4a3.3 3.3 0 0 1 3.3 3.3v6.4a3.3 3.3 0 0 1-3.3 3.3H5.8a3.3 3.3 0 0 1-3.3-3.3V5.8a3.3 3.3 0 0 1 3.3-3.3ZM9 6.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Zm3.9-.9a.8.8 0 1 0 0 1.6.8.8 0 0 0 0-1.6Z',
+  pinterest: 'M9 2.5a6.5 6.5 0 0 0-2.4 12.5c-.06-.53-.11-1.35.02-1.93l.78-3.3s-.2-.4-.2-.98c0-.92.53-1.6 1.2-1.6.57 0 .84.42.84.93 0 .57-.36 1.42-.55 2.2-.16.66.33 1.2.98 1.2 1.18 0 2.08-1.24 2.08-3.03 0-1.58-1.14-2.69-2.76-2.69a2.86 2.86 0 0 0-2.98 2.87c0 .57.22 1.18.5 1.51a.2.2 0 0 1 .04.19l-.19.76c-.03.12-.1.15-.22.09-.83-.39-1.35-1.6-1.35-2.58 0-2.1 1.53-4.03 4.4-4.03 2.31 0 4.11 1.65 4.11 3.85 0 2.3-1.45 4.14-3.46 4.14-.68 0-1.31-.35-1.53-.77l-.42 1.59c-.15.58-.55 1.31-.82 1.76A6.5 6.5 0 1 0 9 2.5Z',
+  x: 'M3.2 2.8h3l3.1 4.2 3.5-4.2h1.9l-4.5 5.3 4.8 6.5h-3l-3.3-4.5-3.7 4.5H3l4.8-5.7L3.2 2.8Z',
+  youtube: 'M15.6 6.1a1.9 1.9 0 0 0-1.3-1.4C13.1 4.4 9 4.4 9 4.4s-4.1 0-5.3.3A1.9 1.9 0 0 0 2.4 6.1C2.1 7.3 2.1 9 2.1 9s0 1.7.3 2.9a1.9 1.9 0 0 0 1.3 1.4c1.2.3 5.3.3 5.3.3s4.1 0 5.3-.3a1.9 1.9 0 0 0 1.3-1.4c.3-1.2.3-2.9.3-2.9s0-1.7-.3-2.9ZM7.7 11.2V6.8L11.4 9l-3.7 2.2Z',
+};
+const glyphFor = (p: string) => SOCIAL_GLYPH[String(p).toLowerCase().replace(/[^a-z]/g, '')] || null;
+---
+
+<section class="wrap global-final-cta" data-scroll="banner">
+  <span class="cta-sheen" aria-hidden="true"></span>
+  {socialDiscs.length > 0 && (
+    <div class="cta-balls" data-ball-field aria-label="Wugweb on social media">
+      {socialDiscs.map((sd) => {
+        const glyph = glyphFor(sd.platform);
+        return glyph ? (
+          <a class="cta-ball" data-ball href={sd.profileUrl}
+             target="_blank" rel="noopener noreferrer" title={sd.platform}>
+            <span class="sr-only">{sd.platform}</span>
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d={glyph} /></svg>
+          </a>
+        ) : null;
+      })}
+    </div>
+  )}
+  <div class="cta-backdrop" aria-hidden="true">
+    <img class="cta-device cta-laptop" src="/brand/cta/laptop.png" alt="" width="1140" height="350" loading="lazy" />
+    <img class="cta-device cta-mobile" src="/brand/cta/mobile.png" alt="" width="350" height="500" loading="lazy" />
+  </div>
+  <!-- No `data-reveal` on these: the banner's own timeline
+       (`data-scroll="banner"`) animates the heading, copy and button.
+       Leaving data-reveal here put two GSAP tweens on the same opacity and
+       transform, and the heading stuck at opacity 0. -->
+  <h2>{heading}</h2>
+  <div class="final-cta-inner">
+    <div class="final-cta-copy">
+      <p>{copy}</p>
+    </div>
+    <a href={ctaHref} class="btn btn-solid">{ctaLabel}</a>
+  </div>
+</section>
+
+<script>
+  // Behaviour lives in src/lib/ball-field.ts so Storybook can run it too.
+  import { initBallField } from '../lib/ball-field';
+  initBallField();
+  document.addEventListener('astro:page-load', initBallField);
+</script>
+
+<style>
+  /* Flat brand yellow, no gradient wash — the CTA is meant to read visually
+     as the page's single loudest note: one banner, at the foot, after the
+     argument is made. It was previously a dark panel with a 92% black
+     gradient over the device art, which made it the quietest block on the
+     page instead of the last word. */
+  .global-final-cta {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-yellow);
+    border: var(--stroke-thin) solid transparent;
+    border-radius: var(--radius-2xl, 24px);
+    margin-block: var(--space-section-xl);
+    padding: var(--space-section-lg) var(--space-page-lg);
+    /* Taller than the reference's 350px: the disc field takes the bottom
+       62%, so the copy needs room above it that the discs never drift into. */
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--gap-10);
+    transition: box-shadow var(--duration-slow) var(--easing-smooth),
+                filter var(--duration-normal) var(--easing-smooth);
+    will-change: transform;
+  }
+  /* The laptop/mobile device art is not drawn — see file header note. */
+  .cta-backdrop { display: none; }
+
+  .global-final-cta:hover {
+    box-shadow: 0 24px 70px color-mix(in srgb, var(--color-yellow) 22%, transparent);
+    filter: brightness(1.04);
+  }
+
+  /* A wide, soft band of light. It drifts across the panel as the page
+     scrolls (scrubbed, owned by `data-scroll="banner"`), and lifts in
+     opacity under the pointer. Sits above the flat yellow and below the
+     copy. */
+  .cta-sheen {
+    position: absolute;
+    top: -40%;
+    left: -30%;
+    width: 60%;
+    height: 180%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.45;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      color-mix(in srgb, var(--neutral-0) 42%, transparent) 45%,
+      color-mix(in srgb, var(--neutral-0) 42%, transparent) 55%,
+      transparent 100%
+    );
+    filter: blur(28px);
+    transition: opacity var(--duration-slow) var(--easing-smooth);
+  }
+  .global-final-cta:hover .cta-sheen { opacity: 0.75; }
+
+  .global-final-cta .final-cta-inner { position: relative; z-index: var(--layer-card); }
+
+  /* ── Social discs ──────────────────────────────────────────────────────
+     Positioned by `src/lib/ball-field.ts`, which owns `transform` on each
+     disc. Nothing here may animate transform: the squash keyframes below
+     are the one exception and they run on `scale` only, a separate
+     property, so they compose with the solver's translate instead of
+     overwriting it. A band along the foot, not the whole panel — the discs
+     are meant to sit in the bottom of the box and be cropped by its edge.
+     `z-index: 0` keeps the whole field behind the copy. */
+  .cta-balls {
+    position: absolute;
+    left: 0; right: 0; bottom: -14%;
+    height: 62%;
+    z-index: var(--layer-background);
+    touch-action: none;
+  }
+  .cta-ball {
+    position: absolute;
+    top: 0; left: 0;
+    width: clamp(3.5rem, 7vw, 6.5rem);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: var(--neutral-0);
+    color: var(--neutral-10);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--neutral-10) 22%, transparent);
+    cursor: grab;
+    will-change: transform;
+    transition: box-shadow var(--duration-normal) var(--easing-out),
+                scale var(--duration-fast) var(--easing-out);
+  }
+  .cta-ball svg { width: 42%; height: 42%; fill: currentColor; display: block; }
+  .cta-ball:hover {
+    scale: 1.08;
+    box-shadow: 0 14px 36px color-mix(in srgb, var(--neutral-10) 34%, transparent);
+  }
+  .cta-ball:focus-visible { outline: var(--focus-primary); outline-offset: 3px; }
+  .cta-ball.is-held {
+    cursor: grabbing;
+    scale: 1.14;
+    box-shadow: 0 20px 48px color-mix(in srgb, var(--neutral-10) 42%, transparent);
+    z-index: var(--layer-popover);
+  }
+  /* Impact squash — perpendicular to the wall that was hit. */
+  .cta-ball.is-squash-x { animation: ball-squash-x 220ms var(--easing-out); }
+  .cta-ball.is-squash-y { animation: ball-squash-y 220ms var(--easing-out); }
+  @keyframes ball-squash-x {
+    0%   { scale: 1 1; }
+    35%  { scale: 0.82 1.16; }
+    100% { scale: 1 1; }
+  }
+  @keyframes ball-squash-y {
+    0%   { scale: 1 1; }
+    35%  { scale: 1.16 0.82; }
+    100% { scale: 1 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta-ball { transition: none; animation: none !important; }
+    .global-final-cta, .cta-sheen { transition: none; }
+    .cta-sheen { display: none; }
+  }
+
+  .final-cta-inner {
+    position: relative;
+    z-index: var(--layer-base);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--gap-6);
+    margin-top: auto;
+  }
+  .final-cta-copy { max-width: 60ch; }
+  /* The heading leads the panel; the supporting line sits with the button. */
+  .global-final-cta h2 {
+    position: relative;
+    z-index: var(--layer-card);
+    font-size: var(--fluid-h2);
+    max-width: 20ch;
+    color: var(--neutral-10);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--core-line-height-tight);
+    letter-spacing: -0.02em;
+  }
+  .global-final-cta p {
+    margin: 0;
+    max-width: 52ch;
+    font-size: var(--fluid-body-md);
+    color: color-mix(in srgb, var(--neutral-10) 78%, transparent);
+  }
+  /* Inverted against the panel: dark button on yellow, not yellow on dark. */
+  .global-final-cta .btn {
+    background: var(--neutral-10);
+    border-color: var(--neutral-10);
+    color: var(--neutral-1);
+    border-radius: var(--radius-sm);
+    flex: 0 0 auto;
+    transition: background var(--duration-normal) var(--easing-out),
+                color var(--duration-normal) var(--easing-out);
+  }
+  .global-final-cta .btn:hover {
+    background: transparent;
+    border-color: var(--neutral-10);
+    color: var(--neutral-10);
+  }
+  @media (min-width: 1024px) {
+    .global-final-cta { min-height: 560px; }
+  }
+  @media (max-width: 700px) {
+    .global-final-cta { min-height: 400px; padding-block: var(--space-section-md); gap: var(--gap-8); }
+    .cta-laptop { bottom: -20%; width: 80%; }
+    .cta-mobile { display: none; }
+  }
+</style>

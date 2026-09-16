@@ -13,7 +13,9 @@
     "sanity:dev": "cd sanity && npm run dev",
     "sanity:build": "cd sanity && npm run build",
     "sanity:deploy": "cd sanity && npm run deploy",
-    "sanity:health": "node sanity/test_sanity.mjs"
+    "sanity:health": "node sanity/test_sanity.mjs",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.0.0",
@@ -28,12 +30,20 @@
     "react-dom": "^18.3.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.3.1",
     "@cloudflare/workers-types": "^5.20260729.1",
+    "@storybook-astro/framework": "^1.12.0",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-vitest": "^10.6.0",
+    "@storybook/builder-vite": "^10.6.0",
+    "@storybook/react": "^10.6.0",
     "@types/pg": "^8.11.0",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "csv-parse": "^7.0.1",
+    "storybook": "^10.6.0",
     "typescript": "^5.5.0",
+    "vitest": "^4.1.11",
     "wrangler": "^4.114.0"
   },
   "allowScripts": {}

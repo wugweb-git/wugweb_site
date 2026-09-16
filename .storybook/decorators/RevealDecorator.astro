@@ -1,0 +1,27 @@
+---
+/**
+ * Global Storybook decorator — wraps every story so `[data-reveal]` /
+ * `[data-scroll]` markup isn't stuck at `opacity: 0`.
+ *
+ * `global.css` ships `[data-reveal] { opacity: 0; }` and relies on
+ * `initScrollAnimations()` (normally called once from `BaseLayout.astro`) to
+ * tween it back in via GSAP ScrollTrigger. A component story never goes
+ * through `BaseLayout`, so without this it renders invisible content that is
+ * genuinely in the DOM — confusing to debug from a screenshot alone.
+ *
+ * This is a bare-component decorator (`decorators: [RevealDecorator]` in
+ * preview.ts), the sugar form documented for Astro stories. Its own
+ * `<script>` ships as part of the same rendered HTML document the story does
+ * — component `<script>` tags run in the Storybook preview the same way they
+ * do on the live site, they just aren't wired up by anything outside a real
+ * page load, which is what this decorator stands in for.
+ */
+---
+<slot />
+
+<script>
+  import { initScrollAnimations } from '../../src/lib/scroll-animations';
+  // ScrollTrigger's own refresh on load fires `once: true` entrances that are
+  // already in view, so most stories reveal immediately without scrolling.
+  initScrollAnimations();
+</script>
