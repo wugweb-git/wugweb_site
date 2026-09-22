@@ -180,13 +180,13 @@ const show = (s: TokenSection) => sections.includes(s);
     flex-direction: column;
     justify-content: flex-end;
     gap: 2px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: var(--stroke-thin) solid rgba(255,255,255,0.08);
   }
   .tg-swatch-sm { min-height: 56px; justify-content: center; align-items: center; }
   .tg-swatch-name { font-weight: 600; font-size: 0.8rem; }
   .tg-swatch-meta { font-size: 0.7rem; opacity: 0.85; font-family: var(--font-mono, monospace); }
 
-  .tg-type-row { padding: var(--gap-3, 0.75rem) 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .tg-type-row { padding: var(--gap-3, 0.75rem) 0; border-bottom: var(--stroke-thin) solid rgba(255,255,255,0.08); }
   .tg-type-meta { display: flex; gap: 0.75rem; font-size: 0.75rem; color: var(--color-text-secondary, #bababa); margin-bottom: 0.35rem; }
   .tg-type-meta code { color: var(--color-yellow, #ffbe1a); }
   .tg-type-sample { margin: 0; }
@@ -205,7 +205,7 @@ const show = (s: TokenSection) => sections.includes(s);
   .tg-opacity-tile { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; font-size: 0.65rem; text-align: center; }
   .tg-opacity-fill { width: 100%; height: 48px; background: var(--color-aqua, #09e2c0); border-radius: var(--radius-xs, 4px); }
 
-  .tg-motion-row { display: flex; gap: 1rem; padding: 0.4rem 0; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .tg-motion-row { display: flex; gap: 1rem; padding: 0.4rem 0; font-size: 0.8rem; border-bottom: var(--stroke-thin) solid rgba(255,255,255,0.08); }
   .tg-motion-row code { color: var(--color-yellow, #ffbe1a); width: 10rem; }
   .tg-motion-cubic { color: var(--color-text-secondary, #bababa); font-family: var(--font-mono, monospace); font-size: 0.7rem; }
 </style>

@@ -473,7 +473,7 @@ if (currentList) {
   .portable-text-content :global(.pt-h2) {
     font-size: var(--fluid-h2, 1.75rem);
     line-height: 1.25;
-    border-top: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+    border-top: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
     padding-top: var(--space-5, 2rem);
   }
 
@@ -490,7 +490,7 @@ if (currentList) {
   .portable-text-content :global(.pt-blockquote) {
     margin: var(--space-4, 1.5rem) 0;
     padding: var(--space-3, 1rem) var(--space-4, 1.5rem);
-    border-left: 3px solid var(--color-accent-primary, #FFBE1A);
+    border-left: var(--stroke-medium) solid var(--color-accent-primary, #FFBE1A);
     background: color-mix(in srgb, var(--color-accent-primary) 3%, transparent);
     border-radius: 0 var(--radius-sm, 6px) var(--radius-sm, 6px) 0;
     font-style: italic;
@@ -535,7 +535,7 @@ if (currentList) {
     padding: 0.15em 0.45em;
     border-radius: var(--radius-xs, 4px);
     font-size: 0.875em;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.08);
   }
 
   /* Adaptive Media (Images & Videos) */
@@ -549,7 +549,7 @@ if (currentList) {
   .pt-media-inner {
     border-radius: var(--radius-md, 10px);
     overflow: hidden;
-    border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+    border: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
     background: var(--neutral-8, #1A1A1A);
   }
 
@@ -595,7 +595,7 @@ if (currentList) {
     gap: var(--space-3, 1rem);
     margin: var(--space-5, 2rem) 0;
     background: radial-gradient(circle at top center, color-mix(in srgb, var(--color-accent-primary) 8%, transparent) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.1));
+    border: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.1));
   }
 
   .pt-cta-heading {
@@ -632,7 +632,7 @@ if (currentList) {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
-    border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+    border: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
     background: rgba(255, 255, 255, 0.02);
   }
 
@@ -674,7 +674,7 @@ if (currentList) {
     border-radius: var(--radius-md, 8px);
     overflow: hidden;
     padding: var(--space-3, 1rem) var(--space-4, 1.25rem);
-    border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+    border: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
     background: rgba(255, 255, 255, 0.02);
     transition: background 0.2s ease, border-color 0.2s ease;
   }
@@ -714,7 +714,7 @@ if (currentList) {
     color: var(--color-text-secondary, #bababa);
     font-size: var(--fluid-body-sm, 0.875rem);
     line-height: 1.6;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: var(--stroke-thin) solid rgba(255, 255, 255, 0.05);
     padding-top: 0.75rem;
   }
 
@@ -771,7 +771,7 @@ if (currentList) {
     overflow: hidden;
     margin: var(--space-4, 1.5rem) 0;
     background: var(--neutral-9, #050505);
-    border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+    border: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
     width: 100%;
   }
 
@@ -781,7 +781,7 @@ if (currentList) {
     align-items: center;
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: var(--stroke-thin) solid rgba(255, 255, 255, 0.06);
   }
 
   .pt-code-lang {
@@ -792,17 +792,17 @@ if (currentList) {
     background: color-mix(in srgb, var(--color-accent-primary) 8%, transparent);
     padding: 2px 6px;
     border-radius: var(--radius-xs, 4px);
-    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 20%, transparent);
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--color-accent-primary) 20%, transparent);
   }
 
   .pt-code-copy-btn {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-xs, 4px);
     color: var(--color-text-secondary, #bababa);
     font-size: 0.7rem;
     font-family: var(--core-font-family-mono, monospace);
-    padding: 2px 8px;
+    padding: 2px var(--gap-2);
     cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
@@ -863,7 +863,7 @@ if (currentList) {
   }
 
   .portable-text-content :global(a.pt-internal-link) {
-    border-bottom: 1px dashed var(--color-accent-primary, #FFBE1A);
+    border-bottom: var(--stroke-thin) dashed var(--color-accent-primary, #FFBE1A);
     text-decoration: none;
   }
 
@@ -877,7 +877,7 @@ if (currentList) {
     padding: var(--space-4, 1.25rem) var(--space-5, 1.5rem);
     border-radius: var(--radius-md, 10px);
     margin: var(--space-4, 1.5rem) 0;
-    border-left: 4px solid var(--color-accent-primary, #FFBE1A);
+    border-left: var(--stroke-thick) solid var(--color-accent-primary, #FFBE1A);
     background: rgba(255, 255, 255, 0.02);
     display: flex;
     flex-direction: column;
@@ -943,7 +943,7 @@ if (currentList) {
     padding: var(--space-5, 1.75rem);
     border-radius: var(--radius-lg, 12px);
     margin: var(--space-5, 2rem) 0;
-    border-left: 3px solid var(--color-accent-primary, #FFBE1A);
+    border-left: var(--stroke-medium) solid var(--color-accent-primary, #FFBE1A);
     background: color-mix(in srgb, var(--color-accent-primary) 2%, transparent);
     display: flex;
     flex-direction: column;
@@ -974,7 +974,7 @@ if (currentList) {
     height: 40px;
     border-radius: var(--radius-full, 9999px);
     object-fit: cover;
-    border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.15));
+    border: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.15));
   }
 
   .pt-quote-meta {
@@ -1026,13 +1026,13 @@ if (currentList) {
     text-align: left;
     background: rgba(255, 255, 255, 0.04);
     color: var(--color-text-primary, #f4f4f4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: var(--stroke-thin) solid rgba(255, 255, 255, 0.08);
     font-weight: var(--font-weight-semibold, 600);
   }
 
   .pt-comparison-table td {
     padding: 10px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: var(--stroke-thin) solid rgba(255, 255, 255, 0.04);
   }
 
   .pt-comparison-table tr:hover td {

@@ -571,7 +571,7 @@ if (!service) {
   /* Base Glass Panel Utilities */
   .glass-panel {
     background: color-mix(in srgb, var(--neutral-8) 60%, transparent);
-    border: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent);
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--neutral-0) 12%, transparent);
     backdrop-filter: var(--glass-medium);
     -webkit-backdrop-filter: var(--glass-medium);
     border-radius: var(--radius-lg);
@@ -619,7 +619,7 @@ if (!service) {
     font-family: var(--font-mono); 
     font-size: var(--t-micro); 
     padding: var(--gap-2) var(--gap-5); 
-    border: 1px solid color-mix(in srgb, var(--theme-base) 60%, transparent); 
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--theme-base) 60%, transparent); 
     border-radius: var(--r-pill); 
     color: var(--neutral-0);
     background: color-mix(in srgb, var(--theme-base) 15%, transparent);
@@ -982,7 +982,7 @@ if (!service) {
     font-size: var(--fluid-label);
     color: var(--fg-muted);
     text-decoration: none;
-    border-bottom: 1px solid color-mix(in srgb, var(--fg-muted) 40%, transparent);
+    border-bottom: var(--stroke-thin) solid color-mix(in srgb, var(--fg-muted) 40%, transparent);
     transition: color var(--duration-normal) var(--easing-out),
                 border-color var(--duration-normal) var(--easing-out);
   }
@@ -999,7 +999,7 @@ if (!service) {
     color: var(--theme-base);
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-mono); font-size: var(--t-sm);
-    border: 1px solid color-mix(in srgb, var(--theme-base) 30%, transparent);
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--theme-base) 30%, transparent);
   }
 
 
@@ -1011,7 +1011,7 @@ if (!service) {
   .framework-phase { padding: var(--gap-8); }
   .framework-phase-title { font-size: var(--fluid-body-md); font-weight: var(--font-weight-semibold); color: var(--theme-base); margin-bottom: var(--gap-4); }
   .framework-outcome { color: var(--fg); font-size: var(--fluid-body-sm); line-height: var(--core-line-height-normal); }
-  .framework-includes { list-style: none; margin: var(--gap-6) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); border-top: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent); padding-top: var(--gap-4);}
+  .framework-includes { list-style: none; margin: var(--gap-6) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); border-top: var(--stroke-thin) solid color-mix(in srgb, var(--neutral-0) 12%, transparent); padding-top: var(--gap-4);}
   .framework-includes li { font-size: var(--fluid-body-sm); color: var(--fg-muted); position: relative; padding-left: var(--gap-4); }
   .framework-includes li::before { content: '→'; position: absolute; left: 0; color: var(--theme-base); }
 
@@ -1024,7 +1024,7 @@ if (!service) {
   .toolkit-category:hover { transform: translateY(-4px); }
   .toolkit-category-header { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--theme-base); margin-bottom: var(--gap-4); text-transform: uppercase; letter-spacing: var(--tracking-label); }
   .toolkit-items { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
-  .toolkit-items li { display: inline-flex; align-items: center; gap: var(--gap-2); font-size: var(--fluid-label); padding: var(--gap-1) var(--gap-3); border: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent); border-radius: var(--r-pill); color: var(--fg-muted); background: color-mix(in srgb, var(--neutral-8) 40%, transparent);}
+  .toolkit-items li { display: inline-flex; align-items: center; gap: var(--gap-2); font-size: var(--fluid-label); padding: var(--gap-1) var(--gap-3); border: var(--stroke-thin) solid color-mix(in srgb, var(--neutral-0) 12%, transparent); border-radius: var(--r-pill); color: var(--fg-muted); background: color-mix(in srgb, var(--neutral-8) 40%, transparent);}
   .toolkit-items li img { flex-shrink: 0; opacity: .9; transition: opacity var(--duration-fast) var(--easing-out); }
   /* The chips were inert — 89 of them on a page, none reacting to the pointer. */
   .toolkit-items li {
