@@ -301,25 +301,6 @@ const { tags } = Astro.props;
   @media (min-width: 1024px) {
     .tag-field { --tag-chip: 2.75rem; --tag-chip-glyph: var(--gap-6); }
   }
-  /* Audit §8: "pill positions expressed as a percentage of the field, clamped
-     so each pill's right edge stays inside the field". The authored offsets go
-     up to 55%, which assumes a desktop-width field. On a phone the field is
-     ~358px and a pill is ~278px (padding 32 + gaps 24 + index 16 + label ~170
-     + chip 36), so anything past ~22% hung over the right edge and was cut off
-     by the field's `overflow: hidden` — four of the six tags. Clamping the
-     offset keeps every tag at one size and preserves their left-to-right
-     order, rather than shrinking each pill independently. Keyed off the field
-     itself, not the viewport, so it holds wherever the block is used.
-
-     This is the FIRST-PAINT half of the clamp. `clampToField()` in
-     draggable-tags.ts does the authoritative pass with real measured widths,
-     after fonts settle and on every resize, and wins via inline style. Without
-     the rule below, tags paint at their authored offsets and are then yanked
-     left once that runs — this removes the jump. Keep the two in step: if the
-     pill's intrinsic width changes, update the 17.5rem here too. */
-  @container (max-width: 34rem) {
-    .tag { left: min(var(--tag-x, 0%), calc(100% - 17.5rem)); }
-  }
 
   .tag-face:hover .tag-toggle { background: color-mix(in srgb, var(--neutral-10) 16%, transparent); }
   .tag.is-open .tag-toggle { transform: rotate(45deg); }

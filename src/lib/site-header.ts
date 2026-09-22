@@ -41,7 +41,18 @@ export function initSiteHeader(): void {
       body.style.insetInline = '';
       body.style.width = '';
       locked = false;
-      window.scrollTo(0, lockedScrollY);
+      /* Read a layout property first. Clearing `position: fixed` does not
+         restore the document's scroll height until layout is recalculated, so
+         an immediate scrollTo clamps against the collapsed height and lands
+         near the top before the browser corrects it - a visible flash. */
+      void body.offsetHeight;
+      /* `behavior: 'instant'` is required, not cosmetic: global.css sets
+         `html { scroll-behavior: smooth }`, which a plain scrollTo obeys - so
+         restoring the offset ANIMATED the page from the top back down to it,
+         measured climbing 0 -> 1 -> 4.5 -> 11 -> 21.5 across successive frames.
+         Closing the menu visibly flew the page back. This restores in one
+         frame, which is what a scroll lock is supposed to look like. */
+      window.scrollTo({ top: lockedScrollY, left: 0, behavior: 'instant' });
     }
   };
 
