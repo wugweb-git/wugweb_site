@@ -34,11 +34,16 @@ const PILLARS = [
 /** Authored positions/rotations, matching how the reference gives every tag
  *  its own placement and tilt. */
 const LAYOUT: { title: string; slug: string; pos: [number, number]; rot: number }[] = [
-  { title: 'Strategy',    slug: 'strategy',    pos: [6, 8],   rot: -6 },
-  { title: 'Brand',       slug: 'brand',       pos: [52, 2],  rot: 4 },
-  { title: 'Experience',  slug: 'experience',  pos: [30, 30], rot: -3 },
-  { title: 'Engineering', slug: 'engineering', pos: [2, 52],  rot: 7 },
-  { title: 'Growth',      slug: 'growth',      pos: [55, 46], rot: -5 },
+  /* y values spread so no two pills sit closer than ~12% apart. At a 480px
+     field that is ~58px against pills ~80px tall, which still overlaps by
+     design (it is a pile) but never far enough to cover a label. Previously
+     Brand/Strategy and Growth/Engineering were 6% apart - 29px - and the
+     upper pill hid the lower one's word once nowrap made them full width. */
+  { title: 'Strategy',    slug: 'strategy',    pos: [6, 10],  rot: -6 },
+  { title: 'Brand',       slug: 'brand',       pos: [52, 0],  rot: 4 },
+  { title: 'Experience',  slug: 'experience',  pos: [30, 26], rot: -3 },
+  { title: 'Engineering', slug: 'engineering', pos: [2, 40],  rot: 7 },
+  { title: 'Growth',      slug: 'growth',      pos: [55, 54], rot: -5 },
   { title: 'Operations',  slug: 'operations',  pos: [26, 68], rot: 6 },
 ];
 

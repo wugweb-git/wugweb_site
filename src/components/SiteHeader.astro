@@ -92,9 +92,12 @@ function isActive(href: string) {
     z-index: 50;
     /* The bar floats inset from the screen edge; under viewport-fit=cover
        that edge is behind the notch, so the insets are added to the gutter. */
-    padding: calc(var(--safe-top) + var(--gap-4))
-             calc(var(--safe-right) + var(--gap-4)) 0
-             calc(var(--safe-left) + var(--gap-4));
+    /* Audit §3 nav inset, decided: a single fluid 16→32 rather than the old
+       site's stepped 16/32/20, which was non-monotonic - it narrowed again at
+       desktop and made the nav narrower than the content it sits over. */
+    padding: calc(var(--safe-top) + var(--shell-inset))
+             calc(var(--safe-right) + var(--shell-inset)) 0
+             calc(var(--safe-left) + var(--shell-inset));
     background: transparent;
   }
 

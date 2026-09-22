@@ -41,16 +41,32 @@
   --ts-code-size: 0.875rem;      /* 14px */
 
   /* Fluid type scale (Kits §3.5) — primary sizes for marketing pages */
-  --fluid-display: clamp(2.5rem, 5.5vw + 0.5rem, 5rem);       /* ~40→80 · weight 800 */
-  --fluid-h1: clamp(2rem, 4vw + 0.5rem, 3rem);                /* ~32→48 · 700 */
-  --fluid-h2: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);         /* ~24→36 · 600 */
-  --fluid-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);        /* ~20→28 · 600 */
-  --fluid-h4: clamp(1.06rem, 1vw + 0.5rem, 1.375rem);         /* ~17→22 · 600 */
-  --fluid-body-lg: clamp(1rem, 0.5vw + 0.875rem, 1.25rem);    /* ~16→20 · 400 */
-  --fluid-body-md: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem); /* 15→16 · 400 */
-  --fluid-body-sm: clamp(0.8125rem, 0.1vw + 0.8rem, 0.875rem);/* 13→14 · 400 */
-  --fluid-label: clamp(0.75rem, 0.1vw + 0.73rem, 0.875rem);   /* 12→14 · 500 */
-  --fluid-caption: clamp(0.625rem, 0.05vw + 0.62rem, 0.75rem);/* 10→12 · 400 */
+  /* Re-anchored 2026-09-23 (UI audit §4.1). The previous scale's vw terms were
+     far too small relative to its minimums, so every tier sat on its floor
+     until roughly 580-640px - on every phone the scale was effectively static
+     AND smaller than the old site. The worst case was --fluid-caption, whose
+     0.05vw meant it stayed at 10px until about 2500px; that is the 10.1px
+     eyebrow measured on the live homepage against the old site's 12px.
+
+     These anchor min at 360px and max at 1280px - the same point the width
+     lock uses - and hold beyond it. Above 1440px the root scale takes over
+     (see :root below), so they keep growing proportionally rather than
+     stopping dead.
+
+     Note this deliberately overrides kits_design_system/docs/tokens/
+     typography.md, which documents the old values. The audit says Kits wins
+     on conflicts; here Kits IS the defect, so the doc follows the code. */
+  --fluid-display: clamp(3rem, 2.217rem + 3.478vw, 5rem);        /* 48→80 · 800 */
+  --fluid-h1: clamp(2.25rem, 1.957rem + 1.304vw, 3rem);          /* 36→48 · 700 */
+  --fluid-h2: clamp(1.875rem, 1.728rem + 0.652vw, 2.25rem);      /* 30→36 · 600 */
+  --fluid-h3: clamp(1.3125rem, 1.239rem + 0.326vw, 1.5rem);      /* 21→24 · 600 */
+  --fluid-h4: clamp(1.125rem, 1.076rem + 0.217vw, 1.25rem);      /* 18→20 · 600 */
+  --fluid-h5: clamp(1rem, 0.902rem + 0.435vw, 1.25rem);          /* 16→20 · 600 */
+  --fluid-body-lg: clamp(1rem, 0.951rem + 0.217vw, 1.125rem);    /* 16→18 · 400 */
+  --fluid-body-md: clamp(0.875rem, 0.826rem + 0.217vw, 1rem);    /* 14→16 · 400 */
+  --fluid-body-sm: clamp(0.8125rem, 0.788rem + 0.109vw, 0.875rem);/* 13→14 · 400 */
+  --fluid-label: 1rem;                                           /* 16 flat · 500 */
+  --fluid-caption: clamp(0.75rem, 0.701rem + 0.217vw, 0.875rem); /* 12→14 · 400 */
 
   /* Graphic display tier (UI audit §4.2) — for type used as a graphic, not
      for reading. Sizes to its CONTAINER (cqi), never to the viewport, so a
@@ -69,7 +85,7 @@
   --t-h2: var(--fluid-h2);
   --t-h3: var(--fluid-h3);
   --t-h4: var(--fluid-h4);
-  --t-h5: var(--ts-h4-size); /* Kits has no H5; map to H4 static 20px */
+  --t-h5: var(--fluid-h5);
   --t-h6: var(--ts-body-sm-size);
   --t-xl: var(--fluid-body-lg);
   --t-l: var(--fluid-body-lg);
@@ -564,6 +580,9 @@
   --focus-offset: 2px;
 
   /* Component sizes (documented in kits sizing.md) */
+  /* Audit §3: one fluid inset for the nav and any shell-level gutter,
+     replacing the old site's stepped 16/32/20 which reversed at desktop. */
+  --shell-inset: clamp(1rem, 0.4rem + 1.7vw, 2rem);
   --nav-height: 4.875rem;
   --control-size: 44px;
   --pillar-thumb: 88px;
@@ -885,6 +904,29 @@ summary:focus-visible {
 @media (min-width: 1024px) {
   .wrap { padding-inline: var(--space-page-lg); }
 }
+
+/* Section tones. The old site builds depth by alternating four darks across
+   sections (#050505 body, #000000, #191919, #2B2B2B); the new site painted
+   none of them and sat flat on the page colour. These paint full-bleed from
+   inside a .wrap section - the pseudo-element escapes the content column via
+   100vw, so a section keeps its measure while its tone spans the screen.
+   z-index: -1 puts the tone behind the section's own content but still above
+   the page canvas. */
+.tone-recessed,
+.tone-elevated { position: relative; }
+.tone-recessed::before,
+.tone-elevated::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+}
+.tone-recessed::before { background: var(--neutral-10); }
+.tone-elevated::before { background: var(--color-surface-elevated); }
 
 /* Full-viewport page container with 1440px cap */
 .page {

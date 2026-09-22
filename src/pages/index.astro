@@ -164,7 +164,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   </section>
 
   <!-- SERVICES TEASER -->
-  <section class="wrap services" id="services-content" data-scroll="rise">
+  <section class="wrap services tone-recessed" id="services-content" data-scroll="rise">
     <p class="eyebrow" data-reveal>What we do</p>
     <h2 data-reveal>Crafting UI, UX, and Brand Systems that drive meaning</h2>
     <p class="services-lede" data-reveal>
@@ -206,7 +206,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   <ClientAssemblyGrid logos={realLogos} />
 
   <!-- INDUSTRIES WE EMPOWER -->
-  <section class="industries-section" data-scroll="rise">
+  <section class="industries-section tone-elevated" data-scroll="rise">
     <div class="wrap industries-head">
       <p class="eyebrow" data-reveal>Industries We Empower</p>
       <h2 data-reveal>We understand the context behind the product.</h2>
@@ -266,8 +266,12 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   .hero-content {
     position: relative;
     z-index: 2;
-    margin-top: auto;
-    padding-bottom: var(--space-section-xl);
+    /* Was margin-top: auto, which pinned the block to the foot of a
+       full-height hero and put the headline 70-82% down the first screen.
+       The old site sits it at ~35%; centring lands near that without
+       hard-coding an offset that drifts as the copy changes. */
+    margin-block: auto;
+    padding-bottom: var(--space-section-lg);
   }
 
   .hero-headline {

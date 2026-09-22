@@ -375,7 +375,11 @@ const otherCases = await Promise.all(others.map((s: any) =>
   }
   .badge-challenge { background: rgba(250, 65, 8, 0.15); color: var(--svc-strategy); border: var(--stroke-thin) solid rgba(250, 65, 8, 0.3); }
   .badge-solution { background: rgba(62, 210, 25, 0.15); color: var(--color-feedback-success); border: var(--stroke-thin) solid rgba(62, 210, 25, 0.3); }
-  .badge-gold { background: rgba(255, 208, 0, 0.15); color: #ffd000; border: var(--stroke-thin) solid rgba(255, 208, 0, 0.3); }
+  .badge-gold {
+    background: color-mix(in srgb, var(--color-accent-primary) 15%, transparent);
+    color: var(--color-accent-primary);
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
+  }
 
   .item-list {
     list-style: none;
@@ -444,7 +448,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
   }
   .impact-title {
     font-size: var(--fluid-body-lg);
-    color: var(--color-accent-primary, #ffd000);
+    color: var(--color-accent-primary);
   }
   .impact-desc {
     margin: 0;
@@ -469,7 +473,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
   .result-metric {
     font-size: var(--fluid-h2, 2.25rem);
     font-weight: var(--font-weight-bold);
-    color: var(--color-accent-primary, #ffd000);
+    color: var(--color-accent-primary);
   }
   .result-label {
     font-size: var(--fluid-body-sm);
