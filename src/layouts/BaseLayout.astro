@@ -47,12 +47,16 @@ const defaultDesc = settings?.seoDescription || 'Wugweb is a digital experience 
 const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
   : '/brand/og-default.png';
+// `/brand/favicon.svg` is `logo-small.svg`'s mark on a black rounded-square
+// backdrop — logo-small.svg itself stays transparent-background since it's
+// also used as a plain inline mark (services/[slug].astro's Approach CTA),
+// where a badge background would be wrong.
 const defaultFavicon = settings?.favicon
   ? urlFor(settings.favicon).width(32).url()
-  : '/brand/logo-small.svg';
+  : '/brand/favicon.svg';
 const defaultAppleTouch = settings?.favicon
   ? urlFor(settings.favicon).width(180).url()
-  : '/brand/logo-small.svg';
+  : '/brand/favicon.svg';
 const copyrightText = settings?.copyright || '© 2020–2026 Wugweb. All rights reserved.';
 const siteEmail = settings?.contactEmail || 'hello@wugweb.com';
 
