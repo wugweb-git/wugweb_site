@@ -58,3 +58,22 @@ export const Default: Story = {
 export const Empty: Story = {
   args: { value: [] },
 };
+
+/**
+ * All four callout types + a code block. Exercises the token mapping fixed
+ * 2026-09-22 — every colour here should resolve to a real global.css token
+ * (--color-blue / --color-feedback-success / --color-feedback-error /
+ * --color-accent-primary), not an invented literal.
+ */
+export const CalloutsAndCode: Story = {
+  name: 'Callouts & code',
+  args: {
+    value: [
+      { _type: 'callout', type: 'info', title: 'Info', text: 'A neutral note worth calling out.' },
+      { _type: 'callout', type: 'success', title: 'Success', text: 'This worked as intended.' },
+      { _type: 'callout', type: 'warning', title: 'Warning', text: 'Something needs attention before shipping.' },
+      { _type: 'callout', type: 'quote', title: 'Quote', text: 'A pulled quote, given the accent treatment.' },
+      { _type: 'code', language: 'ts', code: "export function initFaq(): void {\n  // ...\n}" },
+    ],
+  },
+};
