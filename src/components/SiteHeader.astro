@@ -227,13 +227,23 @@ function isActive(href: string) {
   /* Mobile expanded = same bar grows to fit the viewport (~698px on a
      375×812 phone), never taller. One scroll container, no nested scroll. */
   .site-header-inner[data-open='true'] {
-    /* Audit §7.3: this was a flat 100dvh, but .site-header adds its own top
-       padding above it, so the open card was that padding taller than the
-       screen and its foot was cut off. Subtract what sits above it. */
-    max-height: calc(100dvh - var(--safe-top) - var(--gap-4));
+    /* Full-height sheet rather than a card that hugs its content. The old
+       Framer menu stopped at ~80% of the viewport (measured 677px of 844px);
+       this fills the screen instead, per audit §7's "open menu covers the
+       full screen".
+       Insets are mirrored top and bottom so it still reads as the same
+       floating card the closed bar is, and both safe-area insets are
+       subtracted - .site-header supplies the top one, so failing to subtract
+       it is what made the card overflow before (audit §7.3).
+       svh first as the fallback: browsers without dvh take it, and it is the
+       stable小 viewport so the sheet never grows past the screen when the
+       address bar retracts. */
+    height: calc(100svh - var(--safe-top) - var(--safe-bottom) - var(--gap-4) * 2);
+    height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - var(--gap-4) * 2);
+    max-height: none;
     display: flex;
     flex-direction: column;
-    padding-bottom: var(--gap-6);
+    padding-bottom: calc(var(--safe-bottom) + var(--gap-6));
     overflow-y: auto;
     /* Audit §7: the card scrolls internally on short screens without handing
        the overscroll to the page behind it. */
