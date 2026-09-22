@@ -20,7 +20,13 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-a11y',
     '@chromatic-com/storybook',
-    '@storybook/addon-vitest'
+    // '@storybook/addon-vitest' removed 2026-09-23 — permanently incompatible
+    // with @storybook-astro/framework, not a config gap. Its CLI hard-codes a
+    // 12-entry framework allowlist (react-vite, vue3-vite, svelte-vite, …) in
+    // AddonVitestService.constants.ts and rejects anything outside it before
+    // any vitest.config wiring is even reached — see
+    // node_modules/storybook/dist/_node-chunks/chunk-XGT335GY.js,
+    // validateCompatibility(). No Astro entry exists or is planned.
   ],
 };
 

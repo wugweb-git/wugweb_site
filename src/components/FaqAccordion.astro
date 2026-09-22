@@ -187,7 +187,12 @@ const uid = `faq-${Math.random().toString(36).slice(2, 8)}`;
     .faq-panel p { opacity: var(--opacity-100); transform: none; }
   }
 
-  @media (min-width: 900px) {
+  /* Snapped to --breakpoint-md (768px, "Tablet") — the documented scale
+     (tokens/breakpoints.md) is 480/640/768/1024/1280/1440; this was an
+     off-scale 900px one-off. Just a padding-comfort bump, not a layout
+     switch, so stepping it down to 768 only widens the range where the
+     roomier padding applies — never narrows it. */
+  @media (min-width: 768px) {
     .faq-list { gap: var(--gap-4); }
     .faq-trigger { padding: var(--gap-6); }
     .faq-panel { padding: 0 var(--gap-6) var(--gap-6); }
