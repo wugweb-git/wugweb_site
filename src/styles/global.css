@@ -52,6 +52,17 @@
   --fluid-label: clamp(0.75rem, 0.1vw + 0.73rem, 0.875rem);   /* 12→14 · 500 */
   --fluid-caption: clamp(0.625rem, 0.05vw + 0.62rem, 0.75rem);/* 10→12 · 400 */
 
+  /* Graphic display tier (UI audit §4.2) — for type used as a graphic, not
+     for reading. Sizes to its CONTAINER (cqi), never to the viewport, so a
+     word inside a narrow block shrinks with the block instead of staying at
+     a viewport-derived size that overflows it. The parent must declare
+     `container-type: inline-size`. Pair with `white-space: nowrap`, tight
+     line-height and negative tracking; never with `overflow-wrap: anywhere`.
+     Not part of the reading hierarchy above — never use these on body copy. */
+  --type-graphic-l: clamp(4rem, 14cqi, 12rem);
+  --type-graphic-m: clamp(2.5rem, 9cqi, 7rem);
+  --type-graphic-s: clamp(1.75rem, 6cqi, 4rem);
+
   /* Legacy aliases used across pages (point at Kits fluid / static) */
   --t-display: var(--fluid-display);
   --t-h1: var(--fluid-h1);
