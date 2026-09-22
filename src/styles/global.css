@@ -180,6 +180,16 @@
   --svc-operations-light: #B49CFF;
 
 
+  /* Safe-area insets (UI audit §10). The site declares `viewport-fit=cover`
+     plus `black-translucent`, so the viewport extends under the notch and the
+     home indicator — anything pinned to a screen edge must add these or it
+     renders underneath the hardware. Tokenised with a 0px fallback so they are
+     inert on every non-notched device and in headless browsers. */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
   /* Legacy colour aliases (keep until migration is complete) */
   --bg: var(--color-surface-page);
   --surface: var(--color-surface-elevated);

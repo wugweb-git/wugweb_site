@@ -377,8 +377,9 @@ const shareLinks = [
   /* Reading progress bar pinned to top */
   .reading-progress-bar {
     position: fixed;
-    top: 0;
-    left: 0;
+    /* Otherwise the bar renders inside the notch under viewport-fit=cover. */
+    top: var(--safe-top);
+    left: var(--safe-left);
     width: 0%;
     height: 3px;
     background: linear-gradient(90deg, var(--color-accent-primary, #ffd000), #fff);

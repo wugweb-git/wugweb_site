@@ -88,7 +88,7 @@ const globalIndustries = (sanityIndustries as string[]).length
 <html lang={defaultLang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{pageTitle} · wugweb</title>
     <meta name="description" content={metaDesc} />
 
@@ -238,9 +238,10 @@ const globalIndustries = (sanityIndustries as string[]).length
       /* Global Cookie styles integrated with Wugweb tokens */
       .cookie-banner-wrap {
         position: fixed;
-        bottom: var(--space-page-xs);
-        left: var(--space-page-xs);
-        right: var(--space-page-xs);
+        /* Clears the home indicator and any landscape notch — see --safe-*. */
+        bottom: calc(var(--safe-bottom) + var(--space-page-xs));
+        left: calc(var(--safe-left) + var(--space-page-xs));
+        right: calc(var(--safe-right) + var(--space-page-xs));
         background-color: var(--neutral-8);
         border: 1px solid var(--color-border-subtle);
         padding: var(--p-5);

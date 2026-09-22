@@ -89,7 +89,11 @@ function isActive(href: string) {
     position: sticky;
     top: 0;
     z-index: 50;
-    padding: var(--gap-4) var(--gap-4) 0;
+    /* The bar floats inset from the screen edge; under viewport-fit=cover
+       that edge is behind the notch, so the insets are added to the gutter. */
+    padding: calc(var(--safe-top) + var(--gap-4))
+             calc(var(--safe-right) + var(--gap-4)) 0
+             calc(var(--safe-left) + var(--gap-4));
     background: transparent;
   }
 
