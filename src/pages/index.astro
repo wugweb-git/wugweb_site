@@ -235,7 +235,13 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 <style>
   .hero {
     position: relative;
-    min-height: 100svh;
+    /* The sticky header sits IN FLOW above this section, so a flat 100svh made
+       the hero end one header-height below the fold - pushing both hero CTAs
+       off the first screen (measured: buttons at 921px in an 891px viewport).
+       Subtracting the header's own flow height is what makes "full screen"
+       actually mean the screen. --nav-height + --gap-4 is the header's padding
+       box; --safe-top is added to it under viewport-fit=cover. */
+    min-height: calc(100svh - var(--nav-height) - var(--gap-4) - var(--safe-top));
     display: flex;
     flex-direction: column;
     overflow: hidden;
