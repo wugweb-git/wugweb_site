@@ -1,0 +1,308 @@
+---
+/**
+ * ServiceTagField — six pastel pill tags, one per service pillar, scattered
+ * across a field. They fly in from outside on scroll, drag freely with
+ * momentum and a fading trail, rise to the front when touched, and expand
+ * in place to media → title → copy → link. "Learn more" grows the card to
+ * fill the viewport, then navigates.
+ *
+ * Extracted out of `index.astro` (2026-09-16) — full spec, reference parity,
+ * token and motion inventory: `kits_design_system/docs/blocks/
+ * service-tag-field.md`. Behaviour: `src/lib/draggable-tags.ts` — GSAP
+ * Draggable + InertiaPlugin + Flip + ScrollTrigger, all already in `gsap`
+ * 3.15. Default content: `src/lib/service-tags-data.ts`.
+ *
+ * Two rules it demonstrates (kept from the original page): the card sets
+ * `overflow: hidden` so children clip to the *current* radius (a
+ * square-cornered media otherwise breaks a rounded card), and this field
+ * itself clips — a tag resting near the edge can be wider than the gap it
+ * has on a narrow viewport, and a drag can push one further still.
+ */
+import type { ServiceTag } from '../lib/service-tags-data';
+
+interface Props {
+  tags: ServiceTag[];
+}
+
+const { tags } = Astro.props;
+---
+
+<div class="tag-field" data-tag-field>
+  {tags.map((t) => (
+    <div
+      class="tag"
+      data-tag
+      data-tag-rot={t.rot}
+      style={`--tag-x:${t.pos[0]}%; --tag-y:${t.pos[1]}%; --tag-hue: var(--svc-${t.slug});`}
+    >
+      {/* Media sits above the title row, so an open card reads
+          media → title → copy → link. Collapsed it has zero height. */}
+      {t.video && (
+        <span class="tag-media">
+          <video
+            data-tag-video
+            src={t.video}
+            preload="none"
+            muted
+            loop
+            playsinline
+            tabindex="-1"
+            aria-hidden="true"
+          ></video>
+        </span>
+      )}
+      <button type="button" class="tag-face" aria-expanded="false">
+        <span class="tag-n" aria-hidden="true">{t.n}</span>
+        <span class="tag-label">{t.title}</span>
+        {/* Same round + affordance the service cards use — rotates to a
+            cross when the tag is open. */}
+        <span class="tag-toggle" aria-hidden="true">
+          <svg viewBox="0 0 16 16" focusable="false">
+            <path d="M8 1.5v13M1.5 8h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </span>
+      </button>
+      <div class="tag-body">
+        <div class="tag-body-inner">
+          <p class="tag-desc">{t.body || t.copy || t.q}</p>
+          <a href={`/services/${t.slug}`} class="tag-link" data-tag-launch>Learn more</a>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  // Behaviour lives in src/lib/draggable-tags.ts so Storybook can run it too.
+  //
+  // Static import, not the original page's dynamic `await import()`. The
+  // GSAP Draggable/InertiaPlugin/Flip weight this pulls in is still only
+  // shipped on pages that render <ServiceTagField> — Astro code-splits a
+  // component's own <script> into its own chunk regardless of whether the
+  // import inside it is static or dynamic — so a static import keeps that
+  // property. What it buys: no async gap between script execution and the
+  // module resolving, during which a Storybook Container-API re-render can
+  // swap the [data-tag-field] node out from under a still-pending dynamic
+  // import, leaving `initDraggableTags()` querying a DOM that no longer has
+  // it and silently binding nothing (confirmed live: a later manual re-call
+  // bound correctly once the swap had settled — this was a real race, not
+  // an automation artifact).
+  import { initDraggableTags } from '../lib/draggable-tags';
+  // No TS type annotations in this script (contrast the .ts lib files,
+  // which are fine): storybook-astro's script pipeline doesn't strip
+  // TypeScript from a component's inline <script> the way Astro's own dev
+  // server does, so a `: Type` here reaches the browser as raw syntax and
+  // throws — silently killing every story's client bundle, not just this
+  // one. Plain JS only, same as every other component script in this repo.
+  let killTags = null;
+  const initTags = () => {
+    if (killTags) killTags();
+    killTags = initDraggableTags();
+  };
+  initTags();
+  document.addEventListener('astro:page-load', initTags);
+</script>
+
+<style>
+  .tag-field {
+    position: relative;
+    margin-top: var(--gap-10);
+    min-height: clamp(24rem, 42vw, 34rem);
+    /* Tags are lifted above siblings while dragged; keep that local. */
+    isolation: isolate;
+    /* The field is the drag boundary, so it has to clip. A tag resting near
+       the right edge is wider than the gap it has at 375px and was pushing the
+       page 44px sideways — the clamp keeps tags inside on load, but a drag can
+       still take one past the edge. */
+    overflow: hidden;
+  }
+  /* A tag cannot be wider than the field it lives in. */
+  @media (max-width: 600px) {
+    .tag { max-width: calc(100% - var(--gap-4)); }
+    .tag-label { overflow-wrap: anywhere; }
+  }
+
+  .tag {
+    position: absolute;
+    left: var(--tag-x, 0);
+    top: var(--tag-y, 0);
+    max-width: min(26rem, 84%);
+    /* Fully round while collapsed — it reads as a tag. Squares off to a card
+       radius once open, when it is holding media and copy. */
+    border-radius: var(--r-pill);
+    /* Children must clip to whatever radius is current — without this the
+       media's square top corners poke outside the card's rounded ones. */
+    overflow: hidden;
+    transition: border-radius var(--duration-normal) var(--easing-smooth);
+    /* Pastel-ised pillar colour so dark text always clears contrast — the raw
+       --svc-* values are too saturated to carry --neutral-9 reliably. */
+    background: color-mix(in srgb, var(--tag-hue) 72%, var(--neutral-0));
+    /* Elevation ladder — the shadow is the depth cue that makes the stack read:
+       resting < hovered/open < being dragged. z-index is managed in JS so the
+       most recently touched tag is always on top.
+       NB: --shadow-lg is not usable here. global.css redefines it as
+       var(--shadow-md) ("Legacy shadow aliases"), overriding the real scale
+       value — so md and lg are identical site-wide. Stepping md → xl → 2xl
+       keeps three genuinely distinct levels. */
+    box-shadow: var(--shadow-md);
+    cursor: var(--cursor-grab);
+    touch-action: none;
+    will-change: transform;
+    transition: box-shadow var(--duration-normal) var(--easing-smooth);
+  }
+  .tag:hover { box-shadow: var(--shadow-xl); }
+  .tag.is-open { box-shadow: var(--shadow-xl); border-radius: var(--radius-2xl); }
+  .tag.is-dragging { cursor: var(--cursor-dragging); box-shadow: var(--shadow-2xl); }
+
+  /* Drag trail — a fading silhouette left behind the moving tag. */
+  .tag-echo {
+    position: absolute;
+    border-radius: var(--r-pill);
+    pointer-events: none;
+    z-index: var(--layer-background);
+    will-change: transform, opacity;
+  }
+
+  .tag-face {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    width: 100%;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: var(--gap-4);
+    padding: var(--gap-4) var(--gap-5) var(--gap-4) var(--gap-6);
+    color: var(--neutral-9);
+    text-align: left;
+    cursor: inherit;
+  }
+  .tag-face:focus-visible {
+    outline: var(--focus-brand);
+    outline-offset: var(--focus-offset);
+    border-radius: var(--radius-2xl);
+  }
+  /* The pillar's own index, in the same mono numbering the rest of the site
+     uses — secondary to the label, so it reads as an index not a heading. */
+  .tag-n {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    letter-spacing: var(--tracking-label);
+    line-height: var(--core-line-height-none);
+    color: color-mix(in srgb, var(--neutral-9) 55%, transparent);
+    align-self: flex-start;
+    padding-top: var(--gap-1);
+  }
+  .tag-label {
+    font-family: var(--font-display);
+    font-size: var(--fluid-h1);
+    font-weight: var(--font-weight-bold);
+    text-transform: lowercase;
+    line-height: var(--core-line-height-tight);
+    /* Slightly held back from full ink so the pastel reads through. */
+    color: color-mix(in srgb, var(--neutral-9) 82%, transparent);
+  }
+
+  /* Collapsed to a 0-height box; JS animates the height on toggle. */
+  .tag-body { height: 0; overflow: hidden; }
+  .tag-body-inner { padding: 0 var(--gap-6) var(--gap-6); }
+
+  /* Collapses to zero height with the panel; JS animates both together.
+     Poster-less by necessity (these clips have no stills yet), so it stays at
+     preload="none" and only loads when a tag is actually opened. */
+  .tag-media {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--neutral-10) 10%, transparent);
+  }
+  .tag-media video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  /* Full-bleed launch: the card grows to cover the viewport, then navigates. */
+  .tag.is-launching {
+    position: fixed;
+    inset: 0;
+    width: auto;
+    height: auto;
+    max-width: none;
+    border-radius: 0;
+    z-index: var(--layer-modal);
+    cursor: var(--cursor-loading);
+  }
+  .tag.is-launching .tag-face { padding: var(--gap-10) var(--gap-8); }
+  .tag.is-launching .tag-toggle { opacity: var(--opacity-0); }
+  .tag-desc {
+    margin: 0;
+    font-size: var(--fluid-body-md);
+    line-height: var(--core-line-height-normal);
+    color: color-mix(in srgb, var(--neutral-9) 78%, transparent);
+  }
+  .tag-link {
+    display: inline-flex;
+    margin-top: var(--gap-4);
+    padding: var(--gap-2) var(--gap-5);
+    border-radius: var(--r-pill);
+    background: color-mix(in srgb, var(--neutral-0) 34%, transparent);
+    color: var(--neutral-9);
+    font-size: var(--fluid-label);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+  }
+  .tag-link:hover { background: color-mix(in srgb, var(--neutral-0) 58%, transparent); }
+  .tag-link:focus-visible { outline: var(--focus-brand); outline-offset: var(--focus-offset); }
+
+  /* Round chip that rotates 45° to a cross on open — the same affordance the
+     About page's stat cards use. */
+  .tag-toggle {
+    flex: 0 0 auto;
+    margin-left: auto;
+    /* Chip size is mapped per breakpoint alongside the label, so the two always
+       scale together — see the tier map below. */
+    width: var(--tag-chip, 2.75rem);
+    height: var(--tag-chip, 2.75rem);
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--neutral-10) 8%, transparent);
+    color: var(--neutral-9);
+    transition: background var(--duration-fast) var(--easing-out), transform var(--duration-normal) var(--easing-out);
+  }
+  /* The glyph fills ~55% of the chip at every tier — at --gap-4 in a 3.25rem
+     circle it read as a small mark floating in too much padding. */
+  .tag-toggle svg {
+    width: var(--tag-chip-glyph, var(--gap-6));
+    height: var(--tag-chip-glyph, var(--gap-6));
+    fill: none;
+    display: block;
+  }
+
+  /* ── + chip size map, per breakpoint ──
+     phone   <640px   36px chip / 16px glyph  (44%)
+     tablet  640–1023 40px chip / 20px glyph  (50%)
+     desktop ≥1024px  44px chip / 24px glyph  (55%)
+     The tag field sets both, so the chip never drifts from the label size. */
+  .tag-field { --tag-chip: 2.25rem; --tag-chip-glyph: var(--gap-4); }
+  @media (min-width: 640px) {
+    .tag-field { --tag-chip: 2.5rem; --tag-chip-glyph: var(--gap-5); }
+  }
+  @media (min-width: 1024px) {
+    .tag-field { --tag-chip: 2.75rem; --tag-chip-glyph: var(--gap-6); }
+  }
+  .tag-face:hover .tag-toggle { background: color-mix(in srgb, var(--neutral-10) 16%, transparent); }
+  .tag.is-open .tag-toggle { transform: rotate(45deg); }
+
+  @media (max-width: 640px) {
+    .tag-field { min-height: 30rem; }
+    .tag { max-width: 92%; }
+    .tag-face { padding: var(--gap-3) var(--gap-4); gap: var(--gap-3); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tag { transition: none; }
+  }
+</style>

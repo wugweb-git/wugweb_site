@@ -1,0 +1,430 @@
+---
+/**
+ * ServiceSpotlightPanel — a vertical list in one glass panel where exactly
+ * one row is spotlit at a time: by hover, by scroll position on touch, or by
+ * an idle auto-advance. The spotlit row inverts to a light surface, reveals
+ * a supporting line, grows its thumbnail, plays its clip, and washes the
+ * section's full-bleed backdrop with its own poster.
+ *
+ * Extracted out of `services/[slug].astro` (2026-09-16) — full spec, token
+ * inventory and motion inventory: `kits_design_system/docs/blocks/
+ * service-spotlight-panel.md`. Live on `/services/brand` only, gated by
+ * `showcaseEnabled` in the page (the other five pillars still render the
+ * grouped `.caps-grouped` panels) — this component itself has no opinion on
+ * that gate; it renders whatever `items` it's given.
+ *
+ * Theming: takes an explicit `themeBase` (default the site accent) rather
+ * than relying on an ancestor's `--theme-base`, so it can render correctly
+ * standalone — in Storybook, or on a future pillar — without needing to sit
+ * inside `.service-page-wrapper`.
+ */
+import type { ServiceMedia } from '../lib/service-media';
+
+export interface SpotlightItem {
+  title: string;
+  /** Display index, e.g. "01". */
+  n: string;
+  index: number;
+  media?: ServiceMedia | null;
+  blurb?: string;
+}
+
+interface Props {
+  items: SpotlightItem[];
+  /** Two-column layout above 1024px — for pillars with long lists (Engineering has 20). */
+  dense?: boolean;
+  /** Used to build each row's heading id (`cap-${idPrefix}-${index}`) for aria-labelledby. */
+  idPrefix?: string;
+  themeBase?: string;
+}
+
+const { items, dense = false, idPrefix = 'spotlight', themeBase = 'var(--color-accent-primary)' } = Astro.props;
+const withMedia = items.filter((it) => it.media);
+---
+
+<div class="showcase" data-showcase style={`--theme-base: ${themeBase};`}>
+  <div class="showcase-bg" aria-hidden="true">
+    {withMedia.map((it) => (
+      <img
+        class="showcase-bg-img"
+        data-bg={it.index}
+        src={it.media!.poster}
+        alt=""
+        width="640"
+        height="480"
+        loading="lazy"
+        decoding="async"
+      />
+    ))}
+    <span class="showcase-bg-scrim"></span>
+  </div>
+
+  <div class="showcase-panel glass-panel" data-dense={dense ? 'true' : undefined}>
+    {items.map((it) => (
+      <div class="showcase-card" data-card={it.index}>
+        <span class="showcase-media">
+          {it.media ? (
+            <video
+              class="showcase-video"
+              data-video
+              src={it.media.video}
+              poster={it.media.poster}
+              preload="none"
+              muted
+              loop
+              playsinline
+              tabindex="-1"
+              aria-hidden="true"
+            ></video>
+          ) : (
+            <span class="showcase-placeholder" aria-hidden="true">
+              <span class="showcase-placeholder-n">{it.n}</span>
+            </span>
+          )}
+        </span>
+        <span class="showcase-meta">
+          <span class="showcase-n" aria-hidden="true">{it.n}</span>
+          <h3 class="showcase-title" id={`cap-${idPrefix}-${it.index}`}>{it.title}</h3>
+          {it.blurb && <span class="showcase-blurb">{it.blurb}</span>}
+        </span>
+        <button
+          type="button"
+          class="showcase-toggle"
+          aria-expanded="false"
+          aria-labelledby={`cap-${idPrefix}-${it.index}`}
+        ></button>
+        <span class="showcase-progress" aria-hidden="true"></span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Behaviour lives in src/lib/service-spotlight-panel.ts so Storybook can run it too.
+  import { initServiceSpotlightPanel } from '../lib/service-spotlight-panel';
+  initServiceSpotlightPanel();
+  document.addEventListener('astro:page-load', initServiceSpotlightPanel);
+</script>
+
+<style>
+  /* `.glass-panel` is a base utility redefined per-page rather than in
+     global.css (see services/[slug].astro, contact-us.astro, etc.) — Astro
+     scopes styles per file, so this component needs its own copy for the
+     class to actually apply to `.showcase-panel`, not just inherit one that
+     happens to share the name in whichever page renders it. */
+  .glass-panel {
+    background: color-mix(in srgb, var(--neutral-8) 60%, transparent);
+    border: 1px solid color-mix(in srgb, var(--neutral-0) 12%, transparent);
+    backdrop-filter: var(--glass-medium);
+    -webkit-backdrop-filter: var(--glass-medium);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .glass-panel:hover {
+    border-color: color-mix(in srgb, var(--theme-base) 30%, transparent);
+  }
+
+  .showcase {
+    position: relative;
+    margin-top: var(--gap-8);
+    padding-block: var(--gap-12);
+    isolation: isolate;
+  }
+
+  /* Full-bleed crossfading backdrop. Each layer is a 40px-wide WebP the browser
+     upscales, so the blur is free — no filter/backdrop-filter on this layer. */
+  .showcase-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    z-index: var(--layer-background);
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .showcase-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: var(--opacity-0);
+    transition: opacity var(--duration-slow) var(--easing-smooth);
+  }
+  /* Sharp, full-bleed. The panel's own backdrop-filter does the blurring — the
+     reference does exactly this, which is why it carries no filter: blur(). */
+  .showcase-bg-img.is-visible { opacity: var(--opacity-100); }
+  .showcase-bg-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      var(--bg) 0%,
+      color-mix(in srgb, var(--bg) 12%, transparent) 16%,
+      color-mix(in srgb, var(--bg) 12%, transparent) 84%,
+      var(--bg) 100%
+    );
+    transition: background var(--duration-slow) var(--easing-smooth);
+  }
+  /* With a row active the backdrop lifts toward light, as in the reference,
+     where the live photo washes the whole section. */
+  .showcase.is-active .showcase-bg-scrim {
+    background:
+      linear-gradient(
+        to bottom,
+        var(--bg) 0%,
+        transparent 16%,
+        transparent 84%,
+        var(--bg) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--neutral-0) 13%, transparent),
+        color-mix(in srgb, var(--neutral-0) 6%, transparent)
+      );
+  }
+
+  /* The showcase itself: one wide glass panel of rows, floating on the backdrop. */
+  .showcase-panel {
+    position: relative;
+    z-index: var(--layer-base);
+    max-width: 48rem;
+    margin-inline: auto;
+    padding: var(--gap-4);
+    display: grid;
+    gap: var(--gap-2);
+    border-radius: var(--radius-2xl);
+  }
+  @media (min-width: 1024px) {
+    .showcase-panel[data-dense] { max-width: 76rem; grid-template-columns: 1fr 1fr; gap: var(--gap-2) var(--gap-6); }
+  }
+
+  .showcase-card {
+    position: relative;
+    /* Thumbnail spans both text rows; title and copy stack in the right column. */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'media meta';
+    align-items: center;
+    column-gap: var(--gap-6);
+    padding: var(--gap-2);
+    /* Reserve the expanded thumbnail's height so growing one row never shifts
+       its neighbours — a vertical hover list that moves under the cursor
+       re-triggers hover on the next row and flickers. */
+    /* = expanded thumb (8.36rem) + expanded padding (2 × --gap-4). Anything less
+       and activating a row grows it, nudging every row below. */
+    min-height: 10.5rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition:
+      background-color var(--duration-normal) var(--easing-smooth),
+      padding var(--duration-slow) var(--easing-editorial);
+  }
+
+  /* aspect-ratio is fixed, so only the width is animated and the height follows
+     it proportionally. Media is never stretched on one axis — see governance.md. */
+  .showcase-media {
+    position: relative;
+    grid-area: media;
+    align-self: center;
+    width: 8.5rem;
+    aspect-ratio: 11 / 8;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: block;
+    transition: width var(--duration-slow) var(--easing-editorial);
+  }
+  .showcase-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: var(--opacity-90);
+    transition: opacity var(--duration-slow) var(--easing-smooth);
+  }
+
+  .showcase-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background:
+      var(--noise-light),
+      radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--theme-base) 26%, transparent), transparent 60%),
+      linear-gradient(160deg, var(--color-surface-elevated) 0%, var(--color-surface-page) 100%);
+  }
+  .showcase-placeholder-n {
+    font-family: var(--font-display);
+    font-size: var(--t-h5);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--core-line-height-none);
+    color: color-mix(in srgb, var(--theme-base) 60%, transparent);
+  }
+
+  /* The supporting line lives in a 0fr track while hidden, so it takes up no
+     height at all and the title stays vertically centred in an idle row.
+     Animating the track to 1fr opens it without a layout jump. */
+  .showcase-meta {
+    grid-area: meta;
+    align-self: center;
+    position: relative;
+    z-index: var(--layer-base);
+    display: grid;
+    grid-template-rows: auto auto 0fr;
+    row-gap: var(--gap-1);
+    min-width: 0;
+    transition: grid-template-rows var(--duration-normal) var(--easing-editorial);
+  }
+  .showcase-n {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    letter-spacing: var(--tracking-label);
+    color: var(--fg-muted);
+    transition: color var(--duration-normal) var(--easing-smooth);
+  }
+
+  /* Decorative dwell indicator. Only paints while the showcase is advancing on
+     its own; it is the visible countdown to the next row. */
+  .showcase-progress {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--theme-base);
+    transform: scaleX(0);
+    transform-origin: left center;
+    opacity: var(--opacity-0);
+    pointer-events: none;
+  }
+  .showcase.is-cycling .showcase-card.is-open .showcase-progress {
+    opacity: var(--opacity-100);
+    animation: showcase-dwell var(--showcase-dwell, 4000ms) linear forwards;
+  }
+  @keyframes showcase-dwell {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .showcase-title {
+    margin: 0;
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--core-line-height-tight);
+    color: var(--fg);
+    text-wrap: balance;
+  }
+  .showcase-blurb {
+    min-height: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    font-size: var(--fluid-body-md);
+    line-height: var(--core-line-height-normal);
+    color: var(--fg-muted);
+    /* Revealed only on the active row, as in the reference. The row reserves
+       its height either way (min-height), so this never shifts the layout. */
+    opacity: var(--opacity-0);
+    transition: opacity var(--duration-normal) var(--easing-smooth);
+  }
+  /* Transparent overlay covering the whole card: it is the hit area, the
+     keyboard target, and the focus ring. The title stays real text in the h3
+     above it and is borrowed as the accessible name via aria-labelledby. */
+  .showcase-toggle {
+    position: absolute;
+    inset: 0;
+    z-index: var(--layer-popover);
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: var(--radius-lg);
+    cursor: var(--cursor-pointer);
+  }
+  .showcase-toggle:focus { outline: none; }
+  .showcase-toggle:focus-visible {
+    outline: var(--focus-brand);
+    outline-offset: calc(var(--focus-offset) * -1);
+  }
+
+  /* Active state: pointer hover, keyboard focus, or a pinned tap. */
+  /* The active row inverts: light surface, dark text — the reference's
+     signature move. This is an explicit light-surface pair (never --neutral-1
+     left to inherit --fg, which is the site's live 1:1-contrast bug). */
+  .showcase-card:hover,
+  .showcase-card:focus-within,
+  .showcase-card.is-open {
+    background-color: var(--neutral-1);
+    padding: var(--gap-4);
+  }
+  .showcase-card:hover .showcase-title,
+  .showcase-card:focus-within .showcase-title,
+  .showcase-card.is-open .showcase-title { color: var(--neutral-9); }
+  .showcase-card:hover .showcase-meta,
+  .showcase-card:focus-within .showcase-meta,
+  .showcase-card.is-open .showcase-meta { grid-template-rows: auto auto 1fr; }
+  .showcase-card:hover .showcase-blurb,
+  .showcase-card:focus-within .showcase-blurb,
+  .showcase-card.is-open .showcase-blurb {
+    opacity: var(--opacity-100);
+    color: color-mix(in srgb, var(--neutral-9) 72%, transparent);
+  }
+  .showcase-card:hover .showcase-n,
+  .showcase-card:focus-within .showcase-n,
+  .showcase-card.is-open .showcase-n { color: var(--theme-base); }
+  .showcase-card:hover .showcase-media,
+  .showcase-card:focus-within .showcase-media,
+  .showcase-card.is-open .showcase-media { width: 11.5rem; }
+  .showcase-card:hover .showcase-video,
+  .showcase-card:focus-within .showcase-video,
+  .showcase-card.is-open .showcase-video { opacity: var(--opacity-100); }
+
+  /* Phone: the thumbnail and title share the top line, the supporting copy drops
+     to its own full-width line rather than being squeezed into ~200px. */
+  @media (max-width: 640px) {
+    .showcase { padding-block: var(--gap-8); }
+    .showcase-panel { padding: var(--gap-3); }
+    /* No supporting copy on phones — thumbnail and title only. The title is
+       free to run to two lines; the row reserves enough height for that plus
+       the active state's larger thumbnail, so scroll-spotlighting a row never
+       nudges the ones below it. */
+    .showcase-card {
+      column-gap: var(--gap-4);
+      min-height: 7.5rem;
+    }
+    .showcase-media { width: 6rem; }
+    /* Visually removed, not deleted — `display: none` would also drop the copy
+       out of the accessibility tree, so screen-reader users on a phone would
+       get less content than on a desktop. */
+    .showcase-blurb {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .showcase-card:hover .showcase-media,
+    .showcase-card:focus-within .showcase-media,
+    .showcase-card.is-open .showcase-media { width: 7.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .showcase-card,
+    .showcase-media,
+    .showcase-meta,
+    .showcase-blurb,
+    .showcase-video,
+    .showcase-bg-img,
+    .showcase-bg-scrim { transition: none; }
+    .showcase-video { opacity: var(--opacity-100); }
+    .showcase-bg-img.is-visible { opacity: var(--opacity-0); }
+  }
+</style>

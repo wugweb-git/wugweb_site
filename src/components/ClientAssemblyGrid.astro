@@ -1,0 +1,203 @@
+---
+/**
+ * ClientAssemblyGrid — a full-viewport band of uniform logo tiles that
+ * scatter, converge into the grid, hold, then scatter back out on scroll.
+ * The section title occupies two cells inside the grid at exactly one
+ * tile's height — two logos either side — so the block reads as one grid
+ * rather than a heading above a logo strip.
+ *
+ * Extracted out of `index.astro` (2026-09-16) — full spec, token inventory
+ * and motion inventory: `kits_design_system/docs/blocks/
+ * client-assembly-grid.md`. Motion is `data-scroll="assemble"`, handled
+ * generically by `src/lib/scroll-animations.ts` — nothing to wire here.
+ *
+ * Status carried over from the page: mockup logo padding is still on (real
+ * logo count is usually short of `total`).
+ */
+export interface ClientLogo {
+  name: string;
+  src: string;
+}
+
+interface Props {
+  logos: ClientLogo[];
+  /** Padded up to this many cells (repeating the real set) so every row
+   *  fills at every column count. 34 + the 2-cell title = 36 = 6 rows of 6
+   *  on desktop/tablet — the LCM of the 3/4/6 column counts. */
+  total?: number;
+  /** How many logos sit before the title cell. 14 puts the title in the
+   *  middle of row 3 (2 full rows of 6, plus 2). */
+  splitAt?: number;
+  heading?: string;
+  headingAccent?: string;
+}
+
+const {
+  logos,
+  total = 34,
+  splitAt = 14,
+  heading = 'Trusted by',
+  headingAccent = 'leading brands',
+} = Astro.props;
+
+/**
+ * MOCKUP PADDING — remove once the real logo set is complete. Repeating the
+ * set to the target total fills every row at every breakpoint so the layout
+ * can be judged. Repeats are marked aria-hidden so screen readers and search
+ * engines only ever see the real set once.
+ */
+const padTo = Math.max(total, logos.length);
+const clientLogos = logos.length
+  ? Array.from({ length: padTo }, (_, i) => ({
+      ...logos[i % logos.length],
+      isRepeat: i >= logos.length,
+    }))
+  : [];
+---
+
+<section class="logos-band">
+  <div class="wrap logos" data-scroll="fade-up">
+    <ul class="logo-grid" data-scroll="assemble">
+      {clientLogos.slice(0, splitAt).map((l) => (
+        <li class="logo-tile" aria-hidden={l.isRepeat ? 'true' : undefined}>
+          <img src={l.src} alt={l.isRepeat ? '' : l.name} loading="lazy" decoding="async" />
+        </li>
+      ))}
+
+      {/* The heading sits inside the grid with logos above and below it,
+          as on the live section. Two-tone like the wugweb lockup — bright
+          first half, muted second. */}
+      <li class="logo-grid-title" data-assemble-static>
+        <h2 class="logos-heading" data-reveal>{heading} <span>{headingAccent}</span></h2>
+      </li>
+
+      {clientLogos.slice(splitAt).map((l) => (
+        <li class="logo-tile" aria-hidden={l.isRepeat ? 'true' : undefined}>
+          <img src={l.src} alt={l.isRepeat ? '' : l.name} loading="lazy" decoding="async" />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  /* Full-screen band: one viewport tall, full viewport wide, content centred.
+     `dvh` so mobile browser chrome collapsing does not clip it, and `min-height`
+     rather than `height` so the section can still grow if the logo set outruns
+     the screen instead of cutting logos off. */
+  .logos-band {
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    display: grid;
+    /* Centre: row and column gaps must stay equal, so the grid keeps its
+       natural height and the leftover is split evenly above and below. */
+    align-content: center;
+    padding-block: var(--gap-8);
+    border-top: var(--stroke-thin) solid var(--line);
+    /* Clips the scattered tiles while they are outside the grid's box. */
+    overflow: hidden;
+  }
+  /* No padding-block: the band is already a full viewport tall and centres its
+     content, so section padding here only pushes the grid past 1vh. */
+  .logos { width: 100%; display: flex; flex-direction: column; }
+  /* Centred display heading, matching the live section (36px, regular weight,
+     centred in the 1200px container) — not a left eyebrow. */
+  .logos-heading {
+    margin: 0;
+    text-align: center;
+    font-size: var(--fluid-h2);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--core-line-height-tight);
+    color: var(--fg);
+  }
+  /* Two lines, split on the colour change — bright line over muted line. */
+  .logos-heading span { display: block; color: var(--fg-muted); }
+
+  /* A cell in the grid, not a full-width band: two columns wide and exactly one
+     tile tall, so the whole block still reads as one uniform grid. */
+  .logo-grid-title {
+    flex: 0 0 calc(var(--logo-col) * 2 + var(--gap-3));
+    height: calc(var(--logo-col) * 9 / 16);
+    display: grid;
+    place-items: center;
+  }
+
+  /* A declared column count per breakpoint, not flex-wrap. Every tile is the
+     same width, so rows can never go ragged. */
+  .logo-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    /* Column width is published as a variable so the title cell can be exactly
+       two columns wide and exactly one tile tall. `cqw` (not `%`) because a
+       percentage would resolve against the container's *height* when used for
+       height — this element is the query container. */
+    container-type: inline-size;
+    --logo-col: calc((100cqw - (var(--logo-cols) - 1) * var(--gap-3)) / var(--logo-cols));
+    /* Centred so a partial last row reads as deliberate instead of hanging
+       left — 20 logos over 6 columns will always leave one short row. */
+    justify-content: center;
+    /* Without this, flex items stretch to the tallest in their row and silently
+       override `aspect-ratio`. */
+    align-items: flex-start;
+    gap: var(--gap-3);
+    /* 4 columns even on phones. */
+    --logo-cols: 4;
+  }
+  /* 6 from tablet up. */
+  @media (min-width: 640px) { .logo-grid { --logo-cols: 6; } }
+
+  .logo-tile {
+    /* Fixed share of the row, so width never varies with the logo's aspect. */
+    flex: 0 0 var(--logo-col);
+    /* Fixed box ratio. Width comes from the column count and height follows it
+       proportionally, so the tile is the same shape at every breakpoint (see
+       governance.md §8). */
+    aspect-ratio: 16 / 9;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: var(--stroke-thin) solid var(--line);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--neutral-8) 35%, transparent);
+    transition:
+      background-color var(--duration-normal) var(--easing-smooth),
+      border-color var(--duration-normal) var(--easing-smooth);
+  }
+
+  /* Logos are a set first and brands second: desaturated and softened so the
+     grid reads as one block, resolving to full colour on hover. Sized as a
+     share of the tile, not in px, so it can't exceed the tile's aspect-ratio
+     height and force the box taller. */
+  .logo-tile img {
+    max-width: 62%;
+    max-height: 44%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1) brightness(1.6);
+    opacity: var(--opacity-soft);
+    transition:
+      filter var(--duration-normal) var(--easing-smooth),
+      opacity var(--duration-normal) var(--easing-smooth);
+  }
+  .logo-tile:hover { background: color-mix(in srgb, var(--neutral-8) 70%, transparent); border-color: color-mix(in srgb, var(--neutral-0) 16%, transparent); }
+  .logo-tile:hover img { filter: grayscale(0) brightness(1); opacity: var(--opacity-100); }
+
+  /* Phones: the first group drops from 14 to 12 so it stays 3 full rows of 4,
+     the title spans the full width on its own row, and runs on one line. */
+  @media (max-width: 640px) {
+    .logo-grid { gap: var(--gap-2); }
+    .logos-heading span { display: inline; }
+    .logo-grid-title { flex-basis: 100%; }
+    .logo-tile:nth-child(13),
+    .logo-tile:nth-child(14) { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-tile, .logo-tile img { transition: none; }
+  }
+</style>

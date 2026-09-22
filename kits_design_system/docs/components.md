@@ -80,32 +80,39 @@
 - **Purpose**: Client and industry trust recognition strip.
 - **Tokens**: Monochrome logos (Clutch, DesignRush, GoodFirms, TopDevelopers), `--opacity-70`, `--gap-8` flex layout.
 
-### 7. Service Spotlight Panel — `src/pages/services/[slug].astro` (brand only)
+### 7. Service Spotlight Panel — `src/components/ServiceSpotlightPanel.astro`
 - **Purpose**: Vertical list in one glass panel where exactly one row is spotlit at a time — by hover, by scroll position on touch, or by an idle auto-advance. The spotlit row inverts to a light surface, reveals a supporting line, grows its thumbnail, plays its clip, and washes the section's full-bleed backdrop with its own poster.
+- **Now a real component** (2026-09-16) — extracted out of `services/[slug].astro`. Takes `items`, `dense`, `idPrefix`, and an explicit `themeBase` (defaults to the site accent, doesn't require an ancestor's `--theme-base`), so it renders correctly standalone — Storybook, or a future pillar — without needing `.service-page-wrapper`.
+- **Storybook**: `Blocks/Service Spotlight Panel` — Default, Dense (two columns), Custom theme colour.
 - **Animated block** — include in the animated-block lint set.
 - **Full spec, token inventory and motion inventory**: [`blocks/service-spotlight-panel.md`](blocks/service-spotlight-panel.md)
-- **Status**: awaiting sign-off; gated by `showcaseEnabled`. The other five pillars still render block 2's grouped panels.
+- **Status**: awaiting sign-off; the page still gates it to `/services/brand` via `showcaseEnabled`, the other five pillars keep the grouped `.caps-grouped` panels — that gate lives in the page, not the component, which has no opinion on which pillar renders it.
 - **Headline tokens**: `--theme-base` (accent), `--neutral-1` / `--neutral-9` (the inverted active row — an explicit light pair, never `--neutral-1` inheriting `--fg`), `--fluid-h3` / `--fluid-body-md` / `--fluid-label` (type), `--duration-slow` + `--easing-editorial` (expansion), `--radius-2xl` (panel) / `--radius-lg` (rows). 45 tokens, 0 hardcoded colours.
 
-### 8. Client Assembly Grid — `src/pages/index.astro` (homepage)
+### 8. Client Assembly Grid — `src/components/ClientAssemblyGrid.astro`
 - **Purpose**: Full-viewport band of uniform logo tiles that scatter, converge into the grid, hold, then scatter back out on scroll. The section title occupies **two cells inside the grid** at exactly one tile's height — two logos either side — so the block reads as one grid rather than a heading above a logo strip.
-- **Animated block** — include in the animated-block lint set. Uses `data-scroll="assemble"`.
+- **Now a real component** (2026-09-16) — extracted out of `index.astro`. Takes `logos` (the real, unpadded set) plus `total`/`splitAt`/`heading`/`headingAccent`; the mockup-padding math and the title's split-at-14 position now live in the component, not the page.
+- **Storybook**: `Blocks/Client Assembly Grid` — Default, Custom heading, Small set (heavier padding).
+- **Animated block** — include in the animated-block lint set. Uses `data-scroll="assemble"`, handled generically by `scroll-animations.ts` — no component-level wiring needed.
 - **Full spec, token inventory and motion inventory**: [`blocks/client-assembly-grid.md`](blocks/client-assembly-grid.md)
 - **Status**: awaiting sign-off; mockup logo padding still on (19 distinct images in repo vs 28 on the live section).
 - **Headline tokens**: `--fg` / `--fg-muted` (two-tone title, mirroring the wugweb lockup), `--line` + `--stroke-thin` (tile border), `--neutral-8` (tile surface via `color-mix`), `--fluid-h2` at `--font-weight-regular`, `--radius-lg`, `--opacity-soft` → `--opacity-100` on hover, `--duration-normal` + `--easing-smooth`. 19 tokens, 0 hardcoded colours.
 - **Two rules it demonstrates**: tile `aspect-ratio: 16/9` fixed across every breakpoint (width from the column count, height follows), and one `gap` driving both axes — never `align-content: space-evenly`, which overrides the row gap.
 
-### 9. Service Tag Field — `src/pages/index.astro` ("What we do")
+### 9. Service Tag Field — `src/components/ServiceTagField.astro`
 - **Purpose**: Six pastel pill tags, one per service pillar, scattered across a field. They fly in from outside on scroll, drag freely with momentum and a fading trail, rise to the front when touched, and expand in place to media → title → copy → link. "Learn more" grows the card to fill the viewport, then navigates.
+- **Now a real component** (2026-09-16) — extracted out of `index.astro`. Takes `tags`; default pillar content (question, position, tilt, service copy) lives in `src/lib/service-tags-data.ts` (`SERVICE_TAGS`), shared with Storybook.
+- **Storybook**: `Blocks/Service Tag Field` — Default, Fewer tags.
 - **Animated block** — include in the animated-block lint set.
 - **Full spec, reference parity, token and motion inventory**: [`blocks/service-tag-field.md`](blocks/service-tag-field.md)
-- **Behaviour**: `src/lib/draggable-tags.ts` — GSAP **Draggable + InertiaPlugin + Flip + ScrollTrigger**, all already in `gsap` 3.15. No new dependency, no React.
-- **Status**: awaiting sign-off. Clips have no posters yet; composition never visually reviewed (pane screenshots failed all session).
+- **Behaviour**: `src/lib/draggable-tags.ts` — GSAP **Draggable + InertiaPlugin + Flip + ScrollTrigger**, all already in `gsap` 3.15. No new dependency, no React. The component's own script imports it **statically**, not via the page's original dynamic `await import()` — Astro still code-splits it into the component's own chunk either way, but a static import removes an async gap where a Storybook Container-API re-render could swap the `[data-tag-field]` node out from under a still-pending dynamic import and leave `initDraggableTags()` silently binding nothing.
+- **Storybook gotcha found and fixed**: the component's inline `<script>` briefly carried a TS type annotation (`let killTags: (() => void) | null = null;`). Astro's own dev server strips TypeScript from a component's `<script>`; `@storybook-astro/framework`'s script pipeline does not, so the raw `:` reached the browser as a syntax error — and because Storybook loads every story's module graph together, that one throw silently broke every story's client bundle, not just this one. Fixed by writing the script in plain JS, same as every other component's inline script in this repo; verify with `grep -nE "let|const|var) \w+ *:"` across `src/components/*.astro`'s `<script>` blocks before adding another one.
+- **Status**: awaiting sign-off. Clips have no posters yet; composition never visually reviewed live (verified working in Storybook: drag, click-to-expand, and the "Learn more" full-bleed launch all confirmed 2026-09-16).
 - **Headline tokens**: `--tag-hue` (per tag, set from `--svc-*`), `--neutral-9` label ink at 82%, `--fluid-h1` lowercase bold label, `--r-pill` collapsed → `--radius-2xl` open, elevation `--shadow-md` → `--shadow-xl` → `--shadow-2xl`, `--cursor-grab` / `--cursor-dragging` / `--cursor-loading`. 45 tokens, 0 hardcoded colours.
 - **Two rules it demonstrates**: the card must set `overflow: hidden` so children clip to the *current* radius (a square-cornered media otherwise breaks a rounded card), and a ScrollTrigger `end` must stay inside the viewport when the trigger is shorter than the screen — at `bottom 15%` the range is already passed on entry and the intro reverses immediately.
 
 ### 10. Bento Block — `src/components/BentoBlock.astro`
-- **Purpose**: Three columns of tiles at unequal heights, each free to differ in weight, content kind, tone, media type and media treatment. Tiles rise in a column-aware stagger on scroll and reverse on exit; hovering the block dims every tile but the one under the pointer. **The only one of the four new blocks that is a real component** — the other three are still inline in a page.
+- **Purpose**: Three columns of tiles at unequal heights, each free to differ in weight, content kind, tone, media type and media treatment. Tiles rise in a column-aware stagger on scroll and reverse on exit; hovering the block dims every tile but the one under the pointer.
 - **Animated block** — include in the animated-block lint set. Uses `data-scroll="bento"`.
 - **Full spec, layout table, token and motion inventory**: [`blocks/bento-block.md`](blocks/bento-block.md)
 - **Used by**: `/about` ("Why Wugweb?") and all six `/services/[slug]` pages ("Why us?"), each with a **different arrangement of the same six slots** — `BENTO_LAYOUTS` in `[slug].astro`, one row per slot as `[column, weight, role]`. A variation is a reordered array, never a CSS edit.

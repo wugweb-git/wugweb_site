@@ -5,7 +5,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { sanityClient } from '../lib/sanity';
 import { servicesListQuery, caseStudiesListQuery, postsListQuery, singletonPageQuery } from '../lib/queries';
-import { hardcodedServices } from '../lib/services-data';
+import { SERVICE_TAGS } from '../lib/service-tags-data';
 
 const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
 
@@ -47,45 +47,8 @@ const homeDescription =
   'Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.';
 
 
-// The six service pillars, each framed as the question it answers. Media are
-// the client's own hosted clips; the active one also drives the section's
-// blurred backdrop, so these double as thumbnail and background.
-const pillars = [
-  { n: '01', title: 'Strategy',    q: 'What should we build?',                     video: '/assets/services/martech-genai/digital-transformation-roadmaps.mp4' },
-  { n: '02', title: 'Engineering', q: 'How do we build and scale it?',             video: '/assets/more/home/web-app-development.mp4' },
-  { n: '03', title: 'Brand',       q: 'How should we be perceived?',               video: '/assets/more/home/brand-strategy.mp4' },
-  { n: '04', title: 'Growth',      q: 'How do we acquire and retain customers?',   video: '/assets/more/home/martech-genai.mp4' },
-  { n: '05', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: '/assets/services/martech-genai/seamless-platform-integration.mp4' },
-  { n: '06', title: 'Experience',  q: 'How should people interact with us?',       video: '/assets/more/home/experience-design.mp4' },
-];
-
-/**
- * Draggable service tags — one per pillar, for the "What we do" field.
- * Copy is the pillar's own question (already live on the page); `pos`/`rot` are
- * authored resting positions, matching how the reference gives every tag its
- * own placement and tilt.
- */
-const serviceTags = [
-  { title: 'Strategy',    slug: 'strategy',    pos: [6, 8],   rot: -6 },
-  { title: 'Brand',       slug: 'brand',       pos: [52, 2],  rot: 4 },
-  { title: 'Experience',  slug: 'experience',  pos: [30, 30], rot: -3 },
-  { title: 'Engineering', slug: 'engineering', pos: [2, 52],  rot: 7 },
-  { title: 'Growth',      slug: 'growth',      pos: [55, 46], rot: -5 },
-  { title: 'Operations',  slug: 'operations',  pos: [26, 68], rot: 6 },
-].map((t) => {
-  const pillar = pillars.find((p) => p.title === t.title);
-  const svc = hardcodedServices[t.slug];
-  return {
-    ...t,
-    n: pillar?.n ?? '',
-    q: pillar?.q ?? '',
-    // Real service copy, not a rewrite — the pillar's question as the lead and
-    // the service page's own subtitle/body as the supporting line.
-    copy: svc?.subtitle || '',
-    body: (typeof svc?.body === 'string' ? svc.body : '').split('. ').slice(0, 2).join('. '),
-    video: pillar?.video ?? '',
-  };
-});
+// Pillar questions + draggable-tag layout now live in
+// src/lib/service-tags-data.ts (SERVICE_TAGS), shared with Storybook.
 
 // Curated homepage case-study picks — prefer mapped thumbnailPath
 const thumbAssets = await sanityClient.fetch(
@@ -136,28 +99,9 @@ const realLogos = (sanityLogos as any[]).length
   ? (sanityLogos as any[]).map((c: any) => ({ name: c.name, src: c.logoPath }))
   : curatedLogos;
 
-/**
- * MOCKUP PADDING — REMOVE ONCE THE REAL LOGO SET IS COMPLETE.
- * Only 20 of 110 Sanity clients carry a `logoPath`, which leaves short rows at
- * every column count. Repeating the set to the next multiple of 12 (the LCM of
- * the 3 / 4 / 6 column counts) fills every row at every breakpoint so the
- * layout can be judged. Repeats are marked aria-hidden so screen readers and
- * search engines only ever see the real set once.
- */
-/**
- * 34 logos + the 2-cell title = 36 cells = 6 full rows of 6 on desktop/tablet.
- * The split puts the title in the middle of row 3 with two logos either side,
- * exactly as the reference does it.
- */
-const LOGO_TOTAL = 34;
-const padTo = Math.max(LOGO_TOTAL, realLogos.length);
-const clientLogos = Array.from({ length: padTo }, (_, i) => ({
-  ...realLogos[i % realLogos.length],
-  isRepeat: i >= realLogos.length,
-}));
-/** 14 before the title = 2 full rows of 6 plus 2, so the title lands in the
- *  middle of row 3. On phones the first group drops to 12 (3 rows of 4). */
-const logoSplit = 14;
+// Padding to a full grid, the split-at-14 layout math, and mockup-repeat
+// marking now live in ClientAssemblyGrid.astro — this only needs to hand it
+// the real (unpadded) logo set.
 
 // Industries — sourced from the Sanity industry master (Global Settings);
 // fallback to the curated grid if the query comes back empty.
@@ -172,6 +116,8 @@ const industries = (sanityIndustries as string[]).length
   ? (sanityIndustries as string[])
   : curatedIndustries;
 import InsightsBlock from '../components/InsightsBlock.astro';
+import ClientAssemblyGrid from '../components/ClientAssemblyGrid.astro';
+import ServiceTagField from '../components/ServiceTagField.astro';
 ---
 
 {/* This page carries its own Insights and Industries blocks, so the global
@@ -229,52 +175,8 @@ import InsightsBlock from '../components/InsightsBlock.astro';
     </p>
 
     {/* Draggable tag field — one tag per pillar. Fly in on scroll, drag freely
-        with momentum, tap to expand. Behaviour: src/lib/draggable-tags.ts */}
-    <div class="tag-field" data-tag-field>
-      {serviceTags.map((t) => (
-        <div
-          class="tag"
-          data-tag
-          data-tag-rot={t.rot}
-          style={`--tag-x:${t.pos[0]}%; --tag-y:${t.pos[1]}%; --tag-hue: var(--svc-${t.slug});`}
-        >
-          {/* Media sits above the title row, so an open card reads
-              media → title → copy → link. Collapsed it has zero height. */}
-          {t.video && (
-            <span class="tag-media">
-              <video
-                data-tag-video
-                src={t.video}
-                preload="none"
-                muted
-                loop
-                playsinline
-                tabindex="-1"
-                aria-hidden="true"
-              ></video>
-            </span>
-          )}
-          <button type="button" class="tag-face" aria-expanded="false">
-            <span class="tag-n" aria-hidden="true">{t.n}</span>
-            <span class="tag-label">{t.title}</span>
-            {/* Same round + affordance the service cards use — rotates to a
-                cross when the tag is open. */}
-            <span class="tag-toggle" aria-hidden="true">
-              <svg viewBox="0 0 16 16" focusable="false">
-                <path d="M8 1.5v13M1.5 8h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-              </svg>
-            </span>
-          </button>
-          <div class="tag-body">
-            <div class="tag-body-inner">
-              <p class="tag-desc">{t.body || t.copy || t.q}</p>
-              <a href={`/services/${t.slug}`} class="tag-link" data-tag-launch>Learn more</a>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
+        with momentum, tap to expand. Now its own component: ServiceTagField.astro */}
+    <ServiceTagField tags={SERVICE_TAGS} />
 
     <a href="/services" class="btn btn-ghost">View Services</a>
   </section>
@@ -301,31 +203,7 @@ import InsightsBlock from '../components/InsightsBlock.astro';
 
 
   <!-- CLIENT LOGOS -->
-  <section class="logos-band">
-    <div class="wrap logos" data-scroll="fade-up">
-    <ul class="logo-grid" data-scroll="assemble">
-      {clientLogos.slice(0, logoSplit).map((l) => (
-        <li class="logo-tile" aria-hidden={l.isRepeat ? 'true' : undefined}>
-          <img src={l.src} alt={l.isRepeat ? '' : l.name} loading="lazy" decoding="async" />
-        </li>
-      ))}
-
-      {/* The heading sits inside the grid with logos above and below it, as on
-          the live section. Two-tone like the wugweb lockup — bright first half,
-          muted second. The logo's own fills are #FFFFFF / #C9C9C9; this uses the
-          site's tokenised pair, since CLAUDE.md rules out pure-white text. */}
-      <li class="logo-grid-title" data-assemble-static>
-        <h2 class="logos-heading" data-reveal>Trusted by <span>leading brands</span></h2>
-      </li>
-
-      {clientLogos.slice(logoSplit).map((l) => (
-        <li class="logo-tile" aria-hidden={l.isRepeat ? 'true' : undefined}>
-          <img src={l.src} alt={l.isRepeat ? '' : l.name} loading="lazy" decoding="async" />
-        </li>
-      ))}
-    </ul>
-    </div>
-  </section>
+  <ClientAssemblyGrid logos={realLogos} />
 
   <!-- INDUSTRIES WE EMPOWER -->
   <section class="industries-section" data-scroll="rise">
@@ -514,344 +392,15 @@ import InsightsBlock from '../components/InsightsBlock.astro';
   .work-client { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); margin-top: var(--gap-4); }
   .work-grid h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-1); }
 
-  /* ── Draggable service tags ("What we do") ── */
-  .tag-field {
-    position: relative;
-    margin-top: var(--gap-10);
-    min-height: clamp(24rem, 42vw, 34rem);
-    /* Tags are lifted above siblings while dragged; keep that local. */
-    isolation: isolate;
-    /* The field is the drag boundary, so it has to clip. A tag resting near
-       the right edge is wider than the gap it has at 375px and was pushing the
-       page 44px sideways — the clamp keeps tags inside on load, but a drag can
-       still take one past the edge. */
-    overflow: hidden;
-  }
-  /* A tag cannot be wider than the field it lives in. */
-  @media (max-width: 600px) {
-    .tag { max-width: calc(100% - var(--gap-4)); }
-    .tag-label { overflow-wrap: anywhere; }
-  }
+  /* .tag-field / .tag / .tag-* rules moved to ServiceTagField.astro's
+     own scoped style (2026-09-16) — this page only renders
+     <ServiceTagField> now. */
 
-  .tag {
-    position: absolute;
-    left: var(--tag-x, 0);
-    top: var(--tag-y, 0);
-    max-width: min(26rem, 84%);
-    /* Fully round while collapsed — it reads as a tag. Squares off to a card
-       radius once open, when it is holding media and copy. */
-    border-radius: var(--r-pill);
-    /* Children must clip to whatever radius is current — without this the
-       media's square top corners poke outside the card's rounded ones. */
-    overflow: hidden;
-    transition: border-radius var(--duration-normal) var(--easing-smooth);
-    /* Pastel-ised pillar colour so dark text always clears contrast — the raw
-       --svc-* values are too saturated to carry --neutral-9 reliably. */
-    background: color-mix(in srgb, var(--tag-hue) 72%, var(--neutral-0));
-    /* Elevation ladder — the shadow is the depth cue that makes the stack read:
-       resting < hovered/open < being dragged. z-index is managed in JS so the
-       most recently touched tag is always on top.
-       NB: --shadow-lg is not usable here. global.css:397 ("Legacy shadow
-       aliases") redefines it as var(--shadow-md), overriding the real scale
-       value at :385 — so md and lg are identical site-wide. Stepping
-       md → xl → 2xl keeps three genuinely distinct levels. */
-    box-shadow: var(--shadow-md);
-    cursor: var(--cursor-grab);
-    touch-action: none;
-    will-change: transform;
-    transition: box-shadow var(--duration-normal) var(--easing-smooth);
-  }
-  .tag:hover { box-shadow: var(--shadow-xl); }
-  .tag.is-open { box-shadow: var(--shadow-xl); border-radius: var(--radius-2xl); }
-  .tag.is-dragging { cursor: var(--cursor-dragging); box-shadow: var(--shadow-2xl); }
 
-  /* Drag trail — a fading silhouette left behind the moving tag. */
-  .tag-echo {
-    position: absolute;
-    border-radius: var(--r-pill);
-    pointer-events: none;
-    z-index: var(--layer-background);
-    will-change: transform, opacity;
-  }
+  /* .logos-band / .logo-grid / .logo-tile rules moved to
+     ClientAssemblyGrid.astro's own scoped style (2026-09-16) — this
+     page only renders <ClientAssemblyGrid> now. */
 
-  .tag-face {
-    appearance: none;
-    border: 0;
-    margin: 0;
-    width: 100%;
-    background: none;
-    display: flex;
-    align-items: center;
-    gap: var(--gap-4);
-    padding: var(--gap-4) var(--gap-5) var(--gap-4) var(--gap-6);
-    color: var(--neutral-9);
-    text-align: left;
-    cursor: inherit;
-  }
-  .tag-face:focus-visible {
-    outline: var(--focus-brand);
-    outline-offset: var(--focus-offset);
-    border-radius: var(--radius-2xl);
-  }
-  /* The pillar's own index, in the same mono numbering the rest of the site
-     uses — secondary to the label, so it reads as an index not a heading. */
-  .tag-n {
-    font-family: var(--font-mono);
-    font-size: var(--fluid-label);
-    letter-spacing: var(--tracking-label);
-    line-height: var(--core-line-height-none);
-    color: color-mix(in srgb, var(--neutral-9) 55%, transparent);
-    align-self: flex-start;
-    padding-top: var(--gap-1);
-  }
-  .tag-label {
-    font-family: var(--font-display);
-    font-size: var(--fluid-h1);
-    font-weight: var(--font-weight-bold);
-    text-transform: lowercase;
-    line-height: var(--core-line-height-tight);
-    /* Slightly held back from full ink so the pastel reads through. */
-    color: color-mix(in srgb, var(--neutral-9) 82%, transparent);
-  }
-
-  /* Collapsed to a 0-height box; JS animates the height on toggle. */
-  .tag-body { height: 0; overflow: hidden; }
-  .tag-body-inner { padding: 0 var(--gap-6) var(--gap-6); }
-
-  /* Collapses to zero height with the panel; JS animates both together.
-     Poster-less by necessity (these clips have no stills yet), so it stays at
-     preload="none" and only loads when a tag is actually opened. */
-  .tag-media {
-    display: block;
-    height: 0;
-    overflow: hidden;
-    background: color-mix(in srgb, var(--neutral-10) 10%, transparent);
-  }
-  .tag-media video {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-
-  /* Full-bleed launch: the card grows to cover the viewport, then navigates. */
-  .tag.is-launching {
-    position: fixed;
-    inset: 0;
-    width: auto;
-    height: auto;
-    max-width: none;
-    border-radius: 0;
-    z-index: var(--layer-modal);
-    cursor: var(--cursor-loading);
-  }
-  .tag.is-launching .tag-face { padding: var(--gap-10) var(--gap-8); }
-  .tag.is-launching .tag-toggle { opacity: var(--opacity-0); }
-  .tag-desc {
-    margin: 0;
-    font-size: var(--fluid-body-md);
-    line-height: var(--core-line-height-normal);
-    color: color-mix(in srgb, var(--neutral-9) 78%, transparent);
-  }
-  .tag-link {
-    display: inline-flex;
-    margin-top: var(--gap-4);
-    padding: var(--gap-2) var(--gap-5);
-    border-radius: var(--r-pill);
-    background: color-mix(in srgb, var(--neutral-0) 34%, transparent);
-    color: var(--neutral-9);
-    font-size: var(--fluid-label);
-    font-weight: var(--font-weight-semibold);
-    text-decoration: none;
-  }
-  .tag-link:hover { background: color-mix(in srgb, var(--neutral-0) 58%, transparent); }
-  .tag-link:focus-visible { outline: var(--focus-brand); outline-offset: var(--focus-offset); }
-
-  /* Round chip that rotates 45° to a cross on open — the same affordance the
-     About page's stat cards use. (It originally mirrored .service-card-toggle
-     on this page; that block has since been removed.) */
-  .tag-toggle {
-    flex: 0 0 auto;
-    margin-left: auto;
-    /* Chip size is mapped per breakpoint alongside the label, so the two always
-       scale together — see the tier map below. */
-    width: var(--tag-chip, 2.75rem);
-    height: var(--tag-chip, 2.75rem);
-    display: grid;
-    place-items: center;
-    border-radius: var(--radius-full);
-    background: color-mix(in srgb, var(--neutral-10) 8%, transparent);
-    color: var(--neutral-9);
-    transition: background var(--duration-fast) var(--easing-out), transform var(--duration-normal) var(--easing-out);
-  }
-  /* The glyph fills ~55% of the chip at every tier — at --gap-4 in a 3.25rem
-     circle it read as a small mark floating in too much padding. */
-  .tag-toggle svg {
-    width: var(--tag-chip-glyph, var(--gap-6));
-    height: var(--tag-chip-glyph, var(--gap-6));
-    fill: none;
-    display: block;
-  }
-
-  /* ── + chip size map, per breakpoint ──
-     phone   <640px   36px chip / 16px glyph  (44%)
-     tablet  640–1023 40px chip / 20px glyph  (50%)
-     desktop ≥1024px  44px chip / 24px glyph  (55%)
-     The tag field sets both, so the chip never drifts from the label size. */
-  .tag-field { --tag-chip: 2.25rem; --tag-chip-glyph: var(--gap-4); }
-  @media (min-width: 640px) {
-    .tag-field { --tag-chip: 2.5rem; --tag-chip-glyph: var(--gap-5); }
-  }
-  @media (min-width: 1024px) {
-    .tag-field { --tag-chip: 2.75rem; --tag-chip-glyph: var(--gap-6); }
-  }
-  .tag-face:hover .tag-toggle { background: color-mix(in srgb, var(--neutral-10) 16%, transparent); }
-  .tag.is-open .tag-toggle { transform: rotate(45deg); }
-
-  @media (max-width: 640px) {
-    .tag-field { min-height: 30rem; }
-    .tag { max-width: 92%; }
-    .tag-face { padding: var(--gap-3) var(--gap-4); gap: var(--gap-3); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .tag { transition: none; }
-  }
-
-  /* Full-screen band: one viewport tall, full viewport wide, content centred.
-     `dvh` so mobile browser chrome collapsing does not clip it, and `min-height`
-     rather than `height` so the section can still grow if the logo set outruns
-     the screen instead of cutting logos off. */
-  .logos-band {
-    min-height: 100vh;
-    min-height: 100dvh;
-    width: 100%;
-    display: grid;
-    /* Centre: row and column gaps must stay equal, so the grid keeps its
-       natural height and the leftover is split evenly above and below. */
-    align-content: center;
-    padding-block: var(--gap-8);
-    border-top: var(--stroke-thin) solid var(--line);
-    /* Clips the scattered tiles while they are outside the grid's box. */
-    overflow: hidden;
-  }
-  /* No padding-block: the band is already a full viewport tall and centres its
-     content, so section padding here only pushes the grid past 1vh. */
-  .logos { width: 100%; display: flex; flex-direction: column; }
-  /* Centred display heading, matching the live section (36px, regular weight,
-     centred in the 1200px container) — not the left eyebrow this section had. */
-  .logos-heading {
-    margin: 0;
-    text-align: center;
-    font-size: var(--fluid-h2);
-    font-weight: var(--font-weight-regular);
-    line-height: var(--core-line-height-tight);
-    color: var(--fg);
-  }
-  /* Two lines, split on the colour change — bright line over muted line. */
-  .logos-heading span { display: block; color: var(--fg-muted); }
-
-  /* A cell in the grid, not a full-width band: two columns wide and exactly one
-     tile tall, so the whole block still reads as one uniform grid. */
-  .logo-grid-title {
-    flex: 0 0 calc(var(--logo-col) * 2 + var(--gap-3));
-    height: calc(var(--logo-col) * 9 / 16);
-    display: grid;
-    place-items: center;
-  }
-
-  /* A declared column count per breakpoint, not flex-wrap. Every tile is the
-     same width, so rows can never go ragged — the old rule sized logos by
-     `height + width:auto`, which made each item a different width and wrapped
-     20 logos into rows of 8 / 11 / 1 at desktop and 2/2/2/2/3/2/4/3 at 375px. */
-  .logo-grid {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    /* Column width is published as a variable so the title cell can be exactly
-       two columns wide and exactly one tile tall. `cqw` (not `%`) because a
-       percentage would resolve against the container's *height* when used for
-       height — this element is the query container. */
-    container-type: inline-size;
-    --logo-col: calc((100cqw - (var(--logo-cols) - 1) * var(--gap-3)) / var(--logo-cols));
-    /* Centred so a partial last row reads as deliberate instead of hanging
-       left — 20 logos over 6 columns will always leave one short row. */
-    justify-content: center;
-    /* Without this, flex items stretch to the tallest in their row and silently
-       override `aspect-ratio` — which is what made the tiles 35 different
-       shapes at 1440. */
-    align-items: flex-start;
-    gap: var(--gap-3);
-    /* 4 columns even on phones: at 36 logos, 3 columns is 12 rows, which cannot
-       fit one viewport height. 4 × 9 rows does. */
-    --logo-cols: 4;
-  }
-  /* 6 from tablet up: at 36 logos, 4 columns is 9 rows, which overran a 1024px
-     screen by 26px. 6 × 6 rows fits every viewport from 640 upward. */
-  @media (min-width: 640px) { .logo-grid { --logo-cols: 6; } }
-
-  .logo-tile {
-    /* Fixed share of the row, so width never varies with the logo's aspect. */
-    flex: 0 0 var(--logo-col);
-    /* Fixed box ratio. Width comes from the column count and height follows it
-       proportionally, so the tile is the same shape at every breakpoint — never
-       a fixed height fighting a fluid width (governance.md §8). */
-    aspect-ratio: 16 / 9;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    border: var(--stroke-thin) solid var(--line);
-    border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--neutral-8) 35%, transparent);
-    transition:
-      background-color var(--duration-normal) var(--easing-smooth),
-      border-color var(--duration-normal) var(--easing-smooth);
-  }
-
-  /* Logos are a set first and brands second: desaturated and softened so the
-     grid reads as one block, resolving to full colour on hover. */
-  /* Sized as a share of the tile, not in px. A fixed px cap plus padding could
-     exceed the tile's aspect-ratio height and force the box taller, which is
-     what made the ratio drift at 768 and 375. */
-  .logo-tile img {
-    max-width: 62%;
-    max-height: 44%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(1) brightness(1.6);
-    opacity: var(--opacity-soft);
-    transition:
-      filter var(--duration-normal) var(--easing-smooth),
-      opacity var(--duration-normal) var(--easing-smooth);
-  }
-  .logo-tile:hover { background: color-mix(in srgb, var(--neutral-8) 70%, transparent); border-color: color-mix(in srgb, var(--neutral-0) 16%, transparent); }
-  .logo-tile:hover img { filter: grayscale(0) brightness(1); opacity: var(--opacity-100); }
-
-  /* Phones: 24 tiles over 3 columns is 8 rows, which overran one screen by
-     ~134px. The band supplies the height, so the section's own padding is
-     redundant here — trimming it and the tile keeps the whole grid to 1vh. */
-  /* Phones show 24 of the 36, not all of them: 4 columns × 6 rows still fills
-     every row and fits one viewport, and dropping the last 12 buys back the
-     tile height that 9 rows had squeezed out (53px → 88px). */
-  /* Phones: 32 logos (the first group drops from 14 to 12, so it stays 3 full
-     rows of 4), the title spans the full width on its own row, and it runs on
-     one line rather than two. */
-  @media (max-width: 640px) {
-    .logo-grid { gap: var(--gap-2); }
-    .logos-heading span { display: inline; }
-    /* Full width, but the same height as a tile and no extra padding, so the
-       row gap around it stays identical to every other row gap. */
-    .logo-grid-title { flex-basis: 100%; }
-    .logo-tile:nth-child(13),
-    .logo-tile:nth-child(14) { display: none; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .logo-tile, .logo-tile img { transition: none; }
-  }
 
   /* ── Industries We Empower ── */
   .industries-section {
@@ -954,13 +503,5 @@ import InsightsBlock from '../components/InsightsBlock.astro';
   });
 
 
-  // Draggable service tags ("What we do")
-  let killTags: (() => void) | null = null;
-  const initTags = async () => {
-    killTags?.();
-    const { initDraggableTags } = await import('../lib/draggable-tags');
-    killTags = initDraggableTags();
-  };
-  initTags();
-  document.addEventListener('astro:page-load', initTags);
+  // Draggable service tags now init from ServiceTagField.astro's own script.
 </script>
