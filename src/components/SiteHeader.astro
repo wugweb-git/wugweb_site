@@ -315,6 +315,14 @@ function isActive(href: string) {
     width: 100%;
     padding: var(--gap-4);
     font-weight: var(--font-weight-bold);
+    /* .nav-cta sets --fluid-label (12px) for the compact desktop bar. In the
+       open sheet it sits in the same stack as the nav links, which render at
+       16px - so it read a size smaller than everything above it. Match them.
+       The old site goes further and styles this identically to the other
+       links; the yellow fill is a deliberate departure (CLAUDE.md), the size
+       difference was not. */
+    font-size: var(--ts-body-md-size);
+    line-height: var(--core-line-height-normal);
   }
   .site-header-inner[data-open='true'] .menu-meta {
     display: flex;
