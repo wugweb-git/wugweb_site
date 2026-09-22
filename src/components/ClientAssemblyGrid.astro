@@ -108,7 +108,10 @@ const clientLogos = logos.length
     margin: 0;
     text-align: center;
     font-size: var(--fluid-h2);
-    font-weight: var(--font-weight-regular);
+    /* Bold. It was regular, which left a section heading reading lighter than
+       the body copy around it. */
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
     line-height: var(--core-line-height-tight);
     color: var(--fg);
   }
