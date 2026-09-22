@@ -227,11 +227,17 @@ function isActive(href: string) {
   /* Mobile expanded = same bar grows to fit the viewport (~698px on a
      375×812 phone), never taller. One scroll container, no nested scroll. */
   .site-header-inner[data-open='true'] {
-    max-height: 100dvh;
+    /* Audit §7.3: this was a flat 100dvh, but .site-header adds its own top
+       padding above it, so the open card was that padding taller than the
+       screen and its foot was cut off. Subtract what sits above it. */
+    max-height: calc(100dvh - var(--safe-top) - var(--gap-4));
     display: flex;
     flex-direction: column;
     padding-bottom: var(--gap-6);
     overflow-y: auto;
+    /* Audit §7: the card scrolls internally on short screens without handing
+       the overscroll to the page behind it. */
+    overscroll-behavior: contain;
   }
   .site-header-inner[data-open='true'] .nav-toggle-bars { display: none; }
   .site-header-inner[data-open='true'] .nav-toggle-close { display: block; }

@@ -11,12 +11,45 @@ export function initSiteHeader(): void {
   if (!nav || !toggle || nav.dataset.navBound === '1') return;
   nav.dataset.navBound = '1';
 
+  /**
+   * Scroll lock (UI audit §7.4). `body { overflow: hidden }` is ignored by
+   * iOS Safari, so the page kept scrolling behind the open menu — visible in
+   * the audit's 02-new-menu-open-390.png. `position: fixed` is the technique
+   * that actually holds there, but it collapses the page to the top, so the
+   * scroll offset is saved on lock and restored on release.
+   *
+   * `locked` guards the restore: setOpen(false) also fires on resize and on
+   * every link click, and an unguarded scrollTo would yank the page to a
+   * stale offset when nothing had been locked.
+   */
+  let locked = false;
+  let lockedScrollY = 0;
+
+  const setScrollLock = (lock: boolean) => {
+    const body = document.body;
+    if (lock === locked) return;
+    if (lock) {
+      lockedScrollY = window.scrollY;
+      body.style.position = 'fixed';
+      body.style.top = `-${lockedScrollY}px`;
+      body.style.insetInline = '0';
+      body.style.width = '100%';
+      locked = true;
+    } else {
+      body.style.position = '';
+      body.style.top = '';
+      body.style.insetInline = '';
+      body.style.width = '';
+      locked = false;
+      window.scrollTo(0, lockedScrollY);
+    }
+  };
+
   const setOpen = (open: boolean) => {
     nav.dataset.open = open ? 'true' : 'false';
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    document.body.style.overflow =
-      open && window.matchMedia('(max-width: 767px)').matches ? 'hidden' : '';
+    setScrollLock(open && window.matchMedia('(max-width: 767px)').matches);
   };
 
   toggle.addEventListener('click', () => {
