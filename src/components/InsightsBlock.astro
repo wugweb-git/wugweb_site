@@ -211,4 +211,68 @@ const coverOf = (p: InsightPost) =>
     font-size: var(--t-micro);
     color: color-mix(in srgb, var(--color-ash) 70%, transparent);
   }
+  /* ── Mobile: a compact row, not a full-screen poster ──────────────────
+     The desktop card is a light block with 16:9 media stacked on top. At
+     phone width that is one card per screen, which makes a three-item teaser
+     read as three pages of scrolling. Below 768px it becomes a row: square
+     thumbnail on the left, tag chip and title on the right, on the dark
+     surface the rest of the page uses. Excerpt and byline are dropped - at
+     this size the title is the link and the rest is noise. */
+  @media (max-width: 767px) {
+    .blog-teaser-grid { gap: var(--gap-3); }
+
+    .blog-teaser-card,
+    .blog-teaser-card--featured {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--gap-4);
+      padding: var(--gap-3);
+      background: var(--color-surface-elevated);
+      color: var(--fg);
+      border-color: var(--line);
+    }
+    .blog-teaser-card:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+    }
+
+    .btc-media,
+    .blog-teaser-card--featured .btc-media {
+      width: 5.5rem;
+      aspect-ratio: 1;
+      flex: 0 0 auto;
+      border-radius: var(--radius-md);
+    }
+
+    .btc-content { padding: 0; min-width: 0; }
+
+    /* A chip, matching the reference, rather than a bare uppercase label. */
+    .btc-cat {
+      font-family: var(--font-body);
+      font-size: var(--fluid-body-sm);
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--fg-muted);
+      background: color-mix(in srgb, var(--neutral-0) 8%, transparent);
+      padding: var(--gap-1) var(--gap-3);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--gap-2);
+    }
+
+    .btc-content h3,
+    .blog-teaser-card--featured .btc-content h3 {
+      font-size: var(--fluid-body-lg);
+      color: var(--fg);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* The row is the summary; the article page carries the rest. */
+    .btc-excerpt,
+    .btc-meta { display: none; }
+  }
+
 </style>
