@@ -248,13 +248,27 @@ function isActive(href: string) {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    padding: 0 var(--gap-4);
+    /* No gutter of its own: .nav-top already applies padding-inline, and adding
+       a second one here put the links and CTA 32px from the card edge while the
+       logo, contact rows and legal sat at 16px (audit §7, "3 distinct left
+       edges"). Measured 2 on the current build; this makes it 1. */
+    padding: 0;
     gap: var(--gap-2);
     margin-top: var(--gap-2);
     font-size: var(--fluid-body-lg);
   }
   .site-header-inner[data-open='true'] .nav-top {
     flex-wrap: wrap;
+    /* Lines stack from the top instead of sharing the grown container height. */
+    align-content: flex-start;
+  }
+  /* Holds the first flex line at the closed bar's height, so the toggle centres
+     in the same 78px band whether the menu is open or shut - measured jump was
+     -17px before this. */
+  .site-header-inner[data-open='true'] .site-logo {
+    min-height: var(--nav-height);
+    display: flex;
+    align-items: center;
   }
   .site-header-inner[data-open='true'] .site-links {
     order: 3;
