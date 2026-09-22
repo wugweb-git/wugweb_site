@@ -217,18 +217,18 @@
   /* G-9: Numeric spacing / padding / gap ramp (§3.10).
      All three share one ramp — prefixes distinguish context. */
   --s-0: 0;     --p-0: 0;     --gap-0: 0;
-  --s-1: 4px;   --p-1: 4px;   --gap-1: 4px;
-  --s-2: 8px;   --p-2: 8px;   --gap-2: 8px;
-  --s-3: 12px;  --p-3: 12px;  --gap-3: 12px;
-  --s-4: 16px;  --p-4: 16px;  --gap-4: 16px;
-  --s-5: 20px;  --p-5: 20px;  --gap-5: 20px;
-  --s-6: 24px;  --p-6: 24px;  --gap-6: 24px;
-  --s-7: 28px;  --p-7: 28px;  --gap-7: 28px;
-  --s-8: 32px;  --p-8: 32px;  --gap-8: 32px;
-  --s-9: 36px;  --p-9: 36px;  --gap-9: 36px;
-  --s-10: 40px; --p-10: 40px; --gap-10: 40px;
-  --s-11: 44px; --p-11: 44px; --gap-11: 44px;
-  --s-12: 48px; --p-12: 48px; --gap-12: 48px;
+  --s-1: 0.25rem;   --p-1: 0.25rem;   --gap-1: 0.25rem;
+  --s-2: 0.5rem;   --p-2: 0.5rem;   --gap-2: 0.5rem;
+  --s-3: 0.75rem;  --p-3: 0.75rem;  --gap-3: 0.75rem;
+  --s-4: 1rem;  --p-4: 1rem;  --gap-4: 1rem;
+  --s-5: 1.25rem;  --p-5: 1.25rem;  --gap-5: 1.25rem;
+  --s-6: 1.5rem;  --p-6: 1.5rem;  --gap-6: 1.5rem;
+  --s-7: 1.75rem;  --p-7: 1.75rem;  --gap-7: 1.75rem;
+  --s-8: 2rem;  --p-8: 2rem;  --gap-8: 2rem;
+  --s-9: 2.25rem;  --p-9: 2.25rem;  --gap-9: 2.25rem;
+  --s-10: 2.5rem; --p-10: 2.5rem; --gap-10: 2.5rem;
+  --s-11: 2.75rem; --p-11: 2.75rem; --gap-11: 2.75rem;
+  --s-12: 3rem; --p-12: 3rem; --gap-12: 3rem;
 
   /* Legacy gap aliases (keep until migration) */
   --gap-xs: var(--gap-2);
@@ -239,11 +239,11 @@
   --gap-xl: var(--gap-9);
 
   /* G-10: Responsive spacing (§3.6) */
-  --space-section-xs: 32px;
-  --space-section-sm: 40px;
-  --space-section-md: 48px;
-  --space-section-lg: 64px;
-  --space-section-xl: 80px;
+  --space-section-xs: 2rem;
+  --space-section-sm: 2.5rem;
+  --space-section-md: 3rem;
+  --space-section-lg: 4rem;
+  --space-section-xl: 5rem;
   /* Clear space above a page title.
      Measured: our six pages ran 64→126px below the header, and the difference
      was only whether the page happened to carry an eyebrow — not a decision.
@@ -261,11 +261,11 @@
   --chip-size: 2.25rem;
   --chip-glyph: 1rem;
 
-  --space-page-xs: 16px;
-  --space-page-sm: 20px;
-  --space-page-md: 32px;
-  --space-page-lg: 40px;
-  --space-page-xl: 48px;
+  --space-page-xs: 1rem;
+  --space-page-sm: 1.25rem;
+  --space-page-md: 2rem;
+  --space-page-lg: 2.5rem;
+  --space-page-xl: 3rem;
 
 
   /* ═════════════════════════════════════════════════════════════════
@@ -273,14 +273,14 @@
      ═════════════════════════════════════════════════════════════════ */
 
   /* G-8: Radius scale (§3.11) */
-  --r-0: 0px;
-  --r-1: 4px;
-  --r-2: 8px;
-  --r-3: 12px;
-  --r-4: 16px;
-  --r-5: 20px;
-  --r-6: 24px;
-  --r-8: 32px;
+  --r-0: 0;
+  --r-1: 0.25rem;
+  --r-2: 0.5rem;
+  --r-3: 0.75rem;
+  --r-4: 1rem;
+  --r-5: 1.25rem;
+  --r-6: 1.5rem;
+  --r-8: 2rem;
   --r-full: 9999px;
 
   /* Radius aliases (§3.11) */
@@ -564,7 +564,7 @@
   --focus-offset: 2px;
 
   /* Component sizes (documented in kits sizing.md) */
-  --nav-height: 78px;
+  --nav-height: 4.875rem;
   --control-size: 44px;
   --pillar-thumb: 88px;
   --pillar-thumb-sm: 62px;
@@ -604,6 +604,20 @@ html { scroll-behavior: smooth; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ── Proportional scale above the content cap ─────────────────────────────
+   Below 1440px this resolves to 16px and nothing changes. Above it the root
+   grows with the viewport, and because the spacing ramp, radii, nav height
+   and both container caps are now rem, the whole page scales together rather
+   than staying pinned at 1280px inside ever-widening margins. Capped at 24px
+   (reached ~2160px) so it stops before it gets silly on a 4K panel.
+
+   Deliberately NOT scaled: --stroke-* stays px so hairlines stay crisp
+   instead of blurring to 1.33px, --r-full is a sentinel not a size, and
+   @media breakpoints are px because they switch layout rather than size it. */
+:root {
+  font-size: clamp(16px, calc(100vw / 90), 24px);
 }
 
 body {
@@ -861,7 +875,7 @@ summary:focus-visible {
 
 /* G-12: Content max-width (§3.7, C-4) — 1280px content within 1440px page */
 .wrap {
-  max-width: 1280px;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: var(--space-page-xs);
 }
@@ -874,7 +888,7 @@ summary:focus-visible {
 
 /* Full-viewport page container with 1440px cap */
 .page {
-  max-width: 1440px;
+  max-width: 90rem;
   margin-inline: auto;
 }
 

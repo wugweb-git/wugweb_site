@@ -99,7 +99,10 @@ function isActive(href: string) {
   }
 
   .site-header-inner {
-    max-width: 1280px;
+    /* rem, not px, so the bar grows with the root scale above 1440px along
+       with .wrap - a hard px cap here pinned it at 1280 while the content
+       inside it scaled, which is the one thing that must not drift apart. */
+    max-width: 80rem;
     margin-inline: auto;
     border-radius: var(--radius-md);
     background: var(--neutral-7);
@@ -416,6 +419,21 @@ function isActive(href: string) {
     .site-links {
       display: flex;
       margin-left: auto;
+      gap: var(--gap-2);
+    }
+    /* The bar is 78px (matching the old site and the closed mobile bar, and
+       --nav-height feeds the hero's height calc, so shrinking it is the wrong
+       lever). Instead the controls grow to fill it: ~48px tall inside 78px
+       leaves an even 15px band above and below, where a 30px control left 24px
+       of dead space and read as over-padded. */
+    .nav-link,
+    .nav-cta {
+      font-size: var(--ts-body-md-size);
+      min-height: 3rem;
+      padding-block: var(--gap-3);
+      padding-inline: var(--gap-5);
+      display: inline-flex;
+      align-items: center;
     }
     .desktop-cta { display: inline-flex; }
     .mobile-cta { display: none !important; }
