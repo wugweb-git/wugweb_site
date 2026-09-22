@@ -81,6 +81,10 @@ const coverOf = (p: InsightPost) =>
                 {p.readingTime && <span>{p.readingTime} min read</span>}
               </div>
             </div>
+            <span class="btc-go" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
           </a>
         );
       })}
@@ -129,18 +133,23 @@ const coverOf = (p: InsightPost) =>
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    color: var(--color-ash);
-    border: var(--stroke-thin) solid color-mix(in srgb, var(--color-ash) 14%, transparent);
+    color: var(--fg);
+    /* No stroke. Separation is surface level, not a hairline - the card sits
+       a step above the page and lifts another step on hover. */
+    border: 0;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--neutral-1);
+    /* Dark at every width. This was --neutral-1 (#F4F4F4): a light block in a
+       dark page, which forced dark-on-light text, a special-cased category
+       colour for contrast, and made the teaser the loudest thing on the page. */
+    background: var(--color-surface-elevated);
     transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .blog-teaser-card:hover {
-    border-color: color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+    background: var(--surface-2);
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    box-shadow: var(--shadow-md);
   }
 
   .btc-media {
@@ -176,9 +185,7 @@ const coverOf = (p: InsightPost) =>
     font-size: var(--t-micro);
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    /* The brand yellow cannot carry small text on a light card — #FFBE1A on
-       #F4F4F4 is 1.51:1. A muted dark keeps the label reading as a category. */
-    color: color-mix(in srgb, var(--color-ash) 78%, transparent);
+    color: var(--fg-muted);
     margin-bottom: var(--gap-3);
   }
 
@@ -186,7 +193,7 @@ const coverOf = (p: InsightPost) =>
     font-size: var(--t-h5);
     font-weight: var(--font-weight-semibold);
     line-height: var(--lh-tight);
-    color: var(--color-ash);
+    color: var(--fg);
   }
 
   .blog-teaser-card--featured .btc-content h3 { font-size: var(--t-h4); }
@@ -194,7 +201,7 @@ const coverOf = (p: InsightPost) =>
   .btc-excerpt {
     margin-top: var(--gap-2);
     font-size: var(--fluid-body-sm);
-    color: color-mix(in srgb, var(--color-ash) 72%, transparent);
+    color: var(--fg-muted);
     line-height: var(--core-line-height-relaxed);
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -229,13 +236,9 @@ const coverOf = (p: InsightPost) =>
       padding: var(--gap-3);
       background: var(--color-surface-elevated);
       color: var(--fg);
-      border-color: var(--line);
+      border: 0;
     }
-    .blog-teaser-card:hover {
-      transform: none;
-      box-shadow: none;
-      border-color: color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
-    }
+    .blog-teaser-card:active { background: var(--surface-2); }
 
     .btc-media,
     .blog-teaser-card--featured .btc-media {
@@ -258,6 +261,9 @@ const coverOf = (p: InsightPost) =>
       padding: var(--gap-1) var(--gap-3);
       border-radius: var(--radius-sm);
       margin-bottom: var(--gap-2);
+      /* .btc-content is a flex column, which stretches its children - the chip
+         was running the full width of the card instead of hugging its label. */
+      align-self: flex-start;
     }
 
     .btc-content h3,
@@ -273,6 +279,34 @@ const coverOf = (p: InsightPost) =>
     /* The row is the summary; the article page carries the rest. */
     .btc-excerpt,
     .btc-meta { display: none; }
+
+    .btc-go {
+      flex: 0 0 auto;
+      align-self: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-left: var(--gap-2);
+      color: var(--fg-subtle);
+      transition: color var(--duration-fast) var(--easing-out),
+                  transform var(--duration-fast) var(--easing-out);
+    }
+    .blog-teaser-card:active .btc-go {
+      color: var(--fg);
+      transform: translateX(2px);
+    }
   }
 
+  .btc-go { display: block; }
+  .btc-go svg { width: 100%; height: 100%; display: block; }
+  @media (min-width: 768px) {
+    .btc-go {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: var(--gap-4) var(--gap-6) var(--gap-6);
+      color: var(--fg-subtle);
+      transition: color var(--duration-fast) var(--easing-out),
+                  transform var(--duration-fast) var(--easing-out);
+    }
+    .blog-teaser-card:hover .btc-go { color: var(--fg); transform: translateX(3px); }
+  }
 </style>

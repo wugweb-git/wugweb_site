@@ -161,7 +161,14 @@
 
   --color-border-subtle: #2B2B2B;
 
-  --color-accent-primary: #FFBE1A;
+  /* DECISION 2026-09-23: yellow is reserved for the two critical CTAs - the
+     top-nav "Let's Talk" and the final CTA panel - and appears nowhere else.
+     Both of those reference --color-yellow directly, so repointing the accent
+     here turns every other use grey in one move: 154 call sites resolve
+     through --color-accent-primary / --accent / --accent-warm, and editing
+     them individually would have missed some. The brand yellow itself is
+     unchanged and still lives in --color-yellow. */
+  --color-accent-primary: var(--neutral-2);
   --color-accent-blue: #2368D7;
   --color-accent-lime: #ACF80B;
 
@@ -527,19 +534,19 @@
   --hover-button: scale 1.02, var(--shadow-xs);
   --hover-card: translateY(-4px), var(--shadow-md);
   --hover-image: scale(1.03);
-  --hover-link: var(--color-accent-primary);
+  --hover-link: var(--neutral-0);
   --hover-icon: var(--opacity-100);
   --hover-input: var(--fg);
 
   /* Focus */
-  --focus-primary: 2px solid var(--color-accent-primary);
+  --focus-primary: 2px solid var(--neutral-3);
   --focus-secondary: 2px solid var(--color-accent-blue);
-  --focus-brand: 2px solid var(--color-accent-primary);
+  --focus-brand: 2px solid var(--neutral-3);
   --focus-input: 2px solid var(--color-accent-blue);
-  --focus-button: 2px solid var(--color-accent-primary);
+  --focus-button: 2px solid var(--neutral-3);
 
   /* Selection */
-  --selection-brand: var(--color-accent-primary);
+  --selection-brand: var(--neutral-3);
   --selection-inverse: var(--neutral-10);
   --selection-dark: var(--neutral-8);
   --selection-light: var(--neutral-1);
@@ -849,7 +856,7 @@ a { color: inherit; }
 }
 
 .btn:active { transform: scale(0.97); }
-.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.btn:focus-visible { outline: 2px solid var(--neutral-3); outline-offset: 3px; }
 
 /* Site-wide keyboard focus.
    Only .btn, .u-chip and .cta-ball carried a focus ring, so every card link —
@@ -871,9 +878,11 @@ summary:focus-visible {
   color: var(--color-surface-page);
 }
 .btn-solid:hover {
-  background: var(--fg);
-  border-color: var(--fg);
-  color: var(--bg);
+  /* Was a white fill. Hover lifts and lightens slightly - no white, no
+     coloured outline. */
+  background: var(--neutral-2);
+  border-color: var(--neutral-2);
+  color: var(--color-surface-page);
   transform: translateY(-1px);
 }
 .btn:hover { background: var(--color-surface-hover); }
@@ -884,7 +893,8 @@ summary:focus-visible {
 }
 .btn-ghost:hover {
   background: color-mix(in srgb, var(--neutral-0) 6%, transparent);
-  border-color: var(--fg);
+  /* Not --fg: a white outline on hover was explicitly rejected. */
+  border-color: var(--line-strong);
 }
 
 

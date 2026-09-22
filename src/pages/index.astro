@@ -285,6 +285,21 @@ import ServiceTagField from '../components/ServiceTagField.astro';
     filter: blur(0px);
   }
 
+  /* One of the three places yellow is allowed: top-nav CTA, this hero CTA,
+     and the final CTA panel. Everywhere else the accent resolves to grey (see
+     --color-accent-primary in global.css). Scoped here rather than to .btn-solid
+     so the same class stays neutral on every other page. */
+  .hero-ctas .btn-solid {
+    background: var(--color-yellow);
+    border-color: var(--color-yellow);
+    color: var(--color-surface-page);
+  }
+  .hero-ctas .btn-solid:hover {
+    background: color-mix(in srgb, var(--color-yellow) 88%, var(--neutral-10));
+    border-color: color-mix(in srgb, var(--color-yellow) 88%, var(--neutral-10));
+    color: var(--color-surface-page);
+  }
+
   .hero-ctas {
     display: flex;
     gap: var(--gap-4);
