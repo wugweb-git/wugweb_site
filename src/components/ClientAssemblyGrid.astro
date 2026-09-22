@@ -46,12 +46,13 @@ const {
  * can be judged. Repeats are marked aria-hidden so screen readers and search
  * engines only ever see the real set once.
  */
-const padTo = Math.max(total, logos.length);
+/* Padding is off: the real set renders once. Repeats were visible on the live
+   site as duplicate Cartier / Airtel XSafe / Ninja / Aditya Birla tiles. The
+   grid centres a short last row, so an incomplete set still reads as
+   deliberate. Set `total` above `logos.length` only to judge layout locally. */
+const padTo = Math.min(Math.max(total, 0), logos.length) || logos.length;
 const clientLogos = logos.length
-  ? Array.from({ length: padTo }, (_, i) => ({
-      ...logos[i % logos.length],
-      isRepeat: i >= logos.length,
-    }))
+  ? Array.from({ length: padTo }, (_, i) => ({ ...logos[i], isRepeat: false }))
   : [];
 ---
 
@@ -144,8 +145,9 @@ const clientLogos = logos.length
        override `aspect-ratio`. */
     align-items: flex-start;
     gap: var(--gap-3);
-    /* 4 columns even on phones. */
-    --logo-cols: 4;
+    /* 3 on phones. At 4 the logo inside a 16:9 tile was too small to read -
+       the old site uses 3 and its marks are legible. */
+    --logo-cols: 3;
   }
   /* 6 from tablet up. */
   @media (min-width: 640px) { .logo-grid { --logo-cols: 6; } }
@@ -160,9 +162,12 @@ const clientLogos = logos.length
     display: grid;
     place-items: center;
     overflow: hidden;
-    border: var(--stroke-thin) solid var(--line);
+    /* No stroke - the tile reads as a surface a step above the page, the way
+       the rest of the system separates things. It was a hairline over a 35%
+       wash, which left the card barely visible against the background. */
+    border: 0;
     border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--neutral-8) 35%, transparent);
+    background: var(--color-surface-elevated);
     transition:
       background-color var(--duration-normal) var(--easing-smooth),
       border-color var(--duration-normal) var(--easing-smooth);
@@ -173,18 +178,18 @@ const clientLogos = logos.length
      share of the tile, not in px, so it can't exceed the tile's aspect-ratio
      height and force the box taller. */
   .logo-tile img {
-    max-width: 62%;
-    max-height: 44%;
+    max-width: 72%;
+    max-height: 54%;
     width: auto;
     height: auto;
     object-fit: contain;
-    filter: grayscale(1) brightness(1.6);
-    opacity: var(--opacity-soft);
+    filter: grayscale(1) brightness(1.9);
+    opacity: var(--opacity-90);
     transition:
       filter var(--duration-normal) var(--easing-smooth),
       opacity var(--duration-normal) var(--easing-smooth);
   }
-  .logo-tile:hover { background: color-mix(in srgb, var(--neutral-8) 70%, transparent); border-color: color-mix(in srgb, var(--neutral-0) 16%, transparent); }
+  .logo-tile:hover { background: var(--surface-2); }
   .logo-tile:hover img { filter: grayscale(0) brightness(1); opacity: var(--opacity-100); }
 
   /* Phones: the first group drops from 14 to 12 so it stays 3 full rows of 4,
@@ -193,8 +198,7 @@ const clientLogos = logos.length
     .logo-grid { gap: var(--gap-2); }
     .logos-heading span { display: inline; }
     .logo-grid-title { flex-basis: 100%; }
-    .logo-tile:nth-child(13),
-    .logo-tile:nth-child(14) { display: none; }
+    /* (the 4-column row-filling hack is gone with the padding) */
   }
 
   @media (prefers-reduced-motion: reduce) {
