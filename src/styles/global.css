@@ -173,6 +173,12 @@
   --bg: var(--color-surface-page);
   --surface: var(--color-surface-elevated);
   --surface-2: var(--neutral-7);
+  /* Referenced by /contact-us (chips, cards, checked/focus states) but never
+     defined, so those surfaces fell through to transparent. Aliased to the
+     canonical tokens rather than given new values: `--color-surface-hover` is
+     the same lift `.btn:hover` and `.nav-link:hover` already use. */
+  --surface-elevated: var(--color-surface-elevated);
+  --surface-hover: var(--color-surface-hover);
   --bg-elevated: var(--neutral-7);
   --fg: var(--color-text-primary);
   --fg-muted: var(--color-text-secondary);
@@ -265,7 +271,6 @@
   --radius-5: var(--r-5);
   --radius-6: var(--r-6);
   --radius-8: var(--r-8);
-  --radius-full: var(--r-full);
 
   /* Legacy radius aliases (keep until migration) */
   --r-sm: var(--r-1);
@@ -280,8 +285,11 @@
      SHADOWS
      ═════════════════════════════════════════════════════════════════ */
 
-  --shadow: rgba(0, 0, 0, 0.25) 0 1.07px 5px 0;
-  --shadow-lg: rgba(0, 0, 0, 0.25) 0 5px 10px 0;
+  /* The shadow scale (xs…2xl) and its aliases live in the EFFECTS block
+     below — this section keeps only the nav shadow, which is referenced by
+     §2.1 and has no equivalent step on that scale. The two Framer-era values
+     that used to sit here (`--shadow`, `--shadow-lg`) were redefined further
+     down anyway, so they never applied. */
 
   /* Nav bar shadow (§2.1 — present on every nav variant) */
   --shadow-nav: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
@@ -355,6 +363,13 @@
      blog index, work-grid placeholder initials. */
   --opacity-soft: var(--opacity-70);
   --opacity-strong: var(--opacity-90);
+  /* Same failure mode as the pair above. `--opacity-muted` (de-emphasised
+     label) and `--opacity-subtle` (resting state of a control that brightens
+     on hover/active) were referenced on /services but never defined, so the
+     panel index numbers and the inactive tier tabs rendered at full opacity.
+     Ordered against the interaction ramp: subtle .60 → hover .90 → active 1. */
+  --opacity-muted: var(--opacity-70);
+  --opacity-subtle: var(--opacity-60);
 
   /* Radius aliases (--radius-* → existing --r-*) */
   --radius-none: var(--r-0);
@@ -409,10 +424,12 @@
   --shadow-glow-pink: 0 0 40px rgba(230, 48, 159, 0.35);
   --shadow-glow-teal: 0 0 40px rgba(9, 226, 192, 0.35);
 
-  /* Legacy shadow aliases */
+  /* Legacy shadow alias. `--shadow-lg: var(--shadow-md)` and a repeat of
+     `--shadow-nav` used to follow this line; both were later definitions of
+     tokens already set above, and the --shadow-lg one silently collapsed the
+     scale's lg step onto md for every consumer. Removed 2026-09-23 — only
+     --shadow stays, since the scale has no plain `--shadow` step. */
   --shadow: var(--shadow-sm);
-  --shadow-lg: var(--shadow-md);
-  --shadow-nav: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
 
   /* Elevation — each bundles shadow + z */
   --elevation-0: none;
@@ -459,6 +476,15 @@
   --transition-page: opacity var(--duration-normal) var(--easing-smooth),
                      transform var(--duration-normal) var(--easing-smooth);
   --transition-overlay: opacity var(--duration-slow) var(--easing-smooth);
+  /* Referenced by /contact-us but never defined, so every chip, field, radio
+     and submit button snapped between states with no transition. Properties
+     are listed rather than `all`: these five are the only ones those rules
+     actually change (background, border, colour, shadow, lift). */
+  --transition-fast: background-color var(--duration-fast) var(--easing-out),
+                     border-color var(--duration-fast) var(--easing-out),
+                     color var(--duration-fast) var(--easing-out),
+                     box-shadow var(--duration-fast) var(--easing-out),
+                     transform var(--duration-fast) var(--easing-out);
 
   /* Hover presets */
   --hover-button: scale 1.02, var(--shadow-xs);
