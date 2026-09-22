@@ -54,7 +54,6 @@ function isActive(href: string) {
         <span class="nav-toggle-bars" aria-hidden="true">
           <span></span><span></span><span></span>
         </span>
-        <span class="nav-toggle-close" aria-hidden="true">×</span>
       </button>
     </div>
 
@@ -106,7 +105,10 @@ function isActive(href: string) {
     -webkit-backdrop-filter: var(--glass-medium);
     box-shadow: var(--shadow-nav);
     overflow: hidden;
-    transition: min-height var(--duration-normal) var(--easing-out);
+    /* Audit §7.1: this used to read `min-height`, but the open state changes
+       `height` - so the transition could never fire and the menu simply
+       appeared. Both ends are definite values now, so it animates. */
+    transition: height var(--duration-normal) var(--easing-smooth);
   }
 
   .nav-top {
@@ -127,7 +129,10 @@ function isActive(href: string) {
   }
   .site-logo-img {
     display: block;
-    height: 34px;
+    /* Measured against the old site at 390px: its wordmark is ~125 wide, ours
+       was 94 - noticeably smaller in the same bar. At this aspect (2.76:1),
+       45px of height puts it back at ~124. */
+    height: 45px;
     width: auto;
     max-width: 160px;
   }
@@ -210,19 +215,24 @@ function isActive(href: string) {
     height: 2px;
     background: var(--neutral-10);
     border-radius: 2px;
+    transform-origin: center;
+    /* Audit §7.2 wanted a morph rather than two icons toggled with `display`.
+       The stack is 2+4+2+4+2 = 14px tall, so the outer bars travel 6px to meet
+       on the centre line before rotating. */
+    transition: transform var(--duration-normal) var(--easing-spring),
+                opacity var(--duration-fast) var(--easing-out),
+                width var(--duration-normal) var(--easing-smooth);
   }
   .nav-toggle-bars span:nth-child(1) { width: 18px; }
   .nav-toggle-bars span:nth-child(2) { width: 14px; }
   .nav-toggle-bars span:nth-child(3) { width: 10px; }
-  .nav-toggle-close {
-    display: none;
-    font-size: var(--ts-h2-size);
-    line-height: 1;
-    color: var(--neutral-10);
-    font-weight: var(--font-weight-regular);
-  }
-
   .menu-meta { display: none; }
+
+  /* The closed end of that transition. Mobile only - the desktop bar still
+     sizes to its content (see the min-width: 768px block below). */
+  @media (max-width: 767px) {
+    .site-header-inner { height: var(--nav-height); }
+  }
 
   /* Mobile expanded = same bar grows to fit the viewport (~698px on a
      375×812 phone), never taller. One scroll container, no nested scroll. */
@@ -249,8 +259,19 @@ function isActive(href: string) {
        the overscroll to the page behind it. */
     overscroll-behavior: contain;
   }
-  .site-header-inner[data-open='true'] .nav-toggle-bars { display: none; }
-  .site-header-inner[data-open='true'] .nav-toggle-close { display: block; }
+  /* The three bars stay and become the cross: the staggered widths even up,
+     the middle rule collapses, and the outer two meet and rotate. */
+  .site-header-inner[data-open='true'] .nav-toggle-bars span { width: 18px; }
+  .site-header-inner[data-open='true'] .nav-toggle-bars span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .site-header-inner[data-open='true'] .nav-toggle-bars span:nth-child(2) {
+    opacity: var(--opacity-0);
+    transform: scaleX(0);
+  }
+  .site-header-inner[data-open='true'] .nav-toggle-bars span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
   .site-header-inner[data-open='true'] .nav-toggle { background: var(--neutral-2); }
 
   .site-header-inner[data-open='true'] .site-links {
@@ -361,6 +382,7 @@ function isActive(href: string) {
 
     .site-header-inner[data-open='true'] {
       min-height: var(--nav-height);
+      height: auto;
       max-height: none;
       overflow: visible;
       padding-bottom: 0;
