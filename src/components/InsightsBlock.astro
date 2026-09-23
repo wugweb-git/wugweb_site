@@ -73,7 +73,18 @@ const coverOf = (p: InsightPost) =>
               </div>
             )}
             <div class="btc-content">
-              {p.category && <span class="btc-cat u-tag">{p.category}</span>}
+              <div class="btc-cat-row">
+                {p.category && <span class="btc-cat u-tag">{p.category}</span>}
+                {/* Same round + affordance the FAQ, Service Tag Field and
+                    approach cards use — .u-chip owns its box/glyph size, so
+                    this never needs its own dimensions. Decorative: the
+                    whole card is the one link, this just signals it. */}
+                <span class="u-chip btc-launch" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" focusable="false">
+                    <path d="M8 1.5v13M1.5 8h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                </span>
+              </div>
               <h3>{p.title}</h3>
               {p.excerpt && <p class="btc-excerpt">{p.excerpt}</p>}
               <div class="btc-meta">
@@ -81,12 +92,6 @@ const coverOf = (p: InsightPost) =>
                 {p.readingTime && <span>{p.readingTime} min read</span>}
               </div>
             </div>
-            <span class="btc-go" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                   stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                <path d="M8 16 16 8M9.5 8H16v6.5" />
-              </svg>
-            </span>
           </a>
         );
       })}
@@ -181,14 +186,30 @@ const coverOf = (p: InsightPost) =>
     flex: 1;
   }
 
+  /* Tag + launch chip share one row — the chip is decorative (the whole
+     card is the one link) but gives the category label a paired affordance,
+     rather than the label floating alone with the action stranded at the
+     card's far corner. */
+  .btc-cat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-3);
+    margin-bottom: var(--gap-3);
+  }
+
   .btc-cat {
-    display: inline-block;
+    display: inline-flex;
     font-family: var(--font-mono);
     font-size: var(--t-micro);
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--fg-muted);
-    margin-bottom: var(--gap-3);
+  }
+
+  /* .u-chip owns box/glyph size — brighten it on card hover, same as any
+     other hover-revealed affordance on this site. */
+  .blog-teaser-card:hover .btc-launch {
+    background: color-mix(in srgb, var(--neutral-0) 16%, transparent);
   }
 
   .btc-content h3 {
@@ -263,8 +284,9 @@ const coverOf = (p: InsightPost) =>
       font-family: var(--font-body);
       text-transform: none;
       letter-spacing: 0;
-      margin-bottom: var(--gap-2);
     }
+    /* Row's own margin-bottom (--gap-3) is roomier than this layout needs. */
+    .btc-cat-row { margin-bottom: var(--gap-2); }
 
     .btc-content h3,
     .blog-teaser-card--featured .btc-content h3 {
@@ -280,47 +302,10 @@ const coverOf = (p: InsightPost) =>
     .btc-excerpt,
     .btc-meta { display: none; }
 
-    .btc-go {
-      flex: 0 0 auto;
-      /* Sits at the foot of the row, not vertically centred - it reads as the
-         card's action rather than a decoration floating beside the title. */
-      align-self: flex-end;
-      width: 2.25rem;
-      height: 2.25rem;
-      margin-left: var(--gap-2);
-      display: grid;
-      place-items: center;
-      border-radius: var(--radius-full);
-      background: color-mix(in srgb, var(--neutral-0) 10%, transparent);
-      color: var(--fg);
-      transition: background var(--duration-fast) var(--easing-out),
-                  transform var(--duration-fast) var(--easing-out);
-    }
-    .btc-go svg { width: 55%; height: 55%; }
-    .blog-teaser-card:active .btc-go {
+    /* .btc-launch is the .u-chip in .btc-cat-row now — the card's active
+       (touch) state brightens it same as the old .btc-go used to. */
+    .blog-teaser-card:active .btc-launch {
       background: color-mix(in srgb, var(--neutral-0) 18%, transparent);
-      transform: translate(1px, -1px);
-    }
-  }
-
-  .btc-go { display: block; }
-  .btc-go svg { width: 55%; height: 55%; display: block; }
-  @media (min-width: 768px) {
-    .btc-go {
-      width: 2.5rem;
-      height: 2.5rem;
-      margin: 0 var(--gap-6) var(--gap-6);
-      display: grid;
-      place-items: center;
-      border-radius: var(--radius-full);
-      background: color-mix(in srgb, var(--neutral-0) 10%, transparent);
-      color: var(--fg);
-      transition: background var(--duration-fast) var(--easing-out),
-                  transform var(--duration-fast) var(--easing-out);
-    }
-    .blog-teaser-card:hover .btc-go {
-      background: color-mix(in srgb, var(--neutral-0) 18%, transparent);
-      transform: translate(2px, -2px);
     }
   }
 </style>
