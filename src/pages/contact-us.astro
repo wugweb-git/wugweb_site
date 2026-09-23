@@ -158,15 +158,28 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
           <div class="info-list">
             <div class="info-item">
               <span class="item-label">Inquiries & Proposals</span>
-              <a href="mailto:hello@wugweb.com" class="item-value">hello@wugweb.com</a>
+              <a href="mailto:hello@wugweb.com" class="item-value item-value-linked">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="item-icon"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                hello@wugweb.com
+              </a>
             </div>
             <div class="info-item">
               <span class="item-label">India Office</span>
-              <p class="item-value">Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP - 201301</p>
+              {/* target="_blank" picks up the sitewide external-arrow rule
+                  (global.css) automatically — a Maps search link is exactly
+                  the "leaves the site" case that rule exists for. Built from
+                  the address text itself, not a guessed place URL. */}
+              <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP - 201301')}`} target="_blank" rel="noopener noreferrer" class="item-value item-value-linked">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="item-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP - 201301
+              </a>
             </div>
             <div class="info-item">
               <span class="item-label">UAE Presence</span>
-              <p class="item-value">Dubai Silicon Oasis, DTEC Campus, Dubai, UAE</p>
+              <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Dubai Silicon Oasis, DTEC Campus, Dubai, UAE')}`} target="_blank" rel="noopener noreferrer" class="item-value item-value-linked">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="item-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Dubai Silicon Oasis, DTEC Campus, Dubai, UAE
+              </a>
             </div>
           </div>
         </div>
@@ -527,6 +540,21 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     text-decoration: none;
     line-height: var(--lh-snug);
   }
+  /* Email + both addresses are links now (mailto: / a Maps search built
+     from the address text) — icon identifies the channel before the label
+     explains it, matching the leading-icon convention documented in
+     kits_design_system/docs/components.md's "Buttons" section. */
+  .item-value-linked {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--gap-2);
+  }
+  .item-icon {
+    flex-shrink: 0;
+    margin-top: 0.15em;
+    color: var(--fg-muted);
+  }
+  .item-value-linked:hover .item-icon { color: var(--accent-warm); }
   .collab-steps {
     list-style: none;
     padding: 0;

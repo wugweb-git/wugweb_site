@@ -6,6 +6,12 @@
 
 ## Buttons — `.btn` / `.btn-solid` / `.btn-ghost` (`src/styles/global.css:855-924`)
 
+Living reference in Storybook: `src/components/ButtonShowcase.astro` /
+`Foundations/Buttons` — every tier × size × composition × width × state
+combination below, rendered with the real classes (no separate demo CSS).
+Storybook-only, same pattern as `TokenGallery.astro`; renders nothing on
+the live site.
+
 Three tiers. **Brand and Primary are not the same axis** — Brand is a color
 reservation (is this section's scarce yellow moment or not), Primary/Ghost
 is an emphasis level (is this the loudest action in its own local context

@@ -865,6 +865,13 @@ a { color: inherit; }
   letter-spacing: 0;
   text-decoration: none;
   padding: 0.7rem 1.15rem;
+  /* Mapped, same reasoning as InsightsBlock's card cap: a button's label
+     is content, not chrome, and nothing stopped it from stretching to
+     whatever width the copy happened to be — most visible on
+     .btn-block/.btn-block-mobile, where the button intentionally fills a
+     narrow mobile container but shouldn't also grow unbounded wide on a
+     tablet-width "mobile" viewport once it's not block-level anymore. */
+  max-width: 28rem;
   border-radius: var(--radius-sm);
   border: var(--stroke-thin) solid transparent;
   background: var(--neutral-6);

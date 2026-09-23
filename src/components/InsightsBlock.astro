@@ -343,6 +343,15 @@ const coverOf = (p: InsightPost) =>
       background: var(--color-surface-elevated);
       color: var(--fg);
       border: 0;
+      /* Mapped, not left to stretch edge-to-edge: this breakpoint covers
+         phones up through small tablets in portrait (up to 767px) — past
+         phone width the row card (fixed 5.5rem thumbnail + flexible text)
+         would keep stretching wider with no upper bound. 480px is a
+         standard single-column comfortable-reading cap; centers itself on
+         anything wider than that. */
+      max-width: 480px;
+      width: 100%;
+      margin-inline: auto;
     }
     /* Parity with desktop's hover state (background + lift + shadow + image
        zoom) — a flat background swap alone reads as an unfinished tap state

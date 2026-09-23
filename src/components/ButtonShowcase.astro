@@ -1,0 +1,105 @@
+---
+/**
+ * ButtonShowcase — living reference for the .btn family, built for
+ * Storybook so the button system documented in
+ * kits_design_system/docs/components.md ("Buttons") has a visual home
+ * next to the components that consume it.
+ *
+ * Renders nothing on the live site; it exists for Storybook only (see
+ * ButtonShowcase.stories.ts). Every class here is a real global.css class
+ * — no new CSS was written for this file.
+ */
+---
+
+<div class="btn-showcase">
+  <section class="bs-section">
+    <h2>Tier — Brand / Primary / Ghost</h2>
+    <p class="bs-note">Brand is a color reservation (the one conversion action on a page); Primary/Ghost is emphasis. A section's "main action" is usually Primary, not Brand.</p>
+    <div class="bs-row">
+      <button class="btn btn-solid">Brand — Start a project</button>
+      <button class="btn">Primary — View all articles</button>
+      <button class="btn btn-ghost">Ghost — Learn more</button>
+    </div>
+  </section>
+
+  <section class="bs-section">
+    <h2>Size — sm / md (default) / lg</h2>
+    <div class="bs-row bs-row-align">
+      <button class="btn btn-solid btn-sm">Small</button>
+      <button class="btn btn-solid">Medium (default)</button>
+      <button class="btn btn-solid btn-lg">Large</button>
+    </div>
+  </section>
+
+  <section class="bs-section">
+    <h2>Composition — label / label + icon (leading &amp; trailing) / icon only</h2>
+    <div class="bs-row bs-row-align">
+      <button class="btn">Send Enquiry</button>
+      <button class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email us
+      </button>
+      <button class="btn">
+        View all articles
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <button class="btn" aria-label="Send" style="width: 2.75rem; justify-content: center; padding-inline: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <section class="bs-section">
+    <h2>Width — inline (default) / block / block-mobile</h2>
+    <div class="bs-row bs-row-align">
+      <button class="btn btn-solid">Inline</button>
+    </div>
+    <button class="btn btn-solid btn-block" style="margin-top: 0.75rem;">Block (always full-width)</button>
+  </section>
+
+  <section class="bs-section">
+    <h2>States — default / hover / active / focus-visible / disabled</h2>
+    <p class="bs-note">Hover/active are real pseudo-classes — use the Storybook a11y/interactions tab or just hover/tab through these live.</p>
+    <div class="bs-row bs-row-align">
+      <button class="btn btn-solid">Default</button>
+      <button class="btn btn-solid" disabled>Disabled</button>
+      <a href="mailto:hello@wugweb.com" class="btn btn-solid" aria-disabled="true">Disabled (anchor)</a>
+    </div>
+  </section>
+
+  <section class="bs-section">
+    <h2>External link — automatic ↗</h2>
+    <p class="bs-note">Global rule (global.css): any <code>target="_blank"</code> link gets a trailing external-arrow automatically — no class needed on the link itself.</p>
+    <div class="bs-row bs-row-align">
+      <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="btn">Opens in a new tab</a>
+      <a href="mailto:hello@wugweb.com" class="btn">mailto — no arrow</a>
+    </div>
+  </section>
+</div>
+
+<style>
+  .btn-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-section-md);
+    padding: var(--gap-8);
+    color: var(--fg);
+  }
+  .bs-section h2 {
+    font-size: var(--t-h5);
+    margin-bottom: var(--gap-2);
+  }
+  .bs-note {
+    color: var(--fg-muted);
+    font-size: var(--fluid-body-sm);
+    max-width: 60ch;
+    margin-bottom: var(--gap-4);
+  }
+  .bs-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-4);
+    align-items: center;
+  }
+  .bs-row-align { align-items: flex-end; }
+</style>
