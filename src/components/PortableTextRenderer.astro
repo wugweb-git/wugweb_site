@@ -298,7 +298,7 @@ if (currentList) {
     }
 
     // ── 9. Code Block ──
-    if (b._type === 'code') {
+    if (b._type === 'code' || b._type === 'codeBlock') {
       return (
         <div class="pt-code-wrapper glass-panel" data-reveal>
           <div class="pt-code-header">
