@@ -4,12 +4,8 @@ import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
 import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { postBySlugQuery, postsListQuery } from '../../lib/queries';
 
-
-
 const { slug } = Astro.params;
 
-// Preview mode: when the /api/preview cookie is set, fetch draft content
-// with the request-scoped token so Sanity Studio preview links work.
 const previewToken = (Astro.locals as any)?.previewToken as string | undefined;
 const client = previewToken ? getPreviewClient(previewToken) : sanityClient;
 const post = await client.fetch(postBySlugQuery, { slug }).catch(() => null);
@@ -17,6 +13,31 @@ const post = await client.fetch(postBySlugQuery, { slug }).catch(() => null);
 if (!post) {
   return Astro.redirect('/404');
 }
+
+// Category → service pillar → locked brand accent. Chosen once here and
+// used for every accent on the page (rail, blockquote rule, tags) — the
+// Color Consistency Lock, not a different color per section.
+const PILLARS = ['Strategy', 'Brand', 'Experience', 'Engineering', 'Growth', 'Operations'];
+const PILLAR_ACCENT: Record<string, string> = {
+  Strategy: 'var(--svc-strategy)',
+  Brand: 'var(--svc-brand)',
+  Experience: 'var(--svc-experience)',
+  Engineering: 'var(--svc-engineering)',
+  Growth: 'var(--svc-growth)',
+  Operations: 'var(--svc-operations)',
+};
+const CATEGORY_PILLAR: Record<string, string> = {
+  'Strategy': 'Strategy', 'Business Strategy': 'Strategy', 'Consulting': 'Strategy',
+  'Brand & Strategy': 'Brand', 'Brand': 'Brand', 'Content': 'Brand',
+  'Experience Design': 'Experience', 'UX Design': 'Experience', 'UI Design': 'Experience',
+  'Web & App Development': 'Engineering', 'Development / Server': 'Engineering',
+  'Infrastructure & DevOps': 'Engineering',
+  'MarTech': 'Growth', 'Performance Marketing': 'Growth', 'SEO': 'Growth',
+  'AI & Automation': 'Growth', 'Data & Analytics': 'Growth',
+  'Operations': 'Operations', 'Digital Transformation': 'Operations',
+};
+const pillar = CATEGORY_PILLAR[post.category] || PILLARS.find((p) => (post.category || '').toLowerCase().includes(p.toLowerCase())) || 'Experience';
+const accent = PILLAR_ACCENT[pillar];
 
 const readTime = post.readingTime ? `${post.readingTime} min read` : '';
 const authorName = post.author?.name || '';
@@ -26,14 +47,13 @@ const updatedAt = post._updatedAt ? new Date(post._updatedAt).toLocaleDateString
 const isUpdated = updatedAt && updatedAt !== pubDate;
 const coverImageUrl = post.coverPath
   ? (post.coverPath.startsWith('/') || post.coverPath.startsWith('http') ? post.coverPath : `/${post.coverPath}`)
-  : (post.coverImage ? urlFor(post.coverImage).width(1280).height(720).url() : '');
+  : (post.coverImage ? urlFor(post.coverImage).width(1600).height(900).url() : '');
 const ogImageUrl = post.ogImage
   ? urlFor(post.ogImage).width(1200).height(630).url()
   : coverImageUrl;
 const pageTitle = post.seoTitle || post.title;
 const pageDescription = (post.seoDescription || post.excerpt || '').slice(0, 160);
 
-// Table of contents — derived from the body's h2/h3 blocks.
 function slugify(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
@@ -41,7 +61,15 @@ const toc = (post.body || [])
   .map((b: any) => ({ style: b.style, text: b.children?.map((c: any) => c.text).join('') || '' }))
   .filter((b: any) => (b.style === 'h2' || b.style === 'h3') && b.text);
 
-// Fetch featured case studies for recommendations instead of more post blocks.
+// Migration artifact: the excerpt field and the body's first paragraph are
+// byte-identical on most posts (confirmed on 70/100) — the intro line
+// already shown under the title gets repeated verbatim as the first line
+// of the article body. Drop that one duplicate block, nothing else.
+const firstBlockText = post.body?.[0]?.children?.map((c: any) => c.text).join('').trim();
+const bodyBlocks = (post.excerpt && firstBlockText === post.excerpt.trim())
+  ? post.body.slice(1)
+  : post.body;
+
 const rawCaseStudies = await sanityClient.fetch(`*[_type == "caseStudy"]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`).catch(() => []);
 const seenCases = new Set();
 const caseStudies = [];
@@ -63,7 +91,6 @@ for (const p of (rawAllPosts || [])) {
   }
 }
 
-// Prev / next by publishedAt.
 const sorted = [...(allPosts as any[])]
   .filter((p: any) => p.publishedAt)
   .sort((a: any, b: any) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime());
@@ -71,7 +98,6 @@ const idx = sorted.findIndex((p: any) => p.slug === slug);
 const prevPost = idx > 0 ? sorted[idx - 1] : null;
 const nextPost = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
 
-// Share links (absolute URL for social cards).
 const shareUrl = new URL(`/blog/${slug}`, Astro.site || 'https://wugweb.com').toString();
 const shareText = encodeURIComponent(post.title || '');
 const shareLinks = [
@@ -82,56 +108,38 @@ const shareLinks = [
 ];
 ---
 
-<BaseLayout title={`${post.title} — Wugweb Insights`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl}>
-  <!-- Scroll Progress Indicator -->
-  <div id="reading-progress" class="reading-progress-bar" aria-hidden="true"></div>
+<BaseLayout title={`${post.title} | Wugweb Insights`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl}>
+  <div id="reading-progress" class="reading-progress-bar" style={`--bar-accent: ${accent}`} aria-hidden="true"></div>
 
-  <section class="wrap article">
-    <p class="eyebrow"><a href="/blog">Blog</a></p>
-    <h1>{post.title}</h1>
-    <div class="article-meta">
-      {post.category && (
-        <span class="article-meta-item article-category">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-          {post.category}
-        </span>
-      )}
-      {authorName && (
-        <span class="article-meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          {authorName}
-        </span>
-      )}
-      {readTime && (
-        <span class="article-meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          {readTime}
-        </span>
-      )}
-      {pubDate && (
-        <span class="article-meta-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          {pubDate}
-        </span>
-      )}
-      {isUpdated && (
-        <span class="article-meta-item article-updated">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
-          Updated {updatedAt}
-        </span>
-      )}
-    </div>
-    {post.excerpt && <p class="article-intro">{post.excerpt}</p>}
-
+  <section class="wrap article-split-hero" style={`--accent: ${accent}`}>
     {coverImageUrl && (
-      <figure class="article-cover">
+      <figure class="article-hero-media" data-reveal>
         <img src={coverImageUrl} alt={`Cover image for ${post.title}`} loading="eager" decoding="async" />
       </figure>
     )}
+    <div class="article-hero-content">
+      <div class="article-hero-top" data-reveal>
+        {pubDate && <span>{pubDate}</span>}
+        {readTime && <span>{readTime}</span>}
+        {isUpdated && <span>Updated {updatedAt}</span>}
+      </div>
+      <h1 data-reveal>{post.title}</h1>
+      {post.excerpt && <p class="article-intro" data-reveal>{post.excerpt}</p>}
 
+      <div class="article-meta" data-reveal>
+        {authorPhoto && <img src={authorPhoto} alt="" class="meta-avatar" />}
+        <div class="meta-text">
+          {authorName && <span class="meta-author">{authorName}</span>}
+          {post.author?.role && <span class="meta-role">{post.author.role}</span>}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap article" style={`--accent: ${accent}`}>
     {toc.length > 0 && (
       <nav class="article-toc" aria-label="Table of contents">
-        <p class="toc-title">In this article</p>
+        <p class="toc-title">Contents</p>
         <ol>
           {toc.map((t: any) => (
             <li class:list={['toc-item', { 'toc-h3': t.style === 'h3' }]}>
@@ -142,8 +150,8 @@ const shareLinks = [
       </nav>
     )}
 
-    {post.body && post.body.length > 0 ? (
-      <PortableTextRenderer value={post.body} class="article-body" />
+    {bodyBlocks && bodyBlocks.length > 0 ? (
+      <PortableTextRenderer value={bodyBlocks} class="article-body" />
     ) : (
       <div class="article-empty">
         <p>Full article coming soon. Browse more <a href="/blog">insights</a>.</p>
@@ -183,7 +191,7 @@ const shareLinks = [
       <div class="card-glow"></div>
       <p class="eyebrow">Newsletter</p>
       <h2>Get insights like this in your inbox</h2>
-      <p>Design, product, and digital strategy — no spam, just thoughtful content.</p>
+      <p>Design, product, and digital strategy. No spam, just thoughtful content.</p>
       <form class="nl-form" method="POST" action="/api/subscribe">
         <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" class="nl-input" />
         <button type="submit" class="btn btn-solid">Subscribe</button>
@@ -195,14 +203,14 @@ const shareLinks = [
         {prevPost ? (
           <a href={`/blog/${prevPost.slug}`} class="glass-panel pn-link pn-prev">
             <div class="card-glow"></div>
-            <span class="pn-dir">← Previous</span>
+            <span class="pn-dir">Previous</span>
             <span class="pn-title">{prevPost.title}</span>
           </a>
         ) : <span class="pn-link pn-placeholder"></span>}
         {nextPost ? (
           <a href={`/blog/${nextPost.slug}`} class="glass-panel pn-link pn-next">
             <div class="card-glow"></div>
-            <span class="pn-dir">Next →</span>
+            <span class="pn-dir">Next</span>
             <span class="pn-title">{nextPost.title}</span>
           </a>
         ) : <span class="pn-link pn-placeholder"></span>}
@@ -247,7 +255,6 @@ const shareLinks = [
 </BaseLayout>
 
 <style>
-  /* Glass panels and effects */
   .glass-panel {
     background: color-mix(in srgb, var(--neutral-8) 60%, transparent);
     border: var(--stroke-thin) solid color-mix(in srgb, var(--neutral-0) 12%, transparent);
@@ -258,104 +265,117 @@ const shareLinks = [
     overflow: hidden;
     transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   }
-
   .card-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--color-accent-primary) 8%, transparent) 0%, transparent 85%);
+    background: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--accent, var(--color-accent-primary)) 10%, transparent) 0%, transparent 85%);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 0;
     pointer-events: none;
   }
+  .glass-panel:hover { border-color: color-mix(in srgb, var(--accent, var(--color-accent-primary)) 30%, transparent); }
+  .glass-panel:hover .card-glow { opacity: 1; }
 
-  .glass-panel:hover {
-    border-color: color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
+  /* ── Split hero: media left, headline/byline right (matches the
+     reference split layout) ── */
+  .article-split-hero {
+    padding-top: var(--space-page-head);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-8);
+    align-items: center;
   }
-  .glass-panel:hover .card-glow {
-    opacity: 1;
+  @media (min-width: 900px) {
+    .article-split-hero { grid-template-columns: 5fr 6fr; gap: var(--gap-xl); }
   }
+  .article-hero-media {
+    margin: 0;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+  }
+  .article-hero-media img {
+    width: 100%;
+    height: clamp(320px, 46vw, 620px);
+    display: block;
+    object-fit: cover;
+  }
+  .article-hero-top {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+    font-size: var(--t-micro);
+    color: var(--fg-muted);
+  }
+  .article-hero-top span:not(:last-child)::after {
+    content: ''; display: inline-block; width: 1px; height: 0.85em; background: var(--line-strong); margin-left: var(--gap-3); vertical-align: -0.1em;
+  }
+  .article-hero-content h1 { font-size: var(--fluid-h1); margin-top: var(--gap-4); line-height: var(--core-line-height-tight); color: var(--fg); max-width: 20ch; }
+  .article-intro { font-size: var(--t-lead); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-5); color: var(--fg-muted); max-width: 60ch; }
 
-  .article { padding-block: var(--space-section-xl); max-width: 720px; }
-  .article .eyebrow a { color: var(--fg-muted); text-decoration: none; }
-  .article .eyebrow a:hover { color: var(--fg); }
-  .article h1 { font-size: var(--t-h2); margin-top: var(--gap-3); line-height: var(--core-line-height-tight); color: var(--fg); }
-  .article-meta { display: flex; flex-wrap: wrap; gap: var(--gap-3) var(--gap-6); margin-top: var(--gap-5); font-family: var(--font-mono); font-size: var(--t-sm); color: var(--fg-muted); }
-  .article-meta-item { display: inline-flex; align-items: center; gap: var(--gap-2); }
-  .meta-icon { color: var(--fg-muted); opacity: 0.6; flex-shrink: 0; }
-  .article-category { color: var(--color-accent-primary); }
-  .article-category .meta-icon { color: var(--color-accent-primary); opacity: 1; }
-  .article-intro { font-size: var(--t-lead); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-7); color: var(--fg); border-left: var(--stroke-regular) solid var(--color-accent-primary); padding-left: var(--gap-6); }
-  
-  .article-cover { margin: var(--gap-10) 0 0; border-radius: var(--radius-xl); overflow: hidden; border: var(--stroke-thin) solid var(--line); transition: transform 0.4s ease; }
-  .article-cover:hover { transform: scale(1.01); }
-  .article-cover img { width: 100%; height: auto; display: block; transition: transform 0.6s ease; }
-  .article-cover:hover img { transform: scale(1.03); }
+  .article-meta { display: flex; align-items: center; gap: var(--gap-3); margin-top: var(--gap-7); }
+  .meta-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+  .meta-text { display: flex; flex-direction: column; gap: 2px; }
+  .meta-author { font-size: var(--fluid-body-sm); font-weight: var(--font-weight-medium); color: var(--fg); }
+  .meta-role { font-size: var(--t-micro); color: var(--fg-muted); }
 
-  .article-body { margin-top: var(--gap-10); max-width: 72ch; }
+  .article { padding-top: var(--gap-10); padding-bottom: var(--space-section-xl); max-width: 720px; }
+
+  .article-body { max-width: 72ch; }
   .article-body h2 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); margin-top: var(--gap-12); margin-bottom: var(--gap-4); color: var(--fg); border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-7); line-height: var(--lh-tight); }
   .article-body h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-8); margin-bottom: var(--gap-3); color: var(--fg); }
   .article-body p { line-height: 1.8; color: var(--fg-muted); margin-top: var(--gap-5); font-size: var(--fluid-body-md); }
   .article-body p:first-child { margin-top: 0; }
   .article-body ul, .article-body ol { margin-top: var(--gap-4); padding-left: var(--gap-6); color: var(--fg-muted); line-height: 1.75; }
   .article-body li { margin-top: var(--gap-2); }
-  .article-body blockquote { margin: var(--gap-8) 0; padding: var(--gap-5) var(--gap-7); border-left: var(--stroke-medium) solid var(--color-accent-primary); background: var(--neutral-1); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; color: var(--fg); }
+  .article-body blockquote { margin: var(--gap-8) 0; padding: var(--gap-5) var(--gap-7); border-left: var(--stroke-medium) solid var(--accent); background: var(--color-surface-elevated); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-style: italic; color: var(--fg); }
   .article-body strong { color: var(--fg); font-weight: var(--font-weight-semibold); }
   .article-body code { font-family: var(--font-mono); font-size: 0.85em; background: var(--neutral-1); padding: 0.15em 0.4em; border-radius: var(--r-1); border: var(--stroke-thin) solid var(--line); }
   .article-body pre { margin: var(--gap-6) 0; padding: var(--gap-6); background: var(--neutral-1); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-md); overflow-x: auto; }
   .article-body pre code { background: none; padding: 0; border: none; font-size: var(--t-sm); }
   .article-empty { margin-top: var(--gap-10); padding: var(--gap-6); border: var(--stroke-thin) dashed var(--line); border-radius: var(--r-3); color: var(--fg-muted); }
-  .article-empty a { color: var(--color-accent-primary); text-decoration: underline; }
-  
+  .article-empty a { color: var(--accent); text-decoration: underline; }
+
   .article-author { display: flex; align-items: center; gap: var(--gap-6); margin-top: var(--gap-10); padding: var(--gap-6); }
   .author-photo { width: 80px; height: 80px; border-radius: var(--radius-full); object-fit: cover; border: var(--stroke-thin) solid var(--line); z-index: 1; position: relative; }
   .author-info { z-index: 1; position: relative; }
   .author-name { font-weight: var(--font-weight-medium); color: var(--fg); font-size: var(--fluid-body-lg); }
   .author-role { font-size: var(--t-sm); color: var(--fg-muted); }
   .author-bio { font-size: var(--fluid-body-sm); color: var(--fg-muted); margin-top: var(--gap-2); line-height: var(--lh-body); }
-  
+
   .article-tags { display: flex; flex-wrap: wrap; gap: var(--gap-2); margin-top: var(--gap-8); }
   .tag { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-1) var(--gap-3); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
-  .article-updated { opacity: var(--opacity-soft); }
 
-  .article-toc {
-    margin-top: var(--gap-10);
-    padding: var(--gap-6) var(--gap-6) var(--gap-6) var(--gap-8);
-    border-left: var(--stroke-medium) solid var(--color-accent-primary);
-    border-radius: var(--radius-md);
-    background: var(--color-surface-elevated);
-    box-shadow: var(--shadow-sm);
-  }
-  .toc-title { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .06em; color: var(--color-accent-primary); margin-bottom: var(--gap-4); display: block; }
-  .article-toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-2); }
-  .toc-item a { color: var(--fg-muted); text-decoration: none; font-size: var(--fluid-body-sm); line-height: var(--core-line-height-normal); transition: color 0.2s ease, padding-left 0.2s ease; display: block; }
-  .toc-item a:hover { color: var(--fg); padding-left: var(--gap-2); }
-  .toc-h3 { padding-left: var(--gap-4); }
-  .toc-h3 a { font-size: var(--fluid-body-sm); }
-
+  /* ── TOC: light marginalia, not a boxed component ── */
+  .article-toc { margin-bottom: var(--gap-9); }
+  .toc-title { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .06em; color: var(--fg-muted); margin-bottom: var(--gap-3); display: block; }
+  .article-toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--gap-1); }
+  .toc-item a { color: var(--fg-muted); text-decoration: none; font-size: var(--fluid-body-sm); line-height: var(--core-line-height-normal); padding: var(--gap-1) 0 var(--gap-1) var(--gap-3); border-left: var(--stroke-thin) solid var(--line); transition: color 0.2s ease, border-color 0.2s ease; display: block; }
+  .toc-item a:hover { color: var(--fg); border-color: var(--accent); }
+  .toc-h3 a { padding-left: var(--gap-6); font-size: var(--fluid-body-sm); }
 
   .article-share { display: flex; align-items: center; gap: var(--gap-4); margin-top: var(--gap-10); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
   .share-label { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: .06em; color: var(--fg-muted); }
   .share-links { display: flex; gap: var(--gap-2); }
   .share-link { display: inline-flex; align-items: center; justify-content: center; width: var(--share-btn); height: var(--share-btn); border-radius: var(--radius-full); border: var(--stroke-thin) solid var(--line); color: var(--fg-muted); text-decoration: none; font-family: var(--font-mono); font-size: var(--t-sm); transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
-  .share-link:hover { border-color: var(--line-strong); color: var(--fg); background: color-mix(in srgb, var(--neutral-0) 8%, transparent); }
+  .share-link:hover { border-color: var(--accent); color: var(--fg); }
 
   .article-newsletter { margin-top: var(--gap-10); padding: var(--gap-8); text-align: center; }
   .article-newsletter * { position: relative; z-index: 1; }
-  .article-newsletter .eyebrow { display: block; margin-bottom: var(--gap-3); }
+  .article-newsletter .eyebrow { display: block; margin-bottom: var(--gap-3); color: var(--accent); }
   .article-newsletter h2 { font-size: var(--t-h4); max-width: 24ch; margin-inline: auto; color: var(--fg); }
   .article-newsletter p:not(.eyebrow) { margin-top: var(--gap-2); color: var(--fg-muted); }
   .nl-form { display: flex; gap: var(--gap-3); margin-top: var(--gap-6); max-width: 420px; margin-inline: auto; }
   .nl-input { flex: 1; padding: var(--gap-3) var(--gap-4); border: var(--stroke-thin) solid var(--line); border-radius: var(--radius-sm); background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--fluid-body-md); transition: border-color 0.3s ease, box-shadow 0.3s ease; }
-  .nl-input:focus { border-color: var(--color-accent-primary); outline: none; box-shadow: 0 0 10px color-mix(in srgb, var(--color-accent-primary) 20%, transparent); }
+  .nl-input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 20%, transparent); }
 
   .article-prevnext { display: grid; gap: var(--gap-4); margin-top: var(--gap-10); grid-template-columns: 1fr; }
   @media (min-width: 640px) { .article-prevnext { grid-template-columns: 1fr 1fr; } }
   .pn-link { display: flex; flex-direction: column; gap: var(--gap-1); padding: var(--gap-5); text-decoration: none; }
   .pn-link * { position: relative; z-index: 1; }
-  .pn-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
+  .pn-link:hover { transform: translateY(-2px); }
   .pn-next { text-align: right; }
-  .pn-dir { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--color-accent-primary); }
+  .pn-dir { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
   .pn-title { color: var(--fg); font-weight: var(--font-weight-medium); font-size: var(--fluid-body-md); line-height: var(--core-line-height-normal); }
   .pn-placeholder { visibility: hidden; }
 
@@ -365,24 +385,22 @@ const shareLinks = [
   .related-cases-grid { display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
   @media (min-width: 640px) { .related-cases-grid { grid-template-columns: repeat(2, 1fr); } }
   .related-case-card { text-decoration: none; display: flex; flex-direction: column; height: 100%; border-radius: var(--radius-xl); overflow: hidden; }
-  .related-case-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); }
+  .related-case-card:hover { transform: translateY(-4px); }
   .related-case-visual { width: 100%; height: 200px; overflow: hidden; position: relative; border-bottom: var(--stroke-thin) solid var(--line); background: color-mix(in srgb, var(--neutral-10) 20%, transparent); }
   .related-case-visual img, .related-case-visual video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
   .related-case-card:hover .related-case-visual img, .related-case-card:hover .related-case-visual video { transform: scale(1.04); }
   .related-case-content { padding: var(--gap-5) var(--gap-6) var(--gap-6); display: flex; flex-direction: column; gap: var(--gap-2); position: relative; z-index: 1; }
-  .related-case-client { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent-primary); }
+  .related-case-client { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
   .related-case-card h3 { font-size: var(--t-h4); font-weight: var(--font-weight-bold); color: var(--fg); margin: 0; line-height: var(--core-line-height-tight); }
   .related-case-discipline { font-size: var(--fluid-body-sm); color: var(--fg-muted); margin-top: var(--gap-1); }
 
-  /* Reading progress bar pinned to top */
   .reading-progress-bar {
     position: fixed;
-    /* Otherwise the bar renders inside the notch under viewport-fit=cover. */
     top: var(--safe-top);
     left: var(--safe-left);
     width: 0%;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-accent-primary), var(--neutral-0));
+    background: var(--bar-accent, var(--accent));
     z-index: 9999;
     transition: width 0.1s linear;
     pointer-events: none;
@@ -390,7 +408,6 @@ const shareLinks = [
 </style>
 
 <script>
-  // Copy-link share button.
   document.querySelectorAll('[data-copy]').forEach((el) => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
@@ -402,27 +419,24 @@ const shareLinks = [
     });
   });
 
-  // Reading progress tracker
   const progressBar = document.getElementById('reading-progress');
   if (progressBar) {
     const updateProgress = () => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (docHeight > 0) {
         const scrolled = (window.scrollY / docHeight) * 100;
-        progressBar.style.width = `${Math.min(100, Math.max(0, scrolled))}%`;
+        (progressBar as HTMLElement).style.width = `${Math.min(100, Math.max(0, scrolled))}%`;
       }
     };
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
   }
 
-  // Mouse tracking card glow animation
   const initGlows = () => {
     const cards = document.querySelectorAll('.glass-panel');
     cards.forEach((card) => {
       const glow = card.querySelector('.card-glow') as HTMLElement | null;
       if (!glow) return;
-      
       card.addEventListener('mousemove', (e: Event) => {
         const me = e as MouseEvent;
         const rect = card.getBoundingClientRect();
