@@ -60,6 +60,7 @@ const sectionDefsRaw = [
 const sectionDefs = sectionDefsRaw
   .filter((s) => s.show)
   .map((s, i) => ({ ...s, num: String(i + 1).padStart(2, '0'), accent: accentMap[s.accentKey] }));
+const numFor = (id: string) => sectionDefs.find((s) => s.id === id)?.num || '';
 
 const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy" && !(_id in path("drafts.**"))]{"slug": slug.current}`).catch(() => []);
 const seenSlugs = new Set();
@@ -93,7 +94,14 @@ const otherCases = await Promise.all(others.map((s: any) =>
         {work.disciplines?.length > 0 && <div><span class="meta-label">Disciplines</span><span>{work.disciplines.join(', ')}</span></div>}
         {work.industry && <div><span class="meta-label">Industry</span><span>{work.industry}</span></div>}
         {work.timeline && <div><span class="meta-label">Timeline</span><span>{work.timeline}</span></div>}
+        {work.team?.length > 0 && <div><span class="meta-label">Team</span><span>{work.team.join(', ')}</span></div>}
+        {work.partner && work.partner !== 'None' && <div><span class="meta-label">Partner</span><span>{work.partner}</span></div>}
       </div>
+      {work.tags?.length > 0 && (
+        <div class="work-tags">
+          {work.tags.map((tag: string) => <span class="u-tag">{tag}</span>)}
+        </div>
+      )}
     </div>
   </section>
 
@@ -109,32 +117,17 @@ const otherCases = await Promise.all(others.map((s: any) =>
   )}
 
   <div class="case-shell wrap">
-    {sectionDefs.length > 0 && (
-      <nav class="case-rail" aria-label="Case study sections">
-        <ol>
-          {sectionDefs.map((s) => (
-            <li>
-              <a href={`#${s.id}`} data-rail-link={s.id} style={`--rail-accent: ${s.accent}`}>
-                <span class="case-rail-num">{s.num}</span>
-                <span class="case-rail-label">{s.label}</span>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-    )}
-
     <div class="case-content">
       {(work.about || work.summary) && (
         <section id="about" class="case-section" data-reveal>
-          <h2 class="case-heading">About</h2>
+          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.yellow}`}>{numFor('about')}</span>About</h2>
           <p class="case-lead">{work.about || work.summary}</p>
         </section>
       )}
 
       {challenges.length > 0 && (
         <section id="problem" class="case-section" data-reveal>
-          <h2 class="case-heading">The problem</h2>
+          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.orange}`}>{numFor('problem')}</span>The problem</h2>
           <ul class="case-list" style={`--rule-color: ${accentMap.orange}`}>
             {challenges.map((ch: any) => (
               <li><strong>{ch.title}</strong>{ch.body && <p>{ch.body}</p>}</li>
@@ -145,7 +138,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
       {solutions.length > 0 && (
         <section id="approach" class="case-section" data-reveal>
-          <h2 class="case-heading">The approach</h2>
+          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.blue}`}>{numFor('approach')}</span>The approach</h2>
           <div class="case-bento">
             {solutions.map((sol: any, i: number) => (
               <>
@@ -166,7 +159,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
       {(impactItems.length > 0 || results.length > 0) && (
         <section id="outcome" class="case-section" data-reveal>
-          <h2 class="case-heading">The outcome</h2>
+          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.green}`}>{numFor('outcome')}</span>The outcome</h2>
           {results.length > 0 && (
             <div class="case-stat-row">
               {results.map((res: any) => (
@@ -189,7 +182,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
       {work.designPhilosophy && (
         <section id="thesis" class="case-section" data-reveal>
-          <h2 class="case-heading">Design thesis</h2>
+          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.yellow}`}>{numFor('thesis')}</span>Design thesis</h2>
           <div class="case-thesis">
             {work.designPhilosophy.split('\n').filter(Boolean).map((line: string) => {
               const idx = line.indexOf(':');
@@ -207,7 +200,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
       {showBodyContent && (
         <section id="details" class="case-section" data-reveal>
-          <h2 class="case-heading">In depth</h2>
+          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.orange}`}>{numFor('details')}</span>In depth</h2>
           <PortableTextRenderer value={bodyContent} />
         </section>
       )}
@@ -216,7 +209,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
   {galleryPaths.length > 0 && (
     <section id="gallery" class="wrap case-gallery-section" data-reveal>
-      <h2 class="case-heading">Gallery</h2>
+      <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.blue}`}>{numFor('gallery')}</span>Gallery</h2>
       <div class="case-gallery-grid">
         {galleryPaths.map((path: string) => {
           const src = assetUrl(path);
@@ -321,6 +314,12 @@ const otherCases = await Promise.all(others.map((s: any) =>
     color: var(--fg);
     font-weight: var(--font-weight-medium);
   }
+  .work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-2);
+    margin-top: var(--gap-6);
+  }
   .work-meta-client {
     display: flex;
     align-items: center;
@@ -363,64 +362,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
      thesis → gallery), so the numbering earns its keep.
      ═══════════════════════════════════════════════════════════════ */
   .case-shell {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-section-lg);
     padding-block: var(--space-section-md) var(--space-section-lg);
-    align-items: start;
-  }
-  @media (min-width: 1024px) {
-    .case-shell {
-      grid-template-columns: 220px minmax(0, 720px);
-      gap: var(--gap-xl);
-      justify-content: center;
-    }
-  }
-
-  .case-rail {
-    display: none;
-  }
-  @media (min-width: 1024px) {
-    .case-rail {
-      display: block;
-      position: sticky;
-      top: calc(var(--nav-height) + var(--gap-lg));
-      align-self: start;
-    }
-    .case-rail ol {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap-4);
-      border-left: 1px solid var(--line);
-    }
-    .case-rail a {
-      display: flex;
-      align-items: baseline;
-      gap: var(--gap-3);
-      padding-left: var(--gap-4);
-      margin-left: -1px;
-      border-left: 1px solid transparent;
-      text-decoration: none;
-      color: var(--fg-subtle);
-      transition: color 0.25s ease, border-color 0.25s ease;
-    }
-    .case-rail a:hover,
-    .case-rail a.is-active {
-      color: var(--fg);
-      border-left-color: var(--rail-accent, var(--color-accent-primary));
-    }
-    .case-rail-num {
-      font-family: var(--font-mono);
-      font-size: var(--t-micro);
-      color: var(--rail-accent, var(--fg-subtle));
-      opacity: 0.8;
-    }
-    .case-rail-label {
-      font-size: var(--fluid-body-sm);
-    }
   }
 
   .case-content {
@@ -428,13 +370,22 @@ const otherCases = await Promise.all(others.map((s: any) =>
     flex-direction: column;
     gap: var(--space-section-lg);
     max-width: 720px;
+    margin-inline: auto;
   }
 
   .case-heading {
+    display: flex;
+    align-items: baseline;
+    gap: var(--gap-3);
     font-size: var(--t-h3);
     font-weight: var(--font-weight-semibold);
     color: var(--fg);
     margin: 0 0 var(--gap-6) 0;
+  }
+  .case-heading-num {
+    font-family: var(--font-mono);
+    font-size: var(--t-sm);
+    opacity: 0.8;
   }
 
   .case-lead {
@@ -692,33 +643,3 @@ const otherCases = await Promise.all(others.map((s: any) =>
   }
 
 </style>
-
-<script>
-  const initRail = () => {
-    const rail = document.querySelector('.case-rail');
-    if (!rail) return;
-    const links = Array.from(rail.querySelectorAll('a[data-rail-link]'));
-    const sections = links
-      .map((a) => document.getElementById(a.getAttribute('data-rail-link') as string))
-      .filter(Boolean) as HTMLElement[];
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const link = rail.querySelector(`a[data-rail-link="${entry.target.id}"]`);
-          if (!link) return;
-          if (entry.isIntersecting) {
-            links.forEach((l) => l.classList.remove('is-active'));
-            link.classList.add('is-active');
-          }
-        });
-      },
-      { rootMargin: '-20% 0px -70% 0px' }
-    );
-    sections.forEach((s) => observer.observe(s));
-  };
-
-  initRail();
-  document.addEventListener('astro:page-load', initRail);
-</script>
