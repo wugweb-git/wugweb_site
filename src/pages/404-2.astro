@@ -1,0 +1,209 @@
+---
+/**
+ * 404-2 — alternative 404 treatment, for comparison against /404.
+ * Keeps the tic-tac-toe concept (it's genuinely a good idea for a
+ * creative-agency 404 — playful, memorable, on-brand) but elevates the
+ * execution: the "404" itself is a real display-type element instead of
+ * a tiny eyebrow, the board is full-size with real win-state feedback
+ * instead of a native alert(), and X/O carry the one piece of brand
+ * yellow on the page instead of the whole thing reading as an unstyled
+ * browser default.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found" description="The page you're looking for may have moved. Return to Wugweb to explore our digital experience work and services.">
+  <section class="wrap nf2">
+    <div class="nf2-head">
+      <span class="nf2-digits" aria-hidden="true" data-reveal>404</span>
+      <h1 data-reveal>This page wandered off.</h1>
+      <p data-reveal>It's not where it used to be — but while you're here, we owe you a game.</p>
+    </div>
+
+    <div class="nf2-board-wrap" data-reveal>
+      <div class="nf2-status" id="nf2-status" aria-live="polite">Your move — X starts.</div>
+      <div class="nf2-board" id="nf2-board">
+        <button class="nf2-cell" data-cell aria-label="Cell 1"></button>
+        <button class="nf2-cell" data-cell aria-label="Cell 2"></button>
+        <button class="nf2-cell" data-cell aria-label="Cell 3"></button>
+        <button class="nf2-cell" data-cell aria-label="Cell 4"></button>
+        <button class="nf2-cell" data-cell aria-label="Cell 5"></button>
+        <button class="nf2-cell" data-cell aria-label="Cell 6"></button>
+        <button class="nf2-cell" data-cell aria-label="Cell 7"></button>
+        <button class="nf2-cell" data-cell aria-label="Cell 8"></button>
+        <button class="nf2-cell" data-cell aria-label="Cell 9"></button>
+      </div>
+      <button class="nf2-reset" id="nf2-reset" type="button">Play again</button>
+    </div>
+
+    <div class="nf2-actions" data-reveal>
+      <a href="/" class="btn btn-solid">Back to Home</a>
+      <a href="/work" class="btn">See our work</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf2 {
+    padding-block: var(--space-section-xl) var(--space-section-lg);
+    text-align: center;
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+  .nf2-head { margin-bottom: var(--space-section-md); }
+  .nf2-digits {
+    display: block;
+    font-family: var(--font-display, var(--core-font-family-base));
+    font-weight: var(--font-weight-extrabold);
+    font-size: clamp(4.5rem, 16vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--line-strong);
+    margin-bottom: var(--gap-4);
+  }
+  .nf2-head h1 {
+    font-size: var(--fluid-h2);
+    max-width: 20ch;
+    margin-inline: auto;
+  }
+  .nf2-head p {
+    margin-top: var(--gap-4);
+    color: var(--fg-muted);
+    max-width: 40ch;
+    margin-inline: auto;
+  }
+
+  .nf2-board-wrap {
+    margin-inline: auto;
+    margin-bottom: var(--space-section-md);
+  }
+  .nf2-status {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    color: var(--fg-muted);
+    margin-bottom: var(--gap-5);
+    min-height: 1.2em;
+  }
+  .nf2-status.is-result { color: var(--fg); }
+
+  .nf2-board {
+    display: grid;
+    grid-template-columns: repeat(3, clamp(4.5rem, 20vw, 6rem));
+    grid-template-rows: repeat(3, clamp(4.5rem, 20vw, 6rem));
+    gap: var(--gap-2);
+    justify-content: center;
+    margin-bottom: var(--gap-6);
+  }
+  .nf2-cell {
+    background: var(--color-surface-elevated);
+    box-shadow: var(--shadow-xs);
+    border: 0;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display, var(--core-font-family-base));
+    font-weight: var(--font-weight-bold);
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+    cursor: pointer;
+    color: var(--fg);
+    transition: background var(--duration-fast) var(--easing-out),
+                transform var(--duration-instant) var(--easing-out);
+  }
+  .nf2-cell:hover:not(:disabled) { background: var(--surface-2); }
+  .nf2-cell:active:not(:disabled) { transform: scale(0.95); }
+  .nf2-cell:disabled { cursor: default; }
+  /* X carries the page's one deliberate touch of brand yellow — O stays
+     neutral, so the board reads as two real players, not a decoration. */
+  .nf2-cell[data-mark='X'] { color: var(--color-yellow); }
+  .nf2-cell[data-mark='O'] { color: var(--fg-muted); }
+  .nf2-cell.is-win {
+    background: color-mix(in srgb, var(--color-yellow) 16%, var(--color-surface-elevated));
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nf2-reset {
+    background: none;
+    border: 0;
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .nf2-reset:hover { color: var(--fg); }
+
+  .nf2-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-4);
+    justify-content: center;
+  }
+</style>
+
+<script>
+  const cells = document.querySelectorAll<HTMLButtonElement>('[data-cell]');
+  const statusEl = document.getElementById('nf2-status')!;
+  const resetBtn = document.getElementById('nf2-reset')!;
+  const WINS = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+  let turn: 'X' | 'O' = 'X';
+  let board: (string | null)[] = Array(9).fill(null);
+  let over = false;
+
+  function findWin(): number[] | null {
+    for (const line of WINS) {
+      const [a, b, c] = line;
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) return line;
+    }
+    return null;
+  }
+
+  function render() {
+    cells.forEach((cell, i) => {
+      cell.textContent = board[i] || '';
+      if (board[i]) cell.dataset.mark = board[i]!;
+      else delete cell.dataset.mark;
+      cell.disabled = over || !!board[i];
+      cell.classList.remove('is-win');
+    });
+  }
+
+  function setStatus(text: string, isResult = false) {
+    statusEl.textContent = text;
+    statusEl.classList.toggle('is-result', isResult);
+  }
+
+  function play(i: number) {
+    if (over || board[i]) return;
+    board[i] = turn;
+    render();
+
+    const win = findWin();
+    if (win) {
+      over = true;
+      win.forEach((idx) => cells[idx].classList.add('is-win'));
+      setStatus(`${turn} wins! Nice.`, true);
+      return;
+    }
+    if (board.every(Boolean)) {
+      over = true;
+      setStatus("It's a draw — well played.", true);
+      return;
+    }
+    turn = turn === 'X' ? 'O' : 'X';
+    setStatus(`Your move — ${turn}.`);
+  }
+
+  cells.forEach((cell, i) => cell.addEventListener('click', () => play(i)));
+
+  resetBtn.addEventListener('click', () => {
+    board = Array(9).fill(null);
+    turn = 'X';
+    over = false;
+    render();
+    setStatus('Your move — X starts.');
+  });
+</script>
