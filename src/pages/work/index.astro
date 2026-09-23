@@ -135,14 +135,13 @@ const workItems = caseStudies.map((cs: any) => {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    border: var(--stroke-thin) solid var(--line);
+    box-shadow: var(--shadow-sm);
     background: var(--color-surface-elevated);
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
   .work-grid a:hover {
-    border-color: color-mix(in srgb, var(--color-accent-primary) 50%, transparent);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
-    box-shadow: 0 20px 48px rgba(0,0,0,0.25);
   }
 
   .work-grid video {
