@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sanityClient } from '../../lib/sanity';
+import { singletonPageQuery } from '../../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'reviews' }).catch(() => null);
+const title = page?.seoTitle || page?.title || 'Reviews';
+const description = page?.seoDescription || "What clients and the team say about working with Wugweb, collected from the platforms that host it.";
+
+// Sourced from the same verified registry TrustBadges.astro uses — real
+// profile URLs, not guessed. GoodFirms is confirmed live; Clutch and
+// DesignRush are pending verification per that component's own comment.
+// Ratings/review counts are deliberately NOT shown here — none have been
+// verified against the live platforms, and a wrong number on a review
+// page is worse than an honest "visit the profile" link.
+const agencyPlatforms = [
+  { name: 'Clutch', href: 'https://clutch.co/profile/wugweb', logo: '/brand/trust/clutch.svg' },
+  { name: 'DesignRush', href: 'https://www.designrush.com/agency/profile/wugweb', logo: '/brand/trust/designrush.svg' },
+  { name: 'GoodFirms', href: 'https://www.goodfirms.co/company/wugweb', logo: '/brand/trust/goodfirms.svg' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="reviews-page">
+    <!-- HERO -->
+    <section class="hero-section wrap">
+      <p class="eyebrow" data-reveal>Reviews</p>
+      <h1 class="page-title" data-reveal>What people say about working with us.</h1>
+      <p class="hero-lead" data-reveal>
+        Client feedback lives on the platforms that host it — we link straight there instead of quoting numbers we can't keep current. Team feedback gets the same treatment.
+      </p>
+    </section>
+
+    <!-- AGENCY REVIEWS -->
+    <section class="wrap reviews-section">
+      <div class="section-header">
+        <p class="eyebrow" data-reveal>Client feedback</p>
+        <h2 data-reveal>Agency reviews</h2>
+        <p class="section-lead" data-reveal>Verified review platforms Wugweb is listed on. Ratings and counts live on each platform directly — visit the profile for the current number.</p>
+      </div>
+      <div class="platform-grid">
+        {agencyPlatforms.map((p) => (
+          <a href={p.href} target="_blank" rel="noopener noreferrer" class="platform-card glass-panel" data-reveal>
+            <img src={p.logo} alt="" width="120" height="26" loading="lazy" class="platform-logo" />
+            <span class="platform-name">{p.name}</span>
+            <span class="platform-cta">View profile</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- EMPLOYEE REVIEWS -->
+    <section class="wrap reviews-section">
+      <div class="section-header">
+        <p class="eyebrow" data-reveal>Team feedback</p>
+        <h2 data-reveal>Employee reviews</h2>
+        <p class="section-lead" data-reveal>
+          No verified employer-review platform profile (Glassdoor, AmbitionBox, etc.) is on record for Wugweb yet — this section is ready to go the moment there's a real, confirmed profile link to point at. Nothing is linked here to avoid guessing at a URL for a page like this.
+        </p>
+      </div>
+    </section>
+
+    <!-- OTHER RECOGNITION -->
+    <section class="wrap reviews-section">
+      <div class="section-header">
+        <p class="eyebrow" data-reveal>Recognition</p>
+        <h2 data-reveal>Other recognition</h2>
+      </div>
+      <div class="platform-grid">
+        <a href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer" class="platform-card glass-panel" data-reveal>
+          <span class="platform-name">DPIIT Recognised Startup</span>
+          <span class="platform-sub">Department for Promotion of Industry and Internal Trade, Government of India</span>
+          <span class="platform-cta">View registry</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .reviews-page { padding-block: var(--space-page-head) 0; }
+  .hero-section { padding-block: var(--space-section-lg) var(--space-section-md); max-width: 48rem; }
+  .hero-section h1 { margin-top: var(--gap-4); }
+  .hero-lead { margin-top: var(--gap-5); color: var(--fg-muted); font-size: var(--fluid-body-lg); line-height: var(--core-line-height-relaxed); }
+
+  .reviews-section { padding-block: var(--space-section-md); border-top: var(--stroke-thin) solid var(--line); }
+  .section-header { max-width: 48rem; }
+  .section-header h2 { margin-top: var(--gap-3); }
+  .section-lead { margin-top: var(--gap-4); color: var(--fg-muted); }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-4);
+    margin-top: var(--gap-8);
+  }
+  @media (min-width: 640px) {
+    .platform-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .glass-panel {
+    background: var(--color-surface-elevated);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-lg);
+  }
+
+  .platform-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-3);
+    padding: var(--gap-6);
+    text-decoration: none;
+    transition: box-shadow var(--duration-normal) var(--easing-out), transform var(--duration-normal) var(--easing-out);
+  }
+  .platform-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .platform-logo { filter: brightness(0) invert(1); opacity: var(--opacity-80); }
+  .platform-name { font-weight: var(--font-weight-semibold); color: var(--fg); font-size: var(--fluid-body-md); }
+  .platform-sub { color: var(--fg-muted); font-size: var(--fluid-body-sm); }
+  .platform-cta {
+    margin-top: auto;
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: var(--fluid-label);
+  }
+  .platform-card:hover .platform-cta { color: var(--fg); }
+</style>
