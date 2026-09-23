@@ -73,7 +73,7 @@ const coverOf = (p: InsightPost) =>
               </div>
             )}
             <div class="btc-content">
-              {p.category && <span class="btc-cat">{p.category}</span>}
+              {p.category && <span class="btc-cat u-tag">{p.category}</span>}
               <h3>{p.title}</h3>
               {p.excerpt && <p class="btc-excerpt">{p.excerpt}</p>}
               <div class="btc-meta">
@@ -252,20 +252,15 @@ const coverOf = (p: InsightPost) =>
 
     .btc-content { padding: 0; min-width: 0; }
 
-    /* A chip, matching the reference, rather than a bare uppercase label. */
+    /* A chip, matching the reference, rather than a bare uppercase label.
+       Shared pill styling (padding/radius/background/hover) lives in
+       .u-tag (global.css) — this only overrides what's mobile-specific:
+       no mono/uppercase treatment, and spacing before the title. */
     .btc-cat {
       font-family: var(--font-body);
-      font-size: var(--fluid-body-sm);
       text-transform: none;
       letter-spacing: 0;
-      color: var(--fg-muted);
-      background: color-mix(in srgb, var(--neutral-0) 8%, transparent);
-      padding: var(--gap-1) var(--gap-3);
-      border-radius: var(--radius-sm);
       margin-bottom: var(--gap-2);
-      /* .btc-content is a flex column, which stretches its children - the chip
-         was running the full width of the card instead of hugging its label. */
-      align-self: flex-start;
     }
 
     .btc-content h3,

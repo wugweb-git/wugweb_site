@@ -764,6 +764,24 @@ h6 {
 .u-chip:hover { background: color-mix(in srgb, var(--neutral-0) 16%, transparent); }
 .u-chip:focus-visible { outline: var(--focus-primary); outline-offset: 2px; }
 
+/* Small text-label pill — category/type tags (blog cards, filters, etc).
+   One shared definition so a tag never gets re-invented per component;
+   `InsightsBlock.astro`'s `.btc-cat` is the first consumer. Hugs its own
+   label width (inline-flex, not the flex-column stretch a bare span picks
+   up from a column parent). */
+.u-tag {
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: var(--fluid-body-sm);
+  color: var(--fg-muted);
+  background: color-mix(in srgb, var(--neutral-0) 8%, transparent);
+  padding: var(--gap-1) var(--gap-2);
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) var(--easing-out),
+              color var(--duration-fast) var(--easing-out);
+}
+.u-tag:hover { background: color-mix(in srgb, var(--neutral-0) 16%, transparent); color: var(--fg); }
+
 .page-title {
   font-size: var(--t-display);
   font-weight: var(--font-weight-semibold);
@@ -887,12 +905,18 @@ summary:focus-visible {
 }
 .btn:hover { background: var(--color-surface-hover); }
 
+/* A real surface at rest, not literally the page background — a fully
+   transparent button on a near-black page reads as a hole, not a button.
+   wugweb.com's own ghost buttons work the same way: different shades of
+   black via opacity/blur, never a flat match to whatever sits behind them. */
 .btn-ghost {
-  background: transparent;
+  background: color-mix(in srgb, var(--neutral-0) 6%, transparent);
+  backdrop-filter: var(--glass-light);
+  -webkit-backdrop-filter: var(--glass-light);
   border-color: var(--line-strong);
 }
 .btn-ghost:hover {
-  background: color-mix(in srgb, var(--neutral-0) 6%, transparent);
+  background: color-mix(in srgb, var(--neutral-0) 12%, transparent);
   /* Not --fg: a white outline on hover was explicitly rejected. */
   border-color: var(--line-strong);
 }
@@ -902,17 +926,30 @@ summary:focus-visible {
    LAYOUT
    ═══════════════════════════════════════════════════════════════════ */
 
-/* G-12: Content max-width (§3.7, C-4) — 1280px content within 1440px page */
+/* G-12: Content max-width (§3.7, C-4) — 1280px content within 1440px page.
+   Rule, repeated enough times it should never need saying again: a section's
+   content can never sit closer to the screen edge than the nav bar's own
+   content does — the nav is the widest-looking thing on the page because it
+   floats inset, and a full-bleed section reading wider than it looks broken,
+   not deliberate.
+   This used to be a second, independently-tuned padding scale
+   (--space-page-xs/md/lg) that drifted out of sync with SiteHeader.astro's
+   own inset (shell-inset + nav-top's own padding, which step at different
+   breakpoints) every time either side got adjusted — measured drift was real
+   at every tier: 16px vs the nav's 32px on phones, 32px vs 44px at tablet,
+   40px vs 68px past 1200px. Deriving .wrap directly from the same tokens
+   SiteHeader.astro uses (not just matching numbers) makes that drift
+   structurally impossible instead of re-fixing it by hand next redesign. */
 .wrap {
   max-width: 80rem;
   margin-inline: auto;
-  padding-inline: var(--space-page-xs);
+  padding-inline: calc(var(--shell-inset) + var(--gap-4));
 }
 @media (min-width: 768px) {
-  .wrap { padding-inline: var(--space-page-md); }
+  .wrap { padding-inline: calc(var(--gap-6) + var(--gap-5)); }
 }
-@media (min-width: 1024px) {
-  .wrap { padding-inline: var(--space-page-lg); }
+@media (min-width: 1200px) {
+  .wrap { padding-inline: calc(var(--gap-12) + var(--gap-5)); }
 }
 
 /* Section tones. The old site builds depth by alternating four darks across
