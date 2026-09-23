@@ -124,6 +124,15 @@ const globalIndustries = (sanityIndustries as string[]).length
       if ('serviceWorker' in navigator && !location.hostname.startsWith('localhost')) {
         window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
       }
+      // Standalone-mode hook: installed PWA (and later, Capacitor's
+      // webview) runs with no browser chrome. Nothing consumes this yet —
+      // it's the detection mechanism Phase 7 flagged as groundwork, ready
+      // for CSS (html[data-standalone] .foo {}) or JS to key off of when
+      // there's a real chrome difference to make (e.g. hiding a
+      // browser-only affordance).
+      if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+        document.documentElement.dataset.standalone = 'true';
+      }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="You're offline — Wugweb" description="No connection right now. Reconnect and try again.">
+  <section class="wrap offline">
+    <p class="eyebrow">No connection</p>
+    <h1>You're offline right now.</h1>
+    <p>
+      This page hasn't been saved for offline use yet. Reconnect and try again — pages you've already visited will keep working without a connection.
+    </p>
+    <div class="offline-actions">
+      <button type="button" class="btn btn-solid" id="offline-retry">Try again</button>
+      <a href="/" class="btn">Back to Home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.getElementById('offline-retry')?.addEventListener('click', () => {
+    window.location.reload();
+  });
+</script>
+
+<style>
+  .offline {
+    padding-block: var(--space-section-xl) var(--space-section-lg);
+    text-align: center;
+  }
+  .offline .eyebrow { color: var(--fg-muted); }
+  .offline h1 {
+    margin-top: var(--gap-4);
+    font-size: var(--fluid-h2);
+    max-width: 18ch;
+    margin-inline: auto;
+  }
+  .offline p {
+    margin-top: var(--gap-5);
+    max-width: 45ch;
+    margin-inline: auto;
+    color: var(--fg-muted);
+  }
+  .offline-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-4);
+    justify-content: center;
+    margin-top: var(--gap-10);
+  }
+</style>
