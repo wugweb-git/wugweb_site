@@ -33,17 +33,16 @@ const COPY_BY_PILLAR: Record<string, Record<string, string>> = {
     'brand guidelines':
       'Document visual, verbal, and experiential standards to maintain consistency as your brand grows.',
 
-    // ---- DUMMY COPY — NOT FROM THE SERVICES DECK. REPLACE BEFORE LAUNCH. ----
-    // The deck has no entry for these three. Placeholder text only, so the
-    // layout is consistent while the pattern is reviewed. Deliberately neutral:
-    // no numbers, claims, or client references that could ship as fact.
+    // The deck has no entry for these three — written 2026-09-23 to match the
+    // other seven's voice and length (imperative verb, single sentence,
+    // ~12-17 words), not copied verbatim from Wugweb_Services 2026.md like
+    // the rest of this file. No fabricated numbers or claims.
     'brand narrative':
-      'Shape the story behind the brand — origin, purpose, and the through-line that carries every message.',
+      'Shape the founding story and through-line that explains why your brand exists and why it matters.',
     'employer branding':
-      'Extend the brand inward so hiring, onboarding, and culture communication feel like the same organisation.',
+      'Apply brand identity internally so hiring, culture, and employee experience reflect the same organization.',
     'brand activation':
-      'Take the identity to market across campaigns, launches, environments, and every customer touchpoint.',
-    // ---- end dummy copy ----
+      'Bring brand identity to market across campaigns, launches, and every customer-facing touchpoint.',
   },
 };
 
