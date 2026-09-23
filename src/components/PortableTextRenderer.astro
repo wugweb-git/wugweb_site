@@ -281,8 +281,11 @@ if (currentList) {
               const src = resolveMediaSrc(logo);
               if (!src) return null;
               const img = <img src={src} alt={logo.alt || 'Client logo'} loading="lazy" class="pt-logo-img" />;
+              // no-external-icon: bare client-logo image, not a text link —
+              // an appended "↗" would float loose next to a logo mark
+              // instead of reading as part of a label.
               return logo.link ? (
-                <a href={logo.link} target="_blank" rel="noopener noreferrer" class="pt-logo-item">
+                <a href={logo.link} target="_blank" rel="noopener noreferrer" class="pt-logo-item no-external-icon">
                   {img}
                 </a>
               ) : (

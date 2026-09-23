@@ -4,6 +4,68 @@
 
 ---
 
+## Buttons — `.btn` / `.btn-solid` / `.btn-ghost` (`src/styles/global.css:855-924`)
+
+Three tiers. **Brand and Primary are not the same axis** — Brand is a color
+reservation (is this section's scarce yellow moment or not), Primary/Ghost
+is an emphasis level (is this the loudest action in its own local context
+or not). A section can have a filled, prominent "primary" action that is
+still not the brand-yellow one.
+
+- **`.btn-solid`** — Brand. `--accent` (`#FFBE1A`) fill. **Reserved for the
+  one conversion action on a page** — "Start a project," a form submit.
+  This is the yellow-≤10% rule's main consumer; not reached for just
+  because a button happens to be the most prominent thing in its section.
+- **`.btn`** (bare class) — Primary (default tier). Solid `--neutral-6`
+  (`#444`) fill — a real, filled, prominent button, just not brand-colored.
+  This is what most sections' "main action" should be (e.g. "View all
+  articles" next to a blog teaser grid) — brand-yellow is the exception,
+  not this.
+- **`.btn-ghost`** — Secondary/understated. Transparent/tinted
+  (`color-mix(...--neutral-0...)`) with a visible border, for actions that
+  shouldn't compete with the content next to them.
+
+**Composition — a second, independent axis from tier.** Any of the three
+tiers can render as label-only, label + icon, or icon-only; `.btn` is
+already `display: inline-flex; gap: var(--gap-2)` (`global.css:856-858`),
+so icon placement is just DOM order — no separate CSS class per variant:
+
+- **Label only** — the default, and the common case (`{ctaLabel}` alone).
+- **Label + icon** — icon reinforces or extends the label's meaning
+  (a WhatsApp glyph before "Chat with us," a download glyph before
+  "Get the deck"). Icon side follows the action's direction, not a fixed
+  rule: **trailing** (icon after label) for forward/navigational actions —
+  "View all articles →," anything that moves the user onward; **leading**
+  (icon before label) when the icon identifies *what* the action is before
+  the label explains it — a channel/brand glyph (WhatsApp), a file-type
+  glyph (download, external link).
+- **Icon only** — label collapses to an `aria-label`/visually-hidden span;
+  reserve for tight spaces (mobile toolbars, a repeated action in a list)
+  where the icon alone is unambiguous — not a default, since every other
+  button on the site is label-led.
+
+**Size — `.btn-sm` / `.btn` (default, "md") / `.btn-lg`.** Scales padding
+and font-size together (never one without the other) — never override just
+one in component CSS.
+
+**Width — `.btn` (inline, default) / `.btn-block` (fills its container).**
+Use the class, not a one-off `align-self: stretch`/`width: 100%` in a
+component's own CSS — that pattern already had to be caught and replaced
+once (`InsightsBlock.astro`'s mobile CTA).
+
+**States — hover / active / focus-visible / disabled**, all on `.btn`
+itself so every tier and size inherits them:
+- hover — tier-specific (`.btn` lightens toward `--color-surface-hover`,
+  `.btn-solid` lifts + lightens, `.btn-ghost` raises its tint).
+- active — `scale(0.97)` press feedback, all tiers.
+- focus-visible — `outline: var(--focus-primary)` (site-wide rule, not
+  button-specific — same ring every focusable element gets).
+- disabled — `<button disabled>` or `aria-disabled="true"` on an `<a>`
+  standing in for one; `--opacity-disabled` + `--cursor-disabled` +
+  `pointer-events: none`, no hover/active feedback.
+
+---
+
 ## Core Components
 
 ### `SiteHeader` — `src/components/SiteHeader.astro`
@@ -77,8 +139,8 @@
   - Prev/Next Articles: Dual navigation cards with thumbnail preview and category context
 
 ### 6. Trust Badges Strip — `src/components/TrustBadges.astro`
-- **Purpose**: Client and industry trust recognition strip.
-- **Tokens**: Monochrome logos (Clutch, DesignRush, GoodFirms, TopDevelopers), `--opacity-70`, `--gap-8` flex layout.
+- **Purpose**: Client and industry trust recognition strip. Currently unused sitewide (removed from all pages per user request).
+- **Tokens**: Monochrome logos (Clutch, DesignRush, GoodFirms — TopDevelopers has a logo asset at `public/brand/trust/topdevelopers.svg` but no verified profile URL, not wired in), `--opacity-70`, `--gap-8` flex layout.
 
 ### 7. Service Spotlight Panel — `src/components/ServiceSpotlightPanel.astro`
 - **Purpose**: Vertical list in one glass panel where exactly one row is spotlit at a time — by hover, by scroll position on touch, or by an idle auto-advance. The spotlit row inverts to a light surface, reveals a supporting line, grows its thumbnail, plays its clip, and washes the section's full-bleed backdrop with its own poster.

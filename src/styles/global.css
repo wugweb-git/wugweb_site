@@ -237,21 +237,23 @@
      SPACING SCALE
      ═════════════════════════════════════════════════════════════════ */
 
-  /* G-9: Numeric spacing / padding / gap ramp (§3.10).
-     All three share one ramp — prefixes distinguish context. */
-  --s-0: 0;     --p-0: 0;     --gap-0: 0;
-  --s-1: 0.25rem;   --p-1: 0.25rem;   --gap-1: 0.25rem;
-  --s-2: 0.5rem;   --p-2: 0.5rem;   --gap-2: 0.5rem;
-  --s-3: 0.75rem;  --p-3: 0.75rem;  --gap-3: 0.75rem;
-  --s-4: 1rem;  --p-4: 1rem;  --gap-4: 1rem;
-  --s-5: 1.25rem;  --p-5: 1.25rem;  --gap-5: 1.25rem;
-  --s-6: 1.5rem;  --p-6: 1.5rem;  --gap-6: 1.5rem;
-  --s-7: 1.75rem;  --p-7: 1.75rem;  --gap-7: 1.75rem;
-  --s-8: 2rem;  --p-8: 2rem;  --gap-8: 2rem;
-  --s-9: 2.25rem;  --p-9: 2.25rem;  --gap-9: 2.25rem;
-  --s-10: 2.5rem; --p-10: 2.5rem; --gap-10: 2.5rem;
-  --s-11: 2.75rem; --p-11: 2.75rem; --gap-11: 2.75rem;
-  --s-12: 3rem; --p-12: 3rem; --gap-12: 3rem;
+  /* G-9: Numeric padding / gap ramp (§3.10). Both share one ramp — prefix
+     distinguishes context. (A third --s-* column existed here with the
+     same values as --p-* — zero usages anywhere in src/, confirmed by
+     grep; removed rather than kept as a silently-dead alias.) */
+  --p-0: 0;     --gap-0: 0;
+  --p-1: 0.25rem;   --gap-1: 0.25rem;
+  --p-2: 0.5rem;   --gap-2: 0.5rem;
+  --p-3: 0.75rem;  --gap-3: 0.75rem;
+  --p-4: 1rem;  --gap-4: 1rem;
+  --p-5: 1.25rem;  --gap-5: 1.25rem;
+  --p-6: 1.5rem;  --gap-6: 1.5rem;
+  --p-7: 1.75rem;  --gap-7: 1.75rem;
+  --p-8: 2rem;  --gap-8: 2rem;
+  --p-9: 2.25rem;  --gap-9: 2.25rem;
+  --p-10: 2.5rem; --gap-10: 2.5rem;
+  --p-11: 2.75rem; --gap-11: 2.75rem;
+  --p-12: 3rem; --gap-12: 3rem;
 
   /* Legacy gap aliases (keep until migration) */
   --gap-xs: var(--gap-2);
@@ -878,6 +880,52 @@ a { color: inherit; }
 .btn:active { transform: scale(0.97); }
 .btn:focus-visible { outline: 2px solid var(--neutral-3); outline-offset: 3px; }
 
+/* Disabled — the tokens for this already existed (--opacity-disabled,
+   --cursor-disabled) but nothing consumed them; .btn silently had no
+   disabled treatment at all. Works on a real <button disabled> and on an
+   <a> standing in for one via aria-disabled (an <a> can't carry the
+   disabled attribute). No hover/active feedback either. */
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: var(--opacity-disabled);
+  cursor: var(--cursor-disabled);
+  pointer-events: none;
+}
+
+/* Size — md (the bare .btn padding/font-size above) is the default and
+   needs no modifier class. sm/lg scale both padding and type together,
+   never one without the other. */
+.btn-sm {
+  padding: 0.45rem 0.85rem;
+  font-size: var(--fluid-body-sm);
+  gap: var(--gap-1);
+}
+.btn-lg {
+  padding: 0.95rem 1.5rem;
+  font-size: var(--fluid-body-lg);
+}
+
+/* Width — inline (default, sized to label) vs block (fills its container).
+   Use this instead of one-off `align-self: stretch` / `width: 100%` on a
+   button in component CSS, e.g. a CTA pinned full-width in a mobile
+   full-height section. */
+.btn-block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+/* Block on mobile only, inline above — the common case for a CTA that
+   should fill a narrow screen but sit at its natural width in a row next
+   to other content once there's room (e.g. a section head's title + CTA
+   pair that stacks vertically below 768px). No-op above the breakpoint. */
+@media (max-width: 767px) {
+  .btn-block-mobile {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Site-wide keyboard focus.
    Only .btn, .u-chip and .cta-ball carried a focus ring, so every card link —
    work cards, insight cards, capability groups, toolkit chips — was invisible
@@ -912,15 +960,57 @@ summary:focus-visible {
    wugweb.com's own ghost buttons work the same way: different shades of
    black via opacity/blur, never a flat match to whatever sits behind them. */
 .btn-ghost {
-  background: color-mix(in srgb, var(--neutral-0) 6%, transparent);
+  background: color-mix(in srgb, var(--neutral-0) 9%, transparent);
   backdrop-filter: var(--glass-light);
   -webkit-backdrop-filter: var(--glass-light);
-  border-color: var(--line-strong);
+  border-color: color-mix(in srgb, var(--neutral-0) 22%, transparent);
 }
 .btn-ghost:hover {
-  background: color-mix(in srgb, var(--neutral-0) 12%, transparent);
+  background: color-mix(in srgb, var(--neutral-0) 16%, transparent);
   /* Not --fg: a white outline on hover was explicitly rejected. */
-  border-color: var(--line-strong);
+  border-color: color-mix(in srgb, var(--neutral-0) 30%, transparent);
+}
+
+/* Global rule: every link that leaves the site gets a trailing ↗, so an
+   external destination is visually distinct before the click, not after.
+   Hooked on target="_blank" — the site's own convention for "this leaves
+   wugweb.com" — rather than guessing at hostnames. mailto:/tel: links
+   correctly don't match (they don't open a new tab, and aren't "external"
+   in the navigate-away sense). Any single link that genuinely shouldn't
+   carry it (a share/social icon-button where the icon already is the
+   affordance) can opt out with .no-external-icon. */
+a[target='_blank']:not(.no-external-icon)::after {
+  content: '↗';
+  display: inline-block;
+  margin-left: 0.3em;
+  font-size: 0.85em;
+  transform: translateY(-0.05em);
+}
+
+/* Meta row — global rule: any date or reading-time label sitewide is an
+   icon + text pair (calendar for a date, clock for a duration), never bare
+   text. First established on the blog article header (.article-meta-item
+   in blog/[slug].astro); this is that same pattern promoted here so every
+   other surface (Legal & Policies' "Updated" date, InsightsBlock's
+   "X min read") draws from one definition instead of re-implementing it. */
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-3) var(--gap-6);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  color: var(--fg-muted);
+}
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-2);
+}
+.meta-icon {
+  color: var(--fg-muted);
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 

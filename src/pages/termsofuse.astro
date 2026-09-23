@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
 import PortableTextRenderer from '../components/PortableTextRenderer.astro';
 import { sanityClient } from '../lib/sanity';
 import { singletonPageQuery } from '../lib/queries';
@@ -11,12 +11,8 @@ const blocks: any[] = Array.isArray(page?.body) && page.body.length ? page.body 
 const hasCms = blocks.length > 0;
 ---
 
-<BaseLayout title="Terms of Use" description="Read Wugweb's terms of use for website access, service information, and visitor responsibilities.">
+<LegalLayout title="Terms of Use" description="Read Wugweb's terms of use for website access, service information, and visitor responsibilities." active="terms-of-use" updated="November 04, 2025">
   <section class="wrap legal">
-    <p class="eyebrow">Legal</p>
-    <h1 class="page-title">Terms of Use</h1>
-    <p class="updated">Updated on November 04, 2025</p>
-
     {hasCms ? (
       <div class="legal-body">
         <PortableTextRenderer value={blocks} />
@@ -495,21 +491,12 @@ const hasCms = blocks.length > 0;
     </div>
     )}
   </section>
-</BaseLayout>
+</LegalLayout>
 
 <style>
   .legal {
     padding-block: var(--space-section-xl);
     max-width: 800px;
-  }
-  .legal h1 {
-    font-size: var(--t-h2);
-    margin-block: var(--gap-3) var(--gap-2);
-  }
-  .updated {
-    font-family: var(--font-mono);
-    font-size: var(--fluid-label);
-    color: var(--fg-muted);
   }
   .legal-body {
     margin-top: var(--gap-10);

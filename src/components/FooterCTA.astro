@@ -61,8 +61,11 @@ const glyphFor = (p: string) => SOCIAL_GLYPH[String(p).toLowerCase().replace(/[^
     <div class="cta-balls" data-ball-field aria-label="Wugweb on social media">
       {socialDiscs.map((sd) => {
         const glyph = glyphFor(sd.platform);
+        // no-external-icon: this is a round icon-only physics ball, not a
+        // text link — an appended "↗" glyph would overflow the circle
+        // rather than read as an affordance.
         return glyph ? (
-          <a class="cta-ball" data-ball href={sd.profileUrl}
+          <a class="cta-ball no-external-icon" data-ball href={sd.profileUrl}
              target="_blank" rel="noopener noreferrer" title={sd.platform}>
             <span class="sr-only">{sd.platform}</span>
             <svg viewBox="0 0 18 18" aria-hidden="true"><path d={glyph} /></svg>
