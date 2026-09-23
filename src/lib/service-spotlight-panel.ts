@@ -69,13 +69,26 @@ export function initServiceSpotlightPanel(): void {
       root.classList.remove('is-cycling');
     };
 
+    // Stop after one full lap instead of cycling forever — left running, the
+    // idle auto-advance pulls every clip in the row (~40s of dwell = the
+    // full clip library, ~11.5MB on the brand pillar) for a visitor who
+    // walked away. One lap shows everything once, which is the point of an
+    // idle preview; a visitor who's still there can keep hovering/clicking.
+    let stepsThisLap = 0;
+
     const queueCycle = (delay: number) => {
       stopCycle();
       if (reduce || !canHover.matches || !onScreen || cards.length < 2) return;
       timer = window.setTimeout(() => {
         root.classList.add('is-cycling');
+        stepsThisLap = 0;
         const step = () => {
           open((pinned + 1) % cards.length);
+          stepsThisLap += 1;
+          if (stepsThisLap >= cards.length) {
+            stopCycle();
+            return;
+          }
           timer = window.setTimeout(step, DWELL_MS);
         };
         step();
