@@ -4,12 +4,19 @@ import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
 import { sanityClient } from '../../lib/sanity';
 import { caseStudyBySlugQuery } from '../../lib/queries';
 import { assetUrl } from '../../lib/assets';
+import { getRunningCaseStudyExperiment, pickVariant } from '../../lib/experiments';
 
 const { slug } = Astro.params;
 const work = await sanityClient.fetch(caseStudyBySlugQuery, { slug }).catch(() => null);
 
 if (!work) {
   return Astro.redirect('/404');
+}
+
+// Legacy/duplicate docs carry canonicalUrl pointing at the real case
+// study — this stub's own slug should never render, just hand off.
+if (work.canonicalUrl && work.canonicalUrl !== `/work/${slug}`) {
+  return Astro.redirect(work.canonicalUrl, 301);
 }
 
 const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
@@ -19,6 +26,43 @@ const solutions = Array.isArray(work.solutions) ? work.solutions : [];
 const impactItems = Array.isArray(work.impact) ? work.impact : [];
 const galleryPaths = Array.isArray(work.galleryPaths) ? work.galleryPaths : [];
 const results = Array.isArray(work.results) ? work.results : [];
+
+// ── A/B experiment: case-study template redesign ──
+const experiment = await getRunningCaseStudyExperiment(String(slug)).catch(() => null);
+let variant = 'control';
+if (experiment) {
+  const cookieName = `exp_${experiment._id}`;
+  const queryOverride = Astro.url.searchParams.get('variant');
+  if (queryOverride && experiment.variants.some((v) => v.id === queryOverride)) {
+    variant = queryOverride;
+  } else {
+    const existing = Astro.cookies.get(cookieName)?.value;
+    variant = pickVariant(experiment, existing);
+    if (existing !== variant) {
+      Astro.cookies.set(cookieName, variant, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+    }
+  }
+}
+
+// ── v2 (treatment) section index — order is the actual narrative arc, so
+// numbering it is earning its keep rather than decorating a non-sequence.
+const accentMap: Record<string, string> = {
+  yellow: 'var(--color-accent-primary)',
+  orange: 'var(--svc-strategy)',
+  blue: 'var(--color-accent-blue)',
+  green: 'var(--color-feedback-success)',
+};
+const sectionDefsRaw = [
+  { id: 'about', label: 'About', accentKey: 'yellow', show: !!(work.about || work.summary) },
+  { id: 'problem', label: 'The problem', accentKey: 'orange', show: challenges.length > 0 },
+  { id: 'approach', label: 'The approach', accentKey: 'blue', show: solutions.length > 0 },
+  { id: 'outcome', label: 'The outcome', accentKey: 'green', show: impactItems.length > 0 || results.length > 0 },
+  { id: 'thesis', label: 'Design thesis', accentKey: 'yellow', show: !!work.designPhilosophy },
+];
+const sectionDefs = sectionDefsRaw
+  .filter((s) => s.show)
+  .map((s, i) => ({ ...s, num: String(i + 1).padStart(2, '0'), accent: accentMap[s.accentKey] }));
+const numFor = (id: string) => sectionDefs.find((s) => s.id === id)?.num || '';
 
 const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy" && !(_id in path("drafts.**"))]{"slug": slug.current}`).catch(() => []);
 const seenSlugs = new Set();
@@ -60,6 +104,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
     </section>
   )}
 
+  {variant === 'control' && (
   <div class="wrap case-body-content">
     {/* 1. About / Overview */}
     {(work.about || work.summary) && (
@@ -181,6 +226,125 @@ const otherCases = await Promise.all(others.map((s: any) =>
       </article>
     )}
   </div>
+  )}
+
+  {variant === 'treatment' && (
+  <div class="cs2-shell wrap">
+    {sectionDefs.length > 0 && (
+      <nav class="cs2-rail" aria-label="Case study sections">
+        <ol>
+          {sectionDefs.map((s) => (
+            <li>
+              <a href={`#${s.id}`} data-rail-link={s.id} style={`--rail-accent: ${s.accent}`}>
+                <span class="cs2-rail-num">{s.num}</span>
+                <span class="cs2-rail-label">{s.label}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+
+    <div class="cs2-content">
+      {(work.about || work.summary) && (
+        <section id="about" class="cs2-section" data-reveal>
+          <h2 class="cs2-heading"><span class="cs2-num" style={`color: ${accentMap.yellow}`}>{numFor('about')}</span>About</h2>
+          <p class="cs2-lead">{work.about || work.summary}</p>
+        </section>
+      )}
+
+      {challenges.length > 0 && (
+        <section id="problem" class="cs2-section" data-reveal>
+          <h2 class="cs2-heading"><span class="cs2-num" style={`color: ${accentMap.orange}`}>{numFor('problem')}</span>The problem</h2>
+          <ul class="cs2-list" style={`--rule-color: ${accentMap.orange}`}>
+            {challenges.map((ch: any) => (
+              <li><strong>{ch.title}</strong>{ch.body && <p>{ch.body}</p>}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {solutions.length > 0 && (
+        <section id="approach" class="cs2-section" data-reveal>
+          <h2 class="cs2-heading"><span class="cs2-num" style={`color: ${accentMap.blue}`}>{numFor('approach')}</span>The approach</h2>
+          <ul class="cs2-list" style={`--rule-color: ${accentMap.blue}`}>
+            {solutions.map((sol: any) => (
+              <li><strong>{sol.title}</strong>{sol.body && <p>{sol.body}</p>}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {(impactItems.length > 0 || results.length > 0) && (
+        <section id="outcome" class="cs2-section" data-reveal>
+          <h2 class="cs2-heading"><span class="cs2-num" style={`color: ${accentMap.green}`}>{numFor('outcome')}</span>The outcome</h2>
+          {results.length > 0 && (
+            <div class="cs2-stat-row">
+              {results.map((res: any) => (
+                <div class="cs2-stat">
+                  <span class="cs2-stat-num">{res.metric}</span>
+                  {res.label && <span class="cs2-stat-label">{res.label}</span>}
+                </div>
+              ))}
+            </div>
+          )}
+          {impactItems.length > 0 && (
+            <ul class="cs2-list" style={`--rule-color: ${accentMap.green}`}>
+              {impactItems.map((imp: any) => (
+                <li><strong>{imp.title}</strong>{imp.body && <p>{imp.body}</p>}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
+
+      {work.designPhilosophy && (
+        <section id="thesis" class="cs2-section" data-reveal>
+          <h2 class="cs2-heading"><span class="cs2-num" style={`color: ${accentMap.yellow}`}>{numFor('thesis')}</span>Design thesis</h2>
+          <div class="cs2-thesis" style={`--rule-color: ${accentMap.yellow}`}>
+            {work.designPhilosophy.split('\n').filter(Boolean).map((line: string) => {
+              const idx = line.indexOf(':');
+              const head = idx > -1 ? line.slice(0, idx).trim() : '';
+              const body = idx > -1 ? line.slice(idx + 1).trim() : '';
+              return (
+                <blockquote>
+                  <p>{body ? <><strong>{head}.</strong> {body}</> : line}</p>
+                </blockquote>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {galleryPaths.length > 0 && (
+        <section class="cs2-section cs2-gallery" data-reveal>
+          <h2 class="cs2-heading-plain">Gallery</h2>
+          <div class="cs2-gallery-grid">
+            {galleryPaths.map((path: string) => {
+              const src = assetUrl(path);
+              const isVideo = path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov');
+              return (
+                <figure class="cs2-gallery-item">
+                  {isVideo ? (
+                    <video src={src} muted loop playsinline autoplay preload="metadata" />
+                  ) : (
+                    <img src={src} alt={work.title} loading="lazy" />
+                  )}
+                </figure>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {bodyContent && bodyContent.length > 0 && (
+        <section class="cs2-section" data-reveal>
+          <PortableTextRenderer value={bodyContent} />
+        </section>
+      )}
+    </div>
+  </div>
+  )}
 
   {otherCases.length > 0 && (
     <section class="wrap section more-cases-section">
@@ -537,21 +701,19 @@ const otherCases = await Promise.all(others.map((s: any) =>
     height: 100%;
     border-radius: var(--radius-xl);
     overflow: hidden;
-    border: var(--stroke-thin) solid var(--line);
-    background: var(--neutral-1);
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    background: var(--color-surface-elevated);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
   .more-card:hover {
-    border-color: color-mix(in srgb, var(--color-accent-primary) 50%, transparent);
     transform: translateY(-5px);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-lg);
   }
   .more-card-visual {
     width: 100%;
     height: 240px;
     overflow: hidden;
     position: relative;
-    border-bottom: var(--stroke-thin) solid var(--line);
     background: color-mix(in srgb, var(--neutral-10) 20%, transparent);
   }
   .more-card-visual img, .more-card-visual video {
@@ -591,6 +753,202 @@ const otherCases = await Promise.all(others.map((s: any) =>
     color: var(--fg-muted);
     margin-top: var(--gap-1);
   }
+
+  /* ═══════════════════════════════════════════════════════════════
+     TREATMENT (v2) — editorial redesign. No cards, no glow, no
+     badge-pills. Color marks narrative stage, not decoration.
+     ═══════════════════════════════════════════════════════════════ */
+  .cs2-shell {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-section-lg);
+    padding-block: var(--space-section-md) var(--space-section-lg);
+    align-items: start;
+  }
+  @media (min-width: 1024px) {
+    .cs2-shell {
+      grid-template-columns: 200px minmax(0, 720px);
+      gap: var(--gap-xl);
+      justify-content: center;
+    }
+  }
+
+  .cs2-rail {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .cs2-rail {
+      display: block;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--gap-lg));
+      align-self: start;
+    }
+    .cs2-rail ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-4);
+      border-left: 1px solid var(--line);
+    }
+    .cs2-rail a {
+      display: flex;
+      align-items: baseline;
+      gap: var(--gap-2);
+      padding-left: var(--gap-4);
+      margin-left: -1px;
+      border-left: 1px solid transparent;
+      text-decoration: none;
+      color: var(--fg-subtle);
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+    .cs2-rail a:hover,
+    .cs2-rail a.is-active {
+      color: var(--fg);
+      border-left-color: var(--rail-accent, var(--color-accent-primary));
+    }
+    .cs2-rail-num {
+      font-family: var(--font-mono);
+      font-size: var(--t-micro, 0.7rem);
+      color: inherit;
+    }
+    .cs2-rail-label {
+      font-size: var(--fluid-body-sm);
+    }
+  }
+
+  .cs2-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-section-lg);
+    max-width: 720px;
+  }
+
+  .cs2-heading {
+    display: flex;
+    align-items: baseline;
+    gap: var(--gap-3);
+    font-size: var(--t-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--fg);
+    margin: 0 0 var(--gap-6) 0;
+  }
+  .cs2-num {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-body-sm);
+    font-weight: var(--font-weight-medium);
+  }
+  .cs2-heading-plain {
+    font-size: var(--t-h3);
+    font-weight: var(--font-weight-semibold);
+    color: var(--fg);
+    margin: 0 0 var(--gap-6) 0;
+  }
+
+  .cs2-lead {
+    font-size: var(--fluid-body-lg);
+    line-height: 1.6;
+    color: var(--fg-muted);
+    max-width: 68ch;
+  }
+
+  .cs2-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+  }
+  .cs2-list li {
+    border-left: 2px solid var(--rule-color, var(--line));
+    padding-left: var(--gap-5);
+  }
+  .cs2-list strong {
+    display: block;
+    font-size: var(--fluid-body-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--fg);
+    margin-bottom: var(--gap-2);
+  }
+  .cs2-list p {
+    margin: 0;
+    max-width: 60ch;
+    color: var(--fg-muted);
+    font-size: var(--fluid-body-md);
+    line-height: 1.6;
+  }
+
+  .cs2-stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--gap-6);
+    margin-bottom: var(--gap-8);
+    padding-bottom: var(--gap-8);
+    border-bottom: 1px solid var(--line);
+  }
+  .cs2-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+  }
+  .cs2-stat-num {
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 1.7rem + 1.2vw, 3rem);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-feedback-success);
+    line-height: 1;
+  }
+  .cs2-stat-label {
+    font-size: var(--fluid-body-sm);
+    color: var(--fg-muted);
+    max-width: 22ch;
+  }
+
+  .cs2-thesis {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+  }
+  .cs2-thesis blockquote {
+    margin: 0;
+    padding-left: var(--gap-5);
+    border-left: 2px solid var(--rule-color, var(--color-accent-primary));
+  }
+  .cs2-thesis p {
+    margin: 0;
+    font-size: var(--fluid-h4);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.5;
+    color: var(--fg);
+  }
+  .cs2-thesis strong {
+    font-weight: var(--font-weight-semibold);
+    color: var(--fg);
+  }
+
+  .cs2-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-6);
+  }
+  @media (min-width: 640px) {
+    .cs2-gallery-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .cs2-gallery-item {
+    margin: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .cs2-gallery-item img,
+  .cs2-gallery-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
 </style>
 
 <script>
@@ -611,6 +969,33 @@ const otherCases = await Promise.all(others.map((s: any) =>
     });
   };
 
+  const initRail = () => {
+    const rail = document.querySelector('.cs2-rail');
+    if (!rail) return;
+    const links = Array.from(rail.querySelectorAll('a[data-rail-link]'));
+    const sections = links
+      .map((a) => document.getElementById(a.getAttribute('data-rail-link') as string))
+      .filter(Boolean) as HTMLElement[];
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = rail.querySelector(`a[data-rail-link="${entry.target.id}"]`);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            links.forEach((l) => l.classList.remove('is-active'));
+            link.classList.add('is-active');
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+    sections.forEach((s) => observer.observe(s));
+  };
+
   initGlows();
+  initRail();
   document.addEventListener('astro:page-load', initGlows);
+  document.addEventListener('astro:page-load', initRail);
 </script>
