@@ -223,17 +223,25 @@ import {
       </div>
 
       <div class="widgets-demo-grid">
-        <!-- Buttons Showcase -->
+        <!-- Buttons Showcase — the real .btn/.btn-solid/.btn-ghost classes
+             from global.css, not a separate hand-rolled demo. This page's
+             whole job is to be the source of truth, so it has to render
+             what the site actually ships, not a lookalike. -->
         <div class="widget-box">
-          <div class="widget-hdr"><span class="widget-title">Button System</span></div>
+          <div class="widget-hdr"><span class="widget-title">Button System — Brand / Primary / Ghost</span></div>
           <div class="button-stack">
-            <button class="btn-primary-yellow">Primary Action (#FFBE1A)</button>
-            <button class="btn-ghost">Secondary Action (Ghost)</button>
-            <button class="btn-outline">Outline Action</button>
-            <button class="btn-cta-special">
-              <span>Special CTA Action</span>
-              <span class="cta-arrow">→</span>
-            </button>
+            <button class="btn btn-solid">Brand — Start a project</button>
+            <button class="btn">Primary — View all articles</button>
+            <button class="btn btn-ghost">Ghost — Learn more</button>
+          </div>
+          <div class="button-stack" style="flex-direction: row; align-items: flex-end; flex-wrap: wrap; margin-top: var(--gap-4);">
+            <button class="btn btn-solid btn-sm">Small</button>
+            <button class="btn btn-solid">Medium</button>
+            <button class="btn btn-solid btn-lg">Large</button>
+          </div>
+          <div class="button-stack" style="flex-direction: row; flex-wrap: wrap; margin-top: var(--gap-4);">
+            <button class="btn btn-solid" disabled>Disabled</button>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="btn">External ↗ (automatic)</a>
           </div>
         </div>
 
@@ -901,53 +909,6 @@ import {
     display: flex;
     flex-direction: column;
     gap: var(--gap-3);
-  }
-
-  .btn-primary-yellow {
-    background: #FFBE1A;
-    color: #191919;
-    font-weight: 700;
-    padding: var(--gap-3) var(--gap-6);
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-
-  .btn-primary-yellow:hover {
-    transform: translateY(-2px);
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: #FFFFFF;
-    font-weight: 600;
-    padding: var(--gap-3) var(--gap-6);
-    border-radius: 8px;
-    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.15);
-    cursor: pointer;
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: #FFBE1A;
-    font-weight: 600;
-    padding: var(--gap-3) var(--gap-6);
-    border-radius: 8px;
-    border: var(--stroke-thin) solid #FFBE1A;
-    cursor: pointer;
-  }
-
-  .btn-cta-special {
-    background: linear-gradient(135deg, #191919 0%, #2B2B2B 100%);
-    border: var(--stroke-thin) solid rgba(255, 190, 26, 0.4);
-    color: #FFFFFF;
-    font-weight: 700;
-    padding: 14px var(--gap-7);
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
   }
 
   /* Form controls */
