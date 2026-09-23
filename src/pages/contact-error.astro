@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Message not sent — Wugweb" description="Your message didn't go through. Please try again or email us directly.">
+  <section class="wrap contact-error">
+    <p class="eyebrow">Message not sent</p>
+    <h1>That didn't go through — try again.</h1>
+    <p>
+      We weren't able to save your message just now. Nothing has been sent to us. Please
+      try submitting the form again, or email us directly and we'll pick it up from there.
+    </p>
+    <div class="contact-error-actions">
+      <a href="/contact-us" class="btn btn-solid">Try again</a>
+      <a href="mailto:hello@wugweb.com" class="btn btn-ghost">Email hello@wugweb.com</a>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .contact-error {
+    padding-block: var(--space-section-xl) var(--space-section-lg);
+    text-align: center;
+  }
+  .contact-error .eyebrow { color: var(--color-feedback-error); }
+  .contact-error h1 {
+    margin-top: var(--gap-4);
+    font-size: var(--fluid-h2);
+    max-width: 20ch;
+    margin-inline: auto;
+  }
+  .contact-error p {
+    margin-top: var(--gap-5);
+    max-width: 48ch;
+    margin-inline: auto;
+    color: var(--fg-muted);
+  }
+  .contact-error-actions {
+    display: flex;
+    gap: var(--gap-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--gap-10);
+  }
+</style>

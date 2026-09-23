@@ -334,6 +334,14 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     opacity: 0;
     pointer-events: none;
   }
+  /* The input is visually hidden but stays the real focus target (keyboard
+     tabs to it, not to .selector-content) — style :focus-visible on the
+     input, land it on the visible sibling via the adjacent-sibling
+     combinator. Was previously invisible to keyboard users entirely. */
+  .pillar-selector input:focus-visible + .selector-content {
+    outline: var(--focus-input);
+    outline-offset: 2px;
+  }
   .selector-content {
     display: flex;
     flex-direction: column;
@@ -395,6 +403,14 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     border-color: var(--accent-warm);
     background: var(--surface-hover);
   }
+  /* :focus (above) resets the browser default so the border/background swap
+     reads as the primary cue on a mouse click; :focus-visible restores a
+     real ring for keyboard users, who get no other indicator here. */
+  .field-group input:focus-visible,
+  .field-group textarea:focus-visible {
+    outline: var(--focus-input);
+    outline-offset: 2px;
+  }
 
   /* Chips */
   .chips-row {
@@ -410,6 +426,13 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  /* Same hidden-input pattern as .pillar-selector — the visible pill is a
+     sibling, not the focus target, so it needs its own :focus-visible
+     forward. */
+  .radio-chip input:focus-visible + span {
+    outline: var(--focus-input);
+    outline-offset: 2px;
   }
   .radio-chip span {
     display: inline-block;

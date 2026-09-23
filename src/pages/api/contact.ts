@@ -56,23 +56,28 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
     console.error('contact: Sanity mirror failed', e);
   }
 
-  // Best-effort Neon write. A DB hiccup must not 500 the visitor — the
-  // redirect to /thank-you is the contract; the lead can be re-captured.
+  // Neon is the real structured store (see file header) — unlike the Sanity
+  // mirror above, a failure here means the lead genuinely was not captured
+  // anywhere, so it must not redirect to /thank-you as if it had been.
   const client = await connect(locals.runtime.env).catch(() => null);
 
-  if (client) {
-    try {
-      await client.query(
-        `insert into contact_submissions
-           (name, company, interests, topic, budget, email, phone, contact_method, newsletter_opt_in)
-         values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-        [name, company, interests, topic, budget, email, phone, contactMethod, newsletter]
-      );
-    } catch (e) {
-      console.error('contact: Neon write failed', e);
-    } finally {
-      client.release();
-    }
+  if (!client) {
+    console.error('contact: Neon connection failed');
+    return redirect('/contact-error');
+  }
+
+  try {
+    await client.query(
+      `insert into contact_submissions
+         (name, company, interests, topic, budget, email, phone, contact_method, newsletter_opt_in)
+       values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+      [name, company, interests, topic, budget, email, phone, contactMethod, newsletter]
+    );
+  } catch (e) {
+    console.error('contact: Neon write failed', e);
+    return redirect('/contact-error');
+  } finally {
+    client.release();
   }
 
   return redirect('/thank-you');
