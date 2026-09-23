@@ -349,6 +349,13 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     border-color: var(--accent-warm);
     box-shadow: 0 0 12px rgba(255, 180, 0, 0.15);
   }
+  /* The real input is visually hidden (opacity: 0) but stays in tab
+     order — without this, a keyboard user tabbing through the pillar
+     grid gets no visible indicator of where focus is at all. */
+  .pillar-selector input:focus-visible + .selector-content {
+    outline: var(--focus-input);
+    outline-offset: 2px;
+  }
   .pillar-name {
     font-weight: 600;
     color: var(--fg);
@@ -395,6 +402,11 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     border-color: var(--accent-warm);
     background: var(--surface-hover);
   }
+  .field-group input:focus-visible,
+  .field-group textarea:focus-visible {
+    outline: var(--focus-input);
+    outline-offset: 2px;
+  }
 
   /* Chips */
   .chips-row {
@@ -421,6 +433,10 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     font-size: var(--fluid-label);
     color: var(--fg-muted);
     transition: var(--transition-fast);
+  }
+  .radio-chip input:focus-visible + span {
+    outline: var(--focus-input);
+    outline-offset: 2px;
   }
   .radio-chip input:checked + span {
     border-color: var(--accent-warm);

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Something went wrong — Wugweb" description="Your message couldn't be sent. Try again or email us directly.">
+  <section class="wrap contact-error">
+    <p class="eyebrow">Message Not Sent</p>
+    <h1>Something went wrong on our end.</h1>
+    <p>
+      Your message wasn't saved — this wasn't a problem with what you entered. Try again, or email us directly and we'll pick it up from there.
+    </p>
+    <div class="contact-error-actions">
+      <a href="/contact-us" class="btn btn-solid">Try again</a>
+      <a href="mailto:hello@wugweb.com" class="btn">Email hello@wugweb.com</a>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .contact-error {
+    padding-block: var(--space-section-xl) var(--space-section-lg);
+    text-align: center;
+  }
+  .contact-error .eyebrow { color: var(--color-feedback-error); }
+  .contact-error h1 {
+    margin-top: var(--gap-4);
+    font-size: var(--fluid-h2);
+    max-width: 18ch;
+    margin-inline: auto;
+  }
+  .contact-error p {
+    margin-top: var(--gap-5);
+    max-width: 45ch;
+    margin-inline: auto;
+    color: var(--fg-muted);
+  }
+  .contact-error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-4);
+    justify-content: center;
+    margin-top: var(--gap-10);
+  }
+</style>
