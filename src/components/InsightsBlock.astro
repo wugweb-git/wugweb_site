@@ -200,14 +200,28 @@ const coverOf = (p: InsightPost) =>
 
   .btc-cat {
     display: inline-flex;
+    align-items: center;
     font-family: var(--font-mono);
     font-size: var(--t-micro);
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
 
-  /* .u-chip owns box/glyph size — brighten it on card hover, same as any
-     other hover-revealed affordance on this site. */
+  /* Overrides .u-chip's fixed --chip-size (36px) box: matched to .btc-cat's
+     own rendered height (measured 24px — this pill's font-size + padding),
+     not the chip scale used elsewhere for larger, standalone toggles.
+     (An aspect-ratio: 1 / width: auto version of this was tried first —
+     circular sizing: a percentage-width SVG inside an auto-sized box has no
+     stable reference, so the chip inflated to whatever ancestor happened to
+     resolve the percentage against instead of its own content.) */
+  .btc-launch {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .btc-launch svg { width: 0.75rem; height: 0.75rem; }
+
+  /* .u-chip owns the background/hover mechanics — brighten it on card
+     hover, same as any other hover-revealed affordance on this site. */
   .blog-teaser-card:hover .btc-launch {
     background: color-mix(in srgb, var(--neutral-0) 16%, transparent);
   }
