@@ -39,8 +39,9 @@ const results = Array.isArray(work.results) ? work.results : [];
 // One real gallery image woven into "The approach" bento — proof next to
 // the claim, not decoration. Held to one so it stays the exception, not
 // a pattern repeated in every section.
-const approachImagePath = galleryPaths.find((p: string) => !p.endsWith('.mp4') && !p.endsWith('.webm') && !p.endsWith('.mov'));
-const approachImage = approachImagePath ? assetUrl(approachImagePath) : '';
+const approachMediaPath = galleryPaths[0];
+const approachMedia = approachMediaPath ? assetUrl(approachMediaPath) : '';
+const approachMediaIsVideo = /\.(mp4|webm|mov)$/.test(approachMediaPath || '');
 
 // bodyContent is migration-era duplicate text of challenges/solutions/
 // impact (same points, reworded) on most docs — confirmed by comparing
@@ -139,9 +140,13 @@ const otherCases = await Promise.all(others.map((s: any) =>
                   <strong>{sol.title}</strong>
                   {sol.body && <p>{sol.body}</p>}
                 </div>
-                {i === 1 && approachImage && (
+                {i === 1 && approachMedia && (
                   <figure class="bento-tile bento-image">
-                    <img src={approachImage} alt="" loading="lazy" />
+                    {approachMediaIsVideo ? (
+                      <video src={approachMedia} muted loop playsinline autoplay preload="metadata" />
+                    ) : (
+                      <img src={approachMedia} alt="" loading="lazy" />
+                    )}
                   </figure>
                 )}
               </>
@@ -445,7 +450,8 @@ const otherCases = await Promise.all(others.map((s: any) =>
     margin: 0;
     overflow: hidden;
   }
-  .bento-image img {
+  .bento-image img,
+  .bento-image video {
     width: 100%;
     height: clamp(220px, 32vw, 380px);
     object-fit: cover;
