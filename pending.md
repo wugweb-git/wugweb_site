@@ -5,7 +5,7 @@ Keep this file synced. Before any new session, read this first. After significan
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
 **Session-end summary (2026-09-23):** the frontend-design-system audit plan (`/Users/abcom/.claude/plans/nested-mixing-fountain.md`) is closed — every phase done, explicitly skipped, or moot (see that file's closure note). Everything genuinely still open below is **content/asset-blocked, not code-blocked** — the user declined pushing further on these tonight ("nopes"):
-- ServiceSpotlightPanel's 3 dummy sublines (Brand Narrative, Employer Branding, Brand Activation) — item #5.
+- ~~ServiceSpotlightPanel's 3 dummy sublines~~ **Done 2026-09-23** — real copy written for Brand Narrative, Employer Branding, Brand Activation in `service-copy.ts`, matching the other 7 entries' voice/length (item #5).
 - ClientAssemblyGrid's 9 client logos still only on the Framer CDN, not imported — item #9a.
 - Service clip library is stock/third-party footage, not real Wugweb work — item #6; Messaging Framework sub-service has no clip at all — item #7.
 - ProcessMap's one phase uses mismatched stock footage — item #9e.
