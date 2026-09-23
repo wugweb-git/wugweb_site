@@ -151,7 +151,7 @@ import {
             {spacingRamp.map((s) => (
               <div class="ramp-row">
                 <span class="ramp-lbl">{s.token}</span>
-                <div class="ramp-bar" style={`width: ${s.px}; background: var(--color-yellow, #FFBE1A); height: 8px; border-radius: 4px;`}></div>
+                <div class="ramp-bar" style={`width: ${s.px}; background: var(--color-yellow, var(--color-yellow)); height: 8px; border-radius: 4px;`}></div>
                 <span class="ramp-val">{s.px}</span>
               </div>
             ))}
@@ -164,7 +164,7 @@ import {
             {radiusRamp.map((r) => (
               <div class="ramp-row">
                 <span class="ramp-lbl">{r.token}</span>
-                <div class="radius-box" style={`border-radius: ${r.val}; border: 2px solid var(--color-yellow, #FFBE1A); width: 32px; height: 32px;`}></div>
+                <div class="radius-box" style={`border-radius: ${r.val}; border: 2px solid var(--color-yellow, var(--color-yellow)); width: 32px; height: 32px;`}></div>
                 <span class="ramp-val">{r.val}</span>
               </div>
             ))}
@@ -177,7 +177,7 @@ import {
             {opacityRamp.map((o) => (
               <div class="ramp-row">
                 <span class="ramp-lbl">{o.token}</span>
-                <div class="opacity-box" style={`background: #FFBE1A; opacity: ${o.val}; width: 40px; height: 16px; border-radius: 4px;`}></div>
+                <div class="opacity-box" style={`background: var(--color-yellow); opacity: ${o.val}; width: 40px; height: 16px; border-radius: 4px;`}></div>
                 <span class="ramp-val">{o.val}</span>
               </div>
             ))}
@@ -280,7 +280,7 @@ import {
             <span class="badge-tag tag-green">Green Accent (#3ED219)</span>
             <span class="badge-tag tag-blue">Blue Accent (#2368D7)</span>
             <span class="badge-tag tag-aqua">Aqua Accent (#09E2C0)</span>
-            <span class="badge-tag tag-yellow">Primary Yellow (#FFBE1A)</span>
+            <span class="badge-tag tag-yellow">Primary Yellow (var(--color-yellow))</span>
             <span class="badge-sla">⚡ 24h Response SLA Guaranteed</span>
           </div>
         </div>
@@ -444,7 +444,7 @@ import {
   .kits-page {
     padding-top: calc(var(--space-section-lg, 80px) + var(--gap-5));
     padding-bottom: var(--space-section-lg, 80px);
-    color: var(--color-text-primary, #F4F4F4);
+    color: var(--color-text-primary);
   }
 
   /* Header */
@@ -469,8 +469,8 @@ import {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #FFBE1A;
-    box-shadow: 0 0 10px #FFBE1A;
+    background: var(--color-yellow);
+    box-shadow: 0 0 10px var(--color-yellow);
     animation: pulseGlow 2s infinite ease-in-out;
   }
 
@@ -485,7 +485,7 @@ import {
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: var(--gap-4);
-    background: linear-gradient(180deg, #FFFFFF 0%, #BABABA 100%);
+    background: linear-gradient(180deg, var(--neutral-0) 0%, var(--neutral-3) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -493,7 +493,7 @@ import {
   .kits-hero-lead {
     font-size: var(--fluid-body-lg);
     line-height: 1.6;
-    color: #BABABA;
+    color: var(--neutral-3);
     margin-bottom: 30px;
   }
 
@@ -508,8 +508,8 @@ import {
   .nav-chip {
     font-size: 0.8rem;
     font-weight: 600;
-    color: #BABABA;
-    background: #191919;
+    color: var(--neutral-3);
+    background: var(--color-surface-elevated);
     border: var(--stroke-thin) solid rgba(255, 255, 255, 0.12);
     padding: 6px 14px;
     border-radius: 9999px;
@@ -518,9 +518,9 @@ import {
   }
 
   .nav-chip:hover {
-    color: #FFBE1A;
-    border-color: #FFBE1A;
-    background: #242429;
+    color: var(--color-yellow);
+    border-color: var(--color-yellow);
+    background: var(--neutral-7);
   }
 
   .kits-stats-grid {
@@ -530,7 +530,7 @@ import {
   }
 
   .stat-card {
-    background: #191919;
+    background: var(--color-surface-elevated);
     border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: var(--gap-4);
@@ -542,12 +542,12 @@ import {
   .stat-val {
     font-size: 2rem;
     font-weight: 800;
-    color: #FFBE1A;
+    color: var(--color-yellow);
   }
 
   .stat-lbl {
     font-size: 0.75rem;
-    color: #7D7D7D;
+    color: var(--neutral-5);
     margin-top: var(--gap-1);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -571,7 +571,7 @@ import {
 
   .section-hdr p {
     font-size: var(--fluid-body-md);
-    color: #BABABA;
+    color: var(--neutral-3);
   }
 
   /* Theme Switcher */
@@ -588,9 +588,9 @@ import {
     gap: var(--gap-2);
     padding: 10px 18px;
     border-radius: 9999px;
-    background: #191919;
+    background: var(--color-surface-elevated);
     border: var(--stroke-thin) solid rgba(255, 255, 255, 0.12);
-    color: #DFDFDF;
+    color: var(--neutral-2);
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
@@ -598,9 +598,9 @@ import {
   }
 
   .pillar-tab.active, .pillar-tab:hover {
-    background: #242429;
-    border-color: #FFBE1A;
-    color: #FFFFFF;
+    background: var(--neutral-7);
+    border-color: var(--color-yellow);
+    color: var(--neutral-0);
   }
 
   .tab-dot {
@@ -624,13 +624,13 @@ import {
   .banner-title {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--neutral-0);
     display: block;
   }
 
   .banner-desc {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: color-mix(in srgb, var(--neutral-0) 85%, transparent);
   }
 
   .banner-codes {
@@ -639,12 +639,12 @@ import {
   }
 
   .banner-codes code {
-    background: rgba(0, 0, 0, 0.5);
+    background: color-mix(in srgb, var(--neutral-10) 50%, transparent);
     padding: 6px var(--gap-3);
     border-radius: 6px;
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: #FFBE1A;
+    color: var(--color-yellow);
   }
 
   /* Colors */
@@ -656,7 +656,7 @@ import {
   }
 
   .color-group-card {
-    background: #191919;
+    background: var(--color-surface-elevated);
     border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: var(--gap-6);
@@ -703,7 +703,7 @@ import {
 
   .swatch-info code {
     font-size: 0.75rem;
-    color: #7D7D7D;
+    color: var(--neutral-5);
     font-family: var(--font-mono);
   }
 
@@ -741,7 +741,7 @@ import {
 
   .pillar-desc-sm {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: color-mix(in srgb, var(--neutral-0) 85%, transparent);
   }
 
   .swatch-hex-stack {
@@ -765,7 +765,7 @@ import {
   }
 
   .ramp-card {
-    background: #191919;
+    background: var(--color-surface-elevated);
     border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: var(--gap-5);
@@ -793,12 +793,12 @@ import {
   .ramp-lbl {
     font-family: var(--font-mono);
     font-size: 0.78rem;
-    color: #BABABA;
+    color: var(--neutral-3);
   }
 
   .ramp-val {
     font-size: 0.78rem;
-    color: #7D7D7D;
+    color: var(--neutral-5);
   }
 
   /* Specimen */
@@ -809,7 +809,7 @@ import {
   }
 
   .specimen-card {
-    background: #191919;
+    background: var(--color-surface-elevated);
     border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: var(--gap-5);
@@ -826,7 +826,7 @@ import {
   .token-name {
     font-family: var(--font-mono);
     font-size: 0.82rem;
-    color: #FFBE1A;
+    color: var(--color-yellow);
     background: rgba(255, 190, 26, 0.1);
     padding: var(--gap-1) var(--gap-2);
     border-radius: 6px;
@@ -834,19 +834,19 @@ import {
 
   .specimen-tag {
     font-size: 0.8rem;
-    color: #BABABA;
+    color: var(--neutral-3);
   }
 
   .specimen-px {
     font-size: 0.75rem;
-    color: #7D7D7D;
+    color: var(--neutral-5);
     margin-left: auto;
   }
 
   .copy-btn {
     background: transparent;
     border: var(--stroke-thin) solid rgba(255, 255, 255, 0.2);
-    color: #F4F4F4;
+    color: var(--neutral-1);
     font-size: 0.75rem;
     padding: var(--gap-1) 10px;
     border-radius: 6px;
@@ -855,13 +855,13 @@ import {
   }
 
   .copy-btn:hover {
-    background: #FFBE1A;
-    color: #191919;
-    border-color: #FFBE1A;
+    background: var(--color-yellow);
+    color: var(--color-surface-elevated);
+    border-color: var(--color-yellow);
   }
 
   .specimen-sample {
-    color: #FFFFFF;
+    color: var(--neutral-0);
     word-break: break-word;
   }
 
@@ -873,9 +873,9 @@ import {
   }
 
   .widget-box {
-    background: #191919;
-    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    background: var(--color-surface-elevated);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-lg);
     padding: var(--gap-6);
   }
 
@@ -891,17 +891,17 @@ import {
   }
 
   .widget-title {
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: var(--fluid-body-lg);
+    font-weight: var(--font-weight-semibold);
   }
 
   .widget-badge {
-    font-size: 0.8rem;
+    font-size: var(--fluid-caption);
     font-family: var(--font-mono);
-    color: #FFBE1A;
-    background: rgba(255, 190, 26, 0.1);
-    padding: var(--gap-1) 10px;
-    border-radius: 9999px;
+    color: var(--color-yellow);
+    background: color-mix(in srgb, var(--color-yellow) 10%, transparent);
+    padding: var(--gap-1) var(--gap-3);
+    border-radius: var(--radius-full);
   }
 
   /* Buttons */
@@ -921,21 +921,21 @@ import {
   .input-field-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--gap-2);
   }
 
   .input-lbl {
-    font-size: 0.85rem;
-    color: #BABABA;
+    font-size: var(--fluid-caption);
+    color: var(--neutral-3);
   }
 
   .demo-input, .demo-select {
-    background: #050505;
-    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    padding: 10px 14px;
-    color: #FFFFFF;
-    font-size: 0.9rem;
+    background: var(--neutral-9);
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--neutral-0) 15%, transparent);
+    border-radius: var(--radius-sm);
+    padding: var(--gap-3) var(--gap-4);
+    color: var(--neutral-0);
+    font-size: var(--fluid-body-sm);
   }
 
   .toggle-row {
@@ -945,8 +945,8 @@ import {
   }
 
   .toggle-lbl {
-    font-size: 0.9rem;
-    color: #DFDFDF;
+    font-size: var(--fluid-body-sm);
+    color: var(--neutral-2);
   }
 
   .switch {
@@ -962,7 +962,7 @@ import {
     position: absolute;
     cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #2B2B2B;
+    background-color: var(--neutral-7);
     transition: .4s;
     border-radius: 24px;
   }
@@ -972,13 +972,13 @@ import {
     content: "";
     height: 18px; width: 18px;
     left: 3px; bottom: 3px;
-    background-color: white;
+    background-color: var(--neutral-0);
     transition: .4s;
     border-radius: 50%;
   }
 
-  input:checked + .slider { background-color: #FFBE1A; }
-  input:checked + .slider:before { transform: translateX(20px); background-color: #191919; }
+  input:checked + .slider { background-color: var(--color-yellow); }
+  input:checked + .slider:before { transform: translateX(20px); background-color: var(--color-surface-elevated); }
 
   /* Badges */
   .badges-flex {
@@ -1024,34 +1024,34 @@ import {
   }
 
   .bento-card {
-    background: #191919;
-    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    background: var(--color-surface-elevated);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-lg);
     padding: var(--gap-7);
   }
 
   .bento-card.bento-wide {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, #191919 0%, #2B2B2B 100%);
+    background: linear-gradient(135deg, var(--color-surface-elevated) 0%, var(--neutral-7) 100%);
   }
 
   .bento-tag {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: #FFBE1A;
+    font-size: var(--fluid-caption);
+    color: var(--color-yellow);
     margin-bottom: var(--gap-2);
     display: block;
   }
 
   .bento-card h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: var(--t-h5);
+    font-weight: var(--font-weight-bold);
     margin-bottom: var(--gap-2);
   }
 
   .bento-card p {
-    font-size: 0.9rem;
-    color: #BABABA;
+    font-size: var(--fluid-body-sm);
+    color: var(--neutral-3);
   }
 
   /* Scope Selector */
@@ -1062,34 +1062,34 @@ import {
   }
 
   .scope-chip-card {
-    background: #050505;
-    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
+    background: var(--neutral-9);
+    border: var(--stroke-thin) solid var(--line-strong);
+    border-radius: var(--radius-md);
     padding: var(--gap-4);
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
   .scope-chip-card:hover {
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: color-mix(in srgb, var(--neutral-0) 30%, transparent);
   }
 
   .scope-chip-card.selected {
-    border-color: #FFBE1A;
-    background: rgba(255, 190, 26, 0.08);
+    border-color: var(--color-yellow);
+    background: color-mix(in srgb, var(--color-yellow) 8%, transparent);
   }
 
   .chip-top {
     display: flex;
     align-items: center;
     gap: var(--gap-2);
-    margin-bottom: 6px;
+    margin-bottom: var(--gap-2);
   }
 
-  .chip-name { font-weight: 700; font-size: 0.95rem; }
-  .chip-check { margin-left: auto; color: #FFBE1A; opacity: 0; }
+  .chip-name { font-weight: var(--font-weight-bold); font-size: var(--fluid-body-md); }
+  .chip-check { margin-left: auto; color: var(--color-yellow); opacity: 0; }
   .scope-chip-card.selected .chip-check { opacity: 1; }
-  .chip-desc { font-size: 0.8rem; color: #7D7D7D; }
+  .chip-desc { font-size: var(--fluid-caption); color: var(--neutral-5); }
 
   /* Accordion */
   .kits-accordion {
@@ -1099,15 +1099,15 @@ import {
   }
 
   .accordion-item {
-    background: #050505;
-    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    background: var(--neutral-9);
+    box-shadow: var(--shadow-xs);
+    border-radius: var(--radius-md);
     padding: var(--gap-4) var(--gap-5);
   }
 
   .accordion-q {
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--fluid-label);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -1116,38 +1116,38 @@ import {
   }
 
   .accordion-q::-webkit-details-marker { display: none; }
-  .acc-icon { font-size: 1.2rem; color: #FFBE1A; }
+  .acc-icon { font-size: var(--fluid-h5); color: var(--color-yellow); }
 
   .accordion-a {
     margin-top: var(--gap-3);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #BABABA;
+    font-size: var(--fluid-body-sm);
+    line-height: var(--core-line-height-relaxed);
+    color: var(--neutral-3);
   }
 
   /* Code Inspector */
-  .code-inspector { background: #0b0b0d; }
+  .code-inspector { background: var(--neutral-9); }
   .btn-ghost-sm {
     background: transparent;
-    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
-    font-size: 0.8rem;
-    padding: 6px var(--gap-3);
-    border-radius: 6px;
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--neutral-0) 20%, transparent);
+    color: var(--neutral-0);
+    font-size: var(--fluid-caption);
+    padding: var(--gap-2) var(--gap-3);
+    border-radius: var(--radius-sm);
     cursor: pointer;
   }
 
-  .btn-ghost-sm:hover { background: #FFBE1A; color: #191919; }
+  .btn-ghost-sm:hover { background: var(--color-yellow); color: var(--color-surface-elevated); }
 
   .code-block {
     margin: 0;
     padding: var(--gap-4);
-    background: #141417;
-    border-radius: 8px;
+    background: var(--neutral-8);
+    border-radius: var(--radius-sm);
     overflow-x: auto;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: #F4F4F4;
+    font-size: var(--fluid-caption);
+    color: var(--neutral-1);
   }
 
   /* Motion & Effects */
@@ -1158,15 +1158,15 @@ import {
   }
 
   .motion-card {
-    background: #191919;
-    border: var(--stroke-thin) solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    background: var(--color-surface-elevated);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-lg);
     padding: var(--gap-6);
   }
 
   .motion-card h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: var(--fluid-body-lg);
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--gap-4);
   }
 
@@ -1179,20 +1179,20 @@ import {
   .easing-row {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--gap-2);
   }
 
   .easing-meta {
     display: flex;
     justify-content: space-between;
-    font-size: 0.8rem;
+    font-size: var(--fluid-caption);
   }
 
-  .easing-meta code { color: #FFBE1A; font-family: var(--font-mono); }
+  .easing-meta code { color: var(--color-yellow); font-family: var(--font-mono); }
 
   .easing-demo-track {
-    background: #050505;
-    border-radius: 9999px;
+    background: var(--neutral-9);
+    border-radius: var(--radius-full);
     height: 12px;
     padding: 2px;
     overflow: hidden;
@@ -1202,7 +1202,7 @@ import {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #FFBE1A;
+    background: var(--color-yellow);
   }
 
   @keyframes moveBall {
@@ -1217,17 +1217,18 @@ import {
   }
 
   .glow-box {
-    padding: 14px;
-    border-radius: 8px;
-    background: #050505;
+    padding: var(--gap-4);
+    border-radius: var(--radius-sm);
+    background: var(--neutral-9);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: var(--fluid-caption);
     text-align: center;
   }
 
-  .glow-blue { box-shadow: 0 0 30px rgba(35, 104, 215, 0.4); border: var(--stroke-thin) solid rgba(35, 104, 215, 0.5); }
-  .glow-pink { box-shadow: 0 0 30px rgba(230, 48, 159, 0.4); border: var(--stroke-thin) solid rgba(230, 48, 159, 0.5); }
-  .glow-teal { box-shadow: 0 0 30px rgba(9, 226, 192, 0.4); border: var(--stroke-thin) solid rgba(9, 226, 192, 0.5); }
+  /* The real --shadow-glow-* tokens, not reinvented rgba glows. */
+  .glow-blue { box-shadow: var(--shadow-glow-blue); border: var(--stroke-thin) solid color-mix(in srgb, var(--color-blue) 50%, transparent); }
+  .glow-pink { box-shadow: var(--shadow-glow-pink); border: var(--stroke-thin) solid color-mix(in srgb, var(--svc-brand) 50%, transparent); }
+  .glow-teal { box-shadow: var(--shadow-glow-teal); border: var(--stroke-thin) solid color-mix(in srgb, var(--color-aqua) 50%, transparent); }
 
   .noise-stack {
     display: flex;
@@ -1237,11 +1238,11 @@ import {
 
   .noise-box {
     padding: var(--gap-4);
-    border-radius: 8px;
-    background-color: #191919;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: var(--stroke-thin) solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-elevated);
+    font-size: var(--fluid-caption);
+    font-weight: var(--font-weight-semibold);
+    box-shadow: var(--shadow-xs);
   }
 
   .noise-light { background-image: var(--noise-light, none); }
@@ -1251,19 +1252,19 @@ import {
   /* Toast Notification */
   .toast-box {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #FFBE1A;
-    color: #191919;
-    font-weight: 700;
+    bottom: var(--space-page-xs);
+    right: var(--space-page-xs);
+    background: var(--color-yellow);
+    color: var(--color-surface-elevated);
+    font-weight: var(--font-weight-bold);
     padding: var(--gap-3) var(--gap-6);
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
-    z-index: 1000;
+    z-index: var(--layer-toast);
   }
 
   .toast-box.show {
