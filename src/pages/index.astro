@@ -475,8 +475,11 @@ import ServiceTagField from '../components/ServiceTagField.astro';
     font-family: var(--font-mono);
     font-size: var(--t-sm);
     color: var(--fg-muted);
-    background: var(--neutral-1);
-    transition: border-color 0.3s ease, color 0.3s ease;
+    /* Was --neutral-1 (#F4F4F4) — a light-mode surface, which read as a
+       solid white pill on this dark page. Same dark, barely-there elevation
+       every other pill/chip on the site uses. */
+    background: color-mix(in srgb, var(--neutral-0) 6%, transparent);
+    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
     cursor: default;
   }
 

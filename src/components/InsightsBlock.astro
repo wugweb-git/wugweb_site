@@ -233,9 +233,12 @@ const coverOf = (p: InsightPost) =>
     .blog-teaser-card,
     .blog-teaser-card--featured {
       flex-direction: row;
-      align-items: center;
+      /* flex-start, not center: centering pulled the tag+title block down
+         to the middle of the (taller) thumbnail instead of starting level
+         with its top edge. */
+      align-items: flex-start;
       gap: var(--gap-4);
-      padding: var(--gap-3);
+      padding: var(--gap-2);
       background: var(--color-surface-elevated);
       color: var(--fg);
       border: 0;
