@@ -20,6 +20,16 @@ if (work.canonicalUrl && work.canonicalUrl !== `/work/${slug}`) {
 
 const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
 const clientLogoSrc = work.clientRef?.logoPath ? assetUrl(work.clientRef.logoPath) : '';
+// Titles like "Bankco – Revolutionizing Financial Engagement..." repeat the
+// brand/product name that's already shown in the meta row — strip it, but
+// only when the prefix is short and clearly a name (not a descriptive
+// clause like "Redesigning Cartier's Career Website – ..." or "The
+// Avant-Garde of Banking: ..." where stripping would lose real meaning).
+const titleParts = work.title?.split(/\s+[–:]\s+/) || [];
+const titlePrefix = titleParts[0] || '';
+const prefixWords = titlePrefix.trim().split(/\s+/);
+const looksLikeName = prefixWords.length <= 2 && !/^(the|a|an)$/i.test(prefixWords[0]) && !/ing$/i.test(prefixWords[0]);
+const displayTitle = titleParts.length > 1 && looksLikeName ? titleParts.slice(1).join(' – ') : work.title;
 const bodyContent = Array.isArray(work.bodyContent) ? work.bodyContent : [];
 const challenges = Array.isArray(work.challenges) ? work.challenges : [];
 const solutions = Array.isArray(work.solutions) ? work.solutions : [];
@@ -80,39 +90,37 @@ const otherCases = await Promise.all(others.map((s: any) =>
 <BaseLayout title={`${work.title} — Wugweb Work`} description={(work.summary || work.about || '').slice(0, 160)}>
   <section class="work-detail-hero">
     <div class="wrap">
-      <p class="eyebrow"><a href="/work">Work</a></p>
-      <h1>{work.title}</h1>
+      <h1>{displayTitle}</h1>
       {work.subtitle && <p class="work-subtitle">{work.subtitle}</p>}
-      <div class="work-meta">
-        <div>
-          <span class="meta-label">Client</span>
-          <span class="work-meta-client">
-            {clientLogoSrc && <img src={clientLogoSrc} alt="" class="work-client-logo" loading="eager" />}
-            {work.clientRef?.name || work.client || '—'}
-          </span>
-        </div>
-        {work.disciplines?.length > 0 && <div><span class="meta-label">Disciplines</span><span>{work.disciplines.join(', ')}</span></div>}
-        {work.industry && <div><span class="meta-label">Industry</span><span>{work.industry}</span></div>}
-        {work.timeline && <div><span class="meta-label">Timeline</span><span>{work.timeline}</span></div>}
-        {work.team?.length > 0 && <div><span class="meta-label">Team</span><span>{work.team.join(', ')}</span></div>}
-        {work.partner && work.partner !== 'None' && <div><span class="meta-label">Partner</span><span>{work.partner}</span></div>}
-      </div>
       {work.tags?.length > 0 && (
         <div class="work-tags">
           {work.tags.map((tag: string) => <span class="u-tag">{tag}</span>)}
         </div>
       )}
+      <div class="work-meta">
+        <div>
+          <span class="meta-label">Client / Brand</span>
+          <span class="work-meta-client">
+            {clientLogoSrc && <img src={clientLogoSrc} alt="" class="work-client-logo" loading="eager" />}
+            {work.clientRef?.name || work.client || '—'}
+          </span>
+        </div>
+        {work.partner && work.partner !== 'None' && <div><span class="meta-label">Partnered by</span><span>{work.partner}</span></div>}
+        {work.timeline && <div><span class="meta-label">Timeline</span><span>{work.timeline}</span></div>}
+        {work.disciplines?.length > 0 && <div><span class="meta-label">Disciplines</span><span>{work.disciplines.join(', ')}</span></div>}
+        {work.industry && <div><span class="meta-label">Industry</span><span>{work.industry}</span></div>}
+        {work.team?.length > 0 && <div><span class="meta-label">Team</span><span>{work.team.join(', ')}</span></div>}
+      </div>
     </div>
   </section>
 
   {coverSrc && (
-    <section class="work-cover" data-reveal>
+    <section class="wrap section work-cover" data-reveal>
       {coverSrc.endsWith('.mp4') || coverSrc.endsWith('.webm') ? (
         <video src={coverSrc} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
       ) : (
         <img src={coverSrc} alt={work.title} loading="eager" decoding="async" class="work-cover-media" />
       )}
-      <div class="work-cover-fade" aria-hidden="true"></div>
     </section>
   )}
 
@@ -278,10 +286,12 @@ const otherCases = await Promise.all(others.map((s: any) =>
     overflow-wrap: break-word;
   }
   .work-subtitle {
-    font-size: var(--fluid-body-lg);
+    font-size: var(--fluid-h5);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.4;
     color: var(--fg-muted);
-    margin-top: var(--gap-3);
-    max-width: 60ch;
+    margin-top: var(--gap-4);
+    max-width: 56ch;
   }
 
   .work-meta {
@@ -337,22 +347,15 @@ const otherCases = await Promise.all(others.map((s: any) =>
      page, fading into the surface color rather than stopping at a hard
      edge, so the narrative body below feels like a continuation. */
   .work-cover {
-    position: relative;
-    width: 100%;
-    margin-top: var(--space-section-sm);
+    padding-block: var(--space-section-sm);
   }
   .work-cover-media {
     width: 100%;
-    height: clamp(320px, 56vw, 760px);
+    height: auto;
+    max-height: 720px;
     object-fit: cover;
+    border-radius: var(--radius-xl);
     display: block;
-  }
-  .work-cover-fade {
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 30%;
-    background: linear-gradient(to bottom, transparent, var(--color-surface-page));
-    pointer-events: none;
   }
 
   /* ═══════════════════════════════════════════════════════════════
