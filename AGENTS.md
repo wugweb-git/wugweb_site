@@ -211,7 +211,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 
 ## Current Priorities
 
-1. Deploy / keep pages.dev in sync with local (Framer service slugs must not 404).
+1. Deploy / keep `wugweb.com` and `wugweb.pages.dev` in sync with local (Framer service slugs must not 404). **DNS cutover is done (confirmed 2026-09-23)** — `wugweb.com` now serves this site directly, not the old Framer build; it is no longer a separate reference to compare against.
 2. **Remaining backlog** (pending.md): contact redesign (needs reference), deep service-copy pass, trust-badge logos, prod verify of contact/subscribe APIs.
 3. Frontend → Neon swap (after UI/brand mapping).
 4. Blog/media gaps, team photos, Neon audit leftovers (8 stale rows, `[object Object]` slugs, empty `content_relations`).
