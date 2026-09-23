@@ -41,7 +41,7 @@ export const caseStudyBySlugQuery = `
     bodyContent, tags, disciplines, industry, timeline, team, partner,
     coverImage, coverPath, thumbnailPath, results, canonicalUrl,
     seoTitle, seoDescription, ogImage, publishedAt, featured,
-    "clientRef": clientRef->{ name, logo, website },
+    "clientRef": clientRef->{ name, logo, logoPath, website },
     "services": services[]->{ title, "slug": slug.current }
   }
 `;
