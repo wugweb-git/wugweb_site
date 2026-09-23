@@ -707,6 +707,21 @@ if (!service) {
   /* Approach Stepper */
   .approach-section { padding-block: var(--space-section-xl); }
   .approach-section h2 { font-size: var(--t-h3); margin-top: var(--gap-3); max-width: 22ch; }
+  /* Mobile is the app screen, not a slice of a scrolling document — this
+     section had no height rule at all, so it was whatever the card
+     count/padding happened to add up to, which made the deal-out
+     scroll-scrub (see scroll-animations.ts's 'cardstack' kind) feel
+     cramped or oddly paced depending on how many steps a pillar has.
+     Fixing it to one full screen gives the scrub a stable, generous
+     range to play out in, matching InsightsBlock's mobile treatment. */
+  @media (max-width: 767px) {
+    .approach-section {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
   /* Landscape cards: wide and short, one per row. The card's own grid does the
      work — meter and number in a narrow left column, title next, body last —
      so the height stays low and five of them read as a sequence rather than a
