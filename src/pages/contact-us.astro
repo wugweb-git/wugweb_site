@@ -154,32 +154,34 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
       <!-- Sidebar Reach-Out & Info -->
       <aside class="sidebar-cards">
         <div class="info-card glass-panel">
-          <h3 class="card-title">Direct Channels</h3>
+          {/* "Inquiries & Proposals" / hello@wugweb.com dropped from here —
+              it already leads the hero's own quick-actions row above, so a
+              second copy of the same email lower on the same page was pure
+              repetition, not a second, distinct channel. */}
+          <h3 class="card-title">Our Offices</h3>
           <div class="info-list">
-            <div class="info-item">
-              <span class="item-label">Inquiries & Proposals</span>
-              <a href="mailto:hello@wugweb.com" class="item-value item-value-linked">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="item-icon"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                hello@wugweb.com
-              </a>
-            </div>
-            <div class="info-item">
-              <span class="item-label">India Office</span>
-              {/* target="_blank" picks up the sitewide external-arrow rule
-                  (global.css) automatically — a Maps search link is exactly
-                  the "leaves the site" case that rule exists for. Built from
-                  the address text itself, not a guessed place URL. */}
-              <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP - 201301')}`} target="_blank" rel="noopener noreferrer" class="item-value item-value-linked">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="item-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP - 201301
-              </a>
-            </div>
-            <div class="info-item">
-              <span class="item-label">UAE Presence</span>
-              <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Dubai Silicon Oasis, DTEC Campus, Dubai, UAE')}`} target="_blank" rel="noopener noreferrer" class="item-value item-value-linked">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="item-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                Dubai Silicon Oasis, DTEC Campus, Dubai, UAE
-              </a>
+            {/* Two blocks: stacked on mobile, side-by-side once there's
+                room — a row on a narrow screen would squeeze both
+                addresses to near-unreadable width. */}
+            <div class="info-addresses">
+              <div class="info-item">
+                <span class="item-label">India Office</span>
+                {/* target="_blank" picks up the sitewide external-arrow rule
+                    (global.css) automatically — a Maps search link is exactly
+                    the "leaves the site" case that rule exists for. Built from
+                    the address text itself, not a guessed place URL. */}
+                <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP - 201301')}`} target="_blank" rel="noopener noreferrer" class="item-value item-value-linked">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="item-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Floor 19, WeWork Berger Delhi One, C-001/A2, Sector 16B, Noida, UP - 201301
+                </a>
+              </div>
+              <div class="info-item">
+                <span class="item-label">UAE Presence</span>
+                <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Dubai Silicon Oasis, DTEC Campus, Dubai, UAE')}`} target="_blank" rel="noopener noreferrer" class="item-value item-value-linked">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="item-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Dubai Silicon Oasis, DTEC Campus, Dubai, UAE
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -528,6 +530,15 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     flex-direction: column;
     gap: var(--gap-4);
   }
+  .info-addresses {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+  }
+  @media (min-width: 480px) {
+    .info-addresses { flex-direction: row; gap: var(--gap-6); }
+    .info-addresses .info-item { flex: 1; min-width: 0; }
+  }
   .info-item {
     display: flex;
     flex-direction: column;
@@ -558,6 +569,10 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     color: var(--fg-muted);
   }
   .item-value-linked:hover .item-icon { color: var(--accent-warm); }
+  /* Container query, not a viewport breakpoint — this card sits in a
+     narrow sidebar column even on a wide desktop, so "is there room for
+     three across" depends on the card's own width, not the page's. */
+  .info-card:has(.collab-steps) { container-type: inline-size; }
   .collab-steps {
     list-style: none;
     padding: 0;
@@ -566,9 +581,17 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     flex-direction: column;
     gap: var(--gap-4);
   }
+  @container (min-width: 30rem) {
+    .collab-steps { flex-direction: row; }
+    .collab-steps li { flex: 1; min-width: 0; }
+  }
   .collab-steps li {
     display: flex;
-    gap: var(--gap-3);
+    flex-direction: column;
+    gap: var(--gap-2);
+  }
+  @container (max-width: 29.99rem) {
+    .collab-steps li { flex-direction: row; gap: var(--gap-3); }
   }
   .step-num {
     font-family: var(--font-mono);
