@@ -966,16 +966,18 @@ summary:focus-visible {
    transparent button on a near-black page reads as a hole, not a button.
    wugweb.com's own ghost buttons work the same way: different shades of
    black via opacity/blur, never a flat match to whatever sits behind them. */
+/* No border — definition comes from background tint + shadow instead of a
+   stroke (bumped up from the 9%/16% fill this used when it also had a
+   border, so it still reads as a surface on its own). */
 .btn-ghost {
-  background: color-mix(in srgb, var(--neutral-0) 9%, transparent);
+  background: color-mix(in srgb, var(--neutral-0) 14%, transparent);
   backdrop-filter: var(--glass-light);
   -webkit-backdrop-filter: var(--glass-light);
-  border-color: color-mix(in srgb, var(--neutral-0) 22%, transparent);
+  box-shadow: var(--shadow-xs);
 }
 .btn-ghost:hover {
-  background: color-mix(in srgb, var(--neutral-0) 16%, transparent);
-  /* Not --fg: a white outline on hover was explicitly rejected. */
-  border-color: color-mix(in srgb, var(--neutral-0) 30%, transparent);
+  background: color-mix(in srgb, var(--neutral-0) 22%, transparent);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Global rule: every link that leaves the site gets a trailing ↗, so an
