@@ -984,32 +984,36 @@ import {
   .badges-flex {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: var(--gap-3);
     align-items: center;
   }
 
   .badge-tag {
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 6px var(--gap-3);
-    border-radius: 9999px;
+    font-size: var(--fluid-caption);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--gap-2) var(--gap-3);
+    border-radius: var(--radius-full);
   }
 
-  .tag-primary { background: rgba(255, 255, 255, 0.1); color: #FFFFFF; }
-  .tag-peach { background: rgba(229, 79, 48, 0.15); color: #E54F30; }
-  .tag-green { background: rgba(62, 210, 25, 0.15); color: #3ED219; }
-  .tag-blue { background: rgba(35, 104, 215, 0.15); color: #2368D7; }
-  .tag-aqua { background: rgba(9, 226, 192, 0.15); color: #09E2C0; }
-  .tag-yellow { background: rgba(255, 190, 26, 0.15); color: #FFBE1A; border: var(--stroke-thin) solid rgba(255, 190, 26, 0.4); }
+  .tag-primary { background: color-mix(in srgb, var(--neutral-0) 10%, transparent); color: var(--fg); }
+  .tag-peach { background: color-mix(in srgb, var(--color-peach) 15%, transparent); color: var(--color-peach); }
+  .tag-green { background: color-mix(in srgb, var(--color-green) 15%, transparent); color: var(--color-green); }
+  .tag-blue { background: color-mix(in srgb, var(--color-blue) 15%, transparent); color: var(--color-blue); }
+  .tag-aqua { background: color-mix(in srgb, var(--color-aqua) 15%, transparent); color: var(--color-aqua); }
+  .tag-yellow {
+    background: color-mix(in srgb, var(--color-yellow) 15%, transparent);
+    color: var(--color-yellow);
+    border: var(--stroke-thin) solid color-mix(in srgb, var(--color-yellow) 40%, transparent);
+  }
 
   .badge-sla {
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: rgba(255, 190, 26, 0.1);
-    color: #FFBE1A;
-    border: var(--stroke-thin) dashed #FFBE1A;
+    font-size: var(--fluid-caption);
+    font-weight: var(--font-weight-semibold);
+    background: color-mix(in srgb, var(--color-yellow) 10%, transparent);
+    color: var(--color-yellow);
+    border: var(--stroke-thin) dashed var(--color-yellow);
     padding: var(--gap-2) var(--gap-4);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
   }
 
   /* Bento Grid */
