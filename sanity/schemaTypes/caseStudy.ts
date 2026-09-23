@@ -212,6 +212,7 @@ export default defineType({
     }),
     defineField({ name: 'relatedCaseStudies', type: 'array', of: [{ type: 'reference', to: [{ type: 'caseStudy' }] }], description: 'Other case studies readers should see', group: 'relations' }),
     defineField({ name: 'relatedPosts', type: 'array', of: [{ type: 'reference', to: [{ type: 'post' }] }], description: 'Blog posts related to this case study', group: 'relations' }),
+    defineField({ name: 'syndicatedTo', type: 'array', of: [{ type: 'string' }], options: { list: ['Medium', 'LinkedIn', 'Dev.to', 'Hashnode'] }, description: 'Platforms this post was cross-posted to (mirrors Notion \'Published At\')', group: 'relations' }),
 
     // ── Sync ──
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),

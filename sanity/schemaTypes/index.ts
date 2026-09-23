@@ -17,6 +17,7 @@ import redirect from './redirect';
 import brandAsset from './brandAsset';
 import siteScript from './siteScript';
 import navigationMenu from './navigationMenu';
+import experiment from './experiment';
 import {
   blockContent,
   cta,
@@ -52,6 +53,7 @@ export const schemaTypes = [
   brandAsset,
   siteScript,
   navigationMenu,
+  experiment,
   blockContent,
   cta,
   stats,

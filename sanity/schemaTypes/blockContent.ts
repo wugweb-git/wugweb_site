@@ -109,7 +109,7 @@ export const blockContent = defineType({
     { type: 'stats', title: 'Stats Row', icon: BarChartIcon },
     { type: 'accordion', title: 'Accordion / FAQ', icon: HelpCircleIcon },
     { type: 'logoCloud', title: 'Logo Cloud', icon: ImagesIcon },
-    { type: 'code', title: 'Code Block', icon: CodeBlockIcon },
+    { type: 'codeBlock', title: 'Code Block', icon: CodeBlockIcon },
     { type: 'twoColumns', title: 'Two Columns', icon: SplitHorizontalIcon },
   ],
 });
@@ -355,7 +355,7 @@ export const video = defineType({
 });
 
 export const codeBlock = defineType({
-  name: 'code',
+  name: 'codeBlock',
   title: 'Code Block',
   type: 'object',
   icon: CodeBlockIcon,

@@ -11,14 +11,17 @@
   "vars": {
     "SANITY_PROJECT_ID": "splvhmk1",
     "SANITY_DATASET": "production",
-    // Public R2 base for /assets/* (path-mapped keys assets/<path>).
-    // Cutover verified 2026-08-05: all 512 local files mapped + live.
-    // 2026-09-09: switched to the custom domain. Both bases serve the same
-    // bucket (each verified 206 on assets/more/about/about_7.mp4); the r2.dev
-    // subdomain is kept here as the documented fallback.
-    // Fallback: https://pub-39ad1d03baec440faf48303be95c3782.r2.dev
-    "PUBLIC_R2_ASSETS_BASE": "https://wugweb.online",
-    // Serve /assets/* from R2 instead of public/assets (dual-serve off).
+    // DEAD CONFIG as of 2026-09-23 -- nothing reads these. `import.meta.env`
+    // is a Vite BUILD-TIME replacement from .env files, not from Worker
+    // runtime vars, and no route reads them via locals.runtime.env either
+    // (grepped, zero hits). The real fix for broken case-study assets
+    // lives in src/lib/assets.ts + src/lib/asset-legacy-only.json instead
+    // (a build-time exception list pointing 37 known paths at the legacy
+    // wugweb.online host; everything else serves from public/assets as
+    // it always has). Left here rather than deleted so the next person
+    // doesn't wonder if it silently vanished -- safe to remove.
+    "PUBLIC_R2_ASSETS_BASE": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev",
+    "PUBLIC_LEGACY_ASSETS_BASE": "https://wugweb.online",
     "PUBLIC_USE_R2_ASSETS": "1"
   },
   // Worker/Pages binding for server-side R2 reads/writes. Do not add
