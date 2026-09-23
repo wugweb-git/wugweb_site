@@ -301,24 +301,18 @@ import TeamGrid from '../components/TeamGrid.astro';
   />
 
   <!-- REVIEWS -->
+  {/* Was 4 review-score cards with unverified numbers (one literally
+      labelled "Another Review Site") — replaced with a link to the real
+      reviews hub instead of numbers nobody's confirmed against the live
+      platforms. */}
   <section class="wrap reviews">
-    <h2 data-reveal>Engage visitors and convert them into loyal customers.</h2>
-    <div class="reviews-grid">
-      <div class="review-card" data-reveal>
-        <span class="review-score">4.98/5</span>
-        <p class="review-source">from 500+ reviews</p>
+    <a href="/footer/reviews" class="reviews-teaser" data-reveal>
+      <div>
+        <h2>What clients and the team say.</h2>
+        <p>Verified review platforms Wugweb is listed on, and how to reach us if you're one of them.</p>
       </div>
-      <div class="review-card" data-reveal>
-        <span class="review-score">98/100</span>
-        <p class="review-source">from 500+ reviews</p>
-      </div>
-      <div class="review-card" data-reveal>
-        <span class="review-score">Best Startup in Year</span>
-      </div>
-      <div class="review-card" data-reveal>
-        <span class="review-source">Another Review Site</span>
-      </div>
-    </div>
+      <span class="btn btn-solid">See reviews</span>
+    </a>
   </section>
 
   {/* BentoBlock — every axis (column, order, weight, kind, tone, media, fit,
@@ -547,12 +541,22 @@ import TeamGrid from '../components/TeamGrid.astro';
   /* Team */
 
   .reviews { padding-block: var(--space-section-lg); }
-  .reviews h2 { font-size: var(--t-h3); max-width: 20ch; }
-  .reviews-grid { display: grid; gap: 1px; background: var(--line); border: var(--stroke-thin) solid var(--line); margin-top: var(--gap-8); }
-  @media (min-width: 640px) { .reviews-grid { grid-template-columns: repeat(4, 1fr); } }
-  .review-card { background: var(--bg); padding: var(--gap-8) var(--gap-6); display: flex; flex-direction: column; gap: var(--gap-1); }
-  .review-score { font-family: var(--font-display); font-size: var(--fluid-h3); font-weight: var(--font-weight-bold); }
-  .review-source { font-family: var(--font-mono); font-size: var(--fluid-caption); color: var(--fg-muted); }
+  .reviews-teaser {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-6);
+    padding: var(--gap-8);
+    background: var(--color-surface-elevated);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: box-shadow var(--duration-normal) var(--easing-out), transform var(--duration-normal) var(--easing-out);
+  }
+  .reviews-teaser:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .reviews-teaser h2 { font-size: var(--t-h3); max-width: 20ch; color: var(--fg); }
+  .reviews-teaser p { margin-top: var(--gap-2); color: var(--fg-muted); max-width: 45ch; }
 </style>
 
 <script>
