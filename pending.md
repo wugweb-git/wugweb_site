@@ -4,6 +4,15 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**Session-end summary (2026-09-23):** the frontend-design-system audit plan (`/Users/abcom/.claude/plans/nested-mixing-fountain.md`) is closed — every phase done, explicitly skipped, or moot (see that file's closure note). Everything genuinely still open below is **content/asset-blocked, not code-blocked** — the user declined pushing further on these tonight ("nopes"):
+- ServiceSpotlightPanel's 3 dummy sublines (Brand Narrative, Employer Branding, Brand Activation) — item #5.
+- ClientAssemblyGrid's 9 client logos still only on the Framer CDN, not imported — item #9a.
+- Service clip library is stock/third-party footage, not real Wugweb work — item #6; Messaging Framework sub-service has no clip at all — item #7.
+- ProcessMap's one phase uses mismatched stock footage — item #9e.
+- `about.astro`'s "Reviews" section (lines ~304-322) is genuinely unfinished — "4.98/5 from 500+ reviews," "98/100 from 500+ reviews," and literally **"Another Review Site"** as a placeholder label with no real score. Needs real numbers from a verified source (Clutch/DesignRush/GoodFirms) — not something to fabricate.
+- `/404-2` was built as a comparison alternative to the live `/404` (same tic-tac-toe concept, elevated execution) — not yet chosen or promoted.
+- Item #8 (extract ServiceSpotlightPanel into a reusable component) — real refactor, but no current second use case, so left as-is rather than a premature abstraction.
+
 **2026-09-23 session** (pushed to `main` in two commits, `cf943e4e` + `d8092f2b`):
 - **Legal & Policies hub** — new `src/layouts/LegalLayout.astro` (sticky left nav + content column) wraps `privacy-policy`, `termsofuse`, `refund-policy`, `footer/cookie-policy`; each keeps its own URL/Sanity fetch, masthead now shows the active page's own title + a calendar-icon "Updated" chip instead of each page's own duplicate eyebrow/h1/date. `footer/refund-policy` (confirmed duplicate) now redirects to `/refund-policy`. Also patched the live Sanity `privacy-policy`/`terms-of-use` docs to drop a redundant leading title/date block from their body content.
 - **Contact form real error state** — `api/contact.ts` now redirects to a new `/contact-error` page only when the Neon write itself fails (Sanity-mirror-only failure stays silent, as designed); this was described as done in an earlier session summary but had never actually landed in the code — verified missing, then implemented for real.
@@ -96,7 +105,7 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 | Kits Showcase Page (`/kits`) | **Done 2026-08-11** — Standalone showcase page live at `/kits`. Unlinked from top header nav. |
 | Contact page redesign (#12) | **Done 2026-08-10** — Rolled out V2 layout & hierarchy to `/contact-us` (6-pillar selector grid, timeline & budget chips, responsive layout, SLA badge). `/contact-v2` redirects 301 to `/contact-us`. |
 | Full service-page content pass (#5) | **Done 2026-08-05** — 6-pillar copy enriched per `urgent/Wugweb_Services 2026.md`. |
-| Contact form prod verify | Neon write path unverified in production. |
+| Contact form prod verify | **Done 2026-09-23** — see "Critical / blocked" table above; this row was a stale duplicate. |
 
 ---
 
