@@ -246,8 +246,8 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 8px #10b981;
+    background: var(--color-feedback-success);
+    box-shadow: 0 0 8px var(--color-feedback-success);
   }
   .hero-statement {
     margin-top: var(--gap-5);
@@ -365,7 +365,7 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
   .pillar-selector input:checked + .selector-content {
     background: var(--surface-hover);
     border-color: var(--accent-warm);
-    box-shadow: 0 0 12px rgba(255, 180, 0, 0.15);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--color-yellow) 15%, transparent);
   }
   /* The real input is visually hidden (opacity: 0) but stays in tab
      order — without this, a keyboard user tabbing through the pillar
@@ -502,7 +502,7 @@ const timelines = ['ASAP (< 1 month)', '1 - 3 months', '3 - 6 months', 'Explorin
   }
   .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(255, 180, 0, 0.3);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--color-yellow) 30%, transparent);
   }
 
   /* Sidebar */
