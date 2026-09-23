@@ -49,28 +49,13 @@ const approachImage = approachImagePath ? assetUrl(approachImagePath) : '';
 const hasStructuredContent = challenges.length > 0 || solutions.length > 0 || impactItems.length > 0 || !!work.designPhilosophy;
 const showBodyContent = bodyContent.length > 0 && !hasStructuredContent;
 
-// Section index — order is the actual narrative arc (about → problem →
-// approach → outcome → thesis → gallery), so numbering it earns its keep
-// rather than decorating a non-sequence. Color marks narrative stage.
+// Color marks narrative stage (problem/approach/outcome rule colors).
 const accentMap: Record<string, string> = {
   yellow: 'var(--color-accent-primary)',
   orange: 'var(--svc-strategy)',
   blue: 'var(--color-accent-blue)',
   green: 'var(--color-feedback-success)',
 };
-const sectionDefsRaw = [
-  { id: 'about', label: 'About', accentKey: 'yellow', show: !!(work.about || work.summary) },
-  { id: 'problem', label: 'The problem', accentKey: 'orange', show: challenges.length > 0 },
-  { id: 'approach', label: 'The approach', accentKey: 'blue', show: solutions.length > 0 },
-  { id: 'outcome', label: 'The outcome', accentKey: 'green', show: impactItems.length > 0 || results.length > 0 },
-  { id: 'thesis', label: 'Design thesis', accentKey: 'yellow', show: !!work.designPhilosophy },
-  { id: 'details', label: 'In depth', accentKey: 'orange', show: showBodyContent },
-  { id: 'gallery', label: 'Gallery', accentKey: 'blue', show: galleryPaths.length > 0 },
-];
-const sectionDefs = sectionDefsRaw
-  .filter((s) => s.show)
-  .map((s, i) => ({ ...s, num: String(i + 1).padStart(2, '0'), accent: accentMap[s.accentKey] }));
-const numFor = (id: string) => sectionDefs.find((s) => s.id === id)?.num || '';
 
 const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy" && !(_id in path("drafts.**"))]{"slug": slug.current}`).catch(() => []);
 const seenSlugs = new Set();
@@ -128,14 +113,14 @@ const otherCases = await Promise.all(others.map((s: any) =>
     <div class="case-content">
       {(work.about || work.summary) && (
         <section id="about" class="case-section" data-reveal>
-          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.yellow}`}>{numFor('about')}</span>About</h2>
+          <h2 class="case-heading">About</h2>
           <p class="case-lead">{work.about || work.summary}</p>
         </section>
       )}
 
       {challenges.length > 0 && (
         <section id="problem" class="case-section" data-reveal>
-          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.orange}`}>{numFor('problem')}</span>The problem</h2>
+          <h2 class="case-heading">The problem</h2>
           <ul class="case-list" style={`--rule-color: ${accentMap.orange}`}>
             {challenges.map((ch: any) => (
               <li><strong>{ch.title}</strong>{ch.body && <p>{ch.body}</p>}</li>
@@ -146,7 +131,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
       {solutions.length > 0 && (
         <section id="approach" class="case-section" data-reveal>
-          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.blue}`}>{numFor('approach')}</span>The approach</h2>
+          <h2 class="case-heading">The approach</h2>
           <div class="case-bento">
             {solutions.map((sol: any, i: number) => (
               <>
@@ -167,7 +152,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
       {(impactItems.length > 0 || results.length > 0) && (
         <section id="outcome" class="case-section" data-reveal>
-          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.green}`}>{numFor('outcome')}</span>The outcome</h2>
+          <h2 class="case-heading">The outcome</h2>
           {results.length > 0 && (
             <div class="case-stat-row">
               {results.map((res: any) => (
@@ -190,7 +175,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
       {work.designPhilosophy && (
         <section id="thesis" class="case-section" data-reveal>
-          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.yellow}`}>{numFor('thesis')}</span>Design thesis</h2>
+          <h2 class="case-heading">Design thesis</h2>
           <div class="case-thesis">
             {work.designPhilosophy.split('\n').filter(Boolean).map((line: string) => {
               const idx = line.indexOf(':');
@@ -208,7 +193,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
       {showBodyContent && (
         <section id="details" class="case-section" data-reveal>
-          <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.orange}`}>{numFor('details')}</span>In depth</h2>
+          <h2 class="case-heading">In depth</h2>
           <PortableTextRenderer value={bodyContent} />
         </section>
       )}
@@ -217,7 +202,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 
   {galleryPaths.length > 0 && (
     <section id="gallery" class="wrap case-gallery-section" data-reveal>
-      <h2 class="case-heading"><span class="case-heading-num" style={`color:${accentMap.blue}`}>{numFor('gallery')}</span>Gallery</h2>
+      <h2 class="case-heading">Gallery</h2>
       <div class="case-gallery-grid">
         {galleryPaths.map((path: string) => {
           const src = assetUrl(path);
@@ -377,18 +362,10 @@ const otherCases = await Promise.all(others.map((s: any) =>
   }
 
   .case-heading {
-    display: flex;
-    align-items: baseline;
-    gap: var(--gap-3);
     font-size: var(--t-h3);
     font-weight: var(--font-weight-semibold);
     color: var(--fg);
     margin: 0 0 var(--gap-6) 0;
-  }
-  .case-heading-num {
-    font-family: var(--font-mono);
-    font-size: var(--t-sm);
-    opacity: 0.8;
   }
 
   .case-lead {
