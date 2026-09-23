@@ -31,6 +31,17 @@ still not the brand-yellow one.
   (`color-mix(...--neutral-0...)`) with a visible border, for actions that
   shouldn't compete with the content next to them.
 
+**Yellow-as-fill rule: `.btn-solid` (Brand) only.** `.btn` and `.btn-ghost`
+never carry yellow as a *resting-state fill* — that's what keeps Brand
+scarce. They may still use yellow as a **hover/tap accent** (a border,
+text color, or brief tint change on interaction), just never as the
+button's own background at rest. A brand button sitting on an already-
+yellow surface (e.g. `FooterCTA.astro`'s panel) is the one structural
+exception — there the button inverts to a dark fill instead, since a
+yellow-on-yellow button would have no contrast against its own backdrop;
+that inversion still isn't "a non-brand button carrying yellow," it's
+brand adapting to stay legible on its own reserved surface.
+
 **Composition — a second, independent axis from tier.** Any of the three
 tiers can render as label-only, label + icon, or icon-only; `.btn` is
 already `display: inline-flex; gap: var(--gap-2)` (`global.css:856-858`),

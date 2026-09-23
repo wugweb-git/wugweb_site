@@ -259,10 +259,12 @@ const glyphFor = (p: string) => SOCIAL_GLYPH[String(p).toLowerCase().replace(/[^
     transition: background var(--duration-normal) var(--easing-out),
                 color var(--duration-normal) var(--easing-out);
   }
+  /* Stays a solid dark fill on hover — was `background: transparent;
+     border-color: var(--neutral-10)`, which on this yellow panel meant
+     the button became a bare outline with the panel's own yellow showing
+     through the middle. Lighten instead of disappearing. */
   .global-final-cta .btn:hover {
-    background: transparent;
-    border-color: var(--neutral-10);
-    color: var(--neutral-10);
+    background: var(--neutral-8);
   }
   @media (min-width: 1024px) {
     .global-final-cta { min-height: 560px; }

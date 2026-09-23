@@ -247,6 +247,23 @@ const globalIndustries = (sanityIndustries as string[]).length
       </div>
     </div>
 
+    <!-- PWA Install Prompt — custom UI over the native beforeinstallprompt,
+         top-fixed so it never stacks with the bottom-fixed cookie banner.
+         Hidden until JS confirms the browser actually offered install. -->
+    <div id="wugweb-install-banner" class="install-banner-wrap">
+      <div class="install-banner-inner">
+        <img src="/brand/pwa-192.png" alt="" width="36" height="36" class="install-banner-icon" />
+        <div class="install-banner-text">
+          <p class="install-banner-title">Install Wugweb</p>
+          <p class="install-banner-sub">Add to your home screen for the full app experience.</p>
+        </div>
+        <div class="install-banner-actions">
+          <button id="install-banner-accept" class="btn btn-solid btn-sm">Install</button>
+          <button id="install-banner-dismiss" class="install-banner-close" aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+    </div>
+
     <style is:global>
       /* Global Cookie styles integrated with Wugweb tokens */
       .cookie-banner-wrap {
@@ -446,6 +463,71 @@ const globalIndustries = (sanityIndustries as string[]).length
         gap: var(--gap-2);
         justify-content: space-between;
       }
+
+      /* Install prompt — top-fixed (the cookie banner already owns the
+         bottom edge), same slide/shadow/safe-area treatment. */
+      .install-banner-wrap {
+        position: fixed;
+        top: calc(var(--safe-top) + var(--space-page-xs));
+        left: calc(var(--safe-left) + var(--space-page-xs));
+        right: calc(var(--safe-right) + var(--space-page-xs));
+        background-color: var(--neutral-8);
+        border: var(--stroke-thin) solid var(--color-border-subtle);
+        padding: var(--p-4);
+        border-radius: var(--radius-4);
+        z-index: 9998;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        display: none;
+        animation: installSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes installSlideDown {
+        from { transform: translateY(-120%); }
+        to { transform: translateY(0); }
+      }
+      @media (min-width: 768px) {
+        .install-banner-wrap {
+          left: auto;
+          right: var(--space-page-md);
+          max-width: 420px;
+          top: var(--space-page-md);
+        }
+      }
+      .install-banner-inner {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-3);
+      }
+      .install-banner-icon {
+        border-radius: var(--radius-sm);
+        flex-shrink: 0;
+      }
+      .install-banner-text { flex: 1; min-width: 0; }
+      .install-banner-title {
+        color: var(--fg);
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--fluid-body-sm);
+      }
+      .install-banner-sub {
+        color: var(--fg-muted);
+        font-size: var(--t-micro);
+        margin-top: var(--gap-1);
+      }
+      .install-banner-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-2);
+        flex-shrink: 0;
+      }
+      .install-banner-close {
+        background: none;
+        border: none;
+        color: var(--fg-muted);
+        font-size: 1.25rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: var(--gap-1);
+      }
+      .install-banner-close:hover { color: var(--fg); }
     </style>
   </body>
 </html>
@@ -574,5 +656,52 @@ const globalIndustries = (sanityIndustries as string[]).length
         closeSettings();
       });
     }
+  }
+
+  // PWA INSTALL PROMPT
+  // The browser's own beforeinstallprompt UI is suppressed (preventDefault)
+  // in favour of this banner, which only appears once the browser has
+  // actually confirmed the app is installable — never fabricated/forced.
+  const installBanner = document.getElementById('wugweb-install-banner');
+  const installAccept = document.getElementById('install-banner-accept');
+  const installDismiss = document.getElementById('install-banner-dismiss');
+  const INSTALL_DISMISS_KEY = 'wugweb_install_dismissed_v1';
+
+  const alreadyStandalone =
+    window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone;
+
+  let deferredInstallPrompt: any = null;
+
+  if (installBanner && installAccept && installDismiss && !alreadyStandalone) {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      let dismissed = false;
+      try {
+        dismissed = localStorage.getItem(INSTALL_DISMISS_KEY) === '1';
+      } catch {}
+      if (dismissed) return;
+      deferredInstallPrompt = e;
+      installBanner.style.display = 'block';
+    });
+
+    installAccept.addEventListener('click', async () => {
+      installBanner.style.display = 'none';
+      if (!deferredInstallPrompt) return;
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice.catch(() => {});
+      deferredInstallPrompt = null;
+    });
+
+    installDismiss.addEventListener('click', () => {
+      installBanner.style.display = 'none';
+      try {
+        localStorage.setItem(INSTALL_DISMISS_KEY, '1');
+      } catch {}
+    });
+
+    window.addEventListener('appinstalled', () => {
+      installBanner.style.display = 'none';
+      deferredInstallPrompt = null;
+    });
   }
 </script>

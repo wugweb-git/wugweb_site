@@ -1,0 +1,97 @@
+---
+/**
+ * CookieBannerShowcase — visual reference for the cookie-consent banner,
+ * built for Storybook so it's reviewable without triggering the real
+ * consent flow (BaseLayout only shows it once per visitor, gated on
+ * localStorage state).
+ *
+ * The banner's actual markup/CSS/behavior lives in BaseLayout.astro
+ * (it's sitewide chrome, not a standalone component) — this duplicates
+ * the markup + the CSS scoped to it (not the preferences modal, out of
+ * scope here) so Storybook doesn't need to load BaseLayout's full
+ * `<style is:global>` block. If the real banner's copy/layout changes,
+ * this needs updating to match — same tradeoff TokenGallery/
+ * ButtonShowcase already accept for their own sitewide/utility subjects.
+ * Renders nothing on the live site.
+ */
+---
+
+<div class="cbs-stage">
+  <p class="cbs-note">Real position is <code>fixed</code> (bottom-right on desktop, full-width on mobile) — shown relative here so it's visible in the canvas without scrolling.</p>
+
+  <div class="cookie-banner-wrap cbs-visible">
+    <div class="cookie-banner-inner">
+      <div class="cookie-banner-text">
+        <h4>We use cookies</h4>
+        <p>We use necessary cookies to operate Wugweb and optional cookies to understand how our website is used and improve your experience.</p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button class="btn btn-solid btn-sm-cookie">Accept all</button>
+        <button class="btn btn-ghost btn-sm-cookie">Reject optional</button>
+        <button class="btn btn-ghost btn-sm-cookie">Manage preferences</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cbs-stage {
+    padding: var(--gap-8);
+    min-height: 320px;
+    position: relative;
+  }
+  .cbs-note {
+    color: var(--fg-muted);
+    font-size: var(--fluid-body-sm);
+    max-width: 60ch;
+    margin-bottom: var(--gap-6);
+  }
+  /* Override the real component's fixed/hidden-by-default positioning so
+     it renders inline in the Storybook canvas instead of pinned to the
+     browser viewport. */
+  .cookie-banner-wrap.cbs-visible {
+    position: relative;
+    inset: auto;
+    display: block;
+    max-width: 480px;
+    animation: none;
+    transform: none;
+  }
+</style>
+
+<style is:global>
+  /* Same cookie-banner CSS as BaseLayout.astro (see file header) */
+  .cookie-banner-wrap {
+    background-color: var(--neutral-8);
+    border: var(--stroke-thin) solid var(--color-border-subtle);
+    padding: var(--p-5);
+    border-radius: var(--radius-4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  .cookie-banner-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-4);
+  }
+  .cookie-banner-text h4 {
+    font-family: var(--font-body);
+    font-size: var(--fluid-body-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--gap-1);
+    color: var(--color-text-primary);
+  }
+  .cookie-banner-text p {
+    font-size: var(--fluid-body-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--lh-body);
+  }
+  .cookie-banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-2);
+  }
+  .btn-sm-cookie {
+    padding: var(--p-2) var(--p-4) !important;
+    font-size: var(--fluid-caption) !important;
+  }
+</style>
