@@ -1,16 +1,19 @@
 ---
 interface Props { copyright?: string; companyEmail?: string; }
 const { copyright, companyEmail } = Astro.props;
+// Privacy Policy, Cookie Policy, Terms of Use and Refund Policy are one
+// consolidated entry — they now share LegalLayout.astro's hub UI (left
+// nav + content), so the footer only needs one door in; /privacy-policy
+// is that door's default landing page, not a claim that it's more
+// important than the other three. Cookie Settings stays separate — it's
+// a JS action (opens the consent modal), not a page in the hub.
 const footerLinks = [
   { href: '/faq', label: 'FAQs' },
   { href: '/footer/impact', label: 'Impact' },
   { href: '/footer/industries', label: 'Industries' },
   { href: '/footer/subscription', label: 'Subscription' },
   { href: '/footer/sitemap', label: 'Sitemap' },
-  { href: '/privacy-policy', label: 'Privacy Policy' },
-  { href: '/footer/cookie-policy', label: 'Cookie Policy' },
-  { href: '/termsofuse', label: 'Terms of Use' },
-  { href: '/footer/refund-policy', label: 'Refund Policy' },
+  { href: '/privacy-policy', label: 'Legal & Policies' },
   { href: '#', label: 'Cookie Settings', isAction: true },
 ];
 ---
