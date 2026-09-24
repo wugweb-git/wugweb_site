@@ -19,3 +19,7 @@ mapped assets/
 
 # Storybook build output (dev-only tooling, not deployed)
 storybook-static/
+
+# Session scratch scripts — one-off audits/patches, not part of the toolchain
+scripts/tmp-*.mjs
+sanity/debug-*-tmp.mjs

@@ -1,0 +1,28 @@
+Group,Status,Route,Component / Layout,Sections,Source,Notes
+Home,✅,/,"InsightsBlock · ClientAssembl[cut off]",5,Sanity,
+Marketing,✅,/faq,FaqAccordion,1,Sanity,
+Marketing,✅,/contact-us,—,form,Sanity,
+Marketing,✅,/blog/[slug],PortableTextRenderer,3,Sanity,
+Marketing,✅,/blog,—,4,Sanity,
+Marketing,✅,/work/[slug],PortableTextRenderer,10,Sanity,
+Marketing,✅,/work,—,3,Sanity,
+Marketing,✅,/services/[slug],"FaqAccordion · InsightsBlock [cut off]",9,Sanity,
+Marketing,✅,/services,—,5,Sanity,
+Marketing,✅,/about,TeamGrid,5,Sanity,
+Footer,🔁,/footer/refund-policy,"301 → /refund-policy — ve[cut off]",—,redirect,
+Footer,✅,/footer/cookie-policy,LegalLayout,1,Sanity,
+Footer,✅,/footer/sitemap,BaseLayout,1,Sanity,
+Footer,✅,/footer/subscription,BaseLayout,12,Sanity,
+Footer,✅,/footer/reviews,BaseLayout,4,Sanity,
+Footer,✅,/footer/industries,BaseLayout,6,Sanity,
+Footer,✅,/footer/impact,BaseLayout,9,Sanity,
+Legal,✅,/refund-policy,LegalLayout,—,Sanity,
+Legal,✅,/termsofuse,LegalLayout,—,Sanity,
+Legal,✅,/privacy-policy,LegalLayout,—,Sanity,
+System,✅,/thank-you,—,—,—,post-submit
+System,✅,/offline,—,—,—,PWA offline shell
+System,✅,/kits,—,—,—,"design-system showcase, unli[cut off]"
+System,🔁,/contact-v2,—,—,—,301 → /contact-us
+System,⏸,/contact-error,—,—,—,"Hold — kept alongside /404-2 [cut off]"
+System,⏸,/404-2,—,—,—,"Hold — Vedanshu comparing [cut off]"
+System,✅,/404,—,—,—,"tic-tac-toe page; redesign flag[cut off]"

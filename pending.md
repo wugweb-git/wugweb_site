@@ -109,6 +109,187 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 
 ---
 
+## 📝 Noted 2026-09-24 — Framer per-page controls to port (from user screenshots)
+
+Four Framer editor panels the user wants on record. Screenshot 1 is the one to
+build toward; 2–4 are **noted only, not scheduled**.
+
+### 1. Per-page "Page settings" parity + AI surfaces — *schema done 2026-09-24, wiring open*
+
+Framer's page panel carries, per page: **Title**, **URL**, **Description**, a live
+**Google/social preview**, a **Search engines** toggle (index/noindex), a **Site
+search** toggle (include/exclude from on-site search), and a **Social preview**
+image (1200 × 630). Reference values from the shot: `/about` →
+title "About Wugweb - UI/UX Design & Digital Experience Experts", description
+"Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital
+experiences that elevate brands.", OG image = the yellow-disc / reaching-hands art.
+
+Where we stand: [BaseLayout.astro](src/layouts/BaseLayout.astro) already takes
+`title` / `seoTitle` / `description` / `ogImage` as props, with `siteSettings`
+fallbacks. Missing vs Framer: no per-page **robots/noindex** control, no site-search
+inclusion flag, and no per-page override surfaced in Sanity (`singletonPage` has no
+SEO group) — copy is passed in from each `.astro` page by hand.
+
+Plus, per the user, the **AI layer on top**: AI content / AI summary fields —
+i.e. an answer-engine block per page (short extractive summary + structured
+JSON-LD) so LLM answer surfaces have something to quote. Scope not yet pinned;
+the `seo-aeo-best-practices` skill is the reference when this gets picked up.
+
+**Done — SEO/AEO fields added to `singletonPage`** (`sanity/schemaTypes/singletonPage.ts`,
+now grouped Content / SEO / AI-Answers; `npx tsc --noEmit` clean):
+
+- SEO: `ogImagePath` (R2, matches the path-field convention), `ogTitle`, `ogDescription`,
+  `noIndex` (Framer's "Search engines" toggle), `canonicalUrl`, `focusKeyword`,
+  `secondaryKeywords`, `searchIntent`, `breadcrumbLabel`.
+- AI/Answers: `aiSummary` (40–60-word extractive answer, to be rendered **visibly** —
+  hidden meta-only text is discounted by answer engines), `keyTakeaways` (3–5),
+  `faqs` (question/answer pairs → FAQPage JSON-LD, on every page not just /faq),
+  `schemaType` (WebPage / AboutPage / ContactPage / CollectionPage / FAQPage / Service),
+  `lastReviewedAt` (→ `dateModified`; `_updatedAt` moves on trivial edits so it is not a
+  usable freshness signal).
+- Deliberately **not** added: `changefreq` / `priority` (Google ignores them) and any
+  meta-keywords output field.
+- Schema not deployed yet — needs `npx sanity deploy` / schema deploy before Studio shows it.
+
+**Still open — none of the above renders until the head/route work lands:**
+
+1. `<link rel="canonical">` + `og:url` — neither exists in `BaseLayout.astro`.
+2. **`og:image` is relative** (`/brand/og-default.png`) — invalid for Open Graph; needs an
+   absolute URL, which needs a `siteUrl` on `siteSettings`.
+3. `<meta name="robots">` driven by `noIndex`.
+4. `public/robots.txt` — does not exist. Include an explicit AI-crawler policy decision
+   (GPTBot / ClaudeBot / PerplexityBot / Google-Extended): allowing raises citation odds,
+   blocking prevents training use.
+5. `sitemap.xml` — does not exist. Sanity-driven, filtered on `noIndex != true`.
+6. **Zero JSON-LD anywhere in `src/`.** Build a `@graph` component; `Article` on posts is the
+   biggest single win (`post` already has `author`, `publishedAt`, `excerpt`; `person` has
+   `socialLinks` for `sameAs`).
+7. Site-level `siteSettings` additions: `siteUrl`, `titleTemplate` (`· wugweb` is hardcoded at
+   `BaseLayout.astro:4`), Organization JSON-LD inputs (`legalName`, `foundingDate`, `address`,
+   `telephone`; `sameAs` can derive from the live `platformProfile` docs).
+8. **Decision needed on `language`** — it offers `fr`/`de`/`es` but no translations exist and
+   nothing emits `hreflang`. Either build the alternates or trim the list; a dropdown that
+   silently does nothing is a trap.
+
+
+### 1b. Site-level tier — *schema done 2026-09-24*
+
+Content model is now explicitly four-tier: **site → page → section → component.**
+Site and page tiers exist; section and component tiers are not modelled yet.
+
+**`siteSettings` extended** (`sanity/schemaTypes/siteSettings.ts`, grouped Identity /
+SEO / Social & Images / Organization / AI-Answers; `npx tsc --noEmit` clean):
+
+- Identity: **`siteUrl`** (the blocker for canonicals, absolute og:image and sitemap),
+  `titleTemplate` (`%s · wugweb` — currently hardcoded in `BaseLayout.astro`), `telephone`.
+- SEO: `sitemapExcludePaths` (non-Sanity routes like `/thank-you`), `crawlerPolicy`
+  (per-bot allow/deny → robots.txt: GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot,
+  Google-Extended, CCBot, Bytespider, Applebot-Extended), `robotsExtra`,
+  `googleSiteVerification`, `bingSiteVerification`.
+- Social & Images: `ogImagePath` (R2), `faviconDark`, `appleTouchIcon`.
+- Organization (JSON-LD/EEAT): `organizationType`, `legalName`, `foundingDate`,
+  `logoPath`, `address` (collapsible object), `founders` (→ `person`), `sameAs`, `areaServed`.
+- AI/Answers: `aiSummary` (40–60-word org answer, kept in sync with `llms.txt` /
+  `ai-context.txt`), `aiContextUrls`.
+
+**Framer panel → where it actually belongs** (from the site-settings screenshots):
+
+| Framer panel | Here |
+|---|---|
+| Files (robots/llms/security/ai-context/brand-system) | **Already static in `public/`** — all five exist |
+| Code (gtag, hotjar, head/body) | **Already `siteScript`** — GA4/GTM/pixel/heatmap, placement, per-environment, priority |
+| Canonical URL | `siteSettings.siteUrl` |
+| Headers (HSTS, nosniff, …) | `public/_headers` (Cloudflare Pages) — **file does not exist**, so no HSTS / X-Content-Type-Options / frame policy ships today |
+| Performance, automatic optimizations | Astro + Cloudflare build config, not content |
+| Multi-site rewrites | N/A |
+| Site toggles (reduced motion, RTL, auto-locale, password) | Behaviour, not content — deliberately not modelled |
+
+**Corrections to earlier notes in this file:**
+
+- `public/robots.txt` **does exist** (an earlier claim that it did not was wrong — a shell
+  glob error had swallowed the listing). So do `llms.txt`, `ai-context.txt`,
+  `brand-system.txt`, `security.txt`.
+- The live bug is that `robots.txt` points at `https://wugweb.com/sitemap.xml`, which
+  **404s** — no sitemap route exists. Confirmed independently by the Notion SEO page.
+- `public/brand/og-default.png` is **965×306**, not 1200×630, and all 14 `singletonPage`
+  docs have `ogImage` empty — so every social preview on every page crops wrong.
+  Notion also lists three descriptions hard-truncated with a literal `…` (`about`, `home`,
+  `refund-policy`) and three at 34 chars (`contact`, `faq`, `impact`).
+  Source: Notion → Wugweb HQ / Core Operations / Wugweb Website / 🔍 SEO.
+
+
+### 1c. OG images salvaged from Framer — *done 2026-09-24*
+
+All six Framer OG assets downloaded and mapped. **They were already 1200×630** — Framer
+had the dimensions right; `public/brand/og-default.png` at 965×306 is our regression.
+
+- Originals archived: `assets/seo/og-framer-originals/` (gitignored source tree) with a
+  README mapping each Framer hash → page.
+- Shipped: `public/assets/og/{default,about,contact,services,work,blog}` as **.webp**
+  (q82, ~85% smaller — 300–460 KB → 28–80 KB) **and .jpg** (q72, ~55% smaller).
+  Both formats on purpose: WebP for on-page use, JPEG for `og:image`, because OG
+  scrapers — LinkedIn especially — still handle WebP inconsistently. **Point the
+  `og:image` tag at the .jpg**, not the .webp.
+- Served relatively from `public/assets/`; the `PUBLIC_R2_ASSETS_BASE` vars in
+  `wrangler.jsonc` are dead (see the header comment in `src/lib/assets.ts`).
+- Only **five** distinct images existed: Home's "custom on Framer" OG is byte-identical to
+  the sitewide fallback, so Home never had a page-specific image.
+- Site Pages v2 filled: `ogImagePath` + `OG Image - r2 link` on all 15 pages that carry an
+  OG, and the five long-form v1 notes (404, Cookie Policy, Refund Policy, Impact,
+  Industries) copied across verbatim. **Site Pages v1 is now safe to delete.**
+
+**Not done — Sanity still holds nothing.** `ogImagePath` is filled in Notion only; the
+14 `singletonPage` docs still have `ogImage` empty and no `ogImagePath`. That write needs
+an Editor token (see Known Technical Debt #4).
+
+**Framer copy was better than what replaced it.** Framer's descriptions were hand-written,
+varied and keyword-bearing; Sanity's are either the 34-char sitewide fallback (`contact`,
+`faq`, `impact`) or auto-truncated body excerpts ending in a literal `…` (`about`, `home`,
+`refund-policy`). Framer's originals for `/refund-policy`, `/404`, `/footer/sitemap`,
+`/footer/industries` and `/privacy-policy` are recorded in the Site Pages v2 Notes column
+— use them as the base for a rewrite rather than regenerating.
+
+
+### 1d. OG wiring + missing pages — *done 2026-09-24*
+
+- **`BaseLayout.astro` fixed.** `og:image` is now an absolute URL built from
+  `Astro.url.origin` (relative paths are invalid per the OG spec; most scrapers drop
+  them) and points at `/assets/og/default.jpg`, not the 965×306 PNG. Added `og:url` and
+  `<link rel="canonical">` off the same origin — no `site` entry needed in
+  `astro.config.mjs` because SSR knows the real serving origin. `npm run build` passes.
+- **`reviews` added to the `pageId` enum.** Real bug, not just a missing row:
+  `src/pages/footer/reviews.astro` already calls `singletonPageQuery` with
+  `pageId: 'reviews'`, but that value was not in the enum, so the lookup could never
+  match and the page silently fell through to hardcoded copy on every request. A Sanity
+  doc still needs creating before it reads real CMS data.
+- **Cookie Settings is not a page.** `SiteFooter.astro` renders it as
+  `{ href: '#', isAction: true }` → `#btn-footer-cookie-settings`, which opens the
+  consent banner's manage-preferences UI in `BaseLayout`. `/cookie-settings` and
+  `/footer/cookie-settings` both 404, correctly. Not tracked as a row.
+- Site Pages v2 is now **28 rows** — Reviews added at Order 19.5.
+
+
+### 2. Semantic tag selector — *noted only*
+
+Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,
+figure, footer, header, main, nav, ol, section, ul` (`label` greyed out), with
+`section` as the default. Equivalent for us = auditing that our section wrappers
+use real landmarks instead of `div` everywhere.
+
+### 3. Scroll-section anchor name — *noted only*
+
+Framer's "Scroll section" panel: a **Name** field (`# culture`) plus an **Offset Y**,
+giving the section a URL hash target with a scroll offset for the fixed nav.
+Equivalent for us = `id="culture"` + `scroll-margin-top` on section wrappers, so
+`/about#culture` deep-links land clear of the header.
+
+### 4. Per-element accessibility fields — *noted only*
+
+Framer exposes **Aria label**, **Tab index** and **Google bot** per element
+(alongside Tag), under an Accessibility group.
+
+---
+
 ## ⏸️ Deferred
 
 | Item | Status | Reason |
