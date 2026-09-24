@@ -603,6 +603,53 @@ UI does nothing), 17, 18, 20 (463 hardcoded colour values). Findings 1, 2, 3, 6,
 11, 12, 13, 15 and 19 are now done.
 
 
+### 1m. Asset audit + two audit findings re-checked — *2026-09-24*
+
+**Finding 17 is STALE — no action needed.** It claimed `set-cookie` on every
+response defeats edge caching. Measured in production: a first request gets one
+`set-cookie`, a request carrying `visitor_id` gets **zero**. The middleware only
+writes when the cookie is absent (`if (!visitorId)`), which is correct. Only the
+first response per visitor is uncacheable, which is unavoidable and fine.
+
+**Finding 8 is ACCURATE, and here is the detail it lacked.**
+
+`public/assets` — 821 files, 697 MB:
+
+| Type | Files | Size |
+|---|---|---|
+| mp4 | 170 | 315.3 MB |
+| jpg | 239 | 265.2 MB |
+| png | 286 | 99.8 MB |
+| webp | 38 | 11.2 MB |
+| svg | 83 | 0.4 MB |
+
+**112 MB is byte-identical duplication** — 86 content hashes, 120 redundant
+copies. Two causes: Framer-extracted images duplicated under `work/`, and the
+service clip library copied across pillars (`operations`, `engineering` and
+`Web & App Development` hold identical mp4s — corroborating #6).
+
+Cross-referenced every duplicate against all 608 `/assets/` paths in Sanity
+(including the `asset` registry's `sitePath`) plus every filename appearing
+anywhere in `src/`:
+
+- **36 files / 31.4 MB are provably orphaned** — no content field, no asset
+  registry entry, no filename match in code.
+- 16 candidates were **held back** because their filename appears in `src/`;
+  these are the service clips reached through `MEDIA_BY_PILLAR`, which a
+  path-only scan would have missed and wrongly deleted.
+
+**NOT DELETED — needs Vedanshu.** 14 of the 36 sit under
+`public/assets/services/reference/`, which `.gitignore` excludes via the
+`reference/` pattern. They are untracked, so deleting them is **permanent and
+unrecoverable**, and they never reach production anyway (Pages builds from git).
+The other 22 are tracked and reversible.
+
+**Separate and larger:** **685 MB of assets are tracked in git** (793 of 821
+files). Every clone and every CI build carries that. Worth its own decision —
+git-lfs, or moving media to R2 properly and out of the repo, which is what
+`docs/r2-assets.md` describes but `src/lib/assets.ts` records as never completed.
+
+
 ### 2. Semantic tag selector — *noted only*
 
 Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,
