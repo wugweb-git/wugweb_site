@@ -433,6 +433,53 @@ section rows, dead content-types DB). Every `siteSettings` Organization field is
 still empty — JSON-LD prunes them, so filling them enriches it immediately.
 
 
+### 1i. Phase 4 + security headers — *2026-09-24*
+
+**`pageSection` has consumers.** Three of five global sections are editable
+content now instead of strings in a layout: `industries`, `insights`,
+`final-cta`. Documents created at `section-<sectionId>`. Placement moved into
+data (`excludeRoutes`), replacing the `hideGlobal*` props in `.astro`
+frontmatter. Verified live: editing a title changed the heading, `excludeRoutes`
+hid the section on the named routes only, `enabled: false` removed it everywhere.
+
+**Started with `industries`, not `cookie-consent` as the plan named.** Industries
+maps 1:1 onto the existing schema; the cookie UI needs six button labels, a modal
+title and intro, an "always active" badge and a close aria-label against a schema
+offering one `ctaLabel`/`ctaHref` pair. **`cookie-consent` and `trust-badges`
+remain unwired** pending that schema decision.
+
+**⚠️ Document-id collision found the hard way.** `deskStructure.ts` used
+`_id === sectionId`, explicitly copying singletonPage's `_id === pageId`. But
+`industries` is **both** a pageId and a sectionId — creating a `pageSection` at
+`_id: 'industries'` landed on the industries *page* document and overwrote its
+title before being caught and repaired (title restored, stray field removed,
+nothing else touched). Section ids are now `section-<sectionId>`. **Any future
+type adopting an `_id === key` convention must check the other namespaces first.**
+
+**Security headers, findings 6 and 15.** `public/_headers` added — but the
+important part: **`_headers` does not cover SSR HTML.** Cloudflare Pages applies
+it to static assets only, so the first commit secured the images and left every
+page bare. Confirmed in production, then fixed in `src/middleware.ts`, kept
+byte-identical so the two surfaces cannot drift. Both verified live.
+
+Caching now reflects what each path guarantees: `/_astro/*` immutable for a year
+(content-hashed), `/assets/*` one week with stale-while-revalidate (**not**
+hashed — a year would strand swapped images), `/sw.js` never cached. HTML
+deliberately untouched.
+
+**CSP deliberately not set**, with the reasoning in `public/_headers`. Google
+Fonts, Sanity's CDN, framerusercontent.com images and several inline scripts all
+need testing against it first; a CSP written blind would break the page for real
+visitors.
+
+**Still open:** Phase 2.3 (`caseStudy.services` 0/60, `relatedPosts` 0/60,
+`post.syndicatedTo` 0/100 — populate or drop), `cookie-consent`/`trust-badges`
+sections, Phase 5 Notion rows, and the §1g P0s: the `#F4F4F4`-on-`#F4F4F4`
+contrast bug in 18 places and `[data-reveal]` with no no-JS fallback (observed
+directly this session — a screenshot came back entirely black because GSAP had
+not run).
+
+
 ### 2. Semantic tag selector — *noted only*
 
 Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,
