@@ -1,0 +1,58 @@
+---
+/**
+ * JSON-LD structured data.
+ *
+ * The site shipped with none at all — no Organization, no Article, nothing —
+ * which is the single biggest remaining answer-engine gap: crawlers and AI
+ * answer surfaces had no machine-readable statement of what this site is or
+ * who publishes it.
+ *
+ * One `<script>` per page carrying a single `@graph`, rather than several
+ * competing blocks. `@context` is declared once at the top level, so the nodes
+ * passed in must NOT repeat it.
+ *
+ * Nodes come from real content only. Anything that would need a field nobody
+ * has filled is omitted rather than emitted empty — a half-populated
+ * Organization is worse than none, because it asserts blanks as fact.
+ */
+interface Props {
+  /** schema.org nodes, each with an @type and @id. No @context on the nodes. */
+  graph: Record<string, unknown>[];
+}
+const { graph } = Astro.props;
+
+// Drop anything falsy so callers can pass conditional nodes inline.
+const nodes = (graph || []).filter(Boolean);
+
+/**
+ * Recursively strip undefined/null/empty values. schema.org consumers treat a
+ * present-but-empty property as an assertion, so an absent one is more honest.
+ */
+function prune(value: any): any {
+  if (Array.isArray(value)) {
+    const arr = value.map(prune).filter((v) => v !== undefined);
+    return arr.length ? arr : undefined;
+  }
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(value)) {
+      const pruned = prune(v);
+      if (pruned !== undefined) out[k] = pruned;
+    }
+    return Object.keys(out).length ? out : undefined;
+  }
+  if (typeof value === 'string' && value.trim() === '') return undefined;
+  return value === null ? undefined : value;
+}
+
+const cleaned = prune(nodes) || [];
+const payload = cleaned.length ? { '@context': 'https://schema.org', '@graph': cleaned } : null;
+---
+
+{payload && (
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(payload)}
+  />
+)}

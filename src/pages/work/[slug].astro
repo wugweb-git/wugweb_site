@@ -50,6 +50,7 @@ const pageDescription = (work.seoDescription || work.summary || work.about || ''
 // today and beat having no preview, but they keep the Framer CDN dependency.
 const IMAGE_EXT = /\.(jpe?g|png|webp|avif|gif)$/i;
 const ogFromPath = work.coverPath && IMAGE_EXT.test(work.coverPath) ? coverSrc : '';
+
 // ogImagePath wins: it is the R2/local convention the rest of the content
 // model uses, and it is the migration path off the Framer CDN URLs that every
 // populated ogImage currently holds (Known Technical Debt #3).
@@ -60,6 +61,22 @@ const ogImageUrl = work.ogImagePath
     : work.ogImage?.asset
       ? urlFor(work.ogImage).width(1200).height(630).url()
       : ogFromPath;
+// CreativeWork, not Article: a case study is a portfolio piece Wugweb created,
+// not a news or editorial item. `about` carries the industry so the piece is
+// connected to a subject rather than floating free.
+const caseStudyNode = {
+  '@type': 'CreativeWork',
+  name: work.title,
+  headline: work.seoTitle || work.title,
+  description: (work.seoDescription || work.summary || work.about || '').slice(0, 300),
+  image: ogImageUrl || undefined,
+  creator: { '@id': 'https://www.wugweb.com/#organization' },
+  publisher: { '@id': 'https://www.wugweb.com/#organization' },
+  about: work.industry || undefined,
+  datePublished: work.publishedAt,
+  keywords: work.tags?.length ? work.tags.join(', ') : undefined,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.wugweb.com/work/${slug}` },
+};
 const clientLogoSrc = work.clientRef?.logoPath ? assetUrl(work.clientRef.logoPath) : '';
 // Titles like "Bankco – Revolutionizing Financial Engagement..." repeat the
 // brand/product name that's already shown in the meta row — strip it, but
@@ -114,7 +131,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 )).then(r => r.filter(Boolean));
 ---
 
-<BaseLayout title={`${work.title} — Wugweb Work`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl} ogTitle={work.ogTitle} ogDescription={work.ogDescription} noIndex={work.noIndex}>
+<BaseLayout title={`${work.title} — Wugweb Work`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl} ogTitle={work.ogTitle} ogDescription={work.ogDescription} noIndex={work.noIndex} jsonLd={[caseStudyNode]}>
   <section class="work-detail-hero">
     <div class="wrap">
       <h1>{displayTitle}</h1>

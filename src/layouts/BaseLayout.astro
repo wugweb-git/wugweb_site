@@ -5,6 +5,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 // TrustBadges import removed with its render call below — see that comment.
 import InsightsBlock from '../components/InsightsBlock.astro';
 import FooterCTA from '../components/FooterCTA.astro';
+import JsonLd from '../components/JsonLd.astro';
 import { sanityClient, urlFor } from '../lib/sanity';
 import { siteSettingsQuery, postsListQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
@@ -27,6 +28,9 @@ interface Props {
   /** Per-document canonical override, for legacy or syndicated duplicates.
    *  Site-relative; resolved against the canonical origin. */
   canonicalPath?: string;
+  /** Extra schema.org nodes for this page (Article, CreativeWork, FAQPage…).
+   *  Merged into the sitewide @graph. No @context on the nodes. */
+  jsonLd?: Record<string, unknown>[];
   language?: string;
   hideGlobalSections?: boolean;
   /** Suppress only the global blog teaser — for pages that already carry their
@@ -35,7 +39,7 @@ interface Props {
   /** Same idea for the global industries block. */
   hideGlobalIndustries?: boolean;
 }
-const { title, description, seoTitle, ogImage, ogImagePath, noIndex, ogTitle, ogDescription, canonicalPath, language } = Astro.props;
+const { title, description, seoTitle, ogImage, ogImagePath, noIndex, ogTitle, ogDescription, canonicalPath, jsonLd, language } = Astro.props;
 const hideGlobalSections = Boolean(Astro.props.hideGlobalSections);
 const hideGlobalBlog = hideGlobalSections || Boolean(Astro.props.hideGlobalBlog);
 const hideGlobalIndustries = hideGlobalSections || Boolean(Astro.props.hideGlobalIndustries);
@@ -47,12 +51,17 @@ const settings = await sanityClient.fetch(siteSettingsQuery).catch(() => null);
  * `platformProfile` holds twenty platforms but only these five carry a
  * `profileUrl`, so the banner shows exactly the accounts that exist.
  */
-const socialDiscs = await sanityClient
+// One query, two consumers: the CTA banner's drifting discs (social only) and
+// JSON-LD sameAs (every live profile — 31 of them, versus 5 social). Widened
+// rather than adding a fifth Sanity round trip to a layout that already makes
+// four on every request.
+const livePlatformProfiles = await sanityClient
   .fetch(
-    `*[_type == "platformProfile" && category == "Social Media" && profileStatus == "Live" && defined(profileUrl)]
-      | order(platform asc){ platform, profileUrl }`
+    `*[_type == "platformProfile" && profileStatus == "Live" && defined(profileUrl)]
+      | order(platform asc){ platform, profileUrl, category }`
   )
   .catch(() => []);
+const socialDiscs = (livePlatformProfiles as any[]).filter((p) => p.category === 'Social Media');
 
 const defaultLang = language || settings?.language || 'en-GB';
 const siteName = settings?.siteTitle || 'wugweb — Digital Experience Agency';
@@ -105,6 +114,38 @@ const metaOgImage = rawOgImage.startsWith('http')
   ? rawOgImage
   : new URL(rawOgImage, Astro.url.origin).href;
 
+// ── JSON-LD ──────────────────────────────────────────────────────────────
+// Built only from fields that are actually populated. siteSettings.legalName,
+// foundingDate, address, telephone, logoPath and organizationType are all empty
+// today, so those properties are simply absent rather than asserted blank —
+// JsonLd prunes undefined values for the same reason.
+// sameAs comes from the live platformProfile documents, which is what the
+// siteSettings.sameAs field description says to do when that field is unset.
+const orgId = `${canonicalOrigin}/#organization`;
+const organizationNode = {
+  '@type': settings?.organizationType || 'Organization',
+  '@id': orgId,
+  name: settings?.companyName || 'Wugweb',
+  legalName: settings?.legalName,
+  url: canonicalOrigin,
+  description: settings?.seoDescription || defaultDesc,
+  email: settings?.contactEmail,
+  telephone: settings?.telephone,
+  foundingDate: settings?.foundingDate,
+  logo: settings?.logoPath ? new URL(assetUrl(settings.logoPath), canonicalOrigin).href : undefined,
+  sameAs: (settings?.sameAs?.length ? settings.sameAs : (livePlatformProfiles as any[]).map((p) => p.profileUrl)),
+};
+const webSiteNode = {
+  '@type': 'WebSite',
+  '@id': `${canonicalOrigin}/#website`,
+  url: canonicalOrigin,
+  name: settings?.siteTitle || siteName,
+  description: settings?.seoDescription || defaultDesc,
+  publisher: { '@id': orgId },
+};
+// A noindexed page should not be advertising itself in structured data either.
+const graphNodes = noIndex ? [] : [organizationNode, webSiteNode, ...(jsonLd || [])];
+
 // Global blog teaser — latest 3 posts, Sanity-driven with cover thumbnails.
 const teaserPosts = !hideGlobalBlog
   ? (await sanityClient.fetch(postsListQuery).catch(() => [])).slice(0, 3)
@@ -148,6 +189,7 @@ const globalIndustries = (sanityIndustries as string[]).length
         way to get the *target* dropped along with it. */}
     {!noIndex && <link rel="canonical" href={canonicalUrl} />}
     {noIndex && <meta name="robots" content="noindex, follow" />}
+    <JsonLd graph={graphNodes} />
 
     <!-- X / Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
