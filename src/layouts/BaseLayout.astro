@@ -80,11 +80,19 @@ const metaDesc = description || defaultDesc;
 // www, not the apex: wugweb.com 308-redirects to www.wugweb.com, and a
 // canonical that names a redirect is a weak signal. Verified 2026-09-24.
 const canonicalOrigin = (settings?.siteUrl || 'https://www.wugweb.com').replace(/\/+$/, '');
+const canonicalUrl = new URL(Astro.url.pathname, canonicalOrigin).href;
+
+// og:image resolves against the origin that actually SERVES the file, which is
+// not necessarily the canonical origin. Until the DNS cutover, www.wugweb.com
+// is still the old Framer build and has no /assets/og/* — building the OG URL
+// on the canonical origin made every social preview point at a 404 (verified in
+// production 2026-09-24). Canonical and og:image answer different questions:
+// canonical declares the preferred URL, og:image has to be fetchable right now.
+// Once wugweb.com serves this build the two converge on their own.
 const rawOgImage = ogImage || (ogImagePath ? assetUrl(ogImagePath) : defaultOgImage);
 const metaOgImage = rawOgImage.startsWith('http')
   ? rawOgImage
-  : new URL(rawOgImage, canonicalOrigin).href;
-const canonicalUrl = new URL(Astro.url.pathname, canonicalOrigin).href;
+  : new URL(rawOgImage, Astro.url.origin).href;
 
 // Global blog teaser — latest 3 posts, Sanity-driven with cover thumbnails.
 const teaserPosts = !hideGlobalBlog
