@@ -759,3 +759,86 @@ Framer exposes **Aria label**, **Tab index** and **Google bot** per element
 - [x] **Sanity Studio CRUD Verification & Enterprise Overhaul (2026-08-11)** — Fixed Studio document actions (`duplicateDocs`, `publishDocs`, `unpublishDocs`, `archiveDocs`, `deleteDocs`) and intent routes. Added full CRUD schemas for `brandAsset`, `siteScript`, and `navigationMenu` with spreadsheet table presets and departmental desk structure. Passed live API CRUD tests and `sanity build` with 0 errors.
 - [x] **Contact V2 Rollout to `/contact-us` (2026-08-10)** — Updated `src/pages/contact-us.astro` with 6-pillar scope selector grid, budget/timeline chips, SLA badge, and responsive layout. Re-routed `/contact-v2` as a 301 redirect. Enriched `/api/contact.ts` with `timeline` handling.
 - [x] **Service Pages UI/UX Revamp (2026-08-07)** — Completely refactored `src/pages/services/[slug].astro` to feature a premium dynamic UI with glowing background gradients, glassmorphic bento grids, micro-animations, and dynamic color injection based on the specific service pillar (`--theme-base`).
+
+### 1n. Perf pass — posters, self-hosted fonts, parallel+cached queries — *2026-09-24*
+
+Four commits, each verified in a browser rather than by reading the diff.
+
+**Video posters (finding 7, second half).** `a7fee115` had already found the
+root cause — `autoplay` overrides `preload="none"` per the HTML spec, so 11 MB
+of below-fold work-grid video downloaded on first paint regardless of the
+hint — and lazy-loaded them. That left a card showing nothing until it scrolled
+in. `b516b1a8` generates a poster for all **108 referenced videos**: 2.8 MB
+total, 27 KB average, against 228.7 MB of video. Worst case `xsafe-thumb`,
+3,320 KB of video to a 44 KB poster.
+
+Details that mattered: the frame is taken at **1 s, not 0 s**, because these
+clips open on a fade from black and frame 0 makes a poster that looks broken
+(falls back to frame 0 under a second). Generated at **1280 px, 2× a 640 px
+card** — posters are where pixelation shows on a dense phone screen. The path
+is **derived**, `<name>-poster.webp` beside the source, so there is no
+`posterPath` field to keep in sync. ffmpeg comes from the `ffmpeg-static`
+devDependency, not a system install. `npm run posters` regenerates; idempotent
+on mtime. Measured on the homepage at scroll 0: **6 posters, 160 KB**, where
+the same page previously pulled 12.3 MB of video.
+
+**Self-hosted fonts (finding 9) — done.** Two preconnects and a render-blocking
+stylesheet to `fonts.googleapis.com`, which cannot even name a font file until
+after a DNS lookup, a TLS handshake and a hop to `fonts.gstatic.com`. The exact
+woff2 files Google was serving (Inter Tight v9, Fragment Mono v6) are now
+committed under `public/fonts/`, with `@font-face` **inline in the head** — a
+linked `fonts.css` would reintroduce the blocking request. Two of Google's
+seven subsets kept, latin and latin-ext; the `unicode-range` on each face makes
+that both safe and lazy. Measured: **2 requests, 59 KB**, no googleapis or
+gstatic entry in the resource timeline at all. 300 KB on disk serves 59 KB to
+an English reader. Verified via `document.fonts`, not markup.
+
+**Finding 5 — fixed, but not by prerendering.** Prerendering would freeze
+content at build time, and nothing triggers a build when someone edits in the
+Studio, so every Studio edit would silently stop reaching the site. The cost is
+round trips: BaseLayout issued **five, sequentially**, and its own comments
+record the workarounds (the platformProfile query widened for two consumers,
+the cookie fields folded into the pageSection query) taken to avoid a sixth.
+Astro runs layout frontmatter after the page's, so a homepage request
+serialised those behind the page's own.
+
+None of the five depends on another. They now run in one `Promise.all`
+(removes four round trips) through a new `cachedFetch` in `src/lib/sanity.ts`
+(removes the rest on a warm isolate — module scope survives between requests on
+Workers). **TTL 60 s**, short enough that a Studio edit appears within a minute
+— the property prerendering would have destroyed. In-flight promises are
+shared; a rejection is evicted before it propagates. **Per-page content is
+deliberately not cached**: a stale post would be visible and specific, sitewide
+staleness is uniform and brief.
+
+**Finding 20 is inflated roughly 4×.** The claim is 463 hardcoded colour
+values. Excluding `var(--token, #fallback)` forms — where the token IS used and
+the hex is only a fallback — leaves **115**. `PortableTextRenderer` alone
+accounts for 48 of that gap and is entirely fallbacks. Of the 115: 50 in
+`kits.astro` and 7 in `TokenGallery` (internal showcases, colours are the
+subject), ~20 inside comments, 12 the `services/index` `fg`/`accent` data
+values CLAUDE.md marks intentional, 2 Razorpay's brand blue, 1 a
+`<meta name="theme-color">` that cannot take a `var()`. **26 were a real
+violation** and are fixed — the industries hero SVG now uses
+`--color-yellow` / `--color-surface-page` / `--color-surface-elevated` /
+`--color-border-subtle` / `--color-text-primary` plus `--font-body` and
+`--font-mono`.
+
+> **Trap worth remembering: `--color-accent-primary` is NOT yellow.** It
+> resolves to `--neutral-2` (#DFDFDF). Substituting it for `#FFBE1A` — the
+> obvious move, and what the `#FFBE1A` fallbacks written beside it throughout
+> `PortableTextRenderer` imply — turns the element grey. Verified by computed
+> style: every fill and stroke in the diagram resolves to the exact `rgb()` the
+> literal produced, pixel-identical.
+
+**Finding 4 re-checked — already fixed, no action.** The four About cards are
+real derived figures, not ordinals: 6 years (from `foundedDate`), 60 case
+studies, 44 industries, 119 clients, each counted from Sanity. Reading the DOM
+above the fold shows `0 +` on all four, which looks like a bug and is not — the
+counter zeroes them and animates on intersection at threshold 0.4. Confirmed by
+scrolling the group into view. No-JS renders the real values server-side.
+
+**Still open from §1g:** 8 (assets — user instruction is last), 10 (CSS across
+22 inline blocks), 14 (production domain — DNS, do not touch), 16 (consent vs
+analytics — user decision), 18 (preview deployment bindings). Findings 1, 2, 3,
+4, 5, 6, 7, 9, 11, 12, 13, 15, 19, 20 are done; 17 was stale.
