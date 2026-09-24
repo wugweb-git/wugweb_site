@@ -25,6 +25,7 @@ interface Props {
 }
 
 const { tags } = Astro.props;
+import { posterFor } from '../lib/assets';
 ---
 
 <div class="tag-field" data-tag-field>
@@ -42,6 +43,7 @@ const { tags } = Astro.props;
           <video
             data-tag-video
             src={t.video}
+            poster={posterFor(t.video)}
             preload="none"
             muted
             loop

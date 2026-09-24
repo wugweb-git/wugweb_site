@@ -1,6 +1,6 @@
 ---
 import { urlFor } from '../lib/sanity';
-import { assetUrl } from '../lib/assets';
+import { assetUrl, posterFor } from '../lib/assets';
 
 export interface Props {
   value?: any[] | null;
@@ -209,7 +209,7 @@ if (currentList) {
         <figure class="pt-media" data-reveal>
           <div class="pt-media-inner">
             {isVideo ? (
-              <video src={src} muted loop playsinline controls preload="metadata" class="pt-video" />
+              <video src={src} poster={posterFor(src)} muted loop playsinline controls preload="metadata" class="pt-video" />
             ) : (
               <img src={src} alt={b.alt || b.caption || ''} loading="lazy" decoding="async" class="pt-image" />
             )}

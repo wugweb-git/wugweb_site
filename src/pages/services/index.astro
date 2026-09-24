@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
 import { servicesListQuery, caseStudiesListQuery, singletonPageQuery } from '../../lib/queries';
 import BentoBlock, { type BentoTile } from '../../components/BentoBlock.astro';
-import { assetUrl } from '../../lib/assets';
+import { assetUrl, posterFor } from '../../lib/assets';
 
 const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
 const caseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
@@ -142,7 +142,7 @@ const whyIntro =
         </div>
         <div class="svc-gallery">{s.gallery.map((g: string) => {
           const item = resolveWork(g);
-          return item?.v ? <a href={item.slug ? `/work/${item.slug}` : '/work'} aria-label={`${item.label} — case study`}><video muted loop playsinline preload="none" src={item.v}></video><span class="svc-gallery-label">{item.label}</span></a> : '';
+          return item?.v ? <a href={item.slug ? `/work/${item.slug}` : '/work'} aria-label={`${item.label} — case study`}><video muted loop playsinline preload="none" data-src={item.v} poster={posterFor(item.v)}></video><span class="svc-gallery-label">{item.label}</span></a> : '';
         })}</div>
       </div>
     </section>

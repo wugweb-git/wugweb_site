@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
 import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { postBySlugQuery, postsListQuery } from '../../lib/queries';
-import { assetUrl } from '../../lib/assets';
+import { assetUrl, posterFor } from '../../lib/assets';
 
 const { slug } = Astro.params;
 
@@ -246,7 +246,7 @@ const shareLinks = [
                 {cCover && (
                   <div class="related-case-visual">
                     {cCover.endsWith('.mp4') || cCover.endsWith('.webm')
-                      ? <video src={cCover} muted loop playsinline autoplay preload="none"></video>
+                      ? <video data-src={cCover} poster={posterFor(cCover)} muted loop playsinline preload="none"></video>
                       : <img src={cCover} alt="" loading="lazy" />}
                   </div>
                 )}
