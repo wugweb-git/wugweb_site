@@ -215,9 +215,14 @@ function singletonPages(S: StructureBuilder) {
 }
 
 /**
- * Section tier. Document ids match `sectionId`, the same `_id === key`
- * convention singletonPage uses for `pageId` — that is what lets these open as
- * fixed documents rather than a list you have to search.
+ * Section tier. Document ids are `section-<sectionId>`, NOT the bare sectionId.
+ *
+ * The bare form collides with singletonPage, which uses `_id === pageId`:
+ * `industries` is both a pageId and a sectionId, so a pageSection created at
+ * `_id: 'industries'` would land on top of the industries *page* document.
+ * That is not theoretical — it happened on 2026-09-24 and overwrote that page's
+ * title before it was caught and repaired. The prefix keeps both namespaces
+ * open-by-fixed-id without either being able to clobber the other.
  */
 function globalSections(S: StructureBuilder) {
   const sections: [string, string, any][] = [
@@ -237,7 +242,7 @@ function globalSections(S: StructureBuilder) {
           pane(S, 'globalSections', 'All Sections', 'All Sections', DocumentsIcon, 'pageSection'),
           S.divider(),
           ...sections.map(([label, sectionId, icon]) =>
-            quickDoc(S, label, 'pageSection', sectionId, icon)
+            quickDoc(S, label, 'pageSection', `section-${sectionId}`, icon)
           ),
         ])
     );

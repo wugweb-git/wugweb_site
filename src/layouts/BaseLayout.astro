@@ -157,6 +157,53 @@ const teaserCovers = teaserPosts.map((p: any) => {
   return cover;
 });
 
+// ── Global sections (pageSection) ─────────────────────────────────────────
+// The section tier's first consumer. pageSection shipped with thirteen fields
+// and nothing reading them; this is what makes it real.
+//
+// Starting with `industries` rather than `cookie-consent`, which the plan
+// originally named: the industries strip maps 1:1 onto the existing schema
+// (title, subtitle, ctaLabel, ctaHref) and needs no schema change, whereas the
+// cookie UI needs six button labels, a modal title and intro, an "always
+// active" badge and a close aria-label against a schema offering a single
+// ctaLabel/ctaHref pair. Proving the tier on the section that fits beats
+// bending the schema around the one that doesn't.
+//
+// Additive by design: every value falls back to the copy that was hardcoded
+// here, so a missing or unpublished document changes nothing on the page.
+const globalSections = await sanityClient
+  .fetch(`*[_type == "pageSection" && !(_id in path("drafts.**"))]{
+    sectionId, enabled, eyebrow, title, subtitle, ctaLabel, ctaHref,
+    excludeRoutes, includeOnlyRoutes
+  }`)
+  .catch(() => []);
+
+const currentPath = Astro.url.pathname;
+/**
+ * Resolve a global section for this route. Returns null when the section is
+ * disabled or excluded here, in which case the caller renders nothing.
+ * `includeOnlyRoutes` wins over `excludeRoutes`, matching the field description.
+ */
+function resolveSection(id: string) {
+  const doc = (globalSections as any[]).find((d) => d.sectionId === id);
+  if (!doc) return undefined;               // no document yet → hardcoded fallback
+  if (doc.enabled === false) return null;   // explicitly off → render nothing
+  if (doc.includeOnlyRoutes?.length) {
+    return doc.includeOnlyRoutes.includes(currentPath) ? doc : null;
+  }
+  if (doc.excludeRoutes?.includes(currentPath)) return null;
+  return doc;
+}
+
+const industriesSection = resolveSection('industries');
+// undefined = no doc, fall back to the hardcoded copy. null = deliberately off.
+const showIndustries = industriesSection !== null;
+const industriesTitle = industriesSection?.title || 'Industries We Empower';
+const industriesSubtitle = industriesSection?.subtitle
+  || 'From local businesses to international corporations, our clients all share one common understanding when it comes to building authentic brands: the power of research, strategy, creativity, and design.';
+const industriesCtaLabel = industriesSection?.ctaLabel || 'More about us';
+const industriesCtaHref = industriesSection?.ctaHref || '/about';
+
 // Industries section — sourced from the Sanity industry master.
 const curatedIndustries = [
   'Government', 'Insurtech', 'Travel', 'Logistics', 'Automotive',
@@ -240,14 +287,18 @@ const globalIndustries = (sanityIndustries as string[]).length
         <!-- INDUSTRIES — suppressed on pages that carry their own industries
              block (see hideGlobalIndustries). -->
         {!hideGlobalIndustries && (
+          showIndustries && (
           <section class="wrap global-industries">
-            <h2>Industries We Empower</h2>
-            <p>From local businesses to international corporations, our clients all share one common understanding when it comes to building authentic brands: the power of research, strategy, creativity, and design.</p>
+            <h2>{industriesTitle}</h2>
+            <p>{industriesSubtitle}</p>
             <ul class="industry-tags">
               {globalIndustries.map((i) => <li>{i}</li>)}
             </ul>
-            <a href="/about" class="btn btn-ghost">More about us</a>
+            {industriesCtaLabel && industriesCtaHref && (
+              <a href={industriesCtaHref} class="btn btn-ghost">{industriesCtaLabel}</a>
+            )}
           </section>
+          )
         )}
 
         <!-- BLOG TEASER — suppressed on pages that carry their own insights
