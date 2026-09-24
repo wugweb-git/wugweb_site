@@ -269,6 +269,40 @@ varied and keyword-bearing; Sanity's are either the 34-char sitewide fallback (`
 - Site Pages v2 is now **28 rows** — Reviews added at Order 19.5.
 
 
+### 1e. ogImagePath written to Sanity AND wired — *done 2026-09-24*
+
+**The Sanity token is an Editor, not a Viewer.** Verified against `/users/me`:
+`roles: ['editor']`. Known Technical Debt #4 in `CLAUDE.md` ("current token cannot
+reliably update/delete") is **stale** — it can write. Fix that entry.
+
+- **27 docs patched** in one transaction: 14 `singletonPage` + 13 `service`.
+  Verified 27/27 now carry `ogImagePath`, 0 missing.
+- **`.jpg`, not `.webp`** — this field feeds `og:image`.
+- **Services recycle the hub image.** No service doc carries a `coverPath` or
+  `galleryPaths` — nothing of its own existed to reuse — so all 13 point at
+  `/assets/og/services.jpg`.
+- **Wired end to end**, so this is not another inert field:
+  `singletonPageQuery` now selects `ogImagePath`; `BaseLayout` takes an
+  `ogImagePath` prop and resolves it through `assetUrl()` into an absolute URL;
+  the five routes with distinct images (`about`, `services`, `work`, `blog`,
+  `contact-us`) pass it. Everything else correctly falls through to the sitewide
+  default. **Verified rendering on the dev server** — `/about` → `about.jpg`,
+  `/services` → `services.jpg`, `/work` → `work.jpg`, `/blog` → `blog.jpg`,
+  `/contact-us` → `contact.jpg`, `/` and `/faq` → `default.jpg`. All six assets
+  return 200 in both formats. `npm run build` passes.
+- Site Pages v2 aligned to the same `.jpg` values — 22 of 28 rows carry an OG.
+  The 6 nulls are correct: two route templates (OG comes from the post/case-study
+  doc), Thank You, Kits, the refund 301 stub, and Cookie Policy (no page exists).
+
+**The duplicate route was already fixed.** `/footer/refund-policy` is a 10-line
+`Astro.redirect('/refund-policy', 301)` stub, not the 400-line copy the old note
+described. **Keep it** — deleting the stub turns a clean 301 into a 404. Note corrected
+in v2.
+
+**Still not done:** per-page OG for the 9 routes that use the default is a content
+decision, not a wiring gap — they render correctly today.
+
+
 ### 2. Semantic tag selector — *noted only*
 
 Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,
