@@ -297,7 +297,12 @@ const coverOf = (p: InsightPost) =>
     padding-top: var(--gap-4);
     font-family: var(--font-mono);
     font-size: var(--t-micro);
-    color: color-mix(in srgb, var(--color-ash) 70%, transparent);
+    /* Leftover from when this card was --neutral-1 (light): dark ink at 70%
+       made sense there. The card is --color-surface-elevated (#191919) at
+       every width now (see the note on .blog-teaser-card), so that ink
+       measured 1.14:1 — the byline and read-time were effectively invisible
+       on every page carrying the teaser. --fg-muted is the dark-surface pair. */
+    color: var(--fg-muted);
   }
   /* ── Mobile: a compact row, not a full-screen poster ──────────────────
      The desktop card is a light block with 16:9 media stacked on top. At

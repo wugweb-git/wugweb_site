@@ -526,6 +526,9 @@ import TeamGrid from '../components/TeamGrid.astro';
   .culture-head p { margin-top: var(--gap-5); max-width: 60ch; color: var(--fg-muted); }
   .culture-visual { width: min(var(--culture-visual), 100%); aspect-ratio: 1/1.1; object-fit: cover; border-radius: var(--r-3); border: var(--stroke-thin) solid var(--line); }
   .culture-grid { list-style: none; margin: var(--gap-12) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-3); }
+  /* Light surface on a dark-theme site: --fg-muted (#bababa) measured 1.76:1
+     against this #F4F4F4 background. Same --color-ash pairing used elsewhere
+     for light tiles. */
   .culture-grid li {
     background: var(--neutral-1);
     border: var(--stroke-thin) solid var(--line);
@@ -533,7 +536,7 @@ import TeamGrid from '../components/TeamGrid.astro';
     padding: var(--gap-3) var(--gap-6);
     font-family: var(--font-mono);
     font-size: var(--fluid-label);
-    color: var(--fg-muted);
+    color: color-mix(in srgb, var(--color-ash) 82%, transparent);
     transition: border-color 0.3s ease, color 0.3s ease;
   }
   .culture-grid li:hover { border-color: var(--line-strong); color: var(--fg); }

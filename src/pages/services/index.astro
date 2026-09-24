@@ -167,9 +167,16 @@ const whyIntro =
     transition: border-color 0.3s ease, transform 0.3s ease;
   }
   .stat-card-wrap:hover { transform: translateY(-2px); }
-  .stat-n { font-family: var(--font-mono); font-size: var(--fluid-h2); font-weight: var(--font-weight-bold); color: var(--accent-warm); display: block; }
-  .stat-label { color: var(--fg); font-size: var(--fluid-body-md); font-weight: var(--font-weight-medium); margin-top: var(--gap-3); display: block; }
-  .stat-copy { margin-top: var(--gap-2); font-size: var(--fluid-body-sm); color: var(--fg-muted); line-height: var(--core-line-height-relaxed); }
+  /* These cards sit on --neutral-1 (#F4F4F4), a LIGHT surface on a dark-theme
+     site, so they cannot use --fg / --fg-muted — both are near-white.
+     Measured in-browser before this fix: .stat-label was #F4F4F4 on #F4F4F4,
+     a contrast ratio of exactly 1.00 — the label was invisible. .stat-n was
+     1.21 and .stat-copy 1.76, against a WCAG AA floor of 4.5 (3.0 for large
+     text). Uses the same --color-ash pairing BentoBlock already applies to its
+     light tiles, rather than inventing a parallel token. */
+  .stat-n { font-family: var(--font-mono); font-size: var(--fluid-h2); font-weight: var(--font-weight-bold); color: var(--color-ash); display: block; }
+  .stat-label { color: var(--color-ash); font-size: var(--fluid-body-md); font-weight: var(--font-weight-medium); margin-top: var(--gap-3); display: block; }
+  .stat-copy { margin-top: var(--gap-2); font-size: var(--fluid-body-sm); color: color-mix(in srgb, var(--color-ash) 72%, transparent); line-height: var(--core-line-height-relaxed); }
   .services-intro { padding-block: var(--space-section-xl); border-top: var(--stroke-thin) solid var(--line); }
   .services-intro h2 { font-size: var(--t-h3); max-width: 20ch; }
   .services-intro p { margin-top: var(--gap-5); max-width: 65ch; }
