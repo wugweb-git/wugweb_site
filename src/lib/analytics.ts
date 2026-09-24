@@ -27,10 +27,9 @@
  * says reject means no tracking, so reject means no request.
  */
 
-const MEASUREMENT_ID = 'G-W5WJ1PMTKD';
+import { isCanonicalHost } from './hosts';
 
-/** Hosts allowed to report. Subdomains are not implied — list them. */
-const ALLOWED_HOSTS = ['wugweb.com', 'www.wugweb.com'];
+const MEASUREMENT_ID = 'G-W5WJ1PMTKD';
 
 let loaded = false;
 
@@ -138,7 +137,7 @@ function loadGtag() {
 
 export function initAnalytics() {
   if (typeof window === 'undefined') return;
-  if (!ALLOWED_HOSTS.includes(window.location.hostname)) return;
+  if (!isCanonicalHost(window.location.hostname)) return;
 
   // BaseLayout fires this on a fresh accept AND on load when consent was
   // already stored, so both paths are covered by the one listener.

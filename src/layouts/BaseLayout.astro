@@ -9,6 +9,7 @@ import JsonLd from '../components/JsonLd.astro';
 import { urlFor, cachedFetch } from '../lib/sanity';
 import { siteSettingsQuery, postsListQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
+import { isCanonicalHost } from '../lib/hosts';
 
 interface Props {
   title: string;
@@ -133,6 +134,26 @@ const metaDesc = description || defaultDesc;
 //
 // www, not the apex: wugweb.com 308-redirects to www.wugweb.com, and a
 // canonical that names a redirect is a weak signal. Verified 2026-09-24.
+/**
+ * Staging hosts must never be indexed.
+ *
+ * One build answers on several hostnames — uat.wugweb.com, wugweb.pages.dev,
+ * per-branch aliases, localhost — each a byte-identical copy of the site under
+ * a different name. The canonical tag below points them all at www, but a
+ * canonical is a HINT: it does not stop a crawler fetching the page, and
+ * Google is free to ignore it. uat.wugweb.com went live on 2026-09-24 as a
+ * fully public copy, so this is not hypothetical.
+ *
+ * `noindex, follow` rather than `noindex, nofollow`: the links are the same
+ * links, and there is no reason to poison link discovery on the real site.
+ *
+ * Paired with a host-aware robots.txt (src/pages/robots.txt.ts). Both are
+ * needed — robots.txt stops the crawl, the meta tag stops indexing of anything
+ * already fetched or reached from an external link.
+ */
+const onCanonicalHost = isCanonicalHost(Astro.url.hostname);
+const robotsNoIndex = noIndex || !onCanonicalHost;
+
 const canonicalOrigin = (settings?.siteUrl || 'https://www.wugweb.com').replace(/\/+$/, '');
 const canonicalUrl = new URL(canonicalPath || Astro.url.pathname, canonicalOrigin).href;
 
@@ -178,7 +199,7 @@ const webSiteNode = {
   publisher: { '@id': orgId },
 };
 // A noindexed page should not be advertising itself in structured data either.
-const graphNodes = noIndex ? [] : [organizationNode, webSiteNode, ...(jsonLd || [])];
+const graphNodes = robotsNoIndex ? [] : [organizationNode, webSiteNode, ...(jsonLd || [])];
 
 // Cover thumbnails for the teaser. The fetch itself is in the Promise.all above.
 const teaserCovers = (teaserPosts as any[]).slice(0, 3).map((p: any) => {
@@ -289,7 +310,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         contradictory signals, and a canonical on an excluded URL is the classic
         way to get the *target* dropped along with it. */}
     {!noIndex && <link rel="canonical" href={canonicalUrl} />}
-    {noIndex && <meta name="robots" content="noindex, follow" />}
+    {robotsNoIndex && <meta name="robots" content="noindex, follow" />}
     <JsonLd graph={graphNodes} />
 
     <!-- X / Twitter -->
