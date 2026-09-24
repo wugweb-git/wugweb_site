@@ -192,7 +192,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
       {workItems.map((w) => (
         <li data-reveal>
           <a href={`/work/${w.slug}`}>
-            <video autoplay muted loop playsinline preload="none" src={w.video}></video>
+            <video muted loop playsinline preload="none" data-src={w.video}></video>
             <p class="work-client">{w.client} — {w.category}</p>
             <h3>{w.title}</h3>
           </a>

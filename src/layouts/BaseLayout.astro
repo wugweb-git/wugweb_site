@@ -749,10 +749,13 @@ const globalIndustries = (sanityIndustries as string[]).length
 
 <script>
   import { initScrollAnimations } from '../lib/scroll-animations';
+  import { initLazyVideo } from '../lib/lazy-video';
   // Module is alive, so the head watchdog is no longer needed. Cancel it
   // before running, so a slow first paint cannot un-hide mid-animation.
   clearTimeout((window as any).__revealWatchdog);
   initScrollAnimations();
+  // Below-fold looping video: nothing downloads until it is near the viewport.
+  initLazyVideo();
   // initBallField() now lives in FooterCTA.astro's own script — it's the
   // only consumer of `[data-ball-field]`.
 

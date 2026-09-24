@@ -10,10 +10,15 @@ export const prerender = false;
  * robots.txt has been advertising this URL while it returned 404. This is the
  * file it was pointing at.
  *
- * Routes are listed explicitly rather than derived from `singletonPage.route`,
- * because that field is populated on 0 of 14 documents — deriving from it today
- * would produce a sitemap containing only the dynamic content. Fill `route` in
- * the Studio and this list can collapse into a query.
+ * Static routes are the union of what RENDERS (the list below, which mirrors
+ * src/pages) and what Sanity says about each one. A page belongs in the sitemap
+ * because it returns 200, not because a CMS document happens to exist for it —
+ * /footer/reviews and /footer/cookie-policy render but have no singletonPage
+ * document, and driving purely from documents silently dropped both.
+ *
+ * Sanity then subtracts: a document that is noIndex, or whose httpStatus is not
+ * 200, is removed. A 301/302/410 must never appear in a sitemap, which is what
+ * httpStatus on the document is for.
  *
  * Deliberately absent, and why:
  *   /404, /404-2, /offline, /contact-error  error and system states
@@ -26,6 +31,7 @@ export const prerender = false;
  * them: a `canonicalUrl` pointing somewhere other than the document's own slug
  * means the route 301s, so it must not appear here either.
  */
+/** Routes that render. Mirrors src/pages; see the note above. */
 const STATIC_ROUTES = [
   '/',
   '/about',
@@ -68,7 +74,7 @@ export const GET: APIRoute = async () => {
     // flag is needed to know which static routes to suppress, and a page that
     // simply has no document must still be listed, because it still renders.
     sanityClient
-      .fetch(`*[_type == "singletonPage" && !(_id in path("drafts.**"))]{ pageId, noIndex, _updatedAt }`)
+      .fetch(`*[_type == "singletonPage" && !(_id in path("drafts.**"))]{ pageId, route, httpStatus, noIndex, _updatedAt }`)
       .catch(() => []),
     sanityClient
       .fetch(`*[_type == "service" && defined(slug.current) && !(_id in path("drafts.**"))]{ "slug": slug.current, _updatedAt }`)
@@ -87,32 +93,28 @@ export const GET: APIRoute = async () => {
       .catch(() => []),
   ]);
 
-  // pageId → the route it actually renders at. Several differ, which is why
-  // this mapping exists at all: contact → /contact-us, terms-of-use →
-  // /termsofuse, impact → /footer/impact.
-  const PAGE_ROUTES: Record<string, string> = {
-    home: '/', about: '/about', services: '/services', work: '/work', blog: '/blog',
-    faq: '/faq', contact: '/contact-us', industries: '/footer/industries',
-    impact: '/footer/impact', subscription: '/footer/subscription',
-    sitemap: '/footer/sitemap', reviews: '/footer/reviews',
-    'cookie-policy': '/footer/cookie-policy', 'privacy-policy': '/privacy-policy',
-    'terms-of-use': '/termsofuse', 'refund-policy': '/refund-policy',
-  };
-  const lastmodByRoute = new Map<string, string | undefined>();
-  // Routes whose document exists and is explicitly noIndex. A route with no
-  // document at all is NOT suppressed — it still renders, so it still belongs.
-  const suppressed = new Set<string>();
-  for (const p of pages as any[]) {
-    const route = PAGE_ROUTES[p.pageId];
-    if (!route) continue;
-    if (p.noIndex === true) suppressed.add(route);
-    else lastmodByRoute.set(route, isoDate(p._updatedAt));
+  // Index the documents by the route they claim, then let them subtract from
+  // and annotate the rendered routes.
+  const byRoute = new Map<string, any>();
+  for (const p of pages as any[]) if (p.route) byRoute.set(p.route, p);
+
+  const staticEntries: Entry[] = STATIC_ROUTES.filter((r) => {
+    const doc = byRoute.get(r);
+    if (!doc) return true;                                   // renders, no document — still belongs
+    if (doc.noIndex === true) return false;
+    return (doc.httpStatus ?? '200') === '200';
+  }).map((r) => ({ loc: r, lastmod: isoDate(byRoute.get(r)?._updatedAt) }));
+
+  // A document may also claim a route that is not in the list above — trust it,
+  // so a new page added in the Studio appears without a code change.
+  for (const [route, doc] of byRoute) {
+    if (STATIC_ROUTES.includes(route)) continue;
+    if (doc.noIndex === true || (doc.httpStatus ?? '200') !== '200') continue;
+    staticEntries.push({ loc: route, lastmod: isoDate(doc._updatedAt) });
   }
 
   const entries: Entry[] = [
-    ...STATIC_ROUTES
-      .filter((r) => !suppressed.has(r))
-      .map((r) => ({ loc: r, lastmod: lastmodByRoute.get(r) })),
+    ...staticEntries,
     ...(services as any[]).map((s) => ({ loc: `/services/${s.slug}`, lastmod: isoDate(s._updatedAt) })),
     ...(caseStudies as any[]).map((c) => ({ loc: `/work/${c.slug}`, lastmod: isoDate(c._updatedAt) })),
     ...(posts as any[]).map((p) => ({ loc: `/blog/${p.slug}`, lastmod: isoDate(p._updatedAt) || isoDate(p.publishedAt) })),
