@@ -480,6 +480,57 @@ directly this session — a screenshot came back entirely black because GSAP had
 not run).
 
 
+### 1j. Both §1g P0s fixed — *2026-09-24*
+
+**Contrast.** Measured in-browser with a computed-contrast sweep, not read off
+the CSS. Five live failures, worst first:
+
+| Element | Where | Was |
+|---|---|---|
+| `.stat-label` | `/services` | **1.00** — #F4F4F4 on #F4F4F4, literally invisible |
+| `.btc-meta` | **sitewide** | **1.14** — blog teaser byline and read-time |
+| `.stat-n` | `/services` | 1.21 |
+| `.culture-grid li` | `/about` | 1.76 |
+| `.stat-copy` | `/services` | 1.76 |
+
+Two opposite causes. On `/services` and `/about`, light `--neutral-1` surfaces
+carried near-white `--fg`; fixed with the `--color-ash` pairing BentoBlock
+already uses, not a new token. **`.btc-meta` was the inverse and the more
+interesting one** — dark ink on a dark card, left behind when
+`.blog-teaser-card` was deliberately changed from `--neutral-1` to
+`--color-surface-elevated`. That teaser renders on most pages, so the byline has
+been invisible sitewide since that change.
+
+Also fixed latent: `.article-body code` / `pre` set a light background with no
+colour. No post contains a code block, so it was never seen — it would have been
+invisible the first time anyone published one.
+
+**The audit's "18 instances" was overstated.** Seven `--neutral-1` backgrounds
+exist; ServiceSpotlightPanel, BentoBlock and impact's visual container were
+already correct.
+
+**Not changed, deliberately:** `--color-text-muted` (#7D7D7D) measures 4.23:1 on
+#1A1A1A — a marginal AA miss, not invisibility. It is a global token used 38
+times across 8 files; moving it to ~#858585 (4.72:1) is a design-system
+decision. **Open for Vedanshu.**
+
+**`[data-reveal]`.** Was a bare `opacity: 0` with nothing to undo it. Default is
+now visible; `opacity: 0` applies only under `.js-reveal`, added synchronously in
+`<head>` and removed by a 5s watchdog if the animation module never runs.
+
+`@media (scripting: none)`, which the audit proposed, would **not** have caught
+the case actually observed this session — JS was alive, GSAP just had not run,
+and a screenshot came back entirely black. A watchdog covers both.
+
+Four cases verified: no JS (class never added), module fails (watchdog reveals),
+module slow (watchdog reveals, then the module sees the gate is gone and skips
+animating rather than hiding content the user is already reading), normal
+(module clears the watchdog and animates). Confirmed on production: gate held,
+h1 revealed, all six above-fold elements visible, seventeen below-fold still
+pending scroll. Dev exercised the watchdog path, since Vite serves GSAP
+unbundled and the module exceeds 5s there.
+
+
 ### 2. Semantic tag selector — *noted only*
 
 Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,
