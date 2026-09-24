@@ -3,6 +3,7 @@ import caseStudy from './caseStudy';
 import post from './post';
 import person from './person';
 import singletonPage from './singletonPage';
+import pageSection from './pageSection';
 import siteSettings from './siteSettings';
 import contactSubmission from './contactSubmission';
 import syncStatus from './syncStatus';
@@ -39,6 +40,7 @@ export const schemaTypes = [
   post,
   person,
   singletonPage,
+  pageSection,
   siteSettings,
   contactSubmission,
   syncStatus,

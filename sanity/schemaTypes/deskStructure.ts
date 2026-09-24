@@ -30,6 +30,7 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
         pane(S, 'caseStudy', 'Case Studies', 'Case Studies', CaseIcon,    'caseStudy'),
         pane(S, 'service',   'Services',     'Services',     RocketIcon,  'service'),
         singletonPages(S),
+        globalSections(S),
       ]),
 
       S.divider(),
@@ -193,6 +194,7 @@ function singletonPages(S: StructureBuilder) {
     ['Impact',         'impact',         HeartIcon],
     ['Industries',     'industries',     EarthAmericasIcon],
     ['Subscription',   'subscription',   EnvelopeIcon],
+    ['Reviews',        'reviews',        HeartIcon],
     ['Sitemap',        'sitemap',        SortIcon],
     ['Kits Showcase',  'kits',           ControlsIcon],
   ];
@@ -207,6 +209,35 @@ function singletonPages(S: StructureBuilder) {
           S.divider(),
           ...pages.map(([label, pageId, icon]) =>
             quickDoc(S, label, 'singletonPage', pageId, icon)
+          ),
+        ])
+    );
+}
+
+/**
+ * Section tier. Document ids match `sectionId`, the same `_id === key`
+ * convention singletonPage uses for `pageId` — that is what lets these open as
+ * fixed documents rather than a list you have to search.
+ */
+function globalSections(S: StructureBuilder) {
+  const sections: [string, string, any][] = [
+    ['Industries strip', 'industries',     EarthAmericasIcon],
+    ['Insights teaser',  'insights',       ComposeIcon],
+    ['Final CTA',        'final-cta',      RocketIcon],
+    ['Cookie consent',   'cookie-consent', LockIcon],
+    ['Trust badges',     'trust-badges',   HeartIcon],
+  ];
+  return S.listItem()
+    .title('Global Sections')
+    .icon(ControlsIcon)
+    .child(
+      S.list()
+        .title('Global Sections')
+        .items([
+          pane(S, 'globalSections', 'All Sections', 'All Sections', DocumentsIcon, 'pageSection'),
+          S.divider(),
+          ...sections.map(([label, sectionId, icon]) =>
+            quickDoc(S, label, 'pageSection', sectionId, icon)
           ),
         ])
     );
