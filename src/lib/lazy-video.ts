@@ -45,8 +45,13 @@ export function initLazyVideo(): () => void {
     }
   }
 
+  // Whether IntersectionObserver has produced a single callback. If it never
+  // does, the scroll fallback below takes over. See the note on `sweep`.
+  let ioEverFired = false;
+
   const io = new IntersectionObserver(
     (entries) => {
+      ioEverFired = true;
       for (const entry of entries) {
         const v = entry.target as HTMLVideoElement;
         if (entry.isIntersecting) {
@@ -112,11 +117,44 @@ export function initLazyVideo(): () => void {
 
   const onVisible = () => { if (document.visibilityState === 'visible') sweep(); };
   document.addEventListener('visibilitychange', onVisible);
-  const timer = window.setTimeout(sweep, 3000);
+
+  /**
+   * A single sweep three seconds in only rescues what happens to be on screen
+   * at that instant — it does nothing for someone who scrolls a minute later.
+   * So if the observer has STILL not produced a single callback by then, treat
+   * it as unavailable and fall back to watching scroll directly.
+   *
+   * The check is `ioEverFired`, not a feature test, because the ways this
+   * breaks are environmental rather than absent-API: a hidden document, a
+   * prerendered page, a zero-area viewport. IntersectionObserver exists in all
+   * of them and simply never calls back.
+   *
+   * Cost when IO works, which is almost always: one timeout, no listener. The
+   * fallback is rAF-throttled, so a scroll costs one rect read per video per
+   * frame at worst, and each video drops out of the sweep the moment it is
+   * attached.
+   */
+  let onScroll: (() => void) | null = null;
+  const timer = window.setTimeout(() => {
+    sweep();
+    if (ioEverFired) return;
+    let ticking = false;
+    onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { ticking = false; sweep(); });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }, 3000);
 
   return () => {
     io.disconnect();
     document.removeEventListener('visibilitychange', onVisible);
+    if (onScroll) {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    }
     clearTimeout(timer);
   };
 }
