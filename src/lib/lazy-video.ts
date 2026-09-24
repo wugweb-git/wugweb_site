@@ -138,11 +138,16 @@ export function initLazyVideo(): () => void {
   const timer = window.setTimeout(() => {
     sweep();
     if (ioEverFired) return;
+    // Throttled on a timer, NOT requestAnimationFrame. rAF is paused while a
+    // document is hidden — which is one of the exact conditions that stops the
+    // observer and brings us here, so throttling on it would make the fallback
+    // unavailable in the case it exists for. Timers keep firing (throttled) in
+    // a hidden document; rAF does not.
     let ticking = false;
     onScroll = () => {
       if (ticking) return;
       ticking = true;
-      requestAnimationFrame(() => { ticking = false; sweep(); });
+      window.setTimeout(() => { ticking = false; sweep(); }, 100);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
