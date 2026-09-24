@@ -842,3 +842,50 @@ scrolling the group into view. No-JS renders the real values server-side.
 22 inline blocks), 14 (production domain — DNS, do not touch), 16 (consent vs
 analytics — user decision), 18 (preview deployment bindings). Findings 1, 2, 3,
 4, 5, 6, 7, 9, 11, 12, 13, 15, 19, 20 are done; 17 was stale.
+
+### 1o. Findings 18 and 10 — *2026-09-24*
+
+**Finding 18 — fixed.** "Preview deployment bindings are broken", without the
+reason. It is this: on Pages, bindings declared at the top level of
+`wrangler.jsonc` apply to the **production environment only**. Every preview
+deployment — each branch, each PR — ran with no `ASSETS_BUCKET`, no `SESSION`
+and none of the vars, which is exactly the `Invalid binding SESSION` path the
+existing comment in that file warns about. The bindings were never wrong; they
+were not there. An `env.preview` block now mirrors them.
+
+Mirrored rather than pointed at separate preview resources deliberately: the
+bucket is read-only from the app and Rule 2 says one bucket, so a second would
+be both pointless and a rule violation. **Secrets are not in the file and must
+not be** — `DATABASE_URL` and `SANITY_SYNC_TOKEN` need their own copies set on
+the preview environment **in the dashboard**, which is still outstanding and is
+a dashboard action, not a file change.
+
+Confirmation the shape is right: `wrangler types` now emits a
+`Cloudflare.PreviewEnv` interface carrying all three bindings, where before it
+emitted none.
+
+**Finding 10 — not a defect, closed.** "CSS fragmented across 22 inline
+`<style>` blocks" describes the source, not what ships. Astro compiles scoped
+component styles into per-route hashed files. Measured on the deployed
+homepage: **0 inline `<style>` blocks, 2 stylesheet requests**, served from
+`/_astro/*` under `max-age=31536000, immutable`. Per-component scoped styles
+are the framework idiom; consolidating them by hand would make the source worse
+and the output identical.
+
+**Production verification of §1n, on the deployed build:**
+
+| | before | after |
+|---|---|---|
+| homepage first paint | 12.3 MB of video | 1.15 MB hero + 160 KB posters |
+| mp4 requests at scroll 0 | 7 | 1 |
+| font files / origins | Google CSS + 2 preconnects | 2 files, 59 KB, 0 third-party |
+| TTFB | 1.31 s peak (audit) | 139–216 ms over 5 requests |
+| inline `<style>` blocks | claimed 22 | 0 |
+
+Font assets return `content-type: font/woff2` and
+`cache-control: public, max-age=31536000, immutable`.
+
+**§1g status after this pass.** Done: 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13,
+15, 18, 19, 20. Stale: 17. **Open: 8** (assets — user instruction is to do
+these last), **14** (production domain — DNS, do not touch), **16** (consent vs
+analytics — user decision, and the user has noted gtag/GA were already shared).
