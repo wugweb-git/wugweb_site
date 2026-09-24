@@ -955,3 +955,61 @@ benefit. Removal is a product decision, not taken.
 **Also not done:** `robots.txt` does not exclude `uat` once it is on a real
 domain. Canonicals point at `www.wugweb.com` so duplicate content is covered,
 but a host-based noindex would be better.
+
+
+### 1q. uat.wugweb.com is live, and staging is out of the index — *2026-09-24*
+
+**`https://uat.wugweb.com` — live, active, HTTPS 200.**
+
+DNS at Hostinger: `uat` CNAME → `wugweb.pages.dev`. The missing half was the
+Pages side — the project had **zero** custom domains, which is why the hostname
+returned a bare `409` on port 80 and failed the TLS handshake on 443. Added via
+the Pages API; cert issued in about 100 seconds (`initializing` → `pending` →
+`active`).
+
+Two corrections to things stated earlier in session:
+
+1. **Pages does NOT require the zone on Cloudflare.** It supports custom domains
+   on external DNS for subdomains (Workers does not; Pages does). No nameserver
+   move, no Business plan. The apex and `www` were never touched.
+2. **The `CLOUDFLARE_API_TOKEN` in `.env` is valid.** It fails
+   `/user/tokens/verify` because it is an account-scoped `cfat_` token, and that
+   endpoint does not accept those — it works fine against the account's Pages
+   endpoints.
+
+**Staging was publicly indexable, and is not any more.** Measured on
+`uat.wugweb.com` the moment it went live: **no robots meta at all**, and a
+`robots.txt` saying `Allow: /`. The canonical correctly named www, but a
+canonical is a *hint* — it does not stop a crawl and can be ignored. Same
+exposure on `wugweb.pages.dev` and every branch alias.
+
+- `robots.txt` moved **out of `public/` into `src/pages/robots.txt.ts`**. That
+  move is what makes it possible at all: a file in `public/` is served from the
+  CDN and lands in `_routes.json`'s exclude list, so the Worker never sees the
+  request and cannot know which host asked. Non-canonical hosts get
+  `Disallow: /`; canonical text unchanged; `Vary: Host` set.
+- `BaseLayout` emits `noindex, follow` on any non-canonical host and suppresses
+  JSON-LD there — a copy must not assert Organization/WebSite identity under the
+  wrong hostname.
+- One host list now, `src/lib/hosts.ts`, shared by robots.txt, BaseLayout and
+  analytics.ts. Those three drifting apart is exactly how a staging domain gets
+  indexed or staging sessions land in a production analytics property.
+
+> **Landmine removed:** a stale `robots.txt` was tracked at the **repo root** —
+> apex sitemap URL, missing every `Disallow` and the entire AI-crawler block.
+> Never deployed (only `dist/` is), but **Vite serves the project root in dev**,
+> so it shadowed the new route and the first local test silently returned it.
+> Deleted.
+
+Verified on the deployed build:
+
+| host | robots.txt | robots meta | JSON-LD | GA |
+|---|---|---|---|---|
+| `uat.wugweb.com` | `Disallow: /` | `noindex, follow` | 0 blocks | 0 requests with consent accepted |
+| `wugweb.pages.dev` | `Disallow: /` | `noindex, follow` | 0 blocks | 0 requests with consent accepted |
+| canonical | full text, www sitemap | none | 1 block | loads on consent |
+
+All 11 sampled routes 200 on uat.
+
+**Minor leftover:** `public/_headers` still carries a `/robots.txt` cache rule.
+It is now dead — the endpoint sets its own `Cache-Control` — and harmless.

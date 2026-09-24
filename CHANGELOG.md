@@ -9,6 +9,13 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed — SEO / staging (2026-09-24)
+- **Staging hosts are no longer indexable** (`src/pages/robots.txt.ts`, `src/lib/hosts.ts`, `src/layouts/BaseLayout.astro`) — `uat.wugweb.com` went live as a fully public copy with no robots meta and `Allow: /`. robots.txt moved out of `public/` to an SSR endpoint so the Worker can see the Host header; non-canonical hosts now get `Disallow: /` plus `noindex, follow` and suppressed JSON-LD. Host list unified in `src/lib/hosts.ts`, shared with analytics.
+- **Removed a stale tracked `robots.txt` at the repo root** — never deployed, but Vite serves the project root in dev, so it shadowed the new route.
+
+### Added — Infrastructure (2026-09-24)
+- **`https://uat.wugweb.com` staging domain** — Hostinger CNAME `uat` → `wugweb.pages.dev`, plus the Pages custom domain the project was missing (it had none, hence the 409). Apex and `www` untouched; both still serve Framer.
+
 ### Added — Analytics (2026-09-24)
 - **GA4 (`G-W5WJ1PMTKD`) wired behind two gates** (`src/lib/analytics.ts`) — host (`wugweb.com` / `www.wugweb.com` only) and consent (no script, no request, no dataLayer until accept). Closes the analytics half of audit finding 16: `applyScripts()` had been dispatching `wugweb-analytics-allowed` with no listener anywhere, so Accept and Reject did the same thing.
 - **Conversion events** — `generate_lead` (`/thank-you`), `form_error` (`/contact-error`), `sign_up` (`/footer/subscription?subscribed=1`). Keyed off the server redirect rather than the submit click, because both forms are plain `method="POST"` and a submit-time event races the navigation.
