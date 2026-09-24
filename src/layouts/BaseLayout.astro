@@ -6,7 +6,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import InsightsBlock from '../components/InsightsBlock.astro';
 import FooterCTA from '../components/FooterCTA.astro';
 import JsonLd from '../components/JsonLd.astro';
-import { sanityClient, urlFor } from '../lib/sanity';
+import { urlFor, cachedFetch } from '../lib/sanity';
 import { siteSettingsQuery, postsListQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
 
@@ -44,23 +44,57 @@ const hideGlobalSections = Boolean(Astro.props.hideGlobalSections);
 const hideGlobalBlog = hideGlobalSections || Boolean(Astro.props.hideGlobalBlog);
 const hideGlobalIndustries = hideGlobalSections || Boolean(Astro.props.hideGlobalIndustries);
 
-const settings = await sanityClient.fetch(siteSettingsQuery).catch(() => null);
+/**
+ * The five sitewide Sanity queries, in parallel and cached.
+ *
+ * These used to be five separate awaits scattered down this file, each
+ * blocking the next. Astro runs layout frontmatter after the page's, so a
+ * homepage request serialised nine round trips to Sanity before a byte of
+ * HTML was written — audit finding 5's 1.31 s TTFB.
+ *
+ * They are independent of one another, so nothing was being waited FOR; the
+ * ordering was incidental. Promise.all removes four round trips outright, and
+ * cachedFetch removes all five on a warm isolate. Every query returns the same
+ * bytes on every page, which is exactly the shape a cache wants.
+ *
+ * Each still resolves to its own fallback, so one failing query degrades one
+ * region of the page rather than the whole render, as before.
+ *
+ * Deliberately NOT cached anywhere: per-page content. A post or case study is
+ * fetched fresh, because its staleness would be visible and specific.
+ */
+const [settings, livePlatformProfiles, teaserPosts, sanityIndustries, globalSections] = await Promise.all([
+  cachedFetch(siteSettingsQuery).catch(() => null),
+  // One query, two consumers: the CTA banner's drifting discs (Social Media
+  // only) and JSON-LD sameAs (every live profile — 31 of them, versus 5
+  // social). Widened rather than run twice.
+  cachedFetch(
+    `*[_type == "platformProfile" && profileStatus == "Live" && defined(profileUrl)]
+      | order(platform asc){ platform, profileUrl, category }`
+  ).catch(() => []),
+  // Global blog teaser — latest 3 posts.
+  hideGlobalBlog ? Promise.resolve([]) : cachedFetch(postsListQuery).catch(() => []),
+  // Industries strip, from the Sanity industry master.
+  hideGlobalIndustries
+    ? Promise.resolve([])
+    : cachedFetch('*[_type == "industry"] | order(order asc) { name }[0..23]').catch(() => []),
+  // Global sections (pageSection). One query for every section on the page —
+  // the cookie fields are selected here rather than in a second query. See the
+  // block further down for what this tier is and why it starts with
+  // `industries`.
+  cachedFetch(`*[_type == "pageSection" && !(_id in path("drafts.**"))]{
+    sectionId, enabled, eyebrow, title, subtitle, ctaLabel, ctaHref,
+    excludeRoutes, includeOnlyRoutes,
+    items, modalTitle, modalIntro, acceptLabel, rejectLabel, manageLabel,
+    saveLabel, alwaysActiveLabel, closeLabel
+  }`).catch(() => []),
+]);
 
 /**
  * Live social profiles for the CTA banner's drifting discs. Real URLs only —
  * `platformProfile` holds twenty platforms but only these five carry a
  * `profileUrl`, so the banner shows exactly the accounts that exist.
  */
-// One query, two consumers: the CTA banner's drifting discs (social only) and
-// JSON-LD sameAs (every live profile — 31 of them, versus 5 social). Widened
-// rather than adding a fifth Sanity round trip to a layout that already makes
-// four on every request.
-const livePlatformProfiles = await sanityClient
-  .fetch(
-    `*[_type == "platformProfile" && profileStatus == "Live" && defined(profileUrl)]
-      | order(platform asc){ platform, profileUrl, category }`
-  )
-  .catch(() => []);
 const socialDiscs = (livePlatformProfiles as any[]).filter((p) => p.category === 'Social Media');
 
 const defaultLang = language || settings?.language || 'en-GB';
@@ -146,11 +180,8 @@ const webSiteNode = {
 // A noindexed page should not be advertising itself in structured data either.
 const graphNodes = noIndex ? [] : [organizationNode, webSiteNode, ...(jsonLd || [])];
 
-// Global blog teaser — latest 3 posts, Sanity-driven with cover thumbnails.
-const teaserPosts = !hideGlobalBlog
-  ? (await sanityClient.fetch(postsListQuery).catch(() => [])).slice(0, 3)
-  : [];
-const teaserCovers = teaserPosts.map((p: any) => {
+// Cover thumbnails for the teaser. The fetch itself is in the Promise.all above.
+const teaserCovers = (teaserPosts as any[]).slice(0, 3).map((p: any) => {
   const cover = p.coverPath
     ? assetUrl(p.coverPath)
     : (p.coverImage ? urlFor(p.coverImage).width(640).height(400).url() : '');
@@ -171,16 +202,7 @@ const teaserCovers = teaserPosts.map((p: any) => {
 //
 // Additive by design: every value falls back to the copy that was hardcoded
 // here, so a missing or unpublished document changes nothing on the page.
-const globalSections = await sanityClient
-  .fetch(`*[_type == "pageSection" && !(_id in path("drafts.**"))]{
-    sectionId, enabled, eyebrow, title, subtitle, ctaLabel, ctaHref,
-    excludeRoutes, includeOnlyRoutes,
-    // Cookie-consent only. Selected here rather than in a second query
-    // because this layout already makes four Sanity round trips per request.
-    items, modalTitle, modalIntro, acceptLabel, rejectLabel, manageLabel,
-    saveLabel, alwaysActiveLabel, closeLabel
-  }`)
-  .catch(() => []);
+// The fetch itself is the fifth entry in the Promise.all near the top.
 
 const currentPath = Astro.url.pathname;
 /**
@@ -245,12 +267,8 @@ const curatedIndustries = [
   'Government', 'Insurtech', 'Travel', 'Logistics', 'Automotive',
   'Fintech', 'Edtech', 'Sports', 'E-commerce', 'Media', 'Energy', 'NGOs',
 ];
-const sanityIndustries = !hideGlobalIndustries
-  ? (await sanityClient.fetch('*[_type == "industry"] | order(order asc) { name }[0..23]').catch(() => [])).map((i: any) => i.name)
-  : [];
-const globalIndustries = (sanityIndustries as string[]).length
-  ? (sanityIndustries as string[])
-  : curatedIndustries;
+const industryNames = (sanityIndustries as any[]).map((i: any) => i.name);
+const globalIndustries = industryNames.length ? industryNames : curatedIndustries;
 ---
 
 <!doctype html>
