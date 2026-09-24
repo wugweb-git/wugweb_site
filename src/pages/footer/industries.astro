@@ -52,7 +52,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
 }
 ---
 
-<BaseLayout 
+<BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} 
   title={title} 
   description={description}
   hideGlobalSections={true}

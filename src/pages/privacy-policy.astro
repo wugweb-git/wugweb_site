@@ -11,7 +11,7 @@ const blocks: any[] = Array.isArray(page?.body) && page.body.length ? page.body 
 const hasCms = blocks.length > 0;
 ---
 
-<LegalLayout title="Privacy Policy" description="Privacy Policy — Wugweb" active="privacy-policy" updated="November 04, 2025">
+<LegalLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title="Privacy Policy" description="Privacy Policy — Wugweb" active="privacy-policy" updated="November 04, 2025">
   <section class="wrap static-page legal">
     {hasCms ? (
       <div class="legal-body" data-reveal>

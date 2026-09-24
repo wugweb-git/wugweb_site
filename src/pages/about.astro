@@ -183,7 +183,7 @@ const culture = [
 import TeamGrid from '../components/TeamGrid.astro';
 ---
 
-<BaseLayout ogImagePath={page?.ogImagePath} title={pageTitle} description={pageDescription}>
+<BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath} title={pageTitle} description={pageDescription}>
   <!-- HERO -->
   <section class="about-hero">
     <div class="wrap about-hero-content">

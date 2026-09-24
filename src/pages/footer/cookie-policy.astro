@@ -11,7 +11,7 @@ const pageTitle = page?.title || page?.seoTitle || 'Cookie Policy';
 const pageDesc = page?.seoDescription || 'Wugweb Cookie Policy — details on how we use cookies, tracking technologies, and how to manage your choices.';
 ---
 
-<LegalLayout
+<LegalLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription}
   title={pageTitle}
   description={pageDesc}
   active="cookie-policy"

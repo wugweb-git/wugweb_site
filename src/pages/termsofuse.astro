@@ -11,7 +11,7 @@ const blocks: any[] = Array.isArray(page?.body) && page.body.length ? page.body 
 const hasCms = blocks.length > 0;
 ---
 
-<LegalLayout title="Terms of Use" description="Read Wugweb's terms of use for website access, service information, and visitor responsibilities." active="terms-of-use" updated="November 04, 2025">
+<LegalLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title="Terms of Use" description="Read Wugweb's terms of use for website access, service information, and visitor responsibilities." active="terms-of-use" updated="November 04, 2025">
   <section class="wrap legal">
     {hasCms ? (
       <div class="legal-body">

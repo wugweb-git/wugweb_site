@@ -14,7 +14,7 @@ const title = page?.seoTitle || page?.title || 'Sitemap — Wugweb';
 const description = page?.seoDescription || 'Complete sitemap for wugweb.com — all pages, case studies, blog posts, and services.';
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title={title} description={description}>
   <section class="wrap static-page sitemap">
     <header class="static-head">
       

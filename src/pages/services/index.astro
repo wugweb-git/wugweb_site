@@ -100,7 +100,7 @@ const whyIntro =
   servicesPage?.subtitle ||
   'In a world clamoring for attention, your brand deserves more than fleeting visibility. It requires a strategic partner that architects compelling narratives, cultivates authentic connections, and engineers brand experiences designed to stand the test of time.';
 ---
-<BaseLayout ogImagePath={servicesPage?.ogImagePath} title={pageTitle} description={pageDescription}>
+<BaseLayout noIndex={servicesPage?.noIndex} ogTitle={servicesPage?.ogTitle} ogDescription={servicesPage?.ogDescription} ogImagePath={servicesPage?.ogImagePath} title={pageTitle} description={pageDescription}>
   <section class="services-hero"><div class="wrap services-hero-content">
     <h1 class="page-title" data-reveal>Services</h1>
     <p data-reveal>At Wugweb, we design with function driving aesthetics—crafting scalable, human-centered systems across brand, UI/UX, web, apps, martech, AI, QA, and no-code.</p>
