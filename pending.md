@@ -531,6 +531,43 @@ pending scroll. Dev exercised the watchdog path, since Vite serves GSAP
 unbundled and the module exceeds 5s there.
 
 
+### 1k. sitemap.xml, robots, and the `_id === pageId` convention completed — *2026-09-24*
+
+**sitemap.xml exists.** `robots.txt` had been advertising it while it returned
+404. 176 entries, reconciled: 16 static + 13 services + **47** case studies
+(60 published minus the 13 whose `canonicalUrl` redirects them) + 100 posts.
+Absolute www URLs, matching the canonical tag. Routes are listed explicitly
+because `singletonPage.route` is populated on **0 of 14** documents — fill it and
+the list collapses into a query.
+
+**robots.txt corrected.** Its `Sitemap:` line named the apex, which 308-redirects,
+so it advertised *a redirect to a 404*. Now names www, plus `Disallow` for
+`/api` and the error/system routes and an explicit AI-crawler allowlist, so the
+decision is recorded rather than implied.
+
+**`noIndex` only ever reached case studies and posts.** `singletonPageQuery` did
+not select it, so a page could be dropped from the sitemap while still emitting
+a canonical and no robots meta — the two contradicting each other about the same
+URL. Now wired through all 16 singletonPage routes, including the four legal ones
+via `LegalLayout`. Verified by toggling `/faq`: robots meta appeared, canonical
+vanished, sitemap fell 176 → 175; unset and all three reverted.
+
+**`_id === pageId` is now true for all 14 documents.** `about`, `faq` and `home`
+carried random UUIDs, so they never opened through the desk's fixed-document
+shortcuts and were the reason a probe script had to guard by `pageId`. Migrated
+in a create+delete transaction after checking: no inbound references, no drafts,
+and all three target ids free — that last check is the one that would have
+prevented the `industries` collision. All content carried (FAQ's 10 items, both
+hero videos, SEO fields, `ogImagePath`). All three verified rendering live.
+
+**Still open:** `caseStudy.services` (0/60), `relatedPosts` (0/60),
+`post.syndicatedTo` (0/100) — populate or drop. `cookie-consent` and
+`trust-badges` sections. `--color-text-muted` 4.23:1 token decision. Notion: 43
+section rows and the dead content-types DB. And `singletonPage.route` /
+`siteSettings` Organization fields are empty — filling either improves output
+with no code change.
+
+
 ### 2. Semantic tag selector — *noted only*
 
 Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,
