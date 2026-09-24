@@ -80,5 +80,43 @@ export function initLazyVideo(): () => void {
   }
 
   videos.forEach((v) => io.observe(v));
-  return () => io.disconnect();
+
+  /**
+   * Safety net, for the same reason the `[data-reveal]` watchdog in BaseLayout
+   * exists: when this mechanism silently fails, the failure mode is a
+   * permanently blank box, which is worse than the download it was avoiding.
+   *
+   * IntersectionObserver does not run while a document is hidden. A page opened
+   * in a background tab, restored from a session, or prerendered therefore
+   * observes nothing until it is looked at. `visibilitychange` normally wakes it
+   * up — but "normally" is exactly the word that earned this net. Verified the
+   * hard way: an entire debugging pass of this file was spent chasing a
+   * "sitewide broken lazy loader" that was only ever a hidden test viewport.
+   *
+   * So: on becoming visible, and once a few seconds after load regardless,
+   * sweep for anything already inside the viewport and attach it directly.
+   * Cheap (a handful of getBoundingClientRect calls), idempotent (attach() is
+   * a no-op once src is set), and it only ever attaches what is genuinely on
+   * screen — it never widens what gets downloaded.
+   */
+  const sweep = () => {
+    for (const v of videos) {
+      if (v.getAttribute('src')) continue;
+      const r = v.getBoundingClientRect();
+      const visible = r.bottom > 0 && r.top < (window.innerHeight || 0) && r.width > 0;
+      if (!visible) continue;
+      attach(v);
+      v.addEventListener('loadeddata', () => v.play?.().catch(() => {}), { once: true });
+    }
+  };
+
+  const onVisible = () => { if (document.visibilityState === 'visible') sweep(); };
+  document.addEventListener('visibilitychange', onVisible);
+  const timer = window.setTimeout(sweep, 3000);
+
+  return () => {
+    io.disconnect();
+    document.removeEventListener('visibilitychange', onVisible);
+    clearTimeout(timer);
+  };
 }
