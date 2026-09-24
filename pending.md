@@ -372,6 +372,67 @@ Verified against file/line or a live response at the time. **Done** marks what h
 20. **463 hardcoded colour values** in `src/pages`, `src/components`, `src/layouts` — directly contradicts this file's earlier claim that the token migration removed them.
 
 
+### 1h. Phases 0–3 executed — *2026-09-24*
+
+Plan: `~/.claude/plans/snoopy-splashing-pearl.md`.
+
+**Phase 0** — merged `docs/consolidate-content-maps`; the seven superseded
+content-map files are actually gone from `main` now. `CHANGELOG.md` backfilled:
+it had recorded **none** of the nine commits that day, against `governance.md`
+§9 rule 11.
+
+**Phase 1** — case studies read their own SEO fields. 54 of 60 had a `seoTitle`
+and `seoDescription` that never reached the page; 19 an `ogImage` that never
+rendered. Three things verification caught that the plan had not predicted:
+- Every populated `caseStudy.ogImage` is a **plain Framer CDN URL string**, not
+  a Sanity image object. `urlFor()` on a string throws and 500'd the Kia page.
+- `thumbnailPath` is `.mp4` on 33 of 33 docs and `coverPath` on 4 — an `.mp4`
+  in `og:image` renders nothing. Fallback now gated on an image extension.
+- `adneto-merchant-platform` stores `team` as a string, which passes the
+  `?.length > 0` guard then throws on `.join`. **That page was already 500ing
+  before any change.**
+- `caseStudy.canonicalUrl` was queried and redirected on while **undeclared**.
+  44 of 60 carry a value, 13 drive a live 301. Declared. This also corrects
+  `docs/schema-template-section-component-level.md` §1 — there was no existing
+  field to clash with, so its proposed `seoCanonicalUrl` is unnecessary.
+- Draft preview added to case studies; `/api/preview` had only ever worked for posts.
+
+**Phase 2** — orphans wired.
+- `industryRef` (51 of 60) now feeds the `/footer/industries` drawer: **57 real
+  case studies across 29 industries**, replacing six invented strings each,
+  with the old prose as fallback where no work exists. Legacy stubs filtered out
+  via `canonicalUrl` — METCRED was listing twice.
+- **Deliberately not changed:** the meta row still shows the legacy `industry`
+  string. It and the ref disagree on 40 of 51 docs and the string is richer
+  (`'Telecommunications, Smart Home'` vs a ref of `'Smart Home'`). The ref is a
+  join key; the string is the display label.
+- `testimonial` wired to `/footer/reviews`, filtered to `subject in ["wugweb","both"]`.
+  **All 14 existing documents are `subject: vedanshu`** — personal LinkedIn
+  recommendations — and are deliberately not rendered here. They belong to
+  vedanshu's own site and go there via Neon. `source` gained `clutch`,
+  `designrush`, `goodfirms` so agency-collected reviews are typed on entry.
+
+**Phase 3** — `noIndex` was inert everywhere because `BaseLayout` emitted **no
+robots meta at all**. Now emitted, and the canonical is suppressed on those
+pages. Added to `caseStudy` and `post`: `ogImagePath`, `ogTitle`,
+`ogDescription`, `noIndex`, plus `canonicalUrl` on `post`. **JSON-LD shipped** —
+the site previously had none: Organization + WebSite sitewide (sameAs from the
+31 live `platformProfile` docs), BlogPosting on posts, CreativeWork on case
+studies. Exposed that **25 of 100 posts have a non-ISO `publishedAt`** from the
+WordPress import; normalised at render rather than mutating content.
+
+**Still deliberately unshipped:** `focusKeyword`, `secondaryKeywords`,
+`searchIntent`, `breadcrumbLabel`, `aiSummary`, `keyTakeaways`, `faqs`,
+`schemaType`, `lastReviewedAt` on `caseStudy`/`post`. They need a visible answer
+block and breadcrumbs first. `singletonPage` already demonstrated the failure
+mode — fourteen fields shipped a day ahead of their consumer.
+
+**Open:** Phase 2.3 (decide on `caseStudy.services` 0/60, `relatedPosts` 0/60,
+`post.syndicatedTo` 0/100), Phase 4 (`pageSection` consumer), Phase 5 (43 Notion
+section rows, dead content-types DB). Every `siteSettings` Organization field is
+still empty — JSON-LD prunes them, so filling them enriches it immediately.
+
+
 ### 2. Semantic tag selector — *noted only*
 
 Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,
