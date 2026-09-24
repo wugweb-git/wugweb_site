@@ -196,6 +196,8 @@ function resolveSection(id: string) {
 }
 
 const industriesSection = resolveSection('industries');
+const insightsSection = resolveSection('insights');
+const finalCtaSection = resolveSection('final-cta');
 // undefined = no doc, fall back to the hardcoded copy. null = deliberately off.
 const showIndustries = industriesSection !== null;
 const industriesTitle = industriesSection?.title || 'Industries We Empower';
@@ -203,6 +205,12 @@ const industriesSubtitle = industriesSection?.subtitle
   || 'From local businesses to international corporations, our clients all share one common understanding when it comes to building authentic brands: the power of research, strategy, creativity, and design.';
 const industriesCtaLabel = industriesSection?.ctaLabel || 'More about us';
 const industriesCtaHref = industriesSection?.ctaHref || '/about';
+
+// Both components already accept eyebrow/heading/ctaLabel/ctaHref with their
+// own defaults, so an absent document means undefined props and the component's
+// own copy — no duplicated fallback strings here.
+const showInsights = insightsSection !== null;
+const showFinalCta = finalCtaSection !== null;
 
 // Industries section — sourced from the Sanity industry master.
 const curatedIndustries = [
@@ -303,7 +311,15 @@ const globalIndustries = (sanityIndustries as string[]).length
 
         <!-- BLOG TEASER — suppressed on pages that carry their own insights
              block (see hideGlobalBlog), so the two never stack up together. -->
-        {!hideGlobalBlog && <InsightsBlock posts={teaserPosts} />}
+        {!hideGlobalBlog && showInsights && (
+          <InsightsBlock
+            posts={teaserPosts}
+            eyebrow={insightsSection?.eyebrow}
+            heading={insightsSection?.title}
+            ctaLabel={insightsSection?.ctaLabel}
+            ctaHref={insightsSection?.ctaHref}
+          />
+        )}
 
         {/* TRUST & RECOGNITION — removed from all pages for now (2026-09-23,
              user request). Component (TrustBadges.astro) is untouched;
@@ -313,7 +329,15 @@ const globalIndustries = (sanityIndustries as string[]).length
         <!-- FINAL CTA — device backdrop banner. Own component now
              (`src/components/FooterCTA.astro`); see that file's header for
              what moved and why. -->
-        <FooterCTA socialDiscs={socialDiscs} />
+        {showFinalCta && (
+          <FooterCTA
+            socialDiscs={socialDiscs}
+            heading={finalCtaSection?.title}
+            copy={finalCtaSection?.subtitle}
+            ctaLabel={finalCtaSection?.ctaLabel}
+            ctaHref={finalCtaSection?.ctaHref}
+          />
+        )}
       </>
     )}
 
