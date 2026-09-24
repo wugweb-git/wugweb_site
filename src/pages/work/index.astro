@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
 import { caseStudiesListQuery, singletonPageQuery } from '../../lib/queries';
-import { assetUrl } from '../../lib/assets';
+import { assetUrl, posterFor } from '../../lib/assets';
 
 const workPage = await sanityClient.fetch(singletonPageQuery, { pageId: 'work' }).catch(() => null);
 const rawCaseStudies = await sanityClient.fetch(caseStudiesListQuery).catch(() => []);
@@ -108,7 +108,7 @@ const workItems = caseStudies.map((cs: any) => {
       {workItems.map((w) => (
         <li data-reveal data-categories={w.pillar}>
           <a href={`/work/${w.slug}`}>
-            {w.video ? <video muted loop playsinline preload="none" data-src={w.video}></video> : <div class="work-placeholder"><span class="work-placeholder-initials" aria-hidden="true">{w.initials}</span><span class="work-placeholder-cat">{w.pillar}</span></div>}
+            {w.video ? <video muted loop playsinline preload="none" data-src={w.video} poster={posterFor(w.video)}></video> : <div class="work-placeholder"><span class="work-placeholder-initials" aria-hidden="true">{w.initials}</span><span class="work-placeholder-cat">{w.pillar}</span></div>}
             <div class="work-content">
               <p class="work-client">{w.client}</p>
               <h3>{w.title}</h3>

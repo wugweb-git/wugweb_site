@@ -3,6 +3,7 @@
 // stays available for later, just not driving the primary headline
 // (would fight the actual brand thesis statement below).
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { posterFor } from '../lib/assets';
 import { sanityClient } from '../lib/sanity';
 import { servicesListQuery, caseStudiesListQuery, postsListQuery, singletonPageQuery } from '../lib/queries';
 import { SERVICE_TAGS } from '../lib/service-tags-data';
@@ -131,7 +132,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 >
   <!-- HERO -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="none"
+    <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/more/home/home-poster.webp"
       src="/assets/more/home/home.mp4"></video>
     <div class="hero-overlay"></div>
 
@@ -192,7 +193,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
       {workItems.map((w) => (
         <li data-reveal>
           <a href={`/work/${w.slug}`}>
-            <video muted loop playsinline preload="none" data-src={w.video}></video>
+            <video muted loop playsinline preload="none" data-src={w.video} poster={posterFor(w.video)}></video>
             <p class="work-client">{w.client} — {w.category}</p>
             <h3>{w.title}</h3>
           </a>

@@ -66,3 +66,19 @@ export const R2_ASSETS = {
   bucket: 'wugweb-assets',
   keyPrefix: 'assets',
 } as const;
+
+/**
+ * Poster frame for a video path.
+ *
+ * `scripts/generate-video-posters.mjs` writes `<name>-poster.webp` beside every
+ * referenced .mp4, so the path is derivable rather than stored — there is no
+ * posterPath field to keep in sync, and adding a video plus running the script
+ * is enough.
+ *
+ * Returns '' for anything that is not an .mp4, so callers can pass a path
+ * straight through without checking.
+ */
+export function posterFor(videoPath?: string | null): string {
+  if (!videoPath || !/\.mp4$/i.test(videoPath)) return '';
+  return assetUrl(videoPath.replace(/\.mp4$/i, '-poster.webp'));
+}
