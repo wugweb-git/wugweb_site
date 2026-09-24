@@ -989,9 +989,14 @@ summary:focus-visible {
    visible before the click rather than only on it. Drawn with a mask so it
    inherits `currentColor` and works on the yellow CTA, the ghost button and
    the dark solid alike, with no extra markup and no icon dependency.
-   Excluded: anything that already gets the external ↗ below (no doubling),
-   the nav CTA (it has its own WhatsApp glyph), and icon-only controls. */
-.btn:not(.no-btn-icon):not(.nav-cta):not([target='_blank']):not([href^='mailto:']):not([href^='tel:'])::after {
+   Scoped to `a.btn[href]` on purpose: a link goes somewhere, so a right arrow
+   is honest. A <button> acts in place - submitting a form, opening a step,
+   pausing a subscription - and an arrow there reads as navigation that never
+   happens. So `Send Enquiry`, `Next Step`, `Pause subscription` and the rest
+   of the in-page controls get no arrow, without needing an opt-out each.
+   Also excluded: anything already carrying the external ↗ below (no
+   doubling), and the nav CTA, which has its own WhatsApp glyph. */
+a.btn[href]:not(.no-btn-icon):not(.nav-cta):not([target='_blank']):not([href^='mailto:']):not([href^='tel:'])::after {
   content: '';
   flex: 0 0 auto;
   width: 0.85em;
@@ -1002,7 +1007,7 @@ summary:focus-visible {
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 5l7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
   transition: transform var(--duration-fast) var(--easing-out);
 }
-.btn:not(.no-btn-icon):not(.nav-cta):not([target='_blank']):not([href^='mailto:']):not([href^='tel:']):hover::after {
+a.btn[href]:not(.no-btn-icon):not(.nav-cta):not([target='_blank']):not([href^='mailto:']):not([href^='tel:']):hover::after {
   transform: translateX(0.2em);
 }
 @media (prefers-reduced-motion: reduce) {
