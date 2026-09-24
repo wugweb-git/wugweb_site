@@ -6,7 +6,7 @@
 
 export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {
-    siteTitle, seoDescription, ogImage, language, copyright,
+    siteUrl, siteTitle, seoDescription, ogImage, language, copyright,
     socialLinks, contactEmail, companyName
   }
 `;
@@ -64,7 +64,7 @@ export const postBySlugQuery = `
 
 export const singletonPageQuery = `
   *[_type == "singletonPage" && pageId == $pageId && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
-    title, subtitle, seoTitle, seoDescription, ogImage, heroImage, heroPath, mediaPaths, language, body, items
+    title, subtitle, seoTitle, seoDescription, ogImage, ogImagePath, heroImage, heroPath, mediaPaths, language, body, items
   }
 `;
 

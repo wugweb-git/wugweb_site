@@ -14,6 +14,8 @@ interface Props {
   description?: string;
   seoTitle?: string;
   ogImage?: string;
+  /** R2/local path from singletonPage.ogImagePath; resolved and made absolute below. */
+  ogImagePath?: string;
   language?: string;
   hideGlobalSections?: boolean;
   /** Suppress only the global blog teaser — for pages that already carry their
@@ -22,7 +24,7 @@ interface Props {
   /** Same idea for the global industries block. */
   hideGlobalIndustries?: boolean;
 }
-const { title, description, seoTitle, ogImage, language } = Astro.props;
+const { title, description, seoTitle, ogImage, ogImagePath, language } = Astro.props;
 const hideGlobalSections = Boolean(Astro.props.hideGlobalSections);
 const hideGlobalBlog = hideGlobalSections || Boolean(Astro.props.hideGlobalBlog);
 const hideGlobalIndustries = hideGlobalSections || Boolean(Astro.props.hideGlobalIndustries);
@@ -46,7 +48,9 @@ const siteName = settings?.siteTitle || 'wugweb — Digital Experience Agency';
 const defaultDesc = settings?.seoDescription || 'Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.';
 const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
-  : '/brand/og-default.png';
+  // Salvaged from Framer 2026-09-24: a real 1200x630 image. The previous
+  // fallback, /brand/og-default.png, was 965x306 and cropped wrong everywhere.
+  : '/assets/og/default.jpg';
 // `/brand/favicon.svg` is `logo-small.svg`'s mark on a black rounded-square
 // backdrop — logo-small.svg itself stays transparent-background since it's
 // also used as a plain inline mark (services/[slug].astro's Approach CTA),
@@ -62,7 +66,22 @@ const siteEmail = settings?.contactEmail || 'hello@wugweb.com';
 
 const pageTitle = seoTitle || title;
 const metaDesc = description || defaultDesc;
-const metaOgImage = ogImage || defaultOgImage;
+// og:image must be an ABSOLUTE URL — a relative path is invalid per the Open
+// Graph spec and most scrapers drop it.
+// The .jpg, not the .webp: LinkedIn and several other scrapers still handle
+// WebP inconsistently. WebP copies live alongside for on-page use.
+//
+// The base is the CONFIGURED origin, never Astro.url.origin. This site answers
+// on both wugweb.com and wugweb.pages.dev, so deriving the origin from the
+// request emits a pages.dev canonical to anything crawling pages.dev — the
+// exact split-signal problem canonicals exist to prevent. siteSettings.siteUrl
+// is the source of truth; the literal is the floor until that field is filled.
+const canonicalOrigin = (settings?.siteUrl || 'https://wugweb.com').replace(/\/+$/, '');
+const rawOgImage = ogImage || (ogImagePath ? assetUrl(ogImagePath) : defaultOgImage);
+const metaOgImage = rawOgImage.startsWith('http')
+  ? rawOgImage
+  : new URL(rawOgImage, canonicalOrigin).href;
+const canonicalUrl = new URL(Astro.url.pathname, canonicalOrigin).href;
 
 // Global blog teaser — latest 3 posts, Sanity-driven with cover thumbnails.
 const teaserPosts = !hideGlobalBlog
@@ -101,6 +120,8 @@ const globalIndustries = (sanityIndustries as string[]).length
     <meta property="og:title" content={pageTitle + ' · wugweb'} />
     <meta property="og:description" content={metaDesc} />
     <meta property="og:image" content={metaOgImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- X / Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
