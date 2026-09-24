@@ -303,6 +303,75 @@ in v2.
 decision, not a wiring gap — they render correctly today.
 
 
+### 1f. Content-map docs consolidated — *2026-09-24*
+
+Read all nine overlapping docs in `docs/`. Seven were duplicates or fully actioned and are
+deleted; their live content moved to Notion **🧱 Content Map** (child of 🗺️ Sitemap).
+
+| File | Verdict |
+|---|---|
+| `site-content-map.md` / `.csv` | Canonical, code-generated 2026-09-24. **Content moved to Notion**, files deleted |
+| `content-map-notion-screenshots-merged.md` / `.csv` | Screenshot transcriptions, text `[cut off]` mid-sentence. Superseded |
+| `content-map-per-route-sections.csv` | Truncated subset of `site-content-map.csv` |
+| `content-map-field-level-caseStudy.csv` | Truncated copy of the same table in the merged `.md` |
+| `notion-site-pages-sync-2026-09-22.md` | **Fully actioned.** §1 SEO copy is live in Sanity (verified), §2 404 description is live at `404.astro:5`, §5 OG salvage done |
+| `site-diff.md` | Self-marked COMPLETED AND ARCHIVED 2026-08-07 |
+
+**Kept, deliberately:**
+
+- `content-assets.md` — referenced by `CLAUDE.md`, `README.md`, `governance.md`, `AGENTS.md`,
+  `.cursor/rules/free-tier-limits.mdc` and `docs/framer-full-audit.md`. Load-bearing, not
+  scratch. **It does carry one false claim** — "R2 cutover live — `PUBLIC_USE_R2_ASSETS=1`;
+  paths resolve to R2 public URLs" — contradicted by the header comment in
+  `src/lib/assets.ts`, which records those vars as dead and everything serving relatively
+  from `public/assets`. Corrected in place rather than deleted.
+- `frontend-audit-2026-09-04.md` — **not stale.** 21 findings, most still open and not
+  recorded anywhere else. Preserved below, then the file deleted.
+
+**Corrected on record:** the merged content map claimed `caseStudy.impact[]` is fetched but
+never rendered. **False** — it renders at `work/[slug].astro:158`, as do `partner` (:94) and
+`team` (:98). The real orphans, verified against live Sanity:
+
+- **`industryRef` — filled on 51 of 60 case studies, not in the query or any template.**
+- **`testimonial` — 14 real LinkedIn recommendations, zero renders anywhere in `src/`.**
+  Highest-value orphan: `/footer/reviews` exists and is thin, showing hardcoded platform
+  links with no quotes on it.
+- Never filled by anyone: `caseStudy.services` (0/60), `caseStudy.relatedPosts` (0/60),
+  `post.syndicatedTo` (0/100).
+
+### 1g. Frontend audit findings preserved from the deleted file (2026-09-04)
+
+Verified against file/line or a live response at the time. **Done** marks what has since landed.
+
+**P0**
+1. Invisible text — `--neutral-1` `#F4F4F4` background with `--fg` `#F4F4F4` text = 1:1 contrast, in 18 places (`services/index.astro:121–131`, `blog/[slug].astro:302/304/305`, plus `index`, `about`, `blog`, `work`, `footer/impact`). Needs a `--surface-inverse` / `--fg-on-inverse` pair and a CI contrast check.
+2. `[data-reveal] { opacity: 0 }` (`global.css:750`) with no fallback — 41 homepage elements, including legal-page `<h1>`s, stay invisible if GSAP fails. No `<noscript>` anywhere. Needs `@media (scripting: none)` + a `.js-ready` class.
+3. ~~`og:image` relative~~ — **done 2026-09-24.**
+4. "Stats" that are ordinals, not stats.
+
+**P1 — performance**
+5. Nothing is prerendered — zero `export const prerender`; every request SSRs with 3–4 blocking Sanity calls, TTFB peaks 1.31 s.
+6. Every asset returns `max-age=0, must-revalidate`.
+7. 9.85 MB of autoplaying video re-downloaded on every homepage visit — drop `autoplay`, add posters, re-encode.
+8. Asset library 698 MB, 112 MB duplicated; PNG/JPG → WebP.
+9. Render-blocking Google Fonts — self-host.
+10. CSS fragmented across 22 inline `<style>` blocks.
+
+**P2 — SEO**
+11. ~~Zero canonical / `og:url`~~ — **done 2026-09-24.** Structured data still absent.
+12. ~~Duplicate page at two indexable URLs~~ — **done**, `/footer/refund-policy` is a 301 stub.
+13. The advertised sitemap does not exist — `robots.txt` still points at a 404 on the Pages deployment.
+14. Production domain is `wugweb.pages.dev` — attach `wugweb.com` or `noindex` pages.dev.
+
+**P3 — security, privacy, correctness**
+15. Zero security headers — no `public/_headers` file exists.
+16. Tracking cookie set before consent; the consent UI does nothing. Either wire analytics up or remove the consent theatre and the `visitor_id` cookie.
+17. `set-cookie` on every response defeats edge caching.
+18. Preview deployment bindings are broken.
+19. No skip-to-content link.
+20. **463 hardcoded colour values** in `src/pages`, `src/components`, `src/layouts` — directly contradicts this file's earlier claim that the token migration removed them.
+
+
 ### 2. Semantic tag selector — *noted only*
 
 Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,

@@ -14,7 +14,7 @@ Rebuild the **"What we can do"** section on `/services/brand` as an expanding gl
 - `kits_design_system/docs/design.md` and `kits_design_system/docs/tokens/` — the design system is the single source of truth.
 - `src/styles/global.css` — all tokens live here.
 - `src/pages/services/[slug].astro` — the file you're editing.
-- `docs/frontend-audit-2026-09-04.md` — **read the P0 and P1 findings before you write CSS.** This site currently has a 1.31 s TTFB and ships 9.85 MB of autoplay video on the homepage. Do not make it worse.
+- `pending.md` §1g (frontend audit, 2026-09-04) — **read the P0 and P1 findings before you write CSS.** This site currently has a 1.31 s TTFB and ships 9.85 MB of autoplay video on the homepage. Do not make it worse.
 
 ## Exactly what to replace
 
