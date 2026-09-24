@@ -366,6 +366,13 @@ const otherCases = await Promise.all(others.map((s: any) =>
     margin-inline: auto;
   }
 
+  /* Every case-section carries an id (about/problem/approach/...) as a
+     deep-link target - without this, #approach etc. lands flush under
+     the sticky header instead of clear of it. */
+  .case-section {
+    scroll-margin-top: calc(var(--nav-height) + var(--gap-lg));
+  }
+
   .case-heading {
     font-size: var(--t-h3);
     font-weight: var(--font-weight-semibold);
@@ -514,6 +521,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
   .case-gallery-section {
     padding-block: var(--space-section-md) var(--space-section-lg);
     border-top: var(--stroke-thin) solid var(--line);
+    scroll-margin-top: calc(var(--nav-height) + var(--gap-lg));
   }
   .case-gallery-section .case-heading {
     max-width: none;
