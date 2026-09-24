@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
-import { sanityClient } from '../../lib/sanity';
+import { sanityClient, urlFor } from '../../lib/sanity';
 import { caseStudyBySlugQuery } from '../../lib/queries';
 import { assetUrl } from '../../lib/assets';
 
@@ -19,6 +19,36 @@ if (work.canonicalUrl && work.canonicalUrl !== `/work/${slug}`) {
 }
 
 const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
+
+// SEO. caseStudyBySlugQuery has always selected seoTitle/seoDescription/ogImage
+// (queries.ts:43) but this template ignored all three and hardcoded work.title /
+// work.summary into BaseLayout — so 54 of 60 published case studies carried a
+// seoTitle and seoDescription that never reached the page, and 19 an ogImage that
+// never rendered. Mirrors the blog pattern at blog/[slug].astro:31-35.
+// coverSrc may be a relative path; BaseLayout absolutises any non-http value.
+const pageTitle = work.seoTitle || work.title;
+const pageDescription = (work.seoDescription || work.summary || work.about || '').slice(0, 160);
+
+// og:image resolution is deliberately not the blog's. Measured across all 60
+// published case studies: every one of the 19 populated `ogImage` values is a
+// plain Framer CDN URL string, not a Sanity image object — so urlFor() would
+// throw ("Malformed asset _ref"), and a first pass at this did exactly that,
+// 500-ing the page. The object branch is kept only for docs authored later
+// through the Studio image picker.
+//
+// The path fallback must also reject video: thumbnailPath is .mp4 on 33 of 33
+// docs that have one, and coverPath on 4 of 33 — an .mp4 in og:image renders
+// nothing in any scraper. Anything not an image falls through to the sitewide
+// default in BaseLayout.
+// Framer-hosted OG URLs are Known Technical Debt #3 (CLAUDE.md); they work
+// today and beat having no preview, but they keep the Framer CDN dependency.
+const IMAGE_EXT = /\.(jpe?g|png|webp|avif|gif)$/i;
+const ogFromPath = work.coverPath && IMAGE_EXT.test(work.coverPath) ? coverSrc : '';
+const ogImageUrl = typeof work.ogImage === 'string' && work.ogImage
+  ? work.ogImage
+  : work.ogImage?.asset
+    ? urlFor(work.ogImage).width(1200).height(630).url()
+    : ogFromPath;
 const clientLogoSrc = work.clientRef?.logoPath ? assetUrl(work.clientRef.logoPath) : '';
 // Titles like "Bankco – Revolutionizing Financial Engagement..." repeat the
 // brand/product name that's already shown in the meta row — strip it, but
@@ -73,7 +103,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 )).then(r => r.filter(Boolean));
 ---
 
-<BaseLayout title={`${work.title} — Wugweb Work`} description={(work.summary || work.about || '').slice(0, 160)}>
+<BaseLayout title={`${work.title} — Wugweb Work`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl}>
   <section class="work-detail-hero">
     <div class="wrap">
       <h1>{displayTitle}</h1>
@@ -95,7 +125,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
         {work.timeline && <div><span class="meta-label">Timeline</span><span>{work.timeline}</span></div>}
         {work.disciplines?.length > 0 && <div><span class="meta-label">Disciplines</span><span>{work.disciplines.join(', ')}</span></div>}
         {work.industry && <div><span class="meta-label">Industry</span><span>{work.industry}</span></div>}
-        {work.team?.length > 0 && <div><span class="meta-label">Team</span><span>{work.team.join(', ')}</span></div>}
+        {work.team && (Array.isArray(work.team) ? work.team.length > 0 : true) && <div><span class="meta-label">Team</span><span>{Array.isArray(work.team) ? work.team.join(', ') : work.team}</span></div>}
       </div>
     </div>
   </section>

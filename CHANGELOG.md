@@ -9,6 +9,24 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — SEO / AEO content tiers (2026-09-24)
+- **Page tier: SEO + AI·Answers field groups on `singletonPage`** (`sanity/schemaTypes/singletonPage.ts`) — 30 fields in three Studio tabs. SEO: `ogImagePath`, `ogTitle`, `ogDescription`, `noIndex`, `canonicalUrl`, `focusKeyword`, `secondaryKeywords`, `searchIntent`, `breadcrumbLabel`. AI·Answers: `aiSummary`, `keyTakeaways`, `faqs`, `schemaType`, `lastReviewedAt`. Plus `route`, `httpStatus`, `redirectTo` — route is stored rather than derived because several `pageId`s do not match their path (`contact` → `/contact-us`, `terms-of-use` → `/termsofuse`). Deliberately excluded: `changefreq`, `priority` (Google ignores them) and any meta-keywords output.
+- **Site tier: `siteSettings` extended** (`sanity/schemaTypes/siteSettings.ts`) — grouped Identity / SEO / Social & Images / Organization / AI·Answers. `siteUrl` (the prerequisite for canonical tags, absolute `og:image` and a sitemap), `titleTemplate`, per-bot `crawlerPolicy` for robots.txt, `sitemapExcludePaths`, Organization/JSON-LD inputs, `aiSummary`.
+- **Section tier: `pageSection`** (`sanity/schemaTypes/pageSection.ts`) — 13 fields, 5 `sectionId` options, plus a "Global Sections" desk list (`deskStructure.ts:222-243`). Schema only; no template reads it yet.
+- **`reviews` added to the `pageId` enum** — `src/pages/footer/reviews.astro` already queried `singletonPageQuery` with `pageId: 'reviews'`, but the value was not in the enum, so the lookup could never match and the route silently fell through to hardcoded copy on every request.
+- **Framer OG art salvaged** — six images recovered from `framerusercontent.com`, all already 1200×630. Originals archived in `assets/seo/og-framer-originals/`; optimised `.webp` (q82, ~85% smaller) and `.jpg` (q72) shipped in `public/assets/og/`. Both formats on purpose: WebP for on-page use, JPEG for `og:image`, because LinkedIn and several other scrapers still handle WebP inconsistently. Only five distinct images exist — Home's "custom" Framer OG is byte-identical to the sitewide fallback.
+- **`ogImagePath` written to 27 Sanity documents** — 14 `singletonPage` + 13 `service` in one transaction, and wired end to end: `singletonPageQuery` selects it, `BaseLayout` takes it as a prop and resolves it through `assetUrl()`, and the five routes with distinct art pass it. Services recycle the hub image; no service document carries a `coverPath` or `galleryPaths`.
+
+### Fixed — SEO (2026-09-24)
+- **`og:image` pointed at a host that 404s** (`src/layouts/BaseLayout.astro`) — the URL was built on the canonical origin, so every page emitted `https://www.wugweb.com/assets/og/<page>.jpg`, and www.wugweb.com is still the old Framer build with no `/assets/og/`. Verified 404 in production. `og:image` now resolves against `Astro.url.origin`, the host that actually served the page; canonical keeps naming www. The two converge once wugweb.com serves this build.
+- **`og:image` was a relative path and the fallback was the wrong size** — relative paths are invalid per the Open Graph spec and most scrapers drop them. Now absolute, and pointing at a real 1200×630 image instead of `public/brand/og-default.png`, which was 965×306.
+- **Added `<link rel="canonical">` and `og:url`** — the site previously had neither on any page.
+
+### Docs / Chore (2026-09-24)
+- **Nine overlapping `docs/` content maps consolidated to two.** Deleted seven that were duplicates or fully actioned; their live content moved to the Notion 🧱 Content Map page. `frontend-audit-2026-09-04.md` was *not* stale — its 21 findings were preserved verbatim into `pending.md` §1g before deletion.
+- **Two false claims corrected.** `docs/content-assets.md` claimed the R2 cutover was live; `src/lib/assets.ts` records those vars as dead and every path serving relatively from `public/assets`. The content map claimed `caseStudy.impact[]` renders nowhere; it renders at `work/[slug].astro:158`, as do `partner` (:94) and `team` (:98).
+- **`CLAUDE.md` Technical Debt #4 corrected** — the Sanity token is an Editor (`/users/me` → `roles: ['editor']`), not a Viewer. A 27-document patch transaction committed successfully. The old claim that it could not write was wrong.
+
 ### Added
 - **Brand Vector Asset Ingestion** (`scripts/ingest-brand-assets.mjs`) — Ingested 9 official vector SVGs and brand assets (Clutch, DesignRush, GoodFirms, TopDevelopers, Wugweb Large/Small logo lockups, OG Image, and Apple/PWA icons) into the Sanity `brandAsset` collection with inline SVG markup, usage specs, and variant tags.
 - **Sanity Custom Document Badges** (`sanity/badges/documentBadges.ts`) — Real-time badge indicators in Studio for SEO Health (`SEO Ready`, `Short SEO Desc`, `Needs SEO`), Reading Time / Word Count calculation for posts, and R2 Media Asset status mapping (`R2 Media`, `Sanity CDN Media`, `No Cover Media`).
