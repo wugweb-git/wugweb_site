@@ -109,6 +109,5 @@ See [pending.md](./pending.md) for open tasks and blockers.
 - [docs/r2-assets.md](./docs/r2-assets.md) — R2 upload + free-tier rules
 - [credentials.md](./credentials.md) — Security-sensitive notes (token rotation pending)
 - [design.md](./design.md) — Design system specification
-- [docs/site-diff.md](./docs/site-diff.md) — Gap analysis vs live site
 - [docs/admindesign.md](./docs/admindesign.md) — Sanity Studio redesign brief
 - [LOCAL.md.example](./LOCAL.md.example) — Template for local-only notes/secrets

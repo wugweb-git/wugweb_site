@@ -82,7 +82,7 @@ Notion DP3 columns are mislabeled. Import uses:
 ## Frontend
 
 - Prefer `*Path` / `iconPath` via `assetUrl()` in `src/lib/assets.ts`
-- **R2 cutover live** — `PUBLIC_USE_R2_ASSETS=1`; paths resolve to R2 public URLs
+- **R2 cutover is NOT live** (corrected 2026-09-24). `PUBLIC_R2_ASSETS_BASE` / `PUBLIC_USE_R2_ASSETS` in `wrangler.jsonc` are dead: `import.meta.env.PUBLIC_*` is a Vite build-time replacement from `.env`, not a Worker runtime var, and nothing in `src/` reads them. Every path resolves relatively from `public/assets/`. See the header comment in `src/lib/assets.ts`.
 - About stack chips + service toolkit chips read tech-stack `iconPath` when present
 - Service detail pages merge Sanity `why` / `tools` / `approach` over hardcoded fallbacks; Framer slugs (e.g. `experience-design`) are routable
 
