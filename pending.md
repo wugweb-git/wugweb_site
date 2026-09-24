@@ -889,3 +889,69 @@ Font assets return `content-type: font/woff2` and
 15, 18, 19, 20. Stale: 17. **Open: 8** (assets — user instruction is to do
 these last), **14** (production domain — DNS, do not touch), **16** (consent vs
 analytics — user decision, and the user has noted gtag/GA were already shared).
+
+### 1p. GA4 wired, and a staging URL — *2026-09-24*
+
+**Audit finding 16, analytics half — done.** The banner controlled nothing, and
+literally so: `applyScripts()` dispatched `wugweb-analytics-allowed` and **no
+listener existed anywhere in the codebase**. Accept and Reject produced the
+same outcome. `src/lib/analytics.ts` is that listener.
+
+Two gates, both must pass before a byte of gtag is fetched:
+
+1. **Host** — `wugweb.com` / `www.wugweb.com` only, per instruction. pages.dev,
+   `uat.wugweb.com`, the uat branch alias, per-branch previews and localhost are
+   all excluded. Staging traffic in a production GA4 property inflates sessions,
+   poisons conversion rates, and cannot be retroactively removed.
+2. **Consent** — no script tag, no request, no dataLayer until accept.
+   Deliberately **not** Consent Mode's "load denied, upgrade later": that still
+   fetches gtag and still pings Google on every page view, and the banner says
+   reject means no tracking.
+
+Consequence worth remembering: because www still serves Framer (which carries
+its own copy of this tag), **this code is correct and dormant simultaneously**.
+It reports nothing from anywhere today and starts the moment DNS moves.
+
+| Trigger | Event |
+|---|---|
+| `/thank-you` | `generate_lead` |
+| `/contact-error` | `form_error` |
+| `/footer/subscription?subscribed=1` | `sign_up` |
+| Nav "Let's Talk" ×2 | `cta_click` |
+| Contact chips, menu mailto/tel | `contact_click` |
+
+**Conversions key off the redirect target, not the submit click.** Both forms
+are plain `method="POST"`, so the browser navigates away on submit and a
+submit-time event races that navigation. The redirect is only reached when the
+server actually accepted. The checks run inside `loadGtag`, not at init, so a
+visitor who accepts consent *while already on* `/thank-you` is still counted.
+
+**Clicks are declarative** — `data-gtag-event` plus any `data-gtag-*` as
+parameters, one delegated listener. The nav CTAs mattered most: internal links,
+so GA4 Enhanced Measurement recorded nothing for them at all. Scroll depth,
+outbound clicks, downloads and video are left to Enhanced Measurement.
+
+Verified on the **deployed build**: 6 tracked elements present, consent stored
+as accepted, CTAs clicked → **0 GA requests, gtag undefined, dataLayer empty**
+on pages.dev. The host gate holds in production.
+
+**Staging.** `https://uat.wugweb.pages.dev` is live (branch `uat`, kept
+fast-forwarded from main). The preview-bindings fix in §1o is what makes it
+usable — before it, preview deployments had no R2, KV or vars.
+
+For `uat.wugweb.com` itself: **I was wrong in session that Pages needs the zone
+on Cloudflare.** It does not — Pages supports custom domains on external DNS for
+subdomains (Workers does not; Pages does). No nameserver move, no Business plan.
+Add `uat.wugweb.com` in the Pages dashboard **first**, then at Hostinger replace
+the existing `uat` CNAME (currently → `wugweb.com`) with `uat` → `wugweb.pages.dev`.
+A CNAME created without associating the domain first fails to resolve.
+
+**Still open on finding 16:** `src/middleware.ts` mints a `visitor_id` UUID
+cookie on every request, one-year lifetime, before any consent. Its only reader
+is `/api/personalize`, which **nothing in the frontend calls** — grepped, zero
+callers. A persistent identifier with consent exposure and no current product
+benefit. Removal is a product decision, not taken.
+
+**Also not done:** `robots.txt` does not exclude `uat` once it is on a real
+domain. Canonicals point at `www.wugweb.com` so duplicate content is covered,
+but a host-based noindex would be better.

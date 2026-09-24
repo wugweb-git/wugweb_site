@@ -9,6 +9,13 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — Analytics (2026-09-24)
+- **GA4 (`G-W5WJ1PMTKD`) wired behind two gates** (`src/lib/analytics.ts`) — host (`wugweb.com` / `www.wugweb.com` only) and consent (no script, no request, no dataLayer until accept). Closes the analytics half of audit finding 16: `applyScripts()` had been dispatching `wugweb-analytics-allowed` with no listener anywhere, so Accept and Reject did the same thing.
+- **Conversion events** — `generate_lead` (`/thank-you`), `form_error` (`/contact-error`), `sign_up` (`/footer/subscription?subscribed=1`). Keyed off the server redirect rather than the submit click, because both forms are plain `method="POST"` and a submit-time event races the navigation.
+- **Declarative click tracking** — `data-gtag-event` plus any `data-gtag-*` as parameters, one delegated listener. Wired to both nav "Let's Talk" CTAs (internal links, invisible to Enhanced Measurement), the contact-page email/WhatsApp chips, and the mobile menu mailto/tel.
+- **`?ga_debug=1`** sets `debug_mode` for GA4 DebugView.
+- **Staging: `uat` branch → `https://uat.wugweb.pages.dev`.** Usable because of the `env.preview` bindings fix; previews previously had no R2, KV or vars.
+
 ### Performance (2026-09-24)
 - **Video posters for all 108 referenced videos** (`scripts/generate-video-posters.mjs`, `npm run posters`) — 2.8 MB total, 27 KB average, against 228.7 MB of video. Frame taken at 1 s rather than 0 s because the clips fade in from black; generated at 1280 px (2× a 640 px card) for dense phone screens. Path is derived (`<name>-poster.webp`), so there is no field to keep in sync. Homepage at scroll 0 now pulls 6 posters / 160 KB where it previously pulled 12.3 MB of video.
 - **Fonts self-hosted** (`public/fonts/`, `src/layouts/BaseLayout.astro`) — the render-blocking `fonts.googleapis.com` stylesheet and its two preconnects are gone. The exact woff2 files Google served (Inter Tight v9, Fragment Mono v6) are committed, with `@font-face` inline in the head; latin and latin-ext only, kept lazy by `unicode-range`. Measured: 2 requests, 59 KB, zero third-party font origins. Audit finding 9.
