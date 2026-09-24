@@ -568,6 +568,41 @@ section rows and the dead content-types DB. And `singletonPage.route` /
 with no code change.
 
 
+### 1l. Skip link + `<main>` landmark — *2026-09-24*
+
+Audit finding 19, and the first real piece of the landmark work noted in §2.
+
+The site had **no `<main>` element anywhere** and no skip link. A screen reader
+had no primary landmark to jump to, and a keyboard user tabbed through the whole
+header on every page — 13 focusable elements on `/about` before reaching page
+content.
+
+Two details that matter and are easy to get wrong:
+
+- The link is hidden by `transform`, **not `.sr-only`**. `.sr-only` clips the
+  element even while focused, producing a focus ring around nothing — worse than
+  no skip link, because the user cannot see where focus went.
+- `<main id="main" tabindex="-1">`. Without the tabindex the browser scrolls to
+  the anchor but leaves focus behind, and the next Tab returns to the header the
+  user just skipped.
+
+The global sections (partners, industries, insights, final CTA) sit **outside**
+`<main>` — they are site chrome, not page content. `scroll-margin-top` reuses the
+value the in-page anchors already use (commit `eaad7f68`), resolving to 110px, so
+a skip lands below the sticky header rather than under it.
+
+Verified with real keyboard input, not just markup: first Tab focuses the link
+and it slides into view, activation moves focus to `MAIN#main` and sets the hash,
+and the following Tab lands inside main. Live in production.
+
+**Remaining §1g findings, unowned:** 5 (nothing prerendered), 7 (9.85 MB of
+autoplaying video on the homepage), 8 (112 MB duplicated assets, PNG/JPG → WebP),
+9 (render-blocking Google Fonts), 10 (CSS across 22 inline blocks), 14 (production
+domain is pages.dev), 16 (`visitor_id` cookie set before consent and the consent
+UI does nothing), 17, 18, 20 (463 hardcoded colour values). Findings 1, 2, 3, 6,
+11, 12, 13, 15 and 19 are now done.
+
+
 ### 2. Semantic tag selector — *noted only*
 
 Framer lets each frame pick its HTML tag: `article, aside, button, div, figcaption,
