@@ -873,11 +873,11 @@ a { color: inherit; }
      tablet-width "mobile" viewport once it's not block-level anymore. */
   max-width: 28rem;
   border-radius: var(--radius-sm);
-  border: var(--stroke-thin) solid transparent;
+  /* No stroke. Buttons are distinguished by surface, not outline. */
+  border: 0;
   background: var(--neutral-6);
   color: var(--fg);
-  transition: border-color var(--duration-fast) var(--easing-out),
-              background var(--duration-fast) var(--easing-out),
+  transition: background var(--duration-fast) var(--easing-out),
               color var(--duration-fast) var(--easing-out),
               transform var(--duration-instant) var(--easing-out);
   cursor: pointer;
@@ -949,14 +949,12 @@ summary:focus-visible {
 
 .btn-solid {
   background: var(--accent);
-  border-color: var(--accent);
   color: var(--color-surface-page);
 }
 .btn-solid:hover {
   /* Was a white fill. Hover lifts and lightens slightly - no white, no
      coloured outline. */
   background: var(--neutral-2);
-  border-color: var(--neutral-2);
   color: var(--color-surface-page);
   transform: translateY(-1px);
 }
@@ -987,6 +985,30 @@ summary:focus-visible {
    departure. Any single link that genuinely shouldn't carry it (a
    share/social icon-button where the icon already is the affordance) can
    opt out with .no-external-icon. */
+/* Buttons carry a trailing arrow that moves on hover, so the affordance is
+   visible before the click rather than only on it. Drawn with a mask so it
+   inherits `currentColor` and works on the yellow CTA, the ghost button and
+   the dark solid alike, with no extra markup and no icon dependency.
+   Excluded: anything that already gets the external ↗ below (no doubling),
+   the nav CTA (it has its own WhatsApp glyph), and icon-only controls. */
+.btn:not(.no-btn-icon):not(.nav-cta):not([target='_blank']):not([href^='mailto:']):not([href^='tel:'])::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 0.85em;
+  height: 0.85em;
+  margin-left: 0.15em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 5l7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 5l7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform var(--duration-fast) var(--easing-out);
+}
+.btn:not(.no-btn-icon):not(.nav-cta):not([target='_blank']):not([href^='mailto:']):not([href^='tel:']):hover::after {
+  transform: translateX(0.2em);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn::after { transition: none; }
+}
+
 a[target='_blank']:not(.no-external-icon)::after,
 a[href^='mailto:']:not(.no-external-icon)::after,
 a[href^='tel:']:not(.no-external-icon)::after {

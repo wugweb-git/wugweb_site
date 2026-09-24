@@ -271,7 +271,7 @@ if (columnSignatures.length > 1 && new Set(columnSignatures).size === 1) {
     padding: var(--bento-pad);
     overflow: hidden;
     background: var(--surface);
-    border: var(--stroke-thin) solid var(--line);
+    border: 0;
     border-radius: var(--radius-2xl);
     color: var(--fg);
     text-decoration: none;
@@ -406,7 +406,7 @@ if (columnSignatures.length > 1 && new Set(columnSignatures).size === 1) {
   /* ── tones ── */
   /* Explicit dark ink on the light tile — never --fg inheriting onto a near-white
      surface, which is a 1:1 contrast ratio. */
-  .bento-tile.is-light { background: var(--neutral-1); border-color: transparent; color: var(--color-ash); }
+  .bento-tile.is-light { background: var(--neutral-1); color: var(--color-ash); }
   .bento-tile.is-light h3 { color: var(--color-ash); }
   .bento-tile.is-light p { color: color-mix(in srgb, var(--color-ash) 72%, transparent); }
   .bento-tile.is-light .bento-media.is-cover::after {
@@ -418,7 +418,7 @@ if (columnSignatures.length > 1 && new Set(columnSignatures).size === 1) {
       transparent 100%
     );
   }
-  .bento-tile.is-accent { background: var(--color-accent-primary); border-color: transparent; color: var(--neutral-10); }
+  .bento-tile.is-accent { background: var(--color-accent-primary); color: var(--neutral-10); }
   .bento-tile.is-accent h3, .bento-tile.is-accent p { color: var(--neutral-10); }
   .bento-tile.is-accent p { opacity: var(--opacity-soft); }
 
@@ -489,7 +489,7 @@ if (columnSignatures.length > 1 && new Set(columnSignatures).size === 1) {
   }
   .bento-list li:first-child { border-top: 0; }
   .bento-list svg { width: var(--gap-4); height: var(--gap-4); flex-shrink: 0; opacity: var(--opacity-soft); }
-  .bento-tile.is-light .bento-list li { border-color: color-mix(in srgb, var(--color-ash) 14%, transparent); }
+  .bento-tile.is-light .bento-list li { }
 
   /* Floating chips over cover media */
   .bento-chips {
@@ -541,7 +541,6 @@ if (columnSignatures.length > 1 && new Set(columnSignatures).size === 1) {
       var(--shadow-md);
   }
   .bento-tile:hover {
-    border-color: var(--line-strong);
     box-shadow:
       inset 0 1px 0 color-mix(in srgb, var(--neutral-0) 16%, transparent),
       inset 0 -1px 0 color-mix(in srgb, var(--neutral-10) 55%, transparent),

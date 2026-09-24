@@ -303,7 +303,7 @@ if (!service) {
     <section class="detail-hero">
       <div class="hero-glow" data-reveal></div>
       <div class="wrap detail-hero-content">
-        <p class="eyebrow"><a href="/services">Services</a></p>
+        
         <h1 class="page-title" data-reveal>{service.title}</h1>
         <p class="hero-sub" data-reveal>{service.subtitle}</p>
         <p class="hero-text" data-reveal>{service.heroText}</p>
@@ -356,7 +356,7 @@ if (!service) {
 
     {!showcaseEnabled && (
       <section class="wrap capabilities-section">
-        <p class="eyebrow" data-reveal>What we can do</p>
+        
         <div class="caps-grouped">
           {(safeArr(service.capabilities, [])).map((c) => (
             <div class="glass-panel cap-group" data-reveal>
@@ -483,7 +483,7 @@ if (!service) {
       />
     ) : (service.framework?.length > 0) && (
       <section class="wrap framework-section">
-        <p class="eyebrow" data-reveal>How we work</p>
+        
         <h2 data-reveal>Our {service.title} Framework</h2>
         <div class="framework-flow">
           {service.framework.map((f) => (
@@ -504,7 +504,7 @@ if (!service) {
     {(safeArr(service.tools, null)) && (
     <!-- TOOLKIT -->
     <section class="wrap toolkit-section">
-      <p class="eyebrow" data-reveal>Our Design Toolkit</p>
+      
       <h2 data-reveal>Wugweb leverages a diverse toolkit of industry-leading technologies to craft exceptional user experiences.</h2>
       <div class="toolkit-grid">
         {service.tools.map((t) => (
@@ -1081,8 +1081,8 @@ if (!service) {
   .svc-work-card, .svc-insight-card {
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
   }
-  .svc-work-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--neutral-0) 25%, transparent); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
-  .svc-insight-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--neutral-0) 25%, transparent); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+  .svc-work-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+  .svc-insight-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
 
   .svc-work-card h3, .svc-insight-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--lh-h5); position: relative; z-index: 1;}
   .svc-work-card p { margin-top: var(--gap-2); font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); position: relative; z-index: 1;}

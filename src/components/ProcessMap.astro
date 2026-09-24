@@ -248,7 +248,7 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
        heading with a picture under it. -->
   <figure class="pm-panel" data-process-map>
     <header class="pm-title">
-      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      
       {heading && <h2>{heading}</h2>}
       {lede && <p class="pm-lede">{lede}</p>}
     </header>
@@ -529,7 +529,7 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
     display: flex; align-items: center; gap: var(--gap-2);
     padding: var(--gap-2) var(--gap-3);
     background: color-mix(in srgb, var(--neutral-8) 92%, transparent);
-    border: var(--stroke-thin) solid var(--line);
+    border: 0;
     border-radius: var(--radius-lg);
     box-shadow: inset 0 1px 0 color-mix(in srgb, var(--neutral-0) 7%, transparent), var(--shadow-md);
     font-size: var(--fluid-label);
@@ -573,12 +573,11 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
   .pm-figure.is-focused .pm-hub.is-lit { filter: none; }
   .pm-figure.is-focused .pm-ring.is-lit { stroke: color-mix(in srgb, var(--neutral-2) 34%, transparent); }
   .pm-figure.is-focused .pm-sat.is-lit .pm-chip {
-    border-color: color-mix(in srgb, var(--neutral-2) 40%, transparent);
   }
 
   /* The pointer's own target wins over the rest of its phase. */
   .pm-figure .pm-sat:hover { filter: none !important; z-index: var(--layer-popover); }
-  .pm-figure .pm-sat:hover .pm-chip { border-color: color-mix(in srgb, var(--neutral-2) 65%, transparent); }
+  .pm-figure .pm-sat:hover .pm-chip { }
   .pm-figure .pm-sat:hover .pm-icon { stroke: var(--neutral-2); }
 
   .pm-hub { cursor: pointer; }

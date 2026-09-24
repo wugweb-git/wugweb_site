@@ -91,7 +91,7 @@ const workItems = caseStudies.map((cs: any) => {
 <BaseLayout title={workTitle} description={workDescription}>
   <section class="work-hero">
     <div class="wrap work-hero-content">
-      <p class="eyebrow" data-reveal>Case Studies</p>
+      
       <h1 class="page-title" data-reveal>What We've Built</h1>
       <p data-reveal>We create digital solutions that are as functional as they are beautiful.</p>
     </div>
@@ -191,15 +191,14 @@ const workItems = caseStudies.map((cs: any) => {
     font-size: var(--t-micro);
     padding: var(--gap-2) var(--gap-5);
     border-radius: var(--r-pill);
-    border: var(--stroke-thin) solid var(--line);
+    border: 0;
     background: transparent;
     color: var(--fg-muted);
     cursor: pointer;
     transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
   }
-  .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
+  .filter-chip:hover { color: var(--fg); }
   .filter-chip.active {
-    border-color: var(--color-accent-primary);
     color: var(--neutral-0);
     background: var(--color-accent-primary);
   }

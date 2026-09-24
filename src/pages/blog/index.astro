@@ -90,7 +90,7 @@ function fmtDate(d?: string): string {
 <BaseLayout title={blogTitle} description={blogDescription}>
   <section class="blog-hero">
     <div class="wrap blog-hero-content">
-      <p class="eyebrow" data-reveal>Insights</p>
+      
       <h1 class="page-title" data-reveal>Notes on design, product, and growth.</h1>
       <p data-reveal>Field notes from Wugweb's design, engineering, and strategy work: what we're learning, testing, and shipping.</p>
     </div>
@@ -180,13 +180,13 @@ function fmtDate(d?: string): string {
     border-radius: var(--radius-xl);
     overflow: hidden;
     background: var(--color-surface-elevated);
-    border: var(--stroke-thin) solid var(--line);
+    border: 0;
     transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
   @media (min-width: 860px) {
     .featured-card { grid-template-columns: 1.1fr 1fr; gap: 0; }
   }
-  .featured-card:hover { border-color: color-mix(in srgb, var(--card-accent) 45%, var(--line)); }
+  .featured-card:hover { }
   .featured-visual { aspect-ratio: 16/10; overflow: hidden; position: relative; }
   @media (min-width: 860px) { .featured-visual { aspect-ratio: auto; height: 100%; min-height: 420px; } }
   .featured-visual img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -222,9 +222,9 @@ function fmtDate(d?: string): string {
 
   /* ── Filters ── */
   .blog-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-6); border-top: var(--stroke-thin) solid var(--line); }
-  .filter-chip { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-4); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
-  .filter-chip:hover { border-color: var(--fg); color: var(--fg); }
-  .filter-chip.active { border-color: var(--accent); color: var(--fg); background: color-mix(in srgb, var(--neutral-0) 10%, transparent); }
+  .filter-chip { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-4); border: 0; border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
+  .filter-chip:hover { color: var(--fg); }
+  .filter-chip.active { color: var(--fg); background: color-mix(in srgb, var(--neutral-0) 10%, transparent); }
 
   /* ── Grid: state 2 — the quiet, repeatable card ── */
   .blog-grid-section { border-top: var(--stroke-thin) solid var(--line); padding-block: var(--space-section-md) var(--space-section-xl); }
