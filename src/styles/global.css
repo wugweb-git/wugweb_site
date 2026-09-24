@@ -1227,3 +1227,33 @@ a[href^='tel:']:not(.no-external-icon)::after {
   padding: 0; margin: -1px; overflow: hidden;
   clip-path: inset(50%); white-space: nowrap; border: 0;
 }
+
+/* Skip link — hidden until focused, then a real visible target.
+   Not .sr-only: that clips the element even when focused, which produces a
+   focus ring around nothing and is worse than having no skip link, because
+   the user cannot see where focus went. */
+.skip-link {
+  position: absolute;
+  top: var(--gap-3);
+  left: var(--gap-3);
+  z-index: var(--z-skip-link, 9999);
+  padding: var(--gap-3) var(--gap-5);
+  background: var(--accent);
+  color: var(--neutral-9);
+  font-family: var(--font-mono);
+  font-size: var(--fluid-label);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transform: translateY(calc(-100% - var(--gap-5)));
+  transition: transform var(--duration-fast, 150ms) var(--easing-out, ease);
+}
+.skip-link:focus-visible,
+.skip-link:focus {
+  transform: translateY(0);
+}
+/* The landmark is a focus target only; never show a ring around the whole page. */
+main:focus { outline: none; }
+/* Same offset the in-page anchors use (commit eaad7f68), so a skip lands below
+   the sticky header rather than under it. Harmless where main already starts
+   with its own top spacing. */
+main[id] { scroll-margin-top: calc(var(--nav-height) + var(--gap-lg)); }

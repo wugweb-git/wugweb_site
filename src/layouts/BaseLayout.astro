@@ -300,8 +300,18 @@ const globalIndustries = (sanityIndustries as string[]).length
     />
   </head>
   <body>
+    {/* Skip link. The site had neither this nor a <main> element, so a
+        keyboard or screen-reader user had to tab through the whole header on
+        every page with no landmark to jump to. Must be the first focusable
+        thing in the body to be reachable at all. */}
+    <a href="#main" class="skip-link">Skip to content</a>
     <SiteHeader companyEmail={siteEmail} />
+    {/* tabindex="-1" so the skip link can actually move focus here; without it
+        the browser scrolls but focus stays behind, and the next Tab returns to
+        the header the user was trying to skip. */}
+    <main id="main" tabindex="-1">
     <slot />
+    </main>
 
     {!hideGlobalSections && (
       <>
