@@ -206,12 +206,12 @@ See `pending.md` for the authoritative task tracker. High-level state:
 1. **Frontend still reads from Sanity CDN** — Neon helpers and SQL constants exist, but pages have not been swapped to query Neon directly.
 2. **Contact form runtime reliability** — `POST /api/contact` + `/api/subscribe` store to Neon, but Neon Workers connection was deferred; verify in production.
 3. **Framer CDN hotlinks remain** — client logos on homepage and some team photos still use `framerusercontent.com`.
-4. **Sanity token permissions** — current token cannot reliably update/delete; migration scripts need a fresh Editor token.
+4. ~~**Sanity token permissions**~~ — **resolved 2026-09-24.** The claim that the token cannot update was wrong: `/users/me` returns `roles: ['editor']` and a 27-document patch transaction committed successfully. Migration scripts do not need a new token.
 5. **Service panel `fg`/`accent` data values** — the `/services` template carries `#FFFFFF`/`#050505` inline values (data, not CSS) — intentional.
 
 ## Current Priorities
 
-1. Deploy / keep `wugweb.com` and `wugweb.pages.dev` in sync with local (Framer service slugs must not 404). **DNS cutover is done (confirmed 2026-09-23)** — `wugweb.com` now serves this site directly, not the old Framer build; it is no longer a separate reference to compare against.
+1. Deploy / keep `wugweb.com` and `wugweb.pages.dev` in sync with local (Framer service slugs must not 404). **DNS cutover is NOT done — re-verified 2026-09-24.** `wugweb.com` issues a 308 to `www.wugweb.com`, and `www.wugweb.com` still serves the old Framer build (`<meta name="generator" content="Framer …">`). Everything in this repo is live only on `*.wugweb.pages.dev`. The earlier "cutover done 2026-09-23" note in this file was wrong. Do not treat the public domain as this site until a `curl -sL https://www.wugweb.com/ | grep generator` comes back empty.
 2. **Remaining backlog** (pending.md): contact redesign (needs reference), deep service-copy pass, trust-badge logos, prod verify of contact/subscribe APIs.
 3. Frontend → Neon swap (after UI/brand mapping).
 4. Blog/media gaps, team photos, Neon audit leftovers (8 stale rows, `[object Object]` slugs, empty `content_relations`).

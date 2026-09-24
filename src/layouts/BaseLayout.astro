@@ -76,7 +76,10 @@ const metaDesc = description || defaultDesc;
 // request emits a pages.dev canonical to anything crawling pages.dev — the
 // exact split-signal problem canonicals exist to prevent. siteSettings.siteUrl
 // is the source of truth; the literal is the floor until that field is filled.
-const canonicalOrigin = (settings?.siteUrl || 'https://wugweb.com').replace(/\/+$/, '');
+//
+// www, not the apex: wugweb.com 308-redirects to www.wugweb.com, and a
+// canonical that names a redirect is a weak signal. Verified 2026-09-24.
+const canonicalOrigin = (settings?.siteUrl || 'https://www.wugweb.com').replace(/\/+$/, '');
 const rawOgImage = ogImage || (ogImagePath ? assetUrl(ogImagePath) : defaultOgImage);
 const metaOgImage = rawOgImage.startsWith('http')
   ? rawOgImage
