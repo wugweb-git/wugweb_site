@@ -6,6 +6,50 @@ import { singletonPageQuery } from '../../lib/queries';
 const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'industries' }).catch(() => null);
 const title = page?.seoTitle || page?.title || 'Industries';
 const description = page?.seoDescription || 'Wugweb brings deep industry context across financial services, healthcare, consumer commerce, technology, mobility, education, and purpose-driven sectors.';
+
+// Real case studies for the preview drawer. `caseStudy.industryRef` is set on
+// 51 of 60 published docs and, until now, reached no page at all — the drawer's
+// "typical work" list was six invented strings per industry. This joins the two.
+//
+// The drawer's sub-industry ids mostly equal the industry document slug
+// (banking, fintech, ecommerce, edtech, entertainment, healthcare, …); these
+// are the ones that do not. Anything unmapped simply finds no case studies and
+// falls back to the hardcoded list below, so the page degrades rather than
+// emptying out.
+const INDUSTRY_ALIASES: Record<string, string[]> = {
+  ai: ['ai-ml'],
+  ngos: ['non-profit'],
+  hr: ['hrtech'],
+  realestate: ['real-estate'],
+  insurtech: ['insurance'],
+  wealth: ['financial-services'],
+  brands: ['fmcg', 'luxury'],
+  services: ['consulting'],
+};
+
+const caseStudiesByIndustry = await sanityClient
+  // Legacy duplicate stubs carry the same title, the same industryRef and a
+  // canonicalUrl pointing at the real case study — without this filter the
+  // drawer listed METCRED twice, once under each slug. Reuses the canonicalUrl
+  // field declared on caseStudy for exactly this stub/canonical distinction.
+  .fetch(`*[_type == "caseStudy"
+      && defined(industryRef) && defined(slug.current)
+      && !(_id in path("drafts.**"))
+      && (!defined(canonicalUrl) || canonicalUrl == "/work/" + slug.current)]{
+    title, "slug": slug.current, "ind": industryRef->slug.current
+  }`)
+  .catch(() => []);
+
+const workByIndustry: Record<string, { title: string; slug: string }[]> = {};
+for (const cs of (caseStudiesByIndustry as any[])) {
+  if (!cs?.ind) continue;
+  (workByIndustry[cs.ind] ||= []).push({ title: cs.title, slug: cs.slug });
+}
+// Fold aliases in so the drawer can look up by its own sub-industry id.
+for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
+  const merged = slugs.flatMap((sl) => workByIndustry[sl] || []);
+  if (merged.length) workByIndustry[subId] = [...(workByIndustry[subId] || []), ...merged];
+}
 ---
 
 <BaseLayout 
@@ -1120,6 +1164,10 @@ const description = page?.seoDescription || 'Wugweb brings deep industry context
   }
 </style>
 
+<script is:inline define:vars={{ workByIndustry }}>
+  window.__wugwebWorkByIndustry = workByIndustry;
+</script>
+
 <script>
   // ─────────────────────────────────────────────────────────────────────
   // CLIENT INTERACTIONS
@@ -1556,13 +1604,27 @@ const description = page?.seoDescription || 'Wugweb brings deep industry context
       prevCaps.appendChild(span);
     });
 
-    // Render Typical Work
+    // Render Typical Work. Real case studies joined on caseStudy.industryRef
+    // win; the hardcoded `data.work` strings are the fallback for industries
+    // we have not published work in yet, so the drawer never renders empty.
     prevWork.innerHTML = '';
-    data.work.forEach((item: string) => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      prevWork.appendChild(li);
-    });
+    const realWork = (window as any).__wugwebWorkByIndustry?.[subId] || [];
+    if (realWork.length > 0) {
+      realWork.slice(0, 6).forEach((cs: { title: string; slug: string }) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `/work/${cs.slug}`;
+        a.textContent = cs.title;
+        li.appendChild(a);
+        prevWork.appendChild(li);
+      });
+    } else {
+      data.work.forEach((item: string) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        prevWork.appendChild(li);
+      });
+    }
 
     // Render Visual Details
     prevVisualTag.textContent = data.vTag;
