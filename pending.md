@@ -1013,3 +1013,60 @@ All 11 sampled routes 200 on uat.
 
 **Minor leftover:** `public/_headers` still carries a `/robots.txt` cache rule.
 It is now dead — the endpoint sets its own `Cache-Control` — and harmless.
+
+
+### 1r. Bug sweep against the deployed build — *2026-09-24*
+
+Swept `uat.wugweb.com`, not the source.
+
+**Clean:**
+
+| check | result |
+|---|---|
+| every sitemap URL | 176 / 176 → 200 |
+| every referenced asset | 134 / 134 resolve |
+| every internal link | 194 / 194 → 200 |
+| console errors, failed requests | 0 on every page sampled |
+| `framerusercontent.com` hotlinks | **0** across 12 pages — known-debt item 3 looks stale for these templates |
+| images without `alt` | 0 of 28 on the homepage |
+| `<h1>` per page | 1 |
+
+**Real bug found, and it was mine.** `b516b1a8` generated 108 posters and its
+message claimed "every rendered video has one now". It wired **2 of the 11
+files** that render `<video>`. Measured before the fix:
+
+- `/` — 6 of 15 videos with no poster (the `ServiceTagField` pills)
+- `/work/airtel-xsafe…` — **4 of 4** with no poster, and **7.6 MB of mp4
+  downloaded on load**
+
+The 7.6 MB is the same root cause `a7fee115` fixed on the homepage and never
+applied elsewhere: **`autoplay` overrides the preload hint per the HTML spec**,
+so `preload="metadata"`/`"none"` bought nothing on all 47 case-study pages —
+the highest-intent pages on the site. Below-fold videos now use `data-src`
+and drop `autoplay`; `initLazyVideo` already ran on every page via BaseLayout,
+so this was markup only. **Result: 7.6 MB → 0 mp4 bytes at scroll 0, 108 KB of
+posters.**
+
+Deliberate exceptions: the work cover keeps `src` + `autoplay` (above the fold,
+the LCP element); PortableText video keeps `src` (it has `controls`, and a play
+button on an unloaded `<video>` is a dead control); `about.astro`, `BentoBlock`
+and `ServiceSpotlightPanel` already had posters, the latter two through
+`service-media.ts`, which uses a **different** `<dir>/posters/<file>.webp`
+convention from the derived `<name>-poster.webp` one. Two conventions coexist;
+neither is broken, so neither was churned.
+
+> **A wrong conclusion, recorded so it is not re-derived.** I spent a full
+> debugging pass concluding `initLazyVideo` was broken sitewide — 0 of 8 videos
+> attaching on the homepage, 0 of 4 on a case study, with the module verified as
+> running (cookie banner wiring below it works). It was **`document.hidden ===
+> true` in the browser pane**: IntersectionObserver does not run for a hidden
+> document. The loader is **unproven in that environment, not broken**. Before
+> concluding anything from an IO, a rect or a viewport measurement here, check
+> `document.visibilityState` first. An earlier "0 width" scare in the same pass
+> had the same cause — `<html>` was 0px wide.
+
+**Shipped anyway, because the question should not matter:** `lazy-video.ts` now
+sweeps on `visibilitychange` and once three seconds after load, attaching only
+videos already inside the viewport. Same shape as the `[data-reveal]` watchdog,
+and for the same reason — when this mechanism fails the failure mode is a
+permanently blank box, which is worse than the download it avoided.
