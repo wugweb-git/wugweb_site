@@ -89,6 +89,39 @@ export default defineType({
     // Replaces the hideGlobalSections / hideGlobalIndustries / hideGlobalBlog
     // props, which put an editorial decision — which pages show which global
     // section — in .astro frontmatter, one level up from the copy being in code.
+    // ── Cookie-consent only ───────────────────────────────────────────────
+    // The consent UI needs six button labels, a modal heading and intro, an
+    // "always active" badge and a close label — none of which a generic
+    // section has. Rather than bloat every section with cookie fields, or fork
+    // a second document type for one section, they are hidden unless
+    // sectionId is cookie-consent. sectionId is already the discriminator, so
+    // this is the idiomatic use of it.
+    //
+    // The three consent CATEGORIES use the shared `items` array above
+    // (title + text), which is exactly what that field was described for.
+    //
+    // Every one falls back to the copy currently hardcoded in BaseLayout, so
+    // an empty field changes nothing. The element ids and toggle wiring in
+    // that file are consumed by the consent script and must not change.
+    ...(() => {
+      const cookieOnly = (name: string, type: 'string' | 'text', title: string, description?: string) =>
+        defineField({
+          name, type, title, description, group: 'content',
+          ...(type === 'text' ? { rows: 2 } : {}),
+          hidden: ({ document }: any) => document?.sectionId !== 'cookie-consent',
+        });
+      return [
+        cookieOnly('modalTitle', 'string', 'Modal heading', 'Heading inside the preferences dialog.'),
+        cookieOnly('modalIntro', 'text', 'Modal intro'),
+        cookieOnly('acceptLabel', 'string', 'Button — accept all'),
+        cookieOnly('rejectLabel', 'string', 'Button — reject optional'),
+        cookieOnly('manageLabel', 'string', 'Button — manage preferences'),
+        cookieOnly('saveLabel', 'string', 'Button — save preferences'),
+        cookieOnly('alwaysActiveLabel', 'string', 'Badge — always active', 'Shown against the non-optional category.'),
+        cookieOnly('closeLabel', 'string', 'Close button aria-label', 'Not visible; read by screen readers.'),
+      ];
+    })(),
+
     defineField({
       name: 'excludeRoutes',
       type: 'array',

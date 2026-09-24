@@ -174,7 +174,11 @@ const teaserCovers = teaserPosts.map((p: any) => {
 const globalSections = await sanityClient
   .fetch(`*[_type == "pageSection" && !(_id in path("drafts.**"))]{
     sectionId, enabled, eyebrow, title, subtitle, ctaLabel, ctaHref,
-    excludeRoutes, includeOnlyRoutes
+    excludeRoutes, includeOnlyRoutes,
+    // Cookie-consent only. Selected here rather than in a second query
+    // because this layout already makes four Sanity round trips per request.
+    items, modalTitle, modalIntro, acceptLabel, rejectLabel, manageLabel,
+    saveLabel, alwaysActiveLabel, closeLabel
   }`)
   .catch(() => []);
 
@@ -196,6 +200,30 @@ function resolveSection(id: string) {
 }
 
 const industriesSection = resolveSection('industries');
+const cookieSection = resolveSection('cookie-consent');
+// Every value falls back to the copy that was hardcoded below, so an absent or
+// half-filled document changes nothing on screen. `items` carries the three
+// consent categories; anything short of three falls back to the built-in set,
+// because the toggles are wired to fixed ids and a partial list would render a
+// category with no control.
+const CK = {
+  title: cookieSection?.title || 'We use cookies',
+  subtitle: cookieSection?.subtitle || 'We use necessary cookies to operate Wugweb and optional cookies to understand how our website is used and improve your experience.',
+  accept: cookieSection?.acceptLabel || 'Accept all',
+  reject: cookieSection?.rejectLabel || 'Reject optional',
+  manage: cookieSection?.manageLabel || 'Manage preferences',
+  save: cookieSection?.saveLabel || 'Save preferences',
+  modalTitle: cookieSection?.modalTitle || 'Cookie Settings',
+  modalIntro: cookieSection?.modalIntro || 'Choose which optional cookies and similar technologies you allow. Necessary technologies remain active because they are required for the website to function.',
+  alwaysActive: cookieSection?.alwaysActiveLabel || 'Always active',
+  close: cookieSection?.closeLabel || 'Close preferences',
+};
+const CK_DEFAULT_CATEGORIES = [
+  { title: 'Strictly Necessary', text: 'Required for core website functionality, security, consent management and other essential functions.' },
+  { title: 'Functional', text: 'Helps remember preferences and provide enhanced functionality.' },
+  { title: 'Analytics', text: 'Helps us understand how visitors use Wugweb and improve website performance and experience.' },
+];
+const CK_CATS = (cookieSection?.items?.length === 3 ? cookieSection.items : CK_DEFAULT_CATEGORIES) as { title: string; text: string }[];
 const insightsSection = resolveSection('insights');
 const finalCtaSection = resolveSection('final-cta');
 // undefined = no doc, fall back to the hardcoded copy. null = deliberately off.
@@ -370,13 +398,13 @@ const globalIndustries = (sanityIndustries as string[]).length
     <div id="wugweb-cookie-banner" class="cookie-banner-wrap">
       <div class="cookie-banner-inner">
         <div class="cookie-banner-text">
-          <h4>We use cookies</h4>
-          <p>We use necessary cookies to operate Wugweb and optional cookies to understand how our website is used and improve your experience.</p>
+          <h4>{CK.title}</h4>
+          <p>{CK.subtitle}</p>
         </div>
         <div class="cookie-banner-actions">
-          <button id="cookie-btn-accept-all" class="btn btn-solid btn-sm-cookie">Accept all</button>
-          <button id="cookie-btn-reject-optional" class="btn btn-ghost btn-sm-cookie">Reject optional</button>
-          <button id="cookie-btn-manage" class="btn btn-ghost btn-sm-cookie">Manage preferences</button>
+          <button id="cookie-btn-accept-all" class="btn btn-solid btn-sm-cookie">{CK.accept}</button>
+          <button id="cookie-btn-reject-optional" class="btn btn-ghost btn-sm-cookie">{CK.reject}</button>
+          <button id="cookie-btn-manage" class="btn btn-ghost btn-sm-cookie">{CK.manage}</button>
         </div>
       </div>
     </div>
@@ -384,25 +412,25 @@ const globalIndustries = (sanityIndustries as string[]).length
     <!-- Cookie Preferences Modal -->
     <div id="wugweb-cookie-modal" class="cookie-modal-overlay">
       <div class="cookie-modal-box">
-        <button id="cookie-modal-close" class="cookie-modal-close-btn" aria-label="Close preferences">&times;</button>
-        <h3>Cookie Settings</h3>
-        <p class="cookie-modal-intro">Choose which optional cookies and similar technologies you allow. Necessary technologies remain active because they are required for the website to function.</p>
+        <button id="cookie-modal-close" class="cookie-modal-close-btn" aria-label={CK.close}>&times;</button>
+        <h3>{CK.modalTitle}</h3>
+        <p class="cookie-modal-intro">{CK.modalIntro}</p>
         
         <div class="cookie-options-list">
           <div class="cookie-opt-row">
             <div class="opt-desc">
-              <h4>Strictly Necessary</h4>
-              <p>Required for core website functionality, security, consent management and other essential functions.</p>
+              <h4>{CK_CATS[0].title}</h4>
+              <p>{CK_CATS[0].text}</p>
             </div>
             <div class="opt-control">
-              <span class="active-badge">Always active</span>
+              <span class="active-badge">{CK.alwaysActive}</span>
             </div>
           </div>
 
           <div class="cookie-opt-row">
             <div class="opt-desc">
-              <h4>Functional</h4>
-              <p>Helps remember preferences and provide enhanced functionality.</p>
+              <h4>{CK_CATS[1].title}</h4>
+              <p>{CK_CATS[1].text}</p>
             </div>
             <div class="opt-control">
               <label class="toggle-switch">
@@ -414,8 +442,8 @@ const globalIndustries = (sanityIndustries as string[]).length
 
           <div class="cookie-opt-row">
             <div class="opt-desc">
-              <h4>Analytics</h4>
-              <p>Helps us understand how visitors use Wugweb and improve website performance and experience.</p>
+              <h4>{CK_CATS[2].title}</h4>
+              <p>{CK_CATS[2].text}</p>
             </div>
             <div class="opt-control">
               <label class="toggle-switch">
@@ -427,9 +455,9 @@ const globalIndustries = (sanityIndustries as string[]).length
         </div>
 
         <div class="cookie-modal-actions">
-          <button id="cookie-modal-reject" class="btn btn-ghost">Reject optional</button>
-          <button id="cookie-modal-save" class="btn btn-solid">Save preferences</button>
-          <button id="cookie-modal-accept" class="btn btn-solid">Accept all</button>
+          <button id="cookie-modal-reject" class="btn btn-ghost">{CK.reject}</button>
+          <button id="cookie-modal-save" class="btn btn-solid">{CK.save}</button>
+          <button id="cookie-modal-accept" class="btn btn-solid">{CK.accept}</button>
         </div>
       </div>
     </div>
