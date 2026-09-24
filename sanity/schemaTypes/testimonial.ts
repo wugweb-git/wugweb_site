@@ -19,9 +19,17 @@ export default defineType({
     defineField({ name: 'featured', type: 'boolean', initialValue: false, group: 'content' }),
     defineField({ name: 'order', type: 'number', group: 'content' }),
     // Source: imported from the Uncode/vedanshu.design WordPress site testimonials page
-    defineField({ name: 'source', type: 'string', options: { list: ['linkedin', 'vedanshu-design', 'wugweb', 'manual'] }, initialValue: 'linkedin', group: 'relations' }),
+    // Provenance. The agency-platform values matter: a review collected through
+    // Wugweb's own Clutch / DesignRush / GoodFirms account is a Wugweb review,
+    // which is what /footer/reviews renders. LinkedIn recommendations are
+    // personal to Vedanshu and are never shown on this site.
+    defineField({
+      name: 'source', type: 'string', group: 'relations',
+      options: { list: ['linkedin', 'vedanshu-design', 'wugweb', 'clutch', 'designrush', 'goodfirms', 'manual'] },
+      initialValue: 'linkedin',
+    }),
     // Subject: who the testimonial is about (Vedanshu personally vs Wugweb the agency)
-    defineField({ name: 'subject', type: 'string', options: { list: ['vedanshu', 'wugweb', 'both'] }, initialValue: 'vedanshu', description: 'Vedanshu personal (LinkedIn) vs Wugweb agency', group: 'relations' }),
+    defineField({ name: 'subject', type: 'string', options: { list: ['vedanshu', 'wugweb', 'both'] }, initialValue: 'vedanshu', description: 'Vedanshu personal (LinkedIn) vs Wugweb agency. Only wugweb/both render on wugweb.com — vedanshu-subject testimonials belong to his own site and are pushed there via Neon.', group: 'relations' }),
   ],
   orderings: [
     { name: 'orderAsc', title: 'Display order', by: [{ field: 'order', direction: 'asc' }] },

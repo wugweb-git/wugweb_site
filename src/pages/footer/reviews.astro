@@ -1,9 +1,30 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient } from '../../lib/sanity';
+import { assetUrl } from '../../lib/assets';
 import { singletonPageQuery } from '../../lib/queries';
 
 const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'reviews' }).catch(() => null);
+
+// Client testimonials, Wugweb only.
+//
+// subject is the governance line, not a display preference. The 14 testimonial
+// documents in Sanity today are all subject: 'vedanshu' — personal LinkedIn
+// recommendations — and they are deliberately NOT rendered here. This page is
+// headed "What people say about working with us" and "Agency reviews"; showing
+// personal recommendations under that framing would present them as client
+// feedback about the company. They belong to vedanshu's own site and are pushed
+// there via Neon. governance.md keeps the two entities separate and the
+// `subject` field exists to encode exactly this.
+//
+// So this query returns 0 rows right now, and the section below does not render.
+// That is correct, not a bug. Wugweb reviews arrive through the agency's own
+// Clutch / DesignRush / GoodFirms accounts (see testimonial.source) and will
+// appear here automatically once they carry subject: wugweb or both.
+const clientTestimonials = await sanityClient
+  .fetch(`*[_type == "testimonial" && subject in ["wugweb", "both"] && !(_id in path("drafts.**"))]
+    | order(order asc, name asc){ name, role, company, quote, photoPath, source }`)
+  .catch(() => []);
 const title = page?.seoTitle || page?.title || 'Reviews';
 const description = page?.seoDescription || "What clients and the team say about working with Wugweb, collected from the platforms that host it.";
 
@@ -48,6 +69,30 @@ const agencyPlatforms = [
         ))}
       </div>
     </section>
+
+    <!-- CLIENT TESTIMONIALS — renders only when Wugweb-subject reviews exist -->
+    {clientTestimonials.length > 0 && (
+      <section class="wrap reviews-section">
+        <div class="section-header">
+          <h2 data-reveal>In their words</h2>
+          <p class="section-lead" data-reveal>Feedback from clients we've worked with, collected through Wugweb's own profiles on the platforms above.</p>
+        </div>
+        <div class="platform-grid">
+          {clientTestimonials.map((t: any) => (
+            <figure class="platform-card glass-panel" data-reveal>
+              <blockquote class="testimonial-quote">{t.quote}</blockquote>
+              <figcaption class="testimonial-attrib">
+                {t.photoPath && <img src={assetUrl(t.photoPath)} alt="" width="40" height="40" loading="lazy" class="testimonial-photo" />}
+                <span class="testimonial-name">{t.name}</span>
+                {(t.role || t.company) && (
+                  <span class="testimonial-role">{[t.role, t.company].filter(Boolean).join(', ')}</span>
+                )}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- EMPLOYEE REVIEWS -->
     <section class="wrap reviews-section">
@@ -124,4 +169,27 @@ const agencyPlatforms = [
     font-size: var(--fluid-label);
   }
   .platform-card:hover .platform-cta { color: var(--fg); }
+
+  /* Client testimonials. Reuses .platform-card so the cards match the platform
+     grid above; only the inner typography differs. Tokens only.
+     figure carries a default UA margin (~40px each side) that .platform-card
+     never reset, because every other card on this page is an <a> — without this
+     the testimonial card rendered 291px inside a 370px grid column. */
+  figure.platform-card { margin: 0; }
+  .testimonial-quote {
+    margin: 0;
+    color: var(--fg);
+    font-size: var(--fluid-body-md);
+    line-height: var(--core-line-height-relaxed);
+  }
+  .testimonial-attrib {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--gap-2);
+  }
+  .testimonial-photo { border-radius: var(--radius-full); object-fit: cover; }
+  .testimonial-name { font-weight: var(--font-weight-semibold); color: var(--fg); font-size: var(--fluid-body-sm); }
+  .testimonial-role { color: var(--fg-muted); font-family: var(--font-mono); font-size: var(--fluid-label); }
 </style>
