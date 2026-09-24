@@ -177,6 +177,20 @@ export default defineType({
     defineField({ name: 'seoTitle', type: 'string', description: 'Overrides the <title> tag', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', description: 'Social sharing preview image', group: 'seo' }),
+    // Was queried (queries.ts) and redirected on (work/[slug].astro) for a long
+    // time WITHOUT ever being declared here, so no editor could see or correct
+    // it. 44 of 60 published docs carry a value and 13 of those point somewhere
+    // other than their own slug, driving a live 301 — this is load-bearing, not
+    // legacy cruft. Declaring it, rather than adding a separate seoCanonicalUrl:
+    // a stub's canonical URL IS the real case study, and the redirect is simply
+    // the stronger form of that same signal.
+    defineField({
+      name: 'canonicalUrl', type: 'string', group: 'seo',
+      title: 'Canonical URL',
+      description: 'Leave empty for self-canonical. On a duplicate or legacy stub, point at the real case study (e.g. /work/real-slug) — the route 301s there instead of rendering.',
+      validation: (r) => r.custom((value: any) =>
+        !value || String(value).startsWith('/') || 'Must be a site-relative path starting with /'),
+    }),
 
     // ── Relations ──
     defineField({
