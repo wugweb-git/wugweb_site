@@ -40,7 +40,7 @@ export const caseStudyBySlugQuery = `
     title, subtitle, client, summary, about, challenges, solutions, designPhilosophy, impact, galleryPaths,
     bodyContent, tags, disciplines, industry, timeline, team, partner,
     coverImage, coverPath, thumbnailPath, results, canonicalUrl,
-    seoTitle, seoDescription, ogImage, publishedAt, featured,
+    seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, noIndex, publishedAt, featured,
     "clientRef": clientRef->{ name, logo, logoPath, website },
     "services": services[]->{ title, "slug": slug.current }
   }
@@ -57,7 +57,7 @@ export const postBySlugQuery = `
   *[_type == "post" && slug.current == $slug && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
     _id, _updatedAt,
     title, excerpt, coverImage, coverPath, body, publishedAt, tags, category, readingTime,
-    seoTitle, seoDescription, ogImage,
+    seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, noIndex, canonicalUrl,
     "author": author->{ name, photo, role, bio, socialLinks }
   }
 `;

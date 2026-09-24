@@ -67,6 +67,32 @@ export default defineType({
     defineField({ name: 'seoTitle', type: 'string', description: 'Overrides the <title> tag. Defaults to the post title.', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, description: 'Meta description for search results. 150-160 characters recommended.', group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', description: 'Social sharing image (1200×630px recommended)', group: 'seo' }),
+    // ── SEO, added 2026-09-24 ──
+    // Only the fields a template reads today. focusKeyword, searchIntent,
+    // aiSummary, keyTakeaways, faqs and schemaType are designed in
+    // docs/schema-template-section-component-level.md §1 but are deliberately
+    // NOT added yet — they need a JSON-LD renderer and a visible answer block,
+    // and singletonPage already proved what happens when fields ship ahead of
+    // their consumer: fourteen of them rendered nothing for a day.
+    defineField({
+      name: 'ogImagePath', type: 'string', group: 'seo',
+      title: 'OG Image (R2 path)',
+      description: 'Matches the path convention used by coverPath/thumbnailPath. Takes precedence over ogImage.',
+    }),
+    defineField({ name: 'ogTitle', type: 'string', group: 'seo', description: 'Optional. Social copy is a different job from SERP copy — empty reuses seoTitle.' }),
+    defineField({ name: 'ogDescription', type: 'text', rows: 2, group: 'seo', description: 'Optional. Empty reuses seoDescription.' }),
+    defineField({
+      name: 'noIndex', type: 'boolean', initialValue: false, group: 'seo',
+      title: 'Hide from search engines',
+      description: 'Emits <meta name="robots" content="noindex, follow"> and suppresses the canonical tag. Must also exclude the page from sitemap.xml when that lands.',
+    }),
+    defineField({
+      name: 'canonicalUrl', type: 'string', group: 'seo',
+      title: 'Canonical URL',
+      description: 'Leave empty for self-canonical. Set when this post duplicates or syndicates another URL (e.g. a Medium cross-post that should not compete with the original).',
+      validation: (r) => r.custom((value: any) =>
+        !value || String(value).startsWith('/') || 'Must be a site-relative path starting with /'),
+    }),
 
     // ── Relations ──
     defineField({ name: 'relatedPosts', type: 'array', of: [{ type: 'reference', to: [{ type: 'post' }] }], description: 'Other posts readers should see', group: 'relations' }),

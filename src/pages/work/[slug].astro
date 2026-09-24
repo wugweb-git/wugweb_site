@@ -50,11 +50,16 @@ const pageDescription = (work.seoDescription || work.summary || work.about || ''
 // today and beat having no preview, but they keep the Framer CDN dependency.
 const IMAGE_EXT = /\.(jpe?g|png|webp|avif|gif)$/i;
 const ogFromPath = work.coverPath && IMAGE_EXT.test(work.coverPath) ? coverSrc : '';
-const ogImageUrl = typeof work.ogImage === 'string' && work.ogImage
-  ? work.ogImage
-  : work.ogImage?.asset
-    ? urlFor(work.ogImage).width(1200).height(630).url()
-    : ogFromPath;
+// ogImagePath wins: it is the R2/local convention the rest of the content
+// model uses, and it is the migration path off the Framer CDN URLs that every
+// populated ogImage currently holds (Known Technical Debt #3).
+const ogImageUrl = work.ogImagePath
+  ? assetUrl(work.ogImagePath)
+  : typeof work.ogImage === 'string' && work.ogImage
+    ? work.ogImage
+    : work.ogImage?.asset
+      ? urlFor(work.ogImage).width(1200).height(630).url()
+      : ogFromPath;
 const clientLogoSrc = work.clientRef?.logoPath ? assetUrl(work.clientRef.logoPath) : '';
 // Titles like "Bankco – Revolutionizing Financial Engagement..." repeat the
 // brand/product name that's already shown in the meta row — strip it, but
@@ -109,7 +114,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
 )).then(r => r.filter(Boolean));
 ---
 
-<BaseLayout title={`${work.title} — Wugweb Work`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl}>
+<BaseLayout title={`${work.title} — Wugweb Work`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl} ogTitle={work.ogTitle} ogDescription={work.ogDescription} noIndex={work.noIndex}>
   <section class="work-detail-hero">
     <div class="wrap">
       <h1>{displayTitle}</h1>

@@ -177,6 +177,25 @@ export default defineType({
     defineField({ name: 'seoTitle', type: 'string', description: 'Overrides the <title> tag', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', description: 'Social sharing preview image', group: 'seo' }),
+    // ── SEO, added 2026-09-24 ──
+    // Only the fields a template reads today. focusKeyword, searchIntent,
+    // aiSummary, keyTakeaways, faqs and schemaType are designed in
+    // docs/schema-template-section-component-level.md §1 but are deliberately
+    // NOT added yet — they need a JSON-LD renderer and a visible answer block,
+    // and singletonPage already proved what happens when fields ship ahead of
+    // their consumer: fourteen of them rendered nothing for a day.
+    defineField({
+      name: 'ogImagePath', type: 'string', group: 'seo',
+      title: 'OG Image (R2 path)',
+      description: 'Matches the path convention used by coverPath/thumbnailPath. Takes precedence over ogImage.',
+    }),
+    defineField({ name: 'ogTitle', type: 'string', group: 'seo', description: 'Optional. Social copy is a different job from SERP copy — empty reuses seoTitle.' }),
+    defineField({ name: 'ogDescription', type: 'text', rows: 2, group: 'seo', description: 'Optional. Empty reuses seoDescription.' }),
+    defineField({
+      name: 'noIndex', type: 'boolean', initialValue: false, group: 'seo',
+      title: 'Hide from search engines',
+      description: 'Emits <meta name="robots" content="noindex, follow"> and suppresses the canonical tag. Must also exclude the page from sitemap.xml when that lands.',
+    }),
     // Was queried (queries.ts) and redirected on (work/[slug].astro) for a long
     // time WITHOUT ever being declared here, so no editor could see or correct
     // it. 44 of 60 published docs carry a value and 13 of those point somewhere

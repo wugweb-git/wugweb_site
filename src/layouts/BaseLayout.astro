@@ -16,6 +16,17 @@ interface Props {
   ogImage?: string;
   /** R2/local path from singletonPage.ogImagePath; resolved and made absolute below. */
   ogImagePath?: string;
+  /** Keeps the page out of search results. Also excludes it from sitemap.xml
+   *  when that lands — the two must agree or the signals contradict. */
+  noIndex?: boolean;
+  /** Social copy, independent of SERP copy. A share card and a search result
+   *  are different surfaces with different lengths; empty falls back to the
+   *  SEO title/description rather than forcing editors to fill both. */
+  ogTitle?: string;
+  ogDescription?: string;
+  /** Per-document canonical override, for legacy or syndicated duplicates.
+   *  Site-relative; resolved against the canonical origin. */
+  canonicalPath?: string;
   language?: string;
   hideGlobalSections?: boolean;
   /** Suppress only the global blog teaser — for pages that already carry their
@@ -24,7 +35,7 @@ interface Props {
   /** Same idea for the global industries block. */
   hideGlobalIndustries?: boolean;
 }
-const { title, description, seoTitle, ogImage, ogImagePath, language } = Astro.props;
+const { title, description, seoTitle, ogImage, ogImagePath, noIndex, ogTitle, ogDescription, canonicalPath, language } = Astro.props;
 const hideGlobalSections = Boolean(Astro.props.hideGlobalSections);
 const hideGlobalBlog = hideGlobalSections || Boolean(Astro.props.hideGlobalBlog);
 const hideGlobalIndustries = hideGlobalSections || Boolean(Astro.props.hideGlobalIndustries);
@@ -80,7 +91,7 @@ const metaDesc = description || defaultDesc;
 // www, not the apex: wugweb.com 308-redirects to www.wugweb.com, and a
 // canonical that names a redirect is a weak signal. Verified 2026-09-24.
 const canonicalOrigin = (settings?.siteUrl || 'https://www.wugweb.com').replace(/\/+$/, '');
-const canonicalUrl = new URL(Astro.url.pathname, canonicalOrigin).href;
+const canonicalUrl = new URL(canonicalPath || Astro.url.pathname, canonicalOrigin).href;
 
 // og:image resolves against the origin that actually SERVES the file, which is
 // not necessarily the canonical origin. Until the DNS cutover, www.wugweb.com
@@ -128,11 +139,15 @@ const globalIndustries = (sanityIndustries as string[]).length
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={pageTitle + ' · wugweb'} />
-    <meta property="og:description" content={metaDesc} />
+    <meta property="og:title" content={ogTitle || pageTitle + ' · wugweb'} />
+    <meta property="og:description" content={ogDescription || metaDesc} />
     <meta property="og:image" content={metaOgImage} />
     <meta property="og:url" content={canonicalUrl} />
-    <link rel="canonical" href={canonicalUrl} />
+    {/* A noindex page should not also assert a canonical: the two are
+        contradictory signals, and a canonical on an excluded URL is the classic
+        way to get the *target* dropped along with it. */}
+    {!noIndex && <link rel="canonical" href={canonicalUrl} />}
+    {noIndex && <meta name="robots" content="noindex, follow" />}
 
     <!-- X / Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
