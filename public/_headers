@@ -40,6 +40,12 @@
 /brand/*
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
+# Fonts are version-pinned by filename (Inter Tight v9, Fragment Mono v6) and
+# a new version would arrive under a new name, so immutable is honest here.
+# Self-hosted as of audit finding 9 — these used to come from fonts.gstatic.com.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
 # The service worker must never be cached, or a released update cannot reach
 # clients that already installed the old one.
 /sw.js
