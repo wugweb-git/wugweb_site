@@ -2249,6 +2249,11 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     margin-bottom: var(--p-6);
   }
 
+  /* #2b70f0 is Razorpay's own brand blue, and the two rules below are a
+     mock of their checkout. A third-party brand colour is not a design token
+     and must not be swapped for one — changing it would misrepresent the
+     gateway. Noted here because audit finding 20 counts it as a hardcoded
+     colour, which it is, correctly. */
   .gateway-logo {
     font-weight: var(--font-weight-bold);
     color: #2b70f0;
