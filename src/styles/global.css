@@ -1124,8 +1124,29 @@ a[href^='tel:']:not(.no-external-icon)::after {
    UTILITY
    ═══════════════════════════════════════════════════════════════════ */
 
-/* Elements Motion animates from this initial state before JS runs */
-[data-reveal] { opacity: 0; }
+/* Scroll entrances.
+ *
+ * The default is VISIBLE. `opacity: 0` applies only once a synchronous script
+ * in <head> has added .js-reveal to <html>, and a watchdog removes that class
+ * if the animation module never runs.
+ *
+ * It used to be the other way round — a bare `[data-reveal] { opacity: 0 }`
+ * with nothing to undo it. 41 elements on the homepage, including <h1>s on the
+ * legal pages, started invisible and stayed that way if GSAP failed to load,
+ * threw, or was simply slow. That is not hypothetical: a screenshot taken
+ * during this session came back entirely black below the nav because the
+ * module had not revealed anything yet.
+ *
+ * `@media (scripting: none)` alone would not have caught that case — JS was
+ * alive, the animation just never ran. Hence the watchdog rather than a media
+ * query. */
+[data-reveal] { opacity: 1; }
+.js-reveal [data-reveal] { opacity: 0; }
+
+/* Reduced motion: never hide, regardless of what JS is doing. */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal [data-reveal] { opacity: 1; }
+}
 
 
 /* ═══════════════════════════════════════════════════════════════════

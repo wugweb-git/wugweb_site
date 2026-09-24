@@ -277,6 +277,19 @@ const globalIndustries = (sanityIndustries as string[]).length
       if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
         document.documentElement.dataset.standalone = 'true';
       }
+
+      // Scroll-entrance gate. Runs synchronously in <head> so [data-reveal]
+      // elements are hidden before first paint — no flash of visible content.
+      // The watchdog is the important half: if the animation module never
+      // runs (failed to load, threw, blocked), the class comes off and the
+      // CSS default of opacity:1 takes over, so content is never permanently
+      // invisible. initScrollAnimations() clears it on success.
+      // 5s, not 2s: a cold load on a slow connection is not a failure, and
+      // tripping early means the reveal animation never gets to run.
+      document.documentElement.classList.add('js-reveal');
+      window.__revealWatchdog = setTimeout(function () {
+        document.documentElement.classList.remove('js-reveal');
+      }, 5000);
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -698,6 +711,9 @@ const globalIndustries = (sanityIndustries as string[]).length
 
 <script>
   import { initScrollAnimations } from '../lib/scroll-animations';
+  // Module is alive, so the head watchdog is no longer needed. Cancel it
+  // before running, so a slow first paint cannot un-hide mid-animation.
+  clearTimeout((window as any).__revealWatchdog);
   initScrollAnimations();
   // initBallField() now lives in FooterCTA.astro's own script — it's the
   // only consumer of `[data-ball-field]`.

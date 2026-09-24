@@ -16,9 +16,15 @@ export function initScrollAnimations(): () => void {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const cleanups: (() => void)[] = [];
 
+  // If the <head> watchdog already fired, the page is fully visible and the
+  // user has been looking at it. Animating now would mean hiding content back
+  // to opacity 0 and fading it in — a flash of disappearing text, which is
+  // worse than no animation. So when the gate is gone, leave the reveals alone.
+  const revealGateOpen = document.documentElement.classList.contains('js-reveal');
+
   // [data-reveal] — entrances. Reduced motion: just show.
   document.querySelectorAll('[data-reveal]').forEach((el) => {
-    if (prefersReduced) {
+    if (prefersReduced || !revealGateOpen) {
       gsap.set(el, { opacity: 1 });
       return;
     }
