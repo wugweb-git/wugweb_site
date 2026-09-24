@@ -845,6 +845,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
 <script>
   import { initScrollAnimations } from '../lib/scroll-animations';
   import { initLazyVideo } from '../lib/lazy-video';
+  import { initAnalytics } from '../lib/analytics';
   // Module is alive, so the head watchdog is no longer needed. Cancel it
   // before running, so a slow first paint cannot un-hide mid-animation.
   clearTimeout((window as any).__revealWatchdog);
@@ -853,6 +854,9 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
   initLazyVideo();
   // initBallField() now lives in FooterCTA.astro's own script — it's the
   // only consumer of `[data-ball-field]`.
+  // Registers a listener only. GA is gated on host AND consent, and the
+  // consent manager below is what eventually fires it — see lib/analytics.ts.
+  initAnalytics();
 
   // COOKIE CONSENT STATE MANAGER
   const banner = document.getElementById('wugweb-cookie-banner');
@@ -895,9 +899,17 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
     } catch {}
   };
 
+  /**
+   * The only thing consent actually switches on. Until 2026-09-24 this event
+   * had no listener anywhere in the codebase — audit finding 16, "the consent
+   * UI does nothing". `src/lib/analytics.ts` listens now, so rejecting
+   * optional cookies means gtag is never requested at all.
+   *
+   * Called on a fresh accept and on load when consent was already stored, so
+   * the listener does not need its own startup path.
+   */
   const applyScripts = (consent: any) => {
     if (consent.analytics) {
-      console.log('[Consent] Analytics allowed. Initializing tracking script layers.');
       window.dispatchEvent(new CustomEvent('wugweb-analytics-allowed'));
     }
   };
