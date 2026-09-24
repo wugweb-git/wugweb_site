@@ -42,5 +42,44 @@
       "binding": "SESSION",
       "id": "db4a58a931d94d3cb89e23a95b7f01be"
     }
-  ]
+  ],
+  // Preview deployments. Audit finding 18 — "preview deployment bindings are
+  // broken" — and this is why: on Pages, the bindings declared ABOVE apply to
+  // the production environment only. A preview deployment (every branch and
+  // every PR) got no ASSETS_BUCKET, no SESSION and no vars, so it hit the
+  // "Invalid binding SESSION" path the comment above warns about and could not
+  // read R2 server-side. The bindings were never wrong; they just weren't
+  // there.
+  //
+  // Mirrored deliberately rather than pointing at separate preview resources:
+  // the bucket is read-only in the app and free-tier Rule 2 says one bucket,
+  // so a second would be both pointless and a rule violation. The KV namespace
+  // holds throwaway session data.
+  //
+  // Secrets are NOT here and must not be. DATABASE_URL and SANITY_SYNC_TOKEN
+  // are set per-environment in the dashboard, and the preview environment
+  // needs its own copies — adding them to this file would commit them.
+  "env": {
+    "preview": {
+      "vars": {
+        "SANITY_PROJECT_ID": "splvhmk1",
+        "SANITY_DATASET": "production",
+        "PUBLIC_R2_ASSETS_BASE": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev",
+        "PUBLIC_LEGACY_ASSETS_BASE": "https://wugweb.online",
+        "PUBLIC_USE_R2_ASSETS": "1"
+      },
+      "r2_buckets": [
+        {
+          "binding": "ASSETS_BUCKET",
+          "bucket_name": "wugweb-assets"
+        }
+      ],
+      "kv_namespaces": [
+        {
+          "binding": "SESSION",
+          "id": "db4a58a931d94d3cb89e23a95b7f01be"
+        }
+      ]
+    }
+  }
 }
