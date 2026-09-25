@@ -1070,3 +1070,67 @@ sweeps on `visibilitychange` and once three seconds after load, attaching only
 videos already inside the viewport. Same shape as the `[data-reveal]` watchdog,
 and for the same reason — when this mechanism fails the failure mode is a
 permanently blank box, which is worse than the download it avoided.
+
+### 1s. Plan wrap-up — finding 16 closed, endpoints verified — *2026-09-25*
+
+**Finding 16 is CLOSED.** Both halves:
+- *Analytics* (2026-09-24) — GA4 behind consent + host gates, so the banner
+  controls something real.
+- *The cookie* (today) — `visitor_id` removed. It was a random UUID minted on
+  **every** request with a one-year lifetime, before the visitor was asked
+  anything, and its only reader `/api/personalize` had **zero callers**
+  anywhere in the frontend. A persistent identifier with real consent exposure
+  and no product behaviour. `/api/personalize` deleted with it, rather than
+  left reading a value that no longer exists. `locals.visitorId` gone from
+  `env.d.ts`. **`visitor_profiles` in Neon deliberately untouched** — Neon is
+  user-controlled and dropping a table is not a code change. If personalisation
+  is ever built the cookie must be minted **after** reading consent; the
+  comment in `middleware.ts` says so.
+
+**`/api/contact` and `/api/subscribe` verified in production** — open in
+`pending.md` for weeks. Note this was a *genuine production* test: a Pages
+custom domain serves the **production** environment, so `uat.wugweb.com`
+exercised production bindings, not preview.
+
+| | result |
+|---|---|
+| `/api/contact` → Neon | ✅ 302 → `/thank-you`, only reachable **after** the insert |
+| `/api/subscribe` → Neon | ✅ 302 → `?subscribed=1`, same |
+| `/api/contact` → Sanity mirror | ❌ **writes nothing, silently** |
+
+> **The Neon-on-Workers connection works.** That note can be closed.
+
+> **New bug: the Sanity mirror is off and has always been off.** No
+> `contactSubmission` document appeared after a successful submission.
+> Isolated — creating the same document with a local token succeeds, so schema
+> and token role are fine; **`SANITY_SYNC_TOKEN` is not bound on the Pages
+> environment**. `if (token)` then skipped the write *silently*, which is
+> exactly why nobody noticed: the endpoint returns a success redirect either
+> way, so every submission since the feature shipped reached Neon and never
+> reached the Studio — and `contactSubmission` at 0 documents read as "no
+> enquiries yet" rather than "the mirror is off". It now logs loudly.
+> **The actual fix is a dashboard action: set `SANITY_SYNC_TOKEN` on the Pages
+> project, production and preview.** This also corrects `CLAUDE.md`'s claim
+> that "#27 wired: /api/contact mirrors to Sanity" — it is wired but inert.
+
+**403 on a bare POST is not a bug** — it is Astro's CSRF origin check. The
+first test got 403 because curl sent no `Origin` header; with one it is 302.
+
+**Framer CDN hotlinks — debt item struck.** All 176 routes swept: **zero**
+`framerusercontent.com` references. `CLAUDE.md` item 3 updated.
+
+**Phase C measured, not actioned** (both audit numbers wrong again):
+
+| | audit claim | re-measured |
+|---|---|---|
+| breakpoints | nine | **13 values / 11 thresholds** — *worse* |
+| hardcoded px | ~800 | **225 in declarations**; 104 more inside `@media` where px is correct; 56 of the 225 are `kits.astro` |
+
+**Test data left behind:** the Sanity test doc was deleted (`contactSubmission`
+back to 0). Two Neon rows remain that I cannot remove without `DATABASE_URL` —
+`CLAUDE-TEST-1790319185 DELETE ME` in `contact_submissions`, and
+`claude-test-1790319185@example.invalid` in the subscriber table.
+
+**Still open:** `--color-text-muted` contrast (design call) · breakpoint and px
+consolidation · Neon leftovers (needs `DATABASE_URL`) · Notion Phase 5 (MCP
+auth) · assets, last by instruction.

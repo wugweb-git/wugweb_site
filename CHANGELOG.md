@@ -9,6 +9,16 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Removed (2026-09-25)
+- **`visitor_id` cookie and `/api/personalize`** (`src/middleware.ts`, `src/env.d.ts`) — closes the remaining half of audit finding 16. The cookie was a one-year UUID minted on every request before consent; its only reader had zero callers. Neon's `visitor_profiles` table deliberately untouched.
+
+### Fixed (2026-09-25)
+- **The Sanity contact mirror no longer fails silently** (`src/pages/api/contact.ts`) — `SANITY_SYNC_TOKEN` is not bound on the Pages environment, so `if (token)` skipped the write with no log while the endpoint still returned a success redirect. Every submission has reached Neon and never the Studio. Now logged as an error. **Resolving it is a dashboard action: set the secret on production and preview.**
+- **`CLAUDE.md` known-debt item 3 struck** — all 176 routes swept, zero `framerusercontent.com` references.
+
+### Verified (2026-09-25)
+- **`/api/contact` and `/api/subscribe` work in production** — both success redirects are only reachable after the Neon insert, so the long-deferred Neon-on-Workers connection is confirmed. A Pages custom domain serves the production environment, so `uat.wugweb.com` exercised production bindings.
+
 ### Fixed — SEO / staging (2026-09-24)
 - **Staging hosts are no longer indexable** (`src/pages/robots.txt.ts`, `src/lib/hosts.ts`, `src/layouts/BaseLayout.astro`) — `uat.wugweb.com` went live as a fully public copy with no robots meta and `Allow: /`. robots.txt moved out of `public/` to an SSR endpoint so the Worker can see the Host header; non-canonical hosts now get `Disallow: /` plus `noindex, follow` and suppressed JSON-LD. Host list unified in `src/lib/hosts.ts`, shared with analytics.
 - **Removed a stale tracked `robots.txt` at the repo root** — never deployed, but Vite serves the project root in dev, so it shadowed the new route.
