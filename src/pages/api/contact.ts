@@ -1,9 +1,8 @@
 import type { APIRoute } from 'astro';
 import { connect } from '../../lib/db';
-import { sanityClient, getPreviewClient } from '../../lib/sanity';
+import { getPreviewClient } from '../../lib/sanity';
 
-// Same Hyperdrive + pg pattern as /api/personalize.ts. Stores leads in
-// Neon so they're queryable later, and mirrors each submission into a
+// Stores leads in Neon so they're queryable later, and mirrors each submission into a
 // Sanity `contactSubmission` doc so it shows up in Studio (Editorial →
 // Contact Submissions). Neon stays the structured store; Sanity is the
 // admin surface.
@@ -46,9 +45,27 @@ export const POST: APIRoute = async ({ request, locals, redirect }) => {
     newsletterOptIn: newsletter,
     submittedAt: new Date().toISOString(),
   };
+  //
+  // `if (token)` used to skip silently when the token was missing, which is
+  // how this went unnoticed: verified in production 2026-09-25, the endpoint
+  // returned its success redirect while writing NOTHING to Sanity, because
+  // SANITY_SYNC_TOKEN is not bound on the Pages environment. Every submission
+  // since the feature shipped reached Neon and never reached the Studio, and
+  // nothing anywhere said so — `contactSubmission` sitting at 0 documents read
+  // as "no enquiries yet" rather than "the mirror is off".
+  //
+  // A missing binding is a misconfiguration, not a normal condition, so it is
+  // logged at the same volume as a thrown error. Still best-effort: a Sanity
+  // problem must not lose the Neon row or fail the visitor's redirect.
   try {
     const token = locals.runtime?.env?.SANITY_SYNC_TOKEN || locals.runtime?.env?.SANITY_TOKEN || (import.meta.env as any)?.SANITY_TOKEN;
-    if (token) {
+    if (!token) {
+      console.error(
+        'contact: Sanity mirror SKIPPED — no SANITY_SYNC_TOKEN/SANITY_TOKEN binding. ' +
+        'The lead is in Neon but will not appear in Studio. Set the secret on the ' +
+        'Pages environment (production AND preview).'
+      );
+    } else {
       const writeClient = getPreviewClient(token);
       await writeClient.create(submissionDoc);
     }
