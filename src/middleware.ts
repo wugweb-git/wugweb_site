@@ -1,27 +1,29 @@
 import { defineMiddleware } from 'astro:middleware';
 
-const COOKIE_NAME = 'visitor_id';
 const PREVIEW_COOKIE = '__sanity_preview';
-const ONE_YEAR = 60 * 60 * 24 * 365;
+
+/**
+ * The `visitor_id` cookie was removed on 2026-09-25 — the remaining half of
+ * audit finding 16, "tracking cookie set before consent".
+ *
+ * It was a random UUID minted on EVERY request with a one-year lifetime,
+ * before the visitor had been asked anything. Its only reader was
+ * /api/personalize, which had zero callers anywhere in the frontend — grepped,
+ * not assumed. So it was a persistent identifier carrying real consent
+ * exposure in exchange for no product behaviour at all.
+ *
+ * The other half of finding 16 is already fixed: GA now loads only on consent
+ * (src/lib/analytics.ts), so the banner controls something real.
+ *
+ * If visitor personalisation is ever built, it needs a cookie set AFTER
+ * consent — read the consent state first, then mint. Do not restore this block
+ * as it was. The `visitor_profiles` table in Neon is left alone; Neon is
+ * user-controlled and dropping a table is not a code change.
+ */
 
 export const onRequest = defineMiddleware(async (context, next) => {
   // Skip cookie logic during prerendering (no real request)
   if (context.request) {
-    let visitorId = context.cookies.get(COOKIE_NAME)?.value;
-
-    if (!visitorId) {
-      visitorId = crypto.randomUUID(); // available globally in the Workers runtime
-      context.cookies.set(COOKIE_NAME, visitorId, {
-        path: '/',
-        maxAge: ONE_YEAR,
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: true,
-      });
-    }
-
-    context.locals.visitorId = visitorId;
-
     // Expose the Sanity preview token (set by /api/preview) so pages can
     // use getPreviewClient(token) to load draft content. Never leak it
     // to the client — keep it in locals only.

@@ -80,7 +80,7 @@ Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Con
 
 ## Routes (`src/pages/`)
 
-22 `.astro` routes + 4 API routes:
+22 `.astro` routes + 4 API routes (+ `sitemap.xml` and `robots.txt` as SSR endpoints):
 
 - Home `/`
 - About `/about`
@@ -92,7 +92,7 @@ Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Con
 - Footer pages: `/footer/impact`, `/footer/sitemap`, `/footer/subscription`
 - Legal: `/privacy-policy`, `/termsofuse`, `/refund-policy`
 - 404 `/404`
-- API: `/api/contact`, `/api/personalize`, `/api/preview`, `/api/sync`
+- API: `/api/contact`, `/api/preview`, `/api/sync`, `/api/subscribe` (`/api/personalize` deleted 2026-09-25 — zero callers, and it existed only to read the pre-consent `visitor_id` cookie)
 
 Note: `footer/sitemap` is linked from `SiteFooter` (Sitemap).
 
@@ -205,7 +205,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 
 1. **Frontend still reads from Sanity CDN** — Neon helpers and SQL constants exist, but pages have not been swapped to query Neon directly.
 2. **Contact form runtime reliability** — `POST /api/contact` + `/api/subscribe` store to Neon, but Neon Workers connection was deferred; verify in production.
-3. **Framer CDN hotlinks remain** — client logos on homepage and some team photos still use `framerusercontent.com`.
+3. ~~**Framer CDN hotlinks remain**~~ — **resolved 2026-09-25.** Swept all 176 sitemap routes on the deployed build: **zero** `framerusercontent.com` references anywhere. The claim about homepage client logos and team photos is stale.
 4. ~~**Sanity token permissions**~~ — **resolved 2026-09-24.** The claim that the token cannot update was wrong: `/users/me` returns `roles: ['editor']` and a 27-document patch transaction committed successfully. Migration scripts do not need a new token.
 5. **Service panel `fg`/`accent` data values** — the `/services` template carries `#FFFFFF`/`#050505` inline values (data, not CSS) — intentional.
 
