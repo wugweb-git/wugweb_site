@@ -197,7 +197,10 @@ const clientLogos = logos.length
 
   /* Phones: the first group drops from 14 to 12 so it stays 3 full rows of 4,
      the title spans the full width on its own row, and runs on one line. */
-  @media (max-width: 640px) {
+  /* 639.98, not 640: `min-width: 640px` above is "6 from tablet up", but
+     `max-width: 640px` also matched AT 640px, so a 640px viewport got six
+     columns and the phone gap together. Same off-by-one as ServiceTagField. */
+  @media (max-width: 639.98px) {
     .logo-grid { gap: var(--gap-2); }
     .logos-heading span { display: inline; }
     .logo-grid-title { flex-basis: 100%; }

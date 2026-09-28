@@ -307,7 +307,12 @@ import { posterFor } from '../lib/assets';
   .tag-face:hover .tag-toggle { background: color-mix(in srgb, var(--neutral-10) 16%, transparent); }
   .tag.is-open .tag-toggle { transform: rotate(45deg); }
 
-  @media (max-width: 640px) {
+  /* 639.98, not 640: `min-width: 640px` above is the tablet boundary — the
+     comment at the top of this block says so — but `max-width: 640px` also
+     matched AT exactly 640px, so a 640px viewport got tablet chip sizing and
+     phone padding at the same time. Source order decided the winner, which is
+     not a decision anyone made. */
+  @media (max-width: 639.98px) {
     .tag-field { min-height: 30rem; }
     .tag-face { padding: var(--gap-3) var(--gap-4); gap: var(--gap-3); }
   }
