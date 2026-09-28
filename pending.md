@@ -74,12 +74,21 @@ needs `DATABASE_URL`, which is a Cloudflare secret.
 2. Block sign-offs still outstanding: **9a** Client Assembly Grid, **9b**
    Service Tag Field, **9d** Bento Block, **9e** Process Map, and **#4** Service
    Spotlight Panel — none has had a visual review.
-3. **#5** three DUMMY service blurbs marked in `src/lib/service-copy.ts` —
-   replace before launch.
-4. **#6** service clip library is stock footage, not Wugweb work.
-5. **#8** extract the Spotlight Panel to a component before reusing it.
-6. Assets — 112 MB duplication, 685 MB tracked in git. **Last, by your
+3. **#6** service clip library is stock footage, not Wugweb work —
+   **re-verified 2026-09-29, still true:** all 9 files in
+   `public/assets/services/strategy/` are byte-identical to `brand/`.
+4. **#7** 9 clips for 10 brand sub-services — **still true**, 9 mp4s on disk.
+   Messaging Framework renders the placeholder.
+5. **9a** duplicate `logoPath` on Airtel Xstream/XSafe — **still true**, both
+   point at `/assets/logos/client-logo-c6rj.png`.
+6. **#8** extract the Spotlight Panel to a component before reusing it.
+7. Assets — 112 MB duplication, 685 MB tracked in git. **Last, by your
    instruction.**
+
+> **Note on this list.** An earlier version of it repeated pending.md's claim
+> that three service blurbs were still DUMMY COPY. They were not — real copy
+> landed 2026-09-23 in `d2b2fcab`, and line 8 of this file said so. I passed
+> the stale claim along without checking it. The audit below is the result.
 
 **Deliberately on hold:** DNS (`www.wugweb.com` is still Framer) · Frontend →
 Neon swap · Neon sync (user-controlled) · Sanity token rotation.
@@ -128,12 +137,12 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 | 2 | **Brand Vector Asset Ingestion** | **Done 2026-08-30** | Ingested official vector SVGs for Clutch, DesignRush, GoodFirms, TopDevelopers, Wugweb Large/Small logo lockups, and social OG/favicon assets into the `brandAsset` schema via `scripts/ingest-brand-assets.mjs`. |
 | 3 | **Blog & Case Study Thumbnail Population** | **Done 2026-08-30** | Built automated matcher script `scripts/populate-missing-covers.mjs` and enabled native R2 Custom Asset Picker directly inside all image/file fields in Sanity Studio. |
 | 4 | **Service Spotlight Panel** — `/services/brand` only · spec: [`kits_design_system/docs/blocks/service-spotlight-panel.md`](kits_design_system/docs/blocks/service-spotlight-panel.md) | **Awaiting sign-off 2026-09-04** | Replicates the Framer "Glass Showcase" reference: one wide glass panel of rows (number + thumbnail + title), over a **sharp** full-bleed backdrop that crossfades to the active item — the panel's own `backdrop-filter` does the blurring, which is how the reference does it (0 `filter: blur()`, 3 `backdrop-filter` on the live demo). **Active row inverts** to a light surface with dark text and reveals its supporting line; idle rows are title-only. Rows reserve the expanded height so activating one causes **zero layout shift** (verified: all rows 168px before and after). **Phones:** no hover, so an IntersectionObserver spotlights the row crossing the screen's centre as you scroll; supporting copy is hidden entirely. Gated by `showcaseEnabled` in `[slug].astro`; **all five other pillars still render the original `.caps-grouped` panels, verified unchanged**. Cost: +1,514 B min / 669 B gzip JS, no new deps. |
-| 5 | **Showcase: 2-line copy per sub-service** | **Done (stopgap) 2026-09-04** | Wired via `src/lib/service-copy.ts`. 7 of 10 blurbs are **verbatim from `Wugweb_Services 2026.md`**; 3 (Brand Narrative, Employer Branding, Brand Activation) are **DUMMY COPY, clearly marked in the file — replace before launch**, as the deck has no entry for them. Proper home is Sanity: `capabilities[].items` is `string[]`, so it needs promoting to `{title, blurb}` objects (schema + content migration) to retire this file. |
+| 5 | **Showcase: 2-line copy per sub-service** | **Done (stopgap) 2026-09-04** | Wired via `src/lib/service-copy.ts`. 7 of 10 blurbs are **verbatim from `Wugweb_Services 2026.md`**; ~~3 (Brand Narrative, Employer Branding, Brand Activation) are **DUMMY COPY** — replace before launch~~ — **STALE, corrected Audited 2026-09-29.** Real copy was written on 2026-09-23 in `d2b2fcab` ("content(services): write real copy for the 3 dummy brand sublines"); no dummy or placeholder marker remains in `service-copy.ts`. Line 8 of this file already said so, so pending.md contradicted itself for six days. Proper home is Sanity: `capabilities[].items` is `string[]`, so it needs promoting to `{title, blurb}` objects (schema + content migration) to retire this file. |
 | 6 | **Service clip library is stock footage** | **Open — content** | `public/assets/services/brand/*.mp4` are third-party showreel clips (Dokna Arq branding, a Mailchimp-style ad), not Wugweb work. `services/strategy/` is a byte-identical copy of `brand/`, `operations/` of `engineering/`. Only `brand` is wired in the media map; strategy/operations/growth left unmapped so they render placeholders rather than mislabelled work. |
 | 7 | **Messaging Framework has no clip** | **Open — user** | 9 clips for 10 brand sub-services. Item 06 renders the gradient placeholder; user to link the asset from R2 and add the key to `MEDIA_BY_PILLAR.brand`. |
 | 8 | **Extract Service Spotlight Panel to a component before recycling** | **Open — blocker for reuse** | The block is 73 lines of markup + ~335 lines of scoped CSS + ~110 lines of JS inline in `[slug].astro`. Reusing it elsewhere today means copy/paste. Needs `src/components/GlassShowcase.astro` taking `{ items, heading, accent, dwellMs }`. Two hard couplings to break: it reads `--theme-base` (injected only by `.service-page-wrapper`), and its data maps are keyed by pillar slug (`MEDIA_BY_PILLAR` / `COPY_BY_PILLAR`). |
-| 9a | **Client Assembly Grid** — homepage `Trusted by leading brands` · spec: [`kits_design_system/docs/blocks/client-assembly-grid.md`](kits_design_system/docs/blocks/client-assembly-grid.md) | **Awaiting sign-off 2026-09-08** | Rebuilt from the live Framer section. Full-viewport band, uniform 16:9 tiles (6/6/4 columns), title as a 2-cell grid item at tile height with 2 logos either side, `data-scroll="assemble"` scatter→converge→disperse. Fixed the old ragged flex-wrap (rows of 8/11/**1** at 1440) and defined `--opacity-soft` / `--opacity-strong`, which were referenced in 8 places but never declared. **Open:** mockup logo padding retained by user; 9 logo images still only on the Framer CDN; duplicate `logoPath` on Airtel Xstream/XSafe. |
-| 9b | **Service Tag Field** — homepage "What we do" · spec: [`kits_design_system/docs/blocks/service-tag-field.md`](kits_design_system/docs/blocks/service-tag-field.md) | **Awaiting sign-off 2026-09-08** | Six draggable pillar tags rebuilt natively from the Framer *Draggable Tags* reference — GSAP Draggable + InertiaPlugin + Flip + ScrollTrigger (all already in gsap 3.15; **no new dependency, no React**). Fly-in on scroll, momentum drag with echo trail, front-on-touch stacking, expand to media → title → copy → link, and a full-bleed launch into the service page. Replaces the old `.service-cards` teaser. **Open:** ~~clips have no posters~~ (**done 2026-09-24** — `posterFor()` wired; verified 6/6 on the deployed homepage); old `<ol class="service-cards">` still in the DOM as `hidden` with dead CSS; ambient-glow and Fade Up / Instant entry variants not built; composition never visually reviewed. |
+| 9a | **Client Assembly Grid** — homepage `Trusted by leading brands` · spec: [`kits_design_system/docs/blocks/client-assembly-grid.md`](kits_design_system/docs/blocks/client-assembly-grid.md) | **Awaiting sign-off 2026-09-08** | Rebuilt from the live Framer section. Full-viewport band, uniform 16:9 tiles (6/6/4 columns), title as a 2-cell grid item at tile height with 2 logos either side, `data-scroll="assemble"` scatter→converge→disperse. Fixed the old ragged flex-wrap (rows of 8/11/**1** at 1440) and defined `--opacity-soft` / `--opacity-strong`, which were referenced in 8 places but never declared. **Open:** mockup logo padding retained by user; ~~9 logo images still only on the Framer CDN~~ — **STALE, corrected Audited 2026-09-29:** zero `framerusercontent.com` references in `src/`, and zero across all 176 routes on the deployed build. **Still true:** duplicate `logoPath` on Airtel Xstream/XSafe — both point at `/assets/logos/client-logo-c6rj.png` (verified against Sanity). |
+| 9b | **Service Tag Field** — homepage "What we do" · spec: [`kits_design_system/docs/blocks/service-tag-field.md`](kits_design_system/docs/blocks/service-tag-field.md) | **Awaiting sign-off 2026-09-08** | Six draggable pillar tags rebuilt natively from the Framer *Draggable Tags* reference — GSAP Draggable + InertiaPlugin + Flip + ScrollTrigger (all already in gsap 3.15; **no new dependency, no React**). Fly-in on scroll, momentum drag with echo trail, front-on-touch stacking, expand to media → title → copy → link, and a full-bleed launch into the service page. Replaces the old `.service-cards` teaser. **Open:** ~~clips have no posters~~ (**done 2026-09-24** — `posterFor()` wired; verified 6/6 on the deployed homepage); ~~old `<ol class="service-cards">` still in the DOM as `hidden` with dead CSS~~ — **STALE, corrected Audited 2026-09-29:** no `service-cards` reference anywhere in `src/`; ambient-glow and Fade Up / Instant entry variants not built; composition never visually reviewed. |
 | 9d | **Bento Block** — `/about` "Why Wugweb?" + "Why us?" on all six service pages · spec: [`kits_design_system/docs/blocks/bento-block.md`](kits_design_system/docs/blocks/bento-block.md) | **Awaiting sign-off 2026-09-09** | Real component (`src/components/BentoBlock.astro`), unlike 9a/9b. Every axis is data, so a variation is a reordered `tiles` array. **Six layouts, one per pillar** (`BENTO_LAYOUTS` in `[slug].astro`, `[column, weight, role]` per slot) — column membership, order, weights, tone and media placement all differ; verified as six distinct tile sequences. Two build-time guards enforce "never an even grid": one rejects a single repeated weight, one rejects identical column signatures. Overflow-proof by `flex-basis: auto` + weighted `flex-grow` + `shrink: 0`; verified 1024→1728 across all six pillars — columns level, no clipped text. `showNumbers={false}` on the service pages (parallel claims, not a sequence); `/about` keeps 01–04. **Open:** composition never visually reviewed (pane screenshots black all session); only Brand has clips, the other five render a still; `stat` / `checklist` / `stack` / `chips` / `headline` kinds built but unused; cursor-invert puck probably surplus — recommend cutting. |
 | 9e | **Process Map** — "How we work" on `/services/experience` · spec: [`kits_design_system/docs/blocks/process-map.md`](kits_design_system/docs/blocks/process-map.md) | **Awaiting sign-off 2026-09-09** | Component (`src/components/ProcessMap.astro`) replacing the `.framework-flow` card grid. Full-viewport block: phase hubs chained left→right with their steps orbiting as labelled chips, elastic spring-loaded connecting lines (vanilla rAF, no dependency), scroll-driven phase walk, hover focus with `--layer-base`/`--card`/`--popover` layering. Brand ink throughout with `--accent` on the return loop and the lit phase's edges only — **no `--theme-base`**, which read as cyan on this pillar and broke the yellow-≤10% rule. Six `shape` profiles + loop labels in `MAP_BY_PILLAR`. Framework phase names shortened to single words across all six pillars; Experience's `includes` trimmed 22→15 (3/phase). **Open:** live on Experience only — `processMapEnabled` gates it, and the gate is load-bearing because the component throws above 3 steps/phase and the other five pillars are untrimmed (strategy 5,5,5,4,4 · brand 5,5,6,5,5 · growth 4,4,5,4,4 · engineering 5,5,5,5,5 · operations 4,3,4,3,3). No imagery (clip library is stock — see #6). `approach-section` still precedes it, so the page states its method twice. **Removed 2026-09-09:** the `process-section` ("How we do it") — it was on Experience alone, the only pillar with a `process` key, restating the same framework; markup, scoped CSS, the `ServiceProcess` type, the `preferArr` merge and the data are all gone (a `process` field may remain in Sanity, unread). |
 | 9c | **`--shadow-lg` is aliased to `--shadow-md`** | **Done 2026-09-23** | Fixed earlier the same day (see the "Duplicate token definitions resolved" note further down this file) — the clobbering legacy alias was deleted, `--shadow-lg` resolves to its own scale value again. This row was stale by the time tonight's session reached it. |
@@ -1178,3 +1187,33 @@ back to 0). Two Neon rows remain that I cannot remove without `DATABASE_URL` —
 **Still open:** `--color-text-muted` contrast (design call) · breakpoint and px
 consolidation · Neon leftovers (needs `DATABASE_URL`) · Notion Phase 5 (MCP
 auth) · assets, last by instruction.
+
+### 1t. Audit of pending.md's own claims — *2026-09-29*
+
+This file asserted things that were no longer true, and in one case
+contradicted itself. Eight checkable claims tested against the code and the
+deployed build.
+
+**Stale — corrected:**
+
+| claim | reality |
+|---|---|
+| "Contact Form Production Verification … verified **authenticated Sanity write client**" | **False, and never was.** No `contactSubmission` document is created; `SANITY_SYNC_TOKEN` is unbound. The Neon half is real. (§1s) |
+| item 5: "3 sublines are **DUMMY COPY** — replace before launch" | Fixed **2026-09-23** in `d2b2fcab`. No dummy marker remains. **Line 8 of this file already said so** — the file contradicted itself for six days, and I repeated the wrong half. |
+| 9a: "9 logo images still only on the Framer CDN" | **Zero** `framerusercontent.com` references in `src/`, and zero across all 176 deployed routes. |
+| 9b: "old `<ol class=\"service-cards\">` still in the DOM as `hidden` with dead CSS" | No `service-cards` reference anywhere in `src/`. |
+| 9b: "clips have no posters" | Fixed 2026-09-24; verified 6/6 on the deployed homepage. |
+
+**Still true — confirmed, not assumed:**
+
+| claim | evidence |
+|---|---|
+| #6: `services/strategy/` is a byte-identical copy of `brand/` | md5 of all 9 files matches |
+| #7: 9 clips for 10 brand sub-services | 9 mp4s on disk |
+| 9a: duplicate `logoPath` on Airtel Xstream/XSafe | both → `/assets/logos/client-logo-c6rj.png`, queried from Sanity |
+
+**The pattern, for the third time this week.** Audit and tracker entries decay,
+and the decay is invisible because nothing re-checks them. Finding 20's "463"
+was 115; finding 10 was not a defect; findings 4 and 17 were already resolved;
+Phase C's "~800 px" was 225; "nine breakpoints" was 13. **Treat every number
+and every "Open" in this file as a hypothesis with a date on it.**
