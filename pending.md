@@ -1291,3 +1291,39 @@ inline showcase markup remains in the page.
 Not fixable here: no Airtel Xstream, IndusInd or Sadhan/TOT logo asset exists
 anywhere in the repo, and both case studies' own `logoPath` is null. **Needs
 three logo files from the user.**
+
+### 1v. Phase C actioned in full — *2026-09-29*
+
+Everything in Phase C is done. Detail in `~/.claude/plans/snoopy-splashing-pearl.md`.
+
+| | result |
+|---|---|
+| breakpoints | **13 values → 5 thresholds** (`480/640/768/1024/1200`, max-partners at `.98`) |
+| durations | **98 of 118 tokenised** (300ms ×57 alone) |
+| opacity | **17 of 21 tokenised** |
+| font-size | **42 brought onto the type scale**, 2 left off deliberately |
+| z-index | **two scales merged into one**; `--z-skip-link` never existed |
+| contrast | **0 WCAG AA failures** across every affected page |
+| `var()` fallbacks | **14 corrected** — they disagreed with their own token |
+
+**Three corrections I had to make to my own work mid-change**, all caught by
+measuring rather than reviewing:
+
+1. `--fluid-nano` was written as a `10→12px` clamp. Measured it rendering
+   ~12px at desktop — a 20% increase on exactly the five micro-labels the step
+   existed to protect. Now flat `0.625rem`, like `--fluid-label`'s flat `1rem`.
+   **Bringing a value onto a scale should name it, not resize it.**
+2. The contrast sweep reported **eight false failures** because it read
+   `rgba()` with a regex that discarded the alpha, scoring a 1%-white overlay
+   as opaque white. The tell: 3.69 is exactly `#858585` against `#FFFFFF`.
+3. The lazy-video scroll fallback was rAF-throttled — and **rAF is paused in a
+   hidden document**, which is one of the conditions that stops IO and brings
+   you to the fallback. Timer-throttled now, and **verified on the deployed
+   build**: with IO suspended, 4 of 4 videos attach on scroll. That closes a
+   verification gap that had been open since the lazy-loading work shipped.
+
+**Two `@media`-adjacent things worth keeping:** there is **no breakpoint below
+480 and there should not be** — verified at 320 and 375 that no `min-width`
+tier matches, which is mobile-first working. And
+`.matrix-row.header { font-size: 10px }` was **dead CSS**; the child
+`.matrix-cell` sets its own size, so those cells always rendered at 14px.
