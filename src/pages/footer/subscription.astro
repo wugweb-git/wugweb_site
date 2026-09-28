@@ -1131,7 +1131,11 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
   .item-n {
     font-family: var(--font-mono);
     font-size: var(--fluid-caption);
-    color: var(--color-text-muted);
+    /* --color-text-secondary, not --color-text-muted: this sits on a lighter
+       composited surface where muted measures below the 4.5 WCAG AA floor
+       even after the token was raised to #858585. Local fix — lightening the
+       global token again would drag every muted element up to rescue three. */
+    color: var(--color-text-secondary);
     width: 3ch;
   }
 
@@ -1382,7 +1386,11 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     padding: 2px 6px;
     border-radius: 2px;
     background-color: rgba(255, 255, 255, 0.02);
-    color: var(--color-text-muted);
+    /* --color-text-secondary, not --color-text-muted: 10px text on a surface
+       lightened by the 2% white overlay measures 4.37:1 with muted, under the
+       4.5 WCAG AA floor. At this size it is the least forgiving text on the
+       page, so it gets the brighter token. */
+    color: var(--color-text-secondary);
   }
 
   .iq-row.completed {
@@ -2445,7 +2453,11 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
   .lane-title {
     font-family: var(--font-mono);
     font-size: var(--t-micro);
-    color: var(--color-text-muted);
+    /* --color-text-secondary, not --color-text-muted: this sits on a lighter
+       composited surface where muted measures below the 4.5 WCAG AA floor
+       even after the token was raised to #858585. Local fix — lightening the
+       global token again would drag every muted element up to rescue three. */
+    color: var(--color-text-secondary);
     text-transform: uppercase;
   }
 

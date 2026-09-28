@@ -1034,7 +1034,12 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    /* --color-text-secondary, not --color-text-muted: the 2% white overlay above
+       lifts this row's composite to ~rgb(30,30,30), where muted measures 4.49:1
+       — one hundredth under the 4.5 WCAG AA floor. Marginal, but the threshold
+       is a threshold. Local fix, same as .item-n / .lane-title / .iq-tag on
+       /footer/subscription. */
+    color: var(--color-text-secondary);
   }
 
   .matrix-row:last-child {
