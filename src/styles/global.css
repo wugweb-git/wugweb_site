@@ -565,11 +565,6 @@
   --cursor-loading: progress;
 
   /* Z-index / layers */
-  --z-base: 0;
-  --z-overlay: 1;
-  --z-sticky: 50;
-  --z-modal: 100;
-  --z-toast: 200;
 
   --layer-background: 0;
   --layer-base: 1;
@@ -581,6 +576,11 @@
   --layer-tooltip: 130;
   --layer-overlay: 140;
   --layer-cursor: 9999;
+  /* The skip link must sit above every page chrome element, because it is the
+     first thing a keyboard user reaches. It was `var(--z-skip-link, 9999)` —
+     and --z-skip-link was never defined anywhere, so the fallback was doing
+     all the work and the token name was fiction. */
+  --layer-skip-link: 9999;
 
   /* Semantic hero overlay (shared home + about) */
   --hero-overlay: rgba(10, 10, 12, 0.75);
@@ -1274,7 +1274,7 @@ a[href^='tel:']:not(.no-external-icon)::after {
   position: absolute;
   top: var(--gap-3);
   left: var(--gap-3);
-  z-index: var(--z-skip-link, 9999);
+  z-index: var(--layer-skip-link);
   padding: var(--gap-3) var(--gap-5);
   background: var(--accent);
   color: var(--neutral-9);

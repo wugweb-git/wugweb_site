@@ -261,7 +261,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, var(--hero-overlay) 0%, var(--hero-overlay-mid) 45%, var(--bg) 100%);
-    z-index: var(--z-overlay);
+    z-index: var(--layer-base);
   }
 
   .hero-content {
@@ -311,7 +311,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
     position: absolute;
     left: 50%;
     bottom: var(--gap-8);
-    z-index: var(--z-overlay);
+    z-index: var(--layer-base);
     width: 1px;
     height: var(--space-section-lg);
     background: var(--line);
