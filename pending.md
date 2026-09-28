@@ -47,6 +47,50 @@ Authoritative Framer/build matrix: [`docs/framer-full-audit.md`](docs/framer-ful
 
 ---
 
+## ⚡ What is actually pending — *2026-09-28*
+
+Everything below this block is history; **this is the live list.** Full detail
+in §1s and `~/.claude/plans/snoopy-splashing-pearl.md`.
+
+**Needs you, not code:**
+
+| # | Item | Why it is yours |
+|---|---|---|
+| 1 | **Set `SANITY_SYNC_TOKEN` on the Pages project** (production **and** preview) | Contact submissions reach Neon and **never reach the Studio**. Dashboard action. This is the highest-value open item — leads are being captured but are invisible to whoever works them. |
+| 2 | **Delete two marked test rows in Neon** | From the endpoint verification. I have no `DATABASE_URL`. `CLAUDE-TEST-1790319185 DELETE ME` in `contact_submissions`, `claude-test-1790319185@example.invalid` in the subscriber table. The Sanity test doc was already deleted. |
+| 3 | **`--color-text-muted` (#7D7D7D)** — 4.23:1 against a 4.5 floor | Design call. 38 usages, 8 files; `#858585` clears it. |
+| 4 | **Never-filled fields** — `caseStudy.services` 0/60, `caseStudy.relatedPosts` 0/60, `post.syndicatedTo` 0/100 | Populate or drop. |
+| 5 | **Re-authorise the Notion MCP server** | Phase 5 trackers cannot run without it. |
+
+**Blocked on a credential:** Neon leftovers (8 stale `caseStudy` rows,
+`[object Object]` slugs, empty `content_relations`) — read-only diagnosis still
+needs `DATABASE_URL`, which is a Cloudflare secret.
+
+**Open work, not started, in rough priority order:**
+
+1. Breakpoint + px consolidation — **13 breakpoint values / 11 thresholds** and
+   **225 px literals in declarations** (both audit numbers were wrong; see §1s).
+   A real refactor with visual risk.
+2. Block sign-offs still outstanding: **9a** Client Assembly Grid, **9b**
+   Service Tag Field, **9d** Bento Block, **9e** Process Map, and **#4** Service
+   Spotlight Panel — none has had a visual review.
+3. **#5** three DUMMY service blurbs marked in `src/lib/service-copy.ts` —
+   replace before launch.
+4. **#6** service clip library is stock footage, not Wugweb work.
+5. **#8** extract the Spotlight Panel to a component before reusing it.
+6. Assets — 112 MB duplication, 685 MB tracked in git. **Last, by your
+   instruction.**
+
+**Deliberately on hold:** DNS (`www.wugweb.com` is still Framer) · Frontend →
+Neon swap · Neon sync (user-controlled) · Sanity token rotation.
+
+**Known verification gaps:** JSON-LD cannot be checked on uat or pages.dev
+(suppressed on non-canonical hosts by design — needs one re-check after DNS
+moves). IntersectionObserver cannot be checked in the browser pane at all
+(permanently `document.hidden`).
+
+---
+
 ## ✅ Completed (high level)
 
 Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--ts-*` / `--fluid-*` + weight hierarchy**; colours from Framer S1), **#16 typography rem/clamp sweep** (pages + components → fluid/ts tokens), Framer→local assets, R2, content↔asset paths, Global Settings, Presence, asset registry, governance, Industry master, service Framer extract + **89** toolkit icons, footer Sitemap + Industries, page capture + SEO salvage, industries route, lead-gen routing. **Contact V2 layout (`contact-us.astro`)**, Service media folder normalization (`strategy/`, `brand/`, `experience/`, `growth/`, `engineering/`, `operations/`), `CHANGELOG.md` integration.
@@ -71,7 +115,7 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 |---|---|---|
 | Design token → component migration | **Done 2026-08-05 (Phase 1)** | Full token system (opacity/radius/stroke/blur/shadow/elevation/glass/noise/gradient/motion/z-index) consumed everywhere; residual `#555`/`rgba()`/`opacity:`/`blur()` removed from pages/components (only `CATEGORY_COLORS` data map + service-panel `fg`/`accent` data remain). |
 | Sanity Studio CRUD Verification | **Done 2026-08-11** | All CRUD actions (`create`, `duplicateDocs`, `publishDocs`, `unpublishDocs`, `archiveDocs`, `deleteDocs`) tested and verified live with 0 HTTP revision errors or schema validation bugs. |
-| Contact Form Production Verification | **Done 2026-08-30** | Tested `/api/contact` live in production. Verified CSRF origin security, 302 redirect to `/thank-you`, and authenticated Sanity write client. |
+| Contact Form Production Verification | **PARTLY WRONG — corrected 2026-09-25** | The Neon half is real: re-verified on the deployed build, 302 → `/thank-you`, which is only reachable **after** the insert. The CSRF note is right (a bare POST 403s without an `Origin` header). **But "authenticated Sanity write client" is FALSE.** No `contactSubmission` document is created, and none ever has been — `SANITY_SYNC_TOKEN` is not bound on the Pages project and `if (token)` skipped the write silently while still returning the success redirect. See §1s. **Fix is a dashboard action, not code.** |
 | Frontend → Neon swap | Deferred | Helpers ready (`content.ts`, `NEON` queries); wait until UI/brand mapping done. **User: do not run Neon sync unless asked.** |
 
 ---
@@ -89,7 +133,7 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 | 7 | **Messaging Framework has no clip** | **Open — user** | 9 clips for 10 brand sub-services. Item 06 renders the gradient placeholder; user to link the asset from R2 and add the key to `MEDIA_BY_PILLAR.brand`. |
 | 8 | **Extract Service Spotlight Panel to a component before recycling** | **Open — blocker for reuse** | The block is 73 lines of markup + ~335 lines of scoped CSS + ~110 lines of JS inline in `[slug].astro`. Reusing it elsewhere today means copy/paste. Needs `src/components/GlassShowcase.astro` taking `{ items, heading, accent, dwellMs }`. Two hard couplings to break: it reads `--theme-base` (injected only by `.service-page-wrapper`), and its data maps are keyed by pillar slug (`MEDIA_BY_PILLAR` / `COPY_BY_PILLAR`). |
 | 9a | **Client Assembly Grid** — homepage `Trusted by leading brands` · spec: [`kits_design_system/docs/blocks/client-assembly-grid.md`](kits_design_system/docs/blocks/client-assembly-grid.md) | **Awaiting sign-off 2026-09-08** | Rebuilt from the live Framer section. Full-viewport band, uniform 16:9 tiles (6/6/4 columns), title as a 2-cell grid item at tile height with 2 logos either side, `data-scroll="assemble"` scatter→converge→disperse. Fixed the old ragged flex-wrap (rows of 8/11/**1** at 1440) and defined `--opacity-soft` / `--opacity-strong`, which were referenced in 8 places but never declared. **Open:** mockup logo padding retained by user; 9 logo images still only on the Framer CDN; duplicate `logoPath` on Airtel Xstream/XSafe. |
-| 9b | **Service Tag Field** — homepage "What we do" · spec: [`kits_design_system/docs/blocks/service-tag-field.md`](kits_design_system/docs/blocks/service-tag-field.md) | **Awaiting sign-off 2026-09-08** | Six draggable pillar tags rebuilt natively from the Framer *Draggable Tags* reference — GSAP Draggable + InertiaPlugin + Flip + ScrollTrigger (all already in gsap 3.15; **no new dependency, no React**). Fly-in on scroll, momentum drag with echo trail, front-on-touch stacking, expand to media → title → copy → link, and a full-bleed launch into the service page. Replaces the old `.service-cards` teaser. **Open:** clips have no posters; old `<ol class="service-cards">` still in the DOM as `hidden` with dead CSS; ambient-glow and Fade Up / Instant entry variants not built; composition never visually reviewed. |
+| 9b | **Service Tag Field** — homepage "What we do" · spec: [`kits_design_system/docs/blocks/service-tag-field.md`](kits_design_system/docs/blocks/service-tag-field.md) | **Awaiting sign-off 2026-09-08** | Six draggable pillar tags rebuilt natively from the Framer *Draggable Tags* reference — GSAP Draggable + InertiaPlugin + Flip + ScrollTrigger (all already in gsap 3.15; **no new dependency, no React**). Fly-in on scroll, momentum drag with echo trail, front-on-touch stacking, expand to media → title → copy → link, and a full-bleed launch into the service page. Replaces the old `.service-cards` teaser. **Open:** ~~clips have no posters~~ (**done 2026-09-24** — `posterFor()` wired; verified 6/6 on the deployed homepage); old `<ol class="service-cards">` still in the DOM as `hidden` with dead CSS; ambient-glow and Fade Up / Instant entry variants not built; composition never visually reviewed. |
 | 9d | **Bento Block** — `/about` "Why Wugweb?" + "Why us?" on all six service pages · spec: [`kits_design_system/docs/blocks/bento-block.md`](kits_design_system/docs/blocks/bento-block.md) | **Awaiting sign-off 2026-09-09** | Real component (`src/components/BentoBlock.astro`), unlike 9a/9b. Every axis is data, so a variation is a reordered `tiles` array. **Six layouts, one per pillar** (`BENTO_LAYOUTS` in `[slug].astro`, `[column, weight, role]` per slot) — column membership, order, weights, tone and media placement all differ; verified as six distinct tile sequences. Two build-time guards enforce "never an even grid": one rejects a single repeated weight, one rejects identical column signatures. Overflow-proof by `flex-basis: auto` + weighted `flex-grow` + `shrink: 0`; verified 1024→1728 across all six pillars — columns level, no clipped text. `showNumbers={false}` on the service pages (parallel claims, not a sequence); `/about` keeps 01–04. **Open:** composition never visually reviewed (pane screenshots black all session); only Brand has clips, the other five render a still; `stat` / `checklist` / `stack` / `chips` / `headline` kinds built but unused; cursor-invert puck probably surplus — recommend cutting. |
 | 9e | **Process Map** — "How we work" on `/services/experience` · spec: [`kits_design_system/docs/blocks/process-map.md`](kits_design_system/docs/blocks/process-map.md) | **Awaiting sign-off 2026-09-09** | Component (`src/components/ProcessMap.astro`) replacing the `.framework-flow` card grid. Full-viewport block: phase hubs chained left→right with their steps orbiting as labelled chips, elastic spring-loaded connecting lines (vanilla rAF, no dependency), scroll-driven phase walk, hover focus with `--layer-base`/`--card`/`--popover` layering. Brand ink throughout with `--accent` on the return loop and the lit phase's edges only — **no `--theme-base`**, which read as cyan on this pillar and broke the yellow-≤10% rule. Six `shape` profiles + loop labels in `MAP_BY_PILLAR`. Framework phase names shortened to single words across all six pillars; Experience's `includes` trimmed 22→15 (3/phase). **Open:** live on Experience only — `processMapEnabled` gates it, and the gate is load-bearing because the component throws above 3 steps/phase and the other five pillars are untrimmed (strategy 5,5,5,4,4 · brand 5,5,6,5,5 · growth 4,4,5,4,4 · engineering 5,5,5,5,5 · operations 4,3,4,3,3). No imagery (clip library is stock — see #6). `approach-section` still precedes it, so the page states its method twice. **Removed 2026-09-09:** the `process-section` ("How we do it") — it was on Experience alone, the only pillar with a `process` key, restating the same framework; markup, scoped CSS, the `ServiceProcess` type, the `preferArr` merge and the data are all gone (a `process` field may remain in Sanity, unread). |
 | 9c | **`--shadow-lg` is aliased to `--shadow-md`** | **Done 2026-09-23** | Fixed earlier the same day (see the "Duplicate token definitions resolved" note further down this file) — the clobbering legacy alias was deleted, `--shadow-lg` resolves to its own scale value again. This row was stale by the time tonight's session reached it. |
@@ -105,7 +149,7 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 | Kits Showcase Page (`/kits`) | **Done 2026-08-11** — Standalone showcase page live at `/kits`. Unlinked from top header nav. |
 | Contact page redesign (#12) | **Done 2026-08-10** — Rolled out V2 layout & hierarchy to `/contact-us` (6-pillar selector grid, timeline & budget chips, responsive layout, SLA badge). `/contact-v2` redirects 301 to `/contact-us`. |
 | Full service-page content pass (#5) | **Done 2026-08-05** — 6-pillar copy enriched per `urgent/Wugweb_Services 2026.md`. |
-| Contact form prod verify | **Done 2026-09-23** — see "Critical / blocked" table above; this row was a stale duplicate. |
+| Contact form prod verify | **See the corrected row in "Critical / blocked" above.** Neon verified 2026-09-25; the Sanity mirror is inert and needs a secret set in the dashboard. |
 
 ---
 
