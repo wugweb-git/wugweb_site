@@ -111,7 +111,7 @@ Source of truth: `src/styles/global.css` `:root`. Inter Tight only · weights vi
 | `--fluid-h3` | `clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem)` | 20px | 28px |
 | `--fluid-h4` | `clamp(1.06rem, 1vw + 0.5rem, 1.375rem)` | 16.96px | 22px |
 | `--fluid-h5` | `clamp(1rem, 0.6vw + 0.7rem, 1.1875rem)` | 16px | 19px |
-| `--fluid-body-lg` | `clamp(1rem, 0.5vw + 0.875rem, 1.25rem)` | 16px | 20px |
+| `--fluid-body-lg` | `clamp(1rem, 0.25vw + 0.9rem, 1.125rem)` | 16px | 18px |
 | `--fluid-body-md` | `clamp(0.9375rem, 0.25vw + 0.875rem, 1rem)` | 15px | 16px |
 | `--fluid-body-sm` | `clamp(0.8125rem, 0.1vw + 0.8rem, 0.875rem)` | 13px | 14px |
 | `--fluid-label` | `clamp(0.75rem, 0.1vw + 0.73rem, 0.875rem)` | 12px | 14px |
@@ -134,10 +134,20 @@ implemented `--fluid-caption` bottomed out at 12px. The **documented** caption
 is 10→12px, which is exactly that role — so restoring the documented value made
 the extra token redundant. Those labels now use `--t-micro` and render ~10.4px.
 
-### Known characteristic: `--fluid-body-lg` exceeds `--fluid-h4` between ~700–1250px
+### `--fluid-body-lg` is 16 → 18px, not the documented 16 → 20px
 
-At 1024px, lead body text renders 19.1px against an h4 at 18.2px. This comes
-from the documented curves, not the implementation. It may well be intended —
-lead text is deliberately prominent and weight distinguishes it from a small
-heading — but it is recorded here rather than silently "fixed", because
-changing a documented value is a design decision.
+The documented curve crossed `--fluid-h4` between roughly 590 and 1250px: at
+1024 lead body text rendered **19.1px against an h4 at 18.2px**. A heading must
+never be smaller than the body text beneath it, and that invariant outranks
+either specific curve — so the lead size gave way and the heading scale is
+untouched.
+
+Verified at 320, 375, 480, 592, 768, 900, 1024, 1152, 1280, 1440 and 1920px:
+`display > h1 > h2 > h3 > h4 > h5` holds strictly, and `h4 > body-lg ≥ body-md`
+holds at every one.
+
+`--fluid-h5` sits at or just under `--fluid-body-lg` in the 768–1024 band. That
+is deliberate and not chased further: h5 is the smallest heading and body-lg is
+the largest body size, so they are meant to be close — weight and colour
+separate them. Forcing `h5 > body-lg` squeezes h5 into a sub-pixel window
+between it and h4.

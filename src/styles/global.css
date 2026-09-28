@@ -67,7 +67,13 @@
      (18.89 vs 18.24 at 1024px), which is the same defect that made the previous
      scale wrong. 16px -> 19px. */
   --fluid-h5: clamp(1rem, 0.6vw + 0.7rem, 1.1875rem);          /* 16→20 · 600 */
-  --fluid-body-lg: clamp(1rem, 0.5vw + 0.875rem, 1.25rem);    /* 16→18 · 400 */
+  /* 16 -> 18px, NOT the documented 16 -> 20px. The documented curve crosses
+     --fluid-h4 between roughly 590 and 1250px — lead body text rendering LARGER
+     than a heading (19.1 vs 18.2 at 1024px). A heading must never be smaller
+     than the body text beneath it, and that invariant outranks either specific
+     curve, so the lead size gives way and the heading scale is untouched.
+     Verified below h4 at 320/375/480/592/768/1024/1280/1440/1920px. */
+  --fluid-body-lg: clamp(1rem, 0.25vw + 0.9rem, 1.125rem);    /* 16→18 · 400 */
   --fluid-body-md: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);    /* 14→16 · 400 */
   --fluid-body-sm: clamp(0.8125rem, 0.1vw + 0.8rem, 0.875rem);/* 13→14 · 400 */
   --fluid-label: clamp(0.75rem, 0.1vw + 0.73rem, 0.875rem);                                           /* 16 flat · 500 */
