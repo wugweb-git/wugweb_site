@@ -649,8 +649,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     white-space: nowrap;
     border-radius: var(--radius-2);
     cursor: pointer;
-    transition: all 0.2s ease;
-  }
+    transition: all var(--duration-fast) ease;  }
 
   .filter-btn:hover {
     border-color: var(--color-text-secondary);
@@ -674,8 +673,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     padding-block: var(--p-8);
     border-bottom: var(--stroke-thin) solid var(--color-border-subtle);
     align-items: start;
-    transition: opacity 0.3s;
-  }
+    transition: opacity var(--duration-normal);  }
 
   @media (min-width: 768px) {
     .group-row {
@@ -712,8 +710,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     font-size: var(--fluid-body-md);
     font-weight: var(--font-weight-medium);
     cursor: pointer;
-    transition: all 0.3s ease;
-  }
+    transition: all var(--duration-normal) ease;  }
 
   .sub-industry-btn:hover {
     border-color: var(--color-accent-primary);
@@ -747,8 +744,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     height: 100%;
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
     overflow-y: auto;
-    animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
+    animation: slideIn var(--duration-normal) cubic-bezier(0.16, 1, 0.3, 1) forwards;  }
 
   @keyframes slideIn {
     from { transform: translateX(100%); }
@@ -1024,8 +1020,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     border-bottom: var(--stroke-thin) solid var(--color-border-subtle);
     text-align: center;
     align-items: center;
-    transition: background-color 0.2s;
-  }
+    transition: background-color var(--duration-fast);  }
 
   @media (min-width: 640px) {
     .matrix-row {
@@ -1067,8 +1062,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
 
   .matrix-cell.dot {
     color: var(--color-text-muted);
-    transition: color 0.2s;
-  }
+    transition: color var(--duration-fast);  }
 
   .matrix-row.active-selection .matrix-cell.dot.active {
     color: var(--color-accent-primary);

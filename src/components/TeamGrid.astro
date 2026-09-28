@@ -113,8 +113,7 @@ const rest = words.slice(headingLead).join(' ');
        as people rather than a table. Margin, not transform — `data-reveal` is a
        GSAP tween on this element and owns `transform` and `opacity` outright. */
     margin-top: calc(var(--stagger, 0) * var(--gap-8));
-    transition: box-shadow var(--duration-normal) var(--easing-smooth),
-                filter var(--duration-normal) var(--easing-smooth);
+    transition: box-shadow var(--duration-normal) var(--easing-smooth),                filter var(--duration-normal) var(--easing-smooth);
   }
   @media (min-width: 1024px) { .team-card { margin-top: calc(var(--stagger, 0) * var(--gap-10)); } }
 
@@ -132,8 +131,7 @@ const rest = words.slice(headingLead).join(' ');
     object-fit: cover;
     display: block;
     transform: scale(1.01);
-    transition: transform 0.5s var(--easing-smooth), filter var(--duration-normal) var(--easing-smooth);
-    filter: grayscale(1);
+    transition: transform var(--duration-xslow) var(--easing-smooth), filter var(--duration-normal) var(--easing-smooth);    filter: grayscale(1);
   }
   .team-initials {
     font-family: var(--font-mono);

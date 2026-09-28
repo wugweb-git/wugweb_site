@@ -326,14 +326,12 @@ const hasCms = blocks.length > 0;
     font-family: var(--font-mono);
     font-size: 1.25rem;
     color: var(--color-text-muted);
-    transition: transform 0.3s;
-  }
+    transition: transform var(--duration-normal);  }
 
   .faq-panel {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
-  }
+    transition: max-height var(--duration-normal) cubic-bezier(0, 1, 0, 1);  }
 
   .faq-panel p {
     padding-bottom: var(--p-5);
@@ -342,8 +340,7 @@ const hasCms = blocks.length > 0;
 
   .faq-item.active .faq-panel {
     max-height: 1000px;
-    transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
-  }
+    transition: max-height var(--duration-normal) cubic-bezier(1, 0, 1, 0);  }
 
   .faq-item.active .faq-icon {
     transform: rotate(45deg);

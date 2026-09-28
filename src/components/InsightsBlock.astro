@@ -184,8 +184,7 @@ const coverOf = (p: InsightPost) =>
        dark page, which forced dark-on-light text, a special-cased category
        colour for contrast, and made the teaser the loudest thing on the page. */
     background: var(--color-surface-elevated);
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  }
+    transition: border-color var(--duration-normal) ease, transform var(--duration-normal) ease, box-shadow var(--duration-normal) ease;  }
 
   /* Whole-card growth, not just the background swap + image zoom — a real
      1.5% scale (not the literal 10% asked for; at card size that reads as
@@ -217,8 +216,7 @@ const coverOf = (p: InsightPost) =>
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+    transition: transform var(--duration-xslow) cubic-bezier(0.16, 1, 0.3, 1);  }
 
   .blog-teaser-card:hover .btc-media img { transform: scale(1.04); }
 
@@ -270,8 +268,7 @@ const coverOf = (p: InsightPost) =>
   }
 
   .btc-content h3 {
-    transition: color var(--duration-fast) var(--easing-out);
-    font-size: var(--t-h5);
+    transition: color var(--duration-fast) var(--easing-out);    font-size: var(--t-h5);
     font-weight: var(--font-weight-semibold);
     line-height: var(--lh-tight);
     color: var(--fg);

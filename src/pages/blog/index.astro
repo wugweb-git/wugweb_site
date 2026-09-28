@@ -181,8 +181,7 @@ function fmtDate(d?: string): string {
     overflow: hidden;
     background: var(--color-surface-elevated);
     border: 0;
-    transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+    transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);  }
   @media (min-width: 768px) {
     .featured-card { grid-template-columns: 1.1fr 1fr; gap: 0; }
   }
@@ -236,8 +235,7 @@ function fmtDate(d?: string): string {
     flex-direction: column;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);  }
   .blog-grid a:hover { transform: translateY(-3px); }
   .post-thumb-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; flex-shrink: 0; border-radius: var(--radius-lg); }
   .post-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -250,8 +248,7 @@ function fmtDate(d?: string): string {
     position: absolute; top: var(--gap-3); right: var(--gap-3); width: 30px; height: 30px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center; color: var(--color-surface-page);
     background: var(--fg); opacity: 0; transform: scale(0.7) translateY(4px);
-    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+    transition: opacity var(--duration-normal) ease, transform var(--duration-normal) cubic-bezier(0.16, 1, 0.3, 1);  }
   .blog-grid a:hover .thumb-arrow { opacity: 1; transform: scale(1) translateY(0); }
 
   .post-content { padding: var(--gap-5) var(--gap-1) 0; display: flex; flex-direction: column; flex: 1; gap: var(--gap-2); }

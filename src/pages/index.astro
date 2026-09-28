@@ -455,8 +455,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
     display: flex;
     gap: var(--gap-4);
     width: max-content;
-    animation: marquee-scroll 30s linear infinite;
-  }
+    animation: marquee-scroll 30s linear infinite;  }
 
   @keyframes marquee-scroll {
     from { transform: translateX(0); }
@@ -481,8 +480,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
        solid white pill on this dark page. Same dark, barely-there elevation
        every other pill/chip on the site uses. */
     background: color-mix(in srgb, var(--neutral-0) 6%, transparent);
-    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
-    cursor: default;
+    transition: border-color var(--duration-normal) ease, color var(--duration-normal) ease, background var(--duration-normal) ease;    cursor: default;
   }
 
   .ind-pill:hover {

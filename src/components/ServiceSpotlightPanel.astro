@@ -120,8 +120,7 @@ const withMedia = items.filter((it) => it.media);
     border-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-  }
+    transition: border-color var(--duration-normal) ease, transform var(--duration-normal) ease;  }
   .glass-panel:hover {
     border-color: color-mix(in srgb, var(--theme-base) 30%, transparent);
   }
@@ -153,8 +152,7 @@ const withMedia = items.filter((it) => it.media);
     height: 100%;
     object-fit: cover;
     opacity: var(--opacity-0);
-    transition: opacity var(--duration-slow) var(--easing-smooth);
-  }
+    transition: opacity var(--duration-slow) var(--easing-smooth);  }
   /* Sharp, full-bleed. The panel's own backdrop-filter does the blurring — the
      reference does exactly this, which is why it carries no filter: blur(). */
   .showcase-bg-img.is-visible { opacity: var(--opacity-100); }
@@ -168,8 +166,7 @@ const withMedia = items.filter((it) => it.media);
       color-mix(in srgb, var(--bg) 12%, transparent) 84%,
       var(--bg) 100%
     );
-    transition: background var(--duration-slow) var(--easing-smooth);
-  }
+    transition: background var(--duration-slow) var(--easing-smooth);  }
   /* With a row active the backdrop lifts toward light, as in the reference,
      where the live photo washes the whole section. */
   .showcase.is-active .showcase-bg-scrim {
@@ -220,8 +217,7 @@ const withMedia = items.filter((it) => it.media);
     min-height: 10.5rem;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition:
-      background-color var(--duration-normal) var(--easing-smooth),
+    transition:      background-color var(--duration-normal) var(--easing-smooth),
       padding var(--duration-slow) var(--easing-editorial);
   }
 
@@ -236,16 +232,14 @@ const withMedia = items.filter((it) => it.media);
     border-radius: var(--radius-lg);
     overflow: hidden;
     display: block;
-    transition: width var(--duration-slow) var(--easing-editorial);
-  }
+    transition: width var(--duration-slow) var(--easing-editorial);  }
   .showcase-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     opacity: var(--opacity-90);
-    transition: opacity var(--duration-slow) var(--easing-smooth);
-  }
+    transition: opacity var(--duration-slow) var(--easing-smooth);  }
 
   .showcase-placeholder {
     display: flex;
@@ -278,15 +272,13 @@ const withMedia = items.filter((it) => it.media);
     grid-template-rows: auto auto 0fr;
     row-gap: var(--gap-1);
     min-width: 0;
-    transition: grid-template-rows var(--duration-normal) var(--easing-editorial);
-  }
+    transition: grid-template-rows var(--duration-normal) var(--easing-editorial);  }
   .showcase-n {
     font-family: var(--font-mono);
     font-size: var(--fluid-label);
     letter-spacing: var(--tracking-label);
     color: var(--fg-muted);
-    transition: color var(--duration-normal) var(--easing-smooth);
-  }
+    transition: color var(--duration-normal) var(--easing-smooth);  }
 
   /* Decorative dwell indicator. Only paints while the showcase is advancing on
      its own; it is the visible countdown to the next row. */
@@ -303,8 +295,7 @@ const withMedia = items.filter((it) => it.media);
   }
   .showcase.is-cycling .showcase-card.is-open .showcase-progress {
     opacity: var(--opacity-100);
-    animation: showcase-dwell var(--showcase-dwell, 4000ms) linear forwards;
-  }
+    animation: showcase-dwell var(--showcase-dwell, 4000ms) linear forwards;  }
   @keyframes showcase-dwell {
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
@@ -331,8 +322,7 @@ const withMedia = items.filter((it) => it.media);
     /* Revealed only on the active row, as in the reference. The row reserves
        its height either way (min-height), so this never shifts the layout. */
     opacity: var(--opacity-0);
-    transition: opacity var(--duration-normal) var(--easing-smooth);
-  }
+    transition: opacity var(--duration-normal) var(--easing-smooth);  }
   /* Transparent overlay covering the whole card: it is the hit area, the
      keyboard target, and the focus ring. The title stays real text in the h3
      above it and is borrowed as the accessible name via aria-labelledby. */

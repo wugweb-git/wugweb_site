@@ -371,8 +371,7 @@ const description = page?.seoDescription || 'Wugweb gives capability, not just s
     border: var(--stroke-thin) solid var(--color-border-subtle);
     border-radius: var(--radius-4);
     overflow: hidden;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-  }
+    transition: border-color var(--duration-normal) ease, transform var(--duration-normal) ease;  }
 
   .visual-container.ratio-16-9 { aspect-ratio: 16 / 9; }
   .visual-container.ratio-3-2 { aspect-ratio: 3 / 2; }
@@ -430,8 +429,7 @@ const description = page?.seoDescription || 'Wugweb gives capability, not just s
     font-weight: var(--font-weight-medium);
     color: var(--color-accent-primary);
     text-decoration: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    margin-top: var(--gap-4);
+    transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;    margin-top: var(--gap-4);
   }
 
   .link-cta:hover {
@@ -824,8 +822,7 @@ const description = page?.seoDescription || 'Wugweb gives capability, not just s
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
+    transition: transform var(--duration-normal) ease, border-color var(--duration-normal) ease;  }
 
   .action-card:hover {
     border-color: var(--color-accent-primary);

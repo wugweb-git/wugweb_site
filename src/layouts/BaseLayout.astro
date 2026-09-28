@@ -610,8 +610,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         z-index: 9999;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         display: none;
-        animation: cookieSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
+        animation: cookieSlideUp var(--duration-slow) cubic-bezier(0.16, 1, 0.3, 1) forwards;      }
 
       @keyframes cookieSlideUp {
         from { transform: translateY(120%); }
@@ -753,7 +752,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
       }
 
       .toggle-switch input {
-        opacity: 0;
+        opacity: var(--opacity-0);
         width: 0;
         height: 0;
       }
@@ -763,8 +762,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         cursor: pointer;
         inset: 0;
         background-color: var(--neutral-6);
-        transition: .3s;
-        border-radius: var(--r-full);
+        transition: var(--duration-normal);        border-radius: var(--r-full);
       }
 
       .toggle-slider:before {
@@ -775,8 +773,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         left: 3px;
         bottom: 3px;
         background-color: var(--color-text-primary);
-        transition: .3s;
-        border-radius: 50%;
+        transition: var(--duration-normal);        border-radius: 50%;
       }
 
       .toggle-switch input:checked + .toggle-slider {
@@ -809,8 +806,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         z-index: 9998;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         display: none;
-        animation: installSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
+        animation: installSlideDown var(--duration-slow) cubic-bezier(0.16, 1, 0.3, 1) forwards;      }
       @keyframes installSlideDown {
         from { transform: translateY(-120%); }
         to { transform: translateY(0); }

@@ -164,8 +164,7 @@ const whyIntro =
     border-radius: var(--radius-lg);
     padding: var(--gap-8);
     height: 100%;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-  }
+    transition: border-color var(--duration-normal) ease, transform var(--duration-normal) ease;  }
   .stat-card-wrap:hover { transform: translateY(-2px); }
   /* These cards sit on --neutral-1 (#F4F4F4), a LIGHT surface on a dark-theme
      site, so they cannot use --fg / --fg-muted — both are near-white.
@@ -193,10 +192,9 @@ const whyIntro =
   
   .svc-tier { 
     margin-top: var(--gap-5);
-    opacity: 1;
+    opacity: var(--opacity-100);
     transform: translateY(0);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+    transition: opacity var(--duration-slow) cubic-bezier(0.16, 1, 0.3, 1), transform var(--duration-slow) cubic-bezier(0.16, 1, 0.3, 1);  }
   .svc-tier[hidden] { display: none !important; opacity: 0; transform: translateY(8px); }
   
   .svc-desc { max-width: 52ch; font-size: var(--t-l); line-height: var(--lh-l); color: color-mix(in srgb, var(--svc-fg) 88%, transparent); }

@@ -447,8 +447,7 @@ import TeamGrid from '../components/TeamGrid.astro';
     border-radius: var(--radius-lg);
     padding: var(--gap-6);
     /* No transform: `data-reveal` is a GSAP tween on the <li> and owns it. */
-    transition: border-color var(--duration-normal) var(--easing-smooth),
-                background-color var(--duration-normal) var(--easing-smooth),
+    transition: border-color var(--duration-normal) var(--easing-smooth),                background-color var(--duration-normal) var(--easing-smooth),
                 box-shadow var(--duration-normal) var(--easing-smooth),
                 filter var(--duration-normal) var(--easing-smooth);
   }
@@ -502,8 +501,7 @@ import TeamGrid from '../components/TeamGrid.astro';
     border-radius: var(--radius-lg);
     padding: var(--gap-6);
     height: 100%;
-    transition: border-color var(--duration-normal) var(--easing-smooth),
-                background-color var(--duration-normal) var(--easing-smooth),
+    transition: border-color var(--duration-normal) var(--easing-smooth),                background-color var(--duration-normal) var(--easing-smooth),
                 box-shadow var(--duration-normal) var(--easing-smooth),
                 filter var(--duration-normal) var(--easing-smooth);
   }
@@ -537,8 +535,7 @@ import TeamGrid from '../components/TeamGrid.astro';
     font-family: var(--font-mono);
     font-size: var(--fluid-label);
     color: color-mix(in srgb, var(--color-ash) 82%, transparent);
-    transition: border-color 0.3s ease, color 0.3s ease;
-  }
+    transition: border-color var(--duration-normal) ease, color var(--duration-normal) ease;  }
   .culture-grid li:hover { border-color: var(--line-strong); color: var(--fg); }
 
   /* Team */
@@ -555,8 +552,7 @@ import TeamGrid from '../components/TeamGrid.astro';
     box-shadow: var(--shadow-sm);
     border-radius: var(--radius-lg);
     text-decoration: none;
-    transition: box-shadow var(--duration-normal) var(--easing-out), transform var(--duration-normal) var(--easing-out);
-  }
+    transition: box-shadow var(--duration-normal) var(--easing-out), transform var(--duration-normal) var(--easing-out);  }
   .reviews-teaser:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
   .reviews-teaser h2 { font-size: var(--t-h3); max-width: 20ch; color: var(--fg); }
   .reviews-teaser p { margin-top: var(--gap-2); color: var(--fg-muted); max-width: 45ch; }

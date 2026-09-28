@@ -108,8 +108,7 @@ const uid = `faq-${Math.random().toString(36).slice(2, 8)}`;
        finishes, so a CSS rule on either would simply never apply — the same
        two-owners bug the BentoBlock and the ProcessMap both hit. Dimming is
        `filter`; the lift is shadow and border. */
-    transition: border-color var(--duration-normal) var(--easing-smooth),
-                background-color var(--duration-normal) var(--easing-smooth),
+    transition: border-color var(--duration-normal) var(--easing-smooth),                background-color var(--duration-normal) var(--easing-smooth),
                 box-shadow var(--duration-normal) var(--easing-smooth),
                 filter var(--duration-normal) var(--easing-smooth);
   }
@@ -174,13 +173,11 @@ const uid = `faq-${Math.random().toString(36).slice(2, 8)}`;
     line-height: var(--core-line-height-relaxed);
     opacity: var(--opacity-0);
     transform: translateY(6px);
-    transition: opacity 120ms var(--easing-out), transform 120ms var(--easing-out);
-  }
+    transition: opacity 120ms var(--easing-out), transform 120ms var(--easing-out);  }
   .faq-card.is-open .faq-panel p {
     opacity: var(--opacity-100);
     transform: none;
-    transition: opacity 260ms var(--easing-out) 80ms, transform 300ms var(--easing-out) 80ms;
-  }
+    transition: opacity 260ms var(--easing-out) 80ms, transform var(--duration-normal) var(--easing-out) 80ms;  }
 
   @media (prefers-reduced-motion: reduce) {
     .faq-card, .faq-toggle, .faq-panel p { transition: none; }

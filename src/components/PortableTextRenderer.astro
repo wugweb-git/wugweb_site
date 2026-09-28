@@ -522,8 +522,7 @@ if (currentList) {
     color: var(--color-accent-primary, #FFBE1A);
     text-decoration: underline;
     text-underline-offset: 3px;
-    transition: color 0.15s ease, opacity 0.15s ease;
-  }
+    transition: color var(--duration-ms-150) ease, opacity var(--duration-ms-150) ease;  }
 
   .portable-text-content :global(a:hover) {
     opacity: 0.85;
@@ -679,8 +678,7 @@ if (currentList) {
     padding: var(--gap-4) var(--gap-5);
     border: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
     background: rgba(255, 255, 255, 0.02);
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
+    transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;  }
 
   .pt-accordion-item[open] {
     background: rgba(255, 255, 255, 0.04);
@@ -705,8 +703,7 @@ if (currentList) {
   .pt-accordion-icon {
     font-size: 1.25rem;
     color: var(--color-accent-primary, #FFBE1A);
-    transition: transform 0.2s ease;
-  }
+    transition: transform var(--duration-fast) ease;  }
 
   details[open] .pt-accordion-icon {
     transform: rotate(45deg);
@@ -749,12 +746,11 @@ if (currentList) {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.7;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
+    opacity: var(--opacity-70);
+    transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;  }
 
   .pt-logo-item:hover {
-    opacity: 1;
+    opacity: var(--opacity-100);
     transform: scale(1.05);
   }
 
@@ -807,8 +803,7 @@ if (currentList) {
     font-family: var(--core-font-family-mono, monospace);
     padding: 2px var(--gap-2);
     cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-  }
+    transition: background var(--duration-ms-150) ease, color var(--duration-ms-150) ease, border-color var(--duration-ms-150) ease;  }
 
   .pt-code-copy-btn:hover {
     background: color-mix(in srgb, var(--color-accent-primary) 15%, transparent);

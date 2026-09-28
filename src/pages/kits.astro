@@ -471,8 +471,7 @@ import {
     border-radius: 50%;
     background: var(--color-yellow);
     box-shadow: 0 0 10px var(--color-yellow);
-    animation: pulseGlow 2s infinite ease-in-out;
-  }
+    animation: pulseGlow 2s infinite ease-in-out;  }
 
   @keyframes pulseGlow {
     0%, 100% { transform: scale(1); opacity: 0.8; }
@@ -514,8 +513,7 @@ import {
     padding: 6px 14px;
     border-radius: var(--radius-full);
     text-decoration: none;
-    transition: all 0.2s ease;
-  }
+    transition: all var(--duration-fast) ease;  }
 
   .nav-chip:hover {
     color: var(--color-yellow);
@@ -594,8 +592,7 @@ import {
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.2s ease;
-  }
+    transition: all var(--duration-fast) ease;  }
 
   .pillar-tab.active, .pillar-tab:hover {
     background: var(--neutral-7);
@@ -618,8 +615,7 @@ import {
     align-items: center;
     flex-wrap: wrap;
     gap: var(--gap-4);
-    transition: all 0.3s ease;
-  }
+    transition: all var(--duration-normal) ease;  }
 
   .banner-title {
     font-size: 1.4rem;
@@ -852,8 +848,7 @@ import {
     padding: var(--gap-1) 10px;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s ease;
-  }
+    transition: all var(--duration-fast) ease;  }
 
   .copy-btn:hover {
     background: var(--color-yellow);
@@ -964,8 +959,7 @@ import {
     cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
     background-color: var(--neutral-7);
-    transition: .4s;
-    border-radius: 24px;
+    transition: var(--duration-slow);    border-radius: 24px;
   }
 
   .slider:before {
@@ -974,8 +968,7 @@ import {
     height: 18px; width: 18px;
     left: 3px; bottom: 3px;
     background-color: var(--neutral-0);
-    transition: .4s;
-    border-radius: 50%;
+    transition: var(--duration-slow);    border-radius: 50%;
   }
 
   input:checked + .slider { background-color: var(--color-yellow); }
@@ -1068,8 +1061,7 @@ import {
     border-radius: var(--radius-md);
     padding: var(--gap-4);
     cursor: pointer;
-    transition: all 0.2s ease;
-  }
+    transition: all var(--duration-fast) ease;  }
 
   .scope-chip-card:hover {
     border-color: color-mix(in srgb, var(--neutral-0) 30%, transparent);
@@ -1261,15 +1253,14 @@ import {
     padding: var(--gap-3) var(--gap-6);
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);
-    opacity: 0;
+    opacity: var(--opacity-0);
     transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none;
+    transition: opacity var(--duration-normal) ease, transform var(--duration-normal) ease;    pointer-events: none;
     z-index: var(--layer-toast);
   }
 
   .toast-box.show {
-    opacity: 1;
+    opacity: var(--opacity-100);
     transform: translateY(0);
   }
 </style>

@@ -577,8 +577,7 @@ if (!service) {
     border-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-  }
+    transition: border-color var(--duration-normal) ease, transform var(--duration-normal) ease;  }
   
   .glass-panel:hover {
     border-color: color-mix(in srgb, var(--neutral-0) 22%, transparent);
@@ -625,8 +624,7 @@ if (!service) {
     background: color-mix(in srgb, var(--neutral-0) 12%, transparent);
     backdrop-filter: var(--glass-light);
     -webkit-backdrop-filter: var(--glass-light);
-    transition: background 0.3s ease, border-color 0.3s ease;
-  }
+    transition: background var(--duration-normal) ease, border-color var(--duration-normal) ease;  }
   .service-tags li:hover {
     background: color-mix(in srgb, var(--neutral-0) 20%, transparent);
     border-color: color-mix(in srgb, var(--neutral-0) 40%, transparent);
@@ -647,8 +645,7 @@ if (!service) {
     padding: var(--gap-8); text-align: center;
     display: flex; flex-direction: column; justify-content: center;
     position: relative; z-index: var(--layer-base);
-    transition: border-color var(--duration-normal) var(--easing-smooth),
-                box-shadow var(--duration-normal) var(--easing-smooth),
+    transition: border-color var(--duration-normal) var(--easing-smooth),                box-shadow var(--duration-normal) var(--easing-smooth),
                 filter var(--duration-normal) var(--easing-smooth);
   }
   /* Same interaction-as-hierarchy rule the rest of the page uses. */
@@ -773,8 +770,7 @@ if (!service) {
     cursor: pointer;
     /* GSAP owns `transform`, `opacity` and `filter` here for the deck reveal,
        so hover uses none of the three — border, background and shadow only. */
-    transition: border-color var(--duration-normal) var(--easing-smooth),
-                background-color var(--duration-normal) var(--easing-smooth),
+    transition: border-color var(--duration-normal) var(--easing-smooth),                background-color var(--duration-normal) var(--easing-smooth),
                 box-shadow var(--duration-normal) var(--easing-smooth),
                 filter var(--duration-normal) var(--easing-smooth);
   }
@@ -792,8 +788,7 @@ if (!service) {
       color-mix(in srgb, var(--neutral-10) 62%, transparent);
     display: grid;
     place-items: center;
-    transition: background var(--duration-normal) var(--easing-smooth);
-  }
+    transition: background var(--duration-normal) var(--easing-smooth);  }
   .approach-card.is-open .approach-card-visual {
     background:
       radial-gradient(120% 100% at 30% 0%,
@@ -823,8 +818,7 @@ if (!service) {
     width: 8px; height: 3px;
     border-radius: var(--radius-full);
     background: color-mix(in srgb, var(--neutral-0) 16%, transparent);
-    transition: background var(--duration-normal) var(--easing-out);
-  }
+    transition: background var(--duration-normal) var(--easing-out);  }
   .approach-seg.is-on { background: var(--fg-muted); }
 
   /* Per the system's "Sub Service : Full" card: number above the title, the
@@ -845,8 +839,7 @@ if (!service) {
   .approach-card-desc {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows var(--duration-normal) var(--easing-out),
-                opacity var(--duration-fast) var(--easing-out);
+    transition: grid-template-rows var(--duration-normal) var(--easing-out),                opacity var(--duration-fast) var(--easing-out);
     opacity: var(--opacity-0);
   }
   .approach-card-desc > p { overflow: hidden; min-height: 0; }
@@ -883,8 +876,7 @@ if (!service) {
     background: var(--fg);
     transform: scaleY(0);
     transform-origin: top center;
-    transition: transform var(--duration-normal) var(--easing-out);
-  }
+    transition: transform var(--duration-normal) var(--easing-out);  }
 
   .approach-cards:hover .approach-card { filter: brightness(0.66); }
   .approach-cards:hover .approach-card:hover { filter: none; }
@@ -929,8 +921,7 @@ if (!service) {
     opacity: var(--opacity-90);
     filter: grayscale(1) contrast(1.12) brightness(0.72) sepia(0.18);
     transform: scale(1.02);
-    transition: transform 0.9s var(--easing-smooth), filter var(--duration-slow) var(--easing-smooth);
-  }
+    transition: transform 0.9s var(--easing-smooth), filter var(--duration-slow) var(--easing-smooth);  }
   .approach-cta:hover .approach-cta-bg {
     transform: scale(1.06);
     filter: grayscale(0.85) contrast(1.16) brightness(0.78) sepia(0.14);
@@ -998,8 +989,7 @@ if (!service) {
     color: var(--fg-muted);
     text-decoration: none;
     border-bottom: var(--stroke-thin) solid color-mix(in srgb, var(--fg-muted) 40%, transparent);
-    transition: color var(--duration-normal) var(--easing-out),
-                border-color var(--duration-normal) var(--easing-out);
+    transition: color var(--duration-normal) var(--easing-out),                border-color var(--duration-normal) var(--easing-out);
   }
   .approach-cta-link:hover { color: var(--fg); border-color: var(--fg); }
 
@@ -1042,8 +1032,7 @@ if (!service) {
   .toolkit-items li img { flex-shrink: 0; opacity: .9; transition: opacity var(--duration-fast) var(--easing-out); }
   /* The chips were inert — 89 of them on a page, none reacting to the pointer. */
   .toolkit-items li {
-    transition: border-color var(--duration-fast) var(--easing-out),
-                color var(--duration-fast) var(--easing-out),
+    transition: border-color var(--duration-fast) var(--easing-out),                color var(--duration-fast) var(--easing-out),
                 background-color var(--duration-fast) var(--easing-out);
   }
   .toolkit-items li:hover {
@@ -1071,16 +1060,14 @@ if (!service) {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle 250px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--neutral-0) 8%, transparent) 0%, transparent 85%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 0;
+    opacity: var(--opacity-0);
+    transition: opacity var(--duration-slow) ease;    z-index: 0;
     pointer-events: none;
   }
   
   .svc-work-card:hover .card-glow, .svc-insight-card:hover .card-glow { opacity: 1; }
   .svc-work-card, .svc-insight-card {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
-  }
+    transition: transform var(--duration-slow) cubic-bezier(0.16, 1, 0.3, 1), border-color var(--duration-slow) ease, box-shadow var(--duration-slow) ease;  }
   .svc-work-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
   .svc-insight-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
 
@@ -1098,9 +1085,8 @@ if (!service) {
     background: radial-gradient(circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%), color-mix(in srgb, var(--neutral-0) 10%, transparent) 0%, transparent 80%);
     z-index: 0;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
+    opacity: var(--opacity-0);
+    transition: opacity var(--duration-slow) ease;  }
   .cta-panel:hover .cta-glow { opacity: 1; }
   .cta-panel h2 { font-size: var(--t-h2); max-width: 18ch; margin-inline: auto; position: relative; z-index: 1;}
   .cta-panel p { margin-top: var(--gap-4); color: var(--fg-muted); position: relative; z-index: 1;}

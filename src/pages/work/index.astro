@@ -137,8 +137,7 @@ const workItems = caseStudies.map((cs: any) => {
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     background: var(--color-surface-elevated);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
+    transition: box-shadow var(--duration-normal) ease, transform var(--duration-normal) ease;  }
   .work-grid a:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
@@ -149,8 +148,7 @@ const workItems = caseStudies.map((cs: any) => {
     aspect-ratio: 16/10;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+    transition: transform var(--duration-xslow) cubic-bezier(0.16, 1, 0.3, 1);  }
   .work-grid a:hover video { transform: scale(1.04); }
 
   .work-placeholder {
@@ -170,8 +168,7 @@ const workItems = caseStudies.map((cs: any) => {
   .work-content {
     padding: var(--gap-4) var(--gap-6) var(--gap-6);
     background: var(--color-surface-elevated);
-    transition: background 0.3s ease;
-  }
+    transition: background var(--duration-normal) ease;  }
   .work-client { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.04em; }
   .work-grid h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); margin-top: var(--gap-2); line-height: var(--lh-h5); color: var(--fg); }
   .work-category {
@@ -195,8 +192,7 @@ const workItems = caseStudies.map((cs: any) => {
     background: transparent;
     color: var(--fg-muted);
     cursor: pointer;
-    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
-  }
+    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;  }
   .filter-chip:hover { color: var(--fg); }
   .filter-chip.active {
     color: var(--neutral-0);
