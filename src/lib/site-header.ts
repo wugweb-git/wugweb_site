@@ -60,7 +60,7 @@ export function initSiteHeader(): void {
     nav.dataset.open = open ? 'true' : 'false';
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    setScrollLock(open && window.matchMedia('(max-width: 767px)').matches);
+    setScrollLock(open && window.matchMedia('(max-width: 767.98px)').matches);
   };
 
   toggle.addEventListener('click', () => {

@@ -403,7 +403,7 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
     padding: var(--gap-6);
     display: flex;
   }
-  @media (min-width: 900px) { .process-map-section { padding: var(--gap-8); } }
+  @media (min-width: 1024px) { .process-map-section { padding: var(--gap-8); } }
 
   /* ---- the block ---- */
   .pm-panel {
@@ -427,7 +427,7 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
       inset 0 -1px 0 color-mix(in srgb, var(--neutral-10) 40%, transparent),
       var(--shadow-md);
   }
-  @media (min-width: 900px) { .pm-panel { padding: var(--gap-8); } }
+  @media (min-width: 1024px) { .pm-panel { padding: var(--gap-8); } }
 
   .pm-title { max-width: 46ch; }
   .pm-title h2 { font-size: var(--t-h3); margin-top: var(--gap-3); }
@@ -461,7 +461,7 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
     align-items: center; justify-content: center;
     overflow-x: auto; overscroll-behavior-x: contain;
   }
-  @media (min-width: 900px) { .pm-scroll { display: flex; } }
+  @media (min-width: 1024px) { .pm-scroll { display: flex; } }
   /* Fit-box: take the height the stage has left, derive width from the field's
      own ratio, and clamp back by width on narrow screens. The ratio must stay
      exact — the chips are positioned in percentages of this element, so any
@@ -592,7 +592,7 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
      hubs; each phase's steps sit beside it as the same chips the wide canvas
      uses, so nothing has to be learned twice. */
   .pm-run { list-style: none; margin: var(--gap-6) 0 0; padding: 0; display: grid; gap: 0; }
-  @media (min-width: 900px) { .pm-run { display: none; } }
+  @media (min-width: 1024px) { .pm-run { display: none; } }
 
   .pm-run-phase {
     position: relative;

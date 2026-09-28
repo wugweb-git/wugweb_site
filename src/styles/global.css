@@ -925,7 +925,7 @@ a { color: inherit; }
    should fill a narrow screen but sit at its natural width in a row next
    to other content once there's room (e.g. a section head's title + CTA
    pair that stacks vertically below 768px). No-op above the breakpoint. */
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .btn-block-mobile {
     display: flex;
     width: 100%;
@@ -1077,6 +1077,40 @@ a[href^='tel:']:not(.no-external-icon)::after {
 @media (min-width: 768px) {
   .wrap { padding-inline: calc(var(--gap-6) + var(--gap-5)); }
 }
+/* ─── Breakpoints ──────────────────────────────────────────────────────────
+ *
+ * CSS custom properties DO NOT work in media queries, so this cannot be a
+ * token — it is a convention, and this comment is the only thing enforcing it.
+ * Before adding a media query, use a value from here.
+ *
+ *   min-width: 480px    large phone
+ *   min-width: 640px    tablet portrait
+ *   min-width: 768px    tablet landscape       <- the busiest line, 39 rules
+ *   min-width: 1024px   small laptop           <- 35 rules
+ *   min-width: 1200px   wide desktop
+ *
+ * Going DOWN, subtract 0.02 so the two sides never both match:
+ *
+ *   max-width: 639.98px · 767.98px · 1023.98px
+ *
+ * The .98 is not decoration. Viewport widths are not always integers — page
+ * zoom and some devices produce fractional values — so `max-width: 639px`
+ * would leave 639.5px matching neither side. And `max-width: 640px` next to
+ * `min-width: 640px` matches BOTH at exactly 640, which is a bug this codebase
+ * actually had in two components (see the comments in ServiceTagField and
+ * ClientAssemblyGrid).
+ *
+ * THERE IS NO BREAKPOINT BELOW 480. This CSS is mobile-first: 320px and 375px
+ * get the base styles, with no media query at all. That is deliberate, not a
+ * gap — adding a `min-width: 375px` would mean anything narrower gets
+ * something different, which is the opposite of what you want. Verified at
+ * 320 and 375: no horizontal overflow, no min-width tier matching.
+ *
+ * This replaced thirteen values (480, 500, 560, 640, 700, 767, 768, 860, 900,
+ * 992, 1023, 1024, 1200) that had accumulated with no scale behind them; 992
+ * alone had 13 uses and came from Bootstrap, which this project does not use.
+ * ───────────────────────────────────────────────────────────────────────── */
+
 @media (min-width: 1200px) {
   .wrap { padding-inline: calc(var(--gap-12) + var(--gap-5)); }
 }
