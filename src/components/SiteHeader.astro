@@ -287,7 +287,7 @@ function isActive(href: string) {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    gap: clamp(8px, 2.4vw, 12px);
+    gap: clamp(var(--gap-2), 2.4vw, var(--gap-3));
     /* No gutter of its own: .nav-top already applies padding-inline, and adding
        a second one here put the links and CTA 32px from the card edge while the
        logo, contact rows and legal sat at 16px (audit §7, "3 distinct left
