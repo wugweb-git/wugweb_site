@@ -762,7 +762,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
 
   .meta-eyebrow {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--t-nano);
     color: var(--color-accent-primary);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -778,7 +778,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     background: none;
     border: none;
     color: var(--color-text-secondary);
-    font-size: 2rem;
+    font-size: var(--t-h2);
     cursor: pointer;
     line-height: 1;
   }
@@ -976,7 +976,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
   .diagram-arrows {
     font-family: var(--font-mono);
     color: var(--color-text-muted);
-    font-size: 1.25rem;
+    font-size: var(--t-h4);
     line-height: 1;
     display: flex;
     justify-content: space-around;
@@ -1031,7 +1031,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
   .matrix-row.header {
     background-color: rgba(255, 255, 255, 0.02);
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--t-nano);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     /* --color-text-secondary, not --color-text-muted: the 2% white overlay above

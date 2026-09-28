@@ -686,6 +686,10 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         background: none;
         border: none;
         color: var(--color-text-secondary);
+    /* Deliberately NOT a type token: this is the close glyph's box, not text.
+       Sizing it from the heading scale would tie an icon's dimensions to
+       typography and it fits no step anyway — 28px sits in the gap between
+       --t-h3 (21-24px) and --t-h2 (30-36px). */
         font-size: 1.75rem;
         cursor: pointer;
         line-height: 1;
@@ -849,7 +853,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         background: none;
         border: none;
         color: var(--fg-muted);
-        font-size: 1.25rem;
+        font-size: var(--t-h4);
         line-height: 1;
         cursor: pointer;
         padding: var(--gap-1);

@@ -1381,7 +1381,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
 
   .iq-tag {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--t-nano);
     letter-spacing: 0.1em;
     padding: 2px 6px;
     border-radius: 2px;
@@ -1644,7 +1644,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     background: none;
     border: none;
     color: var(--color-text-secondary);
-    font-size: 2rem;
+    font-size: var(--t-h2);
     cursor: pointer;
     line-height: 1;
   }
@@ -1864,7 +1864,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
 
   .accordion-icon, .faq-icon {
     font-family: var(--font-mono);
-    font-size: 1.25rem;
+    font-size: var(--t-h4);
     color: var(--color-text-muted);
     transition: transform var(--duration-normal);  }
 
@@ -2148,6 +2148,10 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     background: none;
     border: none;
     color: var(--color-text-secondary);
+    /* Deliberately NOT a type token: this is the close glyph's box, not text.
+       Sizing it from the heading scale would tie an icon's dimensions to
+       typography and it fits no step anyway — 28px sits in the gap between
+       --t-h3 (21-24px) and --t-h2 (30-36px). */
     font-size: 1.75rem;
     cursor: pointer;
     line-height: 1;
@@ -2249,12 +2253,12 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
   .gateway-logo {
     font-weight: var(--font-weight-bold);
     color: #2b70f0;
-    font-size: 1.25rem;
+    font-size: var(--t-h4);
   }
 
   .gateway-badge {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: var(--t-nano);
     background-color: rgba(43, 112, 240, 0.1);
     color: #2b70f0;
     padding: 3px var(--gap-2);
@@ -2300,7 +2304,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: var(--t-h2);
     font-weight: var(--font-weight-bold);
     margin-inline: auto;
     margin-bottom: var(--gap-6);

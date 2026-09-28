@@ -66,6 +66,17 @@
   --fluid-body-md: clamp(0.875rem, 0.826rem + 0.217vw, 1rem);    /* 14→16 · 400 */
   --fluid-body-sm: clamp(0.8125rem, 0.788rem + 0.109vw, 0.875rem);/* 13→14 · 400 */
   --fluid-label: 1rem;                                           /* 16 flat · 500 */
+  /* The step the scale was missing. Five uppercase mono micro-labels — .iq-tag,
+     .gateway-badge, the industries matrix header, the cookie-policy meta — were
+     hardcoded at 10px because the scale bottomed out at --fluid-caption (12px).
+     Forcing them up to 12 would have been a 20% size change nobody asked for,
+     so the scale gains the step instead of the labels losing the argument.
+     FLAT 10px, not a clamp. A fluid 10->12px step would have rendered these at
+     ~12px on desktop — a 20% increase, which is the change this token exists to
+     avoid. --fluid-label is flat 1rem for the same reason: some steps are a
+     fixed size by intent, not a range. Bringing a value onto the scale should
+     give it a name, not resize it. */
+  --fluid-nano: 0.625rem;
   --fluid-caption: clamp(0.75rem, 0.701rem + 0.217vw, 0.875rem); /* 12→14 · 400 */
 
   /* Graphic display tier (UI audit §4.2) — for type used as a graphic, not
@@ -93,6 +104,7 @@
   --t-body: var(--fluid-body-md);
   --t-sm: var(--fluid-body-sm);
   --t-micro: var(--fluid-caption);
+  --t-nano: var(--fluid-nano);
 
   /* Line height scale (Kits §3.3) */
   --core-line-height-none: 1;
