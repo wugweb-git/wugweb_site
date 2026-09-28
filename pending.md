@@ -1217,3 +1217,77 @@ and the decay is invisible because nothing re-checks them. Finding 20's "463"
 was 115; finding 10 was not a defect; findings 4 and 17 were already resolved;
 Phase C's "~800 px" was 225; "nine breakpoints" was 13. **Treat every number
 and every "Open" in this file as a hypothesis with a date on it.**
+
+### 1u. Phase C actioned + two findings — *2026-09-29*
+
+**9 — breakpoints: 13 values → 5.** `480 / 640 / 768 / 1024 / 1200`, with
+`max-width` partners at `639.98 / 767.98 / 1023.98`. Scale documented in
+`global.css` (CSS custom properties do not work in media queries, so a comment
+is the only thing that can enforce it).
+
+> **A real bug found on the way.** `ServiceTagField` and `ClientAssemblyGrid`
+> each declared `min-width: 640px` **and** `max-width: 640px`, so at exactly
+> 640px an element got the tablet chip *and* the phone min-height. Both
+> contradicted their own comments. Verified after: 639 → chip 2.25rem /
+> min-h 480px / 3 cols; 640 → 2.5rem / 384px / 6 cols.
+
+**There is no breakpoint below 480, and there should not be.** Verified at 320
+and 375: no page overflow, and **no `min-width` tier matches at all** — the CSS
+is mobile-first, so those widths get base styles. Adding a `min-width: 375px`
+would mean anything narrower gets something different, which is backwards.
+
+**10 — the px consolidation was already essentially done**, which the "~800"
+figure hid. Same shape as finding 20's "463 colours":
+
+| | count |
+|---|---|
+| original claim | ~800 |
+| px in declarations | 225 |
+| on spacing / radius / stroke properties | 56 |
+| of those, in `kits.astro` where px **is** the subject | 32 |
+| odd values with **no token on the scale** (2, 6, 10, 14, 30px) | 46 |
+| **actually actionable** | **2, on one line** |
+
+`--gap-1` is 4px, so "converting" a 2px padding would be a visual change, not
+a consolidation — those are left deliberately.
+
+> **What the pass actually found: 14 `var(--token, fallback)` pairs disagreed
+> with their own token.** `--radius-md` is 12px while its fallback said 10px
+> (×6) and 8px; `--radius-lg` is 16px while its said 14px and 12px;
+> `--nav-height` is 78px, fallback 64px. Eleven are in `PortableTextRenderer`,
+> which has a Storybook story — but `.storybook/preview.ts` imports
+> `global.css` on line 1, so **the fallbacks never fire anywhere.** Not a
+> rendering bug: documentation that lied. Corrected, zero visual risk.
+
+**11 — `--color-text-muted` #7D7D7D → #858585.** The recorded 4.23:1 was right
+but incomplete: on the `#050505` page background it was already **4.95:1 and
+passing**; only the `#1A1A1A` elevated surfaces failed. Now 4.72:1 there.
+**64 of 68 painted elements on `/footer/subscription` pass, up from ~32.**
+
+Four still fail and need **local** fixes — `.item-n` 4.38, `.lane-title` ×2
+4.01, `.iq-tag` 4.37 — each on a lighter composited surface where no realistic
+value of this token reaches 4.5.
+
+> **Measuring contrast on this site requires compositing the whole ancestor
+> stack.** My first sweep reported eight failures at 3.69 and 2.22; both were
+> wrong, because the regex took the first three numbers of an `rgba()` and
+> discarded the alpha, scoring a 1%-white overlay as opaque white. 3.69 is
+> exactly #858585 against #FFFFFF, which is the tell. The surfaces here are
+> built from stacked translucent overlays.
+
+**#8 — already done, the sixth stale claim.** `ServiceSpotlightPanel.astro` is
+430 lines, imported at `[slug].astro:15`, has a Storybook story, and zero
+inline showcase markup remains in the page.
+
+**9a — the duplicate logo is THREE pairs, not one, and worse than recorded:**
+
+| file | rendered as | what the file actually is |
+|---|---|---|
+| `client-logo-c6rj.png` | Airtel XSafe **+ Airtel Xstream** | the "airtel Xsafe" wordmark |
+| `client-logo-k5hy.png` | IndusInd Bank **+ IndusNinja** | the IndusNinja ninja face |
+| `client-logo-u2rd.png` | Sadhan **+ TOT** | white-on-white, unidentifiable |
+
+**IndusInd Bank is on the public client wall wearing IndusNinja's logo.**
+Not fixable here: no Airtel Xstream, IndusInd or Sadhan/TOT logo asset exists
+anywhere in the repo, and both case studies' own `logoPath` is null. **Needs
+three logo files from the user.**
