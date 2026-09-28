@@ -1099,11 +1099,18 @@ a[href^='tel:']:not(.no-external-icon)::after {
  * token — it is a convention, and this comment is the only thing enforcing it.
  * Before adding a media query, use a value from here.
  *
+ * These ARE declared as --breakpoint-xs..2xl further up this file, and in
+ * kits_design_system/docs/tokens/breakpoints.md. The literals below must match
+ * those tokens; they exist twice because @media cannot read the first copy.
+ * The code had drifted to thirteen values against a declared six — including a
+ * 1200px that matched nothing, which is now 1280 (--breakpoint-xl).
+ *
  *   min-width: 480px    large phone
  *   min-width: 640px    tablet portrait
  *   min-width: 768px    tablet landscape       <- the busiest line, 39 rules
  *   min-width: 1024px   small laptop           <- 35 rules
- *   min-width: 1200px   wide desktop
+ *   min-width: 1280px   wide desktop           <- --breakpoint-xl
+ *   min-width: 1440px   widest                <- --breakpoint-2xl, unused so far
  *
  * Going DOWN, subtract 0.02 so the two sides never both match:
  *
@@ -1127,7 +1134,7 @@ a[href^='tel:']:not(.no-external-icon)::after {
  * alone had 13 uses and came from Bootstrap, which this project does not use.
  * ───────────────────────────────────────────────────────────────────────── */
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .wrap { padding-inline: calc(var(--gap-12) + var(--gap-5)); }
 }
 

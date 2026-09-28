@@ -94,3 +94,35 @@ Source of truth: `src/styles/global.css` `:root`. Inter Tight only · weights vi
 ## Type Hierarchy (wired on frontend)
 
 **Display 800 · H1 700 · H2–H4 600 · labels 500 · body 400**
+
+## Fluid type scale — generated from `src/styles/global.css`
+
+> **Regenerated 2026-09-29.** Every row below was wrong: the doc described a
+> scale the code has never had. `--fluid-caption` was documented as 10→12px
+> while the code renders 12→14px, `--fluid-label` as a 12→14px clamp while the
+> code has a flat 1rem, and `--fluid-h3` as 20→28px against an actual 21→24px.
+> All twelve diverged. The values here are now read out of `global.css`.
+
+| Token | Declared value | Min | Max |
+|---|---|---|---|
+| `--fluid-display` | `clamp(3rem, 2.217rem + 3.478vw, 5rem)` | 48px | 80px |
+| `--fluid-h1` | `clamp(2.25rem, 1.957rem + 1.304vw, 3rem)` | 36px | 48px |
+| `--fluid-h2` | `clamp(1.875rem, 1.728rem + 0.652vw, 2.25rem)` | 30px | 36px |
+| `--fluid-h3` | `clamp(1.3125rem, 1.239rem + 0.326vw, 1.5rem)` | 21px | 24px |
+| `--fluid-h4` | `clamp(1.125rem, 1.076rem + 0.217vw, 1.25rem)` | 18px | 20px |
+| `--fluid-h5` | `clamp(1rem, 0.902rem + 0.435vw, 1.25rem)` | 16px | 20px |
+| `--fluid-body-lg` | `clamp(1rem, 0.951rem + 0.217vw, 1.125rem)` | 16px | 18px |
+| `--fluid-body-md` | `clamp(0.875rem, 0.826rem + 0.217vw, 1rem)` | 14px | 16px |
+| `--fluid-body-sm` | `clamp(0.8125rem, 0.788rem + 0.109vw, 0.875rem)` | 13px | 14px |
+| `--fluid-label` | `1rem` | 16px | 16px |
+| `--fluid-caption` | `clamp(0.75rem, 0.701rem + 0.217vw, 0.875rem)` | 12px | 14px |
+| `--fluid-nano` | `0.625rem` | 10px | 10px |
+
+`--t-*` are aliases onto these: `--t-h1`…`--t-h5`, `--t-lead`/`--t-l`/`--t-xl`
+→ body-lg, `--t-body` → body-md, `--t-sm` → body-sm, `--t-micro` → caption,
+`--t-nano` → nano.
+
+`--fluid-nano` is **flat 10px, not a clamp** — it names the five uppercase mono
+micro-labels that were hardcoded at 10px because the scale bottomed out at 12px.
+A fluid step would have rendered them ~12px on desktop, which is the change the
+token exists to prevent. `--fluid-label` is flat for the same reason.

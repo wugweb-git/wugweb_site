@@ -45,7 +45,7 @@ Source of truth: `src/styles/global.css` `:root`. Never hardcode colors — alwa
 | Hover surface | `--color-surface-hover` | `#555` |
 | Text primary | `--color-text-primary` | `#F4F4F4` |
 | Text secondary | `--color-text-secondary` | `#BABABA` |
-| Text muted | `--color-text-muted` | `#7D7D7D` |
+| Text muted | `--color-text-muted` | `#858585` |
 | Border subtle | `--color-border-subtle` | `#2B2B2B` |
 | Border strong | `--color-border-strong` | `var(--neutral-5)` |
 | Accent primary | `--color-accent-primary` | `#FFBE1A` |
@@ -84,3 +84,10 @@ UI color**. Maximum ~10% of any page. The primary interface stays grey / ash / b
 eyebrows, stat numbers, small solid buttons.
 
 See also: `service-colors.md` for the 6-service `--svc-*` palette.
+
+> **`--color-text-muted` changed #7D7D7D → #858585 on 2026-09-29.** #7D7D7D
+> measured 4.23:1 on `--color-surface-elevated` (#1A1A1A), under the 4.5 WCAG AA
+> floor for body text. #858585 is 4.72:1 there and 5.4:1 on the #050505 page
+> background. `--neutral-5` is still #7D7D7D — it is a border token, not text.
+> Four elements on lighter composited surfaces use `--color-text-secondary`
+> locally instead; see the comments at those sites.

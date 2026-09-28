@@ -30,14 +30,7 @@ Each elevation bundles a shadow and (where relevant) a z-index.
 | `--layer-overlay` | `140` | Overlays / scrims |
 | `--layer-cursor` | `9999` | Custom cursor |
 
-## Z-Index (`--z-*`)
+## Z-Index
 
-| Token | Value |
-|---|---|
-| `--z-base` | `0` |
-| `--z-overlay` | `1` |
-| `--z-sticky` | `50` |
-| `--z-modal` | `100` |
-| `--z-toast` | `200` |
-
-See `z-index.md`.
+Removed 2026-09-29 — the `--z-*` scale is gone and `--layer-*` is the only one.
+See [`z-index.md`](z-index.md), which is the single source for layering.

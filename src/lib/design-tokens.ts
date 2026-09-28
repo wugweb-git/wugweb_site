@@ -40,16 +40,18 @@ export const pillars = [
 ];
 
 export const typographySpecimens = [
-  { token: '--fluid-display', weight: '800', role: 'Display Hero', sample: 'Digital Experience & Platform Engineering', px: '~40px → 80px', line: '1.2' },
-  { token: '--fluid-h1', weight: '700', role: 'Heading 1', sample: 'Architecting High-Performance Digital Systems', px: '~32px → 48px', line: '1.2' },
-  { token: '--fluid-h2', weight: '600', role: 'Heading 2', sample: 'Modular Design Tokens & Enterprise Architecture', px: '~24px → 36px', line: '1.375' },
-  { token: '--fluid-h3', weight: '600', role: 'Heading 3', sample: 'Fluid Clamp Typography & Surface System', px: '~20px → 28px', line: '1.375' },
-  { token: '--fluid-h4', weight: '600', role: 'Heading 4', sample: 'Accessible Viewport Scaling & Dynamic Layouts', px: '~17px → 22px', line: '1.5' },
-  { token: '--fluid-body-lg', weight: '400', role: 'Body Large', sample: 'Every token is carefully calibrated for responsive viewports using native CSS clamp expressions.', px: '~16px → 20px', line: '1.625' },
-  { token: '--fluid-body-md', weight: '400', role: 'Body Medium', sample: 'Standard body copy font size used across marketing, blog, and service documentation.', px: '15px → 16px', line: '1.5' },
+  { token: '--fluid-display', weight: '800', role: 'Display Hero', sample: 'Digital Experience & Platform Engineering', px: '48px → 80px', line: '1.2' },
+  { token: '--fluid-h1', weight: '700', role: 'Heading 1', sample: 'Architecting High-Performance Digital Systems', px: '36px → 48px', line: '1.2' },
+  { token: '--fluid-h2', weight: '600', role: 'Heading 2', sample: 'Modular Design Tokens & Enterprise Architecture', px: '30px → 36px', line: '1.375' },
+  { token: '--fluid-h3', weight: '600', role: 'Heading 3', sample: 'Fluid Clamp Typography & Surface System', px: '21px → 24px', line: '1.375' },
+  { token: '--fluid-h4', weight: '600', role: 'Heading 4', sample: 'Accessible Viewport Scaling & Dynamic Layouts', px: '18px → 20px', line: '1.5' },
+  { token: '--fluid-h5', weight: '600', role: 'Heading 5', sample: 'Section Label & Card Heading', px: '16px → 20px', line: '1.375' },
+  { token: '--fluid-body-lg', weight: '400', role: 'Body Large', sample: 'Every token is carefully calibrated for responsive viewports using native CSS clamp expressions.', px: '16px → 18px', line: '1.625' },
+  { token: '--fluid-body-md', weight: '400', role: 'Body Medium', sample: 'Standard body copy font size used across marketing, blog, and service documentation.', px: '14px → 16px', line: '1.5' },
   { token: '--fluid-body-sm', weight: '400', role: 'Body Small', sample: 'Secondary metadata, captions, and supplementary micro-copy details.', px: '13px → 14px', line: '1.5' },
-  { token: '--fluid-label', weight: '500', role: 'Label / Eyebrow', sample: 'DESIGN SYSTEM TOKENS & PRIMITIVES', px: '12px → 14px', tracking: '0.08em', line: '1.2' },
-  { token: '--fluid-caption', weight: '400', role: 'Caption / Micro', sample: 'Updated: Kits Design System v4.2 · Single Source of Truth', px: '10px → 12px', line: '1.5' },
+  { token: '--fluid-label', weight: '500', role: 'Label / Eyebrow', sample: 'DESIGN SYSTEM TOKENS & PRIMITIVES', px: '16px', tracking: '0.08em', line: '1.2' },
+  { token: '--fluid-caption', weight: '400', role: 'Caption / Micro', sample: 'Updated: Kits Design System v4.2 · Single Source of Truth', px: '12px → 14px', line: '1.5' },
+  { token: '--fluid-nano', weight: '400', role: 'Nano / micro-label', sample: 'UPPERCASE MONO TAG', px: '10px', line: '1.375' },
 ];
 
 export const spacingRamp = [

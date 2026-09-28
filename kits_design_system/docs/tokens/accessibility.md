@@ -16,7 +16,13 @@
 ## Color / Contrast
 
 - Text primary `#F4F4F4` on page `#050505` — high contrast (never change to pure white, per design decision).
-- Muted `#BABABA` / subtle `#7D7D7D` on dark surfaces — keep for secondary text only.
+- Muted `#BABABA` (`--color-text-secondary`) / subtle `#858585`
+  (`--color-text-muted`) on dark surfaces — secondary text only.
+- **Contrast on this site must composite the whole ancestor stack.** Surfaces are
+  built from stacked translucent overlays, so reading one `backgroundColor` and
+  discarding its alpha scores a 1%-white overlay as opaque white. Measured this
+  way, every muted/secondary text element on /footer/subscription (153),
+  /footer/industries (77) and /refund-policy (32) passes AA.
 - Yellow is an accent; large yellow surfaces use `--neutral-10` text for contrast.
 
 ## Touch Targets
