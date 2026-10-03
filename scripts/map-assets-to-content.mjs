@@ -17,6 +17,7 @@ import { createClient } from '@sanity/client';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { splitAssetFields } from './lib/asset-fields.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -224,9 +225,23 @@ async function patchDoc(id, setFields) {
   await client.patch(id).set(setFields).commit();
 }
 
-async function createOrReplaceAsset(doc) {
+// Existing asset docs: refresh file facts, but only fill editorial fields
+// (status, group, usage, links…) that are empty — never overwrite what a
+// person set in the Studio. See scripts/lib/asset-fields.mjs. patchDoc stays
+// a plain .set() because it also patches caseStudy/client/page/service docs,
+// whose path fields this script legitimately owns.
+async function patchAsset(id, base) {
+  if (DRY_RUN) return;
+  const { facts, editorial } = splitAssetFields(base);
+  await client.patch(id).set(facts).setIfMissing(editorial).commit();
+}
+
+// createIfNotExists rather than a replace: this runs when no doc matched by
+// path, but it writes to a computed id — if a doc already sits at that id
+// under a slightly different path, a replace would wipe it.
+async function createAsset(doc) {
   if (DRY_RUN) return doc._id;
-  await client.createOrReplace(doc);
+  await client.createIfNotExists(doc);
   return doc._id;
 }
 
@@ -367,12 +382,12 @@ async function main() {
         assetType: 'Client Asset',
       };
       if (existing) {
-        await patchDoc(existing._id, base);
+        await patchAsset(existing._id, base);
         report.assetsPatched++;
       } else {
         const slug = rel.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
         const id = `asset-${slug}`.slice(0, 128);
-        await createOrReplaceAsset({
+        await createAsset({
           _id: id,
           _type: 'asset',
           name: path.basename(rel),
@@ -448,11 +463,11 @@ async function main() {
       linkedClient: { _type: 'reference', _ref: clientDoc._id },
     };
     if (existing) {
-      await patchDoc(existing._id, base);
+      await patchAsset(existing._id, base);
       report.assetsPatched++;
     } else {
       const slug = `logo-${norm(clientDoc.slug || clientDoc.name)}`.slice(0, 96);
-      await createOrReplaceAsset({
+      await createAsset({
         _id: `asset-${slug}`,
         _type: 'asset',
         name: `${clientDoc.name} Logo`,
@@ -520,11 +535,11 @@ async function main() {
         linkedPageId: page.pageId,
       };
       if (existing) {
-        await patchDoc(existing._id, base);
+        await patchAsset(existing._id, base);
         report.assetsPatched++;
       } else {
         const slug = rel.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase().slice(0, 96);
-        await createOrReplaceAsset({
+        await createAsset({
           _id: `asset-${slug}`,
           _type: 'asset',
           name: path.basename(rel),

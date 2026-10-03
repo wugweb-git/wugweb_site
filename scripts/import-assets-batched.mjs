@@ -34,8 +34,11 @@ function findLocal(notionPath) {
   return walk(base);
 }
 
-async function upsert(doc) {
-  try { await client.createOrReplace(doc); return true; }
+// Seed only — creates missing assets, never overwrites existing ones. Notion
+// is a seed source (CLAUDE.md); this was a createOrReplace, which reset every
+// asset to the old sheet values and wiped Studio edits on each run.
+async function seed(doc) {
+  try { await client.createIfNotExists(doc); return true; }
   catch(e) { console.error(`  ❌ ${doc._id}: ${e.message.substring(0,80)}`); return false; }
 }
 
@@ -69,7 +72,7 @@ async function main() {
       localExists: !!localPath,
     };
 
-    const result = await upsert(doc);
+    const result = await seed(doc);
     if (result) ok++;
 
     // Progress every 20

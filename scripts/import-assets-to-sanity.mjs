@@ -74,7 +74,10 @@ for (const a of active) {
   };
 
   try {
-    await client.createOrReplace(doc);
+    // createIfNotExists: Notion is a seed source only (CLAUDE.md). A replace
+    // here reset every asset to the old sheet values on each run — wiping
+    // Studio edits and everything Sanity has gained since the import.
+    await client.createIfNotExists(doc);
     count++;
     if (localPath) matched++;
   } catch (e) {

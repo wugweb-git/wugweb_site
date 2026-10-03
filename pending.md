@@ -1414,3 +1414,10 @@ declarations, labelling rules, implementation map, history, verification.
   Checked for a better source: the live Framer site serves the byte-identical
   file (same SHA), and `VS/wordpres/home.mov` (1280×648) is a Driftime screen
   recording, not this footage. Needs a new export of the hero video.
+- **Hero re-export done (2026-10-04)** from the only source that exists
+  (`assets/assets/website/home/Home.mp4`, 800×600): lanczos upscale to
+  1920×1440 + light unsharp, crf 21, audio dropped → 992 KB (was 1.17 MB).
+  Poster regenerated from it (1920×1440, q85). Both in `public/` and R2.
+  Visible gain is small — source frames are soft/motion-blurred. Searched
+  this Mac, iCloud, both Google Drives, R2 and the Framer site: no higher-res
+  original exists. True sharpness needs the source project re-exported.

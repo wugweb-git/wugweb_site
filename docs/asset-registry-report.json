@@ -1,13 +1,17 @@
 {
-  "generatedAt": "2026-08-04T12:44:58.831Z",
-  "local": 431,
-  "sanityAssets": 472,
-  "r2Synced": 465,
-  "r2ManifestKeys": 431,
-  "presence": 59,
-  "platform": 68,
-  "tech": 26,
-  "note": "85 objects uploaded in delta run; manifest rebuilt to include all local keys assumed on R2 after successful puts.",
-  "r2UsedMiB": 514.2,
-  "deltaAddedToManifest": 85
+  "generatedAt": "2026-10-03T21:21:09.876Z",
+  "local": 968,
+  "sanityUpserted": 968,
+  "linked": 206,
+  "archived": 0,
+  "r2": {
+    "skippedExisting": 0,
+    "uploaded": 0,
+    "failed": 0
+  },
+  "freeTier": {
+    "usedStorageBytes": 657985746,
+    "softCeilingBytes": 10200547328,
+    "freeBytes": 10737418240
+  }
 }

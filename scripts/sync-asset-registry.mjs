@@ -17,6 +17,7 @@ import { createHash } from 'crypto';
 import { createReadStream, promises as fs } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { splitAssetFields } from './lib/asset-fields.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -287,23 +288,30 @@ async function main() {
     }
 
     if (!DRY_RUN) {
-      // Merge: createOrReplace but keep r2Synced from existing if set
+      // File facts are refreshed every run; editorial fields (alt, group,
+      // status, usage, links…) are only SEEDED on a new doc and never
+      // overwritten — see scripts/lib/asset-fields.mjs. This used to be a
+      // createOrReplace, which wiped every Studio edit on each run.
+      const { facts, editorial } = splitAssetFields(doc);
       const existing = existingAssets.find((a) => a.relativePath === rel || a._id === id);
-      if (existing) {
+
+      // Id migration: copy the old doc across first, so its human edits and
+      // r2Synced survive the move. The facts patch below then corrects the
+      // path fields that changed.
+      if (existing && existing._id !== id) {
         const full = await client.getDocument(existing._id).catch(() => null);
-        if (full?.r2Synced) doc.r2Synced = true;
-        // If old id differs, replace via new id and delete old later
-        if (existing._id !== id && full) {
-          await client.createOrReplace({ ...full, ...doc, _id: id });
+        if (full) {
+          const { _id, _type, _rev, _createdAt, _updatedAt, ...kept } = full;
+          await client.createIfNotExists({ _id: id, _type: 'asset' });
+          await client.patch(id).setIfMissing(kept).commit();
           if (!existing._id.startsWith('drafts.')) {
             await client.delete(existing._id).catch(() => {});
           }
-        } else {
-          await client.createOrReplace(doc);
         }
-      } else {
-        await client.createOrReplace(doc);
       }
+
+      await client.createIfNotExists({ _id: id, _type: 'asset', ...facts, ...editorial });
+      await client.patch(id).set(facts).setIfMissing(editorial).commit();
       upserted++;
       if (upserted % 40 === 0) console.log(`  upserted ${upserted}...`);
     } else {
