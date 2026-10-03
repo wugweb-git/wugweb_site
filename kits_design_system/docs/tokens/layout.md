@@ -2,6 +2,12 @@
 
 Layout primitives implemented in `src/styles/global.css`.
 
+> **See [`layout-shell.md`](layout-shell.md) first.** It holds the authoritative
+> canvas → section → content skeleton (supplied 2026-10-03) and the rule that
+> governs this whole file: **the section owns the gutter, the content owns the
+> max-width.** It also records three deltas where the table below does not yet
+> match that spec — notably `.wrap` at 1280px against a specified 1200px.
+
 ## Page Containers
 
 | Class | Max-width | Use |
