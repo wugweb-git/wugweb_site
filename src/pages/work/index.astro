@@ -89,21 +89,21 @@ const workItems = caseStudies.map((cs: any) => {
 ---
 
 <BaseLayout noIndex={workPage?.noIndex} ogTitle={workPage?.ogTitle} ogDescription={workPage?.ogDescription} ogImagePath={workPage?.ogImagePath} title={workTitle} description={workDescription}>
-  <section class="work-hero">
+  <section class="work-hero" id="work-hero" aria-labelledby="work-hero-title">
     <div class="wrap work-hero-content">
       
-      <h1 class="page-title" data-reveal>What We've Built</h1>
+      <h1 class="page-title" data-reveal id="work-hero-title">What We've Built</h1>
       <p data-reveal>We create digital solutions that are as functional as they are beautiful.</p>
     </div>
   </section>
 
-  <section class="wrap work-filters" data-reveal>
+  <section class="wrap work-filters" data-reveal id="work-filters" aria-label="Work filters">
     {categories.map((c) => (
       <button class="filter-chip" data-category={c}>{c}</button>
     ))}
   </section>
 
-  <section class="wrap work-grid-section">
+  <section class="wrap work-grid-section" id="work-grid-section" aria-label="Case studies">
     <ul class="work-grid">
       {workItems.map((w) => (
         <li data-reveal data-categories={w.pillar}>

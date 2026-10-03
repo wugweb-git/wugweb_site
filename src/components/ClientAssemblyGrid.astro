@@ -56,7 +56,7 @@ const clientLogos = logos.length
   : [];
 ---
 
-<section class="logos-band">
+<section class="logos-band" id="logos-band" aria-labelledby="logos-band-title">
   <div class="wrap logos" data-scroll="fade-up">
     <ul class="logo-grid" data-scroll="assemble">
       {clientLogos.slice(0, splitAt).map((l) => (
@@ -69,7 +69,7 @@ const clientLogos = logos.length
           as on the live section. Two-tone like the wugweb lockup — bright
           first half, muted second. */}
       <li class="logo-grid-title" data-assemble-static>
-        <h2 class="logos-heading" data-reveal>{heading} <span>{headingAccent}</span></h2>
+        <h2 class="logos-heading" data-reveal id="logos-band-title">{heading} <span>{headingAccent}</span></h2>
       </li>
 
       {clientLogos.slice(splitAt).map((l) => (

@@ -32,8 +32,8 @@ const show = (s: TokenSection) => sections.includes(s);
 
 <div class="token-gallery">
   {show('colors') && (
-    <section class="tg-section">
-      <h2>Colors</h2>
+    <section class="tg-section" id="tg-section" aria-labelledby="tg-section-title">
+      <h2 id="tg-section-title">Colors</h2>
 
       <h3>Service pillars</h3>
       <div class="tg-grid tg-grid-pillars">
@@ -67,8 +67,8 @@ const show = (s: TokenSection) => sections.includes(s);
   )}
 
   {show('typography') && (
-    <section class="tg-section">
-      <h2>Typography</h2>
+    <section class="tg-section" id="tg-section-2" aria-labelledby="tg-section-2-title">
+      <h2 id="tg-section-2-title">Typography</h2>
       <div class="tg-type-list">
         {typographySpecimens.map((t) => (
           <div class="tg-type-row">
@@ -86,8 +86,8 @@ const show = (s: TokenSection) => sections.includes(s);
   )}
 
   {show('spacing') && (
-    <section class="tg-section">
-      <h2>Spacing</h2>
+    <section class="tg-section" id="tg-section-3" aria-labelledby="tg-section-3-title">
+      <h2 id="tg-section-3-title">Spacing</h2>
       <div class="tg-spacing-list">
         {spacingRamp.map((s) => (
           <div class="tg-spacing-row">
@@ -101,8 +101,8 @@ const show = (s: TokenSection) => sections.includes(s);
   )}
 
   {show('radius') && (
-    <section class="tg-section">
-      <h2>Radius</h2>
+    <section class="tg-section" id="tg-section-4" aria-labelledby="tg-section-4-title">
+      <h2 id="tg-section-4-title">Radius</h2>
       <div class="tg-grid tg-grid-radius">
         {radiusRamp.map((r) => (
           <div class="tg-radius-tile" style={`border-radius:${r.val};`}>
@@ -115,8 +115,8 @@ const show = (s: TokenSection) => sections.includes(s);
   )}
 
   {show('opacity') && (
-    <section class="tg-section">
-      <h2>Opacity</h2>
+    <section class="tg-section" id="tg-section-5" aria-labelledby="tg-section-5-title">
+      <h2 id="tg-section-5-title">Opacity</h2>
       <div class="tg-grid tg-grid-opacity">
         {opacityRamp.map((o) => (
           <div class="tg-opacity-tile">
@@ -129,8 +129,8 @@ const show = (s: TokenSection) => sections.includes(s);
   )}
 
   {show('motion') && (
-    <section class="tg-section">
-      <h2>Motion easings</h2>
+    <section class="tg-section" id="tg-section-6" aria-labelledby="tg-section-6-title">
+      <h2 id="tg-section-6-title">Motion easings</h2>
       <div class="tg-motion-list">
         {motionEasings.map((m) => (
           <div class="tg-motion-row">

@@ -12,14 +12,14 @@ const hasCms = blocks.length > 0;
 ---
 
 <LegalLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title="Terms of Use" description="Read Wugweb's terms of use for website access, service information, and visitor responsibilities." active="terms-of-use" updated="November 04, 2025">
-  <section class="wrap legal">
+  <section class="wrap legal" id="legal" aria-label="Terms of use">
     {hasCms ? (
       <div class="legal-body">
         <PortableTextRenderer value={blocks} />
       </div>
     ) : (
     <div class="legal-body">
-      <h2>Introduction and Overview</h2>
+      <h2 id="legal-title">Introduction and Overview</h2>
       <p>
         Please carefully read these Terms of Use (these "Terms") because they set forth a legally
         binding agreement between you ("you", "your", and/or "guests") and Wug Web Services

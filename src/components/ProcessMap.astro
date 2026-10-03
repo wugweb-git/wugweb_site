@@ -242,14 +242,14 @@ const loopPath = hasLoop
 const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
-<section class="process-map-section" data-scroll="processmap">
+<section class="process-map-section" data-scroll="processmap" id="process-map-section" aria-labelledby="process-map-section-title">
   <!-- One block filling the viewport: the title and the map are inside the
        same panel, so the section reads as a single object rather than a
        heading with a picture under it. -->
   <figure class="pm-panel" data-process-map>
     <header class="pm-title">
       
-      {heading && <h2>{heading}</h2>}
+      {heading && <h2 id="process-map-section-title">{heading}</h2>}
       {lede && <p class="pm-lede">{lede}</p>}
     </header>
 

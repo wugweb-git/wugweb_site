@@ -185,9 +185,9 @@ import TeamGrid from '../components/TeamGrid.astro';
 
 <BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath} title={pageTitle} description={pageDescription}>
   <!-- HERO -->
-  <section class="about-hero">
+  <section class="about-hero" id="about-hero" aria-labelledby="about-hero-title">
     <div class="wrap about-hero-content">
-      <h1 class="page-title" data-reveal>About Us</h1>
+      <h1 class="page-title" data-reveal id="about-hero-title">About Us</h1>
       <!-- PLACEHOLDER COPY — replace before launch. Sits under the page title
            and is not sourced from Sanity yet. -->
       <p class="about-hero-lede" data-reveal>
@@ -215,7 +215,7 @@ import TeamGrid from '../components/TeamGrid.astro';
   </section>
 
   <!-- STATS -->
-  <section class="wrap stats" data-scroll="rise">
+  <section class="wrap stats" data-scroll="rise" id="stats" aria-label="Stats">
     <ul data-counters>
       {stats.map((s) => {
         // Split "57+" into the number to count and whatever trails it, so the
@@ -246,7 +246,7 @@ import TeamGrid from '../components/TeamGrid.astro';
   {/* TRUST & RECOGNITION — removed for now (2026-09-23, user request). */}
 
   <!-- VALUES -->
-  <section class="wrap values" data-scroll="rise">
+  <section class="wrap values" data-scroll="rise" id="values" aria-label="Our values">
     
     <p class="values-lede" data-reveal>
       Creating projects at the nexus of design and technology, bringing the future into the
@@ -268,10 +268,10 @@ import TeamGrid from '../components/TeamGrid.astro';
   </section>
 
   <!-- CULTURE -->
-  <section class="wrap culture" data-scroll="rise">
+  <section class="wrap culture" data-scroll="rise" id="culture" aria-labelledby="culture-title">
     <div class="culture-head">
       <div>
-        <h2 data-reveal>Culture Reigns Supreme</h2>
+        <h2 data-reveal id="culture-title">Culture Reigns Supreme</h2>
         <p data-reveal>
           Establishing a robust foundational culture within our organisation is vital to Wugweb's
           long-term vision, growth, and success. We are driven by four core values: intimacy,
@@ -305,10 +305,10 @@ import TeamGrid from '../components/TeamGrid.astro';
       labelled "Another Review Site") — replaced with a link to the real
       reviews hub instead of numbers nobody's confirmed against the live
       platforms. */}
-  <section class="wrap reviews">
+  <section class="wrap reviews" id="reviews" aria-labelledby="reviews-title">
     <a href="/footer/reviews" class="reviews-teaser" data-reveal>
       <div>
-        <h2>What clients and the team say.</h2>
+        <h2 id="reviews-title">What clients and the team say.</h2>
         <p>Verified review platforms Wugweb is listed on, and how to reach us if you're one of them.</p>
       </div>
       <span class="btn btn-solid">See reviews</span>

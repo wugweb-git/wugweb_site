@@ -41,3 +41,10 @@
 
 - Fluid type uses `clamp()` — respects user zoom without breaking layout.
 - `lang` set from `siteSettings.language` (default `en-GB`).
+
+## Section labelling — mandatory on every section
+
+Every `<section>` must carry a **scroll anchor** (`id`) and an **accessible name**
+(`aria-labelledby` pointing at its visible heading, or `aria-label` if it has
+none). Full rules and the defects behind them: [`layout-shell.md`](layout-shell.md#every-section-is-labelled--mandatory).
+Verified 2026-10-03: 215 of 215 sections across 27 pages.

@@ -300,11 +300,11 @@ if (!service) {
   <div class="service-page-wrapper" style={`--theme-base: var(--svc-${pillarSlug}, var(--color-accent-primary)); --theme-dark: var(--svc-${pillarSlug}-dark, var(--color-ash)); --theme-light: var(--svc-${pillarSlug}-light, var(--color-surface-inverse)); --theme-gradient: var(--gradient-${pillarSlug}, var(--gradient-brand));`}>
     
     <!-- HERO -->
-    <section class="detail-hero">
+    <section class="detail-hero" id="detail-hero" aria-labelledby="detail-hero-title">
       <div class="hero-glow" data-reveal></div>
       <div class="wrap detail-hero-content">
         
-        <h1 class="page-title" data-reveal>{service.title}</h1>
+        <h1 class="page-title" data-reveal id="detail-hero-title">{service.title}</h1>
         <p class="hero-sub" data-reveal>{service.subtitle}</p>
         <p class="hero-text" data-reveal>{service.heroText}</p>
         <ul class="service-tags" data-reveal>
@@ -315,7 +315,7 @@ if (!service) {
     </section>
 
     <!-- BODY -->
-    <section class="wrap detail-body">
+    <section class="wrap detail-body" id="detail-body" aria-label="Detail body">
       <div class="glass-panel body-glass" data-reveal>
         <p>{typeof service.body === 'string' ? service.body : (service.fullDescription || service.summary || '')}</p>
       </div>
@@ -323,7 +323,7 @@ if (!service) {
 
     <!-- STATS -->
     {(service.stats?.length > 0) && (
-      <section class="wrap svc-stats" data-scroll="rise">
+      <section class="wrap svc-stats" data-scroll="rise" id="svc-stats" aria-label="Svc stats">
         <ul>
           {service.stats.map((s) => (
             <li class="glass-panel stat-card" data-reveal>
@@ -340,7 +340,7 @@ if (!service) {
          other five pillars keep the original grouped panels below, untouched.
          Widen `showcaseEnabled` to roll it out. -->
     {showcaseEnabled && (
-      <section class="wrap capabilities-section" aria-labelledby="caps-heading">
+      <section class="wrap capabilities-section" aria-labelledby="caps-heading" id="capabilities-section">
         {/* A real h2 so the ten sub-service h3s below sit under a parent
             heading. Styled as the eyebrow, so nothing changes visually. */}
         <h2 class="eyebrow caps-heading" id="caps-heading" data-reveal>What we can do</h2>
@@ -355,7 +355,7 @@ if (!service) {
     )}
 
     {!showcaseEnabled && (
-      <section class="wrap capabilities-section">
+      <section class="wrap capabilities-section" id="capabilities-section-2" aria-label="Capabilities">
         
         <div class="caps-grouped">
           {(safeArr(service.capabilities, [])).map((c) => (
@@ -379,8 +379,8 @@ if (!service) {
 
     <!-- APPROACH -->
     {approachSteps.length > 0 && (
-      <section class="wrap approach-section">
-        <h2 data-reveal>From first conversation to handover.</h2>
+      <section class="wrap approach-section" id="approach-section" aria-labelledby="approach-section-title">
+        <h2 data-reveal id="approach-section-title">From first conversation to handover.</h2>
 
         <div class="approach-layout">
         <!-- Cards, not the old stack of full-width glass bars. The Process Map
@@ -482,9 +482,9 @@ if (!service) {
         loopLabel={mapLoopLabel}
       />
     ) : (service.framework?.length > 0) && (
-      <section class="wrap framework-section">
+      <section class="wrap framework-section" id="framework-section" aria-labelledby="framework-section-title">
         
-        <h2 data-reveal>Our {service.title} Framework</h2>
+        <h2 data-reveal id="framework-section-title">Our {service.title} Framework</h2>
         <div class="framework-flow">
           {service.framework.map((f) => (
             <div class="glass-panel framework-phase" data-reveal>
@@ -503,9 +503,9 @@ if (!service) {
 
     {(safeArr(service.tools, null)) && (
     <!-- TOOLKIT -->
-    <section class="wrap toolkit-section">
+    <section class="wrap toolkit-section" id="toolkit-section" aria-labelledby="toolkit-section-title">
       
-      <h2 data-reveal>Wugweb leverages a diverse toolkit of industry-leading technologies to craft exceptional user experiences.</h2>
+      <h2 data-reveal id="toolkit-section-title">Wugweb leverages a diverse toolkit of industry-leading technologies to craft exceptional user experiences.</h2>
       <div class="toolkit-grid">
         {service.tools.map((t) => (
           <div class="glass-panel toolkit-category" data-reveal>
@@ -536,9 +536,9 @@ if (!service) {
 
     <!-- RELATED WORK -->
     {relatedWork.length > 0 && (
-      <section class="wrap svc-work">
+      <section class="wrap svc-work" id="svc-work" aria-labelledby="svc-work-title">
         <div class="svc-work-head">
-          <h2 data-reveal>Work that leads with clarity and delivers with impact</h2>
+          <h2 data-reveal id="svc-work-title">Work that leads with clarity and delivers with impact</h2>
           <a href="/work" class="btn btn-ghost" data-reveal>View all case studies</a>
         </div>
         <ul class="svc-work-grid">

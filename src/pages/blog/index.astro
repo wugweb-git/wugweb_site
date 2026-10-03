@@ -88,16 +88,16 @@ function fmtDate(d?: string): string {
 ---
 
 <BaseLayout noIndex={blogPage?.noIndex} ogTitle={blogPage?.ogTitle} ogDescription={blogPage?.ogDescription} ogImagePath={blogPage?.ogImagePath} title={blogTitle} description={blogDescription}>
-  <section class="blog-hero">
+  <section class="blog-hero" id="blog-hero" aria-labelledby="blog-hero-title">
     <div class="wrap blog-hero-content">
       
-      <h1 class="page-title" data-reveal>Notes on design, product, and growth.</h1>
+      <h1 class="page-title" data-reveal id="blog-hero-title">Notes on design, product, and growth.</h1>
       <p data-reveal>Field notes from Wugweb's design, engineering, and strategy work: what we're learning, testing, and shipping.</p>
     </div>
   </section>
 
   {heroPost && (
-    <section class="wrap blog-featured" data-reveal>
+    <section class="wrap blog-featured" data-reveal id="blog-featured" aria-labelledby="blog-featured-title">
       <a href={`/blog/${heroPost.slug}`} class="featured-card" style={`--card-accent: ${heroPost.accent}`}>
         <div class="featured-visual">
           {heroPost.coverUrl ? (
@@ -111,7 +111,7 @@ function fmtDate(d?: string): string {
         </div>
         <div class="featured-content">
           <span class="pillar-tag"><i></i>{heroPost.pillar}</span>
-          <h2>{heroPost.title}</h2>
+          <h2 id="blog-featured-title">{heroPost.title}</h2>
           <p class="featured-excerpt">{heroPost.excerpt}</p>
           <div class="post-meta">
             {heroPost.author?.name && <span>{heroPost.author.name}</span>}
@@ -123,13 +123,13 @@ function fmtDate(d?: string): string {
     </section>
   )}
 
-  <section class="wrap blog-filters" data-reveal>
+  <section class="wrap blog-filters" data-reveal id="blog-filters" aria-label="Blog filters">
     {categories.map((c) => (
       <button class="filter-chip" data-category={c}>{c}</button>
     ))}
   </section>
 
-  <section class="wrap blog-grid-section">
+  <section class="wrap blog-grid-section" id="blog-grid-section" aria-label="All articles">
     <ul class="blog-grid">
       {restPosts.map((p: any, i: number) => (
         <li data-reveal data-reveal-delay={(Math.min(i % 6, 5) * 0.05).toFixed(2)} data-category={p.pillar}>

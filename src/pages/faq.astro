@@ -35,9 +35,9 @@ import FaqAccordion from '../components/FaqAccordion.astro';
 ---
 
 <BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title={pageTitle} description={pageDescription}>
-  <section class="wrap faq">
+  <section class="wrap faq" id="faq" aria-labelledby="faq-title">
     
-    <h1 class="page-title" data-reveal>{displayH1}</h1>
+    <h1 class="page-title" data-reveal id="faq-title">{displayH1}</h1>
     <p class="faq-lede" data-reveal>{pageBody}</p>
     <p class="faq-updated" data-reveal>Updated on November 04, 2025</p>
 

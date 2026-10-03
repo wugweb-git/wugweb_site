@@ -53,11 +53,11 @@ const coverOf = (p: InsightPost) =>
 ---
 
 {items.length > 0 && (
-  <section class="wrap blog-teaser" data-scroll="rise">
+  <section class="wrap blog-teaser" data-scroll="rise" id="blog-teaser" aria-labelledby="blog-teaser-title">
     <div class="blog-teaser-head">
       <div class="btc-head-text">
         
-        <h2 data-reveal>{heading}</h2>
+        <h2 data-reveal id="blog-teaser-title">{heading}</h2>
       </div>
       {/* Bare .btn (the "Primary" tier — solid --neutral-6 fill), not
           .btn-solid (Brand/yellow, reserved for the page's one conversion

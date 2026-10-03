@@ -44,19 +44,19 @@ const agencyPlatforms = [
 <BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title={title} description={description}>
   <div class="reviews-page">
     <!-- HERO -->
-    <section class="hero-section wrap">
+    <section class="hero-section wrap" id="hero-section" aria-labelledby="hero-section-title">
       
-      <h1 class="page-title" data-reveal>What people say about working with us.</h1>
+      <h1 class="page-title" data-reveal id="hero-section-title">What people say about working with us.</h1>
       <p class="hero-lead" data-reveal>
         Client feedback lives on the platforms that host it — we link straight there instead of quoting numbers we can't keep current. Team feedback gets the same treatment.
       </p>
     </section>
 
     <!-- AGENCY REVIEWS -->
-    <section class="wrap reviews-section">
+    <section class="wrap reviews-section" id="reviews-section" aria-labelledby="reviews-section-title">
       <div class="section-header">
         
-        <h2 data-reveal>Agency reviews</h2>
+        <h2 data-reveal id="reviews-section-title">Agency reviews</h2>
         <p class="section-lead" data-reveal>Verified review platforms Wugweb is listed on. Ratings and counts live on each platform directly — visit the profile for the current number.</p>
       </div>
       <div class="platform-grid">
@@ -72,9 +72,9 @@ const agencyPlatforms = [
 
     <!-- CLIENT TESTIMONIALS — renders only when Wugweb-subject reviews exist -->
     {clientTestimonials.length > 0 && (
-      <section class="wrap reviews-section">
+      <section class="wrap reviews-section" id="reviews-section-2" aria-labelledby="reviews-section-2-title">
         <div class="section-header">
-          <h2 data-reveal>In their words</h2>
+          <h2 data-reveal id="reviews-section-2-title">In their words</h2>
           <p class="section-lead" data-reveal>Feedback from clients we've worked with, collected through Wugweb's own profiles on the platforms above.</p>
         </div>
         <div class="platform-grid">
@@ -95,10 +95,10 @@ const agencyPlatforms = [
     )}
 
     <!-- EMPLOYEE REVIEWS -->
-    <section class="wrap reviews-section">
+    <section class="wrap reviews-section" id="reviews-section-3" aria-labelledby="reviews-section-3-title">
       <div class="section-header">
         
-        <h2 data-reveal>Employee reviews</h2>
+        <h2 data-reveal id="reviews-section-3-title">Employee reviews</h2>
         <p class="section-lead" data-reveal>
           No verified employer-review platform profile (Glassdoor, AmbitionBox, etc.) is on record for Wugweb yet — this section is ready to go the moment there's a real, confirmed profile link to point at. Nothing is linked here to avoid guessing at a URL for a page like this.
         </p>
@@ -106,10 +106,10 @@ const agencyPlatforms = [
     </section>
 
     <!-- OTHER RECOGNITION -->
-    <section class="wrap reviews-section">
+    <section class="wrap reviews-section" id="reviews-section-4" aria-labelledby="reviews-section-4-title">
       <div class="section-header">
         
-        <h2 data-reveal>Other recognition</h2>
+        <h2 data-reveal id="reviews-section-4-title">Other recognition</h2>
       </div>
       <div class="platform-grid">
         <a href="https://www.startupindia.gov.in/" target="_blank" rel="noopener noreferrer" class="platform-card glass-panel" data-reveal>

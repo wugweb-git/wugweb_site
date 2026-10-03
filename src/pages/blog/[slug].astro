@@ -126,20 +126,20 @@ const shareLinks = [
   <div id="reading-progress" class="reading-progress-bar" style={`--bar-accent: ${accent}`} aria-hidden="true"></div>
 
   {coverImageUrl && (
-    <section class="wrap article-hero-media-wrap" data-reveal>
+    <section class="wrap article-hero-media-wrap" data-reveal id="article-hero-media-wrap" aria-label="Article hero media wrap">
       <figure class="article-hero-media">
         <img src={coverImageUrl} alt={`Cover image for ${post.title}`} loading="eager" decoding="async" />
       </figure>
     </section>
   )}
 
-  <section class:list={['wrap article-hero-content', { 'no-cover': !coverImageUrl }]} style={`--accent: ${accent}`}>
+  <section class:list={['wrap article-hero-content', { 'no-cover': !coverImageUrl }]} style={`--accent: ${accent}`} id="section-2" aria-labelledby="section-2-title">
     <div class="article-hero-top" data-reveal>
       {pubDate && <span>{pubDate}</span>}
       {readTime && <span>{readTime}</span>}
       {isUpdated && <span>Updated {updatedAt}</span>}
     </div>
-    <h1 data-reveal>{post.title}</h1>
+    <h1 data-reveal id="section-2-title">{post.title}</h1>
     {post.excerpt && <p class="article-intro" data-reveal>{post.excerpt}</p>}
 
     <div class="article-meta" data-reveal>
@@ -151,7 +151,7 @@ const shareLinks = [
     </div>
   </section>
 
-  <section class="wrap article" style={`--accent: ${accent}`}>
+  <section class="wrap article" style={`--accent: ${accent}`} id="article" aria-labelledby="article-title">
     {toc.length > 0 && (
       <nav class="article-toc" aria-label="Table of contents">
         <p class="toc-title">Contents</p>
@@ -203,7 +203,7 @@ const shareLinks = [
 
     <aside class="article-newsletter">
       
-      <h2>Get insights like this in your inbox</h2>
+      <h2 id="article-title">Get insights like this in your inbox</h2>
       <p>Design, product, and digital strategy. No spam, just thoughtful content.</p>
       <form class="nl-form" method="POST" action="/api/subscribe">
         <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" class="nl-input" />
@@ -229,9 +229,9 @@ const shareLinks = [
     )}
 
     {featuredCases.length > 0 && (
-      <section class="article-related">
+      <section class="article-related" id="related-cases" aria-labelledby="related-cases-title">
         <div class="related-cases-head">
-          <h2>Featured Case Studies</h2>
+          <h2 id="related-cases-title">Featured Case Studies</h2>
           <a href="/work" class="btn btn-ghost">View all work</a>
         </div>
         <div class="related-cases-grid">

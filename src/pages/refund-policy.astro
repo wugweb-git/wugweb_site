@@ -18,7 +18,7 @@ const hasCms = blocks.length > 0;
   active="refund-policy"
   updated="August 16, 2026"
 >
-  <section class="wrap legal">
+  <section class="wrap legal" id="legal" aria-label="Refund policy">
     {hasCms ? (
       <div class="legal-body" data-reveal>
         <PortableTextRenderer value={blocks} />
@@ -30,7 +30,7 @@ const hasCms = blocks.length > 0;
       </p>
 
       <!-- 01 -->
-      <h2 data-reveal>01 — Our approach</h2>
+      <h2 data-reveal id="legal-title">01 — Our approach</h2>
       <p data-reveal>
         Refund eligibility depends on the type of service (Project Services or Subscription Services), the stage of work, and the circumstances of the request.
       </p>

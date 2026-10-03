@@ -131,14 +131,14 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   hideGlobalIndustries={true}
 >
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero" aria-labelledby="hero-title">
     <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/more/home/home-poster.webp"
       src="/assets/more/home/home.mp4"></video>
     <div class="hero-overlay"></div>
 
     <div class="wrap hero-content">
       
-      <h1 class="hero-headline t-display" data-headline>{headlineText}</h1>
+      <h1 class="hero-headline t-display" data-headline id="hero-title">{headlineText}</h1>
       <div class="hero-ctas" data-reveal>
         <a href="#services-content" class="btn btn-ghost">Explore Wugweb</a>
         <a href="/contact-us" class="btn btn-solid">Get in Touch</a>
@@ -149,8 +149,8 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   </section>
 
   <!-- INTRO -->
-  <section class="wrap intro" data-scroll="rise">
-    <h2 data-reveal>Wugweb is a tight team of thoughtful creatives, engineers, and strategists</h2>
+  <section class="wrap intro" data-scroll="rise" id="intro" aria-labelledby="intro-title">
+    <h2 data-reveal id="intro-title">Wugweb is a tight team of thoughtful creatives, engineers, and strategists</h2>
     <div class="intro-body">
       <div class="intro-copy" data-reveal>
         {intro.map((p) => <p>{p}</p>)}
@@ -165,9 +165,9 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   </section>
 
   <!-- SERVICES TEASER -->
-  <section class="wrap services tone-recessed" id="services-content" data-scroll="rise">
+  <section class="wrap services tone-recessed" id="services-content" data-scroll="rise" aria-labelledby="services-content-title">
     
-    <h2 data-reveal>Crafting UI, UX, and Brand Systems that drive meaning</h2>
+    <h2 data-reveal id="services-content-title">Crafting UI, UX, and Brand Systems that drive meaning</h2>
     <p class="services-lede" data-reveal>
       In a world where the unexpected is becoming the norm, we build custom digital solutions
       through user experience design, delivering UX design services that are prepared for what is
@@ -183,9 +183,9 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   </section>
 
   <!-- WORK -->
-  <section class="wrap work" data-scroll="rise">
+  <section class="wrap work" data-scroll="rise" id="work" aria-labelledby="work-title">
     <div class="work-head">
-      <h2 data-reveal>Work that Leads with Clarity and Delivers with Impact</h2>
+      <h2 data-reveal id="work-title">Work that Leads with Clarity and Delivers with Impact</h2>
       <a href="/work" class="btn btn-ghost">View case studies</a>
     </div>
 
@@ -207,10 +207,10 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   <ClientAssemblyGrid logos={realLogos} />
 
   <!-- INDUSTRIES WE EMPOWER -->
-  <section class="industries-section tone-elevated" data-scroll="rise">
+  <section class="industries-section tone-elevated" data-scroll="rise" id="industries-section" aria-labelledby="industries-section-title">
     <div class="wrap industries-head">
       
-      <h2 data-reveal>We understand the context behind the product.</h2>
+      <h2 data-reveal id="industries-section-title">We understand the context behind the product.</h2>
       <p data-reveal>From regulated sectors to fast-moving consumer markets, our experience spans industries that demand precision and creativity in equal measure.</p>
     </div>
     <div class="industries-marquee-wrap" aria-hidden="true">

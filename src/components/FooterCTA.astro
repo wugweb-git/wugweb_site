@@ -55,7 +55,7 @@ const glyphFor = (p: string) => SOCIAL_GLYPH[String(p).toLowerCase().replace(/[^
      viewport). Nesting makes the painted panel the wrap's content box, so it
      lines up with everything else at every width. -->
 <div class="wrap final-cta-wrap">
-<section class="global-final-cta" data-scroll="banner">
+<section class="global-final-cta" data-scroll="banner" id="global-final-cta" aria-labelledby="global-final-cta-title">
   <span class="cta-sheen" aria-hidden="true"></span>
   {socialDiscs.length > 0 && (
     <div class="cta-balls" data-ball-field aria-label="Wugweb on social media">
@@ -82,7 +82,7 @@ const glyphFor = (p: string) => SOCIAL_GLYPH[String(p).toLowerCase().replace(/[^
        (`data-scroll="banner"`) animates the heading, copy and button.
        Leaving data-reveal here put two GSAP tweens on the same opacity and
        transform, and the heading stuck at opacity 0. -->
-  <h2>{heading}</h2>
+  <h2 id="global-final-cta-title">{heading}</h2>
   <div class="final-cta-inner">
     <div class="final-cta-copy">
       <p>{copy}</p>

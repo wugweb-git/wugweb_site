@@ -50,10 +50,10 @@ const NAV: { slug: LegalSlug; label: string; href: string }[] = [
 ---
 
 <BaseLayout title={title} description={description} hideGlobalSections={true} noIndex={noIndex} ogTitle={ogTitle} ogDescription={ogDescription}>
-  <section class="wrap legal-hub">
+  <section class="wrap legal-hub" id="legal-hub" aria-labelledby="legal-hub-title">
     <header class="legal-hub-head">
       <a href="/privacy-policy" class="legal-hub-crumb" data-reveal>Legal &amp; Policies</a>
-      <h1 class="page-title" data-reveal>{title}</h1>
+      <h1 class="page-title" id="legal-hub-title" data-reveal>{title}</h1>
       {updated && (
         <p class="legal-hub-updated meta-row" data-reveal>
           <span class="meta-item">

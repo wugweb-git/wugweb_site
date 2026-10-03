@@ -100,8 +100,8 @@ if (columnSignatures.length > 1 && new Set(columnSignatures).size === 1) {
 }
 ---
 
-<section class="wrap bento-block">
-  {heading && <h2 data-reveal>{heading}</h2>}
+<section class="wrap bento-block" id="bento-block" aria-labelledby={heading ? "bento-block-title" : undefined} aria-label={heading ? undefined : "Why us"}>
+  {heading && <h2 data-reveal id="bento-block-title">{heading}</h2>}
   {lede && <p class="bento-lede" data-reveal>{lede}</p>}
 
   <span class="bento-cursor" data-bento-cursor aria-hidden="true"></span>

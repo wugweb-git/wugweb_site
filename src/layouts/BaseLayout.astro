@@ -463,8 +463,8 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
              block (see hideGlobalIndustries). -->
         {!hideGlobalIndustries && (
           showIndustries && (
-          <section class="wrap global-industries">
-            <h2>{industriesTitle}</h2>
+          <section class="wrap global-industries" id="industries" aria-labelledby="industries-title">
+            <h2 id="industries-title">{industriesTitle}</h2>
             <p>{industriesSubtitle}</p>
             <ul class="industry-tags">
               {globalIndustries.map((i) => <li>{i}</li>)}

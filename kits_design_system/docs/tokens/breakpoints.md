@@ -8,7 +8,7 @@ Documentation-only — CSS custom properties CANNOT be used inside `@media` quer
 | Mobile L | `--breakpoint-sm` | `640px` | 4 |
 | Tablet | `--breakpoint-md` | `768px` | 8 |
 | Desktop S | `--breakpoint-lg` | `1024px` | 12 |
-| Desktop M | `--breakpoint-xl` | `1280px` | 12 |
+| Desktop M | `--breakpoint-xl` | `1200px` | 12 |
 | Desktop L | `--breakpoint-2xl` | `1440px` | 12 |
 
 ```css
@@ -50,16 +50,7 @@ Bootstrap value with 13 uses; `1200` matched no token at all and is now 1280
 (`--breakpoint-xl`). Every `@media` in `src/` now uses a value from this table.
 `--breakpoint-2xl` (1440px) is declared but not yet used.
 
-## ⚠️ The canvas spec says 1200, not 1280
+## Resolved 2026-10-03 — desktop step is 1200
 
-[`layout-shell.md`](layout-shell.md), supplied 2026-10-03, defines the desktop
-canvas as **1200px** with a 48px section gutter and a 1200px content cap.
-
-That contradicts `--breakpoint-xl: 1280px` above. The code originally used
-`1200px` in two rules — `.wrap` padding and `.site-header` padding — and on
-2026-09-29 I changed both to 1280 to match the declared token, having concluded
-1200 matched nothing. It matched the canvas spec, which had not surfaced yet.
-Both rules are gutter bumps, which is precisely what that spec governs.
-
-**Unresolved:** either the token scale adopts 1200 as its desktop step, or the
-canvas spec adopts 1280. Not a decision to make silently in either direction.
+`--breakpoint-xl` is now **1200px**, matching the layout-shell desktop canvas.
+Both gutter rules that I had moved to 1280 on 2026-09-29 are back on 1200.

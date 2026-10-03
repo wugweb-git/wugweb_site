@@ -15,10 +15,10 @@ const description = page?.seoDescription || 'Complete sitemap for wugweb.com —
 ---
 
 <BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title={title} description={description}>
-  <section class="wrap static-page sitemap">
+  <section class="wrap static-page sitemap" id="static-page" aria-labelledby="static-page-title">
     <header class="static-head">
       
-      <h1 class="page-title" data-reveal>Explore the Site</h1>
+      <h1 class="page-title" data-reveal id="static-page-title">Explore the Site</h1>
       <p class="static-lede" data-reveal>Everything on wugweb.com, organised. Jump to any page, service, case study, or article.</p>
     </header>
 

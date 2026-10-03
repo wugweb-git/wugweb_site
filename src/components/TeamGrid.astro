@@ -45,9 +45,9 @@ const rest = words.slice(headingLead).join(' ');
 ---
 
 {members.length > 0 && (
-  <section class="wrap team-block">
+  <section class="wrap team-block" id="team-block" aria-labelledby="team-block-title">
     
-    <h2 class="team-heading" data-reveal>
+    <h2 class="team-heading" data-reveal id="team-block-title">
       <span class="team-heading-lead">{lead}</span>{' '}
       <span class="team-heading-rest">{rest}</span>
     </h2>

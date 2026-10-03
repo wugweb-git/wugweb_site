@@ -17,7 +17,7 @@ const pageDesc = page?.seoDescription || 'Wugweb Cookie Policy — details on ho
   active="cookie-policy"
   updated="August 16, 2026"
 >
-  <section class="wrap legal">
+  <section class="wrap legal" id="legal" aria-labelledby="legal-title">
     {hasCms ? (
       <div class="legal-body" data-reveal>
         <PortableTextRenderer value={blocks} />
@@ -29,7 +29,7 @@ const pageDesc = page?.seoDescription || 'Wugweb Cookie Policy — details on ho
       </p>
 
       <!-- 01 -->
-      <h2 data-reveal>01 — What are cookies?</h2>
+      <h2 data-reveal id="legal-title">01 — What are cookies?</h2>
       <p data-reveal>
         Cookies are small files or pieces of information stored on your device when you visit a website. They help websites function, remember preferences, understand how visitors use them and, where enabled, support analytics or other services.
       </p>

@@ -132,9 +132,9 @@ const otherCases = await Promise.all(others.map((s: any) =>
 ---
 
 <BaseLayout title={`${work.title} — Wugweb Work`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl} ogTitle={work.ogTitle} ogDescription={work.ogDescription} noIndex={work.noIndex} jsonLd={[caseStudyNode]}>
-  <section class="work-detail-hero">
+  <section class="work-detail-hero" id="work-detail-hero" aria-labelledby="work-detail-hero-title">
     <div class="wrap">
-      <h1>{displayTitle}</h1>
+      <h1 id="work-detail-hero-title">{displayTitle}</h1>
       {work.subtitle && <p class="work-subtitle">{work.subtitle}</p>}
       {work.tags?.length > 0 && (
         <div class="work-tags">
@@ -159,7 +159,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
   </section>
 
   {coverSrc && (
-    <section class="wrap section work-cover" data-reveal>
+    <section class="wrap section work-cover" data-reveal id="work-cover" aria-label="Work cover">
       {coverSrc.endsWith('.mp4') || coverSrc.endsWith('.webm') ? (
         <video src={coverSrc} poster={posterFor(coverSrc)} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
       ) : (
@@ -171,15 +171,15 @@ const otherCases = await Promise.all(others.map((s: any) =>
   <div class="case-shell wrap">
     <div class="case-content">
       {(work.about || work.summary) && (
-        <section id="about" class="case-section" data-reveal>
-          <h2 class="case-heading">About</h2>
+        <section id="about" class="case-section" data-reveal aria-labelledby="about-title">
+          <h2 class="case-heading" id="about-title">About</h2>
           <p class="case-lead">{work.about || work.summary}</p>
         </section>
       )}
 
       {challenges.length > 0 && (
-        <section id="problem" class="case-section" data-reveal>
-          <h2 class="case-heading">The problem</h2>
+        <section id="problem" class="case-section" data-reveal aria-labelledby="problem-title">
+          <h2 class="case-heading" id="problem-title">The problem</h2>
           <ul class="case-list" style={`--rule-color: ${accentMap.orange}`}>
             {challenges.map((ch: any) => (
               <li><strong>{ch.title}</strong>{ch.body && <p>{ch.body}</p>}</li>
@@ -189,8 +189,8 @@ const otherCases = await Promise.all(others.map((s: any) =>
       )}
 
       {solutions.length > 0 && (
-        <section id="approach" class="case-section" data-reveal>
-          <h2 class="case-heading">The approach</h2>
+        <section id="approach" class="case-section" data-reveal aria-labelledby="approach-title">
+          <h2 class="case-heading" id="approach-title">The approach</h2>
           <div class="case-bento">
             {solutions.map((sol: any, i: number) => (
               <>
@@ -214,8 +214,8 @@ const otherCases = await Promise.all(others.map((s: any) =>
       )}
 
       {(impactItems.length > 0 || results.length > 0) && (
-        <section id="outcome" class="case-section" data-reveal>
-          <h2 class="case-heading">The outcome</h2>
+        <section id="outcome" class="case-section" data-reveal aria-labelledby="outcome-title">
+          <h2 class="case-heading" id="outcome-title">The outcome</h2>
           {results.length > 0 && (
             <div class="case-stat-row">
               {results.map((res: any) => (
@@ -237,8 +237,8 @@ const otherCases = await Promise.all(others.map((s: any) =>
       )}
 
       {work.designPhilosophy && (
-        <section id="thesis" class="case-section" data-reveal>
-          <h2 class="case-heading">Design thesis</h2>
+        <section id="thesis" class="case-section" data-reveal aria-labelledby="thesis-title">
+          <h2 class="case-heading" id="thesis-title">Design thesis</h2>
           <div class="case-thesis">
             {work.designPhilosophy.split('\n').filter(Boolean).map((line: string) => {
               const idx = line.indexOf(':');
@@ -255,8 +255,8 @@ const otherCases = await Promise.all(others.map((s: any) =>
       )}
 
       {showBodyContent && (
-        <section id="details" class="case-section" data-reveal>
-          <h2 class="case-heading">In depth</h2>
+        <section id="details" class="case-section" data-reveal aria-labelledby="details-title">
+          <h2 class="case-heading" id="details-title">In depth</h2>
           <PortableTextRenderer value={bodyContent} />
         </section>
       )}
@@ -264,8 +264,8 @@ const otherCases = await Promise.all(others.map((s: any) =>
   </div>
 
   {galleryPaths.length > 0 && (
-    <section id="gallery" class="wrap case-gallery-section" data-reveal>
-      <h2 class="case-heading">Gallery</h2>
+    <section id="gallery" class="wrap case-gallery-section" data-reveal aria-labelledby="gallery-title">
+      <h2 class="case-heading" id="gallery-title">Gallery</h2>
       <div class="case-gallery-grid">
         {galleryPaths.map((path: string) => {
           const src = assetUrl(path);
@@ -285,9 +285,9 @@ const otherCases = await Promise.all(others.map((s: any) =>
   )}
 
   {otherCases.length > 0 && (
-    <section class="wrap section more-cases-section">
+    <section class="wrap section more-cases-section" id="more-cases-section" aria-labelledby="more-cases-section-title">
       <div class="more-cases-head">
-        <h2>More Case Studies</h2>
+        <h2 id="more-cases-section-title">More Case Studies</h2>
         <a href="/work" class="btn btn-ghost">View all work</a>
       </div>
       <div class="more-grid">

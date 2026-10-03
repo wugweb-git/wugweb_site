@@ -12,14 +12,14 @@ const hasCms = blocks.length > 0;
 ---
 
 <LegalLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title="Privacy Policy" description="Privacy Policy — Wugweb" active="privacy-policy" updated="November 04, 2025">
-  <section class="wrap static-page legal">
+  <section class="wrap static-page legal" id="static-page" aria-label="Privacy policy">
     {hasCms ? (
       <div class="legal-body" data-reveal>
         <PortableTextRenderer value={blocks} />
       </div>
     ) : (
     <>
-    <h2 data-reveal>What is this Privacy Policy for?</h2>
+    <h2 data-reveal id="static-page-title">What is this Privacy Policy for?</h2>
     <p data-reveal>This privacy policy is for this website & being served by Wugweb (including its global affiliates) and governs the privacy of its users who choose to use it. This website and its owners take a proactive approach to user privacy and ensure the necessary steps are taken to protect the privacy of its users throughout their visiting experience. The policy sets out the different areas where user privacy is concerned and outlines the obligations & requirements of the users, the website and the website owners. By accessing or using our website, you expressly consent to our collection, use and disclosure of your personal information in accordance with this Privacy Policy.</p>
 
     <h2 data-reveal>Information We Collect</h2>

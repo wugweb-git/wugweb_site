@@ -96,21 +96,53 @@ will-change: transform;
 gap: 0;
 ```
 
-## ⚠️ Three deltas against the current implementation
+## ✅ Implemented sitewide — 2026-10-03
 
-Recorded, not reconciled — changing any of these is a design decision.
+All three deltas are resolved. The code now matches this spec.
 
-| | this spec | code today | where |
+| | spec | code before | code now |
 |---|---|---|---|
-| content max-width | **1200px** | `1280px` (`80rem`) | `.wrap`, `global.css:1088` |
-| desktop gutter | **48px** | `44px` (`--gap-6 + --gap-5`) | `global.css:1093` |
-| desktop breakpoint | **1200** | `1280` (`--breakpoint-xl`) | breakpoint scale |
+| content max-width | 1200px | 1280px (`80rem`) | **1200px** |
+| desktop gutter | 48px | 44px | **48px** |
+| desktop breakpoint | 1200 | 1280 | **1200** (`--breakpoint-xl`) |
 
-> **On that last row — I changed it, and this spec says I was wrong.** The code
-> used `1200px` in two rules; on 2026-09-29 I "reconciled" them to `1280` to
-> match `--breakpoint-xl`, on the reasoning that 1200 matched no declared token.
-> It matched *this*. The two rules were `.wrap` padding and `.site-header`
-> padding — both gutter bumps, which is exactly what this spec governs.
+How it is built: `.wrap` is the section and carries the only horizontal padding,
+via one stepped token `--shell-gutter` (16 / 32 / 48). Its max-width is
+`calc(1200px + 2 × gutter)` so the **content** box is exactly 1200 —
+`box-sizing: border-box` would otherwise make a flat 1200 give 1104. Vertical
+rhythm rides on `--space-section-xl` (48 / 70 / 96), which carries 67 uses.
 
-Also note the nav: this spec says uniform `padding: 20px`; the code has
-`var(--gap-5) var(--gap-6) 0` — asymmetric, with no bottom padding.
+A second `.wrap` rule (68px gutter at ≥1280) was silently overriding the shell
+and squeezing content to 1160; removed. That was the rule I had moved from
+1200 to 1280 on 2026-09-29 — it was this spec's desktop step all along.
+
+Measured on every `.wrap` at all three breakpoints: one content width and one
+gutter per breakpoint — 343/16, 704/32, 1200/48 — with no page overflow.
+
+**Not yet on the spec rhythm:** `--space-section-md` (25 uses), `-lg` (21),
+`-sm` (4) are still flat. The nav is `var(--gap-5) var(--gap-6) 0` against the
+spec's uniform 20px.
+
+## Every section is labelled — mandatory
+
+Each `<section>` carries **both** a scroll anchor and an accessible name:
+
+```html
+<section class="wrap services" id="services" aria-labelledby="services-title">
+  <h2 id="services-title">…</h2>
+```
+
+Rules, each learned from a defect found while doing it:
+
+- **`aria-labelledby` only points at a heading that always renders.** A
+  heading inside `{cond && …}`, or a CMS fallback, leaves the reference
+  dangling. Use a conditional attribute or `aria-label`.
+- **Never label a section with a heading inside a `.map()`.** Every iteration
+  repeats the id (invalid HTML) and the section ends up named after its first
+  card. Use `aria-label="…"` and keep looped headings id-free.
+- **Sections in `src/layouts/` count.** Two lived there and render on every
+  page — the industries strip in `BaseLayout`, the legal hub in `LegalLayout`.
+- IDs are kebab-case section names and unique per page.
+
+Verified 2026-10-03 on rendered HTML: **215 of 215 sections across 27 pages**,
+0 duplicate IDs, 0 broken references.

@@ -710,14 +710,14 @@ figure, footer, header, main, nav, ol, section, ul` (`label` greyed out), with
 `section` as the default. Equivalent for us = auditing that our section wrappers
 use real landmarks instead of `div` everywhere.
 
-### 3. Scroll-section anchor name — *noted only*
+### 3. Scroll-section anchor name — *DONE 2026-10-03*
 
 Framer's "Scroll section" panel: a **Name** field (`# culture`) plus an **Offset Y**,
 giving the section a URL hash target with a scroll offset for the fixed nav.
 Equivalent for us = `id="culture"` + `scroll-margin-top` on section wrappers, so
 `/about#culture` deep-links land clear of the header.
 
-### 4. Per-element accessibility fields — *noted only*
+### 4. Per-element accessibility fields — *sections DONE 2026-10-03*
 
 Framer exposes **Aria label**, **Tab index** and **Google bot** per element
 (alongside Tag), under an Accessibility group.
@@ -1327,3 +1327,25 @@ measuring rather than reviewing:
 tier matches, which is mobile-first working. And
 `.matrix-row.header { font-size: 10px }` was **dead CSS**; the child
 `.matrix-cell` sets its own size, so those cells always rendered at 14px.
+
+### 1w. Layout shell sitewide + every section labelled — *2026-10-03*
+
+**Layout shell** (`kits_design_system/docs/tokens/layout-shell.md`) implemented on
+all pages: section owns the gutter, content owns the max-width. Content 1200,
+gutter 16/32/48, vertical rhythm 48/70/96. All three deltas resolved —
+`--breakpoint-xl` is now 1200, and a stray 68px `.wrap` rule removed.
+
+**Section labels** — these were recorded as *noted only* since 2026-09-24 and had
+never been done; I failed to correct "which you did" when it was said. Before:
+113 source sections, 15 with an id, **1** with an aria label, **0** with both.
+After: **215 of 215 rendered sections across 27 pages** have both, 0 duplicate
+IDs, 0 broken references.
+
+The first pass reported 99% at source level and was wrong on render — eight
+defects, all from labelling a section with "the first heading inside it":
+looped card headings (duplicate IDs, sections named after their first card),
+conditional and CMS-fallback headings (dangling references), and two sections
+in `src/layouts/` the sweep never scanned. Rules now in `layout-shell.md`.
+
+**Still open on the spec:** `--space-section-md/lg/sm` flat (50 uses); nav
+padding not yet the spec's uniform 20px.
