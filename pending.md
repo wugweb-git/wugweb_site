@@ -1407,7 +1407,10 @@ declarations, labelling rules, implementation map, history, verification.
   query, so every internal link in a body would render `href="#"`. No post
   uses one yet.
 - All 100 posts render 200 with the new template.
-- **Hero poster: blocked on an asset.** `home.mp4` is **800×600** — every copy
+- **Hero poster: re-encoded, source still the limit.** Poster now native 800×600 at q92 (was a 1280 upscale at q72, 10.5 KB — the first-paint blockiness). `home.mp4` itself is **800×600** — every copy
   in the repo, including `assets/website/home/Home.mp4`. The 1280 poster is
   already an upscale; a sharp full-bleed hero needs a higher-resolution source
   video.
+  Checked for a better source: the live Framer site serves the byte-identical
+  file (same SHA), and `VS/wordpres/home.mov` (1280×648) is a Driftime screen
+  recording, not this footage. Needs a new export of the hero video.
