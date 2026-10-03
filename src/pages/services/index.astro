@@ -142,7 +142,7 @@ const whyIntro =
         </div>
         <div class="svc-gallery">{s.gallery.map((g: string) => {
           const item = resolveWork(g);
-          return item?.v ? <a href={item.slug ? `/work/${item.slug}` : '/work'} aria-label={`${item.label} — case study`}><video muted loop playsinline preload="none" data-src={item.v} poster={posterFor(item.v)}></video><span class="svc-gallery-label">{item.label}</span></a> : '';
+          return item?.v ? <a href={item.slug ? `/work/${item.slug}` : '/work'} aria-label={`${item.label} — case study`}><video aria-hidden="true" muted loop playsinline preload="none" data-src={item.v} poster={posterFor(item.v)}></video><span class="svc-gallery-label">{item.label}</span></a> : '';
         })}</div>
       </div>
     </section>

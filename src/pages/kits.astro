@@ -15,7 +15,7 @@ import {
 ---
 
 <BaseLayout title="Kits Design System & Component Library | Wugweb" description="Complete specification of Wugweb's Kits Design System — primitives, tokens, secondary colors, UI controls, blocks, widgets, and animation effects.">
-  <div class="kits-page wrap">
+  <div class="kits-page">
 
     <!-- ── Hero Header ── -->
     <header class="kits-hero" data-reveal>
@@ -251,11 +251,11 @@ import {
           <div class="form-demo-stack">
             <div class="input-field-group">
               <label class="input-lbl">Work Email Address</label>
-              <input type="email" class="demo-input" placeholder="name@company.com" value="vedanshu@wugweb.com" />
+              <input type="email" class="demo-input" aria-label="Email address" placeholder="name@company.com" value="vedanshu@wugweb.com" />
             </div>
             <div class="input-field-group">
               <label class="input-lbl">Select Engagement Type</label>
-              <select class="demo-select">
+              <select class="demo-select" aria-label="Demo select">
                 <option>Strategy & Digital Transformation</option>
                 <option>Platform Engineering & Web App</option>
                 <option>Brand Identity System</option>
@@ -441,6 +441,11 @@ import {
 </BaseLayout>
 
 <style>
+  /* The page wrapper is no longer a capped .wrap: that made every kits section
+     1200 wide instead of full width. Each direct child — the header and every
+     section — is full width and carves its own 1200 content box by padding,
+     exactly like .wrap. */
+  .kits-page > * { padding-inline: max(var(--shell-gutter), calc((100% - 1200px) / 2)); }
   .kits-page {
     padding-top: calc(var(--space-section-lg, 4rem) + var(--gap-5));
     padding-bottom: var(--space-section-lg, 4rem);

@@ -453,7 +453,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
     {/* tabindex="-1" so the skip link can actually move focus here; without it
         the browser scrolls but focus stays behind, and the next Tab returns to
         the header the user was trying to skip. */}
-    <main id="main" tabindex="-1">
+    <main id="main" tabindex="-1" aria-label={title} data-scroll-flow>
     <slot />
     </main>
 
@@ -873,6 +873,19 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
   initScrollAnimations();
   // Below-fold looping video: nothing downloads until it is near the viewport.
   initLazyVideo();
+  // Page scroll flow — layout-shell.md. Every top-level section, in document
+  // order, gets data-scroll-index (1..n), and <main data-scroll-flow> carries
+  // the ordered list of section anchors for the whole canvas. Computed at
+  // runtime because two sections render from layouts OUTSIDE <main> (the
+  // industries strip, the footer CTA band), so only the live DOM knows the
+  // true order.
+  {
+    const flow = [...document.querySelectorAll('section')]
+      .filter((s) => !s.parentElement?.closest('section') && s.id);
+    flow.forEach((s, i) => s.setAttribute('data-scroll-index', String(i + 1)));
+    document.querySelector('main[data-scroll-flow]')
+      ?.setAttribute('data-scroll-flow', flow.map((s) => s.id).join(' '));
+  }
   // initBallField() now lives in FooterCTA.astro's own script — it's the
   // only consumer of `[data-ball-field]`.
   // Registers a listener only. GA is gated on host AND consent, and the

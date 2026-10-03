@@ -89,7 +89,7 @@ function isActive(href: string) {
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: var(--layer-nav);   /* 10 — layout-shell.md */
     /* The bar floats inset from the screen edge; under viewport-fit=cover
        that edge is behind the notch, so the insets are added to the gutter. */
     /* layout-shell.md, 2026-10-03: 16px mobile / 20px 32px tablet / 20px
@@ -104,6 +104,9 @@ function isActive(href: string) {
     background: transparent;
   }
 
+  /* The bar is grabbable — layout-shell.md. Links and buttons keep the pointer. */
+  .site-header-inner { cursor: grab; }
+  .site-header-inner :is(a, button) { cursor: pointer; }
   .site-header-inner {
     /* rem, not px, so the bar grows with the root scale above 1440px along
        with .wrap - a hard px cap here pinned it at 1280 while the content
@@ -119,7 +122,7 @@ function isActive(href: string) {
     /* Audit §7.1: this used to read `min-height`, but the open state changes
        `height` - so the transition could never fire and the menu simply
        appeared. Both ends are definite values now, so it animates. */
-    transition: height var(--duration-normal) var(--easing-smooth);
+    transition: height var(--duration-spring) var(--ease-spring);
   }
 
   .nav-top {
@@ -165,7 +168,7 @@ function isActive(href: string) {
     padding: var(--gap-2) var(--gap-4);
     border-radius: var(--radius-sm);
     background: var(--neutral-6);
-    transition: background var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out);
+    transition: background var(--duration-spring) var(--ease-spring), color var(--duration-spring) var(--ease-spring);
   }
   .nav-link:hover { background: var(--color-surface-hover); }
   .nav-link.is-active {
@@ -190,7 +193,7 @@ function isActive(href: string) {
     color: var(--color-ash);
     border: 0;
     cursor: pointer;
-    transition: filter var(--duration-fast) var(--easing-out), transform var(--duration-instant) var(--easing-out);
+    transition: filter var(--duration-spring) var(--ease-spring), transform var(--duration-spring) var(--ease-spring);
   }
   .wa-icon { width: 16px; height: 16px; flex-shrink: 0; }
   .nav-cta:hover { filter: brightness(1.05); }
@@ -230,9 +233,9 @@ function isActive(href: string) {
     /* Audit §7.2 wanted a morph rather than two icons toggled with `display`.
        The stack is 2+4+2+4+2 = 14px tall, so the outer bars travel 6px to meet
        on the centre line before rotating. */
-    transition: transform var(--duration-normal) var(--easing-spring),
-                opacity var(--duration-fast) var(--easing-out),
-                width var(--duration-normal) var(--easing-smooth);
+    transition: transform var(--duration-spring) var(--ease-spring),
+                opacity var(--duration-spring) var(--ease-spring),
+                width var(--duration-spring) var(--ease-spring);
   }
   .nav-toggle-bars span:nth-child(1) { width: 18px; }
   .nav-toggle-bars span:nth-child(2) { width: 14px; }
@@ -430,11 +433,10 @@ function isActive(href: string) {
       margin-left: auto;
       gap: var(--gap-2);
     }
-    /* The bar is 78px (matching the old site and the closed mobile bar, and
-       --nav-height feeds the hero's height calc, so shrinking it is the wrong
-       lever). Instead the controls grow to fill it: ~48px tall inside 78px
-       leaves an even 15px band above and below, where a 30px control left 24px
-       of dead space and read as over-padded. */
+    /* The header is 100px total on every breakpoint (layout-shell.md), so
+       this bar is 60px at tablet and desktop: 100 minus 20px top and bottom.
+       48px controls leave an even 6px band. The hero and anchor offsets now
+       read --header-height, not this bar, so the bar can change freely. */
     .nav-link,
     .nav-cta {
       font-size: var(--ts-body-md-size);

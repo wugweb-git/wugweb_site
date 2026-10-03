@@ -64,7 +64,7 @@ const withMedia = items.filter((it) => it.media);
       <div class="showcase-card" data-card={it.index}>
         <span class="showcase-media">
           {it.media ? (
-            <video
+            <video aria-hidden="true"
               class="showcase-video"
               data-video
               src={it.media.video}

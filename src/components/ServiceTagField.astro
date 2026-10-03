@@ -40,7 +40,7 @@ import { posterFor } from '../lib/assets';
           media → title → copy → link. Collapsed it has zero height. */}
       {t.video && (
         <span class="tag-media">
-          <video
+          <video aria-hidden="true"
             data-tag-video
             src={t.video}
             poster={posterFor(t.video)}

@@ -184,6 +184,7 @@ if (currentList) {
         <figure class="pt-media pt-video-figure" data-reveal>
           <div class="pt-media-inner pt-video-wrapper">
             <video
+              aria-label={b.caption || b.alt || 'Video'}
               src={src}
               poster={poster}
               autoplay={Boolean(b.autoplay)}
@@ -209,7 +210,7 @@ if (currentList) {
         <figure class="pt-media" data-reveal>
           <div class="pt-media-inner">
             {isVideo ? (
-              <video src={src} poster={posterFor(src)} muted loop playsinline controls preload="metadata" class="pt-video" />
+              <video aria-label={b.alt || b.caption || 'Video'} src={src} poster={posterFor(src)} muted loop playsinline controls preload="metadata" class="pt-video" />
             ) : (
               <img src={src} alt={b.alt || b.caption || ''} loading="lazy" decoding="async" class="pt-image" />
             )}

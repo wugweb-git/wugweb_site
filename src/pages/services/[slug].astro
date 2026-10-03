@@ -355,7 +355,8 @@ if (!service) {
     )}
 
     {!showcaseEnabled && (
-      <section class="wrap capabilities-section" id="capabilities-section-2" aria-label="Capabilities">
+      <section class="wrap capabilities-section" id="capabilities-section-2" aria-labelledby="capabilities-section-2-title">
+        <h2 class="sr-only" id="capabilities-section-2-title">Capabilities</h2>
         
         <div class="caps-grouped">
           {(safeArr(service.capabilities, [])).map((c) => (

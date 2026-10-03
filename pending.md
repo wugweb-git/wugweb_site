@@ -1368,3 +1368,27 @@ navs on spec at all three breakpoints. See layout-shell.md.
 
 `layout-shell.md` rewritten as the full spec: structure, breakpoints table,
 declarations, labelling rules, implementation map, history, verification.
+
+### 1y. Nav, canvas index, content accessibility — *2026-10-03*
+
+- **Nav 100px on all breakpoints**, sticky top 0, **z-index 10**
+  (`--layer-nav`), `cursor: grab` (links/buttons keep pointer). Nav
+  transitions use the **Spring** token (`--ease-spring`, 0.4s, bounce 0.2).
+- **Sections full width + relative**, content 1200 distributed centre;
+  `isolation: isolate`, `scroll-margin-top` under the sticky nav.
+- **Canvas index on every page**: `main` labelled with the page title,
+  footer landmark, and a **page scroll flow** (`data-scroll-index` per
+  section, `main[data-scroll-flow]`).
+- **Content accessibility sweep** found and fixed: 5 heading skips (sr-only
+  `h2` for heading-less sections; subscription timeline `h4 → h3`),
+  4 unnamed form fields, 74 videos with no name (decorative loops
+  `aria-hidden`, control videos `aria-label`). Now 0 / 0 / 0 on 22 pages;
+  162/162 sections labelled.
+- Blog post: title, meta, body share one left edge.
+- **Deploy fix**: `package-lock.json` had 340 entries without
+  `resolved`/`integrity`, forcing registry metadata fetches that hit a stale
+  cached packument → `EINTEGRITY`. Filled from the registry, 0 version
+  changes, validated with a clean-cache `npm ci`.
+- `layout-shell.md` updated, including the CMS page/section/component field
+  map from `docs/schema-template-section-component-level.md` (still a
+  proposal — no schema deployed).

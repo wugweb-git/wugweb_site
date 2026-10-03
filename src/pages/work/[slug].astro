@@ -161,14 +161,14 @@ const otherCases = await Promise.all(others.map((s: any) =>
   {coverSrc && (
     <section class="wrap section work-cover" data-reveal id="work-cover" aria-label="Work cover">
       {coverSrc.endsWith('.mp4') || coverSrc.endsWith('.webm') ? (
-        <video src={coverSrc} poster={posterFor(coverSrc)} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
+        <video aria-hidden="true" src={coverSrc} poster={posterFor(coverSrc)} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
       ) : (
         <img src={coverSrc} alt={work.title} loading="eager" decoding="async" class="work-cover-media" />
       )}
     </section>
   )}
 
-  <div class="case-shell wrap">
+  <section class="case-shell wrap" id="case-study" aria-label="Case study">
     <div class="case-content">
       {(work.about || work.summary) && (
         <section id="about" class="case-section" data-reveal aria-labelledby="about-title">
@@ -201,7 +201,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
                 {i === 1 && approachMedia && (
                   <figure class="bento-tile bento-image">
                     {approachMediaIsVideo ? (
-                      <video data-src={approachMedia} poster={posterFor(approachMedia)} muted loop playsinline preload="none" />
+                      <video aria-hidden="true" data-src={approachMedia} poster={posterFor(approachMedia)} muted loop playsinline preload="none" />
                     ) : (
                       <img src={approachMedia} alt="" loading="lazy" />
                     )}
@@ -261,7 +261,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
         </section>
       )}
     </div>
-  </div>
+  </section>
 
   {galleryPaths.length > 0 && (
     <section id="gallery" class="wrap case-gallery-section" data-reveal aria-labelledby="gallery-title">
@@ -273,7 +273,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
           return (
             <figure class="case-gallery-item">
               {isVideo ? (
-                <video data-src={src} poster={posterFor(src)} muted loop playsinline preload="none" />
+                <video aria-hidden="true" data-src={src} poster={posterFor(src)} muted loop playsinline preload="none" />
               ) : (
                 <img src={src} alt={work.title} loading="lazy" />
               )}
@@ -298,7 +298,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
               {cCover && (
                 <div class="more-card-visual">
                   {cCover.endsWith('.mp4') || cCover.endsWith('.webm')
-                    ? <video data-src={cCover} poster={posterFor(cCover)} muted loop playsinline preload="none"></video>
+                    ? <video aria-hidden="true" data-src={cCover} poster={posterFor(cCover)} muted loop playsinline preload="none"></video>
                     : <img src={cCover} alt="" loading="lazy" />}
                 </div>
               )}
@@ -428,7 +428,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
      deep-link target - without this, #approach etc. lands flush under
      the sticky header instead of clear of it. */
   .case-section {
-    scroll-margin-top: calc(var(--nav-height) + var(--gap-lg));
+    scroll-margin-top: calc(var(--header-height) + var(--gap-lg));
   }
 
   .case-heading {
@@ -578,7 +578,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
   .case-gallery-section {
     padding-block: var(--space-section-md) var(--space-section-lg);
     border-top: var(--stroke-thin) solid var(--line);
-    scroll-margin-top: calc(var(--nav-height) + var(--gap-lg));
+    scroll-margin-top: calc(var(--header-height) + var(--gap-lg));
   }
   .case-gallery-section .case-heading {
     max-width: none;

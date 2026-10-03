@@ -8,10 +8,13 @@ with this file is wrong, not the file.
 
 **The section owns the gutter. The content owns the max-width.**
 
-- A **section** is always full-bleed (`width: 100%`). It carries the only
-  horizontal padding on the page, plus the vertical rhythm.
+- A **section** is always full-bleed and relative (`width: 100%`,
+  `position: relative`). It carries the page gutter plus the vertical rhythm.
 - Inside it sits one **content** box, also `width: 100%`, capped at
-  `max-width: 1200px`, with **zero padding of its own**.
+  `max-width: 1200px` and **distributed centre** in the section.
+- **Section padding is for sections only.** Content and blocks may add their
+  own extra padding inside (a card's inset, a reading column's measure) — that
+  is not a gutter, and it never replaces the section's.
 - Blocks live inside content. Nothing below the section sets a page gutter.
 
 ## Structure
@@ -58,7 +61,8 @@ A filter chip row lives inside the content of the grid it filters.
 | column gap | **16** | **24** | **32** |
 | grid margin (= gutter) | **16** | **32** | **48** |
 | nav padding | `16` | `20 32` | `20` |
-| nav height | 110 | 118 | 118 |
+| nav height | **100** | **100** | **100** |
+| nav position | sticky, top 0 | sticky, top 0 | sticky, top 0 |
 
 Layout guides: type columns, align **stretch**, width auto, colour `#0099FF`.
 
@@ -125,7 +129,7 @@ gap: 16px | 24px | 32px;    /* the column gap */
 box-sizing: border-box;
 flex-shrink: 0;
 width: 100%;
-height: min-content;        /* 110 mobile · 118 tablet and desktop */
+height: 100px;              /* all three breakpoints — bar 68 (mobile) / 60 (≥768) + padding */
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -137,8 +141,33 @@ position: sticky;
 top: 0;
 z-index: 10;
 will-change: transform;
+cursor: grab;               /* links and buttons inside keep cursor: pointer */
 gap: 0;
 ```
+
+### Transition — Spring
+Framer: **Spring · time-based · Time 0.4 · Bounce 0.2 · Delay 0.**
+```css
+--duration-spring: 400ms;
+--ease-spring: linear(0, 0.0544, 0.1785, …, 1.0150, …, 1);  /* damped spring, ~1.5% overshoot */
+transition: <property> var(--duration-spring) var(--ease-spring);
+```
+CSS has no spring, so `--ease-spring` is the sampled curve via `linear()`.
+Every nav transition uses it. GSAP remains the engine for scroll animation.
+
+## Canvas — every page is indexed
+
+Each canvas (page) carries, on every route:
+
+| | how |
+|---|---|
+| language | `<html lang>` |
+| skip link | first focusable element, targets `#main` |
+| main landmark | `<main id="main" tabindex="-1" aria-label={page title}>` |
+| header / footer landmarks | `<header>` (sticky nav), `<footer id="site-footer" aria-label="Site footer">` |
+| one `h1` | exactly one per page, inside `main` |
+| **page scroll flow** | `main[data-scroll-flow]` lists the section ids in order; every top-level section gets `data-scroll-index` 1…n (set in `BaseLayout`) |
+| scroll offset | `scroll-margin-top: var(--header-height)` on sections, so anchors land below the sticky nav |
 
 ## Every section is labelled — mandatory
 
@@ -163,6 +192,76 @@ Rules, each learned from a defect found while doing it:
 - **Filters are not sections.** They are `role="toolbar"` divs with an
   `aria-label`, inside the grid section they filter.
 - IDs are kebab-case section names, unique per page.
+- **A section without a visible heading** gets an `.sr-only` `h2` and
+  `aria-labelledby` to it — so its card headings don't skip a level.
+
+## Content and everything below it — labelled too
+
+Bare `div`s cannot take an `aria-label` (it is ignored without a role), so
+content is named **semantically**, not by sprinkling attributes:
+
+| content | rule |
+|---|---|
+| headings | one `h1`; levels never skip (`h1 → h3` is a defect) |
+| lists of cards | `ul` / `ol` + `li` |
+| images | `alt` always — empty `alt=""` only when decorative |
+| video | decorative muted loops: `aria-hidden="true"`; videos with controls: `aria-label` |
+| links, buttons | visible text, or `aria-label` / `aria-labelledby` |
+| form fields | `<label for>`, or `aria-label` |
+| filter rows | `role="toolbar"` + `aria-label` |
+| media + caption | `figure` + `figcaption` |
+
+## CMS fields per level — page · section · component
+
+Source: [`docs/schema-template-section-component-level.md`](../../../docs/schema-template-section-component-level.md).
+**Status: proposal — no schema field below is deployed yet.** The layout shell
+says *where* accessibility and SEO live; this says which of it an editor
+controls in Sanity and which the template owns.
+
+### Page level — `caseStudy` and `post` lack what `singletonPage` has
+
+`singletonPage` already carries the SEO / AI-answers group. `caseStudy` (82)
+and `post` (124) still have only `seoTitle`, `seoDescription`, `ogImage`.
+Proposed for both:
+
+| field | type | group | purpose |
+|---|---|---|---|
+| `ogImagePath` | string | seo | R2 path, same convention as `coverPath` |
+| `ogTitle` / `ogDescription` | string / text | seo | overrides, fall back to `seoTitle` / `seoDescription` |
+| `noIndex` | boolean | seo | Framer's "Search engines" toggle, default `false` |
+| `seoCanonicalUrl` | url | seo | distinct name — `caseStudy.canonicalUrl` already means stub-redirect |
+| `focusKeyword` / `secondaryKeywords` | string / string[] | seo | target keywords |
+| `searchIntent` | list | seo | informational · commercial · navigational · transactional |
+| `breadcrumbLabel` | string | seo | falls back to title |
+| `aiSummary` | text | ai-answers | 40–60 words, rendered visibly |
+| `keyTakeaways` | string[] | ai-answers | 3–5 bullets |
+| `faqs` | {question, answer}[] | ai-answers | FAQPage JSON-LD |
+| `schemaType` | list | ai-answers | caseStudy: CreativeWork / Article · post: Article / BlogPosting |
+| `lastReviewedAt` | datetime | ai-answers | feeds `dateModified` |
+
+### Component level — three small fields
+
+| field | on | purpose |
+|---|---|---|
+| `ariaLabel` | link / button object | only when the visible label doesn't describe the action (icon-only, repeated "Learn more") |
+| `relNofollow` | link / button with external `href` | only once outbound or sponsored links exist |
+| `imageContext` | image object | editor-facing note on the copy an image supports; never rendered |
+
+Alt text is **not** a new field: where image objects already have `alt`, the
+fix is `validation: (r) => r.required()`.
+
+### Section level — owned by the template, not the CMS
+
+| item | why no field |
+|---|---|
+| landmarks (`section` / `article` / `nav`) | template markup |
+| section id (scroll anchor) + aria name | hardcoded per template — this file's labelling rules |
+| page scroll flow / scroll index | generated in `BaseLayout` |
+| heading levels | Portable Text `style` (H2–H4) already editor-controlled |
+| no skipped levels | editorial discipline, or a future `blockContent` validation rule |
+| native `href`, lazy loading, DOM order | template implementation |
+| descriptive anchor text, answer-first copy | copy guidance for existing fields |
+| image optimisation | Asset Registry / R2 pipeline |
 
 ## How it is implemented
 
@@ -170,18 +269,23 @@ Rules, each learned from a defect found while doing it:
 |---|---|
 | section = full-bleed, owns gutter | `.wrap` is the section — `<section class="wrap …">` |
 | gutter 16 / 32 / 48 | `--shell-gutter`, stepped in `:root` |
-| content max 1200 | `.wrap { max-width: calc(1200px + 2 × --shell-gutter) }` |
+| content max 1200, centred | `.wrap { width: 100%; padding-inline: max(var(--shell-gutter), calc((100% - 1200px) / 2)) }` |
 | section rhythm 48 / 70 / 96 | `--section-y` and every `--space-section-*` |
 | column gap 16 / 24 / 32 | `--grid-gap` |
 | columns 4 / 8 / 12 | `.grid`, switching at 768 and 1200 |
-| nav 16 / 20·32 / 20 | `.site-header` in `SiteHeader.astro` |
+| nav 16 / 20·32 / 20, 100 tall | `.site-header` in `SiteHeader.astro`, `--header-height: 100px` |
+| nav sticky, z 10, grab | `position: sticky; top: 0; z-index: var(--layer-nav)` (10), `cursor: grab` |
+| spring 0.4 / 0.2 / 0 | `--ease-spring`, `--duration-spring` |
+| section relative, isolated | global rule: `width: 100%; isolation: isolate; scroll-margin-top` |
+| page scroll flow | `BaseLayout.astro` script → `data-scroll-index`, `main[data-scroll-flow]` |
 | desktop breakpoint 1200 | `--breakpoint-xl: 1200px` |
 
 Notes that are easy to get wrong:
 
-- **max-width is 1200 plus the gutters, not a flat 1200.** `box-sizing:
-  border-box` is global, so a flat 1200 would make the *content* box 1104. The
-  spec's 1200 is the content box.
+- **The section is full width; the 1200 box is carved by padding.** The
+  gutter is `max(gutter, (100% − 1200) / 2)`, so the section background spans
+  the viewport while content stays 1200 and centred. A `max-width` on the
+  section would stop its background short of the edges.
 - **One rule enforces the rhythm.** Every top-level section gets
   `padding-block: var(--section-y)`, `margin-block: 0`, and an inner `.wrap`
   gets no vertical padding so the two never stack. It uses `!important`
@@ -207,6 +311,9 @@ Notes that are easy to get wrong:
 | 12-column switch | 1024 | **1200** |
 | nav padding | fluid 16→32, no bottom | **16 / 20·32 / 20** |
 | sections with id + aria | 0 of 113 | **all** |
+| nav height | 110 / 118 / 118 | **100 everywhere** |
+| nav z-index | 50 | **10** |
+| content heading skips · unnamed fields · unlabelled videos | 5 · 4 · 74 | **0 · 0 · 0** |
 
 A stray `.wrap` rule (68px gutter at ≥1280) was overriding the shell and
 squeezing content to 1160; removed. I had moved that rule from 1200 to 1280 on
@@ -223,8 +330,10 @@ Rendered pages, 22 routes, at 375, 768 and 1440:
 | gutter · gap · columns | 16 · 16 · 4 | 32 · 24 · 8 | 48 · 32 · 12 |
 | horizontal overflow | none | none | none |
 
-Section labels, rendered HTML: **159 of 159 sections**, 0 duplicate IDs,
-0 broken references.
+Section labels, rendered HTML: **162 of 162 sections**, 0 duplicate IDs,
+0 broken references. Content: 0 heading skips, 0 unnamed controls or fields,
+0 unlabelled videos, 0 images without `alt`, one `h1` per page, scroll flow on
+22 of 22. Blog post: title, meta and body share one left edge (360 at 1440).
 
 **Measuring note:** the measuring iframe needs `border: 0`. The site's
 `* { box-sizing: border-box }` applies to it, so a 768px iframe with its default

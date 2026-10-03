@@ -530,6 +530,12 @@
   --easing-accelerate: var(--easing-in);
   --easing-decelerate: var(--easing-out);
   --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Framer spring, time-based: 0.4s, bounce 0.2 (damping ratio 0.8), delay 0.
+     CSS has no spring timing function, so this samples the damped-spring curve
+     into linear(): 1.5% overshoot at 58% of the duration, settled by the end.
+     Pair with --duration-spring — the curve is only correct at 400ms. */
+  --ease-spring: linear(0, 0.0544, 0.1785, 0.3294, 0.4802, 0.6160, 0.7300, 0.8204, 0.8888, 0.9381, 0.9717, 0.9933, 1.0061, 1.0126, 1.0150, 1.0148, 1.0133, 1.0111, 1.0088, 1.0066, 1.0047, 1.0032, 1.0021, 1.0012, 1);
+  --duration-spring: 400ms;
   --easing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --easing-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --easing-editorial: cubic-bezier(0.16, 1, 0.3, 1);
@@ -586,6 +592,7 @@
   --layer-toast: 120;
   --layer-tooltip: 130;
   --layer-overlay: 140;
+  --layer-nav: 10;            /* sticky top nav — layout-shell.md */
   --layer-cursor: 9999;
   /* The skip link must sit above every page chrome element, because it is the
      first thing a keyboard user reaches. It was `var(--z-skip-link, 9999)` —
@@ -614,7 +621,11 @@
   --shell-gutter: 16px;
   /* Column gap — layout guides: 16 mobile (4 cols) / 24 tablet (8) / 32 desktop (12). */
   --grid-gap: 16px;
-  --nav-height: 4.875rem;
+  /* Sticky header: 100px total on every breakpoint (layout-shell.md).
+     --header-height is the whole box; --nav-height is the bar inside it, i.e.
+     100 minus the header's vertical padding (16+16 mobile, 20+20 tablet+). */
+  --header-height: 100px;
+  --nav-height: calc(var(--header-height) - 32px);
   --control-size: 44px;
   --pillar-thumb: 88px;
   --pillar-thumb-sm: 62px;
@@ -1106,9 +1117,13 @@ a[href^='tel:']:not(.no-external-icon)::after {
  * Gutters per breakpoint: 16 mobile · 32 tablet · 48 desktop.  */
 .wrap {
   width: 100%;
-  max-width: calc(1200px + 2 * var(--shell-gutter));
-  margin-inline: auto;
-  padding-inline: var(--shell-gutter);
+  /* The SECTION is full width (spec: width 100%, relative). The 1200 content
+     box is carved out of it by padding: at least the gutter, or whatever is
+     left over beyond 1200 split evenly. 1440 -> 120 each side, 768 -> 32.
+     This replaces a max-width cap, which made the section itself 1296 wide
+     rather than full bleed. Content stays exactly 1200 and centred. */
+  padding-inline: max(var(--shell-gutter), calc((100% - 1200px) / 2));
+  margin-inline: auto;   /* keeps any .wrap that caps itself narrower centred */
 }
 /* Layout shell steps — layout-shell.md. The gutter and the section's vertical
  * rhythm are the two things the spec sets per breakpoint, so they step together
@@ -1121,6 +1136,7 @@ a[href^='tel:']:not(.no-external-icon)::after {
 @media (min-width: 768px) {
   :root {
     --shell-gutter: 32px; --grid-gap: 24px;
+    --nav-height: calc(var(--header-height) - 40px);
     --space-section-xs: 70px; --space-section-sm: 70px; --space-section-md: 70px;
     --space-section-lg: 70px; --space-section-xl: 70px;
   }
@@ -1196,6 +1212,13 @@ a[href^='tel:']:not(.no-external-icon)::after {
 section:not(section section):not(.global-final-cta) {
   padding-block: var(--section-y) !important;
   margin-block: 0 !important;
+  width: 100%;
+  /* Own stacking context: section children use z-indexes up to 100 (popovers,
+     cards, the tag launcher), which would otherwise paint OVER a z-index-10
+     sticky nav as they scroll under it. Isolation keeps them inside. */
+  isolation: isolate;
+  /* Scroll index: an anchor jump lands below the 100px sticky header. */
+  scroll-margin-top: var(--header-height);
 }
 section:not(section section) > .wrap { padding-block: 0 !important; }
 
@@ -1381,4 +1404,4 @@ main:focus { outline: none; }
 /* Same offset the in-page anchors use (commit eaad7f68), so a skip lands below
    the sticky header rather than under it. Harmless where main already starts
    with its own top spacing. */
-main[id] { scroll-margin-top: calc(var(--nav-height) + var(--gap-lg)); }
+main[id] { scroll-margin-top: calc(var(--header-height) + var(--gap-lg)); }

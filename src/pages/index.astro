@@ -132,7 +132,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 >
   <!-- HERO -->
   <section class="hero" id="hero" aria-labelledby="hero-title">
-    <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/more/home/home-poster.webp"
+    <video aria-hidden="true" class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/more/home/home-poster.webp"
       src="/assets/more/home/home.mp4"></video>
     <div class="hero-overlay"></div>
 
@@ -193,7 +193,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
       {workItems.map((w) => (
         <li data-reveal>
           <a href={`/work/${w.slug}`}>
-            <video muted loop playsinline preload="none" data-src={w.video} poster={posterFor(w.video)}></video>
+            <video aria-hidden="true" muted loop playsinline preload="none" data-src={w.video} poster={posterFor(w.video)}></video>
             <p class="work-client">{w.client} — {w.category}</p>
             <h3>{w.title}</h3>
           </a>
@@ -240,9 +240,9 @@ import ServiceTagField from '../components/ServiceTagField.astro';
        the hero end one header-height below the fold - pushing both hero CTAs
        off the first screen (measured: buttons at 921px in an 891px viewport).
        Subtracting the header's own flow height is what makes "full screen"
-       actually mean the screen. --nav-height + --gap-4 is the header's padding
+       actually mean the screen. --header-height is the whole sticky header (100px), so it padding
        box; --safe-top is added to it under viewport-fit=cover. */
-    min-height: calc(100svh - var(--nav-height) - var(--gap-4) - var(--safe-top));
+    min-height: calc(100svh - var(--header-height) - var(--safe-top));
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -369,7 +369,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   .services {
     padding-block: var(--space-section-xl);
     border-top: var(--stroke-thin) solid var(--line);
-    scroll-margin-top: calc(var(--nav-height) + var(--gap-lg));
+    scroll-margin-top: calc(var(--header-height) + var(--gap-lg));
   }
 
   .services h2 {

@@ -472,22 +472,22 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
         <div class="timeline-visual">
           <div class="timeline-node">
             <span class="node-bullet"></span>
-            <h4>REQUEST</h4>
+            <h3>REQUEST</h3>
           </div>
           <div class="timeline-line"></div>
           <div class="timeline-node">
             <span class="node-bullet"></span>
-            <h4>UNDERSTAND</h4>
+            <h3>UNDERSTAND</h3>
           </div>
           <div class="timeline-line"></div>
           <div class="timeline-node">
             <span class="node-bullet"></span>
-            <h4>CREATE</h4>
+            <h3>CREATE</h3>
           </div>
           <div class="timeline-line"></div>
           <div class="timeline-node">
             <span class="node-bullet"></span>
-            <h4>DELIVER / REVIEW</h4>
+            <h3>DELIVER / REVIEW</h3>
           </div>
         </div>
       </div>
@@ -926,7 +926,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
             <!-- Onboarding Step 2: First Request -->
             <div class="ob-step" data-ob-step="2">
               <p class="ob-question">What's your first request?</p>
-              <textarea class="ob-textarea" id="ob-first-request" placeholder="Describe the request in detail (e.g. Design a high-converting pricing page for our SaaS software)."></textarea>
+              <textarea class="ob-textarea" id="ob-first-request" aria-label="Your first request" placeholder="Describe the request in detail (e.g. Design a high-converting pricing page for our SaaS software)."></textarea>
               <button class="btn btn-solid w-full ob-next-btn">Next Step</button>
             </div>
 
@@ -1739,7 +1739,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     border-radius: var(--r-full);
   }
 
-  .timeline-node h4 {
+  .timeline-node h3 {
     font-family: var(--font-mono);
     font-size: var(--fluid-caption);
     letter-spacing: var(--tracking-label);

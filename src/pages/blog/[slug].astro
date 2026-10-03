@@ -206,7 +206,7 @@ const shareLinks = [
       <h2 id="article-title">Get insights like this in your inbox</h2>
       <p>Design, product, and digital strategy. No spam, just thoughtful content.</p>
       <form class="nl-form" method="POST" action="/api/subscribe">
-        <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" class="nl-input" />
+        <input type="email" name="email" aria-label="Email address" placeholder="you@company.com" required autocomplete="email" class="nl-input" />
         <button type="submit" class="btn btn-solid">Subscribe</button>
       </form>
     </aside>
@@ -246,7 +246,7 @@ const shareLinks = [
                 {cCover && (
                   <div class="related-case-visual">
                     {cCover.endsWith('.mp4') || cCover.endsWith('.webm')
-                      ? <video data-src={cCover} poster={posterFor(cCover)} muted loop playsinline preload="none"></video>
+                      ? <video aria-hidden="true" data-src={cCover} poster={posterFor(cCover)} muted loop playsinline preload="none"></video>
                       : <img src={cCover} alt="" loading="lazy" />}
                   </div>
                 )}
@@ -280,7 +280,10 @@ const shareLinks = [
     display: block;
     object-fit: cover;
   }
-  .article-hero-content { padding-top: var(--gap-9); max-width: 780px; }
+  /* Full-width section, 720px reading column carved out by padding — the same
+     column as .article below, so title, meta and body share ONE left edge.
+     (Was max-width 780 here and 720 there: two edges, 30px apart.) */
+  .article-hero-content { padding-top: var(--gap-9); padding-inline: max(var(--shell-gutter), calc((100% - 720px) / 2)); }
   .article-hero-content.no-cover { padding-top: var(--space-page-head); }
   .article-hero-top {
     display: flex;
@@ -301,7 +304,7 @@ const shareLinks = [
   .meta-author { font-size: var(--fluid-body-sm); font-weight: var(--font-weight-medium); color: var(--fg); }
   .meta-role { font-size: var(--t-micro); color: var(--fg-muted); }
 
-  .article { padding-top: var(--gap-10); padding-bottom: var(--space-section-xl); max-width: 720px; }
+  .article { padding-top: var(--gap-10); padding-bottom: var(--space-section-xl); padding-inline: max(var(--shell-gutter), calc((100% - 720px) / 2)); }
 
   .article-body { max-width: 72ch; }
   .article-body h2 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); margin-top: var(--gap-12); margin-bottom: var(--gap-4); color: var(--fg); border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-7); line-height: var(--lh-tight); }

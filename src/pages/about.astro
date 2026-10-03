@@ -202,7 +202,7 @@ import TeamGrid from '../components/TeamGrid.astro';
          footage. -->
     <div class="wrap about-hero-media" data-reveal>
       <div class="about-hero-frame">
-        <video autoplay muted loop playsinline
+        <video aria-hidden="true" autoplay muted loop playsinline
           src="/assets/more/about/about-message.mp4"
           poster="/assets/about/about-section.jpg"></video>
         <p class="about-hero-statement is-lead">{heroText}</p>
@@ -246,7 +246,8 @@ import TeamGrid from '../components/TeamGrid.astro';
   {/* TRUST & RECOGNITION — removed for now (2026-09-23, user request). */}
 
   <!-- VALUES -->
-  <section class="wrap values" data-scroll="rise" id="values" aria-label="Our values">
+  <section class="wrap values" data-scroll="rise" id="values" aria-labelledby="values-title">
+    <h2 class="sr-only" id="values-title">Our values</h2>
     
     <p class="values-lede" data-reveal>
       Creating projects at the nexus of design and technology, bringing the future into the

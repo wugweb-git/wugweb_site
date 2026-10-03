@@ -400,10 +400,11 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
        nav. `--site-header-h` is measured once at runtime; the fallback is the
        header's current height. */
     min-height: calc(100vh - var(--site-header-h, 6.125rem));
-    padding: var(--gap-6);
+    padding: var(--gap-6) max(var(--shell-gutter), calc((100% - 1200px) / 2));
     display: flex;
   }
-  @media (min-width: 1024px) { .process-map-section { padding: var(--gap-8); } }
+  /* Full-bleed stage, content still capped at 1200 like every section. */
+  @media (min-width: 1024px) { .process-map-section { padding: var(--gap-8) max(var(--shell-gutter), calc((100% - 1200px) / 2)); } }
 
   /* ---- the block ---- */
   .pm-panel {
