@@ -56,9 +56,13 @@ export const postsListQuery = `
 export const postBySlugQuery = `
   *[_type == "post" && slug.current == $slug && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
     _id, _updatedAt,
-    title, excerpt, coverImage, coverPath, body, publishedAt, tags, category, readingTime,
+    title, excerpt, coverImage, coverPath, publishedAt, tags, category, readingTime, language, syndicatedTo,
     seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, noIndex, canonicalUrl,
-    "author": author->{ name, photo, role, bio, socialLinks }
+    // internalLink marks carry only a _ref unless dereferenced here — without
+    // this every internal link in a post body rendered as href="#".
+    body[]{ ..., markDefs[]{ ..., _type == "internalLink" => { "reference": reference->{ _type, slug, pageId } } } },
+    "author": author->{ name, photo, photoPath, role, bio, socialLinks },
+    "relatedPosts": relatedPosts[]->{ title, "slug": slug.current, excerpt, coverPath, coverImage, publishedAt, category, readingTime }
   }
 `;
 

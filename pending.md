@@ -1392,3 +1392,22 @@ declarations, labelling rules, implementation map, history, verification.
 - `layout-shell.md` updated, including the CMS page/section/component field
   map from `docs/schema-template-section-component-level.md` (still a
   proposal — no schema deployed).
+
+### 1z. Blog post template rebuilt to the case-study layout — *2026-10-03*
+
+- **Order and widths match `/work/[slug]`**: title block (h1, excerpt, tags,
+  meta row: author · published · updated · reading time · category) at the
+  1200 content width → cover image **below** it at 1200 → 720 reading column
+  → related sections at 1200. At 1440: h1 120+1200, cover 120+1200, body 360+720.
+- **Post fields now used**: `relatedPosts` (set on all 100 posts, never
+  rendered before; editor picks lead, then same category, then latest),
+  `category`, `language` (`lang` on the article), `syndicatedTo`, author
+  `photoPath` and `socialLinks`. All 14 body block types were already rendered.
+- **Latent bug fixed**: `internalLink` marks were never dereferenced in the
+  query, so every internal link in a body would render `href="#"`. No post
+  uses one yet.
+- All 100 posts render 200 with the new template.
+- **Hero poster: blocked on an asset.** `home.mp4` is **800×600** — every copy
+  in the repo, including `assets/website/home/Home.mp4`. The 1280 poster is
+  already an upscale; a sharp full-bleed hero needs a higher-resolution source
+  video.

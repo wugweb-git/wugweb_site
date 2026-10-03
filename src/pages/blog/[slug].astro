@@ -22,7 +22,10 @@ const accent = 'var(--color-accent-primary)';
 
 const readTime = post.readingTime ? `${post.readingTime} min read` : '';
 const authorName = post.author?.name || '';
-const authorPhoto = post.author?.photo ? urlFor(post.author.photo).width(120).height(120).url() : '';
+const authorPhoto = post.author?.photoPath
+  ? assetUrl(post.author.photoPath)
+  : post.author?.photo ? urlFor(post.author.photo).width(120).height(120).url() : '';
+const authorLinks = (post.author?.socialLinks || []).filter((l: any) => l?.url);
 const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
 const updatedAt = post._updatedAt ? new Date(post._updatedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
 const isUpdated = updatedAt && updatedAt !== pubDate;
@@ -112,6 +115,22 @@ const idx = sorted.findIndex((p: any) => p.slug === slug);
 const prevPost = idx > 0 ? sorted[idx - 1] : null;
 const nextPost = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
 
+// Related posts: the editor's picks (post.relatedPosts) first, then the same
+// category, then the latest — three cards, never the post itself.
+const coverFor = (p: any) => p?.coverPath
+  ? (p.coverPath.startsWith('/') || p.coverPath.startsWith('http') ? p.coverPath : `/${p.coverPath}`)
+  : (p?.coverImage ? urlFor(p.coverImage).width(800).height(500).url() : '');
+const relatedPosts: any[] = [];
+const seenRelated = new Set([slug]);
+for (const p of [
+  ...(post.relatedPosts || []),
+  ...allPosts.filter((p: any) => post.category && p.category === post.category),
+  ...allPosts,
+]) {
+  if (relatedPosts.length >= 3) break;
+  if (p?.slug && !seenRelated.has(p.slug)) { seenRelated.add(p.slug); relatedPosts.push(p); }
+}
+
 const shareUrl = new URL(`/blog/${slug}`, Astro.site || 'https://wugweb.com').toString();
 const shareText = encodeURIComponent(post.title || '');
 const shareLinks = [
@@ -125,33 +144,41 @@ const shareLinks = [
 <BaseLayout title={`${post.title} | Wugweb Insights`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl} ogTitle={post.ogTitle} ogDescription={post.ogDescription} noIndex={post.noIndex} canonicalPath={post.canonicalUrl} jsonLd={[blogPostingNode]}>
   <div id="reading-progress" class="reading-progress-bar" style={`--bar-accent: ${accent}`} aria-hidden="true"></div>
 
+  {/* Same order and widths as a case study: title block at the 1200 content
+      width, the cover below it at 1200, then a 720 reading column. */}
+  <section class="article-hero" id="article-hero" aria-labelledby="article-hero-title" style={`--accent: ${accent}`}>
+    <div class="wrap" lang={post.language || undefined}>
+      <h1 id="article-hero-title" data-reveal>{post.title}</h1>
+      {post.excerpt && <p class="article-intro" data-reveal>{post.excerpt}</p>}
+      {post.tags?.length > 0 && (
+        <ul class="article-tags" aria-label="Tags" data-reveal>
+          {post.tags.map((t: string) => <li class="u-tag">{t}</li>)}
+        </ul>
+      )}
+      <dl class="article-meta" data-reveal>
+        {authorName && (
+          <div>
+            <dt class="meta-label">Author</dt>
+            <dd class="meta-author">{authorPhoto && <img src={authorPhoto} alt="" class="meta-avatar" />}{authorName}</dd>
+          </div>
+        )}
+        {pubDate && <div><dt class="meta-label">Published</dt><dd><time datetime={isoDate(post.publishedAt)}>{pubDate}</time></dd></div>}
+        {isUpdated && <div><dt class="meta-label">Updated</dt><dd><time datetime={isoDate(post._updatedAt)}>{updatedAt}</time></dd></div>}
+        {readTime && <div><dt class="meta-label">Reading time</dt><dd>{readTime}</dd></div>}
+        {post.category && <div><dt class="meta-label">Category</dt><dd>{post.category}</dd></div>}
+      </dl>
+    </div>
+  </section>
+
   {coverImageUrl && (
-    <section class="wrap article-hero-media-wrap" data-reveal id="article-hero-media-wrap" aria-label="Article hero media wrap">
-      <figure class="article-hero-media">
-        <img src={coverImageUrl} alt={`Cover image for ${post.title}`} loading="eager" decoding="async" />
+    <section class="wrap article-cover" id="article-cover" aria-label="Cover image" data-reveal>
+      <figure class="article-cover-media">
+        <img src={coverImageUrl} alt={`Cover image for ${post.title}`} loading="eager" fetchpriority="high" decoding="async" />
       </figure>
     </section>
   )}
 
-  <section class:list={['wrap article-hero-content', { 'no-cover': !coverImageUrl }]} style={`--accent: ${accent}`} id="section-2" aria-labelledby="section-2-title">
-    <div class="article-hero-top" data-reveal>
-      {pubDate && <span>{pubDate}</span>}
-      {readTime && <span>{readTime}</span>}
-      {isUpdated && <span>Updated {updatedAt}</span>}
-    </div>
-    <h1 data-reveal id="section-2-title">{post.title}</h1>
-    {post.excerpt && <p class="article-intro" data-reveal>{post.excerpt}</p>}
-
-    <div class="article-meta" data-reveal>
-      {authorPhoto && <img src={authorPhoto} alt="" class="meta-avatar" />}
-      <div class="meta-text">
-        {authorName && <span class="meta-author">{authorName}</span>}
-        {post.author?.role && <span class="meta-role">{post.author.role}</span>}
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap article" style={`--accent: ${accent}`} id="article" aria-labelledby="article-title">
+  <section class="wrap article" style={`--accent: ${accent}`} id="article" aria-label="Article" lang={post.language || undefined}>
     {toc.length > 0 && (
       <nav class="article-toc" aria-label="Table of contents">
         <p class="toc-title">Contents</p>
@@ -173,26 +200,27 @@ const shareLinks = [
       </div>
     )}
 
+    {post.syndicatedTo?.length > 0 && (
+      <p class="article-syndicated">Also published on {post.syndicatedTo.join(', ')}.</p>
+    )}
+
     {post.author?.bio && (
-      <aside class="article-author">
+      <aside class="article-author" aria-label="About the author">
         {authorPhoto && <img src={authorPhoto} alt={authorName} class="author-photo" />}
         <div class="author-info">
           {authorName && <p class="author-name">{authorName}</p>}
           {post.author.role && <p class="author-role">{post.author.role}</p>}
           <p class="author-bio">{post.author.bio}</p>
+          {authorLinks.length > 0 && (
+            <ul class="author-links" aria-label={`${authorName} elsewhere`}>
+              {authorLinks.map((l: any) => <li><a href={l.url} target="_blank" rel="noopener noreferrer">{l.platform || 'Profile'}</a></li>)}
+            </ul>
+          )}
         </div>
       </aside>
     )}
 
-    {post.tags && post.tags.length > 0 && (
-      <div class="article-tags">
-        {post.tags.map((t: string) => (
-          <span class="tag">{t}</span>
-        ))}
-      </div>
-    )}
-
-    <div class="article-share">
+    <div class="article-share" role="group" aria-label="Share this article">
       <span class="share-label">Share</span>
       <div class="share-links">
         {shareLinks.map((s) => (
@@ -201,9 +229,8 @@ const shareLinks = [
       </div>
     </div>
 
-    <aside class="article-newsletter">
-      
-      <h2 id="article-title">Get insights like this in your inbox</h2>
+    <aside class="article-newsletter" aria-labelledby="newsletter-title">
+      <h2 id="newsletter-title">Get insights like this in your inbox</h2>
       <p>Design, product, and digital strategy. No spam, just thoughtful content.</p>
       <form class="nl-form" method="POST" action="/api/subscribe">
         <input type="email" name="email" aria-label="Email address" placeholder="you@company.com" required autocomplete="email" class="nl-input" />
@@ -212,7 +239,7 @@ const shareLinks = [
     </aside>
 
     {(prevPost || nextPost) && (
-      <nav class="article-prevnext" aria-label="More articles">
+      <nav class="article-prevnext" aria-label="Previous and next articles">
         {prevPost ? (
           <a href={`/blog/${prevPost.slug}`} class="pn-link pn-prev">
             <span class="pn-dir">Previous</span>
@@ -227,84 +254,92 @@ const shareLinks = [
         ) : <span class="pn-link pn-placeholder"></span>}
       </nav>
     )}
+  </section>
 
-    {featuredCases.length > 0 && (
-      <section class="article-related" id="related-cases" aria-labelledby="related-cases-title">
-        <div class="related-cases-head">
-          <h2 id="related-cases-title">Featured Case Studies</h2>
-          <a href="/work" class="btn btn-ghost">View all work</a>
-        </div>
-        <div class="related-cases-grid">
-          {featuredCases.map((c: any) => {
-            const assetUrl = (path: string) => {
-              if (!path) return '';
-              return path.startsWith('/') || path.startsWith('http') ? path : `/${path}`;
-            };
-            const cCover = c.coverPath ? assetUrl(c.coverPath) : (c.thumbnailPath ? assetUrl(c.thumbnailPath) : '');
-            return (
-              <a href={`/work/${c.slug || ''}`} class="related-case-card">
+  {relatedPosts.length > 0 && (
+    <section class="wrap article-related" id="related-posts" aria-labelledby="related-posts-title">
+      <div class="related-head">
+        <h2 id="related-posts-title">More insights</h2>
+        <a href="/blog" class="btn btn-ghost">All insights</a>
+      </div>
+      <ul class="related-grid is-posts">
+        {relatedPosts.map((p: any) => {
+          const pCover = coverFor(p);
+          return (
+            <li>
+              <a href={`/blog/${p.slug}`} class="related-card">
+                <div class="related-visual">
+                  {pCover ? <img src={pCover} alt="" loading="lazy" /> : <span class="related-visual-empty" aria-hidden="true"></span>}
+                </div>
+                <div class="related-content">
+                  {p.category && <span class="related-kicker">{p.category}</span>}
+                  <h3>{p.title}</h3>
+                  {p.readingTime && <span class="related-sub">{p.readingTime} min read</span>}
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )}
+
+  {featuredCases.length > 0 && (
+    <section class="wrap article-related" id="related-cases" aria-labelledby="related-cases-title">
+      <div class="related-head">
+        <h2 id="related-cases-title">Featured case studies</h2>
+        <a href="/work" class="btn btn-ghost">View all work</a>
+      </div>
+      <ul class="related-grid">
+        {featuredCases.map((c: any) => {
+          const toPath = (path: string) => (!path ? '' : path.startsWith('/') || path.startsWith('http') ? path : `/${path}`);
+          const cCover = c.coverPath ? toPath(c.coverPath) : (c.thumbnailPath ? toPath(c.thumbnailPath) : '');
+          return (
+            <li>
+              <a href={`/work/${c.slug || ''}`} class="related-card">
                 {cCover && (
-                  <div class="related-case-visual">
+                  <div class="related-visual">
                     {cCover.endsWith('.mp4') || cCover.endsWith('.webm')
                       ? <video aria-hidden="true" data-src={cCover} poster={posterFor(cCover)} muted loop playsinline preload="none"></video>
                       : <img src={cCover} alt="" loading="lazy" />}
                   </div>
                 )}
-                <div class="related-case-content">
-                  <span class="related-case-client">{c.client}</span>
+                <div class="related-content">
+                  <span class="related-kicker">{c.client}</span>
                   <h3>{c.title}</h3>
-                  {c.disciplines?.length > 0 && <span class="related-case-discipline">{c.disciplines.join(', ')}</span>}
+                  {c.disciplines?.length > 0 && <span class="related-sub">{c.disciplines.join(', ')}</span>}
                 </div>
               </a>
-            );
-          })}
-        </div>
-      </section>
-    )}
-  </section>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )}
 </BaseLayout>
 
 <style>
-  /* ── Single column: cover image on top, text hero below. No
-     side-by-side split - the reference layout doesn't actually hold a
-     persistent two-column split once you scroll past the very top. ── */
-  .article-hero-media-wrap { padding-top: var(--space-page-head); }
-  .article-hero-media {
-    margin: 0;
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-  }
-  .article-hero-media img {
-    width: 100%;
-    height: clamp(280px, 42vw, 560px);
-    display: block;
-    object-fit: cover;
-  }
-  /* Full-width section, 720px reading column carved out by padding — the same
-     column as .article below, so title, meta and body share ONE left edge.
-     (Was max-width 780 here and 720 there: two edges, 30px apart.) */
-  .article-hero-content { padding-top: var(--gap-9); padding-inline: max(var(--shell-gutter), calc((100% - 720px) / 2)); }
-  .article-hero-content.no-cover { padding-top: var(--space-page-head); }
-  .article-hero-top {
-    display: flex;
-    align-items: center;
-    gap: var(--gap-3);
-    font-size: var(--t-micro);
-    color: var(--fg-muted);
-  }
-  .article-hero-top span:not(:last-child)::after {
-    content: ''; display: inline-block; width: 1px; height: 0.85em; background: var(--line-strong); margin-left: var(--gap-3); vertical-align: -0.1em;
-  }
-  .article-hero-content h1 { font-size: var(--fluid-h1); margin-top: var(--gap-4); line-height: var(--core-line-height-tight); color: var(--fg); max-width: 20ch; }
-  .article-intro { font-size: var(--t-lead); line-height: var(--core-line-height-relaxed); margin-top: var(--gap-5); color: var(--fg-muted); max-width: 60ch; }
+  /* Hero — title block at the 1200 content width, as on a case study. */
+  .article-hero h1 { font-size: var(--t-display); font-weight: var(--font-weight-extrabold); line-height: var(--core-line-height-tight); color: var(--fg); max-width: 22ch; overflow-wrap: break-word; }
+  .article-intro { font-size: var(--fluid-h5); line-height: 1.4; margin-top: var(--gap-4); color: var(--fg-muted); max-width: 56ch; }
+  .article-tags { list-style: none; margin: var(--gap-6) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
+  .article-meta { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-4) var(--gap-8); margin: var(--gap-10) 0 0; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-6); }
+  @media (min-width: 768px) { .article-meta { grid-template-columns: repeat(5, max-content); } }
+  .article-meta > div { display: flex; flex-direction: column; gap: var(--gap-1); }
+  .article-meta dd { margin: 0; font-size: var(--fluid-body-md); color: var(--fg); font-weight: var(--font-weight-medium); }
+  .meta-label { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-muted); }
+  .meta-author { display: flex; align-items: center; gap: var(--gap-2); }
+  .meta-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 
-  .article-meta { display: flex; align-items: center; gap: var(--gap-3); margin-top: var(--gap-7); }
-  .meta-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-  .meta-text { display: flex; flex-direction: column; gap: 2px; }
-  .meta-author { font-size: var(--fluid-body-sm); font-weight: var(--font-weight-medium); color: var(--fg); }
-  .meta-role { font-size: var(--t-micro); color: var(--fg-muted); }
+  /* Cover — below the title, full content width. */
+  .article-cover-media { margin: 0; border-radius: var(--radius-xl); overflow: hidden; }
+  .article-cover-media img { width: 100%; height: auto; max-height: 720px; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
 
-  .article { padding-top: var(--gap-10); padding-bottom: var(--space-section-xl); padding-inline: max(var(--shell-gutter), calc((100% - 720px) / 2)); }
+  /* Reading column: full-width section, 720 carved by padding. */
+  .article { padding-inline: max(var(--shell-gutter), calc((100% - 720px) / 2)); }
+  .article-syndicated { margin-top: var(--gap-8); font-size: var(--fluid-body-sm); color: var(--fg-muted); }
+  .author-links { list-style: none; margin: var(--gap-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-4); }
+  .author-links a { font-size: var(--fluid-body-sm); color: var(--fg); }
 
   .article-body { max-width: 72ch; }
   .article-body h2 { font-size: var(--t-h4); font-weight: var(--font-weight-semibold); margin-top: var(--gap-12); margin-bottom: var(--gap-4); color: var(--fg); border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-7); line-height: var(--lh-tight); }
@@ -333,8 +368,6 @@ const shareLinks = [
   .author-role { font-size: var(--t-sm); color: var(--fg-muted); }
   .author-bio { font-size: var(--fluid-body-sm); color: var(--fg-muted); margin-top: var(--gap-2); line-height: var(--lh-body); }
 
-  .article-tags { display: flex; flex-wrap: wrap; gap: var(--gap-2); margin-top: var(--gap-8); }
-  .tag { font-family: var(--font-mono); font-size: var(--t-micro); padding: var(--gap-1) var(--gap-3); border: var(--stroke-thin) solid var(--line); border-radius: var(--r-pill); color: var(--fg-muted); }
 
   /* ── TOC: light marginalia, not a boxed component ── */
   .article-toc { margin-bottom: var(--gap-9); }
@@ -368,20 +401,21 @@ const shareLinks = [
   .pn-title { color: var(--fg); font-weight: var(--font-weight-medium); font-size: var(--fluid-body-md); line-height: var(--core-line-height-normal); }
   .pn-placeholder { visibility: hidden; }
 
-  .article-related { margin-top: var(--gap-12); padding-top: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
-  .related-cases-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--gap-6); }
-  .related-cases-head h2 { font-size: var(--t-h3); margin: 0; color: var(--fg); }
-  .related-cases-grid { display: grid; gap: var(--gap-6); grid-template-columns: 1fr; }
-  @media (min-width: 640px) { .related-cases-grid { grid-template-columns: repeat(2, 1fr); } }
-  .related-case-card { text-decoration: none; display: flex; flex-direction: column; height: 100%; border-radius: var(--radius-xl); overflow: hidden; background: var(--color-surface-elevated); box-shadow: var(--shadow-sm); transition: box-shadow 0.3s ease, transform 0.3s ease; }
-  .related-case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .related-case-visual { width: 100%; height: 200px; overflow: hidden; position: relative; background: color-mix(in srgb, var(--neutral-10) 20%, transparent); }
-  .related-case-visual img, .related-case-visual video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-  .related-case-card:hover .related-case-visual img, .related-case-card:hover .related-case-visual video { transform: scale(1.04); }
-  .related-case-content { padding: var(--gap-5) var(--gap-6) var(--gap-6); display: flex; flex-direction: column; gap: var(--gap-2); position: relative; z-index: 1; }
-  .related-case-client { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
-  .related-case-card h3 { font-size: var(--t-h4); font-weight: var(--font-weight-bold); color: var(--fg); margin: 0; line-height: var(--core-line-height-tight); }
-  .related-case-discipline { font-size: var(--fluid-body-sm); color: var(--fg-muted); margin-top: var(--gap-1); }
+  /* Related — own sections at the 1200 content width. */
+  .related-head { display: flex; justify-content: space-between; align-items: center; gap: var(--gap-4); margin-bottom: var(--gap-6); }
+  .related-head h2 { font-size: var(--t-h3); margin: 0; color: var(--fg); }
+  .related-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--grid-gap); grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .related-grid { grid-template-columns: repeat(2, 1fr); } .related-grid.is-posts { grid-template-columns: repeat(3, 1fr); } }
+  .related-card { text-decoration: none; display: flex; flex-direction: column; height: 100%; border-radius: var(--radius-xl); overflow: hidden; background: var(--color-surface-elevated); box-shadow: var(--shadow-sm); transition: box-shadow var(--duration-normal) ease, transform var(--duration-normal) ease; }
+  .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .related-visual { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: color-mix(in srgb, var(--neutral-10) 20%, transparent); }
+  .related-visual img, .related-visual video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .related-visual-empty { position: absolute; inset: 0; background: radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--color-yellow) 18%, transparent), transparent 55%), linear-gradient(160deg, var(--color-surface-elevated) 0%, var(--color-surface-page) 100%); }
+  .related-card:hover .related-visual img, .related-card:hover .related-visual video { transform: scale(1.04); }
+  .related-content { padding: var(--gap-5) var(--gap-6) var(--gap-6); display: flex; flex-direction: column; gap: var(--gap-2); }
+  .related-kicker { font-family: var(--font-mono); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent, var(--fg-muted)); }
+  .related-card h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); color: var(--fg); margin: 0; line-height: var(--lh-h5); }
+  .related-sub { font-size: var(--fluid-body-sm); color: var(--fg-muted); }
 
   .reading-progress-bar {
     position: fixed;
