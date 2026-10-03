@@ -41,6 +41,10 @@ export default defineType({
           { title: 'Work', value: 'work' },
           { title: 'Blog', value: 'blog' },
           { title: 'Kits', value: 'kits' },
+          { title: '404 — Not found', value: '404' },
+          { title: 'Contact error', value: 'contact-error' },
+          { title: 'Offline', value: 'offline' },
+          { title: 'Thank you', value: 'thank-you' },
         ],
       },
       validation: (r) => r.required().custom(async (value: any, ctx: any) => {
