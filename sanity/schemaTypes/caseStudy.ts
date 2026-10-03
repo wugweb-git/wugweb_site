@@ -2,6 +2,18 @@ import { defineType, defineField } from 'sanity';
 import { ownerField } from './ownerField';
 import { R2AssetInput } from '../components/R2AssetInput';
 
+const uniqueSlugValidation = (rule: any) =>
+  rule.required().custom(async (slug: { current?: string } | undefined, context: any) => {
+    if (!slug?.current) return true;
+    const client = context.getClient({ apiVersion: '2026-01-01' });
+    const id = String(context.document?._id || '').replace(/^drafts\./, '');
+    const duplicateCount = await client.fetch(
+      'count(*[_type == "caseStudy" && slug.current == $slug && _id != $id && _id != $draftId])',
+      { slug: slug.current, id, draftId: `drafts.${id}` },
+    );
+    return duplicateCount === 0 || 'This case study slug is already used by another case study.';
+  });
+
 export default defineType({
   name: 'caseStudy',
   title: 'Case Study',
@@ -16,7 +28,6 @@ export default defineType({
     { name: 'relations', title: 'Relations' },
   ],
   fields: [
-    // ── Overview ──
     defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'overview' }),
     defineField({ name: 'subtitle', type: 'string', description: 'Short tagline shown on case study cards', group: 'overview' }),
     defineField({
@@ -172,8 +183,6 @@ export default defineType({
     defineField({ name: 'publishedAt', type: 'datetime', group: 'results' }),
     defineField({ name: 'featured', type: 'boolean', initialValue: false, description: 'Featured case studies appear first in listings', group: 'results' }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US'] }, initialValue: 'en-GB', group: 'overview' }),
-
-    // ── SEO ──
     defineField({ name: 'seoTitle', type: 'string', description: 'Overrides the <title> tag', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', description: 'Social sharing preview image', group: 'seo' }),
@@ -273,14 +282,10 @@ export default defineType({
       if (clientRef || subtitle) parts.push(clientRef || subtitle);
       if (industryRef || industry) parts.push(industryRef || industry);
       if (disciplines && disciplines.length) parts.push(disciplines.slice(0, 2).join(', '));
-      let health = '✅';
-      if (!media) health = '❌ Cover';
-      else if (!seoDesc) health = '⚠️ SEO';
-      return {
-        title: title || 'Untitled' + badge,
-        subtitle: parts.join(' · ') || health,
-        media,
-      };
+      let health = 'OK';
+      if (!media) health = 'Cover missing';
+      else if (!seoDesc) health = 'SEO metadata missing';
+      return { title: (title || 'Untitled') + badge, subtitle: parts.join(' · ') || health, media };
     },
   },
 });

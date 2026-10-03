@@ -10,7 +10,6 @@ import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs, set
 import type { Row } from '../lib/types';
 
 interface DocumentListPaneProps {
-  /** Sanity pane props — options carries our schemaType/tableKey. */
   id?: string;
   options?: Record<string, unknown>;
   child?: unknown;
@@ -22,11 +21,6 @@ interface DocumentListPaneProps {
   urlParams?: Record<string, string | undefined> | undefined;
 }
 
-/**
- * Custom document-list pane: renders the DataTable for a schema type
- * instead of Sanity's native list. Row click opens the editor pane via
- * pane-router intent navigation.
- */
 export function DocumentListPane(props: DocumentListPaneProps) {
   const { options } = props;
   const schemaType = typeof options?.schemaType === 'string' ? options.schemaType : undefined;
@@ -64,11 +58,7 @@ export function DocumentListPane(props: DocumentListPaneProps) {
   }, [load, reloadKey]);
 
   if (!config) {
-    return (
-      <Box padding={4}>
-        <Text muted>Unknown schema type: {schemaType}</Text>
-      </Box>
-    );
+    return <Box padding={4}><Text muted>Unknown schema type: {schemaType}</Text></Box>;
   }
 
   const openRow = (row: Row) => paneRouter.navigateIntent('edit', { id: row._id, type: config.type });
@@ -85,7 +75,6 @@ export function DocumentListPane(props: DocumentListPaneProps) {
         </Box>
         <ButtonNew onClick={newDoc} />
       </Flex>
-
       <DataTable
         rows={rows}
         columns={config.columns}
@@ -120,18 +109,7 @@ function ButtonNew({ onClick }: { onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: 6,
-        padding: '6px 12px',
-        borderRadius: 6,
-        border: '1px solid var(--card-border-color, #e1e3e6)',
-        background: 'var(--card-muted-bg-color, #f1f3f5)',
-        cursor: 'pointer',
-        fontSize: 13,
-        fontWeight: 600,
-      }}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 12px', borderRadius: 6, border: '1px solid var(--card-border-color, #e1e3e6)', background: 'var(--card-muted-bg-color, #f1f3f5)', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}
     >
       <AddIcon />
       New

@@ -1,6 +1,18 @@
 import { defineType, defineField } from 'sanity';
 import { R2AssetInput } from '../components/R2AssetInput';
 
+const uniquePageIdValidation = (rule: any) =>
+  rule.required().custom(async (pageId: string | undefined, context: any) => {
+    if (!pageId) return true;
+    const client = context.getClient({ apiVersion: '2026-01-01' });
+    const id = String(context.document?._id || '').replace(/^drafts\./, '');
+    const duplicateCount = await client.fetch(
+      'count(*[_type == "singletonPage" && pageId == $pageId && _id != $id && _id != $draftId])',
+      { pageId, id, draftId: `drafts.${id}` },
+    );
+    return duplicateCount === 0 || 'This page ID is already used by another Page document.';
+  });
+
 export default defineType({
   name: 'singletonPage',
   title: 'Page',
@@ -117,7 +129,7 @@ export default defineType({
         { name: 'title', type: 'string' },
         { name: 'text', type: 'text', rows: 3 },
         { name: 'image', type: 'image', options: { hotspot: true } },
-        { name: 'imagePath', type: 'string', description: 'R2/local path alternative to Sanity image' },
+        { name: 'imagePath', type: 'string', description: 'Legacy R2/local path alternative to Sanity image', deprecated: { reason: 'Legacy media path; prefer Sanity assets.' } },
       ]}],
     }),
 
@@ -206,14 +218,9 @@ export default defineType({
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
     defineField({ name: 'neonSyncedAt', type: 'datetime', readOnly: true, hidden: true }),
   ],
-  orderings: [
-    { name: 'pageIdAsc', title: 'Page ID', by: [{ field: 'pageId', direction: 'asc' }] },
-  ],
+  orderings: [{ name: 'pageIdAsc', title: 'Page ID', by: [{ field: 'pageId', direction: 'asc' }] }],
   preview: {
     select: { title: 'title', subtitle: 'pageId' },
-    prepare: ({ title, subtitle }: any) => ({
-      title: title || 'Untitled Page',
-      subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '',
-    }),
+    prepare: ({ title, subtitle }: any) => ({ title: title || 'Untitled Page', subtitle: subtitle ? String(subtitle).replace(/&/g, 'and') : '' }),
   },
 });
