@@ -283,7 +283,7 @@
   --space-section-sm: 2.5rem;
   --space-section-md: 3rem;
   --space-section-lg: 4rem;
-  --space-section-xl: 5rem;
+  --space-section-xl: 48px;  /* 70 tablet / 96 desktop — see the shell steps below */
   /* Clear space above a page title.
      Measured: our six pages ran 64→126px below the header, and the difference
      was only whether the page happened to carry an eyebrow — not a decision.
@@ -607,6 +607,11 @@
   /* Audit §3: one fluid inset for the nav and any shell-level gutter,
      replacing the old site's stepped 16/32/20 which reversed at desktop. */
   --shell-inset: clamp(1rem, 0.4rem + 1.7vw, 2rem);
+
+  /* Section gutter — the single horizontal inset for the whole page.
+     16 mobile / 32 tablet / 48 desktop, per layout-shell.md. Stepped rather
+     than clamped because the spec gives three discrete values, not a curve. */
+  --shell-gutter: 16px;
   --nav-height: 4.875rem;
   --control-size: 44px;
   --pillar-thumb: 88px;
@@ -1084,14 +1089,40 @@ a[href^='tel:']:not(.no-external-icon)::after {
    40px vs 68px past 1200px. Deriving .wrap directly from the same tokens
    SiteHeader.astro uses (not just matching numbers) makes that drift
    structurally impossible instead of re-fixing it by hand next redesign. */
+/* The layout shell — see kits_design_system/docs/tokens/layout-shell.md.
+ *
+ * THE SECTION OWNS THE GUTTER, THE CONTENT OWNS THE MAX-WIDTH. `.wrap` is the
+ * section, so it carries the only horizontal padding on the page. Nothing
+ * inside it should set a page gutter.
+ *
+ * max-width is 1200 PLUS the gutters, not 1200 flat. With border-box a flat
+ * 1200 would make the content area 1200 - 2x48 = 1104, and the spec's 1200 is
+ * the CONTENT box. Adding the gutters back makes the inner width exactly 1200
+ * at every step. The previous values — 80rem with a 44px gutter — gave 1192,
+ * which is why this was close enough to look right and still be wrong.
+ *
+ * Gutters per breakpoint: 16 mobile · 32 tablet · 48 desktop.  */
 .wrap {
-  max-width: 80rem;
+  width: 100%;
+  max-width: calc(1200px + 2 * var(--shell-gutter));
   margin-inline: auto;
-  padding-inline: calc(var(--shell-inset) + var(--gap-4));
+  padding-inline: var(--shell-gutter);
 }
+/* Layout shell steps — layout-shell.md. The gutter and the section's vertical
+ * rhythm are the two things the spec sets per breakpoint, so they step together
+ * here rather than being scattered across 89 padding-block declarations.
+ *
+ *   mobile   48px 16px     tablet   70px 32px     desktop  96px 48px
+ *
+ * --space-section-xl is the vertical half: it has 43 uses, more than every
+ * other section token combined, so it is the one that carries the rhythm. */
 @media (min-width: 768px) {
-  .wrap { padding-inline: calc(var(--gap-6) + var(--gap-5)); }
+  :root { --shell-gutter: 32px; --space-section-xl: 70px; }
 }
+@media (min-width: 1200px) {
+  :root { --shell-gutter: 48px; --space-section-xl: 96px; }
+}
+
 /* ─── Breakpoints ──────────────────────────────────────────────────────────
  *
  * CSS custom properties DO NOT work in media queries, so this cannot be a
@@ -1133,9 +1164,12 @@ a[href^='tel:']:not(.no-external-icon)::after {
  * alone had 13 uses and came from Bootstrap, which this project does not use.
  * ───────────────────────────────────────────────────────────────────────── */
 
-@media (min-width: 1280px) {
-  .wrap { padding-inline: calc(var(--gap-12) + var(--gap-5)); }
-}
+/* REMOVED: a second .wrap padding-inline of calc(--gap-12 + --gap-5) = 68px at
+   >=1280. It overrode the shell's 48px gutter and squeezed the content box to
+   1160 instead of 1200, which is how the shell looked applied but measured
+   wrong. This is also the rule I moved from 1200 to 1280 on 2026-09-29 for
+   matching no declared token — it was the layout-shell desktop step all along.
+   The gutter now steps once, in :root, and nothing else sets it. */
 
 /* Section tones. The old site builds depth by alternating four darks across
    sections (#050505 body, #000000, #191919, #2B2B2B); the new site painted
