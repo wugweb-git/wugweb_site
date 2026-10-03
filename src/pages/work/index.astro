@@ -97,13 +97,15 @@ const workItems = caseStudies.map((cs: any) => {
     </div>
   </section>
 
-  <section class="wrap work-filters" data-reveal id="work-filters" aria-label="Work filters">
+  <section class="wrap work-grid-section" id="work-grid-section" aria-label="Case studies">
+    {/* Filters are part of the content body, not a section of their own —
+        they live inside the grid they filter. role="toolbar" names them for
+        assistive tech now that they are no longer a labelled section. */}
+    <div class="work-filters" role="toolbar" aria-label="Filter case studies" data-reveal>
     {categories.map((c) => (
       <button class="filter-chip" data-category={c}>{c}</button>
     ))}
-  </section>
-
-  <section class="wrap work-grid-section" id="work-grid-section" aria-label="Case studies">
+    </div>
     <ul class="work-grid">
       {workItems.map((w) => (
         <li data-reveal data-categories={w.pillar}>
@@ -182,7 +184,7 @@ const workItems = caseStudies.map((cs: any) => {
     border-radius: var(--r-pill);
   }
 
-  .work-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-8); border-top: var(--stroke-thin) solid var(--line); }
+  .work-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; margin-bottom: var(--gap-8); } /* top space comes from the section now */
   .filter-chip {
     font-family: var(--font-mono);
     font-size: var(--t-micro);

@@ -133,14 +133,14 @@ const NAV: { slug: LegalSlug; label: string; href: string }[] = [
 
   .legal-hub-grid {
     display: grid;
-    gap: var(--space-section-md);
+    gap: var(--grid-gap);
   }
   @media (min-width: 1024px) {
     /* Nav column sized to its longest label ("Cookie Settings") plus
        breathing room, not a guessed fraction — content column takes the
        rest, up to whatever max-width the page's own .legal/.static-page
        content sets. */
-    .legal-hub-grid { grid-template-columns: 14rem 1fr; align-items: start; gap: var(--space-section-lg); }
+    .legal-hub-grid { grid-template-columns: 14rem 1fr; align-items: start; gap: var(--grid-gap); }
   }
 
   .legal-hub-nav {

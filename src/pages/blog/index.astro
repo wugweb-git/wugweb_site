@@ -123,13 +123,15 @@ function fmtDate(d?: string): string {
     </section>
   )}
 
-  <section class="wrap blog-filters" data-reveal id="blog-filters" aria-label="Blog filters">
+  <section class="wrap blog-grid-section" id="blog-grid-section" aria-label="All articles">
+    {/* Filters are part of the content body, not a section of their own —
+        they live inside the grid they filter. role="toolbar" names them for
+        assistive tech now that they are no longer a labelled section. */}
+    <div class="blog-filters" role="toolbar" aria-label="Filter articles" data-reveal>
     {categories.map((c) => (
       <button class="filter-chip" data-category={c}>{c}</button>
     ))}
-  </section>
-
-  <section class="wrap blog-grid-section" id="blog-grid-section" aria-label="All articles">
+    </div>
     <ul class="blog-grid">
       {restPosts.map((p: any, i: number) => (
         <li data-reveal data-reveal-delay={(Math.min(i % 6, 5) * 0.05).toFixed(2)} data-category={p.pillar}>
@@ -220,7 +222,7 @@ function fmtDate(d?: string): string {
   }
 
   /* ── Filters ── */
-  .blog-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; padding-block: var(--gap-6); border-top: var(--stroke-thin) solid var(--line); }
+  .blog-filters { display: flex; gap: var(--gap-2); flex-wrap: wrap; margin-bottom: var(--gap-8); } /* top space comes from the section now */
   .filter-chip { font-family: var(--font-mono); font-size: var(--t-sm); padding: var(--gap-2) var(--gap-4); border: 0; border-radius: var(--r-pill); background: transparent; color: var(--fg-muted); cursor: pointer; transition: border-color var(--duration-fast) var(--easing-out), color var(--duration-fast) var(--easing-out), background var(--duration-fast) var(--easing-out); }
   .filter-chip:hover { color: var(--fg); }
   .filter-chip.active { color: var(--fg); background: color-mix(in srgb, var(--neutral-0) 10%, transparent); }

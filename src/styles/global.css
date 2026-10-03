@@ -279,10 +279,10 @@
   --gap-xl: var(--gap-9);
 
   /* G-10: Responsive spacing (§3.6) */
-  --space-section-xs: 2rem;
-  --space-section-sm: 2.5rem;
-  --space-section-md: 3rem;
-  --space-section-lg: 4rem;
+  --space-section-xs: 48px;  /* one section rhythm: 48 / 70 / 96 */
+  --space-section-sm: 48px;  /* one section rhythm: 48 / 70 / 96 */
+  --space-section-md: 48px;  /* one section rhythm: 48 / 70 / 96 */
+  --space-section-lg: 48px;  /* one section rhythm: 48 / 70 / 96 */
   --space-section-xl: 48px;  /* 70 tablet / 96 desktop — see the shell steps below */
   /* Clear space above a page title.
      Measured: our six pages ran 64→126px below the header, and the difference
@@ -612,6 +612,8 @@
      16 mobile / 32 tablet / 48 desktop, per layout-shell.md. Stepped rather
      than clamped because the spec gives three discrete values, not a curve. */
   --shell-gutter: 16px;
+  /* Column gap — layout guides: 16 mobile (4 cols) / 24 tablet (8) / 32 desktop (12). */
+  --grid-gap: 16px;
   --nav-height: 4.875rem;
   --control-size: 44px;
   --pillar-thumb: 88px;
@@ -1117,10 +1119,18 @@ a[href^='tel:']:not(.no-external-icon)::after {
  * --space-section-xl is the vertical half: it has 43 uses, more than every
  * other section token combined, so it is the one that carries the rhythm. */
 @media (min-width: 768px) {
-  :root { --shell-gutter: 32px; --space-section-xl: 70px; }
+  :root {
+    --shell-gutter: 32px; --grid-gap: 24px;
+    --space-section-xs: 70px; --space-section-sm: 70px; --space-section-md: 70px;
+    --space-section-lg: 70px; --space-section-xl: 70px;
+  }
 }
 @media (min-width: 1200px) {
-  :root { --shell-gutter: 48px; --space-section-xl: 96px; }
+  :root {
+    --shell-gutter: 48px; --grid-gap: 32px;
+    --space-section-xs: 96px; --space-section-sm: 96px; --space-section-md: 96px;
+    --space-section-lg: 96px; --space-section-xl: 96px;
+  }
 }
 
 /* ─── Breakpoints ──────────────────────────────────────────────────────────
@@ -1177,12 +1187,13 @@ a[href^='tel:']:not(.no-external-icon)::after {
  * enforcement point, and per-section rules compile to scoped selectors that
  * would otherwise outrank it. It touches padding-block and margin-block only.
  *
- * Exempt, because they are not page sections despite the element:
- *   .global-final-cta     a rounded card inside its own band
- *   .blog-filters, .work-filters, .theme-switcher-bar   filter toolbars
+ * Exempt: .global-final-cta — a rounded card inside its own band.
+ * Filter chips are NOT sections: they are part of the content body and live
+ * inside the grid they filter (blog, work) as role="toolbar" divs. The /kits
+ * pillar switcher has its own heading and is a real section, so it is not exempt.
  * Nested sections are excluded by :not(section section). */
 :root { --section-y: var(--space-section-xl); }
-section:not(section section):not(.global-final-cta):not(.blog-filters):not(.work-filters):not(.theme-switcher-bar) {
+section:not(section section):not(.global-final-cta) {
   padding-block: var(--section-y) !important;
   margin-block: 0 !important;
 }
@@ -1228,10 +1239,10 @@ section:not(section section) > .wrap { padding-block: 0 !important; }
 .grid {
   display: grid;
   grid-template-columns: repeat(var(--grid-cols, 4), 1fr);
-  gap: var(--grid-gap, var(--gap-4));
+  gap: var(--grid-gap);
 }
 @media (min-width: 768px)  { .grid { --grid-cols: 8; } }
-@media (min-width: 1024px) { .grid { --grid-cols: 12; } }
+@media (min-width: 1200px) { .grid { --grid-cols: 12; } }  /* desktop canvas, not 1024 */
 
 
 /* ═══════════════════════════════════════════════════════════════════

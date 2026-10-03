@@ -12,14 +12,14 @@ Layout primitives implemented in `src/styles/global.css`.
 
 | Class | Max-width | Use |
 |---|---|---|
-| `.wrap` | `1280px` | Content container (auto margins + page gutter padding) |
+| `.wrap` | `1200px` content (+ gutters) | The section — owns the only page gutter. See layout-shell.md |
 | `.page` | `1440px` | Full-viewport page container with 1440px cap |
 
 ## Grid
 
 | Class | Behavior |
 |---|---|
-| `.grid` | 12-column responsive grid — 4 cols mobile → 8 tablet (768px) → 12 desktop (1024px); gap `--grid-gap` (default `--gap-4`) |
+| `.grid` | 4 cols mobile → 8 tablet (768) → 12 desktop (**1200**); gap `--grid-gap` 16 / 24 / 32 |
 
 ## Page Gutter (`--space-page-*`)
 

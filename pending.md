@@ -1350,3 +1350,21 @@ in `src/layouts/` the sweep never scanned. Rules now in `layout-shell.md`.
 **Then closed the same day:** vertical rhythm 48/70/96 on every top-level
 section and nav padding 16 / 20·32 / 20 — 136 of 136 sections and 22 of 22
 navs on spec at all three breakpoints. See layout-shell.md.
+
+### 1x. Layout shell complete — grid, section tokens, filters — *2026-10-03*
+
+- **Every `--space-section-*` token** now steps 48 / 70 / 96 — one section rhythm.
+- **Column gap 16 / 24 / 32** (`--grid-gap`) and **12 columns at 1200**, per the
+  supplied layout guides; was a flat 16 and a 1024 switch. Four grid gaps that
+  borrowed a section token now use `--grid-gap`.
+- **Filters are CMS body, not sections** — blog and work chip rows moved inside
+  their grid sections as `role="toolbar"` divs. Exemptions down to the CTA card.
+- **My doc's content gap (24 / 24 / 0) was wrong**; the guides say 16 / 24 / 32.
+- Verified on 22 pages at 375 / 768 / 1440: 137/137 sections and 22/22 navs on
+  spec, no overflow; 159/159 sections labelled, 0 duplicate IDs.
+- Deploy of `02d3bf9a` failed on Cloudflare with `npm EINTEGRITY` on
+  `unist-util-position` — a corrupted download on the builder (lockfile
+  unchanged since the last good deploy). Retried.
+
+`layout-shell.md` rewritten as the full spec: structure, breakpoints table,
+declarations, labelling rules, implementation map, history, verification.

@@ -1,40 +1,76 @@
-# Layout shell — canvas · section · content
+# Layout shell — page · section · content
 
-**Authoritative spec, supplied 2026-10-03.** Captured verbatim from the Framer
-canvas definitions. This is the page skeleton every section is built on.
+**Authoritative spec**, supplied 2026-10-03 from the Framer source that built
+wugweb.com. This is the skeleton every page is built on. Code that disagrees
+with this file is wrong, not the file.
 
-## The rule in one line
+## The rule
 
 **The section owns the gutter. The content owns the max-width.**
 
-A section is always full-bleed (`width: 100%`) and carries the only horizontal
-padding. Inside it sits one content box that is also `width: 100%` but capped at
-`max-width: 1200px` with **zero padding of its own**. Nothing else sets a page
-gutter.
+- A **section** is always full-bleed (`width: 100%`). It carries the only
+  horizontal padding on the page, plus the vertical rhythm.
+- Inside it sits one **content** box, also `width: 100%`, capped at
+  `max-width: 1200px`, with **zero padding of its own**.
+- Blocks live inside content. Nothing below the section sets a page gutter.
+
+## Structure
+
+The layer tree is always **page → section → content → blocks**:
 
 ```
-┌─ canvas ──────────────────────────────────────────────┐  bg #050505, no padding
-│ ┌─ section ───────────────────────────────────────┐   │  width 100%, padding = gutter
-│ │        ┌─ content ─────────────────┐            │   │  width 100%, max-width 1200, padding 0
-│ │        │                           │            │   │
-│ │ ←48px→ └───────────────────────────┘ ←48px→     │   │
-│ └─────────────────────────────────────────────────┘   │
-└───────────────────────────────────────────────────────┘
+Large (page / canvas)                         Primary
+├── Hero        (section)   # anchor   ✧ a11y
+│   └── content
+│       ├── space
+│       ├── head
+│       └── body
+├── Message     (section)   # anchor
+│   └── content
+│       └── Message Card
+├── Bento       (section)   # anchor
+│   └── content
+│       └── About
+└── Culture     (section)   # anchor   ✧ a11y
 ```
 
-## Per breakpoint
+```
+┌─ canvas ─────────────────────────────────────────────┐  bg #050505, padding 0, gap 0
+│ ┌─ section ──────────────────────────────────────┐   │  width 100%, padding = rhythm + gutter
+│ │        ┌─ content ─────────────────┐           │   │  width 100%, max-width 1200, padding 0
+│ │ ←gutter→  blocks …                 ←gutter→    │   │
+│ │        └───────────────────────────┘           │   │
+│ └────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────┘
+```
 
-| | canvas | section padding (T R B L) | content max-width | content gap |
-|---|---|---|---|---|
-| **small** (mobile) | 375 | `48px 16px 48px 16px` | 1200 | 24 |
-| **medium** (tablet) | 768 | `70px 32px 70px 32px` | 1200 | 24 |
-| **large** (desktop) | 1200 | `96px 48px 96px 48px` | 1200 | 0 |
+**Filters are part of the CMS body, always** — never a section of their own.
+A filter chip row lives inside the content of the grid it filters.
+
+## Breakpoints
+
+| | small · mobile | medium · tablet | large · desktop |
+|---|---|---|---|
+| canvas width | **375** | **768** | **1200** |
+| section padding (T R B L) | `48 16 48 16` | `70 32 70 32` | `96 48 96 48` |
+| content max-width | 1200 | 1200 | 1200 |
+| layout grid columns | **4** | **8** | **12** |
+| column gap | **16** | **24** | **32** |
+| grid margin (= gutter) | **16** | **32** | **48** |
+| nav padding | `16` | `20 32` | `20` |
+| nav height | 110 | 118 | 118 |
+
+Layout guides: type columns, align **stretch**, width auto, colour `#0099FF`.
+
+> **Gap correction.** The pasted content boxes showed `gap: 24 / 24 / 0`. That
+> was wrong, and the first version of this file copied it. The guides are
+> authoritative: **16 / 24 / 32**.
 
 ## Exact declarations
 
 ### Canvas — the page root
 ```css
-width: <breakpoint>;        /* 375 · 768 · 1200 */
+width: 375 | 768 | 1200;
 height: min-content;
 display: flex;
 flex-direction: column;
@@ -43,7 +79,7 @@ align-items: center;
 background-color: var(--Black_Background, #050505);
 overflow: visible;
 padding: 0;
-gap: 0;
+gap: 0;                     /* sections stack on padding only, never margin */
 ```
 
 ### Section
@@ -55,40 +91,48 @@ height: min-content;
 display: flex;
 flex-direction: column;
 justify-content: center;
-padding: 96px 48px;         /* large · 70px 32px medium · 48px 16px small */
+padding: 48px 16px;         /* mobile */
+padding: 70px 32px;         /* tablet */
+padding: 96px 48px;         /* desktop */
 position: relative;
 gap: 0;
 ```
-`align-items`: `center` on small and large, **`flex-start` on medium (tablet)**.
-`overflow`: `visible` on large, **`hidden` on small and medium**.
 
-### Content — the inner box
+| | mobile | tablet | desktop |
+|---|---|---|---|
+| `align-items` | center | **flex-start** | center |
+| `align-content` | center | **flex-start** | center |
+| `overflow` | **hidden** | **hidden** | visible |
+
+### Content — inside every section
 ```css
 flex-shrink: 0;
 width: 100%;
 height: min-content;
-max-width: 1200px;          /* the ONLY max-width in the shell */
+max-width: 1200px;          /* the only max-width in the shell */
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 padding: 0;                 /* never a gutter here */
 position: relative;
-gap: 0;                     /* large — 24 on small and medium */
+gap: 16px | 24px | 32px;    /* the column gap */
 ```
-`z-index: 1` on small and medium; unset on large.
+`z-index: 1` on mobile and tablet.
 
-### Top nav (sticky)
+### Top nav — sticky
 ```css
 box-sizing: border-box;
 flex-shrink: 0;
 width: 100%;
-height: min-content;        /* 118px at large */
+height: min-content;        /* 110 mobile · 118 tablet and desktop */
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 20px;              /* uniform, all four sides */
+padding: 16px;              /* mobile */
+padding: 20px 32px;         /* tablet */
+padding: 20px;              /* desktop */
 position: sticky;
 top: 0;
 z-index: 10;
@@ -96,52 +140,10 @@ will-change: transform;
 gap: 0;
 ```
 
-## ✅ Implemented sitewide — 2026-10-03
-
-All three deltas are resolved. The code now matches this spec.
-
-| | spec | code before | code now |
-|---|---|---|---|
-| content max-width | 1200px | 1280px (`80rem`) | **1200px** |
-| desktop gutter | 48px | 44px | **48px** |
-| desktop breakpoint | 1200 | 1280 | **1200** (`--breakpoint-xl`) |
-
-How it is built: `.wrap` is the section and carries the only horizontal padding,
-via one stepped token `--shell-gutter` (16 / 32 / 48). Its max-width is
-`calc(1200px + 2 × gutter)` so the **content** box is exactly 1200 —
-`box-sizing: border-box` would otherwise make a flat 1200 give 1104. Vertical
-rhythm rides on `--space-section-xl` (48 / 70 / 96), which carries 67 uses.
-
-A second `.wrap` rule (68px gutter at ≥1280) was silently overriding the shell
-and squeezing content to 1160; removed. That was the rule I had moved from
-1200 to 1280 on 2026-09-29 — it was this spec's desktop step all along.
-
-Measured on every `.wrap` at all three breakpoints: one content width and one
-gutter per breakpoint — 343/16, 704/32, 1200/48 — with no page overflow.
-
-**Vertical rhythm — on spec everywhere (2026-10-03).** One rule in `global.css`
-gives every top-level section `padding-block: var(--section-y)` (48 / 70 / 96),
-zeroes its vertical margin (the canvas has gap 0, so spacing is padding only),
-and zeroes vertical padding on an inner `.wrap` so the two never stack. It uses
-`!important`, deliberately and narrowly: per-section rules compile to scoped
-selectors that would otherwise outrank it. Before it, 58 of 156 top-level
-sections rendered off-spec, from 0/0 to 172/96.
-
-Exempt, because they are `<section>` elements but not page sections:
-`.global-final-cta` (a card inside its own band) and the filter toolbars
-`.blog-filters`, `.work-filters`, `.theme-switcher-bar`.
-
-**Nav — on spec.** `16px` mobile, `20px 32px` tablet, `20px` desktop, with
-safe-area insets added. This supersedes an earlier audit note in
-`SiteHeader.astro` that had rejected exactly these stepped values as
-"non-monotonic".
-
-Verified on 22 pages at 375, 768 and 1440: **136 of 136** top-level sections
-on spec, nav on spec on **22 of 22**, no horizontal overflow at any width.
-
 ## Every section is labelled — mandatory
 
-Each `<section>` carries **both** a scroll anchor and an accessible name:
+Each section carries a **scroll anchor** (`#` in the Framer tree) and an
+**accessible name** (✧). Both, on every section, on every page.
 
 ```html
 <section class="wrap services" id="services" aria-labelledby="services-title">
@@ -150,15 +152,81 @@ Each `<section>` carries **both** a scroll anchor and an accessible name:
 
 Rules, each learned from a defect found while doing it:
 
-- **`aria-labelledby` only points at a heading that always renders.** A
-  heading inside `{cond && …}`, or a CMS fallback, leaves the reference
-  dangling. Use a conditional attribute or `aria-label`.
+- **`aria-labelledby` only points at a heading that always renders.** A heading
+  inside `{cond && …}`, or a CMS fallback, leaves the reference dangling — use a
+  conditional attribute or `aria-label`.
 - **Never label a section with a heading inside a `.map()`.** Every iteration
-  repeats the id (invalid HTML) and the section ends up named after its first
-  card. Use `aria-label="…"` and keep looped headings id-free.
-- **Sections in `src/layouts/` count.** Two lived there and render on every
-  page — the industries strip in `BaseLayout`, the legal hub in `LegalLayout`.
-- IDs are kebab-case section names and unique per page.
+  repeats the id (invalid HTML) and the section is named after its first card.
+  Use `aria-label` and keep looped headings id-free.
+- **Sections in `src/layouts/` count** — the industries strip in `BaseLayout`
+  and the legal hub in `LegalLayout` render on every page.
+- **Filters are not sections.** They are `role="toolbar"` divs with an
+  `aria-label`, inside the grid section they filter.
+- IDs are kebab-case section names, unique per page.
 
-Verified 2026-10-03 on rendered HTML: **215 of 215 sections across 27 pages**,
-0 duplicate IDs, 0 broken references.
+## How it is implemented
+
+| spec | code |
+|---|---|
+| section = full-bleed, owns gutter | `.wrap` is the section — `<section class="wrap …">` |
+| gutter 16 / 32 / 48 | `--shell-gutter`, stepped in `:root` |
+| content max 1200 | `.wrap { max-width: calc(1200px + 2 × --shell-gutter) }` |
+| section rhythm 48 / 70 / 96 | `--section-y` and every `--space-section-*` |
+| column gap 16 / 24 / 32 | `--grid-gap` |
+| columns 4 / 8 / 12 | `.grid`, switching at 768 and 1200 |
+| nav 16 / 20·32 / 20 | `.site-header` in `SiteHeader.astro` |
+| desktop breakpoint 1200 | `--breakpoint-xl: 1200px` |
+
+Notes that are easy to get wrong:
+
+- **max-width is 1200 plus the gutters, not a flat 1200.** `box-sizing:
+  border-box` is global, so a flat 1200 would make the *content* box 1104. The
+  spec's 1200 is the content box.
+- **One rule enforces the rhythm.** Every top-level section gets
+  `padding-block: var(--section-y)`, `margin-block: 0`, and an inner `.wrap`
+  gets no vertical padding so the two never stack. It uses `!important`
+  narrowly, because per-section rules compile to scoped selectors that would
+  otherwise outrank it.
+- **Exempt: `.global-final-cta` only.** It is a rounded card inside its own
+  band, not a page section.
+- **Grid gaps never borrow a section token.** Four did (`work/[slug]`,
+  `ButtonShowcase`, `LegalLayout` ×2); they now use `--grid-gap`.
+- The nav values supersede an earlier audit note in `SiteHeader.astro` that
+  had rejected these stepped values as "non-monotonic".
+
+## History
+
+| | before | after |
+|---|---|---|
+| content max-width | 1280 (`80rem`) | **1200** |
+| desktop gutter | 44 | **48** |
+| desktop breakpoint | 1280 | **1200** |
+| top-level sections on the rhythm | 98 of 156 | **all** |
+| section tokens | flat 40 / 48 / 64 / 80 | **one rhythm, 48 / 70 / 96** |
+| column gap | flat 16 | **16 / 24 / 32** |
+| 12-column switch | 1024 | **1200** |
+| nav padding | fluid 16→32, no bottom | **16 / 20·32 / 20** |
+| sections with id + aria | 0 of 113 | **all** |
+
+A stray `.wrap` rule (68px gutter at ≥1280) was overriding the shell and
+squeezing content to 1160; removed. I had moved that rule from 1200 to 1280 on
+2026-09-29 because 1200 "matched no token" — it was this spec's desktop step.
+
+## Verified — 2026-10-03
+
+Rendered pages, 22 routes, at 375, 768 and 1440:
+
+| | mobile | tablet | desktop |
+|---|---|---|---|
+| top-level sections on spec | 137 / 137 | 137 / 137 | 137 / 137 |
+| nav on spec | 22 / 22 | 22 / 22 | 22 / 22 |
+| gutter · gap · columns | 16 · 16 · 4 | 32 · 24 · 8 | 48 · 32 · 12 |
+| horizontal overflow | none | none | none |
+
+Section labels, rendered HTML: **159 of 159 sections**, 0 duplicate IDs,
+0 broken references.
+
+**Measuring note:** the measuring iframe needs `border: 0`. The site's
+`* { box-sizing: border-box }` applies to it, so a 768px iframe with its default
+2px border has a 764px viewport and misses `min-width: 768px` — every section
+then reads at the mobile value.
