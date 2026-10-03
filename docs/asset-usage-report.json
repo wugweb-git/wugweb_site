@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T21:37:13.247Z",
+  "generatedAt": "2026-10-03T21:57:00.916Z",
   "scanned": {
     "contentTypes": [
       "brandAsset",
@@ -18,37 +18,37 @@
       "taxonomy",
       "testimonial"
     ],
-    "contentDocs": 966,
+    "contentDocs": 919,
     "codeFiles": 81
   },
   "assets": {
     "total": 588,
-    "used": 481,
-    "unused": 107,
+    "used": 524,
+    "unused": 64,
     "pathless": 0,
     "sharingAPath": 58
   },
   "usedBy": {
     "contentOnly": 447,
-    "codeOnly": 3,
+    "codeOnly": 46,
     "both": 31
   },
   "unusedByGroup": {
-    "Services": 44,
     "Framer": 38,
     "More": 14,
     "Work": 8,
-    "Brand": 3
+    "Brand": 3,
+    "Services": 1
   },
   "unusedByMediaType": {
-    "Video": 55,
     "Image": 46,
+    "Video": 12,
     "SVG": 6
   },
   "brokenReferences": {
     "missing": 52,
-    "unregistered": 352,
-    "total": 404,
+    "unregistered": 236,
+    "total": 288,
     "visibleToVisitors": 0
   },
   "checks": {
@@ -111,50 +111,7 @@
     "more/home/Web & App Development.mp4",
     "more/service/service_benefit_6.webp",
     "more/service/service_message.mp4",
-    "services/Experience Design/Adaptive Platforms.mp4",
-    "services/Experience Design/Design Systems.mp4",
-    "services/Experience Design/Experience Design - UX.mp4",
-    "services/Experience Design/Interface Mastery - UI.mp4",
-    "services/Experience Design/Journey architecture.mp4",
-    "services/Experience Design/Mobile ecosystems.webp",
-    "services/Experience Design/Performance Optimization.mp4",
-    "services/Experience Design/Rapid Concepting.mp4",
-    "services/Experience Design/User Intelligence.mp4",
-    "services/Martech & GenAi/AI-Powered Content Experiences/Generative AI Content Creation.mp4",
-    "services/Martech & GenAi/AI-Powered Content Experiences/Immersive Content Strategies.mp4",
-    "services/Martech & GenAi/AI-Powered Content Experiences/Personalized Content Delivery.mp4",
-    "services/Martech & GenAi/Data-Driven Growth Engines/AI-Powered Performance Marketing.mp4",
-    "services/Martech & GenAi/Data-Driven Growth Engines/Conversion rate optimisation.mp4",
-    "services/Martech & GenAi/Data-Driven Growth Engines/Predictive Analytics & Attribution.mp4",
-    "services/Martech & GenAi/Digital Transformation Strategy/Digital Transformation Roadmaps.mp4",
-    "services/Martech & GenAi/Digital Transformation Strategy/Disruptive Innovation Workshops.mp4",
-    "services/Martech & GenAi/Digital Transformation Strategy/Future-Forward Market Insights.mp4",
-    "services/Martech & GenAi/MarTech Ecosystems/Automation architecture.mp4",
-    "services/Martech & GenAi/MarTech Ecosystems/MarTech stack design.mp4",
-    "services/Martech & GenAi/MarTech Ecosystems/seamless platform integration.mp4",
-    "services/Web & App Development/API.mp4",
-    "services/Web & App Development/Bespoke Digital Solutions.mp4",
-    "services/Web & App Development/Cross-Platform & Hybrid Mobile Solutions.mp4",
-    "services/Web & App Development/Database Design & Optimization.mp4",
-    "services/Web & App Development/DevOps & Cloud Implementation.mp4",
-    "services/Web & App Development/Digital Platform Architecture.mp4",
-    "services/Web & App Development/Ecommerce.mp4",
-    "services/Web & App Development/Front-End Engineering.mp4",
-    "services/Web & App Development/Native Mobile Application Development.mp4",
-    "services/Web & App Development/Ongoing Support.mp4",
-    "services/Web & App Development/Progressive Web Applications (PWAs).mp4",
-    "services/Web & App Development/backend.mp4",
-    "services/brand-strategy/Brand Audit & Analysis.mp4",
-    "services/brand-strategy/Brand Evolution & Management.mp4",
-    "services/brand-strategy/Brand Experience.mp4",
-    "services/brand-strategy/Brand Identity Systems.mp4",
-    "services/brand-strategy/Brand Position & Strategy.mp4",
-    "services/brand-strategy/Brand activation.mp4",
-    "services/brand-strategy/Naming & Nomenclature.mp4",
-    "services/brand-strategy/Narrative Architecture.mp4",
-    "services/brand-strategy/Voice & Tone.mp4",
-    "services/martech-genai/digital-transformation-roadmaps.mp4",
-    "services/martech-genai/seamless-platform-integration.mp4",
+    "services/experience/Mobile ecosystems.webp",
     "work/bankco/bankco-thumb.mp4",
     "work/bankco/bankco-thumb.mp4",
     "work/gratifi/gratifi-about.mp4",
@@ -666,48 +623,6 @@
     {
       "reason": "unregistered",
       "path": "og/services.jpg",
-      "where": "service: Brand Strategy · ogImagePath",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "og/services.jpg",
-      "where": "service: Experience Design · ogImagePath",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "og/services.jpg",
-      "where": "service: Lead Generation · ogImagePath",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "og/services.jpg",
-      "where": "service: Martech and GenAI · ogImagePath",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "og/services.jpg",
-      "where": "service: No-Code Solutions · ogImagePath",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "og/services.jpg",
-      "where": "service: QA and Testing · ogImagePath",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "og/services.jpg",
-      "where": "service: Web and App Development · ogImagePath",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "og/services.jpg",
       "where": "service: Strategy · ogImagePath",
       "rendered": true
     },
@@ -721,60 +636,6 @@
       "reason": "unregistered",
       "path": "og/work.jpg",
       "where": "singletonPage: Clients – Wugweb | Trusted by Innovative Brands · ogImagePath",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Brand activation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Brand Audit Analysis.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Brand Evolution Management.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Brand Experience.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Brand Identity Systems.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Brand Position Strategy.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Brand Position Strategy.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Naming Nomenclature.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Narrative Architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
       "rendered": true
     },
     {
@@ -834,216 +695,6 @@
     {
       "reason": "unregistered",
       "path": "services/brand/posters/Voice Tone.webp",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/brand/Voice Tone.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/API.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/API.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/API.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/backend.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/backend.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/backend.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Bespoke Digital Solutions.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Bespoke Digital Solutions.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Bespoke Digital Solutions.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Bespoke Digital Solutions.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Cross-Platform Hybrid Mobile Solutions.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Database Design Optimization.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/DevOps Cloud Implementation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/DevOps Cloud Implementation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/DevOps Cloud Implementation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/DevOps Cloud Implementation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/DevOps Cloud Implementation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/DevOps Cloud Implementation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/DevOps Cloud Implementation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Digital Platform Architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Digital Platform Architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Digital Platform Architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Digital Platform Architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Digital Platform Architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Digital Platform Architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Ecommerce.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Front-End Engineering.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Front-End Engineering.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Front-End Engineering.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Native Mobile Application Development.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Native Mobile Application Development.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Ongoing Support.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Ongoing Support.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Ongoing Support.mp4",
       "where": "src/lib/service-media.ts · service-media",
       "rendered": true
     },
@@ -1217,120 +868,6 @@
     },
     {
       "reason": "unregistered",
-      "path": "services/engineering/Progressive Web Applications (PWAs).mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Progressive Web Applications (PWAs).mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/engineering/Progressive Web Applications (PWAs).mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Adaptive Platforms.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Adaptive Platforms.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Design Systems.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Experience Design - UX.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Experience Design - UX.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Experience Design - UX.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Experience Design - UX.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Interface Mastery - UI.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Interface Mastery - UI.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Journey architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Performance Optimization.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Performance Optimization.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Performance Optimization.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Performance Optimization.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Performance Optimization.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Performance Optimization.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
       "path": "services/experience/posters/Adaptive Platforms.webp",
       "where": "src/lib/service-media.ts · service-media",
       "rendered": true
@@ -1464,234 +1001,6 @@
     {
       "reason": "unregistered",
       "path": "services/experience/posters/User Intelligence.webp",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Rapid Concepting.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Rapid Concepting.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Rapid Concepting.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Rapid Concepting.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/Rapid Concepting.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/User Intelligence.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/experience/User Intelligence.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/AI-Powered Performance Marketing.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/AI-Powered Performance Marketing.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/AI-Powered Performance Marketing.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Automation architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Automation architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Automation architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Automation architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Automation architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Automation architecture.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Conversion rate optimisation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Conversion rate optimisation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Conversion rate optimisation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Conversion rate optimisation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Conversion rate optimisation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Digital Transformation Roadmaps.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Digital Transformation Roadmaps.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Digital Transformation Roadmaps.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/digital-transformation-roadmaps.mp4",
-      "where": "src/lib/service-tags-data.ts · literal",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Disruptive Innovation Workshops.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Future-Forward Market Insights.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Future-Forward Market Insights.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Future-Forward Market Insights.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Generative AI Content Creation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Generative AI Content Creation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Generative AI Content Creation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Generative AI Content Creation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Generative AI Content Creation.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Immersive Content Strategies.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Immersive Content Strategies.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/MarTech stack design.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Personalized Content Delivery.mp4",
       "where": "src/lib/service-media.ts · service-media",
       "rendered": true
     },
@@ -1885,54 +1194,6 @@
       "reason": "unregistered",
       "path": "services/growth/posters/seamless platform integration.webp",
       "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Predictive Analytics Attribution.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Predictive Analytics Attribution.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Predictive Analytics Attribution.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Predictive Analytics Attribution.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/Predictive Analytics Attribution.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/seamless platform integration.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/seamless platform integration.mp4",
-      "where": "src/lib/service-media.ts · service-media",
-      "rendered": true
-    },
-    {
-      "reason": "unregistered",
-      "path": "services/growth/seamless-platform-integration.mp4",
-      "where": "src/lib/service-tags-data.ts · literal",
       "rendered": true
     },
     {
