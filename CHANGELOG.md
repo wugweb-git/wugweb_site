@@ -9,6 +9,16 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — Services media and old-service remap (2026-10-04)
+- **`src/lib/service-media.ts` now maps every sub-service to a clip** (85/85 current Sanity names resolve; 61 planned names). Entries tagged `STAND-IN` reuse nearby footage and are to be replaced by custom branded media. No clip repeats inside a pillar; 14 are shared across pillars.
+- **Clips live only in the retained folders** `public/assets/services/{brand,engineering,experience,growth}` (copies from the old `Web & App Development`, `Experience Design`, `Martech & GenAi`, `martech-genai`, `brand-strategy` folders, posters under `posters/`). The 44 files were uploaded to R2 under the new keys and the 44 Sanity `asset` records repointed (backup kept outside the repo).
+- **`service-tags-data.ts`**: Strategy and Operations card videos now use `services/growth/`.
+- **`faq.astro` + Sanity faq page**: removed the old service names ("Brand & Strategy", "Martech & Gen AI", "QA & Testing", "No-Code Development"); now lists the six pillars.
+- **Notion**: new `Pages` database (14 rows from Sanity `singletonPage`, one-block bodies), 6 new Sanity page docs (404, contact-error, offline, thank-you, cookie-policy, reviews), 7 sub-service rows added to the Notion Services DB, blogs and case studies synced.
+
+### Pending delete (owner action)
+- Old R2 keys, old local service folders, and the 7 non-pillar Sanity `service` docs (+ drafts) are still in place. They are not referenced by any document; the 7 old slugs resolve to their pillar through `FRAMER_TO_PILLAR` in `src/pages/services/[slug].astro`.
+
 ### Removed (2026-09-25)
 - **`visitor_id` cookie and `/api/personalize`** (`src/middleware.ts`, `src/env.d.ts`) — closes the remaining half of audit finding 16. The cookie was a one-year UUID minted on every request before consent; its only reader had zero callers. Neon's `visitor_profiles` table deliberately untouched.
 

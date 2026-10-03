@@ -6,7 +6,7 @@ import { singletonPageQuery } from '../lib/queries';
 const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'faq' }).catch(() => null);
 
 const fallbackFaqs = [
-  { q: "What services does Wugweb offer?", a: "Wugweb offers a comprehensive range of services including Brand & Strategy, Experience Design, Martech & Gen AI, Web Development, QA & Testing, and No-Code Development." },
+  { q: "What services does Wugweb offer?", a: "Wugweb offers a comprehensive range of services across six pillars: Strategy, Brand, Experience, Engineering, Growth and Operations." },
   { q: "What makes your UI/UX design services stand out?", a: "Our UI/UX design services are rooted in user-centered design, combining human-centered design principles with strategic focus on customer experience and end-to-end user journey design." },
   { q: "Do you provide custom brand identity design and positioning?", a: "Yes, as a brand strategy consulting agency, we craft transformative brand experiences including brand identity design, brand narrative development, and comprehensive brand positioning and strategy." },
   { q: "What kind of platforms do you develop under web and app development?", a: "We build responsive websites, ecommerce platforms, and custom web applications using full-stack development, CMS integration, and mobile-first design." },

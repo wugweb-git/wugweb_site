@@ -4,6 +4,13 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-10-04 session — open items**
+- Sub-service merge (85 → 61: Strategy 9, Engineering 12, Growth 10, Operations 10, Brand 10, Experience 10) is **planned, not applied**. Needs a final old→new name table and approval; touches Sanity taxonomy + service capabilities, Notion Sub Service rows, `services-data.ts`, case-study tags.
+- Owner deletes still to run after deploy: old R2 keys (list in `r2-move-list.csv`, outside repo), old local service folders, 7 Sanity services + drafts. Hard deletes are not run by the assistant.
+- Naming variants between systems (Web Application vs Web App Development, SEO vs Search Engine Optimization (SEO), CRO vs Conversion Rate Optimization, Mobile Application vs Mobile App) need one chosen wording.
+- 13 duplicate long-slug case studies in Sanity (duplicates of the short-slug ones) + 3 body-less case studies: cleanup waiting on owner decision.
+- Notion Pages DB has no row for `contact-v2` (redirect) or `404-2` (alt design); Kits excluded by decision.
+
 **Session-end summary (2026-09-23):** the frontend-design-system audit plan (`/Users/abcom/.claude/plans/nested-mixing-fountain.md`) is closed — every phase done, explicitly skipped, or moot (see that file's closure note). Everything genuinely still open below is **content/asset-blocked, not code-blocked** — the user declined pushing further on these tonight ("nopes"):
 - ~~ServiceSpotlightPanel's 3 dummy sublines~~ **Done 2026-09-23** — real copy written for Brand Narrative, Employer Branding, Brand Activation in `service-copy.ts`, matching the other 7 entries' voice/length (item #5).
 - ClientAssemblyGrid's 9 client logos still only on the Framer CDN, not imported — item #9a.

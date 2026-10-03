@@ -52,7 +52,7 @@ const MEDIA_BY_PILLAR: Record<string, Record<string, MediaRef>> = {
     'brand narrative': { dir: 'services/brand', file: 'Narrative Architecture' },
     'brand identity systems': { dir: 'services/brand', file: 'Brand Identity Systems' },
     'naming nomenclature': { dir: 'services/brand', file: 'Naming Nomenclature' },
-    'messaging framework': { dir: "work/others", file: "Linkedin", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    'messaging framework': { dir: "services/growth", file: "Immersive Content Strategies" }, // STAND-IN: reused clip, replace with real footage
     'voice tone': { dir: 'services/brand', file: 'Voice Tone' },
     'employer branding': { dir: 'services/brand', file: 'Brand Audit Analysis' },
     'brand guidelines': { dir: 'services/brand', file: 'Brand Evolution Management' },
@@ -60,22 +60,22 @@ const MEDIA_BY_PILLAR: Record<string, Record<string, MediaRef>> = {
   },
   strategy: {
     "business strategy": { dir: "services/brand", file: "Brand Position Strategy" }, // STAND-IN: reused clip, replace with real footage
-    "business model design": { dir: "work/adneto", file: "adneto-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "business model design": { dir: "services/engineering", file: "Bespoke Digital Solutions" }, // STAND-IN: reused clip, replace with real footage
     "digital transformation innovation": { dir: "services/growth", file: "Digital Transformation Roadmaps" },
     "digital transformation": { dir: "services/growth", file: "Digital Transformation Roadmaps" },
     "innovation strategy": { dir: "services/growth", file: "Digital Transformation Roadmaps" },
     "market competitive research": { dir: "services/growth", file: "Future-Forward Market Insights" },
     "market research": { dir: "services/growth", file: "Future-Forward Market Insights" },
     "competitive analysis": { dir: "services/growth", file: "Future-Forward Market Insights" },
-    "product strategy roadmapping": { dir: "work/valyu", file: "Valyu-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "product strategy": { dir: "work/valyu", file: "Valyu-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "product roadmapping": { dir: "work/valyu", file: "Valyu-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "product discovery mvp planning": { dir: "work/sadhan", file: "sadhan-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "product discovery": { dir: "work/sadhan", file: "sadhan-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "mvp planning": { dir: "work/sadhan", file: "sadhan-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "ai strategy": { dir: "work/inkompass", file: "inkompass-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "ai opportunity mapping": { dir: "work/inkompass", file: "inkompass-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "ai readiness assessment": { dir: "work/gratifi", file: "gratifi-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "product strategy roadmapping": { dir: "services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
+    "product strategy": { dir: "services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
+    "product roadmapping": { dir: "services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
+    "product discovery mvp planning": { dir: "services/experience", file: "Rapid Concepting" }, // STAND-IN: reused clip, replace with real footage
+    "product discovery": { dir: "services/experience", file: "Rapid Concepting" }, // STAND-IN: reused clip, replace with real footage
+    "mvp planning": { dir: "services/experience", file: "Rapid Concepting" }, // STAND-IN: reused clip, replace with real footage
+    "ai strategy": { dir: "services/growth", file: "Generative AI Content Creation" }, // STAND-IN: reused clip, replace with real footage
+    "ai opportunity mapping": { dir: "services/growth", file: "Generative AI Content Creation" }, // STAND-IN: reused clip, replace with real footage
+    "ai readiness assessment": { dir: "services/growth", file: "Predictive Analytics Attribution", noPoster: true }, // STAND-IN: reused clip, replace with real footage
     "transformation workshops": { dir: "services/growth", file: "Disruptive Innovation Workshops" },
   },
   engineering: {
@@ -104,9 +104,9 @@ const MEDIA_BY_PILLAR: Record<string, Record<string, MediaRef>> = {
     "no code low code development": { dir: "services/engineering", file: "Bespoke Digital Solutions" }, // STAND-IN: reused clip, replace with real footage
     "no code development": { dir: "services/engineering", file: "Bespoke Digital Solutions" }, // STAND-IN: reused clip, replace with real footage
     "low code development": { dir: "services/engineering", file: "Bespoke Digital Solutions" }, // STAND-IN: reused clip, replace with real footage
-    "ai applications agents": { dir: "work/visione", file: "visione-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "ai applications": { dir: "work/visione", file: "visione-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "ai agents": { dir: "work/visione", file: "visione-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "ai applications agents": { dir: "services/growth", file: "Automation architecture" }, // STAND-IN: reused clip, replace with real footage
+    "ai applications": { dir: "services/growth", file: "Automation architecture" }, // STAND-IN: reused clip, replace with real footage
+    "ai agents": { dir: "services/growth", file: "Automation architecture" }, // STAND-IN: reused clip, replace with real footage
   },
   growth: {
     "seo": { dir: "services/growth", file: "seamless platform integration" }, // STAND-IN: reused clip, replace with real footage
@@ -123,7 +123,7 @@ const MEDIA_BY_PILLAR: Record<string, Record<string, MediaRef>> = {
     "analytics attribution": { dir: "services/growth", file: "Predictive Analytics Attribution", noPoster: true },
     "analytics dashboards": { dir: "services/growth", file: "Predictive Analytics Attribution", noPoster: true },
     "attribution modeling": { dir: "services/growth", file: "Predictive Analytics Attribution", noPoster: true },
-    "customer insights": { dir: "work/tot", file: "tot-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "customer insights": { dir: "services/experience", file: "User Intelligence" }, // STAND-IN: reused clip, replace with real footage
     "cro experimentation": { dir: "services/growth", file: "Conversion rate optimisation" },
     "cro": { dir: "services/growth", file: "Conversion rate optimisation" },
     "conversion rate optimization": { dir: "services/growth", file: "Conversion rate optimisation" },
@@ -133,36 +133,36 @@ const MEDIA_BY_PILLAR: Record<string, Record<string, MediaRef>> = {
     "ai marketing": { dir: "services/growth", file: "Generative AI Content Creation" },
   },
   operations: {
-    "qa test automation": { dir: "work/bankco", file: "bankco-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "quality assurance": { dir: "work/bankco", file: "bankco-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "test automation": { dir: "work/bankco", file: "bankco-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "performance security testing": { dir: "work/metcred", file: "metcred-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "performance testing": { dir: "work/metcred", file: "metcred-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "security testing": { dir: "work/metcred", file: "metcred-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "performance optimization": { dir: "work/metcred", file: "metcred-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "accessibility audits": { dir: "work/indusind-bank", file: "indusninja-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "technical ux audits": { dir: "work/cartier", file: "cartier-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "technical audits": { dir: "work/cartier", file: "cartier-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "ux audits": { dir: "work/cartier", file: "cartier-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "qa test automation": { dir: "services/engineering", file: "DevOps Cloud Implementation", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "quality assurance": { dir: "services/engineering", file: "DevOps Cloud Implementation", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "test automation": { dir: "services/engineering", file: "DevOps Cloud Implementation", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "performance security testing": { dir: "services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
+    "performance testing": { dir: "services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
+    "security testing": { dir: "services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
+    "performance optimization": { dir: "services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
+    "accessibility audits": { dir: "services/experience", file: "Interface Mastery - UI" }, // STAND-IN: reused clip, replace with real footage
+    "technical ux audits": { dir: "services/experience", file: "Experience Design - UX" }, // STAND-IN: reused clip, replace with real footage
+    "technical audits": { dir: "services/experience", file: "Experience Design - UX" }, // STAND-IN: reused clip, replace with real footage
+    "ux audits": { dir: "services/experience", file: "Experience Design - UX" }, // STAND-IN: reused clip, replace with real footage
     "maintenance sla support": { dir: "services/engineering", file: "Ongoing Support" },
     "maintenance": { dir: "services/engineering", file: "Ongoing Support" },
     "sla support": { dir: "services/engineering", file: "Ongoing Support" },
-    "monitoring observability": { dir: "work/ntuc", file: "ntuc-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "incident response": { dir: "work/sbs-transit", file: "sbs-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "release management": { dir: "work/kia", file: "kia-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "product optimization": { dir: "work/axis-bank", file: "axis-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "feature evolution": { dir: "work/rideev", file: "RideEV-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "monitoring observability": { dir: "services/engineering", file: "backend" }, // STAND-IN: reused clip, replace with real footage
+    "incident response": { dir: "services/experience", file: "Rapid Concepting" }, // STAND-IN: reused clip, replace with real footage
+    "release management": { dir: "services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
+    "product optimization": { dir: "services/growth", file: "Predictive Analytics Attribution", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "feature evolution": { dir: "services/experience", file: "Adaptive Platforms" }, // STAND-IN: reused clip, replace with real footage
   },
   experience: {
     "ux research": { dir: "services/experience", file: "User Intelligence" },
     "service design": { dir: "services/experience", file: "Adaptive Platforms" }, // STAND-IN: reused clip, replace with real footage
-    "information architecture": { dir: "work/airtel-xstream", file: "Xstream-about", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "information architecture": { dir: "services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
     "ux design": { dir: "services/experience", file: "Experience Design - UX" },
     "ui design": { dir: "services/experience", file: "Interface Mastery - UI" },
     "design systems": { dir: "services/experience", file: "Design Systems" },
     "accessibility design": { dir: "services/engineering", file: "Cross-Platform Hybrid Mobile Solutions", noPoster: true }, // STAND-IN: reused clip, replace with real footage
     "interactive prototyping": { dir: "services/experience", file: "Rapid Concepting" },
-    "user testing": { dir: "work/plufo", file: "plufo-dp", noPoster: true }, // STAND-IN: reused clip, replace with real footage
+    "user testing": { dir: "services/growth", file: "Conversion rate optimisation" }, // STAND-IN: reused clip, replace with real footage
     "journey mapping": { dir: "services/experience", file: "Journey architecture" },
   },
 };

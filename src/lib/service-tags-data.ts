@@ -23,11 +23,11 @@ export interface ServiceTag {
 /** The six service pillars, each framed as the question it answers. Media
  *  are the client's own hosted clips. */
 const PILLARS = [
-  { n: '01', title: 'Strategy',    q: 'What should we build?',                     video: '/assets/services/martech-genai/digital-transformation-roadmaps.mp4' },
+  { n: '01', title: 'Strategy',    q: 'What should we build?',                     video: '/assets/services/growth/digital-transformation-roadmaps.mp4' },
   { n: '02', title: 'Engineering', q: 'How do we build and scale it?',             video: '/assets/more/home/web-app-development.mp4' },
   { n: '03', title: 'Brand',       q: 'How should we be perceived?',               video: '/assets/more/home/brand-strategy.mp4' },
   { n: '04', title: 'Growth',      q: 'How do we acquire and retain customers?',   video: '/assets/more/home/martech-genai.mp4' },
-  { n: '05', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: '/assets/services/martech-genai/seamless-platform-integration.mp4' },
+  { n: '05', title: 'Operations',  q: 'How do we run, secure and improve it?',     video: '/assets/services/growth/seamless-platform-integration.mp4' },
   { n: '06', title: 'Experience',  q: 'How should people interact with us?',       video: '/assets/more/home/experience-design.mp4' },
 ];
 
