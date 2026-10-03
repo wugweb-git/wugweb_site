@@ -16,6 +16,9 @@ and this project adheres to Semantic Versioning.
 - **`faq.astro` + Sanity faq page**: removed the old service names ("Brand & Strategy", "Martech & Gen AI", "QA & Testing", "No-Code Development"); now lists the six pillars.
 - **Notion**: new `Pages` database (14 rows from Sanity `singletonPage`, one-block bodies), 6 new Sanity page docs (404, contact-error, offline, thank-you, cookie-policy, reviews), 7 sub-service rows added to the Notion Services DB, blogs and case studies synced.
 
+### Changed — Sub-service merge (2026-10-04)
+- Strategy 14→9, Engineering 20→12, Growth 16→10, Operations 15→10 (Brand and Experience unchanged at 10). Sanity capabilities and 41 taxonomy docs updated; Notion Sub Service rows renamed; showcase enabled for all six pillars in `src/pages/services/[slug].astro`.
+
 ### Pending delete (owner action)
 - Old R2 keys, old local service folders, and the 7 non-pillar Sanity `service` docs (+ drafts) are still in place. They are not referenced by any document; the 7 old slugs resolve to their pillar through `FRAMER_TO_PILLAR` in `src/pages/services/[slug].astro`.
 

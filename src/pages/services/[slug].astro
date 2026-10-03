@@ -114,11 +114,11 @@ const capabilityItems = safeArr(service.capabilities, [])
 const capabilityDense = capabilityItems.length > 12;
 
 /**
- * The showcase is live on /services/brand only until the pattern is signed off.
- * Every other pillar keeps the original grouped capability panels. Add slugs
- * here (or drop the pillar check) to roll it out.
+ * The showcase is live on all six pillars (rolled out 2026-10-04) — every
+ * sub-service has a mapped clip in service-media.ts. To scope it back to a
+ * single pillar, restore the `pillarSlug === 'brand'` check.
  */
-const showcaseEnabled = pillarSlug === 'brand' && capabilityItems.length > 0;
+const showcaseEnabled = capabilityItems.length > 0;
 
 /**
  * "Why us?" BentoBlock — the four reasons are the service's own `why` array,
@@ -336,9 +336,8 @@ if (!service) {
     )}
 
     <!-- CAPABILITIES — glass showcase.
-         Scoped to /services/brand while the pattern is being signed off. The
-         other five pillars keep the original grouped panels below, untouched.
-         Widen `showcaseEnabled` to roll it out. -->
+         Live on all six pillars. The original grouped panels below only render
+         when a service has no capability items. -->
     {showcaseEnabled && (
       <section class="wrap capabilities-section" aria-labelledby="caps-heading" id="capabilities-section">
         {/* A real h2 so the ten sub-service h3s below sit under a parent
