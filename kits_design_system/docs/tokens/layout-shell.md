@@ -119,9 +119,25 @@ and squeezing content to 1160; removed. That was the rule I had moved from
 Measured on every `.wrap` at all three breakpoints: one content width and one
 gutter per breakpoint — 343/16, 704/32, 1200/48 — with no page overflow.
 
-**Not yet on the spec rhythm:** `--space-section-md` (25 uses), `-lg` (21),
-`-sm` (4) are still flat. The nav is `var(--gap-5) var(--gap-6) 0` against the
-spec's uniform 20px.
+**Vertical rhythm — on spec everywhere (2026-10-03).** One rule in `global.css`
+gives every top-level section `padding-block: var(--section-y)` (48 / 70 / 96),
+zeroes its vertical margin (the canvas has gap 0, so spacing is padding only),
+and zeroes vertical padding on an inner `.wrap` so the two never stack. It uses
+`!important`, deliberately and narrowly: per-section rules compile to scoped
+selectors that would otherwise outrank it. Before it, 58 of 156 top-level
+sections rendered off-spec, from 0/0 to 172/96.
+
+Exempt, because they are `<section>` elements but not page sections:
+`.global-final-cta` (a card inside its own band) and the filter toolbars
+`.blog-filters`, `.work-filters`, `.theme-switcher-bar`.
+
+**Nav — on spec.** `16px` mobile, `20px 32px` tablet, `20px` desktop, with
+safe-area insets added. This supersedes an earlier audit note in
+`SiteHeader.astro` that had rejected exactly these stepped values as
+"non-monotonic".
+
+Verified on 22 pages at 375, 768 and 1440: **136 of 136** top-level sections
+on spec, nav on spec on **22 of 22**, no horizontal overflow at any width.
 
 ## Every section is labelled — mandatory
 

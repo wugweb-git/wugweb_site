@@ -1164,6 +1164,30 @@ a[href^='tel:']:not(.no-external-icon)::after {
  * alone had 13 uses and came from Bootstrap, which this project does not use.
  * ───────────────────────────────────────────────────────────────────────── */
 
+/* ─── Section rhythm — layout-shell.md ────────────────────────────────────
+ * Every top-level section gets the spec's vertical padding: 48 mobile, 70
+ * tablet, 96 desktop (--section-y, stepped in :root with the gutter).
+ * Spacing between sections is padding ONLY — the canvas has gap 0 — so
+ * sections carry no vertical margin, and an inner .wrap carries no vertical
+ * padding of its own (otherwise the two stack).
+ *
+ * Measured before this rule: 58 of 156 top-level sections across 22 pages
+ * rendered off-spec, from 0/0 to 172/96, because each page set its own
+ * padding-block. !important is deliberate and narrow — this is the single
+ * enforcement point, and per-section rules compile to scoped selectors that
+ * would otherwise outrank it. It touches padding-block and margin-block only.
+ *
+ * Exempt, because they are not page sections despite the element:
+ *   .global-final-cta     a rounded card inside its own band
+ *   .blog-filters, .work-filters, .theme-switcher-bar   filter toolbars
+ * Nested sections are excluded by :not(section section). */
+:root { --section-y: var(--space-section-xl); }
+section:not(section section):not(.global-final-cta):not(.blog-filters):not(.work-filters):not(.theme-switcher-bar) {
+  padding-block: var(--section-y) !important;
+  margin-block: 0 !important;
+}
+section:not(section section) > .wrap { padding-block: 0 !important; }
+
 /* REMOVED: a second .wrap padding-inline of calc(--gap-12 + --gap-5) = 68px at
    >=1280. It overrode the shell's 48px gutter and squeezed the content box to
    1160 instead of 1200, which is how the shell looked applied but measured

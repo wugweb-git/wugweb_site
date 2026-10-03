@@ -1347,5 +1347,6 @@ looped card headings (duplicate IDs, sections named after their first card),
 conditional and CMS-fallback headings (dangling references), and two sections
 in `src/layouts/` the sweep never scanned. Rules now in `layout-shell.md`.
 
-**Still open on the spec:** `--space-section-md/lg/sm` flat (50 uses); nav
-padding not yet the spec's uniform 20px.
+**Then closed the same day:** vertical rhythm 48/70/96 on every top-level
+section and nav padding 16 / 20·32 / 20 — 136 of 136 sections and 22 of 22
+navs on spec at all three breakpoints. See layout-shell.md.

@@ -92,12 +92,15 @@ function isActive(href: string) {
     z-index: 50;
     /* The bar floats inset from the screen edge; under viewport-fit=cover
        that edge is behind the notch, so the insets are added to the gutter. */
-    /* Audit §3 nav inset, decided: a single fluid 16→32 rather than the old
-       site's stepped 16/32/20, which was non-monotonic - it narrowed again at
-       desktop and made the nav narrower than the content it sits over. */
-    padding: calc(var(--safe-top) + var(--shell-inset))
-             calc(var(--safe-right) + var(--shell-inset)) 0
-             calc(var(--safe-left) + var(--shell-inset));
+    /* layout-shell.md, 2026-10-03: 16px mobile / 20px 32px tablet / 20px
+       desktop. SUPERSEDES the earlier audit §3 decision here, which had chosen
+       a single fluid 16→32 inset over exactly these stepped values as
+       "non-monotonic". The spec was supplied explicitly and wins. Safe-area
+       insets are still added so the bar clears the notch. */
+    padding: calc(var(--safe-top) + 16px)
+             calc(var(--safe-right) + 16px)
+             16px
+             calc(var(--safe-left) + 16px);
     background: transparent;
   }
 
@@ -414,7 +417,10 @@ function isActive(href: string) {
   }
 
   @media (min-width: 768px) {
-    .site-header { padding: var(--gap-5) var(--gap-6) 0; }
+    .site-header {
+      padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 32px)
+               20px calc(var(--safe-left) + 32px);
+    }
     .nav-top { padding-inline: var(--gap-5); }
     .nav-toggle { display: none; }
     .menu-meta { display: none !important; }
@@ -468,7 +474,10 @@ function isActive(href: string) {
   }
 
   @media (min-width: 1200px) {
-    .site-header { padding-inline: var(--gap-12); }
+    .site-header {
+      padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 20px)
+               20px calc(var(--safe-left) + 20px);
+    }
   }
 </style>
 
