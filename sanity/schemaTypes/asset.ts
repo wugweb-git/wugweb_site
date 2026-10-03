@@ -38,6 +38,29 @@ export default defineType({
     defineField({ name: 'linkedService', type: 'reference', to: [{ type: 'service' }], group: 'links' }),
     defineField({ name: 'linkedPost', type: 'reference', to: [{ type: 'post' }], group: 'links' }),
     defineField({ name: 'linkedPageId', type: 'string', description: 'singletonPage.pageId e.g. home, about', group: 'links' }),
+    // Computed by scripts/scan-asset-usage.mjs — what ACTUALLY references this
+    // file (Sanity content + site code), unlike the linked* fields above, which
+    // are manual claims. Read-only: the next scan overwrites any hand edit.
+    defineField({
+      name: 'usedBy', title: 'Used by', type: 'array', group: 'links', readOnly: true,
+      description: 'Every document field and code file that references this file. Written by the usage scan — do not edit.',
+      of: [{
+        type: 'object',
+        name: 'assetUsage',
+        fields: [
+          { name: 'kind', type: 'string', options: { list: ['content', 'code'] } },
+          { name: 'label', type: 'string' },
+          { name: 'field', type: 'string' },
+          { name: 'docId', type: 'string' },
+          { name: 'docType', type: 'string' },
+        ],
+        preview: { select: { title: 'label', subtitle: 'field' } },
+      }],
+    }),
+    defineField({
+      name: 'usedByCount', title: 'Used by (count)', type: 'number', group: 'links', readOnly: true,
+      description: '0 = nothing references this file. Empty = added since the last usage scan, so not yet known.',
+    }),
   ],
   orderings: [
     { name: 'nameAsc', title: 'Name A-Z', by: [{ field: 'name', direction: 'asc' }] },

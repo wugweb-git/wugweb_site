@@ -29,13 +29,22 @@ interface AssetRow {
   linkedService?: string;
   linkedPost?: string;
   linkedPageId?: string;
+  /** From scripts/scan-asset-usage.mjs. undefined = not scanned yet (a new asset). */
+  usedByCount?: number;
 }
+
+// Unused means the scan ran and found nothing referencing the file. The old
+// test only looked at the five manual linked* fields, which content almost
+// never sets (it points at media by path string), so it called ~350 files
+// unused when most were in use. An asset with no usedByCount has simply not
+// been scanned, which is not the same thing as unused.
+const isUnused = (r: AssetRow) => r.usedByCount === 0;
 
 const QUERY = `{
   "assets": *[_type == "asset"] | order(sitePath asc) [0...600] {
     _id, _type, _updatedAt, name, displayName, "slug": slug.current, assetType, mediaType, assetGroup,
     usage, alt, status, folder, relativePath, sitePath, r2Key, publicUrl, fileName, extension,
-    localExists, r2Synced, "linkedCaseStudy": linkedCaseStudy->title, "linkedClient": linkedClient->name,
+    localExists, r2Synced, usedByCount, "linkedCaseStudy": linkedCaseStudy->title, "linkedClient": linkedClient->name,
     "linkedService": linkedService->title, "linkedPost": linkedPost->title, linkedPageId
   },
   "total": count(*[_type == "asset"])
@@ -126,7 +135,7 @@ function MediaToolContent() {
   }, [load]);
 
   const stats = useMemo(() => {
-    const unused = rows.filter((r) => !r.linkedCaseStudy && !r.linkedClient && !r.linkedService && !r.linkedPost && !r.linkedPageId);
+    const unused = rows.filter(isUnused);
     const missingAlt = rows.filter((r) => (r.mediaType === 'Image' || r.mediaType === 'SVG') && !r.alt);
     const byKey = new Map<string, AssetRow[]>();
     rows.forEach((r) => {
@@ -157,7 +166,7 @@ function MediaToolContent() {
     }
     switch (filter) {
       case 'unused':
-        out = out.filter((r) => !r.linkedCaseStudy && !r.linkedClient && !r.linkedService && !r.linkedPost && !r.linkedPageId);
+        out = out.filter(isUnused);
         break;
       case 'missingAlt':
         out = out.filter((r) => (r.mediaType === 'Image' || r.mediaType === 'SVG') && !r.alt);

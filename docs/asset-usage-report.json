@@ -1,0 +1,2593 @@
+{
+  "generatedAt": "2026-10-03T21:37:13.247Z",
+  "scanned": {
+    "contentTypes": [
+      "brandAsset",
+      "caseStudy",
+      "client",
+      "engagement",
+      "experiment",
+      "industry",
+      "pageSection",
+      "person",
+      "platformProfile",
+      "post",
+      "service",
+      "singletonPage",
+      "siteSettings",
+      "taxonomy",
+      "testimonial"
+    ],
+    "contentDocs": 966,
+    "codeFiles": 81
+  },
+  "assets": {
+    "total": 588,
+    "used": 481,
+    "unused": 107,
+    "pathless": 0,
+    "sharingAPath": 58
+  },
+  "usedBy": {
+    "contentOnly": 447,
+    "codeOnly": 3,
+    "both": 31
+  },
+  "unusedByGroup": {
+    "Services": 44,
+    "Framer": 38,
+    "More": 14,
+    "Work": 8,
+    "Brand": 3
+  },
+  "unusedByMediaType": {
+    "Video": 55,
+    "Image": 46,
+    "SVG": 6
+  },
+  "brokenReferences": {
+    "missing": 52,
+    "unregistered": 352,
+    "total": 404,
+    "visibleToVisitors": 0
+  },
+  "checks": {
+    "serviceMediaRefs": "107 parsed of 107 dir: entries",
+    "galleryFallbackKeys": 7
+  },
+  "unused": [
+    "Generated SVG",
+    "Generated SVG",
+    "Generated SVG",
+    "Generated SVG",
+    "Generated SVG",
+    "Generated SVG",
+    "about/about-7.mp4",
+    "about/about-image-1.webp",
+    "about/about-image-2.webp",
+    "about/about-image-3.webp",
+    "about/about-message.mp4",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/challenges-image-h4hs.png",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/client-logo-enb1.png",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/conclusion-image-1-m6oa.jpg",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/conclusion-image-2-74t5.jpg",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/design-philosophy-image-3-i2kz.jpg",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/design-philosophy-image-fxib.jpg",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/filler-image-2-0ves.jpg",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/filler-image-ikvs.jpg",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/solution-image-1-tle0.jpg",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/solution-image-2-7adq.jpg",
+    "framer/adneto-digital-showcase-ai-powered-loyalty-platform/solution-image-3-h10z.jpg",
+    "framer/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/client-logo-c6rj.png",
+    "framer/airtel-xstream-play-digital-entertainment-ux-web-design/client-logo-8gyg.png",
+    "framer/bankco-super-app-digital-banking-loyalty-commerce/client-logo-qhmv.png",
+    "framer/cartier-career-site-redesign-luxury-ux-ui-talent-branding/client-logo-jrot.png",
+    "framer/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/client-logo-te1y.png",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/challenge-image-1-nyzk.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/challenge-image-2-res4.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/challenges-image-bce5.png",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/client-logo-5nkj.png",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/conclusion-image-1-rwz2.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/conclusion-image-2-3zq3.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/design-philosophy-image-3-m3jq.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/design-philosophy-image-f43i.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/filler-image-2-b408.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/filler-image-ynfu.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/solution-image-1-cnws.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/solution-image-2-4wf2.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/solution-image-3-luhb.jpg",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/styles-image-1-sffk.png",
+    "framer/kia-customer-loyalty-dashboard-ui-ux/styles-image-2-uvub.png",
+    "framer/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/client-logo-grfk.png",
+    "framer/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/client-logo-6djh.png",
+    "framer/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/client-logo-9fd5.png",
+    "framer/rideev-powering-the-phygital-ev-revolution-in-india/client-logo-1gbn.png",
+    "framer/sadhan-streamlining-driver-onboarding-lead-management/client-logo-zqsr.png",
+    "framer/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/client-logo-d64b.png",
+    "framer/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience/client-logo-q4ee.png",
+    "logos/client-logo-8gyg.png",
+    "logos/client-logo-r3kl.jpg",
+    "logos/client-logo-zqsr.png",
+    "more/home/Web & App Development.mp4",
+    "more/service/service_benefit_6.webp",
+    "more/service/service_message.mp4",
+    "services/Experience Design/Adaptive Platforms.mp4",
+    "services/Experience Design/Design Systems.mp4",
+    "services/Experience Design/Experience Design - UX.mp4",
+    "services/Experience Design/Interface Mastery - UI.mp4",
+    "services/Experience Design/Journey architecture.mp4",
+    "services/Experience Design/Mobile ecosystems.webp",
+    "services/Experience Design/Performance Optimization.mp4",
+    "services/Experience Design/Rapid Concepting.mp4",
+    "services/Experience Design/User Intelligence.mp4",
+    "services/Martech & GenAi/AI-Powered Content Experiences/Generative AI Content Creation.mp4",
+    "services/Martech & GenAi/AI-Powered Content Experiences/Immersive Content Strategies.mp4",
+    "services/Martech & GenAi/AI-Powered Content Experiences/Personalized Content Delivery.mp4",
+    "services/Martech & GenAi/Data-Driven Growth Engines/AI-Powered Performance Marketing.mp4",
+    "services/Martech & GenAi/Data-Driven Growth Engines/Conversion rate optimisation.mp4",
+    "services/Martech & GenAi/Data-Driven Growth Engines/Predictive Analytics & Attribution.mp4",
+    "services/Martech & GenAi/Digital Transformation Strategy/Digital Transformation Roadmaps.mp4",
+    "services/Martech & GenAi/Digital Transformation Strategy/Disruptive Innovation Workshops.mp4",
+    "services/Martech & GenAi/Digital Transformation Strategy/Future-Forward Market Insights.mp4",
+    "services/Martech & GenAi/MarTech Ecosystems/Automation architecture.mp4",
+    "services/Martech & GenAi/MarTech Ecosystems/MarTech stack design.mp4",
+    "services/Martech & GenAi/MarTech Ecosystems/seamless platform integration.mp4",
+    "services/Web & App Development/API.mp4",
+    "services/Web & App Development/Bespoke Digital Solutions.mp4",
+    "services/Web & App Development/Cross-Platform & Hybrid Mobile Solutions.mp4",
+    "services/Web & App Development/Database Design & Optimization.mp4",
+    "services/Web & App Development/DevOps & Cloud Implementation.mp4",
+    "services/Web & App Development/Digital Platform Architecture.mp4",
+    "services/Web & App Development/Ecommerce.mp4",
+    "services/Web & App Development/Front-End Engineering.mp4",
+    "services/Web & App Development/Native Mobile Application Development.mp4",
+    "services/Web & App Development/Ongoing Support.mp4",
+    "services/Web & App Development/Progressive Web Applications (PWAs).mp4",
+    "services/Web & App Development/backend.mp4",
+    "services/brand-strategy/Brand Audit & Analysis.mp4",
+    "services/brand-strategy/Brand Evolution & Management.mp4",
+    "services/brand-strategy/Brand Experience.mp4",
+    "services/brand-strategy/Brand Identity Systems.mp4",
+    "services/brand-strategy/Brand Position & Strategy.mp4",
+    "services/brand-strategy/Brand activation.mp4",
+    "services/brand-strategy/Naming & Nomenclature.mp4",
+    "services/brand-strategy/Narrative Architecture.mp4",
+    "services/brand-strategy/Voice & Tone.mp4",
+    "services/martech-genai/digital-transformation-roadmaps.mp4",
+    "services/martech-genai/seamless-platform-integration.mp4",
+    "work/bankco/bankco-thumb.mp4",
+    "work/bankco/bankco-thumb.mp4",
+    "work/gratifi/gratifi-about.mp4",
+    "work/gratifi/gratifi-about.mp4",
+    "work/gratifi/gratifi-dp.mp4",
+    "work/gratifi/gratifi-dp.mp4",
+    "work/kits-by-wugweb/bankco-about.mp4",
+    "work/others/Linkedin.mp4"
+  ],
+  "broken": [
+    {
+      "reason": "missing",
+      "path": "work/Aditya Birla Credit/abc_about.mp4",
+      "where": "caseStudy: Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Aditya Birla Credit/abc_dp.mp4",
+      "where": "caseStudy: Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Adneto/adneto_about.mp4",
+      "where": "caseStudy: Crafting Digital Authority: The Adneto Website Showcase · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Adneto/adneto_thumb.mp4",
+      "where": "caseStudy: Crafting Digital Authority: The Adneto Website Showcase · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Airtel Xsafe/Xsafe_about.mp4",
+      "where": "caseStudy: Airtel Xsafe – Securing Homes with Intuitive Digital Experiences · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Airtel Xsafe/Xsafe_dp.mp4",
+      "where": "caseStudy: Airtel Xsafe – Securing Homes with Intuitive Digital Experiences · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Airtel Xsafe/Xsafe_thumb.mp4",
+      "where": "caseStudy: Airtel Xsafe – Securing Homes with Intuitive Digital Experiences · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Airtel Xstream/Xstream_about.mp4",
+      "where": "caseStudy: Airtel Xstream Play – Showcasing India's Unified Digital Entertainment on the Web · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Airtel Xstream/Xstream_dp.mp4",
+      "where": "caseStudy: Airtel Xstream Play – Showcasing India's Unified Digital Entertainment on the Web · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Airtel Xstream/Xstream_thumb.mp4",
+      "where": "caseStudy: Airtel Xstream Play – Showcasing India's Unified Digital Entertainment on the Web · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Axis Bank/axis_about.mp4",
+      "where": "caseStudy: The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Axis Bank/axis_dp.mp4",
+      "where": "caseStudy: The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Axis Bank/axis_thumb.mp4",
+      "where": "caseStudy: The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Bankco/bankco_about.mp4",
+      "where": "caseStudy: Bankco – Revolutionizing Financial Engagement with a Super App · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Bankco/bankco_thumb.mp4",
+      "where": "caseStudy: Bankco – Revolutionizing Financial Engagement with a Super App · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Cartier/cartier_about.mp4",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Cartier/cartier_dp.mp4",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Cartier/cartier_thumb.mp4",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Gratifi/gratifi_about.mp4",
+      "where": "caseStudy: Gratify – The Intelligent Rewards & Feedback Platform · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Gratifi/gratifi_dp.mp4",
+      "where": "caseStudy: Gratify – The Intelligent Rewards & Feedback Platform · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Gratifi/gratifi_thumb.mp4",
+      "where": "caseStudy: Gratify – The Intelligent Rewards & Feedback Platform · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "Work/Indusninja/Indusninja_about.mp4",
+      "where": "caseStudy: IndusNinja – Your AI-Powered Financial Ninja · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "Work/Indusninja/Indusninja_dp.mp4",
+      "where": "caseStudy: IndusNinja – Your AI-Powered Financial Ninja · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Indusninja/Indusninja_thumb.mp4",
+      "where": "caseStudy: IndusNinja – Your AI-Powered Financial Ninja · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Inkompass/inkompass_about.mp4",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Inkompass/inkompass_dp.mp4",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Inkompass/inkompass_thumb.mp4",
+      "where": "caseStudy: Demystifying Finance: Crafting the UX for Aditya Birla Capital's Credit Score Tool · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Inkompass/inkompass_thumb.mp4",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Kia/kia_about.mp4",
+      "where": "caseStudy: Accelerating Loyalty: Designing Kia's Intuitive Customer Dashboard · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Kia/kia_thumb.mp4",
+      "where": "caseStudy: Accelerating Loyalty: Designing Kia's Intuitive Customer Dashboard · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Metcred/metcred_about.mp4",
+      "where": "caseStudy: The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Metcred/metcred_dp.mp4",
+      "where": "caseStudy: The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Metcred/metcred_thumb.mp4",
+      "where": "caseStudy: The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/NTUC/ntuc_about.mp4",
+      "where": "caseStudy: NTUC U Care Fund – Digital Transformation for Enhanced Member Support · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/NTUC/ntuc_dp.mp4",
+      "where": "caseStudy: NTUC U Care Fund – Digital Transformation for Enhanced Member Support · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/NTUC/ntuc_thumb.mp4",
+      "where": "caseStudy: NTUC U Care Fund – Digital Transformation for Enhanced Member Support · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Plufo/plufo_about.mp4",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Plufo/plufo_dp.mp4",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Plufo/plufo_thumb.mp4",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/RideEV/RideEV_about.mp4",
+      "where": "caseStudy: RideEV – Powering the Phygital EV Revolution in India · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/RideEV/RideEV_dp.mp4",
+      "where": "caseStudy: RideEV – Powering the Phygital EV Revolution in India · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/RideEV/RideEV_thumb.mp4",
+      "where": "caseStudy: RideEV – Powering the Phygital EV Revolution in India · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Sadhan/sadhan_about.mp4",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Sadhan/sadhan_dp.mp4",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Sadhan/sadhan_thumb.mp4",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/TOT/tot_about.mp4",
+      "where": "caseStudy: Crafting Digital Elegance: The TOT Bridal Launch Story · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/TOT/tot_dp.mp4",
+      "where": "caseStudy: Crafting Digital Elegance: The TOT Bridal Launch Story · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/TOT/tot_thumb.mp4",
+      "where": "caseStudy: Crafting Digital Elegance: The TOT Bridal Launch Story · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Valyu/Valyu_about.mp4",
+      "where": "caseStudy: VALYU.ai – Empowering India's Workforce with On-Demand Earned Wages · designPhilosophyVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/Valyu/Valyu_thumb.mp4",
+      "where": "caseStudy: VALYU.ai – Empowering India's Workforce with On-Demand Earned Wages · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/VisiOne/visiOne_about.mp4",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · aboutVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "missing",
+      "path": "work/VisiOne/visiOne_thumb.mp4",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · thumbnailVideoPath",
+      "rendered": false
+    },
+    {
+      "reason": "unregistered",
+      "path": "about/team-wugweb-design.png",
+      "where": "person: Wugweb Design · photoPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023__07__01_Future-Proofing-Your-Designs_-The-Top-10-Design-Systems-for-UX_UI-Designers-in-2023-1024x1024.png",
+      "where": "post: Future-Proofing Your Designs: The Top 10 Design Systems for UX/UI Designers in 2023 · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023__07__10_How-to-strike-a-Balance-Between-User-Needs-and-Your-Business-Goals-1024x1024.png",
+      "where": "post: How to strike a balance between User Needs and your Business Goals · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--03-Embracing-the-Design-Journey--Remote-Working-Culture-The-Challenges.png",
+      "where": "post: Embracing the Design Journey: Remote Working Culture - The Challenges and Perks · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--04-When-UX-Meets-CX--Creating-Seamless-Experiences-for-Users-and-Custo.png",
+      "where": "post: When UX Meets CX: Creating Seamless Experiences for Users and Customers · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--05-Agile-Working-in-UX--Unleashing-Creativity-Collaboration-and-Flexib.png",
+      "where": "post: Agile Working in UX: Unleashing Creativity, Collaboration, and Flexibility · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--06-Unlocking-the-Design-Puzzle--Decoding-the-Concentration-of-Work-in-.png",
+      "where": "post: Unlocking the Design Puzzle: Decoding the Concentration of Work in the Design Field · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--07-When-and-How-to-Use-HTML-Sitemaps-for-SEO-and-UX--Unleashing-the-Po.png",
+      "where": "post: When and How to Use HTML Sitemaps for SEO and UX: Unleashing the Power of Navigational Maps · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--08-Supercharge-Your-Designs--15-Must-Know-Figma-Updates-from-Config-20.png",
+      "where": "post: Supercharge Your Designs: 15 Must-Know Figma Updates from Config 2023 · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--09-The-Future-of-UX-Design--Enhancing-User-Experiences-with-AI.png",
+      "where": "post: The Future of UX Design: Enhancing User Experiences with AI · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--11-Decoding-UX-Jargon--A-Simplified-Guide-to-Understanding-UX-Terms.pn.png",
+      "where": "post: Decoding UX Jargon: A Simplified Guide to Understanding UX Terms · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "blog/wp/2023--07--Adobe-XD--Pioneering-Design-Evolving-Trends-and-the-Future-Amidst-Figm.png",
+      "where": "post: Adobe XD: Pioneering Design, Evolving Trends, and the Future Amidst Figma's Rise · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "more/home/home-poster.webp",
+      "where": "src/pages/index.astro · literal",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/about.jpg",
+      "where": "singletonPage: About Us · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/blog.jpg",
+      "where": "singletonPage: Wugweb | Insights on UI/UX Design & Digital Strategy · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/contact.jpg",
+      "where": "singletonPage: Are you ready to build something that matters? · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Frequently Asked Questions · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Where Vision Meets Velocity · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Impact · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Industries · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Privacy Policy · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Refund Policy · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Sitemap · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Subscribe — Wugweb · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "singletonPage: Terms of Use · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/default.jpg",
+      "where": "src/layouts/BaseLayout.astro · literal",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Brand · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Engineering · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Experience · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Growth · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Operations · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Brand Strategy · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Experience Design · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Lead Generation · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Martech and GenAI · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: No-Code Solutions · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: QA and Testing · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Web and App Development · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "service: Strategy · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/services.jpg",
+      "where": "singletonPage: Digital Experience Services — Wugweb · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "og/work.jpg",
+      "where": "singletonPage: Clients – Wugweb | Trusted by Innovative Brands · ogImagePath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Brand activation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Brand Audit Analysis.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Brand Evolution Management.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Brand Experience.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Brand Identity Systems.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Brand Position Strategy.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Brand Position Strategy.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Naming Nomenclature.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Narrative Architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Brand activation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Brand Audit Analysis.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Brand Evolution Management.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Brand Experience.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Brand Identity Systems.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Brand Position Strategy.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Brand Position Strategy.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Naming Nomenclature.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Narrative Architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/posters/Voice Tone.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/brand/Voice Tone.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/API.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/API.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/API.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/backend.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/backend.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/backend.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Bespoke Digital Solutions.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Bespoke Digital Solutions.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Bespoke Digital Solutions.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Bespoke Digital Solutions.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Cross-Platform Hybrid Mobile Solutions.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Database Design Optimization.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/DevOps Cloud Implementation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/DevOps Cloud Implementation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/DevOps Cloud Implementation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/DevOps Cloud Implementation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/DevOps Cloud Implementation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/DevOps Cloud Implementation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/DevOps Cloud Implementation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Digital Platform Architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Digital Platform Architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Digital Platform Architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Digital Platform Architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Digital Platform Architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Digital Platform Architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Ecommerce.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Front-End Engineering.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Front-End Engineering.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Front-End Engineering.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Native Mobile Application Development.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Native Mobile Application Development.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Ongoing Support.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Ongoing Support.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Ongoing Support.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/API.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/API.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/API.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/backend.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/backend.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/backend.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Bespoke Digital Solutions.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Bespoke Digital Solutions.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Bespoke Digital Solutions.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Bespoke Digital Solutions.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Digital Platform Architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Digital Platform Architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Digital Platform Architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Digital Platform Architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Digital Platform Architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Digital Platform Architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Ecommerce.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Front-End Engineering.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Front-End Engineering.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Front-End Engineering.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Native Mobile Application Development.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Native Mobile Application Development.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Ongoing Support.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Ongoing Support.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Ongoing Support.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Progressive Web Applications (PWAs).webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Progressive Web Applications (PWAs).webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/posters/Progressive Web Applications (PWAs).webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Progressive Web Applications (PWAs).mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Progressive Web Applications (PWAs).mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/engineering/Progressive Web Applications (PWAs).mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Adaptive Platforms.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Adaptive Platforms.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Design Systems.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Experience Design - UX.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Experience Design - UX.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Experience Design - UX.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Experience Design - UX.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Interface Mastery - UI.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Interface Mastery - UI.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Journey architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Performance Optimization.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Performance Optimization.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Performance Optimization.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Performance Optimization.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Performance Optimization.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Performance Optimization.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Adaptive Platforms.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Adaptive Platforms.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Design Systems.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Experience Design - UX.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Experience Design - UX.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Experience Design - UX.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Experience Design - UX.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Interface Mastery - UI.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Interface Mastery - UI.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Journey architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Performance Optimization.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Performance Optimization.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Performance Optimization.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Performance Optimization.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Performance Optimization.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Performance Optimization.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Rapid Concepting.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Rapid Concepting.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Rapid Concepting.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Rapid Concepting.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/Rapid Concepting.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/User Intelligence.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/posters/User Intelligence.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Rapid Concepting.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Rapid Concepting.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Rapid Concepting.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Rapid Concepting.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/Rapid Concepting.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/User Intelligence.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/experience/User Intelligence.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/AI-Powered Performance Marketing.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/AI-Powered Performance Marketing.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/AI-Powered Performance Marketing.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Automation architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Automation architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Automation architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Automation architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Automation architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Automation architecture.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Conversion rate optimisation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Conversion rate optimisation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Conversion rate optimisation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Conversion rate optimisation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Conversion rate optimisation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Digital Transformation Roadmaps.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Digital Transformation Roadmaps.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Digital Transformation Roadmaps.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/digital-transformation-roadmaps.mp4",
+      "where": "src/lib/service-tags-data.ts · literal",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Disruptive Innovation Workshops.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Future-Forward Market Insights.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Future-Forward Market Insights.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Future-Forward Market Insights.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Generative AI Content Creation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Generative AI Content Creation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Generative AI Content Creation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Generative AI Content Creation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Generative AI Content Creation.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Immersive Content Strategies.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Immersive Content Strategies.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/MarTech stack design.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Personalized Content Delivery.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/AI-Powered Performance Marketing.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/AI-Powered Performance Marketing.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/AI-Powered Performance Marketing.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Automation architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Automation architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Automation architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Automation architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Automation architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Automation architecture.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Conversion rate optimisation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Conversion rate optimisation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Conversion rate optimisation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Conversion rate optimisation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Conversion rate optimisation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Digital Transformation Roadmaps.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Digital Transformation Roadmaps.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Digital Transformation Roadmaps.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Disruptive Innovation Workshops.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Future-Forward Market Insights.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Future-Forward Market Insights.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Future-Forward Market Insights.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Generative AI Content Creation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Generative AI Content Creation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Generative AI Content Creation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Generative AI Content Creation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Generative AI Content Creation.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Immersive Content Strategies.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Immersive Content Strategies.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/MarTech stack design.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/Personalized Content Delivery.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/seamless platform integration.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/posters/seamless platform integration.webp",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Predictive Analytics Attribution.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Predictive Analytics Attribution.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Predictive Analytics Attribution.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Predictive Analytics Attribution.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/Predictive Analytics Attribution.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/seamless platform integration.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/seamless platform integration.mp4",
+      "where": "src/lib/service-media.ts · service-media",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "services/growth/seamless-platform-integration.mp4",
+      "where": "src/lib/service-tags-data.ts · literal",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/blog/the-80-20-path-to-innovation-lessons-from-gandhi/att/image.webp",
+      "where": "post: The 80/20 Path to Innovation: Lessons from Gandhi · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/blog/the-future-of-ai-search-what-openais-research-tells-us/att/ai-data-17.webp",
+      "where": "post: The Future of AI Search: What OpenAI’s Research Tells Us · coverPath",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/01-2.png",
+      "where": "caseStudy: Airtel Xsafe – Securing Homes with Intuitive Digital Experiences · bodyContent[16].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/airtel-xsafe-securing-homes-with-intuitive-digital-experiences/Airtel-Xsafe-1-–-6.jpg",
+      "where": "caseStudy: Airtel Xsafe – Securing Homes with Intuitive Digital Experiences · bodyContent[17].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56960.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[35]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56961.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[36]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56962.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[37]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56963.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[38]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56964.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[39]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56965.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[40]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56970.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[28]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56971.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[29]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56972.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[30]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56973.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[31]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56974.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[32]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56975.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[33]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Group-56976.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[34]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-12.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[17]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-14.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[18]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-15.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[19]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-16.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[20]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-17.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[21]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-19.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[22]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-20.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[23]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-23.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[24]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo-Login-Web-–-24.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[25]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Plufo.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[26]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners/Style-board.png",
+      "where": "caseStudy: Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners · galleryPaths[27]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15664.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[39].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15665.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[40].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15666.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[41].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15667.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[42].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15668.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[43].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15669.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[44].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15670.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[45].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15671.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[46].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15672-1.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[32].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15672.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[25].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15674.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[33].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15675.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[34].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15676.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[35].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15677.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[36].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15678.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[37].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15679.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[38].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15680.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[26].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15681.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[27].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15682.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[28].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15683.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[29].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15684.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[30].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-15685.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[31].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17581.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[21].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17582.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[22].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17583.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[23].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-cartier-s-career-website-where-passion-meets-excellence/Group-17584.png",
+      "where": "caseStudy: Redesigning Cartier's Career Website – Where Passion Meets Excellence · bodyContent[24].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/01_Home-copy.jpg",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[15]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/01-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[18]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02_Program-Details-copy-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[16]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02_Program-Details-copy.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[14]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/02-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[19]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/03_Discover-PMI-copy.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[17]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/03-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[20]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/04-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[22]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/05_01.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[23]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/06-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[27]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/4_04.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[21]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_02.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[24]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_03.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[25]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/5_04.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[26]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/7-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[28]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/8-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[29]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-1.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[30]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-2.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[31]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-5.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[32]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-6.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[33]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-7.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[34]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-8.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[35]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future/Artboard-–-9.png",
+      "where": "caseStudy: Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future · galleryPaths[36]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1036.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[16]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1037.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[17]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1038.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[18]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1039.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[19]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1040.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[20]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1041.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[21]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1042.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[22]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1044.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[23]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1045.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[24]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1046.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[25]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1051.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[26]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1052.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[27]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1053.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[28]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Group-1054.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[29]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/sadhan-streamlining-driver-onboarding-lead-management/Sadhan.png",
+      "where": "caseStudy: Sadhan – Streamlining Driver Onboarding & Lead Management · galleryPaths[30]",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/01.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[20].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/02.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[21].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/03.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[22].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/04.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[23].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/05.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[24].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/06.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[25].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/07.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[26].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/08.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[27].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/09.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[28].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/10.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[29].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/11.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[30].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/12.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[31].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/13.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[32].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2286.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[16].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2287.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[17].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2288.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[18].url",
+      "rendered": true
+    },
+    {
+      "reason": "unregistered",
+      "path": "uncode/case/visione-empowering-workforce-development-with-competency-based-assessments/Group-2289.png",
+      "where": "caseStudy: VisiONE – Empowering Workforce Development with Competency-Based Assessments · bodyContent[19].url",
+      "rendered": true
+    }
+  ]
+}

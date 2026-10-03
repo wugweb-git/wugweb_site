@@ -24,6 +24,7 @@ export const EDITORIAL_ASSET_FIELDS = [
   'status',
   'usage',
   'linkedCaseStudy',
+  'linkedService',
   'linkedPost',
   'linkedClient',
   'linkedPageId',
