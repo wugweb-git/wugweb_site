@@ -211,6 +211,71 @@ content is named **semantically**, not by sprinkling attributes:
 | filter rows | `role="toolbar"` + `aria-label` |
 | media + caption | `figure` + `figcaption` |
 
+## Carried from the 2026-09-22 UI audit — current parts only
+
+Source: [`Claude outputs/ui-spec-2026-09-22/wugweb-site-ui-spec.md`](../../../Claude%20outputs/ui-spec-2026-09-22/wugweb-site-ui-spec.md),
+measured on the Framer site. Only what still holds is carried; each item was
+re-checked against the code on 2026-10-03.
+
+### Width rule — nothing wider than the nav
+
+| | value |
+|---|---|
+| nav inner container | max **1280** (`80rem`), centred |
+| section content | max **1200**, centred |
+| rule | no non-full-bleed block may be wider than the nav |
+
+`.global-final-cta` is a band with a rounded card inside it; the card must not
+opt out of the shell with its own width or gutter.
+
+### Mobile menu — required behaviour
+
+| rule | status |
+|---|---|
+| covers the screen: `100dvh` with `100svh` fallback, minus safe areas | ✅ |
+| scrolls internally on short screens, `overscroll-behavior: contain` | ✅ |
+| scroll lock via `position: fixed` on body, scroll position restored (iOS ignores `overflow: hidden`) | ✅ `src/lib/site-header.ts` |
+| toggle keeps the exact coordinates it has when closed | rule |
+| one left edge for logo, links, contact and legal | rule |
+| links at the top; contact and legal pinned to the bottom | rule |
+| open/close animates with the nav spring (0.4 s, bounce 0.2); links fade + rise, ~40 ms stagger; toggle morphs by transform | rule |
+| WhatsApp / phone: +91 92059 96219 | ✅ decided |
+
+### Motion
+
+- **Nav and hover:** the Spring token above (0.4 s, bounce 0.2, delay 0).
+- **Load / scroll-in:** opacity + translateY via GSAP (`[data-reveal]`),
+  first group at 0.4 s, second at 0.9 s — Framer used spring stiffness 200 /
+  damping 60 for these.
+- Transform-based only; everything behind `prefers-reduced-motion`.
+
+### PWA / safe areas — all in place
+
+`viewport-fit=cover` · `env(safe-area-inset-*)` via `--safe-*` on the nav ·
+dedicated maskable icon (`pwa-maskable-512.png`) · `dvh` with `svh` fallback.
+
+### Hero — first screen
+
+On a 390 × 844 phone the headline, subhead and primary action sit on the first
+screen, not under the cookie banner. (Rule; not re-measured in this pass.)
+
+### Open
+
+- Framer's media aspect ratios — 1, 3.75, 2.857, 1.76, 1.75, 1.71, 1.206 —
+  are not yet mapped to sections; the site currently uses 16:9, 16:10, 4:3,
+  3:2, 3:4, 2:1, 1:1.
+
+### Not carried — superseded
+
+| audit section | superseded by |
+|---|---|
+| §2 breakpoints "delete 1024" | 5-threshold scale (`breakpoints.md`); the **shell** steps only at 768 and 1200 |
+| §3 nav-inset decision | decided: 16 / 20·32 / 20 (this file) |
+| §4.1 type scale, §4.3 fluid spacing | `typography.md`; stepped 48 / 70 / 96 rhythm (this file) |
+| §5 token counts, §6 component counts | stale measurements, re-audited in Phase C |
+| §7 nav card values (inset, logo, link sizes) | nav padding and 100 px height in this file |
+| §12 Storybook, §14 content flags | out of layout scope (logos: user mapping) |
+
 ## CMS fields per level — page · section · component
 
 Source: [`docs/schema-template-section-component-level.md`](../../../docs/schema-template-section-component-level.md).
