@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Box, Card, Flex, Text } from '@sanity/ui';
+import { Box, Card, Flex, Stack, Text } from '@sanity/ui';
 import { AddIcon } from '@sanity/icons';
 import { useClient } from 'sanity';
 import { usePaneRouter } from 'sanity/structure';
 import { DataTable } from './DataTable';
 import { TABLE_MAP } from '../lib/tableConfigs';
 import { fetchDocs } from '../lib/groq';
-import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs } from '../lib/docActions';
+import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs, setFieldDocs } from '../lib/docActions';
 import type { Row } from '../lib/types';
 
 interface DocumentListPaneProps {
@@ -78,8 +78,10 @@ export function DocumentListPane(props: DocumentListPaneProps) {
     <Card tone="default" padding={[2, 3]} style={{ minHeight: '100%' }}>
       <Flex align="center" gap={2} paddingBottom={3}>
         <Box flex={1}>
-          <Text size={2} weight="semibold">{config.title}</Text>
-          <Text size={1} muted>{rows.length} documents</Text>
+          <Stack space={2}>
+            <Text size={2} weight="semibold">{config.title}</Text>
+            <Text size={1} muted>{rows.length} documents</Text>
+          </Stack>
         </Box>
         <ButtonNew onClick={newDoc} />
       </Flex>
@@ -96,6 +98,12 @@ export function DocumentListPane(props: DocumentListPaneProps) {
         getRowSubtitle={config.getSubtitle}
         onReload={() => setReloadKey((k) => k + 1)}
         bulkActions={[
+          ...(config.bulkSets ?? []).map((set) => ({
+            id: `set:${set.field}`,
+            label: `Set ${set.label}`,
+            options: set.options,
+            run: (ids: string[], c: any, value?: string) => setFieldDocs(c, ids, set.field, value ?? ''),
+          })),
           { id: 'duplicate', label: 'Duplicate', run: (ids) => duplicateDocs(client, ids) },
           { id: 'publish', label: 'Publish', run: (ids) => publishDocs(client, ids) },
           { id: 'unpublish', label: 'Unpublish', run: (ids) => unpublishDocs(client, ids) },

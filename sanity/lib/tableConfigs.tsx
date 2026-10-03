@@ -34,6 +34,27 @@ const STATE: ColumnDef = {
   render: (row) => <PublishState row={row} />,
 };
 
+
+const ASSET_GROUPS = ['Work', 'Services', 'More', 'Brand', 'Blog', 'Framer'];
+const ASSET_MEDIA = ['Image', 'Video', 'SVG', 'Audio'];
+const ASSET_STATUS = ['Active', 'Archived', 'Reserved'];
+
+const ASSET_LINKS: [string, string][] = [
+  ['linkedCaseStudy', 'Case study'],
+  ['linkedClient', 'Client'],
+  ['linkedService', 'Service'],
+  ['linkedPost', 'Post'],
+  ['linkedPageId', 'Page'],
+];
+function assetLinkKind(row: Row): string {
+  const hit = ASSET_LINKS.find(([k]) => row[k]);
+  return hit ? hit[1] : 'Unlinked';
+}
+function assetLinkLabel(row: Row): string {
+  const hit = ASSET_LINKS.find(([k]) => row[k]);
+  return hit ? `${hit[1]}: ${String(row[hit[0]])}` : 'Unlinked';
+}
+
 export const TABLE_CONFIGS: TableConfig[] = [
   {
     key: 'redirect',
@@ -233,21 +254,30 @@ export const TABLE_CONFIGS: TableConfig[] = [
     type: 'asset',
     title: 'Media Library',
     query: `*[_type=="asset"][0...2000] | order(assetGroup asc, name asc) {
-      _id, _type, _updatedAt, name, displayName, "slug": slug.current, assetType, mediaType, assetGroup,
+      _id, _type, _updatedAt, name, displayName, alt, "slug": slug.current, assetType, mediaType, assetGroup,
       usage, status, folder, relativePath, sitePath, r2Key, publicUrl, fileName, extension,
       localExists, r2Synced, "linkedCaseStudy": linkedCaseStudy->title, "linkedClient": linkedClient->name,
       "linkedService": linkedService->title, "linkedPost": linkedPost->title, linkedPageId
     }`,
     columns: [
       { key: 'name', label: 'Name', width: 220, pinned: true },
-      { key: 'assetGroup', label: 'Group', width: 100, render: (row) => <Badge tone="default" fontSize={1}>{String(row.assetGroup || '—')}</Badge> },
-      { key: 'mediaType', label: 'Media', width: 90, render: (row) => <Text size={1} muted>{String(row.mediaType || '—')}</Text> },
-      { key: 'status', label: 'Status', width: 100, render: (row) => <StatusBadge value={String(row.status ?? '')} /> },
-      { key: 'usage', label: 'Usage', width: 110, render: (row) => <Text size={1} muted>{String(row.usage || '—')}</Text> },
-      { key: 'localExists', label: 'Local', width: 70, render: (row) => (row.localExists ? <Badge tone="positive">✓</Badge> : <Badge tone="caution">☁</Badge>) },
-      { key: 'r2Synced', label: 'R2', width: 60, render: (row) => (row.r2Synced ? <Badge tone="positive">✓</Badge> : <Badge tone="critical">✕</Badge>) },
+      { key: 'displayName', label: 'Display name', width: 180, edit: { kind: 'text' } },
+      { key: 'alt', label: 'Alt text', width: 220, edit: { kind: 'text' }, filter: true, value: (row) => (row.alt ? 'Has alt' : 'Missing alt') },
+      { key: 'assetGroup', label: 'Group', width: 120, filter: true, groupable: true, edit: { kind: 'select', options: ASSET_GROUPS } },
+      { key: 'mediaType', label: 'Media', width: 100, filter: true, groupable: true, edit: { kind: 'select', options: ASSET_MEDIA } },
+      { key: 'status', label: 'Status', width: 110, filter: true, groupable: true, edit: { kind: 'select', options: ASSET_STATUS } },
+      { key: 'usage', label: 'Usage', width: 130, filter: true, groupable: true, edit: { kind: 'combo' } },
+      { key: 'linkedTo', label: 'Linked to', width: 200, filter: true, groupable: true, sortable: true, value: assetLinkKind, render: (row) => <Text size={1} muted>{assetLinkLabel(row)}</Text> },
+      { key: 'localExists', label: 'Local', width: 80, filter: true, value: (row) => (row.localExists ? 'Yes' : 'No'), render: (row) => (row.localExists ? <Badge tone="positive">✓</Badge> : <Badge tone="caution">☁</Badge>) },
+      { key: 'r2Synced', label: 'R2', width: 70, filter: true, value: (row) => (row.r2Synced ? 'Yes' : 'No'), render: (row) => (row.r2Synced ? <Badge tone="positive">✓</Badge> : <Badge tone="critical">✕</Badge>) },
+      { key: 'folder', label: 'Folder', width: 160, groupable: true, hiddenByDefault: true },
       { key: 'relativePath', label: 'Path', width: 240, render: (row) => <Text size={1} muted>{String(row.relativePath || '—')}</Text> },
       UPDATED,
+    ],
+    bulkSets: [
+      { field: 'assetGroup', label: 'group', options: ASSET_GROUPS },
+      { field: 'mediaType', label: 'media type', options: ASSET_MEDIA },
+      { field: 'status', label: 'status', options: ASSET_STATUS },
     ],
     titleField: 'displayName',
     getTitle: (row) => String(row.displayName || row.name || row._id),

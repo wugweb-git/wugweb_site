@@ -15,6 +15,7 @@ interface AssetRow {
   assetType?: string;
   status?: string;
   usage?: string;
+  alt?: string;
   relativePath?: string;
   sitePath?: string;
   r2Key?: string;
@@ -33,12 +34,64 @@ interface AssetRow {
 const QUERY = `{
   "assets": *[_type == "asset"] | order(sitePath asc) [0...600] {
     _id, _type, _updatedAt, name, displayName, "slug": slug.current, assetType, mediaType, assetGroup,
-    usage, status, folder, relativePath, sitePath, r2Key, publicUrl, fileName, extension,
+    usage, alt, status, folder, relativePath, sitePath, r2Key, publicUrl, fileName, extension,
     localExists, r2Synced, "linkedCaseStudy": linkedCaseStudy->title, "linkedClient": linkedClient->name,
     "linkedService": linkedService->title, "linkedPost": linkedPost->title, linkedPageId
   },
   "total": count(*[_type == "asset"])
 }`;
+
+const BORDER = 'var(--card-border-color, rgba(128,128,128,0.25))';
+const FG = 'var(--card-fg-color, inherit)';
+const MUTED = 'var(--card-muted-fg-color, #6e7683)';
+const WELL = 'var(--card-muted-bg-color, #f1f3f5)';
+
+const VIDEO_EXT = ['mp4', 'webm', 'mov'];
+
+function assetUrl(r: { publicUrl?: string; sitePath?: string; relativePath?: string }) {
+  const path = r.sitePath || (r.relativePath ? `/assets/${r.relativePath}` : '');
+  return r.publicUrl || (path ? `https://wugweb.pages.dev${encodeURI(path)}` : '');
+}
+
+/** Thumbnail that never shows the browser's broken-image icon or leaked alt text. */
+function Thumbnail({ url, ext, label, fit = 'cover', autoPlay = false }: { url: string; ext: string; label: string; fit?: 'cover' | 'contain'; autoPlay?: boolean }) {
+  const [failed, setFailed] = useState(false);
+  useEffect(() => setFailed(false), [url]);
+  const isVideo = VIDEO_EXT.includes(ext);
+  const isImg = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif'].includes(ext);
+  if (!url || failed || (!isVideo && !isImg)) {
+    return (
+      <div style={{ display: 'grid', placeItems: 'center', width: '100%', height: '100%', color: MUTED, fontSize: 12, fontWeight: 600, letterSpacing: 0.5 }}>
+        {failed ? 'No file' : (ext || 'file').toUpperCase()}
+      </div>
+    );
+  }
+  if (isVideo) {
+    return (
+      <video
+        src={`${url}#t=0.1`}
+        muted
+        loop
+        playsInline
+        autoPlay={autoPlay}
+        preload="metadata"
+        onError={() => setFailed(true)}
+        style={{ width: '100%', height: '100%', objectFit: fit, display: 'block' }}
+        onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play().catch(() => {})}
+        onMouseLeave={(e) => { if (!autoPlay) (e.currentTarget as HTMLVideoElement).pause(); }}
+      />
+    );
+  }
+  return (
+    <img
+      src={url}
+      alt={label}
+      loading="lazy"
+      onError={() => setFailed(true)}
+      style={{ width: '100%', height: '100%', objectFit: fit, display: 'block', fontSize: 0, color: 'transparent' }}
+    />
+  );
+}
 
 function MediaToolContent() {
   const client = useClient({ apiVersion: '2026-01-01' });
@@ -74,7 +127,7 @@ function MediaToolContent() {
 
   const stats = useMemo(() => {
     const unused = rows.filter((r) => !r.linkedCaseStudy && !r.linkedClient && !r.linkedService && !r.linkedPost && !r.linkedPageId);
-    const missingAlt = rows.filter((r) => (r.mediaType === 'Image' || r.mediaType === 'SVG') && !r.usage);
+    const missingAlt = rows.filter((r) => (r.mediaType === 'Image' || r.mediaType === 'SVG') && !r.alt);
     const byKey = new Map<string, AssetRow[]>();
     rows.forEach((r) => {
       const k = `${r.name ?? ''}|${r.extension ?? ''}`.toLowerCase();
@@ -107,7 +160,7 @@ function MediaToolContent() {
         out = out.filter((r) => !r.linkedCaseStudy && !r.linkedClient && !r.linkedService && !r.linkedPost && !r.linkedPageId);
         break;
       case 'missingAlt':
-        out = out.filter((r) => (r.mediaType === 'Image' || r.mediaType === 'SVG') && !r.usage);
+        out = out.filter((r) => (r.mediaType === 'Image' || r.mediaType === 'SVG') && !r.alt);
         break;
       case 'duplicates': {
         const byKey = new Map<string, string[]>();
@@ -149,7 +202,7 @@ function MediaToolContent() {
         <Flex align="center" justify="space-between" gap={2} wrap="wrap">
           <Stack space={1}>
             <Flex align="center" gap={2}>
-              <ImagesIcon style={{ fontSize: 22, color: '#ffd000' }} />
+              <ImagesIcon style={{ fontSize: 22, color: 'var(--card-badge-caution-dot-color, #e6a700)' }} />
               <Text size={3} weight="bold">Cloudflare R2 Media Catalog</Text>
             </Flex>
             <Text size={1} muted>
@@ -247,11 +300,10 @@ function MediaToolContent() {
             <Grid columns={[2, 3, 4, 5, 6]} gap={2} style={{ flex: 1 }}>
               {filtered.map((r) => {
                 const ext = String(r.extension || (r.name || '').split('.').pop() || '').toLowerCase();
-                const isVideo = ['mp4', 'webm', 'mov'].includes(ext);
-                const isImg = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif'].includes(ext);
-                const path = r.sitePath || (r.relativePath ? `/assets/${r.relativePath}` : '');
-                const url = r.publicUrl || (path ? `https://wugweb.pages.dev${path}` : '');
+                const isVideo = VIDEO_EXT.includes(ext);
+                const url = assetUrl(r);
                 const isSelected = selectedAsset?._id === r._id;
+                const label = String(r.displayName || r.name || r._id);
 
                 return (
                   <Card
@@ -259,57 +311,34 @@ function MediaToolContent() {
                     border
                     radius={2}
                     overflow="hidden"
+                    tone={isSelected ? 'primary' : 'default'}
                     style={{
                       cursor: 'pointer',
-                      background: isSelected ? 'rgba(255, 208, 0, 0.08)' : '#111114',
-                      borderColor: isSelected ? '#ffd000' : 'rgba(255, 255, 255, 0.08)',
-                      transition: 'border-color 0.2s ease, transform 0.2s ease',
+                      borderColor: isSelected ? 'var(--card-focus-ring-color, #2276fc)' : BORDER,
+                      transition: 'border-color 0.2s ease',
                     }}
                     onClick={() => setSelectedAsset(r)}
                   >
-                    <Box style={{ height: 110, background: '#09090b', display: 'grid', placeItems: 'center', overflow: 'hidden', position: 'relative' }}>
-                      {isVideo && url ? (
-                        <video
-                          src={url}
-                          muted
-                          loop
-                          playsInline
-                          preload="metadata"
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                          onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play().catch(() => {})}
-                          onMouseLeave={(e) => (e.currentTarget as HTMLVideoElement).pause()}
-                        />
-                      ) : isImg && url ? (
-                        <img
-                          src={url}
-                          alt={r.displayName || r.name || ''}
-                          loading="lazy"
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        />
-                      ) : (
-                        <Text size={2} muted>{ext.toUpperCase() || 'FILE'}</Text>
-                      )}
+                    <div style={{ height: 110, background: WELL, overflow: 'hidden', position: 'relative' }}>
+                      <Thumbnail url={url} ext={ext} label={label} />
                       {isVideo && (
                         <Badge tone="caution" fontSize={0} style={{ position: 'absolute', top: 4, right: 4 }}>
                           VIDEO
                         </Badge>
                       )}
-                    </Box>
-                    <Box padding={2}>
-                      <Text
-                        size={1}
-                        weight="semibold"
-                        style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: '#f4f4f4' }}
+                    </div>
+                    <div style={{ padding: '8px 10px' }}>
+                      <div
+                        title={label}
+                        style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.4, color: FG, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
                       >
-                        {r.displayName || r.name}
-                      </Text>
-                      <Flex justify="space-between" align="center" marginTop={1}>
-                        <Text size={0} muted style={{ fontFamily: 'monospace' }}>
-                          .{ext || 'file'}
-                        </Text>
+                        {label}
+                      </div>
+                      <Flex justify="space-between" align="center" gap={2} style={{ marginTop: 4 }}>
+                        <span style={{ fontFamily: 'monospace', fontSize: 11, lineHeight: 1.4, color: MUTED }}>.{ext || 'file'}</span>
                         {r.assetGroup && <Badge tone="default" fontSize={0}>{r.assetGroup}</Badge>}
                       </Flex>
-                    </Box>
+                    </div>
                   </Card>
                 );
               })}
@@ -321,7 +350,7 @@ function MediaToolContent() {
                 padding={3}
                 border
                 radius={2}
-                style={{ width: 300, background: '#121215', position: 'sticky', top: 20 }}
+                style={{ width: 300, flexShrink: 0, position: 'sticky', top: 20 }}
               >
                 <Stack space={3}>
                   <Flex justify="space-between" align="center">
@@ -337,24 +366,15 @@ function MediaToolContent() {
                     />
                   </Flex>
 
-                  <Box style={{ height: 160, background: '#09090b', borderRadius: 6, overflow: 'hidden', display: 'grid', placeItems: 'center' }}>
-                    {['mp4', 'webm', 'mov'].includes((selectedAsset.extension || '').toLowerCase()) ? (
-                      <video
-                        src={selectedAsset.publicUrl || `https://wugweb.pages.dev${selectedAsset.sitePath}`}
-                        muted
-                        loop
-                        autoPlay
-                        playsInline
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                      />
-                    ) : (
-                      <img
-                        src={selectedAsset.publicUrl || `https://wugweb.pages.dev${selectedAsset.sitePath}`}
-                        alt=""
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                      />
-                    )}
-                  </Box>
+                  <div style={{ height: 160, background: WELL, borderRadius: 6, overflow: 'hidden' }}>
+                    <Thumbnail
+                      url={assetUrl(selectedAsset)}
+                      ext={String(selectedAsset.extension || (selectedAsset.name || '').split('.').pop() || '').toLowerCase()}
+                      label={String(selectedAsset.displayName || selectedAsset.name || '')}
+                      fit="contain"
+                      autoPlay
+                    />
+                  </div>
 
                   <Stack space={1}>
                     <Text size={1} weight="bold">{selectedAsset.displayName || selectedAsset.name}</Text>
@@ -387,9 +407,9 @@ function MediaToolContent() {
             <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 240px)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'Inter, system-ui, sans-serif' }}>
                 <thead>
-                  <tr style={{ background: '#18181b', position: 'sticky', top: 0 }}>
+                  <tr style={{ background: WELL, position: 'sticky', top: 0, zIndex: 1 }}>
                     {['Name', 'Group', 'Type', 'Status', 'Site Path', 'Action'].map((h) => (
-                      <th key={h} style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid rgba(255,255,255,0.1)', fontWeight: 600, whiteSpace: 'nowrap', color: '#aaa' }}>
+                      <th key={h} style={{ padding: '8px 12px', textAlign: 'left', borderBottom: `1px solid ${BORDER}`, fontWeight: 600, whiteSpace: 'nowrap', color: MUTED }}>
                         {h}
                       </th>
                     ))}
@@ -397,9 +417,9 @@ function MediaToolContent() {
                 </thead>
                 <tbody>
                   {filtered.map((r) => (
-                    <tr key={r._id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                    <tr key={r._id} onClick={() => setSelectedAsset(r)} style={{ borderBottom: `1px solid ${BORDER}`, cursor: 'pointer' }}>
                       <td style={{ padding: '8px 12px' }}>
-                        <Text size={1} weight="semibold" style={{ color: '#fff' }}>{r.displayName || r.name}</Text>
+                        <Text size={1} weight="semibold">{r.displayName || r.name || r._id}</Text>
                       </td>
                       <td style={{ padding: '8px 12px' }}><Text size={1} muted>{r.assetGroup || '—'}</Text></td>
                       <td style={{ padding: '8px 12px' }}><Text size={1} muted>{r.mediaType || '—'}</Text></td>
@@ -416,7 +436,7 @@ function MediaToolContent() {
                           mode="ghost"
                           fontSize={0}
                           padding={1}
-                          onClick={() => copyPath(r.sitePath || `/assets/${r.relativePath}`)}
+                          onClick={(e) => { e.stopPropagation(); copyPath(r.sitePath || `/assets/${r.relativePath}`); }}
                         />
                       </td>
                     </tr>
