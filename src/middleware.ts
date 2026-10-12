@@ -1,4 +1,6 @@
 import { defineMiddleware } from 'astro:middleware';
+import { isReservedPath, matchRedirect, normalizePath, type RedirectHit } from './lib/redirects';
+import { buildRuleSet, loadRedirectRules, type RuleSet } from './lib/redirect-rules';
 
 const PREVIEW_COOKIE = '__sanity_preview';
 
@@ -21,7 +23,67 @@ const PREVIEW_COOKIE = '__sanity_preview';
  * user-controlled and dropping a table is not a code change.
  */
 
+/** True when the route itself did not resolve: a 404, or the site's own
+ *  "not found" redirect to /404 (blog, services and work slug pages do that). */
+function isNotFound(response: Response, origin: string): boolean {
+  if (response.status === 404) return true;
+  if (response.status >= 300 && response.status < 400) {
+    const location = response.headers.get('Location');
+    if (!location) return false;
+    try {
+      return normalizePath(new URL(location, origin).pathname) === '/404';
+    } catch {
+      return false;
+    }
+  }
+  return false;
+}
+
+/** Built by hand rather than with Response.redirect(): that returns immutable
+ *  headers, and the security-header loop below must still be able to set them. */
+function redirectResponse(hit: RedirectHit, url: URL, method: string): Response {
+  if (hit.status === 410) {
+    const body = method === 'HEAD' ? null
+      : '<!doctype html><meta charset="utf-8"><title>410 Gone</title><h1>Gone</h1><p>This page has been removed.</p>';
+    return new Response(body, { status: 410, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+  }
+  // Absolute URL from the incoming origin, so it is correct on every host.
+  return new Response(null, { status: hit.status, headers: { Location: new URL(hit.location!, url.origin).href } });
+}
+
+/** REDIRECTS_MOCK is a local testing hook (JSON of { redirects, pages }). It is
+ *  honoured ONLY on localhost / 127.0.0.1, so it can never affect a real host
+ *  even if the variable were set on the Pages project. */
+async function rulesFor(context: Parameters<Parameters<typeof defineMiddleware>[0]>[0], url: URL): Promise<RuleSet> {
+  const mock = (context.locals as any)?.runtime?.env?.REDIRECTS_MOCK as string | undefined;
+  if (mock && (url.hostname === 'localhost' || url.hostname === '127.0.0.1')) {
+    try {
+      return buildRuleSet(JSON.parse(mock));
+    } catch {
+      return buildRuleSet(null);
+    }
+  }
+  return loadRedirectRules();
+}
+
 export const onRequest = defineMiddleware(async (context, next) => {
+  // ── Redirects ──
+  // GET/HEAD only. Reserved paths (/api, /assets, /_astro, sitemap, robots)
+  // are skipped BEFORE anything is loaded, so they are never slowed.
+  const url = new URL(context.request.url);
+  const method = context.request.method;
+  const redirectsApply = !context.isPrerendered
+    && (method === 'GET' || method === 'HEAD')
+    && !isReservedPath(url.pathname);
+  const rules = redirectsApply ? await rulesFor(context, url) : null;
+
+  // A page's own httpStatus (301/302/410 on its singletonPage) governs its own
+  // route, so it applies before the page renders.
+  if (rules) {
+    const pageHit = matchRedirect(rules.pages, url.pathname, url.search);
+    if (pageHit) return withSecurityHeaders(redirectResponse(pageHit, url, method));
+  }
+
   // Skip cookie logic during prerendering (no real request)
   if (context.request) {
     // Expose the Sanity preview token (set by /api/preview) so pages can
@@ -33,7 +95,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-  const response = await next();
+  let response = await next();
+
+  // Redirect documents apply only when the route did not resolve, so a rule
+  // can never shadow a live page.
+  if (rules && isNotFound(response, url.origin)) {
+    const hit = matchRedirect(rules.redirects, url.pathname, url.search);
+    if (hit) {
+      await response.body?.cancel().catch(() => {});
+      response = redirectResponse(hit, url, method);
+    }
+  }
+
+  return withSecurityHeaders(response);
+});
+
+function withSecurityHeaders(response: Response): Response {
 
   // Security headers for server-rendered responses.
   //
@@ -58,4 +135,4 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   return response;
-});
+}
