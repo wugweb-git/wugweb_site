@@ -9,6 +9,13 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — asset.alt end to end (2026-10-12)
+- **Studio:** `asset.alt` now has a 5–125 character warning and the plain-language description. The Media tool gets an editable **Alt** column (list view, images only) and an Alt field in the inspector; saves patch the published asset with `ifRevisionId`. New filter **Missing alt, images** (video, audio and SVG are skipped).
+- **Site:** covers, galleries, blog and insights teasers look the alt up from the asset record by path (`src/lib/asset-alt.ts`, one cached query), falling back to the old alt or title. Client logos read "{Client} logo". Body `mediaUrl` blocks keep their own alt.
+- **Checks:** `seoChecks` gains `cover-alt`, reading `asset.alt` through a prefetched lookup (skipped for videos or when no lookup is supplied).
+- **Seed:** `scripts/seed-asset-alt.mjs` set alt on 28 assets (18 client logos, 10 team portraits) and nothing else. 308 image assets still have none: `backups/asset-alt-missing.csv`.
+- **Plan only, nothing moved:** `scripts/plan-asset-reorg.mjs` writes `backups/asset-reorg-plan.csv` and `asset-reorg-summary.md` for re-homing `framer/`, `uncode/` and `more/` under `work/<case-study>/`, `blog/`, `logos/`, `about/` and `site/`.
+
 ### Changed — Studio "SEO score" is now "Completeness"; rule-based Checks added (2026-10-12)
 - The old 0–100 score only checked that fields are filled. It is relabelled **Completeness** everywhere it is shown (tables, SEO Manager, badge tooltip, `docs/admindesign.md`) with the note "Checks that fields are filled. It does not measure ranking quality." Exported names (`seoScore`, `seoLevel`, `SeoBadge`) are unchanged.
 - **`seoChecks(row, dupes?)`** in `sanity/lib/health.ts`: title 30–60, description 120–160 (`seoDescription || excerpt`/`summary`), slug hygiene, post body ≥300 words, headings (≥1, ≤1 H1), alt text on `image`/`mediaUrl` blocks, focus keyword (singletonPage only), description ≠ title/excerpt, duplicate seoTitle/seoDescription per type. Rule-based only; no network, no AI detection. Checks only run for fields the type's schema has.
