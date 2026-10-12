@@ -14,7 +14,9 @@ interface Props {
 }
 
 /** Edits `asset.alt` on the published doc. Saves on blur / Enter, guarded by ifRevisionId. */
-export function AssetAltField({ assetId, alt = '', client, onSaved, compact, disabled }: Props) {
+export function AssetAltField({ assetId, alt: altProp, client, onSaved, compact, disabled }: Props) {
+  // GROQ returns null (not undefined) for a missing field, so a default param isn't enough.
+  const alt = altProp ?? '';
   const toast = useToast();
   const toastRef = useRef(toast);
   toastRef.current = toast;
