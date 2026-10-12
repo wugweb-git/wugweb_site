@@ -61,6 +61,11 @@ export default defineType({
       components: { input: R2AssetInput },
       group: 'overview',
     }),
+    defineField({
+      name: 'tagVideoPath', type: 'string', group: 'overview',
+      description: 'Clip shown on this pillar\'s tag on the homepage "What we do" field, e.g. /assets/more/home/brand-strategy.mp4.',
+      components: { input: R2AssetInput },
+    }),
     defineField({ name: 'galleryPaths', type: 'array', of: [{ type: 'string' }], description: 'Service gallery media under /assets/…', group: 'content' }),
     defineField({ name: 'order', type: 'number', hidden: true, group: 'overview' }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US'] }, initialValue: 'en-GB', group: 'overview' }),

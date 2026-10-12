@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BentoBlock, { type BentoTile } from '../components/BentoBlock.astro';
 import { sanityClient, urlFor } from '../lib/sanity';
 import { singletonPageQuery, teamListQuery, siteSettingsQuery } from '../lib/queries';
-import { assetUrl } from '../lib/assets';
+import { assetUrl, posterFor } from '../lib/assets';
 import { SITE_MEDIA } from '../lib/site-media';
 
 // Hero title/intro now Sanity-editable. 
@@ -87,6 +87,13 @@ const heroText =
   (typeof page?.title === 'string' && page.title.length > 40 ? page.title : null) ||
   page?.body?.[0]?.children?.[0]?.text ||
   "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & production.";
+
+// Media: CMS fields first (singletonPage about), the site-media.json set as fallback.
+const heroVideo = page?.heroPath ? assetUrl(page.heroPath) : SITE_MEDIA.about.messageVideo;
+const heroPoster = page?.heroPosterPath
+  ? assetUrl(page.heroPosterPath)
+  : page?.heroPath ? posterFor(assetUrl(page.heroPath)) : SITE_MEDIA.about.messagePoster;
+const cultureImage = page?.sectionImagePath ? assetUrl(page.sectionImagePath) : SITE_MEDIA.about.cultureImage;
 
 const pageTitle = page?.seoTitle || 'About Wugweb - UI/UX Design & Digital Experience Experts';
 const pageDescription =
@@ -204,8 +211,8 @@ import TeamGrid from '../components/TeamGrid.astro';
     <div class="wrap about-hero-media" data-reveal>
       <div class="about-hero-frame">
         <video aria-hidden="true" autoplay muted loop playsinline
-          src={SITE_MEDIA.about.messageVideo}
-          poster={SITE_MEDIA.about.messagePoster}></video>
+          src={heroVideo}
+          poster={heroPoster}></video>
         <p class="about-hero-statement is-lead">{heroText}</p>
         <!-- PLACEHOLDER COPY — replace before launch. -->
         <p class="about-hero-statement is-sub">
@@ -280,7 +287,7 @@ import TeamGrid from '../components/TeamGrid.astro';
           transparency, urgency, and pivoting.
         </p>
       </div>
-      <img class="culture-visual" src={SITE_MEDIA.about.cultureImage} alt="Wugweb team culture" loading="lazy" />
+      <img class="culture-visual" src={cultureImage} alt="Wugweb team culture" loading="lazy" />
     </div>
     <ul class="culture-grid">
       {culture.map((c) => <li data-reveal>{c}</li>)}

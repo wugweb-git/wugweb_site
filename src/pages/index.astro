@@ -6,8 +6,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { assetUrl, posterFor } from '../lib/assets';
 import { SITE_MEDIA } from '../lib/site-media';
 import { sanityClient } from '../lib/sanity';
-import { servicesListQuery, caseStudiesListQuery, postsListQuery, singletonPageQuery } from '../lib/queries';
-import { SERVICE_TAGS } from '../lib/service-tags-data';
+import { servicesListQuery, caseStudiesListQuery, postsListQuery, singletonPageQuery, homeLogoBandQuery } from '../lib/queries';
+import { getServiceTags } from '../lib/service-tags-data';
 
 const services = await sanityClient.fetch(servicesListQuery).catch(() => []);
 
@@ -34,6 +34,11 @@ for (const p of (rawHomePosts || [])) {
 
 // Hero headline + intro
 const homePage = await sanityClient.fetch(singletonPageQuery, { pageId: 'home' }).catch(() => null);
+const serviceTags = await getServiceTags();
+const heroVideo = homePage?.heroPath ? assetUrl(homePage.heroPath) : SITE_MEDIA.home.heroVideo;
+const heroPoster = homePage?.heroPosterPath
+  ? assetUrl(homePage.heroPosterPath)
+  : homePage?.heroPath ? posterFor(assetUrl(homePage.heroPath)) : SITE_MEDIA.home.heroPoster;
 const headlineText = homePage?.title ?? 'Where Vision Meets Velocity';
 const introParas: string[] = (homePage?.body ?? [])
   .map((b: any) => b?.children?.[0]?.text)
@@ -82,10 +87,11 @@ const workItems = (sanityCaseStudies || []).slice(0, 8).map((cs: any) => ({
 const curatedLogos = SITE_MEDIA.home.clientLogos;
 
 const sanityLogos = await sanityClient
-  .fetch('*[_type == "client" && defined(logoPath)]{name, logoPath} | order(name asc)')
+  .fetch(homeLogoBandQuery)
   .catch(() => []);
+// client.showInLogoBand picks the 13; an empty selection keeps the curated set.
 const realLogos = (sanityLogos as any[]).length
-  ? (sanityLogos as any[]).map((c: any) => ({ name: c.name, src: c.logoPath }))
+  ? (sanityLogos as any[]).map((c: any) => ({ name: c.name, src: assetUrl(c.logoPath) }))
   : curatedLogos;
 
 // Padding to a full grid, the split-at-14 layout math, and mockup-repeat
@@ -120,8 +126,8 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 >
   <!-- HERO -->
   <section class="hero" id="hero" aria-labelledby="hero-title">
-    <video aria-hidden="true" class="hero-video" autoplay muted loop playsinline preload="none" poster={SITE_MEDIA.home.heroPoster}
-      src={SITE_MEDIA.home.heroVideo}></video>
+    <video aria-hidden="true" class="hero-video" autoplay muted loop playsinline preload="none" poster={heroPoster}
+      src={heroVideo}></video>
     <div class="hero-overlay"></div>
 
     <div class="wrap hero-content">
@@ -165,7 +171,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 
     {/* Draggable tag field — one tag per pillar. Fly in on scroll, drag freely
         with momentum, tap to expand. Now its own component: ServiceTagField.astro */}
-    <ServiceTagField tags={SERVICE_TAGS} />
+    <ServiceTagField tags={serviceTags} />
 
     <a href="/services" class="btn btn-ghost">View Services</a>
   </section>

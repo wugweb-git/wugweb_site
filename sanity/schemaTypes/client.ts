@@ -20,6 +20,7 @@ export default defineType({
     defineField({ name: 'description', type: 'text', rows: 3, group: 'details' }),
     defineField({ name: 'logo', type: 'image', options: { hotspot: true }, group: 'branding' }),
     defineField({ name: 'logoLight', type: 'image', title: 'Logo (light background variant)', options: { hotspot: true }, group: 'branding' }),
+    defineField({ name: 'showInLogoBand', title: 'Show in homepage logo band', type: 'boolean', initialValue: false, description: 'Tick to show this client logo in the "Trusted by" band on the homepage. Needs a logo path.', group: 'branding' }),
     defineField({ name: 'logoPath', type: 'string', description: 'R2/local logo path e.g. /assets/logos/client-logo-….png', group: 'branding' }),
     defineField({ name: 'engagementType', type: 'string', options: { list: ['ongoing', 'project', 'consultancy', 'retainer'] }, group: 'relations' }),
     defineField({ name: 'engagements', type: 'array', of: [{ type: 'reference', to: [{ type: 'engagement' }] }], group: 'relations' }),

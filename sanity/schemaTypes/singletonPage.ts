@@ -121,6 +121,16 @@ export default defineType({
       components: { input: R2AssetInput },
       group: 'content',
     }),
+    defineField({
+      name: 'heroPosterPath', type: 'string', group: 'content',
+      description: 'Poster frame for the hero video, e.g. /assets/more/home/home-poster.webp. Leave empty to use <video>-poster.webp beside the hero.',
+      components: { input: R2AssetInput },
+    }),
+    defineField({
+      name: 'sectionImagePath', type: 'string', group: 'content',
+      description: 'Secondary page image (About: the culture section picture).',
+      components: { input: R2AssetInput },
+    }),
     defineField({ name: 'mediaPaths', type: 'array', of: [{ type: 'string' }], description: 'Additional page media under /assets/…', group: 'content' }),
     defineField({ name: 'body', type: 'blockContent', group: 'content' }),
     defineField({

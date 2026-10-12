@@ -1,0 +1,224 @@
+[
+  {
+    "id": "home",
+    "rev": "FEAYqiLxg7DwRFaW52tXAG",
+    "before": {
+      "heroPosterPath": null
+    },
+    "set": {
+      "heroPosterPath": "/assets/more/home/home-poster.webp"
+    }
+  },
+  {
+    "id": "about",
+    "rev": "FEAYqiLxg7DwRFaW52tXAG",
+    "before": {
+      "heroPosterPath": null,
+      "sectionImagePath": null
+    },
+    "set": {
+      "heroPosterPath": "/assets/about/about-section.jpg",
+      "sectionImagePath": "/assets/about/about-section-2.jpg"
+    }
+  },
+  {
+    "id": "siteSettings",
+    "rev": "qBNonaYOMlrfOERr68AZyt",
+    "before": {
+      "ogImagePath": null
+    },
+    "set": {
+      "ogImagePath": "/assets/og/default.jpg"
+    }
+  },
+  {
+    "id": "brand",
+    "rev": "FEAYqiLxg7DwRFaW52Os1a",
+    "before": {
+      "tagVideoPath": null
+    },
+    "set": {
+      "tagVideoPath": "/assets/more/home/brand-strategy.mp4"
+    }
+  },
+  {
+    "id": "engineering",
+    "rev": "DM744ce4vQ3L6hEoGfynQk",
+    "before": {
+      "tagVideoPath": null
+    },
+    "set": {
+      "tagVideoPath": "/assets/more/home/web-app-development.mp4"
+    }
+  },
+  {
+    "id": "experience",
+    "rev": "FEAYqiLxg7DwRFaW52Os1a",
+    "before": {
+      "tagVideoPath": null
+    },
+    "set": {
+      "tagVideoPath": "/assets/more/home/experience-design.mp4"
+    }
+  },
+  {
+    "id": "growth",
+    "rev": "DM744ce4vQ3L6hEoGfynQk",
+    "before": {
+      "tagVideoPath": null
+    },
+    "set": {
+      "tagVideoPath": "/assets/more/home/martech-genai.mp4"
+    }
+  },
+  {
+    "id": "operations",
+    "rev": "DM744ce4vQ3L6hEoGfynQk",
+    "before": {
+      "tagVideoPath": null
+    },
+    "set": {
+      "tagVideoPath": "/assets/services/growth/seamless-platform-integration.mp4"
+    }
+  },
+  {
+    "id": "strategy",
+    "rev": "DM744ce4vQ3L6hEoGfynQk",
+    "before": {
+      "tagVideoPath": null
+    },
+    "set": {
+      "tagVideoPath": "/assets/services/growth/digital-transformation-roadmaps.mp4"
+    }
+  },
+  {
+    "id": "client-CLI-0057",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0035",
+    "rev": "S5EFnJjn0OdXSc45PuZmMQ",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0061",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0062",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0021",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0072",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0075",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-Inkompass",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0077",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0043",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0040",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0027",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  },
+  {
+    "id": "client-CLI-0039",
+    "rev": "0P2zz4yUt080ih2mMTCa3E",
+    "before": {
+      "showInLogoBand": null
+    },
+    "set": {
+      "showInLogoBand": true
+    }
+  }
+]

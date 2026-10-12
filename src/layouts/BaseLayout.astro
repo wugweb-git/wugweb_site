@@ -106,7 +106,9 @@ const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
   // Salvaged from Framer 2026-09-24: a real 1200x630 image. The previous
   // fallback, /brand/og-default.png, was 965x306 and cropped wrong everywhere.
-  : SITE_MEDIA.seo.ogDefault;
+  : settings?.ogImagePath
+    ? assetUrl(settings.ogImagePath)
+    : SITE_MEDIA.seo.ogDefault;
 // `/brand/favicon.svg` is `logo-small.svg`'s mark on a black rounded-square
 // backdrop — logo-small.svg itself stays transparent-background since it's
 // also used as a plain inline mark (services/[slug].astro's Approach CTA),

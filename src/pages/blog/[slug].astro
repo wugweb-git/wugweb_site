@@ -31,7 +31,7 @@ const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString
 const updatedAt = post._updatedAt ? new Date(post._updatedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
 const isUpdated = updatedAt && updatedAt !== pubDate;
 const coverImageUrl = post.coverPath
-  ? (post.coverPath.startsWith('/') || post.coverPath.startsWith('http') ? post.coverPath : `/${post.coverPath}`)
+  ? assetUrl(post.coverPath)
   : (post.coverImage ? urlFor(post.coverImage).width(1600).height(900).url() : '');
 const coverAlt = altFor(await loadAssetAlts(), post.coverPath, `Cover image for ${post.title}`);
 const ogImageUrl = post.ogImagePath
@@ -120,7 +120,7 @@ const nextPost = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
 // Related posts: the editor's picks (post.relatedPosts) first, then the same
 // category, then the latest — three cards, never the post itself.
 const coverFor = (p: any) => p?.coverPath
-  ? (p.coverPath.startsWith('/') || p.coverPath.startsWith('http') ? p.coverPath : `/${p.coverPath}`)
+  ? assetUrl(p.coverPath)
   : (p?.coverImage ? urlFor(p.coverImage).width(800).height(500).url() : '');
 const relatedPosts: any[] = [];
 const seenRelated = new Set([slug]);
@@ -294,7 +294,7 @@ const shareLinks = [
       </div>
       <ul class="related-grid">
         {featuredCases.map((c: any) => {
-          const toPath = (path: string) => (!path ? '' : path.startsWith('/') || path.startsWith('http') ? path : `/${path}`);
+          const toPath = (path: string) => (!path ? '' : assetUrl(path));
           const cCover = c.coverPath ? toPath(c.coverPath) : (c.thumbnailPath ? toPath(c.thumbnailPath) : '');
           return (
             <li>

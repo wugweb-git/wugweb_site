@@ -1,5 +1,6 @@
 ---
 import { loadAssetAlts, altFor } from '../lib/asset-alt';
+import { assetUrl } from '../lib/assets';
 /**
  * InsightsBlock — the one blog teaser.
  *
@@ -46,12 +47,7 @@ const {
 
 const items = (posts || []).slice(0, limit);
 const altMap = await loadAssetAlts();
-const coverOf = (p: InsightPost) =>
-  p.coverPath
-    ? p.coverPath.startsWith('/') || p.coverPath.startsWith('http')
-      ? p.coverPath
-      : `/${p.coverPath}`
-    : '';
+const coverOf = (p: InsightPost) => (p.coverPath ? assetUrl(p.coverPath) : '');
 ---
 
 {items.length > 0 && (

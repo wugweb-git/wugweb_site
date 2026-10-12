@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient, urlFor } from '../../lib/sanity';
 import { postsListQuery, singletonPageQuery } from '../../lib/queries';
 import { loadAssetAlts, altFor } from '../../lib/asset-alt';
+import { assetUrl } from '../../lib/assets';
 
 const blogPage = await sanityClient.fetch(singletonPageQuery, { pageId: 'blog' }).catch(() => null);
 const blogTitle = blogPage?.seoTitle || 'Wugweb | Insights on UI/UX Design & Digital Strategy';
@@ -11,7 +12,7 @@ const blogDescription =
   'Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, and digital product strategy.';
 
 function coverUrl(coverImage: any, coverPath?: string): string {
-  if (coverPath) return coverPath.startsWith('/') || coverPath.startsWith('http') ? coverPath : `/${coverPath}`;
+  if (coverPath) return assetUrl(coverPath);
   if (!coverImage) return '';
   try {
     if (typeof coverImage === 'string') return coverImage;

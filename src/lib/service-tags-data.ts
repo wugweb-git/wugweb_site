@@ -7,6 +7,9 @@
 import { hardcodedServices } from './services-data';
 
 import { SITE_MEDIA } from './site-media';
+import { assetUrl } from './assets';
+import { cachedFetch } from './sanity';
+import { serviceTagVideosQuery } from './queries';
 
 export interface ServiceTag {
   title: string;
@@ -63,3 +66,22 @@ export const SERVICE_TAGS: ServiceTag[] = LAYOUT.map((t) => {
     video: pillar?.video ?? '',
   };
 });
+
+/**
+ * The same tags with each clip read from the CMS (service.tagVideoPath), so the
+ * homepage field is editable in the Studio. A pillar with no tagVideoPath keeps
+ * the clip from site-media.json, so an empty field never blanks a tag.
+ */
+export async function getServiceTags(): Promise<ServiceTag[]> {
+  let rows: { slug: string; tagVideoPath: string }[] = [];
+  try {
+    rows = (await cachedFetch(serviceTagVideosQuery)) || [];
+  } catch {
+    /* fall back to the static clips */
+  }
+  const bySlug = new Map(rows.map((r) => [r.slug, r.tagVideoPath]));
+  return SERVICE_TAGS.map((t) => {
+    const p = bySlug.get(t.slug);
+    return p ? { ...t, video: assetUrl(p) } : t;
+  });
+}

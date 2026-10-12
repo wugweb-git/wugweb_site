@@ -6,7 +6,7 @@
 
 export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {
-    siteUrl, siteTitle, seoDescription, ogImage, language, copyright,
+    siteUrl, siteTitle, seoDescription, ogImage, ogImagePath, language, copyright,
     socialLinks, contactEmail, companyName
   }
 `;
@@ -68,8 +68,16 @@ export const postBySlugQuery = `
 
 export const singletonPageQuery = `
   *[_type == "singletonPage" && pageId == $pageId && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
-    title, subtitle, seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, noIndex, canonicalUrl, heroImage, heroPath, mediaPaths, language, body, items
+    title, subtitle, seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, noIndex, canonicalUrl, heroImage, heroPath, heroPosterPath, sectionImagePath, mediaPaths, language, body, items
   }
+`;
+
+export const serviceTagVideosQuery = `
+  *[_type == "service" && defined(tagVideoPath) && !(_id in path("drafts.**"))] { "slug": slug.current, tagVideoPath }
+`;
+
+export const homeLogoBandQuery = `
+  *[_type == "client" && showInLogoBand == true && defined(logoPath) && !(_id in path("drafts.**"))] | order(name asc) { name, logoPath }
 `;
 
 export const teamListQuery = `
