@@ -191,8 +191,10 @@ function SeoToolContent() {
                   return (
                     <tr key={row._id} style={{ borderBottom: '1px solid var(--card-border-color, #222)' }}>
                       <td style={{ padding: '10px 12px' }}>
-                        <Text size={1} weight="semibold">{String(row.title || row._id)}</Text>
-                        {row.slug ? <Text size={0} muted>@{String(row.slug)}</Text> : null}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+                          <Text size={1} weight="semibold" style={{ overflowWrap: 'anywhere' }}>{String(row.title || row._id)}</Text>
+                          {row.slug ? <Text size={0} muted style={{ overflowWrap: 'anywhere' }}>@{String(row.slug)}</Text> : null}
+                        </div>
                       </td>
                       <td style={{ padding: '10px 12px', color: row.seoDescription ? 'inherit' : 'var(--card-muted-fg-color, #888)' }}>
                         {row.seoDescription || '— Missing SEO description —'}

@@ -231,8 +231,10 @@ function ArticleExportContent() {
                     return (
                       <tr key={item._id} style={{ borderBottom: '1px solid var(--card-border-color, #222)' }}>
                         <td style={{ padding: '10px 12px' }}>
-                          <Text size={1} weight="semibold">{item.title || item._id}</Text>
-                          {item.slug && <Text size={0} muted>@{item.slug}</Text>}
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+                            <Text size={1} weight="semibold" style={{ overflowWrap: 'anywhere' }}>{item.title || item._id}</Text>
+                            {item.slug && <Text size={0} muted style={{ overflowWrap: 'anywhere' }}>@{item.slug}</Text>}
+                          </div>
                         </td>
                         <td style={{ padding: '10px 12px' }}>
                           {item.category ? (
