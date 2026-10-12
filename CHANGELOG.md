@@ -9,6 +9,12 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — hard-coded site media moved into Sanity (2026-10-12)
+- New fields: `singletonPage.heroPosterPath` and `sectionImagePath`, `client.showInLogoBand`, `service.tagVideoPath`; `siteSettings.ogImagePath` is now read by the site. Home hero video and poster, About video, poster and culture image, the six homepage service-tag clips, the 13-logo "Trusted by" band and the default OG image come from these. `src/lib/site-media.json` stays as the fallback when a field is empty.
+- Seeded by `scripts/seed-site-media-cms.mjs` (additive; backup `backups/site-media-cms-2026-10-12.json`). The logo band is now exactly the 13 curated clients (it used to show every client with a logo).
+- Removed the guessed `/assets/work/<folder>/<file>-thumb.mp4` fallback from `services/index.astro`.
+- Fixed broken images after `public/assets` was removed from the deploy: blog covers (index, post, related, insights teaser) were raw `/assets/...` paths and are now wrapped in `assetUrl()`. A crawl of 12 pages finds no raw `/assets/` references.
+
 ### Changed — asset reorganisation plan rule (2026-10-12)
 - `scripts/plan-asset-reorg.mjs`: page-owned media now targets `assets/site/<pageId>/` (no more `about/` or flat `site/`); the 21 existing `assets/about/` files are included as moves to `site/about/`. Plan only; nothing applied.
 

@@ -4,6 +4,8 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-10-12 — Site media is CMS-driven.** Deployed at 79986707.wugweb.pages.dev. Open: (1) the blog-image R2 manifest job (`blog-image-r2-manifest.csv`, `blog-0093-uploads/`) has NOT run, as neither file was found and it includes deletes; (2) page-media folder rule is `site/<pageId>/` (e.g. `site/services/`), pageId being the singletonPage key; (3) the reorg plan reads `public/assets`, which no longer exists locally, so it needs to read R2 before it can be re-run; (4) first request after a Pages deploy sometimes returns 404 for a route and then 200.
+
 **2026-10-12 — Reorg plan updated (still PLAN ONLY):** rule is now page media -> `site/<pageId>/`, case study -> `work/<slug>/`, post -> `blog/`, client logo -> `logos/<client-slug>`. The 21 existing `about/` files move to `site/about/`; team portraits go there too. Plan: 433 files, 0 collisions, 12 unsure (the `more/home` and `more/about` clips, also used in `src/`), 74 unreferenced. `about-message.mp4` and its poster match by hash, so they are copied once. Awaiting "apply".
 
 **2026-10-12 — Airtel logos fixed** (XSafe/Xstream were sharing one file). Owner: run `scripts/owner-delete-old-airtel-logo-keys.sh` when happy (it removes the 4 old keys and local files); the old Sanity asset records for those keys remain until you archive them. The reorg plan no longer treats the logo as contested (the two `framer/` copies are now unreferenced duplicates).
