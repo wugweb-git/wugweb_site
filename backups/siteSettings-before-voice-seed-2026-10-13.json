@@ -1,0 +1,37 @@
+{
+  "_createdAt": "2026-07-28T23:14:45Z",
+  "_id": "siteSettings",
+  "_rev": "S5EFnJjn0OdXSc45Pw7wJI",
+  "_system": {
+    "base": {
+      "id": "siteSettings",
+      "rev": "bGMx7xnXtYJt7Q07YQY4k8"
+    }
+  },
+  "_type": "siteSettings",
+  "_updatedAt": "2026-10-12T12:48:37Z",
+  "companyName": "Wugweb",
+  "contactEmail": "hello@wugweb.com",
+  "copyright": "Copyright 2020-2025 © Wugweb®",
+  "language": "en-GB",
+  "ogImagePath": "/assets/site/default/og.jpg",
+  "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+  "siteTitle": "Wugweb — Digital Experience Agency",
+  "socialLinks": [
+    {
+      "_key": "415fee32d9c0b60b8468b6f7e8ad3957",
+      "platform": "Twitter/X",
+      "url": "https://x.com/wugweb"
+    },
+    {
+      "_key": "3cde20c31e339ab04f10789b6c7e8a68",
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/company/wugweb"
+    },
+    {
+      "_key": "1ce427cd4cea93bab75e8a9ed9e99c05",
+      "platform": "Instagram",
+      "url": "https://instagram.com/wugweb"
+    }
+  ]
+}

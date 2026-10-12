@@ -24,6 +24,7 @@ export default defineType({
     { name: 'social', title: 'Social & Images' },
     { name: 'organization', title: 'Organization' },
     { name: 'aeo', title: 'AI / Answers' },
+    { name: 'voice', title: 'Brand voice' },
   ],
   fields: [
     // ── Identity ──
@@ -135,6 +136,43 @@ export default defineType({
       initialValue: ['/llms.txt', '/ai-context.txt', '/brand-system.txt', '/security.txt', '/robots.txt'],
       description: 'The well-known files served from public/. Listed here so the set is discoverable and auditable; the files themselves stay static.',
     }),
+
+    // ── Brand voice ──
+    // Read by sanity/lib/voice.ts. Rule checks run ONLY when status is
+    // 'approved' — a draft guide produces no warnings anywhere.
+    defineField({
+      name: 'status', title: 'Guide status', type: 'string', group: 'voice',
+      options: { list: [{ title: 'Draft — for owner review', value: 'draft' }, { title: 'Approved — checks on', value: 'approved' }], layout: 'radio' },
+      initialValue: 'draft',
+      description: 'Voice warnings appear in the Studio only once this is Approved.',
+    }),
+    defineField({ name: 'persona', title: 'Persona', type: 'text', rows: 4, group: 'voice', description: 'Who is speaking, in a few sentences. Written from what the copy actually sounds like, not aspiration.' }),
+    defineField({ name: 'audience', title: 'Audience', type: 'text', rows: 3, group: 'voice', description: 'Who reads it and what they already know.' }),
+    defineField({ name: 'toneWords', title: 'Tone words', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'voice', description: 'Three to six adjectives, e.g. plain, confident, specific.' }),
+    defineField({ name: 'writingPrinciples', title: 'Writing principles', type: 'array', of: [{ type: 'string' }], group: 'voice', description: 'One rule per line, e.g. "Lead with the outcome, then the method."' }),
+    defineField({ name: 'doList', title: 'Do', type: 'array', of: [{ type: 'string' }], group: 'voice' }),
+    defineField({ name: 'dontList', title: "Don't", type: 'array', of: [{ type: 'string' }], group: 'voice' }),
+    defineField({
+      name: 'preferredTerms', title: 'Preferred terms', type: 'array', group: 'voice',
+      description: 'Flagged when the "instead of" word appears.',
+      of: [{
+        type: 'object', name: 'voiceTerm',
+        fields: [
+          { name: 'use', title: 'Use', type: 'string', validation: (r: any) => r.required() },
+          { name: 'insteadOf', title: 'Instead of', type: 'string', validation: (r: any) => r.required() },
+        ],
+        preview: { select: { use: 'use', insteadOf: 'insteadOf' }, prepare: ({ use, insteadOf }: any) => ({ title: `${use}`, subtitle: `not "${insteadOf}"` }) },
+      }],
+    }),
+    defineField({ name: 'bannedWords', title: 'Banned words and phrases', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'voice', description: 'Matched as whole words, case-insensitive.' }),
+    defineField({
+      name: 'spelling', title: 'Spelling', type: 'string', group: 'voice', initialValue: 'en-GB',
+      options: { list: [{ title: 'British (en-GB)', value: 'en-GB' }, { title: 'American (en-US)', value: 'en-US' }], layout: 'radio' },
+    }),
+    defineField({ name: 'readingLevelMax', title: 'Max reading level', type: 'number', group: 'voice', initialValue: 10, description: 'Flesch-Kincaid grade. 10 reads like a good newspaper.', validation: (r) => r.min(1).max(20) }),
+    defineField({ name: 'maxSentenceWords', title: 'Max words per sentence', type: 'number', group: 'voice', initialValue: 25, validation: (r) => r.min(8).max(60) }),
+    defineField({ name: 'sampleGood', title: 'Sounds like us', type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice', description: 'Shown as "write it like this" under key fields once the guide is approved.' }),
+    defineField({ name: 'sampleBad', title: "Doesn't sound like us", type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice' }),
 
     // ── Sync (hidden, auto-managed) ──
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
