@@ -9,6 +9,11 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — blog images imported to R2 (2026-10-12)
+- `scripts/upload-blog-manifest.mjs` uploaded the Notion blog image manifest (237 rows) to `wugweb-assets` under `blog/<slug>/...` keys: 236 live and verified 200. Additive only: no key overwritten, nothing deleted (the old `assets/blog/...` objects are still there). Results: `backups/blog-r2-upload-results.csv`.
+- Failed: `blog/use-this-easy-checklist-to-ensure-a-smooth-design-handoff/cover.png` — its source URL in the manifest is truncated (no extension) and returns 404.
+- These keys have no `assets/` prefix, unlike the rest of the bucket, so `assetUrl()` does not reach them yet; they are for the Notion links.
+
 ### Added — Media tool folder audit (2026-10-12)
 - **Folder** and **Sub-folder** filters in the Media tool (from each asset's `relativePath`, with counts), a folder label on every card, and a Folder column in list view. The Unused / Missing alt / Duplicates counts now describe the selected folder, group and search, not the whole library.
 - Thumbnails now fall back to the R2 public URL instead of `wugweb.pages.dev/assets`, which no longer serves files (this was the "No file" tiles).
