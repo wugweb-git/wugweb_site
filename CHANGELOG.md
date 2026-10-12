@@ -9,6 +9,11 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — blog covers and 0054 images moved out of unsorted/ (2026-10-13)
+- Copied into `blog/<slug>/` (all 200, MD5-verified): 8 covers (0103, 0029, 0007, 0055, 0024, 0014, 0039, 0018) and the 20 resource images for 0054 (`01-refero.png` … `20-screenlane.png`).
+- Owner ran `scripts/owner-delete-blog-unsorted.mjs`: 62 R2 keys gone (58 deleted by the run, 4 `misc/` copies already removed by batch 7), then the 51 matching Sanity asset records deleted. List: `backups/r2-delete-blog-unsorted-2026-10-13.csv`; records backup: `backups/blog-unsorted-asset-records-2026-10-13.json`.
+- Kept: `blog1.png` / `blog3.png` (no byte-identical copy under `blog/`).
+
 ### Changed — blog cover spares (2026-10-13)
 - New covers: `blog/how-exactly-do-product-manager-and-ux-designer-collaborate/cover.png` (from `alt-cover.png`) and `blog/ui-design-trends-to-watch-out-for-in-2023-and-resurfacing-comeback-trend/cover.png` (from 0054's `alt-design-grid.png`), both verified 200 and byte-identical.
 - Owner ran `scripts/owner-delete-blog-alt-spares.sh`: the two `alt-*` spares are deleted (404 confirmed).
