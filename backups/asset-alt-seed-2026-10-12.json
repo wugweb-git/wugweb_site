@@ -1,0 +1,236 @@
+{
+  "write": true,
+  "seeded": [
+    {
+      "id": "asset-logos-client-logo-jrot-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-jrot.png",
+      "prior": null,
+      "alt": "Cartier logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-1gbn-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-1gbn.png",
+      "prior": null,
+      "alt": "RideEV logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-q4ee-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-q4ee.png",
+      "prior": null,
+      "alt": "Metcred logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-framer-indusninja-your-ai-powered-financial-ninja-client-logo-k5hy-png",
+      "rev": "38Qyv59QpLLajTC6plKt4d",
+      "rel": "framer/indusninja-your-ai-powered-financial-ninja/client-logo-k5hy.png",
+      "prior": null,
+      "alt": "IndusNinja logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-framer-valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages-client-logo-jj6k-png",
+      "rev": "DM744ce4vQ3L6hEoGfrNCi",
+      "rel": "framer/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages/client-logo-jj6k.png",
+      "prior": null,
+      "alt": "Valyu.ai logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-6djh-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-6djh.png",
+      "prior": null,
+      "alt": "Plufo logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-u2rd-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-u2rd.png",
+      "prior": null,
+      "alt": "Sadhan logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-grfk-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-grfk.png",
+      "prior": null,
+      "alt": "NTUC logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-framer-visione-empowering-workforce-development-with-competency-based-assessments-client-logo-r3",
+      "rev": "DM744ce4vQ3L6hEoGg2OoV",
+      "rel": "framer/visione-empowering-workforce-development-with-competency-based-assessments/client-logo-r3kl.jpg",
+      "prior": null,
+      "alt": "VisiOne logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-te1y-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-te1y.png",
+      "prior": null,
+      "alt": "Aditya Birla Capital logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-d64b-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-d64b.png",
+      "prior": null,
+      "alt": "Axis Bank logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-qhmv-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-qhmv.png",
+      "prior": null,
+      "alt": "Bankco logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-5nzb-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-5nzb.png",
+      "prior": null,
+      "alt": "Gratifi logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-k5hy-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-k5hy.png",
+      "prior": null,
+      "alt": "IndusInd Bank logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-5nkj-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-5nkj.png",
+      "prior": null,
+      "alt": "Kia logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-framer-tot-bridal-launch-branding-ux-design-client-logo-u2rd-png",
+      "rev": "DM744ce4vQ3L6hEoGfrNCi",
+      "rel": "framer/tot-bridal-launch-branding-ux-design/client-logo-u2rd.png",
+      "prior": null,
+      "alt": "TOT logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-enb1-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-enb1.png",
+      "prior": null,
+      "alt": "Adneto logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-logos-client-logo-9fd5-png",
+      "rev": "eQCR1n23HeACrbntf59AeF",
+      "rel": "logos/client-logo-9fd5.png",
+      "prior": null,
+      "alt": "Inkompass logo",
+      "why": "client logo"
+    },
+    {
+      "id": "asset-about-team-divyanshu-pundir-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-divyanshu-pundir.jpg",
+      "prior": null,
+      "alt": "Divyanshu Pundir",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-kartik-chaturvedi-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-kartik-chaturvedi.jpg",
+      "prior": null,
+      "alt": "Kartik Chaturvedi",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-ojaswa-verma-png",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-ojaswa-verma.png",
+      "prior": null,
+      "alt": "Ojaswa Verma",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-praneet-verma-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-praneet-verma.jpg",
+      "prior": null,
+      "alt": "Praneet Verma",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-satish-kumar-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-satish-kumar.jpg",
+      "prior": null,
+      "alt": "Satish Kumar",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-shreya-khot-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-shreya-khot.jpg",
+      "prior": null,
+      "alt": "Shreya Khot",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-sunil-thapa-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-sunil-thapa.jpg",
+      "prior": null,
+      "alt": "Sunil Thapa",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-swarndeep-singh-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-swarndeep-singh.jpg",
+      "prior": null,
+      "alt": "Swarndeep Singh",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-vaibhav-shukla-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-vaibhav-shukla.jpg",
+      "prior": null,
+      "alt": "Vaibhav Shukla",
+      "why": "team portrait"
+    },
+    {
+      "id": "asset-about-team-vedanshu-srivastava-jpg",
+      "rev": "eQCR1n23HeACrbntf58xjC",
+      "rel": "about/team-vedanshu-srivastava.jpg",
+      "prior": null,
+      "alt": "Vedanshu Srivastava",
+      "why": "team portrait"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "asset-logos-client-logo-c6rj-png",
+      "a": "Airtel Xstream logo",
+      "b": "Airtel XSafe logo"
+    }
+  ]
+}
