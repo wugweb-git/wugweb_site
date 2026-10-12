@@ -38,134 +38,100 @@ type MediaRef = {
 };
 
 /**
- * 100% coverage map (2026-10-04). Every sub-service in the six pillars resolves
- * to a clip. Entries tagged STAND-IN reuse footage that does not depict the
- * sub-service — they exist so no row renders the empty placeholder while real
- * footage is produced. Search for "STAND-IN" to find and replace them.
- * Keys cover both the merged names and the older names that fold into them.
- * Clips live in the retained folders services/{brand,engineering,experience,growth}.
+ * Clips are named after the sub-service they depict and live at
+ *   site/services/<pillar>/<sub-service-slug>.mp4
+ *   site/services/<pillar>/posters/<sub-service-slug>.webp (+ .blur.webp)
+ * so a capability item resolves by slug — no per-title mapping to maintain.
+ * Slug: lowercase, "&" → "and", every other run of non-alphanumerics → "-".
+ *
+ * Some clips are STAND-INs (footage reused from another sub-service while real
+ * footage is produced). They are recorded in the Sanity asset notes
+ * ("STAND-IN footage (copy of …)"); replace the file in place, same name.
+ * A slug absent from this list renders the media-less placeholder.
  */
-const MEDIA_BY_PILLAR: Record<string, Record<string, MediaRef>> = {
-  brand: {
-    'brand strategy': { dir: 'site/services/brand', file: 'Brand Position Strategy' },
-    'brand positioning': { dir: 'site/services/brand', file: 'Brand Experience' },
-    'brand narrative': { dir: 'site/services/brand', file: 'Narrative Architecture' },
-    'brand identity systems': { dir: 'site/services/brand', file: 'Brand Identity Systems' },
-    'naming nomenclature': { dir: 'site/services/brand', file: 'Naming Nomenclature' },
-    'messaging framework': { dir: "site/services/growth", file: "Immersive Content Strategies" }, // STAND-IN: reused clip, replace with real footage
-    'voice tone': { dir: 'site/services/brand', file: 'Voice Tone' },
-    'employer branding': { dir: 'site/services/brand', file: 'Brand Audit Analysis' },
-    'brand guidelines': { dir: 'site/services/brand', file: 'Brand Evolution Management' },
-    'brand activation': { dir: 'site/services/brand', file: 'Brand activation' },
-  },
-  strategy: {
-    "business strategy": { dir: "site/services/brand", file: "Brand Position Strategy" }, // STAND-IN: reused clip, replace with real footage
-    "business model design": { dir: "site/services/engineering", file: "Bespoke Digital Solutions" }, // STAND-IN: reused clip, replace with real footage
-    "digital transformation innovation": { dir: "site/services/strategy", file: "Digital Transformation Roadmaps" },
-    "digital transformation": { dir: "site/services/strategy", file: "Digital Transformation Roadmaps" },
-    "innovation strategy": { dir: "site/services/strategy", file: "Digital Transformation Roadmaps" },
-    "market competitive research": { dir: "site/services/strategy", file: "Future-Forward Market Insights" },
-    "market research": { dir: "site/services/strategy", file: "Future-Forward Market Insights" },
-    "competitive analysis": { dir: "site/services/strategy", file: "Future-Forward Market Insights" },
-    "product strategy roadmapping": { dir: "site/services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
-    "product strategy": { dir: "site/services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
-    "product roadmapping": { dir: "site/services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
-    "product discovery mvp planning": { dir: "site/services/experience", file: "Rapid Concepting" }, // STAND-IN: reused clip, replace with real footage
-    "product discovery": { dir: "site/services/experience", file: "Rapid Concepting" }, // STAND-IN: reused clip, replace with real footage
-    "mvp planning": { dir: "site/services/experience", file: "Rapid Concepting" }, // STAND-IN: reused clip, replace with real footage
-    "ai strategy": { dir: "site/services/growth", file: "Generative AI Content Creation" }, // STAND-IN: reused clip, replace with real footage
-    "ai opportunity mapping": { dir: "site/services/growth", file: "Generative AI Content Creation" }, // STAND-IN: reused clip, replace with real footage
-    "ai readiness assessment": { dir: "site/services/growth", file: "Predictive Analytics Attribution", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "transformation workshops": { dir: "site/services/strategy", file: "Disruptive Innovation Workshops" },
-  },
-  engineering: {
-    "website cms development": { dir: "site/services/engineering", file: "Front-End Engineering" },
-    "website development": { dir: "site/services/engineering", file: "Front-End Engineering" },
-    "cms development": { dir: "site/services/engineering", file: "Front-End Engineering" },
-    "ecommerce development": { dir: "site/services/engineering", file: "Ecommerce" },
-    "web application development": { dir: "site/services/engineering", file: "Progressive Web Applications (PWAs)" },
-    "web app development": { dir: "site/services/engineering", file: "Progressive Web Applications (PWAs)" },
-    "internal tools": { dir: "site/services/engineering", file: "Progressive Web Applications (PWAs)" },
-    "saas development": { dir: "site/services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
-    "mobile application development": { dir: "site/services/engineering", file: "Native Mobile Application Development" },
-    "mobile app development": { dir: "site/services/engineering", file: "Native Mobile Application Development" },
-    "api system integrations": { dir: "site/services/engineering", file: "API" },
-    "api development": { dir: "site/services/engineering", file: "API" },
-    "system integrations": { dir: "site/services/engineering", file: "API" },
-    "database engineering": { dir: "site/services/engineering", file: "Database Design Optimization", noPoster: true },
-    "cloud devops": { dir: "site/services/engineering", file: "DevOps Cloud Implementation", noPoster: true },
-    "cloud infrastructure": { dir: "site/services/engineering", file: "DevOps Cloud Implementation", noPoster: true },
-    "devops engineering": { dir: "site/services/engineering", file: "DevOps Cloud Implementation", noPoster: true },
-    "ci cd pipelines": { dir: "site/services/engineering", file: "DevOps Cloud Implementation", noPoster: true },
-    "security engineering": { dir: "site/services/engineering", file: "backend" }, // STAND-IN: reused clip, replace with real footage
-    "authentication systems": { dir: "site/services/engineering", file: "backend" }, // STAND-IN: reused clip, replace with real footage
-    "performance engineering": { dir: "site/services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
-    "performance optimization": { dir: "site/services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
-    "no code low code development": { dir: "site/services/engineering", file: "Bespoke Digital Solutions" }, // STAND-IN: reused clip, replace with real footage
-    "no code development": { dir: "site/services/engineering", file: "Bespoke Digital Solutions" }, // STAND-IN: reused clip, replace with real footage
-    "low code development": { dir: "site/services/engineering", file: "Bespoke Digital Solutions" }, // STAND-IN: reused clip, replace with real footage
-    "ai applications agents": { dir: "site/services/growth", file: "Automation architecture" }, // STAND-IN: reused clip, replace with real footage
-    "ai applications": { dir: "site/services/growth", file: "Automation architecture" }, // STAND-IN: reused clip, replace with real footage
-    "ai agents": { dir: "site/services/growth", file: "Automation architecture" }, // STAND-IN: reused clip, replace with real footage
-  },
-  growth: {
-    "seo": { dir: "site/services/growth", file: "seamless platform integration" }, // STAND-IN: reused clip, replace with real footage
-    "search engine optimization seo": { dir: "site/services/growth", file: "seamless platform integration" }, // STAND-IN: reused clip, replace with real footage
-    "content strategy": { dir: "site/services/growth", file: "Immersive Content Strategies" },
-    "social media marketing": { dir: "site/services/growth", file: "Personalized Content Delivery" }, // STAND-IN: reused clip, replace with real footage
-    "performance marketing campaigns": { dir: "site/services/growth", file: "AI-Powered Performance Marketing" },
-    "performance marketing": { dir: "site/services/growth", file: "AI-Powered Performance Marketing" },
-    "campaign management": { dir: "site/services/growth", file: "AI-Powered Performance Marketing" },
-    "marketing automation": { dir: "site/services/growth", file: "Automation architecture" },
-    "email automation": { dir: "site/services/growth", file: "Automation architecture" },
-    "customer journey automation": { dir: "site/services/growth", file: "Automation architecture" },
-    "crm implementation": { dir: "site/services/growth", file: "MarTech stack design" }, // STAND-IN: reused clip, replace with real footage
-    "analytics attribution": { dir: "site/services/growth", file: "Predictive Analytics Attribution", noPoster: true },
-    "analytics dashboards": { dir: "site/services/growth", file: "Predictive Analytics Attribution", noPoster: true },
-    "attribution modeling": { dir: "site/services/growth", file: "Predictive Analytics Attribution", noPoster: true },
-    "customer insights": { dir: "site/services/experience", file: "User Intelligence" }, // STAND-IN: reused clip, replace with real footage
-    "cro experimentation": { dir: "site/services/growth", file: "Conversion rate optimisation" },
-    "cro": { dir: "site/services/growth", file: "Conversion rate optimisation" },
-    "conversion rate optimization": { dir: "site/services/growth", file: "Conversion rate optimisation" },
-    "experimentation a b testing": { dir: "site/services/growth", file: "Conversion rate optimisation" },
-    "personalization ai marketing": { dir: "site/services/growth", file: "Generative AI Content Creation" },
-    "personalization": { dir: "site/services/growth", file: "Generative AI Content Creation" },
-    "ai marketing": { dir: "site/services/growth", file: "Generative AI Content Creation" },
-  },
-  operations: {
-    "qa test automation": { dir: "site/services/engineering", file: "DevOps Cloud Implementation", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "quality assurance": { dir: "site/services/engineering", file: "DevOps Cloud Implementation", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "test automation": { dir: "site/services/engineering", file: "DevOps Cloud Implementation", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "performance security testing": { dir: "site/services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
-    "performance testing": { dir: "site/services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
-    "security testing": { dir: "site/services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
-    "performance optimization": { dir: "site/services/experience", file: "Performance Optimization" }, // STAND-IN: reused clip, replace with real footage
-    "accessibility audits": { dir: "site/services/experience", file: "Interface Mastery - UI" }, // STAND-IN: reused clip, replace with real footage
-    "technical ux audits": { dir: "site/services/experience", file: "Experience Design - UX" }, // STAND-IN: reused clip, replace with real footage
-    "technical audits": { dir: "site/services/experience", file: "Experience Design - UX" }, // STAND-IN: reused clip, replace with real footage
-    "ux audits": { dir: "site/services/experience", file: "Experience Design - UX" }, // STAND-IN: reused clip, replace with real footage
-    "maintenance sla support": { dir: "site/services/operations", file: "Ongoing Support" },
-    "maintenance": { dir: "site/services/operations", file: "Ongoing Support" },
-    "sla support": { dir: "site/services/operations", file: "Ongoing Support" },
-    "monitoring observability": { dir: "site/services/engineering", file: "backend" }, // STAND-IN: reused clip, replace with real footage
-    "incident response": { dir: "site/services/experience", file: "Rapid Concepting" }, // STAND-IN: reused clip, replace with real footage
-    "release management": { dir: "site/services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
-    "product optimization": { dir: "site/services/growth", file: "Predictive Analytics Attribution", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "feature evolution": { dir: "site/services/experience", file: "Adaptive Platforms" }, // STAND-IN: reused clip, replace with real footage
-  },
-  experience: {
-    "ux research": { dir: "site/services/experience", file: "User Intelligence" },
-    "service design": { dir: "site/services/experience", file: "Adaptive Platforms" }, // STAND-IN: reused clip, replace with real footage
-    "information architecture": { dir: "site/services/engineering", file: "Digital Platform Architecture" }, // STAND-IN: reused clip, replace with real footage
-    "ux design": { dir: "site/services/experience", file: "Experience Design - UX" },
-    "ui design": { dir: "site/services/experience", file: "Interface Mastery - UI" },
-    "design systems": { dir: "site/services/experience", file: "Design Systems" },
-    "accessibility design": { dir: "site/services/engineering", file: "Cross-Platform Hybrid Mobile Solutions", noPoster: true }, // STAND-IN: reused clip, replace with real footage
-    "interactive prototyping": { dir: "site/services/experience", file: "Rapid Concepting" },
-    "user testing": { dir: "site/services/growth", file: "Conversion rate optimisation" }, // STAND-IN: reused clip, replace with real footage
-    "journey mapping": { dir: "site/services/experience", file: "Journey architecture" },
-  },
+const SLUGS_BY_PILLAR: Record<string, string[]> = {
+  brand: [
+    'brand-strategy',
+    'brand-positioning',
+    'brand-narrative',
+    'brand-identity-systems',
+    'naming-and-nomenclature',
+    'messaging-framework',
+    'voice-and-tone',
+    'employer-branding',
+    'brand-guidelines',
+    'brand-activation',
+  ],
+  engineering: [
+    'website-and-cms-development',
+    'web-application-development',
+    'mobile-application-development',
+    'saas-development',
+    'ecommerce-development',
+    'api-and-system-integrations',
+    'database-engineering',
+    'cloud-and-devops',
+    'security-engineering',
+    'performance-engineering',
+    'ai-applications-and-agents',
+    'no-code-and-low-code-development',
+  ],
+  experience: [
+    'ux-research',
+    'service-design',
+    'information-architecture',
+    'ux-design',
+    'ui-design',
+    'design-systems',
+    'accessibility-design',
+    'interactive-prototyping',
+    'user-testing',
+    'journey-mapping',
+  ],
+  growth: [
+    'seo',
+    'content-strategy',
+    'social-media-marketing',
+    'performance-marketing-and-campaigns',
+    'crm-implementation',
+    'marketing-automation',
+    'personalization-and-ai-marketing',
+    'analytics-and-attribution',
+    'customer-insights',
+    'cro-and-experimentation',
+  ],
+  operations: [
+    'qa-and-test-automation',
+    'performance-and-security-testing',
+    'accessibility-audits',
+    'maintenance-and-sla-support',
+    'monitoring-and-observability',
+    'incident-response',
+    'release-management',
+    'technical-and-ux-audits',
+    'product-optimization',
+    'feature-evolution',
+  ],
+  strategy: [
+    'business-strategy',
+    'business-model-design',
+    'digital-transformation-and-innovation',
+    'market-and-competitive-research',
+    'product-strategy-and-roadmapping',
+    'product-discovery-and-mvp-planning',
+    'ai-strategy',
+    'ai-readiness-assessment',
+    'transformation-workshops',
+  ],
 };
+
+export function mediaSlug(title: string): string {
+  return String(title)
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 /**
  * Framework-phase → clip, for the "How we work" ProcessMap cards.
@@ -203,11 +169,11 @@ export function serviceMediaFor(
   title: string,
   resolve: (path: string) => string
 ): ServiceMedia | null {
-  const ref = MEDIA_BY_PILLAR[pillar]?.[mediaKey(title)];
-  if (!ref) return null;
+  const slug = mediaSlug(title);
+  if (!SLUGS_BY_PILLAR[pillar]?.includes(slug)) return null;
   return {
-    video: encodeURI(resolve(`${ref.dir}/${ref.file}.mp4`)),
-    poster: ref.noPoster ? '' : encodeURI(resolve(`${ref.dir}/posters/${ref.file}.webp`)),
+    video: encodeURI(resolve(`site/services/${pillar}/${slug}.mp4`)),
+    poster: encodeURI(resolve(`site/services/${pillar}/posters/${slug}.webp`)),
   };
 }
 

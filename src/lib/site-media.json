@@ -67,11 +67,11 @@
     "ogDefault": "site/default/og.jpg"
   },
   "serviceTags": {
-    "strategy": "site/services/growth/Digital Transformation Roadmaps.mp4",
+    "strategy": "site/services/strategy/digital-transformation-and-innovation.mp4",
     "engineering": "site/home/web-app-development.mp4",
     "brand": "site/home/brand-strategy.mp4",
     "growth": "site/home/martech-genai.mp4",
-    "operations": "site/services/growth/seamless platform integration.mp4",
+    "operations": "site/services/growth/seo.mp4",
     "experience": "site/home/experience-design.mp4"
   }
 }
