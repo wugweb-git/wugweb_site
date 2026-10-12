@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — blog cover spares (2026-10-13)
+- New covers: `blog/how-exactly-do-product-manager-and-ux-designer-collaborate/cover.png` (from `alt-cover.png`) and `blog/ui-design-trends-to-watch-out-for-in-2023-and-resurfacing-comeback-trend/cover.png` (from 0054's `alt-design-grid.png`), both verified 200 and byte-identical.
+- Owner ran `scripts/owner-delete-blog-alt-spares.sh`: the two `alt-*` spares are deleted (404 confirmed).
+
 ### Fixed — Airtel logos finished; blog cover copies (2026-10-12)
 - `scripts/finish-airtel-logos.mjs`: `client-CLI-0031`/`0035` `logoPath`, both Airtel case studies' `clientLogoPath` (was a `framerusercontent.com` URL) and the asset records `asset-logo-airtelxstream`/`asset-logos-airtel-xsafe-png` now point at `logos/airtel-*.png` (alt kept). A later repoint pass had moved the clients back to `work/<slug>/client-logo-*.png`. Backup: `backups/airtel-logo-finish-2026-10-12.json`.
 - `caseStudy-airtel-xsafe.clientRef` pointed at the Xstream client, so `/work/airtel-xsafe` showed the Xstream logo; now `client-CLI-0035`.
