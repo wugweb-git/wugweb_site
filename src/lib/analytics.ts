@@ -28,10 +28,18 @@
  */
 
 import { isCanonicalHost } from './hosts';
+import { FALLBACK_GA4_ID, gateProviders, type ProviderKey } from './integrations';
 
-const MEASUREMENT_ID = 'G-W5WJ1PMTKD';
+/*
+ * More providers (2026-10-13): GTM, Yandex Metrica, Microsoft Clarity and
+ * Hotjar, each loading only when its ID is set in siteSettings → Integrations,
+ * and each behind the SAME two gates as GA4 — the host gate in initAnalytics()
+ * and the analytics-consent event. Which providers may load is decided by the
+ * pure gateProviders() in integrations.ts (unit-tested); this file only knows
+ * how to load each one. GA4's events and data-gtag-event handling are unchanged.
+ */
 
-let loaded = false;
+const loadedProviders = new Set<ProviderKey>();
 
 /**
  * Fire a GA4 event.
@@ -103,9 +111,7 @@ function bindClickTracking() {
   });
 }
 
-function loadGtag() {
-  if (loaded) return;
-  loaded = true;
+function loadGtag(measurementId: string) {
 
   const w = window as any;
   w.dataLayer = w.dataLayer || [];
@@ -115,7 +121,7 @@ function loadGtag() {
   w.gtag = gtag;
 
   gtag('js', new Date());
-  gtag('config', MEASUREMENT_ID, {
+  gtag('config', measurementId, {
     // Opt into GA4's DebugView from a URL, so the tag can be verified against
     // the live property without guessing. ?ga_debug=1
     ...(new URLSearchParams(window.location.search).get('ga_debug') === '1'
@@ -125,7 +131,7 @@ function loadGtag() {
 
   const s = document.createElement('script');
   s.async = true;
-  s.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
   document.head.appendChild(s);
 
   // Only now can events land. Running these inside loadGtag rather than at
@@ -135,11 +141,81 @@ function loadGtag() {
   bindClickTracking();
 }
 
+function addScript(src: string) {
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = src;
+  document.head.appendChild(s);
+}
+
+/** Google Tag Manager. No <noscript> iframe: that would load without consent. */
+function loadGtm(containerId: string) {
+  const w = window as any;
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+  addScript(`https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(containerId)}`);
+}
+
+function loadYandexMetrica(counterId: string) {
+  const w = window as any;
+  w.ym = w.ym || function (...args: unknown[]) { (w.ym.a = w.ym.a || []).push(args); };
+  w.ym.l = Date.now();
+  addScript('https://mc.yandex.ru/metrika/tag.js');
+  w.ym(Number(counterId), 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true });
+}
+
+function loadClarity(projectId: string) {
+  const w = window as any;
+  w.clarity = w.clarity || function (...args: unknown[]) { (w.clarity.q = w.clarity.q || []).push(args); };
+  addScript(`https://www.clarity.ms/tag/${encodeURIComponent(projectId)}`);
+}
+
+function loadHotjar(siteId: string) {
+  const w = window as any;
+  w.hj = w.hj || function (...args: unknown[]) { (w.hj.q = w.hj.q || []).push(args); };
+  w._hjSettings = { hjid: Number(siteId), hjsv: 6 };
+  addScript(`https://static.hotjar.com/c/hotjar-${encodeURIComponent(siteId)}.js?sv=6`);
+}
+
+const LOADERS: Record<ProviderKey, (id: string) => void> = {
+  ga4: loadGtag,
+  gtm: loadGtm,
+  yandex: loadYandexMetrica,
+  clarity: loadClarity,
+  hotjar: loadHotjar,
+};
+
+/** IDs rendered by BaseLayout (canonical host only). If the block is missing
+ *  or unreadable, fall back to GA4 alone — exactly the previous behaviour. */
+function readConfig(): Partial<Record<ProviderKey, string>> {
+  try {
+    const el = document.getElementById('wugweb-integrations');
+    const parsed = el ? JSON.parse(el.textContent || '{}') : null;
+    return parsed && typeof parsed === 'object' ? parsed : { ga4: FALLBACK_GA4_ID };
+  } catch {
+    return { ga4: FALLBACK_GA4_ID };
+  }
+}
+
+function loadAllowedProviders() {
+  const { load, skipped } = gateProviders(readConfig(), {
+    hostname: window.location.hostname,
+    consent: { analytics: true }, // this runs only on the analytics-consent event
+  });
+  for (const { key, id } of load) {
+    if (loadedProviders.has(key)) continue;
+    loadedProviders.add(key);
+    LOADERS[key](id);
+  }
+  const gtm = skipped.find((s) => s.key === 'gtm' && s.reason.startsWith('GA4'));
+  if (gtm) console.warn(`[analytics] GTM not loaded: ${gtm.reason}`);
+}
+
 export function initAnalytics() {
   if (typeof window === 'undefined') return;
   if (!isCanonicalHost(window.location.hostname)) return;
 
   // BaseLayout fires this on a fresh accept AND on load when consent was
   // already stored, so both paths are covered by the one listener.
-  window.addEventListener('wugweb-analytics-allowed', loadGtag);
+  window.addEventListener('wugweb-analytics-allowed', loadAllowedProviders);
 }

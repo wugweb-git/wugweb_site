@@ -7,7 +7,9 @@
 export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {
     siteUrl, siteTitle, seoDescription, ogImage, ogImagePath, language, copyright,
-    socialLinks, contactEmail, companyName
+    socialLinks, contactEmail, companyName,
+    ga4MeasurementId, gtmContainerId, yandexMetricaId, clarityId, hotjarId,
+    googleSiteVerification, bingSiteVerification, yandexVerification
   }
 `;
 

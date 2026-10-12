@@ -11,6 +11,7 @@ import { siteSettingsQuery, postsListQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
 import { SITE_MEDIA } from '../lib/site-media';
 import { isCanonicalHost } from '../lib/hosts';
+import { resolveIds, verificationTags, clientConfig } from '../lib/integrations';
 
 interface Props {
   title: string;
@@ -156,6 +157,16 @@ const metaDesc = description || defaultDesc;
  */
 const onCanonicalHost = isCanonicalHost(Astro.url.hostname);
 const robotsNoIndex = noIndex || !onCanonicalHost;
+
+// Integrations (siteSettings → Integrations). resolveIds() validates every ID
+// and falls back to the long-standing GA4 ID if settings are empty or failed
+// to load. Both blocks render on the canonical host only: verification tags so
+// a staging copy can never verify itself, and the provider config so a
+// non-canonical host ships no third-party IDs at all. Providers then load
+// client-side only after analytics consent (src/lib/analytics.ts).
+const integrationIds = resolveIds(settings);
+const verifyTags = verificationTags(integrationIds, Astro.url.hostname);
+const integrationsConfig = onCanonicalHost ? clientConfig(integrationIds) : null;
 
 const canonicalOrigin = (settings?.siteUrl || 'https://www.wugweb.com').replace(/\/+$/, '');
 const canonicalUrl = new URL(canonicalPath || Astro.url.pathname, canonicalOrigin).href;
@@ -310,6 +321,8 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         way to get the *target* dropped along with it. */}
     {!noIndex && <link rel="canonical" href={canonicalUrl} />}
     {robotsNoIndex && <meta name="robots" content="noindex, follow" />}
+    {verifyTags.map((t) => <meta name={t.name} content={t.content} />)}
+    {integrationsConfig && <script id="wugweb-integrations" type="application/json" set:html={JSON.stringify(integrationsConfig)} />}
     <JsonLd graph={graphNodes} />
 
     <!-- X / Twitter -->
