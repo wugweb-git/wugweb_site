@@ -223,6 +223,45 @@ export function seoChecks(row: Record<string, unknown>, dupes?: DuplicateIndex, 
       miss.length ? `Missing from: ${miss.join(', ')}.` : 'OK');
   }
 
+  // Keyword stuffing (only where a focus keyword is set). The plugin trial
+  // (2026-10-13) flagged this as a real gap: repetition reads as spam to
+  // people and to search engines alike.
+  if (cfg.focusKeyword && str(row.focusKeyword)) {
+    const kw = norm(row.focusKeyword);
+    const kwWords = kw.split(' ').length;
+    const count = (hay: string) => (kw ? hay.split(kw).length - 1 : 0);
+    const inTitle = count(norm(title));
+    const bodyWords = words(text).length;
+    const inBody = count(norm(text));
+    const density = bodyWords ? (inBody * kwWords) / bodyWords : 0;
+    const problems: string[] = [];
+    if (inTitle > 1) problems.push(`${inTitle}× in the title`);
+    if (inBody >= 3 && density > 0.03) problems.push(`${(density * 100).toFixed(1)}% of the body (${inBody}×), over 3%`);
+    add('keyword-stuffing', 'Focus keyword not over-used', problems.length === 0, 'warn',
+      problems.length ? `"${String(row.focusKeyword)}" appears ${problems.join(' and ')}. Use synonyms.` : 'OK');
+  }
+
+  // Social card: what LinkedIn, X, WhatsApp and Slack show when the page is
+  // shared. Mirrors the templates exactly — post: ogImagePath → ogImage →
+  // cover; caseStudy: ogImagePath → ogImage → an image coverPath; page:
+  // ogImagePath → ogImage. The service template passes no image at all, so
+  // services always fall back to the site default until that changes.
+  {
+    const hasImage =
+      !!(str(row.ogImagePath) || row.ogImage) ||
+      (type === 'post' && !!(str(row.coverPath) || row.coverImage)) ||
+      (type === 'caseStudy' && IMAGE_EXT.test(str(row.coverPath).split(/[?#]/)[0]));
+    const cardTitle = str(row.ogTitle) || title;
+    const cardDesc = str(row.ogDescription) || description;
+    const missing: string[] = [];
+    if (type === 'service') missing.push('its own image (the service template always uses the site default)');
+    else if (!hasImage) missing.push('its own image (falls back to the site default)');
+    if (!cardTitle) missing.push('a title');
+    if (!cardDesc) missing.push('a description');
+    add('social-card', 'Social card has its own image, title and description', missing.length === 0, 'warn',
+      missing.length ? `Missing ${missing.join(', ')}.` : 'OK');
+  }
+
   // Description not a copy of the title or the excerpt
   if (description) {
     const d = norm(description);

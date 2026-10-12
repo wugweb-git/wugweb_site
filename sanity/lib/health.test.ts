@@ -14,6 +14,8 @@ const good = {
   slug: 'a-reasonable-slug',
   seoDescription: desc,
   excerpt: 'Different excerpt text',
+  // A clean post has its own share image (social-card check, 2026-10-13).
+  ogImagePath: '/assets/og/post.jpg',
   body: [para('Intro', 'h2'), para(longText)],
 };
 const get = (checks: ReturnType<typeof seoChecks>, id: string) => checks.find((c) => c.id === id);
@@ -126,4 +128,36 @@ test('cover alt is skipped without a lookup, for videos, or with no cover', () =
   assert.equal(get(seoChecks({ ...good, coverPath: '/assets/work/a.mp4' }, undefined, alts), 'cover-alt'), undefined);
   assert.equal(get(seoChecks(good, undefined, alts), 'cover-alt'), undefined);
   assert.equal(get(seoChecks({ _type: 'singletonPage', title, coverPath: '/assets/a.jpg' }, undefined, alts), 'cover-alt'), undefined);
+});
+
+// ── Social card (2026-10-13) ──
+test('social card: own image, title and description', () => {
+  assert.equal(get(seoChecks(good), 'social-card')?.pass, true);
+  const noImg = { ...good, ogImagePath: undefined };
+  assert.equal(get(seoChecks(noImg), 'social-card')?.pass, false);
+  assert.match(get(seoChecks(noImg), 'social-card')!.hint, /falls back to the site default/);
+  assert.equal(get(seoChecks({ ...noImg, coverPath: '/assets/blog/x/cover.jpg' }), 'social-card')?.pass, true, 'post falls back to its cover');
+  assert.equal(get(seoChecks({ ...noImg, ogImage: { asset: { _ref: 'image-1' } } }), 'social-card')?.pass, true);
+});
+
+test('social card: case study cover counts only if it is an image; services always warn', () => {
+  const cs = { _type: 'caseStudy', title, slug: 'cs', seoDescription: desc, summary: 's', bodyContent: [para(longText)] };
+  assert.equal(get(seoChecks({ ...cs, coverPath: '/assets/work/x/cover.webp' }), 'social-card')?.pass, true);
+  assert.equal(get(seoChecks({ ...cs, coverPath: '/assets/work/x/cover.mp4' }), 'social-card')?.pass, false, 'a video cover is not a share image');
+  const svc = { _type: 'service', title, slug: 'svc', seoDescription: desc, ogImagePath: '/assets/og/x.jpg' };
+  assert.match(get(seoChecks(svc), 'social-card')!.hint, /service template always uses the site default/);
+});
+
+// ── Keyword stuffing (2026-10-13) ──
+test('keyword stuffing: flags over 3% of the body and repeats in the title', () => {
+  const page = (focusKeyword: string, bodyText: string, t = title) => ({ _type: 'singletonPage', title: t, seoDescription: desc, focusKeyword, body: [para(bodyText)] });
+  // 4 uses of a 2-word keyword in ~400 words = 8/404 ≈ 2%, under the 3% line.
+  const natural = Array.from({ length: 400 }, (_, i) => (i % 100 === 0 ? 'design systems' : `w${i}`)).join(' ');
+  assert.equal(get(seoChecks(page('design systems', natural)), 'keyword-stuffing')?.pass, true, '4 uses in ~400 words (≈2%) is fine');
+  const stuffed = Array.from({ length: 100 }, (_, i) => (i % 5 === 0 ? 'design systems' : `w${i}`)).join(' ');
+  const r = get(seoChecks(page('design systems', stuffed)), 'keyword-stuffing')!;
+  assert.equal(r.pass, false);
+  assert.match(r.hint, /over 3%/);
+  assert.equal(get(seoChecks(page('design', 'clean body text here', 'Design and design and Design')), 'keyword-stuffing')?.pass, false, 'title repeat');
+  assert.equal(get(seoChecks({ ...page('', natural) }), 'keyword-stuffing'), undefined, 'no focus keyword, no check');
 });

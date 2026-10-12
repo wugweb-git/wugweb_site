@@ -25,13 +25,13 @@ const TYPES: { type: string; label: string; query: string; totalQuery: string }[
   {
     type: 'post',
     label: 'Blog Posts',
-    query: `*[_type=="post" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, coverPath, excerpt, body }`,
+    query: `*[_type=="post" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, coverPath, coverImage, excerpt, body }`,
     totalQuery: `count(*[_type=="post" && !(_id in path("drafts.**"))])`,
   },
   {
     type: 'caseStudy',
     label: 'Case Studies',
-    query: `*[_type=="caseStudy" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, coverPath, summary, bodyContent }`,
+    query: `*[_type=="caseStudy" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, coverPath, summary, bodyContent }`,
     totalQuery: `count(*[_type=="caseStudy" && !(_id in path("drafts.**"))])`,
   },
   {
@@ -43,7 +43,7 @@ const TYPES: { type: string; label: string; query: string; totalQuery: string }[
   {
     type: 'singletonPage',
     label: 'Pages',
-    query: `*[_type=="singletonPage" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, pageId, seoTitle, seoDescription, ogImage, focusKeyword, body }`,
+    query: `*[_type=="singletonPage" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, pageId, seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, focusKeyword, body }`,
     totalQuery: `count(*[_type=="singletonPage" && !(_id in path("drafts.**"))])`,
   },
 ];
