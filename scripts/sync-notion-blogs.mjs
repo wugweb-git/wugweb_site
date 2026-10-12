@@ -8,6 +8,7 @@
  * Matched posts (Notion "Sanity ID", else slug): sets title, slug, excerpt, seoTitle, seoDescription,
  * canonicalUrl, featured, readingTime, publishedAt, coverPath + ogImagePath (full R2 URLs) and body
  * (Notion blocks → Portable Text; images become mediaUrl blocks). Empty Notion values never clear Sanity.
+ * topic / topicSlug: the Notion Category name and its Slug (blog filter).
  * category: Notion's Category (relation) mapped onto Sanity's list via CATEGORY_MAP (owner-approved 2026-10-13).
  * Author and tags on existing posts are left alone.
  * New Notion posts are created as post-<slug>. Posts that exist only in Sanity are NOT deleted here;
@@ -47,12 +48,15 @@ async function children(id) {
   return out;
 }
 const titleOf = {};
+const slugOf = {};
 async function pageTitle(id) {
   if (titleOf[id] !== undefined) return titleOf[id];
   const j = await notion('https://api.notion.com/v1/pages/' + id);
   const t = Object.values(j.properties || {}).find((p) => p.type === 'title');
+  slugOf[id] = (j.properties?.Slug?.rich_text || []).map((r) => r.plain_text).join('').trim();
   return (titleOf[id] = (t?.title || []).map((r) => r.plain_text).join(''));
 }
+const slugify = (s) => s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const plain = (p) => (p?.rich_text || p?.title || []).map((r) => r.plain_text).join('').trim();
 
 // ---- Notion blocks → Portable Text --------------------------------------------------------
@@ -108,6 +112,7 @@ const CATEGORY_MAP = {
   'Career': 'Misc', 'Lifestyle': 'Misc',
 };
 const unmappedCategories = new Set();
+const topicCount = {}; const noTopic = [];
 
 // ---- load ---------------------------------------------------------------------------------
 const pages = []; let cur;
@@ -141,7 +146,13 @@ for (const p of pages) {
   if (row.cover) { set.coverPath = row.cover; set.ogImagePath = row.og || row.cover; }
   if (body.length) set.body = body;
   const catName = P['Category']?.relation?.[0] ? await pageTitle(P['Category'].relation[0].id) : '';
-  if (catName) { if (CATEGORY_MAP[catName]) set.category = CATEGORY_MAP[catName]; else unmappedCategories.add(catName); }
+  if (catName) {
+    if (CATEGORY_MAP[catName]) set.category = CATEGORY_MAP[catName]; else unmappedCategories.add(catName);
+    // topic: the Notion category itself, for the blog filter (?topic=<Notion Slug>)
+    set.topic = catName;
+    set.topicSlug = slugOf[P['Category'].relation[0].id] || slugify(catName);
+    topicCount[catName] = (topicCount[catName] || 0) + 1;
+  } else noTopic.push(row.postId);
 
   const id = published[row.sanityId] ? row.sanityId : bySlug[row.slug];
   if (id) {
@@ -173,6 +184,7 @@ const catCount = {};
 for (const o of ops) if (o.set.category && !o.id.startsWith('drafts.')) catCount[o.set.category] = (catCount[o.set.category] || 0) + 1;
 for (const d of created) if (d.category) catCount[d.category] = (catCount[d.category] || 0) + 1;
 if (Object.keys(catCount).length) console.log('category changes by target:', catCount);
+console.log('topics (all Notion posts):', topicCount, '| total', Object.values(topicCount).reduce((a, b) => a + b, 0), '| posts with no Notion category:', noTopic);
 if (unmappedCategories.size) console.log('UNMAPPED Notion categories (left unchanged):', [...unmappedCategories]);
 console.log('Sanity-only:'); sanityOnly.forEach((s) => console.log('  ' + s));
 

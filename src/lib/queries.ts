@@ -48,7 +48,7 @@ export const caseStudyBySlugQuery = `
 
 export const postsListQuery = `
   *[_type == "post" && !(_id in path("drafts.**"))] | order(featured desc, publishedAt desc) {
-    title, "slug": slug.current, excerpt, coverImage, coverPath, publishedAt, tags, category, readingTime, featured,
+    title, "slug": slug.current, excerpt, coverImage, coverPath, publishedAt, tags, category, topic, topicSlug, readingTime, featured,
     "author": author->{ name, photo, role }
   }
 `;

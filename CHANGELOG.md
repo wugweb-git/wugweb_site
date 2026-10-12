@@ -29,6 +29,10 @@ and this project adheres to Semantic Versioning.
 ### Removed — unused Studio dependencies (2026-10-13)
 - `@sanity/dashboard`, which nothing imported, and `@sanity/code-input`, which no schema uses as `type: 'code'` (0 such blocks in live data). 82 packages removed. `table()` stays.
 
+### Added — blog topic filter from Notion (2026-10-13)
+- `post.topic` + `post.topicSlug` (Studio deployed). The sync sets them from the Notion Blogs Category name and its Slug, for all 103 posts: UX Design 26, Design 23, Product 16, AI 9, Strategy 7, Development 5, Career 4, Martech 3, Tech 3, Tools 3, Brand & Strategy 2, Design Process 1, Lifestyle 1.
+- `/blog` filter chips are now these topics (only ones with posts, most-used first) instead of the six pillars; `?topic=<slug>` selects one on load and is kept in the URL. `category` and the pillar colours are unchanged.
+
 ### Changed — blog redirects, 0107 cover, categories (2026-10-13)
 - 301s from the 9 removed post slugs to the posts that replaced them (`RENAMED_SLUGS` in `src/pages/blog/[slug].astro`); all verified 301 → 200.
 - POST-0107 cover uploaded to `blog/i-accidentally-took-down-every-website-on-my-netlify-account-while-exploring-rag/cover.png` (200, MD5-verified) and set in Sanity. All 103 posts now have a cover.

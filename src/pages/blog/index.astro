@@ -79,7 +79,19 @@ const posts = (rawPosts || []).map((p: any) => {
     initials: initials(p.title),
   };
 });
-const categories = ['All', ...PILLARS];
+
+// Filter chips are blog topics (the Notion "Category", synced into post.topic /
+// post.topicSlug). Only topics with at least one post get a chip, most-used
+// first; the slug is the stable ?topic= URL value.
+const topicCounts = new Map<string, { name: string; count: number }>();
+for (const p of posts) {
+  if (!p.topic || !p.topicSlug) continue;
+  const t = topicCounts.get(p.topicSlug) ?? { name: p.topic, count: 0 };
+  t.count++; topicCounts.set(p.topicSlug, t);
+}
+const topics = [...topicCounts.entries()]
+  .sort((a, b) => b[1].count - a[1].count || a[1].name.localeCompare(b[1].name))
+  .map(([slug, t]) => ({ slug, name: t.name }));
 
 // The query already orders featured-first, then newest — so the first post
 // is the correct "one bold thing" for a large feature card; the rest form
@@ -132,13 +144,14 @@ function fmtDate(d?: string): string {
         they live inside the grid they filter. role="toolbar" names them for
         assistive tech now that they are no longer a labelled section. */}
     <div class="blog-filters" role="toolbar" aria-label="Filter articles" data-reveal>
-    {categories.map((c) => (
-      <button class="filter-chip" data-category={c}>{c}</button>
+      <button class="filter-chip" data-topic="">All</button>
+    {topics.map((t) => (
+      <button class="filter-chip" data-topic={t.slug}>{t.name}</button>
     ))}
     </div>
     <ul class="blog-grid">
       {restPosts.map((p: any, i: number) => (
-        <li data-reveal data-reveal-delay={(Math.min(i % 6, 5) * 0.05).toFixed(2)} data-category={p.pillar}>
+        <li data-reveal data-reveal-delay={(Math.min(i % 6, 5) * 0.05).toFixed(2)} data-topic={p.topicSlug || ''}>
           <a href={`/blog/${p.slug}`} style={`--card-accent: ${p.accent}`}>
             <div class="post-thumb-wrap">
               {p.coverUrl ? (
@@ -290,17 +303,21 @@ function fmtDate(d?: string): string {
 </style>
 
 <script>
-  document.querySelectorAll('.filter-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const cat = (chip as HTMLElement).dataset.category;
-      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      document.querySelectorAll('.blog-grid li').forEach(item => {
-        const el = item as HTMLElement;
-        if (cat === 'All' || el.dataset.category === cat) el.classList.remove('hidden');
-        else el.classList.add('hidden');
-      });
+  // ?topic=<slug> selects a topic on load and is kept in the URL (replaceState),
+  // so a filtered view can be linked and survives reload.
+  const chips = [...document.querySelectorAll<HTMLElement>('.filter-chip')];
+  function applyTopic(topic: string) {
+    const chip = chips.find((c) => c.dataset.topic === topic) ?? chips[0];
+    const active = chip?.dataset.topic ?? '';
+    chips.forEach((c) => c.classList.toggle('active', c === chip));
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+    document.querySelectorAll<HTMLElement>('.blog-grid li').forEach((el) => {
+      el.classList.toggle('hidden', !!active && el.dataset.topic !== active);
     });
-  });
-  document.querySelector('.filter-chip')?.classList.add('active');
+    const url = new URL(location.href);
+    if (active) url.searchParams.set('topic', active); else url.searchParams.delete('topic');
+    history.replaceState(null, '', url);
+  }
+  chips.forEach((chip) => chip.addEventListener('click', () => applyTopic(chip.dataset.topic ?? '')));
+  applyTopic(new URLSearchParams(location.search).get('topic') ?? '');
 </script>
