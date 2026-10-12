@@ -73,8 +73,9 @@ export const TABLE_CONFIGS: TableConfig[] = [
       UPDATED,
     ],
     titleField: 'source',
-    getTitle: (row) => String(row.source || row._id),
-    getSubtitle: (row) => `→ ${String(row.destination ?? '')}`,
+    // Row title reads as the rule itself: "/old → /new · 301".
+    getTitle: (row) => `${String(row.source || '?')} → ${String(row.destination || '?')} · ${String(row.statusCode ?? 301)}`,
+    getSubtitle: (row) => [row.enabled === false ? 'Disabled' : '', String(row.note || '')].filter(Boolean).join(' · '),
   },
   {
     key: 'post',
