@@ -29,6 +29,10 @@ and this project adheres to Semantic Versioning.
 ### Removed — unused Studio dependencies (2026-10-13)
 - `@sanity/dashboard`, which nothing imported, and `@sanity/code-input`, which no schema uses as `type: 'code'` (0 such blocks in live data). 82 packages removed. `table()` stays.
 
+### Changed — "Brand & Strategy" topic split (2026-10-13)
+- Notion: POST-0102 and POST-0103 (both branding posts) moved from the "Brand & Strategy" category to "Brand" (backup `backups/notion-brand-split-2026-10-13.json`); Strategy keeps its 7 posts. `topic` options now list Brand instead of Brand & Strategy (Studio deployed); the sync maps Brand → `category` "Brand & Strategy" so the pillar colour is unchanged.
+- Blog cards show the post's topic; the featured post follows the topic filter.
+
 ### Added — blog topic filter from Notion (2026-10-13)
 - `post.topic` + `post.topicSlug` (Studio deployed). The sync sets them from the Notion Blogs Category name and its Slug, for all 103 posts: UX Design 26, Design 23, Product 16, AI 9, Strategy 7, Development 5, Career 4, Martech 3, Tech 3, Tools 3, Brand & Strategy 2, Design Process 1, Lifestyle 1.
 - `/blog` filter chips are now these topics (only ones with posts, most-used first) instead of the six pillars; `?topic=<slug>` selects one on load and is kept in the URL. `category` and the pillar colours are unchanged.

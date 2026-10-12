@@ -63,7 +63,7 @@ export default defineType({
     ] }, group: 'meta' }),
     defineField({ name: 'topic', type: 'string', title: 'Blog topic', group: 'meta',
       description: 'Blog filter topic. Synced from the Notion Blogs "Category" — edit it in Notion, not here.',
-      options: { list: ['UX Design', 'Design', 'Design Process', 'Product', 'Tools', 'AI', 'Martech', 'Brand & Strategy', 'Strategy', 'Development', 'Tech', 'Career', 'Lifestyle'] } }),
+      options: { list: ['UX Design', 'Design', 'Design Process', 'Product', 'Tools', 'AI', 'Martech', 'Brand', 'Strategy', 'Development', 'Tech', 'Career', 'Lifestyle'] } }),
     defineField({ name: 'topicSlug', type: 'string', title: 'Blog topic slug', group: 'meta', readOnly: true,
       description: 'URL value for ?topic= on /blog, from the Notion category Slug. Set by the sync.' }),
     defineField({ name: 'tags', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, description: 'Add tags from the master list or type new ones', group: 'meta' }),

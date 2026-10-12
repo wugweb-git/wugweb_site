@@ -107,7 +107,7 @@ const canon = (v) => JSON.stringify(strip(v ?? null));
 const CATEGORY_MAP = {
   'UX Design': 'Experience Design', 'Design': 'Experience Design', 'Design Process': 'Experience Design',
   'Product': 'Experience Design', 'Tools': 'Experience Design',
-  'AI': 'AI & Automation', 'Martech': 'MarTech', 'Brand & Strategy': 'Brand & Strategy',
+  'AI': 'AI & Automation', 'Martech': 'MarTech', 'Brand & Strategy': 'Brand & Strategy', 'Brand': 'Brand & Strategy',
   'Strategy': 'Digital Transformation', 'Development': 'Web & App Development', 'Tech': 'Web & App Development',
   'Career': 'Misc', 'Lifestyle': 'Misc',
 };
