@@ -1,6 +1,10 @@
 import { defineMiddleware } from 'astro:middleware';
 import { isReservedPath, matchRedirect, normalizePath, type RedirectHit } from './lib/redirects';
 import { buildRuleSet, loadRedirectRules, type RuleSet } from './lib/redirect-rules';
+import { createNotFoundLogger } from './lib/not-found';
+
+// One logger per Worker instance: holds the per-path dedupe and daily-cap state.
+const logNotFound = createNotFoundLogger();
 
 const PREVIEW_COOKIE = '__sanity_preview';
 
@@ -104,6 +108,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
     if (hit) {
       await response.body?.cancel().catch(() => {});
       response = redirectResponse(hit, url, method);
+    }
+  }
+
+  // 404 monitor (D1, production binding only). Logged only if no redirect
+  // rescued the request, and off the response path via waitUntil, so it can
+  // never delay or break a page. Filters, dedupe and the daily cap live in
+  // src/lib/not-found.ts.
+  if (!context.isPrerendered && method === 'GET' && url.pathname !== '/404' && isNotFound(response, url.origin)) {
+    const runtime = (context.locals as any)?.runtime;
+    const db = runtime?.env?.NOT_FOUND_DB;
+    if (db) {
+      const task = logNotFound(db, url.pathname, context.request.headers.get('referer'), context.request.headers.get('user-agent'));
+      if (typeof runtime?.ctx?.waitUntil === 'function') runtime.ctx.waitUntil(task);
+      else task.catch(() => {});
     }
   }
 

@@ -43,6 +43,16 @@
       "id": "db4a58a931d94d3cb89e23a95b7f01be"
     }
   ],
+  // 404 monitor (src/lib/not-found.ts). Free D1: 100k rows written/day, 5M
+  // rows read/day, 5 GB. The monitor caps itself at 20,000 rows written/day.
+  // Production only on purpose: preview/uat 404s are not production signal.
+  "d1_databases": [
+    {
+      "binding": "NOT_FOUND_DB",
+      "database_name": "wugweb-404",
+      "database_id": "936af028-e3d8-4b57-b1b7-d6c1f23a225c"
+    }
+  ],
   // Preview deployments. Audit finding 18 — "preview deployment bindings are
   // broken" — and this is why: on Pages, the bindings declared ABOVE apply to
   // the production environment only. A preview deployment (every branch and
