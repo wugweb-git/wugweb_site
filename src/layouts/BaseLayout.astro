@@ -9,6 +9,7 @@ import JsonLd from '../components/JsonLd.astro';
 import { urlFor, cachedFetch } from '../lib/sanity';
 import { siteSettingsQuery, postsListQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
+import { SITE_MEDIA } from '../lib/site-media';
 import { isCanonicalHost } from '../lib/hosts';
 
 interface Props {
@@ -105,7 +106,7 @@ const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
   // Salvaged from Framer 2026-09-24: a real 1200x630 image. The previous
   // fallback, /brand/og-default.png, was 965x306 and cropped wrong everywhere.
-  : '/assets/og/default.jpg';
+  : SITE_MEDIA.seo.ogDefault;
 // `/brand/favicon.svg` is `logo-small.svg`'s mark on a black rounded-square
 // backdrop — logo-small.svg itself stays transparent-background since it's
 // also used as a plain inline mark (services/[slug].astro's Approach CTA),

@@ -39,7 +39,7 @@ function resolveWork(key: string) {
   // last-resort local convention after sync from assets/assets/client
   const folder = key === 'indusninja' ? 'indusind-bank' : key;
   const file = key === 'indusninja' ? 'indusninja-thumb.mp4' : key === 'airtel-xsafe' ? 'xsafe-thumb.mp4' : `${key}-thumb.mp4`;
-  return { v: `/assets/work/${folder}/${file}`, label: key, slug: cs?.slug || '' };
+  return { v: assetUrl(`/assets/work/${folder}/${file}`), label: key, slug: cs?.slug || '' };
 }
 
 const serviceList = template.map(tmpl => {

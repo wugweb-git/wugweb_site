@@ -5,6 +5,7 @@ import BentoBlock, { type BentoTile } from '../components/BentoBlock.astro';
 import { sanityClient, urlFor } from '../lib/sanity';
 import { singletonPageQuery, teamListQuery, siteSettingsQuery } from '../lib/queries';
 import { assetUrl } from '../lib/assets';
+import { SITE_MEDIA } from '../lib/site-media';
 
 // Hero title/intro now Sanity-editable. 
 const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'about' }).catch(() => null);
@@ -203,8 +204,8 @@ import TeamGrid from '../components/TeamGrid.astro';
     <div class="wrap about-hero-media" data-reveal>
       <div class="about-hero-frame">
         <video aria-hidden="true" autoplay muted loop playsinline
-          src="/assets/more/about/about-message.mp4"
-          poster="/assets/about/about-section.jpg"></video>
+          src={SITE_MEDIA.about.messageVideo}
+          poster={SITE_MEDIA.about.messagePoster}></video>
         <p class="about-hero-statement is-lead">{heroText}</p>
         <!-- PLACEHOLDER COPY — replace before launch. -->
         <p class="about-hero-statement is-sub">
@@ -279,7 +280,7 @@ import TeamGrid from '../components/TeamGrid.astro';
           transparency, urgency, and pivoting.
         </p>
       </div>
-      <img class="culture-visual" src="/assets/about/about-section-2.jpg" alt="Wugweb team culture" loading="lazy" />
+      <img class="culture-visual" src={SITE_MEDIA.about.cultureImage} alt="Wugweb team culture" loading="lazy" />
     </div>
     <ul class="culture-grid">
       {culture.map((c) => <li data-reveal>{c}</li>)}

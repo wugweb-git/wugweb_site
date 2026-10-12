@@ -48,10 +48,10 @@ function findThumbFallback(slug: string, client: string) {
     const pathNorm = normalize(asset.relativePath || asset.sitePath || '');
     const nameNorm = normalize(asset.name || '');
     if (pathNorm.includes(slugNorm) || nameNorm.includes(slugNorm)) {
-      return asset.sitePath || '/assets/' + asset.relativePath;
+      return assetUrl(asset.sitePath || '/assets/' + asset.relativePath);
     }
     if (pathNorm.includes(clientNorm) || nameNorm.includes(clientNorm)) {
-      return asset.sitePath || '/assets/' + asset.relativePath;
+      return assetUrl(asset.sitePath || '/assets/' + asset.relativePath);
     }
   }
 

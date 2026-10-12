@@ -3,7 +3,8 @@
 // stays available for later, just not driving the primary headline
 // (would fight the actual brand thesis statement below).
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { posterFor } from '../lib/assets';
+import { assetUrl, posterFor } from '../lib/assets';
+import { SITE_MEDIA } from '../lib/site-media';
 import { sanityClient } from '../lib/sanity';
 import { servicesListQuery, caseStudiesListQuery, postsListQuery, singletonPageQuery } from '../lib/queries';
 import { SERVICE_TAGS } from '../lib/service-tags-data';
@@ -57,12 +58,12 @@ const thumbAssets = await sanityClient.fetch(
 ).catch(() => []);
 
 function findThumb(slug: string, thumbnailPath?: string) {
-  if (thumbnailPath) return thumbnailPath.startsWith('/') ? thumbnailPath : `/${thumbnailPath}`;
+  if (thumbnailPath) return assetUrl(thumbnailPath);
   const norm = slug?.toLowerCase().replace(/[^a-z0-9]/g, '') || '';
   for (const a of thumbAssets) {
     const p = (a.relativePath || a.sitePath || '').toLowerCase().replace(/[^a-z0-9]/g, '');
     const n = (a.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-    if (p.includes(norm) || n.includes(norm)) return a.sitePath || '/assets/' + a.relativePath;
+    if (p.includes(norm) || n.includes(norm)) return assetUrl(a.sitePath || '/assets/' + a.relativePath);
   }
   return '';
 }
@@ -78,21 +79,8 @@ const workItems = (sanityCaseStudies || []).slice(0, 8).map((cs: any) => ({
 // Local client logos copied from public/assets/framer/*/client-logo-*.
 // Verified 19 available; 13 curated for the homepage grid. Now sourced
 // from Sanity client.logoPath (fallback to the curated set if empty).
-const curatedLogos = [
-  { name: 'Aditya Birla Capital', src: '/assets/logos/client-logo-te1y.png' },
-  { name: 'Airtel', src: '/assets/logos/airtel-xsafe.png' },
-  { name: 'Axis Bank', src: '/assets/logos/client-logo-d64b.png' },
-  { name: 'Bankco', src: '/assets/logos/client-logo-qhmv.png' },
-  { name: 'Cartier', src: '/assets/logos/client-logo-jrot.png' },
-  { name: 'Gratifi', src: '/assets/logos/client-logo-5nzb.png' },
-  { name: 'IndusInd Bank', src: '/assets/logos/client-logo-k5hy.png' },
-  { name: 'Inkompass', src: '/assets/logos/client-logo-9fd5.png' },
-  { name: 'Kia', src: '/assets/logos/client-logo-5nkj.png' },
-  { name: 'NTUC', src: '/assets/logos/client-logo-grfk.png' },
-  { name: 'Plufo', src: '/assets/logos/client-logo-6djh.png' },
-  { name: 'RideEV', src: '/assets/logos/client-logo-1gbn.png' },
-  { name: 'Valyu', src: '/assets/logos/client-logo-jj6k.png' },
-];
+const curatedLogos = SITE_MEDIA.home.clientLogos;
+
 const sanityLogos = await sanityClient
   .fetch('*[_type == "client" && defined(logoPath)]{name, logoPath} | order(name asc)')
   .catch(() => []);
@@ -132,8 +120,8 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 >
   <!-- HERO -->
   <section class="hero" id="hero" aria-labelledby="hero-title">
-    <video aria-hidden="true" class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/more/home/home-poster.webp"
-      src="/assets/more/home/home.mp4"></video>
+    <video aria-hidden="true" class="hero-video" autoplay muted loop playsinline preload="none" poster={SITE_MEDIA.home.heroPoster}
+      src={SITE_MEDIA.home.heroVideo}></video>
     <div class="hero-overlay"></div>
 
     <div class="wrap hero-content">

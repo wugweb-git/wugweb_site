@@ -46,9 +46,22 @@ export type AssetUrlOptions = {
   preferR2?: boolean;
 };
 
+/**
+ * Public base URL that serves the R2 bucket (objects live at `<base>/assets/<path>`).
+ * Build-time (Vite) value: set PUBLIC_ASSETS_BASE in the build env to override it;
+ * set it to an empty string to serve /assets/* from the deployed public/ folder
+ * (local fallback). Unset = R2.
+ */
+export const ASSETS_BASE: string = (
+  (import.meta.env?.PUBLIC_ASSETS_BASE as string | undefined) ??
+  'https://pub-39ad1d03baec440faf48303be95c3782.r2.dev'
+).replace(/\/+$/, '');
+
 export function assetUrl(path: string, _opts: AssetUrlOptions = {}): string {
   const sitePath = normalizeAssetPath(path);
-  return sitePath;
+  // Already absolute (http/https) -> leave alone; makes wrapping idempotent.
+  if (/^https?:\/\//i.test(sitePath)) return sitePath;
+  return ASSETS_BASE ? `${ASSETS_BASE}${sitePath}` : sitePath;
 }
 
 export function r2KeyFromSitePath(path: string): string {
