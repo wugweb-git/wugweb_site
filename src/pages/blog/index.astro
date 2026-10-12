@@ -113,7 +113,7 @@ function fmtDate(d?: string): string {
   </section>
 
   {heroPost && (
-    <section class="wrap blog-featured" data-reveal id="blog-featured" aria-labelledby="blog-featured-title">
+    <section class="wrap blog-featured" data-reveal id="blog-featured" aria-labelledby="blog-featured-title" data-topic={heroPost.topicSlug || ''}>
       <a href={`/blog/${heroPost.slug}`} class="featured-card" style={`--card-accent: ${heroPost.accent}`}>
         <div class="featured-visual">
           {heroPost.coverUrl ? (
@@ -126,7 +126,7 @@ function fmtDate(d?: string): string {
           )}
         </div>
         <div class="featured-content">
-          <span class="pillar-tag"><i></i>{heroPost.pillar}</span>
+          <span class="pillar-tag"><i></i>{heroPost.topic || heroPost.pillar}</span>
           <h2 id="blog-featured-title">{heroPost.title}</h2>
           <p class="featured-excerpt">{heroPost.excerpt}</p>
           <div class="post-meta">
@@ -168,7 +168,7 @@ function fmtDate(d?: string): string {
               </span>
             </div>
             <div class="post-content">
-              <span class="post-category">{p.pillar}</span>
+              <span class="post-category">{p.topic || p.pillar}</span>
               <h3>{p.title}</h3>
               <p class="post-excerpt">{p.excerpt}</p>
               <div class="post-meta">
@@ -299,7 +299,7 @@ function fmtDate(d?: string): string {
     line-height: 1; color: var(--fg); opacity: var(--opacity-strong);
   }
 
-  .blog-grid li.hidden { display: none; }
+  .blog-grid li.hidden, .blog-featured.hidden { display: none; }
 </style>
 
 <script>
@@ -311,7 +311,8 @@ function fmtDate(d?: string): string {
     const active = chip?.dataset.topic ?? '';
     chips.forEach((c) => c.classList.toggle('active', c === chip));
     chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
-    document.querySelectorAll<HTMLElement>('.blog-grid li').forEach((el) => {
+    // The featured post is outside the grid; hide it too when its topic doesn't match.
+    document.querySelectorAll<HTMLElement>('.blog-grid li, .blog-featured').forEach((el) => {
       el.classList.toggle('hidden', !!active && el.dataset.topic !== active);
     });
     const url = new URL(location.href);
