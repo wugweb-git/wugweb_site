@@ -3,6 +3,7 @@ import { Box, Card, Flex, Grid, Stack, Text, Badge, Button, Select, TextInput, u
 import { SearchIcon, RefreshIcon, CopyIcon, LaunchIcon, ImagesIcon } from '@sanity/icons';
 import { useClient } from 'sanity';
 import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
+import { AssetUsagePanel, type UndoEntry } from '../components/AssetUsagePanel';
 
 interface AssetRow {
   _id: string;
@@ -114,6 +115,17 @@ function MediaToolContent() {
   const [q, setQ] = useState('');
   const [group, setGroup] = useState<string>('all');
   const [selectedAsset, setSelectedAsset] = useState<AssetRow | null>(null);
+  // Session-only undo for assign / unassign. Not persisted: a reload clears it.
+  const [undoStack, setUndoStack] = useState<UndoEntry[]>([]);
+  const pushUndo = useCallback((e: UndoEntry) => setUndoStack((s) => [...s, e].slice(-20)), []);
+  const popUndo = useCallback(() => {
+    let popped: UndoEntry | undefined;
+    setUndoStack((s) => {
+      popped = s[s.length - 1];
+      return s.slice(0, -1);
+    });
+    return popped;
+  }, []);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -203,6 +215,72 @@ function MediaToolContent() {
   const openDocument = (id: string) => {
     window.location.hash = `#/structure/intent/edit/id=${id};type=asset`;
   };
+
+  const inspector = selectedAsset ? (
+      <Card
+        padding={3}
+        border
+        radius={2}
+        style={{ width: 340, flexShrink: 0, position: 'sticky', top: 20, maxHeight: 'calc(100vh - 40px)', overflowY: 'auto' }}
+      >
+        <Stack space={3}>
+          <Flex justify="space-between" align="center">
+            <Badge tone="primary" fontSize={0}>
+              {selectedAsset.mediaType?.toUpperCase() || 'ASSET'}
+            </Badge>
+            <Button
+              text="Close"
+              mode="ghost"
+              fontSize={0}
+              padding={1}
+              onClick={() => setSelectedAsset(null)}
+            />
+          </Flex>
+
+          <div style={{ height: 160, background: WELL, borderRadius: 6, overflow: 'hidden' }}>
+            <Thumbnail
+              url={assetUrl(selectedAsset)}
+              ext={String(selectedAsset.extension || (selectedAsset.name || '').split('.').pop() || '').toLowerCase()}
+              label={String(selectedAsset.displayName || selectedAsset.name || '')}
+              fit="contain"
+              autoPlay
+            />
+          </div>
+
+          <Stack space={1}>
+            <Text size={1} weight="bold">{selectedAsset.displayName || selectedAsset.name}</Text>
+            <Text size={0} muted style={{ fontFamily: 'monospace', wordBreak: 'break-all' }}>
+              {selectedAsset.sitePath || selectedAsset.relativePath || selectedAsset.r2Key}
+            </Text>
+          </Stack>
+
+          <Flex gap={2}>
+            <Button
+              text="Copy Path"
+              icon={CopyIcon}
+              mode="default"
+              tone="primary"
+              onClick={() => copyPath(selectedAsset.sitePath || `/assets/${selectedAsset.relativePath}`)}
+            />
+            <Button
+              text="Edit Doc"
+              icon={LaunchIcon}
+              mode="ghost"
+              onClick={() => openDocument(selectedAsset._id)}
+            />
+          </Flex>
+
+          <AssetUsagePanel
+            asset={selectedAsset}
+            client={client}
+            undo={undoStack}
+            pushUndo={pushUndo}
+            popUndo={popUndo}
+            onChanged={load}
+          />
+        </Stack>
+      </Card>
+  ) : null;
 
   return (
     <Card tone="default" padding={[2, 3, 4]} style={{ minHeight: '100%' }}>
@@ -353,66 +431,11 @@ function MediaToolContent() {
               })}
             </Grid>
 
-            {/* Asset Details Inspector Drawer */}
-            {selectedAsset && (
-              <Card
-                padding={3}
-                border
-                radius={2}
-                style={{ width: 300, flexShrink: 0, position: 'sticky', top: 20 }}
-              >
-                <Stack space={3}>
-                  <Flex justify="space-between" align="center">
-                    <Badge tone="primary" fontSize={0}>
-                      {selectedAsset.mediaType?.toUpperCase() || 'ASSET'}
-                    </Badge>
-                    <Button
-                      text="Close"
-                      mode="ghost"
-                      fontSize={0}
-                      padding={1}
-                      onClick={() => setSelectedAsset(null)}
-                    />
-                  </Flex>
-
-                  <div style={{ height: 160, background: WELL, borderRadius: 6, overflow: 'hidden' }}>
-                    <Thumbnail
-                      url={assetUrl(selectedAsset)}
-                      ext={String(selectedAsset.extension || (selectedAsset.name || '').split('.').pop() || '').toLowerCase()}
-                      label={String(selectedAsset.displayName || selectedAsset.name || '')}
-                      fit="contain"
-                      autoPlay
-                    />
-                  </div>
-
-                  <Stack space={1}>
-                    <Text size={1} weight="bold">{selectedAsset.displayName || selectedAsset.name}</Text>
-                    <Text size={0} muted style={{ fontFamily: 'monospace', wordBreak: 'break-all' }}>
-                      {selectedAsset.sitePath || selectedAsset.relativePath || selectedAsset.r2Key}
-                    </Text>
-                  </Stack>
-
-                  <Flex gap={2}>
-                    <Button
-                      text="Copy Path"
-                      icon={CopyIcon}
-                      mode="default"
-                      tone="primary"
-                      onClick={() => copyPath(selectedAsset.sitePath || `/assets/${selectedAsset.relativePath}`)}
-                    />
-                    <Button
-                      text="Edit Doc"
-                      icon={LaunchIcon}
-                      mode="ghost"
-                      onClick={() => openDocument(selectedAsset._id)}
-                    />
-                  </Flex>
-                </Stack>
-              </Card>
-            )}
+            {inspector}
           </Flex>
         ) : (
-          <Card border radius={2} overflow="hidden">
+          <Flex gap={3} align="flex-start">
+          <Card border radius={2} overflow="hidden" style={{ flex: 1, minWidth: 0 }}>
             <div style={{ overflow: 'auto', maxHeight: 'calc(100vh - 240px)' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'Inter, system-ui, sans-serif' }}>
                 <thead>
@@ -447,6 +470,15 @@ function MediaToolContent() {
                           padding={1}
                           onClick={(e) => { e.stopPropagation(); copyPath(r.sitePath || `/assets/${r.relativePath}`); }}
                         />
+                        <Button
+                          text="Assign"
+                          mode="ghost"
+                          tone="primary"
+                          fontSize={0}
+                          padding={1}
+                          style={{ marginLeft: 4 }}
+                          onClick={(e) => { e.stopPropagation(); setSelectedAsset(r); }}
+                        />
                       </td>
                     </tr>
                   ))}
@@ -454,6 +486,8 @@ function MediaToolContent() {
               </table>
             </div>
           </Card>
+          {inspector}
+          </Flex>
         )}
       </Stack>
     </Card>

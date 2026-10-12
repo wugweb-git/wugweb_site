@@ -9,6 +9,12 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — Studio Media tool: assign / unassign (2026-10-12)
+- **`sanity/components/AssetUsagePanel.tsx` + `sanity/lib/assetUsage.ts`** — the Media inspector now shows where a file is used and lets you **Unassign** it from a document (every cover / thumbnail / gallery / body media block that points at it) or **Assign** it to a case study, post, page, service, client, person, testimonial, industry or taxonomy item (pick a field: cover, thumbnail, hero, OG image, gallery, or add a media block to the body). Confirm step on both; session-only **Undo**.
+- Matching is by path value, not by the scan's stored array index, so removing one gallery item can never remove its neighbour. Both the published doc and any draft are patched, guarded by `ifRevisionId`.
+- The inspector now appears in **List view** too (new "Assign" button per row).
+- Redeploy the Studio (`npx sanity deploy`) to get it. "Used by" labels refresh fully when `scripts/scan-asset-usage.mjs` next runs with `WRITE=1`.
+
 ### Changed — Services media and old-service remap (2026-10-04)
 - **`src/lib/service-media.ts` now maps every sub-service to a clip** (85/85 current Sanity names resolve; 61 planned names). Entries tagged `STAND-IN` reuse nearby footage and are to be replaced by custom branded media. No clip repeats inside a pillar; 14 are shared across pillars.
 - **Clips live only in the retained folders** `public/assets/services/{brand,engineering,experience,growth}` (copies from the old `Web & App Development`, `Experience Design`, `Martech & GenAi`, `martech-genai`, `brand-strategy` folders, posters under `posters/`). The 44 files were uploaded to R2 under the new keys and the 44 Sanity `asset` records repointed (backup kept outside the repo).
