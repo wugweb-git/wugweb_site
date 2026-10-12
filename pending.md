@@ -75,6 +75,8 @@ in §1s and `~/.claude/plans/snoopy-splashing-pearl.md`.
 
 **Added 2026-10-12:** run `bash scripts/owner-delete-old-vsb-banners.sh` (10 VSB banners + their asset records, copies live under `blog/<slug>/`). Framer `og:image` hotlinks on 19 case studies need `ogImagePath` set (see CLAUDE.md debt #3). Duplicate Airtel logo asset records left in place: `asset-logos-client-logo-c6rj-png`, `asset-framer-airtel-xsafe-securing-homes-with-intuitive-digital-experiences-client-logo-c6rj-png`, `asset-logos-client-logo-8gyg-png`, `asset-framer-airtel-xstream-play-digital-entertainment-ux-web-design-client-logo-8gyg-png`.
 
+**Added 2026-10-13 — redirects:** the `redirect` type now works (middleware + `src/lib/redirects.ts`). There are 0 redirect docs yet, so add them in the Studio. Unverified in production until the redirect Studio changes are deployed and a real rule is created and curled on `*.pages.dev`. Hit counting is deliberately not built (Rule 1). `wugweb.com` still serves Framer until DNS cutover, so redirects only apply on `*.pages.dev` / `uat`.
+
 **Needs you, not code:**
 
 | # | Item | Why it is yours |

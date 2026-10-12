@@ -9,6 +9,17 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — Redirects work on the site (2026-10-13)
+- `redirect` documents are now applied by `src/middleware.ts`, through a pure matcher in `src/lib/redirects.ts` and a loader in `src/lib/redirect-rules.ts`. They match case-insensitively, ignore the trailing slash and carry the query string over. Exact rules beat `/old/*` folder rules, and among folder rules the longest prefix wins. Redirects go one hop only, with 301/302 status.
+- A rule fires only when the path is not a live page: a 404, or the site's own 302 to `/404`. It can never shadow a real route.
+- `singletonPage.httpStatus` (301/302/410) now applies to that page's own route. 410 returns a minimal "Gone" page.
+- Rules are cached for 60 s, read through the CDN host, abandoned after 1.5 s, and never throw. Only GET and HEAD are redirected. `/api`, `/assets`, `/_astro`, `sitemap.xml` and `robots.txt` are skipped before anything loads.
+- Studio: a redirect's source must start with `/` and have no query string, may use `*` only as a trailing `/*`, may not be a reserved path, and may not duplicate another redirect. The destination may not loop back to its source. Rows read `/old → /new · 301`. `hits` is marked as not tracked.
+- `npm run test:redirects` runs 20 tests, all passing.
+
+### Removed — unused Studio dependencies (2026-10-13)
+- `@sanity/dashboard`, which nothing imported, and `@sanity/code-input`, which no schema uses as `type: 'code'` (0 such blocks in live data). 82 packages removed. `table()` stays.
+
 ### Changed — 22 body images renamed (2026-10-13)
 - `assets/blog/<slug>/body-NN.*` for 0072, 0073 and 0099 copied to `blog/<slug>/NN-name.*` (MD5-verified). Owner ran `scripts/owner-delete-blog-body22.mjs`: 22 originals and their 22 asset records deleted (backup `backups/body22-asset-records-2026-10-13.json`).
 
