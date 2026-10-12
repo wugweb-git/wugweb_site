@@ -4,6 +4,7 @@ import { SearchIcon, RefreshIcon, CopyIcon, LaunchIcon, ImagesIcon } from '@sani
 import { useClient } from 'sanity';
 import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
 import { AssetUsagePanel, type UndoEntry } from '../components/AssetUsagePanel';
+import { AssetAltField } from '../components/AssetAltField';
 
 interface AssetRow {
   _id: string;
@@ -40,6 +41,8 @@ interface AssetRow {
 // unused when most were in use. An asset with no usedByCount has simply not
 // been scanned, which is not the same thing as unused.
 const isUnused = (r: AssetRow) => r.usedByCount === 0;
+// Alt text only applies to raster images: video, audio and SVG icons are skipped.
+const needsAlt = (r: AssetRow) => r.mediaType === 'Image' && !(r.alt || '').trim();
 
 const QUERY = `{
   "assets": *[_type == "asset"] | order(sitePath asc) [0...600] {
@@ -145,7 +148,7 @@ function MediaToolContent() {
 
   const stats = useMemo(() => {
     const unused = rows.filter(isUnused);
-    const missingAlt = rows.filter((r) => (r.mediaType === 'Image' || r.mediaType === 'SVG') && !r.alt);
+    const missingAlt = rows.filter(needsAlt);
     const byKey = new Map<string, AssetRow[]>();
     rows.forEach((r) => {
       const k = `${r.name ?? ''}|${r.extension ?? ''}`.toLowerCase();
@@ -178,7 +181,7 @@ function MediaToolContent() {
         out = out.filter(isUnused);
         break;
       case 'missingAlt':
-        out = out.filter((r) => (r.mediaType === 'Image' || r.mediaType === 'SVG') && !r.alt);
+        out = out.filter(needsAlt);
         break;
       case 'duplicates': {
         const byKey = new Map<string, string[]>();
@@ -198,6 +201,11 @@ function MediaToolContent() {
     }
     return out;
   }, [rows, group, q, filter]);
+
+  const updateAlt = useCallback((id: string, alt: string) => {
+    setRows((arr) => arr.map((r) => (r._id === id ? { ...r, alt } : r)));
+    setSelectedAsset((a) => (a && a._id === id ? { ...a, alt } : a));
+  }, []);
 
   const copyPath = (path: string) => {
     if (!path) return;
@@ -266,6 +274,15 @@ function MediaToolContent() {
               onClick={() => openDocument(selectedAsset._id)}
             />
           </Flex>
+
+          {selectedAsset.mediaType === 'Image' || selectedAsset.mediaType === 'SVG' ? (
+            <AssetAltField
+              assetId={selectedAsset._id}
+              alt={selectedAsset.alt}
+              client={client}
+              onSaved={(a) => updateAlt(selectedAsset._id, a)}
+            />
+          ) : null}
 
           <AssetUsagePanel
             asset={selectedAsset}
@@ -346,7 +363,7 @@ function MediaToolContent() {
             onClick={() => setFilter('unused')}
           />
           <Button
-            text={`Missing Alt (${stats.missingAlt})`}
+            text={`Missing alt, images (${stats.missingAlt})`}
             mode={filter === 'missingAlt' ? 'default' : 'ghost'}
             tone={filter === 'missingAlt' ? 'caution' : 'default'}
             onClick={() => setFilter('missingAlt')}
@@ -437,7 +454,7 @@ function MediaToolContent() {
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'Inter, system-ui, sans-serif' }}>
                 <thead>
                   <tr style={{ background: WELL, position: 'sticky', top: 0, zIndex: 1 }}>
-                    {['Name', 'Group', 'Type', 'Status', 'Site Path', 'Action'].map((h) => (
+                    {['Name', 'Group', 'Type', 'Status', 'Alt', 'Site Path', 'Action'].map((h) => (
                       <th key={h} style={{ padding: '8px 12px', textAlign: 'left', borderBottom: `1px solid ${BORDER}`, fontWeight: 600, whiteSpace: 'nowrap', color: MUTED }}>
                         {h}
                       </th>
@@ -454,6 +471,13 @@ function MediaToolContent() {
                       <td style={{ padding: '8px 12px' }}><Text size={1} muted>{r.mediaType || '—'}</Text></td>
                       <td style={{ padding: '8px 12px' }}>
                         {r.status === 'Archived' ? <Badge tone="critical">Archived</Badge> : <Badge tone="positive">Active</Badge>}
+                      </td>
+                      <td style={{ padding: '8px 12px', minWidth: 200 }}>
+                        {r.mediaType === 'Image' ? (
+                          <AssetAltField assetId={r._id} alt={r.alt} client={client} compact onSaved={(a) => updateAlt(r._id, a)} />
+                        ) : (
+                          <Text size={0} muted>n/a</Text>
+                        )}
                       </td>
                       <td style={{ padding: '8px 12px' }}>
                         <Text size={1} muted style={{ fontFamily: 'monospace' }}>{r.sitePath || r.relativePath || '—'}</Text>

@@ -49,7 +49,7 @@ interface Props {
 }
 
 /** Sanity's revision-conflict error is cryptic; say what to do. */
-function friendly(e: any): string {
+export function friendly(e: any): string {
   const m = String(e?.message || e || 'Unknown error');
   if (/revision|conflict|ifRevisionID/i.test(m)) return 'The document changed while you were working. Reload the list and try again.';
   if (/permission|unauthor|forbidden/i.test(m)) return 'You do not have permission to edit this document.';

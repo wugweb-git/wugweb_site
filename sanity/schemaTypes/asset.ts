@@ -19,7 +19,11 @@ export default defineType({
     defineField({ name: 'mediaType', type: 'string', options: { list: ['Video', 'Image', 'SVG', 'Audio'] }, group: 'details' }),
     defineField({ name: 'mimeType', type: 'string', group: 'details' }),
     defineField({ name: 'assetGroup', type: 'string', options: { list: ['Work', 'Services', 'More', 'Brand', 'Blog', 'Framer'] }, group: 'details' }),
-    defineField({ name: 'alt', type: 'string', description: 'Alt text for images (accessibility + SEO). Leave empty for decorative media.', group: 'details' }),
+    defineField({
+      name: 'alt', type: 'string', group: 'details',
+      description: 'What the image shows, for screen readers and search. Leave empty for decorative images and videos.',
+      validation: (r) => r.min(5).max(125).warning('Aim for 5–125 characters.'),
+    }),
     defineField({ name: 'usage', type: 'string', description: 'e.g. Thumbnail, About, Hero, Cover, Logo', group: 'details' }),
     defineField({ name: 'status', type: 'string', options: { list: ['Active', 'Archived', 'Reserved'] }, group: 'details' }),
     defineField({ name: 'folder', type: 'string', group: 'path' }),
