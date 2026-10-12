@@ -14,6 +14,8 @@ and this project adheres to Semantic Versioning.
 - Matching is by path value, not by the scan's stored array index, so removing one gallery item can never remove its neighbour. Both the published doc and any draft are patched, guarded by `ifRevisionId`.
 - The inspector now appears in **List view** too (new "Assign" button per row).
 - Redeploy the Studio (`npx sanity deploy`) to get it. "Used by" labels refresh fully when `scripts/scan-asset-usage.mjs` next runs with `WRITE=1`.
+- Hardening (2026-10-12): assign/unassign now never push an empty Undo entry or a false "Unassigned" toast when nothing changed (stale "Used by" entries are just cleared). Review confirmed: unassign and undo both cover the published and `drafts.` copy; no refetch loop (`useClient` is stable; `load(true)` is silent); every async path is inside try/catch.
+- Known, unrelated: `tsc` reports 3 pre-existing errors in `src/lib/draggable-tags.ts:79` (`gsap.utils.debounce`) and `src/lib/scroll-animations.ts:265-266` (`offsetWidth` on `Element`). Not touched by this work.
 
 ### Changed — Services media and old-service remap (2026-10-04)
 - **`src/lib/service-media.ts` now maps every sub-service to a clip** (85/85 current Sanity names resolve; 61 planned names). Entries tagged `STAND-IN` reuse nearby footage and are to be replaced by custom branded media. No clip repeats inside a pillar; 14 are shared across pillars.

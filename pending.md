@@ -4,6 +4,8 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-10-12 — Studio Media assign/unassign shipped** (`a0c558df`, `0c0419bf`, `539e6515`; Studio redeployed). Needs the owner: (1) run the manual test on a throwaway case study (assign → "Used by" → unassign → Undo); (2) 3 pre-existing `tsc` errors, not from this work: `src/lib/draggable-tags.ts:79` (`gsap.utils.debounce`) and `src/lib/scroll-animations.ts:265-266` (`offsetWidth` on `Element`); (3) "Used by" labels fully refresh on the next `scripts/scan-asset-usage.mjs` run with `WRITE=1`. Nothing deleted, no Neon sync run.
+
 **2026-10-04 session — open items**
 - Sub-service merge (85 → 61: Strategy 9, Engineering 12, Growth 10, Operations 10, Brand 10, Experience 10) **applied 2026-10-04** to Sanity (`service.capabilities` for the 4 pillars; 41 `taxonomy` sub-service docs renamed with merged descriptions) and Notion (Sub Service rows renamed, pillar relations reset to the keepers). **Owner action:** delete the 24 merged-away Sanity taxonomy docs (`subservice-taxonomy-delete-list.json`, outside the repo) and the 24 Notion rows whose Status reads "Merged into … - delete". Still to align: `services-data.ts` fallback names and any case-study tags using old sub-service names.
 - Owner deletes still to run after deploy: old R2 keys (list in `r2-move-list.csv`, outside repo), old local service folders, 7 Sanity services + drafts. Hard deletes are not run by the assistant.
