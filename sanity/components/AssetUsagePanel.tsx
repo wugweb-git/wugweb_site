@@ -182,10 +182,14 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
         await p.commit();
         docs.push({ id, before: Object.fromEntries(touched.map((k) => [k, doc[k]])), touched });
       }
-      if (!docs.length) {
-        toast.push({ status: 'warning', title: 'Nothing to remove', description: 'This file is no longer referenced by that document.' });
-      }
       const next = usedBy.filter((u) => u.docId !== docId);
+      if (!docs.length) {
+        // Stale "Used by" entry: drop it, but there is nothing to undo and nothing was removed.
+        await writeUsage(next);
+        toast.push({ status: 'warning', title: 'Nothing to remove', description: 'This file is no longer referenced by that document.' });
+        onChanged();
+        return;
+      }
       pushUndo({ title: `Unassigned from ${docId}`, assetId: asset._id, usedByBefore: usedBy, docs });
       await writeUsage(next);
       toast.push({ status: 'success', title: 'Unassigned', description: 'Removed from the document. Undo is available.' });
@@ -231,7 +235,7 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
         docType: type,
       };
       const next = [...usedBy.filter((u) => !(u.docId === entry.docId && u.field === entry.field)), entry];
-      pushUndo({ title: `Assigned to ${target.label}`, assetId: asset._id, usedByBefore: usedBy, docs });
+      if (docs.length) pushUndo({ title: `Assigned to ${target.label}`, assetId: asset._id, usedByBefore: usedBy, docs });
       await writeUsage(next);
       toast.push({
         status: 'success',
