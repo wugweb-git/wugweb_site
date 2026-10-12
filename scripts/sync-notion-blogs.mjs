@@ -8,7 +8,8 @@
  * Matched posts (Notion "Sanity ID", else slug): sets title, slug, excerpt, seoTitle, seoDescription,
  * canonicalUrl, featured, readingTime, publishedAt, coverPath + ogImagePath (full R2 URLs) and body
  * (Notion blocks → Portable Text; images become mediaUrl blocks). Empty Notion values never clear Sanity.
- * Author, category and tags on existing posts are left alone.
+ * category: Notion's Category (relation) mapped onto Sanity's list via CATEGORY_MAP (owner-approved 2026-10-13).
+ * Author and tags on existing posts are left alone.
  * New Notion posts are created as post-<slug>. Posts that exist only in Sanity are NOT deleted here;
  * they are listed, and their delete goes in an owner-run script.
  */
@@ -99,6 +100,15 @@ const strip = (v) => Array.isArray(v) ? v.map(strip) : v && typeof v === 'object
   ? Object.fromEntries(Object.keys(v).filter((k) => k !== '_key').sort().map((k) => [k, strip(v[k])])) : v;
 const canon = (v) => JSON.stringify(strip(v ?? null));
 
+const CATEGORY_MAP = {
+  'UX Design': 'Experience Design', 'Design': 'Experience Design', 'Design Process': 'Experience Design',
+  'Product': 'Experience Design', 'Tools': 'Experience Design',
+  'AI': 'AI & Automation', 'Martech': 'MarTech', 'Brand & Strategy': 'Brand & Strategy',
+  'Strategy': 'Digital Transformation', 'Development': 'Web & App Development', 'Tech': 'Web & App Development',
+  'Career': 'Misc', 'Lifestyle': 'Misc',
+};
+const unmappedCategories = new Set();
+
 // ---- load ---------------------------------------------------------------------------------
 const pages = []; let cur;
 do {
@@ -130,6 +140,8 @@ for (const p of pages) {
   if (row.publishDate) set.publishedAt = row.publishDate.length === 10 ? `${row.publishDate}T00:00:00Z` : row.publishDate;
   if (row.cover) { set.coverPath = row.cover; set.ogImagePath = row.og || row.cover; }
   if (body.length) set.body = body;
+  const catName = P['Category']?.relation?.[0] ? await pageTitle(P['Category'].relation[0].id) : '';
+  if (catName) { if (CATEGORY_MAP[catName]) set.category = CATEGORY_MAP[catName]; else unmappedCategories.add(catName); }
 
   const id = published[row.sanityId] ? row.sanityId : bySlug[row.slug];
   if (id) {
@@ -157,6 +169,11 @@ const sanityOnly = Object.values(published).filter((d) => !matched.has(d._id)).m
 console.log(WRITE ? 'WRITE' : 'DRY RUN (WRITE=1 to apply)');
 console.log(`Notion posts ${pages.length} | updates ${ops.length} | creates ${created.length} | Sanity-only (not deleted here) ${sanityOnly.length}`);
 report.forEach((r) => console.log('  ' + r));
+const catCount = {};
+for (const o of ops) if (o.set.category && !o.id.startsWith('drafts.')) catCount[o.set.category] = (catCount[o.set.category] || 0) + 1;
+for (const d of created) if (d.category) catCount[d.category] = (catCount[d.category] || 0) + 1;
+if (Object.keys(catCount).length) console.log('category changes by target:', catCount);
+if (unmappedCategories.size) console.log('UNMAPPED Notion categories (left unchanged):', [...unmappedCategories]);
 console.log('Sanity-only:'); sanityOnly.forEach((s) => console.log('  ' + s));
 
 if (WRITE) {

@@ -20,6 +20,11 @@ and this project adheres to Semantic Versioning.
 ### Removed — unused Studio dependencies (2026-10-13)
 - `@sanity/dashboard`, which nothing imported, and `@sanity/code-input`, which no schema uses as `type: 'code'` (0 such blocks in live data). 82 packages removed. `table()` stays.
 
+### Changed — blog redirects, 0107 cover, categories (2026-10-13)
+- 301s from the 9 removed post slugs to the posts that replaced them (`RENAMED_SLUGS` in `src/pages/blog/[slug].astro`); all verified 301 → 200.
+- POST-0107 cover uploaded to `blog/i-accidentally-took-down-every-website-on-my-netlify-account-while-exploring-rag/cover.png` (200, MD5-verified) and set in Sanity. All 103 posts now have a cover.
+- `sync-notion-blogs.mjs` now maps Notion Category → Sanity `category` (`CATEGORY_MAP`). Applied to 101 posts: Experience Design 69, AI & Automation 9, Web & App Development 8, Digital Transformation 7, Misc 5, MarTech 3, Brand & Strategy 2.
+
 ### Removed — posts deleted from Notion (2026-10-13)
 - Owner ran `scripts/owner-delete-notion-blog-sync.mjs`: the 9 Sanity-only posts, 78 R2 keys (`assets/blog/` duplicates and the rewrite cover copies) and 70 asset records deleted. Related-post links to those posts were removed from 8 kept posts first (backup `backups/relatedposts-pre-unlink-2026-10-13.json`).
 

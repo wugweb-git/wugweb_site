@@ -8,9 +8,19 @@ import { loadAssetAlts, altFor } from '../../lib/asset-alt';
 
 const { slug } = Astro.params;
 
-// Slugs renamed by the Notion → Sanity blog sync; old links get a permanent redirect.
+// Slugs renamed or removed by the Notion → Sanity blog sync; old links get a permanent redirect
+// to the post that replaced them.
 const RENAMED_SLUGS: Record<string, string> = {
   'how-visual-design-contributes-to-an-engaging-ux-2': 'how-visual-design-makes-for-great-ux',
+  'agile-working-in-ux': 'agile-working-in-ux-unleashing-creativity-collaboration-and-flexibility',
+  'ai-in-ux-design': 'the-future-of-ux-design-enhancing-user-experiences-with-ai',
+  'balancing-user-needs-and-business-goals': 'how-to-strike-a-balance-between-user-needs-and-your-business-goals',
+  'design-work-concentration': 'unlocking-the-design-puzzle-decoding-the-concentration-of-work-in-the-design-field',
+  'html-sitemaps-for-seo-ux': 'when-and-how-to-use-html-sitemaps-for-seo-and-ux-unleashing-the-power-of-navigational-maps',
+  'remote-design-work-pros-cons': 'embracing-the-design-journey-remote-working-culture-the-challenges-and-perks',
+  'top-10-design-systems-ux-ui-2026': 'future-proofing-your-designs-the-top-10-design-systems-for-ux-ui-designers-in-2023',
+  'ux-meets-cx-seamless-experiences': 'when-ux-meets-cx-creating-seamless-experiences-for-users-and-customers',
+  'the-incredible-power-of-zero-ui-technology': 'the-end-of-screen-based-interfaces',
 };
 if (slug && RENAMED_SLUGS[slug]) {
   return Astro.redirect(`/blog/${RENAMED_SLUGS[slug]}`, 301);
