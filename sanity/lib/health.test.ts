@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { toRel } from './assetUsage.ts';
 import { seoChecks, buildDuplicateIndex, checksSummary, bodyText } from './health.ts';
 
 const para = (text: string, style = 'normal') => ({ _type: 'block', style, children: [{ _type: 'span', text }] });
@@ -110,4 +111,19 @@ test('bodyText ignores non-text blocks', () => {
 test('headings check is skipped for a page with an empty body, kept for posts', () => {
   assert.equal(get(seoChecks({ _type: 'singletonPage', title }), 'headings'), undefined);
   assert.equal(get(seoChecks({ _type: 'post', title, body: [] }), 'headings')?.pass, false);
+});
+
+test('cover alt reads asset.alt via the cover path', () => {
+  const alts = new Map([[toRel('/assets/blog/a.jpg')!, 'A desk with a laptop']]);
+  assert.equal(get(seoChecks({ ...good, coverPath: '/assets/blog/a.jpg' }, undefined, alts), 'cover-alt')?.pass, true);
+  assert.equal(get(seoChecks({ ...good, coverPath: 'assets/blog/a.jpg' }, undefined, alts), 'cover-alt')?.pass, true); // path spelling differs
+  assert.equal(get(seoChecks({ ...good, coverPath: '/assets/blog/b.jpg' }, undefined, alts), 'cover-alt')?.pass, false);
+});
+
+test('cover alt is skipped without a lookup, for videos, or with no cover', () => {
+  const alts = new Map<string, string>();
+  assert.equal(get(seoChecks({ ...good, coverPath: '/assets/blog/a.jpg' }), 'cover-alt'), undefined);
+  assert.equal(get(seoChecks({ ...good, coverPath: '/assets/work/a.mp4' }, undefined, alts), 'cover-alt'), undefined);
+  assert.equal(get(seoChecks(good, undefined, alts), 'cover-alt'), undefined);
+  assert.equal(get(seoChecks({ _type: 'singletonPage', title, coverPath: '/assets/a.jpg' }, undefined, alts), 'cover-alt'), undefined);
 });

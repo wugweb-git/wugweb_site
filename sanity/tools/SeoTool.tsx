@@ -2,8 +2,9 @@ import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { Box, Card, Flex, Grid, Stack, Text, Badge, Button, Tooltip, TextInput } from '@sanity/ui';
 import { ComposeIcon, SearchIcon, SparklesIcon } from '@sanity/icons';
 import { useClient } from 'sanity';
-import { seoScore, seoLevel, seoChecks, checksSummary, buildDuplicateIndex, COMPLETENESS_HELP, type DuplicateIndex } from '../lib/health';
+import { seoScore, seoLevel, seoChecks, checksSummary, type AltLookup, buildDuplicateIndex, COMPLETENESS_HELP, type DuplicateIndex } from '../lib/health';
 import { EmptyState, RowSkeleton } from '../components/ui';
+import { toRel } from '../lib/assetUsage';
 import { fetchDocs } from '../lib/groq';
 import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
 import type { Row } from '../lib/types';
@@ -24,19 +25,19 @@ const TYPES: { type: string; label: string; query: string; totalQuery: string }[
   {
     type: 'post',
     label: 'Blog Posts',
-    query: `*[_type=="post" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, excerpt, body }`,
+    query: `*[_type=="post" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, coverPath, excerpt, body }`,
     totalQuery: `count(*[_type=="post" && !(_id in path("drafts.**"))])`,
   },
   {
     type: 'caseStudy',
     label: 'Case Studies',
-    query: `*[_type=="caseStudy" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, summary, bodyContent }`,
+    query: `*[_type=="caseStudy" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, coverPath, summary, bodyContent }`,
     totalQuery: `count(*[_type=="caseStudy" && !(_id in path("drafts.**"))])`,
   },
   {
     type: 'service',
     label: 'Services',
-    query: `*[_type=="service" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, summary, heroText, body }`,
+    query: `*[_type=="service" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, coverPath, summary, heroText, body }`,
     totalQuery: `count(*[_type=="service" && !(_id in path("drafts.**"))])`,
   },
   {
@@ -76,6 +77,8 @@ function SeoToolContent() {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [dupes, setDupes] = useState<DuplicateIndex | undefined>(undefined);
   // One query per type, cached until Refresh / Auto Meta. Duplicates need every doc of the type, not just this page.
+  const [alts, setAlts] = useState<AltLookup | undefined>(undefined);
+  const altCache = useRef<AltLookup | null>(null);
   const dupeCache = useRef(new Map<string, DuplicateIndex>());
 
   const load = useCallback(async (pg = page) => {
@@ -91,6 +94,19 @@ function SeoToolContent() {
       ]);
       setRows(data || []);
       setTotal(count || 0);
+      try {
+        if (!altCache.current) {
+          const assets = await client.fetch<{ relativePath?: string; sitePath?: string; alt?: string }[]>(
+            `*[_type=="asset" && mediaType=="Image" && defined(alt) && alt!=""]{ relativePath, sitePath, alt }`,
+          );
+          const m: AltLookup = new Map();
+          for (const a of assets || []) for (const k of [toRel(a.relativePath), toRel(a.sitePath)]) if (k) m.set(k, String(a.alt));
+          altCache.current = m;
+        }
+        setAlts(altCache.current);
+      } catch {
+        setAlts(undefined); // cover-alt check is skipped rather than reported as failing
+      }
       try {
         let idx = dupeCache.current.get(activeType);
         if (!idx) {
@@ -131,7 +147,7 @@ function SeoToolContent() {
     }
   };
 
-  const checksFor = (r: SeoRow) => checksSummary(seoChecks(r as any, dupes));
+  const checksFor = (r: SeoRow) => checksSummary(seoChecks(r as any, dupes, alts));
   const filtered = rows.filter((r) => {
     if (onlyFailing && checksFor(r).failed.length === 0) return false;
     if (onlyMissing && r.seoDescription && r.seoDescription.length > 20) return false;
@@ -153,7 +169,7 @@ function SeoToolContent() {
           <Text size={3} weight="bold">SEO & Social Metadata Manager</Text>
           <Text size={1} muted>Audit metadata quality across all content types</Text>
         </Stack>
-        <Button text="Refresh" mode="ghost" onClick={() => { dupeCache.current.clear(); load(page); }} />
+        <Button text="Refresh" mode="ghost" onClick={() => { dupeCache.current.clear(); altCache.current = null; load(page); }} />
       </Flex>
       <Card padding={3} marginBottom={3} radius={2} tone="caution" border>
         <Text size={1}>

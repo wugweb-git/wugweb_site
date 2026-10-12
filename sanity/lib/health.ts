@@ -1,3 +1,5 @@
+import { toRel } from './assetUsage.ts';
+
 // Health / completeness scoring shared by tables, lists, and dashboard widgets.
 // seoScore() only checks that fields are filled. It is NOT a ranking-quality score.
 // seoChecks() adds rule-based content checks (length, alt text, duplicates...).
@@ -144,7 +146,13 @@ export function buildDuplicateIndex(rows: Record<string, unknown>[]): DuplicateI
   return { seoTitle: count('seoTitle'), seoDescription: count('seoDescription') };
 }
 
-export function seoChecks(row: Record<string, unknown>, dupes?: DuplicateIndex): SeoCheck[] {
+/** toRel(path) -> alt text, for every asset that has one. Prefetched by the caller (one query). */
+export type AltLookup = Map<string, string>;
+
+const COVER_FIELD_TYPES = new Set(['post', 'caseStudy', 'service']);
+const IMAGE_EXT = /\.(jpe?g|png|gif|webp|avif)$/i;
+
+export function seoChecks(row: Record<string, unknown>, dupes?: DuplicateIndex, alts?: AltLookup): SeoCheck[] {
   const type = String(row._type ?? '');
   const cfg = TYPE_FIELDS[type];
   if (!cfg) return [];
@@ -221,6 +229,14 @@ export function seoChecks(row: Record<string, unknown>, dupes?: DuplicateIndex):
     const copies = [d === norm(title) ? 'the title' : '', str(row.excerpt) && str(row.seoDescription) && d === norm(row.excerpt) ? 'the excerpt' : ''].filter(Boolean);
     add('description-distinct', 'Description is not a copy of title/excerpt', copies.length === 0, 'warn',
       copies.length ? `Identical to ${copies.join(' and ')}.` : 'OK');
+  }
+
+  // Cover alt: lives on the asset record (asset.alt), looked up by path. Skipped for videos and when no lookup was supplied.
+  const cover = str(row.coverPath);
+  if (alts && COVER_FIELD_TYPES.has(type) && cover && IMAGE_EXT.test(cover.split(/[?#]/)[0])) {
+    const k = toRel(cover);
+    const has = !!(k && alts.get(k));
+    add('cover-alt', 'Cover image has alt text', has, 'bad', has ? 'OK' : 'The cover file has no alt on its asset record. Add it in the Media tool.');
   }
 
   // Duplicates across documents of the same type
