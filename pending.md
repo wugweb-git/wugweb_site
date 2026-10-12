@@ -79,6 +79,8 @@ in §1s and `~/.claude/plans/snoopy-splashing-pearl.md`.
 
 **Added 2026-10-13 — brand voice:** a draft guide is in Site Settings → Brand voice. **Edit it, then set it to Approved** to turn on field warnings, badges and help text. Audience is marked as inferred. Remaining queue: integrations, then the `sanity.cli.ts` typegen fix, three `seoChecks`, and the non-Storybook `tsc` errors.
 
+**Added 2026-10-13 — integrations:** needs you: (1) set `INDEXNOW_KEY` (8–128 chars, a-z A-Z 0-9 -) and `INDEXNOW_WEBHOOK_SECRET` (16+ chars) on the Pages project, production; (2) add a Sanity webhook to `https://wugweb.pages.dev/api/indexnow` (the free plan allows 2 GROQ webhooks); (3) decide on the IDs Framer runs today: GTM `GTM-KV9JWXZ` and Hotjar `3239820` (GA4 `G-W5WJ1PMTKD` is already seeded). GTM cannot load while GA4 is active; turning GA4 off is a code decision. The 404 monitor needs one production deploy to pick up the D1 binding.
+
 **Needs you, not code:**
 
 | # | Item | Why it is yours |

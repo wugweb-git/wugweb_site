@@ -9,6 +9,15 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — Integrations: Sanity IDs, more providers, IndexNow, 404 monitor (2026-10-13)
+- `siteSettings` → **Integrations** holds the GA4, GTM, Yandex Metrica, Clarity and Hotjar IDs, plus Google, Bing and Yandex verification. Each ID is regex-validated, and the fields refuse anything that looks like a key or secret. GA4 is seeded with `G-W5WJ1PMTKD` and falls back to it when the field is empty or the fetch fails.
+- `src/lib/integrations.ts` is a provider registry. Every provider loads only on the canonical host **and** after analytics consent. A provider with no ID never loads. When GA4 and GTM are both set, GTM is not loaded (double-counting), and the reason is reported. GA4 events and `data-gtag-event` are unchanged.
+- Verification `<meta>` tags and the provider config render on the canonical host only. Verified on the built worker: `pages.dev` and localhost emit no third-party scripts.
+- **IndexNow:** a key file route at `/<INDEXNOW_KEY>.txt` and `POST /api/indexnow` for a Sanity publish webhook. Both need the Cloudflare env values `INDEXNOW_KEY` and `INDEXNOW_WEBHOOK_SECRET`. Calls are capped at 100 URLs, debounced, and never sent to Google. Dormant until DNS cutover.
+- **404 monitor:** on the D1 database `wugweb-404` (binding `NOT_FOUND_DB`, production only). It caps itself at 20,000 rows written per day, keeps one write per path per minute, and ignores bots, assets and scans. It stores only path, count, last-seen and last-referrer, and prunes after 90 days. `GET /api/not-found-report` serves the data.
+- Studio **Integrations** tool: which IDs are set, what each host's live HTML actually serves, warnings, and the top 404s.
+- `npm run test:integrations` runs 22 tests, all passing.
+
 ### Added — Brand voice guide and rule checks in the Studio (2026-10-13)
 - `siteSettings` gains a "Brand voice" group: persona, audience, tone words, principles, do/don't lists, preferred terms, banned words, spelling, max reading grade, max sentence length, good and bad samples, and a draft/approved status.
 - `sanity/lib/voice.ts` runs pure rule checks: banned words, preferred terms, sentence length, Flesch-Kincaid grade, a passive-voice heuristic, spelling variant, repeated openers, exclamation marks and ALL-CAPS words. These are rule checks, not a tone judge.
