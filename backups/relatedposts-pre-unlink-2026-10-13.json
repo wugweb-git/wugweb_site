@@ -1,0 +1,143 @@
+{
+ "takenAt": "2026-10-12T21:31:03.368Z",
+ "docs": [
+  {
+   "_id": "0P2zz4yUt080ih2mMTh49Q",
+   "_rev": "S5EFnJjn0OdXSc45Q222Lw",
+   "relatedPosts": [
+    {
+     "_key": "r3v1w7nspv",
+     "_ref": "post-html-sitemaps-for-seo-ux",
+     "_type": "reference"
+    },
+    {
+     "_key": "n1jokwtyfw",
+     "_ref": "1ldNh76NU0J0b4so5ExZ9H",
+     "_type": "reference"
+    }
+   ]
+  },
+  {
+   "_id": "1ldNh76NU0J0b4so5ExX9t",
+   "_rev": "S5EFnJjn0OdXSc45Q222Lw",
+   "relatedPosts": [
+    {
+     "_key": "yo0icjtji1",
+     "_ref": "post-agile-working-in-ux",
+     "_type": "reference"
+    },
+    {
+     "_key": "tm9rl2fm2r",
+     "_ref": "0P2zz4yUt080ih2mMTh2qy",
+     "_type": "reference"
+    }
+   ]
+  },
+  {
+   "_id": "1ldNh76NU0J0b4so5ExYhr",
+   "_rev": "S5EFnJjn0OdXSc45Q2241a",
+   "relatedPosts": [
+    {
+     "_key": "f99teqynm2",
+     "_ref": "post-balancing-user-needs-and-business-goals",
+     "_type": "reference"
+    },
+    {
+     "_key": "ffpp1sn8sm",
+     "_ref": "post-product-metrics-designers",
+     "_type": "reference"
+    }
+   ]
+  },
+  {
+   "_id": "post-10-key-takeaways-from-googles-material-design-guidelines",
+   "_rev": "S5EFnJjn0OdXSc45Q2241a",
+   "relatedPosts": [
+    {
+     "_key": "pism5p70pc",
+     "_ref": "post-accessibility-first",
+     "_type": "reference"
+    },
+    {
+     "_key": "zrelyojn3l",
+     "_ref": "post-emotional-design-digital-products",
+     "_type": "reference"
+    },
+    {
+     "_key": "yz8lbzsf14",
+     "_ref": "post-top-10-design-systems-ux-ui-2026",
+     "_type": "reference"
+    },
+    {
+     "_key": "x61admlvqn",
+     "_ref": "0P2zz4yUt080ih2mMUkmqa",
+     "_type": "reference"
+    }
+   ]
+  },
+  {
+   "_id": "post-designer-developer-collaboration",
+   "_rev": "S5EFnJjn0OdXSc45Q33AHy",
+   "relatedPosts": [
+    {
+     "_key": "mn7avws7xv",
+     "_ref": "post-remote-design-work-pros-cons",
+     "_type": "reference"
+    },
+    {
+     "_key": "t6n1fgciia",
+     "_ref": "post-why-designers-should-understand-apis",
+     "_type": "reference"
+    }
+   ]
+  },
+  {
+   "_id": "post-is-augmented-reality-the-future-of-ux",
+   "_rev": "S5EFnJjn0OdXSc45Q2241a",
+   "relatedPosts": [
+    {
+     "_key": "clj6chos5m",
+     "_ref": "post-html-sitemaps-for-seo-ux",
+     "_type": "reference"
+    },
+    {
+     "_key": "s1ool46kao",
+     "_ref": "post-the-end-of-screen-based-interfaces",
+     "_type": "reference"
+    }
+   ]
+  },
+  {
+   "_id": "post-technology-stack-for-product-designers",
+   "_rev": "36TK9CDo7y3YWN6AkAkXhj",
+   "relatedPosts": [
+    {
+     "_key": "csosvv84w1",
+     "_ref": "post-remote-design-work-pros-cons",
+     "_type": "reference"
+    },
+    {
+     "_key": "ab8hnvufwt",
+     "_ref": "post-why-designers-should-understand-apis",
+     "_type": "reference"
+    }
+   ]
+  },
+  {
+   "_id": "post-the-end-of-screen-based-interfaces",
+   "_rev": "S5EFnJjn0OdXSc45Q222Lw",
+   "relatedPosts": [
+    {
+     "_key": "t002bnf0f0",
+     "_ref": "hEzuHHk6Tg1XoYfrKvByfJ",
+     "_type": "reference"
+    },
+    {
+     "_key": "yk7bq3pmcz",
+     "_ref": "1ldNh76NU0J0b4so5ExTkl",
+     "_type": "reference"
+    }
+   ]
+  }
+ ]
+}
