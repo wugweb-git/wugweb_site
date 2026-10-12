@@ -1,6 +1,6 @@
 # Asset reorganisation plan (PLAN ONLY, nothing moved)
 
-Generated 2026-10-12T11:26:28.471Z. 412 files, 344.3 MiB under framer, uncode, more. 919 Sanity docs (incl. drafts) and 83 code files scanned. 1 templated /assets/${…} literals in src/ cannot be resolved statically.
+Generated 2026-10-12T11:44:49.680Z. 412 files, 344.3 MiB under framer, uncode, more. 919 Sanity docs (incl. drafts) and 83 code files scanned. 1 templated /assets/${…} literals in src/ cannot be resolved statically.
 
 ## Per source folder
 - framer/: 252 files, 249.9 MiB, unreferenced 38

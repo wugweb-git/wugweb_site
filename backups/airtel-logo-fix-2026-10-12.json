@@ -1,0 +1,198 @@
+{
+  "takenAt": "2026-10-12T11:43:49.336Z",
+  "docs": [
+    {
+      "_createdAt": "2026-08-04T11:26:01Z",
+      "_id": "asset-logo-airtelxstream",
+      "_rev": "eQCR1n23HeACrbntf59AeF",
+      "_type": "asset",
+      "_updatedAt": "2026-10-03T21:36:12Z",
+      "assetGroup": "Brand",
+      "assetType": "Brand Asset",
+      "displayName": "Airtel Xstream Logo",
+      "extension": "png",
+      "fileName": "client-logo-c6rj.png",
+      "folder": "logos",
+      "linkedClient": {
+        "_ref": "client-CLI-0031",
+        "_type": "reference"
+      },
+      "localExists": true,
+      "mediaType": "Image",
+      "name": "Airtel Xstream Logo",
+      "owner": "both",
+      "publicUrl": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/logos/client-logo-c6rj.png",
+      "r2Key": "assets/logos/client-logo-c6rj.png",
+      "r2Synced": true,
+      "relativePath": "logos/client-logo-c6rj.png",
+      "sitePath": "/assets/logos/client-logo-c6rj.png",
+      "slug": {
+        "_type": "slug",
+        "current": "logo-airtelxstream"
+      },
+      "status": "Active",
+      "usage": "Logo",
+      "usedBy": [
+        {
+          "_key": "2a9f1dd890f1",
+          "_type": "assetUsage",
+          "docId": "client-CLI-0035",
+          "docType": "client",
+          "field": "logoPath",
+          "kind": "content",
+          "label": "client: Airtel XSafe"
+        },
+        {
+          "_key": "2ca91067491a",
+          "_type": "assetUsage",
+          "field": "literal",
+          "kind": "code",
+          "label": "src/pages/index.astro"
+        },
+        {
+          "_key": "4659d17fc4b6",
+          "_type": "assetUsage",
+          "docId": "client-CLI-0031",
+          "docType": "client",
+          "field": "logoPath",
+          "kind": "content",
+          "label": "client: Airtel Xstream"
+        }
+      ],
+      "usedByCount": 3
+    },
+    {
+      "_createdAt": "2026-08-04T12:31:24Z",
+      "_id": "asset-logos-client-logo-8gyg-png",
+      "_rev": "eQCR1n23HeACrbntf59AeF",
+      "_type": "asset",
+      "_updatedAt": "2026-10-03T21:36:12Z",
+      "assetGroup": "Brand",
+      "assetType": "Brand Asset",
+      "displayName": "client-logo-8gyg.png",
+      "extension": "png",
+      "fileName": "client-logo-8gyg.png",
+      "folder": "logos",
+      "localExists": true,
+      "mediaType": "Image",
+      "mimeType": "image/png",
+      "name": "client-logo-8gyg.png",
+      "owner": "both",
+      "ownerType": "Internal",
+      "publicUrl": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/logos/client-logo-8gyg.png",
+      "r2Key": "assets/logos/client-logo-8gyg.png",
+      "r2Synced": true,
+      "relativePath": "logos/client-logo-8gyg.png",
+      "sitePath": "/assets/logos/client-logo-8gyg.png",
+      "slug": {
+        "_type": "slug",
+        "current": "logos-client-logo-8gyg-png"
+      },
+      "status": "Active",
+      "usage": "Logo",
+      "usedBy": [],
+      "usedByCount": 0
+    },
+    {
+      "_createdAt": "2026-08-04T11:26:03Z",
+      "_id": "asset-logos-client-logo-c6rj-png",
+      "_rev": "eQCR1n23HeACrbntf59AeF",
+      "_type": "asset",
+      "_updatedAt": "2026-10-03T21:36:12Z",
+      "assetGroup": "Brand",
+      "assetType": "Brand Asset",
+      "displayName": "client-logo-c6rj.png",
+      "extension": "png",
+      "fileName": "client-logo-c6rj.png",
+      "folder": "logos",
+      "linkedClient": {
+        "_ref": "client-CLI-0035",
+        "_type": "reference"
+      },
+      "localExists": true,
+      "mediaType": "Image",
+      "mimeType": "image/png",
+      "name": "client-logo-c6rj.png",
+      "owner": "both",
+      "ownerType": "Internal",
+      "publicUrl": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/logos/client-logo-c6rj.png",
+      "r2Key": "assets/logos/client-logo-c6rj.png",
+      "r2Synced": true,
+      "relativePath": "logos/client-logo-c6rj.png",
+      "sitePath": "/assets/logos/client-logo-c6rj.png",
+      "slug": {
+        "_type": "slug",
+        "current": "logos-client-logo-c6rj-png"
+      },
+      "status": "Active",
+      "usage": "Logo",
+      "usedBy": [
+        {
+          "_key": "2a9f1dd890f1",
+          "_type": "assetUsage",
+          "docId": "client-CLI-0035",
+          "docType": "client",
+          "field": "logoPath",
+          "kind": "content",
+          "label": "client: Airtel XSafe"
+        },
+        {
+          "_key": "2ca91067491a",
+          "_type": "assetUsage",
+          "field": "literal",
+          "kind": "code",
+          "label": "src/pages/index.astro"
+        },
+        {
+          "_key": "4659d17fc4b6",
+          "_type": "assetUsage",
+          "docId": "client-CLI-0031",
+          "docType": "client",
+          "field": "logoPath",
+          "kind": "content",
+          "label": "client: Airtel Xstream"
+        }
+      ],
+      "usedByCount": 3
+    },
+    {
+      "_createdAt": "2026-07-29T00:17:46Z",
+      "_id": "client-CLI-0031",
+      "_rev": "0P2zz4yUt080ih2mMTCa3E",
+      "_type": "client",
+      "_updatedAt": "2026-08-05T00:45:09Z",
+      "description": "",
+      "logoPath": "/assets/logos/client-logo-c6rj.png",
+      "name": "Airtel Xstream",
+      "owner": "wugweb",
+      "slug": {
+        "_type": "slug",
+        "current": "airtel-xstream"
+      },
+      "tags": [
+        "Brand"
+      ],
+      "website": ""
+    },
+    {
+      "_createdAt": "2026-07-29T00:17:42Z",
+      "_id": "client-CLI-0035",
+      "_rev": "0P2zz4yUt080ih2mMTCa3E",
+      "_type": "client",
+      "_updatedAt": "2026-08-05T00:45:09Z",
+      "description": "",
+      "logoPath": "/assets/logos/client-logo-c6rj.png",
+      "name": "Airtel XSafe",
+      "owner": "wugweb",
+      "slug": {
+        "_type": "slug",
+        "current": "airtel-xsafe"
+      },
+      "tags": [
+        "Brand"
+      ],
+      "website": ""
+    }
+  ],
+  "note": "created docs (no prior state): asset-logos-airtel-xsafe-png"
+}

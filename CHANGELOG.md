@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed — Airtel logos (2026-10-12)
+- Both the **Airtel XSafe** and **Airtel Xstream** client docs pointed at the XSafe logo (`logos/client-logo-c6rj.png`); Xstream's own file is `client-logo-8gyg.png`. Copied (never overwritten) to `assets/logos/airtel-xsafe.png` and `airtel-xstream.png`, locally and in R2 (2 Class A puts), then repointed both clients (no case study referenced either file), the mis-pointed asset record `asset-logo-airtelxstream`, and `src/pages/index.astro`. New asset record for XSafe; alt "Airtel XSafe logo" / "Airtel Xstream logo". Backup: `backups/airtel-logo-fix-2026-10-12.json`; script: `scripts/fix-airtel-logos.mjs`.
+- Old keys and local files are untouched. `scripts/owner-delete-old-airtel-logo-keys.sh` is for the owner to run; the assistant has not run it.
+
 ### Added — asset.alt end to end (2026-10-12)
 - **Studio:** `asset.alt` now has a 5–125 character warning and the plain-language description. The Media tool gets an editable **Alt** column (list view, images only) and an Alt field in the inspector; saves patch the published asset with `ifRevisionId`. New filter **Missing alt, images** (video, audio and SVG are skipped).
 - **Site:** covers, galleries, blog and insights teasers look the alt up from the asset record by path (`src/lib/asset-alt.ts`, one cached query), falling back to the old alt or title. Client logos read "{Client} logo". Body `mediaUrl` blocks keep their own alt.
