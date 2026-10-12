@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { idValidator } from '../lib/integrationIds';
 
 /**
  * Site-level tier of the four-tier content model: site → page → section → component.
@@ -25,6 +26,7 @@ export default defineType({
     { name: 'organization', title: 'Organization' },
     { name: 'aeo', title: 'AI / Answers' },
     { name: 'voice', title: 'Brand voice' },
+    { name: 'integrations', title: 'Integrations' },
   ],
   fields: [
     // ── Identity ──
@@ -72,8 +74,6 @@ export default defineType({
       name: 'robotsExtra', title: 'Extra robots.txt Directives', type: 'text', rows: 4, group: 'seo',
       description: 'Appended verbatim. Keep it minimal — the Sitemap line and crawler policy are generated.',
     }),
-    defineField({ name: 'googleSiteVerification', title: 'Google Search Console Token', type: 'string', group: 'seo' }),
-    defineField({ name: 'bingSiteVerification', title: 'Bing Webmaster Token', type: 'string', group: 'seo' }),
 
     // ── Social & Images ──
     // Known bad state (verified 2026-09-24): every singletonPage has ogImage
@@ -136,6 +136,18 @@ export default defineType({
       initialValue: ['/llms.txt', '/ai-context.txt', '/brand-system.txt', '/security.txt', '/robots.txt'],
       description: 'The well-known files served from public/. Listed here so the set is discoverable and auditable; the files themselves stay static.',
     }),
+
+    // ── Integrations ── public IDs only, read by src/lib/integrations.ts.
+    // Every provider loads ONLY on the canonical host AND after analytics
+    // consent. Verification tags render on the canonical host only.
+    defineField({ name: 'ga4MeasurementId', title: 'GA4 Measurement ID', type: 'string', group: 'integrations', description: 'e.g. G-XXXXXXXXXX. Empty falls back to G-W5WJ1PMTKD. Never paste API keys or secrets here.', validation: (r) => r.custom(idValidator('ga4MeasurementId')) }),
+    defineField({ name: 'gtmContainerId', title: 'GTM Container ID', type: 'string', group: 'integrations', description: 'e.g. GTM-XXXXXXX. Not loaded while a GA4 ID is also set (double-counting). Never paste API keys or secrets here.', validation: (r) => [r.custom(idValidator('gtmContainerId')), r.custom((v: any) => (v ? 'GA4 is always active (this ID or the built-in fallback), so GTM will NOT load — loading both double-counts page views. Turning GA4 off needs a code change; ask before relying on GTM.' : true)).warning()] }),
+    defineField({ name: 'yandexMetricaId', title: 'Yandex Metrica counter ID', type: 'string', group: 'integrations', description: 'A number. Never paste API keys or secrets here.', validation: (r) => r.custom(idValidator('yandexMetricaId')) }),
+    defineField({ name: 'clarityId', title: 'Microsoft Clarity project ID', type: 'string', group: 'integrations', description: 'e.g. abcd1234ef. Never paste API keys or secrets here.', validation: (r) => r.custom(idValidator('clarityId')) }),
+    defineField({ name: 'hotjarId', title: 'Hotjar Site ID', type: 'string', group: 'integrations', description: 'A number. Never paste API keys or secrets here.', validation: (r) => r.custom(idValidator('hotjarId')) }),
+    defineField({ name: 'googleSiteVerification', title: 'Google Search Console verification', type: 'string', group: 'integrations', description: 'The content="…" value of the google-site-verification tag. Never paste API keys or secrets here.', validation: (r) => r.custom(idValidator('googleSiteVerification')) }),
+    defineField({ name: 'bingSiteVerification', title: 'Bing Webmaster verification', type: 'string', group: 'integrations', description: 'The content="…" value of the msvalidate.01 tag. Never paste API keys or secrets here.', validation: (r) => r.custom(idValidator('bingSiteVerification')) }),
+    defineField({ name: 'yandexVerification', title: 'Yandex Webmaster verification', type: 'string', group: 'integrations', description: 'The content="…" value of the yandex-verification tag. Never paste API keys or secrets here.', validation: (r) => r.custom(idValidator('yandexVerification')) }),
 
     // ── Brand voice ──
     // Read by sanity/lib/voice.ts. Rule checks run ONLY when status is
