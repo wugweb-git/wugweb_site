@@ -106,3 +106,8 @@ test('bodyText ignores non-text blocks', () => {
   assert.equal(bodyText([para('one'), { _type: 'image' }, para('two')]), 'one two');
   assert.equal(bodyText(null), '');
 });
+
+test('headings check is skipped for a page with an empty body, kept for posts', () => {
+  assert.equal(get(seoChecks({ _type: 'singletonPage', title }), 'headings'), undefined);
+  assert.equal(get(seoChecks({ _type: 'post', title, body: [] }), 'headings')?.pass, false);
+});

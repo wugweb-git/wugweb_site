@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { Box, Card, Flex, Grid, Stack, Text, Badge, Button, Tooltip, TextInput } from '@sanity/ui';
 import { ComposeIcon, SearchIcon, SparklesIcon } from '@sanity/icons';
 import { useClient } from 'sanity';
-import { seoScore, seoLevel } from '../lib/health';
+import { seoScore, seoLevel, seoChecks, checksSummary, buildDuplicateIndex, COMPLETENESS_HELP, type DuplicateIndex } from '../lib/health';
 import { EmptyState, RowSkeleton } from '../components/ui';
 import { fetchDocs } from '../lib/groq';
 import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
@@ -14,6 +14,8 @@ interface SeoRow extends Row {
   body?: unknown;
   excerpt?: string;
   summary?: string;
+  bodyContent?: unknown;
+  focusKeyword?: string;
 }
 
 const PAGE_SIZE = 100;
@@ -28,7 +30,7 @@ const TYPES: { type: string; label: string; query: string; totalQuery: string }[
   {
     type: 'caseStudy',
     label: 'Case Studies',
-    query: `*[_type=="caseStudy" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, summary, body }`,
+    query: `*[_type=="caseStudy" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, "slug": slug.current, seoTitle, seoDescription, ogImage, summary, bodyContent }`,
     totalQuery: `count(*[_type=="caseStudy" && !(_id in path("drafts.**"))])`,
   },
   {
@@ -40,7 +42,7 @@ const TYPES: { type: string; label: string; query: string; totalQuery: string }[
   {
     type: 'singletonPage',
     label: 'Pages',
-    query: `*[_type=="singletonPage" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, pageId, seoTitle, seoDescription, ogImage, body }`,
+    query: `*[_type=="singletonPage" && !(_id in path("drafts.**"))] | order(_updatedAt desc) [$from...$to] { _id, _type, title, pageId, seoTitle, seoDescription, ogImage, focusKeyword, body }`,
     totalQuery: `count(*[_type=="singletonPage" && !(_id in path("drafts.**"))])`,
   },
 ];
@@ -70,6 +72,11 @@ function SeoToolContent() {
   const [error, setError] = useState<string | null>(null);
   const [q, setQ] = useState('');
   const [onlyMissing, setOnlyMissing] = useState(false);
+  const [onlyFailing, setOnlyFailing] = useState(false);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [dupes, setDupes] = useState<DuplicateIndex | undefined>(undefined);
+  // One query per type, cached until Refresh / Auto Meta. Duplicates need every doc of the type, not just this page.
+  const dupeCache = useRef(new Map<string, DuplicateIndex>());
 
   const load = useCallback(async (pg = page) => {
     setLoading(true);
@@ -84,6 +91,20 @@ function SeoToolContent() {
       ]);
       setRows(data || []);
       setTotal(count || 0);
+      try {
+        let idx = dupeCache.current.get(activeType);
+        if (!idx) {
+          const all = await client.fetch<Record<string, unknown>[]>(
+            `*[_type==$t && !(_id in path("drafts.**"))]{ seoTitle, seoDescription }`,
+            { t: activeType },
+          );
+          idx = buildDuplicateIndex(all || []);
+          dupeCache.current.set(activeType, idx);
+        }
+        setDupes(idx);
+      } catch {
+        setDupes(undefined); // duplicate checks are skipped rather than reported as passing
+      }
     } catch (e: any) {
       setError(e?.message || 'Failed to fetch SEO metadata.');
     } finally {
@@ -101,6 +122,7 @@ function SeoToolContent() {
     const { seoTitle, seoDescription } = generateMeta(row);
     try {
       await client.patch(row._id).set({ seoTitle, seoDescription }).commit();
+      dupeCache.current.delete(activeType);
       setRows((arr) =>
         arr.map((r) => (r._id === row._id ? { ...r, seoTitle, seoDescription } : r))
       );
@@ -109,7 +131,9 @@ function SeoToolContent() {
     }
   };
 
+  const checksFor = (r: SeoRow) => checksSummary(seoChecks(r as any, dupes));
   const filtered = rows.filter((r) => {
+    if (onlyFailing && checksFor(r).failed.length === 0) return false;
     if (onlyMissing && r.seoDescription && r.seoDescription.length > 20) return false;
     if (q.trim()) {
       const needle = q.toLowerCase();
@@ -129,8 +153,14 @@ function SeoToolContent() {
           <Text size={3} weight="bold">SEO & Social Metadata Manager</Text>
           <Text size={1} muted>Audit metadata quality across all content types</Text>
         </Stack>
-        <Button text="Refresh" mode="ghost" onClick={() => load(page)} />
+        <Button text="Refresh" mode="ghost" onClick={() => { dupeCache.current.clear(); load(page); }} />
       </Flex>
+      <Card padding={3} marginBottom={3} radius={2} tone="caution" border>
+        <Text size={1}>
+          <strong>Completeness</strong> only checks that fields are filled — it does not measure ranking quality. <strong>Checks</strong> are simple rules
+          (length, slug, alt text, duplicates). Neither is a real SEO score.
+        </Text>
+      </Card>
 
       <Flex gap={2} marginBottom={3}>
         {TYPES.map((t) => (
@@ -158,6 +188,12 @@ function SeoToolContent() {
             mode={onlyMissing ? 'default' : 'ghost'}
             onClick={() => setOnlyMissing(!onlyMissing)}
           />
+          <Button
+            text={onlyFailing ? 'Showing: Has failing checks' : 'Filter: Has failing checks'}
+            tone={onlyFailing ? 'critical' : 'default'}
+            mode={onlyFailing ? 'default' : 'ghost'}
+            onClick={() => setOnlyFailing(!onlyFailing)}
+          />
           <Box flex={1} />
           <Text size={1} muted>
             Showing {rows.length} of {total} · page {page + 1}/{totalPages}
@@ -165,7 +201,7 @@ function SeoToolContent() {
         </Flex>
 
       {loading ? (
-        <RowSkeleton cols={4} />
+        <RowSkeleton cols={5} />
       ) : error ? (
         <Card padding={4} tone="critical" radius={2}>
           <Text size={1}>{error}</Text>
@@ -180,7 +216,12 @@ function SeoToolContent() {
                 <tr style={{ background: 'var(--card-muted-bg-color, #191919)', position: 'sticky', top: 0, zIndex: 2 }}>
                   <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #2b2b2b)' }}>Document Title</th>
                   <th style={{ padding: '8px 12px', textAlign: 'left', borderBottom: '1px solid var(--card-border-color, #2b2b2b)' }}>SEO Description</th>
-                  <th style={{ padding: '8px 12px', textAlign: 'center', borderBottom: '1px solid var(--card-border-color, #2b2b2b)', width: 100 }}>Score</th>
+                  <th style={{ padding: '8px 12px', textAlign: 'center', borderBottom: '1px solid var(--card-border-color, #2b2b2b)', width: 130 }}>
+                    <Tooltip content={<Box padding={2}><Text size={1}>{COMPLETENESS_HELP}</Text></Box>} placement="top"><span>Completeness</span></Tooltip>
+                  </th>
+                  <th style={{ padding: '8px 12px', textAlign: 'center', borderBottom: '1px solid var(--card-border-color, #2b2b2b)', width: 120 }}>
+                    <Tooltip content={<Box padding={2}><Text size={1}>Rule-based content checks that apply to this document type.</Text></Box>} placement="top"><span>Checks passed</span></Tooltip>
+                  </th>
                   <th style={{ padding: '8px 12px', textAlign: 'right', borderBottom: '1px solid var(--card-border-color, #2b2b2b)', width: 140 }}>Actions</th>
                 </tr>
               </thead>
@@ -188,8 +229,11 @@ function SeoToolContent() {
                 {filtered.map((row) => {
                   const score = seoScore(row as any);
                   const level = seoLevel(score);
+                  const checks = checksFor(row);
+                  const open = expanded === row._id;
                   return (
-                    <tr key={row._id} style={{ borderBottom: '1px solid var(--card-border-color, #222)' }}>
+                    <Fragment key={row._id}>
+                    <tr style={{ borderBottom: '1px solid var(--card-border-color, #222)' }}>
                       <td style={{ padding: '10px 12px' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
                           <Text size={1} weight="semibold" style={{ overflowWrap: 'anywhere' }}>{String(row.title || row._id)}</Text>
@@ -204,6 +248,19 @@ function SeoToolContent() {
                           {score}/100
                         </Badge>
                       </td>
+                      <td style={{ padding: '10px 12px', textAlign: 'center' }}>
+                        <Button
+                          mode="bleed"
+                          padding={1}
+                          fontSize={1}
+                          aria-expanded={open}
+                          aria-label={`Show checks for ${String(row.title || row._id)}`}
+                          disabled={checks.total === 0}
+                          onClick={() => setExpanded(open ? null : row._id)}
+                          text={checks.total ? `${checks.passed}/${checks.total} ${open ? '▾' : '▸'}` : '—'}
+                          tone={checks.total === 0 ? 'default' : checks.failed.length === 0 ? 'positive' : checks.failed.some((c) => c.severity === 'bad') ? 'critical' : 'caution'}
+                        />
+                      </td>
                       <td style={{ padding: '10px 12px', textAlign: 'right' }}>
                         <Flex gap={1} justify="flex-end">
                           <Button
@@ -217,6 +274,25 @@ function SeoToolContent() {
                         </Flex>
                       </td>
                     </tr>
+                    {open && (
+                      <tr style={{ borderBottom: '1px solid var(--card-border-color, #222)', background: 'var(--card-muted-bg-color, #191919)' }}>
+                        <td colSpan={5} style={{ padding: '10px 12px' }}>
+                          {checks.failed.length === 0 ? (
+                            <Text size={1} muted>All {checks.total} checks pass.</Text>
+                          ) : (
+                            <Stack space={2}>
+                              {checks.failed.map((c) => (
+                                <Flex key={c.id} gap={2} align="flex-start">
+                                  <Badge tone={c.severity === 'bad' ? 'critical' : 'caution'} fontSize={0}>{c.severity === 'bad' ? 'Fix' : 'Warn'}</Badge>
+                                  <Text size={1}><strong>{c.label}.</strong> {c.hint}</Text>
+                                </Flex>
+                              ))}
+                            </Stack>
+                          )}
+                        </td>
+                      </tr>
+                    )}
+                    </Fragment>
                   );
                 })}
               </tbody>

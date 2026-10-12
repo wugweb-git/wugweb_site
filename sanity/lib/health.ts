@@ -189,7 +189,8 @@ export function seoChecks(row: Record<string, unknown>, dupes?: DuplicateIndex):
     const bl = blocks(body).filter((b) => b?._type === 'block');
     const h1 = bl.filter((b) => b.style === 'h1').length;
     const headings = bl.filter((b) => /^h[1-6]$/.test(String(b.style))).length;
-    if (type === 'post' || type === 'singletonPage' || type === 'service') {
+    // Pages/services often keep their content in structured fields, not the body: only judge a body that exists.
+    if (type === 'post' || bl.length > 0) {
       add('headings', 'Body has a heading and at most one H1', headings >= 1 && h1 <= 1, 'warn',
         headings === 0 ? 'No headings in the body.' : h1 > 1 ? `${h1} H1s; the page title is already the H1.` : 'OK');
     }

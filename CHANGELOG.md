@@ -9,6 +9,13 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — Studio "SEO score" is now "Completeness"; rule-based Checks added (2026-10-12)
+- The old 0–100 score only checked that fields are filled. It is relabelled **Completeness** everywhere it is shown (tables, SEO Manager, badge tooltip, `docs/admindesign.md`) with the note "Checks that fields are filled. It does not measure ranking quality." Exported names (`seoScore`, `seoLevel`, `SeoBadge`) are unchanged.
+- **`seoChecks(row, dupes?)`** in `sanity/lib/health.ts`: title 30–60, description 120–160 (`seoDescription || excerpt`/`summary`), slug hygiene, post body ≥300 words, headings (≥1, ≤1 H1), alt text on `image`/`mediaUrl` blocks, focus keyword (singletonPage only), description ≠ title/excerpt, duplicate seoTitle/seoDescription per type. Rule-based only; no network, no AI detection. Checks only run for fields the type's schema has.
+- **SEO Manager** gains a "Checks passed" column (e.g. 6/9) with expandable failing-check hints, and a "Has failing checks" filter. Completeness and Checks are separate numbers. SEO Manager now reads `bodyContent` for case studies (it queried a `body` field that does not exist).
+- `npm run test:sanity` (node:test, no new deps).
+- Not done: cover alt (no `coverAlt` field exists in any schema), H1 limit can never fail on schema-written content (blockContent has no H1 style). None of this is real SEO scoring.
+
 ### Added — Studio Media tool: assign / unassign (2026-10-12)
 - **`sanity/components/AssetUsagePanel.tsx` + `sanity/lib/assetUsage.ts`** — the Media inspector now shows where a file is used and lets you **Unassign** it from a document (every cover / thumbnail / gallery / body media block that points at it) or **Assign** it to a case study, post, page, service, client, person, testimonial, industry or taxonomy item (pick a field: cover, thumbnail, hero, OG image, gallery, or add a media block to the body). Confirm step on both; session-only **Undo**.
 - Matching is by path value, not by the scan's stored array index, so removing one gallery item can never remove its neighbour. Both the published doc and any draft are patched, guarded by `ifRevisionId`.
