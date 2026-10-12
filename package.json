@@ -18,7 +18,8 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "posters": "node scripts/generate-video-posters.mjs",
-    "test:redirects": "node --test src/lib/redirects.test.ts"
+    "test:redirects": "node --test src/lib/redirects.test.ts",
+    "test:voice": "node --test sanity/lib/voice.test.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.0.0",
