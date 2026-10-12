@@ -61,7 +61,7 @@ const clientLogos = logos.length
     <ul class="logo-grid" data-scroll="assemble">
       {clientLogos.slice(0, splitAt).map((l) => (
         <li class="logo-tile" aria-hidden={l.isRepeat ? 'true' : undefined}>
-          <img src={l.src} alt={l.isRepeat ? '' : l.name} loading="lazy" decoding="async" />
+          <img src={l.src} alt={l.isRepeat ? '' : `${l.name} logo`} loading="lazy" decoding="async" />
         </li>
       ))}
 
@@ -74,7 +74,7 @@ const clientLogos = logos.length
 
       {clientLogos.slice(splitAt).map((l) => (
         <li class="logo-tile" aria-hidden={l.isRepeat ? 'true' : undefined}>
-          <img src={l.src} alt={l.isRepeat ? '' : l.name} loading="lazy" decoding="async" />
+          <img src={l.src} alt={l.isRepeat ? '' : `${l.name} logo`} loading="lazy" decoding="async" />
         </li>
       ))}
     </ul>

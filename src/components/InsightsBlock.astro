@@ -1,4 +1,5 @@
 ---
+import { loadAssetAlts, altFor } from '../lib/asset-alt';
 /**
  * InsightsBlock — the one blog teaser.
  *
@@ -44,6 +45,7 @@ const {
 } = Astro.props;
 
 const items = (posts || []).slice(0, limit);
+const altMap = await loadAssetAlts();
 const coverOf = (p: InsightPost) =>
   p.coverPath
     ? p.coverPath.startsWith('/') || p.coverPath.startsWith('http')
@@ -88,7 +90,7 @@ const coverOf = (p: InsightPost) =>
           >
             {cover && (
               <div class="btc-media">
-                <img src={cover} alt={p.title} loading="lazy" decoding="async" />
+                <img src={cover} alt={altFor(altMap, p.coverPath, p.title)} loading="lazy" decoding="async" />
               </div>
             )}
             <div class="btc-content">

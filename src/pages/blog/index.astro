@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sanityClient, urlFor } from '../../lib/sanity';
 import { postsListQuery, singletonPageQuery } from '../../lib/queries';
+import { loadAssetAlts, altFor } from '../../lib/asset-alt';
 
 const blogPage = await sanityClient.fetch(singletonPageQuery, { pageId: 'blog' }).catch(() => null);
 const blogTitle = blogPage?.seoTitle || 'Wugweb | Insights on UI/UX Design & Digital Strategy';
@@ -65,11 +66,13 @@ function postPillar(category: string): string {
   return CATEGORY_PILLAR[category] || PILLARS.find((p) => (category || '').toLowerCase().includes(p.toLowerCase())) || 'Experience';
 }
 
+const altMap = await loadAssetAlts();
 const posts = (rawPosts || []).map((p: any) => {
   const pillar = postPillar(p.category);
   return {
     ...p,
     coverUrl: coverUrl(p.coverImage, p.coverPath),
+    coverAlt: altFor(altMap, p.coverPath, p.title),
     accent: PILLAR_ACCENT[pillar],
     pillar,
     initials: initials(p.title),
@@ -101,7 +104,7 @@ function fmtDate(d?: string): string {
       <a href={`/blog/${heroPost.slug}`} class="featured-card" style={`--card-accent: ${heroPost.accent}`}>
         <div class="featured-visual">
           {heroPost.coverUrl ? (
-            <img src={heroPost.coverUrl} alt={heroPost.title} loading="eager" />
+            <img src={heroPost.coverUrl} alt={heroPost.coverAlt} loading="eager" />
           ) : (
             <div class="featured-visual-fallback" aria-hidden="true">
               <span class="fvf-grid"></span>
@@ -138,7 +141,7 @@ function fmtDate(d?: string): string {
           <a href={`/blog/${p.slug}`} style={`--card-accent: ${p.accent}`}>
             <div class="post-thumb-wrap">
               {p.coverUrl ? (
-                <img src={p.coverUrl} alt={p.title} loading="lazy" class="post-thumb" />
+                <img src={p.coverUrl} alt={p.coverAlt} loading="lazy" class="post-thumb" />
               ) : (
                 <div class="post-thumb post-thumb-fallback" aria-hidden="true">
                   <span class="post-thumb-grid"></span>

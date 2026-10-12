@@ -4,6 +4,7 @@ import PortableTextRenderer from '../../components/PortableTextRenderer.astro';
 import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { caseStudyBySlugQuery } from '../../lib/queries';
 import { assetUrl, posterFor } from '../../lib/assets';
+import { loadAssetAlts, altFor } from '../../lib/asset-alt';
 import { WORK_MOVED } from '../../lib/work-redirects';
 
 const { slug } = Astro.params;
@@ -28,6 +29,7 @@ if (work.canonicalUrl && work.canonicalUrl !== `/work/${slug}`) {
   return Astro.redirect(work.canonicalUrl, 301);
 }
 
+const altMap = await loadAssetAlts();
 const coverSrc = work.coverPath ? assetUrl(work.coverPath) : '';
 
 // SEO. caseStudyBySlugQuery has always selected seoTitle/seoDescription/ogImage
@@ -167,7 +169,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
       {coverSrc.endsWith('.mp4') || coverSrc.endsWith('.webm') ? (
         <video aria-hidden="true" src={coverSrc} poster={posterFor(coverSrc)} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
       ) : (
-        <img src={coverSrc} alt={work.title} loading="eager" decoding="async" class="work-cover-media" />
+        <img src={coverSrc} alt={altFor(altMap, work.coverPath, work.title)} loading="eager" decoding="async" class="work-cover-media" />
       )}
     </section>
   )}
@@ -279,7 +281,7 @@ const otherCases = await Promise.all(others.map((s: any) =>
               {isVideo ? (
                 <video aria-hidden="true" data-src={src} poster={posterFor(src)} muted loop playsinline preload="none" />
               ) : (
-                <img src={src} alt={work.title} loading="lazy" />
+                <img src={src} alt={altFor(altMap, path, work.title)} loading="lazy" />
               )}
             </figure>
           );
