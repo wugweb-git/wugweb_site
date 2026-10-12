@@ -15,9 +15,15 @@ const rows = fs.readFileSync(process.env.LIST || 'backups/r2-delete-batch1.csv',
 let del=0, skip=0, fail=0; const apply = process.env.APPLY==='1';
 for (const [key,twin] of rows) {
   const a=live.get(key), b=live.get(twin);
-  if (!a || !b || a.etag!==b.etag || a.size!==b.size) { skip++; continue; }
+  const confirmed = !twin && process.env.CONFIRMED==='1'; // owner-confirmed rows with no twin
+  if (!a || (!confirmed && (!b || a.etag!==b.etag || a.size!==b.size))) { skip++; continue; }
   if (!apply) { del++; continue; }
-  const r = await fetch(`${base}/${encodeURIComponent(key)}`,{method:'DELETE',headers:H});
-  r.ok ? del++ : fail++;
+  let ok=false, why='';
+  for (let t=0; t<4 && !ok; t++) { // retry transient errors / rate limits with backoff
+    try { const r = await fetch(`${base}/${encodeURIComponent(key)}`,{method:'DELETE',headers:H}); ok = r.ok || r.status===404; if(!ok){ why=r.status+' '+(await r.text()).slice(0,120); await new Promise(z=>setTimeout(z,1000*(t+1)*(r.status===429?3:1))); } }
+    catch(e){ why=String(e.message||e); await new Promise(z=>setTimeout(z,1000*(t+1))); }
+  }
+  if (ok) del++; else { fail++; console.log('FAILED', key, why); }
+  if ((del+fail)%25===0) console.log('progress', {deleted:del,failed:fail});
 }
 console.log(apply ? {deleted:del,skipped:skip,failed:fail} : {wouldDelete:del,skipped:skip,note:'dry run - set APPLY=1 to delete'});
