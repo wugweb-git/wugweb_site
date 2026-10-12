@@ -1,3 +1,4 @@
+import { withVoice } from '../lib/voiceFields';
 import service from './service';
 import caseStudy from './caseStudy';
 import post from './post';
@@ -34,7 +35,9 @@ import {
   comparisonTable,
 } from './blockContent';
 
-export const schemaTypes = [
+// withVoice: appends brand-voice WARNING rules to the target fields of
+// post, caseStudy, singletonPage and service (sanity/lib/voiceFields.tsx).
+export const schemaTypes = withVoice([
   service,
   caseStudy,
   post,
@@ -68,4 +71,4 @@ export const schemaTypes = [
   callout,
   quoteBlock,
   comparisonTable,
-];
+]);
