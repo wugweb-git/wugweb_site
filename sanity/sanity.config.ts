@@ -10,12 +10,16 @@ import {
   MasterDetailIcon,
   CopyIcon,
   ShareIcon,
+  CommentIcon,
 } from '@sanity/icons';
 import { schemaTypes } from './schemaTypes';
 import { deskStructure } from './schemaTypes/deskStructure';
 import { TablesTool } from './tools/TablesTool';
 import { DashboardTool } from './tools/DashboardTool';
 import { SeoTool } from './tools/SeoTool';
+import { VoiceTool } from './tools/VoiceTool';
+import { VoiceBadge } from './badges/voiceBadge';
+import { CheckVoiceAction } from './actions/CheckVoiceAction';
 import { MediaTool } from './tools/MediaTool';
 import { SearchTool } from './tools/SearchTool';
 import { ArticleExportTool } from './tools/ArticleExportTool';
@@ -56,6 +60,7 @@ export default defineConfig({
   document: {
     badges: (prev, context) => [
       SeoHealthBadge,
+      VoiceBadge,
       ReadingTimeBadge,
       MediaStatusBadge,
       ...prev,
@@ -63,6 +68,7 @@ export default defineConfig({
     actions: (prev, context) => [
       PreviewDocumentAction,
       CopyArticleAction,
+      CheckVoiceAction,
       ...prev,
     ],
   },
@@ -84,6 +90,12 @@ export default defineConfig({
       title: 'SEO',
       icon: SearchIcon,
       component: SeoTool,
+    },
+    {
+      name: 'voice',
+      title: 'Voice',
+      icon: CommentIcon,
+      component: VoiceTool,
     },
     {
       name: 'media',
