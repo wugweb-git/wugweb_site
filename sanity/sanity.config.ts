@@ -11,6 +11,7 @@ import {
   CopyIcon,
   ShareIcon,
   CommentIcon,
+  PlugIcon,
 } from '@sanity/icons';
 import { schemaTypes } from './schemaTypes';
 import { deskStructure } from './schemaTypes/deskStructure';
@@ -18,6 +19,7 @@ import { TablesTool } from './tools/TablesTool';
 import { DashboardTool } from './tools/DashboardTool';
 import { SeoTool } from './tools/SeoTool';
 import { VoiceTool } from './tools/VoiceTool';
+import { IntegrationsTool } from './tools/IntegrationsTool';
 import { VoiceBadge } from './badges/voiceBadge';
 import { CheckVoiceAction } from './actions/CheckVoiceAction';
 import { MediaTool } from './tools/MediaTool';
@@ -96,6 +98,12 @@ export default defineConfig({
       title: 'Voice',
       icon: CommentIcon,
       component: VoiceTool,
+    },
+    {
+      name: 'integrations',
+      title: 'Integrations',
+      icon: PlugIcon,
+      component: IntegrationsTool,
     },
     {
       name: 'media',
