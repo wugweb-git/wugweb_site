@@ -9,6 +9,15 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — Brand voice guide and rule checks in the Studio (2026-10-13)
+- `siteSettings` gains a "Brand voice" group: persona, audience, tone words, principles, do/don't lists, preferred terms, banned words, spelling, max reading grade, max sentence length, good and bad samples, and a draft/approved status.
+- `sanity/lib/voice.ts` runs pure rule checks: banned words, preferred terms, sentence length, Flesch-Kincaid grade, a passive-voice heuristic, spelling variant, repeated openers, exclamation marks and ALL-CAPS words. These are rule checks, not a tone judge.
+- Fields get warning-only checks: title, excerpt/summary, SEO title/description, aiSummary and body on post, caseStudy, singletonPage and service. Publishing is never blocked.
+- New in the Studio: a Voice tool, a voice badge and a "Check voice" action. Warnings, badges and help-text examples stay off until the guide is **approved**.
+- A draft guide is seeded from live copy using verbatim samples. Backup: `backups/siteSettings-before-voice-seed-2026-10-13.json`.
+- `npm run test:voice` runs 18 tests, all passing.
+- Read-only run across 173 published documents with the draft guide: 149 have at least one issue. The top issues are spelling (163, mostly US forms such as color and behavior), sentences over 25 words (153) and reading grade over 10 (94).
+
 ### Added — Redirects work on the site (2026-10-13)
 - `redirect` documents are now applied by `src/middleware.ts`, through a pure matcher in `src/lib/redirects.ts` and a loader in `src/lib/redirect-rules.ts`. They match case-insensitively, ignore the trailing slash and carry the query string over. Exact rules beat `/old/*` folder rules, and among folder rules the longest prefix wins. Redirects go one hop only, with 301/302 status.
 - A rule fires only when the path is not a live page: a 404, or the site's own 302 to `/404`. It can never shadow a real route.

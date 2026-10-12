@@ -77,6 +77,8 @@ in §1s and `~/.claude/plans/snoopy-splashing-pearl.md`.
 
 **Added 2026-10-13 — redirects:** the `redirect` type now works (middleware + `src/lib/redirects.ts`). There are 0 redirect docs yet, so add them in the Studio. Unverified in production until the redirect Studio changes are deployed and a real rule is created and curled on `*.pages.dev`. Hit counting is deliberately not built (Rule 1). `wugweb.com` still serves Framer until DNS cutover, so redirects only apply on `*.pages.dev` / `uat`.
 
+**Added 2026-10-13 — brand voice:** a draft guide is in Site Settings → Brand voice. **Edit it, then set it to Approved** to turn on field warnings, badges and help text. Audience is marked as inferred. Remaining queue: integrations, then the `sanity.cli.ts` typegen fix, three `seoChecks`, and the non-Storybook `tsc` errors.
+
 **Needs you, not code:**
 
 | # | Item | Why it is yours |
