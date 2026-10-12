@@ -1,7 +1,6 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
-import { codeInput } from '@sanity/code-input';
 import { table } from '@sanity/table';
 import {
   DashboardIcon,
@@ -52,7 +51,6 @@ export default defineConfig({
   plugins: [
     structureTool({ structure: deskStructure }),
     visionTool(),
-    codeInput(),
     table(),
   ],
   document: {
