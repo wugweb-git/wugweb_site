@@ -10,7 +10,8 @@
  * (Notion blocks → Portable Text; images become mediaUrl blocks). Empty Notion values never clear Sanity.
  * topic / topicSlug: the Notion Category name and its Slug (blog filter).
  * category: Notion's Category (relation) mapped onto Sanity's list via CATEGORY_MAP (owner-approved 2026-10-13).
- * Author and tags on existing posts are left alone.
+ * author (Notion Author → person by name) and tags (Notion Tags names) on every post; empty in
+ * Notion, or an author with no matching person, leaves Sanity's value alone.
  * New Notion posts are created as post-<slug>. Posts that exist only in Sanity are NOT deleted here;
  * they are listed, and their delete goes in an owner-run script.
  */
@@ -112,7 +113,7 @@ const CATEGORY_MAP = {
   'Career': 'Misc', 'Lifestyle': 'Misc',
 };
 const unmappedCategories = new Set();
-const topicCount = {}; const noTopic = [];
+const topicCount = {}; const noTopic = []; const unknownAuthors = new Set();
 
 // ---- load ---------------------------------------------------------------------------------
 const pages = []; let cur;
@@ -154,6 +155,13 @@ for (const p of pages) {
     topicCount[catName] = (topicCount[catName] || 0) + 1;
   } else noTopic.push(row.postId);
 
+  const rel = async (arr) => Promise.all((arr || []).map((r) => pageTitle(r.id)));
+  const authorName = (await rel(P['Author']?.relation))[0] || '';
+  const tags = (await rel(P['Tags']?.relation)).filter(Boolean);
+  const personId = personByName[authorName.toLowerCase()];
+  if (personId) set.author = { _type: 'reference', _ref: personId };
+  else if (authorName) unknownAuthors.add(authorName);
+  if (tags.length) set.tags = tags;
   const id = published[row.sanityId] ? row.sanityId : bySlug[row.slug];
   if (id) {
     matched.add(id);
@@ -165,12 +173,8 @@ for (const p of pages) {
     if (draftOf[id]) ops.push({ id: draftOf[id]._id, rev: draftOf[id]._rev, set: patchSet });
     report.push(`${row.postId} ${id}: ${changed.join(', ')}`);
   } else {
-    const rel = async (arr) => Promise.all((arr || []).map((r) => pageTitle(r.id)));
-    const authorName = (await rel(P['Author']?.relation))[0] || '';
-    const tags = await rel(P['Tags']?.relation);
     const _id = `post-${row.slug}`;
-    const doc = { _id, _type: 'post', ...set, owner: 'wugweb', language: 'en', ...(tags.length ? { tags } : {}),
-      ...(personByName[authorName.toLowerCase()] ? { author: { _type: 'reference', _ref: personByName[authorName.toLowerCase()] } } : {}) };
+    const doc = { _id, _type: 'post', ...set, owner: 'wugweb', language: 'en' };
     created.push(doc);
     report.push(`${row.postId} CREATE ${_id} (${body.length} blocks, author ${authorName || '-'}${personByName[authorName.toLowerCase()] ? '' : ' NOT FOUND'})`);
   }
@@ -185,6 +189,7 @@ for (const o of ops) if (o.set.category && !o.id.startsWith('drafts.')) catCount
 for (const d of created) if (d.category) catCount[d.category] = (catCount[d.category] || 0) + 1;
 if (Object.keys(catCount).length) console.log('category changes by target:', catCount);
 console.log('topics (all Notion posts):', topicCount, '| total', Object.values(topicCount).reduce((a, b) => a + b, 0), '| posts with no Notion category:', noTopic);
+if (unknownAuthors.size) console.log('Notion authors with no Sanity person (left unchanged):', [...unknownAuthors]);
 if (unmappedCategories.size) console.log('UNMAPPED Notion categories (left unchanged):', [...unmappedCategories]);
 console.log('Sanity-only:'); sanityOnly.forEach((s) => console.log('  ' + s));
 

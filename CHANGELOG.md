@@ -38,6 +38,9 @@ and this project adheres to Semantic Versioning.
 ### Removed — unused Studio dependencies (2026-10-13)
 - `@sanity/dashboard`, which nothing imported, and `@sanity/code-input`, which no schema uses as `type: 'code'` (0 such blocks in live data). 82 packages removed. `table()` stays.
 
+### Changed — sync covers author and tags (2026-10-13)
+- `sync-notion-blogs.mjs` now sets `author` (Notion Author → person by name) and `tags` (Notion Tags) on every post; empty Notion values leave Sanity alone. Applied: tags already matched on all 103; 2 authors corrected to Wugweb Design (POST-0084, POST-0095).
+
 ### Changed — "Brand & Strategy" topic split (2026-10-13)
 - Notion: POST-0102 and POST-0103 (both branding posts) moved from the "Brand & Strategy" category to "Brand" (backup `backups/notion-brand-split-2026-10-13.json`); Strategy keeps its 7 posts. `topic` options now list Brand instead of Brand & Strategy (Studio deployed); the sync maps Brand → `category` "Brand & Strategy" so the pillar colour is unchanged.
 - Blog cards show the post's topic; the featured post follows the topic filter.
