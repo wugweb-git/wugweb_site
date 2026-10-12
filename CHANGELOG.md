@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — 22 body images renamed (2026-10-13)
+- `assets/blog/<slug>/body-NN.*` for 0072, 0073 and 0099 copied to `blog/<slug>/NN-name.*` (MD5-verified). Owner ran `scripts/owner-delete-blog-body22.mjs`: 22 originals and their 22 asset records deleted (backup `backups/body22-asset-records-2026-10-13.json`).
+
 ### Added — 46 blog covers (2026-10-13)
 - Uploaded from `~/Downloads/wugweb-r2-import/cover-uploads.csv` (artworks folder) to `blog/<slug>/cover.*`: 46 new keys, all 200 and MD5-identical to the source files (74 MiB). Sanity `coverPath`/`ogImagePath` set to the same full URLs. Backup: `backups/blog-covers-46-2026-10-13.json`. Only POST-0107 has no cover now.
 
