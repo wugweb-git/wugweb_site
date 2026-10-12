@@ -8,6 +8,14 @@ import { loadAssetAlts, altFor } from '../../lib/asset-alt';
 
 const { slug } = Astro.params;
 
+// Slugs renamed by the Notion → Sanity blog sync; old links get a permanent redirect.
+const RENAMED_SLUGS: Record<string, string> = {
+  'how-visual-design-contributes-to-an-engaging-ux-2': 'how-visual-design-makes-for-great-ux',
+};
+if (slug && RENAMED_SLUGS[slug]) {
+  return Astro.redirect(`/blog/${RENAMED_SLUGS[slug]}`, 301);
+}
+
 const previewToken = (Astro.locals as any)?.previewToken as string | undefined;
 const client = previewToken ? getPreviewClient(previewToken) : sanityClient;
 const post = await client.fetch(postBySlugQuery, { slug }).catch(() => null);

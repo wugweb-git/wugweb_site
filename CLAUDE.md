@@ -162,6 +162,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - **Neon is shared SSOT** for structured content (Vedanshu + Wugweb). Sanity is the admin panel. Media belongs in R2 (`wugweb-assets`).
 - **Owner ≠ Author** — owner is `vedanshu` \| `wugweb` \| `both` \| `none`; author is a `person` byline. See `governance.md`.
 - **Notion is seed only** — do not reset Sanity/Neon to Notion; Sanity already has more content.
+- **Exception — blog posts (2026-10-13, owner decision):** Notion Blogs is the source of truth for posts. Sync with `node scripts/sync-notion-blogs.mjs` (dry run; `WRITE=1` applies, backs up first). It never deletes; posts removed from Notion go in an owner-run delete script.
 - **Content comes from hardcoded frontend records or user-provided sources**, not from Framer reference pages or third-party review sites.
 - **Service page copy (loose reference):** `/Users/abcom/Documents/VS/wugweb artworks/Wugweb_Services 2026.md` — use for inspiration on `/services` and `/services/[slug]` when helpful. Not a tight requirement; do not force 1:1 parity.
 - **Do not remove `blockContent` from the Sanity schema types array** — doing so causes `Unknown type: blockContent` errors across documents.

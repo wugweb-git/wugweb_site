@@ -9,6 +9,12 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — Notion → Sanity blog sync (2026-10-13)
+- `scripts/sync-notion-blogs.mjs` (new): Notion Blogs is now the source of truth for posts. Applied: 91 posts updated (title, slug, excerpt, SEO title/description, canonical, featured, reading time, publish date, `coverPath`/`ogImagePath` as full R2 URLs, body), 12 created (POST-0105…0116). Bodies were one-line placeholders in Sanity; they now carry the full Notion text and its 201 images (`mediaUrl` blocks). Author, category and tags on existing posts unchanged. Backup: `backups/sanity-pre-notion-blog-sync-*.json`. A re-run reports 0 changes.
+- POST-0055 slug changed; `/blog/how-visual-design-contributes-to-an-engaging-ux-2` 301-redirects to `/blog/how-visual-design-makes-for-great-ux`.
+- 31 images copied into `blog/<slug>/` (26 body images for 9 posts, 5 covers), MD5-verified.
+- `scripts/owner-delete-notion-blog-sync.mjs` (not run): deletes the 9 Sanity-only posts, 78 R2 keys (`backups/r2-delete-assets-blog-2026-10-13.csv`) and 70 asset records. 22 new `assets/blog/*/body-NN.*` files were skipped (no copy under `blog/`): `backups/r2-skipped-assets-blog-2026-10-13.txt`.
+
 ### Changed — blog covers and 0054 images moved out of unsorted/ (2026-10-13)
 - Copied into `blog/<slug>/` (all 200, MD5-verified): 8 covers (0103, 0029, 0007, 0055, 0024, 0014, 0039, 0018) and the 20 resource images for 0054 (`01-refero.png` … `20-screenlane.png`).
 - Owner ran `scripts/owner-delete-blog-unsorted.mjs`: 62 R2 keys gone (58 deleted by the run, 4 `misc/` copies already removed by batch 7), then the 51 matching Sanity asset records deleted. List: `backups/r2-delete-blog-unsorted-2026-10-13.csv`; records backup: `backups/blog-unsorted-asset-records-2026-10-13.json`.
