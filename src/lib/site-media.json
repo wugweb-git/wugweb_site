@@ -1,77 +1,77 @@
 {
   "_comment": "Single source for site media that is not CMS-driven. Paths are relative to the R2 bucket's assets/ prefix (R2 key = assets/<path>). Check with: node scripts/verify-site-media.mjs",
   "home": {
-    "heroVideo": "more/home/home.mp4",
-    "heroPoster": "more/home/home-poster.webp",
+    "heroVideo": "site/home/home.mp4",
+    "heroPoster": "site/home/home-poster.webp",
     "clientLogos": [
       {
         "name": "Aditya Birla Capital",
-        "path": "logos/client-logo-te1y.png"
+        "path": "work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/client-logo-te1y.png"
       },
       {
         "name": "Airtel",
-        "path": "logos/airtel-xsafe.png"
+        "path": "work/airtel-xsafe/client-logo-c6rj.png"
       },
       {
         "name": "Axis Bank",
-        "path": "logos/client-logo-d64b.png"
+        "path": "work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/client-logo-d64b.png"
       },
       {
         "name": "Bankco",
-        "path": "logos/client-logo-qhmv.png"
+        "path": "work/bankco/client-logo-qhmv.png"
       },
       {
         "name": "Cartier",
-        "path": "logos/client-logo-jrot.png"
+        "path": "work/cartier-careers/client-logo-jrot.png"
       },
       {
         "name": "Gratifi",
-        "path": "logos/client-logo-5nzb.png"
+        "path": "work/gratify-the-intelligent-rewards-and-feedback-platform/client-logo-5nzb.png"
       },
       {
         "name": "IndusInd Bank",
-        "path": "logos/client-logo-k5hy.png"
+        "path": "logos/indusninja.png"
       },
       {
         "name": "Inkompass",
-        "path": "logos/client-logo-9fd5.png"
+        "path": "work/inkompass/client-logo-9fd5.png"
       },
       {
         "name": "Kia",
-        "path": "logos/client-logo-5nkj.png"
+        "path": "work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard/client-logo-5nkj.png"
       },
       {
         "name": "NTUC",
-        "path": "logos/client-logo-grfk.png"
+        "path": "work/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/client-logo-grfk.png"
       },
       {
         "name": "Plufo",
-        "path": "logos/client-logo-6djh.png"
+        "path": "work/plufo/client-logo-6djh.png"
       },
       {
         "name": "RideEV",
-        "path": "logos/client-logo-1gbn.png"
+        "path": "work/rideev/client-logo-1gbn.png"
       },
       {
         "name": "Valyu",
-        "path": "logos/client-logo-jj6k.png"
+        "path": "logos/valyu-ai.png"
       }
     ]
   },
   "about": {
-    "messageVideo": "more/about/about-message.mp4",
-    "messagePoster": "about/about-section.jpg",
-    "cultureImage": "about/about-section-2.jpg"
+    "messageVideo": "site/about/about__about-message.mp4",
+    "messagePoster": "site/about/about-section.jpg",
+    "cultureImage": "site/about/about-section-2.jpg"
   },
   "seo": {
-    "ogDefault": "og/default.jpg"
+    "ogDefault": "site/default/og.jpg"
   },
   "serviceTags": {
-    "strategy": "services/growth/digital-transformation-roadmaps.mp4",
-    "engineering": "more/home/web-app-development.mp4",
-    "brand": "more/home/brand-strategy.mp4",
-    "growth": "more/home/martech-genai.mp4",
-    "operations": "services/growth/seamless-platform-integration.mp4",
-    "experience": "more/home/experience-design.mp4"
+    "strategy": "site/services/growth/Digital Transformation Roadmaps.mp4",
+    "engineering": "site/home/web-app-development.mp4",
+    "brand": "site/home/brand-strategy.mp4",
+    "growth": "site/home/martech-genai.mp4",
+    "operations": "site/services/growth/seamless platform integration.mp4",
+    "experience": "site/home/experience-design.mp4"
   }
 }
