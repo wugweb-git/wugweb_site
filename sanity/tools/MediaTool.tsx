@@ -44,15 +44,13 @@ const isUnused = (r: AssetRow) => r.usedByCount === 0;
 // Alt text only applies to raster images: video, audio and SVG icons are skipped.
 const needsAlt = (r: AssetRow) => r.mediaType === 'Image' && !(r.alt || '').trim();
 
-const QUERY = `{
-  "assets": *[_type == "asset"] | order(sitePath asc) [0...600] {
-    _id, _type, _updatedAt, name, displayName, "slug": slug.current, assetType, mediaType, assetGroup,
+const FIELDS = `_id, _type, _updatedAt, name, displayName, "slug": slug.current, assetType, mediaType, assetGroup,
     usage, alt, status, folder, relativePath, sitePath, r2Key, publicUrl, fileName, extension,
     localExists, r2Synced, usedByCount, "linkedCaseStudy": linkedCaseStudy->title, "linkedClient": linkedClient->name,
-    "linkedService": linkedService->title, "linkedPost": linkedPost->title, linkedPageId
-  },
-  "total": count(*[_type == "asset"])
-}`;
+    "linkedService": linkedService->title, "linkedPost": linkedPost->title, linkedPageId`;
+// Loaded in pages by _id so every asset shows up (a single query was capped at 600).
+const PAGE_QUERY = `*[_type == "asset" && _id > $last] | order(_id) [0...500] { ${FIELDS} }`;
+const COUNT_QUERY = `count(*[_type == "asset"])`;
 
 const BORDER = 'var(--card-border-color, rgba(128,128,128,0.25))';
 const FG = 'var(--card-fg-color, inherit)';
@@ -67,7 +65,6 @@ const folderOf = (r: { relativePath?: string }) => {
   const i = p.lastIndexOf('/');
   return i > 0 ? p.slice(0, i) : '';
 };
-const topOf = (f: string) => f.split('/')[0] || '(no folder)';
 
 function assetUrl(r: { publicUrl?: string; sitePath?: string; relativePath?: string }) {
   const path = r.sitePath || (r.relativePath ? `/assets/${r.relativePath}` : '');
@@ -126,9 +123,8 @@ function MediaToolContent() {
   const [filter, setFilter] = useState<'all' | 'unused' | 'missingAlt' | 'duplicates' | 'archived'>('all');
   const [q, setQ] = useState('');
   const [group, setGroup] = useState<string>('all');
-  // Folder audit: top-level folder, then the sub-folder inside it (both from relativePath).
-  const [topFolder, setTopFolder] = useState<string>('all');
-  const [subFolder, setSubFolder] = useState<string>('all');
+  // Folder audit: every folder path is its own entry (blog and blog/wp are separate), from relativePath.
+  const [folder, setFolder] = useState<string>('all');
   const [selectedAsset, setSelectedAsset] = useState<AssetRow | null>(null);
   // Session-only undo for assign / unassign. Not persisted: a reload clears it.
   const [undoStack, setUndoStack] = useState<UndoEntry[]>([]);
@@ -143,9 +139,18 @@ function MediaToolContent() {
     if (!silent) setLoading(true);
     setError(null);
     try {
-      const data = await client.fetch<{ assets: AssetRow[]; total: number }>(QUERY);
-      setRows(data?.assets ?? []);
-      setTotal(data?.total ?? 0);
+      const all: AssetRow[] = [];
+      let last = '';
+      for (;;) {
+        const page = await client.fetch<AssetRow[]>(PAGE_QUERY, { last });
+        if (!page?.length) break;
+        all.push(...page);
+        last = page[page.length - 1]._id;
+        if (page.length < 500) break;
+      }
+      all.sort((a, b) => String(a.sitePath ?? '').localeCompare(String(b.sitePath ?? '')));
+      setRows(all);
+      setTotal(await client.fetch<number>(COUNT_QUERY));
     } catch (e: any) {
       setError(e?.message || 'Failed to load media catalog');
       setRows([]);
@@ -163,8 +168,7 @@ function MediaToolContent() {
   const scoped = useMemo(() => {
     let out = rows;
     if (group !== 'all') out = out.filter((r) => (r.assetGroup || '').toLowerCase() === group.toLowerCase());
-    if (topFolder !== 'all') out = out.filter((r) => topOf(folderOf(r)) === topFolder);
-    if (subFolder !== 'all') out = out.filter((r) => folderOf(r) === subFolder);
+    if (folder !== 'all') out = out.filter((r) => (folderOf(r) || '(no folder)') === folder);
     const needle = q.trim().toLowerCase();
     if (needle) {
       out = out.filter((r) =>
@@ -172,21 +176,16 @@ function MediaToolContent() {
       );
     }
     return out;
-  }, [rows, group, topFolder, subFolder, q]);
+  }, [rows, group, folder, q]);
 
   const folderCounts = useMemo(() => {
-    const top = new Map<string, number>();
-    for (const r of rows) top.set(topOf(folderOf(r)), (top.get(topOf(folderOf(r))) ?? 0) + 1);
-    const subs = new Map<string, number>();
-    if (topFolder !== 'all') {
-      for (const r of rows) {
-        const f = folderOf(r);
-        if (topOf(f) === topFolder) subs.set(f || '(no folder)', (subs.get(f || '(no folder)') ?? 0) + 1);
-      }
+    const m = new Map<string, number>();
+    for (const r of rows) {
+      const f = folderOf(r) || '(no folder)';
+      m.set(f, (m.get(f) ?? 0) + 1);
     }
-    const sort = (m: Map<string, number>) => [...m.entries()].sort((a, b) => a[0].localeCompare(b[0]));
-    return { top: sort(top), subs: sort(subs) };
-  }, [rows, topFolder]);
+    return [...m.entries()].sort((x, y) => x[0].localeCompare(y[0]));
+  }, [rows]);
 
   const stats = useMemo(() => {
     const unused = scoped.filter(isUnused);
@@ -368,25 +367,12 @@ function MediaToolContent() {
               <option value="Blog">Blog</option>
               <option value="Framer">Framer</option>
             </Select>
-            <Select
-              value={topFolder}
-              onChange={(e) => { setTopFolder(e.currentTarget.value); setSubFolder('all'); }}
-              aria-label="Folder"
-              style={{ minWidth: 150 }}
-            >
+            <Select value={folder} onChange={(e) => setFolder(e.currentTarget.value)} aria-label="Folder" style={{ minWidth: 220, maxWidth: 380 }}>
               <option value="all">All folders ({rows.length})</option>
-              {folderCounts.top.map(([f, n]) => (
+              {folderCounts.map(([f, n]) => (
                 <option key={f} value={f}>{f}/ ({n})</option>
               ))}
             </Select>
-            {topFolder !== 'all' && folderCounts.subs.length > 1 && (
-              <Select value={subFolder} onChange={(e) => setSubFolder(e.currentTarget.value)} aria-label="Sub-folder" style={{ minWidth: 200, maxWidth: 320 }}>
-                <option value="all">All in {topFolder}/ ({folderCounts.subs.reduce((a, [, n]) => a + n, 0)})</option>
-                {folderCounts.subs.map(([f, n]) => (
-                  <option key={f} value={f}>{f.startsWith(topFolder + '/') ? f.slice(topFolder.length + 1) : f} ({n})</option>
-                ))}
-              </Select>
-            )}
             <Select
               value={view}
               onChange={(e) => setView(e.currentTarget.value as any)}
