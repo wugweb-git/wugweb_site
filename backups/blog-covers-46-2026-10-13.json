@@ -1,0 +1,281 @@
+{
+ "takenAt": "2026-10-12T21:09:48.576Z",
+ "docs": [
+  {
+   "_id": "1ldNh76NU0J0b4so5ExZ9H",
+   "_rev": "S5EFnJjn0OdXSc45Q222Lw",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "1ldNh76NU0J0b4so5ExZr9",
+   "_rev": "S5EFnJjn0OdXSc45Q222Lw",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "hEzuHHk6Tg1XoYfrKvBzv9",
+   "_rev": "S5EFnJjn0OdXSc45Q222Lw",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "hEzuHHk6Tg1XoYfrKvC0Ps",
+   "_rev": "S5EFnJjn0OdXSc45Q2241a",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-accessibility-first",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-accessibility-good-product-design",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-ai-assisted-wireframing",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-ai-design-systems",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-ai-powered-ux-research",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-ai-will-not-replace-designers",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-better-onboarding-experiences",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-beyond-the-rows-why-my-next-project-is-moving-from-supabase-to-nosql",
+   "_rev": "Zp6AkUkGK4usgMripjTrkd",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-building-better-product-teams",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-building-products-people-love",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-customer-journey-mapping",
+   "_rev": "36TK9CDo7y3YWN6AkAkXhj",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-design-thinking-vs-product-thinking",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-designer-developer-collaboration",
+   "_rev": "36TK9CDo7y3YWN6AkAkXhj",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-designing-ai-workflows",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-designing-products-that-scale",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-designing-with-data",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-emotional-design-digital-products",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-from-wireframes-to-product-strategy",
+   "_rev": "36TK9CDo7y3YWN6AkAkXhj",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-future-product-design-careers",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-future-proofing-design-careers",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-guarding-against-disposable-design",
+   "_rev": "S5EFnJjn0OdXSc45Q2241a",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-human-centered-ai-products",
+   "_rev": "36TK9CDo7y3YWN6AkAkXhj",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-measuring-ux-success",
+   "_rev": "36TK9CDo7y3YWN6AkAkXhj",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-mvp-to-product-market-fit",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-next-generation-product-designers",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-product-metrics-designers",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-product-roadmaps-designers",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-product-thinking-vs-feature-thinking",
+   "_rev": "36TK9CDo7y3YWN6AkAkXhj",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-research-never-ends",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-responsible-ai-design",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-scaling-ux-enterprise",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-startups-need-design-system",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-the-ai-native-marketing-team-four-new-roles-that-will-define-the-next-decade",
+   "_rev": "Zp6AkUkGK4usgMripjTrkd",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-the-ai-paradox-why-productivity-isnt-the-future-of-marketing",
+   "_rev": "Zp6AkUkGK4usgMripjTrkd",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-the-death-of-discovery-is-ai-skipping-the-why-in-ux",
+   "_rev": "Zp6AkUkGK4usgMripjTrkd",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-ux-debt-is-real",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-ux-maturity-model",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-ux-research-repository",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-ux-research-without-large-budgets",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-why-designers-should-understand-apis",
+   "_rev": "36TK9CDo7y3YWN6AkAkXhj",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-why-simplicity-wins",
+   "_rev": "Zp6AkUkGK4usgMripjTpvr",
+   "coverPath": null,
+   "ogImagePath": null
+  },
+  {
+   "_id": "post-writing-better-ux-copy",
+   "_rev": "S5EFnJjn0OdXSc45Q2260Q",
+   "coverPath": null,
+   "ogImagePath": null
+  }
+ ]
+}

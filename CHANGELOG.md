@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — 46 blog covers (2026-10-13)
+- Uploaded from `~/Downloads/wugweb-r2-import/cover-uploads.csv` (artworks folder) to `blog/<slug>/cover.*`: 46 new keys, all 200 and MD5-identical to the source files (74 MiB). Sanity `coverPath`/`ogImagePath` set to the same full URLs. Backup: `backups/blog-covers-46-2026-10-13.json`. Only POST-0107 has no cover now.
+
 ### Changed — Notion → Sanity blog sync (2026-10-13)
 - `scripts/sync-notion-blogs.mjs` (new): Notion Blogs is now the source of truth for posts. Applied: 91 posts updated (title, slug, excerpt, SEO title/description, canonical, featured, reading time, publish date, `coverPath`/`ogImagePath` as full R2 URLs, body), 12 created (POST-0105…0116). Bodies were one-line placeholders in Sanity; they now carry the full Notion text and its 201 images (`mediaUrl` blocks). Author, category and tags on existing posts unchanged. Backup: `backups/sanity-pre-notion-blog-sync-*.json`. A re-run reports 0 changes.
 - POST-0055 slug changed; `/blog/how-visual-design-contributes-to-an-engaging-ux-2` 301-redirects to `/blog/how-visual-design-makes-for-great-ux`.
