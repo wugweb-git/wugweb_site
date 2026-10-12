@@ -9,6 +9,17 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed — typegen config, three SEO checks, non-Storybook type errors (2026-10-13)
+- **TypeGen:** the config moved from `sanity.cli.ts` to `sanity/sanity-typegen.json`, the only file Sanity 3.99 reads. The old `typegen` key was v4 syntax that 3.99 silently ignored, and it caused the one Studio `tsc` error. Studio `tsc` now reports 0 errors, and `sanity typegen generate` produces types for 46 schema types.
+- **SEO checks:**
+  - `social-card` checks for the page's own share image, title and description, using the same image chain as each template. Services always warn, because their template passes no image.
+  - `keyword-stuffing` warns when the focus keyword appears more than once in the title or makes up over 3% of the body.
+  - Live duplicate `seoTitle`/`seoDescription` warnings now appear on the field across all four content types. They are warning-only and never block publishing.
+  - `npm run test:sanity` runs 26 tests, all passing.
+- **`draggable-tags.ts`:** the resize handler was never debounced. GSAP 3.15 has no `utils.debounce`, so the optional call always fell through. It now uses a local 150 ms debounce.
+- **`scroll-animations.ts`:** `[data-scroll]` is now typed as `HTMLElement`.
+- Site `tsc` errors went from 42 to 39, all of them in Storybook files.
+
 ### Added — Integrations: Sanity IDs, more providers, IndexNow, 404 monitor (2026-10-13)
 - `siteSettings` → **Integrations** holds the GA4, GTM, Yandex Metrica, Clarity and Hotjar IDs, plus Google, Bing and Yandex verification. Each ID is regex-validated, and the fields refuse anything that looks like a key or secret. GA4 is seeded with `G-W5WJ1PMTKD` and falls back to it when the field is empty or the fetch fails.
 - `src/lib/integrations.ts` is a provider registry. Every provider loads only on the canonical host **and** after analytics consent. A provider with no ID never loads. When GA4 and GTM are both set, GTM is not loaded (double-counting), and the reason is reported. GA4 events and `data-gtag-event` are unchanged.

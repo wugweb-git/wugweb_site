@@ -81,6 +81,8 @@ in §1s and `~/.claude/plans/snoopy-splashing-pearl.md`.
 
 **Added 2026-10-13 — integrations:** needs you: (1) set `INDEXNOW_KEY` (8–128 chars, a-z A-Z 0-9 -) and `INDEXNOW_WEBHOOK_SECRET` (16+ chars) on the Pages project, production; (2) add a Sanity webhook to `https://wugweb.pages.dev/api/indexnow` (the free plan allows 2 GROQ webhooks); (3) decide on the IDs Framer runs today: GTM `GTM-KV9JWXZ` and Hotjar `3239820` (GA4 `G-W5WJ1PMTKD` is already seeded). GTM cannot load while GA4 is active; turning GA4 off is a code decision. The 404 monitor needs one production deploy to pick up the D1 binding.
 
+**Added 2026-10-13 — queue cleared:** typegen config fixed (Studio tsc 0), three seoChecks added, non-Storybook tsc errors fixed (site 42 → 39, all Storybook). The Studio changes are **not deployed** yet (SeoTool queries, live duplicate warnings). Open decisions: GA4 vs GTM, Hotjar ID, en-GB vs en-US, the ALL-CAPS brand names. The main open item after this is the DNS cutover.
+
 **Needs you, not code:**
 
 | # | Item | Why it is yours |
