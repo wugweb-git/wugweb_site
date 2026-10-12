@@ -47,7 +47,9 @@ export function initScrollAnimations(): () => void {
   if (prefersReduced) return () => {};
 
   // [data-scroll] — section transforms
-  const sections = document.querySelectorAll('[data-scroll]');
+  // Typed as HTMLElement: every [data-scroll] is an HTML element, and the
+  // assemble block below reads offsetWidth/offsetHeight (TS2339 on Element).
+  const sections = document.querySelectorAll<HTMLElement>('[data-scroll]');
   sections.forEach((el) => {
     const kind = (el as HTMLElement).dataset.scroll || 'fade-up';
     const delay = Number((el as HTMLElement).dataset.scrollDelay || 0);

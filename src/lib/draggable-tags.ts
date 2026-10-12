@@ -76,9 +76,19 @@ export function initDraggableTags(): () => void {
     };
     clampToField();
     if (document.fonts?.status !== 'loaded') document.fonts?.ready.then(clampToField);
-    const onResize = gsap.utils.debounce?.(clampToField, 150) ?? clampToField;
+    // GSAP 3.15 has no utils.debounce, so the old `gsap.utils.debounce?.(…)
+    // ?? clampToField` always fell through and ran clampToField on EVERY resize
+    // event, undebounced. A local 150 ms trailing debounce restores the intent.
+    let resizeTimer: ReturnType<typeof setTimeout> | undefined;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(clampToField, 150);
+    };
     window.addEventListener('resize', onResize);
-    cleanups.push(() => window.removeEventListener('resize', onResize));
+    cleanups.push(() => {
+      window.removeEventListener('resize', onResize);
+      clearTimeout(resizeTimer);
+    });
 
     /**
      * ---- entry / exit ----
