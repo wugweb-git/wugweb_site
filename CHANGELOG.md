@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — Media tool folder audit (2026-10-12)
+- **Folder** and **Sub-folder** filters in the Media tool (from each asset's `relativePath`, with counts), a folder label on every card, and a Folder column in list view. The Unused / Missing alt / Duplicates counts now describe the selected folder, group and search, not the whole library.
+- Thumbnails now fall back to the R2 public URL instead of `wugweb.pages.dev/assets`, which no longer serves files (this was the "No file" tiles).
+
 ### Changed — hard-coded site media moved into Sanity (2026-10-12)
 - New fields: `singletonPage.heroPosterPath` and `sectionImagePath`, `client.showInLogoBand`, `service.tagVideoPath`; `siteSettings.ogImagePath` is now read by the site. Home hero video and poster, About video, poster and culture image, the six homepage service-tag clips, the 13-logo "Trusted by" band and the default OG image come from these. `src/lib/site-media.json` stays as the fallback when a field is empty.
 - Seeded by `scripts/seed-site-media-cms.mjs` (additive; backup `backups/site-media-cms-2026-10-12.json`). The logo band is now exactly the 13 curated clients (it used to show every client with a logo).

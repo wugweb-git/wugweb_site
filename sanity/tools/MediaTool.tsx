@@ -61,9 +61,18 @@ const WELL = 'var(--card-muted-bg-color, #f1f3f5)';
 
 const VIDEO_EXT = ['mp4', 'webm', 'mov'];
 
+/** Folder of an asset: its relativePath without the file name ('' when it has none). */
+const folderOf = (r: { relativePath?: string }) => {
+  const p = String(r.relativePath || '');
+  const i = p.lastIndexOf('/');
+  return i > 0 ? p.slice(0, i) : '';
+};
+const topOf = (f: string) => f.split('/')[0] || '(no folder)';
+
 function assetUrl(r: { publicUrl?: string; sitePath?: string; relativePath?: string }) {
   const path = r.sitePath || (r.relativePath ? `/assets/${r.relativePath}` : '');
-  return r.publicUrl || (path ? `https://wugweb.pages.dev${encodeURI(path)}` : '');
+  // Local /assets is no longer deployed with the site; the R2 public base is where files live.
+  return r.publicUrl || (path ? `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev${encodeURI(path)}` : '');
 }
 
 /** Thumbnail that never shows the browser's broken-image icon or leaked alt text. */
@@ -117,6 +126,9 @@ function MediaToolContent() {
   const [filter, setFilter] = useState<'all' | 'unused' | 'missingAlt' | 'duplicates' | 'archived'>('all');
   const [q, setQ] = useState('');
   const [group, setGroup] = useState<string>('all');
+  // Folder audit: top-level folder, then the sub-folder inside it (both from relativePath).
+  const [topFolder, setTopFolder] = useState<string>('all');
+  const [subFolder, setSubFolder] = useState<string>('all');
   const [selectedAsset, setSelectedAsset] = useState<AssetRow | null>(null);
   // Session-only undo for assign / unassign. Not persisted: a reload clears it.
   const [undoStack, setUndoStack] = useState<UndoEntry[]>([]);
@@ -146,36 +158,56 @@ function MediaToolContent() {
     load();
   }, [load]);
 
+  // Everything the group, folder and search boxes select. The chip counts below describe THIS set,
+  // so picking a folder shows that folder's unused / missing-alt / duplicate numbers.
+  const scoped = useMemo(() => {
+    let out = rows;
+    if (group !== 'all') out = out.filter((r) => (r.assetGroup || '').toLowerCase() === group.toLowerCase());
+    if (topFolder !== 'all') out = out.filter((r) => topOf(folderOf(r)) === topFolder);
+    if (subFolder !== 'all') out = out.filter((r) => folderOf(r) === subFolder);
+    const needle = q.trim().toLowerCase();
+    if (needle) {
+      out = out.filter((r) =>
+        [r.name, r.displayName, r.relativePath, r.sitePath, r.r2Key].some((f) => String(f ?? '').toLowerCase().includes(needle)),
+      );
+    }
+    return out;
+  }, [rows, group, topFolder, subFolder, q]);
+
+  const folderCounts = useMemo(() => {
+    const top = new Map<string, number>();
+    for (const r of rows) top.set(topOf(folderOf(r)), (top.get(topOf(folderOf(r))) ?? 0) + 1);
+    const subs = new Map<string, number>();
+    if (topFolder !== 'all') {
+      for (const r of rows) {
+        const f = folderOf(r);
+        if (topOf(f) === topFolder) subs.set(f || '(no folder)', (subs.get(f || '(no folder)') ?? 0) + 1);
+      }
+    }
+    const sort = (m: Map<string, number>) => [...m.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+    return { top: sort(top), subs: sort(subs) };
+  }, [rows, topFolder]);
+
   const stats = useMemo(() => {
-    const unused = rows.filter(isUnused);
-    const missingAlt = rows.filter(needsAlt);
+    const unused = scoped.filter(isUnused);
+    const missingAlt = scoped.filter(needsAlt);
     const byKey = new Map<string, AssetRow[]>();
-    rows.forEach((r) => {
+    scoped.forEach((r) => {
       const k = `${r.name ?? ''}|${r.extension ?? ''}`.toLowerCase();
       if (!k) return;
       byKey.set(k, [...(byKey.get(k) ?? []), r]);
     });
     const duplicates = [...byKey.values()].filter((g) => g.length > 1);
     return {
-      total: rows.length,
+      total: scoped.length,
       unused: unused.length,
       missingAlt: missingAlt.length,
       duplicates: duplicates.length,
     };
-  }, [rows]);
+  }, [scoped]);
 
   const filtered = useMemo(() => {
-    let out = rows;
-    if (group !== 'all') {
-      out = out.filter((r) => (r.assetGroup || '').toLowerCase() === group.toLowerCase());
-    }
-    const needle = q.trim().toLowerCase();
-    if (needle) {
-      out = out.filter((r) =>
-        [r.name, r.displayName, r.relativePath, r.sitePath, r.r2Key]
-          .some((f) => String(f ?? '').toLowerCase().includes(needle))
-      );
-    }
+    let out = scoped;
     switch (filter) {
       case 'unused':
         out = out.filter(isUnused);
@@ -185,7 +217,7 @@ function MediaToolContent() {
         break;
       case 'duplicates': {
         const byKey = new Map<string, string[]>();
-        rows.forEach((r) => {
+        scoped.forEach((r) => {
           const k = `${r.name}|${r.extension}`.toLowerCase();
           byKey.set(k, [...(byKey.get(k) ?? []), r._id]);
         });
@@ -200,7 +232,7 @@ function MediaToolContent() {
         break;
     }
     return out;
-  }, [rows, group, q, filter]);
+  }, [scoped, filter]);
 
   const updateAlt = useCallback((id: string, alt: string) => {
     setRows((arr) => arr.map((r) => (r._id === id ? { ...r, alt } : r)));
@@ -337,6 +369,25 @@ function MediaToolContent() {
               <option value="Framer">Framer</option>
             </Select>
             <Select
+              value={topFolder}
+              onChange={(e) => { setTopFolder(e.currentTarget.value); setSubFolder('all'); }}
+              aria-label="Folder"
+              style={{ minWidth: 150 }}
+            >
+              <option value="all">All folders ({rows.length})</option>
+              {folderCounts.top.map(([f, n]) => (
+                <option key={f} value={f}>{f}/ ({n})</option>
+              ))}
+            </Select>
+            {topFolder !== 'all' && folderCounts.subs.length > 1 && (
+              <Select value={subFolder} onChange={(e) => setSubFolder(e.currentTarget.value)} aria-label="Sub-folder" style={{ minWidth: 200, maxWidth: 320 }}>
+                <option value="all">All in {topFolder}/ ({folderCounts.subs.reduce((a, [, n]) => a + n, 0)})</option>
+                {folderCounts.subs.map(([f, n]) => (
+                  <option key={f} value={f}>{f.startsWith(topFolder + '/') ? f.slice(topFolder.length + 1) : f} ({n})</option>
+                ))}
+              </Select>
+            )}
+            <Select
               value={view}
               onChange={(e) => setView(e.currentTarget.value as any)}
               style={{ minWidth: 100 }}
@@ -394,7 +445,7 @@ function MediaToolContent() {
         ) : filtered.length === 0 ? (
           <Card padding={5} style={{ textAlign: 'center' }}>
             <Text size={2} weight="bold">No media assets match your query</Text>
-            <Text size={1} muted style={{ marginTop: 4 }}>Try clearing search keywords or selecting "All Groups".</Text>
+            <Text size={1} muted style={{ marginTop: 4 }}>Try clearing search keywords, or set Folder and Group back to "All".</Text>
           </Card>
         ) : view === 'grid' ? (
           <Flex gap={3} align="flex-start">
@@ -436,7 +487,7 @@ function MediaToolContent() {
                         {label}
                       </div>
                       <Flex justify="space-between" align="center" gap={2} style={{ marginTop: 4 }}>
-                        <span style={{ fontFamily: 'monospace', fontSize: 11, lineHeight: 1.4, color: MUTED }}>.{ext || 'file'}</span>
+                        <span title={folderOf(r)} style={{ fontFamily: 'monospace', fontSize: 11, lineHeight: 1.4, color: MUTED, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>{folderOf(r) ? `${folderOf(r)}/` : ''}.{ext || 'file'}</span>
                         {r.assetGroup && <Badge tone="default" fontSize={0}>{r.assetGroup}</Badge>}
                       </Flex>
                     </div>
@@ -454,7 +505,7 @@ function MediaToolContent() {
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'Inter, system-ui, sans-serif' }}>
                 <thead>
                   <tr style={{ background: WELL, position: 'sticky', top: 0, zIndex: 1 }}>
-                    {['Name', 'Group', 'Type', 'Status', 'Alt', 'Site Path', 'Action'].map((h) => (
+                    {['Name', 'Folder', 'Type', 'Status', 'Alt', 'Site Path', 'Action'].map((h) => (
                       <th key={h} style={{ padding: '8px 12px', textAlign: 'left', borderBottom: `1px solid ${BORDER}`, fontWeight: 600, whiteSpace: 'nowrap', color: MUTED }}>
                         {h}
                       </th>
@@ -467,7 +518,7 @@ function MediaToolContent() {
                       <td style={{ padding: '8px 12px' }}>
                         <Text size={1} weight="semibold">{r.displayName || r.name || r._id}</Text>
                       </td>
-                      <td style={{ padding: '8px 12px' }}><Text size={1} muted>{r.assetGroup || '—'}</Text></td>
+                      <td style={{ padding: '8px 12px' }}><Text size={0} muted style={{ fontFamily: 'monospace', wordBreak: 'break-all' }}>{folderOf(r) || '—'}</Text></td>
                       <td style={{ padding: '8px 12px' }}><Text size={1} muted>{r.mediaType || '—'}</Text></td>
                       <td style={{ padding: '8px 12px' }}>
                         {r.status === 'Archived' ? <Badge tone="critical">Archived</Badge> : <Badge tone="positive">Active</Badge>}
