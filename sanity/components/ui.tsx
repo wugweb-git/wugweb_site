@@ -1,7 +1,7 @@
 import { Badge, Box, Flex, Text, Tooltip } from '@sanity/ui';
 import type { ReactNode } from 'react';
 import { initials, relativeTime } from '../lib/format';
-import { seoLevel, type Severity } from '../lib/health';
+import { seoLevel, COMPLETENESS_HELP, type Severity } from '../lib/health';
 
 /* ─────────────────────────── Status badge ─────────────────────────── */
 
@@ -64,7 +64,7 @@ const SEO_TONE: Record<Severity, 'positive' | 'caution' | 'critical'> = {
 export function SeoBadge({ score }: { score: number }) {
   const { label, severity } = seoLevel(score);
   return (
-    <Tooltip content={`SEO score: ${score}/100 — ${label}`} placement="top">
+    <Tooltip content={`Completeness: ${score}/100 — ${label}. ${COMPLETENESS_HELP}`} placement="top">
       <Badge tone={SEO_TONE[severity]} fontSize={1}>{score}</Badge>
     </Tooltip>
   );

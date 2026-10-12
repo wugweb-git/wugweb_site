@@ -15,7 +15,7 @@ Built on **TanStack Table v9** (`@tanstack/react-table`) + `@sanity/ui`, MIT/fre
 - **Hover quick actions**, **row context menu** (open/copy ID/copy slug/pin/export row)
 - **Pagination** (25/50 by density), **density toggle** (comfortable/compact)
 - **Dark mode** via Sanity UI CSS vars, **empty/loading/error states**, CSV export
-- **Favorites/pin** per table (localStorage), **draft/published badge**, **SEO score badge**
+- **Favorites/pin** per table (localStorage), **draft/published badge**, **Completeness badge** (fields filled; not a ranking-quality score)
 
 ### 2. Per-type table configs (`sanity/lib/tableConfigs.tsx`)
 GROQ + column defs for all 15 doc types (post, caseStudy, service, client, engagement, person, testimonial, asset, taxonomy, platformProfile, industry, singletonPage, contactSubmission, syncStatus, **redirect**). Draft-aware merge via `lib/groq.ts`.
@@ -26,7 +26,7 @@ Custom `S.component` panes wired into Structure Builder — Blog/Case Studies/Se
 ### 4. Tools (`sanity/tools/`)
 - **Dashboard** — website health (totals, drafts, missing SEO/cover, sync errors, media issues), content-by-type audit, quick actions, system status
 - **Tables** — all doc types as data grids (rebuilt on DataTable)
-- **SEO Manager** — per-doc score 0–100, meta/OG/schema checkmarks, **Generate** (prefills seoTitle/seoDescription from title + body)
+- **SEO Manager** — per-doc **Completeness** 0–100 (fields filled, not ranking quality) plus **Checks passed** (rule-based: length, slug, alt text, duplicates), meta/OG/schema checkmarks, **Generate** (prefills seoTitle/seoDescription from title + body)
 - **Media** — grid/list toggle, filters (unused, missing alt, duplicates, oversized, archived), group filter, search, thumbnails
 - **Search** — field-scoped query builder (`title:` `slug:` `category:` `client:` `status:` `author:` `updated:` `type:`), saved + recent searches
 

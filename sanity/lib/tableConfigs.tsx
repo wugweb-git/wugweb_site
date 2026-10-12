@@ -14,8 +14,8 @@ import { formatDate } from './format';
 const TITLE: ColumnDef = { key: 'title', label: 'Title', width: 260, pinned: true };
 const SEO: ColumnDef = {
   key: '__seo',
-  label: 'SEO',
-  width: 70,
+  label: 'Completeness',
+  width: 110,
   sortable: false,
   render: (row) => <SeoBadge score={seoScore(row)} />,
 };
