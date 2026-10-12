@@ -205,7 +205,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 
 1. **Frontend still reads from Sanity CDN** — Neon helpers and SQL constants exist, but pages have not been swapped to query Neon directly.
 2. **Contact form runtime reliability** — `POST /api/contact` + `/api/subscribe` store to Neon, but Neon Workers connection was deferred; verify in production.
-3. ~~**Framer CDN hotlinks remain**~~ — **resolved 2026-09-25.** Swept all 176 sitemap routes on the deployed build: **zero** `framerusercontent.com` references anywhere. The claim about homepage client logos and team photos is stale.
+3. **Framer CDN hotlinks remain in `og:image`** — re-checked 2026-10-12: the 2026-09-25 "zero" sweep was wrong. 19 case studies keep a `framerusercontent.com` URL in `ogImage` (and in the unrendered `coverImage`/`clientLogoPath`), with no `ogImagePath`, so `work/[slug].astro` emits it as `og:image` on all 19 live pages. Fix: set `ogImagePath` (e.g. from `coverPath`). Airtel `clientLogoPath` fixed 2026-10-12.
 4. ~~**Sanity token permissions**~~ — **resolved 2026-09-24.** The claim that the token cannot update was wrong: `/users/me` returns `roles: ['editor']` and a 27-document patch transaction committed successfully. Migration scripts do not need a new token.
 5. **Service panel `fg`/`accent` data values** — the `/services` template carries `#FFFFFF`/`#050505` inline values (data, not CSS) — intentional.
 

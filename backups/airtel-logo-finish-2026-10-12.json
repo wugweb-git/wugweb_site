@@ -1,0 +1,732 @@
+{
+  "takenAt": "2026-10-12T18:27:45.474Z",
+  "docs": [
+    {
+      "_createdAt": "2026-08-04T11:26:01Z",
+      "_id": "asset-logo-airtelxstream",
+      "_rev": "S5EFnJjn0OdXSc45Pw7zHY",
+      "_type": "asset",
+      "_updatedAt": "2026-10-12T12:48:45Z",
+      "alt": "Airtel Xstream logo",
+      "assetGroup": "Brand",
+      "assetType": "Brand Asset",
+      "displayName": "Airtel Xstream Logo",
+      "extension": "png",
+      "fileName": "client-logo-8gyg.png",
+      "folder": "work/airtel-xstream-play",
+      "linkedClient": {
+        "_ref": "client-CLI-0031",
+        "_type": "reference"
+      },
+      "localExists": true,
+      "mediaType": "Image",
+      "name": "Airtel Xstream Logo",
+      "owner": "both",
+      "publicUrl": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/airtel-xstream-play/client-logo-8gyg.png",
+      "r2Key": "assets/work/airtel-xstream-play/client-logo-8gyg.png",
+      "r2Synced": true,
+      "relativePath": "work/airtel-xstream-play/client-logo-8gyg.png",
+      "sitePath": "/assets/work/airtel-xstream-play/client-logo-8gyg.png",
+      "slug": {
+        "_type": "slug",
+        "current": "logo-airtelxstream"
+      },
+      "status": "Active",
+      "usage": "Logo",
+      "usedBy": [
+        {
+          "_key": "2a9f1dd890f1",
+          "_type": "assetUsage",
+          "docId": "client-CLI-0035",
+          "docType": "client",
+          "field": "logoPath",
+          "kind": "content",
+          "label": "client: Airtel XSafe"
+        },
+        {
+          "_key": "2ca91067491a",
+          "_type": "assetUsage",
+          "field": "literal",
+          "kind": "code",
+          "label": "src/pages/index.astro"
+        },
+        {
+          "_key": "4659d17fc4b6",
+          "_type": "assetUsage",
+          "docId": "client-CLI-0031",
+          "docType": "client",
+          "field": "logoPath",
+          "kind": "content",
+          "label": "client: Airtel Xstream"
+        }
+      ],
+      "usedByCount": 3
+    },
+    {
+      "_createdAt": "2026-10-12T11:43:49Z",
+      "_id": "asset-logos-airtel-xsafe-png",
+      "_rev": "S5EFnJjn0OdXSc45Pw7zHY",
+      "_type": "asset",
+      "_updatedAt": "2026-10-12T12:48:45Z",
+      "alt": "Airtel XSafe logo",
+      "assetGroup": "Brand",
+      "assetType": "Brand Asset",
+      "displayName": "Airtel XSafe Logo",
+      "extension": "png",
+      "fileName": "client-logo-c6rj.png",
+      "folder": "work/airtel-xsafe",
+      "localExists": true,
+      "mediaType": "Image",
+      "mimeType": "image/png",
+      "name": "Airtel XSafe Logo",
+      "owner": "both",
+      "ownerType": "Internal",
+      "publicUrl": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/airtel-xsafe/client-logo-c6rj.png",
+      "r2Key": "assets/work/airtel-xsafe/client-logo-c6rj.png",
+      "r2Synced": true,
+      "relativePath": "work/airtel-xsafe/client-logo-c6rj.png",
+      "sitePath": "/assets/work/airtel-xsafe/client-logo-c6rj.png",
+      "slug": {
+        "_type": "slug",
+        "current": "logos-airtel-xsafe-png"
+      },
+      "status": "Active",
+      "usage": "Logo"
+    },
+    {
+      "_createdAt": "2026-07-29T00:10:52Z",
+      "_id": "caseStudy-airtel-xsafe",
+      "_rev": "Zp6AkUkGK4usgMripfjkhj",
+      "_type": "caseStudy",
+      "_updatedAt": "2026-10-12T12:48:31Z",
+      "about": "Airtel Xsafe marks Airtel's significant entry into the smart home security landscape, offering a comprehensive suite of Wi-Fi-enabled surveillance and monitoring solutions. Crafted to instill profound peace of mind, Airtel Xsafe seamlessly integrates cutting-edge camera technology with intelligent features and secure cloud-based services, all effortlessly managed through a user-centric mobile application. Our core objective was to position Xsafe as a highly trusted, universally accessible, and indispensable home security solution within Airtel's expansive digital ecosystem.",
+      "aboutVideoPath": "https://wugweb.online/assets/work/Airtel%20Xsafe/Xsafe_about.mp4",
+      "aiKeywords": "Airtel Xsafe, Smart Home, IoT, Security, UX Design, Telecom",
+      "aiSummary": "Airtel Xsafe is Airtel's smart home security offering of Wi-Fi cameras, intelligent features and cloud services managed through a mobile app. Launching it meant building trust in a new service and explaining complex technology simply. Wugweb, with Dentsu Webchutney, designed the website with visual product storytelling, simplified feature communication, privacy and support messaging, and a clearer purchase flow aligned with Airtel's design system. The case study reports better product understanding and more subscriptions and purchases.",
+      "bodyContent": [
+        {
+          "_key": "about",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "about-child",
+              "_type": "span",
+              "text": "Positioning smart home security as a trusted, accessible pillar of the Airtel ecosystem."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "gallery-heading",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "gallery-heading-child",
+              "_type": "span",
+              "text": "Gallery"
+            }
+          ],
+          "markDefs": [],
+          "style": "h2"
+        },
+        {
+          "_key": "gal-0",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/cover-image-y42i.jpg"
+        },
+        {
+          "_key": "gal-1",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/challenge-image-1-bddw.jpg"
+        },
+        {
+          "_key": "gal-2",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/challenge-image-2-0ldr.jpg"
+        },
+        {
+          "_key": "gal-3",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/challenges-image-la0i.jpg"
+        },
+        {
+          "_key": "gal-4",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/conclusion-image-1-bgxm.jpg"
+        },
+        {
+          "_key": "gal-5",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/conclusion-image-2-08ud.jpg"
+        },
+        {
+          "_key": "gal-6",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/design-philosophy-image-1-25mz.jpg"
+        },
+        {
+          "_key": "gal-7",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/filler-image-2-bo7u.jpg"
+        },
+        {
+          "_key": "gal-8",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/filler-image-pt4q.jpg"
+        },
+        {
+          "_key": "gal-9",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/solution-image-1-9qu2.jpg"
+        },
+        {
+          "_key": "gal-10",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/solution-image-2-6es9.jpg"
+        },
+        {
+          "_key": "gal-11",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/solution-image-3-5685.jpg"
+        },
+        {
+          "_key": "gal-12",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/Xsafe-dp.mp4"
+        },
+        {
+          "_key": "gal-13",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/xsafe-about.mp4"
+        },
+        {
+          "_key": "gal-14",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/01-2.png"
+        },
+        {
+          "_key": "gal-15",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xsafe/Airtel-Xsafe-1-–-6.jpg"
+        }
+      ],
+      "canonicalUrl": "/work/airtel-xsafe",
+      "challenges": [
+        {
+          "body": "Users needed confidence in a new home security service.",
+          "title": "Trust & Credibility"
+        },
+        {
+          "body": "Advanced features were difficult to communicate simply.",
+          "title": "Complex Technology"
+        },
+        {
+          "body": "Journeys needed to move users from awareness to purchase.",
+          "title": "Conversion Optimization"
+        },
+        {
+          "body": "Each device’s value had to be clearly articulated.",
+          "title": "Product Differentiation"
+        }
+      ],
+      "client": "Airtel",
+      "clientLogoAlt": "Airtel logo",
+      "clientLogoPath": "https://framerusercontent.com/images/pzWcgnC2bNzR6IJq5n6Tc5OPM9c.png",
+      "clientRef": {
+        "_ref": "client-CLI-0031",
+        "_type": "reference"
+      },
+      "country": "India",
+      "coverAlt": "Airtel Xsafe – cover image",
+      "coverImage": "https://framerusercontent.com/images/n2osEMZA5qWXHAOip7pq3odPW4.jpg",
+      "coverPath": "/assets/work/airtel-xsafe/cover-image-y42i.jpg",
+      "designPhilosophy": "Empathy-Driven UX: Design reduced anxiety around home security decisions.\nVisualization as Education: UI acted as a learning tool for complex tech.\nSystem-Level Consistency: Seamless alignment with Airtel’s ecosystem built trust.",
+      "designPhilosophyVideoPath": "https://wugweb.online/assets/work/Airtel%20Xsafe/Xsafe_dp.mp4",
+      "disciplines": [
+        "Strategy",
+        "UX Design"
+      ],
+      "engagementType": "Client",
+      "featured": true,
+      "focusKeyword": "Airtel Xsafe smart home security",
+      "galleryPaths": [
+        "/assets/work/airtel-xsafe/xsafe-about.mp4",
+        "/assets/work/airtel-xsafe/Xsafe-dp.mp4",
+        "/assets/work/airtel-xsafe/challenge-image-1-bddw.jpg",
+        "/assets/work/airtel-xsafe/challenge-image-2-0ldr.jpg",
+        "/assets/work/airtel-xsafe/challenges-image-la0i.jpg",
+        "/assets/work/airtel-xsafe/conclusion-image-1-bgxm.jpg",
+        "/assets/work/airtel-xsafe/conclusion-image-2-08ud.jpg",
+        "/assets/work/airtel-xsafe/design-philosophy-image-1-25mz.jpg",
+        "/assets/work/airtel-xsafe/filler-image-2-bo7u.jpg",
+        "/assets/work/airtel-xsafe/filler-image-pt4q.jpg",
+        "/assets/work/airtel-xsafe/solution-image-1-9qu2.jpg",
+        "/assets/work/airtel-xsafe/solution-image-2-6es9.jpg",
+        "/assets/work/airtel-xsafe/solution-image-3-5685.jpg"
+      ],
+      "impact": [
+        {
+          "body": "Users grasped features and use cases easily.",
+          "title": "Improved Product Understanding"
+        },
+        {
+          "body": "Transparency increased confidence in the service.",
+          "title": "Stronger Brand Trust"
+        },
+        {
+          "body": "Streamlined flows improved subscriptions and purchases.",
+          "title": "Higher Conversions"
+        },
+        {
+          "body": "Xsafe was positioned as a credible security solution.",
+          "title": "Market Authority"
+        }
+      ],
+      "industry": "Telecommunications, Smart Home",
+      "industryRef": {
+        "_ref": "industry-smart-home",
+        "_type": "reference"
+      },
+      "language": "en",
+      "ogImage": "https://framerusercontent.com/images/n2osEMZA5qWXHAOip7pq3odPW4.jpg",
+      "owner": "wugweb",
+      "partner": "Dentsu Webchutney",
+      "platform": "Website",
+      "projectType": "Marketing Website",
+      "publishedAt": "2024-06-15T00:00:00Z",
+      "readTime": 2,
+      "schemaType": "CreativeWork",
+      "seoDescription": "Explore how Wugweb designed Airtel Xsafe's trust-driven digital experience for connected home security solutions.",
+      "seoTitle": "Airtel Xsafe Case Study | Smart Home Security Experience",
+      "shortTitle": "Airtel Xsafe",
+      "slug": {
+        "_type": "slug",
+        "current": "airtel-xsafe"
+      },
+      "solutions": [
+        {
+          "body": "High-impact visuals communicated security and reliability.",
+          "title": "Visual Product Storytelling"
+        },
+        {
+          "body": "Icons and infographics translated technical specs.",
+          "title": "Simplified Feature Communication"
+        },
+        {
+          "body": "Highlighted privacy, encryption, and customer support.",
+          "title": "Trust Reinforcement"
+        },
+        {
+          "body": "Clear CTAs guided users to plans and subscriptions.",
+          "title": "Optimized Purchase Flow"
+        },
+        {
+          "body": "Guides and walkthroughs reduced adoption friction.",
+          "title": "Installation & Support Clarity"
+        },
+        {
+          "body": "Clean layouts adhered to Airtel’s design system.",
+          "title": "Brand-Aligned UI"
+        }
+      ],
+      "specialThanks": "Anurag Pandey",
+      "status": "Published",
+      "subtitle": "Positioning smart home security as a trusted, accessible pillar of the Airtel ecosystem.",
+      "summary": "Positioning smart home security as a trusted, accessible pillar of the Airtel ecosystem. With Dentsu Webchutney, Wugweb designed a trust-led website for Airtel Xsafe, Airtel's range of Wi-Fi smart home security and surveillance products.",
+      "tags": [
+        "Smart Home",
+        "Surveillance",
+        "Trust Design"
+      ],
+      "team": [
+        "Vedanshu Srivastava",
+        "Yuvraj",
+        "Prerna",
+        "Rahul",
+        "Anurag Pandey"
+      ],
+      "thumbnailPath": "/assets/work/airtel-xsafe/xsafe-about.mp4",
+      "thumbnailVideoPath": "https://wugweb.online/assets/work/Airtel%20Xsafe/Xsafe_thumb.mp4",
+      "timeline": "September 2023 – February 2024",
+      "title": "Airtel Xsafe – Securing Homes with Intuitive Digital Experiences",
+      "visibility": "Public",
+      "wordCount": 352,
+      "year": 2023
+    },
+    {
+      "_createdAt": "2026-07-29T00:10:53Z",
+      "_id": "caseStudy-airtel-xstream-play",
+      "_rev": "Zp6AkUkGK4usgMripfjkhj",
+      "_type": "caseStudy",
+      "_updatedAt": "2026-10-12T12:48:31Z",
+      "about": "Airtel Xstream Play consolidates India's fragmented digital entertainment landscape, bringing a multitude of streaming partners under one seamless roof. Wugweb's pivotal role was to design a compelling Airtel Website page for the \"Xstream Entertainment Festival.\" This page was crucial for effectively communicating the platform's vast offerings, unique value propositions, and diverse access models to a broad audience, driving engagement and subscriptions within Airtel's extensive digital ecosystem.",
+      "aboutVideoPath": "https://wugweb.online/assets/work/Airtel%20Xstream/Xstream_about.mp4",
+      "aiKeywords": "Airtel Xstream Play, OTT, Streaming, Entertainment UX, Telecom",
+      "aiSummary": "Airtel Xstream Play brings multiple streaming partners into one service. Wugweb, with Dentsu Webchutney, designed the Airtel web page for the Xstream Entertainment Festival, which had to explain aggregated content, prepaid-linked and location-based access, and a clear path to subscription. The page used upfront value messaging, transparent offer explanations, simplified access steps and layouts aligned with Airtel's design system, and served as a campaign acquisition touchpoint.",
+      "bodyContent": [
+        {
+          "_key": "about",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "about-child",
+              "_type": "span",
+              "text": "Consolidating a fragmented streaming landscape into a seamless digital festival."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "gallery-heading",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "gallery-heading-child",
+              "_type": "span",
+              "text": "Gallery"
+            }
+          ],
+          "markDefs": [],
+          "style": "h2"
+        },
+        {
+          "_key": "gal-0",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/cover-image-3pm9.jpg"
+        },
+        {
+          "_key": "gal-1",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/challenge-image-1-qyrc.jpg"
+        },
+        {
+          "_key": "gal-2",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/challenge-image-2-jr4r.jpg"
+        },
+        {
+          "_key": "gal-3",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/challenges-image-25bd.jpg"
+        },
+        {
+          "_key": "gal-4",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/conclusion-image-1-bcir.jpg"
+        },
+        {
+          "_key": "gal-5",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/conclusion-image-2-j5c9.jpg"
+        },
+        {
+          "_key": "gal-6",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/design-philosophy-image-1-1g5e.jpg"
+        },
+        {
+          "_key": "gal-7",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/design-philosophy-image-2-nx78.jpg"
+        },
+        {
+          "_key": "gal-8",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/design-philosophy-image-3-drqq.jpg"
+        },
+        {
+          "_key": "gal-9",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/filler-image-2-lra4.jpg"
+        },
+        {
+          "_key": "gal-10",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/filler-image-uwg8.png"
+        },
+        {
+          "_key": "gal-11",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/solution-image-1-wolf.jpg"
+        },
+        {
+          "_key": "gal-12",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/solution-image-2-wdl4.jpg"
+        },
+        {
+          "_key": "gal-13",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/styles-image-1-ctd5.png"
+        },
+        {
+          "_key": "gal-14",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/styles-image-2-2lht.png"
+        },
+        {
+          "_key": "gal-15",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/Xstream-about.mp4"
+        },
+        {
+          "_key": "gal-16",
+          "_type": "mediaUrl",
+          "alt": "",
+          "caption": "",
+          "url": "/assets/work/airtel-xstream-play/Xstream-dp.mp4"
+        }
+      ],
+      "canonicalUrl": "/work/airtel-xstream-play",
+      "challenges": [
+        {
+          "body": "Aggregated content benefits were hard to explain.",
+          "title": "Complex Value Proposition"
+        },
+        {
+          "body": "Users needed a clear path to subscription.",
+          "title": "Conversion Pressure"
+        },
+        {
+          "body": "Bundled and location-based unlocks needed clarity.",
+          "title": "Unique Access Models"
+        },
+        {
+          "body": "Diversity of content had to feel unified and accessible.",
+          "title": "Mass-Market Appeal"
+        }
+      ],
+      "client": "Airtel",
+      "clientLogoAlt": "Airtel logo",
+      "clientLogoPath": "https://framerusercontent.com/images/oaUduR6rRdObVDZj7LozZ5tC5E.png",
+      "clientRef": {
+        "_ref": "client-CLI-0031",
+        "_type": "reference"
+      },
+      "country": "India",
+      "coverAlt": "Airtel Xstream Play – cover image",
+      "coverImage": "https://framerusercontent.com/images/dtOtc5JXCF5DqbP4vykHWIzE.jpg",
+      "coverPath": "/assets/work/airtel-xstream-play/cover-image-3pm9.jpg",
+      "designPhilosophy": "Offer Simplification: UX clarity drove decision-making.\nEnergy-Driven UI: Visual vibrancy matched entertainment context.\nDigital Activation Focus: The page acted as a growth lever.",
+      "designPhilosophyVideoPath": "https://wugweb.online/assets/work/Airtel%20Xstream/Xstream_dp.mp4",
+      "disciplines": [
+        "Strategy",
+        "UX Design"
+      ],
+      "engagementType": "Client",
+      "featured": true,
+      "focusKeyword": "Airtel Xstream Play",
+      "galleryPaths": [
+        "/assets/work/airtel-xstream-play/Xstream-about.mp4",
+        "/assets/work/airtel-xstream-play/Xstream-dp.mp4",
+        "/assets/work/airtel-xstream-play/challenge-image-1-qyrc.jpg",
+        "/assets/work/airtel-xstream-play/challenge-image-2-jr4r.jpg",
+        "/assets/work/airtel-xstream-play/challenges-image-25bd.jpg",
+        "/assets/work/airtel-xstream-play/conclusion-image-1-bcir.jpg",
+        "/assets/work/airtel-xstream-play/conclusion-image-2-j5c9.jpg",
+        "/assets/work/airtel-xstream-play/design-philosophy-image-1-1g5e.jpg",
+        "/assets/work/airtel-xstream-play/design-philosophy-image-2-nx78.jpg",
+        "/assets/work/airtel-xstream-play/design-philosophy-image-3-drqq.jpg",
+        "/assets/work/airtel-xstream-play/filler-image-2-lra4.jpg",
+        "/assets/work/airtel-xstream-play/filler-image-uwg8.png",
+        "/assets/work/airtel-xstream-play/solution-image-1-wolf.jpg",
+        "/assets/work/airtel-xstream-play/solution-image-2-wdl4.jpg",
+        "/assets/work/airtel-xstream-play/styles-image-1-ctd5.png",
+        "/assets/work/airtel-xstream-play/styles-image-2-2lht.png"
+      ],
+      "impact": [
+        {
+          "body": "Users understood access models quickly.",
+          "title": "Improved Offer Clarity"
+        },
+        {
+          "body": "Clear CTAs supported subscription growth.",
+          "title": "Higher Conversion Potential"
+        },
+        {
+          "body": "Content breadth resonated nationally.",
+          "title": "Effective Value Communication"
+        },
+        {
+          "body": "Festival page drove engagement and adoption.",
+          "title": "Strong Campaign Asset"
+        }
+      ],
+      "industry": "Telecommunications, Media & Entertainment",
+      "industryRef": {
+        "_ref": "industry-entertainment",
+        "_type": "reference"
+      },
+      "language": "en",
+      "ogImage": "https://framerusercontent.com/images/dtOtc5JXCF5DqbP4vykHWIzE.jpg",
+      "owner": "wugweb",
+      "partner": "Dentsu Webchutney",
+      "platform": "Website",
+      "projectType": "Campaign Landing Page",
+      "publishedAt": "2024-06-15T00:00:00Z",
+      "readTime": 2,
+      "schemaType": "CreativeWork",
+      "seoDescription": "See how Wugweb unified entertainment discovery through an engaging streaming platform experience for Airtel users.",
+      "seoTitle": "Airtel Xstream Play Case Study | Streaming Platform Experience",
+      "shortTitle": "Airtel Xstream Play",
+      "slug": {
+        "_type": "slug",
+        "current": "airtel-xstream-play"
+      },
+      "solutions": [
+        {
+          "body": "Highlighted benefits and partner platforms upfront.",
+          "title": "Clear Value Messaging"
+        },
+        {
+          "body": "Explained prepaid-linked access clearly.",
+          "title": "Transparent Subscription Offers"
+        },
+        {
+          "body": "Communicated region-based entertainment benefits.",
+          "title": "Localized Content Unlocks"
+        },
+        {
+          "body": "Reduced friction in claiming subscriptions.",
+          "title": "Simplified Access Steps"
+        },
+        {
+          "body": "Used dynamic visuals to showcase variety.",
+          "title": "Vibrant Content Layouts"
+        },
+        {
+          "body": "Maintained consistency with Airtel’s ecosystem.",
+          "title": "Design System Alignment"
+        }
+      ],
+      "specialThanks": "Anurag",
+      "status": "Published",
+      "subtitle": "Consolidating a fragmented streaming landscape into a seamless digital festival.",
+      "summary": "Consolidating a fragmented streaming landscape into a seamless digital festival. Wugweb and Dentsu Webchutney designed the Xstream Entertainment Festival page for Airtel Xstream Play, explaining its streaming partners, offers and access models.",
+      "tags": [
+        "OTT",
+        "Engagement",
+        "Content Strategy"
+      ],
+      "team": [
+        "Vedanshu Srivastava",
+        "Yuvraj",
+        "Prerna",
+        "Divyanshu Pundir",
+        "Anurag Pandey"
+      ],
+      "thumbnailPath": "/assets/work/airtel-xstream-play/Xstream-thumb.mp4",
+      "thumbnailVideoPath": "https://wugweb.online/assets/work/Airtel%20Xstream/Xstream_thumb.mp4",
+      "timeline": "June, 2023",
+      "title": "Airtel Xstream Play – Showcasing India's Unified Digital Entertainment on the Web",
+      "visibility": "Public",
+      "wordCount": 319,
+      "year": 2023
+    },
+    {
+      "_createdAt": "2026-07-29T00:17:46Z",
+      "_id": "client-CLI-0031",
+      "_rev": "Zp6AkUkGK4usgMripfjmlD",
+      "_type": "client",
+      "_updatedAt": "2026-10-12T12:48:32Z",
+      "description": "",
+      "logoPath": "/assets/work/airtel-xstream-play/client-logo-8gyg.png",
+      "name": "Airtel Xstream",
+      "owner": "wugweb",
+      "slug": {
+        "_type": "slug",
+        "current": "airtel-xstream"
+      },
+      "tags": [
+        "Brand"
+      ],
+      "website": ""
+    },
+    {
+      "_createdAt": "2026-07-29T00:17:42Z",
+      "_id": "client-CLI-0035",
+      "_rev": "Zp6AkUkGK4usgMripfjmlD",
+      "_type": "client",
+      "_updatedAt": "2026-10-12T12:48:32Z",
+      "description": "",
+      "logoPath": "/assets/work/airtel-xsafe/client-logo-c6rj.png",
+      "name": "Airtel XSafe",
+      "owner": "wugweb",
+      "showInLogoBand": true,
+      "slug": {
+        "_type": "slug",
+        "current": "airtel-xsafe"
+      },
+      "tags": [
+        "Brand"
+      ],
+      "website": ""
+    }
+  ]
+}

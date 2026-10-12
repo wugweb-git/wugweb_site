@@ -9,6 +9,12 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed — Airtel logos finished; blog cover copies (2026-10-12)
+- `scripts/finish-airtel-logos.mjs`: `client-CLI-0031`/`0035` `logoPath`, both Airtel case studies' `clientLogoPath` (was a `framerusercontent.com` URL) and the asset records `asset-logo-airtelxstream`/`asset-logos-airtel-xsafe-png` now point at `logos/airtel-*.png` (alt kept). A later repoint pass had moved the clients back to `work/<slug>/client-logo-*.png`. Backup: `backups/airtel-logo-finish-2026-10-12.json`.
+- `caseStudy-airtel-xsafe.clientRef` pointed at the Xstream client, so `/work/airtel-xsafe` showed the Xstream logo; now `client-CLI-0035`.
+- R2 copies (originals kept): `cover.png` + `og.png` for `how-is-video-commerce-…` and `how-exactly-do-product-manager-…`, and `cover.png` for `use-this-easy-checklist-…` (closes the one failed manifest row). All 5 return 200.
+- `scripts/owner-delete-old-vsb-banners.sh` (not run): deletes the 10 VSB banners under `assets/unsorted/` (byte-identical to their `blog/<slug>/` copies) and their 10 asset records (backup `backups/vsb-banner-records-2026-10-12.json`).
+
 ### Added — blog images imported to R2 (2026-10-12)
 - `scripts/upload-blog-manifest.mjs` uploaded the Notion blog image manifest (237 rows) to `wugweb-assets` under `blog/<slug>/...` keys: 236 live and verified 200. Additive only: no key overwritten, nothing deleted (the old `assets/blog/...` objects are still there). Results: `backups/blog-r2-upload-results.csv`.
 - Failed: `blog/use-this-easy-checklist-to-ensure-a-smooth-design-handoff/cover.png` — its source URL in the manifest is truncated (no extension) and returns 404.
