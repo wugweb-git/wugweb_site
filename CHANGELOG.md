@@ -20,6 +20,9 @@ and this project adheres to Semantic Versioning.
 ### Removed — unused Studio dependencies (2026-10-13)
 - `@sanity/dashboard`, which nothing imported, and `@sanity/code-input`, which no schema uses as `type: 'code'` (0 such blocks in live data). 82 packages removed. `table()` stays.
 
+### Removed — posts deleted from Notion (2026-10-13)
+- Owner ran `scripts/owner-delete-notion-blog-sync.mjs`: the 9 Sanity-only posts, 78 R2 keys (`assets/blog/` duplicates and the rewrite cover copies) and 70 asset records deleted. Related-post links to those posts were removed from 8 kept posts first (backup `backups/relatedposts-pre-unlink-2026-10-13.json`).
+
 ### Changed — 22 body images renamed (2026-10-13)
 - `assets/blog/<slug>/body-NN.*` for 0072, 0073 and 0099 copied to `blog/<slug>/NN-name.*` (MD5-verified). Owner ran `scripts/owner-delete-blog-body22.mjs`: 22 originals and their 22 asset records deleted (backup `backups/body22-asset-records-2026-10-13.json`).
 
