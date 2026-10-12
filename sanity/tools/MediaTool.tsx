@@ -119,16 +119,13 @@ function MediaToolContent() {
   const [undoStack, setUndoStack] = useState<UndoEntry[]>([]);
   const pushUndo = useCallback((e: UndoEntry) => setUndoStack((s) => [...s, e].slice(-20)), []);
   const popUndo = useCallback(() => {
-    let popped: UndoEntry | undefined;
-    setUndoStack((s) => {
-      popped = s[s.length - 1];
-      return s.slice(0, -1);
-    });
-    return popped;
+    setUndoStack((s) => s.slice(0, -1));
   }, []);
 
-  const load = useCallback(async () => {
-    setLoading(true);
+  // `silent` refreshes the data without swapping the page for a loading card, so the
+  // inspector (and any open confirm step) survives an assign / unassign.
+  const load = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
     setError(null);
     try {
       const data = await client.fetch<{ assets: AssetRow[]; total: number }>(QUERY);
@@ -276,7 +273,7 @@ function MediaToolContent() {
             undo={undoStack}
             pushUndo={pushUndo}
             popUndo={popUndo}
-            onChanged={load}
+            onChanged={() => load(true)}
           />
         </Stack>
       </Card>
@@ -330,7 +327,7 @@ function MediaToolContent() {
               <option value="grid">Grid View</option>
               <option value="list">List View</option>
             </Select>
-            <Button text="Refresh" icon={RefreshIcon} mode="ghost" onClick={load} />
+            <Button text="Refresh" icon={RefreshIcon} mode="ghost" onClick={() => load()} />
           </Flex>
         </Flex>
 
@@ -375,7 +372,7 @@ function MediaToolContent() {
         ) : error ? (
           <Card padding={4} tone="critical" radius={2}>
             <Text size={1}>{error}</Text>
-            <Button text="Retry" mode="ghost" onClick={load} style={{ marginTop: 8 }} />
+            <Button text="Retry" mode="ghost" onClick={() => load()} style={{ marginTop: 8 }} />
           </Card>
         ) : filtered.length === 0 ? (
           <Card padding={5} style={{ textAlign: 'center' }}>

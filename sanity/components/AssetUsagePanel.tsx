@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Badge, Button, Card, Flex, Select, Stack, Text, TextInput, useToast } from '@sanity/ui';
 import {
   ASSIGN_TARGETS,
@@ -44,8 +44,16 @@ interface Props {
   client: any;
   undo: UndoEntry[];
   pushUndo: (e: UndoEntry) => void;
-  popUndo: () => UndoEntry | undefined;
+  popUndo: () => void;
   onChanged: () => void;
+}
+
+/** Sanity's revision-conflict error is cryptic; say what to do. */
+function friendly(e: any): string {
+  const m = String(e?.message || e || 'Unknown error');
+  if (/revision|conflict|ifRevisionID/i.test(m)) return 'The document changed while you were working. Reload the list and try again.';
+  if (/permission|unauthor|forbidden/i.test(m)) return 'You do not have permission to edit this document.';
+  return m;
 }
 
 const draftId = (id: string) => `drafts.${id.replace(/^drafts\./, '')}`;
@@ -53,6 +61,9 @@ const publishedId = (id: string) => id.replace(/^drafts\./, '');
 
 export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChanged }: Props) {
   const toast = useToast();
+  // Keep the latest toast in a ref so effects never re-run just because the context object changed.
+  const toastRef = useRef(toast);
+  toastRef.current = toast;
   const [usedBy, setUsedBy] = useState<UsageEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
@@ -77,11 +88,11 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
       const doc = await client.fetch(`*[_id == $id][0]{ usedBy }`, { id: asset._id });
       setUsedBy(Array.isArray(doc?.usedBy) ? doc.usedBy : []);
     } catch (e: any) {
-      toast.push({ status: 'error', title: 'Could not load usage', description: e?.message });
+      toastRef.current.push({ status: 'error', title: 'Could not load usage', description: friendly(e) });
     } finally {
       setLoading(false);
     }
-  }, [client, asset._id, toast]);
+  }, [client, asset._id]);
 
   useEffect(() => {
     setConfirm(null);
@@ -98,6 +109,7 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
 
   // Document search (debounced).
   useEffect(() => {
+    let live = true;
     const t = setTimeout(async () => {
       try {
         const q = query.trim();
@@ -107,12 +119,15 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
             : `*[_type == $t && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0...10]{ _id, "label": coalesce(title, name, client, pageId, slug.current, _id) }`,
           { t: type, q: `${q}*` },
         );
-        setResults(rows ?? []);
+        if (live) setResults(rows ?? []);
       } catch {
-        setResults([]);
+        if (live) setResults([]);
       }
     }, 250);
-    return () => clearTimeout(t);
+    return () => {
+      live = false;
+      clearTimeout(t);
+    };
   }, [client, type, query]);
 
   // Show what the chosen string field currently holds, so a replace is never a surprise.
@@ -151,8 +166,8 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
 
   const unassign = async (docId: string) => {
     setBusy(true);
+    const docs: UndoEntry['docs'] = [];
     try {
-      const docs: UndoEntry['docs'] = [];
       for (const id of [publishedId(docId), draftId(docId)]) {
         const doc = await client.getDocument(id);
         if (!doc) continue;
@@ -176,7 +191,9 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
       toast.push({ status: 'success', title: 'Unassigned', description: 'Removed from the document. Undo is available.' });
       onChanged();
     } catch (e: any) {
-      toast.push({ status: 'error', title: 'Unassign failed', description: e?.message });
+      // If the published doc was patched but the draft failed, the change is real: record it so Undo works.
+      if (docs.length) pushUndo({ title: `Partly unassigned from ${docId}`, assetId: asset._id, usedByBefore: usedBy, docs });
+      toast.push({ status: 'error', title: 'Unassign failed', description: friendly(e) });
     } finally {
       setBusy(false);
       setConfirm(null);
@@ -191,16 +208,19 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
       return;
     }
     setBusy(true);
+    const docs: UndoEntry['docs'] = [];
     try {
-      const docs: UndoEntry['docs'] = [];
+      let found = 0;
       for (const id of [publishedId(target._id), draftId(target._id)]) {
         const doc = await client.getDocument(id);
         if (!doc) continue;
+        found++;
         const nextValue = assignedValue(field, doc[field.key], path);
         if (JSON.stringify(nextValue) === JSON.stringify(doc[field.key])) continue;
         await client.patch(id).ifRevisionId(doc._rev).set({ [field.key]: nextValue }).commit();
         docs.push({ id, before: { [field.key]: doc[field.key] }, touched: [field.key] });
       }
+      if (!found) throw new Error('That document no longer exists.');
       const entry: UsageEntry = {
         _key: randomKey(),
         _type: 'assetUsage',
@@ -221,7 +241,8 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
       setConfirm(null);
       onChanged();
     } catch (e: any) {
-      toast.push({ status: 'error', title: 'Assign failed', description: e?.message });
+      if (docs.length) pushUndo({ title: `Partly assigned to ${target.label}`, assetId: asset._id, usedByBefore: usedBy, docs });
+      toast.push({ status: 'error', title: 'Assign failed', description: friendly(e) });
     } finally {
       setBusy(false);
     }
@@ -252,7 +273,7 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
       toast.push({ status: 'success', title: 'Undone', description: last.title });
       onChanged();
     } catch (e: any) {
-      toast.push({ status: 'error', title: 'Undo failed', description: e?.message });
+      toast.push({ status: 'error', title: 'Undo failed', description: friendly(e) });
     } finally {
       setBusy(false);
     }
