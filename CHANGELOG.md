@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — asset reorganisation plan rule (2026-10-12)
+- `scripts/plan-asset-reorg.mjs`: page-owned media now targets `assets/site/<pageId>/` (no more `about/` or flat `site/`); the 21 existing `assets/about/` files are included as moves to `site/about/`. Plan only; nothing applied.
+
 ### Fixed — Airtel logos (2026-10-12)
 - Both the **Airtel XSafe** and **Airtel Xstream** client docs pointed at the XSafe logo (`logos/client-logo-c6rj.png`); Xstream's own file is `client-logo-8gyg.png`. Copied (never overwritten) to `assets/logos/airtel-xsafe.png` and `airtel-xstream.png`, locally and in R2 (2 Class A puts), then repointed both clients (no case study referenced either file), the mis-pointed asset record `asset-logo-airtelxstream`, and `src/pages/index.astro`. New asset record for XSafe; alt "Airtel XSafe logo" / "Airtel Xstream logo". Backup: `backups/airtel-logo-fix-2026-10-12.json`; script: `scripts/fix-airtel-logos.mjs`.
 - Old keys and local files are untouched. `scripts/owner-delete-old-airtel-logo-keys.sh` is for the owner to run; the assistant has not run it.

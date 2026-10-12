@@ -1,47 +1,51 @@
 # Asset reorganisation plan (PLAN ONLY, nothing moved)
 
-Generated 2026-10-12T11:44:49.680Z. 412 files, 344.3 MiB under framer, uncode, more. 919 Sanity docs (incl. drafts) and 83 code files scanned. 1 templated /assets/${…} literals in src/ cannot be resolved statically.
+Generated 2026-10-12T11:46:09.289Z. 433 files, 351.7 MiB under framer, uncode, more, about. 919 Sanity docs (incl. drafts) and 83 code files scanned. 1 templated /assets/${…} literals in src/ cannot be resolved statically.
 
 ## Per source folder
 - framer/: 252 files, 249.9 MiB, unreferenced 38
 - uncode/: 140 files, 76.4 MiB, unreferenced 31
 - more/: 20 files, 18.0 MiB, unreferenced 5
+- about/: 21 files, 7.4 MiB, unreferenced 0
 
 ## Counts per target folder
 - work: 317 files, 288.4 MiB
 - (unreferenced): 74 files, 43.6 MiB
-- site: 10 files, 6.4 MiB
-- about: 5 files, 5.7 MiB
+- site: 36 files, 19.5 MiB
 - logos: 4 files, 0.0 MiB
 - blog: 2 files, 0.1 MiB
+
+## site/ breakdown (page media, one folder per pageId)
+- site/about/: 26 rows (21 from existing about/)
+- site/home/: 10 rows (0 from existing about/)
+
+Shared targets (identical bytes, copy once): 4 rows. about-message.mp4 and its poster match by hash, so the existing-key decision holds: one copy at site/about/, both old keys repoint to it.
 
 ## By owner type
 - caseStudy: 317
 - unreferenced: 74
-- page: 14
+- page: 35
 - client: 4
 - post: 2
 - src: 1
 
-## Collisions: 2
-- assets/more/about/about-message-poster.webp -> assets/about/about-message-poster.webp (exists in tree)
-- assets/more/about/about-message.mp4 -> assets/about/about-message.mp4 (exists in tree)
+## Collisions: 0
 
 ## Unsure: 12
 - assets/more/about/about-message-poster.webp: poster of about-message.mp4; mixed owners: page+code; also referenced in src/
 - assets/more/about/about-message.mp4: mixed owners: page+code; also referenced in src/
-- assets/more/home/brand-strategy-poster.webp: poster of brand-strategy.mp4; proposes new site/ folder; mixed owners: page+code; also referenced in src/
-- assets/more/home/brand-strategy.mp4: proposes new site/ folder; mixed owners: page+code; also referenced in src/
-- assets/more/home/experience-design-poster.webp: poster of experience-design.mp4; proposes new site/ folder; mixed owners: page+code; also referenced in src/
-- assets/more/home/experience-design.mp4: proposes new site/ folder; mixed owners: page+code; also referenced in src/
-- assets/more/home/home-poster.webp: referenced by src/ only: keep in place or move to site/
-- assets/more/home/home.mp4: proposes new site/ folder; mixed owners: page+code; also referenced in src/
-- assets/more/home/martech-genai-poster.webp: poster of martech-genai.mp4; proposes new site/ folder; mixed owners: page+code; also referenced in src/
-- assets/more/home/martech-genai.mp4: proposes new site/ folder; mixed owners: page+code; also referenced in src/
-- assets/more/home/web-app-development-poster.webp: poster of web-app-development.mp4; proposes new site/ folder; mixed owners: page+code; also referenced in src/
-- assets/more/home/web-app-development.mp4: proposes new site/ folder; mixed owners: page+code; also referenced in src/
+- assets/more/home/brand-strategy-poster.webp: poster of brand-strategy.mp4; mixed owners: page+code; also referenced in src/
+- assets/more/home/brand-strategy.mp4: mixed owners: page+code; also referenced in src/
+- assets/more/home/experience-design-poster.webp: poster of experience-design.mp4; mixed owners: page+code; also referenced in src/
+- assets/more/home/experience-design.mp4: mixed owners: page+code; also referenced in src/
+- assets/more/home/home-poster.webp: referenced by src/ only; page inferred from folder more/home/
+- assets/more/home/home.mp4: mixed owners: page+code; also referenced in src/
+- assets/more/home/martech-genai-poster.webp: poster of martech-genai.mp4; mixed owners: page+code; also referenced in src/
+- assets/more/home/martech-genai.mp4: mixed owners: page+code; also referenced in src/
+- assets/more/home/web-app-development-poster.webp: poster of web-app-development.mp4; mixed owners: page+code; also referenced in src/
+- assets/more/home/web-app-development.mp4: mixed owners: page+code; also referenced in src/
 
-## Byte-identical to a file elsewhere in the tree: 25 (17.7 MiB)
+## Byte-identical to a file elsewhere in the tree: 24 (12.1 MiB)
 Copying these would add R2 storage for no reason; the apply step could repoint at the existing key instead.
 
 ## Unreferenced: 74 files, 43.6 MiB

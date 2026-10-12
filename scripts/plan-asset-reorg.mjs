@@ -16,7 +16,9 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ASSETS = path.join(ROOT, 'public', 'assets');
-const SOURCE_DIRS = ['framer', 'uncode', 'more'];
+const SOURCE_DIRS = ['framer', 'uncode', 'more', 'about'];
+// Rule: page media -> site/<pageId>/ (pageId = singletonPage.pageId), case study media -> work/<slug>/,
+// post media -> blog/, client logos -> logos/. Existing assets/about/* moves to site/about/ too.
 
 const dot = existsSync(path.join(ROOT, '.env'))
   ? Object.fromEntries(readFileSync(path.join(ROOT, '.env'), 'utf8').split('\n').filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => { const i = l.indexOf('='); return [l.slice(0, i).trim(), l.slice(i + 1).trim().replace(/^["']|["']$/g, '')]; }))
@@ -116,6 +118,8 @@ for (const r of allDisk) {
   if (wantedHashes.has(h)) identicalElsewhere.set(h, [...(identicalElsewhere.get(h) || []), r]);
 }
 
+const pageIds = new Set((await client.fetch(`*[_type=="singletonPage"].pageId`)).filter(Boolean));
+
 // ── Classification ──────────────────────────────────────────────────────────
 const clientSlugById = new Map();
 for (const c of await client.fetch(`*[_type=="client"]{_id,name,"slug":slug.current}`)) clientSlugById.set(c._id.replace(/^drafts\./, ''), c.slug || slugify(c.name || c._id));
@@ -140,6 +144,10 @@ const classify = (rel) => {
   const note = [];
   let owner_type = 'unreferenced', owner_slug = '', target = '', unsure = false;
 
+  if (rel.startsWith('about/')) {
+    // Already a page folder: moves wholesale to site/about/, whatever references it.
+    return { owner_type: 'page', owner_slug: 'about', target: `site/about/${rel.slice('about/'.length)}`, unsure: kinds.some((k) => ['caseStudy', 'post', 'client'].includes(k)), note: 'existing about/ file' + (kinds.length ? `; referenced by ${kinds.join('+')}` : '; unreferenced') };
+  }
   if (!rs.length) return { owner_type, owner_slug, target, unsure, note: '' };
 
   if (cs.length >= 1) {
@@ -156,14 +164,20 @@ const classify = (rel) => {
     if (clients.length > 1) { unsure = true; note.push('shared by several clients'); }
   } else if (people.length >= 1 && !other.length) {
     owner_type = 'team'; owner_slug = people[0].slug;
-    target = `about/${base(rel)}`;
+    target = `site/about/${base(rel)}`; note.push('team portrait shown on About');
   } else if (pages.length >= 1 && !other.length) {
-    if (pages.includes('about')) { owner_type = 'page'; owner_slug = 'about'; target = `about/${base(rel)}`; }
-    else { owner_type = 'page'; owner_slug = pages[0]; target = `site/${pages[0]}/${base(rel)}`; unsure = true; note.push('proposes new site/ folder'); }
+    owner_type = 'page'; owner_slug = pages[0];
+    target = `site/${pages[0]}/${base(rel)}`;
+    if (pages.length > 1) { unsure = true; note.push(`shared by pages: ${pages.join(', ')}`); }
   } else if (other.length) {
     owner_type = other[0].docType; owner_slug = other[0].slug; target = ''; unsure = true; note.push(`${other[0].docType} reference: no target folder proposed`);
   } else {
-    owner_type = 'src'; owner_slug = ''; target = `site/${base(rel)}`; unsure = true; note.push('referenced by src/ only: keep in place or move to site/');
+    // src-only: infer the page from a more/<pageId>/ folder, else no target.
+    const folderPage = (rel.match(/^more\/([^/]+)\//) || [])[1];
+    owner_type = 'src';
+    if (folderPage && pageIds.has(folderPage)) { owner_slug = folderPage; target = `site/${folderPage}/${base(rel)}`; note.push(`referenced by src/ only; page inferred from folder more/${folderPage}/`); }
+    else { owner_slug = ''; note.push('referenced by src/ only: no page inferable, no target'); }
+    unsure = true;
   }
   if (kinds.length > 1) { unsure = true; note.push(`mixed owners: ${kinds.join('+')}`); }
   if (code.length && owner_type !== 'src') { unsure = true; note.push('also referenced in src/'); }
@@ -183,19 +197,27 @@ for (const r of rows) {
   }
 }
 
-// Collisions
-const targetCount = new Map();
-for (const r of rows) if (r.c.target) targetCount.set(r.c.target.toLowerCase(), (targetCount.get(r.c.target.toLowerCase()) || 0) + 1);
+// Collisions. A target is a collision if it is an existing key that is not itself being
+// copied from, or if two different files want it. Two sources with identical bytes sharing
+// one target are not a collision: copy once, repoint both old keys.
+const rowsByTarget = new Map();
+for (const r of rows) if (r.c.target) { const k = r.c.target.toLowerCase(); rowsByTarget.set(k, [...(rowsByTarget.get(k) || []), r]); }
 for (const r of rows) {
   const t = r.c.target;
-  r.collision = '';
+  r.collision = ''; r.collisionWhy = '';
   if (!t) continue;
   const reasons = [];
-  if (diskLower.has(t.toLowerCase()) && !fileSet.has(diskLower.get(t.toLowerCase()))) reasons.push('exists in tree');
-  if (targetCount.get(t.toLowerCase()) > 1) reasons.push('two sources, one target');
+  const existing = diskLower.get(t.toLowerCase());
+  if (existing && !fileSet.has(existing)) reasons.push('target key already exists');
+  const peers = rowsByTarget.get(t.toLowerCase());
+  if (peers.length > 1) {
+    const hashes = new Set(peers.map((p) => hashByRel.get(p.f.rel)));
+    if (hashes.size > 1) reasons.push(`different files want this key: ${peers.map((p) => p.f.rel).join(', ')}`);
+    else r.sharedNote = `identical bytes to ${peers.filter((p) => p !== r).map((p) => p.f.rel).join(', ')}: copy once, repoint every old key`;
+  }
   if (t === r.f.rel) reasons.push('already there');
   r.collision = reasons.length ? 'yes' : 'no';
-  r.collisionWhy = reasons.join(', ');
+  r.collisionWhy = reasons.join('; ');
 }
 
 // ── Output ──────────────────────────────────────────────────────────────────
@@ -203,12 +225,12 @@ const q = (s) => `"${String(s ?? '').replace(/"/g, '""')}"`;
 const refText = (rel) => [...new Set(own(rel).map((r) => (r.kind === 'content' ? `${r.docId} (${r.field.split(/[.[]/)[0]})` : r.file)))].join('; ');
 const header = ['old_key', 'new_key', 'owner_type', 'owner_slug', 'size_bytes', 'referenced_by', 'collision', 'unsure', 'identical_to', 'note'];
 const csv = [header.join(',')];
-for (const { f, c, collision, collisionWhy } of rows.sort((a, b) => a.f.rel.localeCompare(b.f.rel))) {
+for (const { f, c, collision, collisionWhy, sharedNote } of rows.sort((a, b) => a.f.rel.localeCompare(b.f.rel))) {
   const dupes = identicalElsewhere.get(hashByRel.get(f.rel)) || [];
   csv.push([
     `assets/${f.rel}`, c.target ? `assets/${c.target}` : '', c.owner_type, c.owner_slug, f.size, refText(f.rel),
     c.target ? collision : '', c.unsure ? 'yes' : 'no', dupes.slice(0, 3).map((d) => `assets/${d}`).join('; '),
-    [c.note, collisionWhy].filter(Boolean).join('; '),
+    [c.note, collisionWhy, sharedNote].filter(Boolean).join('; '),
   ].map(q).join(','));
 }
 mkdirSync(path.join(ROOT, 'backups'), { recursive: true });
@@ -224,6 +246,11 @@ lines.push(`# Asset reorganisation plan (PLAN ONLY, nothing moved)`, '', `Genera
 for (const d of SOURCE_DIRS) { const rs = rows.filter((r) => r.f.rel.startsWith(d + '/')); lines.push(`- ${d}/: ${rs.length} files, ${mb(sum(rs))}, unreferenced ${rs.filter((r) => r.c.owner_type === 'unreferenced').length}`); }
 lines.push('', '## Counts per target folder');
 for (const [k, rs] of Object.entries(byFolder).sort((a, b) => b[1].length - a[1].length)) lines.push(`- ${k}: ${rs.length} files, ${mb(sum(rs))}`);
+lines.push('', '## site/ breakdown (page media, one folder per pageId)');
+const sitePages = {}; for (const r of rows) if (r.c.target?.startsWith('site/')) { const k = r.c.target.split('/')[1]; sitePages[k] = (sitePages[k] || 0) + 1; }
+for (const [k, n] of Object.entries(sitePages)) lines.push(`- site/${k}/: ${n} rows (${rows.filter((r) => r.c.target?.startsWith(`site/${k}/`) && r.f.rel.startsWith('about/')).length} from existing about/)`);
+const sharedTargets = rows.filter((r) => r.sharedNote);
+lines.push('', `Shared targets (identical bytes, copy once): ${sharedTargets.length} rows. about-message.mp4 and its poster match by hash, so the existing-key decision holds: one copy at site/about/, both old keys repoint to it.`);
 lines.push('', '## By owner type');
 const byOwner = {}; for (const r of rows) (byOwner[r.c.owner_type] ||= []).push(r);
 for (const [k, rs] of Object.entries(byOwner).sort((a, b) => b[1].length - a[1].length)) lines.push(`- ${k}: ${rs.length}`);
