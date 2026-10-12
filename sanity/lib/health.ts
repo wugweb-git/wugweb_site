@@ -1,4 +1,6 @@
-// Health / SEO scoring shared by tables, lists, and dashboard widgets.
+// Health / completeness scoring shared by tables, lists, and dashboard widgets.
+// seoScore() only checks that fields are filled. It is NOT a ranking-quality score.
+// seoChecks() adds rule-based content checks (length, alt text, duplicates...).
 // All purely client-side over already-fetched rows (free-tier safe).
 
 export type Severity = 'good' | 'warn' | 'bad';
@@ -8,7 +10,7 @@ export interface HealthFlag {
   label: string;
 }
 
-/** 0..100 SEO score for a content doc based on required fields. */
+/** 0..100 completeness for a content doc: are the SEO-relevant fields filled? Not a quality measure. */
 export function seoScore(row: Record<string, unknown>): number {
   let score = 0;
   const has = (k: string) => {
@@ -86,3 +88,156 @@ export function healthFlags(type: string, row: Record<string, unknown>): HealthS
 
   return { score: seoScore(row), flags };
 }
+
+// ───────────────────────── Rule-based content checks ─────────────────────────
+// Pure, no network, no AI-authorship detection. Each check only runs when the
+// doc type's schema actually has the field it reads.
+
+export interface SeoCheck {
+  id: string;
+  label: string;
+  pass: boolean;
+  severity: 'warn' | 'bad';
+  hint: string;
+}
+
+/** Duplicate lookup built once per type from one cached query. Keys are normalised text. */
+export interface DuplicateIndex {
+  seoTitle?: Map<string, number>;
+  seoDescription?: Map<string, number>;
+}
+
+/** Which schema fields exist per type. Mirrors sanity/schemaTypes — do not add fields that are not there. */
+const TYPE_FIELDS: Record<string, { description: string[]; body?: string; seoTitle: boolean; seoDescription: boolean; focusKeyword?: boolean; slug: boolean }> = {
+  post: { description: ['seoDescription', 'excerpt'], body: 'body', seoTitle: true, seoDescription: true, slug: true },
+  caseStudy: { description: ['seoDescription', 'summary'], body: 'bodyContent', seoTitle: true, seoDescription: true, slug: true },
+  service: { description: ['seoDescription', 'summary'], body: 'body', seoTitle: true, seoDescription: true, slug: true },
+  singletonPage: { description: ['seoDescription'], body: 'body', seoTitle: true, seoDescription: true, focusKeyword: true, slug: false },
+};
+
+export const norm = (v: unknown) => String(v ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+const str = (v: unknown) => (typeof v === 'string' ? v.trim() : '');
+
+const STOP_WORDS = new Set(['a', 'an', 'the', 'and', 'or', 'of', 'to', 'in', 'on', 'for', 'with', 'is', 'are', 'your', 'our', 'how']);
+
+function blocks(v: unknown): any[] {
+  return Array.isArray(v) ? v : [];
+}
+function blockText(b: any): string {
+  return Array.isArray(b?.children) ? b.children.map((c: any) => c?.text || '').join('') : '';
+}
+export function bodyText(body: unknown): string {
+  return blocks(body).filter((b) => b?._type === 'block').map(blockText).join(' ').replace(/\s+/g, ' ').trim();
+}
+const words = (t: string) => (t ? t.split(/\s+/).filter(Boolean) : []);
+
+/** Build a duplicate index from rows of ONE type (title/description counts, published docs only). */
+export function buildDuplicateIndex(rows: Record<string, unknown>[]): DuplicateIndex {
+  const count = (k: string) => {
+    const m = new Map<string, number>();
+    for (const r of rows) {
+      const n = norm(r[k]);
+      if (n) m.set(n, (m.get(n) ?? 0) + 1);
+    }
+    return m;
+  };
+  return { seoTitle: count('seoTitle'), seoDescription: count('seoDescription') };
+}
+
+export function seoChecks(row: Record<string, unknown>, dupes?: DuplicateIndex): SeoCheck[] {
+  const type = String(row._type ?? '');
+  const cfg = TYPE_FIELDS[type];
+  if (!cfg) return [];
+  const out: SeoCheck[] = [];
+  const add = (id: string, label: string, pass: boolean, severity: 'warn' | 'bad', hint: string) =>
+    out.push({ id, label, pass, severity, hint });
+
+  const title = str(row.seoTitle) || str(row.title);
+  const description = cfg.description.map((k) => str(row[k])).find(Boolean) ?? '';
+  const slug = typeof row.slug === 'string' ? row.slug : '';
+  const body = cfg.body ? row[cfg.body] : undefined;
+  const text = bodyText(body);
+
+  // Title length
+  add('title-length', 'Title 30–60 characters', title.length >= 30 && title.length <= 60, 'warn',
+    title ? `Now ${title.length} characters.` : 'No title set.');
+
+  // Description length
+  add('description-length', 'Description 120–160 characters', description.length >= 120 && description.length <= 160, 'warn',
+    description ? `Now ${description.length} characters.` : 'No description set.');
+
+  // Slug hygiene (only where the type has a slug)
+  if (cfg.slug) {
+    const parts = slug.split('-').filter(Boolean);
+    const problems: string[] = [];
+    if (!slug) problems.push('no slug');
+    else {
+      if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) problems.push('use lowercase letters, numbers and single hyphens');
+      if (slug.length >= 75) problems.push(`${slug.length} characters, keep under 75`);
+      if (/-\d+$/.test(slug)) problems.push('ends in a numeric suffix like "-2" (likely a duplicate)');
+      if (parts.length > 3 && parts.filter((w) => STOP_WORDS.has(w)).length / parts.length > 0.4) problems.push('padded with stop words');
+    }
+    add('slug', 'Slug is clean', problems.length === 0, 'warn', problems.join('; ') || 'OK');
+  }
+
+  // Body checks
+  if (cfg.body) {
+    const wc = words(text).length;
+    if (type === 'post') {
+      add('body-words', 'Body at least 300 words', wc >= 300, 'warn', `Now ${wc} words.`);
+    }
+    const bl = blocks(body).filter((b) => b?._type === 'block');
+    const h1 = bl.filter((b) => b.style === 'h1').length;
+    const headings = bl.filter((b) => /^h[1-6]$/.test(String(b.style))).length;
+    if (type === 'post' || type === 'singletonPage' || type === 'service') {
+      add('headings', 'Body has a heading and at most one H1', headings >= 1 && h1 <= 1, 'warn',
+        headings === 0 ? 'No headings in the body.' : h1 > 1 ? `${h1} H1s; the page title is already the H1.` : 'OK');
+    }
+    const media = blocks(body).filter((b) => b?._type === 'image' || b?._type === 'mediaUrl');
+    if (media.length) {
+      const missing = media.filter((b) => !str(b.alt)).length;
+      add('alt-text', 'Every image has alt text', missing === 0, 'bad', missing ? `${missing} of ${media.length} media blocks have no alt text.` : 'OK');
+    }
+  }
+
+  // Focus keyword (only singletonPage has the field; skipped when it is empty)
+  if (cfg.focusKeyword && str(row.focusKeyword)) {
+    const kw = norm(row.focusKeyword);
+    const first100 = norm(words(text).slice(0, 100).join(' '));
+    const where = [
+      ['title', norm(title).includes(kw)],
+      ['description', norm(description).includes(kw)],
+      ['first 100 words', first100.includes(kw)],
+    ] as const;
+    const miss = where.filter(([, ok]) => !ok).map(([n]) => n);
+    add('focus-keyword', 'Focus keyword in title, description and first 100 words', miss.length === 0, 'warn',
+      miss.length ? `Missing from: ${miss.join(', ')}.` : 'OK');
+  }
+
+  // Description not a copy of the title or the excerpt
+  if (description) {
+    const d = norm(description);
+    const copies = [d === norm(title) ? 'the title' : '', str(row.excerpt) && str(row.seoDescription) && d === norm(row.excerpt) ? 'the excerpt' : ''].filter(Boolean);
+    add('description-distinct', 'Description is not a copy of title/excerpt', copies.length === 0, 'warn',
+      copies.length ? `Identical to ${copies.join(' and ')}.` : 'OK');
+  }
+
+  // Duplicates across documents of the same type
+  if (dupes) {
+    const dup = (k: 'seoTitle' | 'seoDescription') => {
+      const n = norm(row[k]);
+      return n ? (dupes[k]?.get(n) ?? 0) > 1 : false;
+    };
+    if (cfg.seoTitle && str(row.seoTitle)) add('dup-seo-title', 'SEO title is unique', !dup('seoTitle'), 'warn', dup('seoTitle') ? 'Another document of this type has the same SEO title.' : 'OK');
+    if (cfg.seoDescription && str(row.seoDescription)) add('dup-seo-description', 'SEO description is unique', !dup('seoDescription'), 'warn', dup('seoDescription') ? 'Another document of this type has the same SEO description.' : 'OK');
+  }
+
+  return out;
+}
+
+export function checksSummary(checks: SeoCheck[]): { passed: number; total: number; failed: SeoCheck[] } {
+  const failed = checks.filter((c) => !c.pass);
+  return { passed: checks.length - failed.length, total: checks.length, failed };
+}
+
+export const COMPLETENESS_HELP = 'Checks that fields are filled. It does not measure ranking quality.';

@@ -14,6 +14,7 @@
     "sanity:build": "cd sanity && npm run build",
     "sanity:deploy": "cd sanity && npm run deploy",
     "sanity:health": "node sanity/test_sanity.mjs",
+    "test:sanity": "node --test sanity/lib/health.test.ts",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "posters": "node scripts/generate-video-posters.mjs"
