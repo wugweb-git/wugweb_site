@@ -1,4 +1,3 @@
-import { withVoice } from '../lib/voiceFields';
 import { withSeoDuplicateWarnings } from '../lib/seoFieldRules';
 import service from './service';
 import caseStudy from './caseStudy';
@@ -36,11 +35,9 @@ import {
   comparisonTable,
 } from './blockContent';
 
-// withVoice: appends brand-voice WARNING rules to the target fields of
-// post, caseStudy, singletonPage and service (sanity/lib/voiceFields.tsx).
 // withSeoDuplicateWarnings: live duplicate seoTitle/seoDescription warnings
 // (sanity/lib/seoFieldRules.ts). Both wrappers keep every existing rule.
-export const schemaTypes = withVoice(withSeoDuplicateWarnings([
+export const schemaTypes = withSeoDuplicateWarnings([
   service,
   caseStudy,
   post,
@@ -74,4 +71,4 @@ export const schemaTypes = withVoice(withSeoDuplicateWarnings([
   callout,
   quoteBlock,
   comparisonTable,
-]));
+]);

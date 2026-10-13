@@ -19,7 +19,6 @@
     "storybook:build": "storybook build",
     "posters": "node scripts/generate-video-posters.mjs",
     "test:redirects": "node --test src/lib/redirects.test.ts",
-    "test:voice": "node --test sanity/lib/voice.test.ts",
     "test:integrations": "node --test src/lib/integrations.test.ts"
   },
   "dependencies": {

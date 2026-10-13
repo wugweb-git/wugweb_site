@@ -40,7 +40,7 @@ test('wrapper keeps existing rules and adds exactly one warning rule', () => {
   ]);
   const calls: string[] = [];
   const rule: any = { required: () => (calls.push('required'), 'R'), custom: () => ({ warning: () => (calls.push('warning'), 'W') }) };
-  assert.deepEqual(types[0].fields![0].validation(rule), ['R', 'W']);
+  assert.deepEqual(types[0].fields![0].validation!(rule), ['R', 'W']);
   assert.deepEqual(calls, ['required', 'warning']);
   assert.equal(types[0].fields![1].validation, undefined, 'other fields untouched');
   assert.equal(types[1].fields![0].validation, undefined, 'other types untouched');

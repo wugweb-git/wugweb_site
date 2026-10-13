@@ -150,13 +150,14 @@ export default defineType({
     defineField({ name: 'yandexVerification', title: 'Yandex Webmaster verification', type: 'string', group: 'integrations', description: 'The content="…" value of the yandex-verification tag. Never paste API keys or secrets here.', validation: (r) => r.custom(idValidator('yandexVerification')) }),
 
     // ── Brand voice ──
-    // Read by sanity/lib/voice.ts. Rule checks run ONLY when status is
-    // 'approved' — a draft guide produces no warnings anywhere.
+    // The guide only. The Studio voice checks (tool, badge, Check voice,
+    // field warnings) were removed on 2026-10-13 at the owner's request; these
+    // fields and the drafted guide are kept as reference content.
     defineField({
       name: 'status', title: 'Guide status', type: 'string', group: 'voice',
       options: { list: [{ title: 'Draft — for owner review', value: 'draft' }, { title: 'Approved — checks on', value: 'approved' }], layout: 'radio' },
       initialValue: 'draft',
-      description: 'Voice warnings appear in the Studio only once this is Approved.',
+      description: 'Draft or approved. Nothing reads this field now that the Studio voice checks are removed.',
     }),
     defineField({ name: 'persona', title: 'Persona', type: 'text', rows: 4, group: 'voice', description: 'Who is speaking, in a few sentences. Written from what the copy actually sounds like, not aspiration.' }),
     defineField({ name: 'audience', title: 'Audience', type: 'text', rows: 3, group: 'voice', description: 'Who reads it and what they already know.' }),
@@ -183,7 +184,7 @@ export default defineType({
     }),
     defineField({ name: 'readingLevelMax', title: 'Max reading level', type: 'number', group: 'voice', initialValue: 10, description: 'Flesch-Kincaid grade. 10 reads like a good newspaper.', validation: (r) => r.min(1).max(20) }),
     defineField({ name: 'maxSentenceWords', title: 'Max words per sentence', type: 'number', group: 'voice', initialValue: 25, validation: (r) => r.min(8).max(60) }),
-    defineField({ name: 'sampleGood', title: 'Sounds like us', type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice', description: 'Shown as "write it like this" under key fields once the guide is approved.' }),
+    defineField({ name: 'sampleGood', title: 'Sounds like us', type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice', description: 'Examples of copy that sounds like Wugweb.' }),
     defineField({ name: 'sampleBad', title: "Doesn't sound like us", type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice' }),
 
     // ── Sync (hidden, auto-managed) ──
