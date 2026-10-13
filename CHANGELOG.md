@@ -9,6 +9,17 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — SEO and Copy & Export folded into Tables; Voice and Integrations tabs removed (2026-10-13)
+- **Tables** (Blog Posts, Case Studies, Services, Pages; the same in the desk list panes):
+  - New columns: SEO description (inline-editable), **Checks passed** ("9/10 ▸", click to see the failing checks and their hints) and Completeness. Words, Read time and Missing SEO are optional columns, hidden by default.
+  - New filters: "Has failing checks" and "Missing SEO".
+  - **Auto Meta** is in each row's menu and the bulk bar, with a confirm step.
+  - **Copy as Markdown** and **Download .md** work per row and on selected rows. Bulk downloads are capped at 20 per click. CSV export is unchanged.
+- The **SEO** and **Copy & Export** tabs are unregistered. Their files are kept, marked superseded. The Dashboard's SEO links now open Tables.
+- The **Voice** and **Integrations** Studio tools are removed, along with the voice badge, the voice action, the voice field warnings and `/api/integrations-status`. The Brand voice and Integrations fields in Site Settings stay.
+- Extra API calls per table open: one duplicate-index query and one asset-alt query, both cached for 5 minutes.
+- `npm run test:sanity` runs 35 tests, all passing. Studio `tsc` reports 0 errors.
+
 ### Fixed — typegen config, three SEO checks, non-Storybook type errors (2026-10-13)
 - **TypeGen:** the config moved from `sanity.cli.ts` to `sanity/sanity-typegen.json`, the only file Sanity 3.99 reads. The old `typegen` key was v4 syntax that 3.99 silently ignored, and it caused the one Studio `tsc` error. Studio `tsc` now reports 0 errors, and `sanity typegen generate` produces types for 46 schema types.
 - **SEO checks:**
