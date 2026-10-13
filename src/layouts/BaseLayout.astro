@@ -545,7 +545,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
     <div id="wugweb-cookie-banner" class="cookie-banner-wrap">
       <div class="cookie-banner-inner">
         <div class="cookie-banner-text">
-          <h4>{CK.title}</h4>
+          <p class="cookie-title">{CK.title}</p>
           <p>{CK.subtitle}</p>
         </div>
         <div class="cookie-banner-actions">
@@ -560,13 +560,13 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
     <div id="wugweb-cookie-modal" class="cookie-modal-overlay">
       <div class="cookie-modal-box">
         <button id="cookie-modal-close" class="cookie-modal-close-btn" aria-label={CK.close}>&times;</button>
-        <h3>{CK.modalTitle}</h3>
+        <h2>{CK.modalTitle}</h2>
         <p class="cookie-modal-intro">{CK.modalIntro}</p>
         
         <div class="cookie-options-list">
           <div class="cookie-opt-row">
             <div class="opt-desc">
-              <h4>{CK_CATS[0].title}</h4>
+              <h3>{CK_CATS[0].title}</h3>
               <p>{CK_CATS[0].text}</p>
             </div>
             <div class="opt-control">
@@ -576,7 +576,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
 
           <div class="cookie-opt-row">
             <div class="opt-desc">
-              <h4>{CK_CATS[1].title}</h4>
+              <h3>{CK_CATS[1].title}</h3>
               <p>{CK_CATS[1].text}</p>
             </div>
             <div class="opt-control">
@@ -589,7 +589,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
 
           <div class="cookie-opt-row">
             <div class="opt-desc">
-              <h4>{CK_CATS[2].title}</h4>
+              <h3>{CK_CATS[2].title}</h3>
               <p>{CK_CATS[2].text}</p>
             </div>
             <div class="opt-control">
@@ -663,8 +663,9 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         gap: var(--gap-4);
       }
 
-      .cookie-banner-text h4 {
+      .cookie-banner-text .cookie-title {
         font-family: var(--font-body);
+        line-height: var(--core-line-height-normal);
         font-size: var(--fluid-body-lg);
         font-weight: var(--font-weight-semibold);
         margin-bottom: var(--gap-1);
@@ -726,7 +727,7 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         line-height: 1;
       }
 
-      .cookie-modal-box h3 {
+      .cookie-modal-box h2 {
         font-size: var(--fluid-h3);
         font-weight: var(--font-weight-bold);
         margin-bottom: var(--gap-3);
@@ -759,8 +760,9 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
         border-bottom: none;
       }
 
-      .opt-desc h4 {
+      .opt-desc h3 {
         font-size: var(--fluid-body-md);
+        line-height: var(--core-line-height-normal);
         font-weight: var(--font-weight-semibold);
         margin-bottom: var(--gap-1);
         color: var(--color-text-primary);
