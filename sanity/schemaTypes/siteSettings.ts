@@ -25,7 +25,8 @@ export default defineType({
     { name: 'social', title: 'Social & Images' },
     { name: 'organization', title: 'Organization' },
     { name: 'aeo', title: 'AI / Answers' },
-    { name: 'voice', title: 'Brand voice' },
+    // Hidden, not deleted: data kept; remove `hidden` to restore.
+    { name: 'voice', title: 'Brand voice', hidden: true },
     { name: 'integrations', title: 'Integrations' },
   ],
   fields: [
@@ -154,19 +155,19 @@ export default defineType({
     // field warnings) were removed on 2026-10-13 at the owner's request; these
     // fields and the drafted guide are kept as reference content.
     defineField({
-      name: 'status', title: 'Guide status', type: 'string', group: 'voice',
+      name: 'status', hidden: true, title: 'Guide status', type: 'string', group: 'voice',
       options: { list: [{ title: 'Draft — for owner review', value: 'draft' }, { title: 'Approved — checks on', value: 'approved' }], layout: 'radio' },
       initialValue: 'draft',
       description: 'Draft or approved. Nothing reads this field now that the Studio voice checks are removed.',
     }),
-    defineField({ name: 'persona', title: 'Persona', type: 'text', rows: 4, group: 'voice', description: 'Who is speaking, in a few sentences. Written from what the copy actually sounds like, not aspiration.' }),
-    defineField({ name: 'audience', title: 'Audience', type: 'text', rows: 3, group: 'voice', description: 'Who reads it and what they already know.' }),
-    defineField({ name: 'toneWords', title: 'Tone words', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'voice', description: 'Three to six adjectives, e.g. plain, confident, specific.' }),
-    defineField({ name: 'writingPrinciples', title: 'Writing principles', type: 'array', of: [{ type: 'string' }], group: 'voice', description: 'One rule per line, e.g. "Lead with the outcome, then the method."' }),
-    defineField({ name: 'doList', title: 'Do', type: 'array', of: [{ type: 'string' }], group: 'voice' }),
-    defineField({ name: 'dontList', title: "Don't", type: 'array', of: [{ type: 'string' }], group: 'voice' }),
+    defineField({ name: 'persona', hidden: true, title: 'Persona', type: 'text', rows: 4, group: 'voice', description: 'Who is speaking, in a few sentences. Written from what the copy actually sounds like, not aspiration.' }),
+    defineField({ name: 'audience', hidden: true, title: 'Audience', type: 'text', rows: 3, group: 'voice', description: 'Who reads it and what they already know.' }),
+    defineField({ name: 'toneWords', hidden: true, title: 'Tone words', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'voice', description: 'Three to six adjectives, e.g. plain, confident, specific.' }),
+    defineField({ name: 'writingPrinciples', hidden: true, title: 'Writing principles', type: 'array', of: [{ type: 'string' }], group: 'voice', description: 'One rule per line, e.g. "Lead with the outcome, then the method."' }),
+    defineField({ name: 'doList', hidden: true, title: 'Do', type: 'array', of: [{ type: 'string' }], group: 'voice' }),
+    defineField({ name: 'dontList', hidden: true, title: "Don't", type: 'array', of: [{ type: 'string' }], group: 'voice' }),
     defineField({
-      name: 'preferredTerms', title: 'Preferred terms', type: 'array', group: 'voice',
+      name: 'preferredTerms', hidden: true, title: 'Preferred terms', type: 'array', group: 'voice',
       description: 'Flagged when the "instead of" word appears.',
       of: [{
         type: 'object', name: 'voiceTerm',
@@ -177,15 +178,15 @@ export default defineType({
         preview: { select: { use: 'use', insteadOf: 'insteadOf' }, prepare: ({ use, insteadOf }: any) => ({ title: `${use}`, subtitle: `not "${insteadOf}"` }) },
       }],
     }),
-    defineField({ name: 'bannedWords', title: 'Banned words and phrases', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'voice', description: 'Matched as whole words, case-insensitive.' }),
+    defineField({ name: 'bannedWords', hidden: true, title: 'Banned words and phrases', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'voice', description: 'Matched as whole words, case-insensitive.' }),
     defineField({
-      name: 'spelling', title: 'Spelling', type: 'string', group: 'voice', initialValue: 'en-GB',
+      name: 'spelling', hidden: true, title: 'Spelling', type: 'string', group: 'voice', initialValue: 'en-GB',
       options: { list: [{ title: 'British (en-GB)', value: 'en-GB' }, { title: 'American (en-US)', value: 'en-US' }], layout: 'radio' },
     }),
-    defineField({ name: 'readingLevelMax', title: 'Max reading level', type: 'number', group: 'voice', initialValue: 10, description: 'Flesch-Kincaid grade. 10 reads like a good newspaper.', validation: (r) => r.min(1).max(20) }),
-    defineField({ name: 'maxSentenceWords', title: 'Max words per sentence', type: 'number', group: 'voice', initialValue: 25, validation: (r) => r.min(8).max(60) }),
-    defineField({ name: 'sampleGood', title: 'Sounds like us', type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice', description: 'Examples of copy that sounds like Wugweb.' }),
-    defineField({ name: 'sampleBad', title: "Doesn't sound like us", type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice' }),
+    defineField({ name: 'readingLevelMax', hidden: true, title: 'Max reading level', type: 'number', group: 'voice', initialValue: 10, description: 'Flesch-Kincaid grade. 10 reads like a good newspaper.', validation: (r) => r.min(1).max(20) }),
+    defineField({ name: 'maxSentenceWords', hidden: true, title: 'Max words per sentence', type: 'number', group: 'voice', initialValue: 25, validation: (r) => r.min(8).max(60) }),
+    defineField({ name: 'sampleGood', hidden: true, title: 'Sounds like us', type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice', description: 'Examples of copy that sounds like Wugweb.' }),
+    defineField({ name: 'sampleBad', hidden: true, title: "Doesn't sound like us", type: 'array', of: [{ type: 'text', rows: 3 }], group: 'voice' }),
 
     // ── Sync (hidden, auto-managed) ──
     defineField({ name: 'neonSynced', type: 'boolean', readOnly: true, hidden: true, initialValue: false }),
