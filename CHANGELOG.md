@@ -49,6 +49,10 @@ and this project adheres to Semantic Versioning.
 ### Removed — unused Studio dependencies (2026-10-13)
 - `@sanity/dashboard`, which nothing imported, and `@sanity/code-input`, which no schema uses as `type: 'code'` (0 such blocks in live data). 82 packages removed. `table()` stays.
 
+### Fixed — 7 missing service posters (2026-10-13)
+- Generated from each clip's first frame (Quick Look → cwebp, 640×480, same method/result as the existing posters) and uploaded to `assets/site/services/<pillar>/posters/<slug>.webp`: strategy/ai-readiness-assessment, engineering/cloud-and-devops, engineering/database-engineering, growth/analytics-and-attribution, operations/product-optimization, operations/qa-and-test-automation, experience/accessibility-design. All six /services pillar pages: every clip + poster 200 (122 URLs).
+- Home service tags for strategy/operations now read the renamed clips (Sanity `tagVideoPath`; backup `backups/service-tag-videos-2026-10-13.json`).
+
 ### Changed — sync covers author and tags (2026-10-13)
 - `sync-notion-blogs.mjs` now sets `author` (Notion Author → person by name) and `tags` (Notion Tags) on every post; empty Notion values leave Sanity alone. Applied: tags already matched on all 103; 2 authors corrected to Wugweb Design (POST-0084, POST-0095).
 
