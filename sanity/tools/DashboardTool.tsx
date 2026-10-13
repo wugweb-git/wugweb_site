@@ -114,7 +114,8 @@ function DashboardToolContent() {
     { label: 'New Post',       icon: ComposeIcon,  onClick: () => nav('/structure/intent/create/type=post') },
     { label: 'New Case Study', icon: ComposeIcon,  onClick: () => nav('/structure/intent/create/type=caseStudy') },
     { label: 'Upload Asset',   icon: UploadIcon,   onClick: () => nav('/structure/intent/create/type=brandAsset') },
-    { label: 'SEO Manager',    icon: SearchIcon,   onClick: () => nav('/seo') },
+    // The SEO tool was folded into Tables (2026-10-13): Checks passed / SEO description columns.
+    { label: 'SEO in Tables',  icon: SearchIcon,   onClick: () => nav('/tables') },
   ];
 
   return (
@@ -133,7 +134,7 @@ function DashboardToolContent() {
         <StatCard label="Clients"             value={data.counts.client     || 0} onClick={() => nav('/structure/client')} />
         <StatCard label="Assets"              value={data.counts.asset      || 0} onClick={() => nav('/structure/asset')} />
         <StatCard label="Drafts Needing Review" value={data.drafts}          tone="caution" onClick={() => nav('/structure')} />
-        <StatCard label="Missing SEO Meta"    value={data.missingSeo}       tone={data.missingSeo > 0 ? 'caution' : 'positive'} onClick={() => nav('/seo')} />
+        <StatCard label="Missing SEO Meta"    value={data.missingSeo}       tone={data.missingSeo > 0 ? 'caution' : 'positive'} onClick={() => nav('/tables')} />
         <StatCard label="Missing Covers"      value={data.missingCover}     tone={data.missingCover > 0 ? 'caution' : 'positive'} />
         <StatCard label="Published Today"     value={data.publishedToday}   tone="positive" />
         <StatCard label="Scheduled Posts"     value={data.scheduled}        tone="caution" />

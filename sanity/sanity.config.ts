@@ -5,20 +5,16 @@ import { table } from '@sanity/table';
 import {
   DashboardIcon,
   ThListIcon,
-  SearchIcon,
   ImagesIcon,
   MasterDetailIcon,
-  CopyIcon,
   ShareIcon,
 } from '@sanity/icons';
 import { schemaTypes } from './schemaTypes';
 import { deskStructure } from './schemaTypes/deskStructure';
 import { TablesTool } from './tools/TablesTool';
 import { DashboardTool } from './tools/DashboardTool';
-import { SeoTool } from './tools/SeoTool';
 import { MediaTool } from './tools/MediaTool';
 import { SearchTool } from './tools/SearchTool';
-import { ArticleExportTool } from './tools/ArticleExportTool';
 import { GraphTool } from './tools/GraphTool';
 
 import { SeoHealthBadge, ReadingTimeBadge, MediaStatusBadge } from './badges/documentBadges';
@@ -66,6 +62,9 @@ export default defineConfig({
       ...prev,
     ],
   },
+  // The SEO and Copy & Export tools were folded into Tables on 2026-10-13
+  // (SEO description / Completeness / Checks passed columns, Auto Meta, Copy
+  // as Markdown, Download .md). Their files stay in tools/ for now.
   tools: (prev) => [
     {
       name: 'dashboard',
@@ -80,12 +79,6 @@ export default defineConfig({
       component: TablesTool,
     },
     {
-      name: 'seo',
-      title: 'SEO',
-      icon: SearchIcon,
-      component: SeoTool,
-    },
-    {
       name: 'media',
       title: 'Media',
       icon: ImagesIcon,
@@ -96,12 +89,6 @@ export default defineConfig({
       title: 'Graph View',
       icon: ShareIcon,
       component: GraphTool,
-    },
-    {
-      name: 'export',
-      title: 'Copy & Export',
-      icon: CopyIcon,
-      component: ArticleExportTool,
     },
     {
       name: 'search',
