@@ -438,10 +438,9 @@ function isActive(href: string) {
       margin-left: auto;
       gap: var(--nav-item-gap);
     }
-    /* Tablet+ header is 118px (20px inset + 78px bar + 20px), matching the
-       original wugweb.com bar. Hero and anchor offsets read --header-height. */
-    /* Sized to the original wugweb.com links: 18px regular on a 27px line,
-       10x16 padding -> 47px pills. */
+    /* The header is 100px on every breakpoint (layout-shell.md), so this bar
+       is 60px at tablet and desktop. Link sizes follow the original wugweb.com
+       bar's proportions scaled into it (see the --nav-* tokens). */
     .nav-link,
     .nav-cta {
       font-size: var(--nav-link-size);

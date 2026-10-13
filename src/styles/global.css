@@ -627,15 +627,16 @@
   --header-height: 100px;
   --nav-height: calc(var(--header-height) - 32px);
   --control-size: 44px;
-  /* Desktop nav, matched to the original wugweb.com (Framer) bar 2026-10-13:
-     18px/27px regular links, 10x16 padding, 12px gaps, 54px logo, 12px bar padding. */
-  --nav-link-size: 1.125rem;
+  /* Desktop nav: the original wugweb.com (Framer) bar's proportions (78px bar,
+     47px pills, 18px text, 54px logo; measured 2026-10-13) scaled x0.77 into
+     our 60px bar, since the nav is 100px on every breakpoint (layout-shell.md). */
+  --nav-link-size: 0.875rem;          /* 14px  (Framer 18) */
   --nav-link-line: 1.5;
-  --nav-link-pad-block: 0.625rem;
-  --nav-link-pad-inline: var(--gap-4);
-  --nav-item-gap: var(--gap-3);
-  --nav-bar-pad: var(--gap-3);
-  --nav-logo-height: 3.375rem;
+  --nav-link-pad-block: var(--gap-2); /* 8px   (Framer 10) -> 36px pills */
+  --nav-link-pad-inline: var(--gap-3);/* 12px  (Framer 16) */
+  --nav-item-gap: var(--gap-2);       /* 8px   (Framer 12) */
+  --nav-bar-pad: var(--gap-3);        /* 12px inline inset */
+  --nav-logo-height: 2.5rem;          /* 40px  (Framer 54) */
   --pillar-thumb: 88px;
   --pillar-thumb-sm: 62px;
   --thumb-min: 180px;
@@ -1145,9 +1146,6 @@ a[href^='tel:']:not(.no-external-icon)::after {
 @media (min-width: 768px) {
   :root {
     --shell-gutter: 32px; --grid-gap: 24px;
-    /* Nav bar matches the original wugweb.com (Framer) bar, measured
-       2026-10-13: 78px bar inset 20px top -> 118px header, 78px nav. */
-    --header-height: 118px;
     --nav-height: calc(var(--header-height) - 40px);
     --space-section-xs: 70px; --space-section-sm: 70px; --space-section-md: 70px;
     --space-section-lg: 70px; --space-section-xl: 70px;
