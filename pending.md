@@ -1483,14 +1483,15 @@ Audited all 103 live posts on wugweb.pages.dev. Fixed and re-measured live:
 - Image alt: 47 missing → **0** (Notion caption `Alt: …` = alt only, no visible figcaption)
 - Image width/height: 0/223 → **223/223** (measured by the sync with sharp)
 - In-body internal links: 102 posts with none → **27** (137 links, anchors on existing words only)
-- "Updated 12 Oct 2026" on 93 posts (sync `_updatedAt`) → `contentUpdatedAt` from Notion
-  "Last Updated". It equals Publish Date on all 103, so the Updated row is hidden everywhere.
-- BlogPosting: author → `#founder` node or Person with url/sameAs; BreadcrumbList added;
-  `mainEntityOfPage` honours canonicalUrl; share links use www. **Not verified live** —
-  JSON-LD is suppressed on non-canonical hosts, and the local dev server failed to start (EPERM).
+- No "last updated" on posts (owner decision 2026-10-13): Updated row removed, `contentUpdatedAt`
+  dropped from schema/sync/data; BlogPosting `dateModified` = `datePublished`.
+- BlogPosting audited on all 103 posts, rendered locally as www.wugweb.com (`wrangler pages dev`,
+  `Host:` header): 0 errors. Fixed: Organization had no logo (now `/brand/logo-square.png`, the
+  W mark), "Wugweb Design" byline was a Person (now → `#organization`). Vedanshu → `#founder`;
+  BreadcrumbList; mainEntityOfPage = canonical; images all 200. Logo URL resolves only after DNS cutover.
 
 Open (copy, Vedanshu): the first body paragraph is hidden when it equals the excerpt, so links
 there don't render. 27 posts still need link-friendly wording. AEO briefs pending (question H2s,
 key takeaways, FAQ) for the no-H2 post, 7 posts with colon headings, 6 generic openers and the
-26 shortest posts. ParcelShop `02-image.jpg` is too blurred to read — re-export.
+26 shortest posts. ParcelShop `02-image.jpg` in R2 is a 60×12, 520-byte placeholder — the real image was never uploaded.
 Backups: `backups/notion-blogs-*-pre-seo-2026-10-13.json`, `backups/sanity-pre-notion-blog-sync-2026-10-13T05-*.json`.

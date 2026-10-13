@@ -69,8 +69,6 @@ export default defineType({
     defineField({ name: 'tags', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, description: 'Add tags from the master list or type new ones', group: 'meta' }),
     defineField({ name: 'readingTime', type: 'number', description: 'Minutes to read — auto-calculated if left empty', group: 'meta' }),
     defineField({ name: 'publishedAt', type: 'datetime', group: 'meta' }),
-    defineField({ name: 'contentUpdatedAt', type: 'datetime', title: 'Content last updated', group: 'meta',
-      description: 'The last real content edit (Notion "Last Updated"). Drives the visible Updated date and dateModified. Not _updatedAt, which every sync touches.' }),
     defineField({ name: 'featured', type: 'boolean', initialValue: false, description: 'Featured posts appear first in listings', group: 'meta' }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US', 'fr', 'de', 'es'] }, initialValue: 'en-GB', group: 'meta' }),
     defineField({ name: 'seoTitle', type: 'string', description: 'Overrides the <title> tag. Defaults to the post title.', group: 'seo' }),

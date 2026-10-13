@@ -12,7 +12,7 @@
  * category: Notion's Category (relation) mapped onto Sanity's list via CATEGORY_MAP (owner-approved 2026-10-13).
  * author (Notion Author → person by name) and tags (Notion Tags names) on every post; empty in
  * Notion, or an author with no matching person, leaves Sanity's value alone.
- * contentUpdatedAt from Notion "Last Updated"; relatedPosts from Notion "Related Posts" (by Slug);
+ * No "last updated" on posts (owner decision 2026-10-13). relatedPosts from Notion "Related Posts" (by Slug);
  * mediaUrl images get width/height; a leading body heading that repeats the title is dropped.
  * New Notion posts are created as post-<slug>. Posts that exist only in Sanity are NOT deleted here;
  * they are listed, and their delete goes in an owner-run script.
@@ -169,7 +169,7 @@ for (const p of pages) {
     postId: plain(P['Post ID']), slug: plain(P['Slug']), sanityId: plain(P['Sanity ID']), title: plain(P['Title']),
     excerpt: plain(P['Excerpt']), seoTitle: plain(P['SEO Title']), seoDescription: plain(P['SEO Description']),
     canonicalUrl: plain(P['Canonical URL']), featured: P['Featured']?.checkbox ?? null, readingTime: P['Read Time (min)']?.number ?? null,
-    publishDate: P['Publish Date']?.date?.start || null, lastUpdated: P['Last Updated']?.date?.start || null, cover: P['Cover Image']?.url || '', og: P['OG Image']?.url || '',
+    publishDate: P['Publish Date']?.date?.start || null, cover: P['Cover Image']?.url || '', og: P['OG Image']?.url || '',
   };
   const body = await withSizes(dropTitleHeading(toPT(await children(p.id)), row.title));
   const set = {};
@@ -178,7 +178,6 @@ for (const p of pages) {
   if (row.featured !== null) set.featured = row.featured;
   if (row.readingTime) set.readingTime = row.readingTime;
   if (row.publishDate) set.publishedAt = row.publishDate.length === 10 ? `${row.publishDate}T00:00:00Z` : row.publishDate;
-  if (row.lastUpdated) set.contentUpdatedAt = row.lastUpdated.length === 10 ? `${row.lastUpdated}T00:00:00Z` : row.lastUpdated;
   if (row.cover) { set.coverPath = row.cover; set.ogImagePath = row.og || row.cover; }
   if (body.length) set.body = body;
   const catName = P['Category']?.relation?.[0] ? await pageTitle(P['Category'].relation[0].id) : '';

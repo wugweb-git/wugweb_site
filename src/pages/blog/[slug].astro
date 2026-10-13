@@ -28,10 +28,6 @@ const authorPhoto = post.author?.photoPath
   : post.author?.photo ? urlFor(post.author.photo).width(120).height(120).url() : '';
 const authorLinks = (post.author?.socialLinks || []).filter((l: any) => l?.url);
 const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
-// contentUpdatedAt is the real last edit (Notion "Last Updated"). _updatedAt is not: every
-// sync rewrites it, which stamped 93 posts "Updated 12 Oct 2026" on the same day.
-const updatedAt = post.contentUpdatedAt ? new Date(post.contentUpdatedAt).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
-const isUpdated = updatedAt && updatedAt !== pubDate;
 const coverImageUrl = post.coverPath
   ? assetUrl(post.coverPath)
   : (post.coverImage ? urlFor(post.coverImage).width(1600).height(900).url() : '');
@@ -74,11 +70,15 @@ const blogPostingNode = {
   description: pageDescription,
   image: ogImageUrl || undefined,
   datePublished: isoDate(post.publishedAt),
-  dateModified: isoDate(post.contentUpdatedAt) || isoDate(post.publishedAt),
+  // No "last updated" on posts (owner decision 2026-10-13): dateModified = datePublished.
+  dateModified: isoDate(post.publishedAt),
   // The founder already exists as a Person node in BaseLayout's graph; point at it
   // instead of restating him, so his sameAs carries over.
+  // "Wugweb Design" is the studio byline, not a person: point it at the Organization node.
   author: post.author?.name === 'Vedanshu Srivastava'
     ? { '@id': `${SITE}/#founder` }
+    : /^wugweb\b/i.test(post.author?.name || '')
+    ? { '@id': `${SITE}/#organization` }
     : post.author?.name
     ? {
         '@type': 'Person',
@@ -194,7 +194,6 @@ const shareLinks = [
           </div>
         )}
         {pubDate && <div><dt class="meta-label">Published</dt><dd><time datetime={isoDate(post.publishedAt)}>{pubDate}</time></dd></div>}
-        {isUpdated && <div><dt class="meta-label">Updated</dt><dd><time datetime={isoDate(post.contentUpdatedAt)}>{updatedAt}</time></dd></div>}
         {readTime && <div><dt class="meta-label">Reading time</dt><dd>{readTime}</dd></div>}
         {post.category && <div><dt class="meta-label">Category</dt><dd>{post.category}</dd></div>}
       </dl>
