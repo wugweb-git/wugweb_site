@@ -1,0 +1,114 @@
+{
+  "takenAt": "2026-10-13T04:06:20.627Z",
+  "existingBefore": [],
+  "toCreate": [
+    {
+      "_id": "redirect-framer-3a8dc13727cf",
+      "_type": "redirect",
+      "source": "/blog/10-key-takeaways-from-google-s-material-design-guidelines",
+      "destination": "/blog/10-key-takeaways-from-googles-material-design-guidelines",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-74612be64eb0",
+      "_type": "redirect",
+      "source": "/work/ad-tech-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+      "destination": "/work/adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-dd81cd56f9cf",
+      "_type": "redirect",
+      "source": "/work/adneto-digital-showcase-ai-powered-loyalty-platform",
+      "destination": "/work/crafting-digital-authority-the-adneto-website-showcase",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13 (closest match, owner to confirm)"
+    },
+    {
+      "_id": "redirect-framer-e43ecd179d38",
+      "_type": "redirect",
+      "source": "/work/airtel-xstream-play-digital-entertainment-ux-web-design",
+      "destination": "/work/airtel-xstream-play",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-574d8018db89",
+      "_type": "redirect",
+      "source": "/work/bankco-super-app-digital-banking-loyalty-commerce",
+      "destination": "/work/bankco",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-ee2238446b01",
+      "_type": "redirect",
+      "source": "/work/cartier-career-site-redesign-luxury-ux-ui-talent-branding",
+      "destination": "/work/cartier-careers",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-9e9c548d5c96",
+      "_type": "redirect",
+      "source": "/work/gratify-intelligent-rewards-feedback-platform",
+      "destination": "/work/gratify-the-intelligent-rewards-and-feedback-platform",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-0aceab6a48ac",
+      "_type": "redirect",
+      "source": "/work/kia-customer-loyalty-dashboard-ui-ux",
+      "destination": "/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-8effdbfcbcc8",
+      "_type": "redirect",
+      "source": "/work/rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah’s-business-ecosystem",
+      "destination": "/work/rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah-business-ecosystem",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-a68a19d32852",
+      "_type": "redirect",
+      "source": "/work/tot-bridal-launch-branding-ux-design",
+      "destination": "/work/crafting-digital-elegance-the-tot-bridal-launch-story",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-ff943078e2c1",
+      "_type": "redirect",
+      "source": "/work/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages",
+      "destination": "/work/valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    },
+    {
+      "_id": "redirect-framer-850cc1eec91a",
+      "_type": "redirect",
+      "source": "/work/woodkraft-elevating-india’s-largest-corporate-fit-out-legacy",
+      "destination": "/work/woodkraft-elevating-indias-largest-corporate-fit-out-legacy",
+      "statusCode": 301,
+      "enabled": true,
+      "note": "Framer URL, DNS cutover pre-flight 2026-10-13"
+    }
+  ]
+}
