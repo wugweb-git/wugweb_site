@@ -189,10 +189,9 @@ const APPROACH_CTA: Record<string, { title: string; body: string }> = {
 };
 /** Ad art. Per-pillar where the old site has one; the services hero otherwise. */
 const AD_IMAGE: Record<string, string> = {
-  experience: 'services/reference/experience-hero.jpg',
-  brand: 'services/reference/brand-hero.jpg',
+  brand: 'site/services/reference/brand-hero.jpg',
 };
-const approachAdImage = assetUrl(AD_IMAGE[pillarSlug] || 'services/reference/services-hero.jpg');
+const approachAdImage = assetUrl(AD_IMAGE[pillarSlug] || 'site/services/reference/services-hero.jpg');
 
 const approachCta = APPROACH_CTA[pillarSlug] || {
   title: `${service.title} services you can rely on.`,
