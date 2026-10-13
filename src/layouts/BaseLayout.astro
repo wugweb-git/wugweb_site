@@ -204,8 +204,8 @@ const organizationNode = {
   telephone: settings?.telephone,
   foundingDate: settings?.foundingDate,
   // siteSettings.logoPath is empty, which left Organization (the publisher of every post) without
-  // the logo Google requires for Article rich results. Fall back to the W mark (648px square).
-  logo: new URL(settings?.logoPath ? assetUrl(settings.logoPath) : '/brand/logo-square.png', canonicalOrigin).href,
+  // the logo Google requires for Article rich results. Fall back to the W mark in R2 (648px square).
+  logo: assetUrl(settings?.logoPath || '/assets/brand/small.jpg'),
   sameAs: (settings?.sameAs?.length ? settings.sameAs : (livePlatformProfiles as any[]).map((p) => p.profileUrl)),
   founder: { '@id': `${canonicalOrigin}/#founder` },
 };

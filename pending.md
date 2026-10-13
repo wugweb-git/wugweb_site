@@ -1487,9 +1487,9 @@ Audited all 103 live posts on wugweb.pages.dev. Fixed and re-measured live:
 - No "last updated" on posts (owner decision 2026-10-13): Updated row removed, `contentUpdatedAt`
   dropped from schema/sync/data; BlogPosting `dateModified` = `datePublished`.
 - BlogPosting audited on all 103 posts, rendered locally as www.wugweb.com (`wrangler pages dev`,
-  `Host:` header): 0 errors. Fixed: Organization had no logo (now `/brand/logo-square.png`, the
-  W mark), "Wugweb Design" byline was a Person (now → `#organization`). Vedanshu → `#founder`;
-  BreadcrumbList; mainEntityOfPage = canonical; images all 200. Logo URL resolves only after DNS cutover.
+  `Host:` header): 0 errors. Fixed: Organization had no logo (now R2 `assets/brand/small.jpg`, the
+  648px W mark), "Wugweb Design" byline was a Person (now → `#organization`). Vedanshu → `#founder`;
+  BreadcrumbList; mainEntityOfPage = canonical; images and logo all served from R2 (200).
 
 Open (copy, Vedanshu): the first body paragraph is hidden when it equals the excerpt, so links
 there don't render. 27 posts still need link-friendly wording. AEO briefs pending (question H2s,
