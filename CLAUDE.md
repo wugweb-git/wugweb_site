@@ -213,7 +213,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 
 ## Current Priorities
 
-1. Deploy / keep `wugweb.com` and `wugweb.pages.dev` in sync with local (Framer service slugs must not 404). **DNS cutover is NOT done — re-verified 2026-09-24.** `wugweb.com` issues a 308 to `www.wugweb.com`, and `www.wugweb.com` still serves the old Framer build (`<meta name="generator" content="Framer …">`). Everything in this repo is live only on `*.wugweb.pages.dev`. The earlier "cutover done 2026-09-23" note in this file was wrong. Do not treat the public domain as this site until a `curl -sL https://www.wugweb.com/ | grep generator` comes back empty.
+1. Deploy / keep `wugweb.com` and `wugweb.pages.dev` in sync with local. **Zero dependency on Framer (owner decision 2026-10-13): Framer is deleted the following week. No Framer-style URLs, no redirects for Framer URLs, no Framer-hosted assets.** **DNS cutover is NOT done — re-verified 2026-09-24.** `wugweb.com` issues a 308 to `www.wugweb.com`, and `www.wugweb.com` still serves the old Framer build (`<meta name="generator" content="Framer …">`). Everything in this repo is live only on `*.wugweb.pages.dev`. The earlier "cutover done 2026-09-23" note in this file was wrong. Do not treat the public domain as this site until a `curl -sL https://www.wugweb.com/ | grep generator` comes back empty.
 2. **Remaining backlog** (pending.md): contact redesign (needs reference), deep service-copy pass, trust-badge logos, prod verify of contact/subscribe APIs.
 3. Frontend → Neon swap (after UI/brand mapping).
 4. Blog/media gaps, team photos, Neon audit leftovers (8 stale rows, `[object Object]` slugs, empty `content_relations`).
