@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: '404' }).catch(() => null);
 ---
 
-<BaseLayout title="Page not found" description="The page you're looking for may have moved. Return to Wugweb to explore our digital experience work and services.">
+<BaseLayout title="Page not found" seoTitle={page?.seoTitle} description={page?.seoDescription || "The page you're looking for may have moved. Return to Wugweb to explore our digital experience work and services."} noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}>
   <section class="wrap not-found" id="not-found" aria-labelledby="not-found-title">
     
     <h1 id="not-found-title">Seems this page is not available.</h1>

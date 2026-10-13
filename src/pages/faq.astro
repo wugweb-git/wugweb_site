@@ -34,7 +34,7 @@ const displayH1 = page?.title?.replace(/\s*—\s*Wugweb$/i, '') || 'Frequently A
 import FaqAccordion from '../components/FaqAccordion.astro';
 ---
 
-<BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} title={pageTitle} description={pageDescription}>
+<BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath} title={pageTitle} description={pageDescription}>
   <section class="wrap faq" id="faq" aria-labelledby="faq-title">
     
     <h1 class="page-title" data-reveal id="faq-title">{displayH1}</h1>

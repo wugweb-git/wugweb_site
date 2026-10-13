@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'thank-you' }).catch(() => null);
 ---
 
-<BaseLayout title="Thank You — Wugweb" description="Your message has been sent. We'll be in touch soon.">
+<BaseLayout title="Thank You — Wugweb" seoTitle={page?.seoTitle} description={page?.seoDescription || "Your message has been sent. We'll be in touch soon."} noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}>
   <section class="wrap thank-you" id="thank-you" aria-labelledby="thank-you-title">
     
     <h1 id="thank-you-title">Thanks, we'll be in touch.</h1>

@@ -118,7 +118,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 {/* This page carries its own Insights and Industries blocks, so the global
     "Some of our recent thoughts" and "Industries We Empower" sections in
     BaseLayout would render as duplicates directly beneath them. */}
-<BaseLayout noIndex={homePage?.noIndex} ogTitle={homePage?.ogTitle} ogDescription={homePage?.ogDescription}
+<BaseLayout noIndex={homePage?.noIndex} ogTitle={homePage?.ogTitle} ogDescription={homePage?.ogDescription} ogImagePath={homePage?.ogImagePath}
   title={homeTitle}
   description={homeDescription}
   hideGlobalBlog={true}

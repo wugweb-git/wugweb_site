@@ -39,9 +39,10 @@ interface Props {
   noIndex?: boolean;
   ogTitle?: string;
   ogDescription?: string;
+  ogImagePath?: string;
 }
 
-const { title, seoTitle, description, active, updated, noIndex, ogTitle, ogDescription } = Astro.props;
+const { title, seoTitle, description, active, updated, noIndex, ogTitle, ogDescription, ogImagePath } = Astro.props;
 
 const NAV: { slug: LegalSlug; label: string; href: string }[] = [
   { slug: 'privacy-policy', label: 'Privacy Policy', href: '/privacy-policy' },
@@ -51,7 +52,7 @@ const NAV: { slug: LegalSlug; label: string; href: string }[] = [
 ];
 ---
 
-<BaseLayout title={title} seoTitle={seoTitle} description={description} hideGlobalSections={true} noIndex={noIndex} ogTitle={ogTitle} ogDescription={ogDescription}>
+<BaseLayout title={title} seoTitle={seoTitle} description={description} hideGlobalSections={true} noIndex={noIndex} ogTitle={ogTitle} ogDescription={ogDescription} ogImagePath={ogImagePath}>
   <section class="wrap legal-hub" id="legal-hub" aria-labelledby="legal-hub-title">
     <header class="legal-hub-head">
       <a href="/privacy-policy" class="legal-hub-crumb" data-reveal>Legal &amp; Policies</a>

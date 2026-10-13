@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { singletonPageQuery } from '../lib/queries';
+
+const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'contact-error' }).catch(() => null);
 import { FIELD_PROBLEM_TEXT, isSafeBackPath, parseContactProblems } from '../lib/forms';
 
 // ?reason= set by /api/contact (field problems) and /api/subscribe
@@ -11,7 +15,7 @@ const back = Astro.url.searchParams.get('back');
 const retryHref = subscribeFailed ? (isSafeBackPath(back) ? back : '/blog') : '/contact-us';
 ---
 
-<BaseLayout title="Something went wrong — Wugweb" description="Your message couldn't be sent. Try again or email us directly.">
+<BaseLayout title="Something went wrong — Wugweb" seoTitle={page?.seoTitle} description={page?.seoDescription || "Your message couldn't be sent. Try again or email us directly."} noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}>
   <section class="wrap contact-error" id="contact-error" aria-labelledby="contact-error-title">
     
     {problems.length > 0 ? (

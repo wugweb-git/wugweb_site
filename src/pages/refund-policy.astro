@@ -12,7 +12,7 @@ const blocks: any[] = Array.isArray(page?.body) && page.body.length ? page.body 
 const hasCms = blocks.length > 0;
 ---
 
-<LegalLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription}
+<LegalLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}
   title="Refund & Cancellation Policy"
   seoTitle={page?.seoTitle}
   description={page?.seoDescription || "Refund & Cancellation Policy — Wugweb project and subscription services."}
