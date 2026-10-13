@@ -20,7 +20,8 @@
     "posters": "node scripts/generate-video-posters.mjs",
     "test:redirects": "node --test src/lib/redirects.test.ts",
     "test:integrations": "node --test src/lib/integrations.test.ts",
-    "test:forms": "node --test src/lib/forms-subscribe.test.ts src/lib/forms-contact.test.ts"
+    "test:forms": "node --test src/lib/forms-subscribe.test.ts src/lib/forms-contact.test.ts",
+    "test:bearer": "node --test src/lib/bearer.test.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.0.0",
