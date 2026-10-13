@@ -625,7 +625,7 @@
      --header-height is the whole box; --nav-height is the bar inside it, i.e.
      100 minus the header's vertical padding (16+16 mobile, 20+20 tablet+). */
   --header-height: 100px;
-  --nav-height: calc(var(--header-height) - 32px);
+  --nav-height: calc(var(--header-height) - 40px);  /* 60px bar on every breakpoint */
   --control-size: 44px;
   /* Desktop nav: the original wugweb.com (Framer) bar's proportions (78px bar,
      47px pills, 18px text, 54px logo; measured 2026-10-13) scaled x0.77 into

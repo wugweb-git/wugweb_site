@@ -97,11 +97,15 @@ function isActive(href: string) {
        a single fluid 16→32 inset over exactly these stepped values as
        "non-monotonic". The spec was supplied explicitly and wins. Safe-area
        insets are still added so the bar clears the notch. */
-    padding: calc(var(--safe-top) + 16px)
+    /* 100px nav on every breakpoint, 60px bar on every breakpoint (owner,
+       2026-10-13): 20px top/bottom everywhere; sides 16 mobile / 20 tablet+. */
+    padding: calc(var(--safe-top) + 20px)
              calc(var(--safe-right) + 16px)
-             16px
+             20px
              calc(var(--safe-left) + 16px);
     background: transparent;
+    will-change: transform;
+    gap: 0;
   }
 
   /* The bar is grabbable — layout-shell.md. Links and buttons keep the pointer. */
@@ -143,16 +147,11 @@ function isActive(href: string) {
   }
   .site-logo-img {
     display: block;
-    /* Measured against the old site at 390px: its wordmark is ~125 wide, ours
-       was 94 - noticeably smaller in the same bar. At this aspect (2.76:1),
-       45px of height puts it back at ~124. */
-    height: 45px;
+    /* One logo height on every breakpoint (owner, 2026-10-13). */
+    height: var(--nav-logo-height);
     width: auto;
-    max-width: 160px;
   }
-  @media (min-width: 768px) {
-    .site-logo-img { height: var(--nav-logo-height); max-width: none; }
-  }
+
 
   .site-links {
     display: none;
@@ -262,8 +261,8 @@ function isActive(href: string) {
        svh first as the fallback: browsers without dvh take it, and it is the
        stable小 viewport so the sheet never grows past the screen when the
        address bar retracts. */
-    height: calc(100svh - var(--safe-top) - var(--safe-bottom) - var(--gap-4) * 2);
-    height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - var(--gap-4) * 2);
+    height: calc(100svh - var(--safe-top) - var(--safe-bottom) - var(--gap-5) * 2);
+    height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - var(--gap-5) * 2);
     max-height: none;
     display: flex;
     flex-direction: column;
@@ -421,8 +420,8 @@ function isActive(href: string) {
 
   @media (min-width: 768px) {
     .site-header {
-      padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 32px)
-               20px calc(var(--safe-left) + 32px);
+      padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 20px)
+               20px calc(var(--safe-left) + 20px);
     }
     .nav-top { padding-inline: var(--nav-bar-pad); gap: var(--nav-item-gap); }
     /* Original wugweb.com bar: heavier 40px blur, no extra saturation. */
