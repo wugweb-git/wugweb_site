@@ -9,7 +9,11 @@
  * live page (200 — a redirect doc would never fire there), and rows whose
  * destination does not return 200. An existing redirect doc for a legacy slug
  * whose destination differs from Notion (e.g. after a slug change) is
- * repointed to the Notion destination, so old URLs never take two hops. Validation mirrors
+ * repointed to the Notion destination, so old URLs never take two hops.
+ * Framer-era docs (redirect-framer-*) do not count as existing: Notion
+ * supersedes them, so a Notion doc is created alongside and the Framer doc is
+ * listed for deletion once the Notion one is verified (owner decision 2026-10-13).
+ * Sources are matched decoded, so "india’s" and "india%E2%80%99s" are the same. Validation mirrors
  * sanity/schemaTypes/redirect.ts. Dry run by default; WRITE=1 applies (backup
  * first, deterministic ids + createIfNotExists, so re-runs are no-ops).
  * Checks run against https://wugweb.pages.dev, one request at a time.
@@ -30,7 +34,9 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Same as sanity/schemaTypes/redirect.ts.
 const norm = (v) => {
-  let p = String(v ?? '').trim().split(/[?#]/)[0].toLowerCase();
+  let p = String(v ?? '').trim().split(/[?#]/)[0];
+  try { p = decodeURI(p); } catch { /* keep as given */ }
+  p = p.toLowerCase();
   if (!p.startsWith('/')) p = `/${p}`;
   p = p.replace(/\/{2,}/g, '/');
   return p.length > 1 ? p.replace(/\/+$/, '') : p;
@@ -63,7 +69,9 @@ const unique = pairs.filter((p) => !seen.has(norm(p.source)) && seen.add(norm(p.
 
 // 3. Existing redirect docs
 const existing = await sanity.fetch(`*[_type == "redirect"]{ _id, source, destination }`);
-const existingBySource = new Map(existing.map((d) => [norm(d.source), d]));
+const isFramer = (d) => d._id.startsWith('redirect-framer-');
+const existingBySource = new Map(existing.filter((d) => !isFramer(d)).map((d) => [norm(d.source), d]));
+const framerBySource = new Map(existing.filter(isFramer).map((d) => [norm(d.source), d]));
 
 // 4. Check each against the live site
 const plan = [];
@@ -82,7 +90,7 @@ for (const p of unique) {
     repoint.push({ _id: ex._id, source: ex.source, from: ex.destination, destination: p.destination });
     continue;
   }
-  const res = await fetch(SITE + encodeURI(p.source), { redirect: 'manual', headers: { 'user-agent': 'wugweb-redirect-check' } });
+  const res = await fetch(SITE + encodeURI(norm(p.source)), { redirect: 'manual', headers: { 'user-agent': 'wugweb-redirect-check' } });
   await sleep(300);
   const loc = res.headers.get('location') || '';
   if (res.status === 200) { skipped.push({ ...p, why: 'live page (200)' }); continue; }
@@ -108,6 +116,8 @@ console.log(`Notion rows ${rows.length}, legacy pairs ${unique.length}; create $
 for (const d of plan) console.log(`CREATE  ${d.source} → ${d.destination}   [now: ${d._now}]`);
 for (const d of repoint) console.log(`REPOINT ${d.source}: ${d.from} → ${d.destination}`);
 for (const s of skipped) console.log(`skip    ${s.source} → ${s.destination}   (${s.why})`);
+const superseded = plan.map((d) => framerBySource.get(norm(d.source))).filter(Boolean);
+for (const d of superseded) console.log(`FRAMER  ${d._id} ${d.source} is superseded — delete it once the Notion redirect is verified`);
 if (!WRITE) { console.log('\nDry run. WRITE=1 to create.'); process.exit(0); }
 if (!plan.length && !repoint.length) { console.log('\nNothing to change.'); process.exit(0); }
 
