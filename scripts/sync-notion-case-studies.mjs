@@ -9,7 +9,7 @@
  * Body Content → bodyMarkdown: the Notion rich text becomes markdown. Media links ("!Cover Image" →
  * ![Cover Image](url)) on framerusercontent.com, wugweb.online or wugweb.pages.dev/assets are
  * rewritten to their R2 copies via scripts/data/case-study-media-map.json; an old-host link with no
- * mapping is dropped and listed. "Framer site copy" is renamed "Sanity site copy".
+ * mapping is kept unchanged and listed (never dropped). "Framer site copy" is renamed "Sanity site copy".
  *
  * Matched docs (Notion "Sanity ID", else slug): sets title (what was built, no brand), shortTitle
  * (the brand), slug, seoTitle, seoDescription, focusKeyword and canonicalUrl. Empty Notion values
@@ -56,7 +56,7 @@ function toMarkdown(id, rt = []) {
     if (u && OLD_HOST.test(u)) {
       const to = MEDIA_MAP[u];
       if (to) u = to;
-      else { unmappedMedia.push(`${id}: ${u}`); u = null; if (c.trim().startsWith('http')) c = ''; }
+      else unmappedMedia.push(`${id}: ${u}`); // kept as-is: nothing is removed without the owner's say
     }
     const label = c.trim();
     if (u && label) {
@@ -124,7 +124,7 @@ for (const r of rows) {
 console.log(`${WRITE ? 'WRITE' : 'DRY RUN'} · notion ${rows.length} · sanity ${docs.length} · to patch ${patches.length}`);
 for (const f of FIELDS) console.log(`  ${f}: ${patches.filter((p) => p.set[f === 'slug' ? 'slug.current' : f] !== undefined).length}`);
 for (const p of patches) for (const [f, v] of Object.entries(p.set)) { if (f === 'bodyMarkdown') continue; const k = f.replace('.current', ''); console.log(`  ${p.id} ${k}: "${p.before[k] ?? ''}" → "${v}"`); }
-if (unmappedMedia.length) console.log(`old-host media with no R2 mapping (link dropped):\n  ${unmappedMedia.join('\n  ')}`);
+if (unmappedMedia.length) console.log(`old-host media with no R2 mapping (kept unchanged — needs a file in R2):\n  ${unmappedMedia.join('\n  ')}`);
 if (unmatched.length) console.log(`no Sanity doc: ${unmatched.join(', ')}`);
 if (slugSkipped.length) console.log(`slug skipped (taken):\n  ${slugSkipped.join('\n  ')}`);
 if (canonSkipped.length) console.log(`canonical skipped (not a published /work/ slug):\n  ${canonSkipped.join('\n  ')}`);
