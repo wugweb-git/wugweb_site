@@ -213,6 +213,11 @@ export default defineType({
     // a stub's canonical URL IS the real case study, and the redirect is simply
     // the stronger form of that same signal.
     defineField({
+      name: 'focusKeyword', type: 'string', group: 'seo',
+      title: 'Focus Keyword',
+      description: 'Synced from Notion (scripts/sync-notion-case-studies.mjs) — edit it there.',
+    }),
+    defineField({
       name: 'canonicalUrl', type: 'string', group: 'seo',
       title: 'Canonical URL',
       description: 'Leave empty for self-canonical. On a duplicate or legacy stub, point at the real case study (e.g. /work/real-slug) — the route 301s there instead of rendering.',
