@@ -6,9 +6,10 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 
 **2026-10-13 — Notion Case Studies is the source for slugs, legacy slugs and share images.** `scripts/notion-legacy-redirects.mjs` turned `Legacy Slugs` on Published rows into 29 more 301 redirects. 29/29 verified, and all 8 overlaps agree with the earlier 12. **Owner decisions:**
 (1) ~~OG~~ **Done:** Notion `OG Image` + `Cover Image` on the 19 rows now hold the R2 cover URL (`scripts/fix-notion-case-study-media.mjs`, backup `backups/notion-case-study-media-before-2026-10-13.json`). 0 Framer URLs left in either column.
-(2) musiclinkd: Notion slug `musiclinkd`, Sanity slug and live page `audiofolio`.
+(2) ~~musiclinkd~~ **Done:** Sanity slug + canonical renamed to `musiclinkd` (doc id stays `caseStudy-audiofolio`), 301 `/work/audiofolio` → `/work/musiclinkd`, legacy long slug in `work-redirects.ts` points straight there. Verified on UAT: 200 / 301 / 301.
 (3) ~~Canonical URL~~ **Done:** 12 Notion rows set to relative `/work/<slug>` (the format the route and the sync need). musiclinkd waits on (2). `sync-notion-case-studies.mjs` dry run afterwards: 0 to patch.
-(4) Notion Draft but Sanity published: bodyshop, eastman, pharmadropper, spark-logistics, thebizgift, hyatt-restaurants.
+(4) ~~Draft vs published~~ **Done:** those six are now Status = Published in Notion (backup `backups/notion-publish-six-before-2026-10-13.json`).
+**New (2026-10-13 04:44 UTC, owner edits in Notion):** 11 Canonical URLs were set to new long slugs (e.g. `/work/metcred-the-avant-garde-of-banking-designing-the-zero-fee-mobile-experience`) that are not published pages; the sync skips them, so Sanity keeps `/work/<slug>`. Sync dry run also offers 2 seoTitle + 1 focusKeyword changes (ITC, NTUC). Not applied: run `WRITE=1 node scripts/sync-notion-case-studies.mjs` when you want them.
 (5) 17 Sanity drafts not in Notion (mostly old long-slug drafts). Listed, never deleted.
 
 **2026-10-13 — DNS cutover prep done (cutover itself still on hold).** Verified on `wugweb.pages.dev`:

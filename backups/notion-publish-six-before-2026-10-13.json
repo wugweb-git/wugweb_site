@@ -1,0 +1,41 @@
+{
+  "takenAt": "2026-10-13T04:46:45.000Z",
+  "rows": [
+    {
+      "pageId": "3acbb710-b9ab-817a-a897-e9031fa4585f",
+      "id": "CS-027",
+      "slug": "bodyshop-building-a-premium-wellness-commerce-experience",
+      "status": "Draft"
+    },
+    {
+      "pageId": "3acbb710-b9ab-819a-9a17-e4dceaf5c1d7",
+      "id": "CS-025",
+      "slug": "eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+      "status": "Draft"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81bd-848d-e59497d5e268",
+      "id": "CS-023",
+      "slug": "pharmadropper-designing-cross-border-digital-healthcare-commerce",
+      "status": "Draft"
+    },
+    {
+      "pageId": "3acbb710-b9ab-814c-8fd9-ef81cea0a9f3",
+      "id": "CS-022",
+      "slug": "spark-logistics",
+      "status": "Draft"
+    },
+    {
+      "pageId": "3acbb710-b9ab-818c-8ea6-ed5c016f553b",
+      "id": "CS-021",
+      "slug": "thebizgift",
+      "status": "Draft"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81d4-bce4-db69fc3a0038",
+      "id": "CS-014",
+      "slug": "hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+      "status": "Draft"
+    }
+  ]
+}
