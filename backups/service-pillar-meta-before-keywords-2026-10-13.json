@@ -1,0 +1,41 @@
+{
+  "takenAt": "2026-10-13T12:02:25.387Z",
+  "docs": [
+    {
+      "_id": "brand",
+      "_rev": "Zp6AkUkGK4usgMripv0NPL",
+      "seoDescription": "Build a sharper brand foundation with Wugweb’s strategy, messaging, identity, campaign, and digital experience expertise.",
+      "seoTitle": "Brand Strategy Services — Wugweb"
+    },
+    {
+      "_id": "engineering",
+      "_rev": "Zp6AkUkGK4usgMripv0NPL",
+      "seoDescription": "Design and build secure, scalable websites and applications with Wugweb’s full-stack development and CMS expertise.",
+      "seoTitle": "Web and App Development Services — Wugweb"
+    },
+    {
+      "_id": "experience",
+      "_rev": "Zp6AkUkGK4usgMripv0NPL",
+      "seoDescription": "Create intuitive product and website experiences with Wugweb’s UX strategy, interface design, and scalable design systems.",
+      "seoTitle": "Experience Design Services — Wugweb"
+    },
+    {
+      "_id": "growth",
+      "_rev": "Zp6AkUkGK4usgMripv0NPL",
+      "seoDescription": "Connect marketing technology, automation, and generative AI into smarter customer journeys with Wugweb.",
+      "seoTitle": "Martech and GenAI Services — Wugweb"
+    },
+    {
+      "_id": "operations",
+      "_rev": "Zp6AkUkGK4usgMripv0NPL",
+      "seoDescription": "Improve product quality with Wugweb’s QA and testing support across usability, functionality, performance, and launch readiness.",
+      "seoTitle": "QA and Testing Services — Wugweb"
+    },
+    {
+      "_id": "strategy",
+      "_rev": "S5EFnJjn0OdXSc45QK0npE",
+      "seoDescription": "Define business, product and AI strategies that align vision with measurable outcomes.",
+      "seoTitle": "Strategy Services — Wugweb"
+    }
+  ]
+}
