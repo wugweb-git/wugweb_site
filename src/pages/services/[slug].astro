@@ -14,24 +14,13 @@ import FaqAccordion from '../../components/FaqAccordion.astro';
 import InsightsBlock from '../../components/InsightsBlock.astro';
 import ServiceSpotlightPanel from '../../components/ServiceSpotlightPanel.astro';
 
-/** Framer marketing slugs → 6-pillar keys used in related-work filters + hardcoded fallbacks */
-const FRAMER_TO_PILLAR: Record<string, string> = {
-  'brand-strategy': 'brand',
-  'experience-design': 'experience',
-  'martech-genai': 'growth',
-  'web-app-development': 'engineering',
-  'qa-testing': 'operations',
-  'no-code-solutions': 'engineering',
-  'lead-generation': 'growth',
-};
-
-
-
 const slug = Astro.params.slug || '';
 
-const pillarSlug = FRAMER_TO_PILLAR[slug] || slug;
+// One URL per service: the six pillar slugs only. The old Framer service
+// slugs (/services/experience-design, …) are not aliased and 404.
+const pillarSlug = slug;
 const fromSanity = await sanityClient.fetch(serviceBySlugQuery, { slug }).catch(() => null);
-const fallback = hardcodedServices[slug] || hardcodedServices[pillarSlug] || null;
+const fallback = hardcodedServices[slug] || null;
 
 function preferArr<T>(primary: T[] | null | undefined, secondary: T[] | null | undefined): T[] {
   return Array.isArray(primary) && primary.length > 0 ? primary : Array.isArray(secondary) ? secondary : [];
