@@ -6,11 +6,12 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 
 **2026-10-13 — Notion Case Studies is the source for slugs, legacy slugs and share images.** `scripts/notion-legacy-redirects.mjs` turned `Legacy Slugs` on Published rows into 29 more 301 redirects. 29/29 verified, and all 8 overlaps agree with the earlier 12. **Owner decisions:**
 (1) ~~OG~~ **Done:** Notion `OG Image` + `Cover Image` on the 19 rows now hold the R2 cover URL (`scripts/fix-notion-case-study-media.mjs`, backup `backups/notion-case-study-media-before-2026-10-13.json`). 0 Framer URLs left in either column.
-(2) ~~musiclinkd~~ **Done:** Sanity slug + canonical renamed to `musiclinkd` (doc id stays `caseStudy-audiofolio`), 301 `/work/audiofolio` → `/work/musiclinkd`, legacy long slug in `work-redirects.ts` points straight there. Verified on UAT: 200 / 301 / 301.
+(2) ~~musiclinkd~~ **Done:** Sanity slug + canonical renamed to `musiclinkd` (doc id stays `caseStudy-musiclinkd`), 301 `/work/musiclinkd` → `/work/musiclinkd`, legacy long slug in `work-redirects.ts` points straight there. Verified on UAT: 200 / 301 / 301.
 (3) ~~Canonical URL~~ **Done:** 12 Notion rows set to relative `/work/<slug>` (the format the route and the sync need). musiclinkd waits on (2). `sync-notion-case-studies.mjs` dry run afterwards: 0 to patch.
 (4) ~~Draft vs published~~ **Done:** those six are now Status = Published in Notion (backup `backups/notion-publish-six-before-2026-10-13.json`).
-~~**New (2026-10-13 04:44 UTC):** 11 Canonical URLs on new long slugs~~ **Done 2026-10-13:** Notion changed 11 slugs (CS-002/005/008/009/011/016/019/024/038/040/042) to the brand + title long form. `sync-notion-case-studies.mjs` now also syncs Title, Short Title and Slug, so the canonicals resolve and were applied (38 docs; CS-024 kept `caseStudy-audiofolio`). `notion-legacy-redirects.mjs` created 18 301s and repointed 11 older redirects to the new slugs; `work-redirects.ts` points straight at the current slugs. Order matters: run the case-study sync first, then the redirect script.
+~~**New (2026-10-13 04:44 UTC):** 11 Canonical URLs on new long slugs~~ **Done 2026-10-13:** Notion changed 11 slugs (CS-002/005/008/009/011/016/019/024/038/040/042) to the brand + title long form. `sync-notion-case-studies.mjs` now also syncs Title, Short Title and Slug, so the canonicals resolve and were applied (38 docs; CS-024 kept `caseStudy-musiclinkd`). `notion-legacy-redirects.mjs` created 18 301s and repointed 11 older redirects to the new slugs; `work-redirects.ts` points straight at the current slugs. Order matters: run the case-study sync first, then the redirect script.
 **Superseded later 2026-10-13 (owner decision): one slug per case study, no Legacy Slugs, no redirects.** The old URLs were only ever public on pages.dev; Framer URLs stay on Framer. Removed `scripts/notion-legacy-redirects.mjs` and `src/lib/work-redirects.ts`; unknown `/work/` slugs 404. All 60 Sanity redirect docs backed up to `backups/redirects-all-2026-10-13.json` for deletion. Owner can drop the Notion `Legacy Slugs` column. Old-URL handling for Framer pages is a DNS-cutover decision, not now.
+**Framer URL redirects (2026-10-13, owner order):** one canonical URL per page, plus one 301 for each old Framer URL that 404s on UAT — not Legacy Slugs, nothing in Notion. Traced the 75-URL wugweb.com sitemap on UAT: 23 404s. Created 15 Sanity `redirect` docs (`redirect-framer-*`, 301, enabled; 14 case studies + `/blog/10-key-takeaways-from-google-s-material-design-guidelines`), each pointing at the current slug; RAK and Woodkraft sources keep the curly apostrophe (raw and %E2%80%99 both match). Backup: `backups/redirects-before-framer15-2026-10-13.json`. **Open:** 8 more Framer blog URLs 404 on UAT and were outside the 15: `/blog/design-work-concentration`, `ux-meets-cx-seamless-experiences`, `top-10-design-systems-ux-ui-2026`, `html-sitemaps-for-seo-ux`, `balancing-user-needs-and-business-goals`, `agile-working-in-ux`, `remote-design-work-pros-cons`, `ai-in-ux-design` — owner to decide.
 (5) 17 Sanity drafts not in Notion (mostly old long-slug drafts). Listed, never deleted.
 
 **2026-10-13 — DNS cutover prep done (cutover itself still on hold).** Verified on `wugweb.pages.dev`:
@@ -1472,3 +1473,24 @@ declarations, labelling rules, implementation map, history, verification.
   Visible gain is small — source frames are soft/motion-blurred. Searched
   this Mac, iCloud, both Google Drives, R2 and the Framer site: no higher-res
   original exists. True sharpness needs the source project re-exported.
+
+### 1aa. Blog SEO / AEO audit and fixes — *2026-10-13*
+
+Audited all 103 live posts on wugweb.pages.dev. Fixed and re-measured live:
+
+- SEO titles 50 ≤ chars ≤ 60: 79 → **103/103** (23 rewritten in Notion `SEO Title`)
+- Meta descriptions 140 ≤ chars ≤ 160: 100 → **103/103** (3 extended)
+- Image alt: 47 missing → **0** (Notion caption `Alt: …` = alt only, no visible figcaption)
+- Image width/height: 0/223 → **223/223** (measured by the sync with sharp)
+- In-body internal links: 102 posts with none → **27** (137 links, anchors on existing words only)
+- "Updated 12 Oct 2026" on 93 posts (sync `_updatedAt`) → `contentUpdatedAt` from Notion
+  "Last Updated". It equals Publish Date on all 103, so the Updated row is hidden everywhere.
+- BlogPosting: author → `#founder` node or Person with url/sameAs; BreadcrumbList added;
+  `mainEntityOfPage` honours canonicalUrl; share links use www. **Not verified live** —
+  JSON-LD is suppressed on non-canonical hosts, and the local dev server failed to start (EPERM).
+
+Open (copy, Vedanshu): the first body paragraph is hidden when it equals the excerpt, so links
+there don't render. 27 posts still need link-friendly wording. AEO briefs pending (question H2s,
+key takeaways, FAQ) for the no-H2 post, 7 posts with colon headings, 6 generic openers and the
+26 shortest posts. ParcelShop `02-image.jpg` is too blurred to read — re-export.
+Backups: `backups/notion-blogs-*-pre-seo-2026-10-13.json`, `backups/sanity-pre-notion-blog-sync-2026-10-13T05-*.json`.
