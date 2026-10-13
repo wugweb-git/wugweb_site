@@ -206,7 +206,15 @@ const organizationNode = {
   // siteSettings.logoPath is empty, which left Organization (the publisher of every post) without
   // the logo Google requires for Article rich results. Fall back to the W mark in R2 (648px square).
   logo: assetUrl(settings?.logoPath || '/assets/brand/small.jpg'),
-  sameAs: (settings?.sameAs?.length ? settings.sameAs : (livePlatformProfiles as any[]).map((p) => p.profileUrl)),
+  // sameAs asserts "this URL is also Wugweb", so only real profile pages qualify: a portal home
+  // page (gem.gov.in), an admin login or a link-checker page (sur.ly) says nothing about us.
+  sameAs: (settings?.sameAs?.length ? settings.sameAs : (livePlatformProfiles as any[]).map((p) => p.profileUrl))
+    .filter((u: string) => {
+      try {
+        const url = new URL(u);
+        return (url.pathname.replace(/\/+$/, '') !== '' || /wugweb/i.test(url.hostname)) && !/(^|\.)sur\.ly$/.test(url.hostname);
+      } catch { return false; }
+    }),
   founder: { '@id': `${canonicalOrigin}/#founder` },
 };
 // The personal site goes on the Person, not the Organization: sameAs asserts
