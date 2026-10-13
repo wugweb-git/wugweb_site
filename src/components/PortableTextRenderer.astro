@@ -212,7 +212,7 @@ if (currentList) {
             {isVideo ? (
               <video aria-label={b.alt || b.caption || 'Video'} src={src} poster={posterFor(src)} muted loop playsinline controls preload="metadata" class="pt-video" />
             ) : (
-              <img src={src} alt={b.alt || b.caption || ''} loading="lazy" decoding="async" class="pt-image" />
+              <img src={src} alt={b.alt || b.caption || ''} width={b.width} height={b.height} loading="lazy" decoding="async" class="pt-image" />
             )}
           </div>
           {b.caption && <figcaption class="pt-caption">{b.caption}</figcaption>}

@@ -39,7 +39,7 @@ export const caseStudiesListQuery = `
 
 export const caseStudyBySlugQuery = `
   *[_type == "caseStudy" && slug.current == $slug && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
-    title, subtitle, client, summary, about, challenges, solutions, designPhilosophy, impact, galleryPaths,
+    title, shortTitle, subtitle, client, summary, about, challenges, solutions, designPhilosophy, impact, galleryPaths,
     bodyContent, tags, disciplines, industry, timeline, team, partner,
     coverImage, coverPath, thumbnailPath, results, canonicalUrl,
     seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, noIndex, publishedAt, featured,
@@ -58,7 +58,7 @@ export const postsListQuery = `
 export const postBySlugQuery = `
   *[_type == "post" && slug.current == $slug && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
     _id, _updatedAt,
-    title, excerpt, coverImage, coverPath, publishedAt, tags, category, readingTime, language, syndicatedTo,
+    title, excerpt, coverImage, coverPath, publishedAt, contentUpdatedAt, tags, category, readingTime, language, syndicatedTo,
     seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, noIndex, canonicalUrl,
     // internalLink marks carry only a _ref unless dereferenced here — without
     // this every internal link in a post body rendered as href="#".

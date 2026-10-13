@@ -323,6 +323,10 @@ export const mediaUrl = defineType({
     { name: 'url', type: 'url', title: 'Media URL', description: 'Image or video URL (R2/local path or full URL)' },
     { name: 'caption', type: 'string', title: 'Caption' },
     { name: 'alt', type: 'string', title: 'Alt text' },
+    // Intrinsic size, written by the Notion blog sync. Rendered as width/height
+    // so the browser reserves the box before the image loads (no layout shift).
+    { name: 'width', type: 'number', title: 'Width (px)', readOnly: true },
+    { name: 'height', type: 'number', title: 'Height (px)', readOnly: true },
   ],
   preview: {
     select: { title: 'caption', subtitle: 'url' },
