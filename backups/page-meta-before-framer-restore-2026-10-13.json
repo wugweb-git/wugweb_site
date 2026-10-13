@@ -1,0 +1,373 @@
+{
+  "takenAt": "2026-10-13T11:16:00.226Z",
+  "sanity": [
+    {
+      "_id": "about",
+      "_rev": "Zp6AkUkGK4usgMripfjkhj",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/about/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & produ…",
+      "seoTitle": "About Us"
+    },
+    {
+      "_id": "blog",
+      "_rev": "Zp6AkUkGK4usgMripfjkhj",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/blog/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, digital product strategy, and creative thinking.",
+      "seoTitle": "Wugweb | Insights on UI/UX Design & Digital Strategy"
+    },
+    {
+      "_id": "contact",
+      "_rev": "Zp6AkUkGK4usgMripfjojn",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/contact/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Wugweb — Digital Experience Agency",
+      "seoTitle": "Are you ready to build something that matters?"
+    },
+    {
+      "_id": "faq",
+      "_rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Wugweb — Digital Experience Agency",
+      "seoTitle": "Frequently Asked Questions"
+    },
+    {
+      "_id": "home",
+      "_rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Wugweb is a digital experience agency where design meets engineering to shape what is next. We deliver tailored UX design services, rooted in user-centered d…",
+      "seoTitle": "Where Vision Meets Velocity"
+    },
+    {
+      "_id": "impact",
+      "_rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Wugweb — Digital Experience Agency",
+      "seoTitle": "Impact"
+    },
+    {
+      "_id": "industries",
+      "_rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Explore the industries Wugweb supports with brand strategy, UX design, martech, AI, and web development expertise.",
+      "seoTitle": "Industries — Wugweb"
+    },
+    {
+      "_id": "privacy-policy",
+      "_rev": "S5EFnJjn0OdXSc45Pw7wJI",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Read Wugweb's privacy policy to understand how we collect, use, and protect information across our website and services.",
+      "seoTitle": "Privacy Policy"
+    },
+    {
+      "_id": "refund-policy",
+      "_rev": "S5EFnJjn0OdXSc45Pw7wJI",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Legal Updated on November 04, 2025 Overview At Wugweb, we are committed to delivering high-quality digital experience services. This Refund Policy outlines t…",
+      "seoTitle": "Refund Policy"
+    },
+    {
+      "_id": "services",
+      "_rev": "S5EFnJjn0OdXSc45Pw7wJI",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/services/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+      "seoTitle": "Digital Experience Services — Wugweb"
+    },
+    {
+      "_id": "sitemap",
+      "_rev": "S5EFnJjn0OdXSc45Pw7wJI",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Navigate key Wugweb pages, services, work, insights, and support destinations from one place.",
+      "seoTitle": "Sitemap — Wugweb"
+    },
+    {
+      "_id": "subscription",
+      "_rev": "36TK9CDo7y3YWN6Ak6nnXT",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Subscribe to receive updates, insights, and digital experience thinking from Wugweb.",
+      "seoTitle": "Subscribe — Wugweb"
+    },
+    {
+      "_id": "terms-of-use",
+      "_rev": "36TK9CDo7y3YWN6Ak6nnXT",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/default/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Read Wugweb's terms of use for website access, service information, and visitor responsibilities.",
+      "seoTitle": "Terms of Use — Wugweb"
+    },
+    {
+      "_id": "work",
+      "_rev": "36TK9CDo7y3YWN6AkFKCwh",
+      "ogDescription": null,
+      "ogImagePath": "/assets/site/work/og.jpg",
+      "ogTitle": null,
+      "seoDescription": "Explore the diverse brands and businesses that trust Wugweb for UI/UX design, web development, and digital experience solutions.",
+      "seoTitle": "Case Studies | Brand, Product & UX Design Work"
+    }
+  ],
+  "notion": [
+    {
+      "pageId": "3eebb710-b9ab-8199-805b-ecd48bb66ab1",
+      "id": "home",
+      "before": {
+        "SEO Title": "Where Vision Meets Velocity",
+        "SEO Description": "Wugweb is a digital experience agency where design meets engineering to shape what is next. We deliver tailored UX design services, rooted in user-centered d…",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-81c0-a9d5-caecd9c04f5e",
+      "id": "about",
+      "before": {
+        "SEO Title": "About Us",
+        "SEO Description": "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & produ…",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/about.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-8132-be19-e5d6ea37abba",
+      "id": "work",
+      "before": {
+        "SEO Title": "Clients – Wugweb | Trusted by Innovative Brands",
+        "SEO Description": "Explore the diverse brands and businesses that trust Wugweb for UI/UX design, web development, and digital experience solutions.",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/work.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-8117-9470-d93464f6fc90",
+      "id": "faq",
+      "before": {
+        "SEO Title": "Frequently Asked Questions",
+        "SEO Description": "Wugweb — Digital Experience Agency",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-8115-b42d-c707193bc7e9",
+      "id": "blog",
+      "before": {
+        "SEO Title": "Wugweb | Insights on UI/UX Design & Digital Strategy",
+        "SEO Description": "Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, digital product strategy, and creative thinking.",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/blog.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-8188-9aff-ddc8573d2009",
+      "id": "services",
+      "before": {
+        "SEO Title": "Digital Experience Services — Wugweb",
+        "SEO Description": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/services.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-8195-8489-c3e87c64c451",
+      "id": "contact",
+      "before": {
+        "SEO Title": "Are you ready to build something that matters?",
+        "SEO Description": "Wugweb — Digital Experience Agency",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/contact.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-815e-bd6d-db91f8f6d7c3",
+      "id": "subscription",
+      "before": {
+        "SEO Title": "Subscribe — Wugweb",
+        "SEO Description": "Subscribe to receive updates, insights, and digital experience thinking from Wugweb.",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-8119-9176-d769118cbd56",
+      "id": "sitemap",
+      "before": {
+        "SEO Title": "Sitemap — Wugweb",
+        "SEO Description": "Navigate key Wugweb pages, services, work, insights, and support destinations from one place.",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-816d-9b45-c825f3434605",
+      "id": "industries",
+      "before": {
+        "SEO Title": "Industries — Wugweb",
+        "SEO Description": "Explore the industries Wugweb supports with brand strategy, UX design, martech, AI, and web development expertise.",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-8148-acb9-f55621611b99",
+      "id": "impact",
+      "before": {
+        "SEO Title": "Impact",
+        "SEO Description": "Wugweb — Digital Experience Agency",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-81ce-b78d-d6275ece0101",
+      "id": "terms-of-use",
+      "before": {
+        "SEO Title": "Terms of Use — Wugweb",
+        "SEO Description": "Read Wugweb's terms of use for website access, service information, and visitor responsibilities.",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-810d-b80f-efe29b15e026",
+      "id": "privacy-policy",
+      "before": {
+        "SEO Title": "Privacy Policy",
+        "SEO Description": "Read Wugweb's privacy policy to understand how we collect, use, and protect information across our website and services.",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    },
+    {
+      "pageId": "3eebb710-b9ab-8185-80e7-e430039cf81d",
+      "id": "refund-policy",
+      "before": {
+        "SEO Title": "Refund Policy",
+        "SEO Description": "Legal Updated on November 04, 2025 Overview At Wugweb, we are committed to delivering high-quality digital experience services. This Refund Policy outlines t…",
+        "OG Title": "",
+        "OG Description": "",
+        "OG Image": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/og/default.jpg"
+      }
+    }
+  ],
+  "framer": {
+    "home": {
+      "seoTitle": "Wugweb — Digital Experience Agency",
+      "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+      "ogTitle": "Wugweb — Digital Experience Agency",
+      "ogDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams."
+    },
+    "about": {
+      "seoTitle": "About Wugweb - UI/UX Design & Digital Experience Experts",
+      "seoDescription": "Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.",
+      "ogTitle": "About Wugweb - UI/UX Design & Digital Experience Experts",
+      "ogDescription": "Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands."
+    },
+    "work": {
+      "seoTitle": "Clients – Wugweb | Trusted by Innovative Brands",
+      "seoDescription": "Explore the diverse brands and businesses that trust Wugweb for UI/UX design, web development, and digital experience solutions.",
+      "ogTitle": "Clients – Wugweb | Trusted by Innovative Brands",
+      "ogDescription": "Explore the diverse brands and businesses that trust Wugweb for UI/UX design, web development, and digital experience solutions."
+    },
+    "faq": {
+      "seoTitle": "FAQs — Wugweb",
+      "seoDescription": "Find answers to common questions about working with Wugweb, our process, services, timelines, and digital experience capabilities.",
+      "ogTitle": "FAQs — Wugweb",
+      "ogDescription": "Find answers to common questions about working with Wugweb, our process, services, timelines, and digital experience capabilities."
+    },
+    "blog": {
+      "seoTitle": "Wugweb | Insights on UI/UX Design & Digital Strategy",
+      "seoDescription": "Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, digital product strategy, and creative thinking.",
+      "ogTitle": "Wugweb | Insights on UI/UX Design & Digital Strategy",
+      "ogDescription": "Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, digital product strategy, and creative thinking."
+    },
+    "services": {
+      "seoTitle": "Digital Experience Services — Wugweb",
+      "seoDescription": "Explore Wugweb’s brand strategy, UX design, martech, AI, QA, no-code, lead generation, and web development services for ambitious teams.",
+      "ogTitle": "Digital Experience Services — Wugweb",
+      "ogDescription": "Explore Wugweb’s brand strategy, UX design, martech, AI, QA, no-code, lead generation, and web development services for ambitious teams."
+    },
+    "contact": {
+      "seoTitle": "Contact Us – Wugweb | Let’s Build Great Experiences Together",
+      "seoDescription": "Have a project in mind? Get in touch with Wugweb for UI/UX design and digital solutions. We’d love to hear from you and help bring your vision to life.",
+      "ogTitle": "Contact Us – Wugweb | Let’s Build Great Experiences Together",
+      "ogDescription": "Have a project in mind? Get in touch with Wugweb for UI/UX design and digital solutions. We’d love to hear from you and help bring your vision to life."
+    },
+    "subscription": {
+      "seoTitle": "Subscribe — Wugweb",
+      "seoDescription": "Subscribe to receive updates, insights, and digital experience thinking from Wugweb.",
+      "ogTitle": "Subscribe — Wugweb",
+      "ogDescription": "Subscribe to receive updates, insights, and digital experience thinking from Wugweb."
+    },
+    "sitemap": {
+      "seoTitle": "Sitemap — Wugweb",
+      "seoDescription": "Navigate key Wugweb pages, services, work, insights, and support destinations from one place.",
+      "ogTitle": "Sitemap — Wugweb",
+      "ogDescription": "Navigate key Wugweb pages, services, work, insights, and support destinations from one place."
+    },
+    "industries": {
+      "seoTitle": "Industries — Wugweb",
+      "seoDescription": "Explore the industries Wugweb supports with brand strategy, UX design, martech, AI, and web development expertise.",
+      "ogTitle": "Industries — Wugweb",
+      "ogDescription": "Explore the industries Wugweb supports with brand strategy, UX design, martech, AI, and web development expertise."
+    },
+    "impact": {
+      "seoTitle": "Impact — Wugweb",
+      "seoDescription": "A focused Wugweb footer destination for impact-related content and supporting links.",
+      "ogTitle": "Impact — Wugweb",
+      "ogDescription": "A focused Wugweb footer destination for impact-related content and supporting links."
+    },
+    "terms-of-use": {
+      "seoTitle": "Terms of Use — Wugweb",
+      "seoDescription": "Read Wugweb’s terms of use for website access, service information, and visitor responsibilities.",
+      "ogTitle": "Terms of Use — Wugweb",
+      "ogDescription": "Read Wugweb’s terms of use for website access, service information, and visitor responsibilities."
+    },
+    "privacy-policy": {
+      "seoTitle": "Privacy Policy — Wugweb",
+      "seoDescription": "Read Wugweb’s privacy policy to understand how we collect, use, and protect information across our website and services.",
+      "ogTitle": "Privacy Policy — Wugweb",
+      "ogDescription": "Read Wugweb’s privacy policy to understand how we collect, use, and protect information across our website and services."
+    },
+    "refund-policy": {
+      "seoTitle": "Refund Policy — Wugweb",
+      "seoDescription": "Review Wugweb’s refund policy for service agreements, payments, and project-related terms.",
+      "ogTitle": "Refund Policy — Wugweb",
+      "ogDescription": "Review Wugweb’s refund policy for service agreements, payments, and project-related terms."
+    }
+  }
+}
