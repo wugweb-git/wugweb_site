@@ -135,16 +135,16 @@
         {
           "type": "caseStudy",
           "kind": "duplicate-title",
-          "title": "AudioFolio – Reinventing Audio Discovery Through AI",
+          "title": "MusicLinkd – Reinventing Audio Discovery Through AI",
           "docs": [
             {
-              "_id": "caseStudy-audiofolio",
-              "slug": "audiofolio",
+              "_id": "caseStudy-musiclinkd",
+              "slug": "musiclinkd",
               "createdAt": "2026-07-29T00:11:13Z"
             },
             {
-              "_id": "caseStudy-audiofolio-reinventing-audio-discovery-through-ai",
-              "slug": "audiofolio-reinventing-audio-discovery-through-ai",
+              "_id": "caseStudy-musiclinkd-reinventing-audio-discovery-through-ai",
+              "slug": "musiclinkd-reinventing-audio-discovery-through-ai",
               "createdAt": "2026-07-29T00:30:37Z"
             }
           ]
@@ -756,9 +756,9 @@
         },
         {
           "type": "caseStudy",
-          "_id": "caseStudy-audiofolio",
-          "title": "AudioFolio – Reinventing Audio Discovery Through AI",
-          "slug": "audiofolio",
+          "_id": "caseStudy-musiclinkd",
+          "title": "MusicLinkd – Reinventing Audio Discovery Through AI",
+          "slug": "musiclinkd",
           "createdAt": "2026-07-29T00:11:13Z",
           "updatedAt": "2026-08-05T02:02:54Z",
           "bodyWords": 0,
@@ -769,9 +769,9 @@
         },
         {
           "type": "caseStudy",
-          "_id": "caseStudy-audiofolio-reinventing-audio-discovery-through-ai",
-          "title": "AudioFolio – Reinventing Audio Discovery Through AI",
-          "slug": "audiofolio-reinventing-audio-discovery-through-ai",
+          "_id": "caseStudy-musiclinkd-reinventing-audio-discovery-through-ai",
+          "title": "MusicLinkd – Reinventing Audio Discovery Through AI",
+          "slug": "musiclinkd-reinventing-audio-discovery-through-ai",
           "createdAt": "2026-07-29T00:30:37Z",
           "updatedAt": "2026-08-05T02:02:54Z",
           "bodyWords": 0,

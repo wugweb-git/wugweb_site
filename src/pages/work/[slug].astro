@@ -15,11 +15,10 @@ const previewToken = (Astro.locals as any)?.previewToken as string | undefined;
 const client = previewToken ? getPreviewClient(previewToken) : sanityClient;
 const work = await client.fetch(caseStudyBySlugQuery, { slug }).catch(() => null);
 
-// Two old short URLs that are not a prefix of their case study's slug.
-// Kept here, not in public/_redirects: Pages does not apply _redirects to
-// requests served by the worker, and every /work/* request is.
+// Old short URL that is not a prefix of its case study's slug. Kept here,
+// not in public/_redirects: Pages does not apply _redirects to requests
+// served by the worker, and every /work/* request is.
 const SHORT_URLS: Record<string, string> = {
-  audiofolio: 'musiclinkd-building-the-professional-infrastructure-for-the-music-industry',
   'cartier-careers': 'cartier-redesigning-the-career-website-where-passion-meets-excellence',
 };
 

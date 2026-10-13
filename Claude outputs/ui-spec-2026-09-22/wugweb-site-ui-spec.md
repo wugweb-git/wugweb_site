@@ -326,9 +326,9 @@ install actually renders, because a wrapped component can differ from what ships
 
 ## 14. Content flags (NOT in scope — listed so they are not lost)
 
-- three case studies exist under two slugs each (Airtel Xsafe, Airtel Xstream Play, AudioFolio);
+- three case studies exist under two slugs each (Airtel Xsafe, Airtel Xstream Play, MusicLinkd);
   old slugs should 301 to new ones rather than exist as duplicate pages
-- both AudioFolio cards have no thumbnail
+- both MusicLinkd cards have no thumbnail
 - shared logo files: Airtel XSafe = Airtel Xstream; IndusInd = IndusNinja; Sadhan = TOT
 - IndusNinja, TOT, Valyu.ai, VisiOne still load from `/assets/framer/...`
 - "Trusted by leading brands" heading sits inside the logo list

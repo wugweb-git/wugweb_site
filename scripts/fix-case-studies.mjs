@@ -95,7 +95,7 @@ const SLUG_MAP = {
   'TheBizGift': 'thebizgift-reimagining-corporate-gifting-through-intelligent-commerce',
   'Spark': 'spark-logistics-building-a-unified-logistics-intelligence-platform',
   'PharmaDropper': 'pharmadropper-designing-cross-border-digital-healthcare-commerce',
-  'AudioFolio': 'audiofolio-reinventing-audio-discovery-through-ai',
+  'MusicLinkd': 'musiclinkd-reinventing-audio-discovery-through-ai',
   'Eastman': 'eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences',
   'Bodyshop': 'bodyshop-building-a-premium-wellness-commerce-experience',
   'Greenko': 'greenko-designing-digital-infrastructure-for-the-energy-transition',

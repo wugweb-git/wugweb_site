@@ -1,0 +1,729 @@
+{
+  "takenAt": "2026-10-13T05:26:29.829Z",
+  "old": {
+    "_createdAt": "2026-07-29T00:11:13Z",
+    "_id": "caseStudy-audiofolio",
+    "_rev": "36TK9CDo7y3YWN6AkFTuRn",
+    "_type": "caseStudy",
+    "_updatedAt": "2026-10-13T04:47:20Z",
+    "about": "Complete original markdown from Case Study 24.",
+    "aiKeywords": "AudioFolio, AI, Audio Search, Discovery Platform",
+    "aiSummary": "AudioFolio is an internal Wugweb product in AI and media technology. It is an AI-powered platform for discovering, organising and consuming spoken audio content. The work covered product design, UX design and systems architecture.",
+    "bodyContent": [
+      {
+        "_key": "about",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "child",
+            "_type": "span",
+            "text": "Complete original markdown from Case Study 24."
+          }
+        ],
+        "mark": {
+          "_key": "mark",
+          "annotations": [],
+          "decorators": []
+        },
+        "style": "normal"
+      }
+    ],
+    "canonicalUrl": "/work/musiclinkd-building-the-professional-infrastructure-for-the-music-industry",
+    "client": "MusicLinkd",
+    "clientRef": {
+      "_ref": "1ldNh76NU0J0b4so5EjOGn",
+      "_type": "reference"
+    },
+    "disciplines": [
+      "Product Design",
+      "UX Design",
+      "Systems Architecture"
+    ],
+    "engagementType": "Internal",
+    "featured": true,
+    "focusKeyword": "music industry platform",
+    "industry": "AI, Media Technology",
+    "industryRef": {
+      "_ref": "industry-media",
+      "_type": "reference"
+    },
+    "language": "en",
+    "owner": "wugweb",
+    "partner": "None",
+    "platform": "Web App",
+    "projectType": "AI Product",
+    "publishedAt": "2024-06-15T00:00:00Z",
+    "schemaType": "CreativeWork",
+    "seoDescription": "MusicLinkd is a professional music industry platform connecting the people and businesses behind music through identity, discovery, bookings and reputation.",
+    "seoTitle": "MusicLinkd: Professional Music Industry Platform",
+    "shortTitle": "MusicLinkd",
+    "slug": {
+      "_type": "slug",
+      "current": "musiclinkd-building-the-professional-infrastructure-for-the-music-industry"
+    },
+    "status": "Published",
+    "subtitle": "AudioFolio",
+    "summary": "Creating an intelligent platform for discovering and organizing spoken content. Case study on AudioFolio, an internal Wugweb product: an AI-powered platform for discovering, organising and consuming spoken content.",
+    "tags": [
+      "AI",
+      "Audio",
+      "Discovery"
+    ],
+    "team": [
+      "Vedanshu Srivastava"
+    ],
+    "timeline": "",
+    "title": "Building the Professional Infrastructure for the Music Industry",
+    "visibility": "Public"
+  },
+  "stale": {
+    "_createdAt": "2026-10-03T21:55:51Z",
+    "_id": "drafts.caseStudy-audiofolio-reinventing-audio-discovery-through-ai",
+    "_rev": "eQCR1n23HeACrbntf5JOZd",
+    "_type": "caseStudy",
+    "_updatedAt": "2026-10-03T21:55:51Z",
+    "about": "NTUC U Care is a pivotal initiative by the National Trades Union Congress in Singapore, dedicated to supporting low-income union members and their families. Its core mission involves providing financial and educational assistance through programs like the NTUC Care Fund and e-Vouchers. Recognizing the need for a user-friendly and efficient online platform, this project aimed to streamline aid distribution, program management, and enhance overall member empowerment.",
+    "bodyContent": [
+      {
+        "_key": "about",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "child",
+            "_type": "span",
+            "text": "NTUC U Care is a pivotal initiative by the National Trades Union Congress in Singapore, dedicated to supporting low-income union members and their families. Its core mission involves providing financial and educational assistance through programs like the NTUC Care Fund and e-Vouchers. Recognizing the need for a user-friendly and efficient online platform, this project aimed to streamline aid distribution, program management, and enhance overall member empowerment."
+          }
+        ],
+        "mark": {
+          "_key": "mark",
+          "annotations": [],
+          "decorators": []
+        },
+        "style": "normal"
+      },
+      {
+        "_key": "challenge-0-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "challenge-title-0-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Outdated Digital Presence"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "challenge-0-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "challenge-body-0-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Legacy interfaces lacked clarity, accessibility, and mobile responsiveness."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "challenge-1-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "challenge-title-1-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Inefficient Program Management"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "challenge-1-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "challenge-body-1-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Manual workflows slowed application processing and aid disbursement."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "challenge-2-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "challenge-title-2-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Lack of Centralized Data"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "challenge-2-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "challenge-body-2-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Fragmented data limited reporting, visibility, and strategic decision-making."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "challenge-3-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "challenge-title-3-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Poor Applicant Experience"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "challenge-3-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "challenge-body-3-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Complex navigation increased friction and application drop-offs."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "solution-0-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-title-0-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Modern Responsive Platform"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "solution-0-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-body-0-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Built a contemporary, mobile-first interface across public and applicant journeys."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "solution-1-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-title-1-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Simplified User Journeys"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "solution-1-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-body-1-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Redesigned information architecture for easier discovery and eligibility understanding."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "solution-2-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-title-2-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Streamlined Applicant Portal"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "solution-2-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-body-2-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Introduced guided, multi-step applications with clear progress tracking."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "solution-3-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-title-3-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Centralized Admin Backend"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "solution-3-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-body-3-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Developed dashboards to manage programs, applications, and disbursements efficiently."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "solution-4-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-title-4-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Unified Data Management"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "solution-4-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-body-4-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Established a single source of truth for programs and beneficiaries."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "solution-5-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-title-5-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Improved Communication Tools"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "solution-5-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "solution-body-5-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Enabled timely updates, resources, and engagement with members."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "design-philosophy",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "design-philosophy-child",
+            "_type": "span",
+            "text": "User-Centric Ecosystem Design\nOperational Efficiency Through Systems\nAccessibility as a Core Principle"
+          }
+        ],
+        "mark": {
+          "_key": "design-philosophy-mark",
+          "annotations": [],
+          "decorators": []
+        },
+        "style": "normal"
+      },
+      {
+        "_key": "imp-0-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "imp-title-0-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Improved Accessibility & UX"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "imp-0-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "imp-body-0-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Members accessed support programs more easily across devices."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "imp-1-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "imp-title-1-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Operational Efficiency Gains"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "imp-1-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "imp-body-1-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Centralized systems reduced manual effort and processing delays."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "imp-2-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "imp-title-2-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Better Beneficiary Outcomes"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "imp-2-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "imp-body-2-b",
+            "_type": "span",
+            "marks": [],
+            "text": "Simplified applications increased successful access to aid."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "imp-3-t",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "imp-title-3-t",
+            "_type": "span",
+            "marks": [],
+            "text": "Stronger Institutional Credibility"
+          }
+        ],
+        "markDefs": [],
+        "style": "h4"
+      },
+      {
+        "_key": "imp-3-b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "imp-body-3-b",
+            "_type": "span",
+            "marks": [],
+            "text": "A modern platform reinforced trust and organizational authority. *"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "challenges": [
+      {
+        "_key": "ch-0",
+        "body": "Legacy interfaces lacked clarity, accessibility, and mobile responsiveness.",
+        "title": "Outdated Digital Presence"
+      },
+      {
+        "_key": "ch-1",
+        "body": "Manual workflows slowed application processing and aid disbursement.",
+        "title": "Inefficient Program Management"
+      },
+      {
+        "_key": "ch-2",
+        "body": "Fragmented data limited reporting, visibility, and strategic decision-making.",
+        "title": "Lack of Centralized Data"
+      },
+      {
+        "_key": "ch-3",
+        "body": "Complex navigation increased friction and application drop-offs.",
+        "title": "Poor Applicant Experience"
+      }
+    ],
+    "client": "MusicLinkd",
+    "clientRef": {
+      "_ref": "1ldNh76NU0J0b4so5EjOGn",
+      "_type": "reference"
+    },
+    "designPhilosophy": "User-Centric Ecosystem Design\nOperational Efficiency Through Systems\nAccessibility as a Core Principle",
+    "disciplines": [
+      "Product Design",
+      "UX Design",
+      "Systems Architecture"
+    ],
+    "featured": true,
+    "impact": [
+      {
+        "_key": "imp-0",
+        "body": "Members accessed support programs more easily across devices.",
+        "title": "Improved Accessibility & UX"
+      },
+      {
+        "_key": "imp-1",
+        "body": "Centralized systems reduced manual effort and processing delays.",
+        "title": "Operational Efficiency Gains"
+      },
+      {
+        "_key": "imp-2",
+        "body": "Simplified applications increased successful access to aid.",
+        "title": "Better Beneficiary Outcomes"
+      },
+      {
+        "_key": "imp-3",
+        "body": "A modern platform reinforced trust and organizational authority. *",
+        "title": "Stronger Institutional Credibility"
+      }
+    ],
+    "industry": "AI, Media Technology",
+    "industryRef": {
+      "_ref": "industry-media",
+      "_type": "reference"
+    },
+    "neonSynced": false,
+    "owner": "wugweb",
+    "partner": "None",
+    "publishedAt": "2024-06-15T00:00:00Z",
+    "seoDescription": "",
+    "seoTitle": "",
+    "slug": {
+      "_type": "slug",
+      "current": "audiofolio-reinventing-audio-discovery-through-ai"
+    },
+    "solutions": [
+      {
+        "_key": "sol-0",
+        "body": "Built a contemporary, mobile-first interface across public and applicant journeys.",
+        "title": "Modern Responsive Platform"
+      },
+      {
+        "_key": "sol-1",
+        "body": "Redesigned information architecture for easier discovery and eligibility understanding.",
+        "title": "Simplified User Journeys"
+      },
+      {
+        "_key": "sol-2",
+        "body": "Introduced guided, multi-step applications with clear progress tracking.",
+        "title": "Streamlined Applicant Portal"
+      },
+      {
+        "_key": "sol-3",
+        "body": "Developed dashboards to manage programs, applications, and disbursements efficiently.",
+        "title": "Centralized Admin Backend"
+      },
+      {
+        "_key": "sol-4",
+        "body": "Established a single source of truth for programs and beneficiaries.",
+        "title": "Unified Data Management"
+      },
+      {
+        "_key": "sol-5",
+        "body": "Enabled timely updates, resources, and engagement with members.",
+        "title": "Improved Communication Tools"
+      }
+    ],
+    "subtitle": "Creating an intelligent platform for discovering and organizing spoken content.",
+    "summary": "AI,  Audio,  Discovery",
+    "tags": [
+      "AI",
+      "Audio",
+      "Discovery"
+    ],
+    "team": [
+      "Vedanshu Srivastava"
+    ],
+    "timeline": "",
+    "title": "AudioFolio – Reinventing Audio Discovery Through AI"
+  },
+  "refs": [
+    {
+      "_createdAt": "2026-08-05T02:02:14Z",
+      "_id": "1ldNh76NU0J0b4so5EjOGn",
+      "_rev": "38Qyv59QpLLajTC6plaUuR",
+      "_type": "client",
+      "_updatedAt": "2026-10-03T21:54:06Z",
+      "caseStudies": [
+        {
+          "_ref": "caseStudy-audiofolio",
+          "_type": "reference"
+        },
+        {
+          "_ref": "caseStudy-audiofolio",
+          "_type": "reference"
+        }
+      ],
+      "description": "Audio discovery platform (formerly AudioFolio).",
+      "name": "MusicLinkd",
+      "owner": "wugweb",
+      "slug": {
+        "_type": "slug",
+        "current": "musiclinkd"
+      }
+    }
+  ],
+  "created": {
+    "_id": "caseStudy-musiclinkd",
+    "_type": "caseStudy",
+    "about": "Complete original markdown from Case Study 24.",
+    "aiKeywords": "MusicLinkd, AI, Audio Search, Discovery Platform",
+    "aiSummary": "MusicLinkd is an internal Wugweb product in AI and media technology. It is an AI-powered platform for discovering, organising and consuming spoken audio content. The work covered product design, UX design and systems architecture.",
+    "bodyContent": [
+      {
+        "_key": "about",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "child",
+            "_type": "span",
+            "text": "Complete original markdown from Case Study 24."
+          }
+        ],
+        "mark": {
+          "_key": "mark",
+          "annotations": [],
+          "decorators": []
+        },
+        "style": "normal"
+      }
+    ],
+    "canonicalUrl": "/work/musiclinkd-building-the-professional-infrastructure-for-the-music-industry",
+    "client": "MusicLinkd",
+    "clientRef": {
+      "_ref": "1ldNh76NU0J0b4so5EjOGn",
+      "_type": "reference"
+    },
+    "disciplines": [
+      "Product Design",
+      "UX Design",
+      "Systems Architecture"
+    ],
+    "engagementType": "Internal",
+    "featured": true,
+    "focusKeyword": "music industry platform",
+    "industry": "AI, Media Technology",
+    "industryRef": {
+      "_ref": "industry-media",
+      "_type": "reference"
+    },
+    "language": "en",
+    "owner": "wugweb",
+    "partner": "None",
+    "platform": "Web App",
+    "projectType": "AI Product",
+    "publishedAt": "2024-06-15T00:00:00Z",
+    "schemaType": "CreativeWork",
+    "seoDescription": "MusicLinkd is a professional music industry platform connecting the people and businesses behind music through identity, discovery, bookings and reputation.",
+    "seoTitle": "MusicLinkd: Professional Music Industry Platform",
+    "shortTitle": "MusicLinkd",
+    "slug": {
+      "_type": "slug",
+      "current": "musiclinkd-building-the-professional-infrastructure-for-the-music-industry"
+    },
+    "status": "Published",
+    "subtitle": "MusicLinkd",
+    "summary": "Creating an intelligent platform for discovering and organizing spoken content. Case study on MusicLinkd, an internal Wugweb product: an AI-powered platform for discovering, organising and consuming spoken content.",
+    "tags": [
+      "AI",
+      "Audio",
+      "Discovery"
+    ],
+    "team": [
+      "Vedanshu Srivastava"
+    ],
+    "timeline": "",
+    "title": "Building the Professional Infrastructure for the Music Industry",
+    "visibility": "Public"
+  }
+}
