@@ -27,8 +27,8 @@ const PREVIEW_COOKIE = '__sanity_preview';
  * user-controlled and dropping a table is not a code change.
  */
 
-/** True when the route itself did not resolve: a 404, or the site's own
- *  "not found" redirect to /404 (blog, services and work slug pages do that). */
+/** True when the route itself did not resolve: a 404 (slug pages rewrite to /404), or a
+ *  "not found" redirect to /404. */
 function isNotFound(response: Response, origin: string): boolean {
   if (response.status === 404) return true;
   if (response.status >= 300 && response.status < 400) {

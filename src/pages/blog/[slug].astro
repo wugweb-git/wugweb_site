@@ -31,7 +31,7 @@ const client = previewToken ? getPreviewClient(previewToken) : sanityClient;
 const post = await client.fetch(postBySlugQuery, { slug }).catch(() => null);
 
 if (!post) {
-  return Astro.redirect('/404');
+  return Astro.rewrite('/404');
 }
 
 // One fixed site accent for every blog post — per-category pillar colors

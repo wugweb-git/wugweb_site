@@ -68,7 +68,7 @@ const service = !fallback && !fromSanity
     };
 
 if (!service) {
-  return Astro.redirect('/404');
+  return Astro.rewrite('/404');
 }
 
 // Tech-stack icons for toolkit chips

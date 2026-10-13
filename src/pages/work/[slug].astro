@@ -17,7 +17,7 @@ const work = await client.fetch(caseStudyBySlugQuery, { slug }).catch(() => null
 
 if (!work) {
   // One slug per case study (Notion is the source); no old-URL redirects.
-  return Astro.redirect('/404', 302);
+  return Astro.rewrite('/404');
 }
 
 // Legacy/duplicate docs carry canonicalUrl pointing at the real case
