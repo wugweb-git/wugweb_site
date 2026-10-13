@@ -1,7 +1,7 @@
 /**
  * Portable text → Markdown, word count and read time. Extracted unchanged from
- * tools/ArticleExportTool.tsx so the Tables row menu and bulk bar can use the
- * same conversion. Pure: no React, no Sanity client.
+ * the Copy & Export tool (tools/ArticleExportTool.tsx, deleted 2026-10-13) for
+ * the Tables row menu and bulk bar. Pure: no React, no Sanity client.
  */
 
 export function blocksToMarkdown(blocks: any[], title?: string): string {

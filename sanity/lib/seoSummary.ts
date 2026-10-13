@@ -24,7 +24,7 @@ export function summarizeChecks(row: Record<string, unknown>, dupes?: DuplicateI
   return { ...s, state, label: s.total ? `${s.passed}/${s.total}` : '—' };
 }
 
-/** SeoTool's "Missing SEO" rule: no description, or one of 20 characters or fewer. */
+/** The retired SEO tool's "Missing SEO" rule: no description, or one of 20 characters or fewer. */
 export const isMissingSeo = (row: Record<string, unknown>): boolean => {
   const d = row.seoDescription;
   return !(typeof d === 'string' && d.trim().length > 20);

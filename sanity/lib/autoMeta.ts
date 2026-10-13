@@ -1,5 +1,5 @@
 /**
- * "Auto Meta" — moved from tools/SeoTool.tsx (behaviour unchanged).
+ * "Auto Meta" — moved from the SEO tool (tools/SeoTool.tsx, deleted 2026-10-13), behaviour unchanged.
  * Fills seoTitle / seoDescription ONLY where they are empty: an existing
  * value is always kept. Title is cut to 60 chars, description to 160.
  */
