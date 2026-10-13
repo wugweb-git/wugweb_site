@@ -5,9 +5,9 @@ Keep this file synced. Before any new session, read this first. After significan
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
 **2026-10-13 — Notion Case Studies is the source for slugs, legacy slugs and share images.** `scripts/notion-legacy-redirects.mjs` turned `Legacy Slugs` on Published rows into 29 more 301 redirects. 29/29 verified, and all 8 overlaps agree with the earlier 12. **Owner decisions:**
-(1) OG: Notion `OG Image` is a framerusercontent.com URL on all 19 rows where Sanity now uses the R2 cover in `ogImagePath`. Nothing applied; Notion needs R2 values, or keep Sanity's.
+(1) ~~OG~~ **Done:** Notion `OG Image` + `Cover Image` on the 19 rows now hold the R2 cover URL (`scripts/fix-notion-case-study-media.mjs`, backup `backups/notion-case-study-media-before-2026-10-13.json`). 0 Framer URLs left in either column.
 (2) musiclinkd: Notion slug `musiclinkd`, Sanity slug and live page `audiofolio`.
-(3) Canonical URL: 15 Notion rows carry the old long slug; Sanity uses the short one.
+(3) ~~Canonical URL~~ **Done:** 12 Notion rows set to relative `/work/<slug>` (the format the route and the sync need). musiclinkd waits on (2). `sync-notion-case-studies.mjs` dry run afterwards: 0 to patch.
 (4) Notion Draft but Sanity published: bodyshop, eastman, pharmadropper, spark-logistics, thebizgift, hyatt-restaurants.
 (5) 17 Sanity drafts not in Notion (mostly old long-slug drafts). Listed, never deleted.
 

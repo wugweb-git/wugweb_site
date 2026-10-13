@@ -1,0 +1,405 @@
+{
+  "takenAt": "2026-10-13T04:36:39.565Z",
+  "changes": [
+    {
+      "pageId": "3acbb710-b9ab-814c-8fd9-ef81cea0a9f3",
+      "id": "CS-022",
+      "slug": "spark-logistics",
+      "column": "Canonical URL",
+      "old": "/work/spark-logistics-building-a-unified-logistics-intelligence-platform",
+      "new": "/work/spark-logistics"
+    },
+    {
+      "pageId": "3acbb710-b9ab-818c-8ea6-ed5c016f553b",
+      "id": "CS-021",
+      "slug": "thebizgift",
+      "column": "Canonical URL",
+      "old": "/work/thebizgift-reimagining-corporate-gifting-through-intelligent-commerce",
+      "new": "/work/thebizgift"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81d1-a624-f46fe3bed720",
+      "id": "CS-019",
+      "slug": "metcred",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/EZHY5wb5hYiRsKcuHSPv9WAn4m0.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/metcred/cover-image-t778.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81d1-a624-f46fe3bed720",
+      "id": "CS-019",
+      "slug": "metcred",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/EZHY5wb5hYiRsKcuHSPv9WAn4m0.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/metcred/cover-image-t778.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81d1-a624-f46fe3bed720",
+      "id": "CS-019",
+      "slug": "metcred",
+      "column": "Canonical URL",
+      "old": "/work/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience",
+      "new": "/work/metcred"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81de-bfe8-daf3c63b40b1",
+      "id": "CS-018",
+      "slug": "the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/KDCoSX2tO8tE4nHf530yiFdeWE.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/cover-image-3zok.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81de-bfe8-daf3c63b40b1",
+      "id": "CS-018",
+      "slug": "the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/KDCoSX2tO8tE4nHf530yiFdeWE.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/cover-image-3zok.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81ce-9346-d309b801ed55",
+      "id": "CS-017",
+      "slug": "demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/dFwsdo9sn5Vq5bZi70rkIaHqI8Y.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/cover-image-kd09.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81ce-9346-d309b801ed55",
+      "id": "CS-017",
+      "slug": "demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/dFwsdo9sn5Vq5bZi70rkIaHqI8Y.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/cover-image-kd09.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81c9-942b-f85c450a14a9",
+      "id": "CS-016",
+      "slug": "bankco",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/75sGi4bzppTUPzjPLfjorDBsg8.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/bankco/cover-image-objk.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81c9-942b-f85c450a14a9",
+      "id": "CS-016",
+      "slug": "bankco",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/75sGi4bzppTUPzjPLfjorDBsg8.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/bankco/cover-image-objk.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81c9-942b-f85c450a14a9",
+      "id": "CS-016",
+      "slug": "bankco",
+      "column": "Canonical URL",
+      "old": "/work/bankco-engineering-the-ultimate-banking-super-app-ecosystem",
+      "new": "/work/bankco"
+    },
+    {
+      "pageId": "3acbb710-b9ab-819c-93a4-d759ff256f21",
+      "id": "CS-013",
+      "slug": "crafting-digital-elegance-the-tot-bridal-launch-story",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/vGKSyonZ7lpbG57MHPcOqN94s.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/crafting-digital-elegance-the-tot-bridal-launch-story/cover-image-u17r.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-819c-93a4-d759ff256f21",
+      "id": "CS-013",
+      "slug": "crafting-digital-elegance-the-tot-bridal-launch-story",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/vGKSyonZ7lpbG57MHPcOqN94s.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/crafting-digital-elegance-the-tot-bridal-launch-story/cover-image-u17r.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81f2-ab10-de35de2b811e",
+      "id": "CS-012",
+      "slug": "accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/cgZBQokAVdGGPimszs3eHPhLDaw.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard/cover-image-c1g8.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81f2-ab10-de35de2b811e",
+      "id": "CS-012",
+      "slug": "accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/cgZBQokAVdGGPimszs3eHPhLDaw.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard/cover-image-c1g8.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-817e-a8ba-d1cb06cfee27",
+      "id": "CS-011",
+      "slug": "inkompass",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/ovzEu6b64mk5haoiLzr9pi67UbA.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/inkompass/cover-image-now0.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-817e-a8ba-d1cb06cfee27",
+      "id": "CS-011",
+      "slug": "inkompass",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/ovzEu6b64mk5haoiLzr9pi67UbA.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/inkompass/cover-image-now0.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-817e-a8ba-d1cb06cfee27",
+      "id": "CS-011",
+      "slug": "inkompass",
+      "column": "Canonical URL",
+      "old": "/work/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future",
+      "new": "/work/inkompass"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81de-9a12-f76e40d0ede1",
+      "id": "CS-005",
+      "slug": "cartier-careers",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/Tuf0wfvnhl8IIPD9VfRUKnGss4.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/cartier-careers/cover-image-qrw0.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81de-9a12-f76e40d0ede1",
+      "id": "CS-005",
+      "slug": "cartier-careers",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/Tuf0wfvnhl8IIPD9VfRUKnGss4.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/cartier-careers/cover-image-qrw0.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81de-9a12-f76e40d0ede1",
+      "id": "CS-005",
+      "slug": "cartier-careers",
+      "column": "Canonical URL",
+      "old": "/work/redesigning-cartiers-career-website-where-passion-meets-excellence",
+      "new": "/work/cartier-careers"
+    },
+    {
+      "pageId": "3acbb710-b9ab-8111-a35f-f738072fed19",
+      "id": "CS-009",
+      "slug": "airtel-xstream-play",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/dtOtc5JXCF5DqbP4vykHWIzE.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/airtel-xstream-play/cover-image-3pm9.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-8111-a35f-f738072fed19",
+      "id": "CS-009",
+      "slug": "airtel-xstream-play",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/dtOtc5JXCF5DqbP4vykHWIzE.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/airtel-xstream-play/cover-image-3pm9.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-8111-a35f-f738072fed19",
+      "id": "CS-009",
+      "slug": "airtel-xstream-play",
+      "column": "Canonical URL",
+      "old": "/work/airtel-xstream-play-showcasing-indias-unified-digital-entertainment",
+      "new": "/work/airtel-xstream-play"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81b9-bc0f-db5ae6289700",
+      "id": "CS-008",
+      "slug": "airtel-xsafe",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/n2osEMZA5qWXHAOip7pq3odPW4.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/airtel-xsafe/cover-image-y42i.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81b9-bc0f-db5ae6289700",
+      "id": "CS-008",
+      "slug": "airtel-xsafe",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/n2osEMZA5qWXHAOip7pq3odPW4.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/airtel-xsafe/cover-image-y42i.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81b9-bc0f-db5ae6289700",
+      "id": "CS-008",
+      "slug": "airtel-xsafe",
+      "column": "Canonical URL",
+      "old": "/work/airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+      "new": "/work/airtel-xsafe"
+    },
+    {
+      "pageId": "3acbb710-b9ab-8189-ac4b-cb4b1de0255a",
+      "id": "CS-042",
+      "slug": "visione",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/gu4Cmk9SrEmQSvTbUL3iivfotYk.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/visione/cover-image-so53.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-8189-ac4b-cb4b1de0255a",
+      "id": "CS-042",
+      "slug": "visione",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/gu4Cmk9SrEmQSvTbUL3iivfotYk.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/visione/cover-image-so53.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-8189-ac4b-cb4b1de0255a",
+      "id": "CS-042",
+      "slug": "visione",
+      "column": "Canonical URL",
+      "old": "/work/visione-empowering-workforce-development-with-competency-based-assessments",
+      "new": "/work/visione"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81d1-bfe0-fd7c31c7a98c",
+      "id": "CS-041",
+      "slug": "indusninja-your-ai-powered-financial-ninja",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/kgbd7kuvj2onzSsZmC5y7bgpW0o.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/indusninja-your-ai-powered-financial-ninja/cover-image-h328.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81d1-bfe0-fd7c31c7a98c",
+      "id": "CS-041",
+      "slug": "indusninja-your-ai-powered-financial-ninja",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/kgbd7kuvj2onzSsZmC5y7bgpW0o.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/indusninja-your-ai-powered-financial-ninja/cover-image-h328.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81ee-b7d4-d08f74aa473f",
+      "id": "CS-040",
+      "slug": "sadhan",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/dlSfAOzPWziOt0uze1juq6EooV4.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/sadhan/cover-image-is0u.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81ee-b7d4-d08f74aa473f",
+      "id": "CS-040",
+      "slug": "sadhan",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/dlSfAOzPWziOt0uze1juq6EooV4.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/sadhan/cover-image-is0u.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81ee-b7d4-d08f74aa473f",
+      "id": "CS-040",
+      "slug": "sadhan",
+      "column": "Canonical URL",
+      "old": "/work/sadhan-streamlining-driver-onboarding-lead-management",
+      "new": "/work/sadhan"
+    },
+    {
+      "pageId": "3acbb710-b9ab-814b-afd2-e0bf83fe9d5f",
+      "id": "CS-039",
+      "slug": "valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/9DX6C58fb2JeQXcwIp4t6iYOC8.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages/cover-image-1j71.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-814b-afd2-e0bf83fe9d5f",
+      "id": "CS-039",
+      "slug": "valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/9DX6C58fb2JeQXcwIp4t6iYOC8.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages/cover-image-1j71.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81ab-acf2-ec55dd2c6861",
+      "id": "CS-038",
+      "slug": "plufo",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/Jm7DhyIxioCiRgX9tCrtKeGjjM.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/plufo/cover-image-8z0d.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81ab-acf2-ec55dd2c6861",
+      "id": "CS-038",
+      "slug": "plufo",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/Jm7DhyIxioCiRgX9tCrtKeGjjM.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/plufo/cover-image-8z0d.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-81ab-acf2-ec55dd2c6861",
+      "id": "CS-038",
+      "slug": "plufo",
+      "column": "Canonical URL",
+      "old": "/work/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+      "new": "/work/plufo"
+    },
+    {
+      "pageId": "3acbb710-b9ab-816c-a3fa-cd2870f8c680",
+      "id": "CS-002",
+      "slug": "rideev",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/ulXIWXvpJwV1mQVQ64cHu6jcI.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/rideev/cover-image-uopf.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-816c-a3fa-cd2870f8c680",
+      "id": "CS-002",
+      "slug": "rideev",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/ulXIWXvpJwV1mQVQ64cHu6jcI.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/rideev/cover-image-uopf.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-816c-a3fa-cd2870f8c680",
+      "id": "CS-002",
+      "slug": "rideev",
+      "column": "Canonical URL",
+      "old": "/work/rideev-powering-the-phygital-ev-revolution-in-india",
+      "new": "/work/rideev"
+    },
+    {
+      "pageId": "3acbb710-b9ab-815c-af01-c85764f7c384",
+      "id": "CS-001",
+      "slug": "ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/F4TexpIDhMcmgc8ASuvNZFQLuZU.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/cover-image-kd0f.jpg"
+    },
+    {
+      "pageId": "3acbb710-b9ab-815c-af01-c85764f7c384",
+      "id": "CS-001",
+      "slug": "ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/F4TexpIDhMcmgc8ASuvNZFQLuZU.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/cover-image-kd0f.jpg"
+    },
+    {
+      "pageId": "3a3bb710-b9ab-80ab-bbbc-ca243c34c206",
+      "id": "CS-043",
+      "slug": "gratify-the-intelligent-rewards-and-feedback-platform",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/hmEqhIpI0JjQ7Y3GE1cbzNcdfM.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/gratify-the-intelligent-rewards-and-feedback-platform/cover-image-uw3w.jpg"
+    },
+    {
+      "pageId": "3a3bb710-b9ab-80ab-bbbc-ca243c34c206",
+      "id": "CS-043",
+      "slug": "gratify-the-intelligent-rewards-and-feedback-platform",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/hmEqhIpI0JjQ7Y3GE1cbzNcdfM.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/gratify-the-intelligent-rewards-and-feedback-platform/cover-image-uw3w.jpg"
+    },
+    {
+      "pageId": "3a3bb710-b9ab-8017-a7d7-fb16fa3f5590",
+      "id": "CS-044",
+      "slug": "crafting-digital-authority-the-adneto-website-showcase",
+      "column": "OG Image",
+      "old": "https://framerusercontent.com/images/lGhSuMp127LYYmcC5TDrV6QLwI.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/crafting-digital-authority-the-adneto-website-showcase/cover-image-jx5x.jpg"
+    },
+    {
+      "pageId": "3a3bb710-b9ab-8017-a7d7-fb16fa3f5590",
+      "id": "CS-044",
+      "slug": "crafting-digital-authority-the-adneto-website-showcase",
+      "column": "Cover Image",
+      "old": "https://framerusercontent.com/images/lGhSuMp127LYYmcC5TDrV6QLwI.jpg",
+      "new": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/crafting-digital-authority-the-adneto-website-showcase/cover-image-jx5x.jpg"
+    }
+  ]
+}
