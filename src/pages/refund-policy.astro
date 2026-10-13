@@ -14,7 +14,8 @@ const hasCms = blocks.length > 0;
 
 <LegalLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription}
   title="Refund & Cancellation Policy"
-  description="Refund & Cancellation Policy — Wugweb project and subscription services."
+  seoTitle={page?.seoTitle}
+  description={page?.seoDescription || "Refund & Cancellation Policy — Wugweb project and subscription services."}
   active="refund-policy"
   updated="August 16, 2026"
 >

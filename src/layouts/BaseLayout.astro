@@ -123,13 +123,14 @@ const defaultAppleTouch = settings?.favicon
 const copyrightText = settings?.copyright || '© 2020–2026 Wugweb. All rights reserved.';
 const siteEmail = settings?.contactEmail || 'hello@wugweb.com';
 
-// The site suffix is added here, never stored: SEO titles in Notion/Sanity are
-// shared with vedanshusrivastava.com, which appends its own. A trailing
-// "| Wugweb" left in older data is stripped first so it can't double up, and
-// the suffix is dropped when it would push the title past 60 characters.
+// The site suffix is added here when the stored title doesn't carry the brand:
+// SEO titles in Notion/Sanity are shared with vedanshusrivastava.com, which
+// appends its own. A title that already names Wugweb (the page titles restored
+// from the live Framer site, e.g. "FAQs — Wugweb") is used exactly as stored,
+// so the brand is never doubled. The suffix is dropped past 60 characters.
 const TITLE_SUFFIX = ' | Wugweb';
-const pageTitle = (seoTitle || title).replace(/\s*[|·–—-]\s*wugweb(\s+(work|insights))?\s*$/i, '').trim();
-const fullTitle = pageTitle.length + TITLE_SUFFIX.length <= 60 ? pageTitle + TITLE_SUFFIX : pageTitle;
+const pageTitle = (seoTitle || title).trim();
+const fullTitle = /wugweb/i.test(pageTitle) || pageTitle.length + TITLE_SUFFIX.length > 60 ? pageTitle : pageTitle + TITLE_SUFFIX;
 const metaDesc = description || defaultDesc;
 // og:image must be an ABSOLUTE URL — a relative path is invalid per the Open
 // Graph spec and most scrapers drop it.
