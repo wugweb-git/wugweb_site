@@ -25,8 +25,7 @@ Custom `S.component` panes wired into Structure Builder — Blog/Case Studies/Se
 
 ### 4. Tools (`sanity/tools/`)
 - **Dashboard** — website health (totals, drafts, missing SEO/cover, sync errors, media issues), content-by-type audit, quick actions, system status
-- **Tables** — all doc types as data grids (rebuilt on DataTable)
-- **SEO Manager** — per-doc **Completeness** 0–100 (fields filled, not ranking quality) plus **Checks passed** (rule-based: length, slug, alt text, duplicates), meta/OG/schema checkmarks, **Generate** (prefills seoTitle/seoDescription from title + body)
+- **Tables** — all doc types as data grids (rebuilt on DataTable). For posts, case studies, services and pages it also carries what the retired SEO Manager and Copy & Export tools did (both removed 2026-10-13): SEO description (inline-editable), **Completeness** 0–100 (fields filled, not ranking quality), **Checks passed** (rule-based: length, slug, alt text, duplicates, social card, keyword stuffing) with the failing checks one click away, "Has failing checks" / "Missing SEO" filters, **Auto Meta** (fills an empty seoTitle/seoDescription from title + body, with a confirm step), and Copy as Markdown / Download .md per row and in bulk
 - **Media** — grid/list toggle, filters (unused, missing alt, duplicates, oversized, archived), group filter, search, thumbnails
 - **Search** — field-scoped query builder (`title:` `slug:` `category:` `client:` `status:` `author:` `updated:` `type:`), saved + recent searches
 
@@ -70,7 +69,7 @@ Workspace model, rich previews, field groups/descriptions, Relations tab, static
 |------|--------|
 | `sanity/lib/types.ts`, `groq.ts`, `format.ts`, `localState.ts`, `health.ts`, `csv.ts`, `docActions.ts`, `tableConfigs.tsx` | New shared lib |
 | `sanity/components/DataTable.tsx`, `DocumentListPane.tsx`, `ui.tsx` | New components |
-| `sanity/tools/DashboardTool.tsx`, `SeoTool.tsx`, `MediaTool.tsx`, `SearchTool.tsx`, `TablesTool.tsx` | New/rewritten tools |
+| `sanity/tools/DashboardTool.tsx`, `MediaTool.tsx`, `SearchTool.tsx`, `TablesTool.tsx` | New/rewritten tools (`SeoTool.tsx` deleted 2026-10-13, folded into Tables) |
 | `sanity/schemaTypes/deskStructure.ts` | New Overview/Content/Marketing/Media/Business/Settings structure |
 | `sanity/schemaTypes/redirect.ts`, `index.ts` | New redirect schema + registration |
 | `sanity/schemaTypes/client.ts`, `caseStudy.ts`, `blockContent.ts` | Preview fixes |

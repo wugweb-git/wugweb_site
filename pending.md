@@ -83,7 +83,7 @@ in §1s and `~/.claude/plans/snoopy-splashing-pearl.md`.
 
 **Added 2026-10-13 — queue cleared:** typegen config fixed (Studio tsc 0), three seoChecks added, non-Storybook tsc errors fixed (site 42 → 39, all Storybook). The Studio changes are **not deployed** yet (SeoTool queries, live duplicate warnings). Open decisions: GA4 vs GTM, Hotjar ID, en-GB vs en-US, the ALL-CAPS brand names. The main open item after this is the DNS cutover.
 
-**Added 2026-10-13 — Studio tidy-up:** SEO and Copy & Export are folded into Tables, and the Voice and Integrations tabs are removed. **Click through:** the new columns on all four content tables; expanding "Checks passed"; Copy as Markdown on one post; bulk copy on 3 rows; the Auto Meta confirm step. The superseded `tools/SeoTool.tsx` and `tools/ArticleExportTool.tsx` can be deleted once you're happy with the Tables.
+**Added 2026-10-13 — Studio tidy-up:** SEO and Copy & Export are folded into Tables, the Voice and Integrations tabs are removed, and the superseded `SeoTool.tsx` / `ArticleExportTool.tsx` files are deleted. **Click through:** the new columns on all four content tables, expanding "Checks passed", Copy as Markdown on one post, bulk copy on 3 rows, and the Auto Meta confirm step. **Decisions pending:** whether to hide or remove the 14 Brand voice fields (data kept either way), and how you want to see the top 404s.
 
 **Needs you, not code:**
 
@@ -142,7 +142,7 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 **Sanity Studio Advanced Suite & Portable Text Overhaul (2026-08-30)**:
 - **Native R2 Custom Asset Source (`r2AssetSource.tsx`)**: Integrates directly with Sanity's `form.image.assetSources` and `form.file.assetSources` allowing editors to browse, search, filter, and pick from all 550+ Cloudflare R2 assets with live previews.
 - **Copy Article & Export Document Action (`CopyArticleAction.tsx`)**: Formats Portable Text into standard Markdown, Plain Text, or JSON and copies directly to system clipboard with a single click.
-- **Article Export Studio Tool (`ArticleExportTool.tsx`)**: Dedicated Studio view for exploring word counts, reading times, and batch Markdown copying across all posts, case studies, and services.
+- **Article Export Studio Tool (`ArticleExportTool.tsx`)** — *removed 2026-10-13; folded into Tables (Copy as Markdown / Download .md, Words and Read time columns).* Was: dedicated Studio view for exploring word counts, reading times, and batch Markdown copying across all posts, case studies, and services.
 - **Studio Branding & Navigation (`StudioLogo.tsx`, `StudioNavbar.tsx`)**: Custom SVG Wugweb mark, production status badge, and direct header links to the live site and `/kits` showcase.
 - **Expanded Portable Text System (`blockContent.ts`, `PortableTextRenderer.astro`)**: Added `callout` alert banners (info, tip, warning, quote, success), `quoteBlock` testimonials, `comparisonTable` key-value grids, `internalLink` direct reference annotations, and `highlight` mark decorators.
 - **Cover Media Asset Matcher (`scripts/populate-missing-covers.mjs`)**: Automated inspection and matching of R2 assets to posts and case studies.

@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Removed — superseded Studio tool files (2026-10-13)
+- `sanity/tools/SeoTool.tsx` and `sanity/tools/ArticleExportTool.tsx` are deleted. A full search found nothing that imports either file. Their features live in the Tables columns and actions. No voice or Integrations-tool code was left to remove, and the site-side integrations are untouched.
+- `docs/admindesign.md` and `pending.md` no longer describe the removed tools as current.
+
 ### Changed — SEO and Copy & Export folded into Tables; Voice and Integrations tabs removed (2026-10-13)
 - **Tables** (Blog Posts, Case Studies, Services, Pages; the same in the desk list panes):
   - New columns: SEO description (inline-editable), **Checks passed** ("9/10 ▸", click to see the failing checks and their hints) and Completeness. Words, Read time and Missing SEO are optional columns, hidden by default.
