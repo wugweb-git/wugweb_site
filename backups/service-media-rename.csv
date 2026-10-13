@@ -1,0 +1,33 @@
+pillar,sub_service,old_dir,old_file,new_video,new_poster
+brand,"Brand Strategy",brand,"Brand Position Strategy",brand-strategy.mp4,posters/brand-strategy.webp
+brand,"Brand Positioning",brand,"Brand Experience",brand-positioning.mp4,posters/brand-positioning.webp
+brand,"Brand Narrative",brand,"Narrative Architecture",brand-narrative.mp4,posters/brand-narrative.webp
+brand,"Brand Identity Systems",brand,"Brand Identity Systems",brand-identity-systems.mp4,posters/brand-identity-systems.webp
+brand,"Naming & Nomenclature",brand,"Naming Nomenclature",naming-and-nomenclature.mp4,posters/naming-and-nomenclature.webp
+brand,"Voice & Tone",brand,"Voice Tone",voice-and-tone.mp4,posters/voice-and-tone.webp
+brand,"Employer Branding",brand,"Brand Audit Analysis",employer-branding.mp4,posters/employer-branding.webp
+brand,"Brand Guidelines",brand,"Brand Evolution Management",brand-guidelines.mp4,posters/brand-guidelines.webp
+brand,"Brand Activation",brand,"Brand activation",brand-activation.mp4,posters/brand-activation.webp
+engineering,"Website & CMS Development",engineering,"Front-End Engineering",website-and-cms-development.mp4,posters/website-and-cms-development.webp
+engineering,"Web Application Development",engineering,"Progressive Web Applications (PWAs)",web-application-development.mp4,posters/web-application-development.webp
+engineering,"Mobile Application Development",engineering,"Native Mobile Application Development",mobile-application-development.mp4,posters/mobile-application-development.webp
+engineering,"Ecommerce Development",engineering,"Ecommerce",ecommerce-development.mp4,posters/ecommerce-development.webp
+engineering,"API & System Integrations",engineering,"API",api-and-system-integrations.mp4,posters/api-and-system-integrations.webp
+engineering,"Database Engineering",engineering,"Database Design Optimization",database-engineering.mp4,
+engineering,"Cloud & DevOps",engineering,"DevOps Cloud Implementation",cloud-and-devops.mp4,
+experience,"UX Research",experience,"User Intelligence",ux-research.mp4,posters/ux-research.webp
+experience,"UX Design",experience,"Experience Design - UX",ux-design.mp4,posters/ux-design.webp
+experience,"UI Design",experience,"Interface Mastery - UI",ui-design.mp4,posters/ui-design.webp
+experience,"Design Systems",experience,"Design Systems",design-systems.mp4,posters/design-systems.webp
+experience,"Interactive Prototyping",experience,"Rapid Concepting",interactive-prototyping.mp4,posters/interactive-prototyping.webp
+experience,"Journey Mapping",experience,"Journey architecture",journey-mapping.mp4,posters/journey-mapping.webp
+growth,"Content Strategy",growth,"Immersive Content Strategies",content-strategy.mp4,posters/content-strategy.webp
+growth,"Performance Marketing & Campaigns",growth,"AI-Powered Performance Marketing",performance-marketing-and-campaigns.mp4,posters/performance-marketing-and-campaigns.webp
+growth,"Marketing Automation",growth,"Automation architecture",marketing-automation.mp4,posters/marketing-automation.webp
+growth,"Personalization & AI Marketing",growth,"Generative AI Content Creation",personalization-and-ai-marketing.mp4,posters/personalization-and-ai-marketing.webp
+growth,"Analytics & Attribution",growth,"Predictive Analytics Attribution",analytics-and-attribution.mp4,
+growth,"CRO & Experimentation",growth,"Conversion rate optimisation",cro-and-experimentation.mp4,posters/cro-and-experimentation.webp
+operations,"Maintenance & SLA Support",operations,"Ongoing Support",maintenance-and-sla-support.mp4,posters/maintenance-and-sla-support.webp
+strategy,"Digital Transformation & Innovation",strategy,"Digital Transformation Roadmaps",digital-transformation-and-innovation.mp4,posters/digital-transformation-and-innovation.webp
+strategy,"Market & Competitive Research",strategy,"Future-Forward Market Insights",market-and-competitive-research.mp4,posters/market-and-competitive-research.webp
+strategy,"Transformation Workshops",strategy,"Disruptive Innovation Workshops",transformation-workshops.mp4,posters/transformation-workshops.webp

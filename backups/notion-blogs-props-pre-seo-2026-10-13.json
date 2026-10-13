@@ -1,0 +1,1856 @@
+[
+ {
+  "id": "3f7bb710-b9ab-81e0-88b4-ea458a313294",
+  "slug": "restaurant-insights-ux-approach",
+  "title": "Restaurant Insights: UX Approach",
+  "seoTitle": "Restaurant Sales Dashboard Design: A UX Approach",
+  "seoDesc": "A restaurant sales dashboard design case study: tracking sales across outlets and delivery channels, two personas, outlet and admin views, and key metrics.",
+  "focus": "Restaurant sales dashboard design",
+  "lastUpd": "2019-01-21",
+  "pub": "2019-01-21",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-8122-bc48-d01085e21a42",
+  "slug": "case-study-designing-dashboards",
+  "title": "Case Study: Designing Dashboards",
+  "seoTitle": "Dashboard Design Case Study: From Excel to Prototype",
+  "seoDesc": "A dashboard design case study: turning a client's Excel sales data into a clear dashboard, avoiding data vomit and designing within developers' chart libraries.",
+  "focus": "Dashboard design case study",
+  "lastUpd": "2019-01-25",
+  "pub": "2019-01-25",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-810d-a21e-ec3b6e63f6e2",
+  "slug": "ux-case-study-online-shopping",
+  "title": "UX Case Study: Online Shopping",
+  "seoTitle": "Grocery Ecommerce UX Case Study: Desi Atta Company",
+  "seoDesc": "A grocery ecommerce UX case study redesigning Desi Atta Company's mobile shopping site, covering users, persona, assumption testing, journey map and UI.",
+  "focus": "Grocery ecommerce UX case study",
+  "lastUpd": "2019-01-27",
+  "pub": "2019-01-27",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-81ca-8f9c-ecd837fe9ccc",
+  "slug": "ux-review-milkbasket",
+  "title": "UX Review: Milkbasket",
+  "seoTitle": "Milkbasket UX Review: A Grocery Delivery App",
+  "seoDesc": "A Milkbasket UX review of the grocery delivery app: visual hierarchy, icon language, fonts, grids, address change, navigation, banners, the cart and scrolling.",
+  "focus": "Milkbasket UX review",
+  "lastUpd": "2020-08-24",
+  "pub": "2020-08-24",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-81cd-a097-c6e637ffed8b",
+  "slug": "ui-ux-case-study-ecommerce-app",
+  "title": "UI/UX Case Study: E-commerce App",
+  "seoTitle": "Fashion Ecommerce UX Case Study: Try Before You Buy",
+  "seoDesc": "A fashion ecommerce UX case study for an app offering same-day home trials: research, assumption testing, pain points, user flows, Arabic RTL and UI screens.",
+  "focus": "Fashion ecommerce UX case study",
+  "lastUpd": "2019-08-24",
+  "pub": "2019-08-24",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-81a4-b0c0-e269789ddd54",
+  "slug": "ux-case-study-indiamart",
+  "title": "UX Case Study: IndiaMart",
+  "seoTitle": "IndiaMart UX Case Study: Buyer Dashboard Redesign",
+  "seoDesc": "An IndiaMart UX case study on the Buyer Dashboard: a provisional persona, job stories, four prioritised pain points, wireframes and a proposed redesign.",
+  "focus": "IndiaMART UX case study",
+  "lastUpd": "2019-02-10",
+  "pub": "2019-02-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-81c1-a8f2-e805870812db",
+  "slug": "parcelshop-ux-case-study",
+  "title": "ParcelShop: UX Case Study",
+  "seoTitle": "ParcelShop UX Case Study: Rethinking Local Delivery",
+  "seoDesc": "A ParcelShop UX case study on letting local shops take courier bookings, covering research, wireframes, instant quotes, shipment creation and tracking.",
+  "focus": "ParcelShop UX case study",
+  "lastUpd": "2025-06-03",
+  "pub": "2025-06-03",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-8112-8812-c015cc0bb3df",
+  "slug": "the-ai-native-marketing-team-four-new-roles-that-will-define-the-next-decade",
+  "title": "The AI-Native Marketing Team: Four New Roles That Will Define the Next Decade",
+  "seoTitle": "The AI-Native Marketing Team: 4 New Roles",
+  "seoDesc": "What an AI-native marketing team looks like: why marketing is shifting from managing campaigns to orchestrating agents, and the four new roles defining it.",
+  "focus": "AI-native marketing team",
+  "lastUpd": "2026-06-25",
+  "pub": "2026-06-25",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81d1-8424-f27e8a5922b3"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-81c5-b0d1-f683c7e27a59",
+  "slug": "the-ai-paradox-why-productivity-isnt-the-future-of-marketing",
+  "title": "The AI Paradox: Why Productivity Isn’t the Future of Marketing",
+  "seoTitle": "AI in Marketing Strategy: Why Productivity Isn't the Future",
+  "seoDesc": "Why AI in marketing strategy must go beyond productivity, and the five AI capabilities, from continuous insights to always-on orchestration, that define it.",
+  "focus": "AI in marketing strategy",
+  "lastUpd": "2026-06-25",
+  "pub": "2026-06-25",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 1,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81d1-8424-f27e8a5922b3"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-81e0-a538-f352e3bd4239",
+  "slug": "the-death-of-discovery-is-ai-skipping-the-why-in-ux",
+  "title": "The Death of Discovery: Is AI Skipping the ‘Why’ in UX?",
+  "seoTitle": "AI and UX Research: Is AI Skipping the ‘Why’ in UX?",
+  "seoDesc": "AI and UX research: why AI shows what users do but not why, how that risks homogenized experiences, and how qualitative research keeps the why in view.",
+  "focus": "AI and UX research",
+  "lastUpd": "2026-10-12",
+  "pub": "2026-10-12",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-81e2-b743-c60b1006738a",
+  "slug": "i-accidentally-took-down-every-website-on-my-netlify-account-while-exploring-rag",
+  "title": "I Accidentally Took Down Every Website on My Netlify Account While Exploring RAG",
+  "seoTitle": "Netlify Account Suspension While Exploring RAG",
+  "seoDesc": "A first-hand Netlify account suspension story: a RAG starter, ignored credit warnings, two account-wide suspensions, and what support explained about credits.",
+  "focus": "Netlify account suspension",
+  "lastUpd": "2026-10-12",
+  "pub": "2026-10-12",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 1,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8125-9064-f1a8acd78842"
+  ],
+  "edited": "2026-10-12T21:43:00.000Z"
+ },
+ {
+  "id": "3f7bb710-b9ab-8121-bdda-f6af8c72ea51",
+  "slug": "beyond-the-rows-why-my-next-project-is-moving-from-supabase-to-nosql",
+  "title": "Beyond the Rows: Why My Next Project is Moving from Supabase to NoSQL",
+  "seoTitle": "Supabase vs NoSQL: When to Move Beyond Postgres",
+  "seoDesc": "Supabase vs NoSQL: when Postgres is the right call, and when MongoDB, Firestore, DynamoDB, Neo4j or Redis handle evolving schemas and real-time sync better.",
+  "focus": "Supabase vs NoSQL",
+  "lastUpd": "2026-10-12",
+  "pub": "2026-10-12",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8125-9064-f1a8acd78842"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8166-866f-f5502515f77f",
+  "slug": "10-features-i-m-loving-in-framer-right-now",
+  "title": "10 Features I'm Loving in Framer Right Now",
+  "seoTitle": "10 Framer Features I'm Loving Right Now",
+  "seoDesc": "The Framer features I'm loving right now, from Figma paste and Stacks to real-time publishing, plus tips for getting the most out of them and their limits.",
+  "focus": "Framer features",
+  "lastUpd": "2023-06-08",
+  "pub": "2023-06-08",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3bdbb710-b9ab-81f5-b1b9-d741ae8252da"
+  ],
+  "edited": "2026-10-13T03:37:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81fa-a726-c2706b976dab",
+  "slug": "is-the-ability-to-code-essential-to-succeed-as-a-designer",
+  "title": "Is the ability to code essential to succeed as a designer?",
+  "seoTitle": "Coding Skills for Designers: Are They Essential to Succeed?",
+  "seoDesc": "Are coding skills for designers essential? Why writing code is optional, but knowing how products are built, from HTML and CSS to servers, really matters.",
+  "focus": "Coding skills for designers",
+  "lastUpd": "2023-03-17",
+  "pub": "2023-03-17",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T21:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8167-ab03-f88b0ff1fa5d",
+  "slug": "top-10-design-tools-that-will-simplify-your-design-process",
+  "title": "Top 10 Design Tools That Will Simplify Your Design Process",
+  "seoTitle": "10 Best Design Tools to Simplify Your Design Process",
+  "seoDesc": "A designer's round-up of the best design tools and resources for an everyday workflow, from xTiles and Built for Mars to Userbrain, Kickass UX and Superflow.",
+  "focus": "best design tools",
+  "lastUpd": "2023-03-17",
+  "pub": "2023-03-17",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8178-94c8-f56b2294d099"
+  ],
+  "edited": "2026-10-12T21:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81cb-bc74-fe368d157321",
+  "slug": "how-exactly-do-product-manager-and-ux-designer-collaborate",
+  "title": "How exactly do product manager and UX designer collaborate?",
+  "seoTitle": "Product Manager and UX Designer Collaboration: How It Works",
+  "seoDesc": "How product manager and UX designer collaboration works: where the roles overlap in defining problems, user research and solutions, and why skills matter.",
+  "focus": "Product manager and UX designer collaboration",
+  "lastUpd": "2023-02-20",
+  "pub": "2023-02-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:34:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8121-86a8-ef1843450b7c",
+  "slug": "the-end-of-screen-based-interfaces",
+  "title": "The End of Screen-Based Interfaces",
+  "seoTitle": "Zero UI and the End of Screen-Based Interfaces",
+  "seoDesc": "Zero-UI moves interaction away from screens toward voice, haptics, gestures and context awareness. What it is, why it matters and what may come after it.",
+  "focus": "Zero UI",
+  "lastUpd": "2024-03-15",
+  "pub": "2024-03-15",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81f5-b1b9-d741ae8252da"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81a4-80dc-f037419e7719",
+  "slug": "use-this-easy-checklist-to-ensure-a-smooth-design-handoff",
+  "title": "Use this easy checklist to ensure a smooth design handoff",
+  "seoTitle": "An Easy Design Handoff Checklist for Smooth Handoffs",
+  "seoDesc": "A simple design handoff checklist covering user flows, display specs, assets, prototypes and design docs, plus tips for clearer handoffs to developers.",
+  "focus": "design handoff checklist",
+  "lastUpd": "2021-03-07",
+  "pub": "2021-03-07",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:34:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81fe-ae98-eae24a0a8f4c",
+  "slug": "how-is-video-commerce-a-powerful-tool-for-shopping",
+  "title": "How is video commerce a powerful tool for shopping?",
+  "seoTitle": "How is video commerce a powerful tool for shopping?",
+  "seoDesc": "Demand for video product reviews, tutorials, how-to's, unboxing, and comparison videos was vital in 2018, making video commerce a potent tool for online purchas",
+  "focus": "video commerce",
+  "lastUpd": "2021-04-13",
+  "pub": "2021-04-13",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3e2bb710-b9ab-8134-8d20-f13802c7ded6"
+  ],
+  "edited": "2026-10-12T18:34:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8173-81f0-c45650dd1cd9",
+  "slug": "supercharge-your-designs-15-must-know-figma-updates-from-config-2023",
+  "title": "Supercharge Your Designs: 15 Must-Know Figma Updates from Config 2023",
+  "seoTitle": "Figma Config 2023 Updates: 15 Must-Know Features",
+  "seoDesc": "The Figma Config 2023 updates explained: component variants, Auto Layout, interactive components, FigJam templates and more, with takeaways and workflow tips.",
+  "focus": "Figma Config 2023 updates",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8178-94c8-f56b2294d099"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-818f-8bba-fdea14819993",
+  "slug": "when-and-how-to-use-html-sitemaps-for-seo-and-ux-unleashing-the-power-of-navigational-maps",
+  "title": "When and How to Use HTML Sitemaps for SEO and UX: Unleashing the Power of Navigational Maps",
+  "seoTitle": "When (and Why) to Use HTML Sitemaps",
+  "seoDesc": "HTML sitemaps still matter for usability, crawlability, and discoverability. Here's when to use them and how they support SEO and UX together.",
+  "focus": "html sitemap",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T19:19:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8180-89d6-f020328cf5cc",
+  "slug": "5-burning-questions-you-need-to-ask-to-get-your-brand-on-top",
+  "title": "5 Burning Questions You Need to Ask to Get Your Brand on Top",
+  "seoTitle": "5 Brand Strategy Questions to Get Your Brand on Top",
+  "seoDesc": "Five brand strategy questions on what sets you apart, who your audience is, emotional connection, channels and measurement, with practical next steps.",
+  "focus": "Brand strategy questions",
+  "lastUpd": "2026-07-20",
+  "pub": "2026-07-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 3,
+  "cat": [
+   "3e2bb710-b9ab-81cb-8bc7-f5e22a940a9e"
+  ],
+  "edited": "2026-10-12T21:52:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-819a-b084-e6223ac239cf",
+  "slug": "user-centric-design-why-user-research-should-drive-your-product-strategy",
+  "title": "User-Centric Design: Why User Research Should Drive Your Product Strategy",
+  "seoTitle": "User Research Product Strategy: A User-Centric Guide",
+  "seoDesc": "Learn how a user research product strategy uncovers user needs, validates assumptions and reveals market opportunities, with habits and pitfalls to avoid.",
+  "focus": "user research product strategy",
+  "lastUpd": "2026-07-20",
+  "pub": "2026-07-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81ac-b3c6-d66866e14997",
+  "slug": "navigating-through-branding-fantasies-upcoming-trends-and-tools-to-up-your-game",
+  "title": "Navigating through branding fantasies - upcoming trends and tools to up your game",
+  "seoTitle": "Upcoming Branding Trends and Tools to Up Your Game",
+  "seoDesc": "Explore upcoming branding trends and tools, from authentic storytelling and personalization to video, social listening and AI, to keep your brand relevant.",
+  "focus": "Branding trends",
+  "lastUpd": "2026-07-20",
+  "pub": "2026-07-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 4,
+  "cat": [
+   "3e2bb710-b9ab-81cb-8bc7-f5e22a940a9e"
+  ],
+  "edited": "2026-10-12T21:52:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8151-9e40-d30208c239a8",
+  "slug": "agile-working-in-ux-unleashing-creativity-collaboration-and-flexibility",
+  "title": "Agile Working in UX: Unleashing Creativity, Collaboration, and Flexibility",
+  "seoTitle": "Agile UX: Creativity, Collaboration & Flexibility",
+  "seoDesc": "How agile UX works: the origins of Agile, cross-functional teams, iterative design and Scrum in UX, plus how companies use it and current trends.",
+  "focus": "agile ux",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 1,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8174-b89e-c119d60df511",
+  "slug": "when-ux-meets-cx-creating-seamless-experiences-for-users-and-customers",
+  "title": "When UX Meets CX: Creating Seamless Experiences for Users and Customers",
+  "seoTitle": "When UX and CX Meet: Creating Seamless Experiences",
+  "seoDesc": "When UX and CX are designed in isolation, journeys break. Here's how aligning product and customer experience drives measurably better outcomes.",
+  "focus": "UX and CX",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81d0-8be1-edbab214a914",
+  "slug": "embracing-the-design-journey-remote-working-culture-the-challenges-and-perks",
+  "title": "Embracing the Design Journey: Remote Working Culture - The Challenges and Perks",
+  "seoTitle": "Remote Work for Designers",
+  "seoDesc": "Remote work for designers: the real challenges and perks, from collaboration and distractions to flexibility, plus practical habits for working well apart.",
+  "focus": "Remote work for designers",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8110-b728-c3ed2dc56ca8",
+  "slug": "color-symbolism-in-ux-design-communicating-messages-through-color",
+  "title": "Color Symbolism in UX Design: Communicating Messages through Color",
+  "seoTitle": "Color Symbolism in UX: Communicating Through Color",
+  "seoDesc": "How color symbolism in UX design communicates meaning, conveys brand values and guides users, while staying accessible and sensitive across cultures.",
+  "focus": "color symbolism in ux",
+  "lastUpd": "2026-07-20",
+  "pub": "2026-07-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-812a-a885-c867fb7a5619",
+  "slug": "ui-design-trends-to-watch-out-for-in-2023-and-resurfacing-comeback-trend",
+  "title": "UI Design Trends to Watch Out for in 2023 and Resurfacing Comeback Trend",
+  "seoTitle": "UI Design Trends 2023: New Trends and Comeback Styles",
+  "seoDesc": "UI design trends 2023 roundup: neumorphism, 3D illustrations, bold color, microinteractions, voice UI and dark mode, plus retro styles making a comeback.",
+  "focus": "UI design trends",
+  "lastUpd": "2026-07-20",
+  "pub": "2026-07-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T21:26:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81b5-960b-d2fa11340032",
+  "slug": "designing-chatbot-personalities-and-flows-101-creating-engaging-conversational-experiences",
+  "title": "Designing Chatbot Personalities and Flows 101: Creating Engaging Conversational Experiences",
+  "seoTitle": "Chatbot Design 101: Engaging Personalities and Flows",
+  "seoDesc": "Learn the basics of chatbot design: defining a personality, mapping conversational flows, writing responses, handling errors and testing with real users.",
+  "focus": "Chatbot design",
+  "lastUpd": "2026-07-20",
+  "pub": "2026-07-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8101-9d46-fb647cc43dd7",
+  "slug": "how-visual-design-makes-for-great-ux",
+  "title": "How Visual Design Makes for Great UX",
+  "seoTitle": "Visual Design and UX: How Aesthetics Shape Usability",
+  "seoDesc": "How visual design and UX connect: why aesthetics shape the way users judge usability, what visual hierarchy does and practical tips for UX designers.",
+  "focus": "Visual design and UX",
+  "lastUpd": "2020-02-18",
+  "pub": "2020-02-18",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T19:02:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8123-9e2f-cdb1845aece1",
+  "slug": "6-strategies-that-got-my-side-project-its-first-1-000-users",
+  "title": "6 Strategies That Got My Side Project Its First 1,000 Users",
+  "seoTitle": "How to Get Your First 1,000 Users: 6 Zero-Budget Strategies",
+  "seoDesc": "How to get your first 1,000 users with zero budget: six growth strategies that worked for a side project, from the founder story to Product Hunt and Reddit.",
+  "focus": "How to get your first 1,000 users",
+  "lastUpd": "2020-03-04",
+  "pub": "2020-03-04",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81d1-8424-f27e8a5922b3"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8160-85af-ddefa2ad4d6e",
+  "slug": "stop-using-dribbble-behance-to-find-practical-design-inspiration",
+  "title": "Stop using Dribbble & Behance to find practical design inspiration",
+  "seoTitle": "Design Inspiration Sites Better Than Dribbble & Behance",
+  "seoDesc": "Why Dribbble and Behance fall short for practical UX work, what to look for in real-world ideas, and design inspiration sites to use instead.",
+  "focus": "design inspiration sites",
+  "lastUpd": "2020-02-08",
+  "pub": "2020-02-08",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T19:08:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-811a-9d3d-e35001a82b14",
+  "slug": "decoding-ux-jargon-a-simplified-guide-to-understanding-ux-terms",
+  "title": "Decoding UX Jargon: A Simplified Guide to Understanding UX Terms",
+  "seoTitle": "Decoding UX Jargon: A Simple UX Terms Glossary",
+  "seoDesc": "A UX terms glossary in plain language, covering wireframes, prototypes, usability testing, affinity maps, design debt and more for newcomers and pros alike.",
+  "focus": "ux terms glossary",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T19:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-815f-8f7e-ce94de833aa6",
+  "slug": "unlocking-the-design-puzzle-decoding-the-concentration-of-work-in-the-design-field",
+  "title": "Unlocking the Design Puzzle: Decoding the Concentration of Work in the Design Field",
+  "seoTitle": "Design Industry Competition and the Concentration of Work",
+  "seoDesc": "How design industry competition, reputation, specialization, networking and consistent quality explain why a small share of designers win most of the work.",
+  "focus": "Design industry competition",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-816e-b613-cee8221bf878",
+  "slug": "the-future-of-ai-search-what-openais-research-tells-us",
+  "title": "The Future of AI Search: What OpenAI’s Research Tells Us",
+  "seoTitle": "The Future of AI Search: What OpenAI’s Research Tells Us",
+  "seoDesc": "OpenAI’s latest report leaves little room for doubt: AI search is becoming the dominant use case for ChatGPT. With adoption accelerating, mass-market penetratio",
+  "focus": "ai search",
+  "lastUpd": "2025-10-03",
+  "pub": "2025-10-03",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3e2bb710-b9ab-81a9-a69d-e09151297929"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8197-9dc0-ccd5cf97442c",
+  "slug": "the-80-20-path-to-innovation-lessons-from-gandhi",
+  "title": "The 80/20 Path to Innovation: Lessons from Gandhi",
+  "seoTitle": "The 80/20 Rule and Innovation: Lessons from Gandhi",
+  "seoDesc": "How the 80/20 rule and innovation connect: David Epstein's lessons from Gandhi on prioritizing what matters and using choice mapping to solve problems.",
+  "focus": "80/20 rule and innovation",
+  "lastUpd": "2024-10-28",
+  "pub": "2024-10-28",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81e6-baf2-f4c7b4292acc",
+  "slug": "leveraging-data-and-google-analytics-for-ux-design-success",
+  "title": "Leveraging Data and Google Analytics for UX Design Success",
+  "seoTitle": "Leveraging Data and Google Analytics for UX Design Success",
+  "seoDesc": "How to use Google Analytics for UX design: setting goals and KPIs, tracking events, analyzing user behavior and funnels, and acting on A/B test results.",
+  "focus": "google analytics for ux",
+  "lastUpd": "2026-07-20",
+  "pub": "2026-07-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-815d-92ca-e5f6fd8693fa",
+  "slug": "the-future-of-ux-design-enhancing-user-experiences-with-ai",
+  "title": "The Future of UX Design: Enhancing User Experiences with AI",
+  "seoTitle": "AI in UX Design: The Future of User Experiences",
+  "seoDesc": "How AI in UX design is shaping user experiences, from personalization and chatbots to predictive analytics, accessibility and automated design tasks.",
+  "focus": "AI in UX design",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T19:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81a3-b55a-dd46e59a8fc4",
+  "slug": "adobe-xd-pioneering-design-evolving-trends-and-the-future-amidst-figmas-rise",
+  "title": "Adobe XD: Pioneering Design, Evolving Trends, and the Future Amidst Figma's Rise",
+  "seoTitle": "Adobe XD vs Figma: XD Evolution, Trends and Future",
+  "seoDesc": "Adobe XD vs Figma: how Adobe XD evolved since 2016, its value inside Creative Cloud, the rise of Figma and what the future may hold for both tools.",
+  "focus": "adobe xd vs figma",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8178-94c8-f56b2294d099"
+  ],
+  "edited": "2026-10-12T19:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-811d-8d22-cda6fdf68035",
+  "slug": "is-augmented-reality-the-future-of-ux",
+  "title": "Is Augmented Reality the future of UX?",
+  "seoTitle": "Augmented Reality UX: Is AR the Future of UX?",
+  "seoDesc": "A look at augmented reality UX in retail and utility apps, and what designing for space instead of screens means for immersive product experiences.",
+  "focus": "Augmented reality UX",
+  "lastUpd": "2019-07-17",
+  "pub": "2019-07-17",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81f5-b1b9-d741ae8252da"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-812b-a45b-e5e8a3207cf7",
+  "slug": "a-guide-to-evaluating-design-projects",
+  "title": "A Guide to Evaluating Design Projects",
+  "seoTitle": "A Guide to Evaluating Design Projects",
+  "seoDesc": "A practical guide to evaluating design projects: criteria for functionality, feasibility, familiarity, flexibility and finesse, and how to give useful feedback.",
+  "focus": "evaluating design projects",
+  "lastUpd": "2020-02-06",
+  "pub": "2020-02-06",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8148-b895-cb332c8f1ab3"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8101-82b6-f20dbce1c23c",
+  "slug": "the-ai-powered-cx-singularity",
+  "title": "The AI-Powered CX Singularity",
+  "seoTitle": "AI-Powered Customer Experience: The CX Singularity",
+  "seoDesc": "How AI-powered customer experience is changing what customers expect, from preemptive service to hyper-personalization, and the steps CX leaders should take.",
+  "focus": "AI-powered customer experience",
+  "lastUpd": "2025-07-17",
+  "pub": "2025-07-17",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 2,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T18:33:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-816d-99a8-fa44f413f5f4",
+  "slug": "guarding-against-disposable-design",
+  "title": "Guarding Against Disposable Design",
+  "seoTitle": "Guarding Against Disposable Web Design",
+  "seoDesc": "Disposable web design leaves sites needing a rebuild far sooner than they should. How poor planning, fads and weak documentation cause it, and how to avoid it.",
+  "focus": "Disposable web design",
+  "lastUpd": "2024-06-20",
+  "pub": "2024-06-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8105-a8bc-dd515b061ab4",
+  "slug": "10-key-takeaways-from-googles-material-design-guidelines",
+  "title": "10 Key Takeaways from Google's Material Design Guidelines",
+  "seoTitle": "10 Key Takeaways from Google's Material Design Guidelines",
+  "seoDesc": "Key principles from Google's Material Design guidelines, from material as metaphor and meaningful motion to adaptive layouts, depth and elevation.",
+  "focus": "material design guidelines",
+  "lastUpd": "2021-02-20",
+  "pub": "2021-02-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 3,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81c8-8fdd-eb74db1ee0ee",
+  "slug": "10-principles-for-typography-in-ui-design",
+  "title": "10 Principles for Typography in UI Design",
+  "seoTitle": "10 Principles for Typography in UI Design",
+  "seoDesc": "Learn ten principles of typography in UI design, from type scales and line-height to hierarchy, contrast, spacing and testing on real devices.",
+  "focus": "Typography in UI design",
+  "lastUpd": "2020-12-11",
+  "pub": "2020-12-11",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8113-ac86-f4087748d6bc",
+  "slug": "10-essential-skills-for-the-modern-ui-ux-designer",
+  "title": "10 Essential Skills for the Modern UI & UX Designer",
+  "seoTitle": "10 Essential UI/UX Designer Skills to Master",
+  "seoDesc": "A practical guide to 10 essential UI/UX designer skills, from spacing, colour and type scales to case studies, UX copy, critique and usability testing.",
+  "focus": "UI/UX designer skills",
+  "lastUpd": "2022-09-22",
+  "pub": "2022-09-22",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8143-9f3c-e20aeba4a027",
+  "slug": "future-proofing-your-designs-the-top-10-design-systems-for-ux-ui-designers-in-2023",
+  "title": "Future-Proofing Your Designs: The Top 10 Design Systems for UX/UI Designers in 2023",
+  "seoTitle": "The 10 Best Design Systems for UX/UI Designers",
+  "seoDesc": "A look at 10 of the best design systems for UX/UI designers, including Material, Fluent, Polaris and Carbon, and what each can teach your own design work.",
+  "focus": "best design systems",
+  "lastUpd": "2023-03-13",
+  "pub": "2023-03-13",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8149-af56-ce68a174cbbc",
+  "slug": "how-to-strike-a-balance-between-user-needs-and-your-business-goals",
+  "title": "How to strike a balance between User Needs and your Business Goals",
+  "seoTitle": "User Needs vs Business Goals: How to Strike a Balance",
+  "seoDesc": "User needs vs business goals: how research, clear objectives, collaboration, prioritization and testing help you design products that succeed on both.",
+  "focus": "User needs vs business goals",
+  "lastUpd": "2023-07-10",
+  "pub": "2023-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T19:13:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8176-9e01-fc8e746d08ab",
+  "slug": "10-a-hole-design-patterns",
+  "title": "10 A**hole Design Patterns",
+  "seoTitle": "10 Unethical UX Patterns That Put Profit Before People",
+  "seoDesc": "Ten unethical UX patterns that go a step beyond dark patterns, from shrinkflation and throttling to guilt tripping, and how to spot them in products.",
+  "focus": "Unethical UX patterns",
+  "lastUpd": "2020-04-06",
+  "pub": "2020-04-06",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-819a-9cf7-d82c27e31267",
+  "slug": "10-rules-of-thumb-in-ui-design",
+  "title": "10 Rules of Thumb in UI Design",
+  "seoTitle": "10 UI Design Rules of Thumb Every Designer Should Know",
+  "seoDesc": "Ten UI design rules of thumb covering density, 8dp spacing, contrast, familiar patterns, color weight, typefaces and purposeful animation, plus a checklist.",
+  "focus": "UI design rules of thumb",
+  "lastUpd": "2019-02-02",
+  "pub": "2019-02-02",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-81b3-8f32-dd227bb6e9bd",
+  "slug": "10-ways-to-design-more-inclusive-products",
+  "title": "10 Ways to Design More Inclusive Products",
+  "seoTitle": "10 Ways to Practice Inclusive Product Design",
+  "seoDesc": "Ten ways to practice inclusive product design, from color contrast and WCAG to diverse imagery, gender-inclusive forms and a quick pre-launch checklist.",
+  "focus": "Inclusive product design",
+  "lastUpd": "2020-10-11",
+  "pub": "2020-10-11",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8149-ba72-f5bc2a2741cf",
+  "slug": "10-figma-tricks-i-wish-i-knew-earlier",
+  "title": "10 Figma Tricks I Wish I Knew Earlier",
+  "seoTitle": "Figma Tips and Tricks: 10 I Wish I Knew Earlier",
+  "seoDesc": "Practical Figma tips and tricks, from quick actions and paste to replace to bulk renaming and component properties, to speed up everyday design work.",
+  "focus": "Figma tips and tricks",
+  "lastUpd": "2022-03-15",
+  "pub": "2022-03-15",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-814f-b47d-e25fb18ab8cd",
+  "slug": "10-confessions-of-a-product-designer",
+  "title": "10 Confessions of a Product Designer",
+  "seoTitle": "Product Designer Confessions: 10 Things We Rarely Admit",
+  "seoDesc": "Ten honest product designer confessions, from borrowing Dribbble ideas to messy layers, plus practical habits and a checklist to keep them in check.",
+  "focus": "Product designer confessions",
+  "lastUpd": "2021-08-27",
+  "pub": "2021-08-27",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3e2bb710-b9ab-8158-9677-de5401d33081",
+  "slug": "10-hacks-for-illustrating-and-drawing-in-figma",
+  "title": "10 Hacks for Illustrating and Drawing in Figma",
+  "seoTitle": "Illustrating in Figma: 10 Hacks for Faster Drawing",
+  "seoDesc": "Ten practical hacks for illustrating in Figma, from pen and pencil tools to joining paths, the bend tool and paint bucket, plus tips for layers and exporting.",
+  "focus": "Illustrating in Figma",
+  "lastUpd": "2022-03-08",
+  "pub": "2022-03-08",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T18:32:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80fa-9aff-fa61b0a7f9ee",
+  "slug": "designing-products-that-scale",
+  "title": "Designing Products That Scale",
+  "seoTitle": "Scalable Product Design: Designing Products That Scale",
+  "seoDesc": "Scalable product design principles: design systems, flexible information architecture, performance, internationalization, edge cases and maintainability.",
+  "focus": "Scalable product design",
+  "lastUpd": "2025-04-30",
+  "pub": "2025-04-30",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80ae-b8e7-c12e948aca73",
+  "slug": "next-generation-product-designers",
+  "title": "The Next Generation of Product Designers",
+  "seoTitle": "The Future of Product Designers: The Next Generation",
+  "seoDesc": "The future of product designers: what the next generation brings, where their gaps usually are and how teams can hire and mentor new designers well.",
+  "focus": "future of product designers",
+  "lastUpd": "2025-04-23",
+  "pub": "2025-04-23",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8184-8cd8-caa16ca755d2"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8018-a153-f7f9d9f97e19",
+  "slug": "designing-ai-workflows",
+  "title": "Designing AI Workflows",
+  "seoTitle": "Designing AI Workflows",
+  "seoDesc": "A guide to designing AI workflows as complete experiences rather than isolated features, with clear inputs, useful feedback and meaningful human control.",
+  "focus": "designing ai workflows",
+  "lastUpd": "2025-04-16",
+  "pub": "2025-04-16",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80bb-9776-d57cb5c4b958",
+  "slug": "ux-research-repository",
+  "title": "UX Research Repository Essentials",
+  "seoTitle": "UX Research Repository Essentials",
+  "seoDesc": "UX research repository essentials: how to centralize, organize and reuse research findings so every team can find insights and make better decisions.",
+  "focus": "ux research repository",
+  "lastUpd": "2025-04-09",
+  "pub": "2025-04-09",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8124-98cb-e130ce37d1f0"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-802f-9f2d-ecad5f190b72",
+  "slug": "building-better-product-teams",
+  "title": "Building Better Product Teams",
+  "seoTitle": "Building Better, High-Performing Product Teams",
+  "seoDesc": "How to build high-performing product teams through cross-functional structure, deliberate trust, lean rituals and clear decision-making habits.",
+  "focus": "high-performing product teams",
+  "lastUpd": "2025-04-02",
+  "pub": "2025-04-02",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80c5-900d-c60475fd6aaf",
+  "slug": "ai-design-systems",
+  "title": "AI Meets Design Systems",
+  "seoTitle": "AI Design Systems: Faster Maintenance, Human Judgment",
+  "seoDesc": "How AI design systems help with variants, documentation, audits and design-to-code, and which calls on brand, accessibility and governance stay human.",
+  "focus": "AI design systems",
+  "lastUpd": "2025-03-26",
+  "pub": "2025-03-26",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3e2bb710-b9ab-8125-9064-f1a8acd78842"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-808f-8d6b-c2741185c209",
+  "slug": "future-proofing-design-careers",
+  "title": "Future-Proofing Design Careers",
+  "seoTitle": "How to Build a Future-Proof Design Career",
+  "seoDesc": "Build a future-proof design career with an honest skills audit, the skills worth growing, habits that keep you current and a review every six months.",
+  "focus": "future-proof design career",
+  "lastUpd": "2025-03-19",
+  "pub": "2025-03-19",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8184-8cd8-caa16ca755d2"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8013-a94f-e4ff26068383",
+  "slug": "designing-with-data",
+  "title": "Designing with Data",
+  "seoTitle": "Data-Driven Design: Designing with Data and Empathy",
+  "seoDesc": "A guide to data-driven design: combine analytics with user research, avoid vanity metrics and keep empathy in the room to make better design decisions.",
+  "focus": "Data-driven design",
+  "lastUpd": "2025-03-12",
+  "pub": "2025-03-12",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 3,
+  "cat": [
+   "3e2bb710-b9ab-8124-98cb-e130ce37d1f0"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80a6-855a-d31eaf504acf",
+  "slug": "research-never-ends",
+  "title": "Why Research Never Ends",
+  "seoTitle": "Why Research Never Ends: Continuous User Research",
+  "seoDesc": "Why continuous user research keeps products relevant, and how teams can build ongoing learning from users into every stage of product development.",
+  "focus": "Continuous user research",
+  "lastUpd": "2025-03-05",
+  "pub": "2025-03-05",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8124-98cb-e130ce37d1f0"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80e3-892f-c5d70b5c9078",
+  "slug": "mvp-to-product-market-fit",
+  "title": "From MVP to Product-Market Fit",
+  "seoTitle": "From MVP to Product-Market Fit",
+  "seoDesc": "How to move from MVP to product-market fit: what an MVP is and isn't, the signals that show fit, the learning loop in between and how design helps.",
+  "focus": "Product-market fit",
+  "lastUpd": "2025-02-26",
+  "pub": "2025-02-26",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-809a-b1ed-ca831305f77c",
+  "slug": "product-roadmaps-designers",
+  "title": "Product Roadmaps Designers Should Understand",
+  "seoTitle": "Product Roadmap for Designers: What to Understand",
+  "seoDesc": "A product roadmap for designers explained: the common roadmap types, how to read one critically, and how designers can influence priorities early.",
+  "focus": "product roadmap for designers",
+  "lastUpd": "2025-02-19",
+  "pub": "2025-02-19",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:13:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8015-ae33-d253b1ed5410",
+  "slug": "psychology-great-products",
+  "title": "The Psychology Behind Great Products",
+  "seoTitle": "Product Psychology: The Psychology Behind Great Products",
+  "seoDesc": "A practical look at product psychology: Hick's law, Fitts's law, cognitive load, social proof and habit loops, and how to apply them ethically in design.",
+  "focus": "Product psychology",
+  "lastUpd": "2025-02-12",
+  "pub": "2025-02-12",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T19:02:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80c9-8be3-f98de2f17898",
+  "slug": "writing-better-ux-copy",
+  "title": "Writing Better UX Copy",
+  "seoTitle": "UX Writing Tips: How to Write Better UX Copy",
+  "seoDesc": "Practical UX writing tips for clearer buttons, helpful error messages, useful empty states, the right tone and consistent interface copy.",
+  "focus": "ux writing tips",
+  "lastUpd": "2025-02-05",
+  "pub": "2025-02-05",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8036-b4a1-d2810cfae112",
+  "slug": "ai-assisted-wireframing",
+  "title": "AI-Assisted Wireframing",
+  "seoTitle": "AI Wireframing: How to Speed Up Early Design Concepts",
+  "seoDesc": "A practical guide to AI wireframing: what the tools can do, a workflow that works, how to write better prompts and the pitfalls to avoid in early design.",
+  "focus": "AI wireframing",
+  "lastUpd": "2025-01-29",
+  "pub": "2025-01-29",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80bc-aa35-db89c051c175",
+  "slug": "ux-maturity-model",
+  "title": "The UX Maturity Model Explained",
+  "seoTitle": "UX Maturity Model Explained",
+  "seoDesc": "The UX maturity model explained: the levels of UX maturity, how to assess where your organization stands today and how to progress to the next stage.",
+  "focus": "ux maturity model",
+  "lastUpd": "2025-01-22",
+  "pub": "2025-01-22",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8096-a638-eb3cd31ef617",
+  "slug": "startups-need-design-system",
+  "title": "Why Every Startup Needs a Design System",
+  "seoTitle": "Design Systems for Startups: Why Every Startup Needs One",
+  "seoDesc": "Why lean design systems for startups help growing teams move faster: when to start, what a minimum viable system includes and how to avoid over-engineering.",
+  "focus": "Design systems for startups",
+  "lastUpd": "2025-01-15",
+  "pub": "2025-01-15",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3e2bb710-b9ab-8125-9064-f1a8acd78842"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8083-a305-eac7b037fea1",
+  "slug": "product-metrics-designers",
+  "title": "Product Metrics Every Designer Should Track",
+  "seoTitle": "Product Metrics for Designers: What to Track",
+  "seoDesc": "A guide to product metrics for designers: activation, retention, engagement, conversion and churn, and how to tie your design work to real outcomes.",
+  "focus": "product metrics for designers",
+  "lastUpd": "2025-01-08",
+  "pub": "2025-01-08",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8124-98cb-e130ce37d1f0"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80bb-9b37-c0940186cfdb",
+  "slug": "accessibility-first",
+  "title": "Designing for Accessibility First",
+  "seoTitle": "Accessibility First Design: A Stage-by-Stage Guide",
+  "seoDesc": "Accessibility first design means planning for every user from day one. How to build accessibility into each stage of the design lifecycle, step by step.",
+  "focus": "accessibility first design",
+  "lastUpd": "2025-01-01",
+  "pub": "2025-01-01",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8028-8f70-c5f7f9346a32",
+  "slug": "better-onboarding-experiences",
+  "title": "Building Better Onboarding Experiences",
+  "seoTitle": "User Onboarding Best Practices for Better Experiences",
+  "seoDesc": "User onboarding best practices to shorten time to first value, choose the right onboarding patterns, use progressive disclosure and measure drop-off.",
+  "focus": "User onboarding best practices",
+  "lastUpd": "2024-12-25",
+  "pub": "2024-12-25",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 2,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80fa-9f18-dc0cc2d8683a",
+  "slug": "design-thinking-vs-product-thinking",
+  "title": "Design Thinking vs Product Thinking",
+  "seoTitle": "Design Thinking vs Product Thinking",
+  "seoDesc": "Design thinking vs product thinking compared: what each approach does, the risks each reduces, when to use which and how to combine them on real projects.",
+  "focus": "design thinking vs product thinking",
+  "lastUpd": "2024-12-18",
+  "pub": "2024-12-18",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80c4-a970-f416a00613f5",
+  "slug": "ai-will-not-replace-designers",
+  "title": "AI Will Not Replace Designers",
+  "seoTitle": "Will AI Replace Designers? Why AI Will Not Replace Designers",
+  "seoDesc": "Will AI replace designers? Why AI changes design workflows rather than creativity, and how the designer's role is evolving as AI tools join everyday work.",
+  "focus": "Will AI replace designers",
+  "lastUpd": "2024-12-11",
+  "pub": "2024-12-11",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80f4-adf4-c36846d42f6f",
+  "slug": "product-discovery-done-right",
+  "title": "Product Discovery Done Right",
+  "seoTitle": "Product Discovery Done Right",
+  "seoDesc": "Product discovery done right: how research, validation and experimentation reduce risk and help teams build the right product before they build it well.",
+  "focus": "product discovery",
+  "lastUpd": "2024-12-04",
+  "pub": "2024-12-04",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T19:02:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-800f-a0e8-e006f33d7511",
+  "slug": "ux-debt-is-real",
+  "title": "UX Debt is Real",
+  "seoTitle": "UX Debt is Real",
+  "seoDesc": "UX debt is real and it slows teams just like technical debt. Learn how to spot UX debt in your product, prioritize it and pay it down over time.",
+  "focus": "ux debt",
+  "lastUpd": "2024-11-27",
+  "pub": "2024-11-27",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8091-a0f1-c4f3486636c6",
+  "slug": "why-simplicity-wins",
+  "title": "Why Simplicity Wins",
+  "seoTitle": "Why Simplicity in UX Design Wins",
+  "seoDesc": "Why simplicity in UX design wins: how cutting friction, using smart defaults, plain language and clear hierarchy makes products faster and easier to use.",
+  "focus": "Simplicity in UX design",
+  "lastUpd": "2024-11-20",
+  "pub": "2024-11-20",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-804e-8b52-dfbea829d6d4",
+  "slug": "designing-for-trust",
+  "title": "Designing for Trust in Digital Products",
+  "seoTitle": "Designing for Trust in Digital Products",
+  "seoDesc": "Designing for trust in digital products: how transparency, consistency, visible security, honest copy and avoiding dark patterns earn user confidence.",
+  "focus": "Trust in digital products",
+  "lastUpd": "2024-11-13",
+  "pub": "2024-11-13",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 6,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80b7-b399-c6430d1d24c0",
+  "slug": "building-products-people-love",
+  "title": "Building Products People Love",
+  "seoTitle": "Product Design Principles for Building Products People Love",
+  "seoDesc": "Product design principles for building products people love, from solving real problems to simplicity, trust and the delight that keeps users coming back.",
+  "focus": "Product design principles",
+  "lastUpd": "2024-11-06",
+  "pub": "2024-11-06",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80ba-a0b9-ea632ec896a7",
+  "slug": "evolution-of-ux-strategy",
+  "title": "The Evolution of UX Strategy",
+  "seoTitle": "Evolution of UX Strategy",
+  "seoDesc": "The evolution of UX strategy: how it has matured from interface polish to a business discipline, and how the role of UX in organizations keeps changing.",
+  "focus": "ux strategy",
+  "lastUpd": "2024-10-30",
+  "pub": "2024-10-30",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T19:02:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-807c-92ca-ee1abd8e5ae5",
+  "slug": "accessibility-good-product-design",
+  "title": "Accessibility is Good Product Design",
+  "seoTitle": "Accessibility in Product Design: Why It Matters",
+  "seoDesc": "Why accessibility in product design is a sign of quality, not a compliance task: the curb-cut effect, inclusive design principles and the legal context.",
+  "focus": "accessibility in product design",
+  "lastUpd": "2024-10-23",
+  "pub": "2024-10-23",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 2,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8067-99cf-eb95c363aa99",
+  "slug": "business-value-of-good-ux",
+  "title": "The Business Value of Good UX",
+  "seoTitle": "UX Business Value: The Case for Investing in Good UX",
+  "seoDesc": "Understand UX business value: how good UX improves conversion, retention, support costs and trust, and how to measure it and make the case to leadership.",
+  "focus": "UX business value",
+  "lastUpd": "2024-10-16",
+  "pub": "2024-10-16",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8124-98cb-e130ce37d1f0"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8020-9242-cc8bc1ee68b1",
+  "slug": "ai-powered-ux-research",
+  "title": "AI-Powered UX Research",
+  "seoTitle": "AI-Powered UX Research: Practical Workflows for Teams",
+  "seoDesc": "How AI-powered UX research helps with recruiting, transcription, tagging, synthesis and searchable repositories, plus the limits to watch.",
+  "focus": "AI-powered UX research",
+  "lastUpd": "2024-10-09",
+  "pub": "2024-10-09",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80e1-a62a-c986f3832e9f",
+  "slug": "responsible-ai-design",
+  "title": "Responsible AI Design Principles",
+  "seoTitle": "Responsible AI Design",
+  "seoDesc": "Responsible AI design in practice: how to review for harm, design against bias, treat privacy and consent seriously and build in accountability.",
+  "focus": "responsible ai design",
+  "lastUpd": "2024-10-02",
+  "pub": "2024-10-02",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8088-97be-c073e3447a5c",
+  "slug": "future-product-design-careers",
+  "title": "The Future of Product Design Careers",
+  "seoTitle": "Future of Product Design Careers",
+  "seoDesc": "Explore the future of product design careers: how AI is changing the work, which new roles are emerging and whether to specialize or stay a generalist.",
+  "focus": "product design careers",
+  "lastUpd": "2024-09-25",
+  "pub": "2024-09-25",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8184-8cd8-caa16ca755d2"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80cc-9ebf-d930f7632c69",
+  "slug": "building-better-design-portfolios",
+  "title": "Building Better Design Portfolios",
+  "seoTitle": "Building Better Design Portfolios: UX Portfolio Tips",
+  "seoDesc": "Practical UX portfolio tips for building design portfolios that show how you think, not just what you made, from framing problems to presenting outcomes.",
+  "focus": "UX portfolio tips",
+  "lastUpd": "2024-09-18",
+  "pub": "2024-09-18",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8184-8cd8-caa16ca755d2"
+  ],
+  "edited": "2026-10-12T19:02:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-808d-90ca-e7d582e7cd55",
+  "slug": "scaling-ux-enterprise",
+  "title": "Scaling UX in Enterprise Organizations",
+  "seoTitle": "Scaling Enterprise UX Across Large Organizations",
+  "seoDesc": "Enterprise UX at scale: frameworks for UX maturity, design governance and growing design teams so large organizations ship consistent, usable products.",
+  "focus": "Enterprise UX",
+  "lastUpd": "2024-09-11",
+  "pub": "2024-09-11",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 1,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80a5-861b-d7a5b52293f5",
+  "slug": "emotional-design-digital-products",
+  "title": "Emotional Design in Digital Products",
+  "seoTitle": "Emotional Design",
+  "seoDesc": "Why emotional design matters in digital products, and how psychology, delight and trust shape the way people feel about and stay loyal to your product.",
+  "focus": "emotional design",
+  "lastUpd": "2024-09-04",
+  "pub": "2024-09-04",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 2,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-808a-b159-fa4b1c47a087",
+  "slug": "ux-research-without-large-budgets",
+  "title": "UX Research Without Large Budgets",
+  "seoTitle": "Lean UX Research Without Large Budgets",
+  "seoDesc": "Lean UX research methods for small teams on tight budgets, from guerrilla usability tests and remote interviews to card sorting and mining support tickets.",
+  "focus": "lean ux research",
+  "lastUpd": "2024-08-28",
+  "pub": "2024-08-28",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80e1-bcaa-eed9493c7da6",
+  "slug": "designing-better-saas-products",
+  "title": "Designing Better SaaS Products",
+  "seoTitle": "SaaS UX Design: How to Design Better SaaS Products",
+  "seoDesc": "SaaS UX design guidance for onboarding, dashboards, permissions, billing and retention, so customers reach value quickly and keep renewing.",
+  "focus": "SaaS UX design",
+  "lastUpd": "2024-08-21",
+  "pub": "2024-08-21",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 4,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T19:02:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8039-ab5b-c92b1d56c106",
+  "slug": "customer-journey-mapping",
+  "title": "Customer Journey Mapping Explained",
+  "seoTitle": "Customer Journey Mapping",
+  "seoDesc": "Learn customer journey mapping step by step: how to build a journey map, spot pain points across touchpoints and use it to guide product decisions.",
+  "focus": "customer journey mapping",
+  "lastUpd": "2024-08-14",
+  "pub": "2024-08-14",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 4,
+  "cat": [
+   "3e2bb710-b9ab-8124-98cb-e130ce37d1f0"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8038-accf-d9615b2a4c21",
+  "slug": "measuring-ux-success",
+  "title": "Measuring UX Success",
+  "seoTitle": "Measuring UX Success: The UX Metrics That Matter",
+  "seoDesc": "Measuring UX success: the UX metrics and KPIs that connect design work to business outcomes, and how to track them without drowning in vanity numbers.",
+  "focus": "UX metrics",
+  "lastUpd": "2024-08-07",
+  "pub": "2024-08-07",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8124-98cb-e130ce37d1f0"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80a4-9eb0-ffaf0bcd2a49",
+  "slug": "designer-developer-collaboration",
+  "title": "Collaboration Between Designers and Developers",
+  "seoTitle": "Designer Developer Collaboration",
+  "seoDesc": "Practical ways to improve designer developer collaboration, from joint kickoffs and a shared language to handoff walkthroughs, regular check-ins and shared QA.",
+  "focus": "Designer-developer collaboration",
+  "lastUpd": "2024-07-31",
+  "pub": "2024-07-31",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8082-bc2a-d0efa0c82801",
+  "slug": "human-centered-ai-products",
+  "title": "Human-Centered AI Products",
+  "seoTitle": "Human-Centered AI Products",
+  "seoDesc": "Human-centered AI design principles for products people trust: set honest expectations, show reasoning, keep users in control and plan for graceful failure.",
+  "focus": "Human-centered AI",
+  "lastUpd": "2024-07-24",
+  "pub": "2024-07-24",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 3,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80e5-bae4-eddcc5630600",
+  "slug": "from-wireframes-to-product-strategy",
+  "title": "From Wireframes to Product Strategy",
+  "seoTitle": "From Wireframes to Product Strategy for Designers",
+  "seoDesc": "A guide to product strategy for designers: how to ask better questions, connect design work to outcomes and join the conversations where decisions happen.",
+  "focus": "product strategy for designers",
+  "lastUpd": "2024-07-17",
+  "pub": "2024-07-17",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8080-9115-c811611ee736",
+  "slug": "ai-changing-product-design",
+  "title": "AI is Changing Product Design",
+  "seoTitle": "How AI in Product Design Is Changing Team Workflows",
+  "seoDesc": "AI in product design is speeding up discovery, prototyping, collaboration and handoff. See what changes for teams, what stays human and how to start.",
+  "focus": "AI in product design",
+  "lastUpd": "2024-07-10",
+  "pub": "2024-07-10",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80f2-84ee-cceff34ed0ba",
+  "slug": "technology-stack-for-product-designers",
+  "title": "The Technology Stack Every Product Designer Should Know",
+  "seoTitle": "Tech Stack for Product Designers: What You Should Know",
+  "seoDesc": "A plain-language guide to the tech stack for product designers: frontend, backend, databases, CMS, APIs and hosting, and how each layer shapes design.",
+  "focus": "tech stack for product designers",
+  "lastUpd": "2024-07-03",
+  "pub": "2024-07-03",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T19:02:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80f5-b225-f8b7622506ad",
+  "slug": "why-designers-should-understand-apis",
+  "title": "Why Every Designer Should Understand APIs",
+  "seoTitle": "APIs for Designers: Why You Should Understand Them",
+  "seoDesc": "APIs for designers, explained simply: what APIs are, how they shape the screens you design, and how understanding them helps you work better with developers.",
+  "focus": "APIs for designers",
+  "lastUpd": "2024-06-26",
+  "pub": "2024-06-26",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3bdbb710-b9ab-811a-b77a-fef4a9f0b858"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-80ce-a077-ca520f918135",
+  "slug": "design-systems-beyond-ui-kits",
+  "title": "Design Systems Beyond UI Kits",
+  "seoTitle": "Design System Governance: Going Beyond UI Kits",
+  "seoDesc": "Design systems are more than UI kits. Learn how design system governance, tokens, documentation and contribution turn a component library into a real system.",
+  "focus": "design system governance",
+  "lastUpd": "2024-06-19",
+  "pub": "2024-06-19",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 3,
+  "cat": [
+   "3e2bb710-b9ab-8125-9064-f1a8acd78842"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8075-94b7-c175d7f42434",
+  "slug": "product-thinking-vs-feature-thinking",
+  "title": "Product Thinking vs Feature Thinking",
+  "seoTitle": "Product Thinking vs Feature Thinking",
+  "seoDesc": "A practical guide to product thinking vs feature thinking: how to spot a feature factory, frame work around problems and metrics, and focus on outcomes.",
+  "focus": "product thinking vs feature thinking",
+  "lastUpd": "2024-06-12",
+  "pub": "2024-06-12",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 0,
+  "cat": [
+   "3e2bb710-b9ab-8188-bab7-c9ec04a104a7"
+  ],
+  "edited": "2026-10-12T21:12:00.000Z"
+ },
+ {
+  "id": "3a3bb710-b9ab-8012-bb01-dcb9a1b6f3eb",
+  "slug": "ux-vs-cx-best-products",
+  "title": "UX vs CX: Why the Best Products Win at Both",
+  "seoTitle": "UX vs CX: Why the Best Products Win at Both",
+  "seoDesc": "Understand UX vs CX: what each covers, who owns it, how each is measured, where the gaps appear and how teams can align both across the customer journey.",
+  "focus": "ux vs cx",
+  "lastUpd": "2024-05-23",
+  "pub": "2024-05-23",
+  "status": "Published",
+  "vis": "Public",
+  "rel": 2,
+  "relCS": 2,
+  "cat": [
+   "3bdbb710-b9ab-81df-9732-c448c49b80df"
+  ],
+  "edited": "2026-10-12T19:14:00.000Z"
+ }
+]

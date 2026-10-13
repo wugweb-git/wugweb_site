@@ -1,0 +1,482 @@
+[
+ {
+  "_id": "redirect-framer-0aceab6a48ac",
+  "destination": "/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/kia-customer-loyalty-dashboard-ui-ux",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-3a8dc13727cf",
+  "destination": "/blog/10-key-takeaways-from-googles-material-design-guidelines",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/blog/10-key-takeaways-from-google-s-material-design-guidelines",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-574d8018db89",
+  "destination": "/work/bankco-revolutionizing-financial-engagement-with-a-super-app",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/bankco-super-app-digital-banking-loyalty-commerce",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-74612be64eb0",
+  "destination": "/work/adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/ad-tech-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-850cc1eec91a",
+  "destination": "/work/woodkraft-elevating-indias-largest-corporate-fit-out-legacy",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/woodkraft-elevating-india’s-largest-corporate-fit-out-legacy",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-8effdbfcbcc8",
+  "destination": "/work/rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah-business-ecosystem",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah’s-business-ecosystem",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-9e9c548d5c96",
+  "destination": "/work/gratify-the-intelligent-rewards-and-feedback-platform",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/gratify-intelligent-rewards-feedback-platform",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-a68a19d32852",
+  "destination": "/work/crafting-digital-elegance-the-tot-bridal-launch-story",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/tot-bridal-launch-branding-ux-design",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-dd81cd56f9cf",
+  "destination": "/work/crafting-digital-authority-the-adneto-website-showcase",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13 (closest match, owner to confirm)",
+  "source": "/work/adneto-digital-showcase-ai-powered-loyalty-platform",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-e43ecd179d38",
+  "destination": "/work/airtel-xstream-play-showcasing-indias-unified-digital-entertainment-on-the-web",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/airtel-xstream-play-digital-entertainment-ux-web-design",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-ee2238446b01",
+  "destination": "/work/cartier-redesigning-the-career-website-where-passion-meets-excellence",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/cartier-career-site-redesign-luxury-ux-ui-talent-branding",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-framer-ff943078e2c1",
+  "destination": "/work/valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+  "enabled": true,
+  "note": "Framer URL, DNS cutover pre-flight 2026-10-13",
+  "source": "/work/valyu-ai-empowering-india-s-workforce-with-on-demand-earned-wages",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-040145ee6088",
+  "destination": "/work/wave-group-crafting-a-multi-conglomerate-interactive-experience",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-8122-859a-d567a58d4f58)",
+  "source": "/work/wave-group",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-154fbcfd7fa2",
+  "destination": "/work/musiclinkd-building-the-professional-infrastructure-for-the-music-industry",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81f3-bd72-f62f040acb7a)",
+  "source": "/work/musiclinkd",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-1af6aca2f203",
+  "destination": "/work/musiclinkd-building-the-professional-infrastructure-for-the-music-industry",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81f3-bd72-f62f040acb7a)",
+  "source": "/work/audiofolio-reinventing-audio-discovery-through-ai",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-1c18afd66724",
+  "destination": "/work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81de-bfe8-daf3c63b40b1)",
+  "source": "/work/axis-bank-savings",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-2753be5e7da2",
+  "destination": "/work/cartier-redesigning-the-career-website-where-passion-meets-excellence",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81de-9a12-f76e40d0ede1)",
+  "source": "/work/cartier-careers",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-2ad391069fb6",
+  "destination": "/work/inkompass-cultivating-global-talent-for-a-smoke-free-future",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-817e-a8ba-d1cb06cfee27)",
+  "source": "/work/inkompass",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-346c5dcf2c3f",
+  "destination": "/work/airtel-xsafe",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81b9-bc0f-db5ae6289700)",
+  "source": "/work/airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-36d2be4bc0c5",
+  "destination": "/work/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-815c-af01-c85764f7c384)",
+  "source": "/work/ntuc-u-care",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-37448ea27edb",
+  "destination": "/work/airtel-xstream-play-showcasing-indias-unified-digital-entertainment-on-the-web",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-8111-a35f-f738072fed19)",
+  "source": "/work/airtel-xstream-play",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-3e71ac643be4",
+  "destination": "/work/rideev-powering-the-phygital-ev-revolution-in-india",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-816c-a3fa-cd2870f8c680)",
+  "source": "/work/rideev",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-487374ac350d",
+  "destination": "/work/inkompass-cultivating-global-talent-for-a-smoke-free-future",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-817e-a8ba-d1cb06cfee27)",
+  "source": "/work/redesigning-inkompass-cultivating-global-talent-for-a-smoke-free-future",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-4ab3cf737be6",
+  "destination": "/work/crafting-digital-elegance-the-tot-bridal-launch-story",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-819c-93a4-d759ff256f21)",
+  "source": "/work/tot-bridal",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-4bc4b359f048",
+  "destination": "/work/unified-hrms-redefining-the-employee-lifecycle-through-automation",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-8163-8321-f502e7684a2b)",
+  "source": "/work/wugweb-hrms",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-4cd35391edcc",
+  "destination": "/work/wugweb-revamp-the-living-manifesto-of-digital-perfection",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81ad-8590-c1121329241d)",
+  "source": "/work/wugweb-revamp",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-5329189077d1",
+  "destination": "/work/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81ab-acf2-ec55dd2c6861)",
+  "source": "/work/plufo",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-5362a5969735",
+  "destination": "/work/visione-empowering-workforce-development-with-competency-based-assessments",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-8189-ac4b-cb4b1de0255a)",
+  "source": "/work/visione",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-562275759710",
+  "destination": "/work/visione",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-8189-ac4b-cb4b1de0255a)",
+  "source": "/work/visione-empowering-workforce-development-with-competency-based-assessments",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-5661e3bd67b3",
+  "destination": "/work/wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81be-8892-c34f94a91cd5)",
+  "source": "/work/wugweb-kits",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-5a24bebc66d3",
+  "destination": "/work/indusninja-your-ai-powered-financial-ninja",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81d1-bfe0-fd7c31c7a98c)",
+  "source": "/work/indusninja",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-5ccedcc84d93",
+  "destination": "/work/adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81d8-86a8-c85686dcb224)",
+  "source": "/work/adtech-imedia",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-5d0a4c1185f3",
+  "destination": "/work/bankco-revolutionizing-financial-engagement-with-a-super-app",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81c9-942b-f85c450a14a9)",
+  "source": "/work/bankco",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-5e680b8a0d80",
+  "destination": "/work/pharmadropper-designing-cross-border-digital-healthcare-commerce",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81bd-848d-e59497d5e268)",
+  "source": "/work/pharmadropper",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-6625d5da64f2",
+  "destination": "/work/spark-logistics",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-814c-8fd9-ef81cea0a9f3)",
+  "source": "/work/spark-logistics-building-a-unified-logistics-intelligence-platform",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-66a78b55ce59",
+  "destination": "/work/plufo",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81ab-acf2-ec55dd2c6861)",
+  "source": "/work/plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-6c64751de8a2",
+  "destination": "/work/suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81d5-8545-f5f30eeb5c73)",
+  "source": "/work/suzlon",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-79629a138915",
+  "destination": "/work/airtel-xstream-play-showcasing-indias-unified-digital-entertainment-on-the-web",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-8111-a35f-f738072fed19)",
+  "source": "/work/airtel-xstream-play-showcasing-indias-unified-digital-entertainment",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-7ef04464bb80",
+  "destination": "/work/metcred-the-avant-garde-of-banking-designing-the-zero-fee-mobile-experience",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81d1-a624-f46fe3bed720)",
+  "source": "/work/metcred",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-839b29259a6d",
+  "destination": "/work/hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81d4-bce4-db69fc3a0038)",
+  "source": "/work/hyatt-restaurants",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-867738a8e380",
+  "destination": "/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81f2-ab10-de35de2b811e)",
+  "source": "/work/kia-loyalty-dashboard",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-8f3147809197",
+  "destination": "/work/bankco-revolutionizing-financial-engagement-with-a-super-app",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81c9-942b-f85c450a14a9)",
+  "source": "/work/bankco-engineering-the-ultimate-banking-super-app-ecosystem",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-9304af59b738",
+  "destination": "/work/airtel-xsafe-securing-homes-with-intuitive-digital-experiences",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81b9-bc0f-db5ae6289700)",
+  "source": "/work/airtel-xsafe",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-9e007c41c5a3",
+  "destination": "/work/valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-814b-afd2-e0bf83fe9d5f)",
+  "source": "/work/valyu-ai",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-a174b93eaa93",
+  "destination": "/work/sadhan-streamlining-driver-onboarding-and-lead-management",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81ee-b7d4-d08f74aa473f)",
+  "source": "/work/sadhan",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-a9b65800ba34",
+  "destination": "/work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81ce-9346-d309b801ed55)",
+  "source": "/work/aditya-birla-credit-score",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-ab47f925c9db",
+  "destination": "/work/eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-819a-9a17-e4dceaf5c1d7)",
+  "source": "/work/eastman",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-audiofolio-musiclinkd",
+  "destination": "/work/musiclinkd-building-the-professional-infrastructure-for-the-music-industry",
+  "enabled": true,
+  "note": "Slug renamed audiofolio → musiclinkd (owner, Notion is the source) 2026-10-13",
+  "source": "/work/audiofolio",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-b09e82266da4",
+  "destination": "/work/bodyshop-building-a-premium-wellness-commerce-experience",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-817a-a897-e9031fa4585f)",
+  "source": "/work/bodyshop",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-b316d239ba18",
+  "destination": "/work/airtel-xstream-play-showcasing-indias-unified-digital-entertainment-on-the-web",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-8111-a35f-f738072fed19)",
+  "source": "/work/digital-entertainment-ux-web-design",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-b93c4960127e",
+  "destination": "/work/labelly-immutable-product-verification-via-blockchain-integration",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-8153-843a-d46f38cd4756)",
+  "source": "/work/labelly",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-bd6d9df1ae47",
+  "destination": "/work/stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81a0-8aed-d0209d7e2a36)",
+  "source": "/work/stayweb-pms",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-c625778c9c57",
+  "destination": "/work/cartier-redesigning-the-career-website-where-passion-meets-excellence",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81de-9a12-f76e40d0ede1)",
+  "source": "/work/redesigning-cartiers-career-website-where-passion-meets-excellence",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-cb1c97ef40ef",
+  "destination": "/work/nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-814d-98a2-c1ff711c0b5a)",
+  "source": "/work/nsl-oilchem",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-da9030e8cd76",
+  "destination": "/work/thebizgift",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-818c-8ea6-ed5c016f553b)",
+  "source": "/work/thebizgift-reimagining-corporate-gifting-through-intelligent-commerce",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-debdd5b886f9",
+  "destination": "/work/sadhan-streamlining-driver-onboarding-and-lead-management",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81ee-b7d4-d08f74aa473f)",
+  "source": "/work/sadhan-streamlining-driver-onboarding-lead-management",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-eb4ba13fe1e5",
+  "destination": "/work/metcred-the-avant-garde-of-banking-designing-the-zero-fee-mobile-experience",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81d1-a624-f46fe3bed720)",
+  "source": "/work/the-avant-garde-of-banking-designing-the-metcred-zero-fee-mobile-experience",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-f156374e856c",
+  "destination": "/work/linkedin-sales-navigator-optimizing-the-social-selling-interface",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-81f6-9cab-c0c79042ae94)",
+  "source": "/work/linkedin-sales-navigator",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-f3aa80ec8f10",
+  "destination": "/work/witty-vegan-democratizing-plant-based-diversity-through-culture",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-815c-849c-eb1c2e9bc7fb)",
+  "source": "/work/witty-vegan",
+  "statusCode": 301
+ },
+ {
+  "_id": "redirect-notion-f4b73d95044d",
+  "destination": "/work/rideev",
+  "enabled": true,
+  "note": "Notion Case Studies → Legacy Slugs (3acbb710-b9ab-816c-a3fa-cd2870f8c680)",
+  "source": "/work/rideev-powering-the-phygital-ev-revolution-in-india",
+  "statusCode": 301
+ }
+]

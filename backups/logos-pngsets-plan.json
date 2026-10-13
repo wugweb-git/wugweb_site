@@ -1,0 +1,776 @@
+[
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/JAVASCRIPT_c.png",
+  "t": "assets/logos/colour/application-and-data/JAVASCRIPT_c.png",
+  "kind": "new",
+  "size": 7019
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/Laravel.svg.png",
+  "t": "assets/logos/colour/application-and-data/Laravel.svg.png",
+  "kind": "new",
+  "size": 22730
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/NEXT.JS.png",
+  "t": "assets/logos/colour/application-and-data/NEXT.JS.png",
+  "kind": "new",
+  "size": 27758
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/Python-logo-notext.svg.png",
+  "t": "assets/logos/colour/application-and-data/Python-logo-notext.svg.png",
+  "kind": "new",
+  "size": 62388
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/REACT_c.png",
+  "t": "assets/logos/colour/application-and-data/REACT_c.png",
+  "kind": "new",
+  "size": 16900
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/TYPESCRIPT_c.png",
+  "t": "assets/logos/colour/application-and-data/TYPESCRIPT_c.png",
+  "kind": "new",
+  "size": 4845
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/angular.png",
+  "t": "assets/logos/colour/application-and-data/angular.png",
+  "kind": "new",
+  "size": 2385
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/aws lambda.png",
+  "t": "assets/logos/colour/application-and-data/aws lambda.png",
+  "kind": "new",
+  "size": 6448
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/aws3.png",
+  "t": "assets/logos/colour/application-and-data/aws3.png",
+  "kind": "new",
+  "size": 5259
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/bootsrtrap.png",
+  "t": "assets/logos/colour/application-and-data/bootsrtrap.png",
+  "kind": "new",
+  "size": 3244
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/express_c.png",
+  "t": "assets/logos/colour/application-and-data/express_c.png",
+  "kind": "new",
+  "size": 7185
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/firebase.png",
+  "t": "assets/logos/colour/application-and-data/firebase.png",
+  "kind": "new",
+  "size": 7092
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/flask.png",
+  "t": "assets/logos/colour/application-and-data/flask.png",
+  "kind": "new",
+  "size": 10611
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/html_c.png",
+  "t": "assets/logos/colour/application-and-data/html_c.png",
+  "kind": "new",
+  "size": 5379
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/mongodb-02.png",
+  "t": "assets/logos/colour/application-and-data/mongodb-02.png",
+  "kind": "new",
+  "size": 9291
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/mysql.png",
+  "t": "assets/logos/colour/application-and-data/mysql.png",
+  "kind": "new",
+  "size": 11821
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/nginx_logo_icon_169915.png",
+  "t": "assets/logos/colour/application-and-data/nginx_logo_icon_169915.png",
+  "kind": "new",
+  "size": 14978
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/nodejs_c.png",
+  "t": "assets/logos/colour/application-and-data/nodejs_c.png",
+  "kind": "new",
+  "size": 13298
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/php.png",
+  "t": "assets/logos/colour/application-and-data/php.png",
+  "kind": "new",
+  "size": 9860
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/postgre SQL_c.png",
+  "t": "assets/logos/colour/application-and-data/postgre SQL_c.png",
+  "kind": "new",
+  "size": 19108
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/APPLICATION AND DATA/redis.png",
+  "t": "assets/logos/colour/application-and-data/redis.png",
+  "kind": "new",
+  "size": 21611
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/Asana.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/Asana.png",
+  "kind": "new",
+  "size": 24431
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/atlassian_c.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/atlassian_c.png",
+  "kind": "new",
+  "size": 39990
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/confluence_c.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/confluence_c.png",
+  "kind": "new",
+  "size": 53315
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/grammarly_c.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/grammarly_c.png",
+  "kind": "new",
+  "size": 10319
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/gsuite.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/gsuite.png",
+  "kind": "new",
+  "size": 20493
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/jira.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/jira.png",
+  "kind": "new",
+  "size": 12009
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/miro_c.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/miro_c.png",
+  "kind": "new",
+  "size": 8713
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/notion.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/notion.png",
+  "kind": "new",
+  "size": 6261
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/office365_c.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/office365_c.png",
+  "kind": "new",
+  "size": 6179
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/skype.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/skype.png",
+  "kind": "new",
+  "size": 10257
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/slack.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/slack.png",
+  "kind": "new",
+  "size": 7874
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/trello.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/trello.png",
+  "kind": "new",
+  "size": 3685
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/COLLABORATION & PRODUCTIVITY/zoom_c.png",
+  "t": "assets/logos/colour/collaboration-and-productivity/zoom_c.png",
+  "kind": "new",
+  "size": 6083
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /1667px-Figma-logo.svg.png",
+  "t": "assets/logos/colour/creative-and-design/1667px-Figma-logo.svg.png",
+  "kind": "new",
+  "size": 80051
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /Adobe After Effects_c.png",
+  "t": "assets/logos/colour/creative-and-design/Adobe After Effects_c.png",
+  "kind": "new",
+  "size": 14332
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /Adobe_Illustrator_CC_icon.svg.png",
+  "t": "assets/logos/colour/creative-and-design/Adobe_Illustrator_CC_icon.svg.png",
+  "kind": "new",
+  "size": 30006
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /Adobe_InDesign_CC_icon.svg.png",
+  "t": "assets/logos/colour/creative-and-design/Adobe_InDesign_CC_icon.svg.png",
+  "kind": "new",
+  "size": 54653
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /Adobe_Photoshop_CC_icon.svg.png",
+  "t": "assets/logos/colour/creative-and-design/Adobe_Photoshop_CC_icon.svg.png",
+  "kind": "new",
+  "size": 37226
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /Adobe_Photoshop_Lightroom_CC_logo.svg.png",
+  "t": "assets/logos/colour/creative-and-design/Adobe_Photoshop_Lightroom_CC_logo.svg.png",
+  "kind": "new",
+  "size": 44360
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /Logic Pro X_C.png",
+  "t": "assets/logos/colour/creative-and-design/Logic Pro X_C.png",
+  "kind": "new",
+  "size": 123975
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /Sketch_c.png",
+  "t": "assets/logos/colour/creative-and-design/Sketch_c.png",
+  "kind": "new",
+  "size": 5807
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /adobe express_c.png",
+  "t": "assets/logos/colour/creative-and-design/adobe express_c.png",
+  "kind": "new",
+  "size": 45391
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /canva-icon.png",
+  "t": "assets/logos/colour/creative-and-design/canva-icon.png",
+  "kind": "new",
+  "size": 44016
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /fcp_C.png",
+  "t": "assets/logos/colour/creative-and-design/fcp_C.png",
+  "kind": "new",
+  "size": 52974
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/CREATIVE & DESIGN /invision_c.png",
+  "t": "assets/logos/colour/creative-and-design/invision_c.png",
+  "kind": "new",
+  "size": 7703
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/DEVOPS AND UTILITY/Elasticsearch_c.png",
+  "t": "assets/logos/colour/devops-and-utility/Elasticsearch_c.png",
+  "kind": "new",
+  "size": 9912
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/DEVOPS AND UTILITY/Git-Icon-1788C.png",
+  "t": "assets/logos/colour/devops-and-utility/Git-Icon-1788C.png",
+  "kind": "new",
+  "size": 2383
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/DEVOPS AND UTILITY/Splunk_c.png",
+  "t": "assets/logos/colour/devops-and-utility/Splunk_c.png",
+  "kind": "new",
+  "size": 12342
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/DEVOPS AND UTILITY/Swagger-logo.png",
+  "t": "assets/logos/colour/devops-and-utility/Swagger-logo.png",
+  "kind": "new",
+  "size": 11447
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/DEVOPS AND UTILITY/ansible.png",
+  "t": "assets/logos/colour/devops-and-utility/ansible.png",
+  "kind": "new",
+  "size": 40043
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/DEVOPS AND UTILITY/open api1-01.png",
+  "t": "assets/logos/colour/devops-and-utility/open api1-01.png",
+  "kind": "new",
+  "size": 16450
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/DEVOPS AND UTILITY/rabbitMQ_c.png",
+  "t": "assets/logos/colour/devops-and-utility/rabbitMQ_c.png",
+  "kind": "new",
+  "size": 2520
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/DEVOPS AND UTILITY/robotframework.png",
+  "t": "assets/logos/colour/devops-and-utility/robotframework.png",
+  "kind": "new",
+  "size": 43844
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/Bing Analytics.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/Bing Analytics.png",
+  "kind": "new",
+  "size": 7036
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/Google Tag Manager_c.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/Google Tag Manager_c.png",
+  "kind": "new",
+  "size": 31582
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/Google-Analytics-Logo.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/Google-Analytics-Logo.png",
+  "kind": "new",
+  "size": 11743
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/Hotjar.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/Hotjar.png",
+  "kind": "new",
+  "size": 5493
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/Semrush.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/Semrush.png",
+  "kind": "new",
+  "size": 22514
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/dev360_c.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/dev360_c.png",
+  "kind": "new",
+  "size": 30533
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/google-search-console-logo-B81103D48F-seeklogo.com.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/google-search-console-logo-B81103D48F-seeklogo.com.png",
+  "kind": "new",
+  "size": 4889
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/googletrends_c.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/googletrends_c.png",
+  "kind": "new",
+  "size": 5383
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/gtmetrix_c.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/gtmetrix_c.png",
+  "kind": "new",
+  "size": 7921
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/hootsuite_PNG.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/hootsuite_PNG.png",
+  "kind": "new",
+  "size": 13088
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/litmus_c.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/litmus_c.png",
+  "kind": "new",
+  "size": 104853
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/mailchimp_coloured.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/mailchimp_coloured.png",
+  "kind": "new",
+  "size": 10769
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/optimizely_c.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/optimizely_c.png",
+  "kind": "new",
+  "size": 12953
+ },
+ {
+  "s": "assets/tools/COLOUR PNGS/INTELLIGENCE & ANALYTICS/salesforce_c.png",
+  "t": "assets/logos/colour/intelligence-and-analytics/salesforce_c.png",
+  "kind": "new",
+  "size": 115361
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/Angular Js.png",
+  "t": "assets/logos/monochrome/application-and-data/Angular Js.png",
+  "kind": "new",
+  "size": 11463
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/JAVASCRIPT.png",
+  "t": "assets/logos/monochrome/application-and-data/JAVASCRIPT.png",
+  "kind": "new",
+  "size": 43681
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/Laravel.png",
+  "t": "assets/logos/monochrome/application-and-data/Laravel.png",
+  "kind": "new",
+  "size": 15063
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/MongoDB.png",
+  "t": "assets/logos/monochrome/application-and-data/MongoDB.png",
+  "kind": "new",
+  "size": 12054
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/Mysql.png",
+  "t": "assets/logos/monochrome/application-and-data/Mysql.png",
+  "kind": "new",
+  "size": 28322
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/NGINX.png",
+  "t": "assets/logos/monochrome/application-and-data/NGINX.png",
+  "kind": "new",
+  "size": 9948
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/PHP.png",
+  "t": "assets/logos/monochrome/application-and-data/PHP.png",
+  "kind": "new",
+  "size": 15797
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/REACT.png",
+  "t": "assets/logos/monochrome/application-and-data/REACT.png",
+  "kind": "new",
+  "size": 28556
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/Redis.png",
+  "t": "assets/logos/monochrome/application-and-data/Redis.png",
+  "kind": "new",
+  "size": 14313
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/TYPESCRIPT.png",
+  "t": "assets/logos/monochrome/application-and-data/TYPESCRIPT.png",
+  "kind": "new",
+  "size": 20861
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/css.png",
+  "t": "assets/logos/monochrome/application-and-data/css.png",
+  "kind": "new",
+  "size": 9877
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/html.png",
+  "t": "assets/logos/monochrome/application-and-data/html.png",
+  "kind": "new",
+  "size": 16657
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/nodejs.png",
+  "t": "assets/logos/monochrome/application-and-data/nodejs.png",
+  "kind": "new",
+  "size": 83215
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/postgre SQL.png",
+  "t": "assets/logos/monochrome/application-and-data/postgre SQL.png",
+  "kind": "new",
+  "size": 37360
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/python.png",
+  "t": "assets/logos/monochrome/application-and-data/python.png",
+  "kind": "new",
+  "size": 12195
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/APPLICATION & DATA/s3.png",
+  "t": "assets/logos/monochrome/application-and-data/s3.png",
+  "kind": "new",
+  "size": 35980
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/G Suite-03.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/G Suite-03.png",
+  "kind": "new",
+  "size": 19730
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/Notion-02.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/Notion-02.png",
+  "kind": "new",
+  "size": 10156
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/Trello-01.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/Trello-01.png",
+  "kind": "new",
+  "size": 5948
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/adIo3weMyw5bW0tW.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/adIo3weMyw5bW0tW.png",
+  "kind": "new",
+  "size": 10401
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/asana-02.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/asana-02.png",
+  "kind": "new",
+  "size": 13451
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/atlassian.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/atlassian.png",
+  "kind": "new",
+  "size": 8892
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/confluence.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/confluence.png",
+  "kind": "new",
+  "size": 14247
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/convertkit.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/convertkit.png",
+  "kind": "new",
+  "size": 5512
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/grammarly.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/grammarly.png",
+  "kind": "new",
+  "size": 21751
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/miro.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/miro.png",
+  "kind": "new",
+  "size": 16093
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/office365.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/office365.png",
+  "kind": "new",
+  "size": 19504
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/salesforce.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/salesforce.png",
+  "kind": "new",
+  "size": 25876
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/COLLABORATION & PRODUCTIVITY/zoom.png",
+  "t": "assets/logos/monochrome/collaboration-and-productivity/zoom.png",
+  "kind": "new",
+  "size": 7918
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /Adobe After Effects.png",
+  "t": "assets/logos/monochrome/creative-and-design/Adobe After Effects.png",
+  "kind": "new",
+  "size": 1520
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /Adobe Audition.png",
+  "t": "assets/logos/monochrome/creative-and-design/Adobe Audition.png",
+  "kind": "new",
+  "size": 1395
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /Adobe Premiere Pro.png",
+  "t": "assets/logos/monochrome/creative-and-design/Adobe Premiere Pro.png",
+  "kind": "new",
+  "size": 1122
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /Canva.png",
+  "t": "assets/logos/monochrome/creative-and-design/Canva.png",
+  "kind": "new",
+  "size": 2636
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /Illustrator-02.png",
+  "t": "assets/logos/monochrome/creative-and-design/Illustrator-02.png",
+  "kind": "new",
+  "size": 8574
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /Invision.png",
+  "t": "assets/logos/monochrome/creative-and-design/Invision.png",
+  "kind": "new",
+  "size": 1344
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /Sketch.png",
+  "t": "assets/logos/monochrome/creative-and-design/Sketch.png",
+  "kind": "new",
+  "size": 1818
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /adobe express.png",
+  "t": "assets/logos/monochrome/creative-and-design/adobe express.png",
+  "kind": "new",
+  "size": 54111
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /fcp.png",
+  "t": "assets/logos/monochrome/creative-and-design/fcp.png",
+  "kind": "new",
+  "size": 85593
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /figma-02.png",
+  "t": "assets/logos/monochrome/creative-and-design/figma-02.png",
+  "kind": "new",
+  "size": 17879
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /indesign-02.png",
+  "t": "assets/logos/monochrome/creative-and-design/indesign-02.png",
+  "kind": "new",
+  "size": 6404
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /lightroom-02.png",
+  "t": "assets/logos/monochrome/creative-and-design/lightroom-02.png",
+  "kind": "new",
+  "size": 3737
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/CREATIVE & DESIGN /photoshop-02.png",
+  "t": "assets/logos/monochrome/creative-and-design/photoshop-02.png",
+  "kind": "new",
+  "size": 8324
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/DEVOPS AND UTILITY/Elasticsearch.png",
+  "t": "assets/logos/monochrome/devops-and-utility/Elasticsearch.png",
+  "kind": "new",
+  "size": 95227
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/DEVOPS AND UTILITY/Splunk.png",
+  "t": "assets/logos/monochrome/devops-and-utility/Splunk.png",
+  "kind": "new",
+  "size": 31915
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/DEVOPS AND UTILITY/Swagger UI-02-02.png",
+  "t": "assets/logos/monochrome/devops-and-utility/Swagger UI-02-02.png",
+  "kind": "new",
+  "size": 24731
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/DEVOPS AND UTILITY/git-02.png",
+  "t": "assets/logos/monochrome/devops-and-utility/git-02.png",
+  "kind": "new",
+  "size": 10127
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/DEVOPS AND UTILITY/open api-02.png",
+  "t": "assets/logos/monochrome/devops-and-utility/open api-02.png",
+  "kind": "new",
+  "size": 18027
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/DEVOPS AND UTILITY/rabbitinverse.png",
+  "t": "assets/logos/monochrome/devops-and-utility/rabbitinverse.png",
+  "kind": "new",
+  "size": 4961
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/Bing analytics.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/Bing analytics.png",
+  "kind": "new",
+  "size": 6694
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/Google Tag Manager.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/Google Tag Manager.png",
+  "kind": "new",
+  "size": 1493
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/Google analytics-01.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/Google analytics-01.png",
+  "kind": "new",
+  "size": 7057
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/Hotjar-02.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/Hotjar-02.png",
+  "kind": "new",
+  "size": 8915
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/Semrush-03.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/Semrush-03.png",
+  "kind": "new",
+  "size": 9394
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/dev360.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/dev360.png",
+  "kind": "new",
+  "size": 21767
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/google search console 1-04.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/google search console 1-04.png",
+  "kind": "new",
+  "size": 15193
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/google trends.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/google trends.png",
+  "kind": "new",
+  "size": 3397
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/googledatastuddio.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/googledatastuddio.png",
+  "kind": "new",
+  "size": 7266
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/gtmetrix.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/gtmetrix.png",
+  "kind": "new",
+  "size": 4891
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/hootsuite.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/hootsuite.png",
+  "kind": "new",
+  "size": 29884
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/litmus.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/litmus.png",
+  "kind": "new",
+  "size": 39201
+ },
+ {
+  "s": "assets/tools/MONOCHROME PNGS/INTELLIGENCE & ANALYTICS/optimizely.png",
+  "t": "assets/logos/monochrome/intelligence-and-analytics/optimizely.png",
+  "kind": "new",
+  "size": 24126
+ }
+]

@@ -1,0 +1,551 @@
+[
+ {
+  "pillar": "brand",
+  "sub": "Brand Strategy",
+  "status": "REAL",
+  "src": "brand/Brand Position Strategy",
+  "exists": true,
+  "poster": true,
+  "slug": "brand-strategy"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Brand Positioning",
+  "status": "REAL",
+  "src": "brand/Brand Experience",
+  "exists": true,
+  "poster": true,
+  "slug": "brand-positioning"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Brand Narrative",
+  "status": "REAL",
+  "src": "brand/Narrative Architecture",
+  "exists": true,
+  "poster": true,
+  "slug": "brand-narrative"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Brand Identity Systems",
+  "status": "REAL",
+  "src": "brand/Brand Identity Systems",
+  "exists": true,
+  "poster": true,
+  "slug": "brand-identity-systems"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Naming & Nomenclature",
+  "status": "REAL",
+  "src": "brand/Naming Nomenclature",
+  "exists": true,
+  "poster": true,
+  "slug": "naming-and-nomenclature"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Messaging Framework",
+  "status": "STAND-IN",
+  "src": "growth/Immersive Content Strategies",
+  "exists": true,
+  "poster": true,
+  "slug": "messaging-framework"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Voice & Tone",
+  "status": "REAL",
+  "src": "brand/Voice Tone",
+  "exists": true,
+  "poster": true,
+  "slug": "voice-and-tone"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Employer Branding",
+  "status": "REAL",
+  "src": "brand/Brand Audit Analysis",
+  "exists": true,
+  "poster": true,
+  "slug": "employer-branding"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Brand Guidelines",
+  "status": "REAL",
+  "src": "brand/Brand Evolution Management",
+  "exists": true,
+  "poster": true,
+  "slug": "brand-guidelines"
+ },
+ {
+  "pillar": "brand",
+  "sub": "Brand Activation",
+  "status": "REAL",
+  "src": "brand/Brand activation",
+  "exists": true,
+  "poster": true,
+  "slug": "brand-activation"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "Website & CMS Development",
+  "status": "REAL",
+  "src": "engineering/Front-End Engineering",
+  "exists": true,
+  "poster": true,
+  "slug": "website-and-cms-development"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "Web Application Development",
+  "status": "REAL",
+  "src": "engineering/Progressive Web Applications (PWAs)",
+  "exists": true,
+  "poster": true,
+  "slug": "web-application-development"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "Mobile Application Development",
+  "status": "REAL",
+  "src": "engineering/Native Mobile Application Development",
+  "exists": true,
+  "poster": true,
+  "slug": "mobile-application-development"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "SaaS Development",
+  "status": "STAND-IN",
+  "src": "engineering/Digital Platform Architecture",
+  "exists": true,
+  "poster": true,
+  "slug": "saas-development"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "Ecommerce Development",
+  "status": "REAL",
+  "src": "engineering/Ecommerce",
+  "exists": true,
+  "poster": true,
+  "slug": "ecommerce-development"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "API & System Integrations",
+  "status": "REAL",
+  "src": "engineering/API",
+  "exists": true,
+  "poster": true,
+  "slug": "api-and-system-integrations"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "Database Engineering",
+  "status": "REAL",
+  "src": "engineering/Database Design Optimization",
+  "exists": true,
+  "poster": false,
+  "slug": "database-engineering"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "Cloud & DevOps",
+  "status": "REAL",
+  "src": "engineering/DevOps Cloud Implementation",
+  "exists": true,
+  "poster": false,
+  "slug": "cloud-and-devops"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "Security Engineering",
+  "status": "STAND-IN",
+  "src": "engineering/backend",
+  "exists": true,
+  "poster": true,
+  "slug": "security-engineering"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "Performance Engineering",
+  "status": "STAND-IN",
+  "src": "experience/Performance Optimization",
+  "exists": true,
+  "poster": true,
+  "slug": "performance-engineering"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "AI Applications & Agents",
+  "status": "STAND-IN",
+  "src": "growth/Automation architecture",
+  "exists": true,
+  "poster": true,
+  "slug": "ai-applications-and-agents"
+ },
+ {
+  "pillar": "engineering",
+  "sub": "No-Code & Low-Code Development",
+  "status": "STAND-IN",
+  "src": "engineering/Bespoke Digital Solutions",
+  "exists": true,
+  "poster": true,
+  "slug": "no-code-and-low-code-development"
+ },
+ {
+  "pillar": "experience",
+  "sub": "UX Research",
+  "status": "REAL",
+  "src": "experience/User Intelligence",
+  "exists": true,
+  "poster": true,
+  "slug": "ux-research"
+ },
+ {
+  "pillar": "experience",
+  "sub": "Service Design",
+  "status": "STAND-IN",
+  "src": "experience/Adaptive Platforms",
+  "exists": true,
+  "poster": true,
+  "slug": "service-design"
+ },
+ {
+  "pillar": "experience",
+  "sub": "Information Architecture",
+  "status": "STAND-IN",
+  "src": "engineering/Digital Platform Architecture",
+  "exists": true,
+  "poster": true,
+  "slug": "information-architecture"
+ },
+ {
+  "pillar": "experience",
+  "sub": "UX Design",
+  "status": "REAL",
+  "src": "experience/Experience Design - UX",
+  "exists": true,
+  "poster": true,
+  "slug": "ux-design"
+ },
+ {
+  "pillar": "experience",
+  "sub": "UI Design",
+  "status": "REAL",
+  "src": "experience/Interface Mastery - UI",
+  "exists": true,
+  "poster": true,
+  "slug": "ui-design"
+ },
+ {
+  "pillar": "experience",
+  "sub": "Design Systems",
+  "status": "REAL",
+  "src": "experience/Design Systems",
+  "exists": true,
+  "poster": true,
+  "slug": "design-systems"
+ },
+ {
+  "pillar": "experience",
+  "sub": "Accessibility Design",
+  "status": "STAND-IN",
+  "src": "engineering/Cross-Platform Hybrid Mobile Solutions",
+  "exists": true,
+  "poster": false,
+  "slug": "accessibility-design"
+ },
+ {
+  "pillar": "experience",
+  "sub": "Interactive Prototyping",
+  "status": "REAL",
+  "src": "experience/Rapid Concepting",
+  "exists": true,
+  "poster": true,
+  "slug": "interactive-prototyping"
+ },
+ {
+  "pillar": "experience",
+  "sub": "User Testing",
+  "status": "STAND-IN",
+  "src": "growth/Conversion rate optimisation",
+  "exists": true,
+  "poster": true,
+  "slug": "user-testing"
+ },
+ {
+  "pillar": "experience",
+  "sub": "Journey Mapping",
+  "status": "REAL",
+  "src": "experience/Journey architecture",
+  "exists": true,
+  "poster": true,
+  "slug": "journey-mapping"
+ },
+ {
+  "pillar": "growth",
+  "sub": "SEO",
+  "status": "STAND-IN",
+  "src": "growth/seamless platform integration",
+  "exists": true,
+  "poster": true,
+  "slug": "seo"
+ },
+ {
+  "pillar": "growth",
+  "sub": "Content Strategy",
+  "status": "REAL",
+  "src": "growth/Immersive Content Strategies",
+  "exists": true,
+  "poster": true,
+  "slug": "content-strategy"
+ },
+ {
+  "pillar": "growth",
+  "sub": "Social Media Marketing",
+  "status": "STAND-IN",
+  "src": "growth/Personalized Content Delivery",
+  "exists": true,
+  "poster": true,
+  "slug": "social-media-marketing"
+ },
+ {
+  "pillar": "growth",
+  "sub": "Performance Marketing & Campaigns",
+  "status": "REAL",
+  "src": "growth/AI-Powered Performance Marketing",
+  "exists": true,
+  "poster": true,
+  "slug": "performance-marketing-and-campaigns"
+ },
+ {
+  "pillar": "growth",
+  "sub": "CRM Implementation",
+  "status": "STAND-IN",
+  "src": "growth/MarTech stack design",
+  "exists": true,
+  "poster": true,
+  "slug": "crm-implementation"
+ },
+ {
+  "pillar": "growth",
+  "sub": "Marketing Automation",
+  "status": "REAL",
+  "src": "growth/Automation architecture",
+  "exists": true,
+  "poster": true,
+  "slug": "marketing-automation"
+ },
+ {
+  "pillar": "growth",
+  "sub": "Personalization & AI Marketing",
+  "status": "REAL",
+  "src": "growth/Generative AI Content Creation",
+  "exists": true,
+  "poster": true,
+  "slug": "personalization-and-ai-marketing"
+ },
+ {
+  "pillar": "growth",
+  "sub": "Analytics & Attribution",
+  "status": "REAL",
+  "src": "growth/Predictive Analytics Attribution",
+  "exists": true,
+  "poster": false,
+  "slug": "analytics-and-attribution"
+ },
+ {
+  "pillar": "growth",
+  "sub": "Customer Insights",
+  "status": "STAND-IN",
+  "src": "experience/User Intelligence",
+  "exists": true,
+  "poster": true,
+  "slug": "customer-insights"
+ },
+ {
+  "pillar": "growth",
+  "sub": "CRO & Experimentation",
+  "status": "REAL",
+  "src": "growth/Conversion rate optimisation",
+  "exists": true,
+  "poster": true,
+  "slug": "cro-and-experimentation"
+ },
+ {
+  "pillar": "operations",
+  "sub": "QA & Test Automation",
+  "status": "STAND-IN",
+  "src": "engineering/DevOps Cloud Implementation",
+  "exists": true,
+  "poster": false,
+  "slug": "qa-and-test-automation"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Performance & Security Testing",
+  "status": "STAND-IN",
+  "src": "experience/Performance Optimization",
+  "exists": true,
+  "poster": true,
+  "slug": "performance-and-security-testing"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Accessibility Audits",
+  "status": "STAND-IN",
+  "src": "experience/Interface Mastery - UI",
+  "exists": true,
+  "poster": true,
+  "slug": "accessibility-audits"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Maintenance & SLA Support",
+  "status": "REAL",
+  "src": "operations/Ongoing Support",
+  "exists": true,
+  "poster": true,
+  "slug": "maintenance-and-sla-support"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Monitoring & Observability",
+  "status": "STAND-IN",
+  "src": "engineering/backend",
+  "exists": true,
+  "poster": true,
+  "slug": "monitoring-and-observability"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Incident Response",
+  "status": "STAND-IN",
+  "src": "experience/Rapid Concepting",
+  "exists": true,
+  "poster": true,
+  "slug": "incident-response"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Release Management",
+  "status": "STAND-IN",
+  "src": "engineering/Digital Platform Architecture",
+  "exists": true,
+  "poster": true,
+  "slug": "release-management"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Technical & UX Audits",
+  "status": "STAND-IN",
+  "src": "experience/Experience Design - UX",
+  "exists": true,
+  "poster": true,
+  "slug": "technical-and-ux-audits"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Product Optimization",
+  "status": "STAND-IN",
+  "src": "growth/Predictive Analytics Attribution",
+  "exists": true,
+  "poster": false,
+  "slug": "product-optimization"
+ },
+ {
+  "pillar": "operations",
+  "sub": "Feature Evolution",
+  "status": "STAND-IN",
+  "src": "experience/Adaptive Platforms",
+  "exists": true,
+  "poster": true,
+  "slug": "feature-evolution"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "Business Strategy",
+  "status": "STAND-IN",
+  "src": "brand/Brand Position Strategy",
+  "exists": true,
+  "poster": true,
+  "slug": "business-strategy"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "Business Model Design",
+  "status": "STAND-IN",
+  "src": "engineering/Bespoke Digital Solutions",
+  "exists": true,
+  "poster": true,
+  "slug": "business-model-design"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "Digital Transformation & Innovation",
+  "status": "REAL",
+  "src": "strategy/Digital Transformation Roadmaps",
+  "exists": true,
+  "poster": true,
+  "slug": "digital-transformation-and-innovation"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "Market & Competitive Research",
+  "status": "REAL",
+  "src": "strategy/Future-Forward Market Insights",
+  "exists": true,
+  "poster": true,
+  "slug": "market-and-competitive-research"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "Product Strategy & Roadmapping",
+  "status": "STAND-IN",
+  "src": "engineering/Digital Platform Architecture",
+  "exists": true,
+  "poster": true,
+  "slug": "product-strategy-and-roadmapping"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "Product Discovery & MVP Planning",
+  "status": "STAND-IN",
+  "src": "experience/Rapid Concepting",
+  "exists": true,
+  "poster": true,
+  "slug": "product-discovery-and-mvp-planning"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "AI Strategy",
+  "status": "STAND-IN",
+  "src": "growth/Generative AI Content Creation",
+  "exists": true,
+  "poster": true,
+  "slug": "ai-strategy"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "AI Readiness Assessment",
+  "status": "STAND-IN",
+  "src": "growth/Predictive Analytics Attribution",
+  "exists": true,
+  "poster": false,
+  "slug": "ai-readiness-assessment"
+ },
+ {
+  "pillar": "strategy",
+  "sub": "Transformation Workshops",
+  "status": "REAL",
+  "src": "strategy/Disruptive Innovation Workshops",
+  "exists": true,
+  "poster": true,
+  "slug": "transformation-workshops"
+ }
+]

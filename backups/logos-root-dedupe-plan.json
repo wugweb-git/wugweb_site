@@ -1,0 +1,110 @@
+[
+ {
+  "s": "assets/logos/android-chrome-192x192.png",
+  "t": "assets/site/global/favicons/android-chrome-192x192.png",
+  "kind": "dup",
+  "size": 7159
+ },
+ {
+  "s": "assets/logos/android-chrome-512x512.png",
+  "t": "assets/site/global/favicons/android-chrome-512x512.png",
+  "kind": "dup",
+  "size": 23430
+ },
+ {
+  "s": "assets/logos/apple-touch-icon.png",
+  "t": "assets/site/global/favicons/apple-touch-icon.png",
+  "kind": "dup",
+  "size": 6440
+ },
+ {
+  "s": "assets/logos/favicon-16x16.png",
+  "t": "assets/site/global/favicons/favicon-16x16.png",
+  "kind": "dup",
+  "size": 415
+ },
+ {
+  "s": "assets/logos/favicon-32x32.png",
+  "t": "assets/site/global/favicons/favicon-32x32.png",
+  "kind": "dup",
+  "size": 876
+ },
+ {
+  "s": "assets/logos/favicon.ico",
+  "t": "assets/site/global/favicons/favicon.ico",
+  "kind": "dup",
+  "size": 15406
+ },
+ {
+  "s": "assets/logos/arrow-up-line.png",
+  "t": "assets/site/global/icons/arrow-up-line.png",
+  "kind": "dup",
+  "size": 287
+ },
+ {
+  "s": "assets/logos/arrow-up-line@2x.png",
+  "t": "assets/site/global/icons/arrow-up-line@2x.png",
+  "kind": "dup",
+  "size": 656
+ },
+ {
+  "s": "assets/logos/arrow.png",
+  "t": "assets/site/global/icons/arrow.png",
+  "kind": "dup",
+  "size": 1197
+ },
+ {
+  "s": "assets/logos/behance-fill.svg",
+  "t": "assets/site/global/icons/behance-fill.svg",
+  "kind": "dup",
+  "size": 1802
+ },
+ {
+  "s": "assets/logos/dribbble-line.svg",
+  "t": "assets/site/global/icons/dribbble-line.svg",
+  "kind": "dup",
+  "size": 1367
+ },
+ {
+  "s": "assets/logos/facebook-circle-fill.svg",
+  "t": "assets/site/global/icons/facebook-circle-fill.svg",
+  "kind": "dup",
+  "size": 557
+ },
+ {
+  "s": "assets/logos/instagram-fill.svg",
+  "t": "assets/site/global/icons/instagram-fill.svg",
+  "kind": "dup",
+  "size": 1168
+ },
+ {
+  "s": "assets/logos/linkedin-box-fill.svg",
+  "t": "assets/site/global/icons/linkedin-box-fill.svg",
+  "kind": "dup",
+  "size": 769
+ },
+ {
+  "s": "assets/logos/twitter-fill.svg",
+  "t": "assets/site/global/icons/twitter-fill.svg",
+  "kind": "dup",
+  "size": 795
+ },
+ {
+  "s": "assets/logos/wugweb-logo.png",
+  "t": "assets/logos/wugweb/wugweb-logo.png",
+  "kind": "dup",
+  "size": 2599
+ },
+ {
+  "s": "assets/logos/menu-logo.png",
+  "t": "assets/logos/wugweb/menu-logo.png",
+  "kind": "dup",
+  "size": 777
+ },
+ {
+  "s": "assets/unsorted/wugweb_logo_1.svg",
+  "t": "assets/logos/wugweb/wugweb_logo_1.svg",
+  "kind": "dup",
+  "size": 3990
+ }
+]
