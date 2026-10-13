@@ -6,6 +6,11 @@
  *   node scripts/sync-notion-case-studies.mjs           dry run: prints what would change
  *   WRITE=1 node scripts/sync-notion-case-studies.mjs   backs up the touched fields, then writes
  *
+ * Body Content → bodyMarkdown: the Notion rich text becomes markdown. Media links ("!Cover Image" →
+ * ![Cover Image](url)) on framerusercontent.com, wugweb.online or wugweb.pages.dev/assets are
+ * rewritten to their R2 copies via scripts/data/case-study-media-map.json; an old-host link with no
+ * mapping is dropped and listed. "Framer site copy" is renamed "Sanity site copy".
+ *
  * Matched docs (Notion "Sanity ID", else slug): sets title (what was built, no brand), shortTitle
  * (the brand), slug, seoTitle, seoDescription, focusKeyword and canonicalUrl. Empty Notion values
  * never clear Sanity. A slug change never recreates the doc (the _id stays). One slug per case
@@ -40,6 +45,31 @@ async function notion(url, opt = {}) {
   }
   throw new Error(`${url}: retries exhausted`);
 }
+const MEDIA_MAP = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'data', 'case-study-media-map.json'), 'utf8')).map;
+const OLD_HOST = /framerusercontent\.com|wugweb\.online|wugweb\.pages\.dev\/assets/;
+const unmappedMedia = [];
+function toMarkdown(id, rt = []) {
+  let md = '';
+  for (const t of rt) {
+    let c = t.plain_text;
+    let u = t.href || t.text?.link?.url || null;
+    if (u && OLD_HOST.test(u)) {
+      const to = MEDIA_MAP[u];
+      if (to) u = to;
+      else { unmappedMedia.push(`${id}: ${u}`); u = null; if (c.trim().startsWith('http')) c = ''; }
+    }
+    const label = c.trim();
+    if (u && label) {
+      if (label.startsWith('!')) md += c.replace(label, `![${label.slice(1).trim()}](${u})`);
+      else if (label.startsWith('http')) md += c.replace(label, u);
+      else md += c.replace(label, `[${label}](${u})`);
+    } else md += t.annotations?.bold && label ? c.replace(label, `**${label}**`) : c;
+  }
+  return md
+    .replace(/^## Framer site copy$/m, '## Sanity site copy')
+    .replace(/The long-form copy as published on the Framer site \(source: "Case Studies - framer"\)\./, 'The long-form copy as published on the site.')
+    .trim();
+}
 const plain = (p) => (p ? (p.title || p.rich_text || []).map((t) => t.plain_text).join('').trim() : '');
 
 const rows = []; let cur;
@@ -50,6 +80,7 @@ do {
     rows.push({
       id: plain(P['Case Study ID']), slug: plain(P['Slug']).replace(/^\/?work\//, '').replace(/\/$/, ''), sanityId: plain(P['Sanity ID']),
       title: plain(P['Title']), shortTitle: plain(P['Short Title']),
+      bodyMarkdown: toMarkdown(plain(P['Case Study ID']), P['Body Content']?.rich_text),
       seoTitle: plain(P['SEO Title']), seoDescription: plain(P['SEO Description']),
       focusKeyword: plain(P['Focus Keyword']), canonicalUrl: plain(P['Canonical URL']),
     });
@@ -57,10 +88,10 @@ do {
   cur = j.has_more ? j.next_cursor : null;
 } while (cur);
 
-const docs = await sanity.fetch('*[_type == "caseStudy" && !(_id in path("drafts.**"))]{_id, "slug": slug.current, title, shortTitle, seoTitle, seoDescription, focusKeyword, canonicalUrl}');
+const docs = await sanity.fetch('*[_type == "caseStudy" && !(_id in path("drafts.**"))]{_id, "slug": slug.current, title, shortTitle, bodyMarkdown, seoTitle, seoDescription, focusKeyword, canonicalUrl}');
 const byId = new Map(docs.map((d) => [d._id, d]));
 const bySlug = new Map(docs.map((d) => [d.slug, d]));
-const FIELDS = ['title', 'shortTitle', 'slug', 'seoTitle', 'seoDescription', 'focusKeyword', 'canonicalUrl'];
+const FIELDS = ['title', 'shortTitle', 'bodyMarkdown', 'slug', 'seoTitle', 'seoDescription', 'focusKeyword', 'canonicalUrl'];
 // Resolve every doc's slug after this run first, so canonicals may point at a slug being set now.
 const matchOf = (r) => byId.get(r.sanityId) || bySlug.get(r.slug);
 const finalSlug = new Map(docs.map((d) => [d._id, d.slug]));
@@ -92,7 +123,8 @@ for (const r of rows) {
 
 console.log(`${WRITE ? 'WRITE' : 'DRY RUN'} · notion ${rows.length} · sanity ${docs.length} · to patch ${patches.length}`);
 for (const f of FIELDS) console.log(`  ${f}: ${patches.filter((p) => p.set[f === 'slug' ? 'slug.current' : f] !== undefined).length}`);
-for (const p of patches) for (const [f, v] of Object.entries(p.set)) { const k = f.replace('.current', ''); console.log(`  ${p.id} ${k}: "${p.before[k] ?? ''}" → "${v}"`); }
+for (const p of patches) for (const [f, v] of Object.entries(p.set)) { if (f === 'bodyMarkdown') continue; const k = f.replace('.current', ''); console.log(`  ${p.id} ${k}: "${p.before[k] ?? ''}" → "${v}"`); }
+if (unmappedMedia.length) console.log(`old-host media with no R2 mapping (link dropped):\n  ${unmappedMedia.join('\n  ')}`);
 if (unmatched.length) console.log(`no Sanity doc: ${unmatched.join(', ')}`);
 if (slugSkipped.length) console.log(`slug skipped (taken):\n  ${slugSkipped.join('\n  ')}`);
 if (canonSkipped.length) console.log(`canonical skipped (not a published /work/ slug):\n  ${canonSkipped.join('\n  ')}`);

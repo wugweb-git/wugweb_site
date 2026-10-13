@@ -214,6 +214,11 @@ export default defineType({
     // a stub's canonical URL IS the real case study, and the redirect is simply
     // the stronger form of that same signal.
     defineField({
+      name: 'bodyMarkdown', title: 'Body (from Notion)', type: 'text', rows: 20, group: 'overview',
+      description: 'Notion "Body Content", converted to markdown with media on R2. Synced by scripts/sync-notion-case-studies.mjs — edit it in Notion.',
+      readOnly: true,
+    }),
+    defineField({
       name: 'focusKeyword', type: 'string', group: 'seo',
       title: 'Focus Keyword',
       description: 'Synced from Notion (scripts/sync-notion-case-studies.mjs) — edit it there.',
