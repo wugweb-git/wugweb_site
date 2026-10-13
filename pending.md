@@ -83,7 +83,7 @@ in §1s and `~/.claude/plans/snoopy-splashing-pearl.md`.
 
 **Added 2026-10-13 — queue cleared:** typegen config fixed (Studio tsc 0), three seoChecks added, non-Storybook tsc errors fixed (site 42 → 39, all Storybook). The Studio changes are **not deployed** yet (SeoTool queries, live duplicate warnings). Open decisions: GA4 vs GTM, Hotjar ID, en-GB vs en-US, the ALL-CAPS brand names. The main open item after this is the DNS cutover.
 
-**Added 2026-10-13 — Studio tidy-up:** SEO and Copy & Export are folded into Tables, the Voice and Integrations tabs are removed, and the superseded `SeoTool.tsx` / `ArticleExportTool.tsx` files are deleted. **Click through:** the new columns on all four content tables, expanding "Checks passed", Copy as Markdown on one post, bulk copy on 3 rows, and the Auto Meta confirm step. **Decisions pending:** whether to hide or remove the 14 Brand voice fields (data kept either way), and how you want to see the top 404s.
+**Added 2026-10-13 — Studio tidy-up:** SEO and Copy & Export are folded into Tables, the Voice and Integrations tabs are removed, and the superseded `SeoTool.tsx` / `ArticleExportTool.tsx` files are deleted. **Click through:** the new columns on all four content tables, expanding "Checks passed", Copy as Markdown on one post, bulk copy on 3 rows, and the Auto Meta confirm step. **Brand voice:** the tab and its 14 fields are hidden (`hidden: true`, 2026-10-13); the data is kept, and removing `hidden` restores them. **Decision pending:** how you want to see the top 404s (D1 console query, or a read-only Tables view).
 
 **Needs you, not code:**
 
