@@ -8,9 +8,8 @@
  *
  * Matched docs (Notion "Sanity ID", else slug): sets title (what was built, no brand), shortTitle
  * (the brand), slug, seoTitle, seoDescription, focusKeyword and canonicalUrl. Empty Notion values
- * never clear Sanity. A slug change never recreates the doc (the _id stays); old URLs come from
- * Notion "Legacy Slugs" via scripts/notion-legacy-redirects.mjs — run it AFTER this script, since it
- * only redirects sources that no longer return 200. Store titles WITHOUT a site suffix —
+ * never clear Sanity. A slug change never recreates the doc (the _id stays). One slug per case
+ * study: the old URL is not redirected (owner decision 2026-10-13). Store titles WITHOUT a site suffix —
  * BaseLayout adds " | Wugweb" when it fits in 60 characters.
  *
  * canonicalUrl is guarded: work/[slug].astro 301s whenever it differs from /work/<slug>, so a value

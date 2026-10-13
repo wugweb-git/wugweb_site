@@ -5,7 +5,6 @@ import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { caseStudyBySlugQuery } from '../../lib/queries';
 import { assetUrl, posterFor } from '../../lib/assets';
 import { loadAssetAlts, altFor } from '../../lib/asset-alt';
-import { WORK_MOVED } from '../../lib/work-redirects';
 
 const { slug } = Astro.params;
 
@@ -17,10 +16,8 @@ const client = previewToken ? getPreviewClient(previewToken) : sanityClient;
 const work = await client.fetch(caseStudyBySlugQuery, { slug }).catch(() => null);
 
 if (!work) {
-  // A retired URL that was once public: hand it to the page that replaced it
-  // rather than 404ing anything indexed or shared under the old slug.
-  const moved = slug ? WORK_MOVED[slug] : undefined;
-  return Astro.redirect(moved ?? '/404', moved ? 301 : 302);
+  // One slug per case study (Notion is the source); no old-URL redirects.
+  return Astro.redirect('/404', 302);
 }
 
 // Legacy/duplicate docs carry canonicalUrl pointing at the real case
