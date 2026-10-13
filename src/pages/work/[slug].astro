@@ -76,6 +76,7 @@ const caseStudyNode = {
   headline: work.seoTitle || work.title,
   description: (work.seoDescription || work.summary || work.about || '').slice(0, 300),
   image: ogImageUrl || undefined,
+  author: { '@id': 'https://www.wugweb.com/#founder' },
   creator: { '@id': 'https://www.wugweb.com/#organization' },
   publisher: { '@id': 'https://www.wugweb.com/#organization' },
   about: work.industry || undefined,
