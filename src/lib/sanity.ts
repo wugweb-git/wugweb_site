@@ -27,6 +27,15 @@ export function getPreviewClient(token?: string) {
   });
 }
 
+/**
+ * Write token for the form routes, from the runtime env only (Pages secret;
+ * `wrangler pages dev` exposes .env the same way). Never import.meta.env:
+ * Vite inlines that at build time, which baked the local token into the
+ * server bundle (found 2026-10-13).
+ */
+export const sanityTokenFrom = (env: Record<string, any> | undefined): string | undefined =>
+  env?.SANITY_SYNC_TOKEN || env?.SANITY_TOKEN || undefined;
+
 const builder = imageUrlBuilder(sanityClient);
 export const urlFor = (source: any) => builder.image(source);
 

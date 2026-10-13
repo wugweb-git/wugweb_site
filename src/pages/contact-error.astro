@@ -1,16 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { FIELD_PROBLEM_TEXT, isSafeBackPath, parseContactProblems } from '../lib/forms';
+
+// ?reason= set by /api/contact (field problems) and /api/subscribe
+// (subscribe-failed). No reason → the original server-error copy.
+const reason = Astro.url.searchParams.get('reason');
+const problems = parseContactProblems(reason);
+const subscribeFailed = reason === 'subscribe-failed';
+const back = Astro.url.searchParams.get('back');
+const retryHref = subscribeFailed ? (isSafeBackPath(back) ? back : '/blog') : '/contact-us';
 ---
 
 <BaseLayout title="Something went wrong — Wugweb" description="Your message couldn't be sent. Try again or email us directly.">
   <section class="wrap contact-error" id="contact-error" aria-labelledby="contact-error-title">
     
-    <h1 id="contact-error-title">Something went wrong on our end.</h1>
-    <p>
-      Your message wasn't saved — this wasn't a problem with what you entered. Try again, or email us directly and we'll pick it up from there.
-    </p>
+    {problems.length > 0 ? (
+      <>
+        <h1 id="contact-error-title">A few details are missing.</h1>
+        <p>Your message wasn't sent yet. Go back to the form and:</p>
+        <ul class="contact-error-list">
+          {problems.map((p) => <li>{FIELD_PROBLEM_TEXT[p]}</li>)}
+        </ul>
+      </>
+    ) : subscribeFailed ? (
+      <>
+        <h1 id="contact-error-title">You're not subscribed yet.</h1>
+        <p>
+          We couldn't save your email just now. This wasn't a problem with what you entered. Try again in a minute, or email us and we'll add you.
+        </p>
+      </>
+    ) : (
+      <>
+        <h1 id="contact-error-title">Something went wrong on our end.</h1>
+        <p>
+          Your message wasn't saved — this wasn't a problem with what you entered. Try again, or email us directly and we'll pick it up from there.
+        </p>
+      </>
+    )}
     <div class="contact-error-actions">
-      <a href="/contact-us" class="btn btn-solid">Try again</a>
+      <a href={retryHref} class="btn btn-solid">{problems.length > 0 ? 'Back to the form' : 'Try again'}</a>
       <a href="mailto:hello@wugweb.com" class="btn">Email hello@wugweb.com</a>
     </div>
   </section>
@@ -31,6 +59,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-top: var(--gap-5);
     max-width: 45ch;
     margin-inline: auto;
+    color: var(--fg-muted);
+  }
+  .contact-error-list {
+    margin: var(--gap-4) auto 0;
+    max-width: 45ch;
+    padding: 0;
+    list-style: none;
     color: var(--fg-muted);
   }
   .contact-error-actions {
