@@ -60,7 +60,7 @@ A filter chip row lives inside the content of the grid it filters.
 | layout grid columns | **4** | **8** | **12** |
 | column gap | **16** | **24** | **32** |
 | grid margin (= gutter) | **16** | **32** | **48** |
-| nav padding | `20 16` | `20` | `20` |
+| nav padding | `20 16` | `20 32` | `20` |
 | nav height | **100** | **100** | **100** |
 | nav position | sticky, top 0 | sticky, top 0 | sticky, top 0 |
 | bar height | 60 | 60 | 60 |
@@ -137,7 +137,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 padding: 20px 16px;         /* mobile */
-padding: 20px;              /* tablet */
+padding: 20px 32px;         /* tablet */
 padding: 20px;              /* desktop */
 position: sticky;
 top: 0;

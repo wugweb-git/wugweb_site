@@ -98,7 +98,7 @@ function isActive(href: string) {
        "non-monotonic". The spec was supplied explicitly and wins. Safe-area
        insets are still added so the bar clears the notch. */
     /* 100px nav on every breakpoint, 60px bar on every breakpoint (owner,
-       2026-10-13): 20px top/bottom everywhere; sides 16 mobile / 20 tablet+. */
+       2026-10-13): 20px top/bottom everywhere; sides 16 mobile / 32 tablet / 20 desktop. */
     padding: calc(var(--safe-top) + 20px)
              calc(var(--safe-right) + 16px)
              20px
@@ -420,8 +420,8 @@ function isActive(href: string) {
 
   @media (min-width: 768px) {
     .site-header {
-      padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 20px)
-               20px calc(var(--safe-left) + 20px);
+      padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 32px)
+               20px calc(var(--safe-left) + 32px);
     }
     .nav-top { padding-inline: var(--nav-bar-pad); gap: var(--nav-item-gap); }
     /* Original wugweb.com bar: heavier 40px blur, no extra saturation. */
