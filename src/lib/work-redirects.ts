@@ -12,7 +12,7 @@
 export const WORK_MOVED: Record<string, string> = {
   "airtel-xsafe-securing-homes-with-intuitive-digital-experiences": "/work/airtel-xsafe",
   "airtel-xstream-play-showcasing-indias-unified-digital-entertainment": "/work/airtel-xstream-play",
-  "audiofolio-reinventing-audio-discovery-through-ai": "/work/audiofolio",
+  "audiofolio-reinventing-audio-discovery-through-ai": "/work/musiclinkd",
   "bankco-engineering-the-ultimate-banking-super-app-ecosystem": "/work/bankco",
   "plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners": "/work/plufo",
   "redesigning-cartiers-career-website-where-passion-meets-excellence": "/work/cartier-careers",

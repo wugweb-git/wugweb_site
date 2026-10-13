@@ -1,0 +1,88 @@
+{
+  "takenAt": "2026-10-13T04:45:24.172Z",
+  "doc": {
+    "_createdAt": "2026-07-29T00:11:13Z",
+    "_id": "caseStudy-audiofolio",
+    "_rev": "36TK9CDo7y3YWN6AkFM1tf",
+    "_type": "caseStudy",
+    "_updatedAt": "2026-10-13T04:27:03Z",
+    "about": "Complete original markdown from Case Study 24.",
+    "aiKeywords": "AudioFolio, AI, Audio Search, Discovery Platform",
+    "aiSummary": "AudioFolio is an internal Wugweb product in AI and media technology. It is an AI-powered platform for discovering, organising and consuming spoken audio content. The work covered product design, UX design and systems architecture.",
+    "bodyContent": [
+      {
+        "_key": "about",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "child",
+            "_type": "span",
+            "text": "Complete original markdown from Case Study 24."
+          }
+        ],
+        "mark": {
+          "_key": "mark",
+          "annotations": [],
+          "decorators": []
+        },
+        "style": "normal"
+      }
+    ],
+    "canonicalUrl": "/work/audiofolio",
+    "client": "MusicLinkd",
+    "clientRef": {
+      "_ref": "1ldNh76NU0J0b4so5EjOGn",
+      "_type": "reference"
+    },
+    "disciplines": [
+      "Product Design",
+      "UX Design",
+      "Systems Architecture"
+    ],
+    "engagementType": "Internal",
+    "featured": true,
+    "focusKeyword": "music industry platform",
+    "industry": "AI, Media Technology",
+    "industryRef": {
+      "_ref": "industry-media",
+      "_type": "reference"
+    },
+    "language": "en",
+    "owner": "wugweb",
+    "partner": "None",
+    "platform": "Web App",
+    "projectType": "AI Product",
+    "publishedAt": "2024-06-15T00:00:00Z",
+    "schemaType": "CreativeWork",
+    "seoDescription": "MusicLinkd is a professional music industry platform connecting the people and businesses behind music through identity, discovery, bookings and reputation.",
+    "seoTitle": "MusicLinkd: Professional Music Industry Platform",
+    "shortTitle": "AudioFolio",
+    "slug": {
+      "_type": "slug",
+      "current": "audiofolio"
+    },
+    "status": "Published",
+    "subtitle": "AudioFolio",
+    "summary": "Creating an intelligent platform for discovering and organizing spoken content. Case study on AudioFolio, an internal Wugweb product: an AI-powered platform for discovering, organising and consuming spoken content.",
+    "tags": [
+      "AI",
+      "Audio",
+      "Discovery"
+    ],
+    "team": [
+      "Vedanshu Srivastava"
+    ],
+    "timeline": "",
+    "title": "AudioFolio – Reinventing Audio Discovery Through AI",
+    "visibility": "Public"
+  },
+  "redirect": {
+    "_id": "redirect-notion-audiofolio-musiclinkd",
+    "_type": "redirect",
+    "source": "/work/audiofolio",
+    "destination": "/work/musiclinkd",
+    "statusCode": 301,
+    "enabled": true,
+    "note": "Slug renamed audiofolio → musiclinkd (owner, Notion is the source) 2026-10-13"
+  }
+}
