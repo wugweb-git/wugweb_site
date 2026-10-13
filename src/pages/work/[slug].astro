@@ -15,8 +15,25 @@ const previewToken = (Astro.locals as any)?.previewToken as string | undefined;
 const client = previewToken ? getPreviewClient(previewToken) : sanityClient;
 const work = await client.fetch(caseStudyBySlugQuery, { slug }).catch(() => null);
 
+// Two old short URLs that are not a prefix of their case study's slug.
+// Kept here, not in public/_redirects: Pages does not apply _redirects to
+// requests served by the worker, and every /work/* request is.
+const SHORT_URLS: Record<string, string> = {
+  audiofolio: 'musiclinkd-building-the-professional-infrastructure-for-the-music-industry',
+  'cartier-careers': 'cartier-redesigning-the-career-website-where-passion-meets-excellence',
+};
+
 if (!work) {
-  // One slug per case study (Notion is the source); no old-URL redirects.
+  // One slug per case study (Notion is the source). An old short URL whose
+  // slug is a prefix of exactly one published case study (/work/plufo →
+  // /work/plufo-crafting-…) gets one 301 there; anything else is a 404.
+  if (slug && SHORT_URLS[slug]) return Astro.redirect(`/work/${SHORT_URLS[slug]}`, 301);
+  if (slug && /^[a-z0-9-]+$/.test(slug)) {
+    const matches: string[] = await sanityClient
+      .fetch(`*[_type == "caseStudy" && !(_id in path("drafts.**")) && string::startsWith(slug.current, $prefix)].slug.current`, { prefix: `${slug}-` })
+      .catch(() => []);
+    if (matches.length === 1) return Astro.redirect(`/work/${matches[0]}`, 301);
+  }
   return Astro.rewrite('/404');
 }
 
