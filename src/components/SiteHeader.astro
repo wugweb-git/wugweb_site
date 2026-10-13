@@ -151,7 +151,7 @@ function isActive(href: string) {
     max-width: 160px;
   }
   @media (min-width: 768px) {
-    .site-logo-img { height: 40px; }
+    .site-logo-img { height: var(--nav-logo-height); max-width: none; }
   }
 
   .site-links {
@@ -424,28 +424,35 @@ function isActive(href: string) {
       padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 32px)
                20px calc(var(--safe-left) + 32px);
     }
-    .nav-top { padding-inline: var(--gap-5); }
+    .nav-top { padding-inline: var(--nav-bar-pad); gap: var(--nav-item-gap); }
+    /* Original wugweb.com bar: heavier 40px blur, no extra saturation. */
+    .site-header-inner {
+      backdrop-filter: blur(var(--blur-xl));
+      -webkit-backdrop-filter: blur(var(--blur-xl));
+    }
     .nav-toggle { display: none; }
     .menu-meta { display: none !important; }
 
     .site-links {
       display: flex;
       margin-left: auto;
-      gap: var(--gap-2);
+      gap: var(--nav-item-gap);
     }
-    /* The header is 100px total on every breakpoint (layout-shell.md), so
-       this bar is 60px at tablet and desktop: 100 minus 20px top and bottom.
-       48px controls leave an even 6px band. The hero and anchor offsets now
-       read --header-height, not this bar, so the bar can change freely. */
+    /* Tablet+ header is 118px (20px inset + 78px bar + 20px), matching the
+       original wugweb.com bar. Hero and anchor offsets read --header-height. */
+    /* Sized to the original wugweb.com links: 18px regular on a 27px line,
+       10x16 padding -> 47px pills. */
     .nav-link,
     .nav-cta {
-      font-size: var(--ts-body-md-size);
-      min-height: 3rem;
-      padding-block: var(--gap-3);
-      padding-inline: var(--gap-5);
+      font-size: var(--nav-link-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--nav-link-line);
+      padding-block: var(--nav-link-pad-block);
+      padding-inline: var(--nav-link-pad-inline);
       display: inline-flex;
       align-items: center;
     }
+    .nav-link.is-active { font-weight: var(--font-weight-medium); }
     .desktop-cta { display: inline-flex; }
     .mobile-cta { display: none !important; }
 
