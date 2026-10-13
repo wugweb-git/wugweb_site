@@ -4,6 +4,13 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-10-13 — Notion Case Studies is the source for slugs, legacy slugs and share images.** `scripts/notion-legacy-redirects.mjs` turned `Legacy Slugs` on Published rows into 29 more 301 redirects. 29/29 verified, and all 8 overlaps agree with the earlier 12. **Owner decisions:**
+(1) OG: Notion `OG Image` is a framerusercontent.com URL on all 19 rows where Sanity now uses the R2 cover in `ogImagePath`. Nothing applied; Notion needs R2 values, or keep Sanity's.
+(2) musiclinkd: Notion slug `musiclinkd`, Sanity slug and live page `audiofolio`.
+(3) Canonical URL: 15 Notion rows carry the old long slug; Sanity uses the short one.
+(4) Notion Draft but Sanity published: bodyshop, eastman, pharmadropper, spark-logistics, thebizgift, hyatt-restaurants.
+(5) 17 Sanity drafts not in Notion (mostly old long-slug drafts). Listed, never deleted.
+
 **2026-10-13 — DNS cutover prep done (cutover itself still on hold).** Verified on `wugweb.pages.dev`:
 - **Redirects:** 12 `redirect` docs (301) for the Framer URLs that 404'd; all 12 return 301 to the right Location, and every destination returns 200. Created by `scripts/cutover-redirects.mjs`, backup in `backups/cutover-redirects-2026-10-13.json`. Adneto → `crafting-digital-authority-the-adneto-website-showcase` is the closest match, **owner to confirm**. Expect a minute of lag after creating a redirect (Sanity CDN plus the 60 s rule cache).
 - **`siteSettings.siteUrl`:** null → `https://www.wugweb.com` (backup `backups/siteSettings-before-siteUrl-2026-10-13.json`).
