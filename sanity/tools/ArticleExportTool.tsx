@@ -1,3 +1,9 @@
+/**
+ * SUPERSEDED (2026-10-13) by the Tables tool: per-row "Copy as Markdown" /
+ * "Download .md", the bulk equivalents, and the optional Words / Read time
+ * columns. No longer registered in sanity.config.ts; kept until the owner
+ * confirms the Tables cover everything it did.
+ */
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useClient } from 'sanity';
 import {
@@ -25,6 +31,7 @@ import {
   ComposeIcon,
 } from '@sanity/icons';
 import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
+import { blocksToMarkdown, countWords } from '../lib/markdown';
 
 interface ArticleItem {
   _id: string;
@@ -37,68 +44,6 @@ interface ArticleItem {
   authorName?: string;
   body?: any[];
   _updatedAt?: string;
-}
-
-function blocksToMarkdown(blocks: any[], title?: string): string {
-  if (!Array.isArray(blocks)) return '';
-  const lines: string[] = [];
-  if (title) lines.push(`# ${title}\n`);
-
-  for (const b of blocks) {
-    if (!b) continue;
-    if (b._type === 'block') {
-      const markDefs = b.markDefs || [];
-      let text = (b.children || [])
-        .map((child: any) => {
-          let t = child.text || '';
-          if (!child.marks || child.marks.length === 0) return t;
-          for (const m of child.marks) {
-            if (m === 'strong') t = `**${t}**`;
-            else if (m === 'em') t = `*${t}*`;
-            else if (m === 'code') t = `\`${t}\``;
-            else if (m === 'strike-through') t = `~~${t}~~`;
-            else if (m === 'highlight') t = `<mark>${t}</mark>`;
-            else {
-              const def = markDefs.find((d: any) => d?._key === m);
-              if (def && def._type === 'link') {
-                t = `[${t}](${def.href || '#'})`;
-              }
-            }
-          }
-          return t;
-        })
-        .join('');
-
-      if (!text.trim()) continue;
-
-      if (b.listItem === 'bullet') lines.push(`- ${text}`);
-      else if (b.listItem === 'number') lines.push(`1. ${text}`);
-      else if (b.style === 'h1') lines.push(`# ${text}\n`);
-      else if (b.style === 'h2') lines.push(`## ${text}\n`);
-      else if (b.style === 'h3') lines.push(`### ${text}\n`);
-      else if (b.style === 'blockquote') lines.push(`> ${text}\n`);
-      else lines.push(`${text}\n`);
-    } else if (b._type === 'code') {
-      lines.push(`\`\`\`${b.language || ''}\n${b.code || ''}\n\`\`\`\n`);
-    } else if (b._type === 'callout') {
-      lines.push(`> [!${(b.type || 'NOTE').toUpperCase()}]\n> **${b.title || ''}**\n> ${b.text || ''}\n`);
-    }
-  }
-  return lines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
-}
-
-function countWords(blocks: any[]): number {
-  if (!Array.isArray(blocks)) return 0;
-  let words = 0;
-  for (const b of blocks) {
-    if (b._type === 'block' && Array.isArray(b.children)) {
-      for (const c of b.children) {
-        const text = String(c.text || '').trim();
-        if (text) words += text.split(/\s+/).filter(Boolean).length;
-      }
-    }
-  }
-  return words;
 }
 
 function ArticleExportContent() {

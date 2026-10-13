@@ -6,6 +6,7 @@ import { TABLE_CONFIGS, TABLE_MAP } from '../lib/tableConfigs';
 import { fetchDocs } from '../lib/groq';
 import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs } from '../lib/docActions';
 import type { Row } from '../lib/types';
+import { seoTableProps } from '../lib/seoTable';
 
 const TABLE_KEYS = TABLE_CONFIGS.map((t) => t.key);
 
@@ -23,6 +24,7 @@ export function TablesTool() {
   const [reloadKey, setReloadKey] = useState(0);
 
   const config = TABLE_MAP[active];
+  const seo = seoTableProps(config, client);
 
   const load = useCallback(async () => {
     if (!config) return;
@@ -69,7 +71,10 @@ export function TablesTool() {
         getRowSubtitle={config?.getSubtitle}
         onReload={() => setReloadKey((k) => k + 1)}
         toolbarTitle={`${config?.title ?? active}`}
+        seoType={seo.seoType}
+        getMarkdown={seo.getMarkdown}
         bulkActions={[
+          ...seo.bulkActions,
           { id: 'duplicate', label: 'Duplicate', run: (ids) => duplicateDocs(client, ids) },
           { id: 'publish', label: 'Publish', run: (ids) => publishDocs(client, ids) },
           { id: 'unpublish', label: 'Unpublish', run: (ids) => unpublishDocs(client, ids) },

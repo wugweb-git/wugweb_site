@@ -1,3 +1,10 @@
+/**
+ * SUPERSEDED (2026-10-13) by the Tables tool: SEO description, Completeness
+ * and Checks passed columns, the "Has failing checks" / "Missing SEO"
+ * filters, and Auto Meta in each row's menu and the bulk bar. No longer
+ * registered in sanity.config.ts; kept until the owner confirms the Tables
+ * cover everything it did.
+ */
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { Box, Card, Flex, Grid, Stack, Text, Badge, Button, Tooltip, TextInput } from '@sanity/ui';
 import { ComposeIcon, SearchIcon, SparklesIcon } from '@sanity/icons';
@@ -8,6 +15,7 @@ import { toRel } from '../lib/assetUsage';
 import { fetchDocs } from '../lib/groq';
 import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
 import type { Row } from '../lib/types';
+import { generateMeta } from '../lib/autoMeta';
 
 interface SeoRow extends Row {
   seoDescription?: string;
@@ -47,21 +55,6 @@ const TYPES: { type: string; label: string; query: string; totalQuery: string }[
     totalQuery: `count(*[_type=="singletonPage" && !(_id in path("drafts.**"))])`,
   },
 ];
-
-function generateMeta(row: SeoRow): { seoTitle: string; seoDescription: string } {
-  const base = String(row.title ?? row.pageId ?? '');
-  const bodyText = [row.body, row.excerpt, row.summary]
-    .map((b) => (Array.isArray(b) ? (b as any[]).map((blk) => (blk?.children || []).map((c: any) => c.text || '').join('')).join(' ') : String((b as any) ?? '')))
-    .join(' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-  const seoTitle = String(row.seoTitle || (base.length > 60 ? base.slice(0, 57) + '…' : base));
-  const seoDescription = String(
-    row.seoDescription ||
-    (bodyText.length > 160 ? bodyText.slice(0, 157) + '…' : bodyText || 'Wugweb — Digital Experience Agency')
-  );
-  return { seoTitle, seoDescription };
-}
 
 function SeoToolContent() {
   const client = useClient({ apiVersion: '2026-01-01' });

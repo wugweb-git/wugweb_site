@@ -39,6 +39,8 @@ import { toCSV, downloadCSV, copyText } from '../lib/csv';
 import { seoScore } from '../lib/health';
 import { SeoBadge, StatusBadge, Thumb, AuthorAvatar, UpdatedTime, PublishState, EmptyState, RowSkeleton } from './ui';
 import type { Row, ColumnDef, BulkAction } from '../lib/types';
+import { useSeoEnrichment } from '../lib/seoTable';
+import { markdownFileName } from '../lib/markdown';
 
 interface SavedView {
   id: string;
@@ -94,6 +96,24 @@ export interface DataTableProps {
   emptyBody?: string;
   toolbarTitle?: string;
   client: any;
+  /** Posts / case studies / services / pages: adds SEO check data to each row (lib/seoTable). */
+  seoType?: string;
+  /** When set, rows get "Copy as Markdown" / "Download .md" and the bulk bar gets both too. */
+  getMarkdown?: (row: Row) => string;
+}
+
+/** Max .md files per bulk download click — browsers throttle bursts of downloads. */
+const MAX_MD_DOWNLOADS = 20;
+
+function downloadMarkdown(filename: string, text: string): void {
+  const url = URL.createObjectURL(new Blob([text], { type: 'text/markdown;charset=utf-8' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1_000);
 }
 
 function defaultSort(cols: ColumnDef[]): SortingState {
@@ -119,6 +139,8 @@ export function DataTable({
   emptyBody,
   toolbarTitle,
   client,
+  seoType,
+  getMarkdown,
 }: DataTableProps) {
   const [sorting, setSorting] = useState<SortingState>(() => defaultSort(columns));
   const [visible, setVisible] = useState<ColumnVisibilityState>(() => {
@@ -150,10 +172,12 @@ export function DataTable({
 
   // Fresh data from the server replaces any optimistic edits.
   useEffect(() => setOverrides({}), [rowsProp]);
-  const rows = useMemo(
+  const editedRows = useMemo(
     () => rowsProp.map((r) => (overrides[r._id] ? ({ ...r, ...overrides[r._id] } as Row) : r)),
     [rowsProp, overrides]
   );
+  // SEO check data, computed after edits so an inline change re-checks at once.
+  const rows = useSeoEnrichment(editedRows, seoType, client);
 
   const notify = useCallback((msg: string) => {
     setToast(msg);
@@ -434,6 +458,22 @@ export function DataTable({
     notify(`Copied ${label}`);
   };
 
+  const copyMarkdown = async (list: Row[]) => {
+    if (!getMarkdown || !list.length) return;
+    await copyText(list.map((r) => getMarkdown(r)).join('\n\n---\n\n'));
+    notify(`Copied ${list.length} as Markdown`);
+  };
+
+  const downloadMd = (list: Row[]) => {
+    if (!getMarkdown || !list.length) return;
+    const batch = list.slice(0, MAX_MD_DOWNLOADS);
+    // Spaced out: browsers block a burst of simultaneous downloads.
+    batch.forEach((r, i) => setTimeout(() => downloadMarkdown(markdownFileName(r), getMarkdown(r)), i * 250));
+    notify(list.length > MAX_MD_DOWNLOADS
+      ? `Downloading ${MAX_MD_DOWNLOADS} of ${list.length} — max ${MAX_MD_DOWNLOADS} per click`
+      : `Downloading ${batch.length} .md file${batch.length === 1 ? '' : 's'}`);
+  };
+
   const toggleFav = (id: string) => {
     const next = favs.includes(id) ? favs.filter((f) => f !== id) : [...favs, id];
     setFavs(next);
@@ -678,6 +718,12 @@ export function DataTable({
                 />
               )
             )}
+            {getMarkdown && (
+              <>
+                <Button text="Copy as Markdown" mode="ghost" icon={CopyIcon} onClick={() => copyMarkdown(rows.filter((r) => selected.has(r._id)))} />
+                <Button text="Download .md" mode="ghost" icon={DownloadIcon} onClick={() => downloadMd(rows.filter((r) => selected.has(r._id)))} />
+              </>
+            )}
             <Button text="Clear" mode="ghost" icon={CloseIcon} onClick={clearSelection} />
           </Flex>
         </Card>
@@ -878,9 +924,11 @@ export function DataTable({
                                   <MenuItem text="Open" icon={LaunchIcon} onClick={() => { if (url) window.open(url, '_blank'); }} />
                                   <MenuItem text="Copy ID" icon={CopyIcon} onClick={() => copy(row._id, 'ID')} />
                                   <MenuItem text="Copy slug" icon={CopyIcon} onClick={() => copy(String(row.slug ?? ''), 'slug')} />
+                                  {getMarkdown && <MenuItem text="Copy as Markdown" icon={CopyIcon} onClick={() => copyMarkdown([row])} />}
+                                  {getMarkdown && <MenuItem text="Download .md" icon={DownloadIcon} onClick={() => downloadMd([row])} />}
                                   <MenuItem text={isFav ? 'Unpin' : 'Pin'} icon={PinIcon} onClick={() => toggleFav(row._id)} />
                                   <MenuDivider />
-                                  {bulkActions?.filter((a) => ['delete', 'duplicate', 'publish', 'unpublish', 'archive'].includes(a.id)).map((a) => (
+                                  {bulkActions?.filter((a) => ['autoMeta', 'delete', 'duplicate', 'publish', 'unpublish', 'archive'].includes(a.id)).map((a) => (
                                     <MenuItem
                                       key={a.id}
                                       text={a.label}

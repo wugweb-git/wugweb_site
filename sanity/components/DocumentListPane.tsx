@@ -5,6 +5,7 @@ import { useClient } from 'sanity';
 import { usePaneRouter } from 'sanity/structure';
 import { DataTable } from './DataTable';
 import { TABLE_MAP } from '../lib/tableConfigs';
+import { seoTableProps } from '../lib/seoTable';
 import { fetchDocs } from '../lib/groq';
 import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs, setFieldDocs } from '../lib/docActions';
 import type { Row } from '../lib/types';
@@ -28,6 +29,7 @@ export function DocumentListPane(props: DocumentListPaneProps) {
   const client = useClient({ apiVersion: '2026-01-01' });
   const paneRouter = usePaneRouter();
   const config = TABLE_MAP[tableKey ?? schemaType ?? ''];
+  const seo = seoTableProps(config, client);
 
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
@@ -86,7 +88,10 @@ export function DocumentListPane(props: DocumentListPaneProps) {
         getRowTitle={config.getTitle}
         getRowSubtitle={config.getSubtitle}
         onReload={() => setReloadKey((k) => k + 1)}
+        seoType={seo.seoType}
+        getMarkdown={seo.getMarkdown}
         bulkActions={[
+          ...seo.bulkActions,
           ...(config.bulkSets ?? []).map((set) => ({
             id: `set:${set.field}`,
             label: `Set ${set.label}`,

@@ -3,6 +3,7 @@ import type { Row, ColumnDef, TableConfig } from './types';
 import { seoScore } from './health';
 import { SeoBadge, StatusBadge, AuthorAvatar, UpdatedTime, PublishState, Thumb } from '../components/ui';
 import { formatDate } from './format';
+import { SEO_COLUMNS } from './seoTable';
 
 /**
  * Per-type table configs. Each GROQ query fetches BOTH drafts and published
@@ -84,7 +85,8 @@ export const TABLE_CONFIGS: TableConfig[] = [
     query: `*[_type=="post"][0...500] | order(coalesce(publishedAt, _createdAt) desc) {
       _id, _type, _updatedAt, title, "slug": slug.current, category, readingTime, publishedAt, featured,
       "authorName": author->name, "authorPhoto": author->photo,
-      "coverUrl": coverImage.asset->url, coverPath, excerpt, seoDescription, ogImage, body
+      "coverUrl": coverImage.asset->url, coverImage, coverPath, excerpt, seoTitle, seoDescription,
+      ogImage, ogImagePath, ogTitle, ogDescription, body
     }`,
     columns: [
       TITLE,
@@ -98,6 +100,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
       { key: 'readingTime', label: 'Read', width: 70, render: (row) => <Text size={1} muted>{row.readingTime ? `${row.readingTime}m` : '—'}</Text> },
       { key: 'publishedAt', label: 'Published', width: 110, render: (row) => <Text size={1} muted>{formatDate(String(row.publishedAt ?? ''))}</Text> },
       { key: 'featured', label: 'Featured', width: 90, render: (row) => (row.featured ? <Badge tone="caution">⭐ Featured</Badge> : <Text size={1} muted>—</Text>) },
+      ...SEO_COLUMNS,
       SEO,
       UPDATED,
       STATE,
@@ -119,7 +122,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
       _id, _type, _updatedAt, title, "slug": slug.current, "clientName": clientRef->name, client,
       "industryName": industryRef->name, disciplines, timeline, featured, publishedAt,
       "coverUrl": coverImage.asset->url, coverPath, thumbnailPath, "galleryCount": count(galleryPaths),
-      summary, seoDescription
+      summary, seoTitle, seoDescription, ogImage, ogImagePath, ogTitle, ogDescription, bodyContent
     }`,
     columns: [
       TITLE,
@@ -129,6 +132,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
       { key: 'timeline', label: 'Timeline', width: 90, render: (row) => <Text size={1} muted>{String(row.timeline || '—')}</Text> },
       { key: 'galleryCount', label: 'Gallery', width: 80, render: (row) => <Text size={1} muted>{row.galleryCount ? `${row.galleryCount} files` : '—'}</Text> },
       { key: 'featured', label: 'Featured', width: 90, render: (row) => (row.featured ? <Badge tone="caution">⭐</Badge> : <Text size={1} muted>—</Text>) },
+      ...SEO_COLUMNS,
       SEO,
       UPDATED,
       STATE,
@@ -150,7 +154,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
     title: 'Services',
     query: `*[_type=="service"][0...500] | order(order asc, title asc) {
       _id, _type, _updatedAt, title, "slug": slug.current, subtitle, tags, order, coverPath, heroText, summary,
-      "caseStudyCount": count(caseStudies), seoDescription
+      "caseStudyCount": count(caseStudies), seoTitle, seoDescription, ogImage, body
     }`,
     columns: [
       { key: 'order', label: '#', width: 60, render: (row) => <Text size={1} muted>{String(row.order ?? '—')}</Text> },
@@ -158,6 +162,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
       { key: 'subtitle', label: 'Subtitle', width: 200, render: (row) => <Text size={1} muted>{String(row.subtitle || '—')}</Text> },
       { key: 'tags', label: 'Tags', width: 200, render: (row) => <Text size={1} muted>{Array.isArray(row.tags) ? (row.tags as string[]).join(', ') : '—'}</Text> },
       { key: 'caseStudyCount', label: 'Cases', width: 80, render: (row) => <Text size={1} muted>{String(row.caseStudyCount ?? 0)}</Text> },
+      ...SEO_COLUMNS,
       SEO,
       UPDATED,
       STATE,
@@ -346,13 +351,15 @@ export const TABLE_CONFIGS: TableConfig[] = [
     type: 'singletonPage',
     title: 'Pages',
     query: `*[_type=="singletonPage"][0...200] | order(pageId asc) {
-      _id, _type, _updatedAt, pageId, title, subtitle, language, heroPath, seoDescription, "mediaCount": count(mediaPaths)
+      _id, _type, _updatedAt, pageId, title, subtitle, language, heroPath, seoTitle, seoDescription,
+      ogImage, ogImagePath, ogTitle, ogDescription, focusKeyword, body, "mediaCount": count(mediaPaths)
     }`,
     columns: [
       TITLE,
       { key: 'pageId', label: 'Page ID', width: 140, render: (row) => <Badge tone="default" fontSize={1}>{String(row.pageId || '—')}</Badge> },
       { key: 'language', label: 'Lang', width: 80, render: (row) => <Text size={1} muted>{String(row.language || '—')}</Text> },
       { key: 'mediaCount', label: 'Media', width: 70, render: (row) => <Text size={1} muted>{String(row.mediaCount ?? 0)}</Text> },
+      ...SEO_COLUMNS,
       SEO,
       UPDATED,
     ],
