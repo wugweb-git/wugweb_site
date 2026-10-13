@@ -21,7 +21,7 @@ for (const [id, m] of Object.entries(META)) if (m.seoTitle.length > 60 || m.seoD
 const plan = docs.map((d) => ({ id: d._id, rev: d._rev, set: Object.fromEntries(Object.entries(META[d._id]).filter(([k, v]) => (d[k] ?? '') !== v)), before: { seoTitle: d.seoTitle, seoDescription: d.seoDescription } }));
 for (const p of plan) for (const [k, v] of Object.entries(p.set)) console.log(`${p.id}.${k}: "${p.before[k] ?? ''}"\n   → "${v}"`);
 if (!WRITE) { console.log('Dry run. WRITE=1 to apply.'); process.exit(0); }
-const backup = path.join(ROOT, 'backups', `service-pillar-meta-before-keywords-${new Date().toISOString().slice(0, 10)}.json`);
+const backup = path.join(ROOT, 'backups', `service-pillar-meta-before-${new Date().toISOString().replace(/[:.]/g, '-')}.json`);
 writeFileSync(backup, JSON.stringify({ takenAt: new Date().toISOString(), docs }, null, 2));
 const tx = sanity.transaction();
 for (const p of plan) if (Object.keys(p.set).length) tx.patch(p.id, (x) => x.ifRevisionId(p.rev).set(p.set));

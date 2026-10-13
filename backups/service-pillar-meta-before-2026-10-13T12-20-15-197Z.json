@@ -1,0 +1,41 @@
+{
+  "takenAt": "2026-10-13T12:20:15.198Z",
+  "docs": [
+    {
+      "_id": "brand",
+      "_rev": "36TK9CDo7y3YWN6AkMu8jn",
+      "seoDescription": "Build a brand people remember. Wugweb's brand strategy, identity design and activation cover positioning, naming, voice and campaigns. Let's talk.",
+      "seoTitle": "Brand Strategy & Identity Design Agency | Wugweb"
+    },
+    {
+      "_id": "engineering",
+      "_rev": "36TK9CDo7y3YWN6AkMu8jn",
+      "seoDescription": "Engineer websites, apps and platforms that scale. Wugweb builds secure applications, cloud infrastructure and modern dev workflows for growing products.",
+      "seoTitle": "Web & App Development, Platforms & Cloud | Wugweb"
+    },
+    {
+      "_id": "experience",
+      "_rev": "36TK9CDo7y3YWN6AkMu8jn",
+      "seoDescription": "Design digital experiences people love. Wugweb's UX research, UI design and usability testing turn complex products into simple, accessible journeys.",
+      "seoTitle": "UI/UX Design Agency – Research, Design & Testing | Wugweb"
+    },
+    {
+      "_id": "growth",
+      "_rev": "36TK9CDo7y3YWN6AkMu8jn",
+      "seoDescription": "Acquire, convert and retain customers with data-driven growth. Wugweb connects marketing, martech and analytics into journeys that turn traffic into revenue.",
+      "seoTitle": "Growth Marketing, Martech & Analytics Services | Wugweb"
+    },
+    {
+      "_id": "operations",
+      "_rev": "36TK9CDo7y3YWN6AkMu8jn",
+      "seoDescription": "Keep your digital product fast, secure and improving. Wugweb runs reliability, QA, ongoing support and continuous improvement long after launch.",
+      "seoTitle": "Digital Product Operations, Support & QA | Wugweb"
+    },
+    {
+      "_id": "strategy",
+      "_rev": "36TK9CDo7y3YWN6AkMu8jn",
+      "seoDescription": "Align vision with measurable outcomes. Wugweb shapes business, product and AI strategy into a clear roadmap your team can ship. Start a conversation.",
+      "seoTitle": "Business, Product & AI Strategy Consulting | Wugweb"
+    }
+  ]
+}
