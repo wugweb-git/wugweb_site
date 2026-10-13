@@ -4,6 +4,15 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-10-13 — DNS cutover prep done (cutover itself still on hold).** Verified on `wugweb.pages.dev`:
+- **Redirects:** 12 `redirect` docs (301) for the Framer URLs that 404'd; all 12 return 301 to the right Location, and every destination returns 200. Created by `scripts/cutover-redirects.mjs`, backup in `backups/cutover-redirects-2026-10-13.json`. Adneto → `crafting-digital-authority-the-adneto-website-showcase` is the closest match, **owner to confirm**. Expect a minute of lag after creating a redirect (Sanity CDN plus the 60 s rule cache).
+- **`siteSettings.siteUrl`:** null → `https://www.wugweb.com` (backup `backups/siteSettings-before-siteUrl-2026-10-13.json`).
+- **og:image:** the 19 case studies with a Framer CDN og:image now have `ogImagePath` = their own `coverPath`. All 19 are images and return 200 on R2, so the og-default fallback wasn't needed. 19/19 pages now emit the R2 cover in og:image and twitter:image. `ogImage`, `coverImage` and `clientLogoPath` are untouched (backup `backups/casestudy-og-paths-before-2026-10-13.json`).
+- **Subscribe:** shows success only if Sanity or Neon accepted the email; otherwise `/contact-error?reason=subscribe-failed` with a retry link. **Contact:** name, a valid email and a message of at least 20 characters are required server-side (`/contact-error?reason=…`). Logic is in `src/lib/forms.ts`; `npm run test:forms` (19 tests).
+- **Fixed in passing:** `import.meta.env.SANITY_TOKEN` in the contact route was inlining the local `.env` token into `dist/_worker.js`. The routes now read the token from runtime env only.
+- **Token in earlier deploys:** unknown whether any shipped it. Any build made with `.env` present baked the token into that Worker bundle. The bundle isn't served publicly, but rotate the token if that matters to you (owner call; not done).
+- **Still open:** `/footer/subscription` (the pricing page) ignores `?subscribed=1` and `?error=invalid-email`, so a newsletter subscriber still sees no confirmation. The preview environment has no secrets. GTM/Hotjar decision. Search Console verification method. A real Neon write is unproven until one real submission after cutover.
+
 **2026-10-12 — Blog images in R2:** 236/237 manifest rows live under `blog/<slug>/…` (no `assets/` prefix). Open: POST-0063 cover has a truncated source URL; owner to switch Notion links; the 66 posts without `coverPath` can now be mapped to `blog/<slug>/cover.*` once the owner confirms the no-`assets/` key prefix (assetUrl() would need to pass these through).
 
 **2026-10-12 — Site media is CMS-driven.** Deployed at 79986707.wugweb.pages.dev. Open: (1) the blog-image R2 manifest job (`blog-image-r2-manifest.csv`, `blog-0093-uploads/`) has NOT run, as neither file was found and it includes deletes; (2) page-media folder rule is `site/<pageId>/` (e.g. `site/services/`), pageId being the singletonPage key; (3) the reorg plan reads `public/assets`, which no longer exists locally, so it needs to read R2 before it can be re-run; (4) first request after a Pages deploy sometimes returns 404 for a route and then 200.
@@ -89,7 +98,7 @@ in §1s and `~/.claude/plans/snoopy-splashing-pearl.md`.
 
 | # | Item | Why it is yours |
 |---|---|---|
-| 1 | **Set `SANITY_SYNC_TOKEN` on the Pages project** (production **and** preview) | Contact submissions reach Neon and **never reach the Studio**. Dashboard action. This is the highest-value open item — leads are being captured but are invisible to whoever works them. |
+| 1 | ~~**Set `SANITY_SYNC_TOKEN` on the Pages project**~~ **Production done (secret listed 2026-10-13); preview still has no secrets** | Contact submissions reach Neon and **never reach the Studio**. Dashboard action. This is the highest-value open item — leads are being captured but are invisible to whoever works them. |
 | 2 | **Delete two marked test rows in Neon** | From the endpoint verification. I have no `DATABASE_URL`. `CLAUDE-TEST-1790319185 DELETE ME` in `contact_submissions`, `claude-test-1790319185@example.invalid` in the subscriber table. The Sanity test doc was already deleted. |
 | 3 | **`--color-text-muted` (#7D7D7D)** — 4.23:1 against a 4.5 floor | Design call. 38 usages, 8 files; `#858585` clears it. |
 | 4 | **Never-filled fields** — `caseStudy.services` 0/60, `caseStudy.relatedPosts` 0/60, `post.syndicatedTo` 0/100 | Populate or drop. |

@@ -9,6 +9,17 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — DNS cutover prep (2026-10-13)
+- **Redirects:** 12 Framer URLs that 404'd now 301 to their new pages (Sanity `redirect` docs, `scripts/cutover-redirects.mjs`). All 12 were verified on `wugweb.pages.dev`.
+- **SEO:** `siteSettings.siteUrl` is set to `https://www.wugweb.com`. The 19 case studies that used a `framerusercontent.com` og:image now take `ogImagePath` from their own R2 cover.
+
+### Fixed — contact and subscribe forms (2026-10-13)
+- **Subscribe** no longer reports success when nothing was saved. It used to say "subscribed" even though its Sanity write used an unauthenticated client and always failed, and the Neon write was best effort. Success now needs at least one store to accept the email; otherwise the visitor sees an error page with a retry link.
+- **Contact** now requires a name, a valid email and a message of at least 20 characters, checked on the server. `/contact-error` lists what is missing. The message field is also `required` in the browser.
+- The honeypot, invalid-email and CSRF behaviour is unchanged.
+- The routes read the Sanity token from runtime env only. The old `import.meta.env` fallback copied the local token into the server bundle at build time.
+- New: `src/lib/forms.ts`, and `npm run test:forms` (19 tests).
+
 ### Removed — superseded Studio tool files (2026-10-13)
 - `sanity/tools/SeoTool.tsx` and `sanity/tools/ArticleExportTool.tsx` are deleted. A full search found nothing that imports either file. Their features live in the Tables columns and actions. No voice or Integrations-tool code was left to remove, and the site-side integrations are untouched.
 - `docs/admindesign.md` and `pending.md` no longer describe the removed tools as current.
