@@ -1491,6 +1491,15 @@ Audited all 103 live posts on wugweb.pages.dev. Fixed and re-measured live:
   `Host:` header): 0 errors. Fixed: Organization had no logo (now R2 `assets/brand/small.jpg`, the
   648px W mark), "Wugweb Design" byline was a Person (now → `#organization`). Vedanshu → `#founder`;
   BreadcrumbList; mainEntityOfPage = canonical; images and logo all served from R2 (200).
+- Organization sameAs: dropped 4 non-profile URLs (startupindia.gov.in, gem.gov.in,
+  admin.skillindiadigital.gov.in, sur.ly) in code; Presence entries untouched. 27 remain.
+  behance.net/vedanshu (personal) stays on the Organization — move was proposed, then stopped by owner.
+- 27 link sentences (owner-approved) added in Notion + synced: every post now has ≥1 in-body internal link.
+- Factual fixes (owner-approved) in Notion + synced: Adobe XD (deal abandoned Dec 2023, XD in
+  maintenance mode), GA post (GA4 note + GA4 metric names), Figma Config 2023 (correction note:
+  several "updates" predate 2023), AI CX Singularity (unsourced 49/51/36% removed from headings).
+  Backups: backups/notion-blogs-pre-{link-sentences,fact-fixes}-2026-10-13.json.
+- Briefs for 37 posts delivered as proposals (blog-briefs.csv) — owner writes; not applied.
 
 Open (copy, Vedanshu): the first body paragraph is hidden when it equals the excerpt, so links
 there don't render. 27 posts still need link-friendly wording. AEO briefs pending (question H2s,
