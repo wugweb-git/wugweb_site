@@ -1,0 +1,116 @@
+[
+  {
+    "_createdAt": "2026-07-28T23:14:45Z",
+    "_id": "siteSettings",
+    "_rev": "S5EFnJjn0OdXSc45Q3ebDq",
+    "_system": {
+      "base": {
+        "id": "siteSettings",
+        "rev": "bGMx7xnXtYJt7Q07YQY4k8"
+      }
+    },
+    "_type": "siteSettings",
+    "_updatedAt": "2026-10-12T21:59:24Z",
+    "audience": "DRAFT — inferred from the case studies and blog, please correct: founders, product and marketing leads, and agency partners (e.g. the Dentsu Webchutney work) deciding who to build with; designers and developers reading the blog.",
+    "bannedWords": [
+      "cutting-edge",
+      "cutting edge",
+      "seamless",
+      "seamlessly",
+      "world-class",
+      "nexus",
+      "unwavering",
+      "pivotal",
+      "unleashing the power",
+      "in today's fast-paced",
+      "in today's competitive",
+      "in this blog",
+      "buckle up",
+      "next level"
+    ],
+    "companyName": "Wugweb",
+    "contactEmail": "hello@wugweb.com",
+    "copyright": "Copyright 2020-2025 © Wugweb®",
+    "doList": [
+      "Write in the first person (we, or I in a byline post) and say what was actually done.",
+      "Use numbers and named tools where you have them.",
+      "Keep one idea per sentence."
+    ],
+    "dontList": [
+      "Open with the market (\"In today's fast-paced digital landscape…\").",
+      "Announce the article (\"In this blog, we will explore…\").",
+      "Stack adjectives in place of a claim (seamless, cutting-edge, world-class).",
+      "Add energy with exclamation marks."
+    ],
+    "ga4MeasurementId": "G-W5WJ1PMTKD",
+    "language": "en-GB",
+    "maxSentenceWords": 25,
+    "ogImagePath": "/assets/site/default/og.jpg",
+    "persona": "A product and experience architecture studio that works across strategy, brand, experience, engineering, growth and operations — one team, six disciplines. At its best the writing is plain, specific and first-hand: it says what was built and why, admits the trade-off, and names the tool or the number. That is how the About intro and the founder's recent posts read; the older blog and service copy does not.",
+    "preferredTerms": [
+      {
+        "_key": "v1",
+        "_type": "voiceTerm",
+        "insteadOf": "utilize",
+        "use": "use"
+      },
+      {
+        "_key": "v2",
+        "_type": "voiceTerm",
+        "insteadOf": "utilise",
+        "use": "use"
+      },
+      {
+        "_key": "v3",
+        "_type": "voiceTerm",
+        "insteadOf": "leverage",
+        "use": "use"
+      }
+    ],
+    "readingLevelMax": 10,
+    "sampleBad": [
+      "In today's fast-paced digital landscape, branding has become more crucial than ever for businesses to create a lasting impression and stand out from the competition.",
+      "Resonant brand foundations are architected through the synthesis of strategic insight and creative brilliance, driving measurable business growth."
+    ],
+    "sampleGood": [
+      "A product and experience architecture studio. We work across strategy, brand, experience, engineering, growth and operations — one team, six disciplines, and a single view of the thing being built.",
+      "We start focused, prove value early, and scale what works.",
+      "Supabase is the right call for most projects. Here's when NoSQL wins instead: evolving schemas, deep relationships, cheap MVP scaling and real-time sync."
+    ],
+    "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+    "siteTitle": "Wugweb — Digital Experience Agency",
+    "socialLinks": [
+      {
+        "_key": "415fee32d9c0b60b8468b6f7e8ad3957",
+        "platform": "Twitter/X",
+        "url": "https://x.com/wugweb"
+      },
+      {
+        "_key": "3cde20c31e339ab04f10789b6c7e8a68",
+        "platform": "LinkedIn",
+        "url": "https://linkedin.com/company/wugweb"
+      },
+      {
+        "_key": "1ce427cd4cea93bab75e8a9ed9e99c05",
+        "platform": "Instagram",
+        "url": "https://instagram.com/wugweb"
+      }
+    ],
+    "spelling": "en-GB",
+    "status": "draft",
+    "toneWords": [
+      "plain",
+      "specific",
+      "candid",
+      "confident",
+      "warm"
+    ],
+    "writingPrinciples": [
+      "Lead with the claim, then the evidence.",
+      "Name the specifics — the tool, the number, the constraint — instead of an adjective.",
+      "Say who does what. Active voice: \"We start focused, prove value early, and scale what works.\"",
+      "Admit the trade-off; it is what makes the recommendation believable.",
+      "Cut the throat-clearing. Start with the point, not the market."
+    ]
+  }
+]
