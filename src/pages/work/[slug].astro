@@ -85,16 +85,9 @@ const caseStudyNode = {
   mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.wugweb.com/work/${slug}` },
 };
 const clientLogoSrc = work.clientRef?.logoPath ? assetUrl(work.clientRef.logoPath) : '';
-// Titles like "Bankco – Revolutionizing Financial Engagement..." repeat the
-// brand/product name that's already shown in the meta row — strip it, but
-// only when the prefix is short and clearly a name (not a descriptive
-// clause like "Redesigning Cartier's Career Website – ..." or "The
-// Avant-Garde of Banking: ..." where stripping would lose real meaning).
-const titleParts = work.title?.split(/\s+[–:]\s+/) || [];
-const titlePrefix = titleParts[0] || '';
-const prefixWords = titlePrefix.trim().split(/\s+/);
-const looksLikeName = prefixWords.length <= 2 && !/^(the|a|an)$/i.test(prefixWords[0]) && !/ing$/i.test(prefixWords[0]);
-const displayTitle = titleParts.length > 1 && looksLikeName ? titleParts.slice(1).join(' – ') : work.title;
+// Notion is the source (2026-10-13): Title is what was built with no brand,
+// Short Title is the brand, shown as the label above the H1.
+const brandLabel = work.shortTitle || work.clientRef?.name || work.client || '';
 const bodyContent = Array.isArray(work.bodyContent) ? work.bodyContent : [];
 const challenges = Array.isArray(work.challenges) ? work.challenges : [];
 const solutions = Array.isArray(work.solutions) ? work.solutions : [];
@@ -141,7 +134,8 @@ const otherCases = await Promise.all(others.map((s: any) =>
 <BaseLayout title={`${work.title} — Wugweb Work`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl} ogTitle={work.ogTitle} ogDescription={work.ogDescription} noIndex={work.noIndex} jsonLd={[caseStudyNode]}>
   <section class="work-detail-hero" id="work-detail-hero" aria-labelledby="work-detail-hero-title">
     <div class="wrap">
-      <h1 id="work-detail-hero-title">{displayTitle}</h1>
+      {brandLabel && <p class="eyebrow">{brandLabel}</p>}
+      <h1 id="work-detail-hero-title">{work.title}</h1>
       {work.subtitle && <p class="work-subtitle">{work.subtitle}</p>}
       {work.tags?.length > 0 && (
         <div class="work-tags">

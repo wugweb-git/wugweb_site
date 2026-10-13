@@ -7,7 +7,9 @@
  * Skipped: Draft rows, empty / "None" values, a legacy slug equal to the
  * current slug, sources that already have a redirect doc, sources that are a
  * live page (200 — a redirect doc would never fire there), and rows whose
- * destination does not return 200. Validation mirrors
+ * destination does not return 200. An existing redirect doc for a legacy slug
+ * whose destination differs from Notion (e.g. after a slug change) is
+ * repointed to the Notion destination, so old URLs never take two hops. Validation mirrors
  * sanity/schemaTypes/redirect.ts. Dry run by default; WRITE=1 applies (backup
  * first, deterministic ids + createIfNotExists, so re-runs are no-ops).
  * Checks run against https://wugweb.pages.dev, one request at a time.
@@ -65,12 +67,19 @@ const existingBySource = new Map(existing.map((d) => [norm(d.source), d]));
 
 // 4. Check each against the live site
 const plan = [];
+const repoint = [];
 const skipped = [];
 const destStatus = new Map();
 for (const p of unique) {
   const ex = existingBySource.get(norm(p.source));
   if (ex) {
-    skipped.push({ ...p, why: ex.destination === p.destination ? 'redirect doc exists' : `redirect doc exists → ${ex.destination} (differs from Notion)` });
+    if (norm(ex.destination) === norm(p.destination)) { skipped.push({ ...p, why: 'redirect doc exists' }); continue; }
+    if (!destStatus.has(p.destination)) {
+      destStatus.set(p.destination, (await fetch(SITE + p.destination, { redirect: 'manual', headers: { 'user-agent': 'wugweb-redirect-check' } })).status);
+      await sleep(300);
+    }
+    if (destStatus.get(p.destination) !== 200) { skipped.push({ ...p, why: `repoint skipped: destination ${destStatus.get(p.destination)}` }); continue; }
+    repoint.push({ _id: ex._id, source: ex.source, from: ex.destination, destination: p.destination });
     continue;
   }
   const res = await fetch(SITE + encodeURI(p.source), { redirect: 'manual', headers: { 'user-agent': 'wugweb-redirect-check' } });
@@ -95,16 +104,18 @@ for (const p of unique) {
   });
 }
 
-console.log(`Notion rows ${rows.length}, legacy pairs ${unique.length}; create ${plan.length}, skip ${skipped.length}\n`);
+console.log(`Notion rows ${rows.length}, legacy pairs ${unique.length}; create ${plan.length}, repoint ${repoint.length}, skip ${skipped.length}\n`);
 for (const d of plan) console.log(`CREATE  ${d.source} → ${d.destination}   [now: ${d._now}]`);
+for (const d of repoint) console.log(`REPOINT ${d.source}: ${d.from} → ${d.destination}`);
 for (const s of skipped) console.log(`skip    ${s.source} → ${s.destination}   (${s.why})`);
 if (!WRITE) { console.log('\nDry run. WRITE=1 to create.'); process.exit(0); }
-if (!plan.length) { console.log('\nNothing to create.'); process.exit(0); }
+if (!plan.length && !repoint.length) { console.log('\nNothing to change.'); process.exit(0); }
 
 const backup = path.join(ROOT, 'backups', `notion-legacy-redirects-${new Date().toISOString().slice(0, 10)}.json`);
-writeFileSync(backup, JSON.stringify({ takenAt: new Date().toISOString(), existingBefore: existing, toCreate: plan, skipped }, null, 2));
+writeFileSync(backup, JSON.stringify({ takenAt: new Date().toISOString(), existingBefore: existing, toCreate: plan, toRepoint: repoint, skipped }, null, 2));
 console.log(`\nbackup → ${path.relative(ROOT, backup)}`);
 const tx = sanity.transaction();
 for (const { _now, ...d } of plan) tx.createIfNotExists(d);
+for (const d of repoint) tx.patch(d._id, (q) => q.set({ destination: d.destination }));
 const res = await tx.commit();
 console.log(`committed ${res.results.length} mutation(s), transaction ${res.transactionId}`);

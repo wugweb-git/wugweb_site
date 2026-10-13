@@ -28,7 +28,8 @@ export default defineType({
     { name: 'relations', title: 'Relations' },
   ],
   fields: [
-    defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'overview' }),
+    defineField({ name: 'title', type: 'string', validation: (r) => r.required(), group: 'overview', description: 'What was built, without the brand. Synced from Notion — edit it there.' }),
+    defineField({ name: 'shortTitle', title: 'Short Title (brand)', type: 'string', group: 'overview', description: 'The brand, shown above the title. Synced from Notion — edit it there.' }),
     defineField({ name: 'subtitle', type: 'string', description: 'Short tagline shown on case study cards', group: 'overview' }),
     defineField({
       name: 'slug', type: 'slug', options: { source: 'title', maxLength: 120 }, group: 'overview',

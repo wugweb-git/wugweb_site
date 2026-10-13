@@ -6,13 +6,17 @@
  *   node scripts/sync-notion-case-studies.mjs           dry run: prints what would change
  *   WRITE=1 node scripts/sync-notion-case-studies.mjs   backs up the touched fields, then writes
  *
- * Matched docs (Notion "Sanity ID", else slug): sets seoTitle, seoDescription, focusKeyword and
- * canonicalUrl. Empty Notion values never clear Sanity. Store titles WITHOUT a site suffix —
+ * Matched docs (Notion "Sanity ID", else slug): sets title (what was built, no brand), shortTitle
+ * (the brand), slug, seoTitle, seoDescription, focusKeyword and canonicalUrl. Empty Notion values
+ * never clear Sanity. A slug change never recreates the doc (the _id stays); old URLs come from
+ * Notion "Legacy Slugs" via scripts/notion-legacy-redirects.mjs — run it AFTER this script, since it
+ * only redirects sources that no longer return 200. Store titles WITHOUT a site suffix —
  * BaseLayout adds " | Wugweb" when it fits in 60 characters.
  *
  * canonicalUrl is guarded: work/[slug].astro 301s whenever it differs from /work/<slug>, so a value
- * is written only when it is a site-relative /work/ path to a published case study (or the doc's own
- * slug). Anything else is listed under "canonical skipped" and left alone.
+ * is written only when it is a site-relative /work/ path to a published case study (counting the
+ * slugs this run sets). Anything else is listed under "canonical skipped" and left alone. A slug
+ * already used by a different published doc is also skipped.
  */
 import { createClient } from '@sanity/client';
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -45,7 +49,8 @@ do {
   for (const r of j.results) {
     const P = r.properties;
     rows.push({
-      id: plain(P['Case Study ID']), slug: plain(P['Slug']), sanityId: plain(P['Sanity ID']),
+      id: plain(P['Case Study ID']), slug: plain(P['Slug']).replace(/^\/?work\//, '').replace(/\/$/, ''), sanityId: plain(P['Sanity ID']),
+      title: plain(P['Title']), shortTitle: plain(P['Short Title']),
       seoTitle: plain(P['SEO Title']), seoDescription: plain(P['SEO Description']),
       focusKeyword: plain(P['Focus Keyword']), canonicalUrl: plain(P['Canonical URL']),
     });
@@ -53,33 +58,44 @@ do {
   cur = j.has_more ? j.next_cursor : null;
 } while (cur);
 
-const docs = await sanity.fetch('*[_type == "caseStudy" && !(_id in path("drafts.**"))]{_id, "slug": slug.current, seoTitle, seoDescription, focusKeyword, canonicalUrl}');
+const docs = await sanity.fetch('*[_type == "caseStudy" && !(_id in path("drafts.**"))]{_id, "slug": slug.current, title, shortTitle, seoTitle, seoDescription, focusKeyword, canonicalUrl}');
 const byId = new Map(docs.map((d) => [d._id, d]));
 const bySlug = new Map(docs.map((d) => [d.slug, d]));
-const liveSlugs = new Set(docs.map((d) => d.slug));
-
-const FIELDS = ['seoTitle', 'seoDescription', 'focusKeyword', 'canonicalUrl'];
+const FIELDS = ['title', 'shortTitle', 'slug', 'seoTitle', 'seoDescription', 'focusKeyword', 'canonicalUrl'];
+// Resolve every doc's slug after this run first, so canonicals may point at a slug being set now.
+const matchOf = (r) => byId.get(r.sanityId) || bySlug.get(r.slug);
+const finalSlug = new Map(docs.map((d) => [d._id, d.slug]));
+const slugSkipped = [];
+for (const r of rows) {
+  const d = matchOf(r);
+  if (!d || !r.slug || r.slug === d.slug) continue;
+  const owner = bySlug.get(r.slug);
+  if (owner && owner._id !== d._id) { slugSkipped.push(`${r.id} (${d.slug}): ${r.slug} is used by ${owner._id}`); continue; }
+  finalSlug.set(d._id, r.slug);
+}
+const liveSlugs = new Set(finalSlug.values());
 const patches = []; const unmatched = []; const canonSkipped = [];
 for (const r of rows) {
-  const d = byId.get(r.sanityId) || bySlug.get(r.slug);
+  const d = matchOf(r);
   if (!d) { unmatched.push(r.id || r.slug); continue; }
   const set = {};
   for (const f of FIELDS) {
-    const v = r[f];
+    const v = f === 'slug' ? finalSlug.get(d._id) : r[f];
     if (!v || v === (d[f] || '')) continue;
     if (f === 'canonicalUrl') {
       const m = v.match(/^\/work\/([^/?#]+)\/?$/);
       if (!m || !liveSlugs.has(m[1])) { canonSkipped.push(`${r.id} (${d.slug}): ${v}`); continue; }
     }
-    set[f] = v;
+    set[f === 'slug' ? 'slug.current' : f] = v;
   }
   if (Object.keys(set).length) patches.push({ id: r.id, _id: d._id, before: Object.fromEntries(FIELDS.map((f) => [f, d[f] ?? null])), set });
 }
 
 console.log(`${WRITE ? 'WRITE' : 'DRY RUN'} · notion ${rows.length} · sanity ${docs.length} · to patch ${patches.length}`);
-for (const f of FIELDS) console.log(`  ${f}: ${patches.filter((p) => p.set[f] !== undefined).length}`);
-for (const p of patches) for (const [f, v] of Object.entries(p.set)) console.log(`  ${p.id} ${f}: "${p.before[f] ?? ''}" → "${v}"`);
+for (const f of FIELDS) console.log(`  ${f}: ${patches.filter((p) => p.set[f === 'slug' ? 'slug.current' : f] !== undefined).length}`);
+for (const p of patches) for (const [f, v] of Object.entries(p.set)) { const k = f.replace('.current', ''); console.log(`  ${p.id} ${k}: "${p.before[k] ?? ''}" → "${v}"`); }
 if (unmatched.length) console.log(`no Sanity doc: ${unmatched.join(', ')}`);
+if (slugSkipped.length) console.log(`slug skipped (taken):\n  ${slugSkipped.join('\n  ')}`);
 if (canonSkipped.length) console.log(`canonical skipped (not a published /work/ slug):\n  ${canonSkipped.join('\n  ')}`);
 
 if (WRITE && patches.length) {
