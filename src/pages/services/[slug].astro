@@ -67,6 +67,10 @@ const service = !fallback && !fromSanity
       seoDescription: preferStr(fromSanity?.seoDescription, typeof fallback?.body === 'string' ? fallback.body : ''),
     };
 
+if (!service) {
+  return Astro.redirect('/404');
+}
+
 // Tech-stack icons for toolkit chips
 const techTools = await sanityClient
   .fetch(`*[_type=="taxonomy" && vocabulary=="tech-stack"]{name, iconPath}`)
@@ -283,9 +287,6 @@ const whyTiles: BentoTile[] = whyItems.length
       .filter((t): t is BentoTile => t !== null)
   : [];
 
-if (!service) {
-  return Astro.redirect('/404');
-}
 ---
 
 <BaseLayout
