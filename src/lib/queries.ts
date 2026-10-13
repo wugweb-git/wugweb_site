@@ -23,7 +23,7 @@ export const serviceBySlugQuery = `
   *[_type == "service" && slug.current == $slug && !(_id in path("drafts.**"))] | order(_updatedAt desc)[0] {
     title, subtitle, tags, summary, heroText, fullDescription, icon, coverImage, coverPath, galleryPaths,
     capabilities, approach, process, tools, why, body,
-    seoTitle, seoDescription, ogImage,
+    seoTitle, seoDescription, ogImage, ogImagePath,
     "caseStudies": caseStudies[]->{ title, "slug": slug.current, client, summary, coverImage, coverPath, thumbnailPath, tags },
     faqs
   }

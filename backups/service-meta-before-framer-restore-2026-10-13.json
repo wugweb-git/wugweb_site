@@ -1,0 +1,153 @@
+{
+  "takenAt": "2026-10-13T11:38:04.963Z",
+  "services": [
+    {
+      "_id": "brand",
+      "_rev": "Zp6AkUkGK4usgMripfjkhj",
+      "ogImagePath": "/assets/site/services/og.jpg",
+      "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+      "seoTitle": "Brand Strategy Services — Wugweb"
+    },
+    {
+      "_id": "engineering",
+      "_rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "ogImagePath": "/assets/site/services/og.jpg",
+      "seoDescription": "Design and build secure, scalable websites and applications with Wugweb’s full-stack development and CMS expertise.",
+      "seoTitle": "Web and App Development Services — Wugweb"
+    },
+    {
+      "_id": "experience",
+      "_rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "ogImagePath": "/assets/site/services/og.jpg",
+      "seoDescription": "Create intuitive product and website experiences with Wugweb’s UX strategy, interface design, and scalable design systems.",
+      "seoTitle": "Experience Design Services — Wugweb"
+    },
+    {
+      "_id": "growth",
+      "_rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "ogImagePath": "/assets/site/services/og.jpg",
+      "seoDescription": "Connect marketing technology, automation, and generative AI into smarter customer journeys with Wugweb.",
+      "seoTitle": "Martech and GenAI Services — Wugweb"
+    },
+    {
+      "_id": "operations",
+      "_rev": "36TK9CDo7y3YWN6AkBvu7h",
+      "ogImagePath": "/assets/site/services/og.jpg",
+      "seoDescription": "Improve product quality with Wugweb’s QA and testing support across usability, functionality, performance, and launch readiness.",
+      "seoTitle": "QA and Testing Services — Wugweb"
+    }
+  ],
+  "plan": [
+    {
+      "pillar": "brand",
+      "framerSlug": "brand-strategy",
+      "f": {
+        "seoTitle": "Brand Strategy Services — Wugweb",
+        "seoDescription": "Build a sharper brand foundation with Wugweb’s strategy, messaging, identity, campaign, and digital experience expertise.",
+        "ogImage": "https://framerusercontent.com/assets/rQ5d2CSle0B7IUZlV9bNjISdk.jpg"
+      },
+      "key": "assets/site/services/brand/og.jpg",
+      "bytes": 271199,
+      "sha1": "ad0e7f77609295ed01efe21466557d6cd8c849d9",
+      "r2": "upload",
+      "rev": "Zp6AkUkGK4usgMripfjkhj",
+      "set": {
+        "seoDescription": "Build a sharper brand foundation with Wugweb’s strategy, messaging, identity, campaign, and digital experience expertise.",
+        "ogImagePath": "/assets/site/services/brand/og.jpg"
+      },
+      "before": {
+        "seoTitle": "Brand Strategy Services — Wugweb",
+        "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+        "ogImagePath": "/assets/site/services/og.jpg"
+      }
+    },
+    {
+      "pillar": "experience",
+      "framerSlug": "experience-design",
+      "f": {
+        "seoTitle": "Experience Design Services — Wugweb",
+        "seoDescription": "Create intuitive product and website experiences with Wugweb’s UX strategy, interface design, and scalable design systems.",
+        "ogImage": "https://framerusercontent.com/assets/cf5yejPF7UKQ3ehmeFwlHE2yg.jpg"
+      },
+      "key": "assets/site/services/experience/og.jpg",
+      "bytes": 352931,
+      "sha1": "71fe727a33c5ed4f8a437f9e866785c251c4db28",
+      "r2": "upload",
+      "rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "set": {
+        "ogImagePath": "/assets/site/services/experience/og.jpg"
+      },
+      "before": {
+        "seoTitle": "Experience Design Services — Wugweb",
+        "seoDescription": "Create intuitive product and website experiences with Wugweb’s UX strategy, interface design, and scalable design systems.",
+        "ogImagePath": "/assets/site/services/og.jpg"
+      }
+    },
+    {
+      "pillar": "growth",
+      "framerSlug": "martech-genai",
+      "f": {
+        "seoTitle": "Martech and GenAI Services — Wugweb",
+        "seoDescription": "Connect marketing technology, automation, and generative AI into smarter customer journeys with Wugweb.",
+        "ogImage": "https://framerusercontent.com/assets/G7xQ8ZaQuTh2jUoLEqvbrDZ0G7c.jpg"
+      },
+      "key": "assets/site/services/growth/og.jpg",
+      "bytes": 299701,
+      "sha1": "1bbc50f19690b938768d4a0b12abdbac36741bb7",
+      "r2": "upload",
+      "rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "set": {
+        "ogImagePath": "/assets/site/services/growth/og.jpg"
+      },
+      "before": {
+        "seoTitle": "Martech and GenAI Services — Wugweb",
+        "seoDescription": "Connect marketing technology, automation, and generative AI into smarter customer journeys with Wugweb.",
+        "ogImagePath": "/assets/site/services/og.jpg"
+      }
+    },
+    {
+      "pillar": "engineering",
+      "framerSlug": "web-app-development",
+      "f": {
+        "seoTitle": "Web and App Development Services — Wugweb",
+        "seoDescription": "Design and build secure, scalable websites and applications with Wugweb’s full-stack development and CMS expertise.",
+        "ogImage": "https://framerusercontent.com/assets/3InQKPWRBQhOgSnD1JhRKlNu2JE.jpg"
+      },
+      "key": "assets/site/services/engineering/og.jpg",
+      "bytes": 268744,
+      "sha1": "dc89d028f59105084e8129c3d498512a536ed891",
+      "r2": "upload",
+      "rev": "36TK9CDo7y3YWN6Ak6nm3j",
+      "set": {
+        "ogImagePath": "/assets/site/services/engineering/og.jpg"
+      },
+      "before": {
+        "seoTitle": "Web and App Development Services — Wugweb",
+        "seoDescription": "Design and build secure, scalable websites and applications with Wugweb’s full-stack development and CMS expertise.",
+        "ogImagePath": "/assets/site/services/og.jpg"
+      }
+    },
+    {
+      "pillar": "operations",
+      "framerSlug": "qa-testing",
+      "f": {
+        "seoTitle": "QA and Testing Services — Wugweb",
+        "seoDescription": "Improve product quality with Wugweb’s QA and testing support across usability, functionality, performance, and launch readiness.",
+        "ogImage": "https://framerusercontent.com/assets/1R04eXaGrV5efxssE95vmt18Y.jpg"
+      },
+      "key": "assets/site/services/operations/og.jpg",
+      "bytes": 374973,
+      "sha1": "ff5474e1e5da1ab57979fc7eb2c13de6f9add7c6",
+      "r2": "upload",
+      "rev": "36TK9CDo7y3YWN6AkBvu7h",
+      "set": {
+        "ogImagePath": "/assets/site/services/operations/og.jpg"
+      },
+      "before": {
+        "seoTitle": "QA and Testing Services — Wugweb",
+        "seoDescription": "Improve product quality with Wugweb’s QA and testing support across usability, functionality, performance, and launch readiness.",
+        "ogImagePath": "/assets/site/services/og.jpg"
+      }
+    }
+  ]
+}

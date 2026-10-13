@@ -280,6 +280,7 @@ const whyTiles: BentoTile[] = whyItems.length
 
 <BaseLayout
   title={service.seoTitle || service.title}
+  ogImagePath={fromSanity?.ogImagePath}
   description={(service.seoDescription || (typeof service.body === 'string' ? service.body : service.summary || service.subtitle || '')).slice(0, 160)}
   {/* This page carries its own insights block, filtered to the pillar, so the
       global one is suppressed — a service page was rendering two different
