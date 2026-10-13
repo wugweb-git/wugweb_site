@@ -1,0 +1,53 @@
+{
+  "takenAt": "2026-10-13T11:54:01.387Z",
+  "docs": [
+    {
+      "_id": "brand",
+      "_rev": "Zp6AkUkGK4usgMripujFf5",
+      "seoDescription": "Build a sharper brand foundation with Wugweb’s strategy, messaging, identity, campaign, and digital experience expertise.",
+      "seoTitle": "Brand Strategy Services — Wugweb",
+      "subtitle": "Build memorable brands through strategy, identity and storytelling.",
+      "title": "Brand"
+    },
+    {
+      "_id": "engineering",
+      "_rev": "Zp6AkUkGK4usgMripujFf5",
+      "seoDescription": "Design and build secure, scalable websites and applications with Wugweb’s full-stack development and CMS expertise.",
+      "seoTitle": "Web and App Development Services — Wugweb",
+      "subtitle": "Engineer scalable digital products, platforms and intelligent systems.",
+      "title": "Engineering"
+    },
+    {
+      "_id": "experience",
+      "_rev": "Zp6AkUkGK4usgMripujFf5",
+      "seoDescription": "Create intuitive product and website experiences with Wugweb’s UX strategy, interface design, and scalable design systems.",
+      "seoTitle": "Experience Design Services — Wugweb",
+      "subtitle": "Design intuitive digital experiences that people love using.",
+      "title": "Experience"
+    },
+    {
+      "_id": "growth",
+      "_rev": "Zp6AkUkGK4usgMripujFf5",
+      "seoDescription": "Connect marketing technology, automation, and generative AI into smarter customer journeys with Wugweb.",
+      "seoTitle": "Martech and GenAI Services — Wugweb",
+      "subtitle": "Acquire, convert and retain customers through data-driven growth systems.",
+      "title": "Growth"
+    },
+    {
+      "_id": "operations",
+      "_rev": "Zp6AkUkGK4usgMripujFf5",
+      "seoDescription": "Improve product quality with Wugweb’s QA and testing support across usability, functionality, performance, and launch readiness.",
+      "seoTitle": "QA and Testing Services — Wugweb",
+      "subtitle": "Operate, secure and continuously improve digital products.",
+      "title": "Operations"
+    },
+    {
+      "_id": "strategy",
+      "_rev": "36TK9CDo7y3YWN6AkBvu7h",
+      "seoDescription": null,
+      "seoTitle": null,
+      "subtitle": "Define business, product and AI strategies that align vision with measurable outcomes.",
+      "title": "Strategy"
+    }
+  ]
+}
