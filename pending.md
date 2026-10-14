@@ -7,13 +7,13 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 **2026-10-14 — Open items from the blog/media/nav session (audited against live R2, Sanity and the site).**
 Resolved and verified: all 103 posts have a cover; 0 Framer URLs in Sanity and none in live `og:image`; 0 image assets missing alt; old Airtel logo keys and the 10 VSB banners are gone from R2; nav = 100px / 60px bar / 40px logo on every breakpoint (`layout-shell.md`).
 Still open:
-1. `assets/unsorted/blog1.png` and `blog3.png` still in R2 — kept because neither is byte-identical to a `blog/` cover. Owner: eyeball, then delete or keep.
+1. ~~blog1/blog3~~ Decided 2026-10-14: both are 864×600 crops of existing covers (0072, 0053) → delete. Owner runs `bash scripts/owner-delete-unsorted-blog1-blog3.sh` (2 R2 files + 2 asset records, backed up).
 2. Shared service clips: `ai-readiness-assessment`, `analytics-and-attribution`, `product-optimization` use one identical clip; `cloud-and-devops` and `qa-and-test-automation` share another. Needs real clips per sub-service (content, not code).
-3. Notion "Brand & Strategy" category page has no posts now (split into Brand / Strategy). Owner: archive it in Notion. New Notion categories must also be added to the `topic` list in `sanity/schemaTypes/post.ts`.
+3. ~~Brand & Strategy~~ Done: Brand and Strategy are two separate topics. Any new Notion category must also be added to the `topic` list in `sanity/schemaTypes/post.ts`.
 4. Blog sync is manual: `node scripts/sync-notion-blogs.mjs` (dry run) then `WRITE=1`. Automating it (GitHub Action or a local schedule) was offered, not decided.
-5. Obsolete owner scripts, safe to delete from the repo: `scripts/owner-delete-old-airtel-logo-keys.sh` and `scripts/owner-delete-old-vsb-banners.sh` (their targets are already gone).
+5. ~~Obsolete owner scripts~~ Removed (Airtel and VSB delete scripts; targets already gone).
 6. R2 reorganisation is DONE (other session, 34 verified delete batches): `framer/`, `uncode/`, `more/`, `about/` are gone; media lives in `assets/work/` (967), `blog/` (369), `assets/site/` (210), `assets/logos/` (257). Bucket 2,282 objects / 1.55 GiB (2026-10-14). The 2026-10-12 plan (`backups/asset-reorg-plan.csv`) is obsolete — ignore it. **Left to sort: `assets/unsorted/` — 300 files, 348 MiB.**
-7. Not investigated: the first request after a Pages deploy sometimes 404s, then 200 on retry.
+7. Not investigated (owner: leave it): the first request after a Pages deploy sometimes 404s, then 200 on retry.
 8. Uncommitted case-study body work in the tree (`src/lib/case-body.ts`, `work/[slug].astro`, `queries.ts`, `sync-notion-case-studies.mjs`) belongs to the `wip/case-study-body` session — left alone on purpose.
 
 **2026-10-13 — Notion Case Studies is the source for slugs, legacy slugs and share images.** `scripts/notion-legacy-redirects.mjs` turned `Legacy Slugs` on Published rows into 29 more 301 redirects. 29/29 verified, and all 8 overlaps agree with the earlier 12. **Owner decisions:**

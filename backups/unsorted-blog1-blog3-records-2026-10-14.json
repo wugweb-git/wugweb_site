@@ -1,0 +1,59 @@
+{
+ "takenAt": "2026-10-14",
+ "docs": [
+  {
+   "_createdAt": "2026-10-12T12:36:17Z",
+   "_id": "asset-unsorted-assets-used-previously-blog1-png",
+   "_rev": "36TK9CDo7y3YWN6AkAGjiF",
+   "_type": "asset",
+   "_updatedAt": "2026-10-12T18:22:51Z",
+   "alt": "",
+   "displayName": "blog1.png",
+   "extension": "png",
+   "fileName": "blog1.png",
+   "folder": "unsorted",
+   "localExists": false,
+   "mediaType": "Image",
+   "mimeType": "image/png",
+   "name": "blog1.png",
+   "publicUrl": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/unsorted/blog1.png",
+   "r2Key": "assets/unsorted/blog1.png",
+   "r2Synced": true,
+   "relativePath": "unsorted/blog1.png",
+   "sitePath": "/assets/unsorted/blog1.png",
+   "slug": {
+    "_type": "slug",
+    "current": "unsorted-assets-used-previously-blog1-png"
+   },
+   "status": "Active",
+   "usage": "Unsorted"
+  },
+  {
+   "_createdAt": "2026-10-12T12:36:17Z",
+   "_id": "asset-unsorted-assets-used-previously-blog3-png",
+   "_rev": "36TK9CDo7y3YWN6AkAGjiF",
+   "_type": "asset",
+   "_updatedAt": "2026-10-12T18:22:51Z",
+   "alt": "",
+   "displayName": "blog3.png",
+   "extension": "png",
+   "fileName": "blog3.png",
+   "folder": "unsorted",
+   "localExists": false,
+   "mediaType": "Image",
+   "mimeType": "image/png",
+   "name": "blog3.png",
+   "publicUrl": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/unsorted/blog3.png",
+   "r2Key": "assets/unsorted/blog3.png",
+   "r2Synced": true,
+   "relativePath": "unsorted/blog3.png",
+   "sitePath": "/assets/unsorted/blog3.png",
+   "slug": {
+    "_type": "slug",
+    "current": "unsorted-assets-used-previously-blog3-png"
+   },
+   "status": "Active",
+   "usage": "Unsorted"
+  }
+ ]
+}
