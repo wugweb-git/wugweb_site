@@ -5,6 +5,7 @@ import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { caseStudyBySlugQuery } from '../../lib/queries';
 import { assetUrl, posterFor } from '../../lib/assets';
 import { loadAssetAlts, altFor } from '../../lib/asset-alt';
+import { parseCaseBody, inline } from '../../lib/case-body';
 
 const { slug } = Astro.params;
 
@@ -94,6 +95,18 @@ const clientLogoSrc = work.clientRef?.logoPath ? assetUrl(work.clientRef.logoPat
 // Notion is the source (2026-10-13): Title is what was built with no brand,
 // Short Title is the brand, shown as the label above the H1.
 const brandLabel = work.shortTitle || work.clientRef?.name || work.client || '';
+// Notion Body Content (synced as bodyMarkdown) is the case study. When it is
+// present the page renders it free-form — sections as tiles, media rows after
+// the section their label names — and the old fixed blocks below are skipped.
+const body = parseCaseBody(work.bodyMarkdown);
+const heroSubtitle = body?.subtitle || work.subtitle;
+const heroTags: string[] = body?.tags.length ? body.tags : (work.tags || []);
+const heroCover = body?.cover?.url || coverSrc;
+const heroCoverIsVideo = /\.(mp4|webm|mov)(\?|$)/i.test(heroCover);
+// Unused files from the case study's own R2 folder (set by the sync), shown
+// as a swipeable carousel — mostly app screens, kept at their natural shape.
+const extraMedia: string[] = Array.isArray(work.extraMedia) ? work.extraMedia : [];
+const cols = (items: { video: boolean }[]) => Math.min(items.filter((m) => !m.video).length || 1, 3);
 const bodyContent = Array.isArray(work.bodyContent) ? work.bodyContent : [];
 const challenges = Array.isArray(work.challenges) ? work.challenges : [];
 const solutions = Array.isArray(work.solutions) ? work.solutions : [];
@@ -142,12 +155,25 @@ const otherCases = await Promise.all(others.map((s: any) =>
     <div class="wrap">
       {brandLabel && <p class="eyebrow">{brandLabel}</p>}
       <h1 id="work-detail-hero-title">{work.title}</h1>
-      {work.subtitle && <p class="work-subtitle">{work.subtitle}</p>}
-      {work.tags?.length > 0 && (
+      {heroSubtitle && <p class="work-subtitle">{heroSubtitle}</p>}
+      {heroTags.length > 0 && (
         <div class="work-tags">
-          {work.tags.map((tag: string) => <span class="u-tag">{tag}</span>)}
+          {heroTags.map((tag: string) => <span class="u-tag">{tag}</span>)}
         </div>
       )}
+      {body ? (
+        <dl class="work-meta">
+          {body.meta.map((m) => (
+            <div>
+              <dt class="meta-label">{m.key}</dt>
+              <dd class={m.key === 'Client' ? 'work-meta-client' : ''}>
+                {m.key === 'Client' && clientLogoSrc && <img src={clientLogoSrc} alt="" class="work-client-logo" loading="eager" />}
+                {m.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      ) : (
       <div class="work-meta">
         <div>
           <span class="meta-label">Client / Brand</span>
@@ -162,19 +188,104 @@ const otherCases = await Promise.all(others.map((s: any) =>
         {work.industry && <div><span class="meta-label">Industry</span><span>{work.industry}</span></div>}
         {work.team && (Array.isArray(work.team) ? work.team.length > 0 : true) && <div><span class="meta-label">Team</span><span>{Array.isArray(work.team) ? work.team.join(', ') : work.team}</span></div>}
       </div>
+      )}
     </div>
   </section>
 
-  {coverSrc && (
+  {heroCover && (
     <section class="wrap section work-cover" data-reveal id="work-cover" aria-label="Work cover">
-      {coverSrc.endsWith('.mp4') || coverSrc.endsWith('.webm') ? (
-        <video aria-hidden="true" src={coverSrc} poster={posterFor(coverSrc)} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
+      {heroCoverIsVideo ? (
+        <video aria-hidden="true" src={heroCover} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
       ) : (
-        <img src={coverSrc} alt={altFor(altMap, work.coverPath, work.title)} loading="eager" decoding="async" class="work-cover-media" />
+        <img src={heroCover} alt={body ? `${brandLabel || work.title} case study cover` : altFor(altMap, work.coverPath, work.title)} loading="eager" decoding="async" class="work-cover-media" />
       )}
     </section>
   )}
 
+  {body && (
+    <div class="bento-body wrap" id="case-study">
+      {body.sections.map((s, si) => {
+        // One composition per section: heading tile, then media and points
+        // interleaved (media, point, point, media, …) so text and imagery share
+        // the grid. Tile sizes come from the content, not from slots.
+        const items: any[] = [];
+        const media = s.media.filter((m) => !m.video);
+        const videos = s.media.filter((m) => m.video);
+        let mi = 0;
+        s.tiles.forEach((t, ti) => {
+          if (ti % 2 === 0 && mi < media.length) items.push({ kind: 'media', m: media[mi++] });
+          items.push({ kind: 'point', t });
+        });
+        while (mi < media.length) items.push({ kind: 'media', m: media[mi++] });
+        return (
+          <section class="bento" aria-labelledby={`b-h-${si}`}>
+            <div class={`b-head${items.length === 0 ? ' b-head--solo' : ''}`}>
+              <h2 id={`b-h-${si}`}>{s.title}</h2>
+              {s.lead && <p set:html={inline(s.lead)} />}
+              {s.paras.map((p) => <p set:html={inline(p)} />)}
+            </div>
+            {s.styles.length > 0 && (
+              <div class="b-styles">
+                {s.styles.map((m) => (
+                  <figure><img src={m.url} alt={`${brandLabel}: ${m.label}`} loading="lazy" decoding="async" /></figure>
+                ))}
+              </div>
+            )}
+            {items.map((it) => it.kind === 'media' ? (
+              <figure class="b-media" data-shape="landscape">
+                <img src={it.m.url} alt={it.m.label ? `${brandLabel}: ${it.m.label}` : `${brandLabel} case study image`} loading="lazy" decoding="async" />
+              </figure>
+            ) : (
+              <div class={`b-point${(it.t.text || '').length > 170 ? ' b-point--long' : ''}`}>
+                {it.t.group && <span class="b-group">{it.t.group}</span>}
+                {it.t.title && <h3 set:html={inline(it.t.title)} />}
+                <p set:html={inline(it.t.text)} />
+              </div>
+            ))}
+            {videos.map((v) => (
+              <figure class="b-media b-video"><video aria-hidden="true" data-src={v.url} muted loop playsinline preload="none" /></figure>
+            ))}
+          </section>
+        );
+      })}
+      {body.closing.length > 0 && (
+        <section class="bento" aria-label="More from the project">
+          {body.closing.map((m) => m.video ? (
+            <figure class="b-media b-video"><video aria-hidden="true" data-src={m.url} muted loop playsinline preload="none" /></figure>
+          ) : (
+            <figure class="b-media" data-shape="landscape"><img src={m.url} alt={`${brandLabel} case study image`} loading="lazy" decoding="async" /></figure>
+          ))}
+        </section>
+      )}
+      {extraMedia.length > 0 && (
+        <section class="b-carousel-wrap" aria-label={`${brandLabel} screens`}>
+          <div class="b-carousel" tabindex="0">
+            {extraMedia.map((u) => /\.(mp4|webm|mov)$/i.test(u) ? (
+              <figure><video aria-hidden="true" data-src={u} muted loop playsinline preload="none" /></figure>
+            ) : (
+              <figure><img src={u} alt={`${brandLabel} screen`} loading="lazy" decoding="async" /></figure>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  )}
+  <script>
+    // Tile shape follows the asset: phone screens get a tall tile, wide shots
+    // a wide one, so nothing is cropped into the wrong frame.
+    const shape = (img: HTMLImageElement) => {
+      const r = img.naturalWidth / img.naturalHeight;
+      const fig = img.closest('.b-media') as HTMLElement | null;
+      if (!fig || !r) return;
+      fig.dataset.shape = r < 0.8 ? 'portrait' : r < 1.25 ? 'square' : 'landscape';
+    };
+    document.querySelectorAll<HTMLImageElement>('.b-media img').forEach((img) => {
+      if (img.complete && img.naturalWidth) shape(img);
+      else img.addEventListener('load', () => shape(img), { once: true });
+    });
+  </script>
+
+  {!body && (
   <section class="case-shell wrap" id="case-study" aria-label="Case study">
     <div class="case-content">
       {(work.about || work.summary) && (
@@ -270,7 +381,9 @@ const otherCases = await Promise.all(others.map((s: any) =>
     </div>
   </section>
 
-  {galleryPaths.length > 0 && (
+  )}
+
+  {!body && galleryPaths.length > 0 && (
     <section id="gallery" class="wrap case-gallery-section" data-reveal aria-labelledby="gallery-title">
       <h2 class="case-heading" id="gallery-title">Gallery</h2>
       <div class="case-gallery-grid">
@@ -612,6 +725,105 @@ const otherCases = await Promise.all(others.map((s: any) =>
     max-height: 720px;
     display: block;
     object-fit: cover;
+  }
+
+  /* Bento body (Notion Body Content). One grid per section: a large heading
+     tile, points as small text tiles and media sized by the asset's own shape,
+     packed dense so any mix of counts fills cleanly. No shadows, no equal
+     cards: surface colour separates tiles, size carries the hierarchy. */
+  .work-meta dt { margin: 0; }
+  .work-meta dd { margin: 0; font-size: var(--fluid-body-md); color: var(--fg); font-weight: var(--font-weight-medium); }
+  /* Mobile first (the PWA is the phone experience): one column, media runs
+     edge to edge like a native app, points read as a stacked list. The bento
+     grid only switches on where there is room for it. */
+  .bento-body { display: flex; flex-direction: column; gap: var(--space-section-sm); padding-block: var(--space-section-sm) var(--space-section-md); }
+  .bento {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--gap-3);
+    scroll-margin-top: calc(var(--header-height) + var(--gap-lg));
+  }
+  .b-head { display: flex; flex-direction: column; gap: var(--gap-3); padding-block: var(--gap-4) var(--gap-2); }
+  .b-head h2 {
+    font-size: var(--t-display);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--core-line-height-tight);
+    color: var(--fg);
+    margin: 0;
+    overflow-wrap: break-word;
+  }
+  .b-head p { margin: 0; color: var(--fg-muted); font-size: var(--fluid-body-lg); line-height: 1.55; max-width: 52ch; }
+  .b-point {
+    padding: var(--gap-5);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-elevated);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+  }
+  .b-point h3 { margin: 0; font-size: var(--fluid-body-lg); font-weight: var(--font-weight-semibold); color: var(--fg); line-height: var(--core-line-height-snug); }
+  .b-point p { margin: 0; font-size: var(--fluid-body-md); line-height: 1.6; color: var(--fg-muted); }
+  .b-group { font-size: var(--fluid-body-sm); color: var(--fg-muted); }
+  .b-media {
+    margin: 0 calc(-1 * var(--shell-gutter));
+    overflow: hidden;
+    background: var(--color-surface-elevated);
+  }
+  .b-media img { width: 100%; height: auto; display: block; }
+  .b-media[data-shape='portrait'] { margin: 0; border-radius: var(--radius-lg); }
+  .b-video video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+  /* Screens carousel: one fixed height, each item at its own width, snapping
+     one at a time — swipe on a phone, scroll on desktop. */
+  .b-carousel-wrap { margin-inline: calc(-1 * var(--shell-gutter)); }
+  .b-carousel {
+    display: flex;
+    gap: var(--gap-3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-inline: var(--shell-gutter);
+    scroll-padding-inline: var(--shell-gutter);
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .b-carousel::-webkit-scrollbar { display: none; }
+  .b-carousel:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+  .b-carousel figure { margin: 0; flex: 0 0 auto; scroll-snap-align: start; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface-elevated); }
+  .b-carousel img, .b-carousel video { height: min(62svh, 560px); width: auto; display: block; }
+
+  /* Styles: always one row, 50:50, every width. Images keep their own aspect
+     ratio — scaled to fit, never cropped. */
+  .b-styles { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-3); grid-column: 1 / -1; align-items: start; }
+  .b-styles figure { margin: 0; border-radius: var(--radius-lg); overflow: hidden; }
+  .b-styles img { width: 100%; height: auto; display: block; }
+
+  /* Tablet: two columns; media back inside the gutter with rounded corners. */
+  @media (min-width: 600px) {
+    .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: dense; }
+    .b-head, .b-video, .b-media:not([data-shape='portrait']) { grid-column: 1 / -1; }
+    .b-media { margin: 0; border-radius: var(--radius-lg); }
+  }
+
+  /* Desktop: the full bento. Heading tile is the one large element; media
+     tiles take their size from the asset; points fill around them. */
+  @media (min-width: 1024px) {
+    .bento { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: minmax(140px, auto); }
+    .b-head {
+      grid-column: span 3;
+      grid-row: span 2;
+      padding: var(--gap-8);
+      border-radius: var(--radius-xl);
+      background: var(--color-surface-elevated);
+      justify-content: flex-end;
+    }
+    .b-head--solo { grid-column: 1 / -1; grid-row: auto; min-height: 0; }
+    .b-point { grid-column: span 2; background: none; border: var(--stroke-thin) solid var(--line-strong, var(--line)); }
+    .b-point--long { grid-column: span 3; }
+    .b-media { grid-column: span 4; grid-row: span 2; }
+    .b-media[data-shape='square'] { grid-column: span 2; }
+    .b-media[data-shape='portrait'] { grid-column: span 2; grid-row: span 3; }
+    .b-media img { height: 100%; object-fit: cover; }
+    .b-media[data-shape='portrait'] img { object-fit: contain; }
+    .b-video { grid-column: 1 / -1; grid-row: auto; }
   }
 
   /* More cases Redesign */
