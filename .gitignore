@@ -23,3 +23,6 @@ storybook-static/
 # Session scratch scripts — one-off audits/patches, not part of the toolchain
 scripts/tmp-*.mjs
 sanity/debug-*-tmp.mjs
+
+# Another AI tool's local settings and command history (contained live tokens)
+.commandcode/
