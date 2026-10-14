@@ -91,7 +91,7 @@ Hosted Studio: https://wugweb.sanity.studio/
 
 All core marketing routes pull content from Sanity; media is served from **R2** (`PUBLIC_USE_R2_ASSETS=1`). Ownership backfill is live (vedanshu | wugweb | both). Contact submissions mirror to Sanity; blog preview mode is wired.
 
-**Framer migration (honest):** services SEO / Why Us / approach / toolkits + **89** tool icons salvaged into Sanity + `public/assets/tools`. About page team portraits + section imagery extracted and wired. This is **not** full Framer visual parity (no component UI port, no animation/code-component dump). Full stats: [docs/framer-full-audit.md](./docs/framer-full-audit.md).
+**Framer migration (honest):** services SEO / Why Us / approach / toolkits + **89** tool icons salvaged into Sanity + `public/assets/tools`. About page team portraits + section imagery extracted and wired. This is **not** full Framer visual parity (no component UI port, no animation/code-component dump).
 
 **Keep** `reference/` (offline HTML/media, ~129MB) until service-page media extraction is done — then it can be deleted. `component/` is fully consumed and safe to delete.
 
@@ -104,7 +104,6 @@ See [pending.md](./pending.md) for open tasks and blockers.
 - [CLAUDE.md](./CLAUDE.md) — Canonical AI memory and deploy gotchas
 - [pending.md](./pending.md) — Living task tracker
 - [governance.md](./governance.md) — Ownership, Rule 1/2, Notion seed
-- [docs/framer-full-audit.md](./docs/framer-full-audit.md) — Framer vs reference vs Astro vs pages.dev
 - [docs/content-assets.md](./docs/content-assets.md) — Media path map
 - [docs/r2-assets.md](./docs/r2-assets.md) — R2 upload + free-tier rules
 - [credentials.md](./credentials.md) — Security-sensitive notes (token rotation pending)

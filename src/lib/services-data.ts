@@ -1,4 +1,4 @@
-// Hardcoded service fallbacks — source of truth: urgent/Wugweb_Services 2026.md
+// Hardcoded service fallbacks — copy reference: "Wugweb_Services 2026.md" in Documents/VS/wugweb artworks (outside the repo)
 // (the 6-pillar service copy). Used by /services/[slug] when Sanity has no
 // document for a slug, and kept out of the page so the copy stays reusable.
 // Shape mirrors the Sanity `service` schema: capabilities[{n,title,items}],

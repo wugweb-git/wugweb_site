@@ -44,22 +44,8 @@ Notion Asset Sheet / Master Taxonomy were a starting base. Sanity + local assets
 ## Scripts
 
 ```bash
-# Masters + Presence (Notion → Sanity) — gap-fill upsert only
-node scripts/fetch-digital-presence.mjs
-node scripts/sync-global-config.mjs
-
 # Icons from reference HTML alts
 node scripts/link-platform-tech-icons.mjs
-
-# Framer service/about pages → audit + Sanity extract
-node scripts/audit-framer-service-pages.mjs
-SANITY_API_TOKEN=… node scripts/extract-framer-service-pages.mjs
-# Toolkit icons (pairs empty-alt img + title) — preferred for masters
-SANITY_API_TOKEN=… node scripts/salvage-framer-toolkits.mjs
-# SKIP_R2=1 to skip tool-icon R2 put
-
-# Full audit matrix (Framer sitemap vs reference vs Astro vs pages.dev)
-# See docs/framer-full-audit.md — keep reference/ + component/; do not delete yet.
 
 # Full asset registry + R2 missing-only
 node scripts/sync-asset-registry.mjs
@@ -68,7 +54,7 @@ node scripts/sync-asset-registry.mjs
 node scripts/map-assets-to-content.mjs
 ```
 
-Manifests: `docs/r2-asset-map.json`, `docs/asset-registry-report.json`, `docs/platform-tech-icon-map.json`, `docs/content-asset-map.json`, `docs/framer-service-audit.json`, `docs/framer-service-extract-report.json`, `docs/framer-toolkit-salvage-report.json`, `docs/framer-full-audit.md`.
+Manifest: `docs/r2-asset-map.json`.
 
 ## DP3 field remap
 
