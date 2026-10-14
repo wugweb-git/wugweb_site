@@ -80,7 +80,7 @@ Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Con
 
 ## Routes (`src/pages/`)
 
-22 `.astro` routes + 4 API routes:
+22 `.astro` routes + 4 API routes (+ `sitemap.xml` and `robots.txt` as SSR endpoints):
 
 - Home `/`
 - About `/about`
@@ -92,7 +92,7 @@ Ownership model: Neon is **shared** between `vedanshu` and `wugweb` (peers). Con
 - Footer pages: `/footer/impact`, `/footer/sitemap`, `/footer/subscription`
 - Legal: `/privacy-policy`, `/termsofuse`, `/refund-policy`
 - 404 `/404`
-- API: `/api/contact`, `/api/personalize`, `/api/preview`, `/api/sync`
+- API: `/api/contact`, `/api/preview`, `/api/sync`, `/api/subscribe` (`/api/personalize` deleted 2026-09-25 — zero callers, and it existed only to read the pre-consent `visitor_id` cookie)
 
 Note: `footer/sitemap` is linked from `SiteFooter` (Sitemap).
 
@@ -156,12 +156,14 @@ See `pending.md` for the authoritative task tracker. High-level state:
 ## Working Agreements
 
 - **Always read `pending.md` and `governance.md` at the start of a session; update them at the end.**
-- **Read `AGENTS.md` before touching `wrangler.jsonc`, deploy config, or build tooling.** Many values here were learned from failed builds.
+- **Read `CLAUDE.md` before touching `wrangler.jsonc`, deploy config, or build tooling.** Many values here were learned from failed builds.
 - **Do not change text to pure white** — live colours are deliberate (`text: #f4f4f4`, `muted: #bababa`, surfaces `#191919`/`#2b2b2b`).
 - **Do not lower `.node-version`** below 22 without a specific reason. Wrangler 4.x requires Node ≥22 and a previous pin to 20 caused a real regression.
 - **Neon is shared SSOT** for structured content (Vedanshu + Wugweb). Sanity is the admin panel. Media belongs in R2 (`wugweb-assets`).
 - **Owner ≠ Author** — owner is `vedanshu` \| `wugweb` \| `both` \| `none`; author is a `person` byline. See `governance.md`.
 - **Notion is seed only** — do not reset Sanity/Neon to Notion; Sanity already has more content.
+- **Exception — blog posts (2026-10-13, owner decision):** Notion Blogs is the source of truth for posts. Sync with `node scripts/sync-notion-blogs.mjs` (dry run; `WRITE=1` applies, backs up first). It never deletes; posts removed from Notion go in an owner-run delete script.
+- **Exception — case-study SEO (2026-10-13, owner decision):** Notion Case Studies is the source of truth for case-study SEO Title, SEO Description, Focus Keyword and Canonical URL. Sync with `node scripts/sync-notion-case-studies.mjs` (dry run; `WRITE=1` applies, backs up first). Never write SEO titles to Notion from here, and never store a site suffix: `BaseLayout` adds " | Wugweb" only when the title fits in 60 chars. Canonicals that don't resolve to a published `/work/<slug>` are skipped (the route 301s on them). One slug per case study: no Legacy Slugs, no old-URL redirects (owner decision 2026-10-13).
 - **Content comes from hardcoded frontend records or user-provided sources**, not from Framer reference pages or third-party review sites.
 - **Service page copy (loose reference):** `/Users/abcom/Documents/VS/wugweb artworks/Wugweb_Services 2026.md` — use for inspiration on `/services` and `/services/[slug]` when helpful. Not a tight requirement; do not force 1:1 parity.
 - **Do not remove `blockContent` from the Sanity schema types array** — doing so causes `Unknown type: blockContent` errors across documents.
@@ -205,13 +207,13 @@ See `pending.md` for the authoritative task tracker. High-level state:
 
 1. **Frontend still reads from Sanity CDN** — Neon helpers and SQL constants exist, but pages have not been swapped to query Neon directly.
 2. **Contact form runtime reliability** — `POST /api/contact` + `/api/subscribe` store to Neon, but Neon Workers connection was deferred; verify in production.
-3. **Framer CDN hotlinks remain** — client logos on homepage and some team photos still use `framerusercontent.com`.
-4. **Sanity token permissions** — current token cannot reliably update/delete; migration scripts need a fresh Editor token.
+3. ~~**Framer CDN hotlinks in `og:image`**~~ — **resolved 2026-10-13.** All Framer URLs removed from case-study `clientLogoPath`/`ogImage`/`coverImage` (R2 values or cleared where an R2 version exists); 0 live pages load anything from Framer.
+4. ~~**Sanity token permissions**~~ — **resolved 2026-09-24.** The claim that the token cannot update was wrong: `/users/me` returns `roles: ['editor']` and a 27-document patch transaction committed successfully. Migration scripts do not need a new token.
 5. **Service panel `fg`/`accent` data values** — the `/services` template carries `#FFFFFF`/`#050505` inline values (data, not CSS) — intentional.
 
 ## Current Priorities
 
-1. Deploy / keep `wugweb.com` and `wugweb.pages.dev` in sync with local (Framer service slugs must not 404). **DNS cutover is done (confirmed 2026-09-23)** — `wugweb.com` now serves this site directly, not the old Framer build; it is no longer a separate reference to compare against.
+1. Deploy / keep `wugweb.com` and `wugweb.pages.dev` in sync with local. **Zero dependency on Framer (owner decision 2026-10-13): Framer is deleted the following week. No Framer-style URLs, no redirects for Framer URLs, no Framer-hosted assets.** **DNS cutover is NOT done — re-verified 2026-09-24.** `wugweb.com` issues a 308 to `www.wugweb.com`, and `www.wugweb.com` still serves the old Framer build (`<meta name="generator" content="Framer …">`). Everything in this repo is live only on `*.wugweb.pages.dev`. The earlier "cutover done 2026-09-23" note in this file was wrong. Do not treat the public domain as this site until a `curl -sL https://www.wugweb.com/ | grep generator` comes back empty.
 2. **Remaining backlog** (pending.md): contact redesign (needs reference), deep service-copy pass, trust-badge logos, prod verify of contact/subscribe APIs.
 3. Frontend → Neon swap (after UI/brand mapping).
 4. Blog/media gaps, team photos, Neon audit leftovers (8 stale rows, `[object Object]` slugs, empty `content_relations`).
