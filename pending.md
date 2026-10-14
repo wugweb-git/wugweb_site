@@ -1518,3 +1518,6 @@ Backups: `backups/notion-blogs-*-pre-seo-2026-10-13.json`, `backups/sanity-pre-n
 - Sanity Studio + schema deployed (wugweb.sanity.studio).
 - Done by owner: 37 briefs, 7 old media links in Notion case-study bodies, 3 client logos.
 - Open: 2 Neon test rows (needs `DATABASE_URL`); contact → Studio mirror not yet tested end to end.
+- **Unreviewed case-study page WIP** (another session, 2026-10-13) saved on branch
+  `wip/case-study-body` (src/lib/case-body.ts + work/[slug].astro, queries.ts, case-study sync).
+  Not merged to main. The same changes are still uncommitted in the local working copy.
