@@ -1504,5 +1504,17 @@ Audited all 103 live posts on wugweb.pages.dev. Fixed and re-measured live:
 Open (copy, Vedanshu): the first body paragraph is hidden when it equals the excerpt, so links
 there don't render. 27 posts still need link-friendly wording. AEO briefs pending (question H2s,
 key takeaways, FAQ) for the no-H2 post, 7 posts with colon headings, 6 generic openers and the
-26 shortest posts. ParcelShop `02-image.jpg` in R2 is a 60×12, 520-byte placeholder — the real image was never uploaded.
+26 shortest posts.
 Backups: `backups/notion-blogs-*-pre-seo-2026-10-13.json`, `backups/sanity-pre-notion-blog-sync-2026-10-13T05-*.json`.
+
+### 1ab. Blog + Studio follow-ups — *2026-10-14*
+
+- ParcelShop `02-image.jpg`: Medium's own file was a 60×12 divider; replaced in R2 (same key) with a
+  1400×520 research visual in the case study's style; alt updated in Notion; synced. Small body
+  images (<400px) now keep their intrinsic size (`.pt-media--small`).
+- `SANITY_SYNC_TOKEN` set on Pages production + preview (Sanity editor token); main + uat redeployed.
+- 5 Notion case studies created in Sanity as unpublished drafts (CS-003, CS-004, CS-007, CS-015,
+  CS-028; ids = Notion "Sanity ID"). Notion bodies are empty; the case-study sync skips drafts.
+- Sanity Studio + schema deployed (wugweb.sanity.studio).
+- Done by owner: 37 briefs, 7 old media links in Notion case-study bodies, 3 client logos.
+- Open: 2 Neon test rows (needs `DATABASE_URL`); contact → Studio mirror not yet tested end to end.
