@@ -4,6 +4,18 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-10-14 — Open items from the blog/media/nav session (audited against live R2, Sanity and the site).**
+Resolved and verified: all 103 posts have a cover; 0 Framer URLs in Sanity and none in live `og:image`; 0 image assets missing alt; old Airtel logo keys and the 10 VSB banners are gone from R2; nav = 100px / 60px bar / 40px logo on every breakpoint (`layout-shell.md`).
+Still open:
+1. `assets/unsorted/blog1.png` and `blog3.png` still in R2 — kept because neither is byte-identical to a `blog/` cover. Owner: eyeball, then delete or keep.
+2. Shared service clips: `ai-readiness-assessment`, `analytics-and-attribution`, `product-optimization` use one identical clip; `cloud-and-devops` and `qa-and-test-automation` share another. Needs real clips per sub-service (content, not code).
+3. Notion "Brand & Strategy" category page has no posts now (split into Brand / Strategy). Owner: archive it in Notion. New Notion categories must also be added to the `topic` list in `sanity/schemaTypes/post.ts`.
+4. Blog sync is manual: `node scripts/sync-notion-blogs.mjs` (dry run) then `WRITE=1`. Automating it (GitHub Action or a local schedule) was offered, not decided.
+5. Obsolete owner scripts, safe to delete from the repo: `scripts/owner-delete-old-airtel-logo-keys.sh` and `scripts/owner-delete-old-vsb-banners.sh` (their targets are already gone).
+6. Asset reorg plan (`backups/asset-reorg-plan.csv`, `site/<pageId>/`) was never applied and reads local `public/assets`, which no longer exists. Probably superseded by the later `site/services/` work; re-check before using it.
+7. Not investigated: the first request after a Pages deploy sometimes 404s, then 200 on retry.
+8. Uncommitted case-study body work in the tree (`src/lib/case-body.ts`, `work/[slug].astro`, `queries.ts`, `sync-notion-case-studies.mjs`) belongs to the `wip/case-study-body` session — left alone on purpose.
+
 **2026-10-13 — Notion Case Studies is the source for slugs, legacy slugs and share images.** `scripts/notion-legacy-redirects.mjs` turned `Legacy Slugs` on Published rows into 29 more 301 redirects. 29/29 verified, and all 8 overlaps agree with the earlier 12. **Owner decisions:**
 (1) ~~OG~~ **Done:** Notion `OG Image` + `Cover Image` on the 19 rows now hold the R2 cover URL (`scripts/fix-notion-case-study-media.mjs`, backup `backups/notion-case-study-media-before-2026-10-13.json`). 0 Framer URLs left in either column.
 (2) ~~musiclinkd~~ **Done:** Sanity slug + canonical renamed to `musiclinkd` (doc id stays `caseStudy-musiclinkd`), 301 `/work/musiclinkd` → `/work/musiclinkd`, legacy long slug in `work-redirects.ts` points straight there. Verified on UAT: 200 / 301 / 301.
