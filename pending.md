@@ -7,7 +7,7 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 **2026-10-14 — Open items from the blog/media/nav session (audited against live R2, Sanity and the site).**
 Resolved and verified: all 103 posts have a cover; 0 Framer URLs in Sanity and none in live `og:image`; 0 image assets missing alt; old Airtel logo keys and the 10 VSB banners are gone from R2; nav = 100px / 60px bar / 40px logo on every breakpoint (`layout-shell.md`).
 Still open:
-1. ~~blog1/blog3~~ Decided 2026-10-14: both are 864×600 crops of existing covers (0072, 0053) → delete. Owner runs `bash scripts/owner-delete-unsorted-blog1-blog3.sh` (2 R2 files + 2 asset records, backed up).
+1. ~~blog1/blog3~~ Done 2026-10-14: both deleted (crops of the 0072 / 0053 covers) with their 2 asset records.
 2. Shared service clips: `ai-readiness-assessment`, `analytics-and-attribution`, `product-optimization` use one identical clip; `cloud-and-devops` and `qa-and-test-automation` share another. Needs real clips per sub-service (content, not code).
 3. ~~Brand & Strategy~~ Done: Brand and Strategy are two separate topics. Any new Notion category must also be added to the `topic` list in `sanity/schemaTypes/post.ts`.
 4. Blog sync is manual: `node scripts/sync-notion-blogs.mjs` (dry run) then `WRITE=1`. Automating it (GitHub Action or a local schedule) was offered, not decided.
