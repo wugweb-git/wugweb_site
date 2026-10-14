@@ -12,7 +12,7 @@ Still open:
 3. Notion "Brand & Strategy" category page has no posts now (split into Brand / Strategy). Owner: archive it in Notion. New Notion categories must also be added to the `topic` list in `sanity/schemaTypes/post.ts`.
 4. Blog sync is manual: `node scripts/sync-notion-blogs.mjs` (dry run) then `WRITE=1`. Automating it (GitHub Action or a local schedule) was offered, not decided.
 5. Obsolete owner scripts, safe to delete from the repo: `scripts/owner-delete-old-airtel-logo-keys.sh` and `scripts/owner-delete-old-vsb-banners.sh` (their targets are already gone).
-6. Asset reorg plan (`backups/asset-reorg-plan.csv`, `site/<pageId>/`) was never applied and reads local `public/assets`, which no longer exists. Probably superseded by the later `site/services/` work; re-check before using it.
+6. R2 reorganisation is DONE (other session, 34 verified delete batches): `framer/`, `uncode/`, `more/`, `about/` are gone; media lives in `assets/work/` (967), `blog/` (369), `assets/site/` (210), `assets/logos/` (257). Bucket 2,282 objects / 1.55 GiB (2026-10-14). The 2026-10-12 plan (`backups/asset-reorg-plan.csv`) is obsolete — ignore it. **Left to sort: `assets/unsorted/` — 300 files, 348 MiB.**
 7. Not investigated: the first request after a Pages deploy sometimes 404s, then 200 on retry.
 8. Uncommitted case-study body work in the tree (`src/lib/case-body.ts`, `work/[slug].astro`, `queries.ts`, `sync-notion-case-studies.mjs`) belongs to the `wip/case-study-body` session — left alone on purpose.
 
