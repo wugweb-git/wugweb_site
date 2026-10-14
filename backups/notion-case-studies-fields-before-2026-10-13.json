@@ -1,0 +1,2137 @@
+[
+ {
+  "page": "3e2bb710-b9ab-81eb-ae95-edf323a0a833",
+  "id": "CS-050",
+  "sanity": "caseStudy-woodkraft-elevating-indias-largest-corporate-fit-out-legacy",
+  "brand": "Woodkraft",
+  "title": "Elevating India’s Largest Corporate Fit-Out Legacy",
+  "logo": "",
+  "logoAlt": "Woodkraft logo",
+  "cover": "",
+  "coverAlt": "Woodkraft case study cover",
+  "eng": "",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Woodkraft: Elevating India’s Largest Corporate Fit-Out Legacy\nSubtitle: A premium digital showcase for excellence in workspace interior solutions.\nCategory: Brand & Strategy, Experience Design\nTags: Luxury Interiors, Corporate Real Estate, Portfolio Design\nPartner: Leo Burnett\nClient: Woodkraft\nIndustry: Architecture & Interior Design\nDisciplines: Strategy, Branding, UX/UI Design, Web Development\nTeam: Vedanshu Srivastava, Anurag Pandey\n### About (Context)\nWoodkraft is a pioneer in India’s corporate interior landscape, having executed over 75 million sq. ft. of workspace for global giants. The objective was a total digital rebirth that reflected their new premium branding. We undertook a full-stack redesign, rebuilding their digital presence from the ground up to better articulate their “Technology-First” approach and showcase a massive portfolio of multinational clients.\n### Challenges\n- Legacy vs. Modernity\n\tEvolving a 40-year legacy brand without losing authority or trust.\n- Content at Extreme Scale\n\tStructuring 580+ projects across cities, sectors, and services.\n- Service Model Clarity\n\tDifferentiating multiple delivery models for varied enterprise needs.\n- Invisible Technology Value\n\tSurfacing proprietary tech stacks traditionally hidden from clients.\n\t### Solutions\n- Premium Brand System\n\tDesigned a bold, industrial-grade visual language reflecting scale and precision.\n- Interactive Legacy Timeline\n\tRebuilt the “About” journey to narrate growth and credibility visual",
+  "addl": "Strategy, Branding, UX/UI Design, Web Development",
+  "ptype": "Corporate Website",
+  "san": {
+   "_id": "caseStudy-woodkraft-elevating-indias-largest-corporate-fit-out-legacy",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Strategy",
+    "Branding",
+    "UX/UI Design",
+    "Web Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Authoritative Market Positioning"
+    },
+    {
+     "description": null,
+     "title": "Faster Lead Qualification"
+    },
+    {
+     "description": null,
+     "title": "Increased Technical Trust"
+    },
+    {
+     "description": null,
+     "title": "Scalable Content Infrastructure"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "woodkraft-elevating-indias-largest-corporate-fit-out-legacy"
+  }
+ },
+ {
+  "page": "3e2bb710-b9ab-813d-b984-f58c19b01057",
+  "id": "CS-048",
+  "sanity": "caseStudy-rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah-business-ecosystem",
+  "brand": "RAK SME",
+  "title": "Scaling the GovTech SME Ecosystem of Ras Al Khaimah",
+  "logo": "",
+  "logoAlt": "RAK SME logo",
+  "cover": "",
+  "coverAlt": "RAK SME case study cover",
+  "eng": "",
+  "disc": "Strategy",
+  "plat": "Web Platform",
+  "results": "99.9% | Platform uptime for uninterrupted government services",
+  "body": "## RAK SME: Scaling the Tech Infrastructure for Ras Al Khaimah’s Business Ecosystem\nSubtitle: A centralized portal for small and medium enterprises to access government support.\nCategory: Web & App Dev, Experience Design\nTags: Government Tech (GovTech), SME Ecosystem, UAE\nPartner: None\nClient: Ras Al Khaimah Government\nIndustry: Government\nDisciplines: Strategy, UX Design, UI Design, Backend Development\nTeam: Vedanshu Srivastava, Kareem Khan, Amitabh Bhatnagar\nTimeline: Ongoing\n### About (Context)\nRAK SME (Ras Al Khaimah Department of Knowledge) is the dedicated government body empowering small and medium enterprises within the emirate. As their long-term tech retainer, Wugweb is responsible for the continuous evolution and stability of their digital infrastructure. Our role spans from maintaining core operations to engineering high-impact features that simplify the entrepreneurial journey, ensuring the platform remains a robust engine for economic growth.\n### Challenges\n- National Identity Integration\n\tSecuring seamless UAE Pass authentication.\n- Fragmented Member Data\n\tUnifying applications, payments, and records.\n- Support Communication Delays\n\tReducing friction in SME assistance workflows.\n- Legacy Scaling Constraints\n\tOptimizing large document repositories.\n\t### Solutions\n- UAE Pass Authentication Layer\n\tEnabled secure, standardized national login.\n- Dynamic SME Directory\n\tBuilt a searchable ecosystem for member visibility.\n- Automated Application Workflows\n\tReduced manu",
+  "addl": "Strategy, UX Design, UI Design, Backend Development",
+  "ptype": "Government Portal",
+  "san": {
+   "_id": "caseStudy-rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah-business-ecosystem",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design",
+    "Backend Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "99.9% Platform Uptime"
+    },
+    {
+     "description": null,
+     "title": "Faster SME Onboarding"
+    },
+    {
+     "description": null,
+     "title": "Increased Transparency"
+    },
+    {
+     "description": null,
+     "title": "Scalable Economic Enablement"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "rak-sme-scaling-the-tech-infrastructure-for-ras-al-khaimah-business-ecosystem"
+  }
+ },
+ {
+  "page": "3e2bb710-b9ab-81a5-8dc8-e9f077ed95fd",
+  "id": "CS-049",
+  "sanity": "caseStudy-sbs-transit-engineering-the-future-of-multimodal-urban-mobility",
+  "brand": "SBS Transit",
+  "title": "Engineering the Future of Multimodal Urban Mobility",
+  "logo": "",
+  "logoAlt": "SBS Transit logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/sbs-transit/sbs-about.mp4",
+  "coverAlt": "SBS Transit case study cover",
+  "eng": "",
+  "disc": "Product Design",
+  "plat": "Mobile App",
+  "results": "40% | Faster feature deployment post-migration",
+  "body": "## SBS Transit: Engineering the Future of Multimodal Urban Mobility\nSubtitle: Consolidating disparate transport services into a single, high-performance super-app.\nCategory: Web & App Dev, Experience Design\nTags: Smart City, Public Transit, IoT, Low-Code\nPartner: iCube\nClient: SBS Transit\nIndustry: Transportation & Public Utility\nDisciplines: Product Design, Mobility UX, Systems Integration\nTeam: Vedanshu Srivastava, Alwyn Lai, Gadar Soe\n### About (Context)\nSBS Transit is a leading public transport operator in Singapore, serving millions of commuters daily. The objective of this project was to overhaul their mobile ecosystem using the OutSystems platform, consolidating disparate transport services—bus, train, and cycling—into a single, high-performance “super-app.” We focused on real-time reliability and universal accessibility to ensure seamless door-to-door journeys for a diverse urban population.\n### Challenges\n- Data Fragmentation\n\tConsolidating live data from buses, trains, and cycling systems into one interface.\n- Legacy Performance Constraints\n\tOvercoming latency and accuracy issues in traditional transit apps.\n- Inclusive Navigation Needs\n\tDesigning for commuters across age groups and accessibility requirements.\n- Low-Code Optimization Limits\n\tDelivering real-time performance within an OutSystems environment.\n### Solutions\n- Unified Multimodal Dashboard\n\tDesigned a single hub providing instant access to all transport modes.\n- Live Transit Tracking Engine\n\tImplemented ",
+  "addl": "Product Design, Mobility UX, Systems Integration",
+  "ptype": "Mobility Super App",
+  "san": {
+   "_id": "caseStudy-sbs-transit-engineering-the-future-of-multimodal-urban-mobility",
+   "clientLogoPath": null,
+   "coverPath": "/assets/work/sbs-transit-engineering-the-future-of-multimodal-urban-mobility/sbs-about.mp4",
+   "disciplines": [
+    "Product Design",
+    "Mobility UX",
+    "Systems Integration"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Increased Commuter Trust"
+    },
+    {
+     "description": null,
+     "title": "Operational Efficiency Gains"
+    },
+    {
+     "description": null,
+     "title": "Higher Green Mobility Adoption"
+    },
+    {
+     "description": null,
+     "title": "Universal Accessibility Reach"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "sbs-transit-engineering-the-future-of-multimodal-urban-mobility"
+  }
+ },
+ {
+  "page": "3e2bb710-b9ab-8191-b26c-d5b4eb6b6355",
+  "id": "CS-045",
+  "sanity": "caseStudy-eekenlife-redefining-footwear-e-commerce-for-the-next-generation",
+  "brand": "Eekenlife",
+  "title": "Redefining Footwear E-commerce for the Next Generation",
+  "logo": "",
+  "logoAlt": "Eekenlife logo",
+  "cover": "",
+  "coverAlt": "Eekenlife case study cover",
+  "eng": "",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Eekenlife: Redefining Footwear E-commerce for the Next Generation\nSubtitle: Launching a vibrant, high-energy digital storefront for Paragon’s youth brand.\nCategory: Brand & Strategy, Web & App Dev\nTags: E-commerce, Youth Culture, Retail Tech\nPartner: Dentsu Webchutney\nClient: Paragon Footwear\nIndustry: Fashion & Retail\nDisciplines: Strategy, UX Design, UI Design, E-commerce Development\nTeam: Vedanshu Srivastava\n### About (Context)\nEekenlife is a vibrant footwear brand built around the spirit of exploration and youth culture. As the brand migrated to Shopify, the objective was to move beyond a basic transactional site and create a high-octane digital experience. We focused on a video-first, community-driven interface that captures the brand’s energy, ensuring the new platform functions as both a premium product showcase and a cultural touchpoint for its audience.\n### Challenges\n- Legacy Platform Migration\n\tMoving to Shopify without visual regression.\n- Low Engagement Retention\n\tBreaking static product-grid behaviors.\n- Performance vs. Motion\n\tBalancing video-heavy design with speed.\n- Community-to-Commerce Gap\n\tTranslating social energy into conversions.\n\t### Solutions\n- Video-First Homepage\n\tDelivered instant brand energy via motion-led hero.\n- Custom Shopify Theme\n\tBuilt a non-templated, expressive layout.\n- Immersive Product Pages\n\tAdded 360° views and video storytelling.\n- Social Content Integration\n\tPulled UGC directly into the storefront.\n- Mobile-Centric Navigation\n\t",
+  "addl": "Strategy, UX Design, UI Design, E-commerce Development",
+  "ptype": "E-commerce Platform",
+  "san": {
+   "_id": "caseStudy-eekenlife-redefining-footwear-e-commerce-for-the-next-generation",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design",
+    "E-commerce Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Gen-Z Brand Alignment"
+    },
+    {
+     "description": null,
+     "title": "Platform Scalability"
+    },
+    {
+     "description": null,
+     "title": "Conversion Rate Uplift"
+    },
+    {
+     "description": null,
+     "title": "Stronger Social Proof"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "eekenlife-redefining-footwear-e-commerce-for-the-next-generation"
+  }
+ },
+ {
+  "page": "3e2bb710-b9ab-81ee-b371-c39e2299b88e",
+  "id": "CS-010",
+  "sanity": "caseStudy-ikan-the-next-generation-corporate-mental-healthcare-platform",
+  "brand": "iKan",
+  "title": "The Next-Generation Corporate Mental Health Platform",
+  "logo": "",
+  "logoAlt": "iKan logo",
+  "cover": "",
+  "coverAlt": "iKan case study cover",
+  "eng": "",
+  "disc": "",
+  "plat": "Web App",
+  "results": "",
+  "body": "## iKan: The Next-Generation Corporate Mental Healthcare Platform\nSubtitle: A sophisticated iCBT ecosystem backed by agentic logic and clinical rigor.\nCategory: Martech & AI, Web & App Dev, Experience Design\nTags: HealthTech, PWA, AI Logic, iCBT\nPartner: None\nClient: iKan\nIndustry: Corporate Wellness / HealthTech\nDisciplines: System Architecture, UX/UI Design, Full-Stack Development\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Kartik Chandra, Vaibhav Shukla\n### About (Context)\niKan is a sophisticated, “measurement-based” mental health PWA engineered specifically for the corporate sector. Moving beyond simple meditation apps, iKan provides a science-backed ecosystem centered on Internet-based Cognitive Behavioral Therapy (iCBT). The platform delivers high-fidelity, personalized care by integrating validated clinical assessments with a complex agentic backend, empowering employees to manage mental well-being through self-guided tools and professional support.\n### Challenges\n- Clinical Rigor Translation\n\tPreserving CBT integrity within a consumer-grade UX.\n- Complex System Interdependencies\n\tMapping assessments to dynamic care pathways.\n- Agentic Intelligence Design\n\tAutomating personalized interventions from real-time data.\n- Enterprise-Grade Privacy\n\tProtecting sensitive mental health data in corporate environments.\n\t### Solutions\n- Robust PWA Architecture\n\tBuilt a scalable, performance-driven mental health platform.\n- Validated Assessment Engine\n\tIntegrated clinically recogni",
+  "addl": "System Architecture, UX/UI Design, Full-Stack Development",
+  "ptype": "HealthTech Platform",
+  "san": {
+   "_id": "caseStudy-ikan-the-next-generation-corporate-mental-healthcare-platform",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "System Architecture",
+    "UX/UI Design",
+    "Full-Stack Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Measurement-Based Care Delivery"
+    },
+    {
+     "description": null,
+     "title": "Reduced Access Friction"
+    },
+    {
+     "description": null,
+     "title": "Improved Workforce Resilience"
+    },
+    {
+     "description": null,
+     "title": "Future-Ready Platform"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "ikan-the-next-generation-corporate-mental-healthcare-platform"
+  }
+ },
+ {
+  "page": "3e2bb710-b9ab-817e-a78b-e5a27b87e43f",
+  "id": "CS-047",
+  "sanity": "caseStudy-itc-dark-fantasy-x-citadel-personalizing-the-spy-experience",
+  "brand": "ITC Dark Fantasy",
+  "title": "Citadel: Personalizing the Spy Experience",
+  "logo": "",
+  "logoAlt": "ITC Sunfeast Dark Fantasy logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/itc-citadel/citadel-about.mp4",
+  "coverAlt": "ITC Dark Fantasy x Citadel case study cover",
+  "eng": "",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## ITC Dark Fantasy x Citadel: Personalizing the Spy Experience\nSubtitle: Turning viewers into spies through a personalized, high-stakes digital journey.\nCategory: Brand & Strategy, Martech & AI\nTags: Interactive Marketing, Personalization, Viral Mechanics\nPartner: Dentsu Webchutney\nClient: ITC (for Amazon Prime Video)\nIndustry: Media & Entertainment\nDisciplines: Strategy, Creative Technology, Web Development\nTeam: Vedanshu Srivastava, Satish Kumar, Kareem Khan, Amitabh Bhatnagar, Yatin Gupta\n### About (Context)\nTo celebrate the release of the global spy series Citadel, ITC Sunfeast Dark Fantasy launched a 360-degree promotional campaign designed to immerse consumers in the world of espionage. By integrating QR technology on limited-edition cookie packs, we turned a physical purchase into a digital recruitment journey, allowing fans to “uncover their fantasy” and join Priyanka Chopra’s elite spy network.\n### Challenges\n- Frictionless QR Entry\n\tEnabling instant access without app downloads.\n- Low Engagement Risk\n\tAvoiding static, form-heavy promotional experiences.\n- Narrative Immersion\n\tMaking digital participation feel cinematic and personal.\n- Viral Asset Creation\n\tDesigning shareable outputs that drive organic reach.\n\t### Solutions\n- QR-to-Microsite Bridge\n\tBuilt a lightweight, mobile-optimized entry experience.\n- Personalized Spy ID Generator\n\tEnabled custom visual identities through image processing.\n- Immersive Audio-Visual Layers\n\tIntegrated spy calls and character-dri",
+  "addl": "Strategy, Creative Technology, Web Development",
+  "ptype": "Campaign Microsite",
+  "san": {
+   "_id": "caseStudy-itc-dark-fantasy-x-citadel-personalizing-the-spy-experience",
+   "clientLogoPath": null,
+   "coverPath": "/assets/work/itc-dark-fantasy-x-citadel-personalizing-the-spy-experience/citadel-about.mp4",
+   "disciplines": [
+    "Strategy",
+    "Creative Technology",
+    "Web Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "High-Intent Lead Capture"
+    },
+    {
+     "description": null,
+     "title": "Organic Viral Reach"
+    },
+    {
+     "description": null,
+     "title": "Experience-Led Brand Lift"
+    },
+    {
+     "description": null,
+     "title": "Retail-to-Digital Success"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "itc-dark-fantasy-x-citadel-personalizing-the-spy-experience"
+  }
+ },
+ {
+  "page": "3e2bb710-b9ab-81f2-9cdc-df7ba70c65ee",
+  "id": "CS-046",
+  "sanity": "caseStudy-global-trade-finance-engineering-an-authority-first-lead-generation-engine",
+  "brand": "Global Trade Finance",
+  "title": "Engineering an Authority-First Trade Finance Lead Generation Engine",
+  "logo": "",
+  "logoAlt": "Global Trade Finance logo",
+  "cover": "",
+  "coverAlt": "Global Trade Finance case study cover",
+  "eng": "",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Global Trade Finance: Engineering an Authority-First Lead Generation Engine\nSubtitle: Engineering a high-detail architectural engine for complex cross-border finance.\nCategory: Web & App Dev, Brand & Strategy\nTags: Lead Gen, FinTech, High-Architecture Content\nPartner: None\nClient: Global Trade Finance\nIndustry: Business Finance\nDisciplines: Strategy, Content Architecture, Web Development\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Praneet Verma\n### About (Context)\nGlobal Trade Finance is a specialized financial services firm dedicated to simplifying cross-border trade capital. In a sector dominated by established giants like Trade Finance Global and Enness Global, the objective was to build a digital presence that signaled instant credibility. We focused on a “content-as-infrastructure” strategy—eschewing traditional blogs in favor of deeply detailed, high-architecture service pages designed specifically to convert high-intent traffic from paid advertising.\n### Challenges\n- Instant Authority Signaling\n\tCompeting with legacy finance incumbents.\n- Depth vs. Conversion Balance\n\tSupporting high-value decisions without blocking leads.\n- Paid Media Optimization\n\tDesigning for high-performance ad landing experiences.\n- Complex Service Communication\n\tExplaining intricate trade instruments clearly.\n\t### Solutions\n- High-Architecture Content Model\n\tReplaced blogs with permanent, technical authority pages.\n- Conversion-Led Visual Branding\n\tDesigned a premium identity signaling trust",
+  "addl": "Strategy, Content Architecture, Web Development",
+  "ptype": "Lead Generation Website",
+  "san": {
+   "_id": "caseStudy-global-trade-finance-engineering-an-authority-first-lead-generation-engine",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Strategy",
+    "Content Architecture",
+    "Web Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Immediate Market Credibility"
+    },
+    {
+     "description": null,
+     "title": "Higher Quality Lead Flow"
+    },
+    {
+     "description": null,
+     "title": "Lower Paid Media Costs"
+    },
+    {
+     "description": null,
+     "title": "Evergreen Knowledge Asset"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "global-trade-finance-engineering-an-authority-first-lead-generation-engine"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81ad-8590-c1121329241d",
+  "id": "CS-037",
+  "sanity": "caseStudy-wugweb-revamp-the-living-manifesto-of-digital-perfection",
+  "brand": "Wugweb",
+  "title": "The Living Manifesto: Our Design Agency Website",
+  "logo": "",
+  "logoAlt": "Wugweb logo",
+  "cover": "",
+  "coverAlt": "Wugweb Revamp case study cover",
+  "eng": "Internal",
+  "disc": "Creative Technology",
+  "plat": "Website",
+  "results": "3× | Higher session duration\n80% | Faster publishing with CMS workflows",
+  "body": "## Wugweb Revamp: The Living Manifesto of Digital Perfection\nSubtitle: An immersive, highly interactive flagship built on Framer using Wugweb Kits.\nCategory: Brand & Strategy, Web & App Dev, Experience Design\nTags: Immersive UX, Framer Motion, Design Systems\nPartner: None\nClient: Wugweb (Internal)\nIndustry: Digital Agency\nDisciplines: Creative Technology, UX/UI Design, CMS Architecture\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Shreya Khot\n### About (Context)\nThe Wugweb website is not just an agency portfolio; it is a high-performance demonstration of our technical and design capabilities. Built on Framer, the site serves as the ultimate showcase for the Wugweb Kits ecosystem. We moved away from traditional web structures to create a “media-loaded,” immersive environment that pushes the boundaries of Framer’s motion engine, proving that high-fidelity interactivity can coexist with lightning-fast performance and seamless content management.\n### Challenges\n- High-Intensity Motion Design\n\tBalancing animation richness with performance.\n- Meta Execution Pressure\n\tUsing Wugweb Kits to showcase Wugweb Kits.\n- CMS Complexity\n\tSupporting dozens of detailed case studies dynamically.\n- Immersive Usability Risk\n\tEnsuring cinematic UX remains intuitive.\n\t### Solutions\n- Advanced Framer Motion Logic\n\tBuilt state-aware, scroll-driven interactions.\n- Kits-Based Page Architecture\n\tMaintained consistency across 50+ components.\n- Optimized Media Loading\n\tEnabled lazy-loading for heavy visuals",
+  "addl": "UX/UI Design, CMS Architecture",
+  "ptype": "Agency Website",
+  "san": {
+   "_id": "caseStudy-wugweb-revamp-the-living-manifesto-of-digital-perfection",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Creative Technology",
+    "UX/UI Design",
+    "CMS Architecture"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "3× Higher Session Duration"
+    },
+    {
+     "description": null,
+     "title": "Enterprise Framer Proof"
+    },
+    {
+     "description": null,
+     "title": "80% Faster Publishing"
+    },
+    {
+     "description": null,
+     "title": "Internal Quality Benchmark"
+    }
+   ],
+   "logoPath": null,
+   "results": "3× | Higher session duration\n80% | Faster publishing with CMS workflows",
+   "slug": "wugweb-revamp-the-living-manifesto-of-digital-perfection"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-8163-8321-f502e7684a2b",
+  "id": "CS-036",
+  "sanity": "caseStudy-unified-hrms-redefining-the-employee-lifecycle-through-automation",
+  "brand": "Wugweb HRMS",
+  "title": "An AI HR Management System Redefining the Employee Lifecycle",
+  "logo": "",
+  "logoAlt": "Wugweb HRMS logo",
+  "cover": "",
+  "coverAlt": "Wugweb HRMS case study cover",
+  "eng": "Internal",
+  "disc": "Product Design",
+  "plat": "Web Application",
+  "results": "70% | Fewer HR tickets through automation",
+  "body": "## Unified HRMS: Redefining the Employee Lifecycle Through Automation\nSubtitle: An automated self-service portal for onboarding, payroll, and performance.\nCategory: Web & App Dev, Experience Design\nTags: HRTech, Automation, Employee Engagement\nPartner: None\nClient: Internal Product / Corporate Clients\nIndustry: Enterprise SaaS / HRTech\nDisciplines: Strategy, UX Design, UI Design, Workflow Automation\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Vaibhav Shukla\n### About (Context)\nThe Unified HRMS project was designed to eliminate the administrative friction that plagues growing organizations. Rather than a static database, we built a dynamic “Self-Service Hub” where employees manage their own journeys—from day-one onboarding to performance reviews. By leveraging AI to architect the system and Wugweb Kits for the UI, we delivered a platform that feels more like a modern social app than a legacy corporate tool.\n### Challenges\n- Manual HR Bottlenecks\n\tTime-consuming document and payroll requests.\n- Fragmented Employee Data\n\tRecords scattered across tools and spreadsheets.\n- Onboarding Experience Gaps\n\tLack of structured first-day journeys.\n- Feature-Heavy UX Risk\n\tEnsuring simplicity across diverse employee profiles.\n\t### Solutions\n- Wugweb Kits Framework\n\tDelivered a clean, accessible self-service interface.\n- Automated Document Engine\n\tEnabled on-demand generation of HR documents.\n- Digital Onboarding Flow\n\tBuilt interactive, step-by-step employee journeys.\n- Unified Activity Hu",
+  "addl": "UX/UI Design, Systems Architecture",
+  "ptype": "HR Management Platform",
+  "san": {
+   "_id": "caseStudy-unified-hrms-redefining-the-employee-lifecycle-through-automation",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Product Design",
+    "UX/UI Design",
+    "Systems Architecture"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "70% Fewer HR Tickets"
+    },
+    {
+     "description": null,
+     "title": "Scalable Workforce Growth"
+    },
+    {
+     "description": null,
+     "title": "Higher Employee Engagement"
+    },
+    {
+     "description": null,
+     "title": "Leadership Data Visibility"
+    }
+   ],
+   "logoPath": null,
+   "results": "70% | Fewer HR tickets through automation",
+   "slug": "unified-hrms-redefining-the-employee-lifecycle-through-automation"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81a0-8aed-d0209d7e2a36",
+  "id": "CS-035",
+  "sanity": "caseStudy-stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+  "brand": "Stayweb PMS",
+  "title": "A Next-Gen Hotel PMS Powered by AI and Design Systems",
+  "logo": "",
+  "logoAlt": "Stayweb logo",
+  "cover": "",
+  "coverAlt": "Stayweb PMS case study cover",
+  "eng": "Client",
+  "disc": "Product Design",
+  "plat": "Web Application",
+  "results": "50% | Faster frontend delivery with reusable Kits components",
+  "body": "## Stayweb PMS: A Next-Gen Hospitality Engine Powered by AI and Design Systems\nSubtitle: A unified PMS and Channel Manager built for seamless operations.\nCategory: Martech & AI, Web & App Dev\nTags: Hospitality SaaS, AI Tech, Automation\nPartner: None\nClient: Stayweb\nIndustry: Hospitality\nDisciplines: Product Design, Systems Integration, Full-Stack Development\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Vaibhav Shukla, Praneet Verma\n### Challenges\n- Fragmented Hospitality Systems\n\tDisconnected PMS, POS, and channel managers creating operational friction.\n- Operational Learning Curve\n\tLegacy systems requiring extensive staff training.\n- Real-Time Sync Complexity\n\tPreventing overbooking across global OTAs.\n- Enterprise-Scale Build Pressure\n\tDelivering a multi-module platform on a tight timeline.\n\t### Solutions\n- Wugweb Kits UI System\n\tApplied a standardized design system for cross-module consistency.\n- AI-Driven Backend Logic\n\tUsed agentic AI to architect complex billing and booking workflows.\n- Unified POS Integration\n\tSynced restaurant billing directly with room accounts.\n- Real-Time Channel Manager\n\tEnabled instant inventory and pricing updates across OTAs.\n- Front-Desk-First Dashboard\n\tPrioritized one-click check-ins and occupancy heatmaps.\n- Multi-API Middleware Layer\n\tIntegrated payments, printers, and key-card systems seamlessly.\n\t### Impact\n- 50% Faster Frontend Delivery\n\tReduced build time through reusable Kits components.\n- Unified Revenue Visibility\n\tConsolidated room",
+  "addl": "Systems Integration, Full-Stack Development",
+  "ptype": "Hospitality SaaS",
+  "san": {
+   "_id": "caseStudy-stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Product Design",
+    "Systems Integration",
+    "Full-Stack Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "50% Faster Frontend Delivery"
+    },
+    {
+     "description": null,
+     "title": "Unified Revenue Visibility"
+    },
+    {
+     "description": null,
+     "title": "Zero-Downtime Scalability"
+    },
+    {
+     "description": null,
+     "title": "Minimal Training Overhead"
+    }
+   ],
+   "logoPath": null,
+   "results": "50% | Faster frontend delivery with reusable Kits components",
+   "slug": "stayweb-pms-a-next-gen-hospitality-engine-powered-by-ai-and-design-systems"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-815c-849c-eb1c2e9bc7fb",
+  "id": "CS-034",
+  "sanity": "caseStudy-witty-vegan-democratizing-plant-based-diversity-through-culture",
+  "brand": "Witty Vegan",
+  "title": "Democratizing Plant-Based Food Through a Vegan Brand Identity",
+  "logo": "",
+  "logoAlt": "Witty Vegan logo",
+  "cover": "",
+  "coverAlt": "Witty Vegan case study cover",
+  "eng": "Client",
+  "disc": "Branding",
+  "plat": "Website",
+  "results": "",
+  "body": "## Witty Vegan: Democratizing Plant-Based Diversity Through Culture\nSubtitle: Crafting a playful yet premium visual language for a plant-based future.\nCategory: Brand & Strategy, Experience Design\nTags: Veganism, Sustainable Brand, Visual Identity\nPartner: None\nClient: Witty Vegan\nIndustry: Food & Beverage\nDisciplines: Branding, Creative Direction, UI Design\nTeam: Vedanshu Srivastava, Kratika Vaid\n### About (Context)\nWitty Vegan is a brand built on the philosophy of “Inclusion over Advocacy.” Rather than pressuring users to adopt a strict diet, the brand exists to highlight the incredible diversity of plant-based ingredients. We created an ecosystem that functions as a culinary discovery engine, providing users with a “huge platter of information”—ranging from experimental recipes to trend-mapping—designed to spark curiosity and expand the modern palate.\n### Challenges\n- Cultural Perception Barriers\n\tOvercoming stereotypes around plant-based food.\n- Content Volume Complexity\n\tStructuring diverse culinary information.\n- Community Engagement Fatigue\n\tStanding out in food-content saturation.\n- Visual Differentiation\n\tAvoiding predictable vegan aesthetics.\n\t### Solutions\n- Playful Brand Identity\n\tBuilt a witty, energetic visual language.\n- Meme-Led Discovery Strategy\n\tUsed humor to dismantle food biases.\n- Trend Mapping Content Formats\n\tIntroduced “Hot / Not” discovery segments.\n- Flavor-First Recipe Architecture\n\tPrioritized taste over restriction.\n- Conversation-Driven Storytel",
+  "addl": "Creative Direction, UI Design",
+  "ptype": "Brand & Content Platform",
+  "san": {
+   "_id": "caseStudy-witty-vegan-democratizing-plant-based-diversity-through-culture",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Branding",
+    "Creative Direction",
+    "UI Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Cultural Narrative Shift"
+    },
+    {
+     "description": null,
+     "title": "Organic Social Growth"
+    },
+    {
+     "description": null,
+     "title": "Informed Exploration"
+    },
+    {
+     "description": null,
+     "title": "Scalable Content Framework"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "witty-vegan-democratizing-plant-based-diversity-through-culture"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-8153-843a-d46f38cd4756",
+  "id": "CS-033",
+  "sanity": "caseStudy-labelly-immutable-product-verification-via-blockchain-integration",
+  "brand": "Labelly",
+  "title": "Immutable Blockchain Product Verification for Brands",
+  "logo": "",
+  "logoAlt": "Labelly logo",
+  "cover": "",
+  "coverAlt": "Labelly case study cover",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Web Platform",
+  "results": "",
+  "body": "## Labelly: Immutable Product Verification via Blockchain Integration\nSubtitle: Positioning blockchain as a consumer-friendly standard for product truth.\nCategory: Brand & Strategy, Experience Design\nTags: Web3 Branding, Visual Identity, Trust Design\nPartner: None\nClient: Labelly\nIndustry: Web3 / Tech\nDisciplines: Strategy, Branding, Visual Identity\nTeam: Vedanshu Srivastava,\n### Challenges\n- Counterfeit Proliferation\n\tReplacing duplicable QR codes with immutable proof.\n- Web3 Adoption Barriers\n\tSimplifying blockchain for non-technical users.\n- Data Integrity Assurance\n\tSecuring physical-to-digital verification.\n- High-Volume Manufacturer Onboarding\n\tSupporting large-scale product registration.\n\t### Solutions\n- Blockchain Verification Engine\n\tImplemented Ethereum-based product identity logic.\n- Mobile-First Scanner UX\n\tEnabled instant verification via camera access.\n- Manufacturer Control Dashboard\n\tCentralized batch creation and identity management.\n- Cryptographic Labeling System\n\tMapped physical labels to unique ledger entries.\n- Zero-Knowledge Interface Design\n\tAbstracted blockchain complexity from users.\n- Bulk Registration API\n\tEnabled high-speed product minting.\n\t### Impact\n- Brand Protection at Scale\n\tEliminated counterfeit ambiguity.\n- Consumer Confidence Boost\n\tIncreased trust through instant verification.\n- Transparent Supply Chains\n\tCreated immutable product audit trails.\n- Frictionless Web3 Adoption\n\tEnabled blockchain use without learning curves.\n\t### Strategic ",
+  "addl": "Branding, Visual Identity",
+  "ptype": "Blockchain Verification Platform",
+  "san": {
+   "_id": "caseStudy-labelly-immutable-product-verification-via-blockchain-integration",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Strategy",
+    "Branding",
+    "Visual Identity"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Brand Protection at Scale"
+    },
+    {
+     "description": null,
+     "title": "Consumer Confidence Boost"
+    },
+    {
+     "description": null,
+     "title": "Transparent Supply Chains"
+    },
+    {
+     "description": null,
+     "title": "Frictionless Web3 Adoption"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "labelly-immutable-product-verification-via-blockchain-integration"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-814d-98a2-c1ff711c0b5a",
+  "id": "CS-032",
+  "sanity": "caseStudy-nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+  "brand": "NSL OilChem",
+  "title": "Digitizing the Lifecycle of Industrial Waste Management",
+  "logo": "",
+  "logoAlt": "NSL OilChem logo",
+  "cover": "",
+  "coverAlt": "NSL OilChem case study cover",
+  "eng": "Client",
+  "disc": "Systems Integration",
+  "plat": "Web Platform",
+  "results": "",
+  "body": "## NSL OilChem: Digitizing the Lifecycle of Industrial Waste Management\nSubtitle: Streamlining complex vendor management and hazardous waste tracking.\nCategory: Web & App Dev, Martech & AI\nTags: Logistics, Industrial Tech, Environmental Services\nPartner: iCube\nClient: NSL OilChem Waste Management\nIndustry: Environmental Services / Petrochem\nDisciplines: Systems Integration, ERP Design, UX/UI Design\nTeam: Vedanshu Srivastava, Alwyn Lai, Gadar Soe\n### About (Context)\nNSL OilChem is a specialist in the treatment and recovery of hazardous industrial wastewater and oily waste for the land and marine sectors. Operating one of Singapore’s largest treatment complexes and a fleet of over 50 specialized vehicles, their operations require millisecond precision in logistics and inventory tracking. We developed a comprehensive operational layer to manage their end-to-end supply chain, ensuring regulatory compliance and maximum resource recovery.\n### Challenges\n- Regulatory Compliance Complexity\n\tManaging NEA and MPA documentation requirements.\n- Logistics Coordination\n\tOrchestrating fleets across industrial and marine zones.\n- Inventory Volatility\n\tTracking fluctuating waste processing cycles.\n- Billing Accuracy Risks\n\tAutomating complex rate structures.\n\t### Solutions\n- Centralized Vendor Management\n\tUnified third-party capacity and operations.\n- Real-Time Logistics Engine\n\tOptimized routing using live GPS data.\n- Inventory Monitoring System\n\tTracked chemicals, spares, and recovered mate",
+  "addl": "ERP Design, UX/UI Design",
+  "ptype": "Enterprise Operations Platform",
+  "san": {
+   "_id": "caseStudy-nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Systems Integration",
+    "ERP Design",
+    "UX/UI Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Operational Efficiency"
+    },
+    {
+     "description": null,
+     "title": "Full Regulatory Transparency"
+    },
+    {
+     "description": null,
+     "title": "Optimized Plant Utilization"
+    },
+    {
+     "description": null,
+     "title": "Financial Accuracy Gains"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "nsl-oilchem-digitizing-the-lifecycle-of-industrial-waste-management"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81f6-9cab-c0c79042ae94",
+  "id": "CS-031",
+  "sanity": "caseStudy-linkedin-sales-navigator-optimizing-the-social-selling-interface",
+  "brand": "LinkedIn Sales Navigator",
+  "title": "Optimizing the Social Selling Interface",
+  "logo": "",
+  "logoAlt": "LinkedIn logo",
+  "cover": "",
+  "coverAlt": "LinkedIn Sales Navigator case study cover",
+  "eng": "Client",
+  "disc": "Product UI/UX",
+  "plat": "Web Application",
+  "results": "",
+  "body": "## LinkedIn Sales Navigator: Optimizing the Social Selling Interface\nSubtitle: Streamlining lead discovery and CRM integration for global enterprise teams.\nCategory: Web & App Dev, Experience Design\nTags: SaaS, Sales Tech, Enterprise UX\nPartner: Dentsu Webchutney\nClient: LinkedIn\nIndustry: SaaS / Professional Networking\nDisciplines: Product UI/UX, Interaction Design\nTeam: Vedanshu Srivastava\n### Challenges\n- Information Density Overload\n\tManaging large volumes of lead data without cognitive fatigue.\n- Design System Constraints\n\tWorking within LinkedIn’s strict visual framework while signaling premium value.\n- Complex Sales Workflows\n\tStreamlining discovery, qualification, and outreach flows.\n- Feature Discoverability\n\tIncreasing adoption of high-value tools within dense interfaces.\n\t### Solutions\n- Insight-First Lead Layouts\n\tPrioritized intent signals like job changes and company activity.\n- Advanced Filtering UX\n\tEnabled rapid drilling across millions of profiles.\n- Contextual Action Controls\n\tAdded floating actions for quick lead engagement.\n- Clear Data Hierarchy\n\tStructured information using modular card systems.\n- Native CRM Sync UI\n\tIntegrated Salesforce and HubSpot modules seamlessly.\n- Mobile-Optimized Views\n\tAdapted complex tables for on-the-go sales usage.\n\t### Impact\n- Faster Lead Qualification\n\tReduced time-to-action for enterprise sales teams.\n- Higher Feature Utilization\n\tImproved adoption of premium Sales Navigator tools.\n- Stronger Daily Engagement\n\tIncreased",
+  "addl": "Interaction Design",
+  "ptype": "Enterprise SaaS",
+  "san": {
+   "_id": "caseStudy-linkedin-sales-navigator-optimizing-the-social-selling-interface",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Product UI/UX",
+    "Interaction Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Faster Lead Qualification"
+    },
+    {
+     "description": null,
+     "title": "Higher Feature Utilization"
+    },
+    {
+     "description": null,
+     "title": "Stronger Daily Engagement"
+    },
+    {
+     "description": null,
+     "title": "Scalable Design Blueprint"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "linkedin-sales-navigator-optimizing-the-social-selling-interface"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81d8-86a8-c85686dcb224",
+  "id": "CS-030",
+  "sanity": "caseStudy-adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+  "brand": "ad:tech & iMedia",
+  "title": "Global Event Branding: Sculpting the Visual Identity of MarTech Summits",
+  "logo": "",
+  "logoAlt": "ad:tech & iMedia logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/adtech/adtech-about.mp4",
+  "coverAlt": "ad:tech & iMedia case study cover",
+  "eng": "Client",
+  "disc": "Creative Direction",
+  "plat": "Brand System",
+  "results": "",
+  "body": "## ad:tech & iMedia: Sculpting the Visual Identity of Global MarTech Summits\nSubtitle: Orchestrating a 360-degree brand experience for the world’s leading MarTech events.\nCategory: Brand & Strategy, Experience Design\nTags: Event Tech, MarTech, Multi-Channel Branding\nPartner: Comexposium\nClient: ad:tech / iMedia\nIndustry: Events & Marketing Technology\nDisciplines: Strategy, Branding, Environmental Design, UX/UI Design\nTeam: Vedanshu Srivastava, Sunil Thapa, Nehar Takkar, Jaswant Singh\n### About (Context)\nad:tech and iMedia are the premier destinations for marketing and media technology leaders to converge, network, and shape the future of the industry. Over a three-year retainer, Wugweb served as the core creative partner, responsible for the end-to-end visual narrative of these summits. Our work spanned from defining the annual event themes to designing the physical and digital touchpoints that define the attendee experience, ensuring a seamless blend of brand authority and modern tech aesthetics.\n### Challenges\n- Annual Visual Reinvention\n\tRefreshing themes while maintaining recognition.\n- Cross-Medium Consistency\n\tAligning physical and digital brand touchpoints.\n- High-Volume Asset Delivery\n\tManaging time-critical global event materials.\n- Hybrid Experience Design\n\tBalancing digital UX with physical environments.\n### Solutions\n- Annual Theme Systems\n\tTranslated complex tech concepts into visual narratives.\n- Optimized Marketing Assets\n\tBuilt high-CTR email and invite system",
+  "addl": "Branding, Visual Design",
+  "ptype": "Event Branding",
+  "san": {
+   "_id": "caseStudy-adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits",
+   "clientLogoPath": null,
+   "coverPath": "/assets/work/adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits/adtech-about.mp4",
+   "disciplines": [
+    "Creative Direction",
+    "Branding",
+    "Visual Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Sustained Brand Authority"
+    },
+    {
+     "description": null,
+     "title": "Record Engagement Levels"
+    },
+    {
+     "description": null,
+     "title": "Operational Efficiency"
+    },
+    {
+     "description": null,
+     "title": "Enhanced Sponsor Satisfaction"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "adtech-and-imedia-sculpting-the-visual-identity-of-global-martech-summits"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-8122-859a-d567a58d4f58",
+  "id": "CS-029",
+  "sanity": "caseStudy-wave-group-crafting-a-multi-conglomerate-interactive-experience",
+  "brand": "Wave Group",
+  "title": "Crafting a Multi-Conglomerate Corporate Website",
+  "logo": "",
+  "logoAlt": "Wave Group logo",
+  "cover": "",
+  "coverAlt": "Wave Group case study cover",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Wave Group: Crafting a Multi-Conglomerate Interactive Experience\nSubtitle: Consolidating a multi-industry conglomerate into a unified digital identity.\nCategory: Brand & Strategy, Web & App Dev\nTags: Conglomerate, Corporate Identity, Real Estate\nPartner: Emporiom\nClient: Wave Group\nIndustry: Real Estate, Manufacturing\nDisciplines: Strategy, Branding, UX/UI Design\nTeam: Vedanshu Srivastava, Satish Kumar, Dinesh Juneja\n### About (Context)\nWave Group is a multi-billion dollar enterprise with a legacy of building iconic landmarks and diverse businesses. The objective was to design and develop a “liquid” digital experience that could house their vast portfolio—Real Estate, Retail, and Manufacturing—under one cohesive visual identity. We utilized a cutting-edge front-end stack to ensure the website felt like a premium interactive journey rather than a static information repository.\n### Challenges\n- Multi-Vertical Cohesion\n\tUnifying unrelated industries under one identity.\n- Content Overload Risk\n\tManaging large corporate portfolios cleanly.\n- Engagement Modernization\n\tReplacing static corporate layouts.\n- Performance with Motion\n\tBalancing interactivity and speed.\n\t### Solutions\n- Liquid Interaction Framework\n\tIntroduced motion-driven storytelling.\n- Modular Business Architecture\n\tAllowed vertical autonomy within a shared system.\n- High-Impact Visual Narratives\n\tShowcased scale through immersive imagery.\n- Optimized Navigation Logic\n\tEnabled rapid cross-sector exploration.\n- Per",
+  "addl": "Branding, UX/UI Design",
+  "ptype": "Corporate Website",
+  "san": {
+   "_id": "caseStudy-wave-group-crafting-a-multi-conglomerate-interactive-experience",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Strategy",
+    "Branding",
+    "UX/UI Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Modernized Brand Image"
+    },
+    {
+     "description": null,
+     "title": "Longer Engagement Sessions"
+    },
+    {
+     "description": null,
+     "title": "Stronger Lead Qualification"
+    },
+    {
+     "description": null,
+     "title": "Consistent Cross-Device UX"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "wave-group-crafting-a-multi-conglomerate-interactive-experience"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-817a-a897-e9031fa4585f",
+  "id": "CS-027",
+  "sanity": "caseStudy-bodyshop-building-a-premium-wellness-commerce-experience",
+  "brand": "Bodyshop",
+  "title": "Building a Premium Beauty and Wellness eCommerce Experience",
+  "logo": "",
+  "logoAlt": "",
+  "cover": "",
+  "coverAlt": "",
+  "eng": "Client",
+  "disc": "UX Design",
+  "plat": "Website",
+  "results": "",
+  "body": "",
+  "addl": "UI Design",
+  "ptype": "E-commerce Platform",
+  "san": {
+   "_id": "caseStudy-bodyshop-building-a-premium-wellness-commerce-experience",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "UX Design",
+    "UI Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Accessibility & UX"
+    },
+    {
+     "description": null,
+     "title": "Operational Efficiency Gains"
+    },
+    {
+     "description": null,
+     "title": "Better Beneficiary Outcomes"
+    },
+    {
+     "description": null,
+     "title": "Stronger Institutional Credibility"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "bodyshop-building-a-premium-wellness-commerce-experience"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81d5-8545-f5f30eeb5c73",
+  "id": "CS-026",
+  "sanity": "caseStudy-suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+  "brand": "Suzlon",
+  "title": "Reimagining Global Energy: A Minimalist Website Redesign",
+  "logo": "",
+  "logoAlt": "Suzlon logo",
+  "cover": "",
+  "coverAlt": "Suzlon case study cover",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Suzlon: Reimagining Global Energy Through Minimalist Technical Excellence\nSubtitle: Repositioning a wind giant as a future-forward renewable power leader.\nCategory: Brand & Strategy, Experience Design\nTags: Sustainability, Renewable Energy\nPartner: Dentsu\nClient: Suzlon\nIndustry: Renewable Energy\nDisciplines: Strategy, UX/UI Design, Content Strategy\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Nirbhay Pawa\n### About (Context)\nSuzlon is a global pioneer in renewable energy solutions, navigating a world where energy security and “greenwashing” skepticism are at an all-time high. The 2026 website revamp was designed to establish Suzlon as a “Sensitive & Responsive Expert”—a future-forward technologist that balances industrial scale with human empathy. We moved away from fragmented silos to create a unified portfolio covering Wind, Solar, and Hybrid (FDRE) solutions under a single Scandinavian-inspired design ethos.\n### Challenges\n- Brand Perception Shift\n\tExpanding beyond a wind-only identity.\n- Greenwashing Skepticism\n\tReplacing rhetoric with operational truth.\n- Multi-Stakeholder Complexity\n\tServing investors, policymakers, talent, and communities.\n- Performance at Global Scale\n\tMaintaining speed across massive content footprints.\n### Solutions\n- Nordic Minimalist Design System\n\tReduced noise to convey calm technical confidence.\n- Unified Energy Systems Map\n\tPresented Wind, Solar, and FDRE as one ecosystem.\n- Horizontal UX Narrative\n\tReframed O&M as long-term partnership va",
+  "addl": "UX Design, UI Design",
+  "ptype": "Enterprise Website",
+  "san": {
+   "_id": "caseStudy-suzlon-reimagining-global-energy-through-minimalist-technical-excellence",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Stakeholder Confidence"
+    },
+    {
+     "description": null,
+     "title": "Higher Engagement Metrics"
+    },
+    {
+     "description": null,
+     "title": "Clear Analyst Access"
+    },
+    {
+     "description": null,
+     "title": "Global Expansion Readiness"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "suzlon-reimagining-global-energy-through-minimalist-technical-excellence"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-819a-9a17-e4dceaf5c1d7",
+  "id": "CS-025",
+  "sanity": "caseStudy-eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+  "brand": "Eastman",
+  "title": "Modernizing an Enterprise Manufacturing Website",
+  "logo": "",
+  "logoAlt": "",
+  "cover": "",
+  "coverAlt": "",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "",
+  "addl": "UX Design, UI Design",
+  "ptype": "Corporate Website",
+  "san": {
+   "_id": "caseStudy-eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Client",
+    "Strategy"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Accessibility & UX"
+    },
+    {
+     "description": null,
+     "title": "Operational Efficiency Gains"
+    },
+    {
+     "description": null,
+     "title": "Better Beneficiary Outcomes"
+    },
+    {
+     "description": null,
+     "title": "Stronger Institutional Credibility"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "eastman-auto-and-power-modernizing-enterprise-manufacturing-experiences"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81f3-bd72-f62f040acb7a",
+  "id": "CS-024",
+  "sanity": "caseStudy-musiclinkd",
+  "brand": "MusicLinkd",
+  "title": "Building the Professional Music Industry Platform",
+  "logo": "",
+  "logoAlt": "MusicLinkd logo",
+  "cover": "",
+  "coverAlt": "MusicLinkd case study cover",
+  "eng": "Internal",
+  "disc": "Product Design",
+  "plat": "Web App",
+  "results": "",
+  "body": "",
+  "addl": "UX Design, Systems Architecture",
+  "ptype": "AI Product",
+  "san": {
+   "_id": "caseStudy-musiclinkd",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Product Design",
+    "UX Design",
+    "Systems Architecture"
+   ],
+   "impact": null,
+   "logoPath": null,
+   "results": null,
+   "slug": "musiclinkd-building-the-professional-infrastructure-for-the-music-industry"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81bd-848d-e59497d5e268",
+  "id": "CS-023",
+  "sanity": "caseStudy-pharmadropper-designing-cross-border-digital-healthcare-commerce",
+  "brand": "PharmaDropper",
+  "title": "Pharmacy eCommerce UX for Cross-Border Digital Healthcare",
+  "logo": "",
+  "logoAlt": "",
+  "cover": "",
+  "coverAlt": "",
+  "eng": "Client",
+  "disc": "Product Design",
+  "plat": "Website",
+  "results": "",
+  "body": "",
+  "addl": "UX Design, UI Design, Website Development",
+  "ptype": "Healthcare E-commerce",
+  "san": {
+   "_id": "caseStudy-pharmadropper-designing-cross-border-digital-healthcare-commerce",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Product Design",
+    "UX Design",
+    "UI Design",
+    "Website Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Accessibility & UX"
+    },
+    {
+     "description": null,
+     "title": "Operational Efficiency Gains"
+    },
+    {
+     "description": null,
+     "title": "Better Beneficiary Outcomes"
+    },
+    {
+     "description": null,
+     "title": "Stronger Institutional Credibility"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "pharmadropper-designing-cross-border-digital-healthcare-commerce"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-814c-8fd9-ef81cea0a9f3",
+  "id": "CS-022",
+  "sanity": "caseStudy-spark-logistics",
+  "brand": "Spark Logistics",
+  "title": "Building a Unified Logistics Intelligence Platform",
+  "logo": "",
+  "logoAlt": "",
+  "cover": "",
+  "coverAlt": "",
+  "eng": "Client",
+  "disc": "Product Design",
+  "plat": "Web Platform",
+  "results": "",
+  "body": "",
+  "addl": "UX Design, Systems Design",
+  "ptype": "Logistics Platform",
+  "san": {
+   "_id": "caseStudy-spark-logistics",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Product Design",
+    "UX Design",
+    "Systems Design"
+   ],
+   "impact": null,
+   "logoPath": null,
+   "results": null,
+   "slug": "spark-logistics"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-818c-8ea6-ed5c016f553b",
+  "id": "CS-021",
+  "sanity": "caseStudy-thebizgift",
+  "brand": "TheBizGift",
+  "title": "A B2B Corporate Gifting Platform Built on Intelligent Commerce",
+  "logo": "",
+  "logoAlt": "",
+  "cover": "",
+  "coverAlt": "",
+  "eng": "Client",
+  "disc": "Product Design",
+  "plat": "Website",
+  "results": "",
+  "body": "",
+  "addl": "Branding, UX Design, UI Design, Website Development",
+  "ptype": "B2B Commerce Platform",
+  "san": {
+   "_id": "caseStudy-thebizgift",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Product Design",
+    "Branding",
+    "UX Design",
+    "UI Design",
+    "Website Development"
+   ],
+   "impact": null,
+   "logoPath": null,
+   "results": null,
+   "slug": "thebizgift"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81be-8892-c34f94a91cd5",
+  "id": "CS-020",
+  "sanity": "caseStudy-wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+  "brand": "Wugweb Kits",
+  "title": "A Full-Stack Design System for Multi-Platform Products",
+  "logo": "",
+  "logoAlt": "Wugweb Kits logo",
+  "cover": "",
+  "coverAlt": "Wugweb Kits case study cover",
+  "eng": "Internal",
+  "disc": "Product Design",
+  "plat": "Design System",
+  "results": "",
+  "body": "## Wugweb Kits: The Full-Stack Infrastructure for Multi-Platform Design\nSubtitle: A standardized design-to-code ecosystem built for rapid, high-fidelity deployment.\nCategory: Experience Design, Web & App Dev\nTags: Design System, SaaS, UI Kit, Component Library\nPartner: None\nClient: Internal Product / Wugweb Ecosystem\nIndustry: Design Technology\nDisciplines: Product Design, Frontend Engineering, Systems Architecture\nTeam: Vedanshu Srivastava, Divyanshu Pundir\n### About (Context)\nWugweb Kits is our proprietary answer to modern design debt, built to function as a universal, full-stack design system. It bridges the gap between Figma primitives and GitHub codebases through a custom CLI, allowing for instant installation and deployment. Designed for cross-platform utility, it serves as the foundational DNA for every project we build, ensuring absolute visual and technical harmony.\n### Challenges\n- Human-AI Precision Gap\n\tAligning human design intent with AI execution accuracy.\n- Operational Overhead\n\tEliminating repetitive UI audits and manual checks.\n- Design-Code Drift\n\tPreventing mismatch between Figma and production code.\n- Multi-Tenant Complexity\n\tMaintaining consistency across industries and platforms.\n\t### Solutions\n- Semantic Design Architecture\n\tDefined primitives and tokens governing all UI behavior.\n- CLI-Driven Design Pipeline\n\tEnabled direct Figma-to-GitHub deployment via CLI.\n- Adaptive Breakpoint Logic\n\tEnforced predictable cross-device behavior.\n- Handoff-Ready Docu",
+  "addl": "Frontend Engineering, Systems Architecture",
+  "ptype": "Internal Product",
+  "san": {
+   "_id": "caseStudy-wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Product Design",
+    "Frontend Engineering",
+    "Systems Architecture"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Zero-Drift Production"
+    },
+    {
+     "description": null,
+     "title": "Automated QA"
+    },
+    {
+     "description": null,
+     "title": "Faster Deployment Cycles"
+    },
+    {
+     "description": null,
+     "title": "Future-Proof Scaling"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "wugweb-kits-the-full-stack-infrastructure-for-multi-platform-design"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81d1-a624-f46fe3bed720",
+  "id": "CS-019",
+  "sanity": "caseStudy-metcred",
+  "brand": "Metcred",
+  "title": "The Avant-Garde of Banking: Designing a Zero-Fee Neobank App",
+  "logo": "https://framerusercontent.com/images/Tk0ntYF0lO0UlsbqQCUIp7qfA.png",
+  "logoAlt": "Metcred logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/metcred/cover-image-t778.jpg",
+  "coverAlt": "METCRED – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Mobile App",
+  "results": "",
+  "body": "## The Avant-Garde of Banking: Designing the METCRED Zero-Fee Mobile Experience\nSubtitle: Empowering underbanked workers with a transparent, accessible financial ecosystem.\nCategory: Experience Design, Web & App Dev\nTags: Neobanking, Financial Inclusion, UAE, Fintech\nPartner:\nClient: Metcred\nIndustry: Fintech\nDisciplines: Strategy, Product Design, UI/UX Design\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Vaibhav Shukla, Praneet Verma\n### About (Context)\nMetcred is a pioneering Neobank focused on disrupting the credit card industry in the highly developed UAE market. The core mission is to be banking’s avant-garde by issuing Metcred, the World’s first zero-interest and zero-fee metal credit card, re-imagined entirely for the mobile generation. Built on a foundation of simplicity, transparency, and user control, the platform’s strategic objective is to create a full-stack financial ecosystem that generates revenue through B2C and B2B finance solutions, targeting aggressive profitability goals.\n---\n### Challenges\n- Credibility in Disruption\n\tBuilding trust for a zero-fee, zero-interest banking model.\n- Luxury-to-Digital Translation\n\tMatching premium metal card status with mobile UX.\n- Feature Density Management\n\tConsolidating advanced banking tools into a clean interface.\n- Regulatory Entry Barriers\n\tNavigating DIFC licensing and PSP compliance.\n\t### Solutions\n- Zero-Friction Onboarding\n\tDelivered fast, secure onboarding aligned with UAE user expectations.\n- Centralized Control ",
+  "addl": "Product Design, UI/UX Design, Strategy",
+  "ptype": "Neobank",
+  "san": {
+   "_id": "caseStudy-metcred",
+   "clientLogoPath": "https://framerusercontent.com/images/Tk0ntYF0lO0UlsbqQCUIp7qfA.png",
+   "coverPath": "/assets/work/metcred/cover-image-t778.jpg",
+   "disciplines": [
+    "Strategy",
+    "Product Design",
+    "UI/UX Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Accelerated Market Entry"
+    },
+    {
+     "description": null,
+     "title": "High Feature Adoption"
+    },
+    {
+     "description": null,
+     "title": "Strengthened Trust & Transparency"
+    },
+    {
+     "description": null,
+     "title": "Scalable Revenue Base"
+    }
+   ],
+   "logoPath": "/assets/work/metcred/client-logo-q4ee.png",
+   "results": null,
+   "slug": "metcred-the-avant-garde-of-banking-designing-the-zero-fee-mobile-experience"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81de-bfe8-daf3c63b40b1",
+  "id": "CS-018",
+  "sanity": "caseStudy-the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+  "brand": "Axis Bank",
+  "title": "The Architecture of Loyalty: Designing the Savings Platform",
+  "logo": "https://framerusercontent.com/images/bm6KMETiDifOy1RxoiyTnLh63o.png",
+  "logoAlt": "Axis Bank logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/cover-image-3zok.jpg",
+  "coverAlt": "Axis Bank Savings – cover image",
+  "eng": "Client",
+  "disc": "UX Design",
+  "plat": "Web Platform",
+  "results": "",
+  "body": "## The Architecture of Loyalty: Designing the Axis Bank Savings Account Platform\nSubtitle: Designing the digital layer for premium savings and loyalty segments.\nCategory: Experience Design, Brand & Strategy\nTags: Banking, Loyalty, Personalization\nPartner: Adneto\nClient: Axis Bank\nIndustry: BFSI (Banking, Financial Services and Insurance)\nDisciplines: UX Design, UI Design, Strategy\nTeam: Vedanshu Srivastava, Saloni Parekh, Divyanshu Pundir, Kushal Bhagat\n### About\nAxis Bank initiated a strategic project to create a unified digital hub for its Savings Account customers. The platform was designed to be hyper-personalized, catering to six distinct account segments (e.g., Burgundy, Prestige) and ten diverse user personas (e.g., Doctors, Rural Mass). The goal was to transform the transactional banking relationship into an active loyalty ecosystem that drove customer acquisition, maximized long-term engagement, and streamlined reward redemption.\n### Challenges\n- Hyper-Segmentation Complexity\n\tServing six account tiers and ten personas within a single platform.\n- Driving Active Engagement\n\tConverting passive banking usage into frequent interaction.\n- Awareness-to-Redemption Gaps\n\tEnsuring frictionless transitions across the full loyalty journey.\n- Strategic Revenue Alignment\n\tLinking loyalty UX directly to acquisition and cross-sell outcomes.\n\t### Solutions\n- Persona-Driven CX Mapping\n\tAuto-identified users to deliver instant relevance across journeys.\n- Strategic Gamification Layers",
+  "addl": "UI Design, Strategy, UX Design",
+  "ptype": "Banking Platform",
+  "san": {
+   "_id": "caseStudy-the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform",
+   "clientLogoPath": "https://framerusercontent.com/images/bm6KMETiDifOy1RxoiyTnLh63o.png",
+   "coverPath": "/assets/work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/cover-image-3zok.jpg",
+   "disciplines": [
+    "UX Design",
+    "UI Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Increased CLV & Cross-Selling"
+    },
+    {
+     "description": null,
+     "title": "High Loyalty Feature Usage"
+    },
+    {
+     "description": null,
+     "title": "Stronger Brand Leadership"
+    },
+    {
+     "description": null,
+     "title": "Scalable Loyalty Foundation"
+    }
+   ],
+   "logoPath": "/assets/work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/client-logo-d64b.png",
+   "results": null,
+   "slug": "the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81ce-9346-d309b801ed55",
+  "id": "CS-017",
+  "sanity": "caseStudy-demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+  "brand": "Aditya Birla Capital",
+  "title": "Demystifying Finance: Crafting the UX for a Credit Score Tool",
+  "logo": "https://framerusercontent.com/images/3tl9sTWNHkH3iBYVfLxUjL00eU.png",
+  "logoAlt": "Aditya Birla Capital logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/cover-image-kd09.jpg",
+  "coverAlt": "ABC Credit Score – cover image",
+  "eng": "Client",
+  "disc": "UX Design",
+  "plat": "Web App",
+  "results": "",
+  "body": "## Demystifying Finance: Crafting the UX for Aditya Birla Capital’s Credit Score Tool\nSubtitle: Empowering financial literacy through an intuitive and transparent Credit Score ecosystem.\nCategory: Martech & AI, Experience Design\nTags: Credit Score, Data Literacy, Fintech Utility\nPartner: Finomenal\nClient: Aditya Birla Capital\nIndustry: Fintech / BFSI\nDisciplines: UX Design, UI Design, Visual Design (Banners & Promotional Assets)\nTeam: Vedanshu Srivastava, Mikhail\n### About\nAditya Birla Capital, in partnership with Experian, undertook a project to develop a consumer-facing digital tool for instant credit score checking and comprehensive financial literacy. The platform was designed to transform the traditionally complex process of credit reporting into an accessible, confidence-inspiring consumer journey, positioning the brand as a trustworthy guide in personal finance.\n### Challenges\n- Trust and Transparency\n\tEstablishing immediate credibility for a sensitive financial tool handling personal credit data.\n- Translating Technical Complexity\n\tSimplifying dense credit-report logic into language understandable by everyday consumers.\n- Balancing Functionality & Education\n\tDelivering instant score access while embedding financial literacy without overload.\n- Seamless Data Integration\n\tTranslating raw Experian data into a clean, consumer-friendly experience.\n\t### Solutions\n- Intuitive Multi-Step Guided Flow\n\tDesigned a clear, step-by-step input journey with robust validation and erro",
+  "addl": "UI Design, Visual Design, UX Design",
+  "ptype": "Financial Tool",
+  "san": {
+   "_id": "caseStudy-demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool",
+   "clientLogoPath": "https://framerusercontent.com/images/3tl9sTWNHkH3iBYVfLxUjL00eU.png",
+   "coverPath": "/assets/work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/cover-image-kd09.jpg",
+   "disciplines": [
+    "UX Design",
+    "UI Design",
+    "Visual Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Increased Consumer Trust & Completion"
+    },
+    {
+     "description": null,
+     "title": "Improved Financial Literacy"
+    },
+    {
+     "description": null,
+     "title": "High Value Utility Positioning"
+    },
+    {
+     "description": null,
+     "title": "Efficient Data Presentation"
+    }
+   ],
+   "logoPath": "/assets/work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/client-logo-te1y.png",
+   "results": null,
+   "slug": "demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81c9-942b-f85c450a14a9",
+  "id": "CS-016",
+  "sanity": "caseStudy-bankco",
+  "brand": "Bankco",
+  "title": "Revolutionizing Financial Engagement with a Banking Super App",
+  "logo": "https://framerusercontent.com/images/CXnclYyr4AtReFDnFcG9zFWyx5o.png",
+  "logoAlt": "Bankco logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/bankco/cover-image-objk.jpg",
+  "coverAlt": "Bankco – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Mobile App",
+  "results": "",
+  "body": "## Bankco – Revolutionizing Financial Engagement with a Super App\nTitle: ## Bankco – Engineering the Ultimate Banking Super App Ecosystem\nSubtitle: Connecting banking, lifestyle, and commerce in one unified digital layer.\nCategory: Martech & AI, Experience Design\nTags: Super App, Micro-Services, FinTech Integration\nPartner: None\nClient: Adneto / Partner Banks\nIndustry: FinTech, Banking\nDisciplines: Strategy, Product Design, Systems Integration\nTeam: Vedanshu Srivastava, Saloni Parekh, Divyanshu Pundir, Kushal Bhagat\n### About (Context)\nBankco is Adneto’s flagship “Super App” product, engineered to revolutionize how financial institutions engage their customers. It provides a comprehensive, white-labeled platform that seamlessly integrates digital commerce, rewards, and essential banking functionalities. Bankco’s core mission is to transform a bank’s digital presence into a vibrant ecosystem, driving customer loyalty, increasing engagement, and unlocking new revenue streams through personalized experiences and a vast merchant network.\n## Challenges\nBanks faced fragmentation and rising expectations for personalization:\n1. Disjointed Digital Experiences: Services spread across multiple platforms reduced engagement.\n2. Customer Loyalty Pressure: Incentivizing spend required smarter reward systems.\n3. Digital Monetization Gaps: Revenue opportunities from commerce remained underutilized.\n4. Offer Management Complexity: Relevance and redemption were difficult at scale.\n\t---\n\t## Solu",
+  "addl": "Product Design, Systems Integration, UX Design, CX",
+  "ptype": "Banking Super App",
+  "san": {
+   "_id": "caseStudy-bankco",
+   "clientLogoPath": "https://framerusercontent.com/images/CXnclYyr4AtReFDnFcG9zFWyx5o.png",
+   "coverPath": "/assets/work/bankco/cover-image-objk.jpg",
+   "disciplines": [
+    "Strategy",
+    "Product Design",
+    "Systems Integration"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Revolutionary Customer Engagement"
+    },
+    {
+     "description": null,
+     "title": "Accelerated Revenue Growth"
+    },
+    {
+     "description": null,
+     "title": "Simplified Digital Ecosystem Management"
+    },
+    {
+     "description": null,
+     "title": "Strategic Future-Proofing"
+    }
+   ],
+   "logoPath": "/assets/work/crafting-digital-authority-the-adneto-website-showcase/client-logo-enb1.png",
+   "results": null,
+   "slug": "bankco-revolutionizing-financial-engagement-with-a-super-app"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81d4-bce4-db69fc3a0038",
+  "id": "CS-014",
+  "sanity": "caseStudy-hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+  "brand": "Hyatt Restaurants",
+  "title": "Elevating Culinary Discovery Through Hospitality UX Design",
+  "logo": "",
+  "logoAlt": "",
+  "cover": "",
+  "coverAlt": "",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "",
+  "addl": "UX Design, UI Design",
+  "ptype": "Hospitality Website",
+  "san": {
+   "_id": "caseStudy-hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences",
+   "clientLogoPath": null,
+   "coverPath": null,
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Accessibility & UX"
+    },
+    {
+     "description": null,
+     "title": "Operational Efficiency Gains"
+    },
+    {
+     "description": null,
+     "title": "Better Beneficiary Outcomes"
+    },
+    {
+     "description": null,
+     "title": "Stronger Institutional Credibility"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "hyatt-restaurants-elevating-culinary-discovery-through-digital-experiences"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-819c-93a4-d759ff256f21",
+  "id": "CS-013",
+  "sanity": "caseStudy-crafting-digital-elegance-the-tot-bridal-launch-story",
+  "brand": "ToT Bridal",
+  "title": "Crafting Digital Elegance: A Bridal Studio Website Launch",
+  "logo": "https://framerusercontent.com/images/AdhAAkPufYbz1taDwp1ft6efA.png",
+  "logoAlt": "TOT Bridal (Touch of Trend) logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/crafting-digital-elegance-the-tot-bridal-launch-story/cover-image-u17r.jpg",
+  "coverAlt": "TOT Bridal – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Crafting Digital Elegance: The TOT Bridal Launch Story\nSubtitle: Extending luxury bridal service into a seamless, high-touch online experience.\nCategory: Brand & Strategy, Web & App Dev\nTags: Luxury Retail, Portfolio, Lead Generation\nPartner: None\nClient: TOT Bridal (Touch of Trend)\nIndustry: Fashion, Bridal, E-commerce\nDisciplines: Strategy, Branding, UX Design, UI Design, Website Development\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Ojaswa Verma\nSpecial Thanks: Gadar Soe\n### About (Context)\nTOT Bridal, also known as Touch of Trend, is a premier Singapore-based bridal studio dedicated to transforming every bride’s vision into a breathtaking reality. They specialize in curating an unparalleled bridal journey, offering a comprehensive suite of services that includes exquisite wedding gowns, masterful makeup artistry, and timeless photography. With an unwavering commitment to personalized service and meticulous attention to detail, TOT Bridal ensures a seamless, memorable, and truly cherished experience for couples embarking on their special day.\n## Challenges\nLaunching TOT Bridal required strong differentiation in a competitive market:\n1. Undefined Brand Identity: The brand needed a clear visual and tonal presence.\n2. Limited Digital Footprint: An online platform was critical for discovery.\n3. High Emotional Context: The experience needed to feel personal and premium.\n4. Complex Service Offerings: Multiple services required cohesive presentation.\n\t---\n\t## Solutions\nWugwe",
+  "addl": "Branding, UX Design, UI Design, Website Development",
+  "ptype": "Brand Website",
+  "san": {
+   "_id": "caseStudy-crafting-digital-elegance-the-tot-bridal-launch-story",
+   "clientLogoPath": "https://framerusercontent.com/images/AdhAAkPufYbz1taDwp1ft6efA.png",
+   "coverPath": "/assets/work/crafting-digital-elegance-the-tot-bridal-launch-story/cover-image-u17r.jpg",
+   "disciplines": [
+    "Strategy",
+    "Branding",
+    "UX Design",
+    "UI Design",
+    "Website Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Clear Brand Positioning"
+    },
+    {
+     "description": null,
+     "title": "Improved User Engagement"
+    },
+    {
+     "description": null,
+     "title": "Stronger Service Discovery"
+    },
+    {
+     "description": null,
+     "title": "Accelerated Market Entry"
+    }
+   ],
+   "logoPath": "/assets/logos/tot.png",
+   "results": null,
+   "slug": "crafting-digital-elegance-the-tot-bridal-launch-story"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81f2-ab10-de35de2b811e",
+  "id": "CS-012",
+  "sanity": "caseStudy-accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+  "brand": "Kia",
+  "title": "Designing an Intuitive Loyalty Dashboard for Customer Analytics",
+  "logo": "https://framerusercontent.com/images/MqFqvoyOcEAiWYca6PoLX6hEkDE.png",
+  "logoAlt": "Kia logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard/cover-image-c1g8.jpg",
+  "coverAlt": "Kia Dashboard – cover image",
+  "eng": "Client",
+  "disc": "UX Design",
+  "plat": "Dashboard",
+  "results": "1 week | Loyalty dashboard delivered end to end",
+  "body": "## Accelerating Loyalty: Designing Kia’s Intuitive Customer Dashboard\nSubtitle: Empowering automotive loyalty through real-time data visualization.\nCategory: Experience Design, Web & App Dev\nTags: Loyalty Program, Dashboard, Customer Experience (CX)\nPartner: Adneto\nClient: Kia Motors\nIndustry: Automobile\nDisciplines: UX Design, UI Design, CX, Frontend Development\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Saloni Parekh\nSpecial Thanks: Kushal Bhagat\n### About (Context)\nFor Kia, a prominent force in the global automotive landscape, the drive for sustained customer engagement and loyalty is paramount. To further solidify their position at the forefront of customer-centric innovation, Kia sought to engineer an intuitive and powerful loyalty dashboard. The objective was clear: to empower Kia with comprehensive, real-time insights into customer behavior, reward program efficacy, and the dynamic flow of loyalty points.\n### Challenges\n## Challenges\nKia needed rapid clarity across complex loyalty data:\n1. Disparate Data Sources: Loyalty information was scattered across systems.\n2. Insight Extraction: Raw data lacked actionable visualization.\n3. Multi-Module Complexity: Dashboards required varied functional views.\n4. Aggressive Timeline: Delivery was required within one week.\n\t---\n\t## Solutions\nA focused, high-impact dashboard was delivered through agile execution:\n1. Rapid Stakeholder Research: Identified critical KPIs and data priorities.\n2. Clear UX Architecture: Structured insigh",
+  "addl": "UI Design, Dashboard Design, Data Visualization, UX Design, CX",
+  "ptype": "Loyalty Dashboard",
+  "san": {
+   "_id": "caseStudy-accelerating-loyalty-designing-kias-intuitive-customer-dashboard",
+   "clientLogoPath": "https://framerusercontent.com/images/MqFqvoyOcEAiWYca6PoLX6hEkDE.png",
+   "coverPath": "/assets/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard/cover-image-c1g8.jpg",
+   "disciplines": [
+    "UX Design",
+    "UI Design",
+    "Dashboard Design",
+    "Data Visualization"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Accelerated Decision-Making"
+    },
+    {
+     "description": null,
+     "title": "Improved Program Performance"
+    },
+    {
+     "description": null,
+     "title": "Deeper Customer Understanding"
+    },
+    {
+     "description": null,
+     "title": "Proof of Agile Delivery"
+    }
+   ],
+   "logoPath": "/assets/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard/client-logo-5nkj.png",
+   "results": "1 week | Loyalty dashboard delivered end to end",
+   "slug": "accelerating-loyalty-designing-kias-intuitive-customer-dashboard"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-817e-a8ba-d1cb06cfee27",
+  "id": "CS-011",
+  "sanity": "caseStudy-inkompass",
+  "brand": "Inkompass",
+  "title": "An Internship Website Cultivating Global Talent for a Smoke-Free Future",
+  "logo": "https://framerusercontent.com/images/N8Uf0cXNy96kTRRPjp4vAzp8.png",
+  "logoAlt": "Philip Morris International (PMI) logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/inkompass/cover-image-now0.jpg",
+  "coverAlt": "Inkompass – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Redesigning Inkompass – Cultivating Global Talent for a Smoke-Free Future\nSubtitle: Building a digital window into the future of a smoke-free world.\nCategory: Brand & Strategy, Experience Design\nTags: Talent Branding, Corporate Careers, Global Recruitment\nPartner: Publicis Sapient\nClient: Philip Morris International (PMI)\nIndustry: FMCG, Tobacco\nDisciplines: Strategy, UX Design, UI Design, Content Strategy\nTeam: Vedanshu Srivastava, Shobhit Saxena, Nirbhay Pawa, Prapti Taneja\n### About (Context)\nINKOMPASS is Philip Morris International’s (PMI) flagship global internship program, meticulously designed to be a transformative self-discovery journey for aspiring talent. It immerses interns in real-world business challenges within a culturally diverse workplace, aligning with PMI’s accelerated evolution towards a smoke-free future. Beyond traditional internships, INKOMPASS offers life-changing opportunities, including commercial graduate accelerator schemes and apprenticeships like the EVOLV UK program or Swiss internships, all crafted to foster portable skills, enhance CVs, and build invaluable global networks.\n## Challenges\nThe INKOMPASS website struggled to communicate its true value to global talent:\n1. Unclear Value Proposition: Program benefits were not articulated beyond basic mechanics.\n2. Disconnected Career Pathways: Links to long-term opportunities within PMI were unclear.\n3. Limited Global Visibility: International reach and diversity were underrepresented.\n4. Outda",
+  "addl": "UX Design, UI Design, Content Strategy",
+  "ptype": "Recruitment Platform",
+  "san": {
+   "_id": "caseStudy-inkompass",
+   "clientLogoPath": "https://framerusercontent.com/images/N8Uf0cXNy96kTRRPjp4vAzp8.png",
+   "coverPath": "/assets/work/inkompass/cover-image-now0.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design",
+    "Content Strategy"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Expanded Applicant Pool"
+    },
+    {
+     "description": null,
+     "title": "Improved Program Clarity"
+    },
+    {
+     "description": null,
+     "title": "Enhanced Global Reach"
+    },
+    {
+     "description": null,
+     "title": "Stronger Employer Brand"
+    }
+   ],
+   "logoPath": null,
+   "results": null,
+   "slug": "inkompass-cultivating-global-talent-for-a-smoke-free-future"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81de-9a12-f76e40d0ede1",
+  "id": "CS-005",
+  "sanity": "caseStudy-cartier-careers",
+  "brand": "Cartier",
+  "title": "Redesigning the Careers Website – Where Passion Meets Excellence",
+  "logo": "https://framerusercontent.com/images/uF72M4LPgxQofFaUodAnqSvTXA.png",
+  "logoAlt": "Cartier logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/cartier-careers/cover-image-qrw0.jpg",
+  "coverAlt": "Cartier Careers – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Redesigning Cartier’s Career Website – Where Passion Meets Excellence\nSubtitle: Blending iconic luxury aesthetics with a modern, mobile-first candidate journey.\nCategory: Brand & Strategy, Experience Design\nTags: Luxury, Talent Brand, Interactive Job Posts\nPartner: Publicis Sapient\nClient: Cartier\nIndustry: Luxury\nDisciplines: Strategy, UX Design, UI Design, Content Strategy\nTeam: Vedanshu Srivastava, Shruti Shree, Anurag Pandey, Shobhit Saxena, Yatin Gupta\nAbout (Context)\nCartier, a French luxury Maison within Richemont, is synonymous with open-mindedness and curiosity, seeing beauty in everything. Creativity, freedom, sharing, and excellence are central to its values, shaping a creative territory around a unique style. Cartier’s creations symbolize the fusion of exceptional savoir-faire and timelessness, spanning jewellery, fine jewellery, watchmaking, and perfumes. This case study outlines a strategic website redesign aimed at enhancing Cartier’s talent acquisition efforts, transforming its career site into a place “where passion meets excellence.”\n## Challenges\nCartier’s career site needed to better reflect its brand and values:\n1. Dated Digital Presence: The site lacked luxury and visual impact.\n2. Weak Cultural Storytelling: Work culture and growth paths were unclear.\n3. Static Job Listings: Roles lacked engagement and context.\n4. Poor Mobile Experience: Accessibility was limited on mobile devices.\n\t---\n\t## Solutions\nThe redesign elevated the career experience throug",
+  "addl": "UX Design, UI Design, Content Strategy",
+  "ptype": "Career Platform",
+  "san": {
+   "_id": "caseStudy-cartier-careers",
+   "clientLogoPath": "https://framerusercontent.com/images/uF72M4LPgxQofFaUodAnqSvTXA.png",
+   "coverPath": "/assets/work/cartier-careers/cover-image-qrw0.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design",
+    "Content Strategy"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Stronger Employer Brand"
+    },
+    {
+     "description": null,
+     "title": "Higher Talent Quality"
+    },
+    {
+     "description": null,
+     "title": "Improved Candidate Experience"
+    },
+    {
+     "description": null,
+     "title": "Broader Talent Reach"
+    }
+   ],
+   "logoPath": "/assets/work/cartier-careers/client-logo-jrot.png",
+   "results": null,
+   "slug": "cartier-redesigning-the-career-website-where-passion-meets-excellence"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-8111-a35f-f738072fed19",
+  "id": "CS-009",
+  "sanity": "caseStudy-airtel-xstream-play",
+  "brand": "Airtel Xstream Play",
+  "title": "Showcasing India's Unified Digital Entertainment on the Web",
+  "logo": "https://framerusercontent.com/images/oaUduR6rRdObVDZj7LozZ5tC5E.png",
+  "logoAlt": "Airtel logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/airtel-xstream-play/cover-image-3pm9.jpg",
+  "coverAlt": "Airtel Xstream Play – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Airtel Xstream Play – Showcasing India’s Unified Digital Entertainment on the Web\nSubtitle: Consolidating a fragmented streaming landscape into a seamless digital festival.\nCategory: Experience Design\nTags: OTT, Engagement, Content Strategy\nPartner: Dentsu Webchutney\nClient: Airtel\nIndustry: Telecommunications, Media & Entertainment\nDisciplines: Strategy, UX Design\nTeam: Vedanshu Srivastava, Yuvraj, Prerna, Divyanshu Pundir, Anurag Pandey\n### About (Context)\nAirtel Xstream Play consolidates India’s fragmented digital entertainment landscape, bringing a multitude of streaming partners under one seamless roof. Wugweb’s pivotal role was to design a compelling Airtel Website page for the “Xstream Entertainment Festival.” This page was crucial for effectively communicating the platform’s vast offerings, unique value propositions, and diverse access models to a broad audience, driving engagement and subscriptions within Airtel’s extensive digital ecosystem.\n## Challenges\nPromoting a large OTT ecosystem required clarity and persuasion:\n1. Complex Value Proposition: Aggregated content benefits were hard to explain.\n2. Conversion Pressure: Users needed a clear path to subscription.\n3. Unique Access Models: Bundled and location-based unlocks needed clarity.\n4. Mass-Market Appeal: Diversity of content had to feel unified and accessible.\n\t---\n\t## Solutions\nWugweb and Dentsu Webchutney designed a high-impact festival landing page:\n1. Clear Value Messaging: Highlighted benefits and part",
+  "addl": "UX Design, Strategy",
+  "ptype": "Campaign Landing Page",
+  "san": {
+   "_id": "caseStudy-airtel-xstream-play",
+   "clientLogoPath": "/assets/logos/airtel-xstream.png",
+   "coverPath": "/assets/work/airtel-xstream-play/cover-image-3pm9.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Offer Clarity"
+    },
+    {
+     "description": null,
+     "title": "Higher Conversion Potential"
+    },
+    {
+     "description": null,
+     "title": "Effective Value Communication"
+    },
+    {
+     "description": null,
+     "title": "Strong Campaign Asset"
+    }
+   ],
+   "logoPath": "/assets/logos/airtel-xstream.png",
+   "results": null,
+   "slug": "airtel-xstream-play-showcasing-indias-unified-digital-entertainment-on-the-web"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81b9-bc0f-db5ae6289700",
+  "id": "CS-008",
+  "sanity": "caseStudy-airtel-xsafe",
+  "brand": "Airtel Xsafe",
+  "title": "Securing Homes: A Smart Home Security Website Built on Trust",
+  "logo": "https://framerusercontent.com/images/pzWcgnC2bNzR6IJq5n6Tc5OPM9c.png",
+  "logoAlt": "Airtel logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/airtel-xsafe/cover-image-y42i.jpg",
+  "coverAlt": "Airtel Xsafe – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## Airtel Xsafe – Securing Homes with Intuitive Digital Experiences\nSubtitle: Positioning smart home security as a trusted, accessible pillar of the Airtel ecosystem.\nCategory: Experience Design\nTags: Smart Home, Surveillance, Trust Design\nPartner: Dentsu Webchutney\nClient: Airtel\nIndustry: Telecommunications, Smart Home\nDisciplines: Strategy, UX Design\nTeam: Vedanshu Srivastava, Yuvraj, Prerna, Rahul, Anurag Pandey\n### About (Context)\nAirtel Xsafe marks Airtel’s significant entry into the smart home security landscape, offering a comprehensive suite of Wi-Fi-enabled surveillance and monitoring solutions. Crafted to instill profound peace of mind, Airtel Xsafe seamlessly integrates cutting-edge camera technology with intelligent features and secure cloud-based services, all effortlessly managed through a user-centric mobile application. Our core objective was to position Xsafe as a highly trusted, universally accessible, and indispensable home security solution within Airtel’s expansive digital ecosystem.\n## Challenges\nLaunching a new smart security product required trust and clarity:\n1. Trust & Credibility: Users needed confidence in a new home security service.\n2. Complex Technology: Advanced features were difficult to communicate simply.\n3. Conversion Optimization: Journeys needed to move users from awareness to purchase.\n4. Product Differentiation: Each device’s value had to be clearly articulated.\n\t---\n\t## Solutions\nWugweb partnered with Dentsu Webchutney to design a tru",
+  "addl": "UX Design",
+  "ptype": "Marketing Website",
+  "san": {
+   "_id": "caseStudy-airtel-xsafe",
+   "clientLogoPath": "/assets/logos/airtel-xsafe.png",
+   "coverPath": "/assets/work/airtel-xsafe/cover-image-y42i.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Product Understanding"
+    },
+    {
+     "description": null,
+     "title": "Stronger Brand Trust"
+    },
+    {
+     "description": null,
+     "title": "Higher Conversions"
+    },
+    {
+     "description": null,
+     "title": "Market Authority"
+    }
+   ],
+   "logoPath": "/assets/logos/airtel-xsafe.png",
+   "results": null,
+   "slug": "airtel-xsafe-securing-homes-with-intuitive-digital-experiences"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-8189-ac4b-cb4b1de0255a",
+  "id": "CS-042",
+  "sanity": "caseStudy-visione",
+  "brand": "VisiONE",
+  "title": "A Workforce Development Platform Built on Competency-Based Assessments",
+  "logo": "https://framerusercontent.com/images/dolfrmu0UxBX7dAUuHiSEVPSMw.jpg",
+  "logoAlt": "VisiONE logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/visione/cover-image-so53.jpg",
+  "coverAlt": "VisiONE – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Web Platform",
+  "results": "",
+  "body": "## VisiONE – Empowering Workforce Development with Competency-Based Assessments\nSubtitle: Transforming talent development through I/O Psychology and data-driven career pathing.\nCategory: Web & App Dev, Experience Design\nTags: HRTech, SkillsCode, OutSystems, Competency Mapping\nPartner: iCube\nClient: VisiONE\nIndustry: EdTech, HRTech, Talent Development\nDisciplines: Strategy, UX Design\nTeam: Vedanshu Srivastava, Emily, Ka Wei, Asha, Gadar Soe\n### About (Context)\nVisiONE is an innovative Integrative Competency-based Platform dedicated to transforming the future of work and talent development. At VisiONE, the practice of HR consulting is seamlessly combined with the discipline of Industrial-Organizational (I/O) Psychology to provide organizations with advanced tools for workforce assessment and development. The platform offers an online ecosystem for comprehensive skills assessments and insightful career path planning. Individuals gain deep insights into their motivations, work styles, and competencies through a unique “SkillsCode” report, aiding career exploration and development. VisiONE also enables instructors and organizations to design, deliver, and manage tailored online courses and training programs.\n## Challenges\nOrganizations and individuals struggled with clarity and scalability in talent development:\n1. Fragmented Skill Assessment: Existing tools lacked a unified competency framework.\n2. Unclear Career Pathways: Individuals lacked visibility into growth and transition ",
+  "addl": "UX Design",
+  "ptype": "HRTech Platform",
+  "san": {
+   "_id": "caseStudy-visione",
+   "clientLogoPath": "https://framerusercontent.com/images/dolfrmu0UxBX7dAUuHiSEVPSMw.jpg",
+   "coverPath": "/assets/work/visione/cover-image-so53.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Clearer Career Decisions"
+    },
+    {
+     "description": null,
+     "title": "Targeted Talent Development"
+    },
+    {
+     "description": null,
+     "title": "Improved Career Mobility"
+    },
+    {
+     "description": null,
+     "title": "Faster Delivery & Credibility"
+    }
+   ],
+   "logoPath": "/assets/logos/visione.jpg",
+   "results": null,
+   "slug": "visione-empowering-workforce-development-with-competency-based-assessments"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81d1-bfe0-fd7c31c7a98c",
+  "id": "CS-041",
+  "sanity": "caseStudy-indusninja-your-ai-powered-financial-ninja",
+  "brand": "IndusNinja",
+  "title": "Your Financial Ninja: An AI Banking App",
+  "logo": "https://framerusercontent.com/images/iDCgr9Y3ecpsdfFJXPGOFEIQAyE.png",
+  "logoAlt": "IndusInd Bank logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/indusninja-your-ai-powered-financial-ninja/cover-image-h328.jpg",
+  "coverAlt": "IndusNinja – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Mobile App",
+  "results": "",
+  "body": "## IndusNinja – Your AI-Powered Financial Ninja\nSubtitle: A personalized, AI-driven banking co-pilot for smarter money management.\nCategory: Martech & AI, Experience Design\nTags: NeoBanking, AI (Sensei), Data Visualization\nPartner: Leo Burnett\nClient: IndusInd Bank\nIndustry: NeoBanking, FinTech, AI\nDisciplines: Strategy, UX Design\nTeam: Vedanshu Srivastava, Prasurya Medhi, Sudhir Das, Neha Kapoor, Anirban Poddar\n### About (Context)\nIndusNinja is a next-generation banking app that transforms the financial experience from a traditional interaction to a personalized, AI-powered journey. At its core, IndusNinja features “Sensei,” a powerful AI that learns user financial habits and goals. Sensei acts as a co-pilot, analyzing income, spending, and aspirations to provide intelligent insights, automated budgeting, proactive money management (predicting bills and shortfalls), and personalized goal setting and tracking. The app boasts a sleek, intuitive UI, “Ninja,” designed for maximum efficiency and control over finances.\n### Challenges\nTraditional banking apps struggled to deliver clarity, personalization, and trust:\n1. Lack of Personal Guidance: Generic insights failed to adapt to individual financial behavior.\n2. Reactive Money Management: Users could not anticipate expenses or plan proactively.\n3. Complex Interfaces: Cluttered screens made navigation and feature access difficult.\n4. Trust in AI Finance: Advanced AI required confidence in accuracy and security.\n### Solutions\nIndus",
+  "addl": "UX Design",
+  "ptype": "Banking Platform",
+  "san": {
+   "_id": "caseStudy-indusninja-your-ai-powered-financial-ninja",
+   "clientLogoPath": "https://framerusercontent.com/images/iDCgr9Y3ecpsdfFJXPGOFEIQAyE.png",
+   "coverPath": "/assets/work/indusninja-your-ai-powered-financial-ninja/cover-image-h328.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Greater Financial Control"
+    },
+    {
+     "description": null,
+     "title": "Higher Engagement Levels"
+    },
+    {
+     "description": null,
+     "title": "Digital Banking Adoption"
+    },
+    {
+     "description": null,
+     "title": "Competitive Differentiation"
+    }
+   ],
+   "logoPath": "/assets/logos/indusninja.png",
+   "results": null,
+   "slug": "indusninja-your-ai-powered-financial-ninja"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81ee-b7d4-d08f74aa473f",
+  "id": "CS-040",
+  "sanity": "caseStudy-sadhan",
+  "brand": "Sadhan",
+  "title": "A Driver Onboarding App for Streamlined Lead Management",
+  "logo": "https://framerusercontent.com/images/eGUjbAmW9hY2NNeTQTddCNTUsbw.png",
+  "logoAlt": "Sadhan Enterprise (I) Pvt. Ltd. logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/sadhan/cover-image-is0u.jpg",
+  "coverAlt": "Sadhan – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Mobile App",
+  "results": "",
+  "body": "## Sadhan – Streamlining Driver Onboarding & Lead Management\nSubtitle: Digitizing the gig economy through an integrated Agent App solution.\nCategory: Experience Design, Web & App Dev\nTags: Logistics, Gig Economy, Onboarding, Lead Management\nPartner:\nClient: Sadhan Enterprise (I) Pvt. Ltd.\nIndustry: Logistics, Gig Economy\nDisciplines: Strategy, Leadership, UX Design, UI Design, Consulting\nTeam: Vedanshu Srivastava, Anurag Misra, Manish Kumar\n### About (Context)\nSadhan Enterprise (I) Pvt. Ltd. is a prominent B2B passenger and goods logistics company that rapidly expanded its fleet across Indian metros and major cities. Starting with cabs, it diversified into last and first-mile delivery for e-commerce and courier clients. Sadhan deeply understands key challenges faced by Indian commercial drivers: low margins and under-utilization. To address these, Sadhan generates varied demand through B2B partnerships, optimizes driver schedules for higher earnings, and provides financial support, leveraging a proprietary technology platform for consistent demand allocation and increased income.\n### Challenges\nAs Sadhan scaled its logistics operations, several operational bottlenecks emerged:\n1. Manual Lead Management: Offline processes caused fragmented data and poor visibility.\n2. Inefficient Communication: Reliance on calls and emails limited tracking and scalability.\n3. Costly Verifications: External verification agencies increased time and onboarding costs.\n4. Scaling Constraints: Manua",
+  "addl": "Leadership, UX Design, UI Design, Consulting",
+  "ptype": "Operations Platform",
+  "san": {
+   "_id": "caseStudy-sadhan",
+   "clientLogoPath": "https://framerusercontent.com/images/eGUjbAmW9hY2NNeTQTddCNTUsbw.png",
+   "coverPath": "/assets/work/sadhan/cover-image-is0u.jpg",
+   "disciplines": [
+    "Strategy",
+    "Leadership",
+    "UX Design",
+    "UI Design",
+    "Consulting"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Lower Onboarding Costs"
+    },
+    {
+     "description": null,
+     "title": "Faster Driver Activation"
+    },
+    {
+     "description": null,
+     "title": "Operational Efficiency"
+    },
+    {
+     "description": null,
+     "title": "Empowered Drivers"
+    }
+   ],
+   "logoPath": "/assets/logos/tot.png",
+   "results": null,
+   "slug": "sadhan-streamlining-driver-onboarding-and-lead-management"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-814b-afd2-e0bf83fe9d5f",
+  "id": "CS-039",
+  "sanity": "caseStudy-valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+  "brand": "Valyu.ai",
+  "title": "Earned Wage Access: Empowering India's Workforce On Demand",
+  "logo": "https://framerusercontent.com/images/Z8QU7Jy5fWRdw3G8NxGAswjmQM.png",
+  "logoAlt": "VALYU logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages/cover-image-1j71.jpg",
+  "coverAlt": "VALYU – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Mobile App, Web",
+  "results": "1M+ | Indian workers given instant access to earned wages",
+  "body": "## VALYU.ai – Empowering India’s Workforce with On-Demand Earned Wages\nSubtitle: Redefining financial health with instant access to accrued earnings.\nCategory: Martech & AI, Experience Design\nTags: Fintech, Earned Wage Access, AI (Sensei)\nPartner: None\nClient: VALYU.ai\nIndustry: Fintech, HRTech\nDisciplines: Strategy, Leadership, UX Design, UI Design, Consulting\nTeam: Vedanshu Srivastava, Rashoo Kane, Kashish Chakrawarti, Lalit Chaturvedi, Gaurav Kumar\n### About (Context)\nVALYU.ai ventured into the salary solution space with a groundbreaking mission: to provide employees instant access to their accrued earnings directly into their salary accounts. Positioned as an advanced salary service, VALYU.ai aimed to significantly reduce financial stress on the Indian workforce by enabling better management of monthly expenses and absorption of unexpected financial shocks. By ditching the traditional “payday wait,” VALYU.ai sought to empower employees with flexible access to earned wages anytime, anywhere, facilitating better financial health and liquidity through secure partnerships with NBFCs and employers.\n### Challenges\nVALYU.ai faced critical challenges in launching a secure and scalable earned wage platform:\n1. Secure Digital Access: Financial onboarding required strong security without compromising usability.\n2. Employer & NBFC Trust: Partnerships demanded reliability, compliance, and seamless integration.\n3. Fee Transparency: Users needed absolute clarity on withdrawals, charges,",
+  "addl": "Leadership, UX Design, UI Design, Consulting",
+  "ptype": "FinTech Platform",
+  "san": {
+   "_id": "caseStudy-valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages",
+   "clientLogoPath": "https://framerusercontent.com/images/Z8QU7Jy5fWRdw3G8NxGAswjmQM.png",
+   "coverPath": "/assets/work/valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages/cover-image-1j71.jpg",
+   "disciplines": [
+    "Strategy",
+    "Leadership",
+    "UX Design",
+    "UI Design",
+    "Consulting"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Financial Well-being"
+    },
+    {
+     "description": null,
+     "title": "Expanded Financial Inclusion"
+    },
+    {
+     "description": null,
+     "title": "Personalized Money Management"
+    },
+    {
+     "description": null,
+     "title": "Scalable Market Leadership"
+    }
+   ],
+   "logoPath": "/assets/logos/valyu-ai.png",
+   "results": "1M+ | Indian workers given instant access to earned wages",
+   "slug": "valyu-ai-empowering-indias-workforce-with-on-demand-earned-wages"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-81ab-acf2-ec55dd2c6861",
+  "id": "CS-038",
+  "sanity": "caseStudy-plufo",
+  "brand": "Plufo",
+  "title": "Crafting an Immersive EdTech Learning Platform for Young Learners",
+  "logo": "https://framerusercontent.com/images/EeUkWwEg5kBBTdgHZRe3ph6Zb78.png",
+  "logoAlt": "Plufo logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/plufo/cover-image-8z0d.jpg",
+  "coverAlt": "Plufo – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Web, Mobile",
+  "results": "",
+  "body": "## Plufo – Crafting an Immersive EdTech Ecosystem for Young Learners\nSubtitle: Transforming passive screen time into an engaging multi-subject learning journey.\nCategory: Brand & Strategy, Web & App Dev, Experience Design\nTags: EdTech, Gamification, Mobile App\nPartner: None\nClient: Plufo\nIndustry: EdTech\nDisciplines: Strategy, UX Design, UI Design, Branding, Web Development\nTeam: Vedanshu Srivastava, Devashish Sethia, Kumar Gautam, Rajatesh Nath, Arvind Kumar\n### About (Context)\nPlufo set out to revolutionize children’s online education by establishing a dynamic and interactive multi-subject learning platform. Envisioned as a comprehensive EdTech ecosystem for children aged 6-14, Plufo aimed to transform passive screen time into an engaging and effective learning journey, akin to personalized tutoring but scalable across diverse subjects like Maths, English, Science, and Coding. The goal was to foster deep conceptual understanding, cultivate a genuine love for learning, and provide a holistic digital environment for students, parents, and educators.\n### Challenges\nPlufo faced key challenges in building a scalable and engaging digital learning platform:\n1. Sustaining Student Engagement: Academic content needed to remain interactive and motivating over time.\n2. Simplifying Multi-Subject Learning: Complex concepts across subjects required age-appropriate structuring.\n3. Personalized Learning at Scale: Individual learning paths had to adapt without manual intervention.\n4. Multi-P",
+  "addl": "UX Design, UI Design, Branding, Web Development",
+  "ptype": "EdTech Platform",
+  "san": {
+   "_id": "caseStudy-plufo",
+   "clientLogoPath": "https://framerusercontent.com/images/EeUkWwEg5kBBTdgHZRe3ph6Zb78.png",
+   "coverPath": "/assets/work/plufo/cover-image-8z0d.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design",
+    "Branding",
+    "Web Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Higher Student Engagement"
+    },
+    {
+     "description": null,
+     "title": "Improved Learning Outcomes"
+    },
+    {
+     "description": null,
+     "title": "Empowered Educators & Parents"
+    },
+    {
+     "description": null,
+     "title": "Scalable Market Positioning"
+    }
+   ],
+   "logoPath": "/assets/work/plufo/client-logo-6djh.png",
+   "results": null,
+   "slug": "plufo-crafting-an-immersive-edtech-ecosystem-for-young-learners"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-816c-a3fa-cd2870f8c680",
+  "id": "CS-002",
+  "sanity": "caseStudy-rideev",
+  "brand": "RideEV",
+  "title": "An Omnichannel EV Platform for India's Phygital EV Revolution",
+  "logo": "https://framerusercontent.com/images/k7FefL2Y7eOlWMYKdokgyb92eUo.png",
+  "logoAlt": "RideEV logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/rideev/cover-image-uopf.jpg",
+  "coverAlt": "RideEV – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Website",
+  "results": "",
+  "body": "## RideEV – Powering the Phygital EV Revolution in India\nSubtitle: Simplifying the electric scooter journey through an omnichannel purchase platform.\nCategory: Brand & Strategy, Experience Design\nTags: EV, Omnichannel, Fintech Integration\nPartner: None\nClient: RideEV\nIndustry: Electric Vehicles, E-commerce\nDisciplines: Strategy, UX Design, UI Design, Branding\nTeam: Vedanshu Srivastava, Ritiak Tondon, Kushal Bhagat\n### About (Context)\nRideEV.in is India’s pioneering omnichannel platform for electric vehicles, specifically simplifying the electric scooter journey across metros and Tier II-V cities. It empowers users to digitally research, compare, arrange home test drives, purchase, and finance EVs. Complementing its digital reach, RideEV.in provides post-purchase care via physical service centers and offers tailored financing options through a partnership with HDFC Bank, making eco-friendly transportation accessible nationwide.\n### Challenges\nAs a first-of-its-kind phygital EV platform, RideEV faced several adoption and trust challenges:\n1. Establishing Trust: Digital EV purchasing required credibility in a traditionally offline market.\n2. Complex Purchase Journey: Research, comparison, financing, and buying needed simplification.\n3. Digital–Physical Integration: Online flows had to connect seamlessly with test drives and service centers.\n4. Brand Visibility & Recall: A new category demanded strong identity and market differentiation.\n### Solutions\nWugweb partnered with RideEV",
+  "addl": "UX Design, UI Design, Branding",
+  "ptype": "E-commerce Platform",
+  "san": {
+   "_id": "caseStudy-rideev",
+   "clientLogoPath": "https://framerusercontent.com/images/k7FefL2Y7eOlWMYKdokgyb92eUo.png",
+   "coverPath": "/assets/work/rideev/cover-image-uopf.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design",
+    "Branding"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Expanded Digital Reach"
+    },
+    {
+     "description": null,
+     "title": "Improved Buying Experience"
+    },
+    {
+     "description": null,
+     "title": "Higher Conversion Rates"
+    },
+    {
+     "description": null,
+     "title": "Stronger Brand Credibility"
+    }
+   ],
+   "logoPath": "/assets/work/rideev/client-logo-1gbn.png",
+   "results": null,
+   "slug": "rideev-powering-the-phygital-ev-revolution-in-india"
+  }
+ },
+ {
+  "page": "3acbb710-b9ab-815c-af01-c85764f7c384",
+  "id": "CS-001",
+  "sanity": "caseStudy-ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+  "brand": "NTUC U Care Fund",
+  "title": "Digital Transformation for Enhanced Member Support",
+  "logo": "https://framerusercontent.com/images/DqEjFdPe94lOPHApQEwR1k6obo.png",
+  "logoAlt": "NTUC U Care logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/cover-image-kd0f.jpg",
+  "coverAlt": "NTUC U Care – cover image",
+  "eng": "Client",
+  "disc": "Strategy",
+  "plat": "Web Platform, Admin Portal",
+  "results": "",
+  "body": "## NTUC U Care Fund – Digital Transformation for Enhanced Member Support\nSubtitle: Empowering low-income families through a holistic digital ecosystem.\nCategory: Web & App Dev, Experience Design\nTags: Social Impact, Admin Backend, Data Centralization\nPartner: Icube\nClient: NTUC U Care\nIndustry: Non-Profit, Social Services\nDisciplines: Strategy, UX Design, UI Design, Frontend Development, Backend Development, Systems Integration\nTeam: Vedanshu Srivastava, Alwyn Lai, Tang Ka Wei, Gadar Soe\n### About (Context)\nNTUC U Care is a pivotal initiative by the National Trades Union Congress in Singapore, dedicated to supporting low-income union members and their families. Its core mission involves providing financial and educational assistance through programs like the NTUC Care Fund and e-Vouchers. Recognizing the need for a user-friendly and efficient online platform, this project aimed to streamline aid distribution, program management, and enhance overall member empowerment.\n### Challenges\nNTUC U Care faced critical operational and digital limitations:\n1. Outdated Digital Presence: Legacy interfaces lacked clarity, accessibility, and mobile responsiveness.\n2. Inefficient Program Management: Manual workflows slowed application processing and aid disbursement.\n3. Lack of Centralized Data: Fragmented data limited reporting, visibility, and strategic decision-making.\n4. Poor Applicant Experience: Complex navigation increased friction and application drop-offs.\n### Solutions\nWugweb partn",
+  "addl": "UX Design, UI Design, Frontend Development, Backend Development, Systems Integration",
+  "ptype": "Government / Social Impact Platform",
+  "san": {
+   "_id": "caseStudy-ntuc-u-care-fund-digital-transformation-for-enhanced-member-support",
+   "clientLogoPath": "https://framerusercontent.com/images/DqEjFdPe94lOPHApQEwR1k6obo.png",
+   "coverPath": "/assets/work/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/cover-image-kd0f.jpg",
+   "disciplines": [
+    "Strategy",
+    "UX Design",
+    "UI Design",
+    "Frontend Development",
+    "Backend Development",
+    "Systems Integration"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Improved Accessibility & UX"
+    },
+    {
+     "description": null,
+     "title": "Operational Efficiency Gains"
+    },
+    {
+     "description": null,
+     "title": "Better Beneficiary Outcomes"
+    },
+    {
+     "description": null,
+     "title": "Stronger Institutional Credibility"
+    }
+   ],
+   "logoPath": "/assets/work/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/client-logo-grfk.png",
+   "results": null,
+   "slug": "ntuc-u-care-fund-digital-transformation-for-enhanced-member-support"
+  }
+ },
+ {
+  "page": "3a3bb710-b9ab-80ab-bbbc-ca243c34c206",
+  "id": "CS-043",
+  "sanity": "caseStudy-gratify-the-intelligent-rewards-and-feedback-platform",
+  "brand": "Gratify",
+  "title": "The AI Rewards Platform for Feedback and Engagement",
+  "logo": "https://framerusercontent.com/images/jvUk9PSk5uTEgGnJx7hQCdqqd4k.png",
+  "logoAlt": "Gratify logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/gratify-the-intelligent-rewards-and-feedback-platform/cover-image-uw3w.jpg",
+  "coverAlt": "Gratify – cover image",
+  "eng": "Product Strategy",
+  "disc": "UX Design",
+  "plat": "",
+  "results": "",
+  "body": "## Gratify – The Intelligent Rewards & Feedback Platform\nSubtitle: Turning every transaction into a moment of gratitude through digital gifting.\nCategory: Experience Design, Web & App Dev\nTags: Social Commerce, Rewards, Fintech\nPartner: Adneto\nClient: Gratify\nIndustry: E-commerce, Fintech\nDisciplines: UX Design, UI Design, Frontend Development\nTeam: Vedanshu Srivastava, Saloni Parekh, Kushal Bhagat\n### About (Context)\nGratify is Adneto’s dynamic Rewards & Feedback platform, specifically engineered to empower brands and merchants across diverse industries. Unlike a general loyalty program, Gratify provides a sophisticated, AI-driven engine designed to significantly boost revenue, enhance customer loyalty, and deepen engagement. By seamlessly integrating automated promotions, personalized offers, and robust digital feedback mechanisms, Gratify enables businesses to cultivate stronger relationships with their customers throughout their entire lifecycle, whether engaging online or in physical stores.\n## Challenges\nBrands and merchants struggled to sustain engagement and loyalty at scale:\n1. Customer Engagement Friction: Inconsistent touchpoints reduced participation across channels.\n2. Ineffective Loyalty Programs: Generic rewards failed to influence long-term behavior.\n3. Unstructured Feedback Loops: Customer insights were difficult to capture and act upon.\n4. ROI Measurement Complexity: Promotions lacked clear linkage to business outcomes.\n\t---\n\t## Solutions\nGratify was built a",
+  "addl": "UI Design, CX, Development, Product Strategy, UX Design",
+  "ptype": "Rewards & Feedback Platform",
+  "san": {
+   "_id": "caseStudy-gratify-the-intelligent-rewards-and-feedback-platform",
+   "clientLogoPath": "https://framerusercontent.com/images/jvUk9PSk5uTEgGnJx7hQCdqqd4k.png",
+   "coverPath": "/assets/work/gratify-the-intelligent-rewards-and-feedback-platform/cover-image-uw3w.jpg",
+   "disciplines": [
+    "UX Design",
+    "UI Design",
+    "Frontend Development"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Significant Revenue Growth"
+    },
+    {
+     "description": null,
+     "title": "Accelerated Customer Acquisition"
+    },
+    {
+     "description": null,
+     "title": "Enhanced Customer Satisfaction & Retention"
+    },
+    {
+     "description": null,
+     "title": "Data-Driven Feedback Loop"
+    }
+   ],
+   "logoPath": "/assets/work/crafting-digital-authority-the-adneto-website-showcase/client-logo-enb1.png",
+   "results": [
+    {
+     "label": "Rise in AOV (Apparel)",
+     "metric": "40%"
+    },
+    {
+     "label": "Increase in Customer LTV (E-Commerce)",
+     "metric": "2.2X"
+    },
+    {
+     "label": "Boost in New User Acquisition (FinTech)",
+     "metric": "130%"
+    },
+    {
+     "label": "Better CSAT Score (Retail)",
+     "metric": "48%"
+    }
+   ],
+   "slug": "gratify-the-intelligent-rewards-and-feedback-platform"
+  }
+ },
+ {
+  "page": "3a3bb710-b9ab-8017-a7d7-fb16fa3f5590",
+  "id": "CS-044",
+  "sanity": "caseStudy-crafting-digital-authority-the-adneto-website-showcase",
+  "brand": "Adneto",
+  "title": "Crafting Digital Authority for an AI Loyalty Platform",
+  "logo": "https://framerusercontent.com/images/v3VTpAd8vcQs92eKuQrBMdLqS4.png",
+  "logoAlt": "Adneto logo",
+  "cover": "https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/work/crafting-digital-authority-the-adneto-website-showcase/cover-image-jx5x.jpg",
+  "coverAlt": "Adneto Showcase – cover image",
+  "eng": "Product Showcase",
+  "disc": "UX Design",
+  "plat": "Website",
+  "results": "",
+  "body": "## Crafting Digital Authority: The Adneto Website Showcase\nSubtitle: Highlighting AI-driven platforms that bridge banking and lifestyle.\nCategory: Martech & AI, Web & App Dev\nTags: FinTech, B2B, AI Showcase\nPartner: None\nClient: Adneto\nIndustry: FinTech, Loyalty Solutions\nDisciplines: Strategy, UX Design, UI Design, Web Development\nTeam: Vedanshu Srivastava, Divyanshu Pundir, Kushal Bhagat\n### About (Context)\nAdneto stands at the forefront of digital innovation as a white-labeled, AI-powered platform specializing in loyalty, rewards, and digital commerce. They empower diverse clients, including financial institutions, banks, payment networks, and direct brands & merchants, by seamlessly integrating advanced commerce and personalized rewards directly onto their digital platforms. With a robust global footprint across 14+ countries and trusted partnerships with over 50 enterprises and 1,500+ brands like Visa, HDFC, and Google, Adneto’s core strength lies in leveraging AI for personalized offers, predictive analytics, and contextual digital feedback.\n## Challenges\nAdneto needed a digital presence that matched its scale and ambition:\n1. Outdated Brand Expression: The website underrepresented technical capability.\n2. Low Digital Visibility: Enterprise discovery and lead generation were limited.\n3. Complex Product Messaging: AI-driven offerings were difficult to explain.\n4. Global Growth Ambitions: The platform needed to attract clients and talent worldwide.\n\t---\n\t## Solutions\nA ra",
+  "addl": "UI Design, Content Strategy, UX Design",
+  "ptype": "Corporate Website",
+  "san": {
+   "_id": "caseStudy-crafting-digital-authority-the-adneto-website-showcase",
+   "clientLogoPath": "https://framerusercontent.com/images/v3VTpAd8vcQs92eKuQrBMdLqS4.png",
+   "coverPath": "/assets/work/crafting-digital-authority-the-adneto-website-showcase/cover-image-jx5x.jpg",
+   "disciplines": [
+    "Product Design",
+    "UX Design",
+    "Systems Design"
+   ],
+   "impact": [
+    {
+     "description": null,
+     "title": "Stronger Brand Perception"
+    },
+    {
+     "description": null,
+     "title": "Improved Product Understanding"
+    },
+    {
+     "description": null,
+     "title": "Increased Lead Potential"
+    },
+    {
+     "description": null,
+     "title": "Talent & Investor Appeal"
+    }
+   ],
+   "logoPath": "/assets/work/crafting-digital-authority-the-adneto-website-showcase/client-logo-enb1.png",
+   "results": null,
+   "slug": "crafting-digital-authority-the-adneto-website-showcase"
+  }
+ }
+]
