@@ -207,7 +207,7 @@ if (currentList) {
       if (!src) return null;
       const isVideo = src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.mov');
       return (
-        <figure class="pt-media" data-reveal>
+        <figure class:list={['pt-media', { 'pt-media--small': !isVideo && b.width && b.width < 400 }]} data-reveal>
           <div class="pt-media-inner">
             {isVideo ? (
               <video aria-label={b.alt || b.caption || 'Video'} src={src} poster={posterFor(src)} muted loop playsinline controls preload="metadata" class="pt-video" />
@@ -555,6 +555,11 @@ if (currentList) {
     border: var(--stroke-thin) solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
     background: var(--neutral-8, #1A1A1A);
   }
+
+  /* Images narrower than 400px (dividers, icons, small marks) keep their intrinsic size. Stretching
+     them to the column turned a 60×12 Medium divider into a full-width blurry strip. */
+  .pt-media--small, .pt-media--small .pt-media-inner { width: fit-content; max-width: 100%; margin-inline: auto; border: 0; background: none; }
+  .pt-media--small .pt-image { width: auto; max-width: 100%; }
 
   .pt-video-wrapper {
     position: relative;
