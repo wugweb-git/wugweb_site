@@ -29,7 +29,9 @@ console.log(apply ? { deleted:del, alreadyGone:gone, skipped:skip, failed:fail }
 const ids = ["asset-more-service-service-message-mp4", "asset-site-home-home-mp4", "asset-unsorted-assets-used-previously-bb-51934a9c-7df1-4f3c-9495-1bf1b09fa5fb-1-mp4", "asset-unsorted-assets-used-previously-import-61062f609bbca5-75871787-fppreview-mp4", "asset-unsorted-assets-used-previously-import-61b5850a7ec0c7-76911762-fppreview-mp4", "asset-unsorted-assets-used-previously-scrolling-654fd46a-mp4", "asset-unsorted-mapped-assets-data-2026-16392053-uhd-2560-1440-24fps-mp4", "asset-unsorted-mapped-assets-data-2026-3q0z9n9vbgdaadwc-mp4", "asset-unsorted-mapped-assets-data-2026-cpkrrkuw0jpac4klxdzwxi0su-mp4", "asset-unsorted-mapped-assets-data-2026-crzwamfbz4vrdepw-mp4", "asset-unsorted-mapped-assets-data-2026-dkxzafhymzhfnt9-mp4", "asset-unsorted-mapped-assets-data-2026-fff-mp4", "asset-unsorted-mapped-assets-data-2026-ggt3onry2bwahsvu-mp4", "asset-unsorted-mapped-assets-data-2026-mypoues2kopvxzs6-mp4", "asset-unsorted-mapped-assets-data-2026-ojikhf70qqrgq4lo-mp4", "asset-unsorted-mapped-assets-data-2026-vity-9ohbd-a1m55-mp4", "asset-unsorted-mapped-assets-data-2026-vu3hgw9v5vlipyoy-mp4", "asset-unsorted-mapped-assets-data-2026-ygdnoe8g15ofa26p-mp4", "asset-unsorted-mapped-assets-data-2026-ykzlk1opkokkrkxm-mp4", "asset-unsorted-mapped-assets-data-2026-zlaifj99sdgz1btc-mp4"];
 if (apply && !skip && !fail) {
   const c = createClient({ projectId:'splvhmk1', dataset:'production', apiVersion:'2026-01-01', token: env.SANITY_TOKEN || env.SANITY_API_TOKEN, useCdn:false });
-  const tx = c.transaction(); ids.forEach(id => { tx.delete(id); tx.delete('drafts.' + id); }); await tx.commit();
-  console.log('deleted', ids.length, 'Sanity asset records');
+  const existing = await c.fetch('count(*[_id in $ids])', { ids: [...ids, ...ids.map(i => 'drafts.' + i)] });
+  if (!existing) console.log('Sanity asset records: already gone (0 to delete)');
+  else { const tx = c.transaction(); ids.forEach(id => { tx.delete(id); tx.delete('drafts.' + id); }); await tx.commit();
+    console.log('deleted', existing, 'Sanity asset records'); }
 } else if (apply) console.log('Sanity asset records NOT deleted (rows skipped/failed); re-check first.');
 else console.log('would delete', ids.length, 'Sanity asset records');
