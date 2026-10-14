@@ -4,6 +4,16 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-10-13 → 14 — Page SEO, share images, Notion (pages + services session).**
+Done:
+- **Page meta:** 14 site pages (incl. legal) use the titles/descriptions from the old live site (`scripts/restore-framer-page-meta.mjs`); every page template reads seoTitle/seoDescription/ogImagePath from Sanity (old text only as fallback). A title that already names Wugweb is used as stored (no doubled " | Wugweb").
+- **Services:** the six pillar titles/descriptions are keyword-led and use only real sub-services (`scripts/service-pillar-meta.json`, `apply-service-pillar-meta.mjs`). The services overview description names the six pillars. Old Framer service URLs (`/services/experience-design` etc.) now 404.
+- **Share images:** every page and pillar has a 1200×630 image in R2 (`site/<page>/og.jpg`, `site/services/<pillar>/og.jpg`); Strategy's is cropped from `unsorted/AdobeStock_369559718.jpeg`. The service template now passes `ogImagePath` (schema field added, Studio deployed).
+- **URLs:** no legacy slugs or short-URL redirects for case studies or blog posts; unknown slugs 404.
+- **Notion:** Site Pages v2 synced from Sanity (SEO, slug, keywords, OG); notes rewritten. Wugweb HQ now has **Wugweb Website** (hub) and **Wugweb SEO** (website-wide → page by page → section/component). Neon notes moved to a "Neon & owner model (deferred)" sub-page. SEO-as-a-service docs stay under Services (future "Marketing" label).
+- **Clean-up:** 18 finished script reports deleted from `docs/`; the Framer media scraper (`sync-extracted-media.mjs`) and its cover list removed.
+Open: 404 page — pick `/404` or the alternative `/404-2`. `docs/r2-asset-map.json` predates the R2 reorganisation (three asset scripts still read it). Site Pages v2 is not shared with the `neon_sync` integration (Neon deferred), so it is updated through the Notion connector.
+
 **2026-10-14 — Open items from the blog/media/nav session (audited against live R2, Sanity and the site).**
 Resolved and verified: all 103 posts have a cover; 0 Framer URLs in Sanity and none in live `og:image`; 0 image assets missing alt; old Airtel logo keys and the 10 VSB banners are gone from R2; nav = 100px / 60px bar / 40px logo on every breakpoint (`layout-shell.md`).
 Still open:
