@@ -11,6 +11,13 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - `owner-copy-band-logos.mjs` deleted (uploads are banned).
 - Open: the 14 colour originals sit on a padded 1500×876 canvas, so they render smaller in their tiles than the grey ones.
 
+**2026-10-19: Industries page rebuilt as a static showcase (branch `feat/sector-showcase`, PR #2, not deployed).**
+- `/footer/industries`: hero (owner H1 and lead, Lucide diagram of the 8 showcase sectors), 17 sector rows (`#<sector-slug>`, muted number, name, sector line, every industry as a plain label), cross-industry, "Don't see your industry?", final CTA. All sectors, lines, icons and industries come from Sanity; the page hardcodes none.
+- Removed: the 9 hardcoded groups, 34 buttons, alias map, `industryPreviews`, drawer, search, filters, case-study query and capability matrix. Cross-industry em-dash is now a comma.
+- SectorShowcase cards link to `/footer/industries#<sector-slug>`.
+- Components: `src/components/industries/IndustriesHero.astro`, `SectorRow.astro` (+ stories). Lucide loader moved to `src/lib/lucide.ts`. Spec: `kits_design_system/docs/blocks/industries-directory.md`.
+- "View our services" on "Don't see your industry?" now links to `/services` (owner decision 2026-10-19).
+
 **2026-10-19 — Industry and sectors check (read-only, nothing changed).**
 - Sanity has **111** industries, not 66: 45 were created today (`industry-IND-27`…) by another session. **28 names exist twice and share the same slug** (Mental Health, Logistics, Banking, SaaS, …). Content mostly moved to the new copies (26 of 28 pairs), and 5 old copies are still referenced too. Needs the owner to pick one set and merge.
 - **Icons:** none anywhere. 0 of 111 industries have `icon`, `iconPath` or `linkedAsset`; no industry icon files in R2; the page and homepage show text only.

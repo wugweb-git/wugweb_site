@@ -8,7 +8,7 @@ const title = page?.seoTitle || page?.title || 'Subscription';
 const description = page?.seoDescription || 'Your digital team, on subscription. Strategy, brand, experience, engineering, growth, and operations support.';
 ---
 
-<BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath} 
+<BaseLayout hideGlobalSectors={true} noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath} 
   title={title} 
   description={description}
 >

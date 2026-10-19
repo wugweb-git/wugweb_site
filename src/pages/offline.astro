@@ -6,7 +6,7 @@ import { singletonPageQuery } from '../lib/queries';
 const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'offline' }).catch(() => null);
 ---
 
-<BaseLayout title="You're offline — Wugweb" seoTitle={page?.seoTitle} description={page?.seoDescription || "No connection right now. Reconnect and try again."} noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}>
+<BaseLayout hideGlobalSectors={true} title="You're offline — Wugweb" seoTitle={page?.seoTitle} description={page?.seoDescription || "No connection right now. Reconnect and try again."} noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}>
   <section class="wrap offline" id="offline" aria-labelledby="offline-title">
     
     <h1 id="offline-title">You're offline right now.</h1>

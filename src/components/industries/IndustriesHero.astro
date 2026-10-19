@@ -1,0 +1,191 @@
+---
+/**
+ * IndustriesHero: the /footer/industries hero. Owner copy (H1 + lead) on one
+ * side, a decorative sector diagram on the other: Wugweb at the centre, the
+ * showcase sectors around it, each with its Lucide icon from Sanity.
+ *
+ * Tiers (docs: kits_design_system/docs/blocks/industries-directory.md):
+ *   x < 480          diagram hidden
+ *   480 ≤ x < 768    first 4 nodes only, larger labels
+ *   768 ≤ x < 1024   text, then the full diagram
+ *   x ≥ 1024         split: text left, diagram right
+ *
+ * The diagram is aria-hidden: the same sectors are listed, as text, in the
+ * directory below.
+ */
+import { lucideSvg } from '../../lib/lucide';
+
+export interface HeroSector {
+  name: string;
+  icon?: string;
+}
+
+interface Props {
+  title: string;
+  lead: string;
+  sectors: HeroSector[];
+}
+
+const { title, lead, sectors } = Astro.props;
+
+// Grid cells around the centre of a 3x3 grid. The first four form a cross so
+// the 4-node tier stays balanced; the rest fill the corners.
+const CELLS = ['n', 'w', 'e', 's', 'nw', 'ne', 'sw', 'se'];
+const POINTS: Record<string, [number, number]> = {
+  nw: [50, 50], n: [150, 50], ne: [250, 50],
+  w: [50, 150], e: [250, 150],
+  sw: [50, 250], s: [150, 250], se: [250, 250],
+};
+
+const nodes = (sectors || [])
+  .filter((s) => s && s.name)
+  .slice(0, CELLS.length)
+  .map((s, i) => ({ name: s.name, svg: lucideSvg(s.icon, 'hero-node-icon'), cell: CELLS[i], extra: i >= 4 }));
+---
+
+<section class="ind-hero wrap" id="hero-section" aria-labelledby="hero-section-title">
+  <div class="ind-hero-copy">
+    <h1 id="hero-section-title" data-reveal>{title}</h1>
+    <p class="ind-hero-lead" data-reveal>{lead}</p>
+  </div>
+
+  {nodes.length > 0 && (
+    <div class="ind-hero-visual" aria-hidden="true" data-reveal>
+      <div class="ind-diagram">
+        <svg class="ind-diagram-lines" viewBox="0 0 300 300" preserveAspectRatio="none" focusable="false">
+          {nodes.map((n) => (
+            <line
+              class:list={['ind-line', { 'is-extra': n.extra }]}
+              x1="150" y1="150" x2={POINTS[n.cell][0]} y2={POINTS[n.cell][1]}
+              vector-effect="non-scaling-stroke"
+            />
+          ))}
+        </svg>
+        <div class="ind-node ind-node-centre" style="grid-area: c">Wugweb</div>
+        {nodes.map((n) => (
+          <div class:list={['ind-node', { 'is-extra': n.extra }]} style={`grid-area: ${n.cell}`}>
+            {n.svg && <span class="ind-node-tile" set:html={n.svg} />}
+            <span class="ind-node-name">{n.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</section>
+
+<style>
+  /* Vertical padding comes from the global top-level section rule
+     (--section-y); a local padding-block here would be overridden. */
+  .ind-hero {
+    display: grid;
+    gap: var(--gap-8);
+    align-items: center;
+  }
+
+  .ind-hero h1 {
+    font-size: var(--fluid-display);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--lh-display);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--gap-6);
+  }
+
+  .ind-hero-lead {
+    font-size: var(--fluid-body-lg);
+    line-height: var(--lh-xl);
+    color: var(--color-text-secondary);
+    max-width: 46ch;
+  }
+
+  /* x < 480: no diagram. */
+  .ind-hero-visual { display: none; }
+
+  .ind-diagram {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "nw n ne"
+      "w  c e"
+      "sw s se";
+    gap: var(--gap-3);
+    aspect-ratio: 1 / 1;
+    background-color: var(--color-surface-elevated);
+    border-radius: var(--radius-5);
+    padding: var(--p-5);
+  }
+
+  .ind-diagram-lines {
+    position: absolute;
+    inset: var(--p-5);
+    width: calc(100% - 2 * var(--p-5));
+    height: calc(100% - 2 * var(--p-5));
+    pointer-events: none;
+  }
+
+  .ind-line {
+    stroke: var(--color-border-subtle);
+    stroke-width: var(--stroke-thin);
+    stroke-dasharray: 4 4;
+  }
+
+  .ind-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-2);
+    min-width: 0;
+    padding: var(--p-2);
+    border-radius: var(--radius-3);
+    background-color: var(--surface-2);
+    color: var(--color-text-primary);
+    text-align: center;
+  }
+
+  .ind-node-centre {
+    background-color: var(--color-text-primary);
+    color: var(--color-surface-page);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    font-size: var(--fluid-body-sm);
+  }
+
+  .ind-node-tile { display: inline-flex; color: var(--color-text-secondary); }
+  .ind-node-tile :global(.hero-node-icon) { width: var(--gap-6); height: var(--gap-6); stroke-width: 1.5; }
+
+  .ind-node-name {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-body-sm);
+    line-height: var(--lh-snug);
+    overflow-wrap: anywhere;
+  }
+
+  /* 480 ≤ x < 768: the four cross nodes only, larger labels. */
+  @media (min-width: 480px) {
+    .ind-hero-visual { display: block; max-width: calc(var(--gap-8) * 14); width: 100%; margin-inline: auto; }
+    .ind-node.is-extra, .ind-line.is-extra { display: none; }
+  }
+
+  /* 768 ≤ x < 1024: text, then the full diagram. */
+  @media (min-width: 768px) {
+    .ind-hero-visual { max-width: calc(var(--gap-8) * 16); }
+    .ind-node.is-extra { display: flex; }
+    .ind-line.is-extra { display: inline; }
+    .ind-node-name { font-size: var(--fluid-caption); }
+  }
+
+  /* x ≥ 1024: split. */
+  @media (min-width: 1024px) {
+    .ind-hero { grid-template-columns: 1.1fr 0.9fr; gap: var(--gap-12); }
+    .ind-hero-visual { max-width: none; }
+  }
+
+  @media (forced-colors: active) {
+    .ind-node { border: var(--stroke-thin) solid CanvasText; }
+    .ind-line { stroke: CanvasText; }
+  }
+</style>

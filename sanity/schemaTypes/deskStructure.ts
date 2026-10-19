@@ -89,6 +89,7 @@ export const deskStructure: StructureResolver = (S: StructureBuilder) =>
         vocabList(S, 'Content types',    'content-type',    DocumentsIcon),
         vocabList(S, 'Departments',      'team-department', UsersIcon),
         vocabList(S, 'Countries',        'country',         EarthAmericasIcon),
+        pane(S, 'sector',   'Sectors',    'Sector master',    PinIcon,  'sector'),
         pane(S, 'industry', 'Industries', 'Industry master',  PinIcon,  'industry'),
         pane(S, 'taxonomy', 'All taxonomy', 'All taxonomy',   BookIcon, 'taxonomy'),
       ]),

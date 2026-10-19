@@ -1,344 +1,119 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import IndustriesHero from '../../components/industries/IndustriesHero.astro';
+import SectorRow from '../../components/industries/SectorRow.astro';
 import { sanityClient } from '../../lib/sanity';
 import { singletonPageQuery } from '../../lib/queries';
+import { getDirectorySectors, getShowcaseSectors } from '../../lib/sectors';
 
-const page = await sanityClient.fetch(singletonPageQuery, { pageId: 'industries' }).catch(() => null);
+/**
+ * /footer/industries: a static showcase of every sector and its industries.
+ * Sectors, sector lines, icons and industries all come from Sanity (Notion
+ * Table 25 / Table 3, synced by Cowork); this page hardcodes none of them.
+ * Spec: kits_design_system/docs/blocks/industries-directory.md
+ */
+const [page, sectors, heroSectors] = await Promise.all([
+  sanityClient.fetch(singletonPageQuery, { pageId: 'industries' }).catch(() => null),
+  getDirectorySectors(),
+  // Same query and cache entry as the SectorShowcase cards, so the hero
+  // diagram and the cards always show the same sectors in the same order.
+  getShowcaseSectors(),
+]);
+
+// No sectors means Sanity failed or returned nothing. Never serve (or let a
+// crawler index) an empty directory as a normal page: 503 so it is retried.
+const unavailable = sectors.length === 0;
+if (unavailable) {
+  Astro.response.status = 503;
+  Astro.response.headers.set('Retry-After', '60');
+}
 const title = page?.seoTitle || page?.title || 'Industries';
-const description = page?.seoDescription || 'Wugweb brings deep industry context across financial services, healthcare, consumer commerce, technology, mobility, education, and purpose-driven sectors.';
+const description = page?.seoDescription;
 
-// Real case studies for the preview drawer. `caseStudy.industryRef` is set on
-// 51 of 60 published docs and, until now, reached no page at all — the drawer's
-// "typical work" list was six invented strings per industry. This joins the two.
-//
-// The drawer's sub-industry ids mostly equal the industry document slug
-// (banking, fintech, ecommerce, edtech, entertainment, healthcare, …); these
-// are the ones that do not. Anything unmapped simply finds no case studies and
-// falls back to the hardcoded list below, so the page degrades rather than
-// emptying out.
-const INDUSTRY_ALIASES: Record<string, string[]> = {
-  ai: ['ai-ml'],
-  ngos: ['non-profit'],
-  hr: ['hrtech'],
-  realestate: ['real-estate'],
-  insurtech: ['insurance'],
-  wealth: ['financial-services'],
-  brands: ['fmcg', 'luxury'],
-  services: ['consulting'],
-};
+// Cross-industry diagram inputs: the first three showcase sectors, one arrow
+// per input so the diagram never points from nothing.
+const crossSectors = heroSectors.slice(0, 3);
+const ARROWS: Record<number, string[]> = { 1: ['|'], 2: ['\\', '/'], 3: ['\\', '|', '/'] };
+const crossArrows = ARROWS[crossSectors.length] || [];
 
-const caseStudiesByIndustry = await sanityClient
-  // Legacy duplicate stubs carry the same title, the same industryRef and a
-  // canonicalUrl pointing at the real case study — without this filter the
-  // drawer listed METCRED twice, once under each slug. Reuses the canonicalUrl
-  // field declared on caseStudy for exactly this stub/canonical distinction.
-  .fetch(`*[_type == "caseStudy"
-      && defined(industryRef) && defined(slug.current)
-      && !(_id in path("drafts.**"))
-      && (!defined(canonicalUrl) || canonicalUrl == "/work/" + slug.current)]{
-    title, "slug": slug.current, "ind": industryRef->slug.current
-  }`)
-  .catch(() => []);
-
-const workByIndustry: Record<string, { title: string; slug: string }[]> = {};
-for (const cs of (caseStudiesByIndustry as any[])) {
-  if (!cs?.ind) continue;
-  (workByIndustry[cs.ind] ||= []).push({ title: cs.title, slug: cs.slug });
-}
-// Fold aliases in so the drawer can look up by its own sub-industry id.
-for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
-  const merged = slugs.flatMap((sl) => workByIndustry[sl] || []);
-  if (merged.length) workByIndustry[subId] = [...(workByIndustry[subId] || []), ...merged];
-}
+const SITE = 'https://www.wugweb.com';
+const PAGE_URL = `${SITE}/footer/industries`;
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    '@id': `${PAGE_URL}#page`,
+    url: PAGE_URL,
+    name: title,
+    description,
+    isPartOf: { '@id': `${SITE}/#website` },
+    mainEntity: { '@id': `${PAGE_URL}#sectors` },
+  },
+  {
+    '@type': 'ItemList',
+    '@id': `${PAGE_URL}#sectors`,
+    name: 'Sectors',
+    numberOfItems: sectors.length,
+    itemListElement: sectors.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'ItemList',
+        name: s.name,
+        url: `${PAGE_URL}#${s.slug}`,
+        description: s.description,
+        numberOfItems: s.industries.length,
+        itemListElement: s.industries.map((ind, j) => ({ '@type': 'ListItem', position: j + 1, name: ind.name })),
+      },
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Industries', item: PAGE_URL },
+    ],
+  },
+];
 ---
 
-<BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath} 
-  title={title} 
+<BaseLayout noIndex={unavailable || page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}
+  title={title}
   description={description}
   hideGlobalSections={true}
+  jsonLd={jsonLd}
 >
   <div class="industries-page">
 
-    <!-- 01 — HERO -->
-    <section class="hero-section wrap" id="hero-section" aria-labelledby="hero-section-title">
-      <div class="hero-content">
-        
-        <h1 class="page-title" data-reveal id="hero-section-title">We understand the context behind the product.</h1>
-        <p class="hero-lead" data-reveal>
-          Every industry has different customers, constraints, regulations and ways of working. We bring cross-industry experience to build products and systems that fit the world they operate in.
-        </p>
-      </div>
+    <!-- 01 HERO -->
+    <IndustriesHero
+      title="We understand the context behind the product."
+      lead="Every industry has different customers, constraints, regulations and ways of working. We bring cross-industry experience to build products and systems that fit the world they operate in."
+      sectors={heroSectors}
+    />
 
-      <div class="hero-visual" data-reveal>
-        <div class="ecosystem-diagram">
-          {/* Inline SVG, so fill/stroke resolve against the page's custom
-              properties exactly as CSS would. These were literal hexes —
-              #FFBE1A, #050505, #191919, #2B2B2B, #F4F4F4 — which is 26 of the
-              values audit finding 20 counted, and the largest genuine cluster
-              of them in the codebase. Hardcoded here meant the diagram would
-              quietly stop matching the site the first time a token moved. Font
-              families were literal too, and are now tokens.
-
-              The yellow node is --color-yellow, NOT --color-accent-primary:
-              that token resolves to --neutral-2 (#DFDFDF), so the obvious
-              substitution would have turned the WUGWEB node grey. The #FFBE1A
-              fallbacks written beside --color-accent-primary elsewhere in the
-              codebase describe a value it does not currently hold. */}
-          <svg viewBox="0 0 400 300" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Central Node -->
-            <rect x="140" y="125" width="120" height="50" rx="6" fill="var(--color-yellow)" />
-            <text x="200" y="155" fill="var(--color-surface-page)" font-family="var(--font-body)" font-weight="700" font-size="14" text-anchor="middle">WUGWEB</text>
-
-            <!-- Satellite Nodes -->
-            <!-- Healthcare -->
-            <rect x="20" y="30" width="100" height="36" rx="4" fill="var(--color-surface-elevated)" stroke="var(--color-border-subtle)" />
-            <text x="70" y="52" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="10" text-anchor="middle">Healthcare</text>
-            <path d="M120 48 C160 48, 160 135, 140 145" stroke="var(--color-border-subtle)" stroke-width="1.5" stroke-dasharray="4 4" />
-
-            <!-- Fintech -->
-            <rect x="20" y="132" width="100" height="36" rx="4" fill="var(--color-surface-elevated)" stroke="var(--color-border-subtle)" />
-            <text x="70" y="154" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="10" text-anchor="middle">Fintech</text>
-            <path d="M120 150 L140 150" stroke="var(--color-border-subtle)" stroke-width="1.5" stroke-dasharray="4 4" />
-
-            <!-- Travel -->
-            <rect x="20" y="234" width="100" height="36" rx="4" fill="var(--color-surface-elevated)" stroke="var(--color-border-subtle)" />
-            <text x="70" y="256" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="10" text-anchor="middle">Travel</text>
-            <path d="M120 252 C160 252, 160 165, 140 155" stroke="var(--color-border-subtle)" stroke-width="1.5" stroke-dasharray="4 4" />
-
-            <!-- Energy -->
-            <rect x="280" y="30" width="100" height="36" rx="4" fill="var(--color-surface-elevated)" stroke="var(--color-border-subtle)" />
-            <text x="330" y="52" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="10" text-anchor="middle">Energy</text>
-            <path d="M280 48 C240 48, 240 135, 260 145" stroke="var(--color-border-subtle)" stroke-width="1.5" stroke-dasharray="4 4" />
-
-            <!-- Education -->
-            <rect x="280" y="132" width="100" height="36" rx="4" fill="var(--color-surface-elevated)" stroke="var(--color-border-subtle)" />
-            <text x="330" y="154" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="10" text-anchor="middle">Education</text>
-            <path d="M280 150 L260 150" stroke="var(--color-border-subtle)" stroke-width="1.5" stroke-dasharray="4 4" />
-
-            <!-- NGO -->
-            <rect x="280" y="234" width="100" height="36" rx="4" fill="var(--color-surface-elevated)" stroke="var(--color-border-subtle)" />
-            <text x="330" y="256" fill="var(--color-text-primary)" font-family="var(--font-mono)" font-size="10" text-anchor="middle">NGO</text>
-            <path d="M280 252 C240 252, 240 165, 260 155" stroke="var(--color-border-subtle)" stroke-width="1.5" stroke-dasharray="4 4" />
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 — INDUSTRY EXPLORER & GROUPS -->
-    <section class="explorer-section wrap" id="explorer-section" aria-labelledby="explorer-section-title">
+    <!-- 02 SECTOR DIRECTORY -->
+    <section class="directory-section wrap" id="industries" aria-labelledby="directory-section-title">
       <div class="section-header">
-        
-        <h2 data-reveal id="explorer-section-title">Explore our industries.</h2>
+        <h2 data-reveal id="directory-section-title">Explore our industries.</h2>
         <p class="section-lede" data-reveal>
           From highly regulated sectors to fast-moving consumer businesses, we adapt our approach to the context we're working in.
         </p>
       </div>
-
-      <!-- Controls -->
-      <div class="explorer-controls" data-reveal>
-        <div class="search-box">
-          <input type="text" id="search-input" placeholder="Search industries..." aria-label="Search industries" />
-          <span class="search-icon">&#x1F50D;</span>
-        </div>
-
-        <div class="category-filters" id="cat-filters">
-          <button class="filter-btn active" data-group="all">ALL</button>
-          <button class="filter-btn" data-group="financial">FINANCIAL SERVICES</button>
-          <button class="filter-btn" data-group="healthcare">HEALTHCARE & LIFE SCIENCES</button>
-          <button class="filter-btn" data-group="consumer">CONSUMER & COMMERCE</button>
-          <button class="filter-btn" data-group="travel">TRAVEL, HOSPITALITY & MOBILITY</button>
-          <button class="filter-btn" data-group="technology">TECHNOLOGY & DIGITAL</button>
-          <button class="filter-btn" data-group="education">EDUCATION & PEOPLE</button>
-          <button class="filter-btn" data-group="media">MEDIA, ENTERTAINMENT & CULTURE</button>
-          <button class="filter-btn" data-group="public">PUBLIC & PURPOSE</button>
-          <button class="filter-btn" data-group="industrial">INDUSTRIAL & INFRASTRUCTURE</button>
-        </div>
-      </div>
-
-      <!-- Groups List -->
-      <div class="groups-list" id="groups-list">
-        
-        <!-- Group 1: Financial Services -->
-        <div class="group-row" data-group="financial" data-reveal>
-          <div class="group-meta">
-            <h3>Financial Services</h3>
-            <p>Usability, security, regulations and complex transactional workflows.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="banking">Banking</button>
-            <button class="sub-industry-btn" data-id="fintech">Fintech</button>
-            <button class="sub-industry-btn" data-id="insurtech">Insurtech</button>
-            <button class="sub-industry-btn" data-id="wealth">Wealth & Investment</button>
-          </div>
-        </div>
-
-        <!-- Group 2: Healthcare & Life Sciences -->
-        <div class="group-row" data-group="healthcare" data-reveal>
-          <div class="group-meta">
-            <h3>Healthcare & Life Sciences</h3>
-            <p>Clinical information accuracy, regulatory compliance, and patient accessibility.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="healthcare">Healthcare</button>
-            <button class="sub-industry-btn" data-id="diagnostics">Diagnostics</button>
-            <button class="sub-industry-btn" data-id="pharma">Pharma</button>
-            <button class="sub-industry-btn" data-id="wellness">Wellness</button>
-          </div>
-        </div>
-
-        <!-- Group 3: Consumer & Commerce -->
-        <div class="group-row" data-group="consumer" data-reveal>
-          <div class="group-meta">
-            <h3>Consumer & Commerce</h3>
-            <p>High scale digital storefronts, conversion funnels, and retention models.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="ecommerce">E-commerce</button>
-            <button class="sub-industry-btn" data-id="retail">Retail</button>
-            <button class="sub-industry-btn" data-id="d2c">D2C</button>
-            <button class="sub-industry-btn" data-id="brands">Consumer Brands</button>
-          </div>
-        </div>
-
-        <!-- Group 4: Travel, Hospitality & Mobility -->
-        <div class="group-row" data-group="travel" data-reveal>
-          <div class="group-meta">
-            <h3>Travel, Hospitality & Mobility</h3>
-            <p>Live tracking mappings, booking journeys, and mobile experiences.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="travel">Travel</button>
-            <button class="sub-industry-btn" data-id="hospitality">Hospitality</button>
-            <button class="sub-industry-btn" data-id="aviation">Aviation</button>
-            <button class="sub-industry-btn" data-id="automotive">Automotive</button>
-            <button class="sub-industry-btn" data-id="logistics">Logistics & Mobility</button>
-          </div>
-        </div>
-
-        <!-- Group 5: Technology & Digital -->
-        <div class="group-row" data-group="technology" data-reveal>
-          <div class="group-meta">
-            <h3>Technology & Digital</h3>
-            <p>SaaS portals, complex APIs mappings, and AI-driven workflow integrations.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="saas">SaaS</button>
-            <button class="sub-industry-btn" data-id="ai">AI & Emerging Tech</button>
-            <button class="sub-industry-btn" data-id="platforms">Platforms & Marketplaces</button>
-          </div>
-        </div>
-
-        <!-- Group 6: Education & People -->
-        <div class="group-row" data-group="education" data-reveal>
-          <div class="group-meta">
-            <h3>Education & People</h3>
-            <p>Interactive knowledge panels, collaboration features, and learning flows.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="edtech">EdTech</button>
-            <button class="sub-industry-btn" data-id="hr">HR & Workforce</button>
-            <button class="sub-industry-btn" data-id="services">Professional Services</button>
-          </div>
-        </div>
-
-        <!-- Group 7: Media, Entertainment & Culture -->
-        <div class="group-row" data-group="media" data-reveal>
-          <div class="group-meta">
-            <h3>Media, Entertainment & Culture</h3>
-            <p>Content delivery systems, streaming engines, and creator monetization loops.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="media">Media</button>
-            <button class="sub-industry-btn" data-id="entertainment">Entertainment</button>
-            <button class="sub-industry-btn" data-id="sports">Sports</button>
-            <button class="sub-industry-btn" data-id="music">Music</button>
-          </div>
-        </div>
-
-        <!-- Group 8: Public & Purpose -->
-        <div class="group-row" data-group="public" data-reveal>
-          <div class="group-meta">
-            <h3>Public & Purpose</h3>
-            <p>Civic accessibility compliance, open-data portals, and community-driven advocacy.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="government">Government</button>
-            <button class="sub-industry-btn" data-id="ngos">NGOs & Non-profits</button>
-            <button class="sub-industry-btn" data-id="impact">Social Impact</button>
-          </div>
-        </div>
-
-        <!-- Group 9: Industrial & Infrastructure -->
-        <div class="group-row" data-group="industrial" data-reveal>
-          <div class="group-meta">
-            <h3>Industrial & Infrastructure</h3>
-            <p>Asset visualization tools, operational dashboards, and hardware integration maps.</p>
-          </div>
-          <div class="group-items">
-            <button class="sub-industry-btn" data-id="energy">Energy</button>
-            <button class="sub-industry-btn" data-id="manufacturing">Manufacturing</button>
-            <button class="sub-industry-btn" data-id="realestate">Real Estate</button>
-            <button class="sub-industry-btn" data-id="construction">Construction</button>
-          </div>
-        </div>
-
+      <div class="directory-list">
+        {sectors.map((s, i) => (
+          <SectorRow
+            slug={s.slug}
+            index={i + 1}
+            name={s.name}
+            description={s.description}
+            industries={s.industries}
+            tone={i % 2 === 1 ? 'tint' : 'plain'}
+          />
+        ))}
       </div>
     </section>
 
-    <!-- 04 — INTERACTIVE INDUSTRY PREVIEW DRAWER -->
-    <div class="preview-drawer-overlay" id="preview-drawer-overlay">
-      <div class="preview-drawer" id="preview-drawer">
-        <div class="drawer-header">
-          <div class="header-meta">
-            <span class="meta-eyebrow" id="prev-eyebrow">FINANCIAL SERVICES</span>
-            <h3 id="prev-title">Fintech</h3>
-          </div>
-          <button class="btn-close-drawer" id="btn-close-preview">&times;</button>
-        </div>
-        
-        <div class="drawer-body">
-          <p class="prev-lead" id="prev-lead">Designing digital financial experiences people can trust.</p>
-          <p class="prev-desc" id="prev-desc">Financial products need to balance usability, security, regulation and complex information.</p>
-          
-          <div class="prev-section">
-            <h4>Relevant Wugweb capabilities</h4>
-            <div class="caps-tags" id="prev-caps">
-              <span class="tag">Strategy</span>
-              <span class="tag">Experience</span>
-              <span class="tag">Engineering</span>
-              <span class="tag">Growth</span>
-            </div>
-          </div>
-
-          <div class="prev-section">
-            <h4>Typical work</h4>
-            <ul class="work-list" id="prev-work">
-              <li>Digital banking experiences</li>
-              <li>Financial product UX</li>
-              <li>Customer onboarding</li>
-              <li>Dashboards</li>
-              <li>Conversion journeys</li>
-              <li>Platform development</li>
-            </ul>
-          </div>
-
-          <div class="prev-visual-container">
-            <div class="visual-container ratio-16-9">
-              <div class="placeholder-graphic">
-                <span class="placeholder-tag" id="prev-visual-tag">FINTECH MOCKUP</span>
-                <span class="placeholder-desc" id="prev-visual-desc">Secure banking dashboard wireframes / transactional UI flows</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="drawer-actions">
-            <a href="/contact-us" class="btn btn-solid w-full text-center">Start a conversation &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 05 — CROSS-INDUSTRY EXPERIENCE -->
+    <!-- 03 CROSS-INDUSTRY EXPERIENCE -->
     <section class="cross-experience-section wrap" id="cross-experience-section" aria-labelledby="cross-experience-section-title">
       <div class="cross-grid">
         <div class="cross-copy" data-reveal>
@@ -348,22 +123,22 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
             Customers still expect clarity. Teams still need better systems. Businesses still need products that work.
           </p>
           <p>
-            Working across industries allows us to recognise patterns, transfer useful ideas and challenge assumptions—without ignoring the context that makes each business different.
+            Working across industries allows us to recognise patterns, transfer useful ideas and challenge assumptions, without ignoring the context that makes each business different.
           </p>
         </div>
 
         <div class="cross-visual" data-reveal>
-          <div class="transfer-diagram">
-            <div class="diagram-inputs">
-              <div class="diag-node">Healthcare</div>
-              <div class="diag-node">Fintech</div>
-              <div class="diag-node">Travel</div>
-            </div>
-            <div class="diagram-arrows">
-              <span>\</span>
-              <span>|</span>
-              <span>/</span>
-            </div>
+          <div class="transfer-diagram" aria-hidden="true">
+            {crossSectors.length > 0 && (
+              <>
+                <div class="diagram-inputs">
+                  {crossSectors.map((s) => <div class="diag-node">{s.name}</div>)}
+                </div>
+                <div class="diagram-arrows">
+                  {crossArrows.map((a) => <span>{a}</span>)}
+                </div>
+              </>
+            )}
             <div class="diagram-center">
               <span>WUGWEB</span>
             </div>
@@ -382,106 +157,28 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
       </div>
     </section>
 
-    <!-- 06 — INDUSTRY + CAPABILITY MATRIX -->
-    <section class="matrix-section wrap" id="matrix-section" aria-labelledby="matrix-section-title">
-      <div class="section-header text-center">
-        
-        <h2 data-reveal id="matrix-section-title">Industry context meets capability.</h2>
-        <p class="section-lede" data-reveal>
-          A visual representation of Wugweb's multidisciplinary approach. Click a row to see the capability intersection.
-        </p>
-      </div>
-
-      <div class="matrix-container" data-reveal>
-        <div class="matrix-table">
-          <div class="matrix-row header">
-            <div class="matrix-cell label">Industry</div>
-            <div class="matrix-cell">Strategy</div>
-            <div class="matrix-cell">Brand</div>
-            <div class="matrix-cell">Experience</div>
-            <div class="matrix-cell">Engineering</div>
-            <div class="matrix-cell">Growth</div>
-          </div>
-
-          <div class="matrix-row interactive-row" data-industry="healthcare">
-            <div class="matrix-cell label">Healthcare</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-          </div>
-
-          <div class="matrix-row interactive-row" data-industry="fintech">
-            <div class="matrix-cell label">Fintech</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-          </div>
-
-          <div class="matrix-row interactive-row" data-industry="travel">
-            <div class="matrix-cell label">Travel</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-          </div>
-
-          <div class="matrix-row interactive-row" data-industry="saas">
-            <div class="matrix-cell label">SaaS</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-          </div>
-
-          <div class="matrix-row interactive-row" data-industry="ngos">
-            <div class="matrix-cell label">NGOs</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-          </div>
-
-          <div class="matrix-row interactive-row" data-industry="energy">
-            <div class="matrix-cell label">Energy</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-            <div class="matrix-cell dot active">●</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 08 — DON'T SEE YOUR INDUSTRY? -->
-    <section class="missing-industry-section wrap" data-reveal id="missing-industry-section" aria-labelledby="missing-industry-section-title">
+    <!-- 04 DON'T SEE YOUR INDUSTRY? -->
+    <section class="missing-industry-section wrap" data-reveal id="no-industry" aria-labelledby="missing-industry-section-title">
       <div class="missing-inner">
         <h2 id="missing-industry-section-title">Don't see your industry?</h2>
         <p>
           Our experience spans different sectors, business models and operating environments. If your industry isn't listed, tell us what you're building and we'll explore where we can help.
         </p>
         <div class="missing-actions">
-          <a href="/contact-us" class="btn btn-solid btn-light">Talk to us &rarr;</a>
-          <a href="/about" class="btn btn-ghost">View our services &rarr;</a>
+          <a href="/contact-us" class="btn btn-solid btn-light">Talk to us</a>
+          <a href="/services" class="btn btn-ghost">View our services</a>
         </div>
       </div>
     </section>
 
-    <!-- 09 — FINAL CTA -->
+    <!-- 05 FINAL CTA -->
     <section class="final-cta wrap" data-reveal id="final-cta" aria-labelledby="final-cta-title">
       <div class="final-inner">
         <h2 id="final-cta-title">Bring us the problem, not just the brief.</h2>
         <p>
           Tell us what you're trying to achieve. We'll bring the industry context, strategy, design and technology needed to move it forward.
         </p>
-        <a href="/contact-us" class="btn btn-solid">Start a conversation &rarr;</a>
+        <a href="/contact-us" class="btn btn-solid">Start a conversation</a>
       </div>
     </section>
 
@@ -497,17 +194,6 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     background-color: var(--color-surface-page);
     color: var(--color-text-primary);
     overflow-x: hidden;
-  }
-
-  .eyebrow {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: var(--fluid-caption);
-    font-weight: var(--font-weight-regular);
-    letter-spacing: var(--tracking-label);
-    color: var(--color-accent-primary);
-    text-transform: uppercase;
-    margin-bottom: var(--gap-4);
   }
 
   .section-header {
@@ -530,373 +216,20 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     max-width: 50ch;
   }
 
-  .text-center {
-    text-align: center;
-  }
-
-  .text-center .section-lede {
-    margin-inline: auto;
-  }
-
-  .w-full {
-    width: 100% !important;
-  }
-
   /* ─────────────────────────────────────────────────────────────────────
-     SECTION 1 — HERO
+     SECTION 02: SECTOR DIRECTORY (rows: SectorRow.astro)
      ───────────────────────────────────────────────────────────────────── */
-  .hero-section {
-    padding-top: calc(var(--space-section-xl) * 1.5);
-    padding-bottom: var(--space-section-lg);
-    display: grid;
-    gap: var(--gap-8);
-    align-items: center;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-section {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--gap-12);
-    }
-  }
-
-  .hero-content h1 {
-    font-size: var(--fluid-display);
-    font-weight: var(--font-weight-extrabold);
-    line-height: var(--lh-display);
-    letter-spacing: -0.03em;
-    margin-bottom: var(--gap-6);
-  }
-
-  .hero-lead {
-    font-size: var(--fluid-body-lg);
-    line-height: var(--lh-xl);
-    color: var(--color-text-secondary);
-    max-width: 46ch;
-  }
-
-  .hero-visual {
-    background-color: var(--neutral-8);
-    border: var(--stroke-thin) solid var(--color-border-subtle);
-    border-radius: var(--radius-5);
-    padding: var(--p-6);
-  }
-
-  /* ─────────────────────────────────────────────────────────────────────
-     SECTION 2 — EXPLORER CONTROLS & GROUPS
-     ───────────────────────────────────────────────────────────────────── */
-  .explorer-section {
+  .directory-section {
     padding-block: var(--space-section-xl);
-    border-top: var(--stroke-thin) solid var(--color-border-subtle);
   }
 
-  .explorer-controls {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-6);
-    margin-bottom: var(--gap-12);
-  }
-
-  .search-box {
-    position: relative;
-    max-width: 600px;
-    width: 100%;
-  }
-
-  .search-box input {
-    width: 100%;
-    padding: var(--p-4) var(--p-10) var(--p-4) var(--p-5);
-    border: var(--stroke-thin) solid var(--color-border-subtle);
-    border-radius: var(--radius-2);
-    background-color: var(--neutral-8);
-    color: var(--color-text-primary);
-    font-family: var(--font-body);
-    font-size: var(--fluid-body-md);
-  }
-
-  .search-box input:focus {
-    outline: var(--stroke-regular) solid var(--color-accent-primary);
-    outline-offset: 2px;
-  }
-
-  .search-icon {
-    position: absolute;
-    right: var(--p-4);
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-text-muted);
-  }
-
-  .category-filters {
-    display: flex;
-    overflow-x: auto;
-    gap: var(--gap-3);
-    padding-bottom: var(--p-3);
-    scrollbar-width: none;
-  }
-
-  .category-filters::-webkit-scrollbar {
-    display: none;
-  }
-
-  .filter-btn {
-    background-color: var(--neutral-8);
-    border: var(--stroke-thin) solid var(--color-border-subtle);
-    color: var(--color-text-secondary);
-    padding: var(--p-3) var(--p-5);
-    font-family: var(--font-mono);
-    font-size: var(--fluid-caption);
-    white-space: nowrap;
-    border-radius: var(--radius-2);
-    cursor: pointer;
-    transition: all var(--duration-fast) ease;  }
-
-  .filter-btn:hover {
-    border-color: var(--color-text-secondary);
-  }
-
-  .filter-btn.active {
-    background-color: var(--color-accent-primary);
-    color: var(--neutral-10);
-    border-color: var(--color-accent-primary);
-  }
-
-  .groups-list {
-    display: flex;
-    flex-direction: column;
-    border-top: var(--stroke-thin) solid var(--color-border-subtle);
-  }
-
-  .group-row {
+  .directory-list {
     display: grid;
-    gap: var(--gap-6);
-    padding-block: var(--p-8);
-    border-bottom: var(--stroke-thin) solid var(--color-border-subtle);
-    align-items: start;
-    transition: opacity var(--duration-normal);  }
-
-  @media (min-width: 768px) {
-    .group-row {
-      grid-template-columns: 320px 1fr;
-      gap: var(--gap-10);
-    }
-  }
-
-  .group-meta h3 {
-    font-size: var(--fluid-h3);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--gap-2);
-  }
-
-  .group-meta p {
-    font-size: var(--fluid-body-sm);
-    color: var(--color-text-secondary);
-    line-height: var(--lh-body);
-  }
-
-  .group-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--gap-3);
-  }
-
-  .sub-industry-btn {
-    background-color: var(--neutral-8);
-    border: var(--stroke-thin) solid var(--color-border-subtle);
-    color: var(--color-text-primary);
-    padding: var(--p-4) var(--p-6);
-    border-radius: var(--radius-3);
-    font-family: var(--font-body);
-    font-size: var(--fluid-body-md);
-    font-weight: var(--font-weight-medium);
-    cursor: pointer;
-    transition: all var(--duration-normal) ease;  }
-
-  .sub-industry-btn:hover {
-    border-color: var(--color-accent-primary);
-    transform: translateY(-2px);
+    gap: var(--gap-4);
   }
 
   /* ─────────────────────────────────────────────────────────────────────
-     SECTION 04 — INTERACTIVE PREVIEW DRAWER
-     ───────────────────────────────────────────────────────────────────── */
-  .preview-drawer-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 2000;
-    display: none;
-    justify-content: flex-end;
-  }
-
-  .preview-drawer-overlay.active {
-    display: flex;
-  }
-
-  .preview-drawer {
-    width: 100%;
-    max-width: 520px;
-    background-color: var(--neutral-9);
-    border-left: var(--stroke-thin) solid var(--color-border-subtle);
-    padding: var(--p-8);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
-    overflow-y: auto;
-    animation: slideIn var(--duration-normal) cubic-bezier(0.16, 1, 0.3, 1) forwards;  }
-
-  @keyframes slideIn {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-  }
-
-  .drawer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: var(--stroke-thin) solid var(--color-border-subtle);
-    padding-bottom: var(--p-5);
-    margin-bottom: var(--p-6);
-  }
-
-  .meta-eyebrow {
-    font-family: var(--font-mono);
-    font-size: var(--t-micro);
-    color: var(--color-accent-primary);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .drawer-header h3 {
-    font-size: var(--fluid-h3);
-    font-weight: var(--font-weight-bold);
-    margin-top: var(--gap-1);
-  }
-
-  .btn-close-drawer {
-    background: none;
-    border: none;
-    color: var(--color-text-secondary);
-    font-size: var(--t-h2);
-    cursor: pointer;
-    line-height: 1;
-  }
-
-  .prev-lead {
-    font-size: var(--fluid-body-lg);
-    font-weight: var(--font-weight-semibold);
-    line-height: var(--lh-xl);
-    color: var(--color-text-primary);
-    margin-bottom: var(--gap-2);
-  }
-
-  .prev-desc {
-    font-size: var(--fluid-body-md);
-    line-height: var(--lh-body);
-    color: var(--color-text-secondary);
-    margin-bottom: var(--gap-8);
-  }
-
-  .prev-section {
-    margin-bottom: var(--gap-6);
-  }
-
-  .prev-section h4 {
-    font-family: var(--font-mono);
-    font-size: var(--fluid-caption);
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    margin-bottom: var(--gap-3);
-  }
-
-  .caps-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--gap-2);
-  }
-
-  .caps-tags .tag {
-    background-color: var(--neutral-8);
-    border: var(--stroke-thin) solid var(--color-border-subtle);
-    color: var(--color-accent-primary);
-    padding: var(--gap-1) 10px;
-    border-radius: var(--radius-2);
-    font-family: var(--font-body);
-    font-size: var(--fluid-caption);
-  }
-
-  .work-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-2);
-  }
-
-  .work-list li {
-    font-size: var(--fluid-body-md);
-    color: var(--color-text-secondary);
-    display: flex;
-    align-items: center;
-    gap: var(--gap-3);
-  }
-
-  .work-list li::before {
-    content: '→';
-    color: var(--color-text-muted);
-  }
-
-  .prev-visual-container {
-    margin-block: var(--gap-6) var(--gap-8);
-  }
-
-  .prev-visual-container .visual-container {
-    background-color: var(--neutral-8);
-  }
-
-  .visual-container {
-    position: relative;
-    width: 100%;
-    border: var(--stroke-thin) solid var(--color-border-subtle);
-    border-radius: var(--radius-4);
-    overflow: hidden;
-  }
-
-  .visual-container.ratio-16-9 { aspect-ratio: 16 / 9; }
-  .visual-container.ratio-4-3 { aspect-ratio: 4 / 3; }
-
-  .placeholder-graphic {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: var(--p-6);
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, transparent 80%);
-    text-align: center;
-  }
-
-  .placeholder-tag {
-    font-family: var(--font-mono);
-    font-size: var(--fluid-caption);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-secondary);
-    letter-spacing: var(--tracking-label);
-    margin-bottom: var(--gap-2);
-  }
-
-  .placeholder-desc {
-    font-size: var(--fluid-caption);
-    color: var(--color-text-muted);
-    max-width: 32ch;
-    line-height: var(--lh-caption);
-  }
-
-  /* ─────────────────────────────────────────────────────────────────────
-     SECTION 05 — CROSS INDUSTRY EXPERIENCE
+     SECTION 03: CROSS INDUSTRY EXPERIENCE
      ───────────────────────────────────────────────────────────────────── */
   .cross-experience-section {
     padding-block: var(--space-section-xl);
@@ -908,6 +241,8 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     gap: var(--gap-8);
     align-items: center;
   }
+
+  .cross-grid > * { min-width: 0; }
 
   @media (min-width: 1024px) {
     .cross-grid {
@@ -946,6 +281,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
 
   .diagram-inputs, .diagram-outputs {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: var(--gap-4);
     width: 100%;
@@ -959,6 +295,8 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     font-family: var(--font-mono);
     font-size: var(--fluid-caption);
     color: var(--color-text-primary);
+    text-align: center;
+    overflow-wrap: anywhere;
   }
 
   .diag-node.outline {
@@ -996,89 +334,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
   }
 
   /* ─────────────────────────────────────────────────────────────────────
-     SECTION 06 — MATRIX TABLE
-     ───────────────────────────────────────────────────────────────────── */
-  .matrix-section {
-    padding-block: var(--space-section-xl);
-    border-top: var(--stroke-thin) solid var(--color-border-subtle);
-  }
-
-  .matrix-table {
-    display: flex;
-    flex-direction: column;
-    border: var(--stroke-thin) solid var(--color-border-subtle);
-    border-radius: var(--radius-4);
-    overflow: hidden;
-    max-width: 900px;
-    margin-inline: auto;
-    background-color: var(--neutral-8);
-  }
-
-  .matrix-row {
-    display: grid;
-    grid-template-columns: 140px repeat(5, 1fr);
-    border-bottom: var(--stroke-thin) solid var(--color-border-subtle);
-    text-align: center;
-    align-items: center;
-    transition: background-color var(--duration-fast);  }
-
-  @media (min-width: 640px) {
-    .matrix-row {
-      grid-template-columns: 200px repeat(5, 1fr);
-    }
-  }
-
-  .matrix-row.header {
-    background-color: rgba(255, 255, 255, 0.02);
-    font-family: var(--font-mono);
-    font-size: var(--t-micro);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    /* --color-text-secondary, not --color-text-muted: the 2% white overlay above
-       lifts this row's composite to ~rgb(30,30,30), where muted measures 4.49:1
-       — one hundredth under the 4.5 WCAG AA floor. Marginal, but the threshold
-       is a threshold. Local fix, same as .item-n / .lane-title / .iq-tag on
-       /footer/subscription. */
-    color: var(--color-text-secondary);
-  }
-
-  .matrix-row:last-child {
-    border-bottom: none;
-  }
-
-  .matrix-row.interactive-row {
-    cursor: pointer;
-  }
-
-  .matrix-row.interactive-row:hover {
-    background-color: rgba(255, 255, 255, 0.01);
-  }
-
-  .matrix-cell {
-    padding: var(--p-4);
-    font-size: var(--fluid-body-sm);
-  }
-
-  .matrix-cell.label {
-    text-align: left;
-    font-weight: var(--font-weight-medium);
-    font-size: var(--fluid-body-md);
-  }
-
-  .matrix-cell.dot {
-    color: var(--color-text-muted);
-    transition: color var(--duration-fast);  }
-
-  .matrix-row.active-selection .matrix-cell.dot.active {
-    color: var(--color-accent-primary);
-  }
-
-  .matrix-row.active-selection {
-    background-color: rgba(255, 190, 26, 0.02);
-  }
-
-  /* ─────────────────────────────────────────────────────────────────────
-     SECTION 08 — DON'T SEE YOUR INDUSTRY?
+     SECTION 04: DON'T SEE YOUR INDUSTRY?
      ───────────────────────────────────────────────────────────────────── */
   .missing-industry-section {
     padding-block: var(--space-section-md);
@@ -1135,7 +391,7 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
   }
 
   /* ─────────────────────────────────────────────────────────────────────
-     SECTION 09 — FINAL CTA
+     SECTION 05: FINAL CTA
      ───────────────────────────────────────────────────────────────────── */
   .final-cta {
     padding-top: var(--space-section-xl);
@@ -1175,506 +431,3 @@ for (const [subId, slugs] of Object.entries(INDUSTRY_ALIASES)) {
     line-height: var(--lh-xl);
   }
 </style>
-
-<script is:inline define:vars={{ workByIndustry }}>
-  window.__wugwebWorkByIndustry = workByIndustry;
-</script>
-
-<script>
-  // ─────────────────────────────────────────────────────────────────────
-  // CLIENT INTERACTIONS
-  // ─────────────────────────────────────────────────────────────────────
-
-  // Sub-industry definitions mapping config
-  const industryPreviews = {
-    'banking': {
-      title: 'Banking',
-      eyebrow: 'Financial Services',
-      lead: 'Designing trusted digital retail and commercial banking experience.',
-      desc: 'Banking requires balancing high regulatory compliance, legacy core structures, strict security, and clean transaction statements.',
-      caps: ['Strategy', 'Experience', 'Engineering'],
-      work: ['Mobile Banking App flows', 'Retail Banking web designs', 'Onboarding & KYC workflows'],
-      vTag: 'BANKING UI PORTAL',
-      vDesc: 'Clean statements tables / account creation layouts / secure authentication flow interfaces'
-    },
-    'fintech': {
-      title: 'Fintech',
-      eyebrow: 'Financial Services',
-      lead: 'Designing digital financial experiences people can trust.',
-      desc: 'Financial products need to balance usability, security, regulation and complex information.',
-      caps: ['Strategy', 'Experience', 'Engineering', 'Growth'],
-      work: ['Digital banking experiences', 'Financial product UX', 'Customer onboarding', 'Dashboards', 'Conversion journeys', 'Platform development'],
-      vTag: 'FINTECH MOCKUP',
-      vDesc: 'Secure banking dashboard wireframes / transactional UI flows'
-    },
-    'insurtech': {
-      title: 'Insurtech',
-      eyebrow: 'Financial Services',
-      lead: 'Simplifying claims processes and policy selection.',
-      desc: 'Modernizing insurance models requires accessible product comparisons, clear claim processing steps, and clean dynamic pricing calculators.',
-      caps: ['Experience', 'Engineering', 'Growth'],
-      work: ['Interactive quote engines', 'Claims filing portal UI', 'Agent dashboard design'],
-      vTag: 'CLAIM ESTIMATION CALCULATOR',
-      vDesc: 'Dynamic coverage adjustment sliders / claim upload wireframes / dashboard metrics charts'
-    },
-    'wealth': {
-      title: 'Wealth & Investment',
-      eyebrow: 'Financial Services',
-      lead: 'Democratizing asset management and investment tools.',
-      desc: 'Portfolio viewers require robust charts, clean layout hierarchies, performance history views, and educational resource portals.',
-      caps: ['Strategy', 'Experience', 'Engineering'],
-      work: ['Portfolio tracking UI', 'Advisors portal workflows', 'Trading execution flows'],
-      vTag: 'INVESTMENT SUMMARY PANEL',
-      vDesc: 'Asset allocation charts / performance line graphics / trade configuration templates'
-    },
-    'healthcare': {
-      title: 'Healthcare',
-      eyebrow: 'Healthcare & Life Sciences',
-      lead: 'Modernizing patient interactions and operational workflows.',
-      desc: 'Patient care requires simplified booking, accessible medical summaries, secure messaging portals, and strict compliance.',
-      caps: ['Experience', 'Engineering'],
-      work: ['Patient booking dashboard', 'Telehealth video integration', 'Staff scheduling interface'],
-      vTag: 'PATIENT RECORD INTERFACE',
-      vDesc: 'Treatment plans timelines / vital statistics charts / calendar grids'
-    },
-    'diagnostics': {
-      title: 'Diagnostics',
-      eyebrow: 'Healthcare & Life Sciences',
-      lead: 'Visualizing diagnostic results and raw data securely.',
-      desc: 'Diagnostic platforms require high-contrast visual systems, clear result status banners, and secure download compliance protocols.',
-      caps: ['Strategy', 'Experience', 'Engineering'],
-      work: ['Lab report UI layouts', 'Test tracking client flow', 'Imaging archive integration'],
-      vTag: 'DIAGNOSTIC REPORT PANEL',
-      vDesc: 'Blood panels results charts / scan comparison viewers / clinician logs'
-    },
-    'pharma': {
-      title: 'Pharma',
-      eyebrow: 'Healthcare & Life Sciences',
-      lead: 'Accelerating product presentation and researcher workflows.',
-      desc: 'Pharma portals require structured clinical study logs, compliant product descriptions, and accessible catalog searching.',
-      caps: ['Strategy', 'Engineering'],
-      work: ['Drug catalog structures', 'Clinical trials hub designs', 'Interactive study index'],
-      vTag: 'CLINICAL TRIALS TIMELINE',
-      vDesc: 'Phase progress trackers / data publication listings / drug detail panels'
-    },
-    'wellness': {
-      title: 'Wellness',
-      eyebrow: 'Healthcare & Life Sciences',
-      lead: 'Creating engaging, retention-focused health platforms.',
-      desc: 'Consumer wellness apps require motivating progress trackers, simple habit forms, and custom onboarding goals.',
-      caps: ['Experience', 'Growth'],
-      work: ['Subscription onboarding design', 'Habit tracker interfaces', 'Wellness community hubs'],
-      vTag: 'WELLNESS TRACKER UI',
-      vDesc: 'Daily streaks widgets / progress radial rings / habit checkboxes'
-    },
-    'ecommerce': {
-      title: 'E-commerce',
-      eyebrow: 'Consumer & Commerce',
-      lead: 'Optimizing transactional flows and store layouts.',
-      desc: 'High-volume storefronts require clear product descriptions, intuitive search matching, fast filtering, and Frictionless checkouts.',
-      caps: ['Experience', 'Engineering', 'Growth'],
-      work: ['Checkout optimization', 'Storefront code architecture', 'Dynamic landing collections'],
-      vTag: 'STOREFRONT LISTING CARD',
-      vDesc: 'Filter columns layout / cart summary flyout / checkout forms'
-    },
-    'retail': {
-      title: 'Retail',
-      eyebrow: 'Consumer & Commerce',
-      lead: 'Bridging physical and digital shopping experiences.',
-      desc: 'Retail platforms require robust store locators, unified inventory sync structures, and simple click-and-collect flows.',
-      caps: ['Experience', 'Engineering'],
-      work: ['POS companion app design', 'Store locator structures', 'Omnichannel checkout flows'],
-      vTag: 'IN-STORE COMPANION WIREFRAME',
-      vDesc: 'Barcode scanner scanner view / loyalty card barcode widgets / local stock metrics'
-    },
-    'd2c': {
-      title: 'D2C',
-      eyebrow: 'Consumer & Commerce',
-      lead: 'Crafting brand-centric shopping paths.',
-      desc: 'Direct-to-consumer websites require custom product pages, subscription billing modules, and immersive brand storytelling.',
-      caps: ['Strategy', 'Brand', 'Experience', 'Growth'],
-      work: ['Product detail page optimization', 'Subscription bundle flows', 'Brand landing layouts'],
-      vTag: 'PRODUCT DETAILED VIEW',
-      vDesc: 'Large hero image carousel / bundle configuration panels / e-commerce buy buttons'
-    },
-    'brands': {
-      title: 'Consumer Brands',
-      eyebrow: 'Consumer & Commerce',
-      lead: 'Elevating online brand presence and customer loyalty.',
-      desc: 'Global consumer brands require immersive campaign landing pages, localized messaging systems, and community hubs.',
-      caps: ['Brand', 'Experience', 'Growth'],
-      work: ['Campaign showcase pages', 'Loyalty portal layouts', 'Interactive product builders'],
-      vTag: 'CAMPAIGN ARTWORK COMPOSITION',
-      vDesc: 'Dynamic brand banners / video backdrop frames / social feeds grids'
-    },
-    'travel': {
-      title: 'Travel',
-      eyebrow: 'Travel, Hospitality & Mobility',
-      lead: 'Simplifying booking paths and itinerary views.',
-      desc: 'Travel platforms require responsive calendar queries, dynamic map integrations, and consolidated itinerary cards.',
-      caps: ['Experience', 'Engineering', 'Growth'],
-      work: ['Itinerary builder UX', 'Calendar booking tools', 'Destination catalog design'],
-      vTag: 'ITINERARY TIMELINE VIEW',
-      vDesc: 'Interactive day-by-day blocks / map marker popovers / flight detail summary cards'
-    },
-    'hospitality': {
-      title: 'Hospitality',
-      eyebrow: 'Travel, Hospitality & Mobility',
-      lead: 'Elevating hotel reservation and guest systems.',
-      desc: 'Hospitality platforms require immersive photo galleries, clear room layout selectors, and smooth booking steps.',
-      caps: ['Brand', 'Experience', 'Engineering'],
-      work: ['Reservation portal interfaces', 'Guest dashboard UX', 'Room catalog builders'],
-      vTag: 'ROOM SELECTION LISTING',
-      vDesc: 'Room feature grids / price breakdowns card / interactive calendar widget'
-    },
-    'aviation': {
-      title: 'Aviation',
-      eyebrow: 'Travel, Hospitality & Mobility',
-      lead: 'Optimizing flight check-in and seat selection tools.',
-      desc: 'Aviation workflows require complex status query APIs, responsive boarding passes, and interactive seat maps.',
-      caps: ['Experience', 'Engineering'],
-      work: ['Seat selector UI', 'Boarding pass widgets', 'Flight tracking dashboards'],
-      vTag: 'SEAT SELECTION INTERFACE',
-      vDesc: 'Airplane cabin grids / seat status colors / flight summary side panel'
-    },
-    'automotive': {
-      title: 'Automotive',
-      eyebrow: 'Travel, Hospitality & Mobility',
-      lead: 'Developing vehicle configurators and companion apps.',
-      desc: 'Automotive experiences require high-fidelity asset loaders, dynamic option calculators, and connected mobile UI.',
-      caps: ['Brand', 'Experience', 'Engineering'],
-      work: ['Configurator layout design', 'Companion app mockups', 'Dealership portal systems'],
-      vTag: 'CONFIGURATOR BUILDER VIEW',
-      vDesc: 'Exterior color selector circles / pricing detail list / wheel models grid'
-    },
-    'logistics': {
-      title: 'Logistics & Mobility',
-      eyebrow: 'Travel, Hospitality & Mobility',
-      lead: 'Streamlining fleet tracking and delivery dashboards.',
-      desc: 'Mobility dashboards require live tracking map scripts, driver routing cards, and operational status reports.',
-      caps: ['Experience', 'Engineering'],
-      work: ['Fleet dispatch view', 'Driver routing companion UI', 'Delivery metrics reports'],
-      vTag: 'DISPATCH MONITORING PANEL',
-      vDesc: 'Live map vehicle pins / driver status metrics / route logs'
-    },
-    'saas': {
-      title: 'SaaS',
-      eyebrow: 'Technology & Digital',
-      lead: 'Optimizing user onboarding and workspace settings.',
-      desc: 'SaaS software requires intuitive workspace structures, clear permission setups, and self-serve subscription portals.',
-      caps: ['Experience', 'Engineering', 'Growth'],
-      work: ['Onboarding sequence design', 'Settings panel navigation', 'Billing subscription portal'],
-      vTag: 'SAAS WORKSPACE INTERFACE',
-      vDesc: 'Members lists grid / permissions toggle rows / integration blocks'
-    },
-    'ai': {
-      title: 'AI & Emerging Tech',
-      eyebrow: 'Technology & Digital',
-      lead: 'Designing clear workflows for complex model inputs.',
-      desc: 'AI products require interactive prompts boxes, structured model outputs, and simple parameters sliders.',
-      caps: ['Strategy', 'Experience', 'Engineering'],
-      work: ['Prompt configuration UI', 'Data visualization tools', 'Developer sandbox templates'],
-      vTag: 'MODEL PARAMETER INTERFACE',
-      vDesc: 'Temperature sliders / response text nodes / token usage trackers'
-    },
-    'platforms': {
-      title: 'Platforms & Marketplaces',
-      eyebrow: 'Technology & Digital',
-      lead: 'Connecting suppliers and buyers in unified portals.',
-      desc: 'Marketplaces require dual-sided login portals, unified search systems, and robust review mechanisms.',
-      caps: ['Experience', 'Engineering', 'Growth'],
-      work: ['Buyer review systems', 'Supplier dashboard UX', 'Global category search'],
-      vTag: 'SUPPLIER OVERVIEW PAGE',
-      vDesc: 'Earnings charts / listing editor forms / feedback ratings panels'
-    },
-    'edtech': {
-      title: 'EdTech',
-      eyebrow: 'Education & People',
-      lead: 'Designing engaging online learning classrooms.',
-      desc: 'Learning environments require interactive video widgets, clear lesson plans, and quiz score modules.',
-      caps: ['Experience', 'Engineering'],
-      work: ['LMS dashboard UX', 'Quiz creator UI layouts', 'Course catalog index'],
-      vTag: 'COURSE LESSON VIEWER',
-      vDesc: 'Video module window / checklist notes / grading system table'
-    },
-    'hr': {
-      title: 'HR & Workforce',
-      eyebrow: 'Education & People',
-      lead: 'Simplifying payroll and employee evaluation.',
-      desc: 'Workforce tools require clear tax table displays, calendar scheduling, and secure documentation folders.',
-      caps: ['Experience', 'Engineering'],
-      work: ['Payroll approval portal', 'Shift scheduler companion', 'Employee profile designs'],
-      vTag: 'PAYROLL RUN SUMMARY',
-      vDesc: 'Employee check-in hours / net pay calculation sheets / tax deductions lists'
-    },
-    'services': {
-      title: 'Professional Services',
-      eyebrow: 'Education & People',
-      lead: 'Enhancing client portal interactions.',
-      desc: 'Service portals require simple document lockers, task pipelines, and direct messaging setups.',
-      caps: ['Strategy', 'Experience', 'Engineering'],
-      work: ['Client portal portal', 'Proposal pipeline templates', 'Project scheduling grids'],
-      vTag: 'CLIENT WORKSPACE VIEW',
-      vDesc: 'Project task list / shared asset grid / contract review window'
-    },
-    'media': {
-      title: 'Media',
-      eyebrow: 'Media, Entertainment & Culture',
-      lead: 'Scaling digital newsrooms and article flows.',
-      desc: 'Media publishers require rich editorial typography settings, fast category filters, and non-intrusive paywalls.',
-      caps: ['Brand', 'Experience', 'Engineering', 'Growth'],
-      work: ['Article reader interface', 'CMS schema design', 'Paywall integration layout'],
-      vTag: 'ARTICLE CONTENT PAGE',
-      vDesc: 'Large typography body column / dynamic newsletter signups / category tags'
-    },
-    'entertainment': {
-      title: 'Entertainment',
-      eyebrow: 'Media, Entertainment & Culture',
-      lead: 'Designing interactive streaming interfaces.',
-      desc: 'Streaming portals require dynamic catalog sliders, responsive search inputs, and immersive video controls.',
-      caps: ['Experience', 'Engineering'],
-      work: ['Video catalog browser', 'Streaming controls dashboard', 'Subscription onboarding flow'],
-      vTag: 'CATALOG BROWSING GRID',
-      vDesc: 'Movie thumbnails carousel / metadata tags list / category buttons'
-    },
-    'sports': {
-      title: 'Sports',
-      eyebrow: 'Media, Entertainment & Culture',
-      lead: 'Connecting fans with live stats and media.',
-      desc: 'Sports experiences require live updating score feeds, player career profile views, and simple video ticket checkouts.',
-      caps: ['Brand', 'Experience', 'Growth'],
-      work: ['Match stats dashboard', 'Season tickets checkout', 'Player analytics profiles'],
-      vTag: 'LIVE MATCH STATUS',
-      vDesc: 'Scoreboards charts / dynamic timeline tickers / player match stats lists'
-    },
-    'music': {
-      title: 'Music',
-      eyebrow: 'Media, Entertainment & Culture',
-      lead: 'Optimizing creator and artist distribution portals.',
-      desc: 'Music platforms require responsive audio players, playlist layout managers, and artist payout charts.',
-      caps: ['Brand', 'Experience', 'Engineering'],
-      work: ['Artist profile interfaces', 'Playlist editor companion', 'Streaming metrics graphs'],
-      vTag: 'AUDIO PLAYLIST CANVAS',
-      vDesc: 'Track rows lists / audio control bars / artwork album square'
-    },
-    'government': {
-      title: 'Government',
-      eyebrow: 'Public & Purpose',
-      lead: 'Crafting accessible civic platforms.',
-      desc: 'Civic services require high accessibility compliance, simple public forms, and localized information pages.',
-      caps: ['Strategy', 'Experience', 'Engineering'],
-      work: ['Accessibility audit fixes', 'Public utilities portal UX', 'Local information pages'],
-      vTag: 'SERVICE UTILITY PORTAL',
-      vDesc: 'Document application check lists / local service locations maps / forms inputs templates'
-    },
-    'ngos': {
-      title: 'NGOs & Non-profits',
-      eyebrow: 'Public & Purpose',
-      lead: 'Building advocacy campaigns and donation portals.',
-      desc: 'Non-profits require transparent resource trackers, donation checkout systems, and compelling visual campaign pages.',
-      caps: ['Brand', 'Experience', 'Engineering', 'Growth'],
-      work: ['Donation checkout forms', 'Campaign platforms development', 'Annual report websites'],
-      vTag: 'CAMPAIGN ADVOCACY PAGE',
-      vDesc: 'Impact metrics display / dynamic donation slider widgets / campaign article grids'
-    },
-    'impact': {
-      title: 'Social Impact',
-      eyebrow: 'Public & Purpose',
-      lead: 'Promoting community programs and tracking outcomes.',
-      desc: 'Social projects require simple community directories, programmatic outcome trackers, and public impact feeds.',
-      caps: ['Strategy', 'Experience', 'Engineering'],
-      work: ['Community directory system', 'Outcome tracking dashboard', 'Public registration layouts'],
-      vTag: 'COMMUNITY PROJECT HUB',
-      vDesc: 'Program event timelines / outcomes tables / participant summaries'
-    },
-    'energy': {
-      title: 'Energy',
-      eyebrow: 'Industrial & Infrastructure',
-      lead: 'Visualizing telemetry and grid consumption statistics.',
-      desc: 'Energy portals require dynamic charts, device listing panels, live telemetry logs, and warnings systems.',
-      caps: ['Experience', 'Engineering'],
-      work: ['Telemetry dashboard view', 'Asset grid viewer', 'Consumption report exporter'],
-      vTag: 'GRID TELEMETRY INTERFACE',
-      vDesc: 'Wattage output graphs / warning indicators / device state columns'
-    },
-    'manufacturing': {
-      title: 'Manufacturing',
-      eyebrow: 'Industrial & Infrastructure',
-      lead: 'Designing warehouse control and inventory systems.',
-      desc: 'Factory software requires large touch layout interfaces, batch production trackers, and hardware status panels.',
-      caps: ['Experience', 'Engineering'],
-      work: ['Warehouse companion screens', 'Batch tracking templates', 'Machine telemetry view'],
-      vTag: 'WAREHOUSE PICKING INTERFACE',
-      vDesc: 'Barcode scanner fields / inventory shelf grids / batch details summary'
-    },
-    'realestate': {
-      title: 'Real Estate',
-      eyebrow: 'Industrial & Infrastructure',
-      lead: 'Enhancing property search and portal listings.',
-      desc: 'Property platforms require robust search filtering, high-quality media frames, map markers, and scheduler modals.',
-      caps: ['Experience', 'Engineering', 'Growth'],
-      work: ['Map search optimization', 'Property catalog layout', 'Visit scheduling modal'],
-      vTag: 'PROPERTY LISTING DETAILS',
-      vDesc: 'Map pins grid / agent contact forms / dynamic filter panels'
-    },
-    'construction': {
-      title: 'Construction',
-      eyebrow: 'Industrial & Infrastructure',
-      lead: 'Tracking blueprints and field construction updates.',
-      desc: 'Field apps require simple offline file synchronization, task status boards, and clear timeline trackers.',
-      caps: ['Experience', 'Engineering'],
-      work: ['Task status board UX', 'Blueprint overlay viewer', 'Daily logs companion'],
-      vTag: 'CONSTRUCTION ROADMAP PANEL',
-      vDesc: 'Project timelines chart / blueprint rendering boxes / field team check-ins'
-    }
-  };
-
-  // 1. SEARCH & CATEGORY FILTER LOGIC
-  const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
-  const catFilters = document.getElementById('cat-filters');
-  const groupsList = document.getElementById('groups-list');
-
-  const filterRows = () => {
-    if (!groupsList) return;
-    const rows = groupsList.querySelectorAll('.group-row');
-    const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    const activeFilterBtn = catFilters ? catFilters.querySelector('.filter-btn.active') : null;
-    const selectedGroup = activeFilterBtn ? activeFilterBtn.getAttribute('data-group') : 'all';
-
-    rows.forEach(row => {
-      const groupName = row.getAttribute('data-group');
-      const subButtons = row.querySelectorAll('.sub-industry-btn');
-      
-      let matchesSearch = false;
-      let visibleButtonsCount = 0;
-
-      subButtons.forEach(btn => {
-        const text = btn.textContent ? btn.textContent.toLowerCase() : '';
-        const btnElement = btn as HTMLButtonElement;
-        
-        if (query === '' || text.includes(query)) {
-          btnElement.style.display = 'inline-block';
-          matchesSearch = true;
-          visibleButtonsCount++;
-        } else {
-          btnElement.style.display = 'none';
-        }
-      });
-
-      const rowElement = row as HTMLDivElement;
-      
-      const matchesCategory = (selectedGroup === 'all' || groupName === selectedGroup);
-
-      if (matchesCategory && matchesSearch && visibleButtonsCount > 0) {
-        rowElement.style.display = 'grid';
-      } else {
-        rowElement.style.display = 'none';
-      }
-    });
-  };
-
-  if (searchInput && catFilters && groupsList) {
-    searchInput.addEventListener('input', filterRows);
-
-    const filterButtons = catFilters.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filterRows();
-      });
-    });
-  }
-
-  // 2. INTERACTIVE PREVIEW DRAWER LOGIC
-  const prevDrawerOverlay = document.getElementById('preview-drawer-overlay');
-  const prevTitle = document.getElementById('prev-title');
-  const prevEyebrow = document.getElementById('prev-eyebrow');
-  const prevLead = document.getElementById('prev-lead');
-  const prevDesc = document.getElementById('prev-desc');
-  const prevCaps = document.getElementById('prev-caps');
-  const prevWork = document.getElementById('prev-work');
-  const prevVisualTag = document.getElementById('prev-visual-tag');
-  const prevVisualDesc = document.getElementById('prev-visual-desc');
-  const btnClosePreview = document.getElementById('btn-close-preview');
-
-  const openPreview = (subId: string) => {
-    const data = industryPreviews[subId];
-    if (!data || !prevDrawerOverlay || !prevTitle || !prevEyebrow || !prevLead || !prevDesc || !prevCaps || !prevWork || !prevVisualTag || !prevVisualDesc) return;
-
-    prevTitle.textContent = data.title;
-    prevEyebrow.textContent = data.eyebrow;
-    prevLead.textContent = data.lead;
-    prevDesc.textContent = data.desc;
-
-    // Render Capabilities
-    prevCaps.innerHTML = '';
-    data.caps.forEach((cap: string) => {
-      const span = document.createElement('span');
-      span.className = 'tag';
-      span.textContent = cap;
-      prevCaps.appendChild(span);
-    });
-
-    // Render Typical Work. Real case studies joined on caseStudy.industryRef
-    // win; the hardcoded `data.work` strings are the fallback for industries
-    // we have not published work in yet, so the drawer never renders empty.
-    prevWork.innerHTML = '';
-    const realWork = (window as any).__wugwebWorkByIndustry?.[subId] || [];
-    if (realWork.length > 0) {
-      realWork.slice(0, 6).forEach((cs: { title: string; slug: string }) => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = `/work/${cs.slug}`;
-        a.textContent = cs.title;
-        li.appendChild(a);
-        prevWork.appendChild(li);
-      });
-    } else {
-      data.work.forEach((item: string) => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        prevWork.appendChild(li);
-      });
-    }
-
-    // Render Visual Details
-    prevVisualTag.textContent = data.vTag;
-    prevVisualDesc.textContent = data.vDesc;
-
-    prevDrawerOverlay.classList.add('active');
-  };
-
-  const closePreview = () => {
-    if (prevDrawerOverlay) prevDrawerOverlay.classList.remove('active');
-  };
-
-  if (groupsList) {
-    const subButtons = groupsList.querySelectorAll('.sub-industry-btn');
-    subButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-id');
-        if (id) openPreview(id);
-      });
-    });
-  }
-
-  if (btnClosePreview && prevDrawerOverlay) {
-    btnClosePreview.addEventListener('click', closePreview);
-    prevDrawerOverlay.addEventListener('click', (e) => {
-      if (e.target === prevDrawerOverlay) closePreview();
-    });
-  }
-
-  // 3. MATRIX CLICK BEHAVIORS
-  const matrixRows = document.querySelectorAll('.matrix-row.interactive-row');
-  matrixRows.forEach(row => {
-    row.addEventListener('click', () => {
-      const isActive = row.classList.contains('active-selection');
-      matrixRows.forEach(r => r.classList.remove('active-selection'));
-      if (!isActive) {
-        row.classList.add('active-selection');
-      }
-    });
-  });
-</script>

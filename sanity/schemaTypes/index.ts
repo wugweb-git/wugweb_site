@@ -10,6 +10,7 @@ import contactSubmission from './contactSubmission';
 import syncStatus from './syncStatus';
 import client from './client';
 import industry from './industry';
+import sector from './sector';
 import engagement from './engagement';
 import taxonomy from './taxonomy';
 import asset from './asset';
@@ -49,6 +50,7 @@ export const schemaTypes = withSeoDuplicateWarnings([
   syncStatus,
   client,
   industry,
+  sector,
   engagement,
   taxonomy,
   asset,

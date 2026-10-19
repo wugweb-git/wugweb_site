@@ -1,0 +1,109 @@
+---
+/**
+ * SectorRow: one row of the /footer/industries directory. Anchor target for
+ * the SectorShowcase cards (`id` = Sanity sector slug), muted number, sector
+ * name, the approved sector line and every industry in the sector as a plain
+ * label (not a link, not a button).
+ *
+ * An <article>, not a <section>: 17 named sections would flood the
+ * screen-reader landmark list. The id still works as the anchor.
+ *
+ * Rows are separated by spacing and an alternating tint (`tone="tint"`), never
+ * by borders. Below 1024 the row stacks; at x ≥ 1024 details take about a
+ * third, labels about two thirds.
+ */
+interface Props {
+  slug: string;
+  index: number;
+  name: string;
+  description?: string;
+  industries: { name: string }[];
+  tone?: 'plain' | 'tint';
+}
+
+const { slug, index, name, description, industries, tone = 'plain' } = Astro.props;
+const num = String(index).padStart(2, '0');
+const headingId = `sector-${slug}-title`;
+---
+
+<article class:list={['dir-row', `is-${tone}`]} id={slug} aria-labelledby={headingId}>
+  <div class="dir-row-meta">
+    <span class="dir-row-num" aria-hidden="true">{num}</span>
+    <h3 class="dir-row-name" id={headingId}>{name}</h3>
+    {description && <p class="dir-row-line">{description}</p>}
+  </div>
+  {industries.length > 0 && (
+    <ul class="dir-row-labels" role="list" aria-label={`Industries in ${name}`}>
+      {industries.map((i) => <li class="dir-row-label">{i.name}</li>)}
+    </ul>
+  )}
+</article>
+
+<style>
+  .dir-row {
+    display: grid;
+    gap: var(--gap-6);
+    padding: var(--p-6);
+    border-radius: var(--radius-5);
+    scroll-margin-top: calc(var(--header-height) + var(--gap-4));
+  }
+
+  .dir-row.is-tint { background-color: var(--color-surface-elevated); }
+
+  .dir-row-meta { display: grid; gap: var(--gap-2); align-content: start; min-width: 0; }
+
+  .dir-row-num {
+    font-family: var(--font-mono);
+    font-size: var(--fluid-caption);
+    letter-spacing: var(--tracking-label);
+    color: var(--fg-subtle);
+  }
+
+  .dir-row-name {
+    font-size: var(--fluid-h3);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--lh-h3);
+    letter-spacing: -0.01em;
+  }
+
+  .dir-row-line {
+    font-size: var(--fluid-body-md);
+    line-height: var(--lh-xl);
+    color: var(--color-text-secondary);
+    max-width: 48ch;
+  }
+
+  .dir-row-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-2);
+    align-content: start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .dir-row-label {
+    max-width: 100%;
+    padding: var(--p-2) var(--p-4);
+    border-radius: var(--radius-full);
+    background-color: var(--surface-2);
+    color: var(--color-text-primary);
+    font-size: var(--fluid-body-sm);
+    line-height: var(--lh-snug);
+    overflow-wrap: anywhere;
+  }
+
+  @media (min-width: 1024px) {
+    .dir-row {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      gap: var(--gap-12);
+      padding: var(--p-8);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .dir-row-label { border: var(--stroke-thin) solid CanvasText; }
+  }
+</style>

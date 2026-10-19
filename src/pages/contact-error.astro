@@ -15,7 +15,7 @@ const back = Astro.url.searchParams.get('back');
 const retryHref = subscribeFailed ? (isSafeBackPath(back) ? back : '/blog') : '/contact-us';
 ---
 
-<BaseLayout title="Something went wrong — Wugweb" seoTitle={page?.seoTitle} description={page?.seoDescription || "Your message couldn't be sent. Try again or email us directly."} noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}>
+<BaseLayout hideGlobalSectors={true} title="Something went wrong — Wugweb" seoTitle={page?.seoTitle} description={page?.seoDescription || "Your message couldn't be sent. Try again or email us directly."} noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}>
   <section class="wrap contact-error" id="contact-error" aria-labelledby="contact-error-title">
     
     {problems.length > 0 ? (

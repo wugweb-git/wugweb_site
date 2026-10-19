@@ -4,6 +4,8 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 // TrustBadges import removed with its render call below — see that comment.
 import InsightsBlock from '../components/InsightsBlock.astro';
+import SectorShowcase from '../components/SectorShowcase.astro';
+import { getShowcaseSectors } from '../lib/sectors';
 import FooterCTA from '../components/FooterCTA.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { urlFor, cachedFetch } from '../lib/sanity';
@@ -39,13 +41,15 @@ interface Props {
   /** Suppress only the global blog teaser — for pages that already carry their
    *  own insights block, so the two do not appear on the same page. */
   hideGlobalBlog?: boolean;
-  /** Same idea for the global industries block. */
+  /** Same idea for the global Sectors showcase (SectorShowcase). */
+  hideGlobalSectors?: boolean;
+  /** @deprecated Use hideGlobalSectors. Kept as an alias. */
   hideGlobalIndustries?: boolean;
 }
 const { title, description, seoTitle, ogImage, ogImagePath, noIndex, ogTitle, ogDescription, canonicalPath, jsonLd, language } = Astro.props;
 const hideGlobalSections = Boolean(Astro.props.hideGlobalSections);
 const hideGlobalBlog = hideGlobalSections || Boolean(Astro.props.hideGlobalBlog);
-const hideGlobalIndustries = hideGlobalSections || Boolean(Astro.props.hideGlobalIndustries);
+const hideGlobalSectors = hideGlobalSections || Boolean(Astro.props.hideGlobalSectors ?? Astro.props.hideGlobalIndustries);
 
 /**
  * The five sitewide Sanity queries, in parallel and cached.
@@ -66,7 +70,7 @@ const hideGlobalIndustries = hideGlobalSections || Boolean(Astro.props.hideGloba
  * Deliberately NOT cached anywhere: per-page content. A post or case study is
  * fetched fresh, because its staleness would be visible and specific.
  */
-const [settings, livePlatformProfiles, teaserPosts, sanityIndustries, globalSections] = await Promise.all([
+const [settings, livePlatformProfiles, teaserPosts, showcaseSectors, globalSections] = await Promise.all([
   cachedFetch(siteSettingsQuery).catch(() => null),
   // One query, two consumers: the CTA banner's drifting discs (Social Media
   // only) and JSON-LD sameAs (every live profile — 31 of them, versus 5
@@ -77,10 +81,9 @@ const [settings, livePlatformProfiles, teaserPosts, sanityIndustries, globalSect
   ).catch(() => []),
   // Global blog teaser — latest 3 posts.
   hideGlobalBlog ? Promise.resolve([]) : cachedFetch(postsListQuery).catch(() => []),
-  // Industries strip, from the Sanity industry master.
-  hideGlobalIndustries
-    ? Promise.resolve([])
-    : cachedFetch('*[_type == "industry"] | order(order asc) { name }[0..23]').catch(() => []),
+  // Sectors showcase (Notion → Sanity sector/industry). Same cache entry as
+  // the homepage instance — see src/lib/sectors.ts.
+  hideGlobalSectors ? Promise.resolve([]) : getShowcaseSectors(),
   // Global sections (pageSection). One query for every section on the page —
   // the cookie fields are selected here rather than in a second query. See the
   // block further down for what this tier is and why it starts with
@@ -320,14 +323,6 @@ const industriesCtaHref = industriesSection?.ctaHref || '/about';
 // own copy — no duplicated fallback strings here.
 const showInsights = insightsSection !== null;
 const showFinalCta = finalCtaSection !== null;
-
-// Industries section — sourced from the Sanity industry master.
-const curatedIndustries = [
-  'Government', 'Insurtech', 'Travel', 'Logistics', 'Automotive',
-  'Fintech', 'Edtech', 'Sports', 'E-commerce', 'Media', 'Energy', 'NGOs',
-];
-const industryNames = (sanityIndustries as any[]).map((i: any) => i.name);
-const globalIndustries = industryNames.length ? industryNames : curatedIndustries;
 ---
 
 <!doctype html>
@@ -499,21 +494,17 @@ const globalIndustries = industryNames.length ? industryNames : curatedIndustrie
 
     {!hideGlobalSections && (
       <>
-        <!-- INDUSTRIES — suppressed on pages that carry their own industries
-             block (see hideGlobalIndustries). -->
-        {!hideGlobalIndustries && (
-          showIndustries && (
-          <section class="wrap global-industries" id="industries" aria-labelledby="industries-title">
-            <h2 id="industries-title">{industriesTitle}</h2>
-            <p>{industriesSubtitle}</p>
-            <ul class="industry-tags">
-              {globalIndustries.map((i) => <li>{i}</li>)}
-            </ul>
-            {industriesCtaLabel && industriesCtaHref && (
-              <a href={industriesCtaHref} class="btn btn-ghost">{industriesCtaLabel}</a>
-            )}
-          </section>
-          )
+        <!-- SECTORS — the one sectors section (SectorShowcase). Copy from the
+             pageSection `industries` key (unchanged); suppressed on pages
+             that hide it (hideGlobalSectors) or carry their own instance. -->
+        {!hideGlobalSectors && showIndustries && (
+          <SectorShowcase
+            sectors={showcaseSectors}
+            heading={industriesTitle}
+            intro={industriesSubtitle}
+            ctaLabel={industriesCtaLabel}
+            ctaHref={industriesCtaHref}
+          />
         )}
 
         <!-- BLOG TEASER — suppressed on pages that carry their own insights

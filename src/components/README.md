@@ -14,10 +14,19 @@ Reusable UI components used across the site. Import from `src/components/`.
 
 These appear on every page after the page content:
 - Global Partners (`section.global-partners`)
-- Global Industries (`section.global-industries`)
+- Sectors showcase (`SectorShowcase.astro`, `section.sectors-section`)
 - Global Blog Teaser (`section.global-blog-teaser`)
 - Final CTA (`section.global-final-cta`)
 - Footer
+
+## Page Blocks
+
+| Component | File | Props | Used On |
+|---|---|---|---|
+| **IndustriesHero** | `components/industries/IndustriesHero.astro` | `{ title, lead, sectors }` | `/footer/industries` hero; diagram of the showcase sectors |
+| **SectorRow** | `components/industries/SectorRow.astro` | `{ slug, index, name, description?, industries, tone? }` | `/footer/industries` directory; anchor `#<sector-slug>` |
+
+Spec: `kits_design_system/docs/blocks/industries-directory.md`.
 
 ## Design Tokens (in `src/styles/global.css`)
 

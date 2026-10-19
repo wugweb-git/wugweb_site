@@ -160,6 +160,8 @@ Current state (2026-08-04): Sanity ≫ Notion seed. Asset registry + R2 path map
 3. Prefer existing Sanity + local `public/assets` + R2; enrich from `reference/` / `component/` when identity is clear.
 4. When Notion and Sanity conflict on volume, **Sanity (+ Neon after sync) wins** unless a human says otherwise.
 
+**Owner-approved exceptions (Notion is the source):** blog posts (2026-10-13), case-study SEO fields (2026-10-13), and sectors / the Sectors showcase (2026-10-19: Table 25 + Table 3 → `sector.showcase`, `showcaseOrder`, `icon`, `industry.showOnSectorCard`, via `scripts/sync-notion-sectors.mjs`). See `CLAUDE.md` Working Agreements.
+
 ---
 
 ## 6. System of record (stack)

@@ -12,6 +12,10 @@ export default defineType({
     defineField({ name: 'icon', type: 'string', description: 'Emoji or icon identifier' }),
     defineField({ name: 'iconPath', type: 'string', description: 'Local/R2 path e.g. /assets/industries/fintech.svg' }),
     defineField({ name: 'linkedAsset', type: 'reference', to: [{ type: 'asset' }] }),
+    defineField({ name: 'sectorRef', title: 'Sector', type: 'reference', to: [{ type: 'sector' }] }),
+    defineField({ name: 'externalId', title: 'Notion Industry ID', type: 'string', readOnly: true }),
+    defineField({ name: 'seoKeyphrases', title: 'SEO keyphrases', type: 'array', of: [{ type: 'string' }] }),
+    defineField({ name: 'showOnSectorCard', title: 'Show on sector card', type: 'boolean', description: 'From Notion "Show on Sector Card". Up to 2 per sector show, by order.' }),
     // Master under Global Settings (Wugweb taxonomy). Content (caseStudy.industryRef, client.industry) maps here.
 
     // ── Sync (hidden, auto-managed) ──
