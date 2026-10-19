@@ -9,7 +9,13 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - Sanity: 22 clients patched, 6 created (ITC Limited, Airtel, AG&P, iMedia, MDA, Surya — names from the logo files, owner to check), 8 unflagged (RideEV, Airtel XSafe, Valyu.ai, Plufo, Axis Bank, Bankco, Gratifi, Kia). Backup `backups/sanity-pre-logo-band.json`. 1.4s after the first apply, something under the owner's Sanity login `createOrReplace`d 7 of the clients and wiped the band fields; re-applied, 28/28 held.
 - Studio deployed (`bandLogoPath` / `bandOrder` visible). Nav at 2000px: bar 1280px centred, content 1200px.
 - `owner-copy-band-logos.mjs` deleted (uploads are banned).
-- Open: the 14 colour originals sit on a padded 1500×876 canvas, so they render smaller in their tiles than the grey ones. Industries: 0 of 66 industry docs have an icon; no sector field exists.
+- Open: the 14 colour originals sit on a padded 1500×876 canvas, so they render smaller in their tiles than the grey ones.
+
+**2026-10-19 — Industry and sectors check (read-only, nothing changed).**
+- Sanity has **111** industries, not 66: 45 were created today (`industry-IND-27`…) by another session. **28 names exist twice and share the same slug** (Mental Health, Logistics, Banking, SaaS, …). Content mostly moved to the new copies (26 of 28 pairs), and 5 old copies are still referenced too. Needs the owner to pick one set and merge.
+- **Icons:** none anywhere. 0 of 111 industries have `icon`, `iconPath` or `linkedAsset`; no industry icon files in R2; the page and homepage show text only.
+- **Sectors:** no sector field in Sanity. The 9 sector groups and 34 sub-industry buttons on `/footer/industries` are typed into the page. Buttons link to case studies by industry slug (+ aliases): 18 of 34 show real work; 16 are empty (aviation, construction, d2c, diagnostics, energy, healthcare, impact, insurtech, music, pharma, platforms, retail, services, sports, travel, wellness). 16 industries that do have case studies have no button (events, smart-home, beauty-personal-care, digital-finance, fashion-lifestyle, mental-health, blockchain-web3, petrochemicals-waste, gig-economy, mobility, hotels-restaurants, renewable-energy, food-beverage, architecture-interiors, design-technology, advertising-marketing).
+- Case studies with an industry: 44 (all 44 published).
 
 **2026-10-13 → 14 — Page SEO, share images, Notion (pages + services session).**
 Done:
