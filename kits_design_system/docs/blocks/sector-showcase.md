@@ -1,122 +1,80 @@
 # Sector Showcase
 
-**Status:** built, awaiting sign-off · **Live on:** every BaseLayout page except the excluded ones (below), plus `/` with its own copy
-**Source:** `src/components/SectorShowcase.astro` (single source of truth) · data `src/lib/sectors.ts` · story `Blocks/Sector Showcase`
-**Data:** Notion Table 25: Sector + Table 3: Industry → `scripts/sync-notion-sectors.mjs` → Sanity `sector` / `industry`
-**Guard:** `scripts/check-sector-css.mjs` (runs as `prebuild`)
-**Last verified:** 2026-10-19
+**Status:** built, awaiting sign-off · **Last verified:** 2026-10-19
+**Source:** `src/components/SectorShowcase.astro` · story `Blocks/Sector Showcase`
 
-Shows Wugweb's breadth: n sector cards (6 ≤ n ≤ 8), each an icon, the sector name and up
-to two industries. Not a filter and not a case-study index: no counts, no
-descriptions, no arrows. Replaces the old global industry-pill strip and the
-homepage marquee.
+A showcase of the sectors Wugweb works in. 8 cards, each with an icon, the
+sector name and two industries. Nothing else: no counts, descriptions, arrows,
+filters or case studies.
 
 ---
 
-## 1. Single source of truth
+## 1. Content
 
-- All markup, styles, states and motion live **only** in `SectorShowcase.astro`
-  (scoped `<style>`, design tokens only).
-- No page, layout or `global.css` may style `.sectors-section`, `.sector-card`
-  or any `.sector-*` / `.sectors-*` class. `npm run build` fails if one does.
-- Pages pass copy only: `heading`, `intro`, `ctaLabel`, `ctaHref` (plus the
-  `sectors` data from `getShowcaseSectors()`). No layout, colour, size or
-  variant props, so a change in the component reaches every page.
+| # | Sector | Icon (Lucide) | Industries on card | Links to |
+|---|---|---|---|---|
+| 1 | Fintech | `wallet` | Digital Finance · NeoBanking | `/footer/industries#fintech` |
+| 2 | BFSI | `landmark` | Banking · Insurance | `/footer/industries#bfsi` |
+| 3 | Technology | `cpu` | SaaS · AI/ML | `/footer/industries#technology` |
+| 4 | Consumer & Retail | `shopping-bag` | eCommerce · Fashion & Lifestyle | `/footer/industries#consumer-retail` |
+| 5 | Travel & Hospitality | `plane` | Hotels & Restaurants · Tourism | `/footer/industries#travel-hospitality` |
+| 6 | Automotive & Mobility | `car` | Automotive · Electric Vehicles | `/footer/industries#automotive-mobility` |
+| 7 | Healthcare | `heart-pulse` | Mental Health · Pharmacy | `/footer/industries#healthcare` |
+| 8 | Energy & Industrial | `zap` | Renewable Energy · Manufacturing | `/footer/industries#energy-industrial` |
+
+Static content. The 8 cards are the same on every page.
+
+| Page type | Heading, intro, CTA |
+|---|---|
+| Homepage `/` | Homepage copy |
+| All other pages where it renders | Shared copy |
+
+CTA links to `/footer/industries`.
 
 ## 2. Anatomy
 
 ```
-section.sectors-section#sectors  (aria-labelledby="sectors-title")
+section.sectors-section#sectors
 └ .wrap
-  ├ .sectors-head  → h2#sectors-title (copy) · p.sectors-intro (copy)
+  ├ h2 (copy) · p.sectors-intro (copy)
   ├ ul.sectors-grid
-  │ └ li.sectors-item [data-reveal, stagger 0.05s]
-  │   └ a.sector-card  href=/footer/industries   ← one link, one tab stop
-  │     ├ .sector-icon-tile → inline Lucide SVG (currentColor, stroke 1.75, aria-hidden)
-  │     └ .sector-text → h3.sector-name · p.sector-industries ("A · B")
-  └ .sectors-cta → a.btn.btn-ghost (copy)
+  │ └ li → a.sector-card  href=/footer/industries#<sector-slug>
+  │        ├ icon tile (inline Lucide SVG, aria-hidden)
+  │        └ h3 sector name · p "Industry A · Industry B"
+  └ a.btn.btn-ghost (CTA copy)
 ```
 
-Server-rendered: sector and industry names are in the raw HTML. No schema markup.
+Server-rendered. All styles live only in `SectorShowcase.astro`.
 
-## 3. Data
+## 3. Tiers
 
-```groq
-*[_type=="sector" && showcase==true] | order(showcaseOrder asc){
-  _id, name, "slug": slug.current, icon,
-  "industries": *[_type=="industry" && references(^._id) && showOnSectorCard==true] | order(order asc)[0...2].name
-}
-```
+| Tier | Range | Grid | Card |
+|---|---|---|---|
+| Stack | x < 480 | 1 col | Horizontal: icon left, text right |
+| Mobile | 480 ≤ x < 768 | 2 col | Vertical |
+| Tablet | 768 ≤ x < 1024 | 4 col | Vertical, compact |
+| Desktop | x ≥ 1024 | 4 col | Vertical, full padding |
 
-| Notion | Sanity |
-|---|---|
-| Table 25 "Show in Sectors Section" | `sector.showcase` |
-| Table 25 "Sectors Section Order" | `sector.showcaseOrder` |
-| Table 25 "Icon" (Lucide name) | `sector.icon` |
-| Table 3 "Show on Sector Card" | `industry.showOnSectorCard` |
-
-Legacy `industry-<slug>` docs have no `sectorRef`, so they can never appear.
-
-## 4. Section states
+## 4. Card states
 
 | State | Behaviour |
 |---|---|
-| Normal | Heading, intro, card grid, CTA |
-| No copy from CMS | Component defaults (as InsightsBlock) |
-| pageSection `industries` switched off | Not rendered |
-| 0 featured sectors | Not rendered (no fallback list) |
-| n sectors, 1 ≤ n ≤ 3 | Column count kept; cards left-aligned, no stretching |
-| Odd count | Partial last row left-aligned |
-| Missing / unknown icon | No icon tile; `console.warn` at render |
-| No industries ticked | No industries line; card still renders |
-| n ticked, n > 2 | First 2 by industry `order` |
-| Long name | Wraps (tablet: clamps to 2 lines) |
-| Reduced motion, forced colours, no JS | Fully readable; nothing depends on JS |
+| Default | Tinted surface + shadow, no border |
+| Hover | Slight lift, icon turns yellow |
+| Focus-visible | Focus ring + same lift |
+| Pressed | `scale(0.98)` |
+| Reduced motion | No movement |
 
-## 5. Tiers
+Yellow appears only on hover/press, never at rest.
 
-| Tier | Range | Grid | Card | Icon / tile |
-|---|---|---|---|---|
-| Stack | x < 480 | 1 col | Horizontal: tile left, text right | 32 / 48 |
-| Mobile | 480 ≤ x < 768 | 2 col | Vertical, min-height so rows align | 32 / 48 |
-| Tablet | 768 ≤ x < 1024 | 4 col | Vertical, compact; name and industries clamp to 2 lines | 36 / 56 |
-| Desktop | x ≥ 1024 (1200 shell) | 4 col | Vertical, full padding, text pinned to bottom | 40 / 64 |
-
-Gaps use `--grid-gap`; sizes derive from `--gap-*`.
-
-## 6. Card states
-
-Pseudo-classes and media queries only. No per-page classes, no JS state.
+## 5. Section states
 
 | State | Behaviour |
 |---|---|
-| Default | `--surface` + `--elevation-2`, no border; icon full contrast |
-| Hover (`hover:hover` + `pointer:fine`) | `--surface-2`, `--elevation-3`, lift y ≤ 4px, icon `--color-yellow` |
-| Focus-visible | `--focus-primary` ring on the whole card + same lift |
-| Active / pressed | Steps down to page surface, `--elevation-1`, `scale(0.98)`, icon yellow |
-| Touch | No hover styles; press only |
-| Reduced motion | No transforms or transitions |
-| Forced colours | Outline in CanvasText; focus in Highlight; icon CanvasText |
+| Long sector name | Wraps |
 
-Yellow only appears as the hover/press accent, never at rest.
+## 6. Where it renders
 
-## 7. Where it renders
-
-| Route | Copy |
-|---|---|
-| `/` | Homepage's own copy (props) |
-| `/about`, `/faq`, `/kits`, `/services`, `/services/[slug]`, `/work`, `/work/[slug]`, `/blog`, `/blog/[slug]`, `/footer/impact`, `/footer/reviews` | pageSection `industries` |
-
-Hidden (`hideGlobalSectors`): `/404`, `/404-2`, `/offline`, `/thank-you`,
-`/contact-error`, `/contact-us`, `/footer/sitemap`, `/footer/subscription`.
-Already hidden: `/footer/industries` (hub), redirects, LegalLayout pages.
-
-## 8. Links
-
-Every card links to `/footer/industries` with **no hash**. Switch to
-`/footer/industries#<sector-slug>` only once the hub has an element with that
-id for every featured sector.
-
-## 9. Data status
-
-Notion filled and Sanity synced 2026-10-19 (Cowork). `sync-notion-sectors.mjs` is for future edits; dry run first.
+`/` (with its own copy) and the other main pages. Hidden on `/footer/industries`,
+`/404`, `/404-2`, `/offline`, `/thank-you`, `/contact-error`, `/contact-us`,
+`/footer/sitemap`, `/footer/subscription`, redirects and legal pages.
