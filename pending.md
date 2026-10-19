@@ -16,7 +16,7 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - Removed: the 9 hardcoded groups, 34 buttons, alias map, `industryPreviews`, drawer, search, filters, case-study query and capability matrix. Cross-industry em-dash is now a comma.
 - SectorShowcase cards link to `/footer/industries#<sector-slug>`.
 - Components: `src/components/industries/IndustriesHero.astro`, `SectorRow.astro` (+ stories). Lucide loader moved to `src/lib/lucide.ts`. Spec: `kits_design_system/docs/blocks/industries-directory.md`.
-- Open (owner): "View our services" on "Don't see your industry?" links to `/about`. Keep, relabel or relink?
+- "View our services" on "Don't see your industry?" now links to `/services` (owner decision 2026-10-19).
 
 **2026-10-19 — Industry and sectors check (read-only, nothing changed).**
 - Sanity has **111** industries, not 66: 45 were created today (`industry-IND-27`…) by another session. **28 names exist twice and share the same slug** (Mental Health, Logistics, Banking, SaaS, …). Content mostly moved to the new copies (26 of 28 pairs), and 5 old copies are still referenced too. Needs the owner to pick one set and merge.

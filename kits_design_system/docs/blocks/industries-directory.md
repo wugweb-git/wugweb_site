@@ -15,7 +15,7 @@ Nothing else: no search, filters, panels, case studies or capabilities.
 | 1 | Hero | Owner H1 and lead; decorative diagram with Wugweb at the centre and the showcase sectors around it |
 | 2 | Sector directory | h2 and lede (owner copy), then one row per sector |
 | 3 | Cross-industry | Owner copy; small diagram fed by the first three showcase sectors |
-| 4 | Don't see your industry? | Owner copy, contact button, "View our services" (open question: links to `/about`) |
+| 4 | Don't see your industry? | Owner copy, contact button, "View our services" (links to `/services`) |
 | 5 | Final CTA | Unchanged |
 
 ## 2. Anatomy
