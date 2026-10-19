@@ -1,5 +1,7 @@
-// Copies the 28 homepage-band logos from assets/logos/grey/<slug>-300w|150w.png to assets/logos/band/<slug>.png.
+// Copies the 28 homepage-band logos to assets/logos/band/<slug>.png: the colour original (padding trimmed, 600px wide)
+// where one exists, else assets/logos/grey/<slug>-300w|150w.png as is.
 // Never overwrites, never deletes. Dry run unless APPLY=1 (needs CLOUDFLARE_API_TOKEN with R2 write).
+import sharp from 'sharp';
 import { BAND, PUB, UA, pickSource } from './lib-logo-band.mjs';
 const APPLY = !!process.env.APPLY;
 const T = process.env.CLOUDFLARE_API_TOKEN;
@@ -15,7 +17,8 @@ let ok = 0, skip = 0, bad = 0;
 for (const b of BAND) {
   const src = await pickSource(b.slug);
   if (!src) { console.log('MISSING SOURCE', b.slug); bad++; continue; }
-  const body = Buffer.from(await (await fetch(PUB + encodeURI(src.key), { headers: UA })).arrayBuffer());
+  let body = Buffer.from(await (await fetch(PUB + encodeURI(src.key), { headers: UA })).arrayBuffer());
+  if (src.w === 'colour') body = await sharp(body).trim().resize({ width: 600, withoutEnlargement: true }).png({ compressionLevel: 9 }).toBuffer();
   if (!APPLY) { console.log(`would copy ${src.key} (${body.length}B) -> ${b.dest}`); ok++; continue; }
   const url = base + encodeURIComponent(b.dest);
   const ex = await fetch(url, { headers: H });
