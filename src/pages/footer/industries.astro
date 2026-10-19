@@ -230,6 +230,8 @@ const jsonLd = [
     align-items: center;
   }
 
+  .cross-grid > * { min-width: 0; }
+
   @media (min-width: 1024px) {
     .cross-grid {
       grid-template-columns: 1fr 1fr;
@@ -267,6 +269,7 @@ const jsonLd = [
 
   .diagram-inputs, .diagram-outputs {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: var(--gap-4);
     width: 100%;
@@ -280,6 +283,8 @@ const jsonLd = [
     font-family: var(--font-mono);
     font-size: var(--fluid-caption);
     color: var(--color-text-primary);
+    text-align: center;
+    overflow-wrap: anywhere;
   }
 
   .diag-node.outline {

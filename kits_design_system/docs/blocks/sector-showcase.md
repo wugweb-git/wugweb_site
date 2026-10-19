@@ -24,7 +24,7 @@ filters or case studies.
 
 Static content. The 8 cards are the same on every page.
 
-Every card links to `/footer/industries` with no hash. The hash (`/footer/industries#<sector-slug>`) is added only once the industries page has an element with that id for every sector; a hash with no matching id is never shipped.
+Every card links to its sector's row on the industries page, `/footer/industries#<sector-slug>`. The row id is the same Sanity slug (`SectorRow.astro`), so every hash has a matching id. A sector with no slug falls back to `/footer/industries`.
 
 | Page type | Heading, intro, CTA |
 |---|---|
@@ -40,7 +40,7 @@ section.sectors-section#sectors
 └ .wrap
   ├ h2 (copy) · p.sectors-intro (copy)
   ├ ul.sectors-grid
-  │ └ li → a.sector-card  href=/footer/industries
+  │ └ li → a.sector-card  href=/footer/industries#<sector-slug>
   │        ├ icon tile (inline Lucide SVG, aria-hidden)
   │        └ h3 sector name · p "Industry A · Industry B"
   └ a.btn.btn-ghost (CTA copy)
