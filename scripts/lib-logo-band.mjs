@@ -19,7 +19,7 @@ export const COLOUR = {
   mda: '23_MDA Online.png', 'philip-morris-international': '05_PMI.png', surya: '28_Surya softwares.png',
   tecnotree: '17_Tecnotree.png', tyroo: '08_Tyroo.png', wave: '30_Wave Group.png', woodkraft: '26_Woodkraft.png',
 };
-// Colour original first (trimmed + resized by the copy script), then the 300w grey file, then 150w.
+// Colour original first, then the 300w grey file, then 150w. Used as is: no copies, no uploads.
 export async function pickSource(slug) {
   if (COLOUR[slug]) {
     const key = `assets/logos/${COLOUR[slug]}`;

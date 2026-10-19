@@ -9,19 +9,19 @@
  },
  {
   "_id": "client-CLI-0022",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/grey/acko-150w.png",
+  "bandOrder": 2,
   "logoPath": null,
   "name": "Acko",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0023",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/26_Woodkraft.png",
+  "bandOrder": 28,
   "logoPath": null,
   "name": "WoodKraft",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0025",
@@ -33,50 +33,18 @@
  },
  {
   "_id": "client-CLI-0026",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/18_Adtech.png",
+  "bandOrder": 1,
   "logoPath": null,
   "name": "Adtech",
-  "showInLogoBand": null
- },
- {
-  "_id": "client-CLI-0027",
-  "bandLogoPath": null,
-  "bandOrder": null,
-  "logoPath": "/assets/work/rideev/client-logo-1gbn.png",
-  "name": "RideEV",
   "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0030",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/17_Tecnotree.png",
+  "bandOrder": 25,
   "logoPath": null,
   "name": "Tecnotree",
-  "showInLogoBand": null
- },
- {
-  "_id": "client-CLI-0035",
-  "bandLogoPath": null,
-  "bandOrder": null,
-  "logoPath": "/assets/logos/airtel-xsafe.png",
-  "name": "Airtel XSafe",
-  "showInLogoBand": true
- },
- {
-  "_id": "client-CLI-0039",
-  "bandLogoPath": null,
-  "bandOrder": null,
-  "logoPath": "/assets/logos/valyu-ai.png",
-  "name": "Valyu.ai",
-  "showInLogoBand": true
- },
- {
-  "_id": "client-CLI-0040",
-  "bandLogoPath": null,
-  "bandOrder": null,
-  "logoPath": "/assets/work/plufo/client-logo-6djh.png",
-  "name": "Plufo",
   "showInLogoBand": true
  },
  {
@@ -89,11 +57,11 @@
  },
  {
   "_id": "client-CLI-0044",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/grey/income-300w.png",
+  "bandOrder": 10,
   "logoPath": null,
   "name": "Income.SG",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0050",
@@ -105,67 +73,35 @@
  },
  {
   "_id": "client-CLI-0057",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/grey/aditya-birla-capital-300w.png",
+  "bandOrder": 7,
   "logoPath": "/assets/work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/client-logo-te1y.png",
   "name": "Aditya Birla Capital",
   "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0059",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/grey/amazon-ads-300w.png",
+  "bandOrder": 6,
   "logoPath": null,
   "name": "Amazon Ads",
-  "showInLogoBand": null
- },
- {
-  "_id": "client-CLI-0061",
-  "bandLogoPath": null,
-  "bandOrder": null,
-  "logoPath": "/assets/work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/client-logo-d64b.png",
-  "name": "Axis Bank",
-  "showInLogoBand": true
- },
- {
-  "_id": "client-CLI-0062",
-  "bandLogoPath": null,
-  "bandOrder": null,
-  "logoPath": "/assets/work/bankco/client-logo-qhmv.png",
-  "name": "Bankco",
-  "showInLogoBand": true
- },
- {
-  "_id": "client-CLI-0072",
-  "bandLogoPath": null,
-  "bandOrder": null,
-  "logoPath": "/assets/work/gratify-the-intelligent-rewards-and-feedback-platform/client-logo-5nzb.png",
-  "name": "Gratifi",
   "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0075",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/07_Indusind bank.png",
+  "bandOrder": 13,
   "logoPath": "/assets/logos/indusninja.png",
   "name": "IndusInd Bank",
   "showInLogoBand": true
  },
  {
-  "_id": "client-CLI-0077",
-  "bandLogoPath": null,
-  "bandOrder": null,
-  "logoPath": "/assets/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard/client-logo-5nkj.png",
-  "name": "Kia",
-  "showInLogoBand": true
- },
- {
   "_id": "client-CLI-0081",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/grey/linkedin-ads-300w.png",
+  "bandOrder": 9,
   "logoPath": null,
   "name": "LinkedIn Ads",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0085",
@@ -177,51 +113,51 @@
  },
  {
   "_id": "client-CLI-0087",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/05_PMI.png",
+  "bandOrder": 21,
   "logoPath": null,
   "name": "Philip Morris International",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0090",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/03_Spicejet.png",
+  "bandOrder": 11,
   "logoPath": null,
   "name": "SpiceJet",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0093",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/grey/sonnets-by-tata-coffee-300w.png",
+  "bandOrder": 23,
   "logoPath": null,
   "name": "Tata Sonnets",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0098",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/08_Tyroo.png",
+  "bandOrder": 26,
   "logoPath": null,
   "name": "Tyroo",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0101",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/30_Wave Group.png",
+  "bandOrder": 27,
   "logoPath": null,
   "name": "Wave",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-CLI-0103",
-  "bandLogoPath": null,
-  "bandOrder": null,
+  "bandLogoPath": "/assets/logos/grey/youtube-300w.png",
+  "bandOrder": 14,
   "logoPath": null,
   "name": "YouTube Ads",
-  "showInLogoBand": null
+  "showInLogoBand": true
  },
  {
   "_id": "client-Inkompass",
@@ -238,5 +174,53 @@
   "logoPath": null,
   "name": "Tanishq",
   "showInLogoBand": null
+ },
+ {
+  "_id": "client-agp",
+  "bandLogoPath": "/assets/logos/15_AG_P.png",
+  "bandOrder": 16,
+  "logoPath": null,
+  "name": "AG&P",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-airtel",
+  "bandLogoPath": "/assets/logos/10_Airtel.png",
+  "bandOrder": 5,
+  "logoPath": null,
+  "name": "Airtel",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-imedia",
+  "bandLogoPath": "/assets/logos/02_imedia.png",
+  "bandOrder": 17,
+  "logoPath": null,
+  "name": "iMedia",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-itc-limited",
+  "bandLogoPath": "/assets/logos/grey/itc-limited-300w.png",
+  "bandOrder": 4,
+  "logoPath": null,
+  "name": "ITC Limited",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-mda",
+  "bandLogoPath": "/assets/logos/23_MDA Online.png",
+  "bandOrder": 19,
+  "logoPath": null,
+  "name": "MDA",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-surya",
+  "bandLogoPath": "/assets/logos/28_Surya softwares.png",
+  "bandOrder": 24,
+  "logoPath": null,
+  "name": "Surya",
+  "showInLogoBand": true
  }
 ]

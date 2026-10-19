@@ -4,10 +4,12 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-**2026-10-19 — Homepage logo band.**
-Done: Studio deployed (`bandLogoPath` / `bandOrder` now visible on clients). Nav checked at 2000px: bar 1280px centred, page content 1200px, so nav edges sit 40px wider than content each side.
-Dry runs pass: `owner-copy-band-logos.mjs` (28 to copy, 0 missing) and `sync-logo-band.mjs` (22 patch, 6 create — ITC Limited, Airtel, AG&P, iMedia, MDA, Surya — 8 unflag).
-Open: (1) both `APPLY=1` runs — blocked: the Cloudflare token in `.env` is rejected and wrangler isn't logged in; copy must run before sync. (2) ~~Owner call on the 150px-only logos~~ Done 2026-10-19 (owner: use colour originals): the copy script now takes 14 from `assets/logos/NN_Name.png` (1500×876), trims the padding and saves 600px wide. Acko (knocked-out white pill, reads as a solid block in the grey band) and Cartier (no original) keep their 150w grey copy. (3) Industries: 0 of 66 industry docs have an icon; no sector field exists (sector groups on `/footer/industries` are in the page); homepage shows names only.
+**2026-10-19 — Homepage logo band. DONE.**
+- Live on wugweb.pages.dev: 28 logos in the band, in order, all loading. Each client's `bandLogoPath` points at a file already in R2 (nothing copied or uploaded, owner rule): 14 colour originals `assets/logos/NN_Name.png`, 14 grey copies `assets/logos/grey/<slug>-300w|150w.png` (Acko and Cartier stay on 150w grey). `logoPath` untouched.
+- Sanity: 22 clients patched, 6 created (ITC Limited, Airtel, AG&P, iMedia, MDA, Surya — names from the logo files, owner to check), 8 unflagged (RideEV, Airtel XSafe, Valyu.ai, Plufo, Axis Bank, Bankco, Gratifi, Kia). Backup `backups/sanity-pre-logo-band.json`. 1.4s after the first apply, something under the owner's Sanity login `createOrReplace`d 7 of the clients and wiped the band fields; re-applied, 28/28 held.
+- Studio deployed (`bandLogoPath` / `bandOrder` visible). Nav at 2000px: bar 1280px centred, content 1200px.
+- `owner-copy-band-logos.mjs` deleted (uploads are banned).
+- Open: the 14 colour originals sit on a padded 1500×876 canvas, so they render smaller in their tiles than the grey ones. Industries: 0 of 66 industry docs have an icon; no sector field exists.
 
 **2026-10-13 → 14 — Page SEO, share images, Notion (pages + services session).**
 Done:
@@ -800,7 +802,6 @@ Framer exposes **Aria label**, **Tab index** and **Google bot** per element
 | Item | Status | Reason |
 |---|---|---|
 | Homepage chat hero | ⏸️ Deferred | Keep video hero |
-| DNS cutover | **❌ Not done (re-verified 2026-09-24; CLAUDE.md is authoritative)** | `www.wugweb.com` still serves the old Framer build. Everything in this repo is live only on `*.wugweb.pages.dev`. The earlier "done 2026-09-23" note was wrong. |
 | Hyperdrive / SESSION KV | ⏸️ Deferred | Only if runtime needs |
 | footer/subscription | ⏸️ Deferred | Payment gateway scoping |
 | Credential rotation | ⏸️ Deferred | Unless user asks |
