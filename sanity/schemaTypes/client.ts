@@ -22,6 +22,8 @@ export default defineType({
     defineField({ name: 'logoLight', type: 'image', title: 'Logo (light background variant)', options: { hotspot: true }, group: 'branding' }),
     defineField({ name: 'showInLogoBand', title: 'Show in homepage logo band', type: 'boolean', initialValue: false, description: 'Tick to show this client logo in the "Trusted by" band on the homepage. Needs a logo path.', group: 'branding' }),
     defineField({ name: 'logoPath', type: 'string', description: 'R2/local logo path e.g. /assets/logos/client-logo-….png', group: 'branding' }),
+    defineField({ name: 'bandLogoPath', title: 'Logo band image', type: 'string', description: 'R2 path of the greyscale logo used only in the homepage "Trusted by" band, e.g. /assets/logos/band/acko.png. Falls back to Logo path when empty.', group: 'branding' }),
+    defineField({ name: 'bandOrder', title: 'Logo band order', type: 'number', description: 'Position in the homepage band, 1 first. Unnumbered clients sort A-Z after the numbered ones.', group: 'branding' }),
     defineField({ name: 'engagementType', type: 'string', options: { list: ['ongoing', 'project', 'consultancy', 'retainer'] }, group: 'relations' }),
     defineField({ name: 'engagements', type: 'array', of: [{ type: 'reference', to: [{ type: 'engagement' }] }], group: 'relations' }),
     defineField({ name: 'caseStudies', type: 'array', of: [{ type: 'reference', to: [{ type: 'caseStudy' }] }], group: 'relations' }),

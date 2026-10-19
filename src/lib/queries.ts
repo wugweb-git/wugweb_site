@@ -79,7 +79,7 @@ export const serviceTagVideosQuery = `
 `;
 
 export const homeLogoBandQuery = `
-  *[_type == "client" && showInLogoBand == true && defined(logoPath) && !(_id in path("drafts.**"))] | order(name asc) { name, logoPath }
+  *[_type == "client" && showInLogoBand == true && defined(coalesce(bandLogoPath, logoPath)) && !(_id in path("drafts.**"))] | order(coalesce(bandOrder, 9999) asc, name asc) { name, "logoPath": coalesce(bandLogoPath, logoPath) }
 `;
 
 export const teamListQuery = `
