@@ -13,6 +13,7 @@ export default defineType({
   fields: [
     defineField({ name: 'name', type: 'string', validation: (r) => r.required() }),
     defineField({ name: 'slug', type: 'slug', options: { source: 'name' }, validation: (r) => r.required() }),
+    defineField({ name: 'description', title: 'Sector line', type: 'text', rows: 2, description: 'One sentence shown under the sector on /footer/industries. From Notion.' }),
     defineField({ name: 'order', type: 'number' }),
     defineField({ name: 'externalId', title: 'Notion Sector ID', type: 'string', readOnly: true }),
     defineField({ name: 'showcase', title: 'Show in Sectors section', type: 'boolean', description: 'From Notion "Show in Sectors Section".' }),

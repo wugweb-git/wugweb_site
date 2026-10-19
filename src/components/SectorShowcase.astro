@@ -19,10 +19,12 @@
  * Icons: Lucide names from Notion, inlined as SVG at render. An unknown or
  * missing name drops the icon tile and logs a warning.
  *
- * Links: every card goes to the industries hub. It has no per-sector anchors
- * yet, so there is no hash — never ship a hash without a matching id.
+ * Links: every card goes to its sector's row on the industries hub,
+ * /footer/industries#<sector-slug>. Those ids come from the same Sanity slug
+ * (SectorRow.astro), so a card can never point at a missing anchor.
  */
 import type { ShowcaseSector } from '../lib/sectors';
+import { lucideSvg } from '../lib/lucide';
 
 interface Props {
   sectors: ShowcaseSector[];
@@ -42,33 +44,15 @@ const {
 
 const HUB = '/footer/industries';
 
-// All Lucide icons, bundled once (raw SVG strings, ~150 KB gzipped).
-const ICONS = import.meta.glob('/node_modules/lucide-static/icons/*.svg', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>;
-
-function iconSvg(name?: string): string | null {
-  const key = (name || '').trim().toLowerCase();
-  if (!key) return null;
-  const raw = ICONS[`/node_modules/lucide-static/icons/${key}.svg`];
-  if (!raw) return null;
-  return raw
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/\s*class="[^"]*"/, ' class="sector-icon" aria-hidden="true" focusable="false"')
-    .replace(/\s*width="24"\s*height="24"/, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
 const cards = (sectors || [])
   .filter((s) => s && s.name)
   .map((s) => {
-    const svg = iconSvg(s.icon);
+    const svg = lucideSvg(s.icon, 'sector-icon');
     if (!svg) console.warn(`[SectorShowcase] no Lucide icon for sector "${s.name}" (icon: ${s.icon ?? 'unset'})`);
     const industries = (s.industries || []).filter(Boolean).slice(0, 2);
-    return { key: s._id, name: s.name, svg, industries };
+    // Each card lands on its own row of the industries directory.
+    const href = s.slug ? `${HUB}#${s.slug}` : HUB;
+    return { key: s._id, name: s.name, svg, industries, href };
   });
 ---
 
@@ -82,7 +66,7 @@ const cards = (sectors || [])
       <ul class="sectors-grid" role="list">
         {cards.map((c, i) => (
           <li class="sectors-item" data-reveal data-reveal-delay={String(Math.min(i, 7) * 0.05)}>
-            <a class="sector-card" href={HUB}>
+            <a class="sector-card" href={c.href}>
               {c.svg && <div class="sector-icon-tile" set:html={c.svg} />}
               <div class="sector-text">
                 <h3 class="sector-name">{c.name}</h3>

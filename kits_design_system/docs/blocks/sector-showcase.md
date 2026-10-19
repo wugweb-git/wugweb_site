@@ -15,12 +15,12 @@ filters or case studies.
 |---|---|---|---|
 | 1 | Fintech | `wallet` | Digital Finance · NeoBanking |
 | 2 | BFSI | `landmark` | Banking · Insurance |
-| 3 | Technology | `cpu` | SaaS · AI/ML |
+| 3 | Technology | `cpu` | AI/ML · SaaS |
 | 4 | Consumer & Retail | `shopping-bag` | eCommerce · Fashion & Lifestyle |
-| 5 | Travel & Hospitality | `plane` | Hotels & Restaurants · Tourism |
+| 5 | Travel & Hospitality | `plane` | Tourism · Hotels & Restaurants |
 | 6 | Automotive & Mobility | `car` | Automotive · Electric Vehicles |
 | 7 | Healthcare | `heart-pulse` | Mental Health · Pharmacy |
-| 8 | Energy & Industrial | `zap` | Renewable Energy · Manufacturing |
+| 8 | Energy & Industrial | `zap` | Manufacturing · Renewable Energy |
 
 Static content. The 8 cards are the same on every page.
 
