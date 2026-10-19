@@ -30,7 +30,10 @@ for (const f of files) {
   const blocks = f.endsWith('.astro')
     ? [...src.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)].map((m) => ({ css: m[1], at: m.index }))
     : [{ css: src, at: 0 }];
-  for (const { css, at } of blocks) {
+  for (const { css: raw, at } of blocks) {
+    // Blank out /* comments */ but keep their newlines, so a comment that
+    // mentions `.sector-card` is not an override and line numbers still match.
+    const css = raw.replace(/\/\*[\s\S]*?\*\//g, (c) => c.replace(/[^\n]/g, ' '));
     css.split('\n').forEach((line, i) => {
       const m = line.match(SELECTOR);
       if (m) {

@@ -30,12 +30,16 @@ IndustriesHero  section.ind-hero#hero-section
     └ .ind-node × showcase sectors (Lucide icon + name)
 
 section.directory-section#industries
-└ SectorRow  section.dir-row#<sector-slug>  (one per sector)
+└ SectorRow  article.dir-row#<sector-slug>  (one per sector; article, not section, so the rows are not 17 landmarks)
   ├ .dir-row-meta: span.dir-row-num (aria-hidden) · h3 name · p sector line
   └ ul.dir-row-labels > li.dir-row-label × industries (plain text)
 ```
 
 Server-rendered; no client script. Every sector and industry is in the HTML.
+If Sanity returns no sectors, the page answers 503 with `Retry-After` and
+`noindex` rather than serving an empty directory. The hero uses the same
+`getShowcaseSectors()` query as the SectorShowcase cards, so both always show
+the same sectors in the same order.
 Row classes use `dir-row`, because `.sector-*` is reserved for SectorShowcase
 (`scripts/check-sector-css.mjs`).
 

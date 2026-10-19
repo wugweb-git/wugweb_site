@@ -14,8 +14,9 @@
  *   industry-IND-n: showOnSectorCard
  *
  * Only patches docs that already exist. Never creates, never deletes, never
- * touches any other field. An icon name that isn't a Lucide icon is reported
- * and still written (the site drops the icon tile and warns).
+ * touches any other field. An icon value that isn't a Lucide icon name (a URL,
+ * a typo, an empty cell) is reported and NOT written, so it can never replace
+ * a working icon already in Sanity.
  */
 import { createClient } from '@sanity/client';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
@@ -88,14 +89,16 @@ const sectorPlan = secRows.map((r) => {
   const want = { showcase: val(r.properties, F.show) === true, showcaseOrder: val(r.properties, F.order) ?? null, icon: iconName(val(r.properties, F.icon)) };
   const doc = byId.get(id);
   if (!doc) { notFound.push(`${id || '(no Sanity ID)'} ${name}`); return null; }
+  const iconOk = !!want.icon && LUCIDE.has(want.icon);
   const set = {}; const unset = [];
   for (const [k, v] of Object.entries(want)) {
+    if (k === 'icon' && !iconOk) continue; // never write or unset a non-Lucide icon
     const cur = doc[k] ?? (k === 'showcase' ? false : null);
     if (v === cur || (v === false && cur === false)) continue;
     if (v === null) { if (doc[k] != null) unset.push(k); } else set[k] = v;
   }
   if (Object.keys(set).length || unset.length) patches.push({ id, set, unset });
-  return { id, name, ...want, iconOk: !want.icon || LUCIDE.has(want.icon), changed: Object.keys(set).length + unset.length };
+  return { id, name, ...want, iconOk, changed: Object.keys(set).length + unset.length };
 }).filter(Boolean);
 
 const cardBySector = {};
@@ -115,7 +118,7 @@ const show = sectorPlan.filter((s) => s.showcase).sort((a, b) => (a.showcaseOrde
 console.log(`\nSectors section (${show.length} ticked):`);
 console.table(show.length ? show.map((s) => ({ order: s.showcaseOrder ?? '—', sector: s.name, icon: s.icon ?? '—', 'icon ok': s.iconOk ? 'yes' : 'NO', 'card industries': (cardBySector[s.id] || []).join(' · ') || '—' })) : [{ order: '—', sector: '—', icon: '—', 'icon ok': '—', 'card industries': '—' }]);
 const badIcons = sectorPlan.filter((s) => !s.iconOk);
-if (badIcons.length) console.log(`⚠ Not a Lucide icon: ${badIcons.map((s) => `${s.name} ("${s.icon}")`).join(', ')}`);
+if (badIcons.length) console.log(`⚠ Not a Lucide icon name, skipped (Sanity icon kept): ${badIcons.map((s) => `${s.name} ("${s.icon ?? ''}")`).join(', ')}`);
 const over = show.filter((s) => (cardBySector[s.id] || []).length > 2);
 if (over.length) console.log(`ℹ More than 2 industries ticked (site shows the first 2 by order): ${over.map((s) => s.name).join(', ')}`);
 if (show.length && (show.length < 6 || show.length > 8)) console.log(`ℹ ${show.length} sectors ticked; the section is designed for 6–8.`);

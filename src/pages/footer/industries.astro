@@ -4,7 +4,7 @@ import IndustriesHero from '../../components/industries/IndustriesHero.astro';
 import SectorRow from '../../components/industries/SectorRow.astro';
 import { sanityClient } from '../../lib/sanity';
 import { singletonPageQuery } from '../../lib/queries';
-import { getDirectorySectors } from '../../lib/sectors';
+import { getDirectorySectors, getShowcaseSectors } from '../../lib/sectors';
 
 /**
  * /footer/industries: a static showcase of every sector and its industries.
@@ -12,19 +12,29 @@ import { getDirectorySectors } from '../../lib/sectors';
  * Table 25 / Table 3, synced by Cowork); this page hardcodes none of them.
  * Spec: kits_design_system/docs/blocks/industries-directory.md
  */
-const [page, sectors] = await Promise.all([
+const [page, sectors, heroSectors] = await Promise.all([
   sanityClient.fetch(singletonPageQuery, { pageId: 'industries' }).catch(() => null),
   getDirectorySectors(),
+  // Same query and cache entry as the SectorShowcase cards, so the hero
+  // diagram and the cards always show the same sectors in the same order.
+  getShowcaseSectors(),
 ]);
+
+// No sectors means Sanity failed or returned nothing. Never serve (or let a
+// crawler index) an empty directory as a normal page: 503 so it is retried.
+const unavailable = sectors.length === 0;
+if (unavailable) {
+  Astro.response.status = 503;
+  Astro.response.headers.set('Retry-After', '60');
+}
 const title = page?.seoTitle || page?.title || 'Industries';
 const description = page?.seoDescription;
 
-// Hero diagram: the showcase sectors, in showcase order.
-const heroSectors = sectors
-  .filter((s) => s.showcase)
-  .sort((a, b) => (a.showcaseOrder ?? 99) - (b.showcaseOrder ?? 99));
-// Cross-industry diagram inputs: the first three of those.
+// Cross-industry diagram inputs: the first three showcase sectors, one arrow
+// per input so the diagram never points from nothing.
 const crossSectors = heroSectors.slice(0, 3);
+const ARROWS: Record<number, string[]> = { 1: ['|'], 2: ['\\', '/'], 3: ['\\', '|', '/'] };
+const crossArrows = ARROWS[crossSectors.length] || [];
 
 const SITE = 'https://www.wugweb.com';
 const PAGE_URL = `${SITE}/footer/industries`;
@@ -66,7 +76,7 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout noIndex={page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}
+<BaseLayout noIndex={unavailable || page?.noIndex} ogTitle={page?.ogTitle} ogDescription={page?.ogDescription} ogImagePath={page?.ogImagePath}
   title={title}
   description={description}
   hideGlobalSections={true}
@@ -119,14 +129,16 @@ const jsonLd = [
 
         <div class="cross-visual" data-reveal>
           <div class="transfer-diagram" aria-hidden="true">
-            <div class="diagram-inputs">
-              {crossSectors.map((s) => <div class="diag-node">{s.name}</div>)}
-            </div>
-            <div class="diagram-arrows">
-              <span>\</span>
-              <span>|</span>
-              <span>/</span>
-            </div>
+            {crossSectors.length > 0 && (
+              <>
+                <div class="diagram-inputs">
+                  {crossSectors.map((s) => <div class="diag-node">{s.name}</div>)}
+                </div>
+                <div class="diagram-arrows">
+                  {crossArrows.map((a) => <span>{a}</span>)}
+                </div>
+              </>
+            )}
             <div class="diagram-center">
               <span>WUGWEB</span>
             </div>
@@ -153,8 +165,8 @@ const jsonLd = [
           Our experience spans different sectors, business models and operating environments. If your industry isn't listed, tell us what you're building and we'll explore where we can help.
         </p>
         <div class="missing-actions">
-          <a href="/contact-us" class="btn btn-solid btn-light">Talk to us &rarr;</a>
-          <a href="/services" class="btn btn-ghost">View our services &rarr;</a>
+          <a href="/contact-us" class="btn btn-solid btn-light">Talk to us</a>
+          <a href="/services" class="btn btn-ghost">View our services</a>
         </div>
       </div>
     </section>
@@ -166,7 +178,7 @@ const jsonLd = [
         <p>
           Tell us what you're trying to achieve. We'll bring the industry context, strategy, design and technology needed to move it forward.
         </p>
-        <a href="/contact-us" class="btn btn-solid">Start a conversation &rarr;</a>
+        <a href="/contact-us" class="btn btn-solid">Start a conversation</a>
       </div>
     </section>
 

@@ -74,9 +74,9 @@ const nodes = (sectors || [])
 </section>
 
 <style>
+  /* Vertical padding comes from the global top-level section rule
+     (--section-y); a local padding-block here would be overridden. */
   .ind-hero {
-    padding-top: calc(var(--space-section-xl) * 1.5);
-    padding-bottom: var(--space-section-lg);
     display: grid;
     gap: var(--gap-8);
     align-items: center;
@@ -155,24 +155,24 @@ const nodes = (sectors || [])
   }
 
   .ind-node-tile { display: inline-flex; color: var(--color-text-secondary); }
-  .ind-node-tile :global(.hero-node-icon) { width: 1.5rem; height: 1.5rem; stroke-width: 1.5; }
+  .ind-node-tile :global(.hero-node-icon) { width: var(--gap-6); height: var(--gap-6); stroke-width: 1.5; }
 
   .ind-node-name {
     font-family: var(--font-mono);
     font-size: var(--fluid-body-sm);
-    line-height: 1.25;
+    line-height: var(--lh-snug);
     overflow-wrap: anywhere;
   }
 
   /* 480 ≤ x < 768: the four cross nodes only, larger labels. */
   @media (min-width: 480px) {
-    .ind-hero-visual { display: block; max-width: 28rem; width: 100%; margin-inline: auto; }
+    .ind-hero-visual { display: block; max-width: calc(var(--gap-8) * 14); width: 100%; margin-inline: auto; }
     .ind-node.is-extra, .ind-line.is-extra { display: none; }
   }
 
   /* 768 ≤ x < 1024: text, then the full diagram. */
   @media (min-width: 768px) {
-    .ind-hero-visual { max-width: 32rem; }
+    .ind-hero-visual { max-width: calc(var(--gap-8) * 16); }
     .ind-node.is-extra { display: flex; }
     .ind-line.is-extra { display: inline; }
     .ind-node-name { font-size: var(--fluid-caption); }
@@ -185,7 +185,7 @@ const nodes = (sectors || [])
   }
 
   @media (forced-colors: active) {
-    .ind-node { border: 1px solid CanvasText; }
+    .ind-node { border: var(--stroke-thin) solid CanvasText; }
     .ind-line { stroke: CanvasText; }
   }
 </style>
