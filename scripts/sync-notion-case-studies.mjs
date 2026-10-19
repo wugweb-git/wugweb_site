@@ -11,6 +11,10 @@
  * rewritten to their R2 copies via scripts/data/case-study-media-map.json; an old-host link with no
  * mapping is kept unchanged and listed (never dropped). "Framer site copy" is renamed "Sanity site copy".
  *
+ * extraMedia: images and videos in the case study's own R2 folder (assets/work/<folder>/, the
+ * folder most of its body images live in) that the body does not use — minus posters, the client
+ * logo and same-size duplicates of files already shown. Rendered as the closing gallery.
+ *
  * Matched docs (Notion "Sanity ID", else slug): sets title (what was built, no brand), shortTitle
  * (the brand), slug, seoTitle, seoDescription, focusKeyword and canonicalUrl. Empty Notion values
  * never clear Sanity. A slug change never recreates the doc (the _id stays). One slug per case
@@ -88,10 +92,49 @@ do {
   cur = j.has_more ? j.next_cursor : null;
 } while (cur);
 
-const docs = await sanity.fetch('*[_type == "caseStudy" && !(_id in path("drafts.**"))]{_id, "slug": slug.current, title, shortTitle, bodyMarkdown, seoTitle, seoDescription, focusKeyword, canonicalUrl}');
+const docs = await sanity.fetch('*[_type == "caseStudy" && !(_id in path("drafts.**"))]{_id, "slug": slug.current, title, shortTitle, bodyMarkdown, extraMedia, seoTitle, seoDescription, focusKeyword, canonicalUrl}');
 const byId = new Map(docs.map((d) => [d._id, d]));
 const bySlug = new Map(docs.map((d) => [d.slug, d]));
-const FIELDS = ['title', 'shortTitle', 'bodyMarkdown', 'slug', 'seoTitle', 'seoDescription', 'focusKeyword', 'canonicalUrl'];
+// extraMedia: unused files in each case study's own R2 folder.
+const registry = await sanity.fetch('*[_type == "asset" && folder match "work/*" && defined(publicUrl)]{folder, fileName, publicUrl, mediaType}');
+const sizeCache = new Map();
+async function sizeOf(u) {
+  if (sizeCache.has(u)) return sizeCache.get(u);
+  let n = 0;
+  for (let t = 0; t < 3 && !n; t++) {
+    try { const r = await fetch(u, { method: 'HEAD', signal: AbortSignal.timeout(20000) }); n = r.ok ? +r.headers.get('content-length') : -1; } catch { await sleep(500); }
+  }
+  sizeCache.set(u, n);
+  return n;
+}
+const folderOf = (u) => (u.match(/\/assets\/work\/([^/]+)\//) || [])[1] || '';
+for (const r of rows) {
+  if (!r.bodyMarkdown) continue;
+  const used = [...r.bodyMarkdown.matchAll(/https?:\/\/[^\s)\]]+/g)].map((m) => m[0]);
+  const counts = {};
+  for (const u of used) if (/\.(png|jpe?g|webp|gif)$/i.test(u) && folderOf(u)) counts[folderOf(u)] = (counts[folderOf(u)] || 0) + 1;
+  const own = Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0];
+  if (!own) continue;
+  const usedSet = new Set(used);
+  const usedSizes = new Set();
+  for (const u of used.filter((x) => folderOf(x) === own)) usedSizes.add(await sizeOf(u));
+  const seenFile = new Set();
+  const extra = [];
+  const files = registry.filter((a) => a.folder === `work/${own}` && /^(Image|Video)$/.test(a.mediaType || ''))
+    .sort((a, b) => a.fileName.localeCompare(b.fileName, undefined, { numeric: true }));
+  for (const a of files) {
+    if (seenFile.has(a.fileName) || usedSet.has(a.publicUrl)) continue;
+    seenFile.add(a.fileName);
+    if (/-poster\.|client-logo|^logo/i.test(a.fileName)) continue;
+    const n = await sizeOf(a.publicUrl);
+    if (n <= 0 || usedSizes.has(n)) continue; // missing, or a duplicate of a file already shown
+    usedSizes.add(n);
+    extra.push(a.publicUrl);
+  }
+  r.extraMedia = extra.length ? JSON.stringify(extra) : '';
+}
+
+const FIELDS = ['title', 'shortTitle', 'bodyMarkdown', 'extraMedia', 'slug', 'seoTitle', 'seoDescription', 'focusKeyword', 'canonicalUrl'];
 // Resolve every doc's slug after this run first, so canonicals may point at a slug being set now.
 const matchOf = (r) => byId.get(r.sanityId) || bySlug.get(r.slug);
 const finalSlug = new Map(docs.map((d) => [d._id, d.slug]));
@@ -111,6 +154,7 @@ for (const r of rows) {
   const set = {};
   for (const f of FIELDS) {
     const v = f === 'slug' ? finalSlug.get(d._id) : r[f];
+    if (f === 'extraMedia') { if (v && v !== JSON.stringify(d.extraMedia || [])) set.extraMedia = JSON.parse(v); continue; }
     if (!v || v === (d[f] || '')) continue;
     if (f === 'canonicalUrl') {
       const m = v.match(/^\/work\/([^/?#]+)\/?$/);
@@ -123,7 +167,7 @@ for (const r of rows) {
 
 console.log(`${WRITE ? 'WRITE' : 'DRY RUN'} · notion ${rows.length} · sanity ${docs.length} · to patch ${patches.length}`);
 for (const f of FIELDS) console.log(`  ${f}: ${patches.filter((p) => p.set[f === 'slug' ? 'slug.current' : f] !== undefined).length}`);
-for (const p of patches) for (const [f, v] of Object.entries(p.set)) { if (f === 'bodyMarkdown') continue; const k = f.replace('.current', ''); console.log(`  ${p.id} ${k}: "${p.before[k] ?? ''}" → "${v}"`); }
+for (const p of patches) for (const [f, v] of Object.entries(p.set)) { if (f === 'bodyMarkdown') continue; if (f === 'extraMedia') { console.log(`  ${p.id} extraMedia: ${v.length} files`); continue; } const k = f.replace('.current', ''); console.log(`  ${p.id} ${k}: "${p.before[k] ?? ''}" → "${v}"`); }
 if (unmappedMedia.length) console.log(`old-host media with no R2 mapping (kept unchanged — needs a file in R2):\n  ${unmappedMedia.join('\n  ')}`);
 if (unmatched.length) console.log(`no Sanity doc: ${unmatched.join(', ')}`);
 if (slugSkipped.length) console.log(`slug skipped (taken):\n  ${slugSkipped.join('\n  ')}`);
