@@ -626,6 +626,17 @@
      100 minus the header's vertical padding (16+16 mobile, 20+20 tablet+). */
   --header-height: 100px;
   --nav-height: calc(var(--header-height) - 40px);  /* 60px bar on every breakpoint */
+  /* Blog post layout (/blog/[slug]), sm/md/lg tokens: sm here, md and lg in
+     the 768 / 1200 blocks below. sm and md are one centred reading column with
+     the cover under the title; lg splits into a sticky cover (5) and the
+     reading column (7). See kits_design_system/docs/blocks/blog-post.md. */
+  --article-cols: minmax(0, 1fr);
+  --article-areas: "hero" "cover" "body";
+  --article-column: 720px;
+  --article-cover-ratio: 4 / 3;
+  --article-cover-height: auto;
+  --article-cover-position: static;
+  --article-title-size: var(--t-display);
   --control-size: 44px;
   /* Desktop nav: the original wugweb.com (Framer) bar's proportions (78px bar,
      47px pills, 18px text, 54px logo; measured 2026-10-13) scaled x0.77 into
@@ -1147,6 +1158,7 @@ a[href^='tel:']:not(.no-external-icon)::after {
   :root {
     --shell-gutter: 32px; --grid-gap: 24px;
     --nav-height: calc(var(--header-height) - 40px);
+    --article-cover-ratio: 16 / 9;
     --space-section-xs: 70px; --space-section-sm: 70px; --space-section-md: 70px;
     --space-section-lg: 70px; --space-section-xl: 70px;
   }
@@ -1154,6 +1166,13 @@ a[href^='tel:']:not(.no-external-icon)::after {
 @media (min-width: 1200px) {
   :root {
     --shell-gutter: 48px; --grid-gap: 32px;
+    --article-cols: minmax(0, 5fr) minmax(0, 7fr);
+    --article-areas: "cover hero" "cover body";
+    --article-column: none;
+    --article-cover-ratio: auto;
+    --article-cover-height: calc(100vh - var(--header-height) - var(--gap-8));
+    --article-cover-position: sticky;
+    --article-title-size: var(--t-h1);
     --space-section-xs: 96px; --space-section-sm: 96px; --space-section-md: 96px;
     --space-section-lg: 96px; --space-section-xl: 96px;
   }

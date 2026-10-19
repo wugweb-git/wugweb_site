@@ -11,6 +11,13 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - `owner-copy-band-logos.mjs` deleted (uploads are banned).
 - Open: the 14 colour originals sit on a padded 1500×876 canvas, so they render smaller in their tiles than the grey ones.
 
+**2026-10-19: Blog post layout, poster fix, audits.**
+- Posters: `posterFor()` now resolves service clips to `site/services/<pillar>/posters/<file>.webp` (b47be4ee). Homepage Strategy and Operations tags no longer 404.
+- Other broken files seen (not fixed, need existing R2 replacements): `more/about/about_5.webp`, `more/about/about_7.mp4` (/about), `more/service/service_benefit_6.webp` (/services).
+- `/blog/[slug]`: Fabrica-style split at lg (sticky cover 5/12, reading column 7/12), one column at sm/md; related posts use PostCard. Tokens `--article-*` (sm/md/lg). Spec: `kits_design_system/docs/blocks/blog-post.md`.
+- Blog covers are 92.5 MB across 103 files (48 PNGs over 1 MB); /blog decodes slowly. Needs smaller R2 copies (owner decision: no new uploads).
+- Industry icons: 0 of 45 industries have an icon in Notion or Sanity (Notion Industry "Icon" is a URL field). Sectors: Notion and Sanity match on all 17 (icons, showcase ticks, order, lines) and all 45 industry links and card ticks.
+
 **2026-10-19: Industries page rebuilt as a static showcase (branch `feat/sector-showcase`, PR #2, not deployed).**
 - `/footer/industries`: hero (owner H1 and lead, Lucide diagram of the 8 showcase sectors), 17 sector rows (`#<sector-slug>`, muted number, name, sector line, every industry as a plain label), cross-industry, "Don't see your industry?", final CTA. All sectors, lines, icons and industries come from Sanity; the page hardcodes none.
 - Removed: the 9 hardcoded groups, 34 buttons, alias map, `industryPreviews`, drawer, search, filters, case-study query and capability matrix. Cross-industry em-dash is now a comma.

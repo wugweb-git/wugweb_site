@@ -5,6 +5,8 @@ import { sanityClient, urlFor, getPreviewClient } from '../../lib/sanity';
 import { postBySlugQuery, postsListQuery } from '../../lib/queries';
 import { assetUrl, posterFor } from '../../lib/assets';
 import { loadAssetAlts, altFor } from '../../lib/asset-alt';
+import PostCard from '../../components/PostCard.astro';
+import { toPostCard } from '../../lib/post-card';
 
 const { slug } = Astro.params;
 
@@ -31,7 +33,8 @@ const pubDate = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString
 const coverImageUrl = post.coverPath
   ? assetUrl(post.coverPath)
   : (post.coverImage ? urlFor(post.coverImage).width(1600).height(900).url() : '');
-const coverAlt = altFor(await loadAssetAlts(), post.coverPath, `Cover image for ${post.title}`);
+const altMap = await loadAssetAlts();
+const coverAlt = altFor(altMap, post.coverPath, `Cover image for ${post.title}`);
 const ogImageUrl = post.ogImagePath
   ? assetUrl(post.ogImagePath)
   : post.ogImage
@@ -147,10 +150,10 @@ const prevPost = idx > 0 ? sorted[idx - 1] : null;
 const nextPost = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
 
 // Related posts: the editor's picks (post.relatedPosts) first, then the same
-// category, then the latest — three cards, never the post itself.
-const coverFor = (p: any) => p?.coverPath
-  ? assetUrl(p.coverPath)
-  : (p?.coverImage ? urlFor(p.coverImage).width(800).height(500).url() : '');
+// category, then the latest — three cards, never the post itself. Rendered as
+// the shared PostCard (same card as /blog), so picks are resolved to their
+// full postsListQuery row (topic, author) by slug.
+const postBySlug = new Map(allPosts.map((p: any) => [p.slug, p]));
 const relatedPosts: any[] = [];
 const seenRelated = new Set([slug]);
 for (const p of [
@@ -159,8 +162,9 @@ for (const p of [
   ...allPosts,
 ]) {
   if (relatedPosts.length >= 3) break;
-  if (p?.slug && !seenRelated.has(p.slug)) { seenRelated.add(p.slug); relatedPosts.push(p); }
+  if (p?.slug && !seenRelated.has(p.slug)) { seenRelated.add(p.slug); relatedPosts.push(postBySlug.get(p.slug) || p); }
 }
+const relatedCards = relatedPosts.map((p: any) => toPostCard(p, altMap));
 
 const shareUrl = new URL(`/blog/${slug}`, SITE).toString();
 const shareText = encodeURIComponent(post.title || '');
@@ -175,10 +179,12 @@ const shareLinks = [
 <BaseLayout title={`${post.title} | Wugweb Insights`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl} ogTitle={post.ogTitle} ogDescription={post.ogDescription} noIndex={post.noIndex} canonicalPath={post.canonicalUrl} jsonLd={[blogPostingNode, breadcrumbNode]}>
   <div id="reading-progress" class="reading-progress-bar" style={`--bar-accent: ${accent}`} aria-hidden="true"></div>
 
-  {/* Same order and widths as a case study: title block at the 1200 content
-      width, the cover below it at 1200, then a 720 reading column. */}
-  <section class="article-hero" id="article-hero" aria-labelledby="article-hero-title" style={`--accent: ${accent}`}>
-    <div class="wrap" lang={post.language || undefined}>
+  {/* One grid, three areas (tokens --article-*): sm/md stack hero, cover,
+      body in a centred reading column; lg puts a sticky cover on the left
+      (5 of 12) beside the hero and body (7 of 12). Posts without a cover
+      stay a single column at every breakpoint. */}
+  <section class:list={['wrap', 'post-layout', { 'has-cover': !!coverImageUrl }]} id="article" style={`--accent: ${accent}`} aria-labelledby="article-hero-title" lang={post.language || undefined}>
+    <header class="post-hero" id="article-hero">
       <h1 id="article-hero-title" data-reveal>{post.title}</h1>
       {post.excerpt && <p class="article-intro" data-reveal>{post.excerpt}</p>}
       {post.tags?.length > 0 && (
@@ -197,18 +203,15 @@ const shareLinks = [
         {readTime && <div><dt class="meta-label">Reading time</dt><dd>{readTime}</dd></div>}
         {post.category && <div><dt class="meta-label">Category</dt><dd>{post.category}</dd></div>}
       </dl>
-    </div>
-  </section>
+    </header>
 
-  {coverImageUrl && (
-    <section class="wrap article-cover" id="article-cover" aria-label="Cover image" data-reveal>
-      <figure class="article-cover-media">
+    {coverImageUrl && (
+      <figure class="post-cover" id="article-cover" data-reveal>
         <img src={coverImageUrl} alt={coverAlt} loading="eager" fetchpriority="high" decoding="async" />
       </figure>
-    </section>
-  )}
+    )}
 
-  <section class="wrap article" style={`--accent: ${accent}`} id="article" aria-label="Article" lang={post.language || undefined}>
+    <div class="post-body">
     {toc.length > 0 && (
       <nav class="article-toc" aria-label="Table of contents">
         <p class="toc-title">Contents</p>
@@ -284,6 +287,7 @@ const shareLinks = [
         ) : <span class="pn-link pn-placeholder"></span>}
       </nav>
     )}
+    </div>
   </section>
 
   {relatedPosts.length > 0 && (
@@ -292,24 +296,8 @@ const shareLinks = [
         <h2 id="related-posts-title">More insights</h2>
         <a href="/blog" class="btn btn-ghost">All insights</a>
       </div>
-      <ul class="related-grid is-posts">
-        {relatedPosts.map((p: any) => {
-          const pCover = coverFor(p);
-          return (
-            <li>
-              <a href={`/blog/${p.slug}`} class="related-card">
-                <div class="related-visual">
-                  {pCover ? <img src={pCover} alt="" loading="lazy" /> : <span class="related-visual-empty" aria-hidden="true"></span>}
-                </div>
-                <div class="related-content">
-                  {p.category && <span class="related-kicker">{p.category}</span>}
-                  <h3>{p.title}</h3>
-                  {p.readingTime && <span class="related-sub">{p.readingTime} min read</span>}
-                </div>
-              </a>
-            </li>
-          );
-        })}
+      <ul class="related-grid is-posts" role="list">
+        {relatedCards.map((c) => <li><PostCard card={c} row /></li>)}
       </ul>
     </section>
   )}
@@ -349,8 +337,35 @@ const shareLinks = [
 </BaseLayout>
 
 <style>
-  /* Hero — title block at the 1200 content width, as on a case study. */
-  .article-hero h1 { font-size: var(--t-display); font-weight: var(--font-weight-extrabold); line-height: var(--core-line-height-tight); color: var(--fg); max-width: 22ch; overflow-wrap: break-word; }
+  /* Layout: one grid, areas and columns from the --article-* sm/md/lg tokens
+     (global.css). A post without a cover never splits. */
+  .post-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "hero" "body";
+    column-gap: calc(var(--grid-gap) * 2);
+    row-gap: var(--gap-10);
+    align-items: start;
+  }
+  .post-layout.has-cover {
+    grid-template-columns: var(--article-cols);
+    grid-template-areas: var(--article-areas);
+  }
+  .post-hero, .post-body {
+    width: 100%;
+    max-width: var(--article-column);
+    margin-inline: auto;
+    min-width: 0;
+  }
+  .post-hero { grid-area: hero; }
+  .post-body { grid-area: body; }
+  @media (min-width: 1200px) {
+    .post-layout.has-cover .post-hero, .post-layout.has-cover .post-body { margin-inline: 0; }
+    .post-layout:not(.has-cover) .post-hero, .post-layout:not(.has-cover) .post-body { max-width: 720px; }
+  }
+
+  /* Hero */
+  .post-hero h1 { font-size: var(--article-title-size); font-weight: var(--font-weight-extrabold); line-height: var(--core-line-height-tight); color: var(--fg); max-width: 22ch; overflow-wrap: break-word; }
   .article-intro { font-size: var(--fluid-h5); line-height: 1.4; margin-top: var(--gap-4); color: var(--fg-muted); max-width: 56ch; }
   .article-tags { list-style: none; margin: var(--gap-6) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-2); }
   .article-meta { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-4) var(--gap-8); margin: var(--gap-10) 0 0; border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-6); }
@@ -361,12 +376,19 @@ const shareLinks = [
   .meta-author { display: flex; align-items: center; gap: var(--gap-2); }
   .meta-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 
-  /* Cover — below the title, full content width. */
-  .article-cover-media { margin: 0; border-radius: var(--radius-xl); overflow: hidden; }
-  .article-cover-media img { width: 100%; height: auto; max-height: 720px; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
-
-  /* Reading column: full-width section, 720 carved by padding. */
-  .article { padding-inline: max(var(--shell-gutter), calc((100% - 720px) / 2)); }
+  /* Cover: under the title at sm/md (4:3, then 16:9); at lg a sticky panel
+     the height of the viewport below the header, beside the reading column. */
+  .post-cover {
+    grid-area: cover;
+    margin: 0;
+    position: var(--article-cover-position);
+    top: calc(var(--header-height) + var(--gap-4));
+    height: var(--article-cover-height);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--color-surface-elevated);
+  }
+  .post-cover img { width: 100%; height: 100%; aspect-ratio: var(--article-cover-ratio); display: block; object-fit: cover; }
   .article-syndicated { margin-top: var(--gap-8); font-size: var(--fluid-body-sm); color: var(--fg-muted); }
   .author-links { list-style: none; margin: var(--gap-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--gap-4); }
   .author-links a { font-size: var(--fluid-body-sm); color: var(--fg); }
@@ -435,7 +457,11 @@ const shareLinks = [
   .related-head { display: flex; justify-content: space-between; align-items: center; gap: var(--gap-4); margin-bottom: var(--gap-6); }
   .related-head h2 { font-size: var(--t-h3); margin: 0; color: var(--fg); }
   .related-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--grid-gap); grid-template-columns: 1fr; }
-  @media (min-width: 768px) { .related-grid { grid-template-columns: repeat(2, 1fr); } .related-grid.is-posts { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 768px) { .related-grid { grid-template-columns: repeat(2, 1fr); } }
+  /* Posts: PostCard's own contract, 1 (row cards) / 2 at md / 3 at lg. */
+  @media (min-width: 1200px) { .related-grid.is-posts { grid-template-columns: repeat(3, 1fr); } }
+  .related-grid.is-posts > li { display: flex; min-width: 0; }
+  .related-grid.is-posts > li > :global(.post-card) { flex: 1; }
   .related-card { text-decoration: none; display: flex; flex-direction: column; height: 100%; border-radius: var(--radius-xl); overflow: hidden; background: var(--color-surface-elevated); box-shadow: var(--shadow-sm); transition: box-shadow var(--duration-normal) ease, transform var(--duration-normal) ease; }
   .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
   .related-visual { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: color-mix(in srgb, var(--neutral-10) 20%, transparent); }
