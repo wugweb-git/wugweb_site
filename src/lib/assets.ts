@@ -93,5 +93,10 @@ export const R2_ASSETS = {
  */
 export function posterFor(videoPath?: string | null): string {
   if (!videoPath || !/\.mp4$/i.test(videoPath)) return '';
+  // Service clips (site/services/<pillar>/<file>.mp4) follow the
+  // src/lib/service-media.ts convention instead: <pillar>/posters/<file>.webp.
+  // They have no `-poster.webp` sibling, so the generic rule 404s for them.
+  const service = videoPath.match(/^((?:.*\/)?site\/services\/[^/]+)\/([^/]+)\.mp4$/i);
+  if (service) return assetUrl(`${service[1]}/posters/${service[2]}.webp`);
   return assetUrl(videoPath.replace(/\.mp4$/i, '-poster.webp'));
 }
