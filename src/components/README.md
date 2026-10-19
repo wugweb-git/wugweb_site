@@ -14,7 +14,7 @@ Reusable UI components used across the site. Import from `src/components/`.
 
 These appear on every page after the page content:
 - Global Partners (`section.global-partners`)
-- Global Industries (`section.global-industries`)
+- Sectors showcase (`SectorShowcase.astro`, `section.sectors-section`)
 - Global Blog Teaser (`section.global-blog-teaser`)
 - Final CTA (`section.global-final-cta`)
 - Footer

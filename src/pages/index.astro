@@ -98,19 +98,11 @@ const realLogos = (sanityLogos as any[]).length
 // marking now live in ClientAssemblyGrid.astro — this only needs to hand it
 // the real (unpadded) logo set.
 
-// Industries — sourced from the Sanity industry master (Global Settings);
-// fallback to the curated grid if the query comes back empty.
-const curatedIndustries = [
-  'Government', 'Insurtech', 'Travel', 'Logistics', 'Automotive',
-  'Fintech', 'Edtech', 'Sports', 'E-commerce', 'Media', 'Energy', 'NGOs',
-];
-const sanityIndustries = (await sanityClient
-  .fetch('*[_type == "industry"] | order(order asc) { name }[0..23]')
-  .catch(() => [])).map((i: any) => i.name);
-const industries = (sanityIndustries as string[]).length
-  ? (sanityIndustries as string[])
-  : curatedIndustries;
+// Sectors showcase — same data and cache entry as BaseLayout's instance.
+const showcaseSectors = await getShowcaseSectors();
 import InsightsBlock from '../components/InsightsBlock.astro';
+import SectorShowcase from '../components/SectorShowcase.astro';
+import { getShowcaseSectors } from '../lib/sectors';
 import ClientAssemblyGrid from '../components/ClientAssemblyGrid.astro';
 import ServiceTagField from '../components/ServiceTagField.astro';
 ---
@@ -122,7 +114,7 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   title={homeTitle}
   description={homeDescription}
   hideGlobalBlog={true}
-  hideGlobalIndustries={true}
+  hideGlobalSectors={true}
 >
   <!-- HERO -->
   <section class="hero" id="hero" aria-labelledby="hero-title">
@@ -200,24 +192,15 @@ import ServiceTagField from '../components/ServiceTagField.astro';
   <!-- CLIENT LOGOS -->
   <ClientAssemblyGrid logos={realLogos} />
 
-  <!-- INDUSTRIES WE EMPOWER -->
-  <section class="industries-section tone-elevated" data-scroll="rise" id="industries-section" aria-labelledby="industries-section-title">
-    <div class="wrap industries-head">
-      
-      <h2 data-reveal id="industries-section-title">We understand the context behind the product.</h2>
-      <p data-reveal>From regulated sectors to fast-moving consumer markets, our experience spans industries that demand precision and creativity in equal measure.</p>
-    </div>
-    <div class="industries-marquee-wrap" aria-hidden="true">
-      <div class="industries-marquee">
-        {[...industries, ...industries].map((ind) => (
-          <span class="ind-pill">{ind}</span>
-        ))}
-      </div>
-    </div>
-    <div class="wrap">
-      <a href="/footer/industries" class="btn btn-ghost" data-reveal>Explore All Industries</a>
-    </div>
-  </section>
+  <!-- SECTORS — homepage instance of the one sectors component, with this
+       page's own copy. -->
+  <SectorShowcase
+    sectors={showcaseSectors}
+    heading="We understand the context behind the product."
+    intro="From regulated sectors to fast-moving consumer markets, our experience spans industries that demand precision and creativity in equal measure."
+    ctaLabel="Explore All Industries"
+    ctaHref="/footer/industries"
+  />
 
   <!-- BLOG TEASER -->
   {sanityPosts.length > 0 && (
@@ -422,65 +405,6 @@ import ServiceTagField from '../components/ServiceTagField.astro';
      ClientAssemblyGrid.astro's own scoped style (2026-09-16) — this
      page only renders <ClientAssemblyGrid> now. */
 
-
-  /* ── Industries We Empower ── */
-  .industries-section {
-    padding-block: var(--space-section-xl);
-    border-top: var(--stroke-thin) solid var(--line);
-    overflow: hidden;
-  }
-  .industries-head {
-    margin-bottom: var(--gap-12);
-  }
-  .industries-head h2 { font-size: var(--t-h3); max-width: 20ch; margin-top: var(--gap-4); }
-  .industries-head p { margin-top: var(--gap-5); max-width: 55ch; color: var(--fg-muted); }
-  .industries-head .btn { margin-top: var(--gap-6); }
-
-  .industries-marquee-wrap {
-    position: relative;
-    overflow: hidden;
-    padding-block: var(--gap-6);
-    margin-bottom: var(--gap-10);
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  }
-
-  .industries-marquee {
-    display: flex;
-    gap: var(--gap-4);
-    width: max-content;
-    animation: marquee-scroll 30s linear infinite;  }
-
-  @keyframes marquee-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .industries-marquee { animation: none; flex-wrap: wrap; width: auto; }
-  }
-
-  .ind-pill {
-    display: inline-flex;
-    align-items: center;
-    white-space: nowrap;
-    padding: var(--gap-3) var(--gap-6);
-    border-radius: var(--r-pill);
-    border: var(--stroke-thin) solid var(--line);
-    font-family: var(--font-mono);
-    font-size: var(--t-sm);
-    color: var(--fg-muted);
-    /* Was --neutral-1 (#F4F4F4) — a light-mode surface, which read as a
-       solid white pill on this dark page. Same dark, barely-there elevation
-       every other pill/chip on the site uses. */
-    background: color-mix(in srgb, var(--neutral-0) 6%, transparent);
-    transition: border-color var(--duration-normal) ease, color var(--duration-normal) ease, background var(--duration-normal) ease;    cursor: default;
-  }
-
-  .ind-pill:hover {
-    border-color: var(--color-accent-primary);
-    color: var(--fg);
-  }
 
   /* ── Blog Teaser ── */
 

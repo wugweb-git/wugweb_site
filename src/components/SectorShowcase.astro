@@ -1,0 +1,237 @@
+---
+/**
+ * SectorShowcase — the one "industries" section, sitewide.
+ *
+ * Replaces the global industry-pill strip (BaseLayout) and the homepage
+ * marquee. Shows breadth: 6–8 sector cards, each an icon, the sector name and
+ * up to two industries. Not a filter, not a case-study index — no counts, no
+ * descriptions, no arrows.
+ *
+ * SINGLE SOURCE OF TRUTH. Every bit of markup, style, state and motion for
+ * this section lives here. Pages pass copy only (heading, intro, ctaLabel,
+ * ctaHref) plus the data from getShowcaseSectors(); nothing outside this file
+ * may style `.sectors-section` or its children — scripts/check-sector-css.mjs
+ * fails the build if anything does. Spec:
+ * kits_design_system/docs/blocks/sector-showcase.md
+ *
+ * Data: Notion Table 25 / Table 3 → Sanity `sector` / `industry`
+ * (src/lib/sectors.ts). 0 sectors → the section does not render.
+ * Icons: Lucide names from Notion, inlined as SVG at render. An unknown or
+ * missing name drops the icon tile and logs a warning.
+ *
+ * Links: every card goes to the industries hub. It has no per-sector anchors
+ * yet, so there is no hash — never ship a hash without a matching id.
+ */
+import type { ShowcaseSector } from '../lib/sectors';
+
+interface Props {
+  sectors: ShowcaseSector[];
+  heading?: string;
+  intro?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  sectors,
+  heading = 'Industries We Empower',
+  intro = 'From regulated sectors to fast-moving consumer markets, our experience spans industries that demand precision and creativity in equal measure.',
+  ctaLabel = 'Explore All Industries',
+  ctaHref = '/footer/industries',
+} = Astro.props;
+
+const HUB = '/footer/industries';
+
+// All Lucide icons, bundled once (raw SVG strings, ~150 KB gzipped).
+const ICONS = import.meta.glob('/node_modules/lucide-static/icons/*.svg', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+function iconSvg(name?: string): string | null {
+  const key = (name || '').trim().toLowerCase();
+  if (!key) return null;
+  const raw = ICONS[`/node_modules/lucide-static/icons/${key}.svg`];
+  if (!raw) return null;
+  return raw
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/\s*class="[^"]*"/, ' class="sector-icon" aria-hidden="true" focusable="false"')
+    .replace(/\s*width="24"\s*height="24"/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const cards = (sectors || [])
+  .filter((s) => s && s.name)
+  .map((s) => {
+    const svg = iconSvg(s.icon);
+    if (!svg) console.warn(`[SectorShowcase] no Lucide icon for sector "${s.name}" (icon: ${s.icon ?? 'unset'})`);
+    const industries = (s.industries || []).filter(Boolean).slice(0, 2);
+    return { key: s._id, name: s.name, svg, industries };
+  });
+---
+
+{cards.length > 0 && (
+  <section class="sectors-section" id="sectors" aria-labelledby="sectors-title">
+    <div class="wrap">
+      <div class="sectors-head">
+        <h2 id="sectors-title" data-reveal>{heading}</h2>
+        {intro && <p class="sectors-intro" data-reveal>{intro}</p>}
+      </div>
+      <ul class="sectors-grid" role="list">
+        {cards.map((c, i) => (
+          <li class="sectors-item" data-reveal data-reveal-delay={String(Math.min(i, 7) * 0.05)}>
+            <a class="sector-card" href={HUB}>
+              {c.svg && <div class="sector-icon-tile" set:html={c.svg} />}
+              <div class="sector-text">
+                <h3 class="sector-name">{c.name}</h3>
+                {c.industries.length > 0 && <p class="sector-industries">{c.industries.join(' · ')}</p>}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+      {ctaLabel && ctaHref && (
+        <div class="sectors-cta">
+          <a href={ctaHref} class="btn btn-ghost">{ctaLabel}</a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+  /* ── Section ─────────────────────────────────────────────────────── */
+  .sectors-head { max-width: 55ch; }
+  .sectors-head h2 { font-size: var(--t-h2); line-height: var(--lh-h2); }
+  .sectors-intro { margin-top: var(--gap-4); font-size: var(--t-xl); line-height: var(--lh-xl); color: var(--fg-muted); }
+  .sectors-cta { margin-top: var(--gap-8); }
+
+  /* ── Grid ────────────────────────────────────────────────────────────
+     Fixed column counts per tier with minmax(0, 1fr): a partial last row
+     and a 1–3 card set stay left-aligned at normal card width (no auto-fit
+     stretching). Rows size to their tallest card. */
+  .sectors-grid {
+    list-style: none; margin: var(--gap-8) 0 0; padding: 0;
+    display: grid; grid-template-columns: minmax(0, 1fr);
+    gap: var(--grid-gap);
+  }
+  .sectors-item { display: flex; min-width: 0; }
+
+  /* ── Card (Stack tier, < 480: horizontal) ───────────────────────── */
+  .sector-card {
+    --tile: var(--gap-12);           /* 48 */
+    --glyph: var(--gap-8);           /* 32 */
+    flex: 1; min-width: 0;
+    display: flex; align-items: center; gap: var(--gap-4);
+    padding: var(--gap-4);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--elevation-2);
+    color: var(--fg);
+    text-decoration: none;
+    transition:
+      background-color var(--duration-fast) var(--easing-standard),
+      box-shadow var(--duration-fast) var(--easing-standard),
+      transform var(--duration-fast) var(--easing-standard);
+  }
+  .sector-icon-tile {
+    flex: none; display: grid; place-items: center;
+    width: var(--tile); height: var(--tile);
+    border-radius: var(--radius-md);
+    background: var(--surface-2);
+    color: var(--fg);
+    transition: color var(--duration-fast) var(--easing-standard);
+  }
+  .sector-icon-tile :global(.sector-icon) {
+    width: var(--glyph); height: var(--glyph);
+    stroke: currentColor; stroke-width: 1.75;
+  }
+  .sector-text { display: flex; flex-direction: column; gap: var(--gap-1); min-width: 0; }
+  .sector-name {
+    margin: 0;
+    font-size: var(--t-h6); line-height: var(--lh-h6);
+    overflow-wrap: anywhere;
+  }
+  .sector-industries {
+    margin: 0;
+    font-size: var(--t-sm); line-height: var(--lh-s);
+    color: var(--fg-muted);
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+    overflow: hidden;
+  }
+
+  /* ── Mobile, 480–767.98: 2 columns, vertical ─────────────────────── */
+  @media (min-width: 480px) {
+    .sectors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sector-card {
+      flex-direction: column; align-items: flex-start; justify-content: space-between;
+      gap: var(--gap-6);
+      min-height: calc(var(--gap-12) * 3);   /* rows align */
+      padding: var(--gap-5);
+    }
+  }
+
+  /* ── Tablet, 768–1023.98: 4 columns, compact ─────────────────────── */
+  @media (min-width: 768px) {
+    .sectors-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .sector-card {
+      --tile: calc(var(--gap-12) + var(--gap-2));   /* 56 */
+      --glyph: var(--gap-9);                        /* 36 */
+      padding: var(--gap-5);
+    }
+    .sector-name {
+      display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+      overflow: hidden;
+    }
+  }
+
+  /* ── Desktop, ≥ 1024: 4 columns, full padding ───────────────────── */
+  @media (min-width: 1024px) {
+    .sector-card {
+      --tile: calc(var(--gap-8) * 2);               /* 64 */
+      --glyph: var(--gap-10);                       /* 40 */
+      padding: var(--gap-6);
+      min-height: calc(var(--gap-12) * 4);
+    }
+    .sector-name { font-size: var(--t-h5); line-height: var(--lh-h5); }
+  }
+
+  /* ── States ──────────────────────────────────────────────────────────
+     Pseudo-classes and media queries only. Yellow appears only as the
+     hover / press accent on the icon, never at rest. */
+  @media (hover: hover) and (pointer: fine) {
+    .sector-card:hover {
+      background: var(--surface-2);
+      box-shadow: var(--elevation-3);
+      transform: translateY(calc(var(--gap-1) * -1));   /* 4px max */
+    }
+    .sector-card:hover .sector-icon-tile { color: var(--color-yellow); background: var(--surface); }
+  }
+  .sector-card:focus-visible {
+    outline: var(--focus-primary);
+    outline-offset: var(--stroke-regular);
+    background: var(--surface-2);
+    box-shadow: var(--elevation-3);
+    transform: translateY(calc(var(--gap-1) * -1));
+  }
+  .sector-card:focus-visible .sector-icon-tile { background: var(--surface); }
+  .sector-card:active {
+    background: var(--color-surface-page);
+    box-shadow: var(--elevation-1);
+    transform: scale(0.98);
+  }
+  .sector-card:active .sector-icon-tile { color: var(--color-yellow); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sector-card, .sector-icon-tile { transition: none; }
+    .sector-card:hover, .sector-card:focus-visible, .sector-card:active { transform: none; }
+  }
+
+  @media (forced-colors: active) {
+    .sector-card { outline: var(--stroke-thin) solid CanvasText; }
+    .sector-card:focus-visible { outline: var(--stroke-medium) solid Highlight; }
+    .sector-icon-tile { color: CanvasText; }
+  }
+</style>
