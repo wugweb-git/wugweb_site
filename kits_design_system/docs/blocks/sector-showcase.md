@@ -6,7 +6,7 @@
 **Guard:** `scripts/check-sector-css.mjs` (runs as `prebuild`)
 **Last verified:** 2026-10-19
 
-Shows Wugweb's breadth: 6–8 sector cards, each an icon, the sector name and up
+Shows Wugweb's breadth: n sector cards (6 ≤ n ≤ 8), each an icon, the sector name and up
 to two industries. Not a filter and not a case-study index: no counts, no
 descriptions, no arrows. Replaces the old global industry-pill strip and the
 homepage marquee.
@@ -65,11 +65,11 @@ Legacy `industry-<slug>` docs have no `sectorRef`, so they can never appear.
 | No copy from CMS | Component defaults (as InsightsBlock) |
 | pageSection `industries` switched off | Not rendered |
 | 0 featured sectors | Not rendered (no fallback list) |
-| 1–3 sectors | Column count kept; cards left-aligned, no stretching |
+| n sectors, 1 ≤ n ≤ 3 | Column count kept; cards left-aligned, no stretching |
 | Odd count | Partial last row left-aligned |
 | Missing / unknown icon | No icon tile; `console.warn` at render |
 | No industries ticked | No industries line; card still renders |
-| More than 2 ticked | First 2 by industry `order` |
+| n ticked, n > 2 | First 2 by industry `order` |
 | Long name | Wraps (tablet: clamps to 2 lines) |
 | Reduced motion, forced colours, no JS | Fully readable; nothing depends on JS |
 
@@ -77,21 +77,21 @@ Legacy `industry-<slug>` docs have no `sectorRef`, so they can never appear.
 
 | Tier | Range | Grid | Card | Icon / tile |
 |---|---|---|---|---|
-| Stack | < 480 | 1 col | Horizontal: tile left, text right | 32 / 48 |
-| Mobile | 480–767.98 | 2 col | Vertical, min-height so rows align | 32 / 48 |
-| Tablet | 768–1023.98 | 4 col | Vertical, compact; name and industries clamp to 2 lines | 36 / 56 |
-| Desktop | ≥ 1024 (1200 shell) | 4 col | Vertical, full padding, text pinned to bottom | 40 / 64 |
+| Stack | x < 480 | 1 col | Horizontal: tile left, text right | 32 / 48 |
+| Mobile | 480 ≤ x < 768 | 2 col | Vertical, min-height so rows align | 32 / 48 |
+| Tablet | 768 ≤ x < 1024 | 4 col | Vertical, compact; name and industries clamp to 2 lines | 36 / 56 |
+| Desktop | x ≥ 1024 (1200 shell) | 4 col | Vertical, full padding, text pinned to bottom | 40 / 64 |
 
 Gaps use `--grid-gap`; sizes derive from `--gap-*`.
 
 ## 6. Card states
 
-Pseudo-classes and media queries only — no per-page classes, no JS state.
+Pseudo-classes and media queries only. No per-page classes, no JS state.
 
 | State | Behaviour |
 |---|---|
 | Default | `--surface` + `--elevation-2`, no border; icon full contrast |
-| Hover (`hover:hover` + `pointer:fine`) | `--surface-2`, `--elevation-3`, lift ≤ 4px, icon `--color-yellow` |
+| Hover (`hover:hover` + `pointer:fine`) | `--surface-2`, `--elevation-3`, lift y ≤ 4px, icon `--color-yellow` |
 | Focus-visible | `--focus-primary` ring on the whole card + same lift |
 | Active / pressed | Steps down to page surface, `--elevation-1`, `scale(0.98)`, icon yellow |
 | Touch | No hover styles; press only |
@@ -117,8 +117,6 @@ Every card links to `/footer/industries` with **no hash**. Switch to
 `/footer/industries#<sector-slug>` only once the hub has an element with that
 id for every featured sector.
 
-## 9. Open (owner)
+## 9. Data status
 
-- Fill the Notion fields, then `WRITE=1 node scripts/sync-notion-sectors.mjs`.
-- Rename the pageSection key `industries` → `sectors` only after the Notion
-  Site Sections row is renamed (Notion first, then Sanity).
+Notion filled and Sanity synced 2026-10-19 (Cowork). `sync-notion-sectors.mjs` is for future edits; dry run first.
