@@ -11,18 +11,20 @@ filters or case studies.
 
 ## 1. Content
 
-| # | Sector | Icon (Lucide) | Industries on card | Links to |
-|---|---|---|---|---|
-| 1 | Fintech | `wallet` | Digital Finance · NeoBanking | `/footer/industries#fintech` |
-| 2 | BFSI | `landmark` | Banking · Insurance | `/footer/industries#bfsi` |
-| 3 | Technology | `cpu` | SaaS · AI/ML | `/footer/industries#technology` |
-| 4 | Consumer & Retail | `shopping-bag` | eCommerce · Fashion & Lifestyle | `/footer/industries#consumer-retail` |
-| 5 | Travel & Hospitality | `plane` | Hotels & Restaurants · Tourism | `/footer/industries#travel-hospitality` |
-| 6 | Automotive & Mobility | `car` | Automotive · Electric Vehicles | `/footer/industries#automotive-mobility` |
-| 7 | Healthcare | `heart-pulse` | Mental Health · Pharmacy | `/footer/industries#healthcare` |
-| 8 | Energy & Industrial | `zap` | Renewable Energy · Manufacturing | `/footer/industries#energy-industrial` |
+| # | Sector | Icon (Lucide) | Industries on card |
+|---|---|---|---|
+| 1 | Fintech | `wallet` | Digital Finance · NeoBanking |
+| 2 | BFSI | `landmark` | Banking · Insurance |
+| 3 | Technology | `cpu` | SaaS · AI/ML |
+| 4 | Consumer & Retail | `shopping-bag` | eCommerce · Fashion & Lifestyle |
+| 5 | Travel & Hospitality | `plane` | Hotels & Restaurants · Tourism |
+| 6 | Automotive & Mobility | `car` | Automotive · Electric Vehicles |
+| 7 | Healthcare | `heart-pulse` | Mental Health · Pharmacy |
+| 8 | Energy & Industrial | `zap` | Renewable Energy · Manufacturing |
 
 Static content. The 8 cards are the same on every page.
+
+Every card links to `/footer/industries` with no hash. The hash (`/footer/industries#<sector-slug>`) is added only once the industries page has an element with that id for every sector; a hash with no matching id is never shipped.
 
 | Page type | Heading, intro, CTA |
 |---|---|
@@ -38,7 +40,7 @@ section.sectors-section#sectors
 └ .wrap
   ├ h2 (copy) · p.sectors-intro (copy)
   ├ ul.sectors-grid
-  │ └ li → a.sector-card  href=/footer/industries#<sector-slug>
+  │ └ li → a.sector-card  href=/footer/industries
   │        ├ icon tile (inline Lucide SVG, aria-hidden)
   │        └ h3 sector name · p "Industry A · Industry B"
   └ a.btn.btn-ghost (CTA copy)
