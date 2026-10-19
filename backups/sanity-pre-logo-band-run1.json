@@ -1,0 +1,242 @@
+[
+ {
+  "_id": "client-CLI-0021",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/cartier-careers/client-logo-jrot.png",
+  "name": "Cartier",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0022",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Acko",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0023",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "WoodKraft",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0025",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "FMI",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0026",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Adtech",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0027",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/rideev/client-logo-1gbn.png",
+  "name": "RideEV",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0030",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Tecnotree",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0035",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/logos/airtel-xsafe.png",
+  "name": "Airtel XSafe",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0039",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/logos/valyu-ai.png",
+  "name": "Valyu.ai",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0040",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/plufo/client-logo-6djh.png",
+  "name": "Plufo",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0043",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/ntuc-u-care-fund-digital-transformation-for-enhanced-member-support/client-logo-grfk.png",
+  "name": "NTUC",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0044",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Income.SG",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0050",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "SBS Transit",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0057",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/demystifying-finance-crafting-the-ux-for-aditya-birla-capital-s-credit-score-tool/client-logo-te1y.png",
+  "name": "Aditya Birla Capital",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0059",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Amazon Ads",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0061",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/the-architecture-of-loyalty-designing-the-axis-bank-savings-account-platform/client-logo-d64b.png",
+  "name": "Axis Bank",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0062",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/bankco/client-logo-qhmv.png",
+  "name": "Bankco",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0072",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/gratify-the-intelligent-rewards-and-feedback-platform/client-logo-5nzb.png",
+  "name": "Gratifi",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0075",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/logos/indusninja.png",
+  "name": "IndusInd Bank",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0077",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard/client-logo-5nkj.png",
+  "name": "Kia",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-CLI-0081",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "LinkedIn Ads",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0085",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Paragon",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0087",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Philip Morris International",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0090",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "SpiceJet",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0093",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Tata Sonnets",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0098",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Tyroo",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0101",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Wave",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-CLI-0103",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "YouTube Ads",
+  "showInLogoBand": null
+ },
+ {
+  "_id": "client-Inkompass",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": "/assets/work/inkompass/client-logo-9fd5.png",
+  "name": "Inkompass",
+  "showInLogoBand": true
+ },
+ {
+  "_id": "client-Tanishq",
+  "bandLogoPath": null,
+  "bandOrder": null,
+  "logoPath": null,
+  "name": "Tanishq",
+  "showInLogoBand": null
+ }
+]
