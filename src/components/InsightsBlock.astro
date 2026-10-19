@@ -1,6 +1,7 @@
 ---
-import { loadAssetAlts, altFor } from '../lib/asset-alt';
-import { assetUrl } from '../lib/assets';
+import { loadAssetAlts } from '../lib/asset-alt';
+import PostCard from './PostCard.astro';
+import { toPostCard } from '../lib/post-card';
 /**
  * InsightsBlock — the one blog teaser.
  *
@@ -11,13 +12,21 @@ import { assetUrl } from '../lib/assets';
  *
  * Filtering is the caller's job — the homepage passes the latest posts, a
  * service page passes the ones matched to its pillar.
+ *
+ * Cards are PostCard — the same card, from the same `postsListQuery` schema,
+ * as /blog. By card size: lg (1200+) 3 across, md (768 – 1199) 2 across,
+ * below 768 the first post is a full sm card and the rest are stacked rows.
  */
 export interface InsightPost {
   slug?: string;
   title?: string;
   excerpt?: string;
   category?: string;
+  topic?: string;
+  topicSlug?: string;
   coverPath?: string;
+  coverImage?: any;
+  publishedAt?: string;
   readingTime?: number | string;
   author?: { name?: string } | null;
 }
@@ -28,7 +37,7 @@ interface Props {
   heading?: string;
   ctaLabel?: string;
   ctaHref?: string;
-  /** How many to show. The first is featured and runs wide. */
+  /** How many to fetch. lg (3 across) shows the first 3; md and sm show all. */
   limit?: number;
 }
 
@@ -38,16 +47,14 @@ const {
   heading = 'Thoughts on design, product, and strategy',
   ctaLabel = 'View all articles',
   ctaHref = '/blog',
-  /* 4, not 3: the desktop grid only ever shows 3 (1 featured + 2 stacked —
-     a 4th is hidden there, see .blog-teaser-card:nth-child(4) below), but
-     the mobile stacked list has the vertical room for a 4th row and
-     otherwise leaves the full-height section visibly under-filled. */
+  /* 4, not 3: md (2 x 2) and the stacked sm list use all four; lg is 3 across
+     and hides the 4th (see .blog-teaser-grid below). */
   limit = 4,
 } = Astro.props;
 
 const items = (posts || []).slice(0, limit);
 const altMap = await loadAssetAlts();
-const coverOf = (p: InsightPost) => (p.coverPath ? assetUrl(p.coverPath) : '');
+const cards = items.map((p) => toPostCard(p, altMap));
 ---
 
 {items.length > 0 && (
@@ -74,50 +81,13 @@ const coverOf = (p: InsightPost) => (p.coverPath ? assetUrl(p.coverPath) : '');
           doesn't need an entrance animation. */}
       <a href={ctaHref} class="btn btn-block-mobile btc-cta">{ctaLabel}</a>
     </div>
-    <div class="blog-teaser-grid">
-      {items.map((p, i) => {
-        const cover = coverOf(p);
-        return (
-          <a
-            href={`/blog/${p.slug}`}
-            class:list={['blog-teaser-card', { 'blog-teaser-card--featured': i === 0 }]}
-            data-reveal
-            data-reveal-delay={String(i * 0.12)}
-          >
-            {cover && (
-              <div class="btc-media">
-                <img src={cover} alt={altFor(altMap, p.coverPath, p.title)} loading="lazy" decoding="async" />
-              </div>
-            )}
-            <div class="btc-content">
-              <div class="btc-cat-row">
-                {p.category && <span class="btc-cat u-tag">{p.category}</span>}
-                {/* Same round + affordance the FAQ, Service Tag Field and
-                    approach cards use — .u-chip owns its box/glyph size, so
-                    this never needs its own dimensions. Decorative: the
-                    whole card is the one link, this just signals it. */}
-                <span class="u-chip btc-launch" aria-hidden="true">
-                  <svg viewBox="0 0 16 16" focusable="false">
-                    <path d="M8 1.5v13M1.5 8h13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                  </svg>
-                </span>
-              </div>
-              <h3>{p.title}</h3>
-              {p.excerpt && <p class="btc-excerpt">{p.excerpt}</p>}
-              <div class="btc-meta meta-row">
-                {p.author?.name && <span class="meta-item">{p.author.name}</span>}
-                {p.readingTime && (
-                  <span class="meta-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="meta-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    {p.readingTime} min read
-                  </span>
-                )}
-              </div>
-            </div>
-          </a>
-        );
-      })}
-    </div>
+    <ul class="blog-teaser-grid">
+      {cards.map((c, i) => (
+        <li data-reveal data-reveal-delay={String(i * 0.12)}>
+          <PostCard card={c} row={i > 0} />
+        </li>
+      ))}
+    </ul>
   </section>
 )}
 
@@ -138,273 +108,45 @@ const coverOf = (p: InsightPost) => (p.coverPath ? assetUrl(p.coverPath) : '');
 
   .blog-teaser-head h2 { font-size: var(--t-h3); max-width: 22ch; margin-top: var(--gap-4); }
 
+  /* Grid by card size. sm (< 768) is the stacked list; md (768 – 1199) 2 across
+     so the cards stay readable (3 across at 768 is ~220px each); lg (1200+) 3
+     across. The 4th post only fits md and sm, so lg hides it. */
   .blog-teaser-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: grid;
     gap: var(--gap-6);
     grid-template-columns: 1fr;
   }
-
   @media (min-width: 768px) {
-    .blog-teaser-grid {
-      grid-template-columns: 1.6fr 1fr;
-      grid-template-rows: auto auto;
-    }
-    .blog-teaser-card--featured {
-      grid-row: 1 / 3;
-    }
-    /* The grid above is a fixed 2-column, 2-row shape built for exactly 3
-       cards (1 featured spanning both rows + 2 stacked) — a 4th would sit
-       outside that shape rather than reflow into it. limit=4 is sized for
-       mobile's plain vertical list; desktop/tablet just don't render the
-       extra one. */
-    .blog-teaser-card:nth-child(4) {
-      display: none;
-    }
+    .blog-teaser-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1200px) {
+    .blog-teaser-grid { grid-template-columns: repeat(3, 1fr); }
+    .blog-teaser-grid > li:nth-child(n + 4) { display: none; }
   }
 
-  /* Light card on a dark page, so every child needs dark ink. Inheriting the
-     dark-theme --fg (#F4F4F4) on --neutral-1 (#F4F4F4) rendered the title at a
-     1:1 contrast ratio — invisible. --line is likewise a white hairline and
-     disappears here, so the border is a dark tint instead. */
-  .blog-teaser-card {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: var(--fg);
-    position: relative;
-    z-index: 0;
-    /* No stroke. Separation is surface level, not a hairline - the card sits
-       a step above the page and lifts another step on hover. */
-    border: 0;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    /* Dark at every width. This was --neutral-1 (#F4F4F4): a light block in a
-       dark page, which forced dark-on-light text, a special-cased category
-       colour for contrast, and made the teaser the loudest thing on the page. */
-    background: var(--color-surface-elevated);
-    transition: border-color var(--duration-normal) ease, transform var(--duration-normal) ease, box-shadow var(--duration-normal) ease;  }
-
-  /* Whole-card growth, not just the background swap + image zoom — a real
-     1.5% scale (not the literal 10% asked for; at card size that reads as
-     a broken layout jump, not a hover) combined with the existing lift
-     reads as the entire card responding, with the image's own extra zoom
-     still visible as a second, faster-moving layer inside it. */
-  .blog-teaser-card:hover {
-    background: var(--surface-2);
-    transform: translateY(-3px) scale(1.015);
-    box-shadow: var(--shadow-md);
-    /* The 1.015 scale grows a card slightly past its own grid cell —
-       without this it can clip under/behind its still-static neighbour
-       instead of visibly lifting above it. */
-    z-index: 1;
-  }
-
-  .btc-media {
-    overflow: hidden;
-    flex-shrink: 0;
-    aspect-ratio: 16/9;
-  }
-
-  .blog-teaser-card--featured .btc-media {
-    aspect-ratio: 4/3;
-  }
-
-  .btc-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform var(--duration-xslow) cubic-bezier(0.16, 1, 0.3, 1);  }
-
-  .blog-teaser-card:hover .btc-media img { transform: scale(1.04); }
-
-  .btc-content {
-    padding: var(--gap-5) var(--gap-6) var(--gap-6);
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  /* Tag + launch chip share one row — the chip is decorative (the whole
-     card is the one link) but gives the category label a paired affordance,
-     rather than the label floating alone with the action stranded at the
-     card's far corner. */
-  .btc-cat-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--gap-3);
-    margin-bottom: var(--gap-3);
-  }
-
-  .btc-cat {
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--font-mono);
-    font-size: var(--t-micro);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  /* Overrides .u-chip's fixed --chip-size (36px) box: matched to .btc-cat's
-     own rendered height (measured 24px — this pill's font-size + padding),
-     not the chip scale used elsewhere for larger, standalone toggles.
-     (An aspect-ratio: 1 / width: auto version of this was tried first —
-     circular sizing: a percentage-width SVG inside an auto-sized box has no
-     stable reference, so the chip inflated to whatever ancestor happened to
-     resolve the percentage against instead of its own content.) */
-  .btc-launch {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  .btc-launch svg { width: 0.75rem; height: 0.75rem; }
-
-  /* .u-chip owns the background/hover mechanics — brighten it on card
-     hover, same as any other hover-revealed affordance on this site. */
-  .blog-teaser-card:hover .btc-launch {
-    background: color-mix(in srgb, var(--neutral-0) 16%, transparent);
-  }
-
-  .btc-content h3 {
-    transition: color var(--duration-fast) var(--easing-out);    font-size: var(--t-h5);
-    font-weight: var(--font-weight-semibold);
-    line-height: var(--lh-tight);
-    color: var(--fg);
-  }
-
-  .blog-teaser-card--featured .btc-content h3 { font-size: var(--t-h4); }
-
-  .btc-excerpt {
-    margin-top: var(--gap-2);
-    font-size: var(--fluid-body-sm);
-    color: var(--fg-muted);
-    line-height: var(--core-line-height-relaxed);
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .btc-meta {
-    display: flex;
-    gap: var(--gap-4);
-    margin-top: auto;
-    padding-top: var(--gap-4);
-    font-family: var(--font-mono);
-    font-size: var(--t-micro);
-    /* Leftover from when this card was --neutral-1 (light): dark ink at 70%
-       made sense there. The card is --color-surface-elevated (#191919) at
-       every width now (see the note on .blog-teaser-card), so that ink
-       measured 1.14:1 — the byline and read-time were effectively invisible
-       on every page carrying the teaser. --fg-muted is the dark-surface pair. */
-    color: var(--fg-muted);
-  }
-  /* ── Mobile: a compact row, not a full-screen poster ──────────────────
-     The desktop card is a light block with 16:9 media stacked on top. At
-     phone width that is one card per screen, which makes a three-item teaser
-     read as three pages of scrolling. Below 768px it becomes a row: square
-     thumbnail on the left, tag chip and title on the right, on the dark
-     surface the rest of the page uses. Excerpt and byline are dropped - at
-     this size the title is the link and the rest is noise. */
+  /* ── sm + stacked (< 768): the first post is a full sm card, the rest are
+     stacked rows (PostCard `row`). The section is one app screen; this places
+     the head, list and CTA, and caps the list at 480px like the rows. ── */
   @media (max-width: 767.98px) {
-    /* Mobile is the app screen, not a slice of a scrolling document — this
-       section fills the viewport like any other native-feeling PWA screen.
-       svh (not vh) so mobile browser chrome collapsing/expanding doesn't
-       yank the layout. Head pins to the top, cards fill the middle, the CTA
-       pins to the bottom — .blog-teaser-head goes `display: contents` so
-       its two children (title block, CTA) become direct flex items here
-       and can be ordered independently instead of moving as a pair. */
+    /* svh (not vh) so mobile browser chrome collapsing doesn't yank the
+       layout. Head pins to the top, cards fill the middle, the CTA pins to the
+       bottom — .blog-teaser-head goes `display: contents` so its two children
+       become direct flex items and can be ordered independently. */
     .blog-teaser {
       min-height: 100svh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      /* Asymmetric on purpose: the CTA needs real air below it before the
-         screen edge, not just its own margin-top from the grid above. */
       padding-block: var(--gap-8) var(--gap-12);
     }
     .blog-teaser-head { display: contents; }
     .btc-head-text { order: 0; }
     .blog-teaser-grid { order: 1; gap: var(--gap-3); margin-block: auto; }
-    .btc-cta {
-      order: 2;
-      margin-top: var(--gap-6);
-    }
-
-    .blog-teaser-card,
-    .blog-teaser-card--featured {
-      flex-direction: row;
-      /* flex-start, not center: centering pulled the tag+title block down
-         to the middle of the (taller) thumbnail instead of starting level
-         with its top edge. */
-      align-items: flex-start;
-      gap: var(--gap-4);
-      padding: var(--gap-2);
-      background: var(--color-surface-elevated);
-      color: var(--fg);
-      border: 0;
-      /* Mapped, not left to stretch edge-to-edge: this breakpoint covers
-         phones up through small tablets in portrait (up to 767px) — past
-         phone width the row card (fixed 5.5rem thumbnail + flexible text)
-         would keep stretching wider with no upper bound. 480px is a
-         standard single-column comfortable-reading cap; centers itself on
-         anything wider than that. */
-      max-width: 480px;
-      width: 100%;
-      margin-inline: auto;
-    }
-    /* Parity with desktop's hover state (background + lift + shadow + image
-       zoom) — a flat background swap alone reads as an unfinished tap state
-       when it sits next to the richer desktop one. transform on the media
-       wrapper, not the card, so the press-scale and the image-zoom don't
-       fight over the same property. */
-    .blog-teaser-card:active {
-      background: var(--surface-2);
-      transform: scale(0.98);
-    }
-    .blog-teaser-card:active .btc-media img { transform: scale(1.06); }
-    .blog-teaser-card:active .btc-content h3 { color: var(--accent-warm); }
-
-    .btc-media,
-    .blog-teaser-card--featured .btc-media {
-      width: 5.5rem;
-      aspect-ratio: 1;
-      flex: 0 0 auto;
-      border-radius: var(--radius-md);
-    }
-
-    .btc-content { padding: 0; min-width: 0; }
-
-    /* A chip, matching the reference, rather than a bare uppercase label.
-       Shared pill styling (padding/radius/background/hover) lives in
-       .u-tag (global.css) — this only overrides what's mobile-specific:
-       no mono/uppercase treatment, and spacing before the title. */
-    .btc-cat {
-      font-family: var(--font-body);
-      text-transform: none;
-      letter-spacing: 0;
-    }
-    /* Row's own margin-bottom (--gap-3) is roomier than this layout needs. */
-    .btc-cat-row { margin-bottom: var(--gap-2); }
-
-    .btc-content h3,
-    .blog-teaser-card--featured .btc-content h3 {
-      font-size: var(--fluid-body-lg);
-      color: var(--fg);
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* The row is the summary; the article page carries the rest. */
-    .btc-excerpt,
-    .btc-meta { display: none; }
-
-    /* .btc-launch is the .u-chip in .btc-cat-row now — the card's active
-       (touch) state brightens it same as the old .btc-go used to. */
-    .blog-teaser-card:active .btc-launch {
-      background: color-mix(in srgb, var(--neutral-0) 18%, transparent);
-    }
+    .blog-teaser-grid > li { max-width: 480px; width: 100%; margin-inline: auto; }
+    .blog-teaser-grid > li:first-child { margin-bottom: var(--gap-3); }
+    .btc-cta { order: 2; margin-top: var(--gap-6); }
   }
 </style>

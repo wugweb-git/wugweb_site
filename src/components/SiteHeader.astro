@@ -112,10 +112,12 @@ function isActive(href: string) {
   .site-header-inner { cursor: grab; }
   .site-header-inner :is(a, button) { cursor: pointer; }
   .site-header-inner {
-    /* rem, not px, so the bar grows with the root scale above 1440px along
-       with .wrap - a hard px cap here pinned it at 1280 while the content
-       inside it scaled, which is the one thing that must not drift apart. */
-    max-width: 80rem;
+    /* px, not rem. layout-shell.md: nav inner container max 1280, centred.
+       This was 80rem so the bar would grow with .wrap, but .wrap is a fixed
+       1200px box now - only the bar kept scaling, and above 1440px the root
+       size (100vw/90, up to 24px) pushed it to ~1780px at 2000px wide, wider
+       than every section under it. */
+    max-width: 1280px;
     margin-inline: auto;
     border-radius: var(--radius-md);
     background: var(--neutral-7);

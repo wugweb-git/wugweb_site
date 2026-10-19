@@ -1,35 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { sanityClient, urlFor } from '../../lib/sanity';
+import { sanityClient } from '../../lib/sanity';
+import PostCard from '../../components/PostCard.astro';
+import { toPostCard } from '../../lib/post-card';
 import { postsListQuery, singletonPageQuery } from '../../lib/queries';
-import { loadAssetAlts, altFor } from '../../lib/asset-alt';
-import { assetUrl } from '../../lib/assets';
+import { loadAssetAlts } from '../../lib/asset-alt';
 
 const blogPage = await sanityClient.fetch(singletonPageQuery, { pageId: 'blog' }).catch(() => null);
 const blogTitle = blogPage?.seoTitle || 'Wugweb | Insights on UI/UX Design & Digital Strategy';
 const blogDescription =
   blogPage?.seoDescription ||
   'Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, and digital product strategy.';
-
-function coverUrl(coverImage: any, coverPath?: string): string {
-  if (coverPath) return assetUrl(coverPath);
-  if (!coverImage) return '';
-  try {
-    if (typeof coverImage === 'string') return coverImage;
-    if (coverImage.asset || coverImage._ref || coverImage._type === 'image') {
-      return urlFor(coverImage).width(800).height(600).url();
-    }
-  } catch {
-    return '';
-  }
-  return '';
-}
-
-function initials(title: string): string {
-  const words = (title || '').replace(/[^\w\s]/g, '').trim().split(/\s+/).filter(Boolean);
-  if (!words.length) return 'Ww';
-  return words.slice(0, 2).map((w) => w[0]?.toUpperCase() || '').join('');
-}
 
 const queryPosts = await sanityClient.fetch(postsListQuery).catch(() => []);
 const seenPostSlugs = new Set();
@@ -41,44 +22,8 @@ for (const p of (queryPosts || [])) {
   }
 }
 
-// Top-level filters map to the six service pillars, each locked to its own
-// brand accent token (--svc-*) — one consistent color language for
-// "what kind of work is this" across the whole site, not a one-off hex map.
-const PILLARS = ['Strategy', 'Brand', 'Experience', 'Engineering', 'Growth', 'Operations'];
-const PILLAR_ACCENT: Record<string, string> = {
-  Strategy: 'var(--svc-strategy)',
-  Brand: 'var(--svc-brand)',
-  Experience: 'var(--svc-experience)',
-  Engineering: 'var(--svc-engineering)',
-  Growth: 'var(--svc-growth)',
-  Operations: 'var(--svc-operations)',
-};
-const CATEGORY_PILLAR: Record<string, string> = {
-  'Strategy': 'Strategy', 'Business Strategy': 'Strategy', 'Consulting': 'Strategy',
-  'Brand & Strategy': 'Brand', 'Brand': 'Brand', 'Content': 'Brand',
-  'Experience Design': 'Experience', 'UX Design': 'Experience', 'UI Design': 'Experience',
-  'Web & App Development': 'Engineering', 'Development / Server': 'Engineering',
-  'Infrastructure & DevOps': 'Engineering',
-  'MarTech': 'Growth', 'Performance Marketing': 'Growth', 'SEO': 'Growth',
-  'AI & Automation': 'Growth', 'Data & Analytics': 'Growth',
-  'Operations': 'Operations', 'Digital Transformation': 'Operations',
-};
-function postPillar(category: string): string {
-  return CATEGORY_PILLAR[category] || PILLARS.find((p) => (category || '').toLowerCase().includes(p.toLowerCase())) || 'Experience';
-}
-
 const altMap = await loadAssetAlts();
-const posts = (rawPosts || []).map((p: any) => {
-  const pillar = postPillar(p.category);
-  return {
-    ...p,
-    coverUrl: coverUrl(p.coverImage, p.coverPath),
-    coverAlt: altFor(altMap, p.coverPath, p.title),
-    accent: PILLAR_ACCENT[pillar],
-    pillar,
-    initials: initials(p.title),
-  };
-});
+const posts = (rawPosts || []).map((p: any) => toPostCard(p, altMap));
 
 // Filter chips are blog topics (the Notion "Category", synced into post.topic /
 // post.topicSlug). Only topics with at least one post get a chip, most-used
@@ -152,31 +97,7 @@ function fmtDate(d?: string): string {
     <ul class="blog-grid">
       {restPosts.map((p: any, i: number) => (
         <li data-reveal data-reveal-delay={(Math.min(i % 6, 5) * 0.05).toFixed(2)} data-topic={p.topicSlug || ''}>
-          <a href={`/blog/${p.slug}`} style={`--card-accent: ${p.accent}`}>
-            <div class="post-thumb-wrap">
-              {p.coverUrl ? (
-                <img src={p.coverUrl} alt={p.coverAlt} loading="lazy" class="post-thumb" />
-              ) : (
-                <div class="post-thumb post-thumb-fallback" aria-hidden="true">
-                  <span class="post-thumb-grid"></span>
-                  <span class="post-thumb-initials">{p.initials}</span>
-                </div>
-              )}
-              <span class="thumb-dot" aria-hidden="true"></span>
-              <span class="thumb-arrow" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="19" y2="5"></line><polyline points="9 5 19 5 19 15"></polyline></svg>
-              </span>
-            </div>
-            <div class="post-content">
-              <span class="post-category">{p.topic || p.pillar}</span>
-              <h3>{p.title}</h3>
-              <p class="post-excerpt">{p.excerpt}</p>
-              <div class="post-meta">
-                {p.author?.name && <span>{p.author.name}</span>}
-                {p.readingTime && <span>{p.readingTime} min read</span>}
-              </div>
-            </div>
-          </a>
+          <PostCard card={p} />
         </li>
       ))}
     </ul>
@@ -247,58 +168,9 @@ function fmtDate(d?: string): string {
   /* ── Grid: state 2 — the quiet, repeatable card ── */
   .blog-grid-section { border-top: var(--stroke-thin) solid var(--line); padding-block: var(--space-section-md) var(--space-section-xl); }
   .blog-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-6); }
-  @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
-  .blog-grid a {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);  }
-  .blog-grid a:hover { transform: translateY(-3px); }
-  .post-thumb-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; flex-shrink: 0; border-radius: var(--radius-lg); }
-  .post-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-  .blog-grid a:hover .post-thumb { transform: scale(1.06); }
-  .thumb-dot {
-    position: absolute; top: var(--gap-3); left: var(--gap-3); width: 9px; height: 9px; border-radius: 50%;
-    background: var(--card-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-surface-page) 55%, transparent);
-  }
-  .thumb-arrow {
-    position: absolute; top: var(--gap-3); right: var(--gap-3); width: 30px; height: 30px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; color: var(--color-surface-page);
-    background: var(--fg); opacity: 0; transform: scale(0.7) translateY(4px);
-    transition: opacity var(--duration-normal) ease, transform var(--duration-normal) cubic-bezier(0.16, 1, 0.3, 1);  }
-  .blog-grid a:hover .thumb-arrow { opacity: 1; transform: scale(1) translateY(0); }
-
-  .post-content { padding: var(--gap-5) var(--gap-1) 0; display: flex; flex-direction: column; flex: 1; gap: var(--gap-2); }
-  .post-category { font-family: var(--font-mono); font-size: var(--t-micro); letter-spacing: 0.04em; text-transform: uppercase; color: var(--card-accent); }
-  .blog-grid h3 { font-size: var(--t-h5); font-weight: var(--font-weight-semibold); line-height: var(--lh-h5); color: var(--fg); }
-  .post-excerpt { font-size: var(--t-sm); color: var(--fg-muted); line-height: var(--lh-s); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .blog-grid .post-meta { margin-top: var(--gap-1); }
-
-  /* Fallback (no-cover) thumb — its own visual state, not a broken image */
-  .post-thumb-fallback {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    padding: var(--gap-4);
-    width: 100%; height: 100%;
-    background:
-      radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--card-accent) 32%, transparent), transparent 55%),
-      linear-gradient(160deg, var(--color-surface-elevated) 0%, var(--color-surface-page) 100%);
-  }
-  .post-thumb-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(color-mix(in srgb, var(--card-accent) 8%, transparent) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in srgb, var(--card-accent) 8%, transparent) 1px, transparent 1px);
-    background-size: 22px 22px;
-  }
-  .post-thumb-initials {
-    position: relative; font-family: var(--font-display); font-size: var(--fluid-h1); font-weight: var(--font-weight-extrabold);
-    line-height: 1; color: var(--fg); opacity: var(--opacity-strong);
-  }
-
+  /* Card size by breakpoint: sm 1 across, md (768) 2, lg (1200) 3. */
+  @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1200px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
   .blog-grid li.hidden, .blog-featured.hidden { display: none; }
 </style>
 
