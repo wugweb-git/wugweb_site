@@ -49,9 +49,8 @@
      eyebrow measured on the live homepage against the old site's 12px.
 
      These anchor min at 360px and max at 1280px - the same point the width
-     lock uses - and hold beyond it. Above 1440px the root scale takes over
-     (see :root below), so they keep growing proportionally rather than
-     stopping dead.
+     lock uses - and hold beyond it. Nothing grows past the max width (see
+     :root below).
 
      Note this deliberately overrides kits_design_system/docs/tokens/
      typography.md, which documents the old values. The audit says Kits wins
@@ -688,18 +687,14 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* ── Proportional scale above the content cap ─────────────────────────────
-   Below 1440px this resolves to 16px and nothing changes. Above it the root
-   grows with the viewport, and because the spacing ramp, radii, nav height
-   and both container caps are now rem, the whole page scales together rather
-   than staying pinned at 1280px inside ever-widening margins. Capped at 24px
-   (reached ~2160px) so it stops before it gets silly on a 4K panel.
-
-   Deliberately NOT scaled: --stroke-* stays px so hairlines stay crisp
-   instead of blurring to 1.33px, --r-full is a sentinel not a size, and
-   @media breakpoints are px because they switch layout rather than size it. */
+/* ── No scaling past the max width (owner rule 2026-10-21) ────────────────
+   The max width is the end: a 1440px screen and a 20,000px screen render the
+   same page, with the extra room going to the margins. The root used to grow
+   with the viewport above 1440px (clamp(16px, 100vw / 90, 24px)), which
+   enlarged every rem size - nav logo 49px and 17px links inside the fixed
+   60px bar at 1760px. Fixed at 16px now. */
 :root {
-  font-size: clamp(16px, calc(100vw / 90), 24px);
+  font-size: 16px;
 }
 
 body {
