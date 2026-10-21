@@ -75,12 +75,12 @@ const whyReasons = [
 // Media goes through assetUrl() so it resolves to R2 in production instead of
 // hardcoding /assets/… — the same bypass that still exists on the homepage.
 const bentoTiles: BentoTile[] = [
-  { col: 0, span: 'tall',  ...whyReasons[0], tone: 'light', image: assetUrl('more/service/service_benefit_6.webp'), fit: 'cover' },
+  { col: 0, span: 'tall',  ...whyReasons[0], tone: 'light', image: assetUrl('site/services/service_benefit_6.webp'), fit: 'cover' },
   { col: 0, span: 'strip', kind: 'cta', href: '/contact-us', linkLabel: "Let's talk" },
   { col: 1, span: 'short', ...whyReasons[1] },
-  { col: 1, span: 'mid',   ...whyReasons[2], video: assetUrl('more/about/about_7.mp4'), fit: 'inset' },
+  { col: 1, span: 'mid',   ...whyReasons[2], video: assetUrl('site/about/about-7.mp4'), fit: 'inset' },
   { col: 2, span: 'slim',  kind: 'stack', items: stackTools },
-  { col: 2, span: 'tall',  ...whyReasons[3], image: assetUrl('more/about/about_5.webp'), fit: 'cover' },
+  { col: 2, span: 'tall',  ...whyReasons[3], image: assetUrl('site/about/about_5.webp'), fit: 'cover' },
 ];
 
 const heroText =
