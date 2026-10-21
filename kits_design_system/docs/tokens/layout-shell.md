@@ -60,11 +60,26 @@ A filter chip row lives inside the content of the grid it filters.
 | layout grid columns | **4** | **8** | **12** |
 | column gap | **16** | **24** | **32** |
 | grid margin (= gutter) | **16** | **32** | **48** |
-| nav padding | `20 16` | `20 32` | `20` |
-| nav height | **100** | **100** | **100** |
-| nav position | sticky, top 0 | sticky, top 0 | sticky, top 0 |
-| bar height | 60 | 60 | 60 |
+| header padding | `16` | `20` | `20` |
+| header height (derived) | **100** | **108** | **108** |
+| header position | sticky, top 0 | sticky, top 0 | sticky, top 0 |
+| nav bar height | 68 | 68 | 68 |
+| nav bar inset (all sides) | 12 | 12 | 12 |
+| button height (links, CTA, menu) | 44 | 44 | 44 |
+| button text / padding / gap | 16 / `10 12` / 12 | 16 / `10 12` / 12 | 16 / `10 12` / 12 |
 | logo height | 40 | 40 | 40 |
+
+**Header formula (owner, 2026-10-21).** "Header" is the whole sticky section; "nav bar" is the grey box inside it.
+
+| Token | Value |
+|---|---|
+| Button height | 44px |
+| Bar inner vertical spacing | 12px per side |
+| Nav bar height | 68px |
+| Outer vertical spacing | 20px per side |
+| Total header height | 108px |
+
+24px line height + 2 × 10px button padding = 44px button; 44 + 2 × 12 = 68px bar; 68 + 2 × 20 = 108px header. The nav bar and its 44px buttons are the same on every breakpoint. The header is only the sticky wrapper around the bar, so its height is derived: mobile uses 16px outer spacing (16 + 68 + 16 = 100), tablet and desktop use 20px (108).
 
 Layout guides: type columns, align **stretch**, width auto, colour `#0099FF`.
 
@@ -131,13 +146,14 @@ gap: 16px | 24px | 32px;    /* the column gap */
 box-sizing: border-box;
 flex-shrink: 0;
 width: 100%;
-height: 100px;              /* all three breakpoints — bar 60 + 20px top/bottom everywhere */
+height: 100px;              /* mobile: 16 + 68 nav bar + 16 */
+height: 108px;              /* tablet and desktop: 20 + 68 + 20 */
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 20px 16px;         /* mobile */
-padding: 20px 32px;         /* tablet */
+padding: 16px;              /* mobile */
+padding: 20px;              /* tablet */
 padding: 20px;              /* desktop */
 position: sticky;
 top: 0;

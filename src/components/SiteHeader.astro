@@ -97,11 +97,12 @@ function isActive(href: string) {
        a single fluid 16→32 inset over exactly these stepped values as
        "non-monotonic". The spec was supplied explicitly and wins. Safe-area
        insets are still added so the bar clears the notch. */
-    /* 100px nav on every breakpoint, 60px bar on every breakpoint (owner,
-       2026-10-13): 20px top/bottom everywhere; sides 16 mobile / 32 tablet / 20 desktop. */
-    padding: calc(var(--safe-top) + 20px)
+    /* 68px nav bar on every breakpoint; the header around it is 16 top and
+       bottom on mobile (100), 20 from tablet up (108). Sides 16 mobile, 20 tablet and desktop.
+       See --header-pad-block in global.css. */
+    padding: calc(var(--safe-top) + var(--header-pad-block))
              calc(var(--safe-right) + 16px)
-             20px
+             var(--header-pad-block)
              calc(var(--safe-left) + 16px);
     background: transparent;
     will-change: transform;
@@ -137,7 +138,7 @@ function isActive(href: string) {
     justify-content: space-between;
     gap: var(--gap-4);
     min-height: var(--nav-height);
-    padding-inline: var(--gap-4);
+    padding-inline: var(--nav-bar-pad);
   }
 
   .site-logo {
@@ -422,8 +423,8 @@ function isActive(href: string) {
 
   @media (min-width: 768px) {
     .site-header {
-      padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 32px)
-               20px calc(var(--safe-left) + 32px);
+      padding: calc(var(--safe-top) + var(--header-pad-block)) calc(var(--safe-right) + 20px)
+               var(--header-pad-block) calc(var(--safe-left) + 20px);
     }
     .nav-top { padding-inline: var(--nav-bar-pad); gap: var(--nav-item-gap); }
     /* Original wugweb.com bar: heavier 40px blur, no extra saturation. */
@@ -439,9 +440,7 @@ function isActive(href: string) {
       margin-left: auto;
       gap: var(--nav-item-gap);
     }
-    /* The header is 100px on every breakpoint (layout-shell.md), so this bar
-       is 60px at tablet and desktop. Link sizes follow the original wugweb.com
-       bar's proportions scaled into it (see the --nav-* tokens). */
+    /* 44px buttons (--control-size) in the 68px bar; see the --nav-* tokens. */
     .nav-link,
     .nav-cta {
       font-size: var(--nav-link-size);
@@ -449,6 +448,8 @@ function isActive(href: string) {
       line-height: var(--nav-link-line);
       padding-block: var(--nav-link-pad-block);
       padding-inline: var(--nav-link-pad-inline);
+      box-sizing: border-box;
+      height: var(--control-size);
       display: inline-flex;
       align-items: center;
     }
@@ -482,12 +483,6 @@ function isActive(href: string) {
     }
   }
 
-  @media (min-width: 1200px) {
-    .site-header {
-      padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 20px)
-               20px calc(var(--safe-left) + 20px);
-    }
-  }
 </style>
 
 <script>

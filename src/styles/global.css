@@ -620,11 +620,16 @@
   --shell-gutter: 16px;
   /* Column gap — layout guides: 16 mobile (4 cols) / 24 tablet (8) / 32 desktop (12). */
   --grid-gap: 16px;
-  /* Sticky header: 100px total on every breakpoint (layout-shell.md).
-     --header-height is the whole box; --nav-height is the bar inside it, i.e.
-     100 minus the header's vertical padding (16+16 mobile, 20+20 tablet+). */
-  --header-height: 100px;
-  --nav-height: calc(var(--header-height) - 40px);  /* 60px bar on every breakpoint */
+  /* Header formula (owner, 2026-10-21). The nav bar is fixed; the sticky
+     header is only its wrapper, so its height is derived, never set:
+       button 44 (--control-size) = 10 + 24 line + 10
+       nav bar 68 = 12 + 44 + 12, every breakpoint
+       header = 68 + 2 x outer spacing: 16 mobile -> 100, 20 tablet+ -> 108
+     The header is sticky and in flow, so the hero, anchor offsets and blog
+     cover subtract --header-height; deriving it keeps them right per breakpoint. */
+  --nav-height: calc(var(--control-size) + 2 * var(--nav-bar-pad));
+  --header-pad-block: 16px;
+  --header-height: calc(var(--nav-height) + 2 * var(--header-pad-block));
   /* Blog post layout (/blog/[slug]), sm/md/lg tokens: sm here, md and lg in
      the 768 / 1200 blocks below. sm and md are one centred reading column with
      the cover under the title; lg splits into a sticky cover (5) and the
@@ -637,16 +642,16 @@
   --article-cover-position: static;
   --article-title-size: var(--t-display);
   --control-size: 44px;
-  /* Desktop nav: the original wugweb.com (Framer) bar's proportions (78px bar,
-     47px pills, 18px text, 54px logo; measured 2026-10-13) scaled x0.77 into
-     our 60px bar, since the nav is 100px on every breakpoint (layout-shell.md). */
-  --nav-link-size: 0.875rem;          /* 14px  (Framer 18) */
-  --nav-link-line: 1.5;
-  --nav-link-pad-block: var(--gap-2); /* 8px   (Framer 10) -> 36px pills */
-  --nav-link-pad-inline: var(--gap-3);/* 12px  (Framer 16) */
-  --nav-item-gap: var(--gap-2);       /* 8px   (Framer 12) */
-  --nav-bar-pad: var(--gap-3);        /* 12px inline inset */
-  --nav-logo-height: 2.5rem;          /* 40px  (Framer 54) */
+  /* Nav bar contents (owner, 2026-10-21): every button is 44 tall, which
+     leaves 12 above and below it in the 68 bar - the same 12 the bar keeps
+     at its left and right edge. */
+  --nav-link-size: 1rem;              /* 16px text */
+  --nav-link-line: 1.5;               /* 24px line */
+  --nav-link-pad-block: 10px;         /* 10 + 24 + 10 = 44 */
+  --nav-link-pad-inline: var(--gap-3);/* 12px */
+  --nav-item-gap: var(--gap-3);       /* 12px between buttons */
+  --nav-bar-pad: var(--gap-3);        /* 12px inset inside the bar, every breakpoint */
+  --nav-logo-height: 2.5rem;          /* 40px */
   --pillar-thumb: 88px;
   --pillar-thumb-sm: 62px;
   --thumb-min: 180px;
@@ -1152,7 +1157,7 @@ a[href^='tel:']:not(.no-external-icon)::after {
 @media (min-width: 768px) {
   :root {
     --shell-gutter: 32px; --grid-gap: 24px;
-    --nav-height: calc(var(--header-height) - 40px);
+    --header-pad-block: 20px;  /* header 108 from tablet up */
     --article-cover-ratio: 16 / 9;
     --space-section-xs: 70px; --space-section-sm: 70px; --space-section-md: 70px;
     --space-section-lg: 70px; --space-section-xl: 70px;
@@ -1241,7 +1246,7 @@ section:not(section section):not(.global-final-cta) {
      cards, the tag launcher), which would otherwise paint OVER a z-index-10
      sticky nav as they scroll under it. Isolation keeps them inside. */
   isolation: isolate;
-  /* Scroll index: an anchor jump lands below the 100px sticky header. */
+  /* Scroll index: an anchor jump lands below the sticky header. */
   scroll-margin-top: var(--header-height);
 }
 section:not(section section) > .wrap { padding-block: 0 !important; }
