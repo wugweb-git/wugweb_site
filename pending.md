@@ -13,7 +13,8 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 
 **2026-10-19: Blog post layout, poster fix, audits.**
 - Posters: `posterFor()` now resolves service clips to `site/services/<pillar>/posters/<file>.webp` (b47be4ee). Homepage Strategy and Operations tags no longer 404.
-- Other broken files seen (not fixed, need existing R2 replacements): `more/about/about_5.webp`, `more/about/about_7.mp4` (/about), `more/service/service_benefit_6.webp` (/services).
+- Fixed 2026-10-21: /about and /services pointed at pre-reorg `more/` keys; now `site/about/about_5.webp`, `site/about/about-7.mp4`, `site/services/service_benefit_6.webp` (existing R2 files).
+- Delinked 2026-10-21 (owner): `industryRef` unset on the 19 case studies (+13 drafts) that pointed only at legacy sectorless industries. Backup `backups/sanity-pre-legacy-industry-delink-2026-10-21T15-32-48-459Z.json`.
 - `/blog/[slug]`: Fabrica-style split at lg (sticky cover 5/12, reading column 7/12), one column at sm/md; related posts use PostCard. Tokens `--article-*` (sm/md/lg). Spec: `kits_design_system/docs/blocks/blog-post.md`.
 - Blog covers are 92.5 MB across 103 files (48 PNGs over 1 MB); /blog decodes slowly. Needs smaller R2 copies (owner decision: no new uploads).
 - Industry icons: 0 of 45 industries have an icon in Notion or Sanity (Notion Industry "Icon" is a URL field). Sectors: Notion and Sanity match on all 17 (icons, showcase ticks, order, lines) and all 45 industry links and card ticks.
