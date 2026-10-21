@@ -4,6 +4,16 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-10-21: Header and nav bar spec, root scale, deploy facts. DONE, live on uat.wugweb.com (81cc95d2).**
+- Names (owner): "header" is the whole sticky section; "nav bar" is the grey box inside it.
+- Formula: button 44 (10 + 24 line + 10, `--control-size`) + 12 + 12 = nav bar 68 on every breakpoint. Header is derived, never set: 68 + 2 x header padding = 100 mobile (16), 108 tablet and desktop (20). Buttons 16px text, 10 / 12 padding, 12 gap; logo 40; bar inset 12. Tablet side padding is 20 (was 32). Spec in `kits_design_system/docs/tokens/layout-shell.md`.
+- Root font fixed at 16px (4bbca720). It used to grow above 1440px (`clamp(16px, 100vw/90, 24px)`), which inflated every rem size site-wide (nav logo 49px at 1760px). This is site-wide, not nav-only. Wide-screen scaling is a phase 2.0/3.0 discussion with the owner.
+- Breakpoints to test: 375 / 768 / 1200 (desktop is 1200).
+- Verified on UAT 2026-10-21: all 162 sitemap URLs return 200; nav measured at all three widths.
+- Deploy facts learned: Cloudflare GitHub auto-builds skipped 089f1e5c and 4bbca720. A manual `wrangler pages deploy dist --branch main` does not take over production while a GitHub build is canonical; promote it with the deployments `/rollback` API, then check the live CSS on uat. Wrangler works through the owner's OAuth login (account 76fe2175…).
+- Dead tokens in `.env` (owner to rotate): `CLOUDFLARE_API_TOKEN` (Invalid API Token) and `NOTION_TOKEN` (invalid). Scripts that read them (R2 object listing, `sync-notion-*.mjs`) fail until replaced. Sanity token works (editor).
+- Paused: embedded Studio at `/admin` (branch `wip/embedded-studio`, local only, not pushed). Only the deps are in (31e980ec: `@sanity/astro` 3.5.1, `sanity` 3.99, `@sanity/client` v7, which every `@sanity/astro` release for Astro 5 requires). Not wired, built or measured. Free limits checked from Cloudflare docs: Workers 64 MiB uncompressed (no compressed limit), 20,000 files, 25 MiB per file, 20 min build. Baseline before Studio: Worker 1.58 MiB, 127 files, 8 s build. Do not merge to main without owner approval.
+
 **2026-10-19 — Homepage logo band. DONE.**
 - Live on wugweb.pages.dev: 28 logos in the band, in order, all loading. Each client's `bandLogoPath` points at a file already in R2 (nothing copied or uploaded, owner rule): 14 colour originals `assets/logos/NN_Name.png`, 14 grey copies `assets/logos/grey/<slug>-300w|150w.png` (Acko and Cartier stay on 150w grey). `logoPath` untouched.
 - Sanity: 22 clients patched, 6 created (ITC Limited, Airtel, AG&P, iMedia, MDA, Surya — names from the logo files, owner to check), 8 unflagged (RideEV, Airtel XSafe, Valyu.ai, Plufo, Axis Bank, Bankco, Gratifi, Kia). Backup `backups/sanity-pre-logo-band.json`. 1.4s after the first apply, something under the owner's Sanity login `createOrReplace`d 7 of the clients and wiped the band fields; re-applied, 28/28 held.
