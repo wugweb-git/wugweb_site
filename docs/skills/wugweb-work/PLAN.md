@@ -125,6 +125,52 @@ Where an older line further down disagrees with this table, the table wins.
 
 Findings from the vetting are added to this table when they arrive; a finding changes the plan only after the owner accepts it.
 
+## Writing style and tone
+
+This is the voice for every case study and every other form. It lives in the skill as `references/copy-and-seo.md`. Sources: `brand_guidelines/03_MARKETING_SYSTEM/14_COPY_GUIDELINES.md` (direct, intelligent, specific; outcomes over hype), `02_MESSAGING_FRAMEWORK.md` (one claim, one tension, one proof, one outcome; Problem → Insight → System → Outcome), the owner's rules, and the research rules.
+
+**Tone in one line:** a senior practitioner explaining what was built and why, to a peer. Calm, exact, no selling.
+
+| Rule | How |
+|---|---|
+| Say what was built | Name the thing: "a member portal and a back office", not "a holistic digital ecosystem". |
+| Evidence or nothing | Every claim points to a screen, a number with its source and date, or a named fact. No evidence: cut the claim or mark it "unvalidated". Numbers are never invented. |
+| Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. |
+| Answer first | The first sentence under a heading answers it. The first third of the page carries the main facts. |
+| Short, whole sentences | Fact sentences of 6 to 20 words that make sense on their own. One idea per sentence. |
+| Plain words | Use, build, show, help. No superlatives or filler: pivotal, robust, seamless, meticulous, holistic, cutting-edge, leverage, empower, unlock, world-class. |
+| Active, with a named doer | "Staff set the workflow per programme", not "workflows were streamlined". "We" is allowed for Wugweb. |
+| The client's own words | Use the terms on their screens (NTUC writes "Programmes"). One spelling per name (iCube, not Icube). |
+| British English | programme, centralised, colour, organisation. |
+| No dashes | No em or en dashes in anything a visitor reads. Ranges are written out ("3 to 5"). |
+| Sentence case | Headings, labels and buttons. No Title Case, no ALL CAPS. |
+| Credit honestly | Name partners and the team. Say what Wugweb did and did not do. |
+
+**Lengths.** Subtitle 90 characters or fewer. Summary 40 to 60 words. Chapter 30 to 150 words. Point title 2 to 6 words, point text one sentence. Caption 25 words or fewer, saying why the screen matters. Alt text 125 characters or fewer, saying what the screen shows and lets the user do. SEO title 51 characters or fewer. Meta description 140 to 160 characters. Quote 3 lines or fewer, with name, role and organisation.
+
+**Before and after (NTUC).**
+
+| Before | After | Why |
+|---|---|---|
+| Empowering low-income families through a holistic digital ecosystem. | One portal for members to apply for aid, one back office for NTUC to run every programme. | Says what was built |
+| A robust administrative backend was developed to centralize and automate critical operations via sophisticated dashboards. | Staff start from a programme template, then set fields, workflow and eligibility rules. | Named doer, plain words, visible in the screens |
+| The transformation delivered measurable improvements. | (cut until a number with a source exists) | No evidence |
+| Design Philosophy: Accessibility as a core principle. | Errors give a next step: a blocked application shows a phone number and hours. | A decision plus the screen that shows it |
+
+**Tone by form.** Case study page: full sentences, evidence in every chapter. Card and tile: client, one line of what was built, no adjectives. Deck: one claim per slide, the screen does the talking. LinkedIn: first person plural, one lesson from the project, no hashtag stuffing, same facts as the page. Behance and Dribbble: captions only, flow by flow.
+
+**How it is checked.** The audit lists every banned word, dash, unbacked claim, generic heading and over-length item. The body proposal shows current → proposed for each. Skills behind this: `rampstack-seo:content-and-copy`, `copywriting-kit:copy-proof-check`, `copywriting-kit:copy-edit`, `design:ux-copy`, `brand-voice:brand-voice-enforcement`, `marketing:brand-review`.
+
+## Definition of done
+
+| Stage | Done when |
+|---|---|
+| Audit | Every file measured and looked at close up; every claim marked backed or unbacked; findings listed with numbers that were computed, not estimated. |
+| Body proposal | One copy; claim headings; every screen captioned; every own-folder file accounted for; owner questions listed; nothing written to Notion. |
+| Owner approval | The owner has approved that exact text. Only then is the Notion row written, with a backup first. |
+| Page | Gate passes at 375, 768 and 1200: one h1, no skipped headings, every image with alt and size, no dashes, no sideways scroll, nothing upscaled or cropped, all media muted, under the weight budget. |
+| Skill v0.1 | With-skill runs pass every eval check the baseline fails, on 5 prompts; the owner has no open feedback. |
+
 ## Adaptive UX: what "adaptive" means here
 
 The page is never one fixed composition. It adapts along seven lines, and each line has a rule and a check.
