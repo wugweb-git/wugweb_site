@@ -10,7 +10,7 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - Done, read-only: three research reports (`docs/research/case-study-system-2026-10-19/`), the NTUC U Care reference audit and the NTUC Body Content v2 proposal (both on the Notion page).
 - The 2026-10-19 bento layout on `/work/[slug]` (item 8 below) is being replaced under this plan. Do not rework that page outside the plan.
 - Waiting on the owner: approval after vetting; NTUC inputs (results with source, live URL, number of builder steps); a working `NOTION_TOKEN`.
-- Still to add after approval: `docs/skills/wugweb-work/PLAN.md` (export of the Notion page for other tools), then step 0 of the plan.
+- `docs/skills/wugweb-work/PLAN.md` is the export of the Notion page for other tools (do not edit it; re-export after the Notion page changes). After approval: step 0 of the plan.
 
 **2026-10-21: Header and nav bar spec, root scale, deploy facts. DONE, live on uat.wugweb.com (81cc95d2).**
 - Names (owner): "header" is the whole sticky section; "nav bar" is the grey box inside it.
