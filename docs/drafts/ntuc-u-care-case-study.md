@@ -1,3 +1,5 @@
+> Superseded 2026-11-14 by the NTUC Body Content v2 proposal on the Notion page "wugweb-work skill: plan (final for vetting)" (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Kept for reference.
+
 # NTUC U Care Fund — case study revision (draft for review)
 
 Source: Notion Case Studies → CS-001 → Body Content (short copy + long-form site copy). Nothing here is new fact. Not written to Notion.

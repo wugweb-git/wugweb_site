@@ -4,6 +4,14 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-11-14: Case study rebuild and the `wugweb-work` skill. PLAN ONLY, waiting for the owner's vetting.**
+- One source of truth: the Notion page "wugweb-work skill: plan (final for vetting)" under Wugweb HQ / Wugweb Website (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
+- State: plan is final. Nothing is built: no skill files, no site code, no Sanity write, no case-study row changed in Notion.
+- Done, read-only: three research reports (`docs/research/case-study-system-2026-10-19/`), the NTUC U Care reference audit and the NTUC Body Content v2 proposal (both on the Notion page).
+- The 2026-10-19 bento layout on `/work/[slug]` (item 8 below) is being replaced under this plan. Do not rework that page outside the plan.
+- Waiting on the owner: approval after vetting; NTUC inputs (results with source, live URL, number of builder steps); a working `NOTION_TOKEN`.
+- Still to add after approval: `docs/skills/wugweb-work/PLAN.md` (export of the Notion page for other tools), then step 0 of the plan.
+
 **2026-10-21: Header and nav bar spec, root scale, deploy facts. DONE, live on uat.wugweb.com (81cc95d2).**
 - Names (owner): "header" is the whole sticky section; "nav bar" is the grey box inside it.
 - Formula: button 44 (10 + 24 line + 10, `--control-size`) + 12 + 12 = nav bar 68 on every breakpoint. Header is derived, never set: 68 + 2 x header padding = 100 mobile (16), 108 tablet and desktop (20). Buttons 16px text, 10 / 12 padding, 12 gap; logo 40; bar inset 12. Tablet side padding is 20 (was 32). Spec in `kits_design_system/docs/tokens/layout-shell.md`.

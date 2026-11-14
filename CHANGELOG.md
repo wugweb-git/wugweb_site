@@ -9,6 +9,11 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work skill plan: one source of truth (2026-11-14)
+- Docs only. `pending.md`, `governance.md` §5, `CLAUDE.md` and `AGENTS.md` now point to the Notion plan page for the case-study rebuild and the `wugweb-work` skill instead of describing it.
+- Added the three research reports under `docs/research/case-study-system-2026-10-19/`.
+- `docs/drafts/ntuc-u-care-case-study.md` marked superseded.
+
 ### Changed — DNS cutover prep (2026-10-13)
 - **Redirects:** 12 Framer URLs that 404'd now 301 to their new pages (Sanity `redirect` docs, `scripts/cutover-redirects.mjs`). All 12 were verified on `wugweb.pages.dev`.
 - **SEO:** `siteSettings.siteUrl` is set to `https://www.wugweb.com`. The 19 case studies that used a `framerusercontent.com` og:image now take `ogImagePath` from their own R2 cover.

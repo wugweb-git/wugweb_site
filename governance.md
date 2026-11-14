@@ -160,7 +160,7 @@ Current state (2026-08-04): Sanity ≫ Notion seed. Asset registry + R2 path map
 3. Prefer existing Sanity + local `public/assets` + R2; enrich from `reference/` / `component/` when identity is clear.
 4. When Notion and Sanity conflict on volume, **Sanity (+ Neon after sync) wins** unless a human says otherwise.
 
-**Owner-approved exceptions (Notion is the source):** blog posts (2026-10-13), case-study SEO fields (2026-10-13), and sectors / the Sectors showcase (2026-10-19: Table 25 + Table 3 → `sector.showcase`, `showcaseOrder`, `icon`, `industry.showOnSectorCard`, via `scripts/sync-notion-sectors.mjs`). See `CLAUDE.md` Working Agreements.
+**Owner-approved exceptions (Notion is the source):** blog posts (2026-10-13), case-study SEO fields (2026-10-13), and sectors / the Sectors showcase (2026-10-19: Table 25 + Table 3 → `sector.showcase`, `showcaseOrder`, `icon`, `industry.showOnSectorCard`, via `scripts/sync-notion-sectors.mjs`). Also case-study content (2026-10-13): the Notion Case Studies **Body Content** is the source for each case study's copy and media links; media files live in R2. The rules and the rebuild plan are on the Notion page "wugweb-work skill: plan (final for vetting)" (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922), which is the one source of truth for that work. See `CLAUDE.md` Working Agreements.
 
 ---
 
