@@ -109,6 +109,20 @@ version: 0.1.0
 
 Where an older line further down disagrees with this table, the table wins.
 
+## Vetting log
+
+| Date | Who | What | Result |
+|---|---|---|---|
+| 2026-11-14 | Second assistant (source audit + Deep Research), run by the owner | Retrieved the full plan and the real `layout-shell.md` from the repo. Fed Deep Research the research documents, the plan, the `ui-system-mapper` files, the SEO skill catalogue and `notion-is-source-dont-author.md`. It is checking the actual GitHub code instead of assuming the proposed case-study architecture exists. | In progress. Its research plan is waiting for the owner's approval in the Deep Research panel. Early note from it: the plan is more mature and specific than the earlier summaries suggested, and it says nothing is built yet, which is correct. |
+
+**Open question raised by the vetting (not decided):** should there be a standalone personal digital-twin skill that holds shared voice and behaviour references, which `wugweb-work` and the other skills then use?
+
+- What it would change here: `wugweb-work` would keep its own content rules (source, evidence, media, layout) and read voice and working-style rules from the shared skill instead of carrying its own copy in `copy-and-seo.md`.
+- What it would not change: Body Content v2, the visual read, the layout grammar, Part 2.
+- Until the owner decides, `wugweb-work` stays self-contained and takes voice from `brand_guidelines/`.
+
+Findings from the vetting are added to this table when they arrive; a finding changes the plan only after the owner accepts it.
+
 ## How the rest is organised
 
 - **Part 1, the skill:** "A. The skill", D3 (evals).
