@@ -106,6 +106,8 @@ version: 0.1.0
 | 2026-11-11 | Media-making helpers are allowed only for other forms, one file at a time, on the owner's yes. |
 | 2026-11-11 | The skill does not depend on the CMS or host. |
 | 2026-11-14 | The Notion page is the one source of truth for the plan. |
+| 2026-11-14 | The digital-twin skill is out of scope for this plan. |
+| 2026-11-14 | Focus is adaptive UX plus every function already discussed. Every function has named skills behind it (see "Skill map"). This replaces the 2026-11-11 "by hand only" rule: the skill still carries its own checks, and the mapped skills are used as standard, with the owner's rules winning over anything a skill says. |
 
 Where an older line further down disagrees with this table, the table wins.
 
@@ -115,13 +117,54 @@ Where an older line further down disagrees with this table, the table wins.
 |---|---|---|---|
 | 2026-11-14 | Second assistant (source audit + Deep Research), run by the owner | Retrieved the full plan and the real `layout-shell.md` from the repo. Fed Deep Research the research documents, the plan, the `ui-system-mapper` files, the SEO skill catalogue and `notion-is-source-dont-author.md`. It is checking the actual GitHub code instead of assuming the proposed case-study architecture exists. | In progress. Its research plan is waiting for the owner's approval in the Deep Research panel. Early note from it: the plan is more mature and specific than the earlier summaries suggested, and it says nothing is built yet, which is correct. |
 
-**Open question raised by the vetting (not decided):** should there be a standalone personal digital-twin skill that holds shared voice and behaviour references, which `wugweb-work` and the other skills then use?
+**Closed 2026-11-14 (owner): the digital-twin skill is different work and is not part of this plan. Ignore it here.** The question that was raised, kept only as a record: should there be a standalone personal digital-twin skill that holds shared voice and behaviour references, which `wugweb-work` and the other skills then use?
 
 - What it would change here: `wugweb-work` would keep its own content rules (source, evidence, media, layout) and read voice and working-style rules from the shared skill instead of carrying its own copy in `copy-and-seo.md`.
 - What it would not change: Body Content v2, the visual read, the layout grammar, Part 2.
 - Until the owner decides, `wugweb-work` stays self-contained and takes voice from `brand_guidelines/`.
 
 Findings from the vetting are added to this table when they arrive; a finding changes the plan only after the owner accepts it.
+
+## Adaptive UX: what "adaptive" means here
+
+The page is never one fixed composition. It adapts along seven lines, and each line has a rule and a check.
+
+| Adapts to | Rule | Checked by |
+|---|---|---|
+| Content shape | Layout comes from what the body holds: number of points (1, 2 to 3, 4 to 6, 7 or more), number and shape of media (phone, tall, square, landscape, wide, full-page), quotes, tables, results, timelines. No empty cells, no filler media. | Block plan fixtures for 8 different case studies |
+| Content depth | Rich body, thin text-only body, and no body each get a complete page. A chapter with no media is prose; a media-only chapter is allowed. Results, quotes and credits appear only when they exist. | Labelly (thin), Bodyshop (no body) previews |
+| Kind of work | Product UI, brand identity, campaign and stats-led, multi-workstream. Screens group by audience, then flow; device mockups are support, never the proof. | Archetype table + NTUC, ToT Bridal, Airtel, Animal Writes |
+| Volume | 3 screens or 200. A chapter shows only its proof screens; the rest go to one All screens block with sets, thumbnails and a viewer. | NTUC (31), IndusNinja, MusicLinkd skeleton |
+| Device | 375, 768, 1200. One column on phone, rails that show the next item, targets of 44 px or more, nothing wider than its natural size, no sideways page scroll. Mobile is the PWA. | Gate at 375 / 767 / 768 / 769 / 1199 / 1200 / 1201 |
+| Capability and conditions | Works without JavaScript (all content in server HTML). Reduced motion stops loops and reveals. Videos are muted and load only when near. Heavy pages stay under the 25 MB budget by showing less at first, not by resizing files. | No-JS check, reduced-motion check, byte total per page |
+| Client identity | One accent colour per client, taken from their own palette, contrast-checked, used for rules and numerals only. The Wugweb system stays the frame. | Contrast check on every accent |
+
+The same adaptive rules drive the other forms: a card, a tile, a deck slide and a LinkedIn carousel each take the pieces of the body they can hold.
+
+## Skill map: which skills back each function
+
+Every function of `wugweb-work` has named skills behind it. The first one listed leads.
+
+| Function | Skills used |
+|---|---|
+| Building and testing the skill itself | `anthropic-skills:skill-creator`, `anthropic-skills:skill-development`, `rampstack-seo:skill-creation-walkthrough`, `anthropic-skills:full-output-enforcement` |
+| Audit (content, page, links) | `rampstack-seo:seo-content-audit`, `ux-ui-audit`, `searchfit-seo:broken-links`, `searchfit-seo:seo-check`, `seo-skills:seo-images` |
+| Brief (claim, keyword, intent) | `searchfit-seo:content-brief`, `rampstack-seo:seo-keyword`, `searchfit-seo:content-strategy`, `searchfit-seo:create-topic`, `anthropic-skills:wugweb-seo`, `marketing:campaign-plan` (multi-workstream and campaign cases) |
+| Media (measure, weight, speed) | The skill's own manifest script, `cloudflare:web-perf` |
+| Look (reading images, UI, video, design assets) | `design:design-critique`, `ui-ux-pro-max`, `anthropic-skills:ui-system-mapper`, `anthropic-skills:musiclinkd-design-system` (MusicLinkd only), `design:design-system` |
+| Body (copy, claims, voice, captions, alt) | `rampstack-seo:content-and-copy`, `searchfit-seo:create-content`, `copywriting-kit:copy-proof-check`, `copywriting-kit:copy-edit`, `copywriting-kit:copy-diagnose`, `design:ux-copy`, `brand-voice:brand-voice-enforcement`, `marketing:brand-review`, `marketing:draft-content`, `analytics-skills:metric-context-and-benchmarks`, `data:validate-data` |
+| Layout and adaptive UX | `anthropic-skills:frontend-design`, `anthropic-skills:design-taste-frontend`, `anthropic-skills:system-design`, `anthropic-skills:responsive-token-engine`, `superdesign:superdesign`, `anthropic-skills:ui-system-mapper`, `anthropic-skills:gsap-react` (motion reference) |
+| SEO, AEO and schema | `searchfit-seo:generate-schema`, `searchfit-seo:schema-markup`, `searchfit-seo:on-page-seo`, `searchfit-seo:internal-linking`, `rampstack-seo:seo-onpage`, `rampstack-seo:seo-aeo-geo`, `sanity:seo-aeo-best-practices`, `seo-skills:seo-schema`, `seo-skills:seo-geo` |
+| Ship (quality gate) | `anthropic-skills:design-qa`, `design:accessibility-review`, `anthropic-skills:web-quality-accessibility`, `anthropic-skills:web-design-guidelines`, `website-design:review-page`, `code-review`, `simplify`, then after deploy `aeotester:audit` and `aeo-brand-scan:scan` |
+| CMS side of this site | `sanity:content-modeling-best-practices`, `sanity:sanity-best-practices`, `sanity:content-experimentation-best-practices`, `sanity:typegen` |
+| Forms: deck and PDF | `slides`, `anthropic-skills:pptx`, `anthropic-skills:pdf` |
+| Forms: LinkedIn, Behance, Dribbble, social | `social-media-skills:linkedin-post-writer`, `carousel-writer`, `before-after-and-transformation`, `social-proof-and-testimonials`, `data-and-original-research`, `platform-specs-and-validation`, `postiz:postiz` (scheduling; every post needs the owner's yes) |
+| Forms: stats and charts | `dataviz`, `data:create-viz`, `data:statistical-analysis` |
+| Forms: made images (gated per file, owner's yes) | `html-css-to-image:hcti-open-graph-images` (needs sign-in), `banner-design`, `social-media-skills:image-prompt` |
+
+**Rules for using them.** The owner's rules and this plan win over anything a skill suggests (no FAQ schema, no invented numbers, no cropping or resizing media, no sound, no new media without a yes). A skill that is missing or not signed in is skipped and reported, never a blocker. The mapping lives in `references/skill-map.md` so it can change without touching the rest of the skill.
+
+**Gaps where no installed skill fits yet:** stepping through video frame by frame, and comparing a Behance or Dribbble version against the case study. Both are done by the skill's own procedure for now.
 
 ## How the rest is organised
 
