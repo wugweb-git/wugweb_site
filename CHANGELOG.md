@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: "Extracted and absorbed" from the installed skills (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` gains an "Extracted and absorbed" section (about 75 helper skills read; each marked absorb, optional helper or ignore, with clashes against the owner's rules), three brief fields (19 to 21) and questions 18 to 20; the brief finding is corrected. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-extracted-2026-11-16.json`.
+
 ### Changed — wugweb-work plan: extracted and absorbed helper rules (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md` gains "Extracted and absorbed": rules restated from the installed helper skills by mode, a decision for every skill read (absorb, optional helper, ignore), clashes with owner rules, a first draft of the track 2 structure and the gaps found. Also: where the skill is developed, the interface-copy link rule, "main file stands alone" under portability, and two new owner questions (made-file sizes, hero copy limit). Matches the Notion page.
 - `backups/notion-wugweb-work-page-before-2026-11-16-c.md`: the Notion page as it was before this update.
