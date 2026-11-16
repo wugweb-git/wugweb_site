@@ -10,7 +10,7 @@
 | Type | Claude Code Agent Skill: one `SKILL.md` plus `references/`, `examples/`, `evals/` |
 | Version | 0.1.0 (planned) |
 | Family | Wugweb Skill System |
-| Status | Plan only. No files built. No approved writing samples yet. Nothing goes to development until the owner says so. |
+| Status | Plan ready for vetting. Skill development not started; the owner starts it when the page and this file are ready. No approved writing samples yet. |
 | Lives in | `~/.claude/skills/wugweb-voice/` proposed, so every project sees it. CONFIRM |
 | Covers | How Wugweb and Vedanshu write and speak: voice, tone, phrasing, structure |
 | Does not cover | Personality, beliefs, decision style, working preferences, brand identity, positioning, audience, case-study structure, SEO, design |
@@ -58,7 +58,7 @@ wugweb-voice/
 └── export/wugweb-voice.md   single-file export for GPT, Cursor or any other tool (section 13)
 ```
 
-Changed from the approved plan: `working-rules.md` and `facts.md` are removed. Working preferences are out of this skill (open question 2). Facts about the studio belong to `wugweb-brand-os`.
+Changed from the approved plan: `working-rules.md` and `facts.md` are removed. Working preferences are out of this skill (open question 5). Facts about the studio belong to `wugweb-brand-os`.
 
 ## 6. Calibration corpus, consent and provenance
 
@@ -111,6 +111,15 @@ Links, to read the same on both sides:
 | Takes from | `wugweb-work` | Draft text with its form, mode, and the audience and purpose from the brief |
 - **Client voice**: quotes and on-screen terms from a client stay in the client's words. This skill never rewrites them.
 
+Matrix row, as held on the registry:
+
+- **Owns:** the one Wugweb voice: voice, tone, phrasing and structure rules; word lists; how it sounds per form and platform; the ledger of owner-approved samples; the pre-post voice check.
+- **Reads (sources):** writing and transcripts the owner supplies or authorises; his edits and fixed rules; the draft "Writing style and tone" section of the wugweb-work plan.
+- **Gives to:** `wugweb-work` (voice rules, mode settings, text in voice, voice-check results with confidence); `wugweb-brand-os` (the voice rules it points to).
+- **Takes from:** `wugweb-brand-os` (identity, positioning, audience); `wugweb-work` (draft text with its form, mode, and the audience and purpose from the brief).
+- **Never does:** guesses personality, beliefs or decision style; copies typos; invents numbers, quotes or facts; rewrites client quotes or on-screen terms; changes format, length, SEO or positioning rules; publishes; uses unapproved samples.
+- No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`.
+
 What a caller passes in: the text or brief, the mode, and the audience if known. What it gets back: the text in voice, the rules applied, a confidence level (high, medium, low) with the reason, and any claim it could not support.
 
 What would move in from `PLAN.md` section 5 (that file is not edited from here; the move is for its own session to make):
@@ -138,6 +147,8 @@ Starting text, from "Tone by form" in the wugweb-work plan. Draft until the owne
 | Behance and Dribbble | Captions only, flow by flow |
 | Carousel | Not in the starting text. Gap: needs the owner's ruling or a sample. |
 | Quick chat, formal document, spoken answer | No starting text. Each needs samples. |
+
+Founder "I" against studio "we": several helper skills treat these as two voices. The owner ruled one voice (2026-11-16), so here it is a pronoun setting only. A bylined or first-person piece uses "I", studio copy uses "we", one per piece, and the voice rules are the same for both. Whether that is one fixed rule or his call per piece is open question 8.
 
 "Voice checked against wugweb-voice" is the approval step before any post. The check is:
 
@@ -187,12 +198,16 @@ The Wugweb Skill System's final list gives this skill eight helpers: `rampstack-
 ## 11. Open questions for the owner
 
 1. Settled 2026-11-16: one voice, held in `wugweb-voice`. The owner said so in this session ("wugweb and vedanshu is same") and, as relayed, again when asked directly.
-2. Where do working preferences live (how he wants assistants to reason, prioritise and report)? Today they are in Claude memory. They are out of this skill.
-3. CONFIRM the location: personal skills folder, or the repo.
-4. "We" for the studio and "I" in bylined or personal writing: one rule, or his call per piece?
-5. Which samples does he supply first, and may meeting transcripts be used?
-6. Settled 2026-11-16: the plan goes on the skill's Notion page and in this file. Any further Notion write still waits for his yes.
-7. CONFIRM the helper list: the system's eight only, or the extras in section 10 as well.
+2. Writing samples: which emails, posts, notes or transcripts count as his voice, and may meeting transcripts be used? Nothing can be calibrated without them.
+3. Where the skill lives: `.claude/skills/wugweb-voice/` in the repo, or the personal skills folder `~/.claude/skills/wugweb-voice/` so every project sees it.
+4. The helper list: the system's eight only, or the extras in section 10 as well.
+5. Where working preferences live (how he wants assistants to reason, prioritise and report). Today they are in Claude memory. They are out of this skill.
+6. Whether translated copy is in scope for the voice.
+7. Whether this plan file is pushed to `main`. It is on the branch `claude/happy-dirac-e9995c` only.
+8. "We" for the studio and "I" in bylined or personal writing: one fixed rule, or his call per piece?
+9. CONFIRM that the Notion profile pages (2023, Grok, Gemini) are background only, not calibration.
+
+Settled 2026-11-16: the plan goes on the skill's one Notion page and in this file. Any further Notion write still waits for his yes.
 
 ## 12. Source gaps
 
@@ -326,28 +341,22 @@ Decisions: ABSORB (restate inside this skill so it works without the helper), HE
 - Not opened: `email-and-newsletter`, `reels-script`, `tiktok-script`, `scripting-and-storyboarding`, `content-research-and-sourcing`, `crisis-and-moderation`.
 - None of the helpers offers a blind comparison against real samples except `voice-builder`.
 
-### Routed from the wugweb-brand-os reading, 2026-11-16
+### Routed from the other skills' readings, 2026-11-16
 
-Proposals passed on by the coordinating session, not owner rulings.
+Proposals passed on by the coordinating session from the wugweb-brand-os, wugweb-work, wugweb-strategy and wugweb-seo readings. They are proposals, not owner rulings. Every source below was read by this session, in the named section only, in a fourth read-only pass. Items that repeat a row above are not listed again.
 
-| Source | Status here |
-|---|---|
-| `~/.claude/skills/brand` voice framework; `brand-voice:guideline-generation`; `marketing:brand-review`; `social-media-skills:brand-profile`; `quote-cards-and-text-graphics`; `storytelling-and-narrative` | Already covered in the tables above. |
-| `social-media-skills:audience-research` (a bank of customers' own words) | Not read by this session. Likely belongs to `wugweb-strategy` and `wugweb-brand-os`; for voice it would only inform the "client's own words" rule. Decision waits on a read. |
-| `~/.claude/skills/design` slides copywriting formulas (PAS, AIDA, FAB) | Not read by this session. Formulas are structure, so likely FOR `wugweb-work`. Decision waits on a read. |
-| `frontend-design`, `design-taste-frontend` (their copy self-audit sections) | Not read by this session. Possible extra checks for interface wording. Decision waits on a read. |
-
-### Routed from the wugweb-work extraction, 2026-11-16
-
-Proposals passed on by the coordinating session, not owner rulings. Most repeat rows above; only what is new is listed.
-
-| Proposal | Source named | Status here |
-|---|---|---|
-| Never make text worse to dodge AI detectors; edit for readers | `copywriting-kit:copy-edit` | ABSORB into the voice check. Matches "do not copy typos". Read by this session. |
-| A piece ends, it does not run out; an opening earns the next lines | `rampstack-seo:content-and-copy` | ABSORB into `voice.md`. Read by this session. |
-| One register per page | `design-taste-frontend` | Candidate for `modes.md`. Not read by this session. |
-| Quotes of three lines at most, with name and role | `design-taste-frontend` | A length rule, so it stays with `wugweb-work`, which already has it. |
-| Buttons say what happens; one name per action or feature | `frontend-design`, `ux-ui-audit`, `design:ux-copy` | "One term per thing" is already absorbed. Button wording is candidate text for `modes.md`. Only `ux-copy` was read by this session. |
-| The client is the hero, the studio is the guide | `storytelling-and-narrative` | Candidate for `voice.md` (who the subject of a sentence is in client work). It also touches positioning, so `wugweb-brand-os` should agree. |
-| Founder "I" against studio "we" | `linkedin-post-writer`, `behind-the-scenes-and-founder` | Kept only as a pronoun rule. One voice stands (owner, 2026-11-16). |
-| Translate meaning, not words | `searchfit-seo:content-translation` | Candidate for `modes.md` if translated copy is ever in scope. Not read by this session. Scope is the owner's call. |
+| Proposal | Source read | Decision | Lands in | Clash with an owner rule |
+|---|---|---|---|---|
+| Stock-phrase list; opener and closer rules; never make text worse to dodge AI detectors | `copywriting-kit:copy-edit`, `rampstack-seo:content-and-copy` | ABSORB | `words.md`, `voice.md`, voice check | Covered above. "A piece ends, it does not run out" is added to `voice.md`. |
+| Words do a job: write from the reader's side, name things as people know them, describe plainly instead of selling; a control says exactly what happens ("Save changes", not "Submit"); errors say what went wrong and how to fix it | `frontend-design` (writing section) | ABSORB | `modes.md` (interface wording) | None found. Already sentence case and no filler. |
+| Re-read every visible string before it ships; one register per page; no filler verbs or poetic labels; keep the existing voice when a page is redesigned | `design-taste-frontend` (copy rules) | ABSORB | Voice check, `modes.md`, `words.md` | It also bans em and en dashes, which agrees. It allows made-up "mock" numbers: not carried. It writes ranges with a hyphen; the owner's rule is to write them out. |
+| Quotes of three lines at most with name and role; headline and paragraph word limits | `design-taste-frontend` | IGNORE for voice | Stays with `wugweb-work` | Length rules belong to `wugweb-work`, which already has the quote limit. |
+| One feature, one name across screens; hunt placeholder copy; a label must match where it leads; check a claim against what the product does | `ux-ui-audit` | ABSORB the naming and placeholder checks, HELPER | Voice check, `words.md` | None found. The claims check itself is FOR `wugweb-work`. |
+| Readers' own words, kept word for word and grouped (problem, desire, objection, what they call the thing); a phrase with no evidence is left out or marked assumed | `social-media-skills:audience-research` (voice of customer) | HELPER; ABSORB one rule | `voice.md`: prefer the reader's own term over internal jargon, when the term is evidenced | It gathers from reviews, forums and competitors. Collection and the bank itself are FOR `wugweb-strategy`; the audience definition is `wugweb-brand-os`. |
+| Slide copy formulas (problem, call to action, feature, cost of inaction, before and after) | `~/.claude/skills/design` (slides copywriting formulas) | IGNORE for voice | FOR `wugweb-work` | Structure only. Its templates have number slots and "is dead" hype shapes with no rule that figures are real. |
+| The client is the hero, the studio is the guide | `storytelling-and-narrative` | Candidate, not absorbed yet | `voice.md`, if `wugweb-brand-os` agrees | It is partly positioning, so brand-os decides first. |
+| Founder "I" against studio "we" | `linkedin-post-writer`, `behind-the-scenes-and-founder` | ABSORB as a pronoun setting only | `modes.md` | Both sources treat them as two voices. One voice stands (owner, 2026-11-16). See section 7a. |
+| Post habits to avoid: one dramatic fragment per line, "Agree?" closers, staged vulnerability, humble-brag | `linkedin-post-writer`, `behind-the-scenes-and-founder` | ABSORB | `modes.md`, `words.md` | Covered above. |
+| Templated pages drift to a generic voice: compare a page with two siblings, and if only the names differ it fails | `rampstack-seo:programmatic-seo` | ABSORB the check | Voice check scope: templated pages are checked too, through `wugweb-work` | None found. The cause (thin data, weak template) is FOR `wugweb-seo` and `wugweb-work`. |
+| Stock transitions, heavy dashes and bold in most paragraphs read as low-effort machine text | `seo-skills:seo-content-audit` | ABSORB the two wording signals | Voice check, `words.md` | It tolerates em dashes under a threshold; the owner bans them outright. Its other signals (bylines, posting rate) are FOR `wugweb-seo`. |
+| Translate meaning, not words; adapt idioms; keep brand names and technical terms as they are | `searchfit-seo:content-translation` | Held | `modes.md`, only if translated copy is in scope (open question 6) | The skill says nothing about keeping voice or tone. |
