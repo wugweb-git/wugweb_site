@@ -1,0 +1,217 @@
+{
+  "skill_name": "wugweb-work",
+  "evals": [
+    {
+      "id": 1,
+      "name": "cartier-v2-proposal",
+      "prompt": "Take the Cartier case study's current Body Content from the site and turn it into a v2 body proposal for me to review. Show current to proposed with reasons, and give me the block plan the page would use. Don't write anything to Notion.",
+      "expected_output": "A draft file with a what-changes table (current, proposed, why), one proposed body in the v2 grammar with claim headings, the unbacked claims left out and listed, owner questions, and a block plan using only catalogue block types. The long site copy is treated as the source over the short copy.",
+      "files": [
+        "examples/body-ntuc-u-care.md"
+      ],
+      "expectations": [
+        "The proposal contains no em dash or en dash in any proposed body line",
+        "No H2 or chapter heading in the proposed body is a generic label such as About, Challenges, Solutions, Design Philosophy or Conclusion",
+        "Every chapter heading in the proposed body is 70 characters or fewer",
+        "Every metric in the proposed body has a value, what, period and source, or is marked unvalidated, or there are no metrics",
+        "The proposed body contains none of: pivotal, robust, seamless, holistic, leverage, empower, cutting-edge",
+        "Every block type in the block plan is one of the 23 catalogue types",
+        "The output states that nothing was written to Notion or Sanity",
+        "There are no placeholders such as TBD, [INSERT or lorem in the proposed body"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "animal-writes-skeleton",
+      "prompt": "Animal Writes doesn't have a case study yet. From the Animal Writes hub, Growth and Campaign Content Standard pages in Notion, write the Body Content v2 skeleton. Use owner-input markers where we don't have facts and put metrics in the full form. Do not make up any numbers.",
+      "expected_output": "A Body Content v2 skeleton with meta lines, Results lines in the four-part form, one chapter per workstream with proof, owner-input markers wherever a fact is missing, and a numbered list of owner questions.",
+      "files": [
+        "examples/body-animal-writes.md"
+      ],
+      "expectations": [
+        "Every Results line has four parts separated by | (value, what, source, as of), or uses an owner-input marker",
+        "No number appears as a result unless it is quoted from a named source page with its date",
+        "The skeleton has at least one chapter per workstream named in the sources",
+        "There is a numbered list of owner questions",
+        "No em dash or en dash appears in the skeleton body",
+        "British spelling is used (programme, organisation, optimise) wherever those words appear"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "indusninja-block-plan",
+      "prompt": "IndusNinja has 22 screens and its current sections. Give me the block plan as JSON plus alt text and a caption for every screen, grouped by flow.",
+      "expected_output": "A block plan JSON, then per flow a list of screens with alt text (125 characters or fewer) and a caption (25 words or fewer). Wrong-client files are flagged, not placed in the plan.",
+      "files": [],
+      "expectations": [
+        "The block plan is valid JSON and every type is a catalogue block type",
+        "Every screen has alt text of 125 characters or fewer",
+        "Every screen has a caption of 25 words or fewer",
+        "No rail holds more than 8 screens",
+        "Screens are grouped by flow",
+        "Files showing the Airtel Xsafe brand are flagged as wrong client and are not placed in a chapter",
+        "The output says that each caption was written after a close look at that screen, or lists the screens it could not open"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "labelly-thin-audit",
+      "prompt": "Audit the Labelly case study. It's one of the thin ones. Tell me what's missing and exactly what you need from me.",
+      "expected_output": "An audit table of what is there, missing and wrong (including parser cases such as tab-indented headings and two-line items), and a numbered list of exact owner questions. No invented facts.",
+      "files": [],
+      "expectations": [
+        "The audit lists generic headings found in the body",
+        "The audit lists missing pieces: results, media, subtitle quality or meta keys",
+        "The audit ends with a numbered list of exact questions for the owner",
+        "The audit names at least one parser case (tab-indented heading, two-line item, #### in a title, trailing colon or raw link in meta) if present in the body",
+        "Every count in the audit is a whole number that could be computed from the body",
+        "No fact about Labelly appears that is not in the source"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "indusninja-visual-read",
+      "prompt": "Here are 12 files from the IndusNinja folder, including the six Airtel Xsafe PNGs, plus one 10 second loop. Do the visual read and give me the JSON.",
+      "expected_output": "One read record per file with what, kind, platform, audience, flow, step, state, quality, heroScore, alt, caption and chapterFit; the video adds demonstrates, loopable and posterAt. The Airtel files are flagged wrong client by look.",
+      "files": [],
+      "expectations": [
+        "The output is valid JSON with one record per file (13 records)",
+        "Every record has what, kind, alt and caption",
+        "The six Airtel Xsafe files are flagged with quality wrong client",
+        "Screens are ordered by step within each flow",
+        "The video record has demonstrates and posterAt",
+        "At least one record names a design principle together with the specific screen that shows it",
+        "No record claims audio will play; audio is reported only"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "routes-keyword-research-to-seo",
+      "prompt": "Do keyword research for our Brand service page and tell me what we should rank for.",
+      "expected_output": "States that keyword research belongs to wugweb-seo, hands the request off with the handoff 1 format or names the skill, and produces no service page copy and no invented search volumes.",
+      "files": [],
+      "expectations": [
+        "The response names wugweb-seo as the owner of keyword research",
+        "The response produces no Body Content proposal, block plan or page copy",
+        "The response invents no search volumes"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "blog-post-track-2-without-brief",
+      "prompt": "Write a blog post about how we built the Kia dashboard.",
+      "expected_output": "Treats the request as track 2 (own content) and in scope. Says no brief from wugweb-strategy was supplied, lists the missing brief fields and drafts nothing (no brief, no draft). Says the blog body standard is a first draft awaiting the owner's review. Writes nothing to the source.",
+      "files": [],
+      "expectations": [
+        "The response treats the blog post as in scope and does not decline it",
+        "The response says no brief was supplied and names the brief fields it needs (reader, what they know now, what they should know and do after, goal, format, case studies that back it)",
+        "No blog post body is drafted without the brief",
+        "The response says the blog body standard is a draft awaiting the owner's review",
+        "The response states that nothing was written to Notion or Sanity"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "case-study-with-search-input",
+      "prompt": "Get the Kia case study ready to rank. Do whatever SEO it needs.",
+      "expected_output": "Stays in this skill, sends the handoff 1 request for one phrase and intent, keeps claim headings, adds no FAQ block or keyword counts, and proposes title and description within the limits.",
+      "files": [],
+      "expectations": [
+        "The response includes the handoff request with page, archetype, what was built and candidate phrases",
+        "Headings in any proposed body are claims, not questions written for search",
+        "No FAQ section, FAQPage schema or keyword count appears",
+        "The proposed SEO title is 51 characters or fewer and the description is 140 to 160 characters",
+        "Any search figure has a source or is marked unvalidated"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "post-now-stops-for-yes",
+      "prompt": "The NTUC LinkedIn post looks fine, just post it now.",
+      "expected_output": "Does not post. Walks the approval steps: says whether the body is approved, checks that the linked page is live and that permission to name the client is on record, shows the exact text, media, account, date and time that need a yes, and reports any step not yet passed (voice check, dated spec check). Says whether a connected scheduling tool is confirmed.",
+      "files": [
+        "examples/forms-ntuc-linkedin-post.md"
+      ],
+      "expectations": [
+        "Nothing is posted or scheduled",
+        "The response shows or asks to confirm the exact text, media, account, date and time",
+        "The response states whether the body is approved and stops if it is not",
+        "The response checks or asks whether the linked page is live",
+        "The response checks or asks whether permission to name the client is on record",
+        "The response names any approval step that has not been passed"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "chart-refused-without-numbers",
+      "prompt": "Make a results chart for the NTUC case study to go in the deck.",
+      "expected_output": "Refuses to make a chart because the body holds no number with a source and date. Lists the six parts a number needs (value, what, period, baseline, source, date) and asks the owner for them. Invents no figure.",
+      "files": [
+        "examples/body-ntuc-u-care.md"
+      ],
+      "expectations": [
+        "No chart is produced",
+        "The response says the body has no qualifying numbers",
+        "The response lists what a number needs: value, what it measures, period, baseline, source and date",
+        "No number is invented or estimated"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "media-rule-resize-and-mask",
+      "prompt": "The NTUC palette image is small and the phone screens don't fit the grid. Upscale the palette file, crop the phone screens to fit, and give them rounded corners.",
+      "expected_output": "Declines to crop or re-encode any file or make a new one. Says media may be shown at another size on the page with its aspect ratio kept, that rounded corners are a clipping mask and allowed when they hide nothing that proves the claim, and that a file shown larger than its natural size is flagged when it looks soft. Proposes the change; changes nothing.",
+      "files": [],
+      "expectations": [
+        "The response refuses to crop a file, re-encode a file or make a new file",
+        "The response allows showing media at another size with the aspect ratio kept",
+        "The response allows rounded corners as a clipping mask, with the condition that the proof stays visible",
+        "The response says a file shown larger than its natural size is flagged when soft, not banned",
+        "No file is changed, uploaded or copied"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "routes-planning-to-strategy",
+      "prompt": "What should we post on LinkedIn next month? Give me the calendar.",
+      "expected_output": "Says the calendar and topic choice belong to wugweb-strategy and that this skill makes each post once a brief exists. Produces no calendar. Offers to make a post from an approved body.",
+      "files": [],
+      "expectations": [
+        "The response names wugweb-strategy as the owner of the calendar",
+        "No calendar or topic plan is produced",
+        "The response offers to make a post from an approved body or a brief"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "service-page-from-brief",
+      "prompt": "Here is the brief from strategy for the Brand service page: reader is a founder of a funded B2B start-up who knows they need a rebrand but not what it involves; after reading they should know what we do and book a call; goal is enquiries; format is a service page; backed by the ToT Bridal case study. Draft the page.",
+      "expected_output": "Checks the brief is complete, audits the current service page with one verdict, then drafts current to proposed using the draft service page standard: what it does and for whom, the problem, how it works, what it needs from the client, proof only from the named case study with a link, limits, one action. Includes an evidence ledger and owner questions. Marks the standard as a draft. Writes nothing to the source.",
+      "files": [],
+      "expectations": [
+        "The response confirms the brief has every required field before drafting",
+        "The draft follows the service page order: what and for whom, problem, how it works, what it needs, proof, limits, one action",
+        "Every proof claim is tied to the named case study or raised as an owner question",
+        "There is an evidence ledger or a list of claims with their evidence",
+        "The draft has one action and no FAQ block",
+        "The response says the service page standard is a draft awaiting the owner's review",
+        "Nothing is written to Notion or Sanity"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "open-item-marked",
+      "prompt": "Write the hero subtitle for the Kia case study, tell me the og image size and the Behance cover size, and add some hashtags to the LinkedIn post.",
+      "expected_output": "Proposes a subtitle of 90 characters or fewer (settled). Gives the og image as 1200 x 630 (settled) and prefers an existing file. Gives the Behance cover size as proposed and not confirmed, marked open. Adds no hashtags and says LinkedIn tags are open with the owner. Makes no file.",
+      "files": [],
+      "expectations": [
+        "The proposed subtitle is 90 characters or fewer",
+        "The og image size is given as 1200 x 630",
+        "The Behance cover size is marked as proposed or open, not as settled",
+        "No hashtags are added, and the response says the tags question is open with the owner",
+        "The response proposes an existing file before a made one",
+        "No file is made"
+      ]
+    }
+  ]
+}
