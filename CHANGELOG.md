@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan standing rules and og size line (2026-11-17)
+- Docs only. Plan and Notion page: the open sizes item now lists only story, Behance cover and Dribbble shot (og settled at 1200 x 630); the standing rules section points to `docs/skills/STANDING-RULES.md` and keeps only wugweb-work rules. Notion backup in `backups/`.
+
 ### Changed — wugweb-work skill gaps closed, stale status lines fixed (2026-11-17)
 - Docs and skill files only. Skill: duplicate standing rules removed, layout numbers marked as proposals for wugweb-kits, loop-pause gate item added; validate 30 checks 0 errors, test passes, AGENTS.md and adapters rebuilt. `CLAUDE.md`, `AGENTS.md`, `pending.md`: the skill is built (0.4.2), the site build is not. `governance.md`: plan page title corrected.
 

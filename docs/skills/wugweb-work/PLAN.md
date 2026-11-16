@@ -75,7 +75,7 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 - [x] Media rule: the three readings are confirmed (2026-11-16; see Owner decisions).
 - [x] Token-check findings: reported only at first; blocking comes later, on a short list (2026-11-16).
 - [x] Client-work brief: settled 2026-11-16. Brief mode is for client work only; it is written inside this skill.
-- [ ] The sizes wanted for og image, story, and Behance and Dribbble covers. The installed skills disagree (og 1200 by 630 in one, 1200 by 628 in another; story safe zones differ) and none gives Behance or Dribbble cover sizes.
+- [ ] The sizes wanted for story, Behance cover and Dribbble shot. The og image is settled at 1200 x 630 (see Owner decisions). The installed skills disagree on story safe zones and none gives Behance or Dribbble cover sizes.
 - [x] Hero copy limit: settled at 90 characters (2026-11-16). The earlier question: this plan sets the subtitle at 90 characters or fewer; `wugweb-kits` proposes a headline of 2 lines or fewer and subtext of 20 words or fewer. Pick one.
 - [ ] May LinkedIn posts carry a few specific tags, or none? The plan says none; `wugweb-seo` proposes a few.
 - [ ] Confirm the proposed sizes for Behance cover, Dribbble shot and story canvas (og is settled at 1200 x 630).
@@ -481,15 +481,16 @@ Where an older line further down disagrees with this table, the table wins.
 
 ## Standing rules (apply to every step)
 
-1. Source: Notion Body Content + the client's R2 folder, owner-authored. Proposals go to `docs/drafts/<slug>-body-v2.md` as current → proposed with reasons. Notion is written only after explicit approval of that change set. Sanity is written only by the sync (`node scripts/sync-notion-case-studies.mjs` dry run → owner's go → `WRITE=1`, backup first).
-2. Media lives only in R2. No uploads, local copies, cropped files, new poster files or re-encodes. Media may be shown at any size if the original aspect ratio is kept, and clipping masks are allowed (owner, 2026-11-16). Weight, missing posters and `moov`-at-end are **reported as facts**; the page defends itself (dimensions, lazy, `preload="none"`, `content-visibility`). If a file does not fit, say so and let the owner decide. One exception (owner, 2026-11-11): the gated media-making helpers in A may make a file for a Form, one file at a time, on the owner's yes for that file.
-3. Nothing is deleted without asking: no data, files, R2 keys, Sanity docs, Notion rows, code paths that hold content. Dead links stay in Notion and are listed; the page skips rendering a URL whose manifest status is not 200.
-4. No em or en dash in anything visible; ranges as inequalities in docs. The template emits no dash; the audit flags dashes in body copy for the owner.
+The owner's standing rules live in `docs/skills/STANDING-RULES.md`. Each skill reads that file and repeats none of it. Only the rules below belong to wugweb-work.
+
+1. Source: Notion Body Content + the client's R2 folder, owner-authored. Proposals go to `docs/drafts/<slug>-body-v2.md` as current → proposed with reasons. Sanity is written only by the sync (`node scripts/sync-notion-case-studies.mjs` dry run → owner's go → `WRITE=1`, backup first).
+2. Weight, missing posters and `moov`-at-end are **reported as facts**; the page defends itself (dimensions, lazy, `preload="none"`, `content-visibility`). If a file does not fit, say so and let the owner decide.
+3. Dead links stay in Notion and are listed; the page skips rendering a URL whose manifest status is not 200.
+4. Ranges as inequalities in docs. The template emits no dash; the audit flags dashes in body copy for the owner.
 5. Tokens only (zero hardcoded colour, spacing, radius, opacity, shadow, blur, z-index, easing); yellow ≤ 10% and `FooterCTA` stays yellow; GSAP via `data-reveal`/`data-scroll`; buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`; breakpoints literal; mobile is the PWA (`svh`/`dvh`, full-bleed welcome). No strokes that read as hairlines in the rendered result.
-6. One slug per case study, zero Framer, no redirects, JSON-LD only on the canonical host, never FAQPage/HowTo/Review stars.
-7. Git: commit by path (never `git add -A`), trailer `Co-Authored-By: Wugweb <admin@wugweb.com>` only, every commit updates `CHANGELOG.md` under `## [Unreleased]`, `.md` files are committed, push to `main` auto-deploys Pages, Studio deploy and sync writes are the owner's go. Check `.git/index.lock` first; other sessions share the checkout.
-8. Plain short replies; do what is asked; no side quests. Do not raise DNS cutover, asset clean-up or cookie policy.
-9. Full output: complete files, no placeholders, no "rest unchanged"; count deliverables before finishing.
+6. JSON-LD only on the canonical host, never FAQPage/HowTo/Review stars.
+7. Git: `.md` files are committed, push to `main` auto-deploys Pages, Studio deploy and sync writes are the owner's go.
+8. Count deliverables before finishing.
 
 # 4. Standard structure of the skill
 
