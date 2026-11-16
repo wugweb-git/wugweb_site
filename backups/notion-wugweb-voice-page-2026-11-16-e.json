@@ -1,0 +1,9 @@
+{
+  "what": "Backup note for the Notion page wugweb-voice before the fifth write (table of wording points from the design-system docs appended)",
+  "url": "https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e",
+  "takenAt": "2026-11-16",
+  "pageLastEditedAtBeforeThisWrite": "2026-11-16T17:07:00.691Z plus one small edit (four lines added to the 'Waiting on the owner' checklist)",
+  "note": "The page was fetched and checked after the fourth write. Under the heading 'Plan' it carried the same text as docs/skills/wugweb-voice/PLAN.md at git commit 8c2bb335, with headings one level lower. This write only appends; nothing is replaced or removed.",
+  "planTextSource": "git show 8c2bb335:docs/skills/wugweb-voice/PLAN.md",
+  "appendAnchor": "The last table row on the page, ending: The skill says nothing about keeping voice or tone. |"
+}
