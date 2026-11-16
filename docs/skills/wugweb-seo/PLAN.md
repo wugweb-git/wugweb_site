@@ -513,13 +513,26 @@ Net new for the audit part, proposed:
 | utility pages noindex | a thank-you, preview or download page carries `noindex` and stays out of the sitemap | 71, and the ILJ "do not link" list |
 | any-URL audit | the audit already reads any HTML, so it runs on a competitor's address for a side-by-side; the plan part's competitor gap uses it | 80, 81 |
 
-Out of scope for wugweb-seo, on the RankWeb page already:
+Translated to the Astro stack. wugweb.com is Astro on Cloudflare, content in Sanity and Neon, media in R2. There is no WordPress, no Rank Math and no plugin, so the skill is the SEO layer and there is nothing to defer to. Each item below is a skill rule, a spec the skill hands to the layout or a maker, or genuinely not applicable.
 
-- Schema builder and templates, raw JSON-LD field, automatic schema, import schema from a URL (PRO 10, 13, 38, 40 to 48, 73): the skill audits schema, it does not build it.
-- Redirect types, CSV, `.htaccess` sync, 404 monitor and export (PRO 50, 63, 70, 72): server and redirect plumbing; wugweb.com adds no redirects.
-- Bulk and quick edit, SEO CSV import and export, setup wizard, role manager, modules screen, Tools tab, watermark on share images, image find and replace (PRO 22, 54 to 57, 61 to 64, 75, 76, 83): CMS editing and plugin UI.
-- Site-type modules: News and Video sitemaps, Local SEO, WooCommerce, Podcast, EDD, bbPress, Elementor, Divi (PRO 16, 17, 19 to 21, 23, 49, 51, 58 to 60): only if a site needs them; the main site does not.
-- Client management and white label (PRO 12, 26, 30): agency features.
+Owned by the skill as a rule or spec:
+
+- **Schema spec per page type** (PRO 10, 40 to 48, 73): the skill owns which `@type` each page carries and the shape of the graph, the skill's version of a schema builder. Fixed: case study `WebPage` + `CreativeWork` + `BreadcrumbList`, no author; blog post `BlogPosting` with a `Person` author; `Organization`, `WebSite` and the founder sitewide. To decide: service pages, home, about. Allowed types only; `HowTo`, `Review` and `AggregateRating` stay banned. `JsonLd.astro` builds it from Sanity and Neon; the skill specs and audits it.
+- **Per-page schema override and automatic rules** (PRO 38, 43): a per-page schema field (the layout-shell `schemaType` proposal) and a "this section gets this template" rule become Sanity or Neon settings. The skill states the rule; the dev builds it.
+- **Import schema from a URL** (PRO 13): the audit may read a competitor's JSON-LD as a reference, never to copy it.
+- **Redirects on Cloudflare** (PRO 50, 63, 70): wugweb.com adds no redirects for old or Framer addresses (owner rule), so there is nothing to build; where a client site needs them, redirects live in the Cloudflare `_redirects` file, one hop, and the skill audits the chain. No `.htaccess`: the stack is not Apache.
+- **Broken-address and 404 report** (PRO 72): the report part reads 404s from Cloudflare Web Analytics and flags addresses that should 301 or 410.
+- **Site-wide SEO field table** (PRO 22, 56, 57, 61 to 64): the "bulk edit" equivalent. The skill produces a table of every page with its title, description, focus keyword, robots and schema state, and proposes fixes as current to proposed; the maker writes them in Notion or Sanity. The skill never bulk-edits a record itself.
+- **Share image spec** (PRO 18, 55, 75, 76, 83): `og:image` present, 1200 by 630, with alt; the audit flags a missing or wrong-size share image and weak alt. Generating the image or a watermark is `wugweb-kits` or `wugweb-work`; writing alt is `wugweb-work`.
+
+Client-site only, turned on when a client needs it (the skill covers client sites too):
+
+- Local SEO with several locations and `LocalBusiness` schema (PRO 19, 51); WooCommerce `Product` and `Offer` schema (PRO 20); News and Video sitemaps (PRO 16, 17). None applies to wugweb.com today. The skill holds the rule and turns it on per client site.
+
+Not applicable to a skill:
+
+- Plugin UI and account features: the modules on and off screen, setup wizard, role manager, Tools tab, settings import and export (PRO 54), client management and white label (PRO 12, 26, 30). A skill has no plugin to switch on or accounts to manage. The nearest thing is the owner choosing which of the plan, audit and report parts to run.
+- Podcast, EDD, bbPress, Elementor and Divi (PRO 21, 23, 49, 58 to 60): platforms the site does not use.
 
 ## Works beyond Claude
 

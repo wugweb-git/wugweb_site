@@ -13,7 +13,7 @@ and this project adheres to Semantic Versioning.
 
 - `docs/skills/wugweb-seo/PLAN.md` and the Notion page gained two planned sections: an on-page keyphrase score modelled faithfully on Rank Math (weights extracted from `seo-by-rank-math` 1.0.280, owner decision to drop the density and heading softening), with a build prompt for the dev session; and net-new internal-link SEO audit checks (anchor-text mix, silo coherence, redirected and nofollow internal links, too-many-links, cloaked prefixes).
 - The RankWeb page (Animal Writes) gained a Rank Math on-page score reference. No skill files were edited; the skill is the dev session's.
-- Mapped all 83 Rank Math PRO features to the skill from an SEO view: most confirm the existing plan, audit and report parts; four are net-new audit checks (VideoObject, indexed status, utility-page noindex, any-URL audit); the rest are RankWeb or CMS plumbing, on the RankWeb page already.
+- Mapped all 83 Rank Math PRO features to the skill from an SEO view. wugweb.com is Astro with no Rank Math and no plugin, so the skill is the SEO layer: most items confirm the existing plan, audit and report parts; four are net-new audit checks; the former "CMS plumbing" is translated to Astro rules the skill owns (schema spec per page type, Cloudflare redirects and 404s, a site-wide SEO field table, share-image spec) or client-site-conditional; only plugin UI and agency features are not applicable.
 
 ### Added — wugweb-voice portability package 0.2.1 (2026-11-17)
 
