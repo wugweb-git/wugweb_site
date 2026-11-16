@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-seo skill, master copy in the repo (2026-11-17)
+- `.claude/skills/wugweb-seo/`: the 21 files of version 2.4.0 copied unchanged from the Claude app copy (checked for secrets and personal data: none). Claude Code in this repo loads it directly. Edits follow in a separate commit.
+
 ### Added — wugweb-voice skill folder, draft 0.2.0 (2026-11-16)
 - `.claude/skills/wugweb-voice/` (51 files): `SKILL.md`, seven reference files, three plain Node scripts, four test cases and fixtures, and the single-file export `export/wugweb-voice.md` for GPT, Cursor and other tools. Built in the owner's development chat; committed on the owner's yes as the real copy of the skill. Structure and method only: no voice rule drawn from samples exists yet, because no writing samples have been supplied. The skill's own tests (`node scripts/test.mjs`) pass. No site code changed.
 

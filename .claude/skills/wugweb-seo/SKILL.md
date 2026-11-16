@@ -1,0 +1,284 @@
+---
+name: "wugweb-seo"
+description: "Plans, audits and reports on how Wugweb pages and client sites are found in search engines and AI answers. Use for the plan part: a keyword map, search intent, a content brief, topic gaps, or a keyword note for a LinkedIn, Behance or Dribbble title and tags. Use for the audit part: a meta title or description check, headings, canonical, indexing, schema or JSON-LD, share tags, robots.txt, AI crawlers, or why a page is not found. Use for the report part: rankings, Search Console data, a traffic drop, AI Overviews, or ChatGPT and Perplexity citations. Returns constraints, checks and reports; never writes copy."
+license: MIT
+compatibility: "Scripts need Node 18 or later, with no packages and no network. The report part needs a Search Console export or a connected SEO data tool. Without a shell, apply the checks by reading."
+metadata:
+  author: wugweb
+  version: "2.4.0"
+---
+
+# Wugweb SEO
+
+A page is found in two ways: a search engine ranks it, or an AI answer quotes
+it. Both read the same things: what the page claims, how its server HTML is
+built, and what its structured data says.
+
+This skill has three parts, used in this order:
+
+1. **Plan.** Before a page is written, give the target phrase, the intent and
+   the limits the writer must meet.
+2. **Audit.** After a page is built, check it and return a fix list.
+3. **Report.** After a page is live, read the data and say what to improve next.
+
+It returns constraints, checks and reports. It never writes or rewrites page
+copy, and it changes no file, page or record itself.
+
+This file works alone. The `references/` files hold the full checklists and
+templates for each part.
+
+## Stay inside this skill's boundary
+
+Each concern has one home. Follow a sibling's rule there; do not restate it here.
+
+| Concern | Home |
+|---|---|
+| Phrases, intent, title and description limits, schema, indexing, crawler access, search and AI answer reporting | this skill |
+| Making every piece: case studies, portfolio, blog posts, service pages, site copy, and their social and deck versions | `wugweb-work` |
+| Writing and editing the copy, headings included | `wugweb-work`. For any visible wording, such as a title option, ask it; it runs the voice check. This skill has no link with the voice skill |
+| What to publish, to whom and when; reporting on posts | `wugweb-strategy` |
+| Brand name, descriptor and approved facts about Wugweb, for titles and organisation markup | read from `wugweb-brand-os`, never rewritten |
+| Tokens, layout, components and the accessibility audit | `wugweb-kits` |
+| The owner's standing rules | the shared rules file every Wugweb skill reads |
+
+If a sibling is not installed, give this skill's answer, say which sibling
+check was skipped, and stop at the boundary. The exact questions sent and
+answered are in `references/handoffs.md`.
+
+## Apply the fixed rules
+
+The owner set these. They win over anything a helper skill suggests.
+
+### On every site
+
+These apply to wugweb.com, client sites, Kits and Wugweb X.
+
+- **Never propose** `HowTo`, review stars, `llms.txt` or a keyword density
+  target.
+- **FAQPage only where the page shows the questions.** Use `FAQPage` only for
+  questions and answers the page visibly carries, from its `faqs` field,
+  written by `wugweb-work`. Every question and answer in the markup appears on
+  the page. Never ask for an FAQ block to win search. Google ended FAQ rich
+  results on 7 May 2026, so the markup earns no Google feature.
+- **Headings belong to the copy.** Wugweb headings are claims. Check them for
+  length and order; never ask for a question heading or a rewrite.
+- **Dates.** Where a page shows a date, it matches the schema date.
+- **Rendered title** 60 characters or fewer. Other title and description
+  limits for these sites are not decided. Every character limit in this skill
+  is a house limit: Google sets none and cuts titles to the device width.
+
+### On wugweb.com only
+
+- **One address per page.** One slug per case study. Add no redirects for old
+  or Framer addresses.
+- **Title.** For a case study, the source title is 51 characters or fewer. The
+  site adds " | Wugweb" only when the title does not already name Wugweb and
+  the total fits in 60. The limit for other page types is not decided. The
+  audit does not check titles for dashes.
+- **Description.** 140 to 160 characters.
+- **Schema on the main site address only.** A case study carries `WebPage`,
+  `CreativeWork` and `BreadcrumbList`. Wugweb is `creator` and `publisher`.
+  There is no `author`. A blog post carries `BlogPosting` with a `Person`
+  author. The layout already emits `Organization`, `WebSite` and the founder on
+  every page; leave them. Schema for service pages, home and about is not
+  decided.
+- **Dates shown.** A blog post shows its date. A case study shows none.
+- **AI files.** Leave `public/llms.txt` and `ai-context.txt` as they are;
+  never recommend them.
+- **The source.** Notion holds the SEO fields of a case study and every blog
+  post. Propose a change to a field as current → proposed. The owner approves
+  it and the maker skill writes it.
+
+## Use the plan part before a page is written
+
+Two callers use this part. `wugweb-strategy` asks for the site keyword and
+intent map, topic gaps and pages to refresh. `wugweb-work` asks for one page,
+as below, or for a keyword note for a LinkedIn, Behance or Dribbble title and
+tags. Never write the post; no hashtag stuffing.
+
+For one page, answer one question: which phrase and intent should it target?
+
+1. Read what the maker sends: the page, its audience, what was built, and
+   candidate phrases in the owner's words.
+2. Group the candidates by the intent the live results show: someone learning,
+   comparing, hiring or looking for Wugweb by name.
+3. Look at the results that rank now. Note their format and the entities they
+   name.
+4. Choose one primary phrase and up to three supporting phrases. Give each its
+   source: Search Console, a keyword tool with the date, or "unvalidated".
+5. Return the brief constraints in the shape in `references/plan.md`.
+
+Return limits and an outline, never wording: the title limit, the description
+limit, the entities the page must name, the schema, the link rules, and an
+outline. `wugweb-strategy` decides which pages a piece links to. This skill
+owns the link rules: one link up to the service pillar and two or three across
+to sibling pages, descriptive anchors, no orphans or dead ends, and depth from
+home. It audits the result.
+The outline lists the topics the page must cover, in order, with the fact from
+the source each one rests on. It names topics, not headings; the maker writes
+the headings. Do not add an FAQ
+block, keyword counts or sections written for search.
+
+When two pages would target the same phrase, say so and name both. The owner
+decides which keeps it.
+
+## Use the audit part after a page is built
+
+Check the rendered page, not the source document. Use a local preview served
+with the canonical host, or the live address.
+
+### 1. Run the page check
+
+```bash
+node scripts/check-page.mjs page.html --kind work --host wugweb.com
+```
+
+It reads the HTML and reports title, description, H1, canonical, robots meta,
+share tags, images, server HTML text and JSON-LD. Each finding carries a severity and a
+check id. Read its "Not checked" lines and repeat them.
+
+### 2. Run the crawler check
+
+```bash
+node scripts/check-robots.mjs robots.txt --path /work/slug
+```
+
+It resolves, for each named bot, whether the path is allowed. Search and
+citation bots must reach every page that should be found. Whether to allow
+training bots is the owner's choice; report what the file says and ask once
+per property.
+
+### 3. Check what the scripts cannot see
+
+Work through the manual list in `references/audit.md`:
+
+- a firewall or bot setting that returns 403 to crawlers while robots.txt
+  allows them;
+- redirect chains, and the http, https, www and bare host forms;
+- the sitemap: present, listed in robots.txt, canonical 200 addresses only;
+- Core Web Vitals from field data: LCP 2.5 seconds or less, INP 200
+  milliseconds or less, CLS 0.1 or less;
+- that the schema matches what the page shows.
+
+### 4. Score how quotable the page is
+
+Score each section from 0 to 100 on the five criteria in `references/audit.md`
+and weight by length. Report the page score and name the three weakest
+sections with what each lacks. Do not rewrite them.
+
+### 5. Return the fix list
+
+Split it three ways. A finding on one page goes to `wugweb-work` as current
+→ proposed. A finding that repeats on every page using a block (alt text,
+lazy loading, heading order, image sizes) goes to `wugweb-kits`, which answers
+with its check result. A code fix goes in the developer block below.
+
+## Use the report part after a page is live
+
+The report feeds `wugweb-strategy`'s planning. Reporting on posts belongs
+there, not here.
+
+1. Name the source and the date range of every number. A Search Console
+   export is the standard source; a connected SEO data tool is optional. If
+   neither is given, ask for the export and stop.
+2. Compare the period with the one before and with the same period a year
+   earlier.
+3. List the pages that rose and fell most.
+4. Flag two quick wins:
+   - queries with many impressions and a low click rate, which point to the
+     title and description;
+   - pages at positions 8 to 20, which point to the content.
+5. Report AI answer presence from a fixed monthly prompt sample: cited,
+   mentioned or absent per prompt. Read the trend over months.
+
+For a drop, check in this order: tracking, then indexing, robots.txt or a
+deploy, then the date of a search engine update, then a results feature taking
+the click, then a competitor, then content decay.
+
+Search Console data is sampled. Read it as a trend. Never place these numbers
+on a case study as a client result. The shape is in `references/report.md`.
+
+## Report findings in this shape
+
+Give computed totals first, then one line per finding sorted by severity. Each
+line carries the severity, the place, the finding and the check id.
+
+```
+1 page. 2 blockers, 1 high, 1 medium.
+
+BLOCKER  <title>          source title 58 characters, limit 51     title-length
+BLOCKER  JSON-LD          HowTo present                            schema-banned-type
+HIGH     <img> 3 of 7     no width and height                      img-dimensions
+MEDIUM   body             112 words in server HTML                 server-html-text
+```
+
+State what was not checked. If the page passes, say it passes and stop. Never
+invent a finding.
+
+## Hand code fixes to a developer
+
+End an audit that needs code with this block:
+
+```
+SEO fixes: <site>, <date>
+Scope: <routes or files>
+1. BLOCKER <what to change>. Check: <how to confirm it>
+2. ...
+Copy, layout and tokens are out of scope.
+```
+
+## Work from real data only
+
+Every phrase volume, ranking and traffic number comes from a named tool and
+date. If a number could not be fetched, say so and mark the phrase
+"unvalidated". A stated gap is a complete answer.
+
+Third-party figures about AI answers, such as the share of citations taken
+from the top of a page, are directional. Give the source and date, or leave
+them out. When community advice contradicts the search engine's own guidance,
+follow the search engine and say so.
+
+The helper skills that back each part are in `references/handoffs.md`. Every
+helper is optional: the rules this skill took from them are restated in the
+"Absorbed rules" sections of `references/plan.md`, `references/audit.md` and
+`references/report.md`, so each part can be done by hand. A
+helper returns a proposal or a report; only a Wugweb skill writes anything,
+and only after the owner approves.
+
+## Fit the size of the request
+
+When the user asks for one check, do that check. Then name, in one sentence,
+the next check that would help most. Do not run all three parts for someone who
+asked about one title.
+
+## Leave these decisions to the owner
+
+- Which page keeps a phrase two pages want.
+- Whether training bots may crawl.
+- The title limit for blog posts and service pages.
+- Schema for service pages, home and about.
+- Title and description limits for client sites, Kits and Wugweb X.
+
+## Run the scripts
+
+Every script needs Node 18 or later and no packages.
+
+```bash
+node scripts/check-page.mjs <page.html> [--kind work] [--host <host>] [--json]
+node scripts/check-robots.mjs <robots.txt> [--path <path>] [--json]
+node scripts/validate.mjs     # check this skill against its own format
+node scripts/test.mjs         # self-test on examples/
+node scripts/build.mjs        # regenerate AGENTS.md and adapters/
+```
+
+Fixtures: `examples/page-pass.html`, `examples/page-fail.html` and
+`examples/robots.txt`.
+
+## Use outside Claude
+
+The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads
+it as it is. `AGENTS.md` is the whole skill compiled into one file for agents
+that read plain instructions. `adapters/` holds a Cursor rule and an
+instruction block for a custom GPT. `scripts/build.mjs` generates all of
+these; edit the sources, never the output. Install steps for each agent are in
+`README.md`.
