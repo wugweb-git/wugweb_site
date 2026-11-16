@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-kits plan: extracted and absorbed, enhancement inputs, made-file sizes (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 13) gains section 19, what is absorbed from about 50 installed skills and what is ignored; section 20, six defects confirmed in the renamed skill as inputs to the enhancement stage; section 21, proposed sizes for made files; and the session ids in the skill card. No skill file changed.
+
 ### Added — wugweb-seo alignment plan (2026-11-16)
 - Docs only. `docs/skills/wugweb-seo/PLAN.md` mirrors the Notion page "wugweb-seo": three parts (plan, audit, report), links with sibling skills, changes to take into the skill session, "Extracted and absorbed" from the helper skills, portability, connectors and open questions. Plan stage; nothing built.
 - `backups/notion-wugweb-seo-page-before-2026-11-16.md` holds the Notion page text as it stood before the merge.
