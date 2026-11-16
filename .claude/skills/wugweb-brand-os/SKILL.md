@@ -60,6 +60,18 @@ These are settled. Apply them without asking.
 - **Logo:** the lockup is two-tone, and two-tone titles mirror it. Use the real logo file, never a redrawn or recoloured mark.
 - **Feel:** rounded geometry, a black canvas with glass panels on the site, calm motion that respects reduced motion, and layouts that never resolve into an even grid.
 
+## What is not yet approved
+
+Version 0.1.0 is a first draft. These parts are waiting on the owner, so answers about them must say so:
+
+- The positioning line and the one fixed descriptor that other skills and search tools read.
+- Values, audience and brand strategy. The owner's own documents for these have not been supplied.
+- Most facts about Wugweb: the legal name, address, phone, team size, project count, markets and official profiles. Only the six pillars and the website are approved.
+- Which of two conflicting rules wins for artwork: the guideline palette against the site's pillar colours, the light default background against the black canvas, and the gradient and motion rules.
+- The wording of "crop" in the guideline files.
+
+When asked about any of these, give the open question, show what exists as background labelled unapproved, and stop. Never pick a side for the owner and never fill the gap from memory or from the stale 2023 profile.
+
 ## The four modes
 
 ### Answer
