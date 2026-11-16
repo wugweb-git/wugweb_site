@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: link-target split, refresh signals, editorial stance (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` records the proposed split on internal link targets with `wugweb-seo` (question 20), names the refresh signals it receives, adds one routed row and proposes an editorial stance sentence (question 21). Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-links-stance-2026-11-16.json`.
+
 ### Changed — wugweb-work plan: routed rules from seo and strategy, two more forms, proposed made-file sizes (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md`: three absorbed rules routed by `wugweb-seo` (call to action by intent, distinct intent for competing pages, alt text length and caption agreement), the scheduler clash (per-batch approval and uploads), newsletter edition and advocacy copy as forms, proposed sizes for made files, two new owner questions. Matches the Notion page.
 - `backups/notion-wugweb-work-page-before-2026-11-16-d.md`: the Notion page as it was before this update.
