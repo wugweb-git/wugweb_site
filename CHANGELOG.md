@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan complete: track 2 procedure, fit with the design system (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` gains the track 2 procedure (blog posts, service pages, site and landing copy: sources, eight steps, body standards, hard stops) and "Fits with the design system", which points to the kits docs for every layout number. Status is now "ready to take to the development chat". Gate widths in the folder tree lose 1023 and 1024 to match the three tiers. Matches the Notion page.
+- `backups/notion-wugweb-work-page-before-2026-11-16-e.md`: the Notion page as it was before this update.
+
 ### Changed — wugweb-kits plan: binding layout-shell values, connection to three docs, enhancement to-do (2026-11-16)
 - Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 18) puts the `layout-shell.md` values at the top of the enhancement spec as binding, each with its token; adds section 24 (how the skill points to `layout-shell.md`, `sizing.md` and `components.md`, and a check that fails on disagreement) and section 25 (the enhancement to-do checked against the docs, with clashes found in the docs). No skill file or doc changed.
 
