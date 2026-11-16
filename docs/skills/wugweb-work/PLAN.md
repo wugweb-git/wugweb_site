@@ -35,7 +35,7 @@
 | Media source | Cloudflare R2, `assets/work/<slug>/` |
 | Used by | Any Claude session on the repo. Other bots use this export. |
 | Covers | Case study page, portfolio, showcase, and the other forms of the same work: card, showcase tile, logo band, deck or PDF, Behance, Dribbble, LinkedIn |
-| Does not cover | Blog posts, service pages, site-wide SEO (that is the `wugweb-seo` skill) |
+| Also covers (added 2026-11-16) | Blog posts, service pages, site-wide SEO (procedure for these still to be written; uses the `wugweb-seo` skill) |
 | Depends on CMS or host | No. Only one reference file and the scripts name Notion, Sanity, R2 and Cloudflare. |
 | Reference case | NTUC U Care (audit and proposal at the end of this file) |
 
@@ -227,6 +227,32 @@ Every function of `wugweb-work` has named skills behind it. The first one listed
 **Rules for using them.** The owner's rules and this plan win over anything a skill suggests (no FAQ schema, no invented numbers, no cropping or resizing media, no sound, no new media without a yes). A skill that is missing or not signed in is skipped and reported, never a blocker. The mapping lives in `references/skill-map.md` so it can change without touching the rest of the skill.
 
 **Gaps where no installed skill fits yet:** stepping through video frame by frame, and comparing a Behance or Dribbble version against the case study. Both are done by the skill's own procedure for now.
+
+## Owner changes, 2026-11-16: media rule and scope
+
+These two changes win over any older line in this plan.
+
+**1. Media rule, replaced.**
+
+| | Before | Now |
+|---|---|---|
+| Resize | Not allowed | Allowed. Media may be shown at any size as long as the original aspect ratio is kept. |
+| Aspect ratio | Never changed | Never changed. No stretching, no squashing. |
+| Clipping masks | Not mentioned | Allowed. A mask may shape or frame what is shown (rounded corners, a device shape, a reveal). The file itself is untouched. |
+| Cropping the file, re-encoding, uploading, local copies | Not allowed | Still not allowed. Media stays in R2 as the owner put it there. |
+| Sound | None | None. |
+
+How this is read in the plan: resizing and masks are done on the page (CSS), not by making new files. A mask must not hide the part of a screen that proves the claim. The earlier "never upscale" line becomes a quality check: a file shown larger than its natural size is flagged when it looks soft; it is no longer banned.
+
+**2. Scope, widened.** The skill now also covers blog posts, service pages and site-wide SEO, in addition to client work.
+
+| Added area | Source | What carries over as is | What still has to be written |
+|---|---|---|---|
+| Blog posts | Notion Blogs (synced by `scripts/sync-notion-blogs.mjs`) | Audit, brief, writing style, SEO and schema, quality gate, the skill map | Blog body standard, cover and inline image rules, internal links, refreshing old posts |
+| Service pages | Sanity `service` documents (6 pillars) | Audit, writing style, SEO, quality gate | What a service page must contain, how case studies are linked in as proof |
+| Site-wide SEO | The whole site; `wugweb-seo` as the lead helper | Audit and report steps | Keyword and intent map per page, technical checks, reporting rhythm |
+
+Effect on the plan: the name `wugweb-work` and Part 1 and Part 2 for case studies stay as written. The three added areas become a Part 3, to be planned after the owner's vetting of the current plan. Until Part 3 is written, the detailed procedure exists only for client work. Lines further down that list blog posts, service pages or site-wide SEO as out of scope are superseded.
 
 ## Final skill list (owner, 2026-11-16)
 
@@ -819,3 +845,4 @@ Research (encode, do not re-derive):
 | 2026-11-14 | Owner | Digital-twin skill question raised by the vetting. | Closed: different work, not part of this plan. |
 | 2026-11-16 | Claude, at the owner's request | Reviewed the second assistant's consolidated plan. | Taken: handoff contracts, per-task tests, the CI question. Not taken, because each conflicts with an owner decision or a fact: fixed About / Challenge / FAQ structure; FAQPage schema and `author`; digital twin inside this system; Notion against Sanity as open (decided); canonical and redirect questions (decided); picking screens by keyword or file name; leftover-only gallery; TinyFish and Bright Data as essential; its folder sketch. |
 | 2026-11-16 | Owner | Final skill list. | Nothing dropped: 22 core, 19 situational, 17 second opinion. `ui-system-mapper` is a separate skill. SEO stays one skill, `wugweb-seo`. |
+| 2026-11-16 | Owner | Media rule and scope. | Resize allowed if the original aspect ratio is kept; clipping masks allowed. Scope now includes blog posts, service pages and site-wide SEO (Part 3, to be planned). |
