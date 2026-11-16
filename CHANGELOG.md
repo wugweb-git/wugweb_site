@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-brand-os plan: points to the standing-rules file, skill card links (2026-11-16)
+- Docs only. `docs/skills/wugweb-brand-os/PLAN.md` points to `docs/skills/STANDING-RULES.md` instead of restating media rules, shortens the proposed crop definition, marks owner items 8 and 11 settled, and adds the development chat and repo plan links to the skill card.
+
 ### Changed — wugweb-strategy plan: points to the shared standing rules (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` names `docs/skills/STANDING-RULES.md` as the source of the owner's standing rules and does not restate them. Same line on the Notion skill page; replaced line backed up in `backups/notion-wugweb-strategy-page-pre-standing-rules-2026-11-16.json`.
 

@@ -34,6 +34,8 @@
 | Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. One plain Node script, for the export. |
 | Version | 0.1.0 (planned) |
 | Status | Plan ready for vetting. Not built. Skill development not started; the owner starts it when the page and the md are ready. |
+| Development chat | `https://claude.ai/chat/490738f9-8b97-4826-befb-a28a6a63ad7a` |
+| Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-brand-os/PLAN.md` |
 | Owner | Vedanshu, Wugweb |
 | Will live at | `.claude/skills/wugweb-brand-os/` |
 | Sources | `brand_guidelines/`, `kits_design_system/docs/design.md`, `CLAUDE.md`, owner decisions, and the owner's Visual OS and Brand Strategy documents once supplied |
@@ -83,7 +85,7 @@ version: 0.1.0
 
 - **Body:** 1,500 to 2,000 words, imperative voice. Purpose, when to use and when not, the four modes, the source order (approved decisions, then patterns, then observations), the never-do list, the pointer to `wugweb-voice`, and an index of the reference files.
 - **Progressive disclosure:** the name and description are always loaded; the body loads when the skill triggers; reference files load only when a mode needs them.
-- **No duplication:** a rule lives in one file only. The owner's standing rules live in the system's shared file and are not repeated here.
+- **No duplication:** a rule lives in one file only. The owner's standing rules live in `docs/skills/STANDING-RULES.md` and are not repeated here.
 - **Trigger words avoided:** the bare word "strategy", and topic, calendar, brief, campaign plan, refresh and repurpose, so that `wugweb-strategy` and this skill do not fire on each other's questions.
 
 ```
@@ -154,7 +156,7 @@ Visual OS is art direction: how Wugweb's visuals should look and feel across the
 - "Does a lot, into one": multi-workstream engagements are the norm.
 - Yellow is an accent at 10% or less; the final call to action stays yellow.
 - Text is never pure white; the live colour values must not change. Brand-os states the rule; `wugweb-kits` holds the values.
-- The media rule wins over any brand wording: existing media is resized only with its aspect ratio kept, masks are allowed, and no file is cropped (see section 14).
+- The media rules in `docs/skills/STANDING-RULES.md` win over any brand wording (see section 14).
 - Yellow is a reservation, not an emphasis level. It is the resting fill only on the one conversion action per page and on the footer banner. Other buttons may use it only on hover or tap. On a yellow surface the button inverts to dark. (Source, kits docs.)
 - Structure stays in brand ink. An accent is spent on one or two things only, and a pillar colour does not paint structure. (Source, kits docs.)
 - The logo lockup is two-tone, and two-tone titles mirror it. (Source, kits docs; sizes are held in kits.)
@@ -173,7 +175,7 @@ All writing style and tone material from the wugweb-work plan moves to `wugweb-v
 | Tone line; the voice rules (say what was built, evidence or nothing, answer first, short whole sentences, plain words, active with a named doer, credit honestly, headings are claims) | `wugweb-voice` |
 | Banned word list, preferred wording, tone by form, the NTUC before and after examples | `wugweb-voice` |
 | `14_COPY_GUIDELINES.md` as a source; the Sanity brand voice draft as a possible input | `wugweb-voice` |
-| British English, no dashes, sentence case, never invent | The system's shared standing-rules file |
+| British English, no dashes, sentence case, never invent | The shared standing-rules file, `docs/skills/STANDING-RULES.md` |
 | Case-study lengths, the 70 character heading limit, the client's own words | Stay in `wugweb-work` |
 | SEO title and meta description lengths | `wugweb-seo` |
 
@@ -227,7 +229,7 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 
 ## 14. Crop wording: ruling and proposal
 
-**Ruling (recorded).** The owner's media rule wins: existing media may be resized only with its aspect ratio kept, clipping masks are allowed, and no file is cropped.
+**Ruling (recorded).** The owner's media rules win. They are in `docs/skills/STANDING-RULES.md`, including the three readings confirmed on 2026-11-16, and are not restated here.
 
 **The conflict.** "Crop" appears as an instruction in about 15 guideline files. Three say "decisive crop" and one says "crop boldly at edges".
 
@@ -235,7 +237,7 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 
 One definition, added once, so the other files need no edit:
 
-> In these guidelines, "crop" means how a subject is framed in a composition. An existing media file is never cropped. It is resized with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
+> In these guidelines, "crop" means how a subject is framed in a composition. It never means cutting an existing media file. The media rules in the standing-rules file apply.
 
 | File | Current | Proposed |
 |---|---|---|
@@ -255,10 +257,10 @@ Until approved, the skill carries the definition in `visual-os/art-direction.md`
 5. **`brand_guidelines/`.** Recommended: it stays untouched as the evidence archive and the skill holds the working rules.
 6. **Colour conflict.** `04_COLOR_ROLES.md` says avoid purple, green and orange; the site uses all three as service colours. Which wins for artwork? The same three colours are pillar colours in the kits docs.
 7. **AI prompt engine folder** (`04_AI_PROMPT_ENGINE`). Recommended: Visual OS here owns it, since it turns art direction into briefs. The alternative is the social module in `wugweb-work`.
-8. **Working preferences.** How the owner reasons and gives feedback belongs in neither `wugweb-voice` nor here. Recommended: the shared standing-rules file.
+8. **Working preferences.** How the owner reasons and gives feedback belongs in neither `wugweb-voice` nor here. Settled: they are in the section "Working with the owner" of `docs/skills/STANDING-RULES.md`.
 9. **"Does a lot, into one".** Public wording, or only the idea behind it?
 10. **Source documents.** The owner's Visual OS and Brand Strategy documents, and the nine source images named in the guidelines, if available.
-11. **Where the plan is kept.** This Notion page and `docs/skills/wugweb-brand-os/PLAN.md`, as relayed by the coordinating session. Confirm.
+11. **Where the plan is kept.** This Notion page and `docs/skills/wugweb-brand-os/PLAN.md`, settled by the standing rule of one Notion page per skill and one plan file in the repo.
 12. **Crop wording.** Approve the definition and the four wording changes in section 14?
 13. **Messaging stance.** Accept "the client is the hero, Wugweb is the guide"? Recommended: yes. It is held by `wugweb-voice` until answered.
 14. **Background.** The guidelines call warm or light backgrounds the default; the site canvas is black. Does the light default apply only to artwork, or is it out of date?
