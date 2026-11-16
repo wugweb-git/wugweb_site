@@ -384,7 +384,23 @@ On the owner's word, the skill now lives in the repo at `.claude/skills/wugweb-s
 
 ## Staged: 2.4.2 and 2.4.3, for the dev session (2026-11-17)
 
-Update, 2026-11-17: the build session reports the keyphrase score built and the skill bumped to 2.5.0 (its report, not verified from the planning session). The versions now diverge: app copy 2.4.0, repo master 2.4.1, build branch 2.5.0. The 2.4.2 and 2.4.3 edits below fold into that 2.5.0 sync. All of it is saved and pushed from the dev chat (`cse_01UQ9TRqokKf1xMCS1JD3brM`), not from here.
+Update, 2026-11-17: the build session reports the skill built out to 2.5.0 and gives the gap list below, where the skill is ahead of this card (built, not just planned). Checked against the repo the same day: `origin/main` is still 2.4.1, and no `score-page.mjs`, `evals/evals.json` or score fixture exists on any ref. So the 2.5.0 work is not in this GitHub repo; it is in the build session's own copy, and this card stays at 2.4.1 until it lands here. The list is the build session's report, not verified from the planning session.
+
+| # | Reported built in the skill (2.5.0) | On this card |
+| --- | --- | --- |
+| 1 | Citability figure re-sourced to the study (arXiv 2311.09735) | still credits the restating skill |
+| 2 | Report: run each AI prompt several times, report how often Wugweb appears | not there |
+| 3 | Content-Signal robots.txt note | not there |
+| 4 | Keyphrase score built (`score-page.mjs`, rubric, bands, fixture) | Planned |
+| 5 | Internal-link checks built (anchor mix, silo, redirected, nofollow, too-many, cloaked prefix) | Planned |
+| 6 | Rank Math PRO net-new built (VideoObject, indexed status, utility noindex, any-URL) | Ingested and planned |
+| 7 | `score-good.html` fixture and score self-test cases | not mentioned |
+| 8 | `evals/evals.json` exists | card said it was missing |
+| 9 | Version 2.5.0 | 2.4.1 |
+
+Caught up, no longer a gap: the standing-rules path and the proof-map link ruling, both repo 2.4.1 edits now folded into 2.5.0.
+
+The versions diverge: app copy 2.4.0, repo master 2.4.1, build copy 2.5.0. The 2.4.2 and 2.4.3 edits below fold into the 2.5.0 sync. Saving and pushing happen from the dev chat (`cse_01UQ9TRqokKf1xMCS1JD3brM`), not from here.
 
 Not applied here. The repo master stays 2.4.1 until the dev session (`cse_01UQ9TRqokKf1xMCS1JD3brM`), the only place that saves the app copy and pushes the skill, applies these, runs the scripts, saves and pushes.
 
