@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — shared owner's standing rules for the Wugweb Skill System (2026-11-16)
+- Docs only. `docs/skills/STANDING-RULES.md`: the owner's standing rules in one file that every skill reads (truth and evidence, sources and approval, media, writing, working with the owner, limits, the skill system, git). Merged from the registry's list and the wugweb-work plan; no skill's own rules restated.
+
 ### Changed — wugweb-strategy plan: development chat and repo plan on the skill card (2026-11-16)
 - Docs only. The skill card in `docs/skills/wugweb-strategy/PLAN.md` gains two rows: the development chat the owner gave, and the repo plan link. Same rows on the Notion skill page, written as plain text; replaced line backed up in `backups/notion-wugweb-strategy-page-pre-skill-card-links-2026-11-16.json`.
 
