@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-seo alignment plan (2026-11-16)
+- Docs only. `docs/skills/wugweb-seo/PLAN.md` mirrors the Notion page "wugweb-seo": three parts (plan, audit, report), links with sibling skills, changes to take into the skill session, "Extracted and absorbed" from the helper skills, portability, connectors and open questions. Plan stage; nothing built.
+- `backups/notion-wugweb-seo-page-before-2026-11-16.md` holds the Notion page text as it stood before the merge.
+
 ### Changed — wugweb-work plan: links with sibling skills, works beyond Claude, page pointers (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md` gains the fuller links table (wugweb-work is the hub for wording and voice checks) and a "Works beyond Claude" section, matching the Notion page.
 - `CLAUDE.md` and `AGENTS.md` call the plan page by its new title, "wugweb-work", under the Wugweb Skill Management System registry; the address is unchanged.
