@@ -203,7 +203,7 @@ The Wugweb Skill System's final list gives this skill eight helpers: `rampstack-
 4. The helper list: the system's eight only, or the extras in section 10 as well.
 5. Where working preferences live (how he wants assistants to reason, prioritise and report). Today they are in Claude memory. They are out of this skill.
 6. Whether translated copy is in scope for the voice.
-7. Whether this plan file is pushed to `main`. It is on the branch `claude/happy-dirac-e9995c` only.
+7. Settled 2026-11-16: this plan file is on `main` (commits up to `97ea8ec4`), pushed on the owner's yes.
 8. "We" for the studio and "I" in bylined or personal writing: one fixed rule, or his call per piece?
 9. CONFIRM that the Notion profile pages (2023, Grok, Gemini) are background only, not calibration.
 

@@ -1,0 +1,11 @@
+{
+  "what": "Backup note for the Notion page wugweb-voice before the sixth write (push-to-main question marked settled)",
+  "url": "https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e",
+  "takenAt": "2026-11-16",
+  "note": "Two lines change; nothing is removed. Before this write the page's plan text matched docs/skills/wugweb-voice/PLAN.md at git commit 97ea8ec4 on main, with headings one level lower.",
+  "planTextSource": "git show 97ea8ec4:docs/skills/wugweb-voice/PLAN.md",
+  "linesBefore": [
+    "Section 11, item 7: Whether this plan file is pushed to main. It is on the branch claude/happy-dirac-e9995c only.",
+    "Waiting on the owner (unticked): Whether the plan file is pushed to main (it is on the branch claude/happy-dirac-e9995c only)."
+  ]
+}
