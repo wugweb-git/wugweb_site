@@ -1,4 +1,4 @@
-> Plan for vetting, revision 18, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
+> Plan for vetting, revision 19, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
 # wugweb-kits skill: plan
 
@@ -752,3 +752,7 @@ A spec, not built. The coordinating session sent this list after reading the thr
 | `sizing.md` shows no token for sizes that have one | `sizing.md` against `global.css` | See item 5. |
 | The last verification used 1440 | `layout-shell.md` | The rule is 1200. |
 | Five blocks are "awaiting sign-off" | `components.md` | The skill treats them as drafts until the owner signs off. |
+
+**Settled: two max widths, not a clash (2026-11-16).** A point routed from `wugweb-brand-os`: `components.md` gives the nav bar a max width of 1280, while `layout-shell.md` calls 1200 "the only max-width in the shell". These are two different boxes. The 1200 is the content box inside every section. The 1280 is the nav bar's inner container, listed in the same doc's "Width rule" table and set as `max-width: 1280px` in `SiteHeader.astro`. Both docs and the code agree. One wording note for the owner, not a finding: the comment "the only max-width in the shell" sits in the content block and could be read as covering the nav. Proposed: "the only max-width on section content".
+
+**Scope of the 16 by 9 tile rule.** The fixed 16/9 tile ratio in `components.md` belongs to the Client Assembly Grid only. It is not a general rule and is not written into the skill as one.

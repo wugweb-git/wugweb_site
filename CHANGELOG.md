@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-kits plan: max-width point settled; Notion page backup (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 19) records that content max 1200 and nav inner max 1280 are two different boxes, not a clash, and that the 16/9 tile rule belongs to the Client Assembly Grid only.
+- `backups/notion-wugweb-kits-page-cleaned-2026-11-16.md`: the Notion page "wugweb-kits" as it stood before it was restored and rebuilt on 2026-11-16, with the two runaway link cells cleaned.
+
 ### Changed — wugweb-brand-os plan: approved facts, kits brand rules, six more owner questions (2026-11-16)
 - Docs only. `docs/skills/wugweb-brand-os/PLAN.md` gains section 19 (approved facts about Wugweb, every gap marked as an owner question), the brand rules confirmed in the kits docs, owner items 13 to 18, and the skill card line that skill development has not started.
 ### Changed — wugweb-strategy plan: planning fields and the reader signal log (2026-11-16)
