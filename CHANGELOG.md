@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: voice link and "Works beyond Claude" (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` states the link with `wugweb-voice` (none direct; through `wugweb-work`) and gains a portability section: plain Markdown, optional helpers, one wiring file, a single-file export and an export test. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-portability-2026-11-16.json`.
+
 ### Changed — wugweb-strategy plan moved onto its Notion skill page (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` matches the Notion skill page: matrix row in the five-entry format, question 12 updated. Backup of the page's earlier text in `backups/notion-wugweb-strategy-page-pre-plan-2026-11-16.json`.
 
