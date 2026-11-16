@@ -324,7 +324,7 @@ About 50 installed skills were read on 2026-11-16, read only. Each is marked abs
 | Source skill | What is taken | Lands in | Clash with owner rules (not taken) |
 |---|---|---|---|
 | `social-media-skills:brand-profile` | Positioning as three plain sentences; a point-of-view list; a proof register with usage rights | `identity-and-positioning.md`, `brand-facts.md` | Defines voice; invented example numbers |
-| `marketing:competitive-brief` | Positioning statement shape; positioning pitfalls; messaging health test | `identity-and-positioning.md`, `messaging.md` | Uses third-party review sites as a source |
+| `marketing:competitive-brief` | Positioning statement shape (also in `copywriting-kit:landing-page-copy`: audience, current alternative, difference); positioning pitfalls; messaging health test | `identity-and-positioning.md`, `messaging.md` | Uses third-party review sites as a source |
 | `copywriting-kit:copy-diagnose` | Four positioning questions (who exactly it is for, what it replaces, which category, which proven differences matter); signs positioning is broken; settle positioning before wording | `identity-and-positioning.md`, `review-gates.md` | None found; its message-order and wording layers belong to `wugweb-voice` |
 | `social-media-skills:competitor-analysis` | A set of 5 to 8 competitors; one capture row each; a map of the space nobody owns | `brand-strategy.md` | Allows estimated ranges |
 | `brightdata:competitive-intel` | Two-axis positioning map; a grid for what to stop, reduce, raise and add | `brand-strategy.md` | Scrapes by default; asks for market size |
@@ -342,9 +342,9 @@ About 50 installed skills were read on 2026-11-16, read only. Each is marked abs
 | `design-taste-frontend`, `website-design:web-design-system` | A one-line design read; three dials for variance, motion and density; comparing 3 to 5 references on fixed axes | `visual-os/art-direction.md`, `visual-os/references-and-patterns.md` | Says to use an image generator first |
 | `design:design-critique`, `website-design:web-review` | Two-second test; judge the rendered result; must fix, should fix, nice to have; taste kept apart from real problems | `visual-os/judging-a-visual.md` | Emoji severity markers |
 | `social-media-skills:image-prompt`, `design` (owner's) | A fixed frame for describing a visual: subject, composition, lighting, colour, style, mood. A real photo or screenshot before generated imagery. Logo checks. | `visual-os/judging-a-visual.md` | Advises a tighter crop; generates by default |
-| `superdesign`, `banner-design` (owner's) | Five layout types; no text baked into images; brief before making; use the real logo file; three zones and one call to action | `visual-os/formats-and-campaigns.md` | Uploads to a vendor; crops to fit; compresses exports; generates by default |
+| `superdesign`, `banner-design` (owner's) | Five layout types; no text baked into images; brief before making; use the real logo file; three zones and one call to action; the list of named art-direction styles as vocabulary only, with neon and glass styles marked as banned looks | `visual-os/formats-and-campaigns.md` | Uploads to a vendor; crops to fit; compresses exports; generates by default |
 | `thumbnail-design`, `design-and-templates`, `quote-cards-and-text-graphics`, `carousel-writer` | Image and title as one unit; a small family of recurring formats; each slide is a small poster; glance test at thumbnail size | `visual-os/formats-and-campaigns.md` | All-caps examples; uncited percentages; generation assumed |
-| `pptx`, `slides` (owner's) | One motif repeated; one message per slide; pattern break at one third and two thirds; a visual check list | `visual-os/formats-and-campaigns.md` | Pure white text and white backgrounds as defaults |
+| `pptx`, `slides` (owner's) | One motif repeated, with no accent stripes or underlined titles; one message per slide; pattern break at one third and two thirds; a visual check list | `visual-os/formats-and-campaigns.md` | Pure white text and white backgrounds as defaults |
 | `social-media-skills:infographic-and-data-viz` | The title states the takeaway; a big stat instead of a chart for one or two numbers; source and date shown | `visual-os/formats-and-campaigns.md` | None |
 | `skill-creator`, `skill-development` | Body length; one fact in one place; trigger tests; pre-release checklist | How the skill is built (sections 5 and 17) | None |
 
@@ -367,7 +367,7 @@ About 50 installed skills were read on 2026-11-16, read only. Each is marked abs
 | `aeo-brand-scan`, `hcti-open-graph-images`, `rampstack-seo:seo-competitor`, `searchfit-seo` competitor-analyzer | SEO work; passed to `wugweb-seo` |
 | `brightdata:brand-listening` | Scrapes by default; uses review sites as a source |
 | `brightdata:design-mirror` | Do not run. It scrapes other sites and restyles the codebase to match, with a risk of copying another brand. The kits session reports its scripts turn off certificate checking (not checked here). |
-| `algorithmic-art`, `canva` | Make new media by default |
+| `algorithmic-art`, `canva` | Make new media by default. One test is kept from `canva`, in `visual-os/formats-and-campaigns.md`: a stranger should not be able to name the template. |
 | `dataviz` | Not on disk, so not read |
 
-Material found for other skills (voice rules, content plans, tokens, SEO work, platform sizes) was passed to the coordinating session and is not kept here.
+Material found for other skills (voice rules, content plans, tokens, SEO work, platform sizes) was passed to the coordinating session and is not kept here. Editorial positioning (mission, audience, promise, distinction, from `rampstack-seo:content-strategy`) is content strategy and goes to `wugweb-strategy`.

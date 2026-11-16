@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-brand-os plan: five small edits to section 18 (2026-11-16)
+- Docs only. `docs/skills/wugweb-brand-os/PLAN.md`: adds `landing-page-copy` as a source, the `pptx` no-stripes line, the banner style list as vocabulary, one test kept from `canva`, and a note that editorial positioning goes to `wugweb-strategy`.
+
 ### Changed — wugweb-brand-os plan: extracted and absorbed (2026-11-16)
 - Docs only. `docs/skills/wugweb-brand-os/PLAN.md` gains section 18: about 50 installed skills read, each marked absorb, optional helper or ignore, with where the rule lands and any clash with owner rules. `brand-guidelines` is dropped as a helper.
 
