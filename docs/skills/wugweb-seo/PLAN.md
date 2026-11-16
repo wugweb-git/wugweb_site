@@ -252,6 +252,15 @@ The helper skills were read on 2026-11-16 (read only) so the skill can work with
 | Judge Core Web Vitals on field data at the 75th percentile, not lab runs. A declared canonical that differs from the one Google chose is critical | seo-skills seo-google | none |
 | For multi-language sites only: each page lists itself, alternates link back, one x-default, tags only on the canonical URL | seo-skills seo-hreflang, searchfit content-translation | none |
 
+Added 2026-11-16 from the sibling sessions' routing, each checked against the owner's rules:
+
+- Never optimise a page that is not indexable; report the indexing fault first (rampstack seo-content-audit, seo-onpage).
+- Image weight is reported as a fact and never fixed by re-encoding. The helper's budgets are thumbnail under 50 KB, content under 100 KB, hero under 200 KB (seo-skills seo-images; source's figures). Alt text that repeats a keyword is flagged.
+- Favicon, title, description and share image are present (website-design web-review; routed, not read here).
+- A page that already passes is a valid result (cloudflare web-perf). 2.1.0 already says so.
+- From the SEO pass in the copy helpers (rampstack content-and-copy, marketing content-creation): slug lowercase and hyphenated; excerpt and description match the piece; decorative images get empty alt. Set aside: their title 50 to 60, description 120 to 160 or under 160, keyword in headline and subheading, FAQ and HowTo schema.
+- Outside support for the schema ban: HowTo rich results are retired and FAQ results are restricted (seo-skills seo-schema, as routed by wugweb-work). The repo research file dates the end of FAQ results to 2026-05-07.
+
 ### Absorbed into the report part
 
 | Rule, in our words | Source | Clash set aside |
@@ -277,7 +286,7 @@ They add tooling or data, or repeat what the skill already holds. No part depend
 | seo-skills seo-google | Needs Google credentials and local scripts; its rules are absorbed |
 | marketing seo-audit | Repeats held rules; adds "not updated in 12 months" as a flag |
 | aeotester audit and fix | Scripted run; its rubric rewards llms.txt, FAQPage and HowTo, and fix edits files |
-| aeo-brand-scan scan | Sends brand and competitor names to a third-party endpoint |
+| aeo-brand-scan scan | Sends brand and competitor names to a third-party endpoint; needs the owner's yes before any run |
 | analytics anomaly-detection-time-series | Needs Python tooling |
 | brightdata seo-audit, search | Need a Bright Data account |
 | cloudflare web-perf | Needs Chrome DevTools; names the slow part of LCP |
@@ -295,7 +304,7 @@ They add tooling or data, or repeat what the skill already holds. No part depend
 | social-media-skills instagram-seo, pinterest-seo | Nothing new for the three named platforms |
 | analytics: the other eight skills | Experiments and event schema, not search |
 | web-quality-accessibility, web-design-guidelines, ux-ui-audit | For `wugweb-kits` |
-| hcti-open-graph-images | Makes image files; conflicts with the media rule |
+| hcti-open-graph-images | Paid rendering service that makes image files; conflicts with the media rule; not relied on |
 | wp-structured-data and every `wp-*` skill | Belongs to Animal Writes. Schema patterns are reference only; not read |
 
 ### Clashes found, owner rules kept
@@ -305,6 +314,9 @@ They add tooling or data, or repeat what the skill already holds. No part depend
 - Title 50 to 60 and description 150 to 160 (or 120 to 160) appear in six helpers; the owner's limits stand.
 - Question headings and "keyword in the H1" appear in several; headings belong to the copy.
 - Author markup on every page appears in several; case studies carry no author.
+- FAQPage or HowTo is also recommended by seo-skills seo-sxo, rampstack seo-technical and searchfit technical-seo.
+- Scores from 0 to 100 with no rubric appear in several helpers. The skill's own citability score stays because it has five stated criteria.
+- Image re-encoding is advised by seo-skills seo-images; weights are reported only.
 - Redirects as a default fix appear in several; wugweb.com adds none for old addresses.
 
 ### Passed to other skills
@@ -316,12 +328,15 @@ Sent to the coordinating session as "FOR" lines: 12 for `wugweb-work`, 9 for `wu
 - Read in part: six rampstack programmatic-seo references; seo-skills seo-google and seo-hreflang; the aeotester rubric and scripts; three analytics skills (outlines only); fifteen low-priority seo-skills skills (skimmed).
 - Not read: `wp-structured-data`, the `data` skills, `dataviz`, `hcti-open-graph-images`, `ux-ui-audit`.
 - Catalogue scan found three more worth one read for the LinkedIn keyword note: social-media-skills profile-optimization, linkedin-growth, linkedin-company-pages.
+- Not on disk, so not read: dataviz, artifact-design, simplify and the built-in code-review.
+- Not read: marketing competitive-brief (keyword gaps), a possible plan helper.
+- Do not run brightdata design-mirror: it scrapes other sites, restyles the codebase, and its scripts disable certificate checking. Reported by the wugweb-kits session; not checked here.
 
 ## Works beyond Claude
 
 | Requirement | Plan |
 | --- | --- |
-| Rules any model can follow | The skill body and references are plain Markdown, with no Claude-only syntax |
+| Rules any model can follow | The skill body and references are plain Markdown, with no Claude-only syntax. The body holds every core rule on its own; references add detail only, because other tools may not load them |
 | Helpers optional | Every helper skill, plugin and connector is optional. Each part has a by-hand route: read the page source, export from Search Console, sample prompts by hand. The absorbed rules above make this possible |
 | Scripts | Plain Node, no packages, no Claude tooling. The 2.1.0 `SKILL.md` says its scripts need Node 18 and no packages; the scripts themselves were not read |
 | Tool and vendor wiring | In one file only. Everything else names no vendor |
