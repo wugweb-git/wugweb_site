@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-kits plan: binding layout-shell values, connection to three docs, enhancement to-do (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 18) puts the `layout-shell.md` values at the top of the enhancement spec as binding, each with its token; adds section 24 (how the skill points to `layout-shell.md`, `sizing.md` and `components.md`, and a check that fails on disagreement) and section 25 (the enhancement to-do checked against the docs, with clashes found in the docs). No skill file or doc changed.
+
 ### Changed — wugweb-strategy plan: link-target split, refresh signals, editorial stance (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` records the proposed split on internal link targets with `wugweb-seo` (question 20), names the refresh signals it receives, adds one routed row and proposes an editorial stance sentence (question 21). Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-links-stance-2026-11-16.json`.
 

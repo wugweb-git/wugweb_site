@@ -1,4 +1,4 @@
-> Plan for vetting, revision 14, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
+> Plan for vetting, revision 18, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
 # wugweb-kits skill: plan
 
@@ -12,6 +12,7 @@
 | Type | Claude Code project skill: one `SKILL.md` plus `rules/`, `references/`, `scripts/`, `examples/`, `evals/` |
 | Version | 0.1.0 (planned; open, see section 16) |
 | Status | Renamed copy is on `main`. Enhancements are plan only. |
+| Installed copies | Repo: `.claude/skills/wugweb-kits/` on `main`, version 1.0.0, name change only. Claude app on this Mac: still `ui-system-mapper` 1.0.0, unchanged since 2026-11-14; no `wugweb-kits` installed there. |
 | Owner | Vedanshu, Wugweb |
 | Planned in session | wugweb-kits (`local_31fbe87e-842d-4d48-a8fb-8b3fe7768756`) |
 | SKILL.md written in session | `cse_01H6F5RsB2d6PFWpQpS932gi` (owner, 2026-11-16: the session where this discussion is converted to SKILL.md) |
@@ -32,7 +33,7 @@
 |---|---|---|
 | Inventory | `global.css`, components, pages | Counts of raw values and tokens in use, measured |
 | Map | Inventory | `system-map.json`: tokens by layer, components, consumes, used by, status |
-| Audit | Files or a rendered page | Findings by rule id, with measured values and file:line, plus a delete candidates list |
+| Audit | Files or a rendered page | Findings by rule id, with measured values and file and line, plus a delete candidates list |
 | Refactor proposal | Audit findings | Current to proposed change set; nothing applied |
 | Spec | A new or changed component or block | Component spec sheet or block doc, as a proposal |
 | Layout | A block plan or page brief | Layout decision per block and tier (375, 768, 1200) |
@@ -210,7 +211,7 @@ Stays with `wugweb-work`: content rules, lengths, which screens prove which chap
 |---|---|---|---|
 | `wugweb-work` (every piece: case studies, blog posts, service pages, social and deck versions) | Block plan, media shapes, page brief | Layout per block and tier, gate result, block doc proposal | Write copy; decide which media proves which point |
 | `wugweb-brand-os` | Visual OS: art direction, mood, colour meaning, type character | Tokens, components and layout rules that express it; contrast results | Set art direction; change brand colours or logo |
-| `wugweb-seo` | A finding that repeats on every page using a block (alt text, lazy loading, heading order, image sizes). See section 17. | The check result, with file:line | Change titles, meta, schema or canonicals; edit code |
+| `wugweb-seo` | A finding that repeats on every page using a block (alt text, lazy loading, heading order, image sizes). See section 17. | The check result, with file and line | Change titles, meta, schema or canonicals; edit code |
 | `wugweb-strategy` | Nothing directly; it reaches kits through `wugweb-work` | Nothing | n/a |
 | Ordinary engineering work under `CLAUDE.md` (there is no engineering skill) | Code, diffs, preview URL | Findings by rule id, current to proposed fixes, specs. Kits owns the check; engineering wires it into the build. | Edit code or build config; run build, sync or deploy |
 | `wugweb-voice` | No link | No link | Write visible wording; it asks `wugweb-work` (section 17) |
@@ -363,7 +364,7 @@ Still to plan: a block list for the blog article body, a block list for service 
 
 ### 16. Matrix row and new open questions
 
-**MATRIX ROW: wugweb-kits**
+**MATRIX ROW: wugweb-kits** (superseded by the row in section 23)
 
 - **Owns:** The Kits design system: tokens, layout shell, components, block docs, block catalogue, adaptive UX, motion and accessibility rules, how media is shown, composition of og images, cards and tiles, and the token audit itself.
 - **Reads:** `src/styles/global.css`, `kits_design_system/docs/`, component and page code, rendered pages. From `wugweb-work`: content shape and chosen media. From `wugweb-brand-os`: art direction. From `wugweb-seo`: requests to check.
@@ -572,3 +573,182 @@ Proposals to check, 2026-11-16. Points on tap targets, body text size, image dim
 | `web-review`, `ux-ui-audit`, `accessibility-review` and `design-qa` belong with kits | Agreed. All four are already optional helpers of kits in section 19. |
 
 **Finding on the live code, recorded only.** `src/layouts/BaseLayout.astro` emits 9 of the 12 share tags. Missing: `og:site_name`, `og:image:alt`, `twitter:image:alt`. Reported by `wugweb-seo`; checked read only by kits on 2026-11-16 and confirmed. No code is edited. The tag set belongs to `wugweb-seo`; the fix is engineering work on the owner's go.
+
+### 23. The enhancement as a spec, the settled matrix row, one more owner question
+
+**Binding values (owner, 2026-11-16).** The values in `kits_design_system/docs/tokens/layout-shell.md` are binding in this spec, not a pointer only. The table below was copied by reading the doc on 2026-11-16 (the file is the same as on `main`), not from memory or from any message.
+
+| | Mobile | Tablet | Desktop | Token or selector | Named in |
+|---|---|---|---|---|---|
+| Canvas width | 375 | 768 | 1200 | `--breakpoint-xl` (1200) | `layout-shell.md` |
+| Section padding (top right bottom left) | 48 16 48 16 | 70 32 70 32 | 96 48 96 48 | Block: `--section-y` and every `--space-section-*`. Inline: `--shell-gutter` | `layout-shell.md` |
+| Content max-width | 1200 | 1200 | 1200 | `.wrap`, by `padding-inline: max(var(--shell-gutter), calc((100% - 1200px) / 2))` | `layout-shell.md` |
+| Layout grid columns | 4 | 8 | 12 | `.grid`, switching at 768 and 1200 | `layout-shell.md` |
+| Column gap | 16 | 24 | 32 | `--grid-gap` | `layout-shell.md` |
+| Grid margin (the gutter) | 16 | 32 | 48 | `--shell-gutter` | `layout-shell.md` |
+| Header padding | 16 | 20 | 20 | `--header-pad-block` on `.site-header` | `layout-shell.md` |
+| Header height (derived) | 100 | 108 | 108 | `--header-height` = `--nav-height` + 2 × `--header-pad-block` | `layout-shell.md` |
+| Header position | sticky, top 0 | sticky, top 0 | sticky, top 0 | `z-index: var(--layer-nav)` (10) | `layout-shell.md` |
+| Nav bar height | 68 | 68 | 68 | `--nav-height` | `layout-shell.md` |
+| Nav bar inset (all sides) | 12 | 12 | 12 | No token named in the doc. In code: `--nav-bar-pad` | `global.css` |
+| Button height (links, CTA, menu) | 44 | 44 | 44 | `--control-size` | `sizing.md` |
+| Button text, padding, gap | 16, 10 12, 12 | 16, 10 12, 12 | 16, 10 12, 12 | No token named in the doc | |
+| Logo height | 40 | 40 | 40 | `--nav-logo-height` | `sizing.md` |
+| Nav inner container | max 1280 | max 1280 | max 1280 | No token; `max-width: 1280px` in `SiteHeader.astro` | `layout-shell.md` |
+| Spring | 400ms, bounce 0.2, delay 0 | same | same | `--duration-spring`, `--ease-spring` | `layout-shell.md` |
+
+**Header formula (owner, 2026-10-21), as the doc gives it.** 24px line height + 2 × 10px button padding = 44px button. 44 + 2 × 12 = 68px bar. 68 + 2 × 20 = 108px header. Mobile uses 16px outer spacing: 16 + 68 + 16 = 100. The nav bar and its 44px buttons are the same on every tier; the header height is derived, never set by hand.
+
+**Rules that go with the table.**
+
+1. The doc is the source. The skill's copy is made by reading the doc. `validate.mjs` fails if any value in the skill's copy differs from the doc.
+2. Code or another doc that disagrees is reported as a finding against the code or that doc, as the first paragraph of `layout-shell.md` says. The skill never "corrects" the doc to match code.
+3. Old values are never reintroduced. The doc's gap correction: the column gap is 16 / 24 / 32, not 24 / 24 / 0. From its History table, these are retired:
+
+| | Retired | Current |
+|---|---|---|
+| Content max-width | 1280 | 1200 |
+| Desktop gutter | 44 | 48 |
+| Desktop breakpoint | 1280 | 1200 |
+| Section tokens | flat 40 / 48 / 64 / 80 | one rhythm, 48 / 70 / 96 |
+| Column gap | flat 16 | 16 / 24 / 32 |
+| 12-column switch | 1024 | 1200 |
+| Header padding | fluid 16 to 32, no bottom | 16 / 20 / 20 |
+| Header height | 110 / 118 / 118 | 100 / 108 / 108 |
+| Nav z-index | 50 | 10 |
+
+The audit flags any retired value found in a shell context as a finding.
+
+**Checked against `global.css` on 2026-11-16, read only.** These match the doc: `--shell-gutter` 16 / 32 / 48, `--grid-gap` 16 / 24 / 32, `--header-pad-block` 16 then 20, `--control-size` 44px, `--nav-logo-height` 2.5rem (40px), `--breakpoint-xl` 1200px, `--duration-spring` 400ms, `--layer-nav` 10, `--nav-bar-pad` 12px, the section tokens at 48 / 70 / 96, and `max-width: 1280px` on the nav bar. Not re-read in this check: the button text, padding and gap.
+
+**Today's skill refers to none of this.** The skill at `.claude/skills/wugweb-kits/` is `ui-system-mapper` renamed. Checked on 2026-11-16: no file in it mentions `kits_design_system`, `global.css` or the layout shell. Everything below is a spec. Nothing is built.
+
+**What `references/layout-shell.md` will hold.** A one-page summary, with every value pointing back to its source doc and none restated as a second source of truth.
+
+| Part | Content | Source doc |
+|---|---|---|
+| The rule | The section owns the gutter; the content owns the max width; blocks live inside content | `kits_design_system/docs/tokens/layout-shell.md` |
+| Tiers | 375, 768, 1200; the shell steps only at 768 and 1200 | `layout-shell.md`, `breakpoints.md` |
+| Gutter, rhythm, grid | Gutter 16 / 32 / 48; section padding 48 / 70 / 96; columns 4 / 8 / 12; column gap 16 / 24 / 32 | `layout-shell.md` |
+| Max width | Content 1200; nav bar 1280; nothing non-full-bleed wider than the nav; nothing scales past the max width | `layout-shell.md` |
+| Header and nav | Nav bar 68 on every tier; header 100 mobile, 108 tablet and desktop, derived never set; buttons 44; logo 40; bar inset 12 | `layout-shell.md`, `sizing.md` |
+| Breakpoints | Literal 480 / 640 / 768 / 1024 / 1200 in `@media`; going down uses the step minus 0.02 | `breakpoints.md` |
+| Labelling | Every section has an id and an accessible name; the five labelling defects | `layout-shell.md` |
+| Checks | How each value is measured on a rendered page, and the measuring notes | `layout-shell.md` |
+
+**The three design-system docs it points to:** `kits_design_system/docs/tokens/layout-shell.md` (authoritative), `kits_design_system/docs/tokens/breakpoints.md` and `kits_design_system/docs/tokens/sizing.md`. If the skill and a doc disagree, the doc wins and the skill is corrected. Corrected 2026-11-16: the owner named the three docs as `layout-shell.md`, `sizing.md` and `components.md`; `breakpoints.md` is a fourth source, for the breakpoint literals only. See section 24.
+
+**MATRIX ROW: wugweb-kits (settled links; replaces the row in section 16)**
+
+- **Owns:** The Kits design system: tokens, layout shell, components, block docs, block catalogue, adaptive UX, motion and accessibility rules, how media is shown, composition of og images, cards and tiles, and the token audit itself.
+- **Reads (sources):** `src/styles/global.css`, `kits_design_system/docs/` (`layout-shell.md` authoritative), component and page code, rendered pages at 375, 768 and 1200, its own rules and system map.
+- **Gives to:** `wugweb-work`: layout and blocks per tier, gate results, block docs, wording slots with length limits, a token sheet for decks and cards. `wugweb-brand-os`: design-system detail and contrast results. `wugweb-seo`: its check result for a fault that repeats on every page using a block.
+- **Takes from:** `wugweb-work`: content shape, chosen media, and any visible wording. `wugweb-brand-os`: art direction (Visual OS), logo sizes and clear space. `wugweb-seo`: block-wide findings to check. No link with `wugweb-voice`. `wugweb-strategy` reaches it only through `wugweb-work`.
+- **Never does:** Writes copy, sets voice or art direction, edits SEO fields, picks or alters media files, edits site code or build config, writes Notion, Sanity or R2 outside its own plan page, or deletes or refactors tokens, components or files without the owner's yes.
+
+**One more owner question: hero copy limits.** A helper skill (`design-taste-frontend`) gives a hero limit of a headline of 2 lines or fewer and subtext of 20 words or fewer. The `wugweb-work` plan already sets the subtitle at 90 characters or fewer. These differ. Kits holds no copy limit of its own; it needs one figure so the hero block's wording slot can state it. Which stands?
+
+### 24. Connecting the skill to the three design-system docs
+
+A spec, not built. No skill file is edited until the owner says go. The owner named the three docs on 2026-11-16. All three were read, read only.
+
+| Doc | Path | Holds |
+|---|---|---|
+| Layout shell | `kits_design_system/docs/tokens/layout-shell.md` (424 lines) | The page, section, content, block skeleton; tiers; gutter, rhythm, grid; max width; header and nav formula; section labelling; motion and PWA notes; how it is implemented and verified |
+| Sizing | `kits_design_system/docs/tokens/sizing.md` (30 lines) | Component sizes (nav bar 68, header 100 / 108, button 44, logo 40, thumbs and tiles) and icon sizes |
+| Components | `kits_design_system/docs/components.md` (219 lines) | Buttons (tiers, composition, size, width, states), core components, 11 page blocks, each with tokens consumed, status and the rules it demonstrates |
+
+Today's skill at `.claude/skills/wugweb-kits/` refers to none of them.
+
+**(a) Which skill file points to which doc, and for what.**
+
+| Skill file | Layout shell | Sizing | Components |
+|---|---|---|---|
+| `SKILL.md` (core summary) | Gutter 16 / 32 / 48, rhythm 48 / 70 / 96, content max 1200, tiers | Nav bar 68, header 100 / 108, buttons 44 | Button tiers and the yellow-fill rule, in one line each |
+| `references/layout-shell.md` | Everything in the shell: rule, tiers, grid, max width, header formula, labelling, verification | Nav, button and logo sizes | |
+| `references/component-sizes.md` (new) | | The component size table, icon sizes, fixed media ratios (16/10 thumbs, 1:1 team) | |
+| `references/six-layers.md` | Shell tokens as layer 2 | Size tokens as layer 3 (`--nav-height`, `--control-size`, `--header-height`) | Which names are layer 4, 5 and 6 |
+| `references/block-catalogue.md` | | | The 11 page blocks, their status and their block docs |
+| `references/spec-templates.md` | | | The entry shape: purpose, tokens consumed, accessibility, status, rules it demonstrates |
+| `references/accessibility.md` | Section id and name rules, semantic naming table | 44px controls | Focus, disabled and icon-only button rules |
+| `references/motion.md` | Nav spring, reveal timing, reduced motion | | "One property, one owner" as shown by Bento Block and Process Map |
+| `references/gate.md`, `references/pane-measuring.md` | The verified table and the measuring note | | |
+| `scripts/kits-doc-drift.mjs` | Reads it | Reads it | Reads it |
+| `system-map.json` (generated) | | Size tokens | `consumes` and `usedBy` seeded from each entry |
+
+**(b) The rule.** The docs are the source. The skill points to them and does not copy their values. Two exceptions, both marked so the check in (d) can find them: the short core summary inside `SKILL.md`, and the one-page summary in `references/layout-shell.md`. They exist so the skill still works in GPT or Cursor, where reference files may not load. Every number in them carries a marker naming its doc and heading. If a marked value and its doc disagree, the doc wins and the skill is corrected.
+
+**(c) Which of the 23 rule files need a pointer.** The folder has 21 rules plus `_sections.md` and `_template.md`. 15 need a pointer; 8 do not.
+
+| Rule file | Points to | For |
+|---|---|---|
+| `token-no-raw-values-in-components` | Components, Layout shell | Tokens each component consumes; `@media` literals are the allowed exception |
+| `token-component-tokens-earn-their-place` | Sizing | `--nav-height`, `--control-size`, `--header-height` as tokens that earn their place |
+| `map-single-source-of-truth` | All three | The docs and `global.css` are the source; the map is generated |
+| `map-record-consumes-and-usedby` | Components | Tokens consumed and "used by" per entry |
+| `component-complete-state-set` | Components | Button states: hover, active, focus-visible, disabled |
+| `component-variants-not-booleans` | Components | Button tier, size and width as class modifiers |
+| `component-slots-for-content` | Components | Label only, label plus icon, icon only |
+| `component-no-outside-in-restyling` | Components, Layout shell | The `.btn-block` case; a card must not opt out of the shell with its own gutter |
+| `reuse-collapse-duplicates-with-a-survivor` | Components | Component status |
+| `reuse-every-audit-ends-in-deletions` | Components | Unused components and built-but-unused kinds, as candidates only |
+| `spec-fixed-template` | Components | The entry shape |
+| `spec-generate-dont-maintain` | Components | Token counts per block are generated, not typed |
+| `spec-measure-dont-claim` | Layout shell | The verified table and the measuring note |
+| `spec-donts-from-real-misuse` | Components, Layout shell | "Rules it demonstrates" and the labelling defects |
+| `_sections.md` | All three | The new rule sections name their source doc |
+
+No pointer needed: `token-one-way-references`, `token-no-alias-chains`, `token-semantic-names-describe-role`, `map-count-before-you-propose`, `map-deprecate-with-a-pointer`, `reuse-promotion-ladder`, `reuse-same-role-not-same-look`, `_template.md`.
+
+**(d) The check that fails on disagreement.** `kits-doc-drift.mjs`, plain Node, read only, exit code 1 on any failure. It fails when:
+
+1. A marked value in the skill differs from the value under the named heading in its doc.
+2. A doc value differs from `src/styles/global.css` (for example `--nav-height`, `--shell-gutter`, `--grid-gap`).
+3. One of the 15 rule files above has no link to its doc, or the link points at a file or heading that does not exist.
+4. A skill file other than the two marked summaries contains one of the shell or sizing numbers with no marker.
+
+It reports each failure as file, line, value in the skill, value in the doc. It changes nothing. Whether it runs in `prebuild` is the open merge-blocking decision.
+
+**Found while reading, not changed.** `sizing.md` uses a long dash as an empty cell and writes one range with a dash ("16 to 18px" for toolkit icons). The doc rule is no dashes and ranges as inequalities. Proposed, current to proposed: empty cells become blank; the range becomes "16px ≤ size ≤ 18px".
+
+### 25. Enhancement to-do, checked against the three docs
+
+A spec, not built. The coordinating session sent this list after reading the three docs; each point was checked against the docs and `global.css` on 2026-11-16, read only. No skill file is edited until the owner says go.
+
+**The gap.** The skill today is a generic design-system mapper: the six-layer model, phases 0 to 5, 21 rules in five groups (token, map, component, reuse, spec), three scripts, and notes on Tailwind. It holds nothing specific to Wugweb. The three docs hold the Wugweb rules.
+
+| # | To do | Source | Check result |
+|---|---|---|---|
+| 1 | A "source of truth" section in `SKILL.md`: token values live in `src/styles/global.css`; the docs in `kits_design_system/docs/` win; code that disagrees with `layout-shell.md` is wrong, not the doc. The skill points to the docs and never carries a value it cannot check. | `layout-shell.md` | Holds |
+| 2 | A core summary in `SKILL.md`: page, section, content, blocks; the section owns the gutter, the content owns the max width (1200); tiers 375 / 768 / 1200; section padding 48 16, 70 32, 96 48; columns 4 / 8 / 12; gap 16 / 24 / 32; nav bar 68; header 100 / 108 / 108; buttons 44; logo 40; bar inset 12; nav inner max 1280; sticky, layer 10; spring 0.4s, bounce 0.2. | `layout-shell.md`, `sizing.md` | Holds, with one correction: 375 / 768 / 1200 are the tiers. The breakpoint literals are 480 / 640 / 768 / 1024 / 1200, and the shell steps only at 768 and 1200. |
+| 3 | New rule group `shell`: no max-width on a section; nothing below the section sets a page gutter; grid gaps use `--grid-gap`, never a section token; only `.global-final-cta` is exempt from the rhythm rule; filters are toolbars inside the grid, not sections; no non-full-bleed block is wider than the nav. | `layout-shell.md` | Holds |
+| 4 | New rule group `label`: every section has an id and an accessible name; `aria-labelledby` only to a heading that always renders; never label a section from a heading inside a loop; one h1, no skipped levels, a screen-reader-only h2 where there is no visible heading; card lists as lists; alt always; decorative muted loops hidden from assistive tech; skip link, main landmark, scroll offset under the sticky header. | `layout-shell.md` | Holds. This replaces the `a11y-*` name used earlier in this plan for the labelling rules; contrast, focus and target rules stay in `a11y-*`. |
+| 5 | Sizing checks: each row of the size table is a value checked against its token. | `sizing.md`, `global.css` | Corrected. The list said pillar thumb 88 / 62 and bento min-height 180 have no token. They do: `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` are in `global.css`. So the finding is that `sizing.md` is behind the code, not that tokens are missing. Toggle chip 44 and author photo 56 show no token in the doc; not yet checked in the code. |
+| 6 | Component rules: three button tiers (`.btn-solid` brand, `.btn` primary, `.btn-ghost`); yellow as a resting fill on brand only; size and width by class (`.btn-sm`, `.btn-lg`, `.btn-block`), never one-off CSS; states on `.btn`; radius by role; GSAP owns motion and no property has two owners; the animated-block lint set (Service Spotlight Panel, Client Assembly Grid, Service Tag Field, Bento Block, Process Map, and any block marked "Animated block"); a bento never resolves into an even grid; block specs live in `kits_design_system/docs/blocks/`. | `components.md` | Holds |
+| 7 | Spec sheet template: which shape wins. | `components.md`, the mapper's phase 4 | Proposed: three levels, no clash. The entry in `components.md` keeps its own shape (purpose, tokens consumed, Storybook, status, headline tokens, rules it demonstrates). A full block spec uses the block doc template. The mapper's sheet is used for single components and gains those fields. The rule `spec-fixed-template` is adapted to name all three. |
+| 8 | Measuring: check at 375, 768 and 1200; the measuring iframe needs `border: 0` or 768 reads as mobile. | `layout-shell.md` | Holds. The doc's own last pass used 1440; the owner's rule is 1200. |
+| 9 | What the scripts would check. | Below | Spec only |
+| 10 | Clashes inside the docs, listed and not fixed. | Below | Confirmed |
+| 11 | Keep the generic method (phases 0 to 5 and the 21 rules); the Wugweb parts are added on top. The Tailwind notes in `SKILL.md` are marked as not applying to this repo. | The skill | Holds |
+
+**Item 9: what the scripts would check, as a spec.**
+
+| Script | Checks from items 3 to 6 |
+|---|---|
+| `audit.mjs` (becomes `kits-inventory.mjs`) | A `max-width` declared on a section selector. A page gutter set below the section (`padding-inline` using `--shell-gutter` anywhere but `.wrap`). A grid `gap` that uses a `--space-section-*` or `--section-y` token. A `border-radius`, size or width on a `.btn` variant written in component CSS. A property that has both a CSS transition and a GSAP tween in an animated block. A raw size where `--nav-height`, `--header-height`, `--control-size` or `--nav-logo-height` exists. |
+| `kits-check-page.mjs` | On rendered HTML: every section has an id and a name; no dangling `aria-labelledby`; no duplicate ids; one h1; no skipped level; images with alt; a skip link and a main landmark. |
+| `validate.mjs` | Every rule file in the `shell` and `label` groups names its source doc and heading, and has one incorrect and one correct example. The core summary numbers in `SKILL.md` carry their doc markers. |
+| `kits-doc-drift.mjs` | As in section 24 (d), plus: every token named in `sizing.md` exists in `global.css`, and every sizing token in `global.css` appears in `sizing.md`. |
+
+**Item 10: clashes inside the docs, for the owner. Nothing is changed.**
+
+| Clash | Where | Note |
+|---|---|---|
+| A proposed `faqs` field for FAQPage JSON-LD | `layout-shell.md`, CMS fields section | Breaks the no-FAQPage rule. Also FOR `wugweb-seo`. |
+| The CMS fields section is a proposal, not deployed | `layout-shell.md` | It sits in the authoritative doc but is not live. |
+| Framer media aspect ratios are not mapped to sections | `layout-shell.md`, "Open" | Still open. |
+| Line numbers for the button rules are stale | `components.md` cites `global.css:855-924`; `.btn` now starts at line 911 and `.btn-ghost` at 1024 | Proposed: cite the selector, not line numbers. |
+| A hardcoded `#000` for the WhatsApp button text | `components.md`, SiteHeader entry | Against tokens only. Recorded as a finding. |
+| `sizing.md` shows no token for sizes that have one | `sizing.md` against `global.css` | See item 5. |
+| The last verification used 1440 | `layout-shell.md` | The rule is 1200. |
+| Five blocks are "awaiting sign-off" | `components.md` | The skill treats them as drafts until the owner signs off. |
