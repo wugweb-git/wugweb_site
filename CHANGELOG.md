@@ -69,6 +69,9 @@ Docs only. The wugweb-work plan status now reads 0.4.2 in the repo; the Notion p
 ### Added — wugweb-work skill `evals/evals.json` in the repo (2026-11-17)
 - `.claude/skills/wugweb-work/evals/evals.json`: the 14 eval prompts and expectations from the development chat, plain JSON, no secrets. The packager strips `evals/` from the app copy, so this is the first time the evals reach the repo. The evals have not been run yet. Closes the "missing `evals/`" gap noted in the 0.4.1 master copy entry above.
 
+### Changed — wugweb-voice plan, app copy now full (2026-11-17)
+- `docs/skills/wugweb-voice/PLAN.md` and the Notion page: version 0.3.0 (locked), 57 files on main, and the Claude app copy noted as reset with the 0.3.0 zip pending upload. Backup note `backups/notion-wugweb-voice-page-2026-11-16-i.json`.
+
 ### Added — wugweb-strategy skill v0.1.0, master copy in the repo (2026-11-17)
 - `.claude/skills/wugweb-strategy/`: the 19 app files copied unchanged, plus `AGENTS.md` (single-file export for other tools, with the standing rules block copied from `docs/skills/STANDING-RULES.md`). Plan status line updated. Six known differences from the plan rulings are listed for the owner, not applied.
 

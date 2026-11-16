@@ -1,4 +1,4 @@
-> PLAN READY FOR VETTING, 2026-11-16. Nothing is built. The owner approved writing this plan to the skill's Notion page (https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e) and to this file; he has not yet approved its open choices. Items marked CONFIRM need his yes before they count as decided. The Notion page and this file carry the same plan text.
+> PLAN READY FOR VETTING, 2026-11-16. Version 0.3.0 of the skill exists; see Status. The owner approved writing this plan to the skill's Notion page (https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e) and to this file; he has not yet approved its open choices. Items marked CONFIRM need his yes before they count as decided. The Notion page and this file carry the same plan text.
 
 # wugweb-voice skill: plan
 
@@ -8,13 +8,13 @@
 |---|---|
 | Name | `wugweb-voice` |
 | Type | Claude Code Agent Skill: one `SKILL.md` plus `references/`, `examples/`, `evals/` |
-| Version | 0.1.0 (planned) |
+| Version | 0.3.0 (locked by the owner) |
 | Family | Wugweb Skill System |
 | Development chat | https://claude.ai/chat/942cbd9e-e68d-4679-9923-ef4e030440d8 |
 | Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-voice/PLAN.md` |
-| Status | Plan ready for vetting. Skill development started on 2026-11-16 in the development chat: a draft 0.2.0 exists, structure and method only. No approved writing samples yet, so no rule drawn from samples exists. |
-| Real copy | `.claude/skills/wugweb-voice/` in the repo (owner, 2026-11-16: "The full folder"). Draft 0.2.0, 51 files, on `main` since commit `8ebe7693`. Its own tests pass. |
-| Other copy | A one-file install in the Claude app on the owner's Mac: the same `SKILL.md` body with a shorter description, and none of the reference files, scripts, evals or export it points to. Not the source. |
+| Status | Plan ready for vetting. Skill development started on 2026-11-16 in the development chat: version 0.3.0 exists (locked by the owner), structure and method only. No approved writing samples yet, so no rule drawn from samples exists. |
+| Real copy | `.claude/skills/wugweb-voice/` in the repo (owner, 2026-11-16: "The full folder"). Version 0.3.0, 57 files, on `main` (version locked in commit `27e3874a`). Its own tests pass. |
+| Other copy | The Claude app on the owner's Mac carried the same 51 files as the repo folder at 0.2.0 (checked identical on 2026-11-17); the app was reset that day, and the 0.3.0 zip is for the owner to upload. Not the source; the repo folder is. |
 | Lives in | `~/.claude/skills/wugweb-voice/` proposed, so every project sees it. CONFIRM |
 | Covers | How Wugweb and Vedanshu write and speak: voice, tone, phrasing, structure |
 | Does not cover | Personality, beliefs, decision style, working preferences, brand identity, positioning, audience, case-study structure, SEO, design |
