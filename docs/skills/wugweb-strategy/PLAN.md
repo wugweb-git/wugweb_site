@@ -121,7 +121,7 @@ version: 0.1.0
 | File | Holds |
 |---|---|
 | `strategy.md` | Goals, the pillar set and mix, what Wugweb does not publish. Audiences and positioning are pointed to in brand-os, not restated. Proposed: one editorial stance sentence (see question 21). |
-| `topics-and-calendar.md` | Topic intake, scoring, backlog fields, statuses, cadence, accounts |
+| `topics-and-calendar.md` | Topic intake, scoring, backlog fields, statuses, cadence, accounts. The signal log: readers' questions and objections in their own words, each with its source and date, with client names removed unless permitted. |
 | `brief-format.md` | The brief template and its variants per piece type |
 | `piece-structures.md` | The shape a piece's message takes in a brief (claim, tension, proof, outcome), per piece type |
 | `editorial-standards.md` | What makes a piece worth publishing: one audience, one claim, a named proof, byline, canonical and syndication rules. Holds no tone or phrasing rules; it points to `wugweb-voice`. |
@@ -134,6 +134,27 @@ version: 0.1.0
 | `ops.md` | This workspace's wiring: the Notion databases and how the sync behaves. The only file that names vendors. |
 | `examples/` | Brief for a blog post, a service page and a refresh; a calendar skeleton with owner-input markers and no invented topics |
 | `evals/evals.json` | Test prompts and assertions |
+
+## Content model: planning fields
+
+Source: kits docs. `kits_design_system/docs/tokens/layout-shell.md`, section "CMS fields per level", proposes new fields on `caseStudy` and `post`. It is a proposal; nothing is deployed. How this plan reads it:
+
+| Proposed field | Whose it is | This plan's view |
+|---|---|---|
+| `focusKeyword`, `secondaryKeywords`, `searchIntent`, `schemaType`, canonical, `noIndex`, share-image and breadcrumb fields | `wugweb-seo` | Not planning fields. Notion Blogs already has Focus Keyword and Schema Type. |
+| `aiSummary`, `keyTakeaways` | `wugweb-work` writes them; `wugweb-seo` sets any limits | Content of the piece, not planning. Notion Blogs already has AI Summary. |
+| `faqs` (for FAQPage markup) | No one | Clashes with the owner's no-FAQPage rule. Not wanted. |
+| `lastReviewedAt` | This skill decides the review; `wugweb-seo` and the owner decide how it is exposed | Wanted as a planning date: when a piece was last reviewed for refresh. It must not show as a visible "last updated" date on posts (owner decision, 2026-10-13). |
+
+**Planning fields this skill would want.** None exists today.
+
+- On the plan record, one row per piece: audience, pillar, one intent, status from idea to published or killed with a reason, account, target date, brief link, campaign label, proof (the related case studies), review verdict and review date.
+- Where they live depends on open question 1. If the plan gets its own Notion database, as recommended, most of these need no Sanity field at all.
+- On the published document, at most two: pillar, so the mix can be counted, and the review date.
+
+Sanity schema changes are development and an owner decision. This skill only proposes them, as current to proposed.
+
+**Calendar note, from the kits docs and `pending.md`.** Five blocks are awaiting sign-off, so pages that depend on them are not final: Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). Briefs for those pages carry this as a publish dependency (brief field 15).
 
 ## The brief handed to wugweb-work
 
@@ -294,7 +315,7 @@ Owner, 2026-11-16: the installed skills and plugins were read so that their usef
 - **For `wugweb-seo`:** keyword discovery, intent classing, clustering by shared results, all volume and difficulty figures; title, description and slug limits; schema and technical checks; the position and click-rate signals used for refresh decisions, delivered here as inputs; competitor ranking data; link audits. Third-party rules to keep out there too: keyword counts, FAQ and HowTo schema, llms.txt, visible datestamps, redirects and deletes.
 - **For `wugweb-work`:** all post, caption, hook, email and newsletter writing; reply and comment routines; advocacy copy; attribution wording on a piece; report pages and charts for original research; outreach pitches; everything to do with scheduling and publishing.
 - **For `wugweb-brand-os`:** the "ownable" test for a pillar; the audience definition.
-- **For `wugweb-voice`:** the bank of the audience's own words.
+- **For `wugweb-voice`:** how readers phrase things. Collecting and storing readers' own words stays here, as the signal log (see `topics-and-calendar.md`); voice reads it.
 
 ### Not read
 
@@ -366,6 +387,7 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 19. **Newsletter.** Is an email newsletter in scope for the calendar?
 20. **Internal links in a brief.** Proposed, for the owner to confirm, with the same wording on both sides: `wugweb-strategy` decides which pages and case studies a piece links to (the proof map and the links field in the brief); `wugweb-seo` owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result.
 21. **Editorial stance.** Proposed: `strategy.md` holds one sentence on what Wugweb publishes, for whom, to what end, and how it differs from what else is out there. It is built from the positioning in `wugweb-brand-os` and never restates or changes it. `wugweb-brand-os` declined to hold it. Keep it here, or drop it?
+22. **Fields on the published document.** Should pillar and a review date be added to `post` and `caseStudy` in Sanity, or stay on the plan record only? A schema change is development.
 
 ## Source gaps
 
@@ -398,3 +420,4 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 | 2026-11-16 | Voice link stated (no direct link; through `wugweb-work`). Portability section added (owner: usable beyond Claude). Question 12 settled. |
 | 2026-11-16 | "Extracted and absorbed" added after reading the installed skills and plugins (owner). Brief finding corrected. Brief fields 19 to 21 and questions 18 to 20 added. |
 | 2026-11-16 | Link-target split with `wugweb-seo` recorded as proposed (question 20). Refresh signals from `wugweb-seo` named in the handoff and matrix row. One routed row added. Editorial stance proposed (question 21). |
+| 2026-11-16 | "Content model: planning fields" added from the kits docs: which proposed CMS fields are planning fields, and the five blocks awaiting sign-off. Question 22 added. The signal log of readers' own words kept here; `wugweb-voice` reads it. |
