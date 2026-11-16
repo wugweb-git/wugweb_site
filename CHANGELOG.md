@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: link targets decided (2026-11-16)
+- Docs only. Decision 20 in `docs/skills/wugweb-strategy/PLAN.md` is replaced to match `wugweb-seo` 2.2.1: this skill sets the pillar and cluster structure; `wugweb-seo` picks each brief's link targets, owns the link rules and audits. Brief field 10, the proof map row, the handoff contract and the matrix row follow; question 23 added. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-link-targets-2026-11-16.json`.
+
 ### Changed — wugweb-strategy plan: development chat and repo plan on the skill card (2026-11-16)
 - Docs only. The skill card in `docs/skills/wugweb-strategy/PLAN.md` gains two rows: the development chat the owner gave, and the repo plan link. Same rows on the Notion skill page, written as plain text; replaced line backed up in `backups/notion-wugweb-strategy-page-pre-skill-card-links-2026-11-16.json`.
 
