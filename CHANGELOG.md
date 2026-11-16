@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-kits plan: links with the other skills, works beyond Claude (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 7) gains section 17, the final links with the other skills, and section 18, how the skill is used from GPT, Cursor or another tool and what works only in Claude today.
+
 ### Added — wugweb-kits skill: renamed copy of ui-system-mapper, and its plan (2026-11-16)
 - `.claude/skills/wugweb-kits/` is `ui-system-mapper` under its new name (31 files, 21 rules). Only the name changed: `SKILL.md` name and title, `AGENTS.md` title, `README.md` title, tree and a rename note, and the title string in `scripts/build.mjs`. No rule or other script was changed; enhancements are not made.
 - Docs only. `docs/skills/wugweb-kits/PLAN.md` is the plan for the enhancements (revision 6), the same content as the Notion page "wugweb-kits".
