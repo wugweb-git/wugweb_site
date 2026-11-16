@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan: extracted and absorbed helper rules (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` gains "Extracted and absorbed": rules restated from the installed helper skills by mode, a decision for every skill read (absorb, optional helper, ignore), clashes with owner rules, a first draft of the track 2 structure and the gaps found. Also: where the skill is developed, the interface-copy link rule, "main file stands alone" under portability, and two new owner questions (made-file sizes, hero copy limit). Matches the Notion page.
+- `backups/notion-wugweb-work-page-before-2026-11-16-c.md`: the Notion page as it was before this update.
+
 ### Changed — wugweb-kits plan: extracted and absorbed, enhancement inputs, made-file sizes (2026-11-16)
 - Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 13) gains section 19, what is absorbed from about 50 installed skills and what is ignored; section 20, six defects confirmed in the renamed skill as inputs to the enhancement stage; section 21, proposed sizes for made files; and the session ids in the skill card. No skill file changed.
 
