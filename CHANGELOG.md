@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- docs(skills): wugweb-brand-os plan (Notion page and PLAN.md) updated to say the first draft 0.1.0 is built, not yet pushed to main.
+
 ### Added — wugweb-brand-os skill, first draft 0.1.0 (2026-11-17)
 - `.claude/skills/wugweb-brand-os/`: `SKILL.md` (four modes, fixed brand rules), 10 brand reference files, 7 Visual OS files, test prompts, a plain Node script that builds `export/wugweb-brand-os.md` (one file for GPT, Cursor and other tools, with the standing rules copied in). Positioning, values, audience and most facts are marked not yet approved, waiting on the owner. No edits to `brand_guidelines/`.
 

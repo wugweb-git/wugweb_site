@@ -1,6 +1,6 @@
 # wugweb-brand-os: plan
 
-> Part of the Wugweb Skill System. Plan ready for vetting, 2026-11-16. Nothing goes to development until the owner says. The Notion page "wugweb-brand-os" (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa) and this file hold the same text.
+> Part of the Wugweb Skill System. Plan ready 2026-11-16. First draft 0.1.0 built 2026-11-17 on a branch; not yet pushed to main and not yet reviewed by the owner. The Notion page "wugweb-brand-os" (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa) and this file hold the same text.
 
 > Settled by the owner on 2026-11-16: Visual OS (art direction) stays inside this skill. Voice does not live here: Wugweb's voice and the owner's are one voice, held in `wugweb-voice`, and this skill points to it.
 
@@ -32,12 +32,12 @@
 |---|---|
 | Name | `wugweb-brand-os` |
 | Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. One plain Node script, for the export. |
-| Version | 0.1.0 (planned) |
-| Status | Plan ready for vetting. Not built. Skill development not started; the owner starts it when the page and the md are ready. |
+| Version | 0.1.0 (first draft) |
+| Status | First draft 0.1.0 built 2026-11-17 in `.claude/skills/wugweb-brand-os/`: `SKILL.md` body 1,573 words by the shared method, 17 reference files, evals written but not yet run, export built (13,402 words). Committed on a branch; not yet pushed to main. Main already holds a separate copy of this folder from the app (commit 1f2f490f) that differs from the branch, so the two need reconciling before the push. Many answers are correctly "not yet approved" until the owner items in section 15 are answered. |
 | Development chat | `https://claude.ai/chat/490738f9-8b97-4826-befb-a28a6a63ad7a` |
 | Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-brand-os/PLAN.md` |
 | Owner | Vedanshu, Wugweb |
-| Will live at | `.claude/skills/wugweb-brand-os/` |
+| Lives at | `.claude/skills/wugweb-brand-os/` |
 | Sources | `brand_guidelines/`, `kits_design_system/docs/design.md`, `CLAUDE.md`, owner decisions, and the owner's Visual OS and Brand Strategy documents once supplied |
 | Used by | `wugweb-voice`, `wugweb-kits`, `wugweb-strategy`, `wugweb-work`, `wugweb-seo`, and any session that needs to know who Wugweb is |
 | Writes to | Nothing. It returns reference answers and findings as proposals. |
@@ -83,7 +83,7 @@ version: 0.1.0
 ---
 ```
 
-- **Body:** 1,500 to 2,000 words, imperative voice. Purpose, when to use and when not, the four modes, the source order (approved decisions, then patterns, then observations), the never-do list, the pointer to `wugweb-voice`, and an index of the reference files.
+- **Body:** 1,500 to 2,000 words, imperative voice. Built: 1,573 words, with an added "What is not yet approved" section so gaps are reported, not filled. Purpose, when to use and when not, the four modes, the source order (approved decisions, then patterns, then observations), the never-do list, the pointer to `wugweb-voice`, and an index of the reference files.
 - **Progressive disclosure:** the name and description are always loaded; the body loads when the skill triggers; reference files load only when a mode needs them.
 - **No duplication:** a rule lives in one file only. The owner's standing rules live in `docs/skills/STANDING-RULES.md` and are not repeated here.
 - **Trigger words avoided:** the bare word "strategy", and topic, calendar, brief, campaign plan, refresh and repurpose, so that `wugweb-strategy` and this skill do not fire on each other's questions.
@@ -226,6 +226,8 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 | No duplication | Search across all skill folders in the system | Each rule text appears once; no voice rule appears in brand-os |
 | No writes | End to end run | Nothing written outside chat or a draft file |
 | Portability | The answer, fact check and visual check evals run twice: as the installed skill, and from the single-file export in a second tool | Both runs give the same findings |
+
+**Status 2026-11-17.** The tests are written in `evals/evals.md` (groups A to I) and have not been run yet. The skill is not yet verified in the Claude app.
 
 ## 14. Crop wording: ruling and proposal
 
