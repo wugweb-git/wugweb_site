@@ -1,4 +1,4 @@
-> Plan for vetting, revision 22, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
+> Plan for vetting, revision 24, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
 # wugweb-kits skill: plan
 
@@ -265,7 +265,7 @@ Stays with `wugweb-work`: content rules, lengths, which screens prove which chap
 
 1. Where rules live: proposed that token values and block docs stay in `kits_design_system/docs/` and the skill points to them.
 2. The severity list: proposed colour and z-index serious, spacing px minor.
-3. Path of the shared standing-rules file.
+3. Path of the shared standing-rules file. Settled 2026-11-16: `docs/skills/STANDING-RULES.md` on `main`. The skill points to it for the owner's standing rules and does not restate them; its own rules (tokens, layout, motion, accessibility) stay in the skill.
 4. One definition of primitive, component, pattern and block across `widgets.md`, `components.md` and `blocks/`.
 5. Whether the `/kits` showcase page and Storybook are in scope here or are ordinary engineering work under `CLAUDE.md`.
 6. Whether `system-map.json` is committed, and where. Proposed: `kits_design_system/system-map.json`, generated.
@@ -789,4 +789,39 @@ Proposed by the planning session and confirmed by the owner on 2026-11-16 ("Conf
 | 21 | One definition of the four words | Primitive: a layer 4 structure class such as `.wrap` or `.btn`. Component: a layer 5 named part with its own file. Pattern: a reusable arrangement specified once and used inside blocks, such as the rail or the viewer. Block: a layer 6 section-level composition with its own block doc. | `widgets.md`, `components.md` and `blocks/` use them loosely today. |
 | 22 | Desktop columns for the All screens grid | 6 columns for phone screens, 3 for desktop screens, at 1200 | A starting figure only; to be checked on the NTUC page. |
 
-**Still open, with no proposal.** The path of the shared standing-rules file (it belongs to the coordinating session). Fixed type sizes per format for decks and cards. Whether to fix the wording "the only max-width in the shell" in `layout-shell.md`.
+**Still open, with no proposal.** Fixed type sizes per format for decks and cards. Whether to fix the wording "the only max-width in the shell" in `layout-shell.md`.
+
+### 27. Doc fixes made on the owner's word, 2026-11-16
+
+The owner said to fix five of the doc clashes listed in sections 12, 24 and 25. Three design-system docs were edited. No site code and no skill file changed.
+
+| Clash | Fix made | File |
+|---|---|---|
+| The last verification used 1440; the rule is 1200 | The shell was measured again at 375, 768 and 1200 on `wugweb.pages.dev` (24 routes) and a new record was added above the old one. The old 2026-10-03 record is kept as history. | `layout-shell.md` |
+| Dashes for empty cells and one range | Empty cells are blank; the toolkit icon range reads `16px` ≤ size ≤ `18px` | `sizing.md` |
+| No token shown for pillar thumb and bento min-height | `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` are named, with a note that no component references them yet | `sizing.md` |
+| Stale line numbers for the button rules | The two references now cite the `.btn` rules by selector, not by line | `components.md` |
+| A hardcoded `#000` recorded for the WhatsApp button text | The doc was wrong, not the code. The code uses `--color-ash`; the doc now says so. | `components.md` |
+
+**Result of the new measurement.**
+
+| | Mobile 375 | Tablet 768 | Desktop 1200 |
+|---|---|---|---|
+| Top-level sections on spec | 99 of 99 | 99 of 99 | 98 of 99 |
+| Header height | 100 | 108 | 108 |
+| Nav bar, buttons, logo | 68, 44, 40 | 68, 44, 40 | 68, 44, 40 |
+| Gutter and gap tokens | 16 and 16 | 32 and 24 | 48 and 32 |
+| Sideways scroll | None | None | None |
+
+One h1 on every route, 0 duplicate ids, 99 of 99 sections named. On a 1792 wide screen the content box is 1200 and the nav bar 1280.
+
+**New findings from the measurement and the fixes. Recorded only.**
+
+1. `/footer/reviews`: the hero section has 216px inline padding at 1200 where the shell gives 48.
+2. `/work/[slug]`: 6 sections have no id (five bento sections and the screens carousel). This page is due for the rebuild.
+3. `/contact-us` has no section inside the main landmark.
+4. Grid columns 4 / 8 / 12 were not measured; the homepage has no grid element to read them from.
+5. `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` are declared and unused. They are candidates under the rule on component tokens.
+6. `components.md` says button focus uses `--focus-primary`. The code has `outline: 2px solid var(--neutral-3)` on `.btn:focus-visible`. Doc and code disagree; not fixed.
+
+**Still open from the clash list:** the `faqs` field for FAQPage in `layout-shell.md`, the unmapped Framer ratios, and the five block sign-offs.

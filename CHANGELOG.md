@@ -9,6 +9,12 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — Kits docs: shell verified at 1200, sizing tokens, component references (2026-11-16)
+- Docs only. `kits_design_system/docs/tokens/layout-shell.md` gains a verification record at 375, 768 and 1200 (24 routes on `wugweb.pages.dev`; 99 / 99 / 98 of 99 top-level sections on spec), with four findings listed and not fixed. The 2026-10-03 record at 1440 is kept as history.
+- `kits_design_system/docs/tokens/sizing.md`: empty cells are blank and the icon range is an inequality (no dashes); `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` are named, with a note that no component references them yet.
+- `kits_design_system/docs/components.md`: the button rules are cited by selector, not by line number; the WhatsApp button text is `--color-ash`, as the code has it.
+- `docs/skills/wugweb-kits/PLAN.md` (revision 24) records these fixes and six new findings (section 27), and points to `docs/skills/STANDING-RULES.md`. No site code or skill file changed.
+
 ### Changed — wugweb-voice plan: real copy named, standing rules pointed to (2026-11-16)
 - Docs only. `docs/skills/wugweb-voice/PLAN.md` records the owner's ruling that the full folder `.claude/skills/wugweb-voice/` is the real copy of the skill (not committed yet) and that the one-file copy in the Claude app is not the source; adds the development chat and repo plan to the skill card; points to `docs/skills/STANDING-RULES.md` for the owner's standing rules instead of restating them; and asks whether `SKILL.md` and the export may carry those rules as a marked copy. Same edits on the Notion skill page; replaced lines noted in `backups/notion-wugweb-voice-page-2026-11-16-g.json`.
 - Catch-up for earlier commits that added no changelog line: the plan was first written and then extended on 2026-11-16 (commits `2dbaae54` to `b3a41347`): skill links with `wugweb-work` and `wugweb-brand-os` only, a portability section, the "Extracted and absorbed" table of helper skills, routed proposals decided, wording points from the design-system docs, and six page backups under `backups/notion-wugweb-voice-page-2026-11-16*.json`.

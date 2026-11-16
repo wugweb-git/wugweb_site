@@ -4,7 +4,7 @@
 
 ---
 
-## Buttons — `.btn` / `.btn-solid` / `.btn-ghost` (`src/styles/global.css:855-924`)
+## Buttons — `.btn` / `.btn-solid` / `.btn-ghost` (the `.btn` rules in `src/styles/global.css`)
 
 Living reference in Storybook: `src/components/ButtonShowcase.astro` /
 `Foundations/Buttons` — every tier × size × composition × width × state
@@ -44,7 +44,7 @@ brand adapting to stay legible on its own reserved surface.
 
 **Composition — a second, independent axis from tier.** Any of the three
 tiers can render as label-only, label + icon, or icon-only; `.btn` is
-already `display: inline-flex; gap: var(--gap-2)` (`global.css:856-858`),
+already `display: inline-flex; gap: var(--gap-2)` (the `.btn` rule in `global.css`),
 so icon placement is just DOM order — no separate CSS class per variant:
 
 - **Label only** — the default, and the common case (`{ctaLabel}` alone).
@@ -90,7 +90,7 @@ itself so every tier and size inherits them:
 - **Tokens Consumed**:
   - Background & Blur: `--neutral-7` bg, `--glass-medium` backdrop filter, `--shadow-nav`
   - Logo: `public/brand/logo-large.svg` (two-tone white + grey logo lockup)
-  - WhatsApp CTA Button: `--color-yellow` background, `#000` text, `--radius-sm` (8px), 16px WhatsApp SVG icon
+  - WhatsApp CTA Button: `--color-yellow` background, `--color-ash` text, `--radius-sm` (8px), 16px WhatsApp SVG icon
   - Navigation Links: `--neutral-6` background, hover/active `--color-surface-hover`, `--radius-sm`
   - Sizes: header 100 mobile / 108 tablet and desktop (derived), nav bar 68 (`--nav-height`), buttons 44 (`--control-size`, 16px text, 10 · 12 padding, 12 gap), logo 40 (`--nav-logo-height`), bar inset 12, bar max width 1280. Spec: `tokens/layout-shell.md`.
   - Mobile Menu Panel: `max-height: 100dvh`, single `overflow-y: auto` scroll container, `--breakpoint-md` (768px) hamburger toggle

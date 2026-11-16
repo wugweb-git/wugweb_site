@@ -402,6 +402,42 @@ A stray `.wrap` rule (68px gutter at ≥1280) was overriding the shell and
 squeezing content to 1160; removed. I had moved that rule from 1200 to 1280 on
 2026-09-29 because 1200 "matched no token" — it was this spec's desktop step.
 
+## Verified again, 2026-11-16, at 375, 768 and 1200
+
+The desktop tier is tested at 1200, not 1440 (owner rule). This pass replaces
+the 2026-10-03 desktop figures below, which were measured at 1440.
+
+Rendered pages on `wugweb.pages.dev`, 24 routes, at 375, 768 and 1200. Scope:
+top-level sections inside `main`.
+
+| | mobile 375 | tablet 768 | desktop 1200 |
+|---|---|---|---|
+| top-level sections on spec | 99 / 99 | 99 / 99 | 98 / 99 |
+| header height | 100 | 108 | 108 |
+| nav bar height | 68 | 68 | 68 |
+| nav buttons | 44 | 44 | 44 |
+| logo height | 40 | 40 | 40 |
+| header position, z-index | sticky, 10 | sticky, 10 | sticky, 10 |
+| gutter · gap tokens | 16 · 16 | 32 · 24 | 48 · 32 |
+| horizontal overflow | none | none | none |
+
+At 1200 the content box is 1104 wide (1200 less two 48 gutters) and the nav bar
+is 1160. On a 1792 wide screen the content box is 1200 and the nav bar 1280,
+so both max widths hold.
+
+Content: one `h1` on every route, 0 duplicate ids, 99 of 99 sections with an
+accessible name.
+
+Findings from this pass, not fixed here:
+
+- `/footer/reviews`: the hero section has 216px inline padding at 1200 where
+  the shell gives 48. It is on spec at 375 and 768.
+- `/work/[slug]`: 6 of its sections have no `id` (five `.bento` sections and
+  the screens carousel), so 93 of 99 sections carry an id, not all.
+- `/contact-us` has no `section` inside `main`; its content sits in one `div`.
+- Grid columns (4 / 8 / 12) were not measured: the homepage has no `.grid`
+  element to read them from.
+
 ## Verified — 2026-10-03
 
 Rendered pages, 22 routes, at 375, 768 and 1440:
