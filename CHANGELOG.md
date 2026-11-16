@@ -9,6 +9,11 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-seo plan: on-page keyphrase score and internal-link checks (2026-11-17)
+
+- `docs/skills/wugweb-seo/PLAN.md` and the Notion page gained two planned sections: an on-page keyphrase score modelled faithfully on Rank Math (weights extracted from `seo-by-rank-math` 1.0.280, owner decision to drop the density and heading softening), with a build prompt for the dev session; and net-new internal-link SEO audit checks (anchor-text mix, silo coherence, redirected and nofollow internal links, too-many-links, cloaked prefixes).
+- The RankWeb page (Animal Writes) gained a Rank Math on-page score reference. No skill files were edited; the skill is the dev session's.
+
 ### Added — wugweb-voice portability package 0.2.1 (2026-11-17)
 
 - `.claude/skills/wugweb-voice` gains `AGENTS.md` (the whole skill in one file), `adapters/cursor/wugweb-voice.mdc`, `adapters/chatgpt/instructions.md`, `agents/openai.yaml`, `README.md` and `metadata.json`, so the skill loads in Claude Code, Cursor, Codex and a custom GPT. `scripts/build.mjs` now compiles the whole package; every generated file leaves out the corpus ledger. Method and rules unchanged; still waiting on the owner's writing samples.

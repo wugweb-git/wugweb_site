@@ -382,6 +382,118 @@ On the owner's word, the skill now lives in the repo at `.claude/skills/wugweb-s
 - Validator: 0 errors and 1 warning (the missing evals file). Self-test: all passed. Generated files: all fresh.
 - The 2.3.0 owner answers were copied as they are. This page now counts them as decided.
 
+## Planned: on-page keyphrase score (2026-11-17)
+
+The owner asked for a score like Rank Math's, built into the audit part beside the citability score. Citability is the AI-answer score; this is the search score. Source of truth: Rank Math `seo-by-rank-math` 1.0.280, `assets/admin/js/analyzer.js`, read 17 Nov 2026. The engine runs client-side only; the new PHP ability `rank-math/analyze-post-content` hands an agent the content and the rubric link, `rankmath.com/kb/score-100-in-tests/`. The weights below are extracted, not invented. RankWeb has no score of its own; it reads Rank Math's through `rank_math_seo_score`.
+
+One focus keyphrase per page. Each test earns fixed points; sum them, normalise to the applicable maximum, give 0 to 100. Grade bands, the engine's own: bad 50 or less, ok 51 to 80, great over 80.
+
+Owner decision, 17 Nov 2026: build the score faithful to Rank Math, no softening. Keyword density, keyword in a subheading and the title readability tests are scored as below. This overrides, for the score only, the earlier "never propose a density target" and "headings are claims" lines. The skill still writes no copy: it scores, `wugweb-work` acts.
+
+Focus keyphrase:
+
+| Test | Points | Passes when |
+| --- | --- | --- |
+| keyword in title | 36 (38 non-English) | the title holds the phrase |
+| keyword in permalink | 5 | the slug holds the phrase |
+| keyword in the first 10% | 3 | the phrase is in the opening tenth of the body |
+| keyword in content | 3 | the phrase is in the body |
+| keyword in a subheading | 3 | the phrase is in an H2 to H6 |
+| keyword in an image alt | 2 | the phrase is in one image's alt |
+| keyword in the description | 2 | the phrase is in the meta description |
+| title starts with keyword | 3 | the title begins with the phrase |
+| keyword density | 0 / 2 / 3 / 6 | below 0.5% fail, 0.5 to 0.75% fair, 0.76 to 1% good, 1% or more best |
+| keyword not used before | warning, 0 points | the phrase is not another page's focus |
+
+Content, links, URL, title readability:
+
+| Test | Points |
+| --- | --- |
+| content length | 2500 words or more 8, 2000 or more 5, 1500 or more 4, 1000 or more 3, 600 or more 2, else 0 |
+| has image or video | images (1 is 1, 2 is 2, 3 is 4, 4 or more is 6) plus videos (1 is 1, 2 or more is 2), capped at 6 |
+| short paragraphs | 3 |
+| table of contents | 2 |
+| internal link present | 5 |
+| external link present | 4 |
+| not all links external | 2 |
+| permalink length, URL 75 characters or fewer | 4 |
+| title sentiment / power word / number | 1 / 1 / 1 |
+
+Dropped as not on the site: the two WooCommerce tests, product schema and review. Gaps to flag not guess: power words and sentiment use Rank Math's own word lists (`rankMath.assessor.powerWords`), not in the JS; "keyword not used before" needs a site-wide map of each page's phrase.
+
+Build prompt, for the dev session that holds the skill files, not this one:
+
+```
+Add an on-page SEO score to wugweb-seo, modelled on Rank Math's engine, as a
+new audit step. It scores one page against one focus keyphrase and returns a
+0 to 100 number with a per-test breakdown. It does not write copy.
+
+SOURCE OF TRUTH
+Rank Math seo-by-rank-math 1.0.280, analyzer.js. Weights and bands below are
+extracted from it, not invented. Rubric: rankmath.com/kb/score-100-in-tests/.
+
+GRADE BANDS (the engine's own): bad <=50, ok 51 to 80, great >80.
+
+TESTS AND POINTS
+Focus keyphrase: keyword in title 36 (38 non-English); in permalink 5; in
+first 10% of body 3; in content 3; in a subheading (H2 to H6) 3; in an image
+alt 2; in meta description 2; title starts with keyword 3; keyword density
+0/2/3/6 for <0.5% / 0.5 to 0.75% / 0.76 to 1% / >=1%; keyword not used before
+= warning, 0 points.
+Content: length 8/5/4/3/2/0 at 2500/2000/1500/1000/600/below; assets capped at
+6, images {1:1,2:2,3:4,>=4:6} plus videos {1:1,>=2:2}; short paragraphs 3;
+table of contents 2.
+Links: internal present 5; external present 4; not all external 2.
+URL: permalink length 4 when the URL is 75 characters or fewer.
+Title readability: sentiment 1, power word 1, number 1.
+Score = earned / applicable-max * 100, rounded.
+
+DO NOT soften these to report-only. Density, subheading keyword and the title
+readability tests are scored as above (owner decision, 17 Nov 2026, overriding
+the earlier "never propose a density target" and "headings are claims"
+carve-outs for the score only). The skill still never writes the copy: it
+scores, wugweb-work acts.
+
+SITE MAPPING
+- permalink = the canonical URL path.
+- focus keyphrase = the Notion focusKeyword field (layout-shell proposal), or
+  passed in with --keyword. If none, skip the keyphrase tests and say so.
+- Drop the two WooCommerce tests (product schema, review).
+
+GAPS TO FLAG, NOT GUESS
+- Power words and sentiment need Rank Math's word lists (rankMath.assessor.
+  powerWords), which are not in the JS. Until a list is agreed, score the
+  number test only and mark the other two "needs word list".
+- "keyword not used before" needs a site-wide map of each page's phrase.
+
+HOW TO BUILD
+- New script scripts/score-page.mjs: reads one HTML file and --keyword, reuses
+  the parsing in check-page.mjs, prints per-test points, the total and the
+  grade; --json for the machine form. Node 18, no packages.
+- New section in references/audit.md with this table and the bands.
+- A short audit step in SKILL.md pointing to it, beside the citability score,
+  which stays (it is the AI-answer score; this is the search score).
+- Fixture + test.mjs cases: one page that scores well, one that scores badly.
+- Bump the version, rebuild AGENTS.md and adapters, run validate and test.
+
+Report the files changed, the test output, and any open question.
+```
+
+## Planned: internal-link SEO checks (2026-11-17)
+
+From the four Internal Link Juicer articles (anchor text, silos, link distribution, internal links) and Rank Math's PRO link report, read 14 to 17 Nov 2026. These are SEO audit items, not the score. The audit part already covers orphans, click depth, dead ends, generic anchors, hub backlinks and broken internal links. Net new, proposed for the audit part:
+
+| Check | What | From |
+| --- | --- | --- |
+| anchor-text type mix | classify each internal anchor as exact, partial, branded, generic, naked or image alt; warn when exact match goes over a set share, default 20% | ILJ anchor text, link distribution |
+| silo or cluster coherence | a cluster's supporting pages link to the hub and to each other; a link to another cluster goes to that cluster's hub, not its supporting pages | ILJ silos |
+| redirected internal links | an internal link that lands on a 301 points at the final address instead | Rank Math link report |
+| internal nofollow | flag `rel=nofollow` on an internal link | ILJ internal links |
+| too many links | flag a page over a set link count, default off, a house number, since Google dropped the old 100-link rule | ILJ link distribution |
+| cloaked or external prefix | a path prefix the owner sets, such as `/go/`, counts as external for the mix and the audit | Rank Math |
+
+These stay checks, not writes. Findings go to `wugweb-work` (anchor wording, placement) or a developer (`rel`, redirects). `wugweb-strategy` owns the cluster map; the skill checks the links against it.
+
 ## Works beyond Claude
 
 | Requirement | Plan |
