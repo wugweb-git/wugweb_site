@@ -481,6 +481,57 @@ HOW TO BUILD
 Report the files changed, the test output, and any open question.
 ```
 
+### The build, broken into functions
+
+`scripts/score-page.mjs`, Node 18, no packages. Reuse the HTML parsing in `check-page.mjs`.
+
+Parsing and data:
+
+- `parse(html)` returns `{ title, description, path, body, words, headings, images, links, paragraphs, videos }`. `path` is the canonical URL path; `links` carry `{ href, text, rel, internal }`.
+- The file ships three lists: `POWER_WORDS` (a public power-word list), `AFINN` (the sentiment map, English only), `GENERIC_ANCHORS` (click here, read more, this page).
+
+One function per test, each returning `{ id, points, max, pass, note }`:
+
+| Function | Max | Points when |
+| --- | --- | --- |
+| `keywordInTitle(title, kw)` | 36 | the title holds the phrase |
+| `titleStartsWithKeyword(title, kw)` | 3 | the title begins with the phrase |
+| `keywordInDescription(desc, kw)` | 2 | the description holds the phrase |
+| `keywordInPermalink(path, kw)` | 5 | the slug holds the phrase |
+| `keywordInFirst10pct(body, kw)` | 3 | the phrase is in the opening tenth |
+| `keywordInContent(body, kw)` | 3 | the phrase is in the body |
+| `keywordInSubheadings(headings, kw)` | 3 | the phrase is in any H2 to H6 |
+| `keywordInImageAlt(images, kw)` | 2 | the phrase is in one alt |
+| `keywordDensity(body, kw)` | 6 | 0 below 0.5%, 2 at 0.5 to 0.75%, 3 at 0.76 to 1%, 6 at 1% or more |
+| `keywordNotUsed(kw, siteMap)` | 0 | warning only; needs a site-wide phrase map |
+| `contentLength(words)` | 8 | 8, 5, 4, 3, 2, 0 at 2500, 2000, 1500, 1000, 600, below |
+| `contentAssets(images, videos)` | 6 | images 1 to 1, 2 to 2, 3 to 4, 4 or more to 6, plus videos 1 to 1, 2 or more to 2, capped at 6 |
+| `shortParagraphs(paragraphs)` | 3 | no paragraph over the long-paragraph limit |
+| `hasTOC(html)` | 2 | a table of contents of in-page anchors is present |
+| `linksHasInternal(links)` | 5 | at least one internal link |
+| `linksHasExternal(links)` | 4 | at least one external link |
+| `linksNotAllExternal(links)` | 2 | not every link is external |
+| `permalinkLength(url)` | 4 | the URL is 75 characters or fewer |
+| `titleSentiment(title)` | 1 | the title holds an AFINN word, English only |
+| `titleHasPowerWord(title)` | 1 | the title holds a `POWER_WORDS` word |
+| `titleHasNumber(title)` | 1 | the title holds a digit |
+
+Aggregate and run:
+
+- `score(results)` returns `{ earned, applicable, value, grade }`, where `value` is `round(earned / applicable * 100)` and `grade` is bad at 50 or less, ok at 51 to 80, great over 80. A test with max 0 and the keyphrase tests when no keyphrase is given are left out of `applicable`.
+- `main()` reads `--keyword`, `--host` and `--json`, prints one line per test then the score and grade, and exits 0. A page with no keyphrase runs only the non-keyphrase tests and says so.
+
+### Internal-link checks, broken into functions
+
+For the audit part (a helper beside `check-page.mjs`), each returning findings, never writes:
+
+- `anchorType(text, href, kw, brand, generics)` returns one of exact, partial, branded, generic, naked or image.
+- `anchorMix(links)` returns the percent of each type and warns when exact match goes over the setting, default 20%.
+- `siloCheck(links, clusters)` flags a supporting-to-supporting link across two clusters; a cross-cluster link should hit the other cluster's hub.
+- `tooManyLinks(links, limit)` flags a page over the limit, default off.
+- `redirectedInternal(links, redirects)` flags an internal link that lands on a 301.
+- `internalNofollow(links)` flags `rel=nofollow` on an internal link.
+
 ## Planned: internal-link SEO checks (2026-11-17)
 
 From the four Internal Link Juicer articles (anchor text, silos, link distribution, internal links) and Rank Math's PRO link report, read 14 to 17 Nov 2026. These are SEO audit items, not the score. The audit part already covers orphans, click depth, dead ends, generic anchors, hub backlinks and broken internal links. Net new, proposed for the audit part:
