@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-strategy skill plan, for vetting (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md`: plan for the content-strategy skill (named `wugweb-content` until the owner's rename). Skill card, modes, brief format, boundary and handoff tables, tests, 17 open questions, source gaps. Nothing built.
+
 ### Changed — wugweb-kits plan: links with the other skills, works beyond Claude (2026-11-16)
 - Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 7) gains section 17, the final links with the other skills, and section 18, how the skill is used from GPT, Cursor or another tool and what works only in Claude today.
 
