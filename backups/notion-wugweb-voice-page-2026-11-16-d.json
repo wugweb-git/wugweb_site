@@ -1,0 +1,8 @@
+{
+  "what": "Backup note for the Notion page wugweb-voice before the fourth write (checklist items: skill card status, matrix row, I and we line, one owner question list, routed items decided)",
+  "url": "https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e",
+  "takenAt": "2026-11-16",
+  "note": "The page was not re-fetched for this backup. Its state is the third write, which Notion accepted with no warnings: the top summary as described in backups/notion-wugweb-voice-page-2026-11-16-c.json, and under the heading 'Plan' the same text as docs/skills/wugweb-voice/PLAN.md at git commit db375193, with headings one level lower. The section 'Routed from the wugweb-seo and wugweb-strategy readings' was added to the file after that commit and was never on the page.",
+  "planTextSource": "git show db375193:docs/skills/wugweb-voice/PLAN.md",
+  "summarySource": "backups/notion-wugweb-voice-page-2026-11-16-c.json"
+}
