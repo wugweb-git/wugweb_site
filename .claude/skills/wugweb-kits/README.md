@@ -1,6 +1,6 @@
 # wugweb-kits
 
-Renamed from ui-system-mapper on 2026-11-16; enhancements are planned and not yet made.
+Renamed from ui-system-mapper on 2026-11-16; SKILL.md reconciled 2026-11-17. Wugweb rule files and extra scripts are not yet written (see SKILL.md).
 
 Map a UI to its design system, audit the code against the map, and generate
 component spec sheets from it.

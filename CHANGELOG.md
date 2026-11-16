@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-kits skill: SKILL.md reconciled (2026-11-17)
+
+- Rewrote `.claude/skills/wugweb-kits/SKILL.md` (1,584 words by the shared method): third-person description with triggers, shell summary from `layout-shell.md`, 26 Wugweb rules listed as not yet written, standing-rules block. Added `references/layout-shell.md` and `references/standing-rules.md`; `AGENTS.md` now a single-file export. validate passes.
+
 ### Changed — wugweb-work plan status and version updated (2026-11-17)
 
 Docs only. The wugweb-work plan status now reads 0.4.2 in the repo; the Notion page text was backed up first to `backups/notion-wugweb-work-page-before-2026-11-17.md`.
