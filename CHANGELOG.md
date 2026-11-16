@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-kits plan: 22 owner decisions, development chat on the skill card (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 22) gains section 26, the 22 answers to the open decisions confirmed by the owner (token findings reported only at first, the three media rule readings, version 2.0.0 for the enhanced skill, a pause control on loops longer than 5 seconds, og image 1200 x 630 and others), and two skill card rows: the development chat and the repo plan address. No skill file changed.
+
 ### Changed — wugweb-work plan: skill status (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md` status and skill card now say the skill is built at version 0.4.0 in the owner's development chat and installed in his Claude skills, with evals not run and nothing in the repo yet. Matches the Notion page.
 - `backups/notion-wugweb-work-page-before-2026-11-16-g.md`: the Notion page as it was before this update.

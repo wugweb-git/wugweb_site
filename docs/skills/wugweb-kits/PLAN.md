@@ -1,4 +1,4 @@
-> Plan for vetting, revision 19, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
+> Plan for vetting, revision 22, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
 # wugweb-kits skill: plan
 
@@ -16,6 +16,8 @@
 | Owner | Vedanshu, Wugweb |
 | Planned in session | wugweb-kits (`local_31fbe87e-842d-4d48-a8fb-8b3fe7768756`) |
 | SKILL.md written in session | `cse_01H6F5RsB2d6PFWpQpS932gi` (owner, 2026-11-16: the session where this discussion is converted to SKILL.md) |
+| Development chat | `https://claude.ai/chat/6c433bf2-08a6-8902-be3f-6b6831e4c30a` (given by the owner, 2026-11-16). Not confirmed to be the same chat as the `cse_` id above; both are kept. |
+| Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-kits/PLAN.md` |
 | Lives at | `.claude/skills/wugweb-kits/` |
 | Source of token values | `src/styles/global.css` `:root` |
 | Source of specs | `kits_design_system/docs/` (`tokens/layout-shell.md` is authoritative for the shell) |
@@ -250,6 +252,7 @@ Stays with `wugweb-work`: content rules, lengths, which screens prove which chap
 | 2026-11-16 | `ui-system-mapper` is renamed wugweb-kits and enhanced (first stated as built in) |
 | 2026-11-16 | Six skills: `wugweb-voice`, `wugweb-brand-os`, `wugweb-kits`, `wugweb-work`, `wugweb-strategy`, `wugweb-seo`. No engineering or social skill. |
 | 2026-11-16 | The plan is saved on the Notion page and in the repo |
+| 2026-11-16 | The 22 answers in section 26 are confirmed, including: token findings are reported only at first; the three media rule readings hold; version 2.0.0 for the enhanced skill; a pause control on loops longer than 5 seconds; og image 1200 x 630 |
 
 **Open.**
 
@@ -756,3 +759,34 @@ A spec, not built. The coordinating session sent this list after reading the thr
 **Settled: two max widths, not a clash (2026-11-16).** A point routed from `wugweb-brand-os`: `components.md` gives the nav bar a max width of 1280, while `layout-shell.md` calls 1200 "the only max-width in the shell". These are two different boxes. The 1200 is the content box inside every section. The 1280 is the nav bar's inner container, listed in the same doc's "Width rule" table and set as `max-width: 1280px` in `SiteHeader.astro`. Both docs and the code agree. One wording note for the owner, not a finding: the comment "the only max-width in the shell" sits in the content block and could be read as covering the nav. Proposed: "the only max-width on section content".
 
 **Scope of the 16 by 9 tile rule.** The fixed 16/9 tile ratio in `components.md` belongs to the Client Assembly Grid only. It is not a general rule and is not written into the skill as one.
+
+### 26. Answers to the open decisions, confirmed by the owner
+
+Proposed by the planning session and confirmed by the owner on 2026-11-16 ("Confirm all"). All 22 rows below are now owner decisions. They settle the open items in sections 10, 11, 16, 18 and 23. Confirming them is not the go to build: no skill file is edited until the owner says so.
+
+| # | Decision | Answer (owner, 2026-11-16) | Why |
+|---|---|---|---|
+| 1 | Should serious token findings block a merge? | Report only for the first version. Later, block on a short list: hardcoded colour, z-index, and block CSS outside its own component. | About 369 untokenized px literals exist today; blocking now would stop every build. |
+| 2 | Media rule: resize and masks are done on the page in CSS, not by making new files | Yes | It keeps every file in R2 untouched. |
+| 3 | Media rule: a mask must not hide the part of a screen that proves the claim | Yes | The screen is evidence. |
+| 4 | Media rule: showing a file larger than its natural size is a quality flag, not a ban | Yes | A soft image is reported and the owner decides. |
+| 5 | Version after the rename | 2.0.0 for the enhanced skill. The renamed copy stays 1.0.0 until then. | The mapper is already 1.0.0; a rename with added scope is a major change. |
+| 6 | Loops that play by themselves | Loops stay 15 seconds or less. Any loop longer than 5 seconds gets a pause control. All loops stop under reduced motion. | Two helper skills and the accessibility guidance ask for it. |
+| 7 | Og image size | 1200 x 630, key content in the central 80% | Read directly from LinkedIn Help by the coordinating session. |
+| 8 | Other made-file sizes | As in section 21. Behance cover and story safe zone stay marked unverified until the owner gives figures. | No official page confirmed them. |
+| 9 | Hero copy limit | The `wugweb-work` figure stands: subtitle 90 characters or fewer. The helper's "20 words" is dropped. | Copy limits belong to `wugweb-work`; kits only states the limit in the wording slot. |
+| 10 | Home of the skill | Repo first. Upload to the Claude app only after the enhancement passes its evals. | One copy to keep true. |
+| 11 | Does the generic mapper core stay usable on other projects? | Yes. Wugweb parts live in their own rule groups (`shell`, `label`, `kits`, `media`, `motion`, `a11y`). | MusicLinkd and client work can use the core. |
+| 12 | The installed `ui-system-mapper` | Keep it until the enhancement passes. Then the owner decides whether to retire it. | It is still the generic tool for other projects. |
+| 13 | Where rules live | The design-system docs are the source; the skill points to them (section 24). | One home per rule. |
+| 14 | Severity list | The mapper's scale. Blocker: hardcoded colour, z-index, a retired shell value, a section with no id or name. High: layer skips, missing states, block CSS outside its component. Medium: spacing px literals, alias chains. Low: one-use component tokens. | It follows the mapper's own audit table. |
+| 15 | `system-map.json` | Generated, committed at `kits_design_system/system-map.json`, never edited by hand. | The docs and `global.css` stay the source. |
+| 16 | Layer skips and alias chains already in the code | Report only. No clean-up pass until the owner asks. | Nothing is refactored without a yes. |
+| 17 | Five blocks awaiting sign-off | Treated as drafts until the owner signs each off. | `components.md` marks them so. |
+| 18 | The `/kits` showcase page and Storybook | Engineering work under `CLAUDE.md`. Kits supplies the specs they show. | Kits edits no code. |
+| 19 | `SKILL.md` body length | Move the mapper's long phase text into references to make room for the core summary. Keep the body at 2,000 words or fewer. | Other tools may not load reference files. |
+| 20 | Rendered-page checks outside Claude | By hand for the first version. No headless browser dependency yet. | A new dependency needs its own decision. |
+| 21 | One definition of the four words | Primitive: a layer 4 structure class such as `.wrap` or `.btn`. Component: a layer 5 named part with its own file. Pattern: a reusable arrangement specified once and used inside blocks, such as the rail or the viewer. Block: a layer 6 section-level composition with its own block doc. | `widgets.md`, `components.md` and `blocks/` use them loosely today. |
+| 22 | Desktop columns for the All screens grid | 6 columns for phone screens, 3 for desktop screens, at 1200 | A starting figure only; to be checked on the NTUC page. |
+
+**Still open, with no proposal.** The path of the shared standing-rules file (it belongs to the coordinating session). Fixed type sizes per format for decks and cards. Whether to fix the wording "the only max-width in the shell" in `layout-shell.md`.
