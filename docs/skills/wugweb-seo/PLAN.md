@@ -309,7 +309,7 @@ They add tooling or data, or repeat what the skill already holds. No part depend
 
 ### Passed to other skills
 
-Sent to the coordinating session as "FOR" lines: 12 for `wugweb-work`, 9 for `wugweb-strategy`, 8 for `wugweb-kits`, 3 for `wugweb-brand-os`, 2 for `wugweb-voice`.
+Sent to the coordinating session as "FOR" lines: 12 for `wugweb-work`, 9 for `wugweb-strategy`, 6 for `wugweb-kits`, 3 for `wugweb-brand-os`, 2 for `wugweb-voice`.
 
 ### What was not read
 
