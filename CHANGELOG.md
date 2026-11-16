@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: link targets decided (2026-11-16)
+- Docs only. Decision 20 in `docs/skills/wugweb-strategy/PLAN.md` is replaced to match `wugweb-seo` 2.2.1: this skill sets the pillar and cluster structure; `wugweb-seo` picks each brief's link targets, owns the link rules and audits. Brief field 10, the proof map row, the handoff contract and the matrix row follow; question 23 added. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-link-targets-2026-11-16.json`.
+
 ### Added — shared owner's standing rules for the Wugweb Skill System (2026-11-16)
 - Docs only. `docs/skills/STANDING-RULES.md`: the owner's standing rules in one file that every skill reads (truth and evidence, sources and approval, media, writing, working with the owner, limits, the skill system, git). Merged from the registry's list and the wugweb-work plan; no skill's own rules restated.
 

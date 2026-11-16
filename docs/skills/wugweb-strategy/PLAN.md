@@ -53,6 +53,7 @@
 - Content models.
 - Deciding what gets refreshed or retired.
 - Deciding which case studies back which service page or article.
+- The pillar and cluster structure that each piece and its links sit inside.
 - Campaign plans, including a launch spread over several posts.
 - Repurposing plans: which pieces, in what order, and which form suits which piece and platform.
 - Client co-posts and partner tagging, as a plan.
@@ -171,7 +172,7 @@ Sanity schema changes are development and an owner decision. This skill only pro
 | 7 | Piece structure | Pointer to one structure |
 | 8 | Points the piece must make | Up to five; no headings, no copy |
 | 9 | Search block | Pasted from `wugweb-seo` unchanged: keyword, intent, questions |
-| 10 | Links | Which service pages, posts and case studies it links to. Strategy picks the targets; `wugweb-seo` owns the link rules (decision 20). |
+| 10 | Links | Pasted from `wugweb-seo` unchanged, like the search block: the link targets for this piece, picked inside the pillar and cluster structure this skill sets (decision 20). |
 | 11 | Source | Notion row; for a refresh, the keep, change and remove list |
 | 12 | Must not say | Permissions, sensitive clients |
 | 13 | Account and platform | Where it goes out: one of the accounts in scope (decision 13) |
@@ -198,7 +199,7 @@ Work returns the finished piece as a proposal, with a note of where it left the 
 | Editorial standards | Body format and quality gate stay in work | On-page rules stay in seo | Brand rules cover identity, not publishability |
 | Content models | Body Content grammar stays in work | Schema markup stays in seo | Not a brand matter; Sanity schema stays with engineering rules |
 | Refresh or retire | Work does the rewrite | Seo supplies the audit; the decision weighs more than rank; seo decides what a retired URL does (decision 7) | None |
-| Proof map | Work picks screens inside a case study, not which case study | Internal-link rules stay in seo | None |
+| Proof map | Work picks screens inside a case study, not which case study | Link targets and link rules stay in seo; the proof map is an input it reads | None |
 | Campaign and repurposing plans | Work makes each form | Not a search matter | Art direction for a campaign stays in brand-os |
 | Form per piece and platform | Platform specs and how each form is built stay in work | Not a search matter | None |
 | Co-posts and partner tagging, as a plan | Work writes the post and tags | Not a search matter | None |
@@ -210,7 +211,7 @@ Work returns the finished piece as a proposal, with a note of where it left the 
 | Skill | Goes in | Comes out | Strategy may not |
 |---|---|---|---|
 | `wugweb-work` | A brief | A finished piece and a return note; post results | Write or edit copy, choose screens, set layout, publish. Work's Brief mode is for client work only (decision 4). |
-| `wugweb-seo` | Topic or URL list; retire proposals | Keyword and intent notes; audit data for review, including the position and click-rate signals used for refresh decisions; what a retired URL does; the link rules and the link audit | Change keywords, titles, link rules, on-page rules or what a retired URL does |
+| `wugweb-seo` | Topic or URL list; retire proposals; the pillar and cluster structure; the proof map | Keyword and intent notes; audit data for review, including the position and click-rate signals used for refresh decisions; what a retired URL does; each brief's link targets, the link rules and the link audit | Change keywords, titles, link targets, link rules, on-page rules or what a retired URL does |
 | `wugweb-brand-os` | A request for audiences, messages, positioning | Those, as written | Restate or alter them |
 | `wugweb-voice` | No direct link. The brief names audience, purpose and form; `wugweb-work` passes those to voice with the draft | Nothing | Set tone or phrasing in a brief or in the editorial standards |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
@@ -387,11 +388,13 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 17. **The name.** `wugweb-strategy` means content strategy only.
 18. **Starting numbers.** All left blank, marked "owner to set", until there is a baseline. Pillars are six (decision 2).
 19. **Newsletter.** In scope. Sending needs the owner's yes.
-20. **Internal links in a brief.** `wugweb-strategy` decides which pages and case studies a piece links to (the proof map and the links field in the brief); `wugweb-seo` owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result. The same wording goes in the `wugweb-seo` plan.
+20. **Internal links in a brief.** `wugweb-strategy` sets the pillar and cluster structure; `wugweb-seo` picks each brief's link targets inside it, owns the link rules and checks the links in the audit. The proof map stays here as the record of which case study backs which page, and `wugweb-seo` reads it when picking targets. This replaces the earlier split.
 21. **Editorial stance.** `strategy.md` holds one sentence on what Wugweb publishes, for whom, to what end, and how it differs from what else is out there. It is built from the positioning in `wugweb-brand-os` and never restates or changes it.
 22. **Fields on the published document.** None. Pillar and review date stay on the plan database. No Sanity schema change.
 
-**Still to match in two other plans.** In the `wugweb-work` plan: its Brief mode is for client work only (decision 4). In the `wugweb-seo` plan: it decides what a retired URL does (decision 7), and the internal-links split goes in with the same wording (decision 20).
+**Still to match in two other plans.** In the `wugweb-work` plan: its Brief mode is for client work only (decision 4). In the `wugweb-seo` plan: it decides what a retired URL does (decision 7). The link-target wording (decision 20) already matches the installed `wugweb-seo` 2.2.1.
+
+**One open question.** 23. If the proof map names a case study as backing a page but the link targets `wugweb-seo` picks for a brief leave it out, or name a different one, which wins?
 
 ## Source gaps
 
@@ -409,9 +412,9 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 
 - **Owns:** Content strategy only: pillar mix, topics, the editorial and social calendar, briefs, per-piece structures, editorial standards, content models, the proof map, refresh or retire decisions, campaign and repurposing plans, and the post-performance read for planning.
 - **Reads (sources):** Notion Blogs, Case Studies and Publications; Sanity service documents; the case-study inventory in docs/research; brand_guidelines; the registry. All read only.
-- **Gives to:** `wugweb-work`: one-page briefs, the calendar by account and date, the proof map, repurposing and campaign plans, refresh or retire decisions. `wugweb-seo`: topic and URL lists to research or audit; retire proposals.
-- **Takes from:** `wugweb-brand-os`: positioning, audiences, messaging framework. `wugweb-seo`: keyword, intent and audit notes, with position and click-rate signals for refresh decisions. `wugweb-work`: finished pieces, return notes, post results. `wugweb-voice` and `wugweb-kits`: nothing directly; `wugweb-work` reads them.
-- **Never does:** Writes or edits any piece; publishes; redefines positioning, audiences or messaging; sets voice, keywords, titles, link rules, layout or tokens; changes Sanity schema; decides what a retired URL does; writes to Notion or Sanity without approval and backup; deletes anything.
+- **Gives to:** `wugweb-work`: one-page briefs, the calendar by account and date, the proof map, repurposing and campaign plans, refresh or retire decisions. `wugweb-seo`: topic and URL lists to research or audit; retire proposals; the cluster structure and proof map.
+- **Takes from:** `wugweb-brand-os`: positioning, audiences, messaging framework. `wugweb-seo`: keyword, intent, link-target and audit notes, with position and click-rate signals for refresh decisions. `wugweb-work`: finished pieces, return notes, post results. `wugweb-voice` and `wugweb-kits`: nothing directly; `wugweb-work` reads them.
+- **Never does:** Writes or edits any piece; publishes; redefines positioning, audiences or messaging; sets voice, keywords, titles, links, layout or tokens; changes Sanity schema; decides what a retired URL does; writes to Notion or Sanity without approval and backup; deletes anything.
 
 ## Change log
 
@@ -426,3 +429,4 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 | 2026-11-16 | Link-target split with `wugweb-seo` recorded as proposed (question 20). Refresh signals from `wugweb-seo` named in the handoff and matrix row. One routed row added. Editorial stance proposed (question 21). |
 | 2026-11-16 | "Content model: planning fields" added from the kits docs: which proposed CMS fields are planning fields, and the five blocks awaiting sign-off. Question 22 added. The signal log of readers' own words kept here; `wugweb-voice` reads it. |
 | 2026-11-16 | Open questions 1 to 22 answered by the owner and recorded as decisions. Brief fields 10, 13, 14 and 15, the refresh row, the handoff contract, the planning fields and the matrix row updated to match. Old content calendar read: starter template rows only, nothing moved. |
+| 2026-11-16 | Decision 20 replaced (owner, as recorded in `wugweb-seo` 2.2.1): this skill sets the pillar and cluster structure; `wugweb-seo` picks each brief's link targets. Brief field 10, the proof map row, the handoff contract and the matrix row updated. Question 23 added. |
