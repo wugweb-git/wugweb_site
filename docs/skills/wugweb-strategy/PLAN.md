@@ -9,7 +9,7 @@
 | Name | `wugweb-strategy` |
 | Type | Claude Code project skill: one `SKILL.md` plus `references/`, `examples/`, `evals/` |
 | Version | 0.1.0 (planned) |
-| Status | Plan ready for vetting. Not built. |
+| Status | v0.1.0 built. Master copy in `.claude/skills/wugweb-strategy/`. |
 | Notion page | https://app.notion.com/p/41abb710b9ab8187a4a8c5979daff39b (the plan sits on the skill page itself) |
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-strategy/` |

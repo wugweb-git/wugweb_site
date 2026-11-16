@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-strategy skill v0.1.0, master copy in the repo (2026-11-17)
+- `.claude/skills/wugweb-strategy/`: the 19 app files copied unchanged, plus `AGENTS.md` (single-file export for other tools, with the standing rules block copied from `docs/skills/STANDING-RULES.md`). Plan status line updated. Six known differences from the plan rulings are listed for the owner, not applied.
+
 ### Added — wugweb-seo skill, master copy in the repo (2026-11-17)
 - `.claude/skills/wugweb-seo/`: the 21 files of version 2.4.0 copied unchanged from the Claude app copy (checked for secrets and personal data: none). Claude Code in this repo loads it directly. Edits follow in a separate commit.
 
