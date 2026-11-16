@@ -1,0 +1,11 @@
+{
+  "what": "Backup note for the Notion page wugweb-voice before the eighth write (stale status and real copy lines corrected)",
+  "url": "https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e",
+  "takenAt": "2026-11-17",
+  "note": "The page was fetched just before this write (49,440 characters, no duplication). Only the three lines below change; nothing else is removed. Full fetch saved outside the repo in the session tool results.",
+  "linesBefore": [
+    "Top skill card, Status: Plan ready for vetting. Skill development started on 2026-11-16 in the development chat: a draft 0.1.0 exists, structure only. No approved writing samples yet.",
+    "Plan section 1, Status: Plan ready for vetting. Skill development started on 2026-11-16 in the development chat: a draft 0.1.0 exists, structure only. No approved writing samples yet, so no rule drawn from samples exists.",
+    "Plan section 1, Real copy: <code>.claude/skills/wugweb-voice/</code> in the repo (owner, 2026-11-16: \"The full folder\"). 16 files. Not committed yet."
+  ]
+}

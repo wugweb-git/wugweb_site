@@ -12,8 +12,8 @@
 | Family | Wugweb Skill System |
 | Development chat | https://claude.ai/chat/942cbd9e-e68d-4679-9923-ef4e030440d8 |
 | Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-voice/PLAN.md` |
-| Status | Plan ready for vetting. Skill development started on 2026-11-16 in the development chat: a draft 0.1.0 exists, structure only. No approved writing samples yet, so no rule drawn from samples exists. |
-| Real copy | `.claude/skills/wugweb-voice/` in the repo (owner, 2026-11-16: "The full folder"). 16 files. Not committed yet. |
+| Status | Plan ready for vetting. Skill development started on 2026-11-16 in the development chat: a draft 0.2.0 exists, structure and method only. No approved writing samples yet, so no rule drawn from samples exists. |
+| Real copy | `.claude/skills/wugweb-voice/` in the repo (owner, 2026-11-16: "The full folder"). Draft 0.2.0, 51 files, on `main` since commit `8ebe7693`. Its own tests pass. |
 | Other copy | A one-file install in the Claude app on the owner's Mac: the same `SKILL.md` body with a shorter description, and none of the reference files, scripts, evals or export it points to. Not the source. |
 | Lives in | `~/.claude/skills/wugweb-voice/` proposed, so every project sees it. CONFIRM |
 | Covers | How Wugweb and Vedanshu write and speak: voice, tone, phrasing, structure |
