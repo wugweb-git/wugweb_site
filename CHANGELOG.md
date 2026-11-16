@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: matrix entry trimmed, stale reference fixed (2026-11-16)
+- Docs only. In `docs/skills/wugweb-strategy/PLAN.md` the matrix row's "Never does" entry is back to 40 words, and "(question 21)" in the absorbed table now reads "(decision 21)". Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-matrix-trim-2026-11-16.json`.
+
 ### Changed — wugweb-kits plan: 22 owner decisions, development chat on the skill card (2026-11-16)
 - Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 22) gains section 26, the 22 answers to the open decisions confirmed by the owner (token findings reported only at first, the three media rule readings, version 2.0.0 for the enhanced skill, a pause control on loops longer than 5 seconds, og image 1200 x 630 and others), and two skill card rows: the development chat and the repo plan address. No skill file changed.
 
