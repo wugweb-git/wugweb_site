@@ -72,13 +72,13 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 - [ ] NTUC inputs: results with source and date, live URL, number of programme-builder steps, heading typeface.
 - [ ] Social, still open: who uploads to Behance and Dribbble; where made files are kept before posting; whether a Dribbble shot may sit a screen on a plain canvas; whether Postiz is connected and to which accounts. (Accounts in scope, linked pages and client permission were settled on 2026-11-16; see Owner decisions.)
 - [ ] Medium is now an account in scope: is it a form of its own, or the blog post reposted as is?
-- [ ] Media rule, three readings to confirm: resize and masks mean display on the page, not new files; a mask must not hide the part of a screen that proves the claim; a file shown larger than its natural size is flagged when soft, not banned.
-- [ ] Should token-check findings block a merge, or only be reported?
+- [x] Media rule: the three readings are confirmed (2026-11-16; see Owner decisions).
+- [x] Token-check findings: reported only at first; blocking comes later, on a short list (2026-11-16).
 - [x] Client-work brief: settled 2026-11-16. Brief mode is for client work only; it is written inside this skill.
 - [ ] The sizes wanted for og image, story, and Behance and Dribbble covers. The installed skills disagree (og 1200 by 630 in one, 1200 by 628 in another; story safe zones differ) and none gives Behance or Dribbble cover sizes.
-- [ ] Hero copy limit: this plan sets the subtitle at 90 characters or fewer; `wugweb-kits` proposes a headline of 2 lines or fewer and subtext of 20 words or fewer. Pick one.
+- [x] Hero copy limit: settled at 90 characters (2026-11-16). The earlier question: this plan sets the subtitle at 90 characters or fewer; `wugweb-kits` proposes a headline of 2 lines or fewer and subtext of 20 words or fewer. Pick one.
 - [ ] May LinkedIn posts carry a few specific tags, or none? The plan says none; `wugweb-seo` proposes a few.
-- [ ] Confirm the proposed sizes for made files (in the Forms module).
+- [ ] Confirm the proposed sizes for Behance cover, Dribbble shot and story canvas (og is settled at 1200 x 630).
 
 **Reading the rest of this page.** Everything below is the full plan as written while `wugweb-work` was the only skill. The decisions above win where an older line disagrees. Parts that now belong to a sibling skill (writing style to voice; layout grammar and adaptive UX to kits; schema to seo; art-direction rules to brand-os; forms planning to strategy) stay here until that skill's plan is approved, then move.
 
@@ -149,7 +149,7 @@ Found by the coordinating session on 2026-11-16 and kept on the registry; not ch
 
 | File | Size | Source and standing |
 |---|---|---|
-| Link share image (og) | 1200 x 630 | LinkedIn Help, read directly: at least 1200 x 627, ratio 1.91:1, 5 MB at most |
+| Link share image (og) | 1200 x 630 | LinkedIn Help, read directly: at least 1200 x 627, ratio 1.91:1, 5 MB at most. Settled by the owner, 2026-11-16. |
 | Behance cover | Upload at least 808 x 632; shown at 202 x 158 | Behance Help Center as reported by search; figures date from 2020; the page was not read directly |
 | Dribbble shot | At least 1600 wide, no fixed ratio; PNG, JPG or GIF up to 10 MB, video up to 20 MB | Dribbble Help Center, read directly; 1600 x 1200 is convention only |
 | Story canvas | 1080 x 1920 | Safe zone unverified: no official page confirms it. Guides range from 250 px top and bottom to 270 px top, 670 px bottom and 6% at the sides; use the wider margins |
@@ -223,7 +223,7 @@ Read from `kits_design_system/docs/tokens/layout-shell.md`, `tokens/sizing.md` a
 - **Structure.** Page, section, content, blocks. The section owns the gutter and the content owns the maximum width. A block plan never sets its own gutter or width.
 - **Headings.** Every section needs an id and an accessible name, so every chapter in a body needs a real heading. One h1 per page; no skipped levels.
 - **Filters** sit inside the grid they filter, never as a section of their own.
-- **Media.** Alt always, empty only when decorative. Decorative muted loops are hidden from screen readers. Media with a caption is a figure with a figcaption.
+- **Media.** Alt always, empty only when decorative. Decorative muted loops are hidden from screen readers. Media with a caption is a figure with a figcaption. A loop longer than 5 seconds gets a pause control (owner, 2026-11-16; the rule is held by wugweb-kits).
 - **First screen.** On a 390 x 844 phone the headline, subhead and primary action are visible without scrolling.
 - **Actions.** One yellow conversion action per page; labels describe the action. Yellow stays under 10% of the page.
 - **Existing blocks** (Service Spotlight Panel, Client Assembly Grid, Service Tag Field, Bento Block, Process Map) are all awaiting the owner's sign-off. The bento on `/work/[slug]` is the layout this plan replaces.
@@ -469,6 +469,11 @@ So the need is a standard and a procedure, not another page design.
 | 2026-11-16 | Accounts in scope: the Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out. |
 | 2026-11-16 | A post waits until the page it links to is live. No client is named or tagged without permission. |
 | 2026-11-16 | The newsletter is in scope. Sending needs the owner's yes. |
+| 2026-11-16 | Media rule readings confirmed: resize and masks are done in CSS only, never as new files; a mask must not hide the part of a screen that proves the claim; a file shown above its natural size is flagged, not banned. |
+| 2026-11-16 | Token-check findings are reported only at first; blocking comes later, on a short list. |
+| 2026-11-16 | The hero subtitle limit is 90 characters. |
+| 2026-11-16 | The og image is 1200 x 630. |
+| 2026-11-16 | A loop longer than 5 seconds gets a pause control (a `wugweb-kits` rule). |
 
 Where an older line further down disagrees with this table, the table wins.
 
@@ -554,7 +559,7 @@ The page is never one fixed composition. It adapts along seven lines, and each l
 | Content depth | Rich body, thin text-only body, and no body each get a complete page. A chapter with no media is prose; a media-only chapter is allowed. Results, quotes and credits appear only when they exist. | Labelly (thin), Bodyshop (no body) previews |
 | Kind of work | Product UI, brand identity, campaign and stats-led, multi-workstream. Screens group by audience, then flow; device mockups are support, never the proof. | Archetype table + NTUC, ToT Bridal, Airtel, Animal Writes |
 | Volume | 3 screens or 200. A chapter shows only its proof screens; the rest go to one All screens block with sets, thumbnails and a viewer. | NTUC (31), IndusNinja, MusicLinkd skeleton |
-| Device | 375, 768, 1200. One column on phone, rails that show the next item, targets of 44 px or more, nothing wider than its natural size, no sideways page scroll. Mobile is the PWA. | Gate at 375 / 767 / 768 / 769 / 1199 / 1200 / 1201 |
+| Device | 375, 768, 1200. One column on phone, rails that show the next item, targets of 44 px or more, a file shown above its natural size is flagged, no sideways page scroll. Mobile is the PWA. | Gate at 375 / 767 / 768 / 769 / 1199 / 1200 / 1201 |
 | Capability and conditions | Works without JavaScript (all content in server HTML). Reduced motion stops loops and reveals. Videos are muted and load only when near. Heavy pages stay under the 25 MB budget by showing less at first, not by resizing files. | No-JS check, reduced-motion check, byte total per page |
 | Client identity | One accent colour per client, taken from their own palette, contrast-checked, used for rules and numerals only. The Wugweb system stays the frame. | Contrast check on every accent |
 
@@ -601,7 +606,7 @@ These two changes win over any older line in this plan.
 | Cropping the file, re-encoding, uploading, local copies | Not allowed | Still not allowed. Media stays in R2 as the owner put it there. |
 | Sound | None | None. |
 
-How this is read in the plan (Claude's reading, not yet confirmed by the owner): resizing and masks are done on the page (CSS), not by making new files. A mask must not hide the part of a screen that proves the claim. The earlier "never upscale" line becomes a quality check: a file shown larger than its natural size is flagged when it looks soft; it is no longer banned.
+How this is read in the plan (confirmed by the owner, 2026-11-16): resizing and masks are done on the page (CSS), not by making new files. A mask must not hide the part of a screen that proves the claim. The earlier "never upscale" line becomes a quality check: a file shown larger than its natural size is flagged when it looks soft; it is no longer banned.
 
 **2. Scope, widened.** The skill now also covers blog posts, service pages and site-wide SEO, in addition to client work.
 
@@ -917,7 +922,7 @@ D4. Previews in the pane (dev server via `preview_start`, port 4321) at 375 / 76
 | Layout | Block-plan fixtures for 8 case studies | Plan matches the checked-in fixture; no block outside the catalogue |
 | Writing style | Evals 1 to 4 | No banned word, no dash, no unbacked claim, claim headings, lengths in range |
 | SEO and schema | Gate script on the preview with the canonical host | Title 60 or fewer, description 140 to 160, canonical self, WebPage + CreativeWork + BreadcrumbList, no FAQPage |
-| Page gate | Gate script at 375, 767, 768, 769, 1199, 1200, 1201 | One h1, no skipped level, every image with alt and size, no sideways scroll, nothing upscaled or cropped, all video muted, under 25 MB |
+| Page gate | Gate script at 375, 767, 768, 769, 1199, 1200, 1201 | One h1, no skipped level, every image with alt and size, no sideways scroll, nothing cropped, a file shown above its natural size flagged when soft, all video muted, under 25 MB |
 | End to end | One case study from audit to preview | Output matches the approved proposal; nothing written without approval |
 
 **Open owner decision:** should serious findings from the token check (hardcoded colour, spacing and the like in `src/components/work/`) block a merge, or only be reported? Until decided: report only; the existing prebuild CSS guard stays the one blocking check.
@@ -929,7 +934,7 @@ D4. Previews in the pane (dev server via `preview_start`, port 4321) at 375 / 76
 | Audit | Every file measured and looked at close up; every claim marked backed or unbacked; findings listed with numbers that were computed, not estimated. |
 | Body proposal | One copy; claim headings; every screen captioned; every own-folder file accounted for; owner questions listed; nothing written to Notion. |
 | Owner approval | The owner has approved that exact text. Only then is the Notion row written, with a backup first. |
-| Page | Gate passes at 375, 768 and 1200: one h1, no skipped headings, every image with alt and size, no dashes, no sideways scroll, nothing upscaled or cropped, all media muted, under the weight budget. |
+| Page | Gate passes at 375, 768 and 1200: one h1, no skipped headings, every image with alt and size, no dashes, no sideways scroll, nothing cropped, a file shown above its natural size flagged when soft, all media muted, under the weight budget. |
 | Skill v0.1 | With-skill runs pass every eval check the baseline fails, on 5 prompts; the owner has no open feedback. |
 
 ## Owner inputs (not blockers for building; needed before the matching step)
@@ -953,14 +958,14 @@ Additions the audit forces (not in the plan before):
 2. Device mockups are their own kind (`mockup`). Rule: at most 2 per page, never the only evidence in a chapter, never the hero when a project-specific visual exists; real screens lead.
 3. States recipe. Error, ineligible, declaration and success screens form a "what happens when it goes wrong" set: a `states` rail with the state as caption.
 4. Process from screens. The admin workflow (Submission → Document verification → Eligibility check → Reward rule → Award disbursement) is visible in the screens: the visual read may propose a `timeline`/steps block with the screen that proves each step.
-5. Never upscale. No media renders wider than its natural width (417 px palette shown at about 580 px; 600 px video stretched to 1184 px today). Small files get a contained cell.
+5. Upscaling is flagged, not banned (owner, 2026-11-16): a file shown above its natural size is flagged when it looks soft (417 px palette shown at about 580 px; 600 px video stretched to 1184 px today). Small files get a contained cell.
 6. Rail items fit the viewport: width ≤ 85vw on mobile (today 743 px and 996 px items on a 375 px screen, so no screen can be seen whole).
 7. Video dedup and length gate verified: `ntuc-solution.mp4` (600×334) is a low-res copy of `NTUC_Solution.mp4` (2730×2048): prefer the larger, mark the other `dupOf`. `Design_Philosophy.mp4` is a 152.8 s film, today looping inside the rail. **Owner rule (2026-11-11): no sound anywhere; all media is muted and voiceless.** Every `<video>` renders `muted` with no unmute control (a long video gets a play/pause button only, never native volume controls). This replaces "story video with controls and captions" everywhere in this plan, and the visual read's `audio` field becomes a report-only fact. A video > 15 s never loops in a rail: it is a muted click-to-play video in its own chapter, or stays off the page when a short cut of it already exists (NTUC: `ntuc-about.mp4` is a 5.5 s cut of the film, so the film stays off).
 8. Placeholder and sample data inside screens. Lorem ipsum and a team member's name, email and phone appear in screens. **Owner rule (2026-11-11): identify whether a flagged screen is critical before hiding it.** Critical = the only proof of a flow, step or feature: it stays and the flag is recorded. Not critical = another screen proves the same thing: hidden by default, kept in R2 and Notion, listed in the audit.
 8b. Cover and hero picks are Claude's call (owner: "you have it all, decide"), made from `heroScore` across body and folder files and reported in the proposal with the reason.
 9. One copy per body. NTUC carries a short copy and a long "Sanity site copy" of the same story, and "Impact" in one is "Conclusion" in the other. The v2 proposal collapses to one copy; the parser keeps the v1 branch for unconverted bodies.
 10. Entity and spelling consistency check in the audit: client vocabulary wins ("Programmes"), en-GB throughout, one spelling per entity (Icube vs iCube).
-11. Styles pair stays an image pair, 50:50, native ratio, never upscaled (earlier owner rule). The visual read only reads its values (NTUC: #EA1828, #FE950C, #E8E8E8, #F5F5F5, #FFFFFF; Open Sans) to propose `Accent` and to write the alt text.
+11. Styles pair stays an image pair, 50:50, native ratio, flagged if shown above its natural size (owner, 2026-11-16). The visual read only reads its values (NTUC: #EA1828, #FE950C, #E8E8E8, #F5F5F5, #FFFFFF; Open Sans) to propose `Accent` and to write the alt text.
 
 ## How the NTUC audit and proposal were done (the skill's procedure, as actually run)
 

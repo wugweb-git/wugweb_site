@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan: five owner decisions settled (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md`: the three media-rule readings confirmed (so "never upscale" becomes a flag, not a ban, in five places), token findings reported only at first, hero subtitle at 90 characters, og image 1200 x 630, pause control on loops over 5 seconds as a pointer to `wugweb-kits`. Open list trimmed. Matches the Notion page.
+- `backups/notion-wugweb-work-page-before-2026-11-16-h.md`: the Notion page as it was before this update.
+
 ### Changed — wugweb-strategy plan: matrix entry trimmed, stale reference fixed (2026-11-16)
 - Docs only. In `docs/skills/wugweb-strategy/PLAN.md` the matrix row's "Never does" entry is back to 40 words, and "(question 21)" in the absorbed table now reads "(decision 21)". Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-matrix-trim-2026-11-16.json`.
 
