@@ -41,7 +41,7 @@ interface Compiled {
 
 /** Never redirected, and never made to wait for rules. Keep in step with the
  *  copy in sanity/schemaTypes/redirect.ts, which refuses them as sources. */
-const RESERVED_PREFIXES = ['/api', '/assets', '/_astro'];
+const RESERVED_PREFIXES = ['/api', '/assets', '/_astro', '/admin'];
 const RESERVED_EXACT = ['/sitemap.xml', '/robots.txt'];
 
 export function isReservedPath(pathname: string): boolean {

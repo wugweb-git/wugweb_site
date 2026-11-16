@@ -24,6 +24,7 @@ Allow: /
 
 Disallow: /cgi-bin/
 Disallow: /api/
+Disallow: /admin
 
 # Error, system and redirect-only routes. These are excluded from sitemap.xml
 # for the same reason.

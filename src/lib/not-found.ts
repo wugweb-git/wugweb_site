@@ -25,7 +25,7 @@ export const MAX_PATH_LENGTH = 200;
 const BOT_RE = /bot|crawl|spider|slurp|curl|wget|python|httpclient|go-http|java\/|headless|lighthouse|scan|monitor|facebookexternalhit|axios|node-fetch|okhttp|libwww|preview/i;
 const ASSET_RE = /\.(png|jpe?g|gif|webp|avif|svg|ico|bmp|css|js|mjs|map|woff2?|ttf|otf|eot|mp4|webm|mov|mp3|wav|pdf|zip|gz|xml|txt|json|webmanifest)$/i;
 const SCAN_RE = /(^|\/)(wp-(admin|login|content|includes|json)|wordpress|xmlrpc|phpmyadmin|pma|cgi-bin|vendor\/phpunit|actuator|boaform|owa|ecp|autodiscover|hnap1)(\/|$)|\.(php\d?|asp|aspx|jsp|cgi|env|git|svn|sql|bak|old|ini|ya?ml|log|ds_store)(\/|$)|\/\.(env|git|aws|ssh|htaccess|htpasswd|vscode)/i;
-const RESERVED_RE = /^\/(api|assets|_astro)(\/|$)/i;
+const RESERVED_RE = /^\/(api|assets|_astro|admin)(\/|$)/i;
 
 /** Should this 404 be recorded at all? */
 export function shouldLog(path: string, userAgent: string | null | undefined): boolean {

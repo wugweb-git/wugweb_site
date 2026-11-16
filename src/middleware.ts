@@ -149,6 +149,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
+  // Embedded Studio: never indexed, whatever the host.
+  if (url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+
   response = withSecurityHeaders(response);
 
   const isHtml = (response.headers.get('Content-Type') || '').includes('text/html');
