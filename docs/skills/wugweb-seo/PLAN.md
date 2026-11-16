@@ -12,6 +12,8 @@
 | Alignment plan | Ready for the owner's vetting, 2026-11-16. Written by the wugweb-seo planning session. |
 | Installed copy | 2.2.1. `SKILL.md` on this machine last saved 16 Nov at 23.12, with the full folder of 21 files. Version 2.2.0 applied the ten changes listed below; 2.2.1 records two owner decisions. The owner saves the real skill in session `cse_01UQ9TRqokKf1xMCS1JD3brM`, which the planning session cannot open. |
 | Planned in session | wugweb-seo |
+| Development chat | https://claude.ai/chat/ed3a2346-688c-8096-9572-f2cfe891cfd4 |
+| Repo plan | https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-seo/PLAN.md |
 
 ## What it owns
 
