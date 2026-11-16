@@ -29,7 +29,7 @@
 |---|---|
 | Skill | `wugweb-work`, one of six in the Wugweb Skill System |
 | The question it answers | How is each piece made? |
-| Status | Skill built in the owner's development chat: version 0.4.0, installed in the owner's Claude skills (as reported by that chat on 2026-11-16; not seen by the planning session). Its 14 evals are written but not run. Not yet in the repo. The site build (Part 2) is not started. |
+| Status | Skill built in the owner's development chat and installed. Master copy in the repo since 2026-11-17 at `.claude/skills/wugweb-work/`, version 0.4.2 (SKILL body 1,831 words by the shared count; validate 26 checks, 0 errors; test passes). The 14 evals are written but not run, and the evals folder is not in the repo copy. The app copy is behind 0.4.2 and the owner re-saves it. The site build (Part 2) is not started. |
 | Planned in session | wugweb-work |
 | Will live at | `.claude/skills/wugweb-work/` |
 | Registry | Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298) |
@@ -381,8 +381,8 @@ For the owner's review; this is the starting point for the track 2 body standard
 |---|---|
 | Name | `wugweb-work` |
 | Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `scripts/`, `examples/`, `evals/` |
-| Version | 0.4.0 (built 2026-11-16 in the development chat; the plan's first number was 0.1.0) |
-| Status | Skill built and installed in the owner's Claude skills. Evals not run. Not in the repo. Site build not started. |
+| Version | 0.4.2 (repo master copy 2026-11-17; built as 0.4.0 on 2026-11-16, installed 0.4.1; the plan's first number was 0.1.0) |
+| Status | Skill built, installed (app copy 0.4.1) and in the repo (master 0.4.2). Evals not run and not in the repo copy. Site build not started. |
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-work/` in the repo `wugweb-git/wugweb_site` |
 | Content source | Notion Case Studies → Body Content (one document per case study) |
