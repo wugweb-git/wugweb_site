@@ -412,6 +412,61 @@ Not applied here. The repo master stays 2.4.1 until the dev session (`cse_01UQ9T
 - 2.4.3, `references/audit.md`, crawler section: after the `sitemap-listed` line, report, but do not require, a Content-Signal line in robots.txt. Emerging AI-usage syntax; no search engine ranks on it; the choice is the owner's.
 - Then bump the version to 2.4.3 in `SKILL.md`, `metadata.json` and `README.md`, add the 2.4.2 and 2.4.3 changelog entries, run `node scripts/validate.mjs` and `scripts/test.mjs`, run `scripts/build.mjs` to regenerate `AGENTS.md` and the adapters, save the app copy and push.
 
+### Push and verify 2.5.0 (for the dev session)
+
+This planning session cannot push. The dev chat (`cse_01UQ9TRqokKf1xMCS1JD3brM`) has write access to the repo and the app copy. Give it this runbook plus the 2.5.0 files (the project's `skills/wugweb-seo/`, or the `wugweb-seo-2.5.0.zip` / `wugweb-seo.skill`).
+
+Push, on a branch so main is untouched until diffed:
+
+```bash
+git checkout -b skill/wugweb-seo-2.5.0
+# copy the 2.5.0 folder over .claude/skills/wugweb-seo/
+node .claude/skills/wugweb-seo/scripts/validate.mjs   # expect 34 checks, 0 errors
+node .claude/skills/wugweb-seo/scripts/test.mjs       # expect All passed
+node .claude/skills/wugweb-seo/scripts/build.mjs      # regenerate AGENTS.md + adapters
+git add .claude/skills/wugweb-seo
+git commit -m "wugweb-seo 2.5.0: keyphrase score, internal-link + PRO checks, research edits"
+git push -u origin skill/wugweb-seo-2.5.0
+```
+
+Then diff the branch against the nine:
+
+| # | Claim | Verify in |
+| --- | --- | --- |
+| 1 | Citability figure sourced to arXiv 2311.09735 | `references/audit.md`, citability table, "Self-contained" row |
+| 2 | AI-answer prompts run several times | `references/report.md`, AI answer sample, step 2 |
+| 3 | Content-Signal robots.txt note | `references/audit.md`, crawler section, after the sitemap-line sentence |
+| 4 | Keyphrase score built | `scripts/score-page.mjs` (new); `references/audit.md` score section; `SKILL.md` audit step 4 |
+| 5 | Internal-link checks built | `references/audit.md`, internal-link checks section |
+| 6 | Rank Math PRO net-new checks built | `references/audit.md`, PRO net-new section |
+| 7 | Score fixture and self-test | `examples/score-good.html` (new); `scripts/test.mjs` score cases |
+| 8 | evals present | `evals/evals.json`, 8 cases |
+| 9 | Version 2.5.0 | `SKILL.md`, `metadata.json`, `README.md`, `CHANGELOG.md` top |
+
+Fast check of 1 to 4:
+
+```bash
+grep -n "2311.09735" references/audit.md
+grep -n "several times" references/report.md
+grep -n "Content-Signal" references/audit.md
+node scripts/score-page.mjs examples/score-good.html --keyword "care booking" --host wugweb.com
+# expect a score of 89 of 100 (great)
+```
+
+Caveats carried from 2.5.0, so the card stays truthful:
+
+- The keyphrase score, for the score only, scores keyword density, keyword in a subheading and title readability, overriding the skill's "never a density target" and "headings are claims" lines. Owner decision, 2026-11-17. If that changes, those three drop to report-only.
+- "keyword not used before" is a warning, not scored, until a site-wide phrase map exists.
+- The internal-link and Rank Math PRO checks are documented checks; only the keyphrase and page and robots checks are scripted. The rest run by reading.
+- The standing-rules pointer is a repo path; a standalone GPT export needs the rules pasted in.
+
+Divergence, not one of the nine: repo 2.4.1 and this project's 2.4.1 were different edits under the same number. 2.5.0 pulled the repo's two in (the standing-rules path and "proof map wins"), so after the push the branch holds both. Confirm:
+
+```bash
+grep -n "STANDING-RULES.md" SKILL.md
+grep -n "proof map" references/handoffs.md
+```
+
 ## Planned: on-page keyphrase score (2026-11-17)
 
 The owner asked for a score like Rank Math's, built into the audit part beside the citability score. Citability is the AI-answer score; this is the search score. Source of truth: Rank Math `seo-by-rank-math` 1.0.280, `assets/admin/js/analyzer.js`, read 17 Nov 2026. The engine runs client-side only; the new PHP ability `rank-math/analyze-post-content` hands an agent the content and the rubric link, `rankmath.com/kb/score-100-in-tests/`. The weights below are extracted, not invented. RankWeb has no score of its own; it reads Rank Math's through `rank_math_seo_score`.
