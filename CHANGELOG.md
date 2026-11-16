@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-brand-os plan (2026-11-16)
+- Docs only. `docs/skills/wugweb-brand-os/PLAN.md` is the plan for the `wugweb-brand-os` skill in the Wugweb Skill System: skill card, scope, reference files, Visual OS, handoff contract, tests, 12 items waiting on the owner and source gaps. Plan ready for vetting; nothing is built.
+
 ### Changed — wugweb-work plan: final skill list, handoff contracts, per-task tests (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md` gains the final skill list (nothing dropped), handoff contracts per helper skill, a per-task test table and the open CI question for the token check.
 

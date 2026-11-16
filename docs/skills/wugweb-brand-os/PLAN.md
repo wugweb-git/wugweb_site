@@ -1,0 +1,286 @@
+# wugweb-brand-os: plan
+
+> Part of the Wugweb Skill System. Plan ready for vetting, 2026-11-16. Nothing goes to development until the owner says. The Notion page "wugweb-brand-os" (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa) and this file hold the same text.
+
+> Settled by the owner on 2026-11-16: Visual OS (art direction) stays inside this skill. Voice does not live here: Wugweb's voice and the owner's are one voice, held in `wugweb-voice`, and this skill points to it.
+
+## Contents
+
+1. Skill card
+2. About
+3. Why
+4. What it does not own
+5. Standard structure
+6. Reference files
+7. Visual OS
+8. Rules already fixed
+9. Rules handed to wugweb-voice
+10. Handoff contract
+11. Helper skills
+12. Matrix row
+13. Per-task tests
+14. Crop wording: ruling and proposal
+15. Waiting on the owner
+16. Source gaps
+
+## 1. Skill card
+
+| Field | Value |
+|---|---|
+| Name | `wugweb-brand-os` |
+| Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. No scripts. |
+| Version | 0.1.0 (planned) |
+| Status | Plan ready for vetting. Not built. |
+| Owner | Vedanshu, Wugweb |
+| Will live at | `.claude/skills/wugweb-brand-os/` |
+| Sources | `brand_guidelines/`, `kits_design_system/docs/design.md`, `CLAUDE.md`, owner decisions, and the owner's Visual OS and Brand Strategy documents once supplied |
+| Used by | `wugweb-voice`, `wugweb-kits`, `wugweb-strategy`, `wugweb-work`, `wugweb-seo`, and any session that needs to know who Wugweb is |
+| Writes to | Nothing. It returns reference answers and findings as proposals. |
+
+## 2. About
+
+**What it is.** The single place that says who Wugweb is and what its visuals must mean. It holds brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules, and Visual OS (art direction).
+
+**What it is not.** It is reference only. It does not author or rewrite content, and it holds no voice, content strategy, token, layout or SEO rules.
+
+**When it triggers.** A question about Wugweb's positioning, audience, values, differentiation or messaging framework; a question about how a visual should look or whether it is on brand; a check on a claim about Wugweb; a request to change a brand rule.
+
+| Mode | In | Out |
+|---|---|---|
+| Answer | A brand question | The rule, with its source file. A gap is reported as a gap. |
+| Visual check | An artwork or an artwork brief | Mode chosen, banned motifs found, pass or fail, what to fix |
+| Fact check | Copy that makes claims about Wugweb | Each claim marked approved, unverified or stale |
+| Change | A proposed brand rule | Current to proposed, with evidence, for the owner's approval |
+
+## 3. Why
+
+1. Brand rules surfaced piecemeal during the case-study work. They need one home so the other skills point to it instead of copying it.
+2. `brand_guidelines/` covers artwork only and is thin. It has no approved positioning, values, audience or strategy.
+3. Three different positioning lines are in use (see source gaps).
+4. Art direction for site, social and deck visuals had no owner once the separate social skill was closed.
+
+## 4. What it does not own
+
+- Voice and tone. These live once in `wugweb-voice`; brand-os points there and copies nothing.
+- Content strategy: what to publish, to whom, when, and what to refresh or retire. That is `wugweb-strategy`. It builds on the positioning held here and does not redefine it.
+- Tokens, components and layout (`wugweb-kits`). Brand-os says how things should look and feel; kits says how the interface is built.
+- SEO rules (`wugweb-seo`).
+- Producing any piece (`wugweb-work`, including its social and deck module).
+- Client brands. They stay with each case study.
+
+## 5. Standard structure
+
+```
+---
+name: wugweb-brand-os
+description: This skill should be used when the user asks "what is Wugweb's positioning", "who is Wugweb's audience", "what are our values", "how are we different", "what is our messaging framework", "is this artwork on brand", "how should this card, slide or cover look", "is this claim about Wugweb approved", or asks to change a brand rule. It holds Wugweb's brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts and Visual OS (art direction), and returns reference answers and check findings as proposals. It does not cover content strategy (topics, calendar, briefs: wugweb-strategy), voice and tone (wugweb-voice), or tokens and components (wugweb-kits).
+version: 0.1.0
+---
+```
+
+- **Body:** 1,500 to 2,000 words, imperative voice. Purpose, when to use and when not, the four modes, the source order (approved decisions, then patterns, then observations), the never-do list, the pointer to `wugweb-voice`, and an index of the reference files.
+- **Progressive disclosure:** the name and description are always loaded; the body loads when the skill triggers; reference files load only when a mode needs them.
+- **No duplication:** a rule lives in one file only. The owner's standing rules live in the system's shared file and are not repeated here.
+- **Trigger words avoided:** the bare word "strategy", and topic, calendar, brief, campaign plan, refresh and repurpose, so that `wugweb-strategy` and this skill do not fire on each other's questions.
+
+```
+.claude/skills/wugweb-brand-os/
+├── SKILL.md
+├── references/
+│   ├── identity-and-positioning.md
+│   ├── brand-strategy.md
+│   ├── values-and-principles.md
+│   ├── audience.md
+│   ├── messaging.md
+│   ├── vocabulary.md
+│   ├── brand-facts.md
+│   ├── review-gates.md
+│   ├── source-map.md
+│   └── visual-os/
+│       ├── art-direction.md
+│       ├── colour-type-photo-motion.md
+│       ├── metaphors.md
+│       ├── objects-and-components.md
+│       ├── formats-and-campaigns.md
+│       ├── references-and-patterns.md
+│       └── judging-a-visual.md
+├── examples/
+└── evals/
+```
+
+## 6. Reference files
+
+| File | Holds |
+|---|---|
+| `identity-and-positioning.md` | What Wugweb is and is not, the promise, differentiation, the six pillars as named, "does a lot, into one". The positioning line is blank until the owner chooses it. |
+| `brand-strategy.md` | Brand strategy. Blank until the owner's Brand Strategy document arrives. |
+| `values-and-principles.md` | The ten principles from `01_FOUNDATION`; values once approved |
+| `audience.md` | Who Wugweb is for and what they already know. Blank until supplied. |
+| `messaging.md` | One claim, one audience tension, one proof, one outcome. Problem to Insight to System to Outcome. The transformation pairs. |
+| `vocabulary.md` | Brand terms only: the name, the descriptor, pillar names |
+| `brand-facts.md` | Approved facts about Wugweb, each with source and date. Unverified facts are marked. |
+| `review-gates.md` | Visual and fact check lists, the 0 to 2 scoring, source and rights labels |
+| `source-map.md` | Where each rule came from, known conflicts, the helper skills |
+| `examples/` | Approved and rejected visuals once the owner supplies them |
+| `evals/` | Test prompts for the per-task tests |
+
+## 7. Visual OS
+
+Visual OS is art direction: how Wugweb's visuals should look and feel across the site, social cards, carousel slides, deck slides and covers. It sits in its own folder so it can grow. Token values, components and layout stay in `wugweb-kits`. Making the pieces stays with `wugweb-work`.
+
+| File in `references/visual-os/` | Holds |
+|---|---|
+| `art-direction.md` | Visual grammar, the five visual modes, the approved, banned and conditional lists, composition, collage, the definition of "crop" |
+| `colour-type-photo-motion.md` | Colour roles as meaning, type as a graphic object, photography and motion character |
+| `metaphors.md` | The ten metaphors and what each shape means |
+| `objects-and-components.md` | The eleven artwork components (ribbons, routes, cards, devices and the rest) |
+| `formats-and-campaigns.md` | The format decision matrix, the per-format formulas, social and deck art direction, campaign systems |
+| `references-and-patterns.md` | Evidence rules, the pattern registry, rights labels |
+| `judging-a-visual.md` | How to judge composition, colour, subject, lighting and format, and what to fix |
+
+## 8. Rules already fixed
+
+- A case-study cover shows a project-specific object or outcome, never a generic laptop or dashboard.
+- Every asset has one claim, one audience tension, one proof, one outcome. Problem to Insight to System to Outcome.
+- Six pillars, fixed: Strategy, Brand, Experience, Engineering, Growth, Operations. The older eight-service list in Notion is reference only.
+- "Does a lot, into one": multi-workstream engagements are the norm.
+- Yellow is an accent at 10% or less; the final call to action stays yellow.
+- Text is never pure white; the live colour values must not change. Brand-os states the rule; `wugweb-kits` holds the values.
+- The media rule wins over any brand wording: existing media is resized only with its aspect ratio kept, masks are allowed, and no file is cropped (see section 14).
+
+## 9. Rules handed to wugweb-voice
+
+All writing style and tone material from the wugweb-work plan moves to `wugweb-voice`, not here.
+
+| Material | Goes to |
+|---|---|
+| Tone line; the voice rules (say what was built, evidence or nothing, answer first, short whole sentences, plain words, active with a named doer, credit honestly, headings are claims) | `wugweb-voice` |
+| Banned word list, preferred wording, tone by form, the NTUC before and after examples | `wugweb-voice` |
+| `14_COPY_GUIDELINES.md` as a source; the Sanity brand voice draft as a possible input | `wugweb-voice` |
+| British English, no dashes, sentence case, never invent | The system's shared standing-rules file |
+| Case-study lengths, the 70 character heading limit, the client's own words | Stay in `wugweb-work` |
+| SEO title and meta description lengths | `wugweb-seo` |
+
+## 10. Handoff contract
+
+| Skill | Brand-os gives | Brand-os takes | Brand-os may not |
+|---|---|---|---|
+| `wugweb-voice` | Identity, positioning, audience, brand terms, approved facts | Nothing; it points there for voice and tone | Hold or check voice and tone rules |
+| `wugweb-kits` | How things should look and feel: Visual OS direction | Token and component facts | Set or change a token, radius, component or layout |
+| `wugweb-strategy` | Positioning, audience, differentiation, messaging framework | Nothing | Decide topics, calendar or briefs |
+| `wugweb-work` (with its social and deck module) | Brand rules, Visual OS direction, visual and fact check findings | Drafts and artwork briefs to check | Author or rewrite content; make media; touch client brand choices |
+| `wugweb-seo` | Approved wording for the brand name and descriptor | Nothing | Change keywords, lengths or schema |
+
+Every output is a proposal or a finding. Nothing is written anywhere without the owner's approval.
+
+## 11. Helper skills
+
+| Helper | Used for |
+|---|---|
+| `brand-voice:discover-brand` | Finding brand material at build time |
+| `brand-voice:guideline-generation` | Drafting non-voice guidelines from approved sources |
+| `marketing:brand-review` | Second opinion on brand fit |
+| `anthropic-skills:brand-guidelines`, `anthropic-skills:brandkit` | Not yet run; role to be confirmed at build |
+| `anthropic-skills:skill-creator`, `anthropic-skills:skill-development` | Building the skill and its evals |
+
+The owner's rules win over anything a helper says. A helper that is missing or signed out is skipped and reported.
+
+## 12. Matrix row
+
+**MATRIX ROW: wugweb-brand-os**
+
+- **Owns:** Brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules, and Visual OS: art direction for site, social and deck visuals, metaphors, reference and pattern libraries, how to judge a visual.
+- **Reads (sources):** `brand_guidelines/`, `kits_design_system/docs/design.md`, `CLAUDE.md`, owner decisions, and the owner's Visual OS and Brand Strategy documents once supplied. The 2023 Notion profile is stale background only.
+- **Gives to:** `wugweb-voice`, `wugweb-strategy`: positioning, audience, messaging framework, approved facts. `wugweb-kits`: how things should look and feel. `wugweb-work`: brand rules, Visual OS direction, visual and fact check findings. `wugweb-seo`: approved brand name and descriptor wording.
+- **Takes from:** `wugweb-kits`: token and component facts. `wugweb-work`: drafts and artwork briefs to check. `wugweb-voice`: nothing copied; it points there for voice and tone. `wugweb-strategy` and `wugweb-seo`: nothing.
+- **Never does:** Authors or rewrites content. Holds voice, content strategy, token, layout or SEO rules. Touches client brands or media files. Invents facts. Writes to Notion, Sanity, R2 or `brand_guidelines/`; every change is a proposal for the owner.
+
+## 13. Per-task tests
+
+| Task | How it is tested | Passes when |
+|---|---|---|
+| Triggering | 10 prompts that should trigger and 10 that should not (voice, topics and calendar, tokens, SEO, client brand) | The right skill fires each time |
+| Line with `wugweb-strategy` | "Who are we for?", "How is Wugweb different from an agency?", "What should the campaign visuals look like?" against "What should we write about next month?", "Which old posts should we retire?", "Plan a campaign around the NTUC case study" | The first three fire brand-os; the last three fire `wugweb-strategy` |
+| Answer | 8 brand questions | Each answer cites one reference file; a gap is reported as a gap, not filled |
+| Visual check | Three briefs: one with an AI brain, one mixing two modes, one clean | The first two fail with the reason and the fix; the third passes |
+| Cover rule | A case-study cover brief showing a generic laptop | Fails, naming the rule |
+| Fact check | Copy citing "400+ projects" | Marked unverified until `brand-facts.md` holds an approved number |
+| No duplication | Search across all skill folders in the system | Each rule text appears once; no voice rule appears in brand-os |
+| No writes | End to end run | Nothing written outside chat or a draft file |
+
+## 14. Crop wording: ruling and proposal
+
+**Ruling (recorded).** The owner's media rule wins: existing media may be resized only with its aspect ratio kept, clipping masks are allowed, and no file is cropped.
+
+**The conflict.** "Crop" appears as an instruction in about 15 guideline files. Three say "decisive crop" and one says "crop boldly at edges".
+
+**Proposal, waiting on the owner. No guideline file is edited until approved.**
+
+One definition, added once, so the other files need no edit:
+
+> In these guidelines, "crop" means how a subject is framed in a composition. An existing media file is never cropped. It is resized with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
+
+| File | Current | Proposed |
+|---|---|---|
+| `08_ARTWORK_FORMULAS/Editorial_Hero.md` | "an oversized editorial anchor, a decisive crop, and one proof visual" | "an oversized editorial anchor, a decisive framing, and one proof visual" |
+| `02_VISUAL_SYSTEM/13_EDITORIAL_SYSTEM.md` | "decisive crops, large type when needed" | "decisive framing, large type when needed" |
+| `03_MARKETING_SYSTEM/04_SOCIAL_MEDIA.md` | "one memorable object, decisive crop, high contrast" | "one memorable object, decisive framing, high contrast" |
+| `02_VISUAL_SYSTEM/02_COMPOSITION.md` | "Crop boldly at edges and retain true negative space." | "Let the anchor run off the edge of the canvas, using a mask or frame, and retain true negative space." |
+
+Until approved, the skill carries the definition in `visual-os/art-direction.md` and the guideline files stay as they are.
+
+## 15. Waiting on the owner
+
+1. **Positioning line.** Which is current: "product and experience architecture studio" (site), "systems-minded design partner" (`BRAND_POSITION.md`), or another?
+2. **Values.** The only list is from 2023. Supply current values, or approve a proposal built from the ten principles?
+3. **Audience.** Who is Wugweb for? No approved source exists.
+4. **Facts about Wugweb.** Which numbers are approved: projects, team size, markets, founding date?
+5. **`brand_guidelines/`.** Recommended: it stays untouched as the evidence archive and the skill holds the working rules.
+6. **Colour conflict.** `04_COLOR_ROLES.md` says avoid purple, green and orange; the site uses all three as service colours. Which wins for artwork?
+7. **AI prompt engine folder** (`04_AI_PROMPT_ENGINE`). Recommended: Visual OS here owns it, since it turns art direction into briefs. The alternative is the social module in `wugweb-work`.
+8. **Working preferences.** How the owner reasons and gives feedback belongs in neither `wugweb-voice` nor here. Recommended: the shared standing-rules file.
+9. **"Does a lot, into one".** Public wording, or only the idea behind it?
+10. **Source documents.** The owner's Visual OS and Brand Strategy documents, and the nine source images named in the guidelines, if available.
+11. **Where the plan is kept.** This Notion page and `docs/skills/wugweb-brand-os/PLAN.md`, as relayed by the coordinating session. Confirm.
+12. **Crop wording.** Approve the definition and the four wording changes in section 14?
+
+## 16. Source gaps
+
+**No approved source at all**
+
+- Positioning (three competing lines), values, audience, brand strategy.
+- Campaign systems, lighting, approved and rejected examples.
+- The Master Theme PDF, a Figma or token export, rights records.
+- The owner's Visual OS and Brand Strategy documents have not been supplied to any session.
+
+**How much real content the repo sources hold**
+
+| Source | Files | Real content |
+|---|---|---|
+| `01_FOUNDATION` | 4 | Short lists of 15 to 22 lines each. `BRAND_POSITION.md` is the fullest. |
+| `02_VISUAL_SYSTEM` | 21 | About 1,700 words in total. Visual modes and colour roles are the fullest (about 240 words each). The other 19 are 50 to 125 words each. |
+| `03_MARKETING_SYSTEM` | 16 | Two or three sentences each, including the messaging framework, copy guidelines, case studies, brand story, social media and presentations. |
+| `04_AI_PROMPT_ENGINE` | 12 | 40 to 75 words each. |
+| `05_REFERENCE_LIBRARY` | 17 | The source inventory is real (9 images described, about 300 words). The other 16 are 33 to 98 words each, mostly a format with no entries. |
+| `06_COMPONENT_LIBRARY` | 11 | Two or three sentences each; Approved patterns, Avoid, Examples and Notes are empty. |
+| `07_METAPHOR_LIBRARY` | 10 | Two sentences each; seven of nine headings are empty. |
+| `08_ARTWORK_FORMULAS` | 10 | The format decision matrix is real (5 formats). The 9 formulas, including Case study cover, LinkedIn post, Instagram post and Pitch deck, are one or two sentences each with ten empty headings. |
+| `09_VALIDATION` | 6 | One paragraph each, then empty headings. Source and rights is complete. |
+| `10_ASSETS` | 5 | No image files. The nine images in the inventory are not in the repo. |
+| `PATTERN_REGISTRY.md` | 1 | Eight pattern names, with no evidence, meaning or confidence recorded. |
+| `VISUAL_REASONING.md` | 1 | Six shape meanings and one rule. |
+| `REFERENCE_LIBRARY.md` | 1 | A list of 14 source names and five steps. |
+
+**Conflicts and stale material**
+
+- `README.md` and `DECISIONS.md` in `brand_guidelines/` are marked "completed and archived (2026-08-07)", so their status as live rules is unclear.
+- Content pillars in the guidelines (AI, Product, UX, Systems, Engineering) do not match the six pillars.
+- The guidelines call light backgrounds the default; the site is dark.
+- The guidelines use American spelling and mark hex values as provisional; `src/styles/global.css` is the real token source.
+- The About page lede is marked placeholder copy in the code and contains a dash.
+- The Notion page "Wugweb Profile (Master) - 2023" is stale: "Creative UX Design Agency", "Transcending Digitally", both 200+ and 400+ projects, lorem ipsum under Story. It is used for nothing without approval.
+
+**Not read in full while planning**
+
+- The stored values of the Sanity brand voice draft (now a `wugweb-voice` input).
+- The full Notion page of the wugweb-work plan; the repo export was read instead.
