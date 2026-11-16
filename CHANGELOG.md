@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: planning fields and the reader signal log (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` gains "Content model: planning fields" (from the kits docs: which proposed CMS fields are planning fields, and the five blocks awaiting sign-off), question 22, and the signal log of readers' own words. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-fields-signals-2026-11-16.json`.
+
 ### Changed — wugweb-brand-os plan: five small edits to section 18 (2026-11-16)
 - Docs only. `docs/skills/wugweb-brand-os/PLAN.md`: adds `landing-page-copy` as a source, the `pptx` no-stripes line, the banner style list as vocabulary, one test kept from `canva`, and a note that editorial positioning goes to `wugweb-strategy`.
 
