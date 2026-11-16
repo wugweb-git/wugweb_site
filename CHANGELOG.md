@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-voice plan: real copy named, standing rules pointed to (2026-11-16)
+- Docs only. `docs/skills/wugweb-voice/PLAN.md` records the owner's ruling that the full folder `.claude/skills/wugweb-voice/` is the real copy of the skill (not committed yet) and that the one-file copy in the Claude app is not the source; adds the development chat and repo plan to the skill card; points to `docs/skills/STANDING-RULES.md` for the owner's standing rules instead of restating them; and asks whether `SKILL.md` and the export may carry those rules as a marked copy. Same edits on the Notion skill page; replaced lines noted in `backups/notion-wugweb-voice-page-2026-11-16-g.json`.
+- Catch-up for earlier commits that added no changelog line: the plan was first written and then extended on 2026-11-16 (commits `2dbaae54` to `b3a41347`): skill links with `wugweb-work` and `wugweb-brand-os` only, a portability section, the "Extracted and absorbed" table of helper skills, routed proposals decided, wording points from the design-system docs, and six page backups under `backups/notion-wugweb-voice-page-2026-11-16*.json`.
+
 ### Changed — wugweb-brand-os plan: points to the standing-rules file, skill card links (2026-11-16)
 - Docs only. `docs/skills/wugweb-brand-os/PLAN.md` points to `docs/skills/STANDING-RULES.md` instead of restating media rules, shortens the proposed crop definition, marks owner items 8 and 11 settled, and adds the development chat and repo plan links to the skill card.
 

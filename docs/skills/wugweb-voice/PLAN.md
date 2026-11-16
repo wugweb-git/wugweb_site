@@ -10,7 +10,11 @@
 | Type | Claude Code Agent Skill: one `SKILL.md` plus `references/`, `examples/`, `evals/` |
 | Version | 0.1.0 (planned) |
 | Family | Wugweb Skill System |
-| Status | Plan ready for vetting. Skill development not started; the owner starts it when the page and this file are ready. No approved writing samples yet. |
+| Development chat | https://claude.ai/chat/942cbd9e-e68d-4679-9923-ef4e030440d8 |
+| Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-voice/PLAN.md` |
+| Status | Plan ready for vetting. Skill development started on 2026-11-16 in the development chat: a draft 0.1.0 exists, structure only. No approved writing samples yet, so no rule drawn from samples exists. |
+| Real copy | `.claude/skills/wugweb-voice/` in the repo (owner, 2026-11-16: "The full folder"). 16 files. Not committed yet. |
+| Other copy | A one-file install in the Claude app on the owner's Mac: the same `SKILL.md` body with a shorter description, and none of the reference files, scripts, evals or export it points to. Not the source. |
 | Lives in | `~/.claude/skills/wugweb-voice/` proposed, so every project sees it. CONFIRM |
 | Covers | How Wugweb and Vedanshu write and speak: voice, tone, phrasing, structure |
 | Does not cover | Personality, beliefs, decision style, working preferences, brand identity, positioning, audience, case-study structure, SEO, design |
@@ -84,7 +88,8 @@ Source classes:
 |---|---|
 | Writing and transcripts he supplies | Calibration |
 | His edits and corrections to drafted copy | Confirmed preferences |
-| Rules he has already fixed: British English; sentence case; no em or en dashes in visible copy; never invent a number, quote or fact; no filler words | Confirmed. The voice must respect them. |
+| The owner's standing rules in `docs/skills/STANDING-RULES.md` (on `main` since commit `1ccb099e`) | Confirmed. That file is their one home: its Writing section (spelling, case, dashes) and its Truth and evidence section (nothing invented). This plan points to it and does not restate them. |
+| "No filler words" | A voice rule, so it lives here. Which words count waits on his ruling. |
 | `PLAN.md` section 5 | The starting material, but a draft to calibrate. The coordinating session wrote it from his decisions in that work plus research; he has not yet reviewed it. |
 | Sanity Brand voice draft, `brand_guidelines/` copy files (a few lines each), the pasted persona outline | Candidate rules. Each becomes confirmed only when he rules on it. |
 | The "working-style" memory note (short, plain, result first) | How he wants replies written to him. Not a sample of how he writes. Not calibration. |
@@ -206,6 +211,7 @@ The Wugweb Skill System's final list gives this skill eight helpers: `rampstack-
 7. Settled 2026-11-16: this plan file is on `main` (commits up to `97ea8ec4`), pushed on the owner's yes.
 8. "We" for the studio and "I" in bylined or personal writing: one fixed rule, or his call per piece?
 9. CONFIRM that the Notion profile pages (2023, Grok, Gemini) are background only, not calibration.
+10. CONFIRM that `SKILL.md` and the export may carry the standing rules as a marked copy (section 13).
 
 Settled 2026-11-16: the plan goes on the skill's one Notion page and in this file. Any further Notion write still waits for his yes.
 
@@ -224,6 +230,7 @@ Owner, 2026-11-16, as relayed by the coordinating session: "make sure all the sk
 How the skill stays portable:
 
 - **`SKILL.md` stands alone.** Other tools may not load reference files on demand, so `SKILL.md` carries the core rules itself: the always-on voice rules, the fixed owner rules, the short banned list and the voice check. The reference files add depth, not anything the core depends on.
+- **Standing rules travel as a marked copy.** The owner's standing rules live in `docs/skills/STANDING-RULES.md` and nowhere else. A tool that cannot open a second file still needs the three writing rules and "nothing invented", so `SKILL.md` and the export carry them as a copy, labelled as copied from that file and never edited in the skill. This sits between two of his rules (one home per rule; usable beyond Claude). CONFIRM that a marked copy is acceptable.
 - **Plain Markdown rules.** `voice.md`, `modes.md`, `words.md`, `corpus.md` and `handoff.md` are written so any model, or a person, can follow them. No Claude-only syntax in them.
 - **Helpers are optional.** Every helper skill, plugin and connector in section 10 is an aid. Each mode and the voice check (section 7a) can be done by hand from the Markdown files alone.
 - **Scripts are plain Node.** No Claude tooling, no installed packages beyond Node itself.
