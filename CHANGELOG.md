@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-seo plan page matches repo copy 2.4.1 (2026-11-17)
+
+- `docs/skills/wugweb-seo/PLAN.md` and the Notion page now describe version 2.4.1: the 2.3.0 owner answers are marked decided (FAQPage only where the page shows the questions, blog dates, named helper leads), the proof-map link wording is recorded, and the open items are the copied standing-rules block, the missing `evals/evals.json` and the app-copy re-save.
+
 ### Changed — wugweb-kits skill: SKILL.md reconciled (2026-11-17)
 
 - Rewrote `.claude/skills/wugweb-kits/SKILL.md` (1,584 words by the shared method): third-person description with triggers, shell summary from `layout-shell.md`, 26 Wugweb rules listed as not yet written, standing-rules block. Added `references/layout-shell.md` and `references/standing-rules.md`; `AGENTS.md` now a single-file export. validate passes.

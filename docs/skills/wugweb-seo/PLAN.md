@@ -8,9 +8,9 @@
 | --- | --- |
 | Name | `wugweb-seo` |
 | Type | Claude skill, already installed as one skill |
-| Status | Version 2.1.0 built on the owner's instruction, 2026-11-16. Files in the Skills project under `skills/wugweb-seo/`. The installed copy changes only when the owner saves it. |
+| Status | Version 2.4.1. Master copy in the repo at `.claude/skills/wugweb-seo/` since 2026-11-17 (commits 82bc0b9a and 825b1aa6). The app copy reads 2.4.0 until the owner re-saves it. |
 | Alignment plan | Ready for the owner's vetting, 2026-11-16. Written by the wugweb-seo planning session. |
-| Installed copy | 2.2.1. `SKILL.md` on this machine last saved 16 Nov at 23.12, with the full folder of 21 files. Version 2.2.0 applied the ten changes listed below; 2.2.1 records two owner decisions. The owner saves the real skill in session `cse_01UQ9TRqokKf1xMCS1JD3brM`, which the planning session cannot open. |
+| App copy | 2.4.0, last saved 16 Nov at 23.38, 21 files. The owner saves it from his development chat; the planning session cannot open that chat or session `cse_01UQ9TRqokKf1xMCS1JD3brM`. Files that differ from the repo copy: `SKILL.md`, `README.md`, `CHANGELOG.md`, `metadata.json`, `AGENTS.md`, `adapters/cursor/wugweb-seo.mdc`, `references/handoffs.md`. |
 | Planned in session | wugweb-seo |
 | Development chat | https://claude.ai/chat/ed3a2346-688c-8096-9572-f2cfe891cfd4 |
 | Repo plan | https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-seo/PLAN.md |
@@ -35,15 +35,17 @@ Keywords and search intent, on-page rules (title, description, headings), schema
 
 - One slug per case study. No redirects for old or Framer addresses.
 - Title 51 characters or fewer in the source; the site adds " \| Wugweb" only when the title does not already name Wugweb and the total fits in 60. Description 140 to 160.
-- Structured data only on the main site address. Case studies: WebPage, CreativeWork, BreadcrumbList; Wugweb is creator and publisher; no author. Other page types: not decided.
-- Never FAQPage, HowTo or review stars. llms.txt is not a lever and is never recommended. The existing `public/llms.txt` and `ai-context.txt` are an open question.
+- Structured data only on the main site address. Case studies: WebPage, CreativeWork, BreadcrumbList; Wugweb is creator and publisher; no author. Blog posts: BlogPosting with a Person author. Service pages, home and about: not decided.
+- HowTo, review stars and aggregate ratings are never proposed. FAQPage is allowed only for questions the page visibly carries from its `faqs` field, written by `wugweb-work`, and is never asked for as a way to win search. llms.txt is not a lever and is never recommended; the existing `public/llms.txt` and `ai-context.txt` stay as they are.
+- Dates: a blog post shows its date; a case study shows none; a shown date matches the schema date. The audit does not check titles for dashes.
+- The owner's answers of 2026-11-16 are recorded in the skill's 2.3.0 changelog and were confirmed by the owner in the planning session on 2026-11-17.
 - Notion is the source for case-study SEO fields and for blog posts.
 
 ## Helper skills
 
 Lead: `searchfit-seo:generate-schema`, `rampstack-seo:seo-onpage`, `rampstack-seo:seo-keyword`, `searchfit-seo:content-brief`. Second opinion: `schema-markup`, `seo-schema`, `on-page-seo`, `seo-geo`, `seo-aeo-geo`, `sanity:seo-aeo-best-practices`, `seo-check`, `seo-images`. After deploy: `aeotester:audit`, `aeo-brand-scan:scan`. Added in 2.0.0 as a plan second opinion: `searchfit-seo:create-topic`.
 
-For the platform keyword note: `social-media-skills:social-seo` (lead), `hashtag-strategy` (second opinion); no hashtag stuffing. No helper is named to lead the report part or the technical checks.
+For the platform keyword note: `social-media-skills:social-seo` (lead), `hashtag-strategy` (second opinion); no hashtag stuffing. Leads named by the owner (2.3.0): `analytics-skills:traffic-change-diagnosis` for the report part, `searchfit-seo:technical-seo` for the technical checks. Tags stay few and specific, with no fixed number.
 
 Every helper is optional. See "Extracted and absorbed" for what the skill now carries itself.
 
@@ -53,35 +55,37 @@ Every link reads the same on both sides. Neither side edits code.
 
 | With | Gives | Takes |
 | --- | --- | --- |
-| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list with the position and click-rate signals behind each suggestion; search reports | Business goal, audience, page list, the pillar and cluster structure |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list with the position and click-rate signals behind each suggestion; search reports | Business goal, audience, page list, the pillar and cluster structure, the proof map |
 | `wugweb-work` | Keyword notes and budgets for one brief; platform keyword note; fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option | Topic, client, audience; approved body; rendered page URL; the wording, voice-checked |
 | `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
 | `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
 | `wugweb-voice` | No link | No link |
 
-Link targets, an owner decision recorded in the skill's 2.2.1 changelog: `wugweb-strategy` sets the pillar and cluster structure. `wugweb-seo` picks each brief's link targets inside it, owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and checks the links in the audit. The coordinating session had proposed that strategy pick the targets; the installed skill's wording is the one used here.
+Link targets, owner rulings of 2026-11-16 as carried in the repo skill 2.4.1: `wugweb-strategy` sets the pillar and cluster structure. The proof map wins on which case study backs a page. `wugweb-seo` picks the other link targets for a brief around it, owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and checks the links in the audit. This replaces the 2.3.0 wording, in which strategy decided every target.
 
 ## Waiting on the owner
 
-- [ ] Sign in to the SEO data connectors the report part needs, and name the standard tool for search data.
+- [ ] Sign in to any SEO data connector the report part should use. A Search Console export is the standard source (2.3.0); connectors are optional.
 - [ ] What the skill should cover for blogs and service pages. A proposal is under "Scope by page type".
 - [ ] Confirm the title rule's reach: the skill applies "51 characters or fewer" to case studies only and marks other page types not decided.
 - [ ] The title limit for blog posts and service pages.
 - [ ] Whether AI training bots may crawl, per property. Search and citation bots stay allowed.
 - [ ] Confirm the rule "headings are claims; never ask for a question heading" lives in `wugweb-voice` or `wugweb-work`. wugweb-seo only points to it. The wugweb-work plan says "question form where natural".
-- [x] The installed copy matches the built skill: it is now 2.2.1 with all its files.
-- [ ] Is "never FAQPage" site-wide? The `singletonPage` schema has a FAQPage option.
-- [ ] Does BlogPosting with a Person author stay as the blog rule? It is live today.
-- [ ] Should the en dashes in the six service titles be flagged under the no-dash rule?
-- [ ] Do client sites, Kits and Wugweb X keep generic rules, with `wugweb.com` rules in their own section?
-- [ ] One description for all three parts, or trigger phrases per part?
-- [ ] Which helper leads the report part and the technical checks?
-- [ ] A limit on tags per post, for the no-stuffing rule.
-- [ ] Must pages show a date? `pending.md` records that Last Updated is not needed on case studies. Until decided: where a page shows a date, it matches the schema date.
-- [ ] The kits layout-shell doc proposes a `faqs` field feeding FAQPage JSON-LD on case studies and posts, which clashes with the no-FAQPage rule. Remove it from that proposal, or allow it? See "From the kits design-system docs".
+- [ ] Re-save the app copy as 2.4.1 from the repo folder, using the 7 files listed in the skill card. The repo copy is the master.
+- [x] FAQPage: allowed only where the page shows the questions. Decided, 2.3.0.
+- [x] BlogPosting with a Person author stays. Decided, 2.3.0.
+- [x] The audit does not check titles for dashes. Decided, 2.3.0.
+- [x] Rules for every site, with `wugweb.com` rules in their own section. Decided, 2.3.0.
+- [x] Trigger phrases per part, in the skill description. Decided, 2.3.0.
+- [x] Leads named: `analytics-skills:traffic-change-diagnosis` and `searchfit-seo:technical-seo`. Decided, 2.3.0.
+- [x] Tags stay few and specific, with no fixed number. Decided, 2.3.0.
+- [x] Blog posts show their date; case studies show none. Decided, 2.3.0.
+- [x] The `faqs` field in the kits layout-shell doc: 2.3.0 allows FAQPage from such a field, so the clash is settled. The field is still a proposal and adding it is development.
 - [x] `aeo-brand-scan` runs only after the owner's yes. Decided, 2.2.1.
-- [x] Link targets. Decided, 2.2.1; see the note above this list.
-- [ ] Take change 11 (the standing-rules path) into the skill session, or reject it.
+- [x] Link targets. Decided; see the note above this list.
+- [x] Change 11 (the standing-rules path): applied in the repo copy 2.4.1.
+- [ ] The owner's standing rules as a copied block marked as from `docs/skills/STANDING-RULES.md`: the skill holds only a pointer. Add a block, or keep the pointer?
+- [ ] `evals/evals.json` is in neither the app copy nor the repo copy, although the changelog says eight evals were added. Supply the file.
 - [x] Done in 2.2.0. Take the "Changes to take into the skill session" below into session `cse_01UQ9TRqokKf1xMCS1JD3brM`, or reject them.
 
 ## Plan
@@ -194,9 +198,9 @@ Runs only when asked by `wugweb-work` or `wugweb-strategy`. Gives terms for the 
 | Task | Passes when |
 | --- | --- |
 | Keyword map | Every number has a tool and date, or says "unvalidated" |
-| Brief | No drafted copy; no FAQPage in the schema line |
+| Brief | No drafted copy; no FAQ block asked for to win search |
 | On-page audit | Title 60 or fewer rendered, description 140 to 160, canonical self, one H1 |
-| Schema | WebPage, CreativeWork, BreadcrumbList on a case study; no author, FAQPage, HowTo or Review |
+| Schema | WebPage, CreativeWork, BreadcrumbList on a case study; no author, HowTo or Review; FAQPage only where the page shows the questions |
 | Technical | Only canonical 200 URLs in the sitemap; staging refused |
 | Report | Deltas only from real exports; gaps stated |
 | Portability | The same three tasks give the same pass or fail values from the single-file export |
@@ -220,7 +224,7 @@ The installed 2.1.0 `SKILL.md` differed from this plan in ten places. All ten we
 
 `references/handoffs.md` needs changes 1 to 4 and 7 to 9 as well; that was done in 2.2.0. `AGENTS.md` and the adapters are generated, so `scripts/build.mjs` must run after the edits.
 
-Change 11, added 2026-11-16 and not yet applied: in the boundary table of the skill body, the row for the owner's standing rules names the shared file by its path, `docs/skills/STANDING-RULES.md`. The installed 2.2.1 already points to a shared file and does not restate the rules. Note for the skill session: a repo path means nothing where the skill runs without the repo, so the single-file export may need the rules included or attached; that is the owner's call.
+Change 11, applied in the repo copy 2.4.1: in the boundary table of the skill body, the row for the owner's standing rules names the shared file by its path, `docs/skills/STANDING-RULES.md`. Change 12, also applied there: the link-target wording, with "the proof map wins". Both reach the app copy when the owner re-saves it. Note: a repo path means nothing where the skill runs without the repo, so the single-file export may need the rules included or attached; that is the owner's call.
 
 ## Extracted and absorbed
 
@@ -362,11 +366,21 @@ The same doc proposes CMS fields for case studies and posts. Its own status is "
 | `breadcrumbLabel` | Support | Feeds BreadcrumbList |
 | `relNofollow`, alt made required | Support | Link and image checks |
 | `seoCanonicalUrl` | Clash | Case-study canonicals come from Notion and there are no redirects. `pending.md` already calls this field unnecessary |
-| `faqs` feeding FAQPage | Clash | The no-FAQPage rule |
+| `faqs` feeding FAQPage | Support, limited | 2.3.0 allows FAQPage only for questions the page shows from this field. Still a proposal; adding it is development |
 | `schemaType` | Clash for case studies | The type is fixed as CreativeWork; offering Article reopens it. Posts are BlogPosting today |
 | `aiSummary`, `keyTakeaways` on case studies | Clash | Case-study content is the Notion Body Content only; these would be a second copy source. No clash on posts or pages |
 | `lastReviewedAt` | Open | Ties to the question on dates |
 | `ariaLabel`, `imageContext` | Not this skill | Accessibility and editor notes belong to `wugweb-kits` |
+
+## Repo master copy (2026-11-17)
+
+On the owner's word, the skill now lives in the repo at `.claude/skills/wugweb-seo/`, beside `wugweb-kits`. Claude Code in the repo loads it directly; `AGENTS.md` and `adapters/` cover other tools.
+
+- Commit 82bc0b9a: the 21 files of 2.4.0, copied unchanged from the app copy. Checked for secrets and personal data: none.
+- Commit 825b1aa6: version 2.4.1. The proof-map link wording; the standing-rules path; the script commands moved from the body into `README.md`; the `name:` line unquoted, because a quoted name failed the validator and made the build write a Cursor rule named with quote marks; `AGENTS.md` and the Cursor rule rebuilt.
+- Body length, by the method shared by all six skills (frontmatter dropped, fenced code removed, tokens with a letter or digit counted): 1,832 words. Pass range 1,500 to 2,000.
+- Validator: 0 errors and 1 warning (the missing evals file). Self-test: all passed. Generated files: all fresh.
+- The 2.3.0 owner answers were copied as they are. This page now counts them as decided.
 
 ## Works beyond Claude
 
@@ -374,7 +388,7 @@ The same doc proposes CMS fields for case studies and posts. Its own status is "
 | --- | --- |
 | Rules any model can follow | The skill body and references are plain Markdown, with no Claude-only syntax. The body holds every core rule on its own; references add detail only, because other tools may not load them |
 | Helpers optional | Every helper skill, plugin and connector is optional. Each part has a by-hand route: read the page source, export from Search Console, sample prompts by hand. The absorbed rules above make this possible |
-| Scripts | Plain Node, no packages, no Claude tooling. The 2.1.0 `SKILL.md` says its scripts need Node 18 and no packages; the scripts themselves were not read |
+| Scripts | Plain Node, no packages, no Claude tooling. They need Node 18 or later. Run here on 2026-11-17: the validator reports 0 errors and the self-test passes |
 | Tool and vendor wiring | In one file only. Everything else names no vendor |
 | Single-file export | One Markdown file holding the body and references, to paste or attach in GPT, Cursor or another tool. 2.1.0 already generates `AGENTS.md` and adapters |
 | Test | The same three tasks (one brief, one page audit, one report) run from the export and from the installed skill; passes when the outputs match on every pass or fail value |
@@ -409,7 +423,7 @@ Until one is confirmed, the report part returns "unvalidated" and ranks by inten
 - JSON-LD cannot be checked on staging; only through a local preview with the main site address.
 - The shared standing-rules file now exists: `docs/skills/STANDING-RULES.md` on main, approved by the owner in the wugweb-work session. No longer a gap.
 - The Notion "Wugweb SEO" page (last updated 2026-10-14) still lists case-study schema as "Organization, Person, CreativeWork, BreadcrumbList".
-- The installed 2.2.1 folder is now on this machine. The planning session read its skill body, changelog and handoffs reference; the other references, the scripts and the evals were not read.
+- The repo copy 2.4.1 was read in full for this update (skill body, changelogs, handoffs). The other references and the scripts were run through the validator and self-test, not read line by line. `evals/evals.json` is missing from both copies.
 
 ## Matrix row
 
@@ -417,4 +431,4 @@ Until one is confirmed, the report part returns "unvalidated" and ranks by inten
 - **Reads (sources):** Rendered pages; BaseLayout and JsonLd output; robots.txt and sitemap.xml; Notion Case Studies, Blogs and Wugweb SEO pages; Search Console, GA4 and SEO tool exports; the shared standing rules file, `docs/skills/STANDING-RULES.md`.
 - **Gives to:** `wugweb-strategy`: site keyword and intent map, topic gaps, refresh list with position and click-rate signals, search reports. `wugweb-work`: keyword notes and budgets for one brief, platform keyword notes, fix list, JSON-LD check and citability score. `wugweb-kits`: findings that repeat across a block.
 - **Takes from:** `wugweb-strategy`: business goal, audience, page list, pillar and cluster structure. `wugweb-work`: topic, client, audience, approved body, rendered page URL, wording. `wugweb-kits`: its check result. `wugweb-brand-os`: approved name, descriptor and facts. Nothing from `wugweb-voice`.
-- **Never does:** Writes or changes copy, titles or headings. Writes to Notion, Sanity or R2. Edits code, robots or sitemap. Sets layout, tokens or the publishing plan. Adds FAQPage, HowTo, review stars or llms.txt. Invents a number.
+- **Never does:** Writes or changes copy, titles or headings. Writes to Notion, Sanity or R2. Edits code, robots or sitemap. Sets layout, tokens or the publishing plan. Adds HowTo, review stars or llms.txt, or asks for FAQPage to win search. Invents a number.
