@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: development chat and repo plan on the skill card (2026-11-16)
+- Docs only. The skill card in `docs/skills/wugweb-strategy/PLAN.md` gains two rows: the development chat the owner gave, and the repo plan link. Same rows on the Notion skill page, written as plain text; replaced line backed up in `backups/notion-wugweb-strategy-page-pre-skill-card-links-2026-11-16.json`.
+
 ### Changed — wugweb-strategy plan: matrix entry trimmed, stale reference fixed (2026-11-16)
 - Docs only. In `docs/skills/wugweb-strategy/PLAN.md` the matrix row's "Never does" entry is back to 40 words, and "(question 21)" in the absorbed table now reads "(decision 21)". Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-matrix-trim-2026-11-16.json`.
 
