@@ -360,3 +360,17 @@ Proposals passed on by the coordinating session from the wugweb-brand-os, wugweb
 | Templated pages drift to a generic voice: compare a page with two siblings, and if only the names differ it fails | `rampstack-seo:programmatic-seo` | ABSORB the check | Voice check scope: templated pages are checked too, through `wugweb-work` | None found. The cause (thin data, weak template) is FOR `wugweb-seo` and `wugweb-work`. |
 | Stock transitions, heavy dashes and bold in most paragraphs read as low-effort machine text | `seo-skills:seo-content-audit` | ABSORB the two wording signals | Voice check, `words.md` | It tolerates em dashes under a threshold; the owner bans them outright. Its other signals (bylines, posting rate) are FOR `wugweb-seo`. |
 | Translate meaning, not words; adapt idioms; keep brand names and technical terms as they are | `searchfit-seo:content-translation` | Held | `modes.md`, only if translated copy is in scope (open question 6) | The skill says nothing about keeping voice or tone. |
+
+### From the design-system docs, 2026-11-16
+
+Source: kits docs (`kits_design_system/docs/components.md` and `tokens/layout-shell.md`), read by this session to confirm the points the coordinating session passed on. `wugweb-voice` owns how these sound, `wugweb-kits` owns where they sit, `wugweb-work` writes them.
+
+| What the docs say | Where it is | For the voice | Lands in |
+|---|---|---|---|
+| Buttons are led by their label, and the label describes the action. Existing labels: "Start a project", "View all articles", "Chat with us", "Get the deck" | `components.md` lines 22 to 62 | These four are real, shipped examples of the voice in a button: a plain verb and the thing. Usable as on-voice examples, source: kits docs | `modes.md` (interface wording), `examples/` |
+| A hidden label is needed only when the visible one does not describe the action (icon-only, a repeated "Learn more") | `layout-shell.md` line 329 | Hidden labels are written in the same voice as visible ones. Prefer a visible label that needs no hidden one | `modes.md` |
+| A section with no visible heading still carries a hidden heading | `layout-shell.md` line 213 | Every section has a name someone writes. Hidden headings follow the same heading rules: sentence case, a plain name for what the section holds | `modes.md` |
+| "Descriptive anchor text, answer-first copy" is listed as copy guidance for existing fields | `layout-shell.md` line 346 | Agrees with "answer first" in the starting text. Link text says where the link goes | `voice.md` |
+| A summary field of 40 to 60 words, shown on the page, is proposed for case studies and posts | `layout-shell.md` line 319, under "Status: proposal, no schema field below is deployed yet" | Not a form yet. If the owner approves the field, it becomes a new mode: a short, answer-first summary. The length belongs to `wugweb-work` | `modes.md`, only if approved |
+
+Note: the docs themselves use em dashes and an en dash in the "40 to 60" range. Those are internal docs, not visible site copy.
