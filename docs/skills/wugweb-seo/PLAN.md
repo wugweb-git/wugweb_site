@@ -10,7 +10,7 @@
 | Type | Claude skill, already installed as one skill |
 | Status | Version 2.1.0 built on the owner's instruction, 2026-11-16. Files in the Skills project under `skills/wugweb-seo/`. The installed copy changes only when the owner saves it. |
 | Alignment plan | Ready for the owner's vetting, 2026-11-16. Written by the wugweb-seo planning session. |
-| Installed copy | 2.1.0. `SKILL.md` on this machine last saved 16 Nov 21:42. The owner saves the real skill in session `cse_01UQ9TRqokKf1xMCS1JD3brM`, which the planning session cannot open. |
+| Installed copy | 2.2.1. `SKILL.md` on this machine last saved 16 Nov at 23.12, with the full folder of 21 files. Version 2.2.0 applied the ten changes listed below; 2.2.1 records two owner decisions. The owner saves the real skill in session `cse_01UQ9TRqokKf1xMCS1JD3brM`, which the planning session cannot open. |
 | Planned in session | wugweb-seo |
 
 ## What it owns
@@ -51,11 +51,13 @@ Every link reads the same on both sides. Neither side edits code.
 
 | With | Gives | Takes |
 | --- | --- | --- |
-| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; search reports | Business goal, audience, page list |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list with the position and click-rate signals behind each suggestion; search reports | Business goal, audience, page list, the pillar and cluster structure |
 | `wugweb-work` | Keyword notes and budgets for one brief; platform keyword note; fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option | Topic, client, audience; approved body; rendered page URL; the wording, voice-checked |
 | `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
 | `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
 | `wugweb-voice` | No link | No link |
+
+Link targets, an owner decision recorded in the skill's 2.2.1 changelog: `wugweb-strategy` sets the pillar and cluster structure. `wugweb-seo` picks each brief's link targets inside it, owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and checks the links in the audit. The coordinating session had proposed that strategy pick the targets; the installed skill's wording is the one used here.
 
 ## Waiting on the owner
 
@@ -65,15 +67,19 @@ Every link reads the same on both sides. Neither side edits code.
 - [ ] The title limit for blog posts and service pages.
 - [ ] Whether AI training bots may crawl, per property. Search and citation bots stay allowed.
 - [ ] Confirm the rule "headings are claims; never ask for a question heading" lives in `wugweb-voice` or `wugweb-work`. wugweb-seo only points to it. The wugweb-work plan says "question form where natural".
-- [ ] Save the 2.1.0 card so the installed skill matches these files.
+- [x] The installed copy matches the built skill: it is now 2.2.1 with all its files.
 - [ ] Is "never FAQPage" site-wide? The `singletonPage` schema has a FAQPage option.
 - [ ] Does BlogPosting with a Person author stay as the blog rule? It is live today.
 - [ ] Should the en dashes in the six service titles be flagged under the no-dash rule?
-- [ ] Do client sites, Kits and Wugweb X keep generic rules, with wugweb.com rules in their own section?
+- [ ] Do client sites, Kits and Wugweb X keep generic rules, with `wugweb.com` rules in their own section?
 - [ ] One description for all three parts, or trigger phrases per part?
 - [ ] Which helper leads the report part and the technical checks?
 - [ ] A limit on tags per post, for the no-stuffing rule.
-- [ ] Take the "Changes to take into the skill session" below into session `cse_01UQ9TRqokKf1xMCS1JD3brM`, or reject them.
+- [ ] Must pages show a date? `pending.md` records that Last Updated is not needed on case studies. Until decided: where a page shows a date, it matches the schema date.
+- [ ] The kits layout-shell doc proposes a `faqs` field feeding FAQPage JSON-LD on case studies and posts, which clashes with the no-FAQPage rule. Remove it from that proposal, or allow it? See "From the kits design-system docs".
+- [x] `aeo-brand-scan` runs only after the owner's yes. Decided, 2.2.1.
+- [x] Link targets. Decided, 2.2.1; see the note above this list.
+- [x] Done in 2.2.0. Take the "Changes to take into the skill session" below into session `cse_01UQ9TRqokKf1xMCS1JD3brM`, or reject them.
 
 ## Plan
 
@@ -177,7 +183,7 @@ Runs only when asked by `wugweb-work` or `wugweb-strategy`. Gives terms for the 
 | Title | 49 characters | Pass |
 | Description | 157 characters | Pass |
 | Canonical | Correct | Pass |
-| og:image | A dark device mockup | Flag |
+| `og:image` | A dark device mockup | Flag |
 | JSON-LD on the main address | Not checked | Unvalidated |
 
 ### Per-task tests
@@ -194,7 +200,7 @@ Runs only when asked by `wugweb-work` or `wugweb-strategy`. Gives terms for the 
 
 ## Changes to take into the skill session
 
-The installed 2.1.0 `SKILL.md` differs from this plan in ten places. These are current → proposed text for the owner to take into session `cse_01UQ9TRqokKf1xMCS1JD3brM`. The installed copy has not been edited.
+The installed 2.1.0 `SKILL.md` differed from this plan in ten places. All ten were applied in version 2.2.0, checked on 2026-11-16 against the installed 2.2.1 skill body, its changelog and its handoffs reference. They stay here as the record. They were current → proposed text for the owner to take into session `cse_01UQ9TRqokKf1xMCS1JD3brM`. The installed copy has not been edited.
 
 | # | Section of `SKILL.md` | Current | Proposed |
 | --- | --- | --- | --- |
@@ -209,7 +215,7 @@ The installed 2.1.0 `SKILL.md` differs from this plan in ten places. These are c
 | 9 | Report part, opening | Starts at step 1 | Add: "The report feeds `wugweb-strategy`'s planning. Reporting on posts belongs there, not here." |
 | 10 | Leave to the owner | "What this skill covers for blog posts and service pages. Not decided." | "Whether `FAQPage` is banned site-wide (the site's page schema has that option). Schema for blog posts, service pages, home and about. What to do with the existing `llms.txt` file." |
 
-`references/handoffs.md` needs changes 1 to 4 and 7 to 9 as well. `AGENTS.md` and the adapters are generated, so `scripts/build.mjs` must run after the edits.
+`references/handoffs.md` needs changes 1 to 4 and 7 to 9 as well; that was done in 2.2.0. `AGENTS.md` and the adapters are generated, so `scripts/build.mjs` must run after the edits.
 
 ## Extracted and absorbed
 
@@ -241,9 +247,9 @@ The helper skills were read on 2026-11-16 (read only) so the skill can work with
 | Sitemap: four differences to report. Indexable pages missing from it; entries with no internal links; entries that are not 200; lastmod identical everywhere or stale. No noindexed URL in it. Canonical, sitemap and internal links agree | seo-skills seo-sitemap, rampstack seo-technical, sanity seo-aeo-best-practices | none |
 | Internal links: every target returns 200; fragment links point at an id that exists; case and trailing slash match the route. Flag dead-end pages, pages four or more clicks from home, generic anchors, and hubs their spokes do not link back to. A page reachable only through the sitemap is an orphan | searchfit broken-links, internal-linking, rampstack programmatic-seo | A 301 as the default fix: the link itself is fixed |
 | JSON-LD hygiene: parses; `@context` is exactly `https://schema.org`; absolute URLs; ISO 8601 dates; no empty values; breadcrumb items carry position, name and item; several types share one graph; present in server HTML; rechecked live after deploy | seo-skills seo-schema, searchfit schema-markup, sanity seo-aeo-best-practices | FAQPage, HowTo, Review, aggregateRating, Article author |
-| Share tags in server HTML: og title, type, description, url, site name, image, image alt; twitter card, title, description, image, image alt. og:url equals the canonical. Today the layout emits 9 of the 12; site name and the two image alt tags are missing | searchfit seo-audit, sanity seo-aeo-best-practices, aeotester audit, wugweb-kits routing | none |
+| Share tags in server HTML: og title, type, description, url, site name, image, image alt; twitter card, title, description, image, image alt. `og:url` equals the canonical. Today the layout emits 9 of the 12; site name and the two image alt tags are missing | searchfit seo-audit, sanity seo-aeo-best-practices, aeotester audit, wugweb-kits routing | none |
 | Images: alt present, 10 to 125 characters, not a file name, not repeated; largest image not lazy and given high fetch priority; width and height set; below-fold images lazy. A fault on every page using a block goes to `wugweb-kits` | seo-skills seo-images | Its re-encoding advice (media rule) |
-| Citability blockers: no answer in the first 300 words; no visible date on time-sensitive content; the entity not named in full at first mention; a statistic without a primary source and data date. Visible dates match the schema dates. No date change without a real edit | seo-skills seo-content-audit, rampstack seo-aeo-geo, sanity seo-aeo-best-practices | Author byline, heading rules, word-count floors |
+| Citability blockers: no answer in the first 300 words; the entity not named in full at first mention; a statistic without a primary source and data date. Where a page shows a date, it matches the schema date; whether pages must show a date is an owner question. No date change without a real edit | seo-skills seo-content-audit, rampstack seo-aeo-geo, sanity seo-aeo-best-practices | Author byline, heading rules, word-count floors |
 | Cannibalisation: flag any phrase where two own pages rank or swap. Skip pages under three months old (source's figure). The owner decides which page keeps it | rampstack seo-content-audit, seo-skills seo-page | Merge and redirect actions |
 | One verdict per page: keep, refresh, or raise with the owner. Under five ranking queries, say the data is insufficient (source's figure) | seo-skills seo-page | Consolidate or kill by redirect |
 | Before and after a deploy, snapshot title, description, H1, canonical, robots, lang, JSON-LD types, word count and internal links. A change to canonical, robots, lang or H1 is red; to title, description or schema is amber | seo-skills seo-drift | none |
@@ -317,7 +323,7 @@ They add tooling or data, or repeat what the skill already holds. No part depend
 - FAQPage or HowTo is also recommended by seo-skills seo-sxo, rampstack seo-technical and searchfit technical-seo.
 - Scores from 0 to 100 with no rubric appear in several helpers. The skill's own citability score stays because it has five stated criteria.
 - Image re-encoding is advised by seo-skills seo-images; weights are reported only.
-- Redirects as a default fix appear in several; wugweb.com adds none for old addresses.
+- Redirects as a default fix appear in several; `wugweb.com` adds none for old addresses.
 
 ### Passed to other skills
 
@@ -331,6 +337,31 @@ Sent to the coordinating session as "FOR" lines: 12 for `wugweb-work`, 9 for `wu
 - Not on disk, so not read: dataviz, artifact-design, simplify and the built-in code-review.
 - Not read: marketing competitive-brief (keyword gaps), a possible plan helper.
 - Do not run brightdata design-mirror: it scrapes other sites, restyles the codebase, and its scripts disable certificate checking. Reported by the wugweb-kits session; not checked here.
+
+## From the kits design-system docs
+
+Source: kits docs, `kits_design_system/docs/tokens/layout-shell.md`, read 2026-11-16. `wugweb-kits` owns these rules; this skill only checks them on a rendered page.
+
+- html lang set; skip link to the main landmark; main, header and footer landmarks; exactly one h1.
+- Every section has an id and an accessible name; heading levels never skip; every image has alt.
+- Baseline for spotting regressions, the doc's own figures from 2026-10-03: 162 of 162 sections labelled, 0 heading skips, 0 images without alt. Not re-run by this session.
+- Descriptive anchor text and answer-first copy: the rule is this skill's, the wording is `wugweb-work`'s.
+
+The same doc proposes CMS fields for case studies and posts. Its own status is "proposal", with nothing deployed. Adding any of them is an owner decision and then development.
+
+| Field | Position | Why |
+| --- | --- | --- |
+| `ogImagePath`, `ogTitle`, `ogDescription` | Support | Share tags are an audit item |
+| `noIndex` | Support | Already in use on seven case studies |
+| `focusKeyword`, `secondaryKeywords`, `searchIntent` | Support | Match the plan part's output. For case studies they must come from Notion through the sync, not be edited in Studio |
+| `breadcrumbLabel` | Support | Feeds BreadcrumbList |
+| `relNofollow`, alt made required | Support | Link and image checks |
+| `seoCanonicalUrl` | Clash | Case-study canonicals come from Notion and there are no redirects. `pending.md` already calls this field unnecessary |
+| `faqs` feeding FAQPage | Clash | The no-FAQPage rule |
+| `schemaType` | Clash for case studies | The type is fixed as CreativeWork; offering Article reopens it. Posts are BlogPosting today |
+| `aiSummary`, `keyTakeaways` on case studies | Clash | Case-study content is the Notion Body Content only; these would be a second copy source. No clash on posts or pages |
+| `lastReviewedAt` | Open | Ties to the question on dates |
+| `ariaLabel`, `imageContext` | Not this skill | Accessibility and editor notes belong to `wugweb-kits` |
 
 ## Works beyond Claude
 
@@ -373,12 +404,12 @@ Until one is confirmed, the report part returns "unvalidated" and ranks by inten
 - JSON-LD cannot be checked on staging; only through a local preview with the main site address.
 - The shared standing-rules file does not exist yet.
 - The Notion "Wugweb SEO" page (last updated 2026-10-14) still lists case-study schema as "Organization, Person, CreativeWork, BreadcrumbList".
-- The 2.1.0 references, scripts and evals were not read by the planning session.
+- The installed 2.2.1 folder is now on this machine. The planning session read its skill body, changelog and handoffs reference; the other references, the scripts and the evals were not read.
 
 ## Matrix row
 
 - **Owns:** Keywords and search intent; on-page rules for title, description and headings; schema and JSON-LD rules; technical SEO checks; AI search readiness; search reporting, for the whole site: case studies, blog posts, service pages.
 - **Reads (sources):** Rendered pages; BaseLayout and JsonLd output; robots.txt and sitemap.xml; Notion Case Studies, Blogs and Wugweb SEO pages; Search Console, GA4 and SEO tool exports; the shared standing rules file.
-- **Gives to:** `wugweb-strategy`: site keyword and intent map, topic gaps, refresh list, search reports. `wugweb-work`: keyword notes and budgets for one brief, platform keyword notes, fix list, JSON-LD check and citability score. `wugweb-kits`: findings that repeat across a block.
-- **Takes from:** `wugweb-strategy`: business goal, audience, page list. `wugweb-work`: topic, client, audience, approved body, rendered page URL, wording. `wugweb-kits`: its check result. `wugweb-brand-os`: approved name, descriptor and facts. Nothing from `wugweb-voice`.
+- **Gives to:** `wugweb-strategy`: site keyword and intent map, topic gaps, refresh list with position and click-rate signals, search reports. `wugweb-work`: keyword notes and budgets for one brief, platform keyword notes, fix list, JSON-LD check and citability score. `wugweb-kits`: findings that repeat across a block.
+- **Takes from:** `wugweb-strategy`: business goal, audience, page list, pillar and cluster structure. `wugweb-work`: topic, client, audience, approved body, rendered page URL, wording. `wugweb-kits`: its check result. `wugweb-brand-os`: approved name, descriptor and facts. Nothing from `wugweb-voice`.
 - **Never does:** Writes or changes copy, titles or headings. Writes to Notion, Sanity or R2. Edits code, robots or sitemap. Sets layout, tokens or the publishing plan. Adds FAQPage, HowTo, review stars or llms.txt. Invents a number.
