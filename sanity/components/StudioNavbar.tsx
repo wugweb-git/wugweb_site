@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavbarProps } from 'sanity';
 import { Flex, Card, Button, Text, Badge, Box } from '@sanity/ui';
-import { LaunchIcon, ControlsIcon, EarthAmericasIcon, CheckmarkIcon } from '@sanity/icons';
+import { LaunchIcon } from '@sanity/icons/Launch';
+import { ControlsIcon } from '@sanity/icons/Controls';
+import { EarthAmericasIcon } from '@sanity/icons/EarthAmericas';
+import { CheckmarkIcon } from '@sanity/icons/Checkmark';
 
 export function StudioNavbar(props: NavbarProps) {
   return (
@@ -25,10 +28,10 @@ function StackWithCustomNavbar({ props }: { props: NavbarProps }) {
       >
         <Flex justify="space-between" align="center">
           <Flex align="center" gap={2}>
-            <Badge tone="positive" fontSize={0} mode="outline">
+            <Badge tone="positive" fontSize={0}>
               ● API 2026-01-01
             </Badge>
-            <Badge tone="default" fontSize={0} mode="outline">
+            <Badge tone="default" fontSize={0}>
               PRODUCTION (splvhmk1)
             </Badge>
           </Flex>

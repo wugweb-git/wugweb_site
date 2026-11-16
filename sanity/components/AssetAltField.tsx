@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Stack, Text, TextInput, useToast } from '@sanity/ui';
+import { Stack, Text, TextInput } from '@sanity/ui';
+import { useToast } from '@sanity/ui/toast';
 import { friendly } from './AssetUsagePanel';
 
 interface Props {
@@ -64,7 +65,7 @@ export function AssetAltField({ assetId, alt: altProp, client, onSaved, compact,
   );
   if (compact) return input;
   return (
-    <Stack space={2}>
+    <Stack gap={2}>
       <Text size={1} weight="bold">Alt text</Text>
       {input}
       <Text size={0} muted>

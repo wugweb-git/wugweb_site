@@ -201,7 +201,9 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - Dashboard deploy command must be: `npx wrangler pages deploy dist`.
 - Required secrets (set via Cloudflare dashboard or `wrangler pages secret`):
   - `DATABASE_URL` — Neon connection string
-  - `SANITY_SYNC_TOKEN` — auth token for `/api/sync`
+  - `SANITY_SYNC_TOKEN` — Sanity editor token (form mirrors, preview reads)
+  - `NEON_SYNC_SECRET` — random 32+ chars, `X-Sync-Token` for `/api/sync` (fails closed with 503 when unset; no longer the Sanity token)
+  - `PREVIEW_SECRET` — random 32+ chars, `/api/preview?secret=…&slug=/path` (fails closed when unset; the Sanity token never goes in the URL)
 - Hyperdrive is **not wired**. The `HYPERDRIVE` binding is absent from `wrangler.jsonc`; the code falls back to `DATABASE_URL`.
 - R2 binding `ASSETS_BUCKET` → bucket `wugweb-assets`. Public base var: `PUBLIC_R2_ASSETS_BASE`. Upload: `node scripts/upload-assets-to-r2.mjs`.
 - If runtime shows `Invalid binding "SESSION"`, create a KV namespace named `SESSION` and add it to `wrangler.jsonc`.
@@ -262,6 +264,6 @@ node scripts/map-assets-to-content.mjs
 # Sanity → Neon sync (local or remote via API)
 curl -X POST https://wugweb.pages.dev/api/sync \
   -H 'Content-Type: application/json' \
-  -H 'X-Sync-Token: <token>' \
+  -H 'X-Sync-Token: <NEON_SYNC_SECRET>' \
   -d '{"docs": [...]}'
 ```

@@ -52,22 +52,40 @@ function dupRule(field: DupField) {
       .warning();
 }
 
-function append(existing: unknown, extra: (rule: any) => any) {
+/**
+ * Search-result length limits, as warnings (never block publishing). The
+ * title limit is for the stored title: BaseLayout adds " | Wugweb" only when
+ * the result still fits in 60.
+ */
+export const SEO_MAX: Record<DupField, number> = { seoTitle: 60, seoDescription: 160 };
+
+/** Pure core for the length rule: `true` or the warning text. */
+export function lengthWarning(field: DupField, value: unknown): true | string {
+  const n = typeof value === 'string' ? value.trim().length : 0;
+  const max = SEO_MAX[field];
+  return n <= max || `${LABEL[field]} is ${n} characters. Keep it to ${max} or fewer so search results do not cut it off.`;
+}
+
+function lengthRule(field: DupField) {
+  return (rule: any) => rule.custom((value: unknown) => lengthWarning(field, value)).warning();
+}
+
+function append(existing: unknown, ...extra: ((rule: any) => any)[]) {
   return (rule: any) => {
     const base = typeof existing === 'function' ? existing(rule) : existing;
     const list = base == null ? [] : Array.isArray(base) ? base : [base];
-    return [...list, extra(rule)];
+    return [...list, ...extra.map((e) => e(rule))];
   };
 }
 
-/** Returns the schema types with duplicate warnings on seoTitle/seoDescription. */
+/** Returns the schema types with duplicate and length warnings on seoTitle/seoDescription. */
 export function withSeoDuplicateWarnings<T extends { name: string; fields?: any[] }>(types: T[]): T[] {
   return types.map((type) => {
     if (!DUP_TYPES.includes(type.name) || !Array.isArray(type.fields)) return type;
     return {
       ...type,
       fields: type.fields.map((f: any) =>
-        (DUP_FIELDS as readonly string[]).includes(f?.name) ? { ...f, validation: append(f.validation, dupRule(f.name)) } : f,
+        (DUP_FIELDS as readonly string[]).includes(f?.name) ? { ...f, validation: append(f.validation, dupRule(f.name), lengthRule(f.name)) } : f,
       ),
     };
   });

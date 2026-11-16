@@ -135,19 +135,15 @@ const accentMap: Record<string, string> = {
   green: 'var(--color-feedback-success)',
 };
 
-const allSlugsRaw = await sanityClient.fetch(`*[_type == "caseStudy" && !(_id in path("drafts.**"))]{"slug": slug.current}`).catch(() => []);
-const seenSlugs = new Set();
-const allSlugs = [];
-for (const s of (allSlugsRaw || [])) {
-  if (s && s.slug && !seenSlugs.has(s.slug)) {
-    seenSlugs.add(s.slug);
-    allSlugs.push(s);
-  }
-}
-const others = allSlugs.filter((s: any) => s.slug !== slug).slice(0, 2);
-const otherCases = await Promise.all(others.map((s: any) =>
-  sanityClient.fetch(`*[_type == "caseStudy" && slug.current == $slug && !(_id in path("drafts.**"))][0]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }`, { slug: s.slug }).catch(() => null)
-)).then(r => r.filter(Boolean));
+// Two other case studies in one query (was one query per case study).
+// Same order and same fields as before: first two by default order, unique slugs.
+const otherCases = await sanityClient.fetch(
+  `*[_type == "caseStudy" && defined(slug.current) && slug.current != $slug && !(_id in path("drafts.**"))]{ title, "slug": slug.current, client, disciplines, coverPath, thumbnailPath }[0...6]`,
+  { slug },
+).then((rows: any[]) => {
+  const seen = new Set<string>();
+  return (rows || []).filter((r) => r?.slug && !seen.has(r.slug) && seen.add(r.slug)).slice(0, 2);
+}).catch(() => []);
 ---
 
 <BaseLayout title={`${work.title} — Wugweb Work`} description={pageDescription} seoTitle={pageTitle} ogImage={ogImageUrl} ogTitle={work.ogTitle} ogDescription={work.ogDescription} noIndex={work.noIndex} jsonLd={[caseStudyNode, breadcrumbNode]}>

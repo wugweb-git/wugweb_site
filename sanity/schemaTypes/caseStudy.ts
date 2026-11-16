@@ -218,6 +218,15 @@ export default defineType({
       description: 'Notion "Body Content", converted to markdown with media on R2. Synced by scripts/sync-notion-case-studies.mjs — edit it in Notion.',
       readOnly: true,
     }),
+    // Written by scripts/sync-notion-case-studies.mjs and rendered by
+    // /work/[slug] as the extra gallery; queried for a long time without being
+    // declared, so editors could not see it.
+    defineField({
+      name: 'extraMedia', title: 'Extra media (from Notion)', type: 'array', group: 'overview',
+      of: [{ type: 'string' }],
+      description: 'R2 media URLs from the Notion page, shown after the body. Synced, so edit it in Notion.',
+      readOnly: true,
+    }),
     defineField({
       name: 'focusKeyword', type: 'string', group: 'seo',
       title: 'Focus Keyword',

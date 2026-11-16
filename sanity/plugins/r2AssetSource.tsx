@@ -14,13 +14,11 @@ import {
   Button,
   Spinner,
 } from '@sanity/ui';
-import {
-  ImagesIcon,
-  SearchIcon,
-  CheckmarkIcon,
-  CloseIcon,
-  ImageIcon,
-} from '@sanity/icons';
+import { ImagesIcon } from '@sanity/icons/Images';
+import { SearchIcon } from '@sanity/icons/Search';
+import { CheckmarkIcon } from '@sanity/icons/Checkmark';
+import { CloseIcon } from '@sanity/icons/Close';
+import { ImageIcon } from '@sanity/icons/Image';
 
 interface AssetDoc {
   _id: string;
@@ -105,7 +103,7 @@ export function R2AssetSourceComponent(props: AssetSourceComponentProps) {
       zOffset={10000}
     >
       <Box padding={4}>
-        <Stack space={4}>
+        <Stack gap={4}>
           {/* Header Controls */}
           <Flex gap={3} align="center" wrap="wrap">
             <Box flex={1}>
@@ -157,7 +155,7 @@ export function R2AssetSourceComponent(props: AssetSourceComponentProps) {
             </Card>
           ) : (
             <Box style={{ maxHeight: '52vh', overflowY: 'auto', paddingRight: 4 }}>
-              <Grid columns={[2, 3, 4, 5]} gap={2}>
+              <Grid gridTemplateColumns={[2, 3, 4, 5]} gap={2}>
                 {filteredAssets.map((asset) => {
                   const isSelected = selectedAsset?._id === asset._id;
                   const ext = String(asset.extension || '').toLowerCase();

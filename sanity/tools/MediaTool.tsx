@@ -1,6 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Box, Card, Flex, Grid, Stack, Text, Badge, Button, Select, TextInput, useToast } from '@sanity/ui';
-import { SearchIcon, RefreshIcon, CopyIcon, LaunchIcon, ImagesIcon } from '@sanity/icons';
+import { Box, Card, Flex, Grid, Stack, Text, Badge, Button, Select, TextInput } from '@sanity/ui';
+import { useToast } from '@sanity/ui/toast';
+import { SearchIcon } from '@sanity/icons/Search';
+import { RefreshIcon } from '@sanity/icons/Refresh';
+import { CopyIcon } from '@sanity/icons/Copy';
+import { LaunchIcon } from '@sanity/icons/Launch';
+import { ImagesIcon } from '@sanity/icons/Images';
 import { useClient } from 'sanity';
 import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
 import { AssetUsagePanel, type UndoEntry } from '../components/AssetUsagePanel';
@@ -259,7 +264,7 @@ function MediaToolContent() {
         radius={2}
         style={{ width: 340, flexShrink: 0, position: 'sticky', top: 20, maxHeight: 'calc(100vh - 40px)', overflowY: 'auto' }}
       >
-        <Stack space={3}>
+        <Stack gap={3}>
           <Flex justify="space-between" align="center">
             <Badge tone="primary" fontSize={0}>
               {selectedAsset.mediaType?.toUpperCase() || 'ASSET'}
@@ -283,7 +288,7 @@ function MediaToolContent() {
             />
           </div>
 
-          <Stack space={1}>
+          <Stack gap={1}>
             <Text size={1} weight="bold">{selectedAsset.displayName || selectedAsset.name}</Text>
             <Text size={0} muted style={{ fontFamily: 'monospace', wordBreak: 'break-all' }}>
               {selectedAsset.sitePath || selectedAsset.relativePath || selectedAsset.r2Key}
@@ -329,10 +334,10 @@ function MediaToolContent() {
 
   return (
     <Card tone="default" padding={[2, 3, 4]} style={{ minHeight: '100%' }}>
-      <Stack space={4}>
+      <Stack gap={4}>
         {/* Header toolbar */}
         <Flex align="center" justify="space-between" gap={2} wrap="wrap">
-          <Stack space={1}>
+          <Stack gap={1}>
             <Flex align="center" gap={2}>
               <ImagesIcon style={{ fontSize: 22, color: 'var(--card-badge-caution-dot-color, #e6a700)' }} />
               <Text size={3} weight="bold">Cloudflare R2 Media Catalog</Text>
@@ -435,7 +440,7 @@ function MediaToolContent() {
           </Card>
         ) : view === 'grid' ? (
           <Flex gap={3} align="flex-start">
-            <Grid columns={[2, 3, 4, 5, 6]} gap={2} style={{ flex: 1 }}>
+            <Grid gridTemplateColumns={[2, 3, 4, 5, 6]} gap={2} style={{ flex: 1 }}>
               {filtered.map((r) => {
                 const ext = String(r.extension || (r.name || '').split('.').pop() || '').toLowerCase();
                 const isVideo = VIDEO_EXT.includes(ext);

@@ -1,4 +1,5 @@
 ---
+import { safeJson } from '../lib/safe-json';
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -345,7 +346,7 @@ const showFinalCta = finalCtaSection !== null;
     {!noIndex && <link rel="canonical" href={canonicalUrl} />}
     {robotsNoIndex && <meta name="robots" content="noindex, follow" />}
     {verifyTags.map((t) => <meta name={t.name} content={t.content} />)}
-    {integrationsConfig && <script id="wugweb-integrations" type="application/json" set:html={JSON.stringify(integrationsConfig)} />}
+    {integrationsConfig && <script id="wugweb-integrations" type="application/json" set:html={safeJson(integrationsConfig)} />}
     <JsonLd graph={graphNodes} />
 
     <!-- X / Twitter -->

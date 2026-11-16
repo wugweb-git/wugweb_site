@@ -1,4 +1,5 @@
-import { Badge, Box, Flex, Text, Tooltip } from '@sanity/ui';
+import { Badge, Box, Flex, Text } from '@sanity/ui';
+import { Tooltip } from '@sanity/ui/tooltip';
 import type { ReactNode } from 'react';
 import { initials, relativeTime } from '../lib/format';
 import { seoLevel, COMPLETENESS_HELP, type Severity } from '../lib/health';
@@ -47,7 +48,7 @@ const STATUS_LABEL: Record<string, string> = {
 };
 
 export function StatusBadge({ value }: { value: string | null | undefined }) {
-  if (!value) return <Badge tone="neutral" muted>—</Badge>;
+  if (!value) return <Badge tone="neutral">—</Badge>;
   const tone = STATUS_TONE[value.toLowerCase()] ?? 'neutral';
   const label = STATUS_LABEL[value.toLowerCase()] ?? value;
   return <Badge tone={tone} fontSize={1}>{label}</Badge>;
@@ -74,7 +75,7 @@ export function SeoBadge({ score }: { score: number }) {
 export function HealthFlagChip({ severity, label }: { severity: Severity; label: string }) {
   const tone = SEO_TONE[severity];
   return (
-    <Badge tone={tone} fontSize={1} mode="outline">
+    <Badge tone={tone} fontSize={1}>
       {label}
     </Badge>
   );

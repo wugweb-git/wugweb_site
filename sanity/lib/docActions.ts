@@ -6,80 +6,113 @@ import { downloadCSV, toCSV } from './csv';
  * All client-side via the Sanity client (free-tier safe).
  */
 
-/** Duplicate documents safely across any schema type. */
+const baseOf = (id: string) => id.replace(/^drafts\./, '');
+
+/**
+ * Types that must exist once per key (a page per pageId, one site settings,
+ * a section per sectionId, ...). Duplicating them makes a clash, so it is refused.
+ */
+export const SINGLETON_TYPES = new Set(['siteSettings', 'singletonPage', 'pageSection', 'syncStatus', 'contactSubmission']);
+
+/**
+ * Fields that identify a document to the site or to a sync (Notion ids, page
+ * and section keys). A copy must not carry them, or two docs answer to one key.
+ */
+const IDENTITY_FIELDS = ['externalId', 'pageId', 'sectionId', 'menuId', 'profileId', 'credentialId', 'canonicalUrl', 'legacySlugs'];
+
+/**
+ * Duplicate documents as NEW DRAFTS. Nothing goes live until someone
+ * publishes the copy. Reads the draft when there is one, so a draft-only
+ * row duplicates too.
+ */
 export async function duplicateDocs(client: SanityClient, ids: string[]): Promise<boolean> {
-  const drafts = ids.filter((id) => id.startsWith('drafts.'));
-  const published = ids.filter((id) => !id.startsWith('drafts.'));
-  const toDuplicate = [...drafts, ...published];
+  const bases = [...new Set(ids.map(baseOf))];
+  let made = 0;
+  const refused: string[] = [];
 
-  for (const id of toDuplicate) {
-    const doc = await client.getDocument(id);
+  for (const base of bases) {
+    const [draft, published] = await client.getDocuments([`drafts.${base}`, base]);
+    const doc = (draft || published) as any;
     if (!doc) continue;
-    const { _id, _rev, _createdAt, _updatedAt, _type, ...rest } = doc as any;
+    if (SINGLETON_TYPES.has(doc._type)) { refused.push(doc._type); continue; }
 
-    const copySuffix = ` (Copy)`;
-    const patchObj: Record<string, unknown> = { _type, ...rest };
+    const { _id, _rev, _createdAt, _updatedAt, _type, ...rest } = doc;
+    for (const f of IDENTITY_FIELDS) delete rest[f];
 
-    if (typeof rest.title === 'string') patchObj.title = `${rest.title}${copySuffix}`;
-    if (typeof rest.name === 'string') patchObj.name = `${rest.name}${copySuffix}`;
-    if (typeof rest.displayName === 'string') patchObj.displayName = `${rest.displayName}${copySuffix}`;
+    const copy: Record<string, unknown> = { _type, ...rest };
+    const copySuffix = ' (Copy)';
+    if (typeof rest.title === 'string') copy.title = `${rest.title}${copySuffix}`;
+    if (typeof rest.name === 'string') copy.name = `${rest.name}${copySuffix}`;
+    if (typeof rest.displayName === 'string') copy.displayName = `${rest.displayName}${copySuffix}`;
 
+    const suffix = Math.random().toString(36).substring(2, 6);
     if (rest.slug && typeof rest.slug === 'object') {
       const currentSlug = typeof rest.slug.current === 'string' ? rest.slug.current : 'copy';
-      const uniqueSuffix = Math.random().toString(36).substring(2, 6);
-      patchObj.slug = {
-        ...rest.slug,
-        current: `${currentSlug}-copy-${uniqueSuffix}`,
-      };
+      copy.slug = { ...rest.slug, current: `${currentSlug}-copy-${suffix}` };
     }
 
-    await client.create(patchObj as any);
+    await client.create({ ...copy, _id: `drafts.${base}-copy-${suffix}` } as any);
+    made++;
   }
+
+  if (!made && refused.length) throw new Error(`${refused[0]} documents cannot be duplicated`);
+  if (!made) throw new Error('Nothing to duplicate');
   return true;
 }
 
-/** Publish a draft (create/replace published doc without internal revision metadata). */
+/**
+ * Publish: for each row, if a draft exists, copy it over the published doc
+ * and remove the draft in ONE transaction. Rows arrive with published ids
+ * (fetchDocs merges drafts), so the draft is looked up from the base id.
+ * Throws when no row had a draft, so the table never reports a fake success.
+ */
 export async function publishDocs(client: SanityClient, ids: string[]): Promise<boolean> {
-  for (const id of ids) {
-    if (!id.startsWith('drafts.')) continue;
-    const pubId = id.slice('drafts.'.length);
-    const draft = await client.getDocument(id);
-    if (!draft) continue;
+  const bases = [...new Set(ids.map(baseOf))];
+  const drafts = (await client.getDocuments(bases.map((b) => `drafts.${b}`))).filter(Boolean) as any[];
+  if (!drafts.length) throw new Error('No unpublished changes to publish');
 
-    // Strip internal revision metadata so createOrReplace succeeds without 409 conflict
-    const { _id, _rev, _createdAt, _updatedAt, ...content } = draft as any;
-    await client.createOrReplace({ ...content, _id: pubId });
-    await client.delete(id); // remove draft
+  const tx = client.transaction();
+  for (const draft of drafts) {
+    const { _id, _rev, _createdAt, _updatedAt, ...content } = draft;
+    tx.createOrReplace({ ...content, _id: baseOf(_id) });
+    tx.delete(_id);
   }
+  await tx.commit();
   return true;
 }
 
-/** Unpublish (move published document → draft). */
+/** Unpublish: move each published doc to a draft, in one transaction. */
 export async function unpublishDocs(client: SanityClient, ids: string[]): Promise<boolean> {
-  for (const id of ids) {
-    if (id.startsWith('drafts.')) continue;
-    const doc = await client.getDocument(id);
-    if (!doc) continue;
+  const bases = [...new Set(ids.map(baseOf))];
+  const published = (await client.getDocuments(bases)).filter(Boolean) as any[];
+  if (!published.length) throw new Error('Nothing published to unpublish');
 
-    // Strip internal revision metadata before replacing draft
-    const { _id, _rev, _createdAt, _updatedAt, ...content } = doc as any;
-    await client.createOrReplace({ ...content, _id: `drafts.${id}` });
-    await client.delete(id);
+  const drafts = (await client.getDocuments(bases.map((b) => `drafts.${b}`))).filter(Boolean) as any[];
+  const hasDraft = new Set(drafts.map((d) => baseOf(d._id)));
+
+  const tx = client.transaction();
+  for (const doc of published) {
+    // Keep an existing draft (newer edits); otherwise the published content becomes the draft.
+    if (!hasDraft.has(doc._id)) {
+      const { _id, _rev, _createdAt, _updatedAt, ...content } = doc;
+      tx.create({ ...content, _id: `drafts.${_id}` });
+    }
+    tx.delete(doc._id);
   }
+  await tx.commit();
   return true;
 }
 
-/** Archive: set soft status field if present. */
+/** Archive: set status to 'Archived' on docs that have a status field. */
 export async function archiveDocs(client: SanityClient, ids: string[]): Promise<boolean> {
-  for (const id of ids) {
-    const doc = await client.getDocument(id);
-    if (!doc) continue;
-    const patch: Record<string, unknown> = {};
-    if ('status' in doc) patch.status = 'Archived';
-    if (Object.keys(patch).length > 0) {
-      await client.patch(id).set(patch).commit();
-    }
-  }
+  const bases = [...new Set(ids.map(baseOf))];
+  const docs = (await client.getDocuments(bases.flatMap((b) => [b, `drafts.${b}`]))).filter(Boolean) as any[];
+  const withStatus = docs.filter((d) => 'status' in d && d._type !== 'experiment');
+  if (!withStatus.length) throw new Error('These documents have no status to archive');
+
+  const tx = client.transaction();
+  for (const d of withStatus) tx.patch(d._id, { set: { status: 'Archived' } });
+  await tx.commit();
   return true;
 }
 

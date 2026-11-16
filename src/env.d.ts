@@ -10,7 +10,7 @@ type Runtime = import('@astrojs/cloudflare').Runtime<ENV>;
 
 declare namespace App {
   interface Locals extends Runtime {
-    /** Set by /api/preview cookie; pages use getPreviewClient(token). */
+    /** Server-side Sanity read token, set by middleware while the /api/preview flag cookie is on. */
     previewToken?: string;
   }
 }

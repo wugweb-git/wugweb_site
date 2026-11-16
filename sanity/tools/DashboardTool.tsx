@@ -1,6 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, type MouseEvent } from 'react';
 import { Box, Card, Flex, Grid, Stack, Text, Badge, Button } from '@sanity/ui';
-import { ComposeIcon, SearchIcon, UploadIcon } from '@sanity/icons';
+import { ComposeIcon } from '@sanity/icons/Compose';
+import { SearchIcon } from '@sanity/icons/Search';
+import { UploadIcon } from '@sanity/icons/Upload';
 import { useClient } from 'sanity';
 import { useRouter } from 'sanity/router';
 import { seoLevel } from '../lib/health';
@@ -37,9 +39,9 @@ async function loadDashboard(client: any): Promise<DashboardData> {
     "drafts":            count(*[_id in path("drafts.**")]),
     "missingSeo":        count(*[_type in ["post","caseStudy","service","singletonPage"] && !(_id in path("drafts.**")) && !defined(seoDescription)]),
     "missingCover":      count(*[_type in ["post","caseStudy"] && !(_id in path("drafts.**")) && !defined(coverImage) && !defined(coverPath)]),
-    "publishedToday":    count(*[_type=="post" && !(_id in path("drafts.**")) && dateTime(publishedAt) >= dateTime(now() - 86400)]),
-    "scheduled":         count(*[_type=="post" && !(_id in path("drafts.**")) && dateTime(publishedAt) > now()]),
-    "updatedRecent":     count(*[_type=="post" && !(_id in path("drafts.**")) && _updatedAt >= dateTime(now() - 604800)]),
+    "publishedToday":    count(*[_type=="post" && !(_id in path("drafts.**")) && dateTime(publishedAt) >= dateTime(now()) - 86400 && dateTime(publishedAt) <= dateTime(now())]),
+    "scheduled":         count(*[_type=="post" && !(_id in path("drafts.**")) && dateTime(publishedAt) > dateTime(now())]),
+    "updatedRecent":     count(*[_type=="post" && !(_id in path("drafts.**")) && dateTime(_updatedAt) >= dateTime(now()) - 604800]),
     "syncErrors":        count(*[_type=="syncStatus" && status=="error"]),
     "mediaMissingPath":  count(*[_type=="asset" && !defined(relativePath) && !defined(sitePath) && !defined(r2Key)]),
     "mediaArchived":     count(*[_type=="asset" && status=="Archived"])
@@ -70,10 +72,10 @@ async function loadDashboard(client: any): Promise<DashboardData> {
 function StatCard({ label, value, tone = 'default', onClick }: { label: string; value: number; tone?: 'default' | 'positive' | 'caution' | 'critical' | 'primary'; onClick?: () => void }) {
   return (
     <Card border radius={2} padding={3} as={onClick ? 'button' : 'div'} onClick={onClick} style={{ textAlign: 'left', cursor: onClick ? 'pointer' : 'default', transition: 'transform 120ms ease, border-color 120ms ease' }}
-      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
-      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = 'none'; }}
+      onMouseEnter={(e: MouseEvent<HTMLElement>) => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+      onMouseLeave={(e: MouseEvent<HTMLElement>) => { (e.currentTarget as HTMLElement).style.transform = 'none'; }}
     >
-      <Stack space={2}>
+      <Stack gap={2}>
         <Text size={1} muted>{label}</Text>
         <Text size={4} weight="bold" style={{ color: tone === 'critical' ? 'var(--card-bad-fg-color, #e54f30)' : tone === 'positive' ? 'var(--card-positive-fg-color, #1f9d61)' : tone === 'caution' ? 'var(--card-caution-fg-color, #b7791f)' : tone === 'primary' ? 'var(--card-primary-fg-color, #4c9aff)' : 'inherit' }}>{value}</Text>
       </Stack>
@@ -106,7 +108,7 @@ function DashboardToolContent() {
     return <Card padding={5} style={{ textAlign: 'center' }}><Text size={2} muted>Loading Studio Dashboard…</Text></Card>;
   }
   if (error || !data) {
-    return <Card padding={4} tone="critical" radius={2} margin={4}><Stack space={3}><Text size={2} weight="bold">Dashboard Error</Text><Text size={1}>{error || 'No data available.'}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ alignSelf: 'flex-start' }} /></Stack></Card>;
+    return <Card padding={4} tone="critical" radius={2} margin={4}><Stack gap={3}><Text size={2} weight="bold">Dashboard Error</Text><Text size={1}>{error || 'No data available.'}</Text><Button text="Retry" mode="ghost" onClick={load} style={{ alignSelf: 'flex-start' }} /></Stack></Card>;
   }
 
   const nav = (path: string) => navigateUrl({ path });
@@ -121,14 +123,14 @@ function DashboardToolContent() {
   return (
     <Card padding={[3, 4, 5]} tone="default">
       <Flex align="center" justify="space-between" marginBottom={4}>
-        <Stack space={1}>
+        <Stack gap={1}>
           <Text size={3} weight="bold">Website Back-Office Dashboard</Text>
           <Text size={1} muted>Health audit, content volume & operational metrics</Text>
         </Stack>
         <Button text="Refresh" mode="ghost" onClick={load} />
       </Flex>
 
-      <Grid columns={[2, 3, 4]} gap={3}>
+      <Grid gridTemplateColumns={[2, 3, 4]} gap={3}>
         <StatCard label="Blog Posts"          value={data.counts.post       || 0} onClick={() => nav('/structure/post')} />
         <StatCard label="Case Studies"        value={data.counts.caseStudy  || 0} onClick={() => nav('/structure/caseStudy')} />
         <StatCard label="Clients"             value={data.counts.client     || 0} onClick={() => nav('/structure/client')} />
@@ -142,10 +144,10 @@ function DashboardToolContent() {
       </Grid>
 
       <Text size={2} weight="semibold" muted style={{ margin: '24px 0 8px' }}>Content by type</Text>
-      <Grid columns={[2, 3, 4]} gap={2}>
+      <Grid gridTemplateColumns={[2, 3, 4]} gap={2}>
         {data.contentTypes.map((c) => (
           <Card key={c._type} border radius={2} padding={3}>
-            <Stack space={1}>
+            <Stack gap={1}>
               <Text size={1} muted>{c._type}</Text>
               <Text size={3} weight="semibold">{c.count}</Text>
             </Stack>

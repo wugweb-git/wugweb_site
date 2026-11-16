@@ -10,8 +10,9 @@
  * that window costs nothing. Free plan: 250k API requests/month.
  */
 import { useEffect, useMemo, useState } from 'react';
-import { Badge, Box, Button, Card, Flex, Popover, Stack, Text, useClickOutsideEvent } from '@sanity/ui';
-import { SparklesIcon } from '@sanity/icons';
+import { Badge, Box, Button, Card, Flex, Stack, Text, useClickOutsideEvent } from '@sanity/ui';
+import { Popover } from '@sanity/ui/popover';
+import { SparklesIcon } from '@sanity/icons/Sparkles';
 import { buildDuplicateIndex, type AltLookup, type DuplicateIndex } from './health';
 import { toRel } from './assetUsage';
 import { enrichRows, SEO_TABLE_TYPES, type ChecksResult } from './seoSummary';
@@ -90,7 +91,7 @@ function ChecksCell({ result }: { result?: ChecksResult }) {
           {result.failed.length === 0 ? (
             <Text size={1} muted>All {result.total} checks pass.</Text>
           ) : (
-            <Stack space={2}>
+            <Stack gap={2}>
               {result.failed.map((c) => (
                 <Flex key={c.id} gap={2} align="flex-start">
                   <Badge tone={c.severity === 'bad' ? 'critical' : 'caution'} fontSize={0}>{c.severity === 'bad' ? 'Fix' : 'Warn'}</Badge>

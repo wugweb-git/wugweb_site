@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
-import { connect, connectionStringFrom } from '../../lib/db';
+import { connect } from '../../lib/db';
+import { safeEqual } from '../../lib/indexnow';
+import { MIN_TOKEN_LENGTH } from '../../lib/bearer';
 
 /**
  * POST /api/sync
@@ -10,29 +12,75 @@ import { connect, connectionStringFrom } from '../../lib/db';
  *   3. A Sanity webhook on document publish
  *
  * Body: { doc: SanityDocument }
- * Auth: X-Sync-Token header matching SANITY_SYNC_TOKEN env var
+ * Auth: X-Sync-Token header matching the NEON_SYNC_SECRET env var.
+ *
+ * NEON_SYNC_SECRET is its own random secret (32+ chars). It is deliberately
+ * NOT the Sanity editor token: whoever calls this route should not also hold
+ * Sanity write access. Fails closed: no secret configured, no sync.
  */
 
 export const prerender = false;
 
+const json = (body: unknown, status: number) =>
+  new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
+
+/** Largest request body accepted (bytes). A full bulk sync is well under this. */
+const MAX_BODY_BYTES = 2 * 1024 * 1024;
+const MAX_DOCS = 500;
+
+// Map Sanity types to Neon content_type values. Anything not listed is refused.
+const TYPE_MAP: Record<string, string> = {
+  service: 'service',
+  caseStudy: 'caseStudy',
+  post: 'post',
+  person: 'person',
+  siteSettings: 'siteSettings',
+  singletonPage: 'page',
+  client: 'client',
+  industry: 'industry',
+  engagement: 'engagement',
+  taxonomy: 'taxonomy',
+  contactSubmission: 'contactSubmission',
+  asset: 'asset',
+  platformProfile: 'platformProfile',
+  syncStatus: 'syncStatus',
+};
+
 export const POST: APIRoute = async ({ request, locals }) => {
-  // Auth
-  const syncToken = request.headers.get('X-Sync-Token');
-  const expectedToken = locals.runtime.env.SANITY_SYNC_TOKEN;
-  if (expectedToken && syncToken !== expectedToken) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
+  const expected = locals.runtime.env.NEON_SYNC_SECRET;
+  if (typeof expected !== 'string' || expected.length < MIN_TOKEN_LENGTH) {
+    return json({ error: 'Sync is not configured' }, 503);
   }
+  if (!safeEqual(request.headers.get('X-Sync-Token') ?? '', expected)) {
+    return json({ error: 'Unauthorized' }, 401);
+  }
+
+  const declared = Number(request.headers.get('Content-Length') || 0);
+  if (declared > MAX_BODY_BYTES) return json({ error: 'Payload too large' }, 413);
+  const raw = await request.text();
+  if (raw.length > MAX_BODY_BYTES) return json({ error: 'Payload too large' }, 413);
 
   let body: { doc?: Record<string, unknown>; docs?: Record<string, unknown>[] };
   try {
-    body = await request.json();
+    body = JSON.parse(raw);
   } catch {
-    return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400 });
+    return json({ error: 'Invalid JSON' }, 400);
   }
 
-  const docs = body.docs ?? (body.doc ? [body.doc] : []);
-  if (!docs.length) {
-    return new Response(JSON.stringify({ error: 'No docs provided' }), { status: 400 });
+  const docs = Array.isArray(body?.docs) ? body.docs : body?.doc ? [body.doc] : [];
+  if (!docs.length) return json({ error: 'No docs provided' }, 400);
+  if (docs.length > MAX_DOCS) return json({ error: `At most ${MAX_DOCS} docs per call` }, 413);
+
+  // Validate every doc before touching the database: known type, plain
+  // published id. Drafts never reach Neon, because Neon marks rows published.
+  for (const d of docs) {
+    const id = d && typeof d === 'object' ? d._id : undefined;
+    if (typeof id !== 'string' || !/^[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}$/.test(id) || id.startsWith('drafts.') || id.startsWith('versions.')) {
+      return json({ error: 'Every doc needs a published _id' }, 400);
+    }
+    if (typeof d._type !== 'string' || !(d._type in TYPE_MAP)) {
+      return json({ error: `Unsupported _type on ${id}` }, 400);
+    }
   }
 
   const client = await connect(locals.runtime.env);
@@ -57,30 +105,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const logId = logResult.rows[0]?.id;
     let successCount = 0;
     let errorMessage = '';
+    let relationErrors = 0;
 
     for (const doc of docs) {
       try {
         const type = doc._type as string;
-        const id = (doc._id as string) || (doc.slug as string) || (doc.pageId as string);
-
-        // Map Sanity types to Neon content_type values
-        const typeMap: Record<string, string> = {
-          service: 'service',
-          caseStudy: 'caseStudy',
-          post: 'post',
-          person: 'person',
-          siteSettings: 'siteSettings',
-          singletonPage: 'page',
-          client: 'client',
-          industry: 'industry',
-          engagement: 'engagement',
-          taxonomy: 'taxonomy',
-          contactSubmission: 'contactSubmission',
-          asset: 'asset',
-          platformProfile: 'platformProfile',
-          syncStatus: 'syncStatus',
-        };
-        const contentType = typeMap[type] || type;
+        const id = doc._id as string;
+        const contentType = TYPE_MAP[type];
         const owner = docOwner(doc);
 
         // Media fields (images) — store as references, not raw data.
@@ -98,6 +129,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
            on conflict (id) do update set
              content_type = excluded.content_type,
              status = 'published',
+             owner = excluded.owner,
              data = excluded.data,
              updated_at = now()`,
           [id, contentType, owner, JSON.stringify(data)]
@@ -115,7 +147,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
                    values ($1, $2, $3, $4)
                    on conflict (source_id, target_id, relation_type) do nothing`,
                   [id, item._ref, relationType, owner]
-                ).catch(() => { /* skip bad refs */ });
+                ).catch((e: unknown) => {
+                  relationErrors++;
+                  console.error(`sync: relation ${id} -> ${item._ref} failed`, e);
+                });
               }
             }
           }
@@ -123,8 +158,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
         successCount++;
       } catch (e: unknown) {
+        // Full error goes to the log and sync_log; the response stays generic.
         const msg = e instanceof Error ? e.message : String(e);
-        errorMessage += `${doc._id || doc._type}: ${msg}\n`;
+        console.error(`sync: ${doc._id} failed`, e);
+        errorMessage += `${doc._id}: ${msg}\n`;
       }
     }
 
@@ -135,11 +172,12 @@ export const POST: APIRoute = async ({ request, locals }) => {
       [errorMessage ? 'failed' : 'completed', successCount, errorMessage || null, logId]
     );
 
-    return new Response(JSON.stringify({
+    return json({
       synced: successCount,
       total: docs.length,
-      errors: errorMessage || null,
-    }), { status: 200 });
+      failed: docs.length - successCount,
+      relationErrors,
+    }, 200);
   } finally {
     client.release();
   }

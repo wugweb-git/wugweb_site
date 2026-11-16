@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { duplicateWarning, withSeoDuplicateWarnings, DUP_QUERY } from './seoFieldRules.ts';
+import { duplicateWarning, withSeoDuplicateWarnings, DUP_QUERY, lengthWarning } from './seoFieldRules.ts';
 
 test('duplicate warning: names the clashing document and type', async () => {
   const msg = await duplicateWarning('seoTitle', 'UX Audits | Wugweb', 'doc1', async () => [{ _type: 'post', title: 'Old audit post' }]);
@@ -32,7 +32,7 @@ test('query excludes drafts and the document itself, case-insensitively', () => 
   assert.match(q, /lower\(seoTitle\) == \$v/);
 });
 
-test('wrapper keeps existing rules and adds exactly one warning rule', () => {
+test('wrapper keeps existing rules and adds the duplicate and length warnings', () => {
   const required = (r: any) => r.required();
   const types = withSeoDuplicateWarnings([
     { name: 'post', fields: [{ name: 'seoTitle', validation: required }, { name: 'title' }] },
@@ -40,8 +40,16 @@ test('wrapper keeps existing rules and adds exactly one warning rule', () => {
   ]);
   const calls: string[] = [];
   const rule: any = { required: () => (calls.push('required'), 'R'), custom: () => ({ warning: () => (calls.push('warning'), 'W') }) };
-  assert.deepEqual(types[0].fields![0].validation!(rule), ['R', 'W']);
-  assert.deepEqual(calls, ['required', 'warning']);
+  assert.deepEqual(types[0].fields![0].validation!(rule), ['R', 'W', 'W']);
+  assert.deepEqual(calls, ['required', 'warning', 'warning']);
   assert.equal(types[0].fields![1].validation, undefined, 'other fields untouched');
   assert.equal(types[1].fields![0].validation, undefined, 'other types untouched');
+});
+
+test('length warning: 60 for titles, 160 for descriptions, empty is fine', () => {
+  assert.equal(lengthWarning('seoTitle', ''), true);
+  assert.equal(lengthWarning('seoTitle', 'x'.repeat(60)), true);
+  assert.match(String(lengthWarning('seoTitle', 'x'.repeat(61))), /61 characters/);
+  assert.equal(lengthWarning('seoDescription', 'x'.repeat(160)), true);
+  assert.match(String(lengthWarning('seoDescription', 'x'.repeat(161))), /160 or fewer/);
 });

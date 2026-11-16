@@ -2,11 +2,15 @@ import { defineMiddleware } from 'astro:middleware';
 import { isReservedPath, matchRedirect, normalizePath, type RedirectHit } from './lib/redirects';
 import { buildRuleSet, loadRedirectRules, type RuleSet } from './lib/redirect-rules';
 import { createNotFoundLogger } from './lib/not-found';
+import { sanityTokenFrom } from './lib/sanity';
 
 // One logger per Worker instance: holds the per-path dedupe and daily-cap state.
 const logNotFound = createNotFoundLogger();
 
 const PREVIEW_COOKIE = '__sanity_preview';
+
+/** Seconds a rendered page is served from the edge cache. */
+const EDGE_TTL_S = 60;
 
 /**
  * The `visitor_id` cookie was removed on 2026-09-25 — the remaining half of
@@ -79,6 +83,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const redirectsApply = !context.isPrerendered
     && (method === 'GET' || method === 'HEAD')
     && !isReservedPath(url.pathname);
+  const previewOn = !context.isPrerendered && context.cookies.get(PREVIEW_COOKIE)?.value === '1';
+
+  // ── Edge cache ──
+  // Anonymous GETs of pages are cached per colo for EDGE_TTL_S through the
+  // Workers Cache API (free; Pages does not edge-cache Function output from
+  // headers alone). Same freshness as cachedFetch: a Studio edit shows within
+  // a minute. Never used for preview, /api or anything reserved.
+  const runtime = (context.locals as any)?.runtime;
+  const edgeCache: Cache | undefined = (globalThis as any).caches?.default;
+  const cacheable = !!edgeCache && redirectsApply && method === 'GET' && !previewOn;
+  const cacheKey = cacheable ? new Request(url.href, { method: 'GET' }) : null;
+  if (cacheKey) {
+    const hit = await edgeCache!.match(cacheKey).catch(() => undefined);
+    if (hit) return hit;
+  }
+
   const rules = redirectsApply ? await rulesFor(context, url) : null;
 
   // A page's own httpStatus (301/302/410 on its singletonPage) governs its own
@@ -90,12 +110,12 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   // Skip cookie logic during prerendering (no real request)
   if (context.request) {
-    // Expose the Sanity preview token (set by /api/preview) so pages can
-    // use getPreviewClient(token) to load draft content. Never leak it
-    // to the client — keep it in locals only.
-    const previewToken = context.cookies.get(PREVIEW_COOKIE)?.value;
-    if (previewToken?.startsWith('sk')) {
-      context.locals.previewToken = previewToken;
+    // /api/preview sets a flag cookie (never a token). While it is set, pages
+    // get the server-side Sanity read token through locals so they can load
+    // drafts. The token stays on the server.
+    if (previewOn) {
+      const token = sanityTokenFrom((context.locals as any)?.runtime?.env);
+      if (token) context.locals.previewToken = token;
     }
   }
 
@@ -125,7 +145,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-  return withSecurityHeaders(response);
+  response = withSecurityHeaders(response);
+
+  const isHtml = (response.headers.get('Content-Type') || '').includes('text/html');
+  if (previewOn && isHtml) {
+    // Draft content must never be stored by a browser or proxy.
+    response.headers.set('Cache-Control', 'private, no-store');
+  } else if (cacheKey && isHtml && response.status === 200
+    && !response.headers.has('Set-Cookie') && !response.headers.has('Cache-Control')) {
+    response.headers.set('Cache-Control', `public, max-age=0, s-maxage=${EDGE_TTL_S}`);
+    const put = edgeCache!.put(cacheKey, response.clone()).catch(() => {});
+    if (typeof runtime?.ctx?.waitUntil === 'function') runtime.ctx.waitUntil(put);
+  }
+
+  return response;
 });
 
 function withSecurityHeaders(response: Response): Response {

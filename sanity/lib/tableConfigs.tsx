@@ -90,7 +90,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
     }`,
     columns: [
       TITLE,
-      { key: 'category', label: 'Category', width: 150, render: (row) => <Badge tone="primary" mode="outline" fontSize={1}>{String(row.category || '—')}</Badge> },
+      { key: 'category', label: 'Category', width: 150, render: (row) => <Badge tone="primary" fontSize={1}>{String(row.category || '—')}</Badge> },
       {
         key: 'authorName', label: 'Author', width: 150,
         render: (row) => (
@@ -246,7 +246,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
       TITLE,
       { key: 'company', label: 'Company', width: 160, render: (row) => <Text size={1}>{String(row.company || '—')}</Text> },
       { key: 'rating', label: 'Rating', width: 90, render: (row) => <Text size={1} muted>{row.rating ? `${row.rating}/5` : '—'}</Text> },
-      { key: 'source', label: 'Source', width: 140, render: (row) => <Badge tone="primary" mode="outline" fontSize={1}>{String(row.source || '—')}</Badge> },
+      { key: 'source', label: 'Source', width: 140, render: (row) => <Badge tone="primary" fontSize={1}>{String(row.source || '—')}</Badge> },
       { key: 'subject', label: 'Subject', width: 110, render: (row) => <StatusBadge value={String(row.subject ?? '')} /> },
       { key: 'featured', label: 'Featured', width: 90, render: (row) => (row.featured ? <Badge tone="caution">⭐</Badge> : <Text size={1} muted>—</Text>) },
       UPDATED,
@@ -299,7 +299,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
     columns: [
       { key: 'icon', label: '', width: 50, sortable: false, render: (row) => <Text size={2}>{String(row.icon || '🏷')}</Text> },
       TITLE,
-      { key: 'vocabulary', label: 'Vocabulary', width: 150, render: (row) => <Badge tone="primary" mode="outline" fontSize={1}>{String(row.vocabulary || '—')}</Badge> },
+      { key: 'vocabulary', label: 'Vocabulary', width: 150, render: (row) => <Badge tone="primary" fontSize={1}>{String(row.vocabulary || '—')}</Badge> },
       { key: 'category', label: 'Category', width: 140, render: (row) => <Text size={1} muted>{String(row.category || '—')}</Text> },
       { key: 'status', label: 'Status', width: 100, render: (row) => <StatusBadge value={String(row.status ?? '')} /> },
       { key: 'order', label: 'Order', width: 70, render: (row) => <Text size={1} muted>{String(row.order ?? '—')}</Text> },
@@ -396,7 +396,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
     }`,
     columns: [
       TITLE,
-      { key: 'category', label: 'Category', width: 140, render: (row) => <Badge tone="primary" mode="outline" fontSize={1}>{String(row.category || '—')}</Badge> },
+      { key: 'category', label: 'Category', width: 140, render: (row) => <Badge tone="primary" fontSize={1}>{String(row.category || '—')}</Badge> },
       { key: 'variant', label: 'Variant', width: 110, render: (row) => <Badge tone="default" fontSize={1}>{String(row.variant || 'default')}</Badge> },
       { key: 'status', label: 'Status', width: 100, render: (row) => <StatusBadge value={String(row.status ?? '')} /> },
       { key: 'dimensions', label: 'Dimensions', width: 100, render: (row) => <Text size={1} muted>{String(row.dimensions || '—')}</Text> },
@@ -416,7 +416,7 @@ export const TABLE_CONFIGS: TableConfig[] = [
     }`,
     columns: [
       TITLE,
-      { key: 'scriptType', label: 'Type', width: 150, render: (row) => <Badge tone="primary" mode="outline" fontSize={1}>{String(row.scriptType || '—')}</Badge> },
+      { key: 'scriptType', label: 'Type', width: 150, render: (row) => <Badge tone="primary" fontSize={1}>{String(row.scriptType || '—')}</Badge> },
       { key: 'placement', label: 'Placement', width: 110, render: (row) => <Badge tone="default" fontSize={1}>{String(row.placement || 'head')}</Badge> },
       { key: 'enabled', label: 'Active', width: 90, render: (row) => (row.enabled ? <Badge tone="positive">🟢 Active</Badge> : <Badge tone="critical">⚪ Off</Badge>) },
       { key: 'environment', label: 'Env', width: 110, render: (row) => <Text size={1} muted>{String(row.environment || 'all')}</Text> },
