@@ -1,0 +1,20 @@
+{
+  "version": "0.4.1",
+  "organization": "Wugweb",
+  "date": "November 2026",
+  "abstract": "A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. Voice, layout, search and planning rules belong to sibling skills; this skill applies them. Independent of CMS, host and agent.",
+  "status": "Part 1 built from docs/skills/wugweb-work/PLAN.md at commit 3c8ef8c (2026-11-16). Six matters are open with the owner and marked in references/open-items.md. Track 2 body standards are a first draft. Rules owned by sibling skills are held here until those skills are approved. Evals written, not yet run. Part 2 (site code) is out of scope.",
+  "relatedSkills": [
+    "wugweb-voice",
+    "wugweb-brand-os",
+    "wugweb-kits",
+    "wugweb-strategy",
+    "wugweb-seo"
+  ],
+  "references": [
+    "https://www.w3.org/WAI/ARIA/apg/patterns/carousel/",
+    "https://www.w3.org/TR/WCAG22/",
+    "https://developers.google.com/search/docs/appearance/structured-data/search-gallery",
+    "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"
+  ]
+}

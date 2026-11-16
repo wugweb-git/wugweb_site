@@ -1,0 +1,70 @@
+# Review gates
+
+The check lists for Visual check and Fact check, the scoring, and the rights labels. Every result is a finding for the owner; nothing is edited.
+
+## Findings format
+
+One row per finding:
+
+| Field | Holds |
+| --- | --- |
+| What | The element or the quoted claim |
+| Rule | The rule it breaks and the reference file that holds it |
+| Severity | Must fix, should fix, or nice to have |
+| Fix | What to change, as current to proposed |
+
+Keep taste apart from real problems. A taste note is labelled "taste" and is never a must fix. Use words for severity, not emoji.
+
+## Visual check
+
+Run in this order. How to look at each point is in `visual-os/judging-a-visual.md`.
+
+1. **Mode.** Name the one visual mode. Two modes blended casually is a fail.
+2. **Claim.** One claim, one tension, one proof, one outcome. The idea survives with the headline removed.
+3. **Anchor.** One dominant anchor and no competing focal point.
+4. **Proof.** A meaningful relationship between person, object and interface. A real photo or screenshot comes before generated imagery.
+5. **Banned motifs.** Any item on the banned list in `visual-os/art-direction.md` is a fail, named.
+6. **Cover rule.** A case-study cover shows a project-specific object or outcome. A generic laptop or dashboard is a fail.
+7. **Colour.** Yellow at 10% or less and kept for the final call to action; text never pure white; accents limited. Points still open with the owner are reported as "not decided", not failed.
+8. **Media rule.** No existing file is cropped. Resizing keeps the aspect ratio. A mask does not hide the part that proves the claim.
+9. **Format.** The format's row in `visual-os/formats-and-campaigns.md` is met, and the piece reads at its final size.
+10. **Rights.** Every photograph, screenshot, logo and reference has a rights label.
+
+Result: pass or fail, the mode chosen, each finding, and what could not be judged (for example, a brief with no image).
+
+## Scoring (source: `brand_guidelines/09_VALIDATION/Scoring.md`)
+
+Score each of ten points from 0 to 2: concept, hierarchy, brand language, craft, differentiation, object and interface logic, palette and density, human role, accessibility, compliance. Production work needs 16 out of 20 with no zero. Revise by removing or replacing the weakest component, not by adding.
+
+## Quality gates (source: `Quality_Gates.md`)
+
+- **Concept:** one idea survives without the headline.
+- **Composition:** one focal point and adequate negative space.
+- **Brand:** palette, rounded language and collage logic are present.
+- **Craft:** the interface is credible and no artefacts or text errors remain.
+- **Compliance:** no banned motifs and no unsafe claims.
+
+## Common failures (source: `Common_Mistakes.md`)
+
+Adding cards to cover an unclear concept; showing AI as a robot or brain; reusing the same profile-card metaphor; decorative people beside an interface; filling negative space with connectors; using every colour equally; treating a generated scene as a composed collage.
+
+## Fact check
+
+1. List every claim about Wugweb in the copy: numbers, names, dates, places, counts, descriptors, "first", "only", "leading".
+2. Look each one up in `brand-facts.md`.
+3. Mark each: **approved** (status approved or fixed), **unverified** (present but not approved, or absent), or **stale** (comes only from the 2023 profile or another retired source).
+4. Never soften, round or replace an unverified number. Report it.
+5. Claims about a client are not checked here; they belong to the case study in `wugweb-work`.
+6. Positioning claims are checked against `identity-and-positioning.md`. While the line is blank, any stated positioning line is unverified.
+
+Signs positioning is broken, to report when seen: more than one descriptor in the same piece, a difference with no proof, a line a competitor could use unchanged.
+
+## Rights labels (source: `06_SOURCE_AND_RIGHTS.md`)
+
+Every reusable reference carries one label: `owned`, `licensed`, `public-reference-only`, `generated`, or `unknown: do not reuse`.
+
+- Record the source of every photograph, screenshot, logo, external reference and generated asset.
+- Confirm permission or licence for external imagery and fonts.
+- No client product screen, customer data or identifiable person without approval.
+- Other studios' work is principle-level inspiration only. Never copy a composition, typography, imagery or campaign asset.
+- Never present generated work as a real product screenshot, a real client outcome or a real photograph.
