@@ -65,13 +65,13 @@ Link targets, owner rulings of 2026-11-16 as carried in the repo skill 2.4.1: `w
 
 ## Waiting on the owner
 
-- [ ] Sign in to any SEO data connector the report part should use. A Search Console export is the standard source (2.3.0); connectors are optional.
-- [ ] What the skill should cover for blogs and service pages. A proposal is under "Scope by page type".
-- [ ] Confirm the title rule's reach: the skill applies "51 characters or fewer" to case studies only and marks other page types not decided.
-- [ ] The title limit for blog posts and service pages.
-- [ ] Whether AI training bots may crawl, per property. Search and citation bots stay allowed.
-- [ ] Confirm the rule "headings are claims; never ask for a question heading" lives in `wugweb-voice` or `wugweb-work`. wugweb-seo only points to it. The wugweb-work plan says "question form where natural".
-- [ ] Re-save the app copy as 2.4.1 from the repo folder, using the 7 files listed in the skill card. The repo copy is the master.
+- [ ] Sign in to any SEO data connector the report part should use. A Search Console export is the standard source (2.3.0); connectors are optional. Recommended: Ahrefs, OpenSEO and OpenRush are attached and usable now; SE Ranking needs sign-in; confirm the Search Console property for first-party clicks and impressions.
+- [ ] What the skill should cover for blogs and service pages. A proposal is under "Scope by page type". Recommended: blog posts get the full on-page audit plus BlogPosting; service pages the full on-page audit plus Service schema and links to proof.
+- [ ] Confirm the title rule's reach: the skill applies "51 characters or fewer" to case studies only and marks other page types not decided. Recommended: keep 51 for case studies only; blog and service take the limit below.
+- [ ] The title limit for blog posts and service pages. Recommended: rendered 60, source 52 so " \| Wugweb" always fits, matching the case-study scheme.
+- [ ] Whether AI training bots may crawl, per property. Search and citation bots stay allowed. Your call, a business one; the default stays until you set it per property.
+- [ ] Confirm the rule "headings are claims; never ask for a question heading" lives in `wugweb-voice` or `wugweb-work`. wugweb-seo only points to it. The wugweb-work plan says "question form where natural". Recommended: `wugweb-work` owns headings and `wugweb-voice` runs the check; wugweb-seo checks length and order only.
+- [ ] Re-save the app copy as 2.4.1 from the repo folder, using the 7 files listed in the skill card. The repo copy is the master. Your action, in the app session; the planning session cannot reach it.
 - [x] FAQPage: allowed only where the page shows the questions. Decided, 2.3.0.
 - [x] BlogPosting with a Person author stays. Decided, 2.3.0.
 - [x] The audit does not check titles for dashes. Decided, 2.3.0.
@@ -84,8 +84,8 @@ Link targets, owner rulings of 2026-11-16 as carried in the repo skill 2.4.1: `w
 - [x] `aeo-brand-scan` runs only after the owner's yes. Decided, 2.2.1.
 - [x] Link targets. Decided; see the note above this list.
 - [x] Change 11 (the standing-rules path): applied in the repo copy 2.4.1.
-- [ ] The owner's standing rules as a copied block marked as from `docs/skills/STANDING-RULES.md`: the skill holds only a pointer. Add a block, or keep the pointer?
-- [ ] `evals/evals.json` is in neither the app copy nor the repo copy, although the changelog says eight evals were added. Supply the file.
+- [ ] The owner's standing rules as a copied block marked as from `docs/skills/STANDING-RULES.md`: the skill holds only a pointer. Add a block, or keep the pointer? Recommended: keep the pointer in `SKILL.md` and inline the rules only in `AGENTS.md` and the single-file export, which run without the repo.
+- [ ] `evals/evals.json` is in neither the app copy nor the repo copy, although the changelog says eight evals were added. Supply the file. Recommended: draft it as part of the build, so the validator's warning clears.
 - [x] Done in 2.2.0. Take the "Changes to take into the skill session" below into session `cse_01UQ9TRqokKf1xMCS1JD3brM`, or reject them.
 
 ## Plan

@@ -19,6 +19,13 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - Waiting on the owner: approval after vetting; NTUC inputs (results with source, live URL, number of builder steps); a working `NOTION_TOKEN`.
 - `docs/skills/wugweb-work/PLAN.md` is the export of the Notion page for other tools (do not edit it; re-export after the Notion page changes). After approval: step 0 of the plan.
 
+**2026-11-17: `wugweb-seo` skill. PLAN ONLY, waiting for the owner's vetting.**
+- One source of truth: the Notion page "wugweb-seo" under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab818b8481d42beb053fef). Do not copy the plan into this file; update the Notion page. The repo mirror is `docs/skills/wugweb-seo/PLAN.md`.
+- State: version 2.4.1, repo master at `.claude/skills/wugweb-seo/`; the app copy reads 2.4.0 until the owner re-saves it. Planned, not built: the Rank Math on-page keyphrase score (broken into functions for `scripts/score-page.mjs`) and the internal-link SEO checks. The 83 Rank Math PRO features are mapped and translated to the Astro stack.
+- Score uses the real Rank Math weights (`seo-by-rank-math` 1.0.280). Power words use a public list; sentiment uses AFINN-165, English only. Do not edit `SKILL.md` from here; the skill is the dev session's (`cse_01UQ9TRqokKf1xMCS1JD3brM`).
+- Waiting on the owner: the list on the Notion page (re-save the app copy to 2.4.1, supply `evals/evals.json`, schema for service, home and about, title limits, training bots per property, connector sign-in, standing-rules block vs pointer). A recommendation is recorded beside each.
+- RankWeb is a separate WordPress plugin (Animal Writes) with its own Notion page and a Rank Math score reference; it is not in this repo.
+
 **2026-10-21: Header and nav bar spec, root scale, deploy facts. DONE, live on uat.wugweb.com (81cc95d2).**
 - Names (owner): "header" is the whole sticky section; "nav bar" is the grey box inside it.
 - Formula: button 44 (10 + 24 line + 10, `--control-size`) + 12 + 12 = nav bar 68 on every breakpoint. Header is derived, never set: 68 + 2 x header padding = 100 mobile (16), 108 tablet and desktop (20). Buttons 16px text, 10 / 12 padding, 12 gap; logo 40; bar inset 12. Tablet side padding is 20 (was 32). Spec in `kits_design_system/docs/tokens/layout-shell.md`.
