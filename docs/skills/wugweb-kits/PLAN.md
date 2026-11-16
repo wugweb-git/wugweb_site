@@ -1,4 +1,4 @@
-> Plan for vetting, revision 13, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
+> Plan for vetting, revision 14, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
 # wugweb-kits skill: plan
 
@@ -560,3 +560,15 @@ Proposed, awaiting the owner's confirmation. The source list is on the registry 
 | Story | 1080 x 1920 | Top 270px, bottom 670px, 6% each side kept clear | Canvas size agreed. Safe zone not confirmed by any official page; the widest margins found are used. Unverified. |
 
 The media rule still applies: these sizes are for files made on the owner's yes, per file. An existing R2 file is shown at these sizes only with its aspect ratio kept.
+
+### 22. Routed from the wugweb-seo extraction
+
+Proposals to check, 2026-11-16. Points on tap targets, body text size, image dimensions, contrast, focus, reduced motion and the skip link are already in section 19.
+
+| Item | Decision |
+|---|---|
+| Links have a real `href`; no click handlers on bare `div` elements; buttons are named; inputs are labelled (`aeotester`) | Absorb into the `a11y-*` rules. The first two are new; the last two are already in `layout-shell.md`. |
+| No render-blocking scripts in the head; hero image preloaded; server response under 800 ms (`cloudflare:web-perf`) | Not a kits rule. Passed on as engineering work under `CLAUDE.md`. Kits keeps only the layout causes of shift. |
+| `web-review`, `ux-ui-audit`, `accessibility-review` and `design-qa` belong with kits | Agreed. All four are already optional helpers of kits in section 19. |
+
+**Finding on the live code, recorded only.** `src/layouts/BaseLayout.astro` emits 9 of the 12 share tags. Missing: `og:site_name`, `og:image:alt`, `twitter:image:alt`. Reported by `wugweb-seo`; checked read only by kits on 2026-11-16 and confirmed. No code is edited. The tag set belongs to `wugweb-seo`; the fix is engineering work on the owner's go.

@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-kits plan: items routed from wugweb-seo, share-tag finding (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 14) gains section 22: two new accessibility rules, and a recorded finding that `BaseLayout.astro` emits 9 of 12 share tags (`og:site_name`, `og:image:alt`, `twitter:image:alt` missing). No code changed.
+
 ### Changed — wugweb-strategy plan: "Extracted and absorbed" from the installed skills (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` gains an "Extracted and absorbed" section (about 75 helper skills read; each marked absorb, optional helper or ignore, with clashes against the owner's rules), three brief fields (19 to 21) and questions 18 to 20; the brief finding is corrected. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-extracted-2026-11-16.json`.
 
