@@ -124,7 +124,7 @@ version: 0.1.0
 | `topics-and-calendar.md` | Topic intake, scoring, backlog fields, statuses, cadence, accounts |
 | `brief-format.md` | The brief template and its variants per piece type |
 | `piece-structures.md` | The shape a piece's message takes in a brief (claim, tension, proof, outcome), per piece type |
-| `editorial-standards.md` | What makes a piece worth publishing: one audience, one claim, a named proof, byline, canonical and syndication rules |
+| `editorial-standards.md` | What makes a piece worth publishing: one audience, one claim, a named proof, byline, canonical and syndication rules. Holds no tone or phrasing rules; it points to `wugweb-voice`. |
 | `content-models.md` | Content types, what each is for, planning fields, relations between types |
 | `proof-map.md` | Rules for which case study may back what; the map itself stays in Notion relations |
 | `refresh-retire.md` | Decision rules and the evidence each decision needs |
@@ -186,8 +186,10 @@ Work returns the finished piece as a proposal, with a note of where it left the 
 | `wugweb-work` | A brief | A finished piece and a return note; post results | Write or edit copy, choose screens, set layout, publish |
 | `wugweb-seo` | Topic or URL list | Keyword and intent notes; audit data for review | Change keywords, titles or on-page rules |
 | `wugweb-brand-os` | A request for audiences, messages, positioning | Those, as written | Restate or alter them |
-| `wugweb-voice` | Nothing at brief stage | Nothing; work reads voice directly | Set tone or phrasing in a brief |
+| `wugweb-voice` | No direct link. The brief names audience, purpose and form; `wugweb-work` passes those to voice with the draft | Nothing | Set tone or phrasing in a brief or in the editorial standards |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
+
+Every link reads the same on both sides: what this plan says goes to or comes from a skill must match that skill's own plan.
 
 Helpers return proposals only. The owner's rules win over anything a helper says.
 
@@ -201,6 +203,26 @@ Helpers return proposals only. The owner's rules win over anything a helper says
 | Campaign | `marketing:campaign-plan` |
 | Repurpose | `social-media-skills:content-recycling`, `social-media-skills:cross-platform-repurposing` |
 | Building the skill | `anthropic-skills:skill-creator`, `anthropic-skills:skill-development` |
+
+## Works beyond Claude
+
+Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
+
+- **Plain Markdown.** `SKILL.md` and every reference file are plain Markdown that any model can follow. No rule depends on a Claude feature.
+- **Helpers are optional.** The Claude plugins and helper skills named above speed a mode up; none is required. Each mode has its own by-hand procedure in the reference files.
+- **Scripts.** None in v0.1. Any script added later is plain Node with no Claude tooling.
+- **Wiring in one file.** Tools, vendors and connectors are named only in `references/ops.md`. Moving to another tool means rewriting that file alone.
+- **Single-file export.** `wugweb-strategy.export.md`: the `SKILL.md` body and the reference files joined in reading order, to paste or attach in GPT, Cursor or another tool. It is regenerated whenever the skill changes.
+- **Export test.** The eval prompts are run from the export alone in another tool. It passes when the output meets the same assertions as the run inside Claude. The wording may differ; the brief fields, boundaries and refusals may not.
+
+**What works only in Claude today**
+
+| Thing | Outside Claude |
+|---|---|
+| Reading Notion through the connector | Paste or attach an export of the rows, or use the Notion API with a valid token |
+| The named helper skills and plugins | Skipped; the by-hand procedure is used |
+| Automatic triggering from the frontmatter description | The export is attached by hand, or added as a project rule |
+| Running `evals.json` with the skill tooling | The same prompts and assertions are checked by hand |
 
 ## Per-task tests
 
@@ -216,6 +238,7 @@ Helpers return proposals only. The owner's rules win over anything a helper says
 | Boundary with brand-os | Asked "what is Wugweb's positioning?" or "define our audience", the skill writes nothing and points to `wugweb-brand-os` |
 | Writes | No Notion or Sanity write without approval of that exact change and a backup |
 | Style | British English, sentence case, no dashes |
+| Portability | Run from the single-file export in another tool, the eval prompts meet the same assertions; no step needs a Claude-only helper |
 
 ## Open questions for the owner
 
@@ -230,7 +253,7 @@ Helpers return proposals only. The owner's rules win over anything a helper says
 9. **Audiences and goals.** Do these come from the owner or from the brand-os plan?
 10. **Old calendar.** A "Content calendar" database sits under the owner's personal area in Notion, last edited 2026-04-13. It was not opened. Use it or ignore it?
 11. Merged into question 13.
-12. **Notion pages.** Settled for the skill page on 2026-11-16: renamed, and the plan moved onto it. Still open: the earlier sub-page is now redundant; trash it?
+12. **Notion pages.** Settled 2026-11-16: the skill has one Notion page, renamed, with the plan on it. The coordinating session reports the earlier sub-page is in Notion's Trash.
 13. **Accounts.** Which accounts are in scope, including the owner's own Medium and LinkedIn, and are the 5 personal Behance projects included?
 14. **Linked pages.** Does a post wait until the page it links to is live?
 15. **Client permission.** Is it needed before a client is named or tagged?
@@ -264,3 +287,4 @@ Helpers return proposals only. The owner's rules win over anything a helper says
 | 2026-11-16 | Planning side of social added (owner, through the coordinating session). |
 | 2026-11-16 | Renamed `wugweb-strategy` (owner). Scope unchanged. Brand strategy stated as out of scope. |
 | 2026-11-16 | Plan moved onto the Notion skill page (owner: one Notion page per skill). Matrix row in the system's five-entry format. |
+| 2026-11-16 | Voice link stated (no direct link; through `wugweb-work`). Portability section added (owner: usable beyond Claude). Question 12 settled. |
