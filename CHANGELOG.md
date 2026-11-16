@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: owner decisions on all 22 questions (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` now matches its Notion skill page: "Open questions" becomes "Owner decisions" (calendar in a new Notion plan database, six service pillars, one brief, accounts in scope, client permission always, no Sanity schema change); brief fields 10, 13, 14 and 15, the handoff contract and the matrix row updated to match.
+
 ### Changed — wugweb-strategy plan: planning fields and the reader signal log (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` gains "Content model: planning fields" (from the kits docs: which proposed CMS fields are planning fields, and the five blocks awaiting sign-off), question 22, and the signal log of readers' own words. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-fields-signals-2026-11-16.json`.
 
