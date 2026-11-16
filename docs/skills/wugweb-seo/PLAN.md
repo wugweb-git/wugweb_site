@@ -382,6 +382,15 @@ On the owner's word, the skill now lives in the repo at `.claude/skills/wugweb-s
 - Validator: 0 errors and 1 warning (the missing evals file). Self-test: all passed. Generated files: all fresh.
 - The 2.3.0 owner answers were copied as they are. This page now counts them as decided.
 
+## Staged: 2.4.2 and 2.4.3, for the dev session (2026-11-17)
+
+Not applied here. The repo master stays 2.4.1 until the dev session (`cse_01UQ9TRqokKf1xMCS1JD3brM`), the only place that saves the app copy and pushes the skill, applies these, runs the scripts, saves and pushes.
+
+- 2.4.2, `references/report.md`, AI answer sample: run each prompt several times, since the same prompt gives a different answer each run; report how often Wugweb appears across runs, not a single result.
+- 2.4.2, `references/audit.md`, citability: re-source the self-contained figure to the study itself (Princeton, Georgia Tech and IIT Delhi, 2024, arXiv 2311.09735; third-party figure). Anchor note: the repo 2.4.1 row reads only "50 to 200 words" and carries no earlier third-party clause, so this adds the study clause to that row rather than replacing one. The paste's "Current" for this edit does not match the repo master.
+- 2.4.3, `references/audit.md`, crawler section: after the `sitemap-listed` line, report, but do not require, a Content-Signal line in robots.txt. Emerging AI-usage syntax; no search engine ranks on it; the choice is the owner's.
+- Then bump the version to 2.4.3 in `SKILL.md`, `metadata.json` and `README.md`, add the 2.4.2 and 2.4.3 changelog entries, run `node scripts/validate.mjs` and `scripts/test.mjs`, run `scripts/build.mjs` to regenerate `AGENTS.md` and the adapters, save the app copy and push.
+
 ## Planned: on-page keyphrase score (2026-11-17)
 
 The owner asked for a score like Rank Math's, built into the audit part beside the citability score. Citability is the AI-answer score; this is the search score. Source of truth: Rank Math `seo-by-rank-math` 1.0.280, `assets/admin/js/analyzer.js`, read 17 Nov 2026. The engine runs client-side only; the new PHP ability `rank-math/analyze-post-content` hands an agent the content and the rubric link, `rankmath.com/kb/score-100-in-tests/`. The weights below are extracted, not invented. RankWeb has no score of its own; it reads Rank Math's through `rank_math_seo_score`.
