@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: decision 23, the proof map wins (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` records the owner's answer to question 23: the proof map wins on which case study backs a page, and `wugweb-seo` picks the other link targets around it. Same line on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-decision-23-2026-11-16.json`.
+
 ### Changed — Kits docs: shell verified at 1200, sizing tokens, component references (2026-11-16)
 - Docs only. `kits_design_system/docs/tokens/layout-shell.md` gains a verification record at 375, 768 and 1200 (24 routes on `wugweb.pages.dev`; 99 / 99 / 98 of 99 top-level sections on spec), with four findings listed and not fixed. The 2026-10-03 record at 1440 is kept as history.
 - `kits_design_system/docs/tokens/sizing.md`: empty cells are blank and the icon range is an inequality (no dashes); `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` are named, with a note that no component references them yet.
