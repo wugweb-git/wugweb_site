@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan: lines matching the owner's strategy decisions (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md`: four owner decisions recorded (Brief mode is for client work only; accounts in scope; a post waits for its linked page and a client is named only with permission; the newsletter is in scope), the open list trimmed to what is still open, and one new question on Medium. Matches the Notion page.
+- `backups/notion-wugweb-work-page-before-2026-11-16-f.md`: the Notion page as it was before this update.
+
 ### Changed — wugweb-kits plan: max-width point settled; Notion page backup (2026-11-16)
 - Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 19) records that content max 1200 and nav inner max 1280 are two different boxes, not a clash, and that the 16/9 tile rule belongs to the Client Assembly Grid only.
 - `backups/notion-wugweb-kits-page-cleaned-2026-11-16.md`: the Notion page "wugweb-kits" as it stood before it was restored and rebuilt on 2026-11-16, with the two runaway link cells cleaned.

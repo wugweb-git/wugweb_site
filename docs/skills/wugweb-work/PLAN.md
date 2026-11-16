@@ -54,7 +54,7 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 
 | With | `wugweb-work` gives | `wugweb-work` takes |
 |---|---|---|
-| `wugweb-strategy` | A finished piece; what proof exists | A brief: what to say, to whom, when, which case studies back it |
+| `wugweb-strategy` | A finished piece; what proof exists | A brief: what to say, to whom, when, which case studies back it, and which pages it links to (strategy picks the targets; `wugweb-seo` owns the link rules) |
 | `wugweb-voice` | The draft, with its form, mode, and the audience and purpose from the brief | A voice check: breaks and fixes |
 | `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules |
 | `wugweb-kits` | Content shape and chosen media; any visible wording kits asks for (labels, alt text) | Blocks, layout, tokens |
@@ -70,10 +70,11 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 
 - [ ] Vetting and approval of the plan.
 - [ ] NTUC inputs: results with source and date, live URL, number of programme-builder steps, heading typeface.
-- [ ] Social: which accounts are in scope and whether the 5 personal Behance projects are included; who uploads to Behance and Dribbble; whether a post waits until its page is live; whether a client must agree before being named; where made files are kept before posting; whether a Dribbble shot may sit a screen on a plain canvas; whether Postiz is connected and to which accounts.
+- [ ] Social, still open: who uploads to Behance and Dribbble; where made files are kept before posting; whether a Dribbble shot may sit a screen on a plain canvas; whether Postiz is connected and to which accounts. (Accounts in scope, linked pages and client permission were settled on 2026-11-16; see Owner decisions.)
+- [ ] Medium is now an account in scope: is it a form of its own, or the blog post reposted as is?
 - [ ] Media rule, three readings to confirm: resize and masks mean display on the page, not new files; a mask must not hide the part of a screen that proves the claim; a file shown larger than its natural size is flagged when soft, not banned.
 - [ ] Should token-check findings block a merge, or only be reported?
-- [ ] Is the client-work brief written inside this skill (assumed yes)?
+- [x] Client-work brief: settled 2026-11-16. Brief mode is for client work only; it is written inside this skill.
 - [ ] The sizes wanted for og image, story, and Behance and Dribbble covers. The installed skills disagree (og 1200 by 630 in one, 1200 by 628 in another; story safe zones differ) and none gives Behance or Dribbble cover sizes.
 - [ ] Hero copy limit: this plan sets the subtitle at 90 characters or fewer; `wugweb-kits` proposes a headline of 2 lines or fewer and subtext of 20 words or fewer. Pick one.
 - [ ] May LinkedIn posts carry a few specific tags, or none? The plan says none; `wugweb-seo` proposes a few.
@@ -137,7 +138,7 @@ There is no separate social skill. Its tasks are a module of this skill. Plannin
 
 | Form | Takes | Helpers |
 |---|---|---|
-| Newsletter edition | Built from one or more approved pieces. One purpose and one main action; each item links to its page; no fact that is not in an approved body. Form file still to be written. | `email-and-newsletter`, `email-sequence` (the first not yet read) |
+| Newsletter edition | Built from one or more approved pieces. One purpose and one main action; each item links to its page; no fact that is not in an approved body. In scope (owner, 2026-11-16). Sending needs the owner's yes. Form file still to be written. | `email-and-newsletter`, `email-sequence` (the first not yet read) |
 | Advocacy copy | Short share text for the team, built from an approved post. Same facts as the post; nothing added. | `linkedin-company-pages` |
 
 Not in this module: replies, comment routines and outreach pitches. They are conversation, not production from an approved body, so the fact ledger and approval steps do not apply to them as written. Proposed by `wugweb-strategy`; left out until the owner decides.
@@ -163,7 +164,7 @@ Found by the coordinating session on 2026-11-16 and kept on the registry; not ch
 4. Format checked against the dated spec.
 5. Media check; each made file listed.
 6. The owner's yes per made file.
-7. The owner's yes per post, seeing the exact text, media, account, date and time.
+7. The owner's yes per post, seeing the exact text, media, account, date and time. A post whose linked page is not live is held. A client is named or tagged only with permission on record.
 8. Send or schedule through Postiz, then report. Any later edit needs a new yes.
 
 **Tests.** Every fact-pack item has a body line. Every post sentence is in the ledger. One claim per carousel slide, with a proof screen. Behance captions match the approved ones word for word. No deck slide without a body line. A chart request on a body with no numbers is refused. An existing og file is proposed before a made one. "Post it now" stops for the per-post yes. An unapproved body stops at step 1.
@@ -464,6 +465,10 @@ So the need is a standard and a procedure, not another page design.
 | 2026-11-14 | The Notion page is the one source of truth for the plan. |
 | 2026-11-14 | The digital-twin skill is out of scope for this plan. |
 | 2026-11-14 | Focus is adaptive UX plus every function already discussed. Every function has named skills behind it (see "Skill map"). This replaces the 2026-11-11 "by hand only" rule: the skill still carries its own checks, and the mapped skills are used as standard, with the owner's rules winning over anything a skill says. |
+| 2026-11-16 | Brief mode is for client work only. `wugweb-strategy` owns the brief for Wugweb's own content; `wugweb-seo` fills its search block. |
+| 2026-11-16 | Accounts in scope: the Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out. |
+| 2026-11-16 | A post waits until the page it links to is live. No client is named or tagged without permission. |
+| 2026-11-16 | The newsletter is in scope. Sending needs the owner's yes. |
 
 Where an older line further down disagrees with this table, the table wins.
 
