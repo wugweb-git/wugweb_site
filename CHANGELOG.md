@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-voice portability package 0.2.1 (2026-11-17)
+
+- `.claude/skills/wugweb-voice` gains `AGENTS.md` (the whole skill in one file), `adapters/cursor/wugweb-voice.mdc`, `adapters/chatgpt/instructions.md`, `agents/openai.yaml`, `README.md` and `metadata.json`, so the skill loads in Claude Code, Cursor, Codex and a custom GPT. `scripts/build.mjs` now compiles the whole package; every generated file leaves out the corpus ledger. Method and rules unchanged; still waiting on the owner's writing samples.
+
 ### Changed — wugweb-seo plan page matches repo copy 2.4.1 (2026-11-17)
 
 - `docs/skills/wugweb-seo/PLAN.md` and the Notion page now describe version 2.4.1: the 2.3.0 owner answers are marked decided (FAQPage only where the page shows the questions, blog dates, named helper leads), the proof-map link wording is recorded, and the open items are the copied standing-rules block, the missing `evals/evals.json` and the app-copy re-save.

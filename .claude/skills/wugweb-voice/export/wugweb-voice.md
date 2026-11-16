@@ -1,4 +1,4 @@
-<!-- wugweb-voice 0.2.0. Built by scripts/build.mjs. Do not edit; edit the source files. -->
+<!-- wugweb-voice 0.2.1. Built by scripts/build.mjs. Do not edit; edit the source files. -->
 
 # wugweb-voice
 
@@ -6,7 +6,7 @@ Wugweb and Vedanshu write in one voice, because Vedanshu is the author of Wugweb
 
 ## Status: read this first
 
-Version 0.2.0 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
+Version 0.2.1 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
 
 - The fixed owner rules (below). They are confirmed and always on.
 - The voice check method, with its mechanical parts in `scripts/check.mjs`.
@@ -144,13 +144,16 @@ When a piece written with this skill is published, `wugweb-work` records who rev
 | `examples/` | Before and after pairs tied to corpus entries; empty until samples exist |
 | `evals/evals.json` | Per-task tests; some runnable now, the rest waiting on samples |
 | `scripts/check.mjs` | Mechanical voice check |
-| `scripts/build.mjs` | Builds `export/wugweb-voice.md` |
+| `scripts/build.mjs` | Compiles the portable files |
 | `scripts/test.mjs` | Tests the scripts and the skill's own files |
-| `export/wugweb-voice.md` | Single file for GPT, Cursor or any other tool |
+| `AGENTS.md`, `adapters/`, `agents/openai.yaml`, `export/wugweb-voice.md` | Portable copies for other agents (generated) |
+| `README.md`, `metadata.json`, `CHANGELOG.md` | Install steps, version and history |
 
 ## Works outside Claude
 
-This file carries the fixed rules, the labels and the voice check, so it stands alone where reference files are not loaded. The reference files are plain Markdown. Scripts are plain Node with no packages. Helper skills are optional; every step can be done by hand from the Markdown. `node scripts/build.mjs` writes the single-file export, which leaves out the corpus ledger because it points at private writing.
+The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads it as it is: Claude (installed, or at `.claude/skills/wugweb-voice/`), Cursor and Codex. This file carries the fixed rules, the labels and the voice check, so it stands alone where reference files are not loaded. Reference files are plain Markdown; scripts are plain Node with no packages; helpers are optional.
+
+`scripts/build.mjs` compiles the portable files: `AGENTS.md` (the whole skill in one file), the `adapters/` and `export/wugweb-voice.md`. Edit the sources, not the output. Every generated file leaves out the corpus ledger. `README.md` has the install steps.
 
 ## Never
 
@@ -478,23 +481,3 @@ The method comes from the research report "Voice calibration method" (2026-11-16
 - The share of samples held back per mode (suggested one in five).
 - How many items a test uses.
 - What result moves a mode to high confidence.
-
----
-
-<!-- examples/README.md -->
-
-# Examples
-
-Status: empty, waiting on samples.
-
-Each example is a before and after pair tied to a corpus entry:
-
-| Field | Meaning |
-| --- | --- |
-| Corpus ID | The sample the "after" comes from, or the owner edit (R-number) that made it |
-| Mode | A key from `references/modes.md` |
-| Before | The off-voice text |
-| After | The on-voice text, from the owner's own writing or his edit |
-| Rules | The rule IDs that explain each change |
-
-No example is invented. An "after" line must be a real sentence he wrote or approved.
