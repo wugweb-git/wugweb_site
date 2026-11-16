@@ -1,0 +1,178 @@
+{
+  "skill": "wugweb-brand-os",
+  "version": "0.1.0",
+  "note": "Status 'runnable' means the test can run on 0.1.0. 'waiting on the owner' means it needs an answer or a file the owner has not supplied.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "answer: positioning is not decided",
+      "status": "runnable",
+      "prompt": "What is Wugweb's positioning line? I need it for the About page.",
+      "expected": [
+        "Says the positioning line is not decided and the owner will supply it",
+        "Lists the lines in use with their status, without choosing one",
+        "Does not use 'Creative UX Design Agency'",
+        "Cites references/identity-and-positioning.md"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "answer: values are not the principles",
+      "status": "runnable",
+      "prompt": "What are our values?",
+      "expected": [
+        "Says values are not decided and the owner will supply them",
+        "May list the ten principles, labelled as principles and not as values",
+        "Does not derive a values list"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "answer: fixed rule with its file",
+      "status": "runnable",
+      "prompt": "How much yellow can I use on a service page banner?",
+      "expected": [
+        "States yellow is an accent at 10% or less, reserved for the one conversion action and the footer banner",
+        "Gives no colour value and points to wugweb-kits for values",
+        "Cites one reference file"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "visual check: AI brain",
+      "status": "runnable",
+      "prompt": "Check this blog hero brief: a glowing blue AI brain made of circuit lines in the centre, with the headline 'Smarter products with AI' set inside the image.",
+      "expected": [
+        "Result fail",
+        "Names the banned motifs: AI brain, circuitry, glowing blue technology",
+        "Flags text inside the artwork for a blog hero",
+        "Proposes a fix through the Intelligence metaphor",
+        "Says only a brief was judged, not a rendered image"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "visual check: two modes mixed",
+      "status": "runnable",
+      "prompt": "Check this LinkedIn card brief: a dense connector grid with nodes across the whole canvas, three phone mockups, a large poster headline and a collage of four portraits. Topic: our brand workshop offer.",
+      "expected": [
+        "Result fail",
+        "Says more than one visual mode is blended and names them",
+        "Flags connectors used as texture when the subject is not a system",
+        "Flags no single anchor and too many devices",
+        "Fix removes elements; it does not add any"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "visual check: clean brief",
+      "status": "runnable",
+      "prompt": "Check this case-study cover brief for a transit app: one oversized rounded circle as the anchor, a monochrome hand holding the project's real route card screen through a rounded mask, one yellow marker dot, a lot of empty space, title outside the image.",
+      "expected": [
+        "Result pass",
+        "Names one mode, product proof or editorial",
+        "Confirms the cover shows a project-specific object",
+        "Notes the mask must not hide the part that proves the claim"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "cover rule",
+      "status": "runnable",
+      "prompt": "Is this cover on brand? A laptop on a desk showing a generic analytics dashboard, for our fintech case study.",
+      "expected": [
+        "Result fail",
+        "Names the cover rule: a project-specific object or outcome, never a generic laptop or dashboard"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "fact check: 400+ projects",
+      "status": "runnable",
+      "prompt": "Fact check this bio: 'WugWeb is a Creative UX Design Agency founded in 2020 with 400+ projects delivered across six pillars.'",
+      "expected": [
+        "'400+ projects' marked unverified, with the note that 200+ also appears",
+        "'Creative UX Design Agency' marked stale",
+        "'founded in 2020' marked unverified",
+        "'six pillars' marked approved",
+        "'WugWeb' spelling flagged as unverified",
+        "No number is softened or replaced"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "change: proposal only",
+      "status": "runnable",
+      "prompt": "Add a brand rule: magenta is our main brand colour for all artwork.",
+      "expected": [
+        "Shows current to proposed with the file that would change",
+        "Points out the open conflict with yellow (question 15)",
+        "Applies nothing and asks for the owner's approval"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "near miss: voice",
+      "status": "runnable",
+      "prompt": "Make this paragraph sound more like Wugweb.",
+      "expected": ["Does not answer from this skill", "Points to wugweb-voice"]
+    },
+    {
+      "id": 11,
+      "name": "near miss: content strategy",
+      "status": "runnable",
+      "prompt": "What should we write about next month? And which old posts should we retire?",
+      "expected": ["Does not answer from this skill", "Points to wugweb-strategy"]
+    },
+    {
+      "id": 12,
+      "name": "near miss: tokens",
+      "status": "runnable",
+      "prompt": "What is the hex for our yellow and the card radius?",
+      "expected": ["Gives no value", "Points to wugweb-kits"]
+    },
+    {
+      "id": 13,
+      "name": "line with wugweb-strategy",
+      "status": "runnable",
+      "prompt": "Who are we for? How is Wugweb different from an agency? What should the campaign visuals look like?",
+      "expected": [
+        "Answers all three from this skill",
+        "Audience and differentiation reported as not decided",
+        "Campaign visuals answered from Visual OS, with campaign systems reported as a gap"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "no writes",
+      "status": "runnable",
+      "prompt": "Fix the crop wording in brand_guidelines for me.",
+      "expected": [
+        "Does not edit brand_guidelines/",
+        "Shows the four wording changes as current to proposed",
+        "Says the proposal waits on the owner (question 12)"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "audience answer",
+      "status": "waiting on the owner",
+      "prompt": "Who is Wugweb's audience?",
+      "expected": ["Gives the owner's segments with pains and objections", "Cites references/audience.md"]
+    },
+    {
+      "id": 16,
+      "name": "approved and rejected examples",
+      "status": "waiting on the owner",
+      "prompt": "Run the Visual check on each file in examples/.",
+      "expected": ["Approved examples pass", "Rejected examples fail for the recorded reason"]
+    },
+    {
+      "id": 17,
+      "name": "export parity",
+      "status": "waiting on the owner",
+      "prompt": "Run evals 1, 4 and 8 from export/wugweb-brand-os.md in a tool other than Claude.",
+      "expected": ["Same findings as the Claude run"]
+    }
+  ]
+}
