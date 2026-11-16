@@ -419,7 +419,7 @@ Content, links, URL, title readability:
 | permalink length, URL 75 characters or fewer | 4 |
 | title sentiment / power word / number | 1 / 1 / 1 |
 
-Dropped as not on the site: the two WooCommerce tests, product schema and review. Gaps to flag not guess: power words and sentiment use Rank Math's own word lists (`rankMath.assessor.powerWords`), not in the JS; "keyword not used before" needs a site-wide map of each page's phrase.
+Dropped as not on the site: the two WooCommerce tests, product schema and review. The two title word-list tests are no longer blocked. Power words: use a public power-word list; Rank Math ships 1,103 English words per locale at `assets/vendor/powerwords/en.php` (GPL), so the skill ships its own or adapts a public list and copies no plugin file. Sentiment (English only): a title earns the point if it holds any word in the AFINN-165 list (the `sentiment` npm package); non-English scores null, as Rank Math does. Still open: "keyword not used before" needs a site-wide map of each page's phrase.
 
 Build prompt, for the dev session that holds the skill files, not this one:
 
@@ -460,11 +460,13 @@ SITE MAPPING
   passed in with --keyword. If none, skip the keyphrase tests and say so.
 - Drop the two WooCommerce tests (product schema, review).
 
-GAPS TO FLAG, NOT GUESS
-- Power words and sentiment need Rank Math's word lists (rankMath.assessor.
-  powerWords), which are not in the JS. Until a list is agreed, score the
-  number test only and mark the other two "needs word list".
-- "keyword not used before" needs a site-wide map of each page's phrase.
+WORD LISTS (resolved)
+- Power words: use a public power-word list. Rank Math ships 1,103 English
+  words per locale (assets/vendor/powerwords/en.php, GPL); ship the skill's
+  own list, do not copy the plugin file verbatim.
+- Sentiment (English only): a title scores the point if it holds any word in
+  the AFINN-165 list (the "sentiment" npm package). Non-English scores null.
+- "keyword not used before" still needs a site-wide map of each page's phrase.
 
 HOW TO BUILD
 - New script scripts/score-page.mjs: reads one HTML file and --keyword, reuses
