@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: link-target split, refresh signals, editorial stance (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` records the proposed split on internal link targets with `wugweb-seo` (question 20), names the refresh signals it receives, adds one routed row and proposes an editorial stance sentence (question 21). Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-links-stance-2026-11-16.json`.
+
 ### Changed — wugweb-strategy plan: "Extracted and absorbed" from the installed skills (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` gains an "Extracted and absorbed" section (about 75 helper skills read; each marked absorb, optional helper or ignore, with clashes against the owner's rules), three brief fields (19 to 21) and questions 18 to 20; the brief finding is corrected. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-extracted-2026-11-16.json`.
 
