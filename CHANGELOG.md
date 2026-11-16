@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-strategy skill plan, for vetting (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md`: plan for the content-strategy skill (named `wugweb-content` until the owner's rename). Skill card, modes, brief format, boundary and handoff tables, tests, 17 open questions, source gaps. Nothing built.
+
 ### Changed — wugweb-work plan: final skill list, handoff contracts, per-task tests (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md` gains the final skill list (nothing dropped), handoff contracts per helper skill, a per-task test table and the open CI question for the token check.
 
