@@ -29,7 +29,7 @@
 |---|---|
 | Skill | `wugweb-work`, one of six in the Wugweb Skill System |
 | The question it answers | How is each piece made? |
-| Status | Plan complete and ready to take to the development chat. Nothing built; the build waits on the owner's inputs listed below. |
+| Status | Skill built in the owner's development chat: version 0.4.0, installed in the owner's Claude skills (as reported by that chat on 2026-11-16; not seen by the planning session). Its 14 evals are written but not run. Not yet in the repo. The site build (Part 2) is not started. |
 | Planned in session | wugweb-work |
 | Will live at | `.claude/skills/wugweb-work/` |
 | Registry | Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298) |
@@ -381,8 +381,8 @@ For the owner's review; this is the starting point for the track 2 body standard
 |---|---|
 | Name | `wugweb-work` |
 | Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `scripts/`, `examples/`, `evals/` |
-| Version | 0.1.0 (planned) |
-| Status | Plan, final for vetting. Not built. |
+| Version | 0.4.0 (built 2026-11-16 in the development chat; the plan's first number was 0.1.0) |
+| Status | Skill built and installed in the owner's Claude skills. Evals not run. Not in the repo. Site build not started. |
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-work/` in the repo `wugweb-git/wugweb_site` |
 | Content source | Notion Case Studies → Body Content (one document per case study) |
