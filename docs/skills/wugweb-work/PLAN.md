@@ -4,7 +4,7 @@
 
 ## Contents
 
-1. Where this skill stands · Two tracks · What stays and what moves · Forms module · Skill card · About · Why · One source of truth
+1. Where this skill stands · Two tracks · What stays and what moves · Forms module · Works beyond Claude · Skill card · About · Why · One source of truth
 2. Status and owner decisions
 3. Standing rules
 4. Standard structure of the skill
@@ -52,13 +52,18 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 
 **Hands off to and from**
 
-| With | Gives | Takes |
+| With | `wugweb-work` gives | `wugweb-work` takes |
 |---|---|---|
-| `wugweb-strategy` | A finished piece | A brief |
-| `wugweb-voice` | Draft copy | Voice rules |
-| `wugweb-brand-os` | Drafts and visuals to check | Brand and art-direction rules |
-| `wugweb-kits` | Content shape and chosen media | Layout and blocks |
-| `wugweb-seo` | Topic, then the built page | Keyword notes, schema, issue list |
+| `wugweb-strategy` | A finished piece; what proof exists | A brief: what to say, to whom, when, which case studies back it |
+| `wugweb-voice` | The draft, with its form, mode, and the audience and purpose from the brief | A voice check: breaks and fixes |
+| `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules |
+| `wugweb-kits` | Content shape and chosen media; any visible wording kits asks for (labels, alt text) | Blocks, layout, tokens |
+| `wugweb-seo` | The approved body and page URL; any visible wording seo asks for (title options) | Title and schema rules to apply; keyword notes; a fix list for a finding on one page |
+
+- `wugweb-work` is the hub for wording and voice checks. `wugweb-voice` has no direct link with strategy, seo or kits.
+- When seo or kits needs visible wording, they ask `wugweb-work`, which writes it and runs the voice check.
+- An audit finding on one page comes here as a fix list. A finding that repeats across a block goes from seo to kits.
+- Every link must read the same on both skills' pages.
 
 **Waiting on the owner**
 
@@ -139,6 +144,24 @@ There is no separate social skill. Its tasks are a module of this skill. Plannin
 **Tests.** Every fact-pack item has a body line. Every post sentence is in the ledger. One claim per carousel slide, with a proof screen. Behance captions match the approved ones word for word. No deck slide without a body line. A chart request on a body with no numbers is refused. An existing og file is proposed before a made one. "Post it now" stops for the per-post yes. An unapproved body stops at step 1.
 
 **Source gaps.** The Behance and Dribbble counts were not checked against the live profiles. The brand files `LinkedIn_Post.md`, `Pitch_Deck.md` and `Instagram_Post.md` are one paragraph and empty headings. No approved body exists yet. Platform specs are unverified.
+
+## Works beyond Claude
+
+Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool, not only Claude.
+
+- **Plain rules.** `SKILL.md` and every reference file are plain Markdown that any model can follow. No rule depends on a Claude feature.
+- **Helpers are optional.** Every mode can be done by hand from the reference files. Claude-only helper skills, plugins and connectors speed a mode up; none is required.
+- **Scripts.** `case-audit.mjs` and `check-case-page.mjs` are plain Node with no Claude tooling.
+- **Wiring in one file.** Tool and vendor names (Notion, Sanity, R2, Cloudflare, Postiz, the helper skills) live only in `references/ops-cycle.md` and `references/skill-map.md`.
+- **Single-file export.** One Markdown file, built from `SKILL.md` and the references, that can be pasted or attached in GPT, Cursor or another tool.
+- **Test.** One eval prompt is run from the export in another tool; it passes when the output meets the same checks as the with-skill run.
+
+**What works only in Claude today** (Claude's assessment, for the owner to correct)
+
+- Looking at every image and video needs a model that can see them and reach the R2 URLs. A text-only tool cannot do the Look mode.
+- Stepping through video frames uses the browser pane.
+- The skill-creator eval loop and the helper skills are Claude tooling.
+- Notion, Sanity and Postiz access runs through this setup's connectors; another tool needs its own access or a person to paste the content in.
 
 ## Skill card
 

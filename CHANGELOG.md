@@ -9,6 +9,11 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan: links with sibling skills, works beyond Claude, page pointers (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` gains the fuller links table (wugweb-work is the hub for wording and voice checks) and a "Works beyond Claude" section, matching the Notion page.
+- `CLAUDE.md` and `AGENTS.md` call the plan page by its new title, "wugweb-work", under the Wugweb Skill Management System registry; the address is unchanged.
+- `backups/notion-wugweb-work-page-before-2026-11-16-b.md`: the Notion page as it was before this update.
+
 ### Changed — wugweb-work plan: two tracks, split between skills, Forms module (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md` re-exported after the Notion page update: new top section (where the skill stands in the six-skill Wugweb Skill System), two tracks against the nine modes, what stays and what moves to sibling skills, the Forms module, and superseded lines corrected (media rule, helpers, scope, `ui-system-mapper` inside `wugweb-kits`).
 - `pending.md` gives the plan page's new title ("wugweb-work") and location (Wugweb Skill Management System); the address is unchanged.
