@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: matrix entry trimmed, stale reference fixed (2026-11-16)
+- Docs only. In `docs/skills/wugweb-strategy/PLAN.md` the matrix row's "Never does" entry is back to 40 words, and "(question 21)" in the absorbed table now reads "(decision 21)". Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-matrix-trim-2026-11-16.json`.
+
 ### Changed — wugweb-strategy plan: owner decisions on all 22 questions (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` now matches its Notion skill page: "Open questions" becomes "Owner decisions" (calendar in a new Notion plan database, six service pillars, one brief, accounts in scope, client permission always, no Sanity schema change); brief fields 10, 13, 14 and 15, the handoff contract and the matrix row updated to match.
 
