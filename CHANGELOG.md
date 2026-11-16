@@ -14,6 +14,7 @@ and this project adheres to Semantic Versioning.
 
 ### Added — wugweb-seo skill, master copy in the repo (2026-11-17)
 - `.claude/skills/wugweb-seo/`: the 21 files of version 2.4.0 copied unchanged from the Claude app copy (checked for secrets and personal data: none). Claude Code in this repo loads it directly. Edits follow in a separate commit.
+- Version 2.4.1 in the repo copy: proof-map link wording, the standing-rules path, the body trimmed to 1,992 words by a plain count (script commands moved to `README.md`), an unquoted `name:` so the validator and build pass, and a rebuilt `AGENTS.md` and Cursor rule. The app copy still reads 2.4.0 until the owner re-saves it.
 
 ### Changed — wugweb-voice plan status lines (2026-11-17)
 - `docs/skills/wugweb-voice/PLAN.md` and the Notion page: stale "not committed yet" and "draft 0.1.0" lines now say draft 0.2.0, 51 files, on main since 8ebe7693. Backup note `backups/notion-wugweb-voice-page-2026-11-16-h.json`.

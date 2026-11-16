@@ -12,7 +12,7 @@ which handoff was skipped, and label the result a manual check.
 
 | With | Gives | Takes |
 |---|---|---|
-| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports | Business goal, audience, page list; which pages each piece links to |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports | Business goal, audience, page list, the pillar and cluster structure, the proof map |
 | `wugweb-work` | Keyword notes and budgets for one brief; platform keyword note; fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
 | `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
 | `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
@@ -35,8 +35,10 @@ Asked by `wugweb-work`, for a case study, blog post, service page or site page.
 Receive the page, its type, what was built, the audience and the candidate
 phrases. Return the shape in `references/plan.md`. The maker uses these as
 constraints. It keeps its headings and adds no FAQ block for search, no keyword
-counts and no sections written for search. The link targets come from
-`wugweb-strategy`; this skill gives the link rules.
+counts and no sections written for search. `wugweb-strategy` sets the
+pillar and cluster structure. The proof map wins on which case study backs a
+page. `wugweb-seo` picks the other link targets for a brief around it and gives
+the link rules.
 
 ### 3. Platform keyword note
 

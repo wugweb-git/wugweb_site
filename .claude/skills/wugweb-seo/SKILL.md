@@ -1,11 +1,11 @@
 ---
-name: "wugweb-seo"
+name: wugweb-seo
 description: "Plans, audits and reports on how Wugweb pages and client sites are found in search engines and AI answers. Use for the plan part: a keyword map, search intent, a content brief, topic gaps, or a keyword note for a LinkedIn, Behance or Dribbble title and tags. Use for the audit part: a meta title or description check, headings, canonical, indexing, schema or JSON-LD, share tags, robots.txt, AI crawlers, or why a page is not found. Use for the report part: rankings, Search Console data, a traffic drop, AI Overviews, or ChatGPT and Perplexity citations. Returns constraints, checks and reports; never writes copy."
 license: MIT
 compatibility: "Scripts need Node 18 or later, with no packages and no network. The report part needs a Search Console export or a connected SEO data tool. Without a shell, apply the checks by reading."
 metadata:
   author: wugweb
-  version: "2.4.0"
+  version: "2.4.1"
 ---
 
 # Wugweb SEO
@@ -39,7 +39,7 @@ Each concern has one home. Follow a sibling's rule there; do not restate it here
 | What to publish, to whom and when; reporting on posts | `wugweb-strategy` |
 | Brand name, descriptor and approved facts about Wugweb, for titles and organisation markup | read from `wugweb-brand-os`, never rewritten |
 | Tokens, layout, components and the accessibility audit | `wugweb-kits` |
-| The owner's standing rules | the shared rules file every Wugweb skill reads |
+| The owner's standing rules | `docs/skills/STANDING-RULES.md`, the shared rules file every Wugweb skill reads |
 
 If a sibling is not installed, give this skill's answer, say which sibling
 check was skipped, and stop at the boundary. The exact questions sent and
@@ -110,10 +110,11 @@ For one page, answer one question: which phrase and intent should it target?
 
 Return limits and an outline, never wording: the title limit, the description
 limit, the entities the page must name, the schema, the link rules, and an
-outline. `wugweb-strategy` decides which pages a piece links to. This skill
-owns the link rules: one link up to the service pillar and two or three across
-to sibling pages, descriptive anchors, no orphans or dead ends, and depth from
-home. It audits the result.
+outline. `wugweb-strategy` sets the pillar and cluster structure. The proof
+map wins on which case study backs a page. `wugweb-seo` picks the other link
+targets for a brief around it, owns the link rules (one link up to the service
+pillar and two or three across to sibling pages, descriptive anchors, no
+orphans or dead ends, depth from home) and audits the result.
 The outline lists the topics the page must cover, in order, with the fact from
 the source each one rests on. It names topics, not headings; the maker writes
 the headings. Do not add an FAQ
@@ -259,26 +260,9 @@ asked about one title.
 - Schema for service pages, home and about.
 - Title and description limits for client sites, Kits and Wugweb X.
 
-## Run the scripts
+## Run the scripts and use outside Claude
 
-Every script needs Node 18 or later and no packages.
-
-```bash
-node scripts/check-page.mjs <page.html> [--kind work] [--host <host>] [--json]
-node scripts/check-robots.mjs <robots.txt> [--path <path>] [--json]
-node scripts/validate.mjs     # check this skill against its own format
-node scripts/test.mjs         # self-test on examples/
-node scripts/build.mjs        # regenerate AGENTS.md and adapters/
-```
-
-Fixtures: `examples/page-pass.html`, `examples/page-fail.html` and
-`examples/robots.txt`.
-
-## Use outside Claude
-
-The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads
-it as it is. `AGENTS.md` is the whole skill compiled into one file for agents
-that read plain instructions. `adapters/` holds a Cursor rule and an
-instruction block for a custom GPT. `scripts/build.mjs` generates all of
-these; edit the sources, never the output. Install steps for each agent are in
-`README.md`.
+Scripts need Node 18 or later and no packages. Every command, the fixtures and
+the install steps for each agent are in `README.md`. `AGENTS.md` is the whole
+skill in one file for agents that read plain instructions; `scripts/build.mjs`
+generates it and `adapters/`, so edit the sources, never the output.

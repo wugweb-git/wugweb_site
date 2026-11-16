@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.4.1, 2026-11-17
+
+Repo master copy. Edits made in the repo, not in the app copy.
+
+- Link targets: `wugweb-strategy` sets the pillar and cluster structure. The
+  proof map wins on which case study backs a page. `wugweb-seo` picks the
+  other link targets for a brief around it, owns the link rules and audits the
+  result. This replaces the 2.3.0 wording. Owner ruling, 2026-11-16.
+- The boundary table names the shared rules file by its path,
+  `docs/skills/STANDING-RULES.md`.
+- The body moved the script commands and the outside-Claude notes into
+  `README.md`, to stay inside 2,000 words by a plain count.
+- `name:` in the frontmatter is no longer quoted. A quoted name failed the
+  validator and made the build write a Cursor rule named with quotes.
+- `AGENTS.md` and the adapters rebuilt.
+
 ## 2.4.0, 2026-11-16
 
 Rules checked against Google's and the AI vendors' own pages, read on

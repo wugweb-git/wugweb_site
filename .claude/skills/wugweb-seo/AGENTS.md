@@ -2,7 +2,7 @@
 
 # wugweb-seo
 
-**Version 2.4.0** · Wugweb · November 2026
+**Version 2.4.1** · Wugweb · November 2026
 
 Plan, audit and report on how Wugweb pages are found in search engines and AI answers. Plan gives the site keyword and intent map, the phrase, intent, outline and brief limits for one page, and keyword notes for social and portfolio titles. Audit checks the rendered page and robots.txt and returns a fix list split three ways. Report reads Search Console and AI answer data and feeds the content plan. It never writes copy and changes nothing itself. Every helper is optional; the rules taken from them are restated in the references. Two check scripts with no dependencies. Independent of CMS, host and agent.
 
@@ -35,7 +35,7 @@ Each concern has one home. Follow a sibling's rule there; do not restate it here
 | What to publish, to whom and when; reporting on posts | `wugweb-strategy` |
 | Brand name, descriptor and approved facts about Wugweb, for titles and organisation markup | read from `wugweb-brand-os`, never rewritten |
 | Tokens, layout, components and the accessibility audit | `wugweb-kits` |
-| The owner's standing rules | the shared rules file every Wugweb skill reads |
+| The owner's standing rules | `docs/skills/STANDING-RULES.md`, the shared rules file every Wugweb skill reads |
 
 If a sibling is not installed, give this skill's answer, say which sibling
 check was skipped, and stop at the boundary. The exact questions sent and
@@ -106,10 +106,11 @@ For one page, answer one question: which phrase and intent should it target?
 
 Return limits and an outline, never wording: the title limit, the description
 limit, the entities the page must name, the schema, the link rules, and an
-outline. `wugweb-strategy` decides which pages a piece links to. This skill
-owns the link rules: one link up to the service pillar and two or three across
-to sibling pages, descriptive anchors, no orphans or dead ends, and depth from
-home. It audits the result.
+outline. `wugweb-strategy` sets the pillar and cluster structure. The proof
+map wins on which case study backs a page. `wugweb-seo` picks the other link
+targets for a brief around it, owns the link rules (one link up to the service
+pillar and two or three across to sibling pages, descriptive anchors, no
+orphans or dead ends, depth from home) and audits the result.
 The outline lists the topics the page must cover, in order, with the fact from
 the source each one rests on. It names topics, not headings; the maker writes
 the headings. Do not add an FAQ
@@ -255,29 +256,12 @@ asked about one title.
 - Schema for service pages, home and about.
 - Title and description limits for client sites, Kits and Wugweb X.
 
-## Run the scripts
+## Run the scripts and use outside Claude
 
-Every script needs Node 18 or later and no packages.
-
-```bash
-node scripts/check-page.mjs <page.html> [--kind work] [--host <host>] [--json]
-node scripts/check-robots.mjs <robots.txt> [--path <path>] [--json]
-node scripts/validate.mjs     # check this skill against its own format
-node scripts/test.mjs         # self-test on examples/
-node scripts/build.mjs        # regenerate AGENTS.md and adapters/
-```
-
-Fixtures: `examples/page-pass.html`, `examples/page-fail.html` and
-`examples/robots.txt`.
-
-## Use outside Claude
-
-The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads
-it as it is. `AGENTS.md` is the whole skill compiled into one file for agents
-that read plain instructions. `adapters/` holds a Cursor rule and an
-instruction block for a custom GPT. `scripts/build.mjs` generates all of
-these; edit the sources, never the output. Install steps for each agent are in
-`README.md`.
+Scripts need Node 18 or later and no packages. Every command, the fixtures and
+the install steps for each agent are in `README.md`. `AGENTS.md` is the whole
+skill in one file for agents that read plain instructions; `scripts/build.mjs`
+generates it and `adapters/`, so edit the sources, never the output.
 
 ---
 
@@ -300,7 +284,7 @@ which handoff was skipped, and label the result a manual check.
 
 | With | Gives | Takes |
 |---|---|---|
-| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports | Business goal, audience, page list; which pages each piece links to |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports | Business goal, audience, page list, the pillar and cluster structure, the proof map |
 | `wugweb-work` | Keyword notes and budgets for one brief; platform keyword note; fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
 | `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
 | `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
@@ -323,8 +307,10 @@ Asked by `wugweb-work`, for a case study, blog post, service page or site page.
 Receive the page, its type, what was built, the audience and the candidate
 phrases. Return the shape in `references/plan.md`. The maker uses these as
 constraints. It keeps its headings and adds no FAQ block for search, no keyword
-counts and no sections written for search. The link targets come from
-`wugweb-strategy`; this skill gives the link rules.
+counts and no sections written for search. `wugweb-strategy` sets the
+pillar and cluster structure. The proof map wins on which case study backs a
+page. `wugweb-seo` picks the other link targets for a brief around it and gives
+the link rules.
 
 #### 3. Platform keyword note
 
