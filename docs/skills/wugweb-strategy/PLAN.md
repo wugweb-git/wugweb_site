@@ -95,7 +95,7 @@ version: 0.1.0
 
 - **Body:** 1,500 to 2,000 words, imperative voice. Purpose, when to use and when not, the ten modes (one paragraph each), the rules that always apply, and a reference index.
 - **Trigger phrases** are all about content planning. None uses "strategy" on its own, "positioning", "brand" or "messaging".
-- **The owner's standing rules** are read from the shared file, not copied.
+- **The owner's standing rules** are read from the shared file, `docs/skills/STANDING-RULES.md`, and are not restated here.
 - **No duplication:** a rule lives in one file only.
 
 ```
