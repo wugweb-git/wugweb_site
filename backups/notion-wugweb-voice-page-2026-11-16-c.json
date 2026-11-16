@@ -1,0 +1,18 @@
+{
+  "what": "Backup of the Notion page wugweb-voice before the third write (section 14 Extracted and absorbed, standalone SKILL.md rule, routed tables)",
+  "url": "https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e",
+  "takenAt": "2026-11-16",
+  "note": "The page was not re-fetched for this backup. Its state is the second write, which Notion accepted with no warnings: the top summary as stored in backups/notion-wugweb-voice-page-2026-11-16-b.json with the two handoff-row edits listed below, and under the heading 'Plan' the same text as docs/skills/wugweb-voice/PLAN.md at git commit 7bc17888, with headings one level lower.",
+  "planTextSource": "git show 7bc17888:docs/skills/wugweb-voice/PLAN.md",
+  "summarySource": "backups/notion-wugweb-voice-page-2026-11-16-b.json (summaryContent)",
+  "summaryEditsAppliedInSecondWrite": [
+    {
+      "from": "<code>wugweb-work</code>, <code>wugweb-strategy</code> (social is a module inside wugweb-work)",
+      "to": "<code>wugweb-work</code> (social is a module inside it; strategy, seo and kits reach the voice only through it)"
+    },
+    {
+      "from": "Draft text to check",
+      "to": "Draft text with its form, mode, and the audience and purpose from the brief"
+    }
+  ]
+}

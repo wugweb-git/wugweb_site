@@ -208,6 +208,7 @@ Owner, 2026-11-16, as relayed by the coordinating session: "make sure all the sk
 
 How the skill stays portable:
 
+- **`SKILL.md` stands alone.** Other tools may not load reference files on demand, so `SKILL.md` carries the core rules itself: the always-on voice rules, the fixed owner rules, the short banned list and the voice check. The reference files add depth, not anything the core depends on.
 - **Plain Markdown rules.** `voice.md`, `modes.md`, `words.md`, `corpus.md` and `handoff.md` are written so any model, or a person, can follow them. No Claude-only syntax in them.
 - **Helpers are optional.** Every helper skill, plugin and connector in section 10 is an aid. Each mode and the voice check (section 7a) can be done by hand from the Markdown files alone.
 - **Scripts are plain Node.** No Claude tooling, no installed packages beyond Node itself.
@@ -224,3 +225,129 @@ What in this plan works only in Claude today:
 | Running `evals/evals.json` through `anthropic-skills:skill-creator` | Run the same inputs by hand and compare against the expected flags |
 | Reading the Notion page and Sanity fields through connectors | Not needed at run time; the rules live in the files |
 | The owner's fixed rules held in Claude memory | Copied into `voice.md` and `words.md`, so the skill does not depend on memory |
+
+## 14. Extracted and absorbed
+
+Owner, 2026-11-16, as relayed by the coordinating session: "push all the skills and plugins to the subsessions so that they can extract skills and even absorb them", then "provide them with more".
+
+How this was done: three read-only passes over the installed skills and plugins on 2026-11-16. Nothing was installed, removed or edited. Nothing is copied word for word; each useful rule is to be restated in our own plain words, with its source named here. Owner rules win in every clash. Everything absorbed is a candidate rule: it becomes confirmed only when the owner rules on it or his samples show it.
+
+Decisions: ABSORB (restate inside this skill so it works without the helper), HELPER (keep as an optional aid only), IGNORE.
+
+### Calibration and samples
+
+| Source | What is taken | Lands in | Decision | Clash with an owner rule |
+|---|---|---|---|---|
+| `copywriting-kit:brand-voice` | Only the writer's own or authorised samples; choose samples across audience, channel and situation and state the coverage; one sample gives a provisional profile; label a rule as from interview or from a sample; "sounds like" lines must be real owner sentences; describe rhythm, do not set it as a standard | `corpus.md`, `voice.md` | ABSORB, HELPER | Its template uses en dashes and can record dash use as a habit. No dashes wins. |
+| `social-media-skills:voice-builder` | Rules come from quoted samples, not adjectives; 5 to 10 samples ideal, 3 the floor; leave out text edited by others, boilerplate, AI-written, outdated or outlier pieces; never average samples that disagree, ask which is the target; a short list of 5 to 7 distinctive, testable signatures plus a "never" list; name the gaps when samples are thin | `corpus.md`, `voice.md` | ABSORB, HELPER | Its "stance" layer reads beliefs and emotional register: dropped, except person and address. It keeps founder and company voices apart: ignored, one voice. Its "aspirational voice" calibrates on other writers: ignored. Em dashes in its examples. |
+| `brand-voice:discover-brand` (skill and agent) | An explicit instruction outranks an observed pattern; superseded material is kept listed as stale, not used; a conflict is written as both sides with dates | `sources` notes in `corpus.md` | ABSORB the ranking ideas only | It searches every connected platform, including other people's writing and calls. That breaks "only what the owner supplies". The search itself is IGNORED. |
+| `brand-voice:conversation-analysis` agent | A pattern needs at least three occurrences; separate the owner's lines from other speakers before analysing; tie each quote to its transcript | Spoken mode in `modes.md` | HELPER, only on transcripts he authorises | It lists "personality traits" as something to extract: not done. |
+| `brand-voice:document-analysis` agent | Every extracted statement cites its document; explicit mention is kept apart from inferred pattern | `corpus.md` | HELPER (already used once, read-only, on `brand_guidelines/`) | It extracts "personality descriptors": not done. |
+| Granola meeting transcripts (connector) | A possible source of his spoken voice | `corpus.md`, only if listed there | Listed, not run | Used only for specific meetings he authorises. |
+
+### Describing the voice
+
+| Source | What is taken | Lands in | Decision | Clash with an owner rule |
+|---|---|---|---|---|
+| `brand-voice:guideline-generation` | A paired "is / is not" row with evidence; three confidence levels, each with why it is limited and what would raise it; a four-tier word list (must use, preferred, avoid with alternative, never with reason); version line and archiving the old version | `voice.md`, `words.md`, the confidence rule in `SKILL.md` | ABSORB, HELPER | It has a "brand personality" and archetype section: ignored. Its confidence counts sources only; ours adds the confirmed or observed label. Em dashes, American spelling, title case in its templates. |
+| `marketing:brand-review` | A four-line card per trait (is, is not, sounds like, does not sound like); tone by situation (bad news, incident, success story) beside tone by form; a table for style decisions; "use this, not this" word pairs | `voice.md`, `modes.md`, `words.md` | ABSORB, HELPER | Starts from "brand as a person": ignored. An invented metric and em dashes in its examples. "Excited" launch tone against no hype. |
+| `social-media-skills:brand-profile` | A place for "how we say hard things" (price rise, mistake, outage); a spelling and style choices block; examples he likes and dislikes, each with a reason | `voice.md`, `words.md` | ABSORB | It drafts a profile from a website and social handles without sample-by-sample consent: not done. |
+| `~/.claude/skills/brand` (voice framework) | "X, not Y" trait pairs; the question "would a competitor say this?" | `voice.md`, voice check | ABSORB | Traits are chosen, not drawn from samples: ours need a source. Generic example lines not carried. |
+| `brand-voice:brand-voice-enforcement` | "More casual" changes tone, never voice; lead with 2 to 3 traits per form; before and after pairs with each change tagged by the rule behind it; on a conflict, explain, recommend, give options | `modes.md`, `examples/`, `SKILL.md` | ABSORB, HELPER | Its examples add invented numbers to sound data-driven: never. "Exclamation-worthy" energy against no hype. |
+
+### Tone by form
+
+| Source | What is taken | Lands in | Decision | Clash with an owner rule |
+|---|---|---|---|---|
+| `social-media-skills:writing-style-and-tone` | Voice is constant, tone is chosen per moment; cleverness drops as stakes rise; hide the name and ask whether it is still recognisable | `modes.md`, voice check | ABSORB | It refuses punctuation bans outright. The owner's no-dash rule wins. Its third-party statistics are not carried. |
+| `social-media-skills:cross-platform-repurposing` | The idea and the voice stay; opening, length, structure and register change | `modes.md` | ABSORB | None found. |
+| `thread-writer`, `carousel-writer`, `story-writer`, `quote-cards-and-text-graphics` | One idea per unit, the point first, each unit readable on its own; a slide is a headline plus at most one line | `modes.md` (draft text for the carousel gap in section 7a) | ABSORB the wording rules | Example hooks with invented figures and emoji: not carried. |
+| `text-post-and-microblog`, `threads-post`, `linkedin-post-writer` | No greeting or announcement opener; one idea; short paragraphs; at most one emphasis; end on a real, specific question; the peer test ("would I say this to a respected peer's face?"); named things to avoid (one dramatic fragment per line, bait, invented parables); only verifiable results in a case-study post | `modes.md`, voice check | ABSORB | "Hot take" as a default and hype phrases: not carried. |
+| `reply-and-comment-writer` | A reply is slightly looser, same voice; every reply adds something; shape by message type (praise, question, criticism: acknowledge, fix, take private) | `modes.md` (chat and reply) | ABSORB | Unverified engagement figures not carried. |
+| `hook-writer`, `caption-writer` | Take the opening from the piece's true strongest element; a truth gate (the piece must deliver what the opening promises); templates are shapes to rewrite in voice; lead with the value, not "thrilled to announce" | `modes.md` (openings) | ABSORB, HELPER | Several mechanisms lean on hype or fear of missing out: not carried. |
+| `behind-the-scenes-and-founder`, `contrarian-and-opinion` | "I" in a first-person piece, "we" for the studio, one per piece; never write feelings or opinions he has not stated | `modes.md` | ABSORB the pronoun rule only | It splits founder voice from brand voice: ignored, one voice. Example figures invented. |
+| `talking-head-and-piece-to-camera`, `short-form-video-script` | Spoken wording only: fix the first and last lines, keep the middle in his own words; no wind-up; a line that fails three times is rewritten; cut any line that does not move the answer on | `modes.md` (spoken answer, draft until transcripts exist) | ABSORB the wording rules | Filming, audio and delivery coaching: ignored. No sound is produced. |
+| `design:ux-copy` | Tone keyed to the reader's state (success, error, warning, neutral); one term per thing | `modes.md` | ABSORB, HELPER | "Celebratory" success tone against no hype. Title case in its template. |
+| `copywriting-kit:landing-page-copy` | The reader as subject where natural; "we" kept for commitments and about copy; headings state the point | `voice.md` | ABSORB | Very few. Mostly British spelling already. |
+
+### Words and phrases
+
+| Source | What is taken | Lands in | Decision | Clash with an owner rule |
+|---|---|---|---|---|
+| `copywriting-kit` stock-phrasing catalogue (in `copy-edit`, `copy-diagnose`, `landing-page-copy`) | Seven families of empty phrasing (empty scaffolding, unearned emphasis, padding, hidden actor, manufactured tension, template residue, hedge stacks), each with a note on when it is not a fault; remove a stock phrase, never swap in another | `words.md` | ABSORB as the skeleton | It is a starting list, not the owner's. His banned lists (wugweb-work section 5, Sanity draft) come first. |
+| `writing-style-and-tone`, `voice-builder`, `text-post-and-microblog`, `reply-and-comment-writer` | Further candidate words and openers (for example delve, tapestry, leverage, "in today's fast-paced world", "I'm excited to announce", "great post") | `words.md`, marked as candidates | ABSORB as candidates | "utilize" is American: both spellings listed. |
+| `rampstack-seo:content-and-copy` | Sentence-level list: nominalisations, throat-clearing, filler intensifiers, hedges, pronoun drift, internal jargon leaking into customer copy; weak opener and weak closer types | `words.md`, `voice.md` | ABSORB, HELPER | It treats em dashes as a style choice to honour: no. American spelling. Its "contrarian" and "quotable line" advice not carried. |
+| `anthropic-skills:full-output-enforcement` | A short list of assistant leftovers to strip ("let me know if you want me to continue", "for brevity") | `words.md` | ABSORB the list only | "Do not optimise for brevity" is about completeness, not copy: ignored for voice. |
+
+### The voice check
+
+| Source | What is taken | Lands in | Decision | Clash with an owner rule |
+|---|---|---|---|---|
+| `copywriting-kit:copy-edit` | Before any rewrite, list every number, name, quote and scope word (all, every, only, never) and re-check them after; a voice rule never beats a fact; a missing fact is named after the text, never filled in; change log with a reason about the reader | Voice check steps 3 and 6 (section 7a) | ABSORB, HELPER | None found. Closest fit to the owner's rules. |
+| `copywriting-kit:copy-proof-check` | A ledger row shape (item, location, source line quoted exactly, status, action); a status is always relative to what was supplied; unconfirmed wording is paraphrased with attribution, never put in quotation marks; where sources conflict, show both | `corpus.md` row shape, voice check step 3 | ABSORB the shape, HELPER | None found. |
+| `copywriting-kit:copy-diagnose` | A finding is quote, problem, effect on the reader; separate "does not apply" from "could not tell"; say what the check could not observe | Voice check report | ABSORB, HELPER | En dashes in its text. |
+| `brand-voice:quality-assurance` agent | Three results (pass, needs revision, fail); pass or fail per check; each finding names the rule it breaks and gives a fix; three severity levels | Voice check report | ABSORB, HELPER | None beyond the personality framing. |
+| `brand-voice:content-generation` agent | A short notes block after any output: voice, tone, words, adaptations | What a caller gets back (section 7) | ABSORB, HELPER | None in its rules. |
+| `writing-style-and-tone` | Four passes in order: substance, weight, rhythm read aloud, stock phrases; a visible placeholder where a real fact is missing | Voice check | ABSORB | As above. |
+| `rampstack-seo:content-and-copy` | Edit for voice after structure and substance; note what already works before editing; "could a stranger place this as us?" | Voice check | ABSORB | As above. |
+
+### Tests and building the skill
+
+| Source | What is taken | Lands in | Decision | Clash with an owner rule |
+|---|---|---|---|---|
+| `voice-builder` (validation) | The blind test: write a new piece on a topic he has not covered, from the rules alone; compare unlabelled against a real sample; score hit or miss per rule; fix the rule behind each miss; two clean passes is the bar; if it cannot pass, ask for better samples | Section 8, `evals/` | ABSORB | Its worked examples are invented: ours use real samples only. |
+| `anthropic-skills:skill-creator` | The description decides when the skill loads; test with requests that should load it and near misses that should not (format, SEO, positioning); blind A or B comparison with a simple rubric; people judge style, automatic checks cover spelling, dashes, case and invented numbers; one reference file per form | Section 5, section 8 | ABSORB the method, HELPER for running it | Its tooling is Claude-only (section 13). |
+| `anthropic-skills:skill-development`, `rampstack-seo:skill-creation-walkthrough` | A "when not to use" block pointing to sibling skills; no content repeated between `SKILL.md` and references; every reference named in `SKILL.md` | Section 5 | ABSORB | The three guides give three different length limits. The system's 1,500 to 2,000 words stays. |
+| `voice-builder` evals | Scenario tests that include refusal cases: no samples (must not invent), one thin sample, samples that disagree | `evals/` | ABSORB | None found. |
+
+### Ignored for voice
+
+| Source | Why |
+|---|---|
+| `marketing:draft-content`, `marketing:content-creation`, `marketing:email-sequence` | No voice method. Example hooks use invented numbers, urgency and title case. |
+| `storytelling-and-narrative`, `educational-content-and-how-to`, `listicle-and-roundup` | Structure and strategy, not voice. |
+| `anthropic-skills:brand-guidelines` | Another organisation's colours and fonts. |
+| `anthropic-skills:docx` | File mechanics only. Usable as a helper if a Word file is ever asked for. |
+
+### Passed to the coordinating session for other skills
+
+- FOR wugweb-brand-os: messaging ladder, positioning and audience material in `~/.claude/skills/brand`, `brand-voice:guideline-generation`, `marketing:brand-review` and `copywriting-kit:copy-diagnose`.
+- FOR wugweb-work: page and post structures, lengths, platform limits, hashtags, hook mechanisms, CTA shapes and claims checking in the social writer skills, `marketing:*`, `landing-page-copy`, `copy-proof-check` and `content-and-copy`. Warning: many templates there model invented figures and urgency.
+- FOR wugweb-seo: the SEO pass and metadata rules in `rampstack-seo:content-and-copy` and `marketing:content-creation`.
+- FOR wugweb-kits: interface copy patterns (errors, empty states, confirmations) in `design:ux-copy`.
+- FOR wugweb-strategy: the brief template in `content-and-copy` and the goal tables in `caption-writer`.
+- FOR the system: the three skill-building guides disagree on `SKILL.md` length.
+
+### Limits of this read
+
+- The plugins are not under `~/.claude/plugins/`; they were read from the Claude app's session folder. Other copies exist there and were not compared.
+- Read in full: the brand-voice plugin, the copywriting-kit skills, `ux-copy`, `brand-review`, `content-and-copy`, `voice-builder`, `writing-style-and-tone`, `hook-writer`, `caption-writer`, `linkedin-post-writer`.
+- Read as `SKILL.md` only, with some reference files unopened: the other social writer skills, `brand-profile`, `skill-creation-walkthrough`, parts of `skill-creator`, and most of `~/.claude/skills/brand`.
+- Not opened: `email-and-newsletter`, `reels-script`, `tiktok-script`, `scripting-and-storyboarding`, `content-research-and-sourcing`, `crisis-and-moderation`.
+- None of the helpers offers a blind comparison against real samples except `voice-builder`.
+
+### Routed from the wugweb-brand-os reading, 2026-11-16
+
+Proposals passed on by the coordinating session, not owner rulings.
+
+| Source | Status here |
+|---|---|
+| `~/.claude/skills/brand` voice framework; `brand-voice:guideline-generation`; `marketing:brand-review`; `social-media-skills:brand-profile`; `quote-cards-and-text-graphics`; `storytelling-and-narrative` | Already covered in the tables above. |
+| `social-media-skills:audience-research` (a bank of customers' own words) | Not read by this session. Likely belongs to `wugweb-strategy` and `wugweb-brand-os`; for voice it would only inform the "client's own words" rule. Decision waits on a read. |
+| `~/.claude/skills/design` slides copywriting formulas (PAS, AIDA, FAB) | Not read by this session. Formulas are structure, so likely FOR `wugweb-work`. Decision waits on a read. |
+| `frontend-design`, `design-taste-frontend` (their copy self-audit sections) | Not read by this session. Possible extra checks for interface wording. Decision waits on a read. |
+
+### Routed from the wugweb-work extraction, 2026-11-16
+
+Proposals passed on by the coordinating session, not owner rulings. Most repeat rows above; only what is new is listed.
+
+| Proposal | Source named | Status here |
+|---|---|---|
+| Never make text worse to dodge AI detectors; edit for readers | `copywriting-kit:copy-edit` | ABSORB into the voice check. Matches "do not copy typos". Read by this session. |
+| A piece ends, it does not run out; an opening earns the next lines | `rampstack-seo:content-and-copy` | ABSORB into `voice.md`. Read by this session. |
+| One register per page | `design-taste-frontend` | Candidate for `modes.md`. Not read by this session. |
+| Quotes of three lines at most, with name and role | `design-taste-frontend` | A length rule, so it stays with `wugweb-work`, which already has it. |
+| Buttons say what happens; one name per action or feature | `frontend-design`, `ux-ui-audit`, `design:ux-copy` | "One term per thing" is already absorbed. Button wording is candidate text for `modes.md`. Only `ux-copy` was read by this session. |
+| The client is the hero, the studio is the guide | `storytelling-and-narrative` | Candidate for `voice.md` (who the subject of a sentence is in client work). It also touches positioning, so `wugweb-brand-os` should agree. |
+| Founder "I" against studio "we" | `linkedin-post-writer`, `behind-the-scenes-and-founder` | Kept only as a pronoun rule. One voice stands (owner, 2026-11-16). |
+| Translate meaning, not words | `searchfit-seo:content-translation` | Candidate for `modes.md` if translated copy is ever in scope. Not read by this session. Scope is the owner's call. |
