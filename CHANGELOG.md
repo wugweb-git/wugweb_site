@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan: routed rules from seo and strategy, two more forms, proposed made-file sizes (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md`: three absorbed rules routed by `wugweb-seo` (call to action by intent, distinct intent for competing pages, alt text length and caption agreement), the scheduler clash (per-batch approval and uploads), newsletter edition and advocacy copy as forms, proposed sizes for made files, two new owner questions. Matches the Notion page.
+- `backups/notion-wugweb-work-page-before-2026-11-16-d.md`: the Notion page as it was before this update.
+
 ### Changed — wugweb-kits plan: items routed from wugweb-seo, share-tag finding (2026-11-16)
 - Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 14) gains section 22: two new accessibility rules, and a recorded finding that `BaseLayout.astro` emits 9 of 12 share tags (`og:site_name`, `og:image:alt`, `twitter:image:alt` missing). No code changed.
 

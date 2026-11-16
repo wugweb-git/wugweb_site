@@ -76,6 +76,8 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 - [ ] Is the client-work brief written inside this skill (assumed yes)?
 - [ ] The sizes wanted for og image, story, and Behance and Dribbble covers. The installed skills disagree (og 1200 by 630 in one, 1200 by 628 in another; story safe zones differ) and none gives Behance or Dribbble cover sizes.
 - [ ] Hero copy limit: this plan sets the subtitle at 90 characters or fewer; `wugweb-kits` proposes a headline of 2 lines or fewer and subtext of 20 words or fewer. Pick one.
+- [ ] May LinkedIn posts carry a few specific tags, or none? The plan says none; `wugweb-seo` proposes a few.
+- [ ] Confirm the proposed sizes for made files (in the Forms module).
 
 **Reading the rest of this page.** Everything below is the full plan as written while `wugweb-work` was the only skill. The decisions above win where an older line disagrees. Parts that now belong to a sibling skill (writing style to voice; layout grammar and adaptive UX to kits; schema to seo; art-direction rules to brand-os; forms planning to strategy) stay here until that skill's plan is approved, then move.
 
@@ -130,6 +132,26 @@ There is no separate social skill. Its tasks are a module of this skill. Plannin
 | PDF | Same content as the deck or page. | `pdf` |
 | Charts | Only numbers with value, what, period, baseline, source and date. | `dataviz`, `data:create-viz`, `data:statistical-analysis`, `data-and-original-research` |
 | og image | An existing R2 file that fits, first; a made file only if nothing fits and the owner says yes; wired in by site code, not by the module. | |
+
+**Two more forms (added 2026-11-16, from `wugweb-strategy`'s list)**
+
+| Form | Takes | Helpers |
+|---|---|---|
+| Newsletter edition | Built from one or more approved pieces. One purpose and one main action; each item links to its page; no fact that is not in an approved body. Form file still to be written. | `email-and-newsletter`, `email-sequence` (the first not yet read) |
+| Advocacy copy | Short share text for the team, built from an approved post. Same facts as the post; nothing added. | `linkedin-company-pages` |
+
+Not in this module: replies, comment routines and outreach pitches. They are conversation, not production from an approved body, so the fact ledger and approval steps do not apply to them as written. Proposed by `wugweb-strategy`; left out until the owner decides.
+
+**Sizes for made files (proposed, awaiting the owner's confirmation)**
+
+Found by the coordinating session on 2026-11-16 and kept on the registry; not checked by this session. These are sizes for new made files, never for resizing client media.
+
+| File | Size | Source and standing |
+|---|---|---|
+| Link share image (og) | 1200 x 630 | LinkedIn Help, read directly: at least 1200 x 627, ratio 1.91:1, 5 MB at most |
+| Behance cover | Upload at least 808 x 632; shown at 202 x 158 | Behance Help Center as reported by search; figures date from 2020; the page was not read directly |
+| Dribbble shot | At least 1600 wide, no fixed ratio; PNG, JPG or GIF up to 10 MB, video up to 20 MB | Dribbble Help Center, read directly; 1600 x 1200 is convention only |
+| Story canvas | 1080 x 1920 | Safe zone unverified: no official page confirms it. Guides range from 250 px top and bottom to 270 px top, 670 px bottom and 6% at the sides; use the wider margins |
 
 **Rules in every form file.** Platform sizes and limits are checked with `platform-specs-and-validation` when the file is written, and dated, never from memory. Existing media is resized keeping the ratio; masks allowed; no cropped files; no sound (where a brand file says "decisive crop", the media rule wins). Client words only as a quote that is in the body. British English, sentence case, no dashes, no hashtag stuffing.
 
@@ -193,6 +215,7 @@ Three decisions: **Absorb** (the rule is restated inside this skill), **Optional
 | Media | Count the files first and recount before finishing. A manifest never says "and so on". If stopping early, stop at a clean point and say X of Y. | full-output-enforcement |
 | Look | Read a screen in a fixed order: what the eye meets first, the task it serves, the reading order, consistency. Every observation names the element and the reason. | design:design-critique |
 | Look | Alt text says what the image shows and why it is there. Decorative images get empty alt. Long detail goes in the caption. | web-quality-accessibility |
+| Look | Alt text is 10 to 125 characters and agrees with the caption. | seo-skills:seo-images, routed by `wugweb-seo` |
 | Body | Evidence ledger. One row per claim: the claim, where it is, the evidence line, a status (backed, needs evidence, stronger than the evidence, remove) and a supported rewrite. | copywriting-kit:copy-proof-check |
 | Body | A rewrite may only narrow a claim. One client's result never backs a general claim. Where two figures conflict, the number is withheld and the owner is asked. | copywriting-kit:copy-proof-check |
 | Body | Fact lock. Before editing, list every number, name, date, quote and scope word (all, some, only); recheck after. Each added sentence must trace to a supplied fact; a missing fact becomes an owner question. | copywriting-kit:copy-edit |
@@ -206,6 +229,8 @@ Three decisions: **Absorb** (the rule is restated inside this skill), **Optional
 | Body | Body markdown uses only constructs the sync can convert to blocks: links, bold and italic, lists with a type and level. | sanity:portable-text-conversion |
 | Body, track 2 | Each section has one job or it goes. Lead each section with its point. Teach one thing per piece; more than one becomes a series. | website-design:landing-page; marketing:content-creation; social-media-skills:educational-content-and-how-to |
 | Body, track 2 | No proof supplied means no proof section. State one limit or fit condition. | copywriting-kit:landing-page-copy |
+| Body, track 2 | Match the call to action to the reader's intent: a soft next step on a page that informs, one clear action on a page where the reader is ready to act. | rampstack-seo:seo-keyword, routed by `wugweb-seo` |
+| Body | When two competing pages are both kept, rewrite the title, H1 and opening of each so each owns a distinct intent. `wugweb-seo` names the pair; the rewrite is done here. | seo-skills:seo-content-audit, routed by `wugweb-seo` |
 | Layout | Per block, state the limits: maximum length, and what shows when a field or a media item is missing. | design:design-handoff |
 | Layout | Numbering and labels must reflect a true order or structure in the content. | frontend-design |
 | Layout | Show real screens, not icon cards. One main point and one visual per section. | website-design:landing-page; design-taste-frontend |
@@ -258,6 +283,7 @@ Three decisions: **Absorb** (the rule is restated inside this skill), **Optional
 | Notion:create-page, sanity:portable-text-conversion, code-review | Write to Notion or Sanity, or post comments | Nothing written without approval of that exact change |
 | tinyfish, brightdata, seo-skills (paid data), aeo-brand-scan | Billed services, or data sent to a third party | Free tier only; private data stays private |
 | frontend-design | Invents copy when the brief has none | Never invent; ask |
+| social-media-skills: scheduling-and-queue, platform-specs-and-validation | A scheduler called WoopSocial, one approval per batch, uploading media | A yes per post; no uploads |
 
 ### Passed to other skills, not absorbed
 
