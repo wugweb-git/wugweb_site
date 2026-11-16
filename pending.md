@@ -12,7 +12,7 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 5. `wip/embedded-studio`: merge to main waits for owner approval (other session).
 
 **2026-11-14: Case study rebuild and the `wugweb-work` skill. PLAN ONLY, waiting for the owner's vetting.**
-- One source of truth: the Notion page "wugweb-work skill: plan (final for vetting)" under Wugweb HQ / Wugweb Website (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
+- One source of truth: the Notion page "wugweb-work" (until 2026-11-16 titled "wugweb-work skill: plan (final for vetting)") under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
 - State: plan is final. Nothing is built: no skill files, no site code, no Sanity write, no case-study row changed in Notion.
 - Done, read-only: three research reports (`docs/research/case-study-system-2026-10-19/`), the NTUC U Care reference audit and the NTUC Body Content v2 proposal (both on the Notion page).
 - The 2026-10-19 bento layout on `/work/[slug]` (item 8 below) is being replaced under this plan. Do not rework that page outside the plan.

@@ -9,6 +9,11 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan: two tracks, split between skills, Forms module (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` re-exported after the Notion page update: new top section (where the skill stands in the six-skill Wugweb Skill System), two tracks against the nine modes, what stays and what moves to sibling skills, the Forms module, and superseded lines corrected (media rule, helpers, scope, `ui-system-mapper` inside `wugweb-kits`).
+- `pending.md` gives the plan page's new title ("wugweb-work") and location (Wugweb Skill Management System); the address is unchanged.
+- `backups/notion-wugweb-work-page-before-2026-11-16.md`: the Notion page as it was before the update.
+
 ### Changed — wugweb-strategy plan: voice link and "Works beyond Claude" (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` states the link with `wugweb-voice` (none direct; through `wugweb-work`) and gains a portability section: plain Markdown, optional helpers, one wiring file, a single-file export and an export test. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-portability-2026-11-16.json`.
 
