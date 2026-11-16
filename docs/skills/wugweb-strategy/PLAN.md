@@ -394,7 +394,7 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 
 **Still to match in two other plans.** In the `wugweb-work` plan: its Brief mode is for client work only (decision 4). In the `wugweb-seo` plan: it decides what a retired URL does (decision 7). The link-target wording (decision 20) already matches the installed `wugweb-seo` 2.2.1.
 
-**One open question.** 23. If the proof map names a case study as backing a page but the link targets `wugweb-seo` picks for a brief leave it out, or name a different one, which wins?
+**Decision 23, proof map and link targets (owner, 2026-11-16).** The proof map wins on which case study backs a page. `wugweb-seo` picks the other link targets for a brief around it. This line is still to go in the `wugweb-seo` plan with the same wording.
 
 ## Source gaps
 
@@ -430,3 +430,4 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 | 2026-11-16 | "Content model: planning fields" added from the kits docs: which proposed CMS fields are planning fields, and the five blocks awaiting sign-off. Question 22 added. The signal log of readers' own words kept here; `wugweb-voice` reads it. |
 | 2026-11-16 | Open questions 1 to 22 answered by the owner and recorded as decisions. Brief fields 10, 13, 14 and 15, the refresh row, the handoff contract, the planning fields and the matrix row updated to match. Old content calendar read: starter template rows only, nothing moved. |
 | 2026-11-16 | Decision 20 replaced (owner, as recorded in `wugweb-seo` 2.2.1): this skill sets the pillar and cluster structure; `wugweb-seo` picks each brief's link targets. Brief field 10, the proof map row, the handoff contract and the matrix row updated. Question 23 added. |
+| 2026-11-16 | Question 23 answered by the owner and recorded as decision 23: the proof map wins on which case study backs a page. |

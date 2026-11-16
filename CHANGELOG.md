@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: decision 23, the proof map wins (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` records the owner's answer to question 23: the proof map wins on which case study backs a page, and `wugweb-seo` picks the other link targets around it. Same line on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-decision-23-2026-11-16.json`.
+
 ### Changed — wugweb-strategy plan: points to the shared standing rules (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` names `docs/skills/STANDING-RULES.md` as the source of the owner's standing rules and does not restate them. Same line on the Notion skill page; replaced line backed up in `backups/notion-wugweb-strategy-page-pre-standing-rules-2026-11-16.json`.
 
