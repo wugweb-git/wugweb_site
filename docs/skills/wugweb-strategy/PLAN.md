@@ -14,7 +14,7 @@
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-strategy/` |
 | Question it answers | What does Wugweb want to say, to whom, and when? |
-| Sources | Notion Blogs, Notion Case Studies, Notion Publications, Sanity `service` documents (all read only) |
+| Sources | Notion Blogs, Notion Case Studies, Notion Publications, Sanity `service` documents (all read only). The new Notion plan database is this skill's record, and each change to it needs the owner's yes. |
 | Hands to | `wugweb-work`, as a brief |
 | Scripts | None in v0.1 |
 
@@ -76,7 +76,7 @@
 ## Findings that shape the plan
 
 - **The calendar cannot sit in Notion Blogs as it is.** `scripts/sync-notion-blogs.mjs` reads every row that is not in the trash, whatever its Status, and creates a Sanity post for any row it cannot match. A planned row would become a post on the next write.
-- **"Brief" is claimed twice:** by this skill and by the Brief mode in `wugweb-work`. The installed `wugweb-seo` (updated 2026-11-16) no longer claims one: it returns "brief constraints", limits only and never wording, which is the search block in this plan. Its boundary table still says `wugweb-content`, not decided.
+- **"Brief" is claimed twice:** by this skill and by the Brief mode in `wugweb-work`. The installed `wugweb-seo` (updated 2026-11-16) no longer claims one: it returns "brief constraints", limits only and never wording, which is the search block in this plan. Its boundary table still says `wugweb-content`, not decided. Settled: decision 4.
 - **There is no written strategy to start from.** No audience list, goals, cadence or agreed pillar set was found in the sources read.
 - **Notion Publications already has planning statuses** (Planned, Scheduled, Published, Removed) with one row per place a post or case study is published. It is a natural home for the repurposing plan.
 
@@ -120,7 +120,7 @@ version: 0.1.0
 
 | File | Holds |
 |---|---|
-| `strategy.md` | Goals, the pillar set and mix, what Wugweb does not publish. Audiences and positioning are pointed to in brand-os, not restated. Proposed: one editorial stance sentence (see question 21). |
+| `strategy.md` | Goals, the pillar set and mix, what Wugweb does not publish. Audiences and positioning are pointed to in brand-os, not restated. One editorial stance sentence, approved by the owner (decision 21). |
 | `topics-and-calendar.md` | Topic intake, scoring, backlog fields, statuses, cadence, accounts. The signal log: readers' questions and objections in their own words, each with its source and date, with client names removed unless permitted. |
 | `brief-format.md` | The brief template and its variants per piece type |
 | `piece-structures.md` | The shape a piece's message takes in a brief (claim, tension, proof, outcome), per piece type |
@@ -149,8 +149,8 @@ Source: kits docs. `kits_design_system/docs/tokens/layout-shell.md`, section "CM
 **Planning fields this skill would want.** None exists today.
 
 - On the plan record, one row per piece: audience, pillar, one intent, status from idea to published or killed with a reason, account, target date, brief link, campaign label, proof (the related case studies), review verdict and review date.
-- Where they live depends on open question 1. If the plan gets its own Notion database, as recommended, most of these need no Sanity field at all.
-- On the published document, at most two: pillar, so the mix can be counted, and the review date.
+- They live on the new Notion plan database (decision 1). Service-page briefs sit there too, each row linked to its Sanity service document (decision 6).
+- On the published document: none. Pillar and review date stay on the plan row (decision 22). No Sanity schema change.
 
 Sanity schema changes are development and an owner decision. This skill only proposes them, as current to proposed.
 
@@ -169,12 +169,12 @@ Sanity schema changes are development and an owner decision. This skill only pro
 | 7 | Piece structure | Pointer to one structure |
 | 8 | Points the piece must make | Up to five; no headings, no copy |
 | 9 | Search block | Pasted from `wugweb-seo` unchanged: keyword, intent, questions |
-| 10 | Links | Service pages, posts and case studies it must connect to |
+| 10 | Links | Which service pages, posts and case studies it links to. Strategy picks the targets; `wugweb-seo` owns the link rules (decision 20). |
 | 11 | Source | Notion row; for a refresh, the keep, change and remove list |
 | 12 | Must not say | Permissions, sensitive clients |
-| 13 | Account and platform | Where it goes out |
-| 14 | Co-post and tagging | Who is named or tagged, with permission status |
-| 15 | Publish dependency | For example a linked page that must be live first |
+| 13 | Account and platform | Where it goes out: one of the accounts in scope (decision 13) |
+| 14 | Co-post and tagging | Who is named or tagged, with permission status. No client is named or tagged without permission (decision 15). |
+| 15 | Publish dependency | A linked page that is not live yet holds the post back (decision 14). |
 | 16 | Repurposing | Other forms, where, order |
 | 17 | Acceptance | What strategy checks on return |
 | 18 | Owner questions | Asked once |
@@ -195,7 +195,7 @@ Work returns the finished piece as a proposal, with a note of where it left the 
 | Piece structures | Work fills the structure with words | Not a search matter | Brand-os owns the messaging framework; this is only the shape per piece |
 | Editorial standards | Body format and quality gate stay in work | On-page rules stay in seo | Brand rules cover identity, not publishability |
 | Content models | Body Content grammar stays in work | Schema markup stays in seo | Not a brand matter; Sanity schema stays with engineering rules |
-| Refresh or retire | Work does the rewrite | Seo supplies the audit; the decision weighs more than rank | None |
+| Refresh or retire | Work does the rewrite | Seo supplies the audit; the decision weighs more than rank; seo decides what a retired URL does (decision 7) | None |
 | Proof map | Work picks screens inside a case study, not which case study | Internal-link rules stay in seo | None |
 | Campaign and repurposing plans | Work makes each form | Not a search matter | Art direction for a campaign stays in brand-os |
 | Form per piece and platform | Platform specs and how each form is built stay in work | Not a search matter | None |
@@ -207,8 +207,8 @@ Work returns the finished piece as a proposal, with a note of where it left the 
 
 | Skill | Goes in | Comes out | Strategy may not |
 |---|---|---|---|
-| `wugweb-work` | A brief | A finished piece and a return note; post results | Write or edit copy, choose screens, set layout, publish |
-| `wugweb-seo` | Topic or URL list | Keyword and intent notes; audit data for review, including the position and click-rate signals used for refresh decisions | Change keywords, titles or on-page rules |
+| `wugweb-work` | A brief | A finished piece and a return note; post results | Write or edit copy, choose screens, set layout, publish. Work's Brief mode is for client work only (decision 4). |
+| `wugweb-seo` | Topic or URL list; retire proposals | Keyword and intent notes; audit data for review, including the position and click-rate signals used for refresh decisions; what a retired URL does; the link rules and the link audit | Change keywords, titles, link rules, on-page rules or what a retired URL does |
 | `wugweb-brand-os` | A request for audiences, messages, positioning | Those, as written | Restate or alter them |
 | `wugweb-voice` | No direct link. The brief names audience, purpose and form; `wugweb-work` passes those to voice with the draft | Nothing | Set tone or phrasing in a brief or in the editorial standards |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
@@ -272,7 +272,7 @@ Owner, 2026-11-16: the installed skills and plugins were read so that their usef
 | `analytics-skills` (four skills), `rampstack-seo:seo-traffic-diagnosis` | A noise floor: small samples do not change the plan. Low traffic is read weekly, not daily. Compare like with like. Give absolute and relative change together. Longer windows for a long sales cycle. Rate a channel on volume, engagement and conversion together. Never drop a channel on last-click figures alone. Confirm a change is real before reacting. | `performance-review.md` | Third-party benchmarks only with their source attached. |
 | `social-media-skills:experimentation-and-ab-testing`, `viral-reverse-engineering` | One variable per test. The decision rule is written first. A tie is a result. Repeat before anything becomes a rule. One strong post is a hypothesis, checked for luck, account size and timing. | `performance-review.md` | Variants scheduled as a set conflict with a yes per post. |
 | `social-media-skills:data-and-original-research` | A test for whether an original study is worth doing. Design before collecting. No rounding up. A small sample is directional. | `campaigns-and-repurposing.md`, `editorial-standards.md` | Visible update stamp dropped. Client data needs permission. |
-| `marketing:email-sequence`, `social-media-skills:email-and-newsletter`, `lead-magnets-and-funnels` | A sequence is planned before it is drafted: purpose, timing, one call to action, exit condition. An issue as a plan. A two-way loop between newsletter and social. Pieces matched to funnel stage. | `campaigns-and-repurposing.md` | Comment gating and false urgency dropped. Sending needs the owner's yes. Applies only if a newsletter is in scope. |
+| `marketing:email-sequence`, `social-media-skills:email-and-newsletter`, `lead-magnets-and-funnels` | A sequence is planned before it is drafted: purpose, timing, one call to action, exit condition. An issue as a plan. A two-way loop between newsletter and social. Pieces matched to funnel stage. | `campaigns-and-repurposing.md` | Comment gating and false urgency dropped. Sending needs the owner's yes. The newsletter is in scope (decision 19). |
 | `searchfit-seo:content-strategy`, `create-topic`, the `content-strategist` agent | Intake questions before planning. A four-box priority sort. A list of idea angles. A record per topic. Existing content sorted into strong, thin, overlapping and missing. A plan sized to the team. | `topics-and-calendar.md` | Daily publishing advice rejected. Difficulty with no source and proposed URLs dropped. |
 | `marketing:competitive-brief`, `social-media-skills:competitor-analysis` | A topic by competitor gap table. A format coverage table. A small fixed roster. The research date is stated. Inferred is marked apart from observed. | `topics-and-calendar.md` | Review sites as a source excluded. Competitor numbers are marked as estimates. |
 | `social-media-skills:caption-writer` (its goal and structure table only) | One goal per post, and the goal decides the structure and the kind of ask. If the goal needs two asks, it is two posts. | `piece-structures.md`, `brief-format.md` | Its sample asks include engagement bait and false urgency; dropped. The wording of an ask belongs to `wugweb-work`. |
@@ -364,30 +364,32 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 | Absorbed rules | No helper's statistic appears in the skill as a fact; every absorbed number is marked as a default the owner set or has yet to set |
 | Portability | Run from the single-file export in another tool, the eval prompts meet the same assertions; no step needs a Claude-only helper |
 
-## Open questions for the owner
+## Owner decisions (2026-11-16)
 
-1. **Calendar home.** Recommended: a separate Notion database for the plan. The alternative is planned rows in Blogs plus a Status filter in the sync, which is a code change.
-2. **Pillar set.** Recommended: the six service pillars. The other candidates are the 13 Notion blog categories and the lists in `brand_guidelines/03_MARKETING_SYSTEM/13_CONTENT_PILLARS.md`, which gives two different sets.
-3. **Piece structures.** Brand-os owns the messaging framework. Is it right for this skill to hold the per-piece structure?
-4. **One brief.** Proposed: this skill owns the brief, and work's Brief mode stays for client work only. The seo side is settled in practice: `wugweb-seo` supplies constraints for the search block.
-5. **Case studies.** Does this skill decide which case study is done next and which service it backs? Proposed: yes, but never the claim or body.
-6. **Service-page briefs.** Service pages live in Sanity, not Notion. Where should their briefs sit?
-7. **Retiring a post.** Does the URL return 404, or redirect? Deletion stays an owner-run script.
-8. **Cadence and capacity.** How many pieces a month, and who writes?
-9. **Audiences and goals.** Do these come from the owner or from the brand-os plan?
-10. **Old calendar.** A "Content calendar" database sits under the owner's personal area in Notion, last edited 2026-04-13. It was not opened. Use it or ignore it?
-11. Merged into question 13.
-12. **Notion pages.** Settled 2026-11-16: the skill has one Notion page, renamed, with the plan on it. The coordinating session reports the earlier sub-page is in Notion's Trash.
-13. **Accounts.** Which accounts are in scope, including the owner's own Medium and LinkedIn, and are the 5 personal Behance projects included?
-14. **Linked pages.** Does a post wait until the page it links to is live?
-15. **Client permission.** Is it needed before a client is named or tagged?
-16. **Social numbers.** Who pulls them for the Report mode? Proposed: this skill reads them for planning, and `wugweb-seo` keeps search reporting.
-17. **The name.** Does `wugweb-strategy` mean content strategy only? The plan keeps it to that.
-18. **Starting numbers.** The absorbed rules carry defaults from the helpers: number of pillars, share of promotional and reactive slots, cadence per account, backlog size, refresh thresholds. Which does the owner want set, and to what?
-19. **Newsletter.** Is an email newsletter in scope for the calendar?
-20. **Internal links in a brief.** Proposed, for the owner to confirm, with the same wording on both sides: `wugweb-strategy` decides which pages and case studies a piece links to (the proof map and the links field in the brief); `wugweb-seo` owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result.
-21. **Editorial stance.** Proposed: `strategy.md` holds one sentence on what Wugweb publishes, for whom, to what end, and how it differs from what else is out there. It is built from the positioning in `wugweb-brand-os` and never restates or changes it. `wugweb-brand-os` declined to hold it. Keep it here, or drop it?
-22. **Fields on the published document.** Should pillar and a review date be added to `post` and `caseStudy` in Sanity, or stay on the plan record only? A schema change is development.
+1. **Calendar home.** A new Notion plan database. Notion Blogs and the sync stay as they are.
+2. **Pillar set.** The six service pillars.
+3. **Piece structures.** Held here. Brand-os messaging is quoted as written.
+4. **One brief.** This skill owns the brief for Wugweb's own content. Work's Brief mode is for client work only. `wugweb-seo` fills the search block.
+5. **Case studies.** This skill decides which case study is done next and which service it backs, never the claim or the body.
+6. **Service-page briefs.** In the plan database, each row linked to its Sanity service document.
+7. **Retiring a post.** This skill proposes it, and `wugweb-seo` decides what the URL does. Deletion stays an owner-run script.
+8. **Cadence and capacity.** Not set. Set from a baseline later.
+9. **Audiences and goals.** Audiences come from `wugweb-brand-os` as written. Goals come from the owner and live in `strategy.md`.
+10. **Old calendar.** Read on 2026-11-16. It holds Notion's starter template sample rows only, none about Wugweb. Nothing was moved, and its layout may serve as a reference for the plan database.
+11. Merged into decision 13.
+12. **Notion pages.** Settled earlier: one Notion page per skill, with the plan on it.
+13. **Accounts.** In scope: the Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out.
+14. **Linked pages.** A post waits until the page it links to is live.
+15. **Client permission.** Always needed before a client is named or tagged.
+16. **Social numbers.** This skill reads social numbers for planning; `wugweb-seo` keeps search reporting.
+17. **The name.** `wugweb-strategy` means content strategy only.
+18. **Starting numbers.** All left blank, marked "owner to set", until there is a baseline. Pillars are six (decision 2).
+19. **Newsletter.** In scope. Sending needs the owner's yes.
+20. **Internal links in a brief.** `wugweb-strategy` decides which pages and case studies a piece links to (the proof map and the links field in the brief); `wugweb-seo` owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result. The same wording goes in the `wugweb-seo` plan.
+21. **Editorial stance.** `strategy.md` holds one sentence on what Wugweb publishes, for whom, to what end, and how it differs from what else is out there. It is built from the positioning in `wugweb-brand-os` and never restates or changes it.
+22. **Fields on the published document.** None. Pillar and review date stay on the plan database. No Sanity schema change.
+
+**Still to match in two other plans.** In the `wugweb-work` plan: its Brief mode is for client work only (decision 4). In the `wugweb-seo` plan: it decides what a retired URL does (decision 7), and the internal-links split goes in with the same wording (decision 20).
 
 ## Source gaps
 
@@ -405,9 +407,9 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 
 - **Owns:** Content strategy only: pillar mix, topics, the editorial and social calendar, briefs, per-piece structures, editorial standards, content models, the proof map, refresh or retire decisions, campaign and repurposing plans, and the post-performance read for planning.
 - **Reads (sources):** Notion Blogs, Case Studies and Publications; Sanity service documents; the case-study inventory in docs/research; brand_guidelines; the registry. All read only.
-- **Gives to:** `wugweb-work`: one-page briefs, the calendar by account and date, the proof map, repurposing and campaign plans, refresh or retire decisions. `wugweb-seo`: topic and URL lists to research or audit.
+- **Gives to:** `wugweb-work`: one-page briefs, the calendar by account and date, the proof map, repurposing and campaign plans, refresh or retire decisions. `wugweb-seo`: topic and URL lists to research or audit; retire proposals.
 - **Takes from:** `wugweb-brand-os`: positioning, audiences, messaging framework. `wugweb-seo`: keyword, intent and audit notes, with position and click-rate signals for refresh decisions. `wugweb-work`: finished pieces, return notes, post results. `wugweb-voice` and `wugweb-kits`: nothing directly; `wugweb-work` reads them.
-- **Never does:** Writes or edits any piece; publishes; redefines positioning, audiences or messaging; sets voice, keywords, titles, layout or tokens; changes Sanity schema; writes to Notion or Sanity without approval and backup; deletes anything.
+- **Never does:** Writes or edits any piece; publishes; redefines positioning, audiences or messaging; sets voice, keywords, titles, layout or tokens; changes Sanity schema; decides what a retired URL does or sets link rules; writes to Notion or Sanity without approval and backup; deletes anything.
 
 ## Change log
 
@@ -421,3 +423,4 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 | 2026-11-16 | "Extracted and absorbed" added after reading the installed skills and plugins (owner). Brief finding corrected. Brief fields 19 to 21 and questions 18 to 20 added. |
 | 2026-11-16 | Link-target split with `wugweb-seo` recorded as proposed (question 20). Refresh signals from `wugweb-seo` named in the handoff and matrix row. One routed row added. Editorial stance proposed (question 21). |
 | 2026-11-16 | "Content model: planning fields" added from the kits docs: which proposed CMS fields are planning fields, and the five blocks awaiting sign-off. Question 22 added. The signal log of readers' own words kept here; `wugweb-voice` reads it. |
+| 2026-11-16 | Open questions 1 to 22 answered by the owner and recorded as decisions. Brief fields 10, 13, 14 and 15, the refresh row, the handoff contract, the planning fields and the matrix row updated to match. Old content calendar read: starter template rows only, nothing moved. |
