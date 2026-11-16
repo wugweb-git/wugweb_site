@@ -4,6 +4,8 @@
 
 Later the same day, in the same version:
 
+- Full read of the references, forms and examples against the plan and standing rules. Fixed: duplicated standing rules removed from `copy-and-seo.md` and `forms/presence-compare.md`; 44 px and the 375 and 1200 gate numbers replaced by pointers to `wugweb-kits` in `design-principles.md`; the 5 second pause note added beside the 15 second loop rule in `body-content-standard.md` and `archetypes.md`; three figures with no recorded source (sentence length and page position in `copy-and-seo.md`, the FAQ and HowTo end dates in `schema-jsonld.md`, the 44 case studies in `archetypes.md`) marked unvalidated. Left as they are: the NTUC tag spelling (the client's term), real file names with en dashes, deliberate test data, and the `forms/` lines that restate the per-post and per-file yes rules.
+
 - `SKILL.md` "Rules that always apply" cut from 15 to 10: the rules the standing-rules file already holds (evidence, ratio, sound, computed numbers, full output, plain replies, house spelling) are removed; the skill keeps its own. The adapter text says it is a short form and that `references/standing-rules.md` wins.
 - `layout-grammar.md`: removed the 390 x 844 and "below 480" numbers; the 85vw rail, 20% peek, 2400 px and 35 to 60 character line are marked as held proposals for `wugweb-kits`.
 - Loop pause: added to the gate list in `qa-checklist.md` and `check-case-page.mjs` as a manual check; the clash with `aria-hidden` loops is an open item for `wugweb-kits`.

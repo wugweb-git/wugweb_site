@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work skill full read, duplicates and unsourced figures (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/references/`). See the skill's own CHANGELOG, 0.4.2. validate 30 checks 0 errors, test passes, AGENTS.md and adapters rebuilt.
+
 ### Changed — wugweb-work plan standing rules and og size line (2026-11-17)
 - Docs only. Plan and Notion page: the open sizes item now lists only story, Behance cover and Dribbble shot (og settled at 1200 x 630); the standing rules section points to `docs/skills/STANDING-RULES.md` and keeps only wugweb-work rules. Notion backup in `backups/`.
 

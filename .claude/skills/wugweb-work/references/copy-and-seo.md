@@ -10,19 +10,17 @@ A senior practitioner explaining what was built and why, to a peer. Calm, exact,
 
 ## Twelve rules
 
+The owner's standing rules (evidence, British English, sentence case, no dashes) are in `standing-rules.md` and are not repeated here.
+
 | Rule | How |
 |---|---|
 | Say what was built | Name the thing: "a member portal and a back office", not "a holistic digital ecosystem". |
-| Evidence or nothing | Every claim points to a screen, a number with its source and date, or a named fact. No evidence: cut the claim or mark it "unvalidated". |
 | Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. Question form where natural. Generic labels only in the chapter nav. |
 | Answer first | The first sentence under a heading answers it. The first third of the page carries the main facts. |
 | Short, whole sentences | Fact sentences of 6 to 20 words that make sense on their own. One idea per sentence. |
 | Plain words | Use, build, show, help. See the banned list below. |
 | Active, with a named doer | "Staff set the workflow per programme", not "workflows were streamlined". "We" is allowed for Wugweb. |
 | The client's own words | Use the terms on their screens (NTUC writes "Programmes"). One spelling per name (iCube, not Icube). |
-| British English | programme, centralised, colour, organisation, optimise. |
-| No dashes | No em or en dashes in anything a visitor reads. Ranges are written out ("3 to 5"). |
-| Sentence case | Headings, labels and buttons. No Title Case, no ALL CAPS. |
 | Credit honestly | Name partners and the team. Say what Wugweb did and did not do. |
 
 ## Structure rules
@@ -114,7 +112,7 @@ This section is the whole of what this skill decides about search. Keyword resea
 - Entities: client, partner, platform and country named in full once, in the body and in the schema.
 - Internal links: up to the matching service and sector pages, across to two or three related case studies, with descriptive anchor text. Ask for links back from those pages.
 - Everything a crawler needs is in server HTML. Images in `img src` only.
-- No keyword counts, no FAQ blocks for schema, no `llms.txt`. AI assistants cite whole sentences of 6 to 20 words, mostly from the first 30% of a page: write those sentences well instead.
+- No keyword counts, no FAQ blocks for schema, no `llms.txt`. write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
 - og:image: a project-specific existing file, ideally about 2:1 or 1200 by 630; a new file only through the Forms gate.
 
 ## How it is checked

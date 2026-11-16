@@ -8,7 +8,7 @@ A read-only check of a published Behance or Dribbble piece against its case stud
 - Every screen in the piece is an approved screen.
 - Captions match the approved captions, word for word.
 - Credits match the Team and Partner lines.
-- No dashes, British English, sentence case.
+- The standing writing rules apply (`standing-rules.md`).
 - The piece links to the case study.
 
 ## Output

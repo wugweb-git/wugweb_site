@@ -41,9 +41,9 @@ Every block and rhythm rule in `layout-grammar.md` maps to a principle:
 | Everything aligns to the column grid in the layout shell | Alignment |
 | Media families rotate between chapters | Unity and variety, rhythm |
 | Rails show the next item | Continuity, affordance |
-| Buttons of 44 px or more | Fitts's law |
+| Button target size, set in `wugweb-kits` | Fitts's law |
 | A chapter shows 1 to 4 screens | Miller's law, Hick's law |
 
 ## The critique pass
 
-In Ship mode, a design critique scores the rendered page at 375 and 1200 on hierarchy, focal point, rhythm, contrast, consistency and legibility, each 1 to 5 with one line of reason and the block it refers to. A score of 2 or lower is a finding to fix before the owner sees the preview.
+In Ship mode, a design critique scores the rendered page at the narrow and wide tiers of the layout shell on hierarchy, focal point, rhythm, contrast, consistency and legibility, each 1 to 5 with one line of reason and the block it refers to. A score of 2 or lower is a finding to fix before the owner sees the preview.

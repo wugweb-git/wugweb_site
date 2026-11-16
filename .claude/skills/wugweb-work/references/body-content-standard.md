@@ -88,7 +88,7 @@ Label form: `kind[: name][ n]`, for example `Screens: Member 4, Application star
 | styles, style board, moodboard | Style tiles; Styles always render as a pair |
 | logo, mark, client logo | Marks |
 | type, colour, pattern, application, print, social, photo, diagram, chart, before, after | Brand and campaign assets |
-| video, loop | Video; 15 seconds or less loops, longer is muted click-to-play |
+| video, loop | Video; 15 seconds or less loops (a loop over 5 seconds needs a pause control, see `open-items.md`), longer is muted click-to-play |
 | press, award | Presence items |
 | challenge, solution, design philosophy, dp, conclusion, filler, about, thumbnail | v1 slot labels; routed for compatibility |
 

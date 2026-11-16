@@ -626,19 +626,17 @@ A senior practitioner explaining what was built and why, to a peer. Calm, exact,
 
 ### Twelve rules
 
+The owner's standing rules (evidence, British English, sentence case, no dashes) are in `standing-rules.md` and are not repeated here.
+
 | Rule | How |
 |---|---|
 | Say what was built | Name the thing: "a member portal and a back office", not "a holistic digital ecosystem". |
-| Evidence or nothing | Every claim points to a screen, a number with its source and date, or a named fact. No evidence: cut the claim or mark it "unvalidated". |
 | Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. Question form where natural. Generic labels only in the chapter nav. |
 | Answer first | The first sentence under a heading answers it. The first third of the page carries the main facts. |
 | Short, whole sentences | Fact sentences of 6 to 20 words that make sense on their own. One idea per sentence. |
 | Plain words | Use, build, show, help. See the banned list below. |
 | Active, with a named doer | "Staff set the workflow per programme", not "workflows were streamlined". "We" is allowed for Wugweb. |
 | The client's own words | Use the terms on their screens (NTUC writes "Programmes"). One spelling per name (iCube, not Icube). |
-| British English | programme, centralised, colour, organisation, optimise. |
-| No dashes | No em or en dashes in anything a visitor reads. Ranges are written out ("3 to 5"). |
-| Sentence case | Headings, labels and buttons. No Title Case, no ALL CAPS. |
 | Credit honestly | Name partners and the team. Say what Wugweb did and did not do. |
 
 ### Structure rules
@@ -730,7 +728,7 @@ This section is the whole of what this skill decides about search. Keyword resea
 - Entities: client, partner, platform and country named in full once, in the body and in the schema.
 - Internal links: up to the matching service and sector pages, across to two or three related case studies, with descriptive anchor text. Ask for links back from those pages.
 - Everything a crawler needs is in server HTML. Images in `img src` only.
-- No keyword counts, no FAQ blocks for schema, no `llms.txt`. AI assistants cite whole sentences of 6 to 20 words, mostly from the first 30% of a page: write those sentences well instead.
+- No keyword counts, no FAQ blocks for schema, no `llms.txt`. write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
 - og:image: a project-specific existing file, ideally about 2:1 or 1200 by 630; a new file only through the Forms gate.
 
 ### How it is checked
@@ -1009,12 +1007,12 @@ Every block and rhythm rule in `layout-grammar.md` maps to a principle:
 | Everything aligns to the column grid in the layout shell | Alignment |
 | Media families rotate between chapters | Unity and variety, rhythm |
 | Rails show the next item | Continuity, affordance |
-| Buttons of 44 px or more | Fitts's law |
+| Button target size, set in `wugweb-kits` | Fitts's law |
 | A chapter shows 1 to 4 screens | Miller's law, Hick's law |
 
 ### The critique pass
 
-In Ship mode, a design critique scores the rendered page at 375 and 1200 on hierarchy, focal point, rhythm, contrast, consistency and legibility, each 1 to 5 with one line of reason and the block it refers to. A score of 2 or lower is a finding to fix before the owner sees the preview.
+In Ship mode, a design critique scores the rendered page at the narrow and wide tiers of the layout shell on hierarchy, focal point, rhythm, contrast, consistency and legibility, each 1 to 5 with one line of reason and the block it refers to. A score of 2 or lower is a finding to fix before the owner sees the preview.
 
 <!-- references/body-content-standard.md -->
 ## Body Content standard (v2)
@@ -1107,7 +1105,7 @@ Label form: `kind[: name][ n]`, for example `Screens: Member 4, Application star
 | styles, style board, moodboard | Style tiles; Styles always render as a pair |
 | logo, mark, client logo | Marks |
 | type, colour, pattern, application, print, social, photo, diagram, chart, before, after | Brand and campaign assets |
-| video, loop | Video; 15 seconds or less loops, longer is muted click-to-play |
+| video, loop | Video; 15 seconds or less loops (a loop over 5 seconds needs a pause control, see `open-items.md`), longer is muted click-to-play |
 | press, award | Presence items |
 | challenge, solution, design philosophy, dp, conclusion, filler, about, thumbnail | v1 slot labels; routed for compatibility |
 
@@ -1398,7 +1396,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
 
 ### Never emit
 
-- `FAQPage`, `HowTo`, `Review`, `AggregateRating` or star markup. FAQ rich results ended in 2026, HowTo in 2023, and self-serving review stars are ineligible.
+- `FAQPage`, `HowTo`, `Review`, `AggregateRating` or star markup. the owner has ruled these out, and self-serving review stars are ineligible (the dates search engines ended FAQ and HowTo rich results are not recorded with a source here).
 - `author`. The work is credited through `creator` and `publisher` as the Wugweb organisation.
 - AI-specific markup or `llms.txt`.
 - JSON-LD on any non-canonical host (previews and mirrors).
@@ -1651,7 +1649,7 @@ Change the rule in its one home, move the row to the settled table, and add a ch
 
 Pick the archetype from what the media and the work show, not from the client's industry. Many engagements are several archetypes at once: use the multi-workstream recipe and give each workstream its own chapter set.
 
-### Observed in the 44 case studies
+### Observed in the case studies reviewed (the count of 44 was not recorded with a source and is unvalidated)
 
 | Archetype | Tell | Example slugs |
 |---|---|---|
@@ -1681,7 +1679,7 @@ Pick the archetype from what the media and the work show, not from the client's 
 
 **Brand identity.** hero (key visual) → the idea (prose) → mark (figure) → type (specimen figure) → colour (swatches as HTML from the read hex values) → system (pattern, grid) → applications (mosaic) → motion (loop) → credits.
 
-**Campaign or video-led.** hero → the brief → loops of 15 seconds or less in a mosaic → one long film muted, click to play → social posts (mosaic) → results with sources when they exist → credits.
+**Campaign or video-led.** hero → the brief → loops of 15 seconds or less in a mosaic (a loop over 5 seconds needs a pause control, see `open-items.md`) → one long film muted, click to play → social posts (mosaic) → results with sources when they exist → credits.
 
 **Stats-led, multi-workstream.** hero → stats (2 to 4 verified) → one chapter per workstream (SEO, content, campaigns, UI), each with its own proof → Results chapter with the full metric form → credits. Charts render as HTML or SVG from the owner's numbers.
 
@@ -2156,7 +2154,7 @@ A read-only check of a published Behance or Dribbble piece against its case stud
 - Every screen in the piece is an approved screen.
 - Captions match the approved captions, word for word.
 - Credits match the Team and Partner lines.
-- No dashes, British English, sentence case.
+- The standing writing rules apply (`standing-rules.md`).
 - The piece links to the case study.
 
 ### Output

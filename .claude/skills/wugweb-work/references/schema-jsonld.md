@@ -80,7 +80,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
 
 ## Never emit
 
-- `FAQPage`, `HowTo`, `Review`, `AggregateRating` or star markup. FAQ rich results ended in 2026, HowTo in 2023, and self-serving review stars are ineligible.
+- `FAQPage`, `HowTo`, `Review`, `AggregateRating` or star markup. the owner has ruled these out, and self-serving review stars are ineligible (the dates search engines ended FAQ and HowTo rich results are not recorded with a source here).
 - `author`. The work is credited through `creator` and `publisher` as the Wugweb organisation.
 - AI-specific markup or `llms.txt`.
 - JSON-LD on any non-canonical host (previews and mirrors).
