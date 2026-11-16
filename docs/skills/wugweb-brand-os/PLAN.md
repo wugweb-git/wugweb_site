@@ -22,13 +22,14 @@
 14. Crop wording: ruling and proposal
 15. Waiting on the owner
 16. Source gaps
+17. Works beyond Claude
 
 ## 1. Skill card
 
 | Field | Value |
 |---|---|
 | Name | `wugweb-brand-os` |
-| Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. No scripts. |
+| Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. One plain Node script, for the export. |
 | Version | 0.1.0 (planned) |
 | Status | Plan ready for vetting. Not built. |
 | Owner | Vedanshu, Wugweb |
@@ -96,6 +97,7 @@ version: 0.1.0
 │   ├── brand-facts.md
 │   ├── review-gates.md
 │   ├── source-map.md
+│   ├── tooling.md
 │   └── visual-os/
 │       ├── art-direction.md
 │       ├── colour-type-photo-motion.md
@@ -105,7 +107,11 @@ version: 0.1.0
 │       ├── references-and-patterns.md
 │       └── judging-a-visual.md
 ├── examples/
-└── evals/
+├── evals/
+├── scripts/
+│   └── build-export.mjs
+└── export/
+    └── wugweb-brand-os.md
 ```
 
 ## 6. Reference files
@@ -120,7 +126,7 @@ version: 0.1.0
 | `vocabulary.md` | Brand terms only: the name, the descriptor, pillar names |
 | `brand-facts.md` | Approved facts about Wugweb, each with source and date. Unverified facts are marked. |
 | `review-gates.md` | Visual and fact check lists, the 0 to 2 scoring, source and rights labels |
-| `source-map.md` | Where each rule came from, known conflicts, the helper skills |
+| `source-map.md` | Where each rule came from, known conflicts. The helper list sits in `tooling.md`, the only file that names Claude helpers, Notion or any vendor. |
 | `examples/` | Approved and rejected visuals once the owner supplies them |
 | `evals/` | Test prompts for the per-task tests |
 
@@ -169,9 +175,9 @@ All writing style and tone material from the wugweb-work plan moves to `wugweb-v
 | `wugweb-kits` | How things should look and feel: Visual OS direction | Token and component facts | Set or change a token, radius, component or layout |
 | `wugweb-strategy` | Positioning, audience, differentiation, messaging framework | Nothing | Decide topics, calendar or briefs |
 | `wugweb-work` (with its social and deck module) | Brand rules, Visual OS direction, visual and fact check findings | Drafts and artwork briefs to check | Author or rewrite content; make media; touch client brand choices |
-| `wugweb-seo` | Approved wording for the brand name and descriptor | Nothing | Change keywords, lengths or schema |
+| `wugweb-seo` | The approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. One way: `wugweb-seo` reads them and never rewrites them. | Nothing | Change keywords, lengths or schema |
 
-Every output is a proposal or a finding. Nothing is written anywhere without the owner's approval.
+Every output is a proposal or a finding. Nothing is written anywhere without the owner's approval. Every link reads the same on both sides.
 
 ## 11. Helper skills
 
@@ -183,7 +189,7 @@ Every output is a proposal or a finding. Nothing is written anywhere without the
 | `anthropic-skills:brand-guidelines`, `anthropic-skills:brandkit` | Not yet run; role to be confirmed at build |
 | `anthropic-skills:skill-creator`, `anthropic-skills:skill-development` | Building the skill and its evals |
 
-The owner's rules win over anything a helper says. A helper that is missing or signed out is skipped and reported.
+The owner's rules win over anything a helper says. A helper that is missing or signed out is skipped and reported. Helpers are optional: every mode can be done by hand (see section 17).
 
 ## 12. Matrix row
 
@@ -191,7 +197,7 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 
 - **Owns:** Brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules, and Visual OS: art direction for site, social and deck visuals, metaphors, reference and pattern libraries, how to judge a visual.
 - **Reads (sources):** `brand_guidelines/`, `kits_design_system/docs/design.md`, `CLAUDE.md`, owner decisions, and the owner's Visual OS and Brand Strategy documents once supplied. The 2023 Notion profile is stale background only.
-- **Gives to:** `wugweb-voice`, `wugweb-strategy`: positioning, audience, messaging framework, approved facts. `wugweb-kits`: how things should look and feel. `wugweb-work`: brand rules, Visual OS direction, visual and fact check findings. `wugweb-seo`: approved brand name and descriptor wording.
+- **Gives to:** `wugweb-voice`, `wugweb-strategy`: positioning, audience, messaging framework, approved facts. `wugweb-kits`: how things should look and feel. `wugweb-work`: brand rules, Visual OS direction, visual and fact check findings. `wugweb-seo`: the approved brand name, descriptor and approved facts, read one way and never rewritten.
 - **Takes from:** `wugweb-kits`: token and component facts. `wugweb-work`: drafts and artwork briefs to check. `wugweb-voice`: nothing copied; it points there for voice and tone. `wugweb-strategy` and `wugweb-seo`: nothing.
 - **Never does:** Authors or rewrites content. Holds voice, content strategy, token, layout or SEO rules. Touches client brands or media files. Invents facts. Writes to Notion, Sanity, R2 or `brand_guidelines/`; every change is a proposal for the owner.
 
@@ -207,6 +213,7 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 | Fact check | Copy citing "400+ projects" | Marked unverified until `brand-facts.md` holds an approved number |
 | No duplication | Search across all skill folders in the system | Each rule text appears once; no voice rule appears in brand-os |
 | No writes | End to end run | Nothing written outside chat or a draft file |
+| Portability | The answer, fact check and visual check evals run twice: as the installed skill, and from the single-file export in a second tool | Both runs give the same findings |
 
 ## 14. Crop wording: ruling and proposal
 
@@ -284,3 +291,25 @@ Until approved, the skill carries the definition in `visual-os/art-direction.md`
 
 - The stored values of the Sanity brand voice draft (now a `wugweb-voice` input).
 - The full Notion page of the wugweb-work plan; the repo export was read instead.
+
+## 17. Works beyond Claude
+
+**Rule.** The skill must give the same result in GPT, Cursor or another tool as it does in Claude.
+
+- **Plain Markdown.** Every rule is written in plain Markdown that any model can follow. No rule depends on a Claude feature.
+- **Helpers are optional.** The Claude helper skills, plugins and connectors only speed things up. Every mode (answer, visual check, fact check, change) has a by-hand procedure in the reference files.
+- **Scripts.** The skill has one script, `scripts/build-export.mjs`, in plain Node with no Claude tooling. It builds the single-file export.
+- **Tool and vendor wiring in one file.** `references/tooling.md` is the only file that names Claude helpers, Notion or any vendor.
+- **Single-file export.** `export/wugweb-brand-os.md` holds `SKILL.md` and every reference file in one document, to paste or attach in another tool. It is rebuilt whenever a rule changes and never edited by hand.
+- **Test.** The answer, fact check and visual check evals are run twice: once as the installed skill, once from the export alone in a second tool. It passes when both give the same findings.
+
+**What works only in Claude today**
+
+| Item | Why | Outside Claude |
+|---|---|---|
+| Automatic triggering from the description | The frontmatter is a Claude skill feature | The user attaches the export and asks directly |
+| Loading reference files only when needed | Claude skill feature | The export loads everything at once |
+| The seven helper skills | Claude plugins | Skipped; the by-hand procedure is used |
+| Building and testing with `skill-creator` | Claude skill | The eval prompts are plain files and can be run by hand |
+| Reading Notion and the repo directly | Claude connectors and tools | The owner pastes or attaches the source |
+| Visual check | Needs a model that can see images | Works in any tool with image input; not in a text-only model |

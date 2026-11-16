@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-brand-os plan: seo link and portability (2026-11-16)
+- Docs only. `docs/skills/wugweb-brand-os/PLAN.md`: the `wugweb-seo` link is one way (seo reads the approved brand name, descriptor and facts and never rewrites them), and a new section 17 "Works beyond Claude" covers plain Markdown rules, optional helpers, one tooling file, a single-file export and a portability test.
+
 ### Added — wugweb-brand-os plan (2026-11-16)
 - Docs only. `docs/skills/wugweb-brand-os/PLAN.md` is the plan for the `wugweb-brand-os` skill in the Wugweb Skill System: skill card, scope, reference files, Visual OS, handoff contract, tests, 12 items waiting on the owner and source gaps. Plan ready for vetting; nothing is built.
 
