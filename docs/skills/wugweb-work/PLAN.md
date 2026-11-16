@@ -56,8 +56,8 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 |---|---|---|
 | `wugweb-strategy` | A finished piece; what proof exists | A brief: what to say, to whom, when, which case studies back it, and which pages it links to (strategy picks the targets; `wugweb-seo` owns the link rules) |
 | `wugweb-voice` | The draft, with its form, mode, and the audience and purpose from the brief | A voice check: breaks and fixes |
-| `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules |
-| `wugweb-kits` | Content shape and chosen media; any visible wording kits asks for (labels, alt text) | Blocks, layout, tokens |
+| `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules; approved facts about Wugweb |
+| `wugweb-kits` | Content shape and chosen media; visible wording it asks for (labels, alt text) | Blocks, layout, tokens; gate and token results |
 | `wugweb-seo` | The approved body and page URL; any visible wording seo asks for (title options) | Title and schema rules to apply; keyword notes; a fix list for a finding on one page |
 
 - `wugweb-work` is the hub for wording and voice checks. `wugweb-voice` has no direct link with strategy, seo or kits.

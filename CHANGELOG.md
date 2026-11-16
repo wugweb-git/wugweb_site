@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan links table (2026-11-17)
+- Links table in `docs/skills/wugweb-work/PLAN.md` and the Notion page: wugweb-brand-os takes "approved facts about Wugweb"; wugweb-kits takes "gate and token results" and its wording line now reads "visible wording it asks for", matching the skill's handoffs file. Backup: `backups/notion-wugweb-work-page-before-2026-11-17-c.md`.
+
 ### Changed — wugweb-work skill full read, duplicates and unsourced figures (2026-11-17)
 - Skill files only (`.claude/skills/wugweb-work/references/`). See the skill's own CHANGELOG, 0.4.2. validate 30 checks 0 errors, test passes, AGENTS.md and adapters rebuilt.
 
