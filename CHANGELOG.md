@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work skill gaps closed, stale status lines fixed (2026-11-17)
+- Docs and skill files only. Skill: duplicate standing rules removed, layout numbers marked as proposals for wugweb-kits, loop-pause gate item added; validate 30 checks 0 errors, test passes, AGENTS.md and adapters rebuilt. `CLAUDE.md`, `AGENTS.md`, `pending.md`: the skill is built (0.4.2), the site build is not. `governance.md`: plan page title corrected.
+
 ### Added — wugweb-seo plan: on-page keyphrase score and internal-link checks (2026-11-17)
 
 - `docs/skills/wugweb-seo/PLAN.md` and the Notion page gained two planned sections: an on-page keyphrase score modelled faithfully on Rank Math (weights extracted from `seo-by-rank-math` 1.0.280, owner decision to drop the density and heading softening), with a build prompt for the dev session; and net-new internal-link SEO audit checks (anchor-text mix, silo coherence, redirected and nofollow internal links, too-many-links, cloaked prefixes).

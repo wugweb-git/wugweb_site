@@ -59,6 +59,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 ## Accessibility
 
 - [ ] Loops: `muted playsinline aria-hidden` and load when near.
+- [ ] A loop longer than 5 seconds has a pause control (duration from the manifest); loops pause off screen and under reduced motion.
 - [ ] Long videos: muted, play and pause button only, not `aria-hidden`, `preload="none"`, with an `aria-label`.
 - [ ] No audio plays anywhere.
 - [ ] Keyboard and screen reader pass through every rail and the viewer.

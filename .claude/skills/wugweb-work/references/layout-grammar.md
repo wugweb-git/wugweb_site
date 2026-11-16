@@ -55,6 +55,8 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ## 5. Media in a chapter
 
+Four numbers below are not layout shell values. They are held proposals for `wugweb-kits`, which decides them: the 85vw rail item width, the 20% peek, the 2400 px signature width and the 35 to 60 character line. Until kits answers, use them and mark any output that depends on them "open". Widths, gutters and columns are never set here.
+
 | Media | Block |
 |---|---|
 | 1 image, chapter text 120 words or fewer, not a phone screen | `split` (alternate sides) |
@@ -85,7 +87,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - Structure is page, section, content, blocks. The section owns the gutter and the content owns the maximum width.
 - Every section needs an id and an accessible name, so every chapter needs a real heading.
 - Filters sit inside the grid they filter, never as a section of their own.
-- First screen: on a 390 x 844 phone the headline, subhead and primary action are visible without scrolling.
+- First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
 - One yellow conversion action per page; labels describe the action; yellow stays under 10% of the page.
 - The site's existing blocks are awaiting the owner's sign-off; the bento layout on the case study page is the one this work replaces.
 - The proposed CMS fields that include `faqs` are owned elsewhere and not deployed. The `faqs` field feeds FAQPage schema, which the owner has ruled out; that clash is with the owner.
@@ -113,7 +115,7 @@ The site's one call to action stays in the global footer. No second CTA.
 - Below 768: one column, media edge to edge within the gutter, rails horizontal, points stacked.
 - 768 to below 1200: two columns for points, mosaics and pairs.
 - 1200 and above: full composition. The content width and the widest a screen may be shown come from the layout shell; photography may full-bleed (hero and signature figure only).
-- Micro-adjustments only below 480. Breakpoints are literal values.
+- Micro-adjustments stay inside a tier. Breakpoints are literal values and come from the layout shell.
 - Layout values are not restated here. Widths, section padding, columns, gaps and header heights are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`, and nowhere else. The page adds no new shell values and a block plan never sets its own gutter or width. One top-level section holds the page; chapters are `article` elements inside it.
 - Mobile is the installed app experience: use small and dynamic viewport units, a full-bleed welcome, and no page-level horizontal overflow.
 
@@ -136,7 +138,7 @@ The site's one call to action stays in the global footer. No second CTA.
 - Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
 - `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
 - Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
-- A long video has an `aria-label` that says what it shows. A loop that carries meaning has a pause control.
+- A long video has an `aria-label` that says what it shows. A loop longer than 5 seconds has a pause control (owner, 2026-11-16; the control is built by `wugweb-kits`).
 - AA contrast on client colours; focus visible and never hidden under the sticky header; chapter anchors clear the sticky header.
 - A rail's scroll area is reachable by keyboard (`tabindex="0"` where the browser does not do it) and uses `overscroll-behavior-x: contain`.
 - The viewer shows an image at its natural size, at least twice the thumbnail.

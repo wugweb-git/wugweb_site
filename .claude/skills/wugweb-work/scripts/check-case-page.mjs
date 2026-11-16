@@ -178,7 +178,7 @@ async function run() {
 
   for (const b of ['No page-level horizontal overflow at 375, 767, 768, 769, 1199, 1200, 1201', 'Aspect ratio kept; no mask or object-fit cover hides the proof on a screen',
     'Files shown larger than natural size are listed; soft ones flagged', 'Rail items 85vw or less on mobile', 'AA contrast including the client accent', 'Targets 44 px or more and focus visible',
-    'Reduced motion stops loops and reveals', 'All content present with JavaScript off', 'Design critique 3 or more on each axis at 375 and 1200']) browser(b);
+    'Reduced motion stops loops and reveals', 'A loop longer than 5 seconds has a pause control (duration from the manifest)', 'All content present with JavaScript off', 'Design critique 3 or more on each axis at 375 and 1200']) browser(b);
 
   const applicable = results.filter((r) => r.status === 'pass' || r.status === 'fail');
   const passed = applicable.filter((r) => r.status === 'pass').length;

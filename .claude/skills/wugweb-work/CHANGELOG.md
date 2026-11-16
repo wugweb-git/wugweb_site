@@ -2,6 +2,12 @@
 
 ## 0.4.2, 2026-11-17
 
+Later the same day, in the same version:
+
+- `SKILL.md` "Rules that always apply" cut from 15 to 10: the rules the standing-rules file already holds (evidence, ratio, sound, computed numbers, full output, plain replies, house spelling) are removed; the skill keeps its own. The adapter text says it is a short form and that `references/standing-rules.md` wins.
+- `layout-grammar.md`: removed the 390 x 844 and "below 480" numbers; the 85vw rail, 20% peek, 2400 px and 35 to 60 character line are marked as held proposals for `wugweb-kits`.
+- Loop pause: added to the gate list in `qa-checklist.md` and `check-case-page.mjs` as a manual check; the clash with `aria-hidden` loops is an open item for `wugweb-kits`.
+
 First repo copy (master). Changes from the app copy 0.4.1:
 
 - The owner's standing rules are now one block, `references/standing-rules.md`, copied from `docs/skills/STANDING-RULES.md`. The duplicates in `SKILL.md` "Never do" and `ops-cycle.md` are removed; the skill keeps only its own three never-do lines.

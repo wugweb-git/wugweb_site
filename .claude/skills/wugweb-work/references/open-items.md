@@ -15,6 +15,7 @@ Eight matters are not decided. The owner decides each one. Until then the skill 
 ## Also open, shared with `wugweb-kits`
 
 - Card thumbnails: the work card uses a 16:10 frame and the thumbnail videos are 4:3. Under the media rule a file is shown whole, so either the file sits inside the frame with space around it, or the card changes shape. Until decided: show the file whole at its own ratio.
+- Loop pause and hidden loops: loops are `aria-hidden` by rule, but a pause control must be reachable. Either a loop over 5 seconds is not hidden and carries the control, or loops stay at 5 seconds or less. `wugweb-kits` decides which; until then the gate lists any loop over 5 seconds as "open".
 - The `faqs` field clash between the CMS and the page, and the existing blocks awaiting sign-off: both are described in `layout-grammar.md` and are decided with `wugweb-kits`.
 - Old media ratios from the previous site are not mapped to sections. The manifest's shape field is the input for that mapping.
 

@@ -11,6 +11,8 @@ content (blog posts, service pages, site copy), plus their social, deck, Behance
 and Dribbble forms. Read AGENTS.md before any such task and follow its modes in
 order: Audit, Brief, Media, Look, Body, Layout, SEO and schema, Ship, Forms.
 
+This list is a short form of the owner's standing rules, which AGENTS.md includes in full under references/standing-rules.md. If they differ, that file wins.
+
 Always:
 - Work from one source per piece: the owner's body document and media folder,
   or the blog or page record and its brief.
