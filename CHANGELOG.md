@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan: development chat and repo plan on the skill card (2026-11-16)
+- Docs only. The skill card in `docs/skills/wugweb-strategy/PLAN.md` gains two rows: the development chat the owner gave, and the repo plan link. Same rows on the Notion skill page, written as plain text; replaced line backed up in `backups/notion-wugweb-strategy-page-pre-skill-card-links-2026-11-16.json`.
+
 ### Changed — wugweb-work plan: five owner decisions settled (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md`: the three media-rule readings confirmed (so "never upscale" becomes a flag, not a ban, in five places), token findings reported only at first, hero subtitle at 90 characters, og image 1200 x 630, pause control on loops over 5 seconds as a pointer to `wugweb-kits`. Open list trimmed. Matches the Notion page.
 - `backups/notion-wugweb-work-page-before-2026-11-16-h.md`: the Notion page as it was before this update.

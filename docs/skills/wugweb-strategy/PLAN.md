@@ -17,6 +17,8 @@
 | Sources | Notion Blogs, Notion Case Studies, Notion Publications, Sanity `service` documents (all read only). The new Notion plan database is this skill's record, and each change to it needs the owner's yes. |
 | Hands to | `wugweb-work`, as a brief |
 | Scripts | None in v0.1 |
+| Development chat | `https://claude.ai/chat/2efe7ee5-7636-4241-8794-c34d3c501eed` (given by the owner, 2026-11-16) |
+| Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-strategy/PLAN.md` |
 
 ## About
 
