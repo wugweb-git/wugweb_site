@@ -92,6 +92,7 @@ itself so every tier and size inherits them:
   - Logo: `public/brand/logo-large.svg` (two-tone white + grey logo lockup)
   - WhatsApp CTA Button: `--color-yellow` background, `#000` text, `--radius-sm` (8px), 16px WhatsApp SVG icon
   - Navigation Links: `--neutral-6` background, hover/active `--color-surface-hover`, `--radius-sm`
+  - Sizes: header 100 mobile / 108 tablet and desktop (derived), nav bar 68 (`--nav-height`), buttons 44 (`--control-size`, 16px text, 10 · 12 padding, 12 gap), logo 40 (`--nav-logo-height`), bar inset 12, bar max width 1280. Spec: `tokens/layout-shell.md`.
   - Mobile Menu Panel: `max-height: 100dvh`, single `overflow-y: auto` scroll container, `--breakpoint-md` (768px) hamburger toggle
 - **Accessibility**: Keyboard accessible focus states (`--focus-primary`), `aria-expanded` toggle for mobile drawer, screen-reader text for hamburger.
 

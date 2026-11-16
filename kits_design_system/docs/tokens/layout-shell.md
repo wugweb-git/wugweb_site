@@ -288,7 +288,7 @@ screen, not under the cookie banner. (Rule; not re-measured in this pass.)
 | audit section | superseded by |
 |---|---|
 | §2 breakpoints "delete 1024" | 5-threshold scale (`breakpoints.md`); the **shell** steps only at 768 and 1200 |
-| §3 nav-inset decision | decided: 16 / 20·32 / 20 (this file) |
+| §3 nav-inset decision | decided: 16 / 20 / 20 (this file) |
 | §4.1 type scale, §4.3 fluid spacing | `typography.md`; stepped 48 / 70 / 96 rhythm (this file) |
 | §5 token counts, §6 component counts | stale measurements, re-audited in Phase C |
 | §7 nav card values (inset, logo, link sizes) | nav padding and 100 px height in this file |
@@ -356,7 +356,7 @@ fix is `validation: (r) => r.required()`.
 | section rhythm 48 / 70 / 96 | `--section-y` and every `--space-section-*` |
 | column gap 16 / 24 / 32 | `--grid-gap` |
 | columns 4 / 8 / 12 | `.grid`, switching at 768 and 1200 |
-| nav 16 / 20·32 / 20, 100 tall | `.site-header` in `SiteHeader.astro`, `--header-height: 100px` |
+| header padding 16 / 20 / 20, 100 / 108 / 108 tall | `.site-header` in `SiteHeader.astro`, `--header-height` derived from `--nav-height` + 2 × `--header-pad-block` |
 | nav sticky, z 10, grab | `position: sticky; top: 0; z-index: var(--layer-nav)` (10), `cursor: grab` |
 | spring 0.4 / 0.2 / 0 | `--ease-spring`, `--duration-spring` |
 | section relative, isolated | global rule: `width: 100%; isolation: isolate; scroll-margin-top` |
@@ -392,9 +392,9 @@ Notes that are easy to get wrong:
 | section tokens | flat 40 / 48 / 64 / 80 | **one rhythm, 48 / 70 / 96** |
 | column gap | flat 16 | **16 / 24 / 32** |
 | 12-column switch | 1024 | **1200** |
-| nav padding | fluid 16→32, no bottom | **16 / 20·32 / 20** |
+| header padding | fluid 16→32, no bottom | **16 / 20 / 20** |
 | sections with id + aria | 0 of 113 | **all** |
-| nav height | 110 / 118 / 118 | **100 everywhere** |
+| header height | 110 / 118 / 118 | **100 / 108 / 108** (nav bar 68 everywhere) |
 | nav z-index | 50 | **10** |
 | content heading skips · unnamed fields · unlabelled videos | 5 · 4 · 74 | **0 · 0 · 0** |
 

@@ -6,9 +6,10 @@ Component size reference (values currently implemented across the site).
 
 | Component | Value | Token |
 |---|---|---|
-| Nav bar height | `78px` | `--nav-height` (nav-top min-height) |
-| Nav logo (desktop) | `40px` high | `--brand-height` |
-| Nav logo (mobile) | `34px` high | — |
+| Nav bar height | `68px` (44 + 2 × 12), every breakpoint | `--nav-height` (derived) |
+| Header height | `100px` mobile, `108px` tablet and desktop | `--header-height` (derived) |
+| Nav button | `44px` tall, 16px text, 10 · 12 padding, 12 gap | `--control-size` |
+| Nav logo | `40px` high, every breakpoint | `--nav-logo-height` |
 | Mobile menu max | `100dvh` (single scroll) | — |
 | Pillar thumb | `88px` (mobile `62px`) | — |
 | Toggle chip | `44px` | — |
