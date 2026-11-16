@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan: final skill list, handoff contracts, per-task tests (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` gains the final skill list (nothing dropped), handoff contracts per helper skill, a per-task test table and the open CI question for the token check.
+
 ### Changed — wugweb-work skill plan: one source of truth (2026-11-14)
 - Docs only. `pending.md`, `governance.md` §5, `CLAUDE.md` and `AGENTS.md` now point to the Notion plan page for the case-study rebuild and the `wugweb-work` skill instead of describing it.
 - Added the three research reports under `docs/research/case-study-system-2026-10-19/`.
