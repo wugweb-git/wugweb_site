@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-brand-os plan: extracted and absorbed (2026-11-16)
+- Docs only. `docs/skills/wugweb-brand-os/PLAN.md` gains section 18: about 50 installed skills read, each marked absorb, optional helper or ignore, with where the rule lands and any clash with owner rules. `brand-guidelines` is dropped as a helper.
+
 ### Changed — wugweb-brand-os plan: seo link and portability (2026-11-16)
 - Docs only. `docs/skills/wugweb-brand-os/PLAN.md`: the `wugweb-seo` link is one way (seo reads the approved brand name, descriptor and facts and never rewrites them), and a new section 17 "Works beyond Claude" covers plain Markdown rules, optional helpers, one tooling file, a single-file export and a portability test.
 

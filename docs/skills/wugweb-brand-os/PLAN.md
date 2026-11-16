@@ -23,6 +23,7 @@
 15. Waiting on the owner
 16. Source gaps
 17. Works beyond Claude
+18. Extracted and absorbed
 
 ## 1. Skill card
 
@@ -186,7 +187,7 @@ Every output is a proposal or a finding. Nothing is written anywhere without the
 | `brand-voice:discover-brand` | Finding brand material at build time |
 | `brand-voice:guideline-generation` | Drafting non-voice guidelines from approved sources |
 | `marketing:brand-review` | Second opinion on brand fit |
-| `anthropic-skills:brand-guidelines`, `anthropic-skills:brandkit` | Not yet run; role to be confirmed at build |
+| `anthropic-skills:brand-guidelines`, `anthropic-skills:brandkit` | Read on 2026-11-16. `brand-guidelines` is Anthropic's own brand and is dropped as a helper. `brandkit` is kept only as a source of art-direction principles (see section 18). |
 | `anthropic-skills:skill-creator`, `anthropic-skills:skill-development` | Building the skill and its evals |
 
 The owner's rules win over anything a helper says. A helper that is missing or signed out is skipped and reported. Helpers are optional: every mode can be done by hand (see section 17).
@@ -296,7 +297,7 @@ Until approved, the skill carries the definition in `visual-os/art-direction.md`
 
 **Rule.** The skill must give the same result in GPT, Cursor or another tool as it does in Claude.
 
-- **Plain Markdown.** Every rule is written in plain Markdown that any model can follow. No rule depends on a Claude feature.
+- **Plain Markdown.** Every rule is written in plain Markdown that any model can follow. No rule depends on a Claude feature. `SKILL.md` carries the core rules on its own, because other tools may not load reference files on demand.
 - **Helpers are optional.** The Claude helper skills, plugins and connectors only speed things up. Every mode (answer, visual check, fact check, change) has a by-hand procedure in the reference files.
 - **Scripts.** The skill has one script, `scripts/build-export.mjs`, in plain Node with no Claude tooling. It builds the single-file export.
 - **Tool and vendor wiring in one file.** `references/tooling.md` is the only file that names Claude helpers, Notion or any vendor.
@@ -309,7 +310,64 @@ Until approved, the skill carries the definition in `visual-os/art-direction.md`
 |---|---|---|
 | Automatic triggering from the description | The frontmatter is a Claude skill feature | The user attaches the export and asks directly |
 | Loading reference files only when needed | Claude skill feature | The export loads everything at once |
-| The seven helper skills | Claude plugins | Skipped; the by-hand procedure is used |
+| The helper skills | Claude plugins | Skipped; the by-hand procedure is used |
 | Building and testing with `skill-creator` | Claude skill | The eval prompts are plain files and can be run by hand |
 | Reading Notion and the repo directly | Claude connectors and tools | The owner pastes or attaches the source |
 | Visual check | Needs a model that can see images | Works in any tool with image input; not in a text-only model |
+
+## 18. Extracted and absorbed
+
+About 50 installed skills were read on 2026-11-16, read only. Each is marked absorb (the useful rule is restated in our own words inside brand-os, so it works without that helper), optional helper, or ignore. Nothing was installed, removed, edited or run. The findings come from five reading agents; five claims were spot-checked against the files and held. For some skills only the main file was read, not its reference files. Owner rules win over anything a skill says, and no voice rule is absorbed here.
+
+**Absorb**
+
+| Source skill | What is taken | Lands in | Clash with owner rules (not taken) |
+|---|---|---|---|
+| `social-media-skills:brand-profile` | Positioning as three plain sentences; a point-of-view list; a proof register with usage rights | `identity-and-positioning.md`, `brand-facts.md` | Defines voice; invented example numbers |
+| `marketing:competitive-brief` | Positioning statement shape; positioning pitfalls; messaging health test | `identity-and-positioning.md`, `messaging.md` | Uses third-party review sites as a source |
+| `copywriting-kit:copy-diagnose` | Four positioning questions (who exactly it is for, what it replaces, which category, which proven differences matter); signs positioning is broken; settle positioning before wording | `identity-and-positioning.md`, `review-gates.md` | None found; its message-order and wording layers belong to `wugweb-voice` |
+| `social-media-skills:competitor-analysis` | A set of 5 to 8 competitors; one capture row each; a map of the space nobody owns | `brand-strategy.md` | Allows estimated ranges |
+| `brightdata:competitive-intel` | Two-axis positioning map; a grid for what to stop, reduce, raise and add | `brand-strategy.md` | Scrapes by default; asks for market size |
+| `brand` (owner's) | Messaging ladder; five-question message test; imagery outline | `messaging.md`, `visual-os/art-direction.md` | Example brand is light-themed with white text; defines voice |
+| `marketing:campaign-plan` | Four-question message order; one core message with three or four supports, each with a proof | `messaging.md` | Asks for target numbers |
+| `social-media-skills:social-proof-and-testimonials` | A table matching each objection to a kind of proof; a ladder of proof strength | `messaging.md` | Quotes uncited statistics |
+| `storytelling-and-narrative`, `profile-optimization`, `content-pillars` | The client is the hero; a three-second clarity test; the "we can own this because" test | `messaging.md`, `identity-and-positioning.md` | Uncited statistics; invented example proof |
+| `social-media-skills:audience-research` | Audience by job to be done, not demographics; one to three segments; unsourced items marked "assumed" | `audience.md` | None beyond spelling |
+| `design:research-synthesis`, `leadfeeder:find-my-buyer` | Observation kept apart from interpretation; "what we still do not know"; audience as a buying group of several roles | `audience.md` | Rough segment sizes; the Leadfeeder tool exposes people's names and emails |
+| `brand-voice:discover-brand` (skill and agent) | Source tiers; newer wins unless the older is the official guide; provenance on every fact | `brand-facts.md`, `source-map.md` | It recommends which source to adopt; the owner decides |
+| `brand-voice:guideline-generation` | "We are, we are not" table; evidence levels in words; omit empty sections | `values-and-principles.md`, `source-map.md` | A voice skill end to end; generated confidence scores |
+| `marketing:brand-review` | Claims check; findings format with severity and a fix | `review-gates.md` | Treats sentence case and dashes as open choices |
+| `anthropic-skills:frontend-design` | Direction taken from the subject's own world; a short written plan with one signature element; boldness spent in one place | `visual-os/art-direction.md` | American spelling |
+| `anthropic-skills:brandkit` | Strategy before visuals; metaphor methods; board rhythm; restraint; learn from a reference without copying it | `visual-os/art-direction.md`, `visual-os/metaphors.md` | Invents logos and taglines; suggests image crops |
+| `design-taste-frontend`, `website-design:web-design-system` | A one-line design read; three dials for variance, motion and density; comparing 3 to 5 references on fixed axes | `visual-os/art-direction.md`, `visual-os/references-and-patterns.md` | Says to use an image generator first |
+| `design:design-critique`, `website-design:web-review` | Two-second test; judge the rendered result; must fix, should fix, nice to have; taste kept apart from real problems | `visual-os/judging-a-visual.md` | Emoji severity markers |
+| `social-media-skills:image-prompt`, `design` (owner's) | A fixed frame for describing a visual: subject, composition, lighting, colour, style, mood. A real photo or screenshot before generated imagery. Logo checks. | `visual-os/judging-a-visual.md` | Advises a tighter crop; generates by default |
+| `superdesign`, `banner-design` (owner's) | Five layout types; no text baked into images; brief before making; use the real logo file; three zones and one call to action | `visual-os/formats-and-campaigns.md` | Uploads to a vendor; crops to fit; compresses exports; generates by default |
+| `thumbnail-design`, `design-and-templates`, `quote-cards-and-text-graphics`, `carousel-writer` | Image and title as one unit; a small family of recurring formats; each slide is a small poster; glance test at thumbnail size | `visual-os/formats-and-campaigns.md` | All-caps examples; uncited percentages; generation assumed |
+| `pptx`, `slides` (owner's) | One motif repeated; one message per slide; pattern break at one third and two thirds; a visual check list | `visual-os/formats-and-campaigns.md` | Pure white text and white backgrounds as defaults |
+| `social-media-skills:infographic-and-data-viz` | The title states the takeaway; a big stat instead of a chart for one or two numbers; source and date shown | `visual-os/formats-and-campaigns.md` | None |
+| `skill-creator`, `skill-development` | Body length; one fact in one place; trigger tests; pre-release checklist | How the skill is built (sections 5 and 17) | None |
+
+**Keep as optional helper**
+
+| Skill | Use |
+|---|---|
+| `brand-voice:discover-brand` | The search across connected platforms |
+| `marketing:competitive-brief`, `brightdata:competitive-intel` | Live competitor research, only on the owner's yes each time |
+| `ui-ux-pro-max` (owner's) | Only its entry shape (name, mood, best for, do not use for) as a template for the pattern library |
+| `skill-creator` | Its eval tooling |
+| `design:user-research`, `website-design:landing-page`, `pinterest-pin-design` | A line or two each; too thin to absorb |
+
+**Ignore**
+
+| Skill | Why |
+|---|---|
+| `anthropic-skills:brand-guidelines` | It is Anthropic's own brand |
+| `theme-factory` | Preset palettes that clash with fixed Wugweb colours |
+| `aeo-brand-scan`, `hcti-open-graph-images`, `rampstack-seo:seo-competitor`, `searchfit-seo` competitor-analyzer | SEO work; passed to `wugweb-seo` |
+| `brightdata:brand-listening` | Scrapes by default; uses review sites as a source |
+| `brightdata:design-mirror` | Do not run. It scrapes other sites and restyles the codebase to match, with a risk of copying another brand. The kits session reports its scripts turn off certificate checking (not checked here). |
+| `algorithmic-art`, `canva` | Make new media by default |
+| `dataviz` | Not on disk, so not read |
+
+Material found for other skills (voice rules, content plans, tokens, SEO work, platform sizes) was passed to the coordinating session and is not kept here.
