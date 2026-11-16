@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-brand-os skill, first draft 0.1.0 (2026-11-17)
+- `.claude/skills/wugweb-brand-os/`: `SKILL.md` (four modes, fixed brand rules), 10 brand reference files, 7 Visual OS files, test prompts, a plain Node script that builds `export/wugweb-brand-os.md` (one file for GPT, Cursor and other tools, with the standing rules copied in). Positioning, values, audience and most facts are marked not yet approved, waiting on the owner. No edits to `brand_guidelines/`.
+
 ### Added — wugweb-strategy skill v0.1.0, master copy in the repo (2026-11-17)
 - `.claude/skills/wugweb-strategy/`: the 19 app files copied unchanged, plus `AGENTS.md` (single-file export for other tools, with the standing rules block copied from `docs/skills/STANDING-RULES.md`). Plan status line updated. Six known differences from the plan rulings are listed for the owner, not applied.
 
