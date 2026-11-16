@@ -24,6 +24,7 @@
 16. Source gaps
 17. Works beyond Claude
 18. Extracted and absorbed
+19. Approved facts about Wugweb
 
 ## 1. Skill card
 
@@ -32,7 +33,7 @@
 | Name | `wugweb-brand-os` |
 | Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. One plain Node script, for the export. |
 | Version | 0.1.0 (planned) |
-| Status | Plan ready for vetting. Not built. |
+| Status | Plan ready for vetting. Not built. Skill development not started; the owner starts it when the page and the md are ready. |
 | Owner | Vedanshu, Wugweb |
 | Will live at | `.claude/skills/wugweb-brand-os/` |
 | Sources | `brand_guidelines/`, `kits_design_system/docs/design.md`, `CLAUDE.md`, owner decisions, and the owner's Visual OS and Brand Strategy documents once supplied |
@@ -154,6 +155,14 @@ Visual OS is art direction: how Wugweb's visuals should look and feel across the
 - Yellow is an accent at 10% or less; the final call to action stays yellow.
 - Text is never pure white; the live colour values must not change. Brand-os states the rule; `wugweb-kits` holds the values.
 - The media rule wins over any brand wording: existing media is resized only with its aspect ratio kept, masks are allowed, and no file is cropped (see section 14).
+- Yellow is a reservation, not an emphasis level. It is the resting fill only on the one conversion action per page and on the footer banner. Other buttons may use it only on hover or tap. On a yellow surface the button inverts to dark. (Source, kits docs.)
+- Structure stays in brand ink. An accent is spent on one or two things only, and a pillar colour does not paint structure. (Source, kits docs.)
+- The logo lockup is two-tone, and two-tone titles mirror it. (Source, kits docs; sizes are held in kits.)
+- Surfaces are a black canvas with glass panels, and corner radius is set by role. (Source, kits docs.)
+- Motion feel: one spring with a slight bounce for nav and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion. (Source, kits docs.)
+- Layout feel: a bento never resolves into an even grid, and nothing is wider than the nav. (Source, kits docs.)
+- Not confirmed: that tiles keep a sixteen by nine ratio. The layout shell doc lists seven ratios in use and says the mapping is open.
+- Brand-os states these rules; `wugweb-kits` holds every value and enforces them. No token value is copied here.
 
 ## 9. Rules handed to wugweb-voice
 
@@ -242,15 +251,21 @@ Until approved, the skill carries the definition in `visual-os/art-direction.md`
 1. **Positioning line.** Which is current: "product and experience architecture studio" (site), "systems-minded design partner" (`BRAND_POSITION.md`), or another?
 2. **Values.** The only list is from 2023. Supply current values, or approve a proposal built from the ten principles?
 3. **Audience.** Who is Wugweb for? No approved source exists.
-4. **Facts about Wugweb.** Which numbers are approved: projects, team size, markets, founding date?
+4. **Facts about Wugweb.** Which numbers are approved: projects, team size, markets, founding date? Section 19 lists every fact that needs confirming, including the spelling, legal name, address, phone, email and official profiles.
 5. **`brand_guidelines/`.** Recommended: it stays untouched as the evidence archive and the skill holds the working rules.
-6. **Colour conflict.** `04_COLOR_ROLES.md` says avoid purple, green and orange; the site uses all three as service colours. Which wins for artwork?
+6. **Colour conflict.** `04_COLOR_ROLES.md` says avoid purple, green and orange; the site uses all three as service colours. Which wins for artwork? The same three colours are pillar colours in the kits docs.
 7. **AI prompt engine folder** (`04_AI_PROMPT_ENGINE`). Recommended: Visual OS here owns it, since it turns art direction into briefs. The alternative is the social module in `wugweb-work`.
 8. **Working preferences.** How the owner reasons and gives feedback belongs in neither `wugweb-voice` nor here. Recommended: the shared standing-rules file.
 9. **"Does a lot, into one".** Public wording, or only the idea behind it?
 10. **Source documents.** The owner's Visual OS and Brand Strategy documents, and the nine source images named in the guidelines, if available.
 11. **Where the plan is kept.** This Notion page and `docs/skills/wugweb-brand-os/PLAN.md`, as relayed by the coordinating session. Confirm.
 12. **Crop wording.** Approve the definition and the four wording changes in section 14?
+13. **Messaging stance.** Accept "the client is the hero, Wugweb is the guide"? Recommended: yes. It is held by `wugweb-voice` until answered.
+14. **Background.** The guidelines call warm or light backgrounds the default; the site canvas is black. Does the light default apply only to artwork, or is it out of date?
+15. **Brand colour.** The guidelines treat magenta as the brand energy colour; the kits docs treat yellow as the one brand colour. Which is right for artwork?
+16. **Gradients.** The guidelines ban gradient-heavy looks; the service pages use a glow per pillar. Is the glow an allowed exception?
+17. **Motion.** The guidelines say motion is not elastic; the nav and hover spring has a slight bounce. Is a slight bounce within the brand?
+18. **Logo rules.** The guidelines hold none. Should the two-tone rule and the logo checks live here, with sizes in kits?
 
 ## 16. Source gaps
 
@@ -332,7 +347,7 @@ About 50 installed skills were read on 2026-11-16, read only. Each is marked abs
 | `marketing:campaign-plan` | Four-question message order; one core message with three or four supports, each with a proof | `messaging.md` | Asks for target numbers |
 | `social-media-skills:social-proof-and-testimonials` | A table matching each objection to a kind of proof; a ladder of proof strength | `messaging.md` | Quotes uncited statistics |
 | `storytelling-and-narrative`, `profile-optimization`, `content-pillars` | The client is the hero; a three-second clarity test; the "we can own this because" test | `messaging.md`, `identity-and-positioning.md` | Uncited statistics; invented example proof |
-| `social-media-skills:audience-research` | Audience by job to be done, not demographics; one to three segments; unsourced items marked "assumed" | `audience.md` | None beyond spelling |
+| `social-media-skills:audience-research` | Audience by job to be done, not demographics; one to three segments, each with pains and objections; unsourced items marked "assumed" | `audience.md` | None beyond spelling |
 | `design:research-synthesis`, `leadfeeder:find-my-buyer` | Observation kept apart from interpretation; "what we still do not know"; audience as a buying group of several roles | `audience.md` | Rough segment sizes; the Leadfeeder tool exposes people's names and emails |
 | `brand-voice:discover-brand` (skill and agent) | Source tiers; newer wins unless the older is the official guide; provenance on every fact | `brand-facts.md`, `source-map.md` | It recommends which source to adopt; the owner decides |
 | `brand-voice:guideline-generation` | "We are, we are not" table; evidence levels in words; omit empty sections | `values-and-principles.md`, `source-map.md` | A voice skill end to end; generated confidence scores |
@@ -370,4 +385,33 @@ About 50 installed skills were read on 2026-11-16, read only. Each is marked abs
 | `algorithmic-art`, `canva` | Make new media by default. One test is kept from `canva`, in `visual-os/formats-and-campaigns.md`: a stranger should not be able to name the template. |
 | `dataviz` | Not on disk, so not read |
 
-Material found for other skills (voice rules, content plans, tokens, SEO work, platform sizes) was passed to the coordinating session and is not kept here. Editorial positioning (mission, audience, promise, distinction, from `rampstack-seo:content-strategy`) is content strategy and goes to `wugweb-strategy`.
+Two items reported by the wugweb-seo session (contact details identical everywhere; one spelling and the official profile links) are recorded in section 19. Material found for other skills (voice rules, content plans, tokens, SEO work, platform sizes) was passed to the coordinating session and is not kept here. Editorial positioning (mission, audience, promise, distinction, from `rampstack-seo:content-strategy`) is content strategy and goes to `wugweb-strategy`.
+
+## 19. Approved facts about Wugweb
+
+This is what `wugweb-seo` reads from brand-os, one way, and never rewrites. Nothing in this block is approved yet. It lists what exists today and where, and marks every gap as a question for the owner. Nothing is invented.
+
+| Fact | What exists today | Source | Status |
+|---|---|---|---|
+| Brand name and spelling | "Wugweb"; the 2023 profile also writes "WugWeb" | Site, `CLAUDE.md`, 2023 profile | Question for the owner: confirm one spelling |
+| Legal name | Two forms on the 2023 profile: "Wug Web Service Pvt Ltd" and "WugWeb Services Pvt Ltd" | 2023 profile (stale) | Question for the owner: which is correct |
+| One fixed line: what Wugweb is, for whom, what is distinct | Three competing descriptors | Site, `BRAND_POSITION.md`, 2023 profile | Blank until owner item 1 |
+| Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Fixed |
+| Website | `wugweb.com` | `CLAUDE.md` | Exists |
+| Phone | The WhatsApp number used in the site nav | `CLAUDE.md` | Question for the owner: is this the public phone number |
+| Email | `hello@wugweb.com` | 2023 profile (stale) | Question for the owner: confirm |
+| Address | One Noida address | 2023 profile (stale) | Question for the owner: confirm it is current |
+| Founding date | 4 December 2020 | 2023 profile (stale) | Question for the owner: confirm |
+| Team size | "5-10 people" | 2023 profile (stale) | Question for the owner: current figure |
+| Projects delivered | Both "200+" and "400+" | 2023 profile (stale) | Question for the owner: approved figure, or none |
+| Markets served | Several lists that differ | 2023 profile (stale) | Question for the owner: approved list |
+| Official profile links | 59 Presence records in Sanity; Clutch, DesignRush and GoodFirms named in the repo | `CLAUDE.md` | Not read. Question for the owner: which profiles are official |
+
+**Rules for using these facts** (as reported by the wugweb-seo session from its reading; the source skill files were not opened here)
+
+- Name, address, phone and profile links are identical everywhere they appear: the site, profiles and listings.
+- One spelling of the brand everywhere, with the full name at first mention.
+- The one fixed line is used unchanged on the site, profiles and listings.
+- The official profile links are the list `wugweb-seo` uses in organisation markup.
+
+**Left out on purpose.** The 2023 profile also holds tax, registration and bank details. They are not brand facts and are not copied into this plan.

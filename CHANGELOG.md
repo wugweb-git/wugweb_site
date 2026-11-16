@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-brand-os plan: approved facts, kits brand rules, six more owner questions (2026-11-16)
+- Docs only. `docs/skills/wugweb-brand-os/PLAN.md` gains section 19 (approved facts about Wugweb, every gap marked as an owner question), the brand rules confirmed in the kits docs, owner items 13 to 18, and the skill card line that skill development has not started.
+
 ### Changed — wugweb-brand-os plan: five small edits to section 18 (2026-11-16)
 - Docs only. `docs/skills/wugweb-brand-os/PLAN.md`: adds `landing-page-copy` as a source, the `pptx` no-stripes line, the banner style list as vocabulary, one test kept from `canva`, and a note that editorial positioning goes to `wugweb-strategy`.
 
