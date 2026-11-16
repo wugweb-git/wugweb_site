@@ -81,6 +81,7 @@ Link targets, an owner decision recorded in the skill's 2.2.1 changelog: `wugweb
 - [ ] The kits layout-shell doc proposes a `faqs` field feeding FAQPage JSON-LD on case studies and posts, which clashes with the no-FAQPage rule. Remove it from that proposal, or allow it? See "From the kits design-system docs".
 - [x] `aeo-brand-scan` runs only after the owner's yes. Decided, 2.2.1.
 - [x] Link targets. Decided, 2.2.1; see the note above this list.
+- [ ] Take change 11 (the standing-rules path) into the skill session, or reject it.
 - [x] Done in 2.2.0. Take the "Changes to take into the skill session" below into session `cse_01UQ9TRqokKf1xMCS1JD3brM`, or reject them.
 
 ## Plan
@@ -218,6 +219,8 @@ The installed 2.1.0 `SKILL.md` differed from this plan in ten places. All ten we
 | 10 | Leave to the owner | "What this skill covers for blog posts and service pages. Not decided." | "Whether `FAQPage` is banned site-wide (the site's page schema has that option). Schema for blog posts, service pages, home and about. What to do with the existing `llms.txt` file." |
 
 `references/handoffs.md` needs changes 1 to 4 and 7 to 9 as well; that was done in 2.2.0. `AGENTS.md` and the adapters are generated, so `scripts/build.mjs` must run after the edits.
+
+Change 11, added 2026-11-16 and not yet applied: in the boundary table of the skill body, the row for the owner's standing rules names the shared file by its path, `docs/skills/STANDING-RULES.md`. The installed 2.2.1 already points to a shared file and does not restate the rules. Note for the skill session: a repo path means nothing where the skill runs without the repo, so the single-file export may need the rules included or attached; that is the owner's call.
 
 ## Extracted and absorbed
 
@@ -404,14 +407,14 @@ Until one is confirmed, the report part returns "unvalidated" and ranks by inten
 - The live case-study page still emits `author` and no WebPage node. That is a code item under the wugweb-work plan.
 - No schema rules exist for the blog index, service pages, home or about.
 - JSON-LD cannot be checked on staging; only through a local preview with the main site address.
-- The shared standing-rules file does not exist yet.
+- The shared standing-rules file now exists: `docs/skills/STANDING-RULES.md` on main, approved by the owner in the wugweb-work session. No longer a gap.
 - The Notion "Wugweb SEO" page (last updated 2026-10-14) still lists case-study schema as "Organization, Person, CreativeWork, BreadcrumbList".
 - The installed 2.2.1 folder is now on this machine. The planning session read its skill body, changelog and handoffs reference; the other references, the scripts and the evals were not read.
 
 ## Matrix row
 
 - **Owns:** Keywords and search intent; on-page rules for title, description and headings; schema and JSON-LD rules; technical SEO checks; AI search readiness; search reporting, for the whole site: case studies, blog posts, service pages.
-- **Reads (sources):** Rendered pages; BaseLayout and JsonLd output; robots.txt and sitemap.xml; Notion Case Studies, Blogs and Wugweb SEO pages; Search Console, GA4 and SEO tool exports; the shared standing rules file.
+- **Reads (sources):** Rendered pages; BaseLayout and JsonLd output; robots.txt and sitemap.xml; Notion Case Studies, Blogs and Wugweb SEO pages; Search Console, GA4 and SEO tool exports; the shared standing rules file, `docs/skills/STANDING-RULES.md`.
 - **Gives to:** `wugweb-strategy`: site keyword and intent map, topic gaps, refresh list with position and click-rate signals, search reports. `wugweb-work`: keyword notes and budgets for one brief, platform keyword notes, fix list, JSON-LD check and citability score. `wugweb-kits`: findings that repeat across a block.
 - **Takes from:** `wugweb-strategy`: business goal, audience, page list, pillar and cluster structure. `wugweb-work`: topic, client, audience, approved body, rendered page URL, wording. `wugweb-kits`: its check result. `wugweb-brand-os`: approved name, descriptor and facts. Nothing from `wugweb-voice`.
 - **Never does:** Writes or changes copy, titles or headings. Writes to Notion, Sanity or R2. Edits code, robots or sitemap. Sets layout, tokens or the publishing plan. Adds FAQPage, HowTo, review stars or llms.txt. Invents a number.
