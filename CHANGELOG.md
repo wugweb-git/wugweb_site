@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-work skill 0.4.1 master copy in the repo (2026-11-17)
+- Docs and skill files only. `.claude/skills/wugweb-work/`: 50 files copied unchanged from the installed app copy (0.4.1), byte-identical (diff -r clean); checked first for secrets and personal data (none). SKILL.md body is 1,896 words by the shared count method (frontmatter dropped, fenced code removed, tokens with a letter or digit), inside 1,500 to 2,000. Not changed yet: standing-rules block, loop-pause placement, missing `evals/`, stale `ui-system-mapper` line.
+
 ### Added — wugweb-strategy skill v0.1.0, master copy in the repo (2026-11-17)
 - `.claude/skills/wugweb-strategy/`: the 19 app files copied unchanged, plus `AGENTS.md` (single-file export for other tools, with the standing rules block copied from `docs/skills/STANDING-RULES.md`). Plan status line updated. Six known differences from the plan rulings are listed for the owner, not applied.
 
