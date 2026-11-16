@@ -384,6 +384,8 @@ On the owner's word, the skill now lives in the repo at `.claude/skills/wugweb-s
 
 ## Staged: 2.4.2 and 2.4.3, for the dev session (2026-11-17)
 
+Update, 2026-11-17: the build session reports the keyphrase score built and the skill bumped to 2.5.0 (its report, not verified from the planning session). The versions now diverge: app copy 2.4.0, repo master 2.4.1, build branch 2.5.0. The 2.4.2 and 2.4.3 edits below fold into that 2.5.0 sync. All of it is saved and pushed from the dev chat (`cse_01UQ9TRqokKf1xMCS1JD3brM`), not from here.
+
 Not applied here. The repo master stays 2.4.1 until the dev session (`cse_01UQ9TRqokKf1xMCS1JD3brM`), the only place that saves the app copy and pushes the skill, applies these, runs the scripts, saves and pushes.
 
 - 2.4.2, `references/report.md`, AI answer sample: run each prompt several times, since the same prompt gives a different answer each run; report how often Wugweb appears across runs, not a single result.
