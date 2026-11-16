@@ -66,13 +66,13 @@ const usHits = prose.filter((f) => !/copy-and-seo/.test(f)).filter((f) => US.tes
 check('British spelling in prose', !usHits.length, usHits.join(', '), 'warning')
 
 const VENDOR = /\b(Notion|Sanity|Cloudflare|R2|Postiz)\b/
-const vendorHits = ['SKILL.md', ...refs.filter((f) => !/ops-cycle|skill-map/.test(f)).map((f) => `references/${f}`)].filter((f) => VENDOR.test(read(f).replace(/only `references\/ops-cycle\.md` names[^\n]*/i, '')))
+const vendorHits = ['SKILL.md', ...refs.filter((f) => !/ops-cycle|skill-map|standing-rules/.test(f)).map((f) => `references/${f}`)].filter((f) => VENDOR.test(read(f).replace(/only `references\/ops-cycle\.md` names[^\n]*/i, '')))
 check('CMS, host and scheduling tool are named only in ops-cycle.md and skill-map.md', !vendorHits.length, vendorHits.join(', '))
-const agentHits = refs.filter((f) => !/ops-cycle|skill-map/.test(f)).filter((f) => /\bClaude\b/.test(read(`references/${f}`)))
+const agentHits = refs.filter((f) => !/ops-cycle|skill-map|standing-rules/.test(f)).filter((f) => /\bClaude\b/.test(read(`references/${f}`)))
 check('references are agent-neutral (no "Claude" outside ops-cycle.md and skill-map.md)', !agentHits.length, agentHits.join(', '))
 
 let evals = null
-try { evals = JSON.parse(read('evals/evals.json')) } catch (e) { check('evals/evals.json parses', false, e.message) }
+if (existsSync(join(root, 'evals/evals.json'))) { try { evals = JSON.parse(read('evals/evals.json')) } catch (e) { check('evals/evals.json parses', false, e.message) } } else console.log('note: evals/evals.json is not in this copy; skipped')
 if (evals) {
   check('evals.json skill_name matches', evals.skill_name === name, `${evals.skill_name} vs ${name}`)
   const ids = evals.evals.map((e) => e.id)

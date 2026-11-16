@@ -2,7 +2,7 @@
 
 One of the six skills in the Wugweb Skill System. It answers "how is each piece
 made?" and produces every piece in two tracks, plus their other forms.
-Version 0.4.1. Part 1 only: the skill, its references, two read-only
+Version 0.4.2. Part 1 only: the skill, its references, two read-only
 working scripts and the evals. Site code is not part of it.
 
 The registry is the Notion page "Wugweb Skill Management System". If this
@@ -57,7 +57,7 @@ until that skill is approved. Then they move.
 | `scripts/test.mjs` | Self-test of the scripts on the fixtures | yes |
 | `scripts/build.mjs` | Generate the three files below | yes |
 | `examples/` | One full proposal, two skeletons, three forms examples, three test fixtures | yes |
-| `evals/evals.json` | 14 test prompts with expectations | yes |
+| evals folder (not in this copy) | 14 test prompts with expectations. Not in this copy yet; kept in the development chat, to be added when the evals are run | no, not yet |
 | `metadata.json`, `CHANGELOG.md` | Version, date, abstract, history | yes |
 | `AGENTS.md` | Whole skill in one file | no, generated |
 | `adapters/cursor/<name>.mdc` | Cursor rule | no, generated |

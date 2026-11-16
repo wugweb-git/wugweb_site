@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.2, 2026-11-17
+
+First repo copy (master). Changes from the app copy 0.4.1:
+
+- The owner's standing rules are now one block, `references/standing-rules.md`, copied from `docs/skills/STANDING-RULES.md`. The duplicates in `SKILL.md` "Never do" and `ops-cycle.md` are removed; the skill keeps only its own three never-do lines.
+- Loop pause: `open-items.md` now points to `media-standard.md`, where the rule is written.
+- `skill-map.md`: `wugweb-kits` is installed under that name (old name `ui-system-mapper`).
+- `open-items.md`: added plan vetting and the `faqs` field clash with the existing blocks awaiting sign-off.
+- Evals: the folder is not in this copy. README says so and `validate.mjs` skips the check with a note instead of failing.
+- `SKILL.md` frontmatter name is unquoted, so `build.mjs` no longer writes a quoted adapter file name.
+- `validate.mjs` treats `standing-rules.md` as a verbatim copy, exempt from the vendor and agent-name checks.
+
 ## 0.4.1, 2026-11-16
 
 Rebuilt from the plan file at commit `3c8ef8c`, which records the owner's decisions of 2026-11-16.

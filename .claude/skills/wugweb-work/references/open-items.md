@@ -1,6 +1,6 @@
 # Open with the owner
 
-Six matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
+Eight matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
 
 | Item | What is open | Working assumption until decided |
 |---|---|---|
@@ -9,11 +9,13 @@ Six matters are not decided. The owner decides each one. Until then the skill wo
 | Medium | Whether Medium is a form of its own, or the blog post reposted as is | The approved blog post, unchanged, with a link to the original. No Medium-only rewrite |
 | Made-file sizes | The sizes for a Behance cover, a Dribbble shot and a story canvas | The proposed figures in `forms.md` are shown as proposed. No file is made at these sizes without the owner's yes for that file |
 | LinkedIn tags | None, or a few specific tags (proposed by `wugweb-seo`) | None |
+| Plan vetting | The owner has not yet vetted and approved the plan as a whole | Nothing goes to development until he does |
 | Replies and outreach | Whether replies, comment routines and outreach pitches are part of the Forms module | Out. They are conversation, not production from an approved body, so the fact ledger and approval steps do not fit them as written |
 
 ## Also open, shared with `wugweb-kits`
 
 - Card thumbnails: the work card uses a 16:10 frame and the thumbnail videos are 4:3. Under the media rule a file is shown whole, so either the file sits inside the frame with space around it, or the card changes shape. Until decided: show the file whole at its own ratio.
+- The `faqs` field clash between the CMS and the page, and the existing blocks awaiting sign-off: both are described in `layout-grammar.md` and are decided with `wugweb-kits`.
 - Old media ratios from the previous site are not mapped to sections. The manifest's shape field is the input for that mapping.
 
 ## Settled on 2026-11-16 (kept here so the old assumptions are not reused)
@@ -28,7 +30,7 @@ Six matters are not decided. The owner decides each one. Until then the skill wo
 | Accounts in scope | The Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out | `forms.md` |
 | Timing and naming | A post waits until the page it links to is live. No client is named or tagged without permission on record | `forms/publish-approval.md` |
 | Newsletter | In scope. Sending needs the owner's yes | `forms/newsletter.md` |
-| Loop pause | A loop longer than 5 seconds gets a pause control (a `wugweb-kits` rule) | `layout-grammar.md` (held) |
+| Loop pause | A loop longer than 5 seconds gets a pause control (a `wugweb-kits` rule) | `media-standard.md`; `wugweb-kits` owns the layout side |
 
 ## When an item is decided
 

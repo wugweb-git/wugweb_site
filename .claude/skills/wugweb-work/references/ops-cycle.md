@@ -97,7 +97,7 @@ node .claude/skills/wugweb-work/scripts/check-case-page.mjs http://localhost:878
 
 Previews: dev server `wugweb-dev` on port 4321. JSON-LD is checked through `npm run preview` (port 8788) with the canonical Host header, because the dev server rejects unknown hosts. In Claude's browser pane the page reports as hidden, so reveals never fire there: inject `[data-reveal]{opacity:1!important}` and prefer DOM checks over screenshots.
 
-Git: check `.git/index.lock` first (other sessions share the checkout). Commit by path, never `git add -A`. Trailer `Co-Authored-By: Wugweb <admin@wugweb.com>` only. Every commit adds a `CHANGELOG.md` line under `## [Unreleased]`. Studio deploy, sync writes and pushes are the owner's go.
+Git rules are in `references/standing-rules.md`. Studio deploy, sync writes and pushes are the owner's go.
 
 Approved text goes to Notion only after approval of that exact change, with a backup first. Alt text goes to Sanity `asset.alt` only where empty (`setIfMissing`), with a backup.
 

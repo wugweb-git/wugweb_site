@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work skill 0.4.2, repo master copy fixes (2026-11-17)
+- Skill files only. `.claude/skills/wugweb-work/`: standing rules now one copied block (`references/standing-rules.md`), loop-pause pointer, `wugweb-kits` name in skill-map, two items added to open-items, evals note in README and validate, unquoted name in SKILL.md, AGENTS.md and adapters rebuilt. validate.mjs 26 checks, 0 errors; test.mjs passes. Body 1,831 words by the shared count. The app copy is now behind and needs re-saving by the owner.
+
 ### Changed — wugweb-strategy Notion page status (2026-11-17)
 - Skill page status now says v0.1.0 built, and the repo copy line names the skill folder. Backup in `backups/`.
 

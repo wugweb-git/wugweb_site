@@ -1,10 +1,10 @@
 ---
-name: "wugweb-work"
+name: wugweb-work
 description: "This skill should be used when the user asks to \"write a case study\", \"audit a case study\", \"fix the /work page\", \"prepare Body Content\", \"arrange the screens\", \"write a blog post\", \"draft the service page\", \"write the site or landing copy\", or \"make the Behance, Dribbble, LinkedIn, deck or PDF version\" of a piece, or mentions a client's screens, moodboard, brand assets or project media. It produces every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site and landing copy), plus the social, deck, Behance and Dribbble forms of either. It covers audit, brief, media manifest, visual read of every image and video, body proposal, layout and search handoffs, the publish gate and per-post approval. Use it for any Wugweb client project or own-content piece, even when the user does not say \"case study\"."
 license: MIT
 metadata:
   author: wugweb
-  version: "0.4.1"
+  version: "0.4.2"
 ---
 
 # wugweb-work
@@ -46,14 +46,11 @@ One source per piece. Track 1: one Body Content document written by the owner, p
 
 ## Never do
 
-- Never invent a number, quote, client name, date or result. "Unvalidated" is a complete answer.
-- Never upload media, keep a local copy, crop a file, re-encode it or make a poster file. Showing media at another size is allowed when its aspect ratio is kept. A clipping mask is allowed when it hides nothing that proves the claim.
-- Never play sound. Every video is muted, with no unmute control.
-- Never delete data, files, keys, rows or documents without asking. Dead links stay in the source and are listed.
+The owner's standing rules apply to every Wugweb skill. They are copied in `references/standing-rules.md` (source: `docs/skills/STANDING-RULES.md`) and are not repeated here. Read that file at the start of a session. This skill adds:
+
 - Never write a caption or alt text for a screen you have not seen close up.
-- Never estimate a number in a report. Compute it, or say it was not computed.
+- Never make a poster file for a video. Dead links stay in the source and are listed.
 - Never emit FAQPage, HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects.
-- Never put an em or en dash in anything a visitor reads.
 
 ## Approval gates
 

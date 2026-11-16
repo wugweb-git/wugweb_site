@@ -20,7 +20,7 @@ Third-party helpers stay at Read and Propose. Only a Wugweb skill writes, and on
 |---|---|---|
 | `wugweb-voice` | The one Wugweb voice | Not installed; plan only |
 | `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Not installed; plan only |
-| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed under its old name, `ui-system-mapper`; the rename is approved |
+| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; the old name was `ui-system-mapper` |
 | `wugweb-strategy` | Content strategy, calendar, briefs | Not installed; plan only |
 | `wugweb-seo` | Keywords, on-page rules, schema, AI search, reporting | Installed; one skill with plan, audit and report parts |
 

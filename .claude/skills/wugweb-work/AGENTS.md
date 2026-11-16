@@ -2,7 +2,7 @@
 
 # wugweb-work
 
-**Version 0.4.1** · Wugweb · November 2026
+**Version 0.4.2** · Wugweb · November 2026
 
 A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. Voice, layout, search and planning rules belong to sibling skills; this skill applies them. Independent of CMS, host and agent.
 
@@ -43,14 +43,11 @@ One source per piece. Track 1: one Body Content document written by the owner, p
 
 ## Never do
 
-- Never invent a number, quote, client name, date or result. "Unvalidated" is a complete answer.
-- Never upload media, keep a local copy, crop a file, re-encode it or make a poster file. Showing media at another size is allowed when its aspect ratio is kept. A clipping mask is allowed when it hides nothing that proves the claim.
-- Never play sound. Every video is muted, with no unmute control.
-- Never delete data, files, keys, rows or documents without asking. Dead links stay in the source and are listed.
+The owner's standing rules apply to every Wugweb skill. They are copied in `references/standing-rules.md` (source: `docs/skills/STANDING-RULES.md`) and are not repeated here. Read that file at the start of a session. This skill adds:
+
 - Never write a caption or alt text for a screen you have not seen close up.
-- Never estimate a number in a report. Compute it, or say it was not computed.
+- Never make a poster file for a video. Dead links stay in the source and are listed.
 - Never emit FAQPage, HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects.
-- Never put an em or en dash in anything a visitor reads.
 
 ## Approval gates
 
@@ -347,6 +344,85 @@ Decline and record any answer that asks for:
 - A redirect as the fix for a broken link, a 0 to 100 score that is not computed from something real, or a hook built on a made-up statistic.
 - A billed service, or sending private data to a third party.
 
+<!-- references/standing-rules.md -->
+<!-- Copied from docs/skills/STANDING-RULES.md. Do not edit here. Change the source file, then copy it again. -->
+
+## Owner's standing rules
+
+These apply to every skill in the Wugweb Skill System and to every session.
+Each skill reads this file and repeats none of it. A skill's own rules live in
+that skill. Where a helper skill or tool disagrees with a rule here, this file
+wins. Dates show when the owner set or confirmed a rule, where known.
+
+### Truth and evidence
+
+- Nothing is invented: no numbers, quotes or facts.
+- A claim needs a screen, a sourced number or a named fact. "Unvalidated" is a complete answer.
+- Existing content is an input, not the benchmark. (2026-10-19)
+- Every number in a report is computed, never estimated.
+
+### Sources and approval
+
+- Notion is the source for case studies and blog posts. (2026-10-13)
+- One source, from the owner. Content is enriched only as a proposal. (2026-10-19)
+- Changes are shown as current to proposed, with the reason.
+- Nothing is written to the content source or the CMS without the owner's approval of that exact change, with a backup first.
+- Nothing is deleted without asking: no data, files, records or pages.
+- Nothing is posted or scheduled without the owner's yes for that post. (2026-11-16)
+- Third-party helper skills return proposals or reports. Only a Wugweb skill writes, and only after approval. (2026-11-16)
+- Nothing goes to development until the owner says so. (2026-11-16)
+
+### Media
+
+- Media lives in the owner's media store only: no uploads, no local copies.
+- Files are never cropped or re-encoded.
+- Media may be shown at any size if the original aspect ratio is kept. Clipping masks are allowed. (2026-11-16)
+- Resizing and masks are done on the page, never by making new files. (confirmed 2026-11-16)
+- A mask must not hide the part of a screen that proves the claim. (confirmed 2026-11-16)
+- A file shown above its natural size is flagged, not banned. (confirmed 2026-11-16)
+- No sound anywhere. Every video is muted. (2026-11-11)
+- A new image file is made only when nothing existing fits, one file at a time, on the owner's yes for that file. (2026-11-11)
+
+### Writing
+
+- British English.
+- Sentence case.
+- No em or en dashes in anything a visitor reads. Ranges are written out.
+
+### Working with the owner
+
+- Replies are short and plain, result first.
+- Do exactly what is asked. No side tasks.
+- Full output: complete files, no placeholders, no "rest unchanged".
+- Do not raise the domain cutover, asset clean-up or the cookie policy unless asked.
+
+### Limits
+
+- Never exceed any vendor's free tier. No feature that needs a paid plan unless the owner asks.
+- No dependency on Framer: no Framer URLs, redirects or assets. (2026-10-13)
+- One slug per page; no redirects for old URLs. (2026-10-13)
+
+### The skill system
+
+- One home per rule. Each rule lives in exactly one skill; the others point to it. (2026-11-16)
+- One Notion page per skill: no sub-pages, nothing elsewhere. The repo keeps one copy as that skill's PLAN file. (2026-11-16)
+- Every skill must be usable in GPT, Cursor and other tools, not only Claude. (2026-11-16)
+- The layout values in the design system's layout shell document are binding. Skills read that document and point to `wugweb-kits`. (2026-11-16)
+
+### Git, only when asked to commit
+
+- Commit by path. Never add everything at once.
+- The only trailer is `Co-Authored-By: Wugweb <admin@wugweb.com>`.
+- Check for an index lock first; other sessions share the checkout.
+- Every commit adds a line to the changelog.
+- Push only on the owner's go.
+
+### Working caution, not an owner rule
+
+- When writing to Notion, never write a bare word-colon-word pattern or a bare
+  file name ending in a dot and "md". Notion turns them into links and can
+  corrupt the page. Put them in inline code or reword. (found 2026-11-16)
+
 <!-- references/ops-cycle.md -->
 ## Ops cycle
 
@@ -447,7 +523,7 @@ node .claude/skills/wugweb-work/scripts/check-case-page.mjs http://localhost:878
 
 Previews: dev server `wugweb-dev` on port 4321. JSON-LD is checked through `npm run preview` (port 8788) with the canonical Host header, because the dev server rejects unknown hosts. In Claude's browser pane the page reports as hidden, so reveals never fire there: inject `[data-reveal]{opacity:1!important}` and prefer DOM checks over screenshots.
 
-Git: check `.git/index.lock` first (other sessions share the checkout). Commit by path, never `git add -A`. Trailer `Co-Authored-By: Wugweb <admin@wugweb.com>` only. Every commit adds a `CHANGELOG.md` line under `## [Unreleased]`. Studio deploy, sync writes and pushes are the owner's go.
+Git rules are in `references/standing-rules.md`. Studio deploy, sync writes and pushes are the owner's go.
 
 Approved text goes to Notion only after approval of that exact change, with a backup first. Alt text goes to Sanity `asset.alt` only where empty (`setIfMissing`), with a backup.
 
@@ -1533,7 +1609,7 @@ Who uploads to Behance and Dribbble, where made files are kept, the plain canvas
 <!-- references/open-items.md -->
 ## Open with the owner
 
-Six matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
+Eight matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
 
 | Item | What is open | Working assumption until decided |
 |---|---|---|
@@ -1542,11 +1618,13 @@ Six matters are not decided. The owner decides each one. Until then the skill wo
 | Medium | Whether Medium is a form of its own, or the blog post reposted as is | The approved blog post, unchanged, with a link to the original. No Medium-only rewrite |
 | Made-file sizes | The sizes for a Behance cover, a Dribbble shot and a story canvas | The proposed figures in `forms.md` are shown as proposed. No file is made at these sizes without the owner's yes for that file |
 | LinkedIn tags | None, or a few specific tags (proposed by `wugweb-seo`) | None |
+| Plan vetting | The owner has not yet vetted and approved the plan as a whole | Nothing goes to development until he does |
 | Replies and outreach | Whether replies, comment routines and outreach pitches are part of the Forms module | Out. They are conversation, not production from an approved body, so the fact ledger and approval steps do not fit them as written |
 
 ### Also open, shared with `wugweb-kits`
 
 - Card thumbnails: the work card uses a 16:10 frame and the thumbnail videos are 4:3. Under the media rule a file is shown whole, so either the file sits inside the frame with space around it, or the card changes shape. Until decided: show the file whole at its own ratio.
+- The `faqs` field clash between the CMS and the page, and the existing blocks awaiting sign-off: both are described in `layout-grammar.md` and are decided with `wugweb-kits`.
 - Old media ratios from the previous site are not mapped to sections. The manifest's shape field is the input for that mapping.
 
 ### Settled on 2026-11-16 (kept here so the old assumptions are not reused)
@@ -1561,7 +1639,7 @@ Six matters are not decided. The owner decides each one. Until then the skill wo
 | Accounts in scope | The Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out | `forms.md` |
 | Timing and naming | A post waits until the page it links to is live. No client is named or tagged without permission on record | `forms/publish-approval.md` |
 | Newsletter | In scope. Sending needs the owner's yes | `forms/newsletter.md` |
-| Loop pause | A loop longer than 5 seconds gets a pause control (a `wugweb-kits` rule) | `layout-grammar.md` (held) |
+| Loop pause | A loop longer than 5 seconds gets a pause control (a `wugweb-kits` rule) | `media-standard.md`; `wugweb-kits` owns the layout side |
 
 ### When an item is decided
 
@@ -1637,7 +1715,7 @@ Third-party helpers stay at Read and Propose. Only a Wugweb skill writes, and on
 |---|---|---|
 | `wugweb-voice` | The one Wugweb voice | Not installed; plan only |
 | `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Not installed; plan only |
-| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed under its old name, `ui-system-mapper`; the rename is approved |
+| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; the old name was `ui-system-mapper` |
 | `wugweb-strategy` | Content strategy, calendar, briefs | Not installed; plan only |
 | `wugweb-seo` | Keywords, on-page rules, schema, AI search, reporting | Installed; one skill with plan, audit and report parts |
 
