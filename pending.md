@@ -4,6 +4,13 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-11-16: Open from the industries / blog / media session. All shipped work is on main and live on UAT. Waiting on the owner:**
+1. Blog covers: 92.5 MB across 103 files (48 PNGs over 1 MB). Smaller R2 copies need owner OK (no-uploads rule).
+2. 66 legacy industry records with no sector: merge or delete.
+3. Case-study Services: not synced from Notion to Sanity yet.
+4. Logo band: the 14 colour logos render smaller than the grey ones (padded 1500x876 canvas).
+5. `wip/embedded-studio`: merge to main waits for owner approval (other session).
+
 **2026-11-14: Case study rebuild and the `wugweb-work` skill. PLAN ONLY, waiting for the owner's vetting.**
 - One source of truth: the Notion page "wugweb-work skill: plan (final for vetting)" under Wugweb HQ / Wugweb Website (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
 - State: plan is final. Nothing is built: no skill files, no site code, no Sanity write, no case-study row changed in Notion.
@@ -37,7 +44,7 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - Blog covers are 92.5 MB across 103 files (48 PNGs over 1 MB); /blog decodes slowly. Needs smaller R2 copies (owner decision: no new uploads).
 - Industry icons: 0 of 45 industries have an icon in Notion or Sanity (Notion Industry "Icon" is a URL field). Sectors: Notion and Sanity match on all 17 (icons, showcase ticks, order, lines) and all 45 industry links and card ticks.
 
-**2026-10-19: Industries page rebuilt as a static showcase (branch `feat/sector-showcase`, PR #2, not deployed).**
+**2026-10-19: Industries page rebuilt as a static showcase (PR #2, merged 252fa40c, live on UAT).**
 - `/footer/industries`: hero (owner H1 and lead, Lucide diagram of the 8 showcase sectors), 17 sector rows (`#<sector-slug>`, muted number, name, sector line, every industry as a plain label), cross-industry, "Don't see your industry?", final CTA. All sectors, lines, icons and industries come from Sanity; the page hardcodes none.
 - Removed: the 9 hardcoded groups, 34 buttons, alias map, `industryPreviews`, drawer, search, filters, case-study query and capability matrix. Cross-industry em-dash is now a comma.
 - SectorShowcase cards link to `/footer/industries#<sector-slug>`.
