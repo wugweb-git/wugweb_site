@@ -50,9 +50,12 @@ wugweb-voice/
 │   ├── modes.md          tone and shape by context (chat, email, formal document, spoken, case study, LinkedIn, deck)
 │   ├── words.md          banned words, preferred terms, spelling, no dashes
 │   ├── corpus.md         the calibration ledger (section 6)
-│   └── handoff.md        the contract with other skills (section 7)
+│   ├── handoff.md        the contract with other skills (section 7)
+│   └── tooling.md        the only file that names tools and vendors (section 13)
 ├── examples/             before and after pairs, each tied to a corpus entry
-└── evals/evals.json      per-task tests (section 8)
+├── evals/evals.json      per-task tests (section 8)
+├── scripts/              plain Node only: build the export, run the word and dash checks
+└── export/wugweb-voice.md   single-file export for GPT, Cursor or any other tool (section 13)
 ```
 
 Changed from the approved plan: `working-rules.md` and `facts.md` are removed. Working preferences are out of this skill (open question 2). Facts about the studio belong to `wugweb-brand-os`.
@@ -95,8 +98,17 @@ The Wugweb Skill System has six skills (settled 2026-11-16, as relayed by the co
 
 - **`wugweb-brand-os`**: keeps identity, positioning, values, audience, messaging and Visual OS. It keeps no voice rules of its own; it points here.
 - **`wugweb-work`** (consumer): produces every finished piece, including case studies, portfolio, blog posts, service pages, site copy, and their social and deck versions. It loads `wugweb-voice` for voice and keeps its own structure, lengths, evidence and SEO rules. In the table below, "the content skill" means `wugweb-work`.
-- **`wugweb-strategy`** (consumer; named `wugweb-content` until 2026-11-16): content strategy, what to say, to whom, when. It creates nothing. Its briefs and editorial standards reference these rules and do not restate them.
-- **`wugweb-seo`, `wugweb-kits`**: load `wugweb-voice` whenever they produce prose in Wugweb's name.
+- **`wugweb-strategy`**: no direct link. Its brief names audience, purpose and form; `wugweb-work` passes those here with the draft.
+- **`wugweb-seo`, `wugweb-kits`**: no direct link. If either needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The voice check happens in one place only.
+
+Links, to read the same on both sides:
+
+| Direction | Skill | What |
+|---|---|---|
+| Gives to | `wugweb-work` | Voice rules, mode settings, text in voice, voice-check results with confidence |
+| Gives to | `wugweb-brand-os` | The voice rules it points to |
+| Takes from | `wugweb-brand-os` | Identity, positioning, audience |
+| Takes from | `wugweb-work` | Draft text with its form, mode, and the audience and purpose from the brief |
 - **Client voice**: quotes and on-screen terms from a client stay in the client's words. This skill never rewrites them.
 
 What a caller passes in: the text or brief, the mode, and the audience if known. What it gets back: the text in voice, the rules applied, a confidence level (high, medium, low) with the reason, and any claim it could not support.
@@ -146,6 +158,7 @@ Starting text, from "Tone by form" in the wugweb-work plan. Draft until the owne
 | Blind comparison | The owner sees real samples and skill outputs unlabelled and picks which are his. The target pass mark is his to set. |
 | Stated confidence | Low when the mode has fewer than three samples behind it |
 | No profiling | Asked "what kind of person writes this", the skill declines and describes style only |
+| Same result from the export | The same test inputs are run from `export/wugweb-voice.md` in a tool other than Claude. The flags raised and the rules applied must match the Claude run. |
 
 ## 9. Order of work
 
@@ -188,3 +201,26 @@ The Wugweb Skill System's final list gives this skill eight helpers: `rampstack-
 - The Sanity Brand voice draft marks its own audience line as inferred.
 - The Notion page "Product & UX Strategy" was not found.
 - Whether the other assistant wrote its own plan is still unknown.
+
+## 13. Works beyond Claude
+
+Owner, 2026-11-16, as relayed by the coordinating session: "make sure all the skills can be utilised by gpt or cursor or beyond claude".
+
+How the skill stays portable:
+
+- **Plain Markdown rules.** `voice.md`, `modes.md`, `words.md`, `corpus.md` and `handoff.md` are written so any model, or a person, can follow them. No Claude-only syntax in them.
+- **Helpers are optional.** Every helper skill, plugin and connector in section 10 is an aid. Each mode and the voice check (section 7a) can be done by hand from the Markdown files alone.
+- **Scripts are plain Node.** No Claude tooling, no installed packages beyond Node itself.
+- **Tool and vendor wiring in one file.** `references/tooling.md` is the only place that names Claude skills, plugins, Notion or Sanity. Every other file is neutral.
+- **Single-file export.** `scripts/` builds `export/wugweb-voice.md`: the always-on rules, modes, word lists, the voice check and the examples in one file, to paste or attach in GPT, Cursor or another tool. The corpus ledger is left out of the export unless the owner says otherwise, since it points at private writing.
+- **Parity test.** Section 8, last row.
+
+What in this plan works only in Claude today:
+
+| Item | Outside Claude |
+|---|---|
+| Automatic loading by trigger phrases in the `SKILL.md` frontmatter | Paste or attach the export by hand |
+| The helper skills and the brand-voice agents in section 10 | Follow the Markdown rules by hand |
+| Running `evals/evals.json` through `anthropic-skills:skill-creator` | Run the same inputs by hand and compare against the expected flags |
+| Reading the Notion page and Sanity fields through connectors | Not needed at run time; the rules live in the files |
+| The owner's fixed rules held in Claude memory | Copied into `voice.md` and `words.md`, so the skill does not depend on memory |
