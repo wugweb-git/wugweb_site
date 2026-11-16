@@ -86,6 +86,9 @@ Link targets, owner rulings of 2026-11-16 as carried in the repo skill 2.4.1: `w
 - [x] Change 11 (the standing-rules path): applied in the repo copy 2.4.1.
 - [ ] The owner's standing rules as a copied block marked as from `docs/skills/STANDING-RULES.md`: the skill holds only a pointer. Add a block, or keep the pointer? Recommended: keep the pointer in `SKILL.md` and inline the rules only in `AGENTS.md` and the single-file export, which run without the repo.
 - [ ] `evals/evals.json` is in neither the app copy nor the repo copy, although the changelog says eight evals were added. Supply the file. Recommended: draft it as part of the build, so the validator's warning clears.
+- [ ] Confirm the kits layout-shell fields seo owns: `seoCanonicalUrl` (clash: case-study canonicals come from Notion, no redirects), `schemaType` (clash for case studies: the type is fixed as CreativeWork), `aiSummary` and `keyTakeaways` (clash on case studies: a second copy source). `faqs` is already settled by 2.3.0. Kits asked seo to answer these.
+- [ ] Confirm the made-file share-image sizes for LinkedIn, Behance, Dribbble and the story safe zone; the og image 1200 by 630 is settled. The audit's share-image check reads them; the sizes themselves are a kits or work spec.
+- [ ] Re-upload the wugweb-seo skill zip to the Claude app: the app copy was lost with the others. Rebuild from the repo copy (2.4.1) plus the 2.5.0 build once it is pushed here.
 - [x] Done in 2.2.0. Take the "Changes to take into the skill session" below into session `cse_01UQ9TRqokKf1xMCS1JD3brM`, or reject them.
 
 ## Plan
@@ -656,6 +659,17 @@ Until one is confirmed, the report part returns "unvalidated" and ranks by inten
 - The shared standing-rules file now exists: `docs/skills/STANDING-RULES.md` on main, approved by the owner in the wugweb-work session. No longer a gap.
 - The Notion "Wugweb SEO" page (last updated 2026-10-14) still lists case-study schema as "Organization, Person, CreativeWork, BreadcrumbList".
 - The repo copy 2.4.1 was read in full for this update (skill body, changelogs, handoffs). The other references and the scripts were run through the validator and self-test, not read line by line. `evals/evals.json` is missing from both copies.
+
+## Open items from the coordinator (2026-11-17)
+
+Six SEO items the coordinator flagged as not fully handled, mapped to this plan:
+
+1. 2.5.0 build not on main. Tracked under "Staged" above: `origin/main` is 2.4.1; no `score-page.mjs`, evals or fixture on any ref. The build is in the dev chat only and nobody has pushed it here. The biggest gap.
+2. Kits field clashes need the owner's answer. The skill's position is under "From the kits design-system docs" (`faqs` settled by 2.3.0; `seoCanonicalUrl`, `schemaType` for case studies, `aiSummary` and `keyTakeaways` are clashes). Owner confirmation added to "Waiting on the owner".
+3. Word count. Reported: 1,832 words for the repo 2.4.1 body by the shared method (see "Repo master copy"). The 2.5.0 body will differ once the new audit step lands; recompute then. The old 2,193 and "under 2,000" figures used other methods.
+4. Open questions. The owner-decision list is "Waiting on the owner"; the LinkedIn, Behance and Dribbble title and tag notes are specced under "Platform keyword note".
+5. Made-file sizes. Open: confirm LinkedIn, Behance, Dribbble and story-safe-zone share-image sizes; og 1200 by 630 is settled. Added to "Waiting on the owner".
+6. App copy lost. The wugweb-seo app copy is gone and needs the zip re-uploaded. Owner action; added to "Waiting on the owner". Rebuild from the repo copy plus the 2.5.0 build once pushed.
 
 ## Matrix row
 
