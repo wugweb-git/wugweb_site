@@ -1,4 +1,4 @@
-# wugweb-strategy skill: plan (for vetting)
+# wugweb-strategy skill: plan (ready for vetting)
 
 > Plan only, 2026-11-16. Nothing is built: no skill files, no site code, no write to Sanity or R2, no change to any Notion database. Named `wugweb-content` until the owner renamed it on 2026-11-16. Registry: "Wugweb Skill Management System" in Notion (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298).
 
@@ -9,7 +9,8 @@
 | Name | `wugweb-strategy` |
 | Type | Claude Code project skill: one `SKILL.md` plus `references/`, `examples/`, `evals/` |
 | Version | 0.1.0 (planned) |
-| Status | Plan for vetting. Not built. |
+| Status | Plan ready for vetting. Not built. |
+| Notion page | https://app.notion.com/p/41abb710b9ab8187a4a8c5979daff39b (the plan sits on the skill page itself) |
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-strategy/` |
 | Question it answers | What does Wugweb want to say, to whom, and when? |
@@ -229,7 +230,7 @@ Helpers return proposals only. The owner's rules win over anything a helper says
 9. **Audiences and goals.** Do these come from the owner or from the brand-os plan?
 10. **Old calendar.** A "Content calendar" database sits under the owner's personal area in Notion, last edited 2026-04-13. It was not opened. Use it or ignore it?
 11. Merged into question 13.
-12. **Notion pages.** The skill page and the registry still say `wugweb-content`, and the skill page still shows the old "Not decided" card. Rename and replace them?
+12. **Notion pages.** Settled for the skill page on 2026-11-16: renamed, and the plan moved onto it. Still open: the earlier sub-page is now redundant; trash it?
 13. **Accounts.** Which accounts are in scope, including the owner's own Medium and LinkedIn, and are the 5 personal Behance projects included?
 14. **Linked pages.** Does a post wait until the page it links to is live?
 15. **Client permission.** Is it needed before a client is named or tagged?
@@ -250,10 +251,10 @@ Helpers return proposals only. The owner's rules win over anything a helper says
 ## MATRIX ROW: wugweb-strategy
 
 - **Owns:** Content strategy only: pillar mix, topics, the editorial and social calendar, briefs, per-piece structures, editorial standards, content models, the proof map, refresh or retire decisions, campaign and repurposing plans, and the post-performance read for planning.
-- **Reads:** Notion Blogs, Case Studies and Publications; Sanity service documents; positioning, audiences and messaging framework from `wugweb-brand-os`; keyword, intent and audit notes from `wugweb-seo`; return notes and post results from `wugweb-work`.
-- **Produces:** One-page briefs for `wugweb-work`, a scored topic backlog, a dated calendar by account, the proof map, keep or refresh or retire proposals, campaign and repurposing plans, and content-model changes as current to proposed.
-- **Calls:** `wugweb-seo` for keyword notes and audit data; `wugweb-brand-os` for audiences and messages; `wugweb-work` to make each piece. Third-party helpers for content strategy, topics, calendar, briefs, audits, campaigns and repurposing, as proposals only.
-- **May not change:** Positioning, values, audience definitions or the messaging framework; any copy, headline or body; voice; keywords, titles or on-page rules; layout or tokens; Sanity schema. No Notion or Sanity write without approval and backup. Deletes and publishes nothing.
+- **Reads (sources):** Notion Blogs, Case Studies and Publications; Sanity service documents; the case-study inventory in docs/research; brand_guidelines; the registry. All read only.
+- **Gives to:** `wugweb-work`: one-page briefs, the calendar by account and date, the proof map, repurposing and campaign plans, refresh or retire decisions. `wugweb-seo`: topic and URL lists to research or audit.
+- **Takes from:** `wugweb-brand-os`: positioning, audiences, messaging framework. `wugweb-seo`: keyword, intent and audit notes. `wugweb-work`: finished pieces, return notes, post results. `wugweb-voice` and `wugweb-kits`: nothing directly; `wugweb-work` reads them.
+- **Never does:** Writes or edits any piece; publishes; redefines positioning, audiences or messaging; sets voice, keywords, titles, layout or tokens; changes Sanity schema; writes to Notion or Sanity without approval and backup; deletes anything.
 
 ## Change log
 
@@ -262,3 +263,4 @@ Helpers return proposals only. The owner's rules win over anything a helper says
 | 2026-11-16 | First plan, as `wugweb-content`. |
 | 2026-11-16 | Planning side of social added (owner, through the coordinating session). |
 | 2026-11-16 | Renamed `wugweb-strategy` (owner). Scope unchanged. Brand strategy stated as out of scope. |
+| 2026-11-16 | Plan moved onto the Notion skill page (owner: one Notion page per skill). Matrix row in the system's five-entry format. |

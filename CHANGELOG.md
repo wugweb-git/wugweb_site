@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan moved onto its Notion skill page (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` matches the Notion skill page: matrix row in the five-entry format, question 12 updated. Backup of the page's earlier text in `backups/notion-wugweb-strategy-page-pre-plan-2026-11-16.json`.
+
 ### Added — wugweb-strategy skill plan, for vetting (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md`: plan for the content-strategy skill (named `wugweb-content` until the owner's rename). Skill card, modes, brief format, boundary and handoff tables, tests, 17 open questions, source gaps. Nothing built.
 
