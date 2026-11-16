@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: launch-post-gets-a-brief
+expected_outcome: |
+  No post copy is written. The answer is a brief for wugweb-work for each account (or one brief with two account rows), the client is not named without a permission status, the engagement claim is not used without a source, the date is shown as proposed, and each post needs its own yes.
