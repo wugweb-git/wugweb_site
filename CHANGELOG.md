@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy Notion page status (2026-11-17)
+- Skill page status now says v0.1.0 built, and the repo copy line names the skill folder. Backup in `backups/`.
+
 ### Added — wugweb-work skill 0.4.1 master copy in the repo (2026-11-17)
 - Docs and skill files only. `.claude/skills/wugweb-work/`: 50 files copied unchanged from the installed app copy (0.4.1), byte-identical (diff -r clean); checked first for secrets and personal data (none). SKILL.md body is 1,896 words by the shared count method (frontmatter dropped, fenced code removed, tokens with a letter or digit), inside 1,500 to 2,000. Not changed yet: standing-rules block, loop-pause placement, stale `ui-system-mapper` line.
 
