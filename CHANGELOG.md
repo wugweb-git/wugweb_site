@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-voice skill folder, draft 0.2.0 (2026-11-16)
+- `.claude/skills/wugweb-voice/` (51 files): `SKILL.md`, seven reference files, three plain Node scripts, four test cases and fixtures, and the single-file export `export/wugweb-voice.md` for GPT, Cursor and other tools. Built in the owner's development chat; committed on the owner's yes as the real copy of the skill. Structure and method only: no voice rule drawn from samples exists yet, because no writing samples have been supplied. The skill's own tests (`node scripts/test.mjs`) pass. No site code changed.
+
 ### Changed — wugweb-strategy plan: decision 23, the proof map wins (2026-11-16)
 - Docs only. `docs/skills/wugweb-strategy/PLAN.md` records the owner's answer to question 23: the proof map wins on which case study backs a page, and `wugweb-seo` picks the other link targets around it. Same line on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-decision-23-2026-11-16.json`.
 

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: voice-check-linkedin-draft
+expected_outcome: |
+  A voice check report on the draft. The 60% figure has no source, so the result is fail. The em dash and the US spelling are flagged with proposed wording as current to proposed. Candidate words are raised as questions, not as rules. NTUC is kept as written. Confidence is low and the report says the voice is not calibrated. Nothing is posted.

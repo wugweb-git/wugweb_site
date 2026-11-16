@@ -1,0 +1,500 @@
+<!-- wugweb-voice 0.2.0. Built by scripts/build.mjs. Do not edit; edit the source files. -->
+
+# wugweb-voice
+
+Wugweb and Vedanshu write in one voice, because Vedanshu is the author of Wugweb. This skill holds that voice and checks copy against it. Other skills ask for it; they never keep voice rules of their own.
+
+## Status: read this first
+
+Version 0.2.0 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
+
+- The fixed owner rules (below). They are confirmed and always on.
+- The voice check method, with its mechanical parts in `scripts/check.mjs`.
+- The calibration ledger in `references/corpus.md`, empty.
+- The mode list in `references/modes.md`, every mode waiting on samples.
+
+What does not work yet: writing or rewriting "in the voice" beyond the fixed rules. When asked to do that, apply the fixed rules, say plainly that the voice is not calibrated, and give confidence as low. Never fill the gap from helper skills, from the draft wugweb-work section 5 or from general good-writing advice. Those are candidates until the owner rules on them.
+
+## When to use
+
+- A draft of visible Wugweb copy needs a voice pass: a case study, a post, a page, a deck, an email, a caption, a button label.
+- Someone asks whether text sounds like Wugweb or like the owner.
+- A post is about to go out. "Voice checked against wugweb-voice" is the approval step before any post.
+- The owner supplies a writing sample, an edit he made to a draft, or a ruling on a candidate rule. Record it (see "Adding a sample").
+
+## When not to use
+
+| Matter | Owner |
+| --- | --- |
+| Structure, lengths, evidence rules, forms, SEO fields of a piece | `wugweb-work` |
+| Identity, positioning, values, audience, messaging, Visual OS | `wugweb-brand-os` |
+| Keywords, schema, on-page SEO, reporting | `wugweb-seo` |
+| Where wording sits in the interface | `wugweb-kits` |
+| Briefs: audience, purpose, form | `wugweb-strategy`, through `wugweb-work` |
+| Client voices, quotes and on-screen terms | Stay as the client wrote them |
+| Personality, beliefs, decision style, working preferences | Out of scope. Decline. |
+
+If asked "what kind of person writes this", describe the style only and say the skill does not profile people.
+
+## Fixed owner rules (confirmed, always on)
+
+These come from the owner's standing rules, not from samples. They apply to all visible copy.
+
+1. British English.
+2. Sentence case for headings, labels and buttons.
+3. No em or en dashes in visible copy. Write ranges out ("3 to 5").
+4. Never invent a number, quote or fact. A claim needs a screen, a sourced number or a named fact.
+5. No filler words. Which words count is waiting on his ruling; the candidate list is in `references/words.md`.
+
+Internal documents are not visible copy, but this skill's own files follow the same rules so the export stays clean.
+
+## Rule labels
+
+Every rule in `references/` carries one label:
+
+- **confirmed**: the owner said it or approved it, with the date.
+- **observed**: seen in his samples, with the sample IDs and a count. Needs at least three unedited samples in the mode, a feature that did not shift when the latest sample was added, and, for a word or phrase rule, more than one topic. Prefer rules on function words, punctuation and structure; never base a rule on sentence length alone, because it changes with topic.
+- **candidate**: found in a document or helper skill, not yet ruled on. Never applied as a rule. May be shown to the owner as a question.
+- **waiting on samples**: a slot that exists so the structure is complete, with nothing in it.
+
+Never state an observed or candidate rule as a confirmed preference. Never average two samples that disagree; ask which one is the target. Meeting the observed bar only earns the right to ask; the owner's yes is what confirms. Research finds no word count that makes a voice reliable, so treat counts as minimums and stability as the test (`references/blind-test.md` has the sources).
+
+## Modes
+
+There is one voice. Modes are settings of it, never a second voice. The modes are listed in `references/modes.md`: case study page, card and tile, deck slide, LinkedIn post, carousel, Behance and Dribbble captions, interface wording, quick chat and reply, email, formal document, spoken answer. Every mode is waiting on samples. Format rules for each form (sizes, counts, layout) live in `wugweb-work`.
+
+Pronouns: "we" for studio copy, "I" in bylined or first-person writing, one per piece. Whether that is a fixed rule or the owner's call per piece is open.
+
+## The voice check
+
+Run this on any draft before it is posted or published. The check proposes; it never publishes or edits the piece itself.
+
+1. **List the facts first.** Before any change, list every number, name, quote and scope word (all, every, only, never). `scripts/check.mjs` prints this list. Re-check the list after any rewrite. A voice rule never beats a fact.
+2. **Mechanical rules.** Dashes, US spellings, heading case and confirmed banned words. `scripts/check.mjs` flags these.
+3. **Trace.** Every number, quote and fact traces to a source the caller supplied. Anything untraced is flagged as "no source", not rewritten and not filled in.
+4. **Mode.** The piece matches its mode in `references/modes.md`. While a mode is waiting on samples, report "mode not calibrated" and skip this step.
+5. **Client words.** Client quotes and on-screen terms are unchanged.
+6. **Voice rules.** Apply confirmed and observed rules from `references/voice.md`. While there are none, report "voice not calibrated". Candidate rules may be listed as questions for the owner, never as flags.
+7. **Failure checks.** Once a mode has samples, compare the draft with them: a phrase used far more often than in his samples (overuse), a trait pushed further than he takes it (caricature), and sentence lengths or openings more uniform than his (flattening). If an AI judge is used, run it with the two texts in both orders and drop any verdict that flips; one judge never passes a draft alone.
+8. **Report.** Result: pass, needs revision, or fail. Each finding gives the quoted text, the rule it breaks with its label, and proposed wording shown as current → proposed. Say what the check could not observe.
+
+### Results and confidence
+
+- **pass**: no flags in steps 2, 3 and 5, and no rule broken in 6 or 7. A pass means "not detected", never "proven on voice": small checks catch clear misses but cannot prove a match. A fail is strong evidence and blocks.
+- **needs revision**: flags with proposed wording, nothing untraced.
+- **fail**: any untraced number, quote or fact, or any changed client word.
+
+Confidence is high, medium or low. Always give the evidence with it: samples in use, pooled words, how many are unedited, whether the features held steady when the last sample was added, and the latest blind test result with its number of items.
+
+- **low** when the mode has fewer than three unedited samples in use in `references/corpus.md`, or its features are still moving. That is every mode today. Short modes (chat, captions) may stay low; pool their samples rather than force rules.
+- **medium** when the mode has at least three unedited samples, its features held steady, and the rules applied are observed.
+- **high** only when, in addition, the rules applied are confirmed and a blind test (`references/blind-test.md`) did not detect the drafts at the stated number of items.
+
+Run the mechanical part with:
+
+```
+node scripts/check.mjs <file.md> [--mode <mode>] [--json]
+cat draft.txt | node scripts/check.mjs - --mode linkedin-post
+```
+
+It exits 0 when nothing is flagged and 1 when something is.
+
+## What a caller passes and gets back
+
+Passes: the text or brief, the form and mode, the audience and purpose if known, and the sources for any facts. Gets back: the text in voice (or the check report), the rules applied with their labels, the confidence with its reason, and every claim it could not support. Full contract: `references/handoff.md`.
+
+## Adding a sample
+
+Calibration uses only writing or speech the owner supplies or names. Never search email, Drive, Notion or meeting transcripts for samples unless he names the item.
+
+1. Add a row to `references/corpus.md` with every field, including word count, edit status (unedited, edited by others, AI-assisted) and where the original lives. Private text is not copied into the skill; a short excerpt only with his yes.
+2. Keep only his own lines. In an email thread or transcript, other people's words are personal data: leave them out before reading, and note in the row what was removed.
+3. Clean typos before reading the sample for voice. Typos are never copied as voice.
+4. Leave out boilerplate, AI-written text and outliers. Text edited by others or drafted with AI may be kept but never supports a rule on its own. Note why in the row.
+5. Read for vocabulary, phrasing, sentence length and cadence, formality, punctuation, openings and endings. Humour, idioms and spoken fillers only if they appear.
+6. Write any pattern as an observed rule in `references/voice.md` or `references/modes.md`, citing sample IDs and the count. Below the observed bar it stays a note. Record the rule ID in the sample's "Used in" column.
+7. Show the owner each new observed rule as a question. His yes makes it confirmed.
+8. Hold back some samples per mode as unseen text (suggested one in five; the owner sets the share): never used for rules or examples, kept for the blind test.
+9. Removing a sample: set its status to removed with the date, then rebuild and re-test every rule listed in its "Used in" column.
+
+His chat messages in working sessions are fast and full of typos; they are not samples. The working-style memory note (short, plain, result first) says how he wants replies to him; it is not a sample. The Notion profile pages are background only, pending his confirmation.
+
+## Order of work
+
+1. Owner supplies or names samples. Everything below waits on this.
+2. Candidate ledger: candidates from existing documents, each with source and date. Read-only.
+3. Conflict table: current → proposed; the owner rules on each.
+4. Fill `voice.md`, `modes.md` and `words.md` from his rulings and the corpus only.
+5. Sample round: five short pieces in different modes; he marks each.
+6. Evals and the blind test in `references/blind-test.md`.
+
+When a piece written with this skill is published, `wugweb-work` records who reviewed it and took editorial responsibility; the EU AI Act's disclosure duty for AI-generated text (Article 50(4)) exempts text a person has reviewed and taken editorial responsibility for. A lawyer should confirm how that applies to each piece.
+
+## Files
+
+| File | Holds |
+| --- | --- |
+| `references/voice.md` | Voice rules with labels; slots waiting on samples |
+| `references/modes.md` | One section per mode; all waiting on samples |
+| `references/words.md` | Confirmed and candidate word lists, spelling list, proper nouns |
+| `references/corpus.md` | The calibration ledger; empty |
+| `references/handoff.md` | The contract with other skills |
+| `references/blind-test.md` | How to run and score the blind test; evidence behind the thresholds |
+| `references/tooling.md` | The only file that names tools, vendors and helper skills |
+| `examples/` | Before and after pairs tied to corpus entries; empty until samples exist |
+| `evals/evals.json` | Per-task tests; some runnable now, the rest waiting on samples |
+| `scripts/check.mjs` | Mechanical voice check |
+| `scripts/build.mjs` | Builds `export/wugweb-voice.md` |
+| `scripts/test.mjs` | Tests the scripts and the skill's own files |
+| `export/wugweb-voice.md` | Single file for GPT, Cursor or any other tool |
+
+## Works outside Claude
+
+This file carries the fixed rules, the labels and the voice check, so it stands alone where reference files are not loaded. The reference files are plain Markdown. Scripts are plain Node with no packages. Helper skills are optional; every step can be done by hand from the Markdown. `node scripts/build.mjs` writes the single-file export, which leaves out the corpus ledger because it points at private writing.
+
+## Never
+
+- Guess personality, beliefs or decision style.
+- Copy typos.
+- Invent a number, quote or fact, or fill a missing one.
+- Rewrite client quotes or on-screen terms.
+- Change format, length, SEO or positioning rules.
+- Publish, post or write to Notion or Sanity.
+- Use a sample the owner has not supplied or named.
+- Turn a helper skill's advice into a rule without the owner's ruling.
+
+---
+
+<!-- references/voice.md -->
+
+# Voice rules
+
+Version 0.2.0. Status: waiting on samples. No observed rule exists yet.
+
+Each rule has this shape:
+
+| Field | Meaning |
+| --- | --- |
+| ID | V-01, V-02 and so on |
+| Rule | One sentence, testable |
+| Label | confirmed (date) / observed (sample IDs, count) / candidate (source) |
+| Do | An on-voice line. From a sample only; never invented |
+| Don't | An off-voice line, with the reason |
+| Modes | All, or the modes it applies to |
+
+## Confirmed
+
+From the owner's standing rules. These are not drawn from samples.
+
+| ID | Rule | Label | Modes |
+| --- | --- | --- | --- |
+| V-01 | British English | confirmed (owner standing rule) | All |
+| V-02 | Sentence case for headings, labels and buttons | confirmed (owner standing rule) | All |
+| V-03 | No em or en dashes; ranges written out | confirmed (owner standing rule) | All |
+| V-04 | Never invent a number, quote or fact | confirmed (owner standing rule) | All |
+| V-05 | No filler words (list waiting on his ruling, see `words.md`) | confirmed (owner standing rule) | All |
+| V-06 | One voice for Wugweb and the owner; modes are settings, not voices | confirmed (owner, 2026-11-16) | All |
+
+## Observed
+
+Waiting on samples. Slots to fill from the corpus:
+
+| Area | Status |
+| --- | --- |
+| Vocabulary and phrasing | Waiting on samples |
+| Sentence structure, length and cadence | Waiting on samples |
+| Formality and punctuation | Waiting on samples |
+| Openings and endings | Waiting on samples |
+| How hard things are said (a mistake, bad news, a no) | Waiting on samples |
+| Humour and idioms (only if present) | Waiting on samples |
+| Spoken fillers (only from transcripts) | Waiting on samples |
+
+## Candidates
+
+Not applied. Each waits on the owner's ruling, and is shown to him as current → proposed in the conflict table (order of work, step 3).
+
+| ID | Candidate | Source | Status |
+| --- | --- | --- | --- |
+| C-01 | The rules in the "Writing style and tone" table (say what was built, answer first, short whole sentences, plain words, active with a named doer, credit honestly) | `docs/skills/wugweb-work/PLAN.md` section 5 | Waiting on ruling |
+| C-02 | "Tone in one line: a senior practitioner explaining what was built and why, to a peer" | Same | Waiting on ruling |
+| C-03 | Copy and messaging lines in `brand_guidelines/` | `brand_guidelines/03_MARKETING_SYSTEM/14_COPY_GUIDELINES.md`, `02_MESSAGING_FRAMEWORK.md` | Not yet read in full |
+| C-04 | Sanity "Brand voice" draft | Sanity site settings | Not yet read in full; marks its own audience line as inferred |
+
+Helper skill advice is not listed here as rules. The plan's "Extracted and absorbed" table records what helpers offer; each item enters this table only when a sample or the owner backs it.
+
+---
+
+<!-- references/modes.md -->
+
+# Modes
+
+Version 0.2.0. One voice; each mode is a setting of it. Format rules (sizes, counts, layout) for each form live in `wugweb-work`. This file says only how each mode sounds.
+
+Every mode below is waiting on samples. The "draft text" lines come from the draft "Tone by form" in `docs/skills/wugweb-work/PLAN.md` section 5 and are candidates, not rules.
+
+Each mode section, once calibrated, holds:
+
+- Samples in use (corpus IDs) and the count. Fewer than three means confidence is low.
+- How it sounds: sentence length, formality, openings, endings, pronoun.
+- Observed rules specific to this mode, with labels.
+- One on-voice example from a real sample.
+
+| Key | Mode | Samples in use | Draft text (candidate) | Status |
+| --- | --- | --- | --- | --- |
+| `case-study` | Case study page | 0 | Full sentences, evidence in every chapter | Waiting on samples |
+| `card` | Card and tile | 0 | Client, one line of what was built, no adjectives | Waiting on samples |
+| `deck` | Deck slide | 0 | One claim per slide, the screen does the talking | Waiting on samples |
+| `linkedin-post` | LinkedIn post | 0 | First person plural, one lesson from the project, same facts as the page | Waiting on samples |
+| `carousel` | Carousel | 0 | None | Waiting on samples or a ruling |
+| `captions` | Behance and Dribbble captions | 0 | Captions only, flow by flow | Waiting on samples |
+| `interface` | Interface wording (buttons, labels, errors, hidden labels and headings) | 0 | None | Waiting on samples |
+| `chat` | Quick chat and reply | 0 | None | Waiting on samples |
+| `email` | Email | 0 | None | Waiting on samples |
+| `formal` | Formal document | 0 | None | Waiting on samples |
+| `spoken` | Spoken answer | 0 | None | Waiting on transcripts |
+| `translated` | Translated copy | 0 | None | Out of scope for now (owner, 2026-11-16); revisit when a translated piece is needed |
+
+## Pronouns
+
+"We" for studio copy, "I" in bylined or first-person writing, one per piece. The voice rules are the same for both. Fixed rule or his call per piece: open.
+
+## Interface wording: points held for the owner
+
+From the kits docs (`kits_design_system/docs/components.md`, `tokens/layout-shell.md`). Candidates until he rules:
+
+- Existing shipped button labels: "Start a project", "View all articles", "Chat with us", "Get the deck". Real copy, so usable as on-voice examples once he confirms them as his voice.
+- Hidden labels and hidden headings are written in the same voice as visible ones.
+- Link text says where the link goes.
+
+---
+
+<!-- references/words.md -->
+
+# Words
+
+Version 0.2.0. Lists that `scripts/check.mjs` reads are the fenced blocks below. Change a list here only; nothing else holds a copy.
+
+Labels: confirmed (owner said or approved, with date), observed (from samples, with IDs and count), candidate (found in a document, not ruled on). Only confirmed and observed entries are flagged by the check. Candidates are reported as questions.
+
+## Dashes (confirmed, owner standing rule)
+
+No em dash and no en dash in visible copy. Write ranges out: "3 to 5", not `3-5`. The check also flags a spaced hyphen used as a dash (`a - b`).
+
+## Spelling (confirmed: British English, owner standing rule)
+
+The pairs below are mechanical spelling, not voice. Format: `us = british`. Add pairs as they turn up.
+
+```spelling
+color = colour
+colors = colours
+colored = coloured
+favorite = favourite
+behavior = behaviour
+behaviors = behaviours
+organization = organisation
+organizations = organisations
+organize = organise
+organized = organised
+centralize = centralise
+centralized = centralised
+optimize = optimise
+optimized = optimised
+optimization = optimisation
+prioritize = prioritise
+prioritized = prioritised
+customize = customise
+customized = customised
+realize = realise
+recognize = recognise
+analyze = analyse
+analyzed = analysed
+utilize = use
+center = centre
+centers = centres
+program = programme
+programs = programmes
+catalog = catalogue
+dialog = dialogue
+license = licence
+defense = defence
+traveling = travelling
+modeling = modelling
+labeled = labelled
+canceled = cancelled
+gray = grey
+```
+
+Note: `program` stays as it is for software code. The check flags it; the reader decides.
+
+## Banned words (confirmed)
+
+Empty. "No filler words" is a confirmed owner rule, but he has not yet ruled on which words. Entries move here from the candidate list only with his yes.
+
+```banned-confirmed
+```
+
+## Banned words (candidate, waiting on the owner's ruling)
+
+Source: the draft "Writing style and tone" section of `docs/skills/wugweb-work/PLAN.md` (section 5), written from his decisions but not yet reviewed by him as his voice. Not flagged; reported as questions.
+
+```banned-candidate
+pivotal
+robust
+seamless
+meticulous
+holistic
+cutting-edge
+leverage
+empower
+unlock
+world-class
+sophisticated
+```
+
+## Preferred terms
+
+Waiting on samples.
+
+## Proper nouns and terms kept as written
+
+Used by the heading-case check so these are not flagged. Client terms are kept exactly as the client writes them.
+
+```proper-nouns
+Wugweb
+British
+English
+Vedanshu
+NTUC
+iCube
+LinkedIn
+Behance
+Dribbble
+Notion
+Sanity
+Cloudflare
+GPT
+Cursor
+Claude
+```
+
+---
+
+<!-- references/handoff.md -->
+
+# Handoff contract
+
+Version 0.2.0. Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
+
+## Links
+
+| Direction | Skill | What |
+| --- | --- | --- |
+| Gives to | `wugweb-work` | Voice rules, mode settings, text in voice, voice-check results with confidence |
+| Gives to | `wugweb-brand-os` | The voice rules it points to |
+| Takes from | `wugweb-brand-os` | Identity, positioning, audience |
+| Takes from | `wugweb-work` | Draft text with its form, mode, and the audience and purpose from the brief |
+
+No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`. If either of the last two needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The check happens in one place only.
+
+## Request
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| text or brief | Yes | The draft, or the brief to write from |
+| form | Yes | As named by `wugweb-work` |
+| mode | Yes | A key from `modes.md` |
+| audience, purpose | If known | From the `wugweb-strategy` brief, passed through `wugweb-work` |
+| sources | If the text has facts | For every number, quote and named fact |
+| client terms | If any | Quotes and on-screen terms to keep unchanged |
+
+## Response
+
+| Field | Notes |
+| --- | --- |
+| result | pass, needs revision, or fail |
+| text | The text in voice, or proposed wording as current → proposed |
+| rules applied | Each with its ID and label |
+| confidence | high, medium or low, with the reason |
+| untraced | Every number, quote or fact with no source |
+| not observed | What the check could not see |
+
+## Boundaries
+
+- The response is a proposal. `wugweb-work` decides what ships; the owner approves.
+- This skill never changes format, length, evidence, SEO or positioning rules.
+- Client quotes and on-screen terms are returned unchanged.
+- Helper skills return proposals only. Only a Wugweb skill writes anything, and only after the owner's approval.
+
+---
+
+<!-- references/blind-test.md -->
+
+# Blind test
+
+Version 0.2.0. How to test whether drafts written with this skill can be told apart from the owner's real writing. Status: waiting on samples; it needs held-back samples in a mode before it can run.
+
+The method comes from the research report "Voice calibration method" (2026-11-16, in this project). No source sets a pass mark or a confidence scale for a voice test, so every threshold below is a starting point for the owner to set.
+
+## What the evidence says
+
+| Finding | Why it shapes the test | Source |
+| --- | --- | --- |
+| Style signal appears at a few hundred words, but often settles only at 2,000 to 5,000, and some authors never settle | Counts are minimums; stability is the test | Eder 2010, 2017 |
+| Function words and punctuation hold across topics; vocabulary and character patterns partly measure topic; sentence length can reverse between topics | Prefer structure rules; treat word rules as topic-bound until seen across topics | Stamatatos 2017; survey arXiv 2310.00436 |
+| Training on one genre and testing on another gave 36%; training on five genres gave 75 to 82% | Calibrate per mode, and pool modes for cross-mode rules | Goldstein-Stewart et al. 2009 |
+| Real unseen text by the same author matched its own style model only 69 to 82% of the time | Score drafts against a ceiling (his unseen text), not against 100% | arXiv 2509.14543 |
+| Untrained human judges scored at chance; experts who knew the author picked the real text 51% of the time against 20% chance | People are weak judges; report results against chance | Clark et al. 2021; Schwitzgebel et al. |
+| A poetry study used 5 real and 5 generated items, the first outputs with no selection, and left out famous pieces | The item design below | Porter and Machery 2024 |
+| Starting a generated text with a real opening roughly doubled its "human" rating | Never copy his openings into drafts | arXiv 2509.14543 |
+| Swapping the order of two texts flipped an AI judge's verdict 88% of the time | Run AI judges in both orders; drop flipped verdicts | ExPerT, arXiv 2501.14956 |
+| Three kinds of judge barely agreed with each other | Never let one judge pass a draft | ICML 2026 |
+| Writers did not feel more ownership of text closer to their style | Record the owner's sign-off as a separate result | Draxler et al. |
+
+## Design
+
+1. **Items.** For a mode, take five held-back real pieces. For each, write a short content brief (what it says, not how) and generate one draft from that brief with the skill. That gives five real and five generated items on the same content and of similar length.
+2. **No picking.** Use the first draft generated for each brief. Leave out his best-known pieces.
+3. **No openers copied.** Never start a draft with his real opening line.
+4. **Blind and shuffled.** Remove labels, shuffle the order, and give each judge the same set.
+5. **Judges.** The owner, and one or two colleagues who know his writing. Show each judge two labelled real examples first. Ask for a reason with every guess.
+6. **Floor.** Add one piece on the same topic by another writer, if one is available, to check the judges can spot an outsider at all.
+
+## Scoring
+
+- Count correct guesses per judge. With 10 items, a judge needs 9 or 10 right to beat guessing at the usual 5% level (exact binomial, worked here, not from a source: 9 or more of 10 by guessing has about a 1.1% chance, 8 or more about 5.5%).
+- Report the result as "detected" or "not detected at 10 items". Never as "indistinguishable" or "passed": with this few items, a judge who can really spot drafts most of the time will often still score below the line.
+- Report agreement between judges when there are two or more. Krippendorff's alpha bands: 0.800 or more reliable, 0.667 to 0.800 tentative, below 0.667 discard.
+- Record the owner's own sign-off separately from the judges' score.
+- Keep every judge's reasons. A reason repeated by two judges ("too tidy", "he never opens like that") becomes a candidate rule for the owner to rule on.
+
+## When a mode is tested
+
+- After the first fill of that mode's rules (order of work, step 6).
+- After any change to a rule that applies to the mode.
+- After a sample cited by its rules is removed.
+
+## Not decided (owner)
+
+- The share of samples held back per mode (suggested one in five).
+- How many items a test uses.
+- What result moves a mode to high confidence.
+
+---
+
+<!-- examples/README.md -->
+
+# Examples
+
+Status: empty, waiting on samples.
+
+Each example is a before and after pair tied to a corpus entry:
+
+| Field | Meaning |
+| --- | --- |
+| Corpus ID | The sample the "after" comes from, or the owner edit (R-number) that made it |
+| Mode | A key from `references/modes.md` |
+| Before | The off-voice text |
+| After | The on-voice text, from the owner's own writing or his edit |
+| Rules | The rule IDs that explain each change |
+
+No example is invented. An "after" line must be a real sentence he wrote or approved.

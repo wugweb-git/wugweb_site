@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: sample-intake-email
+expected_outcome: |
+  Adds one ledger row with every field filled and status in use; keeps only the owner's lines, not Priya's; does not copy the private text into the skill without asking; cleans typos before reading; writes no observed rule from one sample; shows any noticed pattern to the owner as a question.

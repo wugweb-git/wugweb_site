@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: rewrite-in-my-voice-no-samples
+expected_outcome: |
+  Applies only the fixed rules, says plainly the voice is not calibrated and no samples are on file, gives low confidence, adds no invented facts, and asks for samples.

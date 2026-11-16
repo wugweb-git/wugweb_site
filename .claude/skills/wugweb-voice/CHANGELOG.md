@@ -1,0 +1,22 @@
+# Changelog
+
+## [0.2.0] 2026-11-16 (draft)
+
+Method only, from the research report "Voice calibration method". No voice rule added.
+
+- Observed bar: three unedited samples in the mode, stable features, more than one topic for word rules; never sentence length alone.
+- Confidence: evidence stated with the level; high needs confirmed rules and a blind test.
+- Voice check: new failure checks (overuse, caricature, flattening); AI judges run in both orders; a pass means "not detected".
+- Ledger: word count, edit status, others' words removed, held back, used in.
+- New `references/blind-test.md`.
+- Four test cases as folders under `evals/`.
+
+## [0.1.0] 2026-11-16 (draft, not installed)
+
+- Structure only, from the plan on the wugweb-voice Notion page and `docs/skills/wugweb-voice/PLAN.md`.
+- Fixed owner rules confirmed; every voice and mode rule waiting on samples.
+- Voice check method in `SKILL.md`; mechanical part in `scripts/check.mjs`.
+- Calibration ledger in `references/corpus.md`, empty.
+- Candidate words and rules listed, not applied.
+- Export build and tests.
+- Owner rulings recorded (R-002 to R-005): lives in repo and personal folder, eight helpers plus extras, working preferences stay in project instructions, translated copy out of scope for now.

@@ -1,0 +1,142 @@
+{
+  "skill": "wugweb-voice",
+  "version": "0.1.0",
+  "note": "Status 'runnable' means the test can run on 0.1.0. 'waiting on samples' means it needs the corpus. Fixtures in evals/fixtures are mechanical tests only; they are not examples of the voice.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "mechanical flags",
+      "status": "runnable",
+      "prompt": "Run the voice check on evals/fixtures/off-voice.md, mode case-study.",
+      "expected": [
+        "Flags every em dash, en dash and spaced hyphen used as a dash",
+        "Flags organize, customize, color and program with the British spelling",
+        "Flags the heading 'Our Design Philosophy' for sentence case",
+        "Lists 40%, 3, 5, the quote and 'every' as facts to trace; does not rewrite them",
+        "Reports 'robust' as a question for the owner, not a flag",
+        "Confidence low, because the mode has no samples",
+        "Says the voice is not calibrated"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "clean mechanics",
+      "status": "runnable",
+      "prompt": "Run the voice check on evals/fixtures/clean.md, mode case-study.",
+      "expected": [
+        "No flags in the mechanical part",
+        "Result says the mechanical part passed, not that the piece is on voice",
+        "Confidence low"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "no samples: refuse to invent the voice",
+      "status": "runnable",
+      "prompt": "Rewrite this paragraph so it sounds exactly like Vedanshu: 'We are thrilled to announce our new website.'",
+      "expected": [
+        "Applies only the fixed owner rules",
+        "Says plainly the voice is not calibrated and no samples are on file",
+        "Gives confidence low with the reason",
+        "Does not use helper-skill advice or the wugweb-work section 5 draft as rules",
+        "Asks for samples"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "no profiling",
+      "status": "runnable",
+      "prompt": "Based on how he writes, what kind of person is the owner? Is he confident or anxious?",
+      "expected": [
+        "Declines to describe personality, beliefs or emotional state",
+        "Offers to describe the writing style only"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "untraced number",
+      "status": "runnable",
+      "prompt": "Voice check this LinkedIn post: 'We cut onboarding time by 60% for NTUC.' No sources given.",
+      "expected": [
+        "Result fail: the 60% has no source",
+        "Flags it as untraced; does not rewrite or soften the number",
+        "Keeps NTUC as written"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "client words kept",
+      "status": "runnable",
+      "prompt": "Voice check: 'Members open the Programmes tab.' Client term: Programmes.",
+      "expected": [
+        "Leaves 'Programmes' unchanged, including its capital letter",
+        "No sentence case flag on the client term"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "near miss: format request",
+      "status": "runnable",
+      "prompt": "How long should the case study subtitle be?",
+      "expected": [
+        "Does not answer from this skill",
+        "Points to wugweb-work, which owns lengths"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "near miss: positioning",
+      "status": "runnable",
+      "prompt": "What is Wugweb's positioning line?",
+      "expected": ["Points to wugweb-brand-os"]
+    },
+    {
+      "id": 9,
+      "name": "sample intake",
+      "status": "runnable",
+      "prompt": "Here is an email I wrote last year: [text]. Use it for my voice.",
+      "expected": [
+        "Adds a row to references/corpus.md with all fields, status 'in use'",
+        "Does not copy the private text into the skill without his yes",
+        "Cleans typos before reading for voice",
+        "Notes patterns, but writes none as an observed rule below three occurrences",
+        "Shows any new observed rule to the owner as a question"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "samples that disagree",
+      "status": "waiting on samples",
+      "prompt": "Two supplied samples differ on sentence length for the same mode.",
+      "expected": ["Does not average them", "Asks which is the target"]
+    },
+    {
+      "id": 11,
+      "name": "write in a mode",
+      "status": "waiting on samples",
+      "prompt": "Write a LinkedIn post about a finished project, from a fact pack.",
+      "expected": ["Matches the linkedin-post shape in modes.md", "Every fact from the pack, none added"]
+    },
+    {
+      "id": 12,
+      "name": "clean a typo-heavy note",
+      "status": "waiting on samples",
+      "prompt": "Clean this note of mine: [typo-heavy text].",
+      "expected": ["Typos gone", "Wording and order kept"]
+    },
+    {
+      "id": 13,
+      "name": "blind comparison",
+      "status": "waiting on samples",
+      "prompt": "The owner sees real samples and skill outputs unlabelled and picks which are his.",
+      "expected": ["Pass mark set by the owner", "Each miss traced to the rule behind it"]
+    },
+    {
+      "id": 14,
+      "name": "export parity",
+      "status": "waiting on samples",
+      "prompt": "Run evals 1, 3 and 5 from export/wugweb-voice.md in a tool other than Claude.",
+      "expected": ["Same flags raised and same rules applied as the Claude run"]
+    }
+  ]
+}
