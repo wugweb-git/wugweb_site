@@ -4,8 +4,15 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-11-16: Open from the industries / blog / media session. All shipped work is on main and live on UAT. Waiting on the owner:**
+1. Blog covers: 92.5 MB across 103 files (48 PNGs over 1 MB). Smaller R2 copies need owner OK (no-uploads rule).
+2. 66 legacy industry records with no sector: merge or delete.
+3. Case-study Services: not synced from Notion to Sanity yet.
+4. Logo band: the 14 colour logos render smaller than the grey ones (padded 1500x876 canvas).
+5. `wip/embedded-studio`: merge to main waits for owner approval (other session).
+
 **2026-11-14: Case study rebuild and the `wugweb-work` skill. PLAN ONLY, waiting for the owner's vetting.**
-- One source of truth: the Notion page "wugweb-work skill: plan (final for vetting)" under Wugweb HQ / Wugweb Website (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
+- One source of truth: the Notion page "wugweb-work" (until 2026-11-16 titled "wugweb-work skill: plan (final for vetting)") under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
 - State: plan is final. Nothing is built: no skill files, no site code, no Sanity write, no case-study row changed in Notion.
 - Done, read-only: three research reports (`docs/research/case-study-system-2026-10-19/`), the NTUC U Care reference audit and the NTUC Body Content v2 proposal (both on the Notion page).
 - The 2026-10-19 bento layout on `/work/[slug]` (item 8 below) is being replaced under this plan. Do not rework that page outside the plan.
@@ -37,7 +44,7 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - Blog covers are 92.5 MB across 103 files (48 PNGs over 1 MB); /blog decodes slowly. Needs smaller R2 copies (owner decision: no new uploads).
 - Industry icons: 0 of 45 industries have an icon in Notion or Sanity (Notion Industry "Icon" is a URL field). Sectors: Notion and Sanity match on all 17 (icons, showcase ticks, order, lines) and all 45 industry links and card ticks.
 
-**2026-10-19: Industries page rebuilt as a static showcase (branch `feat/sector-showcase`, PR #2, not deployed).**
+**2026-10-19: Industries page rebuilt as a static showcase (PR #2, merged 252fa40c, live on UAT).**
 - `/footer/industries`: hero (owner H1 and lead, Lucide diagram of the 8 showcase sectors), 17 sector rows (`#<sector-slug>`, muted number, name, sector line, every industry as a plain label), cross-industry, "Don't see your industry?", final CTA. All sectors, lines, icons and industries come from Sanity; the page hardcodes none.
 - Removed: the 9 hardcoded groups, 34 buttons, alias map, `industryPreviews`, drawer, search, filters, case-study query and capability matrix. Cross-industry em-dash is now a comma.
 - SectorShowcase cards link to `/footer/industries#<sector-slug>`.
@@ -61,7 +68,7 @@ Done:
 Open: 404 page — pick `/404` or the alternative `/404-2`. `docs/r2-asset-map.json` predates the R2 reorganisation (three asset scripts still read it). Site Pages v2 is not shared with the `neon_sync` integration (Neon deferred), so it is updated through the Notion connector.
 
 **2026-10-14 — Open items from the blog/media/nav session (audited against live R2, Sanity and the site).**
-Resolved and verified: all 103 posts have a cover; 0 Framer URLs in Sanity and none in live `og:image`; 0 image assets missing alt; old Airtel logo keys and the 10 VSB banners are gone from R2; nav = 100px / 60px bar / 40px logo on every breakpoint (`layout-shell.md`).
+Resolved and verified: all 103 posts have a cover; 0 Framer URLs in Sanity and none in live `og:image`; 0 image assets missing alt; old Airtel logo keys and the 10 VSB banners are gone from R2; nav bar 68 / header 100 mobile, 108 tablet and desktop / 40px logo (`layout-shell.md`).
 Still open:
 1. ~~blog1/blog3~~ Done 2026-10-14: both deleted (crops of the 0072 / 0053 covers) with their 2 asset records.
 2. ~~Shared service clips (the 2 flagged groups)~~ Done 2026-10-14: new clips from unused R2 videos for strategy/ai-readiness-assessment (`unsorted/ggt3onRY2bwahSVu.mp4`), operations/product-optimization (`unsorted/3q0z9N9vBgdAAdWC.mp4`), operations/qa-and-test-automation (`unsorted/viTy_9OHBd_a1M55.mp4`), posters regenerated. **Done 2026-10-14: all 61 sub-services have their own clip** (17 more copied from unused R2 videos into their slot files, posters regenerated; 61 slots = 61 distinct clips, all service pages 200). The 20 duplicate source clips were deleted by the owner (`scripts/owner-delete-clip-originals.mjs`, ~110 MB, with their 20 asset records).
@@ -890,7 +897,7 @@ Framer exposes **Aria label**, **Tab index** and **Google bot** per element
     - Reduced motion needs no new guard — `global.css` already forces `transition-duration: 0.01ms !important` globally.
   - **Logo was undersized** — old site's wordmark is ~125 wide at 390px, ours was 94. Now 45px tall = **124 wide**. (Audit said 125 vs 82; it had drifted to 94 since.) Navbar height needs no change: both sites are 78px closed, as the audit also found.
   - **⚠️ Open — background is flat where the old site is layered.** User observation, confirmed by measurement. Old site uses **four** dark values across sections: `#050505` (body), `#000000` (4 sections, tallest 1864px), `#191919` (929px section), `#2B2B2B` (menu card). The new site has **no dark section backgrounds at all** — only `#F4F4F4` light blocks ×3 and the `#FFBE1A` CTA, everything else transparent over body `#050505`. All four values already exist as tokens (`--neutral-9`, `--neutral-10`, `--color-surface-elevated`, `--neutral-7`), so this is a question of which sections get which, not of new tokens. Needs a design pass deciding the rhythm; not actioned.
-  - **Site now scales proportionally above 1440px (2026-09-23, user-requested)** — previously the layout stayed pinned at a 1280px cap while the margins grew, so a 1920 or 2400 screen showed the same small page in more empty space. Converted the layout tokens from px to rem (`--s`/`--p`/`--gap` ramp, `--r-*` radii, `--space-section-*`, `--space-page-*`, `--nav-height`, and both container caps → `80rem` / `90rem`), then added one rule: `:root { font-size: clamp(16px, calc(100vw / 90), 24px) }`. Below 1440 it resolves to 16px and nothing changes; above it the root grows with the viewport and everything in rem follows. Capped at 24px (~2160px) so it stops before a 4K panel.
+  - **Superseded 2026-10-21: root fixed at 16px (4bbca720), nothing scales past max width.**   - **Site now scales proportionally above 1440px (2026-09-23, user-requested)** — previously the layout stayed pinned at a 1280px cap while the margins grew, so a 1920 or 2400 screen showed the same small page in more empty space. Converted the layout tokens from px to rem (`--s`/`--p`/`--gap` ramp, `--r-*` radii, `--space-section-*`, `--space-page-*`, `--nav-height`, and both container caps → `80rem` / `90rem`), then added one rule: `:root { font-size: clamp(16px, calc(100vw / 90), 24px) }`. Below 1440 it resolves to 16px and nothing changes; above it the root grows with the viewport and everything in rem follows. Capped at 24px (~2160px) so it stops before a 4K panel.
     - **Verified by ratio, which is the real test**: nav ÷ viewport is **0.889 at 1440 and 0.889 at 1920** — the same design scaled, not stretched. Root 16 → 21.33px, nav 1280 → 1707, nav height 78 → 104, h1 80 → 107px.
     - **Deliberately not scaled**: `--stroke-*` stays px so hairlines stay crisp rather than blurring to 1.33px; `--r-full` is a sentinel not a size; `@media` breakpoints stay px because they switch layout rather than size it.
     - One hard `max-width: 1280px` in `SiteHeader.astro` had to go too — it pinned the bar at 1280 while the content inside it scaled, which is the one thing that must not drift apart.

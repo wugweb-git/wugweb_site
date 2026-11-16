@@ -21,6 +21,63 @@ and this project adheres to Semantic Versioning.
 ### Added — wugweb-brand-os plan (2026-11-16)
 - Docs only. `docs/skills/wugweb-brand-os/PLAN.md` is the plan for the `wugweb-brand-os` skill in the Wugweb Skill System: skill card, scope, reference files, Visual OS, handoff contract, tests, 12 items waiting on the owner and source gaps. Plan ready for vetting; nothing is built.
 
+### Changed — wugweb-work plan complete: track 2 procedure, fit with the design system (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` gains the track 2 procedure (blog posts, service pages, site and landing copy: sources, eight steps, body standards, hard stops) and "Fits with the design system", which points to the kits docs for every layout number. Status is now "ready to take to the development chat". Gate widths in the folder tree lose 1023 and 1024 to match the three tiers. Matches the Notion page.
+- `backups/notion-wugweb-work-page-before-2026-11-16-e.md`: the Notion page as it was before this update.
+
+### Changed — wugweb-kits plan: binding layout-shell values, connection to three docs, enhancement to-do (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 18) puts the `layout-shell.md` values at the top of the enhancement spec as binding, each with its token; adds section 24 (how the skill points to `layout-shell.md`, `sizing.md` and `components.md`, and a check that fails on disagreement) and section 25 (the enhancement to-do checked against the docs, with clashes found in the docs). No skill file or doc changed.
+
+### Changed — wugweb-strategy plan: link-target split, refresh signals, editorial stance (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` records the proposed split on internal link targets with `wugweb-seo` (question 20), names the refresh signals it receives, adds one routed row and proposes an editorial stance sentence (question 21). Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-links-stance-2026-11-16.json`.
+
+### Changed — wugweb-work plan: routed rules from seo and strategy, two more forms, proposed made-file sizes (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md`: three absorbed rules routed by `wugweb-seo` (call to action by intent, distinct intent for competing pages, alt text length and caption agreement), the scheduler clash (per-batch approval and uploads), newsletter edition and advocacy copy as forms, proposed sizes for made files, two new owner questions. Matches the Notion page.
+- `backups/notion-wugweb-work-page-before-2026-11-16-d.md`: the Notion page as it was before this update.
+
+### Changed — wugweb-kits plan: items routed from wugweb-seo, share-tag finding (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 14) gains section 22: two new accessibility rules, and a recorded finding that `BaseLayout.astro` emits 9 of 12 share tags (`og:site_name`, `og:image:alt`, `twitter:image:alt` missing). No code changed.
+
+### Changed — wugweb-strategy plan: "Extracted and absorbed" from the installed skills (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` gains an "Extracted and absorbed" section (about 75 helper skills read; each marked absorb, optional helper or ignore, with clashes against the owner's rules), three brief fields (19 to 21) and questions 18 to 20; the brief finding is corrected. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-extracted-2026-11-16.json`.
+
+### Changed — wugweb-work plan: extracted and absorbed helper rules (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` gains "Extracted and absorbed": rules restated from the installed helper skills by mode, a decision for every skill read (absorb, optional helper, ignore), clashes with owner rules, a first draft of the track 2 structure and the gaps found. Also: where the skill is developed, the interface-copy link rule, "main file stands alone" under portability, and two new owner questions (made-file sizes, hero copy limit). Matches the Notion page.
+- `backups/notion-wugweb-work-page-before-2026-11-16-c.md`: the Notion page as it was before this update.
+
+### Changed — wugweb-kits plan: extracted and absorbed, enhancement inputs, made-file sizes (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 13) gains section 19, what is absorbed from about 50 installed skills and what is ignored; section 20, six defects confirmed in the renamed skill as inputs to the enhancement stage; section 21, proposed sizes for made files; and the session ids in the skill card. No skill file changed.
+
+### Added — wugweb-seo alignment plan (2026-11-16)
+- Docs only. `docs/skills/wugweb-seo/PLAN.md` mirrors the Notion page "wugweb-seo": three parts (plan, audit, report), links with sibling skills, changes to take into the skill session, "Extracted and absorbed" from the helper skills, portability, connectors and open questions. Plan stage; nothing built.
+- `backups/notion-wugweb-seo-page-before-2026-11-16.md` holds the Notion page text as it stood before the merge.
+
+### Changed — wugweb-work plan: links with sibling skills, works beyond Claude, page pointers (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` gains the fuller links table (wugweb-work is the hub for wording and voice checks) and a "Works beyond Claude" section, matching the Notion page.
+- `CLAUDE.md` and `AGENTS.md` call the plan page by its new title, "wugweb-work", under the Wugweb Skill Management System registry; the address is unchanged.
+- `backups/notion-wugweb-work-page-before-2026-11-16-b.md`: the Notion page as it was before this update.
+
+### Changed — wugweb-work plan: two tracks, split between skills, Forms module (2026-11-16)
+- Docs only. `docs/skills/wugweb-work/PLAN.md` re-exported after the Notion page update: new top section (where the skill stands in the six-skill Wugweb Skill System), two tracks against the nine modes, what stays and what moves to sibling skills, the Forms module, and superseded lines corrected (media rule, helpers, scope, `ui-system-mapper` inside `wugweb-kits`).
+- `pending.md` gives the plan page's new title ("wugweb-work") and location (Wugweb Skill Management System); the address is unchanged.
+- `backups/notion-wugweb-work-page-before-2026-11-16.md`: the Notion page as it was before the update.
+
+### Changed — wugweb-strategy plan: voice link and "Works beyond Claude" (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` states the link with `wugweb-voice` (none direct; through `wugweb-work`) and gains a portability section: plain Markdown, optional helpers, one wiring file, a single-file export and an export test. Same edits on the Notion skill page; replaced lines backed up in `backups/notion-wugweb-strategy-page-pre-portability-2026-11-16.json`.
+
+### Changed — wugweb-strategy plan moved onto its Notion skill page (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md` matches the Notion skill page: matrix row in the five-entry format, question 12 updated. Backup of the page's earlier text in `backups/notion-wugweb-strategy-page-pre-plan-2026-11-16.json`.
+
+### Added — wugweb-strategy skill plan, for vetting (2026-11-16)
+- Docs only. `docs/skills/wugweb-strategy/PLAN.md`: plan for the content-strategy skill (named `wugweb-content` until the owner's rename). Skill card, modes, brief format, boundary and handoff tables, tests, 17 open questions, source gaps. Nothing built.
+
+### Changed — wugweb-kits plan: links with the other skills, works beyond Claude (2026-11-16)
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` (revision 7) gains section 17, the final links with the other skills, and section 18, how the skill is used from GPT, Cursor or another tool and what works only in Claude today.
+
+### Added — wugweb-kits skill: renamed copy of ui-system-mapper, and its plan (2026-11-16)
+- `.claude/skills/wugweb-kits/` is `ui-system-mapper` under its new name (31 files, 21 rules). Only the name changed: `SKILL.md` name and title, `AGENTS.md` title, `README.md` title, tree and a rename note, and the title string in `scripts/build.mjs`. No rule or other script was changed; enhancements are not made.
+- Docs only. `docs/skills/wugweb-kits/PLAN.md` is the plan for the enhancements (revision 6), the same content as the Notion page "wugweb-kits".
+
 ### Changed — wugweb-work plan: final skill list, handoff contracts, per-task tests (2026-11-16)
 - Docs only. `docs/skills/wugweb-work/PLAN.md` gains the final skill list (nothing dropped), handoff contracts per helper skill, a per-task test table and the open CI question for the token check.
 

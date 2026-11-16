@@ -1,0 +1,384 @@
+# wugweb-seo: alignment plan
+
+> Mirror of the Notion page "wugweb-seo" (https://app.notion.com/p/41abb710b9ab818b8481d42beb053fef), which is the source. Part of the Wugweb Skill System. Plan stage only. Nothing goes to development until the owner says. Written 2026-11-16.
+
+## Skill card
+
+| Field | Value |
+| --- | --- |
+| Name | `wugweb-seo` |
+| Type | Claude skill, already installed as one skill |
+| Status | Version 2.1.0 built on the owner's instruction, 2026-11-16. Files in the Skills project under `skills/wugweb-seo/`. The installed copy changes only when the owner saves it. |
+| Alignment plan | Ready for the owner's vetting, 2026-11-16. Written by the wugweb-seo planning session. |
+| Installed copy | 2.1.0. `SKILL.md` on this machine last saved 16 Nov 21:42. The owner saves the real skill in session `cse_01UQ9TRqokKf1xMCS1JD3brM`, which the planning session cannot open. |
+| Planned in session | wugweb-seo |
+
+## What it owns
+
+Keywords and search intent, on-page rules (title, description, headings), schema, AI search readiness, technical checks and reporting, for the whole site. One skill with three parts inside:
+
+| Part | Does |
+| --- | --- |
+| Plan | For `wugweb-strategy`: site keyword and intent map, topic gaps, pages to refresh. For `wugweb-work`: keyword and intent notes, outline and constraints for one brief, and a platform keyword note for social and portfolio titles. Never writes copy. |
+| Audit | Checks the rendered page and returns a prioritised fix list. Changes nothing itself. |
+| Report | Rankings, traffic and AI answer visibility. Advisory. Feeds `wugweb-strategy`. |
+
+## What it does not own
+
+- Writing the copy.
+- Layout, tokens and code.
+- The publishing plan and reporting on posts (`wugweb-strategy`).
+
+## Rules already fixed
+
+- One slug per case study. No redirects for old or Framer addresses.
+- Title 51 characters or fewer in the source; the site adds " \| Wugweb" only when the title does not already name Wugweb and the total fits in 60. Description 140 to 160.
+- Structured data only on the main site address. Case studies: WebPage, CreativeWork, BreadcrumbList; Wugweb is creator and publisher; no author. Other page types: not decided.
+- Never FAQPage, HowTo or review stars. llms.txt is not a lever and is never recommended. The existing `public/llms.txt` and `ai-context.txt` are an open question.
+- Notion is the source for case-study SEO fields and for blog posts.
+
+## Helper skills
+
+Lead: `searchfit-seo:generate-schema`, `rampstack-seo:seo-onpage`, `rampstack-seo:seo-keyword`, `searchfit-seo:content-brief`. Second opinion: `schema-markup`, `seo-schema`, `on-page-seo`, `seo-geo`, `seo-aeo-geo`, `sanity:seo-aeo-best-practices`, `seo-check`, `seo-images`. After deploy: `aeotester:audit`, `aeo-brand-scan:scan`. Added in 2.0.0 as a plan second opinion: `searchfit-seo:create-topic`.
+
+For the platform keyword note: `social-media-skills:social-seo` (lead), `hashtag-strategy` (second opinion); no hashtag stuffing. No helper is named to lead the report part or the technical checks.
+
+Every helper is optional. See "Extracted and absorbed" for what the skill now carries itself.
+
+## Hands off to and from
+
+Every link reads the same on both sides. Neither side edits code.
+
+| With | Gives | Takes |
+| --- | --- | --- |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; search reports | Business goal, audience, page list |
+| `wugweb-work` | Keyword notes and budgets for one brief; platform keyword note; fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option | Topic, client, audience; approved body; rendered page URL; the wording, voice-checked |
+| `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
+| `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
+| `wugweb-voice` | No link | No link |
+
+## Waiting on the owner
+
+- [ ] Sign in to the SEO data connectors the report part needs, and name the standard tool for search data.
+- [ ] What the skill should cover for blogs and service pages. A proposal is under "Scope by page type".
+- [ ] Confirm the title rule's reach: the skill applies "51 characters or fewer" to case studies only and marks other page types not decided.
+- [ ] The title limit for blog posts and service pages.
+- [ ] Whether AI training bots may crawl, per property. Search and citation bots stay allowed.
+- [ ] Confirm the rule "headings are claims; never ask for a question heading" lives in `wugweb-voice` or `wugweb-work`. wugweb-seo only points to it. The wugweb-work plan says "question form where natural".
+- [ ] Save the 2.1.0 card so the installed skill matches these files.
+- [ ] Is "never FAQPage" site-wide? The `singletonPage` schema has a FAQPage option.
+- [ ] Does BlogPosting with a Person author stay as the blog rule? It is live today.
+- [ ] Should the en dashes in the six service titles be flagged under the no-dash rule?
+- [ ] Do client sites, Kits and Wugweb X keep generic rules, with wugweb.com rules in their own section?
+- [ ] One description for all three parts, or trigger phrases per part?
+- [ ] Which helper leads the report part and the technical checks?
+- [ ] A limit on tags per post, for the no-stuffing rule.
+- [ ] Take the "Changes to take into the skill session" below into session `cse_01UQ9TRqokKf1xMCS1JD3brM`, or reject them.
+
+## Plan
+
+Alignment plan, 2026-11-16. Built as version 2.1.0. The page as it stood before the 2.1.0 update is backed up in the Skills project at `claude/backups/notion-wugweb-seo-2026-11-16.md`. The page as it stood before this merge is backed up in the repo at `backups/notion-wugweb-seo-page-before-2026-11-16.md`.
+
+### What changed from the installed 1.0.0
+
+| Current (1.0.0) | Proposed and built (2.1.0) | Why |
+| --- | --- | --- |
+| Seven modes in one file | Three parts: plan, audit, report | This page fixes one skill with three parts |
+| FAQPage schema suggested for comparison pages | Never FAQPage, HowTo or review stars | Rule already fixed on this page |
+| llms.txt "optional, low priority" | No llms.txt | Rule already fixed on this page |
+| Title 50 to 60 characters, brand last | Case-study source title 51 characters or fewer; site adds " \| Wugweb" | Rule already fixed on this page |
+| H2 headings phrased as questions | Headings belong to the copy; the skill checks them, never rewrites | Wugweb headings are claims |
+| Organization, WebSite, BreadcrumbList sitewide | Organization, WebSite and founder stay sitewide (the layout emits them). Case studies add WebPage, CreativeWork, BreadcrumbList; creator and publisher, no author | Rule already fixed on this page; corrected 2026-11-16 against `BaseLayout.astro` |
+| Owner's standing rules copied into the skill | Points to the shared rules file | One home per rule |
+| Brief: constraints only | Brief: keyword and intent notes, an outline of topics, and constraints | This page asks for an outline |
+| No scripts, tests or references | Two check scripts, a self-test, a format validator, four references, six evals | House skill shape |
+| Claude only | Also runs in Cursor, Codex and a custom GPT | Owner asked for portability |
+
+### Added in the skill, not written on this page before
+
+These are now part of wugweb-seo. Each is an SEO matter, so this skill is its home.
+
+- Never set a keyword density target.
+- Never place search numbers on a case study as a client result.
+- Every phrase, volume and ranking carries its source and date, or is marked "unvalidated".
+- Third-party figures about AI answers are directional: give source and date, or leave them out. Where community advice contradicts the search engine's own guidance, follow the search engine.
+- When two pages would target one phrase, name both; the owner decides which keeps it.
+- Search and citation bots must reach every page that should be found. Training bots are the owner's choice.
+- Core Web Vitals limits from field data: LCP 2.5 seconds or less, INP 200 milliseconds or less, CLS 0.1 or less.
+- A citability score from 0 to 100 per page, naming the three weakest sections without rewriting them.
+- Fix lists split into content (to the maker, as current → proposed) and code (to a developer).
+
+### What the skill holds
+
+| Part | Output | Tool |
+| --- | --- | --- |
+| Plan | Primary and supporting phrases with sources, intent, outline of topics, title, description, schema and link limits | Reading and helper skills |
+| Audit | Scripted checks, manual checks, citability score, fix list | `check-page.mjs` (13 checks), `check-robots.mjs` (15 bots) |
+| Report | Period comparison, risers and fallers, quick wins, AI answer presence, cause of a drop | Search Console export or a connected data tool |
+
+### Checks run on 2.1.0
+
+- Format validator: 33 checks, 0 errors, 0 warnings. Body 1,566 words.
+- Self-test: 17 of 17 passed on a passing page, a failing page and a sample robots.txt.
+- Agent Skills validator: passed.
+- The six evals are written and have not been run.
+
+## Alignment with the Wugweb Skill System (2026-11-16, ready for vetting)
+
+Written by the wugweb-seo planning session. It read the installed 2.1.0 `SKILL.md` only; the references, scripts, `AGENTS.md` and adapters were not on this machine and were not read.
+
+### How the 1.0.0 modes map to the parts
+
+| Part | Modes |
+| --- | --- |
+| Plan | A keyword and intent map, B brief, E comparison pages |
+| Audit | C on-page, D technical and AI crawler, G citability |
+| Report | F measurement |
+
+### Taken over from the wugweb-work plan
+
+That plan keeps a pointer to this skill.
+
+| Item | Was in |
+| --- | --- |
+| JSON-LD v2 graph and its "never emit" list | "JSON-LD v2" |
+| Title, description and H1 rules | "Rules the references encode", SEO line |
+| The `wugweb-seo` and schema-helper rows | "Handoff contracts" |
+| The "SEO and schema" row | "Per-task tests" |
+
+### Site-wide: direct or advice only
+
+| Covers directly | Advises only |
+| --- | --- |
+| Keyword and intent map for the whole site | What to publish and when (`wugweb-strategy`) |
+| Technical checks: robots, sitemap, canonicals, indexability, server HTML, Core Web Vitals readings | Any code, schema or config fix |
+| On-page pass values | The wording of titles, descriptions and headings (`wugweb-work`) |
+| Schema rules per page type | Implementing the JSON-LD |
+| Citability scoring | Alt text and lazy loading (`wugweb-kits` confirms) |
+| Search reporting | Reporting on posts (`wugweb-strategy`) |
+
+### Scope by page type
+
+| Area | Plan | Audit | Report |
+| --- | --- | --- | --- |
+| Site-wide | Keyword map, one page per cluster | Technical and sitewide schema | Rankings, traffic, AI answer visibility |
+| Blog posts | Brief constraints, link targets, refresh candidates | On-page, BlogPosting, dates | Per-post trends |
+| Service pages | Keyword per pillar | On-page, schema, links to proof | Per-pillar trends |
+| Case studies | Keyword and intent notes | On-page, JSON-LD v2, citability | Traffic note after launch |
+
+### Platform keyword note
+
+Runs only when asked by `wugweb-work` or `wugweb-strategy`. Gives terms for the title, first line and tags on LinkedIn, Behance or Dribbble, each sourced or marked "unvalidated". Never writes the post. Tags label a post and are few and specific; the keyword in the body comes first.
+
+### Worked example: NTUC U Care
+
+| Check | Found | Result |
+| --- | --- | --- |
+| Title | 49 characters | Pass |
+| Description | 157 characters | Pass |
+| Canonical | Correct | Pass |
+| og:image | A dark device mockup | Flag |
+| JSON-LD on the main address | Not checked | Unvalidated |
+
+### Per-task tests
+
+| Task | Passes when |
+| --- | --- |
+| Keyword map | Every number has a tool and date, or says "unvalidated" |
+| Brief | No drafted copy; no FAQPage in the schema line |
+| On-page audit | Title 60 or fewer rendered, description 140 to 160, canonical self, one H1 |
+| Schema | WebPage, CreativeWork, BreadcrumbList on a case study; no author, FAQPage, HowTo or Review |
+| Technical | Only canonical 200 URLs in the sitemap; staging refused |
+| Report | Deltas only from real exports; gaps stated |
+| Portability | The same three tasks give the same pass or fail values from the single-file export |
+
+## Changes to take into the skill session
+
+The installed 2.1.0 `SKILL.md` differs from this plan in ten places. These are current → proposed text for the owner to take into session `cse_01UQ9TRqokKf1xMCS1JD3brM`. The installed copy has not been edited.
+
+| # | Section of `SKILL.md` | Current | Proposed |
+| --- | --- | --- | --- |
+| 1 | Boundary table | "Case studies and their other forms: `wugweb-work`" | "Making every piece (case studies, portfolio, blog posts, service pages, site copy, and their social and deck versions): `wugweb-work`" |
+| 2 | Boundary table | "Blog posts, service pages and site copy: `wugweb-content` (not decided)" | Row removed. New row: "What to publish, to whom and when; reporting on posts: `wugweb-strategy`" |
+| 3 | Boundary table | "Writing and editing the copy, headings included: `wugweb-voice`, and the maker skill that owns the page" | "Writing and editing the copy, headings included: `wugweb-work`. For any visible wording, such as a title option, ask `wugweb-work`; it runs the voice check. This skill has no link with `wugweb-voice`." |
+| 4 | Boundary table | No brand row | New row: "Brand name, descriptor and approved facts about Wugweb, for titles and organisation markup: read from `wugweb-brand-os`, never rewritten" |
+| 5 | Fixed rules, Title | "the site adds ' \| Wugweb'" | "the site adds ' \| Wugweb' only when the title does not already name Wugweb and the total fits in 60" |
+| 6 | Fixed rules, Schema | Case-study types only | Add: "The layout already emits Organization, WebSite and the founder on every page; leave them. Schema for other page types is not decided." |
+| 7 | Plan part, opening | "Answer one question: which phrase and intent should this page target?" | Add before it: "Two callers use this part. `wugweb-strategy` asks for the site keyword and intent map, topic gaps and pages to refresh. `wugweb-work` asks for one page, as below, or for a keyword note for a LinkedIn, Behance or Dribbble title and tags. Never write the post; no hashtag stuffing." |
+| 8 | Audit, step 5 | "Split it into content fixes and code fixes." | "Split it three ways. A finding on one page goes to `wugweb-work` as current → proposed. A finding that repeats on every page using a block (alt text, lazy loading, heading order, image sizes) goes to `wugweb-kits`, which answers with its check result. A code fix goes in the developer block below." |
+| 9 | Report part, opening | Starts at step 1 | Add: "The report feeds `wugweb-strategy`'s planning. Reporting on posts belongs there, not here." |
+| 10 | Leave to the owner | "What this skill covers for blog posts and service pages. Not decided." | "Whether `FAQPage` is banned site-wide (the site's page schema has that option). Schema for blog posts, service pages, home and about. What to do with the existing `llms.txt` file." |
+
+`references/handoffs.md` needs changes 1 to 4 and 7 to 9 as well. `AGENTS.md` and the adapters are generated, so `scripts/build.mjs` must run after the edits.
+
+## Extracted and absorbed
+
+The helper skills were read on 2026-11-16 (read only) so the skill can work without them. "Absorb" means the rule is restated in our own words inside the skill, with the source noted. Thresholds marked "source's figure" are that helper's claim, not a measured Wugweb number. Owner rules win in every clash. Nothing was installed, removed or edited.
+
+### Absorbed into the plan part
+
+| Rule, in our words | Source | Clash set aside |
+| --- | --- | --- |
+| Read intent from what ranks on page one, and note the dominant page type. Six or more of one type in the top ten sets the type; otherwise mark it mixed. A page whose type differs from the dominant one is a type mismatch | rampstack seo-keyword, seo-skills seo-content-brief, seo-sxo | Their heading outlines and FAQ blocks |
+| Two phrases share a page when their top-ten results overlap heavily: 7 to 10 shared is one page, 4 to 6 the same cluster, 2 to 3 interlink, 0 to 1 separate (source's figures) | seo-skills seo-keyword-cluster, rampstack seo-keyword | Drafted H1 and H2s |
+| Clean the phrase list first: lowercase, remove duplicates, merge singular and plural. Brand and comparison terms get their own clusters. Phrases that fit no cluster are listed separately. Each cluster names an existing page or says a new one is needed | searchfit keyword-clustering | Volume columns with no data source |
+| Score a cluster as opportunity plus fit minus difficulty, 1 to 5 each, only where real data exists. Log deferred clusters with the reason | rampstack seo-keyword | none |
+| Pick competitors by overlap: domains that recur in the top ten across priority phrases. A gap is a phrase where a competitor ranks in the top 20 and Wugweb does not rank. Note how many competitors rank; one alone may be noise. Drop competitor brand terms | rampstack seo-competitor, seo-skills seo-competitor-gap-analysis | llms.txt as a comparison row; review aggregates |
+| The brief states what the ranking pages cover and what this page adds that they lack. The link plan lists source page, anchor and target section. Unknown volume or difficulty is written "unknown" | searchfit content-brief, seo-skills seo-content-brief | Keyword density; heading outlines |
+| AI prompts usually show no search volume, so prompts are never ranked by volume | seo-skills ai-search-gaps-to-social-campaign | none |
+| For templated page sets (Kits, sectors): each page needs facts its siblings lack; sample pages and fail the set if they differ only by name | seo-skills seo-keyword-niche, rampstack programmatic-seo | FAQPage, aggregateRating, authorship on every page |
+| Platform keyword note: primary phrase early and natural, once or twice; one search intent per post; never state a volume without a tool. Tags are few and specific | social-media-skills social-seo, hashtag-strategy | none; both refuse stuffing |
+| For multi-language client sites only: keywords are researched per market, never translated | searchfit content-translation | Keyword density |
+
+### Absorbed into the audit part
+
+| Rule, in our words | Source | Clash set aside |
+| --- | --- | --- |
+| Title and description are unique across the site. The title is not word for word the H1. The description does not repeat the title | rampstack seo-onpage, brightdata seo-audit, wugweb-kits routing | Their 50 to 60 and 150 to 160 limits |
+| Compare raw HTML with the rendered page: title, H1, description, canonical and robots must match. Never report a tag as missing from a Markdown fetch; confirm in raw HTML or write "not checked" | seo-skills seo-technical-audit, seo-firecrawl | none |
+| Key facts are text in server HTML, not held in images, PDFs or iframes. A 200 page with almost no body text is a soft 404 | rampstack seo-aeo-geo, seo-skills seo-technical-audit, aeotester audit | llms.txt, FAQPage, question headings |
+| Check the `X-Robots-Tag` header as well as the meta tag. Flag a page that is both noindex and canonicalised elsewhere. An unknown URL returns 404 or 410, not 200. Staging hosts are noindexed | searchfit technical-seo, aeotester audit, rampstack seo-technical | Redirect advice |
+| Sitemap: four differences to report. Indexable pages missing from it; entries with no internal links; entries that are not 200; lastmod identical everywhere or stale. No noindexed URL in it. Canonical, sitemap and internal links agree | seo-skills seo-sitemap, rampstack seo-technical, sanity seo-aeo-best-practices | none |
+| Internal links: every target returns 200; fragment links point at an id that exists; case and trailing slash match the route. Flag dead-end pages, pages four or more clicks from home, generic anchors, and hubs their spokes do not link back to. A page reachable only through the sitemap is an orphan | searchfit broken-links, internal-linking, rampstack programmatic-seo | A 301 as the default fix: the link itself is fixed |
+| JSON-LD hygiene: parses; `@context` is exactly `https://schema.org`; absolute URLs; ISO 8601 dates; no empty values; breadcrumb items carry position, name and item; several types share one graph; present in server HTML; rechecked live after deploy | seo-skills seo-schema, searchfit schema-markup, sanity seo-aeo-best-practices | FAQPage, HowTo, Review, aggregateRating, Article author |
+| Share tags in server HTML: og title, type, description, url, site name, image, image alt; twitter card, title, description, image, image alt. og:url equals the canonical. Today the layout emits 9 of the 12; site name and the two image alt tags are missing | searchfit seo-audit, sanity seo-aeo-best-practices, aeotester audit, wugweb-kits routing | none |
+| Images: alt present, 10 to 125 characters, not a file name, not repeated; largest image not lazy and given high fetch priority; width and height set; below-fold images lazy. A fault on every page using a block goes to `wugweb-kits` | seo-skills seo-images | Its re-encoding advice (media rule) |
+| Citability blockers: no answer in the first 300 words; no visible date on time-sensitive content; the entity not named in full at first mention; a statistic without a primary source and data date. Visible dates match the schema dates. No date change without a real edit | seo-skills seo-content-audit, rampstack seo-aeo-geo, sanity seo-aeo-best-practices | Author byline, heading rules, word-count floors |
+| Cannibalisation: flag any phrase where two own pages rank or swap. Skip pages under three months old (source's figure). The owner decides which page keeps it | rampstack seo-content-audit, seo-skills seo-page | Merge and redirect actions |
+| One verdict per page: keep, refresh, or raise with the owner. Under five ranking queries, say the data is insufficient (source's figure) | seo-skills seo-page | Consolidate or kill by redirect |
+| Before and after a deploy, snapshot title, description, H1, canonical, robots, lang, JSON-LD types, word count and internal links. A change to canonical, robots, lang or H1 is red; to title, description or schema is amber | seo-skills seo-drift | none |
+| Rank each fix by how much traffic the page has, whether it touches indexing, crawling, rendering or vitals, and effort. Group issues with one template cause into one fix. Name the proof metric before the fix ships. Label a fix as mechanical or needing owner facts | rampstack seo-site-health-audit, aeotester fix | Its parking of title and description warnings |
+| Every finding carries its evidence. Unmeasured items are listed as out of scope with the tool that would measure them | brightdata seo-audit | Author byline flag |
+| Judge Core Web Vitals on field data at the 75th percentile, not lab runs. A declared canonical that differs from the one Google chose is critical | seo-skills seo-google | none |
+| For multi-language sites only: each page lists itself, alternates link back, one x-default, tags only on the canonical URL | seo-skills seo-hreflang, searchfit content-translation | none |
+
+Added 2026-11-16 from the sibling sessions' routing, each checked against the owner's rules:
+
+- Never optimise a page that is not indexable; report the indexing fault first (rampstack seo-content-audit, seo-onpage).
+- Image weight is reported as a fact and never fixed by re-encoding. The helper's budgets are thumbnail under 50 KB, content under 100 KB, hero under 200 KB (seo-skills seo-images; source's figures). Alt text that repeats a keyword is flagged.
+- Favicon, title, description and share image are present (website-design web-review; routed, not read here).
+- A page that already passes is a valid result (cloudflare web-perf). 2.1.0 already says so.
+- From the SEO pass in the copy helpers (rampstack content-and-copy, marketing content-creation): slug lowercase and hyphenated; excerpt and description match the piece; decorative images get empty alt. Set aside: their title 50 to 60, description 120 to 160 or under 160, keyword in headline and subheading, FAQ and HowTo schema.
+- Outside support for the schema ban: HowTo rich results are retired and FAQ results are restricted (seo-skills seo-schema, as routed by wugweb-work). The repo research file dates the end of FAQ results to 2026-05-07.
+
+### Absorbed into the report part
+
+| Rule, in our words | Source | Clash set aside |
+| --- | --- | --- |
+| Before any diagnosis, confirm the drop is real: Search Console clicks and analytics sessions move together. Restate the question with the metric, dates and figures | rampstack seo-traffic-diagnosis, analytics analytics-diagnostic-method | none |
+| Read the shape first: a one-step cliff points to a deploy, tracking or outage; a slow ramp to decay; a one-day spike to a bot or a viral moment. Every channel falling together points to measurement. Compare the same weekdays | analytics traffic-change-diagnosis | Its fix of adding redirects from old paths |
+| Split by country, device, section, and branded or not. Position steady with click rate down means a results feature took the click. If the total moved and no segment did, it is a mix change. End with one evidenced hypothesis; if two causes fit, report both and say what data would separate them | rampstack seo-traffic-diagnosis, analytics analytics-diagnostic-method, anomaly-detection-time-series | Any recovery forecast as a number |
+| Search Console data lags two to three days and covers about 16 months (source's claim). State sample size first. Call a trend only with enough points; a benchmark is never a target | seo-skills seo-google, analytics metric-context-and-benchmarks, marketing performance-report | Generic benchmark ranges |
+| Junk-traffic check for organic: pages per session near one, very short visits, very low engagement, off-market geography, spam referrers. Direct traffic absorbs branded search | analytics channel-and-funnel-quality | Its thresholds are the source's claims |
+| AI answer sample: fixed prompt types (best in category, brand against rival, alternatives, a how-to for the problem, a recommendation for a use case). Per engine record named, linked as a source, or absent, plus position, whether the description is accurate, and which competitors were named. Use fresh sessions. Zero stays zero. Report citation rate as cited over answers present | searchfit ai-visibility, seo-skills seo-ai-search-share-of-voice, seo-geo, social-media-skills ai-search-optimization, aeo-brand-scan | FAQ schema; scores with no rubric |
+| Report visits referred by AI assistants as their own line | sanity seo-aeo-best-practices, social-media-skills ai-search-optimization | none |
+| Numbers only from supplied exports with the source named; gaps flagged, never estimated. Lead with outcomes, include what underperformed, close with three ranked actions. Each recommendation cites its data point, impact and effort | social-media-skills analytics-and-reporting, marketing performance-report | none |
+
+### Kept as optional helpers
+
+They add tooling or data, or repeat what the skill already holds. No part depends on them.
+
+| Helper | Why optional |
+| --- | --- |
+| searchfit on-page-seo, seo-check, generate-schema, keyword-cluster; its seo-auditor and competitor-analyzer agents | Repeat held rules; scores have no rubric |
+| searchfit content-translation; seo-skills seo-hreflang, seo-local, seo-subdomain | Only for multi-language or local client sites |
+| seo-skills seo-plan, seo-backlinks-profile, seo-backlink-gap, seo-ai-social-report | Need SE Ranking data |
+| seo-skills seo-google | Needs Google credentials and local scripts; its rules are absorbed |
+| marketing seo-audit | Repeats held rules; adds "not updated in 12 months" as a flag |
+| aeotester audit and fix | Scripted run; its rubric rewards llms.txt, FAQPage and HowTo, and fix edits files |
+| aeo-brand-scan scan | Sends brand and competitor names to a third-party endpoint; needs the owner's yes before any run |
+| analytics anomaly-detection-time-series | Needs Python tooling |
+| brightdata seo-audit, search | Need a Bright Data account |
+| cloudflare web-perf | Needs Chrome DevTools; names the slow part of LCP |
+| social-media-skills youtube-publishing-and-metadata | Only if video is ever in scope |
+| data build-dashboard, create-viz, analyze, validate-data; dataviz | For charts and checks in the report part. Decided from their descriptions; not read |
+| tinyfish research and monitor | Signed out |
+
+### Ignored
+
+| Skill | Why |
+| --- | --- |
+| rampstack content-strategy; searchfit content-strategy, create-topic, content-strategist agent | Content planning: `wugweb-strategy` |
+| searchfit create-content, translate-content; seo-skills seo-competitor-pages, seo-agency-landing-page, site-audit-to-social-distribution | They write copy |
+| seo-skills seo-ads, seo-api, local-gmb-visibility, client-onboarding-proposal, seo-gaps-to-social-campaign | Paid search, integration guide, or social posting |
+| social-media-skills instagram-seo, pinterest-seo | Nothing new for the three named platforms |
+| analytics: the other eight skills | Experiments and event schema, not search |
+| web-quality-accessibility, web-design-guidelines, ux-ui-audit | For `wugweb-kits` |
+| hcti-open-graph-images | Paid rendering service that makes image files; conflicts with the media rule; not relied on |
+| wp-structured-data and every `wp-*` skill | Belongs to Animal Writes. Schema patterns are reference only; not read |
+
+### Clashes found, owner rules kept
+
+- FAQPage, HowTo, review stars or aggregate ratings are recommended by 14 of the helpers read.
+- llms.txt is scored or recommended by rampstack seo-aeo-geo, seo-technical, seo-competitor, seo-skills seo-geo and aeotester.
+- Title 50 to 60 and description 150 to 160 (or 120 to 160) appear in six helpers; the owner's limits stand.
+- Question headings and "keyword in the H1" appear in several; headings belong to the copy.
+- Author markup on every page appears in several; case studies carry no author.
+- FAQPage or HowTo is also recommended by seo-skills seo-sxo, rampstack seo-technical and searchfit technical-seo.
+- Scores from 0 to 100 with no rubric appear in several helpers. The skill's own citability score stays because it has five stated criteria.
+- Image re-encoding is advised by seo-skills seo-images; weights are reported only.
+- Redirects as a default fix appear in several; wugweb.com adds none for old addresses.
+
+### Passed to other skills
+
+Sent to the coordinating session as "FOR" lines: 12 for `wugweb-work`, 9 for `wugweb-strategy`, 6 for `wugweb-kits`, 3 for `wugweb-brand-os`, 2 for `wugweb-voice`.
+
+### What was not read
+
+- Read in part: six rampstack programmatic-seo references; seo-skills seo-google and seo-hreflang; the aeotester rubric and scripts; three analytics skills (outlines only); fifteen low-priority seo-skills skills (skimmed).
+- Not read: `wp-structured-data`, the `data` skills, `dataviz`, `hcti-open-graph-images`, `ux-ui-audit`.
+- Catalogue scan found three more worth one read for the LinkedIn keyword note: social-media-skills profile-optimization, linkedin-growth, linkedin-company-pages.
+- Not on disk, so not read: dataviz, artifact-design, simplify and the built-in code-review.
+- Not read: marketing competitive-brief (keyword gaps), a possible plan helper.
+- Do not run brightdata design-mirror: it scrapes other sites, restyles the codebase, and its scripts disable certificate checking. Reported by the wugweb-kits session; not checked here.
+
+## Works beyond Claude
+
+| Requirement | Plan |
+| --- | --- |
+| Rules any model can follow | The skill body and references are plain Markdown, with no Claude-only syntax. The body holds every core rule on its own; references add detail only, because other tools may not load them |
+| Helpers optional | Every helper skill, plugin and connector is optional. Each part has a by-hand route: read the page source, export from Search Console, sample prompts by hand. The absorbed rules above make this possible |
+| Scripts | Plain Node, no packages, no Claude tooling. The 2.1.0 `SKILL.md` says its scripts need Node 18 and no packages; the scripts themselves were not read |
+| Tool and vendor wiring | In one file only. Everything else names no vendor |
+| Single-file export | One Markdown file holding the body and references, to paste or attach in GPT, Cursor or another tool. 2.1.0 already generates `AGENTS.md` and adapters |
+| Test | The same three tasks (one brief, one page audit, one report) run from the export and from the installed skill; passes when the outputs match on every pass or fail value |
+
+Works only in Claude today:
+
+- The search-data connectors.
+- The helper skills from plugins.
+- Reading Notion and checking a page through the browser pane.
+
+Outside Claude those steps are done by hand or with that tool's own access.
+
+## Connectors for search data
+
+Listed from the tools attached to the planning session. None was run, so access is unvalidated.
+
+| Connector | What it could supply | State |
+| --- | --- | --- |
+| Ahrefs | Search Console keywords, pages and history; keyword volume and difficulty; rank tracking; site audit issues; backlinks; Brand Radar for AI answer mentions; web analytics | Attached; plan access not tested |
+| OpenSEO | Search Console performance; GA4 organic and landing-page reports; rank tracker; site audit; AI visibility tracker; keyword research | Attached; uses credits; not tested |
+| OpenRush | Search performance; website analytics; SERP and keyword facts; backlinks; AI visibility and citations | Attached; needs an owned-data connection for Search Console and analytics |
+| SE Ranking | Keyword, rank and audit data for the seo-skills helpers | Signed out; needs the owner's sign-in |
+| Similarweb | Competitor traffic | Signed out; optional |
+| Search Console and GA4 directly | The source data | No direct connection confirmed; the verification method is open in `pending.md` |
+
+Until one is confirmed, the report part returns "unvalidated" and ranks by intent and business fit.
+
+## Source gaps
+
+- The live case-study page still emits `author` and no WebPage node. That is a code item under the wugweb-work plan.
+- No schema rules exist for the blog index, service pages, home or about.
+- JSON-LD cannot be checked on staging; only through a local preview with the main site address.
+- The shared standing-rules file does not exist yet.
+- The Notion "Wugweb SEO" page (last updated 2026-10-14) still lists case-study schema as "Organization, Person, CreativeWork, BreadcrumbList".
+- The 2.1.0 references, scripts and evals were not read by the planning session.
+
+## Matrix row
+
+- **Owns:** Keywords and search intent; on-page rules for title, description and headings; schema and JSON-LD rules; technical SEO checks; AI search readiness; search reporting, for the whole site: case studies, blog posts, service pages.
+- **Reads (sources):** Rendered pages; BaseLayout and JsonLd output; robots.txt and sitemap.xml; Notion Case Studies, Blogs and Wugweb SEO pages; Search Console, GA4 and SEO tool exports; the shared standing rules file.
+- **Gives to:** `wugweb-strategy`: site keyword and intent map, topic gaps, refresh list, search reports. `wugweb-work`: keyword notes and budgets for one brief, platform keyword notes, fix list, JSON-LD check and citability score. `wugweb-kits`: findings that repeat across a block.
+- **Takes from:** `wugweb-strategy`: business goal, audience, page list. `wugweb-work`: topic, client, audience, approved body, rendered page URL, wording. `wugweb-kits`: its check result. `wugweb-brand-os`: approved name, descriptor and facts. Nothing from `wugweb-voice`.
+- **Never does:** Writes or changes copy, titles or headings. Writes to Notion, Sanity or R2. Edits code, robots or sitemap. Sets layout, tokens or the publishing plan. Adds FAQPage, HowTo, review stars or llms.txt. Invents a number.
