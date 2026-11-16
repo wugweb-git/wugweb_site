@@ -494,6 +494,33 @@ From the four Internal Link Juicer articles (anchor text, silos, link distributi
 
 These stay checks, not writes. Findings go to `wugweb-work` (anchor wording, placement) or a developer (`rel`, redirects). `wugweb-strategy` owns the cluster map; the skill checks the links against it.
 
+## Ingested: Rank Math PRO list, mapped to the skill (2026-11-17)
+
+The owner shared the full RankWeb history: the internal-link build and the 83 Rank Math PRO features (`rankmath.com/free-vs-pro`, read 14 Nov 2026). Read from an SEO point of view, most of that list is not new to wugweb-seo. This records where each item lands, so nothing is lost. The RankWeb page holds the 83-feature sort and the build prompts; this is the wugweb.com cross-section only.
+
+Already in the skill's three parts:
+
+- Report part already owns the "InsightWeb" group: rankings and position history, winners and losers, impressions with a low click rate as a quick win, AI-assistant referrals as their own line, and Core Web Vitals or PageSpeed readings (PRO 1, 8, 31 to 37, 53, 66, 68, 69).
+- Plan part already owns search intent and the rank-tracker data-source question (PRO 2, 3, 82); the connector list and source gaps hold the data-source decision.
+- Audit part already owns the link report, broken links and orphan pages, image alt, schema hygiene and the Rich Results Test, and the cloaked-prefix rule (PRO 6, 7, 65, 18, 39, 74).
+
+Net new for the audit part, proposed:
+
+| Check | What | PRO ref |
+| --- | --- | --- |
+| VideoObject present | a page that embeds a video carries `VideoObject` with name, thumbnail, upload date and duration. Conditional: the site has little video today | 25, 67 |
+| indexed status | read Search Console URL Inspection for a page and report indexed, excluded, or crawled and not indexed. Needs the Search Console connection | 9 |
+| utility pages noindex | a thank-you, preview or download page carries `noindex` and stays out of the sitemap | 71, and the ILJ "do not link" list |
+| any-URL audit | the audit already reads any HTML, so it runs on a competitor's address for a side-by-side; the plan part's competitor gap uses it | 80, 81 |
+
+Out of scope for wugweb-seo, on the RankWeb page already:
+
+- Schema builder and templates, raw JSON-LD field, automatic schema, import schema from a URL (PRO 10, 13, 38, 40 to 48, 73): the skill audits schema, it does not build it.
+- Redirect types, CSV, `.htaccess` sync, 404 monitor and export (PRO 50, 63, 70, 72): server and redirect plumbing; wugweb.com adds no redirects.
+- Bulk and quick edit, SEO CSV import and export, setup wizard, role manager, modules screen, Tools tab, watermark on share images, image find and replace (PRO 22, 54 to 57, 61 to 64, 75, 76, 83): CMS editing and plugin UI.
+- Site-type modules: News and Video sitemaps, Local SEO, WooCommerce, Podcast, EDD, bbPress, Elementor, Divi (PRO 16, 17, 19 to 21, 23, 49, 51, 58 to 60): only if a site needs them; the main site does not.
+- Client management and white label (PRO 12, 26, 30): agency features.
+
 ## Works beyond Claude
 
 | Requirement | Plan |
