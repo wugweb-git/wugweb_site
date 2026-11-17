@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-strategy FAQ review list and rules (2026-11-17)
+- `docs/skills/wugweb-strategy/FAQ-REVIEW.md`: the 47 typed service page questions with signal-log and answer-source columns. FAQ rules extended in the skill (version stays 0.1.2).
+
 - feat(skills): wugweb-brand-os check fails when the export or its standing rules copy drifts from docs/skills/STANDING-RULES.md.
 
 - fix(skills): wugweb-brand-os eval run fixes: AI subjects point to the Intelligence metaphor; crop definition marked approved with the four held guideline edits listed; eval 9 matches the yellow ruling; the export now carries the standing rules.

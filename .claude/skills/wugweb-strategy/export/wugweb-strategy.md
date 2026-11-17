@@ -415,6 +415,10 @@ The `faqs` field stays in the layout shell. This skill decides when a piece gets
 - **Who supplies the answers:** the owner's source (the Notion row or an owner-written answer). `wugweb-work` does not invent an answer; with no source the question is cut or marked "owner to answer".
 - **How many:** owner to set. Never padded to reach a number.
 - **Where it sits in the brief:** field 8 lists the approved questions under "Questions on the page", each marked with its signal-log source; field 11 names the answer source for each. A piece with no block says "no FAQ block" in field 8.
+- **Posts and the field:** a post gets a `faqs` field only when a post needs one. Adding the field is site work and needs the owner's go.
+- **Exempt:** `/kits` is design-system documentation, not Wugweb content, and is outside this rule.
+- **`/faq`:** the one dedicated FAQ page (owner, 2026-11-17). Its questions come from the signal log and its answers from the owner's source, under the same review as service pages.
+- **Existing copy:** the typed FAQ copy on the six service pages may stay live while it is reviewed (owner, 2026-11-17). Each question is kept, answered again or cut by the owner.
 - **Visibility:** every question and answer in the block appears on the page for the reader. `wugweb-seo` checks this.
 
 ## Acceptance (field 17)
