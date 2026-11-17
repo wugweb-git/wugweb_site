@@ -7,9 +7,15 @@ Source of the copy: `src/lib/services-data.ts`, read from main. Sanity `faqs` is
 How to read the tables. **Signal log:** no entry exists yet for any question, so every row reads "none recorded". **Answer source:** the copy is typed into the code, its origin is unknown, so every answer reads "owner to confirm". **Flag** marks a row that needs more than a yes, from the rules in `SKILL.md`: a number or promise with no source, a dash in visible text, or a claim about the work that needs a screen or a fact. For each question the owner chooses: keep, answer again, or cut.
 
 
+Note (2026-11-17, verified by `wugweb-seo` against Google's official changelog): FAQ rich results stopped appearing on 7 May 2026. The agreed FAQ line is editorial and does not change.
+
 ## Owner decisions (2026-11-17)
 
 Given in one pass: the unflagged questions are kept; the rows with a dash in the answer are kept with the dash removed (site fix, owner's go still needed); the rows with a number or claim needing a source are answered again from the owner's source, and stay live until then. Counts: 41 keep, 6 keep with dash removed, 10 answer again.
+
+## Where the /faq questions live (decided by strategy, owner said "let strategy decide", 2026-11-17)
+
+Option (a): the /faq questions stay typed in `src/pages/faq.astro`; only service page FAQs move to Sanity `faqs`. Reason: web engineering has just removed the field from the singleton page type, one page uses it, and ten of its rows still wait for sourced answers, so adding the field back now is work for copy that is not final. Revisit (b), the field for the /faq document only, once the answers are final and if the owner wants to edit /faq without a code change. The answers themselves still come from the owner's source and still go through this review.
 
 ## Strategy
 

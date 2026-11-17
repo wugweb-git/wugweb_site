@@ -68,7 +68,9 @@ These apply to wugweb.com, client sites, Kits and Wugweb X.
 ### On wugweb.com only
 
 - **One address per page.** One slug per case study. Add no redirects for old
-  or Framer addresses.
+  or Framer addresses. When `wugweb-strategy` retires a page, its address
+  returns 410 Gone, or 404, with no redirect, and leaves the sitemap; the slug
+  is not reused.
 - **Title.** For a case study, the source title is 51 characters or fewer. The
   site adds " | Wugweb" only when the title does not already name Wugweb and
   the total fits in 60. Blog and service pages use source 52 or fewer. The
@@ -112,8 +114,9 @@ outline. `wugweb-strategy` decides which pages a piece links to. This skill
 owns the link rules: one link up to the service pillar and two or three across
 to sibling pages, descriptive anchors, no orphans or dead ends, and depth from
 home. It audits the result.
-The outline lists the topics the page must cover, in order, with the fact from
-the source each one rests on. It names topics, not headings; the maker writes
+The outline lists the topics the page must cover, in order, each with the fact
+it rests on, or "to supply" where the source gives none; return the outline
+even when the inputs are thin. It names topics, not headings; the maker writes
 the headings. Do not add an FAQ
 block, keyword counts or sections written for search.
 

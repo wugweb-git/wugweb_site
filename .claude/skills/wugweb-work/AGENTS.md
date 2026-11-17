@@ -558,6 +558,7 @@ How findings are written, how claims are tied to evidence, and how numbers and o
 - Inventory first, judge second. Then give the piece one verdict: keep, update, merge or retire.
 - Sort findings into three groups: broken, weak, polish.
 - Every finding carries an exact location and either a measurement or the quoted line. A finding without one is marked "could not verify". Report what passes too.
+- Order of the audit: inventory, findings (broken, weak, polish), the verdict, then the owner questions last, as one numbered list.
 - If a source cannot be reached, say so. A guess is never presented as measured.
 - Do the step that was asked. Scope does not grow silently.
 - Diagnose in this order and fix the higher layer first: positioning, message order, wording.
@@ -689,7 +690,7 @@ The audit script carries this list. A banned word may stay only inside a client'
 | Alt text | 125 characters or fewer, saying what the screen shows and lets the user do |
 | SEO title | The limit is in `wugweb-seo` (see On-page SEO) |
 | Meta description | The length is in `wugweb-seo` (see On-page SEO) |
-| Quote | 3 lines or fewer, with name, role and organisation |
+| Quote | 3 lines or fewer, with name, role and organisation; the person's photo only when the owner supplies it |
 
 ### Before and after (NTUC)
 
@@ -839,6 +840,7 @@ Known gap: nothing here lists the objects in a media store folder. The audit scr
 - No poster file: use the best start frame from the visual read as `src="…mp4#t=<s>"` with `preload="metadata"`. No new file is made. This is unverified on iPhone Safari: test it before relying on it, and fall back to a plain surface until the video is near.
 - Audio is reported only. Nothing plays sound. When a long video carries speech, say so: muted, it may lose its meaning, and the owner decides whether it stays.
 - A loop is 15 seconds or less. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden. All loops stop under reduced motion and pause off screen (owner, 2026-11-17; the control is built by `wugweb-kits`).
+- A video in which someone speaks needs captions or a transcript from the owner's source before it is used; without one it is listed as an owner question, never captioned by guess.
 - A video on a third-party player shows a lightweight preview and loads the player on click.
 
 ### Alt text and captions
@@ -930,8 +932,8 @@ Stored per case study, keyed by URL and ETag so each file is read once.
 | `alt` | 125 characters or fewer |
 | `caption` | 25 words or fewer |
 | `chapterFit` | Which chapter it proves |
-| `principle` | Optional: a design principle the screen applies, with the decision (see `design-principles.md`) |
-| Videos add `demonstrates`, `loopable`, `posterAt`, `audio` | `audio` is reported only |
+| `principle` | A design principle the screen applies, with the decision (see `design-principles.md`). Optional per record, but each flow names at least one where a screen shows the decision |
+| Videos add `demonstrates`, `loopable`, `posterAt`, `audio` | On top of every field above, `what`, `kind`, `alt` and `caption` included. `audio` is reported only |
 
 ### 5. What each kind needs
 

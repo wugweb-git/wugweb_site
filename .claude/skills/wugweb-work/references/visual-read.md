@@ -65,8 +65,8 @@ Stored per case study, keyed by URL and ETag so each file is read once.
 | `alt` | 125 characters or fewer |
 | `caption` | 25 words or fewer |
 | `chapterFit` | Which chapter it proves |
-| `principle` | Optional: a design principle the screen applies, with the decision (see `design-principles.md`) |
-| Videos add `demonstrates`, `loopable`, `posterAt`, `audio` | `audio` is reported only |
+| `principle` | A design principle the screen applies, with the decision (see `design-principles.md`). Optional per record, but each flow names at least one where a screen shows the decision |
+| Videos add `demonstrates`, `loopable`, `posterAt`, `audio` | On top of every field above, `what`, `kind`, `alt` and `caption` included. `audio` is reported only |
 
 ## 5. What each kind needs
 

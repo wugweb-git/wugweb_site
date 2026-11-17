@@ -9,6 +9,17 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy FAQ review notes the rich-results end date (2026-11-17)
+- One-line note added to `FAQ-REVIEW.md`; the FAQ line is unchanged.
+
+### Changed — wugweb-strategy /faq questions stay in code (2026-11-17)
+- Strategy decided option (a) and recorded it in `FAQ-REVIEW.md`.
+### Changed — wugweb-work two rules from the research review (2026-11-17)
+- Speech video needs captions or transcript; quote photo only when the owner supplies it. Still 0.5.0.
+
+### Changed — wugweb-work live eval rerun graded, fixes (2026-11-17)
+- Evals 2, 3, 4, 5, 8 rerun on live sources: 26 of 31; run total 64 of 78. Audit order, design principle per flow, video record fields. Still 0.5.0.
+
 ### Changed — wugweb-strategy FAQ review decisions recorded (2026-11-17)
 - The owner decided all 57 typed FAQ questions in one pass; recorded in `FAQ-REVIEW.md`.
 

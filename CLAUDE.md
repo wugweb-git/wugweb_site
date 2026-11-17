@@ -27,7 +27,6 @@ Key dependencies (from `package.json`):
 - `@astrojs/cloudflare` ^12.0.0
 - `@astrojs/react` ^4.0.0
 - `react` / `react-dom` ^18.3.0
-- `motion` ^12.0.0
 - `@sanity/client` ^6.0.0
 - `@sanity/image-url` ^1.0.2
 - `@neondatabase/serverless` ^1.1.0

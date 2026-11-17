@@ -59,7 +59,7 @@ The audit script carries this list. A banned word may stay only inside a client'
 | Alt text | 125 characters or fewer, saying what the screen shows and lets the user do |
 | SEO title | The limit is in `wugweb-seo` (see On-page SEO) |
 | Meta description | The length is in `wugweb-seo` (see On-page SEO) |
-| Quote | 3 lines or fewer, with name, role and organisation |
+| Quote | 3 lines or fewer, with name, role and organisation; the person's photo only when the owner supplies it |
 
 ## Before and after (NTUC)
 

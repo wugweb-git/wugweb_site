@@ -96,7 +96,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const cacheKey = cacheable ? new Request(url.href, { method: 'GET' }) : null;
   if (cacheKey) {
     const hit = await edgeCache!.match(cacheKey).catch(() => undefined);
-    if (hit) return hit;
+    // A response from cache.match() has immutable headers, and the pipeline
+    // after middleware still writes to them (cookies, headers), which threw
+    // and turned every cache hit into an empty 500 (2026-11-17). Hand back a
+    // copy with mutable headers instead of the cached object itself.
+    if (hit) return new Response(hit.body, { status: hit.status, statusText: hit.statusText, headers: new Headers(hit.headers) });
   }
 
   const rules = redirectsApply ? await rulesFor(context, url) : null;
