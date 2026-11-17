@@ -6,7 +6,9 @@
 > - Owner rulings applied: loops are 15 seconds or less, a loop over 5 seconds gets a pause control and is not hidden from assistive tech, a loop of 5 seconds or less with no control stays hidden, all loops stop under reduced motion. Rail 85vw and never past the 1200 content max, peek 20 percent, signature width 2400 px, line length 35 to 60 characters. The five blocks are signed off. Card thumbnails are 16/10 on every card, original ratio kept, the frame is a mask. Deck and card type sizes use the existing graphic type tokens with a size container. Token check is report only first, blocking once the case-study components are clean; the CI wiring waits for the owner's go. Made-file sizes are adopted (og 1200 x 630, LinkedIn link image at least 1200 x 627, Behance cover at least 808 x 632, Dribbble 1600 wide, story 1080 x 1920 with the safe zone unverified).
 > - The faqs field stays in the layout shell doc; how it is used is decided by wugweb-strategy with wugweb-seo. The other four proposed fields are dropped on case studies.
 > - Design docs updated by the kits session: the sizing doc has the four sizes, the components doc marks the five blocks signed off.
-> - Open: old Framer media ratios; the four sizes have no token yet; the type sizes are not yet in the typography doc.
+> - Token names approved by the owner for the four sizes (kits commit 8e456fc0): `--rail-width: min(85vw, 1200px)`, `--rail-peek: 20%`, `--signature-width: 2400px`, `--measure-min: 35ch`, `--measure-max: 60ch`. They are recorded in the skill only; adding them to the site stylesheet is site code and waits for his go.
+> - The typography doc now has a "Graphic Type Scale" section for decks and cards.
+> - Open: old Framer media ratios. Held until the owner says go in the kits session: the CI wiring for the token check, the GSAP note, the new tokens in the site stylesheet.
 
 > Plan for vetting, revision 24, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
