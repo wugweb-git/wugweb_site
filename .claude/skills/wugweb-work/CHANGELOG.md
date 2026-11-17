@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.5.0, 2026-11-17
+## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
+
+- Open items reconciled: one count in `SKILL.md`, `README.md`, `metadata.json` and `references/open-items.md`. The `faqs` clash is settled as reported by `wugweb-kits` (layout shell commit 908ce91b): `faqs` kept, FAQPage only where every question and answer is visibly on the page; `seoCanonicalUrl`, `schemaType`, `aiSummary` and `keyTakeaways` dropped on case studies.
+- Owner answers: the plan is approved and Part 1 stays locked (Part 2 still needs his go); replies and outreach are out of the Forms module; LinkedIn tags are none. Four matters remain with the owner (NTUC facts, the remaining social questions, Medium, made-file sizes) and four are shared with `wugweb-kits`.
+- `README.md` version line corrected.
 
 Lock version for Part 1. Same content as 0.4.3; the number marks the stable baseline.
 

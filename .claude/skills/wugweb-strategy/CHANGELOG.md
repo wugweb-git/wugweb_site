@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2 (2026-11-17)
+
+Owner answers applied.
+
+- Brief field 9: pasted from `wugweb-seo` unchanged (option a).
+- `wugweb-voice` may read the signal log directly, read only.
+
 ## 0.1.1 (2026-11-17)
 
 Owner rulings applied. Brief field 9 unchanged, pending an owner call.

@@ -9,7 +9,7 @@ Optional helper skills per mode, and what each may not do. Every mode works with
 | `wugweb-work` | Takes briefs and plans; returns pieces, return notes, post results. Its Brief mode is for client work only (decision 4) |
 | `wugweb-seo` | Gives the site map, topic gaps, refresh list, link targets, link rules and audit, search reports, retired-URL behaviour. Takes goal, audience, page list, the pillar and cluster structure, the proof map, retire proposals |
 | `wugweb-brand-os` | Gives positioning, audiences, messaging, approved facts. Takes requests only |
-| `wugweb-voice` | No direct link. Reads the signal log |
+| `wugweb-voice` | Reads the signal log directly (owner decision 2026-11-17). Read only: it may not edit the log. No other link |
 | `wugweb-kits` | No link. Its pending blocks are a calendar dependency |
 
 ## Helpers per mode

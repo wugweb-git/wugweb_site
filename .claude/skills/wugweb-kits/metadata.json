@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "organization": "Wugweb",
   "date": "September 2026",
   "abstract": "Map a UI to its design system: trace every visual value from primitive token through semantic token to component, audit the codebase for hardcoded values, drift and duplication, and emit reusable component spec sheets. Framework-agnostic; the layer model holds for CSS custom properties, Tailwind theme config, Style Dictionary, iOS asset catalogs and Figma variables alike.",

@@ -1,6 +1,6 @@
 # Open with the owner
 
-Eight matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
+Four matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
 
 | Item | What is open | Working assumption until decided |
 |---|---|---|
@@ -8,15 +8,13 @@ Eight matters are not decided. The owner decides each one. Until then the skill 
 | Social, remaining | Who uploads to Behance and Dribbble; where made files are kept before posting; whether a Dribbble shot may sit a screen on a plain canvas; whether the scheduling tool is connected, and to which accounts | Behance and Dribbble output is an ordered list, not an upload. A Dribbble shot shows the screen alone at its own ratio. A post is handed over as an approved draft when no connected tool is confirmed |
 | Medium | Whether Medium is a form of its own, or the blog post reposted as is | The approved blog post, unchanged, with a link to the original. No Medium-only rewrite |
 | Made-file sizes | The sizes for a Behance cover, a Dribbble shot and a story canvas | The proposed figures in `forms.md` are shown as proposed. No file is made at these sizes without the owner's yes for that file |
-| LinkedIn tags | None, or a few specific tags (proposed by `wugweb-seo`) | None |
-| Plan vetting | The owner has not yet vetted and approved the plan as a whole | Nothing goes to development until he does |
-| Replies and outreach | Whether replies, comment routines and outreach pitches are part of the Forms module | Out. They are conversation, not production from an approved body, so the fact ledger and approval steps do not fit them as written |
 
 ## Also open, shared with `wugweb-kits`
 
 - Card thumbnails: the work card uses a 16:10 frame and the thumbnail videos are 4:3. Under the media rule a file is shown whole, so either the file sits inside the frame with space around it, or the card changes shape. Until decided: show the file whole at its own ratio.
 - Loop pause and hidden loops: loops are `aria-hidden` by rule, but a pause control must be reachable. Either a loop over 5 seconds is not hidden and carries the control, or loops stay at 5 seconds or less. `wugweb-kits` decides which; until then the gate lists any loop over 5 seconds as "open".
-- The `faqs` field clash between the CMS and the page, and the existing blocks awaiting sign-off: both are described in `layout-grammar.md` and are decided with `wugweb-kits`.
+- The four held numbers: the 85vw rail item width, the 20% peek, the 2400 px signature width and the 35 to 60 character line. They are proposals from this skill; `wugweb-kits` decides and the owner approves. Output that uses them is marked "open".
+- The existing blocks of the site awaiting the owner's sign-off; the bento layout on the case study page is the one this work replaces.
 - Old media ratios from the previous site are not mapped to sections. The manifest's shape field is the input for that mapping.
 
 ## Settled on 2026-11-16 (kept here so the old assumptions are not reused)
@@ -32,6 +30,20 @@ Eight matters are not decided. The owner decides each one. Until then the skill 
 | Timing and naming | A post waits until the page it links to is live. No client is named or tagged without permission on record | `forms/publish-approval.md` |
 | Newsletter | In scope. Sending needs the owner's yes | `forms/newsletter.md` |
 | Loop pause | A loop longer than 5 seconds gets a pause control (a `wugweb-kits` rule) | `media-standard.md`; `wugweb-kits` owns the layout side |
+
+## Settled on 2026-11-17
+
+| Matter | The owner's decision | Where the rule lives |
+|---|---|---|
+| CMS fields on case studies | `faqs` is kept, but feeds FAQPage only where every question and answer is visibly on the rendered page. `seoCanonicalUrl`, `schemaType`, `aiSummary` and `keyTakeaways` are dropped for case studies: canonicals come from the owner's source document with one slug, the schema type is fixed (CreativeWork for case studies, BlogPosting for posts), and the owner's Body Content is the single source. Posts and pages keep the canonical field | `kits_design_system/docs/tokens/layout-shell.md` (owned by `wugweb-kits`, which follows `wugweb-seo`); `schema-jsonld.md` is held for `wugweb-seo` |
+
+## Settled on 2026-11-17 (owner, answered in the wugweb-work session)
+
+| Matter | The owner's decision | Where the rule lives |
+|---|---|---|
+| Plan vetting | The plan is approved as it stands and Part 1 stays locked. Starting Part 2 (site code) still needs the owner's own go | the plan; `SKILL.md` |
+| Replies and outreach | Out of the Forms module. A reply or pitch asked for is drafted as a one-off, with no fact ledger | `forms.md` |
+| LinkedIn tags | None | `forms.md`, `forms/linkedin-post.md` |
 
 ## When an item is decided
 

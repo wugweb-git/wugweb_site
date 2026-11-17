@@ -2,7 +2,7 @@
 
 One of the six skills in the Wugweb Skill System. It answers "how is each piece
 made?" and produces every piece in two tracks, plus their other forms.
-Version 0.4.2. Part 1 only: the skill, its references, two read-only
+Version 0.5.0. Part 1 only: the skill, its references, two read-only
 working scripts and the evals. Site code is not part of it.
 
 The registry is the Notion page "Wugweb Skill Management System". If this
@@ -28,8 +28,9 @@ Tracks: (1) client work: case studies, portfolio, showcase; (2) Wugweb's own
 content: blog posts, service pages, site and landing copy. Track 2's body
 standards are a first draft for the owner's review.
 
-Six matters are open with the owner. They are listed, with the working
-assumption for each, in `references/open-items.md`.
+Four matters are open with the owner and four more are shared with
+`wugweb-kits`. They are listed, with the working assumption for each, in
+`references/open-items.md`.
 
 ## What it does not own
 

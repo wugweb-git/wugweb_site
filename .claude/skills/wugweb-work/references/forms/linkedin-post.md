@@ -13,7 +13,7 @@
 - Any number or quote that is not in the body.
 - Hashtag lists.
 - A second claim. One post, one idea.
-- Tags: none, while that question is open (see `open-items.md`).
+- Tags: none (owner decision, 2026-11-17).
 
 ## Steps
 

@@ -9,7 +9,7 @@ Recorded, not resolved unless marked. Source: plan sections 25 and 27, checked 2
 | Framer media aspect ratios are not mapped to sections | `layout-shell.md`, "Open" | Open |
 | Button focus: doc says `--focus-primary`, code uses `outline: 2px solid var(--neutral-3)` on `.btn:focus-visible` | `components.md` and `global.css` | Open, report only |
 | "The only max-width in the shell" wording may mislead | `layout-shell.md` | Fixed 2026-11-17 |
-| Five blocks awaiting sign-off | `components.md` | Drafts until signed off |
+| Five blocks awaiting sign-off | `components.md` | Signed off by the owner 2026-11-17; `components.md` still marks them awaiting, to be updated |
 | Last verified at 1440 | `layout-shell.md` | Fixed 2026-11-16, measured at 375, 768, 1200 |
 | Dashes for empty cells | `sizing.md` | Fixed 2026-11-16 |
 | No token shown for pillar thumb and bento min height | `sizing.md` | Fixed 2026-11-16 |

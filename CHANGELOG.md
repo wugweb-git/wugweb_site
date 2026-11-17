@@ -10,6 +10,8 @@ and this project adheres to Semantic Versioning.
 ## [Unreleased]
 
 - feat(skills): wugweb-brand-os applies the owner's answers of 2026-11-17 (questions 5 to 9, 12 to 18); dashboards ban now excepts software subjects; 4 questions remain open or partly answered.
+### Changed — wugweb-strategy skill 0.1.2 (2026-11-17)
+- Owner answers applied: brief field 9 pasted from wugweb-seo unchanged; wugweb-voice may read the signal log directly, read only. Exports rebuilt.
 
 - feat(skills): wugweb-brand-os merged: the branch first draft folded into main's app copy (main's text as base), one evals file (evals.json, 38 cases), one export, checks passed.
 
@@ -19,6 +21,8 @@ and this project adheres to Semantic Versioning.
 - `.claude/skills/wugweb-brand-os/`: `SKILL.md` (four modes, fixed brand rules), 10 brand reference files, 7 Visual OS files, test prompts, a plain Node script that builds `export/wugweb-brand-os.md` (one file for GPT, Cursor and other tools, with the standing rules copied in). Positioning, values, audience and most facts are marked not yet approved, waiting on the owner. No edits to `brand_guidelines/`.
 ### Changed — wugweb-strategy skill 0.1.1 (2026-11-17)
 - Owner rulings applied to the skill files: link targets come from wugweb-seo inside the structure strategy sets (decision 20), the proof map wins on which case study backs a page (decision 23), pointer to `docs/skills/STANDING-RULES.md`. Exports rebuilt. Brief field 9 unchanged.
+### Changed — wugweb-work skill 0.5 revised, open items reconciled, owner answers applied (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still version 0.5.0 at the owner's word. One count of open matters everywhere; faqs clash settled per layout shell commit 908ce91b; owner answers: plan approved (Part 2 still needs his go), replies and outreach out, LinkedIn tags none. validate 30 checks 0 errors, test passes, exports rebuilt.
 
 ### Added — wugweb-kits skill: Wugweb rule groups, references and scripts (2026-11-17)
 

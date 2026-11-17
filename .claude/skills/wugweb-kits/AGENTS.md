@@ -2,7 +2,7 @@
 
 # Wugweb Kits
 
-**Version 1.0.0** · Wugweb · September 2026
+**Version 2.0.0** · Wugweb · September 2026
 
 Map a UI to its design system: trace every visual value from primitive token through semantic token to component, audit the codebase for hardcoded values, drift and duplication, and emit reusable component spec sheets. Framework-agnostic; the layer model holds for CSS custom properties, Tailwind theme config, Style Dictionary, iOS asset catalogs and Figma variables alike.
 
@@ -83,7 +83,7 @@ A component reads layer 2 or 3, never a raw value and never layer 1. A block nev
 1. Inventory. Count raw colours, size literals and token use. Report the shape in one table before proposing anything. `node scripts/kits-inventory.mjs src/ --findings` runs it; it does not yet read `.astro` files.
 2. Map. Record each component's tokens consumed, used by and status. `system-map.json` is generated, committed at `kits_design_system/system-map.json`, never hand edited.
 3. Audit against the severity list: Blocker is hardcoded colour, z index, a retired shell value, or a section with no id or name. High is a layer skip, missing states, or block CSS outside its component. Medium is spacing literals and alias chains. Low is a one use component token. Report only; blocking merges and clean up passes wait for the owner.
-4. Spec. A single component uses the mapper sheet with the `components.md` fields added. A full block uses the block doc in `kits_design_system/docs/blocks/`. Five blocks await sign-off and are drafts until the owner signs each off. State measured contrast, not claims.
+4. Spec. A single component uses the mapper sheet with the `components.md` fields added. A full block uses the block doc in `kits_design_system/docs/blocks/`. The owner signed off the five blocks that were awaiting it (2026-11-17); `components.md` may still mark them as drafts, which is a doc to update, not a reason to treat them as drafts. State measured contrast, not claims.
 5. Keep it true. Compare doc and code and report drift.
 
 Findings are one line each: severity, file and line, what, fix. Give totals plainly. If the system is clean, say so and stop.
@@ -135,7 +135,7 @@ Kits group, source `components.md`:
 - `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
 - `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed.
 
-Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control, and all loops stop under reduced motion.
+Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control and is not hidden from assistive tech, and all loops stop under reduced motion. Confirmed sizes (owner, 2026-11-17, not yet in a doc): rail 85vw and never past 1200, peek 20%, signature width 2400px, line length 35 to 60 characters.
 
 ## Report shape
 
@@ -1659,7 +1659,7 @@ Source: components.md, bento.
 
 **Impact:** MEDIUM — specs scattered elsewhere go stale
 
-A section level block is specified once in kits_design_system/docs/blocks/ using the block doc template. Five blocks await sign-off and are drafts until the owner signs each off.
+A section level block is specified once in kits_design_system/docs/blocks/ using the block doc template. The owner signed off the five blocks that awaited sign-off on 2026-11-17.
 
 **Incorrect:**
 
@@ -1699,7 +1699,7 @@ Source: components.md, buttons.
 
 **Impact:** HIGH — two owners of one property cause jitter and fights
 
-Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control.
+Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control and is not hidden from assistive tech; a loop of 5 seconds or less with no control stays hidden. Owner confirmed 2026-11-17.
 
 **Incorrect:**
 

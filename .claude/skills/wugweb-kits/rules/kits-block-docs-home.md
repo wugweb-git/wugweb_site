@@ -7,7 +7,7 @@ tags: kits, docs
 
 ## Block Specs Live in docs/blocks
 
-A section level block is specified once in kits_design_system/docs/blocks/ using the block doc template. Five blocks await sign-off and are drafts until the owner signs each off.
+A section level block is specified once in kits_design_system/docs/blocks/ using the block doc template. The owner signed off the five blocks that awaited sign-off on 2026-11-17.
 
 **Incorrect:**
 
