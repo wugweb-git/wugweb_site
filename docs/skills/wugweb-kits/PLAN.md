@@ -20,7 +20,7 @@
 > - Later on 2026-11-17, on the owner's go: the stale Kits design docs were corrected (a7436497) and the five block docs are marked signed off; the skill is version 2.1.0 with 58 rules, body 1,982 words, validate clean, evals 17 of 17 (acf19e9e). New rules cover media literals, warm and cool panel order, headings never smaller than body, icons, poster-first media, widget guards, case media layout and the media viewer; the contrast rule now measures the composited overlay and sets 44 touch targets. New references hold the clip measurements, a chapter-nav block spec (not built) and the September UI spec's consolidation targets.
 > - Owner ruling: all six pillar colours stand (orange, magenta, teal, blue, green, purple) and the accent stays grey.
 > - Spotlight Panel clips measured: 35 of 61 run over 5 seconds and need a pause control; 12 run over 15 seconds and break the cap.
-> - Superseded late 2026-11-17: the owner said "Yes, all branches". Four site fixes are on main and live on staging, five more commits wait for his go to push, and every open item is in section 29.
+> - Superseded 2026-11-18: the owner said "Yes, all branches" and "Yes, push to main". All site fixes are on main (last 469c08f5); skill 2.1.1 with 59 rules; every open item is in section 29.
 
 > Plan for vetting, revision 24, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
@@ -881,20 +881,21 @@ The owner asked for every pending item from the kits session in one place, here 
 
 Checked on staging after the deploy: pages 200 on two requests, evals 17 of 17, validate 58 rules 0 errors, doc drift 0.
 
-**Built, tested, waiting for the owner's go to push to main** (stacked on main; build passes with real dependencies, `test:case` passes, local wrangler pages 200 twice, page check 0 findings; the push was refused by the permission check, so it needs his explicit yes)
+**Pushed to main on the owner's go, 2026-11-18** (rebased on main, `npm ci`, build passes, `test:case` 39 of 39, validate 59 rules 0 errors, drift 0, seven local pages 200 twice, page check 0 findings). Ids after the rebase:
 
 | Commit | What |
 |---|---|
-| bc106f6f | Spotlight follow-up: a662b18f only starts a clip when the panel reports on screen; where that report is wrong, clips never play. One line fix |
-| bea01d57 | Case-study tokens: 119 of the 186 findings applied with zero rendered change (698 declarations compared); section ids `b-s-N`, `b-screens`, `b-closing`; 600 to 640; the cover video waits on reduced motion |
-| c62cfd34 | Hero reveal groups (owner ruling: hero only, delays): h1 and eyebrow at 0.4s, the rest at 0.9s, measured in Chrome at about 0.38 and 0.84; the home headline blur tween removed |
-| 35b76095 | Skill 2.1.1: the motion rule defines the hero groups; the case-study eval now expects every section labelled (it fails until bea01d57 is live) |
-| 1b1fd7ee | Skill: `kits-logo-size-and-space`, logo values from the brand-os rulings (f66bb666) in `component-sizes.md` |
+| 30328a71 | Spotlight follow-up: a662b18f only starts a clip when the panel reports on screen; where that report is wrong, clips never play. One line fix |
+| 3458649d | Case-study tokens: 119 of the 186 findings applied with zero rendered change (698 declarations compared); section ids `b-s-N`, `b-screens`, `b-closing`; 600 to 640; the cover video waits on reduced motion |
+| 830a0e55 | Hero reveal groups (owner ruling: hero only, delays): h1 and eyebrow at 0.4s, the rest at 0.9s, measured in Chrome at about 0.38 and 0.84; the home headline blur tween removed |
+| 570ef6f9 | Skill 2.1.1: the motion rule defines the hero groups; the case-study eval now expects every section labelled (it fails until 3458649d is live) |
+| 340b96ea | Skill: `kits-logo-size-and-space`, logo values from the brand-os rulings (f66bb666) in `component-sizes.md` |
+| 469c08f5 | `public/brand/wugweb-mark.png` removed (owner, 2026-11-18) |
 
 **Waiting on the owner**
 
-1. Go to push the five commits above.
-2. Delete `public/brand/wugweb-mark.png` (nothing references it; brand-os reports it approved; the delete needs his yes in this session).
+1. Done 2026-11-18: the five commits are pushed.
+2. Done 2026-11-18: `wugweb-mark.png` removed (469c08f5).
 3. The 67 case-study lines with no token of the same role and value: translucent white fills and borders (`rgba(255,255,255, .02 to .1)`), letter spacing (-0.015em, 0.06em, 0.05em, -0.01em), small paddings (`10px 14px`, `2px 6px`, 0.625rem, 0.35rem), `scroll-margin-top 6rem`, `text-underline-offset 3px`, max widths 540, 140, 88, height 20, avatar 40, media heights (`max-height 720px`, `clamp(220px, 32vw, 380px)`, 240px, `min(62svh, 560px)`), grid minimums 140 and 160, hover lifts -3 and -5 (`--hover-card` is -4), the stat number and CTA clamps and the CTA radial gradient. Each needs a token chosen by role, or a new token.
 4. Logo clear space clash: the ruling is clear space equal to the mark height (40px at the 40px nav logo), but the nav bar gives 14px above and below. For brand-os and the owner; kits reports only.
 5. The 12 Spotlight clips over 15 seconds are capped in code; trimming the files in R2 stays his call.
@@ -922,6 +923,7 @@ Checked on staging after the deploy: pages 200 on two requests, evals 17 of 17, 
 - Nine plain token lists in `kits_design_system/docs/tokens/` are left as they are (owner).
 - Block docs for sector showcase, industries directory and blog post still say awaiting sign-off.
 - Storybook: no story for JsonLd and PostCard; four stories have no spec (CookieBannerShowcase, FaqAccordion, PortableTextRenderer, TeamGrid); the preview background matches no token; the Spotlight Dense story is still named "1024px+".
-- The skill zip needs rebuilding after the push (2.1.1 plus the logo rule).
+- Skill 2.1.1, 59 rules. Upload zip rebuilt after the push: `wugweb-kits.zip` in the kits worktree root (87 files).
+- From 2026-11-18 the coordinator split is lifted: the kits session keeps this plan and its Notion page itself and works directly with the owner.
 
 **Not verified in a browser:** reduced motion on every path, phone and touch, the Spotlight dense layout at 1200, a real clip over 15 seconds. The in-app browser pane draws no animation frames, so motion was measured in Chrome.
