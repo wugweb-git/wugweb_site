@@ -1,3 +1,12 @@
+> STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
+>
+> - Built. Version 0.1.2 on main, 40 files, last skill commit 33e60149.
+> - Skill file body: 1,673 words by the shared count. Single-file export is in the skill folder.
+> - Claude app and Cowork: not installed after the app reset on 2026-11-17. The strategy session built the upload zip; the owner uploads it.
+> - Owner rulings applied: decision 20 (link targets come from wugweb-seo inside the structure strategy sets), decision 23 (the proof map wins on which case study backs a page), brief field 9 option (a) (the brief carries wugweb-seo's keyword note unchanged), wugweb-voice may read the signal log directly, read only.
+> - FAQ block: the owner ruled that strategy decides its use with wugweb-seo. Strategy's position (service pages and blog posts only, only when the signal log holds real reader questions, owner approves the questions and sets the count, answers from the owner's source) is recorded and waits for wugweb-seo's reply.
+> - Open questions with the owner: none.
+
 # wugweb-strategy skill: plan (ready for vetting)
 
 > Plan only, 2026-11-16. Nothing is built: no skill files, no site code, no write to Sanity or R2, no change to any Notion database. Named `wugweb-content` until the owner renamed it on 2026-11-16. Registry: "Wugweb Skill Management System" in Notion (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298).

@@ -1,3 +1,12 @@
+> STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
+>
+> - Built. Version 0.3.0 on main (locked by the owner), 57 files, last skill commit 27e3874a. Version 0.2.1 (portability package) came before it.
+> - Skill file body: 2,000 words by the shared count, exactly the limit. Any edit that adds a word must cut one.
+> - Tests pass. Single-file export is in the skill folder.
+> - Claude app and Cowork: not installed after the app reset on 2026-11-17. The voice session built the upload zip; the owner uploads it.
+> - Owner rulings since the plan: wugweb-voice may read wugweb-strategy's signal log directly, read only (given in the strategy session; voice has asked for the owner's word in its own session and whether the version stays 0.3.0).
+> - Open with the owner: writing samples, the marked-copy question, the helper list, working preferences, translated copy, the we or I rule, the summary field.
+
 > PLAN READY FOR VETTING, 2026-11-16. Version 0.3.0 of the skill exists; see Status. The owner approved writing this plan to the skill's Notion page (https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e) and to this file; he has not yet approved its open choices. Items marked CONFIRM need his yes before they count as decided. The Notion page and this file carry the same plan text.
 
 # wugweb-voice skill: plan
