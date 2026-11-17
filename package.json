@@ -22,7 +22,7 @@
     "test:redirects": "node --test src/lib/redirects.test.ts",
     "test:integrations": "node --test src/lib/integrations.test.ts",
     "test:forms": "node --test src/lib/forms-subscribe.test.ts src/lib/forms-contact.test.ts",
-    "test:case": "node --test src/lib/case-body.test.ts",
+    "test:case": "node --test src/lib/case-body.test.ts scripts/lib/media-manifest.test.mjs",
     "test:bearer": "node --test src/lib/bearer.test.ts",
     "prebuild": "node scripts/check-sector-css.mjs && (npm run check:tokens || true)"
   },
