@@ -1,5 +1,5 @@
 {
-  "version": "2.5.1",
+  "version": "2.5.0",
   "organization": "Wugweb",
   "date": "November 2026",
   "abstract": "Plan, audit and report on how Wugweb pages are found in search engines and AI answers. Plan gives the site keyword and intent map, the phrase, intent, outline and brief limits for one page, and keyword notes for social and portfolio titles. Audit checks the rendered page and robots.txt and returns a fix list split three ways. Report reads Search Console and AI answer data and feeds the content plan. It never writes copy and changes nothing itself. Every helper is optional; the rules taken from them are restated in the references. Two check scripts with no dependencies. Independent of CMS, host and agent.",

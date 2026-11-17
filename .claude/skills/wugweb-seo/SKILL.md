@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Scripts need Node 18 or later, with no packages and no network. The report part needs a Search Console export or a connected SEO data tool. Without a shell, apply the checks by reading."
 metadata:
   author: wugweb
-  version: "2.5.1"
+  version: "2.5.0"
 ---
 
 # Wugweb SEO
