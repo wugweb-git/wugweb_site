@@ -9,7 +9,8 @@
 > - Standing rules: the skill carries a marked copy of the shared standing-rules file, built into its export, with a test that fails if the copy drifts from the home file (commit f405bec3). The home file wins. This replaces any older "keep the pointer" line below.
 > - FINAL REPORT, 2026-11-17: version 2.5.0, last skill commit f405bec3, body 1,868 words, validate 34 checks with 0 errors and 0 warnings, tests pass. Evals: 8 cases; the seo session marked all 8 as passing by its own reasoned assessment, not by a scored or independent run (three of them are backed by scripts the tests already exercise). A scored run needs an eval harness the skill does not ship.
 > - Parked by the seo session: the proposal to retire the redundant stored schemaType field.
-> - Standing with the owner: training bots per property; the search-data connector sign-in; uploading the 2.5.0 zip to the Claude app.
+> - Owner answers, 2026-11-17: training bots are allowed on wugweb.com (GPTBot, ClaudeBot, Google-Extended, CCBot and the like), and search and citation bots stay allowed; making robots.txt say so is a site item for web engineering. Search data comes from the Ahrefs and OpenSEO connectors already attached; no sign-in, and SE Ranking is not needed.
+> - Open with the owner: uploading the 2.5.0 zip to the Claude app. Nothing else is open on this skill.
 
 # wugweb-seo: alignment plan
 

@@ -65,7 +65,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **1. Audit.** Read the source, list the media folder and fetch the live page. Run `scripts/case-audit.mjs` on the body and `scripts/check-case-page.mjs` on the page. Give the piece one verdict: keep, update, merge or retire. Each finding carries a location and a measurement or a quoted line; otherwise mark it "could not verify". Rules are in `references/evidence.md`.
 
-**2. Brief.** For client work only; `wugweb-strategy` owns the brief for own content. Write a one-page brief from the audit and the owner's facts: the claim, the tension, the proof, the outcome, the audience and one search phrase from `wugweb-seo`. Use the template in `references/copy-and-seo.md`. Where a fact is missing, list the exact question.
+**2. Brief.** For client work only; `wugweb-strategy` owns the brief for own content. Write a one-page brief from the audit and the owner's facts, in the fields of the template (the claim order is owned by `wugweb-brand-os`, `.claude/skills/wugweb-brand-os/references/messaging.md`), with one search phrase from `wugweb-seo`. Use the template in `references/copy-and-seo.md`. Where a fact is missing, list the exact question.
 
 **3. Media.** Build the manifest: one record per file with its measured size, bytes, shape, type, own or borrowed folder, duplicate pointer and status. Follow `references/media-standard.md`. Count the files first and recount at the end. Change nothing.
 
@@ -75,7 +75,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **6. Layout.** Decide which block each content shape gets, then give `wugweb-kits` the content shape and chosen media; it returns the layout. Until it is installed, use the held rules in `references/layout-grammar.md`.
 
-**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. Held copies: `references/schema-jsonld.md` and the on-page part of `references/copy-and-seo.md`. Fill a field only from what the page shows.
+**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. Held copies: `references/schema-jsonld.md` and the on-page part of `references/copy-and-seo.md`. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
 
 **8. Ship.** Run the gate in `references/qa-checklist.md` on the rendered page at 375, 768 and 1200, then at 767, 769, 1199 and 1201. Cheap automated checks first, then the manual read. Token findings are reported, not blocking. Give a verdict: publish, publish with fixes, or no.
 
@@ -511,7 +511,7 @@ source (one Body Content document + one media folder) → parsed body → media 
 - **Layout values**: `kits_design_system/docs/tokens/layout-shell.md`, with `tokens/sizing.md` and `docs/components.md`, owned by `wugweb-kits`.
 - **Listing a media folder**: no read-only command was found that lists the objects in an R2 bucket; to be confirmed against the project's own `wrangler r2 --help`. Commands that write, delete or download are forbidden.
 - **CMS**: Sanity, document type `caseStudy`, field `bodyMarkdown`, synced from Notion. Public read: `https://splvhmk1.apicdn.sanity.io/v2024-01-01/data/query/production`.
-- **v1 duplicate copy**: older bodies hold a second, longer copy under the heading `## Sanity site copy`. The long copy wins; proposals collapse both into one.
+- **v1 duplicate copy**: older bodies hold a second, longer copy under the heading `## Sanity site copy` or `## Framer site copy` (both are read the same way). The long copy wins; proposals collapse both into one.
 - **Media**: Cloudflare R2, `assets/work/<slug>/`, public base `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/`.
 - **Site**: Astro on Cloudflare Pages, repo `wugweb-git/wugweb_site`. Push to `main` deploys. Preview host `wugweb.pages.dev`; canonical host `www.wugweb.com`.
 - **Page**: `src/pages/work/[slug].astro`; parser `src/lib/case-body.ts`; layout `src/lib/case-layout.ts`; components `src/components/work/Case*.astro`.
@@ -729,7 +729,7 @@ Archetype:
 Owner questions (exact, numbered; "unvalidated" is a complete answer):
 ```
 
-The page then follows the ski-ramp: answer first, then the problem, the insight, the system, and the outcome.
+The page answers first, then follows the claim order owned by `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/messaging.md`).
 
 ### On-page SEO
 
@@ -761,7 +761,7 @@ Owner, 2026-11-16. This is the one home of the media rule; every other file poin
 
 | Matter | Rule |
 |---|---|
-| Files | Media stays in the media store as the owner put it there. No uploads, no local copies, no cropped files, no re-encoding, no new poster files |
+| Files | Media stays in the media store as the owner put it there. No uploads, no local copies, no cropped files, no re-encoding, no new poster files. Where a brand rule says "crop", it means framing in a composition (`wugweb-brand-os`, `.claude/skills/wugweb-brand-os/references/vocabulary.md`) |
 | Size | Media may be shown at any size as long as the original aspect ratio is kept. No stretching, no squashing |
 | Masks | Clipping masks are allowed: rounded corners, a device shape, a reveal. The file is untouched |
 | Sound | None |
@@ -906,6 +906,7 @@ For each image, in this order:
 - Step `currentTime` by script and screenshot each step: every 1 second up to 15 seconds; every 5 seconds for longer videos, 24 frames or fewer; plus the first and last frame.
 - Record what it demonstrates, whether it loops cleanly, and the best poster second.
 - A low-resolution copy of another video is a duplicate of the larger file.
+- An animated GIF is read like a video: look at its frames (first, last and enough between to see what it demonstrates), not the first frame alone.
 
 ### 4. The read record
 
@@ -969,8 +970,8 @@ The two records below come from two different clients. The schema is the same fo
 ```
 
 ```json
-{ "url": "…/airtel-xsafe-3.png", "what": "Airtel Xsafe camera setup screen",
-  "kind": "mobile screen", "brand": { "which": "Airtel Xsafe" }, "quality": ["wrong client"],
+{ "url": "…/airtel-xsafe-3.png", "what": "IndusNinja presentation board of three phone screens; the file name says Airtel Xsafe, the screens do not",
+  "kind": "mobile screen", "brand": { "which": "IndusNinja" }, "quality": ["misnamed file", "near-duplicate"],
   "chapterFit": null }
 ```
 
@@ -1564,7 +1565,7 @@ Worked examples, made from a proposed body for shape only: `examples/forms-ntuc-
 ### Rules in every form
 
 - Platform sizes and limits are checked when the form is written, with the platform-specs helper in `skill-map.md` or the platform's own help page, and written down with the date. Never from memory.
-- Existing media is shown resized with its aspect ratio kept. Clipping masks are allowed. No cropped files, no re-encoding, no sound. Where a brand file says "decisive crop", the media rule in `media-standard.md` wins.
+- Existing media is shown resized with its aspect ratio kept. Clipping masks are allowed. No cropped files, no re-encoding, no sound. "Crop" means framing a subject in a composition, never cutting a media file (defined in `wugweb-brand-os`, `.claude/skills/wugweb-brand-os/references/vocabulary.md`).
 - The client's words appear only as a quote that is in the body.
 - British English, sentence case, no dashes, no hashtag lists (LinkedIn: tags none).
 - Every sentence in a form maps to a body line in the fact ledger.

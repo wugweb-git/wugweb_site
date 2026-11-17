@@ -279,9 +279,9 @@ screen, not under the cookie banner. (Rule; not re-measured in this pass.)
 
 ### Open
 
-- Framer's media aspect ratios — 1, 3.75, 2.857, 1.76, 1.75, 1.71, 1.206 —
-  are not yet mapped to sections; the site currently uses 16:9, 16:10, 4:3,
-  3:2, 3:4, 2:1, 1:1.
+- Nothing open. Closed 2026-11-17 (owner): the old Framer media ratios are not
+  mapped; Framer is deleted and the site's own ratios stand (16:9, 16:10, 4:3,
+  3:2, 3:4, 2:1, 1:1; card thumbnails 16/10).
 
 ### Not carried — superseded
 

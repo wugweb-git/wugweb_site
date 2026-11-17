@@ -8,7 +8,7 @@ Owner, 2026-11-16. This is the one home of the media rule; every other file poin
 
 | Matter | Rule |
 |---|---|
-| Files | Media stays in the media store as the owner put it there. No uploads, no local copies, no cropped files, no re-encoding, no new poster files |
+| Files | Media stays in the media store as the owner put it there. No uploads, no local copies, no cropped files, no re-encoding, no new poster files. Where a brand rule says "crop", it means framing in a composition (`wugweb-brand-os`, `.claude/skills/wugweb-brand-os/references/vocabulary.md`) |
 | Size | Media may be shown at any size as long as the original aspect ratio is kept. No stretching, no squashing |
 | Masks | Clipping masks are allowed: rounded corners, a device shape, a reveal. The file is untouched |
 | Sound | None |

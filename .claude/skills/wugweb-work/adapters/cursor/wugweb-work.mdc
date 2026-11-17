@@ -67,7 +67,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **1. Audit.** Read the source, list the media folder and fetch the live page. Run `scripts/case-audit.mjs` on the body and `scripts/check-case-page.mjs` on the page. Give the piece one verdict: keep, update, merge or retire. Each finding carries a location and a measurement or a quoted line; otherwise mark it "could not verify". Rules are in `references/evidence.md`.
 
-**2. Brief.** For client work only; `wugweb-strategy` owns the brief for own content. Write a one-page brief from the audit and the owner's facts: the claim, the tension, the proof, the outcome, the audience and one search phrase from `wugweb-seo`. Use the template in `references/copy-and-seo.md`. Where a fact is missing, list the exact question.
+**2. Brief.** For client work only; `wugweb-strategy` owns the brief for own content. Write a one-page brief from the audit and the owner's facts, in the fields of the template (the claim order is owned by `wugweb-brand-os`, `.claude/skills/wugweb-brand-os/references/messaging.md`), with one search phrase from `wugweb-seo`. Use the template in `references/copy-and-seo.md`. Where a fact is missing, list the exact question.
 
 **3. Media.** Build the manifest: one record per file with its measured size, bytes, shape, type, own or borrowed folder, duplicate pointer and status. Follow `references/media-standard.md`. Count the files first and recount at the end. Change nothing.
 
@@ -77,7 +77,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **6. Layout.** Decide which block each content shape gets, then give `wugweb-kits` the content shape and chosen media; it returns the layout. Until it is installed, use the held rules in `references/layout-grammar.md`.
 
-**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. Held copies: `references/schema-jsonld.md` and the on-page part of `references/copy-and-seo.md`. Fill a field only from what the page shows.
+**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. Held copies: `references/schema-jsonld.md` and the on-page part of `references/copy-and-seo.md`. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
 
 **8. Ship.** Run the gate in `references/qa-checklist.md` on the rendered page at 375, 768 and 1200, then at 767, 769, 1199 and 1201. Cheap automated checks first, then the manual read. Token findings are reported, not blocking. Give a verdict: publish, publish with fixes, or no.
 

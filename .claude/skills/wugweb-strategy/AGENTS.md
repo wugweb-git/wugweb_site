@@ -112,7 +112,7 @@ Read these before any mode. They come from the owner and win over any helper. Th
 1. **Never invent.** No number, quote, date, topic, audience or result that is not in a source. A claim needs a screen, a sourced number or a named fact. Mark anything else "unvalidated" or "owner to set".
 2. **No write without approval.** Never write to Notion, Sanity or R2 without the owner's yes to that exact change, with a backup first. Show every change as current → proposed. Delete nothing.
 3. **Plan, don't make.** Output plans, briefs, verdicts and proposals. Drafting belongs to `wugweb-work`.
-4. **Starting numbers are blank.** Cadence, promotional and reactive shares, backlog size and refresh thresholds stay "owner to set" until a baseline exists (decisions 8 and 18). Pillars are the six services (decision 2).
+4. **Starting numbers are blank.** Cadence, promotional and reactive shares, backlog size and refresh thresholds stay "owner to set" until a baseline exists (decisions 8 and 18). Pillars are the six services (decision 2); `wugweb-brand-os` is their home.
 5. **Client permission first.** No piece, co-post or tag names a client without a recorded permission status. A public tag is not permission.
 6. **One yes per post.** Each post is approved by the owner on its own. A batch is never approved as a whole.
 7. **Style of every output.** British English, sentence case, no em or en dashes in visible text, short plain sentences, result first.
@@ -268,7 +268,7 @@ Unsourced claims about what an audience wants are marked "assumed" until a signa
 
 ## 3. Pillars and mix
 
-The pillars are the six Wugweb services (decision 2). Their names are taken from the Sanity `service` documents, exactly as published.
+The pillars are the six Wugweb services (decision 2). `wugweb-brand-os` is their home; this skill uses them and does not redefine them. Names are taken from the Sanity `service` documents, exactly as published.
 
 - A pillar is a theme, not a format or an intent. "How-to" and "case study" are formats; "launch" is a campaign.
 - Test each pillar: ten useful ideas should come easily. If they do not, flag the pillar for the owner.
@@ -417,6 +417,11 @@ When a cadence is set:
 - One or two named series at most; a series is a commitment, so plan only what can be kept up.
 - Where two accounts share an audience, change the angle, not just the wording.
 
+### Slot rows and Medium rows
+
+- When no sourced topic exists yet, a row is still complete: it carries a proposed pillar (spread across the six, the mix being the owner's to set), a proposed intent, the account, a proposed date with timezone and a status, and its topic reads "slot" or "owner idea". The pillar and intent are proposals, never decisions.
+- A Medium row is always a copy of a site post, with its canonical pointing to that post. Plan the site post first and name it in the Medium row. A Medium row with no site post is not a row.
+
 ### Dependencies
 
 A post waits while a page it links to is not live (decision 14). Pages waiting on these blocks are not final: Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). Re-check this list in `wugweb-kits` before each plan.
@@ -447,7 +452,7 @@ One brief per piece, one page long, handed to `wugweb-work`. It says what the pi
 | 1 | Brief ID, piece type, forms wanted | ID from the plan row. Type: post, service page, site copy, social post, newsletter issue, case study slot. Forms: other versions wanted later |
 | 2 | Why now | The goal it serves, the campaign label if any, the target date with timezone |
 | 3 | Audience and their tension | One audience, named exactly as in `wugweb-brand-os`. The tension: what they are stuck on, from the signal log or marked "assumed" |
-| 4 | The one claim | One sentence. If it needs two, it is two pieces |
+| 4 | The one claim | One sentence. If it needs two, it is two pieces. The claim order for a piece is `wugweb-brand-os`'s; the brief carries one claim and does not restate that order |
 | 5 | Proof | Case study IDs from the proof map, and facts each with its source. "Unvalidated" is allowed and must be marked |
 | 6 | Outcome | One action wanted from the reader |
 | 7 | Piece structure | A pointer to one structure in `piece-structures.md` |
@@ -704,10 +709,10 @@ A case study may back a piece only when all of these hold:
 1. It is published and indexed on the site.
 2. It has a body, not a stub.
 3. The claim it is used for matches its approved body.
-4. Any metric quoted is in its source, exactly.
+4. Any metric quoted is in its source, exactly, with its date or window, and it reads the same everywhere it appears.
 5. Its permission status allows the use: naming, tagging or showing on a given account.
 
-A text-only case study may back a claim about process, not about visual result. A hidden stub backs nothing.
+A text-only case study may back a claim about process, not about visual result. A hidden stub backs nothing. Check each page for at least one case study with a full body; a page backed only by text-only case studies may claim process alone, and that gap goes to the owner as a candidate for the next case study.
 
 ## Matching proof to the objection
 

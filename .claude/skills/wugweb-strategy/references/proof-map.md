@@ -9,10 +9,10 @@ A case study may back a piece only when all of these hold:
 1. It is published and indexed on the site.
 2. It has a body, not a stub.
 3. The claim it is used for matches its approved body.
-4. Any metric quoted is in its source, exactly.
+4. Any metric quoted is in its source, exactly, with its date or window, and it reads the same everywhere it appears.
 5. Its permission status allows the use: naming, tagging or showing on a given account.
 
-A text-only case study may back a claim about process, not about visual result. A hidden stub backs nothing.
+A text-only case study may back a claim about process, not about visual result. A hidden stub backs nothing. Check each page for at least one case study with a full body; a page backed only by text-only case studies may claim process alone, and that gap goes to the owner as a candidate for the next case study.
 
 ## Matching proof to the objection
 

@@ -35,7 +35,7 @@ Read these before any mode. They come from the owner and win over any helper. Th
 1. **Never invent.** No number, quote, date, topic, audience or result that is not in a source. A claim needs a screen, a sourced number or a named fact. Mark anything else "unvalidated" or "owner to set".
 2. **No write without approval.** Never write to Notion, Sanity or R2 without the owner's yes to that exact change, with a backup first. Show every change as current → proposed. Delete nothing.
 3. **Plan, don't make.** Output plans, briefs, verdicts and proposals. Drafting belongs to `wugweb-work`.
-4. **Starting numbers are blank.** Cadence, promotional and reactive shares, backlog size and refresh thresholds stay "owner to set" until a baseline exists (decisions 8 and 18). Pillars are the six services (decision 2).
+4. **Starting numbers are blank.** Cadence, promotional and reactive shares, backlog size and refresh thresholds stay "owner to set" until a baseline exists (decisions 8 and 18). Pillars are the six services (decision 2); `wugweb-brand-os` is their home.
 5. **Client permission first.** No piece, co-post or tag names a client without a recorded permission status. A public tag is not permission.
 6. **One yes per post.** Each post is approved by the owner on its own. A batch is never approved as a whole.
 7. **Style of every output.** British English, sentence case, no em or en dashes in visible text, short plain sentences, result first.

@@ -13,6 +13,8 @@ const run = (f, a = []) => spawnSync('node', [join(S, f), ...a], { encoding: 'ut
 const BASE = process.env.KITS_BASE || 'https://wugweb.pages.dev'
 const repo = existsSync('src/styles/global.css')
 const online = await fetch(BASE, { method: 'HEAD' }).then((r) => r.ok, () => false)
+const CS = BASE + '/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard'
+const csUp = online && (await fetch(CS).then((r) => r.status === 200, () => false))
 const res = { pass: 0, fail: 0, blocked: 0 }
 const c = (name, need, fn) => {
   let r = 'blocked'
@@ -28,8 +30,8 @@ c('inventory --block exits 1 while warnings remain', repo, () => run('kits-inven
 for (const p of ['/', '/work', '/blog', '/services', '/about', '/contact-us', '/faq', '/footer/reviews']) {
   c(`live ${p}: labels, headings, alt, landmarks clean`, online, () => run('kits-check-page.mjs', [BASE + p]).status === 0)
 }
-c('live case study: catches the 6 known sections with no id', online, () => {
-  const r = run('kits-check-page.mjs', [BASE + '/work/accelerating-loyalty-designing-kias-intuitive-customer-dashboard'])
+c('live case study: catches the 6 known sections with no id (blocked if the page is not 200)', csUp, () => {
+  const r = run('kits-check-page.mjs', [CS])
   return (r.stdout.match(/has no id/g) || []).length === 6
 })
 c('contrast: live text #f4f4f4 on #191919 passes AA', true, () => run('contrast.mjs', ['#f4f4f4', '#191919']).status === 0)

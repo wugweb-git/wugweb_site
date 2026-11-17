@@ -9,17 +9,30 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy FAQ review decisions recorded (2026-11-17)
+- The owner decided all 57 typed FAQ questions in one pass; recorded in `FAQ-REVIEW.md`.
+
+### Changed — wugweb-strategy pointers to brand-os and proof map additions (2026-11-17)
+- Pillars and claim order point to wugweb-brand-os; two proof-map rules added from the case-study research. Version stays 0.1.2.
+
 - fix(skills): wugweb-brand-os closes questions 12 and 14 (owner, 2026-11-17): the four crop edits to brand_guidelines/ are dropped and the definition lives only in the skill; no format uses a light background until the owner names one.
 
 - fix(skills): wugweb-brand-os eval 38: five writing-style lines replaced by pointers to wugweb-voice and the standing rules.
+### Changed — case-study body parser v2 (2026-11-17)
+- Merged to main on the owner's go: `src/lib/case-body.ts` v2 (v1 compatible; adds results, presence links, accent, layout hint, quotes, tables, milestones, media kinds) plus `src/lib/case-body.test.ts` (21 tests) and `npm run test:case`. 17 of 37 live bodies render unchanged, 20 get only the intended parser fixes.
+
 ### Changed — wugweb-voice: two brand_guidelines candidates recorded (2026-11-17)
 - `.claude/skills/wugweb-voice/references/voice.md`: C-05 and C-06 added as candidates (waiting on the owner). No rule applied; version stays 0.3.0.
+### Changed — wugweb-work brand-os pointers and live eval rerun fixes (2026-11-17)
+- Claim order and "crop" point to wugweb-brand-os; visual-read example, GIF reading, both site-copy headings, SEO text as paste-in. Still 0.5.0.
 
 ### Changed — wugweb-work Section separator named; pending.md skill state (2026-11-17)
 - Body standard names `Section: <chapter> | <label>`. pending.md now says the skill is 0.5.0 and Part 2 step 2 is on its branch.
 
 ### Fixed — wugweb-voice eval run (2026-11-17)
 - `.claude/skills/wugweb-voice/`: an unsourced number or quote now makes the mechanical result fail; unruled filler words are raised, never dropped in a rewrite. Version stays 0.3.0; `SKILL.md` body 1,999 words.
+### Changed — wugweb-strategy calendar rules from the eval run (2026-11-17)
+- Slot rows carry a proposed pillar and intent; Medium rows copy a site post with canonical to it. Version stays 0.1.2.
 
 ### Changed — wugweb-strategy link structure, no sector link-up (2026-11-17)
 - Owner ruling recorded in the skill; version stays 0.1.2.

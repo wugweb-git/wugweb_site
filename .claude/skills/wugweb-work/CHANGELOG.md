@@ -2,6 +2,10 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- From the live eval rerun: the `visual-read.md` example no longer teaches a wrong-client call (the Airtel-named file is a misnamed IndusNinja board); animated GIFs are read like videos; `ops-cycle.md` names both site-copy headings the bodies use; `SKILL.md` step 7 says the SEO title and description are handed to the owner as paste-in text, never written to his source.
+
+- Two more brand-os pointers (its eval 38 rerun): the claim order (`SKILL.md` step 2, `copy-and-seo.md`) and the meaning of "crop" (`forms.md`, `media-standard.md`) now point to `wugweb-brand-os` (`messaging.md`, `vocabulary.md`). The brief template keeps its fields, which the step needs.
+
 - `body-content-standard.md` names the `Section:` separator as `Section: <chapter> | <label>`, matching the parser v2 on branch `case-body-v2`.
 
 - Internal links (owner, via `wugweb-strategy` 497a6710): a case study links up to its service page only, never a sector page, and across to two or three sibling case studies. The pending mark is removed.

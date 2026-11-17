@@ -32,7 +32,7 @@ These four are confirmed by the owner but are not yet in `sizing.md` or any desi
 | Signature width | 2400px |
 | Line length | 35 to 60 characters |
 
-Token names approved by the owner 2026-11-17, not yet in `global.css` (site code, waits for the owner's go): `--rail-width: min(85vw, 1200px)`, `--rail-peek: 20%`, `--signature-width: 2400px`, `--measure-min: 35ch`, `--measure-max: 60ch`.
+Token names approved by the owner 2026-11-17, added to `global.css` on 2026-11-17 on the owner's go: `--rail-width: min(85vw, 1200px)`, `--rail-peek: 20%`, `--signature-width: 2400px`, `--measure-min: 35ch`, `--measure-max: 60ch`.
 
 ## Made-file sizes adopted by the owner, 2026-11-17
 
@@ -48,7 +48,7 @@ Relayed through the coordinating session from the `wugweb-seo` rulings. Source i
 
 ## Card thumbnails, owner 2026-11-17
 
-One thumbnail ratio, 16/10, on every card, not only work and blog. The original file ratio is kept and the 16/10 frame is a mask on the page. Old Framer media ratios stay an open item in `layout-shell.md`.
+One thumbnail ratio, 16/10, on every card, not only work and blog. The original file ratio is kept and the 16/10 frame is a mask on the page. Old Framer media ratios are closed (owner, 2026-11-17): not mapped.
 
 ## Deck and card type sizes, owner approved 2026-11-17
 
