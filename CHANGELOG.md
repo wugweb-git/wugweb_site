@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy FAQ review decisions recorded (2026-11-17)
+- The owner decided all 57 typed FAQ questions in one pass; recorded in `FAQ-REVIEW.md`.
+
 ### Changed — wugweb-strategy pointers to brand-os and proof map additions (2026-11-17)
 - Pillars and claim order point to wugweb-brand-os; two proof-map rules added from the case-study research. Version stays 0.1.2.
 
