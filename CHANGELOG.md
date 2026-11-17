@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed: wugweb-brand-os plan and pending updated (2026-11-17)
+
+- docs(skills): wugweb-brand-os PLAN.md has one status block (commits, rulings, pending table), sections 13 to 16 and 19 brought up to date; pending.md gains a brand-os entry.
+
 ### Changed — wugweb-strategy plan records the later rulings (2026-11-17)
 - Plan status block and card row updated to match the Notion page; backup in `backups/`.
 

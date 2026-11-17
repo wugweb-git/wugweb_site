@@ -4,6 +4,11 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-11-17: `wugweb-brand-os` skill. BUILT (0.1.0) ON MAIN (`f66bb666`), owner answers applied.**
+- One source of truth: the Notion page "wugweb-brand-os" under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa); repo mirror `docs/skills/wugweb-brand-os/PLAN.md`. Do not copy the plan into this file. The brand-os session keeps both (coordinator handover 2026-11-17).
+- Waiting on the owner: legal name (Notion terms of use say "Wug Web Services Private Limited"); positioning line (seven candidates); audience; official profile links; team size, projects and markets figures; logo mark construction and live type; Visual OS and Brand Strategy documents and nine images; upload of `wugweb-brand-os.zip`; deleting the unused `public/brand/wugweb-mark.png` (approved, a site change).
+- For `wugweb-work`: one eval names "ToT Bridal" although the client is under NDA.
+
 **2026-11-17: Sanity audit fixes (items 3-7, 13-14, 17, 21-32). DONE: on main (`79487fda`) and live on UAT.**
 - Backend: `/api/sync` fails closed, own secret `NEON_SYNC_SECRET`, type allow-list, size caps, owner now updates. `/api/preview` takes `PREVIEW_SECRET` (no token in URL or cookie), same-site redirects only. Anonymous pages cached 60 s at the edge (Workers Cache API, free); preview responses `no-store`. JSON-LD escaped. `/work/[slug]` other-cases in one query.
 - Studio: upgraded sanity 3.99 to 6.23.0 with React 19.3, @sanity/table 3.1.21, @sanity/ui 4 subpath imports. Smart typography turned off (it writes dashes). Publish/Duplicate/Archive fixed, singletons locked, Kits / Trust badges publishable (initial value templates), View on Site uses `route`, dashboard date tiles fixed, desk in CLAUDE.md order with Brand Assets and Experiments. TypeGen: `npm --prefix sanity run typegen` writes `sanity.types.ts` (schema types only; queries are not `defineQuery` yet).
