@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added — wugweb-kits skill: Wugweb rule groups, references and scripts (2026-11-17)
+
+- `.claude/skills/wugweb-kits/`: 26 rule files (shell 8, label 8, kits 10), references (component-sizes, six-layers, spec-templates, known-doc-clashes), scripts kits-check-page, kits-doc-drift, contrast, test; audit.mjs renamed kits-inventory.mjs with .astro support and shell findings; validate.mjs now checks the whole skill; fixed contrast figures 6.70 and 2.33 and the grep include pattern. AGENTS.md regenerated (47 rules).
+
 ### Changed — wugweb-voice version locked at 0.3.0 (2026-11-17)
 
 - `.claude/skills/wugweb-voice` set to version 0.3.0 and pinned there by owner decision: do not bump, not even to 0.3.1, without the owner's say. Recorded in `metadata.json` (`versionLock`), `README.md` and the skill `CHANGELOG.md`. No change to the method, rules or files; the 0.2.1 portability package carries forward.

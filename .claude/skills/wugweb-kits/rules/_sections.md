@@ -34,3 +34,21 @@ collapse duplicates without stranding consumers.
 **Impact:** MEDIUM
 **Description:** The generated documentation layer — fixed shape, measured
 claims, real misuse.
+
+## 6. Layout Shell (shell)
+
+**Impact:** HIGH
+**Description:** The page, section, content and block structure, with the binding
+values from layout-shell.md. The doc is the source; code that disagrees is wrong.
+
+## 7. Labelling (label)
+
+**Impact:** HIGH
+**Description:** Ids, accessible names, headings, lists, alt and landmarks.
+Contrast, focus and target rules belong with the component specs.
+
+## 8. Kits Components and Motion (kits)
+
+**Impact:** HIGH
+**Description:** Wugweb specific component, token, colour and motion rules from
+components.md and CLAUDE.md.

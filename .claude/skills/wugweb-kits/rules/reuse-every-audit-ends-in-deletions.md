@@ -29,12 +29,12 @@ now alongside 34 tokens.
 # Orphan tokens: declared, never referenced
 comm -23 \
   <(grep -ohE '^\s*--[a-z0-9-]+' src/tokens/*.css | tr -d ' :' | sort -u) \
-  <(grep -rohE 'var\(--[a-z0-9-]+' src/ --include='*.{css,ts,tsx}' | sed 's/var(//' | sort -u)
+  <(grep -rohE 'var\(--[a-z0-9-]+' src/ --include='*.css' --include='*.ts' --include='*.tsx' --include='*.astro' | sed 's/var(//' | sort -u)
 
 # Components with zero importers
 for f in src/ui/*.tsx; do
   n=$(basename "$f" .tsx)
-  c=$(grep -rl "\b$n\b" src --include='*.tsx' | grep -v "$f" | wc -l)
+  c=$(grep -rl "\b$n\b" src --include='*.tsx' --include='*.astro' | grep -v "$f" | wc -l)
   [ "$c" -eq 0 ] && echo "DEAD  $f"
 done
 ```

@@ -29,8 +29,8 @@ to — disabled and hover states are where systems quietly fall below threshold.
   | State | Foreground | Background | Ratio | AA (4.5:1) |
   |---|---|---|---|---|
   | default | #ffffff | #2563eb | 5.17:1 | pass |
-  | hover | #ffffff | #1d4ed8 | 6.31:1 | pass |
-  | disabled | #a1a1aa | #f4f4f5 | 2.31:1 | FAIL — exempt as inactive control (1.4.3), but unreadable in sunlight |
+  | hover | #ffffff | #1d4ed8 | 6.70:1 | pass |
+  | disabled | #a1a1aa | #f4f4f5 | 2.33:1 | FAIL, exempt as inactive control (1.4.3), but unreadable in sunlight |
 - Keyboard: Enter and Space activate; `:focus-visible` ring at 2px offset 2px.
 - Target: 40×40 CSS px (AA 2.5.8 requires 24×24; AAA requires 44×44).
 - Announced: "Save, button" · loading adds `aria-busy="true"` · disabled uses
@@ -38,8 +38,8 @@ to — disabled and hover states are where systems quietly fall below threshold.
 ```
 
 ```bash
-node scripts/contrast.mjs --map system-map.json --states all
+node scripts/contrast.mjs "#ffffff" "#2563eb"
 ```
 
-Run the check in CI against the map, so a token change that breaks contrast fails
+Run the check in CI, so a token change that breaks contrast fails
 the build rather than a design review six weeks later.

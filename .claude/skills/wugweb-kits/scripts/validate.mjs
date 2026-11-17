@@ -3,7 +3,9 @@
  * Lint the rule files: structure, frontmatter, section prefix, and the
  * incorrect/correct example pair every rule needs to be pattern-matchable.
  */
-import { readRules, readSections, VALID_IMPACTS } from './lib.mjs'
+import { readRules, readSections, VALID_IMPACTS, SKILL_DIR } from './lib.mjs'
+import { readFile, access } from 'node:fs/promises'
+import { join } from 'node:path'
 
 const BAD = ['incorrect', 'wrong', 'bad', 'avoid']
 const GOOD = ['correct', 'good', 'right', 'do this']
@@ -68,6 +70,24 @@ for (const r of rules) bySection.set(r.section, (bySection.get(r.section) ?? 0) 
 for (const s of sections) {
   if (!bySection.get(s.id)) warn('rules/_sections.md', `Section "${s.id}" has no rules`)
 }
+
+// Whole skill checks: SKILL.md names every rule, every file it points to exists,
+// and the shell numbers in the reference match the doc when the repo docs are present.
+const skill = await readFile(join(SKILL_DIR, 'SKILL.md'), 'utf8')
+for (const r of rules) if (!skill.includes('`' + r.id + '`')) fail('SKILL.md', `does not name rule ${r.id}`)
+const exists = (p) => access(join(SKILL_DIR, p)).then(() => true, () => false)
+for (const m of skill.matchAll(/`((?:references|scripts)\/[A-Za-z0-9._-]+)`/g)) if (!(await exists(m[1]))) fail('SKILL.md', `points to missing file ${m[1]}`)
+for (const m of skill.matchAll(/node (scripts\/[A-Za-z0-9._-]+)/g)) if (!(await exists(m[1]))) fail('SKILL.md', `runs missing script ${m[1]}`)
+const words = skill.replace(/^---[\s\S]*?\n---\n/, '').replace(/```[\s\S]*?```/g, ' ').split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length
+if (words < 1500 || words > 2000) fail('SKILL.md', `body is ${words} words, expected 1500 to 2000`)
+if (/[\u2013\u2014]/.test(skill)) fail('SKILL.md', 'contains an em or en dash')
+const doc = await readFile(join(SKILL_DIR, '../../../kits_design_system/docs/tokens/layout-shell.md'), 'utf8').catch(() => null)
+const ref = await readFile(join(SKILL_DIR, 'references/layout-shell.md'), 'utf8')
+if (doc) {
+  for (const v of ['48 16 48 16', '70 32 70 32', '96 48 96 48']) if (!ref.includes(v)) fail('references/layout-shell.md', `missing ${v}`)
+  for (const v of ['1200', '100', '108', '68']) if (!doc.includes(v)) fail('layout-shell.md', `doc no longer contains ${v}; the skill copy may be stale`)
+} else warn('layout-shell.md', 'repo docs not found, doc comparison skipped')
+console.log(`SKILL.md body: ${words} words`)
 
 for (const w of warnings) console.log(`  warn   ${w.file}: ${w.message}`)
 for (const e of errors) console.error(`  ERROR  ${e.file}: ${e.message}`)
