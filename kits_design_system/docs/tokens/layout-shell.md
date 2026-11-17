@@ -231,7 +231,7 @@ content is named **semantically**, not by sprinkling attributes:
 
 ## Carried from the 2026-09-22 UI audit — current parts only
 
-Source: [`Claude outputs/ui-spec-2026-09-22/wugweb-site-ui-spec.md`](../../../Claude%20outputs/ui-spec-2026-09-22/wugweb-site-ui-spec.md),
+Source: the UI audit and spec of 2026-09-22 (the file was retired on 2026-11-17 once its findings were fixed or moved into the wugweb-kits skill; git history keeps it),
 measured on the Framer site. Only what still holds is carried; each item was
 re-checked against the code on 2026-10-03.
 
