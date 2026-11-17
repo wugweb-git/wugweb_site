@@ -1,12 +1,16 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 0.1.2 on main, 42 files, last skill commit 7fb744f2.
+> - Built. Version 0.1.2 on main, 42 files, last skill commit 497a6710.
 > - Skill file body: 1,689 words by the shared count. Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The strategy session built the upload zip; the owner uploads it.
 > - Owner rulings applied: decision 20 (link targets come from wugweb-seo inside the structure strategy sets), decision 23 (the proof map wins on which case study backs a page), brief field 9 option (a) (the brief carries wugweb-seo's keyword note unchanged), wugweb-voice may read the signal log directly, read only.
 > - FAQ block: the owner ruled that strategy decides its use with wugweb-seo. Strategy's position (service pages and blog posts only, only when the signal log holds real reader questions, owner approves the questions and sets the count, answers from the owner's source) is agreed by wugweb-seo with no caveat (seo commit 90340cf9). Case studies never carry a block; the case-study faqs field stays unused unless the owner supplies visible questions.
 > - Standing rules: the skill carries a marked copy of the shared standing-rules file, built into its export, with a test that fails if the copy drifts from the home file (commit 7fb744f2). The home file wins. This replaces any older "keep the pointer" line below.
-> - Open questions with the owner: none.
+> - Web engineering's five Sanity questions were delegated to strategy by the owner ("let strategy decide"): stored aiSummary and schemaType are kept and nothing is deleted; TechArticle on posts is a correction for his go; no faqs field on posts until a post has an approved list; the Kits page is exempt.
+> - Owner answers (commits c704691e, 968c14b4, 497a6710): the unapproved service-page FAQ copy may stay live during the review; the FAQ page is the one dedicated FAQ page and carries no FAQPage markup, so the line stays service pages and blog posts only; sector pages are not a link-up target, so a case study links up to its service page only and across to two or three sibling case studies.
+> - The FAQ review list is `FAQ-REVIEW.md` beside this plan: 57 typed questions (47 across the six services, 10 from the FAQ page), each for the owner to keep, answer again or cut; 10 service rows flagged.
+> - Voice rulings applied and the standing-rules copy built by script (commit 7fb744f2).
+> - Open with the owner: the keep, answer again or cut decision per FAQ question.
 
 # wugweb-strategy skill: plan (ready for vetting)
 
