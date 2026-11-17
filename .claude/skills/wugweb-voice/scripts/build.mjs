@@ -21,7 +21,7 @@ const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
 // Reference files that go into the portable build, in reading order. corpus.md
 // and tooling.md are deliberately excluded.
-export const INCLUDED = ['voice.md', 'modes.md', 'words.md', 'handoff.md', 'blind-test.md'];
+export const INCLUDED = ['voice.md', 'modes.md', 'words.md', 'handoff.md', 'blind-test.md', 'standing-rules.md'];
 
 const meta = existsSync(join(ROOT, 'metadata.json')) ? JSON.parse(read('metadata.json')) : null;
 const skill = read('SKILL.md');

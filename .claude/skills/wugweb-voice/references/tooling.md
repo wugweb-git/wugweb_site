@@ -1,10 +1,10 @@
 # Tooling
 
-Version 0.2.0. The only file in this skill that names tools, vendors and helper skills. Every step can be done by hand without them. Helpers return proposals only; the owner's rules win in every clash.
+Version 0.3.0. The only file in this skill that names tools, vendors and helper skills. Every step can be done by hand without them. Helpers return proposals only; the owner's rules win in every clash.
 
 ## Helper skills
 
-Status: decided by the owner, 2026-11-16: the system's eight plus the extras below. All return proposals only.
+Status: decided by the owner, 2026-11-16, and confirmed 2026-11-17: the system's eight plus the extras below, listed only in this file. All return proposals only, and none can set a rule.
 
 | Helper | Used for | Status |
 | --- | --- | --- |
@@ -28,6 +28,7 @@ Extras, approved by the owner on 2026-11-16: `brand-voice` agents (document-anal
 | Sanity "Brand voice" draft | Candidate rules | Never written from this skill |
 | `brand_guidelines/` in the site repo | Candidate rules | Read only |
 | Claude memory, working-style note | Not calibration | Read only |
+| `wugweb-strategy` `references/topics-and-calendar.md` | Reader words as vocabulary candidates, never rules | Read only |
 | Meeting transcripts (any connector) | Spoken mode, only meetings the owner names | Read only |
 
 ## Claude-only features and the manual route

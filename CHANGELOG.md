@@ -11,6 +11,9 @@ and this project adheres to Semantic Versioning.
 
 - docs(skills): wugweb-brand-os plan (Notion and PLAN.md) records commit 9c8d0c95, the owner's answers of 2026-11-17 and the first eval run in progress.
 
+### Changed — wugweb-voice: owner's "all yes" applied, version stays 0.3.0 (2026-11-17)
+- `.claude/skills/wugweb-voice/`: read-only link to the wugweb-strategy signal log, 40 to 60 word summary field, translated copy and working preferences out of scope, we or I per piece, and a marked copy of the standing rules in the export (test-checked). `SKILL.md` body 1,997 words. No samples yet.
+
 ### Changed — wugweb-strategy FAQ rules agreed with seo (2026-11-17)
 - Pending mark removed; version stays 0.1.2. Exports rebuilt.
 ### Changed — wugweb-work skill 0.5, FAQ block rules from strategy and seo, no campaign system (2026-11-17)

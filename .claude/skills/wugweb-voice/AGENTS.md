@@ -67,7 +67,7 @@ Never state an observed or candidate rule as a confirmed preference. Never avera
 
 There is one voice. Modes are settings of it, never a second voice. The modes are listed in `references/modes.md`: case study page, card and tile, deck slide, LinkedIn post, carousel, Behance and Dribbble captions, interface wording, quick chat and reply, email, formal document, spoken answer. Every mode is waiting on samples. Format rules for each form (sizes, counts, layout) live in `wugweb-work`.
 
-Pronouns: "we" for studio copy, "I" in bylined or first-person writing, one per piece. Whether that is a fixed rule or the owner's call per piece is open.
+Pronouns: "we" for studio copy, "I" in bylined or first-person writing, one per piece. The owner picks per piece; it is not a fixed rule.
 
 ## The voice check
 
@@ -263,7 +263,7 @@ Each mode section, once calibrated, holds:
 
 ### Pronouns
 
-"We" for studio copy, "I" in bylined or first-person writing, one per piece. The voice rules are the same for both. Fixed rule or his call per piece: open.
+"We" for studio copy, "I" in bylined or first-person writing, one per piece. The voice rules are the same for both. The owner picks per piece; it is not a fixed rule (his ruling, 2026-11-17).
 
 ### Interface wording: points held for the owner
 
@@ -384,7 +384,7 @@ Claude
 <!-- references/handoff.md -->
 ## Handoff contract
 
-Version 0.2.0. Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
+Version 0.3.0. Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
 
 ### Links
 
@@ -393,9 +393,10 @@ Version 0.2.0. Matches the matrix row on the Wugweb Skill Management System regi
 | Gives to | `wugweb-work` | Voice rules, mode settings, text in voice, voice-check results with confidence |
 | Gives to | `wugweb-brand-os` | The voice rules it points to |
 | Takes from | `wugweb-brand-os` | Identity, positioning, audience |
+| Reads, read only | `wugweb-strategy` | `references/topics-and-calendar.md` in `wugweb-strategy`, its signal log of reader words. Words found there are vocabulary candidates labelled by source: never rules, never the owner's voice (his ruling, relayed 2026-11-17) |
 | Takes from | `wugweb-work` | Draft text with its form, mode, and the audience and purpose from the brief |
 
-No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`. If either of the last two needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The check happens in one place only.
+No other link with `wugweb-strategy`, and none with `wugweb-seo` or `wugweb-kits`. If either of the last two needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The check happens in one place only.
 
 ### Request
 
@@ -412,6 +413,7 @@ No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`. If either 
 
 | Field | Notes |
 | --- | --- |
+| summary | 40 to 60 words: the result, the main findings and the confidence, for a caller that shows one short line |
 | result | pass, needs revision, or fail |
 | text | The text in voice, or proposed wording as current → proposed |
 | rules applied | Each with its ID and label |
@@ -424,6 +426,8 @@ No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`. If either 
 - The response is a proposal. `wugweb-work` decides what ships; the owner approves.
 - This skill never changes format, length, evidence, SEO or positioning rules.
 - Client quotes and on-screen terms are returned unchanged.
+- Translated copy is out of scope for now. It waits until the English voice is calibrated.
+- Working preferences (how the owner wants replies to him) stay in project instructions and memory, never in this skill.
 - Helper skills return proposals only. Only a Wugweb skill writes anything, and only after the owner's approval.
 
 <!-- references/blind-test.md -->
@@ -476,3 +480,84 @@ The method comes from the research report "Voice calibration method" (2026-11-16
 - The share of samples held back per mode (suggested one in five).
 - How many items a test uses.
 - What result moves a mode to high confidence.
+
+<!-- references/standing-rules.md -->
+## Standing rules (marked copy)
+
+<!-- MARKED COPY. The home of these rules is docs/skills/STANDING-RULES.md in the Wugweb site repo. Copied 2026-11-17 so the skill works in GPT, Cursor and other tools. If this copy and the home file differ, the home file wins. Do not edit here; scripts/test.mjs checks the copy matches the home file when the repo is present. -->
+
+## Owner's standing rules
+
+These apply to every skill in the Wugweb Skill System and to every session.
+Each skill reads this file and repeats none of it. A skill's own rules live in
+that skill. Where a helper skill or tool disagrees with a rule here, this file
+wins. Dates show when the owner set or confirmed a rule, where known.
+
+### Truth and evidence
+
+- Nothing is invented: no numbers, quotes or facts.
+- A claim needs a screen, a sourced number or a named fact. "Unvalidated" is a complete answer.
+- Existing content is an input, not the benchmark. (2026-10-19)
+- Every number in a report is computed, never estimated.
+
+### Sources and approval
+
+- Notion is the source for case studies and blog posts. (2026-10-13)
+- One source, from the owner. Content is enriched only as a proposal. (2026-10-19)
+- Changes are shown as current to proposed, with the reason.
+- Nothing is written to the content source or the CMS without the owner's approval of that exact change, with a backup first.
+- Nothing is deleted without asking: no data, files, records or pages.
+- Nothing is posted or scheduled without the owner's yes for that post. (2026-11-16)
+- Third-party helper skills return proposals or reports. Only a Wugweb skill writes, and only after approval. (2026-11-16)
+- Nothing goes to development until the owner says so. (2026-11-16)
+
+### Media
+
+- Media lives in the owner's media store only: no uploads, no local copies.
+- Files are never cropped or re-encoded.
+- Media may be shown at any size if the original aspect ratio is kept. Clipping masks are allowed. (2026-11-16)
+- Resizing and masks are done on the page, never by making new files. (confirmed 2026-11-16)
+- A mask must not hide the part of a screen that proves the claim. (confirmed 2026-11-16)
+- A file shown above its natural size is flagged, not banned. (confirmed 2026-11-16)
+- No sound anywhere. Every video is muted. (2026-11-11)
+- A new image file is made only when nothing existing fits, one file at a time, on the owner's yes for that file. (2026-11-11)
+
+### Writing
+
+- British English.
+- Sentence case.
+- No em or en dashes in anything a visitor reads. Ranges are written out.
+
+### Working with the owner
+
+- Replies are short and plain, result first.
+- Do exactly what is asked. No side tasks.
+- Full output: complete files, no placeholders, no "rest unchanged".
+- Do not raise the domain cutover, asset clean-up or the cookie policy unless asked.
+
+### Limits
+
+- Never exceed any vendor's free tier. No feature that needs a paid plan unless the owner asks.
+- No dependency on Framer: no Framer URLs, redirects or assets. (2026-10-13)
+- One slug per page; no redirects for old URLs. (2026-10-13)
+
+### The skill system
+
+- One home per rule. Each rule lives in exactly one skill; the others point to it. (2026-11-16)
+- One Notion page per skill: no sub-pages, nothing elsewhere. The repo keeps one copy as that skill's PLAN file. (2026-11-16)
+- Every skill must be usable in GPT, Cursor and other tools, not only Claude. (2026-11-16)
+- The layout values in the design system's layout shell document are binding. Skills read that document and point to `wugweb-kits`. (2026-11-16)
+
+### Git, only when asked to commit
+
+- Commit by path. Never add everything at once.
+- The only trailer is `Co-Authored-By: Wugweb <admin@wugweb.com>`.
+- Check for an index lock first; other sessions share the checkout.
+- Every commit adds a line to the changelog.
+- Push only on the owner's go.
+
+### Working caution, not an owner rule
+
+- When writing to Notion, never write a bare word-colon-word pattern or a bare
+  file name ending in a dot and "md". Notion turns them into links and can
+  corrupt the page. Put them in inline code or reword. (found 2026-11-16)

@@ -27,6 +27,7 @@ rules, says the voice is not calibrated, and keeps confidence low.
 | `references/corpus.md` | The calibration ledger; empty | yes |
 | `references/handoff.md` | The contract with the other skills | yes |
 | `references/blind-test.md` | How to run and score the blind test | yes |
+| `references/standing-rules.md` | Marked copy of the owner's standing rules, so the single-file build works outside the repo; the home is `docs/skills/STANDING-RULES.md` | copy only, test-checked |
 | `references/tooling.md` | The only file that names tools and helper skills | yes |
 | `scripts/check.mjs` | Mechanical voice check | yes |
 | `scripts/test.mjs` | Self-test on the fixtures and the skill's own files | yes |

@@ -1,6 +1,6 @@
 # Handoff contract
 
-Version 0.2.0. Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
+Version 0.3.0. Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
 
 ## Links
 
@@ -9,9 +9,10 @@ Version 0.2.0. Matches the matrix row on the Wugweb Skill Management System regi
 | Gives to | `wugweb-work` | Voice rules, mode settings, text in voice, voice-check results with confidence |
 | Gives to | `wugweb-brand-os` | The voice rules it points to |
 | Takes from | `wugweb-brand-os` | Identity, positioning, audience |
+| Reads, read only | `wugweb-strategy` | `references/topics-and-calendar.md` in `wugweb-strategy`, its signal log of reader words. Words found there are vocabulary candidates labelled by source: never rules, never the owner's voice (his ruling, relayed 2026-11-17) |
 | Takes from | `wugweb-work` | Draft text with its form, mode, and the audience and purpose from the brief |
 
-No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`. If either of the last two needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The check happens in one place only.
+No other link with `wugweb-strategy`, and none with `wugweb-seo` or `wugweb-kits`. If either of the last two needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The check happens in one place only.
 
 ## Request
 
@@ -28,6 +29,7 @@ No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`. If either 
 
 | Field | Notes |
 | --- | --- |
+| summary | 40 to 60 words: the result, the main findings and the confidence, for a caller that shows one short line |
 | result | pass, needs revision, or fail |
 | text | The text in voice, or proposed wording as current → proposed |
 | rules applied | Each with its ID and label |
@@ -40,4 +42,6 @@ No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`. If either 
 - The response is a proposal. `wugweb-work` decides what ships; the owner approves.
 - This skill never changes format, length, evidence, SEO or positioning rules.
 - Client quotes and on-screen terms are returned unchanged.
+- Translated copy is out of scope for now. It waits until the English voice is calibrated.
+- Working preferences (how the owner wants replies to him) stay in project instructions and memory, never in this skill.
 - Helper skills return proposals only. Only a Wugweb skill writes anything, and only after the owner's approval.

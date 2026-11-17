@@ -28,7 +28,7 @@ Each mode section, once calibrated, holds:
 
 ## Pronouns
 
-"We" for studio copy, "I" in bylined or first-person writing, one per piece. The voice rules are the same for both. Fixed rule or his call per piece: open.
+"We" for studio copy, "I" in bylined or first-person writing, one per piece. The voice rules are the same for both. The owner picks per piece; it is not a fixed rule (his ruling, 2026-11-17).
 
 ## Interface wording: points held for the owner
 
