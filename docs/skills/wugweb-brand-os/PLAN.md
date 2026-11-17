@@ -227,7 +227,7 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 | No writes | End to end run | Nothing written outside chat or a draft file |
 | Portability | The answer, fact check and visual check evals run twice: as the installed skill, and from the single-file export in a second tool | Both runs give the same findings |
 
-**Status 2026-11-17.** The tests are written in `evals/evals.md` (groups A to I) and have not been run yet. The skill is not yet verified in the Claude app.
+**Status 2026-11-17.** The merged skill holds 38 tests in `evals/evals.json`, not yet run. The skill is not yet verified in the Claude app. Branch draft and main's app copy were merged into one folder; contradictions between them are listed for the owner.
 
 ## 14. Crop wording: ruling and proposal
 
