@@ -12,6 +12,9 @@ and this project adheres to Semantic Versioning.
 - fix(skills): wugweb-brand-os closes questions 12 and 14 (owner, 2026-11-17): the four crop edits to brand_guidelines/ are dropped and the definition lives only in the skill; no format uses a light background until the owner names one.
 
 - fix(skills): wugweb-brand-os eval 38: five writing-style lines replaced by pointers to wugweb-voice and the standing rules.
+### Changed — case-study body parser v2 (2026-11-17)
+- Merged to main on the owner's go: `src/lib/case-body.ts` v2 (v1 compatible; adds results, presence links, accent, layout hint, quotes, tables, milestones, media kinds) plus `src/lib/case-body.test.ts` (21 tests) and `npm run test:case`. 17 of 37 live bodies render unchanged, 20 get only the intended parser fixes.
+
 ### Changed — wugweb-voice: two brand_guidelines candidates recorded (2026-11-17)
 - `.claude/skills/wugweb-voice/references/voice.md`: C-05 and C-06 added as candidates (waiting on the owner). No rule applied; version stays 0.3.0.
 
