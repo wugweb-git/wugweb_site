@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- fix(skills): wugweb-brand-os removes six contested rules on owner ruling 2026-11-17 (newer source wins, 2023 profile used for nothing, dashboards ban, collage base, unknown rights label, transformation pairs).
+
 - fix(skills): wugweb-brand-os removes the campaign system working vocabulary and the four-role example; owner ruling 2026-11-17: Wugweb has no campaign system.
 
 - feat(skills): wugweb-brand-os applies the owner's answers of 2026-11-17 (questions 5 to 9, 12 to 18); dashboards ban now excepts software subjects; 4 questions remain open or partly answered.

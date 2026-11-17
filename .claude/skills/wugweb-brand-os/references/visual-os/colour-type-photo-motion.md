@@ -33,7 +33,7 @@ Palette behaviour by mode, from the same file:
 | Mode | Palette |
 | --- | --- |
 | Editorial thought leadership | Neutral base plus two or three accents |
-| Campaign collage | Black or light base plus three or four approved accents |
+| Campaign collage | Three or four approved accents |
 | Product proof | Neutral product interface plus one or two structural accents |
 | Systems and architecture | Neutral base, one anchor colour, restrained structural blue |
 | Typographic presentation | High contrast; one headline colour field may dominate |

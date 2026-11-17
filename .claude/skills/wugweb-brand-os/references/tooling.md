@@ -40,7 +40,7 @@ This skill writes nothing to Notion, Sanity, R2 or `brand_guidelines/`. A Change
 | The owner's standing rules | `docs/skills/STANDING-RULES.md` in the repo |
 | The visual guidelines | `brand_guidelines/` in the repo |
 | Design system rules and values | `kits_design_system/docs/` in the repo, owned by `wugweb-kits` |
-| The stale 2023 profile | Notion; background only |
+| The stale 2023 profile | Notion |
 
 ## Outside Claude
 

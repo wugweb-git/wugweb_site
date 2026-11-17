@@ -31,7 +31,6 @@ Facts about Wugweb, each with its source and status. `wugweb-seo` reads this fil
 ## Provenance
 
 - Every fact carries its source and the date it was approved.
-- A newer source wins over an older one, unless the older is the owner's ruling.
 - This file reports which sources exist. The owner decides which to adopt.
 - Each usable proof also records its usage rights (see the labels in `review-gates.md`).
 
@@ -56,4 +55,4 @@ The 2023 profile also holds tax, registration and bank details. They are not bra
 1. The owner states it, or approves a proposed value shown as current to proposed.
 2. Record the value, the date approved and where it came from.
 3. Rank sources in this order: an approved owner statement, a document in live use, a conversation, a design file or note, a superseded document. A superseded document is listed for reference and never relied on.
-4. When two sources disagree, list both and ask the owner. The newer one is not assumed to be right. This is the default; an owner ruling that supersedes an older source still wins.
+4. When two sources disagree, list both and ask the owner.

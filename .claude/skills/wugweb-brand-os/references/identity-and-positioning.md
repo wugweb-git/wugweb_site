@@ -12,7 +12,7 @@ Lines found in use, for reference only. Do not use any of them as the line:
 | --- | --- | --- |
 | "product and experience architecture studio" | The live site | In use, not chosen |
 | "systems-minded design partner" | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md` | Source, not chosen |
-| "Creative UX Design Agency" | 2023 Notion profile | Stale. Never use |
+| "Creative UX Design Agency" | 2023 Notion profile | Stale |
 
 When asked for the positioning line, answer "not decided: the owner supplies it" and list the lines above with their status.
 

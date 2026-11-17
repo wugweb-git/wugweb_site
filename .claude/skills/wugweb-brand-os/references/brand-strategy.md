@@ -1,6 +1,6 @@
 # Brand strategy
 
-**Not decided: owner.** Blank until the owner's Brand Strategy document arrives (question 10). Do not fill this file from helper skills, the 2023 profile or general advice.
+**Not decided: owner.** Blank until the owner's Brand Strategy document arrives (question 10). Do not fill this file from helper skills or general advice.
 
 Content strategy (topics, calendar, briefs, refresh and retire) is not here. That is `wugweb-strategy`, which builds on the positioning held in `identity-and-positioning.md`.
 

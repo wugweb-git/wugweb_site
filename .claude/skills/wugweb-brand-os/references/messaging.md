@@ -6,21 +6,6 @@ How a Wugweb message is built. Wording, tone and style are not here; they live i
 
 Every asset has one claim, one audience tension, one proof and one outcome. The order is Problem to Insight to System to Outcome. Source: `brand_guidelines/03_MARKETING_SYSTEM/02_MESSAGING_FRAMEWORK.md`. The visual expresses the claim through a tangible metaphor and the copy names it. A thumbnail is never asked to carry a whole positioning framework.
 
-## Transformation pairs (source: `01_BRAND_STORY.md`, `09_NARRATIVE_SYSTEMS.md`)
-
-Show a transformation, not a list of services. One pair per asset:
-
-- Unknown to understood.
-- Manual to adaptive.
-- Noise to signal.
-- Process to platform.
-- Insight to strategy.
-- Person to product to outcome.
-- Complexity to clarity.
-- Productivity to competitive advantage.
-
-One artwork never explains five transformations.
-
 ## Messaging stance
 
 **Confirmed by the owner, 2026-11-17 (question 13):** the client is the hero, Wugweb is the guide. State it as a rule.

@@ -74,7 +74,7 @@ Judge the rendered result, never a description of it. This mode needs a model th
 
 1. Describe what is there in a fixed frame: subject, composition, lighting and treatment, colour, type, format fit, mood.
 2. Name the one visual mode. Two modes blended casually is a fail. Run the two-second test: what the eye hits first, whether that is right, and whether the one claim is clear without the headline.
-3. Run the check list in `references/review-gates.md`, looking as `references/visual-os/judging-a-visual.md` describes. The banned list in `references/visual-os/art-direction.md` is a fail when met: robots, AI brains, neural webs, circuitry, holograms, dense dashboards, tiny analytics widgets, node webs as texture, icon clouds, stock teams and handshakes, clutter, and anything copied from another studio's signature work.
+3. Run the check list in `references/review-gates.md`, looking as `references/visual-os/judging-a-visual.md` describes. The banned list in `references/visual-os/art-direction.md` is a fail when met: robots, AI brains, neural webs, circuitry, holograms, node webs as texture, icon clouds, stock teams and handshakes, clutter, and anything copied from another studio's signature work.
 4. Report findings as must fix, should fix or nice to have, each with its rule, its file and the fix as current to proposed.
 5. Report points that rest on an open owner question as "not decided", not as a pass or a fail.
 6. Say what could not be judged, for example when only a brief was supplied. Report overall impression, what works, and the top three fixes. Keep taste apart from real problems.
@@ -166,7 +166,7 @@ Load only the file a mode needs.
 | `references/brand-strategy.md` | Blank until the owner's document arrives; the method for a competitor read |
 | `references/values-and-principles.md` | The ten principles, philosophy. Values blank |
 | `references/audience.md` | Blank; the shape to fill |
-| `references/messaging.md` | The messaging rule, transformation pairs, message tests |
+| `references/messaging.md` | The messaging rule and message tests |
 | `references/vocabulary.md` | The name, pillar names, system terms |
 | `references/brand-facts.md` | Every fact with source and status |
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels |
@@ -196,5 +196,4 @@ This file carries the status, the modes, the fixed rules and the boundaries, so 
 - Touch a client's brand.
 - Edit `brand_guidelines/`.
 - Write to Notion, Sanity or R2. Every change is a proposal for the owner.
-- Use the 2023 company profile as truth. It is stale background.
 - Turn a helper skill's advice into a rule without the owner's ruling.

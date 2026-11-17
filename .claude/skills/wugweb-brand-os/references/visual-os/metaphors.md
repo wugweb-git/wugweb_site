@@ -44,7 +44,7 @@ A visual system should answer five questions: what the brand stands for, the cor
 
 The working steps:
 
-1. Start from the transformation pair in `messaging.md`.
+1. Start from the one claim in `messaging.md`.
 2. Ask what the audience would physically do to cause that change: search, assemble, select, navigate, place.
 3. Pick the tangible object that carries that act.
 4. Check it against the "avoid" column and the banned list in `art-direction.md`.

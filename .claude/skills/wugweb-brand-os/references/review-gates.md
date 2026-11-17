@@ -77,7 +77,7 @@ Signs positioning is broken, to report when seen: more than one descriptor in th
 
 ## Rights labels (source: `06_SOURCE_AND_RIGHTS.md`)
 
-Every reusable reference carries one label: `owned`, `licensed`, `public-reference-only`, `generated`, or `unknown: do not reuse`.
+Every reusable reference carries one label: `owned`, `licensed`, `public-reference-only`, or `generated`.
 
 - Record the source of every photograph, screenshot, logo, external reference and generated asset.
 - Confirm permission or licence for external imagery and fonts.

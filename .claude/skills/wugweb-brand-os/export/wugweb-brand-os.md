@@ -67,7 +67,7 @@ Judge the rendered result, never a description of it. This mode needs a model th
 
 1. Describe what is there in a fixed frame: subject, composition, lighting and treatment, colour, type, format fit, mood.
 2. Name the one visual mode. Two modes blended casually is a fail. Run the two-second test: what the eye hits first, whether that is right, and whether the one claim is clear without the headline.
-3. Run the check list in `references/review-gates.md`, looking as `references/visual-os/judging-a-visual.md` describes. The banned list in `references/visual-os/art-direction.md` is a fail when met: robots, AI brains, neural webs, circuitry, holograms, dense dashboards, tiny analytics widgets, node webs as texture, icon clouds, stock teams and handshakes, clutter, and anything copied from another studio's signature work.
+3. Run the check list in `references/review-gates.md`, looking as `references/visual-os/judging-a-visual.md` describes. The banned list in `references/visual-os/art-direction.md` is a fail when met: robots, AI brains, neural webs, circuitry, holograms, node webs as texture, icon clouds, stock teams and handshakes, clutter, and anything copied from another studio's signature work.
 4. Report findings as must fix, should fix or nice to have, each with its rule, its file and the fix as current to proposed.
 5. Report points that rest on an open owner question as "not decided", not as a pass or a fail.
 6. Say what could not be judged, for example when only a brief was supplied. Report overall impression, what works, and the top three fixes. Keep taste apart from real problems.
@@ -159,7 +159,7 @@ Load only the file a mode needs.
 | `references/brand-strategy.md` | Blank until the owner's document arrives; the method for a competitor read |
 | `references/values-and-principles.md` | The ten principles, philosophy. Values blank |
 | `references/audience.md` | Blank; the shape to fill |
-| `references/messaging.md` | The messaging rule, transformation pairs, message tests |
+| `references/messaging.md` | The messaging rule and message tests |
 | `references/vocabulary.md` | The name, pillar names, system terms |
 | `references/brand-facts.md` | Every fact with source and status |
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels |
@@ -189,7 +189,6 @@ This file carries the status, the modes, the fixed rules and the boundaries, so 
 - Touch a client's brand.
 - Edit `brand_guidelines/`.
 - Write to Notion, Sanity or R2. Every change is a proposal for the owner.
-- Use the 2023 company profile as truth. It is stale background.
 - Turn a helper skill's advice into a rule without the owner's ruling.
 
 ---
@@ -293,7 +292,6 @@ Facts about Wugweb, each with its source and status. `wugweb-seo` reads this fil
 ## Provenance
 
 - Every fact carries its source and the date it was approved.
-- A newer source wins over an older one, unless the older is the owner's ruling.
 - This file reports which sources exist. The owner decides which to adopt.
 - Each usable proof also records its usage rights (see the labels in `review-gates.md`).
 
@@ -318,7 +316,7 @@ The 2023 profile also holds tax, registration and bank details. They are not bra
 1. The owner states it, or approves a proposed value shown as current to proposed.
 2. Record the value, the date approved and where it came from.
 3. Rank sources in this order: an approved owner statement, a document in live use, a conversation, a design file or note, a superseded document. A superseded document is listed for reference and never relied on.
-4. When two sources disagree, list both and ask the owner. The newer one is not assumed to be right. This is the default; an owner ruling that supersedes an older source still wins.
+4. When two sources disagree, list both and ask the owner.
 
 ---
 
@@ -326,7 +324,7 @@ The 2023 profile also holds tax, registration and bank details. They are not bra
 
 # Brand strategy
 
-**Not decided: owner.** Blank until the owner's Brand Strategy document arrives (question 10). Do not fill this file from helper skills, the 2023 profile or general advice.
+**Not decided: owner.** Blank until the owner's Brand Strategy document arrives (question 10). Do not fill this file from helper skills or general advice.
 
 Content strategy (topics, calendar, briefs, refresh and retire) is not here. That is `wugweb-strategy`, which builds on the positioning held in `identity-and-positioning.md`.
 
@@ -393,7 +391,7 @@ Lines found in use, for reference only. Do not use any of them as the line:
 | --- | --- | --- |
 | "product and experience architecture studio" | The live site | In use, not chosen |
 | "systems-minded design partner" | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md` | Source, not chosen |
-| "Creative UX Design Agency" | 2023 Notion profile | Stale. Never use |
+| "Creative UX Design Agency" | 2023 Notion profile | Stale |
 
 When asked for the positioning line, answer "not decided: the owner supplies it" and list the lines above with their status.
 
@@ -473,21 +471,6 @@ How a Wugweb message is built. Wording, tone and style are not here; they live i
 ## The rule (confirmed, fixed)
 
 Every asset has one claim, one audience tension, one proof and one outcome. The order is Problem to Insight to System to Outcome. Source: `brand_guidelines/03_MARKETING_SYSTEM/02_MESSAGING_FRAMEWORK.md`. The visual expresses the claim through a tangible metaphor and the copy names it. A thumbnail is never asked to carry a whole positioning framework.
-
-## Transformation pairs (source: `01_BRAND_STORY.md`, `09_NARRATIVE_SYSTEMS.md`)
-
-Show a transformation, not a list of services. One pair per asset:
-
-- Unknown to understood.
-- Manual to adaptive.
-- Noise to signal.
-- Process to platform.
-- Insight to strategy.
-- Person to product to outcome.
-- Complexity to clarity.
-- Productivity to competitive advantage.
-
-One artwork never explains five transformations.
 
 ## Messaging stance
 
@@ -623,7 +606,7 @@ Signs positioning is broken, to report when seen: more than one descriptor in th
 
 ## Rights labels (source: `06_SOURCE_AND_RIGHTS.md`)
 
-Every reusable reference carries one label: `owned`, `licensed`, `public-reference-only`, `generated`, or `unknown: do not reuse`.
+Every reusable reference carries one label: `owned`, `licensed`, `public-reference-only`, or `generated`.
 
 - Record the source of every photograph, screenshot, logo, external reference and generated asset.
 - Confirm permission or licence for external imagery and fonts.
@@ -645,7 +628,7 @@ Where each rule came from, what conflicts, and what is still open. Tool and vend
 2. Approved patterns: repeated across several sources and promoted.
 3. Observations: seen once or in one source. Never a rule.
 
-A newer source wins over an older one unless the older is the owner's ruling. The 2023 Notion profile is stale background and is used for nothing without approval.
+
 
 ## Sources
 
@@ -656,7 +639,6 @@ A newer source wins over an older one unless the older is the owner's ruling. Th
 | `kits_design_system/docs/design.md` and kits docs | Yellow, ink, logo, surface, motion and layout feel | Rules restated here; every value stays in `wugweb-kits` |
 | `CLAUDE.md` | Six pillars, website, contact channel | Fixed for pillars |
 | The site | One positioning line in use | In use, not chosen |
-| 2023 Notion profile | Nothing | Stale |
 | Owner's Visual OS and Brand Strategy documents | Not yet supplied | Waiting |
 
 ## Where each file comes from
@@ -669,7 +651,7 @@ A newer source wins over an older one unless the older is the owner's ruling. Th
 | `audience.md` | Method only | No Wugweb source yet |
 | `messaging.md` | `03_MARKETING_SYSTEM/02_MESSAGING_FRAMEWORK.md`, `01_BRAND_STORY.md`, `02_VISUAL_SYSTEM/09_NARRATIVE_SYSTEMS.md` | Two or three sentences each |
 | `vocabulary.md` | `01_FOUNDATION/VOCABULARY.md`, `CLAUDE.md` | Short list |
-| `brand-facts.md` | `CLAUDE.md`, the site | Thin; see the 2023 profile note above |
+| `brand-facts.md` | `CLAUDE.md`, the site | Thin |
 | `review-gates.md` | `02_VISUAL_SYSTEM/20_DESIGN_CHECKLIST.md`, `09_VALIDATION/` | One paragraph each |
 | `visual-os/art-direction.md` | `02_VISUAL_SYSTEM/` files 01, 02, 06, 07, 08, 12, 13, 21; `DECISIONS.md` | Modes and decisions are the fullest sources |
 | `visual-os/colour-type-photo-motion.md` | `02_VISUAL_SYSTEM/` files 04, 05, 15, 16; the kits docs | Colour roles are full; the rest short |
@@ -741,7 +723,7 @@ Read on 2026-11-16, restated in our own words so the skill works without them. T
 | `brand-strategy.md` | Competitor set and capture row; two-axis map; stop, reduce, raise, add grid |
 | `messaging.md` | Message order; core message with supports; objection to proof table; proof strength |
 | `audience.md` | Job to be done; one to three segments; buying group; observation apart from interpretation |
-| `brand-facts.md` | Provenance on every fact; newer wins; proof with usage rights |
+| `brand-facts.md` | Provenance on every fact; proof with usage rights |
 | `values-and-principles.md` | "We are, we are not"; evidence levels in words |
 | `review-gates.md` | Claims check; findings with severity and a fix |
 | `visual-os/` | Direction from the subject's world; one signature element; restraint; dials; fixed-axis comparison; two-second test; description frame; layout types; slide rules; chart title rule |
@@ -800,7 +782,7 @@ This skill writes nothing to Notion, Sanity, R2 or `brand_guidelines/`. A Change
 | The owner's standing rules | `docs/skills/STANDING-RULES.md` in the repo |
 | The visual guidelines | `brand_guidelines/` in the repo |
 | Design system rules and values | `kits_design_system/docs/` in the repo, owned by `wugweb-kits` |
-| The stale 2023 profile | Notion; background only |
+| The stale 2023 profile | Notion |
 
 ## Outside Claude
 
@@ -824,7 +806,7 @@ The Visual check needs any model that can see images. A text-only model can chec
 
 ## Values
 
-**Not decided: owner.** Answered 2026-11-16: the owner will supply current values. The only values list on file is from the 2023 Notion profile, which is stale and not used. Until the owner supplies them, answer "values: not decided, the owner supplies them" and never derive values from the principles below.
+**Not decided: owner.** Answered 2026-11-16: the owner will supply current values. The only values list on file is from the 2023 Notion profile, which is stale. Until the owner supplies them, answer "values: not decided, the owner supplies them" and never derive values from the principles below.
 
 ## Principles (source: `brand_guidelines/01_FOUNDATION/PRINCIPLES.md`)
 
@@ -983,7 +965,6 @@ Selection questions:
 - Robots, android heads, AI brains, neural networks, circuit boards, holograms.
 - Cyberpunk, sci-fi cities, glowing blue technology.
 - A generic laptop or dashboard, most of all on a case-study cover.
-- Dense dashboards, tiny analytics widgets, fake interface filler, unless the subject is software (product proof mode).
 - Stock corporate teams, handshakes, glossy office scenes.
 - Ambient node webs, connector lines as texture, icon clouds, technology-logo mosaics.
 - Light bulbs, gears, rockets, shields and locks as wallpaper, graduation caps, steering wheels.
@@ -1101,7 +1082,7 @@ Palette behaviour by mode, from the same file:
 | Mode | Palette |
 | --- | --- |
 | Editorial thought leadership | Neutral base plus two or three accents |
-| Campaign collage | Black or light base plus three or four approved accents |
+| Campaign collage | Three or four approved accents |
 | Product proof | Neutral product interface plus one or two structural accents |
 | Systems and architecture | Neutral base, one anchor colour, restrained structural blue |
 | Typographic presentation | High contrast; one headline colour field may dominate |
@@ -1413,7 +1394,7 @@ A visual system should answer five questions: what the brand stands for, the cor
 
 The working steps:
 
-1. Start from the transformation pair in `messaging.md`.
+1. Start from the one claim in `messaging.md`.
 2. Ask what the audience would physically do to cause that change: search, assemble, select, navigate, place.
 3. Pick the tangible object that carries that act.
 4. Check it against the "avoid" column and the banned list in `art-direction.md`.

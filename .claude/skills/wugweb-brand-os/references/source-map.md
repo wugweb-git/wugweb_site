@@ -8,7 +8,7 @@ Where each rule came from, what conflicts, and what is still open. Tool and vend
 2. Approved patterns: repeated across several sources and promoted.
 3. Observations: seen once or in one source. Never a rule.
 
-A newer source wins over an older one unless the older is the owner's ruling. The 2023 Notion profile is stale background and is used for nothing without approval.
+
 
 ## Sources
 
@@ -19,7 +19,6 @@ A newer source wins over an older one unless the older is the owner's ruling. Th
 | `kits_design_system/docs/design.md` and kits docs | Yellow, ink, logo, surface, motion and layout feel | Rules restated here; every value stays in `wugweb-kits` |
 | `CLAUDE.md` | Six pillars, website, contact channel | Fixed for pillars |
 | The site | One positioning line in use | In use, not chosen |
-| 2023 Notion profile | Nothing | Stale |
 | Owner's Visual OS and Brand Strategy documents | Not yet supplied | Waiting |
 
 ## Where each file comes from
@@ -32,7 +31,7 @@ A newer source wins over an older one unless the older is the owner's ruling. Th
 | `audience.md` | Method only | No Wugweb source yet |
 | `messaging.md` | `03_MARKETING_SYSTEM/02_MESSAGING_FRAMEWORK.md`, `01_BRAND_STORY.md`, `02_VISUAL_SYSTEM/09_NARRATIVE_SYSTEMS.md` | Two or three sentences each |
 | `vocabulary.md` | `01_FOUNDATION/VOCABULARY.md`, `CLAUDE.md` | Short list |
-| `brand-facts.md` | `CLAUDE.md`, the site | Thin; see the 2023 profile note above |
+| `brand-facts.md` | `CLAUDE.md`, the site | Thin |
 | `review-gates.md` | `02_VISUAL_SYSTEM/20_DESIGN_CHECKLIST.md`, `09_VALIDATION/` | One paragraph each |
 | `visual-os/art-direction.md` | `02_VISUAL_SYSTEM/` files 01, 02, 06, 07, 08, 12, 13, 21; `DECISIONS.md` | Modes and decisions are the fullest sources |
 | `visual-os/colour-type-photo-motion.md` | `02_VISUAL_SYSTEM/` files 04, 05, 15, 16; the kits docs | Colour roles are full; the rest short |
@@ -104,7 +103,7 @@ Read on 2026-11-16, restated in our own words so the skill works without them. T
 | `brand-strategy.md` | Competitor set and capture row; two-axis map; stop, reduce, raise, add grid |
 | `messaging.md` | Message order; core message with supports; objection to proof table; proof strength |
 | `audience.md` | Job to be done; one to three segments; buying group; observation apart from interpretation |
-| `brand-facts.md` | Provenance on every fact; newer wins; proof with usage rights |
+| `brand-facts.md` | Provenance on every fact; proof with usage rights |
 | `values-and-principles.md` | "We are, we are not"; evidence levels in words |
 | `review-gates.md` | Claims check; findings with severity and a fix |
 | `visual-os/` | Direction from the subject's world; one signature element; restraint; dials; fixed-axis comparison; two-second test; description frame; layout types; slide rules; chart title rule |

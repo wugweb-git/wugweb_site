@@ -56,7 +56,6 @@ Selection questions:
 - Robots, android heads, AI brains, neural networks, circuit boards, holograms.
 - Cyberpunk, sci-fi cities, glowing blue technology.
 - A generic laptop or dashboard, most of all on a case-study cover.
-- Dense dashboards, tiny analytics widgets, fake interface filler, unless the subject is software (product proof mode).
 - Stock corporate teams, handshakes, glossy office scenes.
 - Ambient node webs, connector lines as texture, icon clouds, technology-logo mosaics.
 - Light bulbs, gears, rockets, shields and locks as wallpaper, graduation caps, steering wheels.
