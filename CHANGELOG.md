@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — case-study media manifest, dry run (2026-11-17)
+- Branch `case-manifest` only (wugweb-work Part 2 step 3). `scripts/lib/image-dims.mjs` (PNG/JPEG/WebP/GIF/AVIF/SVG header sizes, mp4 top-level atoms, moov parse with mvhd v1, tkhd rotation, audio track) and `scripts/lib/media-manifest.mjs` (own-folder rule, body media, folder files from the asset registry, HEAD + ranged reads, 4 requests at a time, ETag cache, shapes, flows, duplicates, suspects, posters). `scripts/lib/media-manifest.test.mjs` joins `npm run test:case`. `scripts/media-manifest-dry-run.mjs` wrote `docs/research/media-manifest-2026-11-17.md` for the owner. Read-only: no Sanity, Notion or R2 writes. Cache and full JSON under `scripts/data/` are gitignored.
+
 - fix(skills): wugweb-brand-os: all six pillar colours stand and the accent stays grey (owner, 2026-11-17); question 21 closed.
 ### Changed — wugweb-work NDA client unnamed, Wugweb facts point to brand-os (2026-11-17)
 - NDA clients never named in skill files, evals or examples; Wugweb facts only from brand-os brand-facts.md. Still 0.5.0.

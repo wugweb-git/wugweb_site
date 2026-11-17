@@ -28,3 +28,7 @@ sanity/debug-*-tmp.mjs
 # Another AI tool's local settings and command history (contained live tokens)
 .commandcode/
 sanity/schema.json
+
+# Media manifest (wugweb-work Part 2): measurement cache and full JSON churn every run
+scripts/data/media-manifest-cache.json
+scripts/data/media-manifest-*.json
