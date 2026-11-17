@@ -30,8 +30,18 @@ export function build() {
   const version = (skill.match(/version:\s*"([^"]+)"/) || [])[1] || 'unknown';
   const body = skill.replace(/^---\n[\s\S]*?\n---\n/, '').trim();
   const files = [...listMd('references'), ...listMd('references/visual-os'), ...listMd('examples')];
+  const rulesPath = join(ROOT, '..', '..', '..', 'docs', 'skills', 'STANDING-RULES.md');
+  const rules = existsSync(rulesPath)
+    ? readFileSync(rulesPath, 'utf8').replace(/^# .*\n+/, '').trim()
+    : 'The standing rules file (docs/skills/STANDING-RULES.md) was not found when this export was built. Ask the owner for it.';
   const parts = [
     `<!-- wugweb-brand-os ${version}. Built by scripts/build-export.mjs. Do not edit; edit the source files. -->`,
+    '',
+    '# Standing rules (copied from docs/skills/STANDING-RULES.md; read first, they win)',
+    '',
+    rules,
+    '',
+    '---',
     '',
     body,
   ];

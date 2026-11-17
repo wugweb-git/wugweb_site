@@ -1,5 +1,83 @@
 <!-- wugweb-brand-os 0.1.0. Built by scripts/build-export.mjs. Do not edit; edit the source files. -->
 
+# Standing rules (copied from docs/skills/STANDING-RULES.md; read first, they win)
+
+These apply to every skill in the Wugweb Skill System and to every session.
+Each skill reads this file and repeats none of it. A skill's own rules live in
+that skill. Where a helper skill or tool disagrees with a rule here, this file
+wins. Dates show when the owner set or confirmed a rule, where known.
+
+## Truth and evidence
+
+- Nothing is invented: no numbers, quotes or facts.
+- A claim needs a screen, a sourced number or a named fact. "Unvalidated" is a complete answer.
+- Existing content is an input, not the benchmark. (2026-10-19)
+- Every number in a report is computed, never estimated.
+
+## Sources and approval
+
+- Notion is the source for case studies and blog posts. (2026-10-13)
+- One source, from the owner. Content is enriched only as a proposal. (2026-10-19)
+- Changes are shown as current to proposed, with the reason.
+- Nothing is written to the content source or the CMS without the owner's approval of that exact change, with a backup first.
+- Nothing is deleted without asking: no data, files, records or pages.
+- Nothing is posted or scheduled without the owner's yes for that post. (2026-11-16)
+- Third-party helper skills return proposals or reports. Only a Wugweb skill writes, and only after approval. (2026-11-16)
+- Nothing goes to development until the owner says so. (2026-11-16)
+
+## Media
+
+- Media lives in the owner's media store only: no uploads, no local copies.
+- Files are never cropped or re-encoded.
+- Media may be shown at any size if the original aspect ratio is kept. Clipping masks are allowed. (2026-11-16)
+- Resizing and masks are done on the page, never by making new files. (confirmed 2026-11-16)
+- A mask must not hide the part of a screen that proves the claim. (confirmed 2026-11-16)
+- A file shown above its natural size is flagged, not banned. (confirmed 2026-11-16)
+- No sound anywhere. Every video is muted. (2026-11-11)
+- A new image file is made only when nothing existing fits, one file at a time, on the owner's yes for that file. (2026-11-11)
+
+## Writing
+
+- British English.
+- Sentence case.
+- No em or en dashes in anything a visitor reads. Ranges are written out.
+
+## Working with the owner
+
+- Replies are short and plain, result first.
+- Do exactly what is asked. No side tasks.
+- Full output: complete files, no placeholders, no "rest unchanged".
+- Do not raise the domain cutover, asset clean-up or the cookie policy unless asked.
+
+## Limits
+
+- Never exceed any vendor's free tier. No feature that needs a paid plan unless the owner asks.
+- No dependency on Framer: no Framer URLs, redirects or assets. (2026-10-13)
+- One slug per page; no redirects for old URLs. (2026-10-13)
+
+## The skill system
+
+- One home per rule. Each rule lives in exactly one skill; the others point to it. (2026-11-16)
+- One Notion page per skill: no sub-pages, nothing elsewhere. The repo keeps one copy as that skill's PLAN file. (2026-11-16)
+- Every skill must be usable in GPT, Cursor and other tools, not only Claude. (2026-11-16)
+- The layout values in the design system's layout shell document are binding. Skills read that document and point to `wugweb-kits`. (2026-11-16)
+
+## Git, only when asked to commit
+
+- Commit by path. Never add everything at once.
+- The only trailer is `Co-Authored-By: Wugweb <admin@wugweb.com>`.
+- Check for an index lock first; other sessions share the checkout.
+- Every commit adds a line to the changelog.
+- Push only on the owner's go.
+
+## Working caution, not an owner rule
+
+- When writing to Notion, never write a bare word-colon-word pattern or a bare
+  file name ending in a dot and "md". Notion turns them into links and can
+  corrupt the page. Put them in inline code or reword. (found 2026-11-16)
+
+---
+
 # wugweb-brand-os
 
 The single place that says who Wugweb is and what its visuals must mean. It holds brand strategy, approved facts about Wugweb, brand rules and Visual OS (art direction). It is reference only: it answers, checks and proposes. It never authors or rewrites content, and it writes nothing anywhere.
@@ -962,7 +1040,7 @@ Selection questions:
 
 ## Banned
 
-- Robots, android heads, AI brains, neural networks, circuit boards, holograms.
+- Robots, android heads, AI brains, neural networks, circuit boards, holograms. For an AI subject, use the Intelligence metaphor in `metaphors.md` instead.
 - Cyberpunk, sci-fi cities, glowing blue technology.
 - A generic laptop or dashboard, most of all on a case-study cover.
 - Stock corporate teams, handshakes, glossy office scenes.
@@ -1002,7 +1080,14 @@ Selection questions:
 
 In these guidelines, "crop" means how a subject is framed in a composition. An existing media file is never cropped. It is resized with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
 
-The owner's media rule is confirmed and wins over any guideline wording. This definition, and four wording changes to the guideline files, are a proposal waiting on the owner (question 12). No guideline file is edited.
+The owner's media rule is confirmed and wins over any guideline wording. The definition is approved (question 12, 2026-11-17). Four wording changes to the guideline files were also proposed. They are held, because `brand_guidelines/` stays an untouched archive (question 5); the owner decides which wins. No guideline file is edited.
+
+| File | Current | Proposed |
+| --- | --- | --- |
+| `08_ARTWORK_FORMULAS/Editorial_Hero.md` | "a decisive crop" | "a decisive framing" |
+| `02_VISUAL_SYSTEM/13_EDITORIAL_SYSTEM.md` | "decisive crops" | "decisive framing" |
+| `03_MARKETING_SYSTEM/04_SOCIAL_MEDIA.md` | "decisive crop" | "decisive framing" |
+| `02_VISUAL_SYSTEM/02_COMPOSITION.md` | "Crop boldly at edges" | "Let the anchor run off the edge of the canvas, using a mask or frame" |
 
 ## Editorial feel
 

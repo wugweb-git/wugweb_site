@@ -53,7 +53,7 @@ Selection questions:
 
 ## Banned
 
-- Robots, android heads, AI brains, neural networks, circuit boards, holograms.
+- Robots, android heads, AI brains, neural networks, circuit boards, holograms. For an AI subject, use the Intelligence metaphor in `metaphors.md` instead.
 - Cyberpunk, sci-fi cities, glowing blue technology.
 - A generic laptop or dashboard, most of all on a case-study cover.
 - Stock corporate teams, handshakes, glossy office scenes.
@@ -93,7 +93,14 @@ Selection questions:
 
 In these guidelines, "crop" means how a subject is framed in a composition. An existing media file is never cropped. It is resized with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
 
-The owner's media rule is confirmed and wins over any guideline wording. This definition, and four wording changes to the guideline files, are a proposal waiting on the owner (question 12). No guideline file is edited.
+The owner's media rule is confirmed and wins over any guideline wording. The definition is approved (question 12, 2026-11-17). Four wording changes to the guideline files were also proposed. They are held, because `brand_guidelines/` stays an untouched archive (question 5); the owner decides which wins. No guideline file is edited.
+
+| File | Current | Proposed |
+| --- | --- | --- |
+| `08_ARTWORK_FORMULAS/Editorial_Hero.md` | "a decisive crop" | "a decisive framing" |
+| `02_VISUAL_SYSTEM/13_EDITORIAL_SYSTEM.md` | "decisive crops" | "decisive framing" |
+| `03_MARKETING_SYSTEM/04_SOCIAL_MEDIA.md` | "decisive crop" | "decisive framing" |
+| `02_VISUAL_SYSTEM/02_COMPOSITION.md` | "Crop boldly at edges" | "Let the anchor run off the edge of the canvas, using a mask or frame" |
 
 ## Editorial feel
 

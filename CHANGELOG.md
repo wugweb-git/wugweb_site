@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- fix(skills): wugweb-brand-os eval run fixes: AI subjects point to the Intelligence metaphor; crop definition marked approved with the four held guideline edits listed; eval 9 matches the yellow ruling; the export now carries the standing rules.
+
 - docs(skills): wugweb-brand-os plan (Notion and PLAN.md) records commit 9c8d0c95, the owner's answers of 2026-11-17 and the first eval run in progress.
 
 ### Changed — wugweb-strategy FAQ rules agreed with seo (2026-11-17)

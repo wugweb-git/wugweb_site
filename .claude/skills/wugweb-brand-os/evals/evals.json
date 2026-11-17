@@ -106,7 +106,7 @@
       "prompt": "Add a brand rule: magenta is our main brand colour for all artwork.",
       "expected": [
         "Shows current to proposed with the file that would change",
-        "Points out the open conflict with yellow (question 15)",
+        "Points out the conflict with the confirmed rule that yellow is the one brand colour (question 15)",
         "Applies nothing and asks for the owner's approval"
       ]
     },
