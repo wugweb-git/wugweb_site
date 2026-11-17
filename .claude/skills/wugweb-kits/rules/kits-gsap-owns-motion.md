@@ -7,7 +7,7 @@ tags: kits, motion
 
 ## GSAP Owns Motion, One Owner Per Property
 
-Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control.
+Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control and is not hidden from assistive tech; a loop of 5 seconds or less with no control stays hidden. Owner confirmed 2026-11-17.
 
 **Incorrect:**
 
