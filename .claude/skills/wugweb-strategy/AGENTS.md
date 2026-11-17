@@ -495,6 +495,10 @@ The `faqs` field stays in the layout shell. This skill decides when a piece gets
 - **Who supplies the answers:** the owner's source (the Notion row or an owner-written answer). `wugweb-work` does not invent an answer; with no source the question is cut or marked "owner to answer".
 - **How many:** owner to set. Never padded to reach a number.
 - **Where it sits in the brief:** field 8 lists the approved questions under "Questions on the page", each marked with its signal-log source; field 11 names the answer source for each. A piece with no block says "no FAQ block" in field 8.
+- **Posts and the field:** a post gets a `faqs` field only when a post needs one. Adding the field is site work and needs the owner's go.
+- **Exempt:** `/kits` is design-system documentation, not Wugweb content, and is outside this rule.
+- **`/faq`:** the one dedicated FAQ page (owner, 2026-11-17). Its questions come from the signal log and its answers from the owner's source, under the same review as service pages. It shows visible FAQ content with no FAQPage markup (owner, 2026-11-17), so the line stays service pages and blog posts only.
+- **Existing copy:** the typed FAQ copy on the six service pages may stay live while it is reviewed (owner, 2026-11-17). Each question is kept, answered again or cut by the owner.
 - **Visibility:** every question and answer in the block appears on the page for the reader. `wugweb-seo` checks this.
 
 ## Acceptance (field 17)
@@ -636,7 +640,7 @@ The content types, what each is for, where each is stored, and the planning fiel
 
 ## Shape of the cluster
 
-Hub and spoke: a service page is the hub; posts are spokes. One topic, one page. No mixed intents in one cluster. No orphan piece: every post links to at least one service page and to others in its cluster. Which pages are linked is decided here (proof map and brief field 10); how links are made is `wugweb-seo`'s.
+Hub and spoke: a service page is the hub; posts are spokes. One topic, one page. No mixed intents in one cluster. No orphan piece: every post links to at least one service page and to others in its cluster. Which pages are linked is decided here (proof map and brief field 10); how links are made is `wugweb-seo`'s. A case study links up to its service page only, and across to two or three sibling case studies. Sector pages are not a link-up target (owner, 2026-11-17).
 
 ## Planning fields
 

@@ -1,15 +1,14 @@
 import React from 'react';
-import { Card, Text, Badge, Flex, Box, Stack, Code as SanityCode } from '@sanity/ui';
-import {
-  LaunchIcon,
-  BarChartIcon,
-  HelpCircleIcon,
-  PlayIcon,
-  ImageIcon,
-  CodeBlockIcon,
-  SplitHorizontalIcon,
-  ImagesIcon,
-} from '@sanity/icons';
+import { Card, Text, Badge, Flex, Box, Stack } from '@sanity/ui';
+import { Code as SanityCode } from '@sanity/ui/code';
+import { LaunchIcon } from '@sanity/icons/Launch';
+import { BarChartIcon } from '@sanity/icons/BarChart';
+import { HelpCircleIcon } from '@sanity/icons/HelpCircle';
+import { PlayIcon } from '@sanity/icons/Play';
+import { ImageIcon } from '@sanity/icons/Image';
+import { CodeBlockIcon } from '@sanity/icons/CodeBlock';
+import { SplitHorizontalIcon } from '@sanity/icons/SplitHorizontal';
+import { ImagesIcon } from '@sanity/icons/Images';
 
 // ── CTA Preview Component ──
 export function CtaPreview(props: any) {
@@ -17,9 +16,9 @@ export function CtaPreview(props: any) {
   return (
     <Card padding={3} radius={2} tone="primary" border style={{ background: 'rgba(255, 208, 0, 0.04)' }}>
       <Flex align="center" justify="space-between" gap={3}>
-        <Stack space={2}>
+        <Stack gap={2}>
           <Flex align="center" gap={2}>
-            <Badge tone="caution" fontSize={0} mode="outline">CTA BLOCK</Badge>
+            <Badge tone="caution" fontSize={0}>CTA BLOCK</Badge>
             <Text weight="bold" size={1}>{heading || 'Call to Action'}</Text>
           </Flex>
           {body && <Text size={0} muted>{body}</Text>}
@@ -42,10 +41,10 @@ export function StatsPreview(props: any) {
   const items = props?.items || [];
   return (
     <Card padding={3} radius={2} tone="default" border>
-      <Stack space={2}>
+      <Stack gap={2}>
         <Flex align="center" gap={2}>
           <BarChartIcon />
-          <Badge tone="positive" fontSize={0} mode="outline">STATS ROW ({items.length})</Badge>
+          <Badge tone="positive" fontSize={0}>STATS ROW ({items.length})</Badge>
         </Flex>
         <Flex gap={2} wrap="wrap">
           {items.map((item: any, idx: number) => (
@@ -65,7 +64,7 @@ export function AccordionPreview(props: any) {
   const { title, items = [] } = props || {};
   return (
     <Card padding={3} radius={2} tone="default" border>
-      <Stack space={2}>
+      <Stack gap={2}>
         <Flex align="center" justify="space-between">
           <Flex align="center" gap={2}>
             <HelpCircleIcon />
@@ -92,9 +91,9 @@ export function VideoPreview(props: any) {
         <Card padding={3} radius={2} tone="caution" style={{ background: 'rgba(255, 208, 0, 0.1)' }}>
           <PlayIcon style={{ fontSize: 24, color: '#ffd000' }} />
         </Card>
-        <Stack space={1} flex={1}>
+        <Stack gap={1} flex={1}>
           <Flex align="center" gap={2}>
-            <Badge tone="caution" fontSize={0} mode="outline">VIDEO</Badge>
+            <Badge tone="caution" fontSize={0}>VIDEO</Badge>
             {autoplay && <Badge tone="positive" fontSize={0}>AUTOPLAY</Badge>}
             {loop && <Badge tone="default" fontSize={0}>LOOP</Badge>}
           </Flex>
@@ -111,7 +110,7 @@ export function CodePreview(props: any) {
   const { language, code } = props || {};
   return (
     <Card padding={3} radius={2} tone="default" border style={{ background: '#111' }}>
-      <Stack space={2}>
+      <Stack gap={2}>
         <Flex align="center" justify="space-between">
           <Flex align="center" gap={2}>
             <CodeBlockIcon />
@@ -131,10 +130,10 @@ export function TwoColumnsPreview(props: any) {
   const { layout = '50/50' } = props || {};
   return (
     <Card padding={3} radius={2} tone="default" border>
-      <Stack space={2}>
+      <Stack gap={2}>
         <Flex align="center" gap={2}>
           <SplitHorizontalIcon />
-          <Badge tone="default" fontSize={0} mode="outline">2 COLUMNS ({layout})</Badge>
+          <Badge tone="default" fontSize={0}>2 COLUMNS ({layout})</Badge>
         </Flex>
         <Flex gap={2}>
           <Card padding={2} radius={2} border tone="transparent" flex={1}>
@@ -179,9 +178,9 @@ export function CalloutPreview(props: any) {
 
   return (
     <Card padding={3} radius={2} tone={tone} border style={{ background: 'rgba(255, 208, 0, 0.03)' }}>
-      <Stack space={2}>
+      <Stack gap={2}>
         <Flex align="center" gap={2}>
-          <Badge tone={tone} fontSize={0} mode="outline">
+          <Badge tone={tone} fontSize={0}>
             {type.toUpperCase()}
           </Badge>
           <Text weight="bold" size={1}>{title || 'Notice / Callout'}</Text>
@@ -197,7 +196,7 @@ export function QuoteBlockPreview(props: any) {
   const { quote, author, role, company } = props || {};
   return (
     <Card padding={3} radius={2} tone="default" border style={{ borderLeft: '3px solid #ffd000' }}>
-      <Stack space={2}>
+      <Stack gap={2}>
         <Text size={1} style={{ fontStyle: 'italic' }}>
           "{quote || 'Quote text…'}"
         </Text>
@@ -218,7 +217,7 @@ export function ComparisonTablePreview(props: any) {
   const { title, columns = [], rows = [] } = props || {};
   return (
     <Card padding={3} radius={2} tone="default" border>
-      <Stack space={2}>
+      <Stack gap={2}>
         <Flex align="center" justify="space-between">
           <Text weight="bold" size={1}>{title || 'Comparison Table'}</Text>
           <Badge tone="default" fontSize={0}>{rows.length} Rows</Badge>
@@ -226,7 +225,7 @@ export function ComparisonTablePreview(props: any) {
         {columns.length > 0 && (
           <Flex gap={2} wrap="wrap">
             {columns.map((c: string, idx: number) => (
-              <Badge key={idx} tone="primary" mode="outline" fontSize={0}>{c}</Badge>
+              <Badge key={idx} tone="primary" fontSize={0}>{c}</Badge>
             ))}
           </Flex>
         )}

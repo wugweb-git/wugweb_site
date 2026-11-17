@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Badge, Button, Card, Flex, Select, Stack, Text, TextInput, useToast } from '@sanity/ui';
+import { Badge, Button, Card, Flex, Select, Stack, Text, TextInput } from '@sanity/ui';
+import { useToast } from '@sanity/ui/toast';
 import {
   ASSIGN_TARGETS,
   assetWritePath,
@@ -287,9 +288,9 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
   const replaces = field.kind === 'string' && currentValue && !sameValue;
 
   return (
-    <Stack space={3} style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
+    <Stack gap={3} style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
       {/* Used by */}
-      <Stack space={2}>
+      <Stack gap={2}>
         <Flex align="center" gap={2}>
           <Text size={1} weight="bold">Used by</Text>
           <Badge fontSize={0} tone={usedBy.length ? 'positive' : 'caution'}>{loading ? '…' : usedBy.length}</Badge>
@@ -299,7 +300,7 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
         )}
         {grouped.map((g) => (
           <Card key={g.docId} padding={2} radius={2} border>
-            <Stack space={2}>
+            <Stack gap={2}>
               <Text size={1} weight="semibold">{g.label}</Text>
               <Text size={0} style={{ color: MUTED, fontFamily: 'monospace', wordBreak: 'break-all' }}>
                 {g.fields.join(', ')}
@@ -323,7 +324,7 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
       </Stack>
 
       {/* Assign */}
-      <Stack space={2} style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
+      <Stack gap={2} style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
         <Text size={1} weight="bold">Assign to…</Text>
         <Select value={type} onChange={(e) => setType(e.currentTarget.value)} aria-label="Document type">
           {ASSIGN_TARGETS.map((t) => (
@@ -336,7 +337,7 @@ export function AssetUsagePanel({ asset, client, undo, pushUndo, popUndo, onChan
           onChange={(e) => setQuery(e.currentTarget.value)}
           aria-label="Search documents"
         />
-        <Stack space={1} style={{ maxHeight: 150, overflowY: 'auto' }}>
+        <Stack gap={1} style={{ maxHeight: 150, overflowY: 'auto' }}>
           {results.map((r) => (
             <Button
               key={r._id}

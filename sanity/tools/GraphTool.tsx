@@ -12,13 +12,11 @@ import {
   Select,
   TextInput,
 } from '@sanity/ui';
-import {
-  RefreshIcon,
-  LaunchIcon,
-  SearchIcon,
-  ControlsIcon,
-  SplitHorizontalIcon,
-} from '@sanity/icons';
+import { RefreshIcon } from '@sanity/icons/Refresh';
+import { LaunchIcon } from '@sanity/icons/Launch';
+import { SearchIcon } from '@sanity/icons/Search';
+import { ControlsIcon } from '@sanity/icons/Controls';
+import { SplitHorizontalIcon } from '@sanity/icons/SplitHorizontal';
 import { StudioErrorBoundary } from '../components/StudioErrorBoundary';
 
 interface GraphNode {
@@ -243,9 +241,9 @@ function GraphToolContent() {
 
   return (
     <Card padding={[2, 3, 4]} tone="default" style={{ minHeight: '100%' }}>
-      <Stack space={4}>
+      <Stack gap={4}>
         <Flex justify="space-between" align="center" wrap="wrap" gap={3}>
-          <Stack space={1}>
+          <Stack gap={1}>
             <Text size={3} weight="bold">Document Reference Graph</Text>
             <Text size={1} muted>
               Interactive topology showing links between Posts, Case Studies, Clients, Services, and Team
@@ -425,7 +423,7 @@ function GraphToolContent() {
                 radius={2}
                 style={{ width: 280, background: '#121215' }}
               >
-                <Stack space={3}>
+                <Stack gap={3}>
                   <Flex align="center" justify="space-between">
                     <Badge tone="primary" fontSize={0}>
                       {selectedNode.type.toUpperCase()}
@@ -439,7 +437,7 @@ function GraphToolContent() {
                     />
                   </Flex>
 
-                  <Stack space={1}>
+                  <Stack gap={1}>
                     <Text size={2} weight="bold">{selectedNode.label}</Text>
                     {selectedNode.slug && (
                       <Text size={0} muted style={{ fontFamily: 'monospace' }}>

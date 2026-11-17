@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Card, Flex, Stack, Text, Badge, Button, TextInput } from '@sanity/ui';
-import { SearchIcon, StarIcon, TrashIcon } from '@sanity/icons';
+import { SearchIcon } from '@sanity/icons/Search';
+import { StarIcon } from '@sanity/icons/Star';
+import { TrashIcon } from '@sanity/icons/Trash';
 import { useClient } from 'sanity';
 import { fetchDocs } from '../lib/groq';
 import { loadLS, saveLS } from '../lib/localState';
@@ -104,7 +106,7 @@ function SearchToolContent() {
           outline-offset: -2px;
         }
       `}</style>
-      <Stack space={4}>
+      <Stack gap={4}>
         <Box>
           <Text size={3} weight="semibold">Advanced Multi-Field Search</Text>
           <Text size={1} muted>Search across all schemas using prefix filters: <code>type:post</code> <code>category:Strategy</code> <code>author:Vedanshu</code></Text>
@@ -160,7 +162,7 @@ function SearchToolContent() {
                         onClick={openRow}
                         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openRow(); } }}>
                         <td style={{ padding: '8px 12px' }}><Text size={1} weight="semibold">{rowTitle}</Text></td>
-                        <td style={{ padding: '8px 12px' }}><Badge tone="primary" mode="outline" fontSize={1}>{r._type}</Badge></td>
+                        <td style={{ padding: '8px 12px' }}><Badge tone="primary" fontSize={1}>{r._type}</Badge></td>
                         <td style={{ padding: '8px 12px' }}><Text size={1} muted>@{String(r.slug ?? '')}</Text></td>
                         <td style={{ padding: '8px 12px' }}><Text size={1} muted>{String(r.category ?? '—')}</Text></td>
                         <td style={{ padding: '8px 12px' }}><Text size={1} muted>{String(r.status ?? '—')}</Text></td>

@@ -4,7 +4,7 @@ import { useClient } from 'sanity';
 import { DataTable } from '../components/DataTable';
 import { TABLE_CONFIGS, TABLE_MAP } from '../lib/tableConfigs';
 import { fetchDocs } from '../lib/groq';
-import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs } from '../lib/docActions';
+import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs, SINGLETON_TYPES } from '../lib/docActions';
 import type { Row } from '../lib/types';
 import { seoTableProps } from '../lib/seoTable';
 
@@ -45,6 +45,9 @@ export function TablesTool() {
     load();
   }, [load, reloadKey]);
 
+  // Pages, sections and settings exist once per key: no Duplicate or Delete.
+  const locked = !!config && SINGLETON_TYPES.has(config.type);
+
   return (
     <Card tone="default" padding={[2, 3]}>
       <Flex align="center" gap={3} wrap="wrap" paddingBottom={3}>
@@ -75,11 +78,13 @@ export function TablesTool() {
         getMarkdown={seo.getMarkdown}
         bulkActions={[
           ...seo.bulkActions,
-          { id: 'duplicate', label: 'Duplicate', run: (ids) => duplicateDocs(client, ids) },
+          ...(locked ? [] : [{ id: 'duplicate', label: 'Duplicate', run: (ids: string[]) => duplicateDocs(client, ids) }]),
           { id: 'publish', label: 'Publish', run: (ids) => publishDocs(client, ids) },
-          { id: 'unpublish', label: 'Unpublish', run: (ids) => unpublishDocs(client, ids) },
-          { id: 'archive', label: 'Archive', run: (ids) => archiveDocs(client, ids) },
-          { id: 'delete', label: 'Delete', danger: true, confirm: 'Delete selected documents?', run: (ids) => deleteDocs(client, ids) },
+          ...(locked ? [] : [
+            { id: 'unpublish', label: 'Unpublish', run: (ids: string[]) => unpublishDocs(client, ids) },
+            { id: 'archive', label: 'Archive', run: (ids: string[]) => archiveDocs(client, ids) },
+            { id: 'delete', label: 'Delete', danger: true, confirm: 'Delete selected documents?', run: (ids: string[]) => deleteDocs(client, ids) },
+          ]),
         ]}
         client={client}
       />

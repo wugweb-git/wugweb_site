@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Box, Card, Flex, Stack, Text } from '@sanity/ui';
-import { AddIcon } from '@sanity/icons';
+import { AddIcon } from '@sanity/icons/Add';
 import { useClient } from 'sanity';
 import { usePaneRouter } from 'sanity/structure';
 import { DataTable } from './DataTable';
 import { TABLE_MAP } from '../lib/tableConfigs';
 import { seoTableProps } from '../lib/seoTable';
 import { fetchDocs } from '../lib/groq';
-import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs, setFieldDocs } from '../lib/docActions';
+import { duplicateDocs, publishDocs, unpublishDocs, archiveDocs, deleteDocs, setFieldDocs, SINGLETON_TYPES } from '../lib/docActions';
 import type { Row } from '../lib/types';
 
 interface DocumentListPaneProps {
@@ -65,17 +65,19 @@ export function DocumentListPane(props: DocumentListPaneProps) {
 
   const openRow = (row: Row) => paneRouter.navigateIntent('edit', { id: row._id, type: config.type });
   const newDoc = () => paneRouter.navigateIntent('new', { type: config.type });
+  // Pages, sections and settings exist once per key: no New, Duplicate or Delete here.
+  const locked = SINGLETON_TYPES.has(config.type);
 
   return (
     <Card tone="default" padding={[2, 3]} style={{ minHeight: '100%' }}>
       <Flex align="center" gap={2} paddingBottom={3}>
         <Box flex={1}>
-          <Stack space={2}>
+          <Stack gap={2}>
             <Text size={2} weight="semibold">{config.title}</Text>
             <Text size={1} muted>{rows.length} documents</Text>
           </Stack>
         </Box>
-        <ButtonNew onClick={newDoc} />
+        {!locked && <ButtonNew onClick={newDoc} />}
       </Flex>
       <DataTable
         rows={rows}
@@ -98,11 +100,13 @@ export function DocumentListPane(props: DocumentListPaneProps) {
             options: set.options,
             run: (ids: string[], c: any, value?: string) => setFieldDocs(c, ids, set.field, value ?? ''),
           })),
-          { id: 'duplicate', label: 'Duplicate', run: (ids) => duplicateDocs(client, ids) },
+          ...(locked ? [] : [{ id: 'duplicate', label: 'Duplicate', run: (ids: string[]) => duplicateDocs(client, ids) }]),
           { id: 'publish', label: 'Publish', run: (ids) => publishDocs(client, ids) },
-          { id: 'unpublish', label: 'Unpublish', run: (ids) => unpublishDocs(client, ids) },
-          { id: 'archive', label: 'Archive', run: (ids) => archiveDocs(client, ids) },
-          { id: 'delete', label: 'Delete', danger: true, confirm: 'Delete selected documents?', run: (ids) => deleteDocs(client, ids) },
+          ...(locked ? [] : [
+            { id: 'unpublish', label: 'Unpublish', run: (ids: string[]) => unpublishDocs(client, ids) },
+            { id: 'archive', label: 'Archive', run: (ids: string[]) => archiveDocs(client, ids) },
+            { id: 'delete', label: 'Delete', danger: true, confirm: 'Delete selected documents?', run: (ids: string[]) => deleteDocs(client, ids) },
+          ]),
         ]}
         client={client}
       />

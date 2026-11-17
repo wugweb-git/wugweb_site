@@ -63,7 +63,7 @@ Empty. "No filler words" is a confirmed owner rule, but he has not yet ruled on 
 
 ## Banned words (candidate, waiting on the owner's ruling)
 
-Source: the draft "Writing style and tone" section of `docs/skills/wugweb-work/PLAN.md` (section 5), written from his decisions but not yet reviewed by him as his voice. Not flagged; reported as questions.
+Source: the draft "Writing style and tone" section of `docs/skills/wugweb-work/PLAN.md` (section 5), written from his decisions but not yet reviewed by him as his voice. Not flagged; reported as questions. In a rewrite or a proposed change, leave candidate and unruled words in place and ask the owner; never drop or replace a word as filler on your own judgment.
 
 ```banned-candidate
 pivotal

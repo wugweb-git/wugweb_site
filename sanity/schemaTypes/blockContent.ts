@@ -11,21 +11,19 @@ import {
   QuoteBlockPreview,
   ComparisonTablePreview,
 } from '../components/BlockPreviews';
-import {
-  LaunchIcon,
-  BarChartIcon,
-  HelpCircleIcon,
-  PlayIcon,
-  ImageIcon,
-  CodeBlockIcon,
-  SplitHorizontalIcon,
-  ImagesIcon,
-  InfoOutlineIcon,
-  StarIcon,
-  ThListIcon,
-  LinkIcon,
-  DocumentIcon,
-} from '@sanity/icons';
+import { LaunchIcon } from '@sanity/icons/Launch';
+import { BarChartIcon } from '@sanity/icons/BarChart';
+import { HelpCircleIcon } from '@sanity/icons/HelpCircle';
+import { PlayIcon } from '@sanity/icons/Play';
+import { ImageIcon } from '@sanity/icons/Image';
+import { CodeBlockIcon } from '@sanity/icons/CodeBlock';
+import { SplitHorizontalIcon } from '@sanity/icons/SplitHorizontal';
+import { ImagesIcon } from '@sanity/icons/Images';
+import { InfoOutlineIcon } from '@sanity/icons/InfoOutline';
+import { StarIcon } from '@sanity/icons/Star';
+import { ThListIcon } from '@sanity/icons/ThList';
+import { LinkIcon } from '@sanity/icons/Link';
+import { DocumentIcon } from '@sanity/icons/Document';
 
 // Modular content blocks — same flexibility as Framer CMS
 export const blockContent = defineType({

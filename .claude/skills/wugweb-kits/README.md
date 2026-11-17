@@ -26,6 +26,7 @@ wugweb-kits/
 │   ├── label-*.md      8 rules · HIGH
 │   └── kits-*.md       10 rules · HIGH
 ├── references/         layout-shell, component-sizes, six-layers, spec-templates, known-doc-clashes, standing-rules
+├── evals/run.mjs       17 eval cases (pass, fail, blocked)
 └── scripts/
     ├── lib.mjs         shared frontmatter + rule parsing
     ├── validate.mjs    lint the rules and the whole skill

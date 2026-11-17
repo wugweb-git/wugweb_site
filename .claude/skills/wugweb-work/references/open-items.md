@@ -33,6 +33,9 @@ No matter is open with the owner (2026-11-17). Any output that depends on an ope
 | Plan vetting | The plan is approved as it stands and Part 1 stays locked. Starting Part 2 (site code) still needs the owner's own go | the plan; `SKILL.md` |
 | Replies and outreach | Out of the Forms module. A reply or pitch asked for is drafted as a one-off, with no fact ledger | `forms.md` |
 | Made files and scheduling | Made files are kept in the media store named in `ops-cycle.md`, under the piece's own folder, each only on the owner's yes for that file; the owner puts the file there, and this skill never uploads. No scheduling tool is connected: every post is handed to the owner as an approved draft to post | `forms.md`, `forms/publish-approval.md` |
+| Proposal on request | A direct request for a v2 proposal still runs Audit, Media and Look first, in the same task | `SKILL.md` step 5 |
+| Published v1 body as proof | Counts for the facts it already publishes; any other claim needs an approved v2 body or the owner's answer | `handoffs.md`, handoff 7 |
+| Hero subtitle timing | Proposed only after the body is read, never from the name or partner alone | `copy-and-seo.md` |
 | LinkedIn tags | None | `forms.md`, `forms/linkedin-post.md` |
 | NTUC | Not an open input: NTUC U Care is a worked example only. Its missing facts (results, live URL, builder steps, heading typeface) are shown in the examples as the owner questions a real piece would raise | `examples/` |
 | Medium | Not a form of its own: the approved blog post, unchanged, with a link to the original | `forms.md` |

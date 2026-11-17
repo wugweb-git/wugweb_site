@@ -44,7 +44,7 @@ These come from the owner's standing rules, not from samples. They apply to all 
 2. Sentence case for headings, labels and buttons.
 3. No em or en dashes in visible copy. Write ranges out ("3 to 5").
 4. Never invent a number, quote or fact. A claim needs a screen, a sourced number or a named fact.
-5. No filler words. Which words count is waiting on his ruling; the candidate list is in `references/words.md`.
+5. No filler words. Which words count is waiting on his ruling; until then raise candidates, never remove them (`references/words.md`).
 
 Internal documents are not visible copy, but this skill's own files follow the same rules so the export stays clean.
 
@@ -93,7 +93,7 @@ Confidence is high, medium or low. Always give the evidence with it: samples in 
 Run the mechanical part with:
 
 ```
-node scripts/check.mjs <file.md> [--mode <mode>] [--json]
+node scripts/check.mjs <file.md> [--mode <mode>] [--sources] [--json]
 cat draft.txt | node scripts/check.mjs - --mode linkedin-post
 ```
 
@@ -222,6 +222,8 @@ Not applied. Each waits on the owner's ruling, and is shown to him as current â†
 | C-02 | "Tone in one line: a senior practitioner explaining what was built and why, to a peer" | Same | Waiting on ruling |
 | C-03 | Copy and messaging lines in `brand_guidelines/` | `brand_guidelines/03_MARKETING_SYSTEM/14_COPY_GUIDELINES.md`, `02_MESSAGING_FRAMEWORK.md` | Not yet read in full |
 | C-04 | Sanity "Brand voice" draft | Sanity site settings | Not yet read in full; marks its own audience line as inferred |
+| C-05 | "Not decorative or hype-driven": use words that describe systems and relationships, not decorative or hype-driven language | `brand_guidelines/01_FOUNDATION/VOCABULARY.md` (line 22); routed 2026-11-17 by `wugweb-brand-os`'s audit via the coordinator | Waiting on the owner's ruling; put to him with the other candidates |
+| C-06 | "Outcomes over hype": prefer claims about outcomes, decisions, systems and experiences over hype | `brand_guidelines/03_MARKETING_SYSTEM/14_COPY_GUIDELINES.md` (line 5); same routing | Waiting on the owner's ruling; put to him with the other candidates |
 
 Helper skill advice is not listed here as rules. The plan's "Extracted and absorbed" table records what helpers offer; each item enters this table only when a sample or the owner backs it.
 
@@ -247,7 +249,7 @@ Each mode section, once calibrated, holds:
 | `case-study` | Case study page | 0 | Full sentences, evidence in every chapter | Waiting on samples |
 | `card` | Card and tile | 0 | Client, one line of what was built, no adjectives | Waiting on samples |
 | `deck` | Deck slide | 0 | One claim per slide, the screen does the talking | Waiting on samples |
-| `linkedin-post` | LinkedIn post | 0 | First person plural, one lesson from the project, same facts as the page | Waiting on samples |
+| `linkedin-post` | LinkedIn post | 0 | Pronoun is the owner's pick per piece (we or I), one lesson from the project, same facts as the page | Waiting on samples |
 | `carousel` | Carousel | 0 | None | Waiting on samples or a ruling |
 | `captions` | Behance and Dribbble captions | 0 | Captions only, flow by flow | Waiting on samples |
 | `interface` | Interface wording (buttons, labels, errors, hidden labels and headings) | 0 | None | Waiting on samples |
@@ -338,7 +340,7 @@ Empty. "No filler words" is a confirmed owner rule, but he has not yet ruled on 
 
 ## Banned words (candidate, waiting on the owner's ruling)
 
-Source: the draft "Writing style and tone" section of `docs/skills/wugweb-work/PLAN.md` (section 5), written from his decisions but not yet reviewed by him as his voice. Not flagged; reported as questions.
+Source: the draft "Writing style and tone" section of `docs/skills/wugweb-work/PLAN.md` (section 5), written from his decisions but not yet reviewed by him as his voice. Not flagged; reported as questions. In a rewrite or a proposed change, leave candidate and unruled words in place and ask the owner; never drop or replace a word as filler on your own judgment.
 
 ```banned-candidate
 pivotal

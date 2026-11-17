@@ -37,11 +37,6 @@ export default defineType({
       description: 'Absolute origin, no trailing slash. Required before canonical tags, absolute og:image URLs or sitemap.xml can be generated at all.',
     }),
     defineField({ name: 'siteTitle', title: 'Site Title', type: 'string', group: 'identity', description: 'e.g. Wugweb — Digital Experience Agency' }),
-    defineField({
-      name: 'titleTemplate', title: 'Title Template', type: 'string', group: 'identity',
-      initialValue: '%s · wugweb',
-      description: '%s is replaced by the page title. Currently hardcoded as "· wugweb" in BaseLayout.astro.',
-    }),
     defineField({ name: 'companyName', title: 'Company Name', type: 'string', group: 'identity' }),
     defineField({ name: 'contactEmail', title: 'Contact Email', type: 'string', group: 'identity' }),
     defineField({ name: 'telephone', title: 'Telephone', type: 'string', group: 'identity', description: 'E.164 format, e.g. +91 92059 96219. Feeds Organization structured data.' }),
@@ -71,10 +66,6 @@ export default defineType({
         preview: { select: { title: 'agent', allow: 'allow', subtitle: 'note' } },
       }],
     }),
-    defineField({
-      name: 'robotsExtra', title: 'Extra robots.txt Directives', type: 'text', rows: 4, group: 'seo',
-      description: 'Appended verbatim. Keep it minimal — the Sitemap line and crawler policy are generated.',
-    }),
 
     // ── Social & Images ──
     // Known bad state (verified 2026-09-24): every singletonPage has ogImage
@@ -83,8 +74,6 @@ export default defineType({
     defineField({ name: 'ogImage', title: 'Default OG Image', type: 'image', group: 'social', description: 'Must be exactly 1200×630. Prefer ogImagePath for R2.' }),
     defineField({ name: 'ogImagePath', title: 'Default OG Image (R2 path)', type: 'string', group: 'social', description: 'e.g. /assets/brand/og-default.png — 1200×630.' }),
     defineField({ name: 'favicon', title: 'Favicon', type: 'image', group: 'social', description: '64×64 or an SVG mark.' }),
-    defineField({ name: 'faviconDark', title: 'Favicon (dark UI)', type: 'image', group: 'social', description: 'Optional variant for dark browser chrome.' }),
-    defineField({ name: 'appleTouchIcon', title: 'Apple Touch Icon', type: 'image', group: 'social', description: '180×180. Falls back to the favicon today, which is the wrong shape for a home-screen icon.' }),
     defineField({
       name: 'socialLinks', title: 'Social Links', type: 'array', group: 'social',
       description: 'For display. Structured-data profile URLs go in sameAs.',
@@ -124,18 +113,12 @@ export default defineType({
       name: 'sameAs', title: 'sameAs (structured data)', type: 'array', of: [{ type: 'url' }], group: 'organization',
       description: 'Canonical profile URLs for Organization structured data. Leave empty to derive from the live platformProfile documents.',
     }),
-    defineField({ name: 'areaServed', title: 'Area Served', type: 'array', of: [{ type: 'string' }], group: 'organization', description: 'e.g. IN, AE, GB, Worldwide.' }),
 
     // ── AI / Answers ──
     defineField({
       name: 'aiSummary', title: 'Site Summary (for answer engines)', type: 'text', rows: 3, group: 'aeo',
       description: 'What Wugweb is, in 40–60 words, answer-first. Reused as the Organization description and as the opening of llms.txt — keep it in sync with public/llms.txt and public/ai-context.txt.',
       validation: (r) => r.max(500).warning('Keep it to roughly 40–60 words.'),
-    }),
-    defineField({
-      name: 'aiContextUrls', title: 'AI Context Files', type: 'array', of: [{ type: 'string' }], group: 'aeo',
-      initialValue: ['/llms.txt', '/ai-context.txt', '/brand-system.txt', '/security.txt', '/robots.txt'],
-      description: 'The well-known files served from public/. Listed here so the set is discoverable and auditable; the files themselves stay static.',
     }),
 
     // ── Integrations ── public IDs only, read by src/lib/integrations.ts.

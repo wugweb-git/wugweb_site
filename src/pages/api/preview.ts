@@ -1,24 +1,37 @@
 import type { APIRoute } from 'astro';
+import { safeEqual } from '../../lib/indexnow';
+import { MIN_TOKEN_LENGTH } from '../../lib/bearer';
+import { isSafeBackPath } from '../../lib/forms';
 
 /**
- * GET /api/preview?slug=/work/xxx&token=sk...
+ * GET /api/preview?secret=<PREVIEW_SECRET>&slug=/work/xxx
  *
- * Sets a preview session cookie so pages can load draft content.
- * Called from Sanity Studio preview links.
+ * Turns on draft preview for this browser for one hour, then sends the
+ * visitor to `slug` on this site.
+ *
+ * The secret is PREVIEW_SECRET, a random 32+ char value that only opens
+ * preview. The Sanity read token never travels in a URL or a cookie: the
+ * cookie is just a flag, and the middleware supplies the server-side token
+ * (SANITY_TOKEN / SANITY_SYNC_TOKEN) to pages while the flag is set.
  */
 export const prerender = false;
 
-export const GET: APIRoute = async ({ request, redirect, cookies }) => {
-  const url = new URL(request.url);
-  const slug = url.searchParams.get('slug') || '/';
-  const token = url.searchParams.get('token');
+export const PREVIEW_COOKIE = '__sanity_preview';
 
-  if (!token || !token.startsWith('sk')) {
-    return new Response('Missing or invalid preview token', { status: 401 });
+export const GET: APIRoute = async ({ request, redirect, cookies, locals }) => {
+  const url = new URL(request.url);
+  const expected = (locals as any)?.runtime?.env?.PREVIEW_SECRET;
+  if (typeof expected !== 'string' || expected.length < MIN_TOKEN_LENGTH) {
+    return new Response('Preview is not configured', { status: 503 });
+  }
+  if (!safeEqual(url.searchParams.get('secret') ?? '', expected)) {
+    return new Response('Invalid preview secret', { status: 401 });
   }
 
-  // Set a preview session cookie — visible to Astro pages
-  cookies.set('__sanity_preview', token, {
+  const slug = url.searchParams.get('slug');
+  const target = isSafeBackPath(slug) ? slug : '/';
+
+  cookies.set(PREVIEW_COOKIE, '1', {
     path: '/',
     httpOnly: true,
     sameSite: 'lax',
@@ -26,13 +39,11 @@ export const GET: APIRoute = async ({ request, redirect, cookies }) => {
     maxAge: 60 * 60, // 1 hour
   });
 
-  return redirect(slug);
+  return redirect(target);
 };
 
-/**
- * GET /api/preview/exit — clear the preview cookie and redirect.
- */
+/** POST /api/preview: turn preview off and go home. */
 export const POST: APIRoute = async ({ redirect, cookies }) => {
-  cookies.delete('__sanity_preview', { path: '/' });
+  cookies.delete(PREVIEW_COOKIE, { path: '/' });
   return redirect('/');
 };

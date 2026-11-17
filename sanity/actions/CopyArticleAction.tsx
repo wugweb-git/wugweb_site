@@ -1,25 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { DocumentActionDescription, DocumentActionProps, useClient } from 'sanity';
-import {
-  CopyIcon,
-  DocumentTextIcon,
-  CheckmarkIcon,
-  CodeBlockIcon,
-  ShareIcon,
-  DocumentsIcon,
-} from '@sanity/icons';
-import {
-  Dialog,
-  Box,
-  Stack,
-  Text,
-  TextArea,
-  Flex,
-  Button,
-  Card,
-  Badge,
-  useToast,
-} from '@sanity/ui';
+import { CopyIcon } from '@sanity/icons/Copy';
+import { DocumentTextIcon } from '@sanity/icons/DocumentText';
+import { CheckmarkIcon } from '@sanity/icons/Checkmark';
+import { CodeBlockIcon } from '@sanity/icons/CodeBlock';
+import { ShareIcon } from '@sanity/icons/Share';
+import { DocumentsIcon } from '@sanity/icons/Documents';
+import { Dialog, Box, Stack, Text, TextArea, Flex, Button, Card, Badge } from '@sanity/ui';
+import { useToast } from '@sanity/ui/toast';
 
 function portableTextToMarkdown(blocks: any[]): string {
   if (!Array.isArray(blocks)) return '';
@@ -166,9 +154,9 @@ export function CopyArticleAction(props: DocumentActionProps): DocumentActionDes
           onClose: () => setDialogOpen(false),
           content: (
             <Box padding={4}>
-              <Stack space={4}>
+              <Stack gap={4}>
                 <Flex justify="space-between" align="center">
-                  <Stack space={1}>
+                  <Stack gap={1}>
                     <Text size={2} weight="bold">Copy / Export Article Content</Text>
                     <Text size={1} muted>
                       {wordCount} words · ~{readTime} min read · {bodyBlocks.length} content blocks

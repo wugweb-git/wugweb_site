@@ -113,6 +113,9 @@ export default defineType({
     }),
     defineField({ name: 'language', type: 'string', options: { list: ['en-GB', 'en-US', 'fr', 'de', 'es'] }, initialValue: 'en-GB', group: 'content' }),
     defineField({ name: 'title', type: 'string', description: 'Page heading (H1)', group: 'content' }),
+    // Read by singletonPageQuery (src/lib/queries.ts) for the hero line under
+    // the H1. It held data on 3 pages before it was declared here.
+    defineField({ name: 'subtitle', type: 'text', rows: 2, description: 'Line under the page heading', group: 'content' }),
     defineField({ name: 'heroImage', type: 'image', options: { hotspot: true }, group: 'content' }),
     defineField({
       name: 'heroPath',
@@ -144,9 +147,8 @@ export default defineType({
     }),
 
     // ── SEO ──
-    // Nothing in this group renders until the head tags land: the site has no
-    // canonical link, no og:url, no robots meta, no robots.txt and no sitemap
-    // yet. Fields first so editors can fill them; wiring tracked in pending.md.
+    // focusKeyword, secondaryKeywords, searchIntent and breadcrumbLabel were
+    // removed 2026-11-17: nothing read them and no document held a value.
     defineField({ name: 'seoTitle', type: 'string', description: 'Override <title> tag. 50–60 characters, focus keyword near the front.', group: 'seo' }),
     defineField({ name: 'seoDescription', type: 'text', rows: 2, description: 'Meta description for search results. 150–160 characters.', group: 'seo' }),
     defineField({ name: 'ogImage', type: 'image', description: 'Social sharing image (1200×630). Prefer ogImagePath for R2.', group: 'seo' }),
@@ -167,61 +169,16 @@ export default defineType({
       name: 'canonicalUrl', type: 'url', group: 'seo',
       description: 'Leave empty for self-canonical. Set only when this page duplicates or syndicates another URL.',
     }),
-    defineField({
-      name: 'focusKeyword', type: 'string', group: 'seo',
-      description: 'One primary term this page targets. NOT emitted as meta keywords — it is an editorial anchor (check it appears in the title, H1, description and first 100 words) and stops two pages competing for the same term.',
-    }),
-    defineField({
-      name: 'secondaryKeywords', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, group: 'seo',
-      description: 'Related terms to cover on-page — good source material for H2s that match real queries.',
-    }),
-    defineField({
-      name: 'searchIntent', type: 'string', group: 'seo',
-      options: { list: [
-        { title: 'Informational — answers a question', value: 'informational' },
-        { title: 'Commercial — compares options', value: 'commercial' },
-        { title: 'Transactional — ready to act', value: 'transactional' },
-        { title: 'Navigational — looking for us by name', value: 'navigational' },
-      ] },
-      description: 'Pairs with the focus keyword and decides the page shape.',
-    }),
-    defineField({
-      name: 'breadcrumbLabel', type: 'string', group: 'seo',
-      description: 'Short label for BreadcrumbList structured data, where the H1 is too long to use.',
-    }),
 
     // ── AI / Answers (AEO) ──
+    // aiSummary, keyTakeaways, faqs and lastReviewedAt were removed
+    // 2026-11-17: no page rendered them and no document held a value.
+    // Holds values on 6 pages, but no route reads it: each page sets its own
+    // JSON-LD @type in code. Kept read-only so the data stays visible.
     defineField({
-      name: 'aiSummary', type: 'text', rows: 3, group: 'aeo',
-      description: 'A direct, extractive answer in 40–60 words: lead with the answer, then explain. Render this visibly on the page — answer engines discount hidden meta-only text — and reuse it as the JSON-LD description.',
-      validation: (r) => r.max(500).warning('Keep it to roughly 40–60 words.'),
-    }),
-    defineField({
-      name: 'keyTakeaways', type: 'array', of: [{ type: 'string' }], group: 'aeo',
-      description: 'Three to five one-line takeaways. AI extracts lists far more reliably than prose.',
-      validation: (r) => r.max(5).warning('Three to five reads best.'),
-    }),
-    defineField({
-      name: 'faqs', type: 'array', group: 'aeo',
-      description: 'Question/answer pairs — the highest-leverage AEO field. Emits FAQPage structured data. Useful on every page, not just /faq.',
-      of: [{
-        type: 'object',
-        fields: [
-          { name: 'question', type: 'string', validation: (r: any) => r.required() },
-          { name: 'answer', type: 'text', rows: 3, validation: (r: any) => r.required() },
-        ],
-        preview: { select: { title: 'question', subtitle: 'answer' } },
-      }],
-    }),
-    defineField({
-      name: 'schemaType', type: 'string', group: 'aeo',
+      name: 'schemaType', type: 'string', group: 'aeo', readOnly: true,
       options: { list: ['WebPage', 'AboutPage', 'ContactPage', 'CollectionPage', 'FAQPage', 'Service'] },
-      initialValue: 'WebPage',
-      description: 'Drives the JSON-LD @type for this page instead of hardcoding it per route.',
-    }),
-    defineField({
-      name: 'lastReviewedAt', type: 'datetime', group: 'aeo',
-      description: 'Freshness signal → dateModified. Set it when the content genuinely changes; _updatedAt moves on every trivial edit, so it is not a usable substitute.',
+      deprecated: { reason: 'Not read by the site. JSON-LD @type is set per route in code.' },
     }),
 
     // ── Sync (hidden, auto-managed) ──

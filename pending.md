@@ -4,16 +4,23 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-11-17: Sanity audit fixes (items 3-7, 13-14, 17, 21-32). DONE locally, not pushed or deployed.**
+- Backend: `/api/sync` fails closed, own secret `NEON_SYNC_SECRET`, type allow-list, size caps, owner now updates. `/api/preview` takes `PREVIEW_SECRET` (no token in URL or cookie), same-site redirects only. Anonymous pages cached 60 s at the edge (Workers Cache API, free); preview responses `no-store`. JSON-LD escaped. `/work/[slug]` other-cases in one query.
+- Studio: upgraded sanity 3.99 to 6.23.0 with React 19.3, @sanity/table 3.1.21, @sanity/ui 4 subpath imports. Smart typography turned off (it writes dashes). Publish/Duplicate/Archive fixed, singletons locked, Kits / Trust badges publishable (initial value templates), View on Site uses `route`, dashboard date tiles fixed, desk in CLAUDE.md order with Brand Assets and Experiments. TypeGen: `npm --prefix sanity run typegen` writes `sanity.types.ts` (schema types only; queries are not `defineQuery` yet).
+- Schema: `extraMedia` and `subtitle` declared; empty unused SEO/AI fields removed; `schemaType` deprecated; SEO length warnings (60/160).
+- Data: 13 stale page drafts discarded, backup `backups/stale-singleton-drafts-2026-11-17.json`.
+- Owner to do: set `NEON_SYNC_SECRET` and `PREVIEW_SECRET` on Pages (until then both routes return 503); `npx sanity deploy` for the Studio; item 28 (Sanity-hosted media and the orphan `project` doc) waiting on a decision. `wip/embedded-studio` pins sanity 3.99 and now conflicts with the 6.23 Studio.
+
 **2026-11-16: Open from the industries / blog / media session. All shipped work is on main and live on UAT. Waiting on the owner:**
 1. Blog covers: 92.5 MB across 103 files (48 PNGs over 1 MB). Smaller R2 copies need owner OK (no-uploads rule).
 2. 66 legacy industry records with no sector: merge or delete.
 3. Case-study Services: not synced from Notion to Sanity yet.
 4. Logo band: the 14 colour logos render smaller than the grey ones (padded 1500x876 canvas).
-5. `wip/embedded-studio`: merge to main waits for owner approval (other session).
+5. `wip/embedded-studio`: pushed to GitHub, merge to main waits for owner approval. Also needs the owner to add `https://uat.wugweb.com` (later `https://www.wugweb.com`, credentials allowed) to the Sanity CORS list.
 
-**2026-11-14: Case study rebuild and the `wugweb-work` skill. SKILL BUILT (0.4.2), SITE BUILD NOT STARTED, waiting for the owner's vetting.**
+**2026-11-14: Case study rebuild and the `wugweb-work` skill. SKILL BUILT (0.5.0), PLAN APPROVED, PART 2 STARTED ON A BRANCH.**
 - One source of truth: the Notion page "wugweb-work" (until 2026-11-16 titled "wugweb-work skill: plan (final for vetting)") under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
-- State: plan is final. The skill is built (Part 1): repo master `.claude/skills/wugweb-work/` at 0.4.2; the app copy reads 0.4.1 until the owner re-saves it. Evals written, not run, not in the repo copy. Not built: site code (Part 2), no Sanity write, no case-study row changed in Notion.
+- State: plan is final. The skill is built (Part 1): repo master `.claude/skills/wugweb-work/` at 0.5.0 (2026-11-17); the app copy is the owner's upload of the zip. Evals in the repo, run and graded 2026-11-17. Part 2 step 2 (parser v2) is on branch `case-body-v2`, not on main; its merge waits for the owner's go. No Sanity write, no case-study row changed in Notion.
 - Done, read-only: three research reports (`docs/research/case-study-system-2026-10-19/`), the NTUC U Care reference audit and the NTUC Body Content v2 proposal (both on the Notion page).
 - The 2026-10-19 bento layout on `/work/[slug]` (item 8 below) is being replaced under this plan. Do not rework that page outside the plan.
 - Waiting on the owner: approval after vetting; NTUC inputs (results with source, live URL, number of builder steps); a working `NOTION_TOKEN`.
@@ -34,7 +41,7 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - Verified on UAT 2026-10-21: all 162 sitemap URLs return 200; nav measured at all three widths.
 - Deploy facts (corrected 2026-10-21): GitHub auto-builds do NOT skip commits. The free plan builds one at a time, so close pushes queue and a build can land ~15 min after the push. Do not `wrangler pages deploy` over a queued build: an older build finishing later replaces it (089f1e5c's build briefly undid 4bbca720 this way). After a push, wait for that commit's own `github:push` build to show success, then check the live CSS on uat. Wrangler works through the owner's OAuth login (account 76fe2175…).
 - Dead tokens in `.env` (owner to rotate): `CLOUDFLARE_API_TOKEN` (Invalid API Token) and `NOTION_TOKEN` (invalid). Scripts that read them (R2 object listing, `sync-notion-*.mjs`) fail until replaced. Sanity token works (editor).
-- Paused: embedded Studio at `/admin` (branch `wip/embedded-studio`, local only, not pushed). Only the deps are in (31e980ec: `@sanity/astro` 3.5.1, `sanity` 3.99, `@sanity/client` v7, which every `@sanity/astro` release for Astro 5 requires). Not wired, built or measured. Free limits checked from Cloudflare docs: Workers 64 MiB uncompressed (no compressed limit), 20,000 files, 25 MiB per file, 20 min build. Baseline before Studio: Worker 1.58 MiB, 127 files, 8 s build. Do not merge to main without owner approval.
+- Embedded Studio at `/admin` (branch `wip/embedded-studio`, pushed 2026-11-17, not merged; commits 35ec86a4 deps, 04df1b11 wiring). `@sanity/astro` with `studioBasePath: '/admin'`, noindex via `X-Robots-Tag`, disallowed in robots, excluded from sitemap and the redirect and 404 logger, not linked. Measured against main: Worker 3096 KiB to 3160 KiB (+64 KiB, free limit 64 MiB), files 68 to 71 in the Worker, dist 125 to 147 files, largest file 1.4 MB to 5.1 MB (limit 25 MiB), build 14 s to 41 s (limit 20 min). Public page weight identical on `/`, `/about`, `/services`, `/work`, `/blog`, `/contact-us`; all 162 sitemap URLs return 200; tests pass. Checked 2026-11-17 in Chrome on localhost:3333: sign-in, Dashboard, Tables, Media and the post editor all work, no console errors. Dashboard counts (103 posts, 44 case studies, 6 services, 1971 assets) differ from the CLAUDE.md content table (124, 82, 19, 553); cause not checked. Do not merge to main without owner approval.
 
 **2026-10-19 — Homepage logo band. DONE.**
 - Live on wugweb.pages.dev: 28 logos in the band, in order, all loading. Each client's `bandLogoPath` points at a file already in R2 (nothing copied or uploaded, owner rule): 14 colour originals `assets/logos/NN_Name.png`, 14 grey copies `assets/logos/grey/<slug>-300w|150w.png` (Acko and Cartier stay on 150w grey). `logoPath` untouched.

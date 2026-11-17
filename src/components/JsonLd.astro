@@ -1,4 +1,5 @@
 ---
+import { safeJson } from '../lib/safe-json';
 /**
  * JSON-LD structured data.
  *
@@ -53,6 +54,6 @@ const payload = cleaned.length ? { '@context': 'https://schema.org', '@graph': c
   <script
     type="application/ld+json"
     is:inline
-    set:html={JSON.stringify(payload)}
+    set:html={safeJson(payload)}
   />
 )}

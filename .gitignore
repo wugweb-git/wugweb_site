@@ -8,6 +8,7 @@ dist/
 credentials.md
 sanity/dist/
 sanity/node_modules/
+sanity/.sanity/
 reference/
 wugweb-assets/
 LOCAL.md
@@ -26,3 +27,4 @@ sanity/debug-*-tmp.mjs
 
 # Another AI tool's local settings and command history (contained live tokens)
 .commandcode/
+sanity/schema.json

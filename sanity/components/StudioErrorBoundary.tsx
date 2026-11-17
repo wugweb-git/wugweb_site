@@ -1,6 +1,7 @@
 import React, { Component, type ReactNode } from 'react';
 import { Card, Stack, Text, Button, Flex } from '@sanity/ui';
-import { ResetIcon, WarningOutlineIcon } from '@sanity/icons';
+import { ResetIcon } from '@sanity/icons/Reset';
+import { WarningOutlineIcon } from '@sanity/icons/WarningOutline';
 
 interface Props {
   children: ReactNode;
@@ -34,7 +35,7 @@ export class StudioErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <Card padding={5} margin={4} radius={3} tone="critical" border>
-          <Stack space={4}>
+          <Stack gap={4}>
             <Flex align="center" gap={3}>
               <Text size={3} weight="bold">
                 <WarningOutlineIcon />

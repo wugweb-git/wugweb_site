@@ -98,13 +98,14 @@ Note: `footer/sitemap` is linked from `SiteFooter` (Sitemap).
 
 ## Components (`src/components/`)
 
-3 Astro components (only used ones — dead components were deleted 2026-08-05):
+21 Astro components on main (counted 2026-11-17), 19 of them with a Storybook story beside the file (`*.stories.ts`; config in `.storybook/`, run with `npm run storybook`):
 
-`SiteHeader` (nav, WhatsApp CTA, mobile menu), `SiteFooter`, `TrustBadges`
-(Clutch/DesignRush/GoodFirms strip — TopDevelopers logo asset exists at
+`SiteHeader`, `SiteFooter`, `FooterCTA`, `TrustBadges`, `BentoBlock`, `ClientAssemblyGrid`, `ProcessMap`, `SectorShowcase`, `ServiceSpotlightPanel`, `ServiceTagField`, `InsightsBlock`, `TeamGrid`, `FaqAccordion`, `PortableTextRenderer`, `PostCard`, `JsonLd`, `industries/IndustriesHero`, `industries/SectorRow`, and three Storybook-only showcases (`ButtonShowcase`, `CookieBannerShowcase`, `TokenGallery`). `PostCard` and `JsonLd` have no story.
+
+`TrustBadges` is the Clutch/DesignRush/GoodFirms strip — TopDevelopers logo asset exists at
 `public/brand/trust/topdevelopers.svg` but isn't wired in; no verified
 Wugweb profile URL on topdevelopers.co, user declined adding it without
-one 2026-09-23). Currently unused sitewide (removed from all pages per
+one 2026-09-23. Currently unused sitewide (removed from all pages per
 user request). Page-specific blocks live inline in `src/pages/`. Full
 component→token map: `kits_design_system/docs/components.md`.
 
@@ -165,7 +166,7 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - **Exception — blog posts (2026-10-13, owner decision):** Notion Blogs is the source of truth for posts. Sync with `node scripts/sync-notion-blogs.mjs` (dry run; `WRITE=1` applies, backs up first). It never deletes; posts removed from Notion go in an owner-run delete script.
 - **Exception — case-study SEO (2026-10-13, owner decision):** Notion Case Studies is the source of truth for case-study SEO Title, SEO Description, Focus Keyword and Canonical URL. Sync with `node scripts/sync-notion-case-studies.mjs` (dry run; `WRITE=1` applies, backs up first). Never write SEO titles to Notion from here, and never store a site suffix: `BaseLayout` adds " | Wugweb" only when the title fits in 60 chars. Canonicals that don't resolve to a published `/work/<slug>` are skipped (the route 301s on them). One slug per case study: no Legacy Slugs, no old-URL redirects (owner decision 2026-10-13).
 - **Exception — sectors and the Sectors showcase (2026-10-19, owner decision):** Notion Table 25: Sector and Table 3: Industry are the source of truth for which sectors appear in the Sectors section, their order and icon (`sector.showcase`, `showcaseOrder`, `icon`), and which industries show on a sector card (`industry.showOnSectorCard`). Sync with `node scripts/sync-notion-sectors.mjs` (dry run; `WRITE=1` applies, backs up first). It only patches existing `sector-SEC-n` / `industry-IND-n` docs; it never creates, deletes or touches other fields. Edit these fields in Notion, not Studio.
-- **Case studies and the `wugweb-work` skill (2026-11-14, owner decision):** case-study content is the Notion Body Content, media is in R2. The plan for the skill and the `/work/[slug]` rebuild lives on one Notion page, "wugweb-work" (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922), directly under the Wugweb Skill Management System registry (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298); that page is the source of truth, `pending.md` only points to it. The skill (Part 1) is built: master copy at `.claude/skills/wugweb-work/`, version 0.4.2; the site build (Part 2) is not started. Do not rebuild `/work/[slug]` or write case-study copy outside that plan.
+- **Case studies and the `wugweb-work` skill (2026-11-14, owner decision):** case-study content is the Notion Body Content, media is in R2. The plan for the skill and the `/work/[slug]` rebuild lives on one Notion page, "wugweb-work" (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922), directly under the Wugweb Skill Management System registry (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298); that page is the source of truth, `pending.md` only points to it. The skill (Part 1) is built: master copy at `.claude/skills/wugweb-work/`, version 0.5.0 (Part 1 locked); the site build (Part 2) has started on the owner's go: step 2, the case-study body parser, is on branch `case-body-v2` with a preview and is not on main until he says. Do not rebuild `/work/[slug]` or write case-study copy outside that plan.
 - **Content comes from hardcoded frontend records or user-provided sources**, not from Framer reference pages or third-party review sites.
 - **Service page copy (loose reference):** `/Users/abcom/Documents/VS/wugweb artworks/Wugweb_Services 2026.md` — use for inspiration on `/services` and `/services/[slug]` when helpful. Not a tight requirement; do not force 1:1 parity.
 - **Do not remove `blockContent` from the Sanity schema types array** — doing so causes `Unknown type: blockContent` errors across documents.
@@ -200,7 +201,9 @@ See `pending.md` for the authoritative task tracker. High-level state:
 - Dashboard deploy command must be: `npx wrangler pages deploy dist`.
 - Required secrets (set via Cloudflare dashboard or `wrangler pages secret`):
   - `DATABASE_URL` — Neon connection string
-  - `SANITY_SYNC_TOKEN` — auth token for `/api/sync`
+  - `SANITY_SYNC_TOKEN` — Sanity editor token (form mirrors, preview reads)
+  - `NEON_SYNC_SECRET` — random 32+ chars, `X-Sync-Token` for `/api/sync` (fails closed with 503 when unset; no longer the Sanity token)
+  - `PREVIEW_SECRET` — random 32+ chars, `/api/preview?secret=…&slug=/path` (fails closed when unset; the Sanity token never goes in the URL)
 - Hyperdrive is **not wired**. The `HYPERDRIVE` binding is absent from `wrangler.jsonc`; the code falls back to `DATABASE_URL`.
 - R2 binding `ASSETS_BUCKET` → bucket `wugweb-assets`. Public base var: `PUBLIC_R2_ASSETS_BASE`. Upload: `node scripts/upload-assets-to-r2.mjs`.
 - If runtime shows `Invalid binding "SESSION"`, create a KV namespace named `SESSION` and add it to `wrangler.jsonc`.
@@ -261,6 +264,6 @@ node scripts/map-assets-to-content.mjs
 # Sanity → Neon sync (local or remote via API)
 curl -X POST https://wugweb.pages.dev/api/sync \
   -H 'Content-Type: application/json' \
-  -H 'X-Sync-Token: <token>' \
+  -H 'X-Sync-Token: <NEON_SYNC_SECRET>' \
   -d '{"docs": [...]}'
 ```

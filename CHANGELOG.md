@@ -12,10 +12,42 @@ and this project adheres to Semantic Versioning.
 - fix(skills): wugweb-brand-os closes questions 12 and 14 (owner, 2026-11-17): the four crop edits to brand_guidelines/ are dropped and the definition lives only in the skill; no format uses a light background until the owner names one.
 
 - fix(skills): wugweb-brand-os eval 38: five writing-style lines replaced by pointers to wugweb-voice and the standing rules.
+### Changed — wugweb-voice: two brand_guidelines candidates recorded (2026-11-17)
+- `.claude/skills/wugweb-voice/references/voice.md`: C-05 and C-06 added as candidates (waiting on the owner). No rule applied; version stays 0.3.0.
+
+### Changed — wugweb-work Section separator named; pending.md skill state (2026-11-17)
+- Body standard names `Section: <chapter> | <label>`. pending.md now says the skill is 0.5.0 and Part 2 step 2 is on its branch.
+
+### Fixed — wugweb-voice eval run (2026-11-17)
+- `.claude/skills/wugweb-voice/`: an unsourced number or quote now makes the mechanical result fail; unruled filler words are raised, never dropped in a rewrite. Version stays 0.3.0; `SKILL.md` body 1,999 words.
+
+### Changed — wugweb-strategy link structure, no sector link-up (2026-11-17)
+- Owner ruling recorded in the skill; version stays 0.1.2.
+
+### Changed — wugweb-strategy FAQ review list adds /faq (2026-11-17)
+- The 10 typed `/faq` questions added to `FAQ-REVIEW.md`.
+
+### Changed — wugweb-strategy /faq has no FAQPage markup (2026-11-17)
+- Owner ruling recorded in the skill; version stays 0.1.2.
+### Changed — wugweb-work no sector page link-up (2026-11-17)
+- Case studies link up to their service page only and across to two or three siblings. Still 0.5.0.
+
+### Fixed — wugweb-voice linkedin-post pronoun row (2026-11-17)
+- `.claude/skills/wugweb-voice/references/modes.md` now matches the owner's we or I ruling (his pick per piece). Version stays 0.3.0; `SKILL.md` body 1,997 words.
+### Changed — wugweb-work SEO rules point to wugweb-seo (2026-11-17)
+- On-page SEO limits and checks now pointers to wugweb-seo; sector link-up pending strategy; H1 and description wording stay in work. Still 0.5.0.
+
+### Added — wugweb-strategy FAQ review list and rules (2026-11-17)
+- `docs/skills/wugweb-strategy/FAQ-REVIEW.md`: the 47 typed service page questions with signal-log and answer-source columns. FAQ rules extended in the skill (version stays 0.1.2).
+### Changed — wugweb-work voice rules sorted with wugweb-voice (2026-11-17)
+- We or I, client on-screen terms and no dashes now point to wugweb-voice; nine rules marked candidate; the rest stay work's own. Still 0.5.0.
 
 - feat(skills): wugweb-brand-os check fails when the export or its standing rules copy drifts from docs/skills/STANDING-RULES.md.
 
 - fix(skills): wugweb-brand-os eval run fixes: AI subjects point to the Intelligence metaphor; crop definition marked approved with the four held guideline edits listed; eval 9 matches the yellow ruling; the export now carries the standing rules.
+### Changed — wugweb-work owner answers to the eval questions (2026-11-17)
+- Proposal on request runs Audit, Media and Look first; published v1 facts count as proof; subtitle only after the body is read. Still 0.5.0.
+
 ### Changed — wugweb-work eval fixes, made files and scheduling settled (2026-11-17)
 - First eval run graded (56/78, 6/14 in full); skill-side fixes applied, eval 14 brought up to the owner's decisions; made files kept in R2 by the owner, no scheduling tool; no matter open with the owner. Still 0.5.0.
 

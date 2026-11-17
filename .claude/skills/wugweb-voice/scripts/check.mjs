@@ -6,7 +6,7 @@
 // from the corpus ledger. Plain Node, no packages. Writes to stdout only.
 //
 // Usage:
-//   node scripts/check.mjs <file.md | -> [--mode <key>] [--json]
+//   node scripts/check.mjs <file.md | -> [--mode <key>] [--sources] [--json]
 // Exit code: 0 when nothing is flagged, 1 when something is, 2 on bad input.
 
 import { readFileSync } from 'node:fs';
@@ -77,7 +77,7 @@ export function stripCode(text) {
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 // ------------------------------------------------------------ the check
-export function check(text, { mode } = {}) {
+export function check(text, { mode, sources = false } = {}) {
   const lists = loadLists();
   const lines = stripCode(text);
   const flags = [];
@@ -158,7 +158,10 @@ export function check(text, { mode } = {}) {
   });
 
   const conf = confidence(mode);
-  const result = flags.length ? 'needs revision' : 'pass (mechanical part only)';
+  const untraced = !sources && facts.some((f) => f.kind === 'number' || f.kind === 'quote');
+  const result = untraced
+    ? 'fail (a number or quote has no source supplied; pass --sources once the caller has given them)'
+    : flags.length ? 'needs revision' : 'pass (mechanical part only)';
   return {
     result,
     note: 'Mechanical part only. Steps 3 to 6 of the voice check (trace, mode, client words, voice rules) need a reader. Voice not calibrated: no observed rules yet.',
@@ -193,11 +196,11 @@ if (isMain) {
   const mi = args.indexOf('--mode');
   const mode = mi >= 0 ? args[mi + 1] : undefined;
   const file = args.find((a, i) => !a.startsWith('--') && (mi < 0 || i !== mi + 1));
-  if (!file) { console.error('Usage: node scripts/check.mjs <file.md | -> [--mode <key>] [--json]'); process.exit(2); }
+  if (!file) { console.error('Usage: node scripts/check.mjs <file.md | -> [--mode <key>] [--sources] [--json]'); process.exit(2); }
   let text;
   try { text = readFileSync(file === '-' ? 0 : file, 'utf8'); }
   catch (e) { console.error(`Cannot read ${file}: ${e.message}`); process.exit(2); }
-  const r = check(text, { mode });
+  const r = check(text, { mode, sources: args.includes('--sources') });
   console.log(json ? JSON.stringify(r, null, 2) : formatReport(r));
   process.exit(r.flags.length ? 1 : 0);
 }

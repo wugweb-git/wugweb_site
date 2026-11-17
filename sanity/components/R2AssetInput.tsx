@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { StringInputProps, set, unset, useClient } from 'sanity';
 import { Stack, Text, Card, Flex, TextInput, Box, Badge, Spinner, Button } from '@sanity/ui';
-import { ImageIcon, SearchIcon, CheckmarkIcon, CloseIcon } from '@sanity/icons';
+import { ImageIcon } from '@sanity/icons/Image';
+import { SearchIcon } from '@sanity/icons/Search';
+import { CheckmarkIcon } from '@sanity/icons/Checkmark';
+import { CloseIcon } from '@sanity/icons/Close';
 
 interface AssetOption {
   sitePath: string;
@@ -71,7 +74,7 @@ export function R2AssetInput(props: StringInputProps) {
   const isImage = value.endsWith('.jpg') || value.endsWith('.jpeg') || value.endsWith('.png') || value.endsWith('.svg') || value.endsWith('.webp');
 
   return (
-    <Stack space={3}>
+    <Stack gap={3}>
       <Flex gap={2} align="center">
         <Box flex={1}>
           <TextInput
@@ -119,7 +122,7 @@ export function R2AssetInput(props: StringInputProps) {
       {/* Autocomplete / Asset Dropdown Drawer */}
       {isOpen && (
         <Card padding={3} radius={2} tone="default" border style={{ maxHeight: 320, overflowY: 'auto' }}>
-          <Stack space={3}>
+          <Stack gap={3}>
             <Flex align="center" justify="space-between">
               <Text size={1} weight="bold">R2 / Local Asset Registry ({assets.length} items)</Text>
               {loading && <Spinner size={1} />}
@@ -133,7 +136,7 @@ export function R2AssetInput(props: StringInputProps) {
               autoFocus
             />
 
-            <Stack space={1}>
+            <Stack gap={1}>
               {filtered.slice(0, 40).map((asset, idx) => {
                 const selected = asset.sitePath === value;
                 return (
@@ -146,7 +149,7 @@ export function R2AssetInput(props: StringInputProps) {
                     style={{ cursor: 'pointer', transition: 'background 0.15s ease' }}
                   >
                     <Flex align="center" justify="space-between" gap={2}>
-                      <Stack space={1} flex={1}>
+                      <Stack gap={1} flex={1}>
                         <Text size={1} weight={selected ? 'bold' : 'regular'}>
                           {asset.displayName || asset.sitePath}
                         </Text>

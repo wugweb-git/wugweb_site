@@ -31,7 +31,8 @@ t('lists 40% as a fact', off.facts.some((f) => f.text === '40%'));
 t('lists the quote as a fact', off.facts.some((f) => f.kind === 'quote' && f.text.includes('changed everything')));
 t('lists "every" as a scope word', off.facts.some((f) => f.text.toLowerCase() === 'every'));
 t('confidence low with no samples', off.confidence.level === 'low');
-t('result needs revision', off.result === 'needs revision');
+t('result is fail: numbers and a quote with no source', off.result.startsWith('fail'));
+t('with sources supplied the result is needs revision', check(readFileSync(join(ROOT, 'evals', 'fixtures', 'off-voice.md'), 'utf8'), { mode: 'case-study', sources: true }).result === 'needs revision');
 
 // 2. Clean fixture
 const clean = check(read('evals/fixtures/clean.md'), { mode: 'case-study' });

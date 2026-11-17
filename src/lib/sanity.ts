@@ -23,7 +23,7 @@ export function getPreviewClient(token?: string) {
     apiVersion,
     useCdn: false,
     token: token || undefined,
-    perspective: token ? 'previewDrafts' : 'published',
+    perspective: token ? 'drafts' : 'published',
   });
 }
 

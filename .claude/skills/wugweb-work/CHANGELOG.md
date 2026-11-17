@@ -2,6 +2,16 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- `body-content-standard.md` names the `Section:` separator as `Section: <chapter> | <label>`, matching the parser v2 on branch `case-body-v2`.
+
+- Internal links (owner, via `wugweb-strategy` 497a6710): a case study links up to its service page only, never a sector page, and across to two or three sibling case studies. The pending mark is removed.
+
+- SEO rules sorted with `wugweb-seo` (2.5.0, relayed by the coordinator): title limit, description length, one slug and no redirects, entity naming, server HTML, no keyword counts or `llms.txt`, and share tags now point to `wugweb-seo`; FAQ points to the agreed strategy and seo line; internal links follow seo's rule for now, with sector link-up pending `wugweb-strategy`; H1 wording, description wording and the entity list stay here.
+
+- Voice rules sorted with `wugweb-voice` (its answer on main 3ef0c4a6, relayed by the coordinator): "we" or "I", the client's on-screen terms and no dashes are now pointers to `wugweb-voice`; tone, say what was built, the 6 to 20 word range, plain words, active voice, honest-credit phrasing, no throat-clearing openers, the banned words and tone by form are marked candidate (working rules here, pending the owner's yes or samples there); the rest stay this skill's own. SEO lines untouched until `wugweb-seo` answers.
+
+- Owner answers to the three eval questions (2026-11-17): a direct request for a v2 proposal still runs Audit, Media and Look first (`SKILL.md` step 5); a published v1 body counts as proof for the facts it already publishes (handoff 7); the hero subtitle is proposed only after the body is read (`copy-and-seo.md`). Recorded in `open-items.md`.
+
 - First eval run and independent grade (2026-11-17): 56 of 78 expectations, 6 of 14 evals in full; most fails were the dry run not reading its sources. Skill-side fixes: the brief check uses the six fields `wugweb-strategy` sets (links and date no longer stop a draft) in `own-content.md` and handoff 7; draft standards are reported as drafts awaiting the owner's review; every reply says what was written and where, or that nothing was (`SKILL.md` rule 10); metric parts agree (baseline or benchmark) across `forms/charts.md`, `body-content-standard.md` and `qa-checklist.md`, pointing to `copy-and-seo.md`; the loop pause rule has one home (`media-standard.md`); hashtags: no hashtag lists, LinkedIn tags none; `publish-approval.md` step 6 marked not applicable when no file is made; `skill-map.md` install states current; a typo in `copy-and-seo.md`. Eval 14 updated to the owner's 2026-11-17 decisions (Behance size adopted, LinkedIn tags none).
 - Made files and scheduling settled (owner, 2026-11-17): made files are kept in the media store (R2) under the piece's folder, each on the owner's yes, placed by the owner (the skill never uploads); no scheduling tool is connected, so posts are handed over as approved drafts. No matter is now open with the owner. `open-items.md`, `forms.md`, `publish-approval.md`, `ops-cycle.md`, `SKILL.md`, `README.md`, `metadata.json`.
 

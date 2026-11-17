@@ -2,6 +2,12 @@
 
 ## [0.3.0] 2026-11-17
 
+- Two candidates recorded in `references/voice.md` (C-05 not decorative or hype-driven, C-06 outcomes over hype), from `brand_guidelines/`. Candidates only; not applied, not flagged. No version change.
+
+- Eval run, 2026-11-17: fixes only, no version change. `scripts/check.mjs` now returns fail when a number or quote has no source supplied (new `--sources` flag for when the caller has given them); `SKILL.md` and `references/words.md` say to raise unruled filler candidates and never drop them in a rewrite. `scripts/test.mjs` updated.
+
+- Fix, no version change: `references/modes.md` linkedin-post row said "First person plural", which clashed with the owner's we or I ruling. It now says the pronoun is his pick per piece.
+
 - Owner answered "all yes" on the pending list, 2026-11-17. Version stays 0.3.0 (his lock). Applied: `references/handoff.md` names the `wugweb-strategy` signal log (`references/topics-and-calendar.md`) as a read-only input, its words vocabulary candidates only; a 40 to 60 word `summary` field in the response; translated copy and working preferences recorded as out of scope; the "we" or "I" choice is the owner's per piece, not a fixed rule (`SKILL.md`, `references/modes.md`); helper list confirmed, kept in `references/tooling.md` only; `references/standing-rules.md` is a marked copy of the standing rules, built into the export and checked against `docs/skills/STANDING-RULES.md` by `scripts/test.mjs`. Writing samples: the owner will supply source material; none received yet, so the voice is still uncalibrated.
 - Version locked at 0.3.0 by the owner. Do not bump, not even to 0.3.1, without the owner's say.
 - No change to the method, the rules or the files; the version number is set and pinned only. The 0.2.1 portability package carries forward.

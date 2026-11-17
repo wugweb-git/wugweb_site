@@ -1,35 +1,22 @@
 import { useMemo, useState, useEffect, useCallback, useRef } from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  Checkbox,
-  Flex,
-  MenuDivider,
-  MenuItem,
-  Popover,
-  Select,
-  Stack,
-  Text,
-  TextInput,
-  Tooltip,
-} from '@sanity/ui';
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  CloseIcon,
-  CopyIcon,
-  DownloadIcon,
-  EllipsisHorizontalIcon,
-  LaunchIcon,
-  PinIcon,
-  SearchIcon,
-  StarIcon,
-  TrashIcon,
-} from '@sanity/icons';
+import { Box, Button, Card, Checkbox, Flex, Select, Stack, Text, TextInput } from '@sanity/ui';
+import { MenuDivider, MenuItem } from '@sanity/ui/menu';
+import { Popover } from '@sanity/ui/popover';
+import { Tooltip } from '@sanity/ui/tooltip';
+import { ArrowDownIcon } from '@sanity/icons/ArrowDown';
+import { ArrowUpIcon } from '@sanity/icons/ArrowUp';
+import { ChevronDownIcon } from '@sanity/icons/ChevronDown';
+import { ChevronLeftIcon } from '@sanity/icons/ChevronLeft';
+import { ChevronRightIcon } from '@sanity/icons/ChevronRight';
+import { CloseIcon } from '@sanity/icons/Close';
+import { CopyIcon } from '@sanity/icons/Copy';
+import { DownloadIcon } from '@sanity/icons/Download';
+import { EllipsisHorizontalIcon } from '@sanity/icons/EllipsisHorizontal';
+import { LaunchIcon } from '@sanity/icons/Launch';
+import { PinIcon } from '@sanity/icons/Pin';
+import { SearchIcon } from '@sanity/icons/Search';
+import { StarIcon } from '@sanity/icons/Star';
+import { TrashIcon } from '@sanity/icons/Trash';
 import { useTable, createColumnHelper, flexRender, createCoreRowModel, createSortedRowModel, type SortingState, type ColumnVisibilityState } from '@tanstack/react-table';
 import { loadLS, saveLS } from '../lib/localState';
 import { patchFields } from '../lib/docActions';
@@ -539,7 +526,7 @@ export function DataTable({
         <Popover
           content={
             <Card padding={2} radius={2} style={{ maxHeight: 320, overflow: 'auto', minWidth: 200 }}>
-              <Stack space={1}>
+              <Stack gap={1}>
                 <Text size={1} weight="semibold" muted style={{ padding: '0 4px 6px' }}>Columns</Text>
                 {columns.map((c) => (
                   <label key={c.key} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '4px 8px' }}>
@@ -574,7 +561,7 @@ export function DataTable({
         <Popover
           content={
             <Card padding={2} radius={2} style={{ minWidth: 260 }}>
-              <Stack space={2}>
+              <Stack gap={2}>
                 <Text size={1} weight="semibold" muted>Saved views</Text>
                 {views.length === 0 && <Text size={1} muted>No saved views yet.</Text>}
                 {views.map((v) => (
@@ -631,10 +618,10 @@ export function DataTable({
         <Popover
           content={
             <Card padding={3} radius={2} style={{ minWidth: 280 }}>
-              <Stack space={3}>
+              <Stack gap={3}>
                 <Text size={1} weight="semibold" muted>Quick filters</Text>
                 {filterableColumns.map((c) => (
-                  <Stack key={c.key} space={1}>
+                  <Stack key={c.key} gap={1}>
                     <Text size={1} muted>{c.label}</Text>
                     <TextInput
                       value={filters[c.key] ?? ''}
@@ -920,7 +907,7 @@ export function DataTable({
                           <Popover
                             content={
                               <Card padding={1} radius={2} style={{ minWidth: 200 }}>
-                                <Stack space={1}>
+                                <Stack gap={1}>
                                   <MenuItem text="Open" icon={LaunchIcon} onClick={() => { if (url) window.open(url, '_blank'); }} />
                                   <MenuItem text="Copy ID" icon={CopyIcon} onClick={() => copy(row._id, 'ID')} />
                                   <MenuItem text="Copy slug" icon={CopyIcon} onClick={() => copy(String(row.slug ?? ''), 'slug')} />

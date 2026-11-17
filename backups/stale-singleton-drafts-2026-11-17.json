@@ -1,0 +1,4207 @@
+{
+  "note": "Stale singletonPage drafts (>30 days, published twin exists) discarded 2026-11-17, audit item 21. Restore a draft with createOrReplace of `draft`.",
+  "rows": [
+    {
+      "id": "about",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:48Z",
+        "_id": "drafts.about",
+        "_rev": "Zp6AkUkGK4usgMripfjojn",
+        "_system": {
+          "base": {
+            "id": "about",
+            "rev": "0P2zz4yUt080ih2mMTdFo0"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-12T12:48:34Z",
+        "body": [
+          {
+            "_key": "b1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "s1",
+                "_type": "span",
+                "marks": [],
+                "text": "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & production."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heroPath": "/assets/site/about/about__about-message.mp4",
+        "items": [
+          {
+            "_key": "k-stat-1",
+            "_type": "object",
+            "label": "Years of experience",
+            "text": "8+",
+            "title": "8+"
+          },
+          {
+            "_key": "k-stat-2",
+            "_type": "object",
+            "label": "Projects delivered",
+            "text": "80+",
+            "title": "80+"
+          },
+          {
+            "_key": "k-stat-3",
+            "_type": "object",
+            "label": "Client retention rate",
+            "text": "90%+",
+            "title": "90%+"
+          },
+          {
+            "_key": "k-stat-4",
+            "_type": "object",
+            "label": "Brands transformed",
+            "text": "50+",
+            "title": "50+"
+          }
+        ],
+        "mediaPaths": [
+          "/assets/site/about/about-7.mp4",
+          "/assets/site/about/about_5.webp",
+          "/assets/site/about/about__about-message.mp4"
+        ],
+        "pageId": "about",
+        "seoDescription": "Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.",
+        "seoTitle": "About Wugweb — UI/UX Design & Digital Experience Experts",
+        "slug": {
+          "_type": "slug",
+          "current": "about"
+        },
+        "subtitle": "Bold · Adaptive · Distinct · Start Smart, Start Small",
+        "title": "About Wugweb"
+      },
+      "published": {
+        "_createdAt": "2026-09-24T10:25:48Z",
+        "_id": "about",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "body": [
+          {
+            "_key": "b1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "s1",
+                "_type": "span",
+                "marks": [],
+                "text": "Wugweb is evolving in the digital landscape and has rapidly moved forward, with our services expanding to digital marketing, emerging tech innovation & production."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heroPath": "/assets/site/about/about__about-message.mp4",
+        "heroPosterPath": "/assets/site/about/about-section.jpg",
+        "httpStatus": "200",
+        "mediaPaths": [
+          "/assets/site/about/about-7.mp4",
+          "/assets/site/about/about_5.webp",
+          "/assets/site/about/about__about-message.mp4"
+        ],
+        "ogDescription": "Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.",
+        "ogImagePath": "/assets/site/about/og.jpg",
+        "ogTitle": "About Wugweb - UI/UX Design & Digital Experience Experts",
+        "pageId": "about",
+        "route": "/about",
+        "sectionImagePath": "/assets/site/about/about-section-2.jpg",
+        "seoDescription": "Get to know Wugweb – a UI/UX design agency dedicated to crafting seamless digital experiences that elevate brands.",
+        "seoTitle": "About Wugweb - UI/UX Design & Digital Experience Experts",
+        "title": "About Us"
+      }
+    },
+    {
+      "id": "blog",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:52Z",
+        "_id": "drafts.blog",
+        "_rev": "xUEYJDdftD43kitL20ADD8",
+        "_system": {
+          "base": {
+            "id": "blog",
+            "rev": "1ldNh76NU0J0b4so5BmVOT"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-08-04T16:48:33Z",
+        "pageId": "blog",
+        "seoDescription": "Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, digital product strategy, and creative thinking.",
+        "seoTitle": "Wugweb Insights — UI/UX, Digital Strategy & Product",
+        "slug": {
+          "_type": "slug",
+          "current": "blog"
+        },
+        "title": "Wugweb | Insights on UI/UX Design & Digital Strategy"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:14:52Z",
+        "_id": "blog",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "httpStatus": "200",
+        "ogDescription": "Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, digital product strategy, and creative thinking.",
+        "ogImagePath": "/assets/site/blog/og.jpg",
+        "ogTitle": "Wugweb | Insights on UI/UX Design & Digital Strategy",
+        "pageId": "blog",
+        "route": "/blog",
+        "seoDescription": "Stay updated with Wugweb’s blog featuring expert insights on UI/UX design, user experience trends, digital product strategy, and creative thinking.",
+        "seoTitle": "Wugweb | Insights on UI/UX Design & Digital Strategy",
+        "title": "Wugweb | Insights on UI/UX Design & Digital Strategy"
+      }
+    },
+    {
+      "id": "contact",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:55Z",
+        "_id": "drafts.contact",
+        "_rev": "MwLKLXcGME1e2SHZC3Ryjh",
+        "_system": {
+          "base": {
+            "id": "contact",
+            "rev": "m6C1P0fkBLXDQAMdzL2zSD"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-07-28T23:18:09Z",
+        "pageId": "contact",
+        "seoDescription": "Start a conversation with Wugweb about digital experience, product strategy, UX, engineering, AI and growth.",
+        "seoTitle": "Contact Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "contact"
+        },
+        "subtitle": "We're always looking for passionate clients and talented professionals to join us in creating impactful work.",
+        "title": "Are you ready to build something that matters?"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:14:55Z",
+        "_id": "contact",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "httpStatus": "200",
+        "ogDescription": "Have a project in mind? Get in touch with Wugweb for UI/UX design and digital solutions. We’d love to hear from you and help bring your vision to life.",
+        "ogImagePath": "/assets/site/contact/og.jpg",
+        "ogTitle": "Contact Us – Wugweb | Let’s Build Great Experiences Together",
+        "pageId": "contact",
+        "route": "/contact-us",
+        "seoDescription": "Have a project in mind? Get in touch with Wugweb for UI/UX design and digital solutions. We’d love to hear from you and help bring your vision to life.",
+        "seoTitle": "Contact Us – Wugweb | Let’s Build Great Experiences Together",
+        "subtitle": "We're always looking for passionate clients and talented professionals to join us in creating impactful work.",
+        "title": "Are you ready to build something that matters?"
+      }
+    },
+    {
+      "id": "faq",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:53Z",
+        "_id": "drafts.faq",
+        "_rev": "sxnaZKfwX03H1wTecFpCQe",
+        "_system": {
+          "base": {
+            "id": "faq",
+            "rev": "0P2zz4yUt080ih2mMRUeCS"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-08-04T16:48:30Z",
+        "items": [
+          {
+            "_key": "i1",
+            "_type": "object",
+            "text": "We can scope strategy, positioning, identity, messaging and activation around your business context, with the exact mix defined in the engagement.",
+            "title": "What's included in your Brand & Strategy service?"
+          },
+          {
+            "_key": "i2",
+            "_type": "object",
+            "text": "Timing depends on scope and stakeholder availability; focused engagements can move quickly while larger brand programs run through structured discovery, strategy and implementation phases.",
+            "title": "What's the timeline for a Brand & Strategy project?"
+          },
+          {
+            "_key": "i3",
+            "_type": "object",
+            "text": "Investment varies by scope, complexity, team involvement and deliverables. We scope the engagement against the outcomes and work required.",
+            "title": "What's the investment for a Brand & Strategy project?"
+          },
+          {
+            "_key": "i4",
+            "_type": "object",
+            "text": "We work with ambitious teams, founders and established organisations that need stronger strategy, product experience, digital systems or growth capabilities.",
+            "title": "Who do you partner with?"
+          },
+          {
+            "_key": "i5",
+            "_type": "object",
+            "text": "Yes. Logo and identity work can be part of a broader brand engagement or a focused identity assignment.",
+            "title": "Do you design logos?"
+          },
+          {
+            "_key": "i6",
+            "_type": "object",
+            "text": "Yes. We create brand guidelines and scalable digital design systems so teams can maintain consistency as they grow.",
+            "title": "Do you develop brand guidelines and design systems?"
+          },
+          {
+            "_key": "i7",
+            "_type": "object",
+            "text": "We combine clear strategic foundations, reusable guidelines, design systems and governance practices across the relevant touchpoints.",
+            "title": "How do you ensure brand consistency?"
+          },
+          {
+            "_key": "i8",
+            "_type": "object",
+            "text": "Yes. Wugweb structures engagements around the specific business, audience, market and operating constraints rather than forcing a fixed package.",
+            "title": "Can you address unique branding needs?"
+          },
+          {
+            "_key": "i9",
+            "_type": "object",
+            "text": "Yes. Motion, interaction and sound can be integrated where they meaningfully improve communication and the overall experience.",
+            "title": "Do you incorporate motion and sound?"
+          },
+          {
+            "_key": "i10",
+            "_type": "object",
+            "text": "Yes. We can support the translation of brand strategy into digital experiences, campaigns and supporting systems as part of the engagement.",
+            "title": "Do you manage brand activation?"
+          }
+        ],
+        "pageId": "faq",
+        "seoDescription": "Find answers to common questions about working with Wugweb, our process, services, timelines, and digital experience capabilities.",
+        "seoTitle": "FAQs — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "faq"
+        },
+        "title": "FAQs — Wugweb"
+      },
+      "published": {
+        "_createdAt": "2026-09-24T10:25:44Z",
+        "_id": "faq",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "httpStatus": "200",
+        "items": [
+          {
+            "_key": "i1",
+            "_type": "object",
+            "text": "",
+            "title": "What's included in your Brand service?"
+          },
+          {
+            "_key": "i2",
+            "_type": "object",
+            "text": "",
+            "title": "What's the timeline for a Brand project?"
+          },
+          {
+            "_key": "i3",
+            "_type": "object",
+            "text": "",
+            "title": "What's the investment for a Brand project?"
+          },
+          {
+            "_key": "i4",
+            "_type": "object",
+            "text": "",
+            "title": "Who do you partner with?"
+          },
+          {
+            "_key": "i5",
+            "_type": "object",
+            "text": "",
+            "title": "Do you design logos?"
+          },
+          {
+            "_key": "i6",
+            "_type": "object",
+            "text": "",
+            "title": "Do you develop brand guidelines and design systems?"
+          },
+          {
+            "_key": "i7",
+            "_type": "object",
+            "text": "",
+            "title": "How do you ensure brand consistency?"
+          },
+          {
+            "_key": "i8",
+            "_type": "object",
+            "text": "",
+            "title": "Can you address unique branding needs?"
+          },
+          {
+            "_key": "i9",
+            "_type": "object",
+            "text": "",
+            "title": "Do you incorporate motion and sound?"
+          },
+          {
+            "_key": "i10",
+            "_type": "object",
+            "text": "",
+            "title": "Do you manage brand activation?"
+          }
+        ],
+        "noIndex": false,
+        "ogDescription": "Find answers to common questions about working with Wugweb, our process, services, timelines, and digital experience capabilities.",
+        "ogImagePath": "/assets/site/default/og.jpg",
+        "ogTitle": "FAQs — Wugweb",
+        "pageId": "faq",
+        "route": "/faq",
+        "seoDescription": "Find answers to common questions about working with Wugweb, our process, services, timelines, and digital experience capabilities.",
+        "seoTitle": "FAQs — Wugweb",
+        "title": "Frequently Asked Questions"
+      }
+    },
+    {
+      "id": "home",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:47Z",
+        "_id": "drafts.home",
+        "_rev": "36TK9CDo7y3YWN6Ak6nm3j",
+        "_system": {
+          "base": {
+            "id": "home",
+            "rev": "hEzuHHk6Tg1XoYfrKsr7DN"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-12T12:48:36Z",
+        "body": [
+          {
+            "_key": "b1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "s1",
+                "_type": "span",
+                "marks": [],
+                "text": "Wugweb is a digital experience agency where design meets engineering to shape what is next. We deliver tailored UX design services, rooted in user-centered design and driven by a clear user experience strategy."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "b2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "s2",
+                "_type": "span",
+                "marks": [],
+                "text": "Our experience design services and custom UX solutions help businesses craft impactful digital product design with precision. As a UI/UX-focused agency, we create digital experiences that not only look great but also perform with purpose."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heroPath": "/assets/site/home/home.mp4",
+        "mediaPaths": [
+          "/assets/site/home/brand-strategy.mp4",
+          "/assets/site/home/experience-design.mp4",
+          "/assets/site/home/martech-genai.mp4",
+          "/assets/site/home/web-app-development.mp4"
+        ],
+        "pageId": "home",
+        "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+        "seoTitle": "Wugweb — Digital Experience Agency",
+        "slug": {
+          "_type": "slug",
+          "current": "home"
+        },
+        "title": "Wugweb — Digital Experience Agency"
+      },
+      "published": {
+        "_createdAt": "2026-09-24T10:25:46Z",
+        "_id": "home",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "body": [
+          {
+            "_key": "b1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "s1",
+                "_type": "span",
+                "marks": [],
+                "text": "Wugweb is a digital experience agency where design meets engineering to shape what is next. We deliver tailored UX design services, rooted in user-centered design and driven by a clear user experience strategy."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "b2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "s2",
+                "_type": "span",
+                "marks": [],
+                "text": "Our experience design services and custom UX solutions help businesses craft impactful digital product design with precision. As a UI/UX-focused agency, we create digital experiences that not only look great but also perform with purpose."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heroPath": "/assets/site/home/home.mp4",
+        "heroPosterPath": "/assets/site/home/home-poster.webp",
+        "httpStatus": "200",
+        "mediaPaths": [
+          "/assets/site/home/brand-strategy.mp4",
+          "/assets/site/home/experience-design.mp4",
+          "/assets/site/home/martech-genai.mp4",
+          "/assets/site/home/web-app-development.mp4"
+        ],
+        "ogDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+        "ogImagePath": "/assets/site/default/og.jpg",
+        "ogTitle": "Wugweb — Digital Experience Agency",
+        "pageId": "home",
+        "route": "/",
+        "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+        "seoTitle": "Wugweb — Digital Experience Agency",
+        "title": "Where Vision Meets Velocity"
+      }
+    },
+    {
+      "id": "impact",
+      "draft": {
+        "_createdAt": "2026-07-28T23:15:00Z",
+        "_id": "drafts.impact",
+        "_rev": "6rEg5NJmU1VCqgtBIKa0nw",
+        "_system": {
+          "base": {
+            "id": "impact",
+            "rev": "bGMx7xnXtYJt7Q07YQY6NI"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-09-24T11:20:23Z",
+        "httpStatus": "200",
+        "pageId": "impact",
+        "seoDescription": "Explore the business and experience impact behind Wugweb engagements.",
+        "seoTitle": "Impact — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "impact"
+        },
+        "title": "Impact"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:15:00Z",
+        "_id": "impact",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "httpStatus": "200",
+        "ogDescription": "A focused Wugweb footer destination for impact-related content and supporting links.",
+        "ogImagePath": "/assets/site/default/og.jpg",
+        "ogTitle": "Impact — Wugweb",
+        "pageId": "impact",
+        "route": "/footer/impact",
+        "seoDescription": "A focused Wugweb footer destination for impact-related content and supporting links.",
+        "seoTitle": "Impact — Wugweb",
+        "title": "Impact"
+      }
+    },
+    {
+      "id": "privacy-policy",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:56Z",
+        "_id": "drafts.privacy-policy",
+        "_rev": "j5RyUXBb9QJdtYHYEHoqte",
+        "_system": {
+          "base": {
+            "id": "privacy-policy",
+            "rev": "1ldNh76NU0J0b4so5Eqsd7"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-09-23T03:20:06Z",
+        "body": [
+          {
+            "_key": "k2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S05t",
+                "_type": "span",
+                "marks": [],
+                "text": "What is this Privacy Policy for?"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S08E",
+                "_type": "span",
+                "marks": [],
+                "text": "This privacy policy is for this website & being served by Wugweb (including its global affiliates) and governs the privacy of its users who choose to use it. This website and its owners take a proactive approach to user privacy and ensure the necessary steps are taken to protect the privacy of its users throughout their visiting experience. The policy sets out the different areas where user privacy is concerned and outlines the obligations & requirements of the users, the website and the website owners. By accessing or using our website, you expressly consent to our collection, use and disclosure of your personal information in accordance with this Privacy Policy."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k4",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0AZ",
+                "_type": "span",
+                "marks": [],
+                "text": "Information We Collect"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k5",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0Cu",
+                "_type": "span",
+                "marks": [],
+                "text": "We may collect, store and use the following kinds of personal/non-personal information:"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k6",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0FF",
+                "_type": "span",
+                "marks": [],
+                "text": "Information that you provide to register with us for availing our services, attending our company's event, subscribing to a newsletter or for submission of an employment application"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k7",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0Ha",
+                "_type": "span",
+                "marks": [],
+                "text": "Information about your computer and your visits to and use of this website (including your IP address, geographical location, browser type and version, operating system, referral source, length of visit, page views)"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k8",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0Jv",
+                "_type": "span",
+                "marks": [],
+                "text": "Information that you send to us to obtain a quotation/offer/proposal for our services"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k9",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0MG",
+                "_type": "span",
+                "marks": [],
+                "text": "Information that you provide to us to subscribe to our website email notifications"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k10",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0Ob",
+                "_type": "span",
+                "marks": [],
+                "text": "Any other information that you voluntarily choose to send to us"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k11",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0Qw",
+                "_type": "span",
+                "marks": [],
+                "text": "Usage of Information We Gather"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k12",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0TH",
+                "_type": "span",
+                "marks": [],
+                "text": "We require this information to understand your needs and expectations and provide you with a better service, and in particular for the following reasons:"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k13",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0Vc",
+                "_type": "span",
+                "marks": [],
+                "text": "To help us develop, customise, deliver, support and improve our services"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k14",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0Xx",
+                "_type": "span",
+                "marks": [],
+                "text": "For our internal purposes (such as auditing, data analysis, and research to improve our services and communications)"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k15",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0aI",
+                "_type": "span",
+                "marks": [],
+                "text": "When you enter your contact information or send an email or other communication to Wugweb, we may retain those communications to process your inquiries and respond to your requests"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k16",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0cd",
+                "_type": "span",
+                "marks": [],
+                "text": "We may periodically send promotional emails about our achievements, special offers or any other information we think you may find interesting using the email address you provided"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k17",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0ey",
+                "_type": "span",
+                "marks": [],
+                "text": "From time to time, we may also use your information to contact you for market research purposes"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k18",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0hJ",
+                "_type": "span",
+                "marks": [],
+                "text": "Any information gathered by us may be shared, if appropriate, with any Wugweb offices, affiliates and subsidiaries worldwide. Wugweb may share some or all of your personal information with another business entity should we plan to reorganise, spin out, merge with, acquire, or be acquired by that business entity."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k19",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0je",
+                "_type": "span",
+                "marks": [],
+                "text": "Information Security"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k20",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0lz",
+                "_type": "span",
+                "marks": [],
+                "text": "Wugweb strives to protect your personal information. To prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online. Unfortunately, no data transmission over the internet can be guaranteed to be 100% secure."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k21",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0oK",
+                "_type": "span",
+                "marks": [],
+                "text": "International Data Transfers"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k22",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0qf",
+                "_type": "span",
+                "marks": [],
+                "text": "Information we collect may be stored and processed in and transferred between any of the countries in which we operate to enable us to use the information per this privacy policy. By using our Website, you consent to such transfer of information."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k23",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0t0",
+                "_type": "span",
+                "marks": [],
+                "text": "External Links"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k24",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0vL",
+                "_type": "span",
+                "marks": [],
+                "text": "Users are advised to adopt a policy of caution before clicking any external links mentioned on this website. The owners of this website cannot guarantee or verify the contents of any externally linked website despite their best efforts. Users should therefore note they click on external links at their own risk."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k25",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S0xg",
+                "_type": "span",
+                "marks": [],
+                "text": "Social Media Platforms"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k26",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S101",
+                "_type": "span",
+                "marks": [],
+                "text": "This website may use social sharing buttons that help share web content directly from web pages to the social media platform. Users are advised to use such social sharing buttons at their discretion. This website and its owners cannot be held liable for damages or implications caused by visiting shortened links."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k27",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S12M",
+                "_type": "span",
+                "marks": [],
+                "text": "Control your Personal Information"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k28",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "MwLKLXcGME1e2SHZC3S14h",
+                "_type": "span",
+                "marks": [],
+                "text": "You may choose to restrict the collection or use of your personal information by writing to or emailing us at hello@wugweb.com. We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law. If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible. We will promptly correct any information found to be incorrect."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "pageId": "privacy-policy",
+        "seoDescription": "Read Wugweb's privacy policy to understand how we collect, use, and protect information across our website and services.",
+        "seoTitle": "Privacy Policy — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "privacy-policy"
+        },
+        "title": "Privacy Policy"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:14:56Z",
+        "_id": "privacy-policy",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "body": [
+          {
+            "_key": "k2",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "What is this Privacy Policy for?"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k3",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "This privacy policy is for this website & being served by Wugweb (including its global affiliates) and governs the privacy of its users who choose to use it. This website and its owners take a proactive approach to user privacy and ensure the necessary steps are taken to protect the privacy of its users throughout their visiting experience. The policy sets out the different areas where user privacy is concerned and outlines the obligations & requirements of the users, the website and the website owners. By accessing or using our website, you expressly consent to our collection, use and disclosure of your personal information in accordance with this Privacy Policy."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k4",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Information We Collect"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k5",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We may collect, store and use the following kinds of personal/non-personal information:"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k6",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Information that you provide to register with us for availing our services, attending our company's event, subscribing to a newsletter or for submission of an employment application"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k7",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Information about your computer and your visits to and use of this website (including your IP address, geographical location, browser type and version, operating system, referral source, length of visit, page views)"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k8",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Information that you send to us to obtain a quotation/offer/proposal for our services"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k9",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Information that you provide to us to subscribe to our website email notifications"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k10",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Any other information that you voluntarily choose to send to us"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k11",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Usage of Information We Gather"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k12",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We require this information to understand your needs and expectations and provide you with a better service, and in particular for the following reasons:"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k13",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "To help us develop, customise, deliver, support and improve our services"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k14",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "For our internal purposes (such as auditing, data analysis, and research to improve our services and communications)"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k15",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "When you enter your contact information or send an email or other communication to Wugweb, we may retain those communications to process your inquiries and respond to your requests"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k16",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We may periodically send promotional emails about our achievements, special offers or any other information we think you may find interesting using the email address you provided"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k17",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "From time to time, we may also use your information to contact you for market research purposes"
+              }
+            ],
+            "level": 1,
+            "listItem": "bullet",
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k18",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Any information gathered by us may be shared, if appropriate, with any Wugweb offices, affiliates and subsidiaries worldwide. Wugweb may share some or all of your personal information with another business entity should we plan to reorganise, spin out, merge with, acquire, or be acquired by that business entity."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k19",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Information Security"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k20",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Wugweb strives to protect your personal information. To prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online. Unfortunately, no data transmission over the internet can be guaranteed to be 100% secure."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k21",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "International Data Transfers"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k22",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Information we collect may be stored and processed in and transferred between any of the countries in which we operate to enable us to use the information per this privacy policy. By using our Website, you consent to such transfer of information."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k23",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "External Links"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k24",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Users are advised to adopt a policy of caution before clicking any external links mentioned on this website. The owners of this website cannot guarantee or verify the contents of any externally linked website despite their best efforts. Users should therefore note they click on external links at their own risk."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k25",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Social Media Platforms"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k26",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "This website may use social sharing buttons that help share web content directly from web pages to the social media platform. Users are advised to use such social sharing buttons at their discretion. This website and its owners cannot be held liable for damages or implications caused by visiting shortened links."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k27",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Control your Personal Information"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k28",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "You may choose to restrict the collection or use of your personal information by writing to or emailing us at hello@wugweb.com. We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law. If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible. We will promptly correct any information found to be incorrect."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "httpStatus": "200",
+        "ogDescription": "Read Wugweb’s privacy policy to understand how we collect, use, and protect information across our website and services.",
+        "ogImagePath": "/assets/site/default/og.jpg",
+        "ogTitle": "Privacy Policy — Wugweb",
+        "pageId": "privacy-policy",
+        "route": "/privacy-policy",
+        "seoDescription": "Read Wugweb’s privacy policy to understand how we collect, use, and protect information across our website and services.",
+        "seoTitle": "Privacy Policy — Wugweb",
+        "title": "Privacy Policy"
+      }
+    },
+    {
+      "id": "refund-policy",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:59Z",
+        "_id": "drafts.refund-policy",
+        "_rev": "xUEYJDdftD43kitL20ADQE",
+        "_system": {
+          "base": {
+            "id": "refund-policy",
+            "rev": "hEzuHHk6Tg1XoYfrKv6scR"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-08-05T02:25:02Z",
+        "body": [
+          {
+            "_key": "k0",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADTV",
+                "_type": "span",
+                "marks": [],
+                "text": "Legal"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADWm",
+                "_type": "span",
+                "marks": [],
+                "text": "Updated on November 04, 2025"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADa3",
+                "_type": "span",
+                "marks": [],
+                "text": "Overview"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADdK",
+                "_type": "span",
+                "marks": [],
+                "text": "At Wugweb, we are committed to delivering high-quality digital experience services. This Refund Policy outlines the terms under which refunds may be issued for services rendered."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k4",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADgb",
+                "_type": "span",
+                "marks": [],
+                "text": "Service Agreement"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k5",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADjs",
+                "_type": "span",
+                "marks": [],
+                "text": "All services provided by Wugweb are governed by a separate service agreement that outlines the scope, deliverables, timeline, and payment terms. Refund eligibility is determined based on the terms specified in that agreement."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k6",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADn9",
+                "_type": "span",
+                "marks": [],
+                "text": "Project Cancellation"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k7",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADqQ",
+                "_type": "span",
+                "marks": [],
+                "text": "If a project is cancelled before work has commenced, a full refund will be issued. If work is already in progress, refunds will be calculated based on the percentage of work completed at the time of cancellation, less any non-refundable deposits or third-party costs incurred."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k8",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADth",
+                "_type": "span",
+                "marks": [],
+                "text": "Dissatisfaction with Deliverables"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k9",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20ADwy",
+                "_type": "span",
+                "marks": [],
+                "text": "We strive to ensure client satisfaction through our collaborative design and development process. If you are not satisfied with the deliverables, we will work with you to make reasonable revisions as outlined in your service agreement. Refunds for dissatisfaction are evaluated on a case-by-case basis."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k10",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20AE0F",
+                "_type": "span",
+                "marks": [],
+                "text": "Third-Party Costs"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k11",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20AE3W",
+                "_type": "span",
+                "marks": [],
+                "text": "Costs incurred for third-party services, tools, licenses, or subscriptions are non-refundable once purchased on your behalf."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k12",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20AE6n",
+                "_type": "span",
+                "marks": [],
+                "text": "Chargebacks"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k13",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20AEA4",
+                "_type": "span",
+                "marks": [],
+                "text": "If you initiate a chargeback, your services may be suspended until the matter is resolved. We reserve the right to dispute chargebacks where services have been delivered as agreed."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k14",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20AEDL",
+                "_type": "span",
+                "marks": [],
+                "text": "Contact Us"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k15",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xUEYJDdftD43kitL20AEGc",
+                "_type": "span",
+                "marks": [],
+                "text": "For any questions about this Refund Policy, please contact us at hello@wugweb.com."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "pageId": "refund-policy",
+        "seoDescription": "Wugweb refund policy for digital experience services, cancellations, deliverables, and third-party costs.",
+        "seoTitle": "Refund Policy — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "refund-policy"
+        },
+        "title": "Refund Policy"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:14:59Z",
+        "_id": "refund-policy",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "body": [
+          {
+            "_key": "k0",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Legal"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k1",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Updated on November 04, 2025"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k2",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Overview"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k3",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "At Wugweb, we are committed to delivering high-quality digital experience services. This Refund Policy outlines the terms under which refunds may be issued for services rendered."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k4",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Service Agreement"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k5",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "All services provided by Wugweb are governed by a separate service agreement that outlines the scope, deliverables, timeline, and payment terms. Refund eligibility is determined based on the terms specified in that agreement."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k6",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Project Cancellation"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k7",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "If a project is cancelled before work has commenced, a full refund will be issued. If work is already in progress, refunds will be calculated based on the percentage of work completed at the time of cancellation, less any non-refundable deposits or third-party costs incurred."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k8",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Dissatisfaction with Deliverables"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k9",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We strive to ensure client satisfaction through our collaborative design and development process. If you are not satisfied with the deliverables, we will work with you to make reasonable revisions as outlined in your service agreement. Refunds for dissatisfaction are evaluated on a case-by-case basis."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k10",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Third-Party Costs"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k11",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Costs incurred for third-party services, tools, licenses, or subscriptions are non-refundable once purchased on your behalf."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k12",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Chargebacks"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k13",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "If you initiate a chargeback, your services may be suspended until the matter is resolved. We reserve the right to dispute chargebacks where services have been delivered as agreed."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k14",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Contact Us"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k15",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "For any questions about this Refund Policy, please contact us at hello@wugweb.com."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "httpStatus": "200",
+        "ogDescription": "Review Wugweb’s refund policy for service agreements, payments, and project-related terms.",
+        "ogImagePath": "/assets/site/default/og.jpg",
+        "ogTitle": "Refund Policy — Wugweb",
+        "pageId": "refund-policy",
+        "route": "/refund-policy",
+        "seoDescription": "Review Wugweb’s refund policy for service agreements, payments, and project-related terms.",
+        "seoTitle": "Refund Policy — Wugweb",
+        "title": "Refund Policy"
+      }
+    },
+    {
+      "id": "services",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:50Z",
+        "_id": "drafts.services",
+        "_rev": "xUEYJDdftD43kitL20ADMx",
+        "_system": {
+          "base": {
+            "id": "services",
+            "rev": "0P2zz4yUt080ih2mMR4Voy"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-08-04T15:37:50Z",
+        "pageId": "services",
+        "seoDescription": "Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.",
+        "seoTitle": "Digital Experience Services — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "services"
+        },
+        "subtitle": "In a world clamoring for attention, your brand deserves more than fleeting visibility. It requires a strategic partner that architects compelling narratives, cultivates authentic c",
+        "title": "Digital Experience Services — Wugweb"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:14:50Z",
+        "_id": "services",
+        "_rev": "Zp6AkUkGK4usgMripvTDVH",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T12:35:50Z",
+        "httpStatus": "200",
+        "ogDescription": "Explore Wugweb’s six service pillars: strategy, brand, experience, engineering, growth and operations. One team to design, build and grow your product.",
+        "ogImagePath": "/assets/site/services/og.jpg",
+        "ogTitle": "Digital Experience Services — Wugweb",
+        "pageId": "services",
+        "route": "/services",
+        "seoDescription": "Explore Wugweb’s six service pillars: strategy, brand, experience, engineering, growth and operations. One team to design, build and grow your product.",
+        "seoTitle": "Digital Experience Services — Wugweb",
+        "subtitle": "In a world clamoring for attention, your brand deserves more than fleeting visibility. It requires a strategic partner that architects compelling narratives, cultivates authentic c",
+        "title": "Digital Experience Services — Wugweb"
+      }
+    },
+    {
+      "id": "sitemap",
+      "draft": {
+        "_createdAt": "2026-07-28T23:15:02Z",
+        "_id": "drafts.sitemap",
+        "_rev": "oGQUgyBCVS9aggD8w4RyjR",
+        "_system": {
+          "base": {
+            "id": "sitemap",
+            "rev": "bGMx7xnXtYJt7Q07YQY6to"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-09-23T03:20:03Z",
+        "pageId": "sitemap",
+        "seoDescription": "Navigate key Wugweb pages, services, work, insights, and support destinations from one place.",
+        "seoTitle": "Sitemap — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "sitemap"
+        },
+        "title": "Sitemap"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:15:02Z",
+        "_id": "sitemap",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "httpStatus": "200",
+        "ogDescription": "Navigate key Wugweb pages, services, work, insights, and support destinations from one place.",
+        "ogImagePath": "/assets/site/default/og.jpg",
+        "ogTitle": "Sitemap — Wugweb",
+        "pageId": "sitemap",
+        "route": "/footer/sitemap",
+        "seoDescription": "Navigate key Wugweb pages, services, work, insights, and support destinations from one place.",
+        "seoTitle": "Sitemap — Wugweb",
+        "title": "Sitemap"
+      }
+    },
+    {
+      "id": "subscription",
+      "draft": {
+        "_createdAt": "2026-07-28T23:15:01Z",
+        "_id": "drafts.subscription",
+        "_rev": "xUEYJDdftD43kitL20ADJg",
+        "_system": {
+          "base": {
+            "id": "subscription",
+            "rev": "hEzuHHk6Tg1XoYfrKsrADm"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-08-04T16:48:36Z",
+        "pageId": "subscription",
+        "seoDescription": "Subscribe to receive updates, insights, and digital experience thinking from Wugweb.",
+        "seoTitle": "Subscribe — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "subscription"
+        },
+        "title": "Subscribe — Wugweb"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:15:01Z",
+        "_id": "subscription",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "httpStatus": "200",
+        "ogDescription": "Subscribe to receive updates, insights, and digital experience thinking from Wugweb.",
+        "ogImagePath": "/assets/site/default/og.jpg",
+        "ogTitle": "Subscribe — Wugweb",
+        "pageId": "subscription",
+        "route": "/footer/subscription",
+        "seoDescription": "Subscribe to receive updates, insights, and digital experience thinking from Wugweb.",
+        "seoTitle": "Subscribe — Wugweb",
+        "title": "Subscribe — Wugweb"
+      }
+    },
+    {
+      "id": "terms-of-use",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:57Z",
+        "_id": "drafts.terms-of-use",
+        "_rev": "oGQUgyBCVS9aggD8w4Rznd",
+        "_system": {
+          "base": {
+            "id": "terms-of-use",
+            "rev": "1ldNh76NU0J0b4so5Eqsz3"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-09-23T03:20:10Z",
+        "body": [
+          {
+            "_key": "k2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEIU",
+                "_type": "span",
+                "marks": [],
+                "text": "Introduction and Overview"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpELX",
+                "_type": "span",
+                "marks": [],
+                "text": "Please carefully read these Terms of Use (these \"Terms\") because they set forth a legally\n        binding agreement between you (\"you\", \"your\", and/or \"guests\") and Wug Web Services\n        Private Limited (\"we\", \"us\", \"our\", and/or \"WUGWEB\"), and govern your access and use of\n        any online service location/website that posts a link to these Terms (collectively, the\n        \"Sites\"). We offer the Sites, including all information, tools, and services available\n        herein to you, conditioned upon your acceptance of and strict adherence to these Terms."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k4",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEOa",
+                "_type": "span",
+                "marks": [],
+                "text": "By accessing or using any part of the Sites, you agree to be bound by these Terms. If you\n        do not agree to all the terms and conditions of these Terms now or in the future, then do\n        not access or use the Sites. Your continued use of the Sites now or following the posting\n        of any changes in these Terms will indicate acceptance and agreement by you of such\n        changes."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k5",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpERd",
+                "_type": "span",
+                "marks": [],
+                "text": "In some instances, both these Terms and separate terms elsewhere on the Sites will apply\n        to your use of the Sites (\"Additional Terms\"). To the extent there is a conflict between\n        these Terms and any applicable Additional Terms, the Additional Terms will control unless\n        they expressly state otherwise."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k6",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEUg",
+                "_type": "span",
+                "marks": [],
+                "text": "We control and operate the Sites from India, and we make no representation that the Sites\n        are appropriate or available for use beyond India. Software related to or made available\n        by the Sites may be subject to India export controls, and except as authorized by law, you\n        agree and warrant not to export or re-export the software to any country or any person,\n        entity, or end-user subject to India's export controls or sanctions."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k7",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEXj",
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitration Notice"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k8",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEam",
+                "_type": "span",
+                "marks": [],
+                "text": "You agree that disputes between you and us will be resolved by binding, individual\n        arbitration, governed by the Arbitration and Conciliation Act 1996. You agree that the\n        seat of arbitration would be Delhi in case of any dispute."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k9",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEdp",
+                "_type": "span",
+                "marks": [],
+                "text": "Content"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k10",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEgs",
+                "_type": "span",
+                "marks": [],
+                "text": "The Sites contain (i) materials and other items relating to WUGWEB and its products and\n        services, and similar items from our licensors and other third parties, including all\n        layout, information, databases, articles, posts, text, data, files, images, scripts,\n        designs, graphics, instructions, illustrations, photographs, sounds, pictures, videos,\n        advertising copy, URLs, technology, software, interactive features, the \"look and feel\" of\n        the Sites, and the compilation, assembly, and arrangement of the materials of the Sites\n        and any and all copyrightable material; (ii) trademarks, logos, trade names, trade dress,\n        service marks, and trade identities of various parties, including those of WUGWEB; and\n        (iii) other forms of intellectual property (collectively, \"Content\"). All right, title,\n        and interest in and to the Sites and the Content are the property of WUGWEB or our\n        licensors or certain other third parties and are protected by Indian and international\n        copyright, trademark, trade dress, patent, and/or other intellectual property and unfair\n        competition rights and laws to the fullest extent possible."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k11",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEjv",
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right (but shall have no obligation) to pre-screen, review, flag, filter,\n        modify, refuse, or remove any or all Content. You understand that by using the Sites, you\n        may be exposed to Content that you may find offensive, indecent, or objectionable and\n        that, in this respect, you use the Sites at your own risk."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k12",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEmy",
+                "_type": "span",
+                "marks": [],
+                "text": "Limited License"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k13",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEq1",
+                "_type": "span",
+                "marks": [],
+                "text": "Subject to your strict compliance with these Terms and any applicable Additional Terms, we\n        grant you a limited, non-exclusive, revocable, non-assignable, personal, and\n        non-transferable license to access, enter, attend, download, display, view, use, consume,\n        and/or otherwise exploit the Sites and the Content in each case for your personal,\n        non-commercial use only. This limited license (i) does not give you any ownership of, or\n        any other intellectual property interest in, any Content, and (ii) may be suspended or\n        terminated for any reason, in our sole discretion, and without advance notice or\n        liability. To protect all parties' intellectual property rights, any unauthorized use of\n        the Content may violate copyright, trademark, privacy, publicity, communications, and\n        other laws, and any such use may result in your personal liability, including potential\n        criminal liability. It is your responsibility to ensure your equipment meets all the\n        necessary technical specifications to enable you to access and use the Sites. You\n        acknowledge and agree that using the Sites is at your sole risk and responsibility. We\n        expressly reserve the right to remove and/or delete any data, files, and/or other\n        information stored or used in connection with the Sites for any reason."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k14",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEt4",
+                "_type": "span",
+                "marks": [],
+                "text": "Availability"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k15",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEw7",
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right to refuse access to the Sites and/or Content to anyone for any reason\n        at any time. We may suspend or terminate the availability of the Sites and Content, in\n        whole or in part, to you for any reason, at our sole discretion, and without advance\n        notice or liability. Upon suspension or termination of your access to the Sites, or upon\n        notice from us, all rights granted to you under these Terms or any applicable Additional\n        Terms will cease immediately, and you agree that you will immediately discontinue use of\n        the Sites and Content."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k16",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpEzA",
+                "_type": "span",
+                "marks": [],
+                "text": "Reservation of Rights"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k17",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpF2D",
+                "_type": "span",
+                "marks": [],
+                "text": "All rights not expressly granted to you are reserved by WUGWEB and its licensors and other\n        third parties. No right or license may be construed, under any legal theory, by\n        implication, estoppel, industry custom, or otherwise. Any unauthorized use of the Content\n        or Sites for any purpose is prohibited."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k18",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpF5G",
+                "_type": "span",
+                "marks": [],
+                "text": "Submissions, Comments, and Feedback"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k19",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpF8J",
+                "_type": "span",
+                "marks": [],
+                "text": "If you send certain specific submissions or creative ideas, suggestions, proposals, plans,\n        or other materials, whether online, by email, by postal mail, or otherwise (collectively,\n        \"Submissions\"), you grant us a non-exclusive, unrestricted, unconditional, unlimited,\n        worldwide, irrevocable, perpetual, transferable and cost-free right and license to host,\n        store, use, display, reproduce, modify, adapt, edit, combine with other materials,\n        publish, distribute, create derivative works from, promote, exhibit, broadcast, syndicate,\n        sublicense, publicly perform, publicly display, and otherwise use and exploit in any\n        manner whatsoever, or grant third parties the right to do any of the foregoing, all or any\n        portion of your Submissions, for any purpose whatsoever in all formats, on or through any\n        means or medium now known or hereafter developed. You further irrevocably grant us the\n        right, but not the obligation, to use your name, image, likeness, picture, avatar, social\n        media handle, biographical information, or other indicia, in connection with your\n        Submissions. You also agree to waive any right of approval for our use of the rights\n        granted herein and agree to waive any moral rights that you may have in any Submissions,\n        even if it is altered or changed in a manner not agreeable to you."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k20",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFBM",
+                "_type": "span",
+                "marks": [],
+                "text": "You understand that you will not receive any fees, sums, consideration, or remuneration\n        for any of the rights granted herein. Our receipt of your Submissions is not an admission\n        of their novelty, priority, or originality, and it does not impair our right to existing\n        or future intellectual property rights relating to your Submissions. You waive any and all\n        rights and claims in connection with our consideration, use, or development of any\n        product, content, or other materials similar or identical to your Submission now or in\n        the future."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k21",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFEP",
+                "_type": "span",
+                "marks": [],
+                "text": "You agree that your Submissions will not violate any right of any third party, including\n        copyright, trademark, privacy, personality, or other personal or proprietary right. You\n        further agree that your Submissions will not contain libellous or otherwise unlawful,\n        abusive, or obscene material, or contain any computer virus or other malware that could in\n        any way affect the operation of the Sites or any related websites. You may not use a false\n        email address, pretend to be someone other than yourself, or otherwise mislead us or\n        third-parties as to the origin of any Submissions. You are solely responsible for any\n        Submissions you make and their accuracy. We take no responsibility and assume no liability\n        for any Submissions provided by you or any third party."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k22",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFHS",
+                "_type": "span",
+                "marks": [],
+                "text": "Third-Party Services"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k23",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFKV",
+                "_type": "span",
+                "marks": [],
+                "text": "We may provide you with access to third-party tools, content, products or services over\n        which we neither monitor nor have any control nor input. You acknowledge and agree that we\n        provide access to such third-party content \"as is\" and \"as available\" without any\n        warranties, representations, or conditions of any kind and without any endorsement. We\n        shall have no liability whatsoever arising from or relating to your use of such\n        third-party content. Any use by you of third-party content offered through the Sites is\n        entirely at your own risk and discretion, and you should ensure that you are familiar with\n        and approve of the terms on which tools are provided by the relevant third-party\n        provider(s)."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k24",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFNY",
+                "_type": "span",
+                "marks": [],
+                "text": "Third-party links on the Sites may direct you to third-party websites that are not\n        affiliated with WUGWEB. We are not responsible for examining or evaluating the content or\n        accuracy, and we do not warrant and will not have any liability or responsibility for any\n        third-party materials or websites or for any other materials, products, or services of\n        third parties available through or at such third-party links."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k25",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFQb",
+                "_type": "span",
+                "marks": [],
+                "text": "We are not liable for any harm or damages related to the purchase or use of goods,\n        services, resources, content, or any other transactions made in connection with any\n        third-party websites. Please review carefully the third party's policies and practices and\n        make sure you understand them before you engage in any transaction. Complaints, claims,\n        concerns, or questions regarding third-party products should be directed to the third\n        party."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k26",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFTe",
+                "_type": "span",
+                "marks": [],
+                "text": "DMCA/Copyright Policy"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k27",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFWh",
+                "_type": "span",
+                "marks": [],
+                "text": "We take copyright, and other intellectual property infringement claims seriously and\n        respond to it under the laws governed by Indian Intellectual Property Rights. To submit a\n        notice of claimed infringement under Indian law, provide our designated agent with the\n        following written information: a physical or electronic signature of the intellectual\n        property right owner or a person authorized to act on his or her behalf; identification of\n        the work claimed to have been infringed; identification of the infringing material and\n        information reasonably sufficient to permit us to locate that material; your contact\n        information, including your address, telephone number, and e-mail address; a statement\n        that you have a good faith belief that the use of the material in the manner asserted is\n        not authorized by the intellectual property owner, its agent, or the law; and a statement\n        that the information in the notification is accurate and, under penalty of perjury, that\n        you are authorized to act on behalf of the copyright owner."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k28",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFZk",
+                "_type": "span",
+                "marks": [],
+                "text": "Our designated agent is: Intellectual Property Rights Contact Details, Wug Web Services\n        Private Limited, Address: WeWork Berger Delhi One, Floor 19, C-001/A2, Sector 16B, Noida,\n        Uttar Pradesh 201301. Email: hello@wugweb.com"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k29",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFcn",
+                "_type": "span",
+                "marks": [],
+                "text": "Counter Notification"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k30",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFfq",
+                "_type": "span",
+                "marks": [],
+                "text": "If you believe that your material has been removed in error in response to an IPR\n        notification, you may submit a counter-notification to our designated agent with the\n        following written information: a physical or electronic signature; identification of the\n        material that has been removed or to which access has been disabled and the location at\n        which the material appeared before it was removed or access to it was disabled; a\n        statement under penalty of perjury that you have a good faith belief that the material was\n        removed or disabled as a result of a mistake or misidentification of the material to be\n        removed or disabled; and your name, address, telephone number, and a statement that you\n        consent to the jurisdiction of Delhi Court for the judicial district in which the address\n        is located, or if your address is outside of India. We will respond to counter\n        notifications in accordance with the IPR laws of India."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k31",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFit",
+                "_type": "span",
+                "marks": [],
+                "text": "Customer Support"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k32",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFlw",
+                "_type": "span",
+                "marks": [],
+                "text": "Contact us here for questions about your use of the Sites or these Terms:\n        hello@wugweb.com. When you communicate with us\n        electronically, you consent to receive communications from us electronically. You agree\n        that all agreements, notices, disclosures, and other communications we provide to you\n        electronically satisfy any legal requirement that such communications be in writing."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k33",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFoz",
+                "_type": "span",
+                "marks": [],
+                "text": "Errors, Inaccuracies, and Omissions"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k34",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFs2",
+                "_type": "span",
+                "marks": [],
+                "text": "Occasionally there may be information on the Sites that contains typographical errors,\n        inaccuracies, or omissions that may relate to product descriptions, pricing, promotions,\n        offers, product shipping charges, transit times, and availability. We reserve the right to\n        correct any errors, inaccuracies, or omissions, and to change or update information or\n        cancel orders if any information on the Sites or on any related website is inaccurate at\n        any time without prior notice."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k35",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFv5",
+                "_type": "span",
+                "marks": [],
+                "text": "We undertake no obligation to update, amend, or clarify information on the Sites or on any\n        related website, including without limitation, pricing information, except as required by\n        law. No specified update or refresh date applied on the Sites or on any related website\n        should be taken to indicate that all information on the Sites or on any related website\n        has been modified or updated."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k36",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpFy8",
+                "_type": "span",
+                "marks": [],
+                "text": "Disclaimers"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k37",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpG1B",
+                "_type": "span",
+                "marks": [],
+                "text": "The Sites and any Content therein are provided on an \"as is\" and \"as available\" basis. You\n        expressly acknowledge and agree that the Sites and the Content may contain audio-visual\n        effects, strobe lights or other materials that may affect your physical senses and/or\n        physical condition. We are not responsible for whether the Sites, including any Content\n        therein, are accurate, complete, or current. Content is provided for general information\n        only and should not be relied upon or used as the sole basis for making decisions. Any\n        reliance on the Sites, and any Content therein, is at your own risk."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k38",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpG4E",
+                "_type": "span",
+                "marks": [],
+                "text": "The Sites and Content therein may contain certain historical information. Historical\n        information, necessarily, is not current and is provided for your reference only. We\n        reserve the right to modify the Sites and any Content at any time, but we have no\n        obligation to update the Sites or the Content. You agree that it is your responsibility to\n        monitor changes to the Sites that may affect you. We do not guarantee, represent, or\n        warrant that your use of the Sites will be uninterrupted, timely, secure, or error-free.\n        We do not warrant that the results that may be obtained from the use of the Sites will be\n        accurate or reliable."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k39",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpG7H",
+                "_type": "span",
+                "marks": [],
+                "text": "You agree that from time to time, we may remove the Sites and/or any Content therein for\n        indefinite periods of time or cancel the Sites at any time, without notice to you."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k40",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGAK",
+                "_type": "span",
+                "marks": [],
+                "text": "Limitations of Our Liability"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k41",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGDN",
+                "_type": "span",
+                "marks": [],
+                "text": "To the maximum extent permitted by law, in no event shall WUGWEB be liable to you for any\n        loss, damage, or injury of any kind, including any direct, indirect, special, incidental,\n        exemplary, consequential, or punitive losses or damages, or damages for system failure or\n        malfunction or loss of profits, data, use, business or goodwill, arising out of or in\n        connection with (a) the Sites, (b) these Terms or (c) your misuse of the Sites or any\n        Content available on or through the Sites. The limitations outlined in this section shall\n        apply regardless of the form of action, whether the asserted liability or damages are\n        based on contract, indemnification, tort, strict liability, statute, or any other legal or\n        equitable theory."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k42",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGGQ",
+                "_type": "span",
+                "marks": [],
+                "text": "Notwithstanding the foregoing, these disclaimers herein do not exclude any product\n        liability claims, statutory consumer rights, or damages associated resulting from WUGWEB's\n        intentional misconduct, recklessness, fraud, or gross negligence."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k43",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGJT",
+                "_type": "span",
+                "marks": [],
+                "text": "Indemnification"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k44",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGMW",
+                "_type": "span",
+                "marks": [],
+                "text": "You agree to indemnify, defend, and hold harmless WUGWEB, affiliate, and subsidiary\n        entities, and each of our and their respective partners, officers, directors, agents,\n        contractors, licensors, service providers, subcontractors, suppliers, and employees\n        harmless from any claim or demand, including reasonable attorneys' fees, made by any third\n        party due to or arising out of your breach or alleged breach of these Terms; your\n        Submissions; your misuse of the Sites and/or the Content; your violation of any laws,\n        rules, regulations, codes, statutes, ordinances, or orders of any governmental or\n        quasi-governmental authorities; your violation of the rights of any third party, including\n        any intellectual property right, publicity, confidentiality, property, or privacy right;\n        your use of a third-party product, service, and/or website; or any misrepresentation made\n        by you."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k45",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGPZ",
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right to assume, at your expense, the exclusive defence and control of any\n        matter subject to your indemnification. You agree to cooperate with our defence of any\n        claim. You will not, in any event, settle any claim without our prior written consent."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k46",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGSc",
+                "_type": "span",
+                "marks": [],
+                "text": "Termination"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k47",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGVf",
+                "_type": "span",
+                "marks": [],
+                "text": "These Terms are effective unless and until terminated by either you or us. You may\n        terminate these Terms at any time by notifying us that you no longer wish to use the Sites\n        or when you cease using the Sites. If in our sole judgment you fail, or we suspect that\n        you have failed, to comply with any term or provision of these Terms, we also may\n        terminate these Terms at any time without notice; and/or accordingly may deny you access\n        to the Sites. The provisions of these Terms and any applicable Additional Terms, which by\n        their nature should survive termination of your use of the Sites (or any parts thereof),\n        will do so."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k48",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGYi",
+                "_type": "span",
+                "marks": [],
+                "text": "Governing Law"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k49",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGbl",
+                "_type": "span",
+                "marks": [],
+                "text": "These Terms and any separate agreements whereby we provide you Services shall be governed\n        by and construed in accordance with the laws of India without reference to its conflicts\n        of laws principles."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k50",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGeo",
+                "_type": "span",
+                "marks": [],
+                "text": "Dispute Resolution"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k51",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGhr",
+                "_type": "span",
+                "marks": [],
+                "text": "Please read this section carefully — it may significantly affect your legal rights. It\n        contains procedures for mandatory arbitration."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k52",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGku",
+                "_type": "span",
+                "marks": [],
+                "text": "Agreement To Arbitrate"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k53",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGnx",
+                "_type": "span",
+                "marks": [],
+                "text": "You and WUGWEB agree that any dispute, claim, or controversy arising out of or relating to\n        these Terms or the use of the Sites (\"Disputes\") will be settled by binding arbitration,\n        except that each party retains the right to file a case in the courts granted by the laws\n        of India for the time being in force and to seek injunctive or other equitable relief in a\n        court of competent jurisdiction to prevent the actual or threatened infringement,\n        misappropriation, or violation of a party's copyrights, trademarks, trade secrets,\n        patents, or other intellectual property rights (an \"IP Protection Action\")."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k54",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGr0",
+                "_type": "span",
+                "marks": [],
+                "text": "The exclusive jurisdiction and venue of any IP Protection will be the courts located in\n        Delhi. WUGWEB and you waive any objection to jurisdiction and venue in such courts and\n        consent to their jurisdiction. You agree you may bring arbitration claims only on your own\n        behalf and not on behalf of any other person or entity. Unless both you and WUGWEB\n        otherwise agree in writing, the arbitrator may not consolidate more than one person's\n        claims and may not otherwise preside over any form of any class or representative\n        proceeding."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k55",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGu3",
+                "_type": "span",
+                "marks": [],
+                "text": "This clause does not limit either party's ability to file an action in a court with\n        jurisdiction to seek injunctive or other equitable relief for disputes relating to\n        intellectual property, proprietary data or to enforce this dispute resolution clause,\n        including your agreement not to assert claims related to the suspension or termination of\n        another person's account. In any such action, the court, rather than an arbitrator, must\n        decide whether such a claim is arbitrable and must decide whether the party is entitled to\n        the requested injunctive or other equitable relief."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k56",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpGx6",
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitration Rules"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k57",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpH09",
+                "_type": "span",
+                "marks": [],
+                "text": "The arbitration will be administered by the Indian Council of Arbitration (IAC) in\n        accordance with the Commercial Arbitration Rules (the \"IAC Rules\") and the Arbitration and\n        Conciliation Act, 1996, then in effect, and amendments thereof."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k58",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpH3C",
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitration Process"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k59",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpH6F",
+                "_type": "span",
+                "marks": [],
+                "text": "A party who desires to initiate arbitration must provide the Registrar a written notice\n        asking for arbitration, along with the names and full addresses of the parties to the\n        dispute, a statement of the claim and facts supporting the claim, original or duly\n        certified copies of the arbitration agreement, and the INR 1000 registration fee, as\n        specified in the IAC Rules."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k60",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpH9I",
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitration Location"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k61",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHCL",
+                "_type": "span",
+                "marks": [],
+                "text": "Unless you and WUGWEB otherwise agree, the arbitration will be conducted in Delhi."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k62",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHFO",
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitrator's Decision"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k63",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHIR",
+                "_type": "span",
+                "marks": [],
+                "text": "The arbitrator will render an award within the time frame specified in the IAC Rules. The\n        arbitrator's decision will include the essential findings and conclusions which the\n        arbitrator based its award on. Judgment on the arbitration award may be entered in any\n        court having jurisdiction over the arbitration award. The arbitrator's award of damages\n        must be consistent with the terms of the \"Limitations of Our Liability\" section of these\n        Terms as to the types and amounts of damages for which a party may be held liable. The\n        arbitrator may award declaratory or injunctive relief only in favour of the claimant and\n        only to the extent necessary to provide relief warranted by the claimant's individual\n        claim. If you prevail in arbitration, you will be entitled to an award of attorneys' fees\n        and expenses to the extent provided under applicable law. WUGWEB will be entitled to an\n        award of attorneys' fees and expenses to the extent provided under applicable law if it\n        prevails in arbitration unless such arbitration is found by the arbitrator to be frivolous\n        under the standards of the applicable laws."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k64",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHLU",
+                "_type": "span",
+                "marks": [],
+                "text": "Changes"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k65",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHOX",
+                "_type": "span",
+                "marks": [],
+                "text": "By rejecting any changes to these Terms, you agree that you will arbitrate any Dispute\n        between you and WUGWEB in accordance with the provisions of this section as of the date\n        you first accepted these Terms (or accepted any subsequent changes to these Terms)."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k66",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHRa",
+                "_type": "span",
+                "marks": [],
+                "text": "Your Choices"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k67",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHUd",
+                "_type": "span",
+                "marks": [],
+                "text": "If you do not want to settle Disputes by arbitration as described above, you will notify\n        us by sending us written notice to hello@wugweb.com\n        telling us that you do not want to use arbitration within thirty (30) days of the date on\n        which you agreed to these Terms (such notice, an \"Arbitration Opt-out Notice\"). If you do\n        not provide us with an Arbitration Opt-out Notice within the thirty (30) day period, you\n        will be deemed to have knowingly and intentionally waived your right to litigate any\n        dispute except for Claims and IP Protection Action as stated above."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k68",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHXg",
+                "_type": "span",
+                "marks": [],
+                "text": "Investigations"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k69",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHaj",
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right to investigate and prosecute any suspected breaches of these Terms or\n        the Sites. We may disclose any information as necessary to satisfy any law, regulation,\n        legal process, or governmental request."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k70",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHdm",
+                "_type": "span",
+                "marks": [],
+                "text": "Waiver of Injunctive or Other Equitable Relief"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k71",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHgp",
+                "_type": "span",
+                "marks": [],
+                "text": "To the maximum extent permitted by law, you agree that you will not be permitted to obtain\n        an injunction or other equitable relief of any kind, such as any court or other action\n        that may interfere with or prevent the development or exploitation of any website,\n        application, content, submissions, product, service, or intellectual property owned,\n        licensed, used or controlled by WUGWEB or a licensor of WUGWEB."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k72",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHjs",
+                "_type": "span",
+                "marks": [],
+                "text": "Changes to Terms and the Sites"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k73",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHmv",
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right to update, change, or replace any part of these Terms by posting\n        updates and/or changes to our website (which constitutes notice to you). It is your\n        responsibility to check the Sites periodically for changes. Your continued use of or\n        access to the website after posting any changes constitutes acceptance of those changes."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k74",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHpy",
+                "_type": "span",
+                "marks": [],
+                "text": "We may provide patches, updates, or upgrades to the Sites that must be installed for you\n        to continue to use the Sites. Although we will use commercially reasonable efforts to\n        notify you, we may update the Sites remotely without notifying you, and you hereby consent\n        to us applying patches, updates, and upgrades. You acknowledge that your use of the Sites\n        does not confer any interest, monetary or otherwise, in any aspect or feature of the\n        Sites, including but not limited to any rewards or Content (save for where it is your own\n        Submissions). You also acknowledge that any data, customization, or other data related to\n        your use of the Sites may cease to be available to you at any time without notice from us.\n        We do not have any maintenance or support obligations with respect to the Sites."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k75",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHt1",
+                "_type": "span",
+                "marks": [],
+                "text": "Severability"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k76",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHw4",
+                "_type": "span",
+                "marks": [],
+                "text": "In the event that any provision of these Terms is determined to be unlawful, void, or\n        unenforceable, such provision shall nonetheless be enforceable to the fullest extent\n        permitted by applicable law. The unenforceable portion shall be deemed to be severed from\n        these Terms; such determination shall not affect the validity and enforceability of any\n        other remaining provisions."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k77",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpHz7",
+                "_type": "span",
+                "marks": [],
+                "text": "Entire Agreement"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k78",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpI2A",
+                "_type": "span",
+                "marks": [],
+                "text": "These Terms and any policies or operating rules posted by us on the Sites or in respect to\n        the Sites constitute the entire agreement and understanding between you and us and govern\n        your use of the Sites, superseding any prior or contemporaneous agreements,\n        communications, and proposals, whether oral or written, between you and us (including, but\n        not limited to, any prior versions of these Terms). Any failure by us to exercise or\n        enforce any right or provision of these Terms shall not constitute a waiver of such right\n        or provision."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k79",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpI5D",
+                "_type": "span",
+                "marks": [],
+                "text": "Assignment"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k80",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpI8G",
+                "_type": "span",
+                "marks": [],
+                "text": "You shall not, without our prior written consent, assign, transfer, charge, or\n        sub-contract all or any of your rights or obligations under these Terms, and any attempt\n        without that consent will be null and void. If such restrictions on transfer under these\n        Terms are not enforceable under the law of your country, then these Terms will be binding\n        on any such recipient. We may at any time assign, transfer, charge, or sub-contract all or\n        any of our rights or obligations under these Terms."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k81",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpIBJ",
+                "_type": "span",
+                "marks": [],
+                "text": "Privacy Policy"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k82",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "sxnaZKfwX03H1wTecFpIEM",
+                "_type": "span",
+                "marks": [],
+                "text": "This policy explains how we collect, use, and disclose the information we collect about\n        you. You agree to the collection, use, and disclosure of your data in accordance with our\n        Privacy Policy."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "pageId": "terms-of-use",
+        "seoDescription": "Read Wugweb's terms of use for website access, service information, and visitor responsibilities.",
+        "seoTitle": "Terms of Use — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "terms-of-use"
+        },
+        "title": "Terms of Use"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:14:57Z",
+        "_id": "terms-of-use",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "body": [
+          {
+            "_key": "k2",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Introduction and Overview"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k3",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Please carefully read these Terms of Use (these \"Terms\") because they set forth a legally\n        binding agreement between you (\"you\", \"your\", and/or \"guests\") and Wug Web Services\n        Private Limited (\"we\", \"us\", \"our\", and/or \"WUGWEB\"), and govern your access and use of\n        any online service location/website that posts a link to these Terms (collectively, the\n        \"Sites\"). We offer the Sites, including all information, tools, and services available\n        herein to you, conditioned upon your acceptance of and strict adherence to these Terms."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k4",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "By accessing or using any part of the Sites, you agree to be bound by these Terms. If you\n        do not agree to all the terms and conditions of these Terms now or in the future, then do\n        not access or use the Sites. Your continued use of the Sites now or following the posting\n        of any changes in these Terms will indicate acceptance and agreement by you of such\n        changes."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k5",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "In some instances, both these Terms and separate terms elsewhere on the Sites will apply\n        to your use of the Sites (\"Additional Terms\"). To the extent there is a conflict between\n        these Terms and any applicable Additional Terms, the Additional Terms will control unless\n        they expressly state otherwise."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k6",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We control and operate the Sites from India, and we make no representation that the Sites\n        are appropriate or available for use beyond India. Software related to or made available\n        by the Sites may be subject to India export controls, and except as authorized by law, you\n        agree and warrant not to export or re-export the software to any country or any person,\n        entity, or end-user subject to India's export controls or sanctions."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k7",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitration Notice"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k8",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "You agree that disputes between you and us will be resolved by binding, individual\n        arbitration, governed by the Arbitration and Conciliation Act 1996. You agree that the\n        seat of arbitration would be Delhi in case of any dispute."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k9",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Content"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k10",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "The Sites contain (i) materials and other items relating to WUGWEB and its products and\n        services, and similar items from our licensors and other third parties, including all\n        layout, information, databases, articles, posts, text, data, files, images, scripts,\n        designs, graphics, instructions, illustrations, photographs, sounds, pictures, videos,\n        advertising copy, URLs, technology, software, interactive features, the \"look and feel\" of\n        the Sites, and the compilation, assembly, and arrangement of the materials of the Sites\n        and any and all copyrightable material; (ii) trademarks, logos, trade names, trade dress,\n        service marks, and trade identities of various parties, including those of WUGWEB; and\n        (iii) other forms of intellectual property (collectively, \"Content\"). All right, title,\n        and interest in and to the Sites and the Content are the property of WUGWEB or our\n        licensors or certain other third parties and are protected by Indian and international\n        copyright, trademark, trade dress, patent, and/or other intellectual property and unfair\n        competition rights and laws to the fullest extent possible."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k11",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right (but shall have no obligation) to pre-screen, review, flag, filter,\n        modify, refuse, or remove any or all Content. You understand that by using the Sites, you\n        may be exposed to Content that you may find offensive, indecent, or objectionable and\n        that, in this respect, you use the Sites at your own risk."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k12",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Limited License"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k13",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Subject to your strict compliance with these Terms and any applicable Additional Terms, we\n        grant you a limited, non-exclusive, revocable, non-assignable, personal, and\n        non-transferable license to access, enter, attend, download, display, view, use, consume,\n        and/or otherwise exploit the Sites and the Content in each case for your personal,\n        non-commercial use only. This limited license (i) does not give you any ownership of, or\n        any other intellectual property interest in, any Content, and (ii) may be suspended or\n        terminated for any reason, in our sole discretion, and without advance notice or\n        liability. To protect all parties' intellectual property rights, any unauthorized use of\n        the Content may violate copyright, trademark, privacy, publicity, communications, and\n        other laws, and any such use may result in your personal liability, including potential\n        criminal liability. It is your responsibility to ensure your equipment meets all the\n        necessary technical specifications to enable you to access and use the Sites. You\n        acknowledge and agree that using the Sites is at your sole risk and responsibility. We\n        expressly reserve the right to remove and/or delete any data, files, and/or other\n        information stored or used in connection with the Sites for any reason."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k14",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Availability"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k15",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right to refuse access to the Sites and/or Content to anyone for any reason\n        at any time. We may suspend or terminate the availability of the Sites and Content, in\n        whole or in part, to you for any reason, at our sole discretion, and without advance\n        notice or liability. Upon suspension or termination of your access to the Sites, or upon\n        notice from us, all rights granted to you under these Terms or any applicable Additional\n        Terms will cease immediately, and you agree that you will immediately discontinue use of\n        the Sites and Content."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k16",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Reservation of Rights"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k17",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "All rights not expressly granted to you are reserved by WUGWEB and its licensors and other\n        third parties. No right or license may be construed, under any legal theory, by\n        implication, estoppel, industry custom, or otherwise. Any unauthorized use of the Content\n        or Sites for any purpose is prohibited."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k18",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Submissions, Comments, and Feedback"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k19",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "If you send certain specific submissions or creative ideas, suggestions, proposals, plans,\n        or other materials, whether online, by email, by postal mail, or otherwise (collectively,\n        \"Submissions\"), you grant us a non-exclusive, unrestricted, unconditional, unlimited,\n        worldwide, irrevocable, perpetual, transferable and cost-free right and license to host,\n        store, use, display, reproduce, modify, adapt, edit, combine with other materials,\n        publish, distribute, create derivative works from, promote, exhibit, broadcast, syndicate,\n        sublicense, publicly perform, publicly display, and otherwise use and exploit in any\n        manner whatsoever, or grant third parties the right to do any of the foregoing, all or any\n        portion of your Submissions, for any purpose whatsoever in all formats, on or through any\n        means or medium now known or hereafter developed. You further irrevocably grant us the\n        right, but not the obligation, to use your name, image, likeness, picture, avatar, social\n        media handle, biographical information, or other indicia, in connection with your\n        Submissions. You also agree to waive any right of approval for our use of the rights\n        granted herein and agree to waive any moral rights that you may have in any Submissions,\n        even if it is altered or changed in a manner not agreeable to you."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k20",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "You understand that you will not receive any fees, sums, consideration, or remuneration\n        for any of the rights granted herein. Our receipt of your Submissions is not an admission\n        of their novelty, priority, or originality, and it does not impair our right to existing\n        or future intellectual property rights relating to your Submissions. You waive any and all\n        rights and claims in connection with our consideration, use, or development of any\n        product, content, or other materials similar or identical to your Submission now or in\n        the future."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k21",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "You agree that your Submissions will not violate any right of any third party, including\n        copyright, trademark, privacy, personality, or other personal or proprietary right. You\n        further agree that your Submissions will not contain libellous or otherwise unlawful,\n        abusive, or obscene material, or contain any computer virus or other malware that could in\n        any way affect the operation of the Sites or any related websites. You may not use a false\n        email address, pretend to be someone other than yourself, or otherwise mislead us or\n        third-parties as to the origin of any Submissions. You are solely responsible for any\n        Submissions you make and their accuracy. We take no responsibility and assume no liability\n        for any Submissions provided by you or any third party."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k22",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Third-Party Services"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k23",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We may provide you with access to third-party tools, content, products or services over\n        which we neither monitor nor have any control nor input. You acknowledge and agree that we\n        provide access to such third-party content \"as is\" and \"as available\" without any\n        warranties, representations, or conditions of any kind and without any endorsement. We\n        shall have no liability whatsoever arising from or relating to your use of such\n        third-party content. Any use by you of third-party content offered through the Sites is\n        entirely at your own risk and discretion, and you should ensure that you are familiar with\n        and approve of the terms on which tools are provided by the relevant third-party\n        provider(s)."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k24",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Third-party links on the Sites may direct you to third-party websites that are not\n        affiliated with WUGWEB. We are not responsible for examining or evaluating the content or\n        accuracy, and we do not warrant and will not have any liability or responsibility for any\n        third-party materials or websites or for any other materials, products, or services of\n        third parties available through or at such third-party links."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k25",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We are not liable for any harm or damages related to the purchase or use of goods,\n        services, resources, content, or any other transactions made in connection with any\n        third-party websites. Please review carefully the third party's policies and practices and\n        make sure you understand them before you engage in any transaction. Complaints, claims,\n        concerns, or questions regarding third-party products should be directed to the third\n        party."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k26",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "DMCA/Copyright Policy"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k27",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We take copyright, and other intellectual property infringement claims seriously and\n        respond to it under the laws governed by Indian Intellectual Property Rights. To submit a\n        notice of claimed infringement under Indian law, provide our designated agent with the\n        following written information: a physical or electronic signature of the intellectual\n        property right owner or a person authorized to act on his or her behalf; identification of\n        the work claimed to have been infringed; identification of the infringing material and\n        information reasonably sufficient to permit us to locate that material; your contact\n        information, including your address, telephone number, and e-mail address; a statement\n        that you have a good faith belief that the use of the material in the manner asserted is\n        not authorized by the intellectual property owner, its agent, or the law; and a statement\n        that the information in the notification is accurate and, under penalty of perjury, that\n        you are authorized to act on behalf of the copyright owner."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k28",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Our designated agent is: Intellectual Property Rights Contact Details, Wug Web Services\n        Private Limited, Address: WeWork Berger Delhi One, Floor 19, C-001/A2, Sector 16B, Noida,\n        Uttar Pradesh 201301. Email: hello@wugweb.com"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k29",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Counter Notification"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k30",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "If you believe that your material has been removed in error in response to an IPR\n        notification, you may submit a counter-notification to our designated agent with the\n        following written information: a physical or electronic signature; identification of the\n        material that has been removed or to which access has been disabled and the location at\n        which the material appeared before it was removed or access to it was disabled; a\n        statement under penalty of perjury that you have a good faith belief that the material was\n        removed or disabled as a result of a mistake or misidentification of the material to be\n        removed or disabled; and your name, address, telephone number, and a statement that you\n        consent to the jurisdiction of Delhi Court for the judicial district in which the address\n        is located, or if your address is outside of India. We will respond to counter\n        notifications in accordance with the IPR laws of India."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k31",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Customer Support"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k32",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Contact us here for questions about your use of the Sites or these Terms:\n        hello@wugweb.com. When you communicate with us\n        electronically, you consent to receive communications from us electronically. You agree\n        that all agreements, notices, disclosures, and other communications we provide to you\n        electronically satisfy any legal requirement that such communications be in writing."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k33",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Errors, Inaccuracies, and Omissions"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k34",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Occasionally there may be information on the Sites that contains typographical errors,\n        inaccuracies, or omissions that may relate to product descriptions, pricing, promotions,\n        offers, product shipping charges, transit times, and availability. We reserve the right to\n        correct any errors, inaccuracies, or omissions, and to change or update information or\n        cancel orders if any information on the Sites or on any related website is inaccurate at\n        any time without prior notice."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k35",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We undertake no obligation to update, amend, or clarify information on the Sites or on any\n        related website, including without limitation, pricing information, except as required by\n        law. No specified update or refresh date applied on the Sites or on any related website\n        should be taken to indicate that all information on the Sites or on any related website\n        has been modified or updated."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k36",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Disclaimers"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k37",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "The Sites and any Content therein are provided on an \"as is\" and \"as available\" basis. You\n        expressly acknowledge and agree that the Sites and the Content may contain audio-visual\n        effects, strobe lights or other materials that may affect your physical senses and/or\n        physical condition. We are not responsible for whether the Sites, including any Content\n        therein, are accurate, complete, or current. Content is provided for general information\n        only and should not be relied upon or used as the sole basis for making decisions. Any\n        reliance on the Sites, and any Content therein, is at your own risk."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k38",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "The Sites and Content therein may contain certain historical information. Historical\n        information, necessarily, is not current and is provided for your reference only. We\n        reserve the right to modify the Sites and any Content at any time, but we have no\n        obligation to update the Sites or the Content. You agree that it is your responsibility to\n        monitor changes to the Sites that may affect you. We do not guarantee, represent, or\n        warrant that your use of the Sites will be uninterrupted, timely, secure, or error-free.\n        We do not warrant that the results that may be obtained from the use of the Sites will be\n        accurate or reliable."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k39",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "You agree that from time to time, we may remove the Sites and/or any Content therein for\n        indefinite periods of time or cancel the Sites at any time, without notice to you."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k40",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Limitations of Our Liability"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k41",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "To the maximum extent permitted by law, in no event shall WUGWEB be liable to you for any\n        loss, damage, or injury of any kind, including any direct, indirect, special, incidental,\n        exemplary, consequential, or punitive losses or damages, or damages for system failure or\n        malfunction or loss of profits, data, use, business or goodwill, arising out of or in\n        connection with (a) the Sites, (b) these Terms or (c) your misuse of the Sites or any\n        Content available on or through the Sites. The limitations outlined in this section shall\n        apply regardless of the form of action, whether the asserted liability or damages are\n        based on contract, indemnification, tort, strict liability, statute, or any other legal or\n        equitable theory."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k42",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Notwithstanding the foregoing, these disclaimers herein do not exclude any product\n        liability claims, statutory consumer rights, or damages associated resulting from WUGWEB's\n        intentional misconduct, recklessness, fraud, or gross negligence."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k43",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Indemnification"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k44",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "You agree to indemnify, defend, and hold harmless WUGWEB, affiliate, and subsidiary\n        entities, and each of our and their respective partners, officers, directors, agents,\n        contractors, licensors, service providers, subcontractors, suppliers, and employees\n        harmless from any claim or demand, including reasonable attorneys' fees, made by any third\n        party due to or arising out of your breach or alleged breach of these Terms; your\n        Submissions; your misuse of the Sites and/or the Content; your violation of any laws,\n        rules, regulations, codes, statutes, ordinances, or orders of any governmental or\n        quasi-governmental authorities; your violation of the rights of any third party, including\n        any intellectual property right, publicity, confidentiality, property, or privacy right;\n        your use of a third-party product, service, and/or website; or any misrepresentation made\n        by you."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k45",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right to assume, at your expense, the exclusive defence and control of any\n        matter subject to your indemnification. You agree to cooperate with our defence of any\n        claim. You will not, in any event, settle any claim without our prior written consent."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k46",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Termination"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k47",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "These Terms are effective unless and until terminated by either you or us. You may\n        terminate these Terms at any time by notifying us that you no longer wish to use the Sites\n        or when you cease using the Sites. If in our sole judgment you fail, or we suspect that\n        you have failed, to comply with any term or provision of these Terms, we also may\n        terminate these Terms at any time without notice; and/or accordingly may deny you access\n        to the Sites. The provisions of these Terms and any applicable Additional Terms, which by\n        their nature should survive termination of your use of the Sites (or any parts thereof),\n        will do so."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k48",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Governing Law"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k49",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "These Terms and any separate agreements whereby we provide you Services shall be governed\n        by and construed in accordance with the laws of India without reference to its conflicts\n        of laws principles."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k50",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Dispute Resolution"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k51",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Please read this section carefully — it may significantly affect your legal rights. It\n        contains procedures for mandatory arbitration."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k52",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Agreement To Arbitrate"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k53",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "You and WUGWEB agree that any dispute, claim, or controversy arising out of or relating to\n        these Terms or the use of the Sites (\"Disputes\") will be settled by binding arbitration,\n        except that each party retains the right to file a case in the courts granted by the laws\n        of India for the time being in force and to seek injunctive or other equitable relief in a\n        court of competent jurisdiction to prevent the actual or threatened infringement,\n        misappropriation, or violation of a party's copyrights, trademarks, trade secrets,\n        patents, or other intellectual property rights (an \"IP Protection Action\")."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k54",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "The exclusive jurisdiction and venue of any IP Protection will be the courts located in\n        Delhi. WUGWEB and you waive any objection to jurisdiction and venue in such courts and\n        consent to their jurisdiction. You agree you may bring arbitration claims only on your own\n        behalf and not on behalf of any other person or entity. Unless both you and WUGWEB\n        otherwise agree in writing, the arbitrator may not consolidate more than one person's\n        claims and may not otherwise preside over any form of any class or representative\n        proceeding."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k55",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "This clause does not limit either party's ability to file an action in a court with\n        jurisdiction to seek injunctive or other equitable relief for disputes relating to\n        intellectual property, proprietary data or to enforce this dispute resolution clause,\n        including your agreement not to assert claims related to the suspension or termination of\n        another person's account. In any such action, the court, rather than an arbitrator, must\n        decide whether such a claim is arbitrable and must decide whether the party is entitled to\n        the requested injunctive or other equitable relief."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k56",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitration Rules"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k57",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "The arbitration will be administered by the Indian Council of Arbitration (IAC) in\n        accordance with the Commercial Arbitration Rules (the \"IAC Rules\") and the Arbitration and\n        Conciliation Act, 1996, then in effect, and amendments thereof."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k58",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitration Process"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k59",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "A party who desires to initiate arbitration must provide the Registrar a written notice\n        asking for arbitration, along with the names and full addresses of the parties to the\n        dispute, a statement of the claim and facts supporting the claim, original or duly\n        certified copies of the arbitration agreement, and the INR 1000 registration fee, as\n        specified in the IAC Rules."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k60",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitration Location"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k61",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Unless you and WUGWEB otherwise agree, the arbitration will be conducted in Delhi."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k62",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Arbitrator's Decision"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k63",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "The arbitrator will render an award within the time frame specified in the IAC Rules. The\n        arbitrator's decision will include the essential findings and conclusions which the\n        arbitrator based its award on. Judgment on the arbitration award may be entered in any\n        court having jurisdiction over the arbitration award. The arbitrator's award of damages\n        must be consistent with the terms of the \"Limitations of Our Liability\" section of these\n        Terms as to the types and amounts of damages for which a party may be held liable. The\n        arbitrator may award declaratory or injunctive relief only in favour of the claimant and\n        only to the extent necessary to provide relief warranted by the claimant's individual\n        claim. If you prevail in arbitration, you will be entitled to an award of attorneys' fees\n        and expenses to the extent provided under applicable law. WUGWEB will be entitled to an\n        award of attorneys' fees and expenses to the extent provided under applicable law if it\n        prevails in arbitration unless such arbitration is found by the arbitrator to be frivolous\n        under the standards of the applicable laws."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k64",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Changes"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k65",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "By rejecting any changes to these Terms, you agree that you will arbitrate any Dispute\n        between you and WUGWEB in accordance with the provisions of this section as of the date\n        you first accepted these Terms (or accepted any subsequent changes to these Terms)."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k66",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Your Choices"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k67",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "If you do not want to settle Disputes by arbitration as described above, you will notify\n        us by sending us written notice to hello@wugweb.com\n        telling us that you do not want to use arbitration within thirty (30) days of the date on\n        which you agreed to these Terms (such notice, an \"Arbitration Opt-out Notice\"). If you do\n        not provide us with an Arbitration Opt-out Notice within the thirty (30) day period, you\n        will be deemed to have knowingly and intentionally waived your right to litigate any\n        dispute except for Claims and IP Protection Action as stated above."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k68",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Investigations"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k69",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right to investigate and prosecute any suspected breaches of these Terms or\n        the Sites. We may disclose any information as necessary to satisfy any law, regulation,\n        legal process, or governmental request."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k70",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Waiver of Injunctive or Other Equitable Relief"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k71",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "To the maximum extent permitted by law, you agree that you will not be permitted to obtain\n        an injunction or other equitable relief of any kind, such as any court or other action\n        that may interfere with or prevent the development or exploitation of any website,\n        application, content, submissions, product, service, or intellectual property owned,\n        licensed, used or controlled by WUGWEB or a licensor of WUGWEB."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k72",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Changes to Terms and the Sites"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k73",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We reserve the right to update, change, or replace any part of these Terms by posting\n        updates and/or changes to our website (which constitutes notice to you). It is your\n        responsibility to check the Sites periodically for changes. Your continued use of or\n        access to the website after posting any changes constitutes acceptance of those changes."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k74",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "We may provide patches, updates, or upgrades to the Sites that must be installed for you\n        to continue to use the Sites. Although we will use commercially reasonable efforts to\n        notify you, we may update the Sites remotely without notifying you, and you hereby consent\n        to us applying patches, updates, and upgrades. You acknowledge that your use of the Sites\n        does not confer any interest, monetary or otherwise, in any aspect or feature of the\n        Sites, including but not limited to any rewards or Content (save for where it is your own\n        Submissions). You also acknowledge that any data, customization, or other data related to\n        your use of the Sites may cease to be available to you at any time without notice from us.\n        We do not have any maintenance or support obligations with respect to the Sites."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k75",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Severability"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k76",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "In the event that any provision of these Terms is determined to be unlawful, void, or\n        unenforceable, such provision shall nonetheless be enforceable to the fullest extent\n        permitted by applicable law. The unenforceable portion shall be deemed to be severed from\n        these Terms; such determination shall not affect the validity and enforceability of any\n        other remaining provisions."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k77",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Entire Agreement"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k78",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "These Terms and any policies or operating rules posted by us on the Sites or in respect to\n        the Sites constitute the entire agreement and understanding between you and us and govern\n        your use of the Sites, superseding any prior or contemporaneous agreements,\n        communications, and proposals, whether oral or written, between you and us (including, but\n        not limited to, any prior versions of these Terms). Any failure by us to exercise or\n        enforce any right or provision of these Terms shall not constitute a waiver of such right\n        or provision."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k79",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Assignment"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k80",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "You shall not, without our prior written consent, assign, transfer, charge, or\n        sub-contract all or any of your rights or obligations under these Terms, and any attempt\n        without that consent will be null and void. If such restrictions on transfer under these\n        Terms are not enforceable under the law of your country, then these Terms will be binding\n        on any such recipient. We may at any time assign, transfer, charge, or sub-contract all or\n        any of our rights or obligations under these Terms."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "k81",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "Privacy Policy"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "k82",
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "marks": [],
+                "text": "This policy explains how we collect, use, and disclose the information we collect about\n        you. You agree to the collection, use, and disclosure of your data in accordance with our\n        Privacy Policy."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "httpStatus": "200",
+        "ogDescription": "Read Wugweb’s terms of use for website access, service information, and visitor responsibilities.",
+        "ogImagePath": "/assets/site/default/og.jpg",
+        "ogTitle": "Terms of Use — Wugweb",
+        "pageId": "terms-of-use",
+        "route": "/termsofuse",
+        "seoDescription": "Read Wugweb’s terms of use for website access, service information, and visitor responsibilities.",
+        "seoTitle": "Terms of Use — Wugweb",
+        "title": "Terms of Use"
+      }
+    },
+    {
+      "id": "work",
+      "draft": {
+        "_createdAt": "2026-07-28T23:14:51Z",
+        "_id": "drafts.work",
+        "_rev": "sxnaZKfwX03H1wTecFpE3F",
+        "_system": {
+          "base": {
+            "id": "work",
+            "rev": "hEzuHHk6Tg1XoYfrKsr8P7"
+          }
+        },
+        "_type": "singletonPage",
+        "_updatedAt": "2026-08-04T16:48:32Z",
+        "pageId": "work",
+        "seoDescription": "Explore the brands and businesses that trust Wugweb for product, UX, web development, and digital experience work.",
+        "seoTitle": "Work — Wugweb",
+        "slug": {
+          "_type": "slug",
+          "current": "work"
+        },
+        "title": "Clients – Wugweb | Trusted by Innovative Brands"
+      },
+      "published": {
+        "_createdAt": "2026-07-28T23:14:51Z",
+        "_id": "work",
+        "_rev": "36TK9CDo7y3YWN6AkM2kSt",
+        "_type": "singletonPage",
+        "_updatedAt": "2026-10-13T11:16:00Z",
+        "httpStatus": "200",
+        "ogDescription": "Explore the diverse brands and businesses that trust Wugweb for UI/UX design, web development, and digital experience solutions.",
+        "ogImagePath": "/assets/site/work/og.jpg",
+        "ogTitle": "Clients – Wugweb | Trusted by Innovative Brands",
+        "pageId": "work",
+        "route": "/work",
+        "seoDescription": "Explore the diverse brands and businesses that trust Wugweb for UI/UX design, web development, and digital experience solutions.",
+        "seoTitle": "Clients – Wugweb | Trusted by Innovative Brands",
+        "title": "Clients – Wugweb | Trusted by Innovative Brands"
+      }
+    }
+  ]
+}
