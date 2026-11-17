@@ -10,7 +10,7 @@ import { readFile } from 'node:fs/promises'
 const CSS = 'src/styles/global.css'
 const DOCS = ['kits_design_system/docs/tokens/layout-shell.md', 'kits_design_system/docs/tokens/sizing.md']
 const css = await readFile(CSS, 'utf8').catch(() => { console.error(`cannot read ${CSS}; run from the repo root`); process.exit(2) })
-const declared = new Map([...css.matchAll(/^\s*(--[a-z0-9-]+)\s*:\s*([^;]+);/gim)].map((m) => [m[1], m[2].trim()]))
+const declared = new Map([...css.matchAll(/(?<![\w-])(--[a-z0-9-]+)\s*:\s*([^;{}]+);/g)].map((m) => [m[1], m[2].trim()]))
 const resolve = (v, d = 0) => { const m = /^var\((--[a-z0-9-]+)\)$/.exec(v || ''); return m && d < 5 ? resolve(declared.get(m[1]), d + 1) : v }
 const findings = []
 for (const f of DOCS) {
@@ -23,7 +23,9 @@ for (const f of DOCS) {
 }
 const expect = { '--control-size': '44px', '--breakpoint-xl': '1200px', '--duration-spring': '400ms', '--layer-nav': '10', '--nav-bar-pad': '12px', '--nav-logo-height': '2.5rem' }
 for (const [k, v] of Object.entries(expect)) {
-  const got = resolve(declared.get(k))
+  let got = resolve(declared.get(k))
+  if (got && /^[\d.]+rem$/.test(got) && /px$/.test(v)) got = `${parseFloat(got) * 16}px`
+  if (v.endsWith('rem') === false && got === undefined) { findings.push(`HIGH     ${CSS}: ${k} not declared (doc: ${v})`); continue }
   if (got === undefined) findings.push(`HIGH     ${CSS}: ${k} not declared (doc: ${v})`)
   else if (got.replace(/\s/g, '') !== v) findings.push(`HIGH     ${CSS}: ${k} is ${got}, doc says ${v}`)
 }

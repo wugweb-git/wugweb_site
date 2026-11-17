@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2026-11-17)
+
+Owner rulings applied. Brief field 9 unchanged, pending an owner call.
+
+- Link targets (decision 20): `wugweb-seo` returns them inside the pillar and cluster structure this skill sets.
+- Proof map wins on which case study backs a page (decision 23).
+- Pointer to `docs/skills/STANDING-RULES.md` in `SKILL.md` and `references/strategy.md`.
+- `evals/` exists, so the claim in `SKILL.md` holds.
+
 ## 0.1.0 (2026-11-16)
 
 First build, from the plan approved by the owner on 2026-11-16 (Notion page "wugweb-strategy" under the Wugweb Skill Management System; repo copy `docs/skills/wugweb-strategy/PLAN.md`).

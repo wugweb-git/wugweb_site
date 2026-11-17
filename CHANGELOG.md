@@ -15,6 +15,9 @@ and this project adheres to Semantic Versioning.
 
 ### Added — wugweb-brand-os skill, first draft 0.1.0 (2026-11-17)
 - `.claude/skills/wugweb-brand-os/`: `SKILL.md` (four modes, fixed brand rules), 10 brand reference files, 7 Visual OS files, test prompts, a plain Node script that builds `export/wugweb-brand-os.md` (one file for GPT, Cursor and other tools, with the standing rules copied in). Positioning, values, audience and most facts are marked not yet approved, waiting on the owner. No edits to `brand_guidelines/`.
+### Changed — wugweb-strategy skill 0.1.1 (2026-11-17)
+- Owner rulings applied to the skill files: link targets come from wugweb-seo inside the structure strategy sets (decision 20), the proof map wins on which case study backs a page (decision 23), pointer to `docs/skills/STANDING-RULES.md`. Exports rebuilt. Brief field 9 unchanged.
+
 ### Added — wugweb-kits skill: Wugweb rule groups, references and scripts (2026-11-17)
 
 - `.claude/skills/wugweb-kits/`: 26 rule files (shell 8, label 8, kits 10), references (component-sizes, six-layers, spec-templates, known-doc-clashes), scripts kits-check-page, kits-doc-drift, contrast, test; audit.mjs renamed kits-inventory.mjs with .astro support and shell findings; validate.mjs now checks the whole skill; fixed contrast figures 6.70 and 2.33 and the grep include pattern. AGENTS.md regenerated (47 rules).
@@ -74,6 +77,9 @@ Docs only. The wugweb-work plan status now reads 0.4.2 in the repo; the Notion p
 
 ### Added — wugweb-work skill `evals/evals.json` in the repo (2026-11-17)
 - `.claude/skills/wugweb-work/evals/evals.json`: the 14 eval prompts and expectations from the development chat, plain JSON, no secrets. The packager strips `evals/` from the app copy, so this is the first time the evals reach the repo. The evals have not been run yet. Closes the "missing `evals/`" gap noted in the 0.4.1 master copy entry above.
+
+### Changed — wugweb-voice plan, app copy now full (2026-11-17)
+- `docs/skills/wugweb-voice/PLAN.md` and the Notion page: version 0.3.0 (locked), 57 files on main, and the Claude app copy noted as reset with the 0.3.0 zip pending upload. Backup note `backups/notion-wugweb-voice-page-2026-11-16-i.json`.
 
 ### Added — wugweb-strategy skill v0.1.0, master copy in the repo (2026-11-17)
 - `.claude/skills/wugweb-strategy/`: the 19 app files copied unchanged, plus `AGENTS.md` (single-file export for other tools, with the standing rules block copied from `docs/skills/STANDING-RULES.md`). Plan status line updated. Six known differences from the plan rulings are listed for the owner, not applied.

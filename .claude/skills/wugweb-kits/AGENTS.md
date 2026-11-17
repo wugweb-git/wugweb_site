@@ -144,7 +144,7 @@ Open with the result in one or two plain sentences. Then one table of findings s
 BLOCKER  src/components/Card.astro:34  hardcoded colour, use the surface token
 HIGH     kits_design_system/docs/components.md  doc says focus uses `--focus-primary`, code uses `--neutral-3`; report, do not fix
 
-Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` has no section inside the main landmark; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The proposed `faqs` field in `layout-shell.md` breaks the no FAQPage rule and is also for `wugweb-seo`. Framer media ratios are not mapped to sections.
+Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` has no section inside the main landmark; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` is kept (owner, 2026-11-17) and feeds FAQPage only where the page visibly shows every question and answer. Framer media ratios are not mapped to sections.
 
 ## Using this outside Claude
 
