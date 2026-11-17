@@ -65,6 +65,22 @@ Link targets, owner rulings of 2026-11-16 as carried in the repo skill 2.4.1: `w
 
 ## Waiting on the owner
 
+**Decided 2026-11-17 (delegated, "diy"), in main 2.5.0 (commit 7a6a5ecd):**
+
+- Schema for service, home and about: service pages carry `Service` and `BreadcrumbList`, home `WebPage`, about `AboutPage`, no author. Folded into 2.5.0, no new version.
+- Blog and service page titles: source 52 or fewer, so the " \| Wugweb" suffix fits in 60. Folded into 2.5.0.
+- Kits fields: do not adopt `seoCanonicalUrl`, `schemaType`, `aiSummary` or `keyTakeaways` for case studies (canonicals come from Notion, the type is fixed as CreativeWork, the body is the single source). `faqs` was already settled.
+- Headings: `wugweb-work` owns them, `wugweb-voice` runs the check, wugweb-seo checks length and order only.
+- Standing rules: keep the pointer in `SKILL.md`; the rules inline only in `AGENTS.md` and the single-file export.
+- `evals/evals.json`: supplied in 2.5.0 (8 cases).
+- App copy: the 2.5.0 zip is built and sent; upload it in the Claude app to bring the app copy up from 2.4.0.
+
+**Still yours, not mine to decide or do:**
+
+- Training bots per property: a business call. Recommended default: allow search and citation bots everywhere, and treat training-bot blocking as a per-property robots.txt choice.
+- Made-file share-image sizes: og 1200 by 630 is settled; the platform sizes need your table. Standard values to confirm, not yet in the skill: LinkedIn link image 1200 by 627, Behance cover 808 by 632, Dribbble shot 1600 by 1200, story 1080 by 1920 with about 250px reserved top and bottom.
+- Search-data connector sign-in: needs your OAuth; a session cannot sign in. Ahrefs, OpenSEO and OpenRush are already attached if you want those instead.
+
 - [ ] Sign in to any SEO data connector the report part should use. A Search Console export is the standard source (2.3.0); connectors are optional. Recommended: Ahrefs, OpenSEO and OpenRush are attached and usable now; SE Ranking needs sign-in; confirm the Search Console property for first-party clicks and impressions.
 - [ ] What the skill should cover for blogs and service pages. A proposal is under "Scope by page type". Recommended: blog posts get the full on-page audit plus BlogPosting; service pages the full on-page audit plus Service schema and links to proof.
 - [ ] Confirm the title rule's reach: the skill applies "51 characters or fewer" to case studies only and marks other page types not decided. Recommended: keep 51 for case studies only; blog and service take the limit below.
