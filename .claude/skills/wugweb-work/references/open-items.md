@@ -1,13 +1,11 @@
 # Open with the owner
 
-Four matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
+Two matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
 
 | Item | What is open | Working assumption until decided |
 |---|---|---|
 | NTUC facts | Results with source and date; the live URL; the number of programme-builder steps; the heading typeface | None is stated. The NTUC examples carry no results and list these as owner questions |
-| Social, remaining | Who uploads to Behance and Dribbble; where made files are kept before posting; whether a Dribbble shot may sit a screen on a plain canvas; whether the scheduling tool is connected, and to which accounts | Behance and Dribbble output is an ordered list, not an upload. A Dribbble shot shows the screen alone at its own ratio. A post is handed over as an approved draft when no connected tool is confirmed |
-| Medium | Whether Medium is a form of its own, or the blog post reposted as is | The approved blog post, unchanged, with a link to the original. No Medium-only rewrite |
-| Made-file sizes | The sizes for a Behance cover, a Dribbble shot and a story canvas | The proposed figures in `forms.md` are shown as proposed. No file is made at these sizes without the owner's yes for that file |
+| Social, remaining | Where made files are kept before posting; whether a scheduling tool is connected for the LinkedIn page and the owner's LinkedIn, and to which accounts | Made files stay in the media store the owner names. A LinkedIn post is handed over as an approved draft when no connected tool is confirmed |
 
 ## Also open, shared with `wugweb-kits`
 
@@ -44,6 +42,10 @@ Four matters are not decided. The owner decides each one. Until then the skill w
 | Plan vetting | The plan is approved as it stands and Part 1 stays locked. Starting Part 2 (site code) still needs the owner's own go | the plan; `SKILL.md` |
 | Replies and outreach | Out of the Forms module. A reply or pitch asked for is drafted as a one-off, with no fact ledger | `forms.md` |
 | LinkedIn tags | None | `forms.md`, `forms/linkedin-post.md` |
+| Medium | Not a form of its own: the approved blog post, unchanged, with a link to the original | `forms.md` |
+| Behance and Dribbble uploads | The owner uploads. The skill hands over an ordered list, never an upload | `forms/behance.md`, `forms/dribbble.md` |
+| Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
+| Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (safe zone unverified: use the wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
 
 ## When an item is decided
 

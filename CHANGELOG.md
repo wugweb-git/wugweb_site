@@ -10,6 +10,9 @@ and this project adheres to Semantic Versioning.
 ## [Unreleased]
 
 - feat(skills): wugweb-brand-os applies the owner's answers of 2026-11-17 (questions 5 to 9, 12 to 18); dashboards ban now excepts software subjects; 4 questions remain open or partly answered.
+### Changed — wugweb-work skill 0.5, social and size answers applied (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner answers: Medium is not a form (repost unchanged); the owner uploads to Behance and Dribbble, the skill hands over a list; Dribbble screens never on a plain canvas; Behance 808 x 632, Dribbble 1600 wide and story 1080 x 1920 confirmed. Two matters remain with the owner. validate 30 checks 0 errors, test passes, exports rebuilt.
+
 ### Changed — wugweb-strategy skill 0.1.2 (2026-11-17)
 - Owner answers applied: brief field 9 pasted from wugweb-seo unchanged; wugweb-voice may read the signal log directly, read only. Exports rebuilt.
 

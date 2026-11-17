@@ -19,4 +19,4 @@
 3. Check the shot size against the dated spec. The screen keeps its ratio.
 4. Go to `publish-approval.md`.
 
-Whether a screen may sit on a plain canvas is not decided; the owner decides. Until then show the screen alone at its own ratio.
+A screen is shown alone at its own ratio, never on a plain canvas (decided 2026-11-17). The owner uploads the shot; the output is the file, title, description and tags as a list.

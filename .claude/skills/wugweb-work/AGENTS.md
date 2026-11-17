@@ -83,7 +83,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 ## Open with the owner
 
-Four matters are not decided; the owner decides each. Build around them and mark any output they touch "open". The working assumption for each is in `references/open-items.md`: NTUC facts; the remaining social questions; whether Medium is its own form; sizes for Behance, Dribbble and story files. Four more are shared with `wugweb-kits` and listed in the same file.
+Two matters are not decided; the owner decides each. Build around them and mark any output they touch "open". The working assumption for each is in `references/open-items.md`: NTUC facts; where made files are kept and whether a scheduling tool is connected. Four more are shared with `wugweb-kits` and listed in the same file.
 
 ## Archetypes at a glance
 
@@ -1541,7 +1541,7 @@ Not in this module: replies, comment routines and outreach pitches (owner decisi
 
 ### Accounts in scope (owner, 2026-11-16)
 
-The Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out. Whether Medium is a form of its own is open; until decided it carries the approved blog post unchanged.
+The Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out. Medium is not a form of its own (owner decision, 2026-11-17): it carries the approved blog post unchanged, with a link to the original.
 
 Worked examples, made from a proposed body for shape only: `examples/forms-ntuc-fact-pack.md`, `examples/forms-ntuc-linkedin-post.md`, `examples/forms-ntuc-carousel-outline.md`.
 
@@ -1571,14 +1571,14 @@ A form may need a file that does not exist (a share image, a social card, a Beha
 
 ### Sizes for made files
 
-These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were looked up by another session and are proposed, not confirmed (open; see `open-items.md`). Check each again and date it when a file is proposed.
+These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were looked up by another session and confirmed by the owner on 2026-11-17 as the sizes to use. Check each against the platform's help page and date it when a file is proposed.
 
 | File | Size | Source and standing |
 |---|---|---|
 | Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn Help, read directly: at least 1200 x 627, ratio 1.91:1, 5 MB at most |
-| Behance cover (proposed) | Upload at least 808 x 632; shown at 202 x 158 | Behance Help Center as reported by search; figures date from 2020; the page was not read directly |
-| Dribbble shot (proposed) | At least 1600 wide, no fixed ratio; PNG, JPG or GIF up to 10 MB, video up to 20 MB | Dribbble Help Center, read directly; 1600 x 1200 is convention only |
-| Story canvas (proposed) | 1080 x 1920 | Safe zone unverified: no official page confirms it. Use the wider margins |
+| Behance cover (confirmed 2026-11-17) | Upload at least 808 x 632; shown at 202 x 158 | Behance Help Center as reported by search; figures date from 2020; the page was not read directly |
+| Dribbble shot (confirmed 2026-11-17) | At least 1600 wide, no fixed ratio; PNG, JPG or GIF up to 10 MB, video up to 20 MB | Dribbble Help Center, read directly; 1600 x 1200 is convention only |
+| Story canvas (confirmed 2026-11-17) | 1080 x 1920 | Safe zone unverified: no official page confirms it. Use the wider margins |
 
 This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 
@@ -1602,19 +1602,17 @@ This skill picks which platform size a file uses; `wugweb-kits` supplies the siz
 
 ### Not decided
 
-Who uploads to Behance and Dribbble, where made files are kept, the plain canvas question, whether the scheduling tool is connected, Medium as a form, three made-file sizes: see `open-items.md`.
+Where made files are kept before posting, and whether a scheduling tool is connected: see `open-items.md`.
 
 <!-- references/open-items.md -->
 ## Open with the owner
 
-Four matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
+Two matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
 
 | Item | What is open | Working assumption until decided |
 |---|---|---|
 | NTUC facts | Results with source and date; the live URL; the number of programme-builder steps; the heading typeface | None is stated. The NTUC examples carry no results and list these as owner questions |
-| Social, remaining | Who uploads to Behance and Dribbble; where made files are kept before posting; whether a Dribbble shot may sit a screen on a plain canvas; whether the scheduling tool is connected, and to which accounts | Behance and Dribbble output is an ordered list, not an upload. A Dribbble shot shows the screen alone at its own ratio. A post is handed over as an approved draft when no connected tool is confirmed |
-| Medium | Whether Medium is a form of its own, or the blog post reposted as is | The approved blog post, unchanged, with a link to the original. No Medium-only rewrite |
-| Made-file sizes | The sizes for a Behance cover, a Dribbble shot and a story canvas | The proposed figures in `forms.md` are shown as proposed. No file is made at these sizes without the owner's yes for that file |
+| Social, remaining | Where made files are kept before posting; whether a scheduling tool is connected for the LinkedIn page and the owner's LinkedIn, and to which accounts | Made files stay in the media store the owner names. A LinkedIn post is handed over as an approved draft when no connected tool is confirmed |
 
 ### Also open, shared with `wugweb-kits`
 
@@ -1651,6 +1649,10 @@ Four matters are not decided. The owner decides each one. Until then the skill w
 | Plan vetting | The plan is approved as it stands and Part 1 stays locked. Starting Part 2 (site code) still needs the owner's own go | the plan; `SKILL.md` |
 | Replies and outreach | Out of the Forms module. A reply or pitch asked for is drafted as a one-off, with no fact ledger | `forms.md` |
 | LinkedIn tags | None | `forms.md`, `forms/linkedin-post.md` |
+| Medium | Not a form of its own: the approved blog post, unchanged, with a link to the original | `forms.md` |
+| Behance and Dribbble uploads | The owner uploads. The skill hands over an ordered list, never an upload | `forms/behance.md`, `forms/dribbble.md` |
+| Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
+| Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (safe zone unverified: use the wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
 
 ### When an item is decided
 
@@ -1902,7 +1904,7 @@ The share text, the post it comes from, and the fact ledger.
 3. Check sizes against the dated spec. Media is resized with the ratio kept; no cropped files.
 4. Go to `publish-approval.md`.
 
-Who uploads the project is not decided; the owner decides. Until then the output is the ordered list, not an upload.
+The owner uploads the project (decided 2026-11-17). The output is the ordered list of files, titles, captions, tags and alt text, never an upload.
 
 <!-- references/forms/charts.md -->
 ## Charts
@@ -1989,7 +1991,7 @@ No slide without a body line. No text overflows its slide. No placeholder text i
 3. Check the shot size against the dated spec. The screen keeps its ratio.
 4. Go to `publish-approval.md`.
 
-Whether a screen may sit on a plain canvas is not decided; the owner decides. Until then show the screen alone at its own ratio.
+A screen is shown alone at its own ratio, never on a plain canvas (decided 2026-11-17). The owner uploads the shot; the output is the file, title, description and tags as a list.
 
 <!-- references/forms/fact-pack.md -->
 ## Fact pack

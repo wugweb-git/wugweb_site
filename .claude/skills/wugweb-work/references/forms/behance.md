@@ -20,4 +20,4 @@
 3. Check sizes against the dated spec. Media is resized with the ratio kept; no cropped files.
 4. Go to `publish-approval.md`.
 
-Who uploads the project is not decided; the owner decides. Until then the output is the ordered list, not an upload.
+The owner uploads the project (decided 2026-11-17). The output is the ordered list of files, titles, captions, tags and alt text, never an upload.
