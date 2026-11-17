@@ -252,17 +252,17 @@ Until approved, the skill carries the definition in `visual-os/art-direction.md`
 
 ## 15. Waiting on the owner
 
-1. **Positioning line.** Which is current: "product and experience architecture studio" (site), "systems-minded design partner" (`BRAND_POSITION.md`), or another?
-2. **Values.** The only list is from 2023. Supply current values, or approve a proposal built from the ten principles?
-3. **Audience.** Who is Wugweb for? No approved source exists.
-4. **Facts about Wugweb.** Which numbers are approved: projects, team size, markets, founding date? Section 19 lists every fact that needs confirming, including the spelling, legal name, address, phone, email and official profiles.
+1. **Positioning line.** Which is current: "product and experience architecture studio" (site), "systems-minded design partner" (`BRAND_POSITION.md`), or another? Answered 2026-11-16: neither line. The owner will supply it; `identity-and-positioning.md` stays blank until then.
+2. **Values.** The only list is from 2023. Supply current values, or approve a proposal built from the ten principles? Answered 2026-11-16: the owner will supply current values. The ten principles stay as principles.
+3. **Audience.** Who is Wugweb for? No approved source exists. Answered 2026-11-16: the owner will supply it; `audience.md` stays blank until then.
+4. **Facts about Wugweb.** Which numbers are approved: projects, team size, markets, founding date? Section 19 lists every fact that needs confirming, including the spelling, legal name, address, phone, email and official profiles. In progress 2026-11-16: the owner is confirming each fact in section 19. Until confirmed, every fact is unverified.
 5. **`brand_guidelines/`.** Recommended: it stays untouched as the evidence archive and the skill holds the working rules.
 6. **Colour conflict.** `04_COLOR_ROLES.md` says avoid purple, green and orange; the site uses all three as service colours. Which wins for artwork? The same three colours are pillar colours in the kits docs.
 7. **AI prompt engine folder** (`04_AI_PROMPT_ENGINE`). Recommended: Visual OS here owns it, since it turns art direction into briefs. The alternative is the social module in `wugweb-work`.
 8. **Working preferences.** How the owner reasons and gives feedback belongs in neither `wugweb-voice` nor here. Settled: they are in the section "Working with the owner" of `docs/skills/STANDING-RULES.md`.
 9. **"Does a lot, into one".** Public wording, or only the idea behind it?
 10. **Source documents.** The owner's Visual OS and Brand Strategy documents, and the nine source images named in the guidelines, if available.
-11. **Where the plan is kept.** This Notion page and `docs/skills/wugweb-brand-os/PLAN.md`, settled by the standing rule of one Notion page per skill and one plan file in the repo.
+11. **Where the plan is kept.** This Notion page and `docs/skills/wugweb-brand-os/PLAN.md` in `wugweb-git/wugweb_site`, branch main, settled by the standing rule of one Notion page per skill and one plan file in the repo. Confirmed 2026-11-16.
 12. **Crop wording.** Approve the definition and the four wording changes in section 14?
 13. **Messaging stance.** Accept "the client is the hero, Wugweb is the guide"? Recommended: yes. It is held by `wugweb-voice` until answered.
 14. **Background.** The guidelines call warm or light backgrounds the default; the site canvas is black. Does the light default apply only to artwork, or is it out of date?

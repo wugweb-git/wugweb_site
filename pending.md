@@ -11,13 +11,20 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 4. Logo band: the 14 colour logos render smaller than the grey ones (padded 1500x876 canvas).
 5. `wip/embedded-studio`: merge to main waits for owner approval (other session).
 
-**2026-11-14: Case study rebuild and the `wugweb-work` skill. PLAN ONLY, waiting for the owner's vetting.**
+**2026-11-14: Case study rebuild and the `wugweb-work` skill. SKILL BUILT (0.4.2), SITE BUILD NOT STARTED, waiting for the owner's vetting.**
 - One source of truth: the Notion page "wugweb-work" (until 2026-11-16 titled "wugweb-work skill: plan (final for vetting)") under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
-- State: plan is final. Nothing is built: no skill files, no site code, no Sanity write, no case-study row changed in Notion.
+- State: plan is final. The skill is built (Part 1): repo master `.claude/skills/wugweb-work/` at 0.4.2; the app copy reads 0.4.1 until the owner re-saves it. Evals written, not run, not in the repo copy. Not built: site code (Part 2), no Sanity write, no case-study row changed in Notion.
 - Done, read-only: three research reports (`docs/research/case-study-system-2026-10-19/`), the NTUC U Care reference audit and the NTUC Body Content v2 proposal (both on the Notion page).
 - The 2026-10-19 bento layout on `/work/[slug]` (item 8 below) is being replaced under this plan. Do not rework that page outside the plan.
 - Waiting on the owner: approval after vetting; NTUC inputs (results with source, live URL, number of builder steps); a working `NOTION_TOKEN`.
 - `docs/skills/wugweb-work/PLAN.md` is the export of the Notion page for other tools (do not edit it; re-export after the Notion page changes). After approval: step 0 of the plan.
+
+**2026-11-17: `wugweb-seo` skill. PLAN ONLY, waiting for the owner's vetting.**
+- One source of truth: the Notion page "wugweb-seo" under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab818b8481d42beb053fef). Do not copy the plan into this file; update the Notion page. The repo mirror is `docs/skills/wugweb-seo/PLAN.md`.
+- State: version 2.4.1, repo master at `.claude/skills/wugweb-seo/`; the app copy reads 2.4.0 until the owner re-saves it. Planned, not built: the Rank Math on-page keyphrase score (broken into functions for `scripts/score-page.mjs`) and the internal-link SEO checks. The 83 Rank Math PRO features are mapped and translated to the Astro stack.
+- Score uses the real Rank Math weights (`seo-by-rank-math` 1.0.280). Power words use a public list; sentiment uses AFINN-165, English only. Do not edit `SKILL.md` from here; the skill is the dev session's (`cse_01UQ9TRqokKf1xMCS1JD3brM`).
+- Waiting on the owner: the list on the Notion page (re-save the app copy to 2.4.1, supply `evals/evals.json`, schema for service, home and about, title limits, training bots per property, connector sign-in, standing-rules block vs pointer). A recommendation is recorded beside each.
+- RankWeb is a separate WordPress plugin (Animal Writes) with its own Notion page and a Rank Math score reference; it is not in this repo.
 
 **2026-10-21: Header and nav bar spec, root scale, deploy facts. DONE, live on uat.wugweb.com (81cc95d2).**
 - Names (owner): "header" is the whole sticky section; "nav bar" is the grey box inside it.

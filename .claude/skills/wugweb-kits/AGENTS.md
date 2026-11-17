@@ -6,6 +6,223 @@
 
 Map a UI to its design system: trace every visual value from primitive token through semantic token to component, audit the codebase for hardcoded values, drift and duplication, and emit reusable component spec sheets. Framework-agnostic; the layer model holds for CSS custom properties, Tailwind theme config, Style Dictionary, iOS asset catalogs and Figma variables alike.
 
+## Skill body
+
+# Wugweb Kits
+
+Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 26 Wugweb rule files, the references and the scripts are in place.
+
+## Standing rules
+
+Read `docs/skills/STANDING-RULES.md` first. This skill repeats none of it except the block below, copied verbatim from that file. The full copy is in `references/standing-rules.md`. If they differ, the docs file wins.
+
+<!-- copied from docs/skills/STANDING-RULES.md -->
+- Nothing is invented: no numbers, quotes or facts.
+- A claim needs a screen, a sourced number or a named fact.
+- Changes are shown as current to proposed, with the reason.
+- Nothing is deleted without asking: no data, files, records or pages.
+- Nothing goes to development until the owner says so.
+- No em or en dashes in anything a visitor reads. Ranges are written out.
+- Media lives in the owner's media store only: no uploads, no local copies.
+- Media may be shown at any size if the original aspect ratio is kept. Clipping masks are allowed.
+- No sound anywhere. Every video is muted.
+<!-- end copied block -->
+
+## Source of truth
+
+Token values live in `src/styles/global.css`. The docs in `kits_design_system/docs/` win: `tokens/layout-shell.md` is authoritative, with `tokens/sizing.md` and `components.md` beside it. Code that disagrees with `layout-shell.md` is wrong, not the doc. Report it as a finding against the code. Never correct a doc to match code, and never carry a value this skill cannot check against a doc.
+
+## What this skill owns
+
+- Layout, tokens, components, block docs, motion and accessibility of the site.
+- Not wording. Visible copy comes through `wugweb-work`, which supplies content shape and chosen media and takes layout, blocks and wording slots with limits.
+- Not art direction. `wugweb-brand-os` gives the Visual OS and logo sizes; kits gives it design-system detail and contrast results.
+- `wugweb-seo` sends block-wide findings here; kits answers with a check result. One-page findings go to `wugweb-work`.
+- `wugweb-strategy` reaches kits only through `wugweb-work`. There is no link to `wugweb-voice`.
+
+## The shell
+
+A page holds sections; a section holds one content box; the content holds blocks. The section owns the gutter, the content owns the max width. Values below were read from `layout-shell.md` and `sizing.md`; `references/layout-shell.md` has the full table.
+
+| | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| Canvas | 375 | 768 | 1200 |
+| Section padding | 48 16 48 16 | 70 32 70 32 | 96 48 96 48 |
+| Content max width | 1200 | 1200 | 1200 |
+| Columns | 4 | 8 | 12 |
+| Column gap | 16 | 24 | 32 |
+| Gutter | 16 | 32 | 48 |
+| Header padding | 16 | 20 | 20 |
+| Header height | 100 | 108 | 108 |
+
+Everywhere: nav bar 68, bar inset 12, buttons 44 (text 16, padding 10 12, gap 12), logo 40, nav inner max 1280, header sticky at top 0 on layer 10, spring 400ms with bounce 0.2. The header is derived: 24 + 2 x 10 = 44, 44 + 2 x 12 = 68, 68 + 2 x 20 = 108, and 16 + 68 + 16 = 100 on mobile. Never set it by hand.
+
+Tokens and selectors: `--shell-gutter`, `--section-y` with every `--space-section-*`, `--grid-gap`, `--header-height` (`--nav-height` plus 2 x `--header-pad-block`), `--control-size`, `--nav-logo-height`, `--breakpoint-xl`, `--ease-spring`, `--duration-spring`, `.wrap`, `.grid`. The bar inset is `--nav-bar-pad` in code; the doc names no token for it.
+
+The three tiers are 375, 768 and 1200. The breakpoint literals are 480, 640, 768, 1024 and 1200, and the shell steps only at 768 and 1200. Measure at 375, 768 and 1200; a measuring iframe needs `border: 0` or 768 reads as mobile.
+
+Retired, never to return: content max 1280, desktop gutter 44, desktop breakpoint 1280, flat section tokens 40, 48, 64, 80, flat gap 16 (or 24, 24, 0), a 12 column switch at 1024, fluid header padding, header 110, 118, 118, nav z index 50. Any of these in a shell context is a blocker.
+
+## Six layers
+
+Every value belongs to one layer and references flow down one step at a time.
+
+| # | Layer | Example |
+|---|---|---|
+| 1 | Primitive token | a raw value |
+| 2 | Semantic token | a role such as muted text |
+| 3 | Component token | a scoped binding, only when earned |
+| 4 | Primitive component | structure classes such as `.wrap`, `.btn` |
+| 5 | Component | a named part with its own file |
+| 6 | Block | a section level composition with its own block doc |
+
+A component reads layer 2 or 3, never a raw value and never layer 1. A block never restyles a component from outside; if it must, the component lacks a variant. Pattern means a reusable arrangement specified once, such as the rail or the viewer.
+
+## Work in this order
+
+1. Inventory. Count raw colours, size literals and token use. Report the shape in one table before proposing anything. `node scripts/kits-inventory.mjs src/ --findings` runs it; it does not yet read `.astro` files.
+2. Map. Record each component's tokens consumed, used by and status. `system-map.json` is generated, committed at `kits_design_system/system-map.json`, never hand edited.
+3. Audit against the severity list: Blocker is hardcoded colour, z index, a retired shell value, or a section with no id or name. High is a layer skip, missing states, or block CSS outside its component. Medium is spacing literals and alias chains. Low is a one use component token. Report only; blocking merges and clean up passes wait for the owner.
+4. Spec. A single component uses the mapper sheet with the `components.md` fields added. A full block uses the block doc in `kits_design_system/docs/blocks/`. Five blocks await sign-off and are drafts until the owner signs each off. State measured contrast, not claims.
+5. Keep it true. Compare doc and code and report drift.
+
+Findings are one line each: severity, file and line, what, fix. Give totals plainly. If the system is clean, say so and stop.
+
+## Rules from the mapper
+
+Files in `rules/`; the compiled copy is `AGENTS.md`.
+
+- `token-no-raw-values-in-components`, `token-one-way-references`, `token-no-alias-chains`, `token-semantic-names-describe-role`, `token-component-tokens-earn-their-place`.
+- `map-single-source-of-truth`, `map-record-consumes-and-usedby`, `map-deprecate-with-a-pointer`, `map-count-before-you-propose`.
+- `component-variants-not-booleans`, `component-slots-for-content`, `component-complete-state-set`, `component-no-outside-in-restyling`.
+- `reuse-promotion-ladder`, `reuse-same-role-not-same-look`, `reuse-collapse-duplicates-with-a-survivor`, `reuse-every-audit-ends-in-deletions`.
+- `spec-fixed-template`, `spec-measure-dont-claim`, `spec-donts-from-real-misuse`, `spec-generate-dont-maintain`.
+
+## Wugweb rules
+
+Shell group, source `layout-shell.md`:
+
+- `shell-no-section-max-width`: no max width on a section.
+- `shell-no-gutter-below-section`: nothing below the section sets a page gutter.
+- `shell-grid-gap-token`: grid gaps use `--grid-gap`, never a section token.
+- `shell-rhythm-exemption`: only `.global-final-cta` is exempt from the section rhythm.
+- `shell-filters-are-toolbars`: filters are toolbars inside the grid, not sections.
+- `shell-nothing-wider-than-nav`: no block that is not full bleed is wider than the nav.
+- `shell-header-derived`: header height comes from its formula, never a literal.
+- `shell-no-retired-values`: the retired list above is never reintroduced.
+
+Label group, source `layout-shell.md`:
+
+- `label-id-and-name`: every section has an id and an accessible name.
+- `label-labelledby-stable-heading`: `aria-labelledby` points only to a heading that always renders.
+- `label-no-loop-labels`: never label a section from a heading inside a loop.
+- `label-heading-order`: one h1, no skipped levels, a screen reader only h2 where no heading shows.
+- `label-lists-are-lists`: card lists are lists.
+- `label-alt-always`: every image has alt; decorative muted loops are hidden from assistive tech.
+- `label-skip-and-landmarks`: skip link, main landmark, scroll offset under the sticky header.
+- `label-contrast-measured`: contrast is measured and stated.
+
+Kits group, source `components.md`:
+
+- `kits-tokens-only`: no hardcoded colour, spacing, radius, opacity, shadow, blur or z index.
+- `kits-button-tiers`: `.btn-solid` brand, `.btn` primary, `.btn-ghost`; size by `.btn-sm`, `.btn-lg`, `.btn-block`, never one off CSS.
+- `kits-yellow-budget`: yellow is accent only, at most 10%; the final CTA stays yellow.
+- `kits-radius-by-role`: buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`, panels `--radius-2xl`.
+- `kits-states-on-btn`: states live on `.btn`.
+- `kits-gsap-owns-motion`: animation is GSAP through `data-reveal` and `data-scroll`; no property has two owners.
+- `kits-animated-block-lint`: Service Spotlight Panel, Client Assembly Grid, Service Tag Field, Bento Block, Process Map and any block marked "Animated block" are linted for transition and tween clashes.
+- `kits-bento-never-even`: a bento never resolves into an even grid.
+- `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
+- `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed.
+
+Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control, and all loops stop under reduced motion.
+
+## Report shape
+
+Open with the result in one or two plain sentences. Then one table of findings sorted by severity, then totals, then the delete list if the audit found dead tokens or variants. Each finding shows current and proposed with the reason. Example lines:
+
+BLOCKER  src/components/Card.astro:34  hardcoded colour, use the surface token
+HIGH     kits_design_system/docs/components.md  doc says focus uses `--focus-primary`, code uses `--neutral-3`; report, do not fix
+
+Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` has no section inside the main landmark; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The proposed `faqs` field in `layout-shell.md` breaks the no FAQPage rule and is also for `wugweb-seo`. Framer media ratios are not mapped to sections.
+
+## Using this outside Claude
+
+`SKILL.md` carries the core rules alone, because other tools may not load references. `AGENTS.md` is the single file export for GPT and Cursor, generated by `scripts/build.mjs`; regenerate it after any change and run `node scripts/validate.mjs`. Scripts are plain Node with no dependencies.
+
+## Scripts
+
+All plain Node, no dependencies, run from the skill folder or the repo root.
+
+- `node scripts/kits-inventory.mjs src/ --findings`: counts raw values, orphan tokens and `@media` literals, and lists heuristic shell and kits findings.
+- `node scripts/kits-check-page.mjs <file-or-url>`: ids, names, headings, alt, skip link and main on rendered HTML.
+- `node scripts/kits-doc-drift.mjs`: doc against `global.css`, from the repo root.
+- `node scripts/contrast.mjs <fg> <bg>`: computed ratio.
+- `node scripts/validate.mjs`, `node scripts/build.mjs`, `node scripts/test.mjs`.
+
+The scripts report and never edit. The page check reads static HTML; measuring at 375, 768 and 1200 needs a browser and is done by hand.
+
+References: `references/layout-shell.md`, `references/component-sizes.md`, `references/six-layers.md`, `references/spec-templates.md`, `references/known-doc-clashes.md`, `references/standing-rules.md`.
+
+## When the code is unreachable
+
+Say so, work from what is given, and mark every inferred count as inferred. Rendered page checks need a browser and are done by hand outside Claude.
+
+---
+
+## Layout shell reference
+
+# Layout shell values (copied from the doc)
+
+Source: `kits_design_system/docs/tokens/layout-shell.md`, read 2026-11-16. The doc wins; if this differs, this copy is stale.
+
+**Binding values (owner, 2026-11-16).** The values in `kits_design_system/docs/tokens/layout-shell.md` are binding in this spec, not a pointer only. The table below was copied by reading the doc on 2026-11-16 (the file is the same as on `main`), not from memory or from any message.
+
+| | Mobile | Tablet | Desktop | Token or selector | Named in |
+|---|---|---|---|---|---|
+| Canvas width | 375 | 768 | 1200 | `--breakpoint-xl` (1200) | `layout-shell.md` |
+| Section padding (top right bottom left) | 48 16 48 16 | 70 32 70 32 | 96 48 96 48 | Block: `--section-y` and every `--space-section-*`. Inline: `--shell-gutter` | `layout-shell.md` |
+| Content max-width | 1200 | 1200 | 1200 | `.wrap`, by `padding-inline: max(var(--shell-gutter), calc((100% - 1200px) / 2))` | `layout-shell.md` |
+| Layout grid columns | 4 | 8 | 12 | `.grid`, switching at 768 and 1200 | `layout-shell.md` |
+| Column gap | 16 | 24 | 32 | `--grid-gap` | `layout-shell.md` |
+| Grid margin (the gutter) | 16 | 32 | 48 | `--shell-gutter` | `layout-shell.md` |
+| Header padding | 16 | 20 | 20 | `--header-pad-block` on `.site-header` | `layout-shell.md` |
+| Header height (derived) | 100 | 108 | 108 | `--header-height` = `--nav-height` + 2 × `--header-pad-block` | `layout-shell.md` |
+| Header position | sticky, top 0 | sticky, top 0 | sticky, top 0 | `z-index: var(--layer-nav)` (10) | `layout-shell.md` |
+| Nav bar height | 68 | 68 | 68 | `--nav-height` | `layout-shell.md` |
+| Nav bar inset (all sides) | 12 | 12 | 12 | No token named in the doc. In code: `--nav-bar-pad` | `global.css` |
+| Button height (links, CTA, menu) | 44 | 44 | 44 | `--control-size` | `sizing.md` |
+| Button text, padding, gap | 16, 10 12, 12 | 16, 10 12, 12 | 16, 10 12, 12 | No token named in the doc | |
+| Logo height | 40 | 40 | 40 | `--nav-logo-height` | `sizing.md` |
+| Nav inner container | max 1280 | max 1280 | max 1280 | No token; `max-width: 1280px` in `SiteHeader.astro` | `layout-shell.md` |
+| Spring | 400ms, bounce 0.2, delay 0 | same | same | `--duration-spring`, `--ease-spring` | `layout-shell.md` |
+
+**Header formula (owner, 2026-10-21), as the doc gives it.** 24px line height + 2 × 10px button padding = 44px button. 44 + 2 × 12 = 68px bar. 68 + 2 × 20 = 108px header. Mobile uses 16px outer spacing: 16 + 68 + 16 = 100. The nav bar and its 44px buttons are the same on every tier; the header height is derived, never set by hand.
+
+**Rules that go with the table.**
+
+1. The doc is the source. The skill's copy is made by reading the doc. `validate.mjs` fails if any value in the skill's copy differs from the doc.
+2. Code or another doc that disagrees is reported as a finding against the code or that doc, as the first paragraph of `layout-shell.md` says. The skill never "corrects" the doc to match code.
+3. Old values are never reintroduced. The doc's gap correction: the column gap is 16 / 24 / 32, not 24 / 24 / 0. From its History table, these are retired:
+
+| | Retired | Current |
+|---|---|---|
+| Content max-width | 1280 | 1200 |
+| Desktop gutter | 44 | 48 |
+| Desktop breakpoint | 1280 | 1200 |
+| Section tokens | flat 40 / 48 / 64 / 80 | one rhythm, 48 / 70 / 96 |
+| Column gap | flat 16 | 16 / 24 / 32 |
+| 12-column switch | 1024 | 1200 |
+| Header padding | fluid 16 to 32, no bottom | 16 / 20 / 20 |
+| Header height | 110 / 118 / 118 | 100 / 108 / 108 |
+| Nav z-index | 50 | 10 |
+
+The audit flags any retired value found in a shell context as a finding.
+
+**Checked against `global.css` on 2026-11-16, read only.** These match the doc: `--shell-gutter` 16 / 32 / 48, `--grid-gap` 16 / 24 / 32, `--header-pad-block` 16 then 20, `--control-size` 44px, `--nav-logo-height` 2.5rem (40px), `--breakpoint-xl` 1200px, `--duration-spring` 400ms, `--layer-nav` 10, `--nav-bar-pad` 12px, the section tokens at 48 and 70, and `max-width: 1280px` on the nav bar. Not re-read in this check: the 96 desktop step of the section tokens, and the button text, padding and gap.
+
+---
+
 ## Contents
 
 1. **Token Layering** (CRITICAL) — 5 rules
@@ -34,6 +251,35 @@ Map a UI to its design system: trace every visual value from primitive token thr
    - `spec-fixed-template` — variable doc shapes make specs unscannable and ungenerable
    - `spec-generate-dont-maintain` — hand-written specs drift silently and are trusted anyway
    - `spec-measure-dont-claim` — unverified compliance claims fail audits and mislead teams
+6. **Layout Shell** (HIGH) — 8 rules
+   - `shell-filters-are-toolbars` — a filter wrapped as a section adds a spurious landmark and padding
+   - `shell-grid-gap-token` — a section token as a gap moves the grid when the section rhythm changes
+   - `shell-header-derived` — a literal header height drifts from the nav bar and buttons
+   - `shell-no-gutter-below-section` — a second gutter doubles the margin and breaks alignment
+   - `shell-no-retired-values` — retired values reappear from old docs and Framer references
+   - `shell-no-section-max-width` — a capped section breaks the full bleed background and the shell
+   - `shell-nothing-wider-than-nav` — a block wider than the nav breaks the edge alignment of the page
+   - `shell-rhythm-exemption` — extra exemptions erode the one rhythm 48, 70, 96
+7. **Labelling** (HIGH) — 8 rules
+   - `label-alt-always` — a missing alt fails assistive tech and search
+   - `label-contrast-measured` — unmeasured contrast claims fail audits
+   - `label-heading-order` — a broken outline misleads screen reader users and search engines
+   - `label-id-and-name` — an unnamed section is invisible to landmarks, links and tests
+   - `label-labelledby-stable-heading` — a dangling reference leaves the section unnamed
+   - `label-lists-are-lists` — a div grid of cards hides the item count from assistive tech
+   - `label-no-loop-labels` — repeated ids and labels from a loop break references
+   - `label-skip-and-landmarks` — keyboard users cannot bypass the sticky header without them
+8. **Kits Components and Motion** (HIGH) — 10 rules
+   - `kits-animated-block-lint` — animated blocks hide the most motion clashes
+   - `kits-bento-never-even` — an even grid removes the hierarchy the bento exists for
+   - `kits-block-docs-home` — specs scattered elsewhere go stale
+   - `kits-button-tiers` — one off button CSS creates silent variants
+   - `kits-gsap-owns-motion` — two owners of one property cause jitter and fights
+   - `kits-live-colours-frozen` — changing live colours changes the whole look and contrast
+   - `kits-radius-by-role` — mixed radii make the same role look different
+   - `kits-states-on-btn` — state styles scattered across pages drift
+   - `kits-tokens-only` — hardcoded values split the system and cannot be themed
+   - `kits-yellow-budget` — yellow overuse removes its signal
 
 ---
 
@@ -699,12 +945,12 @@ now alongside 34 tokens.
 # Orphan tokens: declared, never referenced
 comm -23 \
   <(grep -ohE '^\s*--[a-z0-9-]+' src/tokens/*.css | tr -d ' :' | sort -u) \
-  <(grep -rohE 'var\(--[a-z0-9-]+' src/ --include='*.{css,ts,tsx}' | sed 's/var(//' | sort -u)
+  <(grep -rohE 'var\(--[a-z0-9-]+' src/ --include='*.css' --include='*.ts' --include='*.tsx' --include='*.astro' | sed 's/var(//' | sort -u)
 
 # Components with zero importers
 for f in src/ui/*.tsx; do
   n=$(basename "$f" .tsx)
-  c=$(grep -rl "\b$n\b" src --include='*.tsx' | grep -v "$f" | wc -l)
+  c=$(grep -rl "\b$n\b" src --include='*.tsx' --include='*.astro' | grep -v "$f" | wc -l)
   [ "$c" -eq 0 ] && echo "DEAD  $f"
 done
 ```
@@ -1000,8 +1246,8 @@ to — disabled and hover states are where systems quietly fall below threshold.
   | State | Foreground | Background | Ratio | AA (4.5:1) |
   |---|---|---|---|---|
   | default | #ffffff | #2563eb | 5.17:1 | pass |
-  | hover | #ffffff | #1d4ed8 | 6.31:1 | pass |
-  | disabled | #a1a1aa | #f4f4f5 | 2.31:1 | FAIL — exempt as inactive control (1.4.3), but unreadable in sunlight |
+  | hover | #ffffff | #1d4ed8 | 6.70:1 | pass |
+  | disabled | #a1a1aa | #f4f4f5 | 2.33:1 | FAIL, exempt as inactive control (1.4.3), but unreadable in sunlight |
 - Keyboard: Enter and Space activate; `:focus-visible` ring at 2px offset 2px.
 - Target: 40×40 CSS px (AA 2.5.8 requires 24×24; AAA requires 44×44).
 - Announced: "Save, button" · loading adds `aria-busy="true"` · disabled uses
@@ -1009,11 +1255,566 @@ to — disabled and hover states are where systems quietly fall below threshold.
 ```
 
 ```bash
-node scripts/contrast.mjs --map system-map.json --states all
+node scripts/contrast.mjs "#ffffff" "#2563eb"
 ```
 
-Run the check in CI against the map, so a token change that breaks contrast fails
+Run the check in CI, so a token change that breaks contrast fails
 the build rather than a design review six weeks later.
+
+---
+
+## 6. Layout Shell
+
+**Impact:** HIGH
+
+The page, section, content and block structure, with the binding values from layout-shell.md. The doc is the source; code that disagrees is wrong.
+
+### `shell-filters-are-toolbars`
+
+**Impact:** MEDIUM — a filter wrapped as a section adds a spurious landmark and padding
+
+A filter row is a toolbar that sits inside the grid it controls. Making it a section gives it section padding and a name it does not need.
+
+**Incorrect:**
+
+```html
+<section class="filters">...</section>
+```
+
+**Correct:**
+
+```html
+<div class="grid">
+  <div role="toolbar" aria-label="Filter work">...</div>
+</div>
+```
+
+Source: layout-shell.md, filters.
+
+### `shell-grid-gap-token`
+
+**Impact:** HIGH — a section token as a gap moves the grid when the section rhythm changes
+
+The column gap is 16, 24, 32 through --grid-gap. Section tokens set vertical rhythm between sections, not gaps inside a grid. Reusing one couples two unrelated scales.
+
+**Incorrect:**
+
+```css
+.grid { gap: var(--space-section-sm); }
+```
+
+**Correct:**
+
+```css
+.grid { gap: var(--grid-gap); }
+```
+
+Source: layout-shell.md, grid.
+
+### `shell-header-derived`
+
+**Impact:** HIGH — a literal header height drifts from the nav bar and buttons
+
+Header height is --nav-height plus twice --header-pad-block. The bar is 44 plus twice 12 = 68, the header 68 plus twice 20 = 108, 100 on mobile. Setting it by hand breaks the chain.
+
+**Incorrect:**
+
+```css
+.site-header { height: 108px; }
+```
+
+**Correct:**
+
+```css
+.site-header { height: var(--header-height); }
+```
+
+Source: layout-shell.md, header formula.
+
+### `shell-no-gutter-below-section`
+
+**Impact:** HIGH — a second gutter doubles the margin and breaks alignment
+
+One element owns the page gutter. Setting padding-inline from --shell-gutter on a card or a grid inside the content box pushes it off the column.
+
+**Incorrect:**
+
+```css
+.card-grid { padding-inline: var(--shell-gutter); }
+```
+
+**Correct:**
+
+```css
+.card-grid { /* no page gutter here; .wrap or the section owns it */ }
+```
+
+Source: layout-shell.md, gutter.
+
+### `shell-no-retired-values`
+
+**Impact:** HIGH — retired values reappear from old docs and Framer references
+
+These are retired: content max 1280, desktop gutter 44, desktop breakpoint 1280, flat section tokens 40, 48, 64, 80, flat gap 16, a 12 column switch at 1024, fluid header padding, header 110, 118, 118, nav z index 50. Any of them in a shell context is a blocker.
+
+**Incorrect:**
+
+```css
+.wrap { max-width: 1280px; }
+.site-header { z-index: 50; }
+```
+
+**Correct:**
+
+```css
+.wrap { /* 1200 via the shell */ }
+.site-header { z-index: var(--layer-nav); }
+```
+
+Source: layout-shell.md, history.
+
+### `shell-no-section-max-width`
+
+**Impact:** HIGH — a capped section breaks the full bleed background and the shell
+
+The section owns the gutter and spans the page. The content box inside it owns the 1200 max width. A max-width on the section narrows its background and stops the gutter from doing its job.
+
+**Incorrect:**
+
+```css
+.section { max-width: 1200px; margin-inline: auto; }
+```
+
+**Correct:**
+
+```css
+.section { padding-inline: var(--shell-gutter); }
+.wrap { /* content box owns the cap */ }
+```
+
+Source: layout-shell.md, section and content.
+
+### `shell-nothing-wider-than-nav`
+
+**Impact:** MEDIUM — a block wider than the nav breaks the edge alignment of the page
+
+The nav inner container caps at 1280 and the content box at 1200. A block that is not full bleed must not exceed the nav width.
+
+**Incorrect:**
+
+```css
+.stat-band { max-width: 1440px; }
+```
+
+**Correct:**
+
+```css
+.stat-band { /* inside .wrap, 1200 */ }
+```
+
+Source: layout-shell.md, nav inner.
+
+### `shell-rhythm-exemption`
+
+**Impact:** MEDIUM — extra exemptions erode the one rhythm 48, 70, 96
+
+Every section follows the shared rhythm. The only exemption is .global-final-cta. A new exemption needs the owner, not a local override.
+
+**Incorrect:**
+
+```css
+.service-strip { padding-block: 120px; }
+```
+
+**Correct:**
+
+```css
+.service-strip { padding-block: var(--section-y); }
+```
+
+Source: layout-shell.md, rhythm.
+
+---
+
+## 7. Labelling
+
+**Impact:** HIGH
+
+Ids, accessible names, headings, lists, alt and landmarks. Contrast, focus and target rules belong with the component specs.
+
+### `label-alt-always`
+
+**Impact:** HIGH — a missing alt fails assistive tech and search
+
+Every img has an alt attribute. Informative images describe the content. Decorative images use an empty alt, and decorative muted loops are hidden from assistive tech with aria-hidden. A loop that carries a pause control is not hidden.
+
+**Incorrect:**
+
+```html
+<img src="/assets/x.webp">
+```
+
+**Correct:**
+
+```html
+<img src="/assets/x.webp" alt="Checkout flow on mobile">
+```
+
+Source: layout-shell.md, images.
+
+### `label-contrast-measured`
+
+**Impact:** HIGH — unmeasured contrast claims fail audits
+
+State a computed ratio for each text and background pair and each state. Use scripts/contrast.mjs. Muted text #bababa on #191919 and #f4f4f4 on #191919 are live colours and are not changed to pass.
+
+**Incorrect:**
+
+```text
+Contrast: passes AA
+```
+
+**Correct:**
+
+```text
+node scripts/contrast.mjs "#f4f4f4" "#191919"
+```
+
+Source: spec-measure-dont-claim.
+
+### `label-heading-order`
+
+**Impact:** HIGH — a broken outline misleads screen reader users and search engines
+
+Each page has one h1 and levels never skip. Where a section has no visible heading, add a screen reader only h2. Measured 2026-11-16: one h1 on every route.
+
+**Incorrect:**
+
+```html
+<h1>A</h1><h4>B</h4>
+```
+
+**Correct:**
+
+```html
+<h1>A</h1><h2>B</h2>
+```
+
+Source: layout-shell.md, headings.
+
+### `label-id-and-name`
+
+**Impact:** CRITICAL — an unnamed section is invisible to landmarks, links and tests
+
+Each top level section carries an id for anchors and an accessible name from aria-labelledby or aria-label. Measured 2026-11-16: 99 of 99 sections named on the site, 6 sections on /work/[slug] without an id.
+
+**Incorrect:**
+
+```html
+<section class="bento">...</section>
+```
+
+**Correct:**
+
+```html
+<section id="work-bento" aria-labelledby="work-bento-h">
+  <h2 id="work-bento-h">Selected work</h2>
+</section>
+```
+
+Source: layout-shell.md, labelling.
+
+### `label-labelledby-stable-heading`
+
+**Impact:** HIGH — a dangling reference leaves the section unnamed
+
+aria-labelledby must name a heading present on every render. If the heading is conditional, use aria-label or a screen reader only h2.
+
+**Incorrect:**
+
+```html
+<section aria-labelledby="maybe-h">{show && <h2 id="maybe-h">Title</h2>}</section>
+```
+
+**Correct:**
+
+```html
+<section aria-label="Selected work">...</section>
+```
+
+Source: layout-shell.md, labelling.
+
+### `label-lists-are-lists`
+
+**Impact:** MEDIUM — a div grid of cards hides the item count from assistive tech
+
+A set of cards is a list. Use ul and li so the count and position are announced.
+
+**Incorrect:**
+
+```html
+<div class="cards"><div class="card">...</div></div>
+```
+
+**Correct:**
+
+```html
+<ul class="cards"><li class="card">...</li></ul>
+```
+
+Source: layout-shell.md, labelling.
+
+### `label-no-loop-labels`
+
+**Impact:** HIGH — repeated ids and labels from a loop break references
+
+A heading rendered once per item repeats its id. Label the section with its own heading, not an item heading.
+
+**Incorrect:**
+
+```html
+{items.map(i => <h3 id="item-h">{i.title}</h3>)}
+<section aria-labelledby="item-h">
+```
+
+**Correct:**
+
+```html
+<h2 id="list-h">Posts</h2>
+<section aria-labelledby="list-h">
+```
+
+Source: layout-shell.md, labelling.
+
+### `label-skip-and-landmarks`
+
+**Impact:** HIGH — keyboard users cannot bypass the sticky header without them
+
+Each page has a skip link first, one main landmark, and an anchor scroll offset equal to the sticky header height so targets are not hidden.
+
+**Incorrect:**
+
+```html
+<body><header>...</header><div>content</div></body>
+```
+
+**Correct:**
+
+```html
+<body><a href="#main" class="skip">Skip to content</a><header>...</header><main id="main">...</main></body>
+```
+
+Source: layout-shell.md, landmarks.
+
+---
+
+## 8. Kits Components and Motion
+
+**Impact:** HIGH
+
+Wugweb specific component, token, colour and motion rules from components.md and CLAUDE.md.
+
+### `kits-animated-block-lint`
+
+**Impact:** MEDIUM — animated blocks hide the most motion clashes
+
+Service Spotlight Panel, Client Assembly Grid, Service Tag Field, Bento Block, Process Map and any block marked "Animated block" are checked for CSS transitions and tweens on the same property, and for reduced motion handling.
+
+**Incorrect:**
+
+```text
+Animated block with a transition on transform and a GSAP y tween.
+```
+
+**Correct:**
+
+```text
+Animated block: GSAP owns transform; CSS owns colour only.
+```
+
+Source: components.md, animated blocks.
+
+### `kits-bento-never-even`
+
+**Impact:** MEDIUM — an even grid removes the hierarchy the bento exists for
+
+A bento keeps tiles of different spans at every tier. If the tiles collapse to equal cells, use the grid block instead. Tile minimum height is --bento-min.
+
+**Incorrect:**
+
+```css
+.bento { grid-template-columns: repeat(3, 1fr); }
+```
+
+**Correct:**
+
+```css
+.bento { grid-template-columns: repeat(12, 1fr); }
+.bento .tile-wide { grid-column: span 6; min-height: var(--bento-min); }
+```
+
+Source: components.md, bento.
+
+### `kits-block-docs-home`
+
+**Impact:** MEDIUM — specs scattered elsewhere go stale
+
+A section level block is specified once in kits_design_system/docs/blocks/ using the block doc template. Five blocks await sign-off and are drafts until the owner signs each off.
+
+**Incorrect:**
+
+```text
+Block spec pasted into a pull request description.
+```
+
+**Correct:**
+
+```text
+kits_design_system/docs/blocks/<block>.md
+```
+
+Source: components.md, blocks.
+
+### `kits-button-tiers`
+
+**Impact:** HIGH — one off button CSS creates silent variants
+
+Tiers are .btn-solid (brand), .btn (primary) and .btn-ghost. Size and width come from .btn-sm, .btn-lg and .btn-block. Never write border-radius, size or width on a variant in component CSS.
+
+**Incorrect:**
+
+```html
+.hero .btn { width: 220px; border-radius: 6px; }
+```
+
+**Correct:**
+
+```html
+<a class="btn btn-lg btn-block">Start</a>
+```
+
+Source: components.md, buttons.
+
+### `kits-gsap-owns-motion`
+
+**Impact:** HIGH — two owners of one property cause jitter and fights
+
+Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control.
+
+**Incorrect:**
+
+```html
+.card { transition: transform .3s; }
+/* and gsap.to(".card", { y: -8 }) */
+```
+
+**Correct:**
+
+```html
+<div class="card" data-reveal></div>
+```
+
+Source: components.md, motion.
+
+### `kits-live-colours-frozen`
+
+**Impact:** CRITICAL — changing live colours changes the whole look and contrast
+
+Text #f4f4f4, muted #bababa and surfaces #191919 and #2b2b2b are deliberate and never changed. Do not set text to pure white.
+
+**Incorrect:**
+
+```css
+:root { --color-text-primary: #ffffff; }
+```
+
+**Correct:**
+
+```css
+:root { --color-text-primary: #f4f4f4; }
+```
+
+Source: CLAUDE.md, working agreements.
+
+### `kits-radius-by-role`
+
+**Impact:** MEDIUM — mixed radii make the same role look different
+
+Buttons use --radius-sm, chips --radius-full, cards --radius-lg, panels --radius-2xl.
+
+**Incorrect:**
+
+```css
+.btn { border-radius: var(--radius-full); }
+```
+
+**Correct:**
+
+```css
+.btn { border-radius: var(--radius-sm); }
+```
+
+Source: components.md, radius.
+
+### `kits-states-on-btn`
+
+**Impact:** MEDIUM — state styles scattered across pages drift
+
+Hover, active, focus-visible and disabled are defined once on .btn. Doc and code currently disagree on the focus outline: the doc says --focus-primary, the code uses var(--neutral-3). That is a finding, not fixed here.
+
+**Incorrect:**
+
+```css
+.cta:hover { background: #333; }
+```
+
+**Correct:**
+
+```css
+.btn:hover { /* defined once on .btn */ }
+```
+
+Source: components.md, buttons.
+
+### `kits-tokens-only`
+
+**Impact:** CRITICAL — hardcoded values split the system and cannot be themed
+
+No hardcoded colour, spacing, radius, opacity, shadow, blur, z index or easing in components or pages. Use the token. About 369 px literals exist today, so this is reported, not yet a merge block.
+
+**Incorrect:**
+
+```css
+.chip { border-radius: 999px; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+```
+
+**Correct:**
+
+```css
+.chip { border-radius: var(--radius-full); box-shadow: var(--shadow-sm); }
+```
+
+Source: components.md, rules.
+
+### `kits-yellow-budget`
+
+**Impact:** HIGH — yellow overuse removes its signal
+
+Yellow is an accent and a resting fill on brand buttons only, at most 10% of a page. The final CTA stays yellow by owner decision.
+
+**Incorrect:**
+
+```css
+.section-bg { background: var(--color-yellow); }
+```
+
+**Correct:**
+
+```css
+.btn-solid { background: var(--color-yellow); }
+```
+
+Source: components.md, colour.
 
 ---
 

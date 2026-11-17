@@ -1,136 +1,108 @@
 #!/usr/bin/env node
-// Builds export/wugweb-brand-os.md: SKILL.md and every reference file in one
-// document, for pasting or attaching in a tool that cannot read the folder.
-//
-// Plain Node, no dependencies, no Claude tooling.
-//
-// Usage:
-//   node scripts/build-export.mjs            build the export
-//   node scripts/build-export.mjs --check    exit 1 if the export is out of date
-//
-// The standing rules block is copied from docs/skills/STANDING-RULES.md in the
-// repo at build time. It is never edited by hand. If that file is not found
-// (the skill was copied out of the repo) the export says so and omits the block.
+// wugweb-brand-os: build-export.mjs
+// Builds export/wugweb-brand-os.md: SKILL.md plus every reference file in one
+// document, to paste or attach in GPT, Cursor or any other tool.
+// Also checks the skill's own files. Plain Node, no packages.
+// Usage: node scripts/build-export.mjs [--check]
+//   --check  run the checks only and write nothing
 
-import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync } from 'node:fs';
-import { dirname, join, relative, resolve, sep } from 'node:path';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, existsSync } from 'node:fs';
+import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const here = dirname(fileURLToPath(import.meta.url));
-const skillDir = resolve(here, '..');
-const outFile = join(skillDir, 'export', 'wugweb-brand-os.md');
-const rulesPath = resolve(skillDir, '..', '..', '..', 'docs', 'skills', 'STANDING-RULES.md');
-const check = process.argv.includes('--check');
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
-function walk(dir) {
+const listMd = (dir) => {
   const out = [];
-  for (const name of readdirSync(dir).sort()) {
-    const p = join(dir, name);
-    if (statSync(p).isDirectory()) out.push(...walk(p));
-    else if (name.endsWith('.md')) out.push(p);
+  const abs = join(ROOT, dir);
+  if (!existsSync(abs)) return out;
+  for (const f of readdirSync(abs).sort()) {
+    const p = join(abs, f);
+    if (statSync(p).isDirectory()) continue;
+    if (f.endsWith('.md')) out.push(`${dir}/${f}`);
   }
   return out;
+};
+
+export function build() {
+  const skill = read('SKILL.md');
+  const version = (skill.match(/version:\s*"([^"]+)"/) || [])[1] || 'unknown';
+  const body = skill.replace(/^---\n[\s\S]*?\n---\n/, '').trim();
+  const files = [...listMd('references'), ...listMd('references/visual-os'), ...listMd('examples')];
+  const parts = [
+    `<!-- wugweb-brand-os ${version}. Built by scripts/build-export.mjs. Do not edit; edit the source files. -->`,
+    '',
+    body,
+  ];
+  for (const f of files) parts.push('', '---', '', `<!-- ${f} -->`, '', read(f).trim());
+  return { text: parts.join('\n') + '\n', files };
 }
 
-function stripFrontmatter(text) {
-  if (!text.startsWith('---')) return text;
-  const end = text.indexOf('\n---', 3);
-  return end === -1 ? text : text.slice(end + 4).replace(/^\n+/, '');
-}
-
-function posix(p) {
-  return p.split(sep).join('/');
-}
-
-const skillText = readFileSync(join(skillDir, 'SKILL.md'), 'utf8');
-const version = (skillText.match(/^version:\s*(.+)$/m) || [])[1] || 'unknown';
-
-// Reference order: brand files first, then Visual OS, in a fixed order.
-const refRoot = join(skillDir, 'references');
-const order = [
-  'identity-and-positioning.md',
-  'brand-strategy.md',
-  'values-and-principles.md',
-  'audience.md',
-  'messaging.md',
-  'vocabulary.md',
-  'brand-facts.md',
-  'review-gates.md',
-  'source-map.md',
-  'tooling.md',
-  'visual-os/art-direction.md',
-  'visual-os/colour-type-photo-motion.md',
-  'visual-os/metaphors.md',
-  'visual-os/objects-and-components.md',
-  'visual-os/formats-and-campaigns.md',
-  'visual-os/references-and-patterns.md',
-  'visual-os/judging-a-visual.md',
-];
-const found = walk(refRoot).map((p) => posix(relative(refRoot, p)));
-const missing = order.filter((f) => !found.includes(f));
-const extra = found.filter((f) => !order.includes(f));
-if (missing.length || extra.length) {
-  console.error('Reference files do not match the build order.');
-  if (missing.length) console.error('  missing:', missing.join(', '));
-  if (extra.length) console.error('  not in the build order:', extra.join(', '));
-  process.exit(1);
-}
-
-const parts = [];
-parts.push(`# wugweb-brand-os: single-file export
-
-Version ${version}. Built from the skill folder by scripts/build-export.mjs. Do not edit by hand: change the source files and rebuild.
-
-This one document holds the whole skill: the main instructions, then every reference file. Paste it or attach it in any tool. Read the first section first. A reference file is named in the main instructions; look for its heading below when the question needs it.
-
-Contents: the owner's standing rules (copied), the main instructions, then ${order.length} reference files.
-`);
-
-if (existsSync(rulesPath)) {
-  parts.push(`---
-
-# Standing rules (copied from docs/skills/STANDING-RULES.md, do not edit here)
-
-${readFileSync(rulesPath, 'utf8').replace(/^# .*\n+/, '').trim()}
-`);
-} else {
-  parts.push(`---
-
-# Standing rules
-
-The standing rules file (docs/skills/STANDING-RULES.md) was not found when this export was built. Ask the owner for it. Until you have it, apply these without exception: invent nothing, change nothing without the owner's approval of that exact change, never crop or re-encode existing media, British English, sentence case, and no em or en dashes in visible copy.
-`);
-}
-
-parts.push(`---
-
-# Main instructions (SKILL.md)
-
-${stripFrontmatter(skillText).trim()}
-`);
-
-for (const f of order) {
-  const text = readFileSync(join(refRoot, f), 'utf8').trim();
-  parts.push(`---
-
-<!-- references/${f} -->
-
-${text}
-`);
-}
-
-const built = parts.join('\n').replace(/\n{3,}/g, '\n\n').trimEnd() + '\n';
-
-if (check) {
-  const current = existsSync(outFile) ? readFileSync(outFile, 'utf8') : '';
-  if (current !== built) {
-    console.error('export/wugweb-brand-os.md is out of date. Run: node scripts/build-export.mjs');
-    process.exit(1);
+export function check() {
+  const problems = [];
+  const skill = read('SKILL.md');
+  const fm = skill.match(/^---\n([\s\S]*?)\n---\n/);
+  if (!fm) problems.push('SKILL.md: no frontmatter');
+  else {
+    if (!/^name:\s*wugweb-brand-os$/m.test(fm[1])) problems.push('SKILL.md: name is not wugweb-brand-os');
+    if (!/^description:/m.test(fm[1])) problems.push('SKILL.md: no description');
+    if (/^version:/m.test(fm[1])) problems.push('SKILL.md: version must sit under metadata');
+    const body = skill.slice(fm[0].length);
+    const words = body.split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
+    if (words < 1500 || words > 2000) problems.push(`SKILL.md: body is ${words} words, wanted 1,500 to 2,000`);
+    for (const m of new Set(body.match(/`((?:references|scripts|evals)\/[^`\s]+\.[a-z]+)`/g) || [])) {
+      const p = m.slice(1, -1);
+      if (!existsSync(join(ROOT, p))) problems.push(`SKILL.md names a missing file: ${p}`);
+    }
   }
-  console.log('export is up to date');
-} else {
-  mkdirSync(dirname(outFile), { recursive: true });
-  writeFileSync(outFile, built);
-  const words = built.split(/\s+/).filter(Boolean).length;
-  console.log(`wrote ${posix(relative(process.cwd(), outFile))} (${words} words, ${order.length} reference files)`);
+  const walk = (d, acc = []) => {
+    for (const f of readdirSync(d)) {
+      const p = join(d, f);
+      if (statSync(p).isDirectory()) { if (f !== 'node_modules') walk(p, acc); }
+      else if (/\.(md|mjs|json)$/.test(f)) acc.push(p);
+    }
+    return acc;
+  };
+  for (const p of walk(ROOT)) {
+    const rel = relative(ROOT, p);
+    const txt = readFileSync(p, 'utf8');
+    const dashes = (txt.match(new RegExp(String.fromCharCode(91, 0x2014, 0x2013, 93), "g")) || []).length;
+    if (dashes) problems.push(`${rel}: ${dashes} em or en dashes`);
+    if (rel.endsWith('.md') && !rel.startsWith('export')) {
+      // No token values: a hex colour or a CSS custom property means a value leaked in from kits.
+      const hex = txt.match(/#[0-9a-fA-F]{6}\b/g);
+      if (hex) problems.push(`${rel}: colour value ${hex[0]} (values live in wugweb-kits)`);
+      const tok = txt.match(/--[a-z]+-[a-z0-9-]+/g);
+      if (tok) problems.push(`${rel}: token name ${tok[0]} (tokens live in wugweb-kits)`);
+      // Vendor and helper names belong in references/tooling.md only.
+      if (rel !== 'references/tooling.md' && rel !== 'CHANGELOG.md') {
+        const vendor = txt.match(/\b(brightdata|brand-voice:|marketing:|skill-creator|theme-factory)\b/);
+        if (vendor) problems.push(`${rel}: names a helper (${vendor[0]}); helpers belong in references/tooling.md`);
+      }
+    }
+  }
+  try {
+    const e = JSON.parse(read('evals/evals.json'));
+    if (!e.evals.every((x) => x.id && x.prompt && Array.isArray(x.expected) && x.status)) {
+      problems.push('evals/evals.json: an eval is missing id, prompt, expected or status');
+    }
+  } catch (err) {
+    problems.push(`evals/evals.json: ${err.message}`);
+  }
+  return problems;
+}
+
+const isMain = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1];
+if (isMain) {
+  const problems = check();
+  for (const p of problems) console.log(`FAIL  ${p}`);
+  if (!process.argv.includes('--check')) {
+    const { text, files } = build();
+    mkdirSync(join(ROOT, 'export'), { recursive: true });
+    writeFileSync(join(ROOT, 'export', 'wugweb-brand-os.md'), text);
+    console.log(`export/wugweb-brand-os.md written: SKILL.md plus ${files.length} files, ${text.split('\n').length} lines`);
+  }
+  console.log(problems.length ? `${problems.length} problems` : 'checks passed');
+  process.exit(problems.length ? 1 : 0);
 }

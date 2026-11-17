@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Scripts need Node 18 or later, with no packages and no network. The report part needs a Search Console export or a connected SEO data tool. Without a shell, apply the checks by reading."
 metadata:
   author: wugweb
-  version: "2.4.1"
+  version: "2.5.0"
 ---
 
 # Wugweb SEO
@@ -39,7 +39,7 @@ Each concern has one home. Follow a sibling's rule there; do not restate it here
 | What to publish, to whom and when; reporting on posts | `wugweb-strategy` |
 | Brand name, descriptor and approved facts about Wugweb, for titles and organisation markup | read from `wugweb-brand-os`, never rewritten |
 | Tokens, layout, components and the accessibility audit | `wugweb-kits` |
-| The owner's standing rules | `docs/skills/STANDING-RULES.md`, the shared rules file every Wugweb skill reads |
+| The owner's standing rules | the shared rules file every Wugweb skill reads, `docs/skills/STANDING-RULES.md` |
 
 If a sibling is not installed, give this skill's answer, say which sibling
 check was skipped, and stop at the boundary. The exact questions sent and
@@ -73,15 +73,15 @@ These apply to wugweb.com, client sites, Kits and Wugweb X.
   or Framer addresses.
 - **Title.** For a case study, the source title is 51 characters or fewer. The
   site adds " | Wugweb" only when the title does not already name Wugweb and
-  the total fits in 60. The limit for other page types is not decided. The
+  the total fits in 60. Blog and service pages use source 52 or fewer. The
   audit does not check titles for dashes.
 - **Description.** 140 to 160 characters.
 - **Schema on the main site address only.** A case study carries `WebPage`,
   `CreativeWork` and `BreadcrumbList`. Wugweb is `creator` and `publisher`.
   There is no `author`. A blog post carries `BlogPosting` with a `Person`
   author. The layout already emits `Organization`, `WebSite` and the founder on
-  every page; leave them. Schema for service pages, home and about is not
-  decided.
+  every page; leave them. Service pages carry `Service` and `BreadcrumbList`; home `WebPage`;
+  about `AboutPage`; no `author`.
 - **Dates shown.** A blog post shows its date. A case study shows none.
 - **AI files.** Leave `public/llms.txt` and `ai-context.txt` as they are;
   never recommend them.
@@ -110,11 +110,10 @@ For one page, answer one question: which phrase and intent should it target?
 
 Return limits and an outline, never wording: the title limit, the description
 limit, the entities the page must name, the schema, the link rules, and an
-outline. `wugweb-strategy` sets the pillar and cluster structure. The proof
-map wins on which case study backs a page. `wugweb-seo` picks the other link
-targets for a brief around it, owns the link rules (one link up to the service
-pillar and two or three across to sibling pages, descriptive anchors, no
-orphans or dead ends, depth from home) and audits the result.
+outline. `wugweb-strategy` decides which pages a piece links to. This skill
+owns the link rules: one link up to the service pillar and two or three across
+to sibling pages, descriptive anchors, no orphans or dead ends, and depth from
+home. It audits the result.
 The outline lists the topics the page must cover, in order, with the fact from
 the source each one rests on. It names topics, not headings; the maker writes
 the headings. Do not add an FAQ
@@ -161,11 +160,18 @@ Work through the manual list in `references/audit.md`:
   milliseconds or less, CLS 0.1 or less;
 - that the schema matches what the page shows.
 
-### 4. Score how quotable the page is
+### 4. Score the page: citability and keyphrase
 
-Score each section from 0 to 100 on the five criteria in `references/audit.md`
-and weight by length. Report the page score and name the three weakest
-sections with what each lacks. Do not rewrite them.
+Two scores, both in `references/audit.md`. The citability score (0 to 100) is
+the AI-answer score: score each section on the five criteria, weight by length,
+report the page score and the three weakest sections. The keyphrase score (0 to
+100) is the search score, modelled on Rank Math:
+
+```bash
+node scripts/score-page.mjs page.html --keyword "<phrase>" --host wugweb.com
+```
+
+Both scores report; neither rewrites. Name what is weak; the maker acts.
 
 ### 5. Return the fix list
 
@@ -256,13 +262,20 @@ asked about one title.
 
 - Which page keeps a phrase two pages want.
 - Whether training bots may crawl.
-- The title limit for blog posts and service pages.
-- Schema for service pages, home and about.
 - Title and description limits for client sites, Kits and Wugweb X.
 
-## Run the scripts and use outside Claude
+## Run the scripts
 
-Scripts need Node 18 or later and no packages. Every command, the fixtures and
-the install steps for each agent are in `README.md`. `AGENTS.md` is the whole
-skill in one file for agents that read plain instructions; `scripts/build.mjs`
-generates it and `adapters/`, so edit the sources, never the output.
+Five scripts, all Node 18 or later, no packages: `check-page.mjs`,
+`score-page.mjs`, `check-robots.mjs`, `validate.mjs`, `test.mjs` and the
+generator `build.mjs`. The exact commands, flags and fixtures are in
+`README.md`.
+
+## Use outside Claude
+
+The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads
+it as it is. `AGENTS.md` is the whole skill compiled into one file for agents
+that read plain instructions. `adapters/` holds a Cursor rule and an
+instruction block for a custom GPT. `scripts/build.mjs` generates all of
+these; edit the sources, never the output. Install steps for each agent are in
+`README.md`.

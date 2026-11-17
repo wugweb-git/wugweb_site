@@ -9,10 +9,71 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- feat(skills): wugweb-brand-os merged: the branch first draft folded into main's app copy (main's text as base), one evals file (evals.json, 38 cases), one export, checks passed.
+
 - docs(skills): wugweb-brand-os plan (Notion page and PLAN.md) updated to say the first draft 0.1.0 is built, not yet pushed to main.
 
 ### Added — wugweb-brand-os skill, first draft 0.1.0 (2026-11-17)
 - `.claude/skills/wugweb-brand-os/`: `SKILL.md` (four modes, fixed brand rules), 10 brand reference files, 7 Visual OS files, test prompts, a plain Node script that builds `export/wugweb-brand-os.md` (one file for GPT, Cursor and other tools, with the standing rules copied in). Positioning, values, audience and most facts are marked not yet approved, waiting on the owner. No edits to `brand_guidelines/`.
+### Added — wugweb-kits skill: Wugweb rule groups, references and scripts (2026-11-17)
+
+- `.claude/skills/wugweb-kits/`: 26 rule files (shell 8, label 8, kits 10), references (component-sizes, six-layers, spec-templates, known-doc-clashes), scripts kits-check-page, kits-doc-drift, contrast, test; audit.mjs renamed kits-inventory.mjs with .astro support and shell findings; validate.mjs now checks the whole skill; fixed contrast figures 6.70 and 2.33 and the grep include pattern. AGENTS.md regenerated (47 rules).
+
+### Changed — wugweb-voice version locked at 0.3.0 (2026-11-17)
+
+- `.claude/skills/wugweb-voice` set to version 0.3.0 and pinned there by owner decision: do not bump, not even to 0.3.1, without the owner's say. Recorded in `metadata.json` (`versionLock`), `README.md` and the skill `CHANGELOG.md`. No change to the method, rules or files; the 0.2.1 portability package carries forward.
+
+### Added — wugweb-work skill locked at 0.5.0 (2026-11-17)
+- `.claude/skills/wugweb-work/`: version bump from 0.4.2 to 0.5.0, same content. Lock version for Part 1; the owner's call. Future Part 1 changes go to 0.5.1 and above until a decision calls for 0.6. New files `agents/openai.yaml` and `export/wugweb-work.md` added to match the sibling skills; `scripts/build.mjs` now writes both. `references/skill-map.md`: `ui-ux-pro-max` and `banner-design` moved out of "not found installed" (owner approved installing them, 2026-11-17). Validate 30 checks, test passes.
+
+### Changed — wugweb-work plan open items and status (2026-11-17)
+- Docs only. Plan and Notion page: status now says validate 30 checks, the standing rules are one copied block in the skill, and figures with no recorded source were marked unvalidated. Waiting list gains replies and outreach, and the items shared with `wugweb-kits` (four held proposals, loop pause versus `aria-hidden`, `faqs` clash and existing blocks, card thumbnails and old media ratios). Backup: `backups/notion-wugweb-work-page-before-2026-11-17-d.md`.
+
+### Changed — wugweb-work plan links table (2026-11-17)
+- Links table in `docs/skills/wugweb-work/PLAN.md` and the Notion page: wugweb-brand-os takes "approved facts about Wugweb"; wugweb-kits takes "gate and token results" and its wording line now reads "visible wording it asks for", matching the skill's handoffs file. Backup: `backups/notion-wugweb-work-page-before-2026-11-17-c.md`.
+
+### Changed — wugweb-work skill full read, duplicates and unsourced figures (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/references/`). See the skill's own CHANGELOG, 0.4.2. validate 30 checks 0 errors, test passes, AGENTS.md and adapters rebuilt.
+
+### Changed — wugweb-work plan standing rules and og size line (2026-11-17)
+- Docs only. Plan and Notion page: the open sizes item now lists only story, Behance cover and Dribbble shot (og settled at 1200 x 630); the standing rules section points to `docs/skills/STANDING-RULES.md` and keeps only wugweb-work rules. Notion backup in `backups/`.
+
+### Changed — wugweb-work skill gaps closed, stale status lines fixed (2026-11-17)
+- Docs and skill files only. Skill: duplicate standing rules removed, layout numbers marked as proposals for wugweb-kits, loop-pause gate item added; validate 30 checks 0 errors, test passes, AGENTS.md and adapters rebuilt. `CLAUDE.md`, `AGENTS.md`, `pending.md`: the skill is built (0.4.2), the site build is not. `governance.md`: plan page title corrected.
+
+### Added — wugweb-seo plan: on-page keyphrase score and internal-link checks (2026-11-17)
+
+- `docs/skills/wugweb-seo/PLAN.md` and the Notion page gained two planned sections: an on-page keyphrase score modelled faithfully on Rank Math (weights extracted from `seo-by-rank-math` 1.0.280, owner decision to drop the density and heading softening), with a build prompt for the dev session; and net-new internal-link SEO audit checks (anchor-text mix, silo coherence, redirected and nofollow internal links, too-many-links, cloaked prefixes).
+- The RankWeb page (Animal Writes) gained a Rank Math on-page score reference. No skill files were edited; the skill is the dev session's.
+- Mapped all 83 Rank Math PRO features to the skill from an SEO view. wugweb.com is Astro with no Rank Math and no plugin, so the skill is the SEO layer: most items confirm the existing plan, audit and report parts; four are net-new audit checks; the former "CMS plumbing" is translated to Astro rules the skill owns (schema spec per page type, Cloudflare redirects and 404s, a site-wide SEO field table, share-image spec) or client-site-conditional; only plugin UI and agency features are not applicable.
+
+### Added — wugweb-voice portability package 0.2.1 (2026-11-17)
+
+- `.claude/skills/wugweb-voice` gains `AGENTS.md` (the whole skill in one file), `adapters/cursor/wugweb-voice.mdc`, `adapters/chatgpt/instructions.md`, `agents/openai.yaml`, `README.md` and `metadata.json`, so the skill loads in Claude Code, Cursor, Codex and a custom GPT. `scripts/build.mjs` now compiles the whole package; every generated file leaves out the corpus ledger. Method and rules unchanged; still waiting on the owner's writing samples.
+
+### Changed — wugweb-seo plan page matches repo copy 2.4.1 (2026-11-17)
+
+- `docs/skills/wugweb-seo/PLAN.md` and the Notion page now describe version 2.4.1: the 2.3.0 owner answers are marked decided (FAQPage only where the page shows the questions, blog dates, named helper leads), the proof-map link wording is recorded, and the open items are the copied standing-rules block, the missing `evals/evals.json` and the app-copy re-save.
+
+### Changed — wugweb-kits skill: SKILL.md reconciled (2026-11-17)
+
+- Rewrote `.claude/skills/wugweb-kits/SKILL.md` (1,584 words by the shared method): third-person description with triggers, shell summary from `layout-shell.md`, 26 Wugweb rules listed as not yet written, standing-rules block. Added `references/layout-shell.md` and `references/standing-rules.md`; `AGENTS.md` now a single-file export. validate passes.
+
+### Changed — wugweb-work plan status and version updated (2026-11-17)
+
+Docs only. The wugweb-work plan status now reads 0.4.2 in the repo; the Notion page text was backed up first to `backups/notion-wugweb-work-page-before-2026-11-17.md`.
+
+### Changed — wugweb-work skill 0.4.2, repo master copy fixes (2026-11-17)
+- Skill files only. `.claude/skills/wugweb-work/`: standing rules now one copied block (`references/standing-rules.md`), loop-pause pointer, `wugweb-kits` name in skill-map, two items added to open-items, evals note in README and validate, unquoted name in SKILL.md, AGENTS.md and adapters rebuilt. validate.mjs 26 checks, 0 errors; test.mjs passes. Body 1,831 words by the shared count. The app copy is now behind and needs re-saving by the owner.
+
+### Changed — wugweb-strategy Notion page status (2026-11-17)
+- Skill page status now says v0.1.0 built, and the repo copy line names the skill folder. Backup in `backups/`.
+
+### Added — wugweb-work skill 0.4.1 master copy in the repo (2026-11-17)
+- Docs and skill files only. `.claude/skills/wugweb-work/`: 50 files copied unchanged from the installed app copy (0.4.1), byte-identical (diff -r clean); checked first for secrets and personal data (none). SKILL.md body is 1,896 words by the shared count method (frontmatter dropped, fenced code removed, tokens with a letter or digit), inside 1,500 to 2,000. Not changed yet: standing-rules block, loop-pause placement, stale `ui-system-mapper` line.
+
+### Added — wugweb-work skill `evals/evals.json` in the repo (2026-11-17)
+- `.claude/skills/wugweb-work/evals/evals.json`: the 14 eval prompts and expectations from the development chat, plain JSON, no secrets. The packager strips `evals/` from the app copy, so this is the first time the evals reach the repo. The evals have not been run yet. Closes the "missing `evals/`" gap noted in the 0.4.1 master copy entry above.
 
 ### Added — wugweb-strategy skill v0.1.0, master copy in the repo (2026-11-17)
 - `.claude/skills/wugweb-strategy/`: the 19 app files copied unchanged, plus `AGENTS.md` (single-file export for other tools, with the standing rules block copied from `docs/skills/STANDING-RULES.md`). Plan status line updated. Six known differences from the plan rulings are listed for the owner, not applied.

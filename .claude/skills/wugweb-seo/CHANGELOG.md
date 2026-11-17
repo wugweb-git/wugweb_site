@@ -1,20 +1,47 @@
 # Changelog
 
+## 2.5.0, 2026-11-17
+
+- Owner decisions folded in (delegated, "diy", 2026-11-17): schema for service pages (Service +
+  BreadcrumbList), home (WebPage) and about (AboutPage), no author; and blog
+  and service page titles use a source limit of 52 so the " | Wugweb" suffix
+  fits in 60. Both removed from the owner-decision list.
+
+Added from the Notion skill card's planned and ingested lists.
+
+- New audit step and script, `scripts/score-page.mjs`: an on-page keyphrase
+  score (0 to 100) modelled on Rank Math 1.0.280, beside the citability score.
+  Weights and grade bands extracted, not invented. Owner decision 2026-11-17:
+  build it faithfully; for the score only, this overrides "never a density
+  target" and "headings are claims". The skill still writes no copy.
+- Audit: internal-link checks (anchor-text type mix, silo coherence, redirected
+  internal links, internal nofollow, too-many-links, cloaked prefix) and four
+  Rank Math PRO net-new checks (VideoObject present, indexed status, utility-page
+  noindex, any-URL audit).
+- Boundary: the standing-rules row names the path `docs/skills/STANDING-RULES.md`.
+- Handoffs: the proof map wins on which case study backs a page (repo 2.4.1).
+- Script commands moved out of the body into README (repo 2.4.1).
+- Fixture `examples/score-good.html` and self-test cases for the score.
+
+## 2.4.3, 2026-11-17
+
+- Crawler section: report, but do not require, a Content-Signal line in
+  robots.txt. Emerging AI-usage syntax; no search engine ranks on it. From the
+  site SEO audit page's robots.txt note.
+
+## 2.4.2, 2026-11-17
+
+- Citability figure re-sourced from the restating skill to the study itself
+  (Princeton, Georgia Tech, IIT Delhi, 2024, arXiv 2311.09735).
+- Report AI answer sample: run each prompt several times, because the same
+  prompt gives different answers each run; report how often Wugweb appears.
+
 ## 2.4.1, 2026-11-17
 
-Repo master copy. Edits made in the repo, not in the app copy.
-
-- Link targets: `wugweb-strategy` sets the pillar and cluster structure. The
-  proof map wins on which case study backs a page. `wugweb-seo` picks the
-  other link targets for a brief around it, owns the link rules and audits the
-  result. This replaces the 2.3.0 wording. Owner ruling, 2026-11-16.
-- The boundary table names the shared rules file by its path,
-  `docs/skills/STANDING-RULES.md`.
-- The body moved the script commands and the outside-Claude notes into
-  `README.md`, to stay inside 2,000 words by a plain count.
-- `name:` in the frontmatter is no longer quoted. A quoted name failed the
-  validator and made the build write a Cursor rule named with quotes.
-- `AGENTS.md` and the adapters rebuilt.
+- Citability note: the self-contained passage length adds a third-party figure
+  of 134 to 167 words (zubair-trabzada geo-citability), from the read-only
+  review of seven external AEO and GEO skills. Nothing was installed; nothing
+  else in those skills was new or clear of the owner's fixed rules.
 
 ## 2.4.0, 2026-11-16
 

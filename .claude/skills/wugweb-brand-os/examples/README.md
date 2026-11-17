@@ -1,5 +1,17 @@
 # Examples
 
-Empty on purpose. This folder holds approved and rejected visuals for each format, each with its source, date, rights label and the observation it supports. None has been supplied yet (owner item 10), and none will be invented or generated.
+Empty on purpose. Approved and rejected visuals go here once the owner supplies them (question 10), for each format. None will be invented or generated.
 
-Until then, the worked example in `references/visual-os/formats-and-campaigns.md` (the four-role article series) is the only example the skill carries.
+Each example is a short Markdown record, not a media file. Media lives in R2 only and is never copied here.
+
+| Field | Holds |
+| --- | --- |
+| Name | A short name for the piece |
+| Where the original lives | The R2 path or page |
+| Format | From the format matrix |
+| Mode | One of the five visual modes |
+| Verdict | Approved or rejected, by the owner, with the date |
+| Why | The rule it shows or breaks |
+| Rights | One rights label |
+
+Until then, the worked example in `references/visual-os/formats-and-campaigns.md` (the four-role article series) is the only example the skill carries. Each record also keeps its source, date and the observation it supports.

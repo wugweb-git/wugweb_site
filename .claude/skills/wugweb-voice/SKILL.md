@@ -3,8 +3,8 @@ name: wugweb-voice
 description: "Holds the one Wugweb voice, which is also the owner's voice, and runs the voice check on any visible Wugweb copy. This skill should be used when asked to check the voice, make text sound like Wugweb or like the owner, rewrite in our voice, run a voice check before posting, say whether a draft is on voice, or when wugweb-work passes draft text with its form and mode. It covers vocabulary, phrasing, sentence structure, cadence, formality and punctuation only. It does not cover personality, beliefs, decision style, format, length, SEO, positioning or design."
 metadata:
   author: wugweb
-  version: "0.2.0"
-  status: "structure only; voice rules waiting on owner samples"
+  version: "0.3.0"
+  status: "structure only; version locked at 0.3.0; voice rules waiting on owner samples"
 ---
 
 # wugweb-voice
@@ -13,7 +13,7 @@ Wugweb and Vedanshu write in one voice, because Vedanshu is the author of Wugweb
 
 ## Status: read this first
 
-Version 0.2.0 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
+Version 0.3.0 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
 
 - The fixed owner rules (below). They are confirmed and always on.
 - The voice check method, with its mechanical parts in `scripts/check.mjs`.
@@ -151,13 +151,16 @@ When a piece written with this skill is published, `wugweb-work` records who rev
 | `examples/` | Before and after pairs tied to corpus entries; empty until samples exist |
 | `evals/evals.json` | Per-task tests; some runnable now, the rest waiting on samples |
 | `scripts/check.mjs` | Mechanical voice check |
-| `scripts/build.mjs` | Builds `export/wugweb-voice.md` |
+| `scripts/build.mjs` | Compiles the portable files |
 | `scripts/test.mjs` | Tests the scripts and the skill's own files |
-| `export/wugweb-voice.md` | Single file for GPT, Cursor or any other tool |
+| `AGENTS.md`, `adapters/`, `agents/openai.yaml`, `export/wugweb-voice.md` | Portable copies for other agents (generated) |
+| `README.md`, `metadata.json`, `CHANGELOG.md` | Install steps, version and history |
 
 ## Works outside Claude
 
-This file carries the fixed rules, the labels and the voice check, so it stands alone where reference files are not loaded. The reference files are plain Markdown. Scripts are plain Node with no packages. Helper skills are optional; every step can be done by hand from the Markdown. `node scripts/build.mjs` writes the single-file export, which leaves out the corpus ledger because it points at private writing.
+The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads it as it is: Claude (installed, or at `.claude/skills/wugweb-voice/`), Cursor and Codex. This file carries the fixed rules, the labels and the voice check, so it stands alone where reference files are not loaded. Reference files are plain Markdown; scripts are plain Node with no packages; helpers are optional.
+
+`scripts/build.mjs` compiles the portable files: `AGENTS.md` (the whole skill in one file), the `adapters/` and `export/wugweb-voice.md`. Edit the sources, not the output. Every generated file leaves out the corpus ledger. `README.md` has the install steps.
 
 ## Never
 

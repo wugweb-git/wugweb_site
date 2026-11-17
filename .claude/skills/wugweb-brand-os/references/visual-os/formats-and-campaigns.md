@@ -1,71 +1,96 @@
 # Formats and campaigns
 
-What each format should look and feel like. Sources: `brand_guidelines/08_ARTWORK_FORMULAS/` and `03_MARKETING_SYSTEM/`. The format matrix is complete. Each per-format formula holds one or two sentences with ten empty headings, so the lines below are the whole of what exists. The two files for the LinkedIn post and the Instagram post, and the pitch deck, are the thinnest.
+Art direction per format. Sizes, counts, file handling and production steps are in `wugweb-work`. Layout and tokens are in `wugweb-kits`.
 
-This file holds how a visual should look. Platform sizes, safe areas, file settings, export and scheduling belong to `wugweb-work`.
+## Format decision matrix (source: `08_ARTWORK_FORMULAS/FORMAT_DECISION_MATRIX.md`)
 
-## Format decision matrix
+| Format | Default mode | Text in the artwork | Interface allowed | Priority |
+| --- | --- | --- | --- | --- |
+| Article thumbnail, blog hero | Editorial thought leadership | None; the headline sits outside the image | None or one proof module | One metaphor readable at small size |
+| LinkedIn static post | Campaign collage or typographic presentation | A short statement as graphic form | One credible module | Stop-scroll recognition |
+| Carousel, presentation | Typographic presentation or systems and architecture | Allowed; type carries hierarchy | Only when the slide proves an interaction | Sequential clarity |
+| Service page, website section | Product proof or campaign collage | Body copy belongs in the page, not the illustration | One credible product proof | Product and service relevance |
+| Case study cover | Editorial or product proof | Minimal title treatment | One representative product frame | Recognition and a narrative cue |
 
-Pick the mode from the format. Format decides whether text in the image is excluded, minimal or central.
+"No text inside artwork" is not a universal rule. The format decides whether type is excluded, minimal or central.
 
-| Format | Default mode | Text in the image | Interface allowance | Priority |
-|---|---|---|---|---|
-| Article thumbnail or blog hero | Editorial thought leadership | None; the headline sits outside | None, or one proof module | One metaphor readable at small size |
-| LinkedIn static post | Campaign collage or typographic presentation | A short statement can be graphic form | One believable module | Recognition while scrolling |
-| Carousel or presentation | Typographic presentation or systems | Allowed; type carries the hierarchy | Only when the slide proves an interaction | Clear sequence |
-| Service page or website section | Product proof or campaign collage | Interface and body copy belong in the page layout, not the image | One believable product proof | Relevance to the product or service |
-| Case-study cover | Editorial or product proof | Minimal title treatment | One representative product frame | Recognition and a cue to the story |
+## Per-format formulas (source: `08_ARTWORK_FORMULAS/`)
 
-"No text inside artwork" is not a universal rule. It applies to no-text thumbnail and hero briefs.
+Each formula is one or two sentences in the source; the rest of its headings are empty and wait on the owner.
 
-## Per-format direction
+- **Blog hero.** One insight, one tangible metaphor, one hero object, optional monochrome interaction, zero to three supporting layers. A clear anchor and large negative space. No explanatory text in the visual. AI topics show outcomes (navigation, recommendation, discovery), not AI symbols.
+- **Case study cover.** A distinctive project-specific object or product outcome that reflects the actual customer or business transformation. Never a generic laptop or dashboard. One representative product frame at most.
+- **Editorial hero.** An oversized editorial anchor, decisive framing and one proof visual. Type may share the hierarchy for a manifesto or cover; for thought-leadership thumbnails keep type outside the artwork.
+- **Instagram post.** A square-safe composition with one anchor and strong framing. A carousel may sequence one metaphor across frames; do not repeat one layout or overload one card with text.
+- **Landing page.** Keep one side clear for live copy. Product interface only as direct evidence of the page claim. The anchor must survive the change from desktop to mobile.
+- **LinkedIn post.** Small-scale recognition: high contrast, one memorable silhouette, platform copy outside the image. Remove tiny detail that will not survive feed size.
+- **Pitch deck.** The first slide is a confident editorial statement: a strong dark or light field, one anchor, minimal text. Then one-message slides in the same language, not a dense proposal template. Pick each layout by the slide's job (title, problem, big number, quote, comparison, timeline, closing). Alternate what is with what could be.
+- **Thumbnail.** One clear subject, contrast and recognisable framing. Remove small interface, labels and thin lines. No paragraphs, dense diagrams or title text inside the image. Test at final size. Image and title are one unit: the image shows, the title tells, and they never repeat each other. Before designing, write in one sentence the promise the piece keeps.
+- **Website section.** One text-adjacent conceptual visual per section that reinforces, not repeats, the written claim, and reads without embedded type. The hero visual shows the real product, not an abstract shape.
+- **Carousel slide.** A small poster: a headline and at most one supporting line, a slide number and one accent, in the same hierarchy on every slide. The cover must stand alone as an image at thumbnail size. One idea per slide; a single point is a single image.
+- **Quote card.** The line must stand alone, or there is no card. One idea, the key phrase largest, lines broken on meaning, two typefaces at most, generous margins, a solid panel over any photo. Legibility at thumbnail size is the deliverable. Never invent, misattribute or strip context from a quote.
+- **Data visual.** See Charts and numbers below.
+- **Email banner.** One message, a safe framing, high contrast, a restrained hero object, light enough to load quickly. Never rely on embedded copy for the whole message.
+- **Ad.** One visual proposition, instant contrast, a clear framing. Lead with an object or metaphor, not a feature list or dashboard fragment. Any call to action stays live platform text.
+- **Event.** Large type or an anchor that reads from a distance, a limited palette, a simple silhouette and repeatable geometry. Use the campaign metaphor across signage, slides, handouts and social instead of event-themed decoration.
 
-**Blog hero.** One insight, one tangible metaphor, one hero object, an optional monochrome interaction, and zero to three supporting layers. A clear anchor and large empty space. No explanatory text in the image. AI topics show outcomes (navigation, recommendation, discovery), not AI symbols.
+## Social art direction (source: `03_MARKETING_SYSTEM/04_SOCIAL_MEDIA.md`)
 
-**Case-study cover.** A distinctive object or outcome from the actual project, never a generic laptop or dashboard. One representative product frame at most.
+- Design for recognition in two seconds: one memorable object, decisive framing, high contrast, a hierarchy that survives feed size.
+- Hold a campaign together through palette, cut-out treatment, rounded geometry and type. Vary the metaphor and hero object between posts.
+- Image and title work as one unit.
+- Keep a small family of recurring formats, not a new layout each time.
+- Each carousel slide is a small poster with one idea.
+- Glance test at thumbnail size before approval.
+- A stranger should not be able to name the template.
+- Keep a small named family of recurring formats (quote card, carousel frame, announcement, cover) so several pieces look like one campaign. A family look is not a clone: pieces share the bones and differ in image, layout and angle, never only in colour.
 
-**Editorial hero.** An oversized anchor, a decisive framing and one proof visual. Type may share the hierarchy for a manifesto or cover; for thought-leadership thumbnails keep type outside the image where possible.
+## Deck art direction (source: `08_PRESENTATIONS.md`)
 
-**Thumbnail.** One anchor, one recognisable object or interaction, high contrast. No paragraphs, tiny interface, dense diagrams or title text inside the image. Judge it at its real platform size. Image and title are one unit: the image shows, the title tells, and they never repeat each other. Before designing, write the promise the piece keeps in one sentence.
+- Treat slides as editorial pages. One slide answers one question.
+- Use oversized type, a dark and light shift, a geometry field running off the edge, or one proof visual.
+- One motif repeated through the deck. No accent stripes and no underlined titles.
+- Break the pattern at about one third and two thirds of the deck.
+- Diagrams only when they clarify the point.
+- The break at one third and two thirds is a full-bleed slide.
 
-**LinkedIn post.** Small-scale recognition: high contrast, one memorable silhouette, live platform copy outside the image. Use the campaign look and remove detail that will not survive feed size.
+## Charts and numbers
 
-**Instagram post.** A composition that holds in a square, one anchor, bold framing. A carousel can run one metaphor across frames; never repeat one layout or load a single card with text.
+- The title states the takeaway.
+- For one or two numbers, use a big stat, not a chart.
+- Show the source and the date. A number with no source fails the fact check.
+- Strip decoration: no 3D, shadow or gradient. Label directly; one base colour and one accent. Scale rules and contrast checks are in `wugweb-kits`.
 
-**Carousel slide.** Each slide is a small poster: a headline and at most one supporting line, a slide number and one accent, in the same hierarchy on every slide. The cover must stand alone as an image at thumbnail size. One idea per slide. A single point is a single image.
+## Layout types
 
-**Deck.** Make the first slide a confident editorial statement: a strong dark or light field, one anchor, minimal text. Then one-message slides in the same visual language, never a dense proposal template. Treat slides as editorial pages: oversized type, a dark and light shift, a framed geometry field or one proof visual. Use a diagram only when it clarifies. Repeat one motif across the deck with no accent stripes or underlined titles. Pick each layout by the slide's job (title, problem, big number, quote, comparison, timeline, closing). Alternate what is with what could be, and break the visual pattern about a third and two thirds of the way through with a full-bleed slide.
+Five types, as vocabulary for briefs: anchor plus interaction, route, builder, signal, editorial statement. A banner or card has three zones (anchor, message, action) and one call to action. Banner layouts can also be named as type as hero, full-bleed image, split, list or centred badge; state the empty space each leaves.
 
-**Quote card.** The line must stand alone, or there is no card. One idea, the key phrase largest, lines broken on meaning, two typefaces at most, generous margins, a solid panel over any photo. Legibility at thumbnail size is the deliverable. Never invent, misattribute or strip context from a quote.
+## Art-direction vocabulary
 
-**Data visual.** The title states the takeaway, not the axes. For one or two numbers use a large figure, not a chart. Strip decoration: no 3D, shadow or gradient. Label directly, use one base colour and one accent. Always show source and date. The scale rules and contrast checks are in `wugweb-kits`.
+A banner style list names about twenty styles (for example minimalist, bold type, geometric, retro, editorial, collage, duotone, glass, neon). Use them to name a look in a brief or a pattern entry, never as a recommendation. Neon and glass styles, and anything that reads as a data dashboard, are close to the banned looks.
 
-**Website section.** One framing-safe visual beside the live text. It reinforces the claim and does not repeat it, and it stays readable without embedded type. On a landing page reserve an uncluttered side for responsive live copy, use product interface only as direct evidence, and make sure the anchor survives the change from desktop to phone. The hero visual shows the real product, not an abstract shape.
+## Briefing a graphic
 
-**Email banner.** One message, a safe framing, high contrast, a restrained hero object, light enough to load quickly. Never rely on embedded copy for the whole message.
+Settle before making: the purpose and where it appears, the exact copy (locked, not generated), the canvas, one layout, two or three style words plus palette, and whether it is on brand. For an open request offer three directions that differ in kind, not three shades of one. Leave clean space where live type will sit.
 
-**Ad.** One visual proposition, instant contrast, a clear framing. Lead with an object or metaphor, not a feature list or dashboard fragment. Any call to action stays live platform text.
+## Making rules that art direction depends on
 
-**Event.** Large type or an anchor that reads from a distance, a limited palette, a simple silhouette and repeatable geometry. Use the campaign metaphor across signage, slides, handouts and social instead of event-themed decoration.
+- No text baked into generated images.
+- Use the real logo file where a logo belongs.
+- Existing media: never crop the file, never re-encode, resize only with the aspect ratio kept, masks allowed.
 
-## Campaigns
+## Campaign systems
 
-A campaign shares a visual grammar, not identical layouts. Define:
+**Not decided: owner.** No approved source defines a campaign system (question 10). Until the owner's Visual OS document arrives, a campaign uses campaign collage mode with the social rules above, and anything beyond that is reported as a gap. Planning a campaign is `wugweb-strategy`.
 
-1. One campaign tension.
-2. Palette priority.
-3. Type treatment.
-4. Photo treatment.
-5. A small family of related metaphors.
-
-Each piece brings a new hero object or composition and still looks like Wugweb. Keep a small named family of recurring formats (quote card, carousel frame, announcement, cover) so several versions look like one campaign. A family look is not a clone: several versions share the bones and differ in image, layout and angle, never only in colour. A stranger should not be able to name the template.
+The shape the marketing files point to, kept as working vocabulary and not as a decided system: a campaign shares a visual grammar, not identical layouts. Define one campaign tension, palette priority, type treatment, photo treatment and a small family of related metaphors. Each piece brings a new hero object or composition and still looks like Wugweb.
 
 ### Worked example: the four-role article series
 
 Shared look: Wugweb colour roles, rounded geometry, editorial hierarchy, credible product or physical evidence. The metaphor changes in every image.
 
 | Role | Core idea | Hero vocabulary | Interface allowance | Avoid |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Agent Whisperer | Make a brand legible to intelligent agents | Metadata cards, taxonomy labels, structured knowledge, folders, index systems | One believable knowledge or search module | Robots, AI faces, chat bubbles as decoration |
 | Full-funnel Navigator | Coordinate an adaptive ecosystem | Routes, modular blocks, directional paths, priorities | One orchestration proof only | Dashboard walls, equal-weight paths |
 | Hyperpersonalization Architect | Build trusted one-to-one experiences | A mobile device, recommendations, preference chips, adaptive modules | One real mobile or product experience | Cluttered profile cards |
@@ -73,16 +98,6 @@ Shared look: Wugweb colour roles, rounded geometry, editorial hierarchy, credibl
 
 Keep the shared look, vary the metaphor. Never repeat the same person, circle and card layout, or the same hero object, across the four.
 
-## Art-direction vocabulary
+## AI prompt engine
 
-For naming a look in a brief or a pattern entry, a banner style list names about twenty styles (for example minimalist, bold type, geometric, retro, editorial, collage, duotone, glass, neon). Use these as vocabulary only, never as a recommendation. Neon and glass styles, and anything that reads as a data dashboard, are close to the banned looks.
-
-Three layout types help brief a graphic: type as hero, full-bleed image, split, list, and a centred badge. State the amount of empty space each leaves.
-
-## Briefing a graphic
-
-Before making anything, settle: the purpose and where it appears, the exact copy (locked, not generated), the canvas, one layout, two or three style words plus palette, and whether it is on brand. For an open request offer three directions that differ in kind, not three shades of one. Where a logo belongs, use the real logo file. Never bake text into an image; leave clean space where live type will sit.
-
-## Existing media and framing
-
-A shown screen or video is never cropped or re-encoded. Resizing keeps the original ratio, and a mask or frame may shape what is shown. A mask must not hide the part that proves the claim. The full rules are in `docs/skills/STANDING-RULES.md`.
+**Not decided: owner** (question 7): whether Visual OS owns `04_AI_PROMPT_ENGINE`. Not absorbed here until answered.

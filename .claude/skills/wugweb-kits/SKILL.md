@@ -1,273 +1,169 @@
 ---
 name: "wugweb-kits"
-description: "Map a UI to its design system — trace values from primitive token → semantic token → primitive component → component, audit code for hardcoded values, drift and duplication, then write reusable component spec sheets."
+description: "Maps the Wugweb site to the Kits design system: tokens, layout shell, components, block docs, motion and accessibility. Use when asked to audit a page or block against the shell, check tokens or hardcoded values, spec a component or block, map sections to the six layers, check labelling and headings, or find drift between docs and global.css. Triggers: kits, design system, tokens, layout shell, section padding, gutter, header height, block doc, component spec, audit page."
 license: MIT
 metadata:
   author: wugweb
   version: "1.0.0"
-  argument-hint: <file-or-pattern>
+  argument-hint: <file-or-page>
 ---
 
 # Wugweb Kits
 
-Most UI decay has one cause: values enter a codebase without a home. A hex lands in a
-component, a spacing number gets typed inline, a third dropdown gets written because
-nobody could find the first two. This skill builds the map that gives every value a
-home, audits the code against it, and emits specs so the next person reuses instead of
-rewrites.
+Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 26 Wugweb rule files, the references and the scripts are in place.
 
-Work in this order. Skipping to specs before the audit produces documentation of a mess.
+## Standing rules
 
-## The six-layer model
+Read `docs/skills/STANDING-RULES.md` first. This skill repeats none of it except the block below, copied verbatim from that file. The full copy is in `references/standing-rules.md`. If they differ, the docs file wins.
 
-Every visual value in a UI belongs to exactly one layer, and references flow in exactly
-one direction: **down, one step at a time.**
+<!-- copied from docs/skills/STANDING-RULES.md -->
+- Nothing is invented: no numbers, quotes or facts.
+- A claim needs a screen, a sourced number or a named fact.
+- Changes are shown as current to proposed, with the reason.
+- Nothing is deleted without asking: no data, files, records or pages.
+- Nothing goes to development until the owner says so.
+- No em or en dashes in anything a visitor reads. Ranges are written out.
+- Media lives in the owner's media store only: no uploads, no local copies.
+- Media may be shown at any size if the original aspect ratio is kept. Clipping masks are allowed.
+- No sound anywhere. Every video is muted.
+<!-- end copied block -->
 
-| # | Layer | Holds | Names describe | Example |
-|---|-------|-------|----------------|---------|
-| 1 | **Primitive token** | Raw value, zero meaning | The value | `color.blue.600`, `size.4`, `font.size.14` |
-| 2 | **Semantic token** | Role / intent | The job | `color.text.muted`, `space.inset.md`, `radius.control` |
-| 3 | **Component token** | Scoped binding | The part | `button.primary.bg`, `card.padding` |
-| 4 | **Primitive component** | Structure, no domain meaning | The mechanic | `Box`, `Stack`, `Text`, `Icon`, `Surface` |
-| 5 | **Component** | A named UI role | The role | `Button`, `Field`, `Toast`, `Avatar` |
-| 6 | **Composition** | Assembled components | The situation | `LoginForm`, `EmptyState`, `DataTable` |
+## Source of truth
 
-**The one-way rule.** Layer N may reference only layer N-1.
+Token values live in `src/styles/global.css`. The docs in `kits_design_system/docs/` win: `tokens/layout-shell.md` is authoritative, with `tokens/sizing.md` and `components.md` beside it. Code that disagrees with `layout-shell.md` is wrong, not the doc. Report it as a finding against the code. Never correct a doc to match code, and never carry a value this skill cannot check against a doc.
 
-- A component (5) reads component tokens (3) or semantic tokens (2) - never a primitive
-  token (1), never a raw value.
-- A semantic token (2) resolves to a primitive token (1) - never to another semantic token,
-  which creates alias chains nobody can trace.
-- A composition (6) contains components (5); it never restyles them from outside. If it
-  needs to, the component is missing a variant.
+## What this skill owns
 
-Violations are the entire audit. Everything below is machinery for finding them.
+- Layout, tokens, components, block docs, motion and accessibility of the site.
+- Not wording. Visible copy comes through `wugweb-work`, which supplies content shape and chosen media and takes layout, blocks and wording slots with limits.
+- Not art direction. `wugweb-brand-os` gives the Visual OS and logo sizes; kits gives it design-system detail and contrast results.
+- `wugweb-seo` sends block-wide findings here; kits answers with a check result. One-page findings go to `wugweb-work`.
+- `wugweb-strategy` reaches kits only through `wugweb-work`. There is no link to `wugweb-voice`.
 
-**Layer 3 is optional and often harmful.** Add a component token only when a component
-genuinely needs an override point that consumers will theme. If `button.primary.bg` is
-just an alias for `color.action.primary` used once, delete it - it doubles the map for
-nothing. Prefer 5 -> 2 directly.
+## The shell
 
-## Phase 0 - Inventory before opinions
+A page holds sections; a section holds one content box; the content holds blocks. The section owns the gutter, the content owns the max width. Values below were read from `layout-shell.md` and `sizing.md`; `references/layout-shell.md` has the full table.
 
-Do not propose a system before you know what exists. Count, do not guess.
-
-```bash
-# Distinct raw colors actually in use
-grep -rhoE '#[0-9a-fA-F]{3,8}\b|rgba?\([^)]*\)|hsla?\([^)]*\)' src/ | sort | uniq -c | sort -rn
-
-# Distinct spacing / size literals
-grep -rhoE '\b[0-9]+(\.[0-9]+)?(px|rem|em)\b' src/ | sort | uniq -c | sort -rn
-
-# Font sizes and weights
-grep -rhoE 'font-size:[^;]+|font-weight:[^;]+' src/ | sort | uniq -c | sort -rn
-
-# Existing token declarations and their usage counts
-grep -rhoE '\-\-[a-z0-9-]+' src/ | sort | uniq -c | sort -rn
-```
-
-Report the shape of the problem in one table before touching anything:
-
-| Dimension | Distinct values found | Values that survive |
-|---|---|---|
-| Color | 47 | 12 |
-| Spacing | 23 | 7 |
-| Radius | 9 | 3 |
-| Font size | 14 | 6 |
-| Shadow | 11 | 4 |
-
-The gap between those columns is the work. Say the numbers out loud to the user - a
-47-to-12 collapse is the argument for the whole exercise, and it is more persuasive than
-any principle.
-
-## Phase 1 - Build the map
-
-Produce `system-map.json`. This is the single source of truth; everything else is
-generated from or checked against it.
-
-```json
-{
-  "tokens": {
-    "primitive": { "color.blue.600": "#2563eb", "size.4": "16px" },
-    "semantic":  { "color.action.primary": "{color.blue.600}",
-                   "space.inset.md": "{size.4}" },
-    "component": { "button.primary.bg": "{color.action.primary}" }
-  },
-  "components": {
-    "Button": {
-      "layer": 5,
-      "builtFrom": ["Box", "Text", "Icon"],
-      "consumes": ["button.primary.bg", "space.inset.md", "radius.control"],
-      "variants": ["primary", "secondary", "ghost", "danger"],
-      "states": ["default", "hover", "active", "focus-visible", "disabled", "loading"],
-      "usedBy": ["LoginForm", "Toolbar", "EmptyState"],
-      "status": "stable"
-    }
-  }
-}
-```
-
-Three fields carry the weight:
-
-- **`consumes`** makes the token->component direction traceable. Change a token, know what
-  breaks.
-- **`usedBy`** makes it reversible. Deprecate a component, know who to tell. Without this
-  field nothing can ever be safely deleted, and a system nobody can delete from only grows.
-- **`status`** - `stable` | `beta` | `deprecated:<replacement>`. Deprecation is a pointer,
-  never a tombstone.
-
-**Naming.** One grammar, applied everywhere: `category.role.variant.state`. Roles beat
-appearances - `color.text.muted` survives a rebrand, `color.text.gray` does not. Never
-encode a value in a semantic name (`space.16`), and never encode a component in a semantic
-token (`space.card`) - that is layer 3.
-
-## Phase 2 - Audit
-
-Run every check. Report findings as a table sorted by severity, with file and line.
-
-| # | Check | How to find it | Severity |
-|---|-------|----------------|----------|
-| 1 | Hardcoded value in a component | grep hex / px / rgba inside component files | **Blocker** |
-| 2 | Layer skip (component -> primitive token) | component files referencing `--color-blue-600` style names | **Blocker** |
-| 3 | Near-duplicate token | values within ~2% of each other (`#2563eb` vs `#2564ec`) | High |
-| 4 | Orphan token | declared, zero references | High |
-| 5 | Duplicate component | two files, same role, different name | High |
-| 6 | Outside-in restyling | composition passing `className`/`style` to override a component | High |
-| 7 | Missing state | component lacks `focus-visible`, `disabled`, `loading`, or error | High |
-| 8 | Naming drift | token or component off the declared grammar | Medium |
-| 9 | Alias chain | semantic -> semantic -> semantic | Medium |
-| 10 | Magic number | unexplained literal in layout (`margin-top: 37px`) | Medium |
-| 11 | One-use component token | layer 3 entry with a single consumer | Low |
-| 12 | Undocumented variant | variant in code, absent from the spec | Low |
-
-Findings format - one line each, no prose padding:
-
-```
-BLOCKER  src/ui/Card.tsx:34   hardcoded #f4f4f5 -> use {color.surface.subtle}
-HIGH     tokens.json:88       orphan token space.inset.xxl (0 refs) -> delete
-HIGH     src/ui/{Chip,Tag}.tsx  duplicate role -> merge into Tag, Chip = deprecated:Tag
-```
-
-Be blunt about totals. "68 blockers across 22 files" is the useful sentence; "there are
-some opportunities for improvement" is not.
-
-## Phase 3 - Make it recyclable
-
-Reuse is a consequence of two things: a component being *findable* and being *bendable
-enough*. Both are design decisions, not documentation.
-
-**The promotion ladder.** Move up only on evidence:
-
-1. **One use** - leave it local. Premature abstraction costs more than duplication.
-2. **Two uses** - extract only if the two are genuinely the same role. Similar-looking is
-   not the same role; a `Chip` on a filter bar and a `Badge` on an avatar diverge fast.
-3. **Three uses** - promote to a shared component. Record it in `system-map.json`.
-4. **Three components need the same value** - promote the value to a semantic token.
-
-**Bendable enough.** A component that cannot be adapted gets forked, and a fork is a
-permanent duplicate. Give components:
-
-- **Variants** for role differences (`primary` / `danger`) - closed enumeration.
-- **Slots** for content differences (`leading`, `trailing`, `footer`) - open.
-- **Size scale** from semantic tokens, not free numbers.
-- Nothing else. `style` and `className` passthrough is how systems die; every escape hatch
-  used twice is a missing variant, and the fix is to add the variant.
-
-**Collapsing duplicates.** For each duplicate cluster: pick the survivor (most used, best
-a11y, not most recent), map the loser's API onto it, mark the loser
-`deprecated:<survivor>`, keep it working for one release, then delete. A deprecation that
-never gets deleted teaches the team that the map is decorative.
-
-**Deletion is part of the job.** Every audit ends with a delete list - orphan tokens,
-one-use component tokens, dead variants. Report what you removed with counts; a system
-that only accretes is not a system.
-
-## Phase 4 - Component spec sheets
-
-One file per component. Use this template exactly - a predictable shape is what makes
-specs readable across a library.
-
-```markdown
-# <ComponentName>
-
-**Layer** 5 - **Status** stable - **Since** v2.3
-
-## Role
-One sentence on the job it does. If this sentence needs "and", the component does
-two things and should be split.
-
-## Anatomy
-Ordered parts, outside in: container -> leading slot -> label -> trailing slot.
-
-## Built from
-Box, Text, Icon
-
-## Tokens consumed
-| Token | Applied to |
-|---|---|
-| color.action.primary | container background, default |
-| space.inset.md | container padding |
-| radius.control | container corners |
-
-## Variants
-| Variant | When to use | Differs by |
-|---|---|---|
-| primary | The single main action on a view | background, label color |
-| danger | Destructive and irreversible | background, confirm required |
-
-## States
-default - hover - active - focus-visible - disabled - loading
-Note what each changes and what it must not change (never reflow layout on hover).
-
-## API
-| Prop | Type | Default | Notes |
+| | Mobile | Tablet | Desktop |
 |---|---|---|---|
+| Canvas | 375 | 768 | 1200 |
+| Section padding | 48 16 48 16 | 70 32 70 32 | 96 48 96 48 |
+| Content max width | 1200 | 1200 | 1200 |
+| Columns | 4 | 8 | 12 |
+| Column gap | 16 | 24 | 32 |
+| Gutter | 16 | 32 | 48 |
+| Header padding | 16 | 20 | 20 |
+| Header height | 100 | 108 | 108 |
 
-## Accessibility
-Role, keyboard operation, focus behaviour, contrast result (state the measured ratio),
-touch target size, what the screen reader announces in each state.
+Everywhere: nav bar 68, bar inset 12, buttons 44 (text 16, padding 10 12, gap 12), logo 40, nav inner max 1280, header sticky at top 0 on layer 10, spring 400ms with bounce 0.2. The header is derived: 24 + 2 x 10 = 44, 44 + 2 x 12 = 68, 68 + 2 x 20 = 108, and 16 + 68 + 16 = 100 on mobile. Never set it by hand.
 
-## Do / Don't
-- Do: one primary per view.
-- Don't: use `danger` for anything reversible.
+Tokens and selectors: `--shell-gutter`, `--section-y` with every `--space-section-*`, `--grid-gap`, `--header-height` (`--nav-height` plus 2 x `--header-pad-block`), `--control-size`, `--nav-logo-height`, `--breakpoint-xl`, `--ease-spring`, `--duration-spring`, `.wrap`, `.grid`. The bar inset is `--nav-bar-pad` in code; the doc names no token for it.
 
-## Used by
-LoginForm, Toolbar, EmptyState
-```
+The three tiers are 375, 768 and 1200. The breakpoint literals are 480, 640, 768, 1024 and 1200, and the shell steps only at 768 and 1200. Measure at 375, 768 and 1200; a measuring iframe needs `border: 0` or 768 reads as mobile.
 
-Two rules for spec quality: state the **measured** contrast ratio rather than claiming
-compliance, and write the Don'ts from real misuse found in the audit, not from
-imagination. A Don't that names a mistake somebody actually made gets read.
+Retired, never to return: content max 1280, desktop gutter 44, desktop breakpoint 1280, flat section tokens 40, 48, 64, 80, flat gap 16 (or 24, 24, 0), a 12 column switch at 1024, fluid header padding, header 110, 118, 118, nav z index 50. Any of these in a shell context is a blocker.
 
-## Phase 5 - Keep it true
+## Six layers
 
-A map goes stale in weeks unless something enforces it. Leave behind whichever of these
-the project can actually run:
+Every value belongs to one layer and references flow down one step at a time.
 
-- A lint rule failing the build on raw hex or px inside component files (check 1).
-- A CI diff on `system-map.json` - token or component removed without a `deprecated`
-  pointer fails.
-- Generated docs, so specs are built from the map rather than typed beside it.
-- A coverage number reported per PR: percentage of visual values resolving to tokens.
-  One number, trending - teams move it when they can see it.
+| # | Layer | Example |
+|---|---|---|
+| 1 | Primitive token | a raw value |
+| 2 | Semantic token | a role such as muted text |
+| 3 | Component token | a scoped binding, only when earned |
+| 4 | Primitive component | structure classes such as `.wrap`, `.btn` |
+| 5 | Component | a named part with its own file |
+| 6 | Block | a section level composition with its own block doc |
 
-## Working notes
+A component reads layer 2 or 3, never a raw value and never layer 1. A block never restyles a component from outside; if it must, the component lacks a variant. Pattern means a reusable arrangement specified once, such as the rail or the viewer.
 
-**Framework-agnostic by construction.** The layers hold whether the output is CSS custom
-properties, Tailwind theme config, Style Dictionary, iOS asset catalogs, or Figma
-variables. Map first in `system-map.json`, choose the emission format last, and never let
-a framework's vocabulary redefine the layers - Tailwind's `theme.colors` is layer 1, not
-layer 2, and treating it as semantic is the most common way a Tailwind system loses its
-meaning.
+## Work in this order
 
-**When the codebase is unreachable**, say so and work from what is available - a
-screenshot, a Figma file, pasted CSS. Mark every inferred count as inferred. Do not
-present a guessed inventory as measured; the numbers are the credibility of the whole
-report.
+1. Inventory. Count raw colours, size literals and token use. Report the shape in one table before proposing anything. `node scripts/kits-inventory.mjs src/ --findings` runs it; it does not yet read `.astro` files.
+2. Map. Record each component's tokens consumed, used by and status. `system-map.json` is generated, committed at `kits_design_system/system-map.json`, never hand edited.
+3. Audit against the severity list: Blocker is hardcoded colour, z index, a retired shell value, or a section with no id or name. High is a layer skip, missing states, or block CSS outside its component. Medium is spacing literals and alias chains. Low is a one use component token. Report only; blocking merges and clean up passes wait for the owner.
+4. Spec. A single component uses the mapper sheet with the `components.md` fields added. A full block uses the block doc in `kits_design_system/docs/blocks/`. Five blocks await sign-off and are drafts until the owner signs each off. State measured contrast, not claims.
+5. Keep it true. Compare doc and code and report drift.
 
-**When the user only asks for one phase**, do that phase, then name the single most
-valuable adjacent one in a sentence. Do not silently expand scope, and do not run a full
-six-phase pass on someone who asked for a button spec.
+Findings are one line each: severity, file and line, what, fix. Give totals plainly. If the system is clean, say so and stop.
 
-**Report honestly.** If the system is already clean, say it is clean and stop. Inventing
-findings to justify the exercise is the failure mode this skill exists to prevent.
+## Rules from the mapper
+
+Files in `rules/`; the compiled copy is `AGENTS.md`.
+
+- `token-no-raw-values-in-components`, `token-one-way-references`, `token-no-alias-chains`, `token-semantic-names-describe-role`, `token-component-tokens-earn-their-place`.
+- `map-single-source-of-truth`, `map-record-consumes-and-usedby`, `map-deprecate-with-a-pointer`, `map-count-before-you-propose`.
+- `component-variants-not-booleans`, `component-slots-for-content`, `component-complete-state-set`, `component-no-outside-in-restyling`.
+- `reuse-promotion-ladder`, `reuse-same-role-not-same-look`, `reuse-collapse-duplicates-with-a-survivor`, `reuse-every-audit-ends-in-deletions`.
+- `spec-fixed-template`, `spec-measure-dont-claim`, `spec-donts-from-real-misuse`, `spec-generate-dont-maintain`.
+
+## Wugweb rules
+
+Shell group, source `layout-shell.md`:
+
+- `shell-no-section-max-width`: no max width on a section.
+- `shell-no-gutter-below-section`: nothing below the section sets a page gutter.
+- `shell-grid-gap-token`: grid gaps use `--grid-gap`, never a section token.
+- `shell-rhythm-exemption`: only `.global-final-cta` is exempt from the section rhythm.
+- `shell-filters-are-toolbars`: filters are toolbars inside the grid, not sections.
+- `shell-nothing-wider-than-nav`: no block that is not full bleed is wider than the nav.
+- `shell-header-derived`: header height comes from its formula, never a literal.
+- `shell-no-retired-values`: the retired list above is never reintroduced.
+
+Label group, source `layout-shell.md`:
+
+- `label-id-and-name`: every section has an id and an accessible name.
+- `label-labelledby-stable-heading`: `aria-labelledby` points only to a heading that always renders.
+- `label-no-loop-labels`: never label a section from a heading inside a loop.
+- `label-heading-order`: one h1, no skipped levels, a screen reader only h2 where no heading shows.
+- `label-lists-are-lists`: card lists are lists.
+- `label-alt-always`: every image has alt; decorative muted loops are hidden from assistive tech.
+- `label-skip-and-landmarks`: skip link, main landmark, scroll offset under the sticky header.
+- `label-contrast-measured`: contrast is measured and stated.
+
+Kits group, source `components.md`:
+
+- `kits-tokens-only`: no hardcoded colour, spacing, radius, opacity, shadow, blur or z index.
+- `kits-button-tiers`: `.btn-solid` brand, `.btn` primary, `.btn-ghost`; size by `.btn-sm`, `.btn-lg`, `.btn-block`, never one off CSS.
+- `kits-yellow-budget`: yellow is accent only, at most 10%; the final CTA stays yellow.
+- `kits-radius-by-role`: buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`, panels `--radius-2xl`.
+- `kits-states-on-btn`: states live on `.btn`.
+- `kits-gsap-owns-motion`: animation is GSAP through `data-reveal` and `data-scroll`; no property has two owners.
+- `kits-animated-block-lint`: Service Spotlight Panel, Client Assembly Grid, Service Tag Field, Bento Block, Process Map and any block marked "Animated block" are linted for transition and tween clashes.
+- `kits-bento-never-even`: a bento never resolves into an even grid.
+- `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
+- `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed.
+
+Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control, and all loops stop under reduced motion.
+
+## Report shape
+
+Open with the result in one or two plain sentences. Then one table of findings sorted by severity, then totals, then the delete list if the audit found dead tokens or variants. Each finding shows current and proposed with the reason. Example lines:
+
+BLOCKER  src/components/Card.astro:34  hardcoded colour, use the surface token
+HIGH     kits_design_system/docs/components.md  doc says focus uses `--focus-primary`, code uses `--neutral-3`; report, do not fix
+
+Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` has no section inside the main landmark; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The proposed `faqs` field in `layout-shell.md` breaks the no FAQPage rule and is also for `wugweb-seo`. Framer media ratios are not mapped to sections.
+
+## Using this outside Claude
+
+`SKILL.md` carries the core rules alone, because other tools may not load references. `AGENTS.md` is the single file export for GPT and Cursor, generated by `scripts/build.mjs`; regenerate it after any change and run `node scripts/validate.mjs`. Scripts are plain Node with no dependencies.
+
+## Scripts
+
+All plain Node, no dependencies, run from the skill folder or the repo root.
+
+- `node scripts/kits-inventory.mjs src/ --findings`: counts raw values, orphan tokens and `@media` literals, and lists heuristic shell and kits findings.
+- `node scripts/kits-check-page.mjs <file-or-url>`: ids, names, headings, alt, skip link and main on rendered HTML.
+- `node scripts/kits-doc-drift.mjs`: doc against `global.css`, from the repo root.
+- `node scripts/contrast.mjs <fg> <bg>`: computed ratio.
+- `node scripts/validate.mjs`, `node scripts/build.mjs`, `node scripts/test.mjs`.
+
+The scripts report and never edit. The page check reads static HTML; measuring at 375, 768 and 1200 needs a browser and is done by hand.
+
+References: `references/layout-shell.md`, `references/component-sizes.md`, `references/six-layers.md`, `references/spec-templates.md`, `references/known-doc-clashes.md`, `references/standing-rules.md`.
+
+## When the code is unreachable
+
+Say so, work from what is given, and mark every inferred count as inferred. Rendered page checks need a browser and are done by hand outside Claude.

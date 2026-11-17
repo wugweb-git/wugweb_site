@@ -1,54 +1,64 @@
 # Colour, type, photography and motion
 
-This file says what each of these means in a Wugweb visual. It holds no value: no colour codes, sizes or timings. Those live in `wugweb-kits`, which also enforces them on the site.
+The character of each, as meaning. No colour value, type size or timing is written here; `wugweb-kits` holds every value.
 
 ## Colour roles
 
-Source: `brand_guidelines/02_VISUAL_SYSTEM/04_COLOR_ROLES.md`. The guideline's own note: the role system is approved; exact values were never made canonical in that folder. Real values are in the design system docs.
+### Confirmed (restated from the kits docs)
 
-| Role | What it signals |
-|---|---|
+- Yellow is an accent at 10% or less and is reserved for the one conversion action and the footer banner.
+- Structure stays in brand ink. An accent is spent on one or two things.
+- A pillar colour marks its pillar and does not paint structure.
+- Text is never pure white.
+- The live colour values must not change.
+- Yellow is the resting fill only on the one conversion action per page and on the closing call-to-action banner. Other buttons may use it only on hover or tap, and on a yellow surface the button inverts to dark.
+- In a case study, one accent per client, taken from the client's own palette, for rules and numerals only. The Wugweb frame stays.
+- In a deck, one dominant colour, one or two supporting and one sharp accent. No accent lines under titles and no edge stripes.
+
+### Source, not yet ruled on (`02_VISUAL_SYSTEM/04_COLOR_ROLES.md`)
+
+| Colour | Role in artwork |
+| --- | --- |
 | Black | Authority and framing |
-| White or warm off-white | Clarity (but see the open question on backgrounds) |
-| Magenta | Human and brand energy (open: see below) |
+| White or warm off-white | Clarity |
+| Magenta | Human and brand energy |
 | Yellow | Focus and opportunity |
-| Teal or cyan | Product and digital systems |
+| Teal or cyan | Product or digital systems |
 | Royal blue | Structure and trust |
 
-Use two to four accents per artwork, plus neutrals. Keep people and most photography monochrome so colour belongs to the brand system. Avoid unapproved purple, green, orange, neon, rainbow palettes and gradients.
+Two to four accents per artwork plus neutrals. People and most photography stay monochrome so colour belongs to the brand system. The guideline marks its own colour values as provisional. Avoid unapproved purple, green, orange, neon, rainbow palettes and gradients.
 
-By mode: editorial uses a neutral base with two or three accents; campaign collage uses a black or off-white base with three or four approved accents; product proof uses neutral interface plus one or two structural accents; systems uses a neutral base, one anchor colour and restrained blue or cyan; typographic can let one headline colour field dominate.
+Palette behaviour by mode, from the same file:
 
-## Brand colour rules that are fixed
+| Mode | Palette |
+| --- | --- |
+| Editorial thought leadership | Neutral base plus two or three accents |
+| Campaign collage | Black or light base plus three or four approved accents |
+| Product proof | Neutral product interface plus one or two structural accents |
+| Systems and architecture | Neutral base, one anchor colour, restrained structural blue |
+| Typographic presentation | High contrast; one headline colour field may dominate |
 
-Source: the design system docs (`kits_design_system/docs/`). Rules only.
+### Not decided: owner
 
-- **Yellow is a reservation, not an emphasis level.** It is the resting fill only on the one conversion action per page and on the closing call-to-action banner, under 10% of any page. Other buttons may use it only on hover or tap. On a yellow surface the button inverts to dark.
-- **Structure stays in brand ink.** An accent is spent on one or two things only. Painting structure in a pillar colour breaks the yellow rule and the accent budget.
-- **Text is never pure white.** The live colour values must not change.
-- **One accent per client in a case study,** taken from the client's own palette, for rules and numerals only. The Wugweb frame stays.
-- **One dominant colour, one or two supporting, one sharp accent** in a deck. No accent lines under titles and no edge stripes.
+- **Question 6.** The guideline says avoid purple, green and orange. The site and kits use all three as pillar colours. Which wins for artwork?
+- **Question 15.** The guideline treats magenta as the brand energy colour. Kits treats yellow as the one brand colour. Which is right for artwork?
+- **Question 14.** The guideline calls warm or light backgrounds the default. The site canvas is black. Does the light default apply to artwork only, or is it out of date?
+- **Question 16.** The guideline bans gradient-heavy looks. Service pages use a glow per pillar. Is the glow an allowed exception?
 
-## Open colour questions, waiting on the owner
+In a Visual check, report any of these as "not decided: owner" with the question number. Do not pass or fail on them.
 
-Report both sides and never choose between them.
+## Type as a graphic object (source: `05_TYPOGRAPHY.md`)
 
-- Items 6 and 15: the guidelines avoid purple, green and orange and name magenta as the brand energy colour. The design system uses yellow as the one brand colour and has purple, green and orange as pillar colours.
-- Item 14: the guidelines call light backgrounds the default. The site canvas is black.
-- Item 16: the guidelines ban gradient-heavy looks. The service pages use a glow per pillar.
-
-## Type
-
-Type is a graphic object: bold, clean, high contrast, set at a decisive scale with generous margins. It can lead a poster, a cover or a divider. It never rescues a visual that has no metaphor.
-
-- In-image text is a strong phrase, a poster fragment or a purposeful card. Never paragraphs or tiny labels.
+- Type is an editorial graphic object: bold, clean, high-contrast sans-serif at decisive scale with generous margins.
+- Type can lead posters, covers and presentation dividers. It does not rescue a hero visual that lacks a metaphor.
+- In-art text is a strong phrase, a poster fragment or a purposeful card. No paragraphs, tiny labels or decorative fonts.
+- Never rely on text baked into a generated image that must be read exactly.
 - Two typefaces at most in any card or slide.
 - Never use generated lettering where the text must be read exactly. Set live text instead.
-- Break lines on meaning, put the key phrase largest, and keep the strongest word at a line end.
+- Break lines on meaning, put the key phrase largest and keep the strongest word at a line end.
 - No all-caps blocks and no title case in headings.
 - Type supports the hierarchy and never dominates it.
-
-Type sizes, scales and font files are in `wugweb-kits`.
+- Typefaces, weights and sizes are in `wugweb-kits`.
 
 ## Logo
 
@@ -58,18 +68,34 @@ Type sizes, scales and font files are in `wugweb-kits`.
 - A mark must read at very small size, in one colour, and in black and white.
 - The brand guidelines hold no logo rules (owner item 18). Sizes are in `wugweb-kits`.
 
-## Photography
+## Photography (source: `15_PHOTOGRAPHY_DIRECTION.md`)
 
-Use real people, hands and objects, in monochrome or a tightly controlled treatment. Favour natural action: holding, pointing, searching, building, selecting, navigating, observing. Keep cut-outs clean and high contrast on a minimal background.
+- Authentic people, hands and objects, monochrome or tightly controlled, as clean high-contrast cut-outs.
+- Natural gestures that advance the metaphor: holding, pointing, searching, building, selecting, navigating, observing.
+- Avoid staged smiling teams, handshakes, glossy office stock, colourful clothing that fights the palette, and faces made uncanny by generation tools.
+- A real photo or screenshot comes before generated imagery. Say so first. A new image file is made only when nothing existing fits, one file at a time, on the owner's yes.
+- Existing media follows the media rule: no cropping of the file, resize with the aspect ratio kept, masks allowed.
 
-Avoid staged smiling teams, handshakes, glossy office stock, colourful clothing that fights the palette, and faces made odd by generation tools.
+## Lighting
 
-A real photo or screenshot usually beats a generated image. Say so first. A new image file is made only when nothing existing fits, one file at a time, on the owner's yes (see the standing rules).
+**Not decided: owner.** No approved source covers lighting. Judge it only for consistency within one piece.
 
-## Motion
+## Motion character
 
-Motion is calm, precise and editorial. It is not elastic, flashy or game-like. It must clarify a direction. Never add motion to make a weak idea look technical.
+### Confirmed (restated from the kits docs)
 
-- Imply movement in still work with routes, broad ribbons, a change of framing, sequence and purposeful hand action.
-- On the site: one spring with a slight bounce for navigation and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion. Source: design system docs. Whether the bounce fits "not elastic" is open (owner item 17).
-- No sound anywhere; every video is muted.
+- One spring with a slight bounce for nav and hover.
+- Load and scroll-in are a fade plus a rise.
+- Everything respects reduced motion.
+
+### Source (`16_MOTION_LANGUAGE.md`)
+
+- Imply movement with routes, broad ribbons, changing framing, sequencing and purposeful hand action.
+- Motion is calm, precise and editorial; never flashy or game-like.
+- Animation must clarify a narrative direction. Do not add motion to make a weak concept feel technological.
+
+### Not decided: owner
+
+**Question 17.** The guideline says motion is not elastic; the nav spring has a slight bounce. Is a slight bounce within the brand? Until answered, the kits behaviour stands on the site and artwork motion stays calm.
+
+No sound on any media.

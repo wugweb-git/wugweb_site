@@ -1,26 +1,38 @@
 # Source map
 
-Where each part of this skill comes from, how strong the source is, and what is still open. The helper list is in `tooling.md`.
+Where each rule came from, what conflicts, and what is still open. Tool and vendor names are in `tooling.md` only.
 
 ## Source order
 
-1. An approved owner decision.
-2. A pattern repeated across several sources.
-3. A single observation.
+1. Owner decisions, with date. They win over everything.
+2. Approved patterns: repeated across several sources and promoted.
+3. Observations: seen once or in one source. Never a rule.
 
-A lower source never overrides a higher one. One attractive reference never becomes a rule.
+A newer source wins over an older one unless the older is the owner's ruling. The 2023 Notion profile is stale background and is used for nothing without approval.
+
+## Sources
+
+| Source | Used for | Standing |
+| --- | --- | --- |
+| Owner decisions, 2026-11-16 | Scope, the media rule, pillars, answers to questions 1 to 4 and 11 | Highest |
+| `brand_guidelines/` | Principles, visual modes, metaphors, components, formulas, validation | Evidence archive. Never edited by this skill. Its `README.md` and `DECISIONS.md` are marked archived (2026-08-07) |
+| `kits_design_system/docs/design.md` and kits docs | Yellow, ink, logo, surface, motion and layout feel | Rules restated here; every value stays in `wugweb-kits` |
+| `CLAUDE.md` | Six pillars, website, contact channel | Fixed for pillars |
+| The site | One positioning line in use | In use, not chosen |
+| 2023 Notion profile | Nothing | Stale |
+| Owner's Visual OS and Brand Strategy documents | Not yet supplied | Waiting |
 
 ## Where each file comes from
 
 | File | Main source | Strength |
-|---|---|---|
+| --- | --- | --- |
 | `identity-and-positioning.md` | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md`, `CLAUDE.md`, the site | Thin; the line itself is not approved |
 | `brand-strategy.md` | Method only | No Wugweb source yet |
 | `values-and-principles.md` | `01_FOUNDATION/PHILOSOPHY.md`, `PRINCIPLES.md` | Short lists; values not approved |
 | `audience.md` | Method only | No Wugweb source yet |
 | `messaging.md` | `03_MARKETING_SYSTEM/02_MESSAGING_FRAMEWORK.md`, `01_BRAND_STORY.md`, `02_VISUAL_SYSTEM/09_NARRATIVE_SYSTEMS.md` | Two or three sentences each |
 | `vocabulary.md` | `01_FOUNDATION/VOCABULARY.md`, `CLAUDE.md` | Short list |
-| `brand-facts.md` | `CLAUDE.md`, the site, the 2023 profile | Mostly stale |
+| `brand-facts.md` | `CLAUDE.md`, the site | Thin; see the 2023 profile note above |
 | `review-gates.md` | `02_VISUAL_SYSTEM/20_DESIGN_CHECKLIST.md`, `09_VALIDATION/` | One paragraph each |
 | `visual-os/art-direction.md` | `02_VISUAL_SYSTEM/` files 01, 02, 06, 07, 08, 12, 13, 21; `DECISIONS.md` | Modes and decisions are the fullest sources |
 | `visual-os/colour-type-photo-motion.md` | `02_VISUAL_SYSTEM/` files 04, 05, 15, 16; the kits docs | Colour roles are full; the rest short |
@@ -28,37 +40,78 @@ A lower source never overrides a higher one. One attractive reference never beco
 | `visual-os/objects-and-components.md` | `06_COMPONENT_LIBRARY/`, `02_VISUAL_SYSTEM/` files 11, 14, 19 | Two or three sentences each |
 | `visual-os/formats-and-campaigns.md` | `08_ARTWORK_FORMULAS/`, `03_MARKETING_SYSTEM/` | The format matrix is full; each formula is one or two sentences |
 | `visual-os/references-and-patterns.md` | `05_REFERENCE_LIBRARY/`, `PATTERN_REGISTRY.md`, `OBSERVATIONS.md` | Rules are clear; the library itself is nearly empty |
-| `visual-os/judging-a-visual.md` | `09_VALIDATION/`, plus methods restated from installed skills | Method |
+| `visual-os/judging-a-visual.md` | `09_VALIDATION/`, plus methods restated from helper skills | Method |
 
 The brand rules sourced from the design system docs (yellow as a reservation, structure in brand ink, the two-tone logo, surfaces, motion and layout feel) come from `kits_design_system/docs/components.md`, `tokens/layout-shell.md` and `tokens/sizing.md`. Their values stay in `wugweb-kits`.
 
-Methods restated from other skills are listed with their sources in section 18 of `docs/skills/wugweb-brand-os/PLAN.md`.
-
 ## Known weaknesses in the sources
 
-- `brand_guidelines/README.md` and `DECISIONS.md` are marked "completed and archived (2026-08-07)". Their status as live rules is unclear.
+- `brand_guidelines/README.md` and `DECISIONS.md` are marked archived (2026-08-07), so their status as live rules is unclear.
 - Most files in `brand_guidelines/` hold one to three sentences. Several are headings with no content.
 - No image files are in the repo. The nine reference images described in the guidelines are not available.
 - There is no source at all for campaign systems, lighting, or approved and rejected examples.
 - The owner's Visual OS and Brand Strategy documents have not been supplied.
 - The 2023 company profile is stale and contradicts itself.
 
-## Open conflicts, waiting on the owner
+## Known conflicts
 
-| # | Conflict |
-|---|---|
-| 6 | The guidelines say avoid purple, green and orange. Three pillar colours are exactly those. Which wins for artwork? |
-| 14 | The guidelines call warm or light backgrounds the default. The site canvas is black. |
-| 15 | The guidelines treat magenta as the brand energy colour. The design system treats yellow as the one brand colour. |
-| 16 | The guidelines ban gradient-heavy looks. The service pages use a glow per pillar. |
-| 17 | The guidelines say motion is not elastic. The navigation spring has a slight bounce. |
-| 18 | The guidelines hold no logo rules. |
+| Matter | One source says | Another says | Status |
+| --- | --- | --- | --- |
+| Positioning | "product and experience architecture studio" (site) | "systems-minded design partner" (guidelines) | Owner will supply a new line |
+| Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Not decided: owner (question 6) |
+| Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Not decided: owner (question 15) |
+| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Not decided: owner (question 14) |
+| Gradients | Banned (guidelines) | A glow per pillar on service pages | Not decided: owner (question 16) |
+| Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | Not decided: owner (question 17) |
+| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Wording proposal waits (question 12) |
+| Content pillars | AI, Product, UX, Systems, Engineering | Six pillars | Six pillars win |
+| Spelling | American in the guidelines | British English | British wins |
+| Tiles | Sixteen by nine assumed | Seven ratios in use | Not confirmed |
+| Logo rules | The guidelines hold none | Sizes are in the design system | Not decided: owner (question 18) |
 
-Until each is answered, report both sides and do not pick one.
+Until each "not decided" row is answered, report both sides and do not pick one. One attractive reference never becomes a rule.
 
-## Other open owner items
+## Open questions for the owner
 
-1 positioning line, 2 values, 3 audience, 4 facts, 5 status of `brand_guidelines/`, 7 owner of the image prompt folder, 9 whether "does a lot, into one" is public wording, 10 the two source documents and the nine images, 12 the wording changes for "crop", 13 the hero and guide stance. The full list is in section 15 of the plan.
+| No. | Question | Status |
+| --- | --- | --- |
+| 1 | Positioning line | Answered: neither. Owner will supply |
+| 2 | Values | Answered: owner will supply |
+| 3 | Audience | Answered: owner will supply |
+| 4 | Facts about Wugweb | In progress |
+| 5 | `brand_guidelines/` stays untouched as the archive | Open. Treated as untouched meanwhile |
+| 6 | Purple, green and orange in artwork | Open |
+| 7 | Who owns `04_AI_PROMPT_ENGINE` | Open. Not absorbed here until answered |
+| 8 | Where working preferences live | Open |
+| 9 | "Does a lot, into one" as public wording | Open |
+| 10 | Visual OS and Brand Strategy documents, nine source images | Open |
+| 11 | Where the plan is kept | Confirmed |
+| 12 | Crop definition and four wording changes | Open |
+| 13 | "The client is the hero" | Open |
+| 14 | Light or dark background default for artwork | Open |
+| 15 | Magenta or yellow as brand colour in artwork | Open |
+| 16 | Pillar glow as a gradient exception | Open |
+| 17 | Slight bounce in motion | Open |
+| 18 | Logo rules live here, sizes in kits | Open |
+
+## Rules restated from helper skills
+
+Read on 2026-11-16, restated in our own words so the skill works without them. The owner's rules win over anything a helper says, and no voice rule was taken.
+
+| Lands in | What was taken |
+| --- | --- |
+| `identity-and-positioning.md` | Three plain sentences; four positioning questions; statement shape; three-second test; "we can own this because" |
+| `brand-strategy.md` | Competitor set and capture row; two-axis map; stop, reduce, raise, add grid |
+| `messaging.md` | Message order; core message with supports; objection to proof table; proof strength |
+| `audience.md` | Job to be done; one to three segments; buying group; observation apart from interpretation |
+| `brand-facts.md` | Provenance on every fact; newer wins; proof with usage rights |
+| `values-and-principles.md` | "We are, we are not"; evidence levels in words |
+| `review-gates.md` | Claims check; findings with severity and a fix |
+| `visual-os/` | Direction from the subject's world; one signature element; restraint; dials; fixed-axis comparison; two-second test; description frame; layout types; slide rules; chart title rule |
+
+Methods restated from helper skills are listed with their sources in section 18 of `docs/skills/wugweb-brand-os/PLAN.md`.
+
+Left out on purpose: defining voice, invented numbers, estimated ranges, scraping by default, generating media by default, cropping to fit, uploading to a vendor, pure white text, emoji severity marks.
 
 ## When sources disagree
 

@@ -1,73 +1,82 @@
 # Identity and positioning
 
-## Status
+What Wugweb is and is not, the promise, the six pillars and "does a lot, into one". Labels: **confirmed** (owner said it, with date), **source** (written in a named file, not yet ruled on by the owner), **not decided** (the owner decides).
 
-The positioning line is **not yet approved by the owner** (owner item 1). Until it is, never state one line as "the" positioning. Offer the candidates below as background and say they are unapproved.
+## Positioning line
 
-## What is fixed
+**Not decided: owner.** Answered 2026-11-16: neither line in use is chosen. The owner will supply the line. Until then, leave the line blank and never pick one.
 
-- **Six pillars, in this order:** Strategy, Brand, Experience, Engineering, Growth, Operations. Source: `CLAUDE.md`. The older eight-service list is reference only.
-- **Many things, one team.** The owner's phrase is "does a lot, into one": multi-workstream engagements are the norm. Whether that phrase is public wording is open (owner item 9). Use the idea; do not quote the phrase in public copy until answered.
+Lines found in use, for reference only. Do not use any of them as the line:
 
-## Candidate positioning lines (none approved)
+| Line | Where | Status |
+| --- | --- | --- |
+| "product and experience architecture studio" | The live site | In use, not chosen |
+| "systems-minded design partner" | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md` | Source, not chosen |
+| "Creative UX Design Agency" | 2023 Notion profile | Stale. Never use |
 
-| Candidate | Where it appears |
-|---|---|
-| "A product and experience architecture studio" | The site's About page (marked placeholder in the code) and `CLAUDE.md` |
-| "A systems-minded design partner that turns complexity into clear, scalable, human-centred outcomes" | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md` |
-| "Creative UX design agency" | The 2023 company profile. Stale; do not use. |
+When asked for the positioning line, answer "not decided: the owner supplies it" and list the lines above with their status.
 
-## What the guidelines say Wugweb is and is not
+## What Wugweb is (source: `BRAND_POSITION.md`)
 
-Source: `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md`. That folder is marked archived, so treat this as the strongest existing source, not as an owner decision.
+- A design and product systems practice.
+- A visual and strategic systems partner.
+- A brand that makes invisible structures visible.
+- It sits between business strategy, product execution and emerging AI systems.
 
-Wugweb is:
+## What Wugweb is not (source: `BRAND_POSITION.md`)
 
-- a design and product systems practice
-- a visual and strategic systems partner
-- a brand that makes invisible structures visible
+- A generic marketing agency.
+- A template-led design studio.
+- A decorative illustration brand.
+- A futuristic AI art style.
 
-Wugweb is not:
+## Core promise (source: `BRAND_POSITION.md`)
 
-- a generic marketing agency
-- a template-led design studio
-- a decorative illustration brand
-- a futuristic AI art style
+Make complexity understandable, actionable and scalable. The short form in the same file is "Designing systems that reduce complexity." Neither is confirmed as public wording.
 
-Promise, as written there: make complexity understandable, actionable and scalable.
+## Six pillars (confirmed, fixed)
 
-## How to write the positioning once the owner chooses
+Strategy, Brand, Experience, Engineering, Growth, Operations. Source: `CLAUDE.md`. The older eight-service list in Notion is reference only. The content pillars in `brand_guidelines/03_MARKETING_SYSTEM/13_CONTENT_PILLARS.md` (AI, Product, UX, Systems, Engineering) do not match and are not used as pillars. Pillar colour values live in `wugweb-kits`.
 
-Use these methods to draft options for the owner. They produce proposals, never the answer.
+## "Does a lot, into one" (confirmed as an idea)
 
-**Three plain sentences.** What Wugweb is. The one thing the alternatives do not do. Why a reader should believe it. "Cheaper", "better" and "faster" are not positions.
+Multi-workstream engagements are the norm: one engagement often spans several pillars. **Not decided: owner** (question 9): whether "does a lot, into one" is public wording or only the idea behind it. Until answered, do not use the phrase in visible copy.
 
-**Four questions a reader must be able to answer.**
+## Differentiation
 
-1. Who exactly is this for?
-2. What does it replace? Name the reader's current alternative, including doing nothing.
-3. Which category does the reader put Wugweb in?
-4. Which proven differences matter to that reader?
+**Not decided: owner.** No approved source states how Wugweb differs from an agency or a studio. Until the owner supplies it, report the gap. The "what Wugweb is not" list above is the only written contrast.
+
+## Method for when the owner supplies the line
+
+Use these tests (restated from helper skills read on 2026-11-16; see `source-map.md`) to check a proposed line. They test a line; they never write one.
+
+1. **Three plain sentences.** What Wugweb is, who it is for, what is distinct. If any sentence cannot be written, the line is not ready.
+2. **Four questions.** Who exactly is it for? What does it replace? Which category does a buyer put it in? Which proven differences matter to that buyer?
+3. **Statement shape.** Audience, their current alternative, the difference, the proof.
+4. **Three-second test.** A stranger reading the line on the home page can say what Wugweb does.
+5. **"We can own this because".** Each claimed difference finishes that sentence with a named fact from `brand-facts.md`.
+6. **Settle positioning before wording.** Agree the meaning first; the wording is checked by `wugweb-voice`.
+
+Signs the positioning is broken: three lines in use at once (today's state), a line that a competitor could use unchanged, a difference with no proof.
+
+## More tests and signs
 
 **One sentence shape.** For [audience] who [current alternative and its cost], Wugweb [what it does], unlike [alternative], because [reason to believe]. Fill it only from approved facts.
 
+**Three plain sentences, detail.** What Wugweb is; the one thing the alternatives do not do; why a reader should believe it. "Cheaper", "better" and "faster" are not positions.
+
 **Point of view.** List one to three stances Wugweb will defend, and the stances it will not take. Draw them out by asking what most studios in the field get wrong.
 
-**The ownable test.** Finish "Wugweb can own this because" with something specific and true. If the sentence cannot be finished, the claim is not ownable.
+**Three-second test, detail.** Read the line once and answer: who is it for, what does Wugweb do, why should I care? If any answer is missing, it fails. A line written for everyone is written for no one.
 
-## Signs the positioning is broken
+Further signs the positioning is broken:
 
 - The audience is "businesses" or "teams" with no qualifier.
-- The line could sit unchanged on a competitor's page.
 - It lists features before saying what problem they solve.
 - It names more than one or two differences.
 - It positions against a competitor instead of a client need.
 - It changes often.
 
-## Three-second clarity test
+**Status of the written contrast.** The `brand_guidelines` folder is marked archived, so the "is" and "is not" lists are the strongest existing source, not an owner decision. The candidate line from `BRAND_POSITION.md` reads "a systems-minded design partner that turns complexity into clear, scalable, human-centred outcomes". The site's About page marks "product and experience architecture studio" as placeholder in the code.
 
-Read the line once and answer: who is it for, what does Wugweb do, why should I care? If any answer is missing, it fails. A line written for everyone is written for no one.
-
-## Order of work
-
-Settle positioning before wording. A piece with unclear positioning is not fixed by better sentences. Wording belongs to `wugweb-voice`; this file only settles what is being said and for whom.
+Wording belongs to `wugweb-voice`; this file settles what is said and for whom.

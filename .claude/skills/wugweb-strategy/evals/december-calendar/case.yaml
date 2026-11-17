@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: december-calendar
+expected_outcome: |
+  A calendar of 6 rows across the named accounts using the six service pillars, each with one pillar, intent, account, proposed date with timezone and status; topics come only from real sources or are marked as slots or owner ideas, not invented as decided; Medium copies point canonical to the site post; nothing is written to Notion Blogs or Notion without the owner's yes per row.

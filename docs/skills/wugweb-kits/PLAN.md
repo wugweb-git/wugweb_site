@@ -296,7 +296,7 @@ None of these were changed. Each comes to the owner as current to proposed once 
 
 ### 13. Rename: ui-system-mapper becomes wugweb-kits
 
-The existing skill is the starting point. It gets the new name and is then enhanced. Rename done 2026-11-16 on the owner's go: the renamed copy is at `.claude/skills/wugweb-kits/`, uncommitted. The installed skill is untouched. Enhancements are not made.
+The existing skill is the starting point. It gets the new name and is then enhanced. Rename done 2026-11-16 on the owner's go: the renamed copy is at `.claude/skills/wugweb-kits/`, on `main`. The installed skill is untouched. Enhancement built 2026-11-17 on the owner's go (commits 18fa8b9f and dca682ce): SKILL.md reconciled, 26 shell, label and kits rule files, references, scripts, and the six defects in section 20 fixed. Version stays 1.0.0 until the owner decides.
 
 **Baseline that carries over.**
 
@@ -825,3 +825,16 @@ One h1 on every route, 0 duplicate ids, 99 of 99 sections named. On a 1792 wide 
 6. `components.md` says button focus uses `--focus-primary`. The code has `outline: 2px solid var(--neutral-3)` on `.btn:focus-visible`. Doc and code disagree; not fixed.
 
 **Still open from the clash list:** the `faqs` field for FAQPage in `layout-shell.md`, the unmapped Framer ratios, and the five block sign-offs.
+
+### 28. wugweb-seo position on the proposed CMS fields, pending owner confirmation
+
+Relayed by the coordinating session on 2026-11-17. `wugweb-seo` says the owner delegated this list to it on 2026-11-17. Neither the coordinating session nor this session has seen that ruling, so this is seo's position, not an owner ruling, and the owner can override it. `layout-shell.md` is not edited until the owner confirms in this session or the coordinating one.
+
+| Field (case studies) | seo position |
+|---|---|
+| `faqs` | Keep. It feeds FAQPage only where the rendered page visibly shows every question and answer. |
+| `seoCanonicalUrl` | Drop. Canonicals come from Notion, one slug. |
+| `schemaType` | Drop. Fixed as CreativeWork for case studies and BlogPosting for posts. |
+| `aiSummary` and `keyTakeaways` | Drop on case studies, because Notion Body Content is the single source. No objection on posts or pages. |
+
+This replaces the earlier clash note that `faqs` breaks the no-FAQPage rule: under seo's position the field stays, with the visible-content condition.

@@ -29,7 +29,7 @@
 |---|---|
 | Skill | `wugweb-work`, one of six in the Wugweb Skill System |
 | The question it answers | How is each piece made? |
-| Status | Skill built in the owner's development chat: version 0.4.0, installed in the owner's Claude skills (as reported by that chat on 2026-11-16; not seen by the planning session). Its 14 evals are written but not run. Not yet in the repo. The site build (Part 2) is not started. |
+| Status | Skill built in the owner's development chat and installed. Master copy in the repo since 2026-11-17 at `.claude/skills/wugweb-work/`, version 0.4.2 (SKILL body 1,831 words by the shared count; validate 30 checks, 0 errors; test passes). The standing rules are now one copied block in the skill (`references/standing-rules.md`). Figures with no recorded source were marked unvalidated (sentence length and page position, the FAQ and HowTo end dates, the 44 case studies count). The 14 evals are written but not run, and the evals folder is not in the repo copy. The app copy is behind 0.4.2 and the owner re-saves it. The site build (Part 2) is not started. |
 | Planned in session | wugweb-work |
 | Will live at | `.claude/skills/wugweb-work/` |
 | Registry | Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298) |
@@ -56,8 +56,8 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 |---|---|---|
 | `wugweb-strategy` | A finished piece; what proof exists | A brief: what to say, to whom, when, which case studies back it, and which pages it links to (strategy picks the targets; `wugweb-seo` owns the link rules) |
 | `wugweb-voice` | The draft, with its form, mode, and the audience and purpose from the brief | A voice check: breaks and fixes |
-| `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules |
-| `wugweb-kits` | Content shape and chosen media; any visible wording kits asks for (labels, alt text) | Blocks, layout, tokens |
+| `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules; approved facts about Wugweb |
+| `wugweb-kits` | Content shape and chosen media; visible wording it asks for (labels, alt text) | Blocks, layout, tokens; gate and token results |
 | `wugweb-seo` | The approved body and page URL; any visible wording seo asks for (title options) | Title and schema rules to apply; keyword notes; a fix list for a finding on one page |
 
 - `wugweb-work` is the hub for wording and voice checks. `wugweb-voice` has no direct link with strategy, seo or kits.
@@ -75,10 +75,15 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 - [x] Media rule: the three readings are confirmed (2026-11-16; see Owner decisions).
 - [x] Token-check findings: reported only at first; blocking comes later, on a short list (2026-11-16).
 - [x] Client-work brief: settled 2026-11-16. Brief mode is for client work only; it is written inside this skill.
-- [ ] The sizes wanted for og image, story, and Behance and Dribbble covers. The installed skills disagree (og 1200 by 630 in one, 1200 by 628 in another; story safe zones differ) and none gives Behance or Dribbble cover sizes.
+- [ ] The sizes wanted for story, Behance cover and Dribbble shot. The og image is settled at 1200 x 630 (see Owner decisions). The installed skills disagree on story safe zones and none gives Behance or Dribbble cover sizes.
 - [x] Hero copy limit: settled at 90 characters (2026-11-16). The earlier question: this plan sets the subtitle at 90 characters or fewer; `wugweb-kits` proposes a headline of 2 lines or fewer and subtext of 20 words or fewer. Pick one.
 - [ ] May LinkedIn posts carry a few specific tags, or none? The plan says none; `wugweb-seo` proposes a few.
 - [ ] Confirm the proposed sizes for Behance cover, Dribbble shot and story canvas (og is settled at 1200 x 630).
+- [ ] Replies and outreach: are replies, comment routines and outreach pitches part of the Forms module? Until decided they are out, because they are conversation and not production from an approved body.
+- [ ] Shared with `wugweb-kits`, held proposals for the layout side: the 85vw rail width, the 20% peek, the 2400 px signature width and the 35 to 60 character line.
+- [ ] Shared with `wugweb-kits`, loop pause and hidden loops: loops are `aria-hidden` by rule, but a pause control must be reachable. `wugweb-kits` decides which gives way.
+- [ ] Shared with `wugweb-kits`, the `faqs` field clash between the CMS and the page, and the existing blocks awaiting sign-off.
+- [ ] Shared with `wugweb-kits`, card thumbnails (16:10 frame, 4:3 videos) and the old media ratios not yet mapped to sections.
 
 **Reading the rest of this page.** Everything below is the full plan as written while `wugweb-work` was the only skill. The decisions above win where an older line disagrees. Parts that now belong to a sibling skill (writing style to voice; layout grammar and adaptive UX to kits; schema to seo; art-direction rules to brand-os; forms planning to strategy) stay here until that skill's plan is approved, then move.
 
@@ -381,8 +386,8 @@ For the owner's review; this is the starting point for the track 2 body standard
 |---|---|
 | Name | `wugweb-work` |
 | Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `scripts/`, `examples/`, `evals/` |
-| Version | 0.4.0 (built 2026-11-16 in the development chat; the plan's first number was 0.1.0) |
-| Status | Skill built and installed in the owner's Claude skills. Evals not run. Not in the repo. Site build not started. |
+| Version | 0.4.2 (repo master copy 2026-11-17; built as 0.4.0 on 2026-11-16, installed 0.4.1; the plan's first number was 0.1.0) |
+| Status | Skill built, installed (app copy 0.4.1) and in the repo (master 0.4.2). Evals not run and not in the repo copy. Site build not started. |
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-work/` in the repo `wugweb-git/wugweb_site` |
 | Content source | Notion Case Studies → Body Content (one document per case study) |
@@ -481,15 +486,16 @@ Where an older line further down disagrees with this table, the table wins.
 
 ## Standing rules (apply to every step)
 
-1. Source: Notion Body Content + the client's R2 folder, owner-authored. Proposals go to `docs/drafts/<slug>-body-v2.md` as current → proposed with reasons. Notion is written only after explicit approval of that change set. Sanity is written only by the sync (`node scripts/sync-notion-case-studies.mjs` dry run → owner's go → `WRITE=1`, backup first).
-2. Media lives only in R2. No uploads, local copies, cropped files, new poster files or re-encodes. Media may be shown at any size if the original aspect ratio is kept, and clipping masks are allowed (owner, 2026-11-16). Weight, missing posters and `moov`-at-end are **reported as facts**; the page defends itself (dimensions, lazy, `preload="none"`, `content-visibility`). If a file does not fit, say so and let the owner decide. One exception (owner, 2026-11-11): the gated media-making helpers in A may make a file for a Form, one file at a time, on the owner's yes for that file.
-3. Nothing is deleted without asking: no data, files, R2 keys, Sanity docs, Notion rows, code paths that hold content. Dead links stay in Notion and are listed; the page skips rendering a URL whose manifest status is not 200.
-4. No em or en dash in anything visible; ranges as inequalities in docs. The template emits no dash; the audit flags dashes in body copy for the owner.
+The owner's standing rules live in `docs/skills/STANDING-RULES.md`. Each skill reads that file and repeats none of it. Only the rules below belong to wugweb-work.
+
+1. Source: Notion Body Content + the client's R2 folder, owner-authored. Proposals go to `docs/drafts/<slug>-body-v2.md` as current → proposed with reasons. Sanity is written only by the sync (`node scripts/sync-notion-case-studies.mjs` dry run → owner's go → `WRITE=1`, backup first).
+2. Weight, missing posters and `moov`-at-end are **reported as facts**; the page defends itself (dimensions, lazy, `preload="none"`, `content-visibility`). If a file does not fit, say so and let the owner decide.
+3. Dead links stay in Notion and are listed; the page skips rendering a URL whose manifest status is not 200.
+4. Ranges as inequalities in docs. The template emits no dash; the audit flags dashes in body copy for the owner.
 5. Tokens only (zero hardcoded colour, spacing, radius, opacity, shadow, blur, z-index, easing); yellow ≤ 10% and `FooterCTA` stays yellow; GSAP via `data-reveal`/`data-scroll`; buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`; breakpoints literal; mobile is the PWA (`svh`/`dvh`, full-bleed welcome). No strokes that read as hairlines in the rendered result.
-6. One slug per case study, zero Framer, no redirects, JSON-LD only on the canonical host, never FAQPage/HowTo/Review stars.
-7. Git: commit by path (never `git add -A`), trailer `Co-Authored-By: Wugweb <admin@wugweb.com>` only, every commit updates `CHANGELOG.md` under `## [Unreleased]`, `.md` files are committed, push to `main` auto-deploys Pages, Studio deploy and sync writes are the owner's go. Check `.git/index.lock` first; other sessions share the checkout.
-8. Plain short replies; do what is asked; no side quests. Do not raise DNS cutover, asset clean-up or cookie policy.
-9. Full output: complete files, no placeholders, no "rest unchanged"; count deliverables before finishing.
+6. JSON-LD only on the canonical host, never FAQPage/HowTo/Review stars.
+7. Git: `.md` files are committed, push to `main` auto-deploys Pages, Studio deploy and sync writes are the owner's go.
+8. Count deliverables before finishing.
 
 # 4. Standard structure of the skill
 
