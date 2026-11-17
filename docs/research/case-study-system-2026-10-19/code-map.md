@@ -182,7 +182,7 @@ I finished the read-only exploration and wrote nothing to disk. Everything below
   - `Client logo` is dropped. The first non-video `Cover…` becomes `cover`.
   - "Borrowed stock" filter (148–157): images outside the case study's main `/assets/work/<folder>/` are dropped. Videos are always kept.
 - **`inline()` (186–190):** escapes HTML, then renders `**bold**` and `[text](https://…)` (as `rel="noopener" target="_blank"`).
-- **Not supported:** FAQ question and answer pairs (the draft format in `docs/drafts/ntuc-u-care-case-study.md` would land as lead and paragraphs). Also no blockquotes, no images inside sections, and no other media labels (anything like a "Brand asset" label goes to `closing`).
+- **Not supported:** FAQ question and answer pairs (the draft format in the old NTUC draft, removed 2026-11-17, would land as lead and paragraphs). Also no blockquotes, no images inside sections, and no other media labels (anything like a "Brand asset" label goes to `closing`).
 
 ### 2.2 Live parse results (in-memory run over all 37 bodies)
 - **Rich bodies:**
@@ -522,7 +522,7 @@ I finished the read-only exploration and wrote nothing to disk. Everything below
   - Lines 1552–1554: the `wip/case-study-body` branch is now superseded.
 
 ### 8.2 Docs
-- **`docs/drafts/ntuc-u-care-case-study.md`:** a proposed body pattern.
+- **The old NTUC draft** (removed 2026-11-17; see the wugweb-work skill's `examples/body-ntuc-u-care.md`): a proposed body pattern.
   - Meta lines, then `### About / The challenge / What we built / How we approached it / The outcome / FAQ`.
   - `*For members*` group labels and bullets with no fixed counts.
   - Brief table: focus keyword, intent, reader, goal, about 750 words.
