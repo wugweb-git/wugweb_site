@@ -1,7 +1,7 @@
 # wugweb-seo
 
 Plans, audits and reports on how Wugweb pages are found in search engines and
-AI answers. Version 2.4.1.
+AI answers. Version 2.5.0.
 
 It returns constraints, checks and reports. It never writes copy and changes
 no file, page or record itself.
@@ -24,6 +24,7 @@ no file, page or record itself.
 | `references/report.md` | Data sources, the monthly report shape and drop diagnosis | yes |
 | `references/handoffs.md` | Questions answered for and sent to other skills, helper skills, declined findings | yes |
 | `scripts/check-page.mjs` | 18 checks on rendered HTML | yes |
+| `scripts/score-page.mjs` | On-page keyphrase score, Rank Math model | yes |
 | `scripts/check-robots.mjs` | Bot access for one path in robots.txt | yes |
 | `scripts/validate.mjs` | Checks this skill against its own format | yes |
 | `scripts/test.mjs` | Self-test on the fixtures | yes |
@@ -77,6 +78,7 @@ Node 18 or later. No packages. No network.
 ```bash
 node scripts/check-page.mjs examples/page-pass.html --kind work --host wugweb.com
 node scripts/check-page.mjs examples/page-fail.html --kind work --host wugweb.com
+node scripts/score-page.mjs examples/score-good.html --keyword "care booking" --host wugweb.com
 node scripts/check-robots.mjs examples/robots.txt --path /work/care-booking
 node scripts/validate.mjs
 node scripts/test.mjs

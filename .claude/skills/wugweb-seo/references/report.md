@@ -53,7 +53,9 @@ Facts about the data, from Google's and Bing's own pages as read on 2026-11-16:
 
 1. Fix a list of prompts a buyer would ask, in the owner's words. Keep it the
    same each month.
-2. Run each prompt in the AI tools that matter to the owner.
+2. Run each prompt several times in the AI tools that matter to the owner. The
+   same prompt gives different answers each run, so one run is not evidence.
+   Report how often Wugweb appears across the runs, not a single result.
 3. Log each result as cited (a Wugweb page is linked), mentioned (Wugweb is
    named) or absent.
 4. Read the trend over several months. A single month moves a lot.

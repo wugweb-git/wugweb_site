@@ -2,7 +2,7 @@
 
 # wugweb-seo
 
-**Version 2.4.1** · Wugweb · November 2026
+**Version 2.5.0** · Wugweb · November 2026
 
 Plan, audit and report on how Wugweb pages are found in search engines and AI answers. Plan gives the site keyword and intent map, the phrase, intent, outline and brief limits for one page, and keyword notes for social and portfolio titles. Audit checks the rendered page and robots.txt and returns a fix list split three ways. Report reads Search Console and AI answer data and feeds the content plan. It never writes copy and changes nothing itself. Every helper is optional; the rules taken from them are restated in the references. Two check scripts with no dependencies. Independent of CMS, host and agent.
 
@@ -35,7 +35,7 @@ Each concern has one home. Follow a sibling's rule there; do not restate it here
 | What to publish, to whom and when; reporting on posts | `wugweb-strategy` |
 | Brand name, descriptor and approved facts about Wugweb, for titles and organisation markup | read from `wugweb-brand-os`, never rewritten |
 | Tokens, layout, components and the accessibility audit | `wugweb-kits` |
-| The owner's standing rules | `docs/skills/STANDING-RULES.md`, the shared rules file every Wugweb skill reads |
+| The owner's standing rules | the shared rules file every Wugweb skill reads, `docs/skills/STANDING-RULES.md` |
 
 If a sibling is not installed, give this skill's answer, say which sibling
 check was skipped, and stop at the boundary. The exact questions sent and
@@ -106,11 +106,10 @@ For one page, answer one question: which phrase and intent should it target?
 
 Return limits and an outline, never wording: the title limit, the description
 limit, the entities the page must name, the schema, the link rules, and an
-outline. `wugweb-strategy` sets the pillar and cluster structure. The proof
-map wins on which case study backs a page. `wugweb-seo` picks the other link
-targets for a brief around it, owns the link rules (one link up to the service
-pillar and two or three across to sibling pages, descriptive anchors, no
-orphans or dead ends, depth from home) and audits the result.
+outline. `wugweb-strategy` decides which pages a piece links to. This skill
+owns the link rules: one link up to the service pillar and two or three across
+to sibling pages, descriptive anchors, no orphans or dead ends, and depth from
+home. It audits the result.
 The outline lists the topics the page must cover, in order, with the fact from
 the source each one rests on. It names topics, not headings; the maker writes
 the headings. Do not add an FAQ
@@ -157,11 +156,18 @@ Work through the manual list in `references/audit.md`:
   milliseconds or less, CLS 0.1 or less;
 - that the schema matches what the page shows.
 
-### 4. Score how quotable the page is
+### 4. Score the page: citability and keyphrase
 
-Score each section from 0 to 100 on the five criteria in `references/audit.md`
-and weight by length. Report the page score and name the three weakest
-sections with what each lacks. Do not rewrite them.
+Two scores, both in `references/audit.md`. The citability score (0 to 100) is
+the AI-answer score: score each section on the five criteria, weight by length,
+report the page score and the three weakest sections. The keyphrase score (0 to
+100) is the search score, modelled on Rank Math:
+
+```bash
+node scripts/score-page.mjs page.html --keyword "<phrase>" --host wugweb.com
+```
+
+Both scores report; neither rewrites. Name what is weak; the maker acts.
 
 ### 5. Return the fix list
 
@@ -256,12 +262,21 @@ asked about one title.
 - Schema for service pages, home and about.
 - Title and description limits for client sites, Kits and Wugweb X.
 
-## Run the scripts and use outside Claude
+## Run the scripts
 
-Scripts need Node 18 or later and no packages. Every command, the fixtures and
-the install steps for each agent are in `README.md`. `AGENTS.md` is the whole
-skill in one file for agents that read plain instructions; `scripts/build.mjs`
-generates it and `adapters/`, so edit the sources, never the output.
+Five scripts, all Node 18 or later, no packages: `check-page.mjs`,
+`score-page.mjs`, `check-robots.mjs`, `validate.mjs`, `test.mjs` and the
+generator `build.mjs`. The exact commands, flags and fixtures are in
+`README.md`.
+
+## Use outside Claude
+
+The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads
+it as it is. `AGENTS.md` is the whole skill compiled into one file for agents
+that read plain instructions. `adapters/` holds a Cursor rule and an
+instruction block for a custom GPT. `scripts/build.mjs` generates all of
+these; edit the sources, never the output. Install steps for each agent are in
+`README.md`.
 
 ---
 
@@ -284,7 +299,7 @@ which handoff was skipped, and label the result a manual check.
 
 | With | Gives | Takes |
 |---|---|---|
-| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports | Business goal, audience, page list, the pillar and cluster structure, the proof map |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports | Business goal, audience, page list, pillar and cluster structure, the proof map |
 | `wugweb-work` | Keyword notes and budgets for one brief; platform keyword note; fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
 | `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
 | `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
@@ -307,10 +322,8 @@ Asked by `wugweb-work`, for a case study, blog post, service page or site page.
 Receive the page, its type, what was built, the audience and the candidate
 phrases. Return the shape in `references/plan.md`. The maker uses these as
 constraints. It keeps its headings and adds no FAQ block for search, no keyword
-counts and no sections written for search. `wugweb-strategy` sets the
-pillar and cluster structure. The proof map wins on which case study backs a
-page. `wugweb-seo` picks the other link targets for a brief around it and gives
-the link rules.
+counts and no sections written for search. The link targets come from
+`wugweb-strategy`; this skill gives the link rules.
 
 #### 3. Platform keyword note
 
@@ -347,6 +360,11 @@ Send to `wugweb-kits`: the block, the pages it appears on and the finding.
 Expect back: its check result.
 
 #### Visible wording
+
+`wugweb-strategy` sets the pillar and cluster structure, and the proof map
+wins on which case study backs a page. This skill picks the other link targets
+for a brief around that, owns the link rules (anchor wording, no orphans or
+dead ends, depth, how many) and checks the links in the audit.
 
 Send to `wugweb-work`: the limit, for example a title of 51 characters or
 fewer naming the primary phrase.
@@ -508,10 +526,13 @@ canonical host, or the live address. The source document is not enough.
 ### Contents
 
 - Scripted checks
+- On-page keyphrase score
+- Internal-link checks
 - Absorbed rules
 - Manual checks
 - Crawler access
 - Citability score
+- Rank Math PRO net-new checks
 - Fix list
 
 ### Scripted checks
@@ -582,6 +603,10 @@ read on 2026-11-16:
 
 The script also flags a robots.txt with no Sitemap line, under `sitemap-listed` at HIGH.
 
+Report, but do not require, a Content-Signal line in robots.txt (the newer
+syntax some CDNs emit to signal AI usage). It is emerging and no search engine
+ranks on it. Note what the file says and leave the choice to the owner.
+
 Bot names change. Check the operator's own documentation before reporting a
 bot missing.
 
@@ -593,7 +618,7 @@ length.
 | Criterion | Weight | High score |
 |---|---|---|
 | Answer first | 30% | The first one or two sentences answer the heading |
-| Self-contained | 25% | The section names its subject and reads on its own, 50 to 200 words |
+| Self-contained | 25% | The section names its subject and reads on its own, 50 to 200 words. A GEO study puts the sweet spot at 134 to 167 words (Princeton, Georgia Tech and IIT Delhi, 2024, arXiv 2311.09735; third-party figure) |
 | Structure | 20% | Clear heading order, short paragraphs, a table for any comparison of three or more |
 | Specific facts | 15% | Numbers and names with their source and date |
 | Original | 10% | First-party work, data or process no other page holds |
@@ -601,6 +626,89 @@ length.
 Report the page score, the three weakest sections with what each lacks, and any
 site-level blocker that caps the score, such as a blocked crawler or content
 that needs scripts to appear. Name what a section lacks; never write the fix.
+
+### On-page keyphrase score
+
+The search score, beside the citability score (the AI-answer score). Modelled on
+Rank Math's client-side engine (seo-by-rank-math 1.0.280, analyzer.js). Weights
+and grade bands are extracted from it, not invented. Run it with a focus
+keyphrase:
+
+```bash
+node scripts/score-page.mjs <page.html> --keyword "<phrase>" [--host <host>] [--lang en] [--json]
+```
+
+One focus keyphrase per page. Each test earns fixed points; the script sums
+them, normalises to the applicable maximum and returns 0 to 100. Grade bands,
+the engine's own: bad 50 or less, ok 51 to 80, great over 80.
+
+Owner decision, 2026-11-17: build the score faithful to Rank Math, no softening.
+For the score only, this overrides the skill's "never propose a density target"
+and "headings are claims" lines: keyword density, keyword in a subheading and
+the title readability tests are scored as below. The skill still writes no copy:
+it scores, `wugweb-work` acts.
+
+Focus keyphrase:
+
+| Test | Points | Passes when |
+|---|---|---|
+| keyword in title | 36 (38 non-English) | the title holds the phrase |
+| keyword in permalink | 5 | the slug holds the phrase |
+| keyword in the first 10% | 3 | the phrase is in the opening tenth of the body |
+| keyword in content | 3 | the phrase is in the body |
+| keyword in a subheading | 3 | the phrase is in an H2 to H6 |
+| keyword in an image alt | 2 | the phrase is in one image's alt |
+| keyword in the description | 2 | the phrase is in the meta description |
+| title starts with keyword | 3 | the title begins with the phrase |
+| keyword density | 0 / 2 / 3 / 6 | below 0.5% fail, 0.5 to 0.75% fair, 0.76 to 1% good, 1% or more best |
+| keyword not used before | warning, 0 points | needs a site-wide phrase map; not scored yet |
+
+Content, links, URL, title readability:
+
+| Test | Points |
+|---|---|
+| content length | 2500 words or more 8, 2000 or more 5, 1500 or more 4, 1000 or more 3, 600 or more 2, else 0 |
+| has image or video | images (1 is 1, 2 is 2, 3 is 4, 4 or more is 6) plus videos (1 is 1, 2 or more is 2), capped at 6 |
+| short paragraphs | 3, when no paragraph runs over 120 words |
+| table of contents | 2 |
+| internal link present | 5 |
+| external link present | 4 |
+| not all links external | 2 |
+| permalink length, URL 75 characters or fewer | 4 |
+| title sentiment / power word / number | 1 / 1 / 1 |
+
+Power words ship with the script as a short public list; sentiment (English
+only) scores a point for any word in a small positive or negative set, null for
+other languages, as Rank Math does. "Keyword not used before" stays a warning
+until a site-wide phrase map exists.
+
+### Internal-link checks
+
+Beyond the orphan, click-depth, dead-end, generic-anchor and broken-link rules
+in the absorbed set, run these on the internal links. Findings go to
+`wugweb-work` (anchor wording, placement) or a developer (`rel`, redirects).
+`wugweb-strategy` owns the cluster map; this skill checks the links against it.
+
+| Check | What |
+|---|---|
+| anchor-text type mix | classify each internal anchor as exact, partial, branded, generic, naked or image alt; warn when exact match goes over a set share, default 20% |
+| silo or cluster coherence | a cluster's supporting pages link to the hub and to each other; a link to another cluster goes to that cluster's hub, not its supporting pages |
+| redirected internal links | an internal link that lands on a 301 points at the final address instead |
+| internal nofollow | flag `rel=nofollow` on an internal link |
+| too many links | flag a page over a set link count, default off, a house number |
+| cloaked or external prefix | a path prefix the owner sets, such as `/go/`, counts as external for the mix and the audit |
+
+### Rank Math PRO net-new checks
+
+From the Rank Math PRO list, mapped to the Astro stack. Each is a check, not a
+write.
+
+| Check | What |
+|---|---|
+| VideoObject present | a page that embeds a video carries `VideoObject` with name, thumbnail, upload date and duration. Conditional: the site has little video today |
+| indexed status | read Search Console URL Inspection and report indexed, excluded, or crawled and not indexed. Needs the Search Console connection |
+| utility pages noindex | a thank-you, preview or download page carries `noindex` and stays out of the sitemap |
+| any-URL audit | the page check reads any HTML, so it runs on a competitor's address for a side-by-side; the plan part's competitor gap uses it |
 
 ### Absorbed rules
 
@@ -710,7 +818,9 @@ Facts about the data, from Google's and Bing's own pages as read on 2026-11-16:
 
 1. Fix a list of prompts a buyer would ask, in the owner's words. Keep it the
    same each month.
-2. Run each prompt in the AI tools that matter to the owner.
+2. Run each prompt several times in the AI tools that matter to the owner. The
+   same prompt gives different answers each run, so one run is not evidence.
+   Report how often Wugweb appears across the runs, not a single result.
 3. Log each result as cited (a Wugweb page is linked), mentioned (Wugweb is
    named) or absent.
 4. Read the trend over several months. A single month moves a lot.
