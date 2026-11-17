@@ -6,7 +6,7 @@ Recorded, not resolved unless marked. Source: plan sections 25 and 27, checked 2
 |---|---|---|
 | Proposed `faqs` field for FAQPage JSON-LD against the no-FAQPage rule | `layout-shell.md`, CMS fields | Resolved 2026-11-17: the field stays (owner); strategy and seo agreed a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions. Case-study `seoCanonicalUrl`, `schemaType`, `aiSummary`, `keyTakeaways` dropped. |
 | The CMS fields section is a proposal, not deployed, inside the authoritative doc | `layout-shell.md` | Open |
-| Framer media aspect ratios are not mapped to sections | `layout-shell.md`, "Open" | Open |
+| Framer media aspect ratios are not mapped to sections | `layout-shell.md`, "Open" | Closed 2026-11-17 (owner): not mapped, the site's own ratios stand |
 | Button focus: doc says `--focus-primary`, code uses `outline: 2px solid var(--neutral-3)` on `.btn:focus-visible` | `components.md` and `global.css` | Open, report only |
 | "The only max-width in the shell" wording may mislead | `layout-shell.md` | Fixed 2026-11-17 |
 | Five blocks awaiting sign-off | `components.md` | Signed off by the owner 2026-11-17; `components.md` still marks them awaiting, to be updated |

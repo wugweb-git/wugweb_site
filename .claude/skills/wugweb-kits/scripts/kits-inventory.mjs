@@ -15,6 +15,11 @@ import { join, extname } from 'node:path'
 const root = process.argv[2]
 const withFindings = process.argv.includes('--findings')
 const blocking = process.argv.includes('--block') // default is report only (warn); CI flips to blocking once case-study components are clean
+// Token showcase files hold raw values on purpose (owner, 2026-11-17): counted, never findings.
+const SHOWCASE = ['src/pages/kits.astro', 'src/components/TokenGallery.astro', 'src/lib/design-tokens.ts']
+const isShowcase = (f) => SHOWCASE.some((x) => f.endsWith(x))
+// --block-paths=a,b blocks only on findings in those files (phase 3: case-study files once at 0).
+const blockPaths = (process.argv.find((x) => x.startsWith('--block-paths='))?.slice(14) || '').split(',').filter(Boolean)
 const tokenArg = process.argv.find((a) => a.startsWith('--tokens='))?.slice(9) || 'src/styles/global.css'
 if (!root) {
   console.error('usage: node scripts/kits-inventory.mjs <dir> [--findings]')
@@ -116,7 +121,7 @@ async function scan(file) {
         if (d.norm) value = d.norm(value)
         if (EXEMPT.test(value) || value.includes('var(')) continue
         counts[di].set(value, (counts[di].get(value) ?? 0) + 1)
-        if (withFindings) findings[di].push(`${file}:${i + 1}  ${line.trim().slice(0, 70)}  ->  same value as: ${tokenFor(value)}`)
+        if (withFindings && !isShowcase(file)) findings[di].push(`${file}:${i + 1}  ${line.trim().slice(0, 70)}  ->  same value as: ${tokenFor(value)}`)
       }
     })
   })
@@ -158,8 +163,10 @@ if (undeclared.length) {
 if (withFindings) {
   console.log('\nRaw values, file:line')
   const all = findings.flat().sort()
-  for (const f of all) console.log(`  ${blocking ? 'BLOCKER' : 'WARN   '}  ${f}   kits-tokens-only`)
-  if (blocking && all.length) process.exitCode = 1
+  const blocks = (f) => blocking || blockPaths.some((b) => f.includes(b))
+  for (const f of all) console.log(`  ${blocks(f) ? 'BLOCKER' : 'WARN   '}  ${f}   kits-tokens-only`)
+  if (all.some(blocks)) process.exitCode = 1
+  console.log(`\n${all.length} finding(s); ${SHOWCASE.length} showcase files exempt`)
 }
 
 console.log(`\n@media literals (counted apart): ${[...mediaLiterals].map(([v, n]) => v + ' x' + n).join(', ') || 'none'}`)

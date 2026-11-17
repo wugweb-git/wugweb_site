@@ -663,6 +663,12 @@
   --share-btn: 40px;
   --bento-min: 180px;
   --culture-visual: 380px;
+  /* Rail, signature and line length (owner, 2026-11-17; sizing.md) */
+  --rail-width: min(85vw, 1200px);
+  --rail-peek: 20%;
+  --signature-width: 2400px;
+  --measure-min: 35ch;
+  --measure-max: 60ch;
 }
 
 /* Fluid tokens already clamp — no Framer step-down media queries needed for type */

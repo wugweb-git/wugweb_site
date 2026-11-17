@@ -23,7 +23,7 @@ Component size reference (values currently implemented across the site).
 
 ## Rail, signature and line length
 
-Confirmed by the owner, 2026-11-17. No token yet.
+Confirmed by the owner, 2026-11-17. Tokens in `src/styles/global.css`: `--rail-width` (`min(85vw, 1200px)`), `--rail-peek`, `--signature-width`, `--measure-min` and `--measure-max`. No component uses them yet.
 
 | Item | Value |
 |---|---|
