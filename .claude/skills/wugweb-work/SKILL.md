@@ -86,7 +86,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 ## Open with the owner
 
-Two matters are not decided; the owner decides each. Build around them and mark any output they touch "open". The working assumption for each is in `references/open-items.md`: NTUC facts; where made files are kept and whether a scheduling tool is connected. One more is shared with `wugweb-kits` and listed in the same file.
+One matter is not decided; the owner decides it. Build around it and mark any output it touches "open". The working assumption is in `references/open-items.md`: where made files are kept and whether a scheduling tool is connected. One more is shared with `wugweb-kits` and listed in the same file.
 
 ## Archetypes at a glance
 

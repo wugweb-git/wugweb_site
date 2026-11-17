@@ -1,10 +1,9 @@
 # Open with the owner
 
-Two matters are not decided. The owner decides each one. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
+One matter is not decided. The owner decides it. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
 
 | Item | What is open | Working assumption until decided |
 |---|---|---|
-| NTUC facts | Results with source and date; the live URL; the number of programme-builder steps; the heading typeface | None is stated. The NTUC examples carry no results and list these as owner questions |
 | Social, remaining | Where made files are kept before posting; whether a scheduling tool is connected for the LinkedIn page and the owner's LinkedIn, and to which accounts | Made files stay in the media store the owner names. A LinkedIn post is handed over as an approved draft when no connected tool is confirmed |
 
 ## Also open, shared with `wugweb-kits`
@@ -38,6 +37,7 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 | Plan vetting | The plan is approved as it stands and Part 1 stays locked. Starting Part 2 (site code) still needs the owner's own go | the plan; `SKILL.md` |
 | Replies and outreach | Out of the Forms module. A reply or pitch asked for is drafted as a one-off, with no fact ledger | `forms.md` |
 | LinkedIn tags | None | `forms.md`, `forms/linkedin-post.md` |
+| NTUC | Not an open input: NTUC U Care is a worked example only. Its missing facts (results, live URL, builder steps, heading typeface) are shown in the examples as the owner questions a real piece would raise | `examples/` |
 | Medium | Not a form of its own: the approved blog post, unchanged, with a link to the original | `forms.md` |
 | Behance and Dribbble uploads | The owner uploads. The skill hands over an ordered list, never an upload | `forms/behance.md`, `forms/dribbble.md` |
 | Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |

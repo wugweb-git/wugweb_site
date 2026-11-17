@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- NTUC is a worked example only (owner, 2026-11-17): its facts are no longer an open item. One matter remains with the owner: where made files are kept and whether a scheduling tool is connected.
+
 - Brand rulings: three held lines removed because the owner ruled that set null (claims marked "unverified", dashboards only for software, campaign systems not decided). Kept: the client is the hero, "does a lot, into one" is an idea, black canvas by default. FAQPage confirmed by the owner in this session ("faq will be there"): the settlement rule stays.
 
 - Deck and card type sizes (owner via `wugweb-kits`, kits commit 2946127e): made files use the existing graphic and fluid body tokens by role, the text holder is a size container, no new token; `forms.md` and `forms/deck.md` point to kits' `references/component-sizes.md` and restate no values.
