@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed — wugweb-voice linkedin-post pronoun row (2026-11-17)
+- `.claude/skills/wugweb-voice/references/modes.md` now matches the owner's we or I ruling (his pick per piece). Version stays 0.3.0; `SKILL.md` body 1,997 words.
+
 ### Added — wugweb-strategy FAQ review list and rules (2026-11-17)
 - `docs/skills/wugweb-strategy/FAQ-REVIEW.md`: the 47 typed service page questions with signal-log and answer-source columns. FAQ rules extended in the skill (version stays 0.1.2).
 ### Changed — wugweb-work voice rules sorted with wugweb-voice (2026-11-17)

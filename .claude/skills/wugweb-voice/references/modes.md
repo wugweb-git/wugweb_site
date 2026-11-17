@@ -16,7 +16,7 @@ Each mode section, once calibrated, holds:
 | `case-study` | Case study page | 0 | Full sentences, evidence in every chapter | Waiting on samples |
 | `card` | Card and tile | 0 | Client, one line of what was built, no adjectives | Waiting on samples |
 | `deck` | Deck slide | 0 | One claim per slide, the screen does the talking | Waiting on samples |
-| `linkedin-post` | LinkedIn post | 0 | First person plural, one lesson from the project, same facts as the page | Waiting on samples |
+| `linkedin-post` | LinkedIn post | 0 | Pronoun is the owner's pick per piece (we or I), one lesson from the project, same facts as the page | Waiting on samples |
 | `carousel` | Carousel | 0 | None | Waiting on samples or a ruling |
 | `captions` | Behance and Dribbble captions | 0 | Captions only, flow by flow | Waiting on samples |
 | `interface` | Interface wording (buttons, labels, errors, hidden labels and headings) | 0 | None | Waiting on samples |
