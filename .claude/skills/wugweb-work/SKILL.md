@@ -50,7 +50,7 @@ The owner's standing rules apply to every Wugweb skill. They are copied in `refe
 
 - Never write a caption or alt text for a screen you have not seen close up.
 - Never make a poster file for a video. Dead links stay in the source and are listed.
-- Never emit FAQPage, HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects.
+- Never emit HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects. FAQPage only from the `faqs` field, where every question and answer is visibly on the page and comes from the owner's source (owner, 2026-11-17).
 
 ## Approval gates
 
@@ -86,7 +86,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 ## Open with the owner
 
-Four matters are not decided; the owner decides each. Build around them and mark any output they touch "open". The working assumption for each is in `references/open-items.md`: NTUC facts; the remaining social questions; whether Medium is its own form; sizes for Behance, Dribbble and story files. Four more are shared with `wugweb-kits` and listed in the same file.
+One matter is not decided; the owner decides it. Build around it and mark any output it touches "open". The working assumption is in `references/open-items.md`: where made files are kept and whether a scheduling tool is connected. One more is shared with `wugweb-kits` and listed in the same file.
 
 ## Archetypes at a glance
 

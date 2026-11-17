@@ -297,8 +297,8 @@ which handoff was skipped, and label the result a manual check.
 
 | With | Gives | Takes |
 |---|---|---|
-| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports | Business goal, audience, page list, pillar and cluster structure, the proof map |
-| `wugweb-work` | Keyword notes and budgets for one brief; platform keyword note; fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports; the per-piece keyword note for the brief (field 9) | Business goal, audience, page list, pillar and cluster structure, the proof map |
+| `wugweb-work` | Fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option. Reads the keyword note from the brief, not from this skill | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
 | `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
 | `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
 | The voice skill | No link | No link. Voice checks pass through `wugweb-work` |
@@ -313,19 +313,34 @@ Receive the business goal, the audience and the page list. Return the clusters,
 one page per cluster, topic gaps and pages to refresh, in the shape in
 `references/plan.md`. What to publish and when stays with `wugweb-strategy`.
 
+#### 1a. FAQ blocks
+
+`wugweb-strategy` decides when a piece carries a FAQPage `faqs` block: service
+pages and blog posts only, from real reader questions in the signal log, the
+owner approving the list and the count (brief field 8 lists the questions with
+their source, field 11 names each answer's source). `wugweb-seo` owns the schema
+rule and audits only that the FAQPage markup matches the questions visible on
+the page; it sets no count and picks no piece type. A case study never carries a
+block, so its `faqs` field, if kept, stays unused until the owner supplies
+visible questions.
+
 #### 2. Search input for one brief
 
-Asked by `wugweb-work`, for a case study, blog post, service page or site page.
+`wugweb-seo` writes one keyword note per piece: the search note and, where the
+piece has those forms, the LinkedIn, Behance and Dribbble title and tag note.
+`wugweb-strategy` pastes that note unchanged into brief field 9; `wugweb-work`
+reads it from the brief and does not ask `wugweb-seo` separately.
 
-Receive the page, its type, what was built, the audience and the candidate
-phrases. Return the shape in `references/plan.md`. The maker uses these as
-constraints. It keeps its headings and adds no FAQ block for search, no keyword
-counts and no sections written for search. The link targets come from
-`wugweb-strategy`; this skill gives the link rules.
+To write the note, receive the page, its type, what was built, the audience and
+the candidate phrases. Return it in the shape in `references/plan.md`. The maker
+uses these as constraints. It keeps its headings and adds no FAQ block for
+search, no keyword counts and no sections written for search. The link targets
+come from `wugweb-strategy`; this skill gives the link rules.
 
 #### 3. Platform keyword note
 
-Asked by `wugweb-work` or `wugweb-strategy`, only when asked.
+The platform part of the per-piece note (section 2), written when the piece has
+a LinkedIn, Behance or Dribbble form.
 
 Return terms for the title, first line and tags on LinkedIn, Behance or
 Dribbble, each sourced or marked "unvalidated". Never write the post. Tags are

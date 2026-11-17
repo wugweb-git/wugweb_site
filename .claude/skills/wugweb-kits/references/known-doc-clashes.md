@@ -4,7 +4,7 @@ Recorded, not resolved unless marked. Source: plan sections 25 and 27, checked 2
 
 | Clash | Where | Status |
 |---|---|---|
-| Proposed `faqs` field for FAQPage JSON-LD against the no-FAQPage rule | `layout-shell.md`, CMS fields | Resolved 2026-11-17: kept, only where every question and answer is visible. Case-study `seoCanonicalUrl`, `schemaType`, `aiSummary`, `keyTakeaways` dropped. |
+| Proposed `faqs` field for FAQPage JSON-LD against the no-FAQPage rule | `layout-shell.md`, CMS fields | Resolved 2026-11-17: the field stays (owner); its use, FAQPage included, is for `wugweb-strategy` with `wugweb-seo` to decide. Case-study `seoCanonicalUrl`, `schemaType`, `aiSummary`, `keyTakeaways` dropped. |
 | The CMS fields section is a proposal, not deployed, inside the authoritative doc | `layout-shell.md` | Open |
 | Framer media aspect ratios are not mapped to sections | `layout-shell.md`, "Open" | Open |
 | Button focus: doc says `--focus-primary`, code uses `outline: 2px solid var(--neutral-3)` on `.btn:focus-visible` | `components.md` and `global.css` | Open, report only |

@@ -1,3 +1,12 @@
+> STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
+>
+> - Built. Version 2.5.0 on main (owner: no new version, this is 2.5), 24 files, last skill commit 4138df08. The keyphrase score is part of 2.5.0.
+> - Skill file body: 1,867 words by the shared count; the validator now counts the same way. Validate 34 checks, 0 errors, 0 warnings; tests pass (as reported by the seo session). Single-file export is in the skill folder.
+> - Claude app and Cowork: not installed after the app reset on 2026-11-17. The seo session built the upload zip and gave it to the owner.
+> - Owner rulings applied: made-file sizes adopted (story safe zone unverified). Token check for case-study components is report only first and is a wugweb-kits gate. Brief field 9: seo writes one keyword note per piece, strategy pastes it into the brief unchanged, work reads it there. On case studies the faqs field is kept and the other four proposed fields are dropped. FAQPage only where every question and answer is visible on the page; no HowTo, review stars or ratings.
+> - FAQ block: strategy's position is with seo for a reply; the agreed line goes into the handoffs file.
+> - Standing with the owner: training bots per property and the search-data connector sign-in.
+
 # wugweb-seo: alignment plan
 
 > Mirror of the Notion page "wugweb-seo" (https://app.notion.com/p/41abb710b9ab818b8481d42beb053fef), which is the source. Part of the Wugweb Skill System. Plan stage only. Nothing goes to development until the owner says. Written 2026-11-16.

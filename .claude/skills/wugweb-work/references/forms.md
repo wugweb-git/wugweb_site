@@ -32,7 +32,7 @@ Not in this module: replies, comment routines and outreach pitches (owner decisi
 
 ## Accounts in scope (owner, 2026-11-16)
 
-The Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out. Whether Medium is a form of its own is open; until decided it carries the approved blog post unchanged.
+The Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out. Medium is not a form of its own (owner decision, 2026-11-17): it carries the approved blog post unchanged, with a link to the original.
 
 Worked examples, made from a proposed body for shape only: `examples/forms-ntuc-fact-pack.md`, `examples/forms-ntuc-linkedin-post.md`, `examples/forms-ntuc-carousel-outline.md`.
 
@@ -62,14 +62,16 @@ A form may need a file that does not exist (a share image, a social card, a Beha
 
 ## Sizes for made files
 
-These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were looked up by another session and are proposed, not confirmed (open; see `open-items.md`). Check each again and date it when a file is proposed.
+Type on any made file (deck, carousel, cover, share image, story) uses the `wugweb-kits` tokens by role, from its component sizes reference (`.claude/skills/wugweb-kits/references/component-sizes.md` in this repository) (owner, 2026-11-17): title `--type-graphic-l`, subtitle or key figure `--type-graphic-m`, label `--type-graphic-s`, body `--fluid-body-md` or `--fluid-body-sm`. The element holding the text is a size container. No new token, and the values are not restated here.
+
+These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were adopted by the owner on 2026-11-17. Check each against the platform's help page and date it when a file is proposed.
 
 | File | Size | Source and standing |
 |---|---|---|
-| Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn Help, read directly: at least 1200 x 627, ratio 1.91:1, 5 MB at most |
-| Behance cover (proposed) | Upload at least 808 x 632; shown at 202 x 158 | Behance Help Center as reported by search; figures date from 2020; the page was not read directly |
-| Dribbble shot (proposed) | At least 1600 wide, no fixed ratio; PNG, JPG or GIF up to 10 MB, video up to 20 MB | Dribbble Help Center, read directly; 1600 x 1200 is convention only |
-| Story canvas (proposed) | 1080 x 1920 | Safe zone unverified: no official page confirms it. Use the wider margins |
+| Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn link image: at least 1200 x 627, ratio 1.91:1, 5 MB at most (adopted 2026-11-17) |
+| Behance cover | Upload at least 808 x 632; shown at 202 x 158 | Adopted by the owner, 2026-11-17. Behance Help Center as reported by search; figures date from 2020 |
+| Dribbble shot | At least 1600 wide (1600 x 1200 by convention); PNG, JPG or GIF up to 10 MB, video up to 20 MB | Adopted by the owner, 2026-11-17. Dribbble Help Center, read directly |
+| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17. The safe zone is unverified: no official page confirms it, so use the wider margins |
 
 This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 
@@ -79,7 +81,7 @@ This skill picks which platform size a file uses; `wugweb-kits` supplies the siz
 
 - Takes: client, short title, one line of what was built, cover or thumbnail, industry.
 - Tone: no adjectives. "Member portal and back office for NTUC U Care Fund."
-- Media: the existing thumbnail shown whole at its own ratio; a thumbnail video loops muted. The card frame shape is open (see `open-items.md`).
+- Media: the existing thumbnail kept at its own ratio inside a 16/10 frame that acts as a mask, with no crop of the source and no re-encode (owner, 2026-11-17, owned by `wugweb-kits`); a thumbnail video loops muted.
 
 ## Showcase tile
 
@@ -93,4 +95,4 @@ This skill picks which platform size a file uses; `wugweb-kits` supplies the siz
 
 ## Not decided
 
-Who uploads to Behance and Dribbble, where made files are kept, the plain canvas question, whether the scheduling tool is connected, Medium as a form, three made-file sizes: see `open-items.md`.
+Where made files are kept before posting, and whether a scheduling tool is connected: see `open-items.md`.

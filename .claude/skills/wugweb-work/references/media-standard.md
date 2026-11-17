@@ -85,7 +85,7 @@ Known gap: nothing here lists the objects in a media store folder. The audit scr
 - Longer: muted, click to play, play and pause button only, or left off the page when a short cut of it exists.
 - No poster file: use the best start frame from the visual read as `src="…mp4#t=<s>"` with `preload="metadata"`. No new file is made. This is unverified on iPhone Safari: test it before relying on it, and fall back to a plain surface until the video is near.
 - Audio is reported only. Nothing plays sound. When a long video carries speech, say so: muted, it may lose its meaning, and the owner decides whether it stays.
-- A loop longer than 5 seconds has a pause control (owner, 2026-11-16; the rule is held for `wugweb-kits`). Loops pause off screen and under reduced motion.
+- A loop is 15 seconds or less. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden. All loops stop under reduced motion and pause off screen (owner, 2026-11-17; the control is built by `wugweb-kits`).
 - A video on a third-party player shows a lightweight preview and loads the player on click.
 
 ## Alt text and captions

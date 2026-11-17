@@ -14,8 +14,30 @@ and this project adheres to Semantic Versioning.
 - fix(skills): wugweb-brand-os removes six contested rules on owner ruling 2026-11-17 (newer source wins, 2023 profile used for nothing, dashboards ban, collage base, unknown rights label, transformation pairs).
 
 - fix(skills): wugweb-brand-os removes the campaign system working vocabulary and the four-role example; owner ruling 2026-11-17: Wugweb has no campaign system.
+### Changed — wugweb-strategy FAQ block rules (2026-11-17)
+- Owner delegated the faqs decision to strategy with seo. Rules recorded in the skill files (version stays 0.1.2), pending wugweb-seo reply. Exports rebuilt.
+### Changed — wugweb-work skill 0.5, NTUC is an example, not an open item (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner: NTUC was just an example. One matter remains open with the owner. validate 30 checks 0 errors, test passes.
+
+### Changed — wugweb-work skill 0.5, three brand rulings removed, FAQPage confirmed (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner in this session: the brand set ruled null, so three held lines removed from handoffs.md; FAQPage stays per the faqs settlement ("faq will be there"). validate 30 checks 0 errors, test passes.
+
+### Changed — wugweb-work skill 0.5, deck and card type sizes point to wugweb-kits (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Made files use kits' graphic and fluid body tokens by role (kits commit 2946127e); no values restated. validate 30 checks 0 errors, test passes.
+
+### Changed — wugweb-work skill 0.5, FAQPage follows the faqs settlement (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner decision in this session: FAQPage only from the `faqs` field where every question and answer is visible and from the owner's source; HowTo and review stars stay banned. Gate script checks each FAQ question and answer against visible text. validate 30 checks 0 errors, test passes.
+
+### Changed — wugweb-work skill 0.5, card thumbnail ruling applied (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Card thumbnails are 16/10 on every card with the original ratio kept and the frame as a mask (owner via wugweb-kits). One matter (old media ratios) now shared with wugweb-kits. validate 30 checks 0 errors, test passes.
+
+### Changed — wugweb-work skill 0.5, kits, seo, strategy and brand-os rulings applied (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Loops, rail, peek, signature width, line length, blocks signed off, ui-system-mapper retired, made-file sizes adopted, brief field 9, token check reports first, brand rulings held in handoffs. Gate script no longer requires aria-hidden on loops. validate 30 checks 0 errors, test passes, exports rebuilt.
 
 - feat(skills): wugweb-brand-os applies the owner's answers of 2026-11-17 (questions 5 to 9, 12 to 18); dashboards ban now excepts software subjects; 4 questions remain open or partly answered.
+### Changed — wugweb-work skill 0.5, social and size answers applied (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner answers: Medium is not a form (repost unchanged); the owner uploads to Behance and Dribbble, the skill hands over a list; Dribbble screens never on a plain canvas; Behance 808 x 632, Dribbble 1600 wide and story 1080 x 1920 confirmed. Two matters remain with the owner. validate 30 checks 0 errors, test passes, exports rebuilt.
+
 ### Changed — wugweb-strategy skill 0.1.2 (2026-11-17)
 - Owner answers applied: brief field 9 pasted from wugweb-seo unchanged; wugweb-voice may read the signal log directly, read only. Exports rebuilt.
 

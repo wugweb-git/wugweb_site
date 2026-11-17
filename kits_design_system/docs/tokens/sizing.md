@@ -21,6 +21,17 @@ Component size reference (values currently implemented across the site).
 
 `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` are declared in `src/styles/global.css`. As of 2026-11-16 no component references them with `var()`.
 
+## Rail, signature and line length
+
+Confirmed by the owner, 2026-11-17. No token yet.
+
+| Item | Value |
+|---|---|
+| Rail width | `85vw`, never past the 1200 content max |
+| Rail peek | 20% |
+| Signature width | `2400px` |
+| Line length | 35 to 60 characters |
+
 ## Icon Sizes
 
 | Icon | Size |

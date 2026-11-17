@@ -20,7 +20,7 @@ Third-party helpers stay at Read and Propose. Only a Wugweb skill writes, and on
 |---|---|---|
 | `wugweb-voice` | The one Wugweb voice | Not installed; plan only |
 | `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Not installed; plan only |
-| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; the old name was `ui-system-mapper` |
+| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; `ui-system-mapper` is merged into it and retired (owner, 2026-11-17) |
 | `wugweb-strategy` | Content strategy, calendar, briefs | Not installed; plan only |
 | `wugweb-seo` | Keywords, on-page rules, schema, AI search, reporting | Installed; one skill with plan, audit and report parts |
 
@@ -74,7 +74,7 @@ Made images, one file on the owner's yes: `html-css-to-image:hcti-open-graph-ima
 
 The helpers were read so that their useful rules live in this skill in its own words. Nothing is dropped from the list above; this adds a decision. No text was copied. Some long reference folders were not read in full.
 
-**Absorbed** (the rule is restated in this skill): `rampstack-seo`: seo-content-audit, seo-onpage, content-and-copy. `searchfit-seo`: broken-links, seo-audit (finding format only), content-brief (skeleton only), schema-markup and generate-schema (evidence rule only). `seo-skills`: seo-images (record fields only), seo-content-audit (hard stops only). `copywriting-kit`: copy-proof-check, copy-edit, copy-diagnose, landing-page-copy. `marketing`: brand-review (flag list), email-sequence (limits only). `analytics-skills`: metric-context-and-benchmarks. `data`: validate-data, create-viz, data-visualization, statistical-analysis. `design`: design-critique, design-handoff (one rule). `website-design`: landing-page, review-page. `sanity`: content-modeling-best-practices, portable-text-conversion, portable-text-serialization (check only). `social-media-skills`: linkedin-post-writer, carousel-writer, before-after-and-transformation, social-proof-and-testimonials, data-and-original-research, cross-platform-repurposing, caption-writer, infographic-and-data-viz, quote-cards-and-text-graphics, thumbnail-design, image-prompt (gate only), thread-writer, text-post-and-microblog, behind-the-scenes-and-founder, content-research-and-sourcing, educational-content-and-how-to, scheduling-and-queue; story-writer and pinterest-pin-design (specs only, parked). Claude app skills: full-output-enforcement, ui-system-mapper (two rules), frontend-design (one rule), design-taste-frontend (four rules), web-quality-accessibility (alt and caption), skill-creator, skill-development, pptx (content rules), deep-research (citation rule). `ux-ui-audit` (finding rules). `brightdata-plugin`: scrape (the read check only).
+**Absorbed** (the rule is restated in this skill): `rampstack-seo`: seo-content-audit, seo-onpage, content-and-copy. `searchfit-seo`: broken-links, seo-audit (finding format only), content-brief (skeleton only), schema-markup and generate-schema (evidence rule only). `seo-skills`: seo-images (record fields only), seo-content-audit (hard stops only). `copywriting-kit`: copy-proof-check, copy-edit, copy-diagnose, landing-page-copy. `marketing`: brand-review (flag list), email-sequence (limits only). `analytics-skills`: metric-context-and-benchmarks. `data`: validate-data, create-viz, data-visualization, statistical-analysis. `design`: design-critique, design-handoff (one rule). `website-design`: landing-page, review-page. `sanity`: content-modeling-best-practices, portable-text-conversion, portable-text-serialization (check only). `social-media-skills`: linkedin-post-writer, carousel-writer, before-after-and-transformation, social-proof-and-testimonials, data-and-original-research, cross-platform-repurposing, caption-writer, infographic-and-data-viz, quote-cards-and-text-graphics, thumbnail-design, image-prompt (gate only), thread-writer, text-post-and-microblog, behind-the-scenes-and-founder, content-research-and-sourcing, educational-content-and-how-to, scheduling-and-queue; story-writer and pinterest-pin-design (specs only, parked). Claude app skills: full-output-enforcement, ui-system-mapper (two rules; merged into `wugweb-kits` and retired), frontend-design (one rule), design-taste-frontend (four rules), web-quality-accessibility (alt and caption), skill-creator, skill-development, pptx (content rules), deep-research (citation rule). `ux-ui-audit` (finding rules). `brightdata-plugin`: scrape (the read check only).
 
 **Optional helper** (may speed a mode up; never required): `rampstack-seo`: seo-keyword, skill-creation-walkthrough. `searchfit-seo`: internal-linking. `seo-skills`: seo-schema, seo-geo, seo-content-brief, seo-sxo. `aeotester`: audit. `cloudflare`: web-perf, wrangler. `design`: accessibility-review, ux-copy. `brand-voice`: brand-voice-enforcement. `marketing`: content-creation. `website-design`: web-review. `ui-ux-pro-max`. `design-qa`. `code-review`. `sanity`: sanity-best-practices. `social-media-skills`: platform-specs-and-validation. `slides`. `banner-design`. `pdf`. `docx`. `xlsx`. `postiz`. `html-css-to-image`: both. Notion: find, database-query. `tinyfish`: tinyfish-web (fetch only).
 
@@ -90,7 +90,7 @@ Not found on disk and not read: `dataviz`, `simplify`.
 
 | Helpers | What they suggest | Owner's rule that wins |
 |---|---|---|
-| Several SEO helpers, `website-design:landing-page`, `marketing:draft-content` | FAQ blocks, FAQPage or HowTo schema, `llms.txt`, question headings | None of these |
+| Several SEO helpers, `website-design:landing-page`, `marketing:draft-content` | FAQ blocks written for search, HowTo schema, `llms.txt`, question headings | None of these; FAQPage only from the owner's `faqs` field with every answer visible |
 | `searchfit-seo`: content-brief, create-content, on-page-seo | Keyword counts and a minimum number of links | No keyword counts |
 | `searchfit-seo:seo-audit`, `seo-skills:seo-content-audit`, `copywriting-kit:copy-diagnose` | 0 to 100 or percentage scores | Every number is computed from something real |
 | `rampstack-seo:seo-content-audit`, `searchfit-seo:broken-links` | Redirects as the fix | No redirects; fix the link |
@@ -126,7 +126,7 @@ Plugin helpers are listed in the session but have not each been run. Helpers tha
 | `wp-dev-skills:*` | WordPress; this site is not WordPress. Kept installed for other work |
 | `compliance-check`, `compliance-tracking` | Regulatory frameworks, not content or design |
 | Web scraping helpers (Bright Data, TinyFish) | Kept out by the owner |
-| FAQ schema and `llms.txt` outputs of any SEO helper | Conflict with the owner's rules; other checks from the same helper may be used |
+| Generated FAQ schema and `llms.txt` outputs of any SEO helper | Conflict with the owner's rules; other checks from the same helper may be used |
 
 ## Fallbacks
 

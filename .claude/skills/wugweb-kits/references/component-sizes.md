@@ -31,3 +31,32 @@ These four are confirmed by the owner but are not yet in `sizing.md` or any desi
 | Rail peek | 20% |
 | Signature width | 2400px |
 | Line length | 35 to 60 characters |
+
+## Made-file sizes adopted by the owner, 2026-11-17
+
+Relayed through the coordinating session from the `wugweb-seo` rulings. Source is the owner, not a design doc.
+
+| File | Size |
+|---|---|
+| Og image | 1200 x 630, key content in the central 80% |
+| LinkedIn link image | 1200 x 627 minimum |
+| Behance cover | 808 x 632 minimum |
+| Dribbble | 1600 wide |
+| Story | 1080 x 1920, safe zone unverified |
+
+## Card thumbnails, owner 2026-11-17
+
+One thumbnail ratio, 16/10, on every card, not only work and blog. The original file ratio is kept and the 16/10 frame is a mask on the page. Old Framer media ratios stay an open item in `layout-shell.md`.
+
+## Deck and card type sizes, owner approved 2026-11-17
+
+Kits proposed these from the existing site scale and the owner approved. No new token; the three graphic tokens scale with their container (container query units), so they fit any made-file size.
+
+| Role on a deck slide or card | Token | Range |
+|---|---|---|
+| Title | `--type-graphic-l` | 4rem to 12rem, 14% of container width |
+| Subtitle or key figure | `--type-graphic-m` | 2.5rem to 7rem, 9% |
+| Label or tag | `--type-graphic-s` | 1.75rem to 4rem, 6% |
+| Body text | `--fluid-body-md`, `--fluid-body-sm` | unchanged |
+
+The element that holds the text must be a size container (`container-type: inline-size`). Only `--type-graphic-s` is used in code today (`ServiceTagField`); none of the three is in `typography.md` yet.

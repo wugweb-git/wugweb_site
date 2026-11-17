@@ -2,8 +2,18 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- NTUC is a worked example only (owner, 2026-11-17): its facts are no longer an open item. One matter remains with the owner: where made files are kept and whether a scheduling tool is connected.
+
+- Brand rulings: three held lines removed because the owner ruled that set null (claims marked "unverified", dashboards only for software, campaign systems not decided). Kept: the client is the hero, "does a lot, into one" is an idea, black canvas by default. FAQPage confirmed by the owner in this session ("faq will be there"): the settlement rule stays.
+
+- Deck and card type sizes (owner via `wugweb-kits`, kits commit 2946127e): made files use the existing graphic and fluid body tokens by role, the text holder is a size container, no new token; `forms.md` and `forms/deck.md` point to kits' `references/component-sizes.md` and restate no values.
+
+- FAQPage follows the `faqs` settlement (owner, 2026-11-17, in this session): allowed only from the `faqs` field where every question and answer is visibly on the page and comes from the owner's source; HowTo and review stars stay banned. The gate script now checks each FAQ question and answer against the visible text instead of banning FAQPage.
+
+- Rulings relayed by the coordinator from the sibling sessions: made-file sizes adopted as written (no "proposed" marks); brief field 9 (the strategy brief carries the `wugweb-seo` keyword note pasted unchanged); token check reports only first, blocking once case study components are clean; loops (15 seconds or less, over 5 seconds gets a pause control and is not hidden, 5 seconds or less without a control stays hidden, all stop under reduced motion; the gate script no longer requires `aria-hidden`); rail 85vw never past the 1200 maximum, peek 20%, signature width 2400 px, lines 35 to 60 characters, all owned by `wugweb-kits`; the five existing blocks signed off; `ui-system-mapper` merged into `wugweb-kits` and retired; brand rulings from `wugweb-brand-os` held in `handoffs.md`. Card thumbnails: every card is 16/10, original ratio kept, the frame is a mask (no crop, no re-encode). Two matters remain with the owner and one (the old media ratios) is shared with `wugweb-kits`.
+
 - Open items reconciled: one count in `SKILL.md`, `README.md`, `metadata.json` and `references/open-items.md`. The `faqs` clash is settled as reported by `wugweb-kits` (layout shell commit 908ce91b): `faqs` kept, FAQPage only where every question and answer is visibly on the page; `seoCanonicalUrl`, `schemaType`, `aiSummary` and `keyTakeaways` dropped on case studies.
-- Owner answers: the plan is approved and Part 1 stays locked (Part 2 still needs his go); replies and outreach are out of the Forms module; LinkedIn tags are none. Four matters remain with the owner (NTUC facts, the remaining social questions, Medium, made-file sizes) and four are shared with `wugweb-kits`.
+- Later answers: Medium is not a form (repost unchanged); the owner uploads to Behance and Dribbble and the skill hands over a list; a Dribbble screen is never on a plain canvas; the three made-file sizes are confirmed. Two matters remain with the owner (NTUC facts; where made files are kept and whether a scheduling tool is connected). Earlier answers: the plan is approved and Part 1 stays locked (Part 2 still needs his go); replies and outreach are out of the Forms module; LinkedIn tags are none. Two matters remain with the owner after that (see above) and four are shared with `wugweb-kits`.
 - `README.md` version line corrected.
 
 Lock version for Part 1. Same content as 0.4.3; the number marks the stable baseline.

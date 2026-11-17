@@ -55,7 +55,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ## 5. Media in a chapter
 
-Four numbers below are not layout shell values. They are held proposals for `wugweb-kits`, which decides them: the 85vw rail item width, the 20% peek, the 2400 px signature width and the 35 to 60 character line. Until kits answers, use them and mark any output that depends on them "open". Widths, gutters and columns are never set here.
+These values are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`: rail items at 85vw and never past the 1200 content maximum, a next-item peek of 20%, a signature width of 2400 px, and lines of 35 to 60 characters. This skill reads them and never changes them. Widths, gutters and columns are never set here.
 
 | Media | Block |
 |---|---|
@@ -68,7 +68,7 @@ Four numbers below are not layout shell values. They are held proposals for `wug
 | 2 to 6 landscape or mixed | `mosaic`: spans from shapes, cell count equals media count, source order kept, UI never cropped |
 | 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
 | Scrollshot | Fixed-height figure showing the top; "View full page" opens the viewer |
-| Video 15 s or less | `loop`: muted, playsinline, poster or `#t=` start frame, loads when near, `aria-hidden` |
+| Video 15 s or less | `loop`: muted, playsinline, `#t=` start frame, loads when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
 | Video over 15 s | `video`: muted, click to play, play and pause button only, `preload="none"`, never `aria-hidden`; or left off the page when a short cut of it exists |
 | GIF | Image |
 | States set | `rail` or `pair` with the state as caption |
@@ -89,8 +89,8 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - Filters sit inside the grid they filter, never as a section of their own.
 - First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
 - One yellow conversion action per page; labels describe the action; yellow stays under 10% of the page.
-- The site's existing blocks are awaiting the owner's sign-off; the bento layout on the case study page is the one this work replaces.
-- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; this skill still never writes FAQ blocks for schema, and no case study body carries one unless the owner supplies the source Q and A.
+- The five existing blocks are signed off by the owner (2026-11-17); the bento layout on the case study page is the one this work replaces.
+- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; questions and answers come only from the owner's source and are shown on the page, never written for search.
 
 ## 6. Rhythm
 
@@ -138,7 +138,7 @@ The site's one call to action stays in the global footer. No second CTA.
 - Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
 - `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
 - Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
-- A long video has an `aria-label` that says what it shows. A loop longer than 5 seconds has a pause control (owner, 2026-11-16; the control is built by `wugweb-kits`).
+- A long video has an `aria-label` that says what it shows. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology (owner, 2026-11-17).
 - AA contrast on client colours; focus visible and never hidden under the sticky header; chapter anchors clear the sticky header.
 - A rail's scroll area is reachable by keyboard (`tabindex="0"` where the browser does not do it) and uses `overscroll-behavior-x: contain`.
 - The viewer shows an image at its natural size, at least twice the thumbnail.
