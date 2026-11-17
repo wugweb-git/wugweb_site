@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- Brand rulings: three held lines removed because the owner ruled that set null (claims marked "unverified", dashboards only for software, campaign systems not decided). Kept: the client is the hero, "does a lot, into one" is an idea, black canvas by default. FAQPage confirmed by the owner in this session ("faq will be there"): the settlement rule stays.
+
 - Deck and card type sizes (owner via `wugweb-kits`, kits commit 2946127e): made files use the existing graphic and fluid body tokens by role, the text holder is a size container, no new token; `forms.md` and `forms/deck.md` point to kits' `references/component-sizes.md` and restate no values.
 
 - FAQPage follows the `faqs` settlement (owner, 2026-11-17, in this session): allowed only from the `faqs` field where every question and answer is visibly on the page and comes from the owner's source; HowTo and review stars stay banned. The gate script now checks each FAQ question and answer against the visible text instead of banning FAQPage.

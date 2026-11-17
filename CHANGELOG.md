@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work skill 0.5, three brand rulings removed, FAQPage confirmed (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner in this session: the brand set ruled null, so three held lines removed from handoffs.md; FAQPage stays per the faqs settlement ("faq will be there"). validate 30 checks 0 errors, test passes.
+
 ### Changed — wugweb-work skill 0.5, deck and card type sizes point to wugweb-kits (2026-11-17)
 - Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Made files use kits' graphic and fluid body tokens by role (kits commit 2946127e); no values restated. validate 30 checks 0 errors, test passes.
 

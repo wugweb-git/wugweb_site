@@ -237,7 +237,7 @@ If a sibling is not installed, answer the same question from the held file named
 - Made files: this skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 - Layout values are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`. This skill restates none of them.
 
-Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; a claim about Wugweb is marked "unverified" until the brand skill approves it; "does a lot, into one" is an idea, not public wording; a dashboard appears in a visual only when the subject is software; the canvas for any made file is black by default and light only where the owner says; campaign systems are not decided, so no campaign look is invented.
+Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says.
 
 ### When to send what
 
