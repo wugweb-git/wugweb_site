@@ -92,6 +92,14 @@ export function check() {
       }
     }
   }
+  // The export carries a marked copy of docs/skills/STANDING-RULES.md. The home file wins:
+  // if the copy (or any source) has drifted, the export is out of date and the check fails.
+  const exportPath = join(ROOT, 'export', 'wugweb-brand-os.md');
+  if (!existsSync(join(ROOT, '..', '..', '..', 'docs', 'skills', 'STANDING-RULES.md'))) {
+    problems.push('docs/skills/STANDING-RULES.md not found; the export cannot carry the standing rules');
+  } else if (!existsSync(exportPath) || readFileSync(exportPath, 'utf8') !== build().text) {
+    problems.push('export/wugweb-brand-os.md is out of date or its standing rules copy differs from docs/skills/STANDING-RULES.md; run node scripts/build-export.mjs');
+  }
   try {
     const e = JSON.parse(read('evals/evals.json'));
     if (!e.evals.every((x) => x.id && x.prompt && Array.isArray(x.expected) && x.status)) {
