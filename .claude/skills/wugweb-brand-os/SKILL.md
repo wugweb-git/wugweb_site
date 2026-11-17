@@ -20,7 +20,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Audience:** not decided. The owner will supply it.
 - **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
 
-Four more questions are open or only partly answered (4, 10, 12, 14); the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+Two more questions are open (4 and 10); the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -123,7 +123,7 @@ These are confirmed. They hold in every mode.
 - Other buttons may use yellow only on hover or tap.
 - Purple, green and orange are allowed as pillar colours, and the pillar glow is the one allowed gradient exception.
 - The logo lockup is two-tone, and two-tone titles mirror it. Use the real logo file. Logo checks live here; sizes live in kits.
-- Surfaces are a black canvas with glass panels, and the black canvas is also the artwork default. Light backgrounds only where the owner says. Corner radius is set by role.
+- Surfaces are a black canvas with glass panels, and the black canvas is also the artwork default. No format uses a light background until the owner names one. Corner radius is set by role.
 - Motion: one spring with a slight bounce, which is within the brand, for nav and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion.
 - A bento never resolves into an even grid, and nothing is wider than the nav.
 

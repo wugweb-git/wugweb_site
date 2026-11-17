@@ -59,10 +59,10 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 | Positioning | "product and experience architecture studio" (site) | "systems-minded design partner" (guidelines) | Owner will supply a new line |
 | Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Allowed as pillar colours. Confirmed 2026-11-17 (question 6) |
 | Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Yellow. Confirmed 2026-11-17 (question 15) |
-| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Black canvas is the default; light only where the owner says. Which formats is not decided: owner (question 14) |
+| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Black canvas everywhere. No format uses a light background until the owner names one (question 14, 2026-11-17) |
 | Gradients | Banned (guidelines) | A glow per pillar on service pages | The pillar glow is an exception. Confirmed 2026-11-17 (question 16) |
 | Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | A slight bounce is within the brand. Confirmed 2026-11-17 (question 17) |
-| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Definition approved 2026-11-17; the four guideline edits are held (see question 12) |
+| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. The definition lives only in the skill; the four guideline edits are dropped (question 12, 2026-11-17) |
 | Content pillars | AI, Product, UX, Systems, Engineering | Six pillars | Six pillars win |
 | Spelling | American in the guidelines | British English | Settled by the standing rules |
 | Tiles | Sixteen by nine assumed | Seven ratios in use | Not confirmed |
@@ -85,9 +85,9 @@ Until each "not decided" row is answered, report both sides and do not pick one.
 | 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
 | 10 | Visual OS and Brand Strategy documents, nine source images | Open |
 | 11 | Where the plan is kept | Confirmed |
-| 12 | Crop definition and four wording changes | Definition approved. The four edits to `brand_guidelines/` conflict with question 5 (archive untouched), so they are held: the owner decides which wins |
+| 12 | Crop definition and four wording changes | Answered: definition approved and held only in the skill; the four guideline edits are dropped |
 | 13 | "The client is the hero" | Confirmed |
-| 14 | Light or dark background default for artwork | Partly answered: black canvas default; light only where the owner says. Formats not named |
+| 14 | Light or dark background default for artwork | Answered: black canvas; no format uses light until the owner names one |
 | 15 | Magenta or yellow as brand colour in artwork | Confirmed: yellow |
 | 16 | Pillar glow as a gradient exception | Confirmed: allowed |
 | 17 | Slight bounce in motion | Confirmed: within the brand |

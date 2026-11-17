@@ -91,7 +91,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Audience:** not decided. The owner will supply it.
 - **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
 
-Four more questions are open or only partly answered (4, 10, 12, 14); the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+Two more questions are open (4 and 10); the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -194,7 +194,7 @@ These are confirmed. They hold in every mode.
 - Other buttons may use yellow only on hover or tap.
 - Purple, green and orange are allowed as pillar colours, and the pillar glow is the one allowed gradient exception.
 - The logo lockup is two-tone, and two-tone titles mirror it. Use the real logo file. Logo checks live here; sizes live in kits.
-- Surfaces are a black canvas with glass panels, and the black canvas is also the artwork default. Light backgrounds only where the owner says. Corner radius is set by role.
+- Surfaces are a black canvas with glass panels, and the black canvas is also the artwork default. No format uses a light background until the owner names one. Corner radius is set by role.
 - Motion: one spring with a slight bounce, which is within the brand, for nav and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion.
 - A bento never resolves into an even grid, and nothing is wider than the nav.
 
@@ -757,10 +757,10 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 | Positioning | "product and experience architecture studio" (site) | "systems-minded design partner" (guidelines) | Owner will supply a new line |
 | Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Allowed as pillar colours. Confirmed 2026-11-17 (question 6) |
 | Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Yellow. Confirmed 2026-11-17 (question 15) |
-| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Black canvas is the default; light only where the owner says. Which formats is not decided: owner (question 14) |
+| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Black canvas everywhere. No format uses a light background until the owner names one (question 14, 2026-11-17) |
 | Gradients | Banned (guidelines) | A glow per pillar on service pages | The pillar glow is an exception. Confirmed 2026-11-17 (question 16) |
 | Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | A slight bounce is within the brand. Confirmed 2026-11-17 (question 17) |
-| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Definition approved 2026-11-17; the four guideline edits are held (see question 12) |
+| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. The definition lives only in the skill; the four guideline edits are dropped (question 12, 2026-11-17) |
 | Content pillars | AI, Product, UX, Systems, Engineering | Six pillars | Six pillars win |
 | Spelling | American in the guidelines | British English | Settled by the standing rules |
 | Tiles | Sixteen by nine assumed | Seven ratios in use | Not confirmed |
@@ -783,9 +783,9 @@ Until each "not decided" row is answered, report both sides and do not pick one.
 | 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
 | 10 | Visual OS and Brand Strategy documents, nine source images | Open |
 | 11 | Where the plan is kept | Confirmed |
-| 12 | Crop definition and four wording changes | Definition approved. The four edits to `brand_guidelines/` conflict with question 5 (archive untouched), so they are held: the owner decides which wins |
+| 12 | Crop definition and four wording changes | Answered: definition approved and held only in the skill; the four guideline edits are dropped |
 | 13 | "The client is the hero" | Confirmed |
-| 14 | Light or dark background default for artwork | Partly answered: black canvas default; light only where the owner says. Formats not named |
+| 14 | Light or dark background default for artwork | Answered: black canvas; no format uses light until the owner names one |
 | 15 | Magenta or yellow as brand colour in artwork | Confirmed: yellow |
 | 16 | Pillar glow as a gradient exception | Confirmed: allowed |
 | 17 | Slight bounce in motion | Confirmed: within the brand |
@@ -1063,7 +1063,7 @@ Selection questions:
 | A literal diagram | Structure itself is the subject |
 | A scribble or marker line | Once, as a single human accent |
 | Richer collage layers | Campaign collage mode, and every layer clarifies the same visual sentence |
-| Dark backgrounds | For contrast or intensity. The black canvas is the default. A light background is used only where the owner says so; which formats that covers is not decided: owner (question 14) |
+| Dark backgrounds | The black canvas is the default everywhere. No format uses a light background until the owner names one (question 14, 2026-11-17) |
 | Purple, green, orange | Allowed as pillar colours. Confirmed by the owner, question 6 |
 | A glow or gradient | The pillar glow is an allowed exception. Confirmed by the owner, question 16. Other gradient-heavy looks stay banned |
 
@@ -1080,14 +1080,7 @@ Selection questions:
 
 In these guidelines, "crop" means how a subject is framed in a composition. An existing media file is never cropped. It is resized with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
 
-The owner's media rule is confirmed and wins over any guideline wording. The definition is approved (question 12, 2026-11-17). Four wording changes to the guideline files were also proposed. They are held, because `brand_guidelines/` stays an untouched archive (question 5); the owner decides which wins. No guideline file is edited.
-
-| File | Current | Proposed |
-| --- | --- | --- |
-| `08_ARTWORK_FORMULAS/Editorial_Hero.md` | "a decisive crop" | "a decisive framing" |
-| `02_VISUAL_SYSTEM/13_EDITORIAL_SYSTEM.md` | "decisive crops" | "decisive framing" |
-| `03_MARKETING_SYSTEM/04_SOCIAL_MEDIA.md` | "decisive crop" | "decisive framing" |
-| `02_VISUAL_SYSTEM/02_COMPOSITION.md` | "Crop boldly at edges" | "Let the anchor run off the edge of the canvas, using a mask or frame" |
+The owner's media rule is confirmed and wins over any guideline wording. The definition is approved and lives only in this skill (question 12, 2026-11-17). The guideline files stay as they are: `brand_guidelines/` is an untouched archive, and no wording change to it is proposed.
 
 ## Editorial feel
 
@@ -1177,7 +1170,7 @@ Palette behaviour by mode, from the same file:
 - **Question 6, confirmed.** Purple, green and orange are allowed as pillar colours, in artwork as on the site.
 - **Question 15, confirmed.** Yellow is the one brand colour, as in kits. Magenta is not the brand energy colour.
 - **Question 16, confirmed.** The pillar glow is an allowed exception to the gradient ban. Other gradient-heavy looks stay banned.
-- **Question 14, partly answered.** The black canvas is the default. A light background is used only where the owner says so. Not decided: owner, which formats that covers. Report this point as "not decided", not as a pass or a fail.
+- **Question 14, confirmed.** The black canvas is the default everywhere. No format uses a light background until the owner names one.
 
 ## Type as a graphic object (source: `05_TYPOGRAPHY.md`)
 

@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- fix(skills): wugweb-brand-os closes questions 12 and 14 (owner, 2026-11-17): the four crop edits to brand_guidelines/ are dropped and the definition lives only in the skill; no format uses a light background until the owner names one.
+
 - fix(skills): wugweb-brand-os eval 38: five writing-style lines replaced by pointers to wugweb-voice and the standing rules.
 
 - feat(skills): wugweb-brand-os check fails when the export or its standing rules copy drifts from docs/skills/STANDING-RULES.md.

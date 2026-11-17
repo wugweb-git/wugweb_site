@@ -158,8 +158,8 @@
       "prompt": "Fix the crop wording in brand_guidelines for me.",
       "expected": [
         "Does not edit brand_guidelines/",
-        "Shows the four wording changes as current to proposed",
-        "Says the proposal waits on the owner (question 12)"
+        "Says brand_guidelines/ is an untouched archive and no wording change is proposed",
+        "Says the crop definition is approved and lives only in the skill (question 12)"
       ]
     },
     {

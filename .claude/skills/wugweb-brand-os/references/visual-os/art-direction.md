@@ -76,7 +76,7 @@ Selection questions:
 | A literal diagram | Structure itself is the subject |
 | A scribble or marker line | Once, as a single human accent |
 | Richer collage layers | Campaign collage mode, and every layer clarifies the same visual sentence |
-| Dark backgrounds | For contrast or intensity. The black canvas is the default. A light background is used only where the owner says so; which formats that covers is not decided: owner (question 14) |
+| Dark backgrounds | The black canvas is the default everywhere. No format uses a light background until the owner names one (question 14, 2026-11-17) |
 | Purple, green, orange | Allowed as pillar colours. Confirmed by the owner, question 6 |
 | A glow or gradient | The pillar glow is an allowed exception. Confirmed by the owner, question 16. Other gradient-heavy looks stay banned |
 
@@ -93,14 +93,7 @@ Selection questions:
 
 In these guidelines, "crop" means how a subject is framed in a composition. An existing media file is never cropped. It is resized with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
 
-The owner's media rule is confirmed and wins over any guideline wording. The definition is approved (question 12, 2026-11-17). Four wording changes to the guideline files were also proposed. They are held, because `brand_guidelines/` stays an untouched archive (question 5); the owner decides which wins. No guideline file is edited.
-
-| File | Current | Proposed |
-| --- | --- | --- |
-| `08_ARTWORK_FORMULAS/Editorial_Hero.md` | "a decisive crop" | "a decisive framing" |
-| `02_VISUAL_SYSTEM/13_EDITORIAL_SYSTEM.md` | "decisive crops" | "decisive framing" |
-| `03_MARKETING_SYSTEM/04_SOCIAL_MEDIA.md` | "decisive crop" | "decisive framing" |
-| `02_VISUAL_SYSTEM/02_COMPOSITION.md` | "Crop boldly at edges" | "Let the anchor run off the edge of the canvas, using a mask or frame" |
+The owner's media rule is confirmed and wins over any guideline wording. The definition is approved and lives only in this skill (question 12, 2026-11-17). The guideline files stay as they are: `brand_guidelines/` is an untouched archive, and no wording change to it is proposed.
 
 ## Editorial feel
 
