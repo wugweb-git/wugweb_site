@@ -11,6 +11,10 @@ How to read the tables. **Signal log:** no entry exists yet for any question, so
 
 Given in one pass: the unflagged questions are kept; the rows with a dash in the answer are kept with the dash removed (site fix, owner's go still needed); the rows with a number or claim needing a source are answered again from the owner's source, and stay live until then. Counts: 41 keep, 6 keep with dash removed, 10 answer again.
 
+## Where the /faq questions live (decided by strategy, owner said "let strategy decide", 2026-11-17)
+
+Option (a): the /faq questions stay typed in `src/pages/faq.astro`; only service page FAQs move to Sanity `faqs`. Reason: web engineering has just removed the field from the singleton page type, one page uses it, and ten of its rows still wait for sourced answers, so adding the field back now is work for copy that is not final. Revisit (b), the field for the /faq document only, once the answers are final and if the owner wants to edit /faq without a code change. The answers themselves still come from the owner's source and still go through this review.
+
 ## Strategy
 
 | # | Question | Signal log | Answer source | Flag | Owner: keep, answer again, cut |
