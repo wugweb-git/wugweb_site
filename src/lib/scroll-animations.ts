@@ -338,6 +338,10 @@ export function initScrollAnimations(): () => void {
     window.addEventListener('load', onLoad, { once: true });
     cleanups.push(() => window.removeEventListener('load', onLoad));
   }
+  // Late web fonts change line wrap and block heights too; refresh once they settle.
+  let alive = true;
+  cleanups.push(() => { alive = false; });
+  document.fonts?.ready.then(() => { if (alive) ScrollTrigger.refresh(); });
 
   return () => {
     cleanups.forEach((fn) => fn());
