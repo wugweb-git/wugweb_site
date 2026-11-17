@@ -1,6 +1,6 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 0.1.2 on main, 42 files, last skill commit 497a6710.
+> - Built. Version 0.1.2 on main, 42 files, last skill commit ad31bcfa.
 > - Skill file body: 1,689 words by the shared count. Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The strategy session built the upload zip; the owner uploads it.
 > - Owner rulings applied: decision 20 (link targets come from wugweb-seo inside the structure strategy sets), decision 23 (the proof map wins on which case study backs a page), brief field 9 option (a) (the brief carries wugweb-seo's keyword note unchanged), wugweb-voice may read the signal log directly, read only.
@@ -10,7 +10,11 @@
 > - Owner answers (commits c704691e, 968c14b4, 497a6710): the unapproved service-page FAQ copy may stay live during the review; the FAQ page is the one dedicated FAQ page and carries no FAQPage markup, so the line stays service pages and blog posts only; sector pages are not a link-up target, so a case study links up to its service page only and across to two or three sibling case studies.
 > - The FAQ review list is `FAQ-REVIEW.md` beside this plan: 57 typed questions (47 across the six services, 10 from the FAQ page), each for the owner to keep, answer again or cut; 10 service rows flagged.
 > - Voice rulings applied and the standing-rules copy built by script (commit 7fb744f2).
-> - Open with the owner: the keep, answer again or cut decision per FAQ question.
+> - FINAL REPORT, 2026-11-17: version 0.1.2, skill files last changed in ad31bcfa, body 1,693 words, tests pass. Evals: 3 cases with 14 graders, run by subagents from the skill alone and graded by the strategy session; 12 of 14 on the first run, 14 of 14 after one skill-side fix (calendar slot rows carry a pillar and intent; a Medium row is shown as a copy with a canonical). Not tested: topics drawn from real sources.
+> - Pillars and the claim order now point to wugweb-brand-os as their home.
+> - From the older research docs, two additions to the proof map: a metric carries its date or window and reads the same everywhere; a page backed only by text-only case studies may claim process alone and is flagged for the next case study.
+> - FAQ review decided by the owner in one pass, recorded in `FAQ-REVIEW.md`: 41 keep, 6 keep with a dash removed (a site fix that still needs his go), 10 answer again with a sourced fact (they stay live meanwhile).
+> - Open with the owner: sourced facts for the 10 answer-again rows; his go for the dash fixes and the faqs and schema site work; uploading the zip; whether the stale remote branch can be deleted. Open with wugweb-seo: decision 7 (seo decides retired URLs) is not yet confirmed in seo's files.
 
 # wugweb-strategy skill: plan (ready for vetting)
 
