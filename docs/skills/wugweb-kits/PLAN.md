@@ -8,7 +8,7 @@
 > - Design docs updated by the kits session: the sizing doc has the four sizes, the components doc marks the five blocks signed off.
 > - Token names approved by the owner for the four sizes (kits commit 8e456fc0): `--rail-width: min(85vw, 1200px)`, `--rail-peek: 20%`, `--signature-width: 2400px`, `--measure-min: 35ch`, `--measure-max: 60ch`. They are recorded in the skill only; adding them to the site stylesheet is site code and waits for his go.
 > - The typography doc now has a "Graphic Type Scale" section for decks and cards.
-> - Open: old Framer media ratios. Held until the owner says go in the kits session: the CI wiring for the token check, the GSAP note, the new tokens in the site stylesheet.
+> - Open: old Framer media ratios. Done on the owner's go in the kits session, 2026-11-17: the GSAP fix (scroll triggers refresh once fonts are ready, commit 43a64621) and the token check wired into the build as report only (a `check:tokens` script run from prebuild after the blocking sector check; it never fails the build; commit 23f57f55; 1,042 warnings on the day). The local build passes; the kits session had not yet seen it live on the staging site. Undo is a revert of those two commits. Held until the owner says go: the new size tokens in the site stylesheet, and turning the token check to blocking.
 
 > Plan for vetting, revision 24, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
