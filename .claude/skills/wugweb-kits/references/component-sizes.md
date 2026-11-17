@@ -43,3 +43,7 @@ Relayed through the coordinating session from the `wugweb-seo` rulings. Source i
 | Behance cover | 808 x 632 minimum |
 | Dribbble | 1600 wide |
 | Story | 1080 x 1920, safe zone unverified |
+
+## Card thumbnails, owner 2026-11-17
+
+One thumbnail ratio, 16/10, on every card, not only work and blog. The original file ratio is kept and the 16/10 frame is a mask on the page. Old Framer media ratios stay an open item in `layout-shell.md`.
