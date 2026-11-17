@@ -296,7 +296,7 @@ None of these were changed. Each comes to the owner as current to proposed once 
 
 ### 13. Rename: ui-system-mapper becomes wugweb-kits
 
-The existing skill is the starting point. It gets the new name and is then enhanced. Rename done 2026-11-16 on the owner's go: the renamed copy is at `.claude/skills/wugweb-kits/`, uncommitted. The installed skill is untouched. Enhancements are not made.
+The existing skill is the starting point. It gets the new name and is then enhanced. Rename done 2026-11-16 on the owner's go: the renamed copy is at `.claude/skills/wugweb-kits/`, on `main`. The installed skill is untouched. Enhancement built 2026-11-17 on the owner's go (commits 18fa8b9f and dca682ce): SKILL.md reconciled, 26 shell, label and kits rule files, references, scripts, and the six defects in section 20 fixed. Version stays 1.0.0 until the owner decides.
 
 **Baseline that carries over.**
 
