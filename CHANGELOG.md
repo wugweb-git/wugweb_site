@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy skill 0.1.2 (2026-11-17)
+- Owner answers applied: brief field 9 pasted from wugweb-seo unchanged; wugweb-voice may read the signal log directly, read only. Exports rebuilt.
+
 - feat(skills): wugweb-brand-os merged: the branch first draft folded into main's app copy (main's text as base), one evals file (evals.json, 38 cases), one export, checks passed.
 
 - docs(skills): wugweb-brand-os plan (Notion page and PLAN.md) updated to say the first draft 0.1.0 is built, not yet pushed to main.

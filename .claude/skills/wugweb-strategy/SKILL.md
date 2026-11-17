@@ -2,7 +2,7 @@
 name: "wugweb-strategy"
 description: "This skill should be used when the user asks \"what should we write next\", \"plan the content calendar\", \"plan the social calendar\", \"write a brief for\", \"brief wugweb-work on\", \"plan a campaign\", \"plan the launch posts\", \"which case study backs this page\", \"should this post be refreshed or retired\", \"review the blog\", \"plan the repurposing\", \"plan the newsletter\", \"what did last month's posts tell us\", or \"set the pillar mix\" for Wugweb. It governs content strategy only: topics, pillar mix, the editorial and social calendar, briefs handed to wugweb-work, piece structures, editorial standards, content models, the proof map, refresh or retire decisions, campaign and repurposing plans, and reading post results for the next plan. It writes no piece and does not cover brand strategy: positioning, values, audience definition and the messaging framework belong to wugweb-brand-os."
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # wugweb-strategy
@@ -111,7 +111,7 @@ Every link reads the same on both sides.
 | `wugweb-work` | Finished pieces, return notes, post results | Briefs, the calendar, the proof map, repurposing and campaign plans, refresh or retire decisions | Write or edit copy, choose screens, set layout, publish |
 | `wugweb-seo` | Site keyword and intent map, topic gaps, refresh list, link targets, link rules and link audit, search reports, what a retired URL does | Business goal, audience, page list, the pillar and cluster structure, the proof map, retire proposals | Change keywords, titles, link rules, on-page rules or a retired URL's behaviour |
 | `wugweb-brand-os` | Positioning, audiences, messaging framework, approved facts | Requests only | Restate or alter any of it |
-| `wugweb-voice` | Nothing directly | Nothing | Set tone or phrasing; `wugweb-work` passes audience, purpose and form to voice |
+| `wugweb-voice` | Nothing | The signal log, read only | Set tone or phrasing; `wugweb-work` passes audience, purpose and form to voice |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
 
 Internal links (decision 20): this skill sets the pillar and cluster structure and the proof map. `wugweb-seo` returns the link targets for each piece, owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result. If the proof map names a case study for a page, it wins on that case study (decision 23); `wugweb-seo` picks the other targets around it.

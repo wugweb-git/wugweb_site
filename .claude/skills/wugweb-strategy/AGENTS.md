@@ -1,4 +1,4 @@
-# wugweb-strategy (single-file export for other tools, v0.1.1)
+# wugweb-strategy (single-file export for other tools, v0.1.2)
 
 Built from the files in this folder. Rebuild whenever the skill or `docs/skills/STANDING-RULES.md` changes. Read the skill first, then the reference a mode names.
 
@@ -188,7 +188,7 @@ Every link reads the same on both sides.
 | `wugweb-work` | Finished pieces, return notes, post results | Briefs, the calendar, the proof map, repurposing and campaign plans, refresh or retire decisions | Write or edit copy, choose screens, set layout, publish |
 | `wugweb-seo` | Site keyword and intent map, topic gaps, refresh list, link targets, link rules and link audit, search reports, what a retired URL does | Business goal, audience, page list, the pillar and cluster structure, the proof map, retire proposals | Change keywords, titles, link rules, on-page rules or a retired URL's behaviour |
 | `wugweb-brand-os` | Positioning, audiences, messaging framework, approved facts | Requests only | Restate or alter any of it |
-| `wugweb-voice` | Nothing directly | Nothing | Set tone or phrasing; `wugweb-work` passes audience, purpose and form to voice |
+| `wugweb-voice` | Nothing | The signal log, read only | Set tone or phrasing; `wugweb-work` passes audience, purpose and form to voice |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
 
 Internal links (decision 20): this skill sets the pillar and cluster structure and the proof map. `wugweb-seo` returns the link targets for each piece, owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result. If the proof map names a case study for a page, it wins on that case study (decision 23); `wugweb-seo` picks the other targets around it.
@@ -339,7 +339,7 @@ Take ideas from these sources, in this order of weight:
 
 ## The signal log
 
-A list of what readers ask and object to, in their own words. It lives here; `wugweb-voice` reads it.
+A list of what readers ask and object to, in their own words. It lives here; `wugweb-voice` may read it directly but may not edit it (owner decision 2026-11-17).
 
 | Field | Rule |
 | --- | --- |
@@ -452,7 +452,7 @@ One brief per piece, one page long, handed to `wugweb-work`. It says what the pi
 | 6 | Outcome | One action wanted from the reader |
 | 7 | Piece structure | A pointer to one structure in `piece-structures.md` |
 | 8 | Points the piece must make | Up to five, as plain notes. No headings, no copy |
-| 9 | Search | The cluster and primary phrase from the `wugweb-seo` site map, copied unchanged. `wugweb-work` asks `wugweb-seo` for the per-brief keyword notes and limits |
+| 9 | Search | Pasted from `wugweb-seo` unchanged: its keyword note for this piece (cluster, primary phrase, limits). This skill never restates a search rule (owner decision 2026-11-17) |
 | 10 | Links | Which service pages, posts and case studies it links to. Pasted from `wugweb-seo` unchanged: the link targets for this piece, picked inside the pillar and cluster structure this skill sets (decision 20). The proof map decides which case study backs the page (decision 23) |
 | 11 | Source | The Notion row. For a refresh: the keep, change and remove list |
 | 12 | Must not say | Permissions not given, sensitive clients, claims with no source |
@@ -943,7 +943,7 @@ Optional helper skills per mode, and what each may not do. Every mode works with
 | `wugweb-work` | Takes briefs and plans; returns pieces, return notes, post results. Its Brief mode is for client work only (decision 4) |
 | `wugweb-seo` | Gives the site map, topic gaps, refresh list, link targets, link rules and audit, search reports, retired-URL behaviour. Takes goal, audience, page list, the pillar and cluster structure, the proof map, retire proposals |
 | `wugweb-brand-os` | Gives positioning, audiences, messaging, approved facts. Takes requests only |
-| `wugweb-voice` | No direct link. Reads the signal log |
+| `wugweb-voice` | Reads the signal log directly (owner decision 2026-11-17). Read only: it may not edit the log. No other link |
 | `wugweb-kits` | No link. Its pending blocks are a calendar dependency |
 
 ## Helpers per mode
