@@ -244,9 +244,11 @@ session.
 - **Full-bleed stage**: `100vw` with `margin-left: calc(50% - 50vw)`; needs
   `overflow: clip` on an ancestor and breaks inside any ancestor carrying
   `transform` / `filter` / `contain`.
-- **Height** is `calc(100vh - var(--site-header-h, 6.125rem))`, so a stage
-  scrolled to the top still shows its own eyebrow instead of parking it under
-  the sticky header (measured at 98px).
+- **Height** is `calc(100svh - var(--header-height))`, then the same with `dvh`
+  (7ebb3e72), so a stage scrolled to the top still shows its own eyebrow instead
+  of parking it under the sticky header. The header is 100px on mobile and 108px
+  from 768 up, from its formula in `layout-shell.md`. The old
+  `--site-header-h` was never defined and always fell back to 98px.
 - **`min-height: 0` on `.pm-scroll` is load-bearing** — without it a flex item
   refuses to shrink below its content, and the map overflows the stage instead
   of fitting inside it. That was the first full-bleed attempt's bug: chips cut

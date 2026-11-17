@@ -31,7 +31,7 @@ export interface SpotlightItem {
 
 interface Props {
   items: SpotlightItem[];
-  /** Two-column layout above 1024px — for pillars with long lists (Engineering has 20). */
+  /** Two-column layout from 1200px (the shell's desktop tier), for pillars with long lists (Engineering has 20). */
   dense?: boolean;
   /** Used to build each row's heading id (`cap-${idPrefix}-${index}`) for aria-labelledby. */
   idPrefix?: string;
@@ -64,18 +64,41 @@ const withMedia = items.filter((it) => it.media);
       <div class="showcase-card" data-card={it.index}>
         <span class="showcase-media">
           {it.media ? (
-            <video aria-hidden="true"
-              class="showcase-video"
-              data-video
-              src={it.media.video}
-              poster={it.media.poster}
-              preload="none"
-              muted
-              loop
-              playsinline
-              tabindex="-1"
-              aria-hidden="true"
-            ></video>
+            <>
+              {/* Hidden from assistive tech until its metadata shows it runs
+                  over 5s; then the script drops aria-hidden, gives it the
+                  label below and reveals the pause control. */}
+              <video
+                class="showcase-video"
+                data-video
+                data-label={`${it.title} clip`}
+                src={it.media.video}
+                poster={it.media.poster}
+                preload="none"
+                muted
+                loop
+                playsinline
+                tabindex="-1"
+                aria-hidden="true"
+              ></video>
+              <button
+                type="button"
+                class="showcase-pause"
+                data-pause
+                data-label-pause={`Pause ${it.title} clip`}
+                data-label-play={`Play ${it.title} clip`}
+                aria-label={`Pause ${it.title} clip`}
+                hidden
+              >
+                <svg class="showcase-pause-icon" data-icon="pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <rect x="4" y="3" width="3" height="10" rx="1" />
+                  <rect x="9" y="3" width="3" height="10" rx="1" />
+                </svg>
+                <svg class="showcase-pause-icon" data-icon="play" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5 3.5v9a.75.75 0 0 0 1.14.64l7.2-4.5a.75.75 0 0 0 0-1.28l-7.2-4.5A.75.75 0 0 0 5 3.5Z" />
+                </svg>
+              </button>
+            </>
           ) : (
             <span class="showcase-placeholder" aria-hidden="true">
               <span class="showcase-placeholder-n">{it.n}</span>
@@ -196,7 +219,9 @@ const withMedia = items.filter((it) => it.media);
     gap: var(--gap-2);
     border-radius: var(--radius-2xl);
   }
-  @media (min-width: 1024px) {
+  /* The shell's desktop tier (1200). Below it a dense list stays one column
+     at 48rem, the same stacked layout every other pillar uses at 768 to 1199. */
+  @media (min-width: 1200px) {
     .showcase-panel[data-dense] { max-width: 76rem; grid-template-columns: 1fr 1fr; gap: var(--gap-2) var(--gap-6); }
   }
 
@@ -240,6 +265,55 @@ const withMedia = items.filter((it) => it.media);
     display: block;
     opacity: var(--opacity-90);
     transition: opacity var(--duration-slow) var(--easing-smooth);  }
+
+  /* Pause control for clips over 5s (kits-gsap-owns-motion). Rendered hidden;
+     the script reveals it once the clip's duration is known. It sits above
+     the row's overlay toggle so it takes its own clicks, and it only paints
+     on the active row, or while it has keyboard focus. */
+  .showcase-pause {
+    position: absolute;
+    inset-inline-end: var(--gap-1);
+    bottom: var(--gap-1);
+    z-index: var(--layer-dropdown);
+    width: var(--control-size);
+    height: var(--control-size);
+    display: grid;
+    place-items: center;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--neutral-9) 60%, transparent);
+    backdrop-filter: var(--glass-light);
+    -webkit-backdrop-filter: var(--glass-light);
+    color: var(--fg);
+    cursor: var(--cursor-pointer);
+    opacity: var(--opacity-0);
+    pointer-events: none;
+  }
+  .showcase-pause[hidden] { display: none; }
+  .showcase-card:hover .showcase-pause,
+  .showcase-card:focus-within .showcase-pause,
+  .showcase-card.is-open .showcase-pause {
+    opacity: var(--opacity-100);
+    pointer-events: auto;
+  }
+  .showcase-pause:focus { outline: none; }
+  .showcase-pause:focus-visible {
+    opacity: var(--opacity-100);
+    outline: var(--focus-button);
+    /* Inset: .showcase-media clips its overflow, so an outset ring would be cut. */
+    outline-offset: calc(var(--focus-offset) * -1);
+  }
+  .showcase-pause-icon {
+    width: var(--chip-glyph);
+    height: var(--chip-glyph);
+    fill: currentColor;
+    display: block;
+  }
+  .showcase-pause[data-state='paused'] [data-icon='pause'],
+  .showcase-pause:not([data-state='paused']) [data-icon='play'] { display: none; }
 
   .showcase-placeholder {
     display: flex;

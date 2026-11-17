@@ -40,43 +40,35 @@
   --ts-caption-size: 0.75rem;    /* 12px */
   --ts-code-size: 0.875rem;      /* 14px */
 
-  /* Fluid type scale (Kits §3.5) — primary sizes for marketing pages */
-  /* Re-anchored 2026-09-23 (UI audit §4.1). The previous scale's vw terms were
-     far too small relative to its minimums, so every tier sat on its floor
-     until roughly 580-640px - on every phone the scale was effectively static
-     AND smaller than the old site. The worst case was --fluid-caption, whose
-     0.05vw meant it stayed at 10px until about 2500px; that is the 10.1px
-     eyebrow measured on the live homepage against the old site's 12px.
-
-     These anchor min at 360px and max at 1280px - the same point the width
-     lock uses - and hold beyond it. Nothing grows past the max width (see
-     :root below).
-
-     Note this deliberately overrides kits_design_system/docs/tokens/
-     typography.md, which documents the old values. The audit says Kits wins
-     on conflicts; here Kits IS the defect, so the doc follows the code. */
-  --fluid-display: clamp(2.5rem, 5.5vw + 0.5rem, 5rem);        /* 48→80 · 800 */
-  --fluid-h1: clamp(2rem, 4vw + 0.5rem, 3rem);          /* 36→48 · 700 */
-  --fluid-h2: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);      /* 30→36 · 600 */
-  --fluid-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);      /* 21→24 · 600 */
-  --fluid-h4: clamp(1.06rem, 1vw + 0.5rem, 1.375rem);      /* 18→20 · 600 */
-  /* NOT in kits typography.md, which runs display -> h4 then straight to body.
-     But --t-h5 has 14 uses — more than --t-h4 — so the step is real and needed.
+  /* Fluid type scale (Kits §3.5), primary sizes for marketing pages.
+     The values match kits_design_system/docs/tokens/typography.md: fa803be4
+     reverted the 2026-09-23 re-anchor (which had moved display to 48, h1 to
+     36 and caption to 12 at the minimum) back to the documented scale. Two
+     tiers differ from the doc on purpose, h5 (not in the doc) and body-lg;
+     their notes say why. Each tier holds at its max past the width lock, so
+     nothing grows past the max width (see :root below). */
+  --fluid-display: clamp(2.5rem, 5.5vw + 0.5rem, 5rem);        /* 40→80 · 800 */
+  --fluid-h1: clamp(2rem, 4vw + 0.5rem, 3rem);          /* 32→48 · 700 */
+  --fluid-h2: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);      /* 24→36 · 600 */
+  --fluid-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);      /* 20→28 · 600 */
+  --fluid-h4: clamp(1.06rem, 1vw + 0.5rem, 1.375rem);      /* 17→22 · 600 */
+  /* NOT in kits typography.md, which runs display to h4 then straight to body.
+     But --t-h5 has more uses than --t-h4, so the step is real and needed.
      Curve chosen to stay below h4 at EVERY width: the old code value crossed it
      (18.89 vs 18.24 at 1024px), which is the same defect that made the previous
-     scale wrong. 16px -> 19px. */
-  --fluid-h5: clamp(1rem, 0.6vw + 0.7rem, 1.1875rem);          /* 16→20 · 600 */
-  /* 16 -> 18px, NOT the documented 16 -> 20px. The documented curve crosses
-     --fluid-h4 between roughly 590 and 1250px — lead body text rendering LARGER
-     than a heading (19.1 vs 18.2 at 1024px). A heading must never be smaller
-     than the body text beneath it, and that invariant outranks either specific
-     curve, so the lead size gives way and the heading scale is untouched.
-     Verified below h4 at 320/375/480/592/768/1024/1280/1440/1920px. */
+     scale wrong. 16px to 19px. */
+  --fluid-h5: clamp(1rem, 0.6vw + 0.7rem, 1.1875rem);          /* 16→19 · 600 */
+  /* 16 to 18px, NOT the documented 16 to 20px. The documented curve crosses
+     --fluid-h4 between roughly 590 and 1250px, so lead body text would render
+     LARGER than a heading (19.1 vs 18.2 at 1024px). A heading must never be
+     smaller than the body text beneath it, and that invariant outranks either
+     specific curve, so the lead size gives way and the heading scale is
+     untouched. Verified below h4 at 320/375/480/592/768/1024/1280/1440/1920px. */
   --fluid-body-lg: clamp(1rem, 0.25vw + 0.9rem, 1.125rem);    /* 16→18 · 400 */
-  --fluid-body-md: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);    /* 14→16 · 400 */
+  --fluid-body-md: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);    /* 15→16 · 400 */
   --fluid-body-sm: clamp(0.8125rem, 0.1vw + 0.8rem, 0.875rem);/* 13→14 · 400 */
-  --fluid-label: clamp(0.75rem, 0.1vw + 0.73rem, 0.875rem);                                           /* 16 flat · 500 */
-  --fluid-caption: clamp(0.625rem, 0.05vw + 0.62rem, 0.75rem); /* 12→14 · 400 */
+  --fluid-label: clamp(0.75rem, 0.1vw + 0.73rem, 0.875rem);   /* 12→14 · 500 */
+  --fluid-caption: clamp(0.625rem, 0.05vw + 0.62rem, 0.75rem); /* 10→12 · 400 */
 
   /* Graphic display tier (UI audit §4.2) — for type used as a graphic, not
      for reading. Sizes to its CONTAINER (cqi), never to the viewport, so a
@@ -610,10 +602,6 @@
   --focus-offset: 2px;
 
   /* Component sizes (documented in kits sizing.md) */
-  /* Audit §3: one fluid inset for the nav and any shell-level gutter,
-     replacing the old site's stepped 16/32/20 which reversed at desktop. */
-  --shell-inset: clamp(1rem, 0.4rem + 1.7vw, 2rem);
-
   /* Section gutter — the single horizontal inset for the whole page.
      16 mobile / 32 tablet / 48 desktop, per layout-shell.md. Stepped rather
      than clamped because the spec gives three discrete values, not a curve. */
@@ -840,7 +828,7 @@ h6 {
   /* Below the --gap grid on purpose — the smallest step (--gap-1, 4px) still
      read as roomy on a one-word label this size. */
   padding: 0.1875rem 0.375rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   transition: background var(--duration-fast) var(--easing-out),
               color var(--duration-fast) var(--easing-out);
 }
@@ -1176,11 +1164,18 @@ a[href^='tel:']:not(.no-external-icon)::after {
     --article-areas: "cover hero" "cover body";
     --article-column: none;
     --article-cover-ratio: auto;
-    --article-cover-height: calc(100vh - var(--header-height) - var(--gap-8));
+    /* svh first, dvh where supported (kits shell-safe-areas-and-hero). A
+       custom property takes its last declaration even when the unit is
+       unknown, so the dvh value sits behind @supports instead of a second
+       line here. */
+    --article-cover-height: calc(100svh - var(--header-height) - var(--gap-8));
     --article-cover-position: sticky;
     --article-title-size: var(--t-h1);
     --space-section-xs: 96px; --space-section-sm: 96px; --space-section-md: 96px;
     --space-section-lg: 96px; --space-section-xl: 96px;
+  }
+  @supports (height: 100dvh) {
+    :root { --article-cover-height: calc(100dvh - var(--header-height) - var(--gap-8)); }
   }
 }
 
@@ -1344,13 +1339,6 @@ section:not(section section) > .wrap { padding-block: 0 !important; }
   align-items: center;
   gap: var(--gap-6);
 }
-.btn-partners-cta {
-  background: var(--accent);
-  color: var(--neutral-10);
-  border-color: var(--accent);
-  display: inline-flex;
-}
-.btn-partners-cta:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 
 .global-blog-teaser {
   padding-block: var(--space-section-md);
@@ -1363,22 +1351,8 @@ section:not(section section) > .wrap { padding-block: 0 !important; }
   flex-wrap: wrap;
   gap: var(--gap-4);
 }
-.global-blog-list {
-  list-style: none;
-  margin: var(--gap-8) 0 0;
-  padding: 0;
-  display: grid;
-  gap: var(--gap-4);
-}
-@media (min-width: 768px) {
-  .global-blog-list { grid-template-columns: repeat(3, 1fr); gap: var(--gap-6); }
-}
-.global-blog-list li { border-top: var(--stroke-thin) solid var(--line); padding-top: var(--gap-4); }
 .blog-teaser-media { display: block; margin: 0 0 var(--gap-3); }
 .blog-teaser-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--r-2); }
-.global-blog-list .eyebrow { display: block; margin-bottom: var(--gap-1); }
-.global-blog-list a { display: block; margin-top: var(--gap-2); text-decoration: none; color: var(--fg); }
-.global-blog-list a:hover { color: var(--accent); }
 
 /* Visually hidden, still read out — used by FooterCTA.astro's
    social-disc labels. */

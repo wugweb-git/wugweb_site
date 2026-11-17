@@ -388,18 +388,20 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
 
 <style>
   /* ---- full-bleed stage ----
-     The section is its own viewport: 100vw wide, 100vh tall, with the block
+     The section is its own viewport: 100vw wide, one screen tall, with the block
      filling it. The 100vw bleed needs `overflow: clip` on an ancestor and
      breaks inside any ancestor carrying transform / filter / contain — the
      same constraint the Ambient Backdrop Layer documents. */
   .process-map-section {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    /* 100vh minus the sticky header, so a stage scrolled to the top of the
-       viewport still shows its own eyebrow instead of parking it under the
-       nav. `--site-header-h` is measured once at runtime; the fallback is the
-       header's current height. */
-    min-height: calc(100vh - var(--site-header-h, 6.125rem));
+    /* One screen minus the sticky header, so a stage scrolled to the top of
+       the viewport still shows its own eyebrow instead of parking it under the
+       nav. `--header-height` is derived in global.css (100px mobile, 108px
+       from 768), so this tracks the header per breakpoint. svh first, dvh
+       where supported (kits shell-safe-areas-and-hero). */
+    min-height: calc(100svh - var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
     padding: var(--gap-6) max(var(--shell-gutter), calc((100% - 1200px) / 2));
     display: flex;
   }
@@ -456,7 +458,7 @@ const uid = `pm-${Math.random().toString(36).slice(2, 8)}`;
        chance to scroll. */
     min-width: 0;
     /* min-height:0 is load-bearing: without it a flex item refuses to shrink
-       below its content, and the map overflows the 100vh stage instead of
+       below its content, and the map overflows the full-height stage instead of
        fitting inside it. */
     min-height: 0;
     align-items: center; justify-content: center;

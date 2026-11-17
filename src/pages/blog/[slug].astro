@@ -183,6 +183,9 @@ const shareLinks = [
       body in a centred reading column; lg puts a sticky cover on the left
       (5 of 12) beside the hero and body (7 of 12). Posts without a cover
       stay a single column at every breakpoint. */}
+  {/* The post itself. The article wraps the grid section rather than replacing
+      it, so the grid and the section scroll-flow index stay as they were. */}
+  <article class="post-article">
   <section class:list={['wrap', 'post-layout', { 'has-cover': !!coverImageUrl }]} id="article" style={`--accent: ${accent}`} aria-labelledby="article-hero-title" lang={post.language || undefined}>
     <header class="post-hero" id="article-hero">
       <h1 id="article-hero-title" data-reveal>{post.title}</h1>
@@ -289,6 +292,7 @@ const shareLinks = [
     )}
     </div>
   </section>
+  </article>
 
   {relatedPosts.length > 0 && (
     <section class="wrap article-related" id="related-posts" aria-labelledby="related-posts-title">

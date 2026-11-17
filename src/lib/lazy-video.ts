@@ -17,6 +17,10 @@
  *
  * Videos that are genuinely above the fold (page heroes) keep plain `autoplay`
  * in the markup and are not handled here.
+ *
+ * Reduced motion (kits-gsap-owns-motion: all loops stop under reduced motion):
+ * the lazy attach still runs, so the poster or first frame shows, but nothing
+ * is ever played, and only metadata is fetched. Same check as bento-block.ts.
  */
 
 const NEAR_VIEWPORT = '600px';
@@ -32,6 +36,15 @@ export function initLazyVideo(): () => void {
   // No IntersectionObserver (or reduced data preference): attach everything
   // rather than leaving blank boxes. Correctness beats the optimisation.
   const saveData = (navigator as any)?.connection?.saveData === true;
+  const motionQuery = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  const reduced = () => motionQuery?.matches === true;
+
+  // The single way this file starts playback. Under reduced motion it is a no-op.
+  function play(v: HTMLVideoElement) {
+    if (reduced()) return;
+    v.play?.().catch(() => {});
+  }
+
   if (!('IntersectionObserver' in window)) {
     videos.forEach(attach);
     return () => {};
@@ -40,8 +53,9 @@ export function initLazyVideo(): () => void {
   function attach(v: HTMLVideoElement) {
     if (v.dataset.src && !v.src) {
       v.src = v.dataset.src;
-      // Only now is a network request worth making.
-      v.preload = 'auto';
+      // Only now is a network request worth making. Under reduced motion the
+      // video never plays, so metadata (enough for the first frame) is all it needs.
+      v.preload = reduced() ? 'metadata' : 'auto';
     }
   }
 
@@ -62,9 +76,9 @@ export function initLazyVideo(): () => void {
           // wait for loadeddata on the first attach, and play directly only
           // when the source is already there (scrolling back to a seen card).
           if (wasAttached) {
-            v.play?.().catch(() => {});
+            play(v);
           } else {
-            v.addEventListener('loadeddata', () => v.play?.().catch(() => {}), { once: true });
+            v.addEventListener('loadeddata', () => play(v), { once: true });
           }
         } else {
           // Pausing offscreen stops decoding work on long grids. The file is
@@ -79,7 +93,7 @@ export function initLazyVideo(): () => void {
   // saveData: attach on demand only, never speculatively.
   if (saveData) {
     videos.forEach((v) => {
-      v.addEventListener('click', () => { attach(v); v.play?.().catch(() => {}); }, { once: true });
+      v.addEventListener('click', () => { attach(v); play(v); }, { once: true });
     });
     return () => {};
   }
@@ -111,12 +125,16 @@ export function initLazyVideo(): () => void {
       const visible = r.bottom > 0 && r.top < (window.innerHeight || 0) && r.width > 0;
       if (!visible) continue;
       attach(v);
-      v.addEventListener('loadeddata', () => v.play?.().catch(() => {}), { once: true });
+      v.addEventListener('loadeddata', () => play(v), { once: true });
     }
   };
 
   const onVisible = () => { if (document.visibilityState === 'visible') sweep(); };
   document.addEventListener('visibilitychange', onVisible);
+
+  // Turning reduced motion on mid-visit stops anything already playing.
+  const onMotionChange = () => { if (reduced()) videos.forEach((v) => v.pause?.()); };
+  motionQuery?.addEventListener?.('change', onMotionChange);
 
   /**
    * A single sweep three seconds in only rescues what happens to be on screen
@@ -156,6 +174,7 @@ export function initLazyVideo(): () => void {
   return () => {
     io.disconnect();
     document.removeEventListener('visibilitychange', onVisible);
+    motionQuery?.removeEventListener?.('change', onMotionChange);
     if (onScroll) {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);

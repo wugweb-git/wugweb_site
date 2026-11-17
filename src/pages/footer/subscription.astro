@@ -1161,7 +1161,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
   }
 
   .queue-item.active {
-    background-color: rgba(255, 190, 26, 0.04);
+    background-color: color-mix(in srgb, var(--color-accent-primary) 4%, transparent);
   }
 
   .queue-item.active .item-title {
@@ -1402,7 +1402,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
 
   .iq-row.active {
     border-color: var(--color-accent-primary);
-    background-color: rgba(255, 190, 26, 0.02);
+    background-color: color-mix(in srgb, var(--color-accent-primary) 2%, transparent);
   }
   .iq-row.active .iq-status { color: var(--color-accent-primary); }
   .iq-row.active .iq-title { color: var(--color-text-primary); font-weight: var(--font-weight-medium); }
@@ -2507,7 +2507,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
     left: 0;
     bottom: 0;
     width: 70%;
-    background: var(--gradient-brand);
+    background: var(--color-accent-primary);
     animation: barFill 2s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;  }
 
   @keyframes barFill {
@@ -2550,7 +2550,7 @@ const description = page?.seoDescription || 'Your digital team, on subscription.
   }
 
   .card-mid {
-    background: var(--gradient-brand);
+    background: linear-gradient(135deg, var(--svc-brand), var(--svc-brand-light));
     transform: rotate(8deg) translate(15px, -5px);
     opacity: var(--opacity-70);
   }

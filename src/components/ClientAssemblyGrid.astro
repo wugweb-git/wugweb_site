@@ -83,11 +83,12 @@ const clientLogos = logos.length
 
 <style>
   /* Full-screen band: one viewport tall, full viewport wide, content centred.
-     `dvh` so mobile browser chrome collapsing does not clip it, and `min-height`
+     `dvh` (with an `svh` fallback) so mobile browser chrome collapsing does
+     not clip it, and `min-height`
      rather than `height` so the section can still grow if the logo set outruns
      the screen instead of cutting logos off. */
   .logos-band {
-    min-height: 100vh;
+    min-height: 100svh;
     min-height: 100dvh;
     width: 100%;
     display: grid;
