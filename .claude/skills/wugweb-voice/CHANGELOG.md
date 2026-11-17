@@ -2,6 +2,8 @@
 
 ## [0.3.0] 2026-11-17
 
+- Two candidates recorded in `references/voice.md` (C-05 not decorative or hype-driven, C-06 outcomes over hype), from `brand_guidelines/`. Candidates only; not applied, not flagged. No version change.
+
 - Eval run, 2026-11-17: fixes only, no version change. `scripts/check.mjs` now returns fail when a number or quote has no source supplied (new `--sources` flag for when the caller has given them); `SKILL.md` and `references/words.md` say to raise unruled filler candidates and never drop them in a rewrite. `scripts/test.mjs` updated.
 
 - Fix, no version change: `references/modes.md` linkedin-post row said "First person plural", which clashed with the owner's we or I ruling. It now says the pronoun is his pick per piece.

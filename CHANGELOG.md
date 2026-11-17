@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-voice: two brand_guidelines candidates recorded (2026-11-17)
+- `.claude/skills/wugweb-voice/references/voice.md`: C-05 and C-06 added as candidates (waiting on the owner). No rule applied; version stays 0.3.0.
+
 ### Changed — wugweb-work Section separator named; pending.md skill state (2026-11-17)
 - Body standard names `Section: <chapter> | <label>`. pending.md now says the skill is 0.5.0 and Part 2 step 2 is on its branch.
 

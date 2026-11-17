@@ -229,6 +229,8 @@ Not applied. Each waits on the owner's ruling, and is shown to him as current â†
 | C-02 | "Tone in one line: a senior practitioner explaining what was built and why, to a peer" | Same | Waiting on ruling |
 | C-03 | Copy and messaging lines in `brand_guidelines/` | `brand_guidelines/03_MARKETING_SYSTEM/14_COPY_GUIDELINES.md`, `02_MESSAGING_FRAMEWORK.md` | Not yet read in full |
 | C-04 | Sanity "Brand voice" draft | Sanity site settings | Not yet read in full; marks its own audience line as inferred |
+| C-05 | "Not decorative or hype-driven": use words that describe systems and relationships, not decorative or hype-driven language | `brand_guidelines/01_FOUNDATION/VOCABULARY.md` (line 22); routed 2026-11-17 by `wugweb-brand-os`'s audit via the coordinator | Waiting on the owner's ruling; put to him with the other candidates |
+| C-06 | "Outcomes over hype": prefer claims about outcomes, decisions, systems and experiences over hype | `brand_guidelines/03_MARKETING_SYSTEM/14_COPY_GUIDELINES.md` (line 5); same routing | Waiting on the owner's ruling; put to him with the other candidates |
 
 Helper skill advice is not listed here as rules. The plan's "Extracted and absorbed" table records what helpers offer; each item enters this table only when a sample or the owner backs it.
 
