@@ -35,11 +35,11 @@ Source of truth: `src/styles/global.css` `:root`. Never hardcode spacing.
 
 | Token | Value |
 |---|---|
-| `--space-section-xs` | `32px` |
-| `--space-section-sm` | `40px` |
-| `--space-section-md` | `48px` |
-| `--space-section-lg` | `64px` |
-| `--space-section-xl` | `80px` |
+| `--space-section-xs` … `--space-section-xl` | `48px` mobile, `70px` at 768, `96px` at 1200 |
+
+All five names carry the same value: there is one section rhythm, 48 / 70 / 96, set in
+`global.css` and specified in `layout-shell.md`. The old 32 / 40 / 48 / 64 / 80 ladder is
+retired.
 
 ## Page Gutter (`--space-page-*`)
 

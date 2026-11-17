@@ -29,6 +29,6 @@ The Wugweb design system. **Single source of truth for design documentation, com
 2. **Breakpoints:** use literal pixel values in `@media` (custom properties in tokens are documentation-only).
 3. **Buttons** = `--radius-sm` (8px) · **chips/tags/pills** = `--radius-full` (9999px).
 4. **Yellow is a brand accent**, never a primary UI surface (≤10% per page). Primary interface stays grey / ash / dark surfaces.
-5. **Secondary Colors:** Peach (`#E54F30`), Green (`#3ED219`), Blue (`#2368D7`), Aqua (`#09E2C0`).
+5. **Pillar colours** (owner ruling 2026-11-17, all six stand): Strategy `#FA4108`, Brand `#E6309F`, Experience `#09E2C0`, Engineering `#2167E9`, Growth `#3ED219`, Operations `#7A4DFF` (`--svc-*`). Accent primary is grey (`--neutral-2`); yellow only on the one conversion action and the footer banner.
 6. **Animations go through GSAP** (`src/lib/scroll-animations.ts`) — `[data-reveal]` / `[data-scroll]` / `data-reveal-delay`. No `motion` library imports.
 7. **Mobile-first** — design and build for mobile viewports, enhance up.

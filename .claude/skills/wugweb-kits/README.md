@@ -22,10 +22,10 @@ wugweb-kits/
 │   ├── component-*.md  4 rules · HIGH
 │   ├── reuse-*.md      4 rules · MEDIUM-HIGH
 │   ├── spec-*.md       4 rules · MEDIUM
-│   ├── shell-*.md      11 rules · HIGH
+│   ├── shell-*.md      12 rules · HIGH
 │   ├── label-*.md      8 rules · HIGH
-│   └── kits-*.md       10 rules · HIGH
-├── references/         layout-shell, component-sizes, six-layers, spec-templates, known-doc-clashes, standing-rules
+│   └── kits-*.md       17 rules · HIGH
+├── references/         layout-shell, component-sizes, six-layers, spec-templates, known-doc-clashes, media-and-widgets, consolidation-targets, standing-rules
 ├── evals/run.mjs       17 eval cases (pass, fail, blocked)
 └── scripts/
     ├── lib.mjs         shared frontmatter + rule parsing

@@ -1,6 +1,6 @@
 # Service Spotlight Panel
 
-**Status:** built, awaiting sign-off · **Live on:** `/services/brand` only
+**Status:** built, signed off by the owner (2026-11-17) · **Live on:** `/services/brand` only
 **Source:** `src/pages/services/[slug].astro` (inline — see [Recycling](#recycling))
 **Data:** `src/lib/service-media.ts` · `src/lib/service-copy.ts`
 **Last verified:** 2026-09-04

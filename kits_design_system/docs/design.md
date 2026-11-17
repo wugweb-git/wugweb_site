@@ -34,7 +34,7 @@ The full token reference lives in [`tokens/tokens.md`](tokens/tokens.md). The UI
 ## Core Rules
 
 1. **Always Use Tokens**: Never hardcode hex colors, typography sizes, spacing rems, border radius, opacity, shadows, blur, or z-index in CSS.
-2. **Breakpoints**: Use literal pixel values in `@media` queries (`768px`, `1024px`, `1280px`). Tokens in `breakpoints.md` are documentation constants.
+2. **Breakpoints**: Use literal pixel values in `@media` queries (480, 640, 768, 1024, 1200; shell steps only at 768 and 1200, per `tokens/layout-shell.md`). 1280 is retired. Tokens in `breakpoints.md` are documentation constants.
 3. **Border Radius Consistency**: Buttons = `--radius-sm` (8px), chips/tags/pills = `--radius-full` (9999px), cards = `--radius-lg` (16px), hero/elevated panels = `--radius-2xl` (24px).
 4. **Yellow Accent Rule**: Yellow (`--color-yellow`: `#FFBE1A`) is a brand accent, **never a primary background surface**. Capped at ≤10% visual area per page.
 5. **GSAP Motion Engine**: Animations run through GSAP (`src/lib/scroll-animations.ts`) using `[data-reveal]` and `[data-scroll]` attributes. No `motion` framework imports.

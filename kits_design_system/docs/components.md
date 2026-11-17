@@ -127,8 +127,8 @@ itself so every tier and size inherits them:
 ### 2. Service Detail Bento Grid — `src/pages/services/[slug].astro`
 - **Purpose**: Dynamic service pillar showcase with capability groups, toolkits, approach steps, and related work.
 - **Tokens & Dynamic Engine**:
-  - Pillar Theme Variables: `--theme-base`, `--theme-dark`, `--theme-light`, `--theme-glow` dynamically injected per service slug
-  - Dynamic Hero: Glowing radial gradient background (`var(--theme-glow)`), 16:9 poster preview
+  - Pillar Theme Variables: `--theme-base`, `--theme-dark`, `--theme-light`, `--theme-gradient` injected per service slug (`--theme-glow` is not defined in code)
+  - Dynamic Hero: Radial gradient background from the pillar theme, 16:9 poster preview
   - ~~Capability Bento Tiles~~ — **superseded on `/services/brand` by the Service Spotlight Panel (block 7)**. Still live on the other five pillars as `.caps-grouped` / `.cap-group`.
   - Toolkit Icon Grid: 89 official brand/tech SVG icons (`/assets/tools/*.svg`), `--radius-full` container, `--ts-label-sm` labels
 
@@ -145,8 +145,8 @@ itself so every tier and size inherits them:
 ### 4. Work Portfolio Grid — `src/pages/work/index.astro`
 - **Purpose**: Case study showcase with discipline/pillar filter bar and media cards.
 - **Tokens & Cards**:
-  - Filter Bar: Capped to 6 pillars + All (`--radius-full` chips, active `--color-yellow` accent)
-  - Work Card: 16:10 aspect media container, `--radius-sm` corners, hover video playback (`data-video-src`), styled initials fallback placeholder for media-less projects (`findThumbFallback`)
+  - Filter Bar: Capped to 6 pillars + All (`--radius-full` chips, active chip grey `--color-accent-primary`, which is `--neutral-2`)
+  - Work Card: 16:10 aspect media container, `--radius-lg` corners (card role), hover video playback (`data-src`), styled initials fallback placeholder for media-less projects (`findThumbFallback`)
 
 ### 5. Blog Detail & Editorial Reader — `src/pages/blog/[slug].astro`
 - **Purpose**: Article reading interface with interactive Table of Contents, sticky share bar, author bio, and pagination.

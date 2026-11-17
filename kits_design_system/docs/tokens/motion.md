@@ -43,12 +43,12 @@ Source of truth: `src/styles/global.css` `:root`. Motion should be purposeful, c
 
 Single animation system. Attributes:
 
-- `[data-reveal]` — fade + rise on scroll into view (600ms, `power2.out`).
-- `data-reveal-delay="0.1"` — stagger for card grids.
-- `[data-scroll="rise"]` — rise 80px.
-- `[data-scroll="scale"]` — scale 0.92 → 1.
-- `[data-scroll="fade-up"]` — fade + 40px rise.
-- `[data-scroll="parallax"]` — parallax scrub.
+- `[data-reveal]`: fade + rise on scroll into view (600ms, `power2.out`, rise 16px, start top 88%).
+- `data-reveal-delay="0.1"`: stagger for card grids.
+- `[data-scroll="rise"]`: rise 50px.
+- `[data-scroll="scale"]`: scale 0.95 to 1.
+- `[data-scroll="fade-up"]`: fade + 30px rise.
+- `[data-scroll="parallax"]`: parallax scrub.
 
 Reduced motion is respected (elements just appear).
 

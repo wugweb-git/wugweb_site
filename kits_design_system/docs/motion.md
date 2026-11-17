@@ -18,8 +18,8 @@
 The animation script automatically initializes on page load and watches elements matching specific HTML data-attributes:
 
 ### `[data-reveal]`
-- **Effect**: Element fades in from `opacity: 0` and rises `30px` as it enters the viewport.
-- **GSAP Config**: `duration: 0.6s`, `ease: "power2.out"`, `scrollTrigger: { trigger, start: "top 85%" }`.
+- **Effect**: Element fades in from `opacity: 0` and rises `16px` as it enters the viewport.
+- **GSAP Config**: `duration: 0.6s`, `ease: "power2.out"`, `scrollTrigger: { trigger, start: "top 88%", once: true }`.
 - **Usage**:
   ```html
   <h2 data-reveal>Engineered for High-Scale Digital Products</h2>
@@ -37,13 +37,13 @@ The animation script automatically initializes on page load and watches elements
   ```
 
 ### `[data-scroll="rise"]`
-- **Effect**: Elements rise `80px` smoothly as the user scrolls.
+- **Effect**: Elements rise `50px` smoothly as the user scrolls.
 
 ### `[data-scroll="scale"]`
-- **Effect**: Smoothly scales element from `0.92` up to `1.0` as it reaches center viewport.
+- **Effect**: Smoothly scales element from `0.95` up to `1.0` as it reaches center viewport.
 
 ### `[data-scroll="fade-up"]`
-- **Effect**: Clean 40px fade-up transition.
+- **Effect**: Clean 30px fade-up transition.
 
 ### `[data-scroll="parallax"]`
 - **Effect**: Continuous vertical parallax scrub synced to scroll progress.
@@ -59,11 +59,14 @@ On service detail pages (`src/pages/services/[slug].astro`), dynamic theme color
   --theme-base: var(--svc-strategy);        /* e.g. #FA4108 */
   --theme-dark: var(--svc-strategy-dark);   /* e.g. #A22A05 */
   --theme-light: var(--svc-strategy-light); /* e.g. #FF8F66 */
-  --theme-glow: rgba(250, 65, 8, 0.25);
 }
 ```
 
-Components (such as hero headers, bento cards, toolkit chips, and CTA buttons) reference `var(--theme-base)` and `var(--theme-glow)`, creating an immersive, theme-aligned visual atmosphere per pillar.
+> `--theme-glow` was documented here but is never defined in code; the pillar pages set only
+> `--theme-base`, `--theme-dark`, `--theme-light` and `--theme-gradient`.
+
+
+Components (such as hero headers, bento cards, toolkit chips, and CTA buttons) reference `var(--theme-base)` and the other theme tokens, creating an immersive, theme-aligned visual atmosphere per pillar.
 
 ---
 

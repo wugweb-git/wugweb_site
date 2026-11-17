@@ -48,7 +48,7 @@ Source of truth: `src/styles/global.css` `:root`. Never hardcode colors — alwa
 | Text muted | `--color-text-muted` | `#858585` |
 | Border subtle | `--color-border-subtle` | `#2B2B2B` |
 | Border strong | `--color-border-strong` | `var(--neutral-5)` |
-| Accent primary | `--color-accent-primary` | `#FFBE1A` |
+| Accent primary | `--color-accent-primary` | `var(--neutral-2)` (`#DFDFDF`, grey by owner ruling 2026-11-17) |
 | Accent blue | `--color-accent-blue` | `#2368D7` |
 | Accent lime | `--color-accent-lime` | `#ACF80B` |
 | Success | `--color-feedback-success` | `#3ED219` |
@@ -78,10 +78,11 @@ Source of truth: `src/styles/global.css` `:root`. Never hardcode colors — alwa
 
 ## Yellow usage rule
 
-Yellow (`--color-yellow` / `--color-accent-primary`) is a **brand accent, not a primary
+Yellow (`--color-yellow`) is a **brand accent, not a primary
 UI color**. Maximum ~10% of any page. The primary interface stays grey / ash / black
-(`--color-surface-elevated`, `--neutral-*`). Keep yellow to small surfaces: nav CTA,
-eyebrows, stat numbers, small solid buttons.
+(`--color-surface-elevated`, `--neutral-*`). Yellow rests only on the one conversion action per page and the
+footer CTA banner. `--color-accent-primary`, `--accent` and `--accent-warm` are grey
+(`--neutral-2`) by owner ruling (2026-11-17), so `.btn-solid` is grey, not yellow.
 
 See also: `service-colors.md` for the 6-service `--svc-*` palette.
 

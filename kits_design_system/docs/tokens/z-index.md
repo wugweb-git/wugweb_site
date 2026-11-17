@@ -21,7 +21,7 @@ Source of truth: `src/styles/global.css` `:root`. Never hardcode z-index.
 ## Usage
 
 ```css
-.site-header  { z-index: 50; }                      /* see the note below */
+.site-header  { z-index: var(--layer-nav); }        /* 10, layout-shell.md */
 .hero-overlay { z-index: var(--layer-base); }
 .modal        { z-index: var(--layer-modal); }
 .skip-link    { z-index: var(--layer-skip-link); }
@@ -33,7 +33,7 @@ Source of truth: `src/styles/global.css` `:root`. Never hardcode z-index.
 > anywhere** — the fallback was doing all the work. It is now `--layer-skip-link`.
 >
 > **Nine ad-hoc values remain outside this scale** and are deliberately not
-> renumbered: `.site-header` 50, `.explorer-drawer-overlay` 1000,
+> renumbered (`.site-header` was one of them; it now uses `--layer-nav`): `.explorer-drawer-overlay` 1000,
 > `.preview-drawer-overlay` / `.checkout-modal-overlay` 2000,
 > `.install-banner-wrap` 9998, `.cookie-banner-wrap` / `.reading-progress-bar` 9999,
 > `.cookie-modal-overlay` 10000. This scale tops out at `--layer-overlay` 140, so

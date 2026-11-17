@@ -24,11 +24,11 @@ Apply in components:
 
 | Token | Value |
 |---|---|
-| `--focus-primary` | `2px solid var(--color-accent-primary)` |
+| `--focus-primary` | `2px solid var(--neutral-3)` |
 | `--focus-secondary` | `2px solid var(--color-accent-blue)` |
-| `--focus-brand` | `2px solid var(--color-accent-primary)` |
+| `--focus-brand` | `2px solid var(--neutral-3)` |
 | `--focus-input` | `2px solid var(--color-accent-blue)` |
-| `--focus-button` | `2px solid var(--color-accent-primary)` |
+| `--focus-button` | `2px solid var(--neutral-3)` |
 
 ```css
 .btn:focus-visible { outline: var(--focus-button); outline-offset: 3px; }

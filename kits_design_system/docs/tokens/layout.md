@@ -5,15 +5,15 @@ Layout primitives implemented in `src/styles/global.css`.
 > **See [`layout-shell.md`](layout-shell.md) first.** It holds the authoritative
 > canvas → section → content skeleton (supplied 2026-10-03) and the rule that
 > governs this whole file: **the section owns the gutter, the content owns the
-> max-width.** It also records three deltas where the table below does not yet
-> match that spec — notably `.wrap` at 1280px against a specified 1200px.
+> max-width.** The `.wrap` delta it once recorded is closed: `.wrap` is 1200px
+> content, as specified.
 
 ## Page Containers
 
 | Class | Max-width | Use |
 |---|---|---|
 | `.wrap` | `1200px` content (+ gutters) | The section — owns the only page gutter. See layout-shell.md |
-| `.page` | `1440px` | Full-viewport page container with 1440px cap |
+| `.page` | `90rem` (1440px) | Legacy page container. Nothing on the site may be wider than the nav (1280); prefer `.wrap` |
 
 ## Grid
 
@@ -35,8 +35,8 @@ Layout primitives implemented in `src/styles/global.css`.
 
 | Token | Value |
 |---|---|
-| `--space-section-xs` | `32px` |
-| `--space-section-sm` | `40px` |
-| `--space-section-md` | `48px` |
-| `--space-section-lg` | `64px` |
-| `--space-section-xl` | `80px` |
+| `--space-section-xs` … `--space-section-xl` | `48px` mobile, `70px` at 768, `96px` at 1200 |
+
+All five names carry the same value: there is one section rhythm, 48 / 70 / 96, set in
+`global.css` and specified in `layout-shell.md`. The old 32 / 40 / 48 / 64 / 80 ladder is
+retired.
