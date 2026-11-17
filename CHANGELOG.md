@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added: wugweb-web-engineering status and pending list (2026-11-17)
+- `docs/skills/wugweb-web-engineering/PLAN.md`: decisions, done, pending items with backup and undo, open owner questions, facts gathered from the older docs. Notion record page updated to match; backup in `backups/`.
+
 ### Changed: wugweb-brand-os plan and pending updated (2026-11-17)
 
 - docs(skills): wugweb-brand-os PLAN.md has one status block (commits, rulings, pending table), sections 13 to 16 and 19 brought up to date; pending.md gains a brand-os entry.
