@@ -467,6 +467,8 @@ grep -n "STANDING-RULES.md" SKILL.md
 grep -n "proof map" references/handoffs.md
 ```
 
+Pushed 2026-11-17: a verbatim copy of the 2.5.0 app build is on branch `skill/wugweb-seo-2.5.0` (commit fc4042e1), based on `origin/main`, so main stays 2.4.1. The score demo gives 89 of 100 and the four score self-tests pass. Two blockers before merge, from `validate` (2 errors): the `name:` line is re-quoted, regressing the 2.4.1 unquote fix and making `build.mjs` emit a mis-named Cursor adapter; and `evals/evals.json` is absent, so claim 8 is unmet in this copy. Fix the name, add the evals, rebuild, then diff and merge. This closes items 1 to 7 and 9 of the nine, confirmed by the greps and the score run; item 8 (evals) stays open.
+
 ## Planned: on-page keyphrase score (2026-11-17)
 
 The owner asked for a score like Rank Math's, built into the audit part beside the citability score. Citability is the AI-answer score; this is the search score. Source of truth: Rank Math `seo-by-rank-math` 1.0.280, `assets/admin/js/analyzer.js`, read 17 Nov 2026. The engine runs client-side only; the new PHP ability `rank-math/analyze-post-content` hands an agent the content and the rubric link, `rankmath.com/kb/score-100-in-tests/`. The weights below are extracted, not invented. RankWeb has no score of its own; it reads Rank Math's through `rank_math_seo_score`.
