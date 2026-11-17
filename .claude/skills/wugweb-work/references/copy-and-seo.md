@@ -1,6 +1,6 @@
 # Copy and SEO
 
-> **Mixed ownership (agreed with `wugweb-voice`, 2026-11-17).** Pointers: "we" or "I" per piece, the client's on-screen terms and the no-dash rule live in `wugweb-voice` (`.claude/skills/wugweb-voice/references/modes.md`, `.claude/skills/wugweb-voice/references/words.md` and `.claude/skills/wugweb-voice/SKILL.md`). Rules marked *candidate* are working rules here, candidates in `wugweb-voice` pending the owner's yes or writing samples; once confirmed there, they become pointers. Unmarked rules are this skill's own (structure, format, consistency, claims). The title, description and slug rules under "On-page SEO" are held for `wugweb-seo` until it confirms them. Do not copy these rules into another file. The evidence rule, case-study lengths, metrics, approvals and the brief template belong to this skill.
+> **Mixed ownership (agreed with `wugweb-voice`, 2026-11-17).** Pointers: "we" or "I" per piece, the client's on-screen terms and the no-dash rule live in `wugweb-voice` (`.claude/skills/wugweb-voice/references/modes.md`, `.claude/skills/wugweb-voice/references/words.md` and `.claude/skills/wugweb-voice/SKILL.md`). Rules marked *candidate* are working rules here, candidates in `wugweb-voice` pending the owner's yes or writing samples; once confirmed there, they become pointers. Unmarked rules are this skill's own (structure, format, consistency, claims). The rules under "On-page SEO" point to `wugweb-seo` (agreed 2026-11-17); the H1 wording, description wording and entity list stay here. Do not copy these rules into another file. The evidence rule, case-study lengths, metrics, approvals and the brief template belong to this skill.
 
 The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (owned by `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/messaging.md`), the owner's rules and the research digest.
 
@@ -57,8 +57,8 @@ The audit script carries this list. A banned word may stay only inside a client'
 | Point text | One sentence |
 | Caption | 25 words or fewer, saying why the screen matters |
 | Alt text | 125 characters or fewer, saying what the screen shows and lets the user do |
-| SEO title | 51 characters or fewer, so " \| Wugweb" fits in 60 |
-| Meta description | 140 to 160 characters |
+| SEO title | The limit is in `wugweb-seo` (see On-page SEO) |
+| Meta description | The length is in `wugweb-seo` (see On-page SEO) |
 | Quote | 3 lines or fewer, with name, role and organisation |
 
 ## Before and after (NTUC)
@@ -103,17 +103,18 @@ The page then follows the ski-ramp: answer first, then the problem, the insight,
 
 ## On-page SEO
 
-This section is the whole of what this skill decides about search. Keyword research, technical SEO and reports belong to the SEO specialist; ask through `handoffs.md`.
+Agreed with `wugweb-seo` (2.5.0, 2026-11-17). The limits and checks live in `wugweb-seo`; this skill writes the words. Keyword research, technical SEO and reports belong there too; ask through `handoffs.md`.
 
-- H1 = client + what was built.
-- SEO title 51 characters or fewer; the layout adds " | Wugweb".
-- Meta description 140 to 160 characters, stating what was built and for whom.
-- Slug: one per case study; never changed once published; no redirects added by this skill.
-- Entities: client, partner, platform and country named in full once, in the body and in the schema.
-- Internal links: up to the matching service and sector pages, across to two or three related case studies, with descriptive anchor text. Ask for links back from those pages.
-- Everything a crawler needs is in server HTML. Images in `img src` only.
-- No keyword counts and no `llms.txt`. FAQ blocks follow `own-content.md`: service pages and blog posts only, questions approved in the brief, answers only from the owner's source. Write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
-- og:image: a project-specific existing file, ideally about 2:1 or 1200 by 630; a new file only through the Forms gate.
+- H1 wording: client + what was built (this skill's; `wugweb-seo` checks there is one H1 and that it agrees with the title).
+- SEO title limit and the layout suffix: `.claude/skills/wugweb-seo/references/audit.md` (`title-length`).
+- Meta description length: `.claude/skills/wugweb-seo/references/audit.md` (`description-length`). The wording states what was built and for whom (this skill's copy rule).
+- One slug, no redirects: `.claude/skills/wugweb-seo/references/handoffs.md`.
+- Entities named in full at first mention: `.claude/skills/wugweb-seo/references/audit.md` (citability). Which ones: client, partner, platform and country, once in the body and in the schema (this skill's list).
+- Internal links: `wugweb-seo` rules for now: one link up to the service pillar, two or three across to sibling pages, descriptive anchors, no orphans (`.claude/skills/wugweb-seo/references/audit.md`). Links up to sector pages: pending `wugweb-strategy`.
+- Key facts in server HTML, images in `img src`: `.claude/skills/wugweb-seo/references/audit.md`.
+- No keyword counts and no `llms.txt`: `.claude/skills/wugweb-seo/references/handoffs.md`.
+- FAQ blocks: the line agreed by `wugweb-strategy` and `wugweb-seo` (`.claude/skills/wugweb-seo/references/handoffs.md`, "1a. FAQ blocks"), applied in `own-content.md`.
+- Share image: `og:image` present and `og:url` equal to the canonical (`.claude/skills/wugweb-seo/references/audit.md`, `share-tags`, `share-url`); pick a project-specific existing file first, a new file only through the Forms gate. The 1200 x 630 size is the adopted made-file size, held by `wugweb-kits`.
 
 ## How it is checked
 

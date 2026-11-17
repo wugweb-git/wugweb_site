@@ -11,6 +11,8 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed — wugweb-voice linkedin-post pronoun row (2026-11-17)
 - `.claude/skills/wugweb-voice/references/modes.md` now matches the owner's we or I ruling (his pick per piece). Version stays 0.3.0; `SKILL.md` body 1,997 words.
+### Changed — wugweb-work SEO rules point to wugweb-seo (2026-11-17)
+- On-page SEO limits and checks now pointers to wugweb-seo; sector link-up pending strategy; H1 and description wording stay in work. Still 0.5.0.
 
 ### Added — wugweb-strategy FAQ review list and rules (2026-11-17)
 - `docs/skills/wugweb-strategy/FAQ-REVIEW.md`: the 47 typed service page questions with signal-log and answer-source columns. FAQ rules extended in the skill (version stays 0.1.2).

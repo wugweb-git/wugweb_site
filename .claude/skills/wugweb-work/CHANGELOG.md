@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- SEO rules sorted with `wugweb-seo` (2.5.0, relayed by the coordinator): title limit, description length, one slug and no redirects, entity naming, server HTML, no keyword counts or `llms.txt`, and share tags now point to `wugweb-seo`; FAQ points to the agreed strategy and seo line; internal links follow seo's rule for now, with sector link-up pending `wugweb-strategy`; H1 wording, description wording and the entity list stay here.
+
 - Voice rules sorted with `wugweb-voice` (its answer on main 3ef0c4a6, relayed by the coordinator): "we" or "I", the client's on-screen terms and no dashes are now pointers to `wugweb-voice`; tone, say what was built, the 6 to 20 word range, plain words, active voice, honest-credit phrasing, no throat-clearing openers, the banned words and tone by form are marked candidate (working rules here, pending the owner's yes or samples there); the rest stay this skill's own. SEO lines untouched until `wugweb-seo` answers.
 
 - Owner answers to the three eval questions (2026-11-17): a direct request for a v2 proposal still runs Audit, Media and Look first (`SKILL.md` step 5); a published v1 body counts as proof for the facts it already publishes (handoff 7); the hero subtitle is proposed only after the body is read (`copy-and-seo.md`). Recorded in `open-items.md`.
