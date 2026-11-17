@@ -1,31 +1,64 @@
-> STATUS, 2026-11-17, from main. This block replaces any older status, version or "not built" line further down. Since the coordinator's final handover (2026-11-17) the wugweb-work session keeps this plan and the Notion page itself and works with the owner directly.
+> ## Status and pending, 2026-11-17 (end of day)
 >
-> - Built. Version 0.5.0 on main, Part 1 locked (owner: "call it 0.5"), 54 files, last skill commit 12d0f63c. Versions 0.4.2 and 0.4.3 (portability: an OpenAI agent file and the single-file export) came before it.
-> - Skill file body: 1,763 words by the shared count. Validate 30 checks, 0 errors; test passes (as reported by the work session). The evals file is in the repo, not yet run.
-> - Claude app and Cowork: not installed after the app reset on 2026-11-17. The work session built the upload zip; the owner uploads it.
-> - Owner rulings applied: plan vetting approved as it stands; Part 2 (site code) needs the owner's own go. Replies and outreach are out of the Forms module. No LinkedIn tags. Medium is the approved blog post reposted unchanged with a link. The owner uploads to Behance and Dribbble; the skill hands over an ordered list. A Dribbble screen is shown alone at its own ratio. Made-file sizes adopted. Brief field 9 carries wugweb-seo's note unchanged. Loops, the four sizes, the five blocks, card thumbnails and deck and card type sizes follow wugweb-kits. FAQPage only from the faqs field, where every question and answer is visible on the page and comes from the owner's source (owner's final word: "faq will be there"); HowTo and review stars stay banned.
-> - NTUC U Care is a worked example only; its facts are not an open item (owner: "ntuc was just a example").
-> - FAQ blocks are allowed on service pages and blog posts only, decided by wugweb-strategy with wugweb-seo; case studies never carry one.
-> - Made files are kept in R2, in the existing bucket under the piece's own folder, only on the owner's yes for each file. No scheduling tool is connected, so each post is handed to him as an approved draft (owner, 2026-11-17).
-> - Part 2 has started on the owner's go ("Yes, start step 2"): step 2 is the case-study body parser, on its own branch `case-body-v2` with a preview link, not on main and not live. Nothing goes to main without his separate go.
-> - Held: the NVIDIA test (owner: "not yet").
-> - First eval run, 2026-11-17, graded by an independent agent: 56 of 78 expectations met, 6 of 14 evals passed in full (1, 6, 9, 10, 11, 12). Most fails were the dry run not reading live sources (Notion body, R2 folder, Sanity copy): evals 2, 3, 4, 5, 8. Skill-side fails were fixed in commit 0da786fe.
-> - Pointers to wugweb-brand-os added for the yellow share rule, Problem Insight System Outcome and the cover rule (commit 1bd89d8a). Voice rulings and the standing-rules marked copy applied (commit 48795f52). Story safe zone wording corrected (commit 21b5e4e7).
-> - Owner answers to the three eval questions (commit 0364c6e5): a direct "v2 proposal" request still runs Audit, Media and Look first, in the same task; a published v1 body counts as proof for the facts it already publishes, and any other claim needs an approved v2 body or his answer; the hero subtitle is proposed only after the body is read.
-> - Part 2 step 2 is done on its branch, not on main: `case-body-v2`, commit 40205099, the body parser v2 with 21 passing tests. Compared on all 37 live bodies: 17 render the same, 20 change only by the intended fixes. Preview is up. The new fields do not reach the page until the template step. Merging to main waits for the owner's go.
-> - The copy and SEO reference no longer restates rules the other skills carry (commits 0fb1b03a and 4ee2a22c). It points to wugweb-voice for we or I, client on-screen terms and no dashes; nine voice-shaped rules stay here as working rules marked "candidate" until the owner says yes or supplies samples in the voice session; structure and format rules stay as work's own. It points to wugweb-seo for the title limit, description length, one slug, entity at first mention, server HTML, no keyword counts or llms.txt, and the share tags. Internal links follow seo's rule: one link up to the service page, two or three across to sibling case studies, no link up to a sector page (owner, 2026-11-17, commit 03168c7c).
-> - Done: the body standard names the separator as `Section: <chapter> | <label>` (commit 5d39e087).
-> - Part 2 step 2 is merged on the owner's "Yes, merge": the body parser v2 is on main as 313140b4 (21 of 21 tests, build passes). He said "Go" to step 3, the media manifest, a read-only dry run on branch `case-manifest`, in progress.
-> - Pointers to wugweb-brand-os added for the claim order and the meaning of crop; fixes from the live eval rerun (commit 1cec0144).
-> - INTERIM FINAL REPORT, 2026-11-17: version 0.5.0, last skill commit 257cefad, body 1,811 words by the shared count, validate 30 checks with 0 errors, test passes. Evals: 64 of 78 expectations, 8 of 14 in full (first run 56 of 78; the five that failed for lack of live sources were rerun on live sources, 26 of 31). Two rules added from the older research docs: a speech video needs captions or a transcript from the owner's source; a quote photo only when the owner supplies it.
-> - Older docs: the three research docs of 2026-10-19 are kept until the template step and need updating (parser v1 defects are fixed by v2; overruled rules to be marked); section 14 of the September UI spec has a few flags still true (MusicLinkd has no thumbnail, shared client logos, the "Trusted by" heading inside the logo list, home services order, the footer copyright years).
-> - Housekeeping done on the owner's yes: the merged parser branch and a stale local branch are deleted.
-> - Step 3 is on main (merge 8f0b7fe8, 2026-11-17): the media manifest library, its tests and the dry-run report `docs/research/media-manifest-2026-11-17.md`. Scripts only, no page code. The work session confirmed the six files on main are identical to its own and that 39 tests pass.
-> - NDA rule added (12d0f63c): a client marked NDA in the client record is never named in the skill's files, evals or examples; facts about Wugweb come only from wugweb-brand-os.
-> - Open with the owner, from the step 3 report, for the next steps: five R2 folders no case study claims (bodyshop, hyatt-restaurants, others, pvr-cinemas, tecnotree); six dead links in bodies; 69 of 79 videos not arranged for fast start and 21 without posters (re-encoding or new posters need his yes under the media rule); four pages over the 25 MB budget (Inkompass, Axis Bank, Plufo, Sadhan); a broken public address in the registry for file names containing a hash sign.
-> - Part 2 steps now go straight to main after local checks, on his go, with no branch on GitHub. Held: the NVIDIA test ("not yet").
-> - Later skill commits the same day: dateModified is the last real content edit, pointing to wugweb-seo (11816356); case-study media layout, the viewer and the chapter nav spec point to wugweb-kits `references/media-and-widgets.md` (0b3add23). The last skill commit is 12d0f63c (NDA). Body 1,811 words by the shared count; validate 30 checks, 0 errors; test passes.
-> - Next Part 2 step: 3b, the visual read of own-folder media for the case studies with media (read-only, one review per case study for the owner), on his go. Then step 4, the sync dry run, which reads Notion: the NOTION_TOKEN in the env file is rejected (401) and replacing it is the owner's step.
+> This section replaces every older status, version or "not built" line on this page. Since the coordinator's handover on 2026-11-17, the wugweb-work session keeps this page and the plan file in the repo (`docs/skills/wugweb-work/PLAN.md`) and works with the owner directly.
+>
+> ### Where it stands
+>
+> - Skill: version 0.5.0 on main, Part 1 locked (owner: "call it 0.5"). Last skill commit 12d0f63c. Body 1,811 words by the shared count; validate 30 checks, 0 errors; test passes. Upload zip built from main; the owner uploads it to the app.
+> - Evals: 64 of 78 expectations met, 8 of 14 evals in full. First run 56 of 78; evals 2, 3, 4, 5 and 8 were rerun on live sources (Notion body, R2 files, Sanity copy) and met 26 of 31. Every skill-side failure is fixed.
+> - Part 2 step 2 (body parser v2) is on main as 313140b4: 21 tests; all 37 live bodies parse cleanly; 17 render as before and 20 get only the intended fixes. The new fields reach the page only at the template step.
+> - Part 2 step 3 (media manifest, read-only dry run) is on main as merge 8f0b7fe8: the library, 18 tests (39 with the parser's), and the report `docs/research/media-manifest-2026-11-17.md`.
+> - GitHub has main only. Part 2 steps now go straight to main after local checks, on the owner's go.
+>
+> ### Owner rulings recorded today (with commits)
+>
+> - Plan vetting approved; Part 2 needs the owner's own go for each step.
+> - Made files go to R2 under the piece's folder, each on the owner's yes, placed by the owner; the skill never uploads. No scheduling tool: posts are handed over as approved drafts (0da786fe).
+> - A direct request for a v2 proposal still runs Audit, Media and Look first; a published v1 body counts as proof for the facts it already publishes; the hero subtitle is proposed only after the body is read (0364c6e5).
+> - FAQ blocks on service pages and blog posts only, never on case studies; FAQPage only where every question and answer is visible. Google stopped FAQ rich results from 7 May 2026; no rule here depends on them.
+> - Internal links: up to the service page only, never a sector page, and across to two or three sibling case studies (03168c7c).
+> - Voice: "we" or "I" per piece, the owner's pick; the voice is uncalibrated until he supplies writing samples (48795f52; pointers 0fb1b03a).
+> - SEO limits and checks point to wugweb-seo (4ee2a22c); dateModified only on a real content edit (11816356).
+> - Brand rules point to wugweb-brand-os: yellow share, claim order, cover rule, the meaning of crop (1bd89d8a, 1cec0144). A client marked NDA in the client record is never named in skill files, evals or examples; facts about Wugweb come only from brand-os (12d0f63c).
+> - Media layout, the viewer and the chapter nav spec point to wugweb-kits (0b3add23).
+> - Story safe zone: no official pixel figure; keep edges clear (21b5e4e7).
+>
+> ### Pending: the owner decides
+>
+> 1. Step 3b go: the visual read of each case study's own media (read-only, one review per case study).
+> 2. Five R2 folders no case study with a body claims: bodyshop and hyatt-restaurants (case studies with no body), and others, pvr-cinemas and tecnotree (no case study).
+> 3. Six dead links in bodies (two Aditya Birla videos, the Airtel Xsafe thumbnail, three old Inkompass and Plufo images): fix in Notion or leave; the page skips them.
+> 4. 69 of 79 videos not arranged for fast start and 21 without a poster: re-encoding or new posters need his yes under the media rule.
+> 5. Four pages over the 25 MB budget (Inkompass, Axis Bank, Plufo, Sadhan): a "show less at first" decision.
+> 6. Whether the /work list hides the 7 no-body (noIndex) case studies.
+> 7. The brand identity archetype has no real brand content yet; its example is under NDA.
+>
+> ### Pending: the owner's own steps
+>
+> - Replace the rejected NOTION_TOKEN in the env file (401); step 4 cannot read Notion until then.
+> - Confirm NVIDIA_API_KEY in the shell profile; the portability test waits (test text only, never client material; models nvidia/nemotron-3.5-lightning-30b-a3b, nvidia/nemotron-3-ultra-550b-a55b, meta/muse-glimmer-30b).
+> - Upload the 0.5.0 zip to the app.
+>
+> ### Next Part 2 steps
+>
+> 3b visual read; 4 sync dry run (needs the new Notion token), then the owner's go to write; 5 layout resolver, components and template; 6 previews and the gate on all 44; 7 eval loop; 8 docs and ship.
+>
+> ### Carried over from the older docs (so they can be retired)
+>
+> Data fixes, still true on 2026-11-17 (Notion or the CMS, the owner's call):
+> - Labelly's Team value ends in a comma.
+> - Kia and Axis Bank: the body names Adneto as partner, the record says EasyRewardz.
+> - Eastman's Timeline holds sectors; Timeline is empty ("—") on NTUC, Plufo, RideEV, Sadhan and Valyu; Metcred's year and timeline disagree.
+> - Results are text, not lists, on 5 records (Kia, Stayweb, HRMS, Valyu, Wugweb revamp); services, related case studies and related posts are empty on all 44 (sync step).
+> - Borrowed files: IndusNinja holds six files named after Airtel Xsafe (they are IndusNinja boards); Valyu holds two Airtel-named files; Aditya Birla's body links Inkompass's thumbnail video; Gratify and Bankco use Adneto's images and logo; one Styles pair is shared by Bankco, Adneto, Gratify and the NDA case study.
+> - Site flags: MusicLinkd has no thumbnail; the IndusInd Bank client uses the IndusNinja logo; the footer reads "Copyright 2020-2025"; the "Trusted by" heading sits inside the logo list (looks deliberate); home services run 01, 03, 06, 02, 04, 05 in page order.
+> - Fixed since September: two slugs per case study, the framer asset paths, relative og images, shared Xsafe and Xstream and Sadhan logos, marquee junk, blog card images.
+>
+> For the template step (from the code map): the page still renders only the v1 fields; section padding stacks (global stylesheet line 1241); body videos have no poster and images have no width and height; media with no `Section:` prefix still goes to the closing grid; the hero video autoplays with preload metadata; 22 records have no listing thumbnail; the case study schema declares none of 22 fields the records carry; 19 records hold video paths on the old wugweb.online host.
+>
+> Rules routed to other skills: layout and accessibility items to wugweb-kits (now in its media and widgets file); dateModified to wugweb-seo (done); the brand order detail to wugweb-brand-os.
+>
+> Older files: the three research docs of 2026-10-19 and section 14 of the September UI spec are carried here and can be retired after the template step; the NTUC draft is superseded by the skill's worked example and can go now; the brand glass showcase prompt was already removed on main (89403ec6).
 
 > COMPILED FINAL PLAN, re-exported 2026-11-16 after the page update. Same content as the Notion page "wugweb-work" (formerly "wugweb-work skill: plan (final for vetting)"; Wugweb HQ / Wugweb Skill Management System) (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922), put in final reading order. The Notion page is the source of truth: change it there, then recompile. Do not edit this file by hand. Research reports: `docs/research/case-study-system-2026-10-19/`.
 

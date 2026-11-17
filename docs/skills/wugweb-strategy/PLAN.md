@@ -17,6 +17,7 @@
 > - Open with the owner: sourced facts for the 10 answer-again rows; his go for the dash fixes and the faqs and schema site work; uploading the zip; whether the stale remote branch can be deleted. Open with wugweb-seo: decision 7 (seo decides retired URLs) is not yet confirmed in seo's files.
 > - Later on 2026-11-17: the FAQ page questions stay typed in `src/pages/faq.astro`, only service FAQs move to Sanity (strategy decided option (a), 279cc88e). FAQ rich results stopped appearing on 7 May 2026, verified by seo; the editorial FAQ line does not change (d0d93995). Decision 7 is explicit in the seo skill (seo 68f79ac0): a retired page returns 410 or 404, keeps no redirect, leaves the sitemap, and its slug is not reused. The old remote branch was deleted on the owner's yes; its content is on main.
 > - Open with the owner: sourced facts for the 10 answer-again FAQ rows; his go for the dash fixes and the faqs and schema site work (with web engineering); uploading the zip. Open with no one else.
+> - Other docs read on 2026-11-17 (main 3f9d3dbe): the brand-os, kits, voice, work and seo plans and the standing rules agree with this skill and need no change here. Still open elsewhere and affecting this skill: wugweb-brand-os has not yet had the positioning line and the audience approved by the owner, so this skill has no audience to quote until he approves them there.
 
 # wugweb-strategy skill: plan (ready for vetting)
 

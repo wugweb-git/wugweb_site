@@ -20,7 +20,7 @@
 > - Later on 2026-11-17, on the owner's go: the stale Kits design docs were corrected (a7436497) and the five block docs are marked signed off; the skill is version 2.1.0 with 58 rules, body 1,982 words, validate clean, evals 17 of 17 (acf19e9e). New rules cover media literals, warm and cool panel order, headings never smaller than body, icons, poster-first media, widget guards, case media layout and the media viewer; the contrast rule now measures the composited overlay and sets 44 touch targets. New references hold the clip measurements, a chapter-nav block spec (not built) and the September UI spec's consolidation targets.
 > - Owner ruling: all six pillar colours stand (orange, magenta, teal, blue, green, purple) and the accent stays grey.
 > - Spotlight Panel clips measured: 35 of 61 run over 5 seconds and need a pause control; 12 run over 15 seconds and break the cap.
-> - Open with the owner: the site-code fixes (the 186 case-study token fixes, he said not yet; the Spotlight Panel loop, pause control and 1024 breakpoint; yellow outside its two places; the other open code items). He gave no preference when asked, so no branch has been made.
+> - Superseded late 2026-11-17: the owner said "Yes, all branches". Four site fixes are on main and live on staging, five more commits wait for his go to push, and every open item is in section 29.
 
 > Plan for vetting, revision 24, 2026-11-16. Part of the Wugweb Skill System. Same content as the Plan section of the Notion page "wugweb-kits" (https://app.notion.com/p/41abb710b9ab81db87c5e03d81341818). Plan stage only: nothing goes to development until the owner says.
 
@@ -862,3 +862,66 @@ Relayed by the coordinating session on 2026-11-17. `wugweb-seo` says the owner d
 | `aiSummary` and `keyTakeaways` | Drop on case studies, because Notion Body Content is the single source. No objection on posts or pages. |
 
 This replaces the earlier clash note that `faqs` breaks the no-FAQPage rule: under seo's position the field stays, with the visible-content condition.
+
+### 29. Where everything stands, end of 2026-11-17 (written by the kits session on the owner's ask)
+
+The owner asked for every pending item from the kits session in one place, here and on the Notion page. This section brings in the findings that until now lived only in the session, the audit reports and the untracked `kits-case-study-token-fixes.md`.
+
+**On main and live on staging**
+
+| Commit | What |
+|---|---|
+| a7436497 | Stale Kits design docs corrected (breakpoints, section rhythm, reveal and scroll values, header layer, grey focus and accent, `--t-h5`, work card radius, README pillar colours); five block docs signed off |
+| acf19e9e | Skill 2.1.0: eight new rules, two references (media and widgets, consolidation targets) |
+| c25a2ed3 | `process-map.md` height follows `--header-height` |
+| f3073bd7 | Yellow kept to the one conversion action and the footer banner; `/services/brand` no longer shows the yellow brand gradient (it was a bug: the Brand pillar resolved to `--gradient-brand`) |
+| 7ebb3e72 | CSS cleanup: tag pill radius, true type-scale comments, `--shell-inset`, `.btn-partners-cta` and `.global-blog-list` removed, ProcessMap height on `--header-height`, bare vh to svh and dvh |
+| a662b18f | Spotlight Panel: 15 second cap, pause control over 5 seconds, 1024 to 1200 (merged from the first push, see below) |
+| a80dc32a | Lazy video stops under reduced motion; scroll in is opacity and y only; nested main on `/contact-us` fixed; blog posts in an `article` |
+
+Checked on staging after the deploy: pages 200 on two requests, evals 17 of 17, validate 58 rules 0 errors, doc drift 0.
+
+**Built, tested, waiting for the owner's go to push to main** (stacked on main; build passes with real dependencies, `test:case` passes, local wrangler pages 200 twice, page check 0 findings; the push was refused by the permission check, so it needs his explicit yes)
+
+| Commit | What |
+|---|---|
+| bc106f6f | Spotlight follow-up: a662b18f only starts a clip when the panel reports on screen; where that report is wrong, clips never play. One line fix |
+| bea01d57 | Case-study tokens: 119 of the 186 findings applied with zero rendered change (698 declarations compared); section ids `b-s-N`, `b-screens`, `b-closing`; 600 to 640; the cover video waits on reduced motion |
+| c62cfd34 | Hero reveal groups (owner ruling: hero only, delays): h1 and eyebrow at 0.4s, the rest at 0.9s, measured in Chrome at about 0.38 and 0.84; the home headline blur tween removed |
+| 35b76095 | Skill 2.1.1: the motion rule defines the hero groups; the case-study eval now expects every section labelled (it fails until bea01d57 is live) |
+| 1b1fd7ee | Skill: `kits-logo-size-and-space`, logo values from the brand-os rulings (f66bb666) in `component-sizes.md` |
+
+**Waiting on the owner**
+
+1. Go to push the five commits above.
+2. Delete `public/brand/wugweb-mark.png` (nothing references it; brand-os reports it approved; the delete needs his yes in this session).
+3. The 67 case-study lines with no token of the same role and value: translucent white fills and borders (`rgba(255,255,255, .02 to .1)`), letter spacing (-0.015em, 0.06em, 0.05em, -0.01em), small paddings (`10px 14px`, `2px 6px`, 0.625rem, 0.35rem), `scroll-margin-top 6rem`, `text-underline-offset 3px`, max widths 540, 140, 88, height 20, avatar 40, media heights (`max-height 720px`, `clamp(220px, 32vw, 380px)`, 240px, `min(62svh, 560px)`), grid minimums 140 and 160, hover lifts -3 and -5 (`--hover-card` is -4), the stat number and CTA clamps and the CTA radial gradient. Each needs a token chosen by role, or a new token.
+4. Logo clear space clash: the ruling is clear space equal to the mark height (40px at the 40px nav logo), but the nav bar gives 14px above and below. For brand-os and the owner; kits reports only.
+5. The 12 Spotlight clips over 15 seconds are capped in code; trimming the files in R2 stays his call.
+6. Storybook stays local unless he says otherwise.
+7. Uploading the rebuilt skill zip to the Claude app.
+
+**Open in code, no fix made yet** (each a site change: its own commit, checks and his go)
+
+- Scroll animations: `assemble` keeps an x scatter and the banner sheen keeps `xPercent`; strict y only would need another pass.
+- About 114 unused tokens; duplicate scales `--p-*` and `--gap-*`, `--r-*` and `--radius-*`, `--elevation-*` and `--shadow-*`; `--easing-spring` equals `--easing-bounce` (kept, Storybook uses it).
+- About 305 raw px literals outside media queries (top: `footer/subscription` 71, `services/[slug]` 35, `PortableTextRenderer` 26, `SiteHeader` 26, `work/[slug]` 24).
+- Bare vh left: `footer/subscription.astro` 90vh, `services/[slug].astro` 80vh.
+- Open-menu nav sizes are raw clamps in `SiteHeader.astro`, not the 44 and 16 layout-shell values.
+- Menu links have no 40ms stagger (`shell-mobile-menu`).
+- The home hero video autoplays and loops hidden from assistive tech; its length is not measured and it is outside lazy-video's reduced-motion check.
+- `.btn:focus-visible` is a raw outline, not `--focus-button`.
+- Token check: `.b-carousel` at `work/[slug].astro:780` sets a gutter below the section.
+- `/footer/reviews` hero has 216px inline padding at 1200.
+- Consolidation targets (Button, Chip, Hero, Bento, Eyebrow, Surface) in `references/consolidation-targets.md`.
+- `motion` still listed in `CLAUDE.md` line 30 and `AGENTS.md` line 30; it is not in `package.json`.
+- Brand files: `og-default.png` is 965 x 306, not 1200 x 630; `favicon-64.png` is 648px; the `/assets/brand/small.jpg` fallback in `BaseLayout` is missing locally (R2 unchecked); `favicon-16.png`, `favicon-64.png`, `apple-touch-icon.png` and `trust/topdevelopers.svg` are unreferenced; the manifest name and two `BaseLayout` fallbacks carry dashes in visible text.
+
+**Docs and skill, open**
+
+- Nine plain token lists in `kits_design_system/docs/tokens/` are left as they are (owner).
+- Block docs for sector showcase, industries directory and blog post still say awaiting sign-off.
+- Storybook: no story for JsonLd and PostCard; four stories have no spec (CookieBannerShowcase, FaqAccordion, PortableTextRenderer, TeamGrid); the preview background matches no token; the Spotlight Dense story is still named "1024px+".
+- The skill zip needs rebuilding after the push (2.1.1 plus the logo rule).
+
+**Not verified in a browser:** reduced motion on every path, phone and touch, the Spotlight dense layout at 1200, a real clip over 15 seconds. The in-app browser pane draws no animation frames, so motion was measured in Chrome.
