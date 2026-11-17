@@ -4,12 +4,14 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-**2026-11-17: Sanity audit fixes (items 3-7, 13-14, 17, 21-32). DONE locally, not pushed or deployed.**
+**2026-11-17: Sanity audit fixes (items 3-7, 13-14, 17, 21-32). DONE: on main (`79487fda`) and live on UAT.**
 - Backend: `/api/sync` fails closed, own secret `NEON_SYNC_SECRET`, type allow-list, size caps, owner now updates. `/api/preview` takes `PREVIEW_SECRET` (no token in URL or cookie), same-site redirects only. Anonymous pages cached 60 s at the edge (Workers Cache API, free); preview responses `no-store`. JSON-LD escaped. `/work/[slug]` other-cases in one query.
 - Studio: upgraded sanity 3.99 to 6.23.0 with React 19.3, @sanity/table 3.1.21, @sanity/ui 4 subpath imports. Smart typography turned off (it writes dashes). Publish/Duplicate/Archive fixed, singletons locked, Kits / Trust badges publishable (initial value templates), View on Site uses `route`, dashboard date tiles fixed, desk in CLAUDE.md order with Brand Assets and Experiments. TypeGen: `npm --prefix sanity run typegen` writes `sanity.types.ts` (schema types only; queries are not `defineQuery` yet).
 - Schema: `extraMedia` and `subtitle` declared; empty unused SEO/AI fields removed; `schemaType` deprecated; SEO length warnings (60/160).
 - Data: 13 stale page drafts discarded, backup `backups/stale-singleton-drafts-2026-11-17.json`.
-- Owner to do: set `NEON_SYNC_SECRET` and `PREVIEW_SECRET` on Pages (until then both routes return 503); `npx sanity deploy` for the Studio; item 28 (Sanity-hosted media and the orphan `project` doc) waiting on a decision. `wip/embedded-studio` pins sanity 3.99 and now conflicts with the 6.23 Studio.
+- Edge cache fix (`7bfb9ff3`): `79487fda` returned the cached Response as is on a hit, its headers are immutable, so every repeat GET was a 500. Now returns a copy. Checked on UAT: repeat GETs of /, /about, /work, /blog, /services, /contact-us all 200. No test covers the cache yet.
+- Hosted Studio deployed by the owner (wugweb.sanity.studio, 6.23, schema 1 of 1). Studio appId pinned in `sanity/sanity.cli.ts` (`535a881c`). Notion Deploy Log updated.
+- Owner to do: set `NEON_SYNC_SECRET` and `PREVIEW_SECRET` on Pages (until then both routes return 503); item 28 (Sanity-hosted media and the orphan `project` doc) waiting on a decision. `wip/embedded-studio` pins sanity 3.99 and now conflicts with the 6.23 Studio.
 
 **2026-11-16: Open from the industries / blog / media session. All shipped work is on main and live on UAT. Waiting on the owner:**
 1. Blog covers: 92.5 MB across 103 files (48 PNGs over 1 MB). Smaller R2 copies need owner OK (no-uploads rule).
