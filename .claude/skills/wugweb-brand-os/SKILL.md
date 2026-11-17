@@ -18,7 +18,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
 - **Values:** not decided. The owner will supply them. The ten principles stay as principles.
 - **Audience:** not decided. The owner will supply it.
-- **Facts about Wugweb:** only the six pillars are approved. Every other fact is unverified.
+- **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
 
 Four more questions are open or only partly answered (4, 10, 12, 14); the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
@@ -81,11 +81,11 @@ Judge the rendered result, never a description of it. This mode needs a model th
 
 ### Fact check
 
-In: copy that makes claims about Wugweb. Out: each claim marked approved, unverified or stale.
+In: copy that makes claims about Wugweb. Out: each claim marked approved or not, with its status and source.
 
 1. List every claim: numbers, names, dates, places, counts, descriptors, superlatives.
 2. Look each up in `references/brand-facts.md`.
-3. Mark it **approved** (status approved or fixed), **unverified** (not approved, or absent) or **stale** (only from a retired source such as the 2023 profile).
+3. Mark it **approved** (status approved or fixed) or not approved, and give the status and source as `brand-facts.md` records them, or say the claim is absent.
 4. Never soften, round or replace a number. Report it and stop.
 5. Flag superlatives without evidence, comparisons with competitors, and quotes without a named source.
 6. Give the source for each mark. Do not correct the copy; hand the findings to whoever is writing it.

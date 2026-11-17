@@ -11,7 +11,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
 - **Values:** not decided. The owner will supply them. The ten principles stay as principles.
 - **Audience:** not decided. The owner will supply it.
-- **Facts about Wugweb:** only the six pillars are approved. Every other fact is unverified.
+- **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
 
 Four more questions are open or only partly answered (4, 10, 12, 14); the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
@@ -74,11 +74,11 @@ Judge the rendered result, never a description of it. This mode needs a model th
 
 ### Fact check
 
-In: copy that makes claims about Wugweb. Out: each claim marked approved, unverified or stale.
+In: copy that makes claims about Wugweb. Out: each claim marked approved or not, with its status and source.
 
 1. List every claim: numbers, names, dates, places, counts, descriptors, superlatives.
 2. Look each up in `references/brand-facts.md`.
-3. Mark it **approved** (status approved or fixed), **unverified** (not approved, or absent) or **stale** (only from a retired source such as the 2023 profile).
+3. Mark it **approved** (status approved or fixed) or not approved, and give the status and source as `brand-facts.md` records them, or say the claim is absent.
 4. Never soften, round or replace a number. Report it and stop.
 5. Flag superlatives without evidence, comparisons with competitors, and quotes without a named source.
 6. Give the source for each mark. Do not correct the copy; hand the findings to whoever is writing it.
@@ -263,22 +263,22 @@ More than three segments means the audience has not been chosen.
 
 Facts about Wugweb, each with its source and status. `wugweb-seo` reads this file one way and never rewrites it.
 
-**Nothing here is approved yet except the six pillars.** The owner began confirming these on 2026-11-16 (question 4) and has not finished. Until a row says "approved" with a date, the fact is unverified and copy that uses it fails the fact check.
+**Nothing here is approved yet except the six pillars.** The owner began confirming these on 2026-11-16 (question 4) and has not finished. Until a row says "approved" with a date, the fact is not approved and copy that uses it fails the fact check.
 
 | Fact | What exists today | Source | Status |
 | --- | --- | --- | --- |
-| Brand name and spelling | "Wugweb"; the 2023 profile also writes "WugWeb" | Site, `CLAUDE.md`, 2023 profile | Unverified. Owner to confirm one spelling |
-| Legal name | Two forms: "Wug Web Service Pvt Ltd" and "WugWeb Services Pvt Ltd" | 2023 profile (stale) | Unverified. Owner to say which |
+| Brand name and spelling | "Wugweb"; the 2023 profile also writes "WugWeb" | Site, `CLAUDE.md`, 2023 profile | Owner to confirm one spelling |
+| Legal name | Two forms: "Wug Web Service Pvt Ltd" and "WugWeb Services Pvt Ltd" | 2023 profile (stale) | Owner to say which |
 | One fixed line: what Wugweb is, for whom, what is distinct | Three competing descriptors | Site, `BRAND_POSITION.md`, 2023 profile | Blank. Owner will supply |
 | Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Approved, fixed |
 | Website | `wugweb.com` | `CLAUDE.md` | Exists |
-| Phone | The WhatsApp number used in the site nav | `CLAUDE.md` | Unverified. Owner to confirm it is the public number |
-| Email | `hello@wugweb.com` | 2023 profile (stale) | Unverified |
-| Address | One Noida address | 2023 profile (stale) | Unverified |
-| Founding date | 4 December 2020 | 2023 profile (stale) | Unverified |
-| Team size | "5-10 people" | 2023 profile (stale) | Unverified |
-| Projects delivered | Both "200+" and "400+" | 2023 profile (stale) | Unverified. Two figures conflict |
-| Markets served | Several lists that differ | 2023 profile (stale) | Unverified |
+| Phone | The WhatsApp number used in the site nav | `CLAUDE.md` | Owner to confirm it is the public number |
+| Email | `hello@wugweb.com` | 2023 profile (stale) | Owner to confirm |
+| Address | One Noida address | 2023 profile (stale) | Owner to confirm |
+| Founding date | 4 December 2020 | 2023 profile (stale) | Owner to confirm |
+| Team size | "5-10 people" | 2023 profile (stale) | Owner to confirm |
+| Projects delivered | Both "200+" and "400+" | 2023 profile (stale) | Two figures conflict |
+| Markets served | Several lists that differ | 2023 profile (stale) | Owner to confirm |
 | Official profile links | 59 Presence records in Sanity; Clutch, DesignRush and GoodFirms named in the repo | `CLAUDE.md` | Not read. Owner to say which are official |
 
 ## Rules for using facts
@@ -590,10 +590,10 @@ Adding cards to cover an unclear concept; showing AI as a robot or brain; reusin
 
 1. List every claim about Wugweb in the copy: numbers, names, dates, places, counts, descriptors, "first", "only", "leading".
 2. Look each one up in `brand-facts.md`.
-3. Mark each: **approved** (status approved or fixed), **unverified** (present but not approved, or absent), or **stale** (comes only from the 2023 profile or another retired source).
-4. Never soften, round or replace an unverified number. Report it.
+3. Mark each **approved** (status approved or fixed) or not approved, with the status and source `brand-facts.md` records, or say it is absent.
+4. Never soften, round or replace a number that is not approved. Report it.
 5. Claims about a client are not checked here; they belong to the case study in `wugweb-work`.
-6. Positioning claims are checked against `identity-and-positioning.md`. While the line is blank, any stated positioning line is unverified.
+6. Positioning claims are checked against `identity-and-positioning.md`. While the line is blank, any stated positioning line is not approved.
 
 Also report any of these, each as a finding:
 
@@ -870,7 +870,7 @@ Brand terms only. Banned words, preferred wording and tone are in `wugweb-voice`
 
 ## The name
 
-"Wugweb" is the spelling on the site and in `CLAUDE.md`. The 2023 profile also writes "WugWeb". **Not decided: owner** (question 4): confirm one spelling. Until confirmed, write "Wugweb" and flag "WugWeb" as unverified, not as wrong.
+"Wugweb" is the spelling on the site and in `CLAUDE.md`. The 2023 profile also writes "WugWeb". **Not decided: owner** (question 4): confirm one spelling. Until confirmed, write "Wugweb" and flag "WugWeb" as not approved, not as wrong.
 
 ## The descriptor
 

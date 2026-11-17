@@ -61,10 +61,10 @@ Adding cards to cover an unclear concept; showing AI as a robot or brain; reusin
 
 1. List every claim about Wugweb in the copy: numbers, names, dates, places, counts, descriptors, "first", "only", "leading".
 2. Look each one up in `brand-facts.md`.
-3. Mark each: **approved** (status approved or fixed), **unverified** (present but not approved, or absent), or **stale** (comes only from the 2023 profile or another retired source).
-4. Never soften, round or replace an unverified number. Report it.
+3. Mark each **approved** (status approved or fixed) or not approved, with the status and source `brand-facts.md` records, or say it is absent.
+4. Never soften, round or replace a number that is not approved. Report it.
 5. Claims about a client are not checked here; they belong to the case study in `wugweb-work`.
-6. Positioning claims are checked against `identity-and-positioning.md`. While the line is blank, any stated positioning line is unverified.
+6. Positioning claims are checked against `identity-and-positioning.md`. While the line is blank, any stated positioning line is not approved.
 
 Also report any of these, each as a finding:
 
