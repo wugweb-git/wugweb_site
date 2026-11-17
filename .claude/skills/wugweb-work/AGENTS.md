@@ -2,7 +2,7 @@
 
 # wugweb-work
 
-**Version 0.4.2** · Wugweb · November 2026
+**Version 0.5.0** · Wugweb · November 2026
 
 A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. Voice, layout, search and planning rules belong to sibling skills; this skill applies them. Independent of CMS, host and agent.
 
@@ -1805,11 +1805,9 @@ These are facts for the owner to settle, not changes to the list.
 
 | Name on the list | Seen in the session | Used meanwhile |
 |---|---|---|
-| `ui-ux-pro-max` | Not listed | `design-principles.md` and `design:design-critique` |
 | `slides` | Not listed as a skill | The slides tool of the agent in use, or `pptx` |
 | `aeo-brand-scan:scan` | Listed as `aeo-brand-scan:aeo-brand-scan` | That name |
 | `sanity:*` | Listed as `sanity-plugin:*` | That name |
-| `banner-design` | Not listed | `html-css-to-image:hcti-open-graph-images`, under the forms gate |
 
 Plugin helpers are listed in the session but have not each been run. Helpers that need the owner to sign in are limited until then.
 

@@ -4,7 +4,7 @@ description: "This skill should be used when the user asks to \"write a case stu
 license: MIT
 metadata:
   author: wugweb
-  version: "0.4.2"
+  version: "0.5.0"
 ---
 
 # wugweb-work

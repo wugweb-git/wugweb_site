@@ -13,6 +13,9 @@ and this project adheres to Semantic Versioning.
 
 - `.claude/skills/wugweb-voice` set to version 0.3.0 and pinned there by owner decision: do not bump, not even to 0.3.1, without the owner's say. Recorded in `metadata.json` (`versionLock`), `README.md` and the skill `CHANGELOG.md`. No change to the method, rules or files; the 0.2.1 portability package carries forward.
 
+### Added — wugweb-work skill locked at 0.5.0 (2026-11-17)
+- `.claude/skills/wugweb-work/`: version bump from 0.4.2 to 0.5.0, same content. Lock version for Part 1; the owner's call. Future Part 1 changes go to 0.5.1 and above until a decision calls for 0.6. New files `agents/openai.yaml` and `export/wugweb-work.md` added to match the sibling skills; `scripts/build.mjs` now writes both. `references/skill-map.md`: `ui-ux-pro-max` and `banner-design` moved out of "not found installed" (owner approved installing them, 2026-11-17). Validate 30 checks, test passes.
+
 ### Changed — wugweb-work plan open items and status (2026-11-17)
 - Docs only. Plan and Notion page: status now says validate 30 checks, the standing rules are one copied block in the skill, and figures with no recorded source were marked unvalidated. Waiting list gains replies and outreach, and the items shared with `wugweb-kits` (four held proposals, loop pause versus `aria-hidden`, `faqs` clash and existing blocks, card thumbnails and old media ratios). Backup: `backups/notion-wugweb-work-page-before-2026-11-17-d.md`.
 

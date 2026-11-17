@@ -111,11 +111,9 @@ These are facts for the owner to settle, not changes to the list.
 
 | Name on the list | Seen in the session | Used meanwhile |
 |---|---|---|
-| `ui-ux-pro-max` | Not listed | `design-principles.md` and `design:design-critique` |
 | `slides` | Not listed as a skill | The slides tool of the agent in use, or `pptx` |
 | `aeo-brand-scan:scan` | Listed as `aeo-brand-scan:aeo-brand-scan` | That name |
 | `sanity:*` | Listed as `sanity-plugin:*` | That name |
-| `banner-design` | Not listed | `html-css-to-image:hcti-open-graph-images`, under the forms gate |
 
 Plugin helpers are listed in the session but have not each been run. Helpers that need the owner to sign in are limited until then.
 
