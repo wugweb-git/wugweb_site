@@ -91,7 +91,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Audience:** not decided. The owner will supply it.
 - **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
 
-Five more questions are open (4, 10, 19, 20, 21). The owner will supply every open item in Notion (2026-11-17); when it arrives, propose the change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+Four more questions are open (4, 10, 19, 20). The owner will supply every open item in Notion (2026-11-17); when it arrives, propose the change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -192,7 +192,7 @@ These are confirmed. They hold in every mode.
 - Structure stays in brand ink. An accent is spent on one or two things, and a pillar colour does not paint structure.
 - Text is never pure white. The live colour values must not change.
 - Other buttons may use yellow only on hover or tap.
-- Purple, green and orange are allowed as pillar colours, and the pillar glow is the one allowed gradient exception.
+- All six pillar colours stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the interface accent stays grey. The pillar glow is the one allowed gradient exception.
 - The logo lockup is two-tone, and two-tone titles mirror it. Use the real logo file. Logo checks live here; sizes live in kits.
 - Surfaces are a black canvas with glass panels, and the black canvas is also the artwork default. No format uses a light background until the owner names one. Corner radius is set by role.
 - Motion: one spring with a slight bounce, which is within the brand, for nav and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion.
@@ -755,7 +755,7 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 | Matter | One source says | Another says | Status |
 | --- | --- | --- | --- |
 | Positioning | "product and experience architecture studio" (site) | "systems-minded design partner" (guidelines) | Owner will supply a new line |
-| Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Allowed as pillar colours. Confirmed 2026-11-17 (question 6) |
+| Pillar colours | Avoid purple, green and orange (`04_COLOR_ROLES.md`) | Six pillar colours on the site and in kits | All six stand; accent stays grey. Confirmed 2026-11-17 (questions 6 and 21) |
 | Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Yellow. Confirmed 2026-11-17 (question 15) |
 | Background | Warm or light default (guidelines) | Black canvas (site, kits) | Black canvas everywhere. No format uses a light background until the owner names one (question 14, 2026-11-17) |
 | Gradients | Banned (guidelines) | A glow per pillar on service pages | The pillar glow is an exception. Confirmed 2026-11-17 (question 16) |
@@ -779,7 +779,7 @@ The owner will supply every open item below, and positioning, values, audience a
 | 3 | Audience | Answered: owner will supply |
 | 4 | Facts about Wugweb | In progress |
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
-| 6 | Purple, green and orange in artwork | Confirmed: allowed as pillar colours |
+| 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
 | 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |
 | 8 | Where working preferences live | Closed: in `docs/skills/STANDING-RULES.md` |
 | 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
@@ -794,7 +794,7 @@ The owner will supply every open item below, and positioning, values, audience a
 | 18 | Logo rules live here, sizes in kits | Confirmed |
 | 19 | Logo: which file is the lockup (`public/brand/logo-large.svg`) and which the mark (`logo-small.svg`); the two tones; whether the logo's pure white and yellow are exempt from the colour rules; clear space; minimum size; mark construction; live type in the lockup; a one-colour or light-background version; whether the unused `wugweb-mark.png` can go | Open. Owner answers in Notion |
 | 20 | `wugweb-work` lists "brand identity" as a case-study archetype with ToT as the example, but no real brand content exists yet | Open |
-| 21 | Secondary colours: the kits README lists peach, green, blue and aqua; the code uses magenta, teal and blue as pillar colours; the owner's ruling (question 6) names purple, green and orange | Open |
+| 21 | Secondary colours: kits README, code and question 6 differed | Answered 2026-11-17: all six pillar colours stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the accent stays grey; yellow stays the one brand colour |
 
 ## Rules restated from helper skills
 
@@ -1069,7 +1069,7 @@ Selection questions:
 | A scribble or marker line | Once, as a single human accent |
 | Richer collage layers | Campaign collage mode, and every layer clarifies the same visual sentence |
 | Dark backgrounds | The black canvas is the default everywhere. No format uses a light background until the owner names one (question 14, 2026-11-17) |
-| Purple, green, orange | Allowed as pillar colours. Confirmed by the owner, question 6 |
+| Pillar colours | All six stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the accent stays grey. Confirmed by the owner, questions 6 and 21 |
 | A glow or gradient | The pillar glow is an allowed exception. Confirmed by the owner, question 16. Other gradient-heavy looks stay banned |
 
 ## Composition (source: `02_COMPOSITION.md`)
@@ -1172,7 +1172,7 @@ Palette behaviour by mode, from the same file:
 
 ### Owner answers, 2026-11-17
 
-- **Question 6, confirmed.** Purple, green and orange are allowed as pillar colours, in artwork as on the site.
+- **Questions 6 and 21, confirmed.** All six pillar colours stand, in artwork as on the site: Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple. The interface accent stays grey. Magenta is the Brand pillar colour, not the brand energy colour.
 - **Question 15, confirmed.** Yellow is the one brand colour, as in kits. Magenta is not the brand energy colour.
 - **Question 16, confirmed.** The pillar glow is an allowed exception to the gradient ban. Other gradient-heavy looks stay banned.
 - **Question 14, confirmed.** The black canvas is the default everywhere. No format uses a light background until the owner names one.

@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- fix(skills): wugweb-brand-os: all six pillar colours stand and the accent stays grey (owner, 2026-11-17); question 21 closed.
+
 ### Changed — wugweb-strategy FAQ review notes the rich-results end date (2026-11-17)
 - One-line note added to `FAQ-REVIEW.md`; the FAQ line is unchanged.
 

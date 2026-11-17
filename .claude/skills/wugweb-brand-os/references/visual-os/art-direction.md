@@ -77,7 +77,7 @@ Selection questions:
 | A scribble or marker line | Once, as a single human accent |
 | Richer collage layers | Campaign collage mode, and every layer clarifies the same visual sentence |
 | Dark backgrounds | The black canvas is the default everywhere. No format uses a light background until the owner names one (question 14, 2026-11-17) |
-| Purple, green, orange | Allowed as pillar colours. Confirmed by the owner, question 6 |
+| Pillar colours | All six stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the accent stays grey. Confirmed by the owner, questions 6 and 21 |
 | A glow or gradient | The pillar glow is an allowed exception. Confirmed by the owner, question 16. Other gradient-heavy looks stay banned |
 
 ## Composition (source: `02_COMPOSITION.md`)

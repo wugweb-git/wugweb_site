@@ -40,7 +40,7 @@ Palette behaviour by mode, from the same file:
 
 ### Owner answers, 2026-11-17
 
-- **Question 6, confirmed.** Purple, green and orange are allowed as pillar colours, in artwork as on the site.
+- **Questions 6 and 21, confirmed.** All six pillar colours stand, in artwork as on the site: Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple. The interface accent stays grey. Magenta is the Brand pillar colour, not the brand energy colour.
 - **Question 15, confirmed.** Yellow is the one brand colour, as in kits. Magenta is not the brand energy colour.
 - **Question 16, confirmed.** The pillar glow is an allowed exception to the gradient ban. Other gradient-heavy looks stay banned.
 - **Question 14, confirmed.** The black canvas is the default everywhere. No format uses a light background until the owner names one.

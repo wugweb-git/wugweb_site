@@ -57,7 +57,7 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 | Matter | One source says | Another says | Status |
 | --- | --- | --- | --- |
 | Positioning | "product and experience architecture studio" (site) | "systems-minded design partner" (guidelines) | Owner will supply a new line |
-| Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Allowed as pillar colours. Confirmed 2026-11-17 (question 6) |
+| Pillar colours | Avoid purple, green and orange (`04_COLOR_ROLES.md`) | Six pillar colours on the site and in kits | All six stand; accent stays grey. Confirmed 2026-11-17 (questions 6 and 21) |
 | Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Yellow. Confirmed 2026-11-17 (question 15) |
 | Background | Warm or light default (guidelines) | Black canvas (site, kits) | Black canvas everywhere. No format uses a light background until the owner names one (question 14, 2026-11-17) |
 | Gradients | Banned (guidelines) | A glow per pillar on service pages | The pillar glow is an exception. Confirmed 2026-11-17 (question 16) |
@@ -81,7 +81,7 @@ The owner will supply every open item below, and positioning, values, audience a
 | 3 | Audience | Answered: owner will supply |
 | 4 | Facts about Wugweb | In progress |
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
-| 6 | Purple, green and orange in artwork | Confirmed: allowed as pillar colours |
+| 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
 | 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |
 | 8 | Where working preferences live | Closed: in `docs/skills/STANDING-RULES.md` |
 | 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
@@ -96,7 +96,7 @@ The owner will supply every open item below, and positioning, values, audience a
 | 18 | Logo rules live here, sizes in kits | Confirmed |
 | 19 | Logo: which file is the lockup (`public/brand/logo-large.svg`) and which the mark (`logo-small.svg`); the two tones; whether the logo's pure white and yellow are exempt from the colour rules; clear space; minimum size; mark construction; live type in the lockup; a one-colour or light-background version; whether the unused `wugweb-mark.png` can go | Open. Owner answers in Notion |
 | 20 | `wugweb-work` lists "brand identity" as a case-study archetype with ToT as the example, but no real brand content exists yet | Open |
-| 21 | Secondary colours: the kits README lists peach, green, blue and aqua; the code uses magenta, teal and blue as pillar colours; the owner's ruling (question 6) names purple, green and orange | Open |
+| 21 | Secondary colours: kits README, code and question 6 differed | Answered 2026-11-17: all six pillar colours stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the accent stays grey; yellow stays the one brand colour |
 
 ## Rules restated from helper skills
 
