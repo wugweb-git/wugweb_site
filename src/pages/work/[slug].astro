@@ -191,7 +191,7 @@ const otherCases = await sanityClient.fetch(
   {heroCover && (
     <section class="wrap section work-cover" data-reveal id="work-cover" aria-label="Work cover">
       {heroCoverIsVideo ? (
-        <video aria-hidden="true" src={heroCover} muted loop playsinline autoplay preload="metadata" class="work-cover-media" />
+        <video aria-hidden="true" src={heroCover} muted loop playsinline preload="metadata" class="work-cover-media" data-cover-autoplay />
       ) : (
         <img src={heroCover} alt={body ? `${brandLabel || work.title} case study cover` : altFor(altMap, work.coverPath, work.title)} loading="eager" decoding="async" class="work-cover-media" />
       )}
@@ -214,7 +214,7 @@ const otherCases = await sanityClient.fetch(
         });
         while (mi < media.length) items.push({ kind: 'media', m: media[mi++] });
         return (
-          <section class="bento" aria-labelledby={`b-h-${si}`}>
+          <section class="bento" id={`b-s-${si}`} {...(s.title ? { 'aria-labelledby': `b-h-${si}` } : { 'aria-label': `${brandLabel || work.title} section ${si + 1}` })}>
             <div class={`b-head${items.length === 0 ? ' b-head--solo' : ''}`}>
               <h2 id={`b-h-${si}`}>{s.title}</h2>
               {s.lead && <p set:html={inline(s.lead)} />}
@@ -245,7 +245,7 @@ const otherCases = await sanityClient.fetch(
         );
       })}
       {body.closing.length > 0 && (
-        <section class="bento" aria-label="More from the project">
+        <section class="bento" id="b-closing" aria-label="More from the project">
           {body.closing.map((m) => m.video ? (
             <figure class="b-media b-video"><video aria-hidden="true" data-src={m.url} muted loop playsinline preload="none" /></figure>
           ) : (
@@ -254,7 +254,7 @@ const otherCases = await sanityClient.fetch(
         </section>
       )}
       {extraMedia.length > 0 && (
-        <section class="b-carousel-wrap" aria-label={`${brandLabel} screens`}>
+        <section class="b-carousel-wrap" id="b-screens" aria-label={`${brandLabel} screens`}>
           <div class="b-carousel" tabindex="0">
             {extraMedia.map((u) => /\.(mp4|webm|mov)$/i.test(u) ? (
               <figure><video aria-hidden="true" data-src={u} muted loop playsinline preload="none" /></figure>
@@ -279,6 +279,16 @@ const otherCases = await sanityClient.fetch(
       if (img.complete && img.naturalWidth) shape(img);
       else img.addEventListener('load', () => shape(img), { once: true });
     });
+
+    // Hero cover video plays on its own only when the visitor allows motion.
+    // Under prefers-reduced-motion it stays paused on its first frame.
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const cover = document.querySelector<HTMLVideoElement>('video[data-cover-autoplay]');
+    if (cover) {
+      const sync = () => { if (reduce.matches) cover.pause(); else cover.play().catch(() => {}); };
+      sync();
+      reduce.addEventListener('change', sync);
+    }
   </script>
 
   {!body && (
@@ -570,7 +580,7 @@ const otherCases = await sanityClient.fetch(
     gap: var(--gap-6);
   }
   .case-list li {
-    border-left: 2px solid var(--rule-color, var(--line));
+    border-left: var(--stroke-regular) solid var(--rule-color, var(--line));
     padding-left: var(--gap-5);
   }
   .case-list strong {
@@ -644,7 +654,7 @@ const otherCases = await sanityClient.fetch(
     gap: var(--gap-6);
     margin-bottom: var(--gap-8);
     padding-bottom: var(--gap-8);
-    border-bottom: 1px solid var(--line);
+    border-bottom: var(--stroke-thin) solid var(--line);
   }
   .case-stat {
     display: flex;
@@ -674,7 +684,7 @@ const otherCases = await sanityClient.fetch(
   .case-thesis blockquote {
     margin: 0;
     padding-left: var(--gap-6);
-    border-left: 2px solid var(--color-accent-primary);
+    border-left: var(--stroke-regular) solid var(--color-accent-primary);
   }
   .case-thesis p {
     margin: 0;
@@ -782,7 +792,7 @@ const otherCases = await sanityClient.fetch(
     scrollbar-width: none;
   }
   .b-carousel::-webkit-scrollbar { display: none; }
-  .b-carousel:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+  .b-carousel:focus-visible { outline: var(--stroke-focus) solid var(--fg); outline-offset: var(--focus-offset); }
   .b-carousel figure { margin: 0; flex: 0 0 auto; scroll-snap-align: start; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface-elevated); }
   .b-carousel img, .b-carousel video { height: min(62svh, 560px); width: auto; display: block; }
 
@@ -793,7 +803,7 @@ const otherCases = await sanityClient.fetch(
   .b-styles img { width: 100%; height: auto; display: block; }
 
   /* Tablet: two columns; media back inside the gutter with rounded corners. */
-  @media (min-width: 600px) {
+  @media (min-width: 640px) {
     .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: dense; }
     .b-head, .b-video, .b-media:not([data-shape='portrait']) { grid-column: 1 / -1; }
     .b-media { margin: 0; border-radius: var(--radius-lg); }
