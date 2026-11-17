@@ -136,7 +136,7 @@ Read only the file the current mode needs. "Held for" names the sibling skill th
 | `references/open-items.md` | What is not decided, and the working assumption for each |
 | `references/skill-map.md` | Helpers, permission levels, clashes, fallbacks |
 | `references/ops-cycle.md` | Commands, output formats, this site's wiring |
-| `references/copy-and-seo.md` | Brief template, lengths. Voice held for `wugweb-voice`; on-page rules held for `wugweb-seo` |
+| `references/copy-and-seo.md` | Brief template, lengths. Voice pointers and candidates for `wugweb-voice`; on-page rules held for `wugweb-seo` |
 | `references/layout-grammar.md` | Which block a content shape gets. Block rules held for `wugweb-kits` |
 | `references/design-principles.md` | Held for `wugweb-kits`: design vocabulary and the critique pass |
 | `references/schema-jsonld.md` | Held for `wugweb-seo`: the JSON-LD graph |

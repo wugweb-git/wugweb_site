@@ -11,6 +11,8 @@ and this project adheres to Semantic Versioning.
 
 ### Added — wugweb-strategy FAQ review list and rules (2026-11-17)
 - `docs/skills/wugweb-strategy/FAQ-REVIEW.md`: the 47 typed service page questions with signal-log and answer-source columns. FAQ rules extended in the skill (version stays 0.1.2).
+### Changed — wugweb-work voice rules sorted with wugweb-voice (2026-11-17)
+- We or I, client on-screen terms and no dashes now point to wugweb-voice; nine rules marked candidate; the rest stay work's own. Still 0.5.0.
 
 - feat(skills): wugweb-brand-os check fails when the export or its standing rules copy drifts from docs/skills/STANDING-RULES.md.
 
