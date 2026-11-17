@@ -2,7 +2,7 @@
 
 Owner rulings, 2026-11-17: strategy decides the FAQ block with `wugweb-seo`; the unapproved copy below may stay live during the review; `/faq` is the one dedicated FAQ page under the same review. Nothing on the site is changed by this file.
 
-Source of the copy: `src/lib/services-data.ts`, read from main. Sanity `faqs` is empty on all six services, so this typed copy is what visitors see. 47 questions in all.
+Source of the copy: `src/lib/services-data.ts`, read from main. Sanity `faqs` is empty on all six services, so this typed copy is what visitors see. 47 questions in all on the service pages, plus the `/faq` fallback at the end.
 
 How to read the tables. **Signal log:** no entry exists yet for any question, so every row reads "none recorded". **Answer source:** the copy is typed into the code, its origin is unknown, so every answer reads "owner to confirm". **Flag** marks a row that needs more than a yes, from the rules in `SKILL.md`: a number or promise with no source, a dash in visible text, or a claim about the work that needs a screen or a fact. For each question the owner chooses: keep, answer again, or cut.
 
@@ -83,3 +83,20 @@ How to read the tables. **Signal log:** no entry exists yet for any question, so
 | 4 | Do you offer infrastructure management? | none recorded | owner to confirm |  | |
 | 5 | How do you minimize downtime? | none recorded | owner to confirm |  | |
 | 6 | Can you work as an extension of our internal team? | none recorded | owner to confirm |  | |
+
+## /faq page
+
+Typed fallback copy in `src/pages/faq.astro`. It shows only when Sanity's `faq` page has no items. Same reading as above. `/faq` shows visible FAQ content with no FAQPage markup (owner, 2026-11-17).
+
+| # | Question | Signal log | Answer source | Flag | Owner: keep, answer again, cut |
+| --- | --- | --- | --- | --- | --- |
+| 1 | What services does Wugweb offer? | none recorded | owner to confirm | superlative, no proof | |
+| 2 | What makes your UI/UX design services stand out? | none recorded | owner to confirm |  | |
+| 3 | Do you provide custom brand identity design and positioning? | none recorded | owner to confirm | superlative, no proof | |
+| 4 | What kind of platforms do you develop under web and app development? | none recorded | owner to confirm |  | |
+| 5 | How do you integrate MarTech and AI into your services? | none recorded | owner to confirm |  | |
+| 6 | Do you offer no-code development for fast launch? | none recorded | owner to confirm | tools named, needs a fact | |
+| 7 | How do your QA and testing services ensure product quality? | none recorded | owner to confirm | superlative, no proof | |
+| 8 | What is the typical timeline for a project? | none recorded | owner to confirm | durations, no source | |
+| 9 | How do you charge for your services? | none recorded | owner to confirm |  | |
+| 10 | Do you work with startups? | none recorded | owner to confirm | dash in answer | |
