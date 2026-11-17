@@ -8,7 +8,7 @@
 | --- | --- |
 | Name | `wugweb-seo` |
 | Type | Claude skill, already installed as one skill |
-| Status | Version 2.4.1. Master copy in the repo at `.claude/skills/wugweb-seo/` since 2026-11-17 (commits 82bc0b9a and 825b1aa6). The app copy reads 2.4.0 until the owner re-saves it. |
+| Status | Version 2.5.0, merged to main 2026-11-17 (merge 4828533d). Master copy in the repo at `.claude/skills/wugweb-seo/`, now carrying `score-page.mjs` and `evals/evals.json`. The app build this came from is also 2.5.0. |
 | Alignment plan | Ready for the owner's vetting, 2026-11-16. Written by the wugweb-seo planning session. |
 | App copy | 2.4.0, last saved 16 Nov at 23.38, 21 files. The owner saves it from his development chat; the planning session cannot open that chat or session `cse_01UQ9TRqokKf1xMCS1JD3brM`. Files that differ from the repo copy: `SKILL.md`, `README.md`, `CHANGELOG.md`, `metadata.json`, `AGENTS.md`, `adapters/cursor/wugweb-seo.mdc`, `references/handoffs.md`. |
 | Planned in session | wugweb-seo |
@@ -470,6 +470,8 @@ grep -n "proof map" references/handoffs.md
 Pushed 2026-11-17: a verbatim copy of the 2.5.0 app build is on branch `skill/wugweb-seo-2.5.0` (commit fc4042e1), based on `origin/main`, so main stays 2.4.1. The score demo gives 89 of 100 and the four score self-tests pass. Two blockers before merge, from `validate` (2 errors): the `name:` line is re-quoted, regressing the 2.4.1 unquote fix and making `build.mjs` emit a mis-named Cursor adapter; and `evals/evals.json` is absent, so claim 8 is unmet in this copy. Fix the name, add the evals, rebuild, then diff and merge. This closes items 1 to 7 and 9 of the nine, confirmed by the greps and the score run; item 8 (evals) stays open.
 
 Fixed 2026-11-17 (commit 89bb51c1): the `name:` line is unquoted and the skill rebuilt, and `evals/evals.json` is added with 8 cases across plan, audit, score and report. `validate` now reports 34 checks, 0 errors, 0 warnings and the self-tests pass, so all nine claims are met. The branch `skill/wugweb-seo-2.5.0` is ready to diff and merge to main; main is still 2.4.1 until the owner merges.
+
+Merged 2026-11-17 (merge 4828533d) on the owner's instruction: `skill/wugweb-seo-2.5.0` is in main, which now holds 2.5.0 with `score-page.mjs` and `evals/evals.json`. The merge was clean (no file overlap with the doc commits), and `validate` on the merged tree read 34 checks, 0 errors, 0 warnings with the self-tests passing. So the repo master is 2.5.0; the earlier "repo 2.4.1" lines on this page are superseded.
 
 ## Planned: on-page keyphrase score (2026-11-17)
 
