@@ -72,6 +72,8 @@ Until each "not decided" row is answered, report both sides and do not pick one.
 
 ## Open questions for the owner
 
+The owner will supply every open item below, and positioning, values, audience and logo answers, in Notion (2026-11-17). When a Notion page arrives, show current to proposed and apply nothing until the owner approves.
+
 | No. | Question | Status |
 | --- | --- | --- |
 | 1 | Positioning line | Answered: neither. Owner will supply |
