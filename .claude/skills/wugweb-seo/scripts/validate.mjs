@@ -39,8 +39,9 @@ check('frontmatter keys are in the specification', topKeys.every((k) => ['name',
 check('version in SKILL.md matches metadata.json', version && version === meta.version, `${version} vs ${meta.version}`)
 check('CHANGELOG.md has an entry for this version', read('CHANGELOG.md').includes(`## ${meta.version}`))
 
-// 2. Size.
-const words = (body.match(/[A-Za-z0-9][\w'’.-]*/g) || []).length
+// 2. Size. Shared method across the six skills: drop frontmatter (body is already
+// past it), remove fenced code blocks, split on whitespace, count tokens with a letter or digit.
+const words = body.replace(/```[\s\S]*?```/g, '').split(/\s+/).filter((t) => /[A-Za-z0-9]/.test(t)).length
 check('SKILL.md body is 1,500 to 2,000 words', words >= 1500 && words <= 2000, `${words} words`)
 check('SKILL.md is under 500 lines', skill.split('\n').length < 500, `${skill.split('\n').length} lines`)
 
