@@ -412,8 +412,10 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 
 <script>
   import gsap from 'gsap';
+  import { HERO_HEADLINE_DELAY } from '../lib/scroll-animations';
 
-  // Hero headline: split into words, reveal with blur + upward drift
+  // Hero headline: split into words, reveal with an upward drift. Opacity and
+  // y only (kits-gsap-owns-motion); starts at the hero headline delay, 0.4s.
   const headline = document.querySelector('[data-headline]');
   if (headline && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const text = headline.textContent ?? '';
@@ -424,8 +426,8 @@ import ServiceTagField from '../components/ServiceTagField.astro';
 
     gsap.fromTo(
       headline.querySelectorAll('.word'),
-      { opacity: 0, y: 24, filter: 'blur(10px)' },
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.08, ease: 'power3.out' }
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.8, delay: HERO_HEADLINE_DELAY, stagger: 0.08, ease: 'power3.out' }
     );
   }
 

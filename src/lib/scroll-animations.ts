@@ -14,6 +14,23 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Hero reveal groups (owner ruling 2026-11-17, kits-gsap-owns-motion):
+ * in the hero, the first section inside main, the headline group (h1 and
+ * eyebrow) starts at 0.4s and everything else (supporting copy, buttons)
+ * at 0.9s. Sections below the hero reveal on scroll with no added delay.
+ * An explicit data-reveal-delay always wins.
+ */
+export const HERO_HEADLINE_DELAY = 0.4;
+export const HERO_SUPPORT_DELAY = 0.9;
+function revealDelay(el: HTMLElement): number {
+  if (el.dataset.revealDelay) return Number(el.dataset.revealDelay) || 0;
+  const hero = document.querySelector('main section');
+  if (!hero || !hero.contains(el)) return 0;
+  const headline = el.matches('h1, .eyebrow') || !!el.querySelector('h1, .eyebrow');
+  return headline ? HERO_HEADLINE_DELAY : HERO_SUPPORT_DELAY;
+}
+
 export function initScrollAnimations(): () => void {
   if (typeof window === 'undefined') return () => {};
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -31,7 +48,7 @@ export function initScrollAnimations(): () => void {
       gsap.set(el, { opacity: 1 });
       return;
     }
-    const delay = Number((el as HTMLElement).dataset.revealDelay || 0);
+    const delay = revealDelay(el as HTMLElement);
     const tween = gsap.fromTo(
       el,
       { opacity: 0, y: 16 },
