@@ -1,6 +1,6 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 0.1.2 on main, 40 files, last skill commit 22b72842.
+> - Built. Version 0.1.2 on main, 50 files, last skill commit 22b72842.
 > - Skill file body: 1,673 words by the shared count. Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The strategy session built the upload zip; the owner uploads it.
 > - Owner rulings applied: decision 20 (link targets come from wugweb-seo inside the structure strategy sets), decision 23 (the proof map wins on which case study backs a page), brief field 9 option (a) (the brief carries wugweb-seo's keyword note unchanged), wugweb-voice may read the signal log directly, read only.
@@ -17,8 +17,8 @@
 |---|---|
 | Name | `wugweb-strategy` |
 | Type | Claude Code project skill: one `SKILL.md` plus `references/`, `examples/`, `evals/` |
-| Version | 0.1.0 (planned) |
-| Status | v0.1.0 built. Master copy in `.claude/skills/wugweb-strategy/`. |
+| Version | 0.1.2 |
+| Status | Built. 0.1.2 on main. Nothing pending with the owner. |
 | Notion page | https://app.notion.com/p/41abb710b9ab8187a4a8c5979daff39b (the plan sits on the skill page itself) |
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-strategy/` |
@@ -155,7 +155,7 @@ Source: kits docs. `kits_design_system/docs/tokens/layout-shell.md`, section "CM
 |---|---|---|
 | `focusKeyword`, `secondaryKeywords`, `searchIntent`, `schemaType`, canonical, `noIndex`, share-image and breadcrumb fields | `wugweb-seo` | Not planning fields. Notion Blogs already has Focus Keyword and Schema Type. |
 | `aiSummary`, `keyTakeaways` | `wugweb-work` writes them; `wugweb-seo` sets any limits | Content of the piece, not planning. Notion Blogs already has AI Summary. |
-| `faqs` (for FAQPage markup) | No one | Clashes with the owner's no-FAQPage rule. Not wanted. |
+| `faqs` (for FAQPage markup) | `wugweb-strategy` decides use, with `wugweb-seo` | Kept by the owner on 2026-11-17. Service pages and blog posts only, from the signal log, answers from the owner's source. Never on case studies. |
 | `lastReviewedAt` | This skill decides the review; `wugweb-seo` and the owner decide how it is exposed | Wanted as a planning date: when a piece was last reviewed for refresh. It must not show as a visible "last updated" date on posts (owner decision, 2026-10-13). |
 
 **Planning fields this skill would want.** None exists today.

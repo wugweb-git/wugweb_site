@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan and Notion page refreshed (2026-11-17)
+- Owner asked for both. File count, version row, status row and the faqs row updated. Backup in `backups/`.
+
 - docs(skills): wugweb-brand-os plan (Notion and PLAN.md) records commit 9c8d0c95, the owner's answers of 2026-11-17 and the first eval run in progress.
 
 ### Changed — wugweb-voice: owner's "all yes" applied, version stays 0.3.0 (2026-11-17)
