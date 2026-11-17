@@ -1575,6 +1575,8 @@ A form may need a file that does not exist (a share image, a social card, a Beha
 
 ### Sizes for made files
 
+Type on any made file (deck, carousel, cover, share image, story) uses the `wugweb-kits` tokens by role, from its component sizes reference (`.claude/skills/wugweb-kits/references/component-sizes.md` in this repository) (owner, 2026-11-17): title `--type-graphic-l`, subtitle or key figure `--type-graphic-m`, label `--type-graphic-s`, body `--fluid-body-md` or `--fluid-body-sm`. The element holding the text is a size container. No new token, and the values are not restated here.
+
 These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were adopted by the owner on 2026-11-17. Check each against the platform's help page and date it when a file is proposed.
 
 | File | Size | Source and standing |
@@ -1967,7 +1969,7 @@ Every plotted value equals the value in the body. The source and date are printe
 ### Steps
 
 1. Outline: slide number, claim, screen, body line.
-2. Ask `wugweb-kits` for the token sheet for decks; use only its colours, type and spacing.
+2. Use only `wugweb-kits` tokens for colour, type and spacing. Type sizes by role come from its component sizes reference (`.claude/skills/wugweb-kits/references/component-sizes.md` in this repository) (owner, 2026-11-17): title `--type-graphic-l`, subtitle or key figure `--type-graphic-m`, label `--type-graphic-s`, body `--fluid-body-md` or `--fluid-body-sm`. The text holder is a size container. No new token; the values live in kits only.
 3. Voice check on the slide text.
 4. Build the file with the deck helper in `skill-map.md`.
 5. A deck that will be sent or posted goes through `publish-approval.md`.
