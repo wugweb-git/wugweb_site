@@ -25,19 +25,97 @@ export function initServiceSpotlightPanel(): void {
     let active = -1;
     let pinned = -1;
 
+    let onScreen = false;
+
+    /**
+     * Loop rules (kits-gsap-owns-motion): a visible loop runs 15s or less, a
+     * clip over 5s gets a pause control and is exposed to assistive tech, a
+     * clip of 5s or less stays hidden with no control, and nothing autoplays
+     * under reduced motion. Duration is read from each clip's own metadata,
+     * so the rule holds for any clip without a list of lengths.
+     */
+    const MAX_LOOP_S = 15;
+    const CONTROL_OVER_S = 5;
+    // timeupdate fires roughly every 250ms, so wrap a beat early to keep the
+    // visible loop at or under the cap.
+    const WRAP_AT_S = MAX_LOOP_S - 0.25;
+
+    // Per clip: the visitor's own choice, kept for as long as the page is open.
+    // 'paused' wins over autoplay; 'playing' is how reduced motion opts in.
+    const choice = new Map<HTMLVideoElement, 'paused' | 'playing'>();
+    const wantsPlay = (v: HTMLVideoElement) => {
+      const c = choice.get(v);
+      return c ? c === 'playing' : !reduce;
+    };
+
+    const syncControl = (v: HTMLVideoElement) => {
+      const ctl = v.parentElement?.querySelector<HTMLButtonElement>('[data-pause]');
+      if (!ctl) return;
+      const playing = !v.paused;
+      ctl.dataset.state = playing ? 'playing' : 'paused';
+      const label = playing ? ctl.dataset.labelPause : ctl.dataset.labelPlay;
+      if (label) ctl.setAttribute('aria-label', label);
+    };
+
+    const syncVideos = () => {
+      const key = String(active);
+      cards.forEach((c) => {
+        const video = c.querySelector<HTMLVideoElement>('[data-video]');
+        if (!video) return;
+        const isActive = c.dataset.card === key;
+        if (isActive && reduce && video.readyState === 0 && video.preload === 'none') {
+          // No autoplay here, but the control needs the duration to decide
+          // whether it exists. Metadata only, and only for the active row.
+          video.preload = 'metadata';
+          video.load();
+        }
+        if (isActive && onScreen && wantsPlay(video)) video.play().catch(() => {});
+        else video.pause();
+      });
+    };
+
     const setActive = (i: number) => {
       if (active === i) return;
       active = i;
       const key = String(i);
       root.classList.toggle('is-active', !reduce && layers.some((l) => l.dataset.bg === key));
       layers.forEach((l) => l.classList.toggle('is-visible', !reduce && l.dataset.bg === key));
-      cards.forEach((c) => {
-        const video = c.querySelector<HTMLVideoElement>('[data-video]');
-        if (!video) return;
-        if (!reduce && c.dataset.card === key) video.play().catch(() => {});
+      syncVideos();
+    };
+
+    cards.forEach((c) => {
+      const video = c.querySelector<HTMLVideoElement>('[data-video]');
+      const ctl = c.querySelector<HTMLButtonElement>('[data-pause]');
+      if (!video) return;
+
+      const applyDuration = () => {
+        const d = video.duration;
+        if (!Number.isFinite(d) || d <= CONTROL_OVER_S || !ctl) return;
+        video.removeAttribute('aria-hidden');
+        if (video.dataset.label) video.setAttribute('aria-label', video.dataset.label);
+        ctl.hidden = false;
+        syncControl(video);
+      };
+      if (video.readyState >= 1) applyDuration();
+      else video.addEventListener('loadedmetadata', applyDuration, { once: true });
+
+      video.addEventListener('timeupdate', () => {
+        if (video.currentTime >= WRAP_AT_S) video.currentTime = 0;
+      });
+      video.addEventListener('play', () => syncControl(video));
+      video.addEventListener('pause', () => syncControl(video));
+
+      if (!ctl) return;
+      ctl.addEventListener('focus', () => { stopCycle(); setActive(Number(c.dataset.card)); });
+      ctl.addEventListener('blur', () => { setActive(pinned); queueCycle(IDLE_MS); });
+      ctl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const next = video.paused ? 'playing' : 'paused';
+        choice.set(video, next);
+        if (next === 'playing') video.play().catch(() => {});
         else video.pause();
       });
-    };
+    });
 
     /**
      * Idle auto-advance. After the pointer leaves, the showcase waits out the
@@ -51,7 +129,6 @@ export function initServiceSpotlightPanel(): void {
     const DWELL_MS = 4000;
     root.style.setProperty('--showcase-dwell', `${DWELL_MS}ms`);
     let timer = 0;
-    let onScreen = false;
 
     const open = (i: number) => {
       pinned = i;
@@ -98,6 +175,9 @@ export function initServiceSpotlightPanel(): void {
     new IntersectionObserver(
       ([e]) => {
         onScreen = e.isIntersecting;
+        // Off screen, the open row's clip pauses too; back on screen it
+        // resumes unless the visitor paused it.
+        syncVideos();
         if (onScreen) queueCycle(IDLE_MS);
         else stopCycle();
       },
