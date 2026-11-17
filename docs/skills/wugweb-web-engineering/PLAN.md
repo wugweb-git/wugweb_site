@@ -167,3 +167,23 @@ The session was stopped before it recorded these four. Each is pending and none 
 2. Owner's step: add `https://uat.wugweb.com` to the Sanity CORS list, so the embedded Studio at `/admin` can sign in on staging.
 3. `npm install` after the Studio merge reports 51 audit findings (1 low, 10 moderate, 38 high, 2 critical). Assess them. Never run the audit fix with force.
 4. Docs clean-up, allowed by the owner ("remove old and stale md files, or update them"): update `README.md`, `src/components/README.md`, `docs/admindesign.md`, `docs/r2-assets.md` (move the path-field table in from `docs/content-assets.md`, then remove that file and repoint its links), `docs/schema-template-section-component-level.md` and the stale lines in `governance.md`; cut the finished history out of `pending.md`, keeping the nine open leftovers in section 9. Already removed: `SANITY_TOKEN_ROTATION.md`, `sanity/docs/content-migration-plan.md`, `scripts/AUDIT_REPORT.md`, the September UI spec folder, the brand glass showcase prompt and the old NTUC draft.
+
+## 11. Added at the coordinator's handover (2026-11-18)
+
+The coordinator handed all open items to this session. From now the session works with the owner directly and keeps its own records here and on the Notion page. Nothing below is started; each needs the owner's go.
+
+| # | Item | Touches | State |
+|---|---|---|---|
+| M | Ignore line for `scripts/.tmp-*.mjs` | One line in `.gitignore`. The stray temp script itself was deleted by the owner. | Proposed |
+| N | Asset registry address breaks for file names with a hash sign | `scripts/sync-asset-registry.mjs` line 230 builds the address without escaping the key. `scripts/lib/media-manifest.mjs` already escapes each path part; the fix is to do the same. Not yet confirmed against the stored values. | Proposed |
+| O | Six dead links in case-study bodies | Notion Body Content; listed in `docs/research/media-manifest-2026-11-17.md`. Content, so the fix is the owner's or `wugweb-work`'s. | Reported |
+| P | Five R2 folders no case study claims: bodyshop, hyatt-restaurants, others, pvr-cinemas, tecnotree | R2 only. Nothing changes without the owner's decision; removal would be a delete. | Reported |
+| Q | Four pages over the 25 MB budget: Inkompass, Axis Bank, Plufo, Sadhan | Media weight. Under the media rule the files are not changed; the page defends itself in Part 2. | Reported |
+| R | `npm audit` reports 51 vulnerabilities after the Studio merge | Read and assess only. Never run audit fix with force. | Not started |
+| S | Docs clean-up handed over | Update `README.md`, `src/components/README.md`, `docs/admindesign.md`, `docs/r2-assets.md` (move the path-field table in from `docs/content-assets.md`, then remove that file and repoint its links), `docs/schema-template-section-component-level.md`, the stale lines in `governance.md`; cut the finished history out of `pending.md`, keeping the nine open leftovers in section 9. | Not started |
+
+Owner's steps added: add `https://uat.wugweb.com` to the Sanity CORS list so the embedded Studio at `/admin` can sign in on uat; deploy the Studio after item B.
+
+For the record: GitHub has main only. Local builds need `npm install` since the Studio merge (`6a05af0e`). The coordinator did not witness the approval for that merge; the frontend session reported it was on the owner's go.
+
+Commits from this session on main: `ce8be99e` (dash fixes, live on uat), `1424d023` and `d5b87b1c` (this file and the Notion backup).

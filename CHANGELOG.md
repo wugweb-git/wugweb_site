@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed: wugweb-web-engineering plan, items handed over by the coordinator (2026-11-18)
+- `docs/skills/wugweb-web-engineering/PLAN.md` section 11: items M to S and two owner steps; the Notion record page carries the same.
+
 ### Changed: wugweb-web-engineering plan gains pending.md leftovers and stale-docs verdicts (2026-11-18)
 - `docs/skills/wugweb-web-engineering/PLAN.md` sections 9 and 10; the Notion record page carries the same two sections.
 
