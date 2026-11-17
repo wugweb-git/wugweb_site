@@ -5,7 +5,7 @@
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The brand-os session built the upload zip; the owner uploads it.
 > - Owner answers that stand: the client is the hero and Wugweb is the guide; yellow is the one brand colour; purple, green and orange are allowed as pillar colours; pillar glow is an allowed exception; a slight bounce is within the brand; logo rules live here and logo sizes live in wugweb-kits; black canvas is the default; "does a lot, into one" is an idea, not public wording; the brand_guidelines folder stays an untouched archive.
 > - The eight rulings on the contradictions between the two merged versions were declared null by the owner on 2026-11-17. He then ruled in the brand-os session: Wugweb has no campaign system, and the other seven are removed as rules with none replaced (commit 9c8d0c95). Where sources conflict the skill lists both and asks the owner. The case-study cover rule (never a generic laptop or dashboard) stays. A fact is marked approved or not approved.
-> - Open with the owner: the crop definition edits against the untouched archive, which formats use the light canvas, the Visual OS and Brand Strategy documents and nine images, positioning, values, audience, the NTUC facts.
+> - Open with the owner: the crop definition edits against the untouched archive, which formats use the light canvas, the Visual OS and Brand Strategy documents and nine images, positioning, values, audience.
 
 # wugweb-brand-os: plan
 
