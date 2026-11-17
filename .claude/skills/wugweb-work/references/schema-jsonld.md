@@ -81,7 +81,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
 ## Never emit
 
 - `HowTo`, `Review`, `AggregateRating` or star markup. The owner has ruled these out, and self-serving review stars are ineligible.
-- `FAQPage` only from the `faqs` field, and only where every question and answer is visibly on the rendered page and comes from the owner's source (owner, 2026-11-17). No question is written for search; the gate script checks that each one is visible.
+- `FAQPage` only on service pages and blog posts (never a case study), only from the `faqs` field, and only where every question and answer is visibly on the rendered page and comes from the owner's source (owner, 2026-11-17). No question is written for search; the gate script checks that each one is visible.
 - `author`. The work is credited through `creator` and `publisher` as the Wugweb organisation.
 - AI-specific markup or `llms.txt`.
 - JSON-LD on any non-canonical host (previews and mirrors).

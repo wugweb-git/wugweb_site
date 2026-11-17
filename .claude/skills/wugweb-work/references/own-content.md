@@ -6,6 +6,14 @@ Blog posts, service pages, and site and landing copy. There are no client screen
 
 Where each kind of piece is stored is in `ops-cycle.md`. Media is existing files in the media store only. A piece starts from a brief handed over by `wugweb-strategy`.
 
+## FAQ block (agreed by `wugweb-strategy` and `wugweb-seo`, 2026-11-17; owner: "let strategy decide that with seo")
+
+- A `faqs` block is allowed on service pages and blog posts only. Case studies never carry one.
+- Questions come from the signal log, proposed by `wugweb-strategy` and approved by the owner. Brief field 8 lists the approved questions; field 11 names the source of each answer. A brief with none reads "no FAQ block", and then the piece has none.
+- Answers come from the owner's source. This skill and `wugweb-seo` write none. A question with no answer in the source is cut.
+- The count is the owner's, never padded.
+- FAQPage markup follows `schema-jsonld.md`: only where every question and answer is visibly on the page.
+
 ## The eight steps
 
 1. **Check the brief.** It must name the reader, what they know now, what they should know and do after, the goal, the format, which case studies back it, and which pages it links to. A missing field goes back to `wugweb-strategy`. Nothing is drafted without a brief.

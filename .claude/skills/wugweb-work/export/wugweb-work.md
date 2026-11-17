@@ -47,7 +47,7 @@ The owner's standing rules apply to every Wugweb skill. They are copied in `refe
 
 - Never write a caption or alt text for a screen you have not seen close up.
 - Never make a poster file for a video. Dead links stay in the source and are listed.
-- Never emit HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects. FAQPage only from the `faqs` field, where every question and answer is visibly on the page and comes from the owner's source (owner, 2026-11-17).
+- Never emit HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects. FAQPage only from the `faqs` field, where every question and answer is visibly on the page; FAQ blocks only on service pages and blog posts, never on case studies (`references/own-content.md`).
 
 ## Approval gates
 
@@ -160,6 +160,14 @@ Blog posts, service pages, and site and landing copy. There are no client screen
 
 Where each kind of piece is stored is in `ops-cycle.md`. Media is existing files in the media store only. A piece starts from a brief handed over by `wugweb-strategy`.
 
+### FAQ block (agreed by `wugweb-strategy` and `wugweb-seo`, 2026-11-17; owner: "let strategy decide that with seo")
+
+- A `faqs` block is allowed on service pages and blog posts only. Case studies never carry one.
+- Questions come from the signal log, proposed by `wugweb-strategy` and approved by the owner. Brief field 8 lists the approved questions; field 11 names the source of each answer. A brief with none reads "no FAQ block", and then the piece has none.
+- Answers come from the owner's source. This skill and `wugweb-seo` write none. A question with no answer in the source is cut.
+- The count is the owner's, never padded.
+- FAQPage markup follows `schema-jsonld.md`: only where every question and answer is visibly on the page.
+
 ### The eight steps
 
 1. **Check the brief.** It must name the reader, what they know now, what they should know and do after, the goal, the format, which case studies back it, and which pages it links to. A missing field goes back to `wugweb-strategy`. Nothing is drafted without a brief.
@@ -237,7 +245,7 @@ If a sibling is not installed, answer the same question from the held file named
 - Made files: this skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 - Layout values are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`. This skill restates none of them.
 
-Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says.
+Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says; Wugweb has no campaign system, so no campaign look is invented (brand skill, 2026-11-17).
 
 ### When to send what
 
@@ -325,7 +333,7 @@ Then: content that does not fit returns to the proposal as an owner question. No
 
 ### Handoff 7: brief in, piece out
 
-The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged (field 9, owner decision 2026-11-17). For own content this skill does not ask `wugweb-seo` for a separate per-brief note. Handoff 1 still applies to a client work brief, which is written here.
+The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged (field 9, owner decision 2026-11-17). For own content this skill does not ask `wugweb-seo` for a separate per-brief note. Field 8 lists the approved FAQ questions and field 11 names each answer's source; "no FAQ block" means none (see `own-content.md`). Handoff 1 still applies to a client work brief, which is written here.
 
 Take from `wugweb-strategy`: a one-page brief with the reader, what they know now, what they should know and do after, the goal, the format, the date, the case studies that back it, and the pages it links to.
 
@@ -732,7 +740,7 @@ This section is the whole of what this skill decides about search. Keyword resea
 - Entities: client, partner, platform and country named in full once, in the body and in the schema.
 - Internal links: up to the matching service and sector pages, across to two or three related case studies, with descriptive anchor text. Ask for links back from those pages.
 - Everything a crawler needs is in server HTML. Images in `img src` only.
-- No keyword counts and no `llms.txt`. An FAQ appears only when the owner's source carries the questions and answers, shown on the page; never written for search. write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
+- No keyword counts and no `llms.txt`. FAQ blocks follow `own-content.md`: service pages and blog posts only, questions approved in the brief, answers only from the owner's source. write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
 - og:image: a project-specific existing file, ideally about 2:1 or 1200 by 630; a new file only through the Forms gate.
 
 ### How it is checked
@@ -1254,7 +1262,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
 - One yellow conversion action per page; labels describe the action; yellow stays under 10% of the page.
 - The five existing blocks are signed off by the owner (2026-11-17); the bento layout on the case study page is the one this work replaces.
-- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; questions and answers come only from the owner's source and are shown on the page, never written for search.
+- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; a case study never carries a `faqs` block; the FAQ rules for service pages and blog posts are in `own-content.md`.
 
 ### 6. Rhythm
 
@@ -1401,7 +1409,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
 ### Never emit
 
 - `HowTo`, `Review`, `AggregateRating` or star markup. The owner has ruled these out, and self-serving review stars are ineligible.
-- `FAQPage` only from the `faqs` field, and only where every question and answer is visibly on the rendered page and comes from the owner's source (owner, 2026-11-17). No question is written for search; the gate script checks that each one is visible.
+- `FAQPage` only on service pages and blog posts (never a case study), only from the `faqs` field, and only where every question and answer is visibly on the rendered page and comes from the owner's source (owner, 2026-11-17). No question is written for search; the gate script checks that each one is visible.
 - `author`. The work is credited through `creator` and `publisher` as the Wugweb organisation.
 - AI-specific markup or `llms.txt`.
 - JSON-LD on any non-canonical host (previews and mirrors).

@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- FAQ block rules agreed by `wugweb-strategy` (33e60149) and `wugweb-seo` (90340cf9) recorded in `own-content.md`: service pages and blog posts only, never case studies; questions from the signal log approved by the owner (brief field 8), answers only from the owner's source (field 11), unanswered questions cut, count never padded. Pointers in `SKILL.md`, `schema-jsonld.md`, `layout-grammar.md`, `copy-and-seo.md`, `handoffs.md`; the gate script fails FAQPage on a case study. Brand: Wugweb has no campaign system.
+
 - NTUC is a worked example only (owner, 2026-11-17): its facts are no longer an open item. One matter remains with the owner: where made files are kept and whether a scheduling tool is connected.
 
 - Brand rulings: three held lines removed because the owner ruled that set null (claims marked "unverified", dashboards only for software, campaign systems not decided). Kept: the client is the hero, "does a lot, into one" is an idea, black canvas by default. FAQPage confirmed by the owner in this session ("faq will be there"): the settlement rule stays.

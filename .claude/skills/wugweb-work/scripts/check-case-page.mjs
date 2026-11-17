@@ -168,6 +168,7 @@ async function run() {
   const onCanon = (host || '').replace(/:\d+$/, '') === CANON;
   check('JSON-LD has WebPage, CreativeWork, BreadcrumbList', ['WebPage', 'CreativeWork', 'BreadcrumbList'].every((t) => types.has(t)), [...types].join(', ') || 'none', onCanon);
   check('JSON-LD has no HowTo, Review, AggregateRating or author', !banned.length, banned.join(', '), onCanon || ld.length > 0);
+  check('No FAQPage on a case study', !(types.has('FAQPage') && types.has('CreativeWork')), types.has('FAQPage') ? 'FAQPage with CreativeWork' : 'none', types.has('FAQPage'));
   check('FAQPage only where every question and answer is visible on the page', !faqHidden.length, faqHidden.slice(0, 3).join(' | ') || (types.has('FAQPage') ? 'all visible' : 'no FAQPage'), types.has('FAQPage'));
   check('No JSON-LD on a non-canonical host', ld.length === 0, `${ld.length} blocks`, !onCanon && !existsSync(target));
 

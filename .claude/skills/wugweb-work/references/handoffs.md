@@ -21,7 +21,7 @@ If a sibling is not installed, answer the same question from the held file named
 - Made files: this skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 - Layout values are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`. This skill restates none of them.
 
-Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says.
+Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says; Wugweb has no campaign system, so no campaign look is invented (brand skill, 2026-11-17).
 
 ## When to send what
 
@@ -109,7 +109,7 @@ Then: content that does not fit returns to the proposal as an owner question. No
 
 ## Handoff 7: brief in, piece out
 
-The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged (field 9, owner decision 2026-11-17). For own content this skill does not ask `wugweb-seo` for a separate per-brief note. Handoff 1 still applies to a client work brief, which is written here.
+The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged (field 9, owner decision 2026-11-17). For own content this skill does not ask `wugweb-seo` for a separate per-brief note. Field 8 lists the approved FAQ questions and field 11 names each answer's source; "no FAQ block" means none (see `own-content.md`). Handoff 1 still applies to a client work brief, which is written here.
 
 Take from `wugweb-strategy`: a one-page brief with the reader, what they know now, what they should know and do after, the goal, the format, the date, the case studies that back it, and the pages it links to.
 

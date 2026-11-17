@@ -11,6 +11,8 @@ and this project adheres to Semantic Versioning.
 
 ### Changed — wugweb-strategy FAQ rules agreed with seo (2026-11-17)
 - Pending mark removed; version stays 0.1.2. Exports rebuilt.
+### Changed — wugweb-work skill 0.5, FAQ block rules from strategy and seo, no campaign system (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. FAQ blocks on service pages and blog posts only, questions approved in brief field 8, answers from the owner's source in field 11, never on case studies (gate script checks). Brand: Wugweb has no campaign system. validate 30 checks 0 errors, test passes.
 
 - fix(skills): wugweb-brand-os drops the "unverified" label; the fact check now marks a claim approved or not, with its recorded status and source.
 
