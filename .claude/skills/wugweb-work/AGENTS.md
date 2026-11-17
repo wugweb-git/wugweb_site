@@ -83,7 +83,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 ## Open with the owner
 
-Two matters are not decided; the owner decides each. Build around them and mark any output they touch "open". The working assumption for each is in `references/open-items.md`: NTUC facts; where made files are kept and whether a scheduling tool is connected. Four more are shared with `wugweb-kits` and listed in the same file.
+Two matters are not decided; the owner decides each. Build around them and mark any output they touch "open". The working assumption for each is in `references/open-items.md`: NTUC facts; where made files are kept and whether a scheduling tool is connected. Two more are shared with `wugweb-kits` and listed in the same file.
 
 ## Archetypes at a glance
 
@@ -237,6 +237,8 @@ If a sibling is not installed, answer the same question from the held file named
 - Made files: this skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 - Layout values are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`. This skill restates none of them.
 
+Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; a claim about Wugweb is marked "unverified" until the brand skill approves it; "does a lot, into one" is an idea, not public wording; a dashboard appears in a visual only when the subject is software; the canvas for any made file is black by default and light only where the owner says; campaign systems are not decided, so no campaign look is invented.
+
 ### When to send what
 
 | Mode | Question | To |
@@ -296,7 +298,7 @@ Send: the path of the page's components and styles, and the rendered URL.
 
 Expect back: findings by rule id: counts of raw colour and size values, layer skips, orphan tokens and duplicate components, each with file and line; accessibility results with measured values.
 
-Then: report the findings in the Ship table. They are reported only at first; blocking comes later, on a short list the owner sets (owner, 2026-11-16). Literal breakpoint values in media queries are allowed. Check that the scan includes the site's component file type before trusting a clean result. No token is deleted and nothing is refactored without the owner's yes.
+Then: report the findings in the Ship table. They are reported only at first; blocking begins once the case study components are clean, on a short list the owner sets (owner, 2026-11-16 and 2026-11-17). The gate and the continuous integration check belong to `wugweb-kits`. Literal breakpoint values in media queries are allowed. Check that the scan includes the site's component file type before trusting a clean result. No token is deleted and nothing is refactored without the owner's yes.
 
 ### Handoff 5: voice check
 
@@ -322,6 +324,8 @@ Expect back: the layout per tier (375, 768, 1200), the blocks used, and any cont
 Then: content that does not fit returns to the proposal as an owner question. No block type outside the catalogue is added without the owner's yes.
 
 ### Handoff 7: brief in, piece out
+
+The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged (field 9, owner decision 2026-11-17). For own content this skill does not ask `wugweb-seo` for a separate per-brief note. Handoff 1 still applies to a client work brief, which is written here.
 
 Take from `wugweb-strategy`: a one-page brief with the reader, what they know now, what they should know and do after, the goal, the format, the date, the case studies that back it, and the pages it links to.
 
@@ -823,7 +827,7 @@ Known gap: nothing here lists the objects in a media store folder. The audit scr
 - Longer: muted, click to play, play and pause button only, or left off the page when a short cut of it exists.
 - No poster file: use the best start frame from the visual read as `src="…mp4#t=<s>"` with `preload="metadata"`. No new file is made. This is unverified on iPhone Safari: test it before relying on it, and fall back to a plain surface until the video is near.
 - Audio is reported only. Nothing plays sound. When a long video carries speech, say so: muted, it may lose its meaning, and the owner decides whether it stays.
-- A loop longer than 5 seconds has a pause control (owner, 2026-11-16; the rule is held for `wugweb-kits`). Loops pause off screen and under reduced motion.
+- A loop is 15 seconds or less. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden. All loops stop under reduced motion and pause off screen (owner, 2026-11-17; the control is built by `wugweb-kits`).
 - A video on a third-party player shows a lightweight preview and loads the player on click.
 
 ### Alt text and captions
@@ -1215,7 +1219,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ### 5. Media in a chapter
 
-Four numbers below are not layout shell values. They are held proposals for `wugweb-kits`, which decides them: the 85vw rail item width, the 20% peek, the 2400 px signature width and the 35 to 60 character line. Until kits answers, use them and mark any output that depends on them "open". Widths, gutters and columns are never set here.
+These values are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`: rail items at 85vw and never past the 1200 content maximum, a next-item peek of 20%, a signature width of 2400 px, and lines of 35 to 60 characters. This skill reads them and never changes them. Widths, gutters and columns are never set here.
 
 | Media | Block |
 |---|---|
@@ -1228,7 +1232,7 @@ Four numbers below are not layout shell values. They are held proposals for `wug
 | 2 to 6 landscape or mixed | `mosaic`: spans from shapes, cell count equals media count, source order kept, UI never cropped |
 | 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
 | Scrollshot | Fixed-height figure showing the top; "View full page" opens the viewer |
-| Video 15 s or less | `loop`: muted, playsinline, poster or `#t=` start frame, loads when near, `aria-hidden` |
+| Video 15 s or less | `loop`: muted, playsinline, `#t=` start frame, loads when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
 | Video over 15 s | `video`: muted, click to play, play and pause button only, `preload="none"`, never `aria-hidden`; or left off the page when a short cut of it exists |
 | GIF | Image |
 | States set | `rail` or `pair` with the state as caption |
@@ -1249,7 +1253,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - Filters sit inside the grid they filter, never as a section of their own.
 - First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
 - One yellow conversion action per page; labels describe the action; yellow stays under 10% of the page.
-- The site's existing blocks are awaiting the owner's sign-off; the bento layout on the case study page is the one this work replaces.
+- The five existing blocks are signed off by the owner (2026-11-17); the bento layout on the case study page is the one this work replaces.
 - The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; this skill still never writes FAQ blocks for schema, and no case study body carries one unless the owner supplies the source Q and A.
 
 ### 6. Rhythm
@@ -1298,7 +1302,7 @@ The site's one call to action stays in the global footer. No second CTA.
 - Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
 - `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
 - Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
-- A long video has an `aria-label` that says what it shows. A loop longer than 5 seconds has a pause control (owner, 2026-11-16; the control is built by `wugweb-kits`).
+- A long video has an `aria-label` that says what it shows. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology (owner, 2026-11-17).
 - AA contrast on client colours; focus visible and never hidden under the sticky header; chapter anchors clear the sticky header.
 - A rail's scroll area is reachable by keyboard (`tabindex="0"` where the browser does not do it) and uses `overscroll-behavior-x: contain`.
 - The viewer shows an image at its natural size, at least twice the thumbnail.
@@ -1470,8 +1474,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 
 ### Accessibility
 
-- [ ] Loops: `muted playsinline aria-hidden` and load when near.
-- [ ] A loop longer than 5 seconds has a pause control (duration from the manifest); loops pause off screen and under reduced motion.
+- [ ] Loops: `muted playsinline`, load when near. A loop of 5 seconds or less with no control has `aria-hidden`; a loop over 5 seconds (duration from the manifest) has a pause control and no `aria-hidden`. All loops stop under reduced motion and pause off screen.
 - [ ] Long videos: muted, play and pause button only, not `aria-hidden`, `preload="none"`, with an `aria-label`.
 - [ ] No audio plays anywhere.
 - [ ] Keyboard and screen reader pass through every rail and the viewer.
@@ -1571,14 +1574,14 @@ A form may need a file that does not exist (a share image, a social card, a Beha
 
 ### Sizes for made files
 
-These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were looked up by another session and confirmed by the owner on 2026-11-17 as the sizes to use. Check each against the platform's help page and date it when a file is proposed.
+These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were adopted by the owner on 2026-11-17. Check each against the platform's help page and date it when a file is proposed.
 
 | File | Size | Source and standing |
 |---|---|---|
-| Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn Help, read directly: at least 1200 x 627, ratio 1.91:1, 5 MB at most |
-| Behance cover (confirmed 2026-11-17) | Upload at least 808 x 632; shown at 202 x 158 | Behance Help Center as reported by search; figures date from 2020; the page was not read directly |
-| Dribbble shot (confirmed 2026-11-17) | At least 1600 wide, no fixed ratio; PNG, JPG or GIF up to 10 MB, video up to 20 MB | Dribbble Help Center, read directly; 1600 x 1200 is convention only |
-| Story canvas (confirmed 2026-11-17) | 1080 x 1920 | Safe zone unverified: no official page confirms it. Use the wider margins |
+| Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn link image: at least 1200 x 627, ratio 1.91:1, 5 MB at most (adopted 2026-11-17) |
+| Behance cover | Upload at least 808 x 632; shown at 202 x 158 | Adopted by the owner, 2026-11-17. Behance Help Center as reported by search; figures date from 2020 |
+| Dribbble shot | At least 1600 wide (1600 x 1200 by convention); PNG, JPG or GIF up to 10 MB, video up to 20 MB | Adopted by the owner, 2026-11-17. Dribbble Help Center, read directly |
+| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17. The safe zone is unverified: no official page confirms it, so use the wider margins |
 
 This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 
@@ -1617,9 +1620,6 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 ### Also open, shared with `wugweb-kits`
 
 - Card thumbnails: the work card uses a 16:10 frame and the thumbnail videos are 4:3. Under the media rule a file is shown whole, so either the file sits inside the frame with space around it, or the card changes shape. Until decided: show the file whole at its own ratio.
-- Loop pause and hidden loops: loops are `aria-hidden` by rule, but a pause control must be reachable. Either a loop over 5 seconds is not hidden and carries the control, or loops stay at 5 seconds or less. `wugweb-kits` decides which; until then the gate lists any loop over 5 seconds as "open".
-- The four held numbers: the 85vw rail item width, the 20% peek, the 2400 px signature width and the 35 to 60 character line. They are proposals from this skill; `wugweb-kits` decides and the owner approves. Output that uses them is marked "open".
-- The existing blocks of the site awaiting the owner's sign-off; the bento layout on the case study page is the one this work replaces.
 - Old media ratios from the previous site are not mapped to sections. The manifest's shape field is the input for that mapping.
 
 ### Settled on 2026-11-16 (kept here so the old assumptions are not reused)
@@ -1634,7 +1634,7 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 | Accounts in scope | The Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out | `forms.md` |
 | Timing and naming | A post waits until the page it links to is live. No client is named or tagged without permission on record | `forms/publish-approval.md` |
 | Newsletter | In scope. Sending needs the owner's yes | `forms/newsletter.md` |
-| Loop pause | A loop longer than 5 seconds gets a pause control (a `wugweb-kits` rule) | `media-standard.md`; `wugweb-kits` owns the layout side |
+| Loop pause | Superseded on 2026-11-17: see the table below | `media-standard.md` |
 
 ### Settled on 2026-11-17
 
@@ -1642,7 +1642,7 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 |---|---|---|
 | CMS fields on case studies | `faqs` is kept, but feeds FAQPage only where every question and answer is visibly on the rendered page. `seoCanonicalUrl`, `schemaType`, `aiSummary` and `keyTakeaways` are dropped for case studies: canonicals come from the owner's source document with one slug, the schema type is fixed (CreativeWork for case studies, BlogPosting for posts), and the owner's Body Content is the single source. Posts and pages keep the canonical field | `kits_design_system/docs/tokens/layout-shell.md` (owned by `wugweb-kits`, which follows `wugweb-seo`); `schema-jsonld.md` is held for `wugweb-seo` |
 
-### Settled on 2026-11-17 (owner, answered in the wugweb-work session)
+### Also settled on 2026-11-17 (owner, answered in the wugweb-work session and relayed from the sibling skills)
 
 | Matter | The owner's decision | Where the rule lives |
 |---|---|---|
@@ -1653,6 +1653,12 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 | Behance and Dribbble uploads | The owner uploads. The skill hands over an ordered list, never an upload | `forms/behance.md`, `forms/dribbble.md` |
 | Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
 | Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (safe zone unverified: use the wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
+| Loops | A loop is 15 seconds or less. A loop over 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden; all loops stop under reduced motion | `media-standard.md`; `wugweb-kits` builds the control |
+| Layout sizes | Rail items 85vw and never past the 1200 content maximum; peek 20%; signature width 2400 px; line length 35 to 60 characters | `layout-grammar.md`, owned by `wugweb-kits` |
+| Existing blocks | The five existing blocks are signed off | `layout-grammar.md` |
+| Share and made-file sizes | Adopted as written: og 1200 x 630; LinkedIn link image at least 1200 x 627, 1.91:1, 5 MB; Behance cover at least 808 x 632; Dribbble 1600 wide, 10 MB image, 20 MB video; story 1080 x 1920 | `forms.md` |
+| Brief field 9 | The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged; no separate per-brief request to `wugweb-seo` for own content | `handoffs.md`, handoff 7 |
+| Token check in CI | Report only first; blocking once the case study components are clean. The gate is `wugweb-kits`' | `handoffs.md`, handoff 4 |
 
 ### When an item is decided
 
@@ -1728,7 +1734,7 @@ Third-party helpers stay at Read and Propose. Only a Wugweb skill writes, and on
 |---|---|---|
 | `wugweb-voice` | The one Wugweb voice | Not installed; plan only |
 | `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Not installed; plan only |
-| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; the old name was `ui-system-mapper` |
+| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; `ui-system-mapper` is merged into it and retired (owner, 2026-11-17) |
 | `wugweb-strategy` | Content strategy, calendar, briefs | Not installed; plan only |
 | `wugweb-seo` | Keywords, on-page rules, schema, AI search, reporting | Installed; one skill with plan, audit and report parts |
 
@@ -1782,7 +1788,7 @@ Made images, one file on the owner's yes: `html-css-to-image:hcti-open-graph-ima
 
 The helpers were read so that their useful rules live in this skill in its own words. Nothing is dropped from the list above; this adds a decision. No text was copied. Some long reference folders were not read in full.
 
-**Absorbed** (the rule is restated in this skill): `rampstack-seo`: seo-content-audit, seo-onpage, content-and-copy. `searchfit-seo`: broken-links, seo-audit (finding format only), content-brief (skeleton only), schema-markup and generate-schema (evidence rule only). `seo-skills`: seo-images (record fields only), seo-content-audit (hard stops only). `copywriting-kit`: copy-proof-check, copy-edit, copy-diagnose, landing-page-copy. `marketing`: brand-review (flag list), email-sequence (limits only). `analytics-skills`: metric-context-and-benchmarks. `data`: validate-data, create-viz, data-visualization, statistical-analysis. `design`: design-critique, design-handoff (one rule). `website-design`: landing-page, review-page. `sanity`: content-modeling-best-practices, portable-text-conversion, portable-text-serialization (check only). `social-media-skills`: linkedin-post-writer, carousel-writer, before-after-and-transformation, social-proof-and-testimonials, data-and-original-research, cross-platform-repurposing, caption-writer, infographic-and-data-viz, quote-cards-and-text-graphics, thumbnail-design, image-prompt (gate only), thread-writer, text-post-and-microblog, behind-the-scenes-and-founder, content-research-and-sourcing, educational-content-and-how-to, scheduling-and-queue; story-writer and pinterest-pin-design (specs only, parked). Claude app skills: full-output-enforcement, ui-system-mapper (two rules), frontend-design (one rule), design-taste-frontend (four rules), web-quality-accessibility (alt and caption), skill-creator, skill-development, pptx (content rules), deep-research (citation rule). `ux-ui-audit` (finding rules). `brightdata-plugin`: scrape (the read check only).
+**Absorbed** (the rule is restated in this skill): `rampstack-seo`: seo-content-audit, seo-onpage, content-and-copy. `searchfit-seo`: broken-links, seo-audit (finding format only), content-brief (skeleton only), schema-markup and generate-schema (evidence rule only). `seo-skills`: seo-images (record fields only), seo-content-audit (hard stops only). `copywriting-kit`: copy-proof-check, copy-edit, copy-diagnose, landing-page-copy. `marketing`: brand-review (flag list), email-sequence (limits only). `analytics-skills`: metric-context-and-benchmarks. `data`: validate-data, create-viz, data-visualization, statistical-analysis. `design`: design-critique, design-handoff (one rule). `website-design`: landing-page, review-page. `sanity`: content-modeling-best-practices, portable-text-conversion, portable-text-serialization (check only). `social-media-skills`: linkedin-post-writer, carousel-writer, before-after-and-transformation, social-proof-and-testimonials, data-and-original-research, cross-platform-repurposing, caption-writer, infographic-and-data-viz, quote-cards-and-text-graphics, thumbnail-design, image-prompt (gate only), thread-writer, text-post-and-microblog, behind-the-scenes-and-founder, content-research-and-sourcing, educational-content-and-how-to, scheduling-and-queue; story-writer and pinterest-pin-design (specs only, parked). Claude app skills: full-output-enforcement, ui-system-mapper (two rules; merged into `wugweb-kits` and retired), frontend-design (one rule), design-taste-frontend (four rules), web-quality-accessibility (alt and caption), skill-creator, skill-development, pptx (content rules), deep-research (citation rule). `ux-ui-audit` (finding rules). `brightdata-plugin`: scrape (the read check only).
 
 **Optional helper** (may speed a mode up; never required): `rampstack-seo`: seo-keyword, skill-creation-walkthrough. `searchfit-seo`: internal-linking. `seo-skills`: seo-schema, seo-geo, seo-content-brief, seo-sxo. `aeotester`: audit. `cloudflare`: web-perf, wrangler. `design`: accessibility-review, ux-copy. `brand-voice`: brand-voice-enforcement. `marketing`: content-creation. `website-design`: web-review. `ui-ux-pro-max`. `design-qa`. `code-review`. `sanity`: sanity-best-practices. `social-media-skills`: platform-specs-and-validation. `slides`. `banner-design`. `pdf`. `docx`. `xlsx`. `postiz`. `html-css-to-image`: both. Notion: find, database-query. `tinyfish`: tinyfish-web (fetch only).
 

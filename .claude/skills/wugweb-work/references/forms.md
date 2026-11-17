@@ -62,14 +62,14 @@ A form may need a file that does not exist (a share image, a social card, a Beha
 
 ## Sizes for made files
 
-These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were looked up by another session and confirmed by the owner on 2026-11-17 as the sizes to use. Check each against the platform's help page and date it when a file is proposed.
+These are sizes for new made files, never for resizing client media. The share image size is settled by the owner (2026-11-16). The other three were adopted by the owner on 2026-11-17. Check each against the platform's help page and date it when a file is proposed.
 
 | File | Size | Source and standing |
 |---|---|---|
-| Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn Help, read directly: at least 1200 x 627, ratio 1.91:1, 5 MB at most |
-| Behance cover (confirmed 2026-11-17) | Upload at least 808 x 632; shown at 202 x 158 | Behance Help Center as reported by search; figures date from 2020; the page was not read directly |
-| Dribbble shot (confirmed 2026-11-17) | At least 1600 wide, no fixed ratio; PNG, JPG or GIF up to 10 MB, video up to 20 MB | Dribbble Help Center, read directly; 1600 x 1200 is convention only |
-| Story canvas (confirmed 2026-11-17) | 1080 x 1920 | Safe zone unverified: no official page confirms it. Use the wider margins |
+| Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn link image: at least 1200 x 627, ratio 1.91:1, 5 MB at most (adopted 2026-11-17) |
+| Behance cover | Upload at least 808 x 632; shown at 202 x 158 | Adopted by the owner, 2026-11-17. Behance Help Center as reported by search; figures date from 2020 |
+| Dribbble shot | At least 1600 wide (1600 x 1200 by convention); PNG, JPG or GIF up to 10 MB, video up to 20 MB | Adopted by the owner, 2026-11-17. Dribbble Help Center, read directly |
+| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17. The safe zone is unverified: no official page confirms it, so use the wider margins |
 
 This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 

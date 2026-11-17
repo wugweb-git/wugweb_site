@@ -136,10 +136,10 @@ async function run() {
   // videos
   const vids = all(main, (n) => n.tag === 'video');
   const loops = vids.filter((v) => 'loop' in v.attrs); const longs = vids.filter((v) => !('loop' in v.attrs));
-  const badLoops = loops.filter((v) => !('muted' in v.attrs) || !('playsinline' in v.attrs) || v.attrs['aria-hidden'] !== 'true' || !v.attrs['data-src']);
+  const badLoops = loops.filter((v) => !('muted' in v.attrs) || !('playsinline' in v.attrs) || !v.attrs['data-src']);
   const badLongs = longs.filter((v) => !('muted' in v.attrs) || 'controls' in v.attrs || v.attrs['aria-hidden'] === 'true' || v.attrs.preload !== 'none' || !v.attrs['aria-label']);
   const autoplaySound = vids.filter((v) => 'autoplay' in v.attrs && !('muted' in v.attrs));
-  check('Loops are muted, playsinline, aria-hidden, data-src', !badLoops.length, `${loops.length} loops, ${badLoops.length} bad`, loops.length > 0);
+  check('Loops are muted, playsinline, data-src (aria-hidden only for loops of 5 s or less without a control: manual check)', !badLoops.length, `${loops.length} loops, ${badLoops.length} bad`, loops.length > 0);
   check('Long videos muted, no native controls, not aria-hidden, preload none, labelled', !badLongs.length, `${longs.length} videos, ${badLongs.length} bad`, longs.length > 0);
   check('No video can play sound on its own', !autoplaySound.length, `${autoplaySound.length} autoplay without muted`, vids.length > 0);
 
@@ -178,7 +178,7 @@ async function run() {
 
   for (const b of ['No page-level horizontal overflow at 375, 767, 768, 769, 1199, 1200, 1201', 'Aspect ratio kept; no mask or object-fit cover hides the proof on a screen',
     'Files shown larger than natural size are listed; soft ones flagged', 'Rail items 85vw or less on mobile', 'AA contrast including the client accent', 'Targets 44 px or more and focus visible',
-    'Reduced motion stops loops and reveals', 'A loop longer than 5 seconds has a pause control (duration from the manifest)', 'All content present with JavaScript off', 'Design critique 3 or more on each axis at 375 and 1200']) browser(b);
+    'Reduced motion stops loops and reveals', 'A loop over 5 seconds has a pause control and no aria-hidden; one of 5 seconds or less without a control has aria-hidden (duration from the manifest)', 'All content present with JavaScript off', 'Design critique 3 or more on each axis at 375 and 1200']) browser(b);
 
   const applicable = results.filter((r) => r.status === 'pass' || r.status === 'fail');
   const passed = applicable.filter((r) => r.status === 'pass').length;

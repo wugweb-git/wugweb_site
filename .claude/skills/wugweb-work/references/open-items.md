@@ -10,9 +10,6 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 ## Also open, shared with `wugweb-kits`
 
 - Card thumbnails: the work card uses a 16:10 frame and the thumbnail videos are 4:3. Under the media rule a file is shown whole, so either the file sits inside the frame with space around it, or the card changes shape. Until decided: show the file whole at its own ratio.
-- Loop pause and hidden loops: loops are `aria-hidden` by rule, but a pause control must be reachable. Either a loop over 5 seconds is not hidden and carries the control, or loops stay at 5 seconds or less. `wugweb-kits` decides which; until then the gate lists any loop over 5 seconds as "open".
-- The four held numbers: the 85vw rail item width, the 20% peek, the 2400 px signature width and the 35 to 60 character line. They are proposals from this skill; `wugweb-kits` decides and the owner approves. Output that uses them is marked "open".
-- The existing blocks of the site awaiting the owner's sign-off; the bento layout on the case study page is the one this work replaces.
 - Old media ratios from the previous site are not mapped to sections. The manifest's shape field is the input for that mapping.
 
 ## Settled on 2026-11-16 (kept here so the old assumptions are not reused)
@@ -27,7 +24,7 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 | Accounts in scope | The Wugweb company accounts (site blog, LinkedIn page, Behance, Dribbble), the owner's LinkedIn and the owner's Medium. The 5 personal Behance projects are out | `forms.md` |
 | Timing and naming | A post waits until the page it links to is live. No client is named or tagged without permission on record | `forms/publish-approval.md` |
 | Newsletter | In scope. Sending needs the owner's yes | `forms/newsletter.md` |
-| Loop pause | A loop longer than 5 seconds gets a pause control (a `wugweb-kits` rule) | `media-standard.md`; `wugweb-kits` owns the layout side |
+| Loop pause | Superseded on 2026-11-17: see the table below | `media-standard.md` |
 
 ## Settled on 2026-11-17
 
@@ -35,7 +32,7 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 |---|---|---|
 | CMS fields on case studies | `faqs` is kept, but feeds FAQPage only where every question and answer is visibly on the rendered page. `seoCanonicalUrl`, `schemaType`, `aiSummary` and `keyTakeaways` are dropped for case studies: canonicals come from the owner's source document with one slug, the schema type is fixed (CreativeWork for case studies, BlogPosting for posts), and the owner's Body Content is the single source. Posts and pages keep the canonical field | `kits_design_system/docs/tokens/layout-shell.md` (owned by `wugweb-kits`, which follows `wugweb-seo`); `schema-jsonld.md` is held for `wugweb-seo` |
 
-## Settled on 2026-11-17 (owner, answered in the wugweb-work session)
+## Also settled on 2026-11-17 (owner, answered in the wugweb-work session and relayed from the sibling skills)
 
 | Matter | The owner's decision | Where the rule lives |
 |---|---|---|
@@ -46,6 +43,12 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 | Behance and Dribbble uploads | The owner uploads. The skill hands over an ordered list, never an upload | `forms/behance.md`, `forms/dribbble.md` |
 | Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
 | Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (safe zone unverified: use the wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
+| Loops | A loop is 15 seconds or less. A loop over 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden; all loops stop under reduced motion | `media-standard.md`; `wugweb-kits` builds the control |
+| Layout sizes | Rail items 85vw and never past the 1200 content maximum; peek 20%; signature width 2400 px; line length 35 to 60 characters | `layout-grammar.md`, owned by `wugweb-kits` |
+| Existing blocks | The five existing blocks are signed off | `layout-grammar.md` |
+| Share and made-file sizes | Adopted as written: og 1200 x 630; LinkedIn link image at least 1200 x 627, 1.91:1, 5 MB; Behance cover at least 808 x 632; Dribbble 1600 wide, 10 MB image, 20 MB video; story 1080 x 1920 | `forms.md` |
+| Brief field 9 | The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged; no separate per-brief request to `wugweb-seo` for own content | `handoffs.md`, handoff 7 |
+| Token check in CI | Report only first; blocking once the case study components are clean. The gate is `wugweb-kits`' | `handoffs.md`, handoff 4 |
 
 ## When an item is decided
 

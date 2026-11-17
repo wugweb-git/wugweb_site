@@ -21,6 +21,8 @@ If a sibling is not installed, answer the same question from the held file named
 - Made files: this skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 - Layout values are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`. This skill restates none of them.
 
+Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; a claim about Wugweb is marked "unverified" until the brand skill approves it; "does a lot, into one" is an idea, not public wording; a dashboard appears in a visual only when the subject is software; the canvas for any made file is black by default and light only where the owner says; campaign systems are not decided, so no campaign look is invented.
+
 ## When to send what
 
 | Mode | Question | To |
@@ -80,7 +82,7 @@ Send: the path of the page's components and styles, and the rendered URL.
 
 Expect back: findings by rule id: counts of raw colour and size values, layer skips, orphan tokens and duplicate components, each with file and line; accessibility results with measured values.
 
-Then: report the findings in the Ship table. They are reported only at first; blocking comes later, on a short list the owner sets (owner, 2026-11-16). Literal breakpoint values in media queries are allowed. Check that the scan includes the site's component file type before trusting a clean result. No token is deleted and nothing is refactored without the owner's yes.
+Then: report the findings in the Ship table. They are reported only at first; blocking begins once the case study components are clean, on a short list the owner sets (owner, 2026-11-16 and 2026-11-17). The gate and the continuous integration check belong to `wugweb-kits`. Literal breakpoint values in media queries are allowed. Check that the scan includes the site's component file type before trusting a clean result. No token is deleted and nothing is refactored without the owner's yes.
 
 ## Handoff 5: voice check
 
@@ -106,6 +108,8 @@ Expect back: the layout per tier (375, 768, 1200), the blocks used, and any cont
 Then: content that does not fit returns to the proposal as an owner question. No block type outside the catalogue is added without the owner's yes.
 
 ## Handoff 7: brief in, piece out
+
+The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged (field 9, owner decision 2026-11-17). For own content this skill does not ask `wugweb-seo` for a separate per-brief note. Handoff 1 still applies to a client work brief, which is written here.
 
 Take from `wugweb-strategy`: a one-page brief with the reader, what they know now, what they should know and do after, the goal, the format, the date, the case studies that back it, and the pages it links to.
 

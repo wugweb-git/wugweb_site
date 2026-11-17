@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work skill 0.5, kits, seo, strategy and brand-os rulings applied (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Loops, rail, peek, signature width, line length, blocks signed off, ui-system-mapper retired, made-file sizes adopted, brief field 9, token check reports first, brand rulings held in handoffs. Gate script no longer requires aria-hidden on loops. validate 30 checks 0 errors, test passes, exports rebuilt.
+
 - feat(skills): wugweb-brand-os applies the owner's answers of 2026-11-17 (questions 5 to 9, 12 to 18); dashboards ban now excepts software subjects; 4 questions remain open or partly answered.
 ### Changed — wugweb-work skill 0.5, social and size answers applied (2026-11-17)
 - Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner answers: Medium is not a form (repost unchanged); the owner uploads to Behance and Dribbble, the skill hands over a list; Dribbble screens never on a plain canvas; Behance 808 x 632, Dribbble 1600 wide and story 1080 x 1920 confirmed. Two matters remain with the owner. validate 30 checks 0 errors, test passes, exports rebuilt.

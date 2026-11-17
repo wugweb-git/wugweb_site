@@ -28,7 +28,7 @@ Tracks: (1) client work: case studies, portfolio, showcase; (2) Wugweb's own
 content: blog posts, service pages, site and landing copy. Track 2's body
 standards are a first draft for the owner's review.
 
-Two matters are open with the owner and four more are shared with
+Two matters are open with the owner and two more are shared with
 `wugweb-kits`. They are listed, with the working assumption for each, in
 `references/open-items.md`.
 
