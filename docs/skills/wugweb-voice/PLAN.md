@@ -1,13 +1,16 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 0.3.0 on main (locked by the owner; he confirmed it stays 0.3.0), 57 or more files, last skill commit 59aef7d0. Version 0.2.1 (portability package) came before it.
+> - Built. Version 0.3.0 on main (locked by the owner; he confirmed it stays 0.3.0), 57 or more files, last skill commit 3a895a71. Version 0.2.1 (portability package) came before it.
 > - Skill file body: 1,999 words by the shared count (limit 2,000). Any edit that adds words must cut as many.
 > - Tests pass. Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The voice session built the upload zips; the owner uploads one.
 > - Owner answers, "all yes" on nine items, 2026-11-17: (1) wugweb-strategy's signal log is a named read-only input; its words are vocabulary candidates labelled by source, never rules and never the owner's voice. (2) Version stays 0.3.0. (3) Writing samples: the owner will supply source material; none received yet, so the voice is uncalibrated and confidence is low. (4) Standing rules: the skill carries a marked copy of the shared standing-rules file, built into the export and test-checked against the home file; the home file wins. (5) The helper list is confirmed and lives in the tooling reference only. (6) Working preferences stay out of the skill. (7) Translated copy is out of scope until English is calibrated. (8) We or I: the owner picks per piece; there is no fixed rule. (9) A 40 to 60 word summary row is added to the response contract.
 > - FINAL REPORT, 2026-11-17: last skill commit 59aef7d0; body 1,999 words; tests pass. Evals: 14 in all, 9 runnable and 5 waiting on writing samples. All 9 runnable pass after two skill-side fixes (a number or quote with no source now fails the check; unruled filler words are raised as a question, never dropped in a rewrite). The LinkedIn case fix was verified by script, not by a second agent run. Case folders: 25 of 26 graders passed on the first run.
 > - Confirmed and carried rules: British English, sentence case, no dashes, never invent, one voice, we or I per piece, client terms unchanged. The filler word list is pending.
-> - Open with the owner: yes or no to the 23 banned words and their exception; the writing samples (evals 10 to 14 are blocked and the voice is uncalibrated until then); the other candidates that wugweb-work still holds as working rules; whether the stale remote branch can be deleted; uploading the zip to the Claude app.
+> - Closed 2026-11-17: the old remote branch is deleted; the stale `.agents/skills` copy was removed by the owner.
+> - Owner ruling, relayed 2026-11-17: the 2023 Wugweb profile page is a voice source ("use it, for brand os etc, voice"). Read as one sample of unknown edit status; candidates C-07 to C-10 proposed, not yet in the skill.
+> - Owner instruction to the voice session, 2026-11-17: "all pending and everything, update Notion and plan". The voice session now keeps this plan and its Notion page; section 15 holds the full record.
+> - Open with the owner (section 15): yes or no to the 23 banned words and their exception; the candidates C-01, C-02, C-05 and C-06; where the writing samples come from (evals 10 to 14 are blocked and the voice is uncalibrated until then); how to record the 2023 profile; a `profile` mode; uploading the zip to the Claude app.
 
 > PLAN READY FOR VETTING, 2026-11-16. Version 0.3.0 of the skill exists; see Status. The owner approved writing this plan to the skill's Notion page (https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e) and to this file; he has not yet approved its open choices. Items marked CONFIRM need his yes before they count as decided. The Notion page and this file carry the same plan text.
 
@@ -214,17 +217,17 @@ The Wugweb Skill System's final list gives this skill eight helpers: `rampstack-
 ## 11. Open questions for the owner
 
 1. Settled 2026-11-16: one voice, held in `wugweb-voice`. The owner said so in this session ("wugweb and vedanshu is same") and, as relayed, again when asked directly.
-2. Writing samples: which emails, posts, notes or transcripts count as his voice, and may meeting transcripts be used? Nothing can be calibrated without them.
+2. Writing samples: which emails, posts, notes or transcripts count as his voice, and may meeting transcripts be used? Nothing can be calibrated without them. Open 2026-11-17: he will supply source material; none received yet.
 3. Where the skill lives: `.claude/skills/wugweb-voice/` in the repo, or the personal skills folder `~/.claude/skills/wugweb-voice/` so every project sees it.
-4. The helper list: the system's eight only, or the extras in section 10 as well.
-5. Where working preferences live (how he wants assistants to reason, prioritise and report). Today they are in Claude memory. They are out of this skill.
-6. Whether translated copy is in scope for the voice.
+4. Settled 2026-11-17: the system's eight plus the extras in section 10, kept in `references/tooling.md` only.
+5. Settled 2026-11-17: working preferences stay out of this skill. They live in project instructions and Claude memory.
+6. Settled 2026-11-17: translated copy is out of scope until the English voice is calibrated.
 7. Settled 2026-11-16: this plan file is on `main` (commits up to `97ea8ec4`), pushed on the owner's yes.
-8. "We" for the studio and "I" in bylined or personal writing: one fixed rule, or his call per piece?
-9. CONFIRM that the Notion profile pages (2023, Grok, Gemini) are background only, not calibration.
-10. CONFIRM that `SKILL.md` and the export may carry the standing rules as a marked copy (section 13).
+8. Settled 2026-11-17: "we" for the studio and "I" in bylined or personal writing is his call per piece, not a fixed rule.
+9. The 2023 Wugweb profile is now a voice source by the owner's ruling, relayed 2026-11-17. It is one sample of unknown edit status, candidates only. The Grok and Gemini pages stay out as voice evidence. How to record the 2023 profile is open (section 15).
+10. Settled 2026-11-17: yes, the export carries the standing rules as a marked copy, test-checked against the home file (section 13).
 
-Settled 2026-11-16: the plan goes on the skill's one Notion page and in this file. Any further Notion write still waits for his yes.
+Settled 2026-11-16: the plan goes on the skill's one Notion page and in this file. Settled 2026-11-17: the owner told the voice session to update the Notion page and this file itself ("all pending and everything, update Notion and plan").
 
 ## 12. Source gaps
 
@@ -392,3 +395,94 @@ Source: kits docs (`kits_design_system/docs/components.md` and `tokens/layout-sh
 | A summary field of 40 to 60 words, shown on the page, is proposed for case studies and posts | `layout-shell.md` line 319, under "Status: proposal, no schema field below is deployed yet" | Not a form yet. If the owner approves the field, it becomes a new mode: a short, answer-first summary. The length belongs to `wugweb-work` | `modes.md`, only if approved |
 
 Note: the docs themselves use em dashes and an en dash in the "40 to 60" range. Those are internal docs, not visible site copy.
+
+## 15. Build record, rulings, tests and open items (2026-11-17)
+
+Written by the voice session on the owner's direct instruction ("all pending and everything, update Notion and plan, fetch in all other docs"). The facts come from the skill folder on main, its changelog, and the repo docs named below. Nothing here is a new rule: every candidate stays a candidate until he confirms it.
+
+### Rulings, 2026-11-17 (owner "all yes", nine items)
+
+| # | Ruling | Where it landed | Commit |
+|---|---|---|---|
+| 1 | The strategy signal log (`references/topics-and-calendar.md` in `wugweb-strategy`) is a named read-only input. Its words are vocabulary candidates labelled by source, never rules, never the owner's voice | `references/handoff.md`, `references/tooling.md` | `3ef0c4a6` |
+| 2 | Version stays 0.3.0. No bump, not even to 0.3.1, without his say | skill `CHANGELOG.md` | `3ef0c4a6` |
+| 3 | Writing samples: he will supply source material. None received | `references/corpus.md`, still empty | none |
+| 4 | A marked copy of the standing rules is built into the export and test-checked. The home file wins | `references/standing-rules.md`, `scripts/build.mjs`, `scripts/test.mjs` | `3ef0c4a6` |
+| 5 | The helper list is confirmed and lives in one file only | `references/tooling.md` | `3ef0c4a6` |
+| 6 | Working preferences stay out of the skill | `references/handoff.md` (boundaries) | `3ef0c4a6` |
+| 7 | Translated copy is out of scope until the English voice is calibrated | `references/handoff.md`, `references/modes.md` | `3ef0c4a6` |
+| 8 | We or I is his pick per piece, not a fixed rule | `SKILL.md`, `references/modes.md` | `3ef0c4a6`, row fix `2256d6b0` |
+| 9 | A summary row of 40 to 60 words in the response contract | `references/handoff.md` | `3ef0c4a6` |
+
+### Commits on main
+
+| Commit | What |
+|---|---|
+| `8ebe7693` | Skill folder, draft 0.2.0 (structure and method only) |
+| `ea8949b2` | Portability package 0.2.1 (`AGENTS.md`, Cursor and GPT adapters, `metadata.json`, built by `scripts/build.mjs`) |
+| `27e3874a` | Version locked at 0.3.0 |
+| `3ef0c4a6` | The nine "all yes" answers applied |
+| `2256d6b0` | LinkedIn post row now follows the we or I ruling |
+| `59aef7d0` | Eval fixes: an unsourced number or quote makes the check fail; unruled filler words are raised, never dropped |
+| `3a895a71` | Candidates C-05 and C-06 recorded |
+| `f8dff204`, `eb9524db` | This plan file and the Notion page brought in line with the skill |
+
+### Tests and evals
+
+`node scripts/test.mjs` passes on the main copy. `SKILL.md` body is 1,999 words by the shared count (limit 2,000). The check script flags dashes, US spellings, heading case and confirmed banned words, lists every number, quote and scope word to trace, and returns fail when a number or quote has no source (new `--sources` flag for when the caller has given them).
+
+| Eval | What | Result 2026-11-17 |
+|---|---|---|
+| 1 | Mechanical flags | Pass (script) |
+| 2 | Clean mechanics | Pass (script) |
+| 3 | No samples, refuse to invent the voice | Pass after fix (unruled words are left in place and raised) |
+| 4 | No profiling | Pass |
+| 5 | Untraced number | Pass after fix (result is fail) |
+| 6 | Client words kept | Pass |
+| 7 | Near miss, format request | Pass (points to `wugweb-work`) |
+| 8 | Near miss, positioning | Pass (points to `wugweb-brand-os`) |
+| 9 | Sample intake | Pass |
+| 10 to 13 | Disagreeing samples, write in a mode, typo-heavy note, blind comparison | Blocked on writing samples |
+| 14 | Export parity | Needs a tool other than Claude; not run |
+
+The four case folders hold 26 graders: 25 passed on the first run and the one miss (the LinkedIn result label) was fixed. The runs used isolated agents on a scratch copy, graded by the voice session; the LinkedIn fix was verified by script, not by a second agent run.
+
+### Candidates (none applied, none flagged by the check)
+
+| ID | Candidate | Source | Status |
+|---|---|---|---|
+| C-01 | Say what was built, answer first, short whole sentences, plain words, active voice with a named doer, credit honestly | `docs/skills/wugweb-work/PLAN.md` section 5 | Waiting on the owner |
+| C-02 | Senior practitioner explaining what was built and why, to a peer | Same | Waiting on the owner |
+| C-03 | Copy lines in `brand_guidelines/` | `14_COPY_GUIDELINES.md`, `02_MESSAGING_FRAMEWORK.md` | Not read in full |
+| C-04 | Sanity "Brand voice" draft | Sanity site settings | Not read in full |
+| C-05 | Not decorative or hype-driven | `brand_guidelines/01_FOUNDATION/VOCABULARY.md`, line 22 | Waiting on the owner |
+| C-06 | Outcomes over hype | `brand_guidelines/03_MARKETING_SYSTEM/14_COPY_GUIDELINES.md`, line 5 | Waiting on the owner |
+| C-07 | First person plural ("We believe", "We put the user at the heart") | 2023 Wugweb profile page | Proposed, not yet in the skill |
+| C-08 | Short fragments for emphasis ("No extra fluff. No agency bloat.") | Same | Proposed, not yet in the skill |
+| C-09 | Bold label, colon, one sentence, in the values list | Same | Proposed, not yet in the skill |
+| C-10 | Warm, plain-spoken phrases ("fantastic folks", "info-nuggets", "tinker with norms") | Same | Proposed, not yet in the skill |
+
+The 23 banned words that `wugweb-work` holds: 11 are in `references/words.md` as candidates (pivotal, robust, seamless, meticulous, holistic, cutting-edge, leverage, empower, unlock, world-class, sophisticated). The other 12 are not carried: seamlessly, empowering, revolutionary, game-changing, innovative, state-of-the-art, synergy, best-in-class, next-generation, transformative, delve, elevate. The exception (allowed only inside a client's product name or a direct quote) is also not carried. Of the work skill's 14 voice rules, only we or I (6), client terms (7) and no dashes (14) are confirmed and carried. The rest are candidates, or structure and format rules that stay in `wugweb-work`.
+
+### The 2023 Wugweb profile (read 2026-11-17)
+
+The owner's ruling, relayed by the coordinator: "use it, for brand os etc, voice". It is one source: about 650 words of usable prose (one-liner, mission, vision, values, short and long descriptions, overview, elevator pitch). Edit status is unknown and some lines read as AI-assisted, so by the skill's rule it cannot support a rule on its own. Not used: legal, tax, bank and contact data (never copied), placeholder text, working notes and typos. It conflicts with confirmed rules: it uses em dashes, mixes US and British spelling, and uses words on the banned list (empower, innovative, disruptive). Evals 10 to 13 cannot run on it (one document, nothing held back); fresh samples are still needed. It is not in the ledger until the owner chooses how to record it.
+
+### What is in the skill folder (58 tracked files, version 0.3.0)
+
+`SKILL.md`; references `voice`, `modes`, `words`, `corpus` (empty), `handoff`, `blind-test`, `tooling`, `standing-rules` (marked copy); scripts `check`, `build`, `test`; `evals/`; `examples/`; `export/wugweb-voice.md`; generated `AGENTS.md`, `README.md`, `metadata.json`, `adapters/cursor`, `adapters/chatgpt`, `agents/openai.yaml`. Upload zips are built from main into `dist/` in the repo worktree (not tracked): `wugweb-voice-0.3.0.zip` (folder at the root) and `wugweb-voice-0.3.0-flat.zip` (`SKILL.md` at the root).
+
+### Closed
+
+The old remote branch for this work is deleted. The stale `.agents/skills` copy was removed by the owner; a generated mirror is only needed if he later wants one for other tools.
+
+### Open with the owner
+
+1. Yes or no to the 23 banned words and the exception. Recommendation: yes.
+2. Confirm C-01, C-02, C-05 and C-06 as rules; hold sentence length, openers and tone by form until samples back them. Recommendation: that.
+3. Where the writing samples come from (Notion pages he names, pasted, or files). Recommendation: Notion.
+4. How to record the 2023 profile (one AI-assisted or edited sample with C-07 to C-10 as candidates, his unedited writing, or background only). Recommendation: the first.
+5. A `profile` mode for About and bio text. Recommendation: yes.
+6. Upload `wugweb-voice-0.3.0.zip` to the Claude app (his step; the app has none of the six skills after the reset).
+
+Blocked until samples arrive: evals 10 to 14, calibration, and any move from low confidence.

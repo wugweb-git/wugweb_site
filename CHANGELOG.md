@@ -12,6 +12,9 @@ and this project adheres to Semantic Versioning.
 ### Changed — wugweb-strategy plan and Notion record the other-docs check (2026-11-17)
 - Other plans read from main; no change needed in this skill. Backup in `backups/`.
 
+### Changed — wugweb-voice plan and Notion page brought fully up to date (2026-11-17)
+- `docs/skills/wugweb-voice/PLAN.md` and the Notion page: status refreshed, section 11 settled items, new section 15 (rulings, commits, evals, candidates C-01 to C-10, the 2023 profile read, open items). Owner instruction: all pending and everything. Backup note `backups/notion-wugweb-voice-page-2026-11-16-k.json`. No skill change; version stays 0.3.0.
+
 ### Changed — wugweb-strategy plan records the later rulings (2026-11-17)
 - Plan status block and card row updated to match the Notion page; backup in `backups/`.
 

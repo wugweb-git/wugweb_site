@@ -1,0 +1,10 @@
+{
+  "what": "Backup note for the Notion page wugweb-voice before the eleventh write (status callout refreshed, section 11 settled items, new section 15)",
+  "url": "https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e",
+  "takenAt": "2026-11-17",
+  "note": "Page fetched just before this write (52.8KB, no duplication). The full fetch is saved outside the repo in the session tool results. Owner instruction, 2026-11-17: all pending and everything, update Notion and plan. Lines replaced are listed below; section 15 is appended; nothing else is removed.",
+  "linesBefore": [
+    "Callout: 'Skill file body is 1,997 words'; 'Last skill commit 3ef0c4a6'; the 'Ruling since the plan' sentence; the 'Open with the owner' sentence",
+    "Section 11 items 2, 4, 5, 6, 8, 9, 10 and the closing 'Settled 2026-11-16' line"
+  ]
+}
