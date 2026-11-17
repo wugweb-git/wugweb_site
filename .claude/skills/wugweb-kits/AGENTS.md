@@ -10,7 +10,7 @@ Map a UI to its design system: trace every visual value from primitive token thr
 
 # Wugweb Kits
 
-Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 26 Wugweb rule files, the references and the scripts are in place.
+Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 29 Wugweb rule files, the references and the scripts are in place.
 
 ## Standing rules
 
@@ -110,6 +110,9 @@ Shell group, source `layout-shell.md`:
 - `shell-nothing-wider-than-nav`: no block that is not full bleed is wider than the nav. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `shell-header-derived`: header height comes from its formula, never a literal.
 - `shell-no-retired-values`: the retired list above is never reintroduced.
+- `shell-page-indexed`: lang, skip link, named main, landmarks, one h1, scroll flow and index, scroll offset on every route.
+- `shell-mobile-menu`: full screen in dvh, internal scroll, scroll lock that restores position, toggle fixed in place, spring.
+- `shell-safe-areas-and-hero`: safe area insets and dvh; hero headline and action on the first 390 x 844 screen.
 
 Label group, source `layout-shell.md`:
 
@@ -220,6 +223,61 @@ Source: `kits_design_system/docs/tokens/layout-shell.md`, read 2026-11-16. The d
 The audit flags any retired value found in a shell context as a finding.
 
 **Checked against `global.css` on 2026-11-16, read only.** These match the doc: `--shell-gutter` 16 / 32 / 48, `--grid-gap` 16 / 24 / 32, `--header-pad-block` 16 then 20, `--control-size` 44px, `--nav-logo-height` 2.5rem (40px), `--breakpoint-xl` 1200px, `--duration-spring` 400ms, `--layer-nav` 10, `--nav-bar-pad` 12px, the section tokens at 48 and 70, and `max-width: 1280px` on the nav bar. Not re-read in this check: the 96 desktop step of the section tokens, and the button text, padding and gap.
+
+
+
+## Breakpoints table, verbatim from the doc
+
+Copied exactly; `validate.mjs` fails if it differs from the doc's Breakpoints table.
+
+<!-- doc-table:breakpoints -->
+| | small · mobile | medium · tablet | large · desktop |
+|---|---|---|---|
+| canvas width | **375** | **768** | **1200** |
+| section padding (T R B L) | `48 16 48 16` | `70 32 70 32` | `96 48 96 48` |
+| content max-width | 1200 | 1200 | 1200 |
+| layout grid columns | **4** | **8** | **12** |
+| column gap | **16** | **24** | **32** |
+| grid margin (= gutter) | **16** | **32** | **48** |
+| header padding | `16` | `20` | `20` |
+| header height (derived) | **100** | **108** | **108** |
+| header position | sticky, top 0 | sticky, top 0 | sticky, top 0 |
+| nav bar height | 68 | 68 | 68 |
+| nav bar inset (all sides) | 12 | 12 | 12 |
+| button height (links, CTA, menu) | 44 | 44 | 44 |
+| button text / padding / gap | 16 / `10 12` / 12 | 16 / `10 12` / 12 | 16 / `10 12` / 12 |
+| logo height | 40 | 40 | 40 |
+<!-- end doc-table -->
+
+## Section, content and nav details (from "Exact declarations")
+
+| | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| Section `align-items` and `align-content` | center | flex-start | center |
+| Section `overflow` | hidden | hidden | visible |
+| Content `z-index` | 1 | 1 | none |
+
+Canvas: flex column, sections stack on padding only, never margin, `gap: 0`. Content: `padding: 0`, never a gutter. Top nav: sticky, top 0, z index 10, `will-change: transform`, `cursor: grab` with links and buttons keeping `cursor: pointer`. Spring: 0.4s, bounce 0.2, delay 0, as `--duration-spring` and `--ease-spring` (a sampled `linear()` curve, about 1.5% overshoot); every nav transition uses it and GSAP stays the engine for scroll animation.
+
+## Every page is indexed (from "Canvas, every page is indexed")
+
+On every route: `<html lang>`; a skip link as the first focusable element targeting `#main`; `<main id="main" tabindex="-1">` named by the page title; `<header>` for the sticky nav and `<footer id="site-footer">` named "Site footer"; exactly one h1 inside main; `main[data-scroll-flow]` lists the section ids in order and every top level section gets `data-scroll-index` 1 to n (set in `BaseLayout`); `scroll-margin-top: var(--header-height)` on sections.
+
+## Mobile menu, required behaviour
+
+Covers the screen: `100dvh` with a `100svh` fallback, minus safe areas. Scrolls internally on short screens with `overscroll-behavior: contain`. Scroll lock by `position: fixed` on body with the scroll position restored, because iOS ignores `overflow: hidden` (`src/lib/site-header.ts`). The toggle keeps the exact coordinates it has when closed. One left edge for logo, links, contact and legal. Links at the top; contact and legal pinned to the bottom. Open and close use the nav spring; links fade and rise with about 40ms stagger; the toggle morphs by transform.
+
+## Motion
+
+Nav and hover use the spring. Load and scroll in: opacity and translateY through GSAP (`[data-reveal]`), first group at 0.4s, second at 0.9s. Transform based only; everything behind `prefers-reduced-motion`.
+
+## PWA and safe areas
+
+`viewport-fit=cover`; `env(safe-area-inset-*)` through `--safe-*` on the nav; a dedicated maskable icon (`pwa-maskable-512.png`); `dvh` with an `svh` fallback.
+
+## Hero, first screen
+
+On a 390 x 844 phone the headline, subhead and primary action sit on the first screen, not under the cookie banner. The doc marks this as a rule not re-measured.
 
 ---
 
@@ -333,15 +391,18 @@ wins. Dates show when the owner set or confirmed a rule, where known.
    - `spec-fixed-template` — variable doc shapes make specs unscannable and ungenerable
    - `spec-generate-dont-maintain` — hand-written specs drift silently and are trusted anyway
    - `spec-measure-dont-claim` — unverified compliance claims fail audits and mislead teams
-6. **Layout Shell** (HIGH) — 8 rules
+6. **Layout Shell** (HIGH) — 11 rules
    - `shell-filters-are-toolbars` — a filter wrapped as a section adds a spurious landmark and padding
    - `shell-grid-gap-token` — a section token as a gap moves the grid when the section rhythm changes
    - `shell-header-derived` — a literal header height drifts from the nav bar and buttons
+   - `shell-mobile-menu` — a menu that leaks scroll or moves its toggle breaks the phone experience, which is the PWA
    - `shell-no-gutter-below-section` — a second gutter doubles the margin and breaks alignment
    - `shell-no-retired-values` — retired values reappear from old docs and Framer references
    - `shell-no-section-max-width` — a capped section breaks the full bleed background and the shell
    - `shell-nothing-wider-than-nav` — a block wider than the nav breaks the edge alignment of the page
+   - `shell-page-indexed` — missing lang, landmarks or scroll flow break navigation and anchors
    - `shell-rhythm-exemption` — extra exemptions erode the one rhythm 48, 70, 96
+   - `shell-safe-areas-and-hero` — content under the notch or a hero action below the fold loses the first view
 7. **Labelling** (HIGH) — 8 rules
    - `label-alt-always` — a missing alt fails assistive tech and search
    - `label-contrast-measured` — unmeasured contrast claims fail audits
@@ -1413,6 +1474,28 @@ Header height is --nav-height plus twice --header-pad-block. The bar is 44 plus 
 
 Source: layout-shell.md, header formula.
 
+### `shell-mobile-menu`
+
+**Impact:** HIGH — a menu that leaks scroll or moves its toggle breaks the phone experience, which is the PWA
+
+The menu covers the screen with 100dvh and a 100svh fallback minus safe areas, scrolls internally with overscroll-behavior contain, locks page scroll by position fixed on body and restores the position, keeps the toggle at its closed coordinates, holds one left edge, puts links at the top and contact and legal at the bottom, and opens with the nav spring.
+
+**Incorrect:**
+
+```css
+.menu { height: 100vh; }
+body.menu-open { overflow: hidden; }
+```
+
+**Correct:**
+
+```css
+.menu { height: 100svh; height: 100dvh; overflow-y: auto; overscroll-behavior: contain; }
+body.menu-open { position: fixed; } /* scroll position restored on close */
+```
+
+Source: layout-shell.md, Mobile menu.
+
 ### `shell-no-gutter-below-section`
 
 **Impact:** HIGH — a second gutter doubles the margin and breaks alignment
@@ -1496,6 +1579,29 @@ The nav inner container caps at 1280 and the content box at 1200. A block that i
 
 Source: layout-shell.md, nav inner. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
 
+### `shell-page-indexed`
+
+**Impact:** HIGH — missing lang, landmarks or scroll flow break navigation and anchors
+
+Every route carries html lang, a skip link to #main, one main named by the page title, header and footer landmarks, one h1 inside main, main[data-scroll-flow] listing the section ids in order with data-scroll-index on each top level section, and scroll-margin-top equal to --header-height on sections.
+
+**Incorrect:**
+
+```html
+<html><body><div class="page">...</div></body></html>
+```
+
+**Correct:**
+
+```html
+<html lang="en"><body><a href="#main">Skip to content</a><header>...</header>
+<main id="main" tabindex="-1" aria-label="Work" data-scroll-flow="hero work-grid">
+  <section id="hero" data-scroll-index="1">...</section>
+</main><footer id="site-footer" aria-label="Site footer">...</footer></body></html>
+```
+
+Source: layout-shell.md, Canvas, every page is indexed.
+
 ### `shell-rhythm-exemption`
 
 **Impact:** MEDIUM — extra exemptions erode the one rhythm 48, 70, 96
@@ -1515,6 +1621,26 @@ Every section follows the shared rhythm. The only exemption is .global-final-cta
 ```
 
 Source: layout-shell.md, rhythm.
+
+### `shell-safe-areas-and-hero`
+
+**Impact:** MEDIUM — content under the notch or a hero action below the fold loses the first view
+
+Use viewport-fit=cover with env(safe-area-inset-*) through the --safe-* tokens on the nav, dvh with an svh fallback, and the maskable icon. On a 390 x 844 phone the headline, subhead and primary action sit on the first screen, not under the cookie banner.
+
+**Incorrect:**
+
+```html
+<meta name="viewport" content="width=device-width">
+```
+
+**Correct:**
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+```
+
+Source: layout-shell.md, PWA and safe areas, Hero.
 
 ---
 
@@ -1781,7 +1907,7 @@ Source: components.md, buttons.
 
 **Impact:** HIGH — two owners of one property cause jitter and fights
 
-Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control and is not hidden from assistive tech; a loop of 5 seconds or less with no control stays hidden. Owner confirmed 2026-11-17.
+Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. Scroll in is opacity and translateY only, first group at 0.4s and second at 0.9s, transform based, all behind prefers-reduced-motion; nav and hover use the spring (layout-shell.md, Motion). All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control and is not hidden from assistive tech; a loop of 5 seconds or less with no control stays hidden. Owner confirmed 2026-11-17.
 
 **Incorrect:**
 

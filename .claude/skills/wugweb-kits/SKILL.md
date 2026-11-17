@@ -10,7 +10,7 @@ metadata:
 
 # Wugweb Kits
 
-Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 26 Wugweb rule files, the references and the scripts are in place.
+Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 29 Wugweb rule files, the references and the scripts are in place.
 
 ## Standing rules
 
@@ -110,6 +110,9 @@ Shell group, source `layout-shell.md`:
 - `shell-nothing-wider-than-nav`: no block that is not full bleed is wider than the nav. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `shell-header-derived`: header height comes from its formula, never a literal.
 - `shell-no-retired-values`: the retired list above is never reintroduced.
+- `shell-page-indexed`: lang, skip link, named main, landmarks, one h1, scroll flow and index, scroll offset on every route.
+- `shell-mobile-menu`: full screen in dvh, internal scroll, scroll lock that restores position, toggle fixed in place, spring.
+- `shell-safe-areas-and-hero`: safe area insets and dvh; hero headline and action on the first 390 x 844 screen.
 
 Label group, source `layout-shell.md`:
 

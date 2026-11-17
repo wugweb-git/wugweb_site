@@ -22,7 +22,7 @@ wugweb-kits/
 │   ├── component-*.md  4 rules · HIGH
 │   ├── reuse-*.md      4 rules · MEDIUM-HIGH
 │   ├── spec-*.md       4 rules · MEDIUM
-│   ├── shell-*.md      8 rules · HIGH
+│   ├── shell-*.md      11 rules · HIGH
 │   ├── label-*.md      8 rules · HIGH
 │   └── kits-*.md       10 rules · HIGH
 ├── references/         layout-shell, component-sizes, six-layers, spec-templates, known-doc-clashes, standing-rules

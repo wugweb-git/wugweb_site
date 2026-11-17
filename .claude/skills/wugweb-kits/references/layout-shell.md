@@ -47,3 +47,57 @@ The audit flags any retired value found in a shell context as a finding.
 
 **Checked against `global.css` on 2026-11-16, read only.** These match the doc: `--shell-gutter` 16 / 32 / 48, `--grid-gap` 16 / 24 / 32, `--header-pad-block` 16 then 20, `--control-size` 44px, `--nav-logo-height` 2.5rem (40px), `--breakpoint-xl` 1200px, `--duration-spring` 400ms, `--layer-nav` 10, `--nav-bar-pad` 12px, the section tokens at 48 and 70, and `max-width: 1280px` on the nav bar. Not re-read in this check: the 96 desktop step of the section tokens, and the button text, padding and gap.
 
+
+
+## Breakpoints table, verbatim from the doc
+
+Copied exactly; `validate.mjs` fails if it differs from the doc's Breakpoints table.
+
+<!-- doc-table:breakpoints -->
+| | small · mobile | medium · tablet | large · desktop |
+|---|---|---|---|
+| canvas width | **375** | **768** | **1200** |
+| section padding (T R B L) | `48 16 48 16` | `70 32 70 32` | `96 48 96 48` |
+| content max-width | 1200 | 1200 | 1200 |
+| layout grid columns | **4** | **8** | **12** |
+| column gap | **16** | **24** | **32** |
+| grid margin (= gutter) | **16** | **32** | **48** |
+| header padding | `16` | `20` | `20` |
+| header height (derived) | **100** | **108** | **108** |
+| header position | sticky, top 0 | sticky, top 0 | sticky, top 0 |
+| nav bar height | 68 | 68 | 68 |
+| nav bar inset (all sides) | 12 | 12 | 12 |
+| button height (links, CTA, menu) | 44 | 44 | 44 |
+| button text / padding / gap | 16 / `10 12` / 12 | 16 / `10 12` / 12 | 16 / `10 12` / 12 |
+| logo height | 40 | 40 | 40 |
+<!-- end doc-table -->
+
+## Section, content and nav details (from "Exact declarations")
+
+| | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| Section `align-items` and `align-content` | center | flex-start | center |
+| Section `overflow` | hidden | hidden | visible |
+| Content `z-index` | 1 | 1 | none |
+
+Canvas: flex column, sections stack on padding only, never margin, `gap: 0`. Content: `padding: 0`, never a gutter. Top nav: sticky, top 0, z index 10, `will-change: transform`, `cursor: grab` with links and buttons keeping `cursor: pointer`. Spring: 0.4s, bounce 0.2, delay 0, as `--duration-spring` and `--ease-spring` (a sampled `linear()` curve, about 1.5% overshoot); every nav transition uses it and GSAP stays the engine for scroll animation.
+
+## Every page is indexed (from "Canvas, every page is indexed")
+
+On every route: `<html lang>`; a skip link as the first focusable element targeting `#main`; `<main id="main" tabindex="-1">` named by the page title; `<header>` for the sticky nav and `<footer id="site-footer">` named "Site footer"; exactly one h1 inside main; `main[data-scroll-flow]` lists the section ids in order and every top level section gets `data-scroll-index` 1 to n (set in `BaseLayout`); `scroll-margin-top: var(--header-height)` on sections.
+
+## Mobile menu, required behaviour
+
+Covers the screen: `100dvh` with a `100svh` fallback, minus safe areas. Scrolls internally on short screens with `overscroll-behavior: contain`. Scroll lock by `position: fixed` on body with the scroll position restored, because iOS ignores `overflow: hidden` (`src/lib/site-header.ts`). The toggle keeps the exact coordinates it has when closed. One left edge for logo, links, contact and legal. Links at the top; contact and legal pinned to the bottom. Open and close use the nav spring; links fade and rise with about 40ms stagger; the toggle morphs by transform.
+
+## Motion
+
+Nav and hover use the spring. Load and scroll in: opacity and translateY through GSAP (`[data-reveal]`), first group at 0.4s, second at 0.9s. Transform based only; everything behind `prefers-reduced-motion`.
+
+## PWA and safe areas
+
+`viewport-fit=cover`; `env(safe-area-inset-*)` through `--safe-*` on the nav; a dedicated maskable icon (`pwa-maskable-512.png`); `dvh` with an `svh` fallback.
+
+## Hero, first screen
+
+On a 390 x 844 phone the headline, subhead and primary action sit on the first screen, not under the cookie banner. The doc marks this as a rule not re-measured.

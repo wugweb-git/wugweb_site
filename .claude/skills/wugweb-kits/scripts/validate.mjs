@@ -86,6 +86,10 @@ const ref = await readFile(join(SKILL_DIR, 'references/layout-shell.md'), 'utf8'
 if (doc) {
   for (const v of ['48 16 48 16', '70 32 70 32', '96 48 96 48']) if (!ref.includes(v)) fail('references/layout-shell.md', `missing ${v}`)
   for (const v of ['1200', '100', '108', '68']) if (!doc.includes(v)) fail('layout-shell.md', `doc no longer contains ${v}; the skill copy may be stale`)
+  const docTable = /## Breakpoints\n\n(\|[\s\S]*?)\n\n/.exec(doc)?.[1]
+  const refTable = /<!-- doc-table:breakpoints -->\n([\s\S]*?)\n<!-- end doc-table -->/.exec(ref)?.[1]?.trim()
+  if (!docTable || !refTable) fail('references/layout-shell.md', 'breakpoints table missing in the doc or the copy')
+  else if (docTable.trim() !== refTable) fail('references/layout-shell.md', 'breakpoints table differs from layout-shell.md; recopy it')
 } else warn('layout-shell.md', 'repo docs not found, doc comparison skipped')
 const home = await readFile(join(SKILL_DIR, '../../../docs/skills/STANDING-RULES.md'), 'utf8').catch(() => null)
 const copy = await readFile(join(SKILL_DIR, 'references/standing-rules.md'), 'utf8')
