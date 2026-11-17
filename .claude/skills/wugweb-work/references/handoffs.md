@@ -95,7 +95,9 @@ Audience and purpose (from the brief):
 Draft:
 ```
 
-Expect back: a list of voice breaks, each with the line, the reason and a fix, and a confidence level.
+Expect back: a summary row of 40 to 60 words, then a list of voice breaks, each with the line, the reason and a fix, and a confidence level. Read the summary row first.
+
+The voice is uncalibrated until the owner supplies writing samples (owner, 2026-11-17): treat every voice finding as low confidence and say so wherever it is reported. "We" or "I" is the owner's pick for each piece, not a fixed rule; the brief or this skill's proposal asks him. Translated copy is out of scope until English is calibrated.
 
 Then: apply fixes that keep the meaning. A fix that changes a fact, a client's on-screen term or a quote is declined. Length, evidence and format rules stay with this skill.
 

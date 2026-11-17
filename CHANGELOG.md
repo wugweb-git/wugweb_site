@@ -11,6 +11,8 @@ and this project adheres to Semantic Versioning.
 
 ### Changed — wugweb-strategy plan and Notion page refreshed (2026-11-17)
 - Owner asked for both. File count, version row, status row and the faqs row updated. Backup in `backups/`.
+### Changed — wugweb-work voice rulings and standing-rules test (2026-11-17)
+- We or I per piece, voice summary row, no translation yet, voice findings low confidence; test checks the standing-rules copy against the home file. Still 0.5.0.
 
 - docs(skills): wugweb-brand-os plan (Notion and PLAN.md) records commit 9c8d0c95, the owner's answers of 2026-11-17 and the first eval run in progress.
 

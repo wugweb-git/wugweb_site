@@ -19,7 +19,7 @@ The owner's standing rules (evidence, British English, sentence case, no dashes)
 | Answer first | The first sentence under a heading answers it. The first third of the page carries the main facts. |
 | Short, whole sentences | Fact sentences of 6 to 20 words that make sense on their own. One idea per sentence. |
 | Plain words | Use, build, show, help. See the banned list below. |
-| Active, with a named doer | "Staff set the workflow per programme", not "workflows were streamlined". "We" is allowed for Wugweb. |
+| Active, with a named doer | "Staff set the workflow per programme", not "workflows were streamlined". "We" or "I" is the owner's pick for each piece (owner, 2026-11-17); ask in the brief or proposal. |
 | The client's own words | Use the terms on their screens (NTUC writes "Programmes"). One spelling per name (iCube, not Icube). |
 | Credit honestly | Name partners and the team. Say what Wugweb did and did not do. |
 
@@ -75,7 +75,7 @@ The audit script carries this list. A banned word may stay only inside a client'
 - Case study page: full sentences, evidence in every chapter.
 - Card and tile: client, one line of what was built, no adjectives.
 - Deck: one claim per slide; the screen does the talking.
-- LinkedIn: first person plural, one lesson from the project, no hashtag stuffing, same facts as the page.
+- LinkedIn: "we" or "I" as the owner picks for the piece, one lesson from the project, no hashtag stuffing, same facts as the page.
 - Behance and Dribbble: captions only, flow by flow.
 
 ## Metrics
