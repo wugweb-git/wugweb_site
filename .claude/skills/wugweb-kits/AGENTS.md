@@ -82,7 +82,7 @@ A component reads layer 2 or 3, never a raw value and never layer 1. A block nev
 
 1. Inventory. Count raw colours, size literals and token use. Report the shape in one table before proposing anything. `node scripts/kits-inventory.mjs src/ --findings` runs it; it does not yet read `.astro` files.
 2. Map. Record each component's tokens consumed, used by and status. `system-map.json` is generated, committed at `kits_design_system/system-map.json`, never hand edited.
-3. Audit against the severity list: Blocker is hardcoded colour, z index, a retired shell value, or a section with no id or name. High is a layer skip, missing states, or block CSS outside its component. Medium is spacing literals and alias chains. Low is a one use component token. Report only; blocking merges and clean up passes wait for the owner.
+3. Audit against the severity list: Blocker is hardcoded colour, z index, a retired shell value, or a section with no id or name. High is a layer skip, missing states, or block CSS outside its component. Medium is spacing literals and alias chains. Low is a one use component token. Report only; the token check in CI warns first and flips to blocking once case-study components are clean (owner, 2026-11-17), each finding giving file and line, the literal and the token to use. CI wiring and clean up passes wait for the owner.
 4. Spec. A single component uses the mapper sheet with the `components.md` fields added. A full block uses the block doc in `kits_design_system/docs/blocks/`. The owner signed off the five blocks that were awaiting it (2026-11-17); `components.md` may still mark them as drafts, which is a doc to update, not a reason to treat them as drafts. State measured contrast, not claims.
 5. Keep it true. Compare doc and code and report drift.
 
@@ -1780,7 +1780,7 @@ Source: components.md, buttons.
 
 **Impact:** CRITICAL — hardcoded values split the system and cannot be themed
 
-No hardcoded colour, spacing, radius, opacity, shadow, blur, z index or easing in components or pages. Use the token. About 369 px literals exist today, so this is reported, not yet a merge block.
+No hardcoded colour, spacing, radius, opacity, shadow, blur, z index or easing in components or pages. Use the token. About 369 px literals exist today. Owner ruling 2026-11-17: the token check for case-study components reports only at first (warn, does not block) and flips to blocking once the case-study components are clean. A finding states the file and line, the literal value (for example `color: #FFFFFF` or `padding: 24px`) and the token it should use; `scripts/kits-inventory.mjs --findings` names tokens with the same value, and the role decides the right one. The CI wiring is site development and waits for the owner.
 
 **Incorrect:**
 

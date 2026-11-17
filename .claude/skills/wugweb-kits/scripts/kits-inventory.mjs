@@ -14,6 +14,8 @@ import { join, extname } from 'node:path'
 
 const root = process.argv[2]
 const withFindings = process.argv.includes('--findings')
+const blocking = process.argv.includes('--block') // default is report only (warn); CI flips to blocking once case-study components are clean
+const tokenArg = process.argv.find((a) => a.startsWith('--tokens='))?.slice(9) || 'src/styles/global.css'
 if (!root) {
   console.error('usage: node scripts/kits-inventory.mjs <dir> [--findings]')
   process.exit(2)
@@ -34,6 +36,16 @@ const DIMENSIONS = [
 
 // Values that are structural rather than design decisions.
 const EXEMPT = /^(0(px|rem|em)?|1px|100%|auto|inherit|initial|unset|none|normal)$/i
+
+// value -> token names, from the token file, so a finding can name the token to use.
+const byValue = new Map()
+try {
+  const css = await readFile(tokenArg, 'utf8')
+  const decl = new Map([...css.matchAll(/(?<![\w-])(--[a-z0-9-]+)\s*:\s*([^;{}]+);/g)].map((m) => [m[1], m[2].trim()]))
+  const res = (v, d = 0) => { const m = /^var\((--[a-z0-9-]+)\)$/.exec(v || ''); return m && d < 5 ? res(decl.get(m[1]), d + 1) : v }
+  for (const [k, v] of decl) { const r = (res(v) || '').toLowerCase().replace(/\s+/g, ' '); if (r) byValue.set(r, [...(byValue.get(r) || []), k]) }
+} catch {}
+const tokenFor = (v) => (byValue.get(v.toLowerCase().replace(/\s+/g, ' ')) || []).slice(0, 2).join(' or ') || 'no token holds this value'
 
 const counts = DIMENSIONS.map(() => new Map())
 const findings = DIMENSIONS.map(() => [])
@@ -104,7 +116,7 @@ async function scan(file) {
         if (d.norm) value = d.norm(value)
         if (EXEMPT.test(value) || value.includes('var(')) continue
         counts[di].set(value, (counts[di].get(value) ?? 0) + 1)
-        if (withFindings) findings[di].push(`${file}:${i + 1}  ${d.name}: ${value}`)
+        if (withFindings) findings[di].push(`${file}:${i + 1}  ${line.trim().slice(0, 70)}  ->  same value as: ${tokenFor(value)}`)
       }
     })
   })
@@ -146,7 +158,8 @@ if (undeclared.length) {
 if (withFindings) {
   console.log('\nRaw values, file:line')
   const all = findings.flat().sort()
-  for (const f of all) console.log(`  BLOCKER  ${f}   token-no-raw-values-in-components`)
+  for (const f of all) console.log(`  ${blocking ? 'BLOCKER' : 'WARN   '}  ${f}   kits-tokens-only`)
+  if (blocking && all.length) process.exitCode = 1
 }
 
 console.log(`\n@media literals (counted apart): ${[...mediaLiterals].map(([v, n]) => v + ' x' + n).join(', ') || 'none'}`)

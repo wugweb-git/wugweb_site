@@ -31,3 +31,15 @@ These four are confirmed by the owner but are not yet in `sizing.md` or any desi
 | Rail peek | 20% |
 | Signature width | 2400px |
 | Line length | 35 to 60 characters |
+
+## Made-file sizes adopted by the owner, 2026-11-17
+
+Relayed through the coordinating session from the `wugweb-seo` rulings. Source is the owner, not a design doc.
+
+| File | Size |
+|---|---|
+| Og image | 1200 x 630, key content in the central 80% |
+| LinkedIn link image | 1200 x 627 minimum |
+| Behance cover | 808 x 632 minimum |
+| Dribbble | 1600 wide |
+| Story | 1080 x 1920, safe zone unverified |
