@@ -315,13 +315,16 @@ one page per cluster, topic gaps and pages to refresh, in the shape in
 
 #### 2. Search input for one brief
 
-Asked by `wugweb-work`, for a case study, blog post, service page or site page.
+Asked through `wugweb-strategy`'s brief, for a case study, blog post, service
+page or site page. When `wugweb-strategy` writes the brief it asks this skill
+for the keyword note and pastes it into the brief unchanged (brief field 9);
+`wugweb-work` reads it there and does not ask again.
 
 Receive the page, its type, what was built, the audience and the candidate
-phrases. Return the shape in `references/plan.md`. The maker uses these as
-constraints. It keeps its headings and adds no FAQ block for search, no keyword
-counts and no sections written for search. The link targets come from
-`wugweb-strategy`; this skill gives the link rules.
+phrases. Return the keyword note in the shape in `references/plan.md`. The maker
+uses these as constraints. It keeps its headings and adds no FAQ block for
+search, no keyword counts and no sections written for search. The link targets
+come from `wugweb-strategy`; this skill gives the link rules.
 
 #### 3. Platform keyword note
 

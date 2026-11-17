@@ -2,6 +2,10 @@
 
 ## 2.5.0, 2026-11-17
 
+- Brief field 9 set to option (a): `wugweb-strategy`'s brief pastes wugweb-seo's
+  keyword note for the piece unchanged; handoff section 2 updated so `wugweb-work`
+  reads it from the brief instead of asking per brief. Kept at 2.5.0 on the owner's
+  instruction (no new version).
 - Owner decisions folded in (delegated, "diy", 2026-11-17): schema for service pages (Service +
   BreadcrumbList), home (WebPage) and about (AboutPage), no author; and blog
   and service page titles use a source limit of 52 so the " | Wugweb" suffix
