@@ -50,7 +50,7 @@ The audit script carries this list. A banned word may stay only inside a client'
 
 | Item | Length |
 |---|---|
-| Subtitle | 90 characters or fewer (settled by the owner, 2026-11-16) |
+| Subtitle | 90 characters or fewer (settled by the owner, 2026-11-16); proposed only after the body is read, never from the name or partner alone (owner, 2026-11-17) |
 | Summary | 40 to 60 words |
 | Chapter | 30 to 150 words |
 | Point title | 2 to 6 words |

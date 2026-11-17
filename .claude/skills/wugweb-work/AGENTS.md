@@ -71,7 +71,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **4. Look.** Open every image and video and record a visual read for each, using `references/visual-read.md`. Step through videos frame by frame. Name the kind, platform, audience, flow, step and state; flag placeholder text, sample personal data, stock and wrong-client files. Use `references/design-principles.md` to name a principle only when the screen proves it. This mode is slow; do not skip it.
 
-**5. Body.** Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
+**5. Body.** A direct request for a proposal still runs Audit, Media and Look first, in the same task (owner, 2026-11-17). Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
 
 **6. Layout.** Decide which block each content shape gets, then give `wugweb-kits` the content shape and chosen media; it returns the layout. Until it is installed, use the held rules in `references/layout-grammar.md`.
 
@@ -339,7 +339,7 @@ The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted un
 
 Take from `wugweb-strategy`: its brief (`.claude/skills/wugweb-strategy/references/brief-format.md`).
 
-Check it: the six check fields are present (the reader, what they know now, what they should know and do after, the goal, the format, the case studies that back it), and the proof exists in an approved body. Return it with questions when one is missing. Do not rewrite the plan.
+Check it: the six check fields are present (the reader, what they know now, what they should know and do after, the goal, the format, the case studies that back it), and the proof exists in an approved body. A published v1 body counts for the facts it already publishes; any other claim needs an approved v2 body or the owner's answer (owner, 2026-11-17). Return it with questions when one is missing. Do not rewrite the plan.
 
 Give back after approval: the finished piece, the proof used, and proof that was asked for and does not exist.
 
@@ -680,7 +680,7 @@ The audit script carries this list. A banned word may stay only inside a client'
 
 | Item | Length |
 |---|---|
-| Subtitle | 90 characters or fewer (settled by the owner, 2026-11-16) |
+| Subtitle | 90 characters or fewer (settled by the owner, 2026-11-16); proposed only after the body is read, never from the name or partner alone (owner, 2026-11-17) |
 | Summary | 40 to 60 words |
 | Chapter | 30 to 150 words |
 | Point title | 2 to 6 words |
@@ -1656,6 +1656,9 @@ No matter is open with the owner (2026-11-17). Any output that depends on an ope
 | Plan vetting | The plan is approved as it stands and Part 1 stays locked. Starting Part 2 (site code) still needs the owner's own go | the plan; `SKILL.md` |
 | Replies and outreach | Out of the Forms module. A reply or pitch asked for is drafted as a one-off, with no fact ledger | `forms.md` |
 | Made files and scheduling | Made files are kept in the media store named in `ops-cycle.md`, under the piece's own folder, each only on the owner's yes for that file; the owner puts the file there, and this skill never uploads. No scheduling tool is connected: every post is handed to the owner as an approved draft to post | `forms.md`, `forms/publish-approval.md` |
+| Proposal on request | A direct request for a v2 proposal still runs Audit, Media and Look first, in the same task | `SKILL.md` step 5 |
+| Published v1 body as proof | Counts for the facts it already publishes; any other claim needs an approved v2 body or the owner's answer | `handoffs.md`, handoff 7 |
+| Hero subtitle timing | Proposed only after the body is read, never from the name or partner alone | `copy-and-seo.md` |
 | LinkedIn tags | None | `forms.md`, `forms/linkedin-post.md` |
 | NTUC | Not an open input: NTUC U Care is a worked example only. Its missing facts (results, live URL, builder steps, heading typeface) are shown in the examples as the owner questions a real piece would raise | `examples/` |
 | Medium | Not a form of its own: the approved blog post, unchanged, with a link to the original | `forms.md` |

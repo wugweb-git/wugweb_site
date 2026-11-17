@@ -115,7 +115,7 @@ The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted un
 
 Take from `wugweb-strategy`: its brief (`.claude/skills/wugweb-strategy/references/brief-format.md`).
 
-Check it: the six check fields are present (the reader, what they know now, what they should know and do after, the goal, the format, the case studies that back it), and the proof exists in an approved body. Return it with questions when one is missing. Do not rewrite the plan.
+Check it: the six check fields are present (the reader, what they know now, what they should know and do after, the goal, the format, the case studies that back it), and the proof exists in an approved body. A published v1 body counts for the facts it already publishes; any other claim needs an approved v2 body or the owner's answer (owner, 2026-11-17). Return it with questions when one is missing. Do not rewrite the plan.
 
 Give back after approval: the finished piece, the proof used, and proof that was asked for and does not exist.
 

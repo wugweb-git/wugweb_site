@@ -12,6 +12,9 @@ and this project adheres to Semantic Versioning.
 - feat(skills): wugweb-brand-os check fails when the export or its standing rules copy drifts from docs/skills/STANDING-RULES.md.
 
 - fix(skills): wugweb-brand-os eval run fixes: AI subjects point to the Intelligence metaphor; crop definition marked approved with the four held guideline edits listed; eval 9 matches the yellow ruling; the export now carries the standing rules.
+### Changed — wugweb-work owner answers to the eval questions (2026-11-17)
+- Proposal on request runs Audit, Media and Look first; published v1 facts count as proof; subtitle only after the body is read. Still 0.5.0.
+
 ### Changed — wugweb-work eval fixes, made files and scheduling settled (2026-11-17)
 - First eval run graded (56/78, 6/14 in full); skill-side fixes applied, eval 14 brought up to the owner's decisions; made files kept in R2 by the owner, no scheduling tool; no matter open with the owner. Still 0.5.0.
 

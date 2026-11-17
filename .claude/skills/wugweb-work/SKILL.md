@@ -74,7 +74,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **4. Look.** Open every image and video and record a visual read for each, using `references/visual-read.md`. Step through videos frame by frame. Name the kind, platform, audience, flow, step and state; flag placeholder text, sample personal data, stock and wrong-client files. Use `references/design-principles.md` to name a principle only when the screen proves it. This mode is slow; do not skip it.
 
-**5. Body.** Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
+**5. Body.** A direct request for a proposal still runs Audit, Media and Look first, in the same task (owner, 2026-11-17). Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
 
 **6. Layout.** Decide which block each content shape gets, then give `wugweb-kits` the content shape and chosen media; it returns the layout. Until it is installed, use the held rules in `references/layout-grammar.md`.
 
