@@ -30,7 +30,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
       "creator": { "@id": "<origin>/#organization" },
       "publisher": { "@id": "<origin>/#organization" },
       "datePublished": "<publishedAt>",
-      "dateModified": "<last modified>",
+      "dateModified": "<last real content edit>",
       "inLanguage": "en-GB",
       "image": [
         { "@type": "ImageObject", "@id": "<url>#cover", "url": "<cover url>", "width": 0, "height": 0 }
@@ -75,7 +75,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
 - `mentions`: partners and platforms named in the body.
 - `contributor`: optional; people credited on the page, as `Person` nodes with a name only.
 - `abstract`: the summary, only when the page shows one.
-- `dateModified`: the record's last update time. There is no separate "last updated" field.
+- `dateModified`: the date of the last real content edit, never the record's every-save update time; no date change without a real edit. The rule lives in `wugweb-seo` (`.claude/skills/wugweb-seo/references/audit.md`). With no real-edit date on record, `dateModified` equals `datePublished`.
 - Testimonials: `blockquote` markup on the page, and at most an optional `Quotation` node.
 
 ## Never emit

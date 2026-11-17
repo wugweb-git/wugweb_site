@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work dateModified rule points to wugweb-seo (2026-11-17)
+- Real content edits only; equals datePublished when none recorded. Still 0.5.0.
+
 ### Changed — wugweb-strategy FAQ review notes the rich-results end date (2026-11-17)
 - One-line note added to `FAQ-REVIEW.md`; the FAQ line is unchanged.
 

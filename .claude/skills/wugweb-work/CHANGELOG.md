@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- `schema-jsonld.md`: `dateModified` is the last real content edit, never the record's every-save update time; with none on record it equals `datePublished`. Points to `wugweb-seo` (f1ce006f).
+
 - Two rules carried over from the 2026-10-19 research review: a video with speech needs captions or a transcript from the owner's source (`media-standard.md`); a quote carries the person's photo only when the owner supplies it (`copy-and-seo.md`).
 
 - Live eval rerun graded (evals 2, 3, 4, 5, 8: 26 of 31; whole run now 64 of 78, 8 of 14 in full). Skill fixes: the audit ends with the owner questions as one numbered list (`evidence.md`); each flow names at least one design principle; video records carry every base field (`visual-read.md`).
