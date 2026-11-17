@@ -105,7 +105,7 @@ const [settings, livePlatformProfiles, teaserPosts, showcaseSectors, globalSecti
 const socialDiscs = (livePlatformProfiles as any[]).filter((p) => p.category === 'Social Media');
 
 const defaultLang = language || settings?.language || 'en-GB';
-const siteName = settings?.siteTitle || 'wugweb — Digital Experience Agency';
+const siteName = settings?.siteTitle || 'wugweb: Digital Experience Agency';
 const defaultDesc = settings?.seoDescription || 'Wugweb is a digital experience agency crafting brand strategy, UX design, martech, AI, and web development for ambitious teams.';
 const defaultOgImage = settings?.ogImage
   ? urlFor(settings.ogImage).width(1200).height(630).url()
@@ -124,7 +124,7 @@ const defaultFavicon = settings?.favicon
 const defaultAppleTouch = settings?.favicon
   ? urlFor(settings.favicon).width(180).url()
   : '/brand/favicon.svg';
-const copyrightText = settings?.copyright || '© 2020–2026 Wugweb. All rights reserved.';
+const copyrightText = settings?.copyright || '© 2020 to 2026 Wugweb. All rights reserved.';
 const siteEmail = settings?.contactEmail || 'hello@wugweb.com';
 
 // The site suffix is added here when the stored title doesn't carry the brand:

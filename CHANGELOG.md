@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed: dashes removed from visible copy (2026-11-17)
+- Six FAQ answers (Brand 2, 5, 8; Experience 7; Growth 2 in `src/lib/services-data.ts`; "Do you work with startups?" in `src/pages/faq.astro`): the dash becomes a comma or a colon, wording otherwise unchanged. Rows as approved in `docs/skills/wugweb-strategy/FAQ-REVIEW.md`.
+- App name in `public/manifest.webmanifest` and the site-name fallback in `BaseLayout.astro` read "wugweb: Digital Experience Agency"; the copyright fallback in `BaseLayout.astro` and `SiteFooter.astro` reads "2020 to 2026".
+
 ### Changed — wugweb-strategy plan and Notion record the other-docs check (2026-11-17)
 - Other plans read from main; no change needed in this skill. Backup in `backups/`.
 
