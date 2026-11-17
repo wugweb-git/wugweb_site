@@ -33,7 +33,7 @@
 ## Mandated Token Rules
 
 1. **Always Use Tokens**: Never hardcode hex values, pixel font sizes, or rem paddings in new CSS.
-2. **Breakpoints in Media Queries**: Custom CSS properties cannot be used in `@media` queries; use literal pixel constants (`768px`, `1024px`, `1280px`).
+2. **Breakpoints in Media Queries**: Custom CSS properties cannot be used in `@media` queries; use literal pixel constants (480, 640, 768, 1024, 1200; shell steps only at 768 and 1200, per `layout-shell.md`). 1280 is retired.
 3. **Radius Consistency**: Buttons = `--radius-sm` (8px), Chips = `--radius-full` (9999px), Cards = `--radius-lg` (16px), Hero panels = `--radius-2xl` (24px).
-4. **Yellow Capping**: Yellow (`--color-yellow`) is reserved for primary CTAs and active focus indicators (≤10% per page).
+4. **Yellow Capping**: Yellow (`--color-yellow`) rests only on the one conversion action per page and the footer CTA banner (at most 10% per page). Focus rings are grey (`--neutral-3`), not yellow.
 5. **GSAP Motion Engine**: Animations run through GSAP (`src/lib/scroll-animations.ts`) using `[data-reveal]` and `[data-scroll]` attributes.

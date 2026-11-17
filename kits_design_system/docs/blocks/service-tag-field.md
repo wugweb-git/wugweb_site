@@ -1,6 +1,6 @@
 # Service Tag Field
 
-**Status:** built, awaiting sign-off · **Live on:** `/` (homepage, "What we do")
+**Status:** built, signed off by the owner (2026-11-17) · **Live on:** `/` (homepage, "What we do")
 **Source:** `src/pages/index.astro` (markup + ~190 lines scoped CSS)
 **Behaviour:** `src/lib/draggable-tags.ts` (~323 lines)
 **Last verified:** 2026-09-08

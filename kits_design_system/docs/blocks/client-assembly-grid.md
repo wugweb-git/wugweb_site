@@ -1,6 +1,6 @@
 # Client Assembly Grid
 
-**Status:** built, awaiting sign-off · **Live on:** `/` (homepage)
+**Status:** built, signed off by the owner (2026-11-17) · **Live on:** `/` (homepage)
 **Source:** `src/pages/index.astro` (inline — see [Recycling](#8-recycling))
 **Animation:** `data-scroll="assemble"` in `src/lib/scroll-animations.ts`
 **Last verified:** 2026-09-08

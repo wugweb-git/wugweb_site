@@ -1,6 +1,6 @@
 # Process Map
 
-**Status:** built, awaiting sign-off · **Live on:** `/services/experience` ("How we work")
+**Status:** built, signed off by the owner (2026-11-17) · **Live on:** `/services/experience` ("How we work")
 **Source:** `src/components/ProcessMap.astro` (~560 lines — component, geometry, behaviour)
 **Config:** `src/pages/services/[slug].astro` (`MAP_BY_PILLAR`)
 **Last verified:** 2026-09-09

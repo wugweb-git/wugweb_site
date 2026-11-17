@@ -74,7 +74,7 @@ Approved by the owner, 2026-11-17. These scale with their container, not the vie
 | `--t-h2` | `var(--fluid-h2)` |
 | `--t-h3` | `var(--fluid-h3)` |
 | `--t-h4` | `var(--fluid-h4)` |
-| `--t-h5` | `var(--ts-h4-size)` (no Kits H5; 20px) |
+| `--t-h5` | `var(--fluid-h5)` (16 to 20) |
 | `--t-h6` | `var(--ts-body-sm-size)` |
 | `--t-xl` / `--t-l` / `--t-lead` | `var(--fluid-body-lg)` |
 | `--t-body` | `var(--fluid-body-md)` |

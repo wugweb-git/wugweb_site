@@ -1,6 +1,6 @@
 # Bento Block
 
-**Status:** built, awaiting sign-off · **Live on:** `/about` ("Why Wugweb?") and all six `/services/[slug]` pages ("Why us?")
+**Status:** built, signed off by the owner (2026-11-17) · **Live on:** `/about` ("Why Wugweb?") and all six `/services/[slug]` pages ("Why us?")
 **Source:** `src/components/BentoBlock.astro` (~644 lines — the only true component of the four blocks)
 **Layout data:** `src/pages/services/[slug].astro` (`BENTO_LAYOUTS`) · `src/pages/about.astro` (`bentoTiles`)
 **Enter/exit:** `src/lib/scroll-animations.ts`, `data-scroll="bento"`
