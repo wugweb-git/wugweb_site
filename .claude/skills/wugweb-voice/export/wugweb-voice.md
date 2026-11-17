@@ -44,7 +44,7 @@ These come from the owner's standing rules, not from samples. They apply to all 
 2. Sentence case for headings, labels and buttons.
 3. No em or en dashes in visible copy. Write ranges out ("3 to 5").
 4. Never invent a number, quote or fact. A claim needs a screen, a sourced number or a named fact.
-5. No filler words. Which words count is waiting on his ruling; the candidate list is in `references/words.md`.
+5. No filler words. Which words count is waiting on his ruling; until then raise candidates, never remove them (`references/words.md`).
 
 Internal documents are not visible copy, but this skill's own files follow the same rules so the export stays clean.
 
@@ -93,7 +93,7 @@ Confidence is high, medium or low. Always give the evidence with it: samples in 
 Run the mechanical part with:
 
 ```
-node scripts/check.mjs <file.md> [--mode <mode>] [--json]
+node scripts/check.mjs <file.md> [--mode <mode>] [--sources] [--json]
 cat draft.txt | node scripts/check.mjs - --mode linkedin-post
 ```
 
@@ -338,7 +338,7 @@ Empty. "No filler words" is a confirmed owner rule, but he has not yet ruled on 
 
 ## Banned words (candidate, waiting on the owner's ruling)
 
-Source: the draft "Writing style and tone" section of `docs/skills/wugweb-work/PLAN.md` (section 5), written from his decisions but not yet reviewed by him as his voice. Not flagged; reported as questions.
+Source: the draft "Writing style and tone" section of `docs/skills/wugweb-work/PLAN.md` (section 5), written from his decisions but not yet reviewed by him as his voice. Not flagged; reported as questions. In a rewrite or a proposed change, leave candidate and unruled words in place and ask the owner; never drop or replace a word as filler on your own judgment.
 
 ```banned-candidate
 pivotal
