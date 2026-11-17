@@ -486,3 +486,54 @@ The old remote branch for this work is deleted. The stale `.agents/skills` copy 
 6. Upload `wugweb-voice-0.3.0.zip` to the Claude app (his step; the app has none of the six skills after the reset).
 
 Blocked until samples arrive: evals 10 to 14, calibration, and any move from low confidence.
+
+## 16. Other docs read for voice (2026-11-17)
+
+Owner instruction: "all other docs please fetch in them". Two read-only passes covered the other five skills' references (`wugweb-work`, `wugweb-strategy`, `wugweb-brand-os`, `wugweb-seo`, `wugweb-kits`), `docs/skills/STANDING-RULES.md`, `brand_guidelines/` (foundation and marketing system), the design-system docs, the case-study research map and the top-level repo docs. About 130 statements were found; they are grouped here. Every item is a candidate or a pointer: none is applied, none is flagged by the check, and the skill is unchanged (version 0.3.0).
+
+### Already confirmed and carried
+
+British English, sentence case, no em or en dashes (also in aria labels, form versions, kits spec text and SEO titles), never invent a number, quote or fact, one voice, we or I per brief, client terms unchanged. The brand guidelines are American in places; British English settles it.
+
+### New voice candidates found
+
+| Candidate | Where it is held | Notes |
+|---|---|---|
+| Direct, intelligent, specific; outcomes over hype (C-06) | `14_COPY_GUIDELINES.md`, `wugweb-work` copy reference | Already recorded |
+| Plain, confident, specific, no superlatives | case-study research map | Joins C-01 and C-02 |
+| Say what was built; name the thing | `wugweb-work` copy reference | In C-01 |
+| No superlatives without proof; superlatives and comparisons are always flagged | `wugweb-work`, `wugweb-brand-os` review gates, evidence reference | Claim wording; the proof part is already the never-invent rule |
+| Credit honestly: name partners and team, say what Wugweb did and did not do | `wugweb-work` | In C-01 |
+| Client is the hero, Wugweb is the guide (owner, 2026-11-17) | `wugweb-brand-os` messaging | Brand stance; voice only phrases it |
+| No engagement bait: share prompts, comment gating, false urgency, giveaways; a question only when real | `wugweb-strategy` piece structures | Tone for social |
+| Write "Wugweb" with one spelling; "WugWeb" is not approved | `wugweb-brand-os` vocabulary and brand facts | A mechanical check candidate; the 2023 profile uses "WugWeb" |
+| Words for systems and relationships, not decorative or hype-driven language (C-05) | `VOCABULARY.md` | Already recorded |
+| Pairs and patterns ("X before Y", "unknown to understood", "noise to signal") | foundation and brand story | Phrasing; internal language, not confirmed as public wording |
+| Short declarative beliefs ("Clarity is the value") | `PHILOSOPHY.md` | Sentence shape |
+| Message order Problem, Insight, System, Outcome; one claim, one proof, one outcome per asset | messaging framework, `wugweb-brand-os` | Structure; stays with `wugweb-work` and `wugweb-brand-os` |
+
+### Held by `wugweb-work` as working rules (candidates for voice, not confirmed)
+
+Answer first; short whole sentences of 6 to 20 words; paragraphs of 2 to 4 sentences; plain words (use, build, show, help); active voice with a named doer; no throat-clearing openers and no "as mentioned above"; headings that are claims; link labels that start with a verb and name the outcome; the 23 banned words with the exception; tone by form (case study full sentences, card no adjectives, deck one claim per slide, LinkedIn one lesson, captions only for Behance and Dribbble). Lengths and counts (subtitle, summary, captions, alt text, titles, descriptions) are format rules and stay in `wugweb-work` and `wugweb-seo`. Number consistency, metric fields and quote checks are evidence rules and stay in `wugweb-work`.
+
+### Conflicts between docs, for the owner
+
+| Conflict | Detail |
+|---|---|
+| Brand docs against British English | `PHILOSOPHY.md` uses "visualizes"; the 2023 profile mixes US and British spelling |
+| Brand docs against the dash rule | One marketing checklist line and one code-map title use an em dash |
+| Brand docs against sentence case | Some kits labels are title case or lowercase bold ("Work Email"); step titles are uppercase |
+| "Learn more" links | One component spec uses them; the layout shell and the work skill ask for descriptive link text |
+| Vocabulary terms against the banned list | Brand vocabulary lists "transformation", "architecture", "orchestration"; the 23 words include "transformative". The brand vocabulary says banned words live in `wugweb-voice` |
+| "Benefit-led" against "outcomes over hype" | The messaging line says benefit-led; the copy line says prefer outcomes over hype. No direct clash, but worth one ruling |
+| LinkedIn tags | The SEO plan says tags "few and specific"; the work forms reference says none (owner, 2026-11-17) |
+| Title length | SEO title is 51 characters or fewer before the site suffix (60 rendered); one QA line says 60 or fewer |
+| Brand docs against the Notion body-only rule | The research map lists legacy case-study headings that the project notes call filler |
+
+### Gaps
+
+The brand guidelines hold no rule on we or I, banned words, headline length or tone by form. The strategy skill deliberately holds no tone or word rules; it passes briefs to `wugweb-work` and wording to voice. `wugweb-kits` owns no wording and has no link to the voice skill; copy reaches voice through `wugweb-work`. The strategy signal log is a named read-only input but has not been read for samples yet.
+
+### Brand docs status
+
+The brand guidelines folder is marked completed and archived on 2026-08-07, so its voice lines are candidates, not live rules. Internal terms in `VOCABULARY.md` are internal language and not necessarily public copy.

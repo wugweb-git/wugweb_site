@@ -12,6 +12,10 @@ and this project adheres to Semantic Versioning.
 ### Changed: wugweb-brand-os plan and pending updated (2026-11-17)
 
 - docs(skills): wugweb-brand-os PLAN.md has one status block (commits, rulings, pending table), sections 13 to 16 and 19 brought up to date; pending.md gains a brand-os entry.
+
+### Changed — wugweb-voice plan and Notion page: section 16, other docs read for voice (2026-11-17)
+- `docs/skills/wugweb-voice/PLAN.md` and the Notion page: new section 16 groups about 130 voice statements from the other five skills, the brand guidelines, the design-system docs and the repo docs. Candidates and conflicts only; skill unchanged, version stays 0.3.0. Backup note `backups/notion-wugweb-voice-page-2026-11-16-l.json`.
+
 ### Fixed: dashes removed from visible copy (2026-11-17)
 - Six FAQ answers (Brand 2, 5, 8; Experience 7; Growth 2 in `src/lib/services-data.ts`; "Do you work with startups?" in `src/pages/faq.astro`): the dash becomes a comma or a colon, wording otherwise unchanged. Rows as approved in `docs/skills/wugweb-strategy/FAQ-REVIEW.md`.
 - App name in `public/manifest.webmanifest` and the site-name fallback in `BaseLayout.astro` read "wugweb: Digital Experience Agency"; the copyright fallback in `BaseLayout.astro` and `SiteFooter.astro` reads "2020 to 2026".
