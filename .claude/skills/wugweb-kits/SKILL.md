@@ -36,7 +36,7 @@ Token values live in `src/styles/global.css`. The docs in `kits_design_system/do
 
 - Layout, tokens, components, block docs, motion and accessibility of the site.
 - Not wording. Visible copy comes through `wugweb-work`, which supplies content shape and chosen media and takes layout, blocks and wording slots with limits.
-- Not art direction. `wugweb-brand-os` gives the Visual OS and logo sizes; kits gives it design-system detail and contrast results.
+- Not art direction. `wugweb-brand-os` gives the Visual OS and the logo rules; logo sizes live in kits (logo 40 in the nav); kits gives brand-os design-system detail and contrast results. Yellow is the one brand colour; purple, green and orange are allowed as pillar colours, pillar glow is an allowed exception, a slight bounce is within the brand, and black is the default canvas, light only where the owner says (brand-os rulings relayed 2026-11-17).
 - `wugweb-seo` sends block-wide findings here; kits answers with a check result. One-page findings go to `wugweb-work`.
 - `wugweb-strategy` reaches kits only through `wugweb-work`. There is no link to `wugweb-voice`.
 
