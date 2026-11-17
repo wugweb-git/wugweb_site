@@ -98,10 +98,11 @@ Note: `footer/sitemap` is linked from `SiteFooter` (Sitemap).
 
 ## Components (`src/components/`)
 
-3 Astro components (only used ones — dead components were deleted 2026-08-05):
+21 Astro components on main (counted 2026-11-17), 19 of them with a Storybook story beside the file (`*.stories.ts`; config in `.storybook/`, run with `npm run storybook`):
 
-`SiteHeader` (nav, WhatsApp CTA, mobile menu), `SiteFooter`, `TrustBadges`
-(Clutch/DesignRush/GoodFirms strip — TopDevelopers logo asset exists at
+`SiteHeader`, `SiteFooter`, `FooterCTA`, `TrustBadges`, `BentoBlock`, `ClientAssemblyGrid`, `ProcessMap`, `SectorShowcase`, `ServiceSpotlightPanel`, `ServiceTagField`, `InsightsBlock`, `TeamGrid`, `FaqAccordion`, `PortableTextRenderer`, `PostCard`, `JsonLd`, `industries/IndustriesHero`, `industries/SectorRow`, and three Storybook-only showcases (`ButtonShowcase`, `CookieBannerShowcase`, `TokenGallery`). `PostCard` and `JsonLd` have no story.
+
+`TrustBadges` is the Clutch/DesignRush/GoodFirms strip — TopDevelopers logo asset exists at
 `public/brand/trust/topdevelopers.svg` but isn't wired in; no verified
 Wugweb profile URL on topdevelopers.co, user declined adding it without
 one 2026-09-23). Currently unused sitewide (removed from all pages per
