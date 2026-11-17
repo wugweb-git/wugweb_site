@@ -56,7 +56,7 @@ Never plan rows into Notion Blogs: its sync turns any row that is not in the tra
 
 ## Accounts in scope
 
-The Wugweb site blog, the Wugweb LinkedIn company page, Wugweb Behance, Wugweb Dribbble, the owner's LinkedIn, the owner's Medium, and the email newsletter. The owner's five personal Behance projects are out of scope (decision 13).
+The Wugweb site blog, the Wugweb LinkedIn company page, Wugweb Behance, Wugweb Dribbble, the owner's LinkedIn, the owner's Medium, and the email newsletter. The owner's five personal Behance projects are out of scope (decision 13). Copy in languages other than English is out of scope until English is calibrated (owner, 2026-11-17).
 
 ## The ten modes
 
