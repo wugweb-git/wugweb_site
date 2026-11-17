@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- Brand rules pointed home (from `wugweb-brand-os` eval 38): the yellow share rule (`layout-grammar.md`), the messaging order (`copy-and-seo.md`) and the case-study cover rule (`visual-read.md` heroScore, `layout-grammar.md` cover line) now point to their files in `wugweb-brand-os` instead of restating them.
+
 - Voice rulings (owner, via `wugweb-voice` 3ef0c4a6): "we" or "I" is the owner's pick per piece, asked in the brief or proposal; the voice check reply opens with a 40 to 60 word summary row; translated copy is out of scope until English is calibrated; the voice is uncalibrated until the owner supplies writing samples, so voice findings are low confidence and reported as such (`handoffs.md` handoff 5, `copy-and-seo.md`). `test.mjs` now checks the marked standing-rules copy against `docs/skills/STANDING-RULES.md` (the home file wins) and that it is built into `AGENTS.md`.
 
 - Story safe zone (finding by `wugweb-seo`, read on the platform's own help pages, 2026-11-17): the 1080 x 1920 canvas is official; there is no official pixel safe zone. `forms.md` and `open-items.md` now say keep the top, bottom and sides clear, wider margins, the bottom 40% clear of text on Reels ads, and never state a pixel figure as a rule.

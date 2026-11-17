@@ -11,6 +11,8 @@ and this project adheres to Semantic Versioning.
 
 ### Changed — wugweb-strategy voice rulings, build and test scripts (2026-11-17)
 - Signal log named read-only for voice, we or I recorded per brief, other languages out of scope, and `scripts/build.mjs` and `scripts/test.mjs` check the standing-rules copy against the home file. Version stays 0.1.2.
+### Changed — wugweb-work brand rules point to wugweb-brand-os (2026-11-17)
+- Yellow share, messaging order and case-study cover rule now pointers to wugweb-brand-os, not restated. Still 0.5.0.
 
 ### Changed — wugweb-strategy plan and Notion page refreshed (2026-11-17)
 - Owner asked for both. File count, version row, status row and the faqs row updated. Backup in `backups/`.

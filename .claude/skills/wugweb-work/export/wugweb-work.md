@@ -632,7 +632,7 @@ When two pages compete for the same search intent and both are kept, `wugweb-seo
 
 > **Mixed ownership.** Voice, tone, phrasing, banned words and the no-dash rule are held for `wugweb-voice`. The title, description and slug rules under "On-page SEO" are held for `wugweb-seo`. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file. The evidence rule, case-study lengths, metrics, approvals and the brief template belong to this skill.
 
-The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (one claim, one tension, one proof, one outcome; Problem, Insight, System, Outcome), the owner's rules and the research digest.
+The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (owned by `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/messaging.md`), the owner's rules and the research digest.
 
 ### Tone in one line
 
@@ -924,7 +924,7 @@ Stored per case study, keyed by URL and ETag so each file is read once.
 | `brand` | Colours as hex, type families recognised, logo present, which brand |
 | `quality` | sharp, soft, upscaled, stock, placeholder or lorem, watermark, wrong client |
 | `nearDupOf` | Visual duplicate the size check missed |
-| `heroScore` | 0 to 5: project-specific, legible small, not a generic laptop |
+| `heroScore` | 0 to 5: legible small, and passes the cover rule of `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6) |
 | `alt` | 125 characters or fewer |
 | `caption` | 25 words or fewer |
 | `chapterFit` | Which chapter it proves |
@@ -1216,7 +1216,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 ### 3. Hero, stats and summary
 
 - Brand label: short title, else client name. H1 = the title (client + what was built). Then the subtitle and a meta list holding present keys only.
-- Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. Never a generic device mockup when a project-specific visual exists.
+- Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. The cover rule itself lives in `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
 - `stats` under the hero when 2 to 4 verified results exist; the rest go to the Results chapter.
 - Summary = the first chapter's lead when it is 40 to 60 words; otherwise no summary block.
 
@@ -1262,7 +1262,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - Every section needs an id and an accessible name, so every chapter needs a real heading.
 - Filters sit inside the grid they filter, never as a section of their own.
 - First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
-- One yellow conversion action per page; labels describe the action; yellow stays under 10% of the page.
+- One yellow conversion action per page; labels describe the action. The yellow rule (its share of the page and where it may rest) lives in `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`.
 - The five existing blocks are signed off by the owner (2026-11-17); the bento layout on the case study page is the one this work replaces.
 - The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; a case study never carries a `faqs` block; the FAQ rules for service pages and blog posts are in `own-content.md`.
 

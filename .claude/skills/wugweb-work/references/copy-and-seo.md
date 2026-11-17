@@ -2,7 +2,7 @@
 
 > **Mixed ownership.** Voice, tone, phrasing, banned words and the no-dash rule are held for `wugweb-voice`. The title, description and slug rules under "On-page SEO" are held for `wugweb-seo`. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file. The evidence rule, case-study lengths, metrics, approvals and the brief template belong to this skill.
 
-The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (one claim, one tension, one proof, one outcome; Problem, Insight, System, Outcome), the owner's rules and the research digest.
+The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (owned by `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/messaging.md`), the owner's rules and the research digest.
 
 ## Tone in one line
 
