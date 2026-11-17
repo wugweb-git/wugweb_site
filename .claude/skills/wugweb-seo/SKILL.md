@@ -1,5 +1,5 @@
 ---
-name: "wugweb-seo"
+name: wugweb-seo
 description: "Plans, audits and reports on how Wugweb pages and client sites are found in search engines and AI answers. Use for the plan part: a keyword map, search intent, a content brief, topic gaps, or a keyword note for a LinkedIn, Behance or Dribbble title and tags. Use for the audit part: a meta title or description check, headings, canonical, indexing, schema or JSON-LD, share tags, robots.txt, AI crawlers, or why a page is not found. Use for the report part: rankings, Search Console data, a traffic drop, AI Overviews, or ChatGPT and Perplexity citations. Returns constraints, checks and reports; never writes copy."
 license: MIT
 compatibility: "Scripts need Node 18 or later, with no packages and no network. The report part needs a Search Console export or a connected SEO data tool. Without a shell, apply the checks by reading."
