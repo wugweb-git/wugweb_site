@@ -1,6 +1,6 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 0.1.2 on main, 40 files, last skill commit 33e60149.
+> - Built. Version 0.1.2 on main, 40 files, last skill commit 22b72842.
 > - Skill file body: 1,673 words by the shared count. Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The strategy session built the upload zip; the owner uploads it.
 > - Owner rulings applied: decision 20 (link targets come from wugweb-seo inside the structure strategy sets), decision 23 (the proof map wins on which case study backs a page), brief field 9 option (a) (the brief carries wugweb-seo's keyword note unchanged), wugweb-voice may read the signal log directly, read only.

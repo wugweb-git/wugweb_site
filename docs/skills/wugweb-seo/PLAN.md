@@ -1,10 +1,11 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 2.5.0 on main (owner: no new version, this is 2.5), 24 files, last skill commit 4138df08. The keyphrase score is part of 2.5.0.
+> - Built. Version 2.5.0 on main (owner: no new version, this is 2.5), 24 files, last skill commit 90340cf9. The keyphrase score is part of 2.5.0.
 > - Skill file body: 1,867 words by the shared count; the validator now counts the same way. Validate 34 checks, 0 errors, 0 warnings; tests pass (as reported by the seo session). Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The seo session built the upload zip and gave it to the owner.
 > - Owner rulings applied: made-file sizes adopted (story safe zone unverified). Token check for case-study components is report only first and is a wugweb-kits gate. Brief field 9: seo writes one keyword note per piece, strategy pastes it into the brief unchanged, work reads it there. On case studies the faqs field is kept and the other four proposed fields are dropped. FAQPage only where every question and answer is visible on the page; no HowTo, review stars or ratings.
 > - FAQ block: agreed with wugweb-strategy and recorded in the handoffs file (commit 90340cf9). Strategy decides when a piece gets one: service pages and blog posts only, questions from the signal log and approved by the owner, answers from the owner's source. Seo only audits that the markup matches the visible questions. Case studies never carry a block.
+> - Story safe zone: no official pixel figure exists. Meta gives a visual guardrail and says to keep the edges of a 9:16 ad clear, plus the bottom 40% free of text for Reels ad disclaimers (Meta Business Help Center, read directly 2026-11-17). The 1080 x 1920 canvas is official.
 > - Standing with the owner: training bots per property and the search-data connector sign-in.
 
 # wugweb-seo: alignment plan
