@@ -58,4 +58,4 @@ A cover shows a project-specific object or outcome that reflects the actual clie
 
 ## Keep the series fresh
 
-Within a series, keep the shared look and change the metaphor and hero object each time. Never repeat the same person, circle and card layout across unrelated topics. The worked example, the four-role article series, and its table of hero vocabulary are in `formats-and-campaigns.md`.
+Within a series, keep the shared look and change the metaphor and hero object each time. Never repeat the same person, circle and card layout across unrelated topics.
