@@ -10,6 +10,9 @@ and this project adheres to Semantic Versioning.
 ## [Unreleased]
 
 - fix(skills): wugweb-brand-os: all six pillar colours stand and the accent stays grey (owner, 2026-11-17); question 21 closed.
+### Changed — wugweb-work NDA client unnamed, Wugweb facts point to brand-os (2026-11-17)
+- NDA clients never named in skill files, evals or examples; Wugweb facts only from brand-os brand-facts.md. Still 0.5.0.
+
 ### Added: wugweb-kits 2.1.0, media, type and widget rules (2026-11-17)
 - Eight rules: `shell-media-literals`, `kits-panel-order-warm-cool`, `kits-heading-never-smaller`, `kits-icons-currentcolor`, `kits-media-poster-first`, `kits-widget-guards`, `kits-case-media-layout`, `kits-media-viewer`.
 - `label-contrast-measured` composites the overlay stack and sets 44 touch targets; `shell-mobile-menu` adds the 40ms link stagger.

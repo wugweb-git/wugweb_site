@@ -9,7 +9,7 @@ Pick the archetype from what the media and the work show, not from the client's 
 | Web platform | Desktop and mobile screens, more than one audience | NTUC U Care, Cartier |
 | Mobile app | Mostly phone screens, flows | IndusNinja |
 | Dashboard or data product | Wide screens, scrollshots | Kia |
-| Brand identity | Marks, type, colour, applications | ToT Bridal |
+| Brand identity | Marks, type, colour, applications | (example under NDA, not named) |
 | Campaign or video-led | Many clips, social posts | Airtel Xstream Play |
 | Thin text-only | 140 to 255 words, no media | Labelly |
 | No body | Nothing written; noindex | Bodyshop |

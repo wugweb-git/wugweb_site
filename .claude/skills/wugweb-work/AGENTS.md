@@ -668,7 +668,8 @@ The owner's standing rules (evidence, British English, sentence case) are in `st
 
 - Client approval is needed for logos, screens, metrics and quotes before they publish. Record who approved and when in the proposal.
 - A quote is verified word for word with the person named.
-- Work under a non-disclosure agreement is anonymised the same way everywhere, or left out.
+- Work under a non-disclosure agreement is anonymised the same way everywhere, or left out. A client marked NDA in the client record is never named in this skill's files, evals or examples.
+- Facts about Wugweb itself (spelling, contact, address, founding date) come only from `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/brand-facts.md`). Never state a figure it does not hold, such as team size, projects delivered or markets served.
 - Screens from social services, health or finance work are checked for personal data before use (see `media-standard.md`).
 
 ### Banned words (candidate)
@@ -1696,7 +1697,7 @@ Pick the archetype from what the media and the work show, not from the client's 
 | Web platform | Desktop and mobile screens, more than one audience | NTUC U Care, Cartier |
 | Mobile app | Mostly phone screens, flows | IndusNinja |
 | Dashboard or data product | Wide screens, scrollshots | Kia |
-| Brand identity | Marks, type, colour, applications | ToT Bridal |
+| Brand identity | Marks, type, colour, applications | (example under NDA, not named) |
 | Campaign or video-led | Many clips, social posts | Airtel Xstream Play |
 | Thin text-only | 140 to 255 words, no media | Labelly |
 | No body | Nothing written; noindex | Bodyshop |

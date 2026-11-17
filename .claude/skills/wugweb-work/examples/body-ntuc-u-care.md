@@ -166,7 +166,7 @@ All screens block sets: Member 8, States 4, Dashboard 9, Back office 7, Cases 3 
 - On the page (41): `NTUC.jpg`, `client-logo-grfk.png`, 8 member screens, 4 states, 9 dashboard screens, 7 back office screens, 3 case screens, 2 mockups, Styles pair, loops `ntuc-about.mp4`, `ntuc-dp.mp4`, `NTUC_Solution.mp4`, and `ntuc-thumb.mp4` (cards only, 4:3 kept).
 - og:image only (1): `B2-Assistance Programmes – 3.jpg`.
 - Not rendered, kept in R2 (15): duplicates `Cover.jpg`, `Style1.png`, `Style2.png`, `Filler-2.png`, `ntuc-solution.mp4` (600×334 copy of `NTUC_Solution.mp4`); extra mockups `cover-image-kd0f.jpg`, `filler-image-cpra.jpg`, `filler-image-2-dg4t.png`, `solution-image-2-azzj.jpg`, `solution-image-3-2e83.jpg`, `Solution.jpg`; `NTUC U Care Fund.png` (300×200 logo); `Design_Philosophy.mp4` (152.8 s film, 10.5 MB); hidden screens `Group 17563.png`, `Group 17616.png`.
-- The 6 borrowed stock images (ToT Bridal and Adneto folders) leave the NTUC body in the proposal; the files themselves are untouched.
+- The 6 borrowed stock images (from two other case studies' folders) leave the NTUC body in the proposal; the files themselves are untouched.
 
 ### Block plan the resolver should produce from this body
 

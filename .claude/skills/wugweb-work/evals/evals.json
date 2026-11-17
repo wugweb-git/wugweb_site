@@ -185,7 +185,7 @@
     {
       "id": 13,
       "name": "service-page-from-brief",
-      "prompt": "Here is the brief from strategy for the Brand service page: reader is a founder of a funded B2B start-up who knows they need a rebrand but not what it involves; after reading they should know what we do and book a call; goal is enquiries; format is a service page; backed by the ToT Bridal case study. Draft the page.",
+      "prompt": "Here is the brief from strategy for the Brand service page: reader is a founder of a funded B2B start-up who knows they need a rebrand but not what it involves; after reading they should know what we do and book a call; goal is enquiries; format is a service page; backed by our brand identity case study (the record is under NDA, so it is not named). Draft the page.",
       "expected_output": "Checks the brief is complete, audits the current service page with one verdict, then drafts current to proposed using the draft service page standard: what it does and for whom, the problem, how it works, what it needs from the client, proof only from the named case study with a link, limits, one action. Includes an evidence ledger and owner questions. Marks the standard as a draft. Writes nothing to the source.",
       "files": [],
       "expectations": [
