@@ -740,7 +740,7 @@ Agreed with `wugweb-seo` (2.5.0, 2026-11-17). The limits and checks live in `wug
 - Meta description length: `.claude/skills/wugweb-seo/references/audit.md` (`description-length`). The wording states what was built and for whom (this skill's copy rule).
 - One slug, no redirects: `.claude/skills/wugweb-seo/references/handoffs.md`.
 - Entities named in full at first mention: `.claude/skills/wugweb-seo/references/audit.md` (citability). Which ones: client, partner, platform and country, once in the body and in the schema (this skill's list).
-- Internal links: `wugweb-seo` rules for now: one link up to the service pillar, two or three across to sibling pages, descriptive anchors, no orphans (`.claude/skills/wugweb-seo/references/audit.md`). Links up to sector pages: pending `wugweb-strategy`.
+- Internal links: `wugweb-seo` rules: one link up to the service page, two or three across to sibling case studies, descriptive anchors, no orphans (`.claude/skills/wugweb-seo/references/audit.md`). No link up to a sector page (owner, 2026-11-17).
 - Key facts in server HTML, images in `img src`: `.claude/skills/wugweb-seo/references/audit.md`.
 - No keyword counts and no `llms.txt`: `.claude/skills/wugweb-seo/references/handoffs.md`.
 - FAQ blocks: the line agreed by `wugweb-strategy` and `wugweb-seo` (`.claude/skills/wugweb-seo/references/handoffs.md`, "1a. FAQ blocks"), applied in `own-content.md`.
