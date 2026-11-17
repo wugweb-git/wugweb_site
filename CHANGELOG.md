@@ -17,6 +17,8 @@ and this project adheres to Semantic Versioning.
 
 ### Changed — wugweb-strategy plan records the later rulings (2026-11-17)
 - Plan status block and card row updated to match the Notion page; backup in `backups/`.
+### Changed — wugweb-work plan and Notion status, pending and older docs folded in (2026-11-17)
+- docs/skills/wugweb-work/PLAN.md and the Notion page "wugweb-work": one status section with where it stands, today's owner rulings, everything pending (owner decisions, owner steps, next Part 2 steps) and the still-true findings from the research docs, UI spec section 14 and the media manifest report, so those can be retired.
 
 ### Changed — wugweb-work plan status after the coordinator's handover (2026-11-17)
 - docs/skills/wugweb-work/PLAN.md: the work session now keeps the plan; separator done, later commits, next step 3b.
