@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy /faq has no FAQPage markup (2026-11-17)
+- Owner ruling recorded in the skill; version stays 0.1.2.
+
 ### Fixed — wugweb-voice linkedin-post pronoun row (2026-11-17)
 - `.claude/skills/wugweb-voice/references/modes.md` now matches the owner's we or I ruling (his pick per piece). Version stays 0.3.0; `SKILL.md` body 1,997 words.
 ### Changed — wugweb-work SEO rules point to wugweb-seo (2026-11-17)
