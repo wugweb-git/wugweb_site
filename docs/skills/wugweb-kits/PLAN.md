@@ -825,3 +825,16 @@ One h1 on every route, 0 duplicate ids, 99 of 99 sections named. On a 1792 wide 
 6. `components.md` says button focus uses `--focus-primary`. The code has `outline: 2px solid var(--neutral-3)` on `.btn:focus-visible`. Doc and code disagree; not fixed.
 
 **Still open from the clash list:** the `faqs` field for FAQPage in `layout-shell.md`, the unmapped Framer ratios, and the five block sign-offs.
+
+### 28. wugweb-seo position on the proposed CMS fields, pending owner confirmation
+
+Relayed by the coordinating session on 2026-11-17. `wugweb-seo` says the owner delegated this list to it on 2026-11-17. Neither the coordinating session nor this session has seen that ruling, so this is seo's position, not an owner ruling, and the owner can override it. `layout-shell.md` is not edited until the owner confirms in this session or the coordinating one.
+
+| Field (case studies) | seo position |
+|---|---|
+| `faqs` | Keep. It feeds FAQPage only where the rendered page visibly shows every question and answer. |
+| `seoCanonicalUrl` | Drop. Canonicals come from Notion, one slug. |
+| `schemaType` | Drop. Fixed as CreativeWork for case studies and BlogPosting for posts. |
+| `aiSummary` and `keyTakeaways` | Drop on case studies, because Notion Body Content is the single source. No objection on posts or pages. |
+
+This replaces the earlier clash note that `faqs` breaks the no-FAQPage rule: under seo's position the field stays, with the visible-content condition.
