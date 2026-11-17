@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work Section separator named; pending.md skill state (2026-11-17)
+- Body standard names `Section: <chapter> | <label>`. pending.md now says the skill is 0.5.0 and Part 2 step 2 is on its branch.
+
 ### Changed — wugweb-strategy link structure, no sector link-up (2026-11-17)
 - Owner ruling recorded in the skill; version stays 0.1.2.
 

@@ -132,6 +132,7 @@ Older bodies were written for fixed slots: About, Challenges, Solutions, Design 
 
 - When both copies exist, the long site copy wins. The proposal collapses them into one copy.
 - `## Media` items route by label words or a `Section:` prefix; `## Gallery` goes to the closing media.
+- The `Section:` prefix is written `Section: <chapter> | <label>`: the chapter title (or the start of it), a vertical bar `|`, then the media label, for example `![Section: Members apply | Screens: Apply 1](https://…)`. The label part is optional. An unmatched chapter sends the item to the closing media. New bodies put media inside the chapter instead.
 - Tab-indented headings, `####` runs inside titles, trailing colons and raw markdown links in meta are parser cases, not owner errors. The audit lists them; the proposal fixes them.
 
 ## 10. Examples per archetype

@@ -11,9 +11,9 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 4. Logo band: the 14 colour logos render smaller than the grey ones (padded 1500x876 canvas).
 5. `wip/embedded-studio`: merge to main waits for owner approval (other session).
 
-**2026-11-14: Case study rebuild and the `wugweb-work` skill. SKILL BUILT (0.4.2), SITE BUILD NOT STARTED, waiting for the owner's vetting.**
+**2026-11-14: Case study rebuild and the `wugweb-work` skill. SKILL BUILT (0.5.0), PLAN APPROVED, PART 2 STARTED ON A BRANCH.**
 - One source of truth: the Notion page "wugweb-work" (until 2026-11-16 titled "wugweb-work skill: plan (final for vetting)") under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922). Do not copy the plan into this file; update the Notion page.
-- State: plan is final. The skill is built (Part 1): repo master `.claude/skills/wugweb-work/` at 0.4.2; the app copy reads 0.4.1 until the owner re-saves it. Evals written, not run, not in the repo copy. Not built: site code (Part 2), no Sanity write, no case-study row changed in Notion.
+- State: plan is final. The skill is built (Part 1): repo master `.claude/skills/wugweb-work/` at 0.5.0 (2026-11-17); the app copy is the owner's upload of the zip. Evals in the repo, run and graded 2026-11-17. Part 2 step 2 (parser v2) is on branch `case-body-v2`, not on main; its merge waits for the owner's go. No Sanity write, no case-study row changed in Notion.
 - Done, read-only: three research reports (`docs/research/case-study-system-2026-10-19/`), the NTUC U Care reference audit and the NTUC Body Content v2 proposal (both on the Notion page).
 - The 2026-10-19 bento layout on `/work/[slug]` (item 8 below) is being replaced under this plan. Do not rework that page outside the plan.
 - Waiting on the owner: approval after vetting; NTUC inputs (results with source, live URL, number of builder steps); a working `NOTION_TOKEN`.

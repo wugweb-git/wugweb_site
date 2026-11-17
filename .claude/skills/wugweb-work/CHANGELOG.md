@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- `body-content-standard.md` names the `Section:` separator as `Section: <chapter> | <label>`, matching the parser v2 on branch `case-body-v2`.
+
 - Internal links (owner, via `wugweb-strategy` 497a6710): a case study links up to its service page only, never a sector page, and across to two or three sibling case studies. The pending mark is removed.
 
 - SEO rules sorted with `wugweb-seo` (2.5.0, relayed by the coordinator): title limit, description length, one slug and no redirects, entity naming, server HTML, no keyword counts or `llms.txt`, and share tags now point to `wugweb-seo`; FAQ points to the agreed strategy and seo line; internal links follow seo's rule for now, with sector link-up pending `wugweb-strategy`; H1 wording, description wording and the entity list stay here.
