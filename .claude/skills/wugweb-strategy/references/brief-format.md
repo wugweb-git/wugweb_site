@@ -11,7 +11,7 @@ One brief per piece, one page long, handed to `wugweb-work`. It says what the pi
 | 1 | Brief ID, piece type, forms wanted | ID from the plan row. Type: post, service page, site copy, social post, newsletter issue, case study slot. Forms: other versions wanted later |
 | 2 | Why now | The goal it serves, the campaign label if any, the target date with timezone |
 | 3 | Audience and their tension | One audience, named exactly as in `wugweb-brand-os`. The tension: what they are stuck on, from the signal log or marked "assumed" |
-| 4 | The one claim | One sentence. If it needs two, it is two pieces |
+| 4 | The one claim | One sentence. If it needs two, it is two pieces. The claim order for a piece is `wugweb-brand-os`'s; the brief carries one claim and does not restate that order |
 | 5 | Proof | Case study IDs from the proof map, and facts each with its source. "Unvalidated" is allowed and must be marked |
 | 6 | Outcome | One action wanted from the reader |
 | 7 | Piece structure | A pointer to one structure in `piece-structures.md` |

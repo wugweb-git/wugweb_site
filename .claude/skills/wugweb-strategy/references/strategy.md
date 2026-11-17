@@ -32,7 +32,7 @@ Unsourced claims about what an audience wants are marked "assumed" until a signa
 
 ## 3. Pillars and mix
 
-The pillars are the six Wugweb services (decision 2). Their names are taken from the Sanity `service` documents, exactly as published.
+The pillars are the six Wugweb services (decision 2). `wugweb-brand-os` is their home; this skill uses them and does not redefine them. Names are taken from the Sanity `service` documents, exactly as published.
 
 - A pillar is a theme, not a format or an intent. "How-to" and "case study" are formats; "launch" is a campaign.
 - Test each pillar: ten useful ideas should come easily. If they do not, flag the pillar for the owner.

@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy pointers to brand-os and proof map additions (2026-11-17)
+- Pillars and claim order point to wugweb-brand-os; two proof-map rules added from the case-study research. Version stays 0.1.2.
+
 - fix(skills): wugweb-brand-os closes questions 12 and 14 (owner, 2026-11-17): the four crop edits to brand_guidelines/ are dropped and the definition lives only in the skill; no format uses a light background until the owner names one.
 
 - fix(skills): wugweb-brand-os eval 38: five writing-style lines replaced by pointers to wugweb-voice and the standing rules.
