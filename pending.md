@@ -13,6 +13,8 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - Hosted Studio deployed by the owner (wugweb.sanity.studio, 6.23, schema 1 of 1). Studio appId pinned in `sanity/sanity.cli.ts` (`535a881c`). Notion Deploy Log updated.
 - Owner to do: set `NEON_SYNC_SECRET` and `PREVIEW_SECRET` on Pages (until then both routes return 503); item 28 (Sanity-hosted media and the orphan `project` doc) waiting on a decision. `wip/embedded-studio` pins sanity 3.99 and now conflicts with the 6.23 Studio.
 
+**2026-11-17: Notion restructured (Cowork).** Hub "Wugweb Website" rewritten (status, ordered plan, content sources, skills, sub-page index); Pending, Route & Content Inventory, Health & Audits, Deploy Log, Sanity and Overview updated or marked superseded; Industries spec moved to its own sub-page. Nothing deleted (Notion page history keeps every earlier version). Sanity counts were not refreshed (Sanity unreachable from that session). The Wugweb SEO page was left to its own session.
+
 **2026-11-16: Open from the industries / blog / media session. All shipped work is on main and live on UAT. Waiting on the owner:**
 1. Blog covers: 92.5 MB across 103 files (48 PNGs over 1 MB). Smaller R2 copies need owner OK (no-uploads rule).
 2. 66 legacy industry records with no sector: merge or delete.
