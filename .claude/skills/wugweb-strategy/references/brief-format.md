@@ -46,7 +46,20 @@ List the claims the piece rests on under field 5. If there are more than three, 
 | Social post | Fields 8 and 16 shrink: one point per post. Field 13 names one account. Field 20 is replies or saves, not likes |
 | Newsletter issue | Field 6 is one call to action. Field 16 names the social posts it loops with. Sending needs the owner's yes |
 | Case study slot | Strategy fills fields 1, 2, 3, 10, 13, 14, 15. The claim, screens and body belong to `wugweb-work` |
+| FAQ block | See "FAQ block" below |
 | Refresh | Field 11 carries keep, change and remove. Field 17 adds "facts re-checked" |
+
+## FAQ block
+
+The `faqs` field stays in the layout shell. This skill decides when a piece gets one; `wugweb-seo` decides what that means for schema (this skill does not restate it). Position held pending `wugweb-seo`'s reply, owner ruling 2026-11-17 that strategy decides this with seo.
+
+- **Which pieces:** service pages and blog posts only. Never a social post, newsletter issue, site or landing copy, or case study slot.
+- **When:** only if the signal log holds real reader questions for the piece. No log entry, no block. A block is never added for search alone.
+- **Who supplies the questions:** this skill proposes them from the signal log, each with its source. The owner approves the list.
+- **Who supplies the answers:** the owner's source (the Notion row or an owner-written answer). `wugweb-work` does not invent an answer; with no source the question is cut or marked "owner to answer".
+- **How many:** owner to set. Never padded to reach a number.
+- **Where it sits in the brief:** field 8 lists the approved questions under "Questions on the page", each marked with its signal-log source; field 11 names the answer source for each. A piece with no block says "no FAQ block" in field 8.
+- **Visibility:** every question and answer in the block appears on the page for the reader. `wugweb-seo` checks this.
 
 ## Acceptance (field 17)
 

@@ -52,7 +52,7 @@ Creating this database is a Notion write: propose the schema, get the owner's ye
 | --- | --- |
 | `focusKeyword`, `secondaryKeywords`, `searchIntent`, `schemaType`, canonical, `noIndex`, share image, breadcrumb | `wugweb-seo` |
 | `aiSummary`, `keyTakeaways` | `wugweb-work` writes them; `wugweb-seo` sets limits |
-| `faqs` | No one. Clashes with the no-FAQPage rule |
+| `faqs` | Kept (owner, 2026-11-17). This skill decides which pieces get one, and the questions come from the signal log (see "FAQ block" in `brief-format.md`). `wugweb-seo` owns what it means for schema |
 | `lastReviewedAt` | Not added; the review date stays on the plan row (decision 22) |
 
 ## Model mode

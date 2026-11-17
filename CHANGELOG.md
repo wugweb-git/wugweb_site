@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy FAQ block rules (2026-11-17)
+- Owner delegated the faqs decision to strategy with seo. Rules recorded in the skill files (version stays 0.1.2), pending wugweb-seo reply. Exports rebuilt.
+
 ### Changed — wugweb-work skill 0.5, three brand rulings removed, FAQPage confirmed (2026-11-17)
 - Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner in this session: the brand set ruled null, so three held lines removed from handoffs.md; FAQPage stays per the faqs settlement ("faq will be there"). validate 30 checks 0 errors, test passes.
 
