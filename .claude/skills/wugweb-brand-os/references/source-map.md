@@ -64,7 +64,7 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 | Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | A slight bounce is within the brand. Confirmed 2026-11-17 (question 17) |
 | "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Definition approved 2026-11-17; the four guideline edits are held (see question 12) |
 | Content pillars | AI, Product, UX, Systems, Engineering | Six pillars | Six pillars win |
-| Spelling | American in the guidelines | British English | British wins |
+| Spelling | American in the guidelines | British English | Settled by the standing rules |
 | Tiles | Sixteen by nine assumed | Seven ratios in use | Not confirmed |
 | Logo rules | The guidelines hold none | Sizes are in the design system | Logo rules live here, sizes in kits. Confirmed 2026-11-17 (question 18) |
 

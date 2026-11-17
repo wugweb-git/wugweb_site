@@ -18,7 +18,7 @@ Strategy, Brand, Experience, Engineering, Growth, Operations. Use these six name
 
 Words Wugweb uses internally to describe systems, visuals and strategy: transformation, architecture, signals, networks, blueprint, orchestration, decision, system, capability, structure, flow, clarity, metaphor, composition.
 
-Usage rule from the same file: use words that describe systems and relationships, not decorative or hype-driven language. Whether these words belong in public copy is a voice matter; ask `wugweb-voice`.
+How and whether these words are used in copy is a voice matter; ask `wugweb-voice`.
 
 ## Visual OS terms
 

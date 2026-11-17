@@ -56,7 +56,7 @@ Each formula is one or two sentences in the source; the rest of its headings are
 
 ## Charts and numbers
 
-- The title states the takeaway.
+- One takeaway per chart. The wording of its title is for `wugweb-voice`.
 - For one or two numbers, use a big stat, not a chart.
 - Show the source and the date. A number with no source fails the fact check.
 - Strip decoration: no 3D, shadow or gradient. Label directly; one base colour and one accent. Scale rules and contrast checks are in `wugweb-kits`.

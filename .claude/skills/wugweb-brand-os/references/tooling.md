@@ -15,7 +15,7 @@ Helpers return proposals or reports only, and their output is never treated as a
 | --- | --- | --- |
 | `brand-voice:discover-brand` | Search connected platforms for brand material | At build time, or when the owner asks. It recommends which source to adopt; the owner decides |
 | `brand-voice:guideline-generation` | Draft non-voice guidelines from approved sources | Only from approved sources. It is mostly a voice tool; take only the identity and messaging blocks |
-| `marketing:brand-review` | Second opinion on brand fit or a fact check | Optional, after the Visual check. It treats sentence case and dashes as open choices; they are not |
+| `marketing:brand-review` | Second opinion on brand fit or a fact check | Optional, after the Visual check. It treats sentence case and dashes as open choices; the standing rules settle them |
 | `marketing:competitive-brief`, `brightdata:competitive-intel` | Live competitor research | Only on the owner's yes, each time. The brief leans on third-party review sites, which are not a source here |
 | `skill-creator`, `skill-development` | Building and testing this skill | Development only |
 

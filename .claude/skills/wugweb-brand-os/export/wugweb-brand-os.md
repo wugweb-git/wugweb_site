@@ -762,7 +762,7 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 | Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | A slight bounce is within the brand. Confirmed 2026-11-17 (question 17) |
 | "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Definition approved 2026-11-17; the four guideline edits are held (see question 12) |
 | Content pillars | AI, Product, UX, Systems, Engineering | Six pillars | Six pillars win |
-| Spelling | American in the guidelines | British English | British wins |
+| Spelling | American in the guidelines | British English | Settled by the standing rules |
 | Tiles | Sixteen by nine assumed | Seven ratios in use | Not confirmed |
 | Logo rules | The guidelines hold none | Sizes are in the design system | Logo rules live here, sizes in kits. Confirmed 2026-11-17 (question 18) |
 
@@ -835,7 +835,7 @@ Helpers return proposals or reports only, and their output is never treated as a
 | --- | --- | --- |
 | `brand-voice:discover-brand` | Search connected platforms for brand material | At build time, or when the owner asks. It recommends which source to adopt; the owner decides |
 | `brand-voice:guideline-generation` | Draft non-voice guidelines from approved sources | Only from approved sources. It is mostly a voice tool; take only the identity and messaging blocks |
-| `marketing:brand-review` | Second opinion on brand fit or a fact check | Optional, after the Visual check. It treats sentence case and dashes as open choices; they are not |
+| `marketing:brand-review` | Second opinion on brand fit or a fact check | Optional, after the Visual check. It treats sentence case and dashes as open choices; the standing rules settle them |
 | `marketing:competitive-brief`, `brightdata:competitive-intel` | Live competitor research | Only on the owner's yes, each time. The brief leans on third-party review sites, which are not a source here |
 | `skill-creator`, `skill-development` | Building and testing this skill | Development only |
 
@@ -962,7 +962,7 @@ Strategy, Brand, Experience, Engineering, Growth, Operations. Use these six name
 
 Words Wugweb uses internally to describe systems, visuals and strategy: transformation, architecture, signals, networks, blueprint, orchestration, decision, system, capability, structure, flow, clarity, metaphor, composition.
 
-Usage rule from the same file: use words that describe systems and relationships, not decorative or hype-driven language. Whether these words belong in public copy is a voice matter; ask `wugweb-voice`.
+How and whether these words are used in copy is a voice matter; ask `wugweb-voice`.
 
 ## Visual OS terms
 
@@ -1188,7 +1188,7 @@ Palette behaviour by mode, from the same file:
 - Two typefaces at most in any card or slide.
 - Never use generated lettering where the text must be read exactly. Set live text instead.
 - Break lines on meaning, put the key phrase largest and keep the strongest word at a line end.
-- No all-caps blocks and no title case in headings.
+- Heading case follows the standing rules; wording is for `wugweb-voice`.
 - Type supports the hierarchy and never dominates it.
 - Typefaces, weights and sizes are in `wugweb-kits`.
 
@@ -1294,7 +1294,7 @@ Each formula is one or two sentences in the source; the rest of its headings are
 
 ## Charts and numbers
 
-- The title states the takeaway.
+- One takeaway per chart. The wording of its title is for `wugweb-voice`.
 - For one or two numbers, use a big stat, not a chart.
 - Show the source and the date. A number with no source fails the fact check.
 - Strip decoration: no 3D, shadow or gradient. Label directly; one base colour and one accent. Scale rules and contrast checks are in `wugweb-kits`.

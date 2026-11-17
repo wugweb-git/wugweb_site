@@ -54,7 +54,7 @@ Palette behaviour by mode, from the same file:
 - Two typefaces at most in any card or slide.
 - Never use generated lettering where the text must be read exactly. Set live text instead.
 - Break lines on meaning, put the key phrase largest and keep the strongest word at a line end.
-- No all-caps blocks and no title case in headings.
+- Heading case follows the standing rules; wording is for `wugweb-voice`.
 - Type supports the hierarchy and never dominates it.
 - Typefaces, weights and sizes are in `wugweb-kits`.
 
