@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- Pointers to `wugweb-kits` 2.1.0 (acf19e9e) `references/media-and-widgets.md`: case-study media layout and video loading (`layout-grammar.md` §5), the viewer (§7), and the chapter nav block spec, not built (`copy-and-seo.md`).
+
 - `schema-jsonld.md`: `dateModified` is the last real content edit, never the record's every-save update time; with none on record it equals `datePublished`. Points to `wugweb-seo` (f1ce006f).
 
 - Two rules carried over from the 2026-10-19 research review: a video with speech needs captions or a transcript from the owner's source (`media-standard.md`); a quote carries the person's photo only when the owner supplies it (`copy-and-seo.md`).

@@ -16,6 +16,9 @@ and this project adheres to Semantic Versioning.
 
 ### Changed: kits design-system docs match code and owner rulings (2026-11-17)
 - Stale breakpoint, section, motion, z, focus, accent, `--t-h5` and work card values fixed; README pillar colours; five block docs signed off.
+### Changed — wugweb-work points to kits media and widgets rules (2026-11-17)
+- Case media layout, viewer and chapter nav spec point to wugweb-kits media-and-widgets.md. Still 0.5.0.
+
 ### Changed — wugweb-work dateModified rule points to wugweb-seo (2026-11-17)
 - Real content edits only; equals datePublished when none recorded. Still 0.5.0.
 

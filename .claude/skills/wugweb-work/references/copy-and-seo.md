@@ -15,7 +15,7 @@ The owner's standing rules (evidence, British English, sentence case) are in `st
 | Rule | How |
 |---|---|
 | Say what was built (candidate) | Name the thing: "a member portal and a back office", not "a holistic digital ecosystem". |
-| Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. Question form where natural. Generic labels only in the chapter nav. |
+| Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. Question form where natural. Generic labels only in the chapter nav (block spec in `wugweb-kits`, `.claude/skills/wugweb-kits/references/media-and-widgets.md`, specified, not built). |
 | Answer first | The first sentence under a heading answers it. The first third of the page carries the main facts. |
 | Short, whole sentences | Fact sentences of 6 to 20 words (candidate) that make sense on their own. One idea per sentence. |
 | Plain words (candidate) | Use, build, show, help. See the banned list below. |

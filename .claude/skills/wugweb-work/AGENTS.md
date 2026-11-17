@@ -646,7 +646,7 @@ The owner's standing rules (evidence, British English, sentence case) are in `st
 | Rule | How |
 |---|---|
 | Say what was built (candidate) | Name the thing: "a member portal and a back office", not "a holistic digital ecosystem". |
-| Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. Question form where natural. Generic labels only in the chapter nav. |
+| Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. Question form where natural. Generic labels only in the chapter nav (block spec in `wugweb-kits`, `.claude/skills/wugweb-kits/references/media-and-widgets.md`, specified, not built). |
 | Answer first | The first sentence under a heading answers it. The first third of the page carries the main facts. |
 | Short, whole sentences | Fact sentences of 6 to 20 words (candidate) that make sense on their own. One idea per sentence. |
 | Plain words (candidate) | Use, build, show, help. See the banned list below. |
@@ -1253,6 +1253,8 @@ These values are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`:
 | States set | `rail` or `pair` with the state as caption |
 | Mockup | Figure; at most 2 per page; never the only evidence in a chapter |
 
+How media is laid out and loaded (baked composites, detail views as masks with a focal point, ratio families, sticky text, safe areas, reading order, sliders, poster first, priority images) is owned by `wugweb-kits`: `.claude/skills/wugweb-kits/references/media-and-widgets.md` ("Case-study media", "Video"). This table only picks the block.
+
 Rail items are never wider than 85vw on mobile, so a whole screen is always visible. A screen that is the only proof of a claim never appears only inside a rail; it is also in All screens.
 
 #### Content-shape rules (owned by this skill)
@@ -1281,7 +1283,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 ### 7. Closing blocks, in order
 
 1. `results`, when results exist and no chapter is named Results.
-2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Without JavaScript every set renders stacked under its own heading.
+2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus, pinch zoom, back to close and deep links follow `wugweb-kits` (`.claude/skills/wugweb-kits/references/media-and-widgets.md`, "Viewer"). Without JavaScript every set renders stacked under its own heading.
 3. `credits`: team, partner, special thanks, services, year or timeline, country, platform.
 4. `presence`: Live, stores, Behance, Dribbble, awards.
 5. `related`: 3 items from the source relation; fallback by pillar then industry.
