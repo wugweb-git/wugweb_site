@@ -1,10 +1,10 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 0.1.0 on main, 23 files, last skill commit 4c26afad. It is the merge of the session's draft and the earlier app copy (owner ruling: merge).
-> - Skill file body: 1,954 words by the shared count (limit 2,000). One evals file, 38 cases, not yet run. Single-file export is in the skill folder.
+> - Built. Version 0.1.0 on main, 23 files, last skill commit 9c8d0c95. It is the merge of the session's draft and the earlier app copy (owner ruling: merge).
+> - Skill file body: 1,945 words by the shared count (limit 2,000). One evals file, 38 cases, not yet run. Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The brand-os session built the upload zip; the owner uploads it.
 > - Owner answers that stand: the client is the hero and Wugweb is the guide; yellow is the one brand colour; purple, green and orange are allowed as pillar colours; pillar glow is an allowed exception; a slight bounce is within the brand; logo rules live here and logo sizes live in wugweb-kits; black canvas is the default; "does a lot, into one" is an idea, not public wording; the brand_guidelines folder stays an untouched archive.
-> - The eight rulings on the contradictions between the two merged versions were declared null by the owner on 2026-11-17. What replaces them is with the owner.
+> - The eight rulings on the contradictions between the two merged versions were declared null by the owner on 2026-11-17. He then ruled in the brand-os session: Wugweb has no campaign system, and the other seven are removed as rules with none replaced (commit 9c8d0c95). Where sources conflict the skill lists both and asks the owner. The case-study cover rule (never a generic laptop or dashboard) stays. A fact is marked approved or not approved.
 > - Open with the owner: the crop definition edits against the untouched archive, which formats use the light canvas, the Visual OS and Brand Strategy documents and nine images, positioning, values, audience, the NTUC facts.
 
 # wugweb-brand-os: plan

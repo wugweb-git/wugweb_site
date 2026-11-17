@@ -4,7 +4,7 @@
 > - Skill file body: 1,867 words by the shared count; the validator now counts the same way. Validate 34 checks, 0 errors, 0 warnings; tests pass (as reported by the seo session). Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The seo session built the upload zip and gave it to the owner.
 > - Owner rulings applied: made-file sizes adopted (story safe zone unverified). Token check for case-study components is report only first and is a wugweb-kits gate. Brief field 9: seo writes one keyword note per piece, strategy pastes it into the brief unchanged, work reads it there. On case studies the faqs field is kept and the other four proposed fields are dropped. FAQPage only where every question and answer is visible on the page; no HowTo, review stars or ratings.
-> - FAQ block: strategy's position is with seo for a reply; the agreed line goes into the handoffs file.
+> - FAQ block: agreed with wugweb-strategy and recorded in the handoffs file (commit 90340cf9). Strategy decides when a piece gets one: service pages and blog posts only, questions from the signal log and approved by the owner, answers from the owner's source. Seo only audits that the markup matches the visible questions. Case studies never carry a block.
 > - Standing with the owner: training bots per property and the search-data connector sign-in.
 
 # wugweb-seo: alignment plan
