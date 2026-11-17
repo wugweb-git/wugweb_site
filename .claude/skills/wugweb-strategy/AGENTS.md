@@ -417,6 +417,11 @@ When a cadence is set:
 - One or two named series at most; a series is a commitment, so plan only what can be kept up.
 - Where two accounts share an audience, change the angle, not just the wording.
 
+### Slot rows and Medium rows
+
+- When no sourced topic exists yet, a row is still complete: it carries a proposed pillar (spread across the six, the mix being the owner's to set), a proposed intent, the account, a proposed date with timezone and a status, and its topic reads "slot" or "owner idea". The pillar and intent are proposals, never decisions.
+- A Medium row is always a copy of a site post, with its canonical pointing to that post. Plan the site post first and name it in the Medium row. A Medium row with no site post is not a row.
+
 ### Dependencies
 
 A post waits while a page it links to is not live (decision 14). Pages waiting on these blocks are not final: Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). Re-check this list in `wugweb-kits` before each plan.

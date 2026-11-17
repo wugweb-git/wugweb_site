@@ -20,6 +20,8 @@ and this project adheres to Semantic Versioning.
 
 ### Fixed — wugweb-voice eval run (2026-11-17)
 - `.claude/skills/wugweb-voice/`: an unsourced number or quote now makes the mechanical result fail; unruled filler words are raised, never dropped in a rewrite. Version stays 0.3.0; `SKILL.md` body 1,999 words.
+### Changed — wugweb-strategy calendar rules from the eval run (2026-11-17)
+- Slot rows carry a proposed pillar and intent; Medium rows copy a site post with canonical to it. Version stays 0.1.2.
 
 ### Changed — wugweb-strategy link structure, no sector link-up (2026-11-17)
 - Owner ruling recorded in the skill; version stays 0.1.2.
