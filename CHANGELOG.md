@@ -9,6 +9,13 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added: wugweb-kits 2.1.0, media, type and widget rules (2026-11-17)
+- Eight rules: `shell-media-literals`, `kits-panel-order-warm-cool`, `kits-heading-never-smaller`, `kits-icons-currentcolor`, `kits-media-poster-first`, `kits-widget-guards`, `kits-case-media-layout`, `kits-media-viewer`.
+- `label-contrast-measured` composites the overlay stack and sets 44 touch targets; `shell-mobile-menu` adds the 40ms link stagger.
+- References `media-and-widgets.md` (with the chapter nav spec, not built) and `consolidation-targets.md` (UI spec section 6).
+
+### Changed: kits design-system docs match code and owner rulings (2026-11-17)
+- Stale breakpoint, section, motion, z, focus, accent, `--t-h5` and work card values fixed; README pillar colours; five block docs signed off.
 ### Changed — wugweb-work dateModified rule points to wugweb-seo (2026-11-17)
 - Real content edits only; equals datePublished when none recorded. Still 0.5.0.
 

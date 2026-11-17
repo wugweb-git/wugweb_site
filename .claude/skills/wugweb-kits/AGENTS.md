@@ -2,7 +2,7 @@
 
 # Wugweb Kits
 
-**Version 2.0.0** · Wugweb · September 2026
+**Version 2.1.0** · Wugweb · September 2026
 
 Map a UI to its design system: trace every visual value from primitive token through semantic token to component, audit the codebase for hardcoded values, drift and duplication, and emit reusable component spec sheets. Framework-agnostic; the layer model holds for CSS custom properties, Tailwind theme config, Style Dictionary, iOS asset catalogs and Figma variables alike.
 
@@ -138,6 +138,8 @@ Kits group, source `components.md`:
 - `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
 - `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed; text is never pure white. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 
+Media, type and widgets, detail in `references/media-and-widgets.md`: `kits-media-poster-first`, `kits-widget-guards`, `kits-case-media-layout`, `kits-media-viewer`, `kits-panel-order-warm-cool`, `kits-heading-never-smaller`, `kits-icons-currentcolor`, and `shell-media-literals` (480, 640, 768, 1024, 1200; max width at .98).
+
 Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control and is not hidden from assistive tech, and all loops stop under reduced motion. Deck and card type uses `--type-graphic-l`, `-m` and `-s` for title, subtitle and label (owner, 2026-11-17). Confirmed sizes (owner, 2026-11-17, in `sizing.md`): rail 85vw and never past 1200, peek 20%, signature width 2400px, line length 35 to 60 characters. Tokens in `global.css`: `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min`, `--measure-max`.
 
 ## Report shape
@@ -147,7 +149,7 @@ Open with the result in one or two plain sentences. Then one table of findings s
 BLOCKER  src/components/Card.astro:34  hardcoded colour, use the surface token
 HIGH     kits_design_system/docs/components.md  doc says focus uses `--focus-primary`, code uses `--neutral-3`; report, do not fix
 
-Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` has no section inside the main landmark; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` stays (owner, 2026-11-17); `wugweb-strategy` and `wugweb-seo` agreed its use: a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions.
+Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` nests a second main inside the page main; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` stays (owner, 2026-11-17); `wugweb-strategy` and `wugweb-seo` agreed its use: a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions.
 
 ## Using this outside Claude
 
@@ -166,7 +168,7 @@ All plain Node, no dependencies, run from the skill folder or the repo root.
 
 The scripts report and never edit. The page check reads static HTML; measuring at 375, 768 and 1200 needs a browser and is done by hand.
 
-References: `references/storybook.md` (Storybook is the living reference), `references/layout-shell.md`, `references/component-sizes.md`, `references/six-layers.md`, `references/spec-templates.md`, `references/known-doc-clashes.md`, `references/standing-rules.md`.
+References: `references/storybook.md` (Storybook is the living reference), `references/layout-shell.md`, `references/component-sizes.md`, `references/six-layers.md`, `references/spec-templates.md`, `references/known-doc-clashes.md`, `references/media-and-widgets.md`, `references/consolidation-targets.md`, `references/standing-rules.md`.
 
 ## When the code is unreachable
 
@@ -392,10 +394,11 @@ wins. Dates show when the owner set or confirmed a rule, where known.
    - `spec-fixed-template` — variable doc shapes make specs unscannable and ungenerable
    - `spec-generate-dont-maintain` — hand-written specs drift silently and are trusted anyway
    - `spec-measure-dont-claim` — unverified compliance claims fail audits and mislead teams
-6. **Layout Shell** (HIGH) — 11 rules
+6. **Layout Shell** (HIGH) — 12 rules
    - `shell-filters-are-toolbars` — a filter wrapped as a section adds a spurious landmark and padding
    - `shell-grid-gap-token` — a section token as a gap moves the grid when the section rhythm changes
    - `shell-header-derived` — a literal header height drifts from the nav bar and buttons
+   - `shell-media-literals` — an off-list or overlapping breakpoint leaves widths matching neither side or a stray step
    - `shell-mobile-menu` — a menu that leaks scroll or moves its toggle breaks the phone experience, which is the PWA
    - `shell-no-gutter-below-section` — a second gutter doubles the margin and breaks alignment
    - `shell-no-retired-values` — retired values reappear from old docs and Framer references
@@ -413,16 +416,23 @@ wins. Dates show when the owner set or confirmed a rule, where known.
    - `label-lists-are-lists` — a div grid of cards hides the item count from assistive tech
    - `label-no-loop-labels` — repeated ids and labels from a loop break references
    - `label-skip-and-landmarks` — keyboard users cannot bypass the sticky header without them
-8. **Kits Components and Motion** (HIGH) — 10 rules
+8. **Kits Components and Motion** (HIGH) — 17 rules
    - `kits-animated-block-lint` — animated blocks hide the most motion clashes
    - `kits-bento-never-even` — an even grid removes the hierarchy the bento exists for
    - `kits-block-docs-home` — specs scattered elsewhere go stale
    - `kits-button-tiers` — one off button CSS creates silent variants
+   - `kits-case-media-layout` — case study pages mix ratios, hide detail and lose reading order without these limits
    - `kits-gsap-owns-motion` — two owners of one property cause jitter and fights
+   - `kits-heading-never-smaller` — a heading that renders smaller than the text under it inverts the hierarchy at some widths
+   - `kits-icons-currentcolor` — hotlinked or fixed-colour icons break theming and add a third-party dependency
    - `kits-live-colours-frozen` — changing live colours changes the whole look and contrast
+   - `kits-media-poster-first` — autoplaying or eagerly loaded video costs bytes and LCP before anyone asks for it
+   - `kits-media-viewer` — a viewer that traps nothing or ignores back strands keyboard and phone users
+   - `kits-panel-order-warm-cool` — two similar pillar colours side by side lose the contrast between panels
    - `kits-radius-by-role` — mixed radii make the same role look different
    - `kits-states-on-btn` — state styles scattered across pages drift
    - `kits-tokens-only` — hardcoded values split the system and cannot be themed
+   - `kits-widget-guards` — each guard prevents a known break: stretched media, poking corners, sideways scroll or a fight over opacity
    - `kits-yellow-budget` — yellow overuse removes its signal
 
 ---
@@ -1475,11 +1485,33 @@ Header height is --nav-height plus twice --header-pad-block. The bar is 44 plus 
 
 Source: layout-shell.md, header formula.
 
+### `shell-media-literals`
+
+**Impact:** HIGH — an off-list or overlapping breakpoint leaves widths matching neither side or a stray step
+
+Media queries use only the literals 480, 640, 768, 1024 and 1200. Going down uses max-width at .98 below a step (639.98, 767.98, 1023.98), because viewport widths can be fractional and `max-width: 640px` beside `min-width: 640px` matches both. There is no step below 480. Any other value, such as 600, is a finding.
+
+**Incorrect:**
+
+```css
+@media (min-width: 600px) { .bento { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .nav { display: none; } }
+```
+
+**Correct:**
+
+```css
+@media (min-width: 640px) { .bento { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 639.98px) { .nav { display: none; } }
+```
+
+Source: breakpoints.md; layout-shell.md, Breakpoints.
+
 ### `shell-mobile-menu`
 
 **Impact:** HIGH — a menu that leaks scroll or moves its toggle breaks the phone experience, which is the PWA
 
-The menu covers the screen with 100dvh and a 100svh fallback minus safe areas, scrolls internally with overscroll-behavior contain, locks page scroll by position fixed on body and restores the position, keeps the toggle at its closed coordinates, holds one left edge, puts links at the top and contact and legal at the bottom, and opens with the nav spring.
+The menu covers the screen with 100dvh and a 100svh fallback minus safe areas, scrolls internally with overscroll-behavior contain, locks page scroll by position fixed on body and restores the position, keeps the toggle at its closed coordinates, holds one left edge, puts links at the top and contact and legal at the bottom, and opens with the nav spring. Links fade and rise in with a stagger of about 40ms after the card opens (open in code as of 2026-11-17: `.site-links` swaps display with no tween).
 
 **Incorrect:**
 
@@ -1675,7 +1707,7 @@ Source: layout-shell.md, images.
 
 **Impact:** HIGH — unmeasured contrast claims fail audits
 
-State a computed ratio for each text and background pair and each state. Use scripts/contrast.mjs. Muted text #bababa on #191919 and #f4f4f4 on #191919 are live colours and are not changed to pass.
+State a computed ratio for each text and background pair and each state. Use scripts/contrast.mjs. Muted text #bababa on #191919 and #f4f4f4 on #191919 are live colours and are not changed to pass. Surfaces here are stacked translucent overlays, so composite the whole ancestor stack before measuring; reading one background and dropping its alpha scores a 1% white overlay as opaque white. Touch targets are at least 44 by 44.
 
 **Incorrect:**
 
@@ -1904,6 +1936,28 @@ Tiers are .btn-solid (brand), .btn (primary) and .btn-ghost. Size and width come
 
 Source: components.md, buttons.
 
+### `kits-case-media-layout`
+
+**Impact:** HIGH — case study pages mix ratios, hide detail and lose reading order without these limits
+
+Multi-screen composites are baked into one image, not assembled in CSS. A product is shown as one overview plus two to four detail views cropped with CSS masks, each mask with a focal point. A page uses at most two or three aspect ratio families. Sticky text beside scrolling media is only at the 1200 tier. Full bleed media respects the safe-area insets. Reading order in the DOM matches the visual order. A before and after slider ships only with a button and keyboard alternative; otherwise it is not used. Long pages use the chapter nav block (`references/media-and-widgets.md`).
+
+**Incorrect:**
+
+```css
+.case-media { position: sticky; } /* at every width */
+.compare { /* drag only */ }
+```
+
+**Correct:**
+
+```css
+@media (min-width: 1200px) { .case-media { position: sticky; } }
+.compare button { /* plus arrow keys on the handle */ }
+```
+
+Source: wugweb-work research on case-study media (2026-11-17); layout-shell.md.
+
 ### `kits-gsap-owns-motion`
 
 **Impact:** HIGH — two owners of one property cause jitter and fights
@@ -1925,6 +1979,49 @@ Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay.
 
 Source: components.md, motion. The motion feel is owned by `wugweb-brand-os`; kits holds the timings and the check.
 
+### `kits-heading-never-smaller`
+
+**Impact:** HIGH — a heading that renders smaller than the text under it inverts the hierarchy at some widths
+
+At every width, display > h1 > h2 > h3 > h4 > h5 strictly, and h4 > body-lg >= body-md. When a fluid curve would cross, the body size gives way and the heading scale stays. Type is Inter Tight only and weights come from the `--font-weight-*` tokens. Check at 375, 768, 1024 and 1200, not at one width.
+
+**Incorrect:**
+
+```css
+.lead { font-size: clamp(1rem, 1vw + 0.8rem, 1.25rem); } /* 19.1px beside an h4 at 18.2px at 1024 */
+.title { font-weight: 650; }
+```
+
+**Correct:**
+
+```css
+.lead { font-size: var(--fluid-body-lg); } /* 16 to 18, below h4 at every width */
+.title { font-weight: var(--font-weight-semibold); }
+```
+
+Source: typography.md, the body-lg note and Font Weight Scale.
+
+### `kits-icons-currentcolor`
+
+**Impact:** MEDIUM — hotlinked or fixed-colour icons break theming and add a third-party dependency
+
+UI icons are inline SVG with `currentColor`, 16px by default. Never hotlink an icon CDN. Icons shown in content (toolkits, stacks) come from the Sanity `tech-stack` taxonomy through `iconPath` and `assetUrl()`, never a file picked by hand.
+
+**Incorrect:**
+
+```html
+<img src="https://cdn.example-icons.com/arrow.svg">
+<svg fill="#f4f4f4">...</svg>
+```
+
+**Correct:**
+
+```html
+<svg width="16" height="16" fill="currentColor" aria-hidden="true">...</svg>
+```
+
+Source: icons.md, Icon Usage Rules.
+
 ### `kits-live-colours-frozen`
 
 **Impact:** CRITICAL — changing live colours changes the whole look and contrast
@@ -1944,6 +2041,66 @@ Text #f4f4f4, muted #bababa and surfaces #191919 and #2b2b2b are deliberate and 
 ```
 
 Source: CLAUDE.md, working agreements. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
+
+### `kits-media-poster-first`
+
+**Impact:** HIGH — autoplaying or eagerly loaded video costs bytes and LCP before anyone asks for it
+
+A video ships `preload="none"` and a `poster`, and downloads only when opened or when it scrolls near (play and pause by IntersectionObserver). A cover video without a poster paints empty. At most one or two images per page are high priority; on a video hero the start frame is the LCP image. Autoplay is allowed only for muted decorative loops, which still obey the loop rule (15s or less, a pause control over 5s, stopped under reduced motion).
+
+**Incorrect:**
+
+```html
+<video src="clip.mp4" autoplay loop></video>
+```
+
+**Correct:**
+
+```html
+<video preload="none" poster="clip-poster.webp" muted playsinline data-src="clip.mp4"></video>
+```
+
+Source: widgets.md, Poster-First Video Thumb; wugweb-work media research.
+
+### `kits-media-viewer`
+
+**Impact:** HIGH — a viewer that traps nothing or ignores back strands keyboard and phone users
+
+A full-screen media viewer traps focus while open and returns it to the opener on close, allows pinch zoom, closes on the browser back action, and gives every item a deep link that opens the viewer at that item.
+
+**Incorrect:**
+
+```html
+<div class="viewer"> <!-- no focus trap, no history entry, touch-action: none --></div>
+```
+
+**Correct:**
+
+```html
+<dialog class="viewer" aria-label="Project images"> <!-- focus trapped; history.pushState('#img-3'); popstate closes --></dialog>
+```
+
+Source: wugweb-work research on case-study media (2026-11-17).
+
+### `kits-panel-order-warm-cool`
+
+**Impact:** MEDIUM — two similar pillar colours side by side lose the contrast between panels
+
+Wherever the six pillars appear in sequence (the `/services` sticky panels, the homepage pillars), the order is Strategy, Engineering, Brand, Growth, Operations, Experience, so warm and cool alternate and similar colours never touch. All six pillar colours stand (owner, 2026-11-17).
+
+**Incorrect:**
+
+```js
+const order = ['strategy','brand','experience','engineering','growth','operations']
+```
+
+**Correct:**
+
+```js
+const order = ['strategy','engineering','brand','growth','operations','experience']
+```
+
+Source: service-colors.md, Panel Order.
 
 ### `kits-radius-by-role`
 
@@ -2004,6 +2161,28 @@ No hardcoded colour, spacing, radius, opacity, shadow, blur, z index or easing i
 ```
 
 Source: components.md, rules.
+
+### `kits-widget-guards`
+
+**Impact:** HIGH — each guard prevents a known break: stretched media, poking corners, sideways scroll or a fight over opacity
+
+Dim with `filter: brightness()`, never `opacity`, because GSAP owns opacity. A 100vw bleed needs `overflow: clip` on its section and breaks inside any ancestor with transform, filter or contain. A rounded card with square media carries `overflow: hidden`. A ratio tile in a flex row needs `align-items: flex-start`, or stretch overrides the ratio. Assemble motion is transform only. The drag echo is skipped under reduced motion. Resting `%` positions are clamped into their field once widths are known.
+
+**Incorrect:**
+
+```css
+.tile.dim { opacity: .4; }
+.logo-row { display: flex; } /* stretch breaks 16/9 */
+```
+
+**Correct:**
+
+```css
+.tile.dim { filter: brightness(.4); }
+.logo-row { display: flex; align-items: flex-start; }
+```
+
+Source: widgets.md.
 
 ### `kits-yellow-budget`
 

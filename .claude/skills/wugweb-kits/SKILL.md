@@ -4,7 +4,7 @@ description: "Maps the Wugweb site to the Kits design system: tokens, layout she
 license: MIT
 metadata:
   author: wugweb
-  version: "2.0.0"
+  version: "2.1.0"
   argument-hint: <file-or-page>
 ---
 
@@ -138,6 +138,8 @@ Kits group, source `components.md`:
 - `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
 - `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed; text is never pure white. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 
+Media, type and widgets, detail in `references/media-and-widgets.md`: `kits-media-poster-first`, `kits-widget-guards`, `kits-case-media-layout`, `kits-media-viewer`, `kits-panel-order-warm-cool`, `kits-heading-never-smaller`, `kits-icons-currentcolor`, and `shell-media-literals` (480, 640, 768, 1024, 1200; max width at .98).
+
 Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control and is not hidden from assistive tech, and all loops stop under reduced motion. Deck and card type uses `--type-graphic-l`, `-m` and `-s` for title, subtitle and label (owner, 2026-11-17). Confirmed sizes (owner, 2026-11-17, in `sizing.md`): rail 85vw and never past 1200, peek 20%, signature width 2400px, line length 35 to 60 characters. Tokens in `global.css`: `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min`, `--measure-max`.
 
 ## Report shape
@@ -147,7 +149,7 @@ Open with the result in one or two plain sentences. Then one table of findings s
 BLOCKER  src/components/Card.astro:34  hardcoded colour, use the surface token
 HIGH     kits_design_system/docs/components.md  doc says focus uses `--focus-primary`, code uses `--neutral-3`; report, do not fix
 
-Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` has no section inside the main landmark; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` stays (owner, 2026-11-17); `wugweb-strategy` and `wugweb-seo` agreed its use: a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions.
+Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` nests a second main inside the page main; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` stays (owner, 2026-11-17); `wugweb-strategy` and `wugweb-seo` agreed its use: a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions.
 
 ## Using this outside Claude
 
@@ -166,7 +168,7 @@ All plain Node, no dependencies, run from the skill folder or the repo root.
 
 The scripts report and never edit. The page check reads static HTML; measuring at 375, 768 and 1200 needs a browser and is done by hand.
 
-References: `references/storybook.md` (Storybook is the living reference), `references/layout-shell.md`, `references/component-sizes.md`, `references/six-layers.md`, `references/spec-templates.md`, `references/known-doc-clashes.md`, `references/standing-rules.md`.
+References: `references/storybook.md` (Storybook is the living reference), `references/layout-shell.md`, `references/component-sizes.md`, `references/six-layers.md`, `references/spec-templates.md`, `references/known-doc-clashes.md`, `references/media-and-widgets.md`, `references/consolidation-targets.md`, `references/standing-rules.md`.
 
 ## When the code is unreachable
 
