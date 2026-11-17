@@ -2,7 +2,7 @@
 
 # Wugweb Kits
 
-**Version 2.1.0** · Wugweb · September 2026
+**Version 2.1.1** · Wugweb · September 2026
 
 Map a UI to its design system: trace every visual value from primitive token through semantic token to component, audit the codebase for hardcoded values, drift and duplication, and emit reusable component spec sheets. Framework-agnostic; the layer model holds for CSS custom properties, Tailwind theme config, Style Dictionary, iOS asset catalogs and Figma variables alike.
 
@@ -149,7 +149,7 @@ Open with the result in one or two plain sentences. Then one table of findings s
 BLOCKER  src/components/Card.astro:34  hardcoded colour, use the surface token
 HIGH     kits_design_system/docs/components.md  doc says focus uses `--focus-primary`, code uses `--neutral-3`; report, do not fix
 
-Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` nests a second main inside the page main; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` stays (owner, 2026-11-17); `wugweb-strategy` and `wugweb-seo` agreed its use: a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions.
+Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; `/contact-us` nests a second main inside the page main; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` stays (owner, 2026-11-17); `wugweb-strategy` and `wugweb-seo` agreed its use: a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions.
 
 ## Using this outside Claude
 
@@ -1962,7 +1962,7 @@ Source: wugweb-work research on case-study media (2026-11-17); layout-shell.md.
 
 **Impact:** HIGH — two owners of one property cause jitter and fights
 
-Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. Scroll in is opacity and translateY only, first group at 0.4s and second at 0.9s, transform based, all behind prefers-reduced-motion; nav and hover use the spring (layout-shell.md, Motion). All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control and is not hidden from assistive tech; a loop of 5 seconds or less with no control stays hidden. Owner confirmed 2026-11-17.
+Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. Scroll in is opacity and translateY only, transform based. In the hero (the first section in main) the headline group, h1 and eyebrow, starts at a 0.4s delay and everything else (supporting copy, buttons) at 0.9s; sections below reveal on scroll with no added delay, and an explicit data-reveal-delay wins (owner, 2026-11-17; `revealDelay` in scroll-animations.ts). All of it is behind prefers-reduced-motion; nav and hover use the spring (layout-shell.md, Motion). All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control and is not hidden from assistive tech; a loop of 5 seconds or less with no control stays hidden. Owner confirmed 2026-11-17.
 
 **Incorrect:**
 

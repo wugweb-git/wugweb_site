@@ -19,4 +19,4 @@ Recorded, not resolved unless marked. Source: plan sections 25 and 27, checked 2
 | Stale line numbers for button rules | `components.md` | Fixed, cited by selector |
 | Hardcoded `#000` on the WhatsApp button text | `components.md` | Fixed, code uses `--color-ash` |
 
-Findings on pages: `/footer/reviews` hero has 216px inline padding at 1200 where the shell gives 48; `/work/[slug]` has 6 sections with no id; `/contact-us` nests a second `main` inside the page main (`contact-us.astro:62`); grid columns 4, 8, 12 are not measured.
+Findings on pages: `/footer/reviews` hero has 216px inline padding at 1200 where the shell gives 48; `/contact-us` nests a second `main` inside the page main (`contact-us.astro:62`); grid columns 4, 8, 12 are not measured.

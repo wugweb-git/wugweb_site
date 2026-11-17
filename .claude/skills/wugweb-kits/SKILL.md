@@ -4,7 +4,7 @@ description: "Maps the Wugweb site to the Kits design system: tokens, layout she
 license: MIT
 metadata:
   author: wugweb
-  version: "2.1.0"
+  version: "2.1.1"
   argument-hint: <file-or-page>
 ---
 
@@ -149,7 +149,7 @@ Open with the result in one or two plain sentences. Then one table of findings s
 BLOCKER  src/components/Card.astro:34  hardcoded colour, use the surface token
 HIGH     kits_design_system/docs/components.md  doc says focus uses `--focus-primary`, code uses `--neutral-3`; report, do not fix
 
-Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; six sections on `/work/[slug]` have no id; `/contact-us` nests a second main inside the page main; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` stays (owner, 2026-11-17); `wugweb-strategy` and `wugweb-seo` agreed its use: a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions.
+Recorded and not yet resolved: the hero of `/footer/reviews` has 216px inline padding at 1200 where the shell gives 48; `/contact-us` nests a second main inside the page main; grid columns 4, 8 and 12 are not measured; `--pillar-thumb`, `--pillar-thumb-sm` and `--bento-min` exist and no component uses them yet. The `faqs` field in `layout-shell.md` stays (owner, 2026-11-17); `wugweb-strategy` and `wugweb-seo` agreed its use: a faqs block only on service pages and blog posts; case studies never carry one, so the case-study field stays unused unless the owner supplies visible questions.
 
 ## Using this outside Claude
 

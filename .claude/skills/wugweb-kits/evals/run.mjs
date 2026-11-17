@@ -30,9 +30,9 @@ c('inventory --block exits 1 while warnings remain', repo, () => run('kits-inven
 for (const p of ['/', '/work', '/blog', '/services', '/about', '/contact-us', '/faq', '/footer/reviews']) {
   c(`live ${p}: labels, headings, alt, landmarks clean`, online, () => run('kits-check-page.mjs', [BASE + p]).status === 0)
 }
-c('live case study: catches the 6 known sections with no id (blocked if the page is not 200)', csUp, () => {
+c('live case study: every section has an id and a name (blocked if the page is not 200)', csUp, () => {
   const r = run('kits-check-page.mjs', [CS])
-  return (r.stdout.match(/has no id/g) || []).length === 6
+  return r.status === 0 && !/has no id/.test(r.stdout)
 })
 c('contrast: live text #f4f4f4 on #191919 passes AA', true, () => run('contrast.mjs', ['#f4f4f4', '#191919']).status === 0)
 c('contrast: muted #bababa on #191919 passes AA', true, () => run('contrast.mjs', ['#bababa', '#191919']).status === 0)
