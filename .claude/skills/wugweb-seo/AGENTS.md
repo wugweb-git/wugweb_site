@@ -2,7 +2,7 @@
 
 # wugweb-seo
 
-**Version 2.5.0** · Wugweb · November 2026
+**Version 2.5.1** · Wugweb · November 2026
 
 Plan, audit and report on how Wugweb pages are found in search engines and AI answers. Plan gives the site keyword and intent map, the phrase, intent, outline and brief limits for one page, and keyword notes for social and portfolio titles. Audit checks the rendered page and robots.txt and returns a fix list split three ways. Report reads Search Console and AI answer data and feeds the content plan. It never writes copy and changes nothing itself. Every helper is optional; the rules taken from them are restated in the references. Two check scripts with no dependencies. Independent of CMS, host and agent.
 
@@ -69,15 +69,15 @@ These apply to wugweb.com, client sites, Kits and Wugweb X.
   or Framer addresses.
 - **Title.** For a case study, the source title is 51 characters or fewer. The
   site adds " | Wugweb" only when the title does not already name Wugweb and
-  the total fits in 60. The limit for other page types is not decided. The
+  the total fits in 60. Blog and service pages use source 52 or fewer. The
   audit does not check titles for dashes.
 - **Description.** 140 to 160 characters.
 - **Schema on the main site address only.** A case study carries `WebPage`,
   `CreativeWork` and `BreadcrumbList`. Wugweb is `creator` and `publisher`.
   There is no `author`. A blog post carries `BlogPosting` with a `Person`
   author. The layout already emits `Organization`, `WebSite` and the founder on
-  every page; leave them. Schema for service pages, home and about is not
-  decided.
+  every page; leave them. Service pages carry `Service` and `BreadcrumbList`; home `WebPage`;
+  about `AboutPage`; no `author`.
 - **Dates shown.** A blog post shows its date. A case study shows none.
 - **AI files.** Leave `public/llms.txt` and `ai-context.txt` as they are;
   never recommend them.
@@ -258,8 +258,6 @@ asked about one title.
 
 - Which page keeps a phrase two pages want.
 - Whether training bots may crawl.
-- The title limit for blog posts and service pages.
-- Schema for service pages, home and about.
 - Title and description limits for client sites, Kits and Wugweb X.
 
 ## Run the scripts

@@ -1,7 +1,7 @@
 # wugweb-seo
 
 Plans, audits and reports on how Wugweb pages are found in search engines and
-AI answers. Version 2.5.0.
+AI answers. Version 2.5.1.
 
 It returns constraints, checks and reports. It never writes copy and changes
 no file, page or record itself.

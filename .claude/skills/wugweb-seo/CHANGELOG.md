@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.5.1, 2026-11-17
+
+- Owner decisions (delegated, "diy"): schema for service pages (Service +
+  BreadcrumbList), home (WebPage) and about (AboutPage), no author; and blog
+  and service page titles use a source limit of 52 so the " | Wugweb" suffix
+  fits in 60. Both removed from the owner-decision list.
+
 ## 2.5.0, 2026-11-17
 
 Added from the Notion skill card's planned and ingested lists.

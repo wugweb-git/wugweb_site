@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Scripts need Node 18 or later, with no packages and no network. The report part needs a Search Console export or a connected SEO data tool. Without a shell, apply the checks by reading."
 metadata:
   author: wugweb
-  version: "2.5.0"
+  version: "2.5.1"
 ---
 
 # Wugweb SEO
@@ -73,15 +73,15 @@ These apply to wugweb.com, client sites, Kits and Wugweb X.
   or Framer addresses.
 - **Title.** For a case study, the source title is 51 characters or fewer. The
   site adds " | Wugweb" only when the title does not already name Wugweb and
-  the total fits in 60. The limit for other page types is not decided. The
+  the total fits in 60. Blog and service pages use source 52 or fewer. The
   audit does not check titles for dashes.
 - **Description.** 140 to 160 characters.
 - **Schema on the main site address only.** A case study carries `WebPage`,
   `CreativeWork` and `BreadcrumbList`. Wugweb is `creator` and `publisher`.
   There is no `author`. A blog post carries `BlogPosting` with a `Person`
   author. The layout already emits `Organization`, `WebSite` and the founder on
-  every page; leave them. Schema for service pages, home and about is not
-  decided.
+  every page; leave them. Service pages carry `Service` and `BreadcrumbList`; home `WebPage`;
+  about `AboutPage`; no `author`.
 - **Dates shown.** A blog post shows its date. A case study shows none.
 - **AI files.** Leave `public/llms.txt` and `ai-context.txt` as they are;
   never recommend them.
@@ -262,8 +262,6 @@ asked about one title.
 
 - Which page keeps a phrase two pages want.
 - Whether training bots may crawl.
-- The title limit for blog posts and service pages.
-- Schema for service pages, home and about.
 - Title and description limits for client sites, Kits and Wugweb X.
 
 ## Run the scripts
