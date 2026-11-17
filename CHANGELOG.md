@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan records the later rulings (2026-11-17)
+- Plan status block and card row updated to match the Notion page; backup in `backups/`.
+
 ### Changed — wugweb-work plan status after the coordinator's handover (2026-11-17)
 - docs/skills/wugweb-work/PLAN.md: the work session now keeps the plan; separator done, later commits, next step 3b.
 

@@ -1,6 +1,6 @@
-> STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
+> STATUS, 2026-11-17. This block replaces any older status, version or "not built" line further down. The strategy session keeps this plan and its Notion page (handover from the coordinator, 2026-11-17).
 >
-> - Built. Version 0.1.2 on main, 42 files, last skill commit ad31bcfa.
+> - Built. Version 0.1.2 on main, 42 files, last skill commit ad31bcfa. Last strategy commit on main d0d93995.
 > - Skill file body: 1,689 words by the shared count. Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The strategy session built the upload zip; the owner uploads it.
 > - Owner rulings applied: decision 20 (link targets come from wugweb-seo inside the structure strategy sets), decision 23 (the proof map wins on which case study backs a page), brief field 9 option (a) (the brief carries wugweb-seo's keyword note unchanged), wugweb-voice may read the signal log directly, read only.
@@ -15,6 +15,8 @@
 > - From the older research docs, two additions to the proof map: a metric carries its date or window and reads the same everywhere; a page backed only by text-only case studies may claim process alone and is flagged for the next case study.
 > - FAQ review decided by the owner in one pass, recorded in `FAQ-REVIEW.md`: 41 keep, 6 keep with a dash removed (a site fix that still needs his go), 10 answer again with a sourced fact (they stay live meanwhile).
 > - Open with the owner: sourced facts for the 10 answer-again rows; his go for the dash fixes and the faqs and schema site work; uploading the zip; whether the stale remote branch can be deleted. Open with wugweb-seo: decision 7 (seo decides retired URLs) is not yet confirmed in seo's files.
+> - Later on 2026-11-17: the FAQ page questions stay typed in `src/pages/faq.astro`, only service FAQs move to Sanity (strategy decided option (a), 279cc88e). FAQ rich results stopped appearing on 7 May 2026, verified by seo; the editorial FAQ line does not change (d0d93995). Decision 7 is explicit in the seo skill (seo 68f79ac0): a retired page returns 410 or 404, keeps no redirect, leaves the sitemap, and its slug is not reused. The old remote branch was deleted on the owner's yes; its content is on main.
+> - Open with the owner: sourced facts for the 10 answer-again FAQ rows; his go for the dash fixes and the faqs and schema site work (with web engineering); uploading the zip. Open with no one else.
 
 # wugweb-strategy skill: plan (ready for vetting)
 
@@ -27,7 +29,7 @@
 | Name | `wugweb-strategy` |
 | Type | Claude Code project skill: one `SKILL.md` plus `references/`, `examples/`, `evals/` |
 | Version | 0.1.2 |
-| Status | Built. 0.1.2 on main. Nothing pending with the owner. |
+| Status | Built. 0.1.2 on main. Open with the owner: sourced facts for 10 FAQ rows, site work go, zip upload. |
 | Notion page | https://app.notion.com/p/41abb710b9ab8187a4a8c5979daff39b (the plan sits on the skill page itself) |
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-strategy/` |
