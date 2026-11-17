@@ -2,6 +2,7 @@
 
 ## 2.5.0, 2026-11-17
 
+- Date rule made explicit in references/audit.md: dateModified reflects a real content edit, not the record's every-save update time (raised by wugweb-work).
 - Retired URLs: a page wugweb-strategy retires returns 410 Gone (or 404), keeps no redirect
   and leaves the sitemap; the slug is not reused (strategy decision 7, the owner's one-slug
   rule). Plan part: the topic outline is always returned even on thin input, with each
