@@ -39,7 +39,7 @@ Worked examples, made from a proposed body for shape only: `examples/forms-ntuc-
 ## Rules in every form
 
 - Platform sizes and limits are checked when the form is written, with the platform-specs helper in `skill-map.md` or the platform's own help page, and written down with the date. Never from memory.
-- Existing media is shown resized with its aspect ratio kept. Clipping masks are allowed. No cropped files, no re-encoding, no sound. Where a brand file says "decisive crop", the media rule in `media-standard.md` wins.
+- Existing media is shown resized with its aspect ratio kept. Clipping masks are allowed. No cropped files, no re-encoding, no sound. "Crop" means framing a subject in a composition, never cutting a media file (defined in `wugweb-brand-os`, `.claude/skills/wugweb-brand-os/references/vocabulary.md`).
 - The client's words appear only as a quote that is in the body.
 - British English, sentence case, no dashes, no hashtag lists (LinkedIn: tags none).
 - Every sentence in a form maps to a body line in the fact ledger.

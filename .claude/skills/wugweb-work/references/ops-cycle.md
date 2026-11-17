@@ -74,7 +74,7 @@ source (one Body Content document + one media folder) → parsed body → media 
 - **Layout values**: `kits_design_system/docs/tokens/layout-shell.md`, with `tokens/sizing.md` and `docs/components.md`, owned by `wugweb-kits`.
 - **Listing a media folder**: no read-only command was found that lists the objects in an R2 bucket; to be confirmed against the project's own `wrangler r2 --help`. Commands that write, delete or download are forbidden.
 - **CMS**: Sanity, document type `caseStudy`, field `bodyMarkdown`, synced from Notion. Public read: `https://splvhmk1.apicdn.sanity.io/v2024-01-01/data/query/production`.
-- **v1 duplicate copy**: older bodies hold a second, longer copy under the heading `## Sanity site copy`. The long copy wins; proposals collapse both into one.
+- **v1 duplicate copy**: older bodies hold a second, longer copy under the heading `## Sanity site copy` or `## Framer site copy` (both are read the same way). The long copy wins; proposals collapse both into one.
 - **Media**: Cloudflare R2, `assets/work/<slug>/`, public base `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/`.
 - **Site**: Astro on Cloudflare Pages, repo `wugweb-git/wugweb_site`. Push to `main` deploys. Preview host `wugweb.pages.dev`; canonical host `www.wugweb.com`.
 - **Page**: `src/pages/work/[slug].astro`; parser `src/lib/case-body.ts`; layout `src/lib/case-layout.ts`; components `src/components/work/Case*.astro`.

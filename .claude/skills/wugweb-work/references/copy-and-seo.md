@@ -99,7 +99,7 @@ Archetype:
 Owner questions (exact, numbered; "unvalidated" is a complete answer):
 ```
 
-The page then follows the ski-ramp: answer first, then the problem, the insight, the system, and the outcome.
+The page answers first, then follows the claim order owned by `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/messaging.md`).
 
 ## On-page SEO
 

@@ -41,6 +41,7 @@ For each image, in this order:
 - Step `currentTime` by script and screenshot each step: every 1 second up to 15 seconds; every 5 seconds for longer videos, 24 frames or fewer; plus the first and last frame.
 - Record what it demonstrates, whether it loops cleanly, and the best poster second.
 - A low-resolution copy of another video is a duplicate of the larger file.
+- An animated GIF is read like a video: look at its frames (first, last and enough between to see what it demonstrates), not the first frame alone.
 
 ## 4. The read record
 
@@ -104,8 +105,8 @@ The two records below come from two different clients. The schema is the same fo
 ```
 
 ```json
-{ "url": "…/airtel-xsafe-3.png", "what": "Airtel Xsafe camera setup screen",
-  "kind": "mobile screen", "brand": { "which": "Airtel Xsafe" }, "quality": ["wrong client"],
+{ "url": "…/airtel-xsafe-3.png", "what": "IndusNinja presentation board of three phone screens; the file name says Airtel Xsafe, the screens do not",
+  "kind": "mobile screen", "brand": { "which": "IndusNinja" }, "quality": ["misnamed file", "near-duplicate"],
   "chapterFit": null }
 ```
 
