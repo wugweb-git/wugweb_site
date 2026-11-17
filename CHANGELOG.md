@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work plan open items and status (2026-11-17)
+- Docs only. Plan and Notion page: status now says validate 30 checks, the standing rules are one copied block in the skill, and figures with no recorded source were marked unvalidated. Waiting list gains replies and outreach, and the items shared with `wugweb-kits` (four held proposals, loop pause versus `aria-hidden`, `faqs` clash and existing blocks, card thumbnails and old media ratios). Backup: `backups/notion-wugweb-work-page-before-2026-11-17-d.md`.
+
 ### Changed — wugweb-work plan links table (2026-11-17)
 - Links table in `docs/skills/wugweb-work/PLAN.md` and the Notion page: wugweb-brand-os takes "approved facts about Wugweb"; wugweb-kits takes "gate and token results" and its wording line now reads "visible wording it asks for", matching the skill's handoffs file. Backup: `backups/notion-wugweb-work-page-before-2026-11-17-c.md`.
 

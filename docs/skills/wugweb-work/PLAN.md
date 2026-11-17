@@ -29,7 +29,7 @@
 |---|---|
 | Skill | `wugweb-work`, one of six in the Wugweb Skill System |
 | The question it answers | How is each piece made? |
-| Status | Skill built in the owner's development chat and installed. Master copy in the repo since 2026-11-17 at `.claude/skills/wugweb-work/`, version 0.4.2 (SKILL body 1,831 words by the shared count; validate 26 checks, 0 errors; test passes). The 14 evals are written but not run, and the evals folder is not in the repo copy. The app copy is behind 0.4.2 and the owner re-saves it. The site build (Part 2) is not started. |
+| Status | Skill built in the owner's development chat and installed. Master copy in the repo since 2026-11-17 at `.claude/skills/wugweb-work/`, version 0.4.2 (SKILL body 1,831 words by the shared count; validate 30 checks, 0 errors; test passes). The standing rules are now one copied block in the skill (`references/standing-rules.md`). Figures with no recorded source were marked unvalidated (sentence length and page position, the FAQ and HowTo end dates, the 44 case studies count). The 14 evals are written but not run, and the evals folder is not in the repo copy. The app copy is behind 0.4.2 and the owner re-saves it. The site build (Part 2) is not started. |
 | Planned in session | wugweb-work |
 | Will live at | `.claude/skills/wugweb-work/` |
 | Registry | Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298) |
@@ -79,6 +79,11 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 - [x] Hero copy limit: settled at 90 characters (2026-11-16). The earlier question: this plan sets the subtitle at 90 characters or fewer; `wugweb-kits` proposes a headline of 2 lines or fewer and subtext of 20 words or fewer. Pick one.
 - [ ] May LinkedIn posts carry a few specific tags, or none? The plan says none; `wugweb-seo` proposes a few.
 - [ ] Confirm the proposed sizes for Behance cover, Dribbble shot and story canvas (og is settled at 1200 x 630).
+- [ ] Replies and outreach: are replies, comment routines and outreach pitches part of the Forms module? Until decided they are out, because they are conversation and not production from an approved body.
+- [ ] Shared with `wugweb-kits`, held proposals for the layout side: the 85vw rail width, the 20% peek, the 2400 px signature width and the 35 to 60 character line.
+- [ ] Shared with `wugweb-kits`, loop pause and hidden loops: loops are `aria-hidden` by rule, but a pause control must be reachable. `wugweb-kits` decides which gives way.
+- [ ] Shared with `wugweb-kits`, the `faqs` field clash between the CMS and the page, and the existing blocks awaiting sign-off.
+- [ ] Shared with `wugweb-kits`, card thumbnails (16:10 frame, 4:3 videos) and the old media ratios not yet mapped to sections.
 
 **Reading the rest of this page.** Everything below is the full plan as written while `wugweb-work` was the only skill. The decisions above win where an older line disagrees. Parts that now belong to a sibling skill (writing style to voice; layout grammar and adaptive UX to kits; schema to seo; art-direction rules to brand-os; forms planning to strategy) stay here until that skill's plan is approved, then move.
 
