@@ -826,9 +826,9 @@ One h1 on every route, 0 duplicate ids, 99 of 99 sections named. On a 1792 wide 
 
 **Still open from the clash list:** the `faqs` field for FAQPage in `layout-shell.md`, the unmapped Framer ratios, and the five block sign-offs.
 
-### 28. wugweb-seo position on the proposed CMS fields, pending owner confirmation
+### 28. wugweb-seo position on the proposed CMS fields, confirmed by the owner 2026-11-17
 
-Relayed by the coordinating session on 2026-11-17. `wugweb-seo` says the owner delegated this list to it on 2026-11-17. Neither the coordinating session nor this session has seen that ruling, so this is seo's position, not an owner ruling, and the owner can override it. `layout-shell.md` is not edited until the owner confirms in this session or the coordinating one.
+Relayed by the coordinating session on 2026-11-17. `wugweb-seo` says the owner delegated this list to it on 2026-11-17. Neither the coordinating session nor this session has seen that ruling, so this is seo's position, not an owner ruling, and the owner can override it. The owner confirmed in the kits session on 2026-11-17 ("Yes, edit doc") and `layout-shell.md` was edited: the case-study rows above are marked, and "the only max-width in the shell" now reads as the content max width with the nav inner container capped separately at 1280.
 
 | Field (case studies) | seo position |
 |---|---|

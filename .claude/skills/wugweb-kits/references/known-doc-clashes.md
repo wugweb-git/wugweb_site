@@ -4,11 +4,11 @@ Recorded, not resolved unless marked. Source: plan sections 25 and 27, checked 2
 
 | Clash | Where | Status |
 |---|---|---|
-| Proposed `faqs` field for FAQPage JSON-LD breaks the no-FAQPage rule; also for `wugweb-seo` | `layout-shell.md`, CMS fields | Open, owner decides |
+| Proposed `faqs` field for FAQPage JSON-LD against the no-FAQPage rule | `layout-shell.md`, CMS fields | Resolved 2026-11-17: kept, only where every question and answer is visible. Case-study `seoCanonicalUrl`, `schemaType`, `aiSummary`, `keyTakeaways` dropped. |
 | The CMS fields section is a proposal, not deployed, inside the authoritative doc | `layout-shell.md` | Open |
 | Framer media aspect ratios are not mapped to sections | `layout-shell.md`, "Open" | Open |
 | Button focus: doc says `--focus-primary`, code uses `outline: 2px solid var(--neutral-3)` on `.btn:focus-visible` | `components.md` and `global.css` | Open, report only |
-| "The only max-width in the shell" wording may mislead | `layout-shell.md` | Open, owner decides |
+| "The only max-width in the shell" wording may mislead | `layout-shell.md` | Fixed 2026-11-17 |
 | Five blocks awaiting sign-off | `components.md` | Drafts until signed off |
 | Last verified at 1440 | `layout-shell.md` | Fixed 2026-11-16, measured at 375, 768, 1200 |
 | Dashes for empty cells | `sizing.md` | Fixed 2026-11-16 |

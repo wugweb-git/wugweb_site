@@ -130,7 +130,7 @@ gap: 0;
 flex-shrink: 0;
 width: 100%;
 height: min-content;
-max-width: 1200px;          /* the only max-width in the shell */
+max-width: 1200px;          /* the content max width; the nav inner container caps separately at 1280 */
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -312,15 +312,17 @@ Proposed for both:
 | `ogImagePath` | string | seo | R2 path, same convention as `coverPath` |
 | `ogTitle` / `ogDescription` | string / text | seo | overrides, fall back to `seoTitle` / `seoDescription` |
 | `noIndex` | boolean | seo | Framer's "Search engines" toggle, default `false` |
-| `seoCanonicalUrl` | url | seo | distinct name — `caseStudy.canonicalUrl` already means stub-redirect |
+| `seoCanonicalUrl` | url | seo | distinct name — `caseStudy.canonicalUrl` already means stub-redirect. **Case studies: dropped (2026-11-17), canonicals come from Notion, one slug. Posts and pages: kept.** |
 | `focusKeyword` / `secondaryKeywords` | string / string[] | seo | target keywords |
 | `searchIntent` | list | seo | informational · commercial · navigational · transactional |
 | `breadcrumbLabel` | string | seo | falls back to title |
-| `aiSummary` | text | ai-answers | 40–60 words, rendered visibly |
-| `keyTakeaways` | string[] | ai-answers | 3–5 bullets |
-| `faqs` | {question, answer}[] | ai-answers | FAQPage JSON-LD |
-| `schemaType` | list | ai-answers | caseStudy: CreativeWork / Article · post: Article / BlogPosting |
+| `aiSummary` | text | ai-answers | 40–60 words, rendered visibly. **Case studies: dropped (2026-11-17), Notion Body Content is the single source.** |
+| `keyTakeaways` | string[] | ai-answers | 3–5 bullets. **Case studies: dropped (2026-11-17), same reason.** |
+| `faqs` | {question, answer}[] | ai-answers | FAQPage JSON-LD. **Kept (2026-11-17), but it feeds FAQPage only where the rendered page visibly shows every question and answer.** |
+| `schemaType` | list | ai-answers | caseStudy: CreativeWork / Article · post: Article / BlogPosting. **Dropped (2026-11-17): fixed as CreativeWork for case studies and BlogPosting for posts.** |
 | `lastReviewedAt` | datetime | ai-answers | feeds `dateModified` |
+
+Decision 2026-11-17: `wugweb-seo` set the case-study rows above and the owner confirmed in the kits session. Still a proposal; nothing is deployed.
 
 ### Component level — three small fields
 
