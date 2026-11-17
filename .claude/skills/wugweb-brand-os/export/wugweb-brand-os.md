@@ -91,7 +91,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Audience:** not decided. The owner will supply it.
 - **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
 
-Two more questions are open (4 and 10). The owner will supply every open item in Notion (2026-11-17); when it arrives, propose the change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+Five more questions are open (4, 10, 19, 20, 21). The owner will supply every open item in Notion (2026-11-17); when it arrives, propose the change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -792,6 +792,9 @@ The owner will supply every open item below, and positioning, values, audience a
 | 16 | Pillar glow as a gradient exception | Confirmed: allowed |
 | 17 | Slight bounce in motion | Confirmed: within the brand |
 | 18 | Logo rules live here, sizes in kits | Confirmed |
+| 19 | Logo: which file is the lockup (`public/brand/logo-large.svg`) and which the mark (`logo-small.svg`); the two tones; whether the logo's pure white and yellow are exempt from the colour rules; clear space; minimum size; mark construction; live type in the lockup; a one-colour or light-background version; whether the unused `wugweb-mark.png` can go | Open. Owner answers in Notion |
+| 20 | `wugweb-work` lists "brand identity" as a case-study archetype with ToT as the example, but no real brand content exists yet | Open |
+| 21 | Secondary colours: the kits README lists peach, green, blue and aqua; the code uses magenta, teal and blue as pillar colours; the owner's ruling (question 6) names purple, green and orange | Open |
 
 ## Rules restated from helper skills
 

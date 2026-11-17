@@ -94,6 +94,9 @@ The owner will supply every open item below, and positioning, values, audience a
 | 16 | Pillar glow as a gradient exception | Confirmed: allowed |
 | 17 | Slight bounce in motion | Confirmed: within the brand |
 | 18 | Logo rules live here, sizes in kits | Confirmed |
+| 19 | Logo: which file is the lockup (`public/brand/logo-large.svg`) and which the mark (`logo-small.svg`); the two tones; whether the logo's pure white and yellow are exempt from the colour rules; clear space; minimum size; mark construction; live type in the lockup; a one-colour or light-background version; whether the unused `wugweb-mark.png` can go | Open. Owner answers in Notion |
+| 20 | `wugweb-work` lists "brand identity" as a case-study archetype with ToT as the example, but no real brand content exists yet | Open |
+| 21 | Secondary colours: the kits README lists peach, green, blue and aqua; the code uses magenta, teal and blue as pillar colours; the owner's ruling (question 6) names purple, green and orange | Open |
 
 ## Rules restated from helper skills
 
