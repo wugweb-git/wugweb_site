@@ -135,7 +135,7 @@ Kits group, source `components.md`:
 - `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
 - `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed.
 
-Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control and is not hidden from assistive tech, and all loops stop under reduced motion. Deck and card type uses `--type-graphic-l`, `-m` and `-s` for title, subtitle and label (owner, 2026-11-17). Confirmed sizes (owner, 2026-11-17, not yet in a doc): rail 85vw and never past 1200, peek 20%, signature width 2400px, line length 35 to 60 characters.
+Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control and is not hidden from assistive tech, and all loops stop under reduced motion. Deck and card type uses `--type-graphic-l`, `-m` and `-s` for title, subtitle and label (owner, 2026-11-17). Confirmed sizes (owner, 2026-11-17, in `sizing.md`): rail 85vw and never past 1200, peek 20%, signature width 2400px, line length 35 to 60 characters. Approved token names, not yet in `global.css`: `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min`, `--measure-max`.
 
 ## Report shape
 

@@ -32,6 +32,8 @@ These four are confirmed by the owner but are not yet in `sizing.md` or any desi
 | Signature width | 2400px |
 | Line length | 35 to 60 characters |
 
+Token names approved by the owner 2026-11-17, not yet in `global.css` (site code, waits for the owner's go): `--rail-width: min(85vw, 1200px)`, `--rail-peek: 20%`, `--signature-width: 2400px`, `--measure-min: 35ch`, `--measure-max: 60ch`.
+
 ## Made-file sizes adopted by the owner, 2026-11-17
 
 Relayed through the coordinating session from the `wugweb-seo` rulings. Source is the owner, not a design doc.
@@ -59,4 +61,4 @@ Kits proposed these from the existing site scale and the owner approved. No new 
 | Label or tag | `--type-graphic-s` | 1.75rem to 4rem, 6% |
 | Body text | `--fluid-body-md`, `--fluid-body-sm` | unchanged |
 
-The element that holds the text must be a size container (`container-type: inline-size`). Only `--type-graphic-s` is used in code today (`ServiceTagField`); none of the three is in `typography.md` yet.
+The element that holds the text must be a size container (`container-type: inline-size`). Only `--type-graphic-s` is used in code today (`ServiceTagField`); all three are in `typography.md` (2026-11-17).

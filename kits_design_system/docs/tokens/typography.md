@@ -54,6 +54,17 @@ Source of truth: `src/styles/global.css` `:root`. Inter Tight only · weights vi
 | Label | `--fluid-label` | `clamp(0.75rem, 0.1vw + 0.73rem, 0.875rem)` | 12px | 14px | 500 |
 | Caption | `--fluid-caption` | `clamp(0.625rem, 0.05vw + 0.62rem, 0.75rem)` | 10px | 12px | 400 |
 
+## Graphic Type Scale (`--type-graphic-*`): decks and cards
+
+Approved by the owner, 2026-11-17. These scale with their container, not the viewport, so they fit any made-file size. The element that holds the text must be a size container (`container-type: inline-size`).
+
+| Role on a deck slide or card | Token | Range |
+|---|---|---|
+| Title | `--type-graphic-l` | `clamp(4rem, 14cqi, 12rem)` |
+| Subtitle or key figure | `--type-graphic-m` | `clamp(2.5rem, 9cqi, 7rem)` |
+| Label or tag | `--type-graphic-s` | `clamp(1.75rem, 6cqi, 4rem)` |
+| Body text | `--fluid-body-md`, `--fluid-body-sm` | as in the fluid scale |
+
 ## Type Tiers (legacy aliases → Kits)
 
 | Token | Maps to |
