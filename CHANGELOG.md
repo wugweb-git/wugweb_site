@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- feat(skills): wugweb-brand-os applies the owner's answers of 2026-11-17 (questions 5 to 9, 12 to 18); dashboards ban now excepts software subjects; 4 questions remain open or partly answered.
+
 - feat(skills): wugweb-brand-os merged: the branch first draft folded into main's app copy (main's text as base), one evals file (evals.json, 38 cases), one export, checks passed.
 
 - docs(skills): wugweb-brand-os plan (Notion page and PLAN.md) updated to say the first draft 0.1.0 is built, not yet pushed to main.

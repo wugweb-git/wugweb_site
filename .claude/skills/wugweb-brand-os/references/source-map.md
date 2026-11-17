@@ -58,16 +58,16 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 | Matter | One source says | Another says | Status |
 | --- | --- | --- | --- |
 | Positioning | "product and experience architecture studio" (site) | "systems-minded design partner" (guidelines) | Owner will supply a new line |
-| Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Not decided: owner (question 6) |
-| Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Not decided: owner (question 15) |
-| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Not decided: owner (question 14) |
-| Gradients | Banned (guidelines) | A glow per pillar on service pages | Not decided: owner (question 16) |
-| Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | Not decided: owner (question 17) |
-| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Wording proposal waits (question 12) |
+| Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Allowed as pillar colours. Confirmed 2026-11-17 (question 6) |
+| Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Yellow. Confirmed 2026-11-17 (question 15) |
+| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Black canvas is the default; light only where the owner says. Which formats is not decided: owner (question 14) |
+| Gradients | Banned (guidelines) | A glow per pillar on service pages | The pillar glow is an exception. Confirmed 2026-11-17 (question 16) |
+| Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | A slight bounce is within the brand. Confirmed 2026-11-17 (question 17) |
+| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Definition approved 2026-11-17; the four guideline edits are held (see question 12) |
 | Content pillars | AI, Product, UX, Systems, Engineering | Six pillars | Six pillars win |
 | Spelling | American in the guidelines | British English | British wins |
 | Tiles | Sixteen by nine assumed | Seven ratios in use | Not confirmed |
-| Logo rules | The guidelines hold none | Sizes are in the design system | Not decided: owner (question 18) |
+| Logo rules | The guidelines hold none | Sizes are in the design system | Logo rules live here, sizes in kits. Confirmed 2026-11-17 (question 18) |
 
 Until each "not decided" row is answered, report both sides and do not pick one. One attractive reference never becomes a rule.
 
@@ -79,20 +79,20 @@ Until each "not decided" row is answered, report both sides and do not pick one.
 | 2 | Values | Answered: owner will supply |
 | 3 | Audience | Answered: owner will supply |
 | 4 | Facts about Wugweb | In progress |
-| 5 | `brand_guidelines/` stays untouched as the archive | Open. Treated as untouched meanwhile |
-| 6 | Purple, green and orange in artwork | Open |
-| 7 | Who owns `04_AI_PROMPT_ENGINE` | Open. Not absorbed here until answered |
-| 8 | Where working preferences live | Open |
-| 9 | "Does a lot, into one" as public wording | Open |
+| 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
+| 6 | Purple, green and orange in artwork | Confirmed: allowed as pillar colours |
+| 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |
+| 8 | Where working preferences live | Closed: in `docs/skills/STANDING-RULES.md` |
+| 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
 | 10 | Visual OS and Brand Strategy documents, nine source images | Open |
 | 11 | Where the plan is kept | Confirmed |
-| 12 | Crop definition and four wording changes | Open |
-| 13 | "The client is the hero" | Open |
-| 14 | Light or dark background default for artwork | Open |
-| 15 | Magenta or yellow as brand colour in artwork | Open |
-| 16 | Pillar glow as a gradient exception | Open |
-| 17 | Slight bounce in motion | Open |
-| 18 | Logo rules live here, sizes in kits | Open |
+| 12 | Crop definition and four wording changes | Definition approved. The four edits to `brand_guidelines/` conflict with question 5 (archive untouched), so they are held: the owner decides which wins |
+| 13 | "The client is the hero" | Confirmed |
+| 14 | Light or dark background default for artwork | Partly answered: black canvas default; light only where the owner says. Formats not named |
+| 15 | Magenta or yellow as brand colour in artwork | Confirmed: yellow |
+| 16 | Pillar glow as a gradient exception | Confirmed: allowed |
+| 17 | Slight bounce in motion | Confirmed: within the brand |
+| 18 | Logo rules live here, sizes in kits | Confirmed |
 
 ## Rules restated from helper skills
 

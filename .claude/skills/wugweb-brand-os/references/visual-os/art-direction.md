@@ -56,7 +56,7 @@ Selection questions:
 - Robots, android heads, AI brains, neural networks, circuit boards, holograms.
 - Cyberpunk, sci-fi cities, glowing blue technology.
 - A generic laptop or dashboard, most of all on a case-study cover.
-- Dense dashboards, tiny analytics widgets, fake interface filler.
+- Dense dashboards, tiny analytics widgets, fake interface filler, unless the subject is software (product proof mode).
 - Stock corporate teams, handshakes, glossy office scenes.
 - Ambient node webs, connector lines as texture, icon clouds, technology-logo mosaics.
 - Light bulbs, gears, rockets, shields and locks as wallpaper, graduation caps, steering wheels.
@@ -77,9 +77,9 @@ Selection questions:
 | A literal diagram | Structure itself is the subject |
 | A scribble or marker line | Once, as a single human accent |
 | Richer collage layers | Campaign collage mode, and every layer clarifies the same visual sentence |
-| Dark backgrounds | For contrast or intensity. The guidelines state warm or light backgrounds as the editorial default but the site is dark; which applies to artwork is not decided: owner (item 14) |
-| Purple, green, orange | Not decided: owner (question 6) |
-| A glow or gradient | Not decided: owner (question 16) |
+| Dark backgrounds | For contrast or intensity. The black canvas is the default. A light background is used only where the owner says so; which formats that covers is not decided: owner (question 14) |
+| Purple, green, orange | Allowed as pillar colours. Confirmed by the owner, question 6 |
+| A glow or gradient | The pillar glow is an allowed exception. Confirmed by the owner, question 16. Other gradient-heavy looks stay banned |
 
 ## Composition (source: `02_COMPOSITION.md`)
 
@@ -133,4 +133,4 @@ Take the principle, never the composition. Name what the reference does (hierarc
 
 ## Logo
 
-**Not decided: owner** (question 18): whether the two-tone rule and logo checks live here with sizes in kits. Until answered: use the real logo file, never redraw it, and never bake a generated logo into an image.
+**Confirmed by the owner (question 18):** the two-tone rule and the logo checks live here, with sizes in kits. Use the real logo file, never redraw it, and never bake a generated logo into an image.

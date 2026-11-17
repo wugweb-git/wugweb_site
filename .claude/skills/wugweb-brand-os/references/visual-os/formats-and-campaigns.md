@@ -100,4 +100,4 @@ Keep the shared look, vary the metaphor. Never repeat the same person, circle an
 
 ## AI prompt engine
 
-**Not decided: owner** (question 7): whether Visual OS owns `04_AI_PROMPT_ENGINE`. Not absorbed here until answered.
+**Confirmed by the owner, 2026-11-17 (question 7):** Visual OS owns `04_AI_PROMPT_ENGINE`. Its content is not yet absorbed here; the folder is thin.

@@ -20,7 +20,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Audience:** not decided. The owner will supply it.
 - **Facts about Wugweb:** only the six pillars are approved. Every other fact is unverified.
 
-Fourteen more questions are open; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+Four more questions are open or only partly answered (4, 10, 12, 14); the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -108,7 +108,8 @@ These are confirmed. They hold in every mode.
 **Brand**
 
 - Six pillars, fixed: Strategy, Brand, Experience, Engineering, Growth, Operations. The older eight-service list is reference only.
-- Multi-workstream engagements are the norm ("does a lot, into one"). Whether that phrase is public wording is not decided.
+- Multi-workstream engagements are the norm ("does a lot, into one"). It is an idea, not public wording, until the owner picks the wording.
+- The client is the hero, Wugweb is the guide.
 - Every asset has one claim, one audience tension, one proof and one outcome, in the order Problem to Insight to System to Outcome.
 
 **Visual**
@@ -116,13 +117,14 @@ These are confirmed. They hold in every mode.
 - A case-study cover shows a project-specific object or outcome, never a generic laptop or dashboard.
 - One dominant anchor per composition. Pick one of the five visual modes and do not blend them.
 - Robots, AI brains, neural webs, circuitry and holograms are never used, least of all as a shortcut for AI.
-- Yellow is an accent at 10% or less, reserved for the one conversion action per page and the footer banner. The final call to action stays yellow.
+- Yellow is the one brand colour. It is an accent at 10% or less, reserved for the one conversion action per page and the footer banner. The final call to action stays yellow.
 - Structure stays in brand ink. An accent is spent on one or two things, and a pillar colour does not paint structure.
 - Text is never pure white. The live colour values must not change.
 - Other buttons may use yellow only on hover or tap.
-- The logo lockup is two-tone, and two-tone titles mirror it. Use the real logo file.
-- Surfaces are a black canvas with glass panels; corner radius is set by role.
-- Motion: one spring with a slight bounce for nav and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion.
+- Purple, green and orange are allowed as pillar colours, and the pillar glow is the one allowed gradient exception.
+- The logo lockup is two-tone, and two-tone titles mirror it. Use the real logo file. Logo checks live here; sizes live in kits.
+- Surfaces are a black canvas with glass panels, and the black canvas is also the artwork default. Light backgrounds only where the owner says. Corner radius is set by role.
+- Motion: one spring with a slight bounce, which is within the brand, for nav and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion.
 - A bento never resolves into an even grid, and nothing is wider than the nav.
 
 **Media**

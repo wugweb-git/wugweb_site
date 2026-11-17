@@ -13,7 +13,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Audience:** not decided. The owner will supply it.
 - **Facts about Wugweb:** only the six pillars are approved. Every other fact is unverified.
 
-Fourteen more questions are open; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+Four more questions are open or only partly answered (4, 10, 12, 14); the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -101,7 +101,8 @@ These are confirmed. They hold in every mode.
 **Brand**
 
 - Six pillars, fixed: Strategy, Brand, Experience, Engineering, Growth, Operations. The older eight-service list is reference only.
-- Multi-workstream engagements are the norm ("does a lot, into one"). Whether that phrase is public wording is not decided.
+- Multi-workstream engagements are the norm ("does a lot, into one"). It is an idea, not public wording, until the owner picks the wording.
+- The client is the hero, Wugweb is the guide.
 - Every asset has one claim, one audience tension, one proof and one outcome, in the order Problem to Insight to System to Outcome.
 
 **Visual**
@@ -109,13 +110,14 @@ These are confirmed. They hold in every mode.
 - A case-study cover shows a project-specific object or outcome, never a generic laptop or dashboard.
 - One dominant anchor per composition. Pick one of the five visual modes and do not blend them.
 - Robots, AI brains, neural webs, circuitry and holograms are never used, least of all as a shortcut for AI.
-- Yellow is an accent at 10% or less, reserved for the one conversion action per page and the footer banner. The final call to action stays yellow.
+- Yellow is the one brand colour. It is an accent at 10% or less, reserved for the one conversion action per page and the footer banner. The final call to action stays yellow.
 - Structure stays in brand ink. An accent is spent on one or two things, and a pillar colour does not paint structure.
 - Text is never pure white. The live colour values must not change.
 - Other buttons may use yellow only on hover or tap.
-- The logo lockup is two-tone, and two-tone titles mirror it. Use the real logo file.
-- Surfaces are a black canvas with glass panels; corner radius is set by role.
-- Motion: one spring with a slight bounce for nav and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion.
+- Purple, green and orange are allowed as pillar colours, and the pillar glow is the one allowed gradient exception.
+- The logo lockup is two-tone, and two-tone titles mirror it. Use the real logo file. Logo checks live here; sizes live in kits.
+- Surfaces are a black canvas with glass panels, and the black canvas is also the artwork default. Light backgrounds only where the owner says. Corner radius is set by role.
+- Motion: one spring with a slight bounce, which is within the brand, for nav and hover; load and scroll-in are a fade plus a rise; everything respects reduced motion.
 - A bento never resolves into an even grid, and nothing is wider than the nav.
 
 **Media**
@@ -419,7 +421,7 @@ Strategy, Brand, Experience, Engineering, Growth, Operations. Source: `CLAUDE.md
 
 ## "Does a lot, into one" (confirmed as an idea)
 
-Multi-workstream engagements are the norm: one engagement often spans several pillars. **Not decided: owner** (question 9): whether "does a lot, into one" is public wording or only the idea behind it. Until answered, do not use the phrase in visible copy.
+Multi-workstream engagements are the norm: one engagement often spans several pillars. **Answered by the owner, 2026-11-17 (question 9):** "does a lot, into one" is the idea behind the work, not public wording, until the owner picks the wording. Do not use the phrase in visible copy.
 
 ## Differentiation
 
@@ -489,7 +491,7 @@ One artwork never explains five transformations.
 
 ## Messaging stance
 
-**Not decided: owner** (question 13): "the client is the hero, Wugweb is the guide". Recommended: yes. Until answered, do not state it as a rule.
+**Confirmed by the owner, 2026-11-17 (question 13):** the client is the hero, Wugweb is the guide. State it as a rule.
 
 ## Core message and supports
 
@@ -693,16 +695,16 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 | Matter | One source says | Another says | Status |
 | --- | --- | --- | --- |
 | Positioning | "product and experience architecture studio" (site) | "systems-minded design partner" (guidelines) | Owner will supply a new line |
-| Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Not decided: owner (question 6) |
-| Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Not decided: owner (question 15) |
-| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Not decided: owner (question 14) |
-| Gradients | Banned (guidelines) | A glow per pillar on service pages | Not decided: owner (question 16) |
-| Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | Not decided: owner (question 17) |
-| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Wording proposal waits (question 12) |
+| Purple, green, orange | Avoid (`04_COLOR_ROLES.md`) | Pillar colours on the site and in kits | Allowed as pillar colours. Confirmed 2026-11-17 (question 6) |
+| Brand colour | Magenta is brand energy (guidelines) | Yellow is the one brand colour (kits) | Yellow. Confirmed 2026-11-17 (question 15) |
+| Background | Warm or light default (guidelines) | Black canvas (site, kits) | Black canvas is the default; light only where the owner says. Which formats is not decided: owner (question 14) |
+| Gradients | Banned (guidelines) | A glow per pillar on service pages | The pillar glow is an exception. Confirmed 2026-11-17 (question 16) |
+| Motion | Not elastic (guidelines) | Slight bounce on nav and hover (kits) | A slight bounce is within the brand. Confirmed 2026-11-17 (question 17) |
+| "Crop" | An instruction in about 15 guideline files | The owner's media rule: no file is cropped | Media rule wins. Definition approved 2026-11-17; the four guideline edits are held (see question 12) |
 | Content pillars | AI, Product, UX, Systems, Engineering | Six pillars | Six pillars win |
 | Spelling | American in the guidelines | British English | British wins |
 | Tiles | Sixteen by nine assumed | Seven ratios in use | Not confirmed |
-| Logo rules | The guidelines hold none | Sizes are in the design system | Not decided: owner (question 18) |
+| Logo rules | The guidelines hold none | Sizes are in the design system | Logo rules live here, sizes in kits. Confirmed 2026-11-17 (question 18) |
 
 Until each "not decided" row is answered, report both sides and do not pick one. One attractive reference never becomes a rule.
 
@@ -714,20 +716,20 @@ Until each "not decided" row is answered, report both sides and do not pick one.
 | 2 | Values | Answered: owner will supply |
 | 3 | Audience | Answered: owner will supply |
 | 4 | Facts about Wugweb | In progress |
-| 5 | `brand_guidelines/` stays untouched as the archive | Open. Treated as untouched meanwhile |
-| 6 | Purple, green and orange in artwork | Open |
-| 7 | Who owns `04_AI_PROMPT_ENGINE` | Open. Not absorbed here until answered |
-| 8 | Where working preferences live | Open |
-| 9 | "Does a lot, into one" as public wording | Open |
+| 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
+| 6 | Purple, green and orange in artwork | Confirmed: allowed as pillar colours |
+| 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |
+| 8 | Where working preferences live | Closed: in `docs/skills/STANDING-RULES.md` |
+| 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
 | 10 | Visual OS and Brand Strategy documents, nine source images | Open |
 | 11 | Where the plan is kept | Confirmed |
-| 12 | Crop definition and four wording changes | Open |
-| 13 | "The client is the hero" | Open |
-| 14 | Light or dark background default for artwork | Open |
-| 15 | Magenta or yellow as brand colour in artwork | Open |
-| 16 | Pillar glow as a gradient exception | Open |
-| 17 | Slight bounce in motion | Open |
-| 18 | Logo rules live here, sizes in kits | Open |
+| 12 | Crop definition and four wording changes | Definition approved. The four edits to `brand_guidelines/` conflict with question 5 (archive untouched), so they are held: the owner decides which wins |
+| 13 | "The client is the hero" | Confirmed |
+| 14 | Light or dark background default for artwork | Partly answered: black canvas default; light only where the owner says. Formats not named |
+| 15 | Magenta or yellow as brand colour in artwork | Confirmed: yellow |
+| 16 | Pillar glow as a gradient exception | Confirmed: allowed |
+| 17 | Slight bounce in motion | Confirmed: within the brand |
+| 18 | Logo rules live here, sizes in kits | Confirmed |
 
 ## Rules restated from helper skills
 
@@ -981,7 +983,7 @@ Selection questions:
 - Robots, android heads, AI brains, neural networks, circuit boards, holograms.
 - Cyberpunk, sci-fi cities, glowing blue technology.
 - A generic laptop or dashboard, most of all on a case-study cover.
-- Dense dashboards, tiny analytics widgets, fake interface filler.
+- Dense dashboards, tiny analytics widgets, fake interface filler, unless the subject is software (product proof mode).
 - Stock corporate teams, handshakes, glossy office scenes.
 - Ambient node webs, connector lines as texture, icon clouds, technology-logo mosaics.
 - Light bulbs, gears, rockets, shields and locks as wallpaper, graduation caps, steering wheels.
@@ -1002,9 +1004,9 @@ Selection questions:
 | A literal diagram | Structure itself is the subject |
 | A scribble or marker line | Once, as a single human accent |
 | Richer collage layers | Campaign collage mode, and every layer clarifies the same visual sentence |
-| Dark backgrounds | For contrast or intensity. The guidelines state warm or light backgrounds as the editorial default but the site is dark; which applies to artwork is not decided: owner (item 14) |
-| Purple, green, orange | Not decided: owner (question 6) |
-| A glow or gradient | Not decided: owner (question 16) |
+| Dark backgrounds | For contrast or intensity. The black canvas is the default. A light background is used only where the owner says so; which formats that covers is not decided: owner (question 14) |
+| Purple, green, orange | Allowed as pillar colours. Confirmed by the owner, question 6 |
+| A glow or gradient | The pillar glow is an allowed exception. Confirmed by the owner, question 16. Other gradient-heavy looks stay banned |
 
 ## Composition (source: `02_COMPOSITION.md`)
 
@@ -1058,7 +1060,7 @@ Take the principle, never the composition. Name what the reference does (hierarc
 
 ## Logo
 
-**Not decided: owner** (question 18): whether the two-tone rule and logo checks live here with sizes in kits. Until answered: use the real logo file, never redraw it, and never bake a generated logo into an image.
+**Confirmed by the owner (question 18):** the two-tone rule and the logo checks live here, with sizes in kits. Use the real logo file, never redraw it, and never bake a generated logo into an image.
 
 ---
 
@@ -1104,14 +1106,12 @@ Palette behaviour by mode, from the same file:
 | Systems and architecture | Neutral base, one anchor colour, restrained structural blue |
 | Typographic presentation | High contrast; one headline colour field may dominate |
 
-### Not decided: owner
+### Owner answers, 2026-11-17
 
-- **Question 6.** The guideline says avoid purple, green and orange. The site and kits use all three as pillar colours. Which wins for artwork?
-- **Question 15.** The guideline treats magenta as the brand energy colour. Kits treats yellow as the one brand colour. Which is right for artwork?
-- **Question 14.** The guideline calls warm or light backgrounds the default. The site canvas is black. Does the light default apply to artwork only, or is it out of date?
-- **Question 16.** The guideline bans gradient-heavy looks. Service pages use a glow per pillar. Is the glow an allowed exception?
-
-In a Visual check, report any of these as "not decided: owner" with the question number. Do not pass or fail on them.
+- **Question 6, confirmed.** Purple, green and orange are allowed as pillar colours, in artwork as on the site.
+- **Question 15, confirmed.** Yellow is the one brand colour, as in kits. Magenta is not the brand energy colour.
+- **Question 16, confirmed.** The pillar glow is an allowed exception to the gradient ban. Other gradient-heavy looks stay banned.
+- **Question 14, partly answered.** The black canvas is the default. A light background is used only where the owner says so. Not decided: owner, which formats that covers. Report this point as "not decided", not as a pass or a fail.
 
 ## Type as a graphic object (source: `05_TYPOGRAPHY.md`)
 
@@ -1160,9 +1160,9 @@ In a Visual check, report any of these as "not decided: owner" with the question
 - Motion is calm, precise and editorial; never flashy or game-like.
 - Animation must clarify a narrative direction. Do not add motion to make a weak concept feel technological.
 
-### Not decided: owner
+### Owner answer, 2026-11-17
 
-**Question 17.** The guideline says motion is not elastic; the nav spring has a slight bounce. Is a slight bounce within the brand? Until answered, the kits behaviour stands on the site and artwork motion stays calm.
+**Question 17, confirmed.** A slight bounce is within the brand: the kits behaviour stands on the site. Artwork motion stays calm.
 
 No sound on any media.
 
@@ -1272,7 +1272,7 @@ Keep the shared look, vary the metaphor. Never repeat the same person, circle an
 
 ## AI prompt engine
 
-**Not decided: owner** (question 7): whether Visual OS owns `04_AI_PROMPT_ENGINE`. Not absorbed here until answered.
+**Confirmed by the owner, 2026-11-17 (question 7):** Visual OS owns `04_AI_PROMPT_ENGINE`. Its content is not yet absorbed here; the folder is thin.
 
 ---
 

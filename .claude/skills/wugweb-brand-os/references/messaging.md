@@ -23,7 +23,7 @@ One artwork never explains five transformations.
 
 ## Messaging stance
 
-**Not decided: owner** (question 13): "the client is the hero, Wugweb is the guide". Recommended: yes. Until answered, do not state it as a rule.
+**Confirmed by the owner, 2026-11-17 (question 13):** the client is the hero, Wugweb is the guide. State it as a rule.
 
 ## Core message and supports
 

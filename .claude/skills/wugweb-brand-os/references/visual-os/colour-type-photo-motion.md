@@ -38,14 +38,12 @@ Palette behaviour by mode, from the same file:
 | Systems and architecture | Neutral base, one anchor colour, restrained structural blue |
 | Typographic presentation | High contrast; one headline colour field may dominate |
 
-### Not decided: owner
+### Owner answers, 2026-11-17
 
-- **Question 6.** The guideline says avoid purple, green and orange. The site and kits use all three as pillar colours. Which wins for artwork?
-- **Question 15.** The guideline treats magenta as the brand energy colour. Kits treats yellow as the one brand colour. Which is right for artwork?
-- **Question 14.** The guideline calls warm or light backgrounds the default. The site canvas is black. Does the light default apply to artwork only, or is it out of date?
-- **Question 16.** The guideline bans gradient-heavy looks. Service pages use a glow per pillar. Is the glow an allowed exception?
-
-In a Visual check, report any of these as "not decided: owner" with the question number. Do not pass or fail on them.
+- **Question 6, confirmed.** Purple, green and orange are allowed as pillar colours, in artwork as on the site.
+- **Question 15, confirmed.** Yellow is the one brand colour, as in kits. Magenta is not the brand energy colour.
+- **Question 16, confirmed.** The pillar glow is an allowed exception to the gradient ban. Other gradient-heavy looks stay banned.
+- **Question 14, partly answered.** The black canvas is the default. A light background is used only where the owner says so. Not decided: owner, which formats that covers. Report this point as "not decided", not as a pass or a fail.
 
 ## Type as a graphic object (source: `05_TYPOGRAPHY.md`)
 
@@ -94,8 +92,8 @@ In a Visual check, report any of these as "not decided: owner" with the question
 - Motion is calm, precise and editorial; never flashy or game-like.
 - Animation must clarify a narrative direction. Do not add motion to make a weak concept feel technological.
 
-### Not decided: owner
+### Owner answer, 2026-11-17
 
-**Question 17.** The guideline says motion is not elastic; the nav spring has a slight bounce. Is a slight bounce within the brand? Until answered, the kits behaviour stands on the site and artwork motion stays calm.
+**Question 17, confirmed.** A slight bounce is within the brand: the kits behaviour stands on the site. Artwork motion stays calm.
 
 No sound on any media.

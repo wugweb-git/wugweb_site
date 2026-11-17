@@ -40,7 +40,7 @@ Strategy, Brand, Experience, Engineering, Growth, Operations. Source: `CLAUDE.md
 
 ## "Does a lot, into one" (confirmed as an idea)
 
-Multi-workstream engagements are the norm: one engagement often spans several pillars. **Not decided: owner** (question 9): whether "does a lot, into one" is public wording or only the idea behind it. Until answered, do not use the phrase in visible copy.
+Multi-workstream engagements are the norm: one engagement often spans several pillars. **Answered by the owner, 2026-11-17 (question 9):** "does a lot, into one" is the idea behind the work, not public wording, until the owner picks the wording. Do not use the phrase in visible copy.
 
 ## Differentiation
 
