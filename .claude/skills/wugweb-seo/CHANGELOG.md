@@ -2,6 +2,10 @@
 
 ## 2.5.0, 2026-11-17
 
+- Standing rules now carried as a marked copy at `references/standing-rules.md` (verbatim of
+  `docs/skills/STANDING-RULES.md`), included in the export; `test.mjs` fails if the copy drifts
+  from the home file, which wins. Matches the pattern set by wugweb-voice (3ef0c4a6); replaces
+  the earlier pointer-only approach. Version stays 2.5.0.
 - FAQ-block division recorded in the handoff (agreed with wugweb-strategy): strategy
   decides when a piece gets a FAQPage faqs block (service pages and blog posts only,
   from the signal log, owner-approved, brief fields 8 and 11); wugweb-seo audits only

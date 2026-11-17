@@ -28,9 +28,8 @@ Tracks: (1) client work: case studies, portfolio, showcase; (2) Wugweb's own
 content: blog posts, service pages, site and landing copy. Track 2's body
 standards are a first draft for the owner's review.
 
-One matter is open with the owner and one more is shared with
-`wugweb-kits`. They are listed, with the working assumption for each, in
-`references/open-items.md`.
+No matter is open with the owner; one is shared with `wugweb-kits`.
+It is listed, with every settled decision, in `references/open-items.md`.
 
 ## What it does not own
 
@@ -58,7 +57,7 @@ until that skill is approved. Then they move.
 | `scripts/test.mjs` | Self-test of the scripts on the fixtures | yes |
 | `scripts/build.mjs` | Generate the three files below | yes |
 | `examples/` | One full proposal, two skeletons, three forms examples, three test fixtures | yes |
-| evals folder (not in this copy) | 14 test prompts with expectations. Not in this copy yet; kept in the development chat, to be added when the evals are run | no, not yet |
+| `evals/evals.json` | 14 test prompts with expectations; first run and grade 2026-11-17 | no |
 | `metadata.json`, `CHANGELOG.md` | Version, date, abstract, history | yes |
 | `AGENTS.md` | Whole skill in one file | no, generated |
 | `adapters/cursor/<name>.mdc` | Cursor rule | no, generated |

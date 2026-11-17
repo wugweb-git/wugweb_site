@@ -10,7 +10,7 @@ metadata:
 
 # Wugweb Kits
 
-Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 26 Wugweb rule files, the references and the scripts are in place.
+Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 29 Wugweb rule files, the references and the scripts are in place.
 
 ## Standing rules
 
@@ -107,9 +107,12 @@ Shell group, source `layout-shell.md`:
 - `shell-grid-gap-token`: grid gaps use `--grid-gap`, never a section token.
 - `shell-rhythm-exemption`: only `.global-final-cta` is exempt from the section rhythm.
 - `shell-filters-are-toolbars`: filters are toolbars inside the grid, not sections.
-- `shell-nothing-wider-than-nav`: no block that is not full bleed is wider than the nav.
+- `shell-nothing-wider-than-nav`: no block that is not full bleed is wider than the nav. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `shell-header-derived`: header height comes from its formula, never a literal.
 - `shell-no-retired-values`: the retired list above is never reintroduced.
+- `shell-page-indexed`: lang, skip link, named main, landmarks, one h1, scroll flow and index, scroll offset on every route.
+- `shell-mobile-menu`: full screen in dvh, internal scroll, scroll lock that restores position, toggle fixed in place, spring.
+- `shell-safe-areas-and-hero`: safe area insets and dvh; hero headline and action on the first 390 x 844 screen.
 
 Label group, source `layout-shell.md`:
 
@@ -126,14 +129,14 @@ Kits group, source `components.md`:
 
 - `kits-tokens-only`: no hardcoded colour, spacing, radius, opacity, shadow, blur or z index.
 - `kits-button-tiers`: `.btn-solid` brand, `.btn` primary, `.btn-ghost`; size by `.btn-sm`, `.btn-lg`, `.btn-block`, never one off CSS.
-- `kits-yellow-budget`: yellow is accent only, at most 10%; the final CTA stays yellow.
+- `kits-yellow-budget`: yellow is accent only, at most 10%; the final CTA stays yellow. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `kits-radius-by-role`: buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`, panels `--radius-2xl`.
 - `kits-states-on-btn`: states live on `.btn`.
 - `kits-gsap-owns-motion`: animation is GSAP through `data-reveal` and `data-scroll`; no property has two owners.
 - `kits-animated-block-lint`: Service Spotlight Panel, Client Assembly Grid, Service Tag Field, Bento Block, Process Map and any block marked "Animated block" are linted for transition and tween clashes.
-- `kits-bento-never-even`: a bento never resolves into an even grid.
+- `kits-bento-never-even`: a bento never resolves into an even grid. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
-- `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed.
+- `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed; text is never pure white. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 
 Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control and is not hidden from assistive tech, and all loops stop under reduced motion. Deck and card type uses `--type-graphic-l`, `-m` and `-s` for title, subtitle and label (owner, 2026-11-17). Confirmed sizes (owner, 2026-11-17, in `sizing.md`): rail 85vw and never past 1200, peek 20%, signature width 2400px, line length 35 to 60 characters. Approved token names, not yet in `global.css`: `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min`, `--measure-max`.
 

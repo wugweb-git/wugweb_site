@@ -10,7 +10,7 @@ Map a UI to its design system: trace every visual value from primitive token thr
 
 # Wugweb Kits
 
-Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 26 Wugweb rule files, the references and the scripts are in place.
+Kits is the design system of wugweb.com: Astro with plain CSS variables, no Tailwind, no React components. This skill checks code and pages against it, maps every value to a home, and writes specs. It edits no site code and no build config. Engineering is ordinary work under CLAUDE.md. Status: the mapper core, the 29 Wugweb rule files, the references and the scripts are in place.
 
 ## Standing rules
 
@@ -107,9 +107,12 @@ Shell group, source `layout-shell.md`:
 - `shell-grid-gap-token`: grid gaps use `--grid-gap`, never a section token.
 - `shell-rhythm-exemption`: only `.global-final-cta` is exempt from the section rhythm.
 - `shell-filters-are-toolbars`: filters are toolbars inside the grid, not sections.
-- `shell-nothing-wider-than-nav`: no block that is not full bleed is wider than the nav.
+- `shell-nothing-wider-than-nav`: no block that is not full bleed is wider than the nav. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `shell-header-derived`: header height comes from its formula, never a literal.
 - `shell-no-retired-values`: the retired list above is never reintroduced.
+- `shell-page-indexed`: lang, skip link, named main, landmarks, one h1, scroll flow and index, scroll offset on every route.
+- `shell-mobile-menu`: full screen in dvh, internal scroll, scroll lock that restores position, toggle fixed in place, spring.
+- `shell-safe-areas-and-hero`: safe area insets and dvh; hero headline and action on the first 390 x 844 screen.
 
 Label group, source `layout-shell.md`:
 
@@ -126,14 +129,14 @@ Kits group, source `components.md`:
 
 - `kits-tokens-only`: no hardcoded colour, spacing, radius, opacity, shadow, blur or z index.
 - `kits-button-tiers`: `.btn-solid` brand, `.btn` primary, `.btn-ghost`; size by `.btn-sm`, `.btn-lg`, `.btn-block`, never one off CSS.
-- `kits-yellow-budget`: yellow is accent only, at most 10%; the final CTA stays yellow.
+- `kits-yellow-budget`: yellow is accent only, at most 10%; the final CTA stays yellow. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `kits-radius-by-role`: buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`, panels `--radius-2xl`.
 - `kits-states-on-btn`: states live on `.btn`.
 - `kits-gsap-owns-motion`: animation is GSAP through `data-reveal` and `data-scroll`; no property has two owners.
 - `kits-animated-block-lint`: Service Spotlight Panel, Client Assembly Grid, Service Tag Field, Bento Block, Process Map and any block marked "Animated block" are linted for transition and tween clashes.
-- `kits-bento-never-even`: a bento never resolves into an even grid.
+- `kits-bento-never-even`: a bento never resolves into an even grid. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
-- `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed.
+- `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed; text is never pure white. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 
 Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control and is not hidden from assistive tech, and all loops stop under reduced motion. Deck and card type uses `--type-graphic-l`, `-m` and `-s` for title, subtitle and label (owner, 2026-11-17). Confirmed sizes (owner, 2026-11-17, in `sizing.md`): rail 85vw and never past 1200, peek 20%, signature width 2400px, line length 35 to 60 characters. Approved token names, not yet in `global.css`: `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min`, `--measure-max`.
 
@@ -221,6 +224,143 @@ The audit flags any retired value found in a shell context as a finding.
 
 **Checked against `global.css` on 2026-11-16, read only.** These match the doc: `--shell-gutter` 16 / 32 / 48, `--grid-gap` 16 / 24 / 32, `--header-pad-block` 16 then 20, `--control-size` 44px, `--nav-logo-height` 2.5rem (40px), `--breakpoint-xl` 1200px, `--duration-spring` 400ms, `--layer-nav` 10, `--nav-bar-pad` 12px, the section tokens at 48 and 70, and `max-width: 1280px` on the nav bar. Not re-read in this check: the 96 desktop step of the section tokens, and the button text, padding and gap.
 
+
+
+## Breakpoints table, verbatim from the doc
+
+Copied exactly; `validate.mjs` fails if it differs from the doc's Breakpoints table.
+
+<!-- doc-table:breakpoints -->
+| | small · mobile | medium · tablet | large · desktop |
+|---|---|---|---|
+| canvas width | **375** | **768** | **1200** |
+| section padding (T R B L) | `48 16 48 16` | `70 32 70 32` | `96 48 96 48` |
+| content max-width | 1200 | 1200 | 1200 |
+| layout grid columns | **4** | **8** | **12** |
+| column gap | **16** | **24** | **32** |
+| grid margin (= gutter) | **16** | **32** | **48** |
+| header padding | `16` | `20` | `20` |
+| header height (derived) | **100** | **108** | **108** |
+| header position | sticky, top 0 | sticky, top 0 | sticky, top 0 |
+| nav bar height | 68 | 68 | 68 |
+| nav bar inset (all sides) | 12 | 12 | 12 |
+| button height (links, CTA, menu) | 44 | 44 | 44 |
+| button text / padding / gap | 16 / `10 12` / 12 | 16 / `10 12` / 12 | 16 / `10 12` / 12 |
+| logo height | 40 | 40 | 40 |
+<!-- end doc-table -->
+
+## Section, content and nav details (from "Exact declarations")
+
+| | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| Section `align-items` and `align-content` | center | flex-start | center |
+| Section `overflow` | hidden | hidden | visible |
+| Content `z-index` | 1 | 1 | none |
+
+Canvas: flex column, sections stack on padding only, never margin, `gap: 0`. Content: `padding: 0`, never a gutter. Top nav: sticky, top 0, z index 10, `will-change: transform`, `cursor: grab` with links and buttons keeping `cursor: pointer`. Spring: 0.4s, bounce 0.2, delay 0, as `--duration-spring` and `--ease-spring` (a sampled `linear()` curve, about 1.5% overshoot); every nav transition uses it and GSAP stays the engine for scroll animation.
+
+## Every page is indexed (from "Canvas, every page is indexed")
+
+On every route: `<html lang>`; a skip link as the first focusable element targeting `#main`; `<main id="main" tabindex="-1">` named by the page title; `<header>` for the sticky nav and `<footer id="site-footer">` named "Site footer"; exactly one h1 inside main; `main[data-scroll-flow]` lists the section ids in order and every top level section gets `data-scroll-index` 1 to n (set in `BaseLayout`); `scroll-margin-top: var(--header-height)` on sections.
+
+## Mobile menu, required behaviour
+
+Covers the screen: `100dvh` with a `100svh` fallback, minus safe areas. Scrolls internally on short screens with `overscroll-behavior: contain`. Scroll lock by `position: fixed` on body with the scroll position restored, because iOS ignores `overflow: hidden` (`src/lib/site-header.ts`). The toggle keeps the exact coordinates it has when closed. One left edge for logo, links, contact and legal. Links at the top; contact and legal pinned to the bottom. Open and close use the nav spring; links fade and rise with about 40ms stagger; the toggle morphs by transform.
+
+## Motion
+
+Nav and hover use the spring. Load and scroll in: opacity and translateY through GSAP (`[data-reveal]`), first group at 0.4s, second at 0.9s. Transform based only; everything behind `prefers-reduced-motion`.
+
+## PWA and safe areas
+
+`viewport-fit=cover`; `env(safe-area-inset-*)` through `--safe-*` on the nav; a dedicated maskable icon (`pwa-maskable-512.png`); `dvh` with an `svh` fallback.
+
+## Hero, first screen
+
+On a 390 x 844 phone the headline, subhead and primary action sit on the first screen, not under the cookie banner. The doc marks this as a rule not re-measured.
+
+---
+
+## Standing rules (marked copy)
+
+<!-- Marked copy of docs/skills/STANDING-RULES.md. The home file wins; validate fails if this copy drifts. Refresh with: cp docs/skills/STANDING-RULES.md .claude/skills/wugweb-kits/references/standing-rules.md and re-add this line. -->
+
+# Owner's standing rules
+
+These apply to every skill in the Wugweb Skill System and to every session.
+Each skill reads this file and repeats none of it. A skill's own rules live in
+that skill. Where a helper skill or tool disagrees with a rule here, this file
+wins. Dates show when the owner set or confirmed a rule, where known.
+
+## Truth and evidence
+
+- Nothing is invented: no numbers, quotes or facts.
+- A claim needs a screen, a sourced number or a named fact. "Unvalidated" is a complete answer.
+- Existing content is an input, not the benchmark. (2026-10-19)
+- Every number in a report is computed, never estimated.
+
+## Sources and approval
+
+- Notion is the source for case studies and blog posts. (2026-10-13)
+- One source, from the owner. Content is enriched only as a proposal. (2026-10-19)
+- Changes are shown as current to proposed, with the reason.
+- Nothing is written to the content source or the CMS without the owner's approval of that exact change, with a backup first.
+- Nothing is deleted without asking: no data, files, records or pages.
+- Nothing is posted or scheduled without the owner's yes for that post. (2026-11-16)
+- Third-party helper skills return proposals or reports. Only a Wugweb skill writes, and only after approval. (2026-11-16)
+- Nothing goes to development until the owner says so. (2026-11-16)
+
+## Media
+
+- Media lives in the owner's media store only: no uploads, no local copies.
+- Files are never cropped or re-encoded.
+- Media may be shown at any size if the original aspect ratio is kept. Clipping masks are allowed. (2026-11-16)
+- Resizing and masks are done on the page, never by making new files. (confirmed 2026-11-16)
+- A mask must not hide the part of a screen that proves the claim. (confirmed 2026-11-16)
+- A file shown above its natural size is flagged, not banned. (confirmed 2026-11-16)
+- No sound anywhere. Every video is muted. (2026-11-11)
+- A new image file is made only when nothing existing fits, one file at a time, on the owner's yes for that file. (2026-11-11)
+
+## Writing
+
+- British English.
+- Sentence case.
+- No em or en dashes in anything a visitor reads. Ranges are written out.
+
+## Working with the owner
+
+- Replies are short and plain, result first.
+- Do exactly what is asked. No side tasks.
+- Full output: complete files, no placeholders, no "rest unchanged".
+- Do not raise the domain cutover, asset clean-up or the cookie policy unless asked.
+
+## Limits
+
+- Never exceed any vendor's free tier. No feature that needs a paid plan unless the owner asks.
+- No dependency on Framer: no Framer URLs, redirects or assets. (2026-10-13)
+- One slug per page; no redirects for old URLs. (2026-10-13)
+
+## The skill system
+
+- One home per rule. Each rule lives in exactly one skill; the others point to it. (2026-11-16)
+- One Notion page per skill: no sub-pages, nothing elsewhere. The repo keeps one copy as that skill's PLAN file. (2026-11-16)
+- Every skill must be usable in GPT, Cursor and other tools, not only Claude. (2026-11-16)
+- The layout values in the design system's layout shell document are binding. Skills read that document and point to `wugweb-kits`. (2026-11-16)
+
+## Git, only when asked to commit
+
+- Commit by path. Never add everything at once.
+- The only trailer is `Co-Authored-By: Wugweb <admin@wugweb.com>`.
+- Check for an index lock first; other sessions share the checkout.
+- Every commit adds a line to the changelog.
+- Push only on the owner's go.
+
+## Working caution, not an owner rule
+
+- When writing to Notion, never write a bare word-colon-word pattern or a bare
+  file name ending in a dot and "md". Notion turns them into links and can
+  corrupt the page. Put them in inline code or reword. (found 2026-11-16)
+
 ---
 
 ## Contents
@@ -251,15 +391,18 @@ The audit flags any retired value found in a shell context as a finding.
    - `spec-fixed-template` — variable doc shapes make specs unscannable and ungenerable
    - `spec-generate-dont-maintain` — hand-written specs drift silently and are trusted anyway
    - `spec-measure-dont-claim` — unverified compliance claims fail audits and mislead teams
-6. **Layout Shell** (HIGH) — 8 rules
+6. **Layout Shell** (HIGH) — 11 rules
    - `shell-filters-are-toolbars` — a filter wrapped as a section adds a spurious landmark and padding
    - `shell-grid-gap-token` — a section token as a gap moves the grid when the section rhythm changes
    - `shell-header-derived` — a literal header height drifts from the nav bar and buttons
+   - `shell-mobile-menu` — a menu that leaks scroll or moves its toggle breaks the phone experience, which is the PWA
    - `shell-no-gutter-below-section` — a second gutter doubles the margin and breaks alignment
    - `shell-no-retired-values` — retired values reappear from old docs and Framer references
    - `shell-no-section-max-width` — a capped section breaks the full bleed background and the shell
    - `shell-nothing-wider-than-nav` — a block wider than the nav breaks the edge alignment of the page
+   - `shell-page-indexed` — missing lang, landmarks or scroll flow break navigation and anchors
    - `shell-rhythm-exemption` — extra exemptions erode the one rhythm 48, 70, 96
+   - `shell-safe-areas-and-hero` — content under the notch or a hero action below the fold loses the first view
 7. **Labelling** (HIGH) — 8 rules
    - `label-alt-always` — a missing alt fails assistive tech and search
    - `label-contrast-measured` — unmeasured contrast claims fail audits
@@ -1331,6 +1474,28 @@ Header height is --nav-height plus twice --header-pad-block. The bar is 44 plus 
 
 Source: layout-shell.md, header formula.
 
+### `shell-mobile-menu`
+
+**Impact:** HIGH — a menu that leaks scroll or moves its toggle breaks the phone experience, which is the PWA
+
+The menu covers the screen with 100dvh and a 100svh fallback minus safe areas, scrolls internally with overscroll-behavior contain, locks page scroll by position fixed on body and restores the position, keeps the toggle at its closed coordinates, holds one left edge, puts links at the top and contact and legal at the bottom, and opens with the nav spring.
+
+**Incorrect:**
+
+```css
+.menu { height: 100vh; }
+body.menu-open { overflow: hidden; }
+```
+
+**Correct:**
+
+```css
+.menu { height: 100svh; height: 100dvh; overflow-y: auto; overscroll-behavior: contain; }
+body.menu-open { position: fixed; } /* scroll position restored on close */
+```
+
+Source: layout-shell.md, Mobile menu.
+
 ### `shell-no-gutter-below-section`
 
 **Impact:** HIGH — a second gutter doubles the margin and breaks alignment
@@ -1412,7 +1577,30 @@ The nav inner container caps at 1280 and the content box at 1200. A block that i
 .stat-band { /* inside .wrap, 1200 */ }
 ```
 
-Source: layout-shell.md, nav inner.
+Source: layout-shell.md, nav inner. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
+
+### `shell-page-indexed`
+
+**Impact:** HIGH — missing lang, landmarks or scroll flow break navigation and anchors
+
+Every route carries html lang, a skip link to #main, one main named by the page title, header and footer landmarks, one h1 inside main, main[data-scroll-flow] listing the section ids in order with data-scroll-index on each top level section, and scroll-margin-top equal to --header-height on sections.
+
+**Incorrect:**
+
+```html
+<html><body><div class="page">...</div></body></html>
+```
+
+**Correct:**
+
+```html
+<html lang="en"><body><a href="#main">Skip to content</a><header>...</header>
+<main id="main" tabindex="-1" aria-label="Work" data-scroll-flow="hero work-grid">
+  <section id="hero" data-scroll-index="1">...</section>
+</main><footer id="site-footer" aria-label="Site footer">...</footer></body></html>
+```
+
+Source: layout-shell.md, Canvas, every page is indexed.
 
 ### `shell-rhythm-exemption`
 
@@ -1433,6 +1621,26 @@ Every section follows the shared rhythm. The only exemption is .global-final-cta
 ```
 
 Source: layout-shell.md, rhythm.
+
+### `shell-safe-areas-and-hero`
+
+**Impact:** MEDIUM — content under the notch or a hero action below the fold loses the first view
+
+Use viewport-fit=cover with env(safe-area-inset-*) through the --safe-* tokens on the nav, dvh with an svh fallback, and the maskable icon. On a 390 x 844 phone the headline, subhead and primary action sit on the first screen, not under the cookie banner.
+
+**Incorrect:**
+
+```html
+<meta name="viewport" content="width=device-width">
+```
+
+**Correct:**
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+```
+
+Source: layout-shell.md, PWA and safe areas, Hero.
 
 ---
 
@@ -1653,7 +1861,7 @@ A bento keeps tiles of different spans at every tier. If the tiles collapse to e
 .bento .tile-wide { grid-column: span 6; min-height: var(--bento-min); }
 ```
 
-Source: components.md, bento.
+Source: components.md, bento. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
 
 ### `kits-block-docs-home`
 
@@ -1699,7 +1907,7 @@ Source: components.md, buttons.
 
 **Impact:** HIGH — two owners of one property cause jitter and fights
 
-Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control and is not hidden from assistive tech; a loop of 5 seconds or less with no control stays hidden. Owner confirmed 2026-11-17.
+Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay. A property has one owner: no CSS transition and GSAP tween on the same property. Scroll in is opacity and translateY only, first group at 0.4s and second at 0.9s, transform based, all behind prefers-reduced-motion; nav and hover use the spring (layout-shell.md, Motion). All loops stop under reduced motion. Loops stay 15 seconds or less and a loop over 5 seconds carries a pause control and is not hidden from assistive tech; a loop of 5 seconds or less with no control stays hidden. Owner confirmed 2026-11-17.
 
 **Incorrect:**
 
@@ -1734,7 +1942,7 @@ Text #f4f4f4, muted #bababa and surfaces #191919 and #2b2b2b are deliberate and 
 :root { --color-text-primary: #f4f4f4; }
 ```
 
-Source: CLAUDE.md, working agreements.
+Source: CLAUDE.md, working agreements. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
 
 ### `kits-radius-by-role`
 
@@ -1814,7 +2022,7 @@ Yellow is an accent and a resting fill on brand buttons only, at most 10% of a p
 .btn-solid { background: var(--color-yellow); }
 ```
 
-Source: components.md, colour.
+Source: components.md, colour. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
 
 ---
 

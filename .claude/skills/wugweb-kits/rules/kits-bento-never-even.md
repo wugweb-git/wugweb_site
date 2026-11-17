@@ -22,4 +22,4 @@ A bento keeps tiles of different spans at every tier. If the tiles collapse to e
 .bento .tile-wide { grid-column: span 6; min-height: var(--bento-min); }
 ```
 
-Source: components.md, bento.
+Source: components.md, bento. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.

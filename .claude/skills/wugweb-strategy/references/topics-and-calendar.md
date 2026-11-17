@@ -15,7 +15,7 @@ Take ideas from these sources, in this order of weight:
 
 ## The signal log
 
-A list of what readers ask and object to, in their own words. It lives here; `wugweb-voice` may read it directly but may not edit it (owner decision 2026-11-17).
+A list of what readers ask and object to, in their own words. It lives here; `wugweb-voice` may read it directly but may not edit it (owner decision 2026-11-17). Its words are vocabulary candidates for voice, labelled by source, never rules.
 
 | Field | Rule |
 | --- | --- |

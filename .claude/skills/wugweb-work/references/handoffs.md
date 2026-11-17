@@ -95,7 +95,9 @@ Audience and purpose (from the brief):
 Draft:
 ```
 
-Expect back: a list of voice breaks, each with the line, the reason and a fix, and a confidence level.
+Expect back: a summary row of 40 to 60 words, then a list of voice breaks, each with the line, the reason and a fix, and a confidence level. Read the summary row first.
+
+The voice is uncalibrated until the owner supplies writing samples (owner, 2026-11-17): treat every voice finding as low confidence and say so wherever it is reported. "We" or "I" is the owner's pick for each piece, not a fixed rule; the brief or this skill's proposal asks him. Translated copy is out of scope until English is calibrated.
 
 Then: apply fixes that keep the meaning. A fix that changes a fact, a client's on-screen term or a quote is declined. Length, evidence and format rules stay with this skill.
 
@@ -111,9 +113,9 @@ Then: content that does not fit returns to the proposal as an owner question. No
 
 The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged (field 9, owner decision 2026-11-17). For own content this skill does not ask `wugweb-seo` for a separate per-brief note. Field 8 lists the approved FAQ questions and field 11 names each answer's source; "no FAQ block" means none (see `own-content.md`). Handoff 1 still applies to a client work brief, which is written here.
 
-Take from `wugweb-strategy`: a one-page brief with the reader, what they know now, what they should know and do after, the goal, the format, the date, the case studies that back it, and the pages it links to.
+Take from `wugweb-strategy`: its brief (`.claude/skills/wugweb-strategy/references/brief-format.md`).
 
-Check it: every field is present, and the proof exists in an approved body. Return it with questions when one is missing. Do not rewrite the plan.
+Check it: the six check fields are present (the reader, what they know now, what they should know and do after, the goal, the format, the case studies that back it), and the proof exists in an approved body. Return it with questions when one is missing. Do not rewrite the plan.
 
 Give back after approval: the finished piece, the proof used, and proof that was asked for and does not exist.
 

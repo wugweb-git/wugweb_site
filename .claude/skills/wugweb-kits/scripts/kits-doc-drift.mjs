@@ -30,6 +30,19 @@ for (const [k, v] of Object.entries(expect)) {
   else if (got.replace(/\s/g, '') !== v) findings.push(`HIGH     ${CSS}: ${k} is ${got}, doc says ${v}`)
 }
 for (const [k, v] of declared) if (/--(shell-gutter|grid-gap|header-height|nav-height|header-pad-block)/.test(k) && /\b(1280px|44px)\b/.test(v) && k !== '--control-size') findings.push(`BLOCKER  ${CSS}: ${k} holds a retired value (${v})`)
+// Tier values: every declaration of a shell token, in file order (base, then 768, then 1200),
+// against the doc's Breakpoints table. Values are resolved and rem is read as 16px.
+const all = new Map()
+for (const m of css.matchAll(/(?<![\w-])(--[a-z0-9-]+)\s*:\s*([^;{}]+);/g)) all.set(m[1], [...(all.get(m[1]) || []), m[2].trim()])
+const px = (v) => { const r = resolve(v); if (/^[\d.]+px$/.test(r || '')) return parseFloat(r); if (/^[\d.]+rem$/.test(r || '')) return parseFloat(r) * 16; return NaN }
+const tiers = { '--shell-gutter': [16, 32, 48], '--grid-gap': [16, 24, 32], '--header-pad-block': [16, 20], '--space-section-xl': [48, 70, 96] }
+for (const [k, want] of Object.entries(tiers)) {
+  const got = (all.get(k) || []).map(px)
+  if (got.join(' ') !== want.join(' ')) findings.push(`HIGH     ${CSS}: ${k} steps ${got.join(' / ') || 'none'}, doc says ${want.join(' / ')}`)
+}
+const bar = px(declared.get('--control-size')) + 2 * px(declared.get('--nav-bar-pad'))
+if (bar !== 68) findings.push(`HIGH     ${CSS}: nav bar computes to ${bar}, doc says 68`)
+for (const [pad, h] of [[16, 100], [20, 108]]) if (bar + 2 * pad !== h) findings.push(`HIGH     ${CSS}: header with pad ${pad} computes to ${bar + 2 * pad}, doc says ${h}`)
 console.log(`${declared.size} declarations read`)
 for (const f of findings) console.log(f)
 console.log(`${findings.length} finding(s)`)

@@ -12,8 +12,25 @@ and this project adheres to Semantic Versioning.
 - feat(skills): wugweb-brand-os check fails when the export or its standing rules copy drifts from docs/skills/STANDING-RULES.md.
 
 - fix(skills): wugweb-brand-os eval run fixes: AI subjects point to the Intelligence metaphor; crop definition marked approved with the four held guideline edits listed; eval 9 matches the yellow ruling; the export now carries the standing rules.
+### Changed — wugweb-work eval fixes, made files and scheduling settled (2026-11-17)
+- First eval run graded (56/78, 6/14 in full); skill-side fixes applied, eval 14 brought up to the owner's decisions; made files kept in R2 by the owner, no scheduling tool; no matter open with the owner. Still 0.5.0.
+
+### Changed — wugweb-strategy voice rulings, build and test scripts (2026-11-17)
+- Signal log named read-only for voice, we or I recorded per brief, other languages out of scope, and `scripts/build.mjs` and `scripts/test.mjs` check the standing-rules copy against the home file. Version stays 0.1.2.
+### Changed — wugweb-work brand rules point to wugweb-brand-os (2026-11-17)
+- Yellow share, messaging order and case-study cover rule now pointers to wugweb-brand-os, not restated. Still 0.5.0.
+
+### Changed — wugweb-strategy plan and Notion page refreshed (2026-11-17)
+- Owner asked for both. File count, version row, status row and the faqs row updated. Backup in `backups/`.
+### Changed — wugweb-work voice rulings and standing-rules test (2026-11-17)
+- We or I per piece, voice summary row, no translation yet, voice findings low confidence; test checks the standing-rules copy against the home file. Still 0.5.0.
 
 - docs(skills): wugweb-brand-os plan (Notion and PLAN.md) records commit 9c8d0c95, the owner's answers of 2026-11-17 and the first eval run in progress.
+
+### Changed — wugweb-voice: owner's "all yes" applied, version stays 0.3.0 (2026-11-17)
+- `.claude/skills/wugweb-voice/`: read-only link to the wugweb-strategy signal log, 40 to 60 word summary field, translated copy and working preferences out of scope, we or I per piece, and a marked copy of the standing rules in the export (test-checked). `SKILL.md` body 1,997 words. No samples yet.
+### Changed — wugweb-work story safe zone wording (2026-11-17)
+- No official pixel safe zone for 1080 x 1920 stories: keep edges clear, wider margins, bottom 40% clear of text on Reels ads; no pixel figure stated as a rule.
 
 ### Changed — wugweb-strategy FAQ rules agreed with seo (2026-11-17)
 - Pending mark removed; version stays 0.1.2. Exports rebuilt.

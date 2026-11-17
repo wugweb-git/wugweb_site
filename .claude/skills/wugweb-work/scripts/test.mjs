@@ -4,6 +4,7 @@
 //   node test.mjs
 
 import { execFileSync } from 'node:child_process'
+import { existsSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -39,6 +40,16 @@ const fj = JSON.parse(fail.out)
 const failedNames = fj.results.filter((r) => r.status === 'fail').map((r) => r.name).join('|')
 expect('gate: failing fixture exits 1', fail.code === 1)
 expect('gate: catches skipped heading, dash, missing sizes, author in JSON-LD, unnamed slides', ['Heading levels never skip', 'No em or en dash in visible text', 'Every img has width and height', 'JSON-LD has no HowTo', 'Rail slides are named groups'].every((n) => failedNames.includes(n)), failedNames)
+
+// standing rules: the marked copy matches the home file (the home file wins); skipped outside the repo
+const home = join(root, '..', '..', '..', 'docs', 'skills', 'STANDING-RULES.md')
+if (existsSync(home)) {
+  const copy = readFileSync(join(root, 'references', 'standing-rules.md'), 'utf8')
+  const marked = /^<!-- Copied from docs\/skills\/STANDING-RULES\.md\./.test(copy)
+  const body = copy.replace(/^<!--[\s\S]*?-->\s*/, '').trim()
+  expect('standing rules: copy is marked and matches docs/skills/STANDING-RULES.md', marked && body === readFileSync(home, 'utf8').trim(), 'copy again from the home file')
+  expect('standing rules: built into AGENTS.md', readFileSync(join(root, 'AGENTS.md'), 'utf8').includes('<!-- references/standing-rules.md -->'))
+} else console.log('skip  standing rules: home file not present (outside the repo)')
 
 console.log(`\n${failed ? `${failed} failed` : 'all passed'}`)
 process.exit(failed ? 1 : 0)

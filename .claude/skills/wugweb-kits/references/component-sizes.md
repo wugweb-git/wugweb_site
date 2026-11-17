@@ -44,7 +44,7 @@ Relayed through the coordinating session from the `wugweb-seo` rulings. Source i
 | LinkedIn link image | 1200 x 627 minimum |
 | Behance cover | 808 x 632 minimum |
 | Dribbble | 1600 wide |
-| Story | 1080 x 1920, safe zone unverified |
+| Story | 1080 x 1920 (official). No official pixel figure for the safe zone: keep the top, bottom and sides free of key elements, text and logos, and the bottom 40% free of text on Reels ads (Meta Business Help Center, read by wugweb-seo 2026-11-17) |
 
 ## Card thumbnails, owner 2026-11-17
 

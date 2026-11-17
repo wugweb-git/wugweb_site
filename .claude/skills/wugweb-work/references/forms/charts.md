@@ -4,7 +4,7 @@ A chart is made only from numbers the body already holds in full.
 
 ## A number qualifies when it has all six
 
-value, what it measures, period, baseline, source, date.
+value, what it measures, period, baseline or benchmark, source, date (the metric form lives in `copy-and-seo.md`).
 
 ## Refuse
 

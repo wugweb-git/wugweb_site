@@ -60,7 +60,7 @@ Stored per case study, keyed by URL and ETag so each file is read once.
 | `brand` | Colours as hex, type families recognised, logo present, which brand |
 | `quality` | sharp, soft, upscaled, stock, placeholder or lorem, watermark, wrong client |
 | `nearDupOf` | Visual duplicate the size check missed |
-| `heroScore` | 0 to 5: project-specific, legible small, not a generic laptop |
+| `heroScore` | 0 to 5: legible small, and passes the cover rule of `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6) |
 | `alt` | 125 characters or fewer |
 | `caption` | 25 words or fewer |
 | `chapterFit` | Which chapter it proves |

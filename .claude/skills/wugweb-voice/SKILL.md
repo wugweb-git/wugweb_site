@@ -70,7 +70,7 @@ Never state an observed or candidate rule as a confirmed preference. Never avera
 
 There is one voice. Modes are settings of it, never a second voice. The modes are listed in `references/modes.md`: case study page, card and tile, deck slide, LinkedIn post, carousel, Behance and Dribbble captions, interface wording, quick chat and reply, email, formal document, spoken answer. Every mode is waiting on samples. Format rules for each form (sizes, counts, layout) live in `wugweb-work`.
 
-Pronouns: "we" for studio copy, "I" in bylined or first-person writing, one per piece. Whether that is a fixed rule or the owner's call per piece is open.
+Pronouns: "we" for studio copy, "I" in bylined or first-person writing, one per piece. The owner picks per piece; it is not a fixed rule.
 
 ## The voice check
 

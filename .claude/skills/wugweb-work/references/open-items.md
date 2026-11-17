@@ -1,10 +1,6 @@
 # Open with the owner
 
-One matter is not decided. The owner decides it. Until then the skill works on the assumption in the last column, and any output that depends on an open item says so in one line: "Open: <item>".
-
-| Item | What is open | Working assumption until decided |
-|---|---|---|
-| Social, remaining | Where made files are kept before posting; whether a scheduling tool is connected for the LinkedIn page and the owner's LinkedIn, and to which accounts | Made files stay in the media store the owner names. A LinkedIn post is handed over as an approved draft when no connected tool is confirmed |
+No matter is open with the owner (2026-11-17). Any output that depends on an open item says so in one line: "Open: <item>".
 
 ## Also open, shared with `wugweb-kits`
 
@@ -36,12 +32,13 @@ One matter is not decided. The owner decides it. Until then the skill works on t
 |---|---|---|
 | Plan vetting | The plan is approved as it stands and Part 1 stays locked. Starting Part 2 (site code) still needs the owner's own go | the plan; `SKILL.md` |
 | Replies and outreach | Out of the Forms module. A reply or pitch asked for is drafted as a one-off, with no fact ledger | `forms.md` |
+| Made files and scheduling | Made files are kept in the media store named in `ops-cycle.md`, under the piece's own folder, each only on the owner's yes for that file; the owner puts the file there, and this skill never uploads. No scheduling tool is connected: every post is handed to the owner as an approved draft to post | `forms.md`, `forms/publish-approval.md` |
 | LinkedIn tags | None | `forms.md`, `forms/linkedin-post.md` |
 | NTUC | Not an open input: NTUC U Care is a worked example only. Its missing facts (results, live URL, builder steps, heading typeface) are shown in the examples as the owner questions a real piece would raise | `examples/` |
 | Medium | Not a form of its own: the approved blog post, unchanged, with a link to the original | `forms.md` |
 | Behance and Dribbble uploads | The owner uploads. The skill hands over an ordered list, never an upload | `forms/behance.md`, `forms/dribbble.md` |
 | Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
-| Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (safe zone unverified: use the wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
+| Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (no official pixel safe zone: keep the edges clear, wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
 | Loops | A loop is 15 seconds or less. A loop over 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden; all loops stop under reduced motion | `media-standard.md`; `wugweb-kits` builds the control |
 | Card thumbnails | Every card is 16/10. The original ratio is kept and the frame is a mask: no crop of the source, no re-encode | `forms.md`, owned by `wugweb-kits` |
 | Layout sizes | Rail items 85vw and never past the 1200 content maximum; peek 20%; signature width 2400 px; line length 35 to 60 characters | `layout-grammar.md`, owned by `wugweb-kits` |

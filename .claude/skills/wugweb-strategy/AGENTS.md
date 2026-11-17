@@ -133,7 +133,7 @@ Never plan rows into Notion Blogs: its sync turns any row that is not in the tra
 
 ## Accounts in scope
 
-The Wugweb site blog, the Wugweb LinkedIn company page, Wugweb Behance, Wugweb Dribbble, the owner's LinkedIn, the owner's Medium, and the email newsletter. The owner's five personal Behance projects are out of scope (decision 13).
+The Wugweb site blog, the Wugweb LinkedIn company page, Wugweb Behance, Wugweb Dribbble, the owner's LinkedIn, the owner's Medium, and the email newsletter. The owner's five personal Behance projects are out of scope (decision 13). Copy in languages other than English is out of scope until English is calibrated (owner, 2026-11-17).
 
 ## The ten modes
 
@@ -339,7 +339,7 @@ Take ideas from these sources, in this order of weight:
 
 ## The signal log
 
-A list of what readers ask and object to, in their own words. It lives here; `wugweb-voice` may read it directly but may not edit it (owner decision 2026-11-17).
+A list of what readers ask and object to, in their own words. It lives here; `wugweb-voice` may read it directly but may not edit it (owner decision 2026-11-17). Its words are vocabulary candidates for voice, labelled by source, never rules.
 
 | Field | Rule |
 | --- | --- |
@@ -456,7 +456,7 @@ One brief per piece, one page long, handed to `wugweb-work`. It says what the pi
 | 10 | Links | Which service pages, posts and case studies it links to. Pasted from `wugweb-seo` unchanged: the link targets for this piece, picked inside the pillar and cluster structure this skill sets (decision 20). The proof map decides which case study backs the page (decision 23) |
 | 11 | Source | The Notion row. For a refresh: the keep, change and remove list |
 | 12 | Must not say | Permissions not given, sensitive clients, claims with no source |
-| 13 | Account and platform | One account in scope (decision 13) |
+| 13 | Account and platform | One account in scope (decision 13). Also records "we" or "I" for this piece: the owner's pick, never assumed. Blank until he picks |
 | 14 | Co-post and tagging | Who is named or tagged, each with permission status. No client named or tagged without permission (decision 15) |
 | 15 | Publish dependency | A linked page that is not live yet holds the post back (decision 14) |
 | 16 | Repurposing | Other forms, where, in what order |

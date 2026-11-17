@@ -41,7 +41,7 @@ Worked examples, made from a proposed body for shape only: `examples/forms-ntuc-
 - Platform sizes and limits are checked when the form is written, with the platform-specs helper in `skill-map.md` or the platform's own help page, and written down with the date. Never from memory.
 - Existing media is shown resized with its aspect ratio kept. Clipping masks are allowed. No cropped files, no re-encoding, no sound. Where a brand file says "decisive crop", the media rule in `media-standard.md` wins.
 - The client's words appear only as a quote that is in the body.
-- British English, sentence case, no dashes, no hashtag stuffing.
+- British English, sentence case, no dashes, no hashtag lists (LinkedIn: tags none).
 - Every sentence in a form maps to a body line in the fact ledger.
 - Each form stands alone and is rebuilt for its place, not pasted. The facts are the same in all of them.
 - A caption adds to the media and does not describe it. One action per caption.
@@ -71,7 +71,7 @@ These are sizes for new made files, never for resizing client media. The share i
 | Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn link image: at least 1200 x 627, ratio 1.91:1, 5 MB at most (adopted 2026-11-17) |
 | Behance cover | Upload at least 808 x 632; shown at 202 x 158 | Adopted by the owner, 2026-11-17. Behance Help Center as reported by search; figures date from 2020 |
 | Dribbble shot | At least 1600 wide (1600 x 1200 by convention); PNG, JPG or GIF up to 10 MB, video up to 20 MB | Adopted by the owner, 2026-11-17. Dribbble Help Center, read directly |
-| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17. The safe zone is unverified: no official page confirms it, so use the wider margins |
+| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17; the canvas is official. Meta gives no official pixel safe zone: keep the top, bottom and sides clear of key elements, text and logos (wider margins), and the bottom 40% clear of text on Reels ads. Never state a pixel figure as a rule |
 
 This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 
@@ -93,6 +93,6 @@ This skill picks which platform size a file uses; `wugweb-kits` supplies the siz
 - Takes: client logos from each case study's folder, at their own ratio, in one tone.
 - A logo is shown only when it is the client's own file. Alt is the client name.
 
-## Not decided
+## Where made files go
 
-Where made files are kept before posting, and whether a scheduling tool is connected: see `open-items.md`.
+Made files are kept in the media store named in `ops-cycle.md`, under the piece's own folder, each only on the owner's yes for that file; the owner puts the file there, and this skill never uploads. No scheduling tool is connected, so every post is handed to the owner as an approved draft (owner, 2026-11-17).

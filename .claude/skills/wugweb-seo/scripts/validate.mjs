@@ -84,7 +84,7 @@ const usHits = handMade.filter((f) => US.test(proseOf(read(f)).replace(/^---\n[\
 check('British spelling in prose', !usHits.length, usHits.join(', '), 'warning')
 
 // 6. Portability.
-const neutral = refs.map((f) => `references/${f}`).filter((f) => /\bClaude\b(?!-)/.test(read(f)))
+const neutral = refs.filter((f) => f !== 'standing-rules.md').map((f) => `references/${f}`).filter((f) => /\bClaude\b(?!-)/.test(read(f)))
 check('references name no single agent', !neutral.length, neutral.join(', '))
 check('relatedSkills in metadata.json are the siblings SKILL.md names', (meta.relatedSkills ?? []).every((s) => body.includes(`\`${s}\``)), (meta.relatedSkills ?? []).filter((s) => !body.includes(`\`${s}\``)).join(', '))
 

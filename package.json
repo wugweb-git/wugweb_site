@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "wrangler types && astro dev",
     "check:tokens": "node .claude/skills/wugweb-kits/scripts/kits-inventory.mjs src/ --findings",
-    "prebuild": "npm run check:tokens || true",
     "build": "astro build",
     "preview": "npm run build && wrangler pages dev ./dist",
     "deploy": "npm run build && npx wrangler pages deploy dist",
@@ -24,7 +23,7 @@
     "test:integrations": "node --test src/lib/integrations.test.ts",
     "test:forms": "node --test src/lib/forms-subscribe.test.ts src/lib/forms-contact.test.ts",
     "test:bearer": "node --test src/lib/bearer.test.ts",
-    "prebuild": "node scripts/check-sector-css.mjs"
+    "prebuild": "node scripts/check-sector-css.mjs && (npm run check:tokens || true)"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.0.0",

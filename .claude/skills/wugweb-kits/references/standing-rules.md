@@ -1,3 +1,5 @@
+<!-- Marked copy of docs/skills/STANDING-RULES.md. The home file wins; validate fails if this copy drifts. Refresh with: cp docs/skills/STANDING-RULES.md .claude/skills/wugweb-kits/references/standing-rules.md and re-add this line. -->
+
 # Owner's standing rules
 
 These apply to every skill in the Wugweb Skill System and to every session.

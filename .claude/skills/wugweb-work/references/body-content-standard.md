@@ -88,7 +88,7 @@ Label form: `kind[: name][ n]`, for example `Screens: Member 4, Application star
 | styles, style board, moodboard | Style tiles; Styles always render as a pair |
 | logo, mark, client logo | Marks |
 | type, colour, pattern, application, print, social, photo, diagram, chart, before, after | Brand and campaign assets |
-| video, loop | Video; 15 seconds or less loops (a loop over 5 seconds needs a pause control, see `open-items.md`), longer is muted click-to-play |
+| video, loop | Video; 15 seconds or less loops (pause control rule: `media-standard.md`), longer is muted click-to-play |
 | press, award | Presence items |
 | challenge, solution, design philosophy, dp, conclusion, filler, about, thumbnail | v1 slot labels; routed for compatibility |
 
@@ -96,7 +96,7 @@ Unknown label: rendered as a figure with the label as caption, and flagged in th
 
 ## 6. Results lines
 
-Form: `value | what | source | as of`, with period and baseline optional inside `what` or `source`.
+Form: `value | what | source | as of`, with period and baseline or benchmark written inside `what` or `source`. A line without them parses, but is shown as "unvalidated" unless the owner says so (metric form: `copy-and-seo.md`).
 
 ```
 - 42% | fewer HR tickets | Internal helpdesk report, Jan to Jun 2026 | as of 2026-07

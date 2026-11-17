@@ -4,6 +4,7 @@
 //   node test.mjs
 
 import { execFileSync } from 'node:child_process'
+import { readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { SKILL_DIR as root } from './lib.mjs'
 
@@ -60,6 +61,14 @@ const scoreBad = run('score-page.mjs', [join(root, 'examples/page-pass.html'), '
 const sb = JSON.parse(scoreBad.out)
 ok('a thin page off-keyword scores bad (<=50)', sb.score <= 50 && sb.grade === 'bad')
 ok('keyword-not-used-before is a warning, not scored', sg.tests.find((t) => t.id === 'keyword-not-used-before')?.max === 0)
+
+// Standing rules: the marked copy matches the home file, and the export carries it.
+{
+  const home = join(root, '..', '..', '..', 'docs', 'skills', 'STANDING-RULES.md')
+  const copy = readFileSync(join(root, 'references', 'standing-rules.md'), 'utf8')
+  ok('export carries the marked copy of the standing rules', readFileSync(join(root, 'AGENTS.md'), 'utf8').includes('MARKED COPY'))
+  if (existsSync(home)) ok('standing-rules copy matches the home file', copy.endsWith(readFileSync(home, 'utf8')))
+}
 
 console.log(`\n${failed ? `${failed} failed` : 'All passed'}.`)
 process.exit(failed ? 1 : 0)

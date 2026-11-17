@@ -39,7 +39,7 @@ Each concern has one home. Follow a sibling's rule there; do not restate it here
 | What to publish, to whom and when; reporting on posts | `wugweb-strategy` |
 | Brand name, descriptor and approved facts about Wugweb, for titles and organisation markup | read from `wugweb-brand-os`, never rewritten |
 | Tokens, layout, components and the accessibility audit | `wugweb-kits` |
-| The owner's standing rules | the shared rules file every Wugweb skill reads, `docs/skills/STANDING-RULES.md` |
+| The owner's standing rules | `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md`; the home file wins |
 
 If a sibling is not installed, give this skill's answer, say which sibling
 check was skipped, and stop at the boundary. The exact questions sent and

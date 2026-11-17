@@ -2,7 +2,7 @@
 
 > **Mixed ownership.** Voice, tone, phrasing, banned words and the no-dash rule are held for `wugweb-voice`. The title, description and slug rules under "On-page SEO" are held for `wugweb-seo`. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file. The evidence rule, case-study lengths, metrics, approvals and the brief template belong to this skill.
 
-The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (one claim, one tension, one proof, one outcome; Problem, Insight, System, Outcome), the owner's rules and the research digest.
+The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (owned by `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/messaging.md`), the owner's rules and the research digest.
 
 ## Tone in one line
 
@@ -19,7 +19,7 @@ The owner's standing rules (evidence, British English, sentence case, no dashes)
 | Answer first | The first sentence under a heading answers it. The first third of the page carries the main facts. |
 | Short, whole sentences | Fact sentences of 6 to 20 words that make sense on their own. One idea per sentence. |
 | Plain words | Use, build, show, help. See the banned list below. |
-| Active, with a named doer | "Staff set the workflow per programme", not "workflows were streamlined". "We" is allowed for Wugweb. |
+| Active, with a named doer | "Staff set the workflow per programme", not "workflows were streamlined". "We" or "I" is the owner's pick for each piece (owner, 2026-11-17); ask in the brief or proposal. |
 | The client's own words | Use the terms on their screens (NTUC writes "Programmes"). One spelling per name (iCube, not Icube). |
 | Credit honestly | Name partners and the team. Say what Wugweb did and did not do. |
 
@@ -75,7 +75,7 @@ The audit script carries this list. A banned word may stay only inside a client'
 - Case study page: full sentences, evidence in every chapter.
 - Card and tile: client, one line of what was built, no adjectives.
 - Deck: one claim per slide; the screen does the talking.
-- LinkedIn: first person plural, one lesson from the project, no hashtag stuffing, same facts as the page.
+- LinkedIn: "we" or "I" as the owner picks for the piece, one lesson from the project, no hashtag lists, same facts as the page.
 - Behance and Dribbble: captions only, flow by flow.
 
 ## Metrics
@@ -112,7 +112,7 @@ This section is the whole of what this skill decides about search. Keyword resea
 - Entities: client, partner, platform and country named in full once, in the body and in the schema.
 - Internal links: up to the matching service and sector pages, across to two or three related case studies, with descriptive anchor text. Ask for links back from those pages.
 - Everything a crawler needs is in server HTML. Images in `img src` only.
-- No keyword counts and no `llms.txt`. FAQ blocks follow `own-content.md`: service pages and blog posts only, questions approved in the brief, answers only from the owner's source. write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
+- No keyword counts and no `llms.txt`. FAQ blocks follow `own-content.md`: service pages and blog posts only, questions approved in the brief, answers only from the owner's source. Write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
 - og:image: a project-specific existing file, ideally about 2:1 or 1200 by 630; a new file only through the Forms gate.
 
 ## How it is checked

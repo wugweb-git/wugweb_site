@@ -16,7 +16,7 @@ Where each kind of piece is stored is in `ops-cycle.md`. Media is existing files
 
 ## The eight steps
 
-1. **Check the brief.** It must name the reader, what they know now, what they should know and do after, the goal, the format, which case studies back it, and which pages it links to. A missing field goes back to `wugweb-strategy`. Nothing is drafted without a brief.
+1. **Check the brief.** It must name the six fields `wugweb-strategy` sets for this check (`.claude/skills/wugweb-strategy/references/brief-format.md`): the reader, what they know now, what they should know and do after, the goal, the format, and which case studies back it. A missing field goes back to `wugweb-strategy`. Links and dates are used when the brief has them; their absence does not stop the draft. Nothing is drafted without a brief.
 2. **Audit what exists.** Read the current piece and its live page. Give it one verdict: keep, update, merge or retire. List every claim, link and image, with what is backed and what is not (`evidence.md`).
 3. **Media, light.** Measure the cover and inline images already in the store: status, size, pixel size, alt. Look at each one before writing its alt text or caption.
 4. **Outline, then draft.** One declared structure, held throughout. Use the body standard for the type, below. Every claim points to a screen, a sourced number, a named fact or a linked case study; anything else is cut or marked unvalidated.
@@ -27,7 +27,7 @@ Where each kind of piece is stored is in `ops-cycle.md`. Media is existing files
 
 ## Body standards (first draft; for the owner's review, not a final standard)
 
-Mark any piece written from these "draft standard".
+Mark any piece written from these "draft standard", and say in the reply that the standard is a draft awaiting the owner's review.
 
 - **Blog post:** the opening states the claim and who it is for, with no warm-up. One teachable thing; more than one becomes a series. Sections with claim headings, the point first, then the evidence. Limits or trade-offs. A close that resolves the opening with one next step, soft where the page informs.
 - **Service page:** what it does and for whom; the problem it removes; how it works (what goes in, what is done, what comes out); what it needs from the client; proof only from real case studies, linked; limits; one action.

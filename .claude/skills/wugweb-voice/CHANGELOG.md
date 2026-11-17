@@ -2,6 +2,7 @@
 
 ## [0.3.0] 2026-11-17
 
+- Owner answered "all yes" on the pending list, 2026-11-17. Version stays 0.3.0 (his lock). Applied: `references/handoff.md` names the `wugweb-strategy` signal log (`references/topics-and-calendar.md`) as a read-only input, its words vocabulary candidates only; a 40 to 60 word `summary` field in the response; translated copy and working preferences recorded as out of scope; the "we" or "I" choice is the owner's per piece, not a fixed rule (`SKILL.md`, `references/modes.md`); helper list confirmed, kept in `references/tooling.md` only; `references/standing-rules.md` is a marked copy of the standing rules, built into the export and checked against `docs/skills/STANDING-RULES.md` by `scripts/test.mjs`. Writing samples: the owner will supply source material; none received yet, so the voice is still uncalibrated.
 - Version locked at 0.3.0 by the owner. Do not bump, not even to 0.3.1, without the owner's say.
 - No change to the method, the rules or the files; the version number is set and pinned only. The 0.2.1 portability package carries forward.
 

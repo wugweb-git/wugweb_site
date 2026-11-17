@@ -42,7 +42,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 ## 3. Hero, stats and summary
 
 - Brand label: short title, else client name. H1 = the title (client + what was built). Then the subtitle and a meta list holding present keys only.
-- Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. Never a generic device mockup when a project-specific visual exists.
+- Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. The cover rule itself lives in `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
 - `stats` under the hero when 2 to 4 verified results exist; the rest go to the Results chapter.
 - Summary = the first chapter's lead when it is 40 to 60 words; otherwise no summary block.
 
@@ -88,7 +88,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - Every section needs an id and an accessible name, so every chapter needs a real heading.
 - Filters sit inside the grid they filter, never as a section of their own.
 - First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
-- One yellow conversion action per page; labels describe the action; yellow stays under 10% of the page.
+- One yellow conversion action per page; labels describe the action. The yellow rule (its share of the page and where it may rest) lives in `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`.
 - The five existing blocks are signed off by the owner (2026-11-17); the bento layout on the case study page is the one this work replaces.
 - The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; a case study never carries a `faqs` block; the FAQ rules for service pages and blog posts are in `own-content.md`.
 
@@ -138,7 +138,7 @@ The site's one call to action stays in the global footer. No second CTA.
 - Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
 - `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
 - Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
-- A long video has an `aria-label` that says what it shows. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology (owner, 2026-11-17).
+- A long video has an `aria-label` that says what it shows. Loops follow the pause control rule in `media-standard.md`.
 - AA contrast on client colours; focus visible and never hidden under the sticky header; chapter anchors clear the sticky header.
 - A rail's scroll area is reachable by keyboard (`tabindex="0"` where the browser does not do it) and uses `overscroll-behavior-x: contain`.
 - The viewer shows an image at its natural size, at least twice the thumbnail.

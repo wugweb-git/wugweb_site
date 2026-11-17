@@ -21,4 +21,4 @@ Text #f4f4f4, muted #bababa and surfaces #191919 and #2b2b2b are deliberate and 
 :root { --color-text-primary: #f4f4f4; }
 ```
 
-Source: CLAUDE.md, working agreements.
+Source: CLAUDE.md, working agreements. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.

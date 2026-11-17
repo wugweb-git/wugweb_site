@@ -18,10 +18,10 @@ Third-party helpers stay at Read and Propose. Only a Wugweb skill writes, and on
 
 | Skill | Owns | Install state on 2026-11-16 |
 |---|---|---|
-| `wugweb-voice` | The one Wugweb voice | Not installed; plan only |
-| `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Not installed; plan only |
+| `wugweb-voice` | The one Wugweb voice | Installed; uncalibrated until the owner supplies writing samples |
+| `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Installed |
 | `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; `ui-system-mapper` is merged into it and retired (owner, 2026-11-17) |
-| `wugweb-strategy` | Content strategy, calendar, briefs | Not installed; plan only |
+| `wugweb-strategy` | Content strategy, calendar, briefs | Installed |
 | `wugweb-seo` | Keywords, on-page rules, schema, AI search, reporting | Installed; one skill with plan, audit and report parts |
 
 Call a sibling by the name that is installed. The links are in `handoffs.md`.
