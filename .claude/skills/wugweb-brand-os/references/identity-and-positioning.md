@@ -4,17 +4,25 @@ What Wugweb is and is not, the promise, the six pillars and "does a lot, into on
 
 ## Positioning line
 
-**Not decided: owner.** Answered 2026-11-16: neither line in use is chosen. The owner will supply the line. Until then, leave the line blank and never pick one.
+**Not decided: owner.** Answered 2026-11-17 from the Notion read: the owner picks one of the lines below or writes a new one. Until then, leave the line blank and never pick one.
 
 Lines found in use, for reference only. Do not use any of them as the line:
 
 | Line | Where | Status |
 | --- | --- | --- |
 | "product and experience architecture studio" | The live site | In use, not chosen |
+| "Digital Experience Agency" | Home page SEO title | In use, not chosen |
 | "systems-minded design partner" | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md` | Source, not chosen |
 | "Creative UX Design Agency" | 2023 Notion profile | Stale |
+| "multidisciplinary product engineering company" | Notion team capability profile, July 2026 | Source, not chosen |
+| "Outcome-driven, cross-functional product teams" | Notion rate card | Source, not chosen |
+| "Product + UX + Automation" | Notion pitch deck, April 2026 | Source, not chosen |
 
 When asked for the positioning line, answer "not decided: the owner supplies it" and list the lines above with their status.
+
+## Audience
+
+**Blank.** No Notion page names one (2026-11-17). Leave it blank until the owner supplies it.
 
 ## What Wugweb is (source: `BRAND_POSITION.md`)
 

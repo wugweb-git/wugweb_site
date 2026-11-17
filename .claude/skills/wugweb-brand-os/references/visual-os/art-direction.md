@@ -133,3 +133,13 @@ Take the principle, never the composition. Name what the reference does (hierarc
 ## Logo
 
 **Confirmed by the owner (question 18):** the two-tone rule and the logo checks live here, with sizes in kits. Use the real logo file, never redraw it, and never bake a generated logo into an image.
+
+**Approved by the owner 2026-11-17 (question 19):**
+
+- `public/brand/logo-large.svg` is the lockup; `public/brand/logo-small.svg` is the mark.
+- Their tones are fixed: the lockup is white and grey, the mark yellow and white.
+- The logo files are exempt from the pure white and yellow rules. Nothing else is.
+- Clear space is required on every side, equal to the height of the mark. `wugweb-kits` holds the value.
+- Minimum size: `wugweb-kits` holds it; the 40px nav logo is the floor.
+- No one-colour version until one is needed. The logo appears only on black.
+- The unused `public/brand/wugweb-mark.png` is approved to go; it is removed in a site change, not by this skill.

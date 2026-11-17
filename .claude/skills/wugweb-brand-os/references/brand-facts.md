@@ -2,23 +2,23 @@
 
 Facts about Wugweb, each with its source and status. `wugweb-seo` reads this file one way and never rewrites it.
 
-**Nothing here is approved yet except the six pillars.** The owner began confirming these on 2026-11-16 (question 4) and has not finished. Until a row says "approved" with a date, the fact is not approved and copy that uses it fails the fact check.
+The owner approved the rows marked "approved 2026-11-17" from the Notion read (question 4). Every other row is not approved, and copy that uses it fails the fact check.
 
 | Fact | What exists today | Source | Status |
 | --- | --- | --- | --- |
-| Brand name and spelling | "Wugweb"; the 2023 profile also writes "WugWeb" | Site, `CLAUDE.md`, 2023 profile | Owner to confirm one spelling |
-| Legal name | Two forms: "Wug Web Service Pvt Ltd" and "WugWeb Services Pvt Ltd" | 2023 profile (stale) | Owner to say which |
-| One fixed line: what Wugweb is, for whom, what is distinct | Three competing descriptors | Site, `BRAND_POSITION.md`, 2023 profile | Blank. Owner will supply |
+| Brand name and spelling | "Wugweb" | Site, owner | Approved 2026-11-17 |
+| Legal name | Three forms in Notion: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd" | 2023 profile | Owner to pick one |
+| One fixed line: what Wugweb is, for whom, what is distinct | Five competing lines (see `identity-and-positioning.md`) | Site, Notion 2023 to 2026 | Blank. Owner to pick or write |
 | Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Approved, fixed |
 | Website | `wugweb.com` | `CLAUDE.md` | Exists |
-| Phone | The WhatsApp number used in the site nav | `CLAUDE.md` | Owner to confirm it is the public number |
-| Email | `hello@wugweb.com` | 2023 profile (stale) | Owner to confirm |
-| Address | One Noida address | 2023 profile (stale) | Owner to confirm |
-| Founding date | 4 December 2020 | 2023 profile (stale) | Owner to confirm |
-| Team size | "5-10 people" | 2023 profile (stale) | Owner to confirm |
-| Projects delivered | Both "200+" and "400+" | 2023 profile (stale) | Two figures conflict |
-| Markets served | Several lists that differ | 2023 profile (stale) | Owner to confirm |
-| Official profile links | 59 Presence records in Sanity; Clutch, DesignRush and GoodFirms named in the repo | `CLAUDE.md` | Not read. Owner to say which are official |
+| Phone | The WhatsApp number used in the site nav | `CLAUDE.md`, owner | Approved 2026-11-17 |
+| Email | `hello@wugweb.com` | 2023 profile, owner | Approved 2026-11-17 |
+| Address | WeWork Berger Delhi One, Floor 19, Sector 16B, Noida 201301 | 2023 profile, owner | Approved 2026-11-17, while it stays current |
+| Founding date | 4 December 2020 | 2023 profile, owner | Approved 2026-11-17 |
+| Team size | "5-10 people" (2023) against 21 names in the July 2026 team capability profile | Notion | No figure until the owner gives one |
+| Projects delivered | Both "200+" and "400+" on one 2023 page | 2023 profile | No figure until the owner picks |
+| Markets served | Three lists that differ | 2023 profile | No list until the owner picks |
+| Official profile links | No Wugweb links in Notion; Behance and Dribbble "wugweb" named without URLs; 59 Presence records in Sanity | Notion, `CLAUDE.md` | Open. Owner to say which are official |
 
 ## Rules for using facts
 
@@ -47,7 +47,7 @@ The 2023 profile also holds tax, registration and bank details. They are not bra
 - State a fact only when its row says approved.
 - A number is given with its source and date, or not at all.
 - A client is named only when the owner has cleared that name for public use.
-- Unapproved values are described, not written out in this file, so nobody copies a stale value from it. The register above names where each value exists today.
+- Unapproved values are described or listed as candidates, never marked usable, so nobody copies a stale value from this file.
 - The rules on identical details, one spelling, the one fixed line and the profile list were reported by the `wugweb-seo` session from its own reading.
 
 ## How a fact gets in

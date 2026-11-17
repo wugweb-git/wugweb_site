@@ -76,16 +76,16 @@ The owner will supply every open item below, and positioning, values, audience a
 
 | No. | Question | Status |
 | --- | --- | --- |
-| 1 | Positioning line | Answered: neither. Owner will supply |
-| 2 | Values | Answered: owner will supply |
-| 3 | Audience | Answered: owner will supply |
-| 4 | Facts about Wugweb | In progress |
+| 1 | Positioning line | Answered 2026-11-17: owner picks from the lines in Notion or writes one |
+| 2 | Values | Answered 2026-11-17: the 2023 five |
+| 3 | Audience | Answered 2026-11-17: stays blank |
+| 4 | Facts about Wugweb | Answered 2026-11-17: see `brand-facts.md`; legal name, team size, projects, markets and profiles still open |
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
 | 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
 | 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |
 | 8 | Where working preferences live | Closed: in `docs/skills/STANDING-RULES.md` |
 | 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
-| 10 | Visual OS and Brand Strategy documents, nine source images | Open |
+| 10 | Visual OS and Brand Strategy documents, nine source images | Open: none in Notion (2026-11-17); owner to name the pages if they exist |
 | 11 | Where the plan is kept | Confirmed |
 | 12 | Crop definition and four wording changes | Answered: definition approved and held only in the skill; the four guideline edits are dropped |
 | 13 | "The client is the hero" | Confirmed |
@@ -94,8 +94,8 @@ The owner will supply every open item below, and positioning, values, audience a
 | 16 | Pillar glow as a gradient exception | Confirmed: allowed |
 | 17 | Slight bounce in motion | Confirmed: within the brand |
 | 18 | Logo rules live here, sizes in kits | Confirmed |
-| 19 | Logo: which file is the lockup (`public/brand/logo-large.svg`) and which the mark (`logo-small.svg`); the two tones; whether the logo's pure white and yellow are exempt from the colour rules; clear space; minimum size; mark construction; live type in the lockup; a one-colour or light-background version; whether the unused `wugweb-mark.png` can go | Open. Owner answers in Notion |
-| 20 | `wugweb-work` lists "brand identity" as a case-study archetype with ToT as the example, but no real brand content exists yet | Open |
+| 19 | Logo files, tones, exemption, clear space, minimum size, one-colour version, unused PNG | Answered 2026-11-17: see `visual-os/art-direction.md`. Mark construction and live type stay open |
+| 20 | "Brand identity" as a case-study archetype with ToT as the example | Answered 2026-11-17: keep the archetype, do not name ToT (client record is under NDA); ToT fixes belong to `wugweb-work` |
 | 21 | Secondary colours: kits README, code and question 6 differed | Answered 2026-11-17: all six pillar colours stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the accent stays grey; yellow stays the one brand colour |
 
 ## Rules restated from helper skills

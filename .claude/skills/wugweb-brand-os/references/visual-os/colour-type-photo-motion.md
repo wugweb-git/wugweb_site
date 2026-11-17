@@ -63,8 +63,8 @@ Palette behaviour by mode, from the same file:
 - The lockup is two-tone, and two-tone titles mirror it.
 - Use the real logo file wherever a logo belongs. Never initials, an emoji, a generic mark or a redrawn version, and never recoloured or re-proportioned.
 - Show a partner's or client's logo in its own form, in greyscale if a row needs calm.
-- A mark must read at very small size, in one colour, and in black and white.
-- The brand guidelines hold no logo rules (owner item 18). Sizes are in `wugweb-kits`.
+- The logo appears only on black; no one-colour version until one is needed (question 19).
+- The full logo rules are in `art-direction.md`. Sizes are in `wugweb-kits`.
 
 ## Photography (source: `15_PHOTOGRAPHY_DIRECTION.md`)
 

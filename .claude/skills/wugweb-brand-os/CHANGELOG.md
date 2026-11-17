@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- Owner approved the Notion answers for questions 4, 19 and 20 (2026-11-17): approved facts, the 2023 five as values, seven positioning lines kept as candidates, audience blank, logo rules, brand identity archetype without naming ToT.
+
 ## 0.1.0, 2026-11-16
 
 First build, from the plan on the Notion page "wugweb-brand-os" and `docs/skills/wugweb-brand-os/PLAN.md`.

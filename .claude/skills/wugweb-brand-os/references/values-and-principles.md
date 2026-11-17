@@ -2,7 +2,7 @@
 
 ## Values
 
-**Not decided: owner.** Answered 2026-11-16: the owner will supply current values. The only values list on file is from the 2023 Notion profile, which is stale. Until the owner supplies them, answer "values: not decided, the owner supplies them" and never derive values from the principles below.
+**Approved 2026-11-17** (owner, from the 2023 Notion profile): User-Centricity, Innovation, Collaboration, Excellence, Social Impact. Use these five as the values. Never derive more values from the principles below.
 
 ## Principles (source: `brand_guidelines/01_FOUNDATION/PRINCIPLES.md`)
 

@@ -91,7 +91,7 @@ Version 0.1.0 holds the structure and every rule that has a source. Four core it
 - **Audience:** not decided. The owner will supply it.
 - **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
 
-Four more questions are open (4, 10, 19, 20). The owner will supply every open item in Notion (2026-11-17); when it arrives, propose the change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+One question is open (10), plus the open rows in `brand-facts.md` and the positioning line. Propose any change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -341,23 +341,23 @@ More than three segments means the audience has not been chosen.
 
 Facts about Wugweb, each with its source and status. `wugweb-seo` reads this file one way and never rewrites it.
 
-**Nothing here is approved yet except the six pillars.** The owner began confirming these on 2026-11-16 (question 4) and has not finished. Until a row says "approved" with a date, the fact is not approved and copy that uses it fails the fact check.
+The owner approved the rows marked "approved 2026-11-17" from the Notion read (question 4). Every other row is not approved, and copy that uses it fails the fact check.
 
 | Fact | What exists today | Source | Status |
 | --- | --- | --- | --- |
-| Brand name and spelling | "Wugweb"; the 2023 profile also writes "WugWeb" | Site, `CLAUDE.md`, 2023 profile | Owner to confirm one spelling |
-| Legal name | Two forms: "Wug Web Service Pvt Ltd" and "WugWeb Services Pvt Ltd" | 2023 profile (stale) | Owner to say which |
-| One fixed line: what Wugweb is, for whom, what is distinct | Three competing descriptors | Site, `BRAND_POSITION.md`, 2023 profile | Blank. Owner will supply |
+| Brand name and spelling | "Wugweb" | Site, owner | Approved 2026-11-17 |
+| Legal name | Three forms in Notion: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd" | 2023 profile | Owner to pick one |
+| One fixed line: what Wugweb is, for whom, what is distinct | Five competing lines (see `identity-and-positioning.md`) | Site, Notion 2023 to 2026 | Blank. Owner to pick or write |
 | Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Approved, fixed |
 | Website | `wugweb.com` | `CLAUDE.md` | Exists |
-| Phone | The WhatsApp number used in the site nav | `CLAUDE.md` | Owner to confirm it is the public number |
-| Email | `hello@wugweb.com` | 2023 profile (stale) | Owner to confirm |
-| Address | One Noida address | 2023 profile (stale) | Owner to confirm |
-| Founding date | 4 December 2020 | 2023 profile (stale) | Owner to confirm |
-| Team size | "5-10 people" | 2023 profile (stale) | Owner to confirm |
-| Projects delivered | Both "200+" and "400+" | 2023 profile (stale) | Two figures conflict |
-| Markets served | Several lists that differ | 2023 profile (stale) | Owner to confirm |
-| Official profile links | 59 Presence records in Sanity; Clutch, DesignRush and GoodFirms named in the repo | `CLAUDE.md` | Not read. Owner to say which are official |
+| Phone | The WhatsApp number used in the site nav | `CLAUDE.md`, owner | Approved 2026-11-17 |
+| Email | `hello@wugweb.com` | 2023 profile, owner | Approved 2026-11-17 |
+| Address | WeWork Berger Delhi One, Floor 19, Sector 16B, Noida 201301 | 2023 profile, owner | Approved 2026-11-17, while it stays current |
+| Founding date | 4 December 2020 | 2023 profile, owner | Approved 2026-11-17 |
+| Team size | "5-10 people" (2023) against 21 names in the July 2026 team capability profile | Notion | No figure until the owner gives one |
+| Projects delivered | Both "200+" and "400+" on one 2023 page | 2023 profile | No figure until the owner picks |
+| Markets served | Three lists that differ | 2023 profile | No list until the owner picks |
+| Official profile links | No Wugweb links in Notion; Behance and Dribbble "wugweb" named without URLs; 59 Presence records in Sanity | Notion, `CLAUDE.md` | Open. Owner to say which are official |
 
 ## Rules for using facts
 
@@ -386,7 +386,7 @@ The 2023 profile also holds tax, registration and bank details. They are not bra
 - State a fact only when its row says approved.
 - A number is given with its source and date, or not at all.
 - A client is named only when the owner has cleared that name for public use.
-- Unapproved values are described, not written out in this file, so nobody copies a stale value from it. The register above names where each value exists today.
+- Unapproved values are described or listed as candidates, never marked usable, so nobody copies a stale value from this file.
 - The rules on identical details, one spelling, the one fixed line and the profile list were reported by the `wugweb-seo` session from its own reading.
 
 ## How a fact gets in
@@ -461,17 +461,25 @@ What Wugweb is and is not, the promise, the six pillars and "does a lot, into on
 
 ## Positioning line
 
-**Not decided: owner.** Answered 2026-11-16: neither line in use is chosen. The owner will supply the line. Until then, leave the line blank and never pick one.
+**Not decided: owner.** Answered 2026-11-17 from the Notion read: the owner picks one of the lines below or writes a new one. Until then, leave the line blank and never pick one.
 
 Lines found in use, for reference only. Do not use any of them as the line:
 
 | Line | Where | Status |
 | --- | --- | --- |
 | "product and experience architecture studio" | The live site | In use, not chosen |
+| "Digital Experience Agency" | Home page SEO title | In use, not chosen |
 | "systems-minded design partner" | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md` | Source, not chosen |
 | "Creative UX Design Agency" | 2023 Notion profile | Stale |
+| "multidisciplinary product engineering company" | Notion team capability profile, July 2026 | Source, not chosen |
+| "Outcome-driven, cross-functional product teams" | Notion rate card | Source, not chosen |
+| "Product + UX + Automation" | Notion pitch deck, April 2026 | Source, not chosen |
 
 When asked for the positioning line, answer "not decided: the owner supplies it" and list the lines above with their status.
+
+## Audience
+
+**Blank.** No Notion page names one (2026-11-17). Leave it blank until the owner supplies it.
 
 ## What Wugweb is (source: `BRAND_POSITION.md`)
 
@@ -774,16 +782,16 @@ The owner will supply every open item below, and positioning, values, audience a
 
 | No. | Question | Status |
 | --- | --- | --- |
-| 1 | Positioning line | Answered: neither. Owner will supply |
-| 2 | Values | Answered: owner will supply |
-| 3 | Audience | Answered: owner will supply |
-| 4 | Facts about Wugweb | In progress |
+| 1 | Positioning line | Answered 2026-11-17: owner picks from the lines in Notion or writes one |
+| 2 | Values | Answered 2026-11-17: the 2023 five |
+| 3 | Audience | Answered 2026-11-17: stays blank |
+| 4 | Facts about Wugweb | Answered 2026-11-17: see `brand-facts.md`; legal name, team size, projects, markets and profiles still open |
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
 | 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
 | 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |
 | 8 | Where working preferences live | Closed: in `docs/skills/STANDING-RULES.md` |
 | 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
-| 10 | Visual OS and Brand Strategy documents, nine source images | Open |
+| 10 | Visual OS and Brand Strategy documents, nine source images | Open: none in Notion (2026-11-17); owner to name the pages if they exist |
 | 11 | Where the plan is kept | Confirmed |
 | 12 | Crop definition and four wording changes | Answered: definition approved and held only in the skill; the four guideline edits are dropped |
 | 13 | "The client is the hero" | Confirmed |
@@ -792,8 +800,8 @@ The owner will supply every open item below, and positioning, values, audience a
 | 16 | Pillar glow as a gradient exception | Confirmed: allowed |
 | 17 | Slight bounce in motion | Confirmed: within the brand |
 | 18 | Logo rules live here, sizes in kits | Confirmed |
-| 19 | Logo: which file is the lockup (`public/brand/logo-large.svg`) and which the mark (`logo-small.svg`); the two tones; whether the logo's pure white and yellow are exempt from the colour rules; clear space; minimum size; mark construction; live type in the lockup; a one-colour or light-background version; whether the unused `wugweb-mark.png` can go | Open. Owner answers in Notion |
-| 20 | `wugweb-work` lists "brand identity" as a case-study archetype with ToT as the example, but no real brand content exists yet | Open |
+| 19 | Logo files, tones, exemption, clear space, minimum size, one-colour version, unused PNG | Answered 2026-11-17: see `visual-os/art-direction.md`. Mark construction and live type stay open |
+| 20 | "Brand identity" as a case-study archetype with ToT as the example | Answered 2026-11-17: keep the archetype, do not name ToT (client record is under NDA); ToT fixes belong to `wugweb-work` |
 | 21 | Secondary colours: kits README, code and question 6 differed | Answered 2026-11-17: all six pillar colours stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the accent stays grey; yellow stays the one brand colour |
 
 ## Rules restated from helper skills
@@ -889,7 +897,7 @@ The Visual check needs any model that can see images. A text-only model can chec
 
 ## Values
 
-**Not decided: owner.** Answered 2026-11-16: the owner will supply current values. The only values list on file is from the 2023 Notion profile, which is stale. Until the owner supplies them, answer "values: not decided, the owner supplies them" and never derive values from the principles below.
+**Approved 2026-11-17** (owner, from the 2023 Notion profile): User-Centricity, Innovation, Collaboration, Excellence, Social Impact. Use these five as the values. Never derive more values from the principles below.
 
 ## Principles (source: `brand_guidelines/01_FOUNDATION/PRINCIPLES.md`)
 
@@ -1126,6 +1134,16 @@ Take the principle, never the composition. Name what the reference does (hierarc
 
 **Confirmed by the owner (question 18):** the two-tone rule and the logo checks live here, with sizes in kits. Use the real logo file, never redraw it, and never bake a generated logo into an image.
 
+**Approved by the owner 2026-11-17 (question 19):**
+
+- `public/brand/logo-large.svg` is the lockup; `public/brand/logo-small.svg` is the mark.
+- Their tones are fixed: the lockup is white and grey, the mark yellow and white.
+- The logo files are exempt from the pure white and yellow rules. Nothing else is.
+- Clear space is required on every side, equal to the height of the mark. `wugweb-kits` holds the value.
+- Minimum size: `wugweb-kits` holds it; the 40px nav logo is the floor.
+- No one-colour version until one is needed. The logo appears only on black.
+- The unused `public/brand/wugweb-mark.png` is approved to go; it is removed in a site change, not by this skill.
+
 ---
 
 <!-- references/visual-os/colour-type-photo-motion.md -->
@@ -1195,8 +1213,8 @@ Palette behaviour by mode, from the same file:
 - The lockup is two-tone, and two-tone titles mirror it.
 - Use the real logo file wherever a logo belongs. Never initials, an emoji, a generic mark or a redrawn version, and never recoloured or re-proportioned.
 - Show a partner's or client's logo in its own form, in greyscale if a row needs calm.
-- A mark must read at very small size, in one colour, and in black and white.
-- The brand guidelines hold no logo rules (owner item 18). Sizes are in `wugweb-kits`.
+- The logo appears only on black; no one-colour version until one is needed (question 19).
+- The full logo rules are in `art-direction.md`. Sizes are in `wugweb-kits`.
 
 ## Photography (source: `15_PHOTOGRAPHY_DIRECTION.md`)
 
