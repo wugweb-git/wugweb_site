@@ -68,7 +68,7 @@ These jobs are defaults for the owner to confirm. Win one channel before adding 
 
 ## 6. What Wugweb does not publish
 
-Keep a written list. Start with these, from the owner's standing rules; the owner adds the rest:
+Keep a written list. Start with these, from the owner's standing rules (`docs/skills/STANDING-RULES.md`); the owner adds the rest:
 
 - Anything with an invented number, quote or result.
 - A client name, logo or work without a recorded permission status.

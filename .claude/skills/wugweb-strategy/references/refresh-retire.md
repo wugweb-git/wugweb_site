@@ -40,7 +40,7 @@ Send to the owner, with a copy to `wugweb-seo`:
 - the piece and its URL;
 - the reason and evidence;
 - what replaces it, if anything;
-- links into it that need a new target, picked by this skill;
+- links into it that need a new target, from `wugweb-seo`, inside the structure this skill sets;
 - the question for `wugweb-seo`: what the URL does.
 
 Nothing is unpublished, redirected or deleted by this skill.

@@ -17,7 +17,7 @@ One brief per piece, one page long, handed to `wugweb-work`. It says what the pi
 | 7 | Piece structure | A pointer to one structure in `piece-structures.md` |
 | 8 | Points the piece must make | Up to five, as plain notes. No headings, no copy |
 | 9 | Search | The cluster and primary phrase from the `wugweb-seo` site map, copied unchanged. `wugweb-work` asks `wugweb-seo` for the per-brief keyword notes and limits |
-| 10 | Links | Which service pages, posts and case studies it links to. This skill picks the targets; `wugweb-seo` owns the link rules (decision 20) |
+| 10 | Links | Which service pages, posts and case studies it links to. Pasted from `wugweb-seo` unchanged: the link targets for this piece, picked inside the pillar and cluster structure this skill sets (decision 20). The proof map decides which case study backs the page (decision 23) |
 | 11 | Source | The Notion row. For a refresh: the keep, change and remove list |
 | 12 | Must not say | Permissions not given, sensitive clients, claims with no source |
 | 13 | Account and platform | One account in scope (decision 13) |

@@ -1,4 +1,4 @@
-# wugweb-strategy (single-file export for other tools, v0.1.0)
+# wugweb-strategy (single-file export for other tools, v0.1.1)
 
 Built from the files in this folder. Rebuild whenever the skill or `docs/skills/STANDING-RULES.md` changes. Read the skill first, then the reference a mode names.
 
@@ -107,7 +107,7 @@ If two skills could own a matter, say so and ask the owner. Never write the rule
 
 ## Rules that always apply
 
-Read these before any mode. They come from the owner and win over any helper.
+Read these before any mode. They come from the owner and win over any helper. The owner's full list is `docs/skills/STANDING-RULES.md`; if it differs from this list, that file wins.
 
 1. **Never invent.** No number, quote, date, topic, audience or result that is not in a source. A claim needs a screen, a sourced number or a named fact. Mark anything else "unvalidated" or "owner to set".
 2. **No write without approval.** Never write to Notion, Sanity or R2 without the owner's yes to that exact change, with a backup first. Show every change as current → proposed. Delete nothing.
@@ -186,12 +186,12 @@ Every link reads the same on both sides.
 | Skill | Gives this skill | Takes from this skill | This skill may not |
 | --- | --- | --- | --- |
 | `wugweb-work` | Finished pieces, return notes, post results | Briefs, the calendar, the proof map, repurposing and campaign plans, refresh or retire decisions | Write or edit copy, choose screens, set layout, publish |
-| `wugweb-seo` | Site keyword and intent map, topic gaps, refresh list, link rules and link audit, search reports, what a retired URL does | Business goal, audience, page list, link targets per piece, retire proposals | Change keywords, titles, link rules, on-page rules or a retired URL's behaviour |
+| `wugweb-seo` | Site keyword and intent map, topic gaps, refresh list, link targets, link rules and link audit, search reports, what a retired URL does | Business goal, audience, page list, the pillar and cluster structure, the proof map, retire proposals | Change keywords, titles, link rules, on-page rules or a retired URL's behaviour |
 | `wugweb-brand-os` | Positioning, audiences, messaging framework, approved facts | Requests only | Restate or alter any of it |
 | `wugweb-voice` | Nothing directly | Nothing | Set tone or phrasing; `wugweb-work` passes audience, purpose and form to voice |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
 
-Internal links (decision 20): this skill decides which pages and case studies a piece links to, through the proof map and brief field 10. `wugweb-seo` owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result.
+Internal links (decision 20): this skill sets the pillar and cluster structure and the proof map. `wugweb-seo` returns the link targets for each piece, owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result. If the proof map names a case study for a page, it wins on that case study (decision 23); `wugweb-seo` picks the other targets around it.
 
 If a named skill is not installed, do the step by hand with this skill's own rules, say which handoff was skipped, and label the result a manual check. Helper skills are listed in `references/skill-map.md`; they return proposals only.
 
@@ -304,7 +304,7 @@ These jobs are defaults for the owner to confirm. Win one channel before adding 
 
 ## 6. What Wugweb does not publish
 
-Keep a written list. Start with these, from the owner's standing rules; the owner adds the rest:
+Keep a written list. Start with these, from the owner's standing rules (`docs/skills/STANDING-RULES.md`); the owner adds the rest:
 
 - Anything with an invented number, quote or result.
 - A client name, logo or work without a recorded permission status.
@@ -453,7 +453,7 @@ One brief per piece, one page long, handed to `wugweb-work`. It says what the pi
 | 7 | Piece structure | A pointer to one structure in `piece-structures.md` |
 | 8 | Points the piece must make | Up to five, as plain notes. No headings, no copy |
 | 9 | Search | The cluster and primary phrase from the `wugweb-seo` site map, copied unchanged. `wugweb-work` asks `wugweb-seo` for the per-brief keyword notes and limits |
-| 10 | Links | Which service pages, posts and case studies it links to. This skill picks the targets; `wugweb-seo` owns the link rules (decision 20) |
+| 10 | Links | Which service pages, posts and case studies it links to. Pasted from `wugweb-seo` unchanged: the link targets for this piece, picked inside the pillar and cluster structure this skill sets (decision 20). The proof map decides which case study backs the page (decision 23) |
 | 11 | Source | The Notion row. For a refresh: the keep, change and remove list |
 | 12 | Must not say | Permissions not given, sensitive clients, claims with no source |
 | 13 | Account and platform | One account in scope (decision 13) |
@@ -711,6 +711,7 @@ Ladder of strength, strongest first: a sourced metric, a permitted client quote 
 - Prefer spreading proof: the same case study should not back every page. Flag any case study used on more than half the pages.
 - Note proof that is asked for and does not exist. That list goes to the owner as candidates for the next case study (decision 5): this skill proposes which case study is done next and which service it backs, never its claim or body.
 - `wugweb-work` reports which proof it used and which it could not find. Record both.
+- The proof map wins on which case study backs a page (decision 23). `wugweb-seo` picks the other link targets around it and may not drop or swap a case study the map names.
 - Metrics are scarce; choose them deliberately. Never infer a metric from a screen.
 
 ## Output
@@ -764,7 +765,7 @@ Send to the owner, with a copy to `wugweb-seo`:
 - the piece and its URL;
 - the reason and evidence;
 - what replaces it, if anything;
-- links into it that need a new target, picked by this skill;
+- links into it that need a new target, from `wugweb-seo`, inside the structure this skill sets;
 - the question for `wugweb-seo`: what the URL does.
 
 Nothing is unpublished, redirected or deleted by this skill.
@@ -940,7 +941,7 @@ Optional helper skills per mode, and what each may not do. Every mode works with
 | Skill | Link |
 | --- | --- |
 | `wugweb-work` | Takes briefs and plans; returns pieces, return notes, post results. Its Brief mode is for client work only (decision 4) |
-| `wugweb-seo` | Gives the site map, topic gaps, refresh list, link rules and audit, search reports, retired-URL behaviour. Takes goal, audience, page list, link targets, retire proposals |
+| `wugweb-seo` | Gives the site map, topic gaps, refresh list, link targets, link rules and audit, search reports, retired-URL behaviour. Takes goal, audience, page list, the pillar and cluster structure, the proof map, retire proposals |
 | `wugweb-brand-os` | Gives positioning, audiences, messaging, approved facts. Takes requests only |
 | `wugweb-voice` | No direct link. Reads the signal log |
 | `wugweb-kits` | No link. Its pending blocks are a calendar dependency |

@@ -33,6 +33,7 @@ Ladder of strength, strongest first: a sourced metric, a permitted client quote 
 - Prefer spreading proof: the same case study should not back every page. Flag any case study used on more than half the pages.
 - Note proof that is asked for and does not exist. That list goes to the owner as candidates for the next case study (decision 5): this skill proposes which case study is done next and which service it backs, never its claim or body.
 - `wugweb-work` reports which proof it used and which it could not find. Record both.
+- The proof map wins on which case study backs a page (decision 23). `wugweb-seo` picks the other link targets around it and may not drop or swap a case study the map names.
 - Metrics are scarce; choose them deliberately. Never infer a metric from a screen.
 
 ## Output

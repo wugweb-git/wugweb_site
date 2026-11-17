@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy skill 0.1.1 (2026-11-17)
+- Owner rulings applied to the skill files: link targets come from wugweb-seo inside the structure strategy sets (decision 20), the proof map wins on which case study backs a page (decision 23), pointer to `docs/skills/STANDING-RULES.md`. Exports rebuilt. Brief field 9 unchanged.
+
 ### Added — wugweb-kits skill: Wugweb rule groups, references and scripts (2026-11-17)
 
 - `.claude/skills/wugweb-kits/`: 26 rule files (shell 8, label 8, kits 10), references (component-sizes, six-layers, spec-templates, known-doc-clashes), scripts kits-check-page, kits-doc-drift, contrast, test; audit.mjs renamed kits-inventory.mjs with .astro support and shell findings; validate.mjs now checks the whole skill; fixed contrast figures 6.70 and 2.33 and the grep include pattern. AGENTS.md regenerated (47 rules).
