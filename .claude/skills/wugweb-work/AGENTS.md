@@ -558,6 +558,7 @@ How findings are written, how claims are tied to evidence, and how numbers and o
 - Inventory first, judge second. Then give the piece one verdict: keep, update, merge or retire.
 - Sort findings into three groups: broken, weak, polish.
 - Every finding carries an exact location and either a measurement or the quoted line. A finding without one is marked "could not verify". Report what passes too.
+- Order of the audit: inventory, findings (broken, weak, polish), the verdict, then the owner questions last, as one numbered list.
 - If a source cannot be reached, say so. A guess is never presented as measured.
 - Do the step that was asked. Scope does not grow silently.
 - Diagnose in this order and fix the higher layer first: positioning, message order, wording.
@@ -930,8 +931,8 @@ Stored per case study, keyed by URL and ETag so each file is read once.
 | `alt` | 125 characters or fewer |
 | `caption` | 25 words or fewer |
 | `chapterFit` | Which chapter it proves |
-| `principle` | Optional: a design principle the screen applies, with the decision (see `design-principles.md`) |
-| Videos add `demonstrates`, `loopable`, `posterAt`, `audio` | `audio` is reported only |
+| `principle` | A design principle the screen applies, with the decision (see `design-principles.md`). Optional per record, but each flow names at least one where a screen shows the decision |
+| Videos add `demonstrates`, `loopable`, `posterAt`, `audio` | On top of every field above, `what`, `kind`, `alt` and `caption` included. `audio` is reported only |
 
 ### 5. What each kind needs
 

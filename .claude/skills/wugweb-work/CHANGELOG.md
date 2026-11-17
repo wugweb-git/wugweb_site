@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- Live eval rerun graded (evals 2, 3, 4, 5, 8: 26 of 31; whole run now 64 of 78, 8 of 14 in full). Skill fixes: the audit ends with the owner questions as one numbered list (`evidence.md`); each flow names at least one design principle; video records carry every base field (`visual-read.md`).
+
 - From the live eval rerun: the `visual-read.md` example no longer teaches a wrong-client call (the Airtel-named file is a misnamed IndusNinja board); animated GIFs are read like videos; `ops-cycle.md` names both site-copy headings the bodies use; `SKILL.md` step 7 says the SEO title and description are handed to the owner as paste-in text, never written to his source.
 
 - Two more brand-os pointers (its eval 38 rerun): the claim order (`SKILL.md` step 2, `copy-and-seo.md`) and the meaning of "crop" (`forms.md`, `media-standard.md`) now point to `wugweb-brand-os` (`messaging.md`, `vocabulary.md`). The brief template keeps its fields, which the step needs.

@@ -8,6 +8,7 @@ How findings are written, how claims are tied to evidence, and how numbers and o
 - Inventory first, judge second. Then give the piece one verdict: keep, update, merge or retire.
 - Sort findings into three groups: broken, weak, polish.
 - Every finding carries an exact location and either a measurement or the quoted line. A finding without one is marked "could not verify". Report what passes too.
+- Order of the audit: inventory, findings (broken, weak, polish), the verdict, then the owner questions last, as one numbered list.
 - If a source cannot be reached, say so. A guess is never presented as measured.
 - Do the step that was asked. Scope does not grow silently.
 - Diagnose in this order and fix the higher layer first: positioning, message order, wording.
