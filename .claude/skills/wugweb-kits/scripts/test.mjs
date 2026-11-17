@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** Self test for the skill scripts. Plain Node, no dependencies.  node scripts/test.mjs */
 import { ratio } from './contrast.mjs'
+import { standingDrift } from './lib.mjs'
 import { spawnSync } from 'node:child_process'
 import { writeFileSync, mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -26,4 +27,8 @@ const css = join(dir, 's.css')
 writeFileSync(css, '.card-section {\n  max-width: 900px;\n}\n.site-header {\n  z-index: 50;\n}\n')
 const r3 = spawnSync('node', [join(here, 'kits-inventory.mjs'), dir], { encoding: 'utf8' })
 ok('inventory flags section max-width and nav z-index 50', /shell-no-section-max-width/.test(r3.stdout) && /nav z-index 50/.test(r3.stdout))
+const mark = '<!-- Marked copy of docs/skills/STANDING-RULES.md. x -->\n\n'
+ok('standing rules copy in step passes', standingDrift('# R\n- a\n', mark + '# R\n- a\n').length === 0)
+ok('standing rules drift fails', standingDrift('# R\n- a\n- b\n', mark + '# R\n- a\n').length === 1)
+ok('copied block line not in home fails', standingDrift('# R\n- a\n', mark + '# R\n- a\n', '<!-- copied from docs/skills/STANDING-RULES.md -->\n- z\n<!-- end copied block -->').length === 1)
 process.exit(fail ? 1 : 0)

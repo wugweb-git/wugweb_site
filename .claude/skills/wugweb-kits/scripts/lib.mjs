@@ -84,3 +84,15 @@ export async function readRules() {
     }),
   )
 }
+
+/** Standing rules: the skill's marked copy against the home file. Returns a list of problems. */
+export const STANDING_MARK = /^<!-- Marked copy of docs\/skills\/STANDING-RULES\.md[^\n]*-->\n\n/
+export function standingDrift(home, copy, skillText = '') {
+  const out = []
+  if (!STANDING_MARK.test(copy)) out.push('references/standing-rules.md lacks the marked-copy line')
+  if (copy.replace(STANDING_MARK, '') !== home) out.push('references/standing-rules.md differs from docs/skills/STANDING-RULES.md')
+  const block = /<!-- copied from docs\/skills\/STANDING-RULES\.md -->([\s\S]*?)<!-- end copied block -->/.exec(skillText)
+  if (skillText && !block) out.push('SKILL.md lacks the copied standing-rules block')
+  if (block) for (const l of block[1].split('\n').map((x) => x.trim()).filter(Boolean)) if (!home.includes(l)) out.push(`SKILL.md copied line not in the home file: ${l}`)
+  return out
+}
