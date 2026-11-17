@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- docs(skills): wugweb-brand-os plan (Notion and PLAN.md) records commit 9c8d0c95, the owner's answers of 2026-11-17 and the first eval run in progress.
+
 ### Changed — wugweb-strategy FAQ rules agreed with seo (2026-11-17)
 - Pending mark removed; version stays 0.1.2. Exports rebuilt.
 ### Changed — wugweb-work skill 0.5, FAQ block rules from strategy and seo, no campaign system (2026-11-17)

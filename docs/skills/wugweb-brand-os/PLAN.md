@@ -41,8 +41,8 @@
 |---|---|
 | Name | `wugweb-brand-os` |
 | Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. One plain Node script, for the export. |
-| Version | 0.1.0 (first draft) |
-| Status | First draft 0.1.0 built 2026-11-17 in `.claude/skills/wugweb-brand-os/`: `SKILL.md` body 1,573 words by the shared method, 17 reference files, evals written but not yet run, export built (13,402 words). Committed on a branch; not yet pushed to main. Main already holds a separate copy of this folder from the app (commit 1f2f490f) that differs from the branch, so the two need reconciling before the push. Many answers are correctly "not yet approved" until the owner items in section 15 are answered. |
+| Version | 0.1.0 |
+| Status | On main, commit 9c8d0c95 (2026-11-17): the merge of the session's draft and the app copy, with the owner's answers applied. `SKILL.md` body 1,945 words by the shared method, 17 reference files, one `evals/evals.json` (39 cases, first run in progress), export rebuilt, checks pass. Upload zip built; the owner uploads it to the Claude app. |
 | Development chat | `https://claude.ai/chat/490738f9-8b97-4826-befb-a28a6a63ad7a` |
 | Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-brand-os/PLAN.md` |
 | Owner | Vedanshu, Wugweb |
@@ -63,7 +63,7 @@
 |---|---|---|
 | Answer | A brand question | The rule, with its source file. A gap is reported as a gap. |
 | Visual check | An artwork or an artwork brief | Mode chosen, banned motifs found, pass or fail, what to fix |
-| Fact check | Copy that makes claims about Wugweb | Each claim marked approved, unverified or stale |
+| Fact check | Copy that makes claims about Wugweb | Each claim marked approved or not approved, with the status and source `brand-facts.md` records |
 | Change | A proposed brand rule | Current to proposed, with evidence, for the owner's approval |
 
 ## 3. Why
@@ -92,7 +92,7 @@ version: 0.1.0
 ---
 ```
 
-- **Body:** 1,500 to 2,000 words, imperative voice. Built: 1,573 words, with an added "What is not yet approved" section so gaps are reported, not filled. Purpose, when to use and when not, the four modes, the source order (approved decisions, then patterns, then observations), the never-do list, the pointer to `wugweb-voice`, and an index of the reference files.
+- **Body:** 1,500 to 2,000 words, imperative voice. Built: 1,945 words, with a status section at the top so gaps are reported, not filled. Purpose, when to use and when not, the four modes, the source order (approved decisions, then patterns, then observations), the never-do list, the pointer to `wugweb-voice`, and an index of the reference files.
 - **Progressive disclosure:** the name and description are always loaded; the body loads when the skill triggers; reference files load only when a mode needs them.
 - **No duplication:** a rule lives in one file only. The owner's standing rules live in `docs/skills/STANDING-RULES.md` and are not repeated here.
 - **Trigger words avoided:** the bare word "strategy", and topic, calendar, brief, campaign plan, refresh and repurpose, so that `wugweb-strategy` and this skill do not fire on each other's questions.
@@ -135,9 +135,9 @@ version: 0.1.0
 | `brand-strategy.md` | Brand strategy. Blank until the owner's Brand Strategy document arrives. |
 | `values-and-principles.md` | The ten principles from `01_FOUNDATION`; values once approved |
 | `audience.md` | Who Wugweb is for and what they already know. Blank until supplied. |
-| `messaging.md` | One claim, one audience tension, one proof, one outcome. Problem to Insight to System to Outcome. The transformation pairs. |
+| `messaging.md` | One claim, one audience tension, one proof, one outcome. Problem to Insight to System to Outcome. The client is the hero, Wugweb is the guide. Transformation pairs removed by the owner, 2026-11-17. |
 | `vocabulary.md` | Brand terms only: the name, the descriptor, pillar names |
-| `brand-facts.md` | Approved facts about Wugweb, each with source and date. Unverified facts are marked. |
+| `brand-facts.md` | Approved facts about Wugweb, each with source and date. Facts not yet approved say so. |
 | `review-gates.md` | Visual and fact check lists, the 0 to 2 scoring, source and rights labels |
 | `source-map.md` | Where each rule came from, known conflicts. The helper list sits in `tooling.md`, the only file that names Claude helpers, Notion or any vendor. |
 | `examples/` | Approved and rejected visuals once the owner supplies them |
@@ -153,7 +153,7 @@ Visual OS is art direction: how Wugweb's visuals should look and feel across the
 | `colour-type-photo-motion.md` | Colour roles as meaning, type as a graphic object, photography and motion character |
 | `metaphors.md` | The ten metaphors and what each shape means |
 | `objects-and-components.md` | The eleven artwork components (ribbons, routes, cards, devices and the rest) |
-| `formats-and-campaigns.md` | The format decision matrix, the per-format formulas, social and deck art direction, campaign systems |
+| `formats-and-campaigns.md` | The format decision matrix, the per-format formulas, social and deck art direction. Wugweb has no campaign system (owner, 2026-11-17) |
 | `references-and-patterns.md` | Evidence rules, the pattern registry, rights labels |
 | `judging-a-visual.md` | How to judge composition, colour, subject, lighting and format, and what to fix |
 
@@ -217,7 +217,7 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 **MATRIX ROW: wugweb-brand-os**
 
 - **Owns:** Brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules, and Visual OS: art direction for site, social and deck visuals, metaphors, reference and pattern libraries, how to judge a visual.
-- **Reads (sources):** `brand_guidelines/`, `kits_design_system/docs/design.md`, `CLAUDE.md`, owner decisions, and the owner's Visual OS and Brand Strategy documents once supplied. The 2023 Notion profile is stale background only.
+- **Reads (sources):** `brand_guidelines/`, `kits_design_system/docs/design.md`, `CLAUDE.md`, owner decisions, and the owner's Visual OS and Brand Strategy documents once supplied. The 2023 Notion profile is stale.
 - **Gives to:** `wugweb-voice`, `wugweb-strategy`: positioning, audience, messaging framework, approved facts. `wugweb-kits`: how things should look and feel. `wugweb-work`: brand rules, Visual OS direction, visual and fact check findings. `wugweb-seo`: the approved brand name, descriptor and approved facts, read one way and never rewritten.
 - **Takes from:** `wugweb-kits`: token and component facts. `wugweb-work`: drafts and artwork briefs to check. `wugweb-voice`: nothing copied; it points there for voice and tone. `wugweb-strategy` and `wugweb-seo`: nothing.
 - **Never does:** Authors or rewrites content. Holds voice, content strategy, token, layout or SEO rules. Touches client brands or media files. Invents facts. Writes to Notion, Sanity, R2 or `brand_guidelines/`; every change is a proposal for the owner.
@@ -231,12 +231,12 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 | Answer | 8 brand questions | Each answer cites one reference file; a gap is reported as a gap, not filled |
 | Visual check | Three briefs: one with an AI brain, one mixing two modes, one clean | The first two fail with the reason and the fix; the third passes |
 | Cover rule | A case-study cover brief showing a generic laptop | Fails, naming the rule |
-| Fact check | Copy citing "400+ projects" | Marked unverified until `brand-facts.md` holds an approved number |
+| Fact check | Copy citing "400+ projects" | Marked not approved until `brand-facts.md` holds an approved number |
 | No duplication | Search across all skill folders in the system | Each rule text appears once; no voice rule appears in brand-os |
 | No writes | End to end run | Nothing written outside chat or a draft file |
 | Portability | The answer, fact check and visual check evals run twice: as the installed skill, and from the single-file export in a second tool | Both runs give the same findings |
 
-**Status 2026-11-17.** The merged skill holds 38 tests in `evals/evals.json`, not yet run. The skill is not yet verified in the Claude app. Branch draft and main's app copy were merged into one folder; contradictions between them are listed for the owner.
+**Status 2026-11-17.** The tests are in `evals/evals.json` (39 cases). First run in progress: three agents answered the prompts from the skill alone; a grader scores them against the expected results. The skill is not yet verified in the Claude app.
 
 ## 14. Crop wording: ruling and proposal
 
@@ -265,20 +265,20 @@ Until approved, the skill carries the definition in `visual-os/art-direction.md`
 2. **Values.** The only list is from 2023. Supply current values, or approve a proposal built from the ten principles? Answered 2026-11-16: the owner will supply current values. The ten principles stay as principles.
 3. **Audience.** Who is Wugweb for? No approved source exists. Answered 2026-11-16: the owner will supply it; `audience.md` stays blank until then.
 4. **Facts about Wugweb.** Which numbers are approved: projects, team size, markets, founding date? Section 19 lists every fact that needs confirming, including the spelling, legal name, address, phone, email and official profiles. In progress 2026-11-16: the owner is confirming each fact in section 19. Until confirmed, every fact is unverified.
-5. **`brand_guidelines/`.** Recommended: it stays untouched as the evidence archive and the skill holds the working rules.
-6. **Colour conflict.** `04_COLOR_ROLES.md` says avoid purple, green and orange; the site uses all three as service colours. Which wins for artwork? The same three colours are pillar colours in the kits docs.
-7. **AI prompt engine folder** (`04_AI_PROMPT_ENGINE`). Recommended: Visual OS here owns it, since it turns art direction into briefs. The alternative is the social module in `wugweb-work`.
+5. **`brand_guidelines/`.** Recommended: it stays untouched as the evidence archive and the skill holds the working rules. Answered 2026-11-17: yes, untouched.
+6. **Colour conflict.** `04_COLOR_ROLES.md` says avoid purple, green and orange; the site uses all three as service colours. Which wins for artwork? The same three colours are pillar colours in the kits docs. Answered 2026-11-17: allowed as pillar colours.
+7. **AI prompt engine folder** (`04_AI_PROMPT_ENGINE`). Recommended: Visual OS here owns it, since it turns art direction into briefs. The alternative is the social module in `wugweb-work`. Answered 2026-11-17: Visual OS here owns it.
 8. **Working preferences.** How the owner reasons and gives feedback belongs in neither `wugweb-voice` nor here. Settled: they are in the section "Working with the owner" of `docs/skills/STANDING-RULES.md`.
-9. **"Does a lot, into one".** Public wording, or only the idea behind it?
+9. **"Does a lot, into one".** Public wording, or only the idea behind it? Answered 2026-11-17: an idea, not public wording, until the owner picks the wording.
 10. **Source documents.** The owner's Visual OS and Brand Strategy documents, and the nine source images named in the guidelines, if available.
 11. **Where the plan is kept.** This Notion page and `docs/skills/wugweb-brand-os/PLAN.md` in `wugweb-git/wugweb_site`, branch main, settled by the standing rule of one Notion page per skill and one plan file in the repo. Confirmed 2026-11-16.
-12. **Crop wording.** Approve the definition and the four wording changes in section 14?
-13. **Messaging stance.** Accept "the client is the hero, Wugweb is the guide"? Recommended: yes. It is held by `wugweb-voice` until answered.
-14. **Background.** The guidelines call warm or light backgrounds the default; the site canvas is black. Does the light default apply only to artwork, or is it out of date?
-15. **Brand colour.** The guidelines treat magenta as the brand energy colour; the kits docs treat yellow as the one brand colour. Which is right for artwork?
-16. **Gradients.** The guidelines ban gradient-heavy looks; the service pages use a glow per pillar. Is the glow an allowed exception?
-17. **Motion.** The guidelines say motion is not elastic; the nav and hover spring has a slight bounce. Is a slight bounce within the brand?
-18. **Logo rules.** The guidelines hold none. Should the two-tone rule and the logo checks live here, with sizes in kits?
+12. **Crop wording.** Approve the definition and the four wording changes in section 14? 2026-11-17: definition approved and held in the skill. The four edits conflict with item 5 (archive untouched), so they are held. Recommended: drop them; the definition lives only in the skill. Open with the owner.
+13. **Messaging stance.** Accept "the client is the hero, Wugweb is the guide"? Answered 2026-11-17: yes.
+14. **Background.** The guidelines call warm or light backgrounds the default; the site canvas is black. Does the light default apply only to artwork, or is it out of date? Answered 2026-11-17 in part: black canvas is the default; light only where the owner says. Open: which formats. Recommended: none until named.
+15. **Brand colour.** The guidelines treat magenta as the brand energy colour; the kits docs treat yellow as the one brand colour. Which is right for artwork? Answered 2026-11-17: yellow.
+16. **Gradients.** The guidelines ban gradient-heavy looks; the service pages use a glow per pillar. Is the glow an allowed exception? Answered 2026-11-17: yes.
+17. **Motion.** The guidelines say motion is not elastic; the nav and hover spring has a slight bounce. Is a slight bounce within the brand? Answered 2026-11-17: yes.
+18. **Logo rules.** The guidelines hold none. Should the two-tone rule and the logo checks live here, with sizes in kits? Answered 2026-11-17: yes.
 
 ## 16. Source gaps
 
@@ -314,7 +314,7 @@ Until approved, the skill carries the definition in `visual-os/art-direction.md`
 - The guidelines call light backgrounds the default; the site is dark.
 - The guidelines use American spelling and mark hex values as provisional; `src/styles/global.css` is the real token source.
 - The About page lede is marked placeholder copy in the code and contains a dash.
-- The Notion page "Wugweb Profile (Master) - 2023" is stale: "Creative UX Design Agency", "Transcending Digitally", both 200+ and 400+ projects, lorem ipsum under Story. It is used for nothing without approval.
+- The Notion page "Wugweb Profile (Master) - 2023" is stale: "Creative UX Design Agency", "Transcending Digitally", both 200+ and 400+ projects, lorem ipsum under Story.
 
 **Not read in full while planning**
 
