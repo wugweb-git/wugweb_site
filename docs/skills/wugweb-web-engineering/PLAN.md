@@ -158,3 +158,12 @@ The coordinator removes and updates; this session only read.
 | `pending.md` | Cut the history | The live tracker is the first 44 lines and about half of lines 171 to 232; about 1,360 lines are finished history |
 | `docs/research/case-study-system-2026-10-19/` | Keep until Part 2 lands | Still an accurate record |
 | September UI spec, sections 10 and 14 | Stale | Both fixed since |
+
+## 11. Handover items not yet written in above (added by the coordinator, 2026-11-18)
+
+The session was stopped before it recorded these four. Each is pending and none is started. Site and data changes need the owner's go.
+
+1. Findings from the media manifest report (`docs/research/media-manifest-2026-11-17.md`): the asset registry's public address is broken for file names that contain a hash sign; six dead links in case-study bodies; five R2 folders that no case study claims (bodyshop, hyatt-restaurants, others, pvr-cinemas, tecnotree); four pages over the 25 MB budget (Inkompass, Axis Bank, Plufo, Sadhan).
+2. Owner's step: add `https://uat.wugweb.com` to the Sanity CORS list, so the embedded Studio at `/admin` can sign in on staging.
+3. `npm install` after the Studio merge reports 51 audit findings (1 low, 10 moderate, 38 high, 2 critical). Assess them. Never run the audit fix with force.
+4. Docs clean-up, allowed by the owner ("remove old and stale md files, or update them"): update `README.md`, `src/components/README.md`, `docs/admindesign.md`, `docs/r2-assets.md` (move the path-field table in from `docs/content-assets.md`, then remove that file and repoint its links), `docs/schema-template-section-component-level.md` and the stale lines in `governance.md`; cut the finished history out of `pending.md`, keeping the nine open leftovers in section 9. Already removed: `SANITY_TOKEN_ROTATION.md`, `sanity/docs/content-migration-plan.md`, `scripts/AUDIT_REPORT.md`, the September UI spec folder, the brand glass showcase prompt and the old NTUC draft.
