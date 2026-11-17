@@ -75,7 +75,7 @@ The audit script carries this list. A banned word may stay only inside a client'
 - Case study page: full sentences, evidence in every chapter.
 - Card and tile: client, one line of what was built, no adjectives.
 - Deck: one claim per slide; the screen does the talking.
-- LinkedIn: "we" or "I" as the owner picks for the piece, one lesson from the project, no hashtag stuffing, same facts as the page.
+- LinkedIn: "we" or "I" as the owner picks for the piece, one lesson from the project, no hashtag lists, same facts as the page.
 - Behance and Dribbble: captions only, flow by flow.
 
 ## Metrics
@@ -112,7 +112,7 @@ This section is the whole of what this skill decides about search. Keyword resea
 - Entities: client, partner, platform and country named in full once, in the body and in the schema.
 - Internal links: up to the matching service and sector pages, across to two or three related case studies, with descriptive anchor text. Ask for links back from those pages.
 - Everything a crawler needs is in server HTML. Images in `img src` only.
-- No keyword counts and no `llms.txt`. FAQ blocks follow `own-content.md`: service pages and blog posts only, questions approved in the brief, answers only from the owner's source. write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
+- No keyword counts and no `llms.txt`. FAQ blocks follow `own-content.md`: service pages and blog posts only, questions approved in the brief, answers only from the owner's source. Write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
 - og:image: a project-specific existing file, ideally about 2:1 or 1200 by 630; a new file only through the Forms gate.
 
 ## How it is checked

@@ -70,7 +70,7 @@ source (one Body Content document + one media folder) → parsed body → media 
 - **Registry and plan**: Notion page "Wugweb Skill Management System" under Wugweb HQ, and the `wugweb-work` page under it. Notion wins over any file. The repo keeps one copy of the plan at `docs/skills/wugweb-work/PLAN.md`.
 - **Source, track 1**: Notion, Case Studies data source, property Body Content (one per case study).
 - **Source, track 2**: blog posts in Notion Blogs, synced by the site repository's blog sync script (`sync-notion-blogs.mjs`); service pages in Sanity `service` documents (6 pillars). Site and landing copy: the page's own records (taken from the repository's `CLAUDE.md`, not from the owner directly; to be corrected if wrong).
-- **Scheduling tool for posts**: Postiz. Whether it is connected, and to which accounts, is open (see `open-items.md`).
+- **Scheduling tool for posts**: none connected (owner, 2026-11-17). Posts are handed to the owner as approved drafts; Postiz is installed as a helper but not connected to any account.
 - **Layout values**: `kits_design_system/docs/tokens/layout-shell.md`, with `tokens/sizing.md` and `docs/components.md`, owned by `wugweb-kits`.
 - **Listing a media folder**: no read-only command was found that lists the objects in an R2 bucket; to be confirmed against the project's own `wrangler r2 --help`. Commands that write, delete or download are forbidden.
 - **CMS**: Sanity, document type `caseStudy`, field `bodyMarkdown`, synced from Notion. Public read: `https://splvhmk1.apicdn.sanity.io/v2024-01-01/data/query/production`.

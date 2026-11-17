@@ -32,7 +32,7 @@ Pick the archetype from what the media and the work show, not from the client's 
 
 **Brand identity.** hero (key visual) → the idea (prose) → mark (figure) → type (specimen figure) → colour (swatches as HTML from the read hex values) → system (pattern, grid) → applications (mosaic) → motion (loop) → credits.
 
-**Campaign or video-led.** hero → the brief → loops of 15 seconds or less in a mosaic (a loop over 5 seconds needs a pause control, see `open-items.md`) → one long film muted, click to play → social posts (mosaic) → results with sources when they exist → credits.
+**Campaign or video-led.** hero → the brief → loops of 15 seconds or less in a mosaic (pause control rule: `media-standard.md`) → one long film muted, click to play → social posts (mosaic) → results with sources when they exist → credits.
 
 **Stats-led, multi-workstream.** hero → stats (2 to 4 verified) → one chapter per workstream (SEO, content, campaigns, UI), each with its own proof → Results chapter with the full metric form → credits. Charts render as HTML or SVG from the owner's numbers.
 

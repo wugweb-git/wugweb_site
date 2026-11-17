@@ -200,15 +200,15 @@
     },
     {
       "id": 14,
-      "name": "open-item-marked",
+      "name": "settled-items-applied",
       "prompt": "Write the hero subtitle for the Kia case study, tell me the og image size and the Behance cover size, and add some hashtags to the LinkedIn post.",
-      "expected_output": "Proposes a subtitle of 90 characters or fewer (settled). Gives the og image as 1200 x 630 (settled) and prefers an existing file. Gives the Behance cover size as proposed and not confirmed, marked open. Adds no hashtags and says LinkedIn tags are open with the owner. Makes no file.",
+      "expected_output": "Proposes a subtitle of 90 characters or fewer (settled). Gives the og image as 1200 x 630 (settled) and prefers an existing file. Gives the Behance cover as at least 808 x 632, adopted by the owner on 2026-11-17. Adds no hashtags: LinkedIn tags are none (owner, 2026-11-17). Makes no file.",
       "files": [],
       "expectations": [
         "The proposed subtitle is 90 characters or fewer",
         "The og image size is given as 1200 x 630",
-        "The Behance cover size is marked as proposed or open, not as settled",
-        "No hashtags are added, and the response says the tags question is open with the owner",
+        "The Behance cover size is given as at least 808 x 632, adopted by the owner",
+        "No hashtags are added, and the response says LinkedIn tags are none by the owner's decision",
         "The response proposes an existing file before a made one",
         "No file is made"
       ]

@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work eval fixes, made files and scheduling settled (2026-11-17)
+- First eval run graded (56/78, 6/14 in full); skill-side fixes applied, eval 14 brought up to the owner's decisions; made files kept in R2 by the owner, no scheduling tool; no matter open with the owner. Still 0.5.0.
+
 ### Changed — wugweb-strategy voice rulings, build and test scripts (2026-11-17)
 - Signal log named read-only for voice, we or I recorded per brief, other languages out of scope, and `scripts/build.mjs` and `scripts/test.mjs` check the standing-rules copy against the home file. Version stays 0.1.2.
 ### Changed — wugweb-work brand rules point to wugweb-brand-os (2026-11-17)

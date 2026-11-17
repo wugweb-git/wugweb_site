@@ -113,9 +113,9 @@ Then: content that does not fit returns to the proposal as an owner question. No
 
 The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged (field 9, owner decision 2026-11-17). For own content this skill does not ask `wugweb-seo` for a separate per-brief note. Field 8 lists the approved FAQ questions and field 11 names each answer's source; "no FAQ block" means none (see `own-content.md`). Handoff 1 still applies to a client work brief, which is written here.
 
-Take from `wugweb-strategy`: a one-page brief with the reader, what they know now, what they should know and do after, the goal, the format, the date, the case studies that back it, and the pages it links to.
+Take from `wugweb-strategy`: its brief (`.claude/skills/wugweb-strategy/references/brief-format.md`).
 
-Check it: every field is present, and the proof exists in an approved body. Return it with questions when one is missing. Do not rewrite the plan.
+Check it: the six check fields are present (the reader, what they know now, what they should know and do after, the goal, the format, the case studies that back it), and the proof exists in an approved body. Return it with questions when one is missing. Do not rewrite the plan.
 
 Give back after approval: the finished piece, the proof used, and proof that was asked for and does not exist.
 

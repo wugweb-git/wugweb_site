@@ -20,7 +20,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] No banned words; British English; sentence case.
 - [ ] No em or en dash anywhere in visible text, including `aria-label` and the `main` label.
 - [ ] Every claim has a screen, a sourced number or a named fact; no "unvalidated" claim shown as fact.
-- [ ] Every metric has value, what, period, source and as-of date.
+- [ ] Every metric has value, what, period, baseline or benchmark, source and as-of date, or is marked "unvalidated" (`copy-and-seo.md`).
 - [ ] Every number is identical everywhere it appears on the page and in its other forms.
 - [ ] Approvals recorded for logos, screens, metrics and quotes.
 - [ ] Not-templated test: hero line, headings and one signature layout would not fit another client unchanged.

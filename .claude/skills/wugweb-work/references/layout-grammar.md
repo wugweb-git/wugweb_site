@@ -138,7 +138,7 @@ The site's one call to action stays in the global footer. No second CTA.
 - Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
 - `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
 - Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
-- A long video has an `aria-label` that says what it shows. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology (owner, 2026-11-17).
+- A long video has an `aria-label` that says what it shows. Loops follow the pause control rule in `media-standard.md`.
 - AA contrast on client colours; focus visible and never hidden under the sticky header; chapter anchors clear the sticky header.
 - A rail's scroll area is reachable by keyboard (`tabindex="0"` where the browser does not do it) and uses `overscroll-behavior-x: contain`.
 - The viewer shows an image at its natural size, at least twice the thumbnail.
