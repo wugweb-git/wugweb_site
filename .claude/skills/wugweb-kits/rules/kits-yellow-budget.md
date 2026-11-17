@@ -21,4 +21,4 @@ Yellow is an accent and a resting fill on brand buttons only, at most 10% of a p
 .btn-solid { background: var(--color-yellow); }
 ```
 
-Source: components.md, colour.
+Source: components.md, colour. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.

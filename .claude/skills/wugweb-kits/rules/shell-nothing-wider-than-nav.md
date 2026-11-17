@@ -21,4 +21,4 @@ The nav inner container caps at 1280 and the content box at 1200. A block that i
 .stat-band { /* inside .wrap, 1200 */ }
 ```
 
-Source: layout-shell.md, nav inner.
+Source: layout-shell.md, nav inner. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
