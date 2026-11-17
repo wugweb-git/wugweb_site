@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy FAQ review notes the rich-results end date (2026-11-17)
+- One-line note added to `FAQ-REVIEW.md`; the FAQ line is unchanged.
+
 ### Changed — wugweb-strategy /faq questions stay in code (2026-11-17)
 - Strategy decided option (a) and recorded it in `FAQ-REVIEW.md`.
 
