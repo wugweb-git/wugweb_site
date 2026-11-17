@@ -69,7 +69,7 @@ export function initServiceSpotlightPanel(): void {
           video.preload = 'metadata';
           video.load();
         }
-        if (isActive && onScreen && wantsPlay(video)) video.play().catch(() => {});
+        if (isActive && wantsPlay(video)) video.play().catch(() => {});
         else video.pause();
       });
     };
@@ -175,9 +175,6 @@ export function initServiceSpotlightPanel(): void {
     new IntersectionObserver(
       ([e]) => {
         onScreen = e.isIntersecting;
-        // Off screen, the open row's clip pauses too; back on screen it
-        // resumes unless the visitor paused it.
-        syncVideos();
         if (onScreen) queueCycle(IDLE_MS);
         else stopCycle();
       },
