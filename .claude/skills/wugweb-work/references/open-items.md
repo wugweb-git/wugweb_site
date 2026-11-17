@@ -9,8 +9,7 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 
 ## Also open, shared with `wugweb-kits`
 
-- Card thumbnails: the work card uses a 16:10 frame and the thumbnail videos are 4:3. Under the media rule a file is shown whole, so either the file sits inside the frame with space around it, or the card changes shape. Until decided: show the file whole at its own ratio.
-- Old media ratios from the previous site are not mapped to sections. The manifest's shape field is the input for that mapping.
+- Old media ratios from the previous site are not mapped to sections. The manifest's shape field is the input for that mapping. This stays open in the layout shell document owned by `wugweb-kits`.
 
 ## Settled on 2026-11-16 (kept here so the old assumptions are not reused)
 
@@ -44,6 +43,7 @@ Two matters are not decided. The owner decides each one. Until then the skill wo
 | Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
 | Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (safe zone unverified: use the wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
 | Loops | A loop is 15 seconds or less. A loop over 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden; all loops stop under reduced motion | `media-standard.md`; `wugweb-kits` builds the control |
+| Card thumbnails | Every card is 16/10. The original ratio is kept and the frame is a mask: no crop of the source, no re-encode | `forms.md`, owned by `wugweb-kits` |
 | Layout sizes | Rail items 85vw and never past the 1200 content maximum; peek 20%; signature width 2400 px; line length 35 to 60 characters | `layout-grammar.md`, owned by `wugweb-kits` |
 | Existing blocks | The five existing blocks are signed off | `layout-grammar.md` |
 | Share and made-file sizes | Adopted as written: og 1200 x 630; LinkedIn link image at least 1200 x 627, 1.91:1, 5 MB; Behance cover at least 808 x 632; Dribbble 1600 wide, 10 MB image, 20 MB video; story 1080 x 1920 | `forms.md` |

@@ -3,7 +3,7 @@
   "organization": "Wugweb",
   "date": "November 2026",
   "abstract": "A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. Voice, layout, search and planning rules belong to sibling skills; this skill applies them. Independent of CMS, host and agent.",
-  "status": "Part 1 locked at 0.5.0, 2026-11-17; the plan is approved by the owner. Two matters are open with the owner and two more are shared with wugweb-kits, all listed in references/open-items.md. Rules owned by sibling skills are held here until those skills are approved. Evals written, not yet run. Part 2 (site code) is out of scope.",
+  "status": "Part 1 locked at 0.5.0, 2026-11-17; the plan is approved by the owner. Two matters are open with the owner and one more is shared with wugweb-kits, all listed in references/open-items.md. Rules owned by sibling skills are held here until those skills are approved. Evals written, not yet run. Part 2 (site code) is out of scope.",
   "relatedSkills": [
     "wugweb-voice",
     "wugweb-brand-os",

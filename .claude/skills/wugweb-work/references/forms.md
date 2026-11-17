@@ -79,7 +79,7 @@ This skill picks which platform size a file uses; `wugweb-kits` supplies the siz
 
 - Takes: client, short title, one line of what was built, cover or thumbnail, industry.
 - Tone: no adjectives. "Member portal and back office for NTUC U Care Fund."
-- Media: the existing thumbnail shown whole at its own ratio; a thumbnail video loops muted. The card frame shape is open (see `open-items.md`).
+- Media: the existing thumbnail kept at its own ratio inside a 16/10 frame that acts as a mask, with no crop of the source and no re-encode (owner, 2026-11-17, owned by `wugweb-kits`); a thumbnail video loops muted.
 
 ## Showcase tile
 

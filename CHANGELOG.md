@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work skill 0.5, card thumbnail ruling applied (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Card thumbnails are 16/10 on every card with the original ratio kept and the frame as a mask (owner via wugweb-kits). One matter (old media ratios) now shared with wugweb-kits. validate 30 checks 0 errors, test passes.
+
 ### Changed — wugweb-work skill 0.5, kits, seo, strategy and brand-os rulings applied (2026-11-17)
 - Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Loops, rail, peek, signature width, line length, blocks signed off, ui-system-mapper retired, made-file sizes adopted, brief field 9, token check reports first, brand rulings held in handoffs. Gate script no longer requires aria-hidden on loops. validate 30 checks 0 errors, test passes, exports rebuilt.
 
