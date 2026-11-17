@@ -105,7 +105,7 @@ Note: `footer/sitemap` is linked from `SiteFooter` (Sitemap).
 `TrustBadges` is the Clutch/DesignRush/GoodFirms strip — TopDevelopers logo asset exists at
 `public/brand/trust/topdevelopers.svg` but isn't wired in; no verified
 Wugweb profile URL on topdevelopers.co, user declined adding it without
-one 2026-09-23). Currently unused sitewide (removed from all pages per
+one 2026-09-23. Currently unused sitewide (removed from all pages per
 user request). Page-specific blocks live inline in `src/pages/`. Full
 component→token map: `kits_design_system/docs/components.md`.
 
