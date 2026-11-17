@@ -121,3 +121,40 @@ The 19 posts in A: AI Meets Design Systems; AI-Assisted Wireframing; AI-Powered 
 ## 8. Part 2 of the case-study plan, for reference
 
 Kept so nothing is lost; it is run by another session under `CLAUDE.md`, not here. Steps: parser v2 with tests (started on a branch); media manifest; sync v2; schema declarations; queries; layout resolver; components and the thin `/work/[slug]` template; guards and the page gate; previews; docs and ship. Source: `docs/skills/wugweb-work/PLAN.md`.
+
+## 9. Open leftovers found in `pending.md` history
+
+Sent to the coordinator so none is lost when the history is cut. Line numbers are for `pending.md` at commit `2656b019`.
+
+| # | Leftover | Belongs to |
+|---|---|---|
+| 1 | Blog sync is manual (`sync-notion-blogs.mjs`, dry run then `WRITE=1`). Automating it was offered, not decided. (line 90) | Engineering, owner to decide |
+| 2 | The first request after a Pages deploy sometimes returns 404, then 200 on retry. Owner said leave it. (line 93) | Engineering, parked |
+| 3 | `/footer/subscription` ignores `?subscribed=1` and `?error=invalid-email`, so a newsletter subscriber sees no confirmation. The preview environment has no secrets. GTM and Hotjar decision. Search Console verification method. A real Neon write is unproven. (line 106) | Engineering and owner |
+| 4 | Content checks still failing on live content as of 2026-10-12 (title and description lengths, short bodies, no headings); no `coverAlt` field, so the cover-alt check is not possible. Counts not re-measured. (line 118) | `wugweb-seo`, `wugweb-work` |
+| 5 | Studio Media assign and unassign: the owner's manual test on a throwaway case study; 3 old `tsc` errors in `draggable-tags.ts` and `scroll-animations.ts`; "Used by" labels refresh on the next `scan-asset-usage.mjs` run with `WRITE=1`. (line 120) | Engineering and owner |
+| 6 | `--color-accent-primary` is wired to light grey, not brand yellow. Ruled 2026-11-17: the accent stays grey (recorded by `wugweb-brand-os`). (line 157) | Closed by ruling |
+| 7 | Section wrappers should use real landmarks, not `div` everywhere. A note, not scheduled. (lines 839 to 845) | `wugweb-kits` |
+| 8 | Deferred: homepage chat hero (keep the video hero); Hyperdrive and SESSION KV (only if the runtime needs them); `/footer/subscription` (payment gateway scoping); credential rotation (unless the owner asks). (lines 860 to 869) | Standing |
+| 9 | 2 Neon test rows (needs `DATABASE_URL`); contact form to Studio mirror not tested end to end. (line 1598) | Engineering |
+
+## 10. Stale-docs verdicts (2026-11-17)
+
+The coordinator removes and updates; this session only read.
+
+| File | Verdict | Why |
+|---|---|---|
+| `SANITY_TOKEN_ROTATION.md` | Removed by the coordinator | Said rotate now and that writes fail; both wrong since 2026-09-24 |
+| `sanity/docs/content-migration-plan.md` | Removed by the coordinator | Plan for a dedup that ran 2026-08-30 |
+| `scripts/AUDIT_REPORT.md` | Removed by the coordinator | Data dump from 2026-08-05, self-marked archived |
+| `docs/content-assets.md` | Remove after repointing links | Says the R2 cutover is not live; names folders that are gone. Its path-field table moves into `docs/r2-assets.md` |
+| `docs/r2-assets.md` | Update | Still describes `public/assets` on disk, a dead cutover flag, 525 objects and upload commands. The Rule 2 table is right |
+| `docs/admindesign.md` | Update | Dated 2026-08-05; desk structure, type count and Studio version are wrong |
+| `docs/schema-template-section-component-level.md` | Update | Says nothing is deployed, but several of its fields are live; counts are old |
+| `README.md` | Update | Wrong on dual-serve, the animation library, component and route counts, folders that are gone |
+| `src/components/README.md` | Update | Lists 5 components; the folder has 20 |
+| `governance.md` | Update | Stale lines on `public/assets`, dual-serve, upload scripts, `reference/` and `component/`, old counts. Rules 1 and 2, owner and author, and the Notion exceptions are current |
+| `design.md` (root) | Keep | A pointer; both targets exist |
+| `pending.md` | Cut the history | The live tracker is the first 44 lines and about half of lines 171 to 232; about 1,360 lines are finished history |
+| `docs/research/case-study-system-2026-10-19/` | Keep until Part 2 lands | Still an accurate record |
+| September UI spec, sections 10 and 14 | Stale | Both fixed since |

@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed: wugweb-web-engineering plan gains pending.md leftovers and stale-docs verdicts (2026-11-18)
+- `docs/skills/wugweb-web-engineering/PLAN.md` sections 9 and 10; the Notion record page carries the same two sections.
+
 ### Added: wugweb-web-engineering status and pending list (2026-11-17)
 - `docs/skills/wugweb-web-engineering/PLAN.md`: decisions, done, pending items with backup and undo, open owner questions, facts gathered from the older docs. Notion record page updated to match; backup in `backups/`.
 
