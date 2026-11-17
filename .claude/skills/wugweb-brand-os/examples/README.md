@@ -14,4 +14,4 @@ Each example is a short Markdown record, not a media file. Media lives in R2 onl
 | Why | The rule it shows or breaks |
 | Rights | One rights label |
 
-Until then, the worked example in `references/visual-os/formats-and-campaigns.md` (the four-role article series) is the only example the skill carries. Each record also keeps its source, date and the observation it supports.
+Each record also keeps its source, date and the observation it supports.

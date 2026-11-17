@@ -686,7 +686,7 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 - `brand_guidelines/README.md` and `DECISIONS.md` are marked archived (2026-08-07), so their status as live rules is unclear.
 - Most files in `brand_guidelines/` hold one to three sentences. Several are headings with no content.
 - No image files are in the repo. The nine reference images described in the guidelines are not available.
-- There is no source at all for campaign systems, lighting, or approved and rejected examples.
+- There is no source at all for lighting, or approved and rejected examples.
 - The owner's Visual OS and Brand Strategy documents have not been supplied.
 - The 2023 company profile is stale and contradicts itself.
 
@@ -1253,22 +1253,7 @@ Settle before making: the purpose and where it appears, the exact copy (locked, 
 
 ## Campaign systems
 
-**Not decided: owner.** No approved source defines a campaign system (question 10). Until the owner's Visual OS document arrives, a campaign uses campaign collage mode with the social rules above, and anything beyond that is reported as a gap. Planning a campaign is `wugweb-strategy`.
-
-The shape the marketing files point to, kept as working vocabulary and not as a decided system: a campaign shares a visual grammar, not identical layouts. Define one campaign tension, palette priority, type treatment, photo treatment and a small family of related metaphors. Each piece brings a new hero object or composition and still looks like Wugweb.
-
-### Worked example: the four-role article series
-
-Shared look: Wugweb colour roles, rounded geometry, editorial hierarchy, credible product or physical evidence. The metaphor changes in every image.
-
-| Role | Core idea | Hero vocabulary | Interface allowance | Avoid |
-| --- | --- | --- | --- | --- |
-| Agent Whisperer | Make a brand legible to intelligent agents | Metadata cards, taxonomy labels, structured knowledge, folders, index systems | One believable knowledge or search module | Robots, AI faces, chat bubbles as decoration |
-| Full-funnel Navigator | Coordinate an adaptive ecosystem | Routes, modular blocks, directional paths, priorities | One orchestration proof only | Dashboard walls, equal-weight paths |
-| Hyperpersonalization Architect | Build trusted one-to-one experiences | A mobile device, recommendations, preference chips, adaptive modules | One real mobile or product experience | Cluttered profile cards |
-| Customer Wayfinder | Turn scattered signals into meaning | A map, compass, routes, markers, photos, curated fragments | Usually none; a route or map is enough | Generic analytics charts, GPS dashboard looks |
-
-Keep the shared look, vary the metaphor. Never repeat the same person, circle and card layout, or the same hero object, across the four.
+Wugweb has no campaign system (owner ruling, 2026-11-17). Do not define one and do not report one as missing.
 
 ## AI prompt engine
 
@@ -1569,7 +1554,7 @@ To ask the owner for:
 - The Visual OS and Brand Strategy documents.
 - The nine reference images, with sources, dates and rights.
 - The approved design file or token export.
-- Approved and rejected examples for each format and for the four-role series.
+- Approved and rejected examples for each format.
 - Current public website captures with retrieval dates.
 - Original or licensed source photography used in past campaigns.
 
@@ -1593,4 +1578,4 @@ Each example is a short Markdown record, not a media file. Media lives in R2 onl
 | Why | The rule it shows or breaks |
 | Rights | One rights label |
 
-Until then, the worked example in `references/visual-os/formats-and-campaigns.md` (the four-role article series) is the only example the skill carries. Each record also keeps its source, date and the observation it supports.
+Each record also keeps its source, date and the observation it supports.

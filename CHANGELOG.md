@@ -9,6 +9,8 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+- fix(skills): wugweb-brand-os removes the campaign system working vocabulary and the four-role example; owner ruling 2026-11-17: Wugweb has no campaign system.
+
 - feat(skills): wugweb-brand-os applies the owner's answers of 2026-11-17 (questions 5 to 9, 12 to 18); dashboards ban now excepts software subjects; 4 questions remain open or partly answered.
 ### Changed — wugweb-strategy skill 0.1.2 (2026-11-17)
 - Owner answers applied: brief field 9 pasted from wugweb-seo unchanged; wugweb-voice may read the signal log directly, read only. Exports rebuilt.

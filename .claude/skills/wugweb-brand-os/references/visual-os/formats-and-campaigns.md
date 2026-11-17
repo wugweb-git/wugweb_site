@@ -81,22 +81,7 @@ Settle before making: the purpose and where it appears, the exact copy (locked, 
 
 ## Campaign systems
 
-**Not decided: owner.** No approved source defines a campaign system (question 10). Until the owner's Visual OS document arrives, a campaign uses campaign collage mode with the social rules above, and anything beyond that is reported as a gap. Planning a campaign is `wugweb-strategy`.
-
-The shape the marketing files point to, kept as working vocabulary and not as a decided system: a campaign shares a visual grammar, not identical layouts. Define one campaign tension, palette priority, type treatment, photo treatment and a small family of related metaphors. Each piece brings a new hero object or composition and still looks like Wugweb.
-
-### Worked example: the four-role article series
-
-Shared look: Wugweb colour roles, rounded geometry, editorial hierarchy, credible product or physical evidence. The metaphor changes in every image.
-
-| Role | Core idea | Hero vocabulary | Interface allowance | Avoid |
-| --- | --- | --- | --- | --- |
-| Agent Whisperer | Make a brand legible to intelligent agents | Metadata cards, taxonomy labels, structured knowledge, folders, index systems | One believable knowledge or search module | Robots, AI faces, chat bubbles as decoration |
-| Full-funnel Navigator | Coordinate an adaptive ecosystem | Routes, modular blocks, directional paths, priorities | One orchestration proof only | Dashboard walls, equal-weight paths |
-| Hyperpersonalization Architect | Build trusted one-to-one experiences | A mobile device, recommendations, preference chips, adaptive modules | One real mobile or product experience | Cluttered profile cards |
-| Customer Wayfinder | Turn scattered signals into meaning | A map, compass, routes, markers, photos, curated fragments | Usually none; a route or map is enough | Generic analytics charts, GPS dashboard looks |
-
-Keep the shared look, vary the metaphor. Never repeat the same person, circle and card layout, or the same hero object, across the four.
+Wugweb has no campaign system (owner ruling, 2026-11-17). Do not define one and do not report one as missing.
 
 ## AI prompt engine
 

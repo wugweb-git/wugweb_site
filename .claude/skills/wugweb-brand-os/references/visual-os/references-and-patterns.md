@@ -79,6 +79,6 @@ To ask the owner for:
 - The Visual OS and Brand Strategy documents.
 - The nine reference images, with sources, dates and rights.
 - The approved design file or token export.
-- Approved and rejected examples for each format and for the four-role series.
+- Approved and rejected examples for each format.
 - Current public website captures with retrieval dates.
 - Original or licensed source photography used in past campaigns.

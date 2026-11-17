@@ -49,7 +49,7 @@ The brand rules sourced from the design system docs (yellow as a reservation, st
 - `brand_guidelines/README.md` and `DECISIONS.md` are marked archived (2026-08-07), so their status as live rules is unclear.
 - Most files in `brand_guidelines/` hold one to three sentences. Several are headings with no content.
 - No image files are in the repo. The nine reference images described in the guidelines are not available.
-- There is no source at all for campaign systems, lighting, or approved and rejected examples.
+- There is no source at all for lighting, or approved and rejected examples.
 - The owner's Visual OS and Brand Strategy documents have not been supplied.
 - The 2023 company profile is stale and contradicts itself.
 
