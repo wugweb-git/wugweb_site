@@ -10,7 +10,7 @@
 > - FINAL STATE, 2026-11-17: last skill commit ca59f750, body 1,944 words, checks pass. Evals: 34 of 39 pass; one waits on pointers in other skills, one needs a real run in the app, three are blocked on owner material.
 > - Owner answers ("Yes, both"): the four crop edits to the brand guidelines folder are dropped and the definition lives only in the skill; black canvas everywhere, and no format uses a light background until the owner names one.
 > - Older docs audit (in the brand-os worktree): the brand guidelines folder cannot be retired whole; it is still the only home of the AI prompt engine section, the nine reference image filenames, the asset naming and storage conventions, and every source citation in the skill. The public brand folder holds the real logo files (large is the lockup, small is the mark); the skill does not yet name them.
-> - Open with the owner: the seven logo questions; the approved facts about Wugweb; the Visual OS and Brand Strategy documents and nine images; positioning, values, audience.
+> - Open with the owner: the seven logo questions; the approved facts about Wugweb; the Visual OS and Brand Strategy documents and nine images; positioning, values, audience. He said on 2026-11-17 that he will supply all of these in Notion; no such page existed when the brand-os session searched that day. When a page arrives the skill shows current to proposed and applies only on his approval.
 
 # wugweb-brand-os: plan
 
