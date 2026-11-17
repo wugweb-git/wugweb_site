@@ -157,10 +157,18 @@ async function run() {
   const ld = all(doc, (n) => n.tag === 'script' && n.attrs.type === 'application/ld+json');
   const types = new Set(); const banned = [];
   for (const s of ld) { try { const j = JSON.parse(s.text); const walk = (o) => { if (Array.isArray(o)) return o.forEach(walk); if (o && typeof o === 'object') { [].concat(o['@type'] || []).forEach((t) => types.add(t)); if ('author' in o) banned.push('author'); Object.values(o).forEach(walk); } }; walk(j); } catch { banned.push('invalid JSON'); } }
-  for (const t of ['FAQPage', 'HowTo', 'Review', 'AggregateRating']) if (types.has(t)) banned.push(t);
+  for (const t of ['HowTo', 'Review', 'AggregateRating']) if (types.has(t)) banned.push(t);
+  // FAQPage is allowed only when every question and answer is visibly on the page (owner, 2026-11-17)
+  const faqHidden = [];
+  if (types.has('FAQPage')) {
+    const norm = (x) => decode(String(x || '')).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+    const seen = norm(visible);
+    for (const s of ld) { try { const walk = (o) => { if (Array.isArray(o)) return o.forEach(walk); if (o && typeof o === 'object') { if ([].concat(o['@type'] || []).includes('Question')) { const q = norm(o.name); const a = norm(o.acceptedAnswer && o.acceptedAnswer.text); if (!q || !seen.includes(q)) faqHidden.push(`Q: ${q.slice(0, 40)}`); if (!a || !seen.includes(a)) faqHidden.push(`A: ${a.slice(0, 40)}`); } Object.values(o).forEach(walk); } }; walk(JSON.parse(s.text)); } catch {} }
+  }
   const onCanon = (host || '').replace(/:\d+$/, '') === CANON;
   check('JSON-LD has WebPage, CreativeWork, BreadcrumbList', ['WebPage', 'CreativeWork', 'BreadcrumbList'].every((t) => types.has(t)), [...types].join(', ') || 'none', onCanon);
-  check('JSON-LD has no FAQPage, HowTo, Review, AggregateRating or author', !banned.length, banned.join(', '), onCanon || ld.length > 0);
+  check('JSON-LD has no HowTo, Review, AggregateRating or author', !banned.length, banned.join(', '), onCanon || ld.length > 0);
+  check('FAQPage only where every question and answer is visible on the page', !faqHidden.length, faqHidden.slice(0, 3).join(' | ') || (types.has('FAQPage') ? 'all visible' : 'no FAQPage'), types.has('FAQPage'));
   check('No JSON-LD on a non-canonical host', ld.length === 0, `${ld.length} blocks`, !onCanon && !existsSync(target));
 
   // media status and bytes

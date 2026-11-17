@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-work skill 0.5, FAQPage follows the faqs settlement (2026-11-17)
+- Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Owner decision in this session: FAQPage only from the `faqs` field where every question and answer is visible and from the owner's source; HowTo and review stars stay banned. Gate script checks each FAQ question and answer against visible text. validate 30 checks 0 errors, test passes.
+
 ### Changed — wugweb-work skill 0.5, card thumbnail ruling applied (2026-11-17)
 - Skill files only (`.claude/skills/wugweb-work/`), still 0.5.0. Card thumbnails are 16/10 on every card with the original ratio kept and the frame as a mask (owner via wugweb-kits). One matter (old media ratios) now shared with wugweb-kits. validate 30 checks 0 errors, test passes.
 

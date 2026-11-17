@@ -47,7 +47,7 @@ The owner's standing rules apply to every Wugweb skill. They are copied in `refe
 
 - Never write a caption or alt text for a screen you have not seen close up.
 - Never make a poster file for a video. Dead links stay in the source and are listed.
-- Never emit FAQPage, HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects.
+- Never emit HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects. FAQPage only from the `faqs` field, where every question and answer is visibly on the page and comes from the owner's source (owner, 2026-11-17).
 
 ## Approval gates
 
@@ -337,7 +337,7 @@ Give back after approval: the finished piece, the proof used, and proof that was
 
 Decline and record any answer that asks for:
 
-- FAQPage, HowTo or Review star schema, `llms.txt`, or keyword density.
+- HowTo or Review star schema, `llms.txt`, keyword density, or FAQPage where the questions and answers are not visible on the page.
 - A number without a source, or a benchmark shown as the client's result.
 - Cropping a file, re-encoding, uploading, a local copy or making media. Resizing with the ratio kept and clipping masks are allowed.
 - Title Case, dashes, American spelling or banned words.
@@ -732,7 +732,7 @@ This section is the whole of what this skill decides about search. Keyword resea
 - Entities: client, partner, platform and country named in full once, in the body and in the schema.
 - Internal links: up to the matching service and sector pages, across to two or three related case studies, with descriptive anchor text. Ask for links back from those pages.
 - Everything a crawler needs is in server HTML. Images in `img src` only.
-- No keyword counts, no FAQ blocks for schema, no `llms.txt`. write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
+- No keyword counts and no `llms.txt`. An FAQ appears only when the owner's source carries the questions and answers, shown on the page; never written for search. write whole, self-contained sentences instead (the figures once quoted here for sentence length and page position had no recorded source and are unvalidated).
 - og:image: a project-specific existing file, ideally about 2:1 or 1200 by 630; a new file only through the Forms gate.
 
 ### How it is checked
@@ -1254,7 +1254,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
 - One yellow conversion action per page; labels describe the action; yellow stays under 10% of the page.
 - The five existing blocks are signed off by the owner (2026-11-17); the bento layout on the case study page is the one this work replaces.
-- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; this skill still never writes FAQ blocks for schema, and no case study body carries one unless the owner supplies the source Q and A.
+- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; questions and answers come only from the owner's source and are shown on the page, never written for search.
 
 ### 6. Rhythm
 
@@ -1400,7 +1400,8 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
 
 ### Never emit
 
-- `FAQPage`, `HowTo`, `Review`, `AggregateRating` or star markup. the owner has ruled these out, and self-serving review stars are ineligible (the dates search engines ended FAQ and HowTo rich results are not recorded with a source here).
+- `HowTo`, `Review`, `AggregateRating` or star markup. The owner has ruled these out, and self-serving review stars are ineligible.
+- `FAQPage` only from the `faqs` field, and only where every question and answer is visibly on the rendered page and comes from the owner's source (owner, 2026-11-17). No question is written for search; the gate script checks that each one is visible.
 - `author`. The work is credited through `creator` and `publisher` as the Wugweb organisation.
 - AI-specific markup or `llms.txt`.
 - JSON-LD on any non-canonical host (previews and mirrors).
@@ -1804,7 +1805,7 @@ Not found on disk and not read: `dataviz`, `simplify`.
 
 | Helpers | What they suggest | Owner's rule that wins |
 |---|---|---|
-| Several SEO helpers, `website-design:landing-page`, `marketing:draft-content` | FAQ blocks, FAQPage or HowTo schema, `llms.txt`, question headings | None of these |
+| Several SEO helpers, `website-design:landing-page`, `marketing:draft-content` | FAQ blocks written for search, HowTo schema, `llms.txt`, question headings | None of these; FAQPage only from the owner's `faqs` field with every answer visible |
 | `searchfit-seo`: content-brief, create-content, on-page-seo | Keyword counts and a minimum number of links | No keyword counts |
 | `searchfit-seo:seo-audit`, `seo-skills:seo-content-audit`, `copywriting-kit:copy-diagnose` | 0 to 100 or percentage scores | Every number is computed from something real |
 | `rampstack-seo:seo-content-audit`, `searchfit-seo:broken-links` | Redirects as the fix | No redirects; fix the link |
@@ -1840,7 +1841,7 @@ Plugin helpers are listed in the session but have not each been run. Helpers tha
 | `wp-dev-skills:*` | WordPress; this site is not WordPress. Kept installed for other work |
 | `compliance-check`, `compliance-tracking` | Regulatory frameworks, not content or design |
 | Web scraping helpers (Bright Data, TinyFish) | Kept out by the owner |
-| FAQ schema and `llms.txt` outputs of any SEO helper | Conflict with the owner's rules; other checks from the same helper may be used |
+| Generated FAQ schema and `llms.txt` outputs of any SEO helper | Conflict with the owner's rules; other checks from the same helper may be used |
 
 ### Fallbacks
 

@@ -49,7 +49,7 @@ The owner's standing rules apply to every Wugweb skill. They are copied in `refe
 
 - Never write a caption or alt text for a screen you have not seen close up.
 - Never make a poster file for a video. Dead links stay in the source and are listed.
-- Never emit FAQPage, HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects.
+- Never emit HowTo or Review star schema, and never add `llms.txt`, keyword counts or redirects. FAQPage only from the `faqs` field, where every question and answer is visibly on the page and comes from the owner's source (owner, 2026-11-17).
 
 ## Approval gates
 

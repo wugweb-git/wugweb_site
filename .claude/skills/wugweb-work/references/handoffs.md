@@ -121,7 +121,7 @@ Give back after approval: the finished piece, the proof used, and proof that was
 
 Decline and record any answer that asks for:
 
-- FAQPage, HowTo or Review star schema, `llms.txt`, or keyword density.
+- HowTo or Review star schema, `llms.txt`, keyword density, or FAQPage where the questions and answers are not visible on the page.
 - A number without a source, or a benchmark shown as the client's result.
 - Cropping a file, re-encoding, uploading, a local copy or making media. Resizing with the ratio kept and clipping masks are allowed.
 - Title Case, dashes, American spelling or banned words.

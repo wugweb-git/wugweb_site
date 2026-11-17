@@ -90,7 +90,7 @@ Not found on disk and not read: `dataviz`, `simplify`.
 
 | Helpers | What they suggest | Owner's rule that wins |
 |---|---|---|
-| Several SEO helpers, `website-design:landing-page`, `marketing:draft-content` | FAQ blocks, FAQPage or HowTo schema, `llms.txt`, question headings | None of these |
+| Several SEO helpers, `website-design:landing-page`, `marketing:draft-content` | FAQ blocks written for search, HowTo schema, `llms.txt`, question headings | None of these; FAQPage only from the owner's `faqs` field with every answer visible |
 | `searchfit-seo`: content-brief, create-content, on-page-seo | Keyword counts and a minimum number of links | No keyword counts |
 | `searchfit-seo:seo-audit`, `seo-skills:seo-content-audit`, `copywriting-kit:copy-diagnose` | 0 to 100 or percentage scores | Every number is computed from something real |
 | `rampstack-seo:seo-content-audit`, `searchfit-seo:broken-links` | Redirects as the fix | No redirects; fix the link |
@@ -126,7 +126,7 @@ Plugin helpers are listed in the session but have not each been run. Helpers tha
 | `wp-dev-skills:*` | WordPress; this site is not WordPress. Kept installed for other work |
 | `compliance-check`, `compliance-tracking` | Regulatory frameworks, not content or design |
 | Web scraping helpers (Bright Data, TinyFish) | Kept out by the owner |
-| FAQ schema and `llms.txt` outputs of any SEO helper | Conflict with the owner's rules; other checks from the same helper may be used |
+| Generated FAQ schema and `llms.txt` outputs of any SEO helper | Conflict with the owner's rules; other checks from the same helper may be used |
 
 ## Fallbacks
 

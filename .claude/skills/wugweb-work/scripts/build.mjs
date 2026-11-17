@@ -99,7 +99,7 @@ const chatgpt = [
   '- Post or schedule anything without the owner\'s yes for that exact post.',
   '- Plan content (topics, calendar) or set voice, layout, token or schema rules.',
   '  Say which skill owns it. If a standard is not decided, say so.',
-  '- Add FAQ, HowTo or review-star schema, keyword counts or llms.txt.',
+  '- Add HowTo or review-star schema, keyword counts or llms.txt; add FAQPage only from the owner\'s questions and answers when all are visible on the page.',
   '- Use an em or en dash in copy a visitor reads.',
   '',
   'If you can run code, run scripts/case-audit.mjs on the body and',

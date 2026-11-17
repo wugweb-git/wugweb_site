@@ -38,7 +38,7 @@ const fail = run('check-case-page.mjs', [join(root, 'examples/fixture-page-fail.
 const fj = JSON.parse(fail.out)
 const failedNames = fj.results.filter((r) => r.status === 'fail').map((r) => r.name).join('|')
 expect('gate: failing fixture exits 1', fail.code === 1)
-expect('gate: catches skipped heading, dash, missing sizes, author in JSON-LD, unnamed slides', ['Heading levels never skip', 'No em or en dash in visible text', 'Every img has width and height', 'JSON-LD has no FAQPage', 'Rail slides are named groups'].every((n) => failedNames.includes(n)), failedNames)
+expect('gate: catches skipped heading, dash, missing sizes, author in JSON-LD, unnamed slides', ['Heading levels never skip', 'No em or en dash in visible text', 'Every img has width and height', 'JSON-LD has no HowTo', 'Rail slides are named groups'].every((n) => failedNames.includes(n)), failedNames)
 
 console.log(`\n${failed ? `${failed} failed` : 'all passed'}`)
 process.exit(failed ? 1 : 0)
