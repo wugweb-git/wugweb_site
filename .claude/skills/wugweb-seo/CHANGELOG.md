@@ -2,6 +2,10 @@
 
 ## 2.5.0, 2026-11-17
 
+- FAQ-block division recorded in the handoff (agreed with wugweb-strategy): strategy
+  decides when a piece gets a FAQPage faqs block (service pages and blog posts only,
+  from the signal log, owner-approved, brief fields 8 and 11); wugweb-seo audits only
+  that the markup matches the visible questions. Case studies never carry a block.
 - Brief field 9 set to option (a): wugweb-seo writes one keyword note per piece (search
   plus the LinkedIn, Behance and Dribbble title and tag note where the piece has those
   forms); `wugweb-strategy` pastes it into the brief unchanged and `wugweb-work` reads it

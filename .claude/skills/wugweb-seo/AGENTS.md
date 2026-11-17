@@ -313,6 +313,17 @@ Receive the business goal, the audience and the page list. Return the clusters,
 one page per cluster, topic gaps and pages to refresh, in the shape in
 `references/plan.md`. What to publish and when stays with `wugweb-strategy`.
 
+#### 1a. FAQ blocks
+
+`wugweb-strategy` decides when a piece carries a FAQPage `faqs` block: service
+pages and blog posts only, from real reader questions in the signal log, the
+owner approving the list and the count (brief field 8 lists the questions with
+their source, field 11 names each answer's source). `wugweb-seo` owns the schema
+rule and audits only that the FAQPage markup matches the questions visible on
+the page; it sets no count and picks no piece type. A case study never carries a
+block, so its `faqs` field, if kept, stays unused until the owner supplies
+visible questions.
+
 #### 2. Search input for one brief
 
 `wugweb-seo` writes one keyword note per piece: the search note and, where the
