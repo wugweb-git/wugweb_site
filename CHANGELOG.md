@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy link structure, no sector link-up (2026-11-17)
+- Owner ruling recorded in the skill; version stays 0.1.2.
+
 ### Changed — wugweb-strategy FAQ review list adds /faq (2026-11-17)
 - The 10 typed `/faq` questions added to `FAQ-REVIEW.md`.
 

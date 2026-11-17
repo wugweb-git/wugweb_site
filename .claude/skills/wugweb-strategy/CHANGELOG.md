@@ -9,6 +9,7 @@ Owner answers applied.
 - Voice rulings (2026-11-17): the signal log is a read-only input to voice, its words vocabulary candidates labelled by source, never rules; brief field 13 records "we" or "I" as the owner's pick, never assumed; copy in other languages is out of scope until English is calibrated.
 - `scripts/build.mjs` builds `AGENTS.md` and the export, with the standing-rules block copied from `docs/skills/STANDING-RULES.md`. `scripts/test.mjs` checks the block equals the home file, the body word count and no dashes.
 - FAQ rules extended (owner, 2026-11-17): posts get a `faqs` field only when needed; `/kits` exempt; `/faq` is the one dedicated FAQ page; typed service page copy may stay live during review.
+- Link structure: case studies link up to the service page only; sector pages are not a link-up target (owner, 2026-11-17).
 - `/faq` carries no FAQPage markup (owner, 2026-11-17).
 - FAQ block rules added to `references/brief-format.md` (which pieces, who supplies questions and answers, where it sits in the brief). Agreed with `wugweb-seo`.
 

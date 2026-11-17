@@ -560,7 +560,7 @@ The content types, what each is for, where each is stored, and the planning fiel
 
 ## Shape of the cluster
 
-Hub and spoke: a service page is the hub; posts are spokes. One topic, one page. No mixed intents in one cluster. No orphan piece: every post links to at least one service page and to others in its cluster. Which pages are linked is decided here (proof map and brief field 10); how links are made is `wugweb-seo`'s.
+Hub and spoke: a service page is the hub; posts are spokes. One topic, one page. No mixed intents in one cluster. No orphan piece: every post links to at least one service page and to others in its cluster. Which pages are linked is decided here (proof map and brief field 10); how links are made is `wugweb-seo`'s. A case study links up to its service page only, and across to two or three sibling case studies. Sector pages are not a link-up target (owner, 2026-11-17).
 
 ## Planning fields
 
