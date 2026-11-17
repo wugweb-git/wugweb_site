@@ -1,7 +1,7 @@
 # wugweb-voice
 
 Holds the one Wugweb voice, which is also the owner's voice, and runs the voice
-check on visible Wugweb copy. Version 0.2.1.
+check on visible Wugweb copy. Version 0.3.0.
 
 Structure, check method and sample ledger only. No voice rule exists until the
 owner supplies writing samples; until then the skill applies the fixed owner
@@ -85,7 +85,9 @@ node scripts/build.mjs --check
 1. Edit `SKILL.md`, a file under `references/`, or a script.
 2. Run `node scripts/build.mjs`.
 3. Run `node scripts/test.mjs`.
-4. Raise the version in `SKILL.md` and `metadata.json` together and add a
+4. The version is locked at 0.3.0 (owner, 2026-11-17): do not raise it, not
+   even to 0.3.1, without the owner's say. When the owner lifts the lock, raise
+   the version in `SKILL.md` and `metadata.json` together and add a
    `CHANGELOG.md` entry.
 
 ## Status

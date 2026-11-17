@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-voice version locked at 0.3.0 (2026-11-17)
+
+- `.claude/skills/wugweb-voice` set to version 0.3.0 and pinned there by owner decision: do not bump, not even to 0.3.1, without the owner's say. Recorded in `metadata.json` (`versionLock`), `README.md` and the skill `CHANGELOG.md`. No change to the method, rules or files; the 0.2.1 portability package carries forward.
+
 ### Changed — wugweb-work plan open items and status (2026-11-17)
 - Docs only. Plan and Notion page: status now says validate 30 checks, the standing rules are one copied block in the skill, and figures with no recorded source were marked unvalidated. Waiting list gains replies and outreach, and the items shared with `wugweb-kits` (four held proposals, loop pause versus `aria-hidden`, `faqs` clash and existing blocks, card thumbnails and old media ratios). Backup: `backups/notion-wugweb-work-page-before-2026-11-17-d.md`.
 

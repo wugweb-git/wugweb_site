@@ -2,7 +2,7 @@
 
 # wugweb-voice
 
-**Version 0.2.1** · Wugweb · November 2026
+**Version 0.3.0** · Wugweb · November 2026
 
 Holds the one Wugweb voice, which is also the owner's voice, and runs the voice check on visible Wugweb copy. Structure, check method and sample ledger only: no voice rule exists until the owner supplies writing samples. The fixed owner rules (British English, sentence case, no em or en dashes, no invented facts, no filler words) are always on. A mechanical check script flags dashes, US spellings, heading case and confirmed banned words, lists every number and quote to trace, and sets confidence from the ledger. One Node script, no packages. Independent of CMS, host and agent.
 
@@ -10,7 +10,7 @@ Wugweb and Vedanshu write in one voice, because Vedanshu is the author of Wugweb
 
 ## Status: read this first
 
-Version 0.2.1 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
+Version 0.3.0 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
 
 - The fixed owner rules (below). They are confirmed and always on.
 - The voice check method, with its mechanical parts in `scripts/check.mjs`.
