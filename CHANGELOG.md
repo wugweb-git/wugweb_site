@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy FAQ rules agreed with seo (2026-11-17)
+- Pending mark removed; version stays 0.1.2. Exports rebuilt.
+
 - fix(skills): wugweb-brand-os drops the "unverified" label; the fact check now marks a claim approved or not, with its recorded status and source.
 
 - fix(skills): wugweb-brand-os removes six contested rules on owner ruling 2026-11-17 (newer source wins, 2023 profile used for nothing, dashboards ban, collage base, unknown rights label, transformation pairs).

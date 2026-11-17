@@ -51,7 +51,7 @@ List the claims the piece rests on under field 5. If there are more than three, 
 
 ## FAQ block
 
-The `faqs` field stays in the layout shell. This skill decides when a piece gets one; `wugweb-seo` decides what that means for schema (this skill does not restate it). Position held pending `wugweb-seo`'s reply, owner ruling 2026-11-17 that strategy decides this with seo.
+The `faqs` field stays in the layout shell. This skill decides when a piece gets one; `wugweb-seo` decides what that means for schema (this skill does not restate it). Agreed with `wugweb-seo` (owner ruling 2026-11-17 that strategy decides this with seo). The case-study `faqs` field stays unused unless the owner supplies visible questions.
 
 - **Which pieces:** service pages and blog posts only. Never a social post, newsletter issue, site or landing copy, or case study slot.
 - **When:** only if the signal log holds real reader questions for the piece. No log entry, no block. A block is never added for search alone.

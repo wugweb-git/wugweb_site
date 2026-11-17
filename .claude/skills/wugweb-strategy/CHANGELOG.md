@@ -6,7 +6,7 @@ Owner answers applied.
 
 - Brief field 9: pasted from `wugweb-seo` unchanged (option a).
 - `wugweb-voice` may read the signal log directly, read only.
-- FAQ block rules added to `references/brief-format.md` (which pieces, who supplies questions and answers, where it sits in the brief). Pending `wugweb-seo`'s reply.
+- FAQ block rules added to `references/brief-format.md` (which pieces, who supplies questions and answers, where it sits in the brief). Agreed with `wugweb-seo`.
 
 ## 0.1.1 (2026-11-17)
 
