@@ -6,10 +6,13 @@ canonical host, or the live address. The source document is not enough.
 ## Contents
 
 - Scripted checks
+- On-page keyphrase score
+- Internal-link checks
 - Absorbed rules
 - Manual checks
 - Crawler access
 - Citability score
+- Rank Math PRO net-new checks
 - Fix list
 
 ## Scripted checks
@@ -80,6 +83,10 @@ read on 2026-11-16:
 
 The script also flags a robots.txt with no Sitemap line, under `sitemap-listed` at HIGH.
 
+Report, but do not require, a Content-Signal line in robots.txt (the newer
+syntax some CDNs emit to signal AI usage). It is emerging and no search engine
+ranks on it. Note what the file says and leave the choice to the owner.
+
 Bot names change. Check the operator's own documentation before reporting a
 bot missing.
 
@@ -91,7 +98,7 @@ length.
 | Criterion | Weight | High score |
 |---|---|---|
 | Answer first | 30% | The first one or two sentences answer the heading |
-| Self-contained | 25% | The section names its subject and reads on its own, 50 to 200 words |
+| Self-contained | 25% | The section names its subject and reads on its own, 50 to 200 words. A GEO study puts the sweet spot at 134 to 167 words (Princeton, Georgia Tech and IIT Delhi, 2024, arXiv 2311.09735; third-party figure) |
 | Structure | 20% | Clear heading order, short paragraphs, a table for any comparison of three or more |
 | Specific facts | 15% | Numbers and names with their source and date |
 | Original | 10% | First-party work, data or process no other page holds |
@@ -99,6 +106,89 @@ length.
 Report the page score, the three weakest sections with what each lacks, and any
 site-level blocker that caps the score, such as a blocked crawler or content
 that needs scripts to appear. Name what a section lacks; never write the fix.
+
+## On-page keyphrase score
+
+The search score, beside the citability score (the AI-answer score). Modelled on
+Rank Math's client-side engine (seo-by-rank-math 1.0.280, analyzer.js). Weights
+and grade bands are extracted from it, not invented. Run it with a focus
+keyphrase:
+
+```bash
+node scripts/score-page.mjs <page.html> --keyword "<phrase>" [--host <host>] [--lang en] [--json]
+```
+
+One focus keyphrase per page. Each test earns fixed points; the script sums
+them, normalises to the applicable maximum and returns 0 to 100. Grade bands,
+the engine's own: bad 50 or less, ok 51 to 80, great over 80.
+
+Owner decision, 2026-11-17: build the score faithful to Rank Math, no softening.
+For the score only, this overrides the skill's "never propose a density target"
+and "headings are claims" lines: keyword density, keyword in a subheading and
+the title readability tests are scored as below. The skill still writes no copy:
+it scores, `wugweb-work` acts.
+
+Focus keyphrase:
+
+| Test | Points | Passes when |
+|---|---|---|
+| keyword in title | 36 (38 non-English) | the title holds the phrase |
+| keyword in permalink | 5 | the slug holds the phrase |
+| keyword in the first 10% | 3 | the phrase is in the opening tenth of the body |
+| keyword in content | 3 | the phrase is in the body |
+| keyword in a subheading | 3 | the phrase is in an H2 to H6 |
+| keyword in an image alt | 2 | the phrase is in one image's alt |
+| keyword in the description | 2 | the phrase is in the meta description |
+| title starts with keyword | 3 | the title begins with the phrase |
+| keyword density | 0 / 2 / 3 / 6 | below 0.5% fail, 0.5 to 0.75% fair, 0.76 to 1% good, 1% or more best |
+| keyword not used before | warning, 0 points | needs a site-wide phrase map; not scored yet |
+
+Content, links, URL, title readability:
+
+| Test | Points |
+|---|---|
+| content length | 2500 words or more 8, 2000 or more 5, 1500 or more 4, 1000 or more 3, 600 or more 2, else 0 |
+| has image or video | images (1 is 1, 2 is 2, 3 is 4, 4 or more is 6) plus videos (1 is 1, 2 or more is 2), capped at 6 |
+| short paragraphs | 3, when no paragraph runs over 120 words |
+| table of contents | 2 |
+| internal link present | 5 |
+| external link present | 4 |
+| not all links external | 2 |
+| permalink length, URL 75 characters or fewer | 4 |
+| title sentiment / power word / number | 1 / 1 / 1 |
+
+Power words ship with the script as a short public list; sentiment (English
+only) scores a point for any word in a small positive or negative set, null for
+other languages, as Rank Math does. "Keyword not used before" stays a warning
+until a site-wide phrase map exists.
+
+## Internal-link checks
+
+Beyond the orphan, click-depth, dead-end, generic-anchor and broken-link rules
+in the absorbed set, run these on the internal links. Findings go to
+`wugweb-work` (anchor wording, placement) or a developer (`rel`, redirects).
+`wugweb-strategy` owns the cluster map; this skill checks the links against it.
+
+| Check | What |
+|---|---|
+| anchor-text type mix | classify each internal anchor as exact, partial, branded, generic, naked or image alt; warn when exact match goes over a set share, default 20% |
+| silo or cluster coherence | a cluster's supporting pages link to the hub and to each other; a link to another cluster goes to that cluster's hub, not its supporting pages |
+| redirected internal links | an internal link that lands on a 301 points at the final address instead |
+| internal nofollow | flag `rel=nofollow` on an internal link |
+| too many links | flag a page over a set link count, default off, a house number |
+| cloaked or external prefix | a path prefix the owner sets, such as `/go/`, counts as external for the mix and the audit |
+
+## Rank Math PRO net-new checks
+
+From the Rank Math PRO list, mapped to the Astro stack. Each is a check, not a
+write.
+
+| Check | What |
+|---|---|
+| VideoObject present | a page that embeds a video carries `VideoObject` with name, thumbnail, upload date and duration. Conditional: the site has little video today |
+| indexed status | read Search Console URL Inspection and report indexed, excluded, or crawled and not indexed. Needs the Search Console connection |
+| utility pages noindex | a thank-you, preview or download page carries `noindex` and stays out of the sitemap |
+| any-URL audit | the page check reads any HTML, so it runs on a competitor's address for a side-by-side; the plan part's competitor gap uses it |
 
 ## Absorbed rules
 
