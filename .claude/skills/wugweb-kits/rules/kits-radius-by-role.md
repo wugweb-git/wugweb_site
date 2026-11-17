@@ -21,4 +21,4 @@ Buttons use --radius-sm, chips --radius-full, cards --radius-lg, panels --radius
 .btn { border-radius: var(--radius-sm); }
 ```
 
-Source: components.md, radius.
+Source: components.md, radius. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.

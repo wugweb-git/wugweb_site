@@ -129,10 +129,10 @@ Kits group, source `components.md`:
 
 - `kits-tokens-only`: no hardcoded colour, spacing, radius, opacity, shadow, blur or z index.
 - `kits-button-tiers`: `.btn-solid` brand, `.btn` primary, `.btn-ghost`; size by `.btn-sm`, `.btn-lg`, `.btn-block`, never one off CSS.
-- `kits-yellow-budget`: yellow is accent only, at most 10%; the final CTA stays yellow. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
-- `kits-radius-by-role`: buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`, panels `--radius-2xl`.
+- `kits-yellow-budget`: yellow is accent only, at most 10%, resting only on the one conversion action per page and the footer banner. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
+- `kits-radius-by-role`: buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`, panels `--radius-2xl`. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `kits-states-on-btn`: states live on `.btn`.
-- `kits-gsap-owns-motion`: animation is GSAP through `data-reveal` and `data-scroll`; no property has two owners.
+- `kits-gsap-owns-motion`: animation is GSAP through `data-reveal` and `data-scroll`; no property has two owners. The motion feel is owned by `wugweb-brand-os`; kits holds the timings and the check.
 - `kits-animated-block-lint`: Service Spotlight Panel, Client Assembly Grid, Service Tag Field, Bento Block, Process Map and any block marked "Animated block" are linted for transition and tween clashes.
 - `kits-bento-never-even`: a bento never resolves into an even grid. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 - `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
@@ -166,7 +166,7 @@ All plain Node, no dependencies, run from the skill folder or the repo root.
 
 The scripts report and never edit. The page check reads static HTML; measuring at 375, 768 and 1200 needs a browser and is done by hand.
 
-References: `references/layout-shell.md`, `references/component-sizes.md`, `references/six-layers.md`, `references/spec-templates.md`, `references/known-doc-clashes.md`, `references/standing-rules.md`.
+References: `references/storybook.md` (Storybook is the living reference), `references/layout-shell.md`, `references/component-sizes.md`, `references/six-layers.md`, `references/spec-templates.md`, `references/known-doc-clashes.md`, `references/standing-rules.md`.
 
 ## When the code is unreachable
 
@@ -1923,7 +1923,7 @@ Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay.
 <div class="card" data-reveal></div>
 ```
 
-Source: components.md, motion.
+Source: components.md, motion. The motion feel is owned by `wugweb-brand-os`; kits holds the timings and the check.
 
 ### `kits-live-colours-frozen`
 
@@ -1963,7 +1963,7 @@ Buttons use --radius-sm, chips --radius-full, cards --radius-lg, panels --radius
 .btn { border-radius: var(--radius-sm); }
 ```
 
-Source: components.md, radius.
+Source: components.md, radius. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
 
 ### `kits-states-on-btn`
 
@@ -2009,7 +2009,7 @@ Source: components.md, rules.
 
 **Impact:** HIGH — yellow overuse removes its signal
 
-Yellow is an accent and a resting fill on brand buttons only, at most 10% of a page. The final CTA stays yellow by owner decision. Yellow is the one brand colour. Purple, green and orange are allowed as pillar colours, pillar glow is an allowed exception to the shadow and blur token rules, and black is the default canvas, light only where the owner says (wugweb-brand-os rulings, 2026-11-17).
+Yellow is an accent, at most 10% of a page, and rests only on the one conversion action per page and the footer banner. The final CTA stays yellow by owner decision. Yellow is the one brand colour. Purple, green and orange are allowed as pillar colours, pillar glow is an allowed exception to the shadow and blur token rules, and black is the default canvas, light only where the owner says (wugweb-brand-os rulings, 2026-11-17).
 
 **Incorrect:**
 

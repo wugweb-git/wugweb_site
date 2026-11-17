@@ -22,4 +22,4 @@ Animation runs through GSAP with data-reveal, data-scroll and data-reveal-delay.
 <div class="card" data-reveal></div>
 ```
 
-Source: components.md, motion.
+Source: components.md, motion. The motion feel is owned by `wugweb-brand-os`; kits holds the timings and the check.
