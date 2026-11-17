@@ -90,7 +90,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
 - One yellow conversion action per page; labels describe the action; yellow stays under 10% of the page.
 - The site's existing blocks are awaiting the owner's sign-off; the bento layout on the case study page is the one this work replaces.
-- The proposed CMS fields that include `faqs` are owned elsewhere and not deployed. The `faqs` field feeds FAQPage schema, which the owner has ruled out; that clash is with the owner.
+- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; this skill still never writes FAQ blocks for schema, and no case study body carries one unless the owner supplies the source Q and A.
 
 ## 6. Rhythm
 

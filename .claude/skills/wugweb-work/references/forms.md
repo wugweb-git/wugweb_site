@@ -28,7 +28,7 @@ Every form is made from the approved body, takes only the pieces it can hold, an
 | `forms/presence-compare.md` | Read-only check of a published Behance or Dribbble piece against its case study |
 | `forms/publish-approval.md` | The eight approval steps |
 
-Not in this module: replies, comment routines and outreach pitches (open; see `open-items.md`).
+Not in this module: replies, comment routines and outreach pitches (owner decision, 2026-11-17: out; each one asked for is a one-off draft).
 
 ## Accounts in scope (owner, 2026-11-16)
 
@@ -47,7 +47,7 @@ Worked examples, made from a proposed body for shape only: `examples/forms-ntuc-
 - A caption adds to the media and does not describe it. One action per caption.
 - Before and after are shown under the same conditions, with the middle (process, timeline) included. No cherry-picked result.
 - A thread is one idea rebuilt beat by beat, never an article cut up. If it fits one post, it is one post.
-- LinkedIn tags: none (open; see `open-items.md`).
+- LinkedIn tags: none (owner decision, 2026-11-17).
 - A post waits until the page it links to is live. No client is named or tagged without permission on record.
 
 ## The gate for new files
@@ -93,4 +93,4 @@ This skill picks which platform size a file uses; `wugweb-kits` supplies the siz
 
 ## Not decided
 
-Who uploads to Behance and Dribbble, where made files are kept, the plain canvas question, whether the scheduling tool is connected, Medium as a form, three made-file sizes, LinkedIn tags, and replies and outreach: see `open-items.md`.
+Who uploads to Behance and Dribbble, where made files are kept, the plain canvas question, whether the scheduling tool is connected, Medium as a form, three made-file sizes: see `open-items.md`.
