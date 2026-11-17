@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-strategy plan and Notion record the other-docs check (2026-11-17)
+- Other plans read from main; no change needed in this skill. Backup in `backups/`.
+
 ### Changed — wugweb-strategy plan records the later rulings (2026-11-17)
 - Plan status block and card row updated to match the Notion page; backup in `backups/`.
 
