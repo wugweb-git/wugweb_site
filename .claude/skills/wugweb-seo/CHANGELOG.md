@@ -2,6 +2,10 @@
 
 ## 2.5.0, 2026-11-17
 
+- Retired URLs: a page wugweb-strategy retires returns 410 Gone (or 404), keeps no redirect
+  and leaves the sitemap; the slug is not reused (strategy decision 7, the owner's one-slug
+  rule). Plan part: the topic outline is always returned even on thin input, with each
+  fact marked "to supply" when the source gives none (clarified after an eval surfaced it).
 - Standing rules now carried as a marked copy at `references/standing-rules.md` (verbatim of
   `docs/skills/STANDING-RULES.md`), included in the export; `test.mjs` fails if the copy drifts
   from the home file, which wins. Matches the pattern set by wugweb-voice (3ef0c4a6); replaces
