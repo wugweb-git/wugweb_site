@@ -138,7 +138,7 @@ Kits group, source `components.md`:
 - `kits-block-docs-home`: block specs live in `kits_design_system/docs/blocks/`.
 - `kits-live-colours-frozen`: text `#f4f4f4`, muted `#bababa`, surfaces `#191919` and `#2b2b2b` are never changed; text is never pure white. Rule owned by `wugweb-brand-os`; kits holds the value and the check.
 
-Media, type and widgets, detail in `references/media-and-widgets.md`: `kits-media-poster-first`, `kits-widget-guards`, `kits-case-media-layout`, `kits-media-viewer`, `kits-panel-order-warm-cool`, `kits-heading-never-smaller`, `kits-icons-currentcolor`, and `shell-media-literals` (480, 640, 768, 1024, 1200; max width at .98).
+Media, type and widgets, detail in `references/media-and-widgets.md`: `kits-media-poster-first`, `kits-widget-guards`, `kits-case-media-layout`, `kits-media-viewer`, `kits-panel-order-warm-cool`, `kits-heading-never-smaller`, `kits-icons-currentcolor`, `kits-logo-size-and-space`, and `shell-media-literals` (480, 640, 768, 1024, 1200; max width at .98).
 
 Loops stay 15 seconds or less, any loop over 5 seconds gets a pause control and is not hidden from assistive tech, and all loops stop under reduced motion. Deck and card type uses `--type-graphic-l`, `-m` and `-s` for title, subtitle and label (owner, 2026-11-17). Confirmed sizes (owner, 2026-11-17, in `sizing.md`): rail 85vw and never past 1200, peek 20%, signature width 2400px, line length 35 to 60 characters. Tokens in `global.css`: `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min`, `--measure-max`.
 
@@ -416,7 +416,7 @@ wins. Dates show when the owner set or confirmed a rule, where known.
    - `label-lists-are-lists` — a div grid of cards hides the item count from assistive tech
    - `label-no-loop-labels` — repeated ids and labels from a loop break references
    - `label-skip-and-landmarks` — keyboard users cannot bypass the sticky header without them
-8. **Kits Components and Motion** (HIGH) — 17 rules
+8. **Kits Components and Motion** (HIGH) — 18 rules
    - `kits-animated-block-lint` — animated blocks hide the most motion clashes
    - `kits-bento-never-even` — an even grid removes the hierarchy the bento exists for
    - `kits-block-docs-home` — specs scattered elsewhere go stale
@@ -426,6 +426,7 @@ wins. Dates show when the owner set or confirmed a rule, where known.
    - `kits-heading-never-smaller` — a heading that renders smaller than the text under it inverts the hierarchy at some widths
    - `kits-icons-currentcolor` — hotlinked or fixed-colour icons break theming and add a third-party dependency
    - `kits-live-colours-frozen` — changing live colours changes the whole look and contrast
+   - `kits-logo-size-and-space` — a logo below the floor or crowded by other elements loses its mark
    - `kits-media-poster-first` — autoplaying or eagerly loaded video costs bytes and LCP before anyone asks for it
    - `kits-media-viewer` — a viewer that traps nothing or ignores back strands keyboard and phone users
    - `kits-panel-order-warm-cool` — two similar pillar colours side by side lose the contrast between panels
@@ -2041,6 +2042,26 @@ Text #f4f4f4, muted #bababa and surfaces #191919 and #2b2b2b are deliberate and 
 ```
 
 Source: CLAUDE.md, working agreements. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
+
+### `kits-logo-size-and-space`
+
+**Impact:** MEDIUM — a logo below the floor or crowded by other elements loses its mark
+
+The logo is never shown below 40px high, the nav logo size and the floor. It keeps clear space on every side equal to the rendered height of the mark, sits on black only, and uses the real files: lockup `logo-large.svg`, mark `logo-small.svg`. Values in `references/component-sizes.md`. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
+
+**Incorrect:**
+
+```css
+.footer-logo { height: 28px; margin: 4px; background: var(--neutral-1); }
+```
+
+**Correct:**
+
+```css
+.footer-logo { height: var(--nav-logo-height); margin: var(--nav-logo-height); }
+```
+
+Source: wugweb-brand-os art-direction.md (owner, 2026-11-17).
 
 ### `kits-media-poster-first`
 

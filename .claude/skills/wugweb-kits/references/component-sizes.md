@@ -21,6 +21,17 @@ Source: `kits_design_system/docs/tokens/sizing.md`, read 2026-11-17. The doc win
 
 Icons: WhatsApp nav CTA 16px; toolkit icons between 16px and 18px; bento stack icons 18px; logo lockup 149 x 54 and mark 54 x 54 (SVG intrinsic).
 
+## Logo (owner rulings via wugweb-brand-os, f66bb666, 2026-11-17)
+
+| Value | Rule |
+|---|---|
+| Files | lockup `public/brand/logo-large.svg` (white and grey), mark `public/brand/logo-small.svg` (yellow and white); both exempt from the pure white and yellow rules, nothing else is |
+| Minimum size | 40px high, the nav logo (`--nav-logo-height`), is the floor |
+| Clear space | on every side, equal to the rendered height of the mark; the mark is as tall as the lockup (54 of 54), so at 40px the clear space is 40px |
+| Ground | black only; no one-colour version yet |
+
+Open clash, for brand-os and the owner: in the nav the 40px logo sits in a 68px bar with a 12px bar inset, so it has 14px above and below, not 40. Kits reports it and does not change the nav.
+
 ## Sizes confirmed by the owner, 2026-11-17
 
 These four are confirmed by the owner but are not yet in `sizing.md` or any design doc. The docs stay the source; add them there before relying on them.
