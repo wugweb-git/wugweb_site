@@ -5,6 +5,9 @@
  *  - `[data-scroll]` section transforms (rise / scale / fade-up / parallax)
  *  - `[data-reveal]` entrances (fade + rise on scroll, `data-reveal-delay` for stagger)
  * Respects reduced motion. Free-tier safe — no CDN dependency, bundled locally.
+ *
+ * kits-gsap-owns-motion: scroll in animates opacity and translateY (y) only.
+ * No scale, rotate or filter tweens. Scrubbed effects keep translate only.
  */
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -71,8 +74,9 @@ export function initScrollAnimations(): () => void {
       fromVars = { ...fromVars, y: 50 };
       toVars = { ...toVars, y: 0 };
     } else if (kind === 'scale') {
-      fromVars = { ...fromVars, scale: 0.95 };
-      toVars = { ...toVars, scale: 1 };
+      // Kept as a name for old markup; it now rises like fade-up (no scale).
+      fromVars = { ...fromVars, y: 30 };
+      toVars = { ...toVars, y: 0 };
     } else if (kind === 'fade-up') {
       fromVars = { ...fromVars, y: 30 };
       toVars = { ...toVars, y: 0 };
@@ -94,7 +98,6 @@ export function initScrollAnimations(): () => void {
 
       const tween = gsap.from(tiles, {
         y: 48,
-        scale: 0.96,
         opacity: 0,
         duration: 0.8,
         ease: 'power3.out',
@@ -113,9 +116,10 @@ export function initScrollAnimations(): () => void {
        * Card stack reveal — the cards begin as a deck and are dealt into the
        * list as the section passes.
        *
-       * Deck geometry is taken from the reference: each card behind the front
-       * sits 45px further back in Z under a 500px perspective, blurs by another
-       * 1.5px and drops 0.12 of opacity. The reference *auto-cycles* that deck;
+       * Deck geometry: each card behind the front collapses onto the one above
+       * and drops opacity. The reference also pushed cards back in Z and blurred
+       * them; both are gone (scroll in is opacity and y only, and filter tweens
+       * are banned and costly). The reference *auto-cycles* that deck;
        * this does not — these are five steps somebody has to read, not a
        * carousel. Scrubbed to scroll so the reader deals the deck themselves.
        *
@@ -159,14 +163,12 @@ export function initScrollAnimations(): () => void {
           card,
           {
             y: collapse,
-            z: -45 * i,
             // Deeper falloff than the reference's. Its deck is only ever seen
             // at rest; ours is watched mid-deal, and at 0.12 per card the one
             // behind was still legible through the gap.
-            filter: `blur(${Math.min(2.2 * i, 8)}px)`,
             opacity: Math.max(0.22, 1 - 0.26 * i),
           },
-          { y: 0, z: 0, filter: 'blur(0px)', opacity: 1, ease: 'power1.out', duration: SETTLE },
+          { y: 0, opacity: 1, ease: 'power1.out', duration: SETTLE },
           (i - 1) * STEP
         );
       });
@@ -198,7 +200,7 @@ export function initScrollAnimations(): () => void {
           toggleActions: 'play reverse play reverse',
         },
       });
-      tl.from(el, { y: 44, scale: 0.975, opacity: 0, duration: 0.75, ease: 'power3.out' }, 0);
+      tl.from(el, { y: 44, opacity: 0, duration: 0.75, ease: 'power3.out' }, 0);
       if (heading) tl.from(heading, { y: 18, opacity: 0, duration: 0.55, ease: 'power2.out' }, 0.16);
       if (copy) tl.from(copy, { y: 14, opacity: 0, duration: 0.5, ease: 'power2.out' }, 0.26);
       if (btn) tl.from(btn, { y: 14, opacity: 0, duration: 0.5, ease: 'power2.out' }, 0.34);
@@ -238,8 +240,9 @@ export function initScrollAnimations(): () => void {
       /**
        * Scroll-scrubbed assemble / hold / disperse, for a grid of children.
        *
-       * Each child starts small, rotated, and pushed out to its own scattered
-       * position; scrolling in pulls them together into the grid at full size;
+       * Each child starts pushed out to its own scattered position (translate
+       * only: no scale or rotate, per kits-gsap-owns-motion); scrolling in
+       * pulls them together into the grid;
        * they hold through the middle of the pass; then they scatter back out
        * the way they came as the section leaves. Offsets are derived from each
        * child's own position (pushed outward from the grid's centre, plus
@@ -273,7 +276,6 @@ export function initScrollAnimations(): () => void {
         return {
           x: dx * spread + (rand(i * 2 + 7) - 0.5) * 260,
           y: dy * spread + (rand(i * 3 + 13) - 0.5) * 220,
-          rot: (rand(i * 5 + 21) - 0.5) * 30,
         };
       });
 
@@ -285,10 +287,8 @@ export function initScrollAnimations(): () => void {
         {
           x: (i: number) => scatter[i].x,
           y: (i: number) => scatter[i].y,
-          rotate: (i: number) => scatter[i].rot,
-          scale: 0.45,
         },
-        { x: 0, y: 0, rotate: 0, scale: 1, ease: 'none', duration: 0.42 },
+        { x: 0, y: 0, ease: 'none', duration: 0.42 },
         0
       );
       tl.to(
@@ -296,8 +296,6 @@ export function initScrollAnimations(): () => void {
         {
           x: (i: number) => scatter[i].x,
           y: (i: number) => scatter[i].y,
-          rotate: (i: number) => scatter[i].rot,
-          scale: 0.45,
           ease: 'none',
           duration: 0.42,
         },
