@@ -1592,7 +1592,7 @@ These are sizes for new made files, never for resizing client media. The share i
 | Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn link image: at least 1200 x 627, ratio 1.91:1, 5 MB at most (adopted 2026-11-17) |
 | Behance cover | Upload at least 808 x 632; shown at 202 x 158 | Adopted by the owner, 2026-11-17. Behance Help Center as reported by search; figures date from 2020 |
 | Dribbble shot | At least 1600 wide (1600 x 1200 by convention); PNG, JPG or GIF up to 10 MB, video up to 20 MB | Adopted by the owner, 2026-11-17. Dribbble Help Center, read directly |
-| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17. The safe zone is unverified: no official page confirms it, so use the wider margins |
+| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17; the canvas is official. Meta gives no official pixel safe zone: keep the top, bottom and sides clear of key elements, text and logos (wider margins), and the bottom 40% clear of text on Reels ads. Never state a pixel figure as a rule |
 
 This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 
@@ -1662,7 +1662,7 @@ One matter is not decided. The owner decides it. Until then the skill works on t
 | Medium | Not a form of its own: the approved blog post, unchanged, with a link to the original | `forms.md` |
 | Behance and Dribbble uploads | The owner uploads. The skill hands over an ordered list, never an upload | `forms/behance.md`, `forms/dribbble.md` |
 | Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
-| Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (safe zone unverified: use the wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
+| Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (no official pixel safe zone: keep the edges clear, wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
 | Loops | A loop is 15 seconds or less. A loop over 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden; all loops stop under reduced motion | `media-standard.md`; `wugweb-kits` builds the control |
 | Card thumbnails | Every card is 16/10. The original ratio is kept and the frame is a mask: no crop of the source, no re-encode | `forms.md`, owned by `wugweb-kits` |
 | Layout sizes | Rail items 85vw and never past the 1200 content maximum; peek 20%; signature width 2400 px; line length 35 to 60 characters | `layout-grammar.md`, owned by `wugweb-kits` |

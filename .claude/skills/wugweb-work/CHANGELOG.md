@@ -2,6 +2,8 @@
 
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
+- Story safe zone (finding by `wugweb-seo`, read on the platform's own help pages, 2026-11-17): the 1080 x 1920 canvas is official; there is no official pixel safe zone. `forms.md` and `open-items.md` now say keep the top, bottom and sides clear, wider margins, the bottom 40% clear of text on Reels ads, and never state a pixel figure as a rule.
+
 - FAQ block rules agreed by `wugweb-strategy` (33e60149) and `wugweb-seo` (90340cf9) recorded in `own-content.md`: service pages and blog posts only, never case studies; questions from the signal log approved by the owner (brief field 8), answers only from the owner's source (field 11), unanswered questions cut, count never padded. Pointers in `SKILL.md`, `schema-jsonld.md`, `layout-grammar.md`, `copy-and-seo.md`, `handoffs.md`; the gate script fails FAQPage on a case study. Brand: Wugweb has no campaign system.
 
 - NTUC is a worked example only (owner, 2026-11-17): its facts are no longer an open item. One matter remains with the owner: where made files are kept and whether a scheduling tool is connected.

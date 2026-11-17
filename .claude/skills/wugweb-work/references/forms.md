@@ -71,7 +71,7 @@ These are sizes for new made files, never for resizing client media. The share i
 | Link share image | 1200 x 630 | Settled by the owner, 2026-11-16. LinkedIn link image: at least 1200 x 627, ratio 1.91:1, 5 MB at most (adopted 2026-11-17) |
 | Behance cover | Upload at least 808 x 632; shown at 202 x 158 | Adopted by the owner, 2026-11-17. Behance Help Center as reported by search; figures date from 2020 |
 | Dribbble shot | At least 1600 wide (1600 x 1200 by convention); PNG, JPG or GIF up to 10 MB, video up to 20 MB | Adopted by the owner, 2026-11-17. Dribbble Help Center, read directly |
-| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17. The safe zone is unverified: no official page confirms it, so use the wider margins |
+| Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17; the canvas is official. Meta gives no official pixel safe zone: keep the top, bottom and sides clear of key elements, text and logos (wider margins), and the bottom 40% clear of text on Reels ads. Never state a pixel figure as a rule |
 
 This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 

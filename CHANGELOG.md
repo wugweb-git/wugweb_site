@@ -13,6 +13,8 @@ and this project adheres to Semantic Versioning.
 
 ### Changed — wugweb-voice: owner's "all yes" applied, version stays 0.3.0 (2026-11-17)
 - `.claude/skills/wugweb-voice/`: read-only link to the wugweb-strategy signal log, 40 to 60 word summary field, translated copy and working preferences out of scope, we or I per piece, and a marked copy of the standing rules in the export (test-checked). `SKILL.md` body 1,997 words. No samples yet.
+### Changed — wugweb-work story safe zone wording (2026-11-17)
+- No official pixel safe zone for 1080 x 1920 stories: keep edges clear, wider margins, bottom 40% clear of text on Reels ads; no pixel figure stated as a rule.
 
 ### Changed — wugweb-strategy FAQ rules agreed with seo (2026-11-17)
 - Pending mark removed; version stays 0.1.2. Exports rebuilt.
