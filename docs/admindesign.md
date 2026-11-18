@@ -5,6 +5,10 @@
 
 ---
 
+> **Checked 2026-11-19.** This is the August 2026 implementation log and parts are out of date. The live desk structure is `sanity/schemaTypes/deskStructure.ts`; the schema folder is `sanity/schemaTypes/`. Sanity is `^6.23.0`, and the Studio is also embedded in the site at `/admin` (commit 6a05af0e).
+
+---
+
 ## What Was Implemented (2026-08-05)
 
 ### 1. Reusable DataTable (`sanity/components/DataTable.tsx`)

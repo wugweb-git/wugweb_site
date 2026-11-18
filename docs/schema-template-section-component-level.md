@@ -1,5 +1,7 @@
 # Schema template — section/component-level fields
 
+> **Checked 2026-11-19.** The lines below that say nothing is deployed are out of date. Live in the schema today: `ogImagePath`, `ogTitle`, `ogDescription` and `noIndex` on `caseStudy` and `post`, plus `focusKeyword` on `caseStudy`. The other fields in section 1 are deliberately not added (see the comments in `sanity/schemaTypes/caseStudy.ts` and `post.ts`). The section 2 fields are not added. Field rulings now belong to `wugweb-strategy` and `wugweb-seo`.
+
 Same pattern as the `singletonPage` SEO/AI-Answers work: field name, type, group,
 label, purpose. Nothing in this file is deployed yet — review first, then I add
 the actual `defineField()` entries to the Sanity schema files.

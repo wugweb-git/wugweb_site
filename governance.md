@@ -250,6 +250,6 @@ These live primarily in [`CLAUDE.md`](CLAUDE.md) â€œThings AI Must Never Changeâ
 - Changelog: [`CHANGELOG.md`](CHANGELOG.md)
 - Architecture memory: [`CLAUDE.md`](CLAUDE.md)
 - Neon DDL: [`neon/schema.sql`](neon/schema.sql)
-- Assets: [`docs/content-assets.md`](docs/content-assets.md), [`docs/r2-assets.md`](docs/r2-assets.md)
+- Assets: [`docs/r2-assets.md`](docs/r2-assets.md)
 - Free-tier Cursor rule: [`.cursor/rules/free-tier-limits.mdc`](.cursor/rules/free-tier-limits.mdc)
 - Governance Cursor rule: [`.cursor/rules/governance.mdc`](.cursor/rules/governance.mdc)

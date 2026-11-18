@@ -45,7 +45,7 @@ Hard stop for Cloudflare R2. Media lives in bucket `wugweb-assets` (Standard cla
 - R2 key: `assets/<path>`
 - Public: `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/assets/<path>`
 
-Details: `docs/r2-assets.md`. Upload: `scripts/upload-assets-to-r2.mjs`. Content map: `scripts/map-assets-to-content.mjs` / `docs/content-assets.md`.
+Details: `docs/r2-assets.md`. Upload: `scripts/upload-assets-to-r2.mjs`. Content map: `scripts/map-assets-to-content.mjs`; the path fields are listed in `docs/r2-assets.md`.
 
 ### Do not
 

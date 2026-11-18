@@ -187,3 +187,16 @@ Owner's steps added: add `https://uat.wugweb.com` to the Sanity CORS list so the
 For the record: GitHub has main only. Local builds need `npm install` since the Studio merge (`6a05af0e`). The coordinator did not witness the approval for that merge; the frontend session reported it was on the owner's go.
 
 Commits from this session on main: `ce8be99e` (dash fixes, live on uat), `1424d023` and `d5b87b1c` (this file and the Notion backup).
+
+## Docs clean-up done by the coordinator (2026-11-19)
+
+Part of item S is done, on the owner's word "get rid of stale or redundant md files":
+
+- Removed: `docs/content-assets.md` (its path-field table moved into `docs/r2-assets.md`), `src/components/README.md` (the component list is in `CLAUDE.md` and `kits_design_system/docs/components.md`), and the 48 Notion page snapshots under `backups/notion-wugweb-*` (the pages have their own history and the plans are in `docs/skills/`).
+- Rewritten: `docs/r2-assets.md`, checked against `src/lib/assets.ts` (media only in R2, no `public/assets/` folder, the three `PUBLIC_*` values in `wrangler.jsonc` are unread).
+- Corrected: `README.md` (R2 only, GSAP, folders, the embedded Studio), the media line and the wugweb-work Part 2 line in `CLAUDE.md` and `AGENTS.md`, the links in `governance.md` and `.cursor/rules/free-tier-limits.mdc`.
+- Marked with a dated note, not rewritten: `docs/admindesign.md`, `docs/schema-template-section-component-level.md`.
+- `pending.md`: the finished history (about 1,300 lines) is cut; it is in git at `a4950eb3`. The nine open leftovers above are unchanged.
+
+Still open from item S: the stale lines inside `governance.md` (local assets, dual-serve, upload scripts, old counts).
+
