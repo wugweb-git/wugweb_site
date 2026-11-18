@@ -26,6 +26,8 @@
 
 # wugweb-kits skill: plan
 
+> CHECKED AGAINST MAIN, 2026-11-19 (coordinator, from the files; no skill file was edited): version 2.1.3 on main, 59 rules, 88 files, skill file body 1,995 words by the shared count, 19 of 19 evals pass as the changelog records. 2.1.2 rewrote the frontmatter to the skill-development spec, added a phases note, corrected the stale `.astro` claim, rewrote the metadata abstract, rebuilt `AGENTS.md` and added two regression evals. 2.1.3 added the sibling files (changelog, Cursor rule, ChatGPT instructions, Codex settings, single-file export); no rule, reference or script changed. Commits 587c0299, a8ff7003, 7631fdad, merged to main as a4950eb3. Upload files built by the kits session (`wugweb-kits.skill` and the 2.1.3 zip) are in the Downloads folder `wugweb-skills-2026-11-18`.
+
 ## Plan
 
 ### 1. Skill card

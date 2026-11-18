@@ -16,6 +16,8 @@
 
 # wugweb-voice skill: plan
 
+> CHECKED AGAINST MAIN, 2026-11-19 (coordinator, from the files; no skill file was edited): version 0.3.0 on main, still locked, 32 files, skill file body 1,993 words, last skill commit 9db2771f. Three changes under the locked 0.3.0 on 2026-11-19, no version change: the export test fixed and `AGENTS.md` and the export regenerated; the standing-rules reference listed in the Files table and the per-reference version stamps removed; the 26 grader files folded into each `case.yaml`.
+
 ## 1. Skill card
 
 | Field | Value |

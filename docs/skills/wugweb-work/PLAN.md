@@ -64,6 +64,8 @@
 
 # wugweb-work skill: final plan
 
+> CHECKED AGAINST MAIN, 2026-11-19 (coordinator, from the files; no skill file was edited): version 0.5.0 on main, 54 files, skill file body 1,811 words, last skill commit 5bec58b9. Part 2 on main: step 2 (313140b4), step 3 (8f0b7fe8), step 5 (4b834c9b), the D1 gate and block doc (77e75442), step 4 schema fields (7e42a910). The Notion page now holds the skill file text (turned into a Notion skill on 2026-11-18); this file is the plan.
+
 ## Contents
 
 1. Where this skill stands · Two tracks · What stays and what moves · Forms module · Works beyond Claude · Track 2 procedure · Fits with the design system · Extracted and absorbed · Skill card · About · Why · One source of truth

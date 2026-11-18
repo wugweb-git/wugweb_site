@@ -21,6 +21,8 @@
 
 # wugweb-strategy skill: plan (ready for vetting)
 
+> CHECKED AGAINST MAIN, 2026-11-19 (coordinator, from the files; no skill file was edited): version 0.1.4 on main (skill commit d8133fc9), 47 files, skill file body 1,693 words. 0.1.3 added `metadata.json`, `README.md` and the Cursor, ChatGPT and Codex adapters; 0.1.4 rebuilt `AGENTS.md` and the export for the updated standing rules.
+
 > Plan only, 2026-11-16. Nothing is built: no skill files, no site code, no write to Sanity or R2, no change to any Notion database. Named `wugweb-content` until the owner renamed it on 2026-11-16. Registry: "Wugweb Skill Management System" in Notion (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298).
 
 ## Skill card

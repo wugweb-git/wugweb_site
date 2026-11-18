@@ -22,6 +22,8 @@
 
 # wugweb-seo: alignment plan
 
+> CHECKED AGAINST MAIN, 2026-11-19 (coordinator, from the files; no skill file was edited): version 2.5.0 on main, 25 files, skill file body 1,906 words, last skill commit 5bec58b9. The Cursor rule, ChatGPT instructions and Codex settings are on main. The single-file export the Cowork seo session added on 2026-11-19 is still not on main; the seo session commits it.
+
 > Mirror of the Notion page "wugweb-seo" (https://app.notion.com/p/41abb710b9ab818b8481d42beb053fef), which is the source. Part of the Wugweb Skill System. Plan stage only. Nothing goes to development until the owner says. Written 2026-11-16.
 
 ## Skill card
