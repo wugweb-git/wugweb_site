@@ -9,6 +9,9 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added: API keys and secrets standard (2026-11-19)
+- `docs/skills/SECRETS.md`: the standard every skill reads. One name per use (UPPER_SNAKE_CASE, provider named), one place per environment (never the repo), paid providers blocked by policy, pinned model per use through free routers, rotation when a key reaches a chat, a file or a log. `docs/skills/STANDING-RULES.md` gains a short "API keys and secrets" section that points here. The four skill copies of `references/standing-rules.md` (`wugweb-work`, `wugweb-voice`, `wugweb-seo`, `wugweb-kits`) are synced; `wugweb-work` validate still clean (30 checks, 0 errors).
+
 ### Changed: wugweb-web-engineering plan, items handed over by the coordinator (2026-11-18)
 - `docs/skills/wugweb-web-engineering/PLAN.md` section 11: items M to S and two owner steps; the Notion record page carries the same.
 

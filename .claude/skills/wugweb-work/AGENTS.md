@@ -420,6 +420,14 @@ wins. Dates show when the owner set or confirmed a rule, where known.
 - Every skill must be usable in GPT, Cursor and other tools, not only Claude. (2026-11-16)
 - The layout values in the design system's layout shell document are binding. Skills read that document and point to `wugweb-kits`. (2026-11-16)
 
+### API keys and secrets
+
+- The standard lives in `docs/skills/SECRETS.md`. Every skill follows it.
+- One name per use, UPPER_SNAKE_CASE, provider named: `OPENROUTER_API_KEY`, `NOTION_API_TOKEN`, `SANITY_SYNC_TOKEN`.
+- No secret in the repo, in a URL, in a commit message, or in a file this session writes. Local `.env` is gitignored; the repo tracks `.env.example` with placeholders only.
+- Paid providers are blocked by policy, whatever their balance: DeepSeek, OpenAI, Moonshot, MiniMax, xAI, Anthropic. A free-tier call through a router must pin to one verified free model.
+- A key that appears in chat, a screenshot, a log or a commit is rotated at once and logged on the project's keys page. (2026-11-19)
+
 ### Git, only when asked to commit
 
 - Commit by path. Never add everything at once.
