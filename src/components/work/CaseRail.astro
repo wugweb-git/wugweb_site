@@ -1,0 +1,122 @@
+---
+import type { RailBlock } from '../../lib/case-layout';
+import { assetUrl } from '../../lib/assets';
+
+interface Props { block: RailBlock }
+const { block } = Astro.props;
+
+function src(url: string) { return url.startsWith('http') ? url : assetUrl(url); }
+
+const label = block.flow ? `${block.flow} flow` : 'Screens';
+const railId = `case-rail-${Math.random().toString(36).slice(2, 10)}`;
+---
+<section class="case-rail" role="region" aria-roledescription="carousel" aria-label={label} data-case-rail data-rail-id={railId} data-reveal>
+  <div class="case-rail-head">
+    <h3 class="case-rail-title">{block.flow ?? 'Screens'}</h3>
+    <div class="case-rail-controls">
+      <button type="button" class="case-rail-btn" data-rail-prev aria-label="Previous screen">&larr;</button>
+      <span class="case-rail-counter" data-rail-counter aria-live="polite" aria-atomic="true">1 of {block.items.length}</span>
+      <button type="button" class="case-rail-btn" data-rail-next aria-label="Next screen">&rarr;</button>
+    </div>
+  </div>
+  <ol class="case-rail-track" data-rail-track>
+    {block.items.map((media, i) => (
+      <li class="case-rail-slide" aria-roledescription="slide" aria-label={`${i + 1} of ${block.items.length}`} role="group">
+        <figure class="case-rail-item">
+          {media.video ? (
+            <video class="case-rail-media" src={src(media.url)} muted playsinline autoplay loop preload="metadata" aria-hidden="true" />
+          ) : (
+            <img class="case-rail-media" src={src(media.url)} alt={media.caption ?? media.label ?? ''} loading="lazy" decoding="async" />
+          )}
+          {media.caption && <figcaption class="case-rail-caption">{media.caption}</figcaption>}
+        </figure>
+      </li>
+    ))}
+  </ol>
+</section>
+<script>
+  import { initCaseRail } from '../../lib/case-rail';
+  document.querySelectorAll('[data-case-rail]').forEach(el => initCaseRail(el));
+</script>
+<style>
+  .case-rail {
+    margin: var(--space-page-lg) 0;
+    display: grid;
+    gap: var(--space-page-md);
+  }
+  .case-rail-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-page-sm);
+  }
+  .case-rail-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  .case-rail-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-page-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm, 0.875rem);
+  }
+  .case-rail-btn {
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-full, 999px);
+    cursor: pointer;
+  }
+  .case-rail-btn:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+  }
+  .case-rail-btn[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .case-rail-counter { min-inline-size: 6ch; text-align: center; }
+  .case-rail-track {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(85vw, 420px);
+    gap: var(--space-page-md);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    overscroll-behavior-inline: contain;
+  }
+  .case-rail-slide {
+    scroll-snap-align: start;
+  }
+  .case-rail-item {
+    margin: 0;
+    display: grid;
+    gap: var(--space-page-xs);
+  }
+  .case-rail-media {
+    inline-size: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
+    display: block;
+    border-radius: var(--radius-3, 16px);
+    background: var(--color-surface-elevated);
+  }
+  .case-rail-caption {
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs, 0.75rem);
+    line-height: 1.4;
+  }
+</style>

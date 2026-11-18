@@ -1,6 +1,6 @@
 # Words
 
-Version 0.2.0. Lists that `scripts/check.mjs` reads are the fenced blocks below. Change a list here only; nothing else holds a copy.
+Lists that `scripts/check.mjs` reads are the fenced blocks below. Change a list here only; nothing else holds a copy.
 
 Labels: confirmed (owner said or approved, with date), observed (from samples, with IDs and count), candidate (found in a document, not ruled on). Only confirmed and observed entries are flagged by the check. Candidates are reported as questions.
 

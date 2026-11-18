@@ -9,6 +9,61 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-brand-os 0.3.2, standing rules travel with the skill (2026-11-19)
+
+- `.claude/skills/wugweb-brand-os`: `scripts/build.mjs` generates `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md`, as the sibling skills carry; pointers name the copy so the rules load in the Claude app and the `.skill` file. Test checks the copy. No rule changed.
+
+### Changed — wugweb-voice eval graders folded into case.yaml (2026-11-19)
+
+- `.claude/skills/wugweb-voice`: folded the 26 per-assertion grader files into each case's `case.yaml` at the owner's request; each case is now `prompt.md` plus `case.yaml` and the skill drops from 47 to 21 `.md` files. Diverges from the sibling eval layout (one grader per assertion); the skill's own tests still pass. Version stays locked at 0.3.0.
+
+### Added: wugweb-work Part 2 step 4 schema + step 8 docs round 2 (2026-11-19)
+- `sanity/schemaTypes/caseStudy.ts`: Body Content v2 fields declared. `results[]` items gain optional `source`, `period`, `asOf`, `baseline` (nothing removed). New fields the pages already read: `year` (number), `country`, `platform` (array of strings), `projectType`, `engagementType`, `specialThanks`, `links` (live, App Store, Play Store, Behance, Dribbble, Awards), `accent`. New derived field `mediaManifest` (array of objects, hidden + readOnly, written by sync v2). Studio deploy is the owner's step.
+- `CLAUDE.md` and `AGENTS.md`: new "Case-study components" subsection under Components, naming the 18 files, the CSS guard, the preview route and the Part 2 pointer.
+- `governance.md` §5: declared the v2 fields synced from Notion and that `mediaManifest` is derived data.
+- `.gitignore`: added `.claude/skill-workspaces/` and `scripts/.tmp-*.mjs` per the plan.
+- Build passes, 57 tests pass.
+
+### Changed — wugweb-voice brought to sibling standard (2026-11-19)
+
+- `.claude/skills/wugweb-voice`: listed `references/standing-rules.md` in the SKILL.md Files table (as wugweb-seo, wugweb-kits and wugweb-work do) and removed the per-reference `Version` stamps that siblings do not carry. Regenerated the portable files. Skill version stays locked at 0.3.0; tests pass.
+
+### Added: wugweb-work Part 2 step 5 gate + step 8 docs (2026-11-19)
+- `scripts/check-case-page.mjs`: the D1 gate. 15 checks against a live `/work/<slug>` URL: one h1, heading-step order, section id + accessible name, chapter article id uniqueness + h2, img alt/width/height, no em or en dashes in text, rails aria + buttons, loops muted + playsinline + aria-hidden, long videos muted + controls + not aria-hidden, every media URL returns 200 (HEAD), total media under 25 MB, title ≤ 60, meta description 140 to 160, canonical self, JSON-LD WebPage + CreativeWork + BreadcrumbList (only with `--host <canonical>`). Uses `node-html-parser` (already installed).
+- `kits_design_system/docs/blocks/case-study.md`: new block doc (status, source, content, anatomy, catalogue, rules, tiers, accessibility, gate, scope).
+- `kits_design_system/docs/components.md`: new section for `src/components/work/*.astro`, one row per component with the block types it renders.
+- `pending.md`: Part 2 step 5 landed, step 8 docs started entry.
+
+### Fixed — wugweb-voice export test green again, sample provenance recorded (2026-11-19)
+
+- `.claude/skills/wugweb-voice`: the export test asserted the standing-rules marker in the wrong case (`MARKED COPY`); corrected to `marked copy` to match the file and the wugweb-seo convention, and regenerated the stale `AGENTS.md` and `export/wugweb-voice.md`. The skill passes its own tests again. Recorded sample provenance (R-006): samples are shared while using the skills. Version stays locked at 0.3.0.
+
+### Added: wugweb-work Part 2 step 5, layout resolver and components (2026-11-19)
+- `src/lib/case-layout.ts`: pure, deterministic `resolveLayout(body, manifest, doc)` returning the 23-block union. No Sanity import. Skips manifest entries with `status != 200` or `dupOf` set. Chapter ids unique; reserved ids (`case-study`, `work-cover`) never reused. Rail caps at eight items. Styles pair renders as its own 50:50 block. All screens block groups by audience then flow, ordered by `step`.
+- `src/lib/case-layout.test.ts`: 18 tests, all passing. Hero ordering, summary, stats threshold, chapter ids, manifest skips, loops before videos, rail cap, split hint, styles pair, screens grouping, results vs stats, credits, presence, related/next, empty-body hero, slugify stability, catalogue coverage.
+- `src/components/work/`: the 18 Astro components named in the plan plus `CaseBlocks.astro` (the switch). Tokens-only CSS; each selector `.case-*`. Components: CaseHero, CaseChapter, CasePoints, CaseFigure, CaseSplit, CasePair, CaseRail, CaseMosaic, CaseWall, CaseLoop, CaseVideo, CaseQuote, CaseStats (also renders Results), CaseTable, CaseTimeline, CaseCredits, CasePresence, CaseRelated (also renders Next). No em or en dashes anywhere.
+- `src/lib/case-rail.ts`: W3C APG rail wiring. Buttons, counter, keyboard (ArrowLeft / ArrowRight / Home / End). Counter updates from the scroll position via IntersectionObserver so a flick, a key and a button stay consistent. No auto-advance.
+- `src/lib/case-lightbox.ts`: shared `<dialog>` lightbox wired with `showModal()` (native Esc and focus trap). Prev / next buttons, keyboard arrows, 40px swipe threshold on touch, back-button close via pushState / popstate.
+- `src/pages/work/preview/[slug].astro`: preview route behind an unlinked URL. Fetches the Sanity doc the live page fetches, parses, resolves, renders through `CaseBlocks`. `noIndex` so no search engine picks it up; `hideGlobalBlog` so the insights block does not fight it. Leaves `src/pages/work/[slug].astro` unchanged; the flip to the thin template waits for your preview review.
+- `scripts/check-case-css.mjs`: CSS guard. `.case-*` selectors may only live in `src/components/work/*.astro`. Legacy `src/pages/work/[slug].astro` is exempted by name until the flip. Wired into `prebuild`; current build passes.
+- `package.json`: `prebuild` now runs the case-css guard after the sector-css guard; `test:case` adds `case-layout.test.ts`.
+- 57 tests pass (21 parser + 18 resolver + 18 manifest); `npm run build` succeeds.
+
+### Added: AI models per skill, one reference doc (2026-11-19)
+- `docs/skills/AI-MODELS.md`: which model each Wugweb sibling skill reads, under which env-var name, with the plan-now vs run-later status. Pinned free only (`:free` suffix); defaults `nvidia/nemotron-3.5-lightning:free` for text and `nvidia/nemotron-3.5-super-vl:free` for vision. `docs/skills/SECRETS.md` now points here from its "Where this fits" section (SECRETS names keys; AI-MODELS names models).
+- No sibling-skill edits: entries are planned until a first script lands. The wugweb-work trio (`scripts/openrouter-*.mjs`) remains the only live caller.
+
+### Changed: API keys and secrets standard, owner's no-rotation rule applied (2026-11-19)
+- Owner rule, 2026-11-19: no key rotation, never. `docs/skills/SECRETS.md` loses the "Rotate when exposed" section and the rotation line in "Handling a key in chat"; the standing-rules clause rewritten to say what Claude will and will not do with a pasted key and to defer any after-action to the owner.
+- `governance.md` gains Rule 3 (API keys and secrets follow one standard), pointing at `docs/skills/SECRETS.md`, carrying the no-rotation rule.
+- `.env.example` created at the repo root: every environment variable name this repo reads, placeholders only. `.gitignore` already keeps `.env` and `.env.*` out via `!.env.example`.
+- Three OpenRouter helper scripts under `scripts/`: `openrouter-chat.mjs`, `openrouter-vision.mjs`, `openrouter-audit-case.mjs`. Each reads key and model from the environment, refuses a model that is not `:free`, prints usage with exit 2 on missing env or arguments. No hardcoded key; no live call in this change.
+- The four skill copies of `references/standing-rules.md` (`wugweb-work`, `wugweb-voice`, `wugweb-seo`, `wugweb-kits`) and the wugweb-work regenerated outputs (`AGENTS.md`, `export/wugweb-work.md`) re-synced to the master; wugweb-work validate still clean (30 checks, 0 errors).
+- `pending.md` carries the session entry.
+
+### Added: API keys and secrets standard (2026-11-19)
+- `docs/skills/SECRETS.md`: the standard every skill reads. One name per use (UPPER_SNAKE_CASE, provider named), one place per environment (never the repo), paid providers blocked by policy, pinned model per use through free routers, rotation when a key reaches a chat, a file or a log. `docs/skills/STANDING-RULES.md` gains a short "API keys and secrets" section that points here. The four skill copies of `references/standing-rules.md` (`wugweb-work`, `wugweb-voice`, `wugweb-seo`, `wugweb-kits`) are synced; `wugweb-work` validate still clean (30 checks, 0 errors).
+
 ### Changed: wugweb-web-engineering plan, items handed over by the coordinator (2026-11-18)
 - `docs/skills/wugweb-web-engineering/PLAN.md` section 11: items M to S and two owner steps; the Notion record page carries the same.
 

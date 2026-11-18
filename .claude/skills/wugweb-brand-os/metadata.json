@@ -1,0 +1,16 @@
+{
+  "version": "0.3.2",
+  "organization": "Wugweb",
+  "date": "November 2026",
+  "abstract": "Says who Wugweb is and what its visuals must mean, and checks visuals and claims against that. Holds brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules and Visual OS (art direction for site, social and deck visuals). Four modes: Answer, Visual check, Fact check and Change. It is reference only: it answers, checks and proposes, writes no copy, makes no media and writes to nothing. Gaps are reported as not decided and filled through use, by the owner's approval. Voice belongs to wugweb-voice, content strategy to wugweb-strategy, token values to wugweb-kits, SEO to wugweb-seo, making pieces to wugweb-work. The owner's standing rules in docs/skills/STANDING-RULES.md win over anything here.",
+  "relatedSkills": [
+    "wugweb-voice",
+    "wugweb-strategy",
+    "wugweb-kits",
+    "wugweb-work",
+    "wugweb-seo"
+  ],
+  "references": [
+    "https://agentskills.io/specification"
+  ]
+}

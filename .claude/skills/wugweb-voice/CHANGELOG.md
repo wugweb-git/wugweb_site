@@ -2,6 +2,20 @@
 
 ## [0.3.0] 2026-11-17
 
+### 2026-11-19 (eval graders folded, owner request)
+
+- Folded the 26 per-assertion grader files into each case's `case.yaml` under `expected_outcome`. Each test case is now `prompt.md` plus `case.yaml`; `.md` count dropped from 47 to 21. Note: this diverges from the sibling eval layout (siblings keep one grader per assertion) and the cases are no longer in the `claude plugin eval` grader format. The skill's own `test.mjs` and `evals/evals.json` are unaffected and pass. No version change.
+
+### 2026-11-19 (sibling conformance, under the locked 0.3.0)
+
+- Listed `references/standing-rules.md` in the SKILL.md Files table, matching wugweb-seo, wugweb-kits and wugweb-work.
+- Removed the per-reference `Version` stamps from the reference files; siblings carry none, and the version lives once in SKILL.md and metadata.json. No version change.
+
+### 2026-11-19 (under the locked 0.3.0, no version change)
+
+- Fixed the export test: it now looks for the standing-rules marker in the file's own case (`marked copy`), matching the file and the wugweb-seo convention. Regenerated `AGENTS.md` and `export/wugweb-voice.md`, which were stale on main.
+- Recorded sample provenance (R-006): samples are shared while using the skills, pieces the owner supplies or approves as work is made.
+
 - Two candidates recorded in `references/voice.md` (C-05 not decorative or hype-driven, C-06 outcomes over hype), from `brand_guidelines/`. Candidates only; not applied, not flagged. No version change.
 
 - Eval run, 2026-11-17: fixes only, no version change. `scripts/check.mjs` now returns fail when a number or quote has no source supplied (new `--sources` flag for when the caller has given them); `SKILL.md` and `references/words.md` say to raise unruled filler candidates and never drop them in a rewrite. `scripts/test.mjs` updated.

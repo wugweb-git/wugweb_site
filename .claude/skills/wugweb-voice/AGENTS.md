@@ -132,7 +132,7 @@ His chat messages in working sessions are fast and full of typos; they are not s
 5. Sample round: five short pieces in different modes; he marks each.
 6. Evals and the blind test in `references/blind-test.md`.
 
-When a piece written with this skill is published, `wugweb-work` records who reviewed it and took editorial responsibility; the EU AI Act's disclosure duty for AI-generated text (Article 50(4)) exempts text a person has reviewed and taken editorial responsibility for. A lawyer should confirm how that applies to each piece.
+When a piece is published, `wugweb-work` records who reviewed it and took editorial responsibility; under the EU AI Act (Article 50(4)) reviewed text is exempt from the AI-disclosure duty. A lawyer should confirm how it applies.
 
 ## Files
 
@@ -145,6 +145,7 @@ When a piece written with this skill is published, `wugweb-work` records who rev
 | `references/handoff.md` | The contract with other skills |
 | `references/blind-test.md` | How to run and score the blind test; evidence behind the thresholds |
 | `references/tooling.md` | The only file that names tools, vendors and helper skills |
+| `references/standing-rules.md` | Marked copy of the shared standing rules |
 | `examples/` | Before and after pairs tied to corpus entries; empty until samples exist |
 | `evals/evals.json` | Per-task tests; some runnable now, the rest waiting on samples |
 | `scripts/check.mjs` | Mechanical voice check |
@@ -179,7 +180,7 @@ The sections below are the skill's `references/` files, included so this documen
 <!-- references/voice.md -->
 ## Voice rules
 
-Version 0.2.0. Status: waiting on samples. No observed rule exists yet.
+Status: waiting on samples. No observed rule exists yet.
 
 Each rule has this shape:
 
@@ -237,7 +238,7 @@ Helper skill advice is not listed here as rules. The plan's "Extracted and absor
 <!-- references/modes.md -->
 ## Modes
 
-Version 0.2.0. One voice; each mode is a setting of it. Format rules (sizes, counts, layout) for each form live in `wugweb-work`. This file says only how each mode sounds.
+One voice; each mode is a setting of it. Format rules (sizes, counts, layout) for each form live in `wugweb-work`. This file says only how each mode sounds.
 
 Every mode below is waiting on samples. The "draft text" lines come from the draft "Tone by form" in `docs/skills/wugweb-work/PLAN.md` section 5 and are candidates, not rules.
 
@@ -278,7 +279,7 @@ From the kits docs (`kits_design_system/docs/components.md`, `tokens/layout-shel
 <!-- references/words.md -->
 ## Words
 
-Version 0.2.0. Lists that `scripts/check.mjs` reads are the fenced blocks below. Change a list here only; nothing else holds a copy.
+Lists that `scripts/check.mjs` reads are the fenced blocks below. Change a list here only; nothing else holds a copy.
 
 Labels: confirmed (owner said or approved, with date), observed (from samples, with IDs and count), candidate (found in a document, not ruled on). Only confirmed and observed entries are flagged by the check. Candidates are reported as questions.
 
@@ -386,7 +387,7 @@ Claude
 <!-- references/handoff.md -->
 ## Handoff contract
 
-Version 0.3.0. Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
+Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
 
 ### Links
 
@@ -435,7 +436,7 @@ No other link with `wugweb-strategy`, and none with `wugweb-seo` or `wugweb-kits
 <!-- references/blind-test.md -->
 ## Blind test
 
-Version 0.2.0. How to test whether drafts written with this skill can be told apart from the owner's real writing. Status: waiting on samples; it needs held-back samples in a mode before it can run.
+How to test whether drafts written with this skill can be told apart from the owner's real writing. Status: waiting on samples; it needs held-back samples in a mode before it can run.
 
 The method comes from the research report "Voice calibration method" (2026-11-16, in this project). No source sets a pass mark or a confidence scale for a voice test, so every threshold below is a starting point for the owner to set.
 
@@ -485,8 +486,6 @@ The method comes from the research report "Voice calibration method" (2026-11-16
 
 <!-- references/standing-rules.md -->
 ## Standing rules (marked copy)
-
-<!-- MARKED COPY. The home of these rules is docs/skills/STANDING-RULES.md in the Wugweb site repo. Copied 2026-11-17 so the skill works in GPT, Cursor and other tools. If this copy and the home file differ, the home file wins. Do not edit here; scripts/test.mjs checks the copy matches the home file when the repo is present. -->
 
 ## Owner's standing rules
 
@@ -549,6 +548,14 @@ wins. Dates show when the owner set or confirmed a rule, where known.
 - One Notion page per skill: no sub-pages, nothing elsewhere. The repo keeps one copy as that skill's PLAN file. (2026-11-16)
 - Every skill must be usable in GPT, Cursor and other tools, not only Claude. (2026-11-16)
 - The layout values in the design system's layout shell document are binding. Skills read that document and point to `wugweb-kits`. (2026-11-16)
+
+### API keys and secrets
+
+- The standard lives in `docs/skills/SECRETS.md`. Every skill follows it.
+- One name per use, UPPER_SNAKE_CASE, provider named: `OPENROUTER_API_KEY`, `NOTION_API_TOKEN`, `SANITY_SYNC_TOKEN`.
+- No secret in the repo, in a URL, in a commit message, or in a file this session writes. Local `.env` is gitignored; the repo tracks `.env.example` with placeholders only.
+- Paid providers are blocked by policy, whatever their balance: DeepSeek, OpenAI, Moonshot, MiniMax, xAI, Anthropic. A free-tier call through a router must pin to one verified free model.
+- A key that reaches a chat, a file, a log or a commit is not echoed, written or sent further. What happens to that key after is the owner's call: no key rotation, never. (2026-11-19)
 
 ### Git, only when asked to commit
 

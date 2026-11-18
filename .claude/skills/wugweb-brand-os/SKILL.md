@@ -1,10 +1,10 @@
 ---
 name: wugweb-brand-os
-description: "Holds Wugweb's brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules and Visual OS (art direction), and returns reference answers and check findings as proposals. This skill should be used when the user asks 'what is Wugweb's positioning', 'who is Wugweb's audience', 'what are our values', 'how are we different', 'what is our messaging framework', 'is this artwork on brand', 'how should this card, slide or cover look', 'is this claim about Wugweb approved', or asks to change a brand rule. Use it for any question about who Wugweb is or whether a visual or a claim about Wugweb is on brand, even when the user does not say 'brand'. It does not cover content strategy (topics, calendar, briefs: wugweb-strategy), voice and tone (wugweb-voice), or tokens and components (wugweb-kits)."
+description: "Holds Wugweb's brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules and Visual OS (art direction), and returns reference answers and check findings as proposals. This skill should be used when the user asks 'what is Wugweb's positioning', 'who is Wugweb's audience', 'what are our values', 'how are we different', 'what is our messaging framework', 'is this artwork on brand', 'how should this card, slide or cover look', 'is this claim about Wugweb approved', or asks to change a brand rule. Use it for any question about who Wugweb is or whether a visual or a claim about Wugweb is on brand, even when the user does not say 'brand'. It does not cover content strategy (topics, calendar, briefs: wugweb-strategy), voice and tone (wugweb-voice), tokens and components (wugweb-kits), or a client's brand, which stays with its case study."
 metadata:
   author: wugweb
-  version: "0.1.0"
-  status: "structure and sourced rules built; positioning, values, audience and facts waiting on the owner"
+  version: "0.3.2"
+  status: "owner rulings of 2026-11-17 applied; positioning line, audience and five facts waiting on the owner"
 ---
 
 # wugweb-brand-os
@@ -13,16 +13,16 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.1.0 holds the structure and every rule that has a source. Four core items are blank because the owner has not supplied them yet:
+Version 0.3.2 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
 
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
-- **Values:** not decided. The owner will supply them. The ten principles stay as principles.
+- **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.
 - **Audience:** not decided. The owner will supply it.
-- **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
+- **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Legal name, team size, projects, markets and profile links wait for the owner.
 
-One question is open (10), plus the open rows in `brand-facts.md` and the positioning line. Propose any change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+One question is open (10), plus the open rows in `brand-facts.md` and the positioning line; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
-Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
+Read `references/standing-rules.md` first: a marked copy of the owner's standing rules from `docs/skills/STANDING-RULES.md`, which wins. They win over this skill and any helper. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
 ## When to use
 
@@ -129,7 +129,7 @@ These are confirmed. They hold in every mode.
 
 **Media**
 
-- The media rule wins over any brand wording. An existing media file is never cropped or re-encoded. It is resized only with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
+- The media rules in `references/standing-rules.md` win over any brand wording and are not restated here.
 - In the guidelines, "crop" means how a subject is framed in a composition, never the cutting of a file.
 
 This skill states these rules. `wugweb-kits` holds every value and enforces them on the interface. No token value is written in this skill.
@@ -164,14 +164,15 @@ Load only the file a mode needs.
 | --- | --- |
 | `references/identity-and-positioning.md` | What Wugweb is and is not, the promise, pillars, positioning tests. Line blank |
 | `references/brand-strategy.md` | Blank until the owner's document arrives; the method for a competitor read |
-| `references/values-and-principles.md` | The ten principles, philosophy. Values blank |
+| `references/values-and-principles.md` | The five values, the ten principles, philosophy |
 | `references/audience.md` | Blank; the shape to fill |
 | `references/messaging.md` | The messaging rule and message tests |
 | `references/vocabulary.md` | The name, pillar names, system terms |
 | `references/brand-facts.md` | Every fact with source and status |
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels |
-| `references/source-map.md` | Sources, conflicts, the 18 owner questions and their status |
+| `references/source-map.md` | Sources, conflicts, the 21 owner questions and their status |
 | `references/tooling.md` | The only file that names helpers and vendors |
+| `references/standing-rules.md` | The owner's standing rules, a generated marked copy |
 | `references/visual-os/art-direction.md` | Grammar, modes, approved, banned and conditional lists, composition, "crop" |
 | `references/visual-os/colour-type-photo-motion.md` | Colour roles as meaning, type, photography, motion |
 | `references/visual-os/metaphors.md` | Shape meanings and the ten metaphors |
@@ -181,11 +182,11 @@ Load only the file a mode needs.
 | `references/visual-os/judging-a-visual.md` | How to judge a visual and what to fix |
 | `examples/` | Approved and rejected visuals, once the owner supplies them |
 | `evals/evals.json` | Per-task tests |
-| `scripts/build-export.mjs` | Builds and checks the single-file export |
+| `scripts/build.mjs`, `scripts/test.mjs` | Build the generated files; self-test |
 
 ## Works outside Claude
 
-This file carries the status, the modes, the fixed rules and the boundaries, so it stands alone where reference files do not load. Every file is plain Markdown. Helpers are optional; each mode has a by-hand procedure above. `node scripts/build-export.mjs` writes `export/wugweb-brand-os.md`, one file to attach in another tool. The export is rebuilt when a rule changes and is never edited by hand. The Visual check needs a model that can see images.
+This file carries the status, modes, fixed rules and boundaries, so it stands alone where reference files do not load. Every file is plain Markdown; helpers are optional. `node scripts/build.mjs` writes `AGENTS.md` and the export (one file with the standing rules), plus the Cursor rule, the ChatGPT instructions and the Codex settings; `README.md` says where each goes. Never edit them by hand. The Visual check needs a model that can see images.
 
 ## Never
 

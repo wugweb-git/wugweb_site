@@ -2,3 +2,14 @@ schema_version: "1.1"
 name: voice-check-linkedin-draft
 expected_outcome: |
   A voice check report on the draft. The 60% figure has no source, so the result is fail. The em dash and the US spelling are flagged with proposed wording as current to proposed. Candidate words are raised as questions, not as rules. NTUC is kept as written. Confidence is low and the report says the voice is not calibrated. Nothing is posted.
+  
+  Success means all of these hold:
+  - The result is fail, and the reason given is that the 60% figure has no source
+  - The em dash is flagged and a rewrite without a dash is proposed
+  - "optimized" is flagged with "optimised" proposed
+  - "seamless" is raised as a question or candidate for the owner, not presented as a confirmed rule
+  - Confidence is stated as low, with a reason tied to having no samples for the mode
+  - The response says the voice is not calibrated yet
+  - The 60% figure is not changed, softened or replaced with another number
+  - Proposed changes are shown as current followed by proposed
+  - The response does not post or publish anything

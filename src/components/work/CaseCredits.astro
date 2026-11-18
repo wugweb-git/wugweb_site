@@ -1,0 +1,51 @@
+---
+import type { CreditsBlock } from '../../lib/case-layout';
+import { inline } from '../../lib/case-body';
+
+interface Props { block: CreditsBlock }
+const { block } = Astro.props;
+const entries = Object.entries(block.items);
+---
+<section class="case-credits" aria-labelledby="credits-head" data-reveal>
+  <h2 class="case-credits-head" id="credits-head">Credits</h2>
+  <dl class="case-credits-list">
+    {entries.map(([key, value]) => (
+      <>
+        <dt>{key}</dt>
+        <dd set:html={inline(value)} />
+      </>
+    ))}
+  </dl>
+</section>
+<style>
+  .case-credits {
+    margin: var(--space-section-sm) 0;
+    display: grid;
+    gap: var(--space-page-md);
+  }
+  .case-credits-head {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .case-credits-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: var(--space-page-md);
+    row-gap: var(--space-page-xs);
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--text-sm, 0.875rem);
+  }
+  .case-credits-list dt {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+  .case-credits-list dd {
+    margin: 0;
+    color: var(--color-text-primary);
+  }
+</style>

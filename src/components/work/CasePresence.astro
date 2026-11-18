@@ -1,0 +1,74 @@
+---
+import type { PresenceBlock } from '../../lib/case-layout';
+
+interface Props { block: PresenceBlock }
+const { block } = Astro.props;
+---
+<section class="case-presence" aria-labelledby="presence-head" data-reveal>
+  <h2 class="case-presence-head" id="presence-head">Where it lives</h2>
+  <ul class="case-presence-list">
+    {block.links.map(link => (
+      <li class="case-presence-item">
+        {link.href ? (
+          <a class="case-presence-link" href={link.href} target="_blank" rel="noopener noreferrer">
+            <span class="case-presence-key">{link.value}</span>
+            <span class="case-presence-text">{link.text}</span>
+          </a>
+        ) : (
+          <div class="case-presence-link case-presence-link--text">
+            <span class="case-presence-key">{link.value}</span>
+            <span class="case-presence-text">{link.text}</span>
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+</section>
+<style>
+  .case-presence {
+    margin: var(--space-section-sm) 0;
+    display: grid;
+    gap: var(--space-page-md);
+  }
+  .case-presence-head {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .case-presence-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-page-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .case-presence-item { margin: 0; }
+  .case-presence-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-page-xs);
+    padding: var(--space-page-xs) var(--space-page-sm);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-full, 999px);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: var(--text-sm, 0.875rem);
+    background: var(--color-surface-elevated);
+  }
+  .case-presence-link:hover { border-color: var(--color-text-secondary); }
+  .case-presence-link:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+  }
+  .case-presence-key {
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: var(--text-xs, 0.75rem);
+  }
+  .case-presence-link--text { cursor: default; }
+</style>

@@ -2,3 +2,12 @@ schema_version: "1.1"
 name: sample-intake-email
 expected_outcome: |
   Adds one ledger row with every field filled and status in use; keeps only the owner's lines, not Priya's; does not copy the private text into the skill without asking; cleans typos before reading; writes no observed rule from one sample; shows any noticed pattern to the owner as a question.
+  
+  Success means all of these hold:
+  - A corpus ledger row is written with ID, what, context, mode, date written, date supplied, location and status
+  - The ledger row's status is "in use"
+  - Priya's quoted reply is excluded from the analysis or noted as another speaker's text
+  - The full email text is not copied into the ledger without asking the owner first
+  - No pattern is written as an observed or confirmed rule from this single sample
+  - Typos in the email (such as "lets" or lower-case day names) are not treated as features of the voice
+  - Any pattern noticed is put to the owner as a question

@@ -1,0 +1,56 @@
+---
+import type { ChapterBlock } from '../../lib/case-layout';
+import { inline } from '../../lib/case-body';
+
+interface Props { block: ChapterBlock }
+const { block } = Astro.props;
+---
+<article class="case-chapter" id={block.id} aria-labelledby={`${block.id}-head`}>
+  <header class="case-chapter-head" data-reveal>
+    <h2 class="case-chapter-title" id={`${block.id}-head`}>{block.title}</h2>
+    {block.lead && <p class="case-chapter-lead" set:html={inline(block.lead)} />}
+  </header>
+  {block.paras.length > 0 && (
+    <div class="case-chapter-body" data-reveal>
+      {block.paras.map(p => <p class="case-chapter-para" set:html={inline(p)} />)}
+    </div>
+  )}
+</article>
+<style>
+  .case-chapter {
+    scroll-margin-top: var(--header-height, 72px);
+    padding-block: var(--space-section-md);
+  }
+  .case-chapter + .case-chapter {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+  .case-chapter-head {
+    margin-block-end: var(--space-page-lg);
+  }
+  .case-chapter-title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.2;
+    font-weight: 600;
+    max-inline-size: 30ch;
+  }
+  .case-chapter-lead {
+    margin-block-start: var(--space-page-md);
+    color: var(--color-text-secondary);
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    line-height: 1.6;
+    max-inline-size: 60ch;
+  }
+  .case-chapter-body {
+    display: grid;
+    gap: var(--space-page-md);
+    max-inline-size: 65ch;
+  }
+  .case-chapter-para {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+</style>

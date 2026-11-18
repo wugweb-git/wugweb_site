@@ -108,6 +108,10 @@ one 2026-09-23. Currently unused sitewide (removed from all pages per
 user request). Page-specific blocks live inline in `src/pages/`. Full
 component→token map: `kits_design_system/docs/components.md`.
 
+### Case-study components (`src/components/work/`)
+
+18 components plus the switch, rendered by `src/lib/case-layout.ts` through `CaseBlocks.astro`. Owns the `/work/<slug>` layout: `CaseHero`, `CaseChapter`, `CasePoints`, `CaseFigure` (handles `figure` and `scrollshot`), `CaseSplit`, `CasePair`, `CaseRail`, `CaseMosaic`, `CaseWall`, `CaseLoop`, `CaseVideo`, `CaseQuote`, `CaseStats` (handles `stats` and `results`), `CaseTable`, `CaseTimeline`, `CaseCredits`, `CasePresence`, `CaseRelated` (handles `related` and `next`). Every selector `.case-*`; `scripts/check-case-css.mjs` fails the build if a `.case-*` selector appears anywhere else. Client logic: `src/lib/case-rail.ts` (W3C APG rail), `src/lib/case-lightbox.ts` (`<dialog>` lightbox). Block doc: `kits_design_system/docs/blocks/case-study.md`. The preview route is `/work/preview/<slug>`; the live `/work/<slug>` keeps the legacy template until the owner approves previews. Skill: the wugweb-work plan at `docs/skills/wugweb-work/PLAN.md` and the Notion page https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922.
+
 ## Design system (single source of truth)
 
 `kits_design_system/` — `docs/design.md` (sources S1–S5, rules, decisions, conflicts) +

@@ -1,11 +1,12 @@
-> STATUS, 2026-11-17. Kept by the brand-os session (the coordinator handed it over on 2026-11-17). This block replaces any older status line further down. The Notion page "wugweb-brand-os" (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa) and this file hold the same text.
+> STATUS, 2026-11-19. Kept by the brand-os session (the coordinator handed it over on 2026-11-17). This block replaces any older status line further down. The Notion page "wugweb-brand-os" (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa) and this file hold the same text.
 >
-> - **Built.** Version 0.1.0 on main, last skill commit f66bb666 (merged as 342a016a). `SKILL.md` body 1,979 words by the shared count (limit 2,000), 17 reference files, one `evals/evals.json` with 39 cases, export rebuilt, checks pass.
-> - **Upload.** `wugweb-brand-os.zip` (29 files, built from main) is in the brand-os worktree root. The owner uploads it to the Claude app; the app copy is not installed since the reset on 2026-11-17.
-> - **Evals.** First run 2026-11-17: 34 of 39 pass. Three are blocked on owner material (correct gap reports), one needs a real trigger run in the app after the upload, one waited on pointers added in `wugweb-kits` and `wugweb-work`.
+> - **Built.** Version 0.3.2 on main (2026-11-19, 78eb6e4). 0.3.2 carries the standing rules inside the skill: `scripts/build.mjs` writes `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md`, as the sibling skills do, so the rules load in the Claude app and the `.skill` file; no rule changed. 0.3.1 gives the colour rules one home (`visual-os/colour-type-photo-motion.md`) and the logo rules one home (the Logo section of `visual-os/art-direction.md`). `SKILL.md` body 1,996 words by the shared count (limit 2,000), 18 reference files, one `evals/evals.json` with 39 cases. Same shape as the other Wugweb skills: `README.md`, `metadata.json`, a generated `AGENTS.md`, export, Cursor rule, ChatGPT instructions and Codex settings, built by `scripts/build.mjs` and checked by `scripts/test.mjs`; both pass. 0.3.0 also points to the standing rules for media instead of restating them, drops the pixel value for the logo, names a client's brand as out of scope, and records that open items are filled through use, by the owner's approval.
+> - **Upload.** The Claude app has 0.3.1 installed (seen 2026-11-19). `wugweb-brand-os.skill` (0.3.2, built from main on 2026-11-19) replaces it; the owner uploads it. A full zip of the folder, `wugweb-brand-os-0.3.2.zip` (42 files, with `evals/`), was delivered the same day.
+> - **Evals.** 35 runnable, three wait on owner material, one (36, triggering) waits on the app upload. Full run on 0.2.0: 32 of 36 pass. Rerun on 0.3.0 of the 11 tests this change touched: 9 pass; 6 and 22 now pass. Rerun on 0.3.1 of tests 3, 20 and 25: 3 of 3 pass. Open: 38 only (nine brand-os rules are restated in `wugweb-kits` and `wugweb-work`; their sessions own that fix). No invented facts in any run. Every grade was by a separate agent. Routing check on 0.3.1 (a stand-in for 36, run by a separate agent because the command-line run could not sign in): 20 of 20 prompts routed to the right skill, 10 brand prompts to brand-os and 10 near misses to voice, strategy, kits, work and seo. This is not the real trigger rate, which needs a run in the app.
+> - **Open items are filled through use** (owner, 2026-11-19). The positioning line, audience, five facts and the Visual OS and Brand Strategy documents arrive as the skill is used, here or in another skill's session. Each comes back here as a Change proposal and is applied on the owner's yes. Other skills read these items from here and never hold them.
 > - **Sources the owner approved.** The Notion page "Wugweb Profile (Master) - 2023" and what is in Notion, for this skill and for `wugweb-voice`.
 >
-> **Commits on main, 2026-11-17**
+> **Commits on main, 2026-11-17 to 19**
 >
 > | Commit | What |
 > |---|---|
@@ -17,6 +18,11 @@
 > | 691c368d, 9e7c93bb | Open items to come from Notion; logo, archetype and secondary colour questions recorded |
 > | 18138ec2 | All six pillar colours stand; accent grey |
 > | f66bb666 | Notion answers for questions 4, 19 and 20 applied |
+> | 40dc6e8d | This plan, pending.md and the Notion page brought up to date; on main as 5361f4e6 |
+> | 64d5e11, ed89d37 | 0.2.0: skill text in line with the 2026-11-17 rulings; evals rerun |
+> | ed63f4a, 1a3fa1a | 0.3.0: same shape as the other Wugweb skills; media rules as pointers; open items filled through use |
+> | 3f06039 | 0.3.1: one home for the colour rules and the logo rules inside the skill |
+> | 78eb6e4 | 0.3.2: the standing rules travel with the skill as a marked copy |
 >
 > **Owner rulings that stand (2026-11-16 and 17)**
 >
@@ -26,7 +32,7 @@
 > - Logo rules live here, sizes in `wugweb-kits`. "Does a lot, into one" is an idea, not public wording. Wugweb has no campaign system. The case-study cover rule stays. A fact is marked approved or not approved.
 > - Facts (question 4), approved: the spelling "Wugweb"; the WhatsApp number in the site nav; `hello@wugweb.com`; WeWork Berger Delhi One, Floor 19, Sector 16B, Noida 201301, while current; founded 4 December 2020. Team size, projects and markets carry no figure until the owner gives one.
 > - Values: User-Centricity, Innovation, Collaboration, Excellence, Social Impact. The ten principles stay principles.
-> - Logo (question 19): `public/brand/logo-large.svg` is the lockup, `logo-small.svg` the mark; fixed tones (lockup white and grey, mark yellow and white); both exempt from the pure white and yellow rules; clear space equals the mark height; the 40px nav is the minimum size floor (values in `wugweb-kits`); black only; no one-colour version yet; the unused `public/brand/wugweb-mark.png` is approved to go as a site change (nothing references it; not yet deleted).
+> - Logo (question 19): `public/brand/logo-large.svg` is the lockup, `logo-small.svg` the mark; fixed tones (lockup white and grey, mark yellow and white); both exempt from the pure white and yellow rules; clear space equals the mark height; the 40px nav is the minimum size floor (values in `wugweb-kits`); black only; no one-colour version yet; the unused `public/brand/wugweb-mark.png` was deleted on 2026-11-18 (469c08f5).
 > - Archetype (question 20): "brand identity" is kept without naming ToT, because that client record is under NDA.
 >
 > **Pending**
@@ -40,8 +46,8 @@
 > | 5 | Team size, projects delivered, markets | Owner figures | Conflicting 2023 values only |
 > | 6 | Logo mark construction, live type in the lockup | Owner | None |
 > | 7 | Visual OS and Brand Strategy documents, nine source images (question 10) | Owner names the pages if they exist | None |
-> | 8 | Upload the zip to the Claude app | Owner | |
-> | 9 | Delete `public/brand/wugweb-mark.png` | A site change, on the owner's go | |
+> | 8 | Upload `wugweb-brand-os.skill` (0.3.2) to the Claude app; 0.3.1 is installed | Owner | |
+> | 9 | Delete `public/brand/wugweb-mark.png` | Done 2026-11-18 (469c08f5) | |
 > | 10 | Three evals blocked on owner material; one real trigger run in the app | Items 7 and 8 | |
 > | 11 | `wugweb-work`: one eval prompt names "ToT Bridal" (client under NDA); the ToT case study has spelling, country, pasted copy and Framer link problems | The `wugweb-work` session | |
 
@@ -76,9 +82,9 @@
 | Field | Value |
 |---|---|
 | Name | `wugweb-brand-os` |
-| Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. One plain Node script, for the export. |
-| Version | 0.1.0 |
-| Status | On main, last skill commit f66bb666 (2026-11-17). `SKILL.md` body 1,979 words by the shared method, 17 reference files, one `evals/evals.json` (39 cases, 34 pass), export rebuilt, checks pass. Upload zip built; the owner uploads it to the Claude app. |
+| Type | Agent Skill in the open format: one `SKILL.md` plus `references/`, `examples/`, `evals/`, two plain Node scripts (build and self-test) and the generated portable files. |
+| Version | 0.3.2 |
+| Status | 0.3.2 on main (2026-11-19). `SKILL.md` body 1,996 words by the shared method, 18 reference files, one `evals/evals.json` (39 cases). `scripts/build.mjs --check` and `scripts/test.mjs` pass. Upload file built; the app has 0.3.1 and the owner uploads 0.3.2. Open items are filled through use, by the owner's approval. |
 | Development chat | `https://claude.ai/chat/490738f9-8b97-4826-befb-a28a6a63ad7a` |
 | Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-brand-os/PLAN.md` |
 | Owner | Vedanshu, Wugweb |
@@ -130,12 +136,16 @@ version: 0.1.0
 
 - **Body:** 1,500 to 2,000 words, imperative voice. Built: 1,979 words, with a status section at the top so gaps are reported, not filled. Purpose, when to use and when not, the four modes, the source order (approved decisions, then patterns, then observations), the never-do list, the pointer to `wugweb-voice`, and an index of the reference files.
 - **Progressive disclosure:** the name and description are always loaded; the body loads when the skill triggers; reference files load only when a mode needs them.
-- **No duplication:** a rule lives in one file only. The owner's standing rules live in `docs/skills/STANDING-RULES.md` and are not repeated here.
+- **No duplication:** a rule lives in one file only. The owner's standing rules live in `docs/skills/STANDING-RULES.md`; the skill carries a generated marked copy, `references/standing-rules.md`, and the home file wins.
 - **Trigger words avoided:** the bare word "strategy", and topic, calendar, brief, campaign plan, refresh and repurpose, so that `wugweb-strategy` and this skill do not fire on each other's questions.
 
 ```
 .claude/skills/wugweb-brand-os/
 ├── SKILL.md
+├── README.md
+├── metadata.json
+├── CHANGELOG.md
+├── AGENTS.md                  (generated)
 ├── references/
 │   ├── identity-and-positioning.md
 │   ├── brand-strategy.md
@@ -147,6 +157,7 @@ version: 0.1.0
 │   ├── review-gates.md
 │   ├── source-map.md
 │   ├── tooling.md
+│   ├── standing-rules.md      (generated)
 │   └── visual-os/
 │       ├── art-direction.md
 │       ├── colour-type-photo-motion.md
@@ -158,9 +169,15 @@ version: 0.1.0
 ├── examples/
 ├── evals/
 ├── scripts/
-│   └── build-export.mjs
+│   ├── build.mjs
+│   └── test.mjs
+├── adapters/
+│   ├── cursor/wugweb-brand-os.mdc     (generated)
+│   └── chatgpt/instructions.md        (generated)
+├── agents/
+│   └── openai.yaml                    (generated)
 └── export/
-    └── wugweb-brand-os.md
+    └── wugweb-brand-os.md             (generated)
 ```
 
 ## 6. Reference files
@@ -272,7 +289,7 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 | No writes | End to end run | Nothing written outside chat or a draft file |
 | Portability | The answer, fact check and visual check evals run twice: as the installed skill, and from the single-file export in a second tool | Both runs give the same findings |
 
-**Status 2026-11-17.** The tests are in `evals/evals.json` (39 cases). First run: three agents answered from the skill alone and a grader scored them. 34 pass; three are blocked on owner material; one needs a real trigger run in the Claude app after the upload; one waited on pointers in other skills. The skill is not yet verified in the Claude app.
+**Status 2026-11-19.** The tests are in `evals/evals.json` (39 cases): 35 runnable, three waiting on owner material, one (36) waiting on the app upload. Full run on 0.2.0: 32 of 36 pass. Rerun on 0.3.0 of the 11 tests the change touched: 9 pass. Rerun on 0.3.1 of tests 3, 20 and 25: 3 of 3 pass. Routing check on 0.3.1, a stand-in for 36: 20 of 20. Open: 38 (see the status block). The real trigger rate in the Claude app is not yet measured.
 
 ## 14. Crop wording: ruling and proposal
 
@@ -370,7 +387,8 @@ The open list is the Pending table in the status block at the top. Every questio
 
 - **Plain Markdown.** Every rule is written in plain Markdown that any model can follow. No rule depends on a Claude feature. `SKILL.md` carries the core rules on its own, because other tools may not load reference files on demand.
 - **Helpers are optional.** The Claude helper skills, plugins and connectors only speed things up. Every mode (answer, visual check, fact check, change) has a by-hand procedure in the reference files.
-- **Scripts.** The skill has one script, `scripts/build-export.mjs`, in plain Node with no Claude tooling. It builds the single-file export.
+- **Scripts.** Two scripts in plain Node with no packages and no network: `scripts/build.mjs` generates `AGENTS.md`, the export, the Cursor rule, the ChatGPT instructions and the Codex settings (`--check` exits 1 when any is stale); `scripts/test.mjs` is the self-test. The same shape as the other Wugweb skills.
+- **Install routes.** `README.md` gives the route for the Claude app and Claude Code, Cursor, Codex and the ChatGPT app, a custom GPT, and agents with no skill support.
 - **Tool and vendor wiring in one file.** `references/tooling.md` is the only file that names Claude helpers, Notion or any vendor.
 - **Single-file export.** `export/wugweb-brand-os.md` holds `SKILL.md` and every reference file in one document, to paste or attach in another tool. It is rebuilt whenever a rule changes and never edited by hand.
 - **Test.** The answer, fact check and visual check evals are run twice: once as the installed skill, once from the export alone in a second tool. It passes when both give the same findings.

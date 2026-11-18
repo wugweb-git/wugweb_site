@@ -135,7 +135,7 @@ His chat messages in working sessions are fast and full of typos; they are not s
 5. Sample round: five short pieces in different modes; he marks each.
 6. Evals and the blind test in `references/blind-test.md`.
 
-When a piece written with this skill is published, `wugweb-work` records who reviewed it and took editorial responsibility; the EU AI Act's disclosure duty for AI-generated text (Article 50(4)) exempts text a person has reviewed and taken editorial responsibility for. A lawyer should confirm how that applies to each piece.
+When a piece is published, `wugweb-work` records who reviewed it and took editorial responsibility; under the EU AI Act (Article 50(4)) reviewed text is exempt from the AI-disclosure duty. A lawyer should confirm how it applies.
 
 ## Files
 
@@ -148,6 +148,7 @@ When a piece written with this skill is published, `wugweb-work` records who rev
 | `references/handoff.md` | The contract with other skills |
 | `references/blind-test.md` | How to run and score the blind test; evidence behind the thresholds |
 | `references/tooling.md` | The only file that names tools, vendors and helper skills |
+| `references/standing-rules.md` | Marked copy of the shared standing rules |
 | `examples/` | Before and after pairs tied to corpus entries; empty until samples exist |
 | `evals/evals.json` | Per-task tests; some runnable now, the rest waiting on samples |
 | `scripts/check.mjs` | Mechanical voice check |

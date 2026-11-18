@@ -4,9 +4,27 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
-**2026-11-17: `wugweb-brand-os` skill. BUILT (0.1.0) ON MAIN (`f66bb666`), owner answers applied.**
+**2026-11-19: wugweb-work Part 2, step 5 landed; step 8 docs started. ON MAIN (`4b834c9`).**
+- Resolver `src/lib/case-layout.ts` and 18 components under `src/components/work/` plus `CaseBlocks.astro` (the switch). W3C APG rail and `<dialog>` lightbox client logic. Unlinked preview route at `/work/preview/<slug>`.
+- Gate script `scripts/check-case-page.mjs`: 15 checks per the plan's D1. Uses `node-html-parser`. JSON-LD check is `n/a` unless `--host <canonical>` is passed.
+- CSS guard `scripts/check-case-css.mjs`: `.case-*` selectors may only live in `src/components/work/*.astro`. Legacy `/work/[slug].astro` exempted by name until the flip. Wired into `prebuild`.
+- Block doc `kits_design_system/docs/blocks/case-study.md` and the case-study section added to `kits_design_system/docs/components.md`.
+- 57 tests pass; `npm run build` succeeds.
+- Next, open: step 4 Sanity sync (blocked on a new `NOTION_TOKEN`; current one returns 401); step 6 previews on the 8 slugs via `/work/preview/<slug>` (owner-review in the pane); the flip from the legacy template to the thin one (owner decision, 2026-11-19: waits for step 6); step 7 skill eval loop (waits for the owner to set the eval workspace up).
+- Step 3b visual read: not owner-gated per case study (owner clarification, 2026-11-19). It runs when the skill is invoked on a case study; the skill reads the source then.
+
+**2026-11-19: API keys and secrets standard. ON MAIN (`c46bae1` then follow-up), owner rules applied.**
+- The one home: [`docs/skills/SECRETS.md`](docs/skills/SECRETS.md). The standing-rules file points there; four skill mirrors synced byte-identical (wugweb-work, wugweb-voice, wugweb-seo, wugweb-kits). wugweb-work outputs regenerated; validate 30 checks, 0 errors.
+- [`governance.md`](governance.md) gains Rule 3 next to Rule 1 and Rule 2.
+- Repo tracks [`.env.example`](.env.example) with every environment variable name used, placeholders only. `.gitignore` keeps `.env` and `.env.*` out.
+- Owner rule, 2026-11-19: a key that reaches a chat, a file, a log or a commit is not echoed, written or sent further. What happens to that key after is the owner's call. No key rotation, never. (Earlier draft of SECRETS.md had a rotation section; removed in the follow-up commit.)
+- Three OpenRouter helper scripts live at `scripts/openrouter-chat.mjs`, `scripts/openrouter-vision.mjs`, `scripts/openrouter-audit-case.mjs`. Each reads the key and model from the environment, blocks paid routes at the code level (model must end `:free`), exits 2 on missing env or arguments. Smoke tests pass; no live calls made (no key set in this session).
+- Open: Notion registry page "Wugweb Skill Management System" does not yet carry the new standing-rules clause. Owner updates when ready (project rule: Notion only when asked). wugweb-work 0.5.0 zip re-upload to the registry is also owner's choice; the repo master is the source of truth.
+- Not scoped to this change: wugweb-work Part 2 steps 4+ (Sanity schema, GROQ, resolveLayout, 18 Astro components, thin template, rail and lightbox, QA, running the 14 evals, 8-slug previews, docs and ship). Each step still needs per-step owner-go per the Notion plan.
+
+**2026-11-19: `wugweb-brand-os` skill. 0.3.2 ON MAIN, same shape as the other Wugweb skills; carries a marked copy of the standing rules.**
 - One source of truth: the Notion page "wugweb-brand-os" under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa); repo mirror `docs/skills/wugweb-brand-os/PLAN.md`. Do not copy the plan into this file. The brand-os session keeps both (coordinator handover 2026-11-17).
-- Waiting on the owner: legal name (Notion terms of use say "Wug Web Services Private Limited"); positioning line (seven candidates); audience; official profile links; team size, projects and markets figures; logo mark construction and live type; Visual OS and Brand Strategy documents and nine images; upload of `wugweb-brand-os.zip`; deleting the unused `public/brand/wugweb-mark.png` (approved, a site change).
+- Waiting on the owner: legal name (Notion terms of use say "Wug Web Services Private Limited"); positioning line (seven candidates); audience; official profile links; team size, projects and markets figures; logo mark construction and live type; Visual OS and Brand Strategy documents and nine images; upload of the 0.3.2 `wugweb-brand-os.skill` (0.3.1 is installed in the app). These open items are filled through use, by the owner's approval (2026-11-19), not chased. For `wugweb-kits` and `wugweb-work`: eval 38 finds nine brand-os rules restated in their files; each should point to brand-os instead. The unused `public/brand/wugweb-mark.png` was deleted on 2026-11-18 (469c08f5).
 - For `wugweb-work`: one eval names "ToT Bridal" although the client is under NDA.
 
 **2026-11-17: Sanity audit fixes (items 3-7, 13-14, 17, 21-32). DONE: on main (`79487fda`) and live on UAT.**

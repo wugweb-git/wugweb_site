@@ -6,12 +6,14 @@ The character of each, as meaning. No colour value, type size or timing is writt
 
 ### Confirmed (restated from the kits docs)
 
-- Yellow is an accent at 10% or less and is reserved for the one conversion action and the footer banner.
+This file is the one home for the colour rules. `SKILL.md` carries them in short so it stands alone; every other file points here.
+
+- Yellow is the one brand colour and an accent at 10% or less.
+- Yellow is a reservation, not an emphasis level. It is the resting fill only on the one conversion action per page and on the footer banner, and the final call to action stays yellow. Other buttons may use it only on hover or tap. On a yellow surface the button inverts to dark.
 - Structure stays in brand ink. An accent is spent on one or two things.
 - A pillar colour marks its pillar and does not paint structure.
 - Text is never pure white.
 - The live colour values must not change.
-- Yellow is the resting fill only on the one conversion action per page and on the closing call-to-action banner. Other buttons may use it only on hover or tap, and on a yellow surface the button inverts to dark.
 - In a case study, one accent per client, taken from the client's own palette, for rules and numerals only. The Wugweb frame stays.
 - In a deck, one dominant colour, one or two supporting and one sharp accent. No accent lines under titles and no edge stripes.
 
@@ -60,7 +62,6 @@ Palette behaviour by mode, from the same file:
 
 ## Logo
 
-- The lockup is two-tone, and two-tone titles mirror it.
 - Use the real logo file wherever a logo belongs. Never initials, an emoji, a generic mark or a redrawn version, and never recoloured or re-proportioned.
 - Show a partner's or client's logo in its own form, in greyscale if a row needs calm.
 - The logo appears only on black; no one-colour version until one is needed (question 19).
@@ -72,7 +73,7 @@ Palette behaviour by mode, from the same file:
 - Natural gestures that advance the metaphor: holding, pointing, searching, building, selecting, navigating, observing.
 - Avoid staged smiling teams, handshakes, glossy office stock, colourful clothing that fights the palette, and faces made uncanny by generation tools.
 - A real photo or screenshot comes before generated imagery. Say so first. A new image file is made only when nothing existing fits, one file at a time, on the owner's yes.
-- Existing media follows the media rule: no cropping of the file, resize with the aspect ratio kept, masks allowed.
+- Existing media follows the media rules in `references/standing-rules.md`.
 
 ## Lighting
 
@@ -96,4 +97,4 @@ Palette behaviour by mode, from the same file:
 
 **Question 17, confirmed.** A slight bounce is within the brand: the kits behaviour stands on the site. Artwork motion stays calm.
 
-No sound on any media.
+Sound follows the media rules in `references/standing-rules.md`.

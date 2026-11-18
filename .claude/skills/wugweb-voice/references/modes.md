@@ -1,6 +1,6 @@
 # Modes
 
-Version 0.2.0. One voice; each mode is a setting of it. Format rules (sizes, counts, layout) for each form live in `wugweb-work`. This file says only how each mode sounds.
+One voice; each mode is a setting of it. Format rules (sizes, counts, layout) for each form live in `wugweb-work`. This file says only how each mode sounds.
 
 Every mode below is waiting on samples. The "draft text" lines come from the draft "Tone by form" in `docs/skills/wugweb-work/PLAN.md` section 5 and are candidates, not rules.
 

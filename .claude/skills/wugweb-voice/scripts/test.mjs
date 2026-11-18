@@ -97,7 +97,7 @@ t('export carries the voice check', exp.includes('## The voice check'));
 {
   const home = join(ROOT, '..', '..', '..', 'docs', 'skills', 'STANDING-RULES.md');
   const copy = readFileSync(join(ROOT, 'references', 'standing-rules.md'), 'utf8');
-  t('export carries the marked copy of the standing rules', exp.includes('MARKED COPY'));
+  t('export carries the marked copy of the standing rules', exp.includes('marked copy'));
   if (existsSync(home)) t('standing-rules copy matches the home file', copy.endsWith(readFileSync(home, 'utf8')));
 }
 t('export has no em or en dashes', !/[\u2014\u2013]/.test(exp));

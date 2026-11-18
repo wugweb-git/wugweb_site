@@ -22,7 +22,7 @@ When asked for the positioning line, answer "not decided: the owner supplies it"
 
 ## Audience
 
-**Blank.** No Notion page names one (2026-11-17). Leave it blank until the owner supplies it.
+Held in `audience.md` only. It is blank until the owner supplies it.
 
 ## What Wugweb is (source: `BRAND_POSITION.md`)
 

@@ -1,6 +1,6 @@
 # Blind test
 
-Version 0.2.0. How to test whether drafts written with this skill can be told apart from the owner's real writing. Status: waiting on samples; it needs held-back samples in a mode before it can run.
+How to test whether drafts written with this skill can be told apart from the owner's real writing. Status: waiting on samples; it needs held-back samples in a mode before it can run.
 
 The method comes from the research report "Voice calibration method" (2026-11-16, in this project). No source sets a pass mark or a confidence scale for a voice test, so every threshold below is a starting point for the owner to set.
 

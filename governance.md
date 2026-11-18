@@ -64,6 +64,16 @@ Details: [`docs/r2-assets.md`](docs/r2-assets.md). Upload: `scripts/upload-asset
 
 ---
 
+## Rule 3 — API keys and secrets follow one standard
+
+Every key and secret in this repo and in the Wugweb Skill System follows [`docs/skills/SECRETS.md`](docs/skills/SECRETS.md). One UPPER_SNAKE_CASE name per use with the provider named, one place per environment (local `.env` gitignored, runtime stores for Cloudflare and Hostinger, `.env.example` tracked with placeholders only), and paid providers blocked at the code level whatever their balance (DeepSeek, OpenAI, Moonshot, MiniMax, xAI, Anthropic). Free-tier calls through a router must pin one verified free model per use; OpenRouter must never be billed.
+
+Owner's rule (2026-11-19): a key that reaches a chat, a file, a log or a commit is not echoed, written or sent further. What happens to that key after is the owner's call. No key rotation, never.
+
+The runtime secrets for this site are named in `CLAUDE.md` (`DATABASE_URL`, `SANITY_SYNC_TOKEN`, `NEON_SYNC_SECRET`, `PREVIEW_SECRET`). The repo's `.env.example` lists every variable name used, with placeholders only.
+
+---
+
 ## 1. Who is who
 
 | Entity id | Name | Type | Role |
@@ -161,6 +171,8 @@ Current state (2026-08-04): Sanity ≫ Notion seed. Asset registry + R2 path map
 4. When Notion and Sanity conflict on volume, **Sanity (+ Neon after sync) wins** unless a human says otherwise.
 
 **Owner-approved exceptions (Notion is the source):** blog posts (2026-10-13), case-study SEO fields (2026-10-13), and sectors / the Sectors showcase (2026-10-19: Table 25 + Table 3 → `sector.showcase`, `showcaseOrder`, `icon`, `industry.showOnSectorCard`, via `scripts/sync-notion-sectors.mjs`). Also case-study content (2026-10-13): the Notion Case Studies **Body Content** is the source for each case study's copy and media links; media files live in R2. The rules and the rebuild plan are on the Notion page "wugweb-work" (https://app.notion.com/p/415bb710b9ab818b8057cc9b2c2ed922), which is the one source of truth for that work. See `CLAUDE.md` Working Agreements.
+
+**Case-study Body Content v2 fields (synced from Notion by `scripts/sync-notion-case-studies.mjs` v2, wugweb-work Part 2):** `year`, `country`, `platform`, `projectType`, `engagementType`, `specialThanks`, `links` (Live, App Store, Play Store, Behance, Dribbble, Awards), `accent` (#hex), and the extended `results[]` items (`source`, `period`, `asOf`, `baseline`) are derived in Notion and copied into Sanity. **`mediaManifest` is derived data**: the measurement and visual-read output per media URL (status, bytes, width, height, kind, audience, flow, step, posterAt, alt, caption, heroScore). The layout resolver `src/lib/case-layout.ts` reads the manifest; no one edits it by hand. All fields are declared in `sanity/schemaTypes/caseStudy.ts`, read-only in Studio.
 
 ---
 

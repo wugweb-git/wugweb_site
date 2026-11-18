@@ -77,7 +77,7 @@ Settle before making: the purpose and where it appears, the exact copy (locked, 
 
 - No text baked into generated images.
 - Use the real logo file where a logo belongs.
-- Existing media: never crop the file, never re-encode, resize only with the aspect ratio kept, masks allowed.
+- Existing media follows the media rules in `references/standing-rules.md`.
 
 ## Campaign systems
 

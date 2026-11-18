@@ -1,6 +1,6 @@
 # Handoff contract
 
-Version 0.3.0. Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
+Matches the matrix row on the Wugweb Skill Management System registry and the wugweb-voice Notion page.
 
 ## Links
 

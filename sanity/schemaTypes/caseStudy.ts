@@ -173,6 +173,14 @@ export default defineType({
           fields: [
             { name: 'metric', type: 'string', title: 'Metric / Number (e.g. "+150%")', validation: (r) => r.required() },
             { name: 'label', type: 'string', title: 'Label / Description (e.g. "Conversion Rate Increase")' },
+            // Added for Body Content v2 (wugweb-work plan): a metric is only
+            // credible with its source, the period it covers, when it was
+            // measured and what the baseline was. Optional, so legacy rows
+            // stay valid.
+            { name: 'source', type: 'string', title: 'Source', description: 'Who measured this; a report, tool or named stakeholder.' },
+            { name: 'period', type: 'string', title: 'Period', description: 'The window the number covers, e.g. "Q3 2024" or "first 90 days".' },
+            { name: 'asOf', type: 'string', title: 'As of', description: 'The measurement date, e.g. "2024-10-31".' },
+            { name: 'baseline', type: 'string', title: 'Baseline', description: 'The before-value or comparison basis.' },
           ],
           preview: {
             select: { title: 'metric', subtitle: 'label' },
@@ -227,6 +235,64 @@ export default defineType({
       description: 'R2 media URLs from the Notion page, shown after the body. Synced, so edit it in Notion.',
       readOnly: true,
     }),
+
+    // ── Body Content v2 fields (synced from Notion by sync-notion-case-studies.mjs v2) ──
+    // All derived: edit in Notion, never here. Pages read them; schema
+    // declares them so editors can see what the sync wrote and so GROQ
+    // selects can project them.
+    defineField({
+      name: 'mediaManifest',
+      title: 'Media manifest (derived)',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'url', type: 'string' },
+            { name: 'status', type: 'number' },
+            { name: 'dupOf', type: 'string' },
+            { name: 'bytes', type: 'number' },
+            { name: 'width', type: 'number' },
+            { name: 'height', type: 'number' },
+            { name: 'kind', type: 'string' },
+            { name: 'audience', type: 'string' },
+            { name: 'flow', type: 'string' },
+            { name: 'step', type: 'number' },
+            { name: 'posterAt', type: 'number' },
+            { name: 'alt', type: 'string' },
+            { name: 'caption', type: 'string' },
+            { name: 'heroScore', type: 'number' },
+          ],
+        },
+      ],
+      description: 'Derived: measurements and visual-read output per media URL. Read by the layout resolver. Edited by the sync, not by hand.',
+      readOnly: true,
+      hidden: true,
+      group: 'overview',
+    }),
+    defineField({ name: 'year', type: 'number', description: 'Project year. Synced from Notion.', group: 'overview' }),
+    defineField({ name: 'country', type: 'string', description: 'Where the work ran. Synced from Notion.', group: 'overview' }),
+    defineField({ name: 'platform', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' }, description: 'Platforms the work ships on (iOS, Android, web, desktop). Synced from Notion.', group: 'overview' }),
+    defineField({ name: 'projectType', type: 'string', description: 'The shape of the project, e.g. app, website, brand. Synced from Notion.', group: 'overview' }),
+    defineField({ name: 'engagementType', type: 'string', description: 'How Wugweb engaged, e.g. project, retainer, team augmentation. Synced from Notion.', group: 'overview' }),
+    defineField({ name: 'specialThanks', type: 'string', description: 'Credits beyond the Wugweb team. Synced from Notion.', group: 'overview' }),
+    defineField({
+      name: 'links',
+      title: 'Presence links',
+      type: 'object',
+      description: 'Live, App Store, Play Store, Behance, Dribbble, Awards. Synced from Notion Body Content "Live:" and the rest.',
+      fields: [
+        { name: 'live', type: 'url' },
+        { name: 'appStore', type: 'url' },
+        { name: 'playStore', type: 'url' },
+        { name: 'behance', type: 'url' },
+        { name: 'dribbble', type: 'url' },
+        { name: 'awards', type: 'url' },
+      ],
+      options: { collapsible: true, collapsed: true },
+      group: 'overview',
+    }),
+    defineField({ name: 'accent', type: 'string', title: 'Accent (#hex)', description: 'One hex color for the page accent. Synced from Notion. Contrast is checked at render.', group: 'overview' }),
     defineField({
       name: 'focusKeyword', type: 'string', group: 'seo',
       title: 'Focus Keyword',

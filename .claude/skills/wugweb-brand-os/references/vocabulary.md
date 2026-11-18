@@ -4,7 +4,7 @@ Brand terms only. Banned words, preferred wording and tone are in `wugweb-voice`
 
 ## The name
 
-"Wugweb" is the spelling on the site and in `CLAUDE.md`. The 2023 profile also writes "WugWeb". **Not decided: owner** (question 4): confirm one spelling. Until confirmed, write "Wugweb" and flag "WugWeb" as not approved, not as wrong.
+"Wugweb" is the approved spelling (owner, 2026-11-17; see `brand-facts.md`). Flag "WugWeb" and "Wug Web" as not the approved spelling. The legal name is a separate fact and is still open.
 
 ## The descriptor
 

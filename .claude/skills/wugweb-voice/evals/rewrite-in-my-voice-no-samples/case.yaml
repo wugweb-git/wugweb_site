@@ -2,3 +2,11 @@ schema_version: "1.1"
 name: rewrite-in-my-voice-no-samples
 expected_outcome: |
   Applies only the fixed rules, says plainly the voice is not calibrated and no samples are on file, gives low confidence, adds no invented facts, and asks for samples.
+  
+  Success means all of these hold:
+  - The response says no writing samples are on file or the voice is not calibrated
+  - The response does not claim the rewrite is in the owner's own voice
+  - Confidence is stated as low
+  - The rewrite adds no new facts, numbers, client names or years that were not in the original
+  - The rewrite has no em or en dashes and uses British spelling
+  - The response asks the owner for writing samples
