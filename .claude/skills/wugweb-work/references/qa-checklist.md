@@ -36,7 +36,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] Exactly one h1; heading levels never skip.
 - [ ] Every `section` has an id and an accessible name; every chapter `article` has a unique id and an h2.
 - [ ] Every `img` has alt, width and height.
-- [ ] Title and description meet the limits set by `wugweb-seo` (`.claude/skills/wugweb-seo/references/audit.md`: `title-length` for the source title of a case study, before the site suffix; `title-rendered` for the rendered `<title>`; `description-length`); canonical points to itself.
+- [ ] Title and description meet the limits set by `wugweb-seo` (`.claude/skills/wugweb-seo/references/audit.md`: `title-rendered`, 60 characters or fewer for the rendered `<title>` on every page type; `description-length`); canonical points to itself.
 - [ ] JSON-LD has WebPage, CreativeWork and BreadcrumbList on the canonical host; none of the banned types.
 - [ ] All content present with JavaScript off.
 - [ ] Structured data passes a schema validator.

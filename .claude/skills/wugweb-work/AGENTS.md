@@ -761,7 +761,7 @@ The page answers first, then follows the claim order owned by `wugweb-brand-os` 
 Agreed with `wugweb-seo` (2.5.0, 2026-11-17). The limits and checks live in `wugweb-seo`; this skill writes the words. Keyword research, technical SEO and reports belong there too; ask through `handoffs.md`.
 
 - H1 wording: client + what was built (this skill's; `wugweb-seo` checks there is one H1 and that it agrees with the title).
-- SEO title limit and the layout suffix: `.claude/skills/wugweb-seo/references/audit.md` (`title-length`).
+- SEO title limit and the layout suffix: `.claude/skills/wugweb-seo/references/audit.md` (`title-rendered`: 60 characters or fewer as rendered, on every page type).
 - Meta description length: `.claude/skills/wugweb-seo/references/audit.md` (`description-length`). The wording states what was built and for whom (this skill's copy rule).
 - One slug, no redirects: `.claude/skills/wugweb-seo/references/handoffs.md`.
 - Entities named in full at first mention: `.claude/skills/wugweb-seo/references/audit.md` (citability). Which ones: client, partner, platform and country, once in the body and in the schema (this skill's list).
@@ -1494,7 +1494,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] Exactly one h1; heading levels never skip.
 - [ ] Every `section` has an id and an accessible name; every chapter `article` has a unique id and an h2.
 - [ ] Every `img` has alt, width and height.
-- [ ] Title and description meet the limits set by `wugweb-seo` (`.claude/skills/wugweb-seo/references/audit.md`: `title-length` for the source title of a case study, before the site suffix; `title-rendered` for the rendered `<title>`; `description-length`); canonical points to itself.
+- [ ] Title and description meet the limits set by `wugweb-seo` (`.claude/skills/wugweb-seo/references/audit.md`: `title-rendered`, 60 characters or fewer for the rendered `<title>` on every page type; `description-length`); canonical points to itself.
 - [ ] JSON-LD has WebPage, CreativeWork and BreadcrumbList on the canonical host; none of the banned types.
 - [ ] All content present with JavaScript off.
 - [ ] Structured data passes a schema validator.

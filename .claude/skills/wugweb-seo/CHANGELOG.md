@@ -3,7 +3,7 @@
 ## 2.5.0, 2026-11-17
 
 - 2026-11-19: review fixes, version stays 2.5.0. `build.mjs` now writes `export/wugweb-seo.md`
-- 2026-11-19, owner, settled after three passes the same day: the SEO title limit for a blog post or service page is 52 characters before the suffix ("52 is fine"). Over 52 is reported at MEDIUM and is not a blocker. A case study over 51 blocks; the rendered 60 stays.
+- 2026-11-19, owner, final: "keep same for all, 60 is fine". One title limit for every page type: 60 characters as rendered (`title-rendered`, HIGH). The separate source limits (51 for a case study, 52 for a blog post or service page) and the `title-length` check are removed.
   (a short header, then `AGENTS.md`) and `--check`, `validate.mjs` and `test.mjs` cover it.
   The description takes the sibling form, with quoted user phrases, and `validate.mjs` accepts
   it. `wugweb-engineer` is named as the skill that applies Sanity and Notion data and schema

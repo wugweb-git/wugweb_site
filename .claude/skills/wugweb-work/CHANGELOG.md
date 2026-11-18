@@ -2,6 +2,8 @@
 
 ## 2026-11-19 (review fixes, still 0.5.0 at the owner's word)
 
+- Title limit (owner, 2026-11-19, final): one limit for every page type, 60 characters as rendered, set by `wugweb-seo` (`title-rendered`). The separate 51-character source check is removed from `check-case-page.mjs`, the gate list and the evals.
+
 Fixes from the full read of 2026-11-19 (`docs/skills/wugweb-work/PLAN.md`). The version stays 0.5.0 at the owner's word.
 
 - `wugweb-engineer` (0.3.1, the seventh skill) is now named. It owns changes to stored data, their backups and undo, the schema files and the sync runs. This skill writes the owner-approved proposal and hands over the approved content and values file; it runs no sync, patch or schema edit. `SKILL.md` (ownership table, gates 2 and 3, rule 10), `handoffs.md` (link row and handoff 8, both directions), `ops-cycle.md` (the sync and write commands are handed over; the read-only audit and gate commands stay), `skill-map.md`, `metadata.json`, `README.md`.

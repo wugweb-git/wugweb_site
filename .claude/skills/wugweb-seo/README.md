@@ -24,7 +24,7 @@ no file, page or record itself.
 | `references/report.md` | Data sources, the monthly report shape and drop diagnosis | yes |
 | `references/handoffs.md` | Questions answered for and sent to other skills, helper skills, declined findings | yes |
 | `references/standing-rules.md` | The owner's standing rules, a marked copy of `docs/skills/STANDING-RULES.md` in the repository; the home file wins | no, copied |
-| `scripts/check-page.mjs` | 18 checks on rendered HTML | yes |
+| `scripts/check-page.mjs` | 17 checks on rendered HTML | yes |
 | `scripts/score-page.mjs` | On-page keyphrase score, Rank Math model | yes |
 | `scripts/check-robots.mjs` | Bot access for one path in robots.txt | yes |
 | `scripts/validate.mjs` | Checks this skill against its own format | yes |

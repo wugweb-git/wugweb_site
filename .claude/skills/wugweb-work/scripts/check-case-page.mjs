@@ -147,10 +147,8 @@ async function run() {
   const metas = all(doc, (n) => n.tag === 'meta');
   const desc = (metas.find((m) => m.attrs.name === 'description') || { attrs: {} }).attrs.content || '';
   const canon = all(doc, (n) => n.tag === 'link' && n.attrs.rel === 'canonical')[0];
-  // Limits are set by wugweb-seo (.claude/skills/wugweb-seo/references/audit.md): title-rendered 60, title-length 51 for the source title of a case study, before the site suffix.
-  const sourceTitle = titleText.replace(/\s*\|\s*Wugweb\s*$/, '');
+  // Limits are set by wugweb-seo (.claude/skills/wugweb-seo/references/audit.md): title-rendered, 60 characters as rendered, the one limit for every page type.
   check('<title> 60 characters or fewer as rendered (wugweb-seo title-rendered)', titleText.length > 0 && titleText.length <= 60, `${titleText.length}: "${titleText}"`);
-  check('Source title 51 characters or fewer before the site suffix (wugweb-seo title-length)', sourceTitle.length > 0 && sourceTitle.length <= 51, `${sourceTitle.length}: "${sourceTitle}"`);
   check('Meta description 140 to 160 characters', decode(desc).length >= 140 && decode(desc).length <= 160, `${decode(desc).length}`);
   let canonOk = false; let canonDetail = 'missing';
   if (canon) { try { const cu = new URL(canon.attrs.href, base); const pu = new URL(base); canonOk = cu.pathname.replace(/\/$/, '') === pu.pathname.replace(/\/$/, ''); canonDetail = canon.attrs.href; } catch { canonDetail = 'invalid'; } }

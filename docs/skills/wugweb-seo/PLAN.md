@@ -836,3 +836,5 @@ Owner, 2026-11-19, final: "no limit". A blog post or service page has no source 
 Owner, 2026-11-19, last word on titles: "title limit, yes, standard as per Google". Blog post and service page titles follow the search standard, rendered 60 characters or fewer (the `title-rendered` check). There is no separate 52 house limit. Google publishes no character limit; it cuts a title to fit the result width, about 60 characters on desktop.
 
 Owner, 2026-11-19, settled: "52 was title limit for blogs and pages ok ... 52 is fine". The SEO title limit for a blog post or service page is 52 characters before the suffix. Over 52 is reported at MEDIUM and is not a blocker. This replaces the two lines above ("no limit" and "standard as per Google"). A case study over 51 blocks; the rendered 60 stays.
+
+Owner, 2026-11-19, final on titles: "keep same for all, 60 is fine". One title limit for every page type: 60 characters as rendered. The 51 and 52 source limits are removed. This replaces every title line above.

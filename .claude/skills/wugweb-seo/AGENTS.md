@@ -70,10 +70,9 @@ These apply to wugweb.com, client sites, Kits and Wugweb X.
   or Framer addresses. When `wugweb-strategy` retires a page, its address
   returns 410 Gone, or 404, with no redirect, and leaves the sitemap; the slug
   is not reused.
-- **Title.** For a case study, the source title is 51 characters or fewer. The
-  site adds " | Wugweb" only when the title does not already name Wugweb and
-  the total fits in 60. Blog and service pages use source 52 or fewer. The
-  audit does not check titles for dashes.
+- **Title.** 60 characters or fewer as rendered, on every page type. The site
+  adds " | Wugweb" only when the title does not already name Wugweb and the
+  total fits in 60. The audit does not check titles for dashes.
 - **Description.** 140 to 160 characters.
 - **Schema on the main site address only.** A case study carries `WebPage`,
   `CreativeWork` and `BreadcrumbList`. Wugweb is `creator` and `publisher`.
@@ -216,10 +215,10 @@ Give computed totals first, then one line per finding sorted by severity. Each
 line carries the severity, the place, the finding and the check id.
 
 ```
-1 page. 2 blockers, 1 high, 1 medium.
+1 page. 1 blocker, 2 high, 1 medium.
 
-BLOCKER  <title>          source title 58 characters, limit 51     title-length
 BLOCKER  JSON-LD          HowTo present                            schema-banned-type
+HIGH     <title>          rendered title 67 characters, limit 60   title-rendered
 HIGH     <img> 3 of 7     no width and height                      img-dimensions
 MEDIUM   body             112 words in server HTML                 server-html-text
 ```
@@ -495,8 +494,8 @@ Expect back: its check result.
 
 #### Visible wording
 
-Send to `wugweb-work`: the limit, for example a title of 51 characters or
-fewer naming the primary phrase.
+Send to `wugweb-work`: the limit, for example a title of 60 characters or
+fewer as rendered, naming the primary phrase.
 
 Expect back: the wording, voice-checked.
 
@@ -592,8 +591,8 @@ Primary phrase: <phrase> (<source and date, or unvalidated>)
 Supporting phrases: <phrase> (<source>), ...
 Format that ranks now: <format>, seen on <up to three addresses>
 Entities the page must name: <people, products, places, numbers already in the source>
-Title: source 51 characters or fewer for a case study, 52 or fewer for a blog
-  post or service page; rendered 60 or fewer; other sites not decided
+Title: 60 characters or fewer as rendered, the same for every page type;
+  other sites not decided
 Description: 140 to 160 characters
 Schema: <types, from the fixed rules>
 Links: <targets for this piece, inside the link structure wugweb-strategy
@@ -686,8 +685,7 @@ on every finding.
 | Check id | Passes when | Severity on fail |
 |---|---|---|
 | `title-present` | One non-empty `<title>` | BLOCKER |
-| `title-length` | Source title, before " \| Wugweb", is 51 characters or fewer for a case study (`--kind work`), 52 or fewer for a blog post or service page (`--kind blog`, `--kind service`) | BLOCKER for a case study. MEDIUM, not blocking, for a blog post or service page (owner, 2026-11-19). Reported only, at LOW, when no kind is given |
-| `title-rendered` | Rendered title is 60 characters or fewer | HIGH |
+| `title-rendered` | Rendered title is 60 characters or fewer. One limit for every page type: case study, blog post, service page and the rest (owner, 2026-11-19). There is no separate source limit | HIGH |
 | `description-length` | `meta name="description"` is 140 to 160 characters | HIGH |
 | `h1-single` | Exactly one `<h1>` | HIGH |
 | `canonical` | One absolute https canonical, on the expected host when `--host` is given | BLOCKER |

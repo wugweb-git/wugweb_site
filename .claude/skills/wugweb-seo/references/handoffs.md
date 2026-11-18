@@ -115,8 +115,8 @@ Expect back: its check result.
 
 ### Visible wording
 
-Send to `wugweb-work`: the limit, for example a title of 51 characters or
-fewer naming the primary phrase.
+Send to `wugweb-work`: the limit, for example a title of 60 characters or
+fewer as rendered, naming the primary phrase.
 
 Expect back: the wording, voice-checked.
 

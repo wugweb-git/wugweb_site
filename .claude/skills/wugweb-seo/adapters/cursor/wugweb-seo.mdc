@@ -72,10 +72,9 @@ These apply to wugweb.com, client sites, Kits and Wugweb X.
   or Framer addresses. When `wugweb-strategy` retires a page, its address
   returns 410 Gone, or 404, with no redirect, and leaves the sitemap; the slug
   is not reused.
-- **Title.** For a case study, the source title is 51 characters or fewer. The
-  site adds " | Wugweb" only when the title does not already name Wugweb and
-  the total fits in 60. Blog and service pages use source 52 or fewer. The
-  audit does not check titles for dashes.
+- **Title.** 60 characters or fewer as rendered, on every page type. The site
+  adds " | Wugweb" only when the title does not already name Wugweb and the
+  total fits in 60. The audit does not check titles for dashes.
 - **Description.** 140 to 160 characters.
 - **Schema on the main site address only.** A case study carries `WebPage`,
   `CreativeWork` and `BreadcrumbList`. Wugweb is `creator` and `publisher`.
@@ -218,10 +217,10 @@ Give computed totals first, then one line per finding sorted by severity. Each
 line carries the severity, the place, the finding and the check id.
 
 ```
-1 page. 2 blockers, 1 high, 1 medium.
+1 page. 1 blocker, 2 high, 1 medium.
 
-BLOCKER  <title>          source title 58 characters, limit 51     title-length
 BLOCKER  JSON-LD          HowTo present                            schema-banned-type
+HIGH     <title>          rendered title 67 characters, limit 60   title-rendered
 HIGH     <img> 3 of 7     no width and height                      img-dimensions
 MEDIUM   body             112 words in server HTML                 server-html-text
 ```
