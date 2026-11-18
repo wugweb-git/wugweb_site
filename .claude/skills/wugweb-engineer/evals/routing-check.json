@@ -1,5 +1,5 @@
 {
- "what": "Routing check, a stand-in for the app trigger test (the command-line trigger loop cannot sign in here). A separate agent saw only the seven skill descriptions from main 6e290b0 plus this skill's, and picked one skill per prompt, blind to the expected answer.",
+ "what": "Routing check, a stand-in for the app trigger test (the command-line trigger loop cannot sign in here). A separate agent saw only the six sibling skill descriptions from main 6e290b0 plus this skill's (seven in all), and picked one skill per prompt, blind to the expected answer.",
  "date": "2026-11-19",
  "result": "19 of 20. All 10 data prompts went to wugweb-engineer; all 10 near misses went to another skill. The one mismatch (13) went to wugweb-voice instead of the expected wugweb-work, not to wugweb-engineer.",
  "prompts": [

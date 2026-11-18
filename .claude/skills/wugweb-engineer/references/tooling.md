@@ -11,7 +11,7 @@ The one file in this skill that names vendors and wiring. Every other file says 
 | API version used by these scripts | `v2025-02-19` |
 | Query endpoint | `https://splvhmk1.api.sanity.io/v2025-02-19/data/query/production` |
 | Mutate endpoint | `https://splvhmk1.api.sanity.io/v2025-02-19/data/mutate/production` |
-| Public CDN read (published only, no token) | `https://splvhmk1.apicdn.sanity.io/v2025-02-19/data/query/production` |
+| Public CDN read (published only, no token) | `https://splvhmk1.apicdn.sanity.io/v2025-02-19/data/query/production`. Used only on the explicit opt-in `backup.mjs --public`, never as a silent fall back. |
 | Token variable | `SANITY_SYNC_TOKEN`, from the environment or the repo's `.env`. One name per use, as `docs/skills/SECRETS.md` sets; the scripts read no other name. |
 | Token role | Editor. No key rotation, ever (owner, 2026-11-19). |
 | Schema files | `sanity/schemaTypes/*.ts`, registered in `sanity/schemaTypes/index.ts` |
@@ -50,14 +50,14 @@ No write route is listed here on purpose. See `references/media-read.md`.
 ## Backups
 
 - Folder: `backups/` at the repo root. The sync scripts already write there.
-- The site repo is public and `backups/` is tracked. Never back up personal or secret data into it: `contactSubmission` (enquiries), `person` (emails) and `platformProfile` (its schema has password, API key and backup code fields). `scripts/backup.mjs` refuses those types inside the repo; write their backups outside it (for example `~/wugweb-backups/`) and say where.
+- The site repo is public and `backups/` is tracked. Never back up personal or secret data into it: `contactSubmission` (enquiries), `person` (emails) and `platformProfile` (its schema has password, API key and backup code fields). `scripts/backup.mjs` refuses those types inside the repo, by the query text and by the `_type` of every fetched document, and `--print` shows only their ids, types and counts, never content. Write their backups outside the repo (for example `~/wugweb-backups/`) and say where.
 - Do not commit a backup unless the owner asks. Commit by path, as the standing rules say.
 - Never delete a backup.
 
 ## Secrets and models
 
 - Key and secret handling follows `docs/skills/SECRETS.md`, the one home for it. A key pasted into a session is not echoed, written or sent on; ask the owner to set it in the environment the script reads.
-- A script that finds no `SANITY_SYNC_TOKEN` exits with code 2 and names the variable, never a value.
+- A script that finds no `SANITY_SYNC_TOKEN` exits with code 2 and names the variable, never a value. That holds for reads and writes alike. The one way to read without the token is `backup.mjs --public`, which says it is a published-only read and marks the backup `publicRead`.
 - This skill calls no AI model. Data writes never go through a model (`docs/skills/AI-MODELS.md`, "What never calls an AI model").
 
 ## Environment

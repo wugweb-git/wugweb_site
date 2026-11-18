@@ -61,7 +61,7 @@ folder and Notion disagree, Notion wins. The owner's standing rules live in
 
 ## Size against the siblings
 
-73 files, of which 40 are the tests (six cases and the routing check) (one folder each, one file per check, the format skill-creator and `claude plugin eval` read). Without the tests the package is 33 files. The siblings on main `8e1d56d`: brand-os 30, seo 25, strategy 47, work 54, voice 58, kits 83.
+73 files, of which 40 are the tests (six cases and the routing check) (one folder each, one file per check, the format skill-creator and `claude plugin eval` read). Without the tests the package is 33 files. The siblings, counted on main on 2026-11-19: brand-os 31, seo 26, strategy 47, work 54, voice 32, kits 88.
 
 ## Install
 
@@ -90,7 +90,7 @@ Node 18 or later. No packages. Run from the site repository root.
 
 ```bash
 S=.claude/skills/wugweb-engineer/scripts
-node $S/backup.mjs --query '<groq>' --label <name> [--print] [--out <dir>]
+node $S/backup.mjs --query '<groq>' --label <name> [--print] [--public] [--out <dir>]
 node $S/plan-patch.mjs --backup <file> --field <name> --set '<json>' | --unset | --values <file> | --restore <older backup>
 node $S/apply-plan.mjs --plan <file> [--go]
 node $S/schema-fields.mjs --schema sanity/schemaTypes [--type <type>] [--data <backup>]
@@ -100,8 +100,12 @@ node $S/test.mjs
 node $S/build.mjs --check
 ```
 
-Reads with `SANITY_SYNC_TOKEN` see drafts; without it, the public read sees
-published documents only. Writes need the token and `--go`.
+Reads with `SANITY_SYNC_TOKEN` see drafts. Without the token a read stops with
+exit code 2; `backup.mjs --public` opts in to the public read, which sees
+published documents only. Writes need the token and `--go`. Inside the repo,
+`backup.mjs` refuses `contactSubmission`, `platformProfile` and `person` by the
+query text and by the `_type` of what it fetched, and `--print` shows only
+their ids, types and counts.
 
 ## Change the skill
 

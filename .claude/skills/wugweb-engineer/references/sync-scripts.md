@@ -22,7 +22,7 @@ Three scripts in the site repo carry Notion data into Sanity. Each dry runs by d
 
 ## The blog sync and creates
 
-The blog sync can create documents. That is the one create this skill allows, because the script owns it and the owner approved the sync design on 2026-10-13. Every create is listed in step 3, and the owner's go covers the creates shown, nothing more.
+The skill itself never creates a document: its own scripts send patches only. The one exception is the blog sync script's own create-if-missing (a Notion post with no Sanity document becomes `post-<slug>`), run only on the owner's go. It is allowed because the script owns it and the owner approved the sync design on 2026-10-13. Every create is listed in step 3, and the owner's go covers the creates shown, nothing more.
 
 ## Undo
 

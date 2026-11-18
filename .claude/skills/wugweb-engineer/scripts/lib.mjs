@@ -76,9 +76,54 @@ export function typesInQuery(q) {
   return [...t];
 }
 
-export async function query(env, groq, params = {}) {
+// Guarded types named in the query text or held by the fetched documents. The text alone misses
+// a query by id list, *[] or _type match, so the documents are checked too.
+export function guardedTypes(q, docs = []) {
+  const t = new Set(typesInQuery(q).filter((x) => PERSONAL_TYPES.has(x)));
+  for (const d of docs) if (d && PERSONAL_TYPES.has(d._type)) t.add(d._type);
+  return [...t];
+}
+const untyped = (docs) => docs.filter((d) => !d || typeof d !== 'object' || typeof d._type !== 'string').length;
+
+// Why a backup may not be written, or null. Inside the repo it refuses guarded types and any
+// result whose _type cannot be read (a projection or a bare value), since that cannot be checked.
+export function backupRefusal(q, docs, insideRepo) {
+  if (!insideRepo) return null;
+  const g = guardedTypes(q, docs);
+  if (g.length) return `${g.join(', ')} holds personal data; give --out outside the repo`;
+  const n = untyped(docs);
+  if (n) return `${n} fetched ${n === 1 ? 'result has' : 'results have'} no _type, so the guard cannot check them; back up whole documents (no projection) or give --out outside the repo`;
+  return null;
+}
+
+// The lines --print shows. The same guard as a backup: when a guarded type is named or fetched,
+// or a result has no _type, it shows ids, types and counts only, never content.
+export function printLines(q, docs, limit = 10) {
+  const plain = docs.filter((d) => typeof d === 'number' || typeof d === 'boolean');
+  const rest = docs.filter((d) => !plain.includes(d));
+  const g = guardedTypes(q, docs);
+  if (!g.length && !untyped(rest)) return docs.slice(0, limit).map((d) => JSON.stringify(d).slice(0, 200));
+  const by = {};
+  for (const d of rest) { const k = (d && typeof d === 'object' && typeof d._type === 'string') ? d._type : '(no _type)'; by[k] = (by[k] || 0) + 1; }
+  const out = [`content withheld (${g.length ? g.join(', ') + ' is guarded' : 'a result has no _type'}): ids, types and counts only`];
+  out.push('by type: ' + (Object.entries(by).map(([k, n]) => `${k} ${n}`).join(', ') || 'none'));
+  for (const d of rest.slice(0, limit)) out.push(JSON.stringify({ _id: d && typeof d === 'object' && typeof d._id === 'string' ? d._id : null, _type: d && typeof d === 'object' && typeof d._type === 'string' ? d._type : null }));
+  if (!g.length) for (const d of plain.slice(0, limit)) out.push(JSON.stringify(d));
+  return out;
+}
+
+// The host a read uses: the API with a token, the public CDN only when the caller opts in, else null.
+export function readHost(tk, { publicRead = false } = {}) {
+  if (tk) return `${PROJECT}.api.sanity.io`;
+  return publicRead ? `${PROJECT}.apicdn.sanity.io` : null;
+}
+
+// With no token a read stops with exit code 2. { publicRead: true } opts in to the public CDN,
+// which returns published documents only (no drafts).
+export async function query(env, groq, params = {}, opts = {}) {
   const tk = token(env);
-  const host = tk ? `${PROJECT}.api.sanity.io` : `${PROJECT}.apicdn.sanity.io`;
+  const host = readHost(tk, opts);
+  if (!host) fail(`set ${TOKEN_NAME} in your environment or the repo's .env. Without it a read misses drafts; a published-only read from the public CDN needs an explicit opt-in (backup.mjs --public).`, 2);
   const u = new URL(`https://${host}/${API}/data/query/${DATASET}`);
   u.searchParams.set('query', groq);
   u.searchParams.set('perspective', 'raw');

@@ -63,7 +63,7 @@ Every change to stored data follows these steps in order. Stop at the first step
 ### Rules for the procedure
 
 - Patch one field per plan. Two fields means two plans, two tables, two goes, unless the owner asks for them together.
-- Never send `createOrReplace`, `create`, `delete` or `discardDraft` from this skill. A request that needs one goes to the owner as a proposal with its own backup and an owner-run script, the pattern of the `owner-delete-*` scripts.
+- Never send `createOrReplace`, `create`, `delete` or `discardDraft` from this skill: the skill itself never creates a document. The one exception is the blog sync script's own create-if-missing, run only on the owner's go (`references/sync-scripts.md`). Any other request that needs one goes to the owner as a proposal with its own backup and an owner-run script, the pattern of the `owner-delete-*` scripts.
 - Never clear a field because the source is empty. An empty Notion value leaves Sanity alone.
 - Patch drafts and published documents alike when both exist, so Studio does not show a stale draft over the change.
 - Keep stored values that nothing reads unless the owner rules otherwise. "Unused" is a finding, not a reason to unset.
@@ -71,7 +71,7 @@ Every change to stored data follows these steps in order. Stop at the first step
 
 ## Schema changes
 
-A schema edit changes what Studio shows and validates; it never changes stored data. Removing a field from the schema leaves its values in the documents. Follow `references/schema-change.md`: one branch, the edit, `npm run build` and the tests, the type check in `sanity/`, a local Studio look, then the owner's merge and the owner's Studio deploy. Never remove `blockContent` from the types array. A schema change that implies a data change (backfill, clean-up) gets its own data-change plan.
+A schema edit changes what Studio shows and validates; it never changes stored data. Removing a field from the schema leaves its values in the documents. Follow `references/schema-change.md`: one branch, the edit, `npm run build` and `npm run test:sanity`, the Studio build in `sanity/`, a local Studio look, then the owner's merge and the owner's Studio deploy. Never remove `blockContent` from the types array. A schema change that implies a data change (backfill, clean-up) gets its own data-change plan.
 
 ## Sync scripts
 
@@ -79,7 +79,7 @@ The three Notion to Sanity scripts dry run by default and write with `WRITE=1`, 
 
 ## Scripts in the site repo
 
-`scripts/` in the site repo holds about fifty scripts written by many sessions. Their write switches differ: some dry run unless `WRITE=1` or `APPLY=1`, some write unless `DRY_RUN=1`, and some write with no switch at all. Before running any of them, look it up in `references/script-status.md`, and re-run `scripts/scan-scripts.mjs` when the folder has changed since the table's date. Never run a script marked "do not run" or "owner only".
+`scripts/` in the site repo holds about fifty scripts written by many sessions. Their write switches differ: some dry run unless `WRITE=1` or `APPLY=1`, some write unless `DRY_RUN=1`, and some write with no switch at all. Before running any of them, look it up in `references/script-status.md`, and re-run `scripts/scan-scripts.mjs` when the folder has changed since the table's date. Never run a script marked "do not run" or "owner only"; a script not in the table counts as "do not run" until scanned.
 
 ## Change report format
 

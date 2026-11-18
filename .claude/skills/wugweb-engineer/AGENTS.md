@@ -4,7 +4,7 @@
 
 Wugweb · November 2026
 
-Govern every change to the data behind wugweb.com: Sanity documents, the Sanity schema, the Notion to Sanity sync scripts, backups and undo. One procedure for every change: read and count, back up with a hash, plan one field as current to proposed, wait for the owner's go on that plan, patch with a revision guard, read again, keep the undo. It never deletes, creates or replaces a document, never touches media files, and calls no AI model. Field decisions, search values and visible wording belong to sibling skills; this skill applies them. Five working scripts, plain Node with no packages. Independent of agent; the Sanity and Notion wiring sits in one reference file.
+Govern every change to the data behind wugweb.com: Sanity documents, the Sanity schema, the Notion to Sanity sync scripts, backups and undo. One procedure for every change: read and count, back up with a hash, plan one field as current to proposed, wait for the owner's go on that plan, patch with a revision guard, read again, keep the undo. The skill itself never deletes, creates or replaces a document (the one exception is the blog sync script's own create-if-missing, run only on the owner's go), never touches media files, and calls no AI model. Field decisions, search values and visible wording belong to sibling skills; this skill applies them. Five working scripts, plain Node with no packages. Independent of agent; the Sanity and Notion wiring sits in one reference file.
 
 Read the skill first, then the reference a mode names. The scripts are not inside this file; without them, follow the runbook steps by hand and say the result is a manual check.
 
@@ -153,7 +153,7 @@ Every change to stored data follows these steps in order. Stop at the first step
 ### Rules for the procedure
 
 - Patch one field per plan. Two fields means two plans, two tables, two goes, unless the owner asks for them together.
-- Never send `createOrReplace`, `create`, `delete` or `discardDraft` from this skill. A request that needs one goes to the owner as a proposal with its own backup and an owner-run script, the pattern of the `owner-delete-*` scripts.
+- Never send `createOrReplace`, `create`, `delete` or `discardDraft` from this skill: the skill itself never creates a document. The one exception is the blog sync script's own create-if-missing, run only on the owner's go (`references/sync-scripts.md`). Any other request that needs one goes to the owner as a proposal with its own backup and an owner-run script, the pattern of the `owner-delete-*` scripts.
 - Never clear a field because the source is empty. An empty Notion value leaves Sanity alone.
 - Patch drafts and published documents alike when both exist, so Studio does not show a stale draft over the change.
 - Keep stored values that nothing reads unless the owner rules otherwise. "Unused" is a finding, not a reason to unset.
@@ -161,7 +161,7 @@ Every change to stored data follows these steps in order. Stop at the first step
 
 ## Schema changes
 
-A schema edit changes what Studio shows and validates; it never changes stored data. Removing a field from the schema leaves its values in the documents. Follow `references/schema-change.md`: one branch, the edit, `npm run build` and the tests, the type check in `sanity/`, a local Studio look, then the owner's merge and the owner's Studio deploy. Never remove `blockContent` from the types array. A schema change that implies a data change (backfill, clean-up) gets its own data-change plan.
+A schema edit changes what Studio shows and validates; it never changes stored data. Removing a field from the schema leaves its values in the documents. Follow `references/schema-change.md`: one branch, the edit, `npm run build` and `npm run test:sanity`, the Studio build in `sanity/`, a local Studio look, then the owner's merge and the owner's Studio deploy. Never remove `blockContent` from the types array. A schema change that implies a data change (backfill, clean-up) gets its own data-change plan.
 
 ## Sync scripts
 
@@ -169,7 +169,7 @@ The three Notion to Sanity scripts dry run by default and write with `WRITE=1`, 
 
 ## Scripts in the site repo
 
-`scripts/` in the site repo holds about fifty scripts written by many sessions. Their write switches differ: some dry run unless `WRITE=1` or `APPLY=1`, some write unless `DRY_RUN=1`, and some write with no switch at all. Before running any of them, look it up in `references/script-status.md`, and re-run `scripts/scan-scripts.mjs` when the folder has changed since the table's date. Never run a script marked "do not run" or "owner only".
+`scripts/` in the site repo holds about fifty scripts written by many sessions. Their write switches differ: some dry run unless `WRITE=1` or `APPLY=1`, some write unless `DRY_RUN=1`, and some write with no switch at all. Before running any of them, look it up in `references/script-status.md`, and re-run `scripts/scan-scripts.mjs` when the folder has changed since the table's date. Never run a script marked "do not run" or "owner only"; a script not in the table counts as "do not run" until scanned.
 
 ## Change report format
 
@@ -269,7 +269,7 @@ The one file in this skill that names vendors and wiring. Every other file says 
 | API version used by these scripts | `v2025-02-19` |
 | Query endpoint | `https://splvhmk1.api.sanity.io/v2025-02-19/data/query/production` |
 | Mutate endpoint | `https://splvhmk1.api.sanity.io/v2025-02-19/data/mutate/production` |
-| Public CDN read (published only, no token) | `https://splvhmk1.apicdn.sanity.io/v2025-02-19/data/query/production` |
+| Public CDN read (published only, no token) | `https://splvhmk1.apicdn.sanity.io/v2025-02-19/data/query/production`. Used only on the explicit opt-in `backup.mjs --public`, never as a silent fall back. |
 | Token variable | `SANITY_SYNC_TOKEN`, from the environment or the repo's `.env`. One name per use, as `docs/skills/SECRETS.md` sets; the scripts read no other name. |
 | Token role | Editor. No key rotation, ever (owner, 2026-11-19). |
 | Schema files | `sanity/schemaTypes/*.ts`, registered in `sanity/schemaTypes/index.ts` |
@@ -308,14 +308,14 @@ No write route is listed here on purpose. See `references/media-read.md`.
 ### Backups
 
 - Folder: `backups/` at the repo root. The sync scripts already write there.
-- The site repo is public and `backups/` is tracked. Never back up personal or secret data into it: `contactSubmission` (enquiries), `person` (emails) and `platformProfile` (its schema has password, API key and backup code fields). `scripts/backup.mjs` refuses those types inside the repo; write their backups outside it (for example `~/wugweb-backups/`) and say where.
+- The site repo is public and `backups/` is tracked. Never back up personal or secret data into it: `contactSubmission` (enquiries), `person` (emails) and `platformProfile` (its schema has password, API key and backup code fields). `scripts/backup.mjs` refuses those types inside the repo, by the query text and by the `_type` of every fetched document, and `--print` shows only their ids, types and counts, never content. Write their backups outside the repo (for example `~/wugweb-backups/`) and say where.
 - Do not commit a backup unless the owner asks. Commit by path, as the standing rules say.
 - Never delete a backup.
 
 ### Secrets and models
 
 - Key and secret handling follows `docs/skills/SECRETS.md`, the one home for it. A key pasted into a session is not echoed, written or sent on; ask the owner to set it in the environment the script reads.
-- A script that finds no `SANITY_SYNC_TOKEN` exits with code 2 and names the variable, never a value.
+- A script that finds no `SANITY_SYNC_TOKEN` exits with code 2 and names the variable, never a value. That holds for reads and writes alike. The one way to read without the token is `backup.mjs --public`, which says it is a published-only read and marks the backup `publicRead`.
 - This skill calls no AI model. Data writes never go through a model (`docs/skills/AI-MODELS.md`, "What never calls an AI model").
 
 ### Environment
@@ -345,7 +345,9 @@ Write the GROQ query that selects exactly the documents to change, drafts includ
 - Include drafts: a token read returns `drafts.*` documents; keep them in the set.
 - Report the count, split into published and drafts.
 
-To read without writing a backup, run `node $S/backup.mjs --query '<groq>' --label read --print`. `--print` writes nothing and prints the count and the first rows.
+To read without writing a backup, run `node $S/backup.mjs --query '<groq>' --label read --print`. `--print` writes nothing and prints the count and the first rows. It goes through the same guard as a backup: when the query names, or the read returns, `contactSubmission`, `platformProfile` or `person`, or a result has no `_type`, it prints ids, types and counts only, never content.
+
+A read needs `SANITY_SYNC_TOKEN`. Without it the script stops with exit code 2 and names the variable. `--public` opts in to the public read, which returns published documents only; say so in the report, because drafts are missing from the count.
 
 ### Step 2: back up
 
@@ -355,7 +357,7 @@ node $S/backup.mjs --query '*[_type == "post" && schemaType == "TechArticle"]' -
 
 - Back up whole documents (no projection), so the undo can restore any field.
 - Output: `backups/posts-schematype-<UTC timestamp>.json` holding `takenAt`, `query`, `count`, `sha256` of the `docs` array, and `docs`.
-- The script refuses to overwrite and refuses `contactSubmission` unless `--out` points outside the repo.
+- The script refuses to overwrite. Inside the repo it refuses `contactSubmission`, `platformProfile` and `person`: it checks the query text before the read and the `_type` of every fetched document after it, so a query by id list or `*[]` is caught too. A result with no `_type` (a projection or a bare value) is refused as well, since it cannot be checked. Give `--out` outside the repo for those.
 
 ### Step 3: plan
 
@@ -395,14 +397,14 @@ What the script does:
 2. Builds one `patch` mutation per changed document: `{ id, ifRevisionID, set: { field: value } }` or `unset: [field]`.
 3. Refuses to run if any mutation is not a patch, names another field, or the plan has no `--go`.
 4. Sends the mutations in batches of 50 as transactions. A revision clash fails that batch only; the script reports it and carries on with the next batch.
-5. Writes `<plan>.result.json`: written ids, clashed ids, transaction ids, time.
+5. Writes the result log beside the plan: the plan path with `.plan.json` replaced by `.result.json`, so `backups/posts-schematype-<ts>.json.result.json`. It holds written ids, clashed ids, failed ids, transaction ids and times. The script works out this path and reserves the file before it sends anything; if the log already exists it stops with nothing sent.
 
 Without `--go` it prints the mutations it would send and exits. That is the dry run of the apply step.
 
 ### Step 7: check
 
 ```
-node $S/backup.mjs --query '*[_id in $ids]' --ids-from <plan>.result.json --label check --print
+node $S/backup.mjs --query '*[_id in $ids]' --ids-from backups/posts-schematype-<ts>.json.result.json --label check --print
 ```
 
 - Every written document holds the proposed value.
@@ -418,7 +420,7 @@ Tell the owner: counts planned, written and clashed; the result log path; the un
 The undo restores the backed-up values of one field.
 
 ```
-node $S/backup.mjs --query '*[_id in $ids]' --ids-from <plan>.result.json --label pre-undo
+node $S/backup.mjs --query '*[_id in $ids]' --ids-from backups/posts-schematype-<ts>.json.result.json --label pre-undo
 node $S/plan-patch.mjs --backup backups/pre-undo-<ts>.json --restore backups/posts-schematype-<ts>.json --field schemaType
 node $S/apply-plan.mjs --plan backups/pre-undo-<ts>.json.plan.json --go
 ```
@@ -434,7 +436,8 @@ Change: the stored `schemaType` on posts from `TechArticle` to `BlogPosting`. Th
 ### When to stop
 
 - The count in step 1 differs from the number the owner or another skill gave: report both and ask.
-- The token is missing or rejected.
+- The token is missing or rejected (the scripts exit with code 2 when it is missing).
+- The result log for the plan already exists: the plan was applied or started before.
 - The plan would touch more than one type, or more than one field.
 - Anything in the plan is a create, delete or replace.
 
@@ -458,7 +461,7 @@ A request such as "remove the faqs field" is a schema change only. Unsetting the
 1. **Read the ruling.** Which fields a type has is decided by `wugweb-strategy`; which schema types and markup a page emits is decided by `wugweb-seo`. Quote the ruling and its date in the change report. No ruling: say "not decided" and name who decides.
 2. **Branch.** One branch per change, named for it.
 3. **Edit.** Change the one file. Keep field names, ids and option values stable unless the change is the rename.
-4. **Build and test.** `npm run build` at the repo root, then `npm test` if present; in `sanity/`, run its type check. All must pass.
+4. **Build and test.** `npm run build` at the repo root, then `npm run test:sanity` (the root `package.json` has no `test` script; its tests are the `test:*` scripts). In `sanity/`, run `npm run build`: its `package.json` has no type-check script, and the Studio build is the check that the schema compiles. All must pass.
 5. **Look.** Run the local Studio and open one document of the type. Confirm the field shows, hides or validates as intended.
 6. **Show.** Current → proposed for the lines changed, the build and test result, and what the owner will see in Studio.
 7. **Merge on go.** The owner says go; merge to main by the site-code steps in the repo's `AGENTS.md`.
@@ -513,7 +516,7 @@ Three scripts in the site repo carry Notion data into Sanity. Each dry runs by d
 
 ### The blog sync and creates
 
-The blog sync can create documents. That is the one create this skill allows, because the script owns it and the owner approved the sync design on 2026-10-13. Every create is listed in step 3, and the owner's go covers the creates shown, nothing more.
+The skill itself never creates a document: its own scripts send patches only. The one exception is the blog sync script's own create-if-missing (a Notion post with no Sanity document becomes `post-<slug>`), run only on the owner's go. It is allowed because the script owns it and the owner approved the sync design on 2026-10-13. Every create is listed in step 3, and the owner's go covers the creates shown, nothing more.
 
 ### Undo
 
@@ -532,6 +535,8 @@ Automating the blog sync was offered, not decided (engineering page, leftover 1)
 ## Script status: the site's scripts folder
 
 Checked 2026-11-19 against main `6e290b0`: 55 scripts. "Scan says" comes from `scripts/scan-scripts.mjs`, a word scan. "Status for this skill" was set by reading each script's header and switch; a script called finished or one-off is judged so from its header date and purpose. Read a script's code before running it, whatever this table says, and re-run the scan when the folder has changed.
+
+A script that is not in the table is treated as "do not run" until it has been scanned and read. That covers untracked files too: on 2026-11-19 nine untracked `scripts/tmp-*.mjs` files sat on disk beside the 55 tracked scripts.
 
 ### How to read the statuses
 

@@ -2,6 +2,8 @@
 
 Checked 2026-11-19 against main `6e290b0`: 55 scripts. "Scan says" comes from `scripts/scan-scripts.mjs`, a word scan. "Status for this skill" was set by reading each script's header and switch; a script called finished or one-off is judged so from its header date and purpose. Read a script's code before running it, whatever this table says, and re-run the scan when the folder has changed.
 
+A script that is not in the table is treated as "do not run" until it has been scanned and read. That covers untracked files too: on 2026-11-19 nine untracked `scripts/tmp-*.mjs` files sat on disk beside the 55 tracked scripts.
+
 ## How to read the statuses
 
 - **Read allowed:** reads only, or writes a local report file. Run it.

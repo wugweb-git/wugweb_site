@@ -6,6 +6,8 @@
 //
 // Sends only patch mutations with set or unset on the plan's one field, each with ifRevisionID.
 // Refuses creates, deletes, replaces, other fields, a missing backup or a backup whose hash differs.
+// The result log path is worked out and reserved before anything is sent; if the log already
+// exists the script stops with nothing sent.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -42,6 +44,18 @@ export function chunk(list, n = 50) {
   return out;
 }
 
+// The result log sits beside the plan: <backup>.json.plan.json gives <backup>.json.result.json.
+export const resultPath = (planPath) => planPath.replace(/\.plan\.json$/, '') + '.result.json';
+
+// Reserve the result log before any change is sent. Throws if it exists or cannot be written.
+export function reserveLog(planPath, result) {
+  const out = resultPath(planPath);
+  if (fs.existsSync(out)) throw new Error('result log exists: ' + out + '; nothing sent. This plan was applied or started before: read that log, then take a new backup and re-plan.');
+  try { fs.writeFileSync(out, JSON.stringify(result, null, 1), { flag: 'wx' }); }
+  catch (e) { throw new Error('cannot write the result log ' + out + ' (' + e.code + '); nothing sent'); }
+  return out;
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const a = args();
   if (typeof a.plan !== 'string') fail('give --plan <file>');
@@ -61,16 +75,19 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   }
   const env = readEnv(repoRoot());
   const result = { plan: a.plan, field: plan.field, startedAt: new Date().toISOString(), written: [], clashed: [], failed: [], transactions: [] };
+  let out;
+  try { out = reserveLog(a.plan, result); } catch (e) { fail(e.message); }
+  const save = () => fs.writeFileSync(out, JSON.stringify(result, null, 1));
   for (const batch of chunk(muts)) {
     const ids = batch.map((m) => m.patch.id);
     const r = await mutate(env, batch);
     if (r.ok) { result.written.push(...ids); result.transactions.push(r.body.transactionId); }
     else if (r.status === 409 || /revision/i.test(JSON.stringify(r.body))) result.clashed.push(...ids);
     else { result.failed.push(...ids); console.error(`batch failed (${r.status}): ${JSON.stringify(r.body).slice(0, 300)}`); }
+    save();
   }
   result.finishedAt = new Date().toISOString();
-  const out = a.plan.replace(/\.plan\.json$/, '') + '.result.json';
-  fs.writeFileSync(out, JSON.stringify(result, null, 1), { flag: 'wx' });
+  save();
   console.log(`written ${result.written.length}, clashed ${result.clashed.length}, failed ${result.failed.length}; log ${out}`);
   if (result.clashed.length) console.log('revision clash: take a new backup, re-plan and ask again for those documents.');
   process.exit(result.failed.length ? 1 : 0);

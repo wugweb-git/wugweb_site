@@ -16,7 +16,7 @@ A request such as "remove the faqs field" is a schema change only. Unsetting the
 1. **Read the ruling.** Which fields a type has is decided by `wugweb-strategy`; which schema types and markup a page emits is decided by `wugweb-seo`. Quote the ruling and its date in the change report. No ruling: say "not decided" and name who decides.
 2. **Branch.** One branch per change, named for it.
 3. **Edit.** Change the one file. Keep field names, ids and option values stable unless the change is the rename.
-4. **Build and test.** `npm run build` at the repo root, then `npm test` if present; in `sanity/`, run its type check. All must pass.
+4. **Build and test.** `npm run build` at the repo root, then `npm run test:sanity` (the root `package.json` has no `test` script; its tests are the `test:*` scripts). In `sanity/`, run `npm run build`: its `package.json` has no type-check script, and the Studio build is the check that the schema compiles. All must pass.
 5. **Look.** Run the local Studio and open one document of the type. Confirm the field shows, hides or validates as intended.
 6. **Show.** Current → proposed for the lines changed, the build and test result, and what the owner will see in Studio.
 7. **Merge on go.** The owner says go; merge to main by the site-code steps in the repo's `AGENTS.md`.

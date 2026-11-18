@@ -18,7 +18,9 @@ Write the GROQ query that selects exactly the documents to change, drafts includ
 - Include drafts: a token read returns `drafts.*` documents; keep them in the set.
 - Report the count, split into published and drafts.
 
-To read without writing a backup, run `node $S/backup.mjs --query '<groq>' --label read --print`. `--print` writes nothing and prints the count and the first rows.
+To read without writing a backup, run `node $S/backup.mjs --query '<groq>' --label read --print`. `--print` writes nothing and prints the count and the first rows. It goes through the same guard as a backup: when the query names, or the read returns, `contactSubmission`, `platformProfile` or `person`, or a result has no `_type`, it prints ids, types and counts only, never content.
+
+A read needs `SANITY_SYNC_TOKEN`. Without it the script stops with exit code 2 and names the variable. `--public` opts in to the public read, which returns published documents only; say so in the report, because drafts are missing from the count.
 
 ## Step 2: back up
 
@@ -28,7 +30,7 @@ node $S/backup.mjs --query '*[_type == "post" && schemaType == "TechArticle"]' -
 
 - Back up whole documents (no projection), so the undo can restore any field.
 - Output: `backups/posts-schematype-<UTC timestamp>.json` holding `takenAt`, `query`, `count`, `sha256` of the `docs` array, and `docs`.
-- The script refuses to overwrite and refuses `contactSubmission` unless `--out` points outside the repo.
+- The script refuses to overwrite. Inside the repo it refuses `contactSubmission`, `platformProfile` and `person`: it checks the query text before the read and the `_type` of every fetched document after it, so a query by id list or `*[]` is caught too. A result with no `_type` (a projection or a bare value) is refused as well, since it cannot be checked. Give `--out` outside the repo for those.
 
 ## Step 3: plan
 
@@ -68,14 +70,14 @@ What the script does:
 2. Builds one `patch` mutation per changed document: `{ id, ifRevisionID, set: { field: value } }` or `unset: [field]`.
 3. Refuses to run if any mutation is not a patch, names another field, or the plan has no `--go`.
 4. Sends the mutations in batches of 50 as transactions. A revision clash fails that batch only; the script reports it and carries on with the next batch.
-5. Writes `<plan>.result.json`: written ids, clashed ids, transaction ids, time.
+5. Writes the result log beside the plan: the plan path with `.plan.json` replaced by `.result.json`, so `backups/posts-schematype-<ts>.json.result.json`. It holds written ids, clashed ids, failed ids, transaction ids and times. The script works out this path and reserves the file before it sends anything; if the log already exists it stops with nothing sent.
 
 Without `--go` it prints the mutations it would send and exits. That is the dry run of the apply step.
 
 ## Step 7: check
 
 ```
-node $S/backup.mjs --query '*[_id in $ids]' --ids-from <plan>.result.json --label check --print
+node $S/backup.mjs --query '*[_id in $ids]' --ids-from backups/posts-schematype-<ts>.json.result.json --label check --print
 ```
 
 - Every written document holds the proposed value.
@@ -91,7 +93,7 @@ Tell the owner: counts planned, written and clashed; the result log path; the un
 The undo restores the backed-up values of one field.
 
 ```
-node $S/backup.mjs --query '*[_id in $ids]' --ids-from <plan>.result.json --label pre-undo
+node $S/backup.mjs --query '*[_id in $ids]' --ids-from backups/posts-schematype-<ts>.json.result.json --label pre-undo
 node $S/plan-patch.mjs --backup backups/pre-undo-<ts>.json --restore backups/posts-schematype-<ts>.json --field schemaType
 node $S/apply-plan.mjs --plan backups/pre-undo-<ts>.json.plan.json --go
 ```
@@ -107,6 +109,7 @@ Change: the stored `schemaType` on posts from `TechArticle` to `BlogPosting`. Th
 ## When to stop
 
 - The count in step 1 differs from the number the owner or another skill gave: report both and ask.
-- The token is missing or rejected.
+- The token is missing or rejected (the scripts exit with code 2 when it is missing).
+- The result log for the plan already exists: the plan was applied or started before.
 - The plan would touch more than one type, or more than one field.
 - Anything in the plan is a create, delete or replace.

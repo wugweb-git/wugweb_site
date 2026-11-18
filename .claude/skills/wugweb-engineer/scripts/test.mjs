@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-// Offline tests: the plan, the apply guards, the schema parse, the script scan and the
+// Offline tests: the plan, the apply and backup guards, the schema parse, the script scan and the
 // standing-rules copy. No network. Exit 1 on any failure.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildPlan, table, withKeys } from './plan-patch.mjs';
-import { buildMutations, chunk } from './apply-plan.mjs';
+import { buildMutations, chunk, resultPath, reserveLog } from './apply-plan.mjs';
 import { parseType, compare, readSchema } from './schema-fields.mjs';
 import { classify } from './scan-scripts.mjs';
 import { rulesBlock, render } from './build.mjs';
-import { hashDocs, typesInQuery, canon, token, TOKEN_NAME, repoRoot } from './lib.mjs';
+import { hashDocs, typesInQuery, canon, token, TOKEN_NAME, repoRoot, guardedTypes, backupRefusal, printLines, readHost } from './lib.mjs';
 
 const dir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let fail = 0;
@@ -73,6 +73,51 @@ t(TOKEN_NAME === 'SANITY_SYNC_TOKEN' && token({ SANITY_SYNC_TOKEN: 'x' }) === 'x
 t(hashDocs([{ b: 1, a: 2 }]) === hashDocs([{ a: 2, b: 1 }]) && canon({ b: 1, a: 2 }) === '{"a":2,"b":1}', 'hash ignores key order');
 t(typesInQuery('*[_type in ["post", "contactSubmission"]]').includes('contactSubmission'), 'query type scan sees _type in [...]');
 
+// Backup guard on the fetched documents, not only the query text (fake data, no network).
+{
+  const secret = 'SECRET-VALUE-0000';
+  const mixed = [{ _id: 'post-a', _type: 'post', title: 'A' }, { _id: 'platformProfile-x', _type: 'platformProfile', password: secret }];
+  const plainDocs = [{ _id: 'post-a', _type: 'post', title: 'A' }];
+  for (const q of ['*[_id in $ids]', '*[]', '*[_type match "platform*"]']) {
+    t(guardedTypes(q, []).length === 0 && guardedTypes(q, mixed).join() === 'platformProfile', `guard sees a guarded type in the fetched documents: ${q}`);
+    t(/personal data/.test(backupRefusal(q, mixed, true) || ''), `backup inside the repo is refused on fetched types: ${q}`);
+  }
+  t(backupRefusal('*[_id in $ids]', mixed, false) === null, 'backup outside the repo is allowed for guarded types');
+  t(backupRefusal('*[_type == "post"]', plainDocs, true) === null, 'backup inside the repo is allowed for plain types');
+  t(/personal data/.test(backupRefusal('*[_type == "person"]', [], true) || ''), 'query text check still refuses before any read');
+  t(/no _type/.test(backupRefusal('*[_id in $ids]{_id, email}', [{ _id: 'person-a', email: 'a@example.com' }], true) || ''), 'backup inside the repo is refused when a result has no _type');
+  t(/no _type/.test(backupRefusal('*[_id in $ids].password', [secret], true) || ''), 'backup inside the repo is refused for bare values');
+
+  const shown = printLines('*[_id in $ids]', mixed).join('\n');
+  t(!shown.includes(secret) && !shown.includes('"title"') && /platformProfile-x/.test(shown) && /by type: post 1, platformProfile 1/.test(shown), 'print shows ids, types and counts only when a guarded type is fetched');
+  t(!printLines('*[_type == "platformProfile"]{"_type": "post", password}', [{ _type: 'post', password: secret }]).join('\n').includes(secret), 'print withholds content when the query text names a guarded type');
+  t(!printLines('*[_id in $ids].password', [secret]).join('\n').includes(secret), 'print withholds bare values');
+  t(!printLines('*[_id in $ids]{_id, password}', [{ _id: 'x', password: secret }]).join('\n').includes(secret), 'print withholds a result with no _type');
+  t(printLines('*[_type == "post"]', plainDocs)[0] === JSON.stringify(plainDocs[0]), 'print shows content for plain types');
+  t(printLines('count(*[_type == "post"])', [19]).join() === '19', 'print shows a count');
+}
+
+// Reads: no silent fall back to the public CDN.
+t(readHost('', {}) === null && readHost('') === null, 'read without a token has no host unless the caller opts in');
+t(/apicdn/.test(readHost('', { publicRead: true })) && !/apicdn/.test(readHost('x', { publicRead: true })), 'public read is an opt-in and a token still wins');
+
+// Result log: path and reservation before anything is sent.
+{
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'wugweb-engineer-log-'));
+  const planFile = path.join(tmp, 'b.json.plan.json');
+  t(resultPath(planFile) === path.join(tmp, 'b.json.result.json'), 'result log is <backup>.json.result.json');
+  const first = reserveLog(planFile, { written: [] });
+  t(fs.existsSync(first) && first === resultPath(planFile), 'apply reserves the result log before sending');
+  let msg = '';
+  try { reserveLog(planFile, { written: [] }); } catch (e) { msg = e.message; }
+  t(/result log exists/.test(msg) && /nothing sent/.test(msg), 'apply stops early when the result log exists');
+  let msg2 = '';
+  try { reserveLog(path.join(tmp, 'missing-folder', 'c.json.plan.json'), {}); } catch (e) { msg2 = e.message; }
+  t(/cannot write the result log/.test(msg2), 'apply stops early when the result log cannot be written');
+  const src = fs.readFileSync(path.join(dir, 'scripts', 'apply-plan.mjs'), 'utf8');
+  t(src.indexOf('reserveLog(a.plan') > 0 && src.indexOf('reserveLog(a.plan') < src.indexOf('await mutate('), 'apply reserves the log before the first mutate call');
+}
+
 // Schema parse.
 const src = `import {defineType, defineField} from 'sanity'
 export default defineType({
@@ -89,7 +134,7 @@ const p = parseType(src);
 t(p.type === 'post' && p.fields.join() === 'title,tags,seoTitle', 'schema parse reads top-level fields only');
 t(p.unresolved === 0 && p.refs.join() === 'ownerFields', 'schema parse records a spread for helper lookup');
 {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'wd-schema-'));
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'wugweb-engineer-schema-'));
   fs.writeFileSync(path.join(tmp, 'ownerField.ts'), "import { defineField } from 'sanity';\nexport const ownerFields = defineField({ name: 'owner', type: 'string' });\n");
   fs.writeFileSync(path.join(tmp, 'post.ts'), src);
   const s = readSchema(tmp);

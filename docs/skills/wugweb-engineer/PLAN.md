@@ -71,7 +71,8 @@ Each link must also be listed by the other skill (rule 8). Proposed lines for th
 
 - [x] Notion page, registry row and matrix row (2026-11-19).
 - [x] `AI-MODELS.md` line (2026-11-19, committed).
-- [x] Skill folder and this file committed (2026-11-19). Push to GitHub waits for the owner's go.
+- [x] Skill folder and this file committed (2026-11-19).
+- [x] Push to GitHub: done, the skill is on main since `4f18f079`.
 - [ ] Upload `wugweb-engineer.skill` to the Claude app and remove the old `wugweb-data` skill there.
 - [ ] Item A, B and G plans: a go on each, once shown.
 - [ ] A working Notion token in `.env` (the sync scripts read `NOTION_TOKEN`; the standard name is `NOTION_API_TOKEN`).
@@ -124,6 +125,10 @@ Every file of the skill (73) was read on 2026-11-19 from main (`4fbf334c`) by a 
 ### Needs changing in this plan
 
 - Line 74 says "Push to GitHub waits"; the skill is on main since `4f18f079`.
+
+### Fixed
+
+Fixed 2026-11-19: items 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 and 14, and the plan line on the push. Not fixed: none. The version stays 0.3.1; the changes are listed in the skill's `CHANGELOG.md` under "2026-11-19 (review fixes, no version change)". The line numbers in the list above are as of `4fbf334c` and have moved.
 
 ### Worth knowing
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-19 (review fixes, no version change)
+
+Fixes for items 1 to 14 of the full read in `docs/skills/wugweb-engineer/PLAN.md`. The version stays 0.3.1.
+
+- `backup.mjs`: the guard now also checks the `_type` of every fetched document, so a query by id list, `*[]` or `_type match` cannot write `contactSubmission`, `platformProfile` or `person` into `backups/`. The query text check stays as the first line. Inside the repo a result with no `_type` is refused too. `--print` goes through the same guard and shows ids, types and counts only for those types, never content.
+- `lib.mjs` `query()`: with no `SANITY_SYNC_TOKEN` a read stops with exit code 2 instead of falling back to the public CDN. `backup.mjs --public` is the explicit opt-in for a published-only read; the backup is marked `publicRead`.
+- `apply-plan.mjs`: the result log path is worked out and the file reserved before anything is sent; if the log exists the script stops with nothing sent. The log is saved after each batch.
+- `test.mjs`: offline tests for the three points above, on fake data; the temp prefix `wd-schema-` is now `wugweb-engineer-schema-`.
+- Docs brought into line with the code and the repo: the result log name in the runbook (`<backup>.json.result.json`); the skill itself never creates a document, the one exception being the blog sync script's own create-if-missing on the owner's go (`SKILL.md`, `metadata.json`, `build.mjs`, `references/sync-scripts.md`); the build and test commands in `references/schema-change.md` (`npm run test:sanity`, `npm run build` in `sanity/`); a script not in the status table is "do not run" until scanned; the `service-faqs-from-review` test case agrees with `references/open-items.md`; the example change report carries the `sha256`; sibling file counts in `README.md`; six siblings in `evals/routing-check.json`.
+- Note on the 0.3.1 entry below: the repo copy of the web engineering plan (`docs/skills/wugweb-web-engineering/PLAN.md`) had not been updated when 0.3.1 was written. It was updated on 2026-11-19: it now points here and says key rotation is the owner's call.
+
 ## 0.3.1 (2026-11-19)
 
 - Registered on the owner's word "update notion and commit": row 7 in the Notion registry, a row in the responsibility matrix, and its own Notion page. The wugweb-web-engineering page now points here, and its rotation lines follow the owner's rule "no key rotation, never".

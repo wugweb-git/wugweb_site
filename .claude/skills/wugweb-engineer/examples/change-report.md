@@ -6,7 +6,7 @@ Built from `posts-schematype.backup.json` in this folder, which holds invented d
 Change: set schemaType on posts from TechArticle to BlogPosting
 Mode: Plan a change (wugweb-seo set the value; wugweb-engineer applies it)
 Touches: post, schemaType, 2 documents (1 published, 1 draft); visible on the site: no
-Backup: examples/posts-schematype.backup.json (3 documents)
+Backup: examples/posts-schematype.backup.json (3 documents, sha256 480aa399e57d)
 Plan: examples/posts-schematype.backup.json.plan.json
 
 | Document | Field | Current | Proposed |
