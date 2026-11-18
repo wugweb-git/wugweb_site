@@ -46,9 +46,9 @@ Say how strong each item is, in words: **confirmed** by the owner, **source** in
 
 The `brand_guidelines/01_FOUNDATION/` folder is marked archived, so the principles and philosophy are the strongest existing source, not an owner decision. They describe how Wugweb thinks about its visual and systems work.
 
-## How to record values once the owner supplies them
+## How to record a change to the values
 
-Use a "we are, we are not" table of four to seven rows. Each row carries the evidence behind it: where it is written or how it shows in the work. A row with no evidence is left out.
+The five values above are approved. If the owner adds or changes one, use a "we are, we are not" table of four to seven rows. Each row carries the evidence behind it: where it is written or how it shows in the work. A row with no evidence is left out.
 
 | Level | Meaning |
 | --- | --- |

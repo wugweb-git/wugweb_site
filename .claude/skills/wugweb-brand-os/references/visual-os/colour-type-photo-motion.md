@@ -19,16 +19,17 @@ This file is the one home for the colour rules. `SKILL.md` carries them in short
 
 ### Source, not yet ruled on (`02_VISUAL_SYSTEM/04_COLOR_ROLES.md`)
 
+Two lines of this source were overruled by the owner on 2026-11-17 and are left out: its role for magenta, and its advice on purple, green and orange. The rulings under "Owner answers" below stand in their place.
+
 | Colour | Role in artwork |
 | --- | --- |
 | Black | Authority and framing |
 | White or warm off-white | Clarity |
-| Magenta | Human and brand energy |
 | Yellow | Focus and opportunity |
 | Teal or cyan | Product or digital systems |
 | Royal blue | Structure and trust |
 
-Two to four accents per artwork plus neutrals. People and most photography stay monochrome so colour belongs to the brand system. The guideline marks its own colour values as provisional. Avoid unapproved purple, green, orange, neon, rainbow palettes and gradients.
+Two to four accents per artwork plus neutrals. People and most photography stay monochrome so colour belongs to the brand system. The guideline marks its own colour values as provisional. Avoid neon and rainbow palettes, and gradients other than the pillar glow.
 
 Palette behaviour by mode, from the same file:
 
@@ -42,8 +43,8 @@ Palette behaviour by mode, from the same file:
 
 ### Owner answers, 2026-11-17
 
-- **Questions 6 and 21, confirmed.** All six pillar colours stand, in artwork as on the site: Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple. The interface accent stays grey. Magenta is the Brand pillar colour, not the brand energy colour.
-- **Question 15, confirmed.** Yellow is the one brand colour, as in kits. Magenta is not the brand energy colour.
+- **Questions 6 and 21, confirmed.** All six pillar colours stand, in artwork as on the site: Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple. The interface accent stays grey. Magenta is the Brand pillar colour.
+- **Question 15, confirmed.** Yellow is the one brand colour, as in kits.
 - **Question 16, confirmed.** The pillar glow is an allowed exception to the gradient ban. Other gradient-heavy looks stay banned.
 - **Question 14, confirmed.** The black canvas is the default everywhere. No format uses a light background until the owner names one.
 
@@ -62,10 +63,7 @@ Palette behaviour by mode, from the same file:
 
 ## Logo
 
-- Use the real logo file wherever a logo belongs. Never initials, an emoji, a generic mark or a redrawn version, and never recoloured or re-proportioned.
-- Show a partner's or client's logo in its own form, in greyscale if a row needs calm.
-- The logo appears only on black; no one-colour version until one is needed (question 19).
-- The full logo rules are in `art-direction.md`. Sizes are in `wugweb-kits`.
+The logo rules are held in the Logo section of `art-direction.md` only. Sizes are in `wugweb-kits`.
 
 ## Photography (source: `15_PHOTOGRAPHY_DIRECTION.md`)
 

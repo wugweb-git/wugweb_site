@@ -1,6 +1,6 @@
 # Source map
 
-Where each rule came from, what conflicts, and what is still open. Tool and vendor names are in `tooling.md` only.
+Where each rule came from, what conflicts, and what is still open. Helper skill names are in `tooling.md` only.
 
 ## Source order
 
@@ -14,11 +14,11 @@ Where each rule came from, what conflicts, and what is still open. Tool and vend
 
 | Source | Used for | Standing |
 | --- | --- | --- |
-| Owner decisions, 2026-11-16 | Scope, the media rule, pillars, answers to questions 1 to 4 and 11 | Highest |
+| Owner decisions, 2026-11-16 and 17 | Scope, the media rule, pillars, and the rulings recorded against the questions below | Highest |
 | `brand_guidelines/` | Principles, visual modes, metaphors, components, formulas, validation | Evidence archive. Never edited by this skill. Its `README.md` and `DECISIONS.md` are marked archived (2026-08-07) |
 | `kits_design_system/docs/design.md` and kits docs | Yellow, ink, logo, surface, motion and layout feel | Rules restated here; every value stays in `wugweb-kits` |
 | `CLAUDE.md` | Six pillars, website, contact channel | Fixed for pillars |
-| The site | One positioning line in use | In use, not chosen |
+| The site | Two positioning lines in use | In use, not chosen |
 | Owner's Visual OS and Brand Strategy documents | Not yet supplied | Waiting |
 
 ## Where each file comes from
@@ -27,7 +27,7 @@ Where each rule came from, what conflicts, and what is still open. Tool and vend
 | --- | --- | --- |
 | `identity-and-positioning.md` | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md`, `CLAUDE.md`, the site | Thin; the line itself is not approved |
 | `brand-strategy.md` | Method only | No Wugweb source yet |
-| `values-and-principles.md` | `01_FOUNDATION/PHILOSOPHY.md`, `PRINCIPLES.md` | Short lists; values not approved |
+| `values-and-principles.md` | `01_FOUNDATION/PHILOSOPHY.md`, `PRINCIPLES.md`; the 2023 Notion profile for the values | Short lists; the five values approved 2026-11-17 |
 | `audience.md` | Method only | No Wugweb source yet |
 | `messaging.md` | `03_MARKETING_SYSTEM/02_MESSAGING_FRAMEWORK.md`, `01_BRAND_STORY.md`, `02_VISUAL_SYSTEM/09_NARRATIVE_SYSTEMS.md` | Two or three sentences each |
 | `vocabulary.md` | `01_FOUNDATION/VOCABULARY.md`, `CLAUDE.md` | Short list |
@@ -72,13 +72,13 @@ Until each "not decided" row is answered, report both sides and do not pick one.
 
 ## Open questions for the owner
 
-The owner will supply every open item below, and positioning, values, audience and logo answers, in Notion (2026-11-17). When a Notion page arrives, show current to proposed and apply nothing until the owner approves.
+Questions 1, 3 and 10 are open; questions 4 and 19 are answered in part. Open items are filled through use, by the owner's approval: when an answer arrives, show current to proposed and apply nothing until the owner approves.
 
 | No. | Question | Status |
 | --- | --- | --- |
-| 1 | Positioning line | Answered 2026-11-17: owner picks from the lines in Notion or writes one |
-| 2 | Values | Answered 2026-11-17: the 2023 five |
-| 3 | Audience | Answered 2026-11-17: stays blank |
+| 1 | Positioning line | Open. The owner picks from the lines listed in `identity-and-positioning.md` or writes one (2026-11-17); blank until then |
+| 2 | Values | Approved 2026-11-17: the 2023 five |
+| 3 | Audience | Open. Blank until the owner supplies it; nothing in Notion (2026-11-17) |
 | 4 | Facts about Wugweb | Answered 2026-11-17: see `brand-facts.md`; legal name, team size, projects, markets and profiles still open |
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
 | 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
@@ -95,7 +95,7 @@ The owner will supply every open item below, and positioning, values, audience a
 | 17 | Slight bounce in motion | Confirmed: within the brand |
 | 18 | Logo rules live here, sizes in kits | Confirmed |
 | 19 | Logo files, tones, exemption, clear space, minimum size, one-colour version, unused PNG | Answered 2026-11-17: see `visual-os/art-direction.md`. Mark construction and live type stay open |
-| 20 | "Brand identity" as a case-study archetype with ToT as the example | Answered 2026-11-17: keep the archetype, do not name ToT (client record is under NDA); ToT fixes belong to `wugweb-work` |
+| 20 | "Brand identity" as a case-study archetype with a client under NDA as the example | Answered 2026-11-17: keep the archetype, do not name the client (its record is under NDA); fixes to that case study belong to `wugweb-work` |
 | 21 | Secondary colours: kits README, code and question 6 differed | Answered 2026-11-17: all six pillar colours stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the accent stays grey; yellow stays the one brand colour |
 
 ## Rules restated from helper skills
@@ -111,7 +111,7 @@ Read on 2026-11-16, restated in our own words so the skill works without them. T
 | `brand-facts.md` | Provenance on every fact; proof with usage rights |
 | `values-and-principles.md` | "We are, we are not"; evidence levels in words |
 | `review-gates.md` | Claims check; findings with severity and a fix |
-| `visual-os/` | Direction from the subject's world; one signature element; restraint; dials; fixed-axis comparison; two-second test; description frame; layout types; slide rules; chart title rule |
+| `visual-os/` | Direction from the subject's world; one signature element; restraint; dials; fixed-axis comparison; two-second test; the six-part description frame; layout types; slide rules; chart title rule |
 
 Methods restated from helper skills are listed with their sources in section 18 of `docs/skills/wugweb-brand-os/PLAN.md`.
 

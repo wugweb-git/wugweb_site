@@ -380,7 +380,7 @@
       "id": 36,
       "name": "triggering: should trigger and should not",
       "status": "waiting on the app upload",
-      "prompt": "Run ten prompts that should trigger this skill (answer and line questions) and ten that should not (voice, topics, tokens, SEO, client brand, card spacing, sitemap, launch posts, schema)",
+      "prompt": "Run ten prompts that should trigger this skill (answer and line questions) and ten that should not (voice, topics, tokens, SEO, client brand, card spacing, sitemap, launch posts, schema, and a data change such as 'patch the schemaType on these posts', which routes to wugweb-engineer)",
       "expected": [
         "The right skill fires at least nine times in ten for each set"
       ]

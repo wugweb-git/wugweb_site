@@ -32,7 +32,7 @@ How and whether these words are used in copy is a voice matter; ask `wugweb-voic
 
 ## More on the name and category
 
-- The legal name appears in two forms in the stale profile. Do not write a legal name until the owner confirms it.
+- The legal name appears in four forms: three in the stale profile and one on the site's terms of use page (see `brand-facts.md`). Do not write a legal name until the owner confirms it.
 - Use one spelling everywhere, with the full name at first mention. This is the rule search and AI tools rely on, as reported by the `wugweb-seo` session.
 - `wugweb-seo` reads the approved descriptor from `brand-facts.md` and never rewrites it.
 - How Wugweb names its category and its competitors is part of positioning and is not decided. Do not adopt a term a competitor coined without the owner's say.

@@ -55,4 +55,4 @@ Proof rules: nothing made up, permission recorded, meaning kept when a quote is 
 
 ## Pass test for a message
 
-A message passes when it is clear (understood in five seconds), different (a competitor could not say it unchanged), credible (provable from approved facts), relevant (answers a need the audience has) and consistent (does not contradict the positioning or another piece).
+A message passes when it is clear (understood in three seconds, as in the test above), different (a competitor could not say it unchanged), credible (provable from approved facts), relevant (answers a need the audience has) and consistent (does not contradict the positioning or another piece).

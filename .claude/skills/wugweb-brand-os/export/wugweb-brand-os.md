@@ -96,14 +96,15 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.3.2 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
+Version 0.3.2 holds the structure, every sourced rule and the owner's rulings of 2026-11-16 and 17. Four core items are blank until the owner supplies them:
 
-- **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
-- **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.
-- **Audience:** not decided. The owner will supply it.
+- **Positioning line:** not decided. Neither line in use is chosen.
+- **Audience:** not decided.
+- **Differentiation and brand strategy:** not decided.
+- **Values:** approved 2026-11-17, the 2023 five. The ten principles stay principles.
 - **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Legal name, team size, projects, markets and profile links wait for the owner.
 
-One question is open (10), plus the open rows in `brand-facts.md` and the positioning line; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+Questions 1, 3 and 10 are open, plus the open rows in `brand-facts.md`; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `references/standing-rules.md` first: a marked copy of the owner's standing rules from `docs/skills/STANDING-RULES.md`, which wins. They win over this skill and any helper. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -124,6 +125,7 @@ Read `references/standing-rules.md` first: a marked copy of the owner's standing
 | Token values, components, layout, radius, accessibility | `wugweb-kits`. State the look and feel here; every value lives there |
 | Keywords, title and description lengths, schema | `wugweb-seo` |
 | Writing or producing any piece, sizes and counts per form | `wugweb-work` |
+| Sanity and Notion data, schema edits, sync scripts, backups | `wugweb-engineer` |
 | A client's brand | Stays with that case study |
 
 If a question could belong to two skills, say so and ask. Do not answer it from both.
@@ -155,7 +157,7 @@ In: an artwork or an artwork brief. Out: the mode chosen, banned motifs found, p
 
 Judge the rendered result, never a description of it. This mode needs a model that can see images; without one, check the written brief only and say the artwork was not seen.
 
-1. Describe what is there in a fixed frame: subject, composition, lighting and treatment, colour, type, format fit, mood.
+1. Describe what is there in a fixed frame: subject, composition, lighting, colour, style, mood.
 2. Name the one visual mode. Two modes blended casually is a fail. Run the two-second test: what the eye hits first, whether that is right, and whether the one claim is clear without the headline.
 3. Run the check list in `references/review-gates.md`, looking as `references/visual-os/judging-a-visual.md` describes. The banned list in `references/visual-os/art-direction.md` is a fail when met: robots, AI brains, neural webs, circuitry, holograms, node webs as texture, icon clouds, stock teams and handshakes, clutter, and anything copied from another studio's signature work.
 4. Report findings as must fix, should fix or nice to have, each with its rule, its file and the fix as current to proposed.
@@ -186,7 +188,7 @@ In: a proposed brand rule or fact. Out: current to proposed, with evidence, for 
 
 ## Rules already fixed
 
-These are confirmed. They hold in every mode.
+Confirmed. They hold in every mode.
 
 **Brand**
 
@@ -215,7 +217,7 @@ These are confirmed. They hold in every mode.
 - The media rules in `references/standing-rules.md` win over any brand wording and are not restated here.
 - In the guidelines, "crop" means how a subject is framed in a composition, never the cutting of a file.
 
-This skill states these rules. `wugweb-kits` holds every value and enforces them on the interface. No token value is written in this skill.
+This skill states these rules. `wugweb-kits` holds every value and enforces them on the interface; no token value is written here.
 
 ## The five visual modes
 
@@ -238,6 +240,7 @@ Detail, the approved, banned and conditional lists, and composition are in `refe
 | `wugweb-strategy` | Positioning, audience, differentiation, messaging framework | Nothing | Decide topics, calendar or briefs |
 | `wugweb-work` | Brand rules, Visual OS direction, check findings | Drafts and artwork briefs to check | Author or rewrite content, make media, touch client brand choices |
 | `wugweb-seo` | Brand name, descriptor, approved facts, read one way | Nothing | Change keywords, lengths or schema |
+| `wugweb-engineer` | Nothing | Nothing | Change Sanity or Notion data, a schema or a sync script |
 
 ## Reference files
 
@@ -254,7 +257,7 @@ Load only the file a mode needs.
 | `references/brand-facts.md` | Every fact with source and status |
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels |
 | `references/source-map.md` | Sources, conflicts, the 21 owner questions and their status |
-| `references/tooling.md` | The only file that names helpers and vendors |
+| `references/tooling.md` | The only reference file that names helper skills |
 | `references/standing-rules.md` | The owner's standing rules, a generated marked copy |
 | `references/visual-os/art-direction.md` | Grammar, modes, approved, banned and conditional lists, composition, "crop" |
 | `references/visual-os/colour-type-photo-motion.md` | Colour roles as meaning, type, photography, motion |
@@ -360,8 +363,8 @@ The owner approved the rows marked "approved 2026-11-17" from the Notion read (q
 | Fact | What exists today | Source | Status |
 | --- | --- | --- | --- |
 | Brand name and spelling | "Wugweb" | Site, owner | Approved 2026-11-17 |
-| Legal name | Three forms in Notion: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd" | 2023 profile | Owner to pick one |
-| One fixed line: what Wugweb is, for whom, what is distinct | Five competing lines (see `identity-and-positioning.md`) | Site, Notion 2023 to 2026 | Blank. Owner to pick or write |
+| Legal name | Four forms. Three in the 2023 profile: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd". One on the site's terms of use page: "Wug Web Services Private Limited" | 2023 profile; the terms of use page | Owner to pick one |
+| One fixed line: what Wugweb is, for whom, what is distinct | Seven competing lines (see `identity-and-positioning.md`) | Site, Notion 2023 to 2026 | Blank. Owner to pick or write |
 | Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Approved, fixed |
 | Website | `wugweb.com` | `CLAUDE.md` | Exists |
 | Phone | The WhatsApp number used in the site nav | `CLAUDE.md`, owner | Approved 2026-11-17 |
@@ -536,7 +539,7 @@ Use these tests (restated from helper skills read on 2026-11-16; see `source-map
 5. **"We can own this because".** Each claimed difference finishes that sentence with a named fact from `brand-facts.md`.
 6. **Settle positioning before wording.** Agree the meaning first; the wording is checked by `wugweb-voice`.
 
-Signs the positioning is broken: three lines in use at once (today's state), a line that a competitor could use unchanged, a difference with no proof.
+Signs the positioning is broken: several lines in use at once (today seven lines are found, two of them in use on the site), a line that a competitor could use unchanged, a difference with no proof.
 
 ## More tests and signs
 
@@ -621,7 +624,7 @@ Proof rules: nothing made up, permission recorded, meaning kept when a quote is 
 
 ## Pass test for a message
 
-A message passes when it is clear (understood in five seconds), different (a competitor could not say it unchanged), credible (provable from approved facts), relevant (answers a need the audience has) and consistent (does not contradict the positioning or another piece).
+A message passes when it is clear (understood in three seconds, as in the test above), different (a competitor could not say it unchanged), credible (provable from approved facts), relevant (answers a need the audience has) and consistent (does not contradict the positioning or another piece).
 
 ---
 
@@ -720,7 +723,7 @@ Every reusable reference carries one label: `owned`, `licensed`, `public-referen
 
 # Source map
 
-Where each rule came from, what conflicts, and what is still open. Tool and vendor names are in `tooling.md` only.
+Where each rule came from, what conflicts, and what is still open. Helper skill names are in `tooling.md` only.
 
 ## Source order
 
@@ -734,11 +737,11 @@ Where each rule came from, what conflicts, and what is still open. Tool and vend
 
 | Source | Used for | Standing |
 | --- | --- | --- |
-| Owner decisions, 2026-11-16 | Scope, the media rule, pillars, answers to questions 1 to 4 and 11 | Highest |
+| Owner decisions, 2026-11-16 and 17 | Scope, the media rule, pillars, and the rulings recorded against the questions below | Highest |
 | `brand_guidelines/` | Principles, visual modes, metaphors, components, formulas, validation | Evidence archive. Never edited by this skill. Its `README.md` and `DECISIONS.md` are marked archived (2026-08-07) |
 | `kits_design_system/docs/design.md` and kits docs | Yellow, ink, logo, surface, motion and layout feel | Rules restated here; every value stays in `wugweb-kits` |
 | `CLAUDE.md` | Six pillars, website, contact channel | Fixed for pillars |
-| The site | One positioning line in use | In use, not chosen |
+| The site | Two positioning lines in use | In use, not chosen |
 | Owner's Visual OS and Brand Strategy documents | Not yet supplied | Waiting |
 
 ## Where each file comes from
@@ -747,7 +750,7 @@ Where each rule came from, what conflicts, and what is still open. Tool and vend
 | --- | --- | --- |
 | `identity-and-positioning.md` | `brand_guidelines/01_FOUNDATION/BRAND_POSITION.md`, `CLAUDE.md`, the site | Thin; the line itself is not approved |
 | `brand-strategy.md` | Method only | No Wugweb source yet |
-| `values-and-principles.md` | `01_FOUNDATION/PHILOSOPHY.md`, `PRINCIPLES.md` | Short lists; values not approved |
+| `values-and-principles.md` | `01_FOUNDATION/PHILOSOPHY.md`, `PRINCIPLES.md`; the 2023 Notion profile for the values | Short lists; the five values approved 2026-11-17 |
 | `audience.md` | Method only | No Wugweb source yet |
 | `messaging.md` | `03_MARKETING_SYSTEM/02_MESSAGING_FRAMEWORK.md`, `01_BRAND_STORY.md`, `02_VISUAL_SYSTEM/09_NARRATIVE_SYSTEMS.md` | Two or three sentences each |
 | `vocabulary.md` | `01_FOUNDATION/VOCABULARY.md`, `CLAUDE.md` | Short list |
@@ -792,13 +795,13 @@ Until each "not decided" row is answered, report both sides and do not pick one.
 
 ## Open questions for the owner
 
-The owner will supply every open item below, and positioning, values, audience and logo answers, in Notion (2026-11-17). When a Notion page arrives, show current to proposed and apply nothing until the owner approves.
+Questions 1, 3 and 10 are open; questions 4 and 19 are answered in part. Open items are filled through use, by the owner's approval: when an answer arrives, show current to proposed and apply nothing until the owner approves.
 
 | No. | Question | Status |
 | --- | --- | --- |
-| 1 | Positioning line | Answered 2026-11-17: owner picks from the lines in Notion or writes one |
-| 2 | Values | Answered 2026-11-17: the 2023 five |
-| 3 | Audience | Answered 2026-11-17: stays blank |
+| 1 | Positioning line | Open. The owner picks from the lines listed in `identity-and-positioning.md` or writes one (2026-11-17); blank until then |
+| 2 | Values | Approved 2026-11-17: the 2023 five |
+| 3 | Audience | Open. Blank until the owner supplies it; nothing in Notion (2026-11-17) |
 | 4 | Facts about Wugweb | Answered 2026-11-17: see `brand-facts.md`; legal name, team size, projects, markets and profiles still open |
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
 | 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
@@ -815,7 +818,7 @@ The owner will supply every open item below, and positioning, values, audience a
 | 17 | Slight bounce in motion | Confirmed: within the brand |
 | 18 | Logo rules live here, sizes in kits | Confirmed |
 | 19 | Logo files, tones, exemption, clear space, minimum size, one-colour version, unused PNG | Answered 2026-11-17: see `visual-os/art-direction.md`. Mark construction and live type stay open |
-| 20 | "Brand identity" as a case-study archetype with ToT as the example | Answered 2026-11-17: keep the archetype, do not name ToT (client record is under NDA); ToT fixes belong to `wugweb-work` |
+| 20 | "Brand identity" as a case-study archetype with a client under NDA as the example | Answered 2026-11-17: keep the archetype, do not name the client (its record is under NDA); fixes to that case study belong to `wugweb-work` |
 | 21 | Secondary colours: kits README, code and question 6 differed | Answered 2026-11-17: all six pillar colours stand (Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple); the accent stays grey; yellow stays the one brand colour |
 
 ## Rules restated from helper skills
@@ -831,7 +834,7 @@ Read on 2026-11-16, restated in our own words so the skill works without them. T
 | `brand-facts.md` | Provenance on every fact; proof with usage rights |
 | `values-and-principles.md` | "We are, we are not"; evidence levels in words |
 | `review-gates.md` | Claims check; findings with severity and a fix |
-| `visual-os/` | Direction from the subject's world; one signature element; restraint; dials; fixed-axis comparison; two-second test; description frame; layout types; slide rules; chart title rule |
+| `visual-os/` | Direction from the subject's world; one signature element; restraint; dials; fixed-axis comparison; two-second test; the six-part description frame; layout types; slide rules; chart title rule |
 
 Methods restated from helper skills are listed with their sources in section 18 of `docs/skills/wugweb-brand-os/PLAN.md`.
 
@@ -847,7 +850,7 @@ List both sides, with where each is written and its date. Give a recommendation 
 
 # Tooling
 
-The only file that names Claude helpers, Notion or any vendor. Every mode can be done by hand from the other files; nothing here is required.
+The only reference file that names helper skills. Other files name Notion only as a source, or as a place this skill never writes to. Every mode can be done by hand from the other files; nothing here is required.
 
 ## Where the skill and its plan live
 
@@ -955,9 +958,9 @@ Say how strong each item is, in words: **confirmed** by the owner, **source** in
 
 The `brand_guidelines/01_FOUNDATION/` folder is marked archived, so the principles and philosophy are the strongest existing source, not an owner decision. They describe how Wugweb thinks about its visual and systems work.
 
-## How to record values once the owner supplies them
+## How to record a change to the values
 
-Use a "we are, we are not" table of four to seven rows. Each row carries the evidence behind it: where it is written or how it shows in the work. A row with no evidence is left out.
+The five values above are approved. If the owner adds or changes one, use a "we are, we are not" table of four to seven rows. Each row carries the evidence behind it: where it is written or how it shows in the work. A row with no evidence is left out.
 
 | Level | Meaning |
 | --- | --- |
@@ -1003,7 +1006,7 @@ How and whether these words are used in copy is a voice matter; ask `wugweb-voic
 
 ## More on the name and category
 
-- The legal name appears in two forms in the stale profile. Do not write a legal name until the owner confirms it.
+- The legal name appears in four forms: three in the stale profile and one on the site's terms of use page (see `brand-facts.md`). Do not write a legal name until the owner confirms it.
 - Use one spelling everywhere, with the full name at first mention. This is the rule search and AI tools rely on, as reported by the `wugweb-seo` session.
 - `wugweb-seo` reads the approved descriptor from `brand-facts.md` and never rewrites it.
 - How Wugweb names its category and its competitors is part of positioning and is not decided. Do not adopt a term a competitor coined without the owner's say.
@@ -1143,7 +1146,7 @@ Take the principle, never the composition. Name what the reference does (hierarc
 
 ## Logo
 
-**Confirmed by the owner (question 18):** the two-tone rule and the logo checks live here, with sizes in kits. Use the real logo file, never redraw it, and never bake a generated logo into an image.
+**Confirmed by the owner (question 18):** the two-tone rule and the logo checks live here, with sizes in kits. Use the real logo file wherever a logo belongs, never redraw it, and never bake a generated logo into an image. Never initials, an emoji or a generic mark in its place, and never recoloured or re-proportioned. Show a partner's or client's logo in its own form, in greyscale if a row needs calm.
 
 **Approved by the owner 2026-11-17 (question 19):**
 
@@ -1181,16 +1184,17 @@ This file is the one home for the colour rules. `SKILL.md` carries them in short
 
 ### Source, not yet ruled on (`02_VISUAL_SYSTEM/04_COLOR_ROLES.md`)
 
+Two lines of this source were overruled by the owner on 2026-11-17 and are left out: its role for magenta, and its advice on purple, green and orange. The rulings under "Owner answers" below stand in their place.
+
 | Colour | Role in artwork |
 | --- | --- |
 | Black | Authority and framing |
 | White or warm off-white | Clarity |
-| Magenta | Human and brand energy |
 | Yellow | Focus and opportunity |
 | Teal or cyan | Product or digital systems |
 | Royal blue | Structure and trust |
 
-Two to four accents per artwork plus neutrals. People and most photography stay monochrome so colour belongs to the brand system. The guideline marks its own colour values as provisional. Avoid unapproved purple, green, orange, neon, rainbow palettes and gradients.
+Two to four accents per artwork plus neutrals. People and most photography stay monochrome so colour belongs to the brand system. The guideline marks its own colour values as provisional. Avoid neon and rainbow palettes, and gradients other than the pillar glow.
 
 Palette behaviour by mode, from the same file:
 
@@ -1204,8 +1208,8 @@ Palette behaviour by mode, from the same file:
 
 ### Owner answers, 2026-11-17
 
-- **Questions 6 and 21, confirmed.** All six pillar colours stand, in artwork as on the site: Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple. The interface accent stays grey. Magenta is the Brand pillar colour, not the brand energy colour.
-- **Question 15, confirmed.** Yellow is the one brand colour, as in kits. Magenta is not the brand energy colour.
+- **Questions 6 and 21, confirmed.** All six pillar colours stand, in artwork as on the site: Strategy orange, Brand magenta, Experience teal, Engineering blue, Growth green, Operations purple. The interface accent stays grey. Magenta is the Brand pillar colour.
+- **Question 15, confirmed.** Yellow is the one brand colour, as in kits.
 - **Question 16, confirmed.** The pillar glow is an allowed exception to the gradient ban. Other gradient-heavy looks stay banned.
 - **Question 14, confirmed.** The black canvas is the default everywhere. No format uses a light background until the owner names one.
 
@@ -1224,10 +1228,7 @@ Palette behaviour by mode, from the same file:
 
 ## Logo
 
-- Use the real logo file wherever a logo belongs. Never initials, an emoji, a generic mark or a redrawn version, and never recoloured or re-proportioned.
-- Show a partner's or client's logo in its own form, in greyscale if a row needs calm.
-- The logo appears only on black; no one-colour version until one is needed (question 19).
-- The full logo rules are in `art-direction.md`. Sizes are in `wugweb-kits`.
+The logo rules are held in the Logo section of `art-direction.md` only. Sizes are in `wugweb-kits`.
 
 ## Photography (source: `15_PHOTOGRAPHY_DIRECTION.md`)
 
@@ -1291,7 +1292,7 @@ Each formula is one or two sentences in the source; the rest of its headings are
 - **Instagram post.** A square-safe composition with one anchor and strong framing. A carousel may sequence one metaphor across frames; do not repeat one layout or overload one card with text.
 - **Landing page.** Keep one side clear for live copy. Product interface only as direct evidence of the page claim. The anchor must survive the change from desktop to mobile.
 - **LinkedIn post.** Small-scale recognition: high contrast, one memorable silhouette, platform copy outside the image. Remove tiny detail that will not survive feed size.
-- **Pitch deck.** The first slide is a confident editorial statement: a strong dark or light field, one anchor, minimal text. Then one-message slides in the same language, not a dense proposal template. Pick each layout by the slide's job (title, problem, big number, quote, comparison, timeline, closing). Alternate what is with what could be.
+- **Pitch deck.** The first slide is a confident editorial statement: a strong black field, one anchor, minimal text. Then one-message slides in the same language, not a dense proposal template. Pick each layout by the slide's job (title, problem, big number, quote, comparison, timeline, closing). Alternate what is with what could be.
 - **Thumbnail.** One clear subject, contrast and recognisable framing. Remove small interface, labels and thin lines. No paragraphs, dense diagrams or title text inside the image. Test at final size. Image and title are one unit: the image shows, the title tells, and they never repeat each other. Before designing, write in one sentence the promise the piece keeps.
 - **Website section.** One text-adjacent conceptual visual per section that reinforces, not repeats, the written claim, and reads without embedded type. The hero visual shows the real product, not an abstract shape.
 - **Carousel slide.** A small poster: a headline and at most one supporting line, a slide number and one accent, in the same hierarchy on every slide. The cover must stand alone as an image at thumbnail size. One idea per slide; a single point is a single image.
@@ -1315,7 +1316,7 @@ Each formula is one or two sentences in the source; the rest of its headings are
 ## Deck art direction (source: `08_PRESENTATIONS.md`)
 
 - Treat slides as editorial pages. One slide answers one question.
-- Use oversized type, a dark and light shift, a geometry field running off the edge, or one proof visual.
+- Use oversized type, a geometry field running off the edge, or one proof visual. The canvas stays black (see `art-direction.md`).
 - One motif repeated through the deck. No accent stripes and no underlined titles.
 - Break the pattern at about one third and two thirds of the deck.
 - Diagrams only when they clarify the point.
@@ -1368,7 +1369,7 @@ This needs a model that can see images. Without one, judge the written brief onl
 
 - Ask four things first: what it is and where it will appear, its one claim, which of the five modes it uses (see `art-direction.md`), and the size it will really be seen at.
 - Judge the rendered result at its final size, not the idea of it. If only a brief is supplied, say so and judge the brief.
-- Describe what is there before judging it, in a fixed frame: subject, composition, lighting, colour, style, mood.
+- Describe what is there before judging it, in a fixed frame of six parts: subject, composition, lighting, colour, style, mood.
 - Keep observation apart from opinion. Taste is labelled as taste.
 
 ## The two-second test

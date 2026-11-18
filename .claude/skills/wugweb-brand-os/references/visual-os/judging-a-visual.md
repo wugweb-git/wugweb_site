@@ -8,7 +8,7 @@ This needs a model that can see images. Without one, judge the written brief onl
 
 - Ask four things first: what it is and where it will appear, its one claim, which of the five modes it uses (see `art-direction.md`), and the size it will really be seen at.
 - Judge the rendered result at its final size, not the idea of it. If only a brief is supplied, say so and judge the brief.
-- Describe what is there before judging it, in a fixed frame: subject, composition, lighting, colour, style, mood.
+- Describe what is there before judging it, in a fixed frame of six parts: subject, composition, lighting, colour, style, mood.
 - Keep observation apart from opinion. Taste is labelled as taste.
 
 ## The two-second test

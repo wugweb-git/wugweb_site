@@ -24,7 +24,7 @@ Each formula is one or two sentences in the source; the rest of its headings are
 - **Instagram post.** A square-safe composition with one anchor and strong framing. A carousel may sequence one metaphor across frames; do not repeat one layout or overload one card with text.
 - **Landing page.** Keep one side clear for live copy. Product interface only as direct evidence of the page claim. The anchor must survive the change from desktop to mobile.
 - **LinkedIn post.** Small-scale recognition: high contrast, one memorable silhouette, platform copy outside the image. Remove tiny detail that will not survive feed size.
-- **Pitch deck.** The first slide is a confident editorial statement: a strong dark or light field, one anchor, minimal text. Then one-message slides in the same language, not a dense proposal template. Pick each layout by the slide's job (title, problem, big number, quote, comparison, timeline, closing). Alternate what is with what could be.
+- **Pitch deck.** The first slide is a confident editorial statement: a strong black field, one anchor, minimal text. Then one-message slides in the same language, not a dense proposal template. Pick each layout by the slide's job (title, problem, big number, quote, comparison, timeline, closing). Alternate what is with what could be.
 - **Thumbnail.** One clear subject, contrast and recognisable framing. Remove small interface, labels and thin lines. No paragraphs, dense diagrams or title text inside the image. Test at final size. Image and title are one unit: the image shows, the title tells, and they never repeat each other. Before designing, write in one sentence the promise the piece keeps.
 - **Website section.** One text-adjacent conceptual visual per section that reinforces, not repeats, the written claim, and reads without embedded type. The hero visual shows the real product, not an abstract shape.
 - **Carousel slide.** A small poster: a headline and at most one supporting line, a slide number and one accent, in the same hierarchy on every slide. The cover must stand alone as an image at thumbnail size. One idea per slide; a single point is a single image.
@@ -48,7 +48,7 @@ Each formula is one or two sentences in the source; the rest of its headings are
 ## Deck art direction (source: `08_PRESENTATIONS.md`)
 
 - Treat slides as editorial pages. One slide answers one question.
-- Use oversized type, a dark and light shift, a geometry field running off the edge, or one proof visual.
+- Use oversized type, a geometry field running off the edge, or one proof visual. The canvas stays black (see `art-direction.md`).
 - One motif repeated through the deck. No accent stripes and no underlined titles.
 - Break the pattern at about one third and two thirds of the deck.
 - Diagrams only when they clarify the point.

@@ -1,13 +1,27 @@
 # Changelog
 
+## 2026-11-19 (review fixes, no version change)
+
+Fixes from the full read of 2026-11-19 (the review section at the end of `docs/skills/wugweb-brand-os/PLAN.md`). No rule changed; the version stays 0.3.2.
+
+- The client under NDA is no longer named anywhere in the skill.
+- `wugweb-engineer` is named as a sibling: it owns changes to Sanity and Notion data, schema edits, the sync scripts and backups. This skill gives it nothing and takes nothing. Added to `SKILL.md`, `README.md`, `metadata.json` and eval 36.
+- Counts brought in line with the content: seven positioning lines found, two of them in use; four legal name forms (the fourth is on the site's terms of use page); four blank core items and five open facts; a six-part description frame; 31 files in the full zip.
+- `source-map.md`: the values are marked approved; questions 1 and 3 are marked open, as in the plan.
+- Black canvas: the pitch deck and deck lines in `visual-os/formats-and-campaigns.md` no longer allow a light field.
+- Colour: the two overruled source lines (magenta as brand energy; avoid purple, green and orange) are removed from `visual-os/colour-type-photo-motion.md`, so only the ruling remains.
+- Logo: the leftover copy in `visual-os/colour-type-photo-motion.md` is now a pointer; its two extra checks moved to the Logo section of `visual-os/art-direction.md`.
+- `messaging.md`: the pass test says three seconds, matching the three-second test in the same file and in `identity-and-positioning.md`.
+- `tooling.md` is described as the only reference file that names helper skills; other files name Notion as a source.
+
 ## 0.3.2, 2026-11-19
 
-- The standing rules travel with the skill: `scripts/build.mjs` writes `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md` (as `wugweb-seo`, `wugweb-voice`, `wugweb-kits` and `wugweb-work` carry). In the Claude app and the `.skill` file, `docs/skills/` is not present, so the pointers in `SKILL.md` and the reference files now name the copy; the home file still wins.
+- The standing rules travel with the skill: `scripts/build.mjs` writes `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md` (as `wugweb-seo`, `wugweb-voice`, `wugweb-kits` and `wugweb-work` carry; `wugweb-strategy` and `wugweb-engineer` do not carry that file). In the Claude app and the `.skill` file, `docs/skills/` is not present, so the pointers in `SKILL.md` and the reference files now name the copy; the home file still wins.
 - `scripts/test.mjs` checks the copy is a byte copy of the home file and that no hand-written file points only to `docs/skills/`.
 - No rule changed.
 - Routing check on 0.3.1, a stand-in for eval 36: 20 of 20 prompts routed to the right skill (10 brand prompts, 10 near misses). Not the real trigger rate; that needs a run in the app, where 0.3.1 is installed.
 - PLAN.md, the Notion page and the registry record 0.3.2 (78eb6e4); backup of the changed Notion blocks first.
-- Full zip `wugweb-brand-os-0.3.2.zip` (42 files, the whole folder including `evals/`) delivered alongside the `.skill` upload file, which leaves `evals/` out by design.
+- Full zip `wugweb-brand-os-0.3.2.zip` (31 files, the whole folder including `evals/`) delivered alongside the `.skill` upload file, which leaves `evals/` out by design.
 
 ## 0.3.1, 2026-11-19
 
@@ -37,7 +51,7 @@
 - Evals 2, 8, 13 and 27 expect the 2026-11-17 rulings.
 - Eval run 2026-11-19: three agents answered the 36 runnable tests from the skill, a separate grader scored them. 32 of 36 pass, no invented facts. Open: 6 (a clean brief got a provisional pass), 22 (offers the messaging rule as well as visual direction), 36 (triggering cannot be measured inside a session), 38 (the media rule text is repeated in `SKILL.md` and `art-direction.md`).
 - Export rebuilt with the current standing rules, including the API keys and secrets section of 2026-11-19.
-- Owner approved the Notion answers for questions 4, 19 and 20 (2026-11-17): approved facts, the 2023 five as values, seven positioning lines kept as candidates, audience blank, logo rules, brand identity archetype without naming ToT.
+- Owner approved the Notion answers for questions 4, 19 and 20 (2026-11-17): approved facts, the 2023 five as values, seven positioning lines kept as candidates, audience blank, logo rules, brand identity archetype without naming the client under NDA.
 
 ## 0.1.0, 2026-11-16
 

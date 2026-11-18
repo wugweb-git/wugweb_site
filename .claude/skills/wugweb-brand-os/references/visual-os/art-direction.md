@@ -129,7 +129,7 @@ Take the principle, never the composition. Name what the reference does (hierarc
 
 ## Logo
 
-**Confirmed by the owner (question 18):** the two-tone rule and the logo checks live here, with sizes in kits. Use the real logo file, never redraw it, and never bake a generated logo into an image.
+**Confirmed by the owner (question 18):** the two-tone rule and the logo checks live here, with sizes in kits. Use the real logo file wherever a logo belongs, never redraw it, and never bake a generated logo into an image. Never initials, an emoji or a generic mark in its place, and never recoloured or re-proportioned. Show a partner's or client's logo in its own form, in greyscale if a row needs calm.
 
 **Approved by the owner 2026-11-17 (question 19):**
 

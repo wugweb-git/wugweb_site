@@ -12,14 +12,15 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.3.2 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
+Version 0.3.2 holds the structure, every sourced rule and the owner's rulings of 2026-11-16 and 17. Four core items are blank until the owner supplies them:
 
-- **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
-- **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.
-- **Audience:** not decided. The owner will supply it.
+- **Positioning line:** not decided. Neither line in use is chosen.
+- **Audience:** not decided.
+- **Differentiation and brand strategy:** not decided.
+- **Values:** approved 2026-11-17, the 2023 five. The ten principles stay principles.
 - **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Legal name, team size, projects, markets and profile links wait for the owner.
 
-One question is open (10), plus the open rows in `brand-facts.md` and the positioning line; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+Questions 1, 3 and 10 are open, plus the open rows in `brand-facts.md`; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `references/standing-rules.md` first: a marked copy of the owner's standing rules from `docs/skills/STANDING-RULES.md`, which wins. They win over this skill and any helper. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -40,6 +41,7 @@ Read `references/standing-rules.md` first: a marked copy of the owner's standing
 | Token values, components, layout, radius, accessibility | `wugweb-kits`. State the look and feel here; every value lives there |
 | Keywords, title and description lengths, schema | `wugweb-seo` |
 | Writing or producing any piece, sizes and counts per form | `wugweb-work` |
+| Sanity and Notion data, schema edits, sync scripts, backups | `wugweb-engineer` |
 | A client's brand | Stays with that case study |
 
 If a question could belong to two skills, say so and ask. Do not answer it from both.
@@ -71,7 +73,7 @@ In: an artwork or an artwork brief. Out: the mode chosen, banned motifs found, p
 
 Judge the rendered result, never a description of it. This mode needs a model that can see images; without one, check the written brief only and say the artwork was not seen.
 
-1. Describe what is there in a fixed frame: subject, composition, lighting and treatment, colour, type, format fit, mood.
+1. Describe what is there in a fixed frame: subject, composition, lighting, colour, style, mood.
 2. Name the one visual mode. Two modes blended casually is a fail. Run the two-second test: what the eye hits first, whether that is right, and whether the one claim is clear without the headline.
 3. Run the check list in `references/review-gates.md`, looking as `references/visual-os/judging-a-visual.md` describes. The banned list in `references/visual-os/art-direction.md` is a fail when met: robots, AI brains, neural webs, circuitry, holograms, node webs as texture, icon clouds, stock teams and handshakes, clutter, and anything copied from another studio's signature work.
 4. Report findings as must fix, should fix or nice to have, each with its rule, its file and the fix as current to proposed.
@@ -102,7 +104,7 @@ In: a proposed brand rule or fact. Out: current to proposed, with evidence, for 
 
 ## Rules already fixed
 
-These are confirmed. They hold in every mode.
+Confirmed. They hold in every mode.
 
 **Brand**
 
@@ -131,7 +133,7 @@ These are confirmed. They hold in every mode.
 - The media rules in `references/standing-rules.md` win over any brand wording and are not restated here.
 - In the guidelines, "crop" means how a subject is framed in a composition, never the cutting of a file.
 
-This skill states these rules. `wugweb-kits` holds every value and enforces them on the interface. No token value is written in this skill.
+This skill states these rules. `wugweb-kits` holds every value and enforces them on the interface; no token value is written here.
 
 ## The five visual modes
 
@@ -154,6 +156,7 @@ Detail, the approved, banned and conditional lists, and composition are in `refe
 | `wugweb-strategy` | Positioning, audience, differentiation, messaging framework | Nothing | Decide topics, calendar or briefs |
 | `wugweb-work` | Brand rules, Visual OS direction, check findings | Drafts and artwork briefs to check | Author or rewrite content, make media, touch client brand choices |
 | `wugweb-seo` | Brand name, descriptor, approved facts, read one way | Nothing | Change keywords, lengths or schema |
+| `wugweb-engineer` | Nothing | Nothing | Change Sanity or Notion data, a schema or a sync script |
 
 ## Reference files
 
@@ -170,7 +173,7 @@ Load only the file a mode needs.
 | `references/brand-facts.md` | Every fact with source and status |
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels |
 | `references/source-map.md` | Sources, conflicts, the 21 owner questions and their status |
-| `references/tooling.md` | The only file that names helpers and vendors |
+| `references/tooling.md` | The only reference file that names helper skills |
 | `references/standing-rules.md` | The owner's standing rules, a generated marked copy |
 | `references/visual-os/art-direction.md` | Grammar, modes, approved, banned and conditional lists, composition, "crop" |
 | `references/visual-os/colour-type-photo-motion.md` | Colour roles as meaning, type, photography, motion |

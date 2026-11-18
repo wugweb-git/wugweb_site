@@ -65,7 +65,7 @@ Use these tests (restated from helper skills read on 2026-11-16; see `source-map
 5. **"We can own this because".** Each claimed difference finishes that sentence with a named fact from `brand-facts.md`.
 6. **Settle positioning before wording.** Agree the meaning first; the wording is checked by `wugweb-voice`.
 
-Signs the positioning is broken: three lines in use at once (today's state), a line that a competitor could use unchanged, a difference with no proof.
+Signs the positioning is broken: several lines in use at once (today seven lines are found, two of them in use on the site), a line that a competitor could use unchanged, a difference with no proof.
 
 ## More tests and signs
 

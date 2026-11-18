@@ -1,6 +1,6 @@
 # Tooling
 
-The only file that names Claude helpers, Notion or any vendor. Every mode can be done by hand from the other files; nothing here is required.
+The only reference file that names helper skills. Other files name Notion only as a source, or as a place this skill never writes to. Every mode can be done by hand from the other files; nothing here is required.
 
 ## Where the skill and its plan live
 

@@ -8,7 +8,8 @@ messaging framework), approved facts about Wugweb, brand rules and Visual OS (ar
 direction). It is reference only: it answers, checks and proposes. It writes no
 copy, makes no media and writes to nothing. Voice belongs to `wugweb-voice`,
 content strategy to `wugweb-strategy`, token values to `wugweb-kits`, SEO to
-`wugweb-seo`, and making any piece to `wugweb-work`.
+`wugweb-seo`, making any piece to `wugweb-work`, and changes to Sanity and Notion
+data, schema edits, the sync scripts and backups to `wugweb-engineer`.
 
 ## What it does
 
@@ -39,7 +40,7 @@ Change proposal.
 | `references/brand-facts.md` | Every fact with source and status | yes |
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels | yes |
 | `references/source-map.md` | Sources, conflicts, the owner questions and their status | yes |
-| `references/tooling.md` | The only file that names helpers, Notion or vendors | yes |
+| `references/tooling.md` | The only reference file that names helper skills | yes |
 | `references/visual-os/` | Art direction: modes, colour, type, photography, motion, metaphors, components, formats, patterns, judging a visual | yes |
 | `examples/` | Approved and rejected visuals, once the owner supplies them | yes |
 | `evals/evals.json` | Per-task tests | yes |
@@ -106,9 +107,9 @@ wins.
 ## Status
 
 Built, version 0.3.2. Structure, sourced rules and the owner's rulings of
-2026-11-16 and 17 are in. Blank until supplied: the positioning line, the
-audience, differentiation, brand strategy, and five facts (legal name, team size,
-projects, markets, profile links). Examples are empty. Triggering is tested only
+2026-11-16 and 17 are in. Four items are blank until supplied: the positioning line, the
+audience, differentiation and brand strategy. Five facts are open (legal name, team
+size, projects, markets, profile links). Examples are empty. Triggering is tested only
 after the upload to the Claude app.
 
 ## Licence
