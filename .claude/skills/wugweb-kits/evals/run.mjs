@@ -5,7 +5,7 @@
  * repo docs or the network). Live cases read https://wugweb.pages.dev (staging).
  */
 import { spawnSync } from 'node:child_process'
-import { existsSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const S = join(dirname(fileURLToPath(import.meta.url)), '..', 'scripts')
@@ -36,5 +36,23 @@ c('live case study: every section has an id and a name (blocked if the page is n
 })
 c('contrast: live text #f4f4f4 on #191919 passes AA', true, () => run('contrast.mjs', ['#f4f4f4', '#191919']).status === 0)
 c('contrast: muted #bababa on #191919 passes AA', true, () => run('contrast.mjs', ['#bababa', '#191919']).status === 0)
+c('no retired shell values live in global.css', repo, () => {
+  const css = readFileSync('src/styles/global.css','utf8')
+  const retired = [
+    /--shell-gutter:\s*44px/,                       // desktop gutter
+    /--layer-nav:\s*50\b/,                          // nav z-index
+    /--header-height:\s*(110|118)px/,              // old header heights
+    /--space-section-[a-z]+:\s*(40|64|80)px/,      // flat section tokens
+    /--content-max[-a-z]*:\s*1280px/,              // old content max
+    /--breakpoint-xl:\s*1280px/,                   // old desktop breakpoint
+  ]
+  return !retired.some((r) => r.test(css))
+})
+c('SKILL.md version matches metadata.json', true, () => {
+  const read = (p) => readFileSync(p,'utf8')
+  const m = read('.claude/skills/wugweb-kits/SKILL.md').match(/^\s*version:\s*["']?([\d.]+)/m)
+  const j = JSON.parse(read('.claude/skills/wugweb-kits/metadata.json'))
+  return m && m[1] === j.version
+})
 console.log(`\n${res.pass} pass, ${res.fail} fail, ${res.blocked} blocked`)
 process.exit(res.fail ? 1 : 0)

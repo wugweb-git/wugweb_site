@@ -167,7 +167,7 @@ All plain Node, no dependencies, run from the skill folder or the repo root.
 - `node scripts/kits-doc-drift.mjs`: doc against `global.css`, from the repo root.
 - `node scripts/contrast.mjs <fg> <bg>`: computed ratio.
 - `node scripts/validate.mjs`, `node scripts/build.mjs`, `node scripts/test.mjs`.
-- `node .claude/skills/wugweb-kits/evals/run.mjs` from the repo root: 17 eval cases, pass, fail or blocked.
+- `node .claude/skills/wugweb-kits/evals/run.mjs` from the repo root: 19 eval cases, pass, fail or blocked.
 
 The scripts report and never edit. The page check reads static HTML; measuring at 375, 768 and 1200 needs a browser and is done by hand.
 
