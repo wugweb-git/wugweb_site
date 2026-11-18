@@ -105,5 +105,9 @@ the Wugweb Skill System. The standing rules file points here. Every
 skill that calls out has a line in its skill-map or ops reference that
 names the environment variable, with no value.
 
+Which AI models each sibling skill reads sits in
+[`AI-MODELS.md`](AI-MODELS.md), the companion to this file. That file
+names models; this file names keys.
+
 If a skill ever hardcodes a key or echoes one back, that is a bug in
 the skill and is fixed before the next commit.

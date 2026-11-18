@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Added: AI models per skill, one reference doc (2026-11-19)
+- `docs/skills/AI-MODELS.md`: which model each Wugweb sibling skill reads, under which env-var name, with the plan-now vs run-later status. Pinned free only (`:free` suffix); defaults `nvidia/nemotron-3.5-lightning:free` for text and `nvidia/nemotron-3.5-super-vl:free` for vision. `docs/skills/SECRETS.md` now points here from its "Where this fits" section (SECRETS names keys; AI-MODELS names models).
+- No sibling-skill edits: entries are planned until a first script lands. The wugweb-work trio (`scripts/openrouter-*.mjs`) remains the only live caller.
+
 ### Changed: API keys and secrets standard, owner's no-rotation rule applied (2026-11-19)
 - Owner rule, 2026-11-19: no key rotation, never. `docs/skills/SECRETS.md` loses the "Rotate when exposed" section and the rotation line in "Handling a key in chat"; the standing-rules clause rewritten to say what Claude will and will not do with a pasted key and to defer any after-action to the owner.
 - `governance.md` gains Rule 3 (API keys and secrets follow one standard), pointing at `docs/skills/SECRETS.md`, carrying the no-rotation rule.
