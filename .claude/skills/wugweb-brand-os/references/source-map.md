@@ -79,7 +79,7 @@ Questions 1, 3 and 10 are open; questions 4 and 19 are answered in part. Open it
 | 1 | Positioning line | Open. The owner picks from the lines listed in `identity-and-positioning.md` or writes one (2026-11-17); blank until then |
 | 2 | Values | Approved 2026-11-17: the 2023 five |
 | 3 | Audience | Open. Blank until the owner supplies it; nothing in Notion (2026-11-17) |
-| 4 | Facts about Wugweb | Answered 2026-11-17: see `brand-facts.md`; legal name, team size, projects, markets and profiles still open |
+| 4 | Facts about Wugweb | Answered 2026-11-17: see `brand-facts.md`; team size, projects, markets and profiles still open; the legal name is out of scope (owner, 2026-11-19) |
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
 | 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
 | 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |

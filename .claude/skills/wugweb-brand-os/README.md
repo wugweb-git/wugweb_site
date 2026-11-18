@@ -108,7 +108,7 @@ wins.
 
 Built, version 0.3.2. Structure, sourced rules and the owner's rulings of
 2026-11-16 and 17 are in. Four items are blank until supplied: the positioning line, the
-audience, differentiation and brand strategy. Five facts are open (legal name, team
+audience, differentiation and brand strategy. Four facts are open (team
 size, projects, markets, profile links). Examples are empty. Triggering is tested only
 after the upload to the Claude app.
 

@@ -102,7 +102,7 @@ Version 0.3.2 holds the structure, every sourced rule and the owner's rulings of
 - **Audience:** not decided.
 - **Differentiation and brand strategy:** not decided.
 - **Values:** approved 2026-11-17, the 2023 five. The ten principles stay principles.
-- **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Legal name, team size, projects, markets and profile links wait for the owner.
+- **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Team size, projects, markets and profile links wait for the owner.
 
 Questions 1, 3 and 10 are open, plus the open rows in `brand-facts.md`; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
@@ -363,7 +363,6 @@ The owner approved the rows marked "approved 2026-11-17" from the Notion read (q
 | Fact | What exists today | Source | Status |
 | --- | --- | --- | --- |
 | Brand name and spelling | "Wugweb" | Site, owner | Approved 2026-11-17 |
-| Legal name | Three forms in Notion: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd" | 2023 profile | Owner to pick one |
 | One fixed line: what Wugweb is, for whom, what is distinct | Seven competing lines (see `identity-and-positioning.md`) | Site, Notion 2023 to 2026 | Blank. Owner to pick or write |
 | Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Approved, fixed |
 | Website | `wugweb.com` | `CLAUDE.md` | Exists |
@@ -802,7 +801,7 @@ Questions 1, 3 and 10 are open; questions 4 and 19 are answered in part. Open it
 | 1 | Positioning line | Open. The owner picks from the lines listed in `identity-and-positioning.md` or writes one (2026-11-17); blank until then |
 | 2 | Values | Approved 2026-11-17: the 2023 five |
 | 3 | Audience | Open. Blank until the owner supplies it; nothing in Notion (2026-11-17) |
-| 4 | Facts about Wugweb | Answered 2026-11-17: see `brand-facts.md`; legal name, team size, projects, markets and profiles still open |
+| 4 | Facts about Wugweb | Answered 2026-11-17: see `brand-facts.md`; team size, projects, markets and profiles still open; the legal name is out of scope (owner, 2026-11-19) |
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
 | 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
 | 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |
@@ -978,7 +977,7 @@ Brand terms only. Banned words, preferred wording and tone are in `wugweb-voice`
 
 ## The name
 
-"Wugweb" is the approved spelling (owner, 2026-11-17; see `brand-facts.md`). Flag "WugWeb" and "Wug Web" as not the approved spelling. The legal name is a separate fact and is still open.
+"Wugweb" is the approved spelling (owner, 2026-11-17; see `brand-facts.md`). Flag "WugWeb" and "Wug Web" as not the approved spelling. The legal name of the company is not a brand fact and is not held in this skill.
 
 ## The descriptor
 
@@ -1006,7 +1005,6 @@ How and whether these words are used in copy is a voice matter; ask `wugweb-voic
 
 ## More on the name and category
 
-- The legal name appears in three forms in the stale profile (see `brand-facts.md`). Do not write a legal name until the owner confirms it.
 - Use one spelling everywhere, with the full name at first mention. This is the rule search and AI tools rely on, as reported by the `wugweb-seo` session.
 - `wugweb-seo` reads the approved descriptor from `brand-facts.md` and never rewrites it.
 - How Wugweb names its category and its competitors is part of positioning and is not decided. Do not adopt a term a competitor coined without the owner's say.

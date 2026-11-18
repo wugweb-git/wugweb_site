@@ -4,7 +4,7 @@ Brand terms only. Banned words, preferred wording and tone are in `wugweb-voice`
 
 ## The name
 
-"Wugweb" is the approved spelling (owner, 2026-11-17; see `brand-facts.md`). Flag "WugWeb" and "Wug Web" as not the approved spelling. The legal name is a separate fact and is still open.
+"Wugweb" is the approved spelling (owner, 2026-11-17; see `brand-facts.md`). Flag "WugWeb" and "Wug Web" as not the approved spelling. The legal name of the company is not a brand fact and is not held in this skill.
 
 ## The descriptor
 
@@ -32,7 +32,6 @@ How and whether these words are used in copy is a voice matter; ask `wugweb-voic
 
 ## More on the name and category
 
-- The legal name appears in three forms in the stale profile (see `brand-facts.md`). Do not write a legal name until the owner confirms it.
 - Use one spelling everywhere, with the full name at first mention. This is the rule search and AI tools rely on, as reported by the `wugweb-seo` session.
 - `wugweb-seo` reads the approved descriptor from `brand-facts.md` and never rewrites it.
 - How Wugweb names its category and its competitors is part of positioning and is not decided. Do not adopt a term a competitor coined without the owner's say.

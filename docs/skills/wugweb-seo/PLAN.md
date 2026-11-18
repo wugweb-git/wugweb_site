@@ -830,3 +830,5 @@ Fixed 2026-11-19 (seo session, version stays 2.5.0; not committed at the time of
 - `check-robots.mjs` line 68: `sitemap-listed` prints only in text mode, not with `--json`.
 
 Changed the same day at the owner's word: a blog post or service page title over 52 characters is reported at MEDIUM and is not a blocker; only a case study over 51 blocks.
+
+Owner, 2026-11-19, final: "no limit". A blog post or service page has no source title limit; the 52-character rule is removed. Only a case study over 51 blocks; rendered 60 stays.

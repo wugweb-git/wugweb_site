@@ -39,7 +39,6 @@
 >
 > | No. | Item | Waiting on | Candidate found in Notion |
 > |---|---|---|---|
-> | 1 | Legal name | Owner yes | "Wug Web Services Private Limited" (Content, Pages, terms-of-use, 2026-10-13); short form "Wug Web Services Pvt Ltd" (2023 profile) |
 > | 2 | Positioning line | Owner pick | The seven lines listed in `identity-and-positioning.md`. One more line was found in Notion and is recorded here only, not in the skill: "Wugweb is a digital experience agency where design meets engineering to shape what is next." (Content, Pages, home, 2026-10-13) |
 > | 3 | Audience | Owner | None |
 > | 4 | Official profile links | Owner | None |
@@ -325,7 +324,7 @@ The open list is the Pending table in the status block at the top. Every questio
 | 1 | Positioning line | Open. The owner picks from the lines in Notion or writes one; blank until then |
 | 2 | Values | 2026-11-17: User-Centricity, Innovation, Collaboration, Excellence, Social Impact |
 | 3 | Audience | Open. Blank; nothing in Notion |
-| 4 | Facts about Wugweb | 2026-11-17: approved in part (see section 19); legal name, team size, projects, markets and profiles open |
+| 4 | Facts about Wugweb | 2026-11-17: approved in part (see section 19); team size, projects, markets and profiles open; the legal name is out of scope (owner, 2026-11-19) |
 | 5 | `brand_guidelines/` | 2026-11-17: stays untouched as the archive |
 | 6 | Purple, green and orange | 2026-11-17: allowed as pillar colours (see 21) |
 | 7 | AI prompt engine folder | 2026-11-17: Visual OS here owns it |
@@ -378,7 +377,7 @@ The open list is the Pending table in the status block at the top. Every questio
 - The guidelines call light backgrounds the default; ruled 2026-11-17: black canvas everywhere.
 - The guidelines use American spelling and mark hex values as provisional; `src/styles/global.css` is the real token source.
 - The About page lede is marked placeholder copy in the code and contains a dash.
-- The Notion page "Wugweb Profile (Master) - 2023" is an approved source (owner, 2026-11-17) but holds conflicts: three legal names, "Creative UX Design Agency", both 200+ and 400+ projects, three market lists, lorem ipsum under Story.
+- The Notion page "Wugweb Profile (Master) - 2023" is an approved source (owner, 2026-11-17) but holds conflicts: "Creative UX Design Agency", both 200+ and 400+ projects, three market lists, lorem ipsum under Story.
 
 **Not read in full while planning**
 
@@ -472,7 +471,6 @@ This is what `wugweb-seo` reads from brand-os, one way, and never rewrites. The 
 | Fact | What exists today | Source | Status |
 | --- | --- | --- | --- |
 | Brand name and spelling | "Wugweb" | Site, owner | Approved 2026-11-17 |
-| Legal name | Three forms in Notion: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd" | 2023 profile | Owner to pick one |
 | One fixed line: what Wugweb is, for whom, what is distinct | Seven competing lines (see `identity-and-positioning.md`) | Site, Notion 2023 to 2026 | Blank. Owner to pick or write |
 | Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Approved, fixed |
 | Website | `wugweb.com` | `CLAUDE.md` | Exists |
@@ -557,3 +555,5 @@ Every file of the skill was read on 2026-11-19 from main (`4fbf334c`) by a read-
 ### Fixed 2026-11-19
 
 Fixed 2026-11-19: skill items 1 to 15 and all five plan items. Not fixed: none. The "Worth knowing" notes were out of scope and are unchanged. Choices made: item 11 keeps the six-part frame of `judging-a-visual.md`; item 12 keeps three seconds, the rule in `identity-and-positioning.md` and the message test; item 5 adds the fourth legal name form to `brand-facts.md` from the site's terms of use page; item 13 rewords the statement, because Notion is named as a source in seven other files. `SKILL.md` body is 1,999 words; `build.mjs --check` and `test.mjs` pass. The Notion copy of this plan was not updated in this pass. Changed back the same day at the owner's word: the fourth legal name form taken from the terms of use page is removed from `brand-facts.md`, `vocabulary.md` and section 19; the facts file lists the three forms from the 2023 profile, as before.
+
+Owner, 2026-11-19: this skill has nothing to do with the legal name of the entity. The legal name is removed from `brand-facts.md`, `vocabulary.md`, the skill file, the README and the source map, and from the Pending table and section 19 of this plan. It is not an open question for this skill.

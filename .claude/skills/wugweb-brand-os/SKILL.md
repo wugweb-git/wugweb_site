@@ -4,7 +4,7 @@ description: "Holds Wugweb's brand strategy (identity, positioning, values, audi
 metadata:
   author: wugweb
   version: "0.3.2"
-  status: "owner rulings of 2026-11-17 applied; positioning line, audience and five facts waiting on the owner"
+  status: "owner rulings of 2026-11-17 applied; positioning line, audience and four facts waiting on the owner"
 ---
 
 # wugweb-brand-os
@@ -19,7 +19,7 @@ Version 0.3.2 holds the structure, every sourced rule and the owner's rulings of
 - **Audience:** not decided.
 - **Differentiation and brand strategy:** not decided.
 - **Values:** approved 2026-11-17, the 2023 five. The ten principles stay principles.
-- **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Legal name, team size, projects, markets and profile links wait for the owner.
+- **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Team size, projects, markets and profile links wait for the owner.
 
 Questions 1, 3 and 10 are open, plus the open rows in `brand-facts.md`; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 

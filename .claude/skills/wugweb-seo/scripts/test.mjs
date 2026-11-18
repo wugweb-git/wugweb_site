@@ -40,7 +40,7 @@ const other = run('check-page.mjs', [join(root, 'examples/page-fail.html'), '--j
 const o = JSON.parse(other.out)
 ok('a page with no kind gets title length as LOW only', o.findings.some((x) => x.id === 'title-length' && x.severity === 'LOW'))
 const blog = JSON.parse(run('check-page.mjs', [join(root, 'examples/page-fail.html'), '--kind', 'blog', '--json']).out)
-ok('a blog post over the source limit gets title length reported at 52, not as a blocker', blog.findings.some((x) => x.id === 'title-length' && x.severity === 'MEDIUM' && /limit 52/.test(x.finding)))
+ok('a blog post has no source title limit', !blog.findings.some((x) => x.id === 'title-length'))
 const service = JSON.parse(run('check-page.mjs', [join(root, 'examples/page-pass.html'), '--kind', 'service', '--json']).out)
 ok('a service page within the source limit passes title length', service.passed.includes('title-length'))
 
