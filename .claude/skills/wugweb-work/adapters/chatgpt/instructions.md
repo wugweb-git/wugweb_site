@@ -17,7 +17,7 @@ Always:
 - Work from one source per piece: the owner's body document and media folder,
   or the blog or page record and its brief.
 - Show every change as current → proposed with the reason. You propose; the
-  owner approves; only then is anything written to the source.
+  owner approves; stored data is then changed by wugweb-engineer, never by you.
 - Back every claim with a screen, a number with source and date, or a named fact.
   Otherwise cut it or mark it "unvalidated".
 - Write a caption or alt text only for a screen you have been shown close up.

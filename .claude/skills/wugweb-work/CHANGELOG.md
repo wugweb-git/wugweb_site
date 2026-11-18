@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-11-19 (review fixes, still 0.5.0 at the owner's word)
+
+Fixes from the full read of 2026-11-19 (`docs/skills/wugweb-work/PLAN.md`). The version stays 0.5.0 at the owner's word.
+
+- `wugweb-engineer` (0.3.1, the seventh skill) is now named. It owns changes to stored data, their backups and undo, the schema files and the sync runs. This skill writes the owner-approved proposal and hands over the approved content and values file; it runs no sync, patch or schema edit. `SKILL.md` (ownership table, gates 2 and 3, rule 10), `handoffs.md` (link row and handoff 8, both directions), `ops-cycle.md` (the sync and write commands are handed over; the read-only audit and gate commands stay), `skill-map.md`, `metadata.json`, `README.md`.
+- Seven skills, six siblings, all installed: the "until a sibling is installed" wording is gone. A sibling owns its rule and wins. `layout-grammar.md`, `design-principles.md` and `schema-jsonld.md` stay, each "held here until the owner skill carries it" (`wugweb-kits` holds no block catalogue and `wugweb-seo` has no JSON-LD graph file yet).
+- Title limit follows `wugweb-seo` (`audit.md`: `title-length` 51 for a case study's source title before the site suffix, `title-rendered` 60). `qa-checklist.md` points there; `check-case-page.mjs` checks both; eval 8 names the source of the limit.
+- Kits values are no longer restated in `layout-grammar.md`, `qa-checklist.md` and `open-items.md`: the token names (`--control-size`, `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min`, `--measure-max`) and a pointer to `wugweb-kits` replace the numbers.
+- `validate.mjs` counts the `SKILL.md` body the shared way (frontmatter dropped, fenced code stripped, split on whitespace, tokens with a letter or digit).
+- Evals 3 and 5 expect the files named Airtel Xsafe to be flagged as misnamed IndusNinja boards, not wrong client, matching `visual-read.md`. Eval 9 expects "no scheduling tool is connected".
+- `examples/forms-ntuc-fact-pack.md`: the NTUC facts are owner questions of a worked example, not an open item.
+- `case-audit.mjs` reads a "Framer site copy" heading the same way as "Sanity site copy", as `ops-cycle.md` already said.
+- `README.md`: 17 reference files, five generated files, `export/` and `agents/openai.yaml` listed; `SKILL.md` lists them too.
+- `ops-cycle.md`: the standard token name is `NOTION_API_TOKEN`; the folder listing is done by the site's read-only manifest script (`media-standard.md` agrees).
+- `metadata.json`: Part 2 goes straight to main.
+- Hard stops: the same six in `SKILL.md` and `qa-checklist.md`.
+- `forms/newsletter.md`: the "Not decided" section is replaced by the settled lines from `open-items.md`.
+- One helper name, `musiclinkd-design-system`, in `examples/body-musiclinkd.md` and `skill-map.md`.
+- This file: the stale lock note under 0.5.0 is rewritten, and the 2026-11-18 standing-rules copies are recorded.
+
+## 2026-11-18 (standing rules copied, still 0.5.0)
+
+- `references/standing-rules.md` copied again from `docs/skills/STANDING-RULES.md` twice (commits c46bae17 and 5bec58b9): the API keys and secrets section added, then one line of it changed. `AGENTS.md` and `export/wugweb-work.md` rebuilt. No file authored in this skill changed.
+
 ## 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 
 - NDA (owner, via `wugweb-brand-os` f66bb666): an NDA client is never named in skill files, evals or examples; the one NDA client named in `archetypes.md`, eval 13 and the NTUC example is removed (archetype kept, unnamed). Facts about Wugweb point to `wugweb-brand-os` `brand-facts.md`; no figure it does not hold (`copy-and-seo.md`).
@@ -51,11 +75,10 @@
 - Later answers: Medium is not a form (repost unchanged); the owner uploads to Behance and Dribbble and the skill hands over a list; a Dribbble screen is never on a plain canvas; the three made-file sizes are confirmed. Two matters remain with the owner (NTUC facts; where made files are kept and whether a scheduling tool is connected). Earlier answers: the plan is approved and Part 1 stays locked (Part 2 still needs his go); replies and outreach are out of the Forms module; LinkedIn tags are none. Two matters remain with the owner after that (see above) and four are shared with `wugweb-kits`.
 - `README.md` version line corrected.
 
-Lock version for Part 1. Same content as 0.4.3; the number marks the stable baseline.
+Lock version for Part 1. When the number was set it marked the 0.4.3 content as the stable baseline, with no rule changed. The entries above this note were added later under the same number at the owner's word, and they do change rules, references and scripts.
 
-- No rule changed, no reference moved, no script edited.
 - `metadata.json` status reads "Part 1 locked at 0.5.0".
-- Future changes to Part 1 go to 0.5.1 and above until a decision calls for 0.6.
+- The plan at the time was for later changes to go to 0.5.1 and above; the owner has since kept the number at 0.5.0.
 
 ## 0.4.3, 2026-11-17
 

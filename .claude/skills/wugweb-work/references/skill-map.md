@@ -8,23 +8,24 @@ Which skills this one works with, what each may do, and what happens when one is
 |---|---|---|
 | Read | Read and measure | The source, the CMS read API, media HEAD and range reads, live pages |
 | Propose | Write a draft file or a report | Body proposals, visual-read records, audit reports |
-| Write with approval | Write only after the owner approves the exact change, backup first | Source rows, the CMS sync, empty alt fields |
+| Write with approval | Done by `wugweb-engineer`, never by this skill: only after the owner approves the exact change, backup first | Source rows, the CMS sync, empty alt fields |
 | Owner's go | Run only on the owner's go | Push, deploy, scheduling a post, making one new media file for a form |
 | Never | Not allowed | Media upload, local copy, cropping a file, re-encoding; deleting without asking; sound |
 
-Third-party helpers stay at Read and Propose. Only a Wugweb skill writes, and only after the owner's approval. A helper that needs "write" or "go" stops and asks.
+Third-party helpers stay at Read and Propose. This skill writes draft and proposal files only. Stored data is changed only by `wugweb-engineer`, and only after the owner's approval. A helper that needs "write" or "go" stops and asks.
 
 ## Sibling skills (the Wugweb Skill System)
 
-| Skill | Owns | Install state on 2026-11-16 |
+| Skill | Owns | Install state on 2026-11-19 |
 |---|---|---|
 | `wugweb-voice` | The one Wugweb voice | Installed; uncalibrated until the owner supplies writing samples |
 | `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Installed |
 | `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; `ui-system-mapper` is merged into it and retired (owner, 2026-11-17) |
 | `wugweb-strategy` | Content strategy, calendar, briefs | Installed |
 | `wugweb-seo` | Keywords, on-page rules, schema, AI search, reporting | Installed; one skill with plan, audit and report parts |
+| `wugweb-engineer` | Changes to Sanity and Notion data, their backups and undo, Sanity schema edits, running the Notion to Sanity sync scripts, read-only R2 listing | Installed, 0.3.1 (the seventh skill, 2026-11-19) |
 
-Call a sibling by the name that is installed. The links are in `handoffs.md`.
+There are seven skills in the system: this one and six siblings, all installed. Each sibling owns its rules and wins. Call a sibling by the name that is installed. The links are in `handoffs.md`.
 
 ## Helpers: the owner's final list (2026-11-16)
 
@@ -132,9 +133,9 @@ Plugin helpers are listed in the session but have not each been run. Helpers tha
 
 | Problem | What happens |
 |---|---|
-| A helper or sibling is missing or signed out | Skip it, name it in the output, use the own procedure or the held file |
+| A helper is missing or signed out, or a sibling cannot be reached in the tool in use | Skip it, name it in the output, use the own procedure or the held file. Without `wugweb-engineer`, no stored data changes |
 | Scripts cannot run | Apply the same checks by reading; label the result a manual check |
-| The source cannot be read (for example a rejected token) | Stop any sync; audit from the CMS copy; ask the owner |
+| The source cannot be read (for example a rejected token) | Ask for no sync; audit from the CMS copy; tell the owner and `wugweb-engineer` |
 | A page cannot be reached | Report the URL and status; audit from the body and manifest |
 | A file cannot be opened for the visual read | Write no caption or alt for it; list it as "not seen" |
 | A number has no source | Cut it or mark it "unvalidated" |

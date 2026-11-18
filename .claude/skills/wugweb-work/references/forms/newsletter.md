@@ -17,9 +17,9 @@ Built from one or more approved pieces. In scope (owner, 2026-11-16). Sending ne
 1. Build the fact pack for each piece used.
 2. Draft the edition; build the fact ledger for every sentence.
 3. Voice check.
-4. Check the subject line and preview text against the sending tool's limits, and write the limits down with the date.
+4. Check the subject line and preview text against the limits of the tool the owner sends from, and write the limits down with the date.
 5. Go to `publish-approval.md`. Sending is a post: it needs the owner's yes for that send.
 
-## Not decided
+## Sending
 
-Which tool sends it, to which list, and how often. The owner decides; cadence is planned by `wugweb-strategy`.
+Settled, per `open-items.md`: the newsletter is in scope and sending needs the owner's yes (owner, 2026-11-16); no scheduling tool is connected, so the edition is handed to the owner as an approved draft (owner, 2026-11-17). The owner sends it, from the tool and to the list he chooses. Cadence is planned by `wugweb-strategy`.

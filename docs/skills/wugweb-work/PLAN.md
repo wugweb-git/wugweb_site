@@ -4,7 +4,7 @@
 >
 > ### Where it stands
 >
-> - Skill: version 0.5.0 on main, Part 1 locked (owner: "call it 0.5"). Last skill commit 12d0f63c. Body 1,811 words by the shared count; validate 30 checks, 0 errors; test passes. Upload zip built from main; the owner uploads it to the app.
+> - Skill: version 0.5.0 on main, Part 1 locked (owner: "call it 0.5"). Last skill commit 5bec58b9, before the review fixes of 2026-11-19 (made in the working tree; the coordinator commits them). Body 1,933 words by the shared count after those fixes; validate 30 checks, 0 errors; test passes. Upload zip built from main; the owner uploads it to the app.
 > - Evals: 64 of 78 expectations met, 8 of 14 evals in full. First run 56 of 78; evals 2, 3, 4, 5 and 8 were rerun on live sources (Notion body, R2 files, Sanity copy) and met 26 of 31. Every skill-side failure is fixed.
 > - Part 2 step 2 (body parser v2) is on main as 313140b4: 21 tests; all 37 live bodies parse cleanly; 17 render as before and 20 get only the intended fixes. The new fields reach the page only at the template step.
 > - Part 2 step 3 (media manifest, read-only dry run) is on main as merge 8f0b7fe8: the library, 18 tests (39 with the parser's), and the report `docs/research/media-manifest-2026-11-17.md`.
@@ -35,13 +35,13 @@
 >
 > ### Pending: the owner's own steps
 >
-> - Replace the rejected NOTION_TOKEN in the env file (401); step 4 cannot read Notion until then.
+> - Replace the rejected Notion token in the env file (401); the step 4 sync cannot read Notion until then. The standard name is `NOTION_API_TOKEN`; the site sync scripts still read the old name `NOTION_TOKEN`.
 > - Confirm NVIDIA_API_KEY in the shell profile; the portability test waits (test text only, never client material; models nvidia/nemotron-3.5-lightning-30b-a3b, nvidia/nemotron-3-ultra-550b-a55b, meta/muse-glimmer-30b).
 > - Upload the 0.5.0 zip to the app.
 >
 > ### Next Part 2 steps
 >
-> 3b visual read; 4 sync dry run (needs the new Notion token), then the owner's go to write; 5 layout resolver, components and template; 6 previews and the gate on all 44; 7 eval loop; 8 docs and ship.
+> Already on main (see the check below): step 4 schema fields (7e42a910) and step 5 layout resolver, components and preview route (4b834c9b). Still to do: 3b visual read; the step 4 sync dry run (needs the new Notion token), then the owner's go to write, both run by `wugweb-engineer`; 6 previews and the gate on all 44; 7 eval loop; 8 docs and ship.
 >
 > ### Carried over from the older docs (so they can be retired)
 >
@@ -91,9 +91,9 @@
 
 | | |
 |---|---|
-| Skill | `wugweb-work`, one of six in the Wugweb Skill System |
+| Skill | `wugweb-work`, one of seven in the Wugweb Skill System (`wugweb-engineer` is the seventh, 2026-11-19) |
 | The question it answers | How is each piece made? |
-| Status | Skill built in the owner's development chat and installed. Master copy in the repo since 2026-11-17 at `.claude/skills/wugweb-work/`, version 0.4.2 (SKILL body 1,831 words by the shared count; validate 30 checks, 0 errors; test passes). The standing rules are now one copied block in the skill (`references/standing-rules.md`). Figures with no recorded source were marked unvalidated (sentence length and page position, the FAQ and HowTo end dates, the 44 case studies count). The 14 evals are written but not run, and the evals folder is not in the repo copy. The app copy is behind 0.4.2 and the owner re-saves it. The site build (Part 2) is not started. |
+| Status | Skill built in the owner's development chat and installed. Master copy in the repo since 2026-11-17 at `.claude/skills/wugweb-work/`, version 0.5.0, Part 1 locked (SKILL body 1,933 words by the shared count after the 2026-11-19 review fixes; validate 30 checks, 0 errors; test passes). The standing rules are now one copied block in the skill (`references/standing-rules.md`). Figures with no recorded source were marked unvalidated (sentence length and page position, the FAQ and HowTo end dates, the 44 case studies count). The 14 evals were run and graded on 2026-11-17 (64 of 78 expectations after the live rerun, 8 of 14 in full, per the skill's changelog), and `evals/evals.json` is in the repo copy. The owner uploads the 0.5.0 zip to the app. The site build (Part 2) has started and goes straight to main: steps 2, 3, 4 (schema fields) and 5 are on main (see "Checked against main" above). |
 | Planned in session | wugweb-work |
 | Will live at | `.claude/skills/wugweb-work/` |
 | Registry | Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298) |
@@ -112,7 +112,8 @@ The social, deck, Behance and Dribbble versions of either are a module of this s
 - Layout rules, blocks, components, adaptive UX: `wugweb-kits`.
 - SEO and schema rules: `wugweb-seo`.
 - Content planning: `wugweb-strategy`.
-- Site code: an ordinary build plan under the repo's `CLAUDE.md`, not a skill.
+- Site code (build, deploy, git): an ordinary build plan under the repo's `CLAUDE.md`, not a skill.
+- Changes to Sanity and Notion data, their backups and undo, Sanity schema edits, and running the Notion to Sanity sync scripts: `wugweb-engineer` (the seventh skill, 0.3.1, 2026-11-19). This skill hands it the owner-approved content and values file.
 
 **Hands off to and from**
 
@@ -627,7 +628,7 @@ The page is never one fixed composition. It adapts along seven lines, and each l
 |---|---|---|
 | Content shape | Layout comes from what the body holds: number of points (1, 2 to 3, 4 to 6, 7 or more), number and shape of media (phone, tall, square, landscape, wide, full-page), quotes, tables, results, timelines. No empty cells, no filler media. | Block plan fixtures for 8 different case studies |
 | Content depth | Rich body, thin text-only body, and no body each get a complete page. A chapter with no media is prose; a media-only chapter is allowed. Results, quotes and credits appear only when they exist. | Labelly (thin), Bodyshop (no body) previews |
-| Kind of work | Product UI, brand identity, campaign and stats-led, multi-workstream. Screens group by audience, then flow; device mockups are support, never the proof. | Archetype table + NTUC, ToT Bridal, Airtel, Animal Writes |
+| Kind of work | Product UI, brand identity, campaign and stats-led, multi-workstream. Screens group by audience, then flow; device mockups are support, never the proof. | Archetype table + NTUC, a client under NDA, Airtel, Animal Writes |
 | Volume | 3 screens or 200. A chapter shows only its proof screens; the rest go to one All screens block with sets, thumbnails and a viewer. | NTUC (31), IndusNinja, MusicLinkd skeleton |
 | Device | 375, 768, 1200. One column on phone, rails that show the next item, targets of 44 px or more, a file shown above its natural size is flagged, no sideways page scroll. Mobile is the PWA. | Gate at 375 / 767 / 768 / 769 / 1199 / 1200 / 1201 |
 | Capability and conditions | Works without JavaScript (all content in server HTML). Reduced motion stops loops and reveals. Videos are muted and load only when near. Heavy pages stay under the 25 MB budget by showing less at first, not by resizing files. | No-JS check, reduced-motion check, byte total per page |
@@ -942,7 +943,7 @@ D3. Skill evals (skill-creator loop, workspace `.claude/skill-workspaces/wugweb-
 5. Visual read: given 12 IndusNinja folder files (the 6 "Airtel Xsafe" PNGs among them) and one 10 s loop, return the read JSON. Assertions: the Airtel files are flagged wrong-client by look; screens are ordered by `step`; every item has `what`, `kind`, `alt`, `caption`; the video has `demonstrates` and `posterAt`; at least one principle claim cites a specific screen.
 Assertions (objective): no em/en dashes; every metric has value + what + period + source or is marked unvalidated; H2s are not generic labels and ≤ 70 chars; every media item has alt ≤ 125 chars and a caption; rails ≤ 8 per flow; chapters 30 ≤ words ≤ 160; no placeholders (`TBD`, `[INSERT`, `lorem`); title ≤ 51 chars; meta 140 ≤ n ≤ 160; block types ∈ catalogue; proposals never claim to have written Notion.
 
-D4. Previews in the pane (dev server via `preview_start`, port 4321) at 375 / 768 / 1200 and the gate at 767 / 769 / 1199 / 1201: NTUC U Care (web platform), Cartier (web + 21 tall screens), IndusNinja (14 phone screens), Kia (dashboard + scrollshots), Airtel Xstream Play (9 videos, campaign), ToT Bridal (brand, square cover), Labelly (thin), Bodyshop (no body). Screenshots sent to the owner; iterate until approved.
+D4. Previews in the pane (dev server via `preview_start`, port 4321) at 375 / 768 / 1200 and the gate at 767 / 769 / 1199 / 1201: NTUC U Care (web platform), Cartier (web + 21 tall screens), IndusNinja (14 phone screens), Kia (dashboard + scrollshots), Airtel Xstream Play (9 videos, campaign), a client under NDA (brand, square cover), Labelly (thin), Bodyshop (no body). Screenshots sent to the owner; iterate until approved.
 
 ### E. Docs and ship
 
@@ -1221,7 +1222,7 @@ All screens block sets: Member 8, States 4, Dashboard 9, Back office 7, Cases 3 
 - On the page (41): `NTUC.jpg`, `client-logo-grfk.png`, 8 member screens, 4 states, 9 dashboard screens, 7 back office screens, 3 case screens, 2 mockups, Styles pair, loops `ntuc-about.mp4`, `ntuc-dp.mp4`, `NTUC_Solution.mp4`, and `ntuc-thumb.mp4` (cards only, 4:3 kept).
 - og:image only (1): `B2-Assistance Programmes – 3.jpg`.
 - Not rendered, kept in R2 (15): duplicates `Cover.jpg`, `Style1.png`, `Style2.png`, `Filler-2.png`, `ntuc-solution.mp4` (600×334 copy of `NTUC_Solution.mp4`); extra mockups `cover-image-kd0f.jpg`, `filler-image-cpra.jpg`, `filler-image-2-dg4t.png`, `solution-image-2-azzj.jpg`, `solution-image-3-2e83.jpg`, `Solution.jpg`; `NTUC U Care Fund.png` (300×200 logo); `Design_Philosophy.mp4` (152.8 s film, 10.5 MB); hidden screens `Group 17563.png`, `Group 17616.png`.
-- The 6 borrowed stock images (ToT Bridal and Adneto folders) leave the NTUC body in the proposal; the files themselves are untouched.
+- The 6 borrowed stock images (a client under NDA and Adneto folders) leave the NTUC body in the proposal; the files themselves are untouched.
 
 ### Block plan the resolver should produce from this body
 
@@ -1254,7 +1255,7 @@ Content (44 published case studies):
 - R2: 34 `work/*` folders. Own folder = `coverPath`/`thumbnailPath` folder for 22; 7 folders unclaimed (bodyshop, global-trade-finance, hyatt, nsl-oilchem, rak-sme, wave-group, woodkraft); Gratify's body majority folder is Adneto's. Wrong-brand files inside own folders (IndusNinja: 6 "Airtel Xsafe" files; Valyu: "899-Wub Web-Airtel-295.png"). 8 dead links. Re-encoded duplicates (Styles pair, Cover) in most carousels. Images up to 9496×5316 and 7.4 MB, 20+ over 4 MB. Videos 2 s ≤ d ≤ 153 s, up to 24.6 MB; most mp4 keep `moov` at the end; thumbnails are 4:3 (current CSS crops to 16:9); posters exist for 56 of 78 videos. Desktop full-page captures (1440×3507, 1440×11656) look like phones by ratio alone: use width ≥ 1280 as the tell.
 - Image-shape counts for 10 docs: body rendered L133 S9 T16 P6; extraMedia L138 S14 T49 P42.
 - Notion data source `3a3bb710-b9ab-80d6-b520-000bfeabe514`: 64 properties, 49 rows. Filled but unused by the site: Services (49, 1 ≤ n ≤ 5), Related Case Studies (49 × 3), Related Posts (31), Results (7), Year (15), Timeline (27), Country (25), Platform (46), Project Type (46), Engagement Type (46), Team (46), Special Thanks (19), Excerpt (49), Last Updated (36), Cover/Thumbnail/About/DP video URLs, Client Logo, OG Image. Live URL / Prototype URL hold only "—". **The `.env` NOTION_TOKEN was rejected during the inventory** ("API token is invalid"): verify before the first sync; if invalid the owner supplies a new one.
-- Presence: Behance wugweb (7 projects: ToT Bridal, Metcred, Kia, Bankco, Axis Bank, Adneto, Gratify), Behance vedanshu (same 7 + 5 personal), Dribbble wugweb (8 shots: UI Explorations 2024, IndusNinja, Airtel Xsafe, Airtel Xtream Play, iMedia guide, RideEV social, adtech 2022 guide, Instagram post). Animal Writes exists as `client-CLI-ANIMALWRITES` (Media + Non-Profit), no case study yet.
+- Presence: Behance wugweb (7 projects: a client under NDA, Metcred, Kia, Bankco, Axis Bank, Adneto, Gratify), Behance vedanshu (same 7 + 5 personal), Dribbble wugweb (8 shots: UI Explorations 2024, IndusNinja, Airtel Xsafe, Airtel Xtream Play, iMedia guide, RideEV social, adtech 2022 guide, Instagram post). Animal Writes exists as `client-CLI-ANIMALWRITES` (Media + Non-Profit), no case study yet.
 
 Code:
 - `src/pages/work/[slug].astro` (913 lines): hero + meta `<dl>`, cover, bento body (`.bento`, `.b-head`, `.b-point`, `.b-media[data-shape]`, `.b-styles`, `.b-video`, `.b-carousel`), legacy fallback `{!body && …}`, "More Case Studies" (unordered, same two every time). Client-side `data-shape` script. No `data-reveal` in the body, chapters lack ids, images lack width/height, body videos lack posters, alt text generic, `title` prop contains an em dash, JSON-LD `CreativeWork` with `author: #founder` and no `dateModified`.
@@ -1345,3 +1346,7 @@ Every file of the skill (54) was read on 2026-11-19 from main (`4fbf334c`) by a 
 - `case-audit.mjs` does not parse the `Section:` prefix that `body-content-standard.md` line 135 describes.
 - The helper name table in `skill-map.md` dates from 2026-11-16 and no longer matches the installed names.
 - `ops-cycle.md` line 72 carries an unresolved "to be corrected if wrong".
+
+### Fixed 2026-11-19
+
+Fixed 2026-11-19 (work session, in the working tree; the coordinator commits): skill items 1 to 17, all fixed; plan items fixed: the NDA client unnamed (four places, lines 630, 945, 1224 and 1257), line 7, line 38, line 44, lines 94 and 115, line 96. Not fixed: none of the numbered items. Notes: `handoffs.md` carries the engineer contract in vendor-neutral words ("from the source to the CMS") because the skill's own check allows vendor names only in `ops-cycle.md` and `skill-map.md`; the engineer's exact wording is quoted in `ops-cycle.md`. Lines 913, 960 and 1012 of this plan still say `NOTION_TOKEN`, which is the name the site sync scripts read today. The "Worth knowing" points were not in scope and are unchanged. Line numbers in the list above are as of `4fbf334c`. Checks after the fixes: `build.mjs --check` 5 of 5 fresh, `validate.mjs` 30 checks with 0 errors, `test.mjs` all passed.

@@ -1,6 +1,6 @@
 # Design principles
 
-> **Owner: `wugweb-kits`.** The design vocabulary and the critique pass belong to `wugweb-kits`. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file. Naming a principle as evidence for a client's screen stays with this skill.
+> **Owner: `wugweb-kits`.** The design vocabulary and the critique pass belong to `wugweb-kits`. `wugweb-kits` is installed and wins wherever it holds a rule. It does not yet hold this vocabulary, so this file is held here until the owner skill carries it. Do not copy these rules into another file. Naming a principle as evidence for a client's screen stays with this skill.
 
 One vocabulary, used two ways: to read the client's work as evidence, and to compose the page. A principle is named only when a screen proves it. A law name used as decoration is cut.
 

@@ -6,7 +6,7 @@ A skeleton for a product with a very large set of screens. The page shows 1 to 4
 
 MusicLinkd's registry holds 205 entries, but its own design system says those are not 205 product screens. A component, widget, block, state, sheet or dialog is not a screen; a screen is a destination someone arrives at with an intent. Before writing the body:
 
-1. Use `anthropic-skills:musiclinkd-design-system` to read its taxonomy, `screen.json` and `flows-map.json`.
+1. Use the `musiclinkd-design-system` helper (named in `references/skill-map.md`) to read its taxonomy, `screen.json` and `flows-map.json`.
 2. Count screens as destinations. Record states as states of one screen (`state` in the visual read), not as extra screens.
 3. Group by audience, then flow. The flows follow the nine template families: Splash, Login, Onboarding, Home, Discover, Artist Profile, Studio Profile, Marketplace, Settings.
 4. Write one chapter per journey that crosses flows (for example: find a studio, view it, check availability, book, pay, review), with the proof screens for each step.

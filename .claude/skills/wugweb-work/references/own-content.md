@@ -22,7 +22,7 @@ Where each kind of piece is stored is in `ops-cycle.md`. Media is existing files
 4. **Outline, then draft.** One declared structure, held throughout. Use the body standard for the type, below. Every claim points to a screen, a sourced number, a named fact or a linked case study; anything else is cut or marked unvalidated.
 5. **Check the draft.** Fact lock, evidence ledger, source log for outside claims, metric fields, skim test, count of deliverables. Then the voice check through `wugweb-voice`, and the title, description and schema limits from `wugweb-seo`.
 6. **Propose.** Current → proposed, with the reason for each change and the questions for the owner.
-7. **Owner approval** of that exact text. Only then is the source written, with a backup first, and synced on the owner's go.
+7. **Owner approval** of that exact text. Only then does the approved content go to `wugweb-engineer`, which changes stored data with a backup and runs the sync on the owner's go (handoff 8 in `handoffs.md`).
 8. **Ship gate** on the rendered page at 375, 768 and 1200, then other forms if wanted.
 
 ## Body standards (first draft; for the owner's review, not a final standard)

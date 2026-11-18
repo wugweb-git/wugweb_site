@@ -73,12 +73,12 @@ export function parseBody(md) {
   const raw = md.replace(/\r\n?/g, '\n');
   const lines = raw.split('\n');
   const out = { meta: {}, links: {}, accent: null, results: [], sections: [], closing: [],
-    lineCount: lines.length, hasSiteCopy: /^##\s+Sanity site copy/im.test(raw), titleLine: null };
+    lineCount: lines.length, hasSiteCopy: /^\s*##\s+(Sanity|Framer) site copy/im.test(raw), titleLine: null };
 
-  // If a "Sanity site copy" exists, the long copy wins (v1 compatibility).
+  // If a "Sanity site copy" or "Framer site copy" exists, the long copy wins (v1 compatibility).
   let body = lines;
   if (out.hasSiteCopy) {
-    const i = lines.findIndex((l) => /^\s*##\s+Sanity site copy/i.test(l));
+    const i = lines.findIndex((l) => /^\s*##\s+(Sanity|Framer) site copy/i.test(l));
     // Keep the meta lines and the ## Media block from the short copy; drop its ### chapters.
     const keep = []; let inShort = false;
     for (const l of lines.slice(0, i)) {
@@ -215,7 +215,7 @@ export function flagsFor(md, parsed) {
     if (/^\s*#{4,}/.test(l) || /\*\*#+/.test(l)) add('parser: #### in heading or title', i + 1, l.trim().slice(0, 60));
     if (/drive\.google\.com/.test(l)) add('media: Google Drive link', i + 1, '');
   });
-  if (parsed.hasSiteCopy) add('two copies', null, 'short copy plus "Sanity site copy": collapse to one copy');
+  if (parsed.hasSiteCopy) add('two copies', null, 'short copy plus a "Sanity site copy" or "Framer site copy": collapse to one copy');
   const sub = typeof parsed.meta.Subtitle === 'string' ? parsed.meta.Subtitle : '';
   if (!sub) add('missing', null, 'Subtitle');
   else if (sub.length > 90) add('length', null, `Subtitle ${sub.length} chars > 90`);

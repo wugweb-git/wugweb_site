@@ -41,7 +41,7 @@
       "id": 3,
       "name": "indusninja-block-plan",
       "prompt": "IndusNinja has 22 screens and its current sections. Give me the block plan as JSON plus alt text and a caption for every screen, grouped by flow.",
-      "expected_output": "A block plan JSON, then per flow a list of screens with alt text (125 characters or fewer) and a caption (25 words or fewer). Wrong-client files are flagged, not placed in the plan.",
+      "expected_output": "A block plan JSON, then per flow a list of screens with alt text (125 characters or fewer) and a caption (25 words or fewer). Misnamed files are flagged by look and are not placed in a chapter.",
       "files": [],
       "expectations": [
         "The block plan is valid JSON and every type is a catalogue block type",
@@ -49,7 +49,7 @@
         "Every screen has a caption of 25 words or fewer",
         "No rail holds more than 8 screens",
         "Screens are grouped by flow",
-        "Files showing the Airtel Xsafe brand are flagged as wrong client and are not placed in a chapter",
+        "The files named Airtel Xsafe are flagged as misnamed IndusNinja boards, not as wrong client, and are not placed in a chapter",
         "The output says that each caption was written after a close look at that screen, or lists the screens it could not open"
       ]
     },
@@ -72,12 +72,12 @@
       "id": 5,
       "name": "indusninja-visual-read",
       "prompt": "Here are 12 files from the IndusNinja folder, including the six Airtel Xsafe PNGs, plus one 10 second loop. Do the visual read and give me the JSON.",
-      "expected_output": "One read record per file with what, kind, platform, audience, flow, step, state, quality, heroScore, alt, caption and chapterFit; the video adds demonstrates, loopable and posterAt. The Airtel files are flagged wrong client by look.",
+      "expected_output": "One read record per file with what, kind, platform, audience, flow, step, state, quality, heroScore, alt, caption and chapterFit; the video adds demonstrates, loopable and posterAt. The files named Airtel Xsafe are flagged by look as misnamed IndusNinja boards, not as wrong client.",
       "files": [],
       "expectations": [
         "The output is valid JSON with one record per file (13 records)",
         "Every record has what, kind, alt and caption",
-        "The six Airtel Xsafe files are flagged with quality wrong client",
+        "The six files named Airtel Xsafe are flagged with quality misnamed file, not wrong client",
         "Screens are ordered by step within each flow",
         "The video record has demonstrates and posterAt",
         "At least one record names a design principle together with the specific screen that shows it",
@@ -120,7 +120,7 @@
         "The response includes the handoff request with page, archetype, what was built and candidate phrases",
         "Headings in any proposed body are claims, not questions written for search",
         "No FAQ section, FAQPage schema or keyword count appears",
-        "The proposed SEO title is 51 characters or fewer and the description is 140 to 160 characters",
+        "The proposed SEO title is 51 characters or fewer before the site suffix and the description is 140 to 160 characters (the limits set by wugweb-seo)",
         "Any search figure has a source or is marked unvalidated"
       ]
     },
@@ -128,7 +128,7 @@
       "id": 9,
       "name": "post-now-stops-for-yes",
       "prompt": "The NTUC LinkedIn post looks fine, just post it now.",
-      "expected_output": "Does not post. Walks the approval steps: says whether the body is approved, checks that the linked page is live and that permission to name the client is on record, shows the exact text, media, account, date and time that need a yes, and reports any step not yet passed (voice check, dated spec check). Says whether a connected scheduling tool is confirmed.",
+      "expected_output": "Does not post. Walks the approval steps: says whether the body is approved, checks that the linked page is live and that permission to name the client is on record, shows the exact text, media, account, date and time that need a yes, and reports any step not yet passed (voice check, dated spec check). Says that no scheduling tool is connected, so the post is handed to the owner as an approved draft.",
       "files": [
         "examples/forms-ntuc-linkedin-post.md"
       ],

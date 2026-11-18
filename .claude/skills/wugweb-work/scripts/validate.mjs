@@ -33,7 +33,8 @@ check('frontmatter keys are allowed', fm.split('\n').filter((l) => /^[a-z-]+:/.t
 check('version matches metadata.json', version && version === meta.version, `${version} vs ${meta.version}`)
 check('CHANGELOG.md has an entry for this version', read('CHANGELOG.md').includes(`## ${meta.version}`))
 
-const words = (body.match(/[A-Za-z0-9][\w'’.-]*/g) || []).length
+// The shared count used by every Wugweb skill: frontmatter dropped, fenced code stripped, split on whitespace, tokens with a letter or digit.
+const words = body.replace(/```[\s\S]*?```/g, ' ').split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length
 check('SKILL.md body is 1,500 to 2,000 words', words >= 1500 && words <= 2000, `${words} words`)
 check('SKILL.md is under 500 lines', skill.split('\n').length < 500, `${skill.split('\n').length} lines`)
 
