@@ -6,6 +6,7 @@
 - One home for the logo rules: the Logo section of `visual-os/art-direction.md`, which now states the two-tone rule; the copy in `colour-type-photo-motion.md` is removed.
 - `scripts/test.mjs` checks both homes.
 - Rerun of evals 3, 20 and 25 on 0.3.1, graded by a separate agent: 3 of 3 pass; eval 3 now cites one file.
+- PLAN.md, the Notion page and the registry record 0.3.1 (3f06039).
 
 ## 0.3.0, 2026-11-19
 

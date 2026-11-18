@@ -21,7 +21,7 @@
 > | 40dc6e8d | This plan, pending.md and the Notion page brought up to date; on main as 5361f4e6 |
 > | 64d5e11, ed89d37 | 0.2.0: skill text in line with the 2026-11-17 rulings; evals rerun |
 > | ed63f4a, 1a3fa1a | 0.3.0: same shape as the other Wugweb skills; media rules as pointers; open items filled through use |
-> | 0.3.1 | One home for the colour rules and the logo rules inside the skill |
+> | 3f06039 | 0.3.1: one home for the colour rules and the logo rules inside the skill |
 >
 > **Owner rulings that stand (2026-11-16 and 17)**
 >
