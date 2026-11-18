@@ -10,6 +10,7 @@
 - Description: a client's brand is named as out of scope.
 - Evals: 6 passes a clean brief on the brief only; 22 allows brand rules beside visual direction; 36 waits on the app upload, where triggering can be measured.
 - Eval rerun 2026-11-19 on 0.3.0, 11 tests touched by this change (1, 2, 3, 6, 8, 14, 20, 22, 23, 25, 38), answered by one agent and graded by another: 9 pass, no invented facts. Open: 3 cites two reference files where Answer mode asks for one; 38 finds nine brand-os rules restated in `wugweb-kits` and `wugweb-work` (their sessions own the fix; brand-os itself holds the media rules only as pointers).
+- PLAN.md, the Notion page and the registry record 0.3.0: status, commits table, skill card type line, folder tree; the crop wording item is ticked as settled on 2026-11-17.
 
 ## 0.2.0, 2026-11-19
 

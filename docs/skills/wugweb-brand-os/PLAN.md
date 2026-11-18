@@ -6,7 +6,7 @@
 > - **Open items are filled through use** (owner, 2026-11-19). The positioning line, audience, five facts and the Visual OS and Brand Strategy documents arrive as the skill is used, here or in another skill's session. Each comes back here as a Change proposal and is applied on the owner's yes. Other skills read these items from here and never hold them.
 > - **Sources the owner approved.** The Notion page "Wugweb Profile (Master) - 2023" and what is in Notion, for this skill and for `wugweb-voice`.
 >
-> **Commits on main, 2026-11-17**
+> **Commits on main, 2026-11-17 to 19**
 >
 > | Commit | What |
 > |---|---|
@@ -19,6 +19,8 @@
 > | 18138ec2 | All six pillar colours stand; accent grey |
 > | f66bb666 | Notion answers for questions 4, 19 and 20 applied |
 > | 40dc6e8d | This plan, pending.md and the Notion page brought up to date; on main as 5361f4e6 |
+> | 64d5e11, ed89d37 | 0.2.0: skill text in line with the 2026-11-17 rulings; evals rerun |
+> | ed63f4a | 0.3.0: same shape as the other Wugweb skills; media rules as pointers; open items filled through use |
 >
 > **Owner rulings that stand (2026-11-16 and 17)**
 >
@@ -78,7 +80,7 @@
 | Field | Value |
 |---|---|
 | Name | `wugweb-brand-os` |
-| Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. One plain Node script, for the export. |
+| Type | Agent Skill in the open format: one `SKILL.md` plus `references/`, `examples/`, `evals/`, two plain Node scripts (build and self-test) and the generated portable files. |
 | Version | 0.3.0 |
 | Status | 0.3.0 on main (2026-11-19). `SKILL.md` body 1,994 words by the shared method, 17 reference files, one `evals/evals.json` (39 cases). `scripts/build.mjs --check` and `scripts/test.mjs` pass. Upload file built; the owner uploads it to the Claude app. Open items are filled through use, by the owner's approval. |
 | Development chat | `https://claude.ai/chat/490738f9-8b97-4826-befb-a28a6a63ad7a` |
