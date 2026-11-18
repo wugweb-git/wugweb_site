@@ -41,3 +41,6 @@ scripts/data/media-manifest-*.json
 # existing pattern matches scripts/tmp-*.mjs; this adds the dot-prefixed form
 # .tmp-*.mjs used by the sync and manifest scripts during a dry run.
 scripts/.tmp-*.mjs
+
+# Skill build output (zips, tarballs, copies for sharing)
+dist-skill/
