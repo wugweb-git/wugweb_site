@@ -64,6 +64,16 @@ Details: [`docs/r2-assets.md`](docs/r2-assets.md). Upload: `scripts/upload-asset
 
 ---
 
+## Rule 3 — API keys and secrets follow one standard
+
+Every key and secret in this repo and in the Wugweb Skill System follows [`docs/skills/SECRETS.md`](docs/skills/SECRETS.md). One UPPER_SNAKE_CASE name per use with the provider named, one place per environment (local `.env` gitignored, runtime stores for Cloudflare and Hostinger, `.env.example` tracked with placeholders only), and paid providers blocked at the code level whatever their balance (DeepSeek, OpenAI, Moonshot, MiniMax, xAI, Anthropic). Free-tier calls through a router must pin one verified free model per use; OpenRouter must never be billed.
+
+Owner's rule (2026-11-19): a key that reaches a chat, a file, a log or a commit is not echoed, written or sent further. What happens to that key after is the owner's call. No key rotation, never.
+
+The runtime secrets for this site are named in `CLAUDE.md` (`DATABASE_URL`, `SANITY_SYNC_TOKEN`, `NEON_SYNC_SECRET`, `PREVIEW_SECRET`). The repo's `.env.example` lists every variable name used, with placeholders only.
+
+---
+
 ## 1. Who is who
 
 | Entity id | Name | Type | Role |

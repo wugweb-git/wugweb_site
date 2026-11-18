@@ -4,6 +4,15 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-11-19: API keys and secrets standard. ON MAIN (`c46bae1` then follow-up), owner rules applied.**
+- The one home: [`docs/skills/SECRETS.md`](docs/skills/SECRETS.md). The standing-rules file points there; four skill mirrors synced byte-identical (wugweb-work, wugweb-voice, wugweb-seo, wugweb-kits). wugweb-work outputs regenerated; validate 30 checks, 0 errors.
+- [`governance.md`](governance.md) gains Rule 3 next to Rule 1 and Rule 2.
+- Repo tracks [`.env.example`](.env.example) with every environment variable name used, placeholders only. `.gitignore` keeps `.env` and `.env.*` out.
+- Owner rule, 2026-11-19: a key that reaches a chat, a file, a log or a commit is not echoed, written or sent further. What happens to that key after is the owner's call. No key rotation, never. (Earlier draft of SECRETS.md had a rotation section; removed in the follow-up commit.)
+- Three OpenRouter helper scripts live at `scripts/openrouter-chat.mjs`, `scripts/openrouter-vision.mjs`, `scripts/openrouter-audit-case.mjs`. Each reads the key and model from the environment, blocks paid routes at the code level (model must end `:free`), exits 2 on missing env or arguments. Smoke tests pass; no live calls made (no key set in this session).
+- Open: Notion registry page "Wugweb Skill Management System" does not yet carry the new standing-rules clause. Owner updates when ready (project rule: Notion only when asked). wugweb-work 0.5.0 zip re-upload to the registry is also owner's choice; the repo master is the source of truth.
+- Not scoped to this change: wugweb-work Part 2 steps 4+ (Sanity schema, GROQ, resolveLayout, 18 Astro components, thin template, rail and lightbox, QA, running the 14 evals, 8-slug previews, docs and ship). Each step still needs per-step owner-go per the Notion plan.
+
 **2026-11-17: `wugweb-brand-os` skill. BUILT (0.1.0) ON MAIN (`f66bb666`), owner answers applied.**
 - One source of truth: the Notion page "wugweb-brand-os" under Wugweb HQ / Wugweb Skill Management System (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa); repo mirror `docs/skills/wugweb-brand-os/PLAN.md`. Do not copy the plan into this file. The brand-os session keeps both (coordinator handover 2026-11-17).
 - Waiting on the owner: legal name (Notion terms of use say "Wug Web Services Private Limited"); positioning line (seven candidates); audience; official profile links; team size, projects and markets figures; logo mark construction and live type; Visual OS and Brand Strategy documents and nine images; upload of `wugweb-brand-os.zip`; deleting the unused `public/brand/wugweb-mark.png` (approved, a site change).

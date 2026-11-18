@@ -9,6 +9,14 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed: API keys and secrets standard, owner's no-rotation rule applied (2026-11-19)
+- Owner rule, 2026-11-19: no key rotation, never. `docs/skills/SECRETS.md` loses the "Rotate when exposed" section and the rotation line in "Handling a key in chat"; the standing-rules clause rewritten to say what Claude will and will not do with a pasted key and to defer any after-action to the owner.
+- `governance.md` gains Rule 3 (API keys and secrets follow one standard), pointing at `docs/skills/SECRETS.md`, carrying the no-rotation rule.
+- `.env.example` created at the repo root: every environment variable name this repo reads, placeholders only. `.gitignore` already keeps `.env` and `.env.*` out via `!.env.example`.
+- Three OpenRouter helper scripts under `scripts/`: `openrouter-chat.mjs`, `openrouter-vision.mjs`, `openrouter-audit-case.mjs`. Each reads key and model from the environment, refuses a model that is not `:free`, prints usage with exit 2 on missing env or arguments. No hardcoded key; no live call in this change.
+- The four skill copies of `references/standing-rules.md` (`wugweb-work`, `wugweb-voice`, `wugweb-seo`, `wugweb-kits`) and the wugweb-work regenerated outputs (`AGENTS.md`, `export/wugweb-work.md`) re-synced to the master; wugweb-work validate still clean (30 checks, 0 errors).
+- `pending.md` carries the session entry.
+
 ### Added: API keys and secrets standard (2026-11-19)
 - `docs/skills/SECRETS.md`: the standard every skill reads. One name per use (UPPER_SNAKE_CASE, provider named), one place per environment (never the repo), paid providers blocked by policy, pinned model per use through free routers, rotation when a key reaches a chat, a file or a log. `docs/skills/STANDING-RULES.md` gains a short "API keys and secrets" section that points here. The four skill copies of `references/standing-rules.md` (`wugweb-work`, `wugweb-voice`, `wugweb-seo`, `wugweb-kits`) are synced; `wugweb-work` validate still clean (30 checks, 0 errors).
 

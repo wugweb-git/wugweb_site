@@ -51,27 +51,6 @@ Free-tier routing (OpenRouter and the like) pins one model name per
 pinned use. An unpinned OpenRouter call can resolve to a paid route; the
 owner's 2026-11-19 rule says it must never be billed.
 
-## Rotate when exposed
-
-A key is rotated the moment it reaches any of these:
-
-- A chat with an assistant, a screenshot, a support ticket, an email, a
-  message to a third party.
-- A committed file, even in a branch that was force-pushed or deleted.
-- A log line, a stack trace saved to disk, a browser's URL bar.
-- A screenshot shared with a model or a person.
-
-Rotation steps:
-
-1. Create the new key in the provider's dashboard.
-2. Replace the value in every runtime store that holds it
-   (`wrangler pages secret put`, Hostinger, local `.env`, Notion
-   catalogue page).
-3. Revoke the old key in the provider's dashboard.
-4. Record the rotation on the catalogue page: what, when, why.
-
-The old key keeps its row in the catalogue, marked rotated.
-
 ## Handling a key in chat
 
 Every skill in the Wugweb Skill System follows these rules when a key
@@ -82,8 +61,9 @@ or secret appears in a session, for any reason:
 - Never put the key in a request to a third party.
 - Never store the key in memory beyond the session.
 - The right action is to refuse the key and ask the owner to set it in
-  the environment the script reads, then to rotate the key that was
-  pasted.
+  the environment the script reads. What happens to a pasted key after
+  that is the owner's call (owner's rule, 2026-11-19: no key rotation,
+  never).
 
 The same rules bind third-party helper skills that this system calls.
 
