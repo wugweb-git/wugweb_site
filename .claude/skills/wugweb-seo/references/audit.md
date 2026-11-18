@@ -23,7 +23,7 @@ on every finding.
 | Check id | Passes when | Severity on fail |
 |---|---|---|
 | `title-present` | One non-empty `<title>` | BLOCKER |
-| `title-length` | Source title, before " \| Wugweb", is 51 characters or fewer for a case study (`--kind work`). A blog post or service page has no separate house limit; it follows the search standard checked by `title-rendered`, 60 characters or fewer (owner, 2026-11-19). Google publishes no character limit: it cuts a title to fit the width of the result, which is about 60 characters on desktop | BLOCKER for a case study. Passes for `--kind blog` and `--kind service`. Reported only, at LOW, when no kind is given |
+| `title-length` | Source title, before " \| Wugweb", is 51 characters or fewer for a case study (`--kind work`), 52 or fewer for a blog post or service page (`--kind blog`, `--kind service`) | BLOCKER for a case study. MEDIUM, not blocking, for a blog post or service page (owner, 2026-11-19). Reported only, at LOW, when no kind is given |
 | `title-rendered` | Rendered title is 60 characters or fewer | HIGH |
 | `description-length` | `meta name="description"` is 140 to 160 characters | HIGH |
 | `h1-single` | Exactly one `<h1>` | HIGH |

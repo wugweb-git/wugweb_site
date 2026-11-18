@@ -50,8 +50,8 @@ Primary phrase: <phrase> (<source and date, or unvalidated>)
 Supporting phrases: <phrase> (<source>), ...
 Format that ranks now: <format>, seen on <up to three addresses>
 Entities the page must name: <people, products, places, numbers already in the source>
-Title: source 51 characters or fewer for a case study; for a blog post or
-  service page the search standard, rendered 60 or fewer; other sites not decided
+Title: source 51 characters or fewer for a case study, 52 or fewer for a blog
+  post or service page; rendered 60 or fewer; other sites not decided
 Description: 140 to 160 characters
 Schema: <types, from the fixed rules>
 Links: <targets for this piece, inside the link structure wugweb-strategy

@@ -76,7 +76,7 @@ These apply to wugweb.com, client sites, Kits and Wugweb X.
   is not reused.
 - **Title.** For a case study, the source title is 51 characters or fewer. The
   site adds " | Wugweb" only when the title does not already name Wugweb and
-  the total fits in 60. Blog and service pages: rendered 60 or fewer, the search standard. The
+  the total fits in 60. Blog and service pages use source 52 or fewer. The
   audit does not check titles for dashes.
 - **Description.** 140 to 160 characters.
 - **Schema on the main site address only.** A case study carries `WebPage`,
@@ -596,8 +596,8 @@ Primary phrase: <phrase> (<source and date, or unvalidated>)
 Supporting phrases: <phrase> (<source>), ...
 Format that ranks now: <format>, seen on <up to three addresses>
 Entities the page must name: <people, products, places, numbers already in the source>
-Title: source 51 characters or fewer for a case study; for a blog post or
-  service page the search standard, rendered 60 or fewer; other sites not decided
+Title: source 51 characters or fewer for a case study, 52 or fewer for a blog
+  post or service page; rendered 60 or fewer; other sites not decided
 Description: 140 to 160 characters
 Schema: <types, from the fixed rules>
 Links: <targets for this piece, inside the link structure wugweb-strategy
@@ -690,7 +690,7 @@ on every finding.
 | Check id | Passes when | Severity on fail |
 |---|---|---|
 | `title-present` | One non-empty `<title>` | BLOCKER |
-| `title-length` | Source title, before " \| Wugweb", is 51 characters or fewer for a case study (`--kind work`). A blog post or service page has no separate house limit; it follows the search standard checked by `title-rendered`, 60 characters or fewer (owner, 2026-11-19). Google publishes no character limit: it cuts a title to fit the width of the result, which is about 60 characters on desktop | BLOCKER for a case study. Passes for `--kind blog` and `--kind service`. Reported only, at LOW, when no kind is given |
+| `title-length` | Source title, before " \| Wugweb", is 51 characters or fewer for a case study (`--kind work`), 52 or fewer for a blog post or service page (`--kind blog`, `--kind service`) | BLOCKER for a case study. MEDIUM, not blocking, for a blog post or service page (owner, 2026-11-19). Reported only, at LOW, when no kind is given |
 | `title-rendered` | Rendered title is 60 characters or fewer | HIGH |
 | `description-length` | `meta name="description"` is 140 to 160 characters | HIGH |
 | `h1-single` | Exactly one `<h1>` | HIGH |
