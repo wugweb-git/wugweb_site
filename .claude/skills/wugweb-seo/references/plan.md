@@ -1,10 +1,10 @@
 # Plan: brief constraints before a page is written
 
-The plan part answers one question for a maker skill: which phrase and intent
+The plan part answers one question for a brief: which phrase and intent
 should this page target, and what limits must the copy meet? It returns limits
 and an outline of topics, never wording.
 
-## What the maker sends
+## What the request carries
 
 ```
 Page: <path> | Type: <case study, blog post, service page> | Client: <name or none>
@@ -50,10 +50,13 @@ Primary phrase: <phrase> (<source and date, or unvalidated>)
 Supporting phrases: <phrase> (<source>), ...
 Format that ranks now: <format>, seen on <up to three addresses>
 Entities the page must name: <people, products, places, numbers already in the source>
-Title: source 51 characters or fewer for a case study; other types not decided
+Title: source 51 characters or fewer for a case study, 52 or fewer for a blog
+  post or service page; rendered 60 or fewer; other sites not decided
 Description: 140 to 160 characters
 Schema: <types, from the fixed rules>
-Links: targets from wugweb-strategy; rules: one up to the pillar, two or three
+Links: <targets for this piece, inside the link structure wugweb-strategy
+  sets>; rules: one up to the service page (a case study links up to its
+  service page only; sector pages are not a link-up target), two or three
   across to siblings, descriptive anchors, no orphans or dead ends
 Outline (topics in order, not headings):
   1. <topic> rests on <fact already in the source>
@@ -84,9 +87,13 @@ this skill's decision.
 
 ## Platform keyword note
 
-Runs only when `wugweb-work` or `wugweb-strategy` asks. Give terms for the
-title, the first line and the tags on LinkedIn, Behance or Dribbble, each
-sourced or marked "unvalidated". Never write the post.
+Part of the one keyword note this skill writes per piece, added when the piece
+has a LinkedIn, Behance or Dribbble form. `wugweb-strategy` pastes the note
+unchanged into brief field 9, where `wugweb-work` reads it for own content.
+For client work (a case study), `wugweb-work` writes the brief itself and asks
+this skill for the one search phrase. Give terms for the title, the first line and the tags on
+LinkedIn, Behance or Dribbble, each sourced or marked "unvalidated". Never
+write the post.
 
 ## Absorbed rules
 

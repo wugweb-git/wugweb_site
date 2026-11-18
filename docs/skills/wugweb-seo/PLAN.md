@@ -1,7 +1,7 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; from 2026-11-17 the seo session keeps this plan and the Notion page directly (the coordinator split was lifted).
 >
-> - Built. Version 2.5.0 on main (owner: no new version, this is 2.5), 25 files, last skill commit f1ce006f. The keyphrase score is part of 2.5.0.
-> - Skill file body: 1,906 words by the shared count; the validator now counts the same way. Validate 34 checks, 0 errors, 0 warnings; tests pass (as reported by the seo session). Single-file export is in the skill folder.
+> - Built. Version 2.5.0 on main (owner: no new version, this is 2.5), 26 files, last skill commit f1ce006f. The keyphrase score is part of 2.5.0.
+> - Skill file body: 1,997 words by the shared count after the review fixes of 2026-11-19; the validator counts the same way. Validate 34 checks, 0 errors, 0 warnings; tests pass, 28 of 28; `build.mjs --check` reports all five generated files fresh (run 2026-11-19 after the review fixes, before commit). Single-file export is in the skill folder and is written by `build.mjs`.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The seo session built the upload zip and gave it to the owner.
 > - Owner rulings applied: made-file sizes adopted; the story safe zone stays unverified because no official pixel figure exists (checked the Meta Business Help safe-zone page directly, read 2026-11-17: the 1080x1920 canvas and 9:16 are official, but the inner top and bottom margins are only an in-tool guardrail, not published pixels; the common 250 or 340px numbers are secondary). Token check for case-study components is report only first and is a wugweb-kits gate. Brief field 9: seo writes one keyword note per piece, strategy pastes it into the brief unchanged, work reads it there. On case studies the faqs field is kept and the other four proposed fields are dropped. FAQPage only where every question and answer is visible on the page; no HowTo, review stars or ratings.
 > - FAQ block: agreed with wugweb-strategy and recorded in the handoffs file (commit 90340cf9). Strategy decides when a piece gets one: service pages and blog posts only, questions from the signal log and approved by the owner, answers from the owner's source. Seo only audits that the markup matches the visible questions. Case studies never carry a block.
@@ -22,7 +22,7 @@
 
 # wugweb-seo: alignment plan
 
-> CHECKED AGAINST MAIN, 2026-11-19 (coordinator, from the files; no skill file was edited): version 2.5.0 on main, 25 files, skill file body 1,906 words, last skill commit 5bec58b9. The Cursor rule, ChatGPT instructions and Codex settings are on main. The single-file export the Cowork seo session added on 2026-11-19 is still not on main; the seo session commits it.
+> CHECKED AGAINST MAIN, 2026-11-19 (coordinator, from the files; no skill file was edited): version 2.5.0 on main, 26 files, skill file body 1,906 words at that check, last skill commit 5bec58b9. The Cursor rule, ChatGPT instructions and Codex settings are on main. The single-file export the Cowork seo session added on 2026-11-19 is on main since `4fbf334c`; from the review fixes of 2026-11-19 `build.mjs` writes it.
 
 > Mirror of the Notion page "wugweb-seo" (https://app.notion.com/p/41abb710b9ab818b8481d42beb053fef), which is the source. Part of the Wugweb Skill System. Plan stage only. Nothing goes to development until the owner says. Written 2026-11-16.
 
@@ -59,7 +59,7 @@ Keywords and search intent, on-page rules (title, description, headings), schema
 
 - One slug per case study. No redirects for old or Framer addresses.
 - Title 51 characters or fewer in the source; the site adds " \| Wugweb" only when the title does not already name Wugweb and the total fits in 60. Description 140 to 160.
-- Structured data only on the main site address. Case studies: WebPage, CreativeWork, BreadcrumbList; Wugweb is creator and publisher; no author. Blog posts: BlogPosting with a Person author. Service pages, home and about: not decided.
+- Structured data only on the main site address. Case studies: WebPage, CreativeWork, BreadcrumbList; Wugweb is creator and publisher; no author. Blog posts: BlogPosting with a Person author. Service pages: Service and BreadcrumbList; home: WebPage; about: AboutPage; no author (decided 2026-11-17).
 - HowTo, review stars and aggregate ratings are never proposed. FAQPage is allowed only for questions the page visibly carries from its `faqs` field, written by `wugweb-work`, and is never asked for as a way to win search. llms.txt is not a lever and is never recommended; the existing `public/llms.txt` and `ai-context.txt` stay as they are.
 - Dates: a blog post shows its date; a case study shows none; a shown date matches the schema date. The audit does not check titles for dashes.
 - The owner's answers of 2026-11-16 are recorded in the skill's 2.3.0 changelog and were confirmed by the owner in the planning session on 2026-11-17.
@@ -95,7 +95,7 @@ Link targets, owner rulings of 2026-11-16 as carried in the repo skill 2.4.1: `w
 - Blog and service page titles: source 52 or fewer, so the " \| Wugweb" suffix fits in 60. Folded into 2.5.0.
 - Kits fields: do not adopt `seoCanonicalUrl`, `schemaType`, `aiSummary` or `keyTakeaways` for case studies (canonicals come from Notion, the type is fixed as CreativeWork, the body is the single source). `faqs` was already settled.
 - Headings: `wugweb-work` owns them, `wugweb-voice` runs the check, wugweb-seo checks length and order only.
-- Standing rules: keep the pointer in `SKILL.md`; the rules inline only in `AGENTS.md` and the single-file export.
+- Standing rules: superseded. The skill carries a marked copy at `references/standing-rules.md`, built into `AGENTS.md` and the single-file export; the home file wins (commit f405bec3).
 - `evals/evals.json`: supplied in 2.5.0 (8 cases).
 - App copy: the 2.5.0 zip is built and sent; upload it in the Claude app to bring the app copy up from 2.4.0.
 
@@ -111,7 +111,7 @@ Link targets, owner rulings of 2026-11-16 as carried in the repo skill 2.4.1: `w
 - [ ] The title limit for blog posts and service pages. Recommended: rendered 60, source 52 so " \| Wugweb" always fits, matching the case-study scheme.
 - [ ] Whether AI training bots may crawl, per property. Search and citation bots stay allowed. Your call, a business one; the default stays until you set it per property.
 - [ ] Confirm the rule "headings are claims; never ask for a question heading" lives in `wugweb-voice` or `wugweb-work`. wugweb-seo only points to it. The wugweb-work plan says "question form where natural". Recommended: `wugweb-work` owns headings and `wugweb-voice` runs the check; wugweb-seo checks length and order only.
-- [ ] Re-save the app copy as 2.4.1 from the repo folder, using the 7 files listed in the skill card. The repo copy is the master. Your action, in the app session; the planning session cannot reach it.
+- [x] Superseded: the app copy was lost in the reset of 2026-11-17; the open item is the 2.5.0 zip upload in the status block. Was: Re-save the app copy as 2.4.1 from the repo folder, using the 7 files listed in the skill card. The repo copy is the master. Your action, in the app session; the planning session cannot reach it.
 - [x] FAQPage: allowed only where the page shows the questions. Decided, 2.3.0.
 - [x] BlogPosting with a Person author stays. Decided, 2.3.0.
 - [x] The audit does not check titles for dashes. Decided, 2.3.0.
@@ -124,11 +124,11 @@ Link targets, owner rulings of 2026-11-16 as carried in the repo skill 2.4.1: `w
 - [x] `aeo-brand-scan` runs only after the owner's yes. Decided, 2.2.1.
 - [x] Link targets. Decided; see the note above this list.
 - [x] Change 11 (the standing-rules path): applied in the repo copy 2.4.1.
-- [ ] The owner's standing rules as a copied block marked as from `docs/skills/STANDING-RULES.md`: the skill holds only a pointer. Add a block, or keep the pointer? Recommended: keep the pointer in `SKILL.md` and inline the rules only in `AGENTS.md` and the single-file export, which run without the repo.
-- [ ] `evals/evals.json` is in neither the app copy nor the repo copy, although the changelog says eight evals were added. Supply the file. Recommended: draft it as part of the build, so the validator's warning clears.
+- [x] Superseded: the skill carries a marked copy (commit f405bec3). Was: The owner's standing rules as a copied block marked as from `docs/skills/STANDING-RULES.md`: the skill holds only a pointer. Add a block, or keep the pointer? Recommended: keep the pointer in `SKILL.md` and inline the rules only in `AGENTS.md` and the single-file export, which run without the repo.
+- [x] Superseded: supplied in 2.5.0, 8 cases. Was: `evals/evals.json` is in neither the app copy nor the repo copy, although the changelog says eight evals were added. Supply the file. Recommended: draft it as part of the build, so the validator's warning clears.
 - [ ] Confirm the kits layout-shell fields seo owns: `seoCanonicalUrl` (clash: case-study canonicals come from Notion, no redirects), `schemaType` (clash for case studies: the type is fixed as CreativeWork), `aiSummary` and `keyTakeaways` (clash on case studies: a second copy source). `faqs` is already settled by 2.3.0. Kits asked seo to answer these.
 - [ ] Confirm the made-file share-image sizes for LinkedIn, Behance, Dribbble and the story safe zone; the og image 1200 by 630 is settled. The audit's share-image check reads them; the sizes themselves are a kits or work spec.
-- [ ] Re-upload the wugweb-seo skill zip to the Claude app: the app copy was lost with the others. Rebuild from the repo copy (2.4.1) plus the 2.5.0 build once it is pushed here.
+- [x] Superseded by the status block: the 2.5.0 zip is built and sent; uploading it is the owner's open item. Was: Re-upload the wugweb-seo skill zip to the Claude app: the app copy was lost with the others. Rebuild from the repo copy (2.4.1) plus the 2.5.0 build once it is pushed here.
 - [x] Done in 2.2.0. Take the "Changes to take into the skill session" below into session `cse_01UQ9TRqokKf1xMCS1JD3brM`, or reject them.
 
 ## Plan
@@ -795,7 +795,7 @@ The skill's 26 files were read on 2026-11-19 from main (`4fbf334c`) by a read-on
 | `references/standing-rules.md` | Copy of the home file; matches it | Copy |
 | `AGENTS.md` | The whole skill in one file | Generated |
 | `adapters/cursor/wugweb-seo.mdc`, `adapters/chatgpt/instructions.md` | Cursor rule and ChatGPT instructions | Generated |
-| `export/wugweb-seo.md` | Single-file export | Placed by hand; no script writes it |
+| `export/wugweb-seo.md` | Single-file export | Generated by `build.mjs` since the fixes of 2026-11-19 |
 
 ### Needs changing in the skill
 
@@ -813,6 +813,8 @@ The skill's 26 files were read on 2026-11-19 from main (`4fbf334c`) by a read-on
 12. `audit.md` lines 8 to 16: the contents list is not in section order.
 13. `validate.mjs` line 42 says "six skills"; there are seven.
 14. `SKILL.md` line 267 still lists training bots as open; the owner allowed them on 2026-11-17.
+
+Fixed 2026-11-19 (seo session, version stays 2.5.0; not committed at the time of writing): items 1 and 2 in commit `97b92f90`; items 3 to 14 in the review fixes that follow it. None left unfixed. Notes: item 6, site code fixes (templates, robots.txt, sitemap) are not `wugweb-engineer`'s, so the fix block now names `wugweb-engineer` for data, schema fields and sync scripts and the repo's `AGENTS.md` for site code; item 9, `check-page.mjs` reports a blog or service title over 52 as a blocker, the same severity as a case study over 51, which is this session's reading and not a separate owner ruling. After the fixes: `build.mjs --check` all five files fresh, `validate.mjs` 34 checks with 0 errors and 0 warnings, `test.mjs` 28 of 28 pass, body 1,997 words. The four plan items below are fixed too.
 
 ### Needs changing in this plan
 

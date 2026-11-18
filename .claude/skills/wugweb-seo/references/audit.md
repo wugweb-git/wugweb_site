@@ -6,13 +6,13 @@ canonical host, or the live address. The source document is not enough.
 ## Contents
 
 - Scripted checks
-- On-page keyphrase score
-- Internal-link checks
-- Absorbed rules
 - Manual checks
 - Crawler access
 - Citability score
+- On-page keyphrase score
+- Internal-link checks
 - Rank Math PRO net-new checks
+- Absorbed rules
 - Fix list
 
 ## Scripted checks
@@ -23,7 +23,7 @@ on every finding.
 | Check id | Passes when | Severity on fail |
 |---|---|---|
 | `title-present` | One non-empty `<title>` | BLOCKER |
-| `title-length` | Case study: source title, before " \| Wugweb", is 51 characters or fewer | BLOCKER for a case study; reported only for other types |
+| `title-length` | Source title, before " \| Wugweb", is 51 characters or fewer for a case study (`--kind work`), 52 or fewer for a blog post or service page (`--kind blog`, `--kind service`) | BLOCKER for those three kinds; reported only, at LOW, when no kind is given |
 | `title-rendered` | Rendered title is 60 characters or fewer | HIGH |
 | `description-length` | `meta name="description"` is 140 to 160 characters | HIGH |
 | `h1-single` | Exactly one `<h1>` | HIGH |
@@ -70,7 +70,7 @@ using the longest matching rule.
 | Group | Bots | Rule |
 |---|---|---|
 | Search and citation | Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User | Must be allowed on every page that should be found |
-| Training | GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot, Bytespider, meta-externalagent | The owner's choice. Report what the file says; ask once per property |
+| Training | GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot, Bytespider, meta-externalagent | Allowed on wugweb.com (owner, 2026-11-17). On any other property, report what the file says and ask once |
 
 Read the table with these facts, each from the operator's own bot page as
 read on 2026-11-16:
@@ -166,7 +166,8 @@ until a site-wide phrase map exists.
 
 Beyond the orphan, click-depth, dead-end, generic-anchor and broken-link rules
 in the absorbed set, run these on the internal links. Findings go to
-`wugweb-work` (anchor wording, placement) or a developer (`rel`, redirects).
+`wugweb-work` (anchor wording, placement) or the site code block of the fix
+list (`rel`, redirects).
 `wugweb-strategy` owns the cluster map; this skill checks the links against it.
 
 | Check | What |
@@ -234,7 +235,8 @@ One page (to wugweb-work, as current → proposed)
 Every page using a block (to wugweb-kits)
 1. <block>: <finding>, on <pages>
 
-Code (to a developer)
+Data or code (to wugweb-engineer for Sanity or Notion data, a schema field or a
+sync script; to site code, under the repo's AGENTS.md, for the rest)
 1. BLOCKER <change>. Check: <how to confirm>
 ```
 

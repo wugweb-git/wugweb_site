@@ -2,7 +2,7 @@
 // Checks one rendered HTML page against the audit checks in references/audit.md.
 // Reads text only: no rendering, no scripts run, no network. Exit 1 on any blocker.
 //
-//   node check-page.mjs <page.html> [--kind work] [--host wugweb.com] [--json]
+//   node check-page.mjs <page.html> [--kind work|blog|service] [--host wugweb.com] [--json]
 
 import { readFileSync } from 'node:fs'
 import { printFindings, totals } from './lib.mjs'
@@ -14,7 +14,7 @@ const kind = opt('--kind') ?? 'page'
 const host = opt('--host')
 const asJson = args.includes('--json')
 if (!file) {
-  console.error('Usage: node check-page.mjs <page.html> [--kind work] [--host <host>] [--json]')
+  console.error('Usage: node check-page.mjs <page.html> [--kind work|blog|service] [--host <host>] [--json]')
   process.exit(2)
 }
 
@@ -36,9 +36,11 @@ if (titles.length !== 1 || !titles[0]) add('BLOCKER', 'title-present', '<title>'
 else {
   pass('title-present')
   const source = titles[0].replace(/\s*\|\s*Wugweb\s*$/, '')
-  if (isWork && source.length > 51) add('BLOCKER', 'title-length', '<title>', `source title ${source.length} characters, limit 51`)
-  else if (isWork) pass('title-length')
-  else add('LOW', 'title-length', '<title>', `source title ${source.length} characters; limit for this type not decided`)
+  // House limits on wugweb.com: 51 for a case study, 52 for a blog post or service page.
+  const sourceLimit = isWork ? 51 : kind === 'blog' || kind === 'service' ? 52 : null
+  if (sourceLimit && source.length > sourceLimit) add('BLOCKER', 'title-length', '<title>', `source title ${source.length} characters, limit ${sourceLimit}`)
+  else if (sourceLimit) pass('title-length')
+  else add('LOW', 'title-length', '<title>', `source title ${source.length} characters; no limit set for kind "${kind}". Use --kind work (51), blog or service (52)`)
   if (titles[0].length > 60) add('HIGH', 'title-rendered', '<title>', `rendered title ${titles[0].length} characters, limit 60`)
   else pass('title-rendered')
 }

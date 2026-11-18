@@ -31,7 +31,11 @@ const meta = JSON.parse(read('metadata.json'))
 check('name: lowercase letters, digits and single hyphens, 1 to 64 characters', name && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(name) && name.length <= 64, name)
 check('folder name matches the skill name', basename(root) === name, `${basename(root)} vs ${name}`, 'warning')
 check('description: double-quoted, 1 to 1,024 characters', description.length >= 1 && description.length <= 1024, `${description.length} characters`)
-check('description: third person, says what it does and when to use it', !/^(I|You|We|This skill)\b/.test(description) && /\bUse (when|to|for)\b/.test(description))
+// House form, shared with the sibling skills: it opens "This skill should be used when" and quotes
+// the phrases a user would say. The older "Use when" form still passes.
+const quoted = (description.match(/"[^"]+"/g) ?? []).length
+const houseForm = /^This skill should be used when\b/.test(description) && quoted >= 3
+check('description: third person, says what it does and when to use it', !/^(I|You|We)\b/.test(description) && (houseForm || (!/^This skill\b/.test(description) && /\bUse (when|to|for)\b/.test(description))), houseForm ? '' : `${quoted} quoted phrases`)
 check('description has no angle brackets', !/[<>]/.test(description))
 check('compatibility is 500 characters or fewer', compatibility.length <= 500, `${compatibility.length} characters`)
 const topKeys = fm.split('\n').filter((l) => /^[a-z-]+:/.test(l)).map((l) => l.split(':')[0])
@@ -39,7 +43,7 @@ check('frontmatter keys are in the specification', topKeys.every((k) => ['name',
 check('version in SKILL.md matches metadata.json', version && version === meta.version, `${version} vs ${meta.version}`)
 check('CHANGELOG.md has an entry for this version', read('CHANGELOG.md').includes(`## ${meta.version}`))
 
-// 2. Size. Shared method across the six skills: drop frontmatter (body is already
+// 2. Size. Shared method across the seven skills: drop frontmatter (body is already
 // past it), remove fenced code blocks, split on whitespace, count tokens with a letter or digit.
 const words = body.replace(/```[\s\S]*?```/g, '').split(/\s+/).filter((t) => /[A-Za-z0-9]/.test(t)).length
 check('SKILL.md body is 1,500 to 2,000 words', words >= 1500 && words <= 2000, `${words} words`)
@@ -106,7 +110,7 @@ const run = (args) => execFileSync(process.execPath, args, { stdio: 'pipe' })
 for (const s of readdirSync(join(root, 'scripts')).filter((f) => f.endsWith('.mjs'))) {
   try { run(['--check', join(root, 'scripts', s)]); check(`scripts/${s} parses`, true) } catch (e) { check(`scripts/${s} parses`, false, String(e.stderr).split('\n')[0]) }
 }
-try { run([join(root, 'scripts/build.mjs'), '--check']); check('generated files are fresh (AGENTS.md, adapters, agents)', true) } catch { check('generated files are fresh (AGENTS.md, adapters, agents)', false, 'run node scripts/build.mjs') }
+try { run([join(root, 'scripts/build.mjs'), '--check']); check('generated files are fresh (AGENTS.md, adapters, agents, export)', true) } catch { check('generated files are fresh (AGENTS.md, adapters, agents, export)', false, 'run node scripts/build.mjs') }
 const gpt = existsSync(join(root, 'adapters/chatgpt/instructions.md')) ? read('adapters/chatgpt/instructions.md').match(/```\n([\s\S]*?)```/)?.[1] ?? '' : ''
 check('custom GPT instruction block is 8,000 characters or fewer', gpt.length > 0 && gpt.length <= 8000, `${gpt.length} characters`)
 

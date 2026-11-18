@@ -38,7 +38,11 @@ ok('page-fail does not ban FAQPage', !f.findings.some((x) => x.id === 'schema-ba
 
 const other = run('check-page.mjs', [join(root, 'examples/page-fail.html'), '--json'])
 const o = JSON.parse(other.out)
-ok('a page that is not a case study gets title length as LOW only', o.findings.some((x) => x.id === 'title-length' && x.severity === 'LOW'))
+ok('a page with no kind gets title length as LOW only', o.findings.some((x) => x.id === 'title-length' && x.severity === 'LOW'))
+const blog = JSON.parse(run('check-page.mjs', [join(root, 'examples/page-fail.html'), '--kind', 'blog', '--json']).out)
+ok('a blog post over the source limit gets title length as a blocker at 52', blog.findings.some((x) => x.id === 'title-length' && x.severity === 'BLOCKER' && /limit 52/.test(x.finding)))
+const service = JSON.parse(run('check-page.mjs', [join(root, 'examples/page-pass.html'), '--kind', 'service', '--json']).out)
+ok('a service page within the source limit passes title length', service.passed.includes('title-length'))
 
 const robots = run('check-robots.mjs', [join(root, 'examples/robots.txt'), '--path', '/work/care-booking', '--json'])
 const r = JSON.parse(robots.out)
@@ -68,6 +72,8 @@ ok('keyword-not-used-before is a warning, not scored', sg.tests.find((t) => t.id
   const copy = readFileSync(join(root, 'references', 'standing-rules.md'), 'utf8')
   const marked = (f) => /marked copy/i.test(readFileSync(join(root, f), 'utf8'))
   ok('export carries the marked copy of the standing rules', marked('AGENTS.md') && marked(join('export', 'wugweb-seo.md')))
+  const exported = readFileSync(join(root, 'export', 'wugweb-seo.md'), 'utf8')
+  ok('export is AGENTS.md under its header', exported.endsWith(readFileSync(join(root, 'AGENTS.md'), 'utf8')))
   if (existsSync(home)) ok('standing-rules copy matches the home file', copy.endsWith(readFileSync(home, 'utf8')))
 }
 

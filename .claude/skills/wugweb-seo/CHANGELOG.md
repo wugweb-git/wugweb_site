@@ -2,6 +2,20 @@
 
 ## 2.5.0, 2026-11-17
 
+- 2026-11-19: review fixes, version stays 2.5.0. `build.mjs` now writes `export/wugweb-seo.md`
+  (a short header, then `AGENTS.md`) and `--check`, `validate.mjs` and `test.mjs` cover it.
+  The description takes the sibling form, with quoted user phrases, and `validate.mjs` accepts
+  it. `wugweb-engineer` is named as the skill that applies Sanity and Notion data and schema
+  changes: boundary table, handoffs (row, request 6 and a sent request) and `metadata.json`;
+  "the maker skill" and "a developer" are gone. Keyword note: one per piece, pasted by
+  `wugweb-strategy` into brief field 9, read there by `wugweb-work` (`SKILL.md`, `plan.md`).
+  Link targets (decision 20): `wugweb-strategy` sets the link structure, this skill returns
+  the targets for a piece inside it; sector pages are not a link-up target and a case study
+  links up to its service page only (`SKILL.md`, `handoffs.md` section 2a, `plan.md`). The
+  52-character source title limit for blog posts and service pages is carried into `plan.md`,
+  `audit.md` and `check-page.mjs` (`--kind blog`, `--kind service`). Training bots are allowed
+  on wugweb.com (owner, 2026-11-17) and leave the owner-decision list. README, the audit
+  contents order, "three check scripts" and "seven skills" corrected.
 - Date rule made explicit in references/audit.md: dateModified reflects a real content edit, not the record's every-save update time (raised by wugweb-work).
 - Retired URLs: a page wugweb-strategy retires returns 410 Gone (or 404), keeps no redirect
   and leaves the sitemap; the slug is not reused (strategy decision 7, the owner's one-slug

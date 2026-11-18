@@ -8,13 +8,13 @@ Built from the skill folder. Rebuild whenever the skill changes. Read the skill 
 
 **Version 2.5.0** · Wugweb · November 2026
 
-Plan, audit and report on how Wugweb pages are found in search engines and AI answers. Plan gives the site keyword and intent map, the phrase, intent, outline and brief limits for one page, and keyword notes for social and portfolio titles. Audit checks the rendered page and robots.txt and returns a fix list split three ways. Report reads Search Console and AI answer data and feeds the content plan. It never writes copy and changes nothing itself. Every helper is optional; the rules taken from them are restated in the references. Two check scripts with no dependencies. Independent of CMS, host and agent.
+Plan, audit and report on how Wugweb pages are found in search engines and AI answers. Plan gives the site keyword and intent map, the phrase, intent, outline and brief limits for one page, and keyword notes for social and portfolio titles. Audit checks the rendered page and robots.txt and returns a fix list split three ways. Report reads Search Console and AI answer data and feeds the content plan. It never writes copy and changes nothing itself. Every helper is optional; the rules taken from them are restated in the references. Three check scripts with no dependencies. Independent of CMS, host and agent.
 
 A page is found in two ways: a search engine ranks it, or an AI answer quotes
 it. Both read the same things: what the page claims, how its server HTML is
 built, and what its structured data says.
 
-This skill has three parts, used in this order:
+This skill has three parts, in this order:
 
 1. **Plan.** Before a page is written, give the target phrase, the intent and
    the limits the writer must meet.
@@ -24,8 +24,8 @@ This skill has three parts, used in this order:
 It returns constraints, checks and reports. It never writes or rewrites page
 copy, and it changes no file, page or record itself.
 
-This file works alone. The `references/` files hold the full checklists and
-templates for each part.
+This file works alone. The `references/` files hold the checklists for each
+part.
 
 ## Stay inside this skill's boundary
 
@@ -39,10 +39,11 @@ Each concern has one home. Follow a sibling's rule there; do not restate it here
 | What to publish, to whom and when; reporting on posts | `wugweb-strategy` |
 | Brand name, descriptor and approved facts about Wugweb, for titles and organisation markup | read from `wugweb-brand-os`, never rewritten |
 | Tokens, layout, components and the accessibility audit | `wugweb-kits` |
+| Changes to Sanity and Notion data, schema edits and the sync scripts | `wugweb-engineer`. This skill sets the rule and the value, for example "posts: `schemaType` BlogPosting"; it applies them on the owner's go |
 | The owner's standing rules | `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md`; the home file wins |
 
 If a sibling is not installed, give this skill's answer, say which sibling
-check was skipped, and stop at the boundary. The exact questions sent and
+check was skipped, and stop at the boundary. The questions sent and
 answered are in `references/handoffs.md`.
 
 ## Apply the fixed rules
@@ -89,19 +90,21 @@ These apply to wugweb.com, client sites, Kits and Wugweb X.
   never recommend them.
 - **The source.** Notion holds the SEO fields of a case study and every blog
   post. Propose a change to a field as current → proposed. The owner approves
-  it and the maker skill writes it.
+  it and `wugweb-engineer` applies it.
 
 ## Use the plan part before a page is written
 
-Two callers use this part. `wugweb-strategy` asks for the site keyword and
-intent map, topic gaps and pages to refresh. `wugweb-work` asks for one page,
-as below, or for a keyword note for a LinkedIn, Behance or Dribbble title and
-tags. Never write the post; no hashtag stuffing.
+`wugweb-strategy` asks for the site keyword and intent map, topic gaps and
+pages to refresh. For each piece this skill writes one keyword note: the
+search note, as below, plus a LinkedIn, Behance and Dribbble title and tag
+note where the piece has those forms. `wugweb-strategy` pastes it unchanged
+into brief field 9, where `wugweb-work` reads it; for a case study, `wugweb-work` asks directly.
+Never write the post; no hashtag stuffing.
 
 For one page, answer one question: which phrase and intent should it target?
 
-1. Read what the maker sends: the page, its audience, what was built, and
-   candidate phrases in the owner's words.
+1. Read what is sent: the page, its audience, what was built, and candidate
+   phrases in the owner's words.
 2. Group the candidates by the intent the live results show: someone learning,
    comparing, hiring or looking for Wugweb by name.
 3. Look at the results that rank now. Note their format and the entities they
@@ -112,10 +115,12 @@ For one page, answer one question: which phrase and intent should it target?
 
 Return limits and an outline, never wording: the title limit, the description
 limit, the entities the page must name, the schema, the link rules, and an
-outline. `wugweb-strategy` decides which pages a piece links to. This skill
-owns the link rules: one link up to the service pillar and two or three across
-to sibling pages, descriptive anchors, no orphans or dead ends, and depth from
-home. It audits the result.
+outline. `wugweb-strategy` sets the link structure. Inside that structure
+this skill returns the link targets for a piece and owns the link rules: one
+link up to the service page and two or three across to sibling pages,
+descriptive anchors, no orphans or dead ends, and depth from home. Sector
+pages are not a link-up target; a case study links up to its service page
+only. It audits the result.
 The outline lists the topics the page must cover, in order, each with the fact
 it rests on, or "to supply" where the source gives none; return the outline
 even when the inputs are thin. It names topics, not headings; the maker writes
@@ -147,9 +152,10 @@ node scripts/check-robots.mjs robots.txt --path /work/slug
 ```
 
 It resolves, for each named bot, whether the path is allowed. Search and
-citation bots must reach every page that should be found. Whether to allow
-training bots is the owner's choice; report what the file says and ask once
-per property.
+citation bots must reach every page that should be found. On wugweb.com the
+owner also allows training bots, such as GPTBot, ClaudeBot, Google-Extended
+and CCBot (2026-11-17). On any other property, report what the file says and
+ask once.
 
 ### 3. Check what the scripts cannot see
 
@@ -181,12 +187,12 @@ Both scores report; neither rewrites. Name what is weak; the maker acts.
 Split it three ways. A finding on one page goes to `wugweb-work` as current
 → proposed. A finding that repeats on every page using a block (alt text,
 lazy loading, heading order, image sizes) goes to `wugweb-kits`, which answers
-with its check result. A code fix goes in the developer block below.
+with its check result. A data or code fix goes in the block below.
 
 ## Use the report part after a page is live
 
 The report feeds `wugweb-strategy`'s planning. Reporting on posts belongs
-there, not here.
+there.
 
 1. Name the source and the date range of every number. A Search Console
    export is the standard source; a connected SEO data tool is optional. If
@@ -225,13 +231,16 @@ MEDIUM   body             112 words in server HTML                 server-html-t
 State what was not checked. If the page passes, say it passes and stop. Never
 invent a finding.
 
-## Hand code fixes to a developer
+## Hand data and code fixes to their owner
 
-End an audit that needs code with this block:
+A fix to Sanity or Notion data, a schema field or a sync script goes to
+`wugweb-engineer`. A fix to site code follows the repo's `AGENTS.md`. End an
+audit that needs either with this block:
 
 ```
 SEO fixes: <site>, <date>
-Scope: <routes or files>
+To: <wugweb-engineer, or site code>
+Scope: <routes, files or fields>
 1. BLOCKER <what to change>. Check: <how to confirm it>
 2. ...
 Copy, layout and tokens are out of scope.
@@ -257,31 +266,27 @@ and only after the owner approves.
 
 ## Fit the size of the request
 
-When the user asks for one check, do that check. Then name, in one sentence,
-the next check that would help most. Do not run all three parts for someone who
+When the user asks for one check, do that check. Then name the next most useful
+check in one sentence. Do not run all three parts for someone who
 asked about one title.
 
 ## Leave these decisions to the owner
 
 - Which page keeps a phrase two pages want.
-- Whether training bots may crawl.
 - Title and description limits for client sites, Kits and Wugweb X.
 
 ## Run the scripts
 
-Five scripts, all Node 18 or later, no packages: `check-page.mjs`,
-`score-page.mjs`, `check-robots.mjs`, `validate.mjs`, `test.mjs` and the
-generator `build.mjs`. The exact commands, flags and fixtures are in
-`README.md`.
+Five scripts and the generator `build.mjs`, all Node 18 or later, no
+packages. The commands, flags and fixtures are in `README.md`.
 
 ## Use outside Claude
 
-The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads
-it as it is. `AGENTS.md` is the whole skill compiled into one file for agents
-that read plain instructions. `adapters/` holds a Cursor rule and an
-instruction block for a custom GPT. `scripts/build.mjs` generates all of
-these; edit the sources, never the output. Install steps for each agent are in
-`README.md`.
+Any agent that reads `SKILL.md` loads the folder as it is. `AGENTS.md` is the
+whole skill in one file for agents that read plain instructions. `adapters/` holds a Cursor rule and an
+instruction block for a custom GPT. `export/wugweb-seo.md` is `AGENTS.md`
+under a short header. `scripts/build.mjs` generates all of these; edit the
+sources, never the output. Install steps are in `README.md`.
 
 ---
 
@@ -391,9 +396,10 @@ which handoff was skipped, and label the result a manual check.
 
 | With | Gives | Takes |
 |---|---|---|
-| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports; the per-piece keyword note for the brief (field 9) | Business goal, audience, page list, pillar and cluster structure, the proof map |
-| `wugweb-work` | Fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option. Reads the keyword note from the brief, not from this skill | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; the link targets for each piece (brief field 10), the link rules and the link audit; search reports; the per-piece keyword note for the brief (field 9) | Business goal, audience, page list, pillar and cluster structure, the proof map |
+| `wugweb-work` | Fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option. For own content it reads the keyword note from the brief, not from this skill; for a case study it asks for the one search phrase | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
 | `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
+| `wugweb-engineer` | The rule and the value a field should hold for search (schema type, canonical, noIndex, SEO title length), for example "posts: `schemaType` BlogPosting" | It plans and applies the value on the owner's go and never picks the value. Its schema check findings for SEO fields |
 | `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
 | The voice skill | No link | No link. Voice checks pass through `wugweb-work` |
 
@@ -423,13 +429,27 @@ visible questions.
 `wugweb-seo` writes one keyword note per piece: the search note and, where the
 piece has those forms, the LinkedIn, Behance and Dribbble title and tag note.
 `wugweb-strategy` pastes that note unchanged into brief field 9; `wugweb-work`
-reads it from the brief and does not ask `wugweb-seo` separately.
+reads it from the brief for own content and does not ask `wugweb-seo` separately.
+For client work (a case study) `wugweb-work` writes the brief itself and asks
+`wugweb-seo` for the one search phrase.
 
 To write the note, receive the page, its type, what was built, the audience and
 the candidate phrases. Return it in the shape in `references/plan.md`. The maker
 uses these as constraints. It keeps its headings and adds no FAQ block for
-search, no keyword counts and no sections written for search. The link targets
-come from `wugweb-strategy`; this skill gives the link rules.
+search, no keyword counts and no sections written for search.
+
+#### 2a. Link targets for one piece
+
+Asked by `wugweb-strategy` (decision 20).
+
+`wugweb-strategy` sets the link structure: the pillar and cluster structure
+and the proof map. Inside that structure this skill returns the link targets
+for a piece; `wugweb-strategy` pastes them unchanged into brief field 10. If
+the proof map names a case study for a page, it wins on that case study, and
+this skill picks the other targets around it. Sector pages are not a link-up
+target; a case study links up to its service page only. This skill owns the
+link rules (anchor wording, no orphans or dead ends, depth, how many) and
+checks the links in the audit.
 
 #### 3. Platform keyword note
 
@@ -458,6 +478,17 @@ Receive the addresses and the launch date of any new page. Return the report in
 `references/report.md`, with the date range and source of every number.
 Reporting on posts belongs to `wugweb-strategy`.
 
+#### 6. The value a field should hold for search
+
+Asked by `wugweb-engineer`.
+
+Question: which value should this field hold for search? (schema type,
+canonical, noIndex, SEO title length)
+
+Return the rule and the value, for example "posts: `schemaType` BlogPosting".
+`wugweb-engineer` plans and applies the value on the owner's go. It never
+picks the value.
+
 ### Requests this skill sends
 
 #### Findings that repeat across a block
@@ -468,15 +499,17 @@ Expect back: its check result.
 
 #### Visible wording
 
-`wugweb-strategy` sets the pillar and cluster structure, and the proof map
-wins on which case study backs a page. This skill picks the other link targets
-for a brief around that, owns the link rules (anchor wording, no orphans or
-dead ends, depth, how many) and checks the links in the audit.
-
 Send to `wugweb-work`: the limit, for example a title of 51 characters or
 fewer naming the primary phrase.
 
 Expect back: the wording, voice-checked.
+
+#### A change to a stored field
+
+Send to `wugweb-engineer`: the field, the rule and the value, as current →
+proposed.
+
+Expect back: its change report and check result, after the owner's go.
 
 ### Helper skills
 
@@ -513,11 +546,11 @@ Decline and record any helper answer that asks for:
 <!-- references/plan.md -->
 ## Plan: brief constraints before a page is written
 
-The plan part answers one question for a maker skill: which phrase and intent
+The plan part answers one question for a brief: which phrase and intent
 should this page target, and what limits must the copy meet? It returns limits
 and an outline of topics, never wording.
 
-### What the maker sends
+### What the request carries
 
 ```
 Page: <path> | Type: <case study, blog post, service page> | Client: <name or none>
@@ -563,10 +596,13 @@ Primary phrase: <phrase> (<source and date, or unvalidated>)
 Supporting phrases: <phrase> (<source>), ...
 Format that ranks now: <format>, seen on <up to three addresses>
 Entities the page must name: <people, products, places, numbers already in the source>
-Title: source 51 characters or fewer for a case study; other types not decided
+Title: source 51 characters or fewer for a case study, 52 or fewer for a blog
+  post or service page; rendered 60 or fewer; other sites not decided
 Description: 140 to 160 characters
 Schema: <types, from the fixed rules>
-Links: targets from wugweb-strategy; rules: one up to the pillar, two or three
+Links: <targets for this piece, inside the link structure wugweb-strategy
+  sets>; rules: one up to the service page (a case study links up to its
+  service page only; sector pages are not a link-up target), two or three
   across to siblings, descriptive anchors, no orphans or dead ends
 Outline (topics in order, not headings):
   1. <topic> rests on <fact already in the source>
@@ -597,9 +633,13 @@ this skill's decision.
 
 ### Platform keyword note
 
-Runs only when `wugweb-work` or `wugweb-strategy` asks. Give terms for the
-title, the first line and the tags on LinkedIn, Behance or Dribbble, each
-sourced or marked "unvalidated". Never write the post.
+Part of the one keyword note this skill writes per piece, added when the piece
+has a LinkedIn, Behance or Dribbble form. `wugweb-strategy` pastes the note
+unchanged into brief field 9, where `wugweb-work` reads it for own content.
+For client work (a case study), `wugweb-work` writes the brief itself and asks
+this skill for the one search phrase. Give terms for the title, the first line and the tags on
+LinkedIn, Behance or Dribbble, each sourced or marked "unvalidated". Never
+write the post.
 
 ### Absorbed rules
 
@@ -633,13 +673,13 @@ canonical host, or the live address. The source document is not enough.
 ### Contents
 
 - Scripted checks
-- On-page keyphrase score
-- Internal-link checks
-- Absorbed rules
 - Manual checks
 - Crawler access
 - Citability score
+- On-page keyphrase score
+- Internal-link checks
 - Rank Math PRO net-new checks
+- Absorbed rules
 - Fix list
 
 ### Scripted checks
@@ -650,7 +690,7 @@ on every finding.
 | Check id | Passes when | Severity on fail |
 |---|---|---|
 | `title-present` | One non-empty `<title>` | BLOCKER |
-| `title-length` | Case study: source title, before " \| Wugweb", is 51 characters or fewer | BLOCKER for a case study; reported only for other types |
+| `title-length` | Source title, before " \| Wugweb", is 51 characters or fewer for a case study (`--kind work`), 52 or fewer for a blog post or service page (`--kind blog`, `--kind service`) | BLOCKER for those three kinds; reported only, at LOW, when no kind is given |
 | `title-rendered` | Rendered title is 60 characters or fewer | HIGH |
 | `description-length` | `meta name="description"` is 140 to 160 characters | HIGH |
 | `h1-single` | Exactly one `<h1>` | HIGH |
@@ -697,7 +737,7 @@ using the longest matching rule.
 | Group | Bots | Rule |
 |---|---|---|
 | Search and citation | Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User | Must be allowed on every page that should be found |
-| Training | GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot, Bytespider, meta-externalagent | The owner's choice. Report what the file says; ask once per property |
+| Training | GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot, Bytespider, meta-externalagent | Allowed on wugweb.com (owner, 2026-11-17). On any other property, report what the file says and ask once |
 
 Read the table with these facts, each from the operator's own bot page as
 read on 2026-11-16:
@@ -793,7 +833,8 @@ until a site-wide phrase map exists.
 
 Beyond the orphan, click-depth, dead-end, generic-anchor and broken-link rules
 in the absorbed set, run these on the internal links. Findings go to
-`wugweb-work` (anchor wording, placement) or a developer (`rel`, redirects).
+`wugweb-work` (anchor wording, placement) or the site code block of the fix
+list (`rel`, redirects).
 `wugweb-strategy` owns the cluster map; this skill checks the links against it.
 
 | Check | What |
@@ -861,7 +902,8 @@ One page (to wugweb-work, as current → proposed)
 Every page using a block (to wugweb-kits)
 1. <block>: <finding>, on <pages>
 
-Code (to a developer)
+Data or code (to wugweb-engineer for Sanity or Notion data, a schema field or a
+sync script; to site code, under the repo's AGENTS.md, for the rest)
 1. BLOCKER <change>. Check: <how to confirm>
 ```
 

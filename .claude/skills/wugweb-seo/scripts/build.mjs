@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Compiles the skill into portable files for agents other than Claude.
 //
-//   node build.mjs           write AGENTS.md, adapters/ and agents/openai.yaml
+//   node build.mjs           write AGENTS.md, adapters/, agents/openai.yaml and export/<name>.md
 //   node build.mjs --check   exit 1 if any generated file is stale
 //
 // Sources: SKILL.md, references/*.md, metadata.json. Never edit the outputs.
@@ -108,8 +108,18 @@ const openai = [
   '',
 ].join('\n')
 
+// The single-file export: a short header, then AGENTS.md as it is.
+const exported = [
+  `# ${name} (single-file export, v${meta.version})`,
+  '',
+  'Built from the skill folder. Rebuild whenever the skill changes. Read the skill first, then the reference a part names.',
+  '',
+  agents,
+].join('\n')
+
 const outputs = {
   'AGENTS.md': agents,
+  [`export/${name}.md`]: exported,
   [`adapters/cursor/${name}.mdc`]: cursor,
   'adapters/chatgpt/instructions.md': chatgpt,
   'agents/openai.yaml': openai,

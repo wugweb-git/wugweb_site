@@ -11,7 +11,7 @@ no file, page or record itself.
 | Part | When | Output |
 |---|---|---|
 | Plan | Before a page is written | A site keyword and intent map; or for one page the phrases with sources, intent, an outline and limits; or a platform keyword note |
-| Audit | After a page is built | Scripted checks on the HTML and robots.txt, manual checks, a citability score, and a fix list split three ways |
+| Audit | After a page is built | Scripted checks on the HTML and robots.txt, manual checks, a citability score, an on-page keyphrase score, and a fix list split three ways |
 | Report | After a page is live | Period comparison, risers and fallers, quick wins, AI answer presence, and the cause of a drop |
 
 ## What is in the package
@@ -23,17 +23,19 @@ no file, page or record itself.
 | `references/audit.md` | Every check id, the manual checks, crawler groups and the citability score | yes |
 | `references/report.md` | Data sources, the monthly report shape and drop diagnosis | yes |
 | `references/handoffs.md` | Questions answered for and sent to other skills, helper skills, declined findings | yes |
+| `references/standing-rules.md` | The owner's standing rules, a marked copy of `docs/skills/STANDING-RULES.md` in the repository; the home file wins | no, copied |
 | `scripts/check-page.mjs` | 18 checks on rendered HTML | yes |
 | `scripts/score-page.mjs` | On-page keyphrase score, Rank Math model | yes |
 | `scripts/check-robots.mjs` | Bot access for one path in robots.txt | yes |
 | `scripts/validate.mjs` | Checks this skill against its own format | yes |
 | `scripts/test.mjs` | Self-test on the fixtures | yes |
-| `scripts/build.mjs` | Generates the four files at the end of this table | yes |
+| `scripts/build.mjs` | Generates the five files at the end of this table | yes |
 | `scripts/lib.mjs` | Shared helpers | yes |
-| `examples/` | A passing page, a failing page and a robots.txt | yes |
+| `examples/` | A passing page (`page-pass.html`), a failing page (`page-fail.html`), a page for the keyphrase score (`score-good.html`) and a `robots.txt` | yes |
 | `evals/evals.json` | Eight test prompts with expectations | yes |
 | `metadata.json`, `CHANGELOG.md` | Version, date, abstract, history | yes |
 | `AGENTS.md` | The whole skill in one file | no, generated |
+| `export/wugweb-seo.md` | Single-file export: `AGENTS.md` under a short header | no, generated |
 | `adapters/cursor/wugweb-seo.mdc` | Cursor rule | no, generated |
 | `adapters/chatgpt/instructions.md` | Custom GPT instructions | no, generated |
 | `agents/openai.yaml` | Display settings for Codex and the ChatGPT desktop app | no, generated |
@@ -78,6 +80,7 @@ Node 18 or later. No packages. No network.
 ```bash
 node scripts/check-page.mjs examples/page-pass.html --kind work --host wugweb.com
 node scripts/check-page.mjs examples/page-fail.html --kind work --host wugweb.com
+node scripts/check-page.mjs examples/page-fail.html --kind blog
 node scripts/score-page.mjs examples/score-good.html --keyword "care booking" --host wugweb.com
 node scripts/check-robots.mjs examples/robots.txt --path /work/care-booking
 node scripts/validate.mjs
@@ -93,8 +96,10 @@ node scripts/build.mjs --check
   file allows.
 - The report part needs a Search Console export or a connected data tool. It
   has no script.
-- What the skill covers for blog posts and service pages is not decided.
-- The evals are written and have not been run.
+- Title and description limits for client sites, Kits and Wugweb X are not
+  decided. On wugweb.com they are: see the fixed rules in `SKILL.md`.
+- The skill ships no eval harness. The evals were run once, on 2026-11-17, by
+  two agents: one answered from the skill, one graded.
 
 ## Change the skill
 

@@ -12,9 +12,10 @@ which handoff was skipped, and label the result a manual check.
 
 | With | Gives | Takes |
 |---|---|---|
-| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; link rules and the link audit; search reports; the per-piece keyword note for the brief (field 9) | Business goal, audience, page list, pillar and cluster structure, the proof map |
-| `wugweb-work` | Fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option. Reads the keyword note from the brief, not from this skill | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
+| `wugweb-strategy` | Site keyword and intent map, topic gaps, refresh list; the link targets for each piece (brief field 10), the link rules and the link audit; search reports; the per-piece keyword note for the brief (field 9) | Business goal, audience, page list, pillar and cluster structure, the proof map |
+| `wugweb-work` | Fix list for a finding on one page, JSON-LD check, citability score. Asks it for any visible wording, such as a title option. For own content it reads the keyword note from the brief, not from this skill; for a case study it asks for the one search phrase | Topic, client, audience; approved body; rendered page address; the wording, voice-checked |
 | `wugweb-kits` | A finding that repeats on every page using a block: alt text, lazy loading, heading order, image sizes | Its check result |
+| `wugweb-engineer` | The rule and the value a field should hold for search (schema type, canonical, noIndex, SEO title length), for example "posts: `schemaType` BlogPosting" | It plans and applies the value on the owner's go and never picks the value. Its schema check findings for SEO fields |
 | `wugweb-brand-os` | Nothing | One way: the approved brand name, descriptor and approved facts about Wugweb, for titles and organisation markup. Never rewritten |
 | The voice skill | No link | No link. Voice checks pass through `wugweb-work` |
 
@@ -44,13 +45,27 @@ visible questions.
 `wugweb-seo` writes one keyword note per piece: the search note and, where the
 piece has those forms, the LinkedIn, Behance and Dribbble title and tag note.
 `wugweb-strategy` pastes that note unchanged into brief field 9; `wugweb-work`
-reads it from the brief and does not ask `wugweb-seo` separately.
+reads it from the brief for own content and does not ask `wugweb-seo` separately.
+For client work (a case study) `wugweb-work` writes the brief itself and asks
+`wugweb-seo` for the one search phrase.
 
 To write the note, receive the page, its type, what was built, the audience and
 the candidate phrases. Return it in the shape in `references/plan.md`. The maker
 uses these as constraints. It keeps its headings and adds no FAQ block for
-search, no keyword counts and no sections written for search. The link targets
-come from `wugweb-strategy`; this skill gives the link rules.
+search, no keyword counts and no sections written for search.
+
+### 2a. Link targets for one piece
+
+Asked by `wugweb-strategy` (decision 20).
+
+`wugweb-strategy` sets the link structure: the pillar and cluster structure
+and the proof map. Inside that structure this skill returns the link targets
+for a piece; `wugweb-strategy` pastes them unchanged into brief field 10. If
+the proof map names a case study for a page, it wins on that case study, and
+this skill picks the other targets around it. Sector pages are not a link-up
+target; a case study links up to its service page only. This skill owns the
+link rules (anchor wording, no orphans or dead ends, depth, how many) and
+checks the links in the audit.
 
 ### 3. Platform keyword note
 
@@ -79,6 +94,17 @@ Receive the addresses and the launch date of any new page. Return the report in
 `references/report.md`, with the date range and source of every number.
 Reporting on posts belongs to `wugweb-strategy`.
 
+### 6. The value a field should hold for search
+
+Asked by `wugweb-engineer`.
+
+Question: which value should this field hold for search? (schema type,
+canonical, noIndex, SEO title length)
+
+Return the rule and the value, for example "posts: `schemaType` BlogPosting".
+`wugweb-engineer` plans and applies the value on the owner's go. It never
+picks the value.
+
 ## Requests this skill sends
 
 ### Findings that repeat across a block
@@ -89,15 +115,17 @@ Expect back: its check result.
 
 ### Visible wording
 
-`wugweb-strategy` sets the pillar and cluster structure, and the proof map
-wins on which case study backs a page. This skill picks the other link targets
-for a brief around that, owns the link rules (anchor wording, no orphans or
-dead ends, depth, how many) and checks the links in the audit.
-
 Send to `wugweb-work`: the limit, for example a title of 51 characters or
 fewer naming the primary phrase.
 
 Expect back: the wording, voice-checked.
+
+### A change to a stored field
+
+Send to `wugweb-engineer`: the field, the rule and the value, as current →
+proposed.
+
+Expect back: its change report and check result, after the owner's go.
 
 ## Helper skills
 
