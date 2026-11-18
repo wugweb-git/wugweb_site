@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Scripts need Node 18 or later, no packages. The drift and inventory scripts read the repo; evals/run.mjs reads live staging pages."
 metadata:
   author: wugweb
-  version: "2.1.2"
+  version: "2.1.3"
   argument-hint: <file-or-page>
 ---
 
