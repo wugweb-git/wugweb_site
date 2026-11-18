@@ -44,7 +44,7 @@ This skill writes nothing to Notion, Sanity, R2 or `brand_guidelines/`. A Change
 
 ## Outside Claude
 
-Attach `export/wugweb-brand-os.md` and ask directly. Rebuild it with `node scripts/build-export.mjs` whenever a rule changes.
+Attach `export/wugweb-brand-os.md` and ask directly. Rebuild it with `node scripts/build.mjs` whenever a rule changes, then run `node scripts/test.mjs`. Install routes for Cursor, Codex, ChatGPT and agents with no skill support are in `README.md`.
 
 The export joins `SKILL.md` and every reference file. It is plain Node with no dependencies. Never edit it by hand.
 

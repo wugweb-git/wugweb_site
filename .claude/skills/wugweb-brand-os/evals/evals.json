@@ -1,7 +1,7 @@
 {
   "skill": "wugweb-brand-os",
-  "version": "0.2.0",
-  "note": "Status 'runnable' means the test can run on 0.2.0. 'waiting on the owner' means it needs an answer or a file the owner has not supplied.",
+  "version": "0.3.0",
+  "note": "Status 'runnable' means the test can run on 0.3.0. 'waiting on the owner' means it needs an answer or a file the owner has not supplied. 'waiting on the app upload' means it needs a real run in the Claude app, where triggering can be measured.",
   "evals": [
     {
       "id": 1,
@@ -70,7 +70,7 @@
       "status": "runnable",
       "prompt": "Check this case-study cover brief for a transit app: one oversized rounded circle as the anchor, a monochrome hand holding the project's real route card screen through a rounded mask, one yellow marker dot, a lot of empty space, title outside the image.",
       "expected": [
-        "Result pass",
+        "Passes the brief: no banned motif, one mode, one anchor; says the artwork itself was not seen, so the pass covers the brief only",
         "Names one mode, product proof or editorial",
         "Confirms the cover shows a project-specific object",
         "Notes the mask must not hide the part that proves the claim"
@@ -242,7 +242,7 @@
       "expected": [
         "Says this is not brand-os",
         "Points to wugweb-work",
-        "May offer visual direction and approved facts only"
+        "May offer brand rules, Visual OS direction and approved facts; writes no post"
       ]
     },
     {
@@ -379,7 +379,7 @@
     {
       "id": 36,
       "name": "triggering: should trigger and should not",
-      "status": "runnable",
+      "status": "waiting on the app upload",
       "prompt": "Run ten prompts that should trigger this skill (answer and line questions) and ten that should not (voice, topics, tokens, SEO, client brand, card spacing, sitemap, launch posts, schema)",
       "expected": [
         "The right skill fires at least nine times in ten for each set"

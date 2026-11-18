@@ -31,7 +31,7 @@ Run in this order. How to look at each point is in `visual-os/judging-a-visual.m
 5. **Banned motifs.** Any item on the banned list in `visual-os/art-direction.md` is a fail, named.
 6. **Cover rule.** A case-study cover shows a project-specific object or outcome. A generic laptop or dashboard is a fail.
 7. **Colour.** Yellow at 10% or less and kept for the final call to action; text never pure white; accents limited. Points still open with the owner are reported as "not decided", not failed.
-8. **Media rule.** No existing file is cropped. Resizing keeps the aspect ratio. A mask does not hide the part that proves the claim.
+8. **Media rules.** Check against the media rules in `docs/skills/STANDING-RULES.md`: cropping, re-encoding, aspect ratio, and a mask over the proof.
 9. **Format.** The format's row in `visual-os/formats-and-campaigns.md` is met, and the piece reads at its final size.
 10. **Rights.** Every photograph, screenshot, logo and reference has a rights label.
 

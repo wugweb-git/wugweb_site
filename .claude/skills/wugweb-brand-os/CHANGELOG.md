@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0, 2026-11-19
+
+- Same shape as the other Wugweb skills: `README.md`, `metadata.json`, `AGENTS.md`, `adapters/cursor/wugweb-brand-os.mdc`, `adapters/chatgpt/instructions.md` and `agents/openai.yaml`, so the skill works in the Claude app, Claude Code, Cursor, Codex, ChatGPT and agents with no skill support.
+- `scripts/build-export.mjs` renamed `scripts/build.mjs`; it now generates the five portable files and has `--check`. New `scripts/test.mjs` holds the self-test: frontmatter against the Agent Skills format, body length, no second person, named files present, no dashes, no token values, helpers named only in `tooling.md`, media rules not restated, generated files fresh, standing rules carried unchanged, versions in step, evals complete.
+- Open items are filled through use, by the owner's approval: an answer that turns up in any session comes back here as a Change proposal; other skills read these items from here and never hold them.
+- Media rules: `SKILL.md`, `art-direction.md`, `colour-type-photo-motion.md`, `formats-and-campaigns.md`, `review-gates.md` and `judging-a-visual.md` point to `docs/skills/STANDING-RULES.md` instead of restating them (eval 38).
+- `art-direction.md`: the logo minimum size names no pixel value; `wugweb-kits` holds it. The unused logo PNG is recorded as removed (2026-11-18).
+- Description: a client's brand is named as out of scope.
+- Evals: 6 passes a clean brief on the brief only; 22 allows brand rules beside visual direction; 36 waits on the app upload, where triggering can be measured.
+- Eval rerun 2026-11-19 on 0.3.0, 11 tests touched by this change (1, 2, 3, 6, 8, 14, 20, 22, 23, 25, 38), answered by one agent and graded by another: 9 pass, no invented facts. Open: 3 cites two reference files where Answer mode asks for one; 38 finds nine brand-os rules restated in `wugweb-kits` and `wugweb-work` (their sessions own the fix; brand-os itself holds the media rules only as pointers).
+
 ## 0.2.0, 2026-11-19
 
 - `SKILL.md` status, version and file index now match the reference files: values approved, five facts plus the pillars approved, two core items blank, 21 owner questions.

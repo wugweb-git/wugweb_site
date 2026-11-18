@@ -52,7 +52,7 @@ Would this come out the same for any similar brief? Does it read as a template, 
 | Density | One anchor, one interaction, up to three supports? | Remove, do not add |
 | Format | Does it meet its row in `formats-and-campaigns.md` and read at final size? | Remove small interface, labels and thin lines |
 | Banned motifs | Anything on the banned list? | Remove and replace through the metaphor |
-| Media rule | Was any existing file cropped or re-encoded? Does a mask hide the proof? | Resize with the ratio kept; move the mask |
+| Media rules | Does it break the media rules in `docs/skills/STANDING-RULES.md`, for example a cropped file or a mask over the proof? | Follow that file; move the mask |
 | Logo | Real file, unaltered? | Use the real file |
 | Rights | Is every element labelled? | Label, or remove what is unknown |
 

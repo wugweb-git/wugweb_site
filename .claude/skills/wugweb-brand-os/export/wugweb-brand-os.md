@@ -1,6 +1,10 @@
-<!-- wugweb-brand-os 0.2.0. Built by scripts/build-export.mjs. Do not edit; edit the source files. -->
+# wugweb-brand-os (single-file export, v0.3.0)
 
-# Standing rules (copied from docs/skills/STANDING-RULES.md; read first, they win)
+Built from the files in this folder by `scripts/build.mjs`. Do not edit by hand. Rebuild whenever the skill or `docs/skills/STANDING-RULES.md` changes. Read the skill first, then the reference a mode names.
+
+## Owner's standing rules
+
+Copied from `docs/skills/STANDING-RULES.md`. That file is the source; if this block differs, that file wins.
 
 These apply to every skill in the Wugweb Skill System and to every session.
 Each skill reads this file and repeats none of it. A skill's own rules live in
@@ -92,14 +96,14 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.2.0 holds the structure, every rule that has a source and the owner's rulings of 2026-11-17. Two core items are blank because the owner has not supplied them yet:
+Version 0.3.0 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
 
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
 - **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.
 - **Audience:** not decided. The owner will supply it.
 - **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Legal name, team size, projects, markets and profile links wait for the owner.
 
-One question is open (10), plus the open rows in `brand-facts.md` and the positioning line. Propose any change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
+One question is open (10), plus the open rows in `brand-facts.md` and the positioning line; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
 Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
@@ -208,7 +212,7 @@ These are confirmed. They hold in every mode.
 
 **Media**
 
-- The media rule wins over any brand wording. An existing media file is never cropped or re-encoded. It is resized only with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
+- The media rules in `docs/skills/STANDING-RULES.md` win over any brand wording and are not restated here.
 - In the guidelines, "crop" means how a subject is framed in a composition, never the cutting of a file.
 
 This skill states these rules. `wugweb-kits` holds every value and enforces them on the interface. No token value is written in this skill.
@@ -260,11 +264,11 @@ Load only the file a mode needs.
 | `references/visual-os/judging-a-visual.md` | How to judge a visual and what to fix |
 | `examples/` | Approved and rejected visuals, once the owner supplies them |
 | `evals/evals.json` | Per-task tests |
-| `scripts/build-export.mjs` | Builds and checks the single-file export |
+| `scripts/build.mjs`, `scripts/test.mjs` | Build the generated files; self-test |
 
 ## Works outside Claude
 
-This file carries the status, the modes, the fixed rules and the boundaries, so it stands alone where reference files do not load. Every file is plain Markdown. Helpers are optional; each mode has a by-hand procedure above. `node scripts/build-export.mjs` writes `export/wugweb-brand-os.md`, one file to attach in another tool. The export is rebuilt when a rule changes and is never edited by hand. The Visual check needs a model that can see images.
+This file carries the status, modes, fixed rules and boundaries, so it stands alone where reference files do not load. Every file is plain Markdown; helpers are optional. `node scripts/build.mjs` writes `AGENTS.md` and the export (one file with the standing rules), plus the Cursor rule, the ChatGPT instructions and the Codex settings; `README.md` says where each goes. Never edit them by hand. The Visual check needs a model that can see images.
 
 ## Never
 
@@ -276,6 +280,7 @@ This file carries the status, the modes, the fixed rules and the boundaries, so 
 - Edit `brand_guidelines/`.
 - Write to Notion, Sanity or R2. Every change is a proposal for the owner.
 - Turn a helper skill's advice into a rule without the owner's ruling.
+
 
 ---
 
@@ -654,7 +659,7 @@ Run in this order. How to look at each point is in `visual-os/judging-a-visual.m
 5. **Banned motifs.** Any item on the banned list in `visual-os/art-direction.md` is a fail, named.
 6. **Cover rule.** A case-study cover shows a project-specific object or outcome. A generic laptop or dashboard is a fail.
 7. **Colour.** Yellow at 10% or less and kept for the final call to action; text never pure white; accents limited. Points still open with the owner are reported as "not decided", not failed.
-8. **Media rule.** No existing file is cropped. Resizing keeps the aspect ratio. A mask does not hide the part that proves the claim.
+8. **Media rules.** Check against the media rules in `docs/skills/STANDING-RULES.md`: cropping, re-encoding, aspect ratio, and a mask over the proof.
 9. **Format.** The format's row in `visual-os/formats-and-campaigns.md` is met, and the piece reads at its final size.
 10. **Rights.** Every photograph, screenshot, logo and reference has a rights label.
 
@@ -885,7 +890,7 @@ This skill writes nothing to Notion, Sanity, R2 or `brand_guidelines/`. A Change
 
 ## Outside Claude
 
-Attach `export/wugweb-brand-os.md` and ask directly. Rebuild it with `node scripts/build-export.mjs` whenever a rule changes.
+Attach `export/wugweb-brand-os.md` and ask directly. Rebuild it with `node scripts/build.mjs` whenever a rule changes, then run `node scripts/test.mjs`. Install routes for Cursor, Codex, ChatGPT and agents with no skill support are in `README.md`.
 
 The export joins `SKILL.md` and every reference file. It is plain Node with no dependencies. Never edit it by hand.
 
@@ -1099,9 +1104,9 @@ Selection questions:
 
 ## The definition of "crop"
 
-In these guidelines, "crop" means how a subject is framed in a composition. An existing media file is never cropped. It is resized with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
+In these guidelines, "crop" means how a subject is framed in a composition. It never means cutting an existing media file. The media rules in `docs/skills/STANDING-RULES.md` apply and win over any guideline wording.
 
-The owner's media rule is confirmed and wins over any guideline wording. The definition is approved and lives only in this skill (question 12, 2026-11-17). The guideline files stay as they are: `brand_guidelines/` is an untouched archive, and no wording change to it is proposed.
+The definition is approved and lives only in this skill (question 12, 2026-11-17). The guideline files stay as they are: `brand_guidelines/` is an untouched archive, and no wording change to it is proposed.
 
 ## Editorial feel
 
@@ -1148,9 +1153,9 @@ Take the principle, never the composition. Name what the reference does (hierarc
 - Their tones are fixed: the lockup is white and grey, the mark yellow and white.
 - The logo files are exempt from the pure white and yellow rules. Nothing else is.
 - Clear space is required on every side, equal to the height of the mark. `wugweb-kits` holds the value.
-- Minimum size: `wugweb-kits` holds it; the 40px nav logo is the floor.
+- Minimum size: `wugweb-kits` holds it, with the nav logo as the floor.
 - No one-colour version until one is needed. The logo appears only on black.
-- The unused `public/brand/wugweb-mark.png` is approved to go; it is removed in a site change, not by this skill.
+- The unused `public/brand/wugweb-mark.png` was removed in a site change on 2026-11-18.
 
 ---
 
@@ -1230,7 +1235,7 @@ Palette behaviour by mode, from the same file:
 - Natural gestures that advance the metaphor: holding, pointing, searching, building, selecting, navigating, observing.
 - Avoid staged smiling teams, handshakes, glossy office stock, colourful clothing that fights the palette, and faces made uncanny by generation tools.
 - A real photo or screenshot comes before generated imagery. Say so first. A new image file is made only when nothing existing fits, one file at a time, on the owner's yes.
-- Existing media follows the media rule: no cropping of the file, resize with the aspect ratio kept, masks allowed.
+- Existing media follows the media rules in `docs/skills/STANDING-RULES.md`.
 
 ## Lighting
 
@@ -1254,7 +1259,7 @@ Palette behaviour by mode, from the same file:
 
 **Question 17, confirmed.** A slight bounce is within the brand: the kits behaviour stands on the site. Artwork motion stays calm.
 
-No sound on any media.
+Sound follows the media rules in `docs/skills/STANDING-RULES.md`.
 
 ---
 
@@ -1339,7 +1344,7 @@ Settle before making: the purpose and where it appears, the exact copy (locked, 
 
 - No text baked into generated images.
 - Use the real logo file where a logo belongs.
-- Existing media: never crop the file, never re-encode, resize only with the aspect ratio kept, masks allowed.
+- Existing media follows the media rules in `docs/skills/STANDING-RULES.md`.
 
 ## Campaign systems
 
@@ -1407,7 +1412,7 @@ Would this come out the same for any similar brief? Does it read as a template, 
 | Density | One anchor, one interaction, up to three supports? | Remove, do not add |
 | Format | Does it meet its row in `formats-and-campaigns.md` and read at final size? | Remove small interface, labels and thin lines |
 | Banned motifs | Anything on the banned list? | Remove and replace through the metaphor |
-| Media rule | Was any existing file cropped or re-encoded? Does a mask hide the proof? | Resize with the ratio kept; move the mask |
+| Media rules | Does it break the media rules in `docs/skills/STANDING-RULES.md`, for example a cropped file or a mask over the proof? | Follow that file; move the mask |
 | Logo | Real file, unaltered? | Use the real file |
 | Rights | Is every element labelled? | Label, or remove what is unknown |
 

@@ -91,9 +91,9 @@ Selection questions:
 
 ## The definition of "crop"
 
-In these guidelines, "crop" means how a subject is framed in a composition. An existing media file is never cropped. It is resized with its aspect ratio kept, or shown through a mask or frame. A mask must not hide the part that proves the claim.
+In these guidelines, "crop" means how a subject is framed in a composition. It never means cutting an existing media file. The media rules in `docs/skills/STANDING-RULES.md` apply and win over any guideline wording.
 
-The owner's media rule is confirmed and wins over any guideline wording. The definition is approved and lives only in this skill (question 12, 2026-11-17). The guideline files stay as they are: `brand_guidelines/` is an untouched archive, and no wording change to it is proposed.
+The definition is approved and lives only in this skill (question 12, 2026-11-17). The guideline files stay as they are: `brand_guidelines/` is an untouched archive, and no wording change to it is proposed.
 
 ## Editorial feel
 
@@ -140,6 +140,6 @@ Take the principle, never the composition. Name what the reference does (hierarc
 - Their tones are fixed: the lockup is white and grey, the mark yellow and white.
 - The logo files are exempt from the pure white and yellow rules. Nothing else is.
 - Clear space is required on every side, equal to the height of the mark. `wugweb-kits` holds the value.
-- Minimum size: `wugweb-kits` holds it; the 40px nav logo is the floor.
+- Minimum size: `wugweb-kits` holds it, with the nav logo as the floor.
 - No one-colour version until one is needed. The logo appears only on black.
-- The unused `public/brand/wugweb-mark.png` is approved to go; it is removed in a site change, not by this skill.
+- The unused `public/brand/wugweb-mark.png` was removed in a site change on 2026-11-18.
