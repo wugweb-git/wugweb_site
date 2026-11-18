@@ -929,3 +929,52 @@ Checked on staging after the deploy: pages 200 on two requests, evals 17 of 17, 
 - From 2026-11-18 the coordinator split is lifted: the kits session keeps this plan and its Notion page itself and works directly with the owner.
 
 **Not verified in a browser:** reduced motion on every path, phone and touch, the Spotlight dense layout at 1200, a real clip over 15 seconds. The in-app browser pane draws no animation frames, so motion was measured in Chrome.
+
+## Full read, 2026-11-19: the md files and what needs changing
+
+Every file of the skill (88) was read on 2026-11-19 from main (`4fbf334c`) by a read-only reviewer for the coordinator. Nothing in the skill folder was changed. Checks: `validate.mjs` 59 rules with 0 errors, self test 10 of 10, doc drift 0 findings, `build.mjs --check` fails (stale files, item 1). The two large generated files were checked by script against their sources. The list below is for the kits session to act on; line numbers are as of that commit.
+
+### The md files the skill carries
+
+| File | What it is | Kind |
+| --- | --- | --- |
+| `SKILL.md` | Workflow and rule index, 1,995 words | Authored |
+| `README.md` | Folder map | Authored |
+| `CHANGELOG.md` | History | Authored |
+| `references/` (8 files) | `layout-shell`, `component-sizes`, `six-layers`, `spec-templates`, `known-doc-clashes`, `media-and-widgets`, `consolidation-targets`, `storybook` | Authored |
+| `references/standing-rules.md` | Marked copy of the home file; matches it | Copy |
+| `rules/_sections.md`, `rules/_template.md` | Section list and rule template | Authored |
+| `rules/` (59 rules) | token 5, map 4, component 4, reuse 4, spec 4, shell 12, label 8, kits 18 | Authored |
+| `AGENTS.md` | Skill body, shell reference, standing rules, the 59 rules | Generated |
+| `export/wugweb-kits.md` | `AGENTS.md` plus a 3-line header | Generated |
+| `adapters/cursor/wugweb-kits.mdc`, `adapters/chatgpt/instructions.md` | Cursor rule and ChatGPT instructions | Generated |
+
+### Needs changing in the skill
+
+1. `AGENTS.md` and `export/wugweb-kits.md` are stale. They lack the "API keys and secrets" section of the standing rules (reference lines 65 to 71). That is the only difference. The section reached main in `c46bae17` and `5bec58b9`; the build committed in `7631fdad` was made on a branch without it. Fix: run `node scripts/build.mjs` once and add a changelog line.
+2. Because of item 1 the eval "AGENTS.md export is current" must fail, so "19 of 19" in `CHANGELOG.md` line 6 does not hold until the rebuild.
+3. `SKILL.md` line 14 says "29 Wugweb rule files"; there are 38 (12 shell, 8 label, 18 kits).
+4. `README.md` line 29 says 17 evals; there are 19. Its folder map leaves out `CHANGELOG.md`, `adapters/`, `agents/`, `export/` and `references/storybook.md`.
+5. `SKILL.md` line 159 names only `AGENTS.md` as the export for GPT and Cursor.
+6. `CHANGELOG.md` line 20 names a rule `label-every-section-has-an-id-and-a-name`; the rule is `label-id-and-name`.
+7. Stale against the site code: the nested main on `/contact-us` (`SKILL.md` line 156, `known-doc-clashes.md` line 22) is gone; "6 sections on /work/[slug] without an id" (`rules/label-id-and-name.md` line 10) is no longer true; "panel has no pause control yet" (`media-and-widgets.md` line 16) is no longer true; `.btn-partners-cta` and `.global-blog-list` (`consolidation-targets.md` lines 7 and 14) no longer exist in `src`.
+8. `references/component-sizes.md` line 38 says four sizes are "not yet in sizing.md"; they are, and the same file says so at line 47.
+9. `rules/kits-tokens-only.md` line 10 says "about 369 px literals"; this plan's section 29 says about 305. Not recounted.
+10. `references/layout-shell.md` line 30 says validate fails on any differing value; `validate.mjs` checks three strings and the breakpoints table only.
+11. `wugweb-engineer` is not named: `SKILL.md` line 14 ("Engineering is ordinary work under CLAUDE.md") and the ownership list at lines 38 to 43, and the ChatGPT adapter text in `build.mjs`.
+12. `SKILL.md` line 43 says "no link to wugweb-voice"; the voice skill routes "where wording sits in the interface" to kits.
+13. `rules/kits-logo-size-and-space.md` line 10 says kits holds the logo check; brand-os says logo checks live there and only sizes in kits.
+14. Brand-os rules are restated here instead of pointed to: `SKILL.md` line 41 and `rules/kits-yellow-budget.md` line 10 (one brand colour, pillar colours, glow exception, black canvas, bounce), and `references/component-sizes.md` lines 24 to 32 (logo files, exemptions, ground). This is the open brand-os eval 38.
+
+`SKILL.md` is 5 words under the 2,000-word limit, so fixes there must not add words.
+
+### Needs changing in this plan
+
+- The skill card still says version 0.1.0 planned and lists an `examples/` folder that does not exist.
+- Status line 3 says 2.0.0, 67 files, 26 rules; section 29 says 2.1.1 and an 87-file zip. The files are 2.1.3 and 88.
+
+### Worth knowing
+
+- `validate.mjs` does not run the build check; only the evals catch a stale export.
+- Three block docs still say awaiting sign-off: `sector-showcase`, `blog-post`, `industries-directory`.
+- `--focus-primary` (skill) and `--focus-button` (plan) resolve to the same value; `.btn:focus-visible` in `global.css` still uses a raw outline.

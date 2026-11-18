@@ -454,3 +454,57 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 | 2026-11-16 | Open questions 1 to 22 answered by the owner and recorded as decisions. Brief fields 10, 13, 14 and 15, the refresh row, the handoff contract, the planning fields and the matrix row updated to match. Old content calendar read: starter template rows only, nothing moved. |
 | 2026-11-16 | Decision 20 replaced (owner, as recorded in `wugweb-seo` 2.2.1): this skill sets the pillar and cluster structure; `wugweb-seo` picks each brief's link targets. Brief field 10, the proof map row, the handoff contract and the matrix row updated. Question 23 added. |
 | 2026-11-16 | Question 23 answered by the owner and recorded as decision 23: the proof map wins on which case study backs a page. |
+
+## Full read, 2026-11-19: the md files and what needs changing
+
+Every file of the skill (47) was read on 2026-11-19 from main (`4fbf334c`) by a read-only reviewer for the coordinator. Nothing in the skill folder was changed. The skill's own checks pass (`build.mjs --check` all fresh, `test.mjs` all passed, body 1,693 words, no dashes). The two large generated files were checked by the build check. The list below is for the strategy session to act on; line numbers are as of that commit.
+
+### The md files the skill carries
+
+| File | What it is | Kind |
+| --- | --- | --- |
+| `SKILL.md` | Ten modes, rules, sources, handoffs | Authored |
+| `README.md` | Package map, install, run | Authored |
+| `CHANGELOG.md` | History | Authored |
+| `references/strategy.md` | Goals, pillars, stance, channels | Authored |
+| `references/topics-and-calendar.md` | Intake, signal log, scoring, calendar | Authored |
+| `references/brief-format.md` | The 21-field brief, the FAQ block | Authored |
+| `references/piece-structures.md` | Message shapes | Authored |
+| `references/editorial-standards.md` | Publish bar, canonical, byline | Authored |
+| `references/content-models.md` | Types, planning fields | Authored |
+| `references/proof-map.md` | Which case study backs what | Authored |
+| `references/refresh-retire.md` | Verdicts | Authored |
+| `references/campaigns-and-repurposing.md` | Campaigns, co-posts, newsletter | Authored |
+| `references/performance-review.md` | Report mode | Authored |
+| `references/skill-map.md` | Sibling links, helpers | Authored |
+| `references/ops.md` | Tool wiring | Authored |
+| `examples/` (4 files) | Three briefs and a calendar skeleton | Authored |
+| `evals/` (3 cases) | A prompt plus 4 or 5 grader files each | Authored |
+| `AGENTS.md`, `export/wugweb-strategy.md`, `adapters/cursor/wugweb-strategy.mdc`, `adapters/chatgpt/instructions.md` | Built by `scripts/build.mjs` | Generated |
+
+### Needs changing in the skill
+
+1. `README.md` lines 4 and 106 say 0.1.3; everything else says 0.1.4.
+2. `wugweb-engineer` is never named, although the engineer skill says strategy rules on fields and engineer builds them. Missing from the handoff table (`SKILL.md` lines 109 to 115), `SKILL.md` line 103, `references/skill-map.md`, `metadata.json`, `references/brief-format.md` line 63 ("site work") and `references/content-models.md` line 65 ("engineering for Sanity").
+3. `references/topics-and-calendar.md` line 103 lists five blocks as not final; the kits skill says the owner signed all five off on 2026-11-17. Also touches the two brief examples.
+4. Link targets contradict inside the skill: `references/content-models.md` line 19 says which pages are linked is decided here; `SKILL.md` line 117 and `brief-format.md` line 20 say `wugweb-seo` returns the targets.
+5. The examples predate the field 9 and 13 rulings: `examples/brief-blog-post.md` line 17 and `brief-service-page.md` line 17 say work asks seo for notes (the note is pasted in the brief); field 13 in both lacks the "we" or "I" record.
+6. Verdict lists disagree: `references/refresh-retire.md` line 12 has "Differentiate"; `SKILL.md` line 87, `content-models.md` line 42 and `README.md` line 22 do not.
+7. `examples/calendar-skeleton.md` line 14 uses "Flexible / Any / Any", against the skill's own rule, and has no audience column.
+8. `references/ops.md` line 51 says the skill "is planned to live" in the repo; it is on main. Line 31 names `claude/backups/`; the repo folder is `backups/`.
+9. `SKILL.md` line 137 points to a "Skills project under skills/wugweb-strategy/"; there is no such path in the repo.
+
+### Needs changing in this plan and in FAQ-REVIEW.md
+
+- Lines 3, 34 and 35 say 0.1.2 and 42 files; line 24 is right (0.1.4, 47 files).
+- Line 5 says not installed; the skill is installed in the Claude app.
+- Line 26 says nothing is built; lines 41 and 364 say no scripts (two exist); lines 142 and 373 name `evals.json` (evals are folders); line 366 names `wugweb-strategy.export.md`.
+- The matrix row gives no voice link and no engineer; the change log stops at 2026-11-16.
+- `FAQ-REVIEW.md` lines 42, 45, 57, 67 and 112 carry the note about softening "always" on Brand 2 on rows that are not Brand 2.
+
+### Worth knowing
+
+- `test.mjs` does not check the version in `README.md` or `metadata.json`, which is how item 1 slipped through.
+- The seo skill contradicts itself on link targets too (its `handoffs.md` lines 92 to 95); see the seo page.
+- Brand strategy is still blank in brand-os, so there is no audience to quote yet.
+- The kits skill says strategy reaches kits only through work; strategy tells itself to re-check the kits list directly.

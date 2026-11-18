@@ -489,3 +489,63 @@ This is what `wugweb-seo` reads from brand-os, one way, and never rewrites. It m
 - The official profile links are the list `wugweb-seo` uses in organisation markup.
 
 **Left out on purpose.** The 2023 profile also holds tax, registration and bank details. They are not brand facts and are not copied into this plan.
+
+## Full read, 2026-11-19: the md files and what needs changing
+
+Every file of the skill was read on 2026-11-19 from main (`4fbf334c`) by a read-only reviewer for the coordinator. Nothing in the skill folder was changed. The skill's own checks pass (`build.mjs --check` all fresh, `test.mjs` all passed). The three large generated files were checked by script, not read line by line. The list below is for the brand-os session to act on; line numbers are as of that commit.
+
+### The md files the skill carries
+
+| File | What it is | Kind |
+| --- | --- | --- |
+| `SKILL.md` | Status, four modes, fixed rules, boundaries, file index | Authored |
+| `README.md` | Package table, install routes, run steps | Authored |
+| `CHANGELOG.md` | History | Authored |
+| `references/identity-and-positioning.md` | Is and is not, pillars, candidate lines, tests | Authored |
+| `references/brand-strategy.md` | Blank slots, competitor method | Authored |
+| `references/values-and-principles.md` | Five values, ten principles | Authored |
+| `references/audience.md` | Blank slots, the shape to fill | Authored |
+| `references/messaging.md` | Messaging rule, tests, proof | Authored |
+| `references/vocabulary.md` | Name, pillar names, terms | Authored |
+| `references/brand-facts.md` | Facts with source and status | Authored |
+| `references/review-gates.md` | Check lists, scoring, rights labels | Authored |
+| `references/source-map.md` | Sources, conflicts, the 21 questions | Authored |
+| `references/tooling.md` | Helpers and vendors | Authored |
+| `references/visual-os/` (7 files) | Art direction, colour and type, formats, judging a visual, metaphors, objects, references and patterns | Authored |
+| `examples/README.md` | Empty record shape | Authored |
+| `references/standing-rules.md` | Marked copy of the home file; matches it | Generated |
+| `AGENTS.md`, `export/wugweb-brand-os.md`, `adapters/cursor/wugweb-brand-os.mdc`, `adapters/chatgpt/instructions.md` | Built by `scripts/build.mjs` | Generated |
+
+### Needs changing in the skill
+
+1. The NDA client is named: `references/source-map.md` line 98 (three times), carried into `AGENTS.md` and the export at line 818, and `CHANGELOG.md` line 40.
+2. `wugweb-engineer` is named nowhere: `SKILL.md` lines 37 to 44 and 151 to 157, `metadata.json`, `README.md` lines 9 to 11, eval 36's near misses. The skill file body is 1,996 of 2,000 words, so adding a row needs a cut.
+3. `CHANGELOG.md` line 5 implies every sibling carries a standing-rules copy; strategy and engineer do not carry that file.
+4. `references/brand-facts.md` line 11 says "Five competing lines"; `identity-and-positioning.md` lists seven and at line 68 says "three lines in use".
+5. `references/vocabulary.md` line 35 says the legal name has two forms; `brand-facts.md` line 10 says three.
+6. `references/source-map.md` line 30 says "values not approved"; they were approved on 2026-11-17. Also stale: `values-and-principles.md` line 49, `source-map.md` lines 17 and 75.
+7. `references/source-map.md` lines 79 and 81 mark questions 1 and 3 "Answered"; this plan says "Open". `SKILL.md` line 23 says only question 10 is open.
+8. Light background: `references/visual-os/formats-and-campaigns.md` lines 27 and 51 still allow a light field, against `art-direction.md` line 79 and `SKILL.md` line 126.
+9. `references/visual-os/colour-type-photo-motion.md`: lines 26 and 31 (magenta as brand energy; avoid purple, green, orange) sit under "not yet ruled on" but are overruled at lines 45 to 47.
+10. The same file, lines 63 to 68, still holds logo rules that `CHANGELOG.md` line 15 says were removed.
+11. The description frame has seven parts in `SKILL.md` line 75 and six in `judging-a-visual.md` line 11.
+12. `references/messaging.md` says three seconds at line 24 and five at line 58.
+13. `references/tooling.md` line 3 and `README.md` line 42 say only `tooling.md` names Notion; seven other authored files name it.
+14. `README.md` lines 109 to 111 list four blank items; `SKILL.md` line 16 says two.
+15. `CHANGELOG.md` line 10 says the zip has "42 files"; the folder has 31 files and 11 folders.
+
+### Needs changing in this plan
+
+- The NDA client is named at lines 36, 52 and 340.
+- The frontmatter example (lines 132 to 137) is the old one: version 0.1.0, the old description, "1,979 words".
+- "42 files" at line 4 (see item 15).
+- Section 19 says it mirrors `brand-facts.md` but adds a fourth legal name the skill lacks; line 43 gives a positioning candidate that is not in `identity-and-positioning.md` and says "six other lines" where seven are listed.
+- Line 50 keeps a finished item in Pending. The matrix row does not name `wugweb-engineer`.
+
+### Worth knowing
+
+- `scripts/build.mjs` lines 122 to 123 hardcode a short restatement of the standing rules into the ChatGPT instructions; it will not follow the home file.
+- Eval 38's open finding may be out of date: a sample found restated brand rules only in the kits skill file, none in work.
+- `docs/skills/AI-MODELS.md` line 36 gives this skill a key name and a vision model; the skill mentions neither.
+- `references/tooling.md` names helpers under plugin names that differ from the installed ones.
+- Eval 17 is marked "waiting on the owner" but needs a run in another tool; one eval expects campaign systems "reported as not defined" while `formats-and-campaigns.md` line 84 says not to report one as missing.

@@ -539,3 +539,55 @@ The brand guidelines hold no rule on we or I, banned words, headline length or t
 ### Brand docs status
 
 The brand guidelines folder is marked completed and archived on 2026-08-07, so its voice lines are candidates, not live rules. Internal terms in `VOCABULARY.md` are internal language and not necessarily public copy.
+
+## Full read, 2026-11-19: the md files and what needs changing
+
+Every file of the skill was read on 2026-11-19 from main (`4fbf334c`) by a read-only reviewer for the coordinator. Nothing in the skill folder was changed. The skill's own checks pass (`build.mjs --check` all fresh, `test.mjs` all passed, body 1,993 words). The three large generated files were checked by the build check, not read line by line. The list below is for the voice session to act on; line numbers are as of that commit.
+
+### The md files the skill carries
+
+| File | What it is | Kind |
+| --- | --- | --- |
+| `SKILL.md` | Method, fixed rules, the voice check | Authored |
+| `README.md` | Package table, install, run | Authored |
+| `CHANGELOG.md` | History | Authored |
+| `references/voice.md` | Rules V-01 to V-06, candidates C-01 to C-06 | Authored |
+| `references/modes.md` | 12 modes, all waiting on samples | Authored |
+| `references/words.md` | Spelling, banned and proper-noun lists the script reads | Authored |
+| `references/corpus.md` | Sample ledger (empty), rulings R-001 to R-006 | Authored |
+| `references/handoff.md` | Contract with the sibling skills | Authored |
+| `references/blind-test.md` | Blind test design and evidence | Authored |
+| `references/tooling.md` | Helpers and systems | Authored |
+| `references/standing-rules.md` | Marked copy of the home file; matches it | Copy |
+| `examples/README.md` | Example shape, empty | Authored |
+| `evals/fixtures/clean.md`, `off-voice.md` | Test fixtures | Authored |
+| `evals/*/prompt.md` (4) | Eval prompts | Authored |
+| `AGENTS.md`, `export/wugweb-voice.md`, `adapters/chatgpt/instructions.md`, `adapters/cursor/wugweb-voice.mdc` | Built by `scripts/build.mjs` | Generated |
+
+### Needs changing in the skill
+
+1. `evals/evals.json` lines 3 to 4 say version 0.1.0; the skill is 0.3.0.
+2. `evals/evals.json` line 102 says "below three occurrences"; `SKILL.md` line 63 says three unedited samples in the mode.
+3. `scripts/check.mjs` line 205 exits by flag count only, so a result of "fail" with no flags exits 0, while the header and `SKILL.md` line 107 present the exit code as the signal.
+4. `scripts/check.mjs` line 167 says "Steps 3 to 6 need a reader"; the skill file has steps 3 to 8.
+5. `README.md` line 79: the usage line leaves out `--sources`.
+6. `CHANGELOG.md` line 32 says `README.md` and `metadata.json` are generated; the build writes neither and the README marks them hand-edited.
+7. `SKILL.md` line 127 and `references/corpus.md` line 50 call the 2023 profile "background only, pending his confirmation"; the owner ruled on 2026-11-17 that it is a voice source.
+8. `wugweb-engineer` is named nowhere (`metadata.json` related skills, `SKILL.md` lines 34 to 43, `references/handoff.md` line 15). The engineer skill names voice.
+9. `SKILL.md` line 164: the list of generated files leaves out `agents/openai.yaml`.
+10. `references/corpus.md` line 38 (R-002) says a copy lives in `~/.claude/skills/wugweb-voice/`; that folder does not exist.
+
+### Needs changing in this plan
+
+- Lines that say "57 or more files", "57 files" and "58 tracked files": the folder has 32.
+- "1,999 words": the body is 1,993.
+- "six skills": there are seven.
+- The strategy row says "no direct link"; the skill gives voice a read-only link to the strategy signal log.
+- The profile pages line still says "Not calibration. CONFIRM", and "Lives in ... proposed. CONFIRM" is decided; the status still reads "Plan ready for vetting".
+
+### Worth knowing
+
+- `test.mjs` runs the build, so the test rewrites the five generated files each run. It is not read-only.
+- The dash scan in `test.mjs` covers `.md`, `.mjs` and `.json` only.
+- Eval 14 (export parity) is marked as waiting on samples although the evals it reruns can run.
+- The open items (the 23 banned words, candidates C-07 to C-10, the profile mode) are not in the skill; `words.md` carries 11 of the 23 as candidates.

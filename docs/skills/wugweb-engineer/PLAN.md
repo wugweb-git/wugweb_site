@@ -77,3 +77,57 @@ Each link must also be listed by the other skill (rule 8). Proposed lines for th
 - [ ] A working Notion token in `.env` (the sync scripts read `NOTION_TOKEN`; the standard name is `NOTION_API_TOKEN`).
 - [ ] Whether the site's scripts move to the standard key names (`SANITY_SYNC_TOKEN`, `NOTION_API_TOKEN`): a site-code change.
 - [ ] The sibling skills list their side of each link (rule 8), each in its own session.
+
+## Full read, 2026-11-19: the md files and what needs changing
+
+Every file of the skill (73) was read on 2026-11-19 from main (`4fbf334c`) by a read-only reviewer for the coordinator, with this plan, the standing rules, `SECRETS.md` and `AI-MODELS.md`. Nothing in the skill folder was changed and no script that touches Sanity or Notion was run. The skill's own checks pass (`build.mjs --check` 5 fresh, `validate.mjs` 91 checks with 0 errors, `test.mjs` all passed). No stale generated file, no version disagreement (0.3.1 everywhere), no wrong key name, no secret value in the skill and no remote write without `--go` was found. The list below is for the engineer session to act on; line numbers are as of that commit.
+
+### The md files the skill carries
+
+| File | What it is | Kind |
+| --- | --- | --- |
+| `SKILL.md` | Procedure, nine modes, the change report format | Authored |
+| `README.md` | Package overview, install, run | Authored |
+| `CHANGELOG.md` | History, 0.1.0 to 0.3.1 | Authored |
+| `references/data-patch-runbook.md` | Steps with commands, undo | Authored |
+| `references/schema-change.md` | Schema edits and the schema check | Authored |
+| `references/sync-scripts.md` | The three Notion sync scripts | Authored |
+| `references/script-status.md` | Status table for 55 site scripts | Authored |
+| `references/media-read.md` | Reading R2 and the asset registry | Authored |
+| `references/handoffs.md` | Contracts with sibling skills | Authored |
+| `references/tooling.md` | Ids, variable names, connectors | Authored |
+| `references/open-items.md` | Pending items A, B, G, H | Authored |
+| `examples/README.md`, `examples/change-report.md` | Invented examples | Authored |
+| `evals/` (6 cases) | A prompt plus 4 to 6 grader files each | Authored |
+| `AGENTS.md`, `export/wugweb-engineer.md`, `adapters/cursor/wugweb-engineer.mdc`, `adapters/chatgpt/instructions.md` | Built by `scripts/build.mjs` | Generated |
+
+### Needs changing in the skill: scripts (fix these before the first real data change)
+
+1. `scripts/backup.mjs` lines 24 and 39: `--print` skips the personal-data guard and prints the first 200 characters of each document. For `platformProfile` documents, which hold credential fields, that would echo credentials into the session, against `SECRETS.md`.
+2. `scripts/backup.mjs` line 22 with `scripts/lib.mjs` lines 72 to 77: the guard reads the query text only. A query by id list (the runbook's own check and undo query), `*[]` or `_type match` gets past it and would write those document types into the tracked `backups/` folder. It should check the `_type` of what was fetched.
+3. `scripts/lib.mjs` lines 80 to 81: with no token, `query()` silently falls back to the public CDN, so a backup misses drafts with no warning. `references/tooling.md` line 60 says a script without the token exits with code 2; that is true only for writes.
+4. `scripts/apply-plan.mjs` lines 72 to 73: the result log is written after the changes are sent, in a mode that fails if the file exists. If it exists, the writes land and the log is lost. Check before sending.
+5. `scripts/test.mjs` line 92: the temp prefix `wd-schema-` is a leftover of the old name `wugweb-data`.
+
+### Needs changing in the skill: docs
+
+6. `references/data-patch-runbook.md` lines 71, 78 and 94 say `<plan>.result.json`; the script writes `<backup>.json.result.json`.
+7. `SKILL.md` line 68, `metadata.json` line 5 and `build.mjs` line 89 say the skill never creates a document; `references/sync-scripts.md` line 25 allows the blog sync's creates.
+8. `references/schema-change.md` line 19 names a `test` script and a type-check script that the two `package.json` files do not have.
+9. `references/script-status.md` covers the 55 tracked scripts. Nine untracked `scripts/tmp-*.mjs` files sit on disk and there is no rule for a script missing from the table.
+10. The eval `service-faqs-from-review` disagrees with `references/open-items.md` line 11 (what to load, and the dashes are already removed); it counts 10 "answer again" rows where 5 are service rows and 5 are on `/faq`.
+11. `examples/change-report.md` line 9: the Backup line lacks the `sha256` the skill file requires at line 94.
+12. `README.md` line 64: sibling file counts are out of date (now brand-os 31, seo 26, voice 32, kits 88).
+13. `evals/routing-check.json` line 2 says "seven skill descriptions plus this skill's"; there are six siblings.
+14. `CHANGELOG.md` line 5 says the web engineering page points here and its rotation lines are fixed; the repo copy of that plan had not been updated when this was read.
+
+### Needs changing in this plan
+
+- Line 74 says "Push to GitHub waits"; the skill is on main since `4f18f079`.
+
+### Worth knowing
+
+- No sibling skill names `wugweb-engineer`, so every handoff is one-sided. Each sibling page now lists that as a change to make.
+- One clash marks the whole batch of 50 as clashed and unwritten; "which documents clashed" is not exact.
+- The `notion-sync-401` eval passes only while the Notion token stays rejected.
+- `scripts/apply-schema.cjs` line 5 in the site repo holds a connection string with a password, as the skill says.

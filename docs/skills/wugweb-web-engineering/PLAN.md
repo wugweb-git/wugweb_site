@@ -200,3 +200,6 @@ Part of item S is done, on the owner's word "get rid of stale or redundant md fi
 
 Still open from item S: the stale lines inside `governance.md` (local assets, dual-serve, upload scripts, old counts).
 
+## The data work now has a skill (2026-11-19)
+
+Sanity and Notion data changes, schema edits, the sync scripts and backups are now owned by the skill `wugweb-engineer` (0.3.1, on main since `4f18f079`; plan at `docs/skills/wugweb-engineer/PLAN.md`). The "not a skill" decision at the top of this file is superseded for that part. Items A, B and G above are carried in that skill's open items. No key rotation: the owner's standing rule since 2026-11-19 is that key rotation is his call and is never done from a session, so any line above that says a password or token should be rotated is his decision, not a pending task.

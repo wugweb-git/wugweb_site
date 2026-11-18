@@ -1282,3 +1282,66 @@ Research (encode, do not re-derive):
 | 2026-11-16 | Owner | Final skill list. | Nothing dropped: 22 core, 19 situational, 17 second opinion. `ui-system-mapper` is a separate skill. SEO stays one skill, `wugweb-seo`. |
 | 2026-11-16 | Owner | Media rule and scope. | Resize allowed if the original aspect ratio is kept; clipping masks allowed. Scope now includes blog posts, service pages and site-wide SEO (Part 3, to be planned). |
 | 2026-11-16 | Owner | Six-skill Wugweb Skill System. | `wugweb-work` produces every piece in two tracks; the social and other forms are a module of this skill; planning belongs to `wugweb-strategy`. |
+
+## Full read, 2026-11-19: the md files and what needs changing
+
+Every file of the skill (54) was read on 2026-11-19 from main (`4fbf334c`) by a read-only reviewer for the coordinator. Nothing in the skill folder was changed. The skill's own checks pass (`build.mjs --check` 5 of 5 fresh, `validate.mjs` 30 checks with 0 errors, `test.mjs` all passed). No stale generated file, no version disagreement, no NDA name and no stray dash was found in the skill. The list below is for the work session to act on; line numbers are as of that commit.
+
+### The md files the skill carries
+
+| File | What it is | Kind |
+| --- | --- | --- |
+| `SKILL.md` | Procedure, rules, index | Authored |
+| `README.md` | Package overview, install, run | Authored |
+| `CHANGELOG.md` | History | Authored |
+| `references/standing-rules.md` | Marked copy of the home file; matches it | Copy |
+| `references/evidence.md` | Audit findings, ledger, fact lock, numbers | Authored |
+| `references/body-content-standard.md` | The v2 grammar | Authored |
+| `references/own-content.md` | Track 2 steps, the FAQ rule | Authored |
+| `references/media-standard.md` | Media rule, manifest, shapes | Authored |
+| `references/visual-read.md` | Look mode and the read schema | Authored |
+| `references/archetypes.md` | Archetype recipes | Authored |
+| `references/forms.md` and `references/forms/` (13 files) | Forms index and one file per form, plus publish approval | Authored |
+| `references/handoffs.md` | Requests to sibling skills | Authored |
+| `references/qa-checklist.md` | Publish gate | Authored |
+| `references/open-items.md` | Open and settled matters | Authored |
+| `references/skill-map.md` | Helpers, permissions, clashes | Authored |
+| `references/ops-cycle.md` | Commands, output formats, site wiring | Authored |
+| `references/copy-and-seo.md` | Brief template, lengths, voice and SEO pointers | Authored |
+| `references/layout-grammar.md`, `design-principles.md`, `schema-jsonld.md` | Rules "held for" kits, kits and seo | Authored |
+| `examples/` (7 files) | NTUC proposal, two skeletons, three NTUC forms examples, one test fixture | Authored |
+| `AGENTS.md`, `export/wugweb-work.md`, `adapters/cursor/wugweb-work.mdc`, `adapters/chatgpt/instructions.md` | Built by `scripts/build.mjs` | Generated |
+
+### Needs changing in the skill
+
+1. `wugweb-engineer` is never named. `SKILL.md` line 120 ("only this skill writes"), `handoffs.md` line 3 and `ops-cycle.md` lines 82 to 102 (sync, Notion and Sanity writes) contradict the engineer skill, which owns the sync and Sanity patches. Also missing from `metadata.json`, the `SKILL.md` ownership table and `skill-map.md`.
+2. "Six skills" in `README.md` line 3 and "five sibling skills" at line 25 are out of date.
+3. "Until a sibling skill is installed" wording is out of date, since all siblings exist: `SKILL.md` lines 36, 79, 81 and 140 to 143, `README.md` lines 44 to 45, `handoffs.md` lines 5, 9 and 24, and the headers of `layout-grammar.md`, `design-principles.md`, `schema-jsonld.md`, `skill-map.md`. Caveat: kits holds no block catalogue and seo has no JSON-LD graph file, so those three held files cannot become bare pointers until the rules move.
+4. Title limit: `qa-checklist.md` line 39 and `check-case-page.mjs` line 150 say 60; `evals.json` line 123 and the seo audit reference say 51 before the suffix.
+5. Kits values are restated: 44 px (`layout-grammar.md` lines 30 and 107, `qa-checklist.md` line 69); 85vw, 20%, 2400 and 35 to 60 (`layout-grammar.md` lines 58, 66, 79, 148).
+6. Word count: `validate.mjs` line 36 uses its own count (1,863); the shared method gives 1,811.
+7. Evals against the skill: `evals.json` lines 52, 75 and 80 expect the Airtel Xsafe files flagged "wrong client", while `visual-read.md` line 108 and the changelog say they are misnamed IndusNinja boards; line 131 asks whether a scheduling tool is connected (settled: none).
+8. `examples/forms-ntuc-fact-pack.md` line 27 says NTUC facts are still open; `open-items.md` line 40 says not.
+9. `case-audit.mjs` lines 76 and 81 recognise only "Sanity site copy"; `ops-cycle.md` line 77 says "Framer site copy" is read the same way.
+10. `README.md` line 52 says 16 reference files (17 exist), line 58 says the build writes three files (it writes five); `export/` and `agents/openai.yaml` are not listed there or at `SKILL.md` line 149.
+11. `ops-cycle.md` line 88 says `NOTION_TOKEN`; the standard name is `NOTION_API_TOKEN` (the site sync script itself still reads the old name).
+12. `media-standard.md` line 80 and `ops-cycle.md` line 75 say no folder listing exists; `scripts/media-manifest-dry-run.mjs` now does it.
+13. `metadata.json` line 6 says Part 2 runs on its own branch; it goes straight to main.
+14. `CHANGELOG.md` lines 54 to 58 say "Same content as 0.4.3, no rule changed" under 0.5.0 after about 25 rule changes, and there is no line for the 2026-11-18 standing-rules commits.
+15. Hard stops: `SKILL.md` line 63 lists six, `qa-checklist.md` line 14 lists three.
+16. `forms/newsletter.md` lines 23 to 25 say "Not decided" while `open-items.md` line 3 says nothing is open.
+17. `examples/body-musiclinkd.md` line 9 and `skill-map.md` line 50 name the same helper differently.
+
+### Needs changing in this plan
+
+- The NDA client is named at lines 630, 945 and 1224.
+- Line 7 gives the last skill commit as `12d0f63c`; it is `5bec58b9`.
+- Line 44 lists steps 4 and 5 as next while line 67 has them on main; line 96 still says 0.4.2 and evals not run.
+- Lines 94 and 115 say site code is not a skill; `wugweb-engineer` now exists. Line 38 says `NOTION_TOKEN`.
+
+### Worth knowing
+
+- `validate.mjs` checks 10 banned words; `case-audit.mjs` carries 25.
+- `case-audit.mjs` does not parse the `Section:` prefix that `body-content-standard.md` line 135 describes.
+- The helper name table in `skill-map.md` dates from 2026-11-16 and no longer matches the installed names.
+- `ops-cycle.md` line 72 carries an unresolved "to be corrected if wrong".
