@@ -83,7 +83,7 @@ The owner will supply every open item below, and positioning, values, audience a
 | 5 | `brand_guidelines/` stays untouched as the archive | Confirmed 2026-11-17 |
 | 6 | Purple, green and orange in artwork | Confirmed: all six pillar colours stand (see 21) |
 | 7 | Who owns `04_AI_PROMPT_ENGINE` | Confirmed: Visual OS here owns it |
-| 8 | Where working preferences live | Closed: in `docs/skills/STANDING-RULES.md` |
+| 8 | Where working preferences live | Closed: in the standing rules (`standing-rules.md`) |
 | 9 | "Does a lot, into one" as public wording | Answered: an idea, not public wording, until the owner picks the wording |
 | 10 | Visual OS and Brand Strategy documents, nine source images | Open: none in Notion (2026-11-17); owner to name the pages if they exist |
 | 11 | Where the plan is kept | Confirmed |

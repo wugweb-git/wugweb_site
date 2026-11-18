@@ -91,7 +91,7 @@ Selection questions:
 
 ## The definition of "crop"
 
-In these guidelines, "crop" means how a subject is framed in a composition. It never means cutting an existing media file. The media rules in `docs/skills/STANDING-RULES.md` apply and win over any guideline wording.
+In these guidelines, "crop" means how a subject is framed in a composition. It never means cutting an existing media file. The media rules in `references/standing-rules.md` apply and win over any guideline wording.
 
 The definition is approved and lives only in this skill (question 12, 2026-11-17). The guideline files stay as they are: `brand_guidelines/` is an untouched archive, and no wording change to it is proposed.
 

@@ -73,7 +73,7 @@ Palette behaviour by mode, from the same file:
 - Natural gestures that advance the metaphor: holding, pointing, searching, building, selecting, navigating, observing.
 - Avoid staged smiling teams, handshakes, glossy office stock, colourful clothing that fights the palette, and faces made uncanny by generation tools.
 - A real photo or screenshot comes before generated imagery. Say so first. A new image file is made only when nothing existing fits, one file at a time, on the owner's yes.
-- Existing media follows the media rules in `docs/skills/STANDING-RULES.md`.
+- Existing media follows the media rules in `references/standing-rules.md`.
 
 ## Lighting
 
@@ -97,4 +97,4 @@ Palette behaviour by mode, from the same file:
 
 **Question 17, confirmed.** A slight bounce is within the brand: the kits behaviour stands on the site. Artwork motion stays calm.
 
-Sound follows the media rules in `docs/skills/STANDING-RULES.md`.
+Sound follows the media rules in `references/standing-rules.md`.

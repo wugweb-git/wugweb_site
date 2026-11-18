@@ -1,7 +1,7 @@
 # wugweb-brand-os
 
 Says who Wugweb is and what its visuals must mean, and checks visuals and claims
-against that. Version 0.3.1.
+against that. Version 0.3.2.
 
 It holds brand strategy (identity, positioning, values, audience, differentiation,
 messaging framework), approved facts about Wugweb, brand rules and Visual OS (art
@@ -19,8 +19,8 @@ content strategy to `wugweb-strategy`, token values to `wugweb-kits`, SEO to
 | Fact check | Copy that makes claims about Wugweb | Each claim marked approved or not approved, with status and source |
 | Change | A proposed brand rule or fact | Current to proposed, with evidence, for the owner's approval |
 
-The owner's standing rules in `docs/skills/STANDING-RULES.md` are always on and
-win over anything here. Open items (the positioning line, the audience, five
+The owner's standing rules in `docs/skills/STANDING-RULES.md` (copied to
+`references/standing-rules.md`) are always on and win over anything here. Open items (the positioning line, the audience, five
 facts, the Visual OS and Brand Strategy documents) are filled through use, by the
 owner's approval: an answer that turns up in any session comes back here as a
 Change proposal.
@@ -46,6 +46,7 @@ Change proposal.
 | `scripts/build.mjs` | Generates the files marked "no" below | yes |
 | `scripts/test.mjs` | Self-test on the skill's own files | yes |
 | `metadata.json`, `CHANGELOG.md` | Version, date, abstract, history | yes |
+| `references/standing-rules.md` | Marked copy of the standing rules | no, generated |
 | `AGENTS.md` | The whole skill in one file, with the standing-rules block | no, generated |
 | `export/wugweb-brand-os.md` | The same single file under its own name | no, generated |
 | `adapters/cursor/wugweb-brand-os.mdc` | Cursor rule | no, generated |
@@ -104,7 +105,7 @@ wins.
 
 ## Status
 
-Built, version 0.3.1. Structure, sourced rules and the owner's rulings of
+Built, version 0.3.2. Structure, sourced rules and the owner's rulings of
 2026-11-16 and 17 are in. Blank until supplied: the positioning line, the
 audience, differentiation, brand strategy, and five facts (legal name, team size,
 projects, markets, profile links). Examples are empty. Triggering is tested only

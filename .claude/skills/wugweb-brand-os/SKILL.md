@@ -3,7 +3,7 @@ name: wugweb-brand-os
 description: "Holds Wugweb's brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules and Visual OS (art direction), and returns reference answers and check findings as proposals. This skill should be used when the user asks 'what is Wugweb's positioning', 'who is Wugweb's audience', 'what are our values', 'how are we different', 'what is our messaging framework', 'is this artwork on brand', 'how should this card, slide or cover look', 'is this claim about Wugweb approved', or asks to change a brand rule. Use it for any question about who Wugweb is or whether a visual or a claim about Wugweb is on brand, even when the user does not say 'brand'. It does not cover content strategy (topics, calendar, briefs: wugweb-strategy), voice and tone (wugweb-voice), tokens and components (wugweb-kits), or a client's brand, which stays with its case study."
 metadata:
   author: wugweb
-  version: "0.3.1"
+  version: "0.3.2"
   status: "owner rulings of 2026-11-17 applied; positioning line, audience and five facts waiting on the owner"
 ---
 
@@ -13,7 +13,7 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.3.1 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
+Version 0.3.2 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
 
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
 - **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.
@@ -22,7 +22,7 @@ Version 0.3.1 holds the structure, every rule that has a source and the owner's 
 
 One question is open (10), plus the open rows in `brand-facts.md` and the positioning line; the list is in `references/source-map.md`. These gaps are filled through use, by the owner's approval: when an answer turns up, here or in another skill's session, run Change mode and apply nothing until the owner says yes. Other skills read these items from here and never hold them. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
-Read `docs/skills/STANDING-RULES.md` in the repo first. The owner's standing rules live there and are not repeated here; where this skill or a helper disagrees with that file, that file wins. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
+Read `references/standing-rules.md` first: a marked copy of the owner's standing rules from `docs/skills/STANDING-RULES.md`, which wins. They win over this skill and any helper. Cite the reference file behind every answer. Keep observation (what is visible or written) apart from interpretation (what it means).
 
 ## When to use
 
@@ -129,7 +129,7 @@ These are confirmed. They hold in every mode.
 
 **Media**
 
-- The media rules in `docs/skills/STANDING-RULES.md` win over any brand wording and are not restated here.
+- The media rules in `references/standing-rules.md` win over any brand wording and are not restated here.
 - In the guidelines, "crop" means how a subject is framed in a composition, never the cutting of a file.
 
 This skill states these rules. `wugweb-kits` holds every value and enforces them on the interface. No token value is written in this skill.
@@ -172,6 +172,7 @@ Load only the file a mode needs.
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels |
 | `references/source-map.md` | Sources, conflicts, the 21 owner questions and their status |
 | `references/tooling.md` | The only file that names helpers and vendors |
+| `references/standing-rules.md` | The owner's standing rules, a generated marked copy |
 | `references/visual-os/art-direction.md` | Grammar, modes, approved, banned and conditional lists, composition, "crop" |
 | `references/visual-os/colour-type-photo-motion.md` | Colour roles as meaning, type, photography, motion |
 | `references/visual-os/metaphors.md` | Shape meanings and the ten metaphors |

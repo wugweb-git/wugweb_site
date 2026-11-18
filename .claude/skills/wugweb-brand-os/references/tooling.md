@@ -9,7 +9,7 @@ The only file that names Claude helpers, Notion or any vendor. Every mode can be
 
 ## Helpers
 
-Helpers return proposals or reports only, and their output is never treated as approved. The owner's rules, and `docs/skills/STANDING-RULES.md`, win over anything a helper says. A helper that is missing or signed out is skipped and reported, never a blocker. Live research on other companies' sites, or anything that sends Wugweb's or a competitor's name to an outside service, needs the owner's yes each time. No helper may generate, crop, re-encode or upload media as part of this skill's work.
+Helpers return proposals or reports only, and their output is never treated as approved. The owner's rules, and the standing rules in `references/standing-rules.md`, win over anything a helper says. A helper that is missing or signed out is skipped and reported, never a blocker. Live research on other companies' sites, or anything that sends Wugweb's or a competitor's name to an outside service, needs the owner's yes each time. No helper may generate, crop, re-encode or upload media as part of this skill's work.
 
 | Helper | Use | When |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ This skill writes nothing to Notion, Sanity, R2 or `brand_guidelines/`. A Change
 
 | Source | Place |
 | --- | --- |
-| The owner's standing rules | `docs/skills/STANDING-RULES.md` in the repo |
+| The owner's standing rules | `docs/skills/STANDING-RULES.md` in the repo is the home; `references/standing-rules.md` is a marked copy rebuilt by `scripts/build.mjs`, so the rules travel with the skill |
 | The visual guidelines | `brand_guidelines/` in the repo |
 | Design system rules and values | `kits_design_system/docs/` in the repo, owned by `wugweb-kits` |
 | The stale 2023 profile | Notion |

@@ -89,6 +89,9 @@ for (const [rel, content] of Object.entries(outputs())) {
 const agents = read('AGENTS.md');
 const rules = readFileSync(HOME_RULES, 'utf8').replace(/^# .*\n+/, '').trim();
 check(agents.includes(rules), 'AGENTS.md carries the standing-rules block unchanged');
+check(read('references/standing-rules.md').includes(readFileSync(HOME_RULES, 'utf8').trim()), 'references/standing-rules.md is a byte copy of docs/skills/STANDING-RULES.md');
+const dangling = hand.filter((r) => !['references/tooling.md', 'README.md'].includes(r) && /`docs\/skills\/STANDING-RULES\.md`/.test(read(r).replace(/marked copy of the owner's standing rules from `docs\/skills\/STANDING-RULES\.md`/, '')));
+check(dangling.length === 0, `hand-written files point to references/standing-rules.md, which travels with the skill${dangling.length ? ': ' + dangling.join(', ') : ''}`);
 check(agents.includes(`v${version}`) && read(`export/${name}.md`).includes(`v${version}`), `AGENTS.md and the export carry v${version}`);
 
 // 7. metadata.json agrees with SKILL.md.

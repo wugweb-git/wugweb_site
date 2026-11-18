@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-brand-os 0.3.2, standing rules travel with the skill (2026-11-19)
+
+- `.claude/skills/wugweb-brand-os`: `scripts/build.mjs` generates `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md`, as the sibling skills carry; pointers name the copy so the rules load in the Claude app and the `.skill` file. Test checks the copy. No rule changed.
+
 ### Changed — wugweb-voice eval graders folded into case.yaml (2026-11-19)
 
 - `.claude/skills/wugweb-voice`: folded the 26 per-assertion grader files into each case's `case.yaml` at the owner's request; each case is now `prompt.md` plus `case.yaml` and the skill drops from 47 to 21 `.md` files. Diverges from the sibling eval layout (one grader per assertion); the skill's own tests still pass. Version stays locked at 0.3.0.

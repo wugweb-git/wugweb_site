@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.2, 2026-11-19
+
+- The standing rules travel with the skill: `scripts/build.mjs` writes `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md` (as `wugweb-seo`, `wugweb-voice`, `wugweb-kits` and `wugweb-work` carry). In the Claude app and the `.skill` file, `docs/skills/` is not present, so the pointers in `SKILL.md` and the reference files now name the copy; the home file still wins.
+- `scripts/test.mjs` checks the copy is a byte copy of the home file and that no hand-written file points only to `docs/skills/`.
+- No rule changed.
+
 ## 0.3.1, 2026-11-19
 
 - One home for the colour rules: `visual-os/colour-type-photo-motion.md`. The yellow, brand ink, pillar colour and pure white rules are removed from `visual-os/art-direction.md`, which points there (eval 3 cited both files).
