@@ -7,6 +7,7 @@
 - No rule changed.
 - Routing check on 0.3.1, a stand-in for eval 36: 20 of 20 prompts routed to the right skill (10 brand prompts, 10 near misses). Not the real trigger rate; that needs a run in the app, where 0.3.1 is installed.
 - PLAN.md, the Notion page and the registry record 0.3.2 (78eb6e4); backup of the changed Notion blocks first.
+- Full zip `wugweb-brand-os-0.3.2.zip` (42 files, the whole folder including `evals/`) delivered alongside the `.skill` upload file, which leaves `evals/` out by design.
 
 ## 0.3.1, 2026-11-19
 
