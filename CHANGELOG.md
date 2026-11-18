@@ -13,6 +13,12 @@ and this project adheres to Semantic Versioning.
 
 - `.claude/skills/wugweb-voice`: listed `references/standing-rules.md` in the SKILL.md Files table (as wugweb-seo, wugweb-kits and wugweb-work do) and removed the per-reference `Version` stamps that siblings do not carry. Regenerated the portable files. Skill version stays locked at 0.3.0; tests pass.
 
+### Added: wugweb-work Part 2 step 5 gate + step 8 docs (2026-11-19)
+- `scripts/check-case-page.mjs`: the D1 gate. 15 checks against a live `/work/<slug>` URL: one h1, heading-step order, section id + accessible name, chapter article id uniqueness + h2, img alt/width/height, no em or en dashes in text, rails aria + buttons, loops muted + playsinline + aria-hidden, long videos muted + controls + not aria-hidden, every media URL returns 200 (HEAD), total media under 25 MB, title ≤ 60, meta description 140 to 160, canonical self, JSON-LD WebPage + CreativeWork + BreadcrumbList (only with `--host <canonical>`). Uses `node-html-parser` (already installed).
+- `kits_design_system/docs/blocks/case-study.md`: new block doc (status, source, content, anatomy, catalogue, rules, tiers, accessibility, gate, scope).
+- `kits_design_system/docs/components.md`: new section for `src/components/work/*.astro`, one row per component with the block types it renders.
+- `pending.md`: Part 2 step 5 landed, step 8 docs started entry.
+
 ### Fixed — wugweb-voice export test green again, sample provenance recorded (2026-11-19)
 
 - `.claude/skills/wugweb-voice`: the export test asserted the standing-rules marker in the wrong case (`MARKED COPY`); corrected to `marked copy` to match the file and the wugweb-seo convention, and regenerated the stale `AGENTS.md` and `export/wugweb-voice.md`. The skill passes its own tests again. Recorded sample provenance (R-006): samples are shared while using the skills. Version stays locked at 0.3.0.

@@ -211,6 +211,36 @@ itself so every tier and size inherits them:
 
 ---
 
+## Case-study components (`src/components/work/*.astro`)
+
+Rendered by `src/lib/case-layout.ts` through `CaseBlocks.astro` (the switch). Every selector in these files starts `.case-*`; `scripts/check-case-css.mjs` fails the build if `.case-*` appears anywhere else. Block doc: [`blocks/case-study.md`](blocks/case-study.md).
+
+| Component | Block types | What it renders |
+|---|---|---|
+| `CaseHero.astro` | `hero` | Title, subtitle, client name, tags, allowlisted meta `<dl>`, cover image or video. |
+| `CaseChapter.astro` | `chapter` | `<article>` with a unique id; H2, optional lead, paragraphs. `scroll-margin-top: var(--header-height)`. |
+| `CasePoints.astro` | `points` | Tile list under a chapter. |
+| `CaseFigure.astro` | `figure`, `scrollshot` | Single image or muted autoplay loop; tall mode for scrollshots. |
+| `CaseSplit.astro` | `split` | Two media side by side. |
+| `CasePair.astro` | `pair` | The styles pair, 50:50, native ratio. |
+| `CaseRail.astro` | `rail`, screens-per-flow | W3C APG rail: scroll-snap track, prev/next buttons, live counter, keyboard. Caps at 8 items. |
+| `CaseMosaic.astro` | `mosaic` | 3 to 6 image grid, responsive. |
+| `CaseWall.astro` | `wall` | 7+ image grid, denser. |
+| `CaseLoop.astro` | `loop` | Short muted autoplay loop, `aria-hidden`. |
+| `CaseVideo.astro` | `video` | Long video, muted, `controls`. Never `aria-hidden`. |
+| `CaseQuote.astro` | `quote` | Blockquote with optional attribution. |
+| `CaseStats.astro` | `stats`, `results` | Metric row. Stats shows up to 3; Results shows the full list with source, period, as-of. |
+| `CaseTable.astro` | `table` | Scrollable table. |
+| `CaseTimeline.astro` | `timeline` | Dated milestones, border-left spine. |
+| `CaseCredits.astro` | `credits` | Team, special thanks, engagement, project type, timeline, year, country. |
+| `CasePresence.astro` | `presence` | Chips for Live, App Store, Play Store, Behance, Dribbble, Awards. |
+| `CaseRelated.astro` | `related`, `next` | Three related cards or one "Up next" card. |
+| `CaseBlocks.astro` | (switch) | Groups chapter blocks under their `<article>`; renders non-chapter blocks as siblings. |
+
+Client logic: `src/lib/case-rail.ts` (rail), `src/lib/case-lightbox.ts` (lightbox `<dialog>`).
+
+---
+
 ## Design Principles Checklist
 
 - [x] **Tokens First**: All components consume tokens from `src/styles/global.css`.

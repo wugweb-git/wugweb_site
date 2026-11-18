@@ -4,6 +4,14 @@ Keep this file synced. Before any new session, read this first. After significan
 
 Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, industry master) · [`CLAUDE.md`](CLAUDE.md).
 
+**2026-11-19: wugweb-work Part 2, step 5 landed; step 8 docs started. ON MAIN (`4b834c9`).**
+- Resolver `src/lib/case-layout.ts` and 18 components under `src/components/work/` plus `CaseBlocks.astro` (the switch). W3C APG rail and `<dialog>` lightbox client logic. Unlinked preview route at `/work/preview/<slug>`.
+- Gate script `scripts/check-case-page.mjs`: 15 checks per the plan's D1. Uses `node-html-parser`. JSON-LD check is `n/a` unless `--host <canonical>` is passed.
+- CSS guard `scripts/check-case-css.mjs`: `.case-*` selectors may only live in `src/components/work/*.astro`. Legacy `/work/[slug].astro` exempted by name until the flip. Wired into `prebuild`.
+- Block doc `kits_design_system/docs/blocks/case-study.md` and the case-study section added to `kits_design_system/docs/components.md`.
+- 57 tests pass; `npm run build` succeeds.
+- Next, owner-gated: step 6 previews on the 8 slugs, step 3b visual read, step 4 Sanity sync (blocked on new `NOTION_TOKEN`), the flip from legacy to the thin template.
+
 **2026-11-19: API keys and secrets standard. ON MAIN (`c46bae1` then follow-up), owner rules applied.**
 - The one home: [`docs/skills/SECRETS.md`](docs/skills/SECRETS.md). The standing-rules file points there; four skill mirrors synced byte-identical (wugweb-work, wugweb-voice, wugweb-seo, wugweb-kits). wugweb-work outputs regenerated; validate 30 checks, 0 errors.
 - [`governance.md`](governance.md) gains Rule 3 next to Rule 1 and Rule 2.
