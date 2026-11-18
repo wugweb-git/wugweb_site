@@ -135,7 +135,7 @@ const exportFile = [
   ...includedOnDisk.map((f) => '\n---\n\n' + `<!-- references/${f} -->\n\n` + read(`references/${f}`).trim()),
 ].join('\n') + '\n';
 
-const outputs = {
+export const outputs = {
   'AGENTS.md': agents,
   [`adapters/cursor/${name}.mdc`]: cursor,
   'adapters/chatgpt/instructions.md': chatgpt,

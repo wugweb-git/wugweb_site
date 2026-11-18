@@ -35,7 +35,7 @@ Edits he makes to drafted copy, and his rulings on candidates. Each becomes a co
 | ID | Date | What he changed or ruled | Rule it confirms | Source |
 | --- | --- | --- | --- | --- |
 | R-001 | 2026-11-16 | "wugweb and vedanshu is same" | V-06 one voice | wugweb-voice session |
-| R-002 | 2026-11-16 | The skill lives in both places: the site repo `.claude/skills/wugweb-voice/` as the source, and a copy in `~/.claude/skills/wugweb-voice/` | Not a voice rule; install location | wugweb-voice session |
+| R-002 | 2026-11-16 | The real copy of the skill is the repo folder `.claude/skills/wugweb-voice/` | Not a voice rule; install location | wugweb-voice session |
 | R-003 | 2026-11-16 | Helpers: the system's eight plus the extras | Not a voice rule; see `tooling.md` | wugweb-voice session |
 | R-004 | 2026-11-16 | Working preferences stay in project instructions and Claude memory, not in this skill | Scope | wugweb-voice session |
 | R-005 | 2026-11-16 | Translated copy is out of scope for now | Scope; see `modes.md` | wugweb-voice session |
@@ -47,8 +47,12 @@ Edits he makes to drafted copy, and his rulings on candidates. Each becomes a co
 | --- | --- |
 | His chat messages in working sessions | Fast and full of typos |
 | The working-style memory note | How he wants replies, not how he writes |
-| Notion profile pages (2023, Grok, Gemini) | Stale background; pending his confirmation |
+| Notion profile pages (Grok, Gemini) | Stale background; not voice evidence |
 | Identity Prism pages and the `memory` repo | A related product; background only |
+
+## Approved source, not yet samples
+
+The Notion page "Wugweb Profile (Master) - 2023" is an approved voice source (owner, 2026-11-17). It is a source to read, not yet a calibrated sample set: it has no row in the Samples table, counts towards no confidence level and supports no rule until its pieces are recorded as samples with every field.
 
 ## Removing a sample
 

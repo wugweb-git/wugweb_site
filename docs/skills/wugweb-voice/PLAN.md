@@ -1,18 +1,18 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 0.3.0 on main (locked by the owner; he confirmed it stays 0.3.0), 57 or more files, last skill commit 3a895a71. Version 0.2.1 (portability package) came before it.
-> - Skill file body: 1,999 words by the shared count (limit 2,000). Any edit that adds words must cut as many.
+> - Built. Version 0.3.0 on main (locked by the owner; he confirmed it stays 0.3.0), 32 files (counted 2026-11-19), last skill commit 3a895a71. Version 0.2.1 (portability package) came before it.
+> - Skill file body: 1,997 words by the shared count after the review fixes of 2026-11-19 (1,993 before them; limit 2,000). Any edit that adds words must cut as many.
 > - Tests pass. Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The voice session built the upload zips; the owner uploads one.
 > - Owner answers, "all yes" on nine items, 2026-11-17: (1) wugweb-strategy's signal log is a named read-only input; its words are vocabulary candidates labelled by source, never rules and never the owner's voice. (2) Version stays 0.3.0. (3) Writing samples: the owner will supply source material; none received yet, so the voice is uncalibrated and confidence is low. (4) Standing rules: the skill carries a marked copy of the shared standing-rules file, built into the export and test-checked against the home file; the home file wins. (5) The helper list is confirmed and lives in the tooling reference only. (6) Working preferences stay out of the skill. (7) Translated copy is out of scope until English is calibrated. (8) We or I: the owner picks per piece; there is no fixed rule. (9) A 40 to 60 word summary row is added to the response contract.
-> - FINAL REPORT, 2026-11-17: last skill commit 59aef7d0; body 1,999 words; tests pass. Evals: 14 in all, 9 runnable and 5 waiting on writing samples. All 9 runnable pass after two skill-side fixes (a number or quote with no source now fails the check; unruled filler words are raised as a question, never dropped in a rewrite). The LinkedIn case fix was verified by script, not by a second agent run. Case folders: 25 of 26 graders passed on the first run.
+> - FINAL REPORT, 2026-11-17: last skill commit 59aef7d0; body 1,999 words then (1,997 on 2026-11-19); tests pass. Evals: 14 in all, 9 runnable and 5 waiting on writing samples. All 9 runnable pass after two skill-side fixes (a number or quote with no source now fails the check; unruled filler words are raised as a question, never dropped in a rewrite). The LinkedIn case fix was verified by script, not by a second agent run. Case folders: 25 of 26 graders passed on the first run.
 > - Confirmed and carried rules: British English, sentence case, no dashes, never invent, one voice, we or I per piece, client terms unchanged. The filler word list is pending.
 > - Closed 2026-11-17: the old remote branch is deleted; the stale `.agents/skills` copy was removed by the owner.
 > - Owner ruling, relayed 2026-11-17: the 2023 Wugweb profile page is a voice source ("use it, for brand os etc, voice"). Read as one sample of unknown edit status; candidates C-07 to C-10 proposed, not yet in the skill.
 > - Owner instruction to the voice session, 2026-11-17: "all pending and everything, update Notion and plan". The voice session now keeps this plan and its Notion page; section 15 holds the full record.
 > - Open with the owner (section 15): yes or no to the 23 banned words and their exception; the candidates C-01, C-02, C-05 and C-06; where the writing samples come from (evals 10 to 14 are blocked and the voice is uncalibrated until then); how to record the 2023 profile; a `profile` mode; uploading the zip to the Claude app.
 
-> PLAN READY FOR VETTING, 2026-11-16. Version 0.3.0 of the skill exists; see Status. The owner approved writing this plan to the skill's Notion page (https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e) and to this file; he has not yet approved its open choices. Items marked CONFIRM need his yes before they count as decided. The Notion page and this file carry the same plan text.
+> BUILT, 0.3.0 ON MAIN, LOCKED (status line updated 2026-11-19). This plan was first written for vetting on 2026-11-16; the owner approved writing it to the skill's Notion page (https://app.notion.com/p/41abb710b9ab81ffa0caeb0d74be903e) and to this file. Items still marked CONFIRM need his yes before they count as decided; the open ones are listed in section 15. The Notion page and this file carry the same plan text.
 
 # wugweb-voice skill: plan
 
@@ -28,10 +28,10 @@
 | Family | Wugweb Skill System |
 | Development chat | https://claude.ai/chat/942cbd9e-e68d-4679-9923-ef4e030440d8 |
 | Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-voice/PLAN.md` |
-| Status | Plan ready for vetting. Skill development started on 2026-11-16 in the development chat: version 0.3.0 exists (locked by the owner), structure and method only. No approved writing samples yet, so no rule drawn from samples exists. |
-| Real copy | `.claude/skills/wugweb-voice/` in the repo (owner, 2026-11-16: "The full folder"). Version 0.3.0, 57 files, on `main` (version locked in commit `27e3874a`). Its own tests pass. |
+| Status | Built, 0.3.0 on main, locked. Skill development started on 2026-11-16 in the development chat. Structure and method only: no approved writing samples yet, so no rule drawn from samples exists. |
+| Real copy | `.claude/skills/wugweb-voice/` in the repo (owner, 2026-11-16: "The full folder"). Version 0.3.0, 32 files, on `main` (version locked in commit `27e3874a`). Its own tests pass. |
 | Other copy | The Claude app on the owner's Mac carried the same 51 files as the repo folder at 0.2.0 (checked identical on 2026-11-17); the app was reset that day, and the 0.3.0 zip is for the owner to upload. Not the source; the repo folder is. |
-| Lives in | `~/.claude/skills/wugweb-voice/` proposed, so every project sees it. CONFIRM |
+| Lives in | `.claude/skills/wugweb-voice/` in the repo. Decided: the repo folder is the real copy (see the Real copy row). |
 | Covers | How Wugweb and Vedanshu write and speak: voice, tone, phrasing, structure |
 | Does not cover | Personality, beliefs, decision style, working preferences, brand identity, positioning, audience, case-study structure, SEO, design |
 
@@ -110,16 +110,18 @@ Source classes:
 | Sanity Brand voice draft, `brand_guidelines/` copy files (a few lines each), the pasted persona outline | Candidate rules. Each becomes confirmed only when he rules on it. |
 | The "working-style" memory note (short, plain, result first) | How he wants replies written to him. Not a sample of how he writes. Not calibration. |
 | His chat messages in sessions | Fast and full of typos. Not calibration. |
-| Notion profile pages (2023, Grok, Gemini) | Stale background. Not calibration. CONFIRM |
+| Notion page "Wugweb Profile (Master) - 2023" | An approved voice source (owner, 2026-11-17). A source to read, not yet a calibrated sample set; edit status unknown, so it supports no rule on its own. |
+| Notion profile pages (Grok, Gemini) | Stale background. Not voice evidence. |
 | Identity Prism (Notion pages and the `memory` repo) | A related product, background only |
 
 ## 7. Handoff contract
 
-The Wugweb Skill System has six skills (settled 2026-11-16, as relayed by the coordinating session): `wugweb-voice`, `wugweb-brand-os`, `wugweb-kits`, `wugweb-work`, `wugweb-strategy`, `wugweb-seo`. Registry: https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298
+The Wugweb Skill System has seven skills: the six settled on 2026-11-16, as relayed by the coordinating session (`wugweb-voice`, `wugweb-brand-os`, `wugweb-kits`, `wugweb-work`, `wugweb-strategy`, `wugweb-seo`), and `wugweb-engineer` (0.3.1), the seventh. Registry: https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298
 
 - **`wugweb-brand-os`**: keeps identity, positioning, values, audience, messaging and Visual OS. It keeps no voice rules of its own; it points here.
 - **`wugweb-work`** (consumer): produces every finished piece, including case studies, portfolio, blog posts, service pages, site copy, and their social and deck versions. It loads `wugweb-voice` for voice and keeps its own structure, lengths, evidence and SEO rules. In the table below, "the content skill" means `wugweb-work`.
-- **`wugweb-strategy`**: no direct link. Its brief names audience, purpose and form; `wugweb-work` passes those here with the draft.
+- **`wugweb-strategy`**: one link, read only. Voice may read the strategy signal log (`references/topics-and-calendar.md` in `wugweb-strategy`); its words are vocabulary candidates labelled by source, never rules. No other link: its brief names audience, purpose and form, and `wugweb-work` passes those here with the draft.
+- **`wugweb-engineer`**: no link. It owns changes to Sanity and Notion data, schema edits and the sync scripts, and writes no visible copy. A field label or help text a visitor never sees is not voice work; a field value a visitor sees comes from `wugweb-work`.
 - **`wugweb-seo`, `wugweb-kits`**: no direct link. If either needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The voice check happens in one place only.
 
 Links, to read the same on both sides:
@@ -129,6 +131,7 @@ Links, to read the same on both sides:
 | Gives to | `wugweb-work` | Voice rules, mode settings, text in voice, voice-check results with confidence |
 | Gives to | `wugweb-brand-os` | The voice rules it points to |
 | Takes from | `wugweb-brand-os` | Identity, positioning, audience |
+| Reads, read only | `wugweb-strategy` | The signal log; its words are vocabulary candidates labelled by source, never rules |
 | Takes from | `wugweb-work` | Draft text with its form, mode, and the audience and purpose from the brief |
 - **Client voice**: quotes and on-screen terms from a client stay in the client's words. This skill never rewrites them.
 
@@ -139,7 +142,7 @@ Matrix row, as held on the registry:
 - **Gives to:** `wugweb-work` (voice rules, mode settings, text in voice, voice-check results with confidence); `wugweb-brand-os` (the voice rules it points to).
 - **Takes from:** `wugweb-brand-os` (identity, positioning, audience); `wugweb-work` (draft text with its form, mode, and the audience and purpose from the brief).
 - **Never does:** guesses personality, beliefs or decision style; copies typos; invents numbers, quotes or facts; rewrites client quotes or on-screen terms; changes format, length, SEO or positioning rules; publishes; uses unapproved samples.
-- No direct link with `wugweb-strategy`, `wugweb-seo` or `wugweb-kits`.
+- Reads, read only: the `wugweb-strategy` signal log, for vocabulary candidates labelled by source, never rules. No other link with `wugweb-strategy`, and none with `wugweb-seo`, `wugweb-kits` or `wugweb-engineer`.
 
 What a caller passes in: the text or brief, the mode, and the audience if known. What it gets back: the text in voice, the rules applied, a confidence level (high, medium, low) with the reason, and any claim it could not support.
 
@@ -220,7 +223,7 @@ The Wugweb Skill System's final list gives this skill eight helpers: `rampstack-
 
 1. Settled 2026-11-16: one voice, held in `wugweb-voice`. The owner said so in this session ("wugweb and vedanshu is same") and, as relayed, again when asked directly.
 2. Writing samples: which emails, posts, notes or transcripts count as his voice, and may meeting transcripts be used? Nothing can be calibrated without them. Open 2026-11-17: he will supply source material; none received yet.
-3. Where the skill lives: `.claude/skills/wugweb-voice/` in the repo, or the personal skills folder `~/.claude/skills/wugweb-voice/` so every project sees it.
+3. Settled: the skill lives in `.claude/skills/wugweb-voice/` in the repo; that folder is the real copy (owner, 2026-11-16: "The full folder").
 4. Settled 2026-11-17: the system's eight plus the extras in section 10, kept in `references/tooling.md` only.
 5. Settled 2026-11-17: working preferences stay out of this skill. They live in project instructions and Claude memory.
 6. Settled 2026-11-17: translated copy is out of scope until the English voice is calibrated.
@@ -431,7 +434,7 @@ Written by the voice session on the owner's direct instruction ("all pending and
 
 ### Tests and evals
 
-`node scripts/test.mjs` passes on the main copy. `SKILL.md` body is 1,999 words by the shared count (limit 2,000). The check script flags dashes, US spellings, heading case and confirmed banned words, lists every number, quote and scope word to trace, and returns fail when a number or quote has no source (new `--sources` flag for when the caller has given them).
+`node scripts/test.mjs` passes on the main copy. `SKILL.md` body was 1,999 words by the shared count on 2026-11-17 and is 1,997 on 2026-11-19 (limit 2,000). The check script flags dashes, US spellings, heading case and confirmed banned words, lists every number, quote and scope word to trace, and returns fail when a number or quote has no source (new `--sources` flag for when the caller has given them).
 
 | Eval | What | Result 2026-11-17 |
 |---|---|---|
@@ -470,7 +473,7 @@ The 23 banned words that `wugweb-work` holds: 11 are in `references/words.md` as
 
 The owner's ruling, relayed by the coordinator: "use it, for brand os etc, voice". It is one source: about 650 words of usable prose (one-liner, mission, vision, values, short and long descriptions, overview, elevator pitch). Edit status is unknown and some lines read as AI-assisted, so by the skill's rule it cannot support a rule on its own. Not used: legal, tax, bank and contact data (never copied), placeholder text, working notes and typos. It conflicts with confirmed rules: it uses em dashes, mixes US and British spelling, and uses words on the banned list (empower, innovative, disruptive). Evals 10 to 13 cannot run on it (one document, nothing held back); fresh samples are still needed. It is not in the ledger until the owner chooses how to record it.
 
-### What is in the skill folder (58 tracked files, version 0.3.0)
+### What is in the skill folder (32 files, version 0.3.0)
 
 `SKILL.md`; references `voice`, `modes`, `words`, `corpus` (empty), `handoff`, `blind-test`, `tooling`, `standing-rules` (marked copy); scripts `check`, `build`, `test`; `evals/`; `examples/`; `export/wugweb-voice.md`; generated `AGENTS.md`, `README.md`, `metadata.json`, `adapters/cursor`, `adapters/chatgpt`, `agents/openai.yaml`. Upload zips are built from main into `dist/` in the repo worktree (not tracked): `wugweb-voice-0.3.0.zip` (folder at the root) and `wugweb-voice-0.3.0-flat.zip` (`SKILL.md` at the root).
 
@@ -485,7 +488,7 @@ The old remote branch for this work is deleted. The stale `.agents/skills` copy 
 3. Where the writing samples come from (Notion pages he names, pasted, or files). Recommendation: Notion.
 4. How to record the 2023 profile (one AI-assisted or edited sample with C-07 to C-10 as candidates, his unedited writing, or background only). Recommendation: the first.
 5. A `profile` mode for About and bio text. Recommendation: yes.
-6. Upload `wugweb-voice-0.3.0.zip` to the Claude app (his step; the app has none of the six skills after the reset).
+6. Upload `wugweb-voice-0.3.0.zip` to the Claude app (his step; the app has none of the skills after the reset).
 
 Blocked until samples arrive: evals 10 to 14, calibration, and any move from low confidence.
 
@@ -584,6 +587,10 @@ Every file of the skill was read on 2026-11-19 from main (`4fbf334c`) by a read-
 - "six skills": there are seven.
 - The strategy row says "no direct link"; the skill gives voice a read-only link to the strategy signal log.
 - The profile pages line still says "Not calibration. CONFIRM", and "Lives in ... proposed. CONFIRM" is decided; the status still reads "Plan ready for vetting".
+
+### Fixed 2026-11-19
+
+Fixed 2026-11-19 by the voice session, under the locked 0.3.0: skill items 1 to 10, all fixed; every item under "Needs changing in this plan", fixed; from "Worth knowing", `test.mjs` no longer rewrites the generated files (it compares them in memory). Not fixed, because not asked for: the dash scan's file types, the eval 14 status and the open items with the owner. The skill file body is 1,997 words after the fixes. The Notion page was not updated in this pass (no network); it needs the same plan edits.
 
 ### Worth knowing
 

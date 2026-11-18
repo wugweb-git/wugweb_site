@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 // wugweb-voice: test.mjs
 // Tests the check script, the export and the skill's own files. Plain Node.
+// Read-only: the generated files are compared in memory, never rewritten.
 // Usage: node scripts/test.mjs
 
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { check, samplesInUse } from './check.mjs';
-import { build } from './build.mjs';
+import { outputs } from './build.mjs';
+import { spawnSync } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -33,6 +35,16 @@ t('lists "every" as a scope word', off.facts.some((f) => f.text.toLowerCase() ==
 t('confidence low with no samples', off.confidence.level === 'low');
 t('result is fail: numbers and a quote with no source', off.result.startsWith('fail'));
 t('with sources supplied the result is needs revision', check(readFileSync(join(ROOT, 'evals', 'fixtures', 'off-voice.md'), 'utf8'), { mode: 'case-study', sources: true }).result === 'needs revision');
+
+// 1b. Exit code: a fail result exits 1 even with no flags
+{
+  const cli = join(ROOT, 'scripts', 'check.mjs');
+  const draft = 'We shipped twelve screens in 6 weeks.\n';
+  const bare = check(draft);
+  t('untraced number with no flags is a fail result', bare.flags.length === 0 && bare.result.startsWith('fail'));
+  t('fail with no flags exits 1', spawnSync(process.execPath, [cli, '-'], { input: draft }).status === 1);
+  t('same draft with sources exits 0', spawnSync(process.execPath, [cli, '-', '--sources'], { input: draft }).status === 0);
+}
 
 // 2. Clean fixture
 const clean = check(read('evals/fixtures/clean.md'), { mode: 'case-study' });
@@ -89,8 +101,12 @@ t('every eval has id, prompt, expected, status',
   !!evals && evals.evals.every((e) => e.id && e.prompt && Array.isArray(e.expected) && e.status));
 
 // 7. Export
-const exp = build();
+const exp = outputs['export/wugweb-voice.md'];
 t('export built', exp.length > 1000);
+for (const [path, content] of Object.entries(outputs)) {
+  const full = join(ROOT, path);
+  t(`generated file is fresh: ${path}`, existsSync(full) && readFileSync(full, 'utf8') === content, 'run node scripts/build.mjs');
+}
 t('export leaves out the corpus ledger', !exp.includes('# Calibration corpus'));
 t('export leaves out tooling', !exp.includes('# Tooling'));
 t('export carries the voice check', exp.includes('## The voice check'));

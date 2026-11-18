@@ -1,7 +1,7 @@
 {
   "skill": "wugweb-voice",
-  "version": "0.1.0",
-  "note": "Status 'runnable' means the test can run on 0.1.0. 'waiting on samples' means it needs the corpus. Fixtures in evals/fixtures are mechanical tests only; they are not examples of the voice.",
+  "version": "0.3.0",
+  "note": "Status 'runnable' means the test can run on 0.3.0. 'waiting on samples' means it needs the corpus. Fixtures in evals/fixtures are mechanical tests only; they are not examples of the voice.",
   "evals": [
     {
       "id": 1,
@@ -99,7 +99,7 @@
         "Adds a row to references/corpus.md with all fields, status 'in use'",
         "Does not copy the private text into the skill without his yes",
         "Cleans typos before reading for voice",
-        "Notes patterns, but writes none as an observed rule below three occurrences",
+        "Notes patterns, but writes none as an observed rule below three unedited samples in the mode",
         "Shows any new observed rule to the owner as a question"
       ]
     },

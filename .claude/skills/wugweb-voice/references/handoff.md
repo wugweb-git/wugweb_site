@@ -14,6 +14,8 @@ Matches the matrix row on the Wugweb Skill Management System registry and the wu
 
 No other link with `wugweb-strategy`, and none with `wugweb-seo` or `wugweb-kits`. If either of the last two needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The check happens in one place only.
 
+No link with `wugweb-engineer`, the seventh skill, which owns changes to Sanity and Notion data, schema edits and the sync scripts. It writes no visible copy. A field label or help text a visitor never sees is not voice work; a field value a visitor sees comes from `wugweb-work`.
+
 ## Request
 
 | Field | Required | Notes |

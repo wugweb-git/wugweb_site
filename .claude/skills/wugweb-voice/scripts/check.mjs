@@ -7,7 +7,7 @@
 //
 // Usage:
 //   node scripts/check.mjs <file.md | -> [--mode <key>] [--sources] [--json]
-// Exit code: 0 when nothing is flagged, 1 when something is, 2 on bad input.
+// Exit code: 1 when something is flagged or the result is fail, 0 otherwise, 2 on bad input.
 
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -164,7 +164,7 @@ export function check(text, { mode, sources = false } = {}) {
     : flags.length ? 'needs revision' : 'pass (mechanical part only)';
   return {
     result,
-    note: 'Mechanical part only. Steps 3 to 6 of the voice check (trace, mode, client words, voice rules) need a reader. Voice not calibrated: no observed rules yet.',
+    note: 'Mechanical part only. Steps 3 to 8 of the voice check (trace, mode, client words, voice rules, failure checks, report) need a reader. Voice not calibrated: no observed rules yet.',
     mode: mode || null,
     confidence: conf,
     flags,
@@ -202,5 +202,5 @@ if (isMain) {
   catch (e) { console.error(`Cannot read ${file}: ${e.message}`); process.exit(2); }
   const r = check(text, { mode, sources: args.includes('--sources') });
   console.log(json ? JSON.stringify(r, null, 2) : formatReport(r));
-  process.exit(r.flags.length ? 1 : 0);
+  process.exit(r.flags.length || r.result.startsWith('fail') ? 1 : 0);
 }

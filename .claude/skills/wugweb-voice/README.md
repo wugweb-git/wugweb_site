@@ -76,7 +76,7 @@ The folder name must stay equal to the `name:` line in `SKILL.md`.
 Node 18 or later. No packages. No network.
 
 ```bash
-node scripts/check.mjs <file.md> [--mode <mode>] [--json]
+node scripts/check.mjs <file.md> [--mode <mode>] [--sources] [--json]
 node scripts/test.mjs
 node scripts/build.mjs --check
 ```

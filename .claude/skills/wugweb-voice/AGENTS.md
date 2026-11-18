@@ -35,6 +35,7 @@ What does not work yet: writing or rewriting "in the voice" beyond the fixed rul
 | Keywords, schema, on-page SEO, reporting | `wugweb-seo` |
 | Where wording sits in the interface | `wugweb-kits` |
 | Briefs: audience, purpose, form | `wugweb-strategy`, through `wugweb-work` |
+| Sanity and Notion data changes, schema edits, sync scripts | `wugweb-engineer` |
 | Client voices, quotes and on-screen terms | Stay as the client wrote them |
 | Personality, beliefs, decision style, working preferences | Out of scope. Decline. |
 
@@ -101,7 +102,7 @@ node scripts/check.mjs <file.md> [--mode <mode>] [--sources] [--json]
 cat draft.txt | node scripts/check.mjs - --mode linkedin-post
 ```
 
-It exits 0 when nothing is flagged and 1 when something is.
+It exits 1 on any flag or a fail result, otherwise 0.
 
 ## What a caller passes and gets back
 
@@ -121,7 +122,7 @@ Calibration uses only writing or speech the owner supplies or names. Never searc
 8. Hold back some samples per mode as unseen text (suggested one in five; the owner sets the share): never used for rules or examples, kept for the blind test.
 9. Removing a sample: set its status to removed with the date, then rebuild and re-test every rule listed in its "Used in" column.
 
-His chat messages in working sessions are fast and full of typos; they are not samples. The working-style memory note (short, plain, result first) says how he wants replies to him; it is not a sample. The Notion profile pages are background only, pending his confirmation.
+His chat messages in working sessions, fast and full of typos, are not samples. Nor is the working-style memory note, which says how he wants replies. The Notion page "Wugweb Profile (Master) - 2023" is an approved voice source (owner, 2026-11-17): a source to read, not yet a calibrated sample set.
 
 ## Order of work
 
@@ -158,7 +159,7 @@ When a piece is published, `wugweb-work` records who reviewed it and took editor
 
 The folder is a standard Agent Skill, so any agent that reads `SKILL.md` loads it as it is: Claude (installed, or at `.claude/skills/wugweb-voice/`), Cursor and Codex. This file carries the fixed rules, the labels and the voice check, so it stands alone where reference files are not loaded. Reference files are plain Markdown; scripts are plain Node with no packages; helpers are optional.
 
-`scripts/build.mjs` compiles the portable files: `AGENTS.md` (the whole skill in one file), the `adapters/` and `export/wugweb-voice.md`. Edit the sources, not the output. Every generated file leaves out the corpus ledger. `README.md` has the install steps.
+`scripts/build.mjs` compiles the portable files: `AGENTS.md`, the `adapters/`, `agents/openai.yaml` and `export/wugweb-voice.md`. Edit the sources, not the output. Every generated file leaves out the corpus ledger.
 
 ## Never
 
@@ -400,6 +401,8 @@ Matches the matrix row on the Wugweb Skill Management System registry and the wu
 | Takes from | `wugweb-work` | Draft text with its form, mode, and the audience and purpose from the brief |
 
 No other link with `wugweb-strategy`, and none with `wugweb-seo` or `wugweb-kits`. If either of the last two needs visible wording, it asks `wugweb-work`, which writes it and runs the voice check. The check happens in one place only.
+
+No link with `wugweb-engineer`, the seventh skill, which owns changes to Sanity and Notion data, schema edits and the sync scripts. It writes no visible copy. A field label or help text a visitor never sees is not voice work; a field value a visitor sees comes from `wugweb-work`.
 
 ### Request
 

@@ -8,7 +8,8 @@
     "wugweb-brand-os",
     "wugweb-strategy",
     "wugweb-seo",
-    "wugweb-kits"
+    "wugweb-kits",
+    "wugweb-engineer"
   ],
   "references": [
     "https://agentskills.io/specification"
