@@ -486,8 +486,6 @@ The method comes from the research report "Voice calibration method" (2026-11-16
 <!-- references/standing-rules.md -->
 ## Standing rules (marked copy)
 
-<!-- MARKED COPY. The home of these rules is docs/skills/STANDING-RULES.md in the Wugweb site repo. Copied 2026-11-17 so the skill works in GPT, Cursor and other tools. If this copy and the home file differ, the home file wins. Do not edit here; scripts/test.mjs checks the copy matches the home file when the repo is present. -->
-
 ## Owner's standing rules
 
 These apply to every skill in the Wugweb Skill System and to every session.
@@ -549,6 +547,14 @@ wins. Dates show when the owner set or confirmed a rule, where known.
 - One Notion page per skill: no sub-pages, nothing elsewhere. The repo keeps one copy as that skill's PLAN file. (2026-11-16)
 - Every skill must be usable in GPT, Cursor and other tools, not only Claude. (2026-11-16)
 - The layout values in the design system's layout shell document are binding. Skills read that document and point to `wugweb-kits`. (2026-11-16)
+
+### API keys and secrets
+
+- The standard lives in `docs/skills/SECRETS.md`. Every skill follows it.
+- One name per use, UPPER_SNAKE_CASE, provider named: `OPENROUTER_API_KEY`, `NOTION_API_TOKEN`, `SANITY_SYNC_TOKEN`.
+- No secret in the repo, in a URL, in a commit message, or in a file this session writes. Local `.env` is gitignored; the repo tracks `.env.example` with placeholders only.
+- Paid providers are blocked by policy, whatever their balance: DeepSeek, OpenAI, Moonshot, MiniMax, xAI, Anthropic. A free-tier call through a router must pin to one verified free model.
+- A key that reaches a chat, a file, a log or a commit is not echoed, written or sent further. What happens to that key after is the owner's call: no key rotation, never. (2026-11-19)
 
 ### Git, only when asked to commit
 

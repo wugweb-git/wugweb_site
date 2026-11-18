@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed — wugweb-voice export test green again, sample provenance recorded (2026-11-19)
+
+- `.claude/skills/wugweb-voice`: the export test asserted the standing-rules marker in the wrong case (`MARKED COPY`); corrected to `marked copy` to match the file and the wugweb-seo convention, and regenerated the stale `AGENTS.md` and `export/wugweb-voice.md`. The skill passes its own tests again. Recorded sample provenance (R-006): samples are shared while using the skills. Version stays locked at 0.3.0.
+
 ### Added: AI models per skill, one reference doc (2026-11-19)
 - `docs/skills/AI-MODELS.md`: which model each Wugweb sibling skill reads, under which env-var name, with the plan-now vs run-later status. Pinned free only (`:free` suffix); defaults `nvidia/nemotron-3.5-lightning:free` for text and `nvidia/nemotron-3.5-super-vl:free` for vision. `docs/skills/SECRETS.md` now points here from its "Where this fits" section (SECRETS names keys; AI-MODELS names models).
 - No sibling-skill edits: entries are planned until a first script lands. The wugweb-work trio (`scripts/openrouter-*.mjs`) remains the only live caller.

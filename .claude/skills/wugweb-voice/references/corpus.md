@@ -2,7 +2,7 @@
 
 Version 0.2.0. The ledger of writing and speech the owner has supplied or named for calibrating the voice. Status: empty. No samples supplied yet.
 
-Rule: only samples the owner supplies or names. Nothing is searched for in email, Drive, Notion or meeting transcripts unless he names the item. Private text is not copied here; the Location column says where the original lives. A short excerpt only with his yes.
+Rule: only samples the owner supplies or names. Nothing is searched for in email, Drive, Notion or meeting transcripts unless he names the item. Private text is not copied here; the Location column says where the original lives. A short excerpt only with his yes. Provenance: samples are the owner's own writing, shared while he uses the skills. He supplies or approves each piece as work is made; nothing is taken from his chat messages.
 
 This file is left out of the single-file export.
 
@@ -39,6 +39,7 @@ Edits he makes to drafted copy, and his rulings on candidates. Each becomes a co
 | R-003 | 2026-11-16 | Helpers: the system's eight plus the extras | Not a voice rule; see `tooling.md` | wugweb-voice session |
 | R-004 | 2026-11-16 | Working preferences stay in project instructions and Claude memory, not in this skill | Scope | wugweb-voice session |
 | R-005 | 2026-11-16 | Translated copy is out of scope for now | Scope; see `modes.md` | wugweb-voice session |
+| R-006 | 2026-11-19 | Samples are shared while using the skills: pieces the owner supplies or approves as work is made, never from chat | Corpus provenance | owner |
 
 ## Not calibration
 
