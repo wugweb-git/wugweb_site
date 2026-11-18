@@ -5,6 +5,8 @@
 - The standing rules travel with the skill: `scripts/build.mjs` writes `references/standing-rules.md`, a marked copy of `docs/skills/STANDING-RULES.md` (as `wugweb-seo`, `wugweb-voice`, `wugweb-kits` and `wugweb-work` carry). In the Claude app and the `.skill` file, `docs/skills/` is not present, so the pointers in `SKILL.md` and the reference files now name the copy; the home file still wins.
 - `scripts/test.mjs` checks the copy is a byte copy of the home file and that no hand-written file points only to `docs/skills/`.
 - No rule changed.
+- Routing check on 0.3.1, a stand-in for eval 36: 20 of 20 prompts routed to the right skill (10 brand prompts, 10 near misses). Not the real trigger rate; that needs a run in the app, where 0.3.1 is installed.
+- PLAN.md, the Notion page and the registry record 0.3.2 (78eb6e4); backup of the changed Notion blocks first.
 
 ## 0.3.1, 2026-11-19
 
