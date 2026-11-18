@@ -1,0 +1,97 @@
+---
+// /work/preview/<slug>: the v2 case-study template behind a URL that is
+// not linked anywhere. The live page remains /work/<slug> (src/pages/work/
+// [slug].astro) until the owner approves previews and the flip lands. No
+// Framer URLs, no test content; the page reads the same Sanity doc the
+// live page reads and hands it to the new layout resolver.
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CaseBlocks from '../../../components/work/CaseBlocks.astro';
+import { sanityClient, getPreviewClient } from '../../../lib/sanity';
+import { caseStudyBySlugQuery } from '../../../lib/queries';
+import { parseCaseBody } from '../../../lib/case-body';
+import { resolveLayout, type CaseDoc, type RelatedDoc } from '../../../lib/case-layout';
+
+const { slug } = Astro.params;
+
+const previewToken = (Astro.locals as unknown as { previewToken?: string })?.previewToken;
+const client = previewToken ? getPreviewClient(previewToken) : sanityClient;
+const work = await client.fetch(caseStudyBySlugQuery, { slug }).catch(() => null);
+
+if (!work) {
+  return Astro.rewrite('/404');
+}
+
+// Fetch three related case studies by industry (interim: no
+// relatedCaseStudies field yet; step B5 adds it).
+const industry = work.industry ?? '';
+const related: RelatedDoc[] = industry
+  ? await client.fetch(
+      `*[_type == "caseStudy" && industry == $industry && slug.current != $slug && noIndex != true && !(_id in path("drafts.**"))]
+         | order(_updatedAt desc)[0...3] {
+            "slug": slug.current, title, shortTitle, coverPath, thumbnailPath, industry
+          }`,
+      { industry, slug }
+    ).catch(() => []) as RelatedDoc[]
+  : [];
+
+const body = parseCaseBody(work.bodyMarkdown ?? null, { ownFolder: undefined });
+
+const doc: CaseDoc = {
+  slug: String(slug),
+  title: work.title ?? '',
+  shortTitle: work.shortTitle,
+  subtitle: work.subtitle,
+  summary: work.summary,
+  seoTitle: work.seoTitle,
+  seoDescription: work.seoDescription,
+  coverPath: work.coverPath,
+  thumbnailPath: work.thumbnailPath,
+  ogImage: work.ogImage,
+  year: undefined,
+  timeline: work.timeline,
+  country: undefined,
+  platform: undefined,
+  projectType: undefined,
+  engagementType: undefined,
+  specialThanks: undefined,
+  team: Array.isArray(work.team) ? work.team : (typeof work.team === 'string' ? [work.team] : []),
+  clientName: work.clientRef?.name ?? work.client,
+  industry: work.industry,
+  services: Array.isArray(work.services) ? work.services : [],
+  tags: Array.isArray(work.tags) ? work.tags : [],
+  related,
+  next: related[0]
+};
+
+const blocks = resolveLayout(body, undefined, doc);
+
+const pageTitle = (work.seoTitle || work.title || 'Case study') + ' preview';
+const pageDescription = work.seoDescription || work.summary || '';
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  noIndex={true}
+  hideGlobalBlog
+>
+  <div class="wrap work-preview-wrap">
+    <p class="work-preview-flag" role="note">Preview build (v2). Not linked. Owner-review before the switch.</p>
+    <CaseBlocks blocks={blocks} />
+  </div>
+</BaseLayout>
+<style>
+  .work-preview-wrap {
+    padding-block: var(--space-section-sm);
+  }
+  .work-preview-flag {
+    margin: 0 0 var(--space-page-md);
+    padding: var(--space-page-xs) var(--space-page-sm);
+    border: 1px dashed var(--color-border-subtle);
+    border-radius: var(--radius-2, 12px);
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs, 0.75rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+</style>

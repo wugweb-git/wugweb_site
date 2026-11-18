@@ -1,0 +1,80 @@
+---
+import type { StatsBlock, ResultsBlock } from '../../lib/case-layout';
+
+interface Props { block: StatsBlock | ResultsBlock }
+const { block } = Astro.props;
+const heading = block.type === 'stats' ? 'Stats' : 'Results';
+const full = block.type === 'results';
+---
+<section class="case-stats" aria-labelledby={`${block.type}-head`} data-reveal>
+  <h2 class="case-stats-head" id={`${block.type}-head`}>{heading}</h2>
+  <ul class="case-stats-list">
+    {block.items.map(item => (
+      <li class="case-stat">
+        <p class="case-stat-value">{item.value}</p>
+        <p class="case-stat-what">{item.what}</p>
+        {full && (item.period || item.source || item.asOf) && (
+          <p class="case-stat-source">
+            {item.period && <span>{item.period}</span>}
+            {item.period && (item.source || item.asOf) && <span class="case-stat-sep">,</span>}
+            {item.source && <span>{item.source}</span>}
+            {item.source && item.asOf && <span class="case-stat-sep">,</span>}
+            {item.asOf && <span>as of {item.asOf}</span>}
+          </p>
+        )}
+      </li>
+    ))}
+  </ul>
+</section>
+<style>
+  .case-stats {
+    margin: var(--space-section-sm) 0;
+    display: grid;
+    gap: var(--space-page-md);
+  }
+  .case-stats-head {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .case-stats-list {
+    display: grid;
+    gap: var(--space-page-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: 1fr;
+  }
+  .case-stat {
+    padding: var(--space-page-md);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-3, 16px);
+    background: var(--color-surface-elevated);
+  }
+  .case-stat-value {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    font-weight: 600;
+  }
+  .case-stat-what {
+    margin: var(--space-page-sm) 0 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .case-stat-source {
+    margin: var(--space-page-xs) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs, 0.75rem);
+    line-height: 1.4;
+  }
+  .case-stat-sep { margin-inline: 0.25rem; }
+  @media (min-width: 720px) {
+    .case-stats-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>

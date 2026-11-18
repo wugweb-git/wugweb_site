@@ -1,0 +1,41 @@
+---
+import type { LoopBlock } from '../../lib/case-layout';
+import { assetUrl } from '../../lib/assets';
+
+interface Props { block: LoopBlock }
+const { block } = Astro.props;
+const src = block.media.url.startsWith('http') ? block.media.url : assetUrl(block.media.url);
+---
+<figure class="case-loop" data-reveal>
+  <video
+    class="case-loop-media"
+    src={src}
+    poster={block.poster}
+    muted
+    playsinline
+    autoplay
+    loop
+    preload="metadata"
+    aria-hidden="true"
+  />
+  {block.media.caption && <figcaption class="case-loop-caption">{block.media.caption}</figcaption>}
+</figure>
+<style>
+  .case-loop {
+    margin: var(--space-page-lg) 0;
+    display: grid;
+    gap: var(--space-page-sm);
+  }
+  .case-loop-media {
+    inline-size: 100%;
+    block-size: auto;
+    display: block;
+    border-radius: var(--radius-3, 16px);
+    background: var(--color-surface-elevated);
+  }
+  .case-loop-caption {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm, 0.875rem);
+    line-height: 1.5;
+  }
+</style>

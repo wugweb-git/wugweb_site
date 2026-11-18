@@ -1,0 +1,53 @@
+---
+import type { TimelineBlock } from '../../lib/case-layout';
+import { inline } from '../../lib/case-body';
+
+interface Props { block: TimelineBlock }
+const { block } = Astro.props;
+---
+<ol class="case-timeline" data-reveal>
+  {block.items.map(step => (
+    <li class="case-timeline-step">
+      <time class="case-timeline-date">{step.date}</time>
+      <p class="case-timeline-text" set:html={inline(step.text)} />
+    </li>
+  ))}
+</ol>
+<style>
+  .case-timeline {
+    margin: var(--space-page-lg) 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-page-md);
+    border-inline-start: 1px solid var(--color-border-subtle);
+  }
+  .case-timeline-step {
+    position: relative;
+    padding-inline-start: var(--space-page-md);
+  }
+  .case-timeline-step::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: calc(var(--space-page-xs) * -1);
+    inset-block-start: 0.4rem;
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: var(--radius-full, 999px);
+    background: var(--color-text-primary);
+  }
+  .case-timeline-date {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs, 0.75rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .case-timeline-text {
+    margin: var(--space-page-xs) 0 0;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-inline-size: 60ch;
+  }
+</style>

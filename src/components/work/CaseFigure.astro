@@ -1,0 +1,44 @@
+---
+import type { FigureBlock, ScrollshotBlock } from '../../lib/case-layout';
+import { assetUrl } from '../../lib/assets';
+
+interface Props { block: FigureBlock | ScrollshotBlock }
+const { block } = Astro.props;
+const media = block.media;
+const src = media.url.startsWith('http') ? media.url : assetUrl(media.url);
+const alt = media.caption ?? media.label ?? '';
+const tall = block.type === 'scrollshot';
+---
+<figure class={tall ? 'case-figure case-figure--tall' : 'case-figure'} data-reveal>
+  {media.video ? (
+    <video class="case-figure-media" src={src} muted playsinline autoplay={!tall} loop preload="metadata" aria-hidden="true" />
+  ) : (
+    <img class="case-figure-media" src={src} alt={alt} loading="lazy" decoding="async" />
+  )}
+  {media.caption && <figcaption class="case-figure-caption">{media.caption}</figcaption>}
+</figure>
+<style>
+  .case-figure {
+    margin: var(--space-page-lg) 0;
+    display: grid;
+    gap: var(--space-page-sm);
+  }
+  .case-figure-media {
+    inline-size: 100%;
+    block-size: auto;
+    display: block;
+    border-radius: var(--radius-3, 16px);
+    background: var(--color-surface-elevated);
+  }
+  .case-figure--tall .case-figure-media {
+    max-block-size: 80vh;
+    object-fit: contain;
+    object-position: top;
+  }
+  .case-figure-caption {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm, 0.875rem);
+    line-height: 1.5;
+    max-inline-size: 60ch;
+  }
+</style>

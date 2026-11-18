@@ -1,0 +1,36 @@
+---
+import type { QuoteBlock } from '../../lib/case-layout';
+import { inline } from '../../lib/case-body';
+
+interface Props { block: QuoteBlock }
+const { block } = Astro.props;
+---
+<figure class="case-quote" data-reveal>
+  <blockquote class="case-quote-text">
+    <p set:html={inline(block.text)} />
+  </blockquote>
+  {block.by && <figcaption class="case-quote-by">{block.by}</figcaption>}
+</figure>
+<style>
+  .case-quote {
+    margin: var(--space-section-sm) 0;
+    padding: var(--space-page-lg);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-3, 16px);
+    background: var(--color-surface-elevated);
+    max-inline-size: 60ch;
+  }
+  .case-quote-text {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .case-quote-text p { margin: 0; }
+  .case-quote-by {
+    margin-block-start: var(--space-page-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm, 0.875rem);
+  }
+</style>

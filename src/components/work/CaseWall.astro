@@ -1,0 +1,43 @@
+---
+import type { WallBlock } from '../../lib/case-layout';
+import { assetUrl } from '../../lib/assets';
+
+interface Props { block: WallBlock }
+const { block } = Astro.props;
+
+function src(url: string) { return url.startsWith('http') ? url : assetUrl(url); }
+---
+<div class="case-wall" data-reveal>
+  {block.items.map(media => (
+    <figure class="case-wall-item">
+      {media.video ? (
+        <video class="case-wall-media" src={src(media.url)} muted playsinline autoplay loop preload="metadata" aria-hidden="true" />
+      ) : (
+        <img class="case-wall-media" src={src(media.url)} alt={media.caption ?? media.label ?? ''} loading="lazy" decoding="async" />
+      )}
+    </figure>
+  ))}
+</div>
+<style>
+  .case-wall {
+    display: grid;
+    gap: var(--space-page-sm);
+    margin: var(--space-page-lg) 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .case-wall-item { margin: 0; }
+  .case-wall-media {
+    inline-size: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-2, 12px);
+    background: var(--color-surface-elevated);
+  }
+  @media (min-width: 720px) {
+    .case-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1100px) {
+    .case-wall { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+</style>

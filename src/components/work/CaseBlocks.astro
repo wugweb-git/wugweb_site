@@ -1,0 +1,146 @@
+---
+import type { Block, ScreensBlock } from '../../lib/case-layout';
+import CaseHero from './CaseHero.astro';
+import CaseChapter from './CaseChapter.astro';
+import CasePoints from './CasePoints.astro';
+import CaseFigure from './CaseFigure.astro';
+import CaseSplit from './CaseSplit.astro';
+import CasePair from './CasePair.astro';
+import CaseRail from './CaseRail.astro';
+import CaseMosaic from './CaseMosaic.astro';
+import CaseWall from './CaseWall.astro';
+import CaseLoop from './CaseLoop.astro';
+import CaseVideo from './CaseVideo.astro';
+import CaseQuote from './CaseQuote.astro';
+import CaseStats from './CaseStats.astro';
+import CaseTable from './CaseTable.astro';
+import CaseTimeline from './CaseTimeline.astro';
+import CaseCredits from './CaseCredits.astro';
+import CasePresence from './CasePresence.astro';
+import CaseRelated from './CaseRelated.astro';
+
+interface Props { blocks: Block[] }
+const { blocks } = Astro.props;
+
+type Group =
+  | { kind: 'solo'; block: Block }
+  | { kind: 'chapter'; head: Extract<Block, { type: 'chapter' }>; items: Block[] };
+
+const groups: Group[] = [];
+let current: Extract<Group, { kind: 'chapter' }> | null = null;
+for (const block of blocks) {
+  if (block.type === 'chapter') {
+    if (current) groups.push(current);
+    current = { kind: 'chapter', head: block, items: [] };
+    continue;
+  }
+  const chapterId = (block as { chapterId?: string }).chapterId;
+  if (chapterId && current && current.head.id === chapterId) {
+    current.items.push(block);
+    continue;
+  }
+  if (current) {
+    groups.push(current);
+    current = null;
+  }
+  groups.push({ kind: 'solo', block });
+}
+if (current) groups.push(current);
+
+function labelAudience(a: ScreensBlock['sets'][number]['audience']): string {
+  switch (a) {
+    case 'member': return 'Member side';
+    case 'admin': return 'Back office';
+    case 'public': return 'Public side';
+    case 'partner': return 'Partner side';
+    default: return 'Other';
+  }
+}
+---
+<section class="case-page" aria-label="Case study">
+  {groups.map(group => {
+    if (group.kind === 'solo') {
+      const b = group.block;
+      if (b.type === 'hero') return <CaseHero block={b} />;
+      if (b.type === 'summary') return <p class="case-summary" data-reveal>{b.text}</p>;
+      if (b.type === 'stats') return <CaseStats block={b} />;
+      if (b.type === 'results') return <CaseStats block={b} />;
+      if (b.type === 'screens') {
+        return (
+          <section class="case-screens" aria-labelledby="screens-head" data-reveal>
+            <h2 class="case-screens-head" id="screens-head">All screens</h2>
+            {b.sets.map(set => (
+              <div class="case-screens-set">
+                <h3 class="case-screens-audience">{labelAudience(set.audience)}</h3>
+                {set.flows.map(f => (
+                  <CaseRail block={{ type: 'rail', items: f.items, chapterId: '', flow: f.flow }} />
+                ))}
+              </div>
+            ))}
+          </section>
+        );
+      }
+      if (b.type === 'credits') return <CaseCredits block={b} />;
+      if (b.type === 'presence') return <CasePresence block={b} />;
+      if (b.type === 'related') return <CaseRelated block={b} />;
+      if (b.type === 'next') return <CaseRelated block={b} />;
+      return null;
+    }
+    const chapter = group.head;
+    return (
+      <article class="case-chapter-wrap" id={chapter.id} aria-labelledby={`${chapter.id}-head`}>
+        <CaseChapter block={chapter} />
+        {group.items.map(b => {
+          if (b.type === 'points') return <CasePoints block={b} />;
+          if (b.type === 'figure') return <CaseFigure block={b} />;
+          if (b.type === 'scrollshot') return <CaseFigure block={b} />;
+          if (b.type === 'split') return <CaseSplit block={b} />;
+          if (b.type === 'pair') return <CasePair block={b} />;
+          if (b.type === 'rail') return <CaseRail block={b} />;
+          if (b.type === 'mosaic') return <CaseMosaic block={b} />;
+          if (b.type === 'wall') return <CaseWall block={b} />;
+          if (b.type === 'loop') return <CaseLoop block={b} />;
+          if (b.type === 'video') return <CaseVideo block={b} />;
+          if (b.type === 'quote') return <CaseQuote block={b} />;
+          if (b.type === 'table') return <CaseTable block={b} />;
+          if (b.type === 'timeline') return <CaseTimeline block={b} />;
+          return null;
+        })}
+      </article>
+    );
+  })}
+</section>
+
+<style>
+  .case-page { display: grid; gap: 0; }
+  .case-summary {
+    margin: var(--space-page-lg) 0 0;
+    color: var(--color-text-secondary);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    line-height: 1.6;
+    max-inline-size: 65ch;
+  }
+  .case-chapter-wrap { display: contents; }
+  .case-screens {
+    margin: var(--space-section-md) 0;
+    display: grid;
+    gap: var(--space-page-lg);
+    padding-block-start: var(--space-section-sm);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+  .case-screens-head {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .case-screens-set { display: grid; gap: var(--space-page-md); }
+  .case-screens-audience {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+</style>

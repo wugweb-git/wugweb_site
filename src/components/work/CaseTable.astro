@@ -1,0 +1,53 @@
+---
+import type { TableBlock } from '../../lib/case-layout';
+import { inline } from '../../lib/case-body';
+
+interface Props { block: TableBlock }
+const { block } = Astro.props;
+---
+<div class="case-table-wrap" data-reveal>
+  <table class="case-table">
+    <thead>
+      <tr>
+        {block.head.map(h => <th scope="col" set:html={inline(h)} />)}
+      </tr>
+    </thead>
+    <tbody>
+      {block.rows.map(row => (
+        <tr>
+          {row.map(cell => <td set:html={inline(cell)} />)}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<style>
+  .case-table-wrap {
+    margin: var(--space-page-lg) 0;
+    overflow-x: auto;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-3, 16px);
+  }
+  .case-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    color: var(--color-text-primary);
+    font-size: var(--text-sm, 0.875rem);
+  }
+  .case-table th, .case-table td {
+    padding: var(--space-page-sm) var(--space-page-md);
+    text-align: start;
+    vertical-align: top;
+  }
+  .case-table thead th {
+    background: var(--color-surface-elevated);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: var(--text-xs, 0.75rem);
+    letter-spacing: 0.06em;
+  }
+  .case-table tbody tr + tr td {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+</style>

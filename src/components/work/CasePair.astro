@@ -1,0 +1,46 @@
+---
+import type { PairBlock } from '../../lib/case-layout';
+import { assetUrl } from '../../lib/assets';
+
+interface Props { block: PairBlock }
+const { block } = Astro.props;
+
+function src(url: string) { return url.startsWith('http') ? url : assetUrl(url); }
+---
+<div class="case-pair" data-reveal>
+  <figure class="case-pair-item">
+    <img class="case-pair-media" src={src(block.left.url)} alt={block.left.caption ?? block.left.label ?? ''} loading="lazy" decoding="async" />
+    {block.left.caption && <figcaption class="case-pair-caption">{block.left.caption}</figcaption>}
+  </figure>
+  <figure class="case-pair-item">
+    <img class="case-pair-media" src={src(block.right.url)} alt={block.right.caption ?? block.right.label ?? ''} loading="lazy" decoding="async" />
+    {block.right.caption && <figcaption class="case-pair-caption">{block.right.caption}</figcaption>}
+  </figure>
+</div>
+<style>
+  .case-pair {
+    display: grid;
+    gap: var(--space-page-md);
+    margin: var(--space-page-lg) 0;
+  }
+  .case-pair-item {
+    margin: 0;
+    display: grid;
+    gap: var(--space-page-sm);
+  }
+  .case-pair-media {
+    inline-size: 100%;
+    block-size: auto;
+    display: block;
+    border-radius: var(--radius-3, 16px);
+    background: var(--color-surface-elevated);
+  }
+  .case-pair-caption {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm, 0.875rem);
+    line-height: 1.5;
+  }
+  @media (min-width: 720px) {
+    .case-pair { grid-template-columns: 1fr 1fr; }
+  }
+</style>
