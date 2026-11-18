@@ -1,0 +1,16 @@
+{
+  "version": "0.1.3",
+  "organization": "Wugweb",
+  "date": "November 2026",
+  "abstract": "Decides what Wugweb says, to whom and when, and hands wugweb-work a brief. Content strategy only: topics, pillar mix, the editorial and social calendar, briefs, piece structures, editorial standards, content models, the proof map, refresh or retire decisions, campaign and repurposing plans, and reading post results for the next plan. It writes no piece and does not cover brand strategy (positioning, values, audience, messaging), which belong to wugweb-brand-os. Ten modes, each with a by-hand procedure, so no helper skill is required. The fixed owner rules are always on: never invent a number, quote or fact; no write to Notion, Sanity or R2 without the owner's go on that exact change, with a backup first; British English, sentence case, no em or en dashes.",
+  "relatedSkills": [
+    "wugweb-work",
+    "wugweb-brand-os",
+    "wugweb-voice",
+    "wugweb-seo",
+    "wugweb-kits"
+  ],
+  "references": [
+    "https://agentskills.io/specification"
+  ]
+}
