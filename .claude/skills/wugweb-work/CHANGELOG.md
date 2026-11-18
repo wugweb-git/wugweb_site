@@ -16,7 +16,7 @@ Fixes from the full read of 2026-11-19 (`docs/skills/wugweb-work/PLAN.md`). The 
 - `ops-cycle.md`: the standard token name is `NOTION_API_TOKEN`; the folder listing is done by the site's read-only manifest script (`media-standard.md` agrees).
 - `metadata.json`: Part 2 goes straight to main.
 - Hard stops: the same six in `SKILL.md` and `qa-checklist.md`.
-- `forms/newsletter.md`: the "Not decided" section is replaced by the settled lines from `open-items.md`.
+- `forms/newsletter.md`: the sending tool, list and cadence stay "Not decided" (owner, 2026-11-19), and `open-items.md` now lists them as the one open matter.
 - One helper name, `musiclinkd-design-system`, in `examples/body-musiclinkd.md` and `skill-map.md`.
 - This file: the stale lock note under 0.5.0 is rewritten, and the 2026-11-18 standing-rules copies are recorded.
 

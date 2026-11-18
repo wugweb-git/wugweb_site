@@ -1,6 +1,6 @@
 # Open with the owner
 
-No matter is open with the owner (2026-11-17). Any output that depends on an open item says so in one line: "Open: <item>".
+One matter is open with the owner: the newsletter's sending tool, list and cadence (`forms/newsletter.md`; not decided, owner 2026-11-19). Any output that depends on an open item says so in one line: "Open: <item>".
 
 ## Also open, shared with `wugweb-kits`
 

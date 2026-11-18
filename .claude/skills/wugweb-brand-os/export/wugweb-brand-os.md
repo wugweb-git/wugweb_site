@@ -363,7 +363,7 @@ The owner approved the rows marked "approved 2026-11-17" from the Notion read (q
 | Fact | What exists today | Source | Status |
 | --- | --- | --- | --- |
 | Brand name and spelling | "Wugweb" | Site, owner | Approved 2026-11-17 |
-| Legal name | Four forms. Three in the 2023 profile: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd". One on the site's terms of use page: "Wug Web Services Private Limited" | 2023 profile; the terms of use page | Owner to pick one |
+| Legal name | Three forms in Notion: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd" | 2023 profile | Owner to pick one |
 | One fixed line: what Wugweb is, for whom, what is distinct | Seven competing lines (see `identity-and-positioning.md`) | Site, Notion 2023 to 2026 | Blank. Owner to pick or write |
 | Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Approved, fixed |
 | Website | `wugweb.com` | `CLAUDE.md` | Exists |
@@ -1006,7 +1006,7 @@ How and whether these words are used in copy is a voice matter; ask `wugweb-voic
 
 ## More on the name and category
 
-- The legal name appears in four forms: three in the stale profile and one on the site's terms of use page (see `brand-facts.md`). Do not write a legal name until the owner confirms it.
+- The legal name appears in three forms in the stale profile (see `brand-facts.md`). Do not write a legal name until the owner confirms it.
 - Use one spelling everywhere, with the full name at first mention. This is the rule search and AI tools rely on, as reported by the `wugweb-seo` session.
 - `wugweb-seo` reads the approved descriptor from `brand-facts.md` and never rewrites it.
 - How Wugweb names its category and its competitors is part of positioning and is not decided. Do not adopt a term a competitor coined without the owner's say.

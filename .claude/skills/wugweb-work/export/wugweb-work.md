@@ -84,7 +84,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 ## Open with the owner
 
-No matter is open with the owner (2026-11-17). One is shared with `wugweb-kits` (old media ratios) and listed in `references/open-items.md`, with every settled decision. Mark any output an open item touches "open".
+One matter is open with the owner: the newsletter's tool, list and cadence. One is shared with `wugweb-kits` (old media ratios) and listed in `references/open-items.md`, with every settled decision. Mark any output an open item touches "open".
 
 ## Archetypes at a glance
 
@@ -1654,7 +1654,7 @@ Made files are kept in the media store named in `ops-cycle.md`, under the piece'
 <!-- references/open-items.md -->
 ## Open with the owner
 
-No matter is open with the owner (2026-11-17). Any output that depends on an open item says so in one line: "Open: <item>".
+One matter is open with the owner: the newsletter's sending tool, list and cadence (`forms/newsletter.md`; not decided, owner 2026-11-19). Any output that depends on an open item says so in one line: "Open: <item>".
 
 ### Also open, shared with `wugweb-kits`
 
@@ -2166,9 +2166,9 @@ Built from one or more approved pieces. In scope (owner, 2026-11-16). Sending ne
 4. Check the subject line and preview text against the limits of the tool the owner sends from, and write the limits down with the date.
 5. Go to `publish-approval.md`. Sending is a post: it needs the owner's yes for that send.
 
-### Sending
+### Not decided
 
-Settled, per `open-items.md`: the newsletter is in scope and sending needs the owner's yes (owner, 2026-11-16); no scheduling tool is connected, so the edition is handed to the owner as an approved draft (owner, 2026-11-17). The owner sends it, from the tool and to the list he chooses. Cadence is planned by `wugweb-strategy`.
+Which tool sends it, to which list, and how often. The owner decides; cadence is planned by `wugweb-strategy`. Until he does, the edition is handed to him as an approved draft and nothing is sent.
 
 <!-- references/forms/og-image.md -->
 ## Share image (og image)

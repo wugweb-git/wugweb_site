@@ -3,6 +3,7 @@
 ## 2.5.0, 2026-11-17
 
 - 2026-11-19: review fixes, version stays 2.5.0. `build.mjs` now writes `export/wugweb-seo.md`
+- 2026-11-19, owner: a blog post or service page title over 52 characters is not a blocker. `check-page.mjs` reports it at MEDIUM; only a case study over 51 blocks.
   (a short header, then `AGENTS.md`) and `--check`, `validate.mjs` and `test.mjs` cover it.
   The description takes the sibling form, with quoted user phrases, and `validate.mjs` accepts
   it. `wugweb-engineer` is named as the skill that applies Sanity and Notion data and schema

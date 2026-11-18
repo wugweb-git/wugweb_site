@@ -38,7 +38,8 @@ else {
   const source = titles[0].replace(/\s*\|\s*Wugweb\s*$/, '')
   // House limits on wugweb.com: 51 for a case study, 52 for a blog post or service page.
   const sourceLimit = isWork ? 51 : kind === 'blog' || kind === 'service' ? 52 : null
-  if (sourceLimit && source.length > sourceLimit) add('BLOCKER', 'title-length', '<title>', `source title ${source.length} characters, limit ${sourceLimit}`)
+  // A case study over its limit blocks; a blog post or service page over 52 is reported, not blocking (owner, 2026-11-19).
+  if (sourceLimit && source.length > sourceLimit) add(isWork ? 'BLOCKER' : 'MEDIUM', 'title-length', '<title>', `source title ${source.length} characters, limit ${sourceLimit}`)
   else if (sourceLimit) pass('title-length')
   else add('LOW', 'title-length', '<title>', `source title ${source.length} characters; no limit set for kind "${kind}". Use --kind work (51), blog or service (52)`)
   if (titles[0].length > 60) add('HIGH', 'title-rendered', '<title>', `rendered title ${titles[0].length} characters, limit 60`)

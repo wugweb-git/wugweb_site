@@ -828,3 +828,5 @@ Fixed 2026-11-19 (seo session, version stays 2.5.0; not committed at the time of
 - The skill's content changed three times under 2.5.0 with no version change, on the owner's instruction.
 - `validate.mjs` lines 72 to 73: the check-id pattern has no `share-` prefix, so `share-tags` and `share-url` are not covered by the documentation check.
 - `check-robots.mjs` line 68: `sitemap-listed` prints only in text mode, not with `--json`.
+
+Changed the same day at the owner's word: a blog post or service page title over 52 characters is reported at MEDIUM and is not a blocker; only a case study over 51 blocks.

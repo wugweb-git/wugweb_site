@@ -87,7 +87,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 ## Open with the owner
 
-No matter is open with the owner (2026-11-17). One is shared with `wugweb-kits` (old media ratios) and listed in `references/open-items.md`, with every settled decision. Mark any output an open item touches "open".
+One matter is open with the owner: the newsletter's tool, list and cadence. One is shared with `wugweb-kits` (old media ratios) and listed in `references/open-items.md`, with every settled decision. Mark any output an open item touches "open".
 
 ## Archetypes at a glance
 

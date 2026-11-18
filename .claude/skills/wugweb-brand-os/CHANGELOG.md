@@ -6,7 +6,7 @@ Fixes from the full read of 2026-11-19 (the review section at the end of `docs/s
 
 - The client under NDA is no longer named anywhere in the skill.
 - `wugweb-engineer` is named as a sibling: it owns changes to Sanity and Notion data, schema edits, the sync scripts and backups. This skill gives it nothing and takes nothing. Added to `SKILL.md`, `README.md`, `metadata.json` and eval 36.
-- Counts brought in line with the content: seven positioning lines found, two of them in use; four legal name forms (the fourth is on the site's terms of use page); four blank core items and five open facts; a six-part description frame; 31 files in the full zip.
+- Counts brought in line with the content: seven positioning lines found, two of them in use; three legal name forms (a fourth candidate from the terms of use page was added and then removed the same day, at the owner's word); four blank core items and five open facts; a six-part description frame; 31 files in the full zip.
 - `source-map.md`: the values are marked approved; questions 1 and 3 are marked open, as in the plan.
 - Black canvas: the pitch deck and deck lines in `visual-os/formats-and-campaigns.md` no longer allow a light field.
 - Colour: the two overruled source lines (magenta as brand energy; avoid purple, green and orange) are removed from `visual-os/colour-type-photo-motion.md`, so only the ruling remains.

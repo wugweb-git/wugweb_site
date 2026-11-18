@@ -378,7 +378,7 @@ The open list is the Pending table in the status block at the top. Every questio
 - The guidelines call light backgrounds the default; ruled 2026-11-17: black canvas everywhere.
 - The guidelines use American spelling and mark hex values as provisional; `src/styles/global.css` is the real token source.
 - The About page lede is marked placeholder copy in the code and contains a dash.
-- The Notion page "Wugweb Profile (Master) - 2023" is an approved source (owner, 2026-11-17) but holds conflicts: three legal names (a fourth form is on the site's terms of use page), "Creative UX Design Agency", both 200+ and 400+ projects, three market lists, lorem ipsum under Story.
+- The Notion page "Wugweb Profile (Master) - 2023" is an approved source (owner, 2026-11-17) but holds conflicts: three legal names, "Creative UX Design Agency", both 200+ and 400+ projects, three market lists, lorem ipsum under Story.
 
 **Not read in full while planning**
 
@@ -472,7 +472,7 @@ This is what `wugweb-seo` reads from brand-os, one way, and never rewrites. The 
 | Fact | What exists today | Source | Status |
 | --- | --- | --- | --- |
 | Brand name and spelling | "Wugweb" | Site, owner | Approved 2026-11-17 |
-| Legal name | Four forms. Three in the 2023 profile: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd". One on the site's terms of use page: "Wug Web Services Private Limited" | 2023 profile; the terms of use page | Owner to pick one |
+| Legal name | Three forms in Notion: "Wug Web Service Pvt Ltd", "WugWeb Services Pvt Ltd", "Wug Web Services Pvt Ltd" | 2023 profile | Owner to pick one |
 | One fixed line: what Wugweb is, for whom, what is distinct | Seven competing lines (see `identity-and-positioning.md`) | Site, Notion 2023 to 2026 | Blank. Owner to pick or write |
 | Six pillars | Strategy, Brand, Experience, Engineering, Growth, Operations | `CLAUDE.md` | Approved, fixed |
 | Website | `wugweb.com` | `CLAUDE.md` | Exists |
@@ -556,4 +556,4 @@ Every file of the skill was read on 2026-11-19 from main (`4fbf334c`) by a read-
 
 ### Fixed 2026-11-19
 
-Fixed 2026-11-19: skill items 1 to 15 and all five plan items. Not fixed: none. The "Worth knowing" notes were out of scope and are unchanged. Choices made: item 11 keeps the six-part frame of `judging-a-visual.md`; item 12 keeps three seconds, the rule in `identity-and-positioning.md` and the message test; item 5 adds the fourth legal name form to `brand-facts.md` from the site's terms of use page; item 13 rewords the statement, because Notion is named as a source in seven other files. `SKILL.md` body is 1,999 words; `build.mjs --check` and `test.mjs` pass. The Notion copy of this plan was not updated in this pass.
+Fixed 2026-11-19: skill items 1 to 15 and all five plan items. Not fixed: none. The "Worth knowing" notes were out of scope and are unchanged. Choices made: item 11 keeps the six-part frame of `judging-a-visual.md`; item 12 keeps three seconds, the rule in `identity-and-positioning.md` and the message test; item 5 adds the fourth legal name form to `brand-facts.md` from the site's terms of use page; item 13 rewords the statement, because Notion is named as a source in seven other files. `SKILL.md` body is 1,999 words; `build.mjs --check` and `test.mjs` pass. The Notion copy of this plan was not updated in this pass. Changed back the same day at the owner's word: the fourth legal name form taken from the terms of use page is removed from `brand-facts.md`, `vocabulary.md` and section 19; the facts file lists the three forms from the 2023 profile, as before.
