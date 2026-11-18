@@ -32,3 +32,12 @@ sanity/schema.json
 # Media manifest (wugweb-work Part 2): measurement cache and full JSON churn every run
 scripts/data/media-manifest-cache.json
 scripts/data/media-manifest-*.json
+
+# Skill-creator eval workspaces for wugweb-work (and any sibling) should not be
+# tracked: they hold run logs and screenshots, not source.
+.claude/skill-workspaces/
+
+# Scratch scripts the owner's agents drop next to the real scripts/. The
+# existing pattern matches scripts/tmp-*.mjs; this adds the dot-prefixed form
+# .tmp-*.mjs used by the sync and manifest scripts during a dry run.
+scripts/.tmp-*.mjs

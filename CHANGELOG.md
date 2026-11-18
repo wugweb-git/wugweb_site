@@ -17,6 +17,13 @@ and this project adheres to Semantic Versioning.
 
 - `.claude/skills/wugweb-voice`: folded the 26 per-assertion grader files into each case's `case.yaml` at the owner's request; each case is now `prompt.md` plus `case.yaml` and the skill drops from 47 to 21 `.md` files. Diverges from the sibling eval layout (one grader per assertion); the skill's own tests still pass. Version stays locked at 0.3.0.
 
+### Added: wugweb-work Part 2 step 4 schema + step 8 docs round 2 (2026-11-19)
+- `sanity/schemaTypes/caseStudy.ts`: Body Content v2 fields declared. `results[]` items gain optional `source`, `period`, `asOf`, `baseline` (nothing removed). New fields the pages already read: `year` (number), `country`, `platform` (array of strings), `projectType`, `engagementType`, `specialThanks`, `links` (live, App Store, Play Store, Behance, Dribbble, Awards), `accent`. New derived field `mediaManifest` (array of objects, hidden + readOnly, written by sync v2). Studio deploy is the owner's step.
+- `CLAUDE.md` and `AGENTS.md`: new "Case-study components" subsection under Components, naming the 18 files, the CSS guard, the preview route and the Part 2 pointer.
+- `governance.md` §5: declared the v2 fields synced from Notion and that `mediaManifest` is derived data.
+- `.gitignore`: added `.claude/skill-workspaces/` and `scripts/.tmp-*.mjs` per the plan.
+- Build passes, 57 tests pass.
+
 ### Changed — wugweb-voice brought to sibling standard (2026-11-19)
 
 - `.claude/skills/wugweb-voice`: listed `references/standing-rules.md` in the SKILL.md Files table (as wugweb-seo, wugweb-kits and wugweb-work do) and removed the per-reference `Version` stamps that siblings do not carry. Regenerated the portable files. Skill version stays locked at 0.3.0; tests pass.
