@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4 (2026-11-19)
+
+Regenerated to track the home standing rules.
+
+- Rebuilt `AGENTS.md` and the export after `docs/skills/STANDING-RULES.md` changed its API-keys rule (key rotation is now the owner's call, never done from a session). The skill's `test.mjs` was failing the standing-rules match until this rebuild. No change to the skill's authored content.
+
 ## 0.1.3 (2026-11-19)
 
 Portability and a stale-file fix.
