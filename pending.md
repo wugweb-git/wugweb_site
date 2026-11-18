@@ -10,7 +10,8 @@ Also read: [`governance.md`](governance.md) (Rule 1/2, ownership, Notion seed, i
 - CSS guard `scripts/check-case-css.mjs`: `.case-*` selectors may only live in `src/components/work/*.astro`. Legacy `/work/[slug].astro` exempted by name until the flip. Wired into `prebuild`.
 - Block doc `kits_design_system/docs/blocks/case-study.md` and the case-study section added to `kits_design_system/docs/components.md`.
 - 57 tests pass; `npm run build` succeeds.
-- Next, owner-gated: step 6 previews on the 8 slugs, step 3b visual read, step 4 Sanity sync (blocked on new `NOTION_TOKEN`), the flip from legacy to the thin template.
+- Next, open: step 4 Sanity sync (blocked on a new `NOTION_TOKEN`; current one returns 401); step 6 previews on the 8 slugs via `/work/preview/<slug>` (owner-review in the pane); the flip from the legacy template to the thin one (owner decision, 2026-11-19: waits for step 6); step 7 skill eval loop (waits for the owner to set the eval workspace up).
+- Step 3b visual read: not owner-gated per case study (owner clarification, 2026-11-19). It runs when the skill is invoked on a case study; the skill reads the source then.
 
 **2026-11-19: API keys and secrets standard. ON MAIN (`c46bae1` then follow-up), owner rules applied.**
 - The one home: [`docs/skills/SECRETS.md`](docs/skills/SECRETS.md). The standing-rules file points there; four skill mirrors synced byte-identical (wugweb-work, wugweb-voice, wugweb-seo, wugweb-kits). wugweb-work outputs regenerated; validate 30 checks, 0 errors.
