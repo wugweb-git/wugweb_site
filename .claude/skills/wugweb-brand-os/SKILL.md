@@ -3,7 +3,7 @@ name: wugweb-brand-os
 description: "Holds Wugweb's brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules and Visual OS (art direction), and returns reference answers and check findings as proposals. This skill should be used when the user asks 'what is Wugweb's positioning', 'who is Wugweb's audience', 'what are our values', 'how are we different', 'what is our messaging framework', 'is this artwork on brand', 'how should this card, slide or cover look', 'is this claim about Wugweb approved', or asks to change a brand rule. Use it for any question about who Wugweb is or whether a visual or a claim about Wugweb is on brand, even when the user does not say 'brand'. It does not cover content strategy (topics, calendar, briefs: wugweb-strategy), voice and tone (wugweb-voice), tokens and components (wugweb-kits), or a client's brand, which stays with its case study."
 metadata:
   author: wugweb
-  version: "0.3.0"
+  version: "0.3.1"
   status: "owner rulings of 2026-11-17 applied; positioning line, audience and five facts waiting on the owner"
 ---
 
@@ -13,7 +13,7 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.3.0 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
+Version 0.3.1 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
 
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
 - **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.

@@ -113,11 +113,8 @@ Control density through hierarchy, not component count. Default: one anchor, one
 
 ## Rules restated from the kits docs (confirmed; values live in `wugweb-kits`)
 
-- Yellow is an accent at 10% or less, and the final call to action stays yellow.
-- Yellow is a reservation, not an emphasis level. It is the resting fill only on the one conversion action per page and on the footer banner. Other buttons may use it only on hover or tap. On a yellow surface the button inverts to dark.
-- Structure stays in brand ink. An accent is spent on one or two things only, and a pillar colour does not paint structure.
-- Text is never pure white.
-- The logo lockup is two-tone, and two-tone titles mirror it.
+- Colour (yellow, brand ink, pillar colours, never pure white text): held in `colour-type-photo-motion.md` only.
+- The logo: held in the Logo section below.
 - Surfaces are a black canvas with glass panels, and corner radius is set by role.
 - A bento never resolves into an even grid, and nothing is wider than the nav.
 - Not confirmed: that tiles keep a sixteen by nine ratio.
@@ -136,6 +133,7 @@ Take the principle, never the composition. Name what the reference does (hierarc
 
 **Approved by the owner 2026-11-17 (question 19):**
 
+- The lockup is two-tone, and two-tone titles mirror it.
 - `public/brand/logo-large.svg` is the lockup; `public/brand/logo-small.svg` is the mark.
 - Their tones are fixed: the lockup is white and grey, the mark yellow and white.
 - The logo files are exempt from the pure white and yellow rules. Nothing else is.

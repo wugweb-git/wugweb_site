@@ -1,4 +1,4 @@
-# wugweb-brand-os (single-file export, v0.3.0)
+# wugweb-brand-os (single-file export, v0.3.1)
 
 Built from the files in this folder by `scripts/build.mjs`. Do not edit by hand. Rebuild whenever the skill or `docs/skills/STANDING-RULES.md` changes. Read the skill first, then the reference a mode names.
 
@@ -96,7 +96,7 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.3.0 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
+Version 0.3.1 holds the structure, every rule that has a source and the owner's rulings of 2026-11-16 and 17. Two core items are blank because the owner has not supplied them yet:
 
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
 - **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.
@@ -1126,11 +1126,8 @@ Control density through hierarchy, not component count. Default: one anchor, one
 
 ## Rules restated from the kits docs (confirmed; values live in `wugweb-kits`)
 
-- Yellow is an accent at 10% or less, and the final call to action stays yellow.
-- Yellow is a reservation, not an emphasis level. It is the resting fill only on the one conversion action per page and on the footer banner. Other buttons may use it only on hover or tap. On a yellow surface the button inverts to dark.
-- Structure stays in brand ink. An accent is spent on one or two things only, and a pillar colour does not paint structure.
-- Text is never pure white.
-- The logo lockup is two-tone, and two-tone titles mirror it.
+- Colour (yellow, brand ink, pillar colours, never pure white text): held in `colour-type-photo-motion.md` only.
+- The logo: held in the Logo section below.
 - Surfaces are a black canvas with glass panels, and corner radius is set by role.
 - A bento never resolves into an even grid, and nothing is wider than the nav.
 - Not confirmed: that tiles keep a sixteen by nine ratio.
@@ -1149,6 +1146,7 @@ Take the principle, never the composition. Name what the reference does (hierarc
 
 **Approved by the owner 2026-11-17 (question 19):**
 
+- The lockup is two-tone, and two-tone titles mirror it.
 - `public/brand/logo-large.svg` is the lockup; `public/brand/logo-small.svg` is the mark.
 - Their tones are fixed: the lockup is white and grey, the mark yellow and white.
 - The logo files are exempt from the pure white and yellow rules. Nothing else is.
@@ -1169,12 +1167,14 @@ The character of each, as meaning. No colour value, type size or timing is writt
 
 ### Confirmed (restated from the kits docs)
 
-- Yellow is an accent at 10% or less and is reserved for the one conversion action and the footer banner.
+This file is the one home for the colour rules. `SKILL.md` carries them in short so it stands alone; every other file points here.
+
+- Yellow is the one brand colour and an accent at 10% or less.
+- Yellow is a reservation, not an emphasis level. It is the resting fill only on the one conversion action per page and on the footer banner, and the final call to action stays yellow. Other buttons may use it only on hover or tap. On a yellow surface the button inverts to dark.
 - Structure stays in brand ink. An accent is spent on one or two things.
 - A pillar colour marks its pillar and does not paint structure.
 - Text is never pure white.
 - The live colour values must not change.
-- Yellow is the resting fill only on the one conversion action per page and on the closing call-to-action banner. Other buttons may use it only on hover or tap, and on a yellow surface the button inverts to dark.
 - In a case study, one accent per client, taken from the client's own palette, for rules and numerals only. The Wugweb frame stays.
 - In a deck, one dominant colour, one or two supporting and one sharp accent. No accent lines under titles and no edge stripes.
 
@@ -1223,7 +1223,6 @@ Palette behaviour by mode, from the same file:
 
 ## Logo
 
-- The lockup is two-tone, and two-tone titles mirror it.
 - Use the real logo file wherever a logo belongs. Never initials, an emoji, a generic mark or a redrawn version, and never recoloured or re-proportioned.
 - Show a partner's or client's logo in its own form, in greyscale if a row needs calm.
 - The logo appears only on black; no one-colour version until one is needed (question 19).

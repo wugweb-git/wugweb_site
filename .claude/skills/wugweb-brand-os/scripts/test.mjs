@@ -70,6 +70,16 @@ const hand = walk(ROOT).map((p) => relative(ROOT, p)).filter((r) => r.endsWith('
 const restated = hand.filter((r) => /resized only with its aspect ratio|never cropped or re-encoded|No sound on any media/.test(read(r)));
 check(restated.length === 0, `media rules are not restated in the skill${restated.length ? ': ' + restated.join(', ') : ''}`);
 
+// 5b. One home for the colour and logo rules inside the skill. SKILL.md carries a short copy on purpose.
+const homes = [
+  [/Yellow is a reservation, not an emphasis level/, 'references/visual-os/colour-type-photo-motion.md'],
+  [/lockup is two-tone, and two-tone titles mirror it/, 'references/visual-os/art-direction.md'],
+];
+for (const [re, home] of homes) {
+  const found = hand.filter((r) => r !== 'SKILL.md' && r !== 'README.md' && re.test(read(r)));
+  check(found.length === 1 && found[0] === home, `one home for "${re.source}" in ${home}${found.length !== 1 ? ' (found in ' + found.join(', ') + ')' : ''}`);
+}
+
 // 6. Generated files are fresh and carry the standing rules and the version.
 check(existsSync(HOME_RULES), 'docs/skills/STANDING-RULES.md is present');
 for (const [rel, content] of Object.entries(outputs())) {

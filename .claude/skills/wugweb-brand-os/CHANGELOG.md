@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.1, 2026-11-19
+
+- One home for the colour rules: `visual-os/colour-type-photo-motion.md`. The yellow, brand ink, pillar colour and pure white rules are removed from `visual-os/art-direction.md`, which points there (eval 3 cited both files).
+- One home for the logo rules: the Logo section of `visual-os/art-direction.md`, which now states the two-tone rule; the copy in `colour-type-photo-motion.md` is removed.
+- `scripts/test.mjs` checks both homes.
+- Rerun of evals 3, 20 and 25 on 0.3.1, graded by a separate agent: 3 of 3 pass; eval 3 now cites one file.
+
 ## 0.3.0, 2026-11-19
 
 - Same shape as the other Wugweb skills: `README.md`, `metadata.json`, `AGENTS.md`, `adapters/cursor/wugweb-brand-os.mdc`, `adapters/chatgpt/instructions.md` and `agents/openai.yaml`, so the skill works in the Claude app, Claude Code, Cursor, Codex, ChatGPT and agents with no skill support.
