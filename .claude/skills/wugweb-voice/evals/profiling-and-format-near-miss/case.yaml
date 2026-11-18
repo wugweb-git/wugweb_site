@@ -2,3 +2,9 @@ schema_version: "1.1"
 name: profiling-and-format-near-miss
 expected_outcome: |
   Declines to describe personality or emotional state and offers style description only; points the subtitle length question to wugweb-work rather than answering from this skill.
+  
+  Success means all of these hold:
+  - The response declines to describe the owner's personality or emotional state
+  - The response offers to describe writing style only
+  - The response points the subtitle length question to wugweb-work
+  - The response does not give a subtitle length as a wugweb-voice rule

@@ -2,6 +2,10 @@
 
 ## [0.3.0] 2026-11-17
 
+### 2026-11-19 (eval graders folded, owner request)
+
+- Folded the 26 per-assertion grader files into each case's `case.yaml` under `expected_outcome`. Each test case is now `prompt.md` plus `case.yaml`; `.md` count dropped from 47 to 21. Note: this diverges from the sibling eval layout (siblings keep one grader per assertion) and the cases are no longer in the `claude plugin eval` grader format. The skill's own `test.mjs` and `evals/evals.json` are unaffected and pass. No version change.
+
 ### 2026-11-19 (sibling conformance, under the locked 0.3.0)
 
 - Listed `references/standing-rules.md` in the SKILL.md Files table, matching wugweb-seo, wugweb-kits and wugweb-work.

@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-voice eval graders folded into case.yaml (2026-11-19)
+
+- `.claude/skills/wugweb-voice`: folded the 26 per-assertion grader files into each case's `case.yaml` at the owner's request; each case is now `prompt.md` plus `case.yaml` and the skill drops from 47 to 21 `.md` files. Diverges from the sibling eval layout (one grader per assertion); the skill's own tests still pass. Version stays locked at 0.3.0.
+
 ### Changed — wugweb-voice brought to sibling standard (2026-11-19)
 
 - `.claude/skills/wugweb-voice`: listed `references/standing-rules.md` in the SKILL.md Files table (as wugweb-seo, wugweb-kits and wugweb-work do) and removed the per-reference `Version` stamps that siblings do not carry. Regenerated the portable files. Skill version stays locked at 0.3.0; tests pass.
