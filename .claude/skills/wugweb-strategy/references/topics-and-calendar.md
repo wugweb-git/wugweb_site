@@ -100,7 +100,7 @@ When a cadence is set:
 
 ### Dependencies
 
-A post waits while a page it links to is not live (decision 14). Pages waiting on these blocks are not final: Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). Re-check this list in `wugweb-kits` before each plan.
+A post waits while a page it links to is not live (decision 14). A page waiting on a block that awaits the owner's sign-off is not final. The owner signed off the five blocks that were awaiting it (2026-11-17, as `wugweb-kits` states): Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). They no longer hold a page back. The kits `components.md` may still mark them as drafts; that is a doc to update, not a reason to treat them as drafts. Re-check the sign-off status in `wugweb-kits` before each plan.
 
 ### Planning rhythm
 

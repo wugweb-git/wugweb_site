@@ -1,8 +1,8 @@
 > STATUS, 2026-11-17. This block replaces any older status, version or "not built" line further down. The strategy session keeps this plan and its Notion page (handover from the coordinator, 2026-11-17).
 >
-> - Built. Version 0.1.2 on main, 42 files, last skill commit ad31bcfa. Last strategy commit on main d0d93995.
+> - Built. Version 0.1.4 on main, 47 files, skill commit d8133fc9 (checked 2026-11-19). On 2026-11-17 this line read 0.1.2, 42 files, skill commit ad31bcfa.
 > - Skill file body: 1,689 words by the shared count. Single-file export is in the skill folder.
-> - Claude app and Cowork: not installed after the app reset on 2026-11-17. The strategy session built the upload zip; the owner uploads it.
+> - Claude app: installed, at 0.1.4 (2026-11-19). On 2026-11-17 it was not installed after the app reset; the strategy session built the upload zip for the owner.
 > - Owner rulings applied: decision 20 (link targets come from wugweb-seo inside the structure strategy sets), decision 23 (the proof map wins on which case study backs a page), brief field 9 option (a) (the brief carries wugweb-seo's keyword note unchanged), wugweb-voice may read the signal log directly, read only.
 > - FAQ block: the owner ruled that strategy decides its use with wugweb-seo. Strategy's position (service pages and blog posts only, only when the signal log holds real reader questions, owner approves the questions and sets the count, answers from the owner's source) is agreed by wugweb-seo with no caveat (seo commit 90340cf9). Case studies never carry a block; the case-study faqs field stays unused unless the owner supplies visible questions.
 > - Standing rules: the skill carries a marked copy of the shared standing-rules file, built into its export, with a test that fails if the copy drifts from the home file (commit 7fb744f2). The home file wins. This replaces any older "keep the pointer" line below.
@@ -16,30 +16,30 @@
 > - FAQ review decided by the owner in one pass, recorded in `FAQ-REVIEW.md`: 41 keep, 6 keep with a dash removed (a site fix that still needs his go), 10 answer again with a sourced fact (they stay live meanwhile).
 > - Open with the owner: sourced facts for the 10 answer-again rows; his go for the dash fixes and the faqs and schema site work; uploading the zip; whether the stale remote branch can be deleted. Open with wugweb-seo: decision 7 (seo decides retired URLs) is not yet confirmed in seo's files.
 > - Later on 2026-11-17: the FAQ page questions stay typed in `src/pages/faq.astro`, only service FAQs move to Sanity (strategy decided option (a), 279cc88e). FAQ rich results stopped appearing on 7 May 2026, verified by seo; the editorial FAQ line does not change (d0d93995). Decision 7 is explicit in the seo skill (seo 68f79ac0): a retired page returns 410 or 404, keeps no redirect, leaves the sitemap, and its slug is not reused. The old remote branch was deleted on the owner's yes; its content is on main.
-> - Open with the owner: sourced facts for the 10 answer-again FAQ rows; his go for the dash fixes and the faqs and schema site work (with web engineering); uploading the zip. Open with no one else.
+> - Open with the owner: sourced facts for the 10 answer-again FAQ rows; his go for the dash fixes and the faqs and schema site work (with `wugweb-engineer`). The zip upload is no longer open: the skill is installed in the Claude app at 0.1.4 (2026-11-19). Open with no one else.
 > - Other docs read on 2026-11-17 (main 3f9d3dbe): the brand-os, kits, voice, work and seo plans and the standing rules agree with this skill and need no change here. Still open elsewhere and affecting this skill: wugweb-brand-os has not yet had the positioning line and the audience approved by the owner, so this skill has no audience to quote until he approves them there.
 
 # wugweb-strategy skill: plan (ready for vetting)
 
 > CHECKED AGAINST MAIN, 2026-11-19 (coordinator, from the files; no skill file was edited): version 0.1.4 on main (skill commit d8133fc9), 47 files, skill file body 1,693 words. 0.1.3 added `metadata.json`, `README.md` and the Cursor, ChatGPT and Codex adapters; 0.1.4 rebuilt `AGENTS.md` and the export for the updated standing rules.
 
-> Plan only, 2026-11-16. Nothing is built: no skill files, no site code, no write to Sanity or R2, no change to any Notion database. Named `wugweb-content` until the owner renamed it on 2026-11-16. Registry: "Wugweb Skill Management System" in Notion (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298).
+> Written as a plan on 2026-11-16, before the skill was built. The skill is built now (status block above). The plan itself made no site code, no write to Sanity or R2 and no change to any Notion database. Named `wugweb-content` until the owner renamed it on 2026-11-16. Registry: "Wugweb Skill Management System" in Notion (https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298).
 
 ## Skill card
 
 | Field | Value |
 |---|---|
 | Name | `wugweb-strategy` |
-| Type | Claude Code project skill: one `SKILL.md` plus `references/`, `examples/`, `evals/` |
-| Version | 0.1.2 |
-| Status | Built. 0.1.2 on main. Open with the owner: sourced facts for 10 FAQ rows, site work go, zip upload. |
+| Type | Claude Code project skill: one `SKILL.md` plus `references/`, `examples/`, `evals/`, `scripts/`, and the generated `AGENTS.md`, `export/`, `adapters/` and `agents/` |
+| Version | 0.1.4 |
+| Status | Built. 0.1.4 on main, 47 files, installed in the Claude app. Open with the owner: sourced facts for 10 FAQ rows, site work go. |
 | Notion page | https://app.notion.com/p/41abb710b9ab8187a4a8c5979daff39b (the plan sits on the skill page itself) |
 | Owner | Vedanshu, Wugweb |
 | Lives at | `.claude/skills/wugweb-strategy/` |
 | Question it answers | What does Wugweb want to say, to whom, and when? |
 | Sources | Notion Blogs, Notion Case Studies, Notion Publications, Sanity `service` documents (all read only). The new Notion plan database is this skill's record, and each change to it needs the owner's yes. |
 | Hands to | `wugweb-work`, as a brief |
-| Scripts | None in v0.1 |
+| Scripts | Two: `scripts/build.mjs` (builds the generated files) and `scripts/test.mjs` (self-test) |
 | Development chat | `https://claude.ai/chat/2efe7ee5-7636-4241-8794-c34d3c501eed` (given by the owner, 2026-11-16) |
 | Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-strategy/PLAN.md` |
 
@@ -138,8 +138,10 @@ version: 0.1.0
 │   ├── skill-map.md
 │   └── ops.md
 ├── examples/
-└── evals/
-    └── evals.json
+├── evals/            (one folder per case: prompt, case file, graders)
+├── scripts/          (build.mjs, test.mjs)
+├── README.md, CHANGELOG.md, metadata.json
+└── AGENTS.md, export/, adapters/, agents/   (generated by build.mjs)
 ```
 
 ## What each reference file holds
@@ -156,10 +158,10 @@ version: 0.1.0
 | `refresh-retire.md` | Decision rules and the evidence each decision needs |
 | `campaigns-and-repurposing.md` | Campaign shape, repurposing sequences, form per platform, co-posts and tagging, Behance and Dribbble refresh order, use of Publications |
 | `performance-review.md` | The Report mode: which numbers are read and how they change the next plan |
-| `skill-map.md` | Helpers per mode and what each may not do |
+| `skill-map.md` | The links to the other Wugweb skills, helpers per mode and what each may not do |
 | `ops.md` | This workspace's wiring: the Notion databases and how the sync behaves. The only file that names vendors. |
 | `examples/` | Brief for a blog post, a service page and a refresh; a calendar skeleton with owner-input markers and no invented topics |
-| `evals/evals.json` | Test prompts and assertions |
+| `evals/` | Test cases, one folder each: the prompt and its grader files |
 
 ## Content model: planning fields
 
@@ -180,7 +182,7 @@ Source: kits docs. `kits_design_system/docs/tokens/layout-shell.md`, section "CM
 
 Sanity schema changes are development and an owner decision. This skill only proposes them, as current to proposed.
 
-**Calendar note, from the kits docs and `pending.md`.** Five blocks are awaiting sign-off, so pages that depend on them are not final: Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). Briefs for those pages carry this as a publish dependency (brief field 15).
+**Calendar note, from the kits docs and `pending.md`.** Five blocks are awaiting sign-off, so pages that depend on them are not final: Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). Briefs for those pages carry this as a publish dependency (brief field 15). Update, 2026-11-19: the kits skill states the owner signed off all five on 2026-11-17, so they no longer hold a page back; the skill files say so.
 
 ## The brief handed to wugweb-work
 
@@ -236,8 +238,9 @@ Work returns the finished piece as a proposal, with a note of where it left the 
 | `wugweb-work` | A brief | A finished piece and a return note; post results | Write or edit copy, choose screens, set layout, publish. Work's Brief mode is for client work only (decision 4). |
 | `wugweb-seo` | Topic or URL list; retire proposals; the pillar and cluster structure; the proof map | Keyword and intent notes; audit data for review, including the position and click-rate signals used for refresh decisions; what a retired URL does; each brief's link targets, the link rules and the link audit | Change keywords, titles, link targets, link rules, on-page rules or what a retired URL does |
 | `wugweb-brand-os` | A request for audiences, messages, positioning | Those, as written | Restate or alter them |
-| `wugweb-voice` | No direct link. The brief names audience, purpose and form; `wugweb-work` passes those to voice with the draft | Nothing | Set tone or phrasing in a brief or in the editorial standards |
+| `wugweb-voice` | The signal log, read only (owner, 2026-11-17). No other link: the brief names audience, purpose and form; `wugweb-work` passes those to voice with the draft | Nothing | Set tone or phrasing in a brief or in the editorial standards |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
+| `wugweb-engineer` | The ruling on whether a content type should have a field and whether stored values stay | Change reports (current → proposed), backups, result logs and check results; schema check findings for content fields | Build a schema change, patch Sanity or Notion data, or run a sync script |
 
 Every link reads the same on both sides: what this plan says goes to or comes from a skill must match that skill's own plan.
 
@@ -305,7 +308,7 @@ Owner, 2026-11-16: the installed skills and plugins were read so that their usef
 | `social-media-skills:educational-content-and-how-to`, `storytelling-and-narrative`, `thread-writer`, `story-writer`, `behind-the-scenes-and-founder` (planning lines only, found by search, not read in full) | One thing taught per piece; more than that becomes a series. A thread only when the idea needs several beats. A recurring series is a commitment, so plan only what can be kept up. Teaching and story pieces are judged on saves, shares and replies, not likes. | `topics-and-calendar.md`, `performance-review.md` | Their vendor statistics dropped. Everything else in them is making. |
 | `sanity:content-experimentation-best-practices` (read in part) | Work out the sample a test needs before it starts. Do not stop early on a good-looking result. Decide the smallest change worth acting on first. Log every test. | `performance-review.md` | None. Wugweb's volumes may rarely support a formal test. |
 | `marketing:seo-audit`, `social-media-skills:ai-search-optimization`, `social-seo`, `analytics-skills:analytics-diagnostic-method` (as reported by the `wugweb-seo` session; not read here) | Check the plan for missing pieces by buyer stage and for formats competitors use that Wugweb does not. Sources that AI answers cite where Wugweb is absent become a target list for earned mentions. Plan social posts as clusters under a pillar. Check sample size and a change in traffic mix before reading post or channel numbers. | `topics-and-calendar.md`, `campaigns-and-repurposing.md`, `performance-review.md` | No astroturfing: mentions are earned, never planted. The data behind each comes from `wugweb-seo`. |
-| `anthropic-skills:skill-creator`, `skill-development` | A third-person description with quoted trigger phrases that also says when to use it. An imperative body. Each reference named with when to read it. No duplication. Realistic evals, including near-miss prompts that must not trigger. | `SKILL.md`, `evals/` | The two disagree on the evals layout (a folder per case, or one `evals.json`). To settle at build time. |
+| `anthropic-skills:skill-creator`, `skill-development` | A third-person description with quoted trigger phrases that also says when to use it. An imperative body. Each reference named with when to read it. No duplication. Realistic evals, including near-miss prompts that must not trigger. | `SKILL.md`, `evals/` | The two disagree on the evals layout (a folder per case, or one `evals.json`). Settled at build: a folder per case. |
 
 ### Kept as optional helpers
 
@@ -359,9 +362,9 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 - **Core rules in `SKILL.md`.** Other tools may not load reference files on demand, so `SKILL.md` carries the core rules on its own. The reference files hold detail and examples.
 - **Absorbed, not borrowed.** The rules in "Extracted and absorbed" are written into this skill, so no mode depends on a helper being installed.
 - **Helpers are optional.** The Claude plugins and helper skills named above speed a mode up; none is required. Each mode has its own by-hand procedure in the reference files.
-- **Scripts.** None in v0.1. Any script added later is plain Node with no Claude tooling.
+- **Scripts.** Two: `scripts/build.mjs` and `scripts/test.mjs`. Both are plain Node with no packages and no Claude tooling.
 - **Wiring in one file.** Tools, vendors and connectors are named only in `references/ops.md`. Moving to another tool means rewriting that file alone.
-- **Single-file export.** `wugweb-strategy.export.md`: the `SKILL.md` body and the reference files joined in reading order, to paste or attach in GPT, Cursor or another tool. It is regenerated whenever the skill changes.
+- **Single-file export.** `export/wugweb-strategy.md`: the `SKILL.md` body and the reference files joined in reading order, to paste or attach in GPT, Cursor or another tool. `AGENTS.md` is the same with the standing-rules block added. Both are regenerated by `scripts/build.mjs` whenever the skill changes.
 - **Export test.** The eval prompts are run from the export alone in another tool. It passes when the output meets the same assertions as the run inside Claude. The wording may differ; the brief fields, boundaries and refusals may not.
 
 **What works only in Claude today**
@@ -371,7 +374,7 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 | Reading Notion through the connector | Paste or attach an export of the rows, or use the Notion API with a valid token |
 | The named helper skills and plugins | Skipped; the by-hand procedure is used |
 | Automatic triggering from the frontmatter description | The export is attached by hand, or added as a project rule |
-| Running `evals.json` with the skill tooling | The same prompts and assertions are checked by hand |
+| Running the `evals/` case folders with the skill tooling | The same prompts and assertions are checked by hand |
 
 ## Per-task tests
 
@@ -435,9 +438,9 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 
 - **Owns:** Content strategy only: pillar mix, topics, the editorial and social calendar, briefs, per-piece structures, editorial standards, content models, the proof map, refresh or retire decisions, campaign and repurposing plans, and the post-performance read for planning.
 - **Reads (sources):** Notion Blogs, Case Studies and Publications; Sanity service documents; the case-study inventory in docs/research; brand_guidelines; the registry. All read only.
-- **Gives to:** `wugweb-work`: one-page briefs, the calendar by account and date, the proof map, repurposing and campaign plans, refresh or retire decisions. `wugweb-seo`: topic and URL lists to research or audit; retire proposals; the cluster structure and proof map.
-- **Takes from:** `wugweb-brand-os`: positioning, audiences, messaging framework. `wugweb-seo`: keyword, intent, link-target and audit notes, with position and click-rate signals for refresh decisions. `wugweb-work`: finished pieces, return notes, post results. `wugweb-voice` and `wugweb-kits`: nothing directly; `wugweb-work` reads them.
-- **Never does:** Writes or edits any piece; publishes; redefines positioning, audiences or messaging; sets voice, keywords, titles, links, layout or tokens; changes Sanity schema; decides what a retired URL does; writes to Notion or Sanity without approval and backup; deletes anything.
+- **Gives to:** `wugweb-work`: one-page briefs, the calendar by account and date, the proof map, repurposing and campaign plans, refresh or retire decisions. `wugweb-seo`: topic and URL lists to research or audit; retire proposals; the cluster structure and proof map. `wugweb-voice`: the signal log, read only (owner, 2026-11-17). `wugweb-engineer`: the ruling on whether a content type should have a field and whether stored values stay.
+- **Takes from:** `wugweb-brand-os`: positioning, audiences, messaging framework. `wugweb-seo`: keyword, intent, link-target and audit notes, with position and click-rate signals for refresh decisions. `wugweb-work`: finished pieces, return notes, post results. `wugweb-engineer`: change reports (current → proposed), backups, result logs and check results; schema check findings for content fields. `wugweb-voice` and `wugweb-kits`: nothing; `wugweb-work` reads them.
+- **Never does:** Writes or edits any piece; publishes; redefines positioning, audiences or messaging; sets voice, keywords, titles, links, layout or tokens; builds a Sanity schema change, patches Sanity or Notion data or runs a sync script (it rules on fields; `wugweb-engineer` builds); decides what a retired URL does; writes to Notion or Sanity without approval and backup; deletes anything.
 
 ## Change log
 
@@ -454,6 +457,10 @@ Owner, 2026-11-16: every skill must be usable from GPT, Cursor or another tool.
 | 2026-11-16 | Open questions 1 to 22 answered by the owner and recorded as decisions. Brief fields 10, 13, 14 and 15, the refresh row, the handoff contract, the planning fields and the matrix row updated to match. Old content calendar read: starter template rows only, nothing moved. |
 | 2026-11-16 | Decision 20 replaced (owner, as recorded in `wugweb-seo` 2.2.1): this skill sets the pillar and cluster structure; `wugweb-seo` picks each brief's link targets. Brief field 10, the proof map row, the handoff contract and the matrix row updated. Question 23 added. |
 | 2026-11-16 | Question 23 answered by the owner and recorded as decision 23: the proof map wins on which case study backs a page. |
+| 2026-11-17 | Skill built and taken to 0.1.1, then 0.1.2. Owner rulings applied: decisions 20 and 23, brief field 9 pasted from `wugweb-seo` unchanged, `wugweb-voice` reads the signal log (read only), field 13 records "we" or "I". FAQ block rules agreed with `wugweb-seo`. `scripts/build.mjs` and `scripts/test.mjs` added, with the standing-rules copy. Three eval cases run. `FAQ-REVIEW.md` written and decided by the owner. Status block added at the top of this plan. |
+| 2026-11-19 | 0.1.3: `metadata.json`, `README.md`, the Cursor, ChatGPT and Codex adapters and the build `--check` mode. 0.1.4: `AGENTS.md` and the export rebuilt for the updated standing rules. |
+| 2026-11-19 | Full read by a read-only reviewer for the coordinator; the list of what needs changing added at the end of this plan. |
+| 2026-11-19 | Review fixes applied on the owner's approval, no version change: skill items 1 to 9, this plan and `FAQ-REVIEW.md`. `wugweb-engineer` and the `wugweb-voice` signal-log link added to the handoff contract and the matrix row. |
 
 ## Full read, 2026-11-19: the md files and what needs changing
 
@@ -501,6 +508,10 @@ Every file of the skill (47) was read on 2026-11-19 from main (`4fbf334c`) by a 
 - Line 26 says nothing is built; lines 41 and 364 say no scripts (two exist); lines 142 and 373 name `evals.json` (evals are folders); line 366 names `wugweb-strategy.export.md`.
 - The matrix row gives no voice link and no engineer; the change log stops at 2026-11-16.
 - `FAQ-REVIEW.md` lines 42, 45, 57, 67 and 112 carry the note about softening "always" on Brand 2 on rows that are not Brand 2.
+
+### Fixed 2026-11-19
+
+Fixed 2026-11-19: skill items 1, 2, 3, 4, 5, 6, 7, 8 and 9, and every plan and `FAQ-REVIEW.md` item above. Not fixed: none. Item 6 was settled by adding "Differentiate" to the other three lists, because `references/refresh-retire.md` defines it with its own condition and next step. The version stays 0.1.4. `test.mjs` now checks the version in `README.md` and `metadata.json`. The line numbers in the lists above are as of `4fbf334c` and have moved.
 
 ### Worth knowing
 

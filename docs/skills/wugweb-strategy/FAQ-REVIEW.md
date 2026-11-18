@@ -39,10 +39,10 @@ Option (a): the /faq questions stay typed in `src/pages/faq.astro`; only service
 | 2 | Do you design logos only? | none recorded | owner to confirm | dash in answer; absolute claim | keep, remove dash (and soften "always" on Brand 2) |
 | 3 | How long does a brand project take? | none recorded | owner to confirm | duration, no source | answer again, with a sourced fact |
 | 4 | Do you create brand guidelines? | none recorded | owner to confirm |  | keep |
-| 5 | Can you refresh an existing brand without a full rebrand? | none recorded | owner to confirm | dash in answer | keep, remove dash (and soften "always" on Brand 2) |
+| 5 | Can you refresh an existing brand without a full rebrand? | none recorded | owner to confirm | dash in answer | keep, remove dash |
 | 6 | Do you handle naming and verbal identity? | none recorded | owner to confirm |  | keep |
 | 7 | Will our internal teams be able to use the system day to day? | none recorded | owner to confirm |  | keep |
-| 8 | Do brand projects connect to digital product design? | none recorded | owner to confirm | dash in answer | keep, remove dash (and soften "always" on Brand 2) |
+| 8 | Do brand projects connect to digital product design? | none recorded | owner to confirm | dash in answer | keep, remove dash |
 
 ## Experience
 
@@ -54,7 +54,7 @@ Option (a): the /faq questions stay typed in `src/pages/faq.astro`; only service
 | 4 | What's your design approach? | none recorded | owner to confirm |  | keep |
 | 5 | How do you ensure user needs are met? | none recorded | owner to confirm |  | keep |
 | 6 | How do you measure design effectiveness? | none recorded | owner to confirm |  | keep |
-| 7 | How do you approach collaboration? | none recorded | owner to confirm | dash in answer | keep, remove dash (and soften "always" on Brand 2) |
+| 7 | How do you approach collaboration? | none recorded | owner to confirm | dash in answer | keep, remove dash |
 | 8 | Can you help with new product design? | none recorded | owner to confirm |  | keep |
 | 9 | Do you design for accessibility? | none recorded | owner to confirm | standard named, needs a screen or fact | answer again, with a sourced fact |
 | 10 | What's the final deliverable? | none recorded | owner to confirm |  | keep |
@@ -64,7 +64,7 @@ Option (a): the /faq questions stay typed in `src/pages/faq.astro`; only service
 | # | Question | Signal log | Answer source | Flag | Owner: keep, answer again, cut |
 | --- | --- | --- | --- | --- | --- |
 | 1 | What is a growth strategy, and why does my business need one? | none recorded | owner to confirm |  | keep |
-| 2 | Do you only work with businesses that already have a marketing team? | none recorded | owner to confirm | dash in answer | keep, remove dash (and soften "always" on Brand 2) |
+| 2 | Do you only work with businesses that already have a marketing team? | none recorded | owner to confirm | dash in answer | keep, remove dash |
 | 3 | Can you work with our existing CRM and marketing tools? | none recorded | owner to confirm | tools named, needs a fact | answer again, with a sourced fact |
 | 4 | How do you measure the success of growth initiatives? | none recorded | owner to confirm |  | keep |
 | 5 | Do you offer marketing automation and AI solutions? | none recorded | owner to confirm |  | keep |
@@ -109,4 +109,4 @@ Typed fallback copy in `src/pages/faq.astro`. It shows only when Sanity's `faq` 
 | 7 | How do your QA and testing services ensure product quality? | none recorded | owner to confirm | superlative, no proof | answer again, with a sourced fact |
 | 8 | What is the typical timeline for a project? | none recorded | owner to confirm | durations, no source | answer again, with a sourced fact |
 | 9 | How do you charge for your services? | none recorded | owner to confirm |  | keep |
-| 10 | Do you work with startups? | none recorded | owner to confirm | dash in answer | keep, remove dash (and soften "always" on Brand 2) |
+| 10 | Do you work with startups? | none recorded | owner to confirm | dash in answer | keep, remove dash |

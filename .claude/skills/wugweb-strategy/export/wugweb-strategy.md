@@ -10,7 +10,7 @@ This skill plans. It writes no headline, body, caption, post or email. It quotes
 
 ## When to use and when not
 
-Use it for: what to write next, the calendar for any account in scope, a brief, a campaign or launch spread over several posts, a repurposing plan, which case study backs a page or post, a keep, refresh, merge or retire verdict, the pillar mix, a content-model gap, or reading how posts performed.
+Use it for: what to write next, the calendar for any account in scope, a brief, a campaign or launch spread over several posts, a repurposing plan, which case study backs a page or post, a keep, refresh, merge, differentiate or retire verdict, the pillar mix, a content-model gap, or reading how posts performed.
 
 Hand off instead:
 
@@ -21,6 +21,7 @@ Hand off instead:
 | Tone, phrasing, word choice | `wugweb-voice` | Name the owner and stop; it is reached through `wugweb-work` |
 | Keywords, titles, schema, link rules, what a retired URL does | `wugweb-seo` | Ask it for the input or name it as owner |
 | Layout, blocks, tokens | `wugweb-kits` | Name the owner and stop |
+| Changes to Sanity or Notion data, schema edits, the sync scripts | `wugweb-engineer` | Give the ruling on the field if one is needed, then stop |
 | A brief for client work (case study body, portfolio piece) | `wugweb-work` | Its Brief mode covers client work |
 
 If two skills could own a matter, say so and ask the owner. Never write the rule in both.
@@ -81,7 +82,7 @@ In: the case-study inventory and the service pages. Out: which case studies back
 
 ### 6. Review
 
-In: the inventory and seo audit data. Out: one verdict per piece: keep, refresh, merge, retire, or "insufficient data, look again on" a date. Each verdict has a one-sentence reason that points to evidence. Retire is a proposal; `wugweb-seo` decides what the URL does (decision 7). Read `references/refresh-retire.md`.
+In: the inventory and seo audit data. Out: one verdict per piece: keep, refresh, merge, differentiate, retire, or "insufficient data, look again on" a date. Each verdict has a one-sentence reason that points to evidence. Retire is a proposal; `wugweb-seo` decides what the URL does (decision 7). Read `references/refresh-retire.md`.
 
 ### 7. Campaign
 
@@ -97,7 +98,7 @@ In: post results from `wugweb-work` or the owner, and search reports from `wugwe
 
 ### 10. Model
 
-In: a gap found in any mode. Out: a content-model change as current → proposed. Sanity schema changes are development and an owner decision; this skill only proposes them. Pillar and review date stay on the plan database, not in Sanity (decision 22). Read `references/content-models.md`.
+In: a gap found in any mode. Out: a content-model change as current → proposed. This skill rules on which fields a content type should have and whether stored values stay; `wugweb-engineer` builds the schema change, or leaves the field alone, as ruled and on the owner's go. Pillar and review date stay on the plan database, not in Sanity (decision 22). Read `references/content-models.md`.
 
 ## Handoffs
 
@@ -110,6 +111,7 @@ Every link reads the same on both sides.
 | `wugweb-brand-os` | Positioning, audiences, messaging framework, approved facts | Requests only | Restate or alter any of it |
 | `wugweb-voice` | Nothing | The signal log, read only | Set tone or phrasing; `wugweb-work` passes audience, purpose and form to voice |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
+| `wugweb-engineer` | Change reports (current → proposed), backups, result logs and check results; schema check findings for content fields | The ruling on whether a content type should have a field and whether stored values stay | Build a schema change, patch Sanity or Notion data, or run a sync script |
 
 Internal links (decision 20): this skill sets the pillar and cluster structure and the proof map. `wugweb-seo` returns the link targets for each piece, owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result. If the proof map names a case study for a page, it wins on that case study (decision 23); `wugweb-seo` picks the other targets around it.
 
@@ -131,7 +133,7 @@ Every output starts with three lines: the mode, the sources read with their date
 
 ## Additional resources
 
-Read only the file the mode needs. If these files are not beside this file, read them from the Skills project under `skills/wugweb-strategy/`.
+Read only the file the mode needs. If the reference files are not beside this file, read the single-file copy, `AGENTS.md` or `export/wugweb-strategy.md`, which carries them all. The master copy is in the site repo at `.claude/skills/wugweb-strategy/`.
 
 - **`references/strategy.md`**: goals, pillars and mix, editorial stance, what Wugweb does not publish.
 - **`references/topics-and-calendar.md`**: intake, scoring, backlog fields, statuses, cadence, accounts, the signal log.
@@ -344,7 +346,7 @@ When a cadence is set:
 
 ### Dependencies
 
-A post waits while a page it links to is not live (decision 14). Pages waiting on these blocks are not final: Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). Re-check this list in `wugweb-kits` before each plan.
+A post waits while a page it links to is not live (decision 14). A page waiting on a block that awaits the owner's sign-off is not final. The owner signed off the five blocks that were awaiting it (2026-11-17, as `wugweb-kits` states): Service Spotlight Panel (`/services/brand`), Client Assembly Grid and Service Tag Field (homepage), Bento Block (`/about` and the six service pages), Process Map (`/services/experience`). They no longer hold a page back. The kits `components.md` may still mark them as drafts; that is a doc to update, not a reason to treat them as drafts. Re-check the sign-off status in `wugweb-kits` before each plan.
 
 ### Planning rhythm
 
@@ -420,7 +422,7 @@ The `faqs` field stays in the layout shell. This skill decides when a piece gets
 - **Who supplies the answers:** the owner's source (the Notion row or an owner-written answer). `wugweb-work` does not invent an answer; with no source the question is cut or marked "owner to answer".
 - **How many:** owner to set. Never padded to reach a number.
 - **Where it sits in the brief:** field 8 lists the approved questions under "Questions on the page", each marked with its signal-log source; field 11 names the answer source for each. A piece with no block says "no FAQ block" in field 8.
-- **Posts and the field:** a post gets a `faqs` field only when a post needs one. Adding the field is site work and needs the owner's go.
+- **Posts and the field:** a post gets a `faqs` field only when a post needs one. The ruling stands: no `faqs` field on posts until a post has an owner-approved question list. `wugweb-engineer` builds the schema change, as ruled, on the owner's go.
 - **Exempt:** `/kits` is design-system documentation, not Wugweb content, and is outside this rule.
 - **`/faq`:** the one dedicated FAQ page (owner, 2026-11-17). Its questions come from the signal log and its answers from the owner's source, under the same review as service pages. It shows visible FAQ content with no FAQPage markup (owner, 2026-11-17), so the line stays service pages and blog posts only.
 - **Existing copy:** the typed FAQ copy on the six service pages may stay live while it is reviewed (owner, 2026-11-17). Each question is kept, answered again or cut by the owner.
@@ -549,7 +551,7 @@ Before planning a study, test it: is the question one only Wugweb can answer, is
 
 # Content models
 
-The content types, what each is for, where each is stored, and the planning fields. Sanity schema changes are development and an owner decision; this skill only proposes them, as current → proposed.
+The content types, what each is for, where each is stored, and the planning fields. This skill rules on which fields a content type should have and whether stored values stay, shown as current → proposed; `wugweb-engineer` builds the schema change, as ruled, on the owner's go.
 
 ## Types
 
@@ -565,7 +567,7 @@ The content types, what each is for, where each is stored, and the planning fiel
 
 ## Shape of the cluster
 
-Hub and spoke: a service page is the hub; posts are spokes. One topic, one page. No mixed intents in one cluster. No orphan piece: every post links to at least one service page and to others in its cluster. Which pages are linked is decided here (proof map and brief field 10); how links are made is `wugweb-seo`'s. A case study links up to its service page only, and across to two or three sibling case studies. Sector pages are not a link-up target (owner, 2026-11-17).
+Hub and spoke: a service page is the hub; posts are spokes. One topic, one page. No mixed intents in one cluster. No orphan piece: every post links to at least one service page and to others in its cluster. This skill sets the link structure: the pillar and cluster structure and the proof map. Inside that structure `wugweb-seo` returns the link targets for each piece (brief field 10) and owns the link rules (decision 20). The proof map wins on which case study backs a page (decision 23). A case study links up to its service page only, and across to two or three sibling case studies. Sector pages are not a link-up target (owner, 2026-11-17).
 
 ## Planning fields
 
@@ -588,7 +590,7 @@ All on the plan database (decision 1), none in Sanity (decision 22):
 | Permission status | Select | Given, asked, not asked, refused, not needed |
 | Publish dependency | Relation or text | A page that must be live first |
 | Source piece | Relation to Blogs, or a Sanity link | For refreshes and published pieces |
-| Review verdict | Select | Keep, refresh, merge, retire, insufficient data |
+| Review verdict | Select | Keep, refresh, merge, differentiate, retire, insufficient data |
 | Review date | Date | Planning only; never shown on a page |
 
 Creating this database is a Notion write: propose the schema, get the owner's yes, then it is built.
@@ -611,7 +613,7 @@ When any mode finds a gap (a field missing, a relation empty, a type with no hom
 - **Current:** what exists, with where it was read.
 - **Proposed:** the change.
 - **Why:** the mode and the case that found it.
-- **Who decides:** the owner; engineering for Sanity.
+- **Who decides:** this skill rules on the field; the owner gives the go; `wugweb-engineer` builds the Sanity schema change, as ruled.
 
 
 ---
@@ -886,7 +888,8 @@ Optional helper skills per mode, and what each may not do. Every mode works with
 | `wugweb-seo` | Gives the site map, topic gaps, refresh list, link targets, link rules and audit, search reports, retired-URL behaviour. Takes goal, audience, page list, the pillar and cluster structure, the proof map, retire proposals |
 | `wugweb-brand-os` | Gives positioning, audiences, messaging, approved facts. Takes requests only |
 | `wugweb-voice` | Reads the signal log directly (owner decision 2026-11-17). Read only: it may not edit the log. No other link |
-| `wugweb-kits` | No link. Its pending blocks are a calendar dependency |
+| `wugweb-kits` | No link. A block awaiting sign-off is a calendar dependency; the owner signed off the five blocks that were awaiting it (2026-11-17) |
+| `wugweb-engineer` | Takes the ruling on whether a content type should have a field and whether stored values stay, then builds the schema change or leaves the field alone, as ruled. Gives change reports (current → proposed), backups, result logs and check results, and schema check findings for content fields. It owns patches to Sanity and Notion data, schema edits and the sync scripts; this skill never decides those and it never decides the fields |
 
 ## Helpers per mode
 
@@ -958,7 +961,7 @@ The old "Content calendar" under the owner's personal area holds Notion's starte
 
 ## Sanity
 
-`service` documents hold the six service pages; `post` and `caseStudy` are written by sync from Notion. Read only. No schema change from this skill (decision 22).
+`service` documents hold the six service pages; `post` and `caseStudy` are written by sync from Notion. Read only. No schema change from this skill (decision 22): it rules on fields, and `wugweb-engineer` builds any schema change and runs the sync scripts.
 
 ## R2
 
@@ -966,7 +969,7 @@ All media. Briefs name existing files by key. No uploads, copies, crops, re-enco
 
 ## Before backup and write
 
-Before any approved Notion change: fetch the page or rows, save the backup (for this project, under `claude/backups/` named with the source and date), show current → proposed, apply only what was approved.
+Before any approved Notion change: fetch the page or rows, save the backup (for this project, under `backups/` in the site repo, named with the source and date), show current → proposed, apply only what was approved.
 
 ## Connectors and tools in Claude
 
@@ -986,4 +989,4 @@ Before any approved Notion change: fetch the page or rows, save the backup (for 
 
 ## Repo copy
 
-The plan lives at `docs/skills/wugweb-strategy/PLAN.md` in `wugweb-git/wugweb_site`. The skill is planned to live at `.claude/skills/wugweb-strategy/`. Putting it in the repo needs the owner's word.
+The plan lives at `docs/skills/wugweb-strategy/PLAN.md` in `wugweb-git/wugweb_site`. The skill lives in the same repo, on main, at `.claude/skills/wugweb-strategy/`.

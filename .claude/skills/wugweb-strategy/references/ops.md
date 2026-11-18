@@ -20,7 +20,7 @@ The old "Content calendar" under the owner's personal area holds Notion's starte
 
 ## Sanity
 
-`service` documents hold the six service pages; `post` and `caseStudy` are written by sync from Notion. Read only. No schema change from this skill (decision 22).
+`service` documents hold the six service pages; `post` and `caseStudy` are written by sync from Notion. Read only. No schema change from this skill (decision 22): it rules on fields, and `wugweb-engineer` builds any schema change and runs the sync scripts.
 
 ## R2
 
@@ -28,7 +28,7 @@ All media. Briefs name existing files by key. No uploads, copies, crops, re-enco
 
 ## Before backup and write
 
-Before any approved Notion change: fetch the page or rows, save the backup (for this project, under `claude/backups/` named with the source and date), show current → proposed, apply only what was approved.
+Before any approved Notion change: fetch the page or rows, save the backup (for this project, under `backups/` in the site repo, named with the source and date), show current → proposed, apply only what was approved.
 
 ## Connectors and tools in Claude
 
@@ -48,4 +48,4 @@ Before any approved Notion change: fetch the page or rows, save the backup (for 
 
 ## Repo copy
 
-The plan lives at `docs/skills/wugweb-strategy/PLAN.md` in `wugweb-git/wugweb_site`. The skill is planned to live at `.claude/skills/wugweb-strategy/`. Putting it in the repo needs the owner's word.
+The plan lives at `docs/skills/wugweb-strategy/PLAN.md` in `wugweb-git/wugweb_site`. The skill lives in the same repo, on main, at `.claude/skills/wugweb-strategy/`.

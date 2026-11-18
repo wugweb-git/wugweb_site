@@ -31,6 +31,8 @@ Never:
 - Define positioning, values, audience or messaging (that is wugweb-brand-os).
 - Set keywords, titles, schema or link rules, or decide what a retired URL does
   (that is wugweb-seo).
+- Change Sanity or Notion data, edit the schema or run a sync script (that is
+  wugweb-engineer). Rule on which fields a content type has; build nothing.
 - Write to Notion, Sanity or any account without the owner's go on that exact
   change, with a backup first. Delete nothing.
 ```

@@ -1,6 +1,6 @@
 # Content models
 
-The content types, what each is for, where each is stored, and the planning fields. Sanity schema changes are development and an owner decision; this skill only proposes them, as current → proposed.
+The content types, what each is for, where each is stored, and the planning fields. This skill rules on which fields a content type should have and whether stored values stay, shown as current → proposed; `wugweb-engineer` builds the schema change, as ruled, on the owner's go.
 
 ## Types
 
@@ -16,7 +16,7 @@ The content types, what each is for, where each is stored, and the planning fiel
 
 ## Shape of the cluster
 
-Hub and spoke: a service page is the hub; posts are spokes. One topic, one page. No mixed intents in one cluster. No orphan piece: every post links to at least one service page and to others in its cluster. Which pages are linked is decided here (proof map and brief field 10); how links are made is `wugweb-seo`'s. A case study links up to its service page only, and across to two or three sibling case studies. Sector pages are not a link-up target (owner, 2026-11-17).
+Hub and spoke: a service page is the hub; posts are spokes. One topic, one page. No mixed intents in one cluster. No orphan piece: every post links to at least one service page and to others in its cluster. This skill sets the link structure: the pillar and cluster structure and the proof map. Inside that structure `wugweb-seo` returns the link targets for each piece (brief field 10) and owns the link rules (decision 20). The proof map wins on which case study backs a page (decision 23). A case study links up to its service page only, and across to two or three sibling case studies. Sector pages are not a link-up target (owner, 2026-11-17).
 
 ## Planning fields
 
@@ -39,7 +39,7 @@ All on the plan database (decision 1), none in Sanity (decision 22):
 | Permission status | Select | Given, asked, not asked, refused, not needed |
 | Publish dependency | Relation or text | A page that must be live first |
 | Source piece | Relation to Blogs, or a Sanity link | For refreshes and published pieces |
-| Review verdict | Select | Keep, refresh, merge, retire, insufficient data |
+| Review verdict | Select | Keep, refresh, merge, differentiate, retire, insufficient data |
 | Review date | Date | Planning only; never shown on a page |
 
 Creating this database is a Notion write: propose the schema, get the owner's yes, then it is built.
@@ -62,4 +62,4 @@ When any mode finds a gap (a field missing, a relation empty, a type with no hom
 - **Current:** what exists, with where it was read.
 - **Proposed:** the change.
 - **Why:** the mode and the case that found it.
-- **Who decides:** the owner; engineering for Sanity.
+- **Who decides:** this skill rules on the field; the owner gives the go; `wugweb-engineer` builds the Sanity schema change, as ruled.

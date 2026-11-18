@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-11-19 (review fixes, no version change)
+
+Fixes from the full read of 2026-11-19 (`docs/skills/wugweb-strategy/PLAN.md`). The version stays 0.1.4.
+
+- `README.md` says 0.1.4 in both places. `scripts/test.mjs` now fails if the version in `README.md` or `metadata.json` differs from `SKILL.md`, and checks `README.md`, `CHANGELOG.md` and `examples/` for dashes too.
+- `wugweb-engineer` named as the seventh skill: this skill rules on which fields a content type should have and whether stored values stay; engineer builds the schema change or leaves the field alone, as ruled, on the owner's go. Added to both tables in `SKILL.md`, the Model mode, `references/skill-map.md`, `references/brief-format.md`, `references/content-models.md`, `references/ops.md`, `metadata.json` and the ChatGPT instructions.
+- The five blocks that were awaiting sign-off are recorded as signed off by the owner (2026-11-17), as `wugweb-kits` states. `references/topics-and-calendar.md`, `references/skill-map.md` and the two brief examples updated.
+- Link targets read the same everywhere (decision 20): this skill sets the link structure; inside it `wugweb-seo` returns the link targets for a piece. `references/content-models.md` corrected.
+- Brief examples follow the rulings on fields 9, 10 and 13: the seo keyword note and link targets are pasted unchanged, and field 13 records "we" or "I" as the owner's pick.
+- "Differentiate" is a verdict: `references/refresh-retire.md` defines it with its own condition and next step, so it was added to `SKILL.md`, `references/content-models.md` and `README.md`.
+- `examples/calendar-skeleton.md`: the open slot row now carries a proposed pillar, intent and account, as the slot rule requires, and the table has an audience column.
+- `references/ops.md`: the skill lives on main at `.claude/skills/wugweb-strategy/`; backups go under `backups/`.
+- `SKILL.md`: the pointer to a "Skills project" path that does not exist now names `AGENTS.md` and `export/wugweb-strategy.md`.
+
 ## 0.1.4 (2026-11-19)
 
 Regenerated to track the home standing rules.

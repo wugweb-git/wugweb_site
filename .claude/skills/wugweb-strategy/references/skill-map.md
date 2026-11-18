@@ -10,7 +10,8 @@ Optional helper skills per mode, and what each may not do. Every mode works with
 | `wugweb-seo` | Gives the site map, topic gaps, refresh list, link targets, link rules and audit, search reports, retired-URL behaviour. Takes goal, audience, page list, the pillar and cluster structure, the proof map, retire proposals |
 | `wugweb-brand-os` | Gives positioning, audiences, messaging, approved facts. Takes requests only |
 | `wugweb-voice` | Reads the signal log directly (owner decision 2026-11-17). Read only: it may not edit the log. No other link |
-| `wugweb-kits` | No link. Its pending blocks are a calendar dependency |
+| `wugweb-kits` | No link. A block awaiting sign-off is a calendar dependency; the owner signed off the five blocks that were awaiting it (2026-11-17) |
+| `wugweb-engineer` | Takes the ruling on whether a content type should have a field and whether stored values stay, then builds the schema change or leaves the field alone, as ruled. Gives change reports (current → proposed), backups, result logs and check results, and schema check findings for content fields. It owns patches to Sanity and Notion data, schema edits and the sync scripts; this skill never decides those and it never decides the fields |
 
 ## Helpers per mode
 

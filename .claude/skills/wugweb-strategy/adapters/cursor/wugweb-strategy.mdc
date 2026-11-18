@@ -14,7 +14,7 @@ This skill plans. It writes no headline, body, caption, post or email. It quotes
 
 ## When to use and when not
 
-Use it for: what to write next, the calendar for any account in scope, a brief, a campaign or launch spread over several posts, a repurposing plan, which case study backs a page or post, a keep, refresh, merge or retire verdict, the pillar mix, a content-model gap, or reading how posts performed.
+Use it for: what to write next, the calendar for any account in scope, a brief, a campaign or launch spread over several posts, a repurposing plan, which case study backs a page or post, a keep, refresh, merge, differentiate or retire verdict, the pillar mix, a content-model gap, or reading how posts performed.
 
 Hand off instead:
 
@@ -25,6 +25,7 @@ Hand off instead:
 | Tone, phrasing, word choice | `wugweb-voice` | Name the owner and stop; it is reached through `wugweb-work` |
 | Keywords, titles, schema, link rules, what a retired URL does | `wugweb-seo` | Ask it for the input or name it as owner |
 | Layout, blocks, tokens | `wugweb-kits` | Name the owner and stop |
+| Changes to Sanity or Notion data, schema edits, the sync scripts | `wugweb-engineer` | Give the ruling on the field if one is needed, then stop |
 | A brief for client work (case study body, portfolio piece) | `wugweb-work` | Its Brief mode covers client work |
 
 If two skills could own a matter, say so and ask the owner. Never write the rule in both.
@@ -85,7 +86,7 @@ In: the case-study inventory and the service pages. Out: which case studies back
 
 ### 6. Review
 
-In: the inventory and seo audit data. Out: one verdict per piece: keep, refresh, merge, retire, or "insufficient data, look again on" a date. Each verdict has a one-sentence reason that points to evidence. Retire is a proposal; `wugweb-seo` decides what the URL does (decision 7). Read `references/refresh-retire.md`.
+In: the inventory and seo audit data. Out: one verdict per piece: keep, refresh, merge, differentiate, retire, or "insufficient data, look again on" a date. Each verdict has a one-sentence reason that points to evidence. Retire is a proposal; `wugweb-seo` decides what the URL does (decision 7). Read `references/refresh-retire.md`.
 
 ### 7. Campaign
 
@@ -101,7 +102,7 @@ In: post results from `wugweb-work` or the owner, and search reports from `wugwe
 
 ### 10. Model
 
-In: a gap found in any mode. Out: a content-model change as current → proposed. Sanity schema changes are development and an owner decision; this skill only proposes them. Pillar and review date stay on the plan database, not in Sanity (decision 22). Read `references/content-models.md`.
+In: a gap found in any mode. Out: a content-model change as current → proposed. This skill rules on which fields a content type should have and whether stored values stay; `wugweb-engineer` builds the schema change, or leaves the field alone, as ruled and on the owner's go. Pillar and review date stay on the plan database, not in Sanity (decision 22). Read `references/content-models.md`.
 
 ## Handoffs
 
@@ -114,6 +115,7 @@ Every link reads the same on both sides.
 | `wugweb-brand-os` | Positioning, audiences, messaging framework, approved facts | Requests only | Restate or alter any of it |
 | `wugweb-voice` | Nothing | The signal log, read only | Set tone or phrasing; `wugweb-work` passes audience, purpose and form to voice |
 | `wugweb-kits` | Nothing | Nothing | Name a layout or block |
+| `wugweb-engineer` | Change reports (current → proposed), backups, result logs and check results; schema check findings for content fields | The ruling on whether a content type should have a field and whether stored values stay | Build a schema change, patch Sanity or Notion data, or run a sync script |
 
 Internal links (decision 20): this skill sets the pillar and cluster structure and the proof map. `wugweb-seo` returns the link targets for each piece, owns the link rules (anchor wording, no orphans or dead ends, depth, how many) and audits the result. If the proof map names a case study for a page, it wins on that case study (decision 23); `wugweb-seo` picks the other targets around it.
 
@@ -135,7 +137,7 @@ Every output starts with three lines: the mode, the sources read with their date
 
 ## Additional resources
 
-Read only the file the mode needs. If these files are not beside this file, read them from the Skills project under `skills/wugweb-strategy/`.
+Read only the file the mode needs. If the reference files are not beside this file, read the single-file copy, `AGENTS.md` or `export/wugweb-strategy.md`, which carries them all. The master copy is in the site repo at `.claude/skills/wugweb-strategy/`.
 
 - **`references/strategy.md`**: goals, pillars and mix, editorial stance, what Wugweb does not publish.
 - **`references/topics-and-calendar.md`**: intake, scoring, backlog fields, statuses, cadence, accounts, the signal log.

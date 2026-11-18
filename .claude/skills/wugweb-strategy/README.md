@@ -1,7 +1,7 @@
 # wugweb-strategy
 
 Decides what Wugweb says, to whom and when, and hands `wugweb-work` a brief.
-Version 0.1.3.
+Version 0.1.4.
 
 Content strategy only: topics, the pillar mix, the editorial and social
 calendar, briefs, piece structures, editorial standards, content models, the
@@ -19,7 +19,7 @@ cover brand strategy (positioning, values, audience, messaging), which belong to
 | Calendar | Backlog, capacity, accounts | A dated plan, one row per piece |
 | Brief | One calendar item | One 21-field brief for `wugweb-work` |
 | Proof map | Case-study inventory, service pages | Which case studies back which page or post |
-| Review | Inventory, seo audit data | Keep, refresh, merge, retire or insufficient-data per piece |
+| Review | Inventory, seo audit data | Keep, refresh, merge, differentiate, retire or insufficient-data per piece |
 | Campaign | A goal and a date range | A campaign as a set of briefs |
 | Repurpose | One approved piece | Which forms, which account, in what order |
 | Report | Post results, search reports | What changes next, as scale, cut, test |
@@ -98,12 +98,12 @@ node scripts/test.mjs            # self-test
 1. Edit `SKILL.md`, a file under `references/`, or a script.
 2. Run `node scripts/build.mjs`.
 3. Run `node scripts/test.mjs`.
-4. Raise the version in `SKILL.md` and `metadata.json` together and add a
-   `CHANGELOG.md` entry.
+4. Raise the version in `SKILL.md`, `metadata.json` and this file together and
+   add a `CHANGELOG.md` entry. `scripts/test.mjs` fails if the three differ.
 
 ## Status
 
-Built, version 0.1.3. The structure, rules and handoffs are in place. The Notion
+Built, version 0.1.4. The structure, rules and handoffs are in place. The Notion
 plan database (decision 1) is not built yet, so the calendar, backlog and signal
 log have no home until the owner's go. Several defaults (cadence, promotional and
 reactive shares, backlog size, refresh thresholds) are "owner to set" until a
