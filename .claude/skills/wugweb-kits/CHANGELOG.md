@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.3, 2026-11-19 (review fixes, no version change)
+
+- `AGENTS.md` and `export/wugweb-kits.md` rebuilt for the "API keys and secrets" section of the standing rules (`ab96770e`); the eval "AGENTS.md export is current" holds again.
+- Counts corrected: 38 Wugweb rule files (12 shell, 8 label, 18 kits) in `SKILL.md`; 19 evals in `README.md`. The README folder map now lists `CHANGELOG.md`, `adapters/`, `agents/`, `export/` and `references/storybook.md`, and describes the build as it is.
+- `SKILL.md` names every file the build generates, not `AGENTS.md` alone.
+- Stale statements corrected after reading the site code on 2026-11-19: the nested `main` on `/contact-us` is gone, every section in `work/[slug].astro` has an id, the Service Spotlight Panel has a pause control, `.btn-partners-cta` and `.global-blog-list` are no longer in `src`.
+- `references/component-sizes.md` no longer says the four confirmed sizes are missing from `sizing.md`. `rules/kits-tokens-only.md` points to the inventory run for the count of raw literals. `references/layout-shell.md` says what `validate.mjs` checks.
+- Skill links: data and schema changes go to `wugweb-engineer` (no link from kits); build, deploy and git follow the repo root `AGENTS.md`. `wugweb-voice` routes "where wording sits in the interface" to kits. The ChatGPT adapter text names `wugweb-engineer`.
+- Brand rules are pointed to, not restated: `wugweb-brand-os` owns the brand rules and the logo checks; kits keeps the sizes, token values and checks (`SKILL.md`, `rules/kits-yellow-budget.md`, `rules/kits-logo-size-and-space.md`, `references/component-sizes.md`).
+- Name of the rule in the 2.1.1 entry below corrected to `label-id-and-name`.
+
 ## 2.1.3, 2026-11-18
 
 - Sibling file alignment: `CHANGELOG.md`, `adapters/cursor/wugweb-kits.mdc`, `adapters/chatgpt/instructions.md`, `agents/openai.yaml` and `export/wugweb-kits.md` added so the skill matches the shape of `wugweb-seo`, `wugweb-voice`, `wugweb-work`, `wugweb-brand-os` and `wugweb-strategy`.
@@ -17,7 +28,7 @@
 ## 2.1.1, 2026-11-18
 
 - Motion rule defines the hero reveal groups (`830a0e55`): h1 and eyebrow at 0.4s, the rest at 0.9s. Home headline blur tween removed.
-- `label-every-section-has-an-id-and-a-name` now extends to the case-study page; the eval expects every section labelled (fails until the case-study tokens pass is live).
+- `label-id-and-name` now extends to the case-study page; the eval expects every section labelled (fails until the case-study tokens pass is live).
 - `kits-logo-size-and-space` added with logo values from the `wugweb-brand-os` rulings in `component-sizes.md`.
 
 ## 2.1.0, 2026-11-17

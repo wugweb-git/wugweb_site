@@ -117,6 +117,8 @@ Never:
 - Delete anything without asking.
 - Write visible copy (ask wugweb-work), art direction (wugweb-brand-os),
   schema or search rules (wugweb-seo), or content plans (wugweb-strategy).
+- Change stored data, a Sanity schema or a sync script (wugweb-engineer).
+  Build, deploy and git follow the AGENTS.md at the repo root.
 - Use em or en dashes in anything a visitor reads.
 
 If you can run code, run scripts/kits-inventory.mjs for raw values and shell

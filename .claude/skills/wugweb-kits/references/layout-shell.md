@@ -27,7 +27,7 @@ Source: `kits_design_system/docs/tokens/layout-shell.md`, read 2026-11-16. The d
 
 **Rules that go with the table.**
 
-1. The doc is the source. The skill's copy is made by reading the doc. `validate.mjs` fails if any value in the skill's copy differs from the doc.
+1. The doc is the source. The skill's copy is made by reading the doc. `validate.mjs` checks two things here: that this copy holds the three section padding strings (`48 16 48 16`, `70 32 70 32`, `96 48 96 48`), and that the breakpoints table below is the same as the doc's Breakpoints table. Every other value in this copy is checked by reading the doc.
 2. Code or another doc that disagrees is reported as a finding against the code or that doc, as the first paragraph of `layout-shell.md` says. The skill never "corrects" the doc to match code.
 3. Old values are never reintroduced. The doc's gap correction: the column gap is 16 / 24 / 32, not 24 / 24 / 0. From its History table, these are retired:
 

@@ -7,12 +7,12 @@ tags: kits, brand, logo
 
 ## Logo Minimum Size And Clear Space
 
-The logo is never shown below 40px high, the nav logo size and the floor. It keeps clear space on every side equal to the rendered height of the mark, sits on black only, and uses the real files: lockup `logo-large.svg`, mark `logo-small.svg`. Values in `references/component-sizes.md`. The rule is owned by `wugweb-brand-os`; kits holds the value and the check.
+Kits measures two sizes. The logo is never shown below 40px high (`--nav-logo-height`), the nav logo size and the floor. It keeps clear space on every side equal to the rendered height of the mark, so 40px at 40px. Values in `references/component-sizes.md`. The logo rules and the logo checks (files, tones, ground) are owned by `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/visual-os/art-direction.md`, Logo section. Kits holds the sizes and checks only those.
 
 **Incorrect:**
 
 ```css
-.footer-logo { height: 28px; margin: 4px; background: var(--neutral-1); }
+.footer-logo { height: 28px; margin: 4px; }
 ```
 
 **Correct:**

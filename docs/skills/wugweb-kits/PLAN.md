@@ -1,7 +1,7 @@
 > STATUS, 2026-11-17, written by the coordinator session from main. This block replaces any older status, version or "not built" line further down. The skill sessions build the skill; the coordinator keeps this plan and the Notion page.
 >
-> - Built. Version 2.0.0 on main, 67 files, last skill commit acf19e9e. 26 rule files, the references and the scripts are written; the six mapper defects are fixed. Validate 0 errors, self test 7 of 7, doc drift 0 findings (as reported by the kits session).
-> - Skill file body: 1,916 words by the shared count. Single-file export is in the skill folder.
+> - Built. Version 2.1.3 on main, 88 files, 59 rule files; the references and the scripts are written; the six mapper defects are fixed. Checks as run on 2026-11-19 are in the "Fixed 2026-11-19" line at the end of this plan. (Line corrected 2026-11-19; it said 2.0.0, 67 files, 26 rules.)
+> - Skill file body: 1,990 words by `validate.mjs` (2026-11-19). Single-file export is in the skill folder.
 > - Claude app and Cowork: not installed after the app reset on 2026-11-17. The kits session built the upload zip; the owner uploads it. The old ui-system-mapper is merged into this skill and retired.
 > - Owner rulings applied: loops are 15 seconds or less, a loop over 5 seconds gets a pause control and is not hidden from assistive tech, a loop of 5 seconds or less with no control stays hidden, all loops stop under reduced motion. Rail 85vw and never past the 1200 content max, peek 20 percent, signature width 2400 px, line length 35 to 60 characters. The five blocks are signed off. Card thumbnails are 16/10 on every card, original ratio kept, the frame is a mask. Deck and card type sizes use the existing graphic type tokens with a size container. Token check is report only first, blocking once the case-study components are clean; the CI wiring waits for the owner's go. Made-file sizes are adopted (og 1200 x 630, LinkedIn link image at least 1200 x 627, Behance cover at least 808 x 632, Dribbble 1600 wide, story 1080 x 1920 with the safe zone unverified).
 > - The faqs field stays in the layout shell doc; how it is used is decided by wugweb-strategy with wugweb-seo. The other four proposed fields are dropped on case studies.
@@ -35,8 +35,8 @@
 | Field | Value |
 |---|---|
 | Name | `wugweb-kits` |
-| Type | Claude Code project skill: one `SKILL.md` plus `rules/`, `references/`, `scripts/`, `examples/`, `evals/` |
-| Version | 0.1.0 (planned; open, see section 16) |
+| Type | Claude Code project skill: one `SKILL.md` plus `rules/`, `references/`, `scripts/`, `evals/`, and the generated `AGENTS.md`, `export/`, `adapters/`, `agents/` (no `examples/` folder exists) |
+| Version | 2.1.3 (corrected 2026-11-19; the plan first said 0.1.0) |
 | Status | Renamed copy is on `main`. Enhancements are plan only. |
 | Installed copies | Repo: `.claude/skills/wugweb-kits/` on `main`, version 1.0.0, name change only. Claude app on this Mac: still `ui-system-mapper` 1.0.0, unchanged since 2026-11-14; no `wugweb-kits` installed there. |
 | Owner | Vedanshu, Wugweb |
@@ -925,7 +925,7 @@ Checked on staging after the deploy: pages 200 on two requests, evals 17 of 17, 
 - Nine plain token lists in `kits_design_system/docs/tokens/` are left as they are (owner).
 - Block docs for sector showcase, industries directory and blog post still say awaiting sign-off.
 - Storybook: no story for JsonLd and PostCard; four stories have no spec (CookieBannerShowcase, FaqAccordion, PortableTextRenderer, TeamGrid); the preview background matches no token; the Spotlight Dense story is still named "1024px+".
-- Skill 2.1.1, 59 rules. Upload zip rebuilt after the push: `wugweb-kits.zip` in the kits worktree root (87 files).
+- Skill 2.1.3, 59 rules, 88 files (corrected 2026-11-19). The upload zip `wugweb-kits.zip` in the kits worktree root (87 files) was built at 2.1.1 and is older than the skill.
 - From 2026-11-18 the coordinator split is lifted: the kits session keeps this plan and its Notion page itself and works directly with the owner.
 
 **Not verified in a browser:** reduced motion on every path, phone and touch, the Spotlight dense layout at 1200, a real clip over 15 seconds. The in-app browser pane draws no animation frames, so motion was measured in Chrome.
@@ -967,6 +967,8 @@ Every file of the skill (88) was read on 2026-11-19 from main (`4fbf334c`) by a 
 14. Brand-os rules are restated here instead of pointed to: `SKILL.md` line 41 and `rules/kits-yellow-budget.md` line 10 (one brand colour, pillar colours, glow exception, black canvas, bounce), and `references/component-sizes.md` lines 24 to 32 (logo files, exemptions, ground). This is the open brand-os eval 38.
 
 `SKILL.md` is 5 words under the 2,000-word limit, so fixes there must not add words.
+
+Fixed 2026-11-19: items 1 to 14, at the source, with no version change (stays 2.1.3); none left unfixed. Item 9 was not recounted: the inventory script gives no px-only count, so the rule now points to the latest inventory run. Both plan items below are fixed too; the planned folder tree in section 4 still shows `examples/` as first planned. After the fixes: `SKILL.md` body 1,990 words, `build.mjs --check` up to date, `validate.mjs` 59 rules with 0 errors, self test 10 of 10, doc drift 0 findings, evals 19 pass, 0 fail, 0 blocked.
 
 ### Needs changing in this plan
 

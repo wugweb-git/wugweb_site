@@ -4,13 +4,13 @@ From the UI spec of 2026-09-22, section 6, re-checked against code 2026-11-17. T
 
 | Target | Survivor | Still separate in code (2026-11-17) |
 |---|---|---|
-| Button | `.btn` with tiers (`kits-button-tiers`) | `svc-btn` and `approach-cta-btn` sit on `.btn` with their own CSS; `nav-cta`, `mobile-cta`, `desktop-cta` (SiteHeader) and `footer-action-btn` (SiteFooter) stand alone; `.btn-partners-cta` is dead CSS |
+| Button | `.btn` with tiers (`kits-button-tiers`) | `svc-btn` and `approach-cta-btn` sit on `.btn` with their own CSS; `nav-cta`, `mobile-cta`, `desktop-cta` (SiteHeader) and `footer-action-btn` (SiteFooter) stand alone; the dead `.btn-partners-cta` CSS is gone from `src` (2026-11-19) |
 | Chip | one Chip, `--radius-full` | `filter-chip` (styled in both blog and work index), `pm-chip`, `bento-chip`, `chips-row`, `tag` |
 | Hero | one Hero | `.hero`, `.about-hero`, `.services-hero`, `.blog-hero`, `.contact-v2-hero` |
 | Bento | `BentoBlock.astro` | `work/[slug].astro` keeps its own `.bento` grid |
 | Eyebrow | one `.eyebrow` in `global.css` | restyled in 9 files |
 | Surface | one glass panel | `.glass-panel` styled in 5 files |
 
-Done since the spec: PostCard (one card for InsightsBlock, blog index and post; `.global-blog-list` is dead CSS).
+Done since the spec: PostCard (one card for InsightsBlock, blog index and post; the dead `.global-blog-list` CSS is gone from `src`, checked 2026-11-19).
 
 Each target is a site change: its own branch, preview and the owner's go.

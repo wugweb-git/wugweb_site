@@ -13,7 +13,7 @@ Detail behind `kits-media-poster-first`, `kits-widget-guards`, `kits-case-media-
 | Hero | the start frame is the LCP image |
 | Priority | at most one or two high-priority images per page |
 
-Measured 2026-11-17: of 61 Service Spotlight Panel clips in R2, 35 are over 5s and 12 over 15s (longest 81.5s). The panel has no pause control yet.
+Measured 2026-11-17: of 61 Service Spotlight Panel clips in R2, 35 are over 5s and 12 over 15s (longest 81.5s). The panel has a pause control (`.showcase-pause` in `ServiceSpotlightPanel.astro`, source read 2026-11-19).
 
 ## Widget guards
 
