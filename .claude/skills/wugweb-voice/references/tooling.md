@@ -1,6 +1,6 @@
 # Tooling
 
-Version 0.3.0. The only file in this skill that names tools, vendors and helper skills. Every step can be done by hand without them. Helpers return proposals only; the owner's rules win in every clash.
+The only file in this skill that names tools, vendors and helper skills. Every step can be done by hand without them. Helpers return proposals only; the owner's rules win in every clash.
 
 ## Helper skills
 

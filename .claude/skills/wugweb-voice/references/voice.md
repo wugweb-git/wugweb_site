@@ -1,6 +1,6 @@
 # Voice rules
 
-Version 0.2.0. Status: waiting on samples. No observed rule exists yet.
+Status: waiting on samples. No observed rule exists yet.
 
 Each rule has this shape:
 

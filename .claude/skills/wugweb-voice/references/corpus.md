@@ -1,6 +1,6 @@
 # Calibration corpus
 
-Version 0.2.0. The ledger of writing and speech the owner has supplied or named for calibrating the voice. Status: empty. No samples supplied yet.
+The ledger of writing and speech the owner has supplied or named for calibrating the voice. Status: empty. No samples supplied yet.
 
 Rule: only samples the owner supplies or names. Nothing is searched for in email, Drive, Notion or meeting transcripts unless he names the item. Private text is not copied here; the Location column says where the original lives. A short excerpt only with his yes. Provenance: samples are the owner's own writing, shared while he uses the skills. He supplies or approves each piece as work is made; nothing is taken from his chat messages.
 

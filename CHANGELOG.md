@@ -9,6 +9,10 @@ and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
 
+### Changed — wugweb-voice brought to sibling standard (2026-11-19)
+
+- `.claude/skills/wugweb-voice`: listed `references/standing-rules.md` in the SKILL.md Files table (as wugweb-seo, wugweb-kits and wugweb-work do) and removed the per-reference `Version` stamps that siblings do not carry. Regenerated the portable files. Skill version stays locked at 0.3.0; tests pass.
+
 ### Fixed — wugweb-voice export test green again, sample provenance recorded (2026-11-19)
 
 - `.claude/skills/wugweb-voice`: the export test asserted the standing-rules marker in the wrong case (`MARKED COPY`); corrected to `marked copy` to match the file and the wugweb-seo convention, and regenerated the stale `AGENTS.md` and `export/wugweb-voice.md`. The skill passes its own tests again. Recorded sample provenance (R-006): samples are shared while using the skills. Version stays locked at 0.3.0.

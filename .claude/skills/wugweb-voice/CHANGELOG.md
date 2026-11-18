@@ -2,6 +2,11 @@
 
 ## [0.3.0] 2026-11-17
 
+### 2026-11-19 (sibling conformance, under the locked 0.3.0)
+
+- Listed `references/standing-rules.md` in the SKILL.md Files table, matching wugweb-seo, wugweb-kits and wugweb-work.
+- Removed the per-reference `Version` stamps from the reference files; siblings carry none, and the version lives once in SKILL.md and metadata.json. No version change.
+
 ### 2026-11-19 (under the locked 0.3.0, no version change)
 
 - Fixed the export test: it now looks for the standing-rules marker in the file's own case (`marked copy`), matching the file and the wugweb-seo convention. Regenerated `AGENTS.md` and `export/wugweb-voice.md`, which were stale on main.
