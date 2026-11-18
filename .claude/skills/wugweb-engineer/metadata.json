@@ -1,0 +1,19 @@
+{
+  "version": "0.3.1",
+  "organization": "Wugweb",
+  "date": "November 2026",
+  "abstract": "Govern every change to the data behind wugweb.com: Sanity documents, the Sanity schema, the Notion to Sanity sync scripts, backups and undo. One procedure for every change: read and count, back up with a hash, plan one field as current to proposed, wait for the owner's go on that plan, patch with a revision guard, read again, keep the undo. It never deletes, creates or replaces a document, never touches media files, and calls no AI model. Field decisions, search values and visible wording belong to sibling skills; this skill applies them. Five working scripts, plain Node with no packages. Independent of agent; the Sanity and Notion wiring sits in one reference file.",
+  "status": "Built 2026-11-19 and named `wugweb-engineer` by the owner the same day on the owner's word \"create skill\" (option b of the 2026-11-18 audit). Registered 2026-11-19 on the owner's word \"update notion and commit\": registry row 7, a matrix row and its own Notion page; the folder and docs/skills/wugweb-engineer/PLAN.md are committed in the repo. Tests pass; six cases run with and without the skill; routing check 19 of 20 (all data prompts routed here, no near miss routed here).",
+  "relatedSkills": [
+    "wugweb-seo",
+    "wugweb-strategy",
+    "wugweb-work",
+    "wugweb-kits"
+  ],
+  "references": [
+    "https://agentskills.io/specification",
+    "https://www.sanity.io/docs/http-mutations",
+    "https://www.sanity.io/docs/http-reference",
+    "https://www.sanity.io/docs/apis-and-sdks/js-client-mutations"
+  ]
+}

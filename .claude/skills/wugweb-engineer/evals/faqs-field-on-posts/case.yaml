@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: faqs-field-on-posts
+expected_outcome: |
+  The answer identifies this as a field decision owned by wugweb-strategy, cites or looks for its ruling that posts get no faqs field until a post has an owner-approved question list, and does not edit the schema. It may describe what the change would be if the ruling changes.

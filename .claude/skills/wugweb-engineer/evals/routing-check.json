@@ -1,0 +1,147 @@
+{
+ "what": "Routing check, a stand-in for the app trigger test (the command-line trigger loop cannot sign in here). A separate agent saw only the seven skill descriptions from main 6e290b0 plus this skill's, and picked one skill per prompt, blind to the expected answer.",
+ "date": "2026-11-19",
+ "result": "19 of 20. All 10 data prompts went to wugweb-engineer; all 10 near misses went to another skill. The one mismatch (13) went to wugweb-voice instead of the expected wugweb-work, not to wugweb-engineer.",
+ "prompts": [
+  {
+   "id": 1,
+   "prompt": "seo wants all the TechArticle posts flipped to BlogPosting in sanity, can you sort that",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Patch schemaType values across Sanity posts"
+  },
+  {
+   "id": 2,
+   "prompt": "pull last night's blog edits from notion into the cms",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Notion to Sanity blog sync"
+  },
+  {
+   "id": 3,
+   "prompt": "before we touch anything, back up every service document in sanity",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Back up Sanity documents before a change"
+  },
+  {
+   "id": 4,
+   "prompt": "which fields are sitting on our case study docs that studio doesn't show?",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Check the schema against stored data"
+  },
+  {
+   "id": 5,
+   "prompt": "undo the change you made to the case study canonical urls yesterday",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Undo a Sanity data change"
+  },
+  {
+   "id": 6,
+   "prompt": "is it safe to run scripts/map-assets-to-content.mjs?",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Which scripts are safe to run"
+  },
+  {
+   "id": 7,
+   "prompt": "remove the FAQPage option from the singleton page schema type list",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Sanity schema edit"
+  },
+  {
+   "id": 8,
+   "prompt": "the footer still says 2020-2025, fix it in site settings",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Change a stored field in Sanity site settings"
+  },
+  {
+   "id": 9,
+   "prompt": "how many asset records are under work/kia in the registry and do they all load?",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Asset registry and R2 listing"
+  },
+  {
+   "id": 10,
+   "prompt": "fill the service FAQs in sanity from the approved review rows",
+   "expect": "wugweb-engineer",
+   "routed": "wugweb-engineer",
+   "why": "Patch faqs fields in Sanity"
+  },
+  {
+   "id": 11,
+   "prompt": "what schema type should our blog posts use for search?",
+   "expect": "wugweb-seo",
+   "routed": "wugweb-seo",
+   "why": "Schema or JSON-LD for search"
+  },
+  {
+   "id": 12,
+   "prompt": "should blog posts have an FAQ section at all?",
+   "expect": "wugweb-strategy",
+   "routed": "wugweb-strategy",
+   "why": "Piece structure and content model decision"
+  },
+  {
+   "id": 13,
+   "prompt": "rewrite the brand service page FAQ answers so they sound like us",
+   "expect": "wugweb-work",
+   "routed": "wugweb-voice",
+   "why": "Rewrite in our voice"
+  },
+  {
+   "id": 14,
+   "prompt": "write the Kia case study body from its Notion page",
+   "expect": "wugweb-work",
+   "routed": "wugweb-work",
+   "why": "Write a case study body"
+  },
+  {
+   "id": 15,
+   "prompt": "check the gutter and section padding on the case study page at 375 and 1200",
+   "expect": "wugweb-kits",
+   "routed": "wugweb-kits",
+   "why": "Gutter and section padding at breakpoints"
+  },
+  {
+   "id": 16,
+   "prompt": "what should we post on LinkedIn next month?",
+   "expect": "wugweb-strategy",
+   "routed": "wugweb-strategy",
+   "why": "Social calendar planning"
+  },
+  {
+   "id": 17,
+   "prompt": "does this headline sound like Wugweb?",
+   "expect": "wugweb-voice",
+   "routed": "wugweb-voice",
+   "why": "Whether a draft is on voice"
+  },
+  {
+   "id": 18,
+   "prompt": "is this cover artwork on brand?",
+   "expect": "wugweb-brand-os",
+   "routed": "wugweb-brand-os",
+   "why": "Is this artwork on brand"
+  },
+  {
+   "id": 19,
+   "prompt": "why is the axis bank case study not showing up in google?",
+   "expect": "wugweb-seo",
+   "routed": "wugweb-seo",
+   "why": "Why a page is not found in search"
+  },
+  {
+   "id": 20,
+   "prompt": "suggest a better meta description for the blog index page",
+   "expect": "wugweb-seo",
+   "routed": "wugweb-seo",
+   "why": "Meta description check (seo audits, though it writes no copy)"
+  }
+ ]
+}

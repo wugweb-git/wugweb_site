@@ -1,0 +1,30 @@
+{
+ "takenAt": "2026-11-19T00:00:00.000Z",
+ "query": "*[_type == \"post\" && defined(schemaType)]",
+ "params": {},
+ "count": 3,
+ "sha256": "480aa399e57d508a568aa04a1925625f15ed56639157c482c2e30e87911419b3",
+ "docs": [
+  {
+   "_id": "post-example-one",
+   "_rev": "rEXAMPLE1",
+   "_type": "post",
+   "title": "Example one",
+   "schemaType": "TechArticle"
+  },
+  {
+   "_id": "drafts.post-example-one",
+   "_rev": "rEXAMPLE2",
+   "_type": "post",
+   "title": "Example one",
+   "schemaType": "TechArticle"
+  },
+  {
+   "_id": "post-example-two",
+   "_rev": "rEXAMPLE3",
+   "_type": "post",
+   "title": "Example two",
+   "schemaType": "BlogPosting"
+  }
+ ]
+}

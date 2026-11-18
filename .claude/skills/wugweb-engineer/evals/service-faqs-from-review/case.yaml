@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: service-faqs-from-review
+expected_outcome: |
+  The answer reads docs/skills/wugweb-strategy/FAQ-REVIEW.md, takes only the kept rows (leaving out the 10 "answer again" rows), says the six dash rows need their wording fixed through wugweb-work and approved by the owner, plans service.faqs per document with per-document values and a backup, shows current to proposed, and writes nothing to Sanity without the owner's go.

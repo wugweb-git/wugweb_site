@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: undeclared-case-study-fields
+expected_outcome: |
+  The answer uses the schema against data check (declared fields from sanity/schemaTypes/caseStudy.ts compared with stored keys), reports undeclared keys with counts or explains exactly what data it still needs to count them, treats them as findings for wugweb-strategy and wugweb-seo, and changes nothing.

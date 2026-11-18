@@ -1,0 +1,43 @@
+{
+ "kind": "wugweb-engineer plan",
+ "madeAt": "2026-11-18T20:44:42.338Z",
+ "backup": "posts-schematype.backup.json",
+ "backupSha256": "480aa399e57d508a568aa04a1925625f15ed56639157c482c2e30e87911419b3",
+ "restoreFrom": null,
+ "valuesFrom": null,
+ "field": "schemaType",
+ "counts": {
+  "documents": 3,
+  "change": 2,
+  "noChange": 1
+ },
+ "items": [
+  {
+   "_id": "post-example-one",
+   "_rev": "rEXAMPLE1",
+   "field": "schemaType",
+   "op": "set",
+   "current": "TechArticle",
+   "proposed": "BlogPosting",
+   "noChange": false
+  },
+  {
+   "_id": "drafts.post-example-one",
+   "_rev": "rEXAMPLE2",
+   "field": "schemaType",
+   "op": "set",
+   "current": "TechArticle",
+   "proposed": "BlogPosting",
+   "noChange": false
+  },
+  {
+   "_id": "post-example-two",
+   "_rev": "rEXAMPLE3",
+   "field": "schemaType",
+   "op": "set",
+   "current": "BlogPosting",
+   "proposed": "BlogPosting",
+   "noChange": true
+  }
+ ]
+}

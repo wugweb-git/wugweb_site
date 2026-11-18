@@ -1,0 +1,15 @@
+{
+ "takenAt": "2026-11-19T00:00:00.000Z",
+ "query": "*[_type == \"service\"]",
+ "params": {},
+ "count": 1,
+ "sha256": "297431d7e720ddb1772e8a6058de05defd174d0df338873ff3d8eefc895d55de",
+ "docs": [
+  {
+   "_id": "service-example",
+   "_rev": "rEXAMPLE4",
+   "_type": "service",
+   "title": "Example service"
+  }
+ ]
+}

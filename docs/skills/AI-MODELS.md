@@ -38,6 +38,7 @@ same shape, same `:free` suffix.
 | wugweb-kits | None | Layout and spacing checks on screenshots; token hygiene flags from a rendered page | `OPENROUTER_API_KEY`, `OPENROUTER_VISION_MODEL` | Planned. No sibling script yet. |
 | wugweb-seo | Keyword drafts, schema drafts, meta description drafts | None | `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` | Planned. No sibling script yet. |
 | wugweb-strategy | Light use: brief polish, calendar description drafts | None | `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` | Planned. No sibling script yet. |
+| wugweb-engineer | None | None | `SANITY_SYNC_TOKEN` only, for token reads and writes | No AI model, by design: data writes never go through a model |
 
 A planned entry commits to a name and a shape, not to a timeline. Each
 sibling script is built on the owner's go, not before.

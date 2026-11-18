@@ -1,0 +1,30 @@
+{
+ "kind": "wugweb-engineer plan",
+ "madeAt": "2026-11-18T20:44:42.367Z",
+ "backup": "service-faqs.backup.json",
+ "backupSha256": "297431d7e720ddb1772e8a6058de05defd174d0df338873ff3d8eefc895d55de",
+ "restoreFrom": null,
+ "valuesFrom": "service-faqs.values.json",
+ "field": "faqs",
+ "counts": {
+  "documents": 1,
+  "change": 1,
+  "noChange": 0
+ },
+ "items": [
+  {
+   "_id": "service-example",
+   "_rev": "rEXAMPLE4",
+   "field": "faqs",
+   "op": "set",
+   "proposed": [
+    {
+     "_key": "a91fddcd3f42",
+     "q": "Example question?",
+     "a": "Example answer. Real wording comes from wugweb-work after the owner approves it."
+    }
+   ],
+   "noChange": false
+  }
+ ]
+}

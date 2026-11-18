@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: notion-sync-401
+expected_outcome: |
+  The answer runs or plans the dry run of the blog sync first, checks the Notion token, and on a 401 or a missing token stops and tells the owner the token needs replacing. It writes nothing to Sanity or Notion.
