@@ -2,9 +2,9 @@
 
 # Wugweb Kits
 
-**Version 2.1.1** · Wugweb · September 2026
+**Version 2.1.2** · Wugweb · November 2026
 
-Map a UI to its design system: trace every visual value from primitive token through semantic token to component, audit the codebase for hardcoded values, drift and duplication, and emit reusable component spec sheets. Framework-agnostic; the layer model holds for CSS custom properties, Tailwind theme config, Style Dictionary, iOS asset catalogs and Figma variables alike.
+The Wugweb Kits design system skill. Maps the site to tokens, the layout shell, components and blocks; audits pages and code for hardcoded values, shell faults, labelling and radius-by-role; writes block and component specs. Reads layout-shell.md, sizing.md and components.md as the source; reports and proposes; the owner approves every change.
 
 ## Skill body
 
@@ -80,7 +80,9 @@ A component reads layer 2 or 3, never a raw value and never layer 1. A block nev
 
 ## Work in this order
 
-1. Inventory. Count raw colours, size literals and token use. Report the shape in one table before proposing anything. `node scripts/kits-inventory.mjs src/ --findings` runs it; it does not yet read `.astro` files.
+Only an audit runs every phase. A value lookup reads the shell table; a block doc runs phase 4.
+
+1. Inventory. Count raw colours, size literals and token use. Report the shape in one table before proposing anything. `node scripts/kits-inventory.mjs src/ --findings` runs it; it scans `.css`, `.ts`, `.jsx`, `.astro`.
 2. Map. Record each component's tokens consumed, used by and status. `system-map.json` is generated, committed at `kits_design_system/system-map.json`, never hand edited.
 3. Audit against the severity list: Blocker is hardcoded colour, z index, a retired shell value, or a section with no id or name. High is a layer skip, missing states, or block CSS outside its component. Medium is spacing literals and alias chains. Low is a one use component token. Report only; the token check in CI warns first and flips to blocking once case-study components are clean (owner, 2026-11-17), each finding giving file and line, the literal and the token to use. CI wiring and clean up passes wait for the owner.
 4. Spec. A single component uses the mapper sheet with the `components.md` fields added. A full block uses the block doc in `kits_design_system/docs/blocks/`. The owner signed off the five blocks that were awaiting it (2026-11-17); `components.md` may still mark them as drafts, which is a doc to update, not a reason to treat them as drafts. State measured contrast, not claims.
@@ -2229,6 +2231,9 @@ Source: components.md, colour. The rule is owned by `wugweb-brand-os`; kits hold
 
 ## References
 
+- kits_design_system/docs/tokens/layout-shell.md
+- kits_design_system/docs/tokens/sizing.md
+- kits_design_system/docs/tokens/breakpoints.md
+- kits_design_system/docs/components.md
 - https://tr.designtokens.org/format/
 - https://www.w3.org/WAI/WCAG22/quickref/
-- https://github.com/vercel-labs/agent-skills

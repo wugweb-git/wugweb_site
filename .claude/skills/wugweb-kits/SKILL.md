@@ -1,10 +1,11 @@
 ---
-name: "wugweb-kits"
-description: "Maps the Wugweb site to the Kits design system: tokens, layout shell, components, block docs, motion and accessibility. Use when asked to audit a page or block against the shell, check tokens or hardcoded values, spec a component or block, map sections to the six layers, check labelling and headings, or find drift between docs and global.css. Triggers: kits, design system, tokens, layout shell, section padding, gutter, header height, block doc, component spec, audit page."
+name: wugweb-kits
+description: 'This skill should be used when the user asks to "check the tokens", "audit this page", "check the gutter at 1200", "what is the header height", "spec the Bento", "write a block doc", "map this to the six layers", "find drift between the docs and global.css", "is this section labelled", or mentions Kits, global.css, the layout shell, sections, blocks, breakpoints, buttons, chips, the yellow rule or GSAP reveals. It governs the Wugweb Kits design system: tokens, page, section, content and block layout, components, block docs, adaptive UX, motion and accessibility.'
 license: MIT
+compatibility: "Scripts need Node 18 or later, no packages. The drift and inventory scripts read the repo; evals/run.mjs reads live staging pages."
 metadata:
   author: wugweb
-  version: "2.1.1"
+  version: "2.1.2"
   argument-hint: <file-or-page>
 ---
 
@@ -80,7 +81,9 @@ A component reads layer 2 or 3, never a raw value and never layer 1. A block nev
 
 ## Work in this order
 
-1. Inventory. Count raw colours, size literals and token use. Report the shape in one table before proposing anything. `node scripts/kits-inventory.mjs src/ --findings` runs it; it does not yet read `.astro` files.
+Only an audit runs every phase. A value lookup reads the shell table; a block doc runs phase 4.
+
+1. Inventory. Count raw colours, size literals and token use. Report the shape in one table before proposing anything. `node scripts/kits-inventory.mjs src/ --findings` runs it; it scans `.css`, `.ts`, `.jsx`, `.astro`.
 2. Map. Record each component's tokens consumed, used by and status. `system-map.json` is generated, committed at `kits_design_system/system-map.json`, never hand edited.
 3. Audit against the severity list: Blocker is hardcoded colour, z index, a retired shell value, or a section with no id or name. High is a layer skip, missing states, or block CSS outside its component. Medium is spacing literals and alias chains. Low is a one use component token. Report only; the token check in CI warns first and flips to blocking once case-study components are clean (owner, 2026-11-17), each finding giving file and line, the literal and the token to use. CI wiring and clean up passes wait for the owner.
 4. Spec. A single component uses the mapper sheet with the `components.md` fields added. A full block uses the block doc in `kits_design_system/docs/blocks/`. The owner signed off the five blocks that were awaiting it (2026-11-17); `components.md` may still mark them as drafts, which is a doc to update, not a reason to treat them as drafts. State measured contrast, not claims.
