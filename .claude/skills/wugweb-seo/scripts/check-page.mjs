@@ -36,11 +36,11 @@ if (titles.length !== 1 || !titles[0]) add('BLOCKER', 'title-present', '<title>'
 else {
   pass('title-present')
   const source = titles[0].replace(/\s*\|\s*Wugweb\s*$/, '')
-  // House limit on wugweb.com: 51 for a case study. A blog post or service page has no source limit (owner, 2026-11-19).
+  // House limit on wugweb.com: 51 for a case study. A blog post or service page follows the search standard, rendered 60 or fewer, checked below as title-rendered (owner, 2026-11-19).
   const sourceLimit = isWork ? 51 : null
   if (sourceLimit && source.length > sourceLimit) add('BLOCKER', 'title-length', '<title>', `source title ${source.length} characters, limit ${sourceLimit}`)
   else if (sourceLimit || kind === 'blog' || kind === 'service') pass('title-length')
-  else add('LOW', 'title-length', '<title>', `source title ${source.length} characters; no limit set for kind "${kind}". Use --kind work (51); blog and service have no source limit`)
+  else add('LOW', 'title-length', '<title>', `source title ${source.length} characters; no limit set for kind "${kind}". Use --kind work (51); blog and service follow the rendered limit of 60`)
   if (titles[0].length > 60) add('HIGH', 'title-rendered', '<title>', `rendered title ${titles[0].length} characters, limit 60`)
   else pass('title-rendered')
 }

@@ -832,3 +832,5 @@ Fixed 2026-11-19 (seo session, version stays 2.5.0; not committed at the time of
 Changed the same day at the owner's word: a blog post or service page title over 52 characters is reported at MEDIUM and is not a blocker; only a case study over 51 blocks.
 
 Owner, 2026-11-19, final: "no limit". A blog post or service page has no source title limit; the 52-character rule is removed. Only a case study over 51 blocks; rendered 60 stays.
+
+Owner, 2026-11-19, last word on titles: "title limit, yes, standard as per Google". Blog post and service page titles follow the search standard, rendered 60 characters or fewer (the `title-rendered` check). There is no separate 52 house limit. Google publishes no character limit; it cuts a title to fit the result width, about 60 characters on desktop.

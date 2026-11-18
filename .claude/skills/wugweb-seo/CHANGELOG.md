@@ -4,6 +4,7 @@
 
 - 2026-11-19: review fixes, version stays 2.5.0. `build.mjs` now writes `export/wugweb-seo.md`
 - 2026-11-19, owner: "no limit". A blog post or service page has no source title limit; the 52-character rule is removed from the skill file, the plan and audit references and `check-page.mjs`. Only a case study over 51 blocks, and the rendered 60 stays.
+- 2026-11-19, owner: "title limit, yes, standard as per Google". Blog post and service page titles follow the search standard: rendered 60 characters or fewer (`title-rendered`). Google publishes no character limit; it cuts a title to fit the result width, about 60 characters on desktop.
   (a short header, then `AGENTS.md`) and `--check`, `validate.mjs` and `test.mjs` cover it.
   The description takes the sibling form, with quoted user phrases, and `validate.mjs` accepts
   it. `wugweb-engineer` is named as the skill that applies Sanity and Notion data and schema
