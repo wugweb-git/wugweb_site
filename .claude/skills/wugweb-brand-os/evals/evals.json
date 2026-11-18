@@ -1,7 +1,7 @@
 {
   "skill": "wugweb-brand-os",
-  "version": "0.1.0",
-  "note": "Status 'runnable' means the test can run on 0.1.0. 'waiting on the owner' means it needs an answer or a file the owner has not supplied.",
+  "version": "0.2.0",
+  "note": "Status 'runnable' means the test can run on 0.2.0. 'waiting on the owner' means it needs an answer or a file the owner has not supplied.",
   "evals": [
     {
       "id": 1,
@@ -17,13 +17,14 @@
     },
     {
       "id": 2,
-      "name": "answer: values are not the principles",
+      "name": "answer: the five approved values",
       "status": "runnable",
       "prompt": "What are our values?",
       "expected": [
-        "Says values are not decided and the owner will supply them",
-        "May list the ten principles, labelled as principles and not as values",
-        "Does not derive a values list"
+        "Gives the five values approved 2026-11-17: User-Centricity, Innovation, Collaboration, Excellence, Social Impact",
+        "Keeps the ten principles apart, labelled as principles and not as values",
+        "Does not derive more values",
+        "Cites references/values-and-principles.md"
       ]
     },
     {
@@ -93,9 +94,9 @@
       "expected": [
         "'400+ projects' marked not approved, with the note that 200+ also appears",
         "'Creative UX Design Agency' marked stale",
-        "'founded in 2020' marked not approved",
+        "'founded in 2020' marked approved (4 December 2020, approved 2026-11-17)",
         "'six pillars' marked approved",
-        "'WugWeb' spelling flagged as not approved",
+        "'WugWeb' flagged as not the approved spelling; the approved spelling is 'Wugweb'",
         "No number is softened or replaced"
       ]
     },
@@ -147,8 +148,9 @@
       "prompt": "Who are we for? How is Wugweb different from an agency? What should the campaign visuals look like?",
       "expected": [
         "Answers all three from this skill",
-        "Audience and differentiation reported as not decided",
-        "Campaign visuals answered from Visual OS; no campaign system is defined or reported as missing"
+        "Audience reported as not decided, citing references/audience.md",
+        "Differentiation reported as not decided, citing references/identity-and-positioning.md",
+        "Campaign visuals answered from Visual OS; campaign systems reported as not defined"
       ]
     },
     {
@@ -288,7 +290,7 @@
       "status": "runnable",
       "prompt": "Copy: \"Founded in 2020 and trusted by Airtel.\"",
       "expected": [
-        "Founding year marked not approved",
+        "Founding year marked approved (4 December 2020, approved 2026-11-17)",
         "Client named only if the owner cleared the name",
         "Nothing corrected"
       ]

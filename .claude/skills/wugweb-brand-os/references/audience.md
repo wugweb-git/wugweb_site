@@ -1,6 +1,6 @@
 # Audience
 
-**Not decided: owner.** Answered 2026-11-16: the owner will supply the audience. No approved source says who Wugweb is for. Until it arrives, answer "audience: not decided, the owner supplies it". Never infer the audience from case studies, the site or the 2023 profile.
+**Not decided: owner.** Answered 2026-11-17: the audience stays blank until the owner supplies it; no Notion page names one. No approved source says who Wugweb is for. Until it arrives, answer "audience: not decided, the owner supplies it". Never infer the audience from case studies, the site or the 2023 profile.
 
 ## Slots, all empty
 

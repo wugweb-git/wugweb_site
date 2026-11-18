@@ -1,8 +1,8 @@
-> STATUS, 2026-11-17. Kept by the brand-os session (the coordinator handed it over on 2026-11-17). This block replaces any older status line further down. The Notion page "wugweb-brand-os" (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa) and this file hold the same text.
+> STATUS, 2026-11-19. Kept by the brand-os session (the coordinator handed it over on 2026-11-17). This block replaces any older status line further down. The Notion page "wugweb-brand-os" (https://app.notion.com/p/41abb710b9ab8194bb13f85540dd87aa) and this file hold the same text.
 >
-> - **Built.** Version 0.1.0 on main, last skill commit f66bb666 (merged as 342a016a). `SKILL.md` body 1,979 words by the shared count (limit 2,000), 17 reference files, one `evals/evals.json` with 39 cases, export rebuilt, checks pass.
-> - **Upload.** `wugweb-brand-os.zip` (29 files, built from main) is in the brand-os worktree root. The owner uploads it to the Claude app; the app copy is not installed since the reset on 2026-11-17.
-> - **Evals.** First run 2026-11-17: 34 of 39 pass. Three are blocked on owner material (correct gap reports), one needs a real trigger run in the app after the upload, one waited on pointers added in `wugweb-kits` and `wugweb-work`.
+> - **Built.** Version 0.2.0 on main (2026-11-19). `SKILL.md` body 1,988 words by the shared count (limit 2,000), 17 reference files, one `evals/evals.json` with 39 cases, export rebuilt with the current standing rules, checks pass. 0.2.0 brings `SKILL.md`, `vocabulary.md`, `audience.md` and evals 2, 8 and 13 in line with the 2026-11-17 rulings, and gives the audience rule one home.
+> - **Upload.** `wugweb-brand-os.skill` (0.2.0, built from main on 2026-11-19) replaces the 0.1.0 zip. The owner uploads it to the Claude app; the app copy is not installed since the reset on 2026-11-17.
+> - **Evals.** Run 2026-11-19 on 0.2.0: 32 of the 36 runnable tests pass, graded by a separate agent; no invented facts. Three tests wait on owner material. Open: 6 (a clean brief got a provisional pass, not a pass), 22 (offers the messaging rule beside visual direction), 36 (triggering needs a real run in the app after the upload), 38 (the media rule text is repeated in `SKILL.md` and `visual-os/art-direction.md` though `STANDING-RULES.md` holds it).
 > - **Sources the owner approved.** The Notion page "Wugweb Profile (Master) - 2023" and what is in Notion, for this skill and for `wugweb-voice`.
 >
 > **Commits on main, 2026-11-17**
@@ -17,6 +17,7 @@
 > | 691c368d, 9e7c93bb | Open items to come from Notion; logo, archetype and secondary colour questions recorded |
 > | 18138ec2 | All six pillar colours stand; accent grey |
 > | f66bb666 | Notion answers for questions 4, 19 and 20 applied |
+> | 40dc6e8d | This plan, pending.md and the Notion page brought up to date; on main as 5361f4e6 |
 >
 > **Owner rulings that stand (2026-11-16 and 17)**
 >
@@ -26,7 +27,7 @@
 > - Logo rules live here, sizes in `wugweb-kits`. "Does a lot, into one" is an idea, not public wording. Wugweb has no campaign system. The case-study cover rule stays. A fact is marked approved or not approved.
 > - Facts (question 4), approved: the spelling "Wugweb"; the WhatsApp number in the site nav; `hello@wugweb.com`; WeWork Berger Delhi One, Floor 19, Sector 16B, Noida 201301, while current; founded 4 December 2020. Team size, projects and markets carry no figure until the owner gives one.
 > - Values: User-Centricity, Innovation, Collaboration, Excellence, Social Impact. The ten principles stay principles.
-> - Logo (question 19): `public/brand/logo-large.svg` is the lockup, `logo-small.svg` the mark; fixed tones (lockup white and grey, mark yellow and white); both exempt from the pure white and yellow rules; clear space equals the mark height; the 40px nav is the minimum size floor (values in `wugweb-kits`); black only; no one-colour version yet; the unused `public/brand/wugweb-mark.png` is approved to go as a site change (nothing references it; not yet deleted).
+> - Logo (question 19): `public/brand/logo-large.svg` is the lockup, `logo-small.svg` the mark; fixed tones (lockup white and grey, mark yellow and white); both exempt from the pure white and yellow rules; clear space equals the mark height; the 40px nav is the minimum size floor (values in `wugweb-kits`); black only; no one-colour version yet; the unused `public/brand/wugweb-mark.png` was deleted on 2026-11-18 (469c08f5).
 > - Archetype (question 20): "brand identity" is kept without naming ToT, because that client record is under NDA.
 >
 > **Pending**
@@ -40,8 +41,8 @@
 > | 5 | Team size, projects delivered, markets | Owner figures | Conflicting 2023 values only |
 > | 6 | Logo mark construction, live type in the lockup | Owner | None |
 > | 7 | Visual OS and Brand Strategy documents, nine source images (question 10) | Owner names the pages if they exist | None |
-> | 8 | Upload the zip to the Claude app | Owner | |
-> | 9 | Delete `public/brand/wugweb-mark.png` | A site change, on the owner's go | |
+> | 8 | Upload `wugweb-brand-os.skill` (0.2.0) to the Claude app | Owner | |
+> | 9 | Delete `public/brand/wugweb-mark.png` | Done 2026-11-18 (469c08f5) | |
 > | 10 | Three evals blocked on owner material; one real trigger run in the app | Items 7 and 8 | |
 > | 11 | `wugweb-work`: one eval prompt names "ToT Bridal" (client under NDA); the ToT case study has spelling, country, pasted copy and Framer link problems | The `wugweb-work` session | |
 
@@ -77,8 +78,8 @@
 |---|---|
 | Name | `wugweb-brand-os` |
 | Type | Claude Code project skill (Agent Skill): one `SKILL.md` plus `references/`, `examples/`, `evals/`. One plain Node script, for the export. |
-| Version | 0.1.0 |
-| Status | On main, last skill commit f66bb666 (2026-11-17). `SKILL.md` body 1,979 words by the shared method, 17 reference files, one `evals/evals.json` (39 cases, 34 pass), export rebuilt, checks pass. Upload zip built; the owner uploads it to the Claude app. |
+| Version | 0.2.0 |
+| Status | 0.2.0 on main (2026-11-19). `SKILL.md` body 1,988 words by the shared method, 17 reference files, one `evals/evals.json` (39 cases, 32 of 36 runnable pass), export rebuilt, checks pass. Upload zip built; the owner uploads it to the Claude app. |
 | Development chat | `https://claude.ai/chat/490738f9-8b97-4826-befb-a28a6a63ad7a` |
 | Repo plan | `https://github.com/wugweb-git/wugweb_site/blob/main/docs/skills/wugweb-brand-os/PLAN.md` |
 | Owner | Vedanshu, Wugweb |
@@ -272,7 +273,7 @@ The owner's rules win over anything a helper says. A helper that is missing or s
 | No writes | End to end run | Nothing written outside chat or a draft file |
 | Portability | The answer, fact check and visual check evals run twice: as the installed skill, and from the single-file export in a second tool | Both runs give the same findings |
 
-**Status 2026-11-17.** The tests are in `evals/evals.json` (39 cases). First run: three agents answered from the skill alone and a grader scored them. 34 pass; three are blocked on owner material; one needs a real trigger run in the Claude app after the upload; one waited on pointers in other skills. The skill is not yet verified in the Claude app.
+**Status 2026-11-19.** The tests are in `evals/evals.json` (39 cases). Run on 0.2.0: three agents answered the 36 runnable tests from the skill alone and a separate grader scored them. 32 pass; three wait on owner material; test 36 needs a real trigger run in the Claude app after the upload; tests 6, 22 and 38 are open findings. The skill is not yet verified in the Claude app.
 
 ## 14. Crop wording: ruling and proposal
 

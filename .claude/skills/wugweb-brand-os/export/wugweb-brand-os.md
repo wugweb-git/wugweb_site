@@ -1,4 +1,4 @@
-<!-- wugweb-brand-os 0.1.0. Built by scripts/build-export.mjs. Do not edit; edit the source files. -->
+<!-- wugweb-brand-os 0.2.0. Built by scripts/build-export.mjs. Do not edit; edit the source files. -->
 
 # Standing rules (copied from docs/skills/STANDING-RULES.md; read first, they win)
 
@@ -62,6 +62,14 @@ wins. Dates show when the owner set or confirmed a rule, where known.
 - Every skill must be usable in GPT, Cursor and other tools, not only Claude. (2026-11-16)
 - The layout values in the design system's layout shell document are binding. Skills read that document and point to `wugweb-kits`. (2026-11-16)
 
+## API keys and secrets
+
+- The standard lives in `docs/skills/SECRETS.md`. Every skill follows it.
+- One name per use, UPPER_SNAKE_CASE, provider named: `OPENROUTER_API_KEY`, `NOTION_API_TOKEN`, `SANITY_SYNC_TOKEN`.
+- No secret in the repo, in a URL, in a commit message, or in a file this session writes. Local `.env` is gitignored; the repo tracks `.env.example` with placeholders only.
+- Paid providers are blocked by policy, whatever their balance: DeepSeek, OpenAI, Moonshot, MiniMax, xAI, Anthropic. A free-tier call through a router must pin to one verified free model.
+- A key that reaches a chat, a file, a log or a commit is not echoed, written or sent further. What happens to that key after is the owner's call: no key rotation, never. (2026-11-19)
+
 ## Git, only when asked to commit
 
 - Commit by path. Never add everything at once.
@@ -84,12 +92,12 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.1.0 holds the structure and every rule that has a source. Four core items are blank because the owner has not supplied them yet:
+Version 0.2.0 holds the structure, every rule that has a source and the owner's rulings of 2026-11-17. Two core items are blank because the owner has not supplied them yet:
 
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
-- **Values:** not decided. The owner will supply them. The ten principles stay as principles.
+- **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.
 - **Audience:** not decided. The owner will supply it.
-- **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
+- **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Legal name, team size, projects, markets and profile links wait for the owner.
 
 One question is open (10), plus the open rows in `brand-facts.md` and the positioning line. Propose any change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
@@ -235,13 +243,13 @@ Load only the file a mode needs.
 | --- | --- |
 | `references/identity-and-positioning.md` | What Wugweb is and is not, the promise, pillars, positioning tests. Line blank |
 | `references/brand-strategy.md` | Blank until the owner's document arrives; the method for a competitor read |
-| `references/values-and-principles.md` | The ten principles, philosophy. Values blank |
+| `references/values-and-principles.md` | The five values, the ten principles, philosophy |
 | `references/audience.md` | Blank; the shape to fill |
 | `references/messaging.md` | The messaging rule and message tests |
 | `references/vocabulary.md` | The name, pillar names, system terms |
 | `references/brand-facts.md` | Every fact with source and status |
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels |
-| `references/source-map.md` | Sources, conflicts, the 18 owner questions and their status |
+| `references/source-map.md` | Sources, conflicts, the 21 owner questions and their status |
 | `references/tooling.md` | The only file that names helpers and vendors |
 | `references/visual-os/art-direction.md` | Grammar, modes, approved, banned and conditional lists, composition, "crop" |
 | `references/visual-os/colour-type-photo-motion.md` | Colour roles as meaning, type, photography, motion |
@@ -275,7 +283,7 @@ This file carries the status, the modes, the fixed rules and the boundaries, so 
 
 # Audience
 
-**Not decided: owner.** Answered 2026-11-16: the owner will supply the audience. No approved source says who Wugweb is for. Until it arrives, answer "audience: not decided, the owner supplies it". Never infer the audience from case studies, the site or the 2023 profile.
+**Not decided: owner.** Answered 2026-11-17: the audience stays blank until the owner supplies it; no Notion page names one. No approved source says who Wugweb is for. Until it arrives, answer "audience: not decided, the owner supplies it". Never infer the audience from case studies, the site or the 2023 profile.
 
 ## Slots, all empty
 
@@ -479,7 +487,7 @@ When asked for the positioning line, answer "not decided: the owner supplies it"
 
 ## Audience
 
-**Blank.** No Notion page names one (2026-11-17). Leave it blank until the owner supplies it.
+Held in `audience.md` only. It is blank until the owner supplies it.
 
 ## What Wugweb is (source: `BRAND_POSITION.md`)
 
@@ -961,7 +969,7 @@ Brand terms only. Banned words, preferred wording and tone are in `wugweb-voice`
 
 ## The name
 
-"Wugweb" is the spelling on the site and in `CLAUDE.md`. The 2023 profile also writes "WugWeb". **Not decided: owner** (question 4): confirm one spelling. Until confirmed, write "Wugweb" and flag "WugWeb" as not approved, not as wrong.
+"Wugweb" is the approved spelling (owner, 2026-11-17; see `brand-facts.md`). Flag "WugWeb" and "Wug Web" as not the approved spelling. The legal name is a separate fact and is still open.
 
 ## The descriptor
 

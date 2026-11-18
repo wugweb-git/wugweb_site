@@ -3,8 +3,8 @@ name: wugweb-brand-os
 description: "Holds Wugweb's brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules and Visual OS (art direction), and returns reference answers and check findings as proposals. This skill should be used when the user asks 'what is Wugweb's positioning', 'who is Wugweb's audience', 'what are our values', 'how are we different', 'what is our messaging framework', 'is this artwork on brand', 'how should this card, slide or cover look', 'is this claim about Wugweb approved', or asks to change a brand rule. Use it for any question about who Wugweb is or whether a visual or a claim about Wugweb is on brand, even when the user does not say 'brand'. It does not cover content strategy (topics, calendar, briefs: wugweb-strategy), voice and tone (wugweb-voice), or tokens and components (wugweb-kits)."
 metadata:
   author: wugweb
-  version: "0.1.0"
-  status: "structure and sourced rules built; positioning, values, audience and facts waiting on the owner"
+  version: "0.2.0"
+  status: "owner rulings of 2026-11-17 applied; positioning line, audience and five facts waiting on the owner"
 ---
 
 # wugweb-brand-os
@@ -13,12 +13,12 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.1.0 holds the structure and every rule that has a source. Four core items are blank because the owner has not supplied them yet:
+Version 0.2.0 holds the structure, every rule that has a source and the owner's rulings of 2026-11-17. Two core items are blank because the owner has not supplied them yet:
 
 - **Positioning line:** not decided. The owner will supply it. Neither line in use is chosen.
-- **Values:** not decided. The owner will supply them. The ten principles stay as principles.
+- **Values:** approved 2026-11-17, the 2023 five. The ten principles stay as principles.
 - **Audience:** not decided. The owner will supply it.
-- **Facts about Wugweb:** only the six pillars are approved. Every other fact waits for the owner.
+- **Facts about Wugweb:** spelling, phone, email, address, founding date and the six pillars are approved. Legal name, team size, projects, markets and profile links wait for the owner.
 
 One question is open (10), plus the open rows in `brand-facts.md` and the positioning line. Propose any change and apply it only on approval; the list is in `references/source-map.md`. When an answer depends on an open item, say "not decided: the owner decides" and report what exists with its source. Never fill a gap from the 2023 profile, a helper skill, a case study or general knowledge. A gap reported as a gap is a correct answer.
 
@@ -164,13 +164,13 @@ Load only the file a mode needs.
 | --- | --- |
 | `references/identity-and-positioning.md` | What Wugweb is and is not, the promise, pillars, positioning tests. Line blank |
 | `references/brand-strategy.md` | Blank until the owner's document arrives; the method for a competitor read |
-| `references/values-and-principles.md` | The ten principles, philosophy. Values blank |
+| `references/values-and-principles.md` | The five values, the ten principles, philosophy |
 | `references/audience.md` | Blank; the shape to fill |
 | `references/messaging.md` | The messaging rule and message tests |
 | `references/vocabulary.md` | The name, pillar names, system terms |
 | `references/brand-facts.md` | Every fact with source and status |
 | `references/review-gates.md` | Visual and fact check lists, scoring, rights labels |
-| `references/source-map.md` | Sources, conflicts, the 18 owner questions and their status |
+| `references/source-map.md` | Sources, conflicts, the 21 owner questions and their status |
 | `references/tooling.md` | The only file that names helpers and vendors |
 | `references/visual-os/art-direction.md` | Grammar, modes, approved, banned and conditional lists, composition, "crop" |
 | `references/visual-os/colour-type-photo-motion.md` | Colour roles as meaning, type, photography, motion |
