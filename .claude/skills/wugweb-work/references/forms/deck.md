@@ -23,3 +23,7 @@
 ## Check
 
 No slide without a body line. No text overflows its slide. No placeholder text is left. Count the slides and the ledger rows; they match.
+
+## Building the slides
+
+Slides are built as HTML at the slide size, one claim per slide, from the fact pack, the approved screens and this site's tokens, with the client's colours from the brand read. Each slide's composition follows `composition.md`: a slide is one row, with a lead cell and at most two supporting cells. Slide images are rendered with the command in `ops-cycle.md` (Made graphics). A deck helper in `skill-map.md` may assemble the file; it adds no content.

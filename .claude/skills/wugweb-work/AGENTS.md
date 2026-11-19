@@ -77,7 +77,7 @@ Work through the modes in order. Commands and formats are in `references/ops-cyc
 
 **5. Body.** A direct request for a proposal still runs Audit, Media and Look first, in the same task (owner, 2026-11-17). Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
 
-**6. Layout.** Resolve the block plan from the parsed body, the manifest and the visual read, using the 23-block catalogue and the rules in `references/layout-grammar.md`: adaptive tiers, proof screens in each chapter, every other approved screen in All screens, and the viewer. Nothing is fixed: content shape picks the blocks, and `references/composition.md` picks the form, count and balance. Ask the owner before any render, and which part. `wugweb-kits` may check tokens on the built page.
+**6. Layout.** Write the composition plan (rows, cells, spans per width) from the parsed body, the manifest and the visual read, using the 23-block catalogue and the rules in `references/layout-grammar.md`: adaptive tiers, proof screens in each chapter, every other approved screen in All screens. Nothing is fixed: content shape picks the blocks, and `references/composition.md` picks the form, count and balance. Ask the owner before any render, and which part. `wugweb-kits` may check tokens on the built page.
 
 **7. SEO and schema.** Write the title (60 characters or fewer as rendered) and the description (140 to 160), and apply the slug and on-page rules in `references/copy-and-seo.md` and the full graph in `references/schema-jsonld.md`. `wugweb-seo` may check the page. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
 
@@ -221,6 +221,25 @@ The same list in every file of this skill: an unsourced factual claim; an invent
 ### What goes back to planning
 
 After approval: the finished piece, the proof it used, and any proof that was asked for and does not exist. `wugweb-strategy` uses this for its proof map.
+
+### Images in own content (draft standard, 2026-11-19)
+
+- The cover is specific to the piece: a real screen, a real diagram of what the piece explains, or a made graphic through the gate for new files (`forms/graphics.md`). Never a stock photo and never a generic device.
+- Inline images earn their place: each shows the thing the nearby text is about. A screen, a before and after, a diagram of a structure the text states, or a chart of sourced numbers.
+- A post that explains work for a client uses that client's screens only with permission on record, and follows the client-brand rules in `composition.md`.
+- Every image is measured and looked at, has alt text of 10 to 125 characters saying what it shows, keeps its own ratio and is never shown above its natural size without a flag.
+- Text is never set inside a picture when it could be real text. A diagram's labels are real text.
+- The composition rules apply to a post or a page as to a case study: forms for points are chosen from the content, counts are not forced, and no two sections in a row take the same form.
+
+### Refreshing an old piece (draft standard, 2026-11-19)
+
+1. Audit it and give one verdict: keep, update, merge or retire. A refresh is the "update" verdict; do not rewrite a piece that should be merged or retired.
+2. List every fact with a date or a number and recheck each against its source. A fact that can no longer be sourced is cut or marked "unvalidated".
+3. Keep the address. A refresh never changes the slug and never adds a redirect.
+4. Propose the changes as current to proposed, with the reason for each, and keep what is still true.
+5. State on the page what changed when the change matters to a reader; the visible date and the modified date in the page's data change only for a real change to the content, never for a tidy-up.
+6. Run the voice check, the on-page limits and the gate as for a new piece.
+7. Nothing is written until the owner approves that exact text.
 
 ### Not yet written
 
@@ -384,7 +403,7 @@ Commands, gates and output formats for each mode, then this site's wiring. This 
 | Media | Manifest report | Decisions on heavy, wrong-client and dead files |
 | Look | One review page per case study | Approval of hero, flags and captions |
 | Body | Draft proposal, current → proposed | Approval of that exact text |
-| Layout | Block plan | Approval |
+| Layout | The composition plan and the block plan | Approval |
 | SEO and schema | Title, description, headings check and the JSON-LD graph | Approval; the title and description then go to the owner as paste-in text for his source |
 | Before any render | What will be rendered, and the question: whole page or which part | The owner's go for that render |
 | Ship | Gate table + previews at 375, 768, 1200 (after handoffs 2 and 4) | Owner's go to sync, commit, deploy |
@@ -426,7 +445,7 @@ Rendered bytes for the proposed page: <MB> MB (budget 25 MB)
 
 **Body.** A draft file `docs/drafts/<slug>-body-v2.md` with: what changes (current → proposed → why), the proposed body in the v2 grammar, claims left out, screen selection, flagged screens and the call on each, every own-folder file accounted for, owner questions.
 
-**Layout.** Block plan as JSON: `[{ "type": "...", "chapter": "...", "items": [...] }]` using only the catalogue types.
+**Layout.** A composition plan in the format of `composition.md`: per chapter, what it says and shows, the form for its points and why, its rows and cells with their spans at 375, 768 and 1200, the lead cell, the ground, the client brand used, how it differs from the chapter before, and what is not buildable yet. Then the page-level summary. Beside it, the block plan as JSON for the build: `[{ "type": "...", "form": "...", "chapter": "...", "items": [...] }]` using only the catalogue types and the forms in `composition.md`.
 
 **SEO and schema.**
 ```
@@ -1798,6 +1817,10 @@ The block catalogue says what a page may be made of. This file says how to make 
 
 ### Contents
 
+- The idea in one line
+- How a page is built up
+- The composition plan
+
 1. The default is not a box
 2. Forms for a set of points
 3. The count comes from the content
@@ -1811,6 +1834,53 @@ The block catalogue says what a page may be made of. This file says how to make 
 11. Recomposing across widths
 12. Composition checks
 13. What goes in the decision log
+
+### The idea in one line
+
+Content without a designed experience fails, and a designed surface without content fails. This skill's job is the composition that joins them: it takes what the piece has to say and show, and gives it a shape at every width. It is not a page builder and it does not fill a template (owner, 2026-11-19).
+
+### How a page is built up
+
+The body of a piece is one section of the page. Inside it the structure nests, and each level has one job:
+
+| Level | What it is | Its job |
+|---|---|---|
+| Body section | The one section that holds the piece, between the hero and the closing blocks | Carries the gutter and the content width; nothing inside sets them again |
+| Chapter | One claim: a heading, its lead and what proves it | The unit of meaning. It is an `article` with its own id and heading |
+| Row | One horizontal band inside a chapter | The unit of composition: what sits beside what, on which columns |
+| Cell | One thing in a row: a text block, a list, a screen, a set of screens, a number, a statement | Takes the shape of its content. A media cell takes the media's ratio |
+| Element | The heading, paragraph, list item, image, caption, icon or rule inside a cell | Styled by the design system, never one by one |
+
+A chapter is therefore a small stack of rows, and each row places cells on the column grid: 4 columns at 375, 8 at 768 and 12 at 1200. Composition is deciding, for each chapter, how many rows there are, what goes in each cell, how many columns each cell spans at each width, which cell leads, and what ground the row sits on.
+
+### The composition plan
+
+The Layout mode's deliverable is a composition plan, not a list of block names. It is written per chapter and is specific enough to build and to check.
+
+```
+Chapter: <heading> (id)
+Says: <the claim in one line>           Shows: <the media that proves it, by file>
+Form for the points: <one of the forms in section 2>, <count> points, because <reason from the content>
+Rows:
+  1. <cells left to right, each with its block or element>
+       375: <order top to bottom>            768: <spans out of 8>            1200: <spans out of 12>
+       leads: <which cell>    ground: <page | client ground <hex, source> | brand band | tint>
+  2. ...
+Client brand in this chapter: <accent use, icons and their source, brand assets used, or "none: <why>">
+Differs from the chapter before in: <form | spans | ground | density>
+Signature composition: <yes, what and why | no>
+Not buildable yet: <a form or arrangement the site has no component for, and what stands in for it>
+Seen on a render: <date and page hash at 375, 768, 1200 | not yet seen>
+```
+
+The plan for the whole page then states the order of chapters, where the dense and open passages fall, the one signature composition, the client colours with their source and measured ratios, and every media file accounted for once: in a chapter or in All screens.
+
+Rules for the plan:
+
+- Spans at one width add up to that width's columns, or the gap is stated as deliberate space.
+- Every cell names real content: a body line or a file. A cell with nothing to put in it is removed, never filled.
+- The plan is written before any code and checked against the render after. Where they differ, one of them is wrong and it is fixed.
+- A plan that reads the same for every chapter is rejected before it is built.
 
 ### 1. The default is not a box
 
@@ -2471,6 +2541,28 @@ One matter is open with the owner: the newsletter's sending tool, list and caden
 
 Change the rule in its one home, move the row to the settled table, and add a changelog line. Do not leave the old assumption in any file.
 
+### Pending on the site, 2026-11-19
+
+The skill states these rules; the site does not yet do them. Until each is built, a composition plan lists it under "Not buildable yet".
+
+| Pending | What exists today |
+|---|---|
+| Forms for points beyond the plain grid (editorial list, ruled numbered rows, lead and supports, definition list, annotated screen and the rest) | `points` renders one grid chosen by count |
+| The resolver choosing a form from the content, and varying it between chapters | It chooses by count only |
+| Rows and cells with spans per width, as the composition plan describes | Blocks stack in body order |
+| Client grounds, the brand band and chapter tints | One accent value is read; no ground or band is rendered |
+| A story for each case-study block and each form | None of the work components has a story |
+| The chapter nav | Specified in `layout-grammar.md`, not built |
+| A `set` name on the manifest record in the CMS | The resolver accepts it; the schema has no field for it yet |
+| Mockup compositions on the page | No component |
+| Evals 15 to 24 | Written, not yet run |
+
+### Not defined by the owner
+
+- The "ski-ramp" brief template named in the plan. No definition exists in the plan or the source; it is not used until the owner supplies one.
+- The newsletter's sending tool, list and cadence.
+- The exact limits on client colour (three colours a page, one brand band) are working values.
+
 <!-- references/archetypes.md -->
 ## Archetypes
 
@@ -2751,6 +2843,17 @@ Plugin helpers are listed in the session but have not each been run. Helpers tha
 - The eval loop and the helpers above are Claude tooling.
 - Access to the source, the CMS and the scheduling tool runs through connectors; another tool needs its own access or a person to paste the content in.
 
+### Libraries this skill runs itself (this site)
+
+Free, no account, development dependencies only; the live site does not load them.
+
+| Library | Used for | By |
+|---|---|---|
+| Playwright | Rendering a page at every gate width, the states with JavaScript off and reduced motion, reading a client's stylesheet, rendering made graphics | The render review, the brand read and the graphics command in `ops-cycle.md` |
+| axe-core | Measured contrast and the other machine-checkable accessibility rules | The render review |
+
+With these the skill needs no outside helper and no sign-in to look at a page, read a brand or draw a graphic. An image model is never used to make a graphic.
+
 ### Gaps with no helper
 
 - Stepping through video frame by frame: the procedure in `visual-read.md`.
@@ -2848,6 +2951,10 @@ The catalogue has no chart block. On a page the chart sits inside the chapter th
 
 Every plotted value equals the value in the body. The source and date are printed on the chart.
 
+### Who draws it
+
+This skill draws the chart itself, as HTML and SVG from the approved numbers. On a page it stays HTML or SVG and no file is made. For a deck, post or share image it is rendered to a picture with the command in `ops-cycle.md` (Made graphics), which needs no sign-in and no outside helper. A charting helper in `skill-map.md` may be used for a second opinion on the chart type; it never supplies a number.
+
 <!-- references/forms/deck.md -->
 ## Deck
 
@@ -2874,6 +2981,10 @@ Every plotted value equals the value in the body. The source and date are printe
 ### Check
 
 No slide without a body line. No text overflows its slide. No placeholder text is left. Count the slides and the ledger rows; they match.
+
+### Building the slides
+
+Slides are built as HTML at the slide size, one claim per slide, from the fact pack, the approved screens and this site's tokens, with the client's colours from the brand read. Each slide's composition follows `composition.md`: a slide is one row, with a lead cell and at most two supporting cells. Slide images are rendered with the command in `ops-cycle.md` (Made graphics). A deck helper in `skill-map.md` may assemble the file; it adds no content.
 
 <!-- references/forms/dribbble.md -->
 ## Dribbble shot
@@ -2959,6 +3070,8 @@ Prefer the first kind. A composition on the page stays sharp at every width, kee
 | Graphic | Made from | Never |
 |---|---|---|
 | Icon | The client's own icons as seen in their screens or brand files; else this site's icon set; else drawn as SVG on one grid, one stroke weight and one corner style, matching the family beside it | A new icon drawn to fill a card; mixed families; emoji; an icon with no label |
+| Infographic | Several sourced facts from the approved body told as one picture: a sequence, a comparison, a system, a set of numbers. Built as HTML and SVG with real text, each number carrying its source line | A fact the body does not hold; a number with no source; decoration standing in for data; more than one idea per picture |
+| Mixed composition as a graphic | A bento-style picture for a post or a deck: one dominant screen, a few supporting screens, a claim and a number, following the mixed-composition rules in `composition.md` | Equal text cards; cropped screens; filler cells |
 | Diagram | The structure in the approved body: a flow, a system map, a before and after, a set of roles. Drawn as SVG with real labels | A diagram of something the body does not state; decoration that looks like a diagram |
 | Chart | The results lines of the body, with their source and date | A number with no source; a chart type that hides the baseline |
 | Mockup composition | The project's real screens at their own ratio, arranged on a ground in the client's colour: overlapped, fanned, stepped or tiled | A stock device photo; a screen cropped or reshaped to fit a frame; a generic laptop |
@@ -3074,7 +3187,7 @@ The post text, the screen with its alt text, the link, the ledger, the dated spe
 <!-- references/forms/newsletter.md -->
 ## Newsletter edition
 
-Built from one or more approved pieces. In scope (owner, 2026-11-16). Sending needs the owner's yes. This file holds only what the plan states; the fuller form rules are still to be written.
+Built from one or more approved pieces. In scope (owner, 2026-11-16). Sending needs the owner's yes. The form rules below were written on 2026-11-19 and do not depend on which tool sends it; the tool, the list and the cadence remain the owner's to decide.
 
 ### Takes
 
@@ -3093,6 +3206,30 @@ Built from one or more approved pieces. In scope (owner, 2026-11-16). Sending ne
 3. Voice check.
 4. Check the subject line and preview text against the sending tool's limits, and write the limits down with the date.
 5. Go to `publish-approval.md`. Sending is a post: it needs the owner's yes for that send.
+
+### The edition, part by part
+
+| Part | Rule |
+|---|---|
+| Subject line | Says what is inside in the reader's terms; taken from the lead item's claim. No capitals for emphasis, no symbols, nothing the edition does not deliver. Its length is checked against the sending tool's limit once a tool is chosen; until then keep it to about 50 characters and say the limit is unconfirmed |
+| Preview text | One sentence that adds to the subject and does not repeat it |
+| Opening | Two or three sentences: what this edition is about and why now. No greeting formula |
+| Lead item | One approved piece: its claim, the answer sentence, one proof (a screen with alt text or a sourced number) and one link to its page |
+| Further items | At most three, each one claim, one sentence and one link. An edition with one strong item is complete |
+| Main action | One, stated once near the top and once at the end, in the same words |
+| Close | One line. The sender is named as a person at Wugweb |
+| Footer | Who is sending and why the reader receives it, a working way to stop receiving it, and the postal address the law of the sending tool's region requires. These are confirmed with the owner before the first send |
+
+### Rules
+
+- Every sentence traces to an approved body; the fact ledger is kept as for any form.
+- It reads in full as plain text. Pictures add to it and never carry the only copy of a claim or a link.
+- Each picture has alt text, is an existing approved screen, and is linked by its address in the media store. Nothing is attached or uploaded.
+- One column, at reading width, legible at 375 with text of 16 px or more.
+- Links say where they go. No link shorteners, and no tracking added to a link without the owner's yes.
+- No client is named unless that piece's permission covers a mailing.
+- An edition is never sent to a list the reader did not join, and nobody is added to a list by this skill.
+- A send is a post: it needs the owner's yes for that edition, that list and that time, after a test copy he has read.
 
 ### Not decided
 

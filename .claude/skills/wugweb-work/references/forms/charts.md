@@ -42,3 +42,7 @@ The catalogue has no chart block. On a page the chart sits inside the chapter th
 ## Check
 
 Every plotted value equals the value in the body. The source and date are printed on the chart.
+
+## Who draws it
+
+This skill draws the chart itself, as HTML and SVG from the approved numbers. On a page it stays HTML or SVG and no file is made. For a deck, post or share image it is rendered to a picture with the command in `ops-cycle.md` (Made graphics), which needs no sign-in and no outside helper. A charting helper in `skill-map.md` may be used for a second opinion on the chart type; it never supplies a number.

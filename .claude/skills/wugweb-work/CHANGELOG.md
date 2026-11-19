@@ -42,6 +42,10 @@
 - Graphics (owner, 2026-11-19): new `references/forms/graphics.md`. Icons, diagrams, banners, covers, cards and mockup compositions are made from real material: the client's screens, colours and type, the approved body and this site's tokens. Composed on the page where possible; a file that leaves the page goes through the new-file gate. The render command is in `ops-cycle.md`.
 - What automated looking can and cannot do: the findings of the visual QA research, as limits on how far a check or a model's opinion is trusted. In `qa-checklist.md`.
 - The layout library and the CMS: where layouts live (components and stories, the block doc, the CMS record), how they connect, and what is not built. In `ops-cycle.md`.
+- The composition plan (owner, 2026-11-19: "the skill is supposed to give composition"): the body is one section; chapters hold rows; rows hold cells on the 4, 8 and 12 column grid. Layout mode now delivers a plan per chapter with its form, rows, cells, spans at each width, lead, ground and client brand. Not a page builder.
+- Infographics and mixed compositions as graphics; the skill draws charts and slides itself, with no sign-in helper.
+- Newsletter form rules written. Draft standards for images in own content and for refreshing an old piece.
+- Pending site work and the matters the owner has not defined are listed in `open-items.md`. Libraries the skill runs itself are in `skill-map.md`. Evals 21 to 24 added, not yet run.
 
 ## Release of 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 

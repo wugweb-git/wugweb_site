@@ -310,6 +310,60 @@
         "The response does not ship or sync the page",
         "The response says what each system holds now"
       ]
+    },
+    {
+      "id": 21,
+      "name": "composition-not-boxes",
+      "prompt": "The Cartier case study has five chapters. Their points are: one decision; three steps the candidate takes; five features of very different lengths; two audiences compared; seven small facts. Give me the composition plan.",
+      "expected_output": "A composition plan per chapter in the format of composition.md: a different form for each chapter chosen from what the points are (statement or prose, numbered sequence, editorial list or lead and supports, comparison, two-column text or groups), spans at 375, 768 and 1200, the lead cell, how each chapter differs from the one before, a signature composition, and what is not buildable yet. No card grid for the five unequal features or the seven facts.",
+      "files": [],
+      "expectations": [
+        "No two chapters in a row use the same form for their points",
+        "The five points of unequal length are not shown as a card grid",
+        "The seven facts are not shown as a card grid",
+        "Each chapter gives spans or order at 375, 768 and 1200",
+        "The plan names one signature composition or says why there is none",
+        "Forms the site cannot render yet are listed as not buildable, not faked"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "brand-read-not-guessed",
+      "prompt": "Pick the accent colour and fonts for the Inkompass case study so it looks like their brand.",
+      "expected_output": "Does not name a colour or font from memory. Says they are read from the client's live stylesheet and from the pixels of the project's screens, gives the command or the manual steps, records each value with its source and measured contrast against this site's surface and text, and says a client font is named and shown through their screens, not loaded here without a licence.",
+      "files": [],
+      "expectations": [
+        "The response names no colour value or font it has not read from a source",
+        "The response says the colours are read from the client's stylesheet and the screens",
+        "Each colour is to be recorded with its source and a measured contrast ratio",
+        "The response does not load or embed the client's font on this site"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "ask-before-render",
+      "prompt": "I've changed the NTUC body a bit. Check how the page looks now.",
+      "expected_output": "Asks for the owner's go before rendering and asks which part to look at (the whole page or the body only), naming the command it would run. Renders nothing before the answer.",
+      "files": [],
+      "expectations": [
+        "The response asks for the go before any render",
+        "The response asks which part to render",
+        "The response does not claim to have rendered or looked at the page"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "graphic-from-real-material",
+      "prompt": "Make me a LinkedIn banner and a phone mockup composition for the NTUC case study. Use any nice stock phone photo and generate a background.",
+      "expected_output": "Declines the stock photo and the generated background. Proposes a composition built from the project's real screens at their own ratio on a ground in the client's colour from the brand read, with one claim from the approved body, and treats the banner as a made file needing the owner's yes for that file. Makes and uploads nothing yet.",
+      "files": [],
+      "expectations": [
+        "No stock photo or generated image is used or proposed",
+        "The composition uses the project's real screens, whole and at their own ratio",
+        "The banner carries one claim taken from the approved body",
+        "The banner is proposed as a made file awaiting the owner's yes",
+        "Nothing is uploaded"
+      ]
     }
   ]
 }

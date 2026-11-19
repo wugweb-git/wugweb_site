@@ -63,6 +63,25 @@ The same list in every file of this skill: an unsourced factual claim; an invent
 
 After approval: the finished piece, the proof it used, and any proof that was asked for and does not exist. `wugweb-strategy` uses this for its proof map.
 
+## Images in own content (draft standard, 2026-11-19)
+
+- The cover is specific to the piece: a real screen, a real diagram of what the piece explains, or a made graphic through the gate for new files (`forms/graphics.md`). Never a stock photo and never a generic device.
+- Inline images earn their place: each shows the thing the nearby text is about. A screen, a before and after, a diagram of a structure the text states, or a chart of sourced numbers.
+- A post that explains work for a client uses that client's screens only with permission on record, and follows the client-brand rules in `composition.md`.
+- Every image is measured and looked at, has alt text of 10 to 125 characters saying what it shows, keeps its own ratio and is never shown above its natural size without a flag.
+- Text is never set inside a picture when it could be real text. A diagram's labels are real text.
+- The composition rules apply to a post or a page as to a case study: forms for points are chosen from the content, counts are not forced, and no two sections in a row take the same form.
+
+## Refreshing an old piece (draft standard, 2026-11-19)
+
+1. Audit it and give one verdict: keep, update, merge or retire. A refresh is the "update" verdict; do not rewrite a piece that should be merged or retired.
+2. List every fact with a date or a number and recheck each against its source. A fact that can no longer be sourced is cut or marked "unvalidated".
+3. Keep the address. A refresh never changes the slug and never adds a redirect.
+4. Propose the changes as current to proposed, with the reason for each, and keep what is still true.
+5. State on the page what changed when the change matters to a reader; the visible date and the modified date in the page's data change only for a real change to the content, never for a tidy-up.
+6. Run the voice check, the on-page limits and the gate as for a new piece.
+7. Nothing is written until the owner approves that exact text.
+
 ## Not yet written
 
 No approved track 2 piece exists, so there is no worked example and no track 2 fixture. The first approved piece becomes the example.

@@ -6,6 +6,10 @@ The block catalogue says what a page may be made of. This file says how to make 
 
 ## Contents
 
+- The idea in one line
+- How a page is built up
+- The composition plan
+
 1. The default is not a box
 2. Forms for a set of points
 3. The count comes from the content
@@ -19,6 +23,53 @@ The block catalogue says what a page may be made of. This file says how to make 
 11. Recomposing across widths
 12. Composition checks
 13. What goes in the decision log
+
+## The idea in one line
+
+Content without a designed experience fails, and a designed surface without content fails. This skill's job is the composition that joins them: it takes what the piece has to say and show, and gives it a shape at every width. It is not a page builder and it does not fill a template (owner, 2026-11-19).
+
+## How a page is built up
+
+The body of a piece is one section of the page. Inside it the structure nests, and each level has one job:
+
+| Level | What it is | Its job |
+|---|---|---|
+| Body section | The one section that holds the piece, between the hero and the closing blocks | Carries the gutter and the content width; nothing inside sets them again |
+| Chapter | One claim: a heading, its lead and what proves it | The unit of meaning. It is an `article` with its own id and heading |
+| Row | One horizontal band inside a chapter | The unit of composition: what sits beside what, on which columns |
+| Cell | One thing in a row: a text block, a list, a screen, a set of screens, a number, a statement | Takes the shape of its content. A media cell takes the media's ratio |
+| Element | The heading, paragraph, list item, image, caption, icon or rule inside a cell | Styled by the design system, never one by one |
+
+A chapter is therefore a small stack of rows, and each row places cells on the column grid: 4 columns at 375, 8 at 768 and 12 at 1200. Composition is deciding, for each chapter, how many rows there are, what goes in each cell, how many columns each cell spans at each width, which cell leads, and what ground the row sits on.
+
+## The composition plan
+
+The Layout mode's deliverable is a composition plan, not a list of block names. It is written per chapter and is specific enough to build and to check.
+
+```
+Chapter: <heading> (id)
+Says: <the claim in one line>           Shows: <the media that proves it, by file>
+Form for the points: <one of the forms in section 2>, <count> points, because <reason from the content>
+Rows:
+  1. <cells left to right, each with its block or element>
+       375: <order top to bottom>            768: <spans out of 8>            1200: <spans out of 12>
+       leads: <which cell>    ground: <page | client ground <hex, source> | brand band | tint>
+  2. ...
+Client brand in this chapter: <accent use, icons and their source, brand assets used, or "none: <why>">
+Differs from the chapter before in: <form | spans | ground | density>
+Signature composition: <yes, what and why | no>
+Not buildable yet: <a form or arrangement the site has no component for, and what stands in for it>
+Seen on a render: <date and page hash at 375, 768, 1200 | not yet seen>
+```
+
+The plan for the whole page then states the order of chapters, where the dense and open passages fall, the one signature composition, the client colours with their source and measured ratios, and every media file accounted for once: in a chapter or in All screens.
+
+Rules for the plan:
+
+- Spans at one width add up to that width's columns, or the gap is stated as deliberate space.
+- Every cell names real content: a body line or a file. A cell with nothing to put in it is removed, never filled.
+- The plan is written before any code and checked against the render after. Where they differ, one of them is wrong and it is fixed.
+- A plan that reads the same for every chapter is rejected before it is built.
 
 ## 1. The default is not a box
 

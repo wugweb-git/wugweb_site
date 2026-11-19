@@ -19,7 +19,7 @@ Commands, gates and output formats for each mode, then this site's wiring. This 
 | Media | Manifest report | Decisions on heavy, wrong-client and dead files |
 | Look | One review page per case study | Approval of hero, flags and captions |
 | Body | Draft proposal, current → proposed | Approval of that exact text |
-| Layout | Block plan | Approval |
+| Layout | The composition plan and the block plan | Approval |
 | SEO and schema | Title, description, headings check and the JSON-LD graph | Approval; the title and description then go to the owner as paste-in text for his source |
 | Before any render | What will be rendered, and the question: whole page or which part | The owner's go for that render |
 | Ship | Gate table + previews at 375, 768, 1200 (after handoffs 2 and 4) | Owner's go to sync, commit, deploy |
@@ -61,7 +61,7 @@ Rendered bytes for the proposed page: <MB> MB (budget 25 MB)
 
 **Body.** A draft file `docs/drafts/<slug>-body-v2.md` with: what changes (current → proposed → why), the proposed body in the v2 grammar, claims left out, screen selection, flagged screens and the call on each, every own-folder file accounted for, owner questions.
 
-**Layout.** Block plan as JSON: `[{ "type": "...", "chapter": "...", "items": [...] }]` using only the catalogue types.
+**Layout.** A composition plan in the format of `composition.md`: per chapter, what it says and shows, the form for its points and why, its rows and cells with their spans at 375, 768 and 1200, the lead cell, the ground, the client brand used, how it differs from the chapter before, and what is not buildable yet. Then the page-level summary. Beside it, the block plan as JSON for the build: `[{ "type": "...", "form": "...", "chapter": "...", "items": [...] }]` using only the catalogue types and the forms in `composition.md`.
 
 **SEO and schema.**
 ```

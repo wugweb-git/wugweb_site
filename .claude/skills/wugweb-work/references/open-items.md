@@ -54,3 +54,25 @@ One matter is open with the owner: the newsletter's sending tool, list and caden
 ## When an item is decided
 
 Change the rule in its one home, move the row to the settled table, and add a changelog line. Do not leave the old assumption in any file.
+
+## Pending on the site, 2026-11-19
+
+The skill states these rules; the site does not yet do them. Until each is built, a composition plan lists it under "Not buildable yet".
+
+| Pending | What exists today |
+|---|---|
+| Forms for points beyond the plain grid (editorial list, ruled numbered rows, lead and supports, definition list, annotated screen and the rest) | `points` renders one grid chosen by count |
+| The resolver choosing a form from the content, and varying it between chapters | It chooses by count only |
+| Rows and cells with spans per width, as the composition plan describes | Blocks stack in body order |
+| Client grounds, the brand band and chapter tints | One accent value is read; no ground or band is rendered |
+| A story for each case-study block and each form | None of the work components has a story |
+| The chapter nav | Specified in `layout-grammar.md`, not built |
+| A `set` name on the manifest record in the CMS | The resolver accepts it; the schema has no field for it yet |
+| Mockup compositions on the page | No component |
+| Evals 15 to 24 | Written, not yet run |
+
+## Not defined by the owner
+
+- The "ski-ramp" brief template named in the plan. No definition exists in the plan or the source; it is not used until the owner supplies one.
+- The newsletter's sending tool, list and cadence.
+- The exact limits on client colour (three colours a page, one brand band) are working values.

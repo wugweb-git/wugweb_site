@@ -230,6 +230,17 @@ Plugin helpers are listed in the session but have not each been run. Helpers tha
 - The eval loop and the helpers above are Claude tooling.
 - Access to the source, the CMS and the scheduling tool runs through connectors; another tool needs its own access or a person to paste the content in.
 
+## Libraries this skill runs itself (this site)
+
+Free, no account, development dependencies only; the live site does not load them.
+
+| Library | Used for | By |
+|---|---|---|
+| Playwright | Rendering a page at every gate width, the states with JavaScript off and reduced motion, reading a client's stylesheet, rendering made graphics | The render review, the brand read and the graphics command in `ops-cycle.md` |
+| axe-core | Measured contrast and the other machine-checkable accessibility rules | The render review |
+
+With these the skill needs no outside helper and no sign-in to look at a page, read a brand or draw a graphic. An image model is never used to make a graphic.
+
 ## Gaps with no helper
 
 - Stepping through video frame by frame: the procedure in `visual-read.md`.

@@ -61,7 +61,7 @@ result or supply an input; it never replaces a step.
 | `scripts/test.mjs` | Self-test of the scripts on the fixtures | yes |
 | `scripts/build.mjs` | Generate the five outputs below | yes |
 | `examples/` | One full proposal, two skeletons, three forms examples, four test fixtures | yes |
-| `evals/evals.json` | 20 test prompts with expectations; 1 to 14 run and graded 2026-11-17, 15 to 20 added 2026-11-19 and not yet run | no |
+| `evals/evals.json` | 24 test prompts with expectations; 1 to 14 run and graded 2026-11-17, 15 to 24 added 2026-11-19 and not yet run | no |
 | `metadata.json`, `CHANGELOG.md` | Version, date, abstract, history | yes |
 | `AGENTS.md` | Whole skill in one file | no, generated |
 | `export/<name>.md` | The same single file, for pasting into another tool | no, generated |

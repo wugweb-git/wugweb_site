@@ -18,6 +18,8 @@ Prefer the first kind. A composition on the page stays sharp at every width, kee
 | Graphic | Made from | Never |
 |---|---|---|
 | Icon | The client's own icons as seen in their screens or brand files; else this site's icon set; else drawn as SVG on one grid, one stroke weight and one corner style, matching the family beside it | A new icon drawn to fill a card; mixed families; emoji; an icon with no label |
+| Infographic | Several sourced facts from the approved body told as one picture: a sequence, a comparison, a system, a set of numbers. Built as HTML and SVG with real text, each number carrying its source line | A fact the body does not hold; a number with no source; decoration standing in for data; more than one idea per picture |
+| Mixed composition as a graphic | A bento-style picture for a post or a deck: one dominant screen, a few supporting screens, a claim and a number, following the mixed-composition rules in `composition.md` | Equal text cards; cropped screens; filler cells |
 | Diagram | The structure in the approved body: a flow, a system map, a before and after, a set of roles. Drawn as SVG with real labels | A diagram of something the body does not state; decoration that looks like a diagram |
 | Chart | The results lines of the body, with their source and date | A number with no source; a chart type that hides the baseline |
 | Mockup composition | The project's real screens at their own ratio, arranged on a ground in the client's colour: overlapped, fanned, stepped or tiled | A stock device photo; a screen cropped or reshaped to fit a frame; a generic laptop |
