@@ -77,7 +77,11 @@ empower
 unlock
 world-class
 sophisticated
+state-of-the-art
+game-changing
 ```
+
+Also named as words to avoid, with "seamless", in the digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`): "state-of-the-art" and "game-changing". Added to the candidate list above on that source. They are candidates like the rest: reported as questions, never removed from a draft.
 
 ## Preferred terms
 

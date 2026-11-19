@@ -2,6 +2,13 @@
 
 ## [0.3.0] 2026-11-17
 
+### 2026-11-19 (owner: "add this in wugweb-voice skill", under the locked 0.3.0, no version change)
+
+- New `references/digital-twin-source.md`: a record of the plan document "Wugweb Digital-Twin Skill: wugweb-work" the owner supplied. It was written by an AI model, so it is a source of candidates and never a sample.
+- `references/voice.md`: candidates C-07 to C-15 from that document's persona and voice section. C-15 (a separate studio persona, with the owner's voice only on request) conflicts with the one-voice ruling of 2026-11-16 and is held, not applied.
+- `references/words.md`: "state-of-the-art" and "game-changing" added to the candidate word list on that source.
+- Nothing confirmed or observed was changed. The parts of the document that are not voice are listed in the new file with the skill each belongs to.
+
 ### 2026-11-19 (review fixes, under the locked 0.3.0, no version change)
 
 - `scripts/check.mjs` now exits 1 whenever the result is fail, including an untraced number or quote with no other flag; before, it exited by flag count only. Its note names steps 3 to 8 as the ones that need a reader. `SKILL.md` and the script header say the same. New test for the exit code.

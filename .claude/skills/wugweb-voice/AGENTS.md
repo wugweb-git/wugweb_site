@@ -233,6 +233,15 @@ Not applied. Each waits on the owner's ruling, and is shown to him as current â†
 | C-04 | Sanity "Brand voice" draft | Sanity site settings | Not yet read in full; marks its own audience line as inferred |
 | C-05 | "Not decorative or hype-driven": use words that describe systems and relationships, not decorative or hype-driven language | `brand_guidelines/01_FOUNDATION/VOCABULARY.md` (line 22); routed 2026-11-17 by `wugweb-brand-os`'s audit via the coordinator | Waiting on the owner's ruling; put to him with the other candidates |
 | C-06 | "Outcomes over hype": prefer claims about outcomes, decisions, systems and experiences over hype | `brand_guidelines/03_MARKETING_SYSTEM/14_COPY_GUIDELINES.md` (line 5); same routing | Waiting on the owner's ruling; put to him with the other candidates |
+| C-07 | Five attributes of the voice: grounded, plainspoken, curious, minimalist, warm | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), page 2. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
+| C-08 | Register: clear and factual, slightly playful; professional and concise, never hyperbolic or generic | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), page 2. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
+| C-09 | "Grounded" as a testable rule: claim only what can be shown; cite a source for a number; no empty superlatives without evidence. Overlaps fixed rule 4, which is confirmed; the rest is candidate | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), page 2. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
+| C-10 | One constant voice with tone that shifts by context, held as a tone map per form (email, blog, design notes). Compare the mode list in `modes.md` | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), page 3. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
+| C-11 | Constant qualities: evidence-based, systems-minded, collaborative | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), page 3. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
+| C-12 | Address: plain English, written to one person as "you", answers broken into clear sections | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), page 3. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
+| C-13 | Avoid jargon that is not explained. Three words to avoid are in the candidate list of `words.md` | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), page 3. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
+| C-14 | Method: each attribute gets on-brand and off-brand example sentences, and sample dialogues are worked through with the owner before the voice is fixed | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), pages 2 and 3. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
+| C-15 | Speak "in the user's voice" only on explicit request, with a default studio persona otherwise. **Conflicts with the owner's ruling of 2026-11-16 that there is one voice.** Not applied | The digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`), page 7. Written by an AI model, so a candidate only and never a sample | Waiting on the owner's ruling |
 
 Helper skill advice is not listed here as rules. The plan's "Extracted and absorbed" table records what helpers offer; each item enters this table only when a sample or the owner backs it.
 
@@ -357,7 +366,11 @@ empower
 unlock
 world-class
 sophisticated
+state-of-the-art
+game-changing
 ```
+
+Also named as words to avoid, with "seamless", in the digital-twin plan document the owner supplied on 2026-11-19 (`digital-twin-source.md`): "state-of-the-art" and "game-changing". Added to the candidate list above on that source. They are candidates like the rest: reported as questions, never removed from a draft.
 
 ### Preferred terms
 
