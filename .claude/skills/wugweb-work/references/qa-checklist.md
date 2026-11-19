@@ -109,6 +109,10 @@ When a UX audit helper is run on the rendered page at 375 and 1200, its measured
 
 `scripts/check-case-page.mjs <url> [--host <canonical host>] [--no-body]` covers the static checks: headings, sections, articles, images, dashes, rails, videos, title, description, canonical (host and path), JSON-LD, media status and byte total. The chapter check is reported as not applicable on a page that is not a case study (track 2) and, with `--no-body`, on a no-body case study. Overflow, aspect ratio, masks, contrast, targets, reduced motion, the rail counter, All screens, the viewer, the link check and the critique are checked in the browser at each width.
 
+## Render review
+
+The browser rows of this gate are run by the render review command (`ops-cycle.md`), which renders the page at every gate width, saves the screenshots and measures: sideways scroll, broken, cropped or reshaped images, videos that can make sound or show native controls, content hidden after scrolling, content missing with JavaScript off, motion under reduced motion, images above natural size, targets under 44 px and line length. Its hard fails block publishing. What it cannot measure (the design critique, a crop that hides the proof, contrast) stays `not run` until the screenshots have been read and the reading is in the decision log.
+
 ## Acceptance criteria per mode
 
 A mode is finished when its conditions are met, not when its steps were run. Each row is pass or fail. One fail means the mode is not done and the next mode does not start. A condition that could not be checked is reported as `not checked` and counts as a fail.

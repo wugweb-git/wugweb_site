@@ -866,6 +866,35 @@ After any failure the report has four lines: what failed and where; what was com
 - Say what was restored and from which backup file.
 
 
+#### The render review: looking is a command, not a promise
+
+A layout is judged on the rendered page, never on the block plan or the code. On this site the render review does the looking that can be measured, and saves the pictures for the looking that cannot.
+
+```
+node scripts/render-review.mjs <page address> [--slug <name>]
+node scripts/render-review.mjs --contact [--width 1200]
+```
+
+It runs in the site repository with Playwright (a development dependency; the live site does not use it). It reads only: nothing is written to the source, the CMS or the media store, and no media file is copied.
+
+| It does | Detail |
+|---|---|
+| Renders at every gate width | 375, 767, 768, 769, 1199, 1200 and 1201, in a real browser, after scrolling the page end to end so lazy media and reveals have run |
+| Saves what it saw | One full-page screenshot per width, one sheet with 375, 768 and 1200 side by side, a results file and a summary table, in `scripts/data/renders/<slug>/` (not committed: the pictures show client work) |
+| Measures the hard checks | Sideways page scroll; a broken image; an image cropped or reshaped; a video that can make sound, shows native controls or is cropped; content still hidden after scrolling; content missing with JavaScript off; anything still moving under reduced motion |
+| Measures the flags | An image shown above its natural size; a target under 44 px; a line over 85 characters; text under 12 px; an image with no width and height |
+| Lists what the page is made of | The count of each block and the headings, so two pages can be compared |
+| Builds a contact sheet | `--contact` puts every reviewed page side by side at one width. Pages that differ only by their pictures look alike at a glance: that is the test of "adaptive" |
+
+Rules:
+
+- No layout decision passes without a review of the current page. The decision log entry names the review's date and the page hash it prints.
+- A hard fail blocks Ship. A flag is reported with its count and judged.
+- The script names what it did not check (the design critique, whether a crop hides the proof, contrast). Those stay `not run` until the screenshots have been opened and read, and what was seen is written in the decision log.
+- Open the screenshots. The numbers say a page is not broken; only looking says whether it is good. Read the sheet at 375 first, then 1200, against the critique in `design-principles.md`.
+- A model's opinion of a screenshot is weak evidence without measurements beside it: give the measured table with the picture, look at cropped regions for detail, and compare two options side by side when choosing. Where two options are close, the owner decides.
+- If the render fails, the page is not reviewed. Report the failure; do not fall back to judging from the code.
+
 #### When to call a specialist, and how its findings come back
 
 This skill does every step itself. A specialist (a helper in `skill-map.md` or a sibling skill) is called for one of three reasons only: it holds data this skill cannot reach (search volumes, analytics, a client's public brand values); it gives a second read of a finished result (voice, tokens, accessibility, search); or the owner asked for it.
@@ -1897,6 +1926,10 @@ When a UX audit helper is run on the rendered page at 375 and 1200, its measured
 ### Automated part
 
 `scripts/check-case-page.mjs <url> [--host <canonical host>] [--no-body]` covers the static checks: headings, sections, articles, images, dashes, rails, videos, title, description, canonical (host and path), JSON-LD, media status and byte total. The chapter check is reported as not applicable on a page that is not a case study (track 2) and, with `--no-body`, on a no-body case study. Overflow, aspect ratio, masks, contrast, targets, reduced motion, the rail counter, All screens, the viewer, the link check and the critique are checked in the browser at each width.
+
+### Render review
+
+The browser rows of this gate are run by the render review command (`ops-cycle.md`), which renders the page at every gate width, saves the screenshots and measures: sideways scroll, broken, cropped or reshaped images, videos that can make sound or show native controls, content hidden after scrolling, content missing with JavaScript off, motion under reduced motion, images above natural size, targets under 44 px and line length. Its hard fails block publishing. What it cannot measure (the design critique, a crop that hides the proof, contrast) stays `not run` until the screenshots have been read and the reading is in the decision log.
 
 ### Acceptance criteria per mode
 

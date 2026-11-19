@@ -31,6 +31,7 @@
 - When to call a specialist and how its findings come back into the proposal. In `ops-cycle.md`.
 - What search work stays here and what goes to `wugweb-seo`, as one table. In `copy-and-seo.md`.
 - Evals 19 and 20 (not yet run): conflicting sources held for approval; a failed step never shipped as partial.
+- Render review (owner, 2026-11-19): a layout is judged only on the rendered page. On this site one command renders the page at the seven gate widths, saves the screenshots and measures the browser checks; a contact sheet compares pages side by side. In `ops-cycle.md` and `qa-checklist.md`.
 
 ## Release of 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 

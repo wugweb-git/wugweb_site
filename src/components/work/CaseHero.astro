@@ -101,17 +101,16 @@ const isVideo = block.cover?.video === true;
     margin: 0;
     color: var(--color-text-primary);
   }
+  /* The cover keeps its own ratio: the box takes the file's shape, nothing is cropped. */
   .case-hero-cover {
     position: relative;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
     border-radius: var(--radius-3, 16px);
+    overflow: hidden;
     background: var(--color-surface-elevated);
   }
   .case-hero-media {
     inline-size: 100%;
-    block-size: 100%;
-    object-fit: cover;
+    block-size: auto;
     display: block;
   }
   @media (min-width: 900px) {

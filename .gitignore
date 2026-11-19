@@ -44,3 +44,6 @@ scripts/.tmp-*.mjs
 
 # Skill build output (zips, tarballs, copies for sharing)
 dist-skill/
+
+# Render review output (screenshots of client work; derived files)
+scripts/data/renders/

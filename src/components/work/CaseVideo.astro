@@ -1,4 +1,7 @@
 ---
+// A video over 15 seconds: muted, click to play, with one play and pause
+// button. No native controls (they carry a volume control), no sound, no
+// autoplay. Without a poster the first frame is shown as the start frame.
 import type { VideoBlock } from '../../lib/case-layout';
 import { assetUrl } from '../../lib/assets';
 
@@ -7,33 +10,87 @@ const { block } = Astro.props;
 const src = block.media.url.startsWith('http') ? block.media.url : assetUrl(block.media.url);
 const title = block.media.caption ?? block.media.label ?? 'Video';
 ---
-<figure class="case-video" data-reveal>
-  <video
-    class="case-video-media"
-    src={src}
-    poster={block.poster}
-    muted
-    playsinline
-    preload="metadata"
-    controls
-    controlslist="nodownload noplaybackrate"
-    disablepictureinpicture
-    title={title}
-  />
+<figure class="case-video" data-case-video data-reveal>
+  <div class="case-video-frame">
+    <video
+      class="case-video-media"
+      src={block.poster ? src : `${src}#t=0.1`}
+      poster={block.poster}
+      muted
+      playsinline
+      preload={block.poster ? 'none' : 'metadata'}
+      disablepictureinpicture
+      aria-label={title}
+    />
+    <button type="button" class="case-video-toggle" data-video-toggle aria-pressed="false" aria-label={`Play video: ${title}`} hidden>
+      <span class="case-video-icon" aria-hidden="true">&#9654;</span>
+    </button>
+  </div>
   {block.media.caption && <figcaption class="case-video-caption">{block.media.caption}</figcaption>}
 </figure>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-case-video]').forEach(root => {
+    const video = root.querySelector('video');
+    const button = root.querySelector<HTMLButtonElement>('[data-video-toggle]');
+    if (!video || !button || button.dataset.wired) return;
+    button.dataset.wired = 'true';
+    const icon = button.querySelector('.case-video-icon');
+    const label = (video.getAttribute('aria-label') || 'video');
+    const sync = () => {
+      const playing = !video.paused && !video.ended;
+      button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+      button.setAttribute('aria-label', `${playing ? 'Pause' : 'Play'} video: ${label}`);
+      if (icon) icon.textContent = playing ? '❚❚' : '▶';
+    };
+    video.muted = true;
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      video.muted = true;
+      if (video.paused || video.ended) void video.play(); else video.pause();
+    });
+    video.addEventListener('click', () => button.click());
+    for (const ev of ['play', 'pause', 'ended']) video.addEventListener(ev, sync);
+    video.addEventListener('volumechange', () => { video.muted = true; });
+    sync();
+  });
+</script>
 <style>
   .case-video {
     margin: var(--space-page-lg) 0;
     display: grid;
     gap: var(--space-page-sm);
   }
+  .case-video-frame { position: relative; }
   .case-video-media {
     inline-size: 100%;
     block-size: auto;
     display: block;
     border-radius: var(--radius-3, 16px);
     background: var(--color-surface-elevated);
+    cursor: pointer;
+  }
+  .case-video-toggle {
+    position: absolute;
+    inset-block-end: var(--space-page-xs);
+    inset-inline-start: var(--space-page-xs);
+    inline-size: var(--control-size);
+    block-size: var(--control-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-full);
+    font: inherit;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .case-video-toggle[hidden] { display: none; }
+  .case-video-toggle:hover { background: var(--color-surface-hover); }
+  .case-video-toggle:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
   }
   .case-video-caption {
     color: var(--color-text-secondary);
