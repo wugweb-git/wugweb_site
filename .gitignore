@@ -47,3 +47,6 @@ dist-skill/
 
 # Render review output (screenshots of client work; derived files)
 scripts/data/renders/
+
+# Made graphics (rendered files awaiting the owner; never committed)
+scripts/data/made/

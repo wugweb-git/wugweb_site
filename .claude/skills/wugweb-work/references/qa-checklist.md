@@ -113,6 +113,24 @@ When a UX audit helper is run on the rendered page at 375 and 1200, its measured
 
 The browser rows of this gate are run by the render review command (`ops-cycle.md`), which renders the page at every gate width, saves the screenshots and measures: sideways scroll, broken, cropped or reshaped images, videos that can make sound or show native controls, content hidden after scrolling, content missing with JavaScript off, motion under reduced motion, images above natural size, targets under 44 px and line length. Its hard fails block publishing. What it cannot measure (the design critique, a crop that hides the proof, contrast) stays `not run` until the screenshots have been read and the reading is in the decision log.
 
+## What automated looking can and cannot do
+
+From the research of 2026-11-19 (`docs/research/reports/` in the site repository holds the full reports). These set how far a check or a model's opinion is trusted.
+
+| Fact | What it means here |
+|---|---|
+| Automated accessibility engines find about 30 to 40% of planted barriers in an independent government test, and 57% of issues by volume by the vendor's own count | A clean automated run is not an accessible page. Focus order, focus visibility and text over images are checked by hand |
+| No free tool decides the contrast of text over an image or a gradient | The review lists those elements; each is looked at |
+| In the one study with numbers, about a quarter of layout faults found by measuring the page were ones no person could see | A measured fault is confirmed on the screenshot before it is reported as a defect |
+| Layout failures can hide in a range one or two pixels wide | The gate renders at 767, 769, 1199 and 1201 as well as the three main widths |
+| A pixel comparison says two pictures differ, never that either is good | Before and after pictures are for catching change, not for judging quality |
+| A vision model picks the better of two clearly different designs about 9 times in 10, and is near chance when they are close | Comparing two options side by side is reliable only when they differ clearly. A close call goes to the owner |
+| A vision model's rating lands within one point on a seven-point scale about three times in four, and it places a fault on the page poorly | A model's verdict on a screenshot is an opinion. It is given with the measurements, and the place of a fault comes from the measurement |
+| A model's accuracy falls as the design gets better | The more polished the page, the more the owner's eye is needed |
+| What raises a model's reliability: worked examples, zoomed crops, numbered marks on the picture (a full grid overlay makes it worse), a separate checking pass, the middle of several runs, a fixed rubric that requires evidence | The design critique uses the rubric in `design-principles.md`, looks at crops for detail, and is run as a second pass separate from the making |
+
+The stack on this site, all free and with no account: a real browser driven by script for rendering, measuring and the other states (JavaScript off, reduced motion); an open accessibility engine for contrast and names; hand-written measurements for overflow, crop, upscale and targets. Hosted screenshot services are not used: they need accounts and cap at 5,000 pictures a month.
+
 ## Acceptance criteria per mode
 
 A mode is finished when its conditions are met, not when its steps were run. Each row is pass or fail. One fail means the mode is not done and the next mode does not start. A condition that could not be checked is reported as `not checked` and counts as a fail.

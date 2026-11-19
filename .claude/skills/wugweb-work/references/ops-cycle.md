@@ -300,6 +300,34 @@ node scripts/brand-read.mjs --screens <screen address> <screen address> ... --sl
 - It reads only. No stylesheet, font file or image is saved; only the values. A client's site is fetched as any visitor would see it; a page behind a login is not read.
 - If it fails, nothing is recorded and no colour or font from that run is used.
 
+### Made graphics
+
+A banner, cover, card, share image or mockup composition that leaves the page is built as an HTML file from real material (`forms/graphics.md`) and rendered to a picture at its exact size:
+
+```
+node scripts/render-graphic.mjs <file.html> --size 1200x630
+```
+
+It refuses to render when an image is broken, cropped or reshaped, or when the content runs past the frame. The picture is written to `scripts/data/made/`, which is not committed. It uploads nothing: the owner approves each file and places it in R2 himself.
+
+### The layout library and the CMS
+
+Layouts are not invented per page and not held in someone's head. They live in three places, and each has one job:
+
+| Place | Holds | State on this site |
+|---|---|---|
+| The component library | One component per block, under `src/components/work/`, each with its states. The living reference is Storybook, where every block and every form for a set of points should have a story with real-shaped sample content | The 19 work components exist. None has a story yet, and the forms in `composition.md` beyond the plain grid are not built |
+| The block doc | What each block is for, its fields, limits and states: `kits_design_system/docs/blocks/case-study.md` | Written for the blocks that exist |
+| The CMS record | What one piece needs to be laid out, in Sanity on the `caseStudy` document: `bodyMarkdown` (the body with its `Layout:` hints), `mediaManifest` (each file's size, shape, kind, audience, flow, step, alt, caption and hero score), `accent`, `results`, `links`, `extraMedia` | The fields exist. The preview route reads the manifest and the accent. The manifest holds no `set` name field yet, and nothing stores a chosen form per chapter |
+
+How they connect:
+
+- The body says what the content is. The manifest says what each file is. The resolver picks blocks and forms from the two. A `Layout:` hint in the body is the owner's override, kept in his source.
+- A layout decision that must persist for one piece (a form for a chapter, a signature composition, a set name) belongs in the source as a hint or in the manifest as derived data. It is never hard-coded in a component and never kept only in a session.
+- A new block or form enters in this order: a block doc entry, a component with all its states, a story, then the resolver rule and its test. A form that skips a step is not in the library.
+- The CMS is never the place to design a page by hand, block by block. A page builder would bring back per-page ad hoc layouts, which is what this system replaces. If the owner wants hand overrides in the CMS, that is his decision and a schema change on his go.
+- An outside component library or template is a reference to learn from. It is brought in only as tokens and components that follow this site's design system, never as a second system beside it.
+
 ### When to call a specialist, and how its findings come back
 
 This skill does every step itself. A specialist (a helper in `skill-map.md` or a sibling skill) is called for one of three reasons only: it holds data this skill cannot reach (search volumes, analytics, a client's public brand values); it gives a second read of a finished result (voice, tokens, accessibility, search); or the owner asked for it.

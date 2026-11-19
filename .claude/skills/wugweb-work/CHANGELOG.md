@@ -39,6 +39,9 @@
 - Held here now: the chapter nav specification, type sizes for made files, and how a chart is carried in the block plan.
 - Brand read (owner, 2026-11-19): colour, type and style are read from the client's live stylesheet and from the pixels of the project's screens, never picked by eye; every colour carries its source and measured contrast. In `composition.md`, with the command in `ops-cycle.md`.
 - Composition file extended from research on studio case studies and layout guidance: patterns that replace boxes, how to treat a leftover item, limits on loud elements, text widths, mixed-composition rules, unrounded contrast.
+- Graphics (owner, 2026-11-19): new `references/forms/graphics.md`. Icons, diagrams, banners, covers, cards and mockup compositions are made from real material: the client's screens, colours and type, the approved body and this site's tokens. Composed on the page where possible; a file that leaves the page goes through the new-file gate. The render command is in `ops-cycle.md`.
+- What automated looking can and cannot do: the findings of the visual QA research, as limits on how far a check or a model's opinion is trusted. In `qa-checklist.md`.
+- The layout library and the CMS: where layouts live (components and stories, the block doc, the CMS record), how they connect, and what is not built. In `ops-cycle.md`.
 
 ## Release of 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 

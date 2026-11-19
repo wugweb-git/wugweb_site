@@ -23,6 +23,7 @@ Every form is made from the approved body, takes only the pieces it can hold, an
 | `forms/pdf.md` | PDF |
 | `forms/charts.md` | Charts made from sourced numbers |
 | `forms/og-image.md` | The share image of a page |
+| `forms/graphics.md` | Icons, diagrams, banners, covers, cards and mockup compositions, made from real material |
 | `forms/newsletter.md` | Newsletter edition |
 | `forms/advocacy.md` | Advocacy copy for the team |
 | `forms/presence-compare.md` | Read-only check of a published Behance or Dribbble piece against its case study |

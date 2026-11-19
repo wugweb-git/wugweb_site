@@ -10,7 +10,7 @@ import CaseBlocks from '../../../components/work/CaseBlocks.astro';
 import { sanityClient, getPreviewClient } from '../../../lib/sanity';
 import { caseStudyBySlugQuery } from '../../../lib/queries';
 import { parseCaseBody } from '../../../lib/case-body';
-import { resolveLayout, type CaseDoc, type RelatedDoc } from '../../../lib/case-layout';
+import { resolveLayout, type CaseDoc, type MediaManifest, type RelatedDoc } from '../../../lib/case-layout';
 
 const { slug } = Astro.params;
 
@@ -60,11 +60,19 @@ const doc: CaseDoc = {
   industry: work.industry,
   services: Array.isArray(work.services) ? work.services : [],
   tags: Array.isArray(work.tags) ? work.tags : [],
+  accent: typeof work.accent === 'string' ? work.accent : undefined,
   related,
   next: related[0]
 };
 
-const blocks = resolveLayout(body, undefined, doc);
+// The media manifest is derived data kept on the record (size, shape, audience,
+// flow, set, step, alt). With it the resolver can choose blocks by the real shape
+// of each file and name the All screens sets; without it, it falls back to the
+// body's labels.
+const manifestEntries = Array.isArray(work.mediaManifest) ? work.mediaManifest.filter((e: { url?: string }) => e && typeof e.url === 'string') : [];
+const manifest: MediaManifest | undefined = manifestEntries.length ? { slug: String(slug), entries: manifestEntries } : undefined;
+
+const blocks = resolveLayout(body, manifest, doc);
 
 const pageTitle = (work.seoTitle || work.title || 'Case study') + ' preview';
 const pageDescription = work.seoDescription || work.summary || '';

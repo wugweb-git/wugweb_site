@@ -665,6 +665,34 @@ node scripts/brand-read.mjs --screens <screen address> <screen address> ... --sl
 - It reads only. No stylesheet, font file or image is saved; only the values. A client's site is fetched as any visitor would see it; a page behind a login is not read.
 - If it fails, nothing is recorded and no colour or font from that run is used.
 
+#### Made graphics
+
+A banner, cover, card, share image or mockup composition that leaves the page is built as an HTML file from real material (`forms/graphics.md`) and rendered to a picture at its exact size:
+
+```
+node scripts/render-graphic.mjs <file.html> --size 1200x630
+```
+
+It refuses to render when an image is broken, cropped or reshaped, or when the content runs past the frame. The picture is written to `scripts/data/made/`, which is not committed. It uploads nothing: the owner approves each file and places it in R2 himself.
+
+#### The layout library and the CMS
+
+Layouts are not invented per page and not held in someone's head. They live in three places, and each has one job:
+
+| Place | Holds | State on this site |
+|---|---|---|
+| The component library | One component per block, under `src/components/work/`, each with its states. The living reference is Storybook, where every block and every form for a set of points should have a story with real-shaped sample content | The 19 work components exist. None has a story yet, and the forms in `composition.md` beyond the plain grid are not built |
+| The block doc | What each block is for, its fields, limits and states: `kits_design_system/docs/blocks/case-study.md` | Written for the blocks that exist |
+| The CMS record | What one piece needs to be laid out, in Sanity on the `caseStudy` document: `bodyMarkdown` (the body with its `Layout:` hints), `mediaManifest` (each file's size, shape, kind, audience, flow, step, alt, caption and hero score), `accent`, `results`, `links`, `extraMedia` | The fields exist. The preview route reads the manifest and the accent. The manifest holds no `set` name field yet, and nothing stores a chosen form per chapter |
+
+How they connect:
+
+- The body says what the content is. The manifest says what each file is. The resolver picks blocks and forms from the two. A `Layout:` hint in the body is the owner's override, kept in his source.
+- A layout decision that must persist for one piece (a form for a chapter, a signature composition, a set name) belongs in the source as a hint or in the manifest as derived data. It is never hard-coded in a component and never kept only in a session.
+- A new block or form enters in this order: a block doc entry, a component with all its states, a story, then the resolver rule and its test. A form that skips a step is not in the library.
+- The CMS is never the place to design a page by hand, block by block. A page builder would bring back per-page ad hoc layouts, which is what this system replaces. If the owner wants hand overrides in the CMS, that is his decision and a schema change on his go.
+- An outside component library or template is a reference to learn from. It is brought in only as tokens and components that follow this site's design system, never as a second system beside it.
+
 #### When to call a specialist, and how its findings come back
 
 This skill does every step itself. A specialist (a helper in `skill-map.md` or a sibling skill) is called for one of three reasons only: it holds data this skill cannot reach (search volumes, analytics, a client's public brand values); it gives a second read of a finished result (voice, tokens, accessibility, search); or the owner asked for it.
@@ -2240,6 +2268,24 @@ When a UX audit helper is run on the rendered page at 375 and 1200, its measured
 
 The browser rows of this gate are run by the render review command (`ops-cycle.md`), which renders the page at every gate width, saves the screenshots and measures: sideways scroll, broken, cropped or reshaped images, videos that can make sound or show native controls, content hidden after scrolling, content missing with JavaScript off, motion under reduced motion, images above natural size, targets under 44 px and line length. Its hard fails block publishing. What it cannot measure (the design critique, a crop that hides the proof, contrast) stays `not run` until the screenshots have been read and the reading is in the decision log.
 
+### What automated looking can and cannot do
+
+From the research of 2026-11-19 (`docs/research/reports/` in the site repository holds the full reports). These set how far a check or a model's opinion is trusted.
+
+| Fact | What it means here |
+|---|---|
+| Automated accessibility engines find about 30 to 40% of planted barriers in an independent government test, and 57% of issues by volume by the vendor's own count | A clean automated run is not an accessible page. Focus order, focus visibility and text over images are checked by hand |
+| No free tool decides the contrast of text over an image or a gradient | The review lists those elements; each is looked at |
+| In the one study with numbers, about a quarter of layout faults found by measuring the page were ones no person could see | A measured fault is confirmed on the screenshot before it is reported as a defect |
+| Layout failures can hide in a range one or two pixels wide | The gate renders at 767, 769, 1199 and 1201 as well as the three main widths |
+| A pixel comparison says two pictures differ, never that either is good | Before and after pictures are for catching change, not for judging quality |
+| A vision model picks the better of two clearly different designs about 9 times in 10, and is near chance when they are close | Comparing two options side by side is reliable only when they differ clearly. A close call goes to the owner |
+| A vision model's rating lands within one point on a seven-point scale about three times in four, and it places a fault on the page poorly | A model's verdict on a screenshot is an opinion. It is given with the measurements, and the place of a fault comes from the measurement |
+| A model's accuracy falls as the design gets better | The more polished the page, the more the owner's eye is needed |
+| What raises a model's reliability: worked examples, zoomed crops, numbered marks on the picture (a full grid overlay makes it worse), a separate checking pass, the middle of several runs, a fixed rubric that requires evidence | The design critique uses the rubric in `design-principles.md`, looks at crops for detail, and is run as a second pass separate from the making |
+
+The stack on this site, all free and with no account: a real browser driven by script for rendering, measuring and the other states (JavaScript off, reduced motion); an open accessibility engine for contrast and names; hand-written measurements for overflow, crop, upscale and targets. Hosted screenshot services are not used: they need accounts and cap at 5,000 pictures a month.
+
 ### Acceptance criteria per mode
 
 A mode is finished when its conditions are met, not when its steps were run. Each row is pass or fail. One fail means the mode is not done and the next mode does not start. A condition that could not be checked is reported as `not checked` and counts as a fail.
@@ -2292,6 +2338,7 @@ Every form is made from the approved body, takes only the pieces it can hold, an
 | `forms/pdf.md` | PDF |
 | `forms/charts.md` | Charts made from sourced numbers |
 | `forms/og-image.md` | The share image of a page |
+| `forms/graphics.md` | Icons, diagrams, banners, covers, cards and mockup compositions, made from real material |
 | `forms/newsletter.md` | Newsletter edition |
 | `forms/advocacy.md` | Advocacy copy for the team |
 | `forms/presence-compare.md` | Read-only check of a published Behance or Dribbble piece against its case study |
@@ -2890,6 +2937,79 @@ id | kind | text | body line (chapter and position) | screens
 - Flagged screens are marked; forms that ban flagged screens skip them.
 - No number appears that lacks its source and date in the body.
 - Count the items and state the count.
+
+<!-- references/forms/graphics.md -->
+## Graphics: icons, diagrams, banners and mockup compositions
+
+> Owner: `wugweb-work`. Added on the owner's word, 2026-11-19: the skill must be able to make icons, graphics, banners and mockup compositions itself. The shared rules and the gate for new files are in `forms.md`; the composition rules are in `composition.md`.
+
+This file is how a graphic is made when no existing file does the job. Everything here is built from real material: the client's screens, the client's colours and type as read in the brand read, the approved body, and this site's tokens. Nothing is generated by an image model, and no stock picture is used.
+
+### Two kinds, with different rules
+
+| Kind | What it is | Gate |
+|---|---|---|
+| Composed on the page | A composition built in the page's own HTML and CSS from files that already exist: screens on a client ground, a mockup composition, an inline diagram, an icon set drawn as inline SVG, a chart | No new file is made, so it is layout. It passes the Layout gate and the render review like any block |
+| A made file | A picture file that leaves the page: a banner, a share image, a social card, a Behance or Dribbble cover, a deck image, a chart for a post | The gate for new files in `forms.md`: proposed first, made only on the owner's yes for that one file, kept out of the repository, placed in the media store by the owner |
+
+Prefer the first kind. A composition on the page stays sharp at every width, keeps its text as text and adds no file to look after.
+
+### What each one is made from
+
+| Graphic | Made from | Never |
+|---|---|---|
+| Icon | The client's own icons as seen in their screens or brand files; else this site's icon set; else drawn as SVG on one grid, one stroke weight and one corner style, matching the family beside it | A new icon drawn to fill a card; mixed families; emoji; an icon with no label |
+| Diagram | The structure in the approved body: a flow, a system map, a before and after, a set of roles. Drawn as SVG with real labels | A diagram of something the body does not state; decoration that looks like a diagram |
+| Chart | The results lines of the body, with their source and date | A number with no source; a chart type that hides the baseline |
+| Mockup composition | The project's real screens at their own ratio, arranged on a ground in the client's colour: overlapped, fanned, stepped or tiled | A stock device photo; a screen cropped or reshaped to fit a frame; a generic laptop |
+| Device frame | A plain frame drawn in CSS around a real screen, used when the device itself matters to the story | More than two framed screens on a page; a frame that hides part of the screen |
+| Banner or cover | One claim from the approved body, the brand label, one real screen or the mark, the client's colour as ground | More than one claim; text under 16 px at the size shown; a claim the body does not make |
+| Share image | The page title, the brand label and one project visual, at 1200 by 630 | A made file when an existing project visual already fits |
+| Social card | One claim, one proof, the source line | A different claim from the case study |
+| Pattern or graphic device | The client's own pattern or device from their brand files, tiled or scaled whole | An invented pattern passed off as the client's |
+
+### Mockup compositions
+
+A composition shows several screens as one picture. It follows the mixed-composition rules in `composition.md` and these:
+
+- **One screen leads.** It is the largest and sits in front; the others support it.
+- **Own ratio, whole.** Every screen is shown complete at its own aspect ratio. Overlap may cover part of a supporting screen, never the part that proves the claim, and never the lead screen.
+- **Device-less first.** Screens sit on the ground with a corner radius that matches the product's own, and a soft shadow from this site's tokens. A frame is added only when the device matters.
+- **The ground is the client's.** A colour from the brand read that the screens stand out from. Its contrast with any text on it is measured.
+- **Arrangements.** Stepped (each screen offset down and across, for a flow); fanned (a slight rotation around a centre, for a set of equals); tiled (a tight grid at one angle, for breadth); paired (phone beside desktop, for a responsive product); layered (one large screen with detail crops called out, where the crops are the same file shown through a mask, never a new file).
+- **Order tells the story.** Screens run in the order of the flow, left to right, or front to back.
+- **At 375** it becomes a simpler arrangement of the same screens, not a shrunken picture: fewer screens in front, the rest in a rail.
+
+### Banners, covers and cards
+
+- Work in HTML and CSS at the exact size, with this site's tokens and the client's colours from the brand read. Text is real text.
+- One claim, taken word for word from the approved body, or shortened only by cutting.
+- Keep everything that matters inside the middle four fifths of the frame; platforms trim the edges.
+- Body text is 16 px or more at the size shown, and a headline 32 px or more. Type sizes come from the made-file tokens in `forms.md`.
+- Measure the contrast of the text on its ground.
+- Sizes are in `forms.md`. A size not listed there is confirmed against the platform's current help page before the file is made.
+- One file per yes. A set of five banners is five proposals.
+
+### How a made file is rendered on this site
+
+The command is in `ops-cycle.md` (Made graphics). It renders an HTML file to a picture at an exact size, refuses to render when an image is broken, cropped or reshaped or when the content runs past the frame, and uploads nothing. The picture waits in a folder that is not committed until the owner approves it and places it.
+
+### Checks before a graphic is shown to the owner
+
+| Check | Fails when |
+|---|---|
+| Real material | Anything in it was not read from the client's material, the approved body or this site's tokens |
+| No crop, no reshape | Any screen or image is not whole at its own ratio |
+| One claim | It makes a claim the approved body does not, or more than one |
+| Sourced | A number has no source line |
+| Legible | Text is under 16 px, or its contrast on the ground is under 4.5:1 (3:1 when large) |
+| The client may be shown | The mark, colour or product name appears without permission on record |
+| Icons | Families are mixed, or an icon has no label |
+| It was seen | It was not rendered and looked at, at the size it will be used |
+
+### What goes in the decision log
+
+Which kind it is, what it was made from (file names and the body lines), the colours and their source in the brand read, the measured contrast, the size, and for a made file the owner's yes with its date.
 
 <!-- references/forms/linkedin-carousel.md -->
 ## LinkedIn carousel
