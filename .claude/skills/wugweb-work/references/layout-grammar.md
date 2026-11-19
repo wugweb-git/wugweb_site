@@ -51,7 +51,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 ## 4. Chapters and points
 
 - Chapter = head (h2, lead, paragraphs) then its items in body order.
-- Points: 1 → prose. 2 to 3 → columns. 4 to 6 → grid (3 columns when the count is 3 or 6, else 2). 7 or more → two-column list. Groups become h3 sub-lists.
+- Points take a form chosen from what they are, never from how many there are: prose, statement, editorial list, numbered sequence, lead and supports, two-column text, definition list, annotated screen, paired with media, comparison, table, cards or stat row. The forms, when each is used, how a count of 1 to 7 or more sits without an orphan, and the balance and variety rules are in `composition.md`, which wins on how points are shown (owner, 2026-11-19: no default boxes, no fixed number of points). A card grid is one form and must be earned. Groups become h3 sub-lists.
 - Tiles carry no decorative cards on mobile. On desktop, a surface step or a subtle border separates them; never a hairline stroke.
 - Numbered process steps are not a block type of their own: `steps` is not one of the 23. Numbered steps that match a process visible in the screens render as a `timeline`, each step citing the screen that proves it; numbered steps with no such order render as `points`.
 - A quote sits after the chapter text as a `quote` block: a `figure` holding a `blockquote` and a `figcaption` with the name, role and organisation.
@@ -111,6 +111,7 @@ Media is part of the narrative: it sits between and inside the chapters, in body
 - Per block, state the limits: the maximum length of each field, and what shows when a field or a media item is missing.
 - Numbering and labels must reflect a true order or structure in the content.
 - Show real screens, not icon cards. One main point and one visual per section.
+- Icons are used only where they carry meaning, from the client's own material first (`composition.md`, Icons).
 
 ### Fit with the design system
 
@@ -166,8 +167,24 @@ The site's one call to action stays in the global footer and stays yellow: it is
 ## 9. Identity
 
 - `Accent` from the body, validated at 3:1 or more against the page surface; text use only at 4.5:1 or more. Otherwise the house accent.
-- Used for rules, stat numerals and group labels. Never as a surface above 10% of the page.
-- Proposed from the client's own palette, read in Look mode.
+- The accent is used for rules, stat numerals, group labels, list markers and the icon tint.
+- The client's brand is shown on purpose (owner, 2026-11-19): up to three client colours on a page, as the accent, as a ground behind device-less screens, as one brand band for the signature moment and as a low tint on a chapter surface; the client's own icons; and the branded visuals in the piece's folder (mark, type, palette, patterns, illustration, photography, applications). The roles, limits and contrast rules are in `composition.md`. The Wugweb system stays the frame and yellow stays Wugweb's.
+- Proposed from the client's own palette, read in Look mode. No client colour is invented.
+
+### Chapter nav
+
+Held here; it is specified and not yet built on this site.
+
+- A `nav` named "Chapters" holding a list of links to the chapter ids on the page. Its labels may be generic (Context, Build, Results); the chapter headings stay claims.
+- At 1200 it is sticky beside the content. Below 1200 it is one row that scrolls sideways under the header, inside the shell and never wider than the site nav.
+- The current chapter is marked with `aria-current="true"`, set as the reader scrolls. With scripts off it is a plain list of links.
+- The scroll offset under the sticky header comes from the header height, never a literal.
+- Chips use the full radius. The current chip may take the client accent; never yellow.
+- Use it on a page of five or more chapters. A shorter page does not need one.
+
+### A chart in the block plan
+
+A chart on a page is carried as a `figure` block whose media kind is `chart`. It has no image file: it is drawn as HTML or SVG from the results lines of the body, and the block plan names those lines. Its caption is the source line. With scripts off the same numbers show as a `table`. A chart for a deck, a post or a share image is a made file (`forms/charts.md`).
 
 ## 10. Motion
 

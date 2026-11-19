@@ -3,7 +3,12 @@
 //
 //   node scripts/render-review.mjs <url> [--slug <name>] [--out scripts/data/renders]
 //                                        [--widths 375,767,768,769,1199,1200,1201]
+//                                        [--only <css selector>]
 //   node scripts/render-review.mjs --contact [--out scripts/data/renders] [--width 1200]
+//
+// Ask the owner before running this on a piece, and which part to look at.
+// --only renders and measures one part of the page (for example --only .case-page
+// for the case study without the site header and footer).
 //
 // What it does, per width: opens the page in a real browser, scrolls it end to
 // end so lazy media and reveals run, saves a full-page screenshot, and measures
@@ -30,6 +35,9 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readdirSync, existsSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { createRequire } from 'node:module';
+
+const AXE = createRequire(import.meta.url).resolve('axe-core/axe.min.js');
 
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
@@ -38,6 +46,7 @@ const OUT = resolve(opt('--out', 'scripts/data/renders'));
 const GATE_WIDTHS = [375, 767, 768, 769, 1199, 1200, 1201];
 const SHEET_WIDTHS = [375, 768, 1200];
 const TARGET = 44;
+const ONLY = opt('--only', '');
 
 const slugOf = (url) => {
   const p = new URL(url).pathname.replace(/\/+$/, '').split('/').filter(Boolean);
@@ -64,8 +73,8 @@ async function settle(page) {
 }
 
 /** Everything measured in the page. Runs in the browser. */
-function measureInPage(TARGET) {
-  const root = document.querySelector('main') || document.body;
+function measureInPage({ TARGET, ONLY }) {
+  const root = (ONLY && document.querySelector(ONLY)) || document.querySelector('main') || document.body;
   const vw = document.documentElement.clientWidth;
   const dpr = window.devicePixelRatio || 1;
   const name = (el) => {
@@ -256,7 +265,7 @@ async function main() {
   mkdirSync(dir, { recursive: true });
 
   const browser = await chromium.launch();
-  const result = { url, slug, date: new Date().toISOString(), tool: 'render-review', widths: {}, extra: {}, notRun: [] };
+  const result = { url, slug, only: ONLY || null, date: new Date().toISOString(), tool: 'render-review', widths: {}, extra: {}, notRun: [] };
   let html = '';
   try {
     for (const w of widths) {
@@ -266,7 +275,20 @@ async function main() {
       if (!res || res.status() !== 200) throw new Error(`page returned ${res ? res.status() : 'no response'} at ${w}`);
       if (!html) html = await res.text();
       await settle(page);
-      const m = await page.evaluate(measureInPage, TARGET);
+      if (ONLY && !(await page.locator(ONLY).count())) throw new Error(`--only ${ONLY} matched nothing at ${w}`);
+      const m = await page.evaluate(measureInPage, { TARGET, ONLY });
+      // Contrast and the other machine-checkable accessibility rules, at the two main widths.
+      let axe = null;
+      if (w === 375 || w === 1200) {
+        try {
+          await page.addScriptTag({ path: AXE });
+          axe = await page.evaluate(async (only) => {
+            const r = await window.axe.run(only ? document.querySelector(only) : document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] } });
+            const short = (v) => ({ id: v.id, nodes: v.nodes.length, sample: v.nodes.slice(0, 3).map((n) => `${n.target.join(' ').slice(0, 70)}${n.any && n.any[0] && n.any[0].data && n.any[0].data.contrastRatio ? ` (${n.any[0].data.contrastRatio}:1, needs ${n.any[0].data.expectedContrastRatio})` : ''}`) });
+            return { violations: r.violations.map(short), incomplete: r.incomplete.map(short) };
+          }, ONLY);
+        } catch (e) { axe = { error: String(e && e.message || e) }; }
+      }
       // A full-page capture stretches the viewport, which throws fixed chrome (the site header,
       // the cookie notice) into the middle of the picture. Pin it to the document for the capture.
       await page.evaluate(() => {
@@ -274,8 +296,20 @@ async function main() {
           if (getComputedStyle(el).position === 'fixed' && !el.closest('dialog')) el.style.setProperty('position', 'absolute', 'important');
         }
       });
-      await page.screenshot({ path: join(dir, `${w}.png`), fullPage: true, scale: 'css' });
-      result.widths[w] = { measured: m, checks: judge(m) };
+      if (ONLY) await page.locator(ONLY).first().screenshot({ path: join(dir, `${w}.png`), scale: 'css' });
+      else await page.screenshot({ path: join(dir, `${w}.png`), fullPage: true, scale: 'css' });
+      const checks = judge(m);
+      if (axe && !axe.error) {
+        const contrast = axe.violations.find((v) => v.id === 'color-contrast');
+        const undecided = axe.incomplete.find((v) => v.id === 'color-contrast');
+        const others = axe.violations.filter((v) => v.id !== 'color-contrast');
+        checks.push({ check: 'Text contrast meets AA (measured)', hard: true, status: contrast ? 'fail' : 'pass', detail: contrast ? `${contrast.nodes} elements: ${contrast.sample.join('; ')}` : '' });
+        checks.push({ check: 'Contrast the tool could not decide (text over an image or gradient): look at these', hard: false, status: undecided ? 'flag' : 'pass', detail: undecided ? `${undecided.nodes} elements: ${undecided.sample.join('; ')}` : '' });
+        checks.push({ check: 'Other automated accessibility rules', hard: false, status: others.length ? 'flag' : 'pass', detail: others.map((v) => `${v.id} (${v.nodes})`).join('; ') });
+      } else if (axe && axe.error) {
+        checks.push({ check: 'Text contrast meets AA (measured)', hard: true, status: 'not run', detail: axe.error });
+      }
+      result.widths[w] = { measured: m, checks, axe };
       await ctx.close();
       console.error(`rendered ${w}`);
     }
@@ -342,11 +376,12 @@ async function main() {
   const all = Object.entries(result.widths).flatMap(([w, v]) => v.checks.map((c) => ({ w, ...c })));
   result.summary = {
     hardFails: all.filter((c) => c.status === 'fail').length,
+    notRun: all.filter((c) => c.status === 'not run').length,
     flags: all.filter((c) => c.status === 'flag').length,
     passes: all.filter((c) => c.status === 'pass').length,
   };
   // Always-manual rows: a script cannot judge these. They stay "not run" until a person or a model looks at the screenshots.
-  result.notRun = ['Design critique at 375 and 1200 (look at the screenshots)', 'A mask or crop hides the proof on a screen (look at each screen)', 'AA contrast including the client accent (run the contrast check)'];
+  result.notRun = ['Design critique at 375 and 1200 (look at the screenshots)', 'A mask or crop hides the proof on a screen (look at each screen)', 'Contrast of text over images, and of the client accent on its grounds (look at the flagged elements)', 'Composition: forms vary, balance, a signature moment, the client brand present (composition checks in the skill)'];
   writeFileSync(join(dir, 'review.json'), JSON.stringify(result, null, 1));
 
   const first = result.widths[widths.includes(1200) ? 1200 : widths[0]].measured;
@@ -360,7 +395,7 @@ async function main() {
     '', `Screenshots: ${widths.map((w) => `${w}.png`).join(', ')}, sheet.png.`);
   writeFileSync(join(dir, 'review.md'), lines.join('\n') + '\n');
   console.log(lines.join('\n'));
-  process.exit(result.summary.hardFails ? 1 : 0);
+  process.exit(result.summary.hardFails || result.summary.notRun ? 1 : 0);
 }
 
 main().catch((e) => { console.error(`Render review could not run: ${e && e.message || e}`); process.exit(2); });

@@ -32,6 +32,11 @@
 - What search work stays here and what goes to `wugweb-seo`, as one table. In `copy-and-seo.md`.
 - Evals 19 and 20 (not yet run): conflicting sources held for approval; a failed step never shipped as partial.
 - Render review (owner, 2026-11-19): a layout is judged only on the rendered page. On this site one command renders the page at the seven gate widths, saves the screenshots and measures the browser checks; a contact sheet compares pages side by side. In `ops-cycle.md` and `qa-checklist.md`.
+- Composition (owner, 2026-11-19): new `references/composition.md`. Points take a form chosen from the content (thirteen forms; a card grid is one and must be earned); the count comes from the content, with balanced arrangements for 1 to 7 or more and no orphans; chapters vary; one signature composition per page; mixed compositions done properly. The old rule "4 to 6 points become a grid" is replaced.
+- Client brand on the page (owner, 2026-11-19): up to three client colours in named roles with measured contrast, the client's own icons, and the branded visuals in the piece's folder. Replaces "one accent, for rules and numerals only".
+- Content richness: what a full case study draws on, each gap becoming one question to the owner.
+- Ask before rendering (owner, 2026-11-19): no render without the owner's go, and which part; `--only` renders one part.
+- Held here now: the chapter nav specification, type sizes for made files, and how a chart is carried in the block plan.
 
 ## Release of 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 

@@ -47,3 +47,7 @@ Every block and rhythm rule in `layout-grammar.md` maps to a principle:
 ## The critique pass
 
 In Ship mode, a design critique scores the rendered page at the narrow and wide tiers of the layout shell on hierarchy, focal point, rhythm, contrast, consistency and legibility, each 1 to 5 with one line of reason and the block it refers to. A score of 2 or lower is a finding to fix before the owner sees the preview.
+
+## Composing the page
+
+These principles name what is seen. How a page is composed from them, which form a set of points takes, how a count balances, how chapters vary and how the client's colour, icons and brand assets are used, is in `composition.md`.

@@ -53,7 +53,7 @@ result or supply an input; it never replaces a step.
 | Path | Purpose | Edited by hand |
 |---|---|---|
 | `SKILL.md` | The procedure, rules and index | yes |
-| `references/` | 17 files, one topic each; a rule lives in one file | yes |
+| `references/` | 18 files, one topic each; a rule lives in one file | yes |
 | `references/forms/` | 13 files, one per form, plus the approval steps | yes |
 | `scripts/case-audit.mjs` | Parse a body; print chapters, block plan, flags; measure media | yes |
 | `scripts/check-case-page.mjs` | Run the static publish gate on a page | yes |

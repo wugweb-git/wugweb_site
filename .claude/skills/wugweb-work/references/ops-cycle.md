@@ -21,6 +21,7 @@ Commands, gates and output formats for each mode, then this site's wiring. This 
 | Body | Draft proposal, current → proposed | Approval of that exact text |
 | Layout | Block plan | Approval |
 | SEO and schema | Title, description, headings check and the JSON-LD graph | Approval; the title and description then go to the owner as paste-in text for his source |
+| Before any render | What will be rendered, and the question: whole page or which part | The owner's go for that render |
 | Ship | Gate table + previews at 375, 768, 1200 (after handoffs 2 and 4) | Owner's go to sync, commit, deploy |
 | Forms | Each form, and each proposed new file | Owner's yes per form and per file |
 
@@ -139,7 +140,7 @@ Approved text goes to Notion only after approval of that exact change, with a ba
 | Body parser | `src/lib/case-body.ts` | Parse Body Content: chapters, claims, points, media references, labels, layout hints |
 | Media manifest | `media-manifest.mjs` and `image-dims.mjs`, in the site repository's own scripts library | Record what each file is: size, shape, type, status, duplicates, own or borrowed |
 | Visual read | The read records, `scripts/data/media-reads/<slug>.json` | Record what each screen shows and which chapter it proves |
-| Layout resolver | `src/lib/case-layout.ts` | Turn body, manifest and read into the block plan; route the other approved screens to All screens |
+| Layout resolver (today it shows points as one grid by count; the forms in `composition.md` are not built yet, so a block plan that names another form lists it as a gap) | `src/lib/case-layout.ts` | Turn body, manifest and read into the block plan; route the other approved screens to All screens |
 | Blocks | `src/components/work/Case*.astro`, switched by `CaseBlocks.astro` | Render each block |
 | Rail and viewer logic | `src/lib/case-rail.ts`, `src/lib/case-lightbox.ts` | Buttons, counter and keyboard for rails; the one-screen viewer |
 
@@ -260,6 +261,8 @@ A layout is judged on the rendered page, never on the block plan or the code. On
 node scripts/render-review.mjs <page address> [--slug <name>]
 node scripts/render-review.mjs --contact [--width 1200]
 ```
+
+**Ask first (owner, 2026-11-19).** Never render a piece without the owner's go for that render. Say what will be rendered and ask which part to look at: the whole page, or one part such as the body. A part is rendered with `--only <selector>`, for example `--only .case-page` for the case study without the site chrome. An earlier go does not carry to the next render.
 
 It runs in the site repository with Playwright (a development dependency; the live site does not use it). It reads only: nothing is written to the source, the CMS or the media store, and no media file is copied.
 
