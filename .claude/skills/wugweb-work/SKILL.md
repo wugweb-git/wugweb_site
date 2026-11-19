@@ -42,7 +42,7 @@ One source per piece. Track 1: one Body Content document written by the owner, p
 
 - Read the source first. Use the published page and the CMS record only to compare.
 - Show every change as current → proposed, with the reason, in a draft file.
-- The owner's decisions are the highest rule. They win over this file, any reference and any helper.
+- The owner's latest explicit decision is the highest rule. When sources disagree, name the conflict and hold it for approval; never choose or overwrite silently (`references/ops-cycle.md`).
 
 ## Never do
 
@@ -95,7 +95,7 @@ One matter is open with the owner: the newsletter's tool, list and cadence. One 
 
 ## Archetypes at a glance
 
-Pick the archetype after the visual read, from what the media shows. Recipes are in `references/archetypes.md`.
+Pick the archetype after the visual read. Recipes are in `references/archetypes.md`.
 
 | Archetype | Tell | Leads with |
 |---|---|---|
@@ -111,7 +111,7 @@ Pick the archetype after the visual read, from what the media shows. Recipes are
 
 ## Rules that always apply
 
-These are this skill's own, on top of the standing rules:
+On top of the standing rules:
 
 1. **A rewrite may only narrow a claim.** It never adds one the source does not carry.
 2. **Look before you write.** Labels and file names lie; only a close look catches another client's file.

@@ -61,7 +61,7 @@ result or supply an input; it never replaces a step.
 | `scripts/test.mjs` | Self-test of the scripts on the fixtures | yes |
 | `scripts/build.mjs` | Generate the five outputs below | yes |
 | `examples/` | One full proposal, two skeletons, three forms examples, four test fixtures | yes |
-| `evals/evals.json` | 18 test prompts with expectations; 1 to 14 run and graded 2026-11-17, 15 to 18 added 2026-11-19 and not yet run | no |
+| `evals/evals.json` | 20 test prompts with expectations; 1 to 14 run and graded 2026-11-17, 15 to 20 added 2026-11-19 and not yet run | no |
 | `metadata.json`, `CHANGELOG.md` | Version, date, abstract, history | yes |
 | `AGENTS.md` | Whole skill in one file | no, generated |
 | `export/<name>.md` | The same single file, for pasting into another tool | no, generated |
@@ -82,7 +82,9 @@ the rule's file pointers resolve.
 `adapters/chatgpt/instructions.md` into the instructions field and upload
 `AGENTS.md` as a knowledge file.
 
-**Codex, Copilot and other agents that read `AGENTS.md`.** Place `AGENTS.md` at
+**Codex.** In this repository the skill is already installed for Codex: `.agents/skills/<name>` is a link to `.claude/skills/<name>`, so Codex loads the same `SKILL.md`, `references/`, `scripts/` and `examples/` with nothing copied and nothing to keep in step. In another repository, copy the whole folder to `.agents/skills/<name>/`, or to `~/.agents/skills/<name>/` for every project. `agents/openai.yaml` holds its display settings.
+
+**Copilot and other agents that read `AGENTS.md`.** Place `AGENTS.md` at
 the repository root, or append it to the one already there.
 
 **Any other model.** Paste `AGENTS.md` into the conversation. The Look mode needs

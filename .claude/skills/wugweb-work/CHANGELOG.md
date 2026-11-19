@@ -27,6 +27,10 @@
 - Failure handling by system (owner, 2026-11-19): what happens when the source, the media store, the published record, parsing, media inspection, preview generation, the gate or the deploy fails. Partial output is never published without saying so. In `ops-cycle.md`.
 - Acceptance criteria per mode (owner, 2026-11-19): pass or fail conditions for each of the nine modes. In `qa-checklist.md`.
 - Evidence provenance (owner, 2026-11-19): every result, metric and factual claim carries its source, source date, how it was verified and a verification status; only verified and owner-stated claims are published. In `evidence.md`.
+- Decision authority and conflict resolution (owner, 2026-11-19): when the source, the repository, this skill, client material and the owner's instructions disagree, name the conflict, apply the owner's latest explicit decision, hold what is unsettled for approval, and never choose or overwrite silently. In `ops-cycle.md`, with a line in `SKILL.md`.
+- When to call a specialist and how its findings come back into the proposal. In `ops-cycle.md`.
+- What search work stays here and what goes to `wugweb-seo`, as one table. In `copy-and-seo.md`.
+- Evals 19 and 20 (not yet run): conflicting sources held for approval; a failed step never shipped as partial.
 
 ## Release of 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 

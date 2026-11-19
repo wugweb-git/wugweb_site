@@ -123,6 +123,22 @@ The values below are held here and applied by this skill. They were agreed with 
 - FAQ blocks: the line agreed by `wugweb-strategy` and `wugweb-seo` (`.claude/skills/wugweb-seo/references/handoffs.md`, "1a. FAQ blocks"), applied in `own-content.md`.
 - Share image: `og:image` present and `og:url` equal to the canonical (`.claude/skills/wugweb-seo/references/audit.md`, `share-tags`, `share-url`); pick a project-specific existing file first, a new file only through the Forms gate. The 1200 x 630 size is the adopted made-file size, held in `forms.md`.
 
+### What stays here and what goes to `wugweb-seo`
+
+This skill does the search work for the piece it is making and holds the values it needs. It does not carry the search skill's method.
+
+| Request | Where it is done |
+|---|---|
+| Title, description, slug, headings, alt text and internal links for one piece | Here, to the values above |
+| The JSON-LD graph for one piece | Here (`schema-jsonld.md`) |
+| One search phrase and intent for a case-study brief | Asked of `wugweb-seo` (handoff 1); marked "unvalidated" when it cannot answer |
+| The keyword note for a blog post or service page | Read from the brief `wugweb-strategy` supplies; not asked for again |
+| Keyword research, a keyword map, topic gaps | `wugweb-seo` |
+| A general SEO brief for a blog post or service page | `wugweb-seo` plans it and `wugweb-strategy` briefs it; this skill then writes the piece |
+| Site-wide and technical search work: crawling, indexing, sitemaps, crawler access | `wugweb-seo` |
+| Search and AI answer reports | `wugweb-seo` |
+| A check of the built page | `wugweb-seo` may check it; its findings return as a fix list and enter the proposal |
+
 ## How it is checked
 
 The audit lists every banned word, dash, unbacked claim, generic heading and over-length item. The body proposal shows current → proposed for each. Helper skills for this: see the Body row of `skill-map.md`.
