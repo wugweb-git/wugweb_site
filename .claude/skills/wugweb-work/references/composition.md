@@ -28,6 +28,12 @@ The block catalogue says what a page may be made of. This file says how to make 
 
 Content without a designed experience fails, and a designed surface without content fails. This skill's job is the composition that joins them: it takes what the piece has to say and show, and gives it a shape at every width. It is not a page builder and it does not fill a template (owner, 2026-11-19).
 
+## Scope and authority
+
+- **The body section only (owner, 2026-11-19).** In a case study and in a blog post this skill composes the body: the chapters between the hero and the closing blocks. The hero, its meta list (Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country, Special Thanks), the site header and footer and the closing site blocks are not its work: they render as the owner and the site give them.
+- **Authority over layout and structure (owner, 2026-11-19).** Inside the body this skill decides. It may change the layout, the structure of rows and cells, the forms, the blocks, the components and, where a project needs it, the body grammar, the parser and the data the layout reads. It does not ask before each such change; it logs the decision and why. This authority does not cover the owner's content, which is still proposed and approved, a render, which is still asked for, or the hero meta, which is his.
+- **Mobile first.** Every composition is designed at 375 first and must be complete there. Wider layouts are that composition given more room, never the source of it.
+
 ## How a page is built up
 
 The body of a piece is one section of the page. Inside it the structure nests, and each level has one job:
@@ -196,12 +202,22 @@ A case study should look like the client's project inside Wugweb's frame. The Wu
 
 ### Where colour, type and style come from
 
-Nothing about the client's brand is guessed or picked by eye. It is read from what already exists, in this order, and each value is recorded with where it was read:
+Colour on the page comes from three places and no others (owner, 2026-11-19):
+
+| Source | What it gives | Who sets it |
+|---|---|---|
+| This site's stylesheet | The frame: surfaces, text colours, spacing, radii, shadows, type sizes, as tokens | The design system. This skill uses the tokens and never writes a colour value |
+| Wugweb's brand | The one yellow action and the house accent | The brand rules. Unchanged by any piece |
+| The client's brand values | The client's colours and typefaces for that piece | **The owner, with the content.** They arrive in the body as `Brand colours`, `Brand fonts` and `Accent` (`body-content-standard.md`) |
+
+The client's values the owner supplies with the content are used as given. They are not second-guessed, re-picked or replaced by a value read elsewhere. Where he has supplied none, this skill reads what exists and **proposes** values to him; nothing it reads is used on a page until he has put it in the content.
+
+Nothing about the client's brand is guessed or picked by eye. What is proposed is read from what already exists, in this order, and each value is recorded with where it was read:
 
 1. **The client's live stylesheet.** Open the client's product or site and read what the browser applies: the colour custom properties the client declares (their own token names), the colours on buttons and links, the colours that cover the most area and carry the most text, the font families with the roles, weights and sizes they are used at, the corner radii and the shadows.
 2. **The pixels of the project's screens.** Read the dominant colours of the screens in the piece's folder, leaving out near-white, near-black and grey, and keep the colours that recur across screens.
 3. **The brand files in the folder.** A palette sheet, a type specimen, a guideline page: read the named values from them.
-4. **The owner.** Where these disagree, or none exists, it is a question for the owner (`ops-cycle.md`, When sources disagree).
+4. **The owner.** Where these disagree with each other or with a value he supplied, his supplied value stands and the difference is reported (`ops-cycle.md`, When sources disagree).
 
 On this site one command does 1 and 2 and saves a record per piece (`ops-cycle.md`, The brand read). Where it cannot run, do the same by reading the stylesheet and the screens, and say it was done by hand.
 
@@ -283,7 +299,18 @@ A thin page is often a content gap, not a layout gap. Before laying out, list wh
 
 ## 11. Recomposing across widths
 
-A composition is designed three times, not shrunk.
+A composition is designed three times, not shrunk, and the phone comes first.
+
+**Mobile is the first design, not the fallback.**
+
+- Start at 375. Decide the order, what leads, what is seen in the first screenful of each chapter and how a set of screens is reached with a thumb. Only then give it more room.
+- Every chapter must work in one column with nothing lost: no point, screen, caption or number may exist only at a wider width.
+- A chapter's first screenful on a phone shows its claim and the start of its proof. A heading followed by a screen of text and no proof has the wrong order.
+- Sets of screens are made for the thumb: a rail that shows part of the next item, or thumbnails three across that open the viewer. Targets are 44 px or more with space between them.
+- Text is 16 px or more, at 35 to 60 characters a line. Nothing needs pinching to read, except a screen opened in the viewer.
+- Sideways scrolling belongs to a rail or a chip row and never to the page.
+- Weight matters most here: media loads only when near, and a phone is never sent a wall of full-size files at once.
+- It should feel like an app, not a shrunken web page: clear steps, one thing at a time, controls where the thumb is.
 
 - **375.** One column. The order is the reading order. Media runs to the gutter; sets of screens become rails or three-across thumbnails; a lead item comes first; a mixed composition becomes a sequence. Nothing depends on being beside something else.
 - **768.** Two columns where pairs and lead-and-supports can sit side by side. A three-column set becomes two with the remainder handled as in section 3, never an orphan.

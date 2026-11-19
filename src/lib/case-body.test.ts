@@ -359,6 +359,19 @@ test('synthetic: several **Key:** pairs on one line', () => {
   assert.equal(b.links.Live?.href, 'https://example.com');
 });
 
+test('brand values supplied with the content: colours with names, fonts and the site', () => {
+  const b = parse('**Brand colours:** #ea1828 primary, ink #1A1A1A; #fff\n**Brand fonts:** Poppins, Open Sans\n**Brand site:** https://example.org\n### A\nText.');
+  assert.deepEqual(b.brand?.colours, [{ hex: '#EA1828', name: 'primary' }, { hex: '#1A1A1A', name: 'ink' }, { hex: '#FFF' }]);
+  assert.deepEqual(b.brand?.fonts, ['Poppins', 'Open Sans']);
+  assert.equal(b.brand?.site, 'https://example.org');
+  assert.equal(b.meta.some((m) => /^Brand/i.test(m.key)), false);
+});
+
+test('no brand keys: no brand object, and a colour word is never turned into a value', () => {
+  assert.equal(parse('### A\nText.').brand, undefined);
+  assert.equal(parse('**Brand colours:** red and blue\n### A\nText.').brand, undefined);
+});
+
 test('synthetic: a bad Accent value is ignored', () => {
   assert.equal(parse('**Accent:** red\n### A\nText.').accent, undefined);
   assert.equal(parse('**Accent:** 0af\n### A\nText.').accent, '#0af');

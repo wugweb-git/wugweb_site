@@ -63,7 +63,12 @@ Body markdown uses only constructs the sync can convert to blocks: links, bold a
 | Industry, Partner, Disciplines, Team, Timeline, Year, Country, Platform, Special Thanks, Category, Tags | Hero meta and credits | Present keys only; empty keys never render |
 | Live, App Store, Play Store, Behance, Dribbble, Awards | Presence block | Never in the hero meta; a dead URL is kept in the source and skipped on the page |
 | Accent | Identity | One hex from the client's own palette; see `layout-grammar.md` for the contrast rule |
+| Brand colours | Client brand on the page | The client's colours as the owner supplies them with the content: each a hex with an optional name, separated by commas, for example `#EA1828 primary, #1A1A1A ink`. The first source for client colour (`composition.md`) |
+| Brand fonts | Client brand, named in copy and captions | The client's typefaces by name. Named and shown through the client's own screens; never loaded on this site without a licence |
+| Brand site | The brand read | The client's site or product address, which the brand read may open to propose values |
 | Results | Results | See section 6 |
+
+**The hero meta keys are the owner's (owner, 2026-11-19).** Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country and Special Thanks are written by the owner and rendered as he wrote them. This skill reads them and never proposes, fills, rewrites, reorders or lays them out. In a case study and in a blog post its work is the body section. A wrong or missing value is listed as a question, once, and left alone.
 
 Never infer a meta value. A timeline, year, partner, country or any other key the source does not give stays empty and does not render; it becomes an owner question.
 

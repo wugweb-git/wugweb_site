@@ -82,6 +82,19 @@ export interface CaseBody {
   links: Record<string, PresenceLink>;
   /** `Accent:` as a #hex, when it is one. Contrast is checked at render. */
   accent?: string;
+  /**
+   * The client's brand values as the owner supplied them with the content:
+   * `Brand colours:`, `Brand fonts:` and `Brand site:`. They are the first source
+   * for colour and type; nothing here is guessed.
+   */
+  brand?: Brand;
+}
+export interface BrandColour { hex: string; name?: string }
+export interface Brand {
+  colours: BrandColour[];
+  fonts: string[];
+  /** The client's site or product address, whose stylesheet the brand read may open. */
+  site?: string;
 }
 export interface ParseOptions {
   /**
@@ -394,6 +407,7 @@ export function parseCaseBody(md: string | null | undefined, opts: ParseOptions 
   let subtitle = '';
   let tags: string[] = [];
   let accent: string | undefined;
+  const brand: Brand = { colours: [], fonts: [] };
   const results: Result[] = [];
   const headMedia: Media[] = [];
   const shortLines: string[] = [];
@@ -407,6 +421,18 @@ export function parseCaseBody(md: string | null | undefined, opts: ParseOptions 
     if (k === 'Subtitle') subtitle = v;
     else if (k === 'Tags') tags = v.split(',').map((t) => t.trim()).filter(Boolean);
     else if (k === 'Accent') { const h = v.match(/^#?([0-9a-f]{6}|[0-9a-f]{3})$/i); if (h) accent = `#${h[1]}`; }
+    else if (/^Brand colou?rs?$/i.test(k)) {
+      // "#EA1828 primary, #1A1A1A ink" or "primary #EA1828; ink #1A1A1A": each item is one hex and an optional name.
+      for (const part of v.split(/[,;]/)) {
+        const h = part.match(/#([0-9a-f]{6}|[0-9a-f]{3})\b/i);
+        if (!h) continue;
+        const name = part.replace(h[0], '').replace(/[()]/g, ' ').trim();
+        const hex = `#${h[1]}`.toUpperCase();
+        if (!brand.colours.some((c) => c.hex === hex)) brand.colours.push(name ? { hex, name } : { hex });
+      }
+    }
+    else if (/^Brand fonts?$/i.test(k)) brand.fonts = v.split(/[,;]/).map((t) => t.trim()).filter(Boolean);
+    else if (/^Brand site$/i.test(k)) { const u = linksIn(v)[0]?.href || (/^https?:\/\/\S+$/.test(v) ? v : undefined); if (u) brand.site = u; }
     else if (PRESENCE_KEYS.includes(k)) {
       const ls = linksIn(v);
       const href = ls[0]?.href || (/^https?:\/\/\S+$/.test(v) ? v : undefined);
@@ -492,6 +518,7 @@ export function parseCaseBody(md: string | null | undefined, opts: ParseOptions 
 
   const out: CaseBody = { meta, subtitle, tags, cover, sections: secs, closing, results, links };
   if (accent) out.accent = accent;
+  if (brand.colours.length || brand.fonts.length || brand.site) out.brand = brand;
   return out;
 }
 
