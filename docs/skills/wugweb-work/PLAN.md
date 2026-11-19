@@ -1377,3 +1377,7 @@ Open with the owner: the newsletter's tool, list and cadence; which research hel
 Built 2026-11-19: the All screens component (`src/components/work/CaseScreens.astro`), with set chips and counts, thumbnails at their own ratio, and the viewer showing "3 of 8, Member". It is on the preview route only. Still to do on the site: the preview route passes no media manifest, so sets are named from the body labels until the manifest is wired in.
 
 Fixed after the pass (same day): the mosaic row reads as this plan has it again (the narrowing to brand applications was an error, not an owner rule), and the gate script takes the hero from the hero block.
+
+### Owner decisions and additions, afternoon of 2026-11-19
+
+Skill on main at `9a2fc9c3`, version 0.5.0, uploaded to the Claude app the same day. The full list is on the Notion page and in the skill's `CHANGELOG.md`. In short: the skill gives composition (content and experience together) and is not a page builder; the owner names the page and section each time; a case study's hero meta keys are his; inside the section given the skill has authority over layout and structure; colour comes from this site's stylesheet, Wugweb's brand and the client's brand values supplied with the content; mobile first; no render without his go. New in the skill: `references/composition.md` and `references/forms/graphics.md`, the decision log, provenance, failure handling, acceptance criteria and the conflict rule. What the site does not do yet is listed in the skill's `references/open-items.md`.
