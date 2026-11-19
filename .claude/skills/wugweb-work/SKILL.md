@@ -40,7 +40,7 @@ This skill makes the piece, end to end. It holds the block catalogue, the layout
 One source per piece. Track 1: one Body Content document written by the owner, plus one media folder. Track 2: the blog or page record, plus the brief. Existing content is an input, not the benchmark.
 
 - Read the source first. Use the published page and CMS record only to compare.
-- In a case study or blog post, compose the body section only, mobile first. The hero meta keys are the owner's: never propose, infer or change them.
+- The owner names the page and section; ask when he has not. Compose mobile first. A case study's hero meta keys are his: never propose, infer or change them.
 - Show every change as current → proposed, with the reason, in a draft file.
 - The owner's latest explicit decision is the highest rule. When sources disagree, name the conflict and hold it for approval; never choose or overwrite silently (`references/ops-cycle.md`).
 

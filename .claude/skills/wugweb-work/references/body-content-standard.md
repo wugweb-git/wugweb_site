@@ -68,7 +68,7 @@ Body markdown uses only constructs the sync can convert to blocks: links, bold a
 | Brand site | The brand read | The client's site or product address, which the brand read may open to propose values |
 | Results | Results | See section 6 |
 
-**The hero meta keys are the owner's (owner, 2026-11-19).** Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country and Special Thanks are written by the owner and rendered as he wrote them. This skill reads them and never proposes, fills, rewrites, reorders or lays them out. In a case study and in a blog post its work is the body section. A wrong or missing value is listed as a question, once, and left alone.
+**The hero meta keys are the owner's (owner, 2026-11-19).** Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country and Special Thanks are written by the owner and rendered as he wrote them. This skill reads them and never proposes, fills, rewrites, reorders or lays them out. A wrong or missing value is listed as a question, once, and left alone. Which section of a page this skill works on is named by the owner each time (`composition.md`).
 
 Never infer a meta value. A timeline, year, partner, country or any other key the source does not give stays empty and does not render; it becomes an owner question.
 

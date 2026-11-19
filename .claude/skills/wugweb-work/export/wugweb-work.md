@@ -37,7 +37,7 @@ This skill makes the piece, end to end. It holds the block catalogue, the layout
 One source per piece. Track 1: one Body Content document written by the owner, plus one media folder. Track 2: the blog or page record, plus the brief. Existing content is an input, not the benchmark.
 
 - Read the source first. Use the published page and CMS record only to compare.
-- In a case study or blog post, compose the body section only, mobile first. The hero meta keys are the owner's: never propose, infer or change them.
+- The owner names the page and section; ask when he has not. Compose mobile first. A case study's hero meta keys are his: never propose, infer or change them.
 - Show every change as current → proposed, with the reason, in a draft file.
 - The owner's latest explicit decision is the highest rule. When sources disagree, name the conflict and hold it for approval; never choose or overwrite silently (`references/ops-cycle.md`).
 
@@ -1468,7 +1468,7 @@ Body markdown uses only constructs the sync can convert to blocks: links, bold a
 | Brand site | The brand read | The client's site or product address, which the brand read may open to propose values |
 | Results | Results | See section 6 |
 
-**The hero meta keys are the owner's (owner, 2026-11-19).** Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country and Special Thanks are written by the owner and rendered as he wrote them. This skill reads them and never proposes, fills, rewrites, reorders or lays them out. In a case study and in a blog post its work is the body section. A wrong or missing value is listed as a question, once, and left alone.
+**The hero meta keys are the owner's (owner, 2026-11-19).** Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country and Special Thanks are written by the owner and rendered as he wrote them. This skill reads them and never proposes, fills, rewrites, reorders or lays them out. A wrong or missing value is listed as a question, once, and left alone. Which section of a page this skill works on is named by the owner each time (`composition.md`).
 
 Never infer a meta value. A timeline, year, partner, country or any other key the source does not give stays empty and does not render; it becomes an owner question.
 
@@ -1593,7 +1593,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ### 3. Hero, stats and summary
 
-The hero and its meta list are not composed by this skill (owner, 2026-11-19): the meta keys are the owner's and render as he wrote them. The lines below describe how the site shows them, so the body can follow on from them.
+A case study's hero meta keys are the owner's and render as he wrote them (owner, 2026-11-19); this skill never proposes or changes their values. Whether the hero itself is in scope for a given task is the owner's call when he names the section.
 
 - Brand label above the H1: the short title (the brand), else the client name. H1 = the title, which says what was built and does not repeat the brand. The source keeps the two apart: Title holds no brand, Short Title is the brand. Then the subtitle and a meta list holding present keys only.
 - Cover, in this order: the body's Cover; else the record's cover path image; else the file with the highest `heroScore` from the visual read; else no image and a text hero on the accent surface. The cover pick is this skill's call, reported with its reason (owner, 2026-11-11); when the visual read scores a folder file above the current cover, the proposal names it as the new Cover line.
@@ -1849,8 +1849,8 @@ Content without a designed experience fails, and a designed surface without cont
 
 ### Scope and authority
 
-- **The body section only (owner, 2026-11-19).** In a case study and in a blog post this skill composes the body: the chapters between the hero and the closing blocks. The hero, its meta list (Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country, Special Thanks), the site header and footer and the closing site blocks are not its work: they render as the owner and the site give them.
-- **Authority over layout and structure (owner, 2026-11-19).** Inside the body this skill decides. It may change the layout, the structure of rows and cells, the forms, the blocks, the components and, where a project needs it, the body grammar, the parser and the data the layout reads. It does not ask before each such change; it logs the decision and why. This authority does not cover the owner's content, which is still proposed and approved, a render, which is still asked for, or the hero meta, which is his.
+- **The owner names the section (owner, 2026-11-19).** This skill can audit and improve any page end to end: a case study, a blog post, a service page, any other page of the site. When it is applied, the owner says which page and which section to work on: the whole page, the body, or one part. Where he has not said, ask once before starting and work only on what he names. One standing exception: in a case study the hero meta keys (Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country, Special Thanks) are his and render as he wrote them.
+- **Authority over layout and structure (owner, 2026-11-19).** Inside the section it was given, this skill decides. It may change the layout, the structure of rows and cells, the forms, the blocks, the components and, where a project needs it, the body grammar, the parser and the data the layout reads. It does not ask before each such change; it logs the decision and why. This authority does not cover the owner's content, which is still proposed and approved, a render, which is still asked for, or a case study's hero meta, which is his.
 - **Mobile first.** Every composition is designed at 375 first and must be complete there. Wider layouts are that composition given more room, never the source of it.
 
 ### How a page is built up
@@ -2564,7 +2564,7 @@ One matter is open with the owner: the newsletter's sending tool, list and caden
 | Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
 | Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (no official pixel safe zone: keep the edges clear, wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
 | Composition and client brand | Owner, 2026-11-19: no default boxes, no fixed number of points, varied and balanced layouts; client colour, icons and branded visuals are used on purpose. The earlier line "one accent, for rules and numerals only" is widened: up to three client colours in named roles. The exact limits (three colours, one band per page) are this skill's working values until the owner changes them | `composition.md` |
-| Scope and authority | Owner, 2026-11-19: in a case study and a blog post the skill works on the body section only; the hero meta keys are his and are never proposed, filled or changed. Inside the body the skill has authority to change layout and structure. Client brand values are supplied by the owner with the content; mobile comes first | `composition.md`, `body-content-standard.md` |
+| Scope and authority | Owner, 2026-11-19: the owner names the page and section each time the skill is applied, and the skill can audit and improve any page end to end; a case study's hero meta keys are his and are never proposed, filled or changed. Inside the section given, the skill has authority to change layout and structure. Client brand values are supplied by the owner with the content; mobile comes first | `composition.md`, `body-content-standard.md` |
 | Loops | A loop is 15 seconds or less. A loop over 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden; all loops stop under reduced motion | `media-standard.md` (the rule is held here; the control is part of the page build) |
 | Card thumbnails | Every card is 16/10. The original ratio is kept and the frame is a mask: no crop of the source, no re-encode | `forms.md` (held here; `wugweb-kits` may check the built card) |
 | Layout sizes | Rail items 85vw and never past the 1200 content maximum; peek 20%; signature width 2400 px; line length 35 to 60 characters | `layout-grammar.md` (held here; `wugweb-kits` may check the result) |

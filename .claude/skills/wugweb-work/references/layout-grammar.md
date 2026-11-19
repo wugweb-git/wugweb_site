@@ -42,7 +42,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ## 3. Hero, stats and summary
 
-The hero and its meta list are not composed by this skill (owner, 2026-11-19): the meta keys are the owner's and render as he wrote them. The lines below describe how the site shows them, so the body can follow on from them.
+A case study's hero meta keys are the owner's and render as he wrote them (owner, 2026-11-19); this skill never proposes or changes their values. Whether the hero itself is in scope for a given task is the owner's call when he names the section.
 
 - Brand label above the H1: the short title (the brand), else the client name. H1 = the title, which says what was built and does not repeat the brand. The source keeps the two apart: Title holds no brand, Short Title is the brand. Then the subtitle and a meta list holding present keys only.
 - Cover, in this order: the body's Cover; else the record's cover path image; else the file with the highest `heroScore` from the visual read; else no image and a text hero on the accent surface. The cover pick is this skill's call, reported with its reason (owner, 2026-11-11); when the visual read scores a folder file above the current cover, the proposal names it as the new Cover line.

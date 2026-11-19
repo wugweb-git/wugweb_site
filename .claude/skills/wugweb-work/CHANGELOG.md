@@ -46,7 +46,7 @@
 - Infographics and mixed compositions as graphics; the skill draws charts and slides itself, with no sign-in helper.
 - Newsletter form rules written. Draft standards for images in own content and for refreshing an old piece.
 - Pending site work and the matters the owner has not defined are listed in `open-items.md`. Libraries the skill runs itself are in `skill-map.md`. Evals 21 to 24 added, not yet run.
-- Scope and authority (owner, 2026-11-19): in a case study and a blog post the skill composes the body section only. The hero meta keys (Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country, Special Thanks) are the owner's and are never proposed, filled or changed. Inside the body the skill has authority over layout and structure.
+- Scope and authority (owner, 2026-11-19): the owner names the page and section each time; the skill can audit and improve any page end to end (an earlier body-only clause was removed the same day at his word). A case study's hero meta keys (Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country, Special Thanks) are the owner's and are never proposed, filled or changed. Inside the section given, the skill has authority over layout and structure.
 - Colour sources (owner, 2026-11-19): this site's stylesheet, Wugweb's brand, and the client's brand values supplied by the owner with the content (`Brand colours`, `Brand fonts`, `Brand site`, `Accent`). The brand read proposes values; it never sets them.
 - Mobile first: every composition is designed at 375 first and is complete there.
 
