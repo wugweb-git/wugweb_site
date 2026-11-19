@@ -29,6 +29,19 @@ A card is one form among many, and it is the wrong default. A grid of equal boxe
 - Never put text of unequal length into equal boxes. It leaves one box crowded and the next half empty.
 - Never use a box to hold a single sentence. A sentence is a list item or a statement.
 - A page where every chapter is "heading, paragraph, grid of boxes" has failed, whatever the boxes hold.
+- A card is a linked preview of one thing. A text point that links nowhere is not a card, and a set of like points that a reader scans or compares reads better as a list or a table.
+
+What strong studio case studies do in place of boxes, as seen on their own pages (read 2026-11-19; patterns to learn from, never to copy):
+
+| Pattern | What it is |
+|---|---|
+| Run-in label and statement | A small label ("The challenge") followed by one large line that carries the chapter, then a short paragraph |
+| Ruled numbered rows | Each point is a row with a rule above it: the number in a narrow column, the sentence in a wide column offset to the right |
+| Number beside title | The number sits in its own narrow cell beside the title, with labelled sub-blocks under it |
+| Bare numerals | A large number and a one-line label, with no surface around it |
+| Image with side notes | One image with two short notes beside it |
+| An idea across captions | A three-part idea told as the captions of three images in a row |
+| Media stream | Media carries the page and the text is a few pull statements between it |
 
 ## 2. Forms for a set of points
 
@@ -68,6 +81,8 @@ There is no house number of points. Four points in every chapter is a symptom of
 
 How a count sits, when the form is a grid or columns:
 
+Two fixes for a leftover item, in this order: change the form; if the form stays, centre the leftover in its row. Widening a leftover to fill the row gives it emphasis it did not earn. For an odd count the first item may be promoted to full width, but only when it is the lead.
+
 | Count | Arrangements that balance | Never |
 |---|---|---|
 | 1 | Prose or a statement | A lone box |
@@ -91,6 +106,8 @@ Balance is judged on the rendered page, at 375, 768 and 1200.
 - **Edges.** Items align to the column grid. A mixed composition keeps consistent gaps and shared edges, so it reads as one composition.
 - **Asymmetry is allowed and often better.** A wide column beside a narrow one, or a lead item beside a stack, balances by weight and not by size.
 - **Empty space is a choice.** Space beside a short text is fine when it is deliberate and repeated; a hole in a grid is not.
+- **Few loud things.** No more than two large, attention-taking elements in one screenful, and no more than three type sizes in one composition.
+- **Measure.** Running text is 45 to 75 characters a line and never over 85; the house range for body text is 35 to 60.
 
 ## 5. Variety down the page
 
@@ -102,6 +119,9 @@ A reader should feel the page change as the story changes.
 - Alternate density: after a text-heavy chapter comes a media-led one, and after a wall of screens comes a quiet line of text.
 - Change the measure: a statement runs wide and large; an argument runs at reading width; a list may sit in a narrower column beside media.
 - One signature composition per page: the moment that could only belong to this project. It comes from the content: the one screen that explains the product, the mark at full size, the before and after, the number that matters.
+- Use more than one text width on a page: a headline may span most of the grid, body text sits at reading width, and numbers or notes sit in a narrow column.
+- A full-width image is a reset. Use it after a dense passage, not as decoration between every chapter.
+- At most one change of ground on a page, at the point where the subject changes (for example where the brand chapter begins).
 - Do not vary for its own sake. Each change of form has a reason from the content, and the reason goes in the decision log.
 
 ## 6. Mixed compositions
@@ -114,12 +134,39 @@ A bento is one composition in which text and media share a grid at different siz
 - No holes and no filler. If the cells do not tile, change the spans or the set.
 - Media is never cropped or reshaped to fit a cell. The cell takes the media's shape.
 - At 375 a mixed composition becomes a sequence: the dominant cell first, then the others in reading order.
+- Four to eight cells. Fewer is a pair or a split; more is a wall.
+- Gaps, radii and padding are constant across the composition; only the spans change.
+- Never rely on automatic back-filling to close holes when the order of the cells matters: it makes what is seen differ from the order in the HTML. Choose spans that tile.
+- A mixed composition is for several things seen together. One message, or a text-only list, never goes in one.
 
 ## 7. The client's brand on the page
 
 A case study should look like the client's project inside Wugweb's frame. The Wugweb system holds the page: its type, spacing, header, footer and its one yellow note. Inside the body, the client's own colour, icons and assets are used on purpose.
 
-Read the client's palette in Look mode from their own material: the mark, the screens, the brand files in the piece's folder. Record each colour with where it was read.
+### Where colour, type and style come from
+
+Nothing about the client's brand is guessed or picked by eye. It is read from what already exists, in this order, and each value is recorded with where it was read:
+
+1. **The client's live stylesheet.** Open the client's product or site and read what the browser applies: the colour custom properties the client declares (their own token names), the colours on buttons and links, the colours that cover the most area and carry the most text, the font families with the roles, weights and sizes they are used at, the corner radii and the shadows.
+2. **The pixels of the project's screens.** Read the dominant colours of the screens in the piece's folder, leaving out near-white, near-black and grey, and keep the colours that recur across screens.
+3. **The brand files in the folder.** A palette sheet, a type specimen, a guideline page: read the named values from them.
+4. **The owner.** Where these disagree, or none exists, it is a question for the owner (`ops-cycle.md`, When sources disagree).
+
+On this site one command does 1 and 2 and saves a record per piece (`ops-cycle.md`, The brand read). Where it cannot run, do the same by reading the stylesheet and the screens, and say it was done by hand.
+
+What is taken from the read:
+
+| Read | Used for |
+|---|---|
+| The colour on the client's primary action, or their declared brand token | The accent |
+| Recurring colours from the screens and declared tokens | Grounds, the brand band, chapter tints, chart series |
+| Font families, roles and weights | Named in the copy and the Styles caption; shown through the client's own specimen and screens. A client's font file is never loaded on this site without a licence on record |
+| Corner radii, shadows, density | The character of the client's interface, described in the copy and respected when their screens are framed: a sharp-cornered product is not put in a soft rounded frame |
+| Their token names | Quoted in a system or Styles chapter as evidence of the design system built |
+
+The record keeps the measured contrast of every colour against this site's surface and text, and says what each may be: an accent (3:1 or more), text (4.5:1 or more), or a ground and what text it may carry. A colour is only used in a role its numbers allow.
+
+Read the client's palette in Look mode from their own material, by the steps above. Record each colour with where it was read.
 
 | Role on the page | What may carry client colour | Limit |
 |---|---|---|
@@ -132,11 +179,12 @@ Read the client's palette in Look mode from their own material: the mark, the sc
 Rules:
 
 - Up to three client colours on a page: one accent and up to two for grounds and bands. More reads as a different website.
-- Every colour pair that carries text or meaning is measured, and the ratio is written in the review. A client colour that fails is shifted in lightness for use here and the shift is noted; the client's mark itself is never recoloured.
+- Every colour pair that carries text or meaning is measured, and the ratio is written in the review, unrounded: 4.49 is a fail. The text colour on a client ground is computed for that colour, never assumed: white fails on many oranges and yellows where black passes. A logo is exempt from contrast rules; text set in a brand colour is not. A client colour that fails is shifted in lightness for use here and the shift is noted; the client's mark itself is never recoloured.
 - Client colour is content. It arrives through the body's `Accent` value and the palette record, never as a value written into a stylesheet.
 - Yellow stays Wugweb's: the client's colour never competes with the one yellow action, and a client whose colour is yellow gets it as a ground or band, never on an action.
 - The site's own text and surface colours are never changed.
 - When no client colour can be read from real material, none is invented: the house accent is used and the gap is an owner question.
+- Some studios give the whole page the client's colour as its ground and keep their own type and navigation. That is a bigger step than the roles above and is used only on the owner's yes for that piece.
 
 ## 8. Icons
 
@@ -146,7 +194,7 @@ Icons explain or identify. They do not decorate.
 - Source, in this order: the client's own product icons as they appear in the screens or the brand files; the client's icon set if supplied; the site's icon set. Never mix two families in one set of points. Never use emoji.
 - Do not draw a new icon to fill a card. If the points have no natural icons, the form is not cards.
 - One size and one stroke weight within a set. Icons sit on the text baseline grid and take the text colour or the client accent.
-- An icon beside a label is decorative to assistive technology and is hidden from it; an icon standing alone needs a name.
+- Every icon has a visible label: very few icons are understood alone. An icon beside its label is decorative to assistive technology and is hidden from it; an icon standing alone needs a name and 3:1 contrast.
 - A client's icons are shown as the client drew them: not redrawn, recoloured or cropped. They appear with permission, like any brand asset.
 
 ## 9. Branded visuals
@@ -155,7 +203,7 @@ The client's identity is evidence of the work and of who it was for. Use it.
 
 - From the piece's own folder, find and use: the mark and its lockups, the type specimen, the palette, patterns and graphic devices, the illustration system, photography, motion, and applications (print, signage, packaging, social).
 - A product project still has a brand: show the mark with the project title, show the interface type and colour in a Styles pair, and let the screens carry the rest.
-- A brand project sequences its chapters as idea, mark, type, colour, system, applications, unless the content gives a better order.
+- A brand project sequences its chapters as idea, mark, type, colour, system, applications, then outcome, unless the content gives a better order. A challenge or strategy chapter comes first when the source holds one.
 - Show screens without a device frame on a client-coloured ground where the files allow. A device mockup is support, at most two per page.
 - A logo is shown at the size and with the clear space its owner asks for, on a ground that passes contrast, and never altered.
 - Brand assets are used only with permission on record, and a client who may not be named is not shown by mark, colour or product name.

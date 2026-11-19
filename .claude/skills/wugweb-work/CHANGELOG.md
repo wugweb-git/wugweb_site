@@ -37,6 +37,8 @@
 - Content richness: what a full case study draws on, each gap becoming one question to the owner.
 - Ask before rendering (owner, 2026-11-19): no render without the owner's go, and which part; `--only` renders one part.
 - Held here now: the chapter nav specification, type sizes for made files, and how a chart is carried in the block plan.
+- Brand read (owner, 2026-11-19): colour, type and style are read from the client's live stylesheet and from the pixels of the project's screens, never picked by eye; every colour carries its source and measured contrast. In `composition.md`, with the command in `ops-cycle.md`.
+- Composition file extended from research on studio case studies and layout guidance: patterns that replace boxes, how to treat a leftover item, limits on loud elements, text widths, mixed-composition rules, unrounded contrast.
 
 ## Release of 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 

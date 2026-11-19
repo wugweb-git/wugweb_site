@@ -284,6 +284,22 @@ Rules:
 - A model's opinion of a screenshot is weak evidence without measurements beside it: give the measured table with the picture, look at cropped regions for detail, and compare two options side by side when choosing. Where two options are close, the owner decides.
 - If the render fails, the page is not reviewed. Report the failure; do not fall back to judging from the code.
 
+### The brand read: colour, type and style from what exists
+
+The client's colours, fonts and style are read, never guessed (`composition.md`). On this site:
+
+```
+node scripts/brand-read.mjs --site <the client's site or product address> --slug <slug>
+node scripts/brand-read.mjs --screens <screen address> <screen address> ... --slug <slug>
+```
+
+- `--site` opens the client's live page and reads the stylesheet as the browser applies it: declared colour tokens, colours on actions and links, colours by area and by text, font families with roles, weights and sizes, corner radii and shadows.
+- `--screens` reads the pixels of the piece's own screens from the media store and returns the colours that recur.
+- It measures every colour against this site's surface and text and says what role each may take.
+- The record is saved as `scripts/data/media-reads/<slug>.brand.json`, beside the visual read records, and is committed.
+- It reads only. No stylesheet, font file or image is saved; only the values. A client's site is fetched as any visitor would see it; a page behind a login is not read.
+- If it fails, nothing is recorded and no colour or font from that run is used.
+
 ### When to call a specialist, and how its findings come back
 
 This skill does every step itself. A specialist (a helper in `skill-map.md` or a sibling skill) is called for one of three reasons only: it holds data this skill cannot reach (search volumes, analytics, a client's public brand values); it gives a second read of a finished result (voice, tokens, accessibility, search); or the owner asked for it.

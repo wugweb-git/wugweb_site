@@ -115,3 +115,7 @@ The two records below come from two different clients. The schema is the same fo
 ## 8. Where the run was thin last time
 
 The NTUC run wrote most captions from thumbnail views, saw videos at 2 frames only, and quoted one byte total as an estimate that was wrong. So: a caption or alt text is written only after that screen has been seen close up; videos are stepped through; every number is computed.
+
+## The brand read
+
+Beside the read of each file, Look mode reads the client's brand once per piece: colours, fonts and style from the client's live stylesheet and from the pixels of the screens, each with where it was read and its measured contrast. The steps and what is taken from them are in `composition.md`; the command on this site is in `ops-cycle.md`. A palette picked by eye is not a read.
