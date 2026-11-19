@@ -130,7 +130,7 @@ Read only the file the current mode needs.
 
 | File | Read it for |
 |---|---|
-| `references/evidence.md` | Audit and Body: findings, evidence ledger, fact lock, numbers, sources |
+| `references/evidence.md` | Audit and Body: findings, evidence ledger, provenance, decision log, fact lock, numbers, sources |
 | `references/body-content-standard.md` | Body: the v2 grammar, meta keys, media labels, results lines |
 | `references/own-content.md` | Track 2: the eight steps and the draft body standards |
 | `references/media-standard.md` | Media: the media rule, manifest fields, shapes, budgets, alt and captions |
@@ -138,7 +138,7 @@ Read only the file the current mode needs.
 | `references/archetypes.md` | Brief and Layout: archetype recipes |
 | `references/forms.md` | Forms: the index, shared rules, and the `forms/` files |
 | `references/handoffs.md` | The written requests to sibling skills |
-| `references/qa-checklist.md` | Ship: the publish gate and the definition of done |
+| `references/qa-checklist.md` | Ship: the publish gate, acceptance criteria and the definition of done |
 | `references/open-items.md` | What is not decided, and the working assumption for each |
 | `references/skill-map.md` | Helpers, permission levels, clashes, fallbacks |
 | `references/ops-cycle.md` | Commands, output formats, this site's wiring |

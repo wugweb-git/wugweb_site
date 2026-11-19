@@ -23,6 +23,10 @@
   - Evals: 15 to 18 added (screen selection, All screens and viewer, fact pack and carousel, Behance and deck), chapter length and title and description assertions added to eval 1; evals 3, 5 and 9 corrected (misnamed IndusNinja boards, no scheduling tool connected). The new evals have not been run.
 - The mosaic row again reads as the owner's plan has it: 2 to 6 landscape or mixed media, with no narrowing to brand applications. The narrowing was added in error on 2026-11-19.
 - The gate script takes the hero from the hero block, and falls back to the first image in `main` only when the page has no hero block.
+- Decision log (owner, 2026-11-19): why a storytelling direction, cover, screen selection, set or layout was chosen is written down per piece, with the evidence and what was seen on the render. In `evidence.md`.
+- Failure handling by system (owner, 2026-11-19): what happens when the source, the media store, the published record, parsing, media inspection, preview generation, the gate or the deploy fails. Partial output is never published without saying so. In `ops-cycle.md`.
+- Acceptance criteria per mode (owner, 2026-11-19): pass or fail conditions for each of the nine modes. In `qa-checklist.md`.
+- Evidence provenance (owner, 2026-11-19): every result, metric and factual claim carries its source, source date, how it was verified and a verification status; only verified and owner-stated claims are published. In `evidence.md`.
 
 ## Release of 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 

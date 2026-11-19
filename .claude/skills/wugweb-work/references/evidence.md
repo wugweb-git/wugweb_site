@@ -42,6 +42,29 @@ claim | where it is | evidence (screen, sourced number, named fact) | status | s
 
 Status is one of: backed, needs evidence, stronger than the evidence, remove.
 
+### Provenance: where each claim comes from
+
+Every result, metric and factual claim on a piece traces back to a source. The ledger row for it carries four more fields, and a claim with any of them empty is not published.
+
+```
+source (who or what supplied it) | source date | how it was verified | verification status
+```
+
+| Field | What goes in it |
+|---|---|
+| `source` | The named origin: the owner's message, the client's document, a screen in the media folder (file name), an analytics export, a public page (address). Never "known" or "from memory" |
+| `source date` | The date of the source itself, and the as-of date of a number. Not the date the piece was written |
+| `how it was verified` | What was done: the screen was opened and read close up; the figure was recomputed from the export; the page was fetched and the line quoted; the owner confirmed it in writing |
+| `verification status` | One of: `verified` (checked against the source by the means named), `owner-stated` (the owner supplied it and nothing independent confirms it), `unverified` (not yet checked), `conflicting` (two sources disagree) |
+
+Rules:
+
+- Only `verified` and `owner-stated` claims may be published. An `owner-stated` number is published as the owner gave it, with its period and source line.
+- `unverified` and `conflicting` claims are held: the sentence is cut or narrowed, and the gap becomes an owner question.
+- A claim keeps its provenance when it moves to another form. A deck slide, a post or a share image carries the same source line as the case study.
+- When a source changes or is withdrawn, every piece that uses the claim is listed and rechecked.
+- The verification status is never raised without a new check, and the check is named.
+
 - A rewrite may only narrow a claim, never widen it.
 - One client's result never backs a general claim.
 - Where two figures conflict, the number is withheld and the owner is asked.
@@ -52,6 +75,36 @@ Status is one of: backed, needs evidence, stronger than the evidence, remove.
 - Before editing, list every number, name, date, quote and scope word (all, some, only). Recheck the list after the edit; nothing in it may have changed by accident.
 - Each added sentence must trace to a supplied fact. A missing fact becomes an owner question.
 - Every edit is logged: before, after, reason. This is the current → proposed table.
+
+## Decision log
+
+Why a piece looks and reads the way it does is written down at the moment it is decided, so the next session does not undo it or decide it again. One log per piece, kept beside its visual read records (the place on this site is in `ops-cycle.md`).
+
+One entry per decision:
+
+```
+date | mode | decision | options considered | why this one (the evidence) | who decided | what would change it
+```
+
+A decision is logged whenever one of these is chosen or changed:
+
+| Decision | The entry must say |
+|---|---|
+| Storytelling direction | The one claim the piece makes, the order of the chapters, and what was left out and why |
+| Cover | Which file, its hero score, which files it beat, and how it reads at card size |
+| Screen selection | Which screens prove each chapter, which went to All screens, which were hidden and the flag on each |
+| Sets in All screens | The name of each set and whether it is an audience, a flow, a kind or a state group |
+| Layout | The block chosen for each content shape, the layout hint if one was used, and what was seen on the render at 375, 768 and 1200 that confirmed or changed it |
+| A departure from a rule | The rule, why it does not fit this piece, and the owner's yes |
+| A helper's suggestion declined | The suggestion and the rule it broke |
+
+Rules:
+
+- "Why" names evidence: a screen, a measurement, a render seen at a named width, or the owner's words with the date. "It looks better" is not a reason.
+- A layout decision with no render behind it is logged as `not yet seen` and cannot pass the gate.
+- "Who decided" is the owner or this skill. A decision the owner made is quoted and dated, and is not reopened without him.
+- Entries are never rewritten. A changed decision is a new entry that names the one it replaces.
+- The log is read at the start of any later session on the piece, before anything is proposed.
 
 ## Order of writing
 

@@ -103,6 +103,7 @@ source (one Body Content document + one media folder) → parsed body → media 
 - **Layout values**: held in `layout-grammar.md` section 8, restated from `kits_design_system/docs/tokens/layout-shell.md` (with `tokens/sizing.md` and `docs/components.md`). That design system document wins if it changes; `wugweb-kits` may check the result.
 - **Listing a media folder**: `node scripts/media-manifest-dry-run.mjs` in the site repository (its library is `media-manifest.mjs`, in the site's own scripts library). It takes the folder listing from the CMS asset registry, because R2 has no read-only list command here, and measures every file by HEAD and ranged reads. It writes a report under `docs/research/` and two ignored files under `scripts/data/`; it never writes Sanity, Notion or R2. Commands that write, delete or download media are forbidden.
 - **Visual read records**: `scripts/data/media-reads/<slug>.json` in the site repository, one file per case study, committed, keyed by URL and ETag so each file is read once. The folder is made with the first read.
+- **Decision log**: `scripts/data/media-reads/<slug>.decisions.md` in the site repository, beside that piece's read records, committed. The format is in `evidence.md`.
 - **CMS**: Sanity, document type `caseStudy`, field `bodyMarkdown`, synced from Notion. Public read: `https://splvhmk1.apicdn.sanity.io/v2024-01-01/data/query/production`.
 - **v1 duplicate copy**: older bodies hold a second, longer copy under the heading `## Sanity site copy` or `## Framer site copy` (both are read the same way). The long copy wins; proposals collapse both into one.
 - **Media**: Cloudflare R2, `assets/work/<slug>/`, public base `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/`.
@@ -192,6 +193,21 @@ Ship covers the built page, the synchronisation and the deployment. After a sync
 - A permission error: stop before any write. Never leave a partial write.
 - A source row with no slug, or more than one match: skip it and list it for the owner.
 - A canonical that is not the page's own address: do not overwrite it; list it for the owner.
+
+**Never publish partial output without saying so.** A step that fails stops the cycle at that step. Nothing downstream runs on a guess, a cached copy passed off as fresh, or half a result. The report says what failed, what was and was not done, and what state each system is in.
+
+| What fails | What it looks like | What to do | What must not happen |
+|---|---|---|---|
+| Notion (the source) | The row cannot be read, the body comes back empty or cut short, the request times out | Stop. Retry up to 3 times with a wait. If it still fails, report it and work only on what was already read in full, marked with its read date | Writing a body proposal from a partial read; syncing an empty or shortened body over a full one |
+| R2 (the media store) | A file returns anything but 200, a folder listing is incomplete, a measurement fails | Mark the file `dead` or `unmeasured` in the manifest and keep it out of the page. Report the count. A piece whose cover or proof screen is dead does not ship | Rendering a broken image; guessing a file's size or shape; treating a file that could not be measured as approved |
+| Sanity (the published record) | A read fails, a write is refused, a write returns but the record does not show the change | Before a write: stop. After a refused write: confirm nothing was written. After a write that does not show: wait for the cache, read again, then restore from the backup if it is wrong | A write with no backup; a second write to "fix" the first before reading the record back |
+| Parsing | The body yields fewer than 2 sections, a `#` shows in visible text, a point or a media line is lost, a meta line is read as a chapter | Stop before Layout. List each line that did not parse, with its line number. Fix the body proposal or the parser, then parse again | Laying out or shipping a body that lost content; dropping the unparsed lines silently |
+| Media inspection (the visual read) | A file cannot be opened, a video will not decode, only a thumbnail was seen | Record the file as `not read`. It gets no caption, no alt text and no place in a chapter until it is read close up. Report the count | Writing a caption or alt text for a file that was not seen; counting it as read |
+| Preview generation | The build fails, the page returns an error, a block is missing, the render differs from the block plan | Stop before Ship. Report the error and the block. Fix and render again. The gate runs only on a page that rendered in full | Running the gate on a failed or partial render; calling the page done from the block plan alone |
+| The publish gate | A check cannot run (no browser, no network) | Report the check as `not run`, never as passed. A gate with a `not run` check on a hard stop does not pass | Reporting a pass for a check that did not run |
+| Deploy | The build or the deploy fails, or the deployed page differs from the preview | Leave the last good deploy live. Report the failure with the log line. Do not sync content for a page whose code did not deploy | Leaving the record and the code out of step without saying so |
+
+After any failure the report has four lines: what failed and where; what was completed before it; what was not done; what each system holds now (unchanged, changed and verified, or changed and unverified).
 
 ### Rollback
 

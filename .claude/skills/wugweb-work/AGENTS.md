@@ -127,7 +127,7 @@ Read only the file the current mode needs.
 
 | File | Read it for |
 |---|---|
-| `references/evidence.md` | Audit and Body: findings, evidence ledger, fact lock, numbers, sources |
+| `references/evidence.md` | Audit and Body: findings, evidence ledger, provenance, decision log, fact lock, numbers, sources |
 | `references/body-content-standard.md` | Body: the v2 grammar, meta keys, media labels, results lines |
 | `references/own-content.md` | Track 2: the eight steps and the draft body standards |
 | `references/media-standard.md` | Media: the media rule, manifest fields, shapes, budgets, alt and captions |
@@ -135,7 +135,7 @@ Read only the file the current mode needs.
 | `references/archetypes.md` | Brief and Layout: archetype recipes |
 | `references/forms.md` | Forms: the index, shared rules, and the `forms/` files |
 | `references/handoffs.md` | The written requests to sibling skills |
-| `references/qa-checklist.md` | Ship: the publish gate and the definition of done |
+| `references/qa-checklist.md` | Ship: the publish gate, acceptance criteria and the definition of done |
 | `references/open-items.md` | What is not decided, and the working assumption for each |
 | `references/skill-map.md` | Helpers, permission levels, clashes, fallbacks |
 | `references/ops-cycle.md` | Commands, output formats, this site's wiring |
@@ -804,6 +804,7 @@ source (one Body Content document + one media folder) → parsed body → media 
 - **Layout values**: held in `layout-grammar.md` section 8, restated from `kits_design_system/docs/tokens/layout-shell.md` (with `tokens/sizing.md` and `docs/components.md`). That design system document wins if it changes; `wugweb-kits` may check the result.
 - **Listing a media folder**: `node scripts/media-manifest-dry-run.mjs` in the site repository (its library is `media-manifest.mjs`, in the site's own scripts library). It takes the folder listing from the CMS asset registry, because R2 has no read-only list command here, and measures every file by HEAD and ranged reads. It writes a report under `docs/research/` and two ignored files under `scripts/data/`; it never writes Sanity, Notion or R2. Commands that write, delete or download media are forbidden.
 - **Visual read records**: `scripts/data/media-reads/<slug>.json` in the site repository, one file per case study, committed, keyed by URL and ETag so each file is read once. The folder is made with the first read.
+- **Decision log**: `scripts/data/media-reads/<slug>.decisions.md` in the site repository, beside that piece's read records, committed. The format is in `evidence.md`.
 - **CMS**: Sanity, document type `caseStudy`, field `bodyMarkdown`, synced from Notion. Public read: `https://splvhmk1.apicdn.sanity.io/v2024-01-01/data/query/production`.
 - **v1 duplicate copy**: older bodies hold a second, longer copy under the heading `## Sanity site copy` or `## Framer site copy` (both are read the same way). The long copy wins; proposals collapse both into one.
 - **Media**: Cloudflare R2, `assets/work/<slug>/`, public base `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/`.
@@ -894,6 +895,21 @@ Ship covers the built page, the synchronisation and the deployment. After a sync
 - A source row with no slug, or more than one match: skip it and list it for the owner.
 - A canonical that is not the page's own address: do not overwrite it; list it for the owner.
 
+**Never publish partial output without saying so.** A step that fails stops the cycle at that step. Nothing downstream runs on a guess, a cached copy passed off as fresh, or half a result. The report says what failed, what was and was not done, and what state each system is in.
+
+| What fails | What it looks like | What to do | What must not happen |
+|---|---|---|---|
+| Notion (the source) | The row cannot be read, the body comes back empty or cut short, the request times out | Stop. Retry up to 3 times with a wait. If it still fails, report it and work only on what was already read in full, marked with its read date | Writing a body proposal from a partial read; syncing an empty or shortened body over a full one |
+| R2 (the media store) | A file returns anything but 200, a folder listing is incomplete, a measurement fails | Mark the file `dead` or `unmeasured` in the manifest and keep it out of the page. Report the count. A piece whose cover or proof screen is dead does not ship | Rendering a broken image; guessing a file's size or shape; treating a file that could not be measured as approved |
+| Sanity (the published record) | A read fails, a write is refused, a write returns but the record does not show the change | Before a write: stop. After a refused write: confirm nothing was written. After a write that does not show: wait for the cache, read again, then restore from the backup if it is wrong | A write with no backup; a second write to "fix" the first before reading the record back |
+| Parsing | The body yields fewer than 2 sections, a `#` shows in visible text, a point or a media line is lost, a meta line is read as a chapter | Stop before Layout. List each line that did not parse, with its line number. Fix the body proposal or the parser, then parse again | Laying out or shipping a body that lost content; dropping the unparsed lines silently |
+| Media inspection (the visual read) | A file cannot be opened, a video will not decode, only a thumbnail was seen | Record the file as `not read`. It gets no caption, no alt text and no place in a chapter until it is read close up. Report the count | Writing a caption or alt text for a file that was not seen; counting it as read |
+| Preview generation | The build fails, the page returns an error, a block is missing, the render differs from the block plan | Stop before Ship. Report the error and the block. Fix and render again. The gate runs only on a page that rendered in full | Running the gate on a failed or partial render; calling the page done from the block plan alone |
+| The publish gate | A check cannot run (no browser, no network) | Report the check as `not run`, never as passed. A gate with a `not run` check on a hard stop does not pass | Reporting a pass for a check that did not run |
+| Deploy | The build or the deploy fails, or the deployed page differs from the preview | Leave the last good deploy live. Report the failure with the log line. Do not sync content for a page whose code did not deploy | Leaving the record and the code out of step without saying so |
+
+After any failure the report has four lines: what failed and where; what was completed before it; what was not done; what each system holds now (unchanged, changed and verified, or changed and unverified).
+
 #### Rollback
 
 - Every write is preceded by a backup of the touched fields, kept in the repository's backups folder with a timestamp.
@@ -958,6 +974,29 @@ claim | where it is | evidence (screen, sourced number, named fact) | status | s
 
 Status is one of: backed, needs evidence, stronger than the evidence, remove.
 
+#### Provenance: where each claim comes from
+
+Every result, metric and factual claim on a piece traces back to a source. The ledger row for it carries four more fields, and a claim with any of them empty is not published.
+
+```
+source (who or what supplied it) | source date | how it was verified | verification status
+```
+
+| Field | What goes in it |
+|---|---|
+| `source` | The named origin: the owner's message, the client's document, a screen in the media folder (file name), an analytics export, a public page (address). Never "known" or "from memory" |
+| `source date` | The date of the source itself, and the as-of date of a number. Not the date the piece was written |
+| `how it was verified` | What was done: the screen was opened and read close up; the figure was recomputed from the export; the page was fetched and the line quoted; the owner confirmed it in writing |
+| `verification status` | One of: `verified` (checked against the source by the means named), `owner-stated` (the owner supplied it and nothing independent confirms it), `unverified` (not yet checked), `conflicting` (two sources disagree) |
+
+Rules:
+
+- Only `verified` and `owner-stated` claims may be published. An `owner-stated` number is published as the owner gave it, with its period and source line.
+- `unverified` and `conflicting` claims are held: the sentence is cut or narrowed, and the gap becomes an owner question.
+- A claim keeps its provenance when it moves to another form. A deck slide, a post or a share image carries the same source line as the case study.
+- When a source changes or is withdrawn, every piece that uses the claim is listed and rechecked.
+- The verification status is never raised without a new check, and the check is named.
+
 - A rewrite may only narrow a claim, never widen it.
 - One client's result never backs a general claim.
 - Where two figures conflict, the number is withheld and the owner is asked.
@@ -968,6 +1007,36 @@ Status is one of: backed, needs evidence, stronger than the evidence, remove.
 - Before editing, list every number, name, date, quote and scope word (all, some, only). Recheck the list after the edit; nothing in it may have changed by accident.
 - Each added sentence must trace to a supplied fact. A missing fact becomes an owner question.
 - Every edit is logged: before, after, reason. This is the current → proposed table.
+
+### Decision log
+
+Why a piece looks and reads the way it does is written down at the moment it is decided, so the next session does not undo it or decide it again. One log per piece, kept beside its visual read records (the place on this site is in `ops-cycle.md`).
+
+One entry per decision:
+
+```
+date | mode | decision | options considered | why this one (the evidence) | who decided | what would change it
+```
+
+A decision is logged whenever one of these is chosen or changed:
+
+| Decision | The entry must say |
+|---|---|
+| Storytelling direction | The one claim the piece makes, the order of the chapters, and what was left out and why |
+| Cover | Which file, its hero score, which files it beat, and how it reads at card size |
+| Screen selection | Which screens prove each chapter, which went to All screens, which were hidden and the flag on each |
+| Sets in All screens | The name of each set and whether it is an audience, a flow, a kind or a state group |
+| Layout | The block chosen for each content shape, the layout hint if one was used, and what was seen on the render at 375, 768 and 1200 that confirmed or changed it |
+| A departure from a rule | The rule, why it does not fit this piece, and the owner's yes |
+| A helper's suggestion declined | The suggestion and the rule it broke |
+
+Rules:
+
+- "Why" names evidence: a screen, a measurement, a render seen at a named width, or the owner's words with the date. "It looks better" is not a reason.
+- A layout decision with no render behind it is logged as `not yet seen` and cannot pass the gate.
+- "Who decided" is the owner or this skill. A decision the owner made is quoted and dated, and is not reopened without him.
+- Entries are never rewritten. A changed decision is a new entry that names the one it replaces.
+- The log is read at the start of any later session on the piece, before anything is proposed.
 
 ### Order of writing
 
@@ -1763,6 +1832,22 @@ When a UX audit helper is run on the rendered page at 375 and 1200, its measured
 ### Automated part
 
 `scripts/check-case-page.mjs <url> [--host <canonical host>] [--no-body]` covers the static checks: headings, sections, articles, images, dashes, rails, videos, title, description, canonical (host and path), JSON-LD, media status and byte total. The chapter check is reported as not applicable on a page that is not a case study (track 2) and, with `--no-body`, on a no-body case study. Overflow, aspect ratio, masks, contrast, targets, reduced motion, the rail counter, All screens, the viewer, the link check and the critique are checked in the browser at each width.
+
+### Acceptance criteria per mode
+
+A mode is finished when its conditions are met, not when its steps were run. Each row is pass or fail. One fail means the mode is not done and the next mode does not start. A condition that could not be checked is reported as `not checked` and counts as a fail.
+
+| Mode | Passes only when all of these are true |
+|---|---|
+| Audit | Every finding has a location and a measurement or a quoted line. Every file in the piece's own folder is listed. Every number in the report was computed. The piece has exactly one verdict: keep, update, merge or retire |
+| Brief | Every field of the template is filled or marked "to supply" with the question to the owner. The piece states one claim, one tension, one proof and one outcome. The search phrase has a source or is marked "unvalidated". No fact in it lacks a source |
+| Media | Every file has status, bytes, pixel size and shape, or is marked `dead` or `unmeasured`. Duplicates are marked and point at the file kept. Borrowed and wrong-client files are flagged. The count of files equals the count in the folder listing |
+| Look | Every image was opened and read close up, and every video was stepped through. Each record has what it shows, kind, audience, flow, quality and the chapter it proves, or `none`. Every flag has a call: stays, hidden or ask the owner. No caption or alt text exists for a file marked `not read` |
+| Body | One copy only. Every heading is a claim of 70 characters or fewer. Every claim has a ledger row with provenance, and none is `unverified` or `conflicting`. Every own-folder file is used, sent to All screens, or listed as not rendered with the reason. The banned-word and dash checks return zero. Nothing was written to the source |
+| Layout | Every block is one of the 23 types. The block plan accounts for every approved media file exactly once in a chapter or in All screens. The page was rendered and seen at 375, 768 and 1200, and the decision log holds what was seen. Nothing is cropped, nothing changes ratio, a Styles pair is 50:50, and no cell is empty |
+| SEO and schema | The rendered title is 60 characters or fewer. The description is 140 to 160 characters. The canonical is the page's own address. The graph holds exactly the types the page needs, with no `author`, review stars or how-to type, and no FAQ markup on a case study. Every value in the graph is visible on the page |
+| Ship | Every automated gate check passes or is not applicable. Every browser check was run at 375, 767, 768, 769, 1199, 1200 and 1201 and passes. No hard stop is open. The owner approved the preview. After the deploy, the live page matches the preview and every media address returns 200 |
+| Forms | The form was made from the approved body only. Every claim in it carries the same source line as the case study. Captions for Behance are the case study's captions word for word. No slide is without a body line. Each made file had the owner's yes for that file. Nothing was scheduled or posted without the owner's yes for that post |
 
 ### Definition of done
 

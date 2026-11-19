@@ -109,6 +109,22 @@ When a UX audit helper is run on the rendered page at 375 and 1200, its measured
 
 `scripts/check-case-page.mjs <url> [--host <canonical host>] [--no-body]` covers the static checks: headings, sections, articles, images, dashes, rails, videos, title, description, canonical (host and path), JSON-LD, media status and byte total. The chapter check is reported as not applicable on a page that is not a case study (track 2) and, with `--no-body`, on a no-body case study. Overflow, aspect ratio, masks, contrast, targets, reduced motion, the rail counter, All screens, the viewer, the link check and the critique are checked in the browser at each width.
 
+## Acceptance criteria per mode
+
+A mode is finished when its conditions are met, not when its steps were run. Each row is pass or fail. One fail means the mode is not done and the next mode does not start. A condition that could not be checked is reported as `not checked` and counts as a fail.
+
+| Mode | Passes only when all of these are true |
+|---|---|
+| Audit | Every finding has a location and a measurement or a quoted line. Every file in the piece's own folder is listed. Every number in the report was computed. The piece has exactly one verdict: keep, update, merge or retire |
+| Brief | Every field of the template is filled or marked "to supply" with the question to the owner. The piece states one claim, one tension, one proof and one outcome. The search phrase has a source or is marked "unvalidated". No fact in it lacks a source |
+| Media | Every file has status, bytes, pixel size and shape, or is marked `dead` or `unmeasured`. Duplicates are marked and point at the file kept. Borrowed and wrong-client files are flagged. The count of files equals the count in the folder listing |
+| Look | Every image was opened and read close up, and every video was stepped through. Each record has what it shows, kind, audience, flow, quality and the chapter it proves, or `none`. Every flag has a call: stays, hidden or ask the owner. No caption or alt text exists for a file marked `not read` |
+| Body | One copy only. Every heading is a claim of 70 characters or fewer. Every claim has a ledger row with provenance, and none is `unverified` or `conflicting`. Every own-folder file is used, sent to All screens, or listed as not rendered with the reason. The banned-word and dash checks return zero. Nothing was written to the source |
+| Layout | Every block is one of the 23 types. The block plan accounts for every approved media file exactly once in a chapter or in All screens. The page was rendered and seen at 375, 768 and 1200, and the decision log holds what was seen. Nothing is cropped, nothing changes ratio, a Styles pair is 50:50, and no cell is empty |
+| SEO and schema | The rendered title is 60 characters or fewer. The description is 140 to 160 characters. The canonical is the page's own address. The graph holds exactly the types the page needs, with no `author`, review stars or how-to type, and no FAQ markup on a case study. Every value in the graph is visible on the page |
+| Ship | Every automated gate check passes or is not applicable. Every browser check was run at 375, 767, 768, 769, 1199, 1200 and 1201 and passes. No hard stop is open. The owner approved the preview. After the deploy, the live page matches the preview and every media address returns 200 |
+| Forms | The form was made from the approved body only. Every claim in it carries the same source line as the case study. Captions for Behance are the case study's captions word for word. No slide is without a body line. Each made file had the owner's yes for that file. Nothing was scheduled or posted without the owner's yes for that post |
+
 ## Definition of done
 
 | Stage | Done when |
