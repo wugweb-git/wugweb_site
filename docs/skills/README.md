@@ -1,0 +1,108 @@
+# The Wugweb skill system
+
+Seven skills, one job each. Every skill is a complete package that works alone, in Claude and in the other mainstream coding agents.
+
+| Skill | Its job | Version |
+|---|---|---|
+| `wugweb-work` | Makes the piece: client work and Wugweb's own content, with its composition, layout, media, copy, schema, gate and other forms | 0.5.0 |
+| `wugweb-voice` | The one Wugweb voice, and the voice check | 0.3.0 |
+| `wugweb-brand-os` | Brand strategy and the visual system rules | 0.3.2 |
+| `wugweb-kits` | The design system: tokens, components, block docs, audits | 2.1.3 |
+| `wugweb-strategy` | What to publish, to whom and when | 0.1.4 |
+| `wugweb-seo` | How pages are found: plan, audit, report | 2.5.0 |
+| `wugweb-engineer` | Stored data: CMS and source changes, schema, sync scripts | 0.3.1 |
+
+The versions above are checked by `node scripts/skills.mjs check`; if this table and that command disagree, the command is right.
+
+## Where things live
+
+| What | Where | Note |
+|---|---|---|
+| The master copy of each skill | `.claude/skills/<name>/` | The only place a skill is edited |
+| The link other agents read | `.agents/skills/<name>` | A link to the master folder, never a copy |
+| The marketplace file | `.claude-plugin/marketplace.json` | Generated; lists each skill as an installable plugin |
+| Each skill's plan | `docs/skills/<name>/PLAN.md` | The owner's intent and decisions |
+| Rules every skill follows | `docs/skills/STANDING-RULES.md` | Each skill carries a marked copy |
+| Which model to use | `docs/skills/AI-MODELS.md` | |
+| How secrets are handled | `docs/skills/SECRETS.md` | No skill holds or prints a secret |
+| Packaged files | `dist-skills/` | Built from git on demand; never committed |
+
+`docs/skills/wugweb-web-engineering/PLAN.md` is the status note of a working session, not a skill. The skill for that work is `wugweb-engineer`.
+
+## What every skill contains
+
+| Part | What it is |
+|---|---|
+| `SKILL.md` | The skill: when to use it and how. 1,500 to 2,000 words; detail lives in `references/` |
+| `README.md` | What it does, what is in the package, install, run, licence |
+| `CHANGELOG.md` | What changed, by version |
+| `LESSONS.md` | What the skill has learned from use, and which rule each lesson changed |
+| `LICENSE` | MIT |
+| `metadata.json` | Version, abstract, status, related skills |
+| `references/` | One topic per file, read only when the task needs it. These are the skill's sub-skills: its modes, forms and standards |
+| `scripts/` | `build.mjs` (generates the files below), `test.mjs`, and where present `validate.mjs` and the working scripts |
+| `evals/` | Test prompts with what a correct answer must contain |
+| `examples/` | Worked examples, where the skill has them |
+| `AGENTS.md` | Generated: the whole skill in one file, for any agent |
+| `export/<name>.md` | Generated: the same, for pasting into any model |
+| `adapters/cursor/<name>.mdc` | Generated: a Cursor rule |
+| `adapters/chatgpt/instructions.md` | Generated: instructions for a custom GPT or a project |
+| `agents/openai.yaml` | Generated: display settings for Codex |
+
+Generated files are never edited by hand. Edit the source and run the skill's build.
+
+## Install
+
+The same folders serve every agent below. The folder paths were read from each vendor's documentation on 2026-11-19.
+
+| Agent | How it finds the skills in this repository | To use a skill somewhere else |
+|---|---|---|
+| Claude Code | Reads `.claude/skills/` in the repository. Nothing to do | `claude plugin marketplace add <owner>/<repo>`, then `claude plugin install <skill>@wugweb-skills` |
+| Claude app | Upload `dist-skills/<name>.skill` under Settings, Plugins | The same file |
+| OpenAI Codex | Reads `.agents/skills/` from the working folder up to the repository root, and follows links | Copy the folder to `.agents/skills/<name>/` in the repository, or `~/.agents/skills/<name>/` for every project |
+| Cursor | Reads `.agents/skills/` and `.claude/skills/` | Copy the folder to `.cursor/skills/<name>/`, or use the rule in `adapters/cursor/` |
+| GitHub Copilot | Reads `.claude/skills/` and `.agents/skills/` (also `.github/skills/`) | Copy the folder to `.github/skills/<name>/` |
+| Gemini CLI | Reads `.agents/skills/` (also `.gemini/skills/`) | Copy the folder to `.gemini/skills/<name>/` |
+| Windsurf | Reads `.agents/skills/` | Copy the folder to `.agents/skills/<name>/` |
+| Roo Code | Reads `.agents/skills/` and follows links | Copy the folder to `.roo/skills/<name>/` |
+| Cline | Reads `.claude/skills/` | Copy the folder to `.cline/skills/<name>/` |
+| ChatGPT (custom GPT or project) | Not a folder reader | Paste `adapters/chatgpt/instructions.md` and upload `AGENTS.md` |
+| Any other model | Not a folder reader | Paste `export/<name>.md` |
+
+What is confirmed and what is not:
+
+- Codex and Roo Code document that a linked skill folder is followed. Cursor, Copilot, Gemini CLI and Windsurf do not say. Cursor and Copilot also read `.claude/skills/`, which is a real folder, so they do not depend on the link. If Gemini CLI or Windsurf does not follow the link, copy the folder as in the right-hand column.
+- The marketplace file passes `claude plugin validate`. Installing from it has not been tried from a second machine.
+- The repository is private. Another person needs access to it before any of the above works for them.
+- The skill names follow the Agent Skills naming rule: lowercase letters, digits and hyphens, the same as the folder name.
+
+## Commands
+
+```
+node scripts/skills.mjs check      every skill: its parts, versions, build, tests, link and marketplace entry
+node scripts/skills.mjs build      regenerate each skill's AGENTS.md, export and adapters
+node scripts/skills.mjs link       make or repair the .agents/skills links
+node scripts/skills.mjs manifest   rewrite the marketplace file from each skill's metadata
+node scripts/skills.mjs package    zip each skill from the last commit into dist-skills/
+node scripts/skills.mjs all        all of the above, in order
+```
+
+Each skill also has its own `node .claude/skills/<name>/scripts/build.mjs`, `test.mjs` and, where present, `validate.mjs`.
+
+## How a skill learns
+
+A skill does not improve by being used. It improves when a correction is written where the next session reads it, and is then moved into the rule it changes.
+
+1. When the owner corrects an output, or a rule gives a wrong result, add an entry to that skill's `LESSONS.md`: what happened, the owner's words quoted with the date, why it happened.
+2. Change the rule, check or example that would have prevented it, and name the file and commit in the entry.
+3. Add or update an eval so the same mistake fails a test.
+4. Add the change to `CHANGELOG.md`, and raise the version when the owner says to.
+
+A lesson whose entry still reads "not yet changed" is open work. Every session with a skill starts by reading its `LESSONS.md`.
+
+## Changing a skill
+
+- Edit only the master folder. Never edit `.agents/skills/`, a generated file or a packaged zip.
+- One skill does not change what another owns, and no content is moved between skills without the owner's word for that change.
+- A skill's own content goes straight to `main`. Tooling that spans every skill is built on a short branch, merged and deleted.
+- A release is a tag: `<name>-<version>` for one skill, `skills-<date>` for the set.

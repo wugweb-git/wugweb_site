@@ -1,6 +1,7 @@
 ---
 name: "wugweb-strategy"
 description: "This skill should be used when the user asks \"what should we write next\", \"plan the content calendar\", \"plan the social calendar\", \"write a brief for\", \"brief wugweb-work on\", \"plan a campaign\", \"plan the launch posts\", \"which case study backs this page\", \"should this post be refreshed or retired\", \"review the blog\", \"plan the repurposing\", \"plan the newsletter\", \"what did last month's posts tell us\", or \"set the pillar mix\" for Wugweb. It governs content strategy only: topics, pillar mix, the editorial and social calendar, briefs handed to wugweb-work, piece structures, editorial standards, content models, the proof map, refresh or retire decisions, campaign and repurposing plans, and reading post results for the next plan. It writes no piece and does not cover brand strategy: positioning, values, audience definition and the messaging framework belong to wugweb-brand-os."
+license: MIT
 metadata:
   version: "0.1.4"
 ---

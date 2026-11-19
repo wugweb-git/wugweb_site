@@ -50,3 +50,6 @@ scripts/data/renders/
 
 # Made graphics (rendered files awaiting the owner; never committed)
 scripts/data/made/
+
+# Packaged skills (built from git; never committed)
+dist-skills/

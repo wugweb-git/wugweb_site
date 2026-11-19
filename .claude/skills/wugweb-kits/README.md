@@ -62,3 +62,31 @@ Copy `rules/_template.md`, prefix the filename with a section id from
 `rules/_sections.md`, include one Incorrect and one Correct fenced example, then
 run `validate.mjs` and `build.mjs`. Both examples are required: a rule nobody
 can pattern-match against does not get applied.
+
+## What it does
+
+Checks code and pages against the Wugweb design system, maps every value to its home (token, component or block), and writes component and block specs. It reports; it never edits site code. The rules and the order of work are in `SKILL.md`.
+
+## What is in the package
+
+The folder map at the top of this file lists every part: the skill file, the 59 rule files, the references, the scripts, the eval cases and the generated exports.
+
+## Install
+
+**Claude.** Add the folder as a skill, or place it at `.claude/skills/wugweb-kits/` in the repository.
+
+**Codex.** In this repository `.agents/skills/wugweb-kits` is a link to the folder above, so Codex loads the same files. Elsewhere, copy the folder to `.agents/skills/wugweb-kits/`.
+
+**Cursor.** Copy `adapters/cursor/wugweb-kits.mdc` into `.cursor/rules/`.
+
+**ChatGPT.** Paste `adapters/chatgpt/instructions.md` into a custom GPT or project and upload `AGENTS.md` as a knowledge file.
+
+**Any other agent.** Give it `AGENTS.md`, or paste `export/wugweb-kits.md`.
+
+## Run
+
+The commands are under "Use" above and in the Scripts section of `SKILL.md`. All are plain Node with no packages, and none edits a file it checks.
+
+## Licence
+
+MIT. See `LICENSE`.

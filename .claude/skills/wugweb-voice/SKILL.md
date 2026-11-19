@@ -1,6 +1,7 @@
 ---
 name: wugweb-voice
 description: "Holds the one Wugweb voice, which is also the owner's voice, and runs the voice check on any visible Wugweb copy. This skill should be used when asked to check the voice, make text sound like Wugweb or like the owner, rewrite in our voice, run a voice check before posting, say whether a draft is on voice, or when wugweb-work passes draft text with its form and mode. It covers vocabulary, phrasing, sentence structure, cadence, formality and punctuation only. It does not cover personality, beliefs, decision style, format, length, SEO, positioning or design."
+license: MIT
 metadata:
   author: wugweb
   version: "0.3.0"
