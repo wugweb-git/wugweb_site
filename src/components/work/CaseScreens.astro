@@ -1,0 +1,378 @@
+---
+// All screens: every approved screen of the case study, in named sets.
+//
+// - A row of set chips, each with its count. One chip is selected at a time
+//   and the grid below shows that set as thumbnails.
+// - Thumbnails keep their own ratio. Phone sets: 3 across on mobile. Wide
+//   (desktop) sets: 1 to 2 across on mobile. Denser on tablet and desktop.
+// - A thumbnail opens the one-screen viewer (src/lib/case-lightbox.ts).
+// - With JavaScript off, every set is stacked under its own heading with
+//   every thumbnail and caption in the server HTML, and each thumbnail is a
+//   plain link to the full image.
+import type { ScreensBlock } from '../../lib/case-layout';
+import { screenSets } from '../../lib/case-layout';
+import { assetUrl } from '../../lib/assets';
+
+interface Props { block: ScreensBlock }
+const { block } = Astro.props;
+
+function src(url: string) { return url.startsWith('http') ? url : assetUrl(url); }
+
+const sets = screenSets(block);
+const total = sets.reduce((n, s) => n + s.items.length, 0);
+const countWord = (n: number) => `${n} ${n === 1 ? 'screen' : 'screens'}`;
+---
+{sets.length > 0 && (
+  <section class="case-screens" id="all-screens" aria-labelledby="all-screens-head" data-case-screens data-reveal>
+    <header class="case-screens-top">
+      <h2 class="case-screens-head" id="all-screens-head">All screens</h2>
+      <p class="case-screens-total">{countWord(total)}{sets.length > 1 ? ` in ${sets.length} sets` : ''}</p>
+    </header>
+
+    {sets.length > 1 && (
+      <div class="case-screens-chips" role="group" aria-label="Screen sets" data-screens-chips hidden>
+        {sets.map((set, i) => (
+          <button
+            type="button"
+            class="case-screens-chip"
+            aria-pressed={i === 0 ? 'true' : 'false'}
+            aria-controls={set.id}
+            aria-label={`${set.label}, ${countWord(set.items.length)}`}
+            data-screens-chip={set.id}
+          >
+            <span class="case-screens-chip-name">{set.label}</span>
+            <span class="case-screens-chip-count">{set.items.length}</span>
+          </button>
+        ))}
+      </div>
+    )}
+
+    {sets.map(set => (
+      <section class="case-screens-set" id={set.id} aria-labelledby={`${set.id}-head`} data-screens-set data-shape={set.shape}>
+        <h3 class="case-screens-set-head" id={`${set.id}-head`}>
+          <span>{set.label}</span>
+          <span class="case-screens-set-count">{set.items.length}</span>
+        </h3>
+        <ul class="case-screens-grid">
+          {set.items.map((media, i) => {
+            const alt = media.alt ?? media.caption ?? media.label ?? '';
+            const caption = media.caption ?? '';
+            const position = `${i + 1} of ${set.items.length}, ${set.label}`;
+            return (
+              <li class="case-screens-item">
+                <figure class="case-screens-figure">
+                  {media.video ? (
+                    <video
+                      class="case-screens-media"
+                      src={`${src(media.url)}#t=0.1`}
+                      muted
+                      playsinline
+                      preload="metadata"
+                      aria-label={alt || position}
+                    />
+                  ) : (
+                    <a
+                      class="case-screens-link"
+                      id={`${set.id}-${i + 1}`}
+                      href={src(media.url)}
+                      aria-label={`View ${alt || 'screen'}: ${position}`}
+                      data-case-lightbox-src={src(media.url)}
+                      data-case-lightbox-caption={caption}
+                      data-case-lightbox-alt={alt}
+                      data-case-lightbox-set={set.label}
+                    >
+                      <img
+                        class="case-screens-media"
+                        src={src(media.url)}
+                        alt={alt}
+                        width={media.width}
+                        height={media.height}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </a>
+                  )}
+                  {caption && <figcaption class="case-screens-caption">{caption}</figcaption>}
+                </figure>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))}
+  </section>
+)}
+
+<script>
+  import { initCaseLightbox } from '../../lib/case-lightbox';
+
+  document.querySelectorAll<HTMLElement>('[data-case-screens]').forEach(root => {
+    const chipRow = root.querySelector<HTMLElement>('[data-screens-chips]');
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-screens-chip]'));
+    const sets = Array.from(root.querySelectorAll<HTMLElement>('[data-screens-set]'));
+    if (!chipRow || chips.length < 2) return;
+
+    const select = (id: string) => {
+      for (const chip of chips) chip.setAttribute('aria-pressed', chip.dataset.screensChip === id ? 'true' : 'false');
+      for (const set of sets) set.hidden = set.id !== id;
+    };
+
+    chipRow.hidden = false;
+    root.dataset.enhanced = 'true';
+    select(chips[0].dataset.screensChip || sets[0].id);
+
+    for (const chip of chips) {
+      chip.addEventListener('click', () => select(chip.dataset.screensChip || ''));
+    }
+    // A deep link to a screen in a set that is not showing selects that set first.
+    root.addEventListener('case-screens:reveal', ev => {
+      const set = (ev.target as HTMLElement).closest<HTMLElement>('[data-screens-set]');
+      if (set) select(set.id);
+    });
+  });
+
+  initCaseLightbox();
+</script>
+
+<style>
+  .case-screens {
+    margin: var(--space-section-md) 0;
+    display: grid;
+    gap: var(--space-page-md);
+    padding-block-start: var(--space-section-sm);
+    border-block-start: 1px solid var(--color-border-subtle);
+    min-inline-size: 0;
+  }
+  .case-screens-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-page-xs);
+  }
+  .case-screens-head {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .case-screens-total {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+  }
+
+  /* Chips: one row that scrolls sideways inside itself on a phone, never the page. */
+  .case-screens-chips {
+    display: flex;
+    gap: var(--space-page-xs);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-block: var(--stroke-2, 2px);
+    min-inline-size: 0;
+  }
+  .case-screens-chips[hidden] { display: none; }
+  .case-screens-chips::-webkit-scrollbar { display: none; }
+  .case-screens-chip {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: var(--control-size);
+    padding: 0 var(--space-page-xs);
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-full);
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+  .case-screens-chip-count {
+    color: var(--color-text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+  .case-screens-chip:hover { background: var(--color-surface-hover); }
+  .case-screens-chip[aria-pressed='true'] {
+    background: var(--color-text-primary);
+    color: var(--color-surface-page);
+    border-color: var(--color-text-primary);
+  }
+  .case-screens-chip[aria-pressed='true'] .case-screens-chip-count { color: inherit; }
+  .case-screens-chip:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+  }
+
+  .case-screens-set {
+    display: grid;
+    gap: var(--space-page-sm);
+    min-inline-size: 0;
+  }
+  .case-screens-set[hidden] { display: none; }
+  .case-screens-set-head {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    color: var(--color-text-primary);
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  .case-screens-set-count {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+  /* With the chips running, the selected chip is the set's visible name. */
+  .case-screens[data-enhanced='true'] .case-screens-set-head { display: none; }
+
+  /* Thumbnails keep their own ratio: the cell sets the width, the file sets the height. */
+  .case-screens-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-page-xs);
+    align-items: start;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .case-screens-set[data-shape='wide'] .case-screens-grid { grid-template-columns: minmax(0, 1fr); }
+  .case-screens-item { min-inline-size: 0; }
+  .case-screens-figure { margin: 0; display: grid; gap: 0.5rem; }
+  .case-screens-link {
+    display: block;
+    border-radius: var(--radius-sm);
+    cursor: zoom-in;
+  }
+  .case-screens-link:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+  }
+  .case-screens-media {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-elevated);
+  }
+  .case-screens-caption {
+    color: var(--color-text-secondary);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  @media (min-width: 480px) {
+    .case-screens-set[data-shape='wide'] .case-screens-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 768px) {
+    .case-screens-chips { flex-wrap: wrap; overflow-x: visible; }
+    .case-screens-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-page-sm); }
+    .case-screens-set[data-shape='wide'] .case-screens-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1200px) {
+    .case-screens-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+    .case-screens-set[data-shape='wide'] .case-screens-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+</style>
+
+<!-- The viewer dialog is created by script, so its styles cannot be scoped. -->
+<style is:global>
+  .case-lightbox {
+    position: fixed;
+    inset: 0;
+    inline-size: 100vw;
+    block-size: 100dvh;
+    max-inline-size: none;
+    max-block-size: none;
+    margin: 0;
+    padding: var(--space-page-xs);
+    border: 0;
+    background: var(--color-surface-page);
+    color: var(--color-text-primary);
+    overflow: hidden;
+  }
+  .case-lightbox[open] {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: var(--space-page-xs);
+  }
+  .case-lightbox::backdrop { background: var(--color-surface-page); }
+  .case-lightbox-stage {
+    margin: 0;
+    min-block-size: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    justify-items: center;
+    gap: var(--space-page-xs);
+    padding-block-start: calc(var(--control-size) + var(--space-page-xs));
+  }
+  /* Shown whole and never above its natural size: no crop, no upscale. */
+  .case-lightbox-image {
+    display: block;
+    align-self: center;
+    inline-size: auto;
+    block-size: auto;
+    max-inline-size: 100%;
+    max-block-size: 100%;
+    min-block-size: 0;
+    border-radius: var(--radius-sm);
+  }
+  .case-lightbox-caption {
+    max-inline-size: 60ch;
+    text-align: center;
+    color: var(--color-text-primary);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+  .case-lightbox-counter {
+    margin: 0;
+    min-block-size: var(--control-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .case-lightbox-btn {
+    position: absolute;
+    inline-size: var(--control-size);
+    block-size: var(--control-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-full);
+    font: inherit;
+    font-size: 1.125rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .case-lightbox-btn:hover { background: var(--color-surface-hover); }
+  .case-lightbox-btn:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+  }
+  .case-lightbox-btn[disabled] { opacity: var(--opacity-disabled); cursor: not-allowed; }
+  .case-lightbox-close { inset-block-start: var(--space-page-xs); inset-inline-end: var(--space-page-xs); }
+  /* On a phone the previous and next buttons sit beside the counter, under the thumb. */
+  .case-lightbox-prev { inset-block-end: var(--space-page-xs); inset-inline-start: var(--space-page-xs); }
+  .case-lightbox-next { inset-block-end: var(--space-page-xs); inset-inline-end: var(--space-page-xs); }
+
+  @media (min-width: 768px) {
+    .case-lightbox { padding: var(--space-page-md); }
+    .case-lightbox-stage { padding-inline: calc(var(--control-size) + var(--space-page-md)); padding-block-start: 0; }
+    .case-lightbox-prev,
+    .case-lightbox-next { inset-block-end: auto; inset-block-start: 50%; translate: 0 -50%; }
+    .case-lightbox-prev { inset-inline-start: var(--space-page-md); }
+    .case-lightbox-next { inset-inline-end: var(--space-page-md); }
+    .case-lightbox-close { inset-block-start: var(--space-page-md); inset-inline-end: var(--space-page-md); }
+  }
+</style>

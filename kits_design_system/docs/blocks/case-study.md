@@ -42,7 +42,7 @@ section.case-page[aria-label="Case study"]
 │  ├ CaseFigure                   figure.case-figure
 │  ├ CaseRail                     section.case-rail
 │  └ CasePair                     div.case-pair
-├ section.case-screens            (All screens, grouped by audience then flow; each flow is a CaseRail)
+├ section.case-screens            (All screens: set chips with counts, one set of thumbnails at a time, viewer on a thumbnail)
 ├ CaseStats (results variant)     section.case-stats
 ├ CaseCredits                     section.case-credits
 ├ CasePresence                    section.case-presence
@@ -68,7 +68,8 @@ Component mapping:
 | figure, scrollshot | `CaseFigure` |
 | split | `CaseSplit` |
 | pair | `CasePair` |
-| rail, screens (per flow) | `CaseRail` |
+| rail | `CaseRail` |
+| screens | `CaseScreens` |
 | mosaic | `CaseMosaic` |
 | wall | `CaseWall` |
 | loop | `CaseLoop` |
@@ -104,6 +105,9 @@ States handled by the resolver, not by markup:
 
 - Dead URLs and duplicates: dropped before rendering.
 - Audiences and flows: the All screens block groups by `audience` then `flow`, ordered by `step`.
+- All screens (`CaseScreens`): one chip per set with its count, one set shown at a time. A set is named by the manifest's `set` when it has one, else by its flow when the audience has more than one, else by its audience; with no manifest, by the kind the body label gives. Sets keep the order in which the body first shows them. Thumbnails keep their own ratio: phone sets 3, 5 and 8 across at 375, 768 and 1200; wide sets 1 (2 from 480), 3 and 4.
+- With JavaScript off, every set is stacked under its own heading and each thumbnail is a plain link to the full image.
+- The viewer shows one screen with its caption and its position as "3 of 8, Member". Previous and next stay inside the set. The back action closes it, focus returns to the thumbnail, and each thumbnail's id is a deep link that opens the viewer at that screen.
 - Accent: body's `accent:` or the doc's `accent` field, applied through `style="--case-accent: ..."` at render.
 
 ## 6. Accessibility

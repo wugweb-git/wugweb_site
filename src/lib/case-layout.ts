@@ -25,6 +25,8 @@ export interface ManifestEntry {
   kind?: string;
   audience?: 'member' | 'admin' | 'public' | 'partner';
   flow?: string;
+  /** Optional name of the All screens set this file sits in (the chip label). Audience and flow are still kept. */
+  set?: string;
   step?: number;
   posterAt?: number;
   alt?: string;
@@ -147,12 +149,73 @@ export interface QuoteBlock { type: 'quote'; text: string; by?: string; chapterI
 export interface TableBlock { type: 'table'; head: string[]; rows: string[][]; chapterId: string }
 export interface TimelineBlock { type: 'timeline'; items: Milestone[]; chapterId: string }
 export interface ResultsBlock { type: 'results'; items: Result[] }
+/** A screen in the All screens block: the media plus what the manifest knows about the file. */
+export type ScreenItem = Media & { width?: number; height?: number; alt?: string };
+export type ScreenAudience = 'member' | 'admin' | 'public' | 'partner' | 'other';
 export interface ScreensBlock {
   type: 'screens';
   sets: Array<{
-    audience: 'member' | 'admin' | 'public' | 'partner' | 'other';
-    flows: Array<{ flow: string; items: Media[] }>;
+    audience: ScreenAudience;
+    flows: Array<{ flow: string; label?: string; items: ScreenItem[] }>;
   }>;
+}
+
+/** One chip in the All screens block: a named set of screens with its count. */
+export interface ScreenSet {
+  id: string;
+  label: string;
+  audience: ScreenAudience;
+  flow: string;
+  /** 'phone' sets show three thumbnails across on mobile; 'wide' sets show one or two. */
+  shape: 'phone' | 'wide';
+  items: ScreenItem[];
+}
+
+const AUDIENCE_LABEL: Record<ScreenAudience, string> = {
+  member: 'Member',
+  admin: 'Back office',
+  public: 'Public',
+  partner: 'Partner',
+  other: 'Other'
+};
+
+function sentenceCase(s: string): string {
+  const t = s.replace(/[-_]+/g, ' ').trim();
+  return t ? t.charAt(0).toUpperCase() + t.slice(1) : t;
+}
+
+function setSlug(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'all';
+}
+
+function isWide(item: ScreenItem): boolean {
+  if (item.width && item.height) return item.width > item.height;
+  return item.kind === 'web' || item.kind === 'dashboard';
+}
+
+/**
+ * The sets shown as chips, in order: audience first, then flow. A set is
+ * named by its flow when the audience has more than one named flow, and by
+ * its audience otherwise. The audience and the flow stay on the set, so the
+ * chip label is never the only category. Empty sets are dropped.
+ */
+export function screenSets(block: ScreensBlock): ScreenSet[] {
+  const out: ScreenSet[] = [];
+  const used = new Set<string>();
+  for (const set of block.sets) {
+    const flows = set.flows.filter(f => f.items.length > 0);
+    for (const f of flows) {
+      const named = f.flow && f.flow !== 'unsorted';
+      const label = f.label ?? (named && (flows.length > 1 || set.audience === 'other') ? sentenceCase(f.flow) : AUDIENCE_LABEL[set.audience]);
+      const base = `screens-${set.audience}-${setSlug(f.label ?? (named ? f.flow : 'all'))}`;
+      let id = base;
+      for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
+      used.add(id);
+      const wide = f.items.filter(isWide).length * 2 > f.items.length;
+      out.push({ id, label, audience: set.audience, flow: f.flow, shape: wide ? 'wide' : 'phone', items: f.items });
+    }
+  }
+  return out;
 }
 export interface CreditsBlock { type: 'credits'; items: Record<string, string> }
 export interface PresenceBlock { type: 'presence'; links: PresenceLink[] }
@@ -276,18 +339,29 @@ function credits(doc: CaseDoc): Record<string, string> {
 
 // ---------- Screens bucket (grouped by audience then flow) ----------
 
+const KIND_SET: Partial<Record<Media['kind'], string>> = {
+  screen: 'Screens',
+  states: 'States',
+  dashboard: 'Dashboard',
+  web: 'Web',
+  mockup: 'Mockups'
+};
+
 function screensBucket(all: Media[], index: Map<string, ManifestEntry>): ScreensBlock {
-  const sets = new Map<string, Map<string, Media[]>>();
+  const sets = new Map<string, Map<string, ScreenItem[]>>();
+  const meta = new Map<string, { flow: string; label?: string }>();
   for (const m of all) {
     if (skipManifest(m.url, index)) continue;
     if (m.kind !== 'screen' && m.kind !== 'states' && m.kind !== 'mockup' && m.kind !== 'web' && m.kind !== 'dashboard') continue;
     const entry = index.get(m.url);
     const audience = entry?.audience ?? 'other';
-    const flow = entry?.flow ?? 'unsorted';
+    // With no audience on record, the kind the body label gives is the next best set name.
+    const flow = entry?.flow ?? (entry?.audience ? 'unsorted' : KIND_SET[m.kind] ?? 'unsorted');
     if (!sets.has(audience)) sets.set(audience, new Map());
     const flows = sets.get(audience)!;
-    if (!flows.has(flow)) flows.set(flow, []);
-    flows.get(flow)!.push(m);
+    const key = entry?.set ? `set:${entry.set}` : flow;
+    if (!flows.has(key)) { flows.set(key, []); meta.set(`${audience}|${key}`, { flow, label: entry?.set }); }
+    flows.get(key)!.push(entry ? { ...m, width: entry.width, height: entry.height, alt: entry.alt } : m);
   }
   // Order inside each flow by step; stable tiebreak by original index.
   const indexOf = new Map<Media, number>();
@@ -297,10 +371,11 @@ function screensBucket(all: Media[], index: Map<string, ManifestEntry>): Screens
   for (const aud of audOrder) {
     const flows = sets.get(aud);
     if (!flows) continue;
+    // Sets keep the order in which the body first shows them.
     const flowList = Array.from(flows.entries())
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([flow, items]) => ({
-        flow,
+      .map(([key, items]) => ({
+        flow: meta.get(`${aud}|${key}`)?.flow ?? key,
+        label: meta.get(`${aud}|${key}`)?.label,
         items: items
           .slice()
           .sort((a, b) => {

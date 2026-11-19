@@ -1374,6 +1374,6 @@ Not in this plan, so not added (owner to supply if wanted): the chapter nav bloc
 
 Open with the owner: the newsletter's tool, list and cadence; which research helper leads (TinyFish is written as first, Bright Data second); `wugweb-engineer` also says it runs the source to CMS sync.
 
-Not built on the site yet: the All screens component (`src/components/work/` has no screens component).
+Built 2026-11-19: the All screens component (`src/components/work/CaseScreens.astro`), with set chips and counts, thumbnails at their own ratio, and the viewer showing "3 of 8, Member". It is on the preview route only. Still to do on the site: the preview route passes no media manifest, so sets are named from the body labels until the manifest is wired in.
 
 Fixed after the pass (same day): the mosaic row reads as this plan has it again (the narrowing to brand applications was an error, not an owner rule), and the gate script takes the hero from the hero block.

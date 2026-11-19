@@ -4,7 +4,7 @@
 
 import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
-import { resolveLayout, slugifyChapter, type CaseDoc, type MediaManifest, type Block } from './case-layout.ts';
+import { resolveLayout, screenSets, slugifyChapter, type CaseDoc, type MediaManifest, type Block } from './case-layout.ts';
 import type { CaseBody, Media, Section } from './case-body.ts';
 
 function m(label: string, url: string, over: Partial<Media> = {}): Media {
@@ -188,6 +188,68 @@ test('All screens block groups by audience then flow and orders by step', () => 
   assert.equal(screensBlock.sets[0].flows[0].items[0].url, 'https://r2/m2.png');
   assert.equal(screensBlock.sets[0].flows[0].items[1].url, 'https://r2/m1.png');
   assert.equal(screensBlock.sets[1].audience, 'admin');
+});
+
+test('screen sets: one chip per set, named by flow or audience, with counts and shape', () => {
+  const media = [
+    m('A', 'https://r2/m1.png', { kind: 'screen' }),
+    m('B', 'https://r2/m2.png', { kind: 'screen' }),
+    m('C', 'https://r2/m3.png', { kind: 'states' }),
+    m('D', 'https://r2/a1.png', { kind: 'dashboard' }),
+    m('E', 'https://r2/a2.png', { kind: 'dashboard' }),
+    m('F', 'https://r2/dead.png', { kind: 'screen' })
+  ];
+  const b = body({ sections: [section({ title: 'All', media })] });
+  const manifest: MediaManifest = {
+    slug: 's', entries: [
+      { url: 'https://r2/m1.png', audience: 'member', flow: 'apply', step: 1, width: 390, height: 844, alt: 'Portal home' },
+      { url: 'https://r2/m2.png', audience: 'member', flow: 'apply', step: 2, width: 390, height: 844 },
+      { url: 'https://r2/m3.png', audience: 'member', flow: 'states', step: 1, width: 390, height: 844 },
+      { url: 'https://r2/a1.png', audience: 'admin', flow: 'cases', step: 1, width: 1440, height: 900 },
+      { url: 'https://r2/a2.png', audience: 'admin', flow: 'cases', step: 2, width: 1440, height: 900 },
+      { url: 'https://r2/dead.png', audience: 'member', flow: 'apply', status: 404 }
+    ]
+  };
+  const sets = screenSets(find(resolveLayout(b, manifest, doc()), 'screens')[0]);
+  assert.deepEqual(sets.map(s => [s.label, s.items.length, s.shape]), [
+    ['Apply', 2, 'phone'],
+    ['States', 1, 'phone'],
+    ['Back office', 2, 'wide']
+  ]);
+  assert.deepEqual(sets.map(s => s.id), ['screens-member-apply', 'screens-member-states', 'screens-admin-cases']);
+  assert.equal(new Set(sets.map(s => s.id)).size, sets.length);
+  assert.equal(sets[0].items[0].alt, 'Portal home');
+  assert.equal(sets[0].items[0].width, 390);
+  assert.equal(sets[2].audience, 'admin');
+  assert.equal(sets[2].flow, 'cases');
+});
+
+test('screen sets: a set name on the manifest names the chip; sets keep body order', () => {
+  const media = [
+    m('A', 'https://r2/1.png', { kind: 'screen' }),
+    m('B', 'https://r2/2.png', { kind: 'states' }),
+    m('C', 'https://r2/3.png', { kind: 'dashboard' }),
+    m('D', 'https://r2/4.png', { kind: 'web' }),
+    m('E', 'https://r2/5.png', { kind: 'web' })
+  ];
+  const manifest: MediaManifest = {
+    slug: 's', entries: [
+      { url: 'https://r2/1.png', audience: 'member', flow: 'apply', set: 'Member' },
+      { url: 'https://r2/2.png', audience: 'member', flow: 'apply', set: 'States' },
+      { url: 'https://r2/3.png', audience: 'admin', flow: 'overview', set: 'Dashboard' },
+      { url: 'https://r2/4.png', audience: 'admin', flow: 'programmes', set: 'Back office' },
+      { url: 'https://r2/5.png', audience: 'admin', flow: 'cases', set: 'Cases' }
+    ]
+  };
+  const sets = screenSets(find(resolveLayout(body({ sections: [section({ title: 'All', media })] }), manifest, doc()), 'screens')[0]);
+  assert.deepEqual(sets.map(s => s.label), ['Member', 'States', 'Dashboard', 'Back office', 'Cases']);
+  assert.deepEqual(sets.map(s => [s.audience, s.flow]), [['member', 'apply'], ['member', 'apply'], ['admin', 'overview'], ['admin', 'programmes'], ['admin', 'cases']]);
+});
+
+test('screen sets: with no manifest, sets are named by the kind the body label gives', () => {
+  const media = [m('A', 'https://r2/x1.png', { kind: 'screen' }), m('B', 'https://r2/x2.png', { kind: 'web' })];
+  const sets = screenSets(find(resolveLayout(body({ sections: [section({ title: 'All', media })] }), { slug: 's', entries: [] }, doc()), 'screens')[0]);
+  assert.deepEqual(sets.map(s => [s.id, s.label, s.items.length, s.shape]), [['screens-other-screens', 'Screens', 1, 'phone'], ['screens-other-web', 'Web', 1, 'wide']]);
 });
 
 test('results block includes every metric; stats is a cap at 3', () => {
