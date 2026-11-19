@@ -1356,3 +1356,22 @@ Changed back the same day at the owner's word: the newsletter's sending tool, li
 Owner, 2026-11-19, final on titles: one limit for every page type, 60 characters as rendered, set by `wugweb-seo`. The 51-character source check is removed from the case-study gate.
 
 RESTORED 2026-11-19 (owner). The skill folder is back to the work session's own 0.5.0 (commit `4fbf334c`). The review fixes listed above as "Fixed 2026-11-19" are undone in the skill: they had handed the sync and the writes to `wugweb-engineer`, replaced the layout sizes with pointers to `wugweb-kits`, and a further change had started to move the block catalogue out of this skill. `wugweb-work` is the full production system this plan describes: nine modes, Body Content v2, the media manifest, the visual read, the 23-block catalogue and layout grammar, screen selection and the All screens block, the viewer, the publish gate, the sync, preview, approval, commit and deploy cycle, and the Forms module. Kept on top of the restored skill, by the owner's rulings of 2026-11-19: one title limit for every page type (60 characters as rendered); the newsletter's sending tool, list and cadence are not decided; an NDA client is never named. Open for the owner: `wugweb-engineer` also says it runs the Notion to Sanity sync; the two skills overlap on that step until he rules.
+
+### Completed against this plan, 2026-11-19 (commits `d47791d4`, `de9dc6c8`, `7fa46f82`)
+
+The skill was read line by line against this plan and completed. Nothing was removed and no step was given to another skill: `wugweb-work` holds every layout, block, media, copy, schema and gate rule itself, and a sibling may only check a result. Version stays 0.5.0. Checks: 32 validator checks with 0 errors, 27 tests passed, build fresh.
+
+Added to the skill:
+
+- Layout: the layout shell values, the screen system (proof screens, All screens, the viewer), the layout words the owner uses (bento, columned, slides), the cover rule, the yellow rule, the tokens-only rule, the first screen on a phone, video and loop loading, where a quote, a table and a timeline sit.
+- Helpers: the handoff contracts table, the helper register by area, and every helper the owner named moved out of "Ignored" with when it is used.
+- Copy and SEO: the twelve writing rules in full, the claim order, title 60 as rendered, description 140 to 160, Title without the brand and Short Title as the brand, no inferred meta value.
+- Cycle: the layers on this site, content source governance, the publishing contract, what Ship checks after the sync and the deploy, failure handling, rollback, the definition of done, output formats per mode.
+- Checks: All screens and viewer checks in the gate, one hard-stops list in three files, one banned-word list in three files (the validator fails if they drift), four new evals and 17 new tests.
+- Charts: on a page a chart is HTML or SVG from the owner's numbers; for a deck, post or share image it is a made file through the new-file gate.
+
+Not in this plan, so not added (owner to supply if wanted): the chapter nav block spec, type sizes for made files, the "ski-ramp" brief template, how an HTML or SVG chart is carried in the block plan, blog image rules, the rule for refreshing old posts.
+
+Open with the owner: the newsletter's tool, list and cadence; which research helper leads (TinyFish is written as first, Bright Data second); the mosaic row is narrower than this plan ("only for brand applications or sets of equal weight"); `wugweb-engineer` also says it runs the source to CMS sync.
+
+Not built on the site yet: the All screens component (`src/components/work/` has no screens component), and the gate script takes the first image in `main` as the hero.
