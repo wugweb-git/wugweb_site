@@ -27,7 +27,7 @@ The versions above are checked by `node scripts/skills.mjs check`; if this table
 | How secrets are handled | `docs/skills/SECRETS.md` | No skill holds or prints a secret |
 | Packaged files | `dist-skills/` | Built from git on demand; never committed |
 
-`docs/skills/wugweb-web-engineering/PLAN.md` is the status note of a working session, not a skill. The skill for that work is `wugweb-engineer`.
+The web engineering session's status note, which used to sit in a folder of its own with no matching skill, is now `docs/skills/wugweb-engineer/WEB-ENGINEERING-SESSION.md`, beside the plan of the skill that does that work.
 
 ## What every skill contains
 
@@ -79,6 +79,7 @@ What is confirmed and what is not:
 ## Commands
 
 ```
+node scripts/skills.mjs sync       pull main when safe, report skill edits stranded in other worktrees or branches, then build, link, list and check
 node scripts/skills.mjs check      every skill: its parts, versions, build, tests, link and marketplace entry
 node scripts/skills.mjs build      regenerate each skill's AGENTS.md, export and adapters
 node scripts/skills.mjs link       make or repair the .agents/skills links
@@ -99,6 +100,15 @@ A skill does not improve by being used. It improves when a correction is written
 4. Add the change to `CHANGELOG.md`, and raise the version when the owner says to.
 
 A lesson whose entry still reads "not yet changed" is open work. Every session with a skill starts by reading its `LESSONS.md`.
+
+## Keeping sessions in step
+
+Several sessions work on this repository at once, each in its own worktree, and a session often learns something about a skill in the middle of other work. Two rules keep one copy of each skill:
+
+- **A skill edit goes to `main` at once, by path.** Do not carry it in a worktree or a feature branch with site code. Commit only the skill's files, push, and say what changed in that skill's `CHANGELOG.md` and, when it came from a correction, its `LESSONS.md`.
+- **Run `node scripts/skills.mjs sync` at the start of a session and before finishing one.** It pulls `main` when that is safe, and reports any skill edit that exists only in another worktree or branch, any unpushed or uncommitted skill change here, and any copy where a link should be. It never merges or overwrites: where two versions of a rule exist, it names both places and stops, because choosing between them is the owner's call.
+
+`sync --home` also links the skills into `~/.agents/skills`, so agents that read that folder see them in every project on the machine.
 
 ## Changing a skill
 

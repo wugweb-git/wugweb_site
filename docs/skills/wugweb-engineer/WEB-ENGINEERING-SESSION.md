@@ -1,5 +1,7 @@
 # wugweb-web-engineering: status and pending
 
+> Moved here on 2026-11-19 from `docs/skills/wugweb-web-engineering/PLAN.md`. It is the status note of a working session, not a skill and not a plan for one. The skill for this work is `wugweb-engineer`, whose plan is `PLAN.md` beside this file. Nothing in it was changed by the move.
+
 > Last updated 2026-11-17 by the wugweb-web-engineering session.
 > Notion record: https://app.notion.com/p/41abb710b9ab812e8370da0ebf13f46f
 > Registry: https://app.notion.com/p/41abb710b9ab81a38ca7fbd947b47298

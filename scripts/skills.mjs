@@ -7,6 +7,10 @@
 //                                      other agents that read the Agent Skills layout)
 //   node scripts/skills.mjs manifest   write the plugin marketplace file from each skill's own metadata
 //   node scripts/skills.mjs package    zip each skill from the last commit into dist-skills/ (not committed)
+//   node scripts/skills.mjs sync       bring this checkout in step: pull main when it is safe, report skill
+//                                      edits sitting in other worktrees or branches, then build, link,
+//                                      manifest and check. Add --home to link the skills for every project
+//                                      on this machine (~/.agents/skills)
 //   node scripts/skills.mjs all        build, link, manifest, check, package
 //
 // The master copy of a skill is .claude/skills/<name>/. Nothing here copies a
@@ -205,10 +209,81 @@ function pack() {
   console.log(`In ${relative(ROOT, DIST)}/ (not committed).`);
 }
 
+const git = (args, cwd = ROOT) => { try { return execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim(); } catch { return null; } };
+const SKILL_PATHS = ['.claude/skills', 'docs/skills'];
+
+/**
+ * Sessions edit skills while they work, in their own worktrees and branches. Sync makes
+ * sure nothing learned there is lost and nothing here is stale. It never merges or
+ * overwrites anything on its own: where two places differ it says so and gives the
+ * command, because choosing between two versions of a rule is the owner's call.
+ */
+function sync() {
+  const branch = git(['rev-parse', '--abbrev-ref', 'HEAD']);
+  const fetched = git(['fetch', '--quiet', 'origin']) !== null;
+  console.log(fetched ? 'fetched origin' : 'could not reach origin: working from what is here, which may be behind');
+  const dirtyHere = git(['status', '--porcelain', '--', ...SKILL_PATHS]) || '';
+  const behind = +(git(['rev-list', '--count', 'HEAD..origin/main']) || 0);
+  const ahead = +(git(['rev-list', '--count', 'origin/main..HEAD']) || 0);
+  let attention = 0;
+
+  if (branch !== 'main') { console.log(`ATTENTION this checkout is on "${branch}", not main. Skills are edited on main.`); attention++; }
+  if (behind && branch === 'main' && !git(['status', '--porcelain'])) {
+    const ok = git(['merge', '--ff-only', 'origin/main']) !== null;
+    console.log(ok ? `pulled ${behind} commit(s) from origin/main` : 'ATTENTION could not fast-forward to origin/main; resolve by hand');
+    if (!ok) attention++;
+  } else if (behind) { console.log(`ATTENTION ${behind} commit(s) on origin/main are not here, and this checkout has local changes or is not on main. Commit or stash, then run sync again.`); attention++; }
+  if (ahead) { console.log(`ATTENTION ${ahead} local commit(s) are not pushed: git push origin main`); attention++; }
+  if (dirtyHere) { console.log(`ATTENTION uncommitted skill edits here:\n${dirtyHere.split('\n').map((l) => '  ' + l).join('\n')}\n  Commit them by path so other sessions get them.`); attention++; }
+
+  // Skill edits that exist only in another worktree or branch.
+  const trees = (git(['worktree', 'list', '--porcelain']) || '').split('\n\n').map((b) => ({ path: (b.match(/^worktree (.+)$/m) || [])[1], branch: (b.match(/^branch refs\/heads\/(.+)$/m) || [])[1] })).filter((t) => t.path && t.path !== ROOT);
+  for (const t of trees) {
+    const dirty = git(['status', '--porcelain', '--', ...SKILL_PATHS], t.path) || '';
+    const commits = git(['log', '--format=%h %cd %s', '--date=short', 'main..HEAD', '--', ...SKILL_PATHS], t.path) || '';
+    if (!dirty && !commits) continue;
+    attention++;
+    console.log(`ATTENTION skill edits not on main, in ${relative(ROOT, t.path)}${t.branch ? ` (${t.branch})` : ''}:`);
+    for (const l of commits.split('\n').filter(Boolean).slice(0, 8)) console.log(`  commit  ${l}`);
+    for (const l of dirty.split('\n').filter(Boolean).slice(0, 12)) console.log(`  edit   ${l}`);
+    console.log('  Nothing was merged. Review it, then bring it to main by path, or discard it there.');
+  }
+  const seen = new Set(trees.map((t) => t.branch));
+  for (const b of (git(['for-each-ref', '--format=%(refname:short)', 'refs/heads']) || '').split('\n').filter((x) => x && x !== 'main' && !seen.has(x))) {
+    const commits = git(['log', '--format=%h %cd %s', '--date=short', `main..${b}`, '--', ...SKILL_PATHS]) || '';
+    if (!commits) continue;
+    attention++;
+    console.log(`ATTENTION branch ${b} holds skill commits not on main:`);
+    for (const l of commits.split('\n').slice(0, 8)) console.log(`  commit  ${l}`);
+  }
+  // A real folder where a link should be is a second copy, and second copies drift.
+  for (const n of names) { let st = null; try { st = lstatSync(join(AGENTS, n)); } catch { /* absent */ } if (st && !st.isSymbolicLink()) { attention++; console.log(`ATTENTION .agents/skills/${n} is a copy, not a link.`); } }
+
+  build(); link(); manifest();
+  if (process.argv.includes('--home')) {
+    const home = join(process.env.HOME || '', '.agents', 'skills');
+    mkdirSync(home, { recursive: true });
+    for (const n of names) {
+      const at = join(home, n); const target = join(SKILLS, n);
+      let st = null; try { st = lstatSync(at); } catch { /* absent */ }
+      if (st && !st.isSymbolicLink()) { console.log(`SKIPPED ~/.agents/skills/${n}: a real folder is there; not replaced`); attention++; continue; }
+      if (st) rmSync(at);
+      symlinkSync(target, at, 'dir');
+      console.log(`linked ~/.agents/skills/${n} -> ${target}`);
+    }
+  }
+  const generated = git(['status', '--porcelain', '--', '.claude/skills', '.agents', '.claude-plugin']) || '';
+  if (generated && !dirtyHere) { console.log(`ATTENTION the build changed generated files; commit them:\n${generated.split('\n').map((l) => '  ' + l).join('\n')}`); attention++; }
+  check();
+  console.log(attention ? `\nSync finished with ${attention} thing(s) needing attention above.` : '\nIn step: main is current, no skill edit is stranded elsewhere, every skill is complete.');
+  if (attention) process.exitCode = 1;
+}
+
 if (cmd === 'check') check();
+else if (cmd === 'sync') sync();
 else if (cmd === 'build') build();
 else if (cmd === 'link') link();
 else if (cmd === 'manifest') manifest();
 else if (cmd === 'package') pack();
 else if (cmd === 'all') { build(); link(); manifest(); check(); if (!process.exitCode) pack(); }
-else { console.error('Usage: node scripts/skills.mjs check | build | link | manifest | package | all'); process.exit(2); }
+else { console.error('Usage: node scripts/skills.mjs check | sync [--home] | build | link | manifest | package | all'); process.exit(2); }

@@ -326,7 +326,7 @@ Infrastructure, Sanity Studio, main marketing routes, design tokens (**Kits `--t
 
 The finished history that sat below this point (the 2026-09-24 Framer notes and sections 1 to 1ab, about 1,300 lines) was cut on 2026-11-19. It is in git: `git show a4950eb3:pending.md`.
 
-The open leftovers found in that history are listed in [`docs/skills/wugweb-web-engineering/PLAN.md`](docs/skills/wugweb-web-engineering/PLAN.md), under "Open leftovers found in the pending.md history". Skill plans are in `docs/skills/<skill>/PLAN.md`.
+The open leftovers found in that history are listed in [`docs/skills/wugweb-engineer/WEB-ENGINEERING-SESSION.md`](docs/skills/wugweb-engineer/WEB-ENGINEERING-SESSION.md), under "Open leftovers found in the pending.md history". Skill plans are in `docs/skills/<skill>/PLAN.md`.
 
 ---
 

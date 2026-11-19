@@ -136,3 +136,7 @@ Fixed 2026-11-19: items 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 and 14, and th
 - One clash marks the whole batch of 50 as clashed and unwritten; "which documents clashed" is not exact.
 - The `notion-sync-401` eval passes only while the Notion token stays rejected.
 - `scripts/apply-schema.cjs` line 5 in the site repo holds a connection string with a password, as the skill says.
+
+## Related note
+
+`WEB-ENGINEERING-SESSION.md` beside this file is the status and pending list of the web engineering working session (moved here 2026-11-19). It is a record of that session's work, not part of this plan.
