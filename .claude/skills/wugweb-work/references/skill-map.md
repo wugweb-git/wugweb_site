@@ -86,6 +86,48 @@ The helpers were read so that their useful rules live in this skill in its own w
 
 Not found on disk and not read: `dataviz`, `simplify`.
 
+## Helper register by area
+
+`wugweb-work` is the controlling skill. It owns the workflow and calls a specialist only when the task needs one. It never copies a helper's instructions, and no helper is a fixed step. A helper that can change a site, publish a post, update the CMS or deploy code gets no permission to do so by being listed here: the approval gates in `SKILL.md` stay the rule.
+
+Standing: **dependency** means a mode cannot run without it; **installed capability** means it is on this machine and may be called; **optional integration** means it needs the owner to connect or sign in first. There is no dependency in this register: every mode can be done by hand.
+
+| Area | Helper and source | Used for | Called when | Goes in, comes out | Reads or writes | Sign-in or connection | Overlaps with | Approval | If unavailable |
+|---|---|---|---|---|---|---|---|---|---|
+| Source of truth | Notion connector | Read the Body Content and the case-study record | Audit, Brief, Body | In: the case-study id. Out: the source text and properties | Reads. Can write | Connected | None | A write only after the owner approves that exact change | The owner pastes the content in |
+| Source of truth | Sanity connector and Sanity helpers | Read the CMS copy to compare; modelling advice | Audit; site build work | In: a query. Out: documents | Reads. Can write | Needs sign-in | None | No write from a helper; the sync is the only route, on the owner's go | The public read API |
+| Development | Cloudflare helpers | Deploy, performance and platform questions for this site's own host | Ship; after deploy | In: the page URL. Out: findings | Reads. Can deploy | Needs sign-in | None | Deploy only on the owner's go | Checks by hand in the browser |
+| Development | `frontend-design` | Building or reshaping a block or a form | Layout, when a new block is needed | In: the block plan and tokens. Out: a proposal | Proposes | None | Website Design (this one supports the build) | The owner approves the proposal | The rules in `layout-grammar.md` |
+| Development | Website Design (`website-design`) | Overall page direction and page review | Layout; Ship | In: the page. Out: a review or a direction | Proposes | Its connector needs sign-in; the skills do not | `frontend-design` (this one guides direction) | The owner approves | `design-principles.md` and `qa-checklist.md` |
+| Visual review | `ux-ui-audit` | Measured contrast, targets, focus, names, Hick and Fitts indices | Ship | In: the rendered page. Out: measured findings | Reads | None | `design:accessibility-review` | None to run; findings go to the gate table | The manual checks in `qa-checklist.md` |
+| Visual review | `superdesign` | Exploring options before a new block or form is built | Layout, on request | In: the brief and tokens. Out: options | Proposes | Not checked | `frontend-design` | The owner picks | Sketch the options by hand |
+| Visual review | HTML/CSS to Image (`html-css-to-image`) | A visual preview, or one made file such as a share image | Forms, per file | In: markup. Out: one image | Makes a file | Needs sign-in | `social-media-skills:image-prompt` | A yes for that one file | Propose an existing file |
+| Brand and content | Brand Voice (`brand-voice`) | Cross-check of a draft against brand material | Body | In: the draft. Out: voice breaks | Reads | None | `wugweb-voice`, which wins | None to run | The voice check through `wugweb-voice` |
+| Brand and content | Website Copywriting and Positioning (`copywriting-kit`) | Claims ledger, diagnosis, edit suggestions | Body | In: the draft and the evidence. Out: a ledger and suggestions | Proposes | None | `rampstack-seo:content-and-copy` | The owner approves the text | `evidence.md` and `copy-and-seo.md` |
+| SEO and AEO | `rampstack-seo` | Keyword research, on-page and content audit | Brief, SEO and schema | In: the page or topic. Out: notes and findings | Reads | None | SE Ranking (do not call both for one task) | None to run | `wugweb-seo`, then the rules held here |
+| SEO and AEO | SE Ranking (`seo-skills`) | Keyword and ranking data, technical audit | Brief; after deploy | In: the domain or phrase. Out: data | Reads; billed data | Needs sign-in | `rampstack-seo` | The owner's yes before any billed call | Mark search figures "unvalidated" |
+| SEO and AEO | AEOTester (`aeotester`) | Audit of how a page reads to AI answers | After deploy | In: the URL. Out: an audit | Reads | None | SearchFit (use one per audit) | None to run | The citability checks by hand |
+| SEO and AEO | SearchFit (`searchfit-seo`) | Broken links, schema evidence, brief skeleton | Audit, SEO and schema | In: the page. Out: findings | Reads | None | AEOTester | None to run | `scripts/check-case-page.mjs` |
+| SEO and AEO | AEO Brand Scan (`aeo-brand-scan`) | How Wugweb and the client work show up in AI answers | After deploy, report only | In: the brand. Out: a report | Reads; sends data out | None | AEOTester | The owner's yes; private data stays private | Skip and say so |
+| Research | TinyFish (`tinyfish`), primary | Website research, extraction and browser workflows | Brief, when outside evidence is needed | In: a URL or question. Out: extracted facts with sources | Reads; billed | Needs sign-in | Bright Data | The owner's yes for each run | Read the page directly; ask the owner |
+| Research | Bright Data (`brightdata-plugin`), secondary | Only a capability TinyFish lacks | Brief, rarely | In: a URL or query. Out: data | Reads; billed | Needs its own key | TinyFish | The owner's yes for each run. Never `design-mirror` | Skip and say so |
+| Analytics | `analytics-skills` | Framing a baseline or benchmark on a results line; traffic diagnosis | Body, for stats-led cases; after deploy | In: the owner's numbers. Out: framing advice | Reads | None | Data | None; it never supplies a number | The metric rule in `copy-and-seo.md` |
+| Analytics | Data (`data`) | Checking the owner's numbers; a chart from them | Body and Forms, for stats-led cases | In: the numbers. Out: a check or a chart spec | Proposes | Warehouse connectors need sign-in | `analytics-skills` | A chart file needs a yes for that file | `forms/charts.md` by hand |
+| Social publishing | Social Media Skills (`social-media-skills`) | Platform specs; post and carousel cross-check | Forms | In: the fact pack. Out: a draft or dated specs | Proposes | None | The form files here, which win | The owner's yes per post | The form files in `forms/` |
+| Social publishing | Postiz (`postiz`) | Scheduling an approved post | Forms, after approval | In: the approved post. Out: a scheduled draft | Can publish | Installed, not connected to any account | None | A yes for that exact post; nothing is sent alone | Hand the approved draft to the owner |
+| Marketing operations | Marketing (`marketing`) | Campaign plan and brand review as a cross-check | Multi-workstream and campaign cases | In: the piece. Out: a review or plan | Proposes | Some connectors need sign-in | `wugweb-strategy`, which owns planning | The owner approves | Skip; planning belongs to `wugweb-strategy` |
+| Marketing operations | ActiveCampaign (`activecampaign`) | Sending an approved newsletter; lists | Forms, newsletter, once the tool is decided | In: the approved edition. Out: a draft campaign | Can send | Not configured | None | A yes for that send | Hand the edition to the owner |
+| Marketing operations | Leadfeeder (`leadfeeder`) | Which companies read a published piece | After deploy, on request | In: the page. Out: visitor companies | Reads; shows people's details | Needs sign-in | None | The owner's yes; personal data stays private | Skip and say so |
+| Hosting | Hostinger connector (`hostinger`) | Hosting and WordPress work for a client on Hostinger | Only when a client environment needs it | In: the client site. Out: changes or an audit | Can change a site | Needs sign-in | None | The owner's yes for each change | Not used for this site |
+| Productivity | Productivity (`productivity`) | Task lists and coordination for a piece | Any mode, on request | In: the steps. Out: tasks | Writes its own task file | None | None | None | The owner questions list in the proposal |
+
+Rules for the register:
+
+- **No duplicate calls.** TinyFish and Bright Data overlap: TinyFish is the primary research tool and Bright Data is used only for a capability it lacks. `rampstack-seo` and SE Ranking overlap: one per task. AEOTester and SearchFit overlap in audits: one per audit. Website Design guides direction; `frontend-design` supports the build.
+- **Platform helpers are conditional.** Cloudflare is for this site's own host. Hostinger is only for a client on Hostinger. Neither is needed for a piece.
+- **Research, recommendation and execution stay apart.** A helper returns facts or a proposal. Only this skill acts, and only after the owner's approval.
+- **Not a giant orchestrator.** This skill owns the workflow and hands a specialist one defined job; it never restates a specialist's method.
+
 ## Clashes with the owner's rules (the owner's rule wins in each)
 
 | Helpers | What they suggest | Owner's rule that wins |
@@ -125,7 +167,6 @@ Plugin helpers are listed in the session but have not each been run. Helpers tha
 | `algorithmic-art`, `theme-factory` | Adds invented visuals; evidence is real work only |
 | `wp-dev-skills:*` | WordPress; this site is not WordPress. Kept installed for other work |
 | `compliance-check`, `compliance-tracking` | Regulatory frameworks, not content or design |
-| Web scraping helpers (Bright Data, TinyFish) | Kept out by the owner |
 | Generated FAQ schema and `llms.txt` outputs of any SEO helper | Conflict with the owner's rules; other checks from the same helper may be used |
 
 ## Fallbacks

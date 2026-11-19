@@ -17,7 +17,7 @@ The social, deck, PDF, Behance, Dribbble, newsletter and advocacy versions of ei
 
 ## Who owns what
 
-This skill makes the piece. It sets no voice, layout, token, schema or planning rule; it applies the owner's rule.
+This skill makes the piece, end to end. It holds the block catalogue, the layout grammar, the screen-selection rule and the publish gate itself. It sets no voice, token or planning rule.
 
 | Matter | Owner | This skill gives | This skill takes |
 |---|---|---|---|
@@ -29,8 +29,8 @@ This skill makes the piece. It sets no voice, layout, token, schema or planning 
 
 - Hand off instead of starting: keyword research, site-wide SEO and search reports go to `wugweb-seo`; topics and the calendar go to `wugweb-strategy`; a token or component map goes to `wugweb-kits`.
 - This skill is the hub for wording. Titles, labels, alt text and interface copy (errors, empty states, confirmations, buttons) are written here and voice-checked; `wugweb-kits` names which states need wording.
-- Layout values are never restated here. Read widths, padding, columns and gaps from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`.
-- Until a sibling skill is installed, its rules are held in the reference file that names it as owner. Once it exists, it wins. Never write such a rule in a second place.
+- The layout shell values are restated in `references/layout-grammar.md` from `kits_design_system/docs/tokens/layout-shell.md`; that document wins if it changes.
+- This skill works alone: every rule a mode needs is in its own reference files. A sibling skill adds a check or an input; it never replaces a step here.
 - The written requests are in `references/handoffs.md`.
 
 ## The source rule
@@ -73,9 +73,9 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **5. Body.** A direct request for a proposal still runs Audit, Media and Look first, in the same task (owner, 2026-11-17). Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
 
-**6. Layout.** Decide which block each content shape gets, then give `wugweb-kits` the content shape and chosen media; it returns the layout. Until it is installed, use the held rules in `references/layout-grammar.md`.
+**6. Layout.** Resolve the block plan from the parsed body, the manifest and the visual read, using the 23-block catalogue and the rules in `references/layout-grammar.md`: adaptive tiers, proof screens in each chapter, every other approved screen in All screens, and the viewer. `wugweb-kits` checks tokens on the built page.
 
-**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. Held copies: `references/schema-jsonld.md` and the on-page part of `references/copy-and-seo.md`. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
+**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. The full graph is in `references/schema-jsonld.md`; the on-page rules are in `references/copy-and-seo.md`. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
 
 **8. Ship.** Run the gate in `references/qa-checklist.md` on the rendered page at 375, 768 and 1200, then at 767, 769, 1199 and 1201. Cheap automated checks first, then the manual read. Token findings are reported, not blocking. Give a verdict: publish, publish with fixes, or no.
 
@@ -118,7 +118,7 @@ The owner's standing rules (truth, sources, media, writing, working style) are i
 
 ## Reference index
 
-Read only the file the current mode needs. "Held for" names the sibling skill that owns those rules.
+Read only the file the current mode needs.
 
 | File | Read it for |
 |---|---|
@@ -135,9 +135,9 @@ Read only the file the current mode needs. "Held for" names the sibling skill th
 | `references/skill-map.md` | Helpers, permission levels, clashes, fallbacks |
 | `references/ops-cycle.md` | Commands, output formats, this site's wiring |
 | `references/copy-and-seo.md` | Brief template, lengths. Voice pointers and candidates for `wugweb-voice`; on-page rules held for `wugweb-seo` |
-| `references/layout-grammar.md` | Which block a content shape gets. Block rules held for `wugweb-kits` |
-| `references/design-principles.md` | Held for `wugweb-kits`: design vocabulary and the critique pass |
-| `references/schema-jsonld.md` | Held for `wugweb-seo`: the JSON-LD graph |
+| `references/layout-grammar.md` | Layout: the 23-block catalogue, adaptive rules, tiers, screen selection, All screens, the viewer |
+| `references/design-principles.md` | Look and Ship: design vocabulary and the critique pass |
+| `references/schema-jsonld.md` | SEO and schema: the full JSON-LD graph |
 
 Scripts need Node 18 or later and no packages; both working scripts are read-only. If they cannot run, apply the same checks by reading and label the result a manual check.
 
@@ -220,6 +220,237 @@ After approval: the finished piece, the proof it used, and any proof that was as
 ### Not yet written
 
 No approved track 2 piece exists, so there is no worked example and no track 2 fixture. The first approved piece becomes the example.
+
+<!-- references/layout-grammar.md -->
+## Layout grammar
+
+> **Owner: `wugweb-work`.** This file is the block catalogue and the layout grammar for every piece this skill makes: the adaptive rules, the 23 blocks, tiers, screen selection, the All screens block and the viewer, motion, accessibility and performance. It is held here in full and is not a pointer; this skill needs no other skill to lay out a page. Token names and the layout shell values come from the design system document `kits_design_system/docs/tokens/layout-shell.md` and are restated in section 8 so this file works alone. Where a line below is stricter than the media rule in `media-standard.md` ("never cropped"), read it as: no mask or fit hides the part of a screen that proves the claim.
+
+How a parsed body plus its media manifest becomes a block plan. The page is never one fixed composition: it adapts to the content. Vendor-neutral; this site's components are named in `ops-cycle.md`.
+
+### Contents
+
+1. Adaptive UX: the seven lines
+2. Block catalogue
+3. Hero, stats and summary
+4. Chapters and points
+5. Media in a chapter
+6. Rhythm
+7. Closing blocks
+8. Tiers and mobile
+9. Identity
+10. Motion
+11. Accessibility in the layout
+12. Performance in the layout
+13. Screen selection, All screens and the viewer
+
+### 1. Adaptive UX: the seven lines
+
+| Adapts to | Rule | Checked by |
+|---|---|---|
+| Content shape | Layout comes from what the body holds: number of points (1, 2 to 3, 4 to 6, 7 or more), number and shape of media, quotes, tables, results, timelines. No empty cells, no filler media. | Block plan fixtures for 8 different case studies |
+| Content depth | Rich body, thin text-only body and no body each get a complete page. Results, quotes and credits appear only when they exist. | Thin and no-body previews |
+| Kind of work | Product UI, brand identity, campaign and stats-led, multi-workstream. Screens group by audience, then flow; mockups are support, never the proof. | Archetype table |
+| Volume | 3 screens or 200. A chapter shows only its proof screens; the rest go to one All screens block. | 31-screen and 200-screen cases |
+| Device | 375, 768, 1200. One column on phone, rails that show the next item, targets of 44 px or more, a file shown above its natural size is flagged, no sideways page scroll. | Gate at the edge widths |
+| Capability and conditions | Works without JavaScript. Reduced motion stops loops and reveals. Videos are muted and load only when near. Heavy pages stay under 25 MB by showing less at first, never by resizing files. | No-JS check, reduced-motion check, byte total |
+| Client identity | One accent colour from the client's palette, contrast-checked, for rules and numerals only. | Contrast check on every accent |
+
+The same rules drive the other forms (see `forms.md`).
+
+### 2. Block catalogue (23)
+
+`hero`, `summary`, `stats`, `chapter`, `points`, `figure`, `split`, `pair`, `rail`, `mosaic`, `wall`, `scrollshot`, `loop`, `video`, `quote`, `table`, `timeline`, `results`, `screens`, `credits`, `presence`, `related`, `next`.
+
+A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a status other than 200 never render.
+
+### 3. Hero, stats and summary
+
+- Brand label: short title, else client name. H1 = the title (client + what was built). Then the subtitle and a meta list holding present keys only.
+- Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. The cover rule itself lives in `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
+- `stats` under the hero when 2 to 4 verified results exist; the rest go to the Results chapter.
+- Summary = the first chapter's lead when it is 40 to 60 words; otherwise no summary block.
+
+### 4. Chapters and points
+
+- Chapter = head (h2, lead, paragraphs) then its items in body order.
+- Points: 1 → prose. 2 to 3 → columns. 4 to 6 → grid (3 columns when the count is 3 or 6, else 2). 7 or more → two-column list. Groups become h3 sub-lists.
+- Tiles carry no decorative cards on mobile. On desktop, a surface step or a subtle border separates them; never a hairline stroke.
+- Numbered steps that match a process visible in the screens may become a steps or `timeline` block, each step citing the screen that proves it.
+
+### 5. Media in a chapter
+
+These values are confirmed by the owner (2026-11-17): rail items at 85vw and never past the 1200 content maximum, a next-item peek of 20%, a signature width of 2400 px, and lines of 35 to 60 characters. In the site stylesheet they are the tokens `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min` and `--measure-max`.
+
+| Media | Block |
+|---|---|
+| 1 image, chapter text 120 words or fewer, not a phone screen | `split` (alternate sides) |
+| 1 image otherwise | `figure`, contained, captioned |
+| The single widest landscape of 2400 px or more on the page | May be the one full-bleed signature `figure` |
+| 2 images of the same shape | `pair`, 50:50, uncropped (Styles always a pair) |
+| 3 to 8 phone or tall | `rail` per flow, captions, counter, buttons, proximity snap, next item peeks about 20% |
+| 9 or more phone | Rails per flow of 8 or fewer; remainder to a `wall` with viewer |
+| 2 to 6 landscape or mixed | `mosaic` (the bento-style media grid): spans from shapes, cell count equals media count, source order kept, UI never cropped. Use it only for brand applications or sets of equal weight |
+| 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
+| Scrollshot | Fixed-height figure showing the top; "View full page" opens the viewer |
+| Video 15 s or less | `loop`: muted, playsinline, `#t=` start frame, loads when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
+| Video over 15 s | `video`: muted, click to play, play and pause button only, `preload="none"`, never `aria-hidden`; or left off the page when a short cut of it exists |
+| GIF | Image |
+| States set | `rail` or `pair` with the state as caption |
+| Mockup | Figure; at most 2 per page; never the only evidence in a chapter |
+
+#### How case-study media is laid out and loaded
+
+- A multi-screen composite that exists only as one baked image is shown as that image. Screens that exist as separate files are laid out in code, never baked.
+- A dashboard or web screen: one overview plus two to four detail views, cut by CSS masks, each with a focal point. The file is never cropped.
+- At most two or three aspect ratio families on one page.
+- Sticky text beside scrolling media only at 1200 and above; stacked below that.
+- Full-bleed media keeps the safe area on the left and right.
+- DOM order is reading order. Nothing is reordered by `order` or grid placement where order carries meaning.
+- A before and after slider has a real button to toggle and arrow keys on the handle, or it is not used.
+- Video: `preload="none"`, a start frame or poster always, the source attached only when the video is near, no video bytes on first load. Only muted decorative loops play by themselves.
+- At most one or two high-priority images per page; the hero's start frame is the largest paint.
+
+Rail items are never wider than 85vw on mobile, so a whole screen is always visible. A screen that is the only proof of a claim never appears only inside a rail; it is also in All screens.
+
+#### Content-shape rules (owned by this skill)
+
+- Per block, state the limits: the maximum length of each field, and what shows when a field or a media item is missing.
+- Numbering and labels must reflect a true order or structure in the content.
+- Show real screens, not icon cards. One main point and one visual per section.
+
+#### Fit with the design system
+
+- Structure is page, section, content, blocks. The section owns the gutter and the content owns the maximum width.
+- Every section needs an id and an accessible name, so every chapter needs a real heading.
+- Filters sit inside the grid they filter, never as a section of their own.
+- First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
+- One yellow conversion action per page; labels describe the action. The yellow rule (its share of the page and where it may rest) lives in `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`.
+- The five existing site blocks are signed off by the owner (2026-11-17). Bento has two meanings: the Bento Block is the site block for points on service and about pages, and it never resolves into an even grid; a bento-style media grid inside a case study is the `mosaic` block. The single bento composition that the case study page used before is the layout this work replaces.
+- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; a case study never carries a `faqs` block; the FAQ rules for service pages and blog posts are in `own-content.md`.
+
+### 6. Rhythm
+
+- Consecutive chapters do not repeat the same media family when another fits. A page with 8 or more chapters uses at least 4 block families.
+- `split` alternates sides; no more than 2 zigzags in a row.
+- At most 1 full-bleed per chapter; full-bleed only for the hero and one signature moment.
+- White space between chapters is at least the space inside them.
+
+### 7. Closing blocks, in order
+
+1. `results`, when results exist and no chapter is named Results.
+2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus is trapped while the viewer is open and returns to the thumbnail on close; pinch zoom is allowed; the back action closes it; every item has a deep link that opens the viewer at that item. The full rules are in section 13. Without JavaScript every set renders stacked under its own heading.
+3. `credits`: team, partner, special thanks, services, year or timeline, country, platform.
+4. `presence`: Live, stores, Behance, Dribbble, awards.
+5. `related`: 3 items from the source relation; fallback by pillar then industry.
+6. `next`: next by publish date in the same pillar, with brand, title and industry.
+
+The site's one call to action stays in the global footer. No second CTA.
+
+### 8. Tiers and mobile
+
+- Below 768: one column, media edge to edge within the gutter, rails horizontal, points stacked.
+- 768 to below 1200: two columns for points, mosaics and pairs.
+- 1200 and above: full composition. Content is capped at 1200 and no UI screen is shown wider than 1200; photography may full-bleed (hero and signature figure only).
+- Micro-adjustments stay inside a tier, and only below 480. Breakpoints are literal values: 480, 640, 768, 1024 and 1200; the layout steps only at 768 and 1200. Going down, use 767.98 and 1199.98.
+- The layout shell, from `kits_design_system/docs/tokens/layout-shell.md` (that document wins if it changes):
+
+| | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| Canvas | 375 | 768 | 1200 |
+| Section padding (top, right, bottom, left) | 48 16 48 16 | 70 32 70 32 | 96 48 96 48 |
+| Content max width | 1200 | 1200 | 1200 |
+| Columns | 4 | 8 | 12 |
+| Column gap | 16 | 24 | 32 |
+| Gutter | 16 | 32 | 48 |
+| Header height | 100 | 108 | 108 |
+| Control height | 44 | 44 | 44 |
+
+- The section owns the gutter and the content owns the maximum width. The page adds no new shell values and a block plan never sets its own gutter or width. One top-level section holds the page; chapters are `article` elements inside it. Full-bleed escapes the content box and the outer section clips sideways overflow.
+- Mobile is the installed app experience: use small and dynamic viewport units, a full-bleed welcome, and no page-level horizontal overflow.
+
+### 9. Identity
+
+- `Accent` from the body, validated at 3:1 or more against the page surface; text use only at 4.5:1 or more. Otherwise the house accent.
+- Used for rules, stat numerals and group labels. Never as a surface above 10% of the page.
+- Proposed from the client's own palette, read in Look mode.
+
+### 10. Motion
+
+- Reveal on chapter heads and figures, with small staggers.
+- Motion level follows the case read in the brief: low for trust-first sectors, richer for brand-led work.
+- Rails never auto-advance. No parallax on UI screens. No scroll-jacking or pinning on mobile.
+- Reduced motion stops loops and reveals.
+
+### 11. Accessibility in the layout
+
+- h1, then h2 for chapters, then h3 for groups and points. No skipped levels.
+- Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
+- `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
+- Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
+- A long video has an `aria-label` that says what it shows. Loops follow the pause control rule in `media-standard.md`.
+- AA contrast on client colours; focus visible and never hidden under the sticky header; chapter anchors clear the sticky header.
+- A rail's scroll area is reachable by keyboard (`tabindex="0"` where the browser does not do it) and uses `overscroll-behavior-x: contain`.
+- The viewer shows an image at its natural size, at least twice the thumbnail.
+- Before and after pairs stack with labels on mobile.
+- Body text is 16 px or larger; lines run 35 to 60 characters on mobile.
+
+### 12. Performance in the layout
+
+- Width and height on every image, from the manifest.
+- Hero image high priority, never lazy. Everything else lazy and async.
+- `content-visibility: auto` only on media containers that carry no reveal.
+- Videos `preload="none"`, start when near.
+- Never request a URL that is a duplicate or not 200. Report rendered bytes per page; warn above 25 MB.
+
+### 13. Screen selection, All screens and the viewer
+
+Three parts, always together (owner, 2026-11-11).
+
+1. **Inside a chapter: only the screens that prove the claim.** One to four screens per chapter, picked in the visual read. The chapter reads as heading, lead, points, then its proof screens with a short caption under each.
+2. **Near the end: one All screens block for everything else.** Every other approved screen, so nothing is lost. A row of set chips, each with its count; one chip is selected at a time and the grid below shows that set as thumbnails. Thumbnails keep their own ratio: 3 columns for phone screens and 1 to 2 for desktop screens on mobile, denser on desktop.
+3. **On a thumbnail: a full-size viewer, one screen at a time.** The caption, then the position and set as "3 of 8, Member". Previous and next buttons of 44 px or more, a visible close button, swipe, Escape to close.
+
+Worked case: 31 approved screens; 12 stay in chapters as proof; all 31 are in All screens in five sets (Member 8, States 4, Dashboard 9, Back office 7, Cases 3); 2 flagged screens are hidden and listed.
+
+#### What a set is
+
+The chips on the page are simple, but the record behind them keeps three things apart, because the sets mix them:
+
+| Field | What it says | Example |
+|---|---|---|
+| `audience` | Who the screen is for | member, admin, public, partner |
+| `flow` | The task the screen belongs to | Apply, Cases, Donations |
+| `kind` and `state` | What sort of screen it is | dashboard, mobile screen; error, empty, success |
+
+A set is named from whichever of these tells the reader most ("Member" is an audience, "States" is a state group, "Dashboard" is a kind, "Cases" is a flow). Sets are ordered audience first, then flow. Never store the chip label as the only category.
+
+#### Who does what
+
+Each layer does one job and none does another's:
+
+| Layer | Job |
+|---|---|
+| Body parser | Describes the content: chapters, claims, points, media references, labels, layout hints |
+| Media manifest | Describes each file: size, shape, type, status, duplicates, own or borrowed |
+| Visual read | Describes what each screen shows: audience, flow, step, kind, state, quality, which chapter it proves |
+| Layout resolver | Decides the presentation: proof screens into chapter blocks, every other approved screen into All screens |
+| Screens block | Renders All screens: chips, counts, thumbnails |
+| Viewer | Opens one screen at a time, with caption, position and navigation |
+
+The parser is never the gallery engine. This site's file for each layer is named in `ops-cycle.md`.
+
+#### Viewer rules
+
+- A native dialog. Focus is trapped while it is open and returns to the thumbnail that opened it.
+- The image is shown at its natural size, at least twice the thumbnail; pinch zoom is allowed.
+- Previous, next and close are real buttons with names; swipe is extra, never the only way.
+- The back action closes it, and every item has a deep link that opens the viewer at that item.
+- Nothing plays sound. A video in the viewer is muted with a play and pause button only.
+
+#### With no JavaScript
+
+Every set renders stacked under its own heading, with every thumbnail and caption in the server HTML. The chips and the viewer are an improvement on top, never the only way to reach a screen.
 
 <!-- references/handoffs.md -->
 ## Handoffs to sibling skills
@@ -545,6 +776,45 @@ Previews: dev server `wugweb-dev` on port 4321. JSON-LD is checked through `npm 
 Git rules are in `references/standing-rules.md`. Studio deploy, sync writes and pushes are the owner's go.
 
 Approved text goes to Notion only after approval of that exact change, with a backup first. Alt text goes to Sanity `asset.alt` only where empty (`setIfMissing`), with a backup.
+
+#### The layers on this site
+
+| Layer | File | Job |
+|---|---|---|
+| Body parser | `src/lib/case-body.ts` | Parse Body Content: chapters, claims, points, media references, labels, layout hints |
+| Media manifest | `media-manifest.mjs` and `image-dims.mjs`, in the site repository's own scripts library | Record what each file is: size, shape, type, status, duplicates, own or borrowed |
+| Visual read | The read records, per case study | Record what each screen shows and which chapter it proves |
+| Layout resolver | `src/lib/case-layout.ts` | Turn body, manifest and read into the block plan; route the other approved screens to All screens |
+| Blocks | `src/components/work/Case*.astro`, switched by `CaseBlocks.astro` | Render each block |
+| Rail and viewer logic | `src/lib/case-rail.ts`, `src/lib/case-lightbox.ts` | Buttons, counter and keyboard for rails; the one-screen viewer |
+
+The parser describes the content, the manifest describes the files, the resolver decides the presentation and the components render it. No layer does another's job.
+
+#### Content source governance: which system is the authority
+
+| Content | Authority | Reaches the site through |
+|---|---|---|
+| Case-study body, meta, media links, results lines | Notion, Case Studies, Body Content, written by the owner | The case-study sync into Sanity `bodyMarkdown` |
+| Case-study SEO title, SEO description, focus keyword, canonical URL | Notion, Case Studies properties | The same sync |
+| Case-study media files | R2, the case study's own folder, as the owner put them there | Linked by URL; the folder's unused files are listed in `extraMedia` |
+| Blog posts | Notion Blogs | The blog sync |
+| Service pages | Sanity `service` documents | Read directly |
+| The plan for this skill | The Notion page under the skill registry; the repo keeps a copy | Not synced |
+
+Approved content is what the owner has written or approved in the authority. A draft, a proposal file and the CMS copy are never the authority.
+
+#### The publishing contract: what is passed and what is preserved
+
+Passed from Notion to Sanity by the case-study sync, and nothing else: `title`, `shortTitle`, `slug`, `bodyMarkdown`, `extraMedia`, `seoTitle`, `seoDescription`, `focusKeyword`, `canonicalUrl`.
+
+Preserved, always:
+
+- Dry run by default. A write happens only with the write switch, on the owner's go, after a backup of the touched fields.
+- The sync never writes to Notion and never deletes a document or a field.
+- An empty value in Notion never clears a value in Sanity.
+- A canonical URL that does not resolve to a published page of its own slug is skipped.
+- One slug per case study. No redirects.
+- Media is never touched: no upload, copy, crop, re-encode or new poster.
 
 ### 5. Never-do list for operations
 
@@ -993,7 +1263,7 @@ The NTUC run wrote most captions from thumbnail views, saw videos at 2 frames on
 <!-- references/design-principles.md -->
 ## Design principles
 
-> **Owner: `wugweb-kits`.** The design vocabulary and the critique pass belong to `wugweb-kits`. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file. Naming a principle as evidence for a client's screen stays with this skill.
+> **Owner: `wugweb-work`.** The design vocabulary and the critique pass are held here in full and used by this skill in the Look, Layout and Ship modes. This file is not a pointer.
 
 One vocabulary, used two ways: to read the client's work as evidence, and to compose the page. A principle is named only when a screen proves it. A law name used as decoration is cut.
 
@@ -1185,168 +1455,10 @@ Older bodies were written for fixed slots: About, Challenges, Solutions, Design 
 - Stats-led, multi-workstream: `examples/body-animal-writes.md` (skeleton with owner-input markers).
 - Large screen set: `examples/body-musiclinkd.md` (skeleton grouped by flows).
 
-<!-- references/layout-grammar.md -->
-## Layout grammar
-
-> **Owner: `wugweb-kits`.** The block catalogue, tiers, motion, accessibility and performance rules below belong to `wugweb-kits`. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file. One part stays with this skill: which block a content shape gets. Where a line below is stricter than the media rule in `media-standard.md` ("never cropped"), read it as: no mask or fit hides the part of a screen that proves the claim.
-
-How a parsed body plus its media manifest becomes a block plan. The page is never one fixed composition: it adapts to the content. Vendor-neutral; this site's components are named in `ops-cycle.md`.
-
-### Contents
-
-1. Adaptive UX: the seven lines
-2. Block catalogue
-3. Hero, stats and summary
-4. Chapters and points
-5. Media in a chapter
-6. Rhythm
-7. Closing blocks
-8. Tiers and mobile
-9. Identity
-10. Motion
-11. Accessibility in the layout
-12. Performance in the layout
-
-### 1. Adaptive UX: the seven lines
-
-| Adapts to | Rule | Checked by |
-|---|---|---|
-| Content shape | Layout comes from what the body holds: number of points (1, 2 to 3, 4 to 6, 7 or more), number and shape of media, quotes, tables, results, timelines. No empty cells, no filler media. | Block plan fixtures for 8 different case studies |
-| Content depth | Rich body, thin text-only body and no body each get a complete page. Results, quotes and credits appear only when they exist. | Thin and no-body previews |
-| Kind of work | Product UI, brand identity, campaign and stats-led, multi-workstream. Screens group by audience, then flow; mockups are support, never the proof. | Archetype table |
-| Volume | 3 screens or 200. A chapter shows only its proof screens; the rest go to one All screens block. | 31-screen and 200-screen cases |
-| Device | 375, 768, 1200. One column on phone, rails that show the next item, targets of 44 px or more, a file shown above its natural size is flagged, no sideways page scroll. | Gate at the edge widths |
-| Capability and conditions | Works without JavaScript. Reduced motion stops loops and reveals. Videos are muted and load only when near. Heavy pages stay under 25 MB by showing less at first, never by resizing files. | No-JS check, reduced-motion check, byte total |
-| Client identity | One accent colour from the client's palette, contrast-checked, for rules and numerals only. | Contrast check on every accent |
-
-The same rules drive the other forms (see `forms.md`).
-
-### 2. Block catalogue (23)
-
-`hero`, `summary`, `stats`, `chapter`, `points`, `figure`, `split`, `pair`, `rail`, `mosaic`, `wall`, `scrollshot`, `loop`, `video`, `quote`, `table`, `timeline`, `results`, `screens`, `credits`, `presence`, `related`, `next`.
-
-A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a status other than 200 never render.
-
-### 3. Hero, stats and summary
-
-- Brand label: short title, else client name. H1 = the title (client + what was built). Then the subtitle and a meta list holding present keys only.
-- Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. The cover rule itself lives in `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
-- `stats` under the hero when 2 to 4 verified results exist; the rest go to the Results chapter.
-- Summary = the first chapter's lead when it is 40 to 60 words; otherwise no summary block.
-
-### 4. Chapters and points
-
-- Chapter = head (h2, lead, paragraphs) then its items in body order.
-- Points: 1 → prose. 2 to 3 → columns. 4 to 6 → grid (3 columns when the count is 3 or 6, else 2). 7 or more → two-column list. Groups become h3 sub-lists.
-- Tiles carry no decorative cards on mobile. On desktop, a surface step or a subtle border separates them; never a hairline stroke.
-- Numbered steps that match a process visible in the screens may become a steps or `timeline` block, each step citing the screen that proves it.
-
-### 5. Media in a chapter
-
-These values are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`: rail items at 85vw and never past the 1200 content maximum, a next-item peek of 20%, a signature width of 2400 px, and lines of 35 to 60 characters. This skill reads them and never changes them. Widths, gutters and columns are never set here.
-
-| Media | Block |
-|---|---|
-| 1 image, chapter text 120 words or fewer, not a phone screen | `split` (alternate sides) |
-| 1 image otherwise | `figure`, contained, captioned |
-| The single widest landscape of 2400 px or more on the page | May be the one full-bleed signature `figure` |
-| 2 images of the same shape | `pair`, 50:50, uncropped (Styles always a pair) |
-| 3 to 8 phone or tall | `rail` per flow, captions, counter, buttons, proximity snap, next item peeks about 20% |
-| 9 or more phone | Rails per flow of 8 or fewer; remainder to a `wall` with viewer |
-| 2 to 6 landscape or mixed | `mosaic`: spans from shapes, cell count equals media count, source order kept, UI never cropped |
-| 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
-| Scrollshot | Fixed-height figure showing the top; "View full page" opens the viewer |
-| Video 15 s or less | `loop`: muted, playsinline, `#t=` start frame, loads when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
-| Video over 15 s | `video`: muted, click to play, play and pause button only, `preload="none"`, never `aria-hidden`; or left off the page when a short cut of it exists |
-| GIF | Image |
-| States set | `rail` or `pair` with the state as caption |
-| Mockup | Figure; at most 2 per page; never the only evidence in a chapter |
-
-How media is laid out and loaded (baked composites, detail views as masks with a focal point, ratio families, sticky text, safe areas, reading order, sliders, poster first, priority images) is owned by `wugweb-kits`: `.claude/skills/wugweb-kits/references/media-and-widgets.md` ("Case-study media", "Video"). This table only picks the block.
-
-Rail items are never wider than 85vw on mobile, so a whole screen is always visible. A screen that is the only proof of a claim never appears only inside a rail; it is also in All screens.
-
-#### Content-shape rules (owned by this skill)
-
-- Per block, state the limits: the maximum length of each field, and what shows when a field or a media item is missing.
-- Numbering and labels must reflect a true order or structure in the content.
-- Show real screens, not icon cards. One main point and one visual per section.
-
-#### Fit with the design system (rules owned by `wugweb-kits`; pointers only)
-
-- Structure is page, section, content, blocks. The section owns the gutter and the content owns the maximum width.
-- Every section needs an id and an accessible name, so every chapter needs a real heading.
-- Filters sit inside the grid they filter, never as a section of their own.
-- First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
-- One yellow conversion action per page; labels describe the action. The yellow rule (its share of the page and where it may rest) lives in `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`.
-- The five existing blocks are signed off by the owner (2026-11-17); the bento layout on the case study page is the one this work replaces.
-- The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; a case study never carries a `faqs` block; the FAQ rules for service pages and blog posts are in `own-content.md`.
-
-### 6. Rhythm
-
-- Consecutive chapters do not repeat the same media family when another fits. A page with 8 or more chapters uses at least 4 block families.
-- `split` alternates sides; no more than 2 zigzags in a row.
-- At most 1 full-bleed per chapter; full-bleed only for the hero and one signature moment.
-- White space between chapters is at least the space inside them.
-
-### 7. Closing blocks, in order
-
-1. `results`, when results exist and no chapter is named Results.
-2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus, pinch zoom, back to close and deep links follow `wugweb-kits` (`.claude/skills/wugweb-kits/references/media-and-widgets.md`, "Viewer"). Without JavaScript every set renders stacked under its own heading.
-3. `credits`: team, partner, special thanks, services, year or timeline, country, platform.
-4. `presence`: Live, stores, Behance, Dribbble, awards.
-5. `related`: 3 items from the source relation; fallback by pillar then industry.
-6. `next`: next by publish date in the same pillar, with brand, title and industry.
-
-The site's one call to action stays in the global footer. No second CTA.
-
-### 8. Tiers and mobile
-
-- Below 768: one column, media edge to edge within the gutter, rails horizontal, points stacked.
-- 768 to below 1200: two columns for points, mosaics and pairs.
-- 1200 and above: full composition. The content width and the widest a screen may be shown come from the layout shell; photography may full-bleed (hero and signature figure only).
-- Micro-adjustments stay inside a tier. Breakpoints are literal values and come from the layout shell.
-- Layout values are not restated here. Widths, section padding, columns, gaps and header heights are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`, and nowhere else. The page adds no new shell values and a block plan never sets its own gutter or width. One top-level section holds the page; chapters are `article` elements inside it.
-- Mobile is the installed app experience: use small and dynamic viewport units, a full-bleed welcome, and no page-level horizontal overflow.
-
-### 9. Identity
-
-- `Accent` from the body, validated at 3:1 or more against the page surface; text use only at 4.5:1 or more. Otherwise the house accent.
-- Used for rules, stat numerals and group labels. Never as a surface above 10% of the page.
-- Proposed from the client's own palette, read in Look mode.
-
-### 10. Motion
-
-- Reveal on chapter heads and figures, with small staggers.
-- Motion level follows the case read in the brief: low for trust-first sectors, richer for brand-led work.
-- Rails never auto-advance. No parallax on UI screens. No scroll-jacking or pinning on mobile.
-- Reduced motion stops loops and reveals.
-
-### 11. Accessibility in the layout
-
-- h1, then h2 for chapters, then h3 for groups and points. No skipped levels.
-- Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
-- `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
-- Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
-- A long video has an `aria-label` that says what it shows. Loops follow the pause control rule in `media-standard.md`.
-- AA contrast on client colours; focus visible and never hidden under the sticky header; chapter anchors clear the sticky header.
-- A rail's scroll area is reachable by keyboard (`tabindex="0"` where the browser does not do it) and uses `overscroll-behavior-x: contain`.
-- The viewer shows an image at its natural size, at least twice the thumbnail.
-- Before and after pairs stack with labels on mobile.
-- Body text is 16 px or larger; lines run 35 to 60 characters on mobile.
-
-### 12. Performance in the layout
-
-- Width and height on every image, from the manifest.
-- Hero image high priority, never lazy. Everything else lazy and async.
-- `content-visibility: auto` only on media containers that carry no reveal.
-- Videos `preload="none"`, start when near.
-- Never request a URL that is a duplicate or not 200. Report rendered bytes per page; warn above 25 MB.
-
 <!-- references/schema-jsonld.md -->
 ## Schema: the JSON-LD graph
 
-> **Owner: `wugweb-seo`.** The schema and JSON-LD rules belong to `wugweb-seo`; this skill applies them. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file.
+> **Held in full by `wugweb-work`.** This is the complete graph this skill builds for a case study page. It is not a pointer. `wugweb-seo` audits the result; where its rule for a type or a limit differs, raise it with the owner.
 
 One `@graph` per case study page, emitted only on the canonical host. Every value comes from the approved body, the record or the manifest; nothing is invented to fill a field.
 
@@ -1829,6 +1941,48 @@ The helpers were read so that their useful rules live in this skill in its own w
 
 Not found on disk and not read: `dataviz`, `simplify`.
 
+### Helper register by area
+
+`wugweb-work` is the controlling skill. It owns the workflow and calls a specialist only when the task needs one. It never copies a helper's instructions, and no helper is a fixed step. A helper that can change a site, publish a post, update the CMS or deploy code gets no permission to do so by being listed here: the approval gates in `SKILL.md` stay the rule.
+
+Standing: **dependency** means a mode cannot run without it; **installed capability** means it is on this machine and may be called; **optional integration** means it needs the owner to connect or sign in first. There is no dependency in this register: every mode can be done by hand.
+
+| Area | Helper and source | Used for | Called when | Goes in, comes out | Reads or writes | Sign-in or connection | Overlaps with | Approval | If unavailable |
+|---|---|---|---|---|---|---|---|---|---|
+| Source of truth | Notion connector | Read the Body Content and the case-study record | Audit, Brief, Body | In: the case-study id. Out: the source text and properties | Reads. Can write | Connected | None | A write only after the owner approves that exact change | The owner pastes the content in |
+| Source of truth | Sanity connector and Sanity helpers | Read the CMS copy to compare; modelling advice | Audit; site build work | In: a query. Out: documents | Reads. Can write | Needs sign-in | None | No write from a helper; the sync is the only route, on the owner's go | The public read API |
+| Development | Cloudflare helpers | Deploy, performance and platform questions for this site's own host | Ship; after deploy | In: the page URL. Out: findings | Reads. Can deploy | Needs sign-in | None | Deploy only on the owner's go | Checks by hand in the browser |
+| Development | `frontend-design` | Building or reshaping a block or a form | Layout, when a new block is needed | In: the block plan and tokens. Out: a proposal | Proposes | None | Website Design (this one supports the build) | The owner approves the proposal | The rules in `layout-grammar.md` |
+| Development | Website Design (`website-design`) | Overall page direction and page review | Layout; Ship | In: the page. Out: a review or a direction | Proposes | Its connector needs sign-in; the skills do not | `frontend-design` (this one guides direction) | The owner approves | `design-principles.md` and `qa-checklist.md` |
+| Visual review | `ux-ui-audit` | Measured contrast, targets, focus, names, Hick and Fitts indices | Ship | In: the rendered page. Out: measured findings | Reads | None | `design:accessibility-review` | None to run; findings go to the gate table | The manual checks in `qa-checklist.md` |
+| Visual review | `superdesign` | Exploring options before a new block or form is built | Layout, on request | In: the brief and tokens. Out: options | Proposes | Not checked | `frontend-design` | The owner picks | Sketch the options by hand |
+| Visual review | HTML/CSS to Image (`html-css-to-image`) | A visual preview, or one made file such as a share image | Forms, per file | In: markup. Out: one image | Makes a file | Needs sign-in | `social-media-skills:image-prompt` | A yes for that one file | Propose an existing file |
+| Brand and content | Brand Voice (`brand-voice`) | Cross-check of a draft against brand material | Body | In: the draft. Out: voice breaks | Reads | None | `wugweb-voice`, which wins | None to run | The voice check through `wugweb-voice` |
+| Brand and content | Website Copywriting and Positioning (`copywriting-kit`) | Claims ledger, diagnosis, edit suggestions | Body | In: the draft and the evidence. Out: a ledger and suggestions | Proposes | None | `rampstack-seo:content-and-copy` | The owner approves the text | `evidence.md` and `copy-and-seo.md` |
+| SEO and AEO | `rampstack-seo` | Keyword research, on-page and content audit | Brief, SEO and schema | In: the page or topic. Out: notes and findings | Reads | None | SE Ranking (do not call both for one task) | None to run | `wugweb-seo`, then the rules held here |
+| SEO and AEO | SE Ranking (`seo-skills`) | Keyword and ranking data, technical audit | Brief; after deploy | In: the domain or phrase. Out: data | Reads; billed data | Needs sign-in | `rampstack-seo` | The owner's yes before any billed call | Mark search figures "unvalidated" |
+| SEO and AEO | AEOTester (`aeotester`) | Audit of how a page reads to AI answers | After deploy | In: the URL. Out: an audit | Reads | None | SearchFit (use one per audit) | None to run | The citability checks by hand |
+| SEO and AEO | SearchFit (`searchfit-seo`) | Broken links, schema evidence, brief skeleton | Audit, SEO and schema | In: the page. Out: findings | Reads | None | AEOTester | None to run | `scripts/check-case-page.mjs` |
+| SEO and AEO | AEO Brand Scan (`aeo-brand-scan`) | How Wugweb and the client work show up in AI answers | After deploy, report only | In: the brand. Out: a report | Reads; sends data out | None | AEOTester | The owner's yes; private data stays private | Skip and say so |
+| Research | TinyFish (`tinyfish`), primary | Website research, extraction and browser workflows | Brief, when outside evidence is needed | In: a URL or question. Out: extracted facts with sources | Reads; billed | Needs sign-in | Bright Data | The owner's yes for each run | Read the page directly; ask the owner |
+| Research | Bright Data (`brightdata-plugin`), secondary | Only a capability TinyFish lacks | Brief, rarely | In: a URL or query. Out: data | Reads; billed | Needs its own key | TinyFish | The owner's yes for each run. Never `design-mirror` | Skip and say so |
+| Analytics | `analytics-skills` | Framing a baseline or benchmark on a results line; traffic diagnosis | Body, for stats-led cases; after deploy | In: the owner's numbers. Out: framing advice | Reads | None | Data | None; it never supplies a number | The metric rule in `copy-and-seo.md` |
+| Analytics | Data (`data`) | Checking the owner's numbers; a chart from them | Body and Forms, for stats-led cases | In: the numbers. Out: a check or a chart spec | Proposes | Warehouse connectors need sign-in | `analytics-skills` | A chart file needs a yes for that file | `forms/charts.md` by hand |
+| Social publishing | Social Media Skills (`social-media-skills`) | Platform specs; post and carousel cross-check | Forms | In: the fact pack. Out: a draft or dated specs | Proposes | None | The form files here, which win | The owner's yes per post | The form files in `forms/` |
+| Social publishing | Postiz (`postiz`) | Scheduling an approved post | Forms, after approval | In: the approved post. Out: a scheduled draft | Can publish | Installed, not connected to any account | None | A yes for that exact post; nothing is sent alone | Hand the approved draft to the owner |
+| Marketing operations | Marketing (`marketing`) | Campaign plan and brand review as a cross-check | Multi-workstream and campaign cases | In: the piece. Out: a review or plan | Proposes | Some connectors need sign-in | `wugweb-strategy`, which owns planning | The owner approves | Skip; planning belongs to `wugweb-strategy` |
+| Marketing operations | ActiveCampaign (`activecampaign`) | Sending an approved newsletter; lists | Forms, newsletter, once the tool is decided | In: the approved edition. Out: a draft campaign | Can send | Not configured | None | A yes for that send | Hand the edition to the owner |
+| Marketing operations | Leadfeeder (`leadfeeder`) | Which companies read a published piece | After deploy, on request | In: the page. Out: visitor companies | Reads; shows people's details | Needs sign-in | None | The owner's yes; personal data stays private | Skip and say so |
+| Hosting | Hostinger connector (`hostinger`) | Hosting and WordPress work for a client on Hostinger | Only when a client environment needs it | In: the client site. Out: changes or an audit | Can change a site | Needs sign-in | None | The owner's yes for each change | Not used for this site |
+| Productivity | Productivity (`productivity`) | Task lists and coordination for a piece | Any mode, on request | In: the steps. Out: tasks | Writes its own task file | None | None | None | The owner questions list in the proposal |
+
+Rules for the register:
+
+- **No duplicate calls.** TinyFish and Bright Data overlap: TinyFish is the primary research tool and Bright Data is used only for a capability it lacks. `rampstack-seo` and SE Ranking overlap: one per task. AEOTester and SearchFit overlap in audits: one per audit. Website Design guides direction; `frontend-design` supports the build.
+- **Platform helpers are conditional.** Cloudflare is for this site's own host. Hostinger is only for a client on Hostinger. Neither is needed for a piece.
+- **Research, recommendation and execution stay apart.** A helper returns facts or a proposal. Only this skill acts, and only after the owner's approval.
+- **Not a giant orchestrator.** This skill owns the workflow and hands a specialist one defined job; it never restates a specialist's method.
+
 ### Clashes with the owner's rules (the owner's rule wins in each)
 
 | Helpers | What they suggest | Owner's rule that wins |
@@ -1868,7 +2022,6 @@ Plugin helpers are listed in the session but have not each been run. Helpers tha
 | `algorithmic-art`, `theme-factory` | Adds invented visuals; evidence is real work only |
 | `wp-dev-skills:*` | WordPress; this site is not WordPress. Kept installed for other work |
 | `compliance-check`, `compliance-tracking` | Regulatory frameworks, not content or design |
-| Web scraping helpers (Bright Data, TinyFish) | Kept out by the owner |
 | Generated FAQ schema and `llms.txt` outputs of any SEO helper | Conflict with the owner's rules; other checks from the same helper may be used |
 
 ### Fallbacks

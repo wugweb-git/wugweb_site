@@ -19,7 +19,7 @@ The social, deck, PDF, Behance, Dribbble, newsletter and advocacy versions of ei
 
 ## Who owns what
 
-This skill makes the piece. It sets no voice, layout, token, schema or planning rule; it applies the owner's rule.
+This skill makes the piece, end to end. It holds the block catalogue, the layout grammar, the screen-selection rule and the publish gate itself. It sets no voice, token or planning rule.
 
 | Matter | Owner | This skill gives | This skill takes |
 |---|---|---|---|
@@ -31,8 +31,8 @@ This skill makes the piece. It sets no voice, layout, token, schema or planning 
 
 - Hand off instead of starting: keyword research, site-wide SEO and search reports go to `wugweb-seo`; topics and the calendar go to `wugweb-strategy`; a token or component map goes to `wugweb-kits`.
 - This skill is the hub for wording. Titles, labels, alt text and interface copy (errors, empty states, confirmations, buttons) are written here and voice-checked; `wugweb-kits` names which states need wording.
-- Layout values are never restated here. Read widths, padding, columns and gaps from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`.
-- Until a sibling skill is installed, its rules are held in the reference file that names it as owner. Once it exists, it wins. Never write such a rule in a second place.
+- The layout shell values are restated in `references/layout-grammar.md` from `kits_design_system/docs/tokens/layout-shell.md`; that document wins if it changes.
+- This skill works alone: every rule a mode needs is in its own reference files. A sibling skill adds a check or an input; it never replaces a step here.
 - The written requests are in `references/handoffs.md`.
 
 ## The source rule
@@ -75,9 +75,9 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **5. Body.** A direct request for a proposal still runs Audit, Media and Look first, in the same task (owner, 2026-11-17). Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
 
-**6. Layout.** Decide which block each content shape gets, then give `wugweb-kits` the content shape and chosen media; it returns the layout. Until it is installed, use the held rules in `references/layout-grammar.md`.
+**6. Layout.** Resolve the block plan from the parsed body, the manifest and the visual read, using the 23-block catalogue and the rules in `references/layout-grammar.md`: adaptive tiers, proof screens in each chapter, every other approved screen in All screens, and the viewer. `wugweb-kits` checks tokens on the built page.
 
-**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. Held copies: `references/schema-jsonld.md` and the on-page part of `references/copy-and-seo.md`. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
+**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. The full graph is in `references/schema-jsonld.md`; the on-page rules are in `references/copy-and-seo.md`. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
 
 **8. Ship.** Run the gate in `references/qa-checklist.md` on the rendered page at 375, 768 and 1200, then at 767, 769, 1199 and 1201. Cheap automated checks first, then the manual read. Token findings are reported, not blocking. Give a verdict: publish, publish with fixes, or no.
 
@@ -120,7 +120,7 @@ The owner's standing rules (truth, sources, media, writing, working style) are i
 
 ## Reference index
 
-Read only the file the current mode needs. "Held for" names the sibling skill that owns those rules.
+Read only the file the current mode needs.
 
 | File | Read it for |
 |---|---|
@@ -137,9 +137,9 @@ Read only the file the current mode needs. "Held for" names the sibling skill th
 | `references/skill-map.md` | Helpers, permission levels, clashes, fallbacks |
 | `references/ops-cycle.md` | Commands, output formats, this site's wiring |
 | `references/copy-and-seo.md` | Brief template, lengths. Voice pointers and candidates for `wugweb-voice`; on-page rules held for `wugweb-seo` |
-| `references/layout-grammar.md` | Which block a content shape gets. Block rules held for `wugweb-kits` |
-| `references/design-principles.md` | Held for `wugweb-kits`: design vocabulary and the critique pass |
-| `references/schema-jsonld.md` | Held for `wugweb-seo`: the JSON-LD graph |
+| `references/layout-grammar.md` | Layout: the 23-block catalogue, adaptive rules, tiers, screen selection, All screens, the viewer |
+| `references/design-principles.md` | Look and Ship: design vocabulary and the critique pass |
+| `references/schema-jsonld.md` | SEO and schema: the full JSON-LD graph |
 
 Scripts need Node 18 or later and no packages; both working scripts are read-only. If they cannot run, apply the same checks by reading and label the result a manual check.
 

@@ -101,6 +101,45 @@ Git rules are in `references/standing-rules.md`. Studio deploy, sync writes and 
 
 Approved text goes to Notion only after approval of that exact change, with a backup first. Alt text goes to Sanity `asset.alt` only where empty (`setIfMissing`), with a backup.
 
+### The layers on this site
+
+| Layer | File | Job |
+|---|---|---|
+| Body parser | `src/lib/case-body.ts` | Parse Body Content: chapters, claims, points, media references, labels, layout hints |
+| Media manifest | `media-manifest.mjs` and `image-dims.mjs`, in the site repository's own scripts library | Record what each file is: size, shape, type, status, duplicates, own or borrowed |
+| Visual read | The read records, per case study | Record what each screen shows and which chapter it proves |
+| Layout resolver | `src/lib/case-layout.ts` | Turn body, manifest and read into the block plan; route the other approved screens to All screens |
+| Blocks | `src/components/work/Case*.astro`, switched by `CaseBlocks.astro` | Render each block |
+| Rail and viewer logic | `src/lib/case-rail.ts`, `src/lib/case-lightbox.ts` | Buttons, counter and keyboard for rails; the one-screen viewer |
+
+The parser describes the content, the manifest describes the files, the resolver decides the presentation and the components render it. No layer does another's job.
+
+### Content source governance: which system is the authority
+
+| Content | Authority | Reaches the site through |
+|---|---|---|
+| Case-study body, meta, media links, results lines | Notion, Case Studies, Body Content, written by the owner | The case-study sync into Sanity `bodyMarkdown` |
+| Case-study SEO title, SEO description, focus keyword, canonical URL | Notion, Case Studies properties | The same sync |
+| Case-study media files | R2, the case study's own folder, as the owner put them there | Linked by URL; the folder's unused files are listed in `extraMedia` |
+| Blog posts | Notion Blogs | The blog sync |
+| Service pages | Sanity `service` documents | Read directly |
+| The plan for this skill | The Notion page under the skill registry; the repo keeps a copy | Not synced |
+
+Approved content is what the owner has written or approved in the authority. A draft, a proposal file and the CMS copy are never the authority.
+
+### The publishing contract: what is passed and what is preserved
+
+Passed from Notion to Sanity by the case-study sync, and nothing else: `title`, `shortTitle`, `slug`, `bodyMarkdown`, `extraMedia`, `seoTitle`, `seoDescription`, `focusKeyword`, `canonicalUrl`.
+
+Preserved, always:
+
+- Dry run by default. A write happens only with the write switch, on the owner's go, after a backup of the touched fields.
+- The sync never writes to Notion and never deletes a document or a field.
+- An empty value in Notion never clears a value in Sanity.
+- A canonical URL that does not resolve to a published page of its own slug is skipped.
+- One slug per case study. No redirects.
+- Media is never touched: no upload, copy, crop, re-encode or new poster.
+
 ## 5. Never-do list for operations
 
 - Never write Notion or Sanity before approval of the exact change, and never without a backup.

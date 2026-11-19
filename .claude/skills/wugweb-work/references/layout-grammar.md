@@ -1,6 +1,6 @@
 # Layout grammar
 
-> **Owner: `wugweb-kits`.** The block catalogue, tiers, motion, accessibility and performance rules below belong to `wugweb-kits`. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file. One part stays with this skill: which block a content shape gets. Where a line below is stricter than the media rule in `media-standard.md` ("never cropped"), read it as: no mask or fit hides the part of a screen that proves the claim.
+> **Owner: `wugweb-work`.** This file is the block catalogue and the layout grammar for every piece this skill makes: the adaptive rules, the 23 blocks, tiers, screen selection, the All screens block and the viewer, motion, accessibility and performance. It is held here in full and is not a pointer; this skill needs no other skill to lay out a page. Token names and the layout shell values come from the design system document `kits_design_system/docs/tokens/layout-shell.md` and are restated in section 8 so this file works alone. Where a line below is stricter than the media rule in `media-standard.md` ("never cropped"), read it as: no mask or fit hides the part of a screen that proves the claim.
 
 How a parsed body plus its media manifest becomes a block plan. The page is never one fixed composition: it adapts to the content. Vendor-neutral; this site's components are named in `ops-cycle.md`.
 
@@ -18,6 +18,7 @@ How a parsed body plus its media manifest becomes a block plan. The page is neve
 10. Motion
 11. Accessibility in the layout
 12. Performance in the layout
+13. Screen selection, All screens and the viewer
 
 ## 1. Adaptive UX: the seven lines
 
@@ -55,7 +56,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ## 5. Media in a chapter
 
-These values are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`: rail items at 85vw and never past the 1200 content maximum, a next-item peek of 20%, a signature width of 2400 px, and lines of 35 to 60 characters. This skill reads them and never changes them. Widths, gutters and columns are never set here.
+These values are confirmed by the owner (2026-11-17): rail items at 85vw and never past the 1200 content maximum, a next-item peek of 20%, a signature width of 2400 px, and lines of 35 to 60 characters. In the site stylesheet they are the tokens `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min` and `--measure-max`.
 
 | Media | Block |
 |---|---|
@@ -65,7 +66,7 @@ These values are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`:
 | 2 images of the same shape | `pair`, 50:50, uncropped (Styles always a pair) |
 | 3 to 8 phone or tall | `rail` per flow, captions, counter, buttons, proximity snap, next item peeks about 20% |
 | 9 or more phone | Rails per flow of 8 or fewer; remainder to a `wall` with viewer |
-| 2 to 6 landscape or mixed | `mosaic`: spans from shapes, cell count equals media count, source order kept, UI never cropped |
+| 2 to 6 landscape or mixed | `mosaic` (the bento-style media grid): spans from shapes, cell count equals media count, source order kept, UI never cropped. Use it only for brand applications or sets of equal weight |
 | 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
 | Scrollshot | Fixed-height figure showing the top; "View full page" opens the viewer |
 | Video 15 s or less | `loop`: muted, playsinline, `#t=` start frame, loads when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
@@ -74,7 +75,17 @@ These values are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`:
 | States set | `rail` or `pair` with the state as caption |
 | Mockup | Figure; at most 2 per page; never the only evidence in a chapter |
 
-How media is laid out and loaded (baked composites, detail views as masks with a focal point, ratio families, sticky text, safe areas, reading order, sliders, poster first, priority images) is owned by `wugweb-kits`: `.claude/skills/wugweb-kits/references/media-and-widgets.md` ("Case-study media", "Video"). This table only picks the block.
+### How case-study media is laid out and loaded
+
+- A multi-screen composite that exists only as one baked image is shown as that image. Screens that exist as separate files are laid out in code, never baked.
+- A dashboard or web screen: one overview plus two to four detail views, cut by CSS masks, each with a focal point. The file is never cropped.
+- At most two or three aspect ratio families on one page.
+- Sticky text beside scrolling media only at 1200 and above; stacked below that.
+- Full-bleed media keeps the safe area on the left and right.
+- DOM order is reading order. Nothing is reordered by `order` or grid placement where order carries meaning.
+- A before and after slider has a real button to toggle and arrow keys on the handle, or it is not used.
+- Video: `preload="none"`, a start frame or poster always, the source attached only when the video is near, no video bytes on first load. Only muted decorative loops play by themselves.
+- At most one or two high-priority images per page; the hero's start frame is the largest paint.
 
 Rail items are never wider than 85vw on mobile, so a whole screen is always visible. A screen that is the only proof of a claim never appears only inside a rail; it is also in All screens.
 
@@ -84,14 +95,14 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - Numbering and labels must reflect a true order or structure in the content.
 - Show real screens, not icon cards. One main point and one visual per section.
 
-### Fit with the design system (rules owned by `wugweb-kits`; pointers only)
+### Fit with the design system
 
 - Structure is page, section, content, blocks. The section owns the gutter and the content owns the maximum width.
 - Every section needs an id and an accessible name, so every chapter needs a real heading.
 - Filters sit inside the grid they filter, never as a section of their own.
 - First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
 - One yellow conversion action per page; labels describe the action. The yellow rule (its share of the page and where it may rest) lives in `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`.
-- The five existing blocks are signed off by the owner (2026-11-17); the bento layout on the case study page is the one this work replaces.
+- The five existing site blocks are signed off by the owner (2026-11-17). Bento has two meanings: the Bento Block is the site block for points on service and about pages, and it never resolves into an even grid; a bento-style media grid inside a case study is the `mosaic` block. The single bento composition that the case study page used before is the layout this work replaces.
 - The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; a case study never carries a `faqs` block; the FAQ rules for service pages and blog posts are in `own-content.md`.
 
 ## 6. Rhythm
@@ -104,7 +115,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 ## 7. Closing blocks, in order
 
 1. `results`, when results exist and no chapter is named Results.
-2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus, pinch zoom, back to close and deep links follow `wugweb-kits` (`.claude/skills/wugweb-kits/references/media-and-widgets.md`, "Viewer"). Without JavaScript every set renders stacked under its own heading.
+2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus is trapped while the viewer is open and returns to the thumbnail on close; pinch zoom is allowed; the back action closes it; every item has a deep link that opens the viewer at that item. The full rules are in section 13. Without JavaScript every set renders stacked under its own heading.
 3. `credits`: team, partner, special thanks, services, year or timeline, country, platform.
 4. `presence`: Live, stores, Behance, Dribbble, awards.
 5. `related`: 3 items from the source relation; fallback by pillar then industry.
@@ -116,9 +127,22 @@ The site's one call to action stays in the global footer. No second CTA.
 
 - Below 768: one column, media edge to edge within the gutter, rails horizontal, points stacked.
 - 768 to below 1200: two columns for points, mosaics and pairs.
-- 1200 and above: full composition. The content width and the widest a screen may be shown come from the layout shell; photography may full-bleed (hero and signature figure only).
-- Micro-adjustments stay inside a tier. Breakpoints are literal values and come from the layout shell.
-- Layout values are not restated here. Widths, section padding, columns, gaps and header heights are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`, and nowhere else. The page adds no new shell values and a block plan never sets its own gutter or width. One top-level section holds the page; chapters are `article` elements inside it.
+- 1200 and above: full composition. Content is capped at 1200 and no UI screen is shown wider than 1200; photography may full-bleed (hero and signature figure only).
+- Micro-adjustments stay inside a tier, and only below 480. Breakpoints are literal values: 480, 640, 768, 1024 and 1200; the layout steps only at 768 and 1200. Going down, use 767.98 and 1199.98.
+- The layout shell, from `kits_design_system/docs/tokens/layout-shell.md` (that document wins if it changes):
+
+| | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| Canvas | 375 | 768 | 1200 |
+| Section padding (top, right, bottom, left) | 48 16 48 16 | 70 32 70 32 | 96 48 96 48 |
+| Content max width | 1200 | 1200 | 1200 |
+| Columns | 4 | 8 | 12 |
+| Column gap | 16 | 24 | 32 |
+| Gutter | 16 | 32 | 48 |
+| Header height | 100 | 108 | 108 |
+| Control height | 44 | 44 | 44 |
+
+- The section owns the gutter and the content owns the maximum width. The page adds no new shell values and a block plan never sets its own gutter or width. One top-level section holds the page; chapters are `article` elements inside it. Full-bleed escapes the content box and the outer section clips sideways overflow.
 - Mobile is the installed app experience: use small and dynamic viewport units, a full-bleed welcome, and no page-level horizontal overflow.
 
 ## 9. Identity
@@ -154,3 +178,52 @@ The site's one call to action stays in the global footer. No second CTA.
 - `content-visibility: auto` only on media containers that carry no reveal.
 - Videos `preload="none"`, start when near.
 - Never request a URL that is a duplicate or not 200. Report rendered bytes per page; warn above 25 MB.
+
+## 13. Screen selection, All screens and the viewer
+
+Three parts, always together (owner, 2026-11-11).
+
+1. **Inside a chapter: only the screens that prove the claim.** One to four screens per chapter, picked in the visual read. The chapter reads as heading, lead, points, then its proof screens with a short caption under each.
+2. **Near the end: one All screens block for everything else.** Every other approved screen, so nothing is lost. A row of set chips, each with its count; one chip is selected at a time and the grid below shows that set as thumbnails. Thumbnails keep their own ratio: 3 columns for phone screens and 1 to 2 for desktop screens on mobile, denser on desktop.
+3. **On a thumbnail: a full-size viewer, one screen at a time.** The caption, then the position and set as "3 of 8, Member". Previous and next buttons of 44 px or more, a visible close button, swipe, Escape to close.
+
+Worked case: 31 approved screens; 12 stay in chapters as proof; all 31 are in All screens in five sets (Member 8, States 4, Dashboard 9, Back office 7, Cases 3); 2 flagged screens are hidden and listed.
+
+### What a set is
+
+The chips on the page are simple, but the record behind them keeps three things apart, because the sets mix them:
+
+| Field | What it says | Example |
+|---|---|---|
+| `audience` | Who the screen is for | member, admin, public, partner |
+| `flow` | The task the screen belongs to | Apply, Cases, Donations |
+| `kind` and `state` | What sort of screen it is | dashboard, mobile screen; error, empty, success |
+
+A set is named from whichever of these tells the reader most ("Member" is an audience, "States" is a state group, "Dashboard" is a kind, "Cases" is a flow). Sets are ordered audience first, then flow. Never store the chip label as the only category.
+
+### Who does what
+
+Each layer does one job and none does another's:
+
+| Layer | Job |
+|---|---|
+| Body parser | Describes the content: chapters, claims, points, media references, labels, layout hints |
+| Media manifest | Describes each file: size, shape, type, status, duplicates, own or borrowed |
+| Visual read | Describes what each screen shows: audience, flow, step, kind, state, quality, which chapter it proves |
+| Layout resolver | Decides the presentation: proof screens into chapter blocks, every other approved screen into All screens |
+| Screens block | Renders All screens: chips, counts, thumbnails |
+| Viewer | Opens one screen at a time, with caption, position and navigation |
+
+The parser is never the gallery engine. This site's file for each layer is named in `ops-cycle.md`.
+
+### Viewer rules
+
+- A native dialog. Focus is trapped while it is open and returns to the thumbnail that opened it.
+- The image is shown at its natural size, at least twice the thumbnail; pinch zoom is allowed.
+- Previous, next and close are real buttons with names; swipe is extra, never the only way.
+- The back action closes it, and every item has a deep link that opens the viewer at that item.
+- Nothing plays sound. A video in the viewer is muted with a play and pause button only.
+
+### With no JavaScript
+
+Every set renders stacked under its own heading, with every thumbnail and caption in the server HTML. The chips and the viewer are an improvement on top, never the only way to reach a screen.
