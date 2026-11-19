@@ -1,4 +1,4 @@
-# wugweb-strategy (single-file export for other tools, v0.1.4)
+# wugweb-strategy (single-file export for other tools, v0.1.5)
 
 Built from the files in this folder. Rebuild whenever the skill or `docs/skills/STANDING-RULES.md` changes. Read the skill first, then the reference a mode names.
 

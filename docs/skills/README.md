@@ -4,13 +4,13 @@ Seven skills, one job each. Every skill is a complete package that works alone, 
 
 | Skill | Its job | Version |
 |---|---|---|
-| `wugweb-work` | Makes the piece: client work and Wugweb's own content, with its composition, layout, media, copy, schema, gate and other forms | 0.5.0 |
-| `wugweb-voice` | The one Wugweb voice, and the voice check | 0.3.0 |
-| `wugweb-brand-os` | Brand strategy and the visual system rules | 0.3.2 |
-| `wugweb-kits` | The design system: tokens, components, block docs, audits | 2.1.3 |
-| `wugweb-strategy` | What to publish, to whom and when | 0.1.4 |
-| `wugweb-seo` | How pages are found: plan, audit, report | 2.5.0 |
-| `wugweb-engineer` | Stored data: CMS and source changes, schema, sync scripts | 0.3.1 |
+| `wugweb-work` | Makes the piece: client work and Wugweb's own content, with its composition, layout, media, copy, schema, gate and other forms | 0.6.0 |
+| `wugweb-voice` | The one Wugweb voice, and the voice check | 0.3.1 |
+| `wugweb-brand-os` | Brand strategy and the visual system rules | 0.3.3 |
+| `wugweb-kits` | The design system: tokens, components, block docs, audits | 2.1.4 |
+| `wugweb-strategy` | What to publish, to whom and when | 0.1.5 |
+| `wugweb-seo` | How pages are found: plan, audit, report | 2.5.1 |
+| `wugweb-engineer` | Stored data: CMS and source changes, schema, sync scripts | 0.3.2 |
 
 The versions above are checked by `node scripts/skills.mjs check`; if this table and that command disagree, the command is right.
 
@@ -25,7 +25,7 @@ The versions above are checked by `node scripts/skills.mjs check`; if this table
 | Rules every skill follows | `docs/skills/STANDING-RULES.md` | Each skill carries a marked copy |
 | Which model to use | `docs/skills/AI-MODELS.md` | |
 | How secrets are handled | `docs/skills/SECRETS.md` | No skill holds or prints a secret |
-| Packaged files | `dist-skills/` | Built from git on demand; never committed |
+| Packaged files | `dist-skills/` | One zip and one Claude app file per skill, built from git and committed, with an index of versions and checksums |
 
 The web engineering session's status note, which used to sit in a folder of its own with no matching skill, is now `docs/skills/wugweb-engineer/WEB-ENGINEERING-SESSION.md`, beside the plan of the skill that does that work.
 
@@ -84,7 +84,7 @@ node scripts/skills.mjs check      every skill: its parts, versions, build, test
 node scripts/skills.mjs build      regenerate each skill's AGENTS.md, export and adapters
 node scripts/skills.mjs link       make or repair the .agents/skills links
 node scripts/skills.mjs manifest   rewrite the marketplace file from each skill's metadata
-node scripts/skills.mjs package    zip each skill from the last commit into dist-skills/
+node scripts/skills.mjs package    zip each skill from the last commit into dist-skills/ and write its index; commit the result
 node scripts/skills.mjs all        all of the above, in order
 ```
 

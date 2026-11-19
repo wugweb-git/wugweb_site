@@ -1,7 +1,7 @@
 {
   "skill": "wugweb-brand-os",
-  "version": "0.3.2",
-  "note": "Status 'runnable' means the test can run on 0.3.2. 'waiting on the owner' means it needs an answer or a file the owner has not supplied. 'waiting on the app upload' means it needs a real run in the Claude app, where triggering can be measured.",
+  "version": "0.3.3",
+  "note": "Status 'runnable' means the test can run on 0.3.3. 'waiting on the owner' means it needs an answer or a file the owner has not supplied. 'waiting on the app upload' means it needs a real run in the Claude app, where triggering can be measured.",
   "evals": [
     {
       "id": 1,

@@ -1,7 +1,7 @@
 {
   "skill": "wugweb-voice",
-  "version": "0.3.0",
-  "note": "Status 'runnable' means the test can run on 0.3.0. 'waiting on samples' means it needs the corpus. Fixtures in evals/fixtures are mechanical tests only; they are not examples of the voice.",
+  "version": "0.3.1",
+  "note": "Status 'runnable' means the test can run on 0.3.1. 'waiting on samples' means it needs the corpus. Fixtures in evals/fixtures are mechanical tests only; they are not examples of the voice.",
   "evals": [
     {
       "id": 1,

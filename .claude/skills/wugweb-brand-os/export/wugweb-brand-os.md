@@ -1,4 +1,4 @@
-# wugweb-brand-os (single-file export, v0.3.2)
+# wugweb-brand-os (single-file export, v0.3.3)
 
 Built from the files in this folder by `scripts/build.mjs`. Do not edit by hand. Rebuild whenever the skill or `docs/skills/STANDING-RULES.md` changes. Read the skill first, then the reference a mode names.
 
@@ -96,7 +96,7 @@ The single place that says who Wugweb is and what its visuals must mean. It hold
 
 ## Status: read this first
 
-Version 0.3.2 holds the structure, every sourced rule and the owner's rulings of 2026-11-16 and 17. Four core items are blank until the owner supplies them:
+Version 0.3.3 holds the structure, every sourced rule and the owner's rulings of 2026-11-16 and 17. Four core items are blank until the owner supplies them:
 
 - **Positioning line:** not decided. Neither line in use is chosen.
 - **Audience:** not decided.

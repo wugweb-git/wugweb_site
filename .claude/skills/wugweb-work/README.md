@@ -2,7 +2,7 @@
 
 One of the seven skills in the Wugweb Skill System. It answers "how is each piece
 made?" and produces every piece in two tracks, plus their other forms.
-Version 0.5.0. Part 1 only: the skill, its references, two read-only
+Version 0.6.0. Part 1 only: the skill, its references, two read-only
 working scripts and the evals. Site code is not part of it.
 
 The registry is the Notion page "Wugweb Skill Management System". If this

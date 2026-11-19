@@ -3,7 +3,7 @@
 The seventh skill in the Wugweb Skill System. It answers "how does the
 data behind the site change safely?" and governs Sanity documents, the Sanity
 schema, the Notion to Sanity sync scripts, backups and undo.
-Version 0.3.1. Named by the owner on 2026-11-19; earlier versions were called `wugweb-data`. Built 2026-11-19 on the owner's word, as option b of the
+Version 0.3.2. Named by the owner on 2026-11-19; earlier versions were called `wugweb-data`. Built 2026-11-19 on the owner's word, as option b of the
 2026-11-18 audit. Registered 2026-11-19 as row 7 in the registry, with its own Notion page.
 
 The registry is the Notion page "Wugweb Skill Management System". If this

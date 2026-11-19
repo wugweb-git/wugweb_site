@@ -9,7 +9,7 @@
       "name": "wugweb-brand-os",
       "source": "./.claude/skills/wugweb-brand-os",
       "description": "Says who Wugweb is and what its visuals must mean, and checks visuals and claims against that. Holds brand strategy (identity, positioning, values, audience, differentiation, messaging framework), approved facts about Wugweb, brand rules and Visual OS (art direction for site, social and deck visuals",
-      "version": "0.3.2",
+      "version": "0.3.3",
       "author": {
         "name": "Wugweb"
       },
@@ -20,7 +20,7 @@
       "name": "wugweb-engineer",
       "source": "./.claude/skills/wugweb-engineer",
       "description": "Govern every change to the data behind wugweb.com: Sanity documents, the Sanity schema, the Notion to Sanity sync scripts, backups and undo. One procedure for every change: read and count, back up with a hash, plan one field as current to proposed, wait for the owner's go on that plan, patch with a ",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "author": {
         "name": "Wugweb"
       },
@@ -31,7 +31,7 @@
       "name": "wugweb-kits",
       "source": "./.claude/skills/wugweb-kits",
       "description": "The Wugweb Kits design system skill. Maps the site to tokens, the layout shell, components and blocks; audits pages and code for hardcoded values, shell faults, labelling and radius-by-role; writes block and component specs. Reads layout-shell.md, sizing.md and components.md as the source; reports a",
-      "version": "2.1.3",
+      "version": "2.1.4",
       "author": {
         "name": "Wugweb"
       },
@@ -42,7 +42,7 @@
       "name": "wugweb-seo",
       "source": "./.claude/skills/wugweb-seo",
       "description": "Plan, audit and report on how Wugweb pages are found in search engines and AI answers. Plan gives the site keyword and intent map, the phrase, intent, outline and brief limits for one page, and keyword notes for social and portfolio titles. Audit checks the rendered page and robots.txt and returns a",
-      "version": "2.5.0",
+      "version": "2.5.1",
       "author": {
         "name": "Wugweb"
       },
@@ -53,7 +53,7 @@
       "name": "wugweb-strategy",
       "source": "./.claude/skills/wugweb-strategy",
       "description": "Decides what Wugweb says, to whom and when, and hands wugweb-work a brief. Content strategy only: topics, pillar mix, the editorial and social calendar, briefs, piece structures, editorial standards, content models, the proof map, refresh or retire decisions, campaign and repurposing plans, and read",
-      "version": "0.1.4",
+      "version": "0.1.5",
       "author": {
         "name": "Wugweb"
       },
@@ -64,7 +64,7 @@
       "name": "wugweb-voice",
       "source": "./.claude/skills/wugweb-voice",
       "description": "Holds the one Wugweb voice, which is also the owner's voice, and runs the voice check on visible Wugweb copy. Structure, check method and sample ledger only: no voice rule exists until the owner supplies writing samples. The fixed owner rules (British English, sentence case, no em or en dashes, no i",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "Wugweb"
       },
@@ -75,7 +75,7 @@
       "name": "wugweb-work",
       "source": "./.claude/skills/wugweb-work",
       "description": "A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothin",
-      "version": "0.5.0",
+      "version": "0.6.0",
       "author": {
         "name": "Wugweb"
       },

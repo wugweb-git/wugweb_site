@@ -4,7 +4,7 @@ description: "This skill should be used when the user asks to \"change a Sanity 
 license: MIT
 metadata:
   author: wugweb
-  version: "0.3.1"
+  version: "0.3.2"
   status: "built 2026-11-19, named wugweb-engineer by the owner and registered in the Notion registry as row 7 the same day"
 ---
 

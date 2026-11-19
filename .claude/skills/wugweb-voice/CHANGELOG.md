@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.1] 2026-11-19
+
+Raised from the locked 0.3.0 on the owner's word of 2026-11-19 ("Version numbers are unchanged ... fix").
+
+- Packaging for use in any agent (owner, 2026-11-19): `LICENSE` (MIT), `LESSONS.md` (what the skill learns from use, and which rule each lesson changed), a link under `.agents/skills/` so Codex and the other agents that read the Agent Skills layout load this folder, and an entry in the plugin marketplace file. No rule of the skill changed in this release.
+- `scripts/validate.mjs` added: a structure check of the package.
+- Includes the two same-day entries listed under 0.3.0 below: the review fixes, and the digital-twin plan document recorded as a source of candidates.
+- The skill is still structure only: no voice rule drawn from samples exists until the owner supplies samples.
+
 ## [0.3.0] 2026-11-17
 
 ### 2026-11-19 (owner: "add this in wugweb-voice skill", under the locked 0.3.0, no version change)

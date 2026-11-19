@@ -1,7 +1,7 @@
 # wugweb-brand-os
 
 Says who Wugweb is and what its visuals must mean, and checks visuals and claims
-against that. Version 0.3.2.
+against that. Version 0.3.3.
 
 It holds brand strategy (identity, positioning, values, audience, differentiation,
 messaging framework), approved facts about Wugweb, brand rules and Visual OS (art
@@ -106,7 +106,7 @@ wins.
 
 ## Status
 
-Built, version 0.3.2. Structure, sourced rules and the owner's rulings of
+Built, version 0.3.3. Structure, sourced rules and the owner's rulings of
 2026-11-16 and 17 are in. Four items are blank until supplied: the positioning line, the
 audience, differentiation and brand strategy. Four facts are open (team
 size, projects, markets, profile links). Examples are empty. Triggering is tested only

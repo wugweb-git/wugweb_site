@@ -6,7 +6,8 @@
 //   node scripts/skills.mjs link       make .agents/skills/<name> point at each master folder (Codex and
 //                                      other agents that read the Agent Skills layout)
 //   node scripts/skills.mjs manifest   write the plugin marketplace file from each skill's own metadata
-//   node scripts/skills.mjs package    zip each skill from the last commit into dist-skills/ (not committed)
+//   node scripts/skills.mjs package    zip each skill from the last commit into dist-skills/, with an index
+//                                      of versions and checksums (commit the result)
 //   node scripts/skills.mjs sync       bring this checkout in step: pull main when it is safe, report skill
 //                                      edits sitting in other worktrees or branches, then build, link,
 //                                      manifest and check. Add --home to link the skills for every project
@@ -20,6 +21,7 @@
 // rules, and it runs no sync and touches no content store.
 
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, writeFileSync, mkdirSync, lstatSync, readlinkSync, symlinkSync, rmSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -49,8 +51,8 @@ const PARTS = [
   { path: 'adapters/cursor', need: true, why: 'Cursor rule' },
   { path: 'adapters/chatgpt', need: true, why: 'custom GPT or project instructions' },
   { path: 'agents/openai.yaml', need: true, why: 'display settings for Codex' },
-  { path: 'scripts/validate.mjs', need: false, why: 'structure check' },
-  { path: 'examples', need: false, why: 'worked examples' },
+  { path: 'scripts/validate.mjs', need: true, why: 'structure check' },
+  { path: 'examples', need: true, why: 'worked examples' },
 ];
 
 function frontmatter(md) {
@@ -190,11 +192,16 @@ function pack() {
   mkdirSync(DIST, { recursive: true });
   const dirty = execFileSync('git', ['status', '--porcelain', '--', '.claude/skills'], { cwd: ROOT, encoding: 'utf8' }).trim();
   if (dirty) { console.error('Not packaged: .claude/skills has uncommitted changes. The zips are built from the last commit, so commit first.'); process.exit(1); }
-  const sha = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
+  mkdirSync(DIST, { recursive: true });
+  // The commit that last changed the skills: the packages are a build of exactly that state.
+  const sha = execFileSync('git', ['log', '-1', '--format=%h', '--', '.claude/skills'], { cwd: ROOT, encoding: 'utf8' }).trim();
+  const sum = (f) => createHash('sha256').update(readFileSync(f)).digest('hex');
+  const rows = [];
+  for (const f of readdirSync(DIST)) if (/\.(zip|skill)$/.test(f)) rmSync(join(DIST, f));
   for (const n of names) {
     const v = read(n).fm.version || '0.0.0';
     const full = join(DIST, `${n}-${v}.zip`);
-    execFileSync('git', ['archive', '--format=zip', `--prefix=${n}/`, '-o', full, `HEAD:.claude/skills/${n}`], { cwd: ROOT });
+    execFileSync('git', ['archive', '--format=zip', `--prefix=${n}/`, '-o', full, `${sha}:.claude/skills/${n}`], { cwd: ROOT });
     // The .skill file is what the Claude app takes: the same folder without the evals.
     const tmp = join(DIST, `.tmp-${n}`);
     rmSync(tmp, { recursive: true, force: true }); mkdirSync(tmp, { recursive: true });
@@ -205,8 +212,17 @@ function pack() {
     execFileSync('zip', ['-qr', skill, n], { cwd: tmp });
     rmSync(tmp, { recursive: true, force: true });
     console.log(`packed ${n} ${v} (${sha}): ${(statSync(full).size / 1024).toFixed(0)} KB zip, ${(statSync(skill).size / 1024).toFixed(0)} KB .skill`);
+    rows.push({ n, v, zip: `${n}-${v}.zip`, zipSum: sum(full), skill: `${n}.skill`, skillSum: sum(skill) });
   }
-  console.log(`In ${relative(ROOT, DIST)}/ (not committed).`);
+  const index = ['# Packaged skills', '', `Built by \`node scripts/skills.mjs package\` from commit \`${sha}\`, the last commit that changed a skill. Do not edit these files: change the skill in \`.claude/skills/<name>/\`, commit, and run the command again.`, '',
+    '| Skill | Version | Full package | For the Claude app |', '|---|---|---|---|',
+    ...rows.map((r) => `| ${r.n} | ${r.v} | \`${r.zip}\` | \`${r.skill}\` |`), '',
+    '- **Full package**: the whole skill folder, with its evals, references, scripts, examples, adapters and exports. Unzip it into the skills folder of any agent (see `docs/skills/README.md`).',
+    '- **For the Claude app**: the same folder without the evals. Upload it under Settings, Plugins.', '',
+    '## Checksums (SHA-256)', '', '```', ...rows.flatMap((r) => [`${r.zipSum}  ${r.zip}`, `${r.skillSum}  ${r.skill}`]), '```', ''].join('\n');
+  writeFileSync(join(DIST, 'README.md'), index);
+  writeFileSync(join(DIST, 'index.json'), JSON.stringify({ builtFrom: sha, skills: rows.map((r) => ({ name: r.n, version: r.v, package: r.zip, packageSha256: r.zipSum, claudeApp: r.skill, claudeAppSha256: r.skillSum })) }, null, 2) + '\n');
+  console.log(`In ${relative(ROOT, DIST)}/ with README.md and index.json. Commit them.`);
 }
 
 const git = (args, cwd = ROOT) => { try { return execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim(); } catch { return null; } };

@@ -2,7 +2,7 @@
 
 # Wugweb Kits
 
-**Version 2.1.3** · Wugweb · November 2026
+**Version 2.1.4** · Wugweb · November 2026
 
 The Wugweb Kits design system skill. Maps the site to tokens, the layout shell, components and blocks; audits pages and code for hardcoded values, shell faults, labelling and radius-by-role; writes block and component specs. Reads layout-shell.md, sizing.md and components.md as the source; reports and proposes; the owner approves every change.
 

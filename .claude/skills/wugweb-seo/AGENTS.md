@@ -2,7 +2,7 @@
 
 # wugweb-seo
 
-**Version 2.5.0** · Wugweb · November 2026
+**Version 2.5.1** · Wugweb · November 2026
 
 Plan, audit and report on how Wugweb pages are found in search engines and AI answers. Plan gives the site keyword and intent map, the phrase, intent, outline and brief limits for one page, and keyword notes for social and portfolio titles. Audit checks the rendered page and robots.txt and returns a fix list split three ways. Report reads Search Console and AI answer data and feeds the content plan. It never writes copy and changes nothing itself. Every helper is optional; the rules taken from them are restated in the references. Three check scripts with no dependencies. Independent of CMS, host and agent.
 

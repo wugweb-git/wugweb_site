@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.5 (2026-11-19)
+
+- Packaging for use in any agent (owner, 2026-11-19): `LICENSE` (MIT), `LESSONS.md` (what the skill learns from use, and which rule each lesson changed), a link under `.agents/skills/` so Codex and the other agents that read the Agent Skills layout load this folder, and an entry in the plugin marketplace file. No rule of the skill changed in this release.
+- `scripts/validate.mjs` added: a structure check of the package.
+- Includes the review fixes listed in the entry below.
+
 ## 2026-11-19 (review fixes, no version change)
 
 Fixes from the full read of 2026-11-19 (`docs/skills/wugweb-strategy/PLAN.md`). The version stays 0.1.4.

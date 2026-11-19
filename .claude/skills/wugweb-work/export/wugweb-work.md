@@ -1,8 +1,8 @@
-<!-- wugweb-work 0.5.0. Built by scripts/build.mjs. Do not edit; edit the source files. -->
+<!-- wugweb-work 0.6.0. Built by scripts/build.mjs. Do not edit; edit the source files. -->
 
 # wugweb-work
 
-**Version 0.5.0** · Wugweb · November 2026
+**Version 0.6.0** · Wugweb · November 2026
 
 A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. It works alone: the block catalogue, layout grammar, media, copy, on-page SEO, schema and publish-gate rules are held in the skill, and sibling skills add a check or an input. Independent of CMS, host and agent.
 

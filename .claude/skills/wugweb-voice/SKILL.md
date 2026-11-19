@@ -4,8 +4,8 @@ description: "Holds the one Wugweb voice, which is also the owner's voice, and r
 license: MIT
 metadata:
   author: wugweb
-  version: "0.3.0"
-  status: "structure only; version locked at 0.3.0; voice rules waiting on owner samples"
+  version: "0.3.1"
+  status: "structure only; version at 0.3.1; voice rules waiting on owner samples"
 ---
 
 # wugweb-voice
@@ -14,7 +14,7 @@ Wugweb and Vedanshu write in one voice, because Vedanshu is the author of Wugweb
 
 ## Status: read this first
 
-Version 0.3.0 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
+Version 0.3.1 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
 
 - The fixed owner rules (below). They are confirmed and always on.
 - The voice check method, with its mechanical parts in `scripts/check.mjs`.

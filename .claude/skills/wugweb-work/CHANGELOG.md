@@ -1,6 +1,8 @@
 # Changelog
 
-## 0.5.0, restored 2026-11-19 (owner)
+## 0.6.0, 2026-11-19 (owner)
+
+Raised from 0.5.0 on the owner's word of 2026-11-19. This entry holds everything added that day after the skill was restored to the work session's 0.5.0. Also: Packaging for use in any agent (owner, 2026-11-19): `LICENSE` (MIT), `LESSONS.md` (what the skill learns from use, and which rule each lesson changed), a link under `.agents/skills/` so Codex and the other agents that read the Agent Skills layout load this folder, and an entry in the plugin marketplace file. The rule changes of the day are the bullets below.
 
 - The skill is restored to the work session's own 0.5.0 (the state at commit `4fbf334c`). The review fixes applied earlier on 2026-11-19 (commits `57b61d3a`, `84f35560`, `21656941`) are undone: they had handed the sync and the writes to another skill, replaced the layout sizes with pointers and reworded the held block catalogue. This skill is the full production system the owner's plan describes: nine modes, Body Content v2, the media manifest, the visual read, the block catalogue and layout grammar, screen selection and All screens, the publish gate, the sync, preview, approval, commit and deploy cycle, and the Forms module.
 - Three owner rulings of 2026-11-19 are kept on top of the restored text: one title limit for every page type, 60 characters as rendered (`evals/evals.json`, `references/copy-and-seo.md`); the newsletter's sending tool, list and cadence are not decided (`references/open-items.md`, `SKILL.md`); an NDA client is never named.

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.4, 2026-11-19
+
+- Packaging for use in any agent (owner, 2026-11-19): `LICENSE` (MIT), `LESSONS.md` (what the skill learns from use, and which rule each lesson changed), a link under `.agents/skills/` so Codex and the other agents that read the Agent Skills layout load this folder, and an entry in the plugin marketplace file. No rule of the skill changed in this release.
+- `README.md` gains What it does, What is in the package, Install, Run and Licence sections.
+- `examples/inventory-run.md` added: a real inventory run on the site source.
+- Includes the review fixes listed in the entry below.
+
 ## 2.1.3, 2026-11-19 (review fixes, no version change)
 
 - `AGENTS.md` and `export/wugweb-kits.md` rebuilt for the "API keys and secrets" section of the standing rules (`ab96770e`); the eval "AGENTS.md export is current" holds again.

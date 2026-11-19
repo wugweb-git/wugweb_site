@@ -1,4 +1,4 @@
-<!-- wugweb-voice 0.3.0. Built by scripts/build.mjs. Do not edit; edit the source files. -->
+<!-- wugweb-voice 0.3.1. Built by scripts/build.mjs. Do not edit; edit the source files. -->
 
 # wugweb-voice
 
@@ -6,7 +6,7 @@ Wugweb and Vedanshu write in one voice, because Vedanshu is the author of Wugweb
 
 ## Status: read this first
 
-Version 0.3.0 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
+Version 0.3.1 is structure only. The owner has supplied no writing samples yet, so no rule drawn from samples exists. What works today:
 
 - The fixed owner rules (below). They are confirmed and always on.
 - The voice check method, with its mechanical parts in `scripts/check.mjs`.

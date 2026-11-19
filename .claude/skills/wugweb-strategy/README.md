@@ -1,7 +1,7 @@
 # wugweb-strategy
 
 Decides what Wugweb says, to whom and when, and hands `wugweb-work` a brief.
-Version 0.1.4.
+Version 0.1.5.
 
 Content strategy only: topics, the pillar mix, the editorial and social
 calendar, briefs, piece structures, editorial standards, content models, the
@@ -103,7 +103,7 @@ node scripts/test.mjs            # self-test
 
 ## Status
 
-Built, version 0.1.4. The structure, rules and handoffs are in place. The Notion
+Built, version 0.1.5. The structure, rules and handoffs are in place. The Notion
 plan database (decision 1) is not built yet, so the calendar, backlog and signal
 log have no home until the owner's go. Several defaults (cadence, promotional and
 reactive shares, backlog size, refresh thresholds) are "owner to set" until a

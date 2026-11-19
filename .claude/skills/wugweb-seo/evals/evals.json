@@ -1,6 +1,6 @@
 {
   "skill_name": "wugweb-seo",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "evals": [
     { "id": "plan-one-page",
       "prompt": "Plan the target phrase and intent for a new wugweb.com service page on booking-system design.",

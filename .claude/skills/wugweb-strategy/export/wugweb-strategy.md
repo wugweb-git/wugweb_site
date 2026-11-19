@@ -1,4 +1,4 @@
-# wugweb-strategy (single-file export, v0.1.4)
+# wugweb-strategy (single-file export, v0.1.5)
 
 Built from the skill folder. Rebuild whenever the skill changes. Read the skill first, then the reference a mode names.
 

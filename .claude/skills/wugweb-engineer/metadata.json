@@ -1,5 +1,5 @@
 {
-  "version": "0.3.1",
+  "version": "0.3.2",
   "organization": "Wugweb",
   "date": "November 2026",
   "abstract": "Govern every change to the data behind wugweb.com: Sanity documents, the Sanity schema, the Notion to Sanity sync scripts, backups and undo. One procedure for every change: read and count, back up with a hash, plan one field as current to proposed, wait for the owner's go on that plan, patch with a revision guard, read again, keep the undo. The skill itself never deletes, creates or replaces a document (the one exception is the blog sync script's own create-if-missing, run only on the owner's go), never touches media files, and calls no AI model. Field decisions, search values and visible wording belong to sibling skills; this skill applies them. Five working scripts, plain Node with no packages. Independent of agent; the Sanity and Notion wiring sits in one reference file.",

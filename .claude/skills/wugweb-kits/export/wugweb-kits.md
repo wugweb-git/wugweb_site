@@ -1,4 +1,4 @@
-# wugweb-kits (single-file export, v2.1.3)
+# wugweb-kits (single-file export, v2.1.4)
 
 Built from the skill folder. Rebuild whenever the skill changes. Read the skill first, then the reference a part names.
 
@@ -6,7 +6,7 @@ Built from the skill folder. Rebuild whenever the skill changes. Read the skill 
 
 # Wugweb Kits
 
-**Version 2.1.3** · Wugweb · November 2026
+**Version 2.1.4** · Wugweb · November 2026
 
 The Wugweb Kits design system skill. Maps the site to tokens, the layout shell, components and blocks; audits pages and code for hardcoded values, shell faults, labelling and radius-by-role; writes block and component specs. Reads layout-shell.md, sizing.md and components.md as the source; reports and proposes; the owner approves every change.
 
