@@ -65,6 +65,8 @@ Body markdown uses only constructs the sync can convert to blocks: links, bold a
 | Accent | Identity | One hex from the client's own palette; see `layout-grammar.md` for the contrast rule |
 | Results | Results | See section 6 |
 
+Never infer a meta value. A timeline, year, partner, country or any other key the source does not give stays empty and does not render; it becomes an owner question.
+
 ## 4. Chapters and points
 
 - A chapter is a `###` heading. Any number of chapters. Prefer claim headings (see `copy-and-seo.md`); generic labels are tolerated in v1 bodies and flagged by the audit.

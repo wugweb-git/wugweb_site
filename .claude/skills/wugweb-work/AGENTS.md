@@ -266,7 +266,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ### 3. Hero, stats and summary
 
-- Brand label: short title, else client name. H1 = the title (client + what was built). Then the subtitle and a meta list holding present keys only.
+- Brand label above the H1: the short title (the brand), else the client name. H1 = the title, which says what was built and does not repeat the brand. The source keeps the two apart: Title holds no brand, Short Title is the brand. Then the subtitle and a meta list holding present keys only.
 - Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. The cover rule itself lives in `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
 - `stats` under the hero when 2 to 4 verified results exist; the rest go to the Results chapter.
 - Summary = the first chapter's lead when it is 40 to 60 words; otherwise no summary block.
@@ -815,6 +815,38 @@ Preserved, always:
 - A canonical URL that does not resolve to a published page of its own slug is skipped.
 - One slug per case study. No redirects.
 - Media is never touched: no upload, copy, crop, re-encode or new poster.
+- A slug change never recreates the document, and the old address is not redirected.
+- Titles are stored without the site suffix. The layout adds " | Wugweb" only when the title does not already name Wugweb and the total fits in 60 characters.
+- The write is one transaction: it lands whole or not at all.
+
+#### After the sync and the deploy: what Ship checks
+
+Ship covers the built page, the synchronisation and the deployment. After a sync write and a deploy, check in this order and report each result:
+
+1. **Source against CMS.** For each case study that changed, the title, short title, slug, body, SEO title, SEO description, focus keyword and canonical in Sanity equal the Notion values.
+2. **CDN.** The public read API returns the new values. It can lag by minutes: read again until it does, and say how long it took.
+3. **Build.** The host's build for that push succeeded.
+4. **Page.** The page returns 200 on two requests in a row on the preview host, and the gate in `qa-checklist.md` passes.
+5. **Head.** One title with at most one site suffix; the description matches; the canonical points to the page itself.
+6. **Structured data.** Present and valid on the canonical host only.
+7. **Media.** Every media URL on the page returns 200.
+
+#### When something fails
+
+- A rejected token (401): stop, write nothing, tell the owner a new token is needed.
+- A rate limit (429): wait and retry; the source allows about 3 requests a second.
+- A permission error: stop before any write. Never leave a partial write.
+- A source row with no slug, or more than one match: skip it and list it for the owner.
+- A canonical that is not the page's own address: do not overwrite it; list it for the owner.
+
+#### Rollback
+
+- Every write is preceded by a backup of the touched fields, kept in the repository's backups folder with a timestamp.
+- Code: revert the commit.
+- Sanity: restore the touched fields from the backup, as a new approved change with its own backup.
+- Notion: restore by hand from the backup; it has no automatic restore for properties.
+- Say what was restored and from which backup file.
+
 
 ### 5. Never-do list for operations
 
@@ -824,6 +856,7 @@ Preserved, always:
 - Never push, deploy Studio or run a sync write without the owner's go.
 - Never send or schedule a post in Postiz without the owner's yes for that exact post.
 - Never raise DNS cutover, asset clean-up or cookie policy as side quests.
+- Never touch the owner's personal site, any other repository, or Studio-only files that do not affect public content.
 
 <!-- references/evidence.md -->
 ## Audit and evidence rules
@@ -1015,7 +1048,7 @@ The page answers first, then follows the claim order owned by `wugweb-brand-os` 
 
 Agreed with `wugweb-seo` (2.5.0, 2026-11-17). The limits and checks live in `wugweb-seo`; this skill writes the words. Keyword research, technical SEO and reports belong there too; ask through `handoffs.md`.
 
-- H1 wording: client + what was built (this skill's; `wugweb-seo` checks there is one H1 and that it agrees with the title).
+- H1 wording: what was built, with the brand shown in the label above it. The source keeps the two apart: Title holds no brand, Short Title is the brand. The SEO title names the client and what was built (this skill's; `wugweb-seo` checks there is one H1 and that it agrees with the title).
 - SEO title limit and the layout suffix: `.claude/skills/wugweb-seo/references/audit.md` (`title-rendered`: 60 characters or fewer as rendered, the one limit for every page type; owner, 2026-11-19).
 - Meta description length: `.claude/skills/wugweb-seo/references/audit.md` (`description-length`). The wording states what was built and for whom (this skill's copy rule).
 - One slug, no redirects: `.claude/skills/wugweb-seo/references/handoffs.md`.
@@ -1378,6 +1411,8 @@ Body markdown uses only constructs the sync can convert to blocks: links, bold a
 | Live, App Store, Play Store, Behance, Dribbble, Awards | Presence block | Never in the hero meta; a dead URL is kept in the source and skipped on the page |
 | Accent | Identity | One hex from the client's own palette; see `layout-grammar.md` for the contrast rule |
 | Results | Results | See section 6 |
+
+Never infer a meta value. A timeline, year, partner, country or any other key the source does not give stays empty and does not render; it becomes an owner question.
 
 ### 4. Chapters and points
 

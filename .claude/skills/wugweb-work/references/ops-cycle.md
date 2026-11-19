@@ -139,6 +139,38 @@ Preserved, always:
 - A canonical URL that does not resolve to a published page of its own slug is skipped.
 - One slug per case study. No redirects.
 - Media is never touched: no upload, copy, crop, re-encode or new poster.
+- A slug change never recreates the document, and the old address is not redirected.
+- Titles are stored without the site suffix. The layout adds " | Wugweb" only when the title does not already name Wugweb and the total fits in 60 characters.
+- The write is one transaction: it lands whole or not at all.
+
+### After the sync and the deploy: what Ship checks
+
+Ship covers the built page, the synchronisation and the deployment. After a sync write and a deploy, check in this order and report each result:
+
+1. **Source against CMS.** For each case study that changed, the title, short title, slug, body, SEO title, SEO description, focus keyword and canonical in Sanity equal the Notion values.
+2. **CDN.** The public read API returns the new values. It can lag by minutes: read again until it does, and say how long it took.
+3. **Build.** The host's build for that push succeeded.
+4. **Page.** The page returns 200 on two requests in a row on the preview host, and the gate in `qa-checklist.md` passes.
+5. **Head.** One title with at most one site suffix; the description matches; the canonical points to the page itself.
+6. **Structured data.** Present and valid on the canonical host only.
+7. **Media.** Every media URL on the page returns 200.
+
+### When something fails
+
+- A rejected token (401): stop, write nothing, tell the owner a new token is needed.
+- A rate limit (429): wait and retry; the source allows about 3 requests a second.
+- A permission error: stop before any write. Never leave a partial write.
+- A source row with no slug, or more than one match: skip it and list it for the owner.
+- A canonical that is not the page's own address: do not overwrite it; list it for the owner.
+
+### Rollback
+
+- Every write is preceded by a backup of the touched fields, kept in the repository's backups folder with a timestamp.
+- Code: revert the commit.
+- Sanity: restore the touched fields from the backup, as a new approved change with its own backup.
+- Notion: restore by hand from the backup; it has no automatic restore for properties.
+- Say what was restored and from which backup file.
+
 
 ## 5. Never-do list for operations
 
@@ -148,3 +180,4 @@ Preserved, always:
 - Never push, deploy Studio or run a sync write without the owner's go.
 - Never send or schedule a post in Postiz without the owner's yes for that exact post.
 - Never raise DNS cutover, asset clean-up or cookie policy as side quests.
+- Never touch the owner's personal site, any other repository, or Studio-only files that do not affect public content.

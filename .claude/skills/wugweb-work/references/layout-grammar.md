@@ -42,7 +42,7 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ## 3. Hero, stats and summary
 
-- Brand label: short title, else client name. H1 = the title (client + what was built). Then the subtitle and a meta list holding present keys only.
+- Brand label above the H1: the short title (the brand), else the client name. H1 = the title, which says what was built and does not repeat the brand. The source keeps the two apart: Title holds no brand, Short Title is the brand. Then the subtitle and a meta list holding present keys only.
 - Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. The cover rule itself lives in `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
 - `stats` under the hero when 2 to 4 verified results exist; the rest go to the Results chapter.
 - Summary = the first chapter's lead when it is 40 to 60 words; otherwise no summary block.

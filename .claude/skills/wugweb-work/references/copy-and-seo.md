@@ -106,7 +106,7 @@ The page answers first, then follows the claim order owned by `wugweb-brand-os` 
 
 Agreed with `wugweb-seo` (2.5.0, 2026-11-17). The limits and checks live in `wugweb-seo`; this skill writes the words. Keyword research, technical SEO and reports belong there too; ask through `handoffs.md`.
 
-- H1 wording: client + what was built (this skill's; `wugweb-seo` checks there is one H1 and that it agrees with the title).
+- H1 wording: what was built, with the brand shown in the label above it. The source keeps the two apart: Title holds no brand, Short Title is the brand. The SEO title names the client and what was built (this skill's; `wugweb-seo` checks there is one H1 and that it agrees with the title).
 - SEO title limit and the layout suffix: `.claude/skills/wugweb-seo/references/audit.md` (`title-rendered`: 60 characters or fewer as rendered, the one limit for every page type; owner, 2026-11-19).
 - Meta description length: `.claude/skills/wugweb-seo/references/audit.md` (`description-length`). The wording states what was built and for whom (this skill's copy rule).
 - One slug, no redirects: `.claude/skills/wugweb-seo/references/handoffs.md`.
