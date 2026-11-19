@@ -1372,6 +1372,8 @@ Added to the skill:
 
 Not in this plan, so not added (owner to supply if wanted): the chapter nav block spec, type sizes for made files, the "ski-ramp" brief template, how an HTML or SVG chart is carried in the block plan, blog image rules, the rule for refreshing old posts.
 
-Open with the owner: the newsletter's tool, list and cadence; which research helper leads (TinyFish is written as first, Bright Data second); the mosaic row is narrower than this plan ("only for brand applications or sets of equal weight"); `wugweb-engineer` also says it runs the source to CMS sync.
+Open with the owner: the newsletter's tool, list and cadence; which research helper leads (TinyFish is written as first, Bright Data second); `wugweb-engineer` also says it runs the source to CMS sync.
 
-Not built on the site yet: the All screens component (`src/components/work/` has no screens component), and the gate script takes the first image in `main` as the hero.
+Not built on the site yet: the All screens component (`src/components/work/` has no screens component).
+
+Fixed after the pass (same day): the mosaic row reads as this plan has it again (the narrowing to brand applications was an error, not an owner rule), and the gate script takes the hero from the hero block.

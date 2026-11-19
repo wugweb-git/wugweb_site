@@ -21,6 +21,8 @@
   - `references/handoffs.md`, `references/open-items.md`, `references/media-standard.md`, `references/own-content.md`, `references/schema-jsonld.md`, `references/forms.md`, `references/forms/og-image.md`, `README.md`, `metadata.json`: wording that said a sibling owns or returns the layout, or that rules are held until a sibling is installed, now says this skill holds the rule and does the step, and the sibling may check the result. `inLanguage` comes from the record; one alt rule (10 to 125 characters); the entity and spelling check is in the audit list.
   - Scripts: `case-audit.mjs` reads both site-copy headings, parses the `Section:` prefix, types a label only on a whole kind word, flags a long chapter once and plans `timeline` in place of `steps`; `check-case-page.mjs` reports the chapter check as not applicable off a case-study page or with `--no-body`, and compares the canonical host as well as the path; `validate.mjs` checks the banned-word list and the hard-stops list for drift; `test.mjs` covers each change.
   - Evals: 15 to 18 added (screen selection, All screens and viewer, fact pack and carousel, Behance and deck), chapter length and title and description assertions added to eval 1; evals 3, 5 and 9 corrected (misnamed IndusNinja boards, no scheduling tool connected). The new evals have not been run.
+- The mosaic row again reads as the owner's plan has it: 2 to 6 landscape or mixed media, with no narrowing to brand applications. The narrowing was added in error on 2026-11-19.
+- The gate script takes the hero from the hero block, and falls back to the first image in `main` only when the page has no hero block.
 
 ## Release of 0.5.0, 2026-11-17 (revised the same day, still called 0.5.0 at the owner's word)
 

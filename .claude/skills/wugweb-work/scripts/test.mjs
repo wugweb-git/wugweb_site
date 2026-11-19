@@ -4,7 +4,8 @@
 //   node test.mjs
 
 import { execFileSync } from 'node:child_process'
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseBody, flagsFor, blockPlan } from './case-audit.mjs'
@@ -68,6 +69,17 @@ const nb = JSON.parse(run('check-case-page.mjs', [join(root, 'examples/fixture-p
 expect('gate: chapter check is not applicable with --no-body', stat(nb, 'Every chapter article') === 'n/a')
 const t2 = JSON.parse(run('check-case-page.mjs', [join(root, 'examples/fixture-page-own-content.html'), '--host', 'www.wugweb.com', '--no-media', '--json']).out)
 expect('gate: chapter check is not applicable on a track 2 page', stat(t2, 'Every chapter article') === 'n/a', stat(t2, 'Every chapter article'))
+// the hero is the first image inside the hero block, not the first image in main
+{
+  const dir = mkdtempSync(join(tmpdir(), 'work-gate-'))
+  const src = readFileSync(join(root, 'examples/fixture-page-pass.html'), 'utf8')
+  const cover = src.match(/<img src="cover\.png"[^>]*>/)[0]
+  const withLogo = src.replace(cover, `<img src="logo.png" alt="Example Co logo" width="120" height="40" loading="lazy"><header class="case-hero">${cover}</header>`)
+  const file = join(dir, 'hero.html'); writeFileSync(file, withLogo)
+  const hj = JSON.parse(run('check-case-page.mjs', [file, '--host', 'www.wugweb.com', '--no-media', '--json']).out)
+  expect('gate: hero is the image in the hero block, not the first image', stat(hj, 'Hero image is high priority') === 'pass' && stat(hj, 'Other images lazy') === 'pass', `${stat(hj, 'Hero image is high priority')}/${stat(hj, 'Other images lazy')}`)
+  rmSync(dir, { recursive: true, force: true })
+}
 expect('gate: canonical on the canonical host passes', stat(pj, 'Canonical points to this page') === 'pass')
 const wrongHost = JSON.parse(run('check-case-page.mjs', [join(root, 'examples/fixture-page-pass.html'), '--host', 'preview.example.test', '--canonical-host', 'canonical.example.test', '--no-media', '--json']).out)
 expect('gate: canonical on another host fails', stat(wrongHost, 'Canonical points to this page') === 'fail', stat(wrongHost, 'Canonical points to this page'))

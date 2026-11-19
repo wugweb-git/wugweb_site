@@ -298,7 +298,7 @@ These values are confirmed by the owner (2026-11-17): rail items at 85vw and nev
 | 2 images of the same shape | `pair`, 50:50, uncropped (Styles always a pair) |
 | 3 to 8 phone or tall | `rail` per flow, captions, counter, buttons, proximity snap, next item peeks about 20% |
 | 9 or more phone | Rails per flow of 8 or fewer; remainder to a `wall` with viewer |
-| 2 to 6 landscape or mixed | `mosaic` (the bento-style media grid): spans from shapes, cell count equals media count, source order kept, UI never cropped. Use it only for brand applications or sets of equal weight |
+| 2 to 6 landscape or mixed | `mosaic` (the bento-style media grid): spans from shapes, cell count equals media count, source order kept, UI never cropped |
 | 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
 | Scrollshot | Fixed-height figure showing the top; "View full page" opens the viewer |
 | Video 15 s or less | `loop`: muted, playsinline, a poster or `#t=` start frame, the source held in `data-src` so it loads only when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |

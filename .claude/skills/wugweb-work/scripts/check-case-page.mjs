@@ -119,9 +119,12 @@ async function run() {
   check('Every img has width and height', !noSize.length, `${noSize.length} of ${imgs.length} missing`);
   check('Alt text 125 characters or fewer', !longAlt.length, `${longAlt.length} too long`);
   check('Alt text is not repeated across many images', sameAlt === 0, sameAlt ? `${sameAlt} images share an alt used 3 or more times` : '');
-  const hero = imgs[0];
+  // The hero is the first image inside the hero block; when the page has no hero block
+  // (track 2, or an older template) it is the first image in main.
+  const heroBlock = all(main, (n) => /(^|\s)case-hero(\s|$)/.test((n.attrs && n.attrs.class) || ''))[0];
+  const hero = (heroBlock && all(heroBlock, (n) => n.tag === 'img')[0]) || imgs[0];
   if (hero) check('Hero image is high priority and not lazy', hero.attrs.fetchpriority === 'high' && hero.attrs.loading !== 'lazy', `fetchpriority=${hero.attrs.fetchpriority || '-'} loading=${hero.attrs.loading || '-'}`);
-  const notLazy = imgs.slice(1).filter((i) => i.attrs.loading !== 'lazy');
+  const notLazy = imgs.filter((i) => i !== hero && i.attrs.loading !== 'lazy');
   check('Other images lazy', !notLazy.length, `${notLazy.length} not lazy`, imgs.length > 1);
 
   // dashes in visible text and labels
