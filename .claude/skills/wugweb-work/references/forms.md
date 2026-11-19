@@ -73,7 +73,7 @@ These are sizes for new made files, never for resizing client media. The share i
 | Dribbble shot | At least 1600 wide (1600 x 1200 by convention); PNG, JPG or GIF up to 10 MB, video up to 20 MB | Adopted by the owner, 2026-11-17. Dribbble Help Center, read directly |
 | Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17; the canvas is official. Meta gives no official pixel safe zone: keep the top, bottom and sides clear of key elements, text and logos (wider margins), and the bottom 40% clear of text on Reels ads. Never state a pixel figure as a rule |
 
-This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
+This skill picks which platform size a file uses, from the table above, which holds the sizes and the safe-zone rule. `wugweb-kits` may check a made file against its tokens.
 
 ## Card (lists and grids)
 
@@ -81,7 +81,7 @@ This skill picks which platform size a file uses; `wugweb-kits` supplies the siz
 
 - Takes: client, short title, one line of what was built, cover or thumbnail, industry.
 - Tone: no adjectives. "Member portal and back office for NTUC U Care Fund."
-- Media: the existing thumbnail kept at its own ratio inside a 16/10 frame that acts as a mask, with no crop of the source and no re-encode (owner, 2026-11-17, owned by `wugweb-kits`); a thumbnail video loops muted.
+- Media: the existing thumbnail kept at its own ratio inside a 16/10 frame that acts as a mask, with no crop of the source and no re-encode (owner, 2026-11-17); a thumbnail video loops muted.
 
 ## Showcase tile
 

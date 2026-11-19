@@ -2,24 +2,24 @@
 
 This skill makes the piece and is the hub for wording. It asks each sibling a defined question and applies the answer. A sibling never writes the piece, and never writes to the source, the CMS or the media store on this skill's behalf. Every link below must read the same on the sibling's side.
 
-If a sibling is not installed, answer the same question from the held file named in the last column, mark every search figure "unvalidated", and say which handoff was skipped.
+Each handoff asks for a check or an input. This skill holds the rule and does the step; the sibling may check the result. Every question below can be answered from this skill's own file, named in the last column. When a sibling cannot be reached, do the step from that file, mark every search figure "unvalidated", and say which check was skipped.
 
 ## Links
 
-| Sibling | This skill gives | This skill takes | Held file until the sibling is installed |
+| Sibling | This skill gives | This skill takes | This skill's own file for the step |
 |---|---|---|---|
 | `wugweb-strategy` | The finished piece; what proof exists | A brief for own content: what to say, to whom, when, which case studies back it, and which pages it links to (strategy picks the targets; `wugweb-seo` owns the link rules and fills the brief's search block) | None. With no brief, ask for one |
 | `wugweb-voice` | The draft, with its form, mode, audience and purpose | A voice check: breaks and fixes | `copy-and-seo.md` (voice part) |
-| `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules; approved facts about Wugweb | The brand guidelines in the site repository |
-| `wugweb-kits` | Content shape and chosen media; visible wording it asks for (labels, alt text) | Blocks, layout, tokens; gate and token results | `layout-grammar.md`, `design-principles.md` |
-| `wugweb-seo` | The approved body and page URL; visible wording it asks for (title options) | Keyword notes; title and schema rules to apply; a fix list for one page | `schema-jsonld.md`, `copy-and-seo.md` (on-page part) |
+| `wugweb-brand-os` | Cover picks and visuals to check | A check against the brand and art-direction rules; approved facts about Wugweb | `layout-grammar.md` (cover rule, yellow share), `copy-and-seo.md` (claim order); the brand guidelines in the site repository |
+| `wugweb-kits` | The block plan and the built page; visible wording it asks for (labels, alt text) | A token and accessibility check of the result, by rule id | `layout-grammar.md`, `design-principles.md`, `qa-checklist.md` |
+| `wugweb-seo` | The approved body and page URL; visible wording it asks for (title options) | Keyword notes; a check of the title, description and schema against the limits; a fix list for one page | `schema-jsonld.md`, `copy-and-seo.md` (on-page part) |
 
 - `wugweb-voice` has no direct link with strategy, seo or kits. The voice check happens here only.
 - A finding on one page comes here as a fix list. A finding that repeats on every page using a block goes from `wugweb-seo` to `wugweb-kits`; neither edits code.
 - Client case studies have no strategy brief. They start from the client's project and the brief is written here. Brief mode is for client work only (owner, 2026-11-16).
 - Interface copy (errors, empty states, confirmations, button labels) is written here and voice-checked. `wugweb-kits` names which component states need wording.
-- Made files: this skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
-- Layout values are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`. This skill restates none of them.
+- Made files: this skill picks which platform size a file uses; the sizes and the safe-zone rule are held in `forms.md`. `wugweb-kits` may check a made file against its tokens.
+- Layout values are held in `layout-grammar.md` section 8, restated from `kits_design_system/docs/tokens/layout-shell.md`; that document wins if it changes.
 
 Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says; Wugweb has no campaign system, so no campaign look is invented (brand skill, 2026-11-17).
 
@@ -30,7 +30,7 @@ Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill ow
 | Brief | Which one search phrase and intent should this page target? | `wugweb-seo` (plan part) |
 | Body, Forms | Does the text match the voice for this form and audience? | `wugweb-voice` |
 | Look, Forms | Does this cover or visual fit the art direction? | `wugweb-brand-os` |
-| Layout | Given this content shape and media, what is the layout? | `wugweb-kits` |
+| Layout, after the block plan is resolved here | Does this block plan hold against the design system: tokens, shell values, component states? | `wugweb-kits` |
 | SEO and schema, Ship | Does the rendered page pass on-page, technical and citability checks? | `wugweb-seo` (audit part) |
 | Ship | Does every value in the page's components resolve to a token? Does the page pass the accessibility checks? | `wugweb-kits` |
 | After deploy | How did the pages perform, with dates and sources? | `wugweb-seo` (report part) |
@@ -82,7 +82,7 @@ Send: the path of the page's components and styles, and the rendered URL.
 
 Expect back: findings by rule id: counts of raw colour and size values, layer skips, orphan tokens and duplicate components, each with file and line; accessibility results with measured values.
 
-Then: report the findings in the Ship table. They are reported only at first; blocking begins once the case study components are clean, on a short list the owner sets (owner, 2026-11-16 and 2026-11-17). The gate and the continuous integration check belong to `wugweb-kits`. Literal breakpoint values in media queries are allowed. Check that the scan includes the site's component file type before trusting a clean result. No token is deleted and nothing is refactored without the owner's yes.
+Then: report the findings in the Ship table. They are reported only at first; blocking begins once the case study components are clean, on a short list the owner sets (owner, 2026-11-16 and 2026-11-17). The publish gate is this skill's (`qa-checklist.md`), and the tokens-only rule is held in `layout-grammar.md`; the token scan and its continuous integration check are run by `wugweb-kits`, and its findings enter the Ship table. Literal breakpoint values in media queries are allowed. Check that the scan includes the site's component file type before trusting a clean result. No token is deleted and nothing is refactored without the owner's yes.
 
 ## Handoff 5: voice check
 
@@ -101,13 +101,15 @@ The voice is uncalibrated until the owner supplies writing samples (owner, 2026-
 
 Then: apply fixes that keep the meaning. A fix that changes a fact, a client's on-screen term or a quote is declined. Length, evidence and format rules stay with this skill.
 
-## Handoff 6: layout request
+## Handoff 6: layout check
 
-Send: the content shape (chapters, number of points, number and shape of media per chapter, quotes, tables, results), the chosen proof screens, the archetype and the client accent. Which block a content shape gets is decided here and sent as part of the request.
+This skill resolves the layout itself, from `layout-grammar.md`: which block each content shape gets, and the layout per tier (375, 768, 1200). The handoff asks for a check of that result.
 
-Expect back: the layout per tier (375, 768, 1200), the blocks used, and any content that does not fit a block.
+Send: the block plan per tier, the content shape behind it (chapters, number of points, number and shape of media per chapter, quotes, tables, results), the chosen proof screens, the archetype and the client accent.
 
-Then: content that does not fit returns to the proposal as an owner question. No block type outside the catalogue is added without the owner's yes.
+Expect back: findings against the design system: a block that breaks a token or a shell value, a component state that needs wording, and any content that does not fit a block.
+
+Then: this skill decides and corrects the plan. Content that does not fit returns to the proposal as an owner question. No block type outside the catalogue is added without the owner's yes.
 
 ## Handoff 7: brief in, piece out
 

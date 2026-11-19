@@ -43,7 +43,8 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 ## 3. Hero, stats and summary
 
 - Brand label above the H1: the short title (the brand), else the client name. H1 = the title, which says what was built and does not repeat the brand. The source keeps the two apart: Title holds no brand, Short Title is the brand. Then the subtitle and a meta list holding present keys only.
-- Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. The cover rule itself lives in `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
+- Cover, in this order: the body's Cover; else the record's cover path image; else the file with the highest `heroScore` from the visual read; else no image and a text hero on the accent surface. The cover pick is this skill's call, reported with its reason (owner, 2026-11-11); when the visual read scores a folder file above the current cover, the proposal names it as the new Cover line.
+- The cover rule: project-specific, legible at small size, never a generic laptop or dashboard. A device mockup is never the hero when a project-specific visual exists. `wugweb-brand-os` may check the pick (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
 - `stats` under the hero when 2 to 4 verified results exist; the rest go to the Results chapter.
 - Summary = the first chapter's lead when it is 40 to 60 words; otherwise no summary block.
 
@@ -52,7 +53,9 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 - Chapter = head (h2, lead, paragraphs) then its items in body order.
 - Points: 1 → prose. 2 to 3 → columns. 4 to 6 → grid (3 columns when the count is 3 or 6, else 2). 7 or more → two-column list. Groups become h3 sub-lists.
 - Tiles carry no decorative cards on mobile. On desktop, a surface step or a subtle border separates them; never a hairline stroke.
-- Numbered steps that match a process visible in the screens may become a steps or `timeline` block, each step citing the screen that proves it.
+- Numbered process steps are not a block type of their own: `steps` is not one of the 23. Numbered steps that match a process visible in the screens render as a `timeline`, each step citing the screen that proves it; numbered steps with no such order render as `points`.
+- A quote sits after the chapter text as a `quote` block: a `figure` holding a `blockquote` and a `figcaption` with the name, role and organisation.
+- A markdown table becomes a `table` block. Three or more dated lines in one chapter become a `timeline`.
 
 ## 5. Media in a chapter
 
@@ -69,8 +72,8 @@ These values are confirmed by the owner (2026-11-17): rail items at 85vw and nev
 | 2 to 6 landscape or mixed | `mosaic` (the bento-style media grid): spans from shapes, cell count equals media count, source order kept, UI never cropped. Use it only for brand applications or sets of equal weight |
 | 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
 | Scrollshot | Fixed-height figure showing the top; "View full page" opens the viewer |
-| Video 15 s or less | `loop`: muted, playsinline, `#t=` start frame, loads when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
-| Video over 15 s | `video`: muted, click to play, play and pause button only, `preload="none"`, never `aria-hidden`; or left off the page when a short cut of it exists |
+| Video 15 s or less | `loop`: muted, playsinline, a poster or `#t=` start frame, the source held in `data-src` so it loads only when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
+| Video over 15 s | `video`: muted, click to play, in its own chapter and never looping in a rail; a play and pause button only, with no unmute control and no native volume controls; `preload="none"`, a poster or start frame, never `aria-hidden`; or left off the page when a short cut of it exists |
 | GIF | Image |
 | States set | `rail` or `pair` with the state as caption |
 | Mockup | Figure; at most 2 per page; never the only evidence in a chapter |
@@ -87,7 +90,21 @@ These values are confirmed by the owner (2026-11-17): rail items at 85vw and nev
 - Video: `preload="none"`, a start frame or poster always, the source attached only when the video is near, no video bytes on first load. Only muted decorative loops play by themselves.
 - At most one or two high-priority images per page; the hero's start frame is the largest paint.
 
+A small file gets a contained cell sized to the file, so it is never shown above its natural size by the layout. Where a file is still shown larger, it is flagged when it looks soft (a flag, not a ban).
+
 Rail items are never wider than 85vw on mobile, so a whole screen is always visible. A screen that is the only proof of a claim never appears only inside a rail; it is also in All screens.
+
+### Layout words the owner uses
+
+No layout and no count is fixed. The old fixed sections (About, Challenges, Impact with 4, 6 and 3 points) are gone: the content shapes the layout. These words map to the catalogue; none adds a block type.
+
+| Owner's word | What it means here |
+|---|---|
+| Bento, bento-style grid | `mosaic` for the media, composed with the chapter's head and points. A bento is one composition where text and media share the grid at different sizes; it is never a grid of equal text cards |
+| Columned | `split`, `pair` and point columns (2 to 3 points in columns, 4 to 6 in a grid) |
+| Slides, slide-like | One claim per screen, as in the deck form (`forms/deck.md`): one chapter per claim, with its proof |
+
+Media is part of the narrative: it sits between and inside the chapters, in body order, never as a block of filler at the end.
 
 ### Content-shape rules (owned by this skill)
 
@@ -100,8 +117,9 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - Structure is page, section, content, blocks. The section owns the gutter and the content owns the maximum width.
 - Every section needs an id and an accessible name, so every chapter needs a real heading.
 - Filters sit inside the grid they filter, never as a section of their own.
-- First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
-- One yellow conversion action per page; labels describe the action. The yellow rule (its share of the page and where it may rest) lives in `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`.
+- First screen: on a 390 by 844 phone, and at the narrowest gate width, the headline, subhead and primary action are visible without scrolling.
+- One yellow conversion action per page; labels describe the action. Yellow stays under 10% of the page. The footer call to action stays yellow and is the page's one yellow note. `wugweb-brand-os` may check the result (`.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`).
+- Tokens only: no hardcoded colour, spacing, radius, opacity, shadow, blur, z-index or easing. Buttons use `--radius-sm`, chips `--radius-full`, cards `--radius-lg`. Reveals run through `data-reveal` and `data-scroll`. Breakpoints are literal values. The client accent is content: it is set from the validated `Accent` value, never as a hex in a stylesheet. No stroke that reads as a hairline in the rendered result.
 - The five existing site blocks are signed off by the owner (2026-11-17). Bento has two meanings: the Bento Block is the site block for points on service and about pages, and it never resolves into an even grid; a bento-style media grid inside a case study is the `mosaic` block. The single bento composition that the case study page used before is the layout this work replaces.
 - The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; a case study never carries a `faqs` block; the FAQ rules for service pages and blog posts are in `own-content.md`.
 
@@ -121,7 +139,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 5. `related`: 3 items from the source relation; fallback by pillar then industry.
 6. `next`: next by publish date in the same pillar, with brand, title and industry.
 
-The site's one call to action stays in the global footer. No second CTA.
+The site's one call to action stays in the global footer and stays yellow: it is the page's one yellow note. No second CTA.
 
 ## 8. Tiers and mobile
 
@@ -153,7 +171,7 @@ The site's one call to action stays in the global footer. No second CTA.
 
 ## 10. Motion
 
-- Reveal on chapter heads and figures, with small staggers.
+- Reveal on chapter heads and figures (`data-reveal`), with small staggers (`data-reveal-delay`).
 - Motion level follows the case read in the brief: low for trust-first sectors, richer for brand-led work.
 - Rails never auto-advance. No parallax on UI screens. No scroll-jacking or pinning on mobile.
 - Reduced motion stops loops and reveals.
@@ -161,7 +179,7 @@ The site's one call to action stays in the global footer. No second CTA.
 ## 11. Accessibility in the layout
 
 - h1, then h2 for chapters, then h3 for groups and points. No skipped levels.
-- Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
+- Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 10 to 125 characters.
 - `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
 - Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
 - A long video has an `aria-label` that says what it shows. Loops follow the pause control rule in `media-standard.md`.
@@ -175,8 +193,8 @@ The site's one call to action stays in the global footer. No second CTA.
 
 - Width and height on every image, from the manifest.
 - Hero image high priority, never lazy. Everything else lazy and async.
-- `content-visibility: auto` only on media containers that carry no reveal.
-- Videos `preload="none"`, start when near.
+- `content-visibility: auto` with `contain-intrinsic-size`, only on media containers that carry no reveal and contain none; never on chapters.
+- Videos `preload="none"`, with a poster or start frame and the source in `data-src`; they start when near.
 - Never request a URL that is a duplicate or not 200. Report rendered bytes per page; warn above 25 MB.
 
 ## 13. Screen selection, All screens and the viewer

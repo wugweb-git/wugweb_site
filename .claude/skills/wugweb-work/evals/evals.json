@@ -17,7 +17,9 @@
         "The proposed body contains none of: pivotal, robust, seamless, holistic, leverage, empower, cutting-edge",
         "Every block type in the block plan is one of the 23 catalogue types",
         "The output states that nothing was written to Notion or Sanity",
-        "There are no placeholders such as TBD, [INSERT or lorem in the proposed body"
+        "There are no placeholders such as TBD, [INSERT or lorem in the proposed body",
+        "Every chapter in the proposed body is 30 to 160 words",
+        "The proposed SEO title is 60 characters or fewer as rendered and the description is 140 to 160 characters"
       ]
     },
     {
@@ -41,7 +43,7 @@
       "id": 3,
       "name": "indusninja-block-plan",
       "prompt": "IndusNinja has 22 screens and its current sections. Give me the block plan as JSON plus alt text and a caption for every screen, grouped by flow.",
-      "expected_output": "A block plan JSON, then per flow a list of screens with alt text (125 characters or fewer) and a caption (25 words or fewer). Wrong-client files are flagged, not placed in the plan.",
+      "expected_output": "A block plan JSON, then per flow a list of screens with alt text (125 characters or fewer) and a caption (25 words or fewer). Files named after another client are read by look: the ones named Airtel Xsafe are misnamed IndusNinja boards and near-duplicates, flagged and not placed in the plan.",
       "files": [],
       "expectations": [
         "The block plan is valid JSON and every type is a catalogue block type",
@@ -49,7 +51,7 @@
         "Every screen has a caption of 25 words or fewer",
         "No rail holds more than 8 screens",
         "Screens are grouped by flow",
-        "Files showing the Airtel Xsafe brand are flagged as wrong client and are not placed in a chapter",
+        "The files named Airtel Xsafe are judged by look, flagged as misnamed IndusNinja boards and near-duplicates (not as wrong client), and are not placed in a chapter",
         "The output says that each caption was written after a close look at that screen, or lists the screens it could not open"
       ]
     },
@@ -72,12 +74,12 @@
       "id": 5,
       "name": "indusninja-visual-read",
       "prompt": "Here are 12 files from the IndusNinja folder, including the six Airtel Xsafe PNGs, plus one 10 second loop. Do the visual read and give me the JSON.",
-      "expected_output": "One read record per file with what, kind, platform, audience, flow, step, state, quality, heroScore, alt, caption and chapterFit; the video adds demonstrates, loopable and posterAt. The Airtel files are flagged wrong client by look.",
+      "expected_output": "One read record per file with what, kind, platform, audience, flow, step, state, quality, heroScore, alt, caption and chapterFit; the video adds demonstrates, loopable and posterAt. The files named Airtel Xsafe are judged by look: they are IndusNinja boards, so they are flagged as misnamed files and near-duplicates, not as wrong client.",
       "files": [],
       "expectations": [
         "The output is valid JSON with one record per file (13 records)",
         "Every record has what, kind, alt and caption",
-        "The six Airtel Xsafe files are flagged with quality wrong client",
+        "The six files named Airtel Xsafe are flagged by look as misnamed files and near-duplicates, with the brand recorded as IndusNinja, not as wrong client",
         "Screens are ordered by step within each flow",
         "The video record has demonstrates and posterAt",
         "At least one record names a design principle together with the specific screen that shows it",
@@ -128,7 +130,7 @@
       "id": 9,
       "name": "post-now-stops-for-yes",
       "prompt": "The NTUC LinkedIn post looks fine, just post it now.",
-      "expected_output": "Does not post. Walks the approval steps: says whether the body is approved, checks that the linked page is live and that permission to name the client is on record, shows the exact text, media, account, date and time that need a yes, and reports any step not yet passed (voice check, dated spec check). Says whether a connected scheduling tool is confirmed.",
+      "expected_output": "Does not post. Walks the approval steps: says whether the body is approved, checks that the linked page is live and that permission to name the client is on record, shows the exact text, media, account, date and time that need a yes, and reports any step not yet passed (voice check, dated spec check). Says no scheduling tool is connected, so the approved draft is handed to the owner to post.",
       "files": [
         "examples/forms-ntuc-linkedin-post.md"
       ],
@@ -138,7 +140,8 @@
         "The response states whether the body is approved and stops if it is not",
         "The response checks or asks whether the linked page is live",
         "The response checks or asks whether permission to name the client is on record",
-        "The response names any approval step that has not been passed"
+        "The response names any approval step that has not been passed",
+        "The response says no scheduling tool is connected and that the approved draft is handed to the owner to post"
       ]
     },
     {
@@ -211,6 +214,73 @@
         "No hashtags are added, and the response says LinkedIn tags are none by the owner's decision",
         "The response proposes an existing file before a made one",
         "No file is made"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "ntuc-screen-selection",
+      "prompt": "The NTUC proposal lists all 31 screens. Which ones stay inside the chapters, which go to All screens, and which are hidden? Give me the counts.",
+      "expected_output": "Applies the screen selection rule: 12 proof screens stay linked in chapters, one to four per chapter; all 31 approved screens are in the All screens block; the 2 flagged screens that another screen already proves are hidden and listed with the reason. Every count is computed from the example.",
+      "files": [
+        "examples/body-ntuc-u-care.md"
+      ],
+      "expectations": [
+        "12 proof screens stay linked inside chapters",
+        "All 31 approved screens are in the All screens block",
+        "2 flagged screens are hidden, each listed with the reason and the screen that proves the same thing",
+        "No chapter keeps more than 4 screens",
+        "A flagged screen that is the only proof of a flow stays, with the flag recorded"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "all-screens-block-and-viewer",
+      "prompt": "Describe the All screens block and the viewer for the NTUC page: the chips, what the viewer shows, how I move through it, and what happens with JavaScript off.",
+      "expected_output": "Set chips with counts (Member 8, States 4, Dashboard 9, Back office 7, Cases 3), one selected at a time, a thumbnail grid at each screen's own ratio, and a one-screen viewer with the caption, the position and set as n of N with the set name, previous and next buttons, swipe, Escape and focus returning to the thumbnail. With JavaScript off every set is on the page under its own heading.",
+      "files": [
+        "examples/body-ntuc-u-care.md"
+      ],
+      "expectations": [
+        "The set chips show Member 8, States 4, Dashboard 9, Back office 7 and Cases 3",
+        "With JavaScript off every set is still on the page, stacked under its own heading",
+        "The viewer shows the caption and the position as n of N with the set name",
+        "Previous, next, Escape and swipe all work, and swipe is never the only way",
+        "Focus returns to the thumbnail when the viewer closes",
+        "Every block named is one of the 23 catalogue types"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "fact-pack-and-carousel",
+      "prompt": "Take it that I have approved the NTUC body as it stands in the example. Build the fact pack, then outline a LinkedIn carousel from it.",
+      "expected_output": "A fact pack in which every item names its body line, then a carousel outline with the title and subtitle on slide 1, one claim heading per slide with its proof screen, and what was delivered last. No chapter without a screen and no flagged screen is used. Nothing is posted.",
+      "files": [
+        "examples/body-ntuc-u-care.md",
+        "examples/forms-ntuc-fact-pack.md",
+        "examples/forms-ntuc-carousel-outline.md"
+      ],
+      "expectations": [
+        "Every fact-pack item has a body line",
+        "Each carousel slide carries one claim, with a proof screen",
+        "No slide uses a flagged screen or a chapter that has no screen",
+        "No number or quote appears that is not in the body",
+        "Nothing is posted or scheduled, and the approval steps still to pass are named"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "behance-and-deck",
+      "prompt": "Take it that I have approved the NTUC body and its captions as they stand in the example. Give me the Behance project and a deck outline.",
+      "expected_output": "A Behance project as an ordered list for the owner to upload: cover, screens set by set in body order, the approved captions word for word, credits from Team and Partner. A deck outline with one claim per slide, each slide tied to a body line, delivered facts and credits at the end. No upload and no made file.",
+      "files": [
+        "examples/body-ntuc-u-care.md"
+      ],
+      "expectations": [
+        "Every Behance caption matches the approved caption word for word",
+        "The Behance output is an ordered list for the owner to upload, never an upload",
+        "No deck slide is without a body line",
+        "Each deck slide carries one claim",
+        "No file is made, uploaded or copied"
       ]
     }
   ]

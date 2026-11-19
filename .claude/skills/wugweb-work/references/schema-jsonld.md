@@ -19,7 +19,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
       "isPartOf": { "@id": "<origin>/#website" },
       "primaryImageOfPage": { "@id": "<url>#cover" },
       "breadcrumb": { "@id": "<url>#breadcrumb" },
-      "inLanguage": "en-GB"
+      "inLanguage": "<language of the record>"
     },
     {
       "@type": "CreativeWork",
@@ -31,7 +31,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
       "publisher": { "@id": "<origin>/#organization" },
       "datePublished": "<publishedAt>",
       "dateModified": "<last real content edit>",
-      "inLanguage": "en-GB",
+      "inLanguage": "<language of the record>",
       "image": [
         { "@type": "ImageObject", "@id": "<url>#cover", "url": "<cover url>", "width": 0, "height": 0 }
       ],
@@ -72,10 +72,11 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
 - `image`: the cover plus any images already in the manifest at 1:1, 4:3 or 16:9. Width and height from the manifest. No new image files.
 - `video`: one `VideoObject` per labelled video that has a poster or a usable start frame. `duration` from the manifest, as ISO 8601.
 - `about`: the client as an `Organization` with its website and known profiles. Only links the owner supplied.
-- `mentions`: partners and platforms named in the body.
+- `mentions`: partners and platforms named in the body, one node each. The template shows one partner; add a node per partner and per platform, by name.
+- `inLanguage`: the language of the record, never a fixed value. This site's records are in British English (en-GB).
 - `contributor`: optional; people credited on the page, as `Person` nodes with a name only.
 - `abstract`: the summary, only when the page shows one.
-- `dateModified`: the date of the last real content edit, never the record's every-save update time; no date change without a real edit. The rule lives in `wugweb-seo` (`.claude/skills/wugweb-seo/references/audit.md`). With no real-edit date on record, `dateModified` equals `datePublished`.
+- `dateModified`: the date of the last real content edit, never the record's every-save update time; no date change without a real edit. `wugweb-seo` checks the same rule (`.claude/skills/wugweb-seo/references/audit.md`). With no real-edit date on record, `dateModified` equals `datePublished`.
 - Testimonials: `blockquote` markup on the page, and at most an optional `Quotation` node.
 
 ## Never emit

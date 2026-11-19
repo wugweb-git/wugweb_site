@@ -45,7 +45,9 @@ For each image, in this order:
 
 ## 4. The read record
 
-Stored per case study, keyed by URL and ETag so each file is read once.
+Stored per case study, one file of records for each, keyed by URL and ETag so each file is read once. The records are derived data and may be committed; where they are kept on this site is in `ops-cycle.md`.
+
+Alt text and captions are content, not derived data. They are proposed as current → proposed, and only after the owner's approval do captions go to the media labels in the source and alt text to the asset record, where that is empty, with a backup first.
 
 | Field | Meaning |
 |---|---|
@@ -59,10 +61,10 @@ Stored per case study, keyed by URL and ETag so each file is read once.
 | `textHeavy` | Yes or no |
 | `pii` | Real or sample names, numbers, faces: flagged for a decision, never auto-hidden |
 | `brand` | Colours as hex, type families recognised, logo present, which brand |
-| `quality` | sharp, soft, upscaled, stock, placeholder or lorem, watermark, wrong client |
+| `quality` | sharp, soft, upscaled, stock, placeholder or lorem, watermark, wrong client, misnamed file |
 | `nearDupOf` | Visual duplicate the size check missed |
-| `heroScore` | 0 to 5: legible small, and passes the cover rule of `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6) |
-| `alt` | 125 characters or fewer |
+| `heroScore` | 0 to 5: project-specific, legible small, never a generic laptop or dashboard (the cover rule, held in `layout-grammar.md` section 3) |
+| `alt` | 10 to 125 characters |
 | `caption` | 25 words or fewer |
 | `chapterFit` | Which chapter it proves |
 | `principle` | A design principle the screen applies, with the decision (see `design-principles.md`). Optional per record, but each flow names at least one where a screen shows the decision |

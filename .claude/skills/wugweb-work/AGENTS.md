@@ -4,7 +4,7 @@
 
 **Version 0.5.0** · Wugweb · November 2026
 
-A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. Voice, layout, search and planning rules belong to sibling skills; this skill applies them. Independent of CMS, host and agent.
+A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. It works alone: the block catalogue, layout grammar, media, copy, on-page SEO, schema and publish-gate rules are held in the skill, and sibling skills add a check or an input. Independent of CMS, host and agent.
 
 Produce every Wugweb piece from the owner's source and real evidence. Propose every change; never author the source.
 
@@ -23,8 +23,8 @@ This skill makes the piece, end to end. It holds the block catalogue, the layout
 |---|---|---|---|
 | Voice, tone, phrasing | `wugweb-voice` | The draft with its form, mode, audience and purpose | A voice check: breaks and fixes |
 | Brand and art direction | `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules |
-| Blocks, layout, tokens, accessibility | `wugweb-kits` | Content shape and chosen media | Layout, blocks, gate results |
-| Keywords, title and schema rules, site-wide SEO | `wugweb-seo` | The approved body and page URL | Keyword notes, rules to apply, a fix list |
+| Tokens, the layout shell document, components | `wugweb-kits` | The built page and its block plan | A token and accessibility check of the result |
+| Keyword research, site-wide SEO, search reports | `wugweb-seo` | The approved body and page URL | Keyword notes, a check of the page, a fix list |
 | What to say, to whom, when | `wugweb-strategy` | The finished piece; what proof exists | The brief for own content |
 
 - Hand off instead of starting: keyword research, site-wide SEO and search reports go to `wugweb-seo`; topics and the calendar go to `wugweb-strategy`; a token or component map goes to `wugweb-kits`.
@@ -43,7 +43,12 @@ One source per piece. Track 1: one Body Content document written by the owner, p
 
 ## Never do
 
-The owner's standing rules apply to every Wugweb skill. They are copied in `references/standing-rules.md` (source: `docs/skills/STANDING-RULES.md`) and are not repeated here. Read that file at the start of a session. This skill adds:
+The owner's standing rules are copied in full in `references/standing-rules.md` (source: `docs/skills/STANDING-RULES.md`); read it first. The two that shape every mode, in short:
+
+- **Evidence.** Nothing is invented. A claim needs a screen, a number with its source and date, or a named fact; otherwise cut it or mark it "unvalidated". Every count is computed.
+- **Media.** Media stays in the owner's store: no uploads, local copies, cropped files, re-encoding or sound. Show it at any size with its aspect ratio kept; a mask may not hide the proof; a Styles pair stays 50:50. A file shown above its natural size is flagged.
+
+This skill adds:
 
 - Never write a caption or alt text for a screen you have not seen close up.
 - Never make a poster file for a video. Dead links stay in the source and are listed.
@@ -57,15 +62,15 @@ The owner's standing rules apply to every Wugweb skill. They are copied in `refe
 4. **A made file**: a yes for that one file.
 5. **A post**: a yes for that post, with the exact text, media, account, date and time shown. Create it as a draft first. Publishing and deleting are separate actions. A post waits until the page it links to is live. No client is named or tagged without permission on record.
 
-Hard stops, whatever else passes: an unsourced factual claim, an invented number or quote, an undisclosed relationship, no date on time-bound content, a form made from an unapproved body, a track 2 piece with no brief.
+Hard stops, whatever else passes: an unsourced factual claim; an invented number or quote; an undisclosed relationship; no date on time-bound content; a form made from an unapproved body; a track 2 piece with no brief; any write without the owner's approval.
 
 ## The cycle
 
 Work through the modes in order. Commands and output formats are in `references/ops-cycle.md`. The paragraphs describe track 1.
 
-**1. Audit.** Read the source, list the media folder and fetch the live page. Run `scripts/case-audit.mjs` on the body and `scripts/check-case-page.mjs` on the page. Give the piece one verdict: keep, update, merge or retire. Each finding carries a location and a measurement or a quoted line; otherwise mark it "could not verify". Rules are in `references/evidence.md`.
+**1. Audit.** Read the source, list the media folder (command in `references/ops-cycle.md`) and fetch the live page. Run `scripts/case-audit.mjs` on the body and `scripts/check-case-page.mjs` on the page. Give the piece one verdict: keep, update, merge or retire. Each finding carries a location and a measurement or a quoted line; otherwise mark it "could not verify". Rules are in `references/evidence.md`.
 
-**2. Brief.** For client work only; `wugweb-strategy` owns the brief for own content. Write a one-page brief from the audit and the owner's facts, in the fields of the template (the claim order is owned by `wugweb-brand-os`, `.claude/skills/wugweb-brand-os/references/messaging.md`), with one search phrase from `wugweb-seo`. Use the template in `references/copy-and-seo.md`. Where a fact is missing, list the exact question.
+**2. Brief.** For client work only; `wugweb-strategy` owns the brief for own content. Write a one-page brief from the audit and the owner's facts, in the template of `references/copy-and-seo.md` and the claim order Problem, Insight, System, Outcome, with one search phrase (`wugweb-seo` may supply it). Where a fact is missing, list the exact question.
 
 **3. Media.** Build the manifest: one record per file with its measured size, bytes, shape, type, own or borrowed folder, duplicate pointer and status. Follow `references/media-standard.md`. Count the files first and recount at the end. Change nothing.
 
@@ -73,9 +78,9 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **5. Body.** A direct request for a proposal still runs Audit, Media and Look first, in the same task (owner, 2026-11-17). Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
 
-**6. Layout.** Resolve the block plan from the parsed body, the manifest and the visual read, using the 23-block catalogue and the rules in `references/layout-grammar.md`: adaptive tiers, proof screens in each chapter, every other approved screen in All screens, and the viewer. `wugweb-kits` checks tokens on the built page.
+**6. Layout.** Resolve the block plan from the parsed body, the manifest and the visual read, using the 23-block catalogue and the rules in `references/layout-grammar.md`: adaptive tiers, proof screens in each chapter, every other approved screen in All screens, and the viewer. Nothing is fixed: content shape picks the blocks. `wugweb-kits` may check tokens on the built page.
 
-**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. The full graph is in `references/schema-jsonld.md`; the on-page rules are in `references/copy-and-seo.md`. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
+**7. SEO and schema.** Write the title (60 characters or fewer as rendered) and the description (140 to 160), and apply the slug and on-page rules in `references/copy-and-seo.md` and the full graph in `references/schema-jsonld.md`. `wugweb-seo` may check the page. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
 
 **8. Ship.** Run the gate in `references/qa-checklist.md` on the rendered page at 375, 768 and 1200, then at 767, 769, 1199 and 1201. Cheap automated checks first, then the manual read. Token findings are reported, not blocking. Give a verdict: publish, publish with fixes, or no.
 
@@ -83,7 +88,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 ## Open with the owner
 
-One matter is open with the owner: the newsletter's tool, list and cadence. One is shared with `wugweb-kits` (old media ratios) and listed in `references/open-items.md`, with every settled decision. Mark any output an open item touches "open".
+One matter is open with the owner: the newsletter's tool, list and cadence. One is shared with `wugweb-kits` (old media ratios). Both are in `references/open-items.md`, with every settled decision. Mark any output an open item touches "open".
 
 ## Archetypes at a glance
 
@@ -103,7 +108,7 @@ Pick the archetype after the visual read, from what the media shows. Recipes are
 
 ## Rules that always apply
 
-The owner's standing rules (truth, sources, media, writing, working style) are in `references/standing-rules.md`. These are this skill's own:
+These are this skill's own, on top of the standing rules:
 
 1. **A rewrite may only narrow a claim.** It never adds one the source does not carry.
 2. **Look before you write.** Labels and file names lie; only a close look catches another client's file.
@@ -130,11 +135,11 @@ Read only the file the current mode needs.
 | `references/archetypes.md` | Brief and Layout: archetype recipes |
 | `references/forms.md` | Forms: the index, shared rules, and the `forms/` files |
 | `references/handoffs.md` | The written requests to sibling skills |
-| `references/qa-checklist.md` | Ship: the publish gate |
+| `references/qa-checklist.md` | Ship: the publish gate and the definition of done |
 | `references/open-items.md` | What is not decided, and the working assumption for each |
 | `references/skill-map.md` | Helpers, permission levels, clashes, fallbacks |
 | `references/ops-cycle.md` | Commands, output formats, this site's wiring |
-| `references/copy-and-seo.md` | Brief template, lengths. Voice pointers and candidates for `wugweb-voice`; on-page rules held for `wugweb-seo` |
+| `references/copy-and-seo.md` | Brief template, the twelve writing rules, lengths, claim order, on-page SEO rules |
 | `references/layout-grammar.md` | Layout: the 23-block catalogue, adaptive rules, tiers, screen selection, All screens, the viewer |
 | `references/design-principles.md` | Look and Ship: design vocabulary and the critique pass |
 | `references/schema-jsonld.md` | SEO and schema: the full JSON-LD graph |
@@ -143,7 +148,7 @@ Scripts need Node 18 or later and no packages; both working scripts are read-onl
 
 ## Use outside Claude
 
-`AGENTS.md` is this skill in one file for any agent. `adapters/` holds a Cursor rule and custom GPT instructions. All are generated by `scripts/build.mjs`; edit the sources, never the output. Helper and vendor names live only in `references/skill-map.md` and `references/ops-cycle.md`. The Look mode needs a model that can open the media.
+`AGENTS.md` is this skill in one file for any agent; `export/` holds a copy for pasting. `adapters/` holds a Cursor rule and custom GPT instructions; `agents/openai.yaml`, display settings. All are generated by `scripts/build.mjs`; edit the sources, never the output. Helper and vendor names live only in `references/skill-map.md` and `references/ops-cycle.md`. The Look mode needs a model that can open the media.
 
 ---
 
@@ -174,7 +179,7 @@ Where each kind of piece is stored is in `ops-cycle.md`. Media is existing files
 2. **Audit what exists.** Read the current piece and its live page. Give it one verdict: keep, update, merge or retire. List every claim, link and image, with what is backed and what is not (`evidence.md`).
 3. **Media, light.** Measure the cover and inline images already in the store: status, size, pixel size, alt. Look at each one before writing its alt text or caption.
 4. **Outline, then draft.** One declared structure, held throughout. Use the body standard for the type, below. Every claim points to a screen, a sourced number, a named fact or a linked case study; anything else is cut or marked unvalidated.
-5. **Check the draft.** Fact lock, evidence ledger, source log for outside claims, metric fields, skim test, count of deliverables. Then the voice check through `wugweb-voice`, and the title, description and schema limits from `wugweb-seo`.
+5. **Check the draft.** Fact lock, evidence ledger, source log for outside claims, metric fields, skim test, count of deliverables. Then the voice check through `wugweb-voice`, and the title, description and schema limits in `copy-and-seo.md` and `schema-jsonld.md` (`wugweb-seo` may check them).
 6. **Propose.** Current → proposed, with the reason for each change and the questions for the owner.
 7. **Owner approval** of that exact text. Only then is the source written, with a backup first, and synced on the owner's go.
 8. **Ship gate** on the rendered page at 375, 768 and 1200, then other forms if wanted.
@@ -204,14 +209,14 @@ Rules for all three:
 | Media | Cover and inline images measured |
 | Look | Cover and inline images only |
 | Body | Blog or page draft, current → proposed |
-| Layout | Existing page templates; `wugweb-kits` only when a new block is needed |
-| SEO and schema | Rules from `wugweb-seo` |
+| Layout | Existing page templates; a new block is planned here from `layout-grammar.md`, and `wugweb-kits` may check it |
+| SEO and schema | The rules in `copy-and-seo.md` and `schema-jsonld.md`; `wugweb-seo` may check the page |
 | Ship | The same gate; a media or layout check that does not apply is marked not applicable, with the reason |
 | Forms | Social versions mainly |
 
 ### Hard stops
 
-An unsourced factual claim; an invented number or quote; a piece with no brief; any write without the owner's approval.
+The same list in every file of this skill: an unsourced factual claim; an invented number or quote; an undisclosed relationship; no date on time-bound content; a form made from an unapproved body; a track 2 piece with no brief; any write without the owner's approval.
 
 ### What goes back to planning
 
@@ -267,7 +272,8 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 ### 3. Hero, stats and summary
 
 - Brand label above the H1: the short title (the brand), else the client name. H1 = the title, which says what was built and does not repeat the brand. The source keeps the two apart: Title holds no brand, Short Title is the brand. Then the subtitle and a meta list holding present keys only.
-- Cover: the body's Cover, else the highest `heroScore` from the visual read, else no image and a text hero on the accent surface. The cover rule itself lives in `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
+- Cover, in this order: the body's Cover; else the record's cover path image; else the file with the highest `heroScore` from the visual read; else no image and a text hero on the accent surface. The cover pick is this skill's call, reported with its reason (owner, 2026-11-11); when the visual read scores a folder file above the current cover, the proposal names it as the new Cover line.
+- The cover rule: project-specific, legible at small size, never a generic laptop or dashboard. A device mockup is never the hero when a project-specific visual exists. `wugweb-brand-os` may check the pick (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6).
 - `stats` under the hero when 2 to 4 verified results exist; the rest go to the Results chapter.
 - Summary = the first chapter's lead when it is 40 to 60 words; otherwise no summary block.
 
@@ -276,7 +282,9 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 - Chapter = head (h2, lead, paragraphs) then its items in body order.
 - Points: 1 → prose. 2 to 3 → columns. 4 to 6 → grid (3 columns when the count is 3 or 6, else 2). 7 or more → two-column list. Groups become h3 sub-lists.
 - Tiles carry no decorative cards on mobile. On desktop, a surface step or a subtle border separates them; never a hairline stroke.
-- Numbered steps that match a process visible in the screens may become a steps or `timeline` block, each step citing the screen that proves it.
+- Numbered process steps are not a block type of their own: `steps` is not one of the 23. Numbered steps that match a process visible in the screens render as a `timeline`, each step citing the screen that proves it; numbered steps with no such order render as `points`.
+- A quote sits after the chapter text as a `quote` block: a `figure` holding a `blockquote` and a `figcaption` with the name, role and organisation.
+- A markdown table becomes a `table` block. Three or more dated lines in one chapter become a `timeline`.
 
 ### 5. Media in a chapter
 
@@ -293,8 +301,8 @@ These values are confirmed by the owner (2026-11-17): rail items at 85vw and nev
 | 2 to 6 landscape or mixed | `mosaic` (the bento-style media grid): spans from shapes, cell count equals media count, source order kept, UI never cropped. Use it only for brand applications or sets of equal weight |
 | 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
 | Scrollshot | Fixed-height figure showing the top; "View full page" opens the viewer |
-| Video 15 s or less | `loop`: muted, playsinline, `#t=` start frame, loads when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
-| Video over 15 s | `video`: muted, click to play, play and pause button only, `preload="none"`, never `aria-hidden`; or left off the page when a short cut of it exists |
+| Video 15 s or less | `loop`: muted, playsinline, a poster or `#t=` start frame, the source held in `data-src` so it loads only when near; `aria-hidden` only when 5 s or less and with no control, otherwise a pause control and not hidden |
+| Video over 15 s | `video`: muted, click to play, in its own chapter and never looping in a rail; a play and pause button only, with no unmute control and no native volume controls; `preload="none"`, a poster or start frame, never `aria-hidden`; or left off the page when a short cut of it exists |
 | GIF | Image |
 | States set | `rail` or `pair` with the state as caption |
 | Mockup | Figure; at most 2 per page; never the only evidence in a chapter |
@@ -311,7 +319,21 @@ These values are confirmed by the owner (2026-11-17): rail items at 85vw and nev
 - Video: `preload="none"`, a start frame or poster always, the source attached only when the video is near, no video bytes on first load. Only muted decorative loops play by themselves.
 - At most one or two high-priority images per page; the hero's start frame is the largest paint.
 
+A small file gets a contained cell sized to the file, so it is never shown above its natural size by the layout. Where a file is still shown larger, it is flagged when it looks soft (a flag, not a ban).
+
 Rail items are never wider than 85vw on mobile, so a whole screen is always visible. A screen that is the only proof of a claim never appears only inside a rail; it is also in All screens.
+
+#### Layout words the owner uses
+
+No layout and no count is fixed. The old fixed sections (About, Challenges, Impact with 4, 6 and 3 points) are gone: the content shapes the layout. These words map to the catalogue; none adds a block type.
+
+| Owner's word | What it means here |
+|---|---|
+| Bento, bento-style grid | `mosaic` for the media, composed with the chapter's head and points. A bento is one composition where text and media share the grid at different sizes; it is never a grid of equal text cards |
+| Columned | `split`, `pair` and point columns (2 to 3 points in columns, 4 to 6 in a grid) |
+| Slides, slide-like | One claim per screen, as in the deck form (`forms/deck.md`): one chapter per claim, with its proof |
+
+Media is part of the narrative: it sits between and inside the chapters, in body order, never as a block of filler at the end.
 
 #### Content-shape rules (owned by this skill)
 
@@ -324,8 +346,9 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 - Structure is page, section, content, blocks. The section owns the gutter and the content owns the maximum width.
 - Every section needs an id and an accessible name, so every chapter needs a real heading.
 - Filters sit inside the grid they filter, never as a section of their own.
-- First screen: at the narrowest gate width the headline, subhead and primary action are visible without scrolling.
-- One yellow conversion action per page; labels describe the action. The yellow rule (its share of the page and where it may rest) lives in `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`.
+- First screen: on a 390 by 844 phone, and at the narrowest gate width, the headline, subhead and primary action are visible without scrolling.
+- One yellow conversion action per page; labels describe the action. Yellow stays under 10% of the page. The footer call to action stays yellow and is the page's one yellow note. `wugweb-brand-os` may check the result (`.claude/skills/wugweb-brand-os/references/visual-os/colour-type-photo-motion.md`).
+- Tokens only: no hardcoded colour, spacing, radius, opacity, shadow, blur, z-index or easing. Buttons use `--radius-sm`, chips `--radius-full`, cards `--radius-lg`. Reveals run through `data-reveal` and `data-scroll`. Breakpoints are literal values. The client accent is content: it is set from the validated `Accent` value, never as a hex in a stylesheet. No stroke that reads as a hairline in the rendered result.
 - The five existing site blocks are signed off by the owner (2026-11-17). Bento has two meanings: the Bento Block is the site block for points on service and about pages, and it never resolves into an even grid; a bento-style media grid inside a case study is the `mosaic` block. The single bento composition that the case study page used before is the layout this work replaces.
 - The CMS fields are owned by `wugweb-kits` and `wugweb-seo` (settled 2026-11-17, see `open-items.md`): `faqs` is kept and feeds FAQPage only where every question and answer is visibly on the page; a case study never carries a `faqs` block; the FAQ rules for service pages and blog posts are in `own-content.md`.
 
@@ -345,7 +368,7 @@ Rail items are never wider than 85vw on mobile, so a whole screen is always visi
 5. `related`: 3 items from the source relation; fallback by pillar then industry.
 6. `next`: next by publish date in the same pillar, with brand, title and industry.
 
-The site's one call to action stays in the global footer. No second CTA.
+The site's one call to action stays in the global footer and stays yellow: it is the page's one yellow note. No second CTA.
 
 ### 8. Tiers and mobile
 
@@ -377,7 +400,7 @@ The site's one call to action stays in the global footer. No second CTA.
 
 ### 10. Motion
 
-- Reveal on chapter heads and figures, with small staggers.
+- Reveal on chapter heads and figures (`data-reveal`), with small staggers (`data-reveal-delay`).
 - Motion level follows the case read in the brief: low for trust-first sectors, richer for brand-led work.
 - Rails never auto-advance. No parallax on UI screens. No scroll-jacking or pinning on mobile.
 - Reduced motion stops loops and reveals.
@@ -385,7 +408,7 @@ The site's one call to action stays in the global footer. No second CTA.
 ### 11. Accessibility in the layout
 
 - h1, then h2 for chapters, then h3 for groups and points. No skipped levels.
-- Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 125 characters or fewer.
+- Alt: owner-edited alt wins; else "{brand}: {label}" when the label is descriptive; else "{brand} {kind} {n} of {N}"; 10 to 125 characters.
 - `figure` and `figcaption` for captioned media. Rails follow the W3C carousel pattern: a `region` or `group` with `aria-roledescription="carousel"` and a name that does not contain the word carousel; each slide a `group` with `aria-roledescription="slide"` and a name such as "3 of 8"; native previous and next buttons; a visible counter.
 - Rail arrows sit on a solid backing that holds 3:1 contrast over any screenshot.
 - A long video has an `aria-label` that says what it shows. Loops follow the pause control rule in `media-standard.md`.
@@ -399,8 +422,8 @@ The site's one call to action stays in the global footer. No second CTA.
 
 - Width and height on every image, from the manifest.
 - Hero image high priority, never lazy. Everything else lazy and async.
-- `content-visibility: auto` only on media containers that carry no reveal.
-- Videos `preload="none"`, start when near.
+- `content-visibility: auto` with `contain-intrinsic-size`, only on media containers that carry no reveal and contain none; never on chapters.
+- Videos `preload="none"`, with a poster or start frame and the source in `data-src`; they start when near.
 - Never request a URL that is a duplicate or not 200. Report rendered bytes per page; warn above 25 MB.
 
 ### 13. Screen selection, All screens and the viewer
@@ -457,24 +480,24 @@ Every set renders stacked under its own heading, with every thumbnail and captio
 
 This skill makes the piece and is the hub for wording. It asks each sibling a defined question and applies the answer. A sibling never writes the piece, and never writes to the source, the CMS or the media store on this skill's behalf. Every link below must read the same on the sibling's side.
 
-If a sibling is not installed, answer the same question from the held file named in the last column, mark every search figure "unvalidated", and say which handoff was skipped.
+Each handoff asks for a check or an input. This skill holds the rule and does the step; the sibling may check the result. Every question below can be answered from this skill's own file, named in the last column. When a sibling cannot be reached, do the step from that file, mark every search figure "unvalidated", and say which check was skipped.
 
 ### Links
 
-| Sibling | This skill gives | This skill takes | Held file until the sibling is installed |
+| Sibling | This skill gives | This skill takes | This skill's own file for the step |
 |---|---|---|---|
 | `wugweb-strategy` | The finished piece; what proof exists | A brief for own content: what to say, to whom, when, which case studies back it, and which pages it links to (strategy picks the targets; `wugweb-seo` owns the link rules and fills the brief's search block) | None. With no brief, ask for one |
 | `wugweb-voice` | The draft, with its form, mode, audience and purpose | A voice check: breaks and fixes | `copy-and-seo.md` (voice part) |
-| `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules; approved facts about Wugweb | The brand guidelines in the site repository |
-| `wugweb-kits` | Content shape and chosen media; visible wording it asks for (labels, alt text) | Blocks, layout, tokens; gate and token results | `layout-grammar.md`, `design-principles.md` |
-| `wugweb-seo` | The approved body and page URL; visible wording it asks for (title options) | Keyword notes; title and schema rules to apply; a fix list for one page | `schema-jsonld.md`, `copy-and-seo.md` (on-page part) |
+| `wugweb-brand-os` | Cover picks and visuals to check | A check against the brand and art-direction rules; approved facts about Wugweb | `layout-grammar.md` (cover rule, yellow share), `copy-and-seo.md` (claim order); the brand guidelines in the site repository |
+| `wugweb-kits` | The block plan and the built page; visible wording it asks for (labels, alt text) | A token and accessibility check of the result, by rule id | `layout-grammar.md`, `design-principles.md`, `qa-checklist.md` |
+| `wugweb-seo` | The approved body and page URL; visible wording it asks for (title options) | Keyword notes; a check of the title, description and schema against the limits; a fix list for one page | `schema-jsonld.md`, `copy-and-seo.md` (on-page part) |
 
 - `wugweb-voice` has no direct link with strategy, seo or kits. The voice check happens here only.
 - A finding on one page comes here as a fix list. A finding that repeats on every page using a block goes from `wugweb-seo` to `wugweb-kits`; neither edits code.
 - Client case studies have no strategy brief. They start from the client's project and the brief is written here. Brief mode is for client work only (owner, 2026-11-16).
 - Interface copy (errors, empty states, confirmations, button labels) is written here and voice-checked. `wugweb-kits` names which component states need wording.
-- Made files: this skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
-- Layout values are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`. This skill restates none of them.
+- Made files: this skill picks which platform size a file uses; the sizes and the safe-zone rule are held in `forms.md`. `wugweb-kits` may check a made file against its tokens.
+- Layout values are held in `layout-grammar.md` section 8, restated from `kits_design_system/docs/tokens/layout-shell.md`; that document wins if it changes.
 
 Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says; Wugweb has no campaign system, so no campaign look is invented (brand skill, 2026-11-17).
 
@@ -485,7 +508,7 @@ Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill ow
 | Brief | Which one search phrase and intent should this page target? | `wugweb-seo` (plan part) |
 | Body, Forms | Does the text match the voice for this form and audience? | `wugweb-voice` |
 | Look, Forms | Does this cover or visual fit the art direction? | `wugweb-brand-os` |
-| Layout | Given this content shape and media, what is the layout? | `wugweb-kits` |
+| Layout, after the block plan is resolved here | Does this block plan hold against the design system: tokens, shell values, component states? | `wugweb-kits` |
 | SEO and schema, Ship | Does the rendered page pass on-page, technical and citability checks? | `wugweb-seo` (audit part) |
 | Ship | Does every value in the page's components resolve to a token? Does the page pass the accessibility checks? | `wugweb-kits` |
 | After deploy | How did the pages perform, with dates and sources? | `wugweb-seo` (report part) |
@@ -537,7 +560,7 @@ Send: the path of the page's components and styles, and the rendered URL.
 
 Expect back: findings by rule id: counts of raw colour and size values, layer skips, orphan tokens and duplicate components, each with file and line; accessibility results with measured values.
 
-Then: report the findings in the Ship table. They are reported only at first; blocking begins once the case study components are clean, on a short list the owner sets (owner, 2026-11-16 and 2026-11-17). The gate and the continuous integration check belong to `wugweb-kits`. Literal breakpoint values in media queries are allowed. Check that the scan includes the site's component file type before trusting a clean result. No token is deleted and nothing is refactored without the owner's yes.
+Then: report the findings in the Ship table. They are reported only at first; blocking begins once the case study components are clean, on a short list the owner sets (owner, 2026-11-16 and 2026-11-17). The publish gate is this skill's (`qa-checklist.md`), and the tokens-only rule is held in `layout-grammar.md`; the token scan and its continuous integration check are run by `wugweb-kits`, and its findings enter the Ship table. Literal breakpoint values in media queries are allowed. Check that the scan includes the site's component file type before trusting a clean result. No token is deleted and nothing is refactored without the owner's yes.
 
 ### Handoff 5: voice check
 
@@ -556,13 +579,15 @@ The voice is uncalibrated until the owner supplies writing samples (owner, 2026-
 
 Then: apply fixes that keep the meaning. A fix that changes a fact, a client's on-screen term or a quote is declined. Length, evidence and format rules stay with this skill.
 
-### Handoff 6: layout request
+### Handoff 6: layout check
 
-Send: the content shape (chapters, number of points, number and shape of media per chapter, quotes, tables, results), the chosen proof screens, the archetype and the client accent. Which block a content shape gets is decided here and sent as part of the request.
+This skill resolves the layout itself, from `layout-grammar.md`: which block each content shape gets, and the layout per tier (375, 768, 1200). The handoff asks for a check of that result.
 
-Expect back: the layout per tier (375, 768, 1200), the blocks used, and any content that does not fit a block.
+Send: the block plan per tier, the content shape behind it (chapters, number of points, number and shape of media per chapter, quotes, tables, results), the chosen proof screens, the archetype and the client accent.
 
-Then: content that does not fit returns to the proposal as an owner question. No block type outside the catalogue is added without the owner's yes.
+Expect back: findings against the design system: a block that breaks a token or a shell value, a component state that needs wording, and any content that does not fit a block.
+
+Then: this skill decides and corrects the plan. Content that does not fit returns to the proposal as an owner question. No block type outside the catalogue is added without the owner's yes.
 
 ### Handoff 7: brief in, piece out
 
@@ -696,6 +721,7 @@ Commands, gates and output formats for each mode, then this site's wiring. This 
 | Look | One review page per case study | Approval of hero, flags and captions |
 | Body | Draft proposal, current → proposed | Approval of that exact text |
 | Layout | Block plan | Approval |
+| SEO and schema | Title, description, headings check and the JSON-LD graph | Approval; the title and description then go to the owner as paste-in text for his source |
 | Ship | Gate table + previews at 375, 768, 1200 (after handoffs 2 and 4) | Owner's go to sync, commit, deploy |
 | Forms | Each form, and each proposed new file | Owner's yes per form and per file |
 
@@ -710,6 +736,14 @@ Sources read: body (<words> words), folder (<n> files), live page (<url>)
 | Area | Found | Count | Note |
 Unbacked claims: <list, quoted>
 Owner questions: <numbered>
+```
+
+**Brief.** One page in the template of `copy-and-seo.md`:
+```
+## Brief: <client> (<slug>), <date>
+Claim:  Tension:  Proof:  Outcome:
+Search phrase:  Archetype:  Media needed:
+Owner questions: <numbered; "unvalidated" is a complete answer>
 ```
 
 **Media.**
@@ -729,10 +763,30 @@ Rendered bytes for the proposed page: <MB> MB (budget 25 MB)
 
 **Layout.** Block plan as JSON: `[{ "type": "...", "chapter": "...", "items": [...] }]` using only the catalogue types.
 
+**SEO and schema.**
+```
+## SEO and schema: <slug>
+Title: <text> (<n> characters as rendered; limit 60)
+Description: <text> (<n> characters; 140 to 160)
+Headings check: one h1, an h2 per chapter, no skipped level; generic headings: <list>
+JSON-LD: the graph of schema-jsonld.md, filled from the page
+Fields left empty for the owner: <list>
+```
+
 **Ship.** Gate table:
 ```
 | Check | 375 | 768 | 1200 | Note |
 Result: <passed>/<applicable>
+```
+
+**Forms.**
+```
+## <form>: <client> (<slug>), <date>
+Fact pack: <n> items, each with its body line
+Draft: <the form, in its file's order>
+Fact ledger: <every sentence> | <body line>
+Made files proposed: <what, size, made from, where it would live> or none
+Approval step reached: <1 to 8> (forms/publish-approval.md)
 ```
 
 ### 3. The neutral contract
@@ -745,10 +799,11 @@ source (one Body Content document + one media folder) → parsed body → media 
 
 - **Registry and plan**: Notion page "Wugweb Skill Management System" under Wugweb HQ, and the `wugweb-work` page under it. Notion wins over any file. The repo keeps one copy of the plan at `docs/skills/wugweb-work/PLAN.md`.
 - **Source, track 1**: Notion, Case Studies data source, property Body Content (one per case study).
-- **Source, track 2**: blog posts in Notion Blogs, synced by the site repository's blog sync script (`sync-notion-blogs.mjs`); service pages in Sanity `service` documents (6 pillars). Site and landing copy: the page's own records (taken from the repository's `CLAUDE.md`, not from the owner directly; to be corrected if wrong).
+- **Source, track 2**: blog posts in Notion Blogs, synced by the site repository's blog sync script (`sync-notion-blogs.mjs`); service pages in Sanity `service` documents (6 pillars). Site and landing copy: the page's own records in the site repository. This comes from the repository's `CLAUDE.md`, not from the owner's own words, so a proposal for site copy names the record it read.
 - **Scheduling tool for posts**: none connected (owner, 2026-11-17). Posts are handed to the owner as approved drafts; Postiz is installed as a helper but not connected to any account.
-- **Layout values**: `kits_design_system/docs/tokens/layout-shell.md`, with `tokens/sizing.md` and `docs/components.md`, owned by `wugweb-kits`.
-- **Listing a media folder**: no read-only command was found that lists the objects in an R2 bucket; to be confirmed against the project's own `wrangler r2 --help`. Commands that write, delete or download are forbidden.
+- **Layout values**: held in `layout-grammar.md` section 8, restated from `kits_design_system/docs/tokens/layout-shell.md` (with `tokens/sizing.md` and `docs/components.md`). That design system document wins if it changes; `wugweb-kits` may check the result.
+- **Listing a media folder**: `node scripts/media-manifest-dry-run.mjs` in the site repository (its library is `media-manifest.mjs`, in the site's own scripts library). It takes the folder listing from the CMS asset registry, because R2 has no read-only list command here, and measures every file by HEAD and ranged reads. It writes a report under `docs/research/` and two ignored files under `scripts/data/`; it never writes Sanity, Notion or R2. Commands that write, delete or download media are forbidden.
+- **Visual read records**: `scripts/data/media-reads/<slug>.json` in the site repository, one file per case study, committed, keyed by URL and ETag so each file is read once. The folder is made with the first read.
 - **CMS**: Sanity, document type `caseStudy`, field `bodyMarkdown`, synced from Notion. Public read: `https://splvhmk1.apicdn.sanity.io/v2024-01-01/data/query/production`.
 - **v1 duplicate copy**: older bodies hold a second, longer copy under the heading `## Sanity site copy` or `## Framer site copy` (both are read the same way). The long copy wins; proposals collapse both into one.
 - **Media**: Cloudflare R2, `assets/work/<slug>/`, public base `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/`.
@@ -761,7 +816,7 @@ node scripts/sync-notion-case-studies.mjs          # dry run, prints diff and me
 ## owner's go
 WRITE=1 node scripts/sync-notion-case-studies.mjs  # backs up to backups/ first
 ```
-Verify `NOTION_TOKEN` first. On 401, stop and tell the owner a new token is needed.
+Verify the token first. The standard name is `NOTION_API_TOKEN`; the site sync script still reads the old name `NOTION_TOKEN`. On 401, stop and tell the owner a new token is needed.
 
 Audit and gate:
 ```
@@ -775,7 +830,7 @@ Previews: dev server `wugweb-dev` on port 4321. JSON-LD is checked through `npm 
 
 Git rules are in `references/standing-rules.md`. Studio deploy, sync writes and pushes are the owner's go.
 
-Approved text goes to Notion only after approval of that exact change, with a backup first. Alt text goes to Sanity `asset.alt` only where empty (`setIfMissing`), with a backup.
+Approved text goes to Notion only after approval of that exact change, with a backup first. Approved captions go to the Notion media labels in Body Content. Approved alt text goes to Sanity `asset.alt` only where empty (`setIfMissing`), with a backup.
 
 #### The layers on this site
 
@@ -783,7 +838,7 @@ Approved text goes to Notion only after approval of that exact change, with a ba
 |---|---|---|
 | Body parser | `src/lib/case-body.ts` | Parse Body Content: chapters, claims, points, media references, labels, layout hints |
 | Media manifest | `media-manifest.mjs` and `image-dims.mjs`, in the site repository's own scripts library | Record what each file is: size, shape, type, status, duplicates, own or borrowed |
-| Visual read | The read records, per case study | Record what each screen shows and which chapter it proves |
+| Visual read | The read records, `scripts/data/media-reads/<slug>.json` | Record what each screen shows and which chapter it proves |
 | Layout resolver | `src/lib/case-layout.ts` | Turn body, manifest and read into the block plan; route the other approved screens to All screens |
 | Blocks | `src/components/work/Case*.astro`, switched by `CaseBlocks.astro` | Render each block |
 | Rail and viewer logic | `src/lib/case-rail.ts`, `src/lib/case-lightbox.ts` | Buttons, counter and keyboard for rails; the one-screen viewer |
@@ -876,6 +931,8 @@ How findings are written, how claims are tied to evidence, and how numbers and o
 - Skim test: the headings and actions alone must carry the argument.
 - Compare what the copy claims with what the screens and the product show. A claim the product does not bear out is flagged.
 - Always flag: superlatives without proof, comparisons with others, quotes without a name, text paraphrased closely from another source.
+- Entity and spelling consistency: the client's own vocabulary wins (the term on its screens, such as "Programmes"), British English throughout, and one spelling per entity (iCube, not Icube). List every variant found, with its line.
+- Count the deliverables before finishing, in every mode: what was asked for against what is delivered, as X of Y.
 
 ### Reading a live page
 
@@ -942,9 +999,9 @@ When two pages compete for the same search intent and both are kept, `wugweb-seo
 <!-- references/copy-and-seo.md -->
 ## Copy and SEO
 
-> **Mixed ownership (agreed with `wugweb-voice`, 2026-11-17).** Pointers: "we" or "I" per piece, the client's on-screen terms and the no-dash rule live in `wugweb-voice` (`.claude/skills/wugweb-voice/references/modes.md`, `.claude/skills/wugweb-voice/references/words.md` and `.claude/skills/wugweb-voice/SKILL.md`). Rules marked *candidate* are working rules here, candidates in `wugweb-voice` pending the owner's yes or writing samples; once confirmed there, they become pointers. Unmarked rules are this skill's own (structure, format, consistency, claims). The rules under "On-page SEO" point to `wugweb-seo` (agreed 2026-11-17); the H1 wording, description wording and entity list stay here. Do not copy these rules into another file. The evidence rule, case-study lengths, metrics, approvals and the brief template belong to this skill.
+> **Held here in full.** Every rule a mode needs is in this file, with its value: the twelve rules, the lengths, the claim order, the brief template and the on-page SEO rules. This skill writes the words and applies the limits itself. `wugweb-voice` checks the draft (agreed 2026-11-17; its side is in `.claude/skills/wugweb-voice/references/modes.md`, `.claude/skills/wugweb-voice/references/words.md` and `.claude/skills/wugweb-voice/SKILL.md`): rules marked *candidate* are working rules here that it may confirm or change with the owner's yes or writing samples. `wugweb-seo` checks the page against the same on-page limits (agreed 2026-11-17). Where a sibling's rule differs from a line here, raise it with the owner. Unmarked rules are this skill's own (structure, format, consistency, claims), as are the evidence rule, case-study lengths, metrics, approvals and the brief template.
 
-The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (owned by `wugweb-brand-os`: `.claude/skills/wugweb-brand-os/references/messaging.md`), the owner's rules and the research digest.
+The voice for every case study and every other form, the brief template, and the on-page SEO rules. Sources: the brand copy guidelines (direct, intelligent, specific; outcomes over hype), the messaging framework (one claim, one tension, one proof, one outcome; Problem, Insight, System, Outcome), the owner's rules and the research digest.
 
 ### Tone in one line (candidate)
 
@@ -952,17 +1009,21 @@ A senior practitioner explaining what was built and why, to a peer. Calm, exact,
 
 ### Twelve rules
 
-The owner's standing rules (evidence, British English, sentence case) are in `standing-rules.md`; the no-dash rule's home is `wugweb-voice` (`.claude/skills/wugweb-voice/references/words.md`). Neither is repeated here. *Candidate* marks a working rule pending in `wugweb-voice`.
+All twelve are written out here so the list is whole. Four of them (evidence or nothing, British English, no dashes, sentence case) are also the owner's standing rules in `standing-rules.md`. *Candidate* marks a working rule that `wugweb-voice` may confirm.
 
 | Rule | How |
 |---|---|
 | Say what was built (candidate) | Name the thing: "a member portal and a back office", not "a holistic digital ecosystem". |
-| Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. Question form where natural. Generic labels only in the chapter nav (block spec in `wugweb-kits`, `.claude/skills/wugweb-kits/references/media-and-widgets.md`, specified, not built). |
+| Evidence or nothing | Every claim points to a screen, a number with its source and date, or a named fact. No evidence: cut the claim or mark it "unvalidated". Numbers are never invented. |
+| Headings are claims | "Members apply in one guided flow", not "Solutions". 70 characters or fewer. Question form where natural. Generic labels only in the chapter nav (not one of the 23 catalogue blocks; its spec is written in `.claude/skills/wugweb-kits/references/media-and-widgets.md` and it is not built). |
 | Answer first | The first sentence under a heading answers it. The first third of the page carries the main facts. |
 | Short, whole sentences | Fact sentences of 6 to 20 words (candidate) that make sense on their own. One idea per sentence. |
 | Plain words (candidate) | Use, build, show, help. See the banned list below. |
-| Active, with a named doer (candidate) | "Staff set the workflow per programme", not "workflows were streamlined". "We" or "I": see `wugweb-voice` (`.claude/skills/wugweb-voice/references/modes.md`); ask the owner in the brief or proposal. |
-| The client's own words | On-screen terms stay as the client wrote them: see `wugweb-voice`. One spelling per name (iCube, not Icube). |
+| Active, with a named doer (candidate) | "Staff set the workflow per programme", not "workflows were streamlined". "We" or "I" is the owner's pick for each piece (owner, 2026-11-17): ask him in the brief or the proposal. |
+| The client's own words | Use the terms on the client's screens, as the client wrote them (NTUC writes "Programmes"). One spelling per name (iCube, not Icube). |
+| British English | programme, centralised, colour, organisation. |
+| No dashes | No em or en dashes in anything a visitor reads. Ranges are written out ("3 to 5"). |
+| Sentence case | Headings, labels and buttons. No Title Case, no ALL CAPS. |
 | Credit honestly | Name partners and the team. Say what Wugweb did and did not do (the claim is this skill's; the phrasing is a candidate in `wugweb-voice`). |
 
 ### Structure rules
@@ -985,9 +1046,9 @@ The owner's standing rules (evidence, British English, sentence case) are in `st
 
 ### Banned words (candidate)
 
-pivotal, robust, seamless, seamlessly, meticulous, holistic, cutting-edge, leverage, empower, empowering, unlock, world-class, revolutionary, game-changing, innovative, state-of-the-art, synergy, best-in-class, next-generation, transformative, sophisticated, delve, elevate.
+pivotal, robust, seamless, seamlessly, meticulous, holistic, cutting-edge, leverage, leveraging, empower, empowering, empowers, unlock, world-class, revolutionary, game-changing, innovative, state-of-the-art, synergy, best-in-class, next-generation, transformative, sophisticated, delve, elevate.
 
-The audit script carries this list. A banned word may stay only inside a client's own product name or a direct quote.
+This is the one list. `scripts/case-audit.mjs` carries the same 25 words and `scripts/validate.mjs` reads them from it and fails when this line differs; change both together. A banned word may stay only inside a client's own product name or a direct quote.
 
 ### Lengths
 
@@ -999,9 +1060,9 @@ The audit script carries this list. A banned word may stay only inside a client'
 | Point title | 2 to 6 words |
 | Point text | One sentence |
 | Caption | 25 words or fewer, saying why the screen matters |
-| Alt text | 125 characters or fewer, saying what the screen shows and lets the user do |
-| SEO title | The limit is in `wugweb-seo` (see On-page SEO) |
-| Meta description | The length is in `wugweb-seo` (see On-page SEO) |
+| Alt text | 10 to 125 characters, saying what the screen shows and lets the user do |
+| SEO title | 60 characters or fewer as rendered, the one limit for every page type (owner, 2026-11-19) |
+| Meta description | 140 to 160 characters |
 | Quote | 3 lines or fewer, with name, role and organisation; the person's photo only when the owner supplies it |
 
 ### Before and after (NTUC)
@@ -1039,25 +1100,27 @@ Proof (screens, numbers with source and date, named facts):
 Outcome (what exists now; numbers only with source):
 Search phrase (one, natural; what someone would type to find this):
 Archetype:
+Media needed (the screens, loops and files the page needs; what is missing):
+What makes this piece different (one line):
 Owner questions (exact, numbered; "unvalidated" is a complete answer):
 ```
 
-The page answers first, then follows the claim order owned by `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/messaging.md`).
+The claim order: Problem, Insight, System, Outcome. One claim, one tension, one proof, one outcome. The page answers first, then follows that order. `wugweb-brand-os` may check it (`.claude/skills/wugweb-brand-os/references/messaging.md`).
 
 ### On-page SEO
 
-Agreed with `wugweb-seo` (2.5.0, 2026-11-17). The limits and checks live in `wugweb-seo`; this skill writes the words. Keyword research, technical SEO and reports belong there too; ask through `handoffs.md`.
+The values below are held here and applied by this skill. They were agreed with `wugweb-seo` (2.5.0, 2026-11-17), which checks the page against the same limits; its file is named beside each rule. Keyword research, technical SEO and reports are its work; ask through `handoffs.md`.
 
 - H1 wording: what was built, with the brand shown in the label above it. The source keeps the two apart: Title holds no brand, Short Title is the brand. The SEO title names the client and what was built (this skill's; `wugweb-seo` checks there is one H1 and that it agrees with the title).
-- SEO title limit and the layout suffix: `.claude/skills/wugweb-seo/references/audit.md` (`title-rendered`: 60 characters or fewer as rendered, the one limit for every page type; owner, 2026-11-19).
-- Meta description length: `.claude/skills/wugweb-seo/references/audit.md` (`description-length`). The wording states what was built and for whom (this skill's copy rule).
-- One slug, no redirects: `.claude/skills/wugweb-seo/references/handoffs.md`.
+- SEO title: 60 characters or fewer as rendered, the one limit for every page type (owner, 2026-11-19). It is stored without a site suffix; the layout adds " | Wugweb" only when the total still fits in 60. Checked by `wugweb-seo` as `title-rendered` (`.claude/skills/wugweb-seo/references/audit.md`).
+- Meta description: 140 to 160 characters. The wording states what was built and for whom. Checked by `wugweb-seo` as `description-length` (`.claude/skills/wugweb-seo/references/audit.md`).
+- One slug per page and no redirects for an old address (owner, 2026-10-13); `wugweb-seo` holds the same rule (`.claude/skills/wugweb-seo/references/handoffs.md`).
 - Entities named in full at first mention: `.claude/skills/wugweb-seo/references/audit.md` (citability). Which ones: client, partner, platform and country, once in the body and in the schema (this skill's list).
-- Internal links: `wugweb-seo` rules: one link up to the service page, two or three across to sibling case studies, descriptive anchors, no orphans (`.claude/skills/wugweb-seo/references/audit.md`). No link up to a sector page (owner, 2026-11-17).
-- Key facts in server HTML, images in `img src`: `.claude/skills/wugweb-seo/references/audit.md`.
-- No keyword counts and no `llms.txt`: `.claude/skills/wugweb-seo/references/handoffs.md`.
+- Internal links: one link up to the service page, two or three across to sibling case studies, descriptive anchors, no orphans; `wugweb-seo` checks them (`.claude/skills/wugweb-seo/references/audit.md`). No link up to a sector page (owner, 2026-11-17).
+- Key facts are in the server HTML and images are in `img src`; `wugweb-seo` checks both (`.claude/skills/wugweb-seo/references/audit.md`).
+- No keyword counts and no `llms.txt` (`wugweb-seo` holds the same line: `.claude/skills/wugweb-seo/references/handoffs.md`).
 - FAQ blocks: the line agreed by `wugweb-strategy` and `wugweb-seo` (`.claude/skills/wugweb-seo/references/handoffs.md`, "1a. FAQ blocks"), applied in `own-content.md`.
-- Share image: `og:image` present and `og:url` equal to the canonical (`.claude/skills/wugweb-seo/references/audit.md`, `share-tags`, `share-url`); pick a project-specific existing file first, a new file only through the Forms gate. The 1200 x 630 size is the adopted made-file size, held by `wugweb-kits`.
+- Share image: `og:image` present and `og:url` equal to the canonical (`.claude/skills/wugweb-seo/references/audit.md`, `share-tags`, `share-url`); pick a project-specific existing file first, a new file only through the Forms gate. The 1200 x 630 size is the adopted made-file size, held in `forms.md`.
 
 ### How it is checked
 
@@ -1083,7 +1146,7 @@ Three readings of the rule, confirmed by the owner on 2026-11-16:
 
 1. Resizing and masks are done on the page, in CSS only, never by making a new file.
 2. A mask must not hide the part of a screen that proves the claim.
-3. A file shown larger than its natural size is flagged when it looks soft. It is a quality flag, not a ban.
+3. A file shown larger than its natural size is flagged when it looks soft. It is a quality flag, not a ban. A small file gets a contained cell, so the layout does not show it above its natural size.
 
 Weight, missing posters and `moov` at the end of an mp4 are reported as facts. The page defends itself with sizes, lazy loading, `preload="none"` and `content-visibility`. When a file does not fit, say so and let the owner decide.
 
@@ -1143,23 +1206,22 @@ Report per case study:
 
 Every number in these reports is summed by a script, never estimated. Count the files first and recount before finishing. A manifest never says "and so on"; if stopping early, stop at a clean point and say X of Y.
 
-Known gap: nothing here lists the objects in a media store folder. The audit script measures files that the body or the record already links. A folder listing needs its own read-only script or the owner's list; commands that write, delete or download are forbidden.
+Listing a folder: the audit script in this skill measures only the files that the body or the record already links. The whole folder is listed and measured by the site's manifest script, which reads the store and writes nothing to it; this site's command is in `ops-cycle.md`. Where that script cannot run, use the owner's list. Commands that write, delete or download are forbidden.
 
 ### Video
 
 - 15 seconds or less: loop, muted, playsinline.
-- Longer: muted, click to play, play and pause button only, or left off the page when a short cut of it exists.
+- Longer: muted, click to play, with a play and pause button only: no unmute control and no native volume controls. A video over 15 seconds never loops in a rail; it sits in its own chapter, or is left off the page when a short cut of it exists.
 - No poster file: use the best start frame from the visual read as `src="…mp4#t=<s>"` with `preload="metadata"`. No new file is made. This is unverified on iPhone Safari: test it before relying on it, and fall back to a plain surface until the video is near.
 - Audio is reported only. Nothing plays sound. When a long video carries speech, say so: muted, it may lose its meaning, and the owner decides whether it stays.
-- A loop is 15 seconds or less. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden. All loops stop under reduced motion and pause off screen (owner, 2026-11-17; the control is built by `wugweb-kits`).
+- A loop is 15 seconds or less. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden. All loops stop under reduced motion and pause off screen (owner, 2026-11-17). This skill holds the rule and checks it at the gate; the control is part of the page build, and `wugweb-kits` may check it.
 - A video in which someone speaks needs captions or a transcript from the owner's source before it is used; without one it is listed as an owner question, never captioned by guess.
 - A video on a third-party player shows a lightweight preview and loads the player on click.
 
 ### Alt text and captions
 
-- Alt: 10 to 125 characters, and it agrees with the caption. Long detail goes in the caption.
+- Alt: 10 to 125 characters. It says what the screen shows and what it lets the user do, and it agrees with the caption; long detail goes in the caption. Never "screen" or "image of". A purely decorative image has `alt=""`. Owner-edited alt always wins.
 - Per file, record: alt present, alt specific to that image, no alt repeated across images, width and height known. Flag alt that is missing, a file name, or generic.
-- Alt: 125 characters or fewer. Says what the screen shows and what it lets the user do. Never "screen" or "image of". A purely decorative image has `alt=""`. Owner-edited alt always wins.
 - Caption: 25 words or fewer. Says why the screen matters to the chapter's claim.
 - Both are written only after the screen has been seen close up (see `visual-read.md`), and both are proposals until approved.
 
@@ -1224,7 +1286,9 @@ For each image, in this order:
 
 ### 4. The read record
 
-Stored per case study, keyed by URL and ETag so each file is read once.
+Stored per case study, one file of records for each, keyed by URL and ETag so each file is read once. The records are derived data and may be committed; where they are kept on this site is in `ops-cycle.md`.
+
+Alt text and captions are content, not derived data. They are proposed as current → proposed, and only after the owner's approval do captions go to the media labels in the source and alt text to the asset record, where that is empty, with a backup first.
 
 | Field | Meaning |
 |---|---|
@@ -1238,10 +1302,10 @@ Stored per case study, keyed by URL and ETag so each file is read once.
 | `textHeavy` | Yes or no |
 | `pii` | Real or sample names, numbers, faces: flagged for a decision, never auto-hidden |
 | `brand` | Colours as hex, type families recognised, logo present, which brand |
-| `quality` | sharp, soft, upscaled, stock, placeholder or lorem, watermark, wrong client |
+| `quality` | sharp, soft, upscaled, stock, placeholder or lorem, watermark, wrong client, misnamed file |
 | `nearDupOf` | Visual duplicate the size check missed |
-| `heroScore` | 0 to 5: legible small, and passes the cover rule of `wugweb-brand-os` (`.claude/skills/wugweb-brand-os/references/review-gates.md`, gate 6) |
-| `alt` | 125 characters or fewer |
+| `heroScore` | 0 to 5: project-specific, legible small, never a generic laptop or dashboard (the cover rule, held in `layout-grammar.md` section 3) |
+| `alt` | 10 to 125 characters |
 | `caption` | 25 words or fewer |
 | `chapterFit` | Which chapter it proves |
 | `principle` | A design principle the screen applies, with the decision (see `design-principles.md`). Optional per record, but each flow names at least one where a screen shows the decision |
@@ -1334,10 +1398,10 @@ Every block and rhythm rule in `layout-grammar.md` maps to a principle:
 | Stat numerals in the accent at large size | Contrast |
 | The client accent repeats on rules and numerals | Repetition, unity |
 | Space between chapters is at least the space inside them | White space, common region |
-| Everything aligns to the column grid in the layout shell | Alignment |
+| Everything aligns to the 4, 8 and 12 column grid of the layout shell (4 columns on mobile, 8 on tablet, 12 on desktop) | Alignment |
 | Media families rotate between chapters | Unity and variety, rhythm |
 | Rails show the next item | Continuity, affordance |
-| Button target size, set in `wugweb-kits` | Fitts's law |
+| Button targets of 44 px or more | Fitts's law |
 | A chapter shows 1 to 4 screens | Miller's law, Hick's law |
 
 ### The critique pass
@@ -1512,7 +1576,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
       "isPartOf": { "@id": "<origin>/#website" },
       "primaryImageOfPage": { "@id": "<url>#cover" },
       "breadcrumb": { "@id": "<url>#breadcrumb" },
-      "inLanguage": "en-GB"
+      "inLanguage": "<language of the record>"
     },
     {
       "@type": "CreativeWork",
@@ -1524,7 +1588,7 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
       "publisher": { "@id": "<origin>/#organization" },
       "datePublished": "<publishedAt>",
       "dateModified": "<last real content edit>",
-      "inLanguage": "en-GB",
+      "inLanguage": "<language of the record>",
       "image": [
         { "@type": "ImageObject", "@id": "<url>#cover", "url": "<cover url>", "width": 0, "height": 0 }
       ],
@@ -1565,10 +1629,11 @@ One `@graph` per case study page, emitted only on the canonical host. Every valu
 - `image`: the cover plus any images already in the manifest at 1:1, 4:3 or 16:9. Width and height from the manifest. No new image files.
 - `video`: one `VideoObject` per labelled video that has a poster or a usable start frame. `duration` from the manifest, as ISO 8601.
 - `about`: the client as an `Organization` with its website and known profiles. Only links the owner supplied.
-- `mentions`: partners and platforms named in the body.
+- `mentions`: partners and platforms named in the body, one node each. The template shows one partner; add a node per partner and per platform, by name.
+- `inLanguage`: the language of the record, never a fixed value. This site's records are in British English (en-GB).
 - `contributor`: optional; people credited on the page, as `Person` nodes with a name only.
 - `abstract`: the summary, only when the page shows one.
-- `dateModified`: the date of the last real content edit, never the record's every-save update time; no date change without a real edit. The rule lives in `wugweb-seo` (`.claude/skills/wugweb-seo/references/audit.md`). With no real-edit date on record, `dateModified` equals `datePublished`.
+- `dateModified`: the date of the last real content edit, never the record's every-save update time; no date change without a real edit. `wugweb-seo` checks the same rule (`.claude/skills/wugweb-seo/references/audit.md`). With no real-edit date on record, `dateModified` equals `datePublished`.
 - Testimonials: `blockquote` markup on the page, and at most an optional `Quotation` node.
 
 ### Never emit
@@ -1601,7 +1666,8 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - Order the checks cheap first: the automated script, then the manual read.
 - Rank findings must, should, nice. Change nothing until the owner picks.
 - Verdict: publish, publish with fixes, or no.
-- Hard stops that block publishing whatever else passes: an unsourced factual claim, an undisclosed relationship, no date on time-bound content.
+- Hard stops that block publishing whatever else passes: an unsourced factual claim; an invented number or quote; an undisclosed relationship; no date on time-bound content; a form made from an unapproved body; a track 2 piece with no brief; any write without the owner's approval.
+- Count the deliverables before finishing: what was asked for against what is delivered, as X of Y.
 
 ### Content
 
@@ -1616,7 +1682,9 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] Not-templated test: hero line, headings and one signature layout would not fit another client unchanged.
 - [ ] No placeholder text in copy (`TBD`, `[INSERT`, `lorem`).
 - [ ] Every visible string reread before ship; screenshots are current; permission for each quote is held.
-- [ ] Every media item has alt (125 characters or fewer) and a caption.
+- [ ] Every media item has alt (10 to 125 characters) and a caption.
+- [ ] Personal data is scanned out of the screens: every screen was read for names, numbers and faces; sample data is judged by the critical test and real personal data is raised with the owner (`media-standard.md`).
+- [ ] One spelling per entity, and the client's own terms kept (`evidence.md`).
 - [ ] Every own-folder file is accounted for: on the page, in All screens, or listed as not rendered with a reason.
 - [ ] No borrowed or wrong-client files on the page.
 - [ ] Chapters of 30 to 150 words (160 tolerated in evals).
@@ -1629,7 +1697,8 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] `<title>` 60 characters or fewer; meta description 140 to 160; canonical points to itself.
 - [ ] JSON-LD has WebPage, CreativeWork and BreadcrumbList on the canonical host; none of the banned types.
 - [ ] All content present with JavaScript off.
-- [ ] Structured data passes a schema validator.
+- [ ] Structured data passes a schema validator and the Rich Results Test.
+- [ ] `dateModified` changes only for a real content edit; with none on record it equals `datePublished` (`schema-jsonld.md`).
 - [ ] Every link resolves; list source, target and status. A broken link is fixed at the link, never by a redirect.
 - [ ] Every custom block type in the body has a renderer; an unknown type fails the gate.
 - [ ] Every media URL returns 200; none is a duplicate.
@@ -1641,15 +1710,22 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] No mask and no `object-fit: cover` hides the part of a screen that proves the claim.
 - [ ] Files shown larger than their natural size are listed; one that looks soft is flagged (a flag for the owner, not a fail).
 - [ ] Styles pair 50:50 at native ratio.
-- [ ] Rails: labelled region or group, `aria-roledescription="carousel"`, slides as groups with `aria-roledescription="slide"` and a name, counter, buttons, items 85vw or less on mobile, no auto-advance.
+- [ ] A small file sits in a contained cell; none is shown above its natural size by the layout.
+- [ ] First screen on a 390 by 844 phone: the headline, subhead and primary action are visible without scrolling.
+- [ ] Yellow stays under 10% of the page; the footer call to action is yellow and is the page's one yellow note; no second call to action.
+- [ ] Rails: labelled region or group, `aria-roledescription="carousel"`, slides as groups with `aria-roledescription="slide"` and a name, a visible counter that shows the position ("3 of 8"), previous and next buttons, items 85vw or less on mobile, no auto-advance.
+- [ ] All screens: the set chips show every set with its count, one chip is selected at a time, and the thumbnails keep their own ratio.
+- [ ] Viewer shows the caption, then the position and set as "n of N, set name"; swipe works as well as the previous and next buttons, which are real buttons of 44 px or more.
 - [ ] Viewer has a visible close button; Escape closes it; focus returns to the thumbnail.
+- [ ] With JavaScript off, every All screens set renders stacked under its own heading, with every thumbnail and caption.
+- [ ] A video over 15 seconds never loops in a rail; it sits in its own chapter, muted, click to play.
 - [ ] At most 2 mockups; never the hero when a project-specific visual exists.
 - [ ] At most 1 full-bleed per chapter; no more than 2 zigzags in a row.
 
 ### Accessibility
 
-- [ ] Loops: `muted playsinline`, load when near. A loop of 5 seconds or less with no control has `aria-hidden`; a loop over 5 seconds (duration from the manifest) has a pause control and no `aria-hidden`. All loops stop under reduced motion and pause off screen.
-- [ ] Long videos: muted, play and pause button only, not `aria-hidden`, `preload="none"`, with an `aria-label`.
+- [ ] Loops: `muted playsinline`, a poster or start frame, the source in `data-src`, load when near. A loop of 5 seconds or less with no control has `aria-hidden`; a loop over 5 seconds (duration from the manifest) has a pause control and no `aria-hidden`. All loops stop under reduced motion and pause off screen.
+- [ ] Long videos: muted, play and pause button only (no unmute control, no native volume controls), not `aria-hidden`, `preload="none"`, with an `aria-label`.
 - [ ] No audio plays anywhere.
 - [ ] Keyboard and screen reader pass through every rail and the viewer.
 - [ ] Content reflows at 320 px and at 400% zoom.
@@ -1667,11 +1743,16 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 
 ### Design system
 
-- [ ] Token findings from `wugweb-kits` are listed with file and line (handoff 4 in `handoffs.md`). Reported only at first; blocking comes later, on a short list the owner sets (owner, 2026-11-16).
+- [ ] Tokens only (`layout-grammar.md`): no hardcoded colour, spacing, radius, opacity, shadow, blur, z-index or easing; buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`; reveals through `data-reveal` and `data-scroll`.
+- [ ] Token findings from the `wugweb-kits` scan are listed with file and line (handoff 4 in `handoffs.md`). Reported only at first; blocking comes later, on a short list the owner sets (owner, 2026-11-16).
 
 ### Design critique
 
 - [ ] Hierarchy, focal point, rhythm, contrast, consistency and legibility each score 3 or more at 375 and 1200 (see `design-principles.md`).
+
+### Measured numbers from a helper
+
+When a UX audit helper is run on the rendered page at 375 and 1200, its measured numbers go into the gate table beside the check they belong to: contrast ratios, tap target sizes, focus rings, accessible names, Hick and Fitts indices, and Gestalt proximity and similarity. A number is entered only as measured, with the tool named.
 
 ### Housekeeping
 
@@ -1681,7 +1762,17 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 
 ### Automated part
 
-`scripts/check-case-page.mjs <url> [--host <canonical host>]` covers the static checks: headings, sections, articles, images, dashes, rails, videos, title, description, canonical, JSON-LD, media status and byte total. Overflow, aspect ratio, masks, contrast, targets, reduced motion and the critique are checked in the browser at each width.
+`scripts/check-case-page.mjs <url> [--host <canonical host>] [--no-body]` covers the static checks: headings, sections, articles, images, dashes, rails, videos, title, description, canonical (host and path), JSON-LD, media status and byte total. The chapter check is reported as not applicable on a page that is not a case study (track 2) and, with `--no-body`, on a no-body case study. Overflow, aspect ratio, masks, contrast, targets, reduced motion, the rail counter, All screens, the viewer, the link check and the critique are checked in the browser at each width.
+
+### Definition of done
+
+| Stage | Done when |
+|---|---|
+| Audit | Every file measured and looked at close up; every claim marked backed or unbacked; findings listed with numbers that were computed, not estimated |
+| Body proposal | One copy; claim headings; every screen captioned; every own-folder file accounted for; owner questions listed; nothing written to the source |
+| Owner approval | The owner has approved that exact text. Only then is the source written, with a backup first |
+| Page | The gate passes at 375, 768 and 1200: one h1, no skipped headings, every image with alt and size, no dashes, no sideways scroll, nothing cropped, a file shown above its natural size flagged when soft, all media muted, under the weight budget |
+| Skill | With-skill runs pass every eval check the baseline fails, on 5 prompts; the owner has no open feedback |
 
 <!-- references/forms.md -->
 ## Forms: other versions of an approved piece
@@ -1759,7 +1850,7 @@ These are sizes for new made files, never for resizing client media. The share i
 | Dribbble shot | At least 1600 wide (1600 x 1200 by convention); PNG, JPG or GIF up to 10 MB, video up to 20 MB | Adopted by the owner, 2026-11-17. Dribbble Help Center, read directly |
 | Story canvas | 1080 x 1920 | Adopted by the owner, 2026-11-17; the canvas is official. Meta gives no official pixel safe zone: keep the top, bottom and sides clear of key elements, text and logos (wider margins), and the bottom 40% clear of text on Reels ads. Never state a pixel figure as a rule |
 
-This skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
+This skill picks which platform size a file uses, from the table above, which holds the sizes and the safe-zone rule. `wugweb-kits` may check a made file against its tokens.
 
 ### Card (lists and grids)
 
@@ -1767,7 +1858,7 @@ This skill picks which platform size a file uses; `wugweb-kits` supplies the siz
 
 - Takes: client, short title, one line of what was built, cover or thumbnail, industry.
 - Tone: no adjectives. "Member portal and back office for NTUC U Care Fund."
-- Media: the existing thumbnail kept at its own ratio inside a 16/10 frame that acts as a mask, with no crop of the source and no re-encode (owner, 2026-11-17, owned by `wugweb-kits`); a thumbnail video loops muted.
+- Media: the existing thumbnail kept at its own ratio inside a 16/10 frame that acts as a mask, with no crop of the source and no re-encode (owner, 2026-11-17); a thumbnail video loops muted.
 
 ### Showcase tile
 
@@ -1810,7 +1901,7 @@ One matter is open with the owner: the newsletter's sending tool, list and caden
 
 | Matter | The owner's decision | Where the rule lives |
 |---|---|---|
-| CMS fields on case studies | `faqs` is kept, but feeds FAQPage only where every question and answer is visibly on the rendered page. `seoCanonicalUrl`, `schemaType`, `aiSummary` and `keyTakeaways` are dropped for case studies: canonicals come from the owner's source document with one slug, the schema type is fixed (CreativeWork for case studies, BlogPosting for posts), and the owner's Body Content is the single source. Posts and pages keep the canonical field | `kits_design_system/docs/tokens/layout-shell.md` (owned by `wugweb-kits`, which follows `wugweb-seo`); `schema-jsonld.md` is held for `wugweb-seo` |
+| CMS fields on case studies | `faqs` is kept, but feeds FAQPage only where every question and answer is visibly on the rendered page. `seoCanonicalUrl`, `schemaType`, `aiSummary` and `keyTakeaways` are dropped for case studies: canonicals come from the owner's source document with one slug, the schema type is fixed (CreativeWork for case studies, BlogPosting for posts), and the owner's Body Content is the single source. Posts and pages keep the canonical field | `kits_design_system/docs/tokens/layout-shell.md` (the design system document); the graph and its rules are held in `schema-jsonld.md` |
 
 ### Also settled on 2026-11-17 (owner, answered in the wugweb-work session and relayed from the sibling skills)
 
@@ -1828,13 +1919,13 @@ One matter is open with the owner: the newsletter's sending tool, list and caden
 | Behance and Dribbble uploads | The owner uploads. The skill hands over an ordered list, never an upload | `forms/behance.md`, `forms/dribbble.md` |
 | Dribbble canvas | A screen is shown alone at its own ratio, never on a plain canvas | `forms/dribbble.md` |
 | Made-file sizes | Confirmed: Behance cover at least 808 x 632, Dribbble shot at least 1600 wide, story 1080 x 1920 (no official pixel safe zone: keep the edges clear, wider margins). Each file is still made only on the owner's yes for that file | `forms.md` |
-| Loops | A loop is 15 seconds or less. A loop over 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden; all loops stop under reduced motion | `media-standard.md`; `wugweb-kits` builds the control |
-| Card thumbnails | Every card is 16/10. The original ratio is kept and the frame is a mask: no crop of the source, no re-encode | `forms.md`, owned by `wugweb-kits` |
-| Layout sizes | Rail items 85vw and never past the 1200 content maximum; peek 20%; signature width 2400 px; line length 35 to 60 characters | `layout-grammar.md`, owned by `wugweb-kits` |
+| Loops | A loop is 15 seconds or less. A loop over 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden; all loops stop under reduced motion | `media-standard.md` (the rule is held here; the control is part of the page build) |
+| Card thumbnails | Every card is 16/10. The original ratio is kept and the frame is a mask: no crop of the source, no re-encode | `forms.md` (held here; `wugweb-kits` may check the built card) |
+| Layout sizes | Rail items 85vw and never past the 1200 content maximum; peek 20%; signature width 2400 px; line length 35 to 60 characters | `layout-grammar.md` (held here; `wugweb-kits` may check the result) |
 | Existing blocks | The five existing blocks are signed off | `layout-grammar.md` |
 | Share and made-file sizes | Adopted as written: og 1200 x 630; LinkedIn link image at least 1200 x 627, 1.91:1, 5 MB; Behance cover at least 808 x 632; Dribbble 1600 wide, 10 MB image, 20 MB video; story 1080 x 1920 | `forms.md` |
 | Brief field 9 | The brief from `wugweb-strategy` carries the `wugweb-seo` keyword note pasted unchanged; no separate per-brief request to `wugweb-seo` for own content | `handoffs.md`, handoff 7 |
-| Token check in CI | Report only first; blocking once the case study components are clean. The gate is `wugweb-kits`' | `handoffs.md`, handoff 4 |
+| Token check in CI | Report only first; blocking once the case study components are clean. The token scan is run by `wugweb-kits`; the publish gate is this skill's | `handoffs.md`, handoff 4 |
 
 ### When an item is decided
 
@@ -1906,13 +1997,13 @@ Third-party helpers stay at Read and Propose. Only a Wugweb skill writes, and on
 
 ### Sibling skills (the Wugweb Skill System)
 
-| Skill | Owns | Install state on 2026-11-16 |
+| Skill | Owns | Install state (checked 2026-11-16; a later change carries its own date) |
 |---|---|---|
 | `wugweb-voice` | The one Wugweb voice | Installed; uncalibrated until the owner supplies writing samples |
 | `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Installed |
-| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; `ui-system-mapper` is merged into it and retired (owner, 2026-11-17) |
+| `wugweb-kits` | Tokens, the layout shell document, components and the token scan. The block catalogue, the layout grammar and adaptive UX for a piece are held in this skill (`layout-grammar.md`); kits may check the result | Installed as `wugweb-kits`; `ui-system-mapper` is merged into it and retired (owner, 2026-11-17) |
 | `wugweb-strategy` | Content strategy, calendar, briefs | Installed |
-| `wugweb-seo` | Keywords, on-page rules, schema, AI search, reporting | Installed; one skill with plan, audit and report parts |
+| `wugweb-seo` | Keyword research, site-wide SEO, AI search, reporting. The on-page limits and the case-study graph are held in this skill (`copy-and-seo.md`, `schema-jsonld.md`); seo may check the page | Installed; one skill with plan, audit and report parts |
 
 Call a sibling by the name that is installed. The links are in `handoffs.md`.
 
@@ -1956,9 +2047,15 @@ Nothing is dropped. Where two helpers disagree, the lead wins. Where a helper di
 | Copy and voice | `copywriting-kit:copy-diagnose`, `marketing:brand-review` |
 | Accessibility and page review | `web-quality-accessibility`, `web-design-guidelines`, `website-design:review-page` |
 
-Other helpers named in the plan stay and are used when their function comes up: `social-media-skills:before-after-and-transformation`, `social-media-skills:social-proof-and-testimonials`, `social-media-skills:data-and-original-research`, `data:create-viz`, `data:statistical-analysis`, `gsap-react`, `token-mapping-engine`, the Sanity helpers, `full-output-enforcement`.
+Other helpers named in the plan stay and are used when their function comes up: `social-media-skills:before-after-and-transformation`, `social-media-skills:social-proof-and-testimonials`, `social-media-skills:data-and-original-research`, `data:create-viz`, `data:statistical-analysis`, `gsap-react`, `token-mapping-engine`, the Sanity helpers, `full-output-enforcement`, `rampstack-seo:skill-creation-walkthrough`.
 
-Made images, one file on the owner's yes: `html-css-to-image:hcti-open-graph-images` (needs sign-in), `social-media-skills:image-prompt`.
+Newsletter edition: `social-media-skills:email-and-newsletter` (not yet read) and `marketing:email-sequence`. Advocacy copy: `social-media-skills:linkedin-company-pages`.
+
+Made images, one file on the owner's yes: `html-css-to-image:hcti-open-graph-images` (needs sign-in), `banner-design`, `social-media-skills:image-prompt`. Each is used only in Forms (share image, social cards, Behance and Dribbble covers), never as evidence inside a case study; each file is proposed first (what, size, where it would live), made only after the owner's yes for that file, and kept out of the repository.
+
+Brand.dev (client logo and colours), gated the same way: its values arrive as current → proposed and are never written without approval.
+
+Needs the owner's sign-in before use (2026-11-16): the Sanity plugin, the Cloudflare plugin, Figma, Canva, HTML/CSS to Image, SE Ranking, TinyFish and Website Design. Until then the helpers that depend on them are limited; skip and say so.
 
 ### Decision for each helper read (2026-11-16)
 
@@ -1968,7 +2065,25 @@ The helpers were read so that their useful rules live in this skill in its own w
 
 **Optional helper** (may speed a mode up; never required): `rampstack-seo`: seo-keyword, skill-creation-walkthrough. `searchfit-seo`: internal-linking. `seo-skills`: seo-schema, seo-geo, seo-content-brief, seo-sxo. `aeotester`: audit. `cloudflare`: web-perf, wrangler. `design`: accessibility-review, ux-copy. `brand-voice`: brand-voice-enforcement. `marketing`: content-creation. `website-design`: web-review. `ui-ux-pro-max`. `design-qa`. `code-review`. `sanity`: sanity-best-practices. `social-media-skills`: platform-specs-and-validation. `slides`. `banner-design`. `pdf`. `docx`. `xlsx`. `postiz`. `html-css-to-image`: both. Notion: find, database-query. `tinyfish`: tinyfish-web (fetch only).
 
-**Ignored**: `rampstack-seo`: seo-aeo-geo, content-strategy. `searchfit-seo`: content-strategy, create-topic, create-content, on-page-seo, translate-content. `sanity`: seo-aeo-best-practices, content-experimentation-best-practices, typegen. `marketing`: campaign-plan, draft-content. `aeo-brand-scan`: scan. `copywriting-kit`: brand-voice. `brand-voice`: guideline-generation. `design`: design-system. `system-design`. `responsive-token-engine`. `gsap-react`. `web-design-guidelines`. `web-artifacts-builder`. `superdesign`. `simplify`. Notion: create-page. `social-media-skills`: hook-writer, storytelling-and-narrative, design-and-templates, linkedin-company-pages, canva, youtube-publishing-and-metadata. `musiclinkd-design-system` stays as the MusicLinkd-only helper.
+**No rule absorbed, still used when the function comes up.** The read of 2026-11-16 took no rule from these, and an earlier line here called them ignored. That was wrong: the owner's final list and his own naming keep each one, so none is ignored. Their outputs stay proposals, and anything in the clash table below is declined.
+
+| Helper | Used when |
+|---|---|
+| `rampstack-seo:seo-aeo-geo`, `searchfit-seo:on-page-seo`, `sanity:seo-aeo-best-practices` | Second opinion on on-page SEO and AI search |
+| `rampstack-seo:content-strategy`, `searchfit-seo:content-strategy`, `searchfit-seo:create-topic`, `searchfit-seo:create-content`, `marketing:draft-content` | Second opinion on a brief or a draft. Planning itself stays with `wugweb-strategy` |
+| `marketing:campaign-plan` | Multi-workstream and campaign cases |
+| `sanity:content-experimentation-best-practices`, `sanity:typegen` | The CMS side of this site, in site build work; advice only |
+| `aeo-brand-scan:scan` | After deploy; report only, on the owner's yes |
+| `design:design-system` | Look mode, when a client's design system is among the assets |
+| `system-design`, `superdesign` | Exploring a new block or form |
+| `responsive-token-engine` | Layout and adaptive UX |
+| `gsap-react` | Motion reference |
+| `web-design-guidelines` | Second opinion at the Ship gate |
+| `simplify` | Ship, in site build work |
+| `social-media-skills:linkedin-company-pages` | Advocacy copy |
+| `musiclinkd-design-system` | MusicLinkd only |
+
+**Ignored** (no function in this skill): `searchfit-seo`: translate-content. `copywriting-kit`: brand-voice. `brand-voice`: guideline-generation. `web-artifacts-builder`. Notion: create-page. `social-media-skills`: hook-writer, storytelling-and-narrative, design-and-templates, canva, youtube-publishing-and-metadata.
 
 **Ignored under the no-sound rule**: the audio and video-making helpers in `social-media-skills`. **Ignored under "existing media only"**: its image-editing and image-generation helpers.
 
@@ -2018,6 +2133,23 @@ Rules for the register:
 - **Research, recommendation and execution stay apart.** A helper returns facts or a proposal. Only this skill acts, and only after the owner's approval.
 - **Not a giant orchestrator.** This skill owns the workflow and hands a specialist one defined job; it never restates a specialist's method.
 
+### Handoff contracts for third-party helpers
+
+Every helper returns a proposal or a report. Only this skill, after the owner's approval, writes anything.
+
+| Helper | Called in mode | Goes in | Comes out | May not do |
+|---|---|---|---|---|
+| `wugweb-seo` | Brief, SEO and schema, after deploy | Topic, client, audience; later the rendered page URL | Keyword and intent notes for the brief; an issue list for the page; a traffic note after launch | Write case-study copy; add FAQPage on a case study, HowTo or `llms.txt`; change titles in Notion |
+| Copy helpers (`content-and-copy`, `copy-proof-check`, `copy-edit`, `ux-copy`) | Body | Draft text plus the owner's evidence | Claims ledger, edit suggestions, caption and alt drafts | Add a fact or number; write to Notion |
+| Voice helpers (`brand-voice-enforcement`, `brand-review`) | Body | Draft text and the brand guidelines | A list of voice breaks with fixes | Change the meaning; override the writing rules in `copy-and-seo.md` |
+| Design review (`design-critique`, `ux-ui-audit`, `design-qa`, the accessibility helpers) | Look, Ship | Asset URLs or the rendered page | Findings with measured values | Change code; store screenshots as files |
+| Layout helpers (`frontend-design`, `design-taste-frontend`, `superdesign`, `responsive-token-engine`) | Layout | The block plan, the tokens, the layout shell | Layout options, as proposals | Add hardcoded values; add a block type outside the catalogue |
+| `wugweb-kits` (includes ui-system-mapper) | Ship, on request | The case-study components and tokens | Findings by rule id | Delete tokens or refactor without the owner's yes |
+| Schema helpers (`generate-schema`, `schema-markup`, `seo-schema`) | SEO and schema | Approved body, page facts | A JSON-LD draft | Emit `author`, FAQPage on a case study, HowTo or Review stars |
+| Sanity helpers | Site build work only | The schema file | Modelling advice | Deploy the Studio; write documents |
+| Forms helpers (`slides`, `pptx`, `pdf`, the social writers, `postiz`, `dataviz`) | Forms | Approved body and media URLs | The other form, as a draft | Publish or schedule without the owner's yes; invent facts |
+| Media-making helpers (share image, banner, image prompt) | Forms | A request approved for that one file | One file, proposed first | Run without a yes for that file; place a file in the repository |
+
 ### Clashes with the owner's rules (the owner's rule wins in each)
 
 | Helpers | What they suggest | Owner's rule that wins |
@@ -2036,6 +2168,7 @@ Rules for the register:
 | `tinyfish`, `brightdata-plugin`, paid data in `seo-skills`, `aeo-brand-scan` | Billed services, or data sent to a third party | Free tier only; private data stays private |
 | `frontend-design` | Invents copy when the brief has none | Never invent; ask |
 | scheduling-and-queue, platform-specs-and-validation | One approval per batch; uploading media | A yes per post; no uploads |
+| `design` (the owner's own skill; not read by this session, reported by `wugweb-voice`) | Slide copy formulas with empty number slots | No number without a source |
 
 ### Names on the list that were not found installed (checked 2026-11-16)
 
@@ -2144,12 +2277,22 @@ value, what it measures, period, baseline or benchmark, source, date (the metric
 - A number missing any of the six parts.
 - A benchmark shown as the client's result.
 
+### Page element or made file
+
+| Where the chart goes | What it is | Gate |
+|---|---|---|
+| On a page: a case study, a blog post or a service page | Markup. The chart renders as HTML or SVG from the owner's numbers, in the server HTML. No image file is made | The body's approval; the gate for new files does not apply |
+| In a deck, a post, a carousel or a share image | A made file | The gate for new files in `forms.md`: a yes for that one file |
+| Already in the client's folder as an image | Existing media of kind `chart` | Read in Look mode like any other file; its numbers are still checked with the owner |
+
+The catalogue has no chart block. On a page the chart sits inside the chapter that carries its numbers (the Results chapter in a stats-led case), and one or two numbers stay a stat. The drawing rules below apply to both kinds.
+
 ### Steps
 
 1. List the qualifying numbers from the fact pack.
-2. Propose the chart: type, axes, units, the source line that will sit under it.
-3. Ask `wugweb-kits` for the token sheet; use only its colours and type.
-4. A chart file is a made file: it goes through the gate for new files in `forms.md`.
+2. Propose the chart: type, axes, units, the source line that will sit under it, and whether it is a page element or a made file.
+3. Use only the design system's tokens for colour and type (the type roles for made files are in `forms.md`). `wugweb-kits` may check the result.
+4. A chart for a page is written as HTML or SVG and goes into the proposal. A chart file for a deck, post or share image is a made file: it goes through the gate for new files in `forms.md`.
 
 ### How the chart is drawn
 
@@ -2353,8 +2496,8 @@ Which tool sends it, to which list, and how often. The owner decides; cadence is
 ### Rules
 
 - The image is shown resized with its ratio kept. No cropped files.
-- A cover is chosen under the art-direction rules of `wugweb-brand-os`; this skill records the pick and the reason.
-- Composition of a made image follows `wugweb-kits`.
+- The pick follows the cover rule held in `layout-grammar.md` section 3: project-specific, legible small, never a generic laptop or dashboard. Record the pick and the reason. `wugweb-brand-os` may check it.
+- A made image uses the design system's tokens, with the sizes and type roles in `forms.md`. `wugweb-kits` may check it.
 - Image and title do not repeat each other, and the image must read at small size.
 - Size: 1200 x 630 (settled by the owner, 2026-11-16).
 - The image is wired in by site code. This module only proposes the file and its alt text.

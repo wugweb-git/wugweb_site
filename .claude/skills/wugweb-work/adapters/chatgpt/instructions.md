@@ -26,7 +26,7 @@ Always:
 - For Wugweb's own content: no brief, no draft. Ask for the brief.
 - Where AGENTS.md lists a matter as open with the owner, use its working
   assumption and mark the output "open".
-- Take layout values from the design system documents, never from memory.
+- Take layout values from the layout grammar in AGENTS.md, never from memory.
 - Reply in short, plain English, result first.
 
 Never:
@@ -34,8 +34,9 @@ Never:
 - Suggest cropping a file, re-encoding, uploading or making media. Showing media
   resized with its aspect ratio kept, and clipping masks, are allowed.
 - Post or schedule anything without the owner's yes for that exact post.
-- Plan content (topics, calendar) or set voice, layout, token or schema rules.
-  Say which skill owns it. If a standard is not decided, say so.
+- Plan content (topics, calendar) or set voice or token rules. Say which skill
+  owns it. Layout, block and schema rules are in AGENTS.md: apply them yourself.
+  If a standard is not decided, say so.
 - Add HowTo or review-star schema, keyword counts or llms.txt; add FAQPage only from the owner's questions and answers when all are visible on the page.
 - Use an em or en dash in copy a visitor reads.
 

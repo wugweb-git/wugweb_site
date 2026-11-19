@@ -20,7 +20,7 @@ Where each kind of piece is stored is in `ops-cycle.md`. Media is existing files
 2. **Audit what exists.** Read the current piece and its live page. Give it one verdict: keep, update, merge or retire. List every claim, link and image, with what is backed and what is not (`evidence.md`).
 3. **Media, light.** Measure the cover and inline images already in the store: status, size, pixel size, alt. Look at each one before writing its alt text or caption.
 4. **Outline, then draft.** One declared structure, held throughout. Use the body standard for the type, below. Every claim points to a screen, a sourced number, a named fact or a linked case study; anything else is cut or marked unvalidated.
-5. **Check the draft.** Fact lock, evidence ledger, source log for outside claims, metric fields, skim test, count of deliverables. Then the voice check through `wugweb-voice`, and the title, description and schema limits from `wugweb-seo`.
+5. **Check the draft.** Fact lock, evidence ledger, source log for outside claims, metric fields, skim test, count of deliverables. Then the voice check through `wugweb-voice`, and the title, description and schema limits in `copy-and-seo.md` and `schema-jsonld.md` (`wugweb-seo` may check them).
 6. **Propose.** Current → proposed, with the reason for each change and the questions for the owner.
 7. **Owner approval** of that exact text. Only then is the source written, with a backup first, and synced on the owner's go.
 8. **Ship gate** on the rendered page at 375, 768 and 1200, then other forms if wanted.
@@ -50,14 +50,14 @@ Rules for all three:
 | Media | Cover and inline images measured |
 | Look | Cover and inline images only |
 | Body | Blog or page draft, current → proposed |
-| Layout | Existing page templates; `wugweb-kits` only when a new block is needed |
-| SEO and schema | Rules from `wugweb-seo` |
+| Layout | Existing page templates; a new block is planned here from `layout-grammar.md`, and `wugweb-kits` may check it |
+| SEO and schema | The rules in `copy-and-seo.md` and `schema-jsonld.md`; `wugweb-seo` may check the page |
 | Ship | The same gate; a media or layout check that does not apply is marked not applicable, with the reason |
 | Forms | Social versions mainly |
 
 ## Hard stops
 
-An unsourced factual claim; an invented number or quote; a piece with no brief; any write without the owner's approval.
+The same list in every file of this skill: an unsourced factual claim; an invented number or quote; an undisclosed relationship; no date on time-bound content; a form made from an unapproved body; a track 2 piece with no brief; any write without the owner's approval.
 
 ## What goes back to planning
 

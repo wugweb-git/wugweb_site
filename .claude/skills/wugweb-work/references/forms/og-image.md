@@ -8,8 +8,8 @@
 ## Rules
 
 - The image is shown resized with its ratio kept. No cropped files.
-- A cover is chosen under the art-direction rules of `wugweb-brand-os`; this skill records the pick and the reason.
-- Composition of a made image follows `wugweb-kits`.
+- The pick follows the cover rule held in `layout-grammar.md` section 3: project-specific, legible small, never a generic laptop or dashboard. Record the pick and the reason. `wugweb-brand-os` may check it.
+- A made image uses the design system's tokens, with the sizes and type roles in `forms.md`. `wugweb-kits` may check it.
 - Image and title do not repeat each other, and the image must read at small size.
 - Size: 1200 x 630 (settled by the owner, 2026-11-16).
 - The image is wired in by site code. This module only proposes the file and its alt text.

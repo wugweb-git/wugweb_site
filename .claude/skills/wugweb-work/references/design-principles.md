@@ -38,10 +38,10 @@ Every block and rhythm rule in `layout-grammar.md` maps to a principle:
 | Stat numerals in the accent at large size | Contrast |
 | The client accent repeats on rules and numerals | Repetition, unity |
 | Space between chapters is at least the space inside them | White space, common region |
-| Everything aligns to the column grid in the layout shell | Alignment |
+| Everything aligns to the 4, 8 and 12 column grid of the layout shell (4 columns on mobile, 8 on tablet, 12 on desktop) | Alignment |
 | Media families rotate between chapters | Unity and variety, rhythm |
 | Rails show the next item | Continuity, affordance |
-| Button target size, set in `wugweb-kits` | Fitts's law |
+| Button targets of 44 px or more | Fitts's law |
 | A chapter shows 1 to 4 screens | Miller's law, Hick's law |
 
 ## The critique pass

@@ -15,6 +15,8 @@ How findings are written, how claims are tied to evidence, and how numbers and o
 - Skim test: the headings and actions alone must carry the argument.
 - Compare what the copy claims with what the screens and the product show. A claim the product does not bear out is flagged.
 - Always flag: superlatives without proof, comparisons with others, quotes without a name, text paraphrased closely from another source.
+- Entity and spelling consistency: the client's own vocabulary wins (the term on its screens, such as "Programmes"), British English throughout, and one spelling per entity (iCube, not Icube). List every variant found, with its line.
+- Count the deliverables before finishing, in every mode: what was asked for against what is delivered, as X of Y.
 
 ## Reading a live page
 

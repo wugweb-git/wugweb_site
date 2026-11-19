@@ -1,6 +1,6 @@
 ---
 name: wugweb-work
-description: "This skill should be used when the user asks to \"write a case study\", \"audit a case study\", \"fix the /work page\", \"prepare Body Content\", \"arrange the screens\", \"write a blog post\", \"draft the service page\", \"write the site or landing copy\", or \"make the Behance, Dribbble, LinkedIn, deck or PDF version\" of a piece, or mentions a client's screens, moodboard, brand assets or project media. It produces every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site and landing copy), plus the social, deck, Behance and Dribbble forms of either. It covers audit, brief, media manifest, visual read of every image and video, body proposal, layout and search handoffs, the publish gate and per-post approval. Use it for any Wugweb client project or own-content piece, even when the user does not say \"case study\"."
+description: "This skill should be used when the user asks to \"write a case study\", \"audit a case study\", \"fix the /work page\", \"prepare Body Content\", \"arrange the screens\", \"write a blog post\", \"draft the service page\", \"write the site or landing copy\", or \"make the Behance, Dribbble, LinkedIn, deck or PDF version\" of a piece, or mentions a client's screens, moodboard, brand assets or project media. It produces every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site and landing copy), plus the social, deck, Behance and Dribbble forms of either. It covers audit, brief, media manifest, visual read of every image and video, body proposal, layout, SEO and schema, the publish gate, shipping and per-post approval. Use it for any Wugweb client project or own-content piece, even when the user does not say \"case study\"."
 license: MIT
 metadata:
   author: wugweb
@@ -26,8 +26,8 @@ This skill makes the piece, end to end. It holds the block catalogue, the layout
 |---|---|---|---|
 | Voice, tone, phrasing | `wugweb-voice` | The draft with its form, mode, audience and purpose | A voice check: breaks and fixes |
 | Brand and art direction | `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules |
-| Blocks, layout, tokens, accessibility | `wugweb-kits` | Content shape and chosen media | Layout, blocks, gate results |
-| Keywords, title and schema rules, site-wide SEO | `wugweb-seo` | The approved body and page URL | Keyword notes, rules to apply, a fix list |
+| Tokens, the layout shell document, components | `wugweb-kits` | The built page and its block plan | A token and accessibility check of the result |
+| Keyword research, site-wide SEO, search reports | `wugweb-seo` | The approved body and page URL | Keyword notes, a check of the page, a fix list |
 | What to say, to whom, when | `wugweb-strategy` | The finished piece; what proof exists | The brief for own content |
 
 - Hand off instead of starting: keyword research, site-wide SEO and search reports go to `wugweb-seo`; topics and the calendar go to `wugweb-strategy`; a token or component map goes to `wugweb-kits`.
@@ -46,7 +46,12 @@ One source per piece. Track 1: one Body Content document written by the owner, p
 
 ## Never do
 
-The owner's standing rules apply to every Wugweb skill. They are copied in `references/standing-rules.md` (source: `docs/skills/STANDING-RULES.md`) and are not repeated here. Read that file at the start of a session. This skill adds:
+The owner's standing rules are copied in full in `references/standing-rules.md` (source: `docs/skills/STANDING-RULES.md`); read it first. The two that shape every mode, in short:
+
+- **Evidence.** Nothing is invented. A claim needs a screen, a number with its source and date, or a named fact; otherwise cut it or mark it "unvalidated". Every count is computed.
+- **Media.** Media stays in the owner's store: no uploads, local copies, cropped files, re-encoding or sound. Show it at any size with its aspect ratio kept; a mask may not hide the proof; a Styles pair stays 50:50. A file shown above its natural size is flagged.
+
+This skill adds:
 
 - Never write a caption or alt text for a screen you have not seen close up.
 - Never make a poster file for a video. Dead links stay in the source and are listed.
@@ -60,15 +65,15 @@ The owner's standing rules apply to every Wugweb skill. They are copied in `refe
 4. **A made file**: a yes for that one file.
 5. **A post**: a yes for that post, with the exact text, media, account, date and time shown. Create it as a draft first. Publishing and deleting are separate actions. A post waits until the page it links to is live. No client is named or tagged without permission on record.
 
-Hard stops, whatever else passes: an unsourced factual claim, an invented number or quote, an undisclosed relationship, no date on time-bound content, a form made from an unapproved body, a track 2 piece with no brief.
+Hard stops, whatever else passes: an unsourced factual claim; an invented number or quote; an undisclosed relationship; no date on time-bound content; a form made from an unapproved body; a track 2 piece with no brief; any write without the owner's approval.
 
 ## The cycle
 
 Work through the modes in order. Commands and output formats are in `references/ops-cycle.md`. The paragraphs describe track 1.
 
-**1. Audit.** Read the source, list the media folder and fetch the live page. Run `scripts/case-audit.mjs` on the body and `scripts/check-case-page.mjs` on the page. Give the piece one verdict: keep, update, merge or retire. Each finding carries a location and a measurement or a quoted line; otherwise mark it "could not verify". Rules are in `references/evidence.md`.
+**1. Audit.** Read the source, list the media folder (command in `references/ops-cycle.md`) and fetch the live page. Run `scripts/case-audit.mjs` on the body and `scripts/check-case-page.mjs` on the page. Give the piece one verdict: keep, update, merge or retire. Each finding carries a location and a measurement or a quoted line; otherwise mark it "could not verify". Rules are in `references/evidence.md`.
 
-**2. Brief.** For client work only; `wugweb-strategy` owns the brief for own content. Write a one-page brief from the audit and the owner's facts, in the fields of the template (the claim order is owned by `wugweb-brand-os`, `.claude/skills/wugweb-brand-os/references/messaging.md`), with one search phrase from `wugweb-seo`. Use the template in `references/copy-and-seo.md`. Where a fact is missing, list the exact question.
+**2. Brief.** For client work only; `wugweb-strategy` owns the brief for own content. Write a one-page brief from the audit and the owner's facts, in the template of `references/copy-and-seo.md` and the claim order Problem, Insight, System, Outcome, with one search phrase (`wugweb-seo` may supply it). Where a fact is missing, list the exact question.
 
 **3. Media.** Build the manifest: one record per file with its measured size, bytes, shape, type, own or borrowed folder, duplicate pointer and status. Follow `references/media-standard.md`. Count the files first and recount at the end. Change nothing.
 
@@ -76,9 +81,9 @@ Work through the modes in order. Commands and output formats are in `references/
 
 **5. Body.** A direct request for a proposal still runs Audit, Media and Look first, in the same task (owner, 2026-11-17). Write the proposal in the v2 grammar of `references/body-content-standard.md`. One copy only. Claim headings. Every chapter links only the screens that prove it; other approved screens go to All screens. Keep an evidence ledger and a fact lock (`references/evidence.md`). Send the draft for the voice check. List owner questions.
 
-**6. Layout.** Resolve the block plan from the parsed body, the manifest and the visual read, using the 23-block catalogue and the rules in `references/layout-grammar.md`: adaptive tiers, proof screens in each chapter, every other approved screen in All screens, and the viewer. `wugweb-kits` checks tokens on the built page.
+**6. Layout.** Resolve the block plan from the parsed body, the manifest and the visual read, using the 23-block catalogue and the rules in `references/layout-grammar.md`: adaptive tiers, proof screens in each chapter, every other approved screen in All screens, and the viewer. Nothing is fixed: content shape picks the blocks. `wugweb-kits` may check tokens on the built page.
 
-**7. SEO and schema.** Apply the title, description, slug and schema rules from `wugweb-seo`, and ask it to check the page. The full graph is in `references/schema-jsonld.md`; the on-page rules are in `references/copy-and-seo.md`. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
+**7. SEO and schema.** Write the title (60 characters or fewer as rendered) and the description (140 to 160), and apply the slug and on-page rules in `references/copy-and-seo.md` and the full graph in `references/schema-jsonld.md`. `wugweb-seo` may check the page. Fill a field only from what the page shows. The SEO title and description go to the owner as paste-in text for his source document; this skill never writes them there.
 
 **8. Ship.** Run the gate in `references/qa-checklist.md` on the rendered page at 375, 768 and 1200, then at 767, 769, 1199 and 1201. Cheap automated checks first, then the manual read. Token findings are reported, not blocking. Give a verdict: publish, publish with fixes, or no.
 
@@ -86,7 +91,7 @@ Work through the modes in order. Commands and output formats are in `references/
 
 ## Open with the owner
 
-One matter is open with the owner: the newsletter's tool, list and cadence. One is shared with `wugweb-kits` (old media ratios) and listed in `references/open-items.md`, with every settled decision. Mark any output an open item touches "open".
+One matter is open with the owner: the newsletter's tool, list and cadence. One is shared with `wugweb-kits` (old media ratios). Both are in `references/open-items.md`, with every settled decision. Mark any output an open item touches "open".
 
 ## Archetypes at a glance
 
@@ -106,7 +111,7 @@ Pick the archetype after the visual read, from what the media shows. Recipes are
 
 ## Rules that always apply
 
-The owner's standing rules (truth, sources, media, writing, working style) are in `references/standing-rules.md`. These are this skill's own:
+These are this skill's own, on top of the standing rules:
 
 1. **A rewrite may only narrow a claim.** It never adds one the source does not carry.
 2. **Look before you write.** Labels and file names lie; only a close look catches another client's file.
@@ -133,11 +138,11 @@ Read only the file the current mode needs.
 | `references/archetypes.md` | Brief and Layout: archetype recipes |
 | `references/forms.md` | Forms: the index, shared rules, and the `forms/` files |
 | `references/handoffs.md` | The written requests to sibling skills |
-| `references/qa-checklist.md` | Ship: the publish gate |
+| `references/qa-checklist.md` | Ship: the publish gate and the definition of done |
 | `references/open-items.md` | What is not decided, and the working assumption for each |
 | `references/skill-map.md` | Helpers, permission levels, clashes, fallbacks |
 | `references/ops-cycle.md` | Commands, output formats, this site's wiring |
-| `references/copy-and-seo.md` | Brief template, lengths. Voice pointers and candidates for `wugweb-voice`; on-page rules held for `wugweb-seo` |
+| `references/copy-and-seo.md` | Brief template, the twelve writing rules, lengths, claim order, on-page SEO rules |
 | `references/layout-grammar.md` | Layout: the 23-block catalogue, adaptive rules, tiers, screen selection, All screens, the viewer |
 | `references/design-principles.md` | Look and Ship: design vocabulary and the critique pass |
 | `references/schema-jsonld.md` | SEO and schema: the full JSON-LD graph |
@@ -146,4 +151,4 @@ Scripts need Node 18 or later and no packages; both working scripts are read-onl
 
 ## Use outside Claude
 
-`AGENTS.md` is this skill in one file for any agent. `adapters/` holds a Cursor rule and custom GPT instructions. All are generated by `scripts/build.mjs`; edit the sources, never the output. Helper and vendor names live only in `references/skill-map.md` and `references/ops-cycle.md`. The Look mode needs a model that can open the media.
+`AGENTS.md` is this skill in one file for any agent; `export/` holds a copy for pasting. `adapters/` holds a Cursor rule and custom GPT instructions; `agents/openai.yaml`, display settings. All are generated by `scripts/build.mjs`; edit the sources, never the output. Helper and vendor names live only in `references/skill-map.md` and `references/ops-cycle.md`. The Look mode needs a model that can open the media.

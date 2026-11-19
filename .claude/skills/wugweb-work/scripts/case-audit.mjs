@@ -25,7 +25,9 @@ const AS_JSON = flag('--json');
 const MEASURE = flag('--measure');
 
 // ---------------------------------------------------------------- vocabulary
-const BANNED = ['pivotal', 'robust', 'seamless', 'seamlessly', 'meticulous', 'holistic',
+// The one banned-word list. references/copy-and-seo.md prints the same words and
+// validate.mjs imports this constant and fails when the two differ.
+export const BANNED = ['pivotal', 'robust', 'seamless', 'seamlessly', 'meticulous', 'holistic',
   'cutting-edge', 'leverage', 'leveraging', 'empower', 'empowering', 'empowers', 'unlock',
   'world-class', 'revolutionary', 'game-changing', 'innovative', 'state-of-the-art',
   'synergy', 'best-in-class', 'next-generation', 'transformative', 'sophisticated', 'delve', 'elevate'];
@@ -64,7 +66,9 @@ const words = (s) => (s.match(/[A-Za-z0-9À-ɏ'’%#.]+/g) || []).filter((w) => 
 const clean = (s) => s.replace(/\*\*/g, '').replace(/^#+\s*/, '').replace(/#+/g, '').replace(/:\s*$/, '').trim();
 const kindOf = (label) => {
   const l = (label || '').toLowerCase().split(':')[0].trim();
-  for (const [w, k] of KIND_WORDS) if (l === w || l.startsWith(w + ' ') || l.startsWith(w)) return k;
+  // A label is typed only when it starts with a whole kind word: "Mark" and "Mark 2" are marks,
+  // "Marketing" is not. A digit or a separator may follow the word, a letter may not.
+  for (const [w, k] of KIND_WORDS) if (l === w || (l.startsWith(w) && !/[a-z]/.test(l[w.length]))) return k;
   return 'unknown';
 };
 
@@ -73,12 +77,12 @@ export function parseBody(md) {
   const raw = md.replace(/\r\n?/g, '\n');
   const lines = raw.split('\n');
   const out = { meta: {}, links: {}, accent: null, results: [], sections: [], closing: [],
-    lineCount: lines.length, hasSiteCopy: /^##\s+Sanity site copy/im.test(raw), titleLine: null };
+    lineCount: lines.length, hasSiteCopy: /^\s*##\s+(?:Sanity|Framer) site copy/im.test(raw), titleLine: null };
 
-  // If a "Sanity site copy" exists, the long copy wins (v1 compatibility).
+  // If a "Sanity site copy" or "Framer site copy" exists, the long copy wins (v1 compatibility).
   let body = lines;
   if (out.hasSiteCopy) {
-    const i = lines.findIndex((l) => /^\s*##\s+Sanity site copy/i.test(l));
+    const i = lines.findIndex((l) => /^\s*##\s+(?:Sanity|Framer) site copy/i.test(l));
     // Keep the meta lines and the ## Media block from the short copy; drop its ### chapters.
     const keep = []; let inShort = false;
     for (const l of lines.slice(0, i)) {
@@ -135,10 +139,14 @@ export function parseBody(md) {
     const img = t.match(/^!\[([^\]]*)\]\(([^)]+)\)/);
     const vid = t.match(/^[-*]\s*((?:[\w&' ]+?\s+)?(?:Video|Loop))(?:\s+URL)?:\s*(\S+)/i) || t.match(/^[-*]\s*()(https?:\S+\.(?:mp4|mov|webm|m4v))\s*$/i);
     if (img || vid) {
-      const label = img ? img[1] : (vid[1] || 'Video');
+      let label = img ? img[1] : (vid[1] || 'Video');
+      // v1 routing prefix: "Section: <chapter> | <label>"; the label part is optional.
+      const sec = label.match(/^\s*Section:\s*([^|]*?)\s*(?:\|\s*(.*))?$/i);
+      const sectionHint = sec ? sec[1].trim() : null;
+      if (sec) label = (sec[2] || '').trim();
       const url = (img ? img[2] : vid[2]).replace(/\s+"[^"]*"$/, '');
       const isVideo = !!vid || VIDEO_EXT.test(url);
-      const item = { label, url, kind: isVideo ? (vid && /loop/i.test(vid[1] || '') ? 'loop' : 'video') : kindOf(label),
+      const item = { label, url, ...(sec ? { sectionHint, sectionOnly: !label } : {}), kind: isVideo ? (vid && /loop/i.test(vid[1] || '') ? 'loop' : 'video') : kindOf(label),
         type: isVideo ? 'video' : (/\.gif(\?|$)/i.test(url) ? 'gif' : 'image'), line: n + 1 };
       if (zone === 'body' && cur) cur.media.push(item);
       else if (zone === 'body' && !cur) out.closing.push({ ...item, where: 'before first chapter' });
@@ -192,6 +200,12 @@ export function parseBody(md) {
     if (!cur.lead) cur.lead = t; else cur.paras.push(t);
   }
 
+  // Route "Section:" items to the chapter whose title equals or starts with the hint.
+  // An unmatched hint leaves the item in the closing media.
+  const hinted = (m) => m.sectionHint && out.sections.find((s) => s.title.toLowerCase().startsWith(m.sectionHint.toLowerCase()));
+  for (const s of out.sections) for (const m of [...s.media]) { const to = hinted(m); if (to && to !== s) { s.media.splice(s.media.indexOf(m), 1); to.media.push(m); } }
+  for (const m of [...out.closing]) { const to = hinted(m); if (to) { out.closing.splice(out.closing.indexOf(m), 1); delete m.where; to.media.push(m); } else if (m.sectionHint) m.where = `${m.where} (no chapter matches "${m.sectionHint}")`; }
+
   for (const s of out.sections) {
     s.words = words([s.lead || '', ...s.paras, ...s.points.map((p) => `${p.title || ''} ${p.text || ''}`)].join(' '));
   }
@@ -215,7 +229,7 @@ export function flagsFor(md, parsed) {
     if (/^\s*#{4,}/.test(l) || /\*\*#+/.test(l)) add('parser: #### in heading or title', i + 1, l.trim().slice(0, 60));
     if (/drive\.google\.com/.test(l)) add('media: Google Drive link', i + 1, '');
   });
-  if (parsed.hasSiteCopy) add('two copies', null, 'short copy plus "Sanity site copy": collapse to one copy');
+  if (parsed.hasSiteCopy) add('two copies', null, 'short copy plus a site-copy duplicate ("Sanity site copy" or "Framer site copy"): collapse to one copy');
   const sub = typeof parsed.meta.Subtitle === 'string' ? parsed.meta.Subtitle : '';
   if (!sub) add('missing', null, 'Subtitle');
   else if (sub.length > 90) add('length', null, `Subtitle ${sub.length} chars > 90`);
@@ -227,15 +241,16 @@ export function flagsFor(md, parsed) {
   parsed.sections.forEach((s, i) => {
     if (GENERIC_HEADINGS.includes(s.title.toLowerCase())) add('generic heading', s.lineNo, s.title);
     if (s.title.length > 70) add('length', s.lineNo, `Heading ${s.title.length} chars > 70`);
-    if (s.words && (s.words < 30 || s.words > 150) && s.media.length === 0) add('length', s.lineNo, `Chapter "${s.title}" ${s.words} words (30 to 150)`);
+    // A short chapter is flagged only when it has no media (a media-only chapter is allowed); a long one is flagged once.
+    if (s.words && s.words < 30 && s.media.length === 0) add('length', s.lineNo, `Chapter "${s.title}" ${s.words} words (30 to 150)`);
     if (s.words > 150) add('length', s.lineNo, `Chapter "${s.title}" ${s.words} words > 150`);
     if (i === 0 && s.lead) { const w = words(s.lead); if (w < 40 || w > 60) add('summary', s.lineNo, `First lead is ${w} words; summary needs 40 to 60, so no summary block`); }
     for (const p of s.points) if (p.title && !p.text) add('point without text', p.line, p.title);
     for (const q of s.quotes) if (!q.by) add('quote without name', s.lineNo, q.text.slice(0, 50));
     for (const m of s.media) {
       if (m.kind === 'mockup') mockups++;
-      if (m.kind === 'unknown') add('unknown media label', m.line, m.label || '(empty label)');
-      if (!m.label) add('media without label', m.line, m.url.split('/').pop());
+      if (m.kind === 'unknown' && !m.sectionOnly) add('unknown media label', m.line, m.label || '(empty label)');
+      if (!m.label && !m.sectionOnly) add('media without label', m.line, m.url.split('/').pop());
       if (!/\.[a-z0-9]{2,5}(\?|#|$)/i.test(m.url.split('/').pop())) add('media: no file extension', m.line, m.url.split('/').pop());
       urls.set(m.url, (urls.get(m.url) || 0) + 1);
     }
@@ -384,8 +399,9 @@ export function blockPlan(parsed) {
   if (parsed.results.length >= 2) plan.push(`stats (${Math.min(4, parsed.results.length)})`);
   const first = parsed.sections[0]; if (first && first.lead) { const w = words(first.lead); if (w >= 40 && w <= 60) plan.push('summary'); }
   for (const s of parsed.sections) {
+    // Numbered process steps are not a block type of their own: they plan as a timeline (one of the 23).
     const parts = [`chapter "${s.title}"`]; const steps = s.points.length >= 3 && s.points.every((p) => p.numbered && !p.title);
-    const pb = steps ? `steps (${s.points.length})` : pointsBlock(s.points.length); if (pb) parts.push(pb);
+    const pb = steps ? `timeline (${s.points.length} steps)` : pointsBlock(s.points.length); if (pb) parts.push(pb);
     parts.push(...mediaBlocks(s));
     if (s.quotes.length) parts.push(`quote x${s.quotes.length}`); if (s.tables.length) parts.push(`table x${s.tables.length}`);
     if (s.milestones.length >= 3) parts.push(`timeline (${s.milestones.length})`);
@@ -452,7 +468,7 @@ async function main() {
     console.log(`# All case studies (${rows.length})\n\n| Slug | noIndex | Words | Chapters | Media | Flags | Archetype |\n|---|---|---|---|---|---|---|`);
     for (const r of rows) console.log(`| ${r.slug} | ${r.noIndex ? 'yes' : ''} | ${r.words} | ${r.sections} | ${r.media} | ${r.flags} | ${r.archetype} |`);
     const withBody = rows.filter((r) => r.words > 0);
-    console.log(`\nBodies: ${withBody.length}; with 2 or more chapters: ${withBody.filter((r) => r.sections >= 2).length}; points starting with #: ${rows.reduce((a, r) => a + r.hashPoints, 0)}`);
+    console.log(`\nBodies: ${withBody.length}; with 2 or more chapters: ${withBody.filter((r) => r.sections >= 2).length}; tab-indented ### lines: ${rows.reduce((a, r) => a + r.leakedH3, 0)}; points starting with #: ${rows.reduce((a, r) => a + r.hashPoints, 0)}`);
     return;
   }
   const target = positional[0];

@@ -16,13 +16,13 @@ Third-party helpers stay at Read and Propose. Only a Wugweb skill writes, and on
 
 ## Sibling skills (the Wugweb Skill System)
 
-| Skill | Owns | Install state on 2026-11-16 |
+| Skill | Owns | Install state (checked 2026-11-16; a later change carries its own date) |
 |---|---|---|
 | `wugweb-voice` | The one Wugweb voice | Installed; uncalibrated until the owner supplies writing samples |
 | `wugweb-brand-os` | Identity, positioning, brand rules, Visual OS | Installed |
-| `wugweb-kits` | Tokens, layout shell, components, blocks, adaptive UX, accessibility | Installed as `wugweb-kits`; `ui-system-mapper` is merged into it and retired (owner, 2026-11-17) |
+| `wugweb-kits` | Tokens, the layout shell document, components and the token scan. The block catalogue, the layout grammar and adaptive UX for a piece are held in this skill (`layout-grammar.md`); kits may check the result | Installed as `wugweb-kits`; `ui-system-mapper` is merged into it and retired (owner, 2026-11-17) |
 | `wugweb-strategy` | Content strategy, calendar, briefs | Installed |
-| `wugweb-seo` | Keywords, on-page rules, schema, AI search, reporting | Installed; one skill with plan, audit and report parts |
+| `wugweb-seo` | Keyword research, site-wide SEO, AI search, reporting. The on-page limits and the case-study graph are held in this skill (`copy-and-seo.md`, `schema-jsonld.md`); seo may check the page | Installed; one skill with plan, audit and report parts |
 
 Call a sibling by the name that is installed. The links are in `handoffs.md`.
 
@@ -66,9 +66,15 @@ Nothing is dropped. Where two helpers disagree, the lead wins. Where a helper di
 | Copy and voice | `copywriting-kit:copy-diagnose`, `marketing:brand-review` |
 | Accessibility and page review | `web-quality-accessibility`, `web-design-guidelines`, `website-design:review-page` |
 
-Other helpers named in the plan stay and are used when their function comes up: `social-media-skills:before-after-and-transformation`, `social-media-skills:social-proof-and-testimonials`, `social-media-skills:data-and-original-research`, `data:create-viz`, `data:statistical-analysis`, `gsap-react`, `token-mapping-engine`, the Sanity helpers, `full-output-enforcement`.
+Other helpers named in the plan stay and are used when their function comes up: `social-media-skills:before-after-and-transformation`, `social-media-skills:social-proof-and-testimonials`, `social-media-skills:data-and-original-research`, `data:create-viz`, `data:statistical-analysis`, `gsap-react`, `token-mapping-engine`, the Sanity helpers, `full-output-enforcement`, `rampstack-seo:skill-creation-walkthrough`.
 
-Made images, one file on the owner's yes: `html-css-to-image:hcti-open-graph-images` (needs sign-in), `social-media-skills:image-prompt`.
+Newsletter edition: `social-media-skills:email-and-newsletter` (not yet read) and `marketing:email-sequence`. Advocacy copy: `social-media-skills:linkedin-company-pages`.
+
+Made images, one file on the owner's yes: `html-css-to-image:hcti-open-graph-images` (needs sign-in), `banner-design`, `social-media-skills:image-prompt`. Each is used only in Forms (share image, social cards, Behance and Dribbble covers), never as evidence inside a case study; each file is proposed first (what, size, where it would live), made only after the owner's yes for that file, and kept out of the repository.
+
+Brand.dev (client logo and colours), gated the same way: its values arrive as current → proposed and are never written without approval.
+
+Needs the owner's sign-in before use (2026-11-16): the Sanity plugin, the Cloudflare plugin, Figma, Canva, HTML/CSS to Image, SE Ranking, TinyFish and Website Design. Until then the helpers that depend on them are limited; skip and say so.
 
 ## Decision for each helper read (2026-11-16)
 
@@ -78,7 +84,25 @@ The helpers were read so that their useful rules live in this skill in its own w
 
 **Optional helper** (may speed a mode up; never required): `rampstack-seo`: seo-keyword, skill-creation-walkthrough. `searchfit-seo`: internal-linking. `seo-skills`: seo-schema, seo-geo, seo-content-brief, seo-sxo. `aeotester`: audit. `cloudflare`: web-perf, wrangler. `design`: accessibility-review, ux-copy. `brand-voice`: brand-voice-enforcement. `marketing`: content-creation. `website-design`: web-review. `ui-ux-pro-max`. `design-qa`. `code-review`. `sanity`: sanity-best-practices. `social-media-skills`: platform-specs-and-validation. `slides`. `banner-design`. `pdf`. `docx`. `xlsx`. `postiz`. `html-css-to-image`: both. Notion: find, database-query. `tinyfish`: tinyfish-web (fetch only).
 
-**Ignored**: `rampstack-seo`: seo-aeo-geo, content-strategy. `searchfit-seo`: content-strategy, create-topic, create-content, on-page-seo, translate-content. `sanity`: seo-aeo-best-practices, content-experimentation-best-practices, typegen. `marketing`: campaign-plan, draft-content. `aeo-brand-scan`: scan. `copywriting-kit`: brand-voice. `brand-voice`: guideline-generation. `design`: design-system. `system-design`. `responsive-token-engine`. `gsap-react`. `web-design-guidelines`. `web-artifacts-builder`. `superdesign`. `simplify`. Notion: create-page. `social-media-skills`: hook-writer, storytelling-and-narrative, design-and-templates, linkedin-company-pages, canva, youtube-publishing-and-metadata. `musiclinkd-design-system` stays as the MusicLinkd-only helper.
+**No rule absorbed, still used when the function comes up.** The read of 2026-11-16 took no rule from these, and an earlier line here called them ignored. That was wrong: the owner's final list and his own naming keep each one, so none is ignored. Their outputs stay proposals, and anything in the clash table below is declined.
+
+| Helper | Used when |
+|---|---|
+| `rampstack-seo:seo-aeo-geo`, `searchfit-seo:on-page-seo`, `sanity:seo-aeo-best-practices` | Second opinion on on-page SEO and AI search |
+| `rampstack-seo:content-strategy`, `searchfit-seo:content-strategy`, `searchfit-seo:create-topic`, `searchfit-seo:create-content`, `marketing:draft-content` | Second opinion on a brief or a draft. Planning itself stays with `wugweb-strategy` |
+| `marketing:campaign-plan` | Multi-workstream and campaign cases |
+| `sanity:content-experimentation-best-practices`, `sanity:typegen` | The CMS side of this site, in site build work; advice only |
+| `aeo-brand-scan:scan` | After deploy; report only, on the owner's yes |
+| `design:design-system` | Look mode, when a client's design system is among the assets |
+| `system-design`, `superdesign` | Exploring a new block or form |
+| `responsive-token-engine` | Layout and adaptive UX |
+| `gsap-react` | Motion reference |
+| `web-design-guidelines` | Second opinion at the Ship gate |
+| `simplify` | Ship, in site build work |
+| `social-media-skills:linkedin-company-pages` | Advocacy copy |
+| `musiclinkd-design-system` | MusicLinkd only |
+
+**Ignored** (no function in this skill): `searchfit-seo`: translate-content. `copywriting-kit`: brand-voice. `brand-voice`: guideline-generation. `web-artifacts-builder`. Notion: create-page. `social-media-skills`: hook-writer, storytelling-and-narrative, design-and-templates, canva, youtube-publishing-and-metadata.
 
 **Ignored under the no-sound rule**: the audio and video-making helpers in `social-media-skills`. **Ignored under "existing media only"**: its image-editing and image-generation helpers.
 
@@ -128,6 +152,23 @@ Rules for the register:
 - **Research, recommendation and execution stay apart.** A helper returns facts or a proposal. Only this skill acts, and only after the owner's approval.
 - **Not a giant orchestrator.** This skill owns the workflow and hands a specialist one defined job; it never restates a specialist's method.
 
+## Handoff contracts for third-party helpers
+
+Every helper returns a proposal or a report. Only this skill, after the owner's approval, writes anything.
+
+| Helper | Called in mode | Goes in | Comes out | May not do |
+|---|---|---|---|---|
+| `wugweb-seo` | Brief, SEO and schema, after deploy | Topic, client, audience; later the rendered page URL | Keyword and intent notes for the brief; an issue list for the page; a traffic note after launch | Write case-study copy; add FAQPage on a case study, HowTo or `llms.txt`; change titles in Notion |
+| Copy helpers (`content-and-copy`, `copy-proof-check`, `copy-edit`, `ux-copy`) | Body | Draft text plus the owner's evidence | Claims ledger, edit suggestions, caption and alt drafts | Add a fact or number; write to Notion |
+| Voice helpers (`brand-voice-enforcement`, `brand-review`) | Body | Draft text and the brand guidelines | A list of voice breaks with fixes | Change the meaning; override the writing rules in `copy-and-seo.md` |
+| Design review (`design-critique`, `ux-ui-audit`, `design-qa`, the accessibility helpers) | Look, Ship | Asset URLs or the rendered page | Findings with measured values | Change code; store screenshots as files |
+| Layout helpers (`frontend-design`, `design-taste-frontend`, `superdesign`, `responsive-token-engine`) | Layout | The block plan, the tokens, the layout shell | Layout options, as proposals | Add hardcoded values; add a block type outside the catalogue |
+| `wugweb-kits` (includes ui-system-mapper) | Ship, on request | The case-study components and tokens | Findings by rule id | Delete tokens or refactor without the owner's yes |
+| Schema helpers (`generate-schema`, `schema-markup`, `seo-schema`) | SEO and schema | Approved body, page facts | A JSON-LD draft | Emit `author`, FAQPage on a case study, HowTo or Review stars |
+| Sanity helpers | Site build work only | The schema file | Modelling advice | Deploy the Studio; write documents |
+| Forms helpers (`slides`, `pptx`, `pdf`, the social writers, `postiz`, `dataviz`) | Forms | Approved body and media URLs | The other form, as a draft | Publish or schedule without the owner's yes; invent facts |
+| Media-making helpers (share image, banner, image prompt) | Forms | A request approved for that one file | One file, proposed first | Run without a yes for that file; place a file in the repository |
+
 ## Clashes with the owner's rules (the owner's rule wins in each)
 
 | Helpers | What they suggest | Owner's rule that wins |
@@ -146,6 +187,7 @@ Rules for the register:
 | `tinyfish`, `brightdata-plugin`, paid data in `seo-skills`, `aeo-brand-scan` | Billed services, or data sent to a third party | Free tier only; private data stays private |
 | `frontend-design` | Invents copy when the brief has none | Never invent; ask |
 | scheduling-and-queue, platform-specs-and-validation | One approval per batch; uploading media | A yes per post; no uploads |
+| `design` (the owner's own skill; not read by this session, reported by `wugweb-voice`) | Slide copy formulas with empty number slots | No number without a source |
 
 ## Names on the list that were not found installed (checked 2026-11-16)
 

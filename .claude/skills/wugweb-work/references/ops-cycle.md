@@ -20,6 +20,7 @@ Commands, gates and output formats for each mode, then this site's wiring. This 
 | Look | One review page per case study | Approval of hero, flags and captions |
 | Body | Draft proposal, current → proposed | Approval of that exact text |
 | Layout | Block plan | Approval |
+| SEO and schema | Title, description, headings check and the JSON-LD graph | Approval; the title and description then go to the owner as paste-in text for his source |
 | Ship | Gate table + previews at 375, 768, 1200 (after handoffs 2 and 4) | Owner's go to sync, commit, deploy |
 | Forms | Each form, and each proposed new file | Owner's yes per form and per file |
 
@@ -34,6 +35,14 @@ Sources read: body (<words> words), folder (<n> files), live page (<url>)
 | Area | Found | Count | Note |
 Unbacked claims: <list, quoted>
 Owner questions: <numbered>
+```
+
+**Brief.** One page in the template of `copy-and-seo.md`:
+```
+# Brief: <client> (<slug>), <date>
+Claim:  Tension:  Proof:  Outcome:
+Search phrase:  Archetype:  Media needed:
+Owner questions: <numbered; "unvalidated" is a complete answer>
 ```
 
 **Media.**
@@ -53,10 +62,30 @@ Rendered bytes for the proposed page: <MB> MB (budget 25 MB)
 
 **Layout.** Block plan as JSON: `[{ "type": "...", "chapter": "...", "items": [...] }]` using only the catalogue types.
 
+**SEO and schema.**
+```
+# SEO and schema: <slug>
+Title: <text> (<n> characters as rendered; limit 60)
+Description: <text> (<n> characters; 140 to 160)
+Headings check: one h1, an h2 per chapter, no skipped level; generic headings: <list>
+JSON-LD: the graph of schema-jsonld.md, filled from the page
+Fields left empty for the owner: <list>
+```
+
 **Ship.** Gate table:
 ```
 | Check | 375 | 768 | 1200 | Note |
 Result: <passed>/<applicable>
+```
+
+**Forms.**
+```
+# <form>: <client> (<slug>), <date>
+Fact pack: <n> items, each with its body line
+Draft: <the form, in its file's order>
+Fact ledger: <every sentence> | <body line>
+Made files proposed: <what, size, made from, where it would live> or none
+Approval step reached: <1 to 8> (forms/publish-approval.md)
 ```
 
 ## 3. The neutral contract
@@ -69,10 +98,11 @@ source (one Body Content document + one media folder) → parsed body → media 
 
 - **Registry and plan**: Notion page "Wugweb Skill Management System" under Wugweb HQ, and the `wugweb-work` page under it. Notion wins over any file. The repo keeps one copy of the plan at `docs/skills/wugweb-work/PLAN.md`.
 - **Source, track 1**: Notion, Case Studies data source, property Body Content (one per case study).
-- **Source, track 2**: blog posts in Notion Blogs, synced by the site repository's blog sync script (`sync-notion-blogs.mjs`); service pages in Sanity `service` documents (6 pillars). Site and landing copy: the page's own records (taken from the repository's `CLAUDE.md`, not from the owner directly; to be corrected if wrong).
+- **Source, track 2**: blog posts in Notion Blogs, synced by the site repository's blog sync script (`sync-notion-blogs.mjs`); service pages in Sanity `service` documents (6 pillars). Site and landing copy: the page's own records in the site repository. This comes from the repository's `CLAUDE.md`, not from the owner's own words, so a proposal for site copy names the record it read.
 - **Scheduling tool for posts**: none connected (owner, 2026-11-17). Posts are handed to the owner as approved drafts; Postiz is installed as a helper but not connected to any account.
-- **Layout values**: `kits_design_system/docs/tokens/layout-shell.md`, with `tokens/sizing.md` and `docs/components.md`, owned by `wugweb-kits`.
-- **Listing a media folder**: no read-only command was found that lists the objects in an R2 bucket; to be confirmed against the project's own `wrangler r2 --help`. Commands that write, delete or download are forbidden.
+- **Layout values**: held in `layout-grammar.md` section 8, restated from `kits_design_system/docs/tokens/layout-shell.md` (with `tokens/sizing.md` and `docs/components.md`). That design system document wins if it changes; `wugweb-kits` may check the result.
+- **Listing a media folder**: `node scripts/media-manifest-dry-run.mjs` in the site repository (its library is `media-manifest.mjs`, in the site's own scripts library). It takes the folder listing from the CMS asset registry, because R2 has no read-only list command here, and measures every file by HEAD and ranged reads. It writes a report under `docs/research/` and two ignored files under `scripts/data/`; it never writes Sanity, Notion or R2. Commands that write, delete or download media are forbidden.
+- **Visual read records**: `scripts/data/media-reads/<slug>.json` in the site repository, one file per case study, committed, keyed by URL and ETag so each file is read once. The folder is made with the first read.
 - **CMS**: Sanity, document type `caseStudy`, field `bodyMarkdown`, synced from Notion. Public read: `https://splvhmk1.apicdn.sanity.io/v2024-01-01/data/query/production`.
 - **v1 duplicate copy**: older bodies hold a second, longer copy under the heading `## Sanity site copy` or `## Framer site copy` (both are read the same way). The long copy wins; proposals collapse both into one.
 - **Media**: Cloudflare R2, `assets/work/<slug>/`, public base `https://pub-39ad1d03baec440faf48303be95c3782.r2.dev/`.
@@ -85,7 +115,7 @@ node scripts/sync-notion-case-studies.mjs          # dry run, prints diff and me
 # owner's go
 WRITE=1 node scripts/sync-notion-case-studies.mjs  # backs up to backups/ first
 ```
-Verify `NOTION_TOKEN` first. On 401, stop and tell the owner a new token is needed.
+Verify the token first. The standard name is `NOTION_API_TOKEN`; the site sync script still reads the old name `NOTION_TOKEN`. On 401, stop and tell the owner a new token is needed.
 
 Audit and gate:
 ```
@@ -99,7 +129,7 @@ Previews: dev server `wugweb-dev` on port 4321. JSON-LD is checked through `npm 
 
 Git rules are in `references/standing-rules.md`. Studio deploy, sync writes and pushes are the owner's go.
 
-Approved text goes to Notion only after approval of that exact change, with a backup first. Alt text goes to Sanity `asset.alt` only where empty (`setIfMissing`), with a backup.
+Approved text goes to Notion only after approval of that exact change, with a backup first. Approved captions go to the Notion media labels in Body Content. Approved alt text goes to Sanity `asset.alt` only where empty (`setIfMissing`), with a backup.
 
 ### The layers on this site
 
@@ -107,7 +137,7 @@ Approved text goes to Notion only after approval of that exact change, with a ba
 |---|---|---|
 | Body parser | `src/lib/case-body.ts` | Parse Body Content: chapters, claims, points, media references, labels, layout hints |
 | Media manifest | `media-manifest.mjs` and `image-dims.mjs`, in the site repository's own scripts library | Record what each file is: size, shape, type, status, duplicates, own or borrowed |
-| Visual read | The read records, per case study | Record what each screen shows and which chapter it proves |
+| Visual read | The read records, `scripts/data/media-reads/<slug>.json` | Record what each screen shows and which chapter it proves |
 | Layout resolver | `src/lib/case-layout.ts` | Turn body, manifest and read into the block plan; route the other approved screens to All screens |
 | Blocks | `src/components/work/Case*.astro`, switched by `CaseBlocks.astro` | Render each block |
 | Rail and viewer logic | `src/lib/case-rail.ts`, `src/lib/case-lightbox.ts` | Buttons, counter and keyboard for rails; the one-screen viewer |

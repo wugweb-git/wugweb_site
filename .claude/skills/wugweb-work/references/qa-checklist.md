@@ -11,7 +11,8 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - Order the checks cheap first: the automated script, then the manual read.
 - Rank findings must, should, nice. Change nothing until the owner picks.
 - Verdict: publish, publish with fixes, or no.
-- Hard stops that block publishing whatever else passes: an unsourced factual claim, an undisclosed relationship, no date on time-bound content.
+- Hard stops that block publishing whatever else passes: an unsourced factual claim; an invented number or quote; an undisclosed relationship; no date on time-bound content; a form made from an unapproved body; a track 2 piece with no brief; any write without the owner's approval.
+- Count the deliverables before finishing: what was asked for against what is delivered, as X of Y.
 
 ## Content
 
@@ -26,7 +27,9 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] Not-templated test: hero line, headings and one signature layout would not fit another client unchanged.
 - [ ] No placeholder text in copy (`TBD`, `[INSERT`, `lorem`).
 - [ ] Every visible string reread before ship; screenshots are current; permission for each quote is held.
-- [ ] Every media item has alt (125 characters or fewer) and a caption.
+- [ ] Every media item has alt (10 to 125 characters) and a caption.
+- [ ] Personal data is scanned out of the screens: every screen was read for names, numbers and faces; sample data is judged by the critical test and real personal data is raised with the owner (`media-standard.md`).
+- [ ] One spelling per entity, and the client's own terms kept (`evidence.md`).
 - [ ] Every own-folder file is accounted for: on the page, in All screens, or listed as not rendered with a reason.
 - [ ] No borrowed or wrong-client files on the page.
 - [ ] Chapters of 30 to 150 words (160 tolerated in evals).
@@ -39,7 +42,8 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] `<title>` 60 characters or fewer; meta description 140 to 160; canonical points to itself.
 - [ ] JSON-LD has WebPage, CreativeWork and BreadcrumbList on the canonical host; none of the banned types.
 - [ ] All content present with JavaScript off.
-- [ ] Structured data passes a schema validator.
+- [ ] Structured data passes a schema validator and the Rich Results Test.
+- [ ] `dateModified` changes only for a real content edit; with none on record it equals `datePublished` (`schema-jsonld.md`).
 - [ ] Every link resolves; list source, target and status. A broken link is fixed at the link, never by a redirect.
 - [ ] Every custom block type in the body has a renderer; an unknown type fails the gate.
 - [ ] Every media URL returns 200; none is a duplicate.
@@ -51,15 +55,22 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] No mask and no `object-fit: cover` hides the part of a screen that proves the claim.
 - [ ] Files shown larger than their natural size are listed; one that looks soft is flagged (a flag for the owner, not a fail).
 - [ ] Styles pair 50:50 at native ratio.
-- [ ] Rails: labelled region or group, `aria-roledescription="carousel"`, slides as groups with `aria-roledescription="slide"` and a name, counter, buttons, items 85vw or less on mobile, no auto-advance.
+- [ ] A small file sits in a contained cell; none is shown above its natural size by the layout.
+- [ ] First screen on a 390 by 844 phone: the headline, subhead and primary action are visible without scrolling.
+- [ ] Yellow stays under 10% of the page; the footer call to action is yellow and is the page's one yellow note; no second call to action.
+- [ ] Rails: labelled region or group, `aria-roledescription="carousel"`, slides as groups with `aria-roledescription="slide"` and a name, a visible counter that shows the position ("3 of 8"), previous and next buttons, items 85vw or less on mobile, no auto-advance.
+- [ ] All screens: the set chips show every set with its count, one chip is selected at a time, and the thumbnails keep their own ratio.
+- [ ] Viewer shows the caption, then the position and set as "n of N, set name"; swipe works as well as the previous and next buttons, which are real buttons of 44 px or more.
 - [ ] Viewer has a visible close button; Escape closes it; focus returns to the thumbnail.
+- [ ] With JavaScript off, every All screens set renders stacked under its own heading, with every thumbnail and caption.
+- [ ] A video over 15 seconds never loops in a rail; it sits in its own chapter, muted, click to play.
 - [ ] At most 2 mockups; never the hero when a project-specific visual exists.
 - [ ] At most 1 full-bleed per chapter; no more than 2 zigzags in a row.
 
 ## Accessibility
 
-- [ ] Loops: `muted playsinline`, load when near. A loop of 5 seconds or less with no control has `aria-hidden`; a loop over 5 seconds (duration from the manifest) has a pause control and no `aria-hidden`. All loops stop under reduced motion and pause off screen.
-- [ ] Long videos: muted, play and pause button only, not `aria-hidden`, `preload="none"`, with an `aria-label`.
+- [ ] Loops: `muted playsinline`, a poster or start frame, the source in `data-src`, load when near. A loop of 5 seconds or less with no control has `aria-hidden`; a loop over 5 seconds (duration from the manifest) has a pause control and no `aria-hidden`. All loops stop under reduced motion and pause off screen.
+- [ ] Long videos: muted, play and pause button only (no unmute control, no native volume controls), not `aria-hidden`, `preload="none"`, with an `aria-label`.
 - [ ] No audio plays anywhere.
 - [ ] Keyboard and screen reader pass through every rail and the viewer.
 - [ ] Content reflows at 320 px and at 400% zoom.
@@ -77,11 +88,16 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 
 ## Design system
 
-- [ ] Token findings from `wugweb-kits` are listed with file and line (handoff 4 in `handoffs.md`). Reported only at first; blocking comes later, on a short list the owner sets (owner, 2026-11-16).
+- [ ] Tokens only (`layout-grammar.md`): no hardcoded colour, spacing, radius, opacity, shadow, blur, z-index or easing; buttons `--radius-sm`, chips `--radius-full`, cards `--radius-lg`; reveals through `data-reveal` and `data-scroll`.
+- [ ] Token findings from the `wugweb-kits` scan are listed with file and line (handoff 4 in `handoffs.md`). Reported only at first; blocking comes later, on a short list the owner sets (owner, 2026-11-16).
 
 ## Design critique
 
 - [ ] Hierarchy, focal point, rhythm, contrast, consistency and legibility each score 3 or more at 375 and 1200 (see `design-principles.md`).
+
+## Measured numbers from a helper
+
+When a UX audit helper is run on the rendered page at 375 and 1200, its measured numbers go into the gate table beside the check they belong to: contrast ratios, tap target sizes, focus rings, accessible names, Hick and Fitts indices, and Gestalt proximity and similarity. A number is entered only as measured, with the tool named.
 
 ## Housekeeping
 
@@ -91,4 +107,14 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 
 ## Automated part
 
-`scripts/check-case-page.mjs <url> [--host <canonical host>]` covers the static checks: headings, sections, articles, images, dashes, rails, videos, title, description, canonical, JSON-LD, media status and byte total. Overflow, aspect ratio, masks, contrast, targets, reduced motion and the critique are checked in the browser at each width.
+`scripts/check-case-page.mjs <url> [--host <canonical host>] [--no-body]` covers the static checks: headings, sections, articles, images, dashes, rails, videos, title, description, canonical (host and path), JSON-LD, media status and byte total. The chapter check is reported as not applicable on a page that is not a case study (track 2) and, with `--no-body`, on a no-body case study. Overflow, aspect ratio, masks, contrast, targets, reduced motion, the rail counter, All screens, the viewer, the link check and the critique are checked in the browser at each width.
+
+## Definition of done
+
+| Stage | Done when |
+|---|---|
+| Audit | Every file measured and looked at close up; every claim marked backed or unbacked; findings listed with numbers that were computed, not estimated |
+| Body proposal | One copy; claim headings; every screen captioned; every own-folder file accounted for; owner questions listed; nothing written to the source |
+| Owner approval | The owner has approved that exact text. Only then is the source written, with a backup first |
+| Page | The gate passes at 375, 768 and 1200: one h1, no skipped headings, every image with alt and size, no dashes, no sideways scroll, nothing cropped, a file shown above its natural size flagged when soft, all media muted, under the weight budget |
+| Skill | With-skill runs pass every eval check the baseline fails, on 5 prompts; the owner has no open feedback |

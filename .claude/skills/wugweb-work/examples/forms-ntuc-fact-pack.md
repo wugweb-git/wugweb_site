@@ -24,7 +24,7 @@ Page link: `https://www.wugweb.com/work/ntuc-u-care-fund-digital-transformation-
 | F16 | credit | Partner: iCube | Partner meta line | |
 | F17 | credit | Team: Vedanshu Srivastava, Alwyn Lai, Tang Ka Wei, Gadar Soe | Team meta line | |
 
-Open: NTUC facts (results, live URL, builder steps, heading typeface) are still with the owner, so this pack has none of them.
+Not open: NTUC U Care is a worked example only (`references/open-items.md`). Its missing facts (results, live URL, builder steps, heading typeface) are the owner questions a real piece would raise, so this pack has none of them.
 
 Counts: 17 items. Results: 0 (the body has no result with a source and date). Quotes: 0.
 

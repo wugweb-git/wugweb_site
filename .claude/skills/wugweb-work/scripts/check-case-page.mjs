@@ -6,12 +6,15 @@
 //
 // Usage:
 //   node check-case-page.mjs <url | file.html> [--host www.wugweb.com] [--canonical-host www.wugweb.com]
-//                            [--no-media] [--json]
+//                            [--no-media] [--no-body] [--json]
 //
 // --host            Send this Host header (for a local preview of the canonical host).
 // --canonical-host  JSON-LD is required only when the page is served for this host
 //                   (default www.wugweb.com); elsewhere the check reports n/a.
 // --no-media        Skip HEAD requests for media status and byte total.
+// --no-body         The page is a no-body case study (hero and related only): the
+//                   chapter check is reported n/a. On a page that is not a case
+//                   study (track 2: no .case-page section) it is n/a without the flag.
 //
 // Browser-only checks (overflow, cropping, contrast, targets, reduced motion,
 // critique) are listed as "browser" and must be run in the pane at each width.
@@ -24,10 +27,11 @@ const target = args.find((a, i) => !a.startsWith('--') && !['--host', '--canonic
 const HOST = opt('--host', null);
 const CANON = opt('--canonical-host', 'www.wugweb.com');
 const NO_MEDIA = args.includes('--no-media');
+const NO_BODY = args.includes('--no-body');
 const AS_JSON = args.includes('--json');
 const BUDGET = 25 * 1024 * 1024;
 
-if (!target) { console.error('Usage: check-case-page.mjs <url | file.html> [--host h] [--no-media] [--json]'); process.exit(2); }
+if (!target) { console.error('Usage: check-case-page.mjs <url | file.html> [--host h] [--no-media] [--no-body] [--json]'); process.exit(2); }
 
 // --------------------------------------------------------------- tiny HTML
 function tokenize(html) {
@@ -98,8 +102,12 @@ async function run() {
   const arts = all(main, (n) => n.tag === 'article' && /case-chapter/.test(n.attrs.class || ''));
   const artIds = arts.map((a) => a.attrs.id).filter(Boolean);
   const badArt = arts.filter((a) => !a.attrs.id || !all(a, (n) => n.tag === 'h2').length);
+  // Applicable only on a case study that has a body: a track 2 page has no .case-page section,
+  // and a no-body case study (hero and related only) is declared with --no-body.
+  const isCasePage = all(main, (n) => /(^|\s)case-page(\s|$)/.test(n.attrs.class || '')).length > 0;
+  const chaptersApply = isCasePage && !NO_BODY;
   check('Every chapter article has a unique id and an h2', arts.length > 0 && !badArt.length && new Set(artIds).size === artIds.length,
-    arts.length ? `${arts.length} chapters, ${badArt.length} bad, ${artIds.length - new Set(artIds).size} duplicate ids` : 'no article.case-chapter found', true);
+    !isCasePage ? 'not a case-study page (track 2)' : NO_BODY ? 'no-body case study' : arts.length ? `${arts.length} chapters, ${badArt.length} bad, ${artIds.length - new Set(artIds).size} duplicate ids` : 'no article.case-chapter found', chaptersApply);
 
   // images
   const imgs = all(main, (n) => n.tag === 'img');
@@ -149,9 +157,15 @@ async function run() {
   const canon = all(doc, (n) => n.tag === 'link' && n.attrs.rel === 'canonical')[0];
   check('<title> 60 characters or fewer', titleText.length > 0 && titleText.length <= 60, `${titleText.length}: "${titleText}"`);
   check('Meta description 140 to 160 characters', decode(desc).length >= 140 && decode(desc).length <= 160, `${decode(desc).length}`);
-  let canonOk = false; let canonDetail = 'missing';
-  if (canon) { try { const cu = new URL(canon.attrs.href, base); const pu = new URL(base); canonOk = cu.pathname.replace(/\/$/, '') === pu.pathname.replace(/\/$/, ''); canonDetail = canon.attrs.href; } catch { canonDetail = 'invalid'; } }
-  check('Canonical points to this page', canonOk, canonDetail, !existsSync(target));
+  // Host and path are both compared. The host must be the canonical host or the host the page was
+  // served for. A local file has no path of its own, so only its host is compared, and only with --host.
+  let canonOk = false; let canonDetail = 'missing'; const isFile = existsSync(target);
+  const bare = (h) => String(h || '').replace(/:\d+$/, '').toLowerCase();
+  if (canon) { try { const cu = new URL(canon.attrs.href, base); const pu = new URL(base);
+    const pathOk = isFile || cu.pathname.replace(/\/$/, '') === pu.pathname.replace(/\/$/, '');
+    const hostOk = [bare(CANON), bare(host)].includes(bare(cu.host));
+    canonOk = pathOk && hostOk; canonDetail = `${canon.attrs.href}${hostOk ? '' : ` (host is not ${[...new Set([bare(CANON), bare(host)].filter(Boolean))].join(' or ')})`}${pathOk ? '' : ' (path differs)'}`; } catch { canonDetail = 'invalid'; } }
+  check('Canonical points to this page (host and path)', canonOk, canonDetail, !isFile || !!host);
 
   // JSON-LD
   const ld = all(doc, (n) => n.tag === 'script' && n.attrs.type === 'application/ld+json');

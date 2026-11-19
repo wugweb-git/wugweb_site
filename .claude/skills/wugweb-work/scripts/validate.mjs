@@ -7,6 +7,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { dirname, join, basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { execFileSync } from 'node:child_process'
+import { BANNED } from './case-audit.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const read = (p) => readFileSync(join(root, p), 'utf8')
@@ -58,7 +59,11 @@ for (const f of refs) { const n = read(`references/${f}`).split('\n').length; if
 const prose = ['SKILL.md', 'README.md', 'CHANGELOG.md', ...refs.map((f) => `references/${f}`)]
 const dashes = prose.flatMap((f) => read(f).split('\n').map((l, i) => (/[–—]/.test(l) ? `${f}:${i + 1}` : null)).filter(Boolean))
 check('no em or en dash in SKILL.md, README, CHANGELOG or references', !dashes.length, dashes.slice(0, 5).join(', '))
-const BANNED = ['pivotal', 'robust', 'seamless', 'meticulous', 'holistic', 'cutting-edge', 'leverage', 'empower', 'unlock', 'world-class']
+// One banned-word list: scripts/case-audit.mjs holds it, references/copy-and-seo.md prints it, and this file reads both.
+const printed = (read('references/copy-and-seo.md').match(/^## Banned words[^\n]*\n\n([^\n]+)\n/m)?.[1] || '').replace(/\.$/, '').split(',').map((w) => w.trim()).filter(Boolean)
+check('banned-word list is the same in copy-and-seo.md and case-audit.mjs', printed.length === BANNED.length && printed.every((w) => BANNED.includes(w)), `${printed.length} printed vs ${BANNED.length} in the script; differing: ${[...printed.filter((w) => !BANNED.includes(w)), ...BANNED.filter((w) => !printed.includes(w))].join(', ')}`)
+const stops = ['SKILL.md', 'references/qa-checklist.md', 'references/own-content.md'].map((f) => read(f).match(/an unsourced factual claim[^\n]*/)?.[0].replace(/\.$/, '') || `none in ${f}`)
+check('hard stops are the same list in SKILL.md, qa-checklist.md and own-content.md', stops.every((s) => s === stops[0]), stops.join(' | '))
 const bannedHits = prose.filter((f) => !/copy-and-seo|CHANGELOG/.test(f)).flatMap((f) => BANNED.filter((w) => new RegExp(`\\b${w}`, 'i').test(read(f).replace(/No filler[^\n]*/g, ''))).map((w) => `${f}: ${w}`))
 check('no banned words outside the list that defines them', !bannedHits.length, bannedHits.join(', '))
 const US = /\b(color|organization|optimize|centralized|behavior|analyze|customize)\b/

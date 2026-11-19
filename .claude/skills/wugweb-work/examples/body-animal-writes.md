@@ -79,4 +79,4 @@ OWNER INPUT one sentence on how each number was measured.
 
 ## Expected block plan when filled
 
-hero → stats (2 to 4 verified) → chapter (context) → chapter (SEO) + figure → chapter (content standard) + points with groups + steps + figure → chapter (campaigns) + mosaic + loop → chapter (UX and UI) + rail → results (the full metric form, chart as HTML or SVG) + quote → credits → presence → related → next.
+hero → stats (2 to 4 verified) → chapter (context) → chapter (SEO) + figure → chapter (content standard) + points with groups + timeline (steps) + figure → chapter (campaigns) + mosaic + loop → chapter (UX and UI) + rail → results (the full metric form, chart as HTML or SVG) + quote → credits → presence → related → next.

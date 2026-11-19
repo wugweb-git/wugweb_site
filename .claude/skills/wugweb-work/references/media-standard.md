@@ -17,7 +17,7 @@ Three readings of the rule, confirmed by the owner on 2026-11-16:
 
 1. Resizing and masks are done on the page, in CSS only, never by making a new file.
 2. A mask must not hide the part of a screen that proves the claim.
-3. A file shown larger than its natural size is flagged when it looks soft. It is a quality flag, not a ban.
+3. A file shown larger than its natural size is flagged when it looks soft. It is a quality flag, not a ban. A small file gets a contained cell, so the layout does not show it above its natural size.
 
 Weight, missing posters and `moov` at the end of an mp4 are reported as facts. The page defends itself with sizes, lazy loading, `preload="none"` and `content-visibility`. When a file does not fit, say so and let the owner decide.
 
@@ -77,23 +77,22 @@ Report per case study:
 
 Every number in these reports is summed by a script, never estimated. Count the files first and recount before finishing. A manifest never says "and so on"; if stopping early, stop at a clean point and say X of Y.
 
-Known gap: nothing here lists the objects in a media store folder. The audit script measures files that the body or the record already links. A folder listing needs its own read-only script or the owner's list; commands that write, delete or download are forbidden.
+Listing a folder: the audit script in this skill measures only the files that the body or the record already links. The whole folder is listed and measured by the site's manifest script, which reads the store and writes nothing to it; this site's command is in `ops-cycle.md`. Where that script cannot run, use the owner's list. Commands that write, delete or download are forbidden.
 
 ## Video
 
 - 15 seconds or less: loop, muted, playsinline.
-- Longer: muted, click to play, play and pause button only, or left off the page when a short cut of it exists.
+- Longer: muted, click to play, with a play and pause button only: no unmute control and no native volume controls. A video over 15 seconds never loops in a rail; it sits in its own chapter, or is left off the page when a short cut of it exists.
 - No poster file: use the best start frame from the visual read as `src="…mp4#t=<s>"` with `preload="metadata"`. No new file is made. This is unverified on iPhone Safari: test it before relying on it, and fall back to a plain surface until the video is near.
 - Audio is reported only. Nothing plays sound. When a long video carries speech, say so: muted, it may lose its meaning, and the owner decides whether it stays.
-- A loop is 15 seconds or less. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden. All loops stop under reduced motion and pause off screen (owner, 2026-11-17; the control is built by `wugweb-kits`).
+- A loop is 15 seconds or less. A loop longer than 5 seconds has a pause control and is not hidden from assistive technology; a loop of 5 seconds or less with no control stays hidden. All loops stop under reduced motion and pause off screen (owner, 2026-11-17). This skill holds the rule and checks it at the gate; the control is part of the page build, and `wugweb-kits` may check it.
 - A video in which someone speaks needs captions or a transcript from the owner's source before it is used; without one it is listed as an owner question, never captioned by guess.
 - A video on a third-party player shows a lightweight preview and loads the player on click.
 
 ## Alt text and captions
 
-- Alt: 10 to 125 characters, and it agrees with the caption. Long detail goes in the caption.
+- Alt: 10 to 125 characters. It says what the screen shows and what it lets the user do, and it agrees with the caption; long detail goes in the caption. Never "screen" or "image of". A purely decorative image has `alt=""`. Owner-edited alt always wins.
 - Per file, record: alt present, alt specific to that image, no alt repeated across images, width and height known. Flag alt that is missing, a file name, or generic.
-- Alt: 125 characters or fewer. Says what the screen shows and what it lets the user do. Never "screen" or "image of". A purely decorative image has `alt=""`. Owner-edited alt always wins.
 - Caption: 25 words or fewer. Says why the screen matters to the chapter's claim.
 - Both are written only after the screen has been seen close up (see `visual-read.md`), and both are proposals until approved.
 

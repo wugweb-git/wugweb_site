@@ -12,12 +12,22 @@ value, what it measures, period, baseline or benchmark, source, date (the metric
 - A number missing any of the six parts.
 - A benchmark shown as the client's result.
 
+## Page element or made file
+
+| Where the chart goes | What it is | Gate |
+|---|---|---|
+| On a page: a case study, a blog post or a service page | Markup. The chart renders as HTML or SVG from the owner's numbers, in the server HTML. No image file is made | The body's approval; the gate for new files does not apply |
+| In a deck, a post, a carousel or a share image | A made file | The gate for new files in `forms.md`: a yes for that one file |
+| Already in the client's folder as an image | Existing media of kind `chart` | Read in Look mode like any other file; its numbers are still checked with the owner |
+
+The catalogue has no chart block. On a page the chart sits inside the chapter that carries its numbers (the Results chapter in a stats-led case), and one or two numbers stay a stat. The drawing rules below apply to both kinds.
+
 ## Steps
 
 1. List the qualifying numbers from the fact pack.
-2. Propose the chart: type, axes, units, the source line that will sit under it.
-3. Ask `wugweb-kits` for the token sheet; use only its colours and type.
-4. A chart file is a made file: it goes through the gate for new files in `forms.md`.
+2. Propose the chart: type, axes, units, the source line that will sit under it, and whether it is a page element or a made file.
+3. Use only the design system's tokens for colour and type (the type roles for made files are in `forms.md`). `wugweb-kits` may check the result.
+4. A chart for a page is written as HTML or SVG and goes into the proposal. A chart file for a deck, post or share image is a made file: it goes through the gate for new files in `forms.md`.
 
 ## How the chart is drawn
 
