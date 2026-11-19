@@ -1,6 +1,6 @@
 # Layout grammar
 
-> **Owner: `wugweb-kits`.** The block catalogue, tiers, motion, accessibility and performance rules below belong to `wugweb-kits`. `wugweb-kits` is installed and wins wherever it holds a rule. It does not yet hold the block catalogue, so this file is held here until the owner skill carries it. Do not copy these rules into another file. One part stays with this skill: which block a content shape gets. Where a line below is stricter than the media rule in `media-standard.md` ("never cropped"), read it as: no mask or fit hides the part of a screen that proves the claim.
+> **Owner: `wugweb-kits`.** The block catalogue, tiers, motion, accessibility and performance rules below belong to `wugweb-kits`. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file. One part stays with this skill: which block a content shape gets. Where a line below is stricter than the media rule in `media-standard.md` ("never cropped"), read it as: no mask or fit hides the part of a screen that proves the claim.
 
 How a parsed body plus its media manifest becomes a block plan. The page is never one fixed composition: it adapts to the content. Vendor-neutral; this site's components are named in `ops-cycle.md`.
 
@@ -27,7 +27,7 @@ How a parsed body plus its media manifest becomes a block plan. The page is neve
 | Content depth | Rich body, thin text-only body and no body each get a complete page. Results, quotes and credits appear only when they exist. | Thin and no-body previews |
 | Kind of work | Product UI, brand identity, campaign and stats-led, multi-workstream. Screens group by audience, then flow; mockups are support, never the proof. | Archetype table |
 | Volume | 3 screens or 200. A chapter shows only its proof screens; the rest go to one All screens block. | 31-screen and 200-screen cases |
-| Device | 375, 768, 1200. One column on phone, rails that show the next item, targets at the control size set by `wugweb-kits` (`--control-size`), a file shown above its natural size is flagged, no sideways page scroll. | Gate at the edge widths |
+| Device | 375, 768, 1200. One column on phone, rails that show the next item, targets of 44 px or more, a file shown above its natural size is flagged, no sideways page scroll. | Gate at the edge widths |
 | Capability and conditions | Works without JavaScript. Reduced motion stops loops and reveals. Videos are muted and load only when near. Heavy pages stay under 25 MB by showing less at first, never by resizing files. | No-JS check, reduced-motion check, byte total |
 | Client identity | One accent colour from the client's palette, contrast-checked, for rules and numerals only. | Contrast check on every accent |
 
@@ -55,15 +55,15 @@ A block plan uses only these types. Entries with `dupOf`, `nearDupOf` or a statu
 
 ## 5. Media in a chapter
 
-The rail width, next-item peek, signature width and line length are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`: tokens `--rail-width`, `--rail-peek`, `--signature-width`, `--measure-min` and `--measure-max`, listed in `.claude/skills/wugweb-kits/references/component-sizes.md`. This skill reads them there and restates no value. Widths, gutters and columns are never set here.
+These values are confirmed by the owner (2026-11-17) and owned by `wugweb-kits`: rail items at 85vw and never past the 1200 content maximum, a next-item peek of 20%, a signature width of 2400 px, and lines of 35 to 60 characters. This skill reads them and never changes them. Widths, gutters and columns are never set here.
 
 | Media | Block |
 |---|---|
 | 1 image, chapter text 120 words or fewer, not a phone screen | `split` (alternate sides) |
 | 1 image otherwise | `figure`, contained, captioned |
-| The single widest landscape on the page, at the signature width or more (`--signature-width`) | May be the one full-bleed signature `figure` |
+| The single widest landscape of 2400 px or more on the page | May be the one full-bleed signature `figure` |
 | 2 images of the same shape | `pair`, 50:50, uncropped (Styles always a pair) |
-| 3 to 8 phone or tall | `rail` per flow, captions, counter, buttons, proximity snap, next item peeks (`--rail-peek`) |
+| 3 to 8 phone or tall | `rail` per flow, captions, counter, buttons, proximity snap, next item peeks about 20% |
 | 9 or more phone | Rails per flow of 8 or fewer; remainder to a `wall` with viewer |
 | 2 to 6 landscape or mixed | `mosaic`: spans from shapes, cell count equals media count, source order kept, UI never cropped |
 | 7 or more landscape | `wall` with viewer; when the set's bytes exceed the page budget, a lazy `rail` instead |
@@ -76,7 +76,7 @@ The rail width, next-item peek, signature width and line length are confirmed by
 
 How media is laid out and loaded (baked composites, detail views as masks with a focal point, ratio families, sticky text, safe areas, reading order, sliders, poster first, priority images) is owned by `wugweb-kits`: `.claude/skills/wugweb-kits/references/media-and-widgets.md` ("Case-study media", "Video"). This table only picks the block.
 
-Rail items are never wider than the rail width (`--rail-width`), so a whole screen is always visible. A screen that is the only proof of a claim never appears only inside a rail; it is also in All screens.
+Rail items are never wider than 85vw on mobile, so a whole screen is always visible. A screen that is the only proof of a claim never appears only inside a rail; it is also in All screens.
 
 ### Content-shape rules (owned by this skill)
 
@@ -104,7 +104,7 @@ Rail items are never wider than the rail width (`--rail-width`), so a whole scre
 ## 7. Closing blocks, in order
 
 1. `results`, when results exist and no chapter is named Results.
-2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons at the control size (`--control-size`), and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus, pinch zoom, back to close and deep links follow `wugweb-kits` (`.claude/skills/wugweb-kits/references/media-and-widgets.md`, "Viewer"). Without JavaScript every set renders stacked under its own heading.
+2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus, pinch zoom, back to close and deep links follow `wugweb-kits` (`.claude/skills/wugweb-kits/references/media-and-widgets.md`, "Viewer"). Without JavaScript every set renders stacked under its own heading.
 3. `credits`: team, partner, special thanks, services, year or timeline, country, platform.
 4. `presence`: Live, stores, Behance, Dribbble, awards.
 5. `related`: 3 items from the source relation; fallback by pillar then industry.
@@ -145,7 +145,7 @@ The site's one call to action stays in the global footer. No second CTA.
 - A rail's scroll area is reachable by keyboard (`tabindex="0"` where the browser does not do it) and uses `overscroll-behavior-x: contain`.
 - The viewer shows an image at its natural size, at least twice the thumbnail.
 - Before and after pairs stack with labels on mobile.
-- Body text is 16 px or larger; lines keep the line length set by `wugweb-kits` (`--measure-min` to `--measure-max`) on mobile.
+- Body text is 16 px or larger; lines run 35 to 60 characters on mobile.
 
 ## 12. Performance in the layout
 

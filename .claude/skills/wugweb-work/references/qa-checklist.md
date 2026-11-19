@@ -11,7 +11,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - Order the checks cheap first: the automated script, then the manual read.
 - Rank findings must, should, nice. Change nothing until the owner picks.
 - Verdict: publish, publish with fixes, or no.
-- Hard stops, whatever else passes: an unsourced factual claim, an invented number or quote, an undisclosed relationship, no date on time-bound content, a form made from an unapproved body, a track 2 piece with no brief.
+- Hard stops that block publishing whatever else passes: an unsourced factual claim, an undisclosed relationship, no date on time-bound content.
 
 ## Content
 
@@ -36,7 +36,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] Exactly one h1; heading levels never skip.
 - [ ] Every `section` has an id and an accessible name; every chapter `article` has a unique id and an h2.
 - [ ] Every `img` has alt, width and height.
-- [ ] Title and description meet the limits set by `wugweb-seo` (`.claude/skills/wugweb-seo/references/audit.md`: `title-rendered`, 60 characters or fewer for the rendered `<title>` on every page type; `description-length`); canonical points to itself.
+- [ ] `<title>` 60 characters or fewer; meta description 140 to 160; canonical points to itself.
 - [ ] JSON-LD has WebPage, CreativeWork and BreadcrumbList on the canonical host; none of the banned types.
 - [ ] All content present with JavaScript off.
 - [ ] Structured data passes a schema validator.
@@ -51,7 +51,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] No mask and no `object-fit: cover` hides the part of a screen that proves the claim.
 - [ ] Files shown larger than their natural size are listed; one that looks soft is flagged (a flag for the owner, not a fail).
 - [ ] Styles pair 50:50 at native ratio.
-- [ ] Rails: labelled region or group, `aria-roledescription="carousel"`, slides as groups with `aria-roledescription="slide"` and a name, counter, buttons, items no wider than the rail width set by `wugweb-kits` (`--rail-width`), no auto-advance.
+- [ ] Rails: labelled region or group, `aria-roledescription="carousel"`, slides as groups with `aria-roledescription="slide"` and a name, counter, buttons, items 85vw or less on mobile, no auto-advance.
 - [ ] Viewer has a visible close button; Escape closes it; focus returns to the thumbnail.
 - [ ] At most 2 mockups; never the hero when a project-specific visual exists.
 - [ ] At most 1 full-bleed per chapter; no more than 2 zigzags in a row.
@@ -66,7 +66,7 @@ Look at 375, 768 and 1200. Run the gate at 375, 767, 768, 769, 1199, 1200 and 12
 - [ ] Automated accessibility scan: zero serious or critical issues.
 - [ ] Body text 16 px or larger.
 - [ ] Contrast AA on all text, including the client accent; accent 3:1 or more for rules and numerals.
-- [ ] Targets meet the control size set by `wugweb-kits` (`--control-size`, the house rule, above the WCAG 2.2 AA minimum); focus visible; reduced motion stops loops and reveals.
+- [ ] Targets 44 px or more (the house rule; WCAG 2.2 AA asks for 24); focus visible; reduced motion stops loops and reveals.
 - [ ] Controls and arrows hold 3:1 contrast against what is behind them.
 
 ## Performance

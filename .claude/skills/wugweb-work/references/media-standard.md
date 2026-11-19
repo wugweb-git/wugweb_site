@@ -77,7 +77,7 @@ Report per case study:
 
 Every number in these reports is summed by a script, never estimated. Count the files first and recount before finishing. A manifest never says "and so on"; if stopping early, stop at a clean point and say X of Y.
 
-Folder listing: the audit script in this skill measures only files that the body or the record already links. The folder listing comes from the site's read-only manifest script named in `ops-cycle.md`, or from the owner's list; commands that write, delete or download are forbidden.
+Known gap: nothing here lists the objects in a media store folder. The audit script measures files that the body or the record already links. A folder listing needs its own read-only script or the owner's list; commands that write, delete or download are forbidden.
 
 ## Video
 

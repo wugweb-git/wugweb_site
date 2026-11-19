@@ -1,6 +1,6 @@
 # wugweb-work
 
-One of the seven skills in the Wugweb Skill System. It answers "how is each piece
+One of the six skills in the Wugweb Skill System. It answers "how is each piece
 made?" and produces every piece in two tracks, plus their other forms.
 Version 0.5.0. Part 1 only: the skill, its references, two read-only
 working scripts and the evals. Site code is not part of it.
@@ -22,7 +22,7 @@ folder and Notion disagree, Notion wins.
 | 8 | Run the publish gate | Ship | Pass or fail table at 375, 768 and 1200 |
 | 9 | Make the other forms | Forms | Fact pack, LinkedIn post and carousel, Behance, Dribbble, deck, PDF, charts, share image, newsletter, advocacy copy |
 | 10 | Approve before posting | Forms | Eight approval steps; a yes per made file and per post |
-| 11 | Hand off | All | Written requests to the six sibling skills |
+| 11 | Hand off | All | Written requests to the five sibling skills |
 
 Tracks: (1) client work: case studies, portfolio, showcase; (2) Wugweb's own
 content: blog posts, service pages, site and landing copy. Track 2's body
@@ -40,34 +40,28 @@ It is listed, with every settled decision, in `references/open-items.md`.
 | Layout rules, blocks, tokens, accessibility | `wugweb-kits` |
 | Keywords, on-page and schema rules, site-wide SEO | `wugweb-seo` |
 | Topics, calendar, briefs for own content | `wugweb-strategy` |
-| Changes to stored data, backups and undo, schema files, sync runs | `wugweb-engineer` |
 
-All six siblings are installed; each owns its rules and wins. Three files
-(`layout-grammar.md`, `design-principles.md`, `schema-jsonld.md`) are held here,
-marked with the owner's name, until `wugweb-kits` and `wugweb-seo` carry that
-detail. This skill changes no stored data: the owner-approved content goes to
-`wugweb-engineer`.
+Rules owned by a sibling are held in this folder, marked with the owner's name,
+until that skill is approved. Then they move.
 
 ## What is in the package
 
 | Path | Purpose | Edited by hand |
 |---|---|---|
 | `SKILL.md` | The procedure, rules and index | yes |
-| `references/` | 17 files, one topic each; a rule lives in one file | yes |
+| `references/` | 16 files, one topic each; a rule lives in one file | yes |
 | `references/forms/` | 13 files, one per form, plus the approval steps | yes |
 | `scripts/case-audit.mjs` | Parse a body; print chapters, block plan, flags; measure media | yes |
 | `scripts/check-case-page.mjs` | Run the static publish gate on a page | yes |
 | `scripts/validate.mjs` | Check this skill against its own rules | yes |
 | `scripts/test.mjs` | Self-test of the scripts on the fixtures | yes |
-| `scripts/build.mjs` | Generate the five files below | yes |
+| `scripts/build.mjs` | Generate the three files below | yes |
 | `examples/` | One full proposal, two skeletons, three forms examples, three test fixtures | yes |
 | `evals/evals.json` | 14 test prompts with expectations; first run and grade 2026-11-17 | no |
 | `metadata.json`, `CHANGELOG.md` | Version, date, abstract, history | yes |
 | `AGENTS.md` | Whole skill in one file | no, generated |
-| `export/<name>.md` | The same single file at the shared export path | no, generated |
 | `adapters/cursor/<name>.mdc` | Cursor rule | no, generated |
 | `adapters/chatgpt/instructions.md` | Custom GPT instructions | no, generated |
-| `agents/openai.yaml` | Display settings for Codex and the ChatGPT desktop app | no, generated |
 
 ## Install
 

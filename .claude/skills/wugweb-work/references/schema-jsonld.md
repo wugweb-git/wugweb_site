@@ -1,6 +1,6 @@
 # Schema: the JSON-LD graph
 
-> **Owner: `wugweb-seo`.** The schema and JSON-LD rules belong to `wugweb-seo`; this skill applies them. `wugweb-seo` is installed and wins wherever it holds a rule. It has no JSON-LD graph file yet, so this file is held here until the owner skill carries it. Do not copy these rules into another file.
+> **Owner: `wugweb-seo`.** The schema and JSON-LD rules belong to `wugweb-seo`; this skill applies them. Held here until that skill is approved and installed; then it wins and this file becomes a pointer. Do not copy these rules into another file.
 
 One `@graph` per case study page, emitted only on the canonical host. Every value comes from the approved body, the record or the manifest; nothing is invented to fill a field.
 

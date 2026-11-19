@@ -1,19 +1,18 @@
 # Handoffs to sibling skills
 
-This skill makes the piece and is the hub for wording. It asks each sibling a defined question and applies the answer. A sibling never writes the piece. Stored data (the source, the CMS, the schema files) is changed only by `wugweb-engineer`, from the owner-approved content this skill hands it and on the owner's go; this skill changes none, and nobody writes to the media store. Every link below must read the same on the sibling's side.
+This skill makes the piece and is the hub for wording. It asks each sibling a defined question and applies the answer. A sibling never writes the piece, and never writes to the source, the CMS or the media store on this skill's behalf. Every link below must read the same on the sibling's side.
 
-All six siblings are installed, and each wins on its own rules. Where `wugweb-kits` or `wugweb-seo` does not yet hold the detail, the last column names the file held here until the owner skill carries it. If a sibling cannot be reached in the tool in use, answer the same question from that file, mark every search figure "unvalidated", and say which handoff was skipped. There is no fallback for `wugweb-engineer`: without it, no stored data changes.
+If a sibling is not installed, answer the same question from the held file named in the last column, mark every search figure "unvalidated", and say which handoff was skipped.
 
 ## Links
 
-| Sibling | This skill gives | This skill takes | Held here until the owner skill carries it, or the fallback |
+| Sibling | This skill gives | This skill takes | Held file until the sibling is installed |
 |---|---|---|---|
 | `wugweb-strategy` | The finished piece; what proof exists | A brief for own content: what to say, to whom, when, which case studies back it, and which pages it links to (strategy picks the targets; `wugweb-seo` owns the link rules and fills the brief's search block) | None. With no brief, ask for one |
 | `wugweb-voice` | The draft, with its form, mode, audience and purpose | A voice check: breaks and fixes | `copy-and-seo.md` (voice part) |
 | `wugweb-brand-os` | Cover picks and visuals to check | Brand and art-direction rules; approved facts about Wugweb | The brand guidelines in the site repository |
 | `wugweb-kits` | Content shape and chosen media; visible wording it asks for (labels, alt text) | Blocks, layout, tokens; gate and token results | `layout-grammar.md`, `design-principles.md` |
 | `wugweb-seo` | The approved body and page URL; visible wording it asks for (title options) | Keyword notes; title and schema rules to apply; a fix list for one page | `schema-jsonld.md`, `copy-and-seo.md` (on-page part) |
-| `wugweb-engineer` | The piece and the owner's approval of its content; the approved values file for a field patch | The sync run; change reports (current → proposed), backups, result logs and check results; media read reports for a piece | None. No stored data changes without it |
 
 - `wugweb-voice` has no direct link with strategy, seo or kits. The voice check happens here only.
 - A finding on one page comes here as a fix list. A finding that repeats on every page using a block goes from `wugweb-seo` to `wugweb-kits`; neither edits code.
@@ -22,7 +21,7 @@ All six siblings are installed, and each wins on its own rules. Where `wugweb-ki
 - Made files: this skill picks which platform size a file uses; `wugweb-kits` supplies the size list and the safe zone.
 - Layout values are read from `wugweb-kits` and `kits_design_system/docs/tokens/layout-shell.md`. This skill restates none of them.
 
-Brand rulings from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them and wins, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says; Wugweb has no campaign system, so no campaign look is invented (brand skill, 2026-11-17).
+Brand rulings held from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns them, this skill applies them to cover picks, social visuals and made files): the client is the hero and Wugweb is the guide; "does a lot, into one" is an idea, not public wording; the canvas for any made file is black by default and light only where the owner says; Wugweb has no campaign system, so no campaign look is invented (brand skill, 2026-11-17).
 
 ## When to send what
 
@@ -36,7 +35,6 @@ Brand rulings from `wugweb-brand-os` (owner, 2026-11-17; the brand skill owns th
 | Ship | Does every value in the page's components resolve to a token? Does the page pass the accessibility checks? | `wugweb-kits` |
 | After deploy | How did the pages perform, with dates and sources? | `wugweb-seo` (report part) |
 | After approval | Here is the finished piece and the proof it used | `wugweb-strategy` |
-| After approval | Sync this approved piece from the source to the CMS; apply these approved values | `wugweb-engineer` |
 
 ## Handoff 1: search input for the brief
 
@@ -120,24 +118,6 @@ Take from `wugweb-strategy`: its brief (`.claude/skills/wugweb-strategy/referenc
 Check it: the six check fields are present (the reader, what they know now, what they should know and do after, the goal, the format, the case studies that back it), and the proof exists in an approved body. A published v1 body counts for the facts it already publishes; any other claim needs an approved v2 body or the owner's answer (owner, 2026-11-17). Return it with questions when one is missing. Do not rewrite the plan.
 
 Give back after approval: the finished piece, the proof used, and proof that was asked for and does not exist.
-
-## Handoff 8: stored data, to and from `wugweb-engineer`
-
-`wugweb-engineer` owns changes to the source and CMS data, their backups and undo, the schema files, and running the sync scripts. This skill writes the proposal; it never runs a sync, a patch or a schema edit. The vendor names and script names are in `ops-cycle.md`.
-
-**wugweb-work gives, wugweb-engineer takes**
-
-- **Question:** sync this approved piece from the source to the CMS.
-- **wugweb-work gives:** the piece and the owner's approval of its content. For a field patch (for example alt text on empty fields), the approved values file: one value per document.
-- **wugweb-engineer does:** runs the matching sync script, and plans and applies any patch, each on the owner's go to that plan. Never edits the content; a fault in the content goes back to wugweb-work.
-
-**wugweb-engineer gives, wugweb-work takes**
-
-- Change reports (current → proposed), backups, result logs and check results.
-- Media read reports for a piece.
-- The name of any schema field that drives a block, so this skill can pass it on to `wugweb-kits`.
-
-Then: read the check result before calling the piece live. A fault in the content returns to the proposal as current → proposed and goes back to the owner; this skill never asks `wugweb-engineer` to edit wording.
 
 ## Declined findings
 
