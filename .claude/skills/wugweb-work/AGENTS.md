@@ -2,7 +2,7 @@
 
 # wugweb-work
 
-**Version 0.6.0** · Wugweb · November 2026
+**Version 0.6.1** · Wugweb · November 2026
 
 A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. It works alone: the block catalogue, layout grammar, media, copy, on-page SEO, schema and publish-gate rules are held in the skill, and sibling skills add a check or an input. Independent of CMS, host and agent.
 
@@ -197,6 +197,9 @@ Rules for all three:
 
 - Each section has one job or it goes. Lead each section with its point.
 - No proof supplied means no proof section. State one limit or fit condition.
+- Proof whose client may not be named is not used as proof on a public page: the proof section is held, the reply says why, and the owner is asked for proof that can be named. It is never shown with the name removed in a way that still identifies the client.
+- "What it needs from the client" comes from the brief. Where the brief does not give it, the part is left out of the draft and listed as a question; it is not written from general knowledge of such services.
+- The parts of a draft follow the order given above. A part with no source is left out and named in the reply; no part is added that the standard does not list.
 - Match the action to the reader's intent: a soft next step on a page that informs, one clear action on a page where the reader is ready to act.
 - A claim about a client project must match that project's approved case study body. Link the case study.
 - A number about Wugweb needs a source and a date, the same as a client result. Approved facts about Wugweb come from `wugweb-brand-os`.
@@ -614,7 +617,7 @@ Ship covers the built page, the synchronisation and the deployment. After a sync
 - A source row with no slug, or more than one match: skip it and list it for the owner.
 - A canonical that is not the page's own address: do not overwrite it; list it for the owner.
 
-**Never publish partial output without saying so.** A step that fails stops the cycle at that step. Nothing downstream runs on a guess, a cached copy passed off as fresh, or half a result. The report says what failed, what was and was not done, and what state each system is in.
+**Never publish partial output without saying so.** A step that fails stops the cycle at that step. Offering to ship a page marked "partial" is not a way round this: a partial page is shipped only when the owner, told exactly what is missing, says yes to that partial page. Nothing downstream runs on a guess, a cached copy passed off as fresh, or half a result. The report says what failed, what was and was not done, and what state each system is in.
 
 | What fails | What it looks like | What to do | What must not happen |
 |---|---|---|---|
@@ -1021,7 +1024,7 @@ This is the one list. `scripts/case-audit.mjs` carries the same 25 words and `sc
 |---|---|
 | Subtitle | 90 characters or fewer (settled by the owner, 2026-11-16); proposed only after the body is read, never from the name or partner alone (owner, 2026-11-17) |
 | Summary | 40 to 60 words |
-| Chapter | 30 to 150 words |
+| Chapter | 30 to 150 words. Its first sentence answers the heading; where an older example opens with context and answers later, the rule stands and the example is wrong |
 | Point title | 2 to 6 words |
 | Point text | One sentence |
 | Caption | 25 words or fewer, saying why the screen matters |
@@ -1288,6 +1291,7 @@ Alt text and captions are content, not derived data. They are proposed as curren
 | `heroScore` | 0 to 5: project-specific, legible small, never a generic laptop or dashboard (the cover rule, held in `layout-grammar.md` section 3) |
 | `alt` | 10 to 125 characters |
 | `caption` | 25 words or fewer |
+| Boards | A file that shows several screens on one artboard (a presentation board, a contact sheet) is one record. Its `kind` is the kind of the screens on it, with `board: true`; its `what`, `alt` and `caption` describe the board as a whole and say how many screens it holds. It never has an empty `alt` or `caption` unless it is marked `not read` or is not to be shown |
 | `chapterFit` | Which chapter it proves |
 | `principle` | A design principle the screen applies, with the decision (see `design-principles.md`). Optional per record, but each flow names at least one where a screen shows the decision |
 | Videos add `demonstrates`, `loopable`, `posterAt`, `audio` | On top of every field above, `what`, `kind`, `alt` and `caption` included. `audio` is reported only |
@@ -1330,7 +1334,8 @@ The two records below come from two different clients. The schema is the same fo
 
 ```json
 { "url": "…/airtel-xsafe-3.png", "what": "IndusNinja presentation board of three phone screens; the file name says Airtel Xsafe, the screens do not",
-  "kind": "mobile screen", "brand": { "which": "IndusNinja" }, "quality": ["misnamed file", "near-duplicate"],
+  "kind": "mobile screen", "board": true, "brand": { "which": "IndusNinja" }, "quality": ["misnamed file", "near-duplicate"],
+  "alt": "Presentation board of three IndusNinja phone screens", "caption": "Three screens on one board; a near-duplicate of the single screens, so not shown.",
   "chapterFit": null }
 ```
 
@@ -1687,7 +1692,7 @@ Media is part of the narrative: it sits between and inside the chapters, in body
 ### 7. Closing blocks, in order
 
 1. `results`, when results exist and no chapter is named Results.
-2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus is trapped while the viewer is open and returns to the thumbnail on close; pinch zoom is allowed; the back action closes it; every item has a deep link that opens the viewer at that item. The full rules are in section 13. Without JavaScript every set renders stacked under its own heading.
+2. `screens`, titled "All screens": every approved screen of the piece, the proof screens included, so the whole set can be browsed in one place (in the worked case all 31, of which 12 also sit in chapters as proof). Section 13 holds the rule. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus is trapped while the viewer is open and returns to the thumbnail on close; pinch zoom is allowed; the back action closes it; every item has a deep link that opens the viewer at that item. The full rules are in section 13. Without JavaScript every set renders stacked under its own heading.
 3. `credits`: team, partner, special thanks, services, year or timeline, country, platform.
 4. `presence`: Live, stores, Behance, Dribbble, awards.
 5. `related`: 3 items from the source relation; fallback by pillar then industry.
@@ -1772,7 +1777,7 @@ A chart on a page is carried as a `figure` block whose media kind is `chart`. It
 Three parts, always together (owner, 2026-11-11).
 
 1. **Inside a chapter: only the screens that prove the claim.** One to four screens per chapter, picked in the visual read. The chapter reads as heading, lead, points, then its proof screens with a short caption under each.
-2. **Near the end: one All screens block for everything else.** Every other approved screen, so nothing is lost. A row of set chips, each with its count; one chip is selected at a time and the grid below shows that set as thumbnails. Thumbnails keep their own ratio: 3 columns for phone screens and 1 to 2 for desktop screens on mobile, denser on desktop.
+2. **Near the end: one All screens block.** It holds every approved screen, the proof screens included, so nothing is lost and the whole set can be browsed in one place. A row of set chips, each with its count; one chip is selected at a time and the grid below shows that set as thumbnails. Thumbnails keep their own ratio: 3 columns for phone screens and 1 to 2 for desktop screens on mobile, denser on desktop.
 3. **On a thumbnail: a full-size viewer, one screen at a time.** The caption, then the position and set as "3 of 8, Member". Previous and next buttons of 44 px or more, a visible close button, swipe, Escape to close.
 
 Worked case: 31 approved screens; 12 stay in chapters as proof; all 31 are in All screens in five sets (Member 8, States 4, Dashboard 9, Back office 7, Cases 3); 2 flagged screens are hidden and listed.
@@ -1798,7 +1803,7 @@ Each layer does one job and none does another's:
 | Body parser | Describes the content: chapters, claims, points, media references, labels, layout hints |
 | Media manifest | Describes each file: size, shape, type, status, duplicates, own or borrowed |
 | Visual read | Describes what each screen shows: audience, flow, step, kind, state, quality, which chapter it proves |
-| Layout resolver | Decides the presentation: proof screens into chapter blocks, every other approved screen into All screens |
+| Layout resolver | Decides the presentation: proof screens into chapter blocks, and every approved screen into All screens |
 | Screens block | Renders All screens: chips, counts, thumbnails |
 | Viewer | Opens one screen at a time, with caption, position and navigation |
 
@@ -1943,7 +1948,7 @@ Rules:
 
 - State the form in the block plan, beside the block: `points (editorial list)`, `points (lead and supports)`.
 - The body may ask for a form with its `Layout:` hint. A hint that the content cannot fill is reported, never forced.
-- A form the site cannot render yet is listed as a gap in the block plan, with the nearest form used meanwhile. It is never faked with a card grid.
+- A form the site cannot render yet is listed as a gap in the block plan, with the nearest form used meanwhile. It is never faked with a card grid. What this site can and cannot render today is listed in `open-items.md` (Pending on the site); read it before marking anything buildable.
 
 ### 3. The count comes from the content
 
@@ -3080,7 +3085,7 @@ id | kind | text | body line (chapter and position) | screens
 
 ### Checks
 
-- Every item has a body line. An item with none is removed.
+- Every fact has a body line. A fact with none is removed. The page link is the one item that is not a fact from the body: it carries the page's canonical address in place of a body line, and is kept.
 - Flagged screens are marked; forms that ban flagged screens skip them.
 - No number appears that lacks its source and date in the body.
 - Count the items and state the count.
@@ -3135,6 +3140,7 @@ A composition shows several screens as one picture. It follows the mixed-composi
 - One claim, taken word for word from the approved body, or shortened only by cutting.
 - Keep everything that matters inside the middle four fifths of the frame; platforms trim the edges.
 - Body text is 16 px or more at the size shown, and a headline 32 px or more. Type sizes come from the made-file tokens in `forms.md`.
+- The ground of a made file is this site's page surface by default. It is a client colour only when the owner has supplied that client's brand values with the content; a colour read from the client's site is a proposal, not a ground.
 - Measure the contrast of the text on its ground.
 - Sizes are in `forms.md`. A size not listed there is confirmed against the platform's current help page before the file is made.
 - One file per yes. A set of five banners is five proposals.

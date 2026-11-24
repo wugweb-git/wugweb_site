@@ -1,0 +1,1026 @@
+{
+  "skill": "wugweb-work",
+  "version": "0.6.0",
+  "date": "2026-11-19",
+  "conditions": "cases 1, 3, 4, 5, 8: read-only CMS copy and public media; all others: dry run, no live source, no render",
+  "graded_by": "a separate model run that did not write the answers",
+  "cases": [
+    {
+      "id": 1,
+      "name": "cartier-v2-proposal",
+      "conditions": "read-only CMS copy of the body and public media store; Notion not readable; no render",
+      "expectations": [
+        {
+          "text": "The proposal contains no em dash or en dash in any proposed body line",
+          "result": "pass",
+          "evidence": "Measured: 0 em or en dashes in the proposed body lines (URLs excluded). Answer: \"0 banned words; 0 dashes\""
+        },
+        {
+          "text": "No H2 or chapter heading in the proposed body is a generic label such as About, Challenges, Solutions, Design Philosophy or Conclusion",
+          "result": "pass",
+          "evidence": "8 headings, all claims, e.g. \"The Maison leads every page\"; none of About, Challenges, Solutions, Design Philosophy, Conclusion"
+        },
+        {
+          "text": "Every chapter heading in the proposed body is 70 characters or fewer",
+          "result": "pass",
+          "evidence": "Measured heading lengths: 47, 39, 27, 44, 35, 63, 48, 43 characters; longest 63"
+        },
+        {
+          "text": "Every metric in the proposed body has a value, what, period and source, or is marked unvalidated, or there are no metrics",
+          "result": "pass",
+          "evidence": "No metric in the body. \"No stats, results or presence block: the source holds no sourced number\". 21, 4 and 12 are counts of files and cities, each counted"
+        },
+        {
+          "text": "The proposed body contains none of: pivotal, robust, seamless, holistic, leverage, empower, cutting-edge",
+          "result": "pass",
+          "evidence": "Measured: none of the seven words in the proposed body"
+        },
+        {
+          "text": "Every block type in the block plan is one of the 23 catalogue types",
+          "result": "pass",
+          "evidence": "Parsed the JSON: 27 blocks; types chapter, credits, figure, hero, loop, next, pair, points, rail, related, screens, scrollshot, split, summary; all in the catalogue"
+        },
+        {
+          "text": "The output states that nothing was written to Notion or Sanity",
+          "result": "pass",
+          "evidence": "\"Nothing was written to Notion, and nothing anywhere else either: no Sanity change\""
+        },
+        {
+          "text": "There are no placeholders such as TBD, [INSERT or lorem in the proposed body",
+          "result": "pass",
+          "evidence": "Measured: no TBD, [INSERT or lorem in the proposed body"
+        },
+        {
+          "text": "Every chapter in the proposed body is 30 to 160 words",
+          "result": "pass",
+          "evidence": "Measured words per chapter (lead, text and points, without heading and media lines): 47, 56, 33, 51, 50, 56, 85, 31"
+        },
+        {
+          "text": "The proposed SEO title is 60 characters or fewer as rendered and the description is 140 to 160 characters",
+          "result": "pass",
+          "evidence": "No new SEO text proposed; the answer keeps the current fields and reports \"SEO title (51 characters, 60 as rendered) and the description (159)\" without printing them. Checked by the grader against the public CMS copy: title 51, 60 with the suffix, description 159"
+        }
+      ],
+      "passed": 10,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The shape rule misfiles tall desktop captures: \"the 4 desktop captures are 1000 x 2370, so the shape rule calls them 'phone'. The look corrects the kind\"",
+        "The skill does not say which blocks and forms the site can render: \"could not verify that the scrollshot block accepts a 1000 px file\" and \"could not verify a brand band exists\"",
+        "The audit script flags a client term the rules say to keep: \"the audit script flags it and I keep it on purpose\" (Engineering Graduate Program)",
+        "The answer does not print the SEO title and description it says already fit, so the output format for Body mode leaves the measured text out"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "animal-writes-skeleton",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "Every Results line has four parts separated by | (value, what, source, as of), or uses an owner-input marker",
+          "result": "pass",
+          "evidence": "3 Results lines, each 4 slots split by | and each slot an owner-input marker: \"OWNER INPUT value | OWNER INPUT what it measures... | OWNER INPUT source | as of OWNER INPUT YYYY-MM\""
+        },
+        {
+          "text": "No number appears as a result unless it is quoted from a named source page with its date",
+          "result": "pass",
+          "evidence": "\"Result numbers in the skeleton: 0.\""
+        },
+        {
+          "text": "The skeleton has at least one chapter per workstream named in the sources",
+          "result": "not_gradable",
+          "evidence": "The hub, Growth and Campaign Content Standard pages were not readable: \"I could not check that list against the hub, Growth and Campaign Content Standard pages\". The answer gives 4 workstream chapters taken from the skill's example and asks the owner to confirm"
+        },
+        {
+          "text": "There is a numbered list of owner questions",
+          "result": "pass",
+          "evidence": "\"### Owner questions\" numbered 1 to 8"
+        },
+        {
+          "text": "No em dash or en dash appears in the skeleton body",
+          "result": "pass",
+          "evidence": "Measured: 0 em or en dashes in the whole answer"
+        },
+        {
+          "text": "British spelling is used (programme, organisation, optimise) wherever those words appear",
+          "result": "pass",
+          "evidence": "\"OWNER INPUT name, role, organisation\"; no American spelling found"
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 1,
+      "invented": [],
+      "skill_gaps": [
+        "The skill's own skeleton example fills hero meta keys (Client: Animal Writes; Industry: Media, Non-Profit) while the rule says never fill them. The answer departs from the example: \"The hero meta keys are yours. I list them empty and fill none.\"",
+        "Where the period and baseline sit in a Results line differs: the example has \"value | what was measured | source, period, baseline | as of\", the answer has \"value | what, with period and baseline | source | as of\""
+      ]
+    },
+    {
+      "id": 3,
+      "name": "indusninja-block-plan",
+      "conditions": "read-only CMS copy of the body and public media store; Notion not readable; no render",
+      "expectations": [
+        {
+          "text": "The block plan is valid JSON and every type is a catalogue block type",
+          "result": "pass",
+          "evidence": "Parsed the JSON: 18 blocks; types chapter, credits, figure, hero, loop, next, pair, points, rail, related, screens, split; all in the catalogue"
+        },
+        {
+          "text": "Every screen has alt text of 125 characters or fewer",
+          "result": "pass",
+          "evidence": "Measured alt length for the 14 screens: 90 to 110 characters; the 2 videos 101 and 112. Longest 112"
+        },
+        {
+          "text": "Every screen has a caption of 25 words or fewer",
+          "result": "pass",
+          "evidence": "Measured caption length for the 14 screens: 12 to 21 words; the 2 videos 18 and 16"
+        },
+        {
+          "text": "No rail holds more than 8 screens",
+          "result": "pass",
+          "evidence": "One rail in the plan, of 3 items (8.png, 1.png, 7.png)"
+        },
+        {
+          "text": "Screens are grouped by flow",
+          "result": "pass",
+          "evidence": "Six flow groups: \"Onboarding (4)\", \"Transfer (2)\", \"Pay in person (2)\", \"Accounts and adding money (2)\", \"Budget and bills (2)\", \"Savings and insights (2)\""
+        },
+        {
+          "text": "The files named Airtel Xsafe are judged by look, flagged as misnamed IndusNinja boards and near-duplicates (not as wrong client), and are not placed in a chapter",
+          "result": "pass",
+          "evidence": "\"The six boards are named 'Airtel Xsafe' but show IndusNinja. Misnamed files, not another client's work.\" Listed as near-duplicates with \"no alt, no caption, not rendered\""
+        },
+        {
+          "text": "The output says that each caption was written after a close look at that screen, or lists the screens it could not open",
+          "result": "pass",
+          "evidence": "\"Looked at one by one, phone screens at 480 px wide and boards at 1000 px\", and the files only sorted are listed as \"enough to sort, not to caption\""
+        }
+      ],
+      "passed": 7,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "All screens is defined two ways: \"one line says All screens holds 'every other' screen, the worked case puts all of them there. I followed the worked case.\"",
+        "The media table and the composition file disagree on a lone phone screen beside a point: \"The catalogue sends a lone phone screen to a figure; composition wins on how points are shown, and the choice is logged\"",
+        "No way to tell whether a brand band is built: \"Could not verify a band component exists; a contained figure on the page surface stands in\"",
+        "The brief said 22 screens; the folder holds 14 screens, 6 boards and 2 videos. The eval prompt and the real folder do not match"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "labelly-thin-audit",
+      "conditions": "read-only CMS copy of the body and public media store; Notion not readable; no render",
+      "expectations": [
+        {
+          "text": "The audit lists generic headings found in the body",
+          "result": "pass",
+          "evidence": "\"'Challenges', 'Solutions', 'Impact', 'Strategic Insights & Design Philosophy'\" and \"4 of 4 headings are the old fixed slot labels\""
+        },
+        {
+          "text": "The audit lists missing pieces: results, media, subtitle quality or meta keys",
+          "result": "pass",
+          "evidence": "\"Results lines | none\", \"Media in body | none\", \"Subtitle only, and it describes positioning\", \"no Year, Country, Platform, Timeline or Live link\""
+        },
+        {
+          "text": "The audit ends with a numbered list of exact questions for the owner",
+          "result": "pass",
+          "evidence": "\"### What I need from you\" numbered 1 to 11, followed only by a short next-steps note"
+        },
+        {
+          "text": "The audit names at least one parser case (tab-indented heading, two-line item, #### in a title, trailing colon or raw link in meta) if present in the body",
+          "result": "pass",
+          "evidence": "\"Tab-indented headings. A parser case, not your error\" (lines 19, 32, 41) and the trailing comma on the Team line. The two-line items and the stray \"-\" on the last line are not named as parser cases"
+        },
+        {
+          "text": "Every count in the audit is a whole number that could be computed from the body",
+          "result": "pass",
+          "evidence": "All counts whole: 198 words, 17 points (4 + 6 + 4 + 3), chapters of 35, 55, 32 and 24 words, 6 unbacked claims. Checked by the grader against the public CMS copy: 17 points and the three tab-indented headings are right"
+        },
+        {
+          "text": "No fact about Labelly appears that is not in the source",
+          "result": "pass",
+          "evidence": "Every statement about Labelly is a quoted line with its line number or a question. Checked by the grader against the public CMS copy: the quoted lines match"
+        }
+      ],
+      "passed": 6,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The chapter length limit differs: the audit says \"Under the 30 to 150 chapter range\" while the eval for case 1 expects 30 to 160",
+        "The audit could not tell whether an unlinked media folder exists: \"I could not verify whether a Labelly folder exists in the media store with files nobody has linked\"; the skill gives no way to list a folder without the site's manifest script"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "indusninja-visual-read",
+      "conditions": "read-only CMS copy of the body and public media store; Notion not readable; no render",
+      "expectations": [
+        {
+          "text": "The output is valid JSON with one record per file (13 records)",
+          "result": "pass",
+          "evidence": "Parsed the JSON: 13 records"
+        },
+        {
+          "text": "Every record has what, kind, alt and caption",
+          "result": "fail",
+          "evidence": "All 13 records carry the four keys, but 6 have \"alt\": null and \"caption\": null (the six boards): \"6 records carry none by rule\". Measured on the other 7: alt 90 to 110 characters, caption 15 to 21 words"
+        },
+        {
+          "text": "The six files named Airtel Xsafe are flagged by look as misnamed files and near-duplicates, with the brand recorded as IndusNinja, not as wrong client",
+          "result": "pass",
+          "evidence": "All six: \"brand\": {\"which\": \"IndusNinja\"}, \"quality\": [\"sharp\", \"misnamed file\", \"near-duplicate\"]; \"Flag: misnamed file, not wrong client.\""
+        },
+        {
+          "text": "Screens are ordered by step within each flow",
+          "result": "pass",
+          "evidence": "Transfer: 1.png step 1 before 2.png step 3; \"Flows, in step order, from these files only\""
+        },
+        {
+          "text": "The video record has demonstrates and posterAt",
+          "result": "pass",
+          "evidence": "\"demonstrates\": \"The range of the app, not one flow...\" and \"posterAt\": 1"
+        },
+        {
+          "text": "At least one record names a design principle together with the specific screen that shows it",
+          "result": "pass",
+          "evidence": "\"One primary action per step (Hick's law): the screen has a single orange button. See this screen.\" (4.png)"
+        },
+        {
+          "text": "No record claims audio will play; audio is reported only",
+          "result": "pass",
+          "evidence": "\"audio\": \"no audio track\"; nothing says sound will play"
+        }
+      ],
+      "passed": 6,
+      "failed": 1,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The skill and the eval disagree on boards: the skill's example record for a misnamed board has no alt and no caption, and the answer says \"No caption or alt text is written for them\", while the eval expects every record to have both",
+        "The kind of a board is unclear: framed boards are \"mockup\", frameless boards of three screens are \"mobile screen\"",
+        "Flow names are not fixed. On the same folder this run uses \"Pay by QR\", \"Add money\" and \"Personalise\"; case 3 uses \"Pay in person\", \"Accounts and adding money\" and puts the mascot builder in Onboarding",
+        "The prompt did not match the folder (\"No file in the folder is a 10 second loop\"; \"Only 6 of the 12 files were named\"); the answer chose stand-ins and said so"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "routes-keyword-research-to-seo",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The response names wugweb-seo as the owner of keyword research",
+          "result": "pass",
+          "evidence": "\"Keyword research belongs to `wugweb-seo`, so I am routing it there\""
+        },
+        {
+          "text": "The response produces no Body Content proposal, block plan or page copy",
+          "result": "pass",
+          "evidence": "\"I have produced no keyword list, no search volumes and no page copy\""
+        },
+        {
+          "text": "The response invents no search volumes",
+          "result": "pass",
+          "evidence": "No figure anywhere; \"Any figure that comes back carries its source and date, or is marked 'unvalidated'\""
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "Two routes for one request: \"For a service page I do not ask `wugweb-seo` for a separate keyword note. It reaches me inside the strategy brief\", yet the answer still writes a request to `wugweb-seo`"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "blog-post-track-2-without-brief",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The response treats the blog post as in scope and does not decline it",
+          "result": "pass",
+          "evidence": "\"This is mine to write: a blog post is Wugweb's own content, track 2.\""
+        },
+        {
+          "text": "The response says no brief was supplied and names the brief fields it needs (reader, what they know now, what they should know and do after, goal, format, case studies that back it)",
+          "result": "pass",
+          "evidence": "\"no brief from `wugweb-strategy` came with the request\"; six fields listed: reader, what they know now, what they should know and do after, goal, format, case studies"
+        },
+        {
+          "text": "No blog post body is drafted without the brief",
+          "result": "pass",
+          "evidence": "\"I have not drafted it\"; no post text in the answer"
+        },
+        {
+          "text": "The response says the blog body standard is a draft awaiting the owner's review",
+          "result": "pass",
+          "evidence": "\"The blog post body standard is a first draft awaiting your review, not a final standard.\""
+        },
+        {
+          "text": "The response states that nothing was written to Notion or Sanity",
+          "result": "pass",
+          "evidence": "\"Nothing was written to Notion, Sanity or the repository.\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": []
+    },
+    {
+      "id": 8,
+      "name": "case-study-with-search-input",
+      "conditions": "read-only CMS copy of the body and public media store; Notion not readable; no render",
+      "expectations": [
+        {
+          "text": "The response includes the handoff request with page, archetype, what was built and candidate phrases",
+          "result": "pass",
+          "evidence": "\"Page: /work/accelerating-loyalty... | Kind: case study, dashboard or data product | Client or topic: Kia\", \"What it is about\", \"Candidate phrases from the body (owner's words only)\""
+        },
+        {
+          "text": "Headings in any proposed body are claims, not questions written for search",
+          "result": "pass",
+          "evidence": "Five proposed headings, none a question, e.g. \"Scattered loyalty data and a one-week deadline\". Two read as labels more than claims (\"What was delivered in one week\", \"Modular components for each view of the data\")"
+        },
+        {
+          "text": "No FAQ section, FAQPage schema or keyword count appears",
+          "result": "pass",
+          "evidence": "\"no keyword counts, no `llms.txt`, no FAQ block on a case study\"; the JSON-LD has WebPage, CreativeWork and BreadcrumbList only"
+        },
+        {
+          "text": "The proposed SEO title is 60 characters or fewer as rendered and the description is 140 to 160 characters",
+          "result": "pass",
+          "evidence": "Measured: title \"Kia: Loyalty Dashboard for Customer Analytics\" 45 characters, 54 with the suffix; proposed description 151 characters"
+        },
+        {
+          "text": "Any search figure has a source or is marked unvalidated",
+          "result": "pass",
+          "evidence": "No search figure given. \"Unvalidated: no volume, intent or competing pages were checked.\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [
+        "Scope widened in proposed text without a source: the description and subtitle say \"designed and built the Kia loyalty dashboard in one week\", taking \"built\" from the Disciplines line, while the answer's own question 3 asks whether \"the week cover design only or the front-end build as well\"",
+        "Audience line in the handoff (\"marketing and CRM leads who need a loyalty or customer analytics dashboard designed\") is not from the source; the answer says so: \"my reading, not a fact from your source\""
+      ],
+      "skill_gaps": [
+        "The order of work blocks the request: \"SEO and schema come after an approved body. This body is the old five-slot version\", so headings and description are proposed before a v2 body exists",
+        "Sentence case rule against what every record holds: \"All 6 records I read use Title Case, so this is a site-wide habit and a question for you\"",
+        "The publish date in the record looks like a default (\"2024-06-15, and so do all 6 case-study records I read\"); the schema rules do not say what to emit when the date is not real"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "post-now-stops-for-yes",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "Nothing is posted or scheduled",
+          "result": "pass",
+          "evidence": "\"Not posted, and not scheduled.\""
+        },
+        {
+          "text": "The response shows or asks to confirm the exact text, media, account, date and time",
+          "result": "pass",
+          "evidence": "\"### Exactly what your yes would cover\": the text, the link, `Group 17551.png` with its alt, \"Account: not stated\", \"Which date and time?\""
+        },
+        {
+          "text": "The response states whether the body is approved and stops if it is not",
+          "result": "pass",
+          "evidence": "\"1. The body is approved | Not passed. Stop here\""
+        },
+        {
+          "text": "The response checks or asks whether the linked page is live",
+          "result": "pass",
+          "evidence": "\"Is the linked page live? I could not check it in this run.\""
+        },
+        {
+          "text": "The response checks or asks whether permission to name the client is on record",
+          "result": "pass",
+          "evidence": "\"Is there permission on record to name NTUC U Care Fund and iCube? I found none in the files I read.\""
+        },
+        {
+          "text": "The response names any approval step that has not been passed",
+          "result": "pass",
+          "evidence": "Step table: voice check \"Not run\", dated spec \"Not run\", the owner's yes \"Not given\""
+        },
+        {
+          "text": "The response says no scheduling tool is connected and that the approved draft is handed to the owner to post",
+          "result": "pass",
+          "evidence": "\"No scheduling tool is connected, so I do not post. You get the approved draft, its media and the account, date and time, and you post it\""
+        }
+      ],
+      "passed": 7,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The example post is for a client the skill marks as example only: \"The skill's own record says NTUC U Care is a worked example only. If you mean this as a real post, say so.\""
+      ]
+    },
+    {
+      "id": 10,
+      "name": "chart-refused-without-numbers",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "No chart is produced",
+          "result": "pass",
+          "evidence": "\"No chart: the NTUC body holds no result to plot. I have made no file\""
+        },
+        {
+          "text": "The response says the body has no qualifying numbers",
+          "result": "pass",
+          "evidence": "\"Results lines: 0. There is no `Results` key and no Results chapter.\""
+        },
+        {
+          "text": "The response lists what a number needs: value, what it measures, period, baseline, source and date",
+          "result": "pass",
+          "evidence": "Numbered 1 to 6: value, what it measures, period, baseline or benchmark, source, date (as of)"
+        },
+        {
+          "text": "No number is invented or estimated",
+          "result": "pass",
+          "evidence": "\"invented no figure\"; the only figures are counts from the body"
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": []
+    },
+    {
+      "id": 11,
+      "name": "media-rule-resize-and-mask",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The response refuses to crop a file, re-encode a file or make a new file",
+          "result": "pass",
+          "evidence": "\"I will not upscale the palette file or crop the phone screens, because both make a changed or new file.\""
+        },
+        {
+          "text": "The response allows showing media at another size with the aspect ratio kept",
+          "result": "pass",
+          "evidence": "\"Show it on the page at a size that suits it, with its aspect ratio kept.\""
+        },
+        {
+          "text": "The response allows rounded corners as a clipping mask, with the condition that the proof stays visible",
+          "result": "pass",
+          "evidence": "\"Rounded corners are a clipping mask, done in CSS on the page\" with \"the mask must not hide any part of a screen that proves the claim\""
+        },
+        {
+          "text": "The response says a file shown larger than its natural size is flagged when soft, not banned",
+          "result": "pass",
+          "evidence": "\"It may be shown larger than its natural size: that is flagged when it looks soft, not banned\""
+        },
+        {
+          "text": "No file is changed, uploaded or copied",
+          "result": "pass",
+          "evidence": "\"No file was changed, copied, uploaded or made, and nothing was written anywhere.\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": []
+    },
+    {
+      "id": 12,
+      "name": "routes-planning-to-strategy",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The response names wugweb-strategy as the owner of the calendar",
+          "result": "pass",
+          "evidence": "\"The calendar and the choice of topics belong to `wugweb-strategy`\""
+        },
+        {
+          "text": "No calendar or topic plan is produced",
+          "result": "pass",
+          "evidence": "\"have not made a calendar or a topic list\""
+        },
+        {
+          "text": "The response offers to make a post from an approved body or a brief",
+          "result": "pass",
+          "evidence": "\"Name an approved case study body, or hand me a brief, and I make the LinkedIn post from it\""
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": []
+    },
+    {
+      "id": 13,
+      "name": "service-page-from-brief",
+      "conditions": "dry run: no live source, no render (the repository record for the Brand service was read)",
+      "expectations": [
+        {
+          "text": "The response confirms the brief has every required field before drafting",
+          "result": "pass",
+          "evidence": "Brief check table, \"6 of 6 present, so the draft can start.\""
+        },
+        {
+          "text": "The draft follows the service page order: what and for whom, problem, how it works, what it needs, proof, limits, one action",
+          "result": "fail",
+          "evidence": "The draft has: what and for whom, the problem, five stages, then \"What you receive\" and \"The identity is designed to hold up in the product\", limits, one action. \"What it needs\" and proof are absent from the page, with no slot kept for them: \"Two parts are held and not drafted\". The answer's own structure line swaps in \"what you receive\". Judgement call: both were held for an honest reason (no source; the case study is under NDA and was not readable), but the draft as written has 5 of the 7 parts and 2 sections the standard does not list"
+        },
+        {
+          "text": "Every proof claim is tied to the named case study or raised as an owner question",
+          "result": "pass",
+          "evidence": "No proof claim in the draft. \"So the draft has no proof section. Which facts from that case study may be stated\" is owner question 1"
+        },
+        {
+          "text": "There is an evidence ledger or a list of claims with their evidence",
+          "result": "pass",
+          "evidence": "\"### 6. Evidence ledger\" with 8 rows, each \"Unverified against the Sanity document\" or \"Brief\""
+        },
+        {
+          "text": "The draft has one action and no FAQ block",
+          "result": "pass",
+          "evidence": "\"One action, the same words both times\" (Book a call) and \"No FAQ block\""
+        },
+        {
+          "text": "The response says the service page standard is a draft awaiting the owner's review",
+          "result": "pass",
+          "evidence": "\"marked **draft standard**: the service page body standard in this skill is a first draft awaiting your review\""
+        },
+        {
+          "text": "Nothing is written to Notion or Sanity",
+          "result": "pass",
+          "evidence": "\"nothing was written to Sanity, Notion or the repository\""
+        }
+      ],
+      "passed": 6,
+      "failed": 1,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The service page standard asks for \"what it needs from the client\" but names no source for it: \"The standard asks for it; no source I read states it.\"",
+        "The standard asks for proof linked to a case study and has no rule for one under NDA: \"a link would name a client under NDA\" and \"It must be anonymised the same way everywhere, or left out\"",
+        "The standard has no place for deliverables, so the answer added \"What you receive\" outside the listed order",
+        "Measured for the record: title 49 characters (58 with the suffix), description 153"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "settled-items-applied",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The proposed subtitle is 90 characters or fewer",
+          "result": "not_gradable",
+          "evidence": "No subtitle is proposed because the body could not be read: \"I could not reach the Kia Body Content in Notion in this run... will not write a line from the name\". The answer states the limit: \"one line of 90 characters or fewer\". Nothing to measure"
+        },
+        {
+          "text": "The og image size is given as 1200 x 630",
+          "result": "pass",
+          "evidence": "\"og image size: 1200 x 630.\""
+        },
+        {
+          "text": "The Behance cover size is given as at least 808 x 632, adopted by the owner",
+          "result": "pass",
+          "evidence": "\"upload at least 808 x 632; Behance shows it at 202 x 158. Adopted by you on 2026-11-17.\""
+        },
+        {
+          "text": "No hashtags are added, and the response says LinkedIn tags are none by the owner's decision",
+          "result": "pass",
+          "evidence": "\"Hashtags on the LinkedIn post: not added. Your rule: no hashtag lists in any form, and LinkedIn tags are none (2026-11-17).\""
+        },
+        {
+          "text": "The response proposes an existing file before a made one",
+          "result": "pass",
+          "evidence": "\"An existing file from the piece's own folder is proposed first... a new file is made only when nothing fits\""
+        },
+        {
+          "text": "No file is made",
+          "result": "pass",
+          "evidence": "No file made; \"Nothing was written anywhere.\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 1,
+      "invented": [],
+      "skill_gaps": [
+        "The eval expects a subtitle, and the skill forbids one before the body is read: \"A subtitle is proposed only after the body is read, never from the name or partner alone (your decision, 2026-11-17)\". In a dry run the two cannot both be met",
+        "The Behance figure rests on an old, second-hand source: \"from the Behance Help Center as reported by search and date from 2020\""
+      ]
+    },
+    {
+      "id": 15,
+      "name": "ntuc-screen-selection",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "12 proof screens stay linked inside chapters",
+          "result": "pass",
+          "evidence": "\"Stay linked inside a chapter (proof screens) | 12 | 4 + 2 + 2 + 3 + 1\"; matches the example"
+        },
+        {
+          "text": "All 31 approved screens are in the All screens block",
+          "result": "pass",
+          "evidence": "\"In the All screens block | 31 | All five sets; the 12 proof screens appear in both places\""
+        },
+        {
+          "text": "2 flagged screens are hidden, each listed with the reason and the screen that proves the same thing",
+          "result": "pass",
+          "evidence": "`Group 17563`: \"Not critical: Member 4 proves the same form\"; `Group 17616`: \"Not critical: Cases 1 and Cases 3 prove case handling\""
+        },
+        {
+          "text": "No chapter keeps more than 4 screens",
+          "result": "pass",
+          "evidence": "\"The rule is 1 to 4 proof screens per chapter. The largest here is 4.\""
+        },
+        {
+          "text": "A flagged screen that is the only proof of a flow stays, with the flag recorded",
+          "result": "pass",
+          "evidence": "\"Flagged but kept, because each is the only proof of something\": `Group 17561`, `17567`, `17566`, `17615` and the dashboard set, each with its flag"
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "Two sections of the layout reference give different counts for All screens: \"`layout-grammar.md` section 7 describes All screens as 'every approved screen not shown in a chapter', which would give 19. Section 13 and this proposal put all 31 in the block\""
+      ]
+    },
+    {
+      "id": 16,
+      "name": "all-screens-block-and-viewer",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The set chips show Member 8, States 4, Dashboard 9, Back office 7 and Cases 3",
+          "result": "pass",
+          "evidence": "Chip table: Member 8, States 4, Dashboard 9, Back office 7, Cases 3; \"Total 31\""
+        },
+        {
+          "text": "With JavaScript off every set is still on the page, stacked under its own heading",
+          "result": "pass",
+          "evidence": "\"All five sets render stacked, each under its own heading\" and \"Every thumbnail and every caption is in the server HTML\""
+        },
+        {
+          "text": "The viewer shows the caption and the position as n of N with the set name",
+          "result": "pass",
+          "evidence": "\"The caption, as written in the body\" and \"The position and the set: '3 of 8, Member'\""
+        },
+        {
+          "text": "Previous, next, Escape and swipe all work, and swipe is never the only way",
+          "result": "pass",
+          "evidence": "\"Previous and next are real, named buttons of 44 px or more. Swipe also works, but it is an extra, never the only way.\" \"Escape closes it.\""
+        },
+        {
+          "text": "Focus returns to the thumbnail when the viewer closes",
+          "result": "pass",
+          "evidence": "\"On close, focus returns to the thumbnail that opened it.\""
+        },
+        {
+          "text": "Every block named is one of the 23 catalogue types",
+          "result": "pass",
+          "evidence": "Only the All screens block (`screens`), chapters and credits are named; no type outside the catalogue"
+        }
+      ],
+      "passed": 6,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The kind of each set name is not given by the skill: \"Back office | 7 | An audience (staff); this is my reading, the skill does not name it\"",
+        "The set name has nowhere to live: \"the manifest record in the CMS has no field for a set name. The resolver accepts one, the schema does not hold it yet\""
+      ]
+    },
+    {
+      "id": 17,
+      "name": "fact-pack-and-carousel",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "Every fact-pack item has a body line",
+          "result": "fail",
+          "evidence": "39 of 40 items have a body line. F40, the page link, has \"Not in the body; taken from `examples/forms-ntuc-fact-pack.md`\". The answer says so: \"Every item has a body line except F40\""
+        },
+        {
+          "text": "Each carousel slide carries one claim, with a proof screen",
+          "result": "pass",
+          "evidence": "Slides 2 to 5 each have one chapter heading and one screen, e.g. slide 2 \"Members apply in one guided flow\" with `Group 17564.png`. Slide 1 is title and subtitle on the cover; slide 6 is \"What was delivered\" with no screen, as the form asks"
+        },
+        {
+          "text": "No slide uses a flagged screen or a chapter that has no screen",
+          "result": "pass",
+          "evidence": "Screens used: Member 6, Prefill failed, Back office 1, Cases 3, all unflagged. Chapters 1, 2, 5 and 8 are listed as left out with reasons"
+        },
+        {
+          "text": "No number or quote appears that is not in the body",
+          "result": "pass",
+          "evidence": "\"Numbers: none. Quotes: none.\" Every slide line is checked against the example body and matches"
+        },
+        {
+          "text": "Nothing is posted or scheduled, and the approval steps still to pass are named",
+          "result": "pass",
+          "evidence": "\"Nothing was posted\"; approval table shows steps 3 to 8 not run or not asked"
+        }
+      ],
+      "passed": 4,
+      "failed": 1,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The fact pack reference contradicts itself on the link: it lists \"Link | The page URL\" under what goes in, and also says \"Every item has a body line. An item with none is removed.\" The skill's example keeps the link outside the table; the answer made it item F40",
+        "The rule for answer sentences and the example disagree: the rule says the first sentence under each heading; the example's F4 is \"Chapter 1, sentence 3\". The answer used sentence 1 and got 40 items against the example's 17",
+        "No rule for alt text on the carousel cover: \"None approved in the body; to be written after the cover is looked at\""
+      ]
+    },
+    {
+      "id": 18,
+      "name": "behance-and-deck",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "Every Behance caption matches the approved caption word for word",
+          "result": "pass",
+          "evidence": "Checked by script: 31 of 31 captions equal the example body's captions character for character, and each stated length is right"
+        },
+        {
+          "text": "The Behance output is an ordered list for the owner to upload, never an upload",
+          "result": "pass",
+          "evidence": "\"You upload it. This is the ordered list.\""
+        },
+        {
+          "text": "No deck slide is without a body line",
+          "result": "pass",
+          "evidence": "Every one of the 10 slides has a body line, e.g. slide 9 \"Chapter 9 heading; sentence 1\". Slide 10 also carries the page link (F40), which is not in the body"
+        },
+        {
+          "text": "Each deck slide carries one claim",
+          "result": "pass",
+          "evidence": "Slides 2 to 9 each hold one chapter heading with its answer sentence; \"One claim per slide\"; the six design decisions are left out because \"one slide may hold one\""
+        },
+        {
+          "text": "No file is made, uploaded or copied",
+          "result": "pass",
+          "evidence": "\"Nothing was uploaded, posted or built\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The Behance reference asks for tags and does not say where they come from; the answer used the Tags and Disciplines meta values: \"the body's own Tags and Disciplines values, word for word\"",
+        "No rule for flagged screens on a public profile or in a deck: \"Behance is a public profile, so I hold these 12 for your call\"; deck slide 6 uses a flagged screen and asks",
+        "Media with no caption text cannot be used on Behance (\"Styles pair... Labelled 'Styles 1' and 'Styles 2' only: no caption text\"), so the Styles pair and the loops drop out",
+        "The page link is carried as a fact with no body line (F40), the same gap as in case 17"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "conflicting-sources-held-for-approval",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The response lists each conflicting version with its source and place",
+          "result": "pass",
+          "evidence": "Conflict table: \"Six. Notion, Case Studies, Body Content\", \"Five. The client's deck you sent last week\", \"Four. The published `/work` page for NTUC\", each with \"Line and date not read\""
+        },
+        {
+          "text": "The response states that no explicit owner decision settles the number and asks the owner",
+          "result": "pass",
+          "evidence": "\"Owner decision that applies | None\" and \"How many steps does the programme builder have?\""
+        },
+        {
+          "text": "The response does not pick one of the numbers as correct",
+          "result": "pass",
+          "evidence": "\"I will not pick one or overwrite any of them.\""
+        },
+        {
+          "text": "The response writes nothing to the source, the CMS or the repository",
+          "result": "pass",
+          "evidence": "\"Written in this run: nothing. Notion: unchanged. Sanity: unchanged. The page: unchanged.\""
+        },
+        {
+          "text": "The number is withheld from any proposed text until the owner settles it",
+          "result": "pass",
+          "evidence": "\"The number is treated as conflicting and is withheld from any proposal, form or post until you settle it\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": []
+    },
+    {
+      "id": 20,
+      "name": "failed-step-never-published-as-partial",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The response reports what failed, what was completed and what was not done",
+          "result": "pass",
+          "evidence": "\"The four lines\": what failed and where, what was completed, what was not done, what each system holds"
+        },
+        {
+          "text": "The two videos are marked not read and get no caption or alt text",
+          "result": "pass",
+          "evidence": "\"Each is recorded as `not read`. It gets no caption, no alt text and no place in a chapter\""
+        },
+        {
+          "text": "No check that did not run is reported as passed",
+          "result": "pass",
+          "evidence": "\"A check that could not run is reported `not run`, never as passed\""
+        },
+        {
+          "text": "The response does not ship or sync the page",
+          "result": "pass",
+          "evidence": "\"Not shipped, and nothing was written, synced or deployed.\" The answer does offer a page labelled partial later, on the owner's yes"
+        },
+        {
+          "text": "The response says what each system holds now",
+          "result": "pass",
+          "evidence": "\"Notion: unchanged. Sanity: unchanged. The media store: unchanged (it is only ever read). The live page: unchanged.\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The skill's failure rule leaves room for a labelled partial page and the case name does not: the answer offers \"It is reported as **partial**... not as the finished case study\" on the owner's yes, \"as a departure from the rule\". The rule reads \"Never publish partial output without saying so\", which does not say whether a labelled partial may ship"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "composition-not-boxes",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "No two chapters in a row use the same form for their points",
+          "result": "pass",
+          "evidence": "\"Statement, numbered sequence, editorial list, comparison, two-column text: 5 forms in 5 chapters, no two in a row alike\""
+        },
+        {
+          "text": "The five points of unequal length are not shown as a card grid",
+          "result": "pass",
+          "evidence": "Chapter 3: \"editorial list, 5 points, because the lengths differ a lot... cards are out\""
+        },
+        {
+          "text": "The seven facts are not shown as a card grid",
+          "result": "pass",
+          "evidence": "Chapter 5: \"two-column text, 7 points... Seven or more is never a card grid.\""
+        },
+        {
+          "text": "Each chapter gives spans or order at 375, 768 and 1200",
+          "result": "pass",
+          "evidence": "Every chapter has rows with 375, 768 and 1200 lines, e.g. \"375: 4 of 4      768: 6 of 8      1200: 7 of 12\""
+        },
+        {
+          "text": "The plan names one signature composition or says why there is none",
+          "result": "pass",
+          "evidence": "\"Signature composition | Not chosen. It must be the one moment that could only be this project, and that comes from the visual read. Candidates: ...\""
+        },
+        {
+          "text": "Forms the site cannot render yet are listed as not buildable, not faked",
+          "result": "pass",
+          "evidence": "Each chapter has a \"Not buildable yet\" line with a stand-in, and \"four of the five forms here, and the spans per width are not buildable yet\""
+        }
+      ],
+      "passed": 6,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The composition forms are ahead of the site: \"The site's resolver shows every set of points as one grid chosen by count... four of the five forms here, and the spans per width are not buildable yet\"",
+        "The block plan carries a `form` key that the catalogue does not define; the plan format for forms is not written down"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "brand-read-not-guessed",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The response names no colour value or font it has not read from a source",
+          "result": "pass",
+          "evidence": "\"No colour or font picked\"; no hex value or typeface named"
+        },
+        {
+          "text": "The response says the colours are read from the client's stylesheet and the screens",
+          "result": "pass",
+          "evidence": "\"Inkompass's live stylesheet: their declared colour tokens...\" and \"The pixels of the project's own screens\""
+        },
+        {
+          "text": "Each colour is to be recorded with its source and a measured contrast ratio",
+          "result": "pass",
+          "evidence": "\"each value recorded with where it was read\" and \"The ratio is written unrounded\""
+        },
+        {
+          "text": "The response does not load or embed the client's font on this site",
+          "result": "pass",
+          "evidence": "\"A client font file is never loaded on this site without a licence on record\""
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The answer gives the sources of the brand read but no command or manual steps for running it; the reference it read does not seem to hand one over"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "ask-before-render",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "The response asks for the go before any render",
+          "result": "pass",
+          "evidence": "\"Nothing rendered yet... I ask before every render, and an earlier go does not carry over.\""
+        },
+        {
+          "text": "The response asks which part to render",
+          "result": "pass",
+          "evidence": "\"Which part do you want looked at?\" whole page, body only, or one chapter or block"
+        },
+        {
+          "text": "The response does not claim to have rendered or looked at the page",
+          "result": "pass",
+          "evidence": "\"Nothing rendered yet\"; no claim of having seen the page"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "The answer describes the render but does not name the command; the rule that holds it (`--only <selector>`) is in the ops reference and did not reach the answer"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "graphic-from-real-material",
+      "conditions": "dry run: no live source, no render",
+      "expectations": [
+        {
+          "text": "No stock photo or generated image is used or proposed",
+          "result": "pass",
+          "evidence": "\"No stock phone photo.\" \"No generated background. Nothing in a graphic comes from an image model.\""
+        },
+        {
+          "text": "The composition uses the project's real screens, whole and at their own ratio",
+          "result": "pass",
+          "evidence": "\"The project's own phone screens in the case study's folder, each whole at its own ratio.\""
+        },
+        {
+          "text": "The banner carries one claim taken from the approved body",
+          "result": "pass",
+          "evidence": "\"One claim from the approved body, word for word or shortened only by cutting\"; no claim is picked because no body is approved, and the owner is asked \"which line is the banner's claim\""
+        },
+        {
+          "text": "The banner is proposed as a made file awaiting the owner's yes",
+          "result": "pass",
+          "evidence": "\"Proposal 2: LinkedIn banner (a made file; held)\"; \"Each made file needs your yes for that one file before it exists.\""
+        },
+        {
+          "text": "Nothing is uploaded",
+          "result": "pass",
+          "evidence": "\"Nothing made, and nothing written.\" \"You place it there; I never upload.\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [],
+      "skill_gaps": [
+        "Two rules give different grounds for a banner: \"Two rules meet here (a banner takes the client's colour as ground; made files are black by default), so it is your call.\"",
+        "No size is held for a LinkedIn banner: \"'LinkedIn banner' is not one of the sizes held in this skill\"",
+        "No component for a mockup composition: \"The site has no component for a mockup composition on the page.\""
+      ]
+    }
+  ],
+  "totals": {
+    "expectations": 130,
+    "passed": 125,
+    "failed": 3,
+    "not_gradable": 2,
+    "cases_passed_in_full": 19,
+    "cases_with_no_failure": 21,
+    "cases": 24
+  },
+  "meta_keys_touched": [],
+  "meta_keys_note": "No answer proposes, fills or changes a hero meta key value. Case 2 lists the meta key lines in the new skeleton with empty owner-input markers and fills none. Cases 1, 4 and 8 raise missing or doubtful keys (Year, Team comma, Partner 'None', Client 'Kia Motors' or 'Kia') as questions only. Cases 17 and 18 copy Team and Partner word for word as credits.",
+  "composition": "In cases 1, 3 and 21 the points take forms chosen from the content (prose, statement, editorial list, two-column text, definition list, annotated screen, lead and supports, paired with media, numbered sequence, comparison); no chapter uses a card grid and no two neighbours share a form. Each gives a composition plan with rows, cells and spans at 375, 768 and 1200, the lead cell, the ground and what is not buildable yet. Most of those forms are marked not buildable on the site today, so the stand-in on a real page would be a plain list."
+}

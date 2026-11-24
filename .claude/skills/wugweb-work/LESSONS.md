@@ -26,6 +26,13 @@ Rules:
 
 ## Lessons
 
+### 2026-11-19: Running the evals found contradictions inside the skill that reading did not
+What happened: all 24 cases were run by one set of model runs and graded by another. 125 of 130 expectations were met. The three failures and the list of gaps came from places where two files of the skill disagreed, or an example broke a rule.
+The owner's words: "do it" (2026-11-19), on running the evals.
+Why it happened: the skill grew quickly that day and was checked by reading and by a structure validator, neither of which runs a task end to end.
+Changed: the ten fixes listed under 0.6.1 in `CHANGELOG.md`.
+Check for it: `evals/RESULTS.md`. Re-run the cases after any change to a reference file, and before raising the version.
+
 ### 2026-11-19: The skill gives composition, not a list of boxes
 What happened: layouts showed every set of points as a grid of equal cards, with the same number of points in each chapter, unbalanced, and with no client colour, icons or branded visuals.
 The owner's words: "you stick to boxes even though they were not balanced", "why you stick to the same number of bullets when you can play around", "no creativity in layout", "usage of icons and usage of colors and branded visuals and content is totally lacking" (2026-11-19).

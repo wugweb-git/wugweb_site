@@ -1,0 +1,854 @@
+{
+  "skill": "wugweb-brand-os",
+  "version": "0.3.3",
+  "date": "2026-11-19",
+  "conditions": "dry run: no live sources, no web, no image files, no writes",
+  "graded_by": "a separate model run that did not write the answers",
+  "cases": [
+    {
+      "id": 1,
+      "name": "answer: positioning is not decided",
+      "expectations": [
+        {
+          "text": "Says the positioning line is not decided and the owner will supply it",
+          "result": "pass",
+          "evidence": "\"Not decided: the owner supplies it.\""
+        },
+        {
+          "text": "Lists the lines in use with their status, without choosing one",
+          "result": "pass",
+          "evidence": "Table of seven lines with a Status column; \"I will not pick one\""
+        },
+        {
+          "text": "Does not use 'Creative UX Design Agency'",
+          "result": "pass",
+          "evidence": "Listed only as a found line: \"Creative UX Design Agency ... Stale\"; not offered as the line"
+        },
+        {
+          "text": "Cites references/identity-and-positioning.md",
+          "result": "pass",
+          "evidence": "\"None of them is the line (`references/identity-and-positioning.md`)\""
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 2,
+      "name": "answer: the five approved values",
+      "expectations": [
+        {
+          "text": "Gives the five values approved 2026-11-17: User-Centricity, Innovation, Collaboration, Excellence, Social Impact",
+          "result": "pass",
+          "evidence": "\"User-Centricity ... Social Impact\"; \"approved by the owner on 2026-11-17\""
+        },
+        {
+          "text": "Keeps the ten principles apart, labelled as principles and not as values",
+          "result": "pass",
+          "evidence": "\"The ten principles ... stay principles, not values\""
+        },
+        {
+          "text": "Does not derive more values",
+          "result": "pass",
+          "evidence": "\"Use these five and no others ... no further value is derived from them\""
+        },
+        {
+          "text": "Cites references/values-and-principles.md",
+          "result": "pass",
+          "evidence": "\"File: `references/values-and-principles.md`.\""
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 3,
+      "name": "answer: fixed rule with its file",
+      "expectations": [
+        {
+          "text": "States yellow is an accent at 10% or less, reserved for the one conversion action and the footer banner",
+          "result": "pass",
+          "evidence": "\"an accent at 10% or less\"; \"the one conversion action per page, and the footer banner\""
+        },
+        {
+          "text": "Gives no colour value and points to wugweb-kits for values",
+          "result": "pass",
+          "evidence": "\"The exact yellow ... belong to `wugweb-kits`. No value is written here.\""
+        },
+        {
+          "text": "Cites one reference file",
+          "result": "pass",
+          "evidence": "\"held in `references/visual-os/colour-type-photo-motion.md`\" (the only reference file cited in the response)"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 4,
+      "name": "visual check: AI brain",
+      "expectations": [
+        {
+          "text": "Result fail",
+          "result": "pass",
+          "evidence": "\"Result: fail.\""
+        },
+        {
+          "text": "Names the banned motifs: AI brain, circuitry, glowing blue technology",
+          "result": "pass",
+          "evidence": "Findings 1 to 3: \"An AI brain\", \"circuit boards and circuitry\", \"glowing blue technology\""
+        },
+        {
+          "text": "Flags text inside the artwork for a blog hero",
+          "result": "pass",
+          "evidence": "\"Blog hero: text in the artwork is none; the headline sits outside the image.\""
+        },
+        {
+          "text": "Proposes a fix through the Intelligence metaphor",
+          "result": "pass",
+          "evidence": "\"AI brain to the Intelligence metaphor in `references/visual-os/metaphors.md`\""
+        },
+        {
+          "text": "Says only a brief was judged, not a rendered image",
+          "result": "pass",
+          "evidence": "\"No artwork was supplied, so no artwork was seen. Everything below judges the brief.\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 5,
+      "name": "visual check: two modes mixed",
+      "expectations": [
+        {
+          "text": "Result fail",
+          "result": "pass",
+          "evidence": "\"Result: fail.\""
+        },
+        {
+          "text": "Says more than one visual mode is blended and names them",
+          "result": "pass",
+          "evidence": "\"The brief blends four visual modes\"; table maps each element to Systems and architecture, Product proof, Typographic presentation, Campaign collage"
+        },
+        {
+          "text": "Flags connectors used as texture when the subject is not a system",
+          "result": "pass",
+          "evidence": "\"allowed only when the subject is a system, architecture, blueprint or network. A brand workshop offer is not.\""
+        },
+        {
+          "text": "Flags no single anchor and too many devices",
+          "result": "pass",
+          "evidence": "\"No anchor\"; \"Three phone mockups ... normally one device\""
+        },
+        {
+          "text": "Fix removes elements; it does not add any",
+          "result": "pass",
+          "evidence": "Every fix reduces: \"Grid across the canvas to none\", \"Three phones to none\", \"Remove, do not add\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 6,
+      "name": "visual check: clean brief",
+      "expectations": [
+        {
+          "text": "Passes the brief: no banned motif, one mode, one anchor; says the artwork itself was not seen, so the pass covers the brief only",
+          "result": "pass",
+          "evidence": "\"Result: pass, as a brief.\"; \"No artwork was supplied ... the render still needs its own check.\""
+        },
+        {
+          "text": "Names one mode, product proof or editorial",
+          "result": "pass",
+          "evidence": "\"Mode. Product proof ... No second mode is blended in.\""
+        },
+        {
+          "text": "Confirms the cover shows a project-specific object",
+          "result": "pass",
+          "evidence": "\"Cover rule | Project-specific object, not a generic laptop or dashboard. Pass\""
+        },
+        {
+          "text": "Notes the mask must not hide the part that proves the claim",
+          "result": "pass",
+          "evidence": "\"The mask must not hide the part of the screen that proves the claim\""
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 7,
+      "name": "cover rule",
+      "expectations": [
+        {
+          "text": "Result fail",
+          "result": "pass",
+          "evidence": "\"Result: fail. No, it is not on brand.\""
+        },
+        {
+          "text": "Names the cover rule: a project-specific object or outcome, never a generic laptop or dashboard",
+          "result": "pass",
+          "evidence": "\"a case-study cover shows a project-specific object or outcome, never a generic laptop or dashboard\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 8,
+      "name": "fact check: 400+ projects",
+      "expectations": [
+        {
+          "text": "'400+ projects' marked not approved, with the note that 200+ also appears",
+          "result": "pass",
+          "evidence": "\"400+ projects delivered | Not approved | ... both \\\"200+\\\" and \\\"400+\\\" appear on one 2023 page\""
+        },
+        {
+          "text": "'Creative UX Design Agency' marked stale",
+          "result": "pass",
+          "evidence": "\"This wording comes from the 2023 Notion profile and its status is stale.\""
+        },
+        {
+          "text": "'founded in 2020' marked approved (4 December 2020, approved 2026-11-17)",
+          "result": "pass",
+          "evidence": "\"founded in 2020 | Approved | Founding date 4 December 2020 ... approved by the owner 2026-11-17\""
+        },
+        {
+          "text": "'six pillars' marked approved",
+          "result": "pass",
+          "evidence": "\"six pillars | Approved | Six pillars, approved and fixed\""
+        },
+        {
+          "text": "'WugWeb' flagged as not the approved spelling; the approved spelling is 'Wugweb'",
+          "result": "pass",
+          "evidence": "\"The approved spelling is \\\"Wugweb\\\" ... \\\"WugWeb\\\" is flagged as not the approved spelling.\""
+        },
+        {
+          "text": "No number is softened or replaced",
+          "result": "pass",
+          "evidence": "\"I have not offered another number in place of \\\"400+\\\". There is no approved figure to offer.\""
+        }
+      ],
+      "passed": 6,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 9,
+      "name": "change: proposal only",
+      "expectations": [
+        {
+          "text": "Shows current to proposed with the file that would change",
+          "result": "pass",
+          "evidence": "Current to proposed table naming `references/visual-os/colour-type-photo-motion.md`, `SKILL.md` and `references/source-map.md`"
+        },
+        {
+          "text": "Points out the conflict with the confirmed rule that yellow is the one brand colour (question 15)",
+          "result": "pass",
+          "evidence": "\"the opposite of your ruling of 2026-11-17 on question 15 ... confirmed, yellow\""
+        },
+        {
+          "text": "Applies nothing and asks for the owner's approval",
+          "result": "pass",
+          "evidence": "\"Nothing has been applied\"; \"Reply with a yes to the reversal\""
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 10,
+      "name": "near miss: voice",
+      "expectations": [
+        {
+          "text": "Does not answer from this skill",
+          "result": "pass",
+          "evidence": "\"That is a job for `wugweb-voice`, not this skill ... I will not edit the paragraph here.\""
+        },
+        {
+          "text": "Points to wugweb-voice",
+          "result": "pass",
+          "evidence": "\"Please send it to `wugweb-voice`.\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 11,
+      "name": "near miss: content strategy",
+      "expectations": [
+        {
+          "text": "Does not answer from this skill",
+          "result": "pass",
+          "evidence": "\"I am not answering either one here.\""
+        },
+        {
+          "text": "Points to wugweb-strategy",
+          "result": "pass",
+          "evidence": "\"Both questions belong to `wugweb-strategy`, not this skill.\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 12,
+      "name": "near miss: tokens",
+      "expectations": [
+        {
+          "text": "Gives no value",
+          "result": "pass",
+          "evidence": "\"No token value is written here: no hex, no radius.\""
+        },
+        {
+          "text": "Points to wugweb-kits",
+          "result": "pass",
+          "evidence": "\"Please ask `wugweb-kits` for the two values.\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 13,
+      "name": "line with wugweb-strategy",
+      "expectations": [
+        {
+          "text": "Answers all three from this skill",
+          "result": "pass",
+          "evidence": "\"Mode: Answer. All three questions are held here.\""
+        },
+        {
+          "text": "Audience reported as not decided, citing references/audience.md",
+          "result": "pass",
+          "evidence": "\"Audience: not decided, the owner supplies it (question 3) ... `references/audience.md`\""
+        },
+        {
+          "text": "Differentiation reported as not decided, citing references/identity-and-positioning.md",
+          "result": "pass",
+          "evidence": "\"Differentiation: not decided, the owner decides ... (`references/identity-and-positioning.md`)\""
+        },
+        {
+          "text": "Campaign visuals answered from Visual OS; campaign systems reported as not defined",
+          "result": "pass",
+          "evidence": "\"Wugweb has no campaign system (owner, 2026-11-17), so none is defined here\"; direction given from the Visual OS files"
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 14,
+      "name": "no writes",
+      "expectations": [
+        {
+          "text": "Does not edit brand_guidelines/",
+          "result": "pass",
+          "evidence": "\"No edit made. I have not opened `brand_guidelines/` for writing and will not\""
+        },
+        {
+          "text": "Says brand_guidelines/ is an untouched archive and no wording change is proposed",
+          "result": "pass",
+          "evidence": "\"`brand_guidelines/` stays untouched as the evidence archive ... The four guideline wording changes were dropped.\""
+        },
+        {
+          "text": "Says the crop definition is approved and lives only in the skill (question 12)",
+          "result": "pass",
+          "evidence": "\"Question 12, answered: the definition of \\\"crop\\\" is approved and held only in the skill.\""
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 18,
+      "name": "answer: the six pillars",
+      "expectations": [
+        {
+          "text": "Gives the six pillars in order: Strategy, Brand, Experience, Engineering, Growth, Operations",
+          "result": "pass",
+          "evidence": "Numbered list: \"Strategy, Brand, Experience, Engineering, Growth, Operations\""
+        },
+        {
+          "text": "Says older service lists are reference only",
+          "result": "pass",
+          "evidence": "\"The older eight-service list in Notion is reference only.\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 19,
+      "name": "answer: messaging framework",
+      "expectations": [
+        {
+          "text": "One claim, one audience tension, one proof, one outcome",
+          "result": "pass",
+          "evidence": "\"Every asset has one claim, one audience tension, one proof and one outcome\""
+        },
+        {
+          "text": "Order is problem, insight, system, outcome",
+          "result": "pass",
+          "evidence": "\"The order is Problem to Insight to System to Outcome\""
+        },
+        {
+          "text": "Cites references/messaging.md",
+          "result": "pass",
+          "evidence": "\"Mode: Answer. File: `references/messaging.md`.\""
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 20,
+      "name": "line: navigation logo size",
+      "expectations": [
+        {
+          "text": "Says this is not brand-os",
+          "result": "pass",
+          "evidence": "\"The size is held by `wugweb-kits`, not this skill ... I have no value to give.\""
+        },
+        {
+          "text": "Points to wugweb-kits",
+          "result": "pass",
+          "evidence": "\"Please ask `wugweb-kits`.\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 21,
+      "name": "line: title tag",
+      "expectations": [
+        {
+          "text": "Says this is not brand-os",
+          "result": "pass",
+          "evidence": "\"That is for `wugweb-seo`, not this skill.\""
+        },
+        {
+          "text": "Points to wugweb-seo",
+          "result": "pass",
+          "evidence": "\"Please take the page to `wugweb-seo`.\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 22,
+      "name": "line: write a LinkedIn post",
+      "expectations": [
+        {
+          "text": "Says this is not brand-os",
+          "result": "pass",
+          "evidence": "\"Not written here. This skill is reference only\""
+        },
+        {
+          "text": "Points to wugweb-work",
+          "result": "pass",
+          "evidence": "\"Writing the post, its size and form | `wugweb-work`\""
+        },
+        {
+          "text": "May offer brand rules, Visual OS direction and approved facts; writes no post",
+          "result": "pass",
+          "evidence": "Offers the messaging rule, format and approved facts; no post text appears in the answer"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 23,
+      "name": "visual: crop request",
+      "expectations": [
+        {
+          "text": "Says an existing media file is never cropped",
+          "result": "pass",
+          "evidence": "\"No. The file is not cropped, by this skill or any other.\""
+        },
+        {
+          "text": "Offers a resize at the same ratio, or a mask that does not hide the proof",
+          "result": "pass",
+          "evidence": "\"show it inside the square at its original aspect ratio\"; \"It must not hide the part of the screen that proves the claim\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 24,
+      "name": "visual: no image given",
+      "expectations": [
+        {
+          "text": "States the artwork was not seen and only the brief was judged",
+          "result": "pass",
+          "evidence": "\"The artwork was not seen.\"; \"Mode: Visual check, on a written brief only.\" The prompt held no brief text, and the answer says so and gives no verdict"
+        }
+      ],
+      "passed": 1,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 25,
+      "name": "visual: yellow on every card",
+      "expectations": [
+        {
+          "text": "Fails the yellow reservation rule",
+          "result": "pass",
+          "evidence": "\"Result: fail as briefed.\"; \"Yellow is a reservation, not an emphasis level.\""
+        },
+        {
+          "text": "Names the rule and its file",
+          "result": "pass",
+          "evidence": "Rule quoted with \"(confirmed, `references/visual-os/colour-type-photo-motion.md`)\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 26,
+      "name": "fact: superlative",
+      "expectations": [
+        {
+          "text": "Flagged as a superlative without evidence",
+          "result": "pass",
+          "evidence": "\"\\\"leading\\\" | Not approved | A superlative with no evidence.\""
+        },
+        {
+          "text": "Copy is not corrected",
+          "result": "pass",
+          "evidence": "\"I have not corrected or rewritten the copy\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 27,
+      "name": "fact: founding year and client",
+      "expectations": [
+        {
+          "text": "Founding year marked approved (4 December 2020, approved 2026-11-17)",
+          "result": "pass",
+          "evidence": "\"Founded in 2020 | Approved | Founding date: 4 December 2020 ... approved 2026-11-17\""
+        },
+        {
+          "text": "Client named only if the owner cleared the name",
+          "result": "pass",
+          "evidence": "\"A client is named only when the owner has cleared that name for public use ... no record that this name is cleared\""
+        },
+        {
+          "text": "Nothing corrected",
+          "result": "pass",
+          "evidence": "\"I have not changed the copy.\""
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 28,
+      "name": "fact: stale profile phone",
+      "expectations": [
+        {
+          "text": "Says the 2023 profile is stale",
+          "result": "pass",
+          "evidence": "\"The 2023 profile is stale and contradicts itself\""
+        },
+        {
+          "text": "Number marked not approved",
+          "result": "pass",
+          "evidence": "\"The phone number, taken from the 2023 profile | Not approved\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 29,
+      "name": "fact: unattributed testimonial",
+      "expectations": [
+        {
+          "text": "Flagged",
+          "result": "pass",
+          "evidence": "\"Result: the testimonial is not approved.\"; \"A quote without a named source and permission is a finding\""
+        },
+        {
+          "text": "No quote invented to replace it",
+          "result": "pass",
+          "evidence": "\"I will not supply a name, a role or an organisation for it.\"; no quote appears in the answer"
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 30,
+      "name": "change: final CTA green",
+      "expectations": [
+        {
+          "text": "Shown as current to proposed",
+          "result": "pass",
+          "evidence": "Current to proposed table for the sentence ending \"the final call to action stays yellow\""
+        },
+        {
+          "text": "Names the conflict with the fixed yellow rule",
+          "result": "pass",
+          "evidence": "\"the request conflicts with three confirmed rulings\"; \"Yellow is the one brand colour (question 15...)\""
+        },
+        {
+          "text": "Waits for the owner and edits nothing",
+          "result": "pass",
+          "evidence": "\"Nothing has been changed.\"; \"You decide.\""
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 31,
+      "name": "change: new tagline",
+      "expectations": [
+        {
+          "text": "Asks for the owner's approval of that exact text, source and date",
+          "result": "pass",
+          "evidence": "\"The exact wording, as you want it used\"; proposed row carries \"source \\\"owner\\\", status \\\"Approved\\\" with the date of your yes\""
+        },
+        {
+          "text": "Adds nothing itself",
+          "result": "pass",
+          "evidence": "\"Nothing has been added ... I will not write or guess one.\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 32,
+      "name": "never: write the About page",
+      "expectations": [
+        {
+          "text": "Declines to author",
+          "result": "pass",
+          "evidence": "\"Not written here. This skill never authors or rewrites content\""
+        },
+        {
+          "text": "Points to wugweb-work",
+          "result": "pass",
+          "evidence": "\"Writing the page is `wugweb-work`\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 33,
+      "name": "never: generate logos",
+      "expectations": [
+        {
+          "text": "Declines",
+          "result": "pass",
+          "evidence": "\"No. This skill makes no media, and no logo is generated for Wugweb.\""
+        },
+        {
+          "text": "Uses the real logo file",
+          "result": "pass",
+          "evidence": "\"use the real logo file wherever a logo belongs\"; names `public/brand/logo-large.svg` and `logo-small.svg`"
+        },
+        {
+          "text": "No media is made",
+          "result": "pass",
+          "evidence": "No image or logo produced; \"The drawing itself would still not be done by this skill.\""
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 34,
+      "name": "never: 2023 profile as truth",
+      "expectations": [
+        {
+          "text": "Declines; it is stale background",
+          "result": "pass",
+          "evidence": "\"Not applied. The profile cannot be adopted whole\"; \"stale and contradicts itself\"; \"listed for reference and never relied on\". It does leave a route to reverse the rule on the owner's say, as a proposal only"
+        }
+      ],
+      "passed": 1,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 35,
+      "name": "never: set tone of voice",
+      "expectations": [
+        {
+          "text": "Declines",
+          "result": "pass",
+          "evidence": "\"Not here ... I have set nothing and changed nothing.\""
+        },
+        {
+          "text": "Points to wugweb-voice",
+          "result": "pass",
+          "evidence": "\"Tone of voice belongs to `wugweb-voice`.\""
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 37,
+      "name": "portability: export has every rule",
+      "expectations": [
+        {
+          "text": "Every rule in SKILL.md is present in the export",
+          "result": "pass",
+          "evidence": "\"Rule lines missing from the export | 0\". The grader repeated the comparison: all 144 non-empty body lines of SKILL.md are in the export"
+        }
+      ],
+      "passed": 1,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 38,
+      "name": "portability: one home per rule",
+      "expectations": [
+        {
+          "text": "Each rule text appears once",
+          "result": "fail",
+          "evidence": "The answer itself finds repeats: the cover rule \"Two homes are claimed\" (also in `wugweb-work/references/layout-grammar.md` line 49), and two standing rules restated inside this skill, each \"Should fix\". The grader confirmed the layout-grammar line exists"
+        },
+        {
+          "text": "No voice rule appears here",
+          "result": "fail",
+          "evidence": "Missing. The answer searched other skills for this skill's rules and never says whether a voice rule appears in this skill"
+        }
+      ],
+      "passed": 0,
+      "failed": 2,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 39,
+      "name": "no writes: end to end",
+      "expectations": [
+        {
+          "text": "Nothing is written outside the reply or a draft file",
+          "result": "pass",
+          "evidence": "\"The whole answer was returned in chat\"; \"The only files changed are eval run records under `evals/runs/2026-11-19/`\". Notion, Sanity and R2 could not be checked by the grader; the answer says no call was made"
+        },
+        {
+          "text": "No file in brand_guidelines/ changes",
+          "result": "pass",
+          "evidence": "\"`brand_guidelines/` | Nothing\"; the working tree listing at the start of grading shows no change there"
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    }
+  ],
+  "not_run": [
+    {
+      "id": 15,
+      "name": "audience answer",
+      "status": "waiting on the owner"
+    },
+    {
+      "id": 16,
+      "name": "approved and rejected examples",
+      "status": "waiting on the owner"
+    },
+    {
+      "id": 17,
+      "name": "export parity",
+      "status": "waiting on the owner"
+    },
+    {
+      "id": 36,
+      "name": "triggering: should trigger and should not",
+      "status": "waiting on the app upload"
+    }
+  ],
+  "totals": {
+    "expectations": 93,
+    "passed": 91,
+    "failed": 2,
+    "not_gradable": 0,
+    "cases_passed_in_full": 34,
+    "cases": 35
+  }
+}

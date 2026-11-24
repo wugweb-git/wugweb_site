@@ -66,6 +66,7 @@ Alt text and captions are content, not derived data. They are proposed as curren
 | `heroScore` | 0 to 5: project-specific, legible small, never a generic laptop or dashboard (the cover rule, held in `layout-grammar.md` section 3) |
 | `alt` | 10 to 125 characters |
 | `caption` | 25 words or fewer |
+| Boards | A file that shows several screens on one artboard (a presentation board, a contact sheet) is one record. Its `kind` is the kind of the screens on it, with `board: true`; its `what`, `alt` and `caption` describe the board as a whole and say how many screens it holds. It never has an empty `alt` or `caption` unless it is marked `not read` or is not to be shown |
 | `chapterFit` | Which chapter it proves |
 | `principle` | A design principle the screen applies, with the decision (see `design-principles.md`). Optional per record, but each flow names at least one where a screen shows the decision |
 | Videos add `demonstrates`, `loopable`, `posterAt`, `audio` | On top of every field above, `what`, `kind`, `alt` and `caption` included. `audio` is reported only |
@@ -108,7 +109,8 @@ The two records below come from two different clients. The schema is the same fo
 
 ```json
 { "url": "…/airtel-xsafe-3.png", "what": "IndusNinja presentation board of three phone screens; the file name says Airtel Xsafe, the screens do not",
-  "kind": "mobile screen", "brand": { "which": "IndusNinja" }, "quality": ["misnamed file", "near-duplicate"],
+  "kind": "mobile screen", "board": true, "brand": { "which": "IndusNinja" }, "quality": ["misnamed file", "near-duplicate"],
+  "alt": "Presentation board of three IndusNinja phone screens", "caption": "Three screens on one board; a near-duplicate of the single screens, so not shown.",
   "chapterFit": null }
 ```
 

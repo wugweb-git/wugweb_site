@@ -229,7 +229,7 @@ Ship covers the built page, the synchronisation and the deployment. After a sync
 - A source row with no slug, or more than one match: skip it and list it for the owner.
 - A canonical that is not the page's own address: do not overwrite it; list it for the owner.
 
-**Never publish partial output without saying so.** A step that fails stops the cycle at that step. Nothing downstream runs on a guess, a cached copy passed off as fresh, or half a result. The report says what failed, what was and was not done, and what state each system is in.
+**Never publish partial output without saying so.** A step that fails stops the cycle at that step. Offering to ship a page marked "partial" is not a way round this: a partial page is shipped only when the owner, told exactly what is missing, says yes to that partial page. Nothing downstream runs on a guess, a cached copy passed off as fresh, or half a result. The report says what failed, what was and was not done, and what state each system is in.
 
 | What fails | What it looks like | What to do | What must not happen |
 |---|---|---|---|

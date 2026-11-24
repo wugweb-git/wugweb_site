@@ -57,7 +57,7 @@ This is the one list. `scripts/case-audit.mjs` carries the same 25 words and `sc
 |---|---|
 | Subtitle | 90 characters or fewer (settled by the owner, 2026-11-16); proposed only after the body is read, never from the name or partner alone (owner, 2026-11-17) |
 | Summary | 40 to 60 words |
-| Chapter | 30 to 150 words |
+| Chapter | 30 to 150 words. Its first sentence answers the heading; where an older example opens with context and answers later, the rule stands and the example is wrong |
 | Point title | 2 to 6 words |
 | Point text | One sentence |
 | Caption | 25 words or fewer, saying why the screen matters |

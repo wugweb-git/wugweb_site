@@ -1,5 +1,7 @@
 # Example: MusicLinkd, Body Content v2 skeleton (large screen set)
 
+> **Read this first (2026-11-19).** This example was written before two owner decisions. First, a case study's hero meta keys (Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country, Special Thanks) are the owner's: where this example proposes or fills one, do not copy that; read them and leave them. Second, it is the skill's own draft and was never approved by the owner as content. Use it for the format only.
+
 A skeleton for a product with a very large set of screens. The page shows 1 to 4 proof screens per chapter and puts every other approved screen in the All screens block, grouped by audience then flow. Every fact the owner has not supplied is an `OWNER INPUT` marker.
 
 ## Count destinations, not files

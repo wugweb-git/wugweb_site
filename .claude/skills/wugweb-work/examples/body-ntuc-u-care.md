@@ -1,5 +1,7 @@
 # Example: NTUC U Care Fund, Body Content v2 proposal (web platform archetype)
 
+> **Read this first (2026-11-19).** This example was written before two owner decisions. First, a case study's hero meta keys (Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country, Special Thanks) are the owner's: where this example proposes or fills one, do not copy that; read them and leave them. Second, it is the skill's own draft and was never approved by the owner as content. Use it for the format only.
+
 A complete worked example of Body mode, from the 2026-11-11 reference audit. It shows the output format in `references/ops-cycle.md`: what changes, the proposed body, screen selection, owner questions, flagged screens, every own-folder file accounted for, and the block plan. Nothing here has been written to the source.
 
 ### What changes, current → proposed

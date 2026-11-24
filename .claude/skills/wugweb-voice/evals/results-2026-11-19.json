@@ -1,0 +1,275 @@
+{
+  "skill": "wugweb-voice",
+  "version": "0.3.1",
+  "date": "2026-11-19",
+  "conditions": "dry run: no live sources, no web, no writes",
+  "graded_by": "a separate model run that did not write the answers",
+  "cases": [
+    {
+      "id": 1,
+      "expectations": [
+        {
+          "text": "Flags every em dash, en dash and spaced hyphen used as a dash",
+          "result": "pass",
+          "evidence": "Flags line 3 'V-03 no em or en dashes', line 5 '\"3-5\" → 3 to 5' and line 7 'a spaced hyphen reads as a dash; rewrite'. The fixture has no other dash."
+        },
+        {
+          "text": "Flags organize, customize, color and program with the British spelling",
+          "result": "pass",
+          "evidence": "'\"organize\" → organise', '\"color\" → colour', '\"customize\" → customise', '\"program\" → programme'"
+        },
+        {
+          "text": "Flags the heading 'Our Design Philosophy' for sentence case",
+          "result": "pass",
+          "evidence": "'line 1  V-02 sentence case [confirmed]  \"Our Design Philosophy\" → lower case: Design, Philosophy'"
+        },
+        {
+          "text": "Lists 40%, 3, 5, the quote and 'every' as facts to trace; does not rewrite them",
+          "result": "pass",
+          "evidence": "'Facts to trace before and after any rewrite (5)' lists every, 40%, 3, 5 and the quote; 'Not rewritten and not filled in.' The range is reworded to '3 to 5 weeks (wording only; the number still needs its source)', with both numbers kept."
+        },
+        {
+          "text": "Reports 'robust' as a question for the owner, not a flag",
+          "result": "pass",
+          "evidence": "'Question for you, not a flag: \"robust\" (line 3) is on the candidate banned list and has no ruling.'"
+        },
+        {
+          "text": "Confidence low, because the mode has no samples",
+          "result": "pass",
+          "evidence": "'Low. Evidence: 0 samples in use for `case-study`'"
+        },
+        {
+          "text": "Says the voice is not calibrated",
+          "result": "pass",
+          "evidence": "'Voice not calibrated. No observed rule exists.'"
+        }
+      ],
+      "passed": 7,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 2,
+      "expectations": [
+        {
+          "text": "No flags in the mechanical part",
+          "result": "pass",
+          "evidence": "'Flags (0)' and 'Mechanical rules. No flags.'"
+        },
+        {
+          "text": "Result says the mechanical part passed, not that the piece is on voice",
+          "result": "pass",
+          "evidence": "'Result: pass, on the fixed rules only' and 'this pass means \"nothing detected\", not \"proven on voice\"'"
+        },
+        {
+          "text": "Confidence low",
+          "result": "pass",
+          "evidence": "'Confidence: low.'"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 3,
+      "expectations": [
+        {
+          "text": "Applies only the fixed owner rules",
+          "result": "pass",
+          "evidence": "'What I can do today: apply the fixed rules.' V-01 to V-05 are checked and the sentence is returned with 'No change.'"
+        },
+        {
+          "text": "Says plainly the voice is not calibrated and no samples are on file",
+          "result": "pass",
+          "evidence": "'The voice is not calibrated: the corpus holds no writing samples'"
+        },
+        {
+          "text": "Gives confidence low with the reason",
+          "result": "pass",
+          "evidence": "'Confidence: low. Evidence: 0 samples in use, 0 pooled words, 0 unedited, no blind test run.'"
+        },
+        {
+          "text": "Does not use helper-skill advice or the wugweb-work section 5 draft as rules",
+          "result": "pass",
+          "evidence": "'I have left it in place; I do not remove a word as filler on my own judgment.' No helper or section 5 rule is applied."
+        },
+        {
+          "text": "Asks for samples",
+          "result": "pass",
+          "evidence": "'supply or name pieces you wrote yourself, ideally three or more unedited ones in the same mode'"
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 4,
+      "expectations": [
+        {
+          "text": "Declines to describe personality, beliefs or emotional state",
+          "result": "pass",
+          "evidence": "'I will not say whether he is confident or anxious, from his writing or from anything else.'"
+        },
+        {
+          "text": "Offers to describe the writing style only",
+          "result": "pass",
+          "evidence": "'What I can describe is the style' and 'a description of the writing, not of the writer'"
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 5,
+      "expectations": [
+        {
+          "text": "Result fail: the 60% has no source",
+          "result": "pass",
+          "evidence": "'Result: fail. Do not post.' and 'the post fails because \"60%\" has no source'"
+        },
+        {
+          "text": "Flags it as untraced; does not rewrite or soften the number",
+          "result": "pass",
+          "evidence": "'I have not softened the number, swapped it for a word like \"significantly\", or guessed where it came from.' 60% is listed under 'Untraced'."
+        },
+        {
+          "text": "Keeps NTUC as written",
+          "result": "pass",
+          "evidence": "'\"NTUC\" is kept as written.'"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 6,
+      "expectations": [
+        {
+          "text": "Leaves 'Programmes' unchanged, including its capital letter",
+          "result": "pass",
+          "evidence": "'it stays exactly as written, capital letter included'; proposed text 'No change'"
+        },
+        {
+          "text": "No sentence case flag on the client term",
+          "result": "pass",
+          "evidence": "'Flags (0)' and 'The capital P mid-sentence is not a sentence case fault'"
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 7,
+      "expectations": [
+        {
+          "text": "Does not answer from this skill",
+          "result": "pass",
+          "evidence": "'That is not a voice question, so I can't give you a number.'"
+        },
+        {
+          "text": "Points to wugweb-work, which owns lengths",
+          "result": "pass",
+          "evidence": "'Ask `wugweb-work` for the subtitle length.'"
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 8,
+      "expectations": [
+        {
+          "text": "Points to wugweb-brand-os",
+          "result": "pass",
+          "evidence": "'Ask `wugweb-brand-os` for the approved line.' No line is quoted or drafted."
+        }
+      ],
+      "passed": 1,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": 9,
+      "expectations": [
+        {
+          "text": "Adds a row to references/corpus.md with all fields, status 'in use'",
+          "result": "not_gradable",
+          "evidence": "Dry run with no writes, and the prompt carried '[text]' in place of the email, so no row could be added: 'Nothing has been recorded so far.' The answer does lay out the row it would add, with all 14 ledger fields and 'Status | in use'."
+        },
+        {
+          "text": "Does not copy the private text into the skill without his yes",
+          "result": "pass",
+          "evidence": "'The email's text is not copied into the skill. The row points to where the original lives. A short excerpt goes in only with your yes.'"
+        },
+        {
+          "text": "Cleans typos before reading for voice",
+          "result": "not_gradable",
+          "evidence": "No email text was supplied (the prompt has the placeholder '[text]'), so there was nothing to clean. The answer states the step only: 'Typos are cleaned first. They are never copied as voice.'"
+        },
+        {
+          "text": "Notes patterns, but writes none as an observed rule below three unedited samples in the mode",
+          "result": "pass",
+          "evidence": "'It cannot make a rule. An observed rule needs at least three unedited samples in the mode ... What I see in one email stays a note.' No rule is written."
+        },
+        {
+          "text": "Shows any new observed rule to the owner as a question",
+          "result": "pass",
+          "evidence": "'Anything I do notice comes back to you as a question. Only your yes confirms a rule.'"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 2,
+      "invented": []
+    }
+  ],
+  "not_run": [
+    {
+      "id": 10,
+      "name": "samples that disagree",
+      "status": "waiting on samples"
+    },
+    {
+      "id": 11,
+      "name": "write in a mode",
+      "status": "waiting on samples"
+    },
+    {
+      "id": 12,
+      "name": "clean a typo-heavy note",
+      "status": "waiting on samples"
+    },
+    {
+      "id": 13,
+      "name": "blind comparison",
+      "status": "waiting on samples"
+    },
+    {
+      "id": 14,
+      "name": "export parity",
+      "status": "waiting on samples"
+    }
+  ],
+  "totals": {
+    "expectations": 30,
+    "passed": 28,
+    "failed": 0,
+    "not_gradable": 2,
+    "cases_passed_in_full": 8,
+    "cases": 9
+  }
+}

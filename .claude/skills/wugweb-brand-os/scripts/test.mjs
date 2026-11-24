@@ -45,7 +45,7 @@ for (const m of new Set(body.match(/`((?:references|scripts|evals|examples)\/[^`
 const walk = (d, acc = []) => {
   for (const f of readdirSync(d)) {
     const p = join(d, f);
-    if (statSync(p).isDirectory()) { if (f !== 'node_modules') walk(p, acc); }
+    if (statSync(p).isDirectory()) { if (f !== 'node_modules' && f !== 'runs') walk(p, acc); } // 'runs' holds saved eval answers: records of a run, not skill content
     else if (/\.(md|mjs|json|yaml|mdc)$/.test(f)) acc.push(p);
   }
   return acc;

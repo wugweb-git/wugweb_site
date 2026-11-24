@@ -31,7 +31,7 @@ id | kind | text | body line (chapter and position) | screens
 
 ## Checks
 
-- Every item has a body line. An item with none is removed.
+- Every fact has a body line. A fact with none is removed. The page link is the one item that is not a fact from the body: it carries the page's canonical address in place of a body line, and is kept.
 - Flagged screens are marked; forms that ban flagged screens skip them.
 - No number appears that lacks its source and date in the body.
 - Count the items and state the count.

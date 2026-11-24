@@ -75,7 +75,7 @@
       "name": "wugweb-work",
       "source": "./.claude/skills/wugweb-work",
       "description": "A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothin",
-      "version": "0.6.0",
+      "version": "0.6.1",
       "author": {
         "name": "Wugweb"
       },

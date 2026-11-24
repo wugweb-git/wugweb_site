@@ -1,9 +1,9 @@
 {
-  "version": "0.6.0",
+  "version": "0.6.1",
   "organization": "Wugweb",
   "date": "November 2026",
   "abstract": "A standard and a step-by-step procedure for producing every Wugweb piece in two tracks: client work (case studies, portfolio, showcase) and Wugweb's own content (blog posts, service pages, site copy), plus the social, deck, Behance and Dribbble forms of either. Evidence-led and proposal-only: nothing is invented and nothing is written or posted without the owner's approval. It works alone: the block catalogue, layout grammar, media, copy, on-page SEO, schema and publish-gate rules are held in the skill, and sibling skills add a check or an input. Independent of CMS, host and agent.",
-  "status": "Part 1 was locked at 0.5.0 on 2026-11-17 and raised to 0.6.0 on 2026-11-19 after the owner's composition, brand, scope and evidence decisions; the plan is approved by the owner. One matter is open with the owner (the newsletter's tool, list and cadence) and one is shared with wugweb-kits; both are listed in references/open-items.md. Evals 1 to 14 run and graded 2026-11-17; evals 15 to 24 written 2026-11-19 and not yet run. Part 2 (site code) goes straight to main, each step on the owner's go.",
+  "status": "Part 1 was locked at 0.5.0 on 2026-11-17 and raised to 0.6.0 and then 0.6.1 on 2026-11-19 after the owner's composition, brand, scope and evidence decisions; the plan is approved by the owner. One matter is open with the owner (the newsletter's tool, list and cadence) and one is shared with wugweb-kits; both are listed in references/open-items.md. All 24 evals run and graded 2026-11-19 on version 0.6.0: 125 of 130 expectations met, 3 failed, 2 not gradable; the gaps found are fixed in 0.6.1 and not yet re-run. Part 2 (site code) goes straight to main, each step on the owner's go.",
   "relatedSkills": [
     "wugweb-voice",
     "wugweb-brand-os",

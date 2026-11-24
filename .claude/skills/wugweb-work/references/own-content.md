@@ -37,6 +37,9 @@ Rules for all three:
 
 - Each section has one job or it goes. Lead each section with its point.
 - No proof supplied means no proof section. State one limit or fit condition.
+- Proof whose client may not be named is not used as proof on a public page: the proof section is held, the reply says why, and the owner is asked for proof that can be named. It is never shown with the name removed in a way that still identifies the client.
+- "What it needs from the client" comes from the brief. Where the brief does not give it, the part is left out of the draft and listed as a question; it is not written from general knowledge of such services.
+- The parts of a draft follow the order given above. A part with no source is left out and named in the reply; no part is added that the standard does not list.
 - Match the action to the reader's intent: a soft next step on a page that informs, one clear action on a page where the reader is ready to act.
 - A claim about a client project must match that project's approved case study body. Link the case study.
 - A number about Wugweb needs a source and a date, the same as a client result. Approved facts about Wugweb come from `wugweb-brand-os`.

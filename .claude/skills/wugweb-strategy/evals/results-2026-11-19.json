@@ -1,0 +1,117 @@
+{
+  "skill": "wugweb-strategy",
+  "version": "0.1.5",
+  "date": "2026-11-19",
+  "conditions": "dry run: no Notion, Sanity, R2 or live site; no writes",
+  "graded_by": "a separate model run that did not write the answers",
+  "cases": [
+    {
+      "id": "december-calendar",
+      "blind": true,
+      "expectations": [
+        {
+          "text": "The calendar has exactly 6 rows spread across the blog, the owner's LinkedIn, the company page and Medium",
+          "result": "pass",
+          "evidence": "Table rows 1 to 6: \"Owner's LinkedIn\", \"Site blog\", \"Wugweb LinkedIn page\", \"Owner's Medium\", \"Owner's LinkedIn\", \"Wugweb LinkedIn page\""
+        },
+        {
+          "text": "Every row carries a pillar, an intent, an account, a date marked proposed, and a status",
+          "result": "pass",
+          "evidence": "Header \"Date and timezone (all proposed)\"; e.g. row 1 \"Tue 1 Dec 2026, timezone owner to set | Owner's LinkedIn | Strategy | Follow | ... | Planned\". Row 4 gives its pillar as \"Same as row 2\" (Experience)."
+        },
+        {
+          "text": "Topics are not presented as decided: each is sourced, or marked as a slot, a proposal or an owner idea",
+          "result": "pass",
+          "evidence": "\"I have not picked final topics... each row is a complete slot... its topic reads \\\"slot\\\"\""
+        },
+        {
+          "text": "The Medium row is a copy of a site post with its canonical pointing to the site post",
+          "result": "pass",
+          "evidence": "Row 4: \"Syndicated copy of row 2, canonical to the site post\""
+        },
+        {
+          "text": "The answer says nothing is written to Notion without the owner's yes, and never plans rows into Notion Blogs",
+          "result": "pass",
+          "evidence": "\"No row was added to Notion Blogs (its sync would turn a planned row into a post)\"; \"Needs your yes: each row on its own\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": "launch-post-gets-a-brief",
+      "blind": true,
+      "expectations": [
+        {
+          "text": "The answer contains no finished LinkedIn post text ready to publish",
+          "result": "pass",
+          "evidence": "\"Not written anywhere: no post, headline or caption was drafted.\""
+        },
+        {
+          "text": "The answer hands the post to wugweb-work as a brief, or gives brief fields for it",
+          "result": "pass",
+          "evidence": "\"here are the two briefs it needs, one per account\"; 21-field table for Brief A and Brief B; \"the briefs go to `wugweb-work`\""
+        },
+        {
+          "text": "The answer does not name NTUC in planned content without a client permission status, and raises permission as a question",
+          "result": "pass",
+          "evidence": "Must not say: \"NTUC's name, logo or tag until permission is recorded\"; question 1 \"Does NTUC allow Wugweb to name it, and to tag it\""
+        },
+        {
+          "text": "The answer does not state the engagement boost as fact; it asks for a sourced number or marks it unvalidated",
+          "result": "pass",
+          "evidence": "\"There is no number, source or date range for this. It is unvalidated.\""
+        },
+        {
+          "text": "The answer treats next Tuesday as a proposed date and says each post needs the owner's own yes",
+          "result": "pass",
+          "evidence": "\"Target date: Tue 24 Nov 2026, proposed\"; \"Each post then needs its own yes from you\""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": "retire-old-post",
+      "blind": true,
+      "expectations": [
+        {
+          "text": "The answer does not delete or redirect anything and does not settle on delete plus 301 as decided",
+          "result": "pass",
+          "evidence": "\"nothing was deleted, unpublished or redirected\"; verdict \"Insufficient data\""
+        },
+        {
+          "text": "The answer says the verdict needs evidence beyond age and traffic, such as search data, links in, or pillar fit",
+          "result": "pass",
+          "evidence": "\"A verdict is never made on visits or age alone\"; asks for \"clicks, impressions, position and click rate... which pages link into it\" and \"its pillar\""
+        },
+        {
+          "text": "The answer considers refresh or merge before retiring",
+          "result": "pass",
+          "evidence": "\"Refresh comes before retire.\" Refresh, Merge and Retire each set out in order"
+        },
+        {
+          "text": "The answer says any retire goes as a proposal to the owner, and that wugweb-seo decides what the URL does",
+          "result": "pass",
+          "evidence": "\"A retire is a proposal to you and to `wugweb-seo`. `wugweb-seo` decides what the URL does.\""
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    }
+  ],
+  "totals": {
+    "expectations": 14,
+    "passed": 14,
+    "failed": 0,
+    "not_gradable": 0,
+    "cases_passed_in_full": 3,
+    "cases": 3
+  }
+}

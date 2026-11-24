@@ -1,0 +1,110 @@
+{
+  "skill": "wugweb-kits",
+  "version": "2.1.4",
+  "date": "2026-11-19",
+  "conditions": "scripted cases run by evals/run.mjs against the repository; no model, no network, no writes",
+  "graded_by": "the script itself: each case is a programmatic check",
+  "cases": [
+    {
+      "id": 1,
+      "name": "validate passes",
+      "result": "pass"
+    },
+    {
+      "id": 2,
+      "name": "AGENTS.md export is current",
+      "result": "pass"
+    },
+    {
+      "id": 3,
+      "name": "self test passes",
+      "result": "pass"
+    },
+    {
+      "id": 4,
+      "name": "doc and global.css agree (drift 0)",
+      "result": "pass"
+    },
+    {
+      "id": 5,
+      "name": "inventory runs on src and reports, not blocks",
+      "result": "pass"
+    },
+    {
+      "id": 6,
+      "name": "inventory --block exits 1 while warnings remain",
+      "result": "pass"
+    },
+    {
+      "id": 7,
+      "name": "live /: labels, headings, alt, landmarks clean",
+      "result": "pass"
+    },
+    {
+      "id": 8,
+      "name": "live /work: labels, headings, alt, landmarks clean",
+      "result": "pass"
+    },
+    {
+      "id": 9,
+      "name": "live /blog: labels, headings, alt, landmarks clean",
+      "result": "pass"
+    },
+    {
+      "id": 10,
+      "name": "live /services: labels, headings, alt, landmarks clean",
+      "result": "pass"
+    },
+    {
+      "id": 11,
+      "name": "live /about: labels, headings, alt, landmarks clean",
+      "result": "pass"
+    },
+    {
+      "id": 12,
+      "name": "live /contact-us: labels, headings, alt, landmarks clean",
+      "result": "pass"
+    },
+    {
+      "id": 13,
+      "name": "live /faq: labels, headings, alt, landmarks clean",
+      "result": "pass"
+    },
+    {
+      "id": 14,
+      "name": "live /footer/reviews: labels, headings, alt, landmarks clean",
+      "result": "pass"
+    },
+    {
+      "id": 15,
+      "name": "live case study: every section has an id and a name (blocked if the page is not 200)",
+      "result": "pass"
+    },
+    {
+      "id": 16,
+      "name": "contrast: live text #f4f4f4 on #191919 passes AA",
+      "result": "pass"
+    },
+    {
+      "id": 17,
+      "name": "contrast: muted #bababa on #191919 passes AA",
+      "result": "pass"
+    },
+    {
+      "id": 18,
+      "name": "no retired shell values live in global.css",
+      "result": "pass"
+    },
+    {
+      "id": 19,
+      "name": "SKILL.md version matches metadata.json",
+      "result": "pass"
+    }
+  ],
+  "totals": {
+    "cases": 19,
+    "passed": 19,
+    "failed": 0,
+    "blocked": 0
+  }
+}

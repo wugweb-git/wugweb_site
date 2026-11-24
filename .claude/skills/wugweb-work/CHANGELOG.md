@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.1, 2026-11-19
+
+Fixes for the gaps found when all 24 evals were run and graded on 0.6.0 (125 of 130 expectations met; `evals/RESULTS.md`). Not yet re-run on this version.
+
+- All screens holds every approved screen, proof screens included: `layout-grammar.md` section 7 said "not shown in a chapter" while section 13 and the worked case said all 31. One statement now.
+- A board (several screens on one artboard) is one record with `board: true` and carries `what`, `alt` and `caption` like any other; the example record had neither.
+- The fact pack's page link is kept without a body line; it is the one item that is not a fact from the body.
+- Service pages: proof that may not be named is held and asked about; "what it needs" comes from the brief or is left out; no part is added that the standard does not list.
+- A page marked "partial" is shipped only on the owner's yes for that partial page.
+- A made file's ground is this site's surface unless the owner supplied the client's brand values.
+- The first sentence of a chapter answers the heading; an older example that does otherwise is marked wrong.
+- The three body examples open with a note: they predate the rule that hero meta keys are the owner's, and they are the skill's own drafts, never approved content.
+- `composition.md` points at the list of what this site can render today.
+- Eval 1 said chapters are 30 to 160 words; the standard is 30 to 150. The eval is corrected.
+
 ## 0.6.0, 2026-11-19 (owner)
 
 Raised from 0.5.0 on the owner's word of 2026-11-19. This entry holds everything added that day after the skill was restored to the work session's 0.5.0. Also: Packaging for use in any agent (owner, 2026-11-19): `LICENSE` (MIT), `LESSONS.md` (what the skill learns from use, and which rule each lesson changed), a link under `.agents/skills/` so Codex and the other agents that read the Agent Skills layout load this folder, and an entry in the plugin marketplace file. The rule changes of the day are the bullets below.

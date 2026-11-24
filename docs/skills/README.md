@@ -4,7 +4,7 @@ Seven skills, one job each. Every skill is a complete package that works alone, 
 
 | Skill | Its job | Version |
 |---|---|---|
-| `wugweb-work` | Makes the piece: client work and Wugweb's own content, with its composition, layout, media, copy, schema, gate and other forms | 0.6.0 |
+| `wugweb-work` | Makes the piece: client work and Wugweb's own content, with its composition, layout, media, copy, schema, gate and other forms | 0.6.1 |
 | `wugweb-voice` | The one Wugweb voice, and the voice check | 0.3.1 |
 | `wugweb-brand-os` | Brand strategy and the visual system rules | 0.3.3 |
 | `wugweb-kits` | The design system: tokens, components, block docs, audits | 2.1.4 |
@@ -75,6 +75,24 @@ What is confirmed and what is not:
 - The marketplace file passes `claude plugin validate`. Installing from it has not been tried from a second machine.
 - The repository is private. Another person needs access to it before any of the above works for them.
 - The skill names follow the Agent Skills naming rule: lowercase letters, digits and hyphens, the same as the folder name.
+
+## Eval results
+
+Each skill's `evals/` folder holds its cases, the answers from the last run (`evals/runs/<date>/`), and the grades (`evals/RESULTS.md` and a results file). Answers are written by one set of model runs and graded by another, so nothing marks its own work.
+
+Run of 2026-11-19, dry (no live source, no web, no writes) unless noted:
+
+| Skill | Cases run | Expectations met | Failed | Not gradable | Not run |
+|---|---|---|---|---|---|
+| `wugweb-work` (0.6.0) | 24 | 125 of 130 | 3 | 2 | 0 |
+| `wugweb-brand-os` | 35 | 91 of 93 | 2 | 0 | 4, waiting on the owner or an app upload |
+| `wugweb-engineer` | 7 | 47 of 47 | 0 | 0 | 0 |
+| `wugweb-voice` | 9 | 28 of 30 | 0 | 2 | 5, waiting on writing samples |
+| `wugweb-seo` | 8 | 23 of 25 | 0 | 2 | 0 |
+| `wugweb-strategy` | 3 | 14 of 14 | 0 | 0 | 0 |
+| `wugweb-kits` | 19 scripted | 19 of 19 | 0 | 0 | 0 |
+
+How to read these: five `wugweb-work` cases were run with read-only access to the published copy and the public media; everything else had no live source, so some answers are a correct plan with no real rows in it. Twenty of the engineer skill's passes come from a routing file that could not be answered blind. The `wugweb-work` gaps found were fixed in 0.6.1, which has not been re-run. The kits cases are programmatic checks, not model answers.
 
 ## Commands
 

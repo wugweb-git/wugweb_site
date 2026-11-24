@@ -60,7 +60,7 @@ const files = [];
 const walk = (d) => {
   for (const f of readdirSync(d)) {
     const p = join(d, f);
-    if (statSync(p).isDirectory()) { if (!['fixtures', 'node_modules'].includes(f) && !existsSync(join(p, 'prompt.md'))) walk(p); }
+    if (statSync(p).isDirectory()) { if (!['fixtures', 'node_modules', 'runs'].includes(f) && !existsSync(join(p, 'prompt.md'))) walk(p); } // 'runs' holds saved eval answers: records of a run, which quote drafts, not skill content
     else if (/\.(md|mjs|json)$/.test(f)) files.push(p);
   }
 };

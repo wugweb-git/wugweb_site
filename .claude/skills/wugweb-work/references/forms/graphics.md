@@ -47,6 +47,7 @@ A composition shows several screens as one picture. It follows the mixed-composi
 - One claim, taken word for word from the approved body, or shortened only by cutting.
 - Keep everything that matters inside the middle four fifths of the frame; platforms trim the edges.
 - Body text is 16 px or more at the size shown, and a headline 32 px or more. Type sizes come from the made-file tokens in `forms.md`.
+- The ground of a made file is this site's page surface by default. It is a client colour only when the owner has supplied that client's brand values with the content; a colour read from the client's site is a proposal, not a ground.
 - Measure the contrast of the text on its ground.
 - Sizes are in `forms.md`. A size not listed there is confirmed against the platform's current help page before the file is made.
 - One file per yes. A set of five banners is five proposals.

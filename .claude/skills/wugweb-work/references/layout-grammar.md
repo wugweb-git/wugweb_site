@@ -136,7 +136,7 @@ Media is part of the narrative: it sits between and inside the chapters, in body
 ## 7. Closing blocks, in order
 
 1. `results`, when results exist and no chapter is named Results.
-2. `screens`, titled "All screens": every approved screen not shown in a chapter. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus is trapped while the viewer is open and returns to the thumbnail on close; pinch zoom is allowed; the back action closes it; every item has a deep link that opens the viewer at that item. The full rules are in section 13. Without JavaScript every set renders stacked under its own heading.
+2. `screens`, titled "All screens": every approved screen of the piece, the proof screens included, so the whole set can be browsed in one place (in the worked case all 31, of which 12 also sit in chapters as proof). Section 13 holds the rule. Set chips with counts (audience, then flow), a thumbnail grid (3 columns for phone screens and 1 to 2 for desktop on mobile, denser on desktop), and a dialog viewer with caption, "n of N, set name", a visible close button, previous and next buttons of 44 px or more, and swipe. Buttons are required because swipe needs a single-pointer alternative. Focus is trapped while the viewer is open and returns to the thumbnail on close; pinch zoom is allowed; the back action closes it; every item has a deep link that opens the viewer at that item. The full rules are in section 13. Without JavaScript every set renders stacked under its own heading.
 3. `credits`: team, partner, special thanks, services, year or timeline, country, platform.
 4. `presence`: Live, stores, Behance, Dribbble, awards.
 5. `related`: 3 items from the source relation; fallback by pillar then industry.
@@ -221,7 +221,7 @@ A chart on a page is carried as a `figure` block whose media kind is `chart`. It
 Three parts, always together (owner, 2026-11-11).
 
 1. **Inside a chapter: only the screens that prove the claim.** One to four screens per chapter, picked in the visual read. The chapter reads as heading, lead, points, then its proof screens with a short caption under each.
-2. **Near the end: one All screens block for everything else.** Every other approved screen, so nothing is lost. A row of set chips, each with its count; one chip is selected at a time and the grid below shows that set as thumbnails. Thumbnails keep their own ratio: 3 columns for phone screens and 1 to 2 for desktop screens on mobile, denser on desktop.
+2. **Near the end: one All screens block.** It holds every approved screen, the proof screens included, so nothing is lost and the whole set can be browsed in one place. A row of set chips, each with its count; one chip is selected at a time and the grid below shows that set as thumbnails. Thumbnails keep their own ratio: 3 columns for phone screens and 1 to 2 for desktop screens on mobile, denser on desktop.
 3. **On a thumbnail: a full-size viewer, one screen at a time.** The caption, then the position and set as "3 of 8, Member". Previous and next buttons of 44 px or more, a visible close button, swipe, Escape to close.
 
 Worked case: 31 approved screens; 12 stay in chapters as proof; all 31 are in All screens in five sets (Member 8, States 4, Dashboard 9, Back office 7, Cases 3); 2 flagged screens are hidden and listed.
@@ -247,7 +247,7 @@ Each layer does one job and none does another's:
 | Body parser | Describes the content: chapters, claims, points, media references, labels, layout hints |
 | Media manifest | Describes each file: size, shape, type, status, duplicates, own or borrowed |
 | Visual read | Describes what each screen shows: audience, flow, step, kind, state, quality, which chapter it proves |
-| Layout resolver | Decides the presentation: proof screens into chapter blocks, every other approved screen into All screens |
+| Layout resolver | Decides the presentation: proof screens into chapter blocks, and every approved screen into All screens |
 | Screens block | Renders All screens: chips, counts, thumbnails |
 | Viewer | Opens one screen at a time, with caption, position and navigation |
 

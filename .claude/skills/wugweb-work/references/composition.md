@@ -124,7 +124,7 @@ Rules:
 
 - State the form in the block plan, beside the block: `points (editorial list)`, `points (lead and supports)`.
 - The body may ask for a form with its `Layout:` hint. A hint that the content cannot fill is reported, never forced.
-- A form the site cannot render yet is listed as a gap in the block plan, with the nearest form used meanwhile. It is never faked with a card grid.
+- A form the site cannot render yet is listed as a gap in the block plan, with the nearest form used meanwhile. It is never faked with a card grid. What this site can and cannot render today is listed in `open-items.md` (Pending on the site); read it before marking anything buildable.
 
 ## 3. The count comes from the content
 

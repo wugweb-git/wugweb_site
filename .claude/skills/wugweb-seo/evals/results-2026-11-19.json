@@ -1,0 +1,217 @@
+{
+  "skill": "wugweb-seo",
+  "version": "2.5.1",
+  "date": "2026-11-19",
+  "conditions": "dry run: no live sources, no web, no writes",
+  "graded_by": "a separate model run that did not write the answers",
+  "cases": [
+    {
+      "id": "plan-one-page",
+      "expectations": [
+        {
+          "text": "Names one primary phrase and up to three supporting phrases",
+          "result": "pass",
+          "evidence": "'Primary phrase: booking system design' and 'Supporting phrases: none. Candidate phrases must come in your words, and none were given.' Zero is within 'up to three'."
+        },
+        {
+          "text": "Gives each phrase a source or marks it unvalidated",
+          "result": "pass",
+          "evidence": "'booking system design (unvalidated; taken from your request, no volume, difficulty or ranking fetched)'"
+        },
+        {
+          "text": "Returns an outline of topics, not headings or wording",
+          "result": "pass",
+          "evidence": "'Outline (topics in order, not headings)' with five topics, each 'rests on: to supply'"
+        },
+        {
+          "text": "States the link rules and the schema and writes no copy",
+          "result": "pass",
+          "evidence": "'Schema: Service and BreadcrumbList. No author.'; 'two or three links across to sibling pages, descriptive anchors, no orphans or dead ends'; 'No heading, title, description or body copy is written here.'"
+        }
+      ],
+      "passed": 4,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": "plan-platform-note",
+      "expectations": [
+        {
+          "text": "Suggests title, first-line and tag terms, sourced or unvalidated",
+          "result": "pass",
+          "evidence": "'Primary term: care booking (unvalidated; taken from your request)', placed in 'Title', 'First line' and tag 1; tags 2 and 3 are 'to supply ... in your words'"
+        },
+        {
+          "text": "Keeps tags few and specific",
+          "result": "pass",
+          "evidence": "'Tags: few and specific, three at most.' and 'No broad tags, no tag list at the end for reach'"
+        },
+        {
+          "text": "Does not write the post and does not stuff hashtags",
+          "result": "pass",
+          "evidence": "'It does not write the post; `wugweb-work` writes it' and 'No hashtag stuffing.'"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": [
+        "The cap 'three at most' on tags is not in the skill, which says only 'few and specific'. It is the answer's own limit, not data; no volume, ranking or tag use is claimed."
+      ]
+    },
+    {
+      "id": "audit-title-description",
+      "expectations": [
+        {
+          "text": "Checks the rendered title at 60 or fewer, with no separate source limit",
+          "result": "pass",
+          "evidence": "'Rendered title: 60 characters or fewer, including \" | Wugweb\" where the site adds it'; measured '54 characters' and 'rendered title 69 characters, limit 60'. One limit only."
+        },
+        {
+          "text": "Checks the description is 140 to 160 characters",
+          "result": "pass",
+          "evidence": "'148 characters | 140 to 160 | passes' and '26 characters, range 140 to 160'"
+        },
+        {
+          "text": "Reports only what it finds and invents nothing",
+          "result": "pass",
+          "evidence": "'These are test files, not live wugweb.com pages.' The grader re-ran check-page.mjs on both example files and got the same figures (no findings and 17 checks passed; 69 and 26 characters; 4 blockers, 7 high, 4 medium, 1 low)."
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": "audit-schema",
+      "expectations": [
+        {
+          "text": "Requires WebPage, CreativeWork and BreadcrumbList on a case study",
+          "result": "pass",
+          "evidence": "'The rule for a case study on wugweb.com: `WebPage`, `CreativeWork` and `BreadcrumbList`'; reports 'missing WebPage, BreadcrumbList' on the failing example"
+        },
+        {
+          "text": "Requires creator and publisher and no author",
+          "result": "pass",
+          "evidence": "'Wugweb is `creator` and `publisher`; no `author`'; fix 5 'On CreativeWork, remove author and set Wugweb as creator and publisher'"
+        },
+        {
+          "text": "Flags HowTo, Review and AggregateRating as banned",
+          "result": "pass",
+          "evidence": "'no `HowTo`, `Review` or `AggregateRating`' and 'BLOCKER  JSON-LD  HowTo present  schema-banned-type'"
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": "audit-keyphrase-score",
+      "expectations": [
+        {
+          "text": "Returns a per-test breakdown and a 0 to 100 total with a grade",
+          "result": "pass",
+          "evidence": "'Score: 14 of 100 (bad)' with 21 test lines and 'Bands: bad <=50, ok 51 to 80, great >80.' The grader re-ran score-page.mjs and got the same output."
+        },
+        {
+          "text": "Scores keyword density, keyword in a subheading and title readability",
+          "result": "pass",
+          "evidence": "'FAIL  0/6  keyword-density  (0.00%)', 'FAIL  0/3  keyword-in-subheading', and 'title-sentiment', 'title-power-word', 'title-number'"
+        },
+        {
+          "text": "Writes no copy and hands fixes to wugweb-work or a developer",
+          "result": "pass",
+          "evidence": "'The score reports. It does not rewrite.' Fix list is 'to wugweb-work' and gives findings and checks, no wording."
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": "audit-robots",
+      "expectations": [
+        {
+          "text": "Resolves each named bot against the path",
+          "result": "pass",
+          "evidence": "Fifteen bots listed for /work/care-booking, each with its rule, for example 'BLOCKED  search  PerplexityBot  Disallow: /work/ (group PerplexityBot)'. Run on the shipped example file and labelled as such; the grader re-ran check-robots.mjs and got the same output."
+        },
+        {
+          "text": "Requires search and citation bots to be allowed",
+          "result": "pass",
+          "evidence": "'BLOCKER  robots.txt  PerplexityBot disallowed on /work/' and 'A search and citation bot must reach every page that should be found.'"
+        },
+        {
+          "text": "Treats training bots as the owner's choice, asked once",
+          "result": "pass",
+          "evidence": "'Training bots are the owner's choice. Report them; do not change them.' and 'On wugweb.com you allow training bots (2026-11-17)'. That decision is recorded in references/audit.md, so it is not asked again."
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": "report-traffic-drop",
+      "expectations": [
+        {
+          "text": "Confirms the drop is real before diagnosing",
+          "result": "pass",
+          "evidence": "'I can't diagnose it yet' and asks for sessions 'to confirm the drop is real and not a measurement fault'. No diagnosis is given before that."
+        },
+        {
+          "text": "Follows the fixed check order for a drop",
+          "result": "pass",
+          "evidence": "'in this order, stopping at the first cause found: 1. Tracking ... 2. Indexing: did robots.txt, a noindex, a canonical or a deploy change? 3. Search engine update ... 4. Results features ... 5. Competitors ... 6. Content decay'"
+        },
+        {
+          "text": "Names source and dates or marks numbers unvalidated",
+          "result": "pass",
+          "evidence": "'No number in this reply, because none was supplied.' Source and periods are named: 'Search Console export ... October 2026 ... September 2026 ... October 2025'."
+        }
+      ],
+      "passed": 3,
+      "failed": 0,
+      "not_gradable": 0,
+      "invented": []
+    },
+    {
+      "id": "report-ai-visibility",
+      "expectations": [
+        {
+          "text": "Uses a fixed monthly prompt sample",
+          "result": "pass",
+          "evidence": "'A fixed list of prompts a buyer would ask, in your words. It stays the same every month.' The answer says none exists yet and asks for it."
+        },
+        {
+          "text": "Runs each prompt several times and reports how often Wugweb appears",
+          "result": "not_gradable",
+          "evidence": "No AI tool, web access or logged runs in a dry run, so nothing could be run or counted: '0 prompts run; cited not measured, mentioned not measured, absent not measured'. The answer states the method ('Each prompt run several times per tool, in fresh sessions') and refuses to report zero."
+        },
+        {
+          "text": "Reads the trend across months, not a single run",
+          "result": "not_gradable",
+          "evidence": "No month of data exists to read: 'trend: none, no earlier month on record'. The answer states the rule only: 'This month would be the first point, so it cannot show a trend; that needs several months.'"
+        }
+      ],
+      "passed": 1,
+      "failed": 0,
+      "not_gradable": 2,
+      "invented": []
+    }
+  ],
+  "not_run": [],
+  "totals": {
+    "expectations": 25,
+    "passed": 23,
+    "failed": 0,
+    "not_gradable": 2,
+    "cases_passed_in_full": 7,
+    "cases": 8
+  }
+}

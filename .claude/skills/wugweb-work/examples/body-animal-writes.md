@@ -1,5 +1,7 @@
 # Example: Animal Writes, Body Content v2 skeleton (stats-led, multi-workstream)
 
+> **Read this first (2026-11-19).** This example was written before two owner decisions. First, a case study's hero meta keys (Category, Client, Partner, Industry, Disciplines, Team, Timeline, Platform, Year, Country, Special Thanks) are the owner's: where this example proposes or fills one, do not copy that; read them and leave them. Second, it is the skill's own draft and was never approved by the owner as content. Use it for the format only.
+
 A skeleton for a case study where Wugweb ran several workstreams in one engagement and the story is carried by numbers. Every fact the owner has not supplied is an `OWNER INPUT` marker. No number is invented; "unvalidated" is a complete answer to any marker.
 
 Sources to read before filling it: the Animal Writes hub, Growth and Campaign Content Standard pages in Notion, and the client record (Media, Non-Profit). The Campaign Content Standard v1.0 is the rigour bar for this skill: taxonomy defined once, canonical order, conditional sections hidden when empty, evidence-led metrics with value, source, as-of date and threshold.
