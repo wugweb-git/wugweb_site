@@ -1,6 +1,6 @@
 # Packaged skills
 
-Built by `node scripts/skills.mjs package` from commit `e76c3703`, the last commit that changed a skill. Do not edit these files: change the skill in `.claude/skills/<name>/`, commit, and run the command again.
+Built by `node scripts/skills.mjs package` from commit `69acac89`, the last commit that changed a skill. Do not edit these files: change the skill in `.claude/skills/<name>/`, commit, and run the command again.
 
 | Skill | Version | Full package | For the Claude app |
 |---|---|---|---|
@@ -10,7 +10,7 @@ Built by `node scripts/skills.mjs package` from commit `e76c3703`, the last comm
 | wugweb-seo | 2.5.1 | `wugweb-seo-2.5.1.zip` | `wugweb-seo.skill` |
 | wugweb-strategy | 0.1.5 | `wugweb-strategy-0.1.5.zip` | `wugweb-strategy.skill` |
 | wugweb-voice | 0.3.1 | `wugweb-voice-0.3.1.zip` | `wugweb-voice.skill` |
-| wugweb-work | 0.6.0 | `wugweb-work-0.6.0.zip` | `wugweb-work.skill` |
+| wugweb-work | 0.6.1 | `wugweb-work-0.6.1.zip` | `wugweb-work.skill` |
 
 - **Full package**: the whole skill folder, with its evals, references, scripts, examples, adapters and exports. Unzip it into the skills folder of any agent (see `docs/skills/README.md`).
 - **For the Claude app**: the same folder without the evals. Upload it under Settings, Plugins.
@@ -18,18 +18,18 @@ Built by `node scripts/skills.mjs package` from commit `e76c3703`, the last comm
 ## Checksums (SHA-256)
 
 ```
-4b66b3275bae564db109845207ceaf3e0f255ddc7a87e116729bbfd4b4d98360  wugweb-brand-os-0.3.3.zip
-b961f7bbf0eb9be81e178b10f548dacb868667fe242155da24c8d126b3fb1b86  wugweb-brand-os.skill
-07c6b9e8df1696706994f371dd13dbf451575423aef00134c11fc04181726432  wugweb-engineer-0.3.2.zip
-7fdc2bb65a91d75c0596785fae59785d265e873bfa5402b1ce86a02ac807f282  wugweb-engineer.skill
-3a357b34233c5ed5822e8c029d4b8928c30cf1cdaadbd982d7a42204b1e1b72f  wugweb-kits-2.1.4.zip
-2a36b59565821dc9f9ebf154a88f9fa8d50f2e5cd51b5d1bef70d8ae2a781029  wugweb-kits.skill
-032ba6e463d80e681754667a9ff618e42031f13556d47e2db0e20bcf64ffeb6f  wugweb-seo-2.5.1.zip
-657e2ac4dab02f233910d7024c1ca593e3dea3fe8998484e63218fc2ad9a6687  wugweb-seo.skill
-42d9941b9c818eb2e246c453352f582b72c8ef7b8396754402bd9614a89e1bff  wugweb-strategy-0.1.5.zip
-76076b10cb5f25ee9f9f479a07771f2930b90c0e2d9f76ad9f288c39125cd6d2  wugweb-strategy.skill
-b2c75b36547aead0ca42d8329462ad894a8eeadd10f93cbc7f4ca07492afe2ba  wugweb-voice-0.3.1.zip
-48edfaeff4a68af08ee029fe4fbb1b16b714223de5e9d5c7617ad7bb41d8c623  wugweb-voice.skill
-b059a37a4120654ab16a0f0560315c2c153fbe5dcc7528d880d98298449c50a7  wugweb-work-0.6.0.zip
-2bad87fb6badd457f2e59d0b7b03625c1295cc4e6b6f59e8ef918206e6bfd9b3  wugweb-work.skill
+3ef7ecd5092f1d15cbb47fd8e93ab26a5264b5914c0e3dd4c7f5bffbf43bb083  wugweb-brand-os-0.3.3.zip
+e9aed8351987f2adfb7610f29bc04cca62beea1d3337a8d019d84cca405fe1dc  wugweb-brand-os.skill
+3c06f359c909bf2314883c40982f34370c03fd558f77950fa4408ee4ca8254dd  wugweb-engineer-0.3.2.zip
+224f065bfff5a3663036f3f1d279ef302aae88b94672d18adf7978b104446ef1  wugweb-engineer.skill
+d0d83b3eace62900d7f85af792c7fbb89c27d1e73d12d943262fdb16a7e202cc  wugweb-kits-2.1.4.zip
+7647595cd79680bbd3702c46e3bc835f0c430b70638e6c8bfd468ebec2c9df1b  wugweb-kits.skill
+309b094dfe0b283f03041c5f0ba5a5005ae8ac81126fe871a5de0360c29cf10b  wugweb-seo-2.5.1.zip
+117e2aa6b02b984b6e711ab44f0616821fa28fc6b0178169ee8fc2dbb996335a  wugweb-seo.skill
+50bc26d24a84730de71d35af1325f8d2bb6b91faf1890baa878c957266d21a6c  wugweb-strategy-0.1.5.zip
+40e7875d91fbdafb8955fea5cd0749cfb44899b92f58aa704e4831a2e1a5a3d5  wugweb-strategy.skill
+e1c27b4baa9a5f411400861db355027b8b41882652050ca955ad51563ae03513  wugweb-voice-0.3.1.zip
+9db00783bd0283f52ea913b881a68f2142e7bd5073a14cf4f90fbd1bf10229ce  wugweb-voice.skill
+2654a7e4cf0d3ee753066a515f2a403dec74e04ec50742084eecdc27dd5f00cf  wugweb-work-0.6.1.zip
+f02f22a012aa82cbb882c661a09d40a1aff3d3bf2594739fec2bd57f2ab07a43  wugweb-work.skill
 ```
