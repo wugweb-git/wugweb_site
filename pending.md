@@ -338,3 +338,5 @@ The open leftovers found in that history are listed in [`docs/skills/wugweb-engi
 | Hyperdrive / SESSION KV | ⏸️ Deferred | Only if runtime needs |
 | footer/subscription | ⏸️ Deferred | Payment gateway scoping |
 | Credential rotation | ⏸️ Deferred | Unless user asks |
+
+**Added 2026-11-25 — Storybook:** one published Storybook at https://wugweb-git.github.io/wugweb_site/ (GitHub Pages, noindex), rebuilt from main by `.github/workflows/storybook.yml` on pushes that touch components, tokens, `/kits` or `.storybook/` and weekly. 41 components, 41 stories (22 added: the 19 case-study components, `CaseBlocks`, `JsonLd`, `PostCard`; sample data in `src/components/work/story-fixtures.ts`, images already in R2). `scripts/check-storybook-sync.mjs --strict` fails the run on a missing story, an orphan story, token drift or an undefined token on `/kits`. `/kits` and Storybook both stay. Open: set the weekly cron if the owner wants a different day.

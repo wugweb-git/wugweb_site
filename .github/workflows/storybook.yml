@@ -40,11 +40,11 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      # Report only for now: lists components without a story, tokens that
-      # drifted from global.css and tokens /kits uses that do not exist.
-      # Change to `--strict` to make a gap fail the build.
+      # Fails the run when a component has no story, a story has no
+      # component, a token drifted from global.css, or /kits uses a token
+      # that does not exist.
       - name: Sync check
-        run: node scripts/check-storybook-sync.mjs
+        run: node scripts/check-storybook-sync.mjs --strict
       - run: npx storybook build -o storybook-static
       - name: Keep search engines out
         run: |

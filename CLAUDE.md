@@ -97,6 +97,8 @@ Note: `footer/sitemap` is linked from `SiteFooter` (Sitemap).
 
 ## Components (`src/components/`)
 
+**Storybook (the one copy): https://wugweb-git.github.io/wugweb_site/** Built from `main` by `.github/workflows/storybook.yml` on every push that touches components, tokens, `/kits` or `.storybook/`, plus Mondays. `scripts/check-storybook-sync.mjs --strict` fails the run if a component has no `*.stories.ts` beside it, a story has no component, a token in `src/lib/design-tokens.ts` drifted from `global.css`, or `/kits` uses an undefined token. A new component needs a story. `/kits` and Storybook both stay; they share `src/lib/design-tokens.ts`.
+
 21 Astro components on main (counted 2026-11-17), 19 of them with a Storybook story beside the file (`*.stories.ts`; config in `.storybook/`, run with `npm run storybook`):
 
 `SiteHeader`, `SiteFooter`, `FooterCTA`, `TrustBadges`, `BentoBlock`, `ClientAssemblyGrid`, `ProcessMap`, `SectorShowcase`, `ServiceSpotlightPanel`, `ServiceTagField`, `InsightsBlock`, `TeamGrid`, `FaqAccordion`, `PortableTextRenderer`, `PostCard`, `JsonLd`, `industries/IndustriesHero`, `industries/SectorRow`, and three Storybook-only showcases (`ButtonShowcase`, `CookieBannerShowcase`, `TokenGallery`). `PostCard` and `JsonLd` have no story.
