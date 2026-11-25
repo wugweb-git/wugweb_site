@@ -1,0 +1,63 @@
+# Builds Storybook from main and publishes it to GitHub Pages: the one
+# Storybook for the site. Runs on every push that touches components, tokens,
+# /kits or the Storybook config, plus weekly as a safety net.
+# Free: the repo is public, so Actions minutes and Pages cost nothing.
+name: Storybook
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/components/**'
+      - 'src/styles/global.css'
+      - 'src/lib/design-tokens.ts'
+      - 'src/pages/kits.astro'
+      - '.storybook/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'scripts/check-storybook-sync.mjs'
+      - '.github/workflows/storybook.yml'
+  schedule:
+    - cron: '17 3 * * 1' # Mondays 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      # Report only for now: lists components without a story, tokens that
+      # drifted from global.css and tokens /kits uses that do not exist.
+      # Change to `--strict` to make a gap fail the build.
+      - name: Sync check
+        run: node scripts/check-storybook-sync.mjs
+      - run: npx storybook build -o storybook-static
+      - name: Keep search engines out
+        run: printf 'User-agent: *\nDisallow: /\n' > storybook-static/robots.txt
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: storybook-static
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
