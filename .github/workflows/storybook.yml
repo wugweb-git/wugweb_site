@@ -47,7 +47,8 @@ jobs:
         run: node scripts/check-storybook-sync.mjs
       - run: npx storybook build -o storybook-static
       - name: Keep search engines out
-        run: printf 'User-agent: *\nDisallow: /\n' > storybook-static/robots.txt
+        run: |
+          printf 'User-agent: *\nDisallow: /\n' > storybook-static/robots.txt
       - uses: actions/upload-pages-artifact@v3
         with:
           path: storybook-static
